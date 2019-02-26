@@ -5,17 +5,17 @@ description: Stosowanie najlepszych rozwiązań zarządzania cyklem życia aplik
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 1b57fefad726f8fb21f23fa9eef9e71643a3f51b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 22fe9a6bc6eaec1f4c73f9b92e30f174dd7855f2
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588402"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820386"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Zarządzanie cyklem życia aplikacji w usłudze Azure Machine Learning Studio
 Usługa Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty usługi machine learning, w których jest przygotowany do działania na platformie chmury platformy Azure. Takich jak środowiska IDE programu Visual Studio i usługi w chmurze skalowalne scalania w pojedynczej platformy. Różne zasoby do wdrożenia i wykonywanie zautomatyzowanych standardowego rozwiązania zarządzania cyklem życia aplikacji (ALM) na podstawie wersji można zastosować w usłudze Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.
@@ -42,7 +42,7 @@ Migawki historii uruchamiania zachować niezmienne wersję eksperymentu w usłud
 Plik JSON jest tekstową reprezentację wartości wykres eksperymentu, który może zawierać odwołania do zasobów w obszarze roboczym, takich jak zestaw danych lub uczonego modelu. Nie zawiera Zserializowany wersję zasobu. Jeśli użytkownik podejmie próbę ponownego importowania danych dokumentów JSON do obszaru roboczego, zasoby, do którego istnieje odwołanie musi już istnieć z tej samej zawartości identyfikatorów, które są określone w eksperymencie. W przeciwnym razie nie można uzyskać dostępu importowanych eksperymentu.
 
 ## <a name="versioning-trained-model"></a>Przechowywanie wersji uczonego modelu
-Uczonego modelu w usłudze Azure Machine Learning Studio jest serializowany do formatu, znany jako plik iLearner (`.iLearner`) i jest przechowywany na koncie magazynu obiektów Blob platformy Azure, które są skojarzone z obszarem roboczym. Jest jednym ze sposobów, aby pobrać kopię pliku iLearner za pośrednictwem interfejsu API ponownego trenowania. [W tym artykule](retrain-models-programmatically.md) wyjaśniono, jak działa interfejs API ponownego trenowania. Ogólne kroki:
+Uczonego modelu w usłudze Azure Machine Learning Studio jest serializowany do formatu, znany jako plik iLearner (`.iLearner`) i jest przechowywany na koncie magazynu obiektów Blob platformy Azure, które są skojarzone z obszarem roboczym. Jest jednym ze sposobów, aby pobrać kopię pliku iLearner za pośrednictwem interfejsu API ponownego trenowania. [W tym artykule](/azure/machine-learning/studio/retrain-machine-learning-model) wyjaśniono, jak działa interfejs API ponownego trenowania. Ogólne kroki:
 
 1. Skonfiguruj eksperymentu szkolenia.
 2. Dodaj port wyjściowy usługi sieci web do modułu Train Model lub moduł, który tworzy trenowanego modelu, takie jak dostrajanie Hiperparametrycznego Model lub utworzyć Model języka R.

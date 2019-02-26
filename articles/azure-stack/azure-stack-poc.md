@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/25/2018
+ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 9341eefdbe1eaa8e27394fd4b10f50b1a48bd4c6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/25/2019
+ms.openlocfilehash: 65894ccd9514bce1d429b336f8bd5e6674048e65
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247327"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820267"
 ---
 # <a name="what-is-azure-stack"></a>Co to jest usługa Azure Stack?
 
@@ -33,7 +33,7 @@ Usługa Azure Stack jest oferowana w dwóch opcji wdrażania do własnych potrze
 
 ## <a name="azure-stack-development-kit"></a>Zestaw Azure Stack Development Kit
 
-Microsoft [usługi Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) to wdrożenie pojedynczego węzła usługi Azure Stack, można użyć do oceny i Dowiedz się więcej o usłudze Azure Stack.  Można również użyć ASDK jako środowiska deweloperskiego do tworzenia aplikacji, korzystając z interfejsów API i narzędzia, która jest zgodna z platformą Azure.
+Microsoft [usługi Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) to wdrożenie pojedynczego węzła usługi Azure Stack, można użyć do oceny i Dowiedz się więcej o usłudze Azure Stack.  Można również użyć ASDK w zakresie jako środowiska deweloperskiego do tworzenia aplikacji za pomocą interfejsów API i narzędzi, który jest zgodny z platformą Azure.
 
 >[!Note]
 >ASDK nie jest przeznaczona do użycia jako środowisko produkcyjne.
@@ -41,7 +41,7 @@ Microsoft [usługi Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) t
 ASDK ma następujące ograniczenia:
 
 * ASDK jest skojarzony z jednej usługi Azure Active Directory (Azure AD) lub dostawcy tożsamości usługi Active Directory Federation Services (AD FS). Można utworzyć wielu użytkowników w tym katalogu i przypisywanie subskrypcji do poszczególnych użytkowników.
-* Składniki usługi Azure Stack są wdrażane na jednym komputerze-hoście, dlatego są ograniczone zasoby fizyczne dostępne dla zasobów dzierżawy. Ta konfiguracja nie jest przeznaczona do oceny skalę i wydajność.
+* Składniki usługi Azure Stack są wdrażane na komputerze hosta, dlatego są ograniczone zasoby fizyczne dostępne dla zasobów dzierżawy. Ta konfiguracja nie jest przeznaczona do skalowania, lub do oceny wydajności.
 * Scenariusze sieci są ograniczone ze względu na jednym hoście i wymagania dotyczące wdrażania kart interfejsu Sieciowego.
 
 ## <a name="azure-stack-integrated-systems"></a>Zintegrowane systemy usługi Azure Stack

@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 0f38902a166de8d623106849a124b8e2e5cceb5c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ac9bb6969e7771e1570670c83c88ddc892dc759e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674801"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823590"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
@@ -98,10 +98,16 @@ Aby użyć uwierzytelniania jednostki usługi, wykonaj następujące kroki:
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-2. Przyznaj usługi głównej odpowiednie uprawnienia w usłudze Azure storage.
+2. Przyznaj odpowiednie uprawnienia jednostki usługi.
 
-    - **Jako źródło**, sterowanie dostępu (IAM), co najmniej udzielić **czytnik danych obiektu Blob magazynu** roli.
-    - **Jako obiekt sink**, sterowanie dostępu (IAM), co najmniej udzielić **Współautor danych obiektu Blob magazynu** roli.
+    - **Jako źródło**, w Eksploratorze usługi Storage, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy i skopiuj pliki w folderach i podfolderach lub Udziel **odczytu** uprawnień do kopiowania pojedynczy plik. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **czytnik danych obiektu Blob magazynu** roli.
+    - **Jako obiekt sink**, w Eksploratorze usługi Storage, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
+
+>[!NOTE]
+>Do listy folderów, począwszy od katalogu głównego, należy ustawić uprawnienia jednostki usługi, zostanie im przyznany do **na poziomie głównym z uprawnieniami "Execute"** lub uprawnienia do zarządzania tożsamościami i Dostępem. Jest to wartość true, gdy:
+>- **Narzędzie do kopiowania danych** do potoku kopiowania autora.
+>- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
+>Jeśli masz obawy na nadawanie uprawnień na poziomie głównym, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania, będą nadal działać tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 Te właściwości są obsługiwane w połączonej usłudze:
 
@@ -146,10 +152,16 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 
 1. [Pobieranie informacji o tożsamości zarządzanych fabryki danych](data-factory-service-identity.md#retrieve-managed-identity) przez skopiowanie wartości "Identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką.
 
-2. Przyznaj odpowiednie uprawnienia tożsamość zarządzaną w usłudze Azure storage. 
+2. Przyznaj uprawnienie odpowiednie tożsamość zarządzaną. 
 
-    - **Jako źródło**, sterowanie dostępu (IAM), co najmniej udzielić **czytnik danych obiektu Blob magazynu** roli.
-    - **Jako obiekt sink**, sterowanie dostępu (IAM), co najmniej udzielić **Współautor danych obiektu Blob magazynu** roli.
+    - **Jako źródło**, w Eksploratorze usługi Storage, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy i skopiuj pliki w folderach i podfolderach lub Udziel **odczytu** uprawnień do kopiowania pojedynczy plik. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **czytnik danych obiektu Blob magazynu** roli.
+    - **Jako obiekt sink**, w Eksploratorze usługi Storage, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
+
+>[!NOTE]
+>Do listy folderów, począwszy od katalogu głównego, należy ustawić uprawnienia tożsamość zarządzaną, zostanie im przyznany do **na poziomie głównym z uprawnieniami "Execute"** lub uprawnienia do zarządzania tożsamościami i Dostępem. Jest to wartość true, gdy:
+>- **Narzędzie do kopiowania danych** do potoku kopiowania autora.
+>- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
+>Jeśli masz obawy na nadawanie uprawnień na poziomie głównym, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania, będą nadal działać tak długo, jak tożsamość zarządzaną otrzymuje z odpowiednimi uprawnieniami na pliki do skopiowania.
 
 Te właściwości są obsługiwane w połączonej usłudze:
 

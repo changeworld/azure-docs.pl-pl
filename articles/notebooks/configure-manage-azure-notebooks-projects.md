@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 6d7cacf699df580b8a5c46b8bfc6d48e1a8daea1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904373"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821734"
 ---
 # <a name="manage-and-configure-projects"></a>Konfigurowanie projektów i zarządzanie nimi
 
@@ -58,6 +58,15 @@ Jeśli następujące warunki są spełnione, listy rozwijanej również pokazuje
 Po wybraniu wystąpienia maszyny wirtualnej DSVM, notesy platformy Azure może monit o poświadczenia określonej maszyny używane podczas tworzenia maszyny Wirtualnej.
 
 Aby utworzyć nowe wystąpienie maszyny wirtualnej DSVM, postępuj zgodnie z instrukcjami [tworzenia maszyny Wirtualnej do nauki o danych Ubuntu](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Użyj **maszyna wirtualna do nauki o danych dla systemu Linux (Ubuntu)** obrazu, jeśli chcesz, aby znajdujący się w rozwijanej liście notesów usługi Azure.  Jeśli z innych przyczyn, należy użyć obrazu Windows lub CentOS, można użyć **bezpośrednie obliczenia** opcję, aby połączyć się z maszyny DSVM ręcznie.
+
+> [!IMPORTANT]
+> Korzystając z bezpośredniego obliczeniowych lub do nauki o danych maszyn wirtualnych, notesów, uruchomione na nich musi być całkowicie niezależna. W chwili obecnej, notesy platformy Azure, kopiuje tylko *.ipynb* plików do maszyny Wirtualnej, ale nie kopiuje wszystkie inne pliki w projekcie. W rezultacie notesów działające na innych maszynach wirtualnych nie udało się znaleźć innych plików projektów.
+>
+> Można obejść ten problem, na dwa sposoby:
+>
+> 1. Ręcznie skopiuj pliki projektu do maszyny Wirtualnej.
+>
+> 2. Osadzanie plików w notesie ustawienia uruchamiania przed głównej notesu. W notesie Instalator Utwórz komórce kodu dla każdego pliku, w którym komórka zawiera zawartość pliku. Następnie w górnej części każda komórka Wstaw polecenie `%writefile <filename>`, gdzie `<filename>` to nazwa pliku do odbierania zawartości. Podczas uruchamiania notesu tworzy tych plików na maszynie Wirtualnej. Aby uzyskać przykład, zobacz [setup.ipynb pliku pokaz wykrywacz Pet Microsoft](https://github.com/microsoft/connect-petdetector) (GitHub).
 
 ## <a name="edit-project-metadata"></a>Edytowanie metadanych projektu
 

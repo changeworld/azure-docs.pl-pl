@@ -5,17 +5,17 @@ description: Dowiedz się, jak ponowne szkolenie modelu i aktualizowanie klasycz
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 73ab816c7043c7fb0f572677c6ceeb722653dec1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650774"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822023"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Ponowne szkolenie i wdrażania klasycznej usługi sieci web programu Studio
 
@@ -23,7 +23,7 @@ Ponowne trenowanie modeli uczenia maszynowego jest jednym ze sposobów, aby zape
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule przyjęto założenie, że masz już eksperyment predykcyjny i ponownego trenowania eksperymentu. Te kroki są wyjaśnione w [Wytrenujesz i wdrożyć model uczenia maszynowego.](retrain-models-programmatically.md) Jednak zamiast wdrażania modelu uczenia maszynowego jako nowej usługi sieci web, usługi eksperyment predykcyjny zostanie wdrożony jako klasyczna usługa sieci web.
+W tym artykule przyjęto założenie, że masz już eksperyment predykcyjny i ponownego trenowania eksperymentu. Te kroki są wyjaśnione w [Wytrenujesz i wdrożyć model uczenia maszynowego.](/azure/machine-learning/studio/retrain-machine-learning-model) Jednak zamiast wdrażania modelu uczenia maszynowego jako nowej usługi sieci web, usługi eksperyment predykcyjny zostanie wdrożony jako klasyczna usługa sieci web.
      
 ## <a name="add-a-new-endpoint"></a>Dodaj nowy punkt końcowy
 

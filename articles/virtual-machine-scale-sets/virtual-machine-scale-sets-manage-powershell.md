@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 5746d8b1f4c12a9b39f1599da753db8109790a55
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c4684dd27aeed4fab4335a93ea5a458b4a9f5d80
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984153"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821187"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zarządzanie maszyny wirtualnej zestawu skalowania przy użyciu programu Azure PowerShell
 
@@ -55,7 +55,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="change-the-capacity-of-a-scale-set"></a>Zmienianie pojemności zestawu skalowania
 Poprzednich poleceniach wykazało, że informacje o zestawie skalowania oraz wystąpień maszyn wirtualnych. Aby zwiększyć lub zmniejszyć liczbę wystąpień w zestawie skalowania, można zmienić pojemność. Automatyczne zestawu skalowania tworzy lub usuwa wymaganą liczbę maszyn wirtualnych, a następnie konfiguruje maszynom wirtualnym odbierać ruchu aplikacji.
 
-Najpierw utwórz obiekt zestawu skalowania przy użyciu [Get AzVmss](/powershell/module/az.compute/get-azvmss), następnie określ nową wartość dla `sku.capacity`. Aby zastosować zmiany pojemności, użyj [AzVmss aktualizacji](/powershell/module/az.compute/update-azvmss). Następujące aktualizacje przykład *myScaleSet* w *myResourceGroup* grupę zasobów do pojemności *5* wystąpień. Podaj własne wartości w następujący sposób:
+Najpierw utwórz obiekt zestawu skalowania za pomocą polecenia [Get-AzVmss](/powershell/module/az.compute/get-azvmss), a następnie podaj nową wartość parametru `sku.capacity`. Aby zastosować zmiany pojemności, użyj polecenia [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Następujące aktualizacje przykład *myScaleSet* w *myResourceGroup* grupę zasobów do pojemności *5* wystąpień. Podaj własne wartości w następujący sposób:
 
 ```powershell
 # Get current scale set
@@ -70,7 +70,7 @@ Aktualizacja pojemności zestawu skalowania trwa kilka minut. Jeśli zmniejszyć
 
 
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>Zatrzymywanie i uruchamianie maszyn wirtualnych w zestawie skalowania
-Aby zatrzymać co najmniej jedna maszyna wirtualna w zestawie skalowania, użyj [Stop AzVmss](/powershell/module/az.compute/stop-azvmss). Parametr `-InstanceId` umożliwia wskazanie maszyn wirtualnych, które mają zostać zatrzymane. Jeśli nie podasz identyfikatora wystąpienia, zostaną zatrzymane wszystkie maszyny wirtualne w zestawie skalowania. Aby zatrzymać wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić przecinkami.
+Aby zatrzymać co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj polecenia [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss). Parametr `-InstanceId` umożliwia wskazanie maszyn wirtualnych, które mają zostać zatrzymane. Jeśli nie podasz identyfikatora wystąpienia, zostaną zatrzymane wszystkie maszyny wirtualne w zestawie skalowania. Aby zatrzymać wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić przecinkami.
 
 W poniższym przykładzie zostaje zatrzymane wystąpienie *0* w zestawu skalowania o nazwie *myScaleSet* i *myResourceGroup* grupy zasobów. Podaj własne wartości w następujący sposób:
 
@@ -82,7 +82,7 @@ Domyślnie następuje cofnięcie przydziału zatrzymanych maszyn wirtualnych, co
 
 
 ### <a name="start-vms-in-a-scale-set"></a>Uruchom maszyny wirtualne w zestawie skalowania
-Aby uruchomić co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj [Start AzVmss](/powershell/module/az.compute/start-azvmss). Parametr `-InstanceId` umożliwia wskazanie maszyn wirtualnych, które mają zostać uruchomione. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione wszystkie maszyny wirtualne w zestawie skalowania. Można uruchomić wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić przecinkami.
+Aby uruchomić co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj polecenia [Start-AzVmss](/powershell/module/az.compute/start-azvmss). Parametr `-InstanceId` umożliwia wskazanie maszyn wirtualnych, które mają zostać uruchomione. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione wszystkie maszyny wirtualne w zestawie skalowania. Można uruchomić wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić przecinkami.
 
 Poniższy przykład uruchamia wystąpienie *0* w zestawu skalowania o nazwie *myScaleSet* i *myResourceGroup* grupy zasobów. Podaj własne wartości w następujący sposób:
 
@@ -92,7 +92,7 @@ Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 
 
 ## <a name="restart-vms-in-a-scale-set"></a>Ponowne uruchamianie maszyn wirtualnych w zestawie skalowania
-Aby ponownie uruchomić co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj [AzVmss restart](/powershell/module/az.compute/restart-azvmss). Parametr `-InstanceId` umożliwia wskazanie maszyn wirtualnych, które mają zostać uruchomione ponownie. Jeśli nie podasz identyfikatora wystąpienia, wszystkie maszyny wirtualne w zestawie skalowania zostaną uruchomione ponownie. Aby ponownie uruchomić wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić przecinkami.
+Aby ponownie uruchomić co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj [AzVmss ponowne uruchomienie](/powershell/module/az.compute/restart-azvmss). Parametr `-InstanceId` umożliwia wskazanie maszyn wirtualnych, które mają zostać uruchomione ponownie. Jeśli nie podasz identyfikatora wystąpienia, wszystkie maszyny wirtualne w zestawie skalowania zostaną uruchomione ponownie. Aby ponownie uruchomić wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić przecinkami.
 
 Poniższy przykład powoduje ponowne uruchomienie wystąpienia *0* w zestawu skalowania o nazwie *myScaleSet* i *myResourceGroup* grupy zasobów. Podaj własne wartości w następujący sposób:
 

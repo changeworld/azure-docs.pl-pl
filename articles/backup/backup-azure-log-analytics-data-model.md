@@ -1,6 +1,6 @@
 ---
-title: Model danych usługi Log Analytics na potrzeby usługi Azure Backup
-description: Ten artykuł zawiera informacje o szczegóły modelu danych usługi Log Analytics dla danych usługi Azure Backup.
+title: Usługa Azure Monitor w dziennikach modelu danych usługi Azure Backup
+description: Ten artykuł dotyczy usługi Azure Monitor rejestruje Szczegóły modelu danych dla danych usługi Azure Backup.
 services: backup
 author: adigan
 manager: shivamg
@@ -8,15 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: 5921ca696076a16e39252a6cb3bfae98854b5a85
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b17e7548a19543add6274243d64ede3b61544c52
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299576"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819569"
 ---
-# <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dzienników dla danych usługi Azure Backup
-Tworzenie raportów przy użyciu modelu danych usługi Log Analytics. Z modelem danych utworzenia niestandardowych kwerend i pulpitów nawigacyjnych lub dostosowywanie danych usługi Azure Backup możesz dowolnie.
+# <a name="azure-monitor-logs-data-model-for-azure-backup-data"></a>Usługa Azure Monitor dzienniki danych usługi Azure Backup w modelu danych
+Tworzenie raportów przy użyciu modelu danych dzienników usługi Azure Monitor. Z modelem danych utworzenia niestandardowych kwerend i pulpitów nawigacyjnych lub dostosowywanie danych usługi Azure Backup możesz dowolnie.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="using-azure-backup-data-model"></a>Przy użyciu modelu danych usługi Azure Backup
 Następujące pola, które są udostępniane w ramach modelu danych umożliwia tworzenie wizualizacji, zapytania niestandardowe i pulpit nawigacyjny zgodnie z wymaganiami.
@@ -37,7 +39,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące alertów powiązanych pól
 | State_s |Tekst |Bieżący stan alertu obiektu, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ten alert |
 | OperationName |Tekst |Nazwa bieżącej operacji, na przykład Alert |
-| Kategoria |Tekst |Kategoria danych diagnostycznych wypchnięte do usługi Log Analytics. Zawsze AzureBackupReport |
+| Kategoria |Tekst |Kategoria danych diagnostycznych wypchnięte do usługi Azure Monitor dzienniki. Zawsze AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, skojarzonych z tym alertem |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator chronionego magazynu skojarzonego z alertem |
@@ -65,7 +67,7 @@ Ta tabela zawiera szczegółowe informacje o kopii zapasowej pól powiązanych e
 | State_s |Tekst |Stan obiektu elementów kopii zapasowej, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ten element kopii zapasowej |
 | OperationName |Tekst |Nazwa operacji, na przykład BackupItem |
-| Kategoria |Tekst |Kategoria danych diagnostycznych wypchnięte do usługi Log Analytics. Zawsze AzureBackupReport |
+| Kategoria |Tekst |Kategoria danych diagnostycznych wypchnięte do usługi Azure Monitor dzienniki. Zawsze AzureBackupReport |
 | Zasób |Tekst |Zasób danych, które są zbierane, na przykład nazwa magazynu usługi Recovery Services |
 | SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
 | ResourceId |Tekst |Identyfikator zasobu dla zbieranych danych, na przykład magazyn usługi Recovery Services identyfikatora zasobu |
@@ -85,7 +87,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia elementu kopii
 | State_s |Tekst |Bieżący stan obiektu skojarzenia elementu kopii zapasowej, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - BackupItemAssociation |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad skojarzonych z elementu kopii zapasowej |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, skojarzony element kopii zapasowej |
@@ -108,7 +110,7 @@ Ta tabela zawiera szczegółowe informacje o polach związanych z pracą.
 | State_s |Tekst |Bieżący stan obiektu zadania, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — zadanie |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego skojarzone zadania |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator chronionego magazynu. |
@@ -137,7 +139,7 @@ Ta tabela zawiera szczegółowe informacje o polach związane z zasadami.
 | State_s |Tekst |Bieżący stan obiektu zasad, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — zasady |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad |
 | PolicyName_s |Tekst |Nazwy zdefiniowane zasady |
@@ -177,7 +179,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia zasad z różn
 | State_s |Tekst |Bieżący stan obiektu zasad, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - PolicyAssociation |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do których te zasady należy do |
@@ -199,7 +201,7 @@ Ta tabela zawiera szczegółowe informacje o chronionych polach związanych z se
 | State_s |Tekst |Bieżący stan obiektu chronionego serwera, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - ProtectedServer |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego |
 | RegisteredContainerId_s |Tekst |Identyfikator kontenera zarejestrowany dla kopii zapasowej |
@@ -223,7 +225,7 @@ Ta tabela zawiera szczegółowe informacje o serwerze chronionym skojarzenia z i
 | State_s |Tekst |Bieżący stan obiektu skojarzenia chronionego serwera, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - ProtectedServerAssociation |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ten chroniony serwer |
@@ -246,7 +248,7 @@ Ta tabela zawiera szczegółowe informacje o polach związane z magazynowaniem.
 | State_s |Tekst |Bieżący stan obiektu magazynu, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - Storage |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, dla którego jest obliczana magazynu |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu dla magazynu jest obliczana. |
@@ -266,7 +268,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z magazyn
 | SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
 | State_s |Tekst |Bieżący stan obiektu magazynu, na przykład, aktywne, usunięte |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — magazyn |
-| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Azure Monitor dzienników, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu |
 | VaultName_s |Tekst |Nazwa magazynu |
@@ -280,4 +282,4 @@ Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z magazyn
 | ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, możesz rozpocząć [Tworzenie pulpitu nawigacyjnego](../azure-monitor/learn/tutorial-logs-dashboards.md) w usłudze Log Analytics.
+Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, możesz rozpocząć [Tworzenie pulpitu nawigacyjnego](../azure-monitor/learn/tutorial-logs-dashboards.md) w dziennikach w usłudze Azure Monitor.

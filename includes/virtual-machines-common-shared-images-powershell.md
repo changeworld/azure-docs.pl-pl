@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c74a96e3dcce1394e0af5447c07ad38c54b960fa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985003"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825781"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
@@ -74,8 +74,8 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
-W kolejnej wersji, będziesz mieć możliwość użycia osobiście zdefiniowanych **-wydawcy**, **-oferują** i **- Sku** wartości, aby znaleźć i określić definicję obrazu, a następnie utwórz Maszynę wirtualną za pomocą najnowszej wersji obrazu z pasujących definicji obrazu. Na przykład poniżej przedstawiono trzy definicje, które obrazu i ich wartości:
+### <a name="using-publisher-offer-and-sku"></a>Za pomocą wydawcy, oferty i jednostki SKU 
+Dla klientów, planowania na implementowanie udostępnianych obrazów **w nadchodzącej wersji**, będzie można użyć osobiście zdefiniowanych **-wydawcy**, **-oferują** i **- Sku** wartości, aby znaleźć i określić definicję obrazu, a następnie utwórz Maszynę wirtualną przy użyciu najnowszej wersji obrazu z odpowiedniego obrazu definicji. Na przykład poniżej przedstawiono trzy definicje, które obrazu i ich wartości:
 
 |Definicja obrazu|Wydawca|Oferta|SKU|
 |---|---|---|---|
@@ -83,10 +83,9 @@ W kolejnej wersji, będziesz mieć możliwość użycia osobiście zdefiniowanyc
 |myImage2|myPublisher|standardOffer|mySku|
 |myImage3|Testowanie|standardOffer|testSku|
 
-Wszystkie trzy z nich ma unikatowe zbiory wartości. W kolejnej wersji można połączyć te wartości w celu żądania najnowszą wersję określonego obrazu. 
+Wszystkie trzy z nich ma unikatowe zbiory wartości. Może mieć wersji obrazu, które współużytkują jeden lub dwa, ale nie wszystkie trzy wartości. **W nadchodzącym wydaniu**, będzie można połączyć te wartości w celu żądania najnowszą wersję określonego obrazu. **To nie pomoże w bieżącej wersji**, ale są dostępne w przyszłości. Po zwolnieniu, przy użyciu następującej składni powinien być używany do ustawiania obrazu źródłowego jako *myImage1* z powyższej tabeli.
 
 ```powershell
-# The following should set the source image as myImage1 from the table above
 $vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
@@ -94,7 +93,7 @@ $vmConfig = Set-AzVMSourceImage `
    -Skus mySku 
 ```
 
-Jest to podobne do jak obecnie określić je pod kątem [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) utworzyć maszynę Wirtualną. Pamiętając o tym każda definicja obrazu musi mieć unikatowy zestaw tych wartości. Może mieć wersji obrazu, które współużytkują jeden lub dwa, ale nie wszystkie trzy wartości. 
+Jest to podobne do jak możesz obecnie określić Użyj wydawcy, oferta i jednostka SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) można pobrać najnowszej wersji obrazu z witryny Marketplace. Pamiętając o tym każda definicja obrazu musi mieć unikatowy zestaw tych wartości.  
 
 ##<a name="create-an-image-version"></a>Utwórz wersję obrazu
 

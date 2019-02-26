@@ -3,7 +3,7 @@ title: Tworzenie raportów i sprawdzanie kondycji za pomocą usługi Azure Servi
 description: Informacje o sposobie wysyłania raportów o kondycji z kodu usługi oraz sprawdzić kondycję usługi przy użyciu narzędzi monitorowania kondycji, udostępnianych przez usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: mfussell
 editor: ''
 ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/2/2017
-ms.author: dekapur
-ms.openlocfilehash: d374886efb708797db1dd6352aa063a56aff4f44
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 02/25/2019
+ms.author: srrengar
+ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427312"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821682"
 ---
 # <a name="report-and-check-service-health"></a>Tworzenie raportów i sprawdzanie kondycji usług
 W przypadku wystąpienia problemów z usług możliwość odpowiedzieć i rozwiązać zdarzenia i awarii zależy od możliwości, aby szybko wykrywać problemy. Jeśli raportów problemów i błędów do Menedżera kondycji usługi Azure Service Fabric z poziomu kodu usługi, możesz użyć standardowego kondycji narzędzia, które Usługa Service Fabric udostępnia, aby sprawdzić stan kondycji monitorowania.

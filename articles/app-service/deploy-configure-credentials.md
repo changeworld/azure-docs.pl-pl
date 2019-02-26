@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 11/22/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a92440e97f47f0778eb73b81b239b45476d4e733
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d89197fad8354b0bae41ab67b9bb1dfac0a179eb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551522"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820301"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrożenia dla usługi Azure App Service
 [Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](deploy-local-git.md) i [wdrożenia protokołu FTP/S](deploy-ftp.md). Nie są takie same, jak poświadczeń usługi Azure Active Directory.
 
-* **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Może służyć do wdrożenia usługi App Service dla każdej aplikacji, w przypadku subskrypcji, z uprawnień dostępu do konta platformy Azure. Jest domyślny zestaw, który jest udostępniane w portalu graficznego interfejsu użytkownika (takie jak **Przegląd** i **właściwości** aplikacji [strony zasobu](../azure-resource-manager/resource-group-portal.md#manage-resources)). Po użytkownik uzyska dostęp do aplikacji za pomocą kontroli dostępu opartej na rolach (RBAC) lub uprawnienia coadmin, użytkownik ten może korzystać swoich własnych poświadczeń na poziomie użytkownika, dopóki nie został odwołany dostęp. Nie udostępniaj tych poświadczeń z innymi użytkownikami platformy Azure.
+* **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Może służyć do wdrożenia usługi App Service dla każdej aplikacji, w przypadku subskrypcji, z uprawnień dostępu do konta platformy Azure. Jest domyślny zestaw, który jest udostępniane w portalu graficznego interfejsu użytkownika (takie jak **Przegląd** i **właściwości** aplikacji [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources)). Po użytkownik uzyska dostęp do aplikacji za pomocą kontroli dostępu opartej na rolach (RBAC) lub uprawnienia coadmin, użytkownik ten może korzystać swoich własnych poświadczeń na poziomie użytkownika, dopóki nie został odwołany dostęp. Nie udostępniaj tych poświadczeń z innymi użytkownikami platformy Azure.
 
 * **Poświadczenia na poziomie aplikacji**: jeden zestaw poświadczeń dla każdej aplikacji. Może służyć do wdrożenia tej aplikacji tylko. Poświadczenia dla każdej aplikacji są generowane automatycznie podczas tworzenia aplikacji. Nie można skonfigurować ręcznie ale można je zresetować w dowolnym czasie. Użytkownikom można udzielić dostępu do poświadczeń na poziomie aplikacji za pośrednictwem (RBAC), ten użytkownik musi być współautorem lub nowszej na aplikację. Czytelnicy nie są dozwolone do publikowania i nie może uzyskiwać dostęp do tych poświadczeń.
 
 ## <a name="userscope"></a>Wartości i zresetować poświadczenia na poziomie użytkownika
 
-Poświadczenia na poziomie użytkownika można skonfigurować w dowolnej aplikacji [strony zasobu](../azure-resource-manager/resource-group-portal.md#manage-resources). Niezależnie od tego w aplikacji, które można skonfigurować te poświadczenia, ma to zastosowanie do wszystkich aplikacji, a także dla wszystkich subskrypcji na Twoim koncie platformy Azure. 
+Poświadczenia na poziomie użytkownika można skonfigurować w dowolnej aplikacji [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources). Niezależnie od tego w aplikacji, które można skonfigurować te poświadczenia, ma to zastosowanie do wszystkich aplikacji, a także dla wszystkich subskrypcji na Twoim koncie platformy Azure. 
 
 Aby skonfigurować swoje poświadczenia na poziomie użytkownika:
 

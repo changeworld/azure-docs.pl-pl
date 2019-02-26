@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600309"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823862"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik programu Microsoft Azure: Słownik terminologii chmury na platformie Azure
 
@@ -39,7 +39,7 @@ Inną nazwę dla [aplikację usługi app Service](#app-service-app).
 ## <a name="app-service-app"></a>Aplikacja usługi App Service
 Zasoby obliczeniowe, [usługi Azure App Service](app-service/overview.md) udostępnia do hostowania witryny sieci Web lub aplikacji sieci web, w przypadku interfejsu API sieci web lub [zaplecza aplikacji mobilnej](app-service-mobile/app-service-mobile-value-prop.md). Aplikacje usługi App Service są również nazywane *App Services*, *aplikacje sieci web*, *aplikacje API apps*, i *aplikacje mobilne*.
 
-## <a name="availability-set"></a>Zestaw dostępności
+## <a name="availability-set"></a>zestaw dostępności
 Kolekcja maszyn wirtualnych, które są ze sobą zarządzane w celu zapewnienia nadmiarowości aplikacji i niezawodności. Korzystanie z zestawu dostępności temu podczas zdarzenia planowaną lub nieplanowaną konserwacją co najmniej jednej maszyny wirtualnej są dostępne.  
 Zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i [Zarządzanie dostępnością maszyn wirtualnych systemu Linux](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -77,7 +77,7 @@ Zobacz [Navigate i wybierz pozycję Windows obrazów maszyn wirtualnych na platf
 Liczba zasobów, które mogą być tworzone lub testów porównawczych wydajności, który można osiągnąć. Limity są zwykle skojarzone z subskrypcji, usługi i oferty.  
 Zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>Moduł równoważenia obciążenia
+## <a name="load-balancer"></a>moduł równoważenia obciążenia
 Zasób, który dystrybuuje ruch przychodzący między komputerami w sieci. Na platformie Azure modułu równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych zdefiniowanych w zestawie modułu równoważenia obciążenia. A [moduł równoważenia obciążenia](load-balancer/load-balancer-overview.md) mogą być połączone z Internetem lub może być wewnętrzny.  
 
 ## <a name="mobile-app"></a>aplikacja mobilna
@@ -110,7 +110,7 @@ Zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templ
 Usługa dostarczająca zasoby, które można wdrażać i zarządzać nimi za pomocą usługi Resource Manager. Każdy dostawca zasobów udostępnia operacje do pracy z wdrażanymi zasobami. Dostawcy zasobów jest możliwy za pośrednictwem witryny Azure portal, programu Azure PowerShell i zestawów SDK programowania.  
 Zobacz [Omówienie usługi Azure Resource Manager](azure-resource-manager/resource-group-overview.md)
 
-## <a name="role"></a>rola
+## <a name="role"></a>role (rola)
 Sposób kontrolowania dostępu, który można przypisać do użytkowników, grup i usług. Role są możliwe do wykonania akcji, takie jak tworzenie, zarządzanie i Odczyt dla zasobów platformy Azure.  
 Zobacz [RBAC: Wbudowane role](role-based-access-control/built-in-roles.md)
 
@@ -147,7 +147,7 @@ Zasób, który implementuje zachowania lub funkcje, które ułatwiają albo inne
 Zobacz [o rozszerzeniach maszyn wirtualnych i funkcje (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) lub [o rozszerzeniach maszyn wirtualnych i funkcji (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vnet"></a>Sieć wirtualna
-Sieć, która zapewnia łączność między zasobami platformy Azure, które jest odizolowana od innych dzierżaw usługi Azure. [Bramy Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) umożliwia ustanawianie połączeń między sieciami wirtualnymi i [między siecią wirtualną i siecią lokalną](vpn-gateway/vpn-gateway-plan-design.md). Możesz w pełni kontrolować bloki adresów IP, ustawienia DNS, zasady zabezpieczeń i tabel tras w ramach sieci wirtualnej.  
+Sieć, która zapewnia łączność między zasobami platformy Azure, które jest odizolowana od innych dzierżaw usługi Azure. [Bramy Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) umożliwia ustanawianie połączeń między sieciami wirtualnymi oraz między siecią wirtualną i siecią lokalną. Możesz w pełni kontrolować bloki adresów IP, ustawienia DNS, zasady zabezpieczeń i tabel tras w ramach sieci wirtualnej.  
 Zobacz [Omówienie usługi Virtual Network](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Aplikacja internetowa

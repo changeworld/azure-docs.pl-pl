@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6c93c0228425b2ff020e5b4301e68eae5b1062a3
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004557"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807834"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 
@@ -23,12 +23,14 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
 1. Przejdź do witryny internetowej [Video Indexer](https://www.videoindexer.ai/) i zaloguj się.
 2. Przeszukiwanie wszystkich filmów wideo w ramach Twojego konta.
 
-    W poniższym przykładzie przeszukaliśmy dla wszystkich filmów wideo utworzone przez Channel9 ze Scottem Hanselmanem.
+    W poniższym przykładzie przeszukiwania dla wszystkich filmów wideo, które mówić o zabezpieczeniach i Satya widocznego,
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search01.png)
 3. Wyszukaj podsumowane szczegółowe informacje dotyczące filmu wideo.
 
-    Możesz wyszukiwać w filmie wideo, klikając **Odtwórz** film wideo. Następnie możesz przeszukiwać wideo, wybierając **wyszukiwania** kartę. Na przykład przeszukaliśmy dla wszystkich miejsc, w których jest używany tekst "identity protection". 
+    Możesz wyszukiwać w filmie wideo, klikając **Odtwórz** film wideo. Następnie możesz przeszukiwać wideo, wybierając **wyszukiwania** kartę. 
+
+    W poniższym przykładzie mamy wyszukiwanie "secure" wewnątrz wybrany film wideo.
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search02.png)
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: b46ccd98145342fda58672b64b838ab92ba4f97b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a9f49af54f391b159f8b3d626fffc36635f5e51f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731926"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821314"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure-using-the-customvisionai-site"></a>Jak przenieść projektu ograniczonej wersji próbnej na platformie Azure przy użyciu witryny CustomVision.ai
 
@@ -64,7 +64,7 @@ Wiele projektów może być skojarzona z pojedynczego zasobu. Więcej szczegół
     ![Okno migracji projektu.](./media/move-your-project-to-azure/Project_Migration_Window.jpg)
 
 
-## <a name="move-your-limited-trial-project-to-an-azure-resource-in-another-directory"></a>Przenieś projektu ograniczonej wersji próbnej do zasobu platformy Azure w innym katalogu 
+## <a name="move-project-to-another-azure-directory"></a>Przenieś projekt do innego katalogu platformy Azure 
 
 > [!NOTE]
 > W witrynie Azure portal i CustomVision.ai można wybrać katalog z menu rozwijanego użytkownika w prawym górnym rogu ekranu.   
@@ -92,4 +92,6 @@ Wiele projektów może być skojarzona z pojedynczego zasobu. Więcej szczegół
 
 5. Należy pamiętać, że projekt jest teraz w innym katalogu. Aby znaleźć projektu, należy przełączyć się do tego samego katalogu, w portalu sieci web Custom Vision, który znajduje się w projekcie. W portalu Azure i [wizji niestandardowe witryny sieci Web](https://customvision.ai), katalogiem można wybrać z menu rozwijanego konta w prawym górnym rogu ekranu. 
 
+## <a name="next-steps"></a>Kolejne kroki
 
+Teraz projekt został przeniesiony do zasobu platformy Azure. Należy zaktualizować kluczy wszystkie aplikacje, które zostały napisane przy użyciu uczenia i przewidywania.

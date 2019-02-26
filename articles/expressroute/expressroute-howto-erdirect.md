@@ -1,28 +1,23 @@
 ---
 title: Konfigurowanie usługi ExpressRoute bezpośrednio — Azure | Dokumentacja firmy Microsoft
-description: Ta strona służy do konfigurowania usługi ExpressRoute bezpośrednich (wersja zapoznawcza).
+description: Ta strona służy do konfigurowania bezpośrednich usługi ExpressRoute.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 05eb75c77cef5b975d0122714bb0ec9fba1d09a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9157466f0768b052f55f6d225e72ae7a036f8b9c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463978"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822176"
 ---
-# <a name="how-to-configure-expressroute-direct-preview"></a>Konfigurowanie usługi ExpressRoute bezpośrednich (wersja zapoznawcza)
+# <a name="how-to-configure-expressroute-direct"></a>Jak skonfigurować bezpośrednio z usługi ExpressRoute
 
 Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [dotyczące usługi ExpressRoute bezpośrednie łączenie](expressroute-erdirect-about.md).
-
-> [!IMPORTANT]
-> Bezpośrednie usługi ExpressRoute jest obecnie dostępna w wersji zapoznawczej.
->
-> Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Utwórz zasób
 

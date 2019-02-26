@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c0caece57885dfa3c26d368990a6af8e5b14eed6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765385"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823998"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu
 
@@ -36,7 +36,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. W okienku po lewej stronie witryny Azure Portal wybierz pozycję **Maszyny wirtualne**.
 2. Z listy maszyn wirtualnych wybierz maszynę wirtualną.
 3. Na **zasobów** menu, w obszarze **operacji**, wybierz opcję **spisu**.
-4. Wybierz obszar roboczy usługi Log Analytics, aby zapisać w nim dzienniki danych.
+4. Wybierz obszar roboczy usługi Log Analytics do przechowywania danych dzienników.
     Jeśli w tym regionie nie ma dostępnego dla Ciebie obszaru roboczego, pojawi się monit o utworzenie domyślnego obszaru roboczego i konta usługi Automation.
 5. Aby rozpocząć dołączanie swojego komputera, kliknij pozycję **Włącz**.
 
@@ -91,7 +91,9 @@ Poniższe tabele zawierają informacje dotyczące każdej właściwości, które
 
 ## <a name="manage-machine-groups"></a>Zarządzaj grupami maszyn
 
-Spis umożliwia tworzenie i wyświetlanie grupy maszyn w usłudze Log Analytics. Grupy maszyn są kolekcjami maszynach zdefiniowanych przez zapytanie w usłudze Log Analytics.
+Spis umożliwia tworzenie i wyświetlanie grupy maszyn w dziennikach w usłudze Azure Monitor. Grupy maszyn są kolekcjami maszynach zdefiniowanych przez zapytanie w dziennikach w usłudze Azure Monitor.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Na komputerze grupy wybierz widok **maszyny grupy** karty na stronie spisu.
 
@@ -116,7 +118,7 @@ Aby usunąć maszynę wirtualną z zarządzania spisem:
 3. Z listy wybierz maszynę wirtualną, którą chcesz odłączyć. Maszyna wirtualna ma zielony znacznik wyboru obok pozycji **Ten obszar roboczy** w kolumnie **Połączenie OMS**.
 
    >[!NOTE]
-   >Pakiet OMS jest teraz nazywana usługi Log Analytics.
+   >Pakiet OMS jest teraz nazywana dzienniki usługi Azure Monitor.
    
 4. U góry następnej strony wybierz pozycję **Rozłącz**.
 5. W oknie potwierdzenia wybierz pozycję **Tak**.

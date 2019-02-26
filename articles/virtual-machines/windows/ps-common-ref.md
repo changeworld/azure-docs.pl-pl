@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 7be31a9390dfb0d663b27979a42fffe6f7a0afca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 9d0e27c2427d53554b454e0c319ce9cf180f1633
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977545"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820794"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Typowe polecenia programu PowerShell do tworzenia i zarządzania maszynami wirtualnymi platformy Azure
 
@@ -51,7 +51,7 @@ Te zmienne mogą być przydatne dla Ciebie, jeśli z więcej niż jedno z polece
 | Dodawanie ustawień konfiguracji |$vm = [AzVMOperatingSystem zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) - VM $vm-Windows - ComputerName $myVM-Credential $cred - ProvisionVMAgent - EnableAutoUpdate<BR></BR><BR></BR>Ustawienia systemu operacyjnego, w tym [poświadczenia](https://technet.microsoft.com/library/hh849815.aspx) są dodawane do utworzonego wcześniej przy użyciu nowego AzVMConfig obiektu konfiguracji. |
 | Dodawanie interfejsu sieciowego |$vm = [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) -VM $vm -Id $nic.Id<BR></BR><BR></BR>Maszyna wirtualna musi mieć [interfejs sieciowy](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) komunikowanie się w sieci wirtualnej. Można również użyć [Get AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) można pobrać obiektu interfejsu sieciowego. |
 | Określ obraz platformy |$vm = [AzVMSourceImage zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) - VM $vm - Nazwa_wydawcy "publisher_name"-oferują "publisher_offer" - Skus "product_sku"-"najnowszej" wersji<BR></BR><BR></BR>[Obraz informacji](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) jest dodawany do utworzonego wcześniej przy użyciu nowego AzVMConfig obiektu konfiguracji. Obiekt zwrócony z tego polecenia jest używane tylko w sytuacji, gdy ustawisz dysku systemu operacyjnego, aby użyć obrazu platformy. |
-| Tworzenie maszyny wirtualnej |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Location $location -VM $vm<BR></BR><BR></BR>Wszystkie zasoby są tworzone w [grupy zasobów](../../azure-resource-manager/powershell-azure-resource-manager.md). Przed uruchomieniem tego polecenia, uruchomić AzVMConfig nowy, AzVMOperatingSystem zestawu, AzVMSourceImage zestawu, Dodaj AzVMNetworkInterface i AzVMOSDisk zestawu. |
+| Tworzenie maszyny wirtualnej |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Location $location -VM $vm<BR></BR><BR></BR>Wszystkie zasoby są tworzone w [grupy zasobów](../../azure-resource-manager/manage-resource-groups-powershell.md). Przed uruchomieniem tego polecenia, uruchomić AzVMConfig nowy, AzVMOperatingSystem zestawu, AzVMSourceImage zestawu, Dodaj AzVMNetworkInterface i AzVMOSDisk zestawu. |
 | Aktualizowanie maszyny Wirtualnej |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Pobierz bieżącą konfigurację maszyn wirtualnych przy użyciu Get-AzVM, zmieniać ustawienia konfiguracji dla obiektu maszyny Wirtualnej, a następnie uruchom to polecenie. |
 
 ## <a name="get-information-about-vms"></a>Uzyskaj informacje o maszynach wirtualnych

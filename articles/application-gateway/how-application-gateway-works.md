@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d44bb4d3d0ff625d071c87fd39b3776915a6198f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 06206ececcb1a51da402c4232f19801793c1cd4a
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675806"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807341"
 ---
 # <a name="how-application-gateway-works"></a>Jak działa usługa Application Gateway
 
@@ -42,9 +42,9 @@ Gdy serwera wewnętrznej bazy danych przetwarza żądanie i wysyła odpowiedź H
 
 Application Gateway można użyć jako modułu równoważenia obciążenia wewnętrznego aplikacji lub z Internetu modułu równoważenia obciążenia aplikacji. Bramy aplikacji z Internetu ma publicznych adresów IP. Nazwy DNS bramy aplikacji z Internetu jest publicznie rozpoznawalnej do publicznego adresu IP. W związku z tym bramy aplikacji z Internetu może kierować żądania klientów przez Internet.
 
-Bramy aplikacji wewnętrznych ma tylko prywatny adres IP. Nazwy DNS bramy aplikacji wewnętrznej jest rozpoznania publicznie na jego prywatny adres IP. W związku z tym wewnętrzne usługi równoważenia obciążenia może kierować żądania klientów z dostępem do sieci Wirtualnej dla usługi Application Gateway.
+Bramy aplikacji wewnętrznych ma tylko prywatny adres IP. Nazwy DNS bramy aplikacji wewnętrznej jest wewnętrznie możliwej do rozpoznania na jego prywatny adres IP. W związku z tym wewnętrzne usługi równoważenia obciążenia może kierować żądania klientów z dostępem do sieci Wirtualnej dla usługi Application Gateway.
 
-Należy pamiętać, że zarówno z Internetu i wewnętrzne bramy Application Gateway kierowania żądań do serwerów wewnętrznej bazy danych za pomocą prywatnych adresów IP. W związku z tym usługi serwerów wewnętrznej bazy danych nie są publiczne adresy IP do odbierania żądań od wewnętrznego lub bramy aplikacji z Internetu.
+Należy pamiętać, że zarówno z Internetu i wewnętrzne bramy Application Gateway kierowania żądań do serwerów wewnętrznej bazy danych za pomocą prywatnych adresów IP. Jeśli zasób puli wewnętrznej bazy danych zawiera prywatny adres IP, konfiguracja karty Sieciowej maszyny Wirtualnej lub wewnętrznie możliwej do rozpoznania adresu i puli zaplecza jest publiczny punkt końcowy, usługa Application Gateway używa publiczny adres IP jego frontonu do serwera. Jeśli jeszcze nie przeprowadzono aprowizacji publicznego adresu IP frontonu, jeden jest przypisany dla ruchu wychodzącego łączność zewnętrzną.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -3,7 +3,7 @@ title: Serializacja elementu Reliable Collection obiektu w usłudze Azure Servic
 description: Azure Service Fabric elementy Reliable Collections odpowiedzialność za serializację obiektu
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: twhitney
-ms.openlocfilehash: 52e4b22a0c4acebe99ab5b9d94eeb66e917a231a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: aljo
+ms.openlocfilehash: b02952cf82707966cb0f3b3473b2020e14e48931
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192026"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805853"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializacja elementu Reliable Collection obiektu w usłudze Azure Service Fabric
 Elementy Reliable Collections Replikuj i utrzymują się ich elementów, aby upewnić się, że są one trwałych maszyny błędów i awarii zasilania.
@@ -34,13 +34,13 @@ Elementy Reliable State Manager zawiera wbudowane serializatora dla niektóre ty
 Serializatory wbudowane są bardziej wydajne, ponieważ wiedzieli, nie można zmienić ich typów i nie muszą zawierać informacje o typie, takie jak nazwa jej typu.
 
 Elementy Reliable State Manager ma wbudowane serializatora dla następujących typów: 
-- Identyfikator GUID
-- wartość logiczna
+- Guid
+- bool
 - bajt
 - sbyte —
 - byte[]
 - Char
-- ciąg
+- string
 - decimal
 - double
 - float

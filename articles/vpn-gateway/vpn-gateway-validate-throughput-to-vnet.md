@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035622"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821665"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak zweryfikować przepływność sieci VPN do sieci wirtualnej
 
@@ -49,7 +49,7 @@ Na poniższym diagramie przedstawiono logiczne połączenie między siecią loka
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>Oblicz maksymalny oczekiwany ruchem przychodzącym/wychodzącym
 
 1.  Ustal wymagania dotyczące przepływności linii bazowej Twojej aplikacji.
-2.  Określ limitów przepływności bramy sieci VPN platformy Azure. Aby uzyskać pomoc, zobacz sekcję "Agregowana przepływność według jednostki SKU i sieci VPN typu" [planowania i projektowania dla bramy sieci VPN](vpn-gateway-plan-design.md).
+2.  Określ limitów przepływności bramy sieci VPN platformy Azure. Aby uzyskać pomoc, zobacz sekcję "Jednostki SKU bramy" [VPN Gateway — informacje](vpn-gateway-about-vpngateways.md#gwsku).
 3.  Określić [wskazówki dotyczące przepustowości w maszynie Wirtualnej platformy Azure](../virtual-machines/virtual-machines-windows-sizes.md) dla rozmiaru maszyn wirtualnych.
 4.  Określ przepustowość usługodawcy internetowego (ISP).
 5.  Obliczanie przepływności oczekiwanego — co najmniej przepustowości (maszyna wirtualna, brama usługodawcy internetowego) * 0,8.
@@ -77,7 +77,7 @@ Pobierz [dotyczące programu Iperf;](https://iperf.fr/download/iperf_3.1/iperf-3
 
 2. W obu węzłach włączenie wyjątku zapory dla portu 5001.
 
-    **Windows:** uruchom następujące polecenie jako administrator:
+    **Windows:** Jako administrator, uruchom następujące polecenie:
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -89,7 +89,7 @@ Pobierz [dotyczące programu Iperf;](https://iperf.fr/download/iperf_3.1/iperf-3
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
      
-    **Linux platformy Azure:** obrazów systemu Linux platformy Azure umieszczone są zapory ograniczające. W przypadku aplikacja nasłuchuje na porcie ruch jest dozwolony przez. Obrazy niestandardowe, które są zabezpieczone może być konieczne jawnie otwierane porty. Obejmują typowe zapory warstwy system operacyjny Linux `iptables`, `ufw`, lub `firewalld`.
+    **Linux platformy Azure:**  Obrazy systemu Linux platformy Azure umieszczone są zapory ograniczające. W przypadku aplikacja nasłuchuje na porcie ruch jest dozwolony przez. Obrazy niestandardowe, które są zabezpieczone może być konieczne jawnie otwierane porty. Obejmują typowe zapory warstwy system operacyjny Linux `iptables`, `ufw`, lub `firewalld`.
 
 3. W węźle serwera przejdź do katalogu, w której jest wyodrębniany iperf3.exe. Następnie należy uruchomić dotyczące programu Iperf; w trybie serwera i ustaw ją do nasłuchiwania na porcie 5001 jako następujących poleceń:
 

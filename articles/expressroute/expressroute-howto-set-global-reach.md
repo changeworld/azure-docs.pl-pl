@@ -2,27 +2,21 @@
 title: 'Konfigurowanie globalny zasięg — usługi ExpressRoute: Azure | Microsoft Docs'
 description: Ten artykuł pomoże Ci połączyć obwodów usługi ExpressRoute razem w celu zapewnienia prywatnych sieci między sieci lokalnych i włączanie zasięgu globalnym.
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2018
-ms.author: mialdrid
+ms.date: 02/25/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aff283da27197b11ee496faecdd8b69571d3547e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431682"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821340"
 ---
-# <a name="configure-expressroute-global-reach-preview"></a>Konfigurowanie usługi ExpressRoute zasięgu globalnym (wersja zapoznawcza)
+# <a name="configure-expressroute-global-reach"></a>Konfigurowanie usługi ExpressRoute Global Reach
 Ten artykuł ułatwia konfigurowanie usługi ExpressRoute zasięgu globalnym przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [zasięgu globalnym ExpressRouteRoute](expressroute-global-reach.md).
- 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-> [!IMPORTANT]
-> Tej publicznej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
-
 
 Przed rozpoczęciem konfiguracji upewnij się, że:
 

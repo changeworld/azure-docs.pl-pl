@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 039e2d3c70493868ca2f79e89fc82d8970ec6865
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 894fc42954182171588d81e2f7f1e37141af9add
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032406"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821255"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań zarządzania aktualizacjami, śledzenie zmian i spisu z maszyną wirtualną platformy Azure
 
@@ -34,7 +34,7 @@ Wybierz obszar roboczy usługi Azure Log Analytics i konto usługi Automation, a
 
 ![Dodawanie rozwiązania do zarządzania aktualizacjami](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-Przejdź do innych rozwiązań, a następnie wybierz **Włącz**. Listy rozwijane z konta usługi Log Analytics i automatyzacji są wyłączone, ponieważ te rozwiązania używają tego samego obszaru roboczego i konta usługi Automation jako rozwiązanie wcześniej włączony.
+Przejdź do innych rozwiązań, a następnie wybierz **Włącz**. Obszar roboczy usługi Log Analytics i listy rozwijanej konto usługi Automation są wyłączone, ponieważ te rozwiązania używają tego samego obszaru roboczego i konta usługi Automation jako rozwiązanie wcześniej włączony.
 
 > [!NOTE]
 > **Śledzenie zmian** i **spisu** używać tego samego rozwiązania. Gdy jeden z tych rozwiązań jest włączone, druga również jest włączona.
@@ -45,9 +45,9 @@ Każde rozwiązanie korzysta z konfiguracji zakresu, a w obszarze roboczym docel
 
 Jeśli wybrany obszar roboczy nie ma jeszcze rozwiązań zarządzania aktualizacjami lub śledzenia zmian, są tworzone następujące konfiguracje zakresu:
 
-* **MicrosoftDefaultScopeConfig ChangeTracking**
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
 
-* **Aktualizacje MicrosoftDefaultScopeConfig**
+* **MicrosoftDefaultScopeConfig-Updates**
 
 Jeśli wybrany obszar roboczy ma już rozwiązania, rozwiązanie nie jest ponownie wdrażana i konfigurację zakresu nie została dodana.
 
@@ -61,7 +61,7 @@ Przejdź do swojego obszaru roboczego. W obszarze **ogólne**, wybierz opcję **
 
 |Name (Nazwa)     |Kategoria  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
 
 Wybierz jedną z zapisane wyszukiwania, aby wyświetlić zapytanie, które jest używane do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytania i jego wyniki:
@@ -76,7 +76,7 @@ Następujące rozwiązania zależą od obszaru roboczego usługi Log Analytics:
 * [Śledzenie zmian](automation-change-tracking.md)
 * [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](automation-solution-vm-management.md)
 
-Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z usługą Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal.  Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
+Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z obszarem roboczym usługi Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal.  Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
 
 Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
 

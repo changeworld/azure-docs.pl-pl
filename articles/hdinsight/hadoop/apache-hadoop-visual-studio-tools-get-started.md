@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: a23a2f536f765c62919960f3c582d04543b1f49a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/21/2019
+ms.openlocfilehash: 951bb978ac78529959acbf878a72c22573400f11
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820832"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822790"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Użyj narzędzi Data Lake Tools for Visual Studio, aby nawiązać połączenie z usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive
 
-Dowiedz się, jak używać narzędzi Data Lake Tools dla programu Visual Studio (nazywanych również Azure Data Lake i Stream Analytics Tools for Visual Studio) aby połączyć się z klastrami Apache Hadoop w [Azure HDInsight](../hdinsight-hadoop-introduction.md) i przesłać zapytania Hive. 
+Dowiedz się, jak używać [Microsoft Azure Data Lake i Stream Analytics Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) klastry (nazywane również narzędzia Data Lake Tools) do łączenia z usługą Apache Hadoop, w [Azure HDInsight](../hdinsight-hadoop-introduction.md) i przesłać zapytania Hive.  
 
-Aby uzyskać więcej informacji na temat korzystania z usługi HDInsight, zobacz artykuły [Introduction to HDInsight](../hdinsight-hadoop-introduction.md) (Wprowadzenie do usługi HDInsight) i [Get started with HDInsight](apache-hadoop-linux-tutorial-get-started.md) (Rozpoczynanie pracy z usługą HDInsight). 
+Aby uzyskać więcej informacji na temat korzystania z usługi HDInsight, zobacz artykuły [Introduction to HDInsight](../hdinsight-hadoop-introduction.md) (Wprowadzenie do usługi HDInsight) i [Get started with HDInsight](apache-hadoop-linux-tutorial-get-started.md) (Rozpoczynanie pracy z usługą HDInsight).  
 
 Aby uzyskać więcej informacji na temat łączenia się z klastrem platformy Apache Storm, zobacz [programowanie C# topologii STORM Apache na HDInsight przy użyciu programu Visual Studio](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
@@ -31,71 +31,78 @@ Możesz użyć narzędzia Data Lake Tools for Visual Studio do uzyskiwania dost�
 
 Do wykonania kroków tego samouczka i korzystania z narzędzi Data Lake Tools w programie Visual Studio potrzebne są:
 
-* Klaster usługi Azure HDInsight. Aby utworzyć klaster usługi HDInsight, zobacz [Rozpoczynanie pracy przy użyciu technologii Apache Hadoop w usłudze Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Aby uruchomić interakcyjne zapytania usługi Apache Hive, potrzebujesz [interaktywnego zapytania HDInsight](../interactive-query/apache-interactive-query-get-started.md) klastra.
-* Komputer z zainstalowanym programem Visual Studio 2017, 2015 lub 2013.
-    
-    > [!NOTE]
-    > Obecnie narzędzia Data Lake Tools for Visual Studio są dostępne tylko w angielskiej wersji językowej.
+* Klaster usługi Azure HDInsight. Aby utworzyć klaster usługi HDInsight, zobacz [Rozpoczynanie pracy przy użyciu technologii Apache Hadoop w usłudze Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Aby uruchomić interakcyjne zapytania usługi Apache Hive, potrzebujesz [interaktywnego zapytania HDInsight](../interactive-query/apache-interactive-query-get-started.md) klastra.  
 
+* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 lub nowsza).  [Programu Visual Studio Community edition](https://visualstudio.microsoft.com/vs/community/) jest bezpłatna.  Zobacz też [instalacji programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio).
 
-## <a name="install-or-update-data-lake-tools-for-visual-studio"></a>Instalowanie lub aktualizowanie narzędzi Data Lake Tools for Visual Studio
+  > [!IMPORTANT]  
+  > Narzędzia Data Lake Tools nie jest już obsługiwana dla programu Visual Studio 2013. 
 
-### <a name="install-data-lake-tools"></a>Instalowanie narzędzi Data Lake Tools
+## <a name="install-data-lake-tools-for-visual-studio"></a>Instalacja narzędzi Data Lake Tools for Visual Studio  
+<a name="install-or-update-data-lake-tools-for-visual-studio"></a>
 
-Narzędzia Data Lake Tools są domyślnie instalowane w programie Visual Studio 2017. W przypadku starszych wersji programu Visual Studio możesz zainstalować narzędzia Data Lake Tools przy użyciu [Instalatora platformy internetowej](https://www.microsoft.com/web/downloads/platform.aspx). Należy wybrać wersję narzędzi Data Lake Tools zgodną z używaną wersją programu Visual Studio. 
+* Visual Studio 2017  
+  Podczas instalacji upewnij się, zawiera w co najmniej obciążeń **programowanie na platformie Azure** lub **przechowywanie i przetwarzanie danych**.  
 
-### <a name="install-visual-studio"></a>Instalacja programu Visual Studio
+  W przypadku istniejących instalacji, na pasku menu, przejdź do **narzędzia** > **Pobierz narzędzia i funkcje...**  do Otwórz Instalator programu Visual Studio.  Następnie wybierz co najmniej obciążeń **programowanie na platformie Azure** lub **przechowywanie i przetwarzanie danych**.
 
-Jeśli nie masz zainstalowanego programu Visual Studio, możesz użyć [Instalatora platformy internetowej](https://www.microsoft.com/web/downloads/platform.aspx), aby zainstalować najnowsze wersje programu Visual Studio Community oraz zestawu Azure SDK:
+  ![Zrzut ekranu przedstawiający Instalatora programu Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
 
-![Zrzut ekranu instalatora platformy internetowej dla narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png "Korzystanie z instalatora platformy internetowej w celu zainstalowania narzędzi Data Lake Tools for Visual Studio")
+* Visual Studio 2013 i 2015  
+  [Pobierz program Data Lake Tools](https://www.microsoft.com/download/details.aspx?id=49504). Należy wybrać wersję narzędzi Data Lake Tools zgodną z używaną wersją programu Visual Studio.  
 
-### <a name="update-the-tools"></a>Aktualizacja narzędzi
+> [!NOTE]  
+> Obecnie narzędzia Data Lake Tools for Visual Studio są dostępne tylko w angielskiej wersji językowej.
+
+## <a name="update-data-lake-tools-for-visual-studio"></a>Aktualizowanie narzędzi Data Lake Tools for Visual Studio  
 
 1. Otwórz program Visual Studio.
-2. W menu **Narzędzia** wybierz polecenie **Rozszerzenia i aktualizacje**.
-3. Rozwiń węzeł **Aktualizacje**, a następnie wybierz **narzędzia usług Azure Data Lake i Stream Analytics** (jeśli są zainstalowane).
 
-> [!NOTE]
->
+2. Na pasku menu, przejdź do **narzędzia** > **rozszerzenia i aktualizacje...** .
+
+3. Z **rozszerzenia i aktualizacje** okna, rozwiń węzeł **aktualizacje** po lewej stronie.
+
+4. Jeśli aktualizacja jest dostępna, **Azure Data Lake i Stream Analytics Tools** pojawi się w głównym oknie.  Wybierz **aktualizacji**.
+
+> [!NOTE]  
 > Możesz użyć tylko narzędzi Data Lake Tools w wersji 2.3.0.0 lub nowszej, aby nawiązać połączenie z klastrami zapytań interaktywnych oraz uruchamiać zapytania interaktywne usługi Hive.
 
 ## <a name="connect-to-azure-subscriptions"></a>Nawiązywanie połączenia z subskrypcjami platformy Azure
 Narzędzia Data Lake Tools for Visual Studio umożliwiają nawiązywanie połączenia z klastrami HDInsight, wykonywanie podstawowych operacji zarządzania i uruchamianie zapytań programu Hive.
 
-> [!NOTE]
+> [!NOTE]  
 > Informacje dotyczące nawiązywania połączenia z ogólnym klastrem Hadoop znajdują się w temacie [Write and submit Hive queries using Visual Studio](https://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx) (Zapisywanie i wysyłanie zapytań programu Hive za pomocą programu Visual Studio).
-
 
 Aby nawiązać połączenie z subskrypcją platformy Azure:
 
 1. Otwórz program Visual Studio.
-2. W menu **Widok** wybierz opcję **Eksplorator serwera**.
-3. W Eksploratorze serwera rozwiń węzeł **Azure**, a następnie rozwiń pozycję **HDInsight**.
-   
-   > [!NOTE]
-   > Okno **Lista zadań HDInsight** powinno być otwarte. Jeśli nie widzisz okna, w menu **Widok** wybierz pozycję **Inne okna**, a następnie wybierz pozycję **Okno listy zadań usługi HDInsight**.  
 
-4. Wprowadź swoje poświadczenia subskrypcji platformy Azure, a następnie wybierz przycisk **Zaloguj**. Uwierzytelnianie jest wymagane tylko wtedy, gdy nigdy wcześniej nie nawiązano połączenia z subskrypcją platformy Azure w programie Visual Studio na danym komputerze.
-5. W oknie Eksploratora serwera zostanie wyświetlona lista istniejących klastrów usługi HDInsight. W przypadku braku klastrów możesz go utworzyć za pomocą witryny Azure Portal, programu Azure PowerShell lub zestawu SDK usługi HDInsight. Więcej informacji można znaleźć w artykule [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów usługi HDInsight).
-   
+2. Na pasku menu, przejdź do **widoku** > **Eksploratora serwera**.
+
+3. Z poziomu Eksploratora serwera, kliknij prawym przyciskiem myszy **Azure**, wybierz opcję **nawiązywanie połączenia z subskrypcją platformy Microsoft Azure...** i ukończyć proces logowania.
+
+4. Z poziomu Eksploratora serwera zostanie wyświetlona lista istniejących klastrów HDInsight. W przypadku braku klastrów możesz go utworzyć za pomocą witryny Azure Portal, programu Azure PowerShell lub zestawu SDK usługi HDInsight. Więcej informacji można znaleźć w artykule [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów usługi HDInsight).
+
    ![Zrzut ekranu listy klastrów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.server.explorer.png "Lista serwerów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio")
-6. Rozwiń węzeł klastra usługi HDInsight. Zostaną wyświetlone **Bazy danych programu Hive**, domyślne konto magazynu, połączone konta magazynu i **Dziennik usługi Hadoop**. Jednostki można rozwinąć.
 
-Po nawiązaniu połączenia z subskrypcją platformy Azure można wykonać następujące zadania.
+5. Rozwiń węzeł klastra usługi HDInsight. Zostaną wyświetlone **Bazy danych programu Hive**, domyślne konto magazynu, połączone konta magazynu i **Dziennik usługi Hadoop**. Jednostki można rozwinąć.
+
+Po nawiązaniu połączenia z subskrypcją platformy Azure, można wykonać poniższe zadania.
 
 Nawiązywanie połączenia z witryną Azure Portal w programie Visual Studio:
 
-1. W Eksploratorze serwera wybierz kolejno pozycje **Azure** > **HDInsight**.
+1. Z poziomu Eksploratora serwera, przejdź do **Azure** > **HDInsight** i wybierz klaster.
+
 2. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz pozycję **Zarządzaj klastrem w witrynie Azure Portal**.
 
-Zadawanie pytań i wyrażanie opinii w programie Visual Studio:
+Aby zadawać pytania i/lub wyrażanie opinii w programie Visual Studio:
 
-1. W menu **Narzędzia** wybierz pozycję **HDInsight**.
-2. Aby zadać pytania, wybierz pozycję **Forum MSDN**. Aby przekazać opinię, wybierz pozycję **Prześlij opinię**.
+1. Z poziomu Eksploratora serwera, przejdź do **Azure** > **HDInsight**.
+
+2. Kliknij prawym przyciskiem myszy **HDInsight** i wybierz opcję **forum MSDN dotyczącym** zadawać pytania, lub **Prześlij opinię** przesłać opinię.
 
 ## <a name="explore-linked-resources"></a>Eksplorowanie połączonych zasobów
-W Eksploratorze serwera można zobaczyć domyślne konto magazynu i wszystkie połączone konta magazynu. Po rozwinięciu domyślnego konta magazynu można wyświetlić kontenery konta magazynu. Domyślne konto magazynu i domyślny kontener są oznaczone. Kliknij prawym przyciskiem myszy dowolny kontener, aby wyświetlić jego zawartość.
+Z poziomu Eksploratora serwera można zobaczyć domyślne konto magazynu i wszystkie połączone konta magazynu. Po rozwinięciu domyślnego konta magazynu można wyświetlić kontenery konta magazynu. Domyślne konto magazynu i domyślny kontener są oznaczone. Kliknij prawym przyciskiem myszy dowolny kontener, aby wyświetlić jego zawartość.
 
 ![Zrzut ekranu listy połączonych zasobów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.linked.resources.png "Wyświetlanie listy połączonych zasobów")
 
@@ -113,160 +120,158 @@ Po otwarciu kontenera można używać następujących przycisków do przekazywan
 
 Możesz też użyć narzędzi Data Lake Tools for Visual Studio, aby zobaczyć zawartość zadania Hive. Narzędzia Data Lake Tools for Visual Studio zbierają i ujawniają dzienniki Yarn dla wybranych zadań Hive.
 
-### <a name="view-hivesampletable"></a>Zobacz tabelę **hivesampletable**
-Wszystkie klastry usługi HDInsight zawierają domyślnie przykładową tabelę programu Hive o nazwie hivesampletable. W tej tabeli zdefiniowano, w jaki sposób należy wyświetlać tabele programu Hive, przeglądać schematy tabeli i wyświetlać wiersze tabeli programu Hive.
+Z poziomu Eksploratora serwera, przejdź do **Azure** > **HDInsight** i wybierz klaster.  Są to punkt początkowy w Eksploratorze serwera dla sekcji, aby wykonać.
 
-Aby wyświetlić tabele programu Hive oraz schemat tabeli programu Hive:
+### <a name="view-hivesampletable"></a>Widok hivesampletable
+Wszystkie klastry HDInsight mają domyślne przykładową tabelę programu Hive o nazwie `hivesampletable`.  
 
-1. Aby wyświetlić schemat tabeli, w **Eksploratorze serwera** wybierz kolejno pozycje **Azure** > **HDInsight**. Wybierz klaster, a następnie wybierz pozycję **Bazy danych programu Hive** > **Domyślne** > **hivesampletable**.
-2. Kliknij prawym przyciskiem myszy tabelę **hivesampletable**, a następnie kliknij przycisk **Wyświetl pierwszych 100 wierszy**, aby wyświetlić wiersze. Jest to równoważne uruchomieniu następującego zapytania programu Hive za pomocą sterownika ODBC programu Hive:
-   
-     `SELECT * FROM hivesampletable LIMIT 100`
-   
-   Liczbę wierszy można dostosować.
-   
-   ![Zrzut ekranu zapytania schematu HDInsight Hive Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.hive.schema.png "Wyniki zapytania programu Hive")
+W klastrze, przejdź do **bazy danych programu Hive** > **domyślne** > **hivesampletable**.
+
+* Aby wyświetlić `hivesampletable` schematu:  
+Rozwiń **hivesampletable**.
+
+* Aby wyświetlić `hivesampletable` danych:  
+Kliknij prawym przyciskiem myszy **hivesampletable**i wybierz **Wyświetl pierwszych 100 wierszy**.  Jest to równoważne uruchomieniu następującego zapytania programu Hive za pomocą sterownika ODBC programu Hive:
+
+   `SELECT * FROM hivesampletable LIMIT 100`
+
+  Liczbę wierszy można dostosować.
+
+  ![Zrzut ekranu zapytania schematu HDInsight Hive Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.hive.schema.png "Wyniki zapytania programu Hive")
 
 ### <a name="create-hive-tables"></a>Tworzenie tabel programu Hive
 Do utworzenia tabeli programu Hive można użyć graficznego interfejsu użytkownika lub zapytań programu Hive. Aby uzyskać informacje o używaniu zapytań programu Hive, zobacz [uruchamianie Apache zapytań Hive](#run.queries).
 
-Aby utworzyć tabelę programu Hive:
+1. W klastrze, przejdź do **bazy danych programu Hive** > **domyślne**.
 
-1. W **Eksploratorze serwera** wybierz kolejno pozycje **Azure** > **Klastry usługi HDInsight**. Wybierz klaster usługi HDInsight, a następnie wybierz pozycję **Bazy danych programu Hive**.
-2. Kliknij prawym przyciskiem myszy pozycje **domyślna**, a następnie wybierz pozycję **Utwórz tabelę**.
-3. Skonfiguruj tabelę.  
+2. Kliknij prawym przyciskiem myszy **domyślne**i wybierz **Create Table**.
+
+3. Skonfiguruj tabelę zgodnie z potrzebami.  
+
 4. Wybierz przycisk **Utwórz tabelę**, aby przesłać zadanie i utworzyć nową tabelę programu Hive.
-   
+
     ![Zrzut ekranu przedstawiający okno tworzenia tabeli w narzędziach HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.create.hive.table.png "Tworzenie tabeli programu Hive")
 
-### <a name="run.queries"></a>Weryfikowanie i uruchamianie zapytań Hive
+### <a name="run.queries"></a>Tworzenie i uruchamianie zapytań Hive
 Masz dwie opcje umożliwiające utworzenie i uruchomienie zapytań Hive:
 
 * Tworzenie zapytań ad hoc
 * Tworzenie aplikacji Hive
 
-Tworzenie, weryfikowanie i uruchamianie zapytań ad hoc:
+Aby utworzyć i uruchamianie zapytań ad hoc:
 
-1. W **Eksploratorze serwera** wybierz kolejno pozycje **Azure** > **Klastry usługi HDInsight**.
-2. Kliknij prawym przyciskiem myszy klaster, w którym chcesz uruchomić zapytanie, a następnie wybierz przycisk **Napisz zapytanie Hive**.  
-3. Wprowadź zapytania Hive. 
+1. Kliknij prawym przyciskiem myszy klaster, w którym chcesz uruchomić zapytanie, a następnie wybierz pozycję **Napisz zapytanie Hive**.  
 
-    Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład po wpisaniu **SELECT * FROM** funkcja IntelliSense wyświetla wszystkie sugerowane nazwy tabel. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF.
-   
+2. Wprowadź zapytania Hive.  
+
+    Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład, jeśli wpiszesz `SELECT * FROM`, funkcja IntelliSense wyświetla wszystkie sugerowane nazwy tabeli. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF.
+
     ![Zrzut ekranu przykładu 1 funkcji IntelliSense narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.table.names.png "U-SQL IntelliSense")
-   
+
     ![Zrzut ekranu przykładu 2 funkcji IntelliSense narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.column.names.png "U-SQL IntelliSense")
-   
-   > [!NOTE]
+
+   > [!NOTE]  
    > Funkcja IntelliSense zasugeruje tylko metadane klastra zaznaczonego na pasku narzędzi usługi HDInsight.
 
-   
-4. (Opcjonalnie) Wybierz pozycję **Weryfikuj skrypt**, aby sprawdzić składnię skryptu pod kątem błędów.
-   
-    ![Zrzut ekranu lokalnej weryfikacji narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.validate.hive.script.png "Weryfikacja skryptu")
-5. Wybierz pozycję **Prześlij** lub **Prześlij (zaawansowane)**. W przypadku wybrania zaawansowanych opcji przesyłania należy skonfigurować dla skryptu wartości takie jak **Nazwa zadania**, **Argumenty**, **Dodatkowe konfiguracje** i **Katalog stanu**:
-   
-    ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Przesłanie zapytań")
-   
-    Po przesłaniu zadania zostanie wyświetlone okno **Podsumowanie zadania Hive**.
-   
-    ![Zrzut ekranu podsumowania zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.run.hive.job.summary.png "Podsumowanie zadania Hive")
-6. Użyj przycisku **Odśwież**, aby aktualizować stan do momentu wartości **Ukończono** stanu zadania.
-7. Wybierz linki na dole, aby wyświetlić następujące wartości: **Zapytanie dotyczące zadań**, **Dane wyjściowe zadań**, **Dziennik zadań** i **Dziennik Yarn**.
+3. Wybierz tryb wykonania:
+
+    * **Interaktywne**  
+
+      Upewnij się, **Interactive** jest zaznaczone, a następnie wybierz pozycję **Execute**.
+
+      ![Zrzut ekranu zapytania i wykonywanie](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+
+    * **Batch**  
+
+      Upewnij się, **partii** jest zaznaczone, a następnie wybierz pozycję **przesyłania**.  W przypadku wybrania zaawansowanych opcji przesyłania, skonfigurować **Nazwa zadania**, **argumenty**, **dodatkowe konfiguracje**, i **katalog stanu**skryptu.
+
+      ![Zrzut ekranu przedstawiający zapytań i przetwarzania wsadowego](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+
+      ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Przesłanie zapytań")
+
+      > [!NOTE]  
+      > Nie można przesłać partii z klastrami interakcyjnych zapytań.  Należy użyć trybu interakcyjnego.
 
 Tworzenie i uruchamianie rozwiązania Hive:
 
-1. W menu **Plik** wybierz polecenie **Nowy**, a następnie wybierz pozycję **Projekt**.
-2. W lewym okienku wybierz opcję **HDInsight**. W środkowym okienku wybierz opcję **Aplikacja Hive**. Wprowadź właściwości, a następnie wybierz opcję **OK**.
-   
+1. Na pasku menu, przejdź do **pliku** > **New** > **projektu...** .
+
+2. W okienku po lewej stronie przejdź do **zainstalowane** > **usługi Azure Data Lake** > **HIVE (HDInsight)**.  
+
+3. W środkowym okienku wybierz opcję **Aplikacja Hive**. Wprowadź właściwości, a następnie wybierz opcję **OK**.
+
     ![Zrzut ekranu nowego projektu programu Hive w narzędziach HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "Tworzenie aplikacji Hive z programu Visual Studio")
-3. W **Eksploratorze rozwiązań** kliknij dwukrotnie plik **Script.hql**, aby otworzyć skrypt.
-4. Aby sprawdzić poprawność skryptu Hive, wybierz przycisk **Zweryfikuj skrypt**. Możesz też kliknąć prawym przyciskiem myszy skrypt w edytorze Hive, a następnie wybrać opcję **Zweryfikuj skrypt** z menu kontekstowego.
+
+4. W **Eksploratorze rozwiązań** kliknij dwukrotnie plik **Script.hql**, aby otworzyć skrypt.
+
+### <a name="view-job-summary-and-output"></a>Wyświetl podsumowanie zadania i dane wyjściowe
+
+Podsumowanie zadania różni się nieco między sobą **partii** i **Interactive** trybu.
+
+![Podsumowanie zadania](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Podsumowanie zadania Hive")
+
+Użyj **Odśwież** przycisk, aby zaktualizować stan, aż stan zadania zmieni się na **Zakończono**.  
+
+* Szczegóły zadania z **partii** trybie wybierz linki na dole, aby wyświetlić **zapytanie dotyczące zadań**, **dane wyjściowe zadania**, **dziennik zadań**, lub **Dziennik usługi yarn**.
+
+* Szczegóły zadania z **Interactive** tryb, kartach zobacz **dane wyjściowe** i **wyjście usługi HiveServer2**.
+
+  ![Szczegóły zadania](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "szczegółów zadania Hive")
+
+### <a name="view-job-graph"></a>Wyświetl wykres zadania
+
+Wykresy zadań są obecnie wyświetlane tylko dla zadań Hive, które używają Tez jako aparatu wykonywania.  Aby uzyskać informacje na temat włączania aplikacji Tez, zobacz [używanie Apache Hive w HDInsight](hdinsight-use-hive.md).  Zobacz też [Użyj Apache Tez zamiast Map Reduce](../hdinsight-hadoop-optimize-hive-query.md#use-apache-tez-instead-of-map-reduce).  
+
+Aby zobaczyć wszystkie operatory wewnątrz wierzchołka, dwukrotnie kliknij wierzchołki grafu zadania. Możesz też wskazać konkretny operator, aby wyświetlić więcej jego szczegółów.
+
+Wykres zadania nie może występować, nawet jeżeli określono Tez jako aparatu wykonywania, jeśli żadna aplikacja Tez nie jest uruchamiany.  Może się to zdarzyć, ponieważ zadanie nie zawiera instrukcji DML lub instrukcje DML mogą powrócić bez uruchamiania aplikacji Tez. Na przykład `SELECT * FROM table1` nie spowoduje uruchomienia aplikacji Tez.
+
+![Wykres zadania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png "Podsumowanie zadania Hive")
+
+
+### <a name="task-execution-detail"></a>Szczegóły wykonywania zadania
+
+Z wykresu zadania, można wybrać **szczegóły wykonywania zadania** można pobrać strukturalnych i wizualizowanych informacji na temat zadań Hive. Możesz też uzyskać więcej szczegółów zadania. Jeśli wystąpią problemy z wydajnością, możesz użyć widoku, aby uzyskać więcej szczegółów dotyczących problemu. Na przykład możesz uzyskać informacje o sposobie działania każdego zadania oraz szczegółowe informacje o każdym zadaniu (odczyt/zapis danych, czas zaplanowany/rozpoczęcia/zakończenia itp.). Skorzystaj z informacji, aby dostosować konfiguracje zadań lub architekturę systemu w oparciu o wizualizowane informacje.
+
+![Zrzut ekranu przedstawiający okno Widok wykonywania zadań narzędzi Data Lake Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "Widok wykonywania zadań")
+
 
 ### <a name="view-hive-jobs"></a>Wyświetlanie zadań Hive
-Istnieje możliwość wyświetlenia zapytań dotyczących zadań, danych wyjściowych zadań, dzienników zadań oraz dzienników Yarn dla zadań Hive. Aby uzyskać więcej informacji, zobacz poprzedni zrzut ekranu.
+Istnieje możliwość wyświetlenia zapytań dotyczących zadań, danych wyjściowych zadań, dzienników zadań oraz dzienników Yarn dla zadań Hive.
 
 Za pomocą najnowszej wersji narzędzi można sprawdzić zawartość zadań Hive, zbierając i udostępniając dzienniki Yarn. Dziennik Yarn może być pomocny w badaniu problemów z wydajnością. Więcej informacji na temat sposobu zbierania dzienników Yarn przez usługę HDInsight można znaleźć w artykule [Access HDInsight Application Logs Programmatically (Programowe uzyskiwanie dostępu do dzienników aplikacji usługi HDInsight)](../hdinsight-hadoop-access-yarn-app-logs.md).
 
 Aby wyświetlić zadania Hive:
 
-1. W **Eksploratorze serwera** rozwiń węzeł **Azure**, a następnie rozwiń pozycję **HDInsight**.
-2. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz przycisk **Wyświetl zadania**. Zostanie wyświetlona lista zadań Hive uruchomionych w klastrze.  
-3. Wybierz zadanie. W oknie **Podsumowanie zadania Hive** wybierz jedną z następujących opcji:
+1. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz pozycję **Wyświetl zadania**. Zostanie wyświetlona lista zadań Hive uruchomionych w klastrze.  
+
+2. Wybierz zadanie. W oknie **Podsumowanie zadania Hive** wybierz jedną z następujących opcji:
     - **Zapytanie zadania**
     - **Dane wyjściowe zadania**
     - **Dziennik zadań**  
     - **Dziennik usługi Yarn**
-   
+
     ![Zrzut ekranu przedstawiający okno zadań Hive widoku narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "Wyświetlanie zadań Hive")
 
-### <a name="faster-path-hive-execution-via-hiveserver2"></a>Szybsza ścieżka wykonywania zadań Hive za pośrednictwem serwera HiveServer2
-
-> [!NOTE]  
-> Ta funkcja działa tylko w klastrze w usłudze HDInsight w wersji 3.2 lub nowszej.
- 
-Narzędzia Data Lake Tools for Visual Studio używane do przesyłania zadań Hive za pośrednictwem usługi [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (znanej także jako Templeton). Zwrócenie szczegółów zadania i informacji o błędzie zajęło dużo czasu w tej metodzie przesyłania zadań Hive.
-
-Aby rozwiązać ten problem z wydajnością, narzędzia Data Lake Tools for Visual Studio mogą pominąć użycie protokołu RDP/SSH i wykonać zadania Hive bezpośrednio w klastrze za pośrednictwem serwera HiveServer2.
-
-Oprócz korzystania z lepszej wydajności w tej metodzie użytkownicy mogą także wyświetlać na wykresach Apache Tez zadania Hive oraz szczegóły zadania.
-
-W przypadku klastra HDInsight w wersji 3.2 lub nowszej widoczny jest przycisk **Wykonaj na serwerze HiveServer2**:
-
-![Zrzut ekranu przedstawiający opcję Wykonaj na serwerze HiveServer2 narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png "Wykonywanie zapytań Hive przy użyciu serwera HiveServer2")
-
-Możesz też zobaczyć dzienniki przesyłane strumieniowo z powrotem w czasie rzeczywistym. Ponadto możliwe jest wyświetlenie wykresów zadań, jeśli zapytanie Hive zostało wykonane w aplikacji Tez.
-
-![Zrzut ekranu przedstawiający szybszą ścieżkę wykonania zapytań Hive przy użyciu serwera HiveServer2 w narzędziach Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png "Wyświetlanie wykresów zadań")
-
-### <a name="execute-queries-via-hiveserver2-vs-submit-queries-via-webhcat"></a>Wykonywanie zapytań za pośrednictwem serwera HiveServer2 w porównaniu do przesyłania zapytań przy użyciu usługi WebHCat
-
-Mimo że wykonywanie zapytań za pośrednictwem serwera HiveServer2 ma wiele zalet dotyczących wydajności, ta metoda ma również kilka ograniczeń. Niektóre ograniczenia sprawiają, że ta metoda nie jest odpowiednia w środowisku produkcyjnym. 
-
-Poniższa tabela zawiera różnice między wykonywaniem zapytań za pomocą serwera HiveServer2 i wysyłaniem zapytań przy użyciu usługi WebHCat:
-
-|  | Wykonywanie zapytań za pomocą serwera HiveServer2 | Wysyłanie zapytań przy użyciu usługi WebHCat |
-| --- | --- | --- |
-| Wykonywanie zapytań |Eliminuje obciążenie w usłudze WebHCat (które powoduje uruchomienie zadania MapReduce o nazwie TempletonControllerJob). |Jeśli zapytanie jest wykonywane przy użyciu usługi WebHCat, spowoduje to uruchomienie zadania MapReduce, które wprowadza dodatkowe opóźnienie. |
-| Strumieniowe przesyłanie dzienników z powrotem |Prawie w czasie rzeczywistym. |Dzienniki wykonywania zadania są dostępne tylko po zakończeniu zadania. |
-| Wyświetlanie historii zadań |Jeśli zapytanie jest wykonywane przy użyciu serwera HiveServer2, jego historia zadania, dziennik zadania ani dane wyjściowe zadania nie są zachowywane. Możesz wyświetlić aplikację w interfejsie użytkownika Yarn z ograniczonymi informacjami. |Jeśli zapytanie jest wykonywane przy użyciu usługi WebHCat, jego historia zadania, dziennik zadania oraz dane wyjściowe zadania zostaną zachowane. Możesz wyświetlić historię zadania przy użyciu programu Visual Studio, zestawu HDInsight SDK lub programu PowerShell. |
-| Zamykanie okna |Wykonywanie za pośrednictwem serwera HiveServer2 jest *synchroniczne*. Jeśli okna zostaną zamknięte, wykonanie zapytania zostanie anulowane. |Przesyłanie przy użyciu usługi WebHCat jest *asynchroniczne*. Możesz przesłać zapytanie przy użyciu usługi WebHCat, a następnie zamknąć program Visual Tudio. Można w dowolnym momencie wrócić i wyświetlić wyniki. |
-
-### <a name="tez-hive-job-performance-graph"></a>Wykres wydajności zadania Hive w aplikacji Tez
-W narzędziach Data Lake Tools for Visual Studio możesz zobaczyć wykresy wydajności dla zadań Hive uruchamianych przez aparat wykonywania platformy Tez. Aby uzyskać informacje na temat włączania aplikacji Tez, zobacz [używanie Apache Hive w HDInsight](hdinsight-use-hive.md). 
-
-Po przesłaniu zadania Hive w programie Visual Studio program ten wyświetla wykres po zakończeniu zadania. Może być konieczne wybranie przycisku **Odśwież** w celu wyświetlenia najnowszego stanu zadania.
-
-> [!NOTE]  
-> Ta funkcja jest dostępna tylko w klastrze w usłudze HDInsight w wersji 3.2.4.593 lub nowszej. Ta funkcja działa tylko wobec zakończonych zadań. Ponadto musisz przesłać zadanie przy użyciu usługi WebHCat, aby użyć tej funkcji. Poniższy obraz zostanie wyświetlony w przypadku wykonywania zapytania za pośrednictwem serwera HiveServer2: 
-> 
-> ![Zrzut ekranu przedstawiający wykres wydajności aplikacji Tez w usłudze Hadoop Hive](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png "Stan zadania")
-
-Aby umożliwić użytkownikom lepsze rozumienie zapytania Hive, w tej wersji narzędzia dodano widok operatorów Hive. Aby zobaczyć wszystkie operatory wewnątrz wierzchołka, dwukrotnie kliknij wierzchołki grafu zadania. Możesz też wskazać konkretny operator, aby wyświetlić więcej jego szczegółów.
-
-### <a name="task-execution-view-for-hive-on-tez-jobs"></a>Widok wykonywania zadania dla zadań Hive w aplikacji Tez
-Widok wykonywania zadania dla zadań Hive w aplikacji Tez może służyć do uzyskiwania strukturalnych i wizualizowanych informacji na temat zadań Hive. Możesz też uzyskać więcej szczegółów zadania. Jeśli wystąpią problemy z wydajnością, możesz użyć widoku, aby uzyskać więcej szczegółów dotyczących problemu. Na przykład możesz uzyskać informacje o sposobie działania każdego zadania oraz szczegółowe informacje o każdym zadaniu (odczyt/zapis danych, czas zaplanowany/rozpoczęcia/zakończenia itp.). Skorzystaj z informacji, aby dostosować konfiguracje zadań lub architekturę systemu w oparciu o wizualizowane informacje.
-
-![Zrzut ekranu przedstawiający okno Widok wykonywania zadań narzędzi Data Lake Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "Widok wykonywania zadań")
-
-## <a name="run-hive-batch-jobs"></a>Uruchamianie zadań wsadowych Hive
-Testowanie skryptu Hive na klastrze usługi HDInsight może być czasochłonne (nie dotyczy to klastra zapytania interakcyjnego). Proces może potrwać kilka minut lub dłużej. Narzędzia Data Lake Tools for Visual Studio mogą sprawdzić poprawność skryptu Hive lokalnie bez konieczności nawiązywania połączenia z działającym klastrem. Aby uzyskać więcej informacji na temat uruchamiania interakcyjnych zapytań Zobacz wykonywania interakcyjnych zapytań Hive.
-
-Przy użyciu narzędzi Data Lake Tools for Visual Studio możesz zobaczyć zawartość zadania Hive, zbierając i udostępniając dzienniki Yarn wybranych zadań Hive.
-
-Aby dowiedzieć się więcej o uruchamianiu zadań wsadowych Hive, zobacz wykonywania interakcyjnych zapytań Hive. Informacje przedstawione w tej sekcji dotyczą uruchamiania zadań wsadowych Hive o dłuższym czasie uruchamiania.
 
 ## <a name="run-apache-pig-scripts"></a>Uruchamianie skryptów Apache Pig
-Możesz użyć narzędzi Data Lake Tools for Visual Studio, aby utworzyć i przesłać skrypty usługi Pig do klastrów usługi HDInsight. Najpierw utwórz projekt usługi Pig na podstawie szablonu. Następnie prześlij skrypt do klastrów usługi HDInsight.
+
+1. Na pasku menu, przejdź do **pliku** > **New** > **projektu...** .
+
+2. W okienku po lewej stronie przejdź do **zainstalowane** > **usługi Azure Data Lake** > **Pig (HDInsight)**.  
+
+3. W środkowym okienku wybierz **aplikacji Pig**. Wprowadź właściwości, a następnie wybierz opcję **OK**.
+
+4. W **Eksploratora rozwiązań**, kliknij dwukrotnie **Script.pig** aby otworzyć skrypt.
 
 ## <a name="feedback-and-known-issues"></a>Opinie i znane problemy
-* Obecnie wyniki serwera HiveServer2 są wyświetlane w postaci czystego tekstu, co nie jest idealnym rozwiązaniem. Firma Microsoft pracuje nad rozwiązaniem tego problemu.
 * Problem, w którym wyniki uruchamiane z wartościami null nie są wyświetlane jako rozwiązane. W przypadku zablokowania na tym problemie należy skontaktować się z zespołem pomocy technicznej.
 * Skrypt HQL utworzony przez program Visual Studio jest zakodowany w zależności od ustawienia lokalnego regionu użytkownika. Skrypt nie jest wykonywany poprawnie, jeśli został przesłany do klastra jako plik binarny.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Ten artykuł zawierał informacje dotyczące sposobu używania pakietu Data Lake Tools for Visual Studio w celu nawiązywania połączenia z klastrami usługi HDInsight z programu Visual Studio. Przedstawiono też sposób uruchamiania zapytania Hive. Więcej informacji można znaleźć w tych artykułach:
 
+* [Uruchamianie zapytania usługi Apache Hive przy użyciu narzędzi Data Lake tools for Visual Studio](apache-hadoop-use-hive-visual-studio.md)
 * [Use Hadoop Hive in HDInsight](hdinsight-use-hive.md) (Używanie usługi Hadoop Hive w usłudze HDInsight)
 * [Rozpoczynanie pracy przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Przesyłanie zadań usługi Apache Hadoop w HDInsight](submit-apache-hadoop-jobs-programmatically.md)

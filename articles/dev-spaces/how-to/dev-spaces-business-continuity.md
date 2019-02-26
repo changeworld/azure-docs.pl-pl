@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: jeconnoc
-ms.openlocfilehash: 877d49a49333d70ac7660900e49e7c588f52756c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b7eba0e63f68cd56f2bcc310c3bde65c36e933dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451567"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822467"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business ciągłości działania i odzyskiwania po awarii w Azure Dev miejsca do magazynowania
 
@@ -93,7 +93,7 @@ Powtórz te kroki dla innych projektów skonfigurowany do używania oryginalnego
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Uzyskiwanie dostępu do usługi w klastrze kopii zapasowej
 
-Jeśli skonfigurowano usługę do używania publicznej nazwy DNS, następnie usługi mają inny adres URL, jeśli zostanie ono uruchomione w klastrze kopii zapasowej. Publicznej nazwy DNS są zawsze w formacie `<space name>.s.<service name>.<cluster GUID>.<region>.aksapp.io`. Jeśli przełączysz się do innego klastra, zmieni się klastra identyfikator GUID i prawdopodobnie region.
+Jeśli skonfigurowano usługę do używania publicznej nazwy DNS, następnie usługi mają inny adres URL, jeśli zostanie ono uruchomione w klastrze kopii zapasowej. Publicznej nazwy DNS są zawsze w formacie `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Jeśli przełączysz się do innego klastra, zmieni się klastra identyfikator GUID i prawdopodobnie region.
 
 Miejsca do magazynowania dev zawsze wyświetli poprawny adres URL dla usługi podczas uruchamiania `azds up`, lub w oknie danych wyjściowych w programie Visual Studio w obszarze **miejsca do magazynowania Azure Dev**.
 
@@ -102,7 +102,7 @@ Możesz również znaleźć adres URL, uruchamiając `azds list-uris` polecenia:
 $ azds list-uris
 Uri                                                     Status
 ------------------------------------------------------  ---------
-http://mywebapi.d05afe7e006a4fddb73c.eastus.aksapp.io/  Available
+http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
 Podczas uzyskiwania dostępu do usługi, użyj tego adresu URL.

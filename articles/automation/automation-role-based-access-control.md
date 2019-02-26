@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 963bc8f6602a33ed703344f5277bb427f11390bb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424323"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823522"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -142,7 +142,7 @@ Współautor usługi Log Analytics może odczytywać wszystkie dane monitorowani
 |Microsoft.Compute/virtualMachines/extensions/*|Utwórz i Zarządzaj rozszerzeniami klasycznej maszyny wirtualnej.|
 |Microsoft.Insights/alertRules/*|Odczyt/zapis/usuwanie reguły alertu.|
 |Microsoft.Insights/diagnosticSettings/*|Odczyt/zapis/usuwanie ustawień diagnostycznych.|
-|Microsoft.OperationalInsights/*|Zarządzanie usługą Log Analytics.|
+|Microsoft.OperationalInsights/*|Zarządzanie dziennikami usługi Azure Monitor.|
 |Microsoft.OperationsManagement/*|Zarządzanie rozwiązaniami, w obszarach roboczych.|
 |Microsoft.Resources/deployments/*|Tworzenie i zarządzanie wdrożeniami grup zasobów.|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Tworzenie i zarządzanie wdrożeniami grup zasobów.|
@@ -156,8 +156,8 @@ Czytelnik usługi Log Analytics można wyświetlać i wyszukiwać wszystkie dane
 |**Akcje**  |**Opis**  |
 |---------|---------|
 |*/read|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|Zarządzanie zapytaniami w usłudze Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/search/action|Wyszukiwanie danych usługi Log Analytics.|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Zarządzanie zapytaniami w dziennikach w usłudze Azure Monitor.|
+|Microsoft.OperationalInsights/workspaces/search/action|Wyszukaj dane dzienników z usługi Azure Monitor.|
 |Microsoft.Support/*|Tworzenie i zarządzanie biletami pomocy technicznej.|
 |**Nie akcje**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nie można odczytać klucze dostępu współużytkowanego.|

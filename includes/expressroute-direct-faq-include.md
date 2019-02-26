@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/19/2018
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9e16c3bb4e4e5ba384bdc664e2c056acb0b70caf
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448232"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825570"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co to jest usługa ExpressRoute bezpośrednio?
 
@@ -23,9 +23,9 @@ Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośre
 
 Klienci będą musieli pracować z ich lokalnej operatorów i dostawcy kolokacji nawiązać łączność usługi ExpressRoute routery może korzystać z usługi ExpressRoute bezpośrednio.
 
-### <a name="what-locations-will-the-100-gbps-expressroute-direct-be-available-for-public-preview"></a>Lokalizacje bezpośrednio do usługi ExpressRoute 100 GB/s będzie dostępna w publicznej wersji zapoznawczej? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Lokalizacje obecnie obsługuje bezpośrednio z usługi ExpressRoute? 
 
-Wybierz liczbę lokalizacje komunikacji równorzędnej usługi ExpressRoute to będzie obsługiwać w publicznej wersji zapoznawczej. Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, aby wyświetlić pojemności. Lokalizacje uwzględnienia i *podlegają zmianom w zależności od dostępności*:
+Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, aby wyświetlić pojemności. Lokalizacje uwzględnienia i *podlegają zmianom w zależności od dostępności*:
 
 * Amsterdam
 * Canberra

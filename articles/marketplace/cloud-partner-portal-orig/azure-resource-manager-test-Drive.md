@@ -14,19 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a6ab19207b2c98064f99914e16cdde85133bfd96
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451361"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821768"
 ---
-<a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
-=================================
+# <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
 
 Ten artykuł jest dla wydawców, którzy mają swoją ofertę w portalu Azure Marketplace lub korzystający z usługi AppSource, ale chcesz tworzyć ich wersji testowej przy użyciu tylko zasobów platformy Azure.
 
-Szablon usługi Azure Resource Manager (Azure Resource Manager) jest kontenerem kodowane zasobów platformy Azure, projektować do reprezentują najlepsze rozwiązania. Jeśli nie jesteś zaznajomiony z szablonu usługi Resource Manager, zapoznaj się [zrozumienie szablonów ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) i [Tworzenie szablonów ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) się upewnić, że wiesz, jak tworzyć i testować własnych szablonów.
+Szablon usługi Azure Resource Manager (Resource Manager) jest kontenerem kodowane zasobów platformy Azure, projektować do reprezentują najlepsze rozwiązania. Jeśli nie jesteś zaznajomiony z szablonu usługi Resource Manager, zapoznaj się [zrozumienie szablonów usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) i [Tworzenie szablonów usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) aby upewnić się, gdy wiesz, jak do tworzenia i testowania własnych szablonów.
 
 Co to jest wersja testowa jest przyjmuje podany szablon usługi Resource Manager i sprawia, że wdrożenie programu wszystkie zasoby, które są wymagane z tego szablonu usługi Resource Manager w grupie zasobów.
 
@@ -36,8 +35,7 @@ W przypadku tworzenia dysku z systemem Azure Resource Manager Test wymagań jest
 - Skonfiguruj wszystkie wymagane metadane i ustawienia, aby umożliwić wersji testowej.
 - Za pomocą wersji testowej włączone, należy ponownie opublikować ofertę.
 
-<a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak utworzyć testowej usługi Azure Resource Manager
-------------------------------
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak utworzyć testowej usługi Azure Resource Manager
 
 To najważniejszy element o tworzeniu usługi Azure Resource Manager testowej do zdefiniowania, jakie scenario(s) użytkownicy powinni się. Czy program zapory i chcesz pokaz, jak obsługiwać ataki przez iniekcję kodu skryptu? Czy można produktu magazynu i chcesz pokaz, jak szybko i łatwo, rozwiązania kompresuje pliki?
 
@@ -47,8 +45,7 @@ Aby kontynuować z naszego przykładu zapory, architektury może być konieczne 
 
 Po został opracowany żądanego pakietu zasobów, zawiera teraz zapisywania i tworzenia szablonu Menedżera zasobów testowych z dysku.
 
-<a name="writing-test-drive-resource-manager-templates"></a>Pisanie testów dysków szablonów usługi Resource Manager
---------------------------------
+## <a name="writing-test-drive-resource-manager-templates"></a>Pisanie testów dysków szablonów usługi Resource Manager
 
 Wersja testowa uruchamia wdrożeń w trybie w pełni zautomatyzowane i z tego powodu, szablony wersji testowej mają pewne ograniczenia opisane poniżej.
 
@@ -62,24 +59,26 @@ Wersja testowa działa jednak w trybie pełni automatyczna, bez interakcji z cz�
 
 Można użyć dowolnego prawidłową nazwę parametry, wersji testowej rozpoznaje kategoria parametru przy użyciu wartości typ metadanych. Możesz **należy określić typ metadanych dla każdego parametru szablonu**, w przeciwnym razie szablon nie zostanie pomyślnie weryfikacji:
 
-    "parameters": {
-      ...
-      "username": {
-        "type": "string",
-        "metadata": {
-          "type": "username"
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "username": {
+    "type": "string",
+    "metadata": {
+      "type": "username"
     }
+  },
+  ...
+}
+```
 
 Jest również pamiętać, że **wszystkie parametry są opcjonalne**, więc jeśli nie\'t chcesz używać żadnych, komputer\'było.
 
 ### <a name="accepted-parameter-metadata-types"></a>Parametr akceptowane typy metadanych
 
 | Typ metadanych   | Typ parametru  | Opis     | Przykładowa wartość    |
-|---|---|---|---|---|
-| **BaseUri**     | ciąg          | Podstawowy identyfikator URI pakietu wdrażania| [https://\<\..\>.blob.core.windows.net/\<\..\>](#) |
+|---|---|---|---|
+| **BaseUri**     | ciąg          | Podstawowy identyfikator URI pakietu wdrażania| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
 | **Nazwa użytkownika**    | ciąg          | Nowa nazwa użytkownika losowych.| admin68876      |
 | **Hasło**    | bezpieczny ciąg    | Losowe hasło. | LP! ACS\^2kh     |
 | **Identyfikator sesji**   | ciąg          | Unikatowe sesji testowej identyfikator (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
@@ -88,40 +87,46 @@ Jest również pamiętać, że **wszystkie parametry są opcjonalne**, więc je�
 
 Wersja testowa inicjuje tego parametru z **podstawowy identyfikator Uri** z pakietu wdrożeniowego, więc ten parametr służy do konstruowania identyfikatorów Uri pliku dołączone do pakietu.
 
-    "parameters": {
-      ...
-      "baseuri": {
-        "type": "string",
-        "metadata": {
-          "type": "baseuri",
-          "description": "Base Uri of the deployment package."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "baseuri": {
+    "type": "string",
+    "metadata": {
+      "type": "baseuri",
+      "description": "Base Uri of the deployment package."
     }
+  },
+  ...
+}
+```
 
 Wewnątrz szablonu ten parametr służy do utworzenia identyfikatora Uri dowolny plik z pakietu wdrażania wersji testowej. W poniższym przykładzie pokazano sposób tworzenia identyfikatora Uri połączonego szablonu:
 
-    "templateLink": {
-      "uri": "[concat(parameters('baseuri'),'templates/solution.json')]",
-      "contentVersion": "1.0.0.0"
-    }
+```json
+"templateLink": {
+  "uri": "[concat(parameters('baseuri'),'templates/solution.json')]",
+  "contentVersion": "1.0.0.0"
+}
+```
 
 #### <a name="username"></a>nazwa użytkownika
 
 Wersja testowa inicjuje tego parametru z nową nazwą użytkownika losowego:
 
-    "parameters": {
-      ...
-      "username": {
-        "type": "string",
-        "metadata": {
-          "type": "username",
-          "description": "Solution admin name."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "username": {
+    "type": "string",
+    "metadata": {
+      "type": "username",
+      "description": "Solution admin name."
     }
+  },
+  ...
+}
+```
 
 Wartość próbek:
 
@@ -133,17 +138,19 @@ Za pomocą losowych lub stała nazw użytkowników dla Twojego rozwiązania.
 
 Wersja testowa inicjuje parametru za pomocą nowego hasła losowego:
 
-    "parameters": {
-      ...
-      "password": {
-        "type": "securestring",
-        "metadata": {
-          "type": "password",
-          "description": "Solution admin password."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "password": {
+    "type": "securestring",
+    "metadata": {
+      "type": "password",
+      "description": "Solution admin password."
     }
+  },
+  ...
+}
+```
 
 Wartość próbek:
 
@@ -155,17 +162,19 @@ Dla danego rozwiązania, można użyć hasła losowego lub stałą.
 
 Wersja testowa zainicjować tego parametru z Unikatowy identyfikator GUID reprezentujący identyfikator sesji testowej:
 
-    "parameters": {
-      ...
-      "sessionid": {
-        "type": "string",
-        "metadata": {
-          "type": "sessionid",
-          "description": "Unique Test Drive session id."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "sessionid": {
+    "type": "string",
+    "metadata": {
+      "type": "sessionid",
+      "description": "Unique Test Drive session id."
     }
+  },
+  ...
+}
+```
 
 Wartość próbek:
 
@@ -179,12 +188,14 @@ Zasoby platformy Azure, takich jak konta magazynu lub nazwy DNS wymaga globalnie
 
 Oznacza to, że za każdym razem, gdy wersja testowa służy do wdrażania szablonu usługi Resource Manager, tworzy ono **nową grupę zasobów o unikatowej nazwie** dla wszystkich jego\' zasobów. W związku z tym jest wymagany do użycia [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkcja połączona z Twojej nazwy zmiennych w grupie zasobów identyfikatorów do wygenerowania losowych unikatowe wartości:
 
-      "variables": {
-      ...
-      "domainNameLabel": "[concat('contosovm',uniquestring(resourceGroup().id))]",
-      "storageAccountName": "[concat('contosodisk',uniquestring(resourceGroup().id))]",
-      ...
-    }
+```json
+"variables": {
+  ...
+  "domainNameLabel": "[concat('contosovm',uniquestring(resourceGroup().id))]",
+  "storageAccountName": "[concat('contosodisk',uniquestring(resourceGroup().id))]",
+  ...
+}
+```
 
 Upewnij się, ciągów z parametrem/zmiennej (\'contosovm\') z danymi wyjściowymi unikatowy ciąg (\'resourceGroup () .id\'), ponieważ jest to gwarancją unikatowości i niezawodność każdej zmiennej.
 
@@ -198,41 +209,45 @@ Możesz udostępnić możesz wersji testowej w różnych regionach platformy Azu
 
 Gdy wersji testowej tworzy wystąpienie laboratorium, zawsze tworzy grupę zasobów w wybranego regionu przez użytkownika, a następnie wykonuje Szablon wdrożenia, w tym kontekście grupy. Tak szablon powinien wybierz lokalizację wdrażania z grupy zasobów:
 
-    "variables": {
-      ...
-      "location": "[resourceGroup().location]",
-      ...
-    }
+```json
+"variables": {
+  ...
+  "location": "[resourceGroup().location]",
+  ...
+}
+```
 
 A następnie użyć tej lokalizacji dla każdego zasobu dla konkretnego wystąpienia laboratorium:
 
-    "resources": [
-      {
-        "type": "Microsoft.Storage/storageAccounts",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/publicIPAddresses",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/virtualNetworks",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/networkInterfaces",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Compute/virtualMachines",
-        "location": "[variables('location')]",
-        ...
-      }
-    ]
+```json
+"resources": [
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "[variables('location')]",
+    ...
+  }
+]
+```
 
 Należy się upewnić, że Twoja subskrypcja będzie mógł wdrożyć wszystkie zasoby, które mają zostać wdrożone w każdym z regionów, który wybierasz. Również należy upewnić się, że obrazów maszyn wirtualnych są dostępne we wszystkich regionach, którą chcesz włączyć, w przeciwnym razie szablonu wdrożenia nie będą działać w niektórych regionach.
 
@@ -246,20 +261,22 @@ Nie ma ograniczeń wszelkie związane z danych wyjściowych szablonu. Po prostu 
 
 Przykład:
 
-    "outputs": {
-      "Host Name": {
-        "type": "string",
-        "value": "[reference(variables('pubIpId')).dnsSettings.fqdn]"
-      },
-      "User Name": {
-        "type": "string",
-        "value": "[parameters('adminName')]"
-      },
-      "Password": {
-        "type": "string",
-        "value": "[parameters('adminPassword')]"
-      }
-    }
+```json
+"outputs": {
+  "Host Name": {
+    "type": "string",
+    "value": "[reference(variables('pubIpId')).dnsSettings.fqdn]"
+  },
+  "User Name": {
+    "type": "string",
+    "value": "[parameters('adminName')]"
+  },
+  "Password": {
+    "type": "string",
+    "value": "[parameters('adminPassword')]"
+  }
+}
+```
 
 ### <a name="subscription-limits"></a>Limity subskrypcji
 
@@ -277,20 +294,18 @@ Podczas publikowania certyfikacji wersji testowej unzips pakietu wdrożenia i um
 
 | Package.zip                       | Kontener obiektów blob dysku testu         |
 |---|---|
-main-template.json                | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/main-template.json](#)  |
- Templates/Solution.JSON           | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/templates/solution.json](#) |
-| scripts/warmup.ps1                | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1](#)  |
+| main-template.json                | https:\//\<\...\>.blob.core.windows.net/\<\...\>/main-template.json  |
+| Templates/Solution.JSON           | https:\//\<\...\>.blob.core.windows.net/\<\...\>/templates/solution.json |
+| scripts/warmup.ps1                | protokół https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1  |
 
 
 Nazywamy identyfikatora Uri ten kontener obiektów blob podstawowy identyfikator Uri. Każdej wersji środowiska laboratoryjnego ma swój własny kontener obiektów blob, a w związku z tym, co wersja środowiska laboratoryjnego ma własny podstawowy identyfikator Uri. Wersja testowa można przekazać podstawowy identyfikator Uri zestawu pakietu wdrażania rozpakowany do szablonu za pomocą parametrów szablonu.
 
-<a name="transforming-template-examples-for-test-drive"></a>Przekształcanie przykłady szablonów dla wersji testowej
----------------------------------------------
+## <a name="transforming-template-examples-for-test-drive"></a>Przekształcanie przykłady szablonów dla wersji testowej
 
 Proces włączenie architekturę zasobów do szablonu Menedżera zasobów testowych z dysku może być czasochłonnym zadaniem. Aby ułatwić ten proces, firma Microsoft\'wprowadzono przykłady do optymalnego [Przekształcanie bieżące szablony wdrożenia w tym miejscu](./transforming-examples-for-test-drive.md).
 
-<a name="how-to-publish-a-test-drive"></a>Jak opublikować wersję testową
----------------------------
+## <a name="how-to-publish-a-test-drive"></a>Jak opublikować wersję testową
 
 Teraz, gdy masz utworzone wersji testowej, w tej sekcji przedstawiono wszystkie pola wymagane opublikowanie wersji testowej.
 
@@ -394,8 +409,7 @@ Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy doda�
 
 ![Pokazuje kluczy dla aplikacji usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-<a name="next-steps"></a>Kolejne kroki
-----------
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy wszystkich pól wersji testowej wypełnione przejść i **ponownie opublikować** oferty. Po upływie wersji testowej certyfikacji powinien przeprowadzić dokładnie przetestować środowiska klienta w **(wersja zapoznawcza)** oferty. Uruchom wersję testową w interfejsie użytkownika, a następnie otwórz Twojej subskrypcji platformy Azure w witrynie Azure portal i sprawdź, czy wersji testowych są w pełni wdrażany prawidłowo.
 

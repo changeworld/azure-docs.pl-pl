@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 5a9ea460684383bd09e5a679f3140d3b8f083d4d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417095"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823624"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -89,13 +89,13 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Centra IoT Hub
 * Magazyn kluczy - Key Vault, używany do szyfrowania dysku nie można przenieść do grupy zasobów w tej samej subskrypcji lub w różnych subskrypcjach.
 * Moduły równoważenia obciążenia — podstawowa jednostka SKU modułu równoważenia obciążenia mogą być przenoszone. Nie można przenieść standardowa jednostka SKU modułu równoważenia obciążenia.
-* Log Analytics
 * Logic Apps
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
 * Managed Disks — zobacz [ograniczenia maszyn wirtualnych dla ograniczeń](#virtual-machines-limitations)
 * Tożsamość zarządzana — przypisanych przez użytkownika
 * Media Services
 * Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#monitor-limits)
+* Dzienniki usługi Azure Monitor
 * Notification Hubs
 * Operational Insights
 * Operations Management
@@ -145,7 +145,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Włączono Lab Services — przejście do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenie między subskrypcjami nie jest włączona.
 * Aplikacje zarządzane
 * Microsoft Genomics
-* NetApp
+* Azure NetApp Files
 * Oprogramowanie SAP HANA na platformie Azure
 * Bezpieczeństwo
 * Site Recovery
@@ -513,7 +513,7 @@ W treści żądania należy określić docelową grupę zasobów i zasobów, aby
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat poleceń cmdlet programu PowerShell dotyczące zarządzania subskrypcją, zobacz [przy użyciu programu Azure PowerShell z usługą Resource Manager](powershell-azure-resource-manager.md).
-* Aby uzyskać informacje dotyczące polecenia wiersza polecenia platformy Azure do zarządzania subskrypcją, zobacz [przy użyciu wiersza polecenia platformy Azure przy użyciu usługi Resource Manager](xplat-cli-azure-resource-manager.md).
+* Aby dowiedzieć się więcej na temat poleceń cmdlet programu PowerShell do zarządzania zasobami, zobacz [przy użyciu programu Azure PowerShell z usługą Resource Manager](manage-resources-powershell.md).
+* Aby dowiedzieć się więcej o zarządzaniu swoimi zasobami polecenia wiersza polecenia platformy Azure, zobacz [przy użyciu wiersza polecenia platformy Azure przy użyciu usługi Resource Manager](manage-resources-cli.md).
 * Aby dowiedzieć się więcej o funkcjach portalu do zarządzania subskrypcją, zobacz [przy użyciu witryny Azure portal do zarządzania zasobami](resource-group-portal.md).
 * Aby dowiedzieć się, stosując organizację logiczną do zasobów, zobacz [organizowanie zasobów za pomocą tagów](resource-group-using-tags.md).

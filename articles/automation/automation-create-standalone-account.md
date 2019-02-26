@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1590a02503a12be870dab14a1ccffdd3cf64a282
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 197d7529a52b400cd078ead79bbb6db5f5849ee6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426611"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821374"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
-W tym artykule pokazano, jak utworzyć konto usługi Azure Automation w witrynie Azure portal. Aby ocenić i Dowiedz się więcej o automatyzacji bez korzystania z dodatkowych rozwiązań do zarządzania i integracji z usługą Azure Log Analytics, można użyć portalu konta usługi Automation. Można dodać te rozwiązania do zarządzania lub zintegrować z usługą Log Analytics w przypadku zaawansowanego monitorowania zadań elementów runbook w dowolnym momencie w przyszłości.
+W tym artykule pokazano, jak utworzyć konto usługi Azure Automation w witrynie Azure portal. Aby ocenić i Dowiedz się więcej o automatyzacji bez korzystania z dodatkowych rozwiązań do zarządzania i integracji przy użyciu dzienników usługi Azure Monitor, można użyć portalu konta usługi Automation. Można dodać te rozwiązania do zarządzania lub zintegrować przy użyciu dzienników usługi Azure Monitor w przypadku zaawansowanego monitorowania zadań elementów runbook w dowolnym momencie w przyszłości.
 
 Za pomocą konta usługi Automation można uwierzytelniać elementy runbook, umożliwiając zarządzanie zasobami w usłudze Azure Resource Manager lub Klasyczny model wdrażania. Jedno konto usługi Automation może zarządzać zasobami we wszystkich regionach i subskrypcjach dla danej dzierżawy.
 
@@ -69,7 +69,7 @@ Aby utworzyć konto usługi Azure Automation w witrynie Azure portal, wykonaj na
   >
   > ![Dodaj ostrzeżenie konta usługi Automation](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. W **Dodawanie konta usługi Automation** okienku w obszarze **nazwa** wprowadź nazwę dla nowego konta usługi Automation. Nie można zmienić tę nazwę, po jego wybraniu. *Nazwy kont usługi Automation są unikatowe dla regionie i grupie zasobów. Nazwy kont usługi Automation, które zostały usunięte może nie być dostępne natychmiast.*
+1. W **Dodawanie konta usługi Automation** okienku w obszarze **nazwa** wprowadź nazwę dla nowego konta usługi Automation. Nie można zmienić tę nazwę, po jego wybraniu. *Nazwy kont usługi Automation są unikatowe w każdym regionie i grupie zasobów. Nazwy kont usługi Automation, które zostały usunięte, mogą nie być natychmiast dostępne.*
 1. Jeśli masz więcej niż jedną subskrypcję w **subskrypcji** określ subskrypcję, dla którego chcesz użyć dla nowego konta.
 1. Aby uzyskać **grupy zasobów**wprowadź lub wybierz grupę zasobów do nowej lub istniejącej.
 1. Aby uzyskać **lokalizacji**, wybierz taką lokalizację centrum danych platformy Azure.

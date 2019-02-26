@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 02/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: df4ae4b0c3f230947e0b9a5885070049f32a4b2f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fb96d69604ce341cec2de029f9663f6b8d274876
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429866"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822382"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -39,7 +39,7 @@ Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w
 
 CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku maszyn Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
 
-Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
+Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agent przesyła dalej informacje zbiorcze, aby dzienniki usługi Azure Monitor. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut MMA uruchamiany ponownie, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
@@ -58,7 +58,7 @@ Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation.
 
 Od daty i czasu określony we wdrożeniu aktualizacji komputery docelowe równolegle uruchomić wdrożenie. Przed rozpoczęciem instalacji Aby sprawdzić, czy aktualizacje są nadal wymagane przeprowadzania skanowania. Dla komputerów klienckich programu WSUS Jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji kończy się niepowodzeniem.
 
-Masz maszynę zarejestrowane do zarządzania aktualizacjami w więcej niż jeden Analytics obszary robocze usługi Log (Obsługa wielu regionów) nie jest obsługiwane.
+Masz maszynę zarejestrowane do zarządzania aktualizacjami w więcej niż jeden obszarów roboczych usługi Log Analytics (Obsługa wielu regionów) nie jest obsługiwane.
 
 ## <a name="clients"></a>Klienci
 
@@ -94,7 +94,7 @@ Agenci Windows musi być skonfigurowany do komunikowania się z serwerem usług 
 
 Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Protokół TLS 1.1 i TLS 1.2 jest wymagany do interakcji z rozwiązania Update Management. Log Analytics Agent dla systemu Linux, który jest skonfigurowany do raportowania do więcej niż jeden obszarów roboczych usługi Log Analytics nie jest obsługiwana za pomocą tego rozwiązania.
 
-Aby uzyskać informacje o sposobach instalowania agenta usługi Log Analytics dla systemu Linux i Pobierz najnowszą wersję, zobacz [Operations Management Suite Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje o sposobie instalowania Log Analytics Agent for Windows, zobacz [Operations Management Suite Agent dla Windows](../log-analytics/log-analytics-windows-agent.md).
+Aby uzyskać informacje o sposobach instalowania agenta usługi Log Analytics dla systemu Linux i Pobierz najnowszą wersję, zobacz [Log Analytics Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje o sposobie instalowania Log Analytics Agent for Windows, zobacz [programu Microsoft Monitoring Agent for Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -120,10 +120,10 @@ Jeśli grupa zarządzania programu System Center Operations Manager jest połąc
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Pakiet administracyjny wdrożenia aktualizacji
 
-Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów administracyjnych rozwiązania, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../azure-monitor/platform/om-agents.md).
+Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów administracyjnych rozwiązania, zobacz [dzienniki łączenie programu Operations Manager do usługi Azure Monitor](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Dla systemów z agenta programu Operations Manager aby można było w pełni zarządzane przez rozwiązania Update Management agent musi zostać zaktualizowany do programu Microsoft Monitoring Agent. Aby dowiedzieć się, jak zaktualizować agenta, zobacz [jak uaktualnić agenta programu Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
+> Dla systemów z agenta programu Operations Manager aby można było w pełni zarządzane przez rozwiązania Update Management agent musi zostać zaktualizowany do programu Microsoft Monitoring Agent. Aby dowiedzieć się, jak zaktualizować agenta, zobacz [jak uaktualnić agenta programu Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Dla środowisk przy użyciu programu Operations Manager, wymagane jest, że używasz programu System Center Operations Manager 2012 R2 z pakietem zbiorczym aktualizacji 14 lub nowszej.
 
 ## <a name="onboard"></a>Włączanie rozwiązania Update Management
 
@@ -136,7 +136,7 @@ Aby rozpocząć, poprawiania systemów, należy włączyć rozwiązanie Update M
   
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Upewnij się, że maszyny spoza platformy Azure są dołączone
 
-Aby upewnić się, że bezpośrednio połączone maszyny komunikują się z usługą Log Analytics po kilku minutach możesz uruchomić jedną następujących przeszukiwania dzienników.
+Aby upewnić się, że bezpośrednio połączone maszyny komunikują się przy użyciu dzienników usługi Azure Monitor po kilku minutach możesz uruchomić jedną następujących przeszukiwania dzienników.
 
 #### <a name="linux"></a>Linux
 

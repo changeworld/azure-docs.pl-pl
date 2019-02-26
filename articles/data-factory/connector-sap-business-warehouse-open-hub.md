@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fe0783891bd5f571c06551e19c154d6f22768e84
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299541"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821545"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 [Otwórz usługę Centrum SAP BW](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) jest wydajny sposób wyodrębniania danych z systemu SAP BW. Na poniższym diagramie przedstawiono jedną z typowych przepływów, klienci mają w ich systemie SAP, w których przepływy danych przypadków z SAP ECC -> PSA -> DSO -> modułu.
 
-SAP BW Open koncentrator docelowy (OHD) definiowania miejsca docelowego, do którego jest przekazywane danych SAP. Wszystkie obiekty obsługiwane przez proces transferu danych SAP (DTP) może służyć jako źródeł danych otwórz Centrum, na przykład DSO InfoCube, MultiProvider, źródła danych, itp. Otwórz Centrum docelowego — w którym są przechowywane dane z przekazywaniem — może być tabel bazy danych (lokalnym lub zdalnym) i plików prostych. Ten łącznik SAP BW Open Centrum Obsługa kopiowanie danych z lokalnej tabeli OHD w BW. W przypadku, gdy używane są inne typy, możesz połączyć bezpośrednio do bazy danych lub systemu plików przy użyciu innych łączników.
+SAP BW Open koncentrator docelowy (OHD) definiowania miejsca docelowego, do którego jest przekazywane danych SAP. Wszystkie obiekty obsługiwane przez proces transferu danych SAP (DTP) może służyć jako źródeł danych otwórz Centrum, na przykład DSO InfoCube, źródła danych, itp. Otwórz Centrum docelowego — w którym są przechowywane dane z przekazywaniem — może być tabel bazy danych (lokalnym lub zdalnym) i plików prostych. Ten łącznik SAP BW Open Centrum Obsługa kopiowanie danych z lokalnej tabeli OHD w BW. W przypadku, gdy używane są inne typy, możesz połączyć bezpośrednio do bazy danych lub systemu plików przy użyciu innych łączników.
 
 ![Oprogramowanie SAP BW Open Centrum](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
@@ -37,7 +37,7 @@ Możesz skopiować dane z rozwiązania SAP Business Warehouse, za pośrednictwem
 
 W szczególności ten łącznik SAP Business Warehouse Otwórz Centrum obsługuje:
 
-- SAP Business Warehouse **7.30 lub nowszy (w ostatnich SAP pomocy technicznej pakietu stosie wydana po 2015 roku) w wersji**.
+- SAP Business Warehouse **7.01 lub nowszy (w ostatnich SAP pomocy technicznej pakietu stosie wydana po 2015 roku) w wersji**.
 - Kopiowanie danych za pomocą funkcji Otwórz docelowy Centrum lokalnej tabeli, która poniżej może być DSO InfoCube, MultiProvider, źródła danych, itp.
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego.
 - Łączenie z serwerem aplikacji.

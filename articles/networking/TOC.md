@@ -11,7 +11,7 @@
 ### [Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager](disaster-recovery-dns-traffic-manager.md)
 ## Planowanie i projektowanie
 ### [Sieci wirtualne](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Połączenia obejmujące wiele lokalizacji — sieć VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Połączenia obejmujące wiele lokalizacji — sieć VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Połączenia obejmujące wiele lokalizacji — dedykowane połączenie prywatne](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### Współdziałanie łączności z zapleczem
 #### [Wstęp i konfiguracja testu](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)

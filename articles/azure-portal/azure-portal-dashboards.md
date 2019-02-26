@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: kfollis
-ms.openlocfilehash: 4a2dee4ad90fb269268ec7d3e86def58f2444e3a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884732"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818582"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal
 Można utworzyć wiele pulpitów nawigacyjnych i udostępnianie ich innym osobom, które mają dostęp do subskrypcji platformy Azure.  W tym artykule omówiono podstawowe informacje dotyczące tworzenia, edytowania, publikowanie i zarządzanie dostępem do pulpitów nawigacyjnych.
@@ -93,6 +93,6 @@ Po opublikowaniu pulpitu nawigacyjnego **dostępu + udostępniania** okienko ste
 ![Zarządzanie kontrolą dostępu](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby zarządzać zasobami, zobacz [zarządzanie zasobami platformy Azure za pośrednictwem portalu](../azure-resource-manager/resource-group-portal.md).
+* Aby zarządzać zasobami, zobacz [zarządzanie zasobami platformy Azure przy użyciu witryny Azure portal](../azure-resource-manager/manage-resources-portal.md).
 * Aby wdrożyć zasoby, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

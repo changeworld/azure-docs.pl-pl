@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e9c1b2513f769b065883dc98b649a68d565ccc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7d8259cdb61d2481805dd2e07c11b539e057215c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456490"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817069"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Integrowanie dzienników usługi Azure AD przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza)
 
@@ -37,6 +37,8 @@ Poniższy klip wideo z sesji Konferencji Ignite przedstawia korzyści z używani
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
 W tym artykule dowiesz się, jak zintegrować dzienniki usługi Azure Active Directory (Azure AD) przy użyciu usługi Azure Monitor.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>Obsługiwane raporty
 

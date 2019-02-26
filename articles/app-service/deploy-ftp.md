@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8b1a4bbb100fc4db1323f530808a8d01bd8f30ce
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f1d64170c3f9622169dd1218e4c63652c9f94b9b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582443"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820675"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -30,7 +30,7 @@ Punkt końcowy protokołu FTP/S dla aplikacji jest już aktywny. Konfiguracja ni
 
 ## <a name="open-ftp-dashboard"></a>Otwórz pulpit nawigacyjny FTP
 
-W [witryny Azure portal](https://portal.azure.com), otwórz aplikacji [strony zasobu](../azure-resource-manager/resource-group-portal.md#manage-resources).
+W [witryny Azure portal](https://portal.azure.com), otwórz aplikacji [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
 Aby otworzyć pulpit nawigacyjny FTP, kliknij przycisk **Centrum wdrażania** > **FTP** > **pulpit nawigacyjny**.
 
@@ -99,7 +99,7 @@ Aby ustalić problem wdrożenia lub w czasie wykonywania, zobacz [wdrożenia, a 
 Sprawdź, czy wprowadzono poprawną nazwę hosta i [poświadczenia](#open-ftp-dashboard). Należy także sprawdzić, czy następujące porty FTP na tym komputerze nie są blokowane przez zaporę:
 
 - Port połączenia sterowania FTP: 21
-- Port połączenia danych FTP: 989, 10001 – 10300
+- Port połączenia danych FTP: 989, 10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Jak można podłączyć do usługi FTP w usłudze Azure App Service za pośrednictwem tryb pasywny?
 Usługa Azure App Service obsługuje nawiązywania połączenia za pośrednictwem tryb zarówno aktywnych i pasywnych. W trybie pasywnym jest preferowane, ponieważ Twoje wdrożenia. maszyny wirtualne są zazwyczaj zaporą (w systemie operacyjnym lub jako część głównej lub w sieci firmowej). Zobacz [przykładu z dokumentacji WinSCP](https://winscp.net/docs/ui_login_connection). 

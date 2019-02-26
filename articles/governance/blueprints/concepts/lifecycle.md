@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c1e596516136240b1d1d08b4e8386e9cf5ef48e5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563715"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819126"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Informacje o cyklu życia planu platformy Azure
 
@@ -35,7 +35,7 @@ Aby w pełni zrozumieć planu i etapów, omówimy standardowego cyklu życia:
 
 Podczas tworzenia planu dodawania artefaktów, Zapisz do grupy zarządzania lub subskrypcji, a następnie podać unikatową nazwę i wersję unikatowy. Planu jest teraz w **projekt** tryb i jeszcze nie można przypisać. W **projekt** tryb, nadal można go aktualizować i zmienić.
 
-Element nigdy nie opublikowane planu w **projekt** tryb Wyświetla inną ikonę na **definicji planu** strony niż te, które zostały **opublikowano**. **Najnowszej wersji** także jest wyświetlana jako **projekt** podczas nigdy nie są publikowane schematy.
+Element nigdy nie opublikowane planu w **projekt** tryb Wyświetla inną ikonę na **definicji planu** strony niż te, które zostały **opublikowano**. **Najnowszej wersji** jest wyświetlany jako **projekt** podczas nigdy nie są publikowane schematy.
 
 Tworzenie i edytowanie planu z [witryny Azure portal](../create-blueprint-portal.md#create-a-blueprint) lub [interfejsu API REST](../create-blueprint-rest-api.md#create-a-blueprint).
 
@@ -68,9 +68,9 @@ Każda wersja planu jest obiektem unikatowy i może być indywidualnie **opublik
 > [!NOTE]
 > Nie jest możliwe usuwanie planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie usuń wersję, którą chcesz usunąć.
 
-1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
 
-1. Wybierz **definicje planów** ze strony po lewej i użyj opcji filtru, można zlokalizować planu, aby usunąć wersję. Kliknij go, aby otworzyć stronę edycji.
+1. Wybierz **planu definicje** ze strony po lewej i użyj opcji filtru, można zlokalizować planu, aby usunąć wersję. Kliknij go, aby otworzyć stronę edycji.
 
 1. Kliknij przycisk **opublikowane wersje** kartę i Znajdź wersję, którą chcesz usunąć.
 

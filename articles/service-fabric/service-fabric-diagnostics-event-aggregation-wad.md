@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f9db156562692107a5603e15340f01ecf9f9d52c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187440"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823420"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -61,6 +61,8 @@ Teraz, gdy masz agregowania zdarzeń w usłudze Azure Storage [Konfigurowanie us
 
 >[!NOTE]
 >Obecnie nie ma sposobu filtrowania lub pielęgnacja zdarzenia, które są wysyłane do tabel. Jeśli nie możesz wdrożyć proces Usuń zdarzenia z tabeli, tabeli będą w dalszym ciągu Rozwijaj (cap domyślną jest 50 GB). Instrukcje dotyczące sposobu zmiany są [dalsze poniżej w tym artykule](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Ponadto jest przykładem pielęgnacji Usługa danych uruchomiona na [przykładowe strażnika](https://github.com/Azure-Samples/service-fabric-watchdog-service), i jest zalecana zapisu jedną dla siebie, chyba że powody do przechowywania dzienników ponad 30 lub 90 przedział czasu dnia.
+
+
 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Wdrażanie rozszerzenie diagnostyki za pomocą usługi Azure Resource Manager
 
@@ -292,7 +294,49 @@ Jeśli używasz ujścia usługi Application Insights, zgodnie z opisem w dalszej
 
 ## <a name="send-logs-to-application-insights"></a>Wysyłanie dzienników do usługi Application Insights
 
-Wysyłanie danych monitorowania i diagnostyki Insights aplikacji (AI) może odbywać się w ramach konfiguracji funkcji WAD. Jeśli zdecydujesz się używać rozwiązań sztucznej Inteligencji dla zdarzeń analiz i wizualizacji, zapoznaj się z [sposób konfigurowania obiektu sink sztucznej Inteligencji](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) jako część Twojego "WadCfg".
+### <a name="configuring-application-insights-with-wad"></a>Konfigurowanie usługi Application Insights za pomocą funkcji WAD
+
+>[!NOTE]
+>To ma zastosowanie tylko do klastrów Windows w tej chwili.
+
+Istnieją dwa podstawowe sposoby wysyłania danych z WAD do usługi Azure Application Insights, który jest osiągane poprzez dodanie ujścia usługi Application Insights do konfiguracji WAD, za pośrednictwem witryny Azure portal lub szablonu usługi Azure Resource Manager.
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Dodaj klucz Instrumentacji usługi Application Insights, podczas tworzenia klastra w witrynie Azure portal
+
+![Dodawanie AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+Podczas tworzenia klastra, jeśli włączono diagnostyki "Włączone", zostaną wyświetlone pole opcjonalne, aby wprowadzić klucz Instrumentacja usługi Application Insights. Jeśli wkleisz klucz Insights aplikacji ujścia usługi Application Insights jest automatycznie konfigurowany dla Ciebie w szablonie usługi Resource Manager, który jest używany do wdrażania klastra.
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Dodaj ujścia Application Insights do szablonu usługi Resource Manager
+
+W "WadCfg" szablonu usługi Resource Manager należy dodać "Sink", umieszczając następujące dwie zmiany:
+
+1. Dodaj konfigurację ujścia bezpośrednio po deklarowania elementu `DiagnosticMonitorConfiguration` zostało zakończone:
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. Obejmują ujścia w `DiagnosticMonitorConfiguration` , dodając następujący wiersz w `DiagnosticMonitorConfiguration` z `WadCfg` (tuż przedtem `EtwProviders` są deklarowane):
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+W obu poprzedzających fragmentów kodu nazwa "applicationInsights" był używany do opisania ujścia. Nie jest to wymagane, i tak długo, jak nazwa ujścia jest uwzględniony w "sink", można ustawić nazwę do dowolnego ciągu.
+
+Obecnie dzienników z klastra są wyświetlane jako **ślady** w przeglądarce dzienników usługi Application Insights. Ponieważ większość ślady przychodzące od platformy z poziomu "Informacyjne", możesz też rozważyć zmiana konfiguracji ujścia tylko do wysyłania dzienników typu "Ostrzeżenie" lub "Błąd". Można to zrobić, dodając "Kanały" do obiektu sink, jak pokazano w [w tym artykule](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+
+>[!NOTE]
+>Jeśli używasz nieprawidłowy klucz usługi Application Insights w witrynie portal lub w szablonie usługi Resource Manager, należy ręcznie zmienić wartość klucza i zaktualizować klaster / wdrażając go ponownie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
