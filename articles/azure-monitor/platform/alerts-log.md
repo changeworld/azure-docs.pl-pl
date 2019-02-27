@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 839a6b3cc90c6a8fcc512c100c8825f9513ded26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990449"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875943"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
 
@@ -205,7 +205,7 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
 ```
 
 > [!IMPORTANT]
-> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API.
+> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API.
 
 Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby ten przewodnik i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -304,7 +304,7 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
 ```
 
 > [!IMPORTANT]
-> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. Podczas korzystania z zapytania obejmujące wiele zasobów w dzienniku alertów, użycie [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) jest obowiązkowy i użytkownik musi mieć dostęp do listy zasobów, o których wspomniano
+> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. Podczas korzystania z zapytania obejmujące wiele zasobów w dzienniku alertów, użycie [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) jest obowiązkowy i użytkownik musi mieć dostęp do listy zasobów, o których wspomniano
 
 Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby ten przewodnik i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

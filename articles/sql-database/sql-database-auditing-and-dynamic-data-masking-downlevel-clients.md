@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/14/2019
-ms.openlocfilehash: 76fe764d828a7fa6e4ebb015f98b9af485d5df5f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/25/2019
+ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567094"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866831"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>Obsługa klientów niższych poziomów bazy danych SQL — i punktu końcowego adresu IP zmienia się w przypadku inspekcji tabel
 
@@ -28,6 +28,7 @@ ms.locfileid: "55567094"
 [Bazy danych inspekcji](sql-database-auditing.md) automatycznie współpracuje z usługą SQL klientów, które obsługują przekierowanie TDS. Pamiętaj, że przekierowanie nie ma zastosowania, korzystając z metody inspekcji obiektów Blob.
 
 ## <a id="subheading-1"></a>Obsługa klientów niższych poziomów
+
 Dowolny klient, który implementuje TDS w wersji 7.4 powinien obsługiwać również przekierowania. Wyjątki od tej reguły obejmują JDBC 4.0, w którym funkcji przekierowania nie jest w pełni obsługiwana i Tedious dla środowiska Node.JS, w których przekierowania nie została zaimplementowana.
 
 Dla "Klientów niższych poziomów" czyli które pomocy technicznej TDS w wersji 7.3 i poniżej. nazwa FQDN serwera w połączeniu parametry powinny być modyfikowane:
@@ -46,6 +47,7 @@ Częściowa lista "Klienci z obniżonym poziomem" obejmuje:
 **Uwaga:** Powyższym serwerze modyfikacji w pełni kwalifikowaną nazwę domeny może być przydatne, również w odniesieniu do zasady inspekcji usługi SQL Server poziom bez potrzeby kroku konfiguracji, w każdej bazie danych (tymczasowe ograniczenie).
 
 ## <a id="subheading-2"></a>Punkt końcowy IP zmienia się podczas włączania inspekcji
+
 Należy pamiętać, że po włączeniu inspekcji tabel punktu końcowego adresu IP bazy danych ulegnie zmianie. W przypadku ustawienia zapory ścisłe aktualizacji tych ustawień zapory odpowiednio.
 
 Nowy punkt końcowy IP bazy danych zależy od regionu bazy danych:
@@ -78,5 +80,4 @@ Nowy punkt końcowy IP bazy danych zależy od regionu bazy danych:
 | Środkowo-zachodnie stany USA |52.161.29.186, 52.161.27.213 |
 | Kanada Środkowa |13.88.248.106, 13.88.248.110 |
 | Kanada Wschodnia |40.86.227.82, 40.86.225.194 |
-| Północne Zjednoczone Królestwo |13.87.101.18, 13.87.100.232 |
-| Południowe Zjednoczone Królestwo 2 |13.87.32.202, 13.87.32.226 |
+| Południowe Zjednoczone Królestwo |13.87.32.202, 13.87.32.226 |

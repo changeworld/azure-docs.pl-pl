@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 70206fac7bfe34ea1a138437db35720a1f02337d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 02/26/2019
+ms.openlocfilehash: 64e0444c85440a017872aa32017e7d1c47e44e89
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585372"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889781"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database managed wystąpienia architektura łączności
 
@@ -157,7 +157,7 @@ Możesz wdrożyć wystąpienie zarządzane w dedykowanej podsieci (podsieci wyst
 |mi-8-7-nexthop-internet|8.0.0.0/7|Internet|
 ||||
 
-Ponadto możesz dodać wpisy na potrzeby kierowania ruchu trasy tabeli zawierającej zakresów IP prywatnych w środowisku lokalnym jako miejsca docelowego za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe.
+Ponadto można dodać wpisów do tabeli tras do kierowania ruchu z zakresów IP prywatnych w środowisku lokalnym jako miejsce docelowe za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe.
 
 - **Opcjonalne niestandardowe DNS**: Jeśli niestandardowe DNS jest określona w sieci wirtualnej, należy dodać adres IP platformy Azure cyklicznego programu rozpoznawania nazw (na przykład 168.63.129.16) do listy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md). Niestandardowego serwera DNS musi być w stanie rozpoznać nazwy hostów w następujących domen i poddomen ich: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, i *microsoftonline-p.com*.
 

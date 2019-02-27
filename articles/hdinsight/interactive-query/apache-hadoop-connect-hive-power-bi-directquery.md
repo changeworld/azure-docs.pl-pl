@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 5f4053888cc8402ab0196e40c33f1acc3e7eef44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 02/25/2018
+ms.openlocfilehash: d9639a4a116e06e17005ebddbb26379882491b33
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651135"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867834"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Wizualizuj dane zapytanie interakcyjne Apache Hive z usługą Microsoft Power BI za pomocą zapytania bezpośredniego w usłudze Azure HDInsight
 
-W tym artykule opisano sposób połączenia usługi Microsoft Power BI z klastrami usługi Azure HDInsight interakcyjnych zapytań i wizualizowanie danych Apache Hive, za pomocą zapytania bezpośredniego. Podany przykład załaduje dane z tabeli programu Hive hivesampletable do usługi Power BI. W tej tabeli hivesampletable zawiera pewne dane użycia telefonu komórkowego. Następnie można wykreślić dane użycia na mapę świata:
+W tym artykule opisano sposób połączenia usługi Microsoft Power BI z klastrami usługi Azure HDInsight interakcyjnych zapytań i wizualizowanie danych Apache Hive, za pomocą zapytania bezpośredniego. Podany przykład służy do ładowania danych z `hivesampletable` tabelę programu Hive w usłudze Power BI. `hivesampletable` Tabelę programu Hive zawiera pewne dane użycia telefonu komórkowego. Następnie można wykreślić dane użycia na mapę świata:
 
 ![HDInsight usługi Power BI raport mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -32,35 +32,35 @@ Przed przejściem w tym artykule, należy dysponować następującymi elementami
 
 ## <a name="load-data-from-hdinsight"></a>Ładowanie danych z HDInsight
 
-W tej tabeli hivesampletable jest powiązana z wszystkimi klastrami HDInsight.
+`hivesampletable` Tabelę programu Hive, który jest dostarczany z wszystkimi klastrami HDInsight.
 
-1. Zaloguj się do usługi Power BI Desktop.
+1. Uruchom program Power BI Desktop.
 
-2. Kliknij przycisk **Home** kliknij pozycję **Pobierz dane** z **dane zewnętrzne** wstążki, a następnie wybierz **więcej...** .
+2. Na pasku menu, przejdź do **Home** > **Pobierz dane** > **więcej...** .
 
     ![Otwórz dane HDInsight usługi Power BI](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
-    
-3. Z **Pobierz dane** okienko, typ **hdinsight** w polu wyszukiwania. Jeśli nie widzisz **HDInsight Interactive Query (wersja Beta)**, należy zaktualizować usługi Power BI Desktop do najnowszej wersji.
 
-4. Wybierz **HDInsight Interactive Query (wersja Beta)**, a następnie wybierz pozycję **Connect**.
+3. Z **Pobierz dane** oknie wprowadź **hdinsight** w polu wyszukiwania.  
 
-5. Wybierz **Kontynuuj** zamknąć **łącznik w wersji zapoznawczej** okno dialogowe z ostrzeżeniem.
+4. W wynikach wyszukiwania wybierz **interaktywnego zapytania HDInsight**, a następnie wybierz pozycję **Connect**.  Jeśli nie widzisz **interaktywnego zapytania HDInsight**, należy zaktualizować usługi Power BI Desktop do najnowszej wersji.
 
-6. Z **interaktywnego zapytania HDInsight**wybierz lub wprowadź następujące informacje:
+5. Wybierz **Kontynuuj** zamknąć **łączenia się z usługą innej firmy** okna dialogowego.
 
-    - **Serwer**: Na przykład wprowadź nazwę klastra zapytania interakcyjnego *myiqcluster.azurehdinsight.net*.
+6. W **interaktywnego zapytania HDInsight** okna, wprowadź następujące informacje, a następnie wybierz pozycję **OK**:
 
-    - **Baza danych**: Na potrzeby tego samouczka wprowadź **domyślne**.
-    
-    - **Tryb łączności danych**: Na potrzeby tego samouczka wybierz **zapytania bezpośredniego**.
+    |Właściwość | Wartość |
+    |---|---|
+    |Serwer |Wprowadź nazwę klastra, na przykład *myiqcluster.azurehdinsight.net*.|
+    |Database (Baza danych) |Wprowadź **domyślne** na potrzeby tego artykułu.|
+    |Tryb łączności danych |Wybierz **zapytania bezpośredniego** na potrzeby tego artykułu.|
 
     ![Connect HDInsight interakcyjnych zapytań DirectQuery usługi Power BI](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. Kliknij przycisk **OK**.
+7. Wprowadź poświadczenia protokołu HTTP, a następnie wybierz pozycję **Connect**. Domyślna nazwa użytkownika jest **administratora**.
 
-8. Wprowadź poświadczenia użytkownika protokołu HTTP, a następnie kliknij przycisk **OK**. Domyślna nazwa użytkownika to **administratora**
+8. Z **Nawigator** oknie w lewym okienku wybierz **hivesampletale**.
 
-9. W okienku po lewej stronie wybierz **hivesampletale**, a następnie kliknij przycisk **obciążenia**.
+9. Wybierz **obciążenia** w głównym oknie.
 
     ![HDInsight interakcyjnych zapytań usługi Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
 
@@ -68,11 +68,11 @@ W tej tabeli hivesampletable jest powiązana z wszystkimi klastrami HDInsight.
 
 Kontynuuj w poprzedniej procedurze.
 
-1. W okienku wizualizacje wybierz **mapy**.  Jest ikona globu.
+1. W okienku wizualizacje wybierz **mapy**, ikona globu. Ogólna mapa pojawi się w głównym oknie.
 
     ![HDInsight usługi Power BI dostosowuje raportu](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
-    
-2. W okienku pola wybierz **kraju** i **devicemake**. Widać danych wykreślić na mapie.
+
+2. W okienku pola wybierz **kraju** i **devicemake**. Po kilku chwilach mapę świata z punktami danych pojawia się w głównym oknie.
 
 3. Rozwiń mapę.
 

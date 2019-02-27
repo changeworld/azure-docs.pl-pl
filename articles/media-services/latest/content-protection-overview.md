@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 02c786209c81e755b05cc3875778f98faf8a1ae1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e515f7c0587e8bbcba10bcd2d2a726c16401bfbd
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650941"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889782"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -31,7 +31,7 @@ Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochro
 
 &#42;*szyfrowania dynamicznego obsługuje klucza AES-128"Wyczyść", CBCS i CENC. Szczegółowe informacje można znaleźć macierz obsługi [tutaj](#streaming-protocols-and-encryption-types).*
 
-W tym artykule opisano pojęcia i terminologia istotne dla zrozumienia, ochrony zawartości przy użyciu usługi Media Services. Artykuł ma również [— często zadawane pytania](#faq) sekcji i zawiera łącza do artykułów, które pokazują, jak chronić zawartość. 
+W tym artykule opisano pojęcia i terminologia istotne dla zrozumienia, ochrony zawartości przy użyciu usługi Media Services. Artykuł również ma sekcji często zadawane pytania i zawiera łącza do artykułów, które pokazują, jak chronić zawartość. 
 
 ## <a name="main-components-of-a-content-protection-system"></a>Główne składniki systemu ochrony zawartości
 

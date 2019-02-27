@@ -1,6 +1,6 @@
 ---
-title: Tworzenie widoków w celu analizowania danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Przy użyciu projektanta widoku w usłudze Log Analytics, można utworzyć niestandardowe widoki, które są wyświetlane w witrynie Azure portal i zawierać wiele wizualizacji danych w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i przedstawiono procedury tworzenia i edytowania widoków niestandardowych.
+title: Tworzenie widoków, aby analizować dane dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoku w usłudze Azure Monitor, można utworzyć niestandardowe widoki, które są wyświetlane w witrynie Azure portal i zawierają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i przedstawiono procedury tworzenia i edytowania widoków niestandardowych.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192264"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887909"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Log Analytics
-Przy użyciu projektanta widoku w [usługi Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
+# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Azure Monitor
+Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
@@ -30,7 +32,7 @@ Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
 
 ## <a name="concepts"></a>Pojęcia
-Widoki są wyświetlane na **Przegląd** stronie obszaru roboczego usługi Log Analytics w witrynie Azure portal. Kafelki w każdym widoku niestandardowego są wyświetlane w kolejności alfabetycznej, a kafelków rozwiązań są zainstalowane tego samego obszaru roboczego.
+Widoki są wyświetlane w usłudze Azure Monitor **Przegląd** strony w witrynie Azure portal. Otwórz tę stronę z **usługi Azure Monitor** menu, klikając **więcej** w obszarze **Insights** sekcji. Kafelki w każdym widoku niestandardowego są wyświetlane w kolejności alfabetycznej, a zainstalowanych Kafelki dla rozwiązania do monitorowania tego samego obszaru roboczego.
 
 ![Strona przeglądu](media/view-designer/overview-page.png)
 
@@ -38,9 +40,9 @@ Widoki, które tworzysz przy użyciu projektanta widoku zawierają elementy, kt�
 
 | Część | Opis |
 |:--- |:--- |
-| Kafelki | Są wyświetlane w obszarze roboczym usługi Log Analytics **Przegląd** strony. Każdy Kafelek Wyświetla wizualnego podsumowania widoku niestandardowego, który go reprezentuje. Każdy typ kafelka zawiera inny typ wizualizacji rekordy. Możesz wybrać Kafelek, aby wyświetlić widok niestandardowy. |
+| Kafelki | Są wyświetlane w usłudze Azure Monitor **Przegląd** strony. Każdy Kafelek Wyświetla wizualnego podsumowania widoku niestandardowego, który go reprezentuje. Każdy typ kafelka zawiera inny typ wizualizacji rekordy. Możesz wybrać Kafelek, aby wyświetlić widok niestandardowy. |
 | Widok niestandardowy | Wyświetlane po wybraniu kafelka. Każdy widok zawiera jedną lub więcej z części wizualizacji. |
-| Części wizualizacji | Prezentowanie wizualizacji danych w obszarze roboczym usługi Log Analytics, w oparciu o co najmniej jeden [dziennikach](../../azure-monitor/log-query/log-query-overview.md). Większość elementów obejmują nagłówka, który zawiera wizualizację wysokiego poziomu, oraz listy, który wyświetla najwyższe wyniki. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym usługi Log Analytics. Możesz wybrać elementy w części, aby wykonać wyszukiwanie w dzienniku, który zawiera szczegółową dokumentację. |
+| Części wizualizacji | Prezentowanie wizualizacji danych w obszarze roboczym usługi Log Analytics, w oparciu o co najmniej jeden [rejestrowania zapytań](../log-query/log-query-overview.md). Większość elementów obejmują nagłówka, który zawiera wizualizację wysokiego poziomu, oraz listy, który wyświetla najwyższe wyniki. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym usługi Log Analytics. Możesz wybrać elementy w części, aby wykonać zapytanie dziennika, który zawiera szczegółową dokumentację. |
 
 
 ## <a name="work-with-an-existing-view"></a>Praca z istniejącego widoku
@@ -53,7 +55,7 @@ W poniższej tabeli opisano opcje:
 | Opcja | Opis |
 |:--|:--|
 | Odświeżanie   | Odświeża widok przy użyciu najnowszych danych. | 
-| Analiza | Otwiera [portalu analizy zaawansowanej](../../azure-monitor/log-query/portals.md) do analizowania danych za pomocą zapytań log. |
+| Dzienniki      | Otwiera [usługi Log Analytics](../log-query/portals.md) do analizowania danych za pomocą zapytań log. |
 | Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartość i konfigurację.  |
 | Klonowanie      | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
 | Zakres dat | Ustaw datę i godzinę filtru zakresu danych, który znajduje się w widoku. Ten zakres dat jest stosowany przed wszystkie zakresy dat w zapytaniach w widoku.  |

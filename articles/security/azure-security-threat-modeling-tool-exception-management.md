@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 68bffaeef0451dae3a3b9707049dd2e44ad311fd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302153"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865879"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie wyjątkami | Środki zaradcze 
 | Produkt/usługę | Artykuł |
 | --------------- | ------- |
 | **WCF** | <ul><li>[Usługi WCF — nie uwzględniaj serviceDebug węzła w pliku konfiguracji](#servicedebug)</li><li>[Usługi WCF — nie uwzględniaj węzła serviceMetadata w pliku konfiguracji](#servicemetadata)</li></ul> |
-| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że odpowiednie wyjątków odbywa się w Web API platformy ASP.NET ](#exception)</li></ul> |
-| **Aplikacja sieci Web** | <ul><li>[Nie ujawniaj informacji zabezpieczeń w komunikatach o błędach ](#messages)</li><li>[Implementowanie obsługi strony błędów domyślne ](#default)</li><li>[Set, metoda wdrażania na detaliczną w usługach IIS](#deployment)</li><li>[Wyjątki powinna zakończyć się niepowodzeniem bezpiecznie](#fail)</li></ul> |
+| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że odpowiednie wyjątków odbywa się w Web API platformy ASP.NET](#exception)</li></ul> |
+| **Aplikacja sieci Web** | <ul><li>[Nie ujawniaj informacji zabezpieczeń w komunikatach o błędach](#messages)</li><li>[Implementowanie obsługi strony błędów domyślne](#default)</li><li>[Set, metoda wdrażania na detaliczną w usługach IIS](#deployment)</li><li>[Wyjątki powinna zakończyć się niepowodzeniem bezpiecznie](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>Usługi WCF — nie uwzględniaj serviceDebug węzła w pliku konfiguracji
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Ogólna NET Framework 3 |
+| **Odpowiednich technologii** | Generic, NET Framework 3 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Kroki** | Usług Windows Communication Framework (WCF) można skonfigurować tak, aby udostępnić informacje debugowania. Debugowanie nie można używać informacji w środowiskach produkcyjnych. `<serviceDebug>` Tag definiuje, czy funkcja informacji debugowania jest włączona dla usługi WCF. Jeśli includeExceptionDetailInFaults atrybutu jest równa true, informacje o wyjątku z aplikacji będą zwracane do klientów. Osoby atakujące mogą korzystać inne informacje, które będą mogli z debugowania danych wyjściowych do zainstalowania celem ataków w ramach, bazy danych lub innych zasobów używanych przez aplikację. |
@@ -54,18 +54,18 @@ Wyłącz informacji o debugowaniu w usłudze. Można to osiągnąć, usuwając `
 
 ## <a id="servicemetadata"></a>Usługi WCF — nie uwzględniaj węzła serviceMetadata w pliku konfiguracji
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
-| **Atrybuty**              | Ogólna NET Framework 3 |
+| **Atrybuty**              | Generic, NET Framework 3 |
 | **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Kroki** | Publicznie ujawnienia informacji na temat usługi może zapewnić osoby atakujące cenne wglądu w jaki sposób może wykorzystać usługę. `<serviceMetadata>` Tag włącza funkcję publikowania metadanych. Metadane usługi mogą zawierać poufne informacje, które nie powinny być dostępne publicznie. Jako minimum tylko użytkownicy zaufany dostęp do metadanych i upewnij się, że niepotrzebnych informacji nie jest uwidaczniana. Jeszcze lepiej całkowicie wyłączyć możliwość Publikowanie metadanych. Bezpieczne konfiguracji usługi WCF nie będzie zawierać `<serviceMetadata>` tagu. |
 
 ## <a id="exception"></a>Upewnij się, że odpowiednie wyjątków odbywa się w Web API platformy ASP.NET
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -183,7 +183,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="messages"></a>Nie ujawniaj informacji zabezpieczeń w komunikatach o błędach
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -194,18 +194,18 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="default"></a>Implementowanie obsługi strony błędów domyślne
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Edytuj okno dialogowe ustawień stron błędów ASP.NET](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Kroki** | <p>Gdy aplikacja ASP.NET nie powiedzie się i powoduje, że wystąpił wewnętrzny błąd serwera HTTP/1.x 500 lub Konfiguracja funkcji (np. Filtrowanie żądań) uniemożliwia wyświetlenie strony, zostanie wygenerowany komunikat o błędzie. Administratorzy mogą wybrać, informację określającą, czy aplikacja powinna wyświetlić przyjazny komunikat do klienta, szczegółowy komunikat o błędzie do klienta lub szczegółowy komunikat o błędzie tylko localhost. <customErrors> Znacznika w pliku web.config ma trzy tryby:</p><ul><li>**Na:** Określa, czy błędy niestandardowe są włączone. Jeśli atrybut defaultRedirect nie zostanie określony, użytkownicy widzą błąd ogólny. Błędy niestandardowe są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**Wyłącz:** Określa, że błędy niestandardowe są wyłączone. Szczegóły błędów ASP.NET są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**RemoteOnly:** Określa, czy błędy niestandardowe są wyświetlane tylko klienci zdalni i że ASP.NET błędy są wyświetlane dla hosta lokalnego. Jest to wartość domyślna</li></ul><p>Otwórz `web.config` plików dla aplikacji/witryny i sprawdź, czy tag ma `<customErrors mode="RemoteOnly" />` lub `<customErrors mode="On" />` zdefiniowane.</p>|
+| **Kroki** | <p>Gdy aplikacja ASP.NET nie powiedzie się i powoduje, że wystąpił wewnętrzny błąd serwera HTTP/1.x 500 lub Konfiguracja funkcji (np. Filtrowanie żądań) uniemożliwia wyświetlenie strony, zostanie wygenerowany komunikat o błędzie. Administratorzy mogą wybrać, informację określającą, czy aplikacja powinna wyświetlić przyjazny komunikat do klienta, szczegółowy komunikat o błędzie do klienta lub szczegółowy komunikat o błędzie tylko localhost. <customErrors> Znacznika w pliku web.config ma trzy tryby:</p><ul><li>**Włączone:** Określa, czy błędy niestandardowe są włączone. Jeśli atrybut defaultRedirect nie zostanie określony, użytkownicy widzą błąd ogólny. Błędy niestandardowe są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**Wyłączone:** Określa, że błędy niestandardowe są wyłączone. Szczegóły błędów ASP.NET są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**RemoteOnly:** Określa, że błędy niestandardowe są wyświetlane tylko z klientami zdalnymi oraz że ASP.NET błędy są wyświetlane dla hosta lokalnego. Jest to wartość domyślna</li></ul><p>Otwórz `web.config` plików dla aplikacji/witryny i sprawdź, czy tag ma `<customErrors mode="RemoteOnly" />` lub `<customErrors mode="On" />` zdefiniowane.</p>|
 
 ## <a id="deployment"></a>Set, metoda wdrażania na detaliczną w usługach IIS
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Wdrożenie |  
@@ -216,7 +216,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="fail"></a>Wyjątki powinna zakończyć się niepowodzeniem bezpiecznie
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  

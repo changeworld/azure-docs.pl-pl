@@ -2,33 +2,36 @@
 title: Co to jest interfejs API rozpoznawania twarzy?
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać usługi rozpoznawania twarzy do wykrywania i analizowania twarzy na obrazach.
-author: SteveMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 10/29/2018
-ms.author: sbowles
-ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861056"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455980"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
 Interfejs API rozpoznawania twarzy na platformie Azure to usługa Cognitive Service, która obsługuje algorytmy wykrywania, rozpoznawania i analizowania ludzkich twarzy na obrazach. Możliwość przetwarzania informacji o ludzkich twarzach jest ważna w wielu różnych scenariuszach programowych, w tym dotyczących zabezpieczeń, naturalnego interfejsu użytkownika, analizy zawartości obrazu i zarządzania nią, aplikacji mobilnych i robotyki.
 
-Interfejs API rozpoznawania twarzy oferuje kilka różnych funkcji opisanych w poniższych sekcjach. Kontynuuj czytanie, aby dowiedzieć się więcej o każdej z nich i określić, czy dana funkcja odpowiada Twoim potrzebom.
+Interfejs API rozpoznawania twarzy oferuje kilka różnych funkcji opisanych w poniższych sekcjach. Czytaj dalej, aby dowiedzieć się więcej na temat każdej z nich.
 
 ## <a name="face-detection"></a>Wykrywanie twarzy
 
-Interfejs API rozpoznawania twarzy może wykrywać ludzkie twarzy na obrazie i zwracać współrzędne prostokąta ich lokalizacji. Opcjonalnie funkcja wykrywania twarzy może wyodrębniać szereg atrybutów dotyczących twarzy, takich jak wyraz, płeć, wiek, ułożenie głowy, zarost i okulary.
+Interfejs API rozpoznawania twarzy może wykrywać ludzkie twarzy na obrazie i zwracać współrzędne prostokąta ich lokalizacji. Opcjonalnie funkcja wykrywania twarzy może wyodrębniać szereg atrybutów dotyczących twarzy, takich jak postawa, ułożenie głowy, płeć, wiek, emocje, zarost i okulary.
 
 ![Obraz przedstawiający kobietę i mężczyznę z prostokątami narysowanymi wokół twarzy oraz wyświetlonym wiekiem i płcią](./Images/Face.detection.jpg)
 
-Funkcja wykrywania twarzy jest również dostępna za pośrednictwem [interfejsu API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale aby wykonywać dalsze operacje przy użyciu danych twarzy, należy użyć interfejsu API rozpoznawania twarzy (tej usługi). Aby uzyskać więcej informacji na temat wykrywania twarzy, zobacz [Detect API (Interfejs API wykrywania)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+> [!NOTE] 
+> Funkcja wykrywania twarzy jest również dostępna za pośrednictwem [interfejsu API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale aby wykonywać dalsze operacje przy użyciu danych twarzy, należy użyć interfejsu API rozpoznawania twarzy (tej usługi). 
+
+Aby uzyskać więcej informacji na temat wykrywania twarzy, zobacz [Detect API (Interfejs API wykrywania)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 ## <a name="face-verification"></a>Weryfikacja twarzy
 

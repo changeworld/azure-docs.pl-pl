@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 2a282b76805ab91215d6b34ea30a7008d8c8244b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 56afc933eff2e06df270b17403b767ebaddd4154
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467982"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873002"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w usłudze Azure Blob Storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumentów programu Microsoft Office i kilka innych typowych formatów) przechowywanych w usłudze Azure Blob storage. Po pierwsze wyjaśnia podstawowe informacje dotyczące instalowania i konfigurowania indeksatora obiektów blob. Następnie oferuje bardziej zaawansowanej eksploracji zachowań, scenariuszy może wystąpić.
@@ -333,7 +333,7 @@ Indeksowanie obiektów blob może być czasochłonne. W przypadkach, w którym m
 
 Możesz chcieć "złożyć" dokumenty z wielu źródeł w indeksie. Na przykład można scalić tekstu z obiektów blob z inne metadane przechowywane w usłudze Cosmos DB. Nawet służy wypychania indeksowania interfejsu API wraz z różnych indeksatorów do tworzenia dokumentów wyszukiwania z wielu części. 
 
-Aby to działało wszystkie indeksatory i inne składniki muszą uzgodnić klucz dokumentu. Szczegółowy przewodnik znajduje się w artykule zewnętrznych: [Łączenie dokumentów z innymi danymi w usłudze Azure Search ](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Aby to działało wszystkie indeksatory i inne składniki muszą uzgodnić klucz dokumentu. Szczegółowy przewodnik znajduje się w artykule zewnętrznych: [Łączenie dokumentów z innymi danymi w usłudze Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indeksowanie Zwykły tekst 

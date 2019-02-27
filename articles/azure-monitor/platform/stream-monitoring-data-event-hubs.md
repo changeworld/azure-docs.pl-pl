@@ -1,6 +1,6 @@
 ---
 title: Stream danych monitorowania platformy Azure do usługi Event Hubs
-description: Dowiedz się, jak wszystkie dane monitorowania platformy Azure do Centrum zdarzeń można pobrać danych do rozwiązania SIEM partnera lub narzędzia do analizy strumienia.
+description: Dowiedz się, jak przesyłać strumieniowo dane monitorowania platformy Azure do Centrum zdarzeń można pobrać danych do rozwiązania SIEM partnera lub narzędzia analizy.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468237"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870690"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
-Usługa Azure Monitor zapewnia jeden potok w celu uzyskania dostępu do wszystkich monitorowania danych ze środowiska platformy Azure, dzięki czemu można łatwo skonfigurować partnera SIEM i narzędzi do korzystania z tych danych do monitorowania. W tym artykule przedstawiono konfigurowanie różnych warstw danych ze środowiska platformy Azure do wysłania do jednej usługi Event Hubs przestrzeni nazw lub zdarzenia koncentratora, gdzie mogą być zbierane przez narzędzie zewnętrzne.
+W tym artykule przedstawiono konfigurowanie różnych warstw danych ze środowiska platformy Azure do wysłania do jednej usługi Event Hubs przestrzeni nazw lub zdarzenia koncentratora, gdzie mogą być zbierane przez narzędzie zewnętrzne.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
@@ -33,7 +33,7 @@ W środowisku platformy Azure istnieje kilka "warstwy" danych monitorowania, a m
 - **Subskrypcja platformy Azure, danych monitorowania:** Dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. [Dziennika aktywności](./../../azure-monitor/platform/activity-logs-overview.md) zawiera większość subskrypcji monitorowania danych, takich jak zdarzenia kondycji usługi i inspekcji usługi Azure Resource Manager. Można zbierać dane przy użyciu profilu dziennika.
 - **Monitorowanie danych dzierżawy platformy Azure:** Dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory. Przeprowadza inspekcję Azure Active Directory i logowania są przykładami dzierżawy danych monitorowania. Te dane mogą być zbierane przy użyciu ustawienia diagnostyczne dzierżawy.
 
-Dane z dowolnej warstwy mogą być wysyłane do Centrum zdarzeń, gdzie mogą być ściągane do narzędzia partnera. W kolejnych sekcjach opisano sposób konfigurowania danych z każdej warstwy, aby być przesłana strumieniowo do Centrum zdarzeń. Założono w nim już ma zasoby w tej warstwie do monitorowania.
+Dane z dowolnej warstwy mogą być wysyłane do Centrum zdarzeń, gdzie mogą być ściągane do narzędzia partnera. Niektóre źródła można skonfigurować do wysyłania danych bezpośrednio do Centrum zdarzeń, podczas gdy inny przetwarzania, takie jak aplikacja logiki może być wymagany do pobrania niezbędnych danych. W kolejnych sekcjach opisano sposób konfigurowania danych z każdej warstwy, aby być przesłana strumieniowo do Centrum zdarzeń. Założono w nim już ma zasoby w tej warstwie do monitorowania.
 
 ## <a name="set-up-an-event-hubs-namespace"></a>Konfigurowanie przestrzeni nazw usługi Event Hubs
 

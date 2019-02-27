@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: f615c4ca9ffc56daafcedd711f27672e0855e4fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301829"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883951"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -169,7 +169,7 @@ Subskrypcje mają również powiązanie z katalogiem. Katalog definiuje zbiór u
 
 Związanych z zabezpieczeniami firmy należy skoncentrować się na zapewniając pracownikom dokładnie uprawnienia, które są im potrzebne. Zbyt wiele uprawnień może narazić konta dla osób atakujących. Zbyt mało uprawnienia oznacza, że pracownicy nie może wykonać swoją pracę wydajnie. [Usługa Azure opartej na rolach kontrola dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) pomaga rozwiązać ten problem, udostępniając precyzyjne zarządzanie dostępem dla platformy Azure.
 
-![Dostęp do zabezpieczonych zasobów ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![Dostęp do zabezpieczonych zasobów](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
 Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań. Zamiast wszystkich nieograniczone uprawnienia w Twojej subskrypcji platformy Azure lub zasobów, można zezwolić tylko określone akcje. Na przykład użyć RBAC, aby umożliwić jednego pracownika zarządzać maszyn wirtualnych w ramach subskrypcji, gdy inny można zarządzać baz danych SQL w ramach tej samej subskrypcji.
 

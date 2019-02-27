@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bcb00029acbe8c64e29addbc9291a694f1de98b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267721"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888087"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
@@ -50,7 +50,7 @@ Informacje o zależnościach częściowe są zbierane automatycznie przez [zesta
 
 ## <a name="where-to-find-dependency-data"></a>Gdzie można znaleźć dane zależności
 * [Mapa aplikacji](#application-map) wizualizuje zależności między aplikacji i składników sąsiednich.
-* [Wydajność, przeglądarki i błędów bloków](#performance-and-blades) Pokaż dane zależności serwera.
+* [Wydajność, przeglądarki i błędów bloków](#performance-and-failure-blades) Pokaż dane zależności serwera.
 * [Blok przeglądarki](#ajax-calls) przedstawia wywołania AJAX z przeglądarek użytkowników.
 * Klikaj elementy z żądań wolno lub nie powiodło się, aby sprawdzić, wywołania ich zależności.
 * [Analiza](#analytics) może służyć do zależności zapytania o dane.

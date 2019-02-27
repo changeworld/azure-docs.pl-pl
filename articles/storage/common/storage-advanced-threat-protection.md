@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: ronmat
 ms.manager: shaik
-ms.openlocfilehash: 8b2ca2d5d6418d68cab847df80fc437e468249ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 00de38aa7309179b92ff65f009f8aa780f60c284
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995651"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883695"
 ---
-# <a name="azure-storage-advanced-threat-protection"></a>Usługa Azure Storage, Zaawansowana ochrona przed zagrożeniami
+# <a name="azure-storage-advanced-threat-protection"></a>Azure Storage Advanced Threat Protection
 
 Usługa Azure Storage zaawansowanej ochrony przed zagrożeniami wykrywają nieprawidłowości w działaniu konta i powiadamia o potencjalnie szkodliwych prób dostępu do Twojego konta. Ta warstwa ochrony umożliwia reagowanie na zagrożenia bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania systemami monitorowania bezpieczeństwa.
 
@@ -59,21 +59,21 @@ Można przeglądać i zarządzać bieżące alerty zabezpieczeń w usłudze Azur
 
 Alerty są generowane na podstawie nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać kont magazynu. Zdarzenia te można uruchomić następujące alerty:
 
-* **Dostęp z nietypowej lokalizacji**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład, gdy ktoś uzyskał dostęp do konta magazynu z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (Nowa aplikacja lub operacji konserwacji dewelopera). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca itp.).
+* **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład, gdy ktoś uzyskał dostęp do konta magazynu z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (Nowa aplikacja lub operacji konserwacji dewelopera). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca itp.).
 
-* **Wyodrębnianie danych**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca wyodrębniania danych z konta magazynu. Na przykład jeśli ktoś uzyskał dostęp do nietypowych ilość danych na koncie magazynu. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (działanie konserwacji). W innych przypadkach ten alert wykrywa złośliwe działanie (naruszenia wykradanie danych, nieautoryzowanych transfer danych).
+* **Wyodrębnianie danych**: Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca wyodrębniania danych z konta magazynu. Na przykład jeśli ktoś uzyskał dostęp do nietypowych ilość danych na koncie magazynu. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (działanie konserwacji). W innych przypadkach ten alert wykrywa złośliwe działanie (naruszenia wykradanie danych, nieautoryzowanych transfer danych).
 
-* **Nietypowy dostęp anonimowy:** ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład załóżmy, że ktoś anonimowo uzyskiwał dostęp do konta magazynu. W niektórych przypadkach ten alert wykrywa legalny dostęp przy użyciu publicznego dostępu do odczytu. W innych przypadkach ten alert wykrywa przed nieautoryzowanym dostępem, która wykorzystuje publicznego dostępu do odczytu do kontenera i jego obiektów blob.
+* **Nietypowy dostęp anonimowy:** Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład załóżmy, że ktoś anonimowo uzyskiwał dostęp do konta magazynu. W niektórych przypadkach ten alert wykrywa legalny dostęp przy użyciu publicznego dostępu do odczytu. W innych przypadkach ten alert wykrywa przed nieautoryzowanym dostępem, która wykorzystuje publicznego dostępu do odczytu do kontenera i jego obiektów blob.
 
-* **Nieoczekiwany delete:** ten alert jest wyzwalany, gdy co najmniej jednej operacji usuwania nieoczekiwany występują na koncie magazynu, na podstawie historycznych analizy na koncie magazynu. Na przykład załóżmy, że ktoś wykonywane *DeleteBlob* operację, używając nowej aplikacji i z nowego adresu IP. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (administrator użyć innej przeglądarki podczas podróży działalność). W innych przypadkach ten alert wykrywa złośliwe działanie (osoba atakująca usunięcie danych). 
+* **Nieoczekiwane usunięcie:** Ten alert jest wyzwalany, gdy co najmniej jednej operacji usuwania nieoczekiwany występują na koncie magazynu, na podstawie historycznych analizy na koncie magazynu. Na przykład załóżmy, że ktoś wykonywane *DeleteBlob* operację, używając nowej aplikacji i z nowego adresu IP. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (administrator użyć innej przeglądarki podczas podróży działalność). W innych przypadkach ten alert wykrywa złośliwe działanie (osoba atakująca usunięcie danych). 
  
-* **Zmień uprawnienia dostępu:** ten alert jest wyzwalany, gdy występuje nieoczekiwane zmiany uprawnień dostępu do konta magazynu. Na przykład załóżmy, że ktoś zmienił uprawnienia dostępu do konta magazynu przy użyciu nowej aplikacji i z nowego adresu IP. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (administrator użyć innej przeglądarki podczas podróży działalność). W innych przypadkach ten alert wykrywa złośliwe działanie (np. osoba atakująca zwiększanie uprawnień, który zdobył dostęp do konta). 
+* **Zmień uprawnienia dostępu:** Ten alert jest wyzwalany, gdy występuje nieoczekiwane zmiany uprawnień dostępu do konta magazynu. Na przykład załóżmy, że ktoś zmienił uprawnienia dostępu do konta magazynu przy użyciu nowej aplikacji i z nowego adresu IP. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (administrator użyć innej przeglądarki podczas podróży działalność). W innych przypadkach ten alert wykrywa złośliwe działanie (np. osoba atakująca zwiększanie uprawnień, który zdobył dostęp do konta). 
 
-* **Przekaż pakiet usługi w chmurze platformy Azure:** ten alert jest wyzwalany, gdy ma nieoczekiwany przekazywania pakietu usługi w chmurze Azure (*cspkg* plików) do konta magazynu. Na przykład załóżmy, że *cspkg* plik został przekazany z nowego adresu IP. W niektórych przypadkach ten alert wykrywa prawidłowe działanie. W innych przypadkach ten alert wykrywa złośliwe działanie (np. usługi w chmurze pakiet został przekazany w ramach przygotowań do wdrożenia usługi złośliwego).    
+* **Przekaż pakiet usługi w chmurze platformy Azure:** Ten alert jest wyzwalany, gdy ma nieoczekiwany przekazywania pakietu usługi w chmurze Azure (*cspkg* plików) do konta magazynu. Na przykład załóżmy, że *cspkg* plik został przekazany z nowego adresu IP. W niektórych przypadkach ten alert wykrywa prawidłowe działanie. W innych przypadkach ten alert wykrywa złośliwe działanie (np. usługi w chmurze pakiet został przekazany w ramach przygotowań do wdrożenia usługi złośliwego).    
    
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [logowania na kontach magazynu Azure ](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* Dowiedz się więcej o [logowania na kontach magazynu Azure](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
 * Dowiedz się więcej o [usługi Azure Security Center](../../security-center/security-center-intro.md)

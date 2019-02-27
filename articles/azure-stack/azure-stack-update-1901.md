@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77b3d8bd1d16e90e9929c41f0f28940694dc7906
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416517"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889838"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -34,7 +34,14 @@ W tym artykule opisano zawartość pakietu 1901 aktualizacji. Aktualizacja zawie
 
 ## <a name="build-reference"></a>Dokumentacja kompilowania
 
-Numerem kompilacji aktualizacji usługi Azure Stack 1901 **1.1901.0.95**.
+Numerem kompilacji aktualizacji usługi Azure Stack 1901 **1.1901.0.95** lub **1.1901.0.99** po 26 lutego 2019 r. Zobacz następującą uwagę:
+
+> [!IMPORTANT]  
+> Firma Microsoft wykrył problem, który może wpłynąć na klientów, aktualizowania z 1811 (1.1811.0.101) 1901, się i zaktualizowany pakiet 1901, aby rozwiązać ten problem: tworzenie 1.1901.0.99 i aktualizowane na podstawie 1.1901.0.95. Klienci, którzy już zostały zaktualizowane do 1.1901.0.95 jest konieczne wykonywanie dodatkowych działań.
+>
+> Połączonych klientów, którzy znajdują się na 1811 zostanie automatycznie poinformowany o nowym pakiecie 1901 (1.1901.0.99) dostępne w portalu administratora, a następnie należy zainstalować go po wykonaniu tych czynności. Pobrać i zaimportować nowy pakiet 1901 przy użyciu tego samego procesu klientów odłączonych [opisane w tym miejscu](azure-stack-apply-updates.md).
+>
+> Klienci z danej wersji 1901 nie ma wpływ na podczas instalowania następnego pełnego lub poprawki pakietu.
 
 ## <a name="hotfixes"></a>Poprawki
 
@@ -84,9 +91,9 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
    * **AzureRm.Insights**  
          AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 5.1.5 **interfejsu api w wersji 2018-01-01** dla metryk, definicje metryk typów zasobów.
 
-- **AzureStack 1.7.0** tej istotnej zmiany wersji. Aby uzyskać informacji na temat przełomowych zmianach zobacz https://aka.ms/azspshmigration170
+- **AzureStack 1.7.0** tej istotnej zmiany wersji. Aby uzyskać szczegółowe informacje na temat istotnych zmian, zobacz https://aka.ms/azspshmigration170
    * **Moduł Azs.Backup.Admin**  
-         Zmiana powodująca niezgodność: Kopia zapasowa zmieni się na tryb szyfrowania oparte na certyfikatach. Obsługa dla kluczy symetrycznych jest przestarzała.  
+         Zmiana powodująca niezgodność: Kopia zapasowa zmienia się na tryb szyfrowania opartego na certyfikacie. Obsługa kluczy symetrycznych jest przestarzała.  
    * **Moduł Azs.Fabric.Admin**  
          `Get-AzsInfrastructureVolume` jest przestarzała. Nowe polecenie cmdlet `Get-AzsVolume`.  
          `Get-AzsStorageSystem` jest przestarzała.  Nowe polecenie cmdlet `Get-AzsStorageSubSystem`.  
@@ -170,33 +177,6 @@ Aby przejrzeć odwołania do zaktualizowanych modułów, zobacz [odwołania do u
 
    Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
-   ```
-
-- Obecnie są rozszerzenia w usłudze Azure Stack, które pomyślnie wdrożyć bez konieczności jawnego pobieranie rozszerzeń, za pośrednictwem witryny marketplace syndykacji. Następujące wersje te rozszerzenia są usuwane. Operatorzy usługi Azure Stack teraz należy jawnie zespól tych rozszerzeń z witryny marketplace usługi Azure Stack:
-
-   | Type                     | Wersja        |
-   |--------------------------|----------------|
-   | DSC                      | 2.19.0.0       |
-   | IaaSAntimalware          | 1.4.0.0        |
-   | BGInfo                   | 2.1            |
-   | VMAccessAgent            | 2.0            |
-   | CustomScriptExtension    | 1.8            |
-   | MicrosoftMonitoringAgent | 1.0.10900.0    |
-   | IaaSDiagnostics          | 1.10.1.1       |
-   | VMAccessForLinux         | 1.4.0.0        |
-   | CustomScriptForLinux     | 1.5.2.0        |
-   | DockerExtension          | 1.1.1606092330 |
-   | JsonADDomainExtension    | 1.3            |
-   | OSPatchingForLinux       | 2.3.0.1        |
-   | WebRole                  | 4.3000.14.0    |
-
-   Zalecane jest, że podczas wdrażania rozszerzenia należy ustawić użytkowników usługi Azure Stack `autoUpgradeMinorVersion` do **true**. Na przykład:
-
-   ```json
-   "type": "Extension",
-           "publisher": "ExtensionPublisher",
-           "typeHandlerVersion": "1.2",
-           "autoUpgradeMinorVersion": "true"
    ```
 
 - Dostępne jest nowe dokładne Planowanie pojemności usługi Azure Stack. Dzięki aktualizacji 1901 jest teraz limit łącznej liczby maszyn wirtualnych, które mogą być tworzone.  To ograniczenie jest przeznaczone do zastosowania tymczasowego, aby zapobiec niestabilności rozwiązania. Skierowana jest źródłem problemu stabilności w większej liczby maszyn wirtualnych, ale nie ma jeszcze nieustalona określonej osi czasu korygowania. Dzięki aktualizacji 1901 jest teraz na limit serwera 60 maszyn wirtualnych przy ograniczeniu kompleksowe rozwiązania 700.  Na przykład limit maszyny Wirtualnej platformy Azure Stack 8 serwerów będzie 480 (8 * 60).  Dla serwera 12 do 16 rozwiązania usługi Azure Stack limit byłoby 700. Ten limit został utworzony, pamiętając o wszystkie zasoby obliczeniowe zagadnienia dotyczące wydajności takich jak rezerwy odporności i Procesora wirtualnego na fizycznej współczynnika, który operator chcesz zachować na sygnatury. Aby uzyskać więcej informacji zobacz nowa wersja planisty wydajności.  

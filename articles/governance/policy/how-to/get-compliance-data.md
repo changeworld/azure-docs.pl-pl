@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 41c44d1f4054d93c770f80496c8d7a0bddf5eb13
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 44f0309d472a79526537f79feabcd9777b70bcc7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650347"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888781"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
 
@@ -142,25 +142,11 @@ Kliknij prawym przyciskiem myszy w wierszu zdarzenia, o których chcesz zbierać
 
 ![Dziennik aktywności zgodności zasad](../media/getting-compliance-data/compliance-activitylog.png)
 
-### <a name="change-history-preview"></a>Historia zmian (wersja zapoznawcza)
+### <a name="understand-non-compliance"></a>Zrozumienie braku zgodności
 
-Jako część nowego **publicznej wersji zapoznawczej**, ostatnich dni czternastu historię zmian są dostępne dla niezgodnych zasobów. Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości usługi Resource Manager niezgodnym zasobem.
+<a name="change-history-preview"></a>
 
-1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
-
-1. Na **Przegląd** lub **zgodności** wybierz zasadę, która jest _niezgodne_.
-
-1. W obszarze **zgodność zasobów** karcie **zgodność z zasadami** wybierz zasób, to _niezgodne_.
-
-1. Wybierz **historię zmian (wersja zapoznawcza)** karcie **zgodność zasobów** strony. Lista Wykryto zmiany, jeśli nie są wyświetlane wszelkie istnieje.
-
-   ![Historię zmian zasad — karta](../media/getting-compliance-data/change-history-tab.png)
-
-1. Wybierz jeden z wykryte zmiany. _Visual diff_ dla niezgodnych zasobów są przedstawione na **historię zmian** strony.
-
-   ![Historię zmian zasad — Visual Diff](../media/getting-compliance-data/change-history-visual-diff.png)
-
-_Visual diff_ aides do identyfikowania zmiany w zasobie. Wykryto zmiany mogą być niepowiązane z przyczyn zasób powinien być niezgodne do wybranych zasad.
+Gdy zasoby są uznane za **niezgodnych**, istnieje wiele możliwych przyczyn. Aby ustalić przyczynę, zasób jest **niezgodnych** lub zmiana odpowiada, możesz znaleźć [ustalenia niezgodności](./determine-non-compliance.md).
 
 ## <a name="command-line"></a>Wiersz polecenia
 

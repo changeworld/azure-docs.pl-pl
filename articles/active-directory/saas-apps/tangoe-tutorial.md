@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986afa1239ad0efd9ccb936252ead37c8379b447
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8c9f410fa890df7aac3c3bf4d89468b92e69ba38
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192901"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Samouczek: Integracja usługi Azure Active Directory z Tangoe polecenia Premium Mobile
 
@@ -75,7 +75,7 @@ Aby skonfigurować integrację Tangoe polecenia Premium Mobile w usłudze Azure 
 
 1. W polu wyszukiwania wpisz **Mobile — wersja Premium polecenia Tangoe**, wybierz opcję **Mobile — wersja Premium polecenia Tangoe** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Dodaj Mobile — wersja Premium polecenia Tangoe z galerii ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
+    ![Dodaj Mobile — wersja Premium polecenia Tangoe z galerii](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 W tej sekcji możesz skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Tangoe Mobile — wersja Premium dla polecenia w oparciu o nazwie "Britta Simon" użytkownika testowego.

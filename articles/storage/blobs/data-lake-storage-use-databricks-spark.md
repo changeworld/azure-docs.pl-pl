@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891661"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452612"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Samouczek: Uzyskiwanie dostępu do danych usługi Access Data Lake Storage Gen2 za pomocą usługi Azure DataBricks i platformy Spark
 
@@ -38,6 +38,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * Zainstaluj narzędzie AzCopy w wersji 10. Zobacz [Transferowanie danych za pomocą narzędzia AzCopy w wersji 10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
+*  Tworzenie jednostki usługi. Zobacz [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+   Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
+
+   :heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano rolę **Współautor danych obiektu blob magazynu** do jednostki usługi.
+
+   > [!IMPORTANT]
+   > Upewnij się, że przypisano rolę w zakresie konta magazynu usługi Data Lake Storage Gen2. Możesz przypisać rolę do nadrzędnej grupy zasobów lub subskrypcji, ale będzie zgłaszany błąd dotyczący uprawnień do momentu rozpropagowania przypisań roli do konta magazynu.
+
+   :heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
+
 ### <a name="download-the-flight-data"></a>Pobieranie danych lotów
 
 W tym samouczku w celu zademonstrowania sposobu wykonywania operacji ETL są używane dane dotyczące lotów opracowane przez agencję Bureau of Transportation Statistics. Aby ukończyć samouczek, musisz pobrać te dane.
@@ -49,24 +60,6 @@ W tym samouczku w celu zademonstrowania sposobu wykonywania operacji ETL są uż
 3. Wybierz przycisk **Download** (Pobierz) i zapisz wyniki na swoim komputerze. 
 
 4. Rozpakuj zawartość pliku zip i zanotuj nazwę pliku oraz jego ścieżkę. Te informacje będą potrzebne w późniejszym kroku.
-
-## <a name="get-your-storage-account-name"></a>Uzyskiwanie nazwy konta magazynu
-
-Będziesz potrzebować nazwy swojego konta magazynu. Aby ją uzyskać, zaloguj się w witrynie [Azure Portal](https://portal.azure.com/), wybierz pozycję **Wszystkie usługi** i przefiltruj zawartość według terminu *magazyn*. Następnie wybierz pozycję **Konta magazynu** i znajdź swoje konto magazynu.
-
-Wklej nazwę do pliku tekstowego. Wkrótce będziesz jej potrzebować.
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
-
-Utwórz jednostkę usługi, wykonując czynności opisane w temacie: [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
-
-:heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano aplikację do **roli Współautor usługi Blob Storage**.
-
-:heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
 
 ## <a name="create-an-azure-databricks-service"></a>Tworzenie usługi Azure Databricks
 
@@ -145,9 +138,16 @@ W tej sekcji utworzysz system plików i folder na koncie magazynu.
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. W tym bloku kodu zastąp symbole zastępcze `storage-account-name`, `application-id`, `authentication-id` i `tenant-id` wartościami uzyskanymi podczas wykonywaniu kroków opisanych w sekcjach Zapisywanie konfiguracji konta magazynu na później i [Tworzenie jednostki usługi](#service-principal) tego artykułu. Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
 
-19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku. 
+18. W tym bloku kodu zamień symbole zastępcze `application-id`, `authentication-id`, `tenant-id` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
+
+   * Parametry `application-id` i `authentication-id` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
+
+   * Parametr `tenant-id` pochodzi z subskrypcji.
+
+   * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
+
+19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
     Nie zamykaj tego notesu, ponieważ później będziesz jeszcze dodawać do niego polecenia.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ab920094561b9143945793ddd4ea3da877a7ae90
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787855"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340539"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Przełączanie maszyn wirtualnych platformy Azure w tryb failover i przywracanie po awarii między regionami świadczenia usługi Azure
 
@@ -70,6 +70,16 @@ Po przełączeniu maszyny wirtualnej w tryb failover należy ponownie włączyć
 3. Przejrzyj informacje o **grupie zasobów, sieci, magazynie i zestawach dostępności**. Wszystkie zasoby oznaczone jako (nowy) są tworzone w ramach operacji ponownej ochrony.
 4. Kliknij przycisk **OK**, aby wyzwolić zadanie włączania ponownej ochrony. To zadanie inicjuje lokację docelową przy użyciu najnowszych danych. Następnie replikuje zmiany do regionu podstawowego. Maszyna wirtualna jest teraz w stanie chronionym.
 
+> [!NOTE]
+> Zobacz [sekcję z instrukcjami](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection), aby uzyskać więcej informacji na temat przepływu pracy ponownego objęcia ochroną i tego, co się dzieje podczas ponownego obejmowania ochroną.
+
+
 ## <a name="fail-back-to-the-primary-region"></a>Powrót po awarii do regionu podstawowego
 
-Po ponownym włączeniu ochrony maszyn wirtualnych możesz wykonać powrót po awarii do regionu podstawowego. W tym celu skonfiguruj przełączanie w tryb failover z regionu pomocniczego do regionu podstawowego, według opisu w tym artykule.
+Po ponownym objęciu ochroną maszyn wirtualnych możesz wykonać powrót po awarii do regionu podstawowego. W tym celu skonfiguruj przełączanie w tryb failover z regionu pomocniczego do regionu podstawowego, według opisu w tym artykule.
+
+![Kliknięcie prawym przyciskiem myszy w celu ponownego włączenia ochrony](./media/azure-to-azure-tutorial-failover-failback/failback.png)
+
+Jeśli zostanie wyświetlony poprzedni zrzut ekranu, to maszyna wirtualna „ContosoWin2016” została przełączona w tryb failover z regionu Środkowe stany USA do regionu Wschodnie stany USA i powróciła po awarii z regionu Wschodnie stany USA do regionu Środkowe stany USA.
+
+Tryb failover wyłącza maszynę wirtualną w regionie pomocniczym, czyli w regionie odzyskiwania po awarii, i tworzy oraz uruchamia maszynę wirtualną w regionie podstawowym. Należy **pamiętać**, że maszyny wirtualne odzyskiwania po awarii pozostają w stanie zamknięcia bez alokacji, jak pokazano powyżej. To zachowanie jest zaprojektowane specjalnie, ponieważ usługa Azure Site Recovery zapisuje informacje o maszynie wirtualnej, które mogą być przydatne później podczas przełączania w tryb failover z regionu podstawowego do regionu pomocniczego. Za maszyny wirtualne bez alokacji nie są naliczane opłaty, dlatego należy je zostawić tak, jak są.

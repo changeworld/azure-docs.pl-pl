@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 18e629571a45046e5cf54996cd38b425c999ee36
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737641"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889362"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Zdefiniuj filtry kont i zasobów filtry  
 
@@ -38,9 +38,9 @@ W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
 
 |Protokół|Przykład|
 |---|---|
-|HLS|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>Dla protokołu HLS w wersji 3, użyj: `format=m3u8-aapl-v3`.|
-|MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>Dla protokołu HLS w wersji 3, użyj: `format=m3u8-aapl-v3`.|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="define-filters"></a>Zdefiniuj filtry
 
@@ -71,10 +71,10 @@ Użyj tej właściwości, za pomocą **filtry zasobów**. Nie zaleca się ustawi
 |**forceEndTimestamp**|Ma zastosowanie do transmisji strumieniowej na żywo tylko.<br/>Wskazuje, czy właściwość endTimestamp musi być obecny. W przypadku opcji true endTimestamp musi być określona, lub zostanie zwrócony kod nieprawidłowe żądanie.<br/>Dozwolone wartości: FAŁSZ, PRAWDA.|
 |**liveBackoffDuration**|Ma zastosowanie do transmisji strumieniowej na żywo tylko.<br/> Ta wartość określa najnowsze na żywo pozycji klient może próbować.<br/>Używanie tej właściwości, można opóźnić pozycji odtwarzania na żywo i tworzyć bufor po stronie serwera dla graczy.<br/>W tej właściwości jest jednostka skali czasu (patrz poniżej).<br/>Maksimum na żywo wycofania czas trwania to 300 sekund (3000000000).<br/>Na przykład wartość 2000000000 oznacza, że najnowsza wersja zawartości jest 20 sekund opóźnienia od rzeczywistego na żywo krawędzi.|
 |**presentationWindowDuration**|Ma zastosowanie do transmisji strumieniowej na żywo tylko.<br/>Użyj presentationWindowDuration do zastosowania przesuwającego się okna fragmentów, które mają zostać objęte listy odtwarzania.<br/>W tej właściwości jest jednostka skali czasu (patrz poniżej).<br/>Na przykład ustawić presentationWindowDuration = 1200000000, aby zastosować przesuwającego się okna dwie minuty. Nośnik w ciągu 2 minut na żywo edge zostaną uwzględnione w listy odtwarzania. Jeśli fragment pokrywającej granicy, całego fragmentu zostaną uwzględnione na liście odtwarzania. Czas trwania okna prezentacji minimalna wynosi 60 sekund.|
-|**startTimestamp**|Ma zastosowanie do wideo na żądanie (VoD) lub transmisji strumieniowej na żywo.<br/>Jest to wartość typu long reprezentujący punkt początkowy bezwzględne strumienia. Wartość jest zaokrąglana do najbliższej następnym uruchomieniu GOP. Jednostka jest skala czasu, więc będzie startTimestamp 150000000 15 sekund.<br/>Użyj startTimestamp i endTimestampp można przycięcia fragmentów, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu skali czasu domyślne wygeneruje listy odtwarzania, który zawiera fragmenty znajdujące 4 sekundy, a następnie 10 sekund prezentacja wideo na żądanie. Jeśli fragment pokrywającej granicy, całego fragmentu zostaną uwzględnione w manifeście|
+|**startTimestamp**|Ma zastosowanie do wideo na żądanie (VoD) lub transmisji strumieniowej na żywo.<br/>Jest to wartość typu long reprezentujący punkt początkowy bezwzględne strumienia. Wartość jest zaokrąglana do najbliższej następnym uruchomieniu GOP. Jednostka jest skala czasu, więc będzie startTimestamp 150000000 15 sekund.<br/>Użyj startTimestamp i endTimestampp można przycięcia fragmentów, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu skali czasu domyślne wygeneruje listy odtwarzania, który zawiera fragmenty znajdujące 4 sekundy, a następnie 10 sekund prezentacja wideo na żądanie. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.|
 |**Skala czasu**|Dotyczy wszystkich sygnatur czasowych i czasów trwania prezentacji zakres czasu, w jednej sekundy jako liczbę przyrostów określono.<br/>Domyślna to przyrosty 10000000 - dziesięć milionów w 1 sekundę, gdy każdy przyrost jest długa 100 nanosekund.<br/>Na przykład jeśli chcesz ustawić startTimestamp na 30 sekund, można użyć wartości 300000000 podczas korzystania z domyślnej skali czasu.|
 
-### <a name="tracks"></a>ścieżki
+### <a name="tracks"></a>Ścieżki
 
 Należy określić listę warunków właściwość śledzenie filtru (FilterTrackPropertyConditions) podstawie, na którym ścieżki strumienia (transmisji strumieniowej na żywo lub wideo na żądanie) powinny zostać uwzględnione w manifeście utworzony dynamicznie. Filtry są połączone przy użyciu logicznych **i** i **lub** operacji.
 
@@ -83,7 +83,7 @@ Warunki właściwości śledzenie filtru opisano typy ścieżek, wartości (opis
 |Name (Nazwa)|Opis|
 |---|---|
 |**Szybkość transmisji bitów**|Szybkość transmisji bitów toru używana w celu filtrowania.<br/><br/>Zalecana wartość to zakresu szybkości transmisji w bitach na sekundę. Na przykład, "0-2427000".<br/><br/>Uwaga: podczas korzystania z wartością o określonej szybkości transmisji bitów, takich jak 250000 (liczba bitów na sekundę), to podejście nie jest zalecane, ponieważ dokładne szybkości transmisji mogą się zmieniać z jednego zasobu do innego.|
-|**FourCC**|Użyj wartości FourCC ścieżki do filtrowania.<br/><br/>Wartość pierwszego elementu formatu koderów-dekoderów, jak to określono w [RFC 6381](https://tools.ietf.org/html/rfc6381). Obecnie obsługiwane są następujące kodery-dekodery: <br/>Wideo:: "avc1", "hev1", "hvc1"<br/>Audio: "Mp4a" (".", "WE 3"<br/><br/>Można określić wartości FourCC dla ścieżek w zasobie [get i zapoznaj się z plikiem manifestu](#get-and-examine-manifest-files).|
+|**FourCC**|Użyj wartości FourCC ścieżki do filtrowania.<br/><br/>Wartość pierwszego elementu formatu koderów-dekoderów, jak to określono w [RFC 6381](https://tools.ietf.org/html/rfc6381). Obecnie obsługiwane są następujące kodery-dekodery: <br/>Wideo:: "avc1", "hev1", "hvc1"<br/>Audio: "Mp4a" (".", "WE 3"<br/><br/>Aby określić wartości FourCC ścieżek w zasobie, Pobierz i zapoznaj się z plikiem manifestu.|
 |**Język**|Użyj języka ścieżki do filtrowania.<br/><br/>Wartość tagu języka, który chcesz dołączyć, jak określono w dokumencie RFC 5646. Na przykład "en".|
 |**Nazwa**|Użyj nazwy ścieżki w celu filtrowania.|
 |**Typ**|Użyj typu ścieżki do filtrowania.<br/><br/>Dozwolone są następujące wartości: "wideo", "audio" lub "text".|

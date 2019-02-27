@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 82ed1378f1a754c8b5c64db2a190db5ceeb0de4a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0a6296441374c3cf716211f8ba5961392407e240
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821219"
+ms.locfileid: "56870277"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio
 
@@ -22,7 +22,7 @@ Usługa Azure Machine Learning Studio zapewnia narzędzia potrzebne do opracowan
 
 Aby to zrobić, użyj Studio do tworzenia eksperymentu - o nazwie *eksperymentu szkolenia* — gdzie szkolenie, ocena i edytowanie modelu. Po zakończeniu, otrzymasz modelu gotowe do wdrożenia przez konwertowanie eksperymentu szkolenia do *eksperyment predykcyjny* skonfigurowanego na dane użytkownika wynik.
 
-Możesz zobaczyć przykład ten proces w [ samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
+Możesz zobaczyć przykład ten proces w [samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 
 Ten artykuł przedstawia szczegółowo omówi sposób eksperymentu szkolenia są konwertowane na eksperyment predykcyjny i sposób wdrażania tego eksperyment predykcyjny. Dzięki zrozumieniu tymi szczegółowymi informacjami, nauczysz się, jak skonfigurować wdrożonego modelu się bardziej skuteczne.
 

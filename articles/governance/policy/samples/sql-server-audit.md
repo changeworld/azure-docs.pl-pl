@@ -1,6 +1,6 @@
 ---
 title: Przykład — Przeprowadzanie inspekcji ustawień inspekcji programu SQL Server
-description: Te przykładowe zasady przeprowadzają inspekcję ustawień inspekcji programu SQL Server.
+description: Ta przykładowa definicja zasad przeprowadza inspekcję ustawień inspekcji programu SQL Server przy użyciu efektu auditIfNotExists.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 761cef1421f8a0dca84f4142c6ae9ae1b45f33c7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1e0731de5ce2a12fee6b203f245e42aa4bc67d6e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242026"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338176"
 ---
-# <a name="audit-sql-server-audit-settings"></a>Przeprowadzanie inspekcji ustawień inspekcji programu SQL Server
+# <a name="sample---audit-sql-server-audit-settings"></a>Przykład — przeprowadzanie inspekcji ustawień inspekcji programu SQL Server
 
 Te wbudowane zasady przeprowadzają inspekcję programu SQL Server w zależności od tego, czy włączono ustawienia inspekcji.
 

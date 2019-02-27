@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a5499826c06f5f8f5e5db91badf134befa44c9d0
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f41027b5455aa3b1835a0d4fd0c1be11cddccd0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738236"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871999"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżer zasobów klastra usługi Service Fabric
 Tradycyjnie Zarządzanie systemów informatycznych lub usługi online polegało na dedykowanym określonych fizycznych lub maszyn wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowana jako warstwy. Może to być warstwy "Internet" i "dane" lub "Magazyn" warstwy. Aplikacje będą mieć warstwa obsługi komunikatów, gdzie żądania przepływ wewnątrz i na zewnątrz, a także zestaw maszyn dedykowanego dla usługi pamięć podręczna. Każdą warstwę lub typu obciążenia ma określonych maszyn do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilka stało się bazy danych. Określonego typu obciążenie spowodowane maszyn, które było do uruchomić zbyt gorąca, a następnie dodać więcej maszyn w tej samej konfiguracji dla tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zazwyczaj spowodowałoby zastąpienie maszyn z większych maszyn. Łatwe. Maszyna nie powiodło się, część cała aplikacja był uruchamiany niższe osiągnięto maksymalną dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).
@@ -54,7 +54,7 @@ Mimo że niektóre z tych strategii interesujące, Menedżer zasobów klastra us
 Ponieważ Menedżer zasobów klastra jest odpowiedzialny za przesuwanie usług Buduj wokół, zawiera zestaw funkcji w porównaniu do będzie pozyskane w moduł równoważenia obciążenia sieciowego. Jest to spowodowane usługą równoważenia obciążenia sieci dostarczania ruchu sieciowego do, w którym usługi już są, nawet jeśli w tej lokalizacji nie jest idealnym rozwiązaniem do uruchamiania usługi. Menedżer zasobów klastra usługi Service Fabric wykorzystuje całkowicie różne strategie za zapewnienie, że zasoby w klastrze wydajne są wykorzystywane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać informacji na temat architektury i przepływem informacji w ramach Menedżer zasobów klastra, zapoznaj się [w tym artykule ](service-fabric-cluster-resource-manager-architecture.md)
+- Aby uzyskać informacji na temat architektury i przepływem informacji w ramach Menedżer zasobów klastra, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-architecture.md)
 - Menedżer zasobów klastra ma wiele opcji do opisywania klastra. Aby dowiedzieć się więcej o metrykach, obejrzyj ten artykuł w witrynie [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
 - Aby uzyskać więcej informacji na temat konfigurowania usług [Dowiedz się więcej na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)
 - Metryki są, jak Menedżer zasobów usługi Service Fabric klaster zarządza użycia i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryk i sposobach ich konfigurowania, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)

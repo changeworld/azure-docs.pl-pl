@@ -15,12 +15,12 @@ ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: bfbafea13f49ada59dae88e0336f926a8ad89d36
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: deaf7defe5aca4f53df073b19e471a52bd7b8a5d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430254"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878748"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
 
@@ -335,7 +335,7 @@ W tej części samouczka należy:
 > [!Note]
  > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service. Przejrzyj dokumentację usługi App Service sekcji "Wymagania wstępne" dla usługi Azure Stack Operator wymagań.
 
-Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonami usługi Azure Resource Manager, takimi jak web ](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługom DevOps platformy Azure można wdrażać w obu chmurach.
+Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługom DevOps platformy Azure można wdrażać w obu chmurach.
 
 ### <a name="add-code-to-an-azure-devops-services-project"></a>Dodawanie kodu do projektu usługom DevOps platformy Azure
 

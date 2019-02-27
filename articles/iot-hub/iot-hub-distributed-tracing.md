@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: d97171003507ea0d7412c0706f9deea02fe06c0d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0a2027e3ae0fb40058b5bdbfd212687697877076
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418571"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875263"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów urządzenie chmura usługi Azure IoT za pomocą rozproszonego śledzenia (wersja zapoznawcza)
 
@@ -214,7 +214,7 @@ Aby zmienić wartość procentową wiadomości, które mają być śledzone w ch
 
     ![Tryb próbkowania aktualizacji](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
-    ![Częstotliwość próbkowania aktualizacji ](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
+    ![Częstotliwość próbkowania aktualizacji](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
 
 ### <a name="bulk-update-for-multiple-devices"></a>Aktualizacja zbiorcza dla wielu urządzeń
 

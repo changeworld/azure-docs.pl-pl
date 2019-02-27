@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: 00fb888f201f4bb8d211050b288516021d837dc5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429557"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888775"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Często zadawane pytania dotyczące usługi Azure Stack użycia interfejsu API
 
@@ -407,6 +407,10 @@ Obecnie można tworzyć zapytania tylko przez *zgłaszane czasu*.
 | / 400 — Nieprawidłowe żądanie |*SubscriptionIdMissingInRequest* |Brak Identyfikatora subskrypcji obiektu wywołującego. |
 | / 400 — Nieprawidłowe żądanie |*InvalidAggregationGranularity* |Zażądano agregacji nieprawidłowy poziom szczegółowości. Prawidłowe wartości to codziennie i co godzinę. |
 | 503 |*ServiceUnavailable* |Błąd umożliwiający ponowienie próby wystąpił, ponieważ usługa jest zajęta lub wywołanie jest ograniczane. |
+
+## <a name="what-is-the-policy-for-charging-for-vms"></a>Jakie są zasady dla opłat za maszyny wirtualne?
+
+Maszyny wirtualne uruchomione i zatrzymane generowania danych użycia. Spójne z platformą Azure, dezalokacji jest potrzebny do zatrzymania emisji danych użycia. W przypadku, w którym portalu jest niedostępna, ale nadal działa dostawcy zasobów obliczeniowych użycie będzie obliczanie.
 
 ## <a name="next-steps"></a>Następne kroki
 [Klient, rozliczeń i obciążeń zwrotnych w usłudze Azure Stack](azure-stack-billing-and-chargeback.md)

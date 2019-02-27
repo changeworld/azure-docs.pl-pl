@@ -1,6 +1,6 @@
 ---
 title: Przykład — przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie serwera
-description: Te przykładowe zasady przeprowadzają inspekcję zasad alertu zabezpieczeń bazy danych SQL, dla których nie ustawiono określonego stanu.
+description: Te przykładowe definicje zasad przeprowadzają inspekcję zasad alertu zabezpieczeń serwera SQL, dla których nie ustawiono określonego stanu.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9e0ea3b65a4c442358c357e9603d607d8464c21b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ba694618bf86ef8e97241c955a40790960be2f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242179"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341372"
 ---
-# <a name="audit-server-level-threat-detection-setting"></a>Przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie serwera
+# <a name="sample---audit-server-level-threat-detection-setting"></a>Przykład — przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie serwera
 
-Te zasady przeprowadzają inspekcję zasad alertu zabezpieczeń bazy danych SQL, dla których nie ustawiono określonego stanu. Należy określić wartość, która wskazuje, czy wykrywanie zagrożeń ma być włączone czy wyłączone.
+Te zasady przeprowadzają inspekcję zasad alertu zabezpieczeń serwera SQL, dla których nie ustawiono określonego stanu. Należy określić wartość, która wskazuje, czy wykrywanie zagrożeń ma być włączone czy wyłączone.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: fdbbfaf4a4c3df90302b0b69e4964b7a073f2fa4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4a7da4a6e7b4b395063f7e4c9a3e97d610492ef6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237964"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882675"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych usługi Power BI
 
@@ -28,7 +28,7 @@ Zanim przejdziemy dalej, którym chcesz zapisać następujące zasoby: Ułatwiaj
 
 * [Przykładowa aplikacja internetowa obszaru roboczego](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Dokumentacja usługi Power BI obszar roboczy kolekcji z interfejsu API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Usługa Power BI .NET SDK ](https://go.microsoft.com/fwlink/?LinkId=746472) (dostępne za pośrednictwem NuGet)
+* [Usługa Power BI .NET SDK](https://go.microsoft.com/fwlink/?LinkId=746472) (dostępne za pośrednictwem NuGet)
 * [Przykład osadzania przy użyciu języka JavaScript raport](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]

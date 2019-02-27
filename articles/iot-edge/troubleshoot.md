@@ -4,17 +4,17 @@ description: Skorzystaj z tego artykułu się standardowa umiejętności diagnos
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: cd9ff1a1a7730ae870ef4e80fbca2d934aa5c8e2
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342667"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876368"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -101,15 +101,15 @@ W systemie Windows:
 
 ### <a name="check-container-logs-for-issues"></a>Sprawdź dzienniki kontenerów w przypadku problemów
 
-Gdy demona zabezpieczeń IoT Edge jest uruchomiona, sprawdź dzienniki kontenerów, aby wykryć problemy. Rozpocznij od wdrożonych kontenerów, a następnie sprawdź kontenery, które tworzą środowisko uruchomieniowe usługi IoT Edge: Agent usługi Edge i Centrum usługi Edge. Dzienniki agenta usługi Edge zwykle zawierają informacje o cyklu życia każdego kontenera. Dzienniki centrum usługi Edge zawierają informacje dotyczące obsługi komunikatów i routingu. 
+Gdy demona zabezpieczeń IoT Edge jest uruchomiona, sprawdź dzienniki kontenerów, aby wykryć problemy. Rozpocznij od wdrożonych kontenerów, a następnie sprawdź kontenery, które tworzą środowisko uruchomieniowe usługi IoT Edge: edgeAgent i edgeHub. Dzienniki agenta usługi IoT Edge zwykle zawierają informacje o cyklu życia każdego kontenera. Dzienniki Centrum usługi IoT Edge zawierają informacje dotyczące obsługi komunikatów i routingu. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-edge-hub"></a>Przejrzyj komunikaty przechodzące przez Centrum usługi Edge
+### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Przejrzyj komunikaty przechodzące przez Centrum usługi IoT Edge
 
-Przejrzyj komunikaty przechodzące przez Centrum usługi Edge i Zbierz analizy z pełne dzienniki z kontenerów środowiska wykonawczego. Aby włączyć pełne dzienniki w tych kontenerach, należy ustawić `RuntimeLogLevel` w pliku konfiguracyjnym yaml. Można otworzyć pliku:
+Przejrzyj komunikaty przechodzące przez Centrum usługi IoT Edge i Zbierz analizy z pełne dzienniki z kontenerów środowiska wykonawczego. Aby włączyć pełne dzienniki w tych kontenerach, należy ustawić `RuntimeLogLevel` w pliku konfiguracyjnym yaml. Można otworzyć pliku:
 
 W systemie Linux:
 
@@ -137,13 +137,13 @@ Domyślnie `agent` element będzie wyglądać następująco:
 
 Zastąp `env: {}` za pomocą:
 
-> [!WARNING]
-> Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje.
-
    ```yaml
    env:
      RuntimeLogLevel: debug
    ```
+
+   > [!WARNING]
+   > Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje.
 
 Zapisz plik i ponownie uruchom Menedżera zabezpieczeń usługi IoT Edge.
 
@@ -180,11 +180,11 @@ W systemie Windows:
    Start-Service iotedge
    ```
 
-## <a name="edge-agent-stops-after-about-a-minute"></a>Agent usługi Edge jest zatrzymywany po około minucie
+## <a name="iot-edge-agent-stops-after-about-a-minute"></a>Agent usługi IoT Edge jest zatrzymywany po około minucie
 
-Agent usługi Edge jest uruchamiany i działa poprawnie przez około minutę, a następnie jest zatrzymywany. Dzienniki wskazują, że Agent usługi Edge próbuje nawiązać połączenia z Centrum IoT Hub za pośrednictwem protokołu AMQP, a następnie próbuje nawiązać połączenie za pomocą protokołu AMQP przez WebSocket. Jeśli to się nie powiedzie, agent usługi Edge kończy pracę. 
+Moduł edgeAgent rozpoczyna się i działa poprawnie przez około minutę, a następnie zatrzymuje się. Dzienniki wskazują, że agenta usługi IoT Edge próbuje nawiązać połączenia z Centrum IoT Hub za pośrednictwem protokołu AMQP, a następnie próbuje nawiązać połączenie za pomocą protokołu AMQP przez WebSocket. Jeśli się nie powiedzie, agent usługi IoT Edge kończy pracę. 
 
-Przykład dzienników agenta usługi Edge:
+Przykład edgeAgent dzienniki:
 
 ```output
 2017-11-28 18:46:19 [INF] - Starting module management agent. 
@@ -194,16 +194,16 @@ Przykład dzienników agenta usługi Edge:
 ```
 
 ### <a name="root-cause"></a>Główna przyczyna
-Konfiguracja sieci na hoście uniemożliwia agentowi usługi Edge dostęp do sieci. Agent najpierw próbuje nawiązać połączenie za pośrednictwem protokołu AMQP (port 5671). Jeśli połączenie nie powiedzie się, próbuje Websocket (port 443).
+Konfiguracja sieci na hoście uniemożliwia dostęp do sieci agenta usługi IoT Edge. Agent najpierw próbuje nawiązać połączenie za pośrednictwem protokołu AMQP (port 5671). Jeśli połączenie nie powiedzie się, próbuje Websocket (port 443).
 
 Środowisko uruchomieniowe usługi IoT Edge konfiguruje sieć dla każdego z modułów na potrzeby komunikacji. W systemie Linux ta sieć jest siecią mostka. W systemie Windows jest używany translator adresów sieciowych. Ten problem występuje częściej na urządzeniach z systemem Windows używających kontenerów systemu Windows korzystających z sieci NAT. 
 
 ### <a name="resolution"></a>Rozwiązanie
 Upewnij się, że istnieje trasa do Internetu dla adresów IP przypisanych do tej sieci mostka lub sieci NAT. Czasem konfiguracja sieci VPN na hoście przesłania sieć usługi IoT Edge. 
 
-## <a name="edge-hub-fails-to-start"></a>Nie można uruchomić centrum usługi Edge
+## <a name="iot-edge-hub-fails-to-start"></a>Nie można uruchomić Centrum usługi IoT Edge
 
-Nie można uruchomić centrum usługi Edge, a w dzienniku znajduje się następujący komunikat: 
+EdgeHub modułu zakończy się niepowodzeniem do rozpoczęcia i drukuje znajduje się w dziennikach następujący komunikat: 
 
 ```output
 One or more errors occurred. 
@@ -213,16 +213,16 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 ```
 
 ### <a name="root-cause"></a>Główna przyczyna
-Jakiś inny proces na komputerze hosta korzysta z portu 443. Centrum usługi Edge mapuje porty 5671 i 443 do użycia w scenariuszach z bramą. To mapowanie portów kończy się niepowodzeniem, jeśli inny proces jest już powiązany z portem 443. 
+Jakiś inny proces na komputerze hosta korzysta z portu 443. Centrum usługi IoT Edge mapuje porty 5671 i 443 do użycia w scenariuszach z bramą. To mapowanie portów kończy się niepowodzeniem, jeśli inny proces jest już powiązany z portem 443. 
 
 ### <a name="resolution"></a>Rozwiązanie
 Znajdź i zatrzymaj proces używający portu 443. Ten proces to zwykle serwer internetowy.
 
-## <a name="edge-agent-cant-access-a-modules-image-403"></a>Agent usługi Edge nie ma dostępu do obrazu modułu (błąd 403)
-Uruchomienie kontenera nie powodzi się, a w dziennikach agenta usługi Edge jest zgłaszany błąd 403. 
+## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>Agent usługi IoT Edge nie może uzyskać dostępu do obrazu modułu (403)
+Kontener nie działa, a dzienniki edgeAgent przedstawiają błąd 403. 
 
 ### <a name="root-cause"></a>Główna przyczyna
-Agent usługi Edge nie ma uprawnień dostępu do obrazu modułu. 
+Agent usługi Iot Edge nie ma uprawnień do uzyskania dostępu do obrazu modułu. 
 
 ### <a name="resolution"></a>Rozwiązanie
 Upewnij się, czy poświadczenia rejestru są poprawnie określone w manifeście wdrożenia
@@ -266,14 +266,14 @@ Gdy zostanie wyświetlony ten błąd, możesz rozwiązać ten problem, konfiguro
 Mogą wystąpić problemy stabilności na urządzeniach ograniczone, takich jak Raspberry Pi, szczególnie w przypadku, gdy używany jako brama. Objawy to poza wyjątkami pamięci w module Centrum usługi edge, podrzędne urządzenia nie można nawiązać połączenia lub urządzenia zatrzymuje, wysyła komunikaty telemetryczne po kilku godzinach.
 
 ### <a name="root-cause"></a>Główna przyczyna
-Centrum usługi edge, która jest częścią środowiska uruchomieniowego usługi edge, zoptymalizowana pod kątem wydajności domyślnie i próbuje przydzielić dużych bloków pamięci. Tego rodzaju optymalizacji nie jest idealnym rozwiązaniem dla urządzeń brzegowych ograniczone i może powodować problemy stabilności.
+Centrum usługi IoT Edge, która jest częścią środowiska uruchomieniowego usługi IoT Edge, zoptymalizowana pod kątem wydajności domyślnie i próbuje przydzielić dużych bloków pamięci. Tego rodzaju optymalizacji nie jest idealnym rozwiązaniem dla urządzeń brzegowych ograniczone i może powodować problemy stabilności.
 
 ### <a name="resolution"></a>Rozwiązanie
-Dla Centrum usługi edge ustawić zmienną środowiskową **OptimizeForPerformance** do **false**. Istnieją dwa sposoby, w tym celu:
+Centrum usługi IoT Edge, należy ustawić zmienną środowiskową **OptimizeForPerformance** do **false**. Istnieją dwa sposoby, w tym celu:
 
 W Interfejsie użytkownika: 
 
-W portalu pochodzące ze *szczegóły urządzenia*->*Ustaw moduły*->*skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge*, Utwórz zmienną środowiskową wywołuje się *OptimizeForPerformance* który jest skonfigurowany do *false* dla *Centrum usługi Edge*.
+W portalu, przejdź do **szczegóły urządzenia** > **Ustaw moduły** > **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**. Utwórz zmienną środowiskową o nazwie modułu Centrum usługi Edge *OptimizeForPerformance* który jest skonfigurowany do *false*.
 
 ![OptimizeForPerformance ustawiony na wartość false](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -328,9 +328,9 @@ Upewnij się, że ten sam identyfikator procesu jest zawsze używany przez niest
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Reguły konfiguracji zapory i portu dla wdrożenia usługi IoT Edge
-Usługa Azure IoT Edge umożliwia komunikację z serwer graniczny środowiska lokalnego do chmury platformy Azure za pomocą obsługiwanych protokołów IoT Hub, zobacz [wybór protokołu komunikacyjnego](../iot-hub/iot-hub-devguide-protocols.md). Aby zwiększyć bezpieczeństwo kanałów komunikacji między usługą Azure IoT Edge i usługi Azure IoT Hub są zawsze skonfigurowane jako ruchu wychodzącego. Ta konfiguracja jest oparta na [wzorzec komunikacji korzystającej z usług](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), minimalizując obszar narażony na zamierzających do zbadania. Komunikacji przychodzącej jest tylko wymagane dla konkretnych scenariuszy, których wymaga usługi Azure IoT Hub do wypychania komunikatów do urządzenia usługi Azure IoT Edge. Komunikaty z chmury do urządzenia są chronione przy użyciu bezpiecznych kanałów TLS i można dodatkowo zabezpieczyć przy użyciu certyfikatów X.509 i moduły urządzenia modułu TPM. Menedżer zabezpieczeń usługi Azure IoT Edge decyduje, jak ta komunikacja może być nawiązane, zobacz [Menedżera zabezpieczeń usługi IoT Edge](../iot-edge/iot-edge-security-manager.md).
+Usługa Azure IoT Edge umożliwia komunikację z serwera lokalnego do chmury platformy Azure za pomocą obsługiwanych protokołów IoT Hub, zobacz [wybór protokołu komunikacyjnego](../iot-hub/iot-hub-devguide-protocols.md). Aby zwiększyć bezpieczeństwo kanałów komunikacji między usługą Azure IoT Edge i usługi Azure IoT Hub są zawsze skonfigurowane jako ruchu wychodzącego. Ta konfiguracja jest oparta na [wzorzec komunikacji korzystającej z usług](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), minimalizując obszar narażony na zamierzających do zbadania. Komunikacji przychodzącej jest tylko wymagane dla konkretnych scenariuszy, których wymaga usługi Azure IoT Hub do wypychania komunikatów do urządzenia usługi Azure IoT Edge. Komunikaty z chmury do urządzenia są chronione przy użyciu bezpiecznych kanałów TLS i można dodatkowo zabezpieczyć przy użyciu certyfikatów X.509 i moduły urządzenia modułu TPM. Menedżer zabezpieczeń usługi Azure IoT Edge decyduje, jak ta komunikacja może być nawiązane, zobacz [Menedżera zabezpieczeń usługi IoT Edge](../iot-edge/iot-edge-security-manager.md).
 
-Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania środowiska uruchomieniowego usługi Azure IoT Edge i wdrożone moduły, jest nadal zależne od podstawowej konfiguracji komputera i sieci. W związku z tym koniecznie upewnij się, że odpowiednie reguły sieci i zapory są skonfigurowane do bezpiecznego urządzeniami brzegowymi w celu komunikacji z chmury. Następujące może służyć jako wytyczne podczas konfiguracji zapory reguły dla podstawowych serwerów hostujące środowisko uruchomieniowe usługi Azure IoT Edge:
+Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania środowiska uruchomieniowego usługi Azure IoT Edge i wdrożone moduły, jest nadal zależne od podstawowej konfiguracji komputera i sieci. Dlatego konieczne jest zapewnienie odpowiedniego sieci i reguły zapory są skonfigurowane do krawędzi bezpiecznej komunikacji w chmurze. Poniższa tabela może służyć jako wytyczne podczas konfiguracji zapory reguły dla podstawowych serwerów hostujące środowisko uruchomieniowe usługi Azure IoT Edge:
 
 |Protokół|Port|przychodzące|Wychodzące|Wskazówki|
 |--|--|--|--|--|

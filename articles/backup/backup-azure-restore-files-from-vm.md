@@ -7,14 +7,14 @@ manager: shivamg
 keywords: odzyskiwanie na poziomie elementu; odzyskiwanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure; Przywracanie plików z maszyny Wirtualnej platformy Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/22/2018
-ms.author: pvrk
-ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 2/26/2019
+ms.author: pullabhk
+ms.openlocfilehash: 4bae9a09dad217b8d805a64372ed404eb7ada723
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488496"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874173"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -73,11 +73,15 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
         - <https://pod01-rec2.geo-name.backup.windowsazure.de> (W przypadku platformy Azure (Niemcy))
     - wychodząca przez port 3260
 
-    Dla systemu Linux skrypt wymaga "Otwórz za pomocą usługi iscsi" i "lshw" składników, aby połączyć się z punktem odzyskiwania. Jeśli nie istnieją składniki na komputerze, na którym skrypt jest uruchamiany, skrypt monituje o podanie uprawnień zainstalować składniki. Zgody Aby zainstalować wymagane składniki.
+> [!Note]
+> Nazwa pliku pobranego skryptu będzie mieć "geo-name" ma zostać wypełniony w adresie URL. Na przykład: Nazwa pobranego skryptu, który rozpoczyna się od \'VMname\'\_\'geoname\'_\'GUID\', takich jak ContosoVM_wcus_12345678... Adres URL "https://pod01-rec2.wcus.backup.windowsazure.com"
+> 
 
-    Dostęp do witrynie download.microsoft.com jest wymagany do pobierania składniki używane do tworzenia bezpiecznego kanału między komputerem, w której skrypt jest uruchamiany i danych w punkcie odzyskiwania.
-
-    Skrypt można uruchomić na dowolnym komputerze, który ma system operacyjny tego samego (lub zgodny) jako kopii zapasowej maszyny Wirtualnej. Zobacz [tabeli zgodny system operacyjny](backup-azure-restore-files-from-vm.md#system-requirements) zgodnych systemów operacyjnych. Jeśli chronionej maszyny wirtualnej platformy Azure używa do magazynowania systemu Windows (w przypadku maszyn wirtualnych platformy Azure Windows) lub tablic LVM/RAID (dla maszyn wirtualnych systemu Linux), nie możesz uruchomić plik wykonywalny lub skrypt na tej samej maszyny wirtualnej. Zamiast tego należy uruchomić plik wykonywalny lub skrypt na dowolnym komputerze, przy użyciu zgodny system operacyjny.
+   Dla systemu Linux skrypt wymaga "Otwórz za pomocą usługi iscsi" i "lshw" składników, aby połączyć się z punktem odzyskiwania. Jeśli nie istnieją składniki na komputerze, na którym skrypt jest uruchamiany, skrypt monituje o podanie uprawnień zainstalować składniki. Zgody Aby zainstalować wymagane składniki.
+   
+   Dostęp do witrynie download.microsoft.com jest wymagany do pobierania składniki używane do tworzenia bezpiecznego kanału między komputerem, w której skrypt jest uruchamiany i danych w punkcie odzyskiwania.
+   
+   Skrypt można uruchomić na dowolnym komputerze, który ma system operacyjny tego samego (lub zgodny) jako kopii zapasowej maszyny Wirtualnej. Zobacz [tabeli zgodny system operacyjny](backup-azure-restore-files-from-vm.md#system-requirements) zgodnych systemów operacyjnych. Jeśli chronionej maszyny wirtualnej platformy Azure używa do magazynowania systemu Windows (w przypadku maszyn wirtualnych platformy Azure Windows) lub tablic LVM/RAID (dla maszyn wirtualnych systemu Linux), nie możesz uruchomić plik wykonywalny lub skrypt na tej samej maszyny wirtualnej. Zamiast tego należy uruchomić plik wykonywalny lub skrypt na dowolnym komputerze, przy użyciu zgodny system operacyjny.
 
 ### <a name="identifying-volumes"></a>Identyfikowanie woluminów
 
@@ -199,6 +203,11 @@ W systemie Linux systemu operacyjnego komputera służące do przywrócenia plik
 | Oracle Linux | 6.4 i nowsze wersje |
 | SLES | 12 i nowsze wersje |
 | openSUSE | 42.2 i nowsze wersje |
+
+> [!Note]
+> Znaleźliśmy kilka problemów w uruchamianie skryptu odzyskiwania plików na komputerach z systemem SLES 12 z dodatkiem SP4 OS. Badanie z zespołem w systemie SLES.
+> Obecnie, działająca skryptu odzyskiwania plików pracuje na maszynach z wersji SLES 12 z dodatkiem SP2 i SP3 systemu operacyjnego.
+>
 
 Skrypt wymaga również składników języka Python i bash wykonanie i bezpieczne łączenie się z punktu odzyskiwania.
 

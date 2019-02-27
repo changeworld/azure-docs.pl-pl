@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243726"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453617"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Samouczek 1. Przewidywanie ryzyka kredytowego — Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania an
 
 Załóżmy, że chcesz przewidzieć ryzyko kredytowe osoby na podstawie informacji przekazanych we wniosku kredytowym.  
 
-Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Użyjesz go jako przykładu na potrzeby przedstawienia sposobu tworzenia rozwiązania analizy predykcyjnej przy użyciu usługi Microsoft Azure Machine Learning. W tym rozwiązaniu skorzystasz z usługi Azure Machine Learning Studio i usługi internetowej Machine Learning.  
+Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Użyjesz go jako przykładu na potrzeby przedstawienia sposobu tworzenia rozwiązania analizy predykcyjnej przy użyciu usługi Microsoft Azure Machine Learning Studio. W tym rozwiązaniu skorzystasz z usługi Azure Machine Learning Studio i usługi internetowej Machine Learning.  
 
 W tym trzyczęściowym samouczku zaczniesz od publicznie dostępnych danych ryzyka kredytowego.  Następnie wdrożysz i wytrenujesz model predykcyjny.  Na koniec wdrożysz model jako usługę internetową.
 
@@ -55,7 +55,7 @@ Jeśli usługa **Azure Machine Learning Studio** nie była nigdy wcześniej prze
 
 Aby używać usługi Machine Learning Studio, musisz mieć obszar roboczy usługi Microsoft Azure Machine Learning Studio. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.  
 
-Aby utworzyć obszar roboczy, zobacz [Tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning](create-workspace.md).
+Aby utworzyć obszar roboczy, zobacz [Tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning Studio](create-workspace.md).
 
 Po utworzeniu obszaru roboczego otwórz usługę Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jeden obszar roboczy, możesz wybrać odpowiedni obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
 

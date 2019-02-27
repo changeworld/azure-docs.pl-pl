@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/25/2019
+ms.openlocfilehash: 3be2f804bc755b92896305a2ba2b38a45450aed3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809984"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871234"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -28,10 +28,12 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 > Aby utworzyć nowe serwery i ustaw istniejącymi klientami przy użyciu typu połączenia jawnie ustawione przekierowania (preferowany) lub serwera Proxy w zależności od ich architektura łączności doradza się klientów.
 >
 > Aby uniemożliwić łączność za pośrednictwem punktu końcowego usługi podziału w istniejących środowiskach, w wyniku tej zmiany, używamy telemetrii wykonaj następujące czynności:
+>
 > - W przypadku serwerów, które zostanie wykryte, które były dostępne za pośrednictwem punktów końcowych usługi przed zmianą, firma Microsoft przełącznika typ połączenia na `Proxy`.
 > - Dla innych serwerów, możemy przełączyć połączenia typu zostaną przełączeni na `Redirect`.
 >
 > Nadal może mieć wpływ na użytkowników punktu końcowego usługi w następujących scenariuszach:
+>
 > - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach
 > - Logika automatycznego wdrażania tworzy serwer bazy danych SQL, przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy`
 >
@@ -106,10 +108,7 @@ Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy us
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
 | Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
 | Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
-| Północne Zjednoczone Królestwo | 13.87.97.210 | |
-| Południowe Zjednoczone Królestwo 1 | 51.140.184.11 | |
-| Południowe Zjednoczone Królestwo 2 | 13.87.34.7 | |
-| Zachodnie Zjednoczone Królestwo | 51.141.8.11 | |
+| Południowe Zjednoczone Królestwo | 51.140.184.11 | |
 | Środkowo-zachodnie stany USA | 13.78.145.25 | |
 | Europa Zachodnia | 191.237.232.75 | 40.68.37.158 |
 | Zachodnie stany USA 1 | 23.99.34.75 | 104.42.238.205 |

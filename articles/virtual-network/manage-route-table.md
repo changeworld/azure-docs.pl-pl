@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 86ba5a780e1ac5da7998b399997e5ad0724abefe
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c9846f78e05d598844d12819cef3e948caf2704d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817749"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889702"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
@@ -46,7 +46,7 @@ Istnieje limit liczby tabel tras, które można utworzyć dla lokalizacji i subs
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [Tworzenie tabeli tras az sieci](/cli/azure/network/route-table/route#az_network_route_table_create)
+- Interfejs wiersza polecenia platformy Azure: [Tworzenie tabeli tras az sieci](/cli/azure/network/route-table/route)
 - Program PowerShell: [New-AzRouteTable](/powershell/module/az.network/new-azroutetable)
 
 ## <a name="view-route-tables"></a>Wyświetl tabele tras
@@ -55,7 +55,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wy
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [listy tabelę tras sieciowych az](/cli/azure/network/route-table/route#az_network_route_table_list)
+- Interfejs wiersza polecenia platformy Azure: [listy tabelę tras sieciowych az](/cli/azure/network/route-table/route)
 - Program PowerShell: [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
 
 ## <a name="view-details-of-a-route-table"></a>Wyświetl szczegóły tabelę tras
@@ -71,7 +71,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wy
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci route-table show](/cli/azure/network/route-table/route#az_network_route_table_show)
+- Interfejs wiersza polecenia platformy Azure: [az sieci route-table show](/cli/azure/network/route-table/route)
 - Program PowerShell: [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
 
 ## <a name="change-a-route-table"></a>Zmień tabelę tras
@@ -81,7 +81,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wy
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
+- Interfejs wiersza polecenia platformy Azure: [az sieci route-table update](/cli/azure/network/route-table/route)
 - Program PowerShell: [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
@@ -126,7 +126,7 @@ Jeśli tabela tras jest skojarzona z podsieciami, nie można jej usunąć. [Usu�
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [usunąć tabeli tras az sieci](/cli/azure/network/route-table/route#az_network_route_table_delete)
+- Interfejs wiersza polecenia platformy Azure: [usunąć tabeli tras az sieci](/cli/azure/network/route-table/route)
 - Program PowerShell: [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable)
 
 ## <a name="create-a-route"></a>Tworzenie trasy
@@ -145,7 +145,7 @@ Istnieje limit liczby trasy na tabelę tras można utworzyć dla lokalizacji pla
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [tworzenie az sieci route-table route](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
+- Interfejs wiersza polecenia platformy Azure: [tworzenie az sieci route-table route](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - Program PowerShell: [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)
 
 ## <a name="view-routes"></a>Wyświetl trasy
@@ -170,7 +170,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
+- Interfejs wiersza polecenia platformy Azure: [az sieci route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - Program PowerShell: [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig)
 
 ## <a name="change-a-route"></a>Zmień trasę
@@ -196,7 +196,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci tabeli tras route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
+- Interfejs wiersza polecenia platformy Azure: [az sieci tabeli tras route delete](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - Program PowerShell: [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig)
 
 ## <a name="view-effective-routes"></a>Wyświetlanie obowiązujących tras
@@ -211,7 +211,7 @@ Skuteczne trasy dla każdego interfejsu sieciowego dołączonych do maszyny wirt
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az network nic show obowiązywać route-table](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
+- Interfejs wiersza polecenia platformy Azure: [az network nic show obowiązywać route-table](/cli/azure/network/nic?view=azure-cli-latest)
 - Program PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="validate-routing-between-two-endpoints"></a>Sprawdź poprawność routingu między dwoma punktami końcowymi
@@ -228,7 +228,7 @@ Można określić typ następnego przeskoku między maszyną wirtualną i adres 
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az network watcher show następnego przeskoku](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
+- Interfejs wiersza polecenia platformy Azure: [az network watcher show następnego przeskoku](/cli/azure/network/watcher?view=azure-cli-latest)
 - Program PowerShell: [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)
 
 ## <a name="permissions"></a>Uprawnienia

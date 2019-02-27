@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 62a953467e212d0cb78686e9b0d98a7f1fcb5135
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4f9fee0c405c893d76d044278c80e7b31823fce
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699014"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881349"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL za pomocą witryny Azure portal
 
@@ -57,7 +57,7 @@ Poniższa procedura opisuje przywrócenie przykładowego serwera do punktu w cza
 
 3. Wypełnij formularz Przywracanie wymaganymi informacjami:
 
-   ![Azure Database for PostgreSQL — informacje o przywracania ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database for PostgreSQL — informacje o przywracania](./media/howto-restore-server-portal/3-restore.png)
   - **Punkt przywracania**: Wybierz punkt w czasie, który chcesz przywrócić.
   - **Serwer docelowy**: Podaj nazwę dla nowego serwera.
   - **Lokalizacja**: Nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.

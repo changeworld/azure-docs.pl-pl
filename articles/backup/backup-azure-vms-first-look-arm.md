@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 40557d4e71dfea5996396cde634f7a1c80913556
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 16c7fe68e67094cef21d9efbffdccd614827ae6d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430543"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887475"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure przy użyciu ustawień maszyny Wirtualnej
 
@@ -66,7 +66,7 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, usługi Azure
 
   ![Stan usługi Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. Po włączeniu kopii zapasowej, [tworzenia początkowej kopii zapasowej](#run-the-initial-backup) działa. Możesz natychmiast rozpocząć tworzenie początkowej kopii zapasowej lub poczekaj, aż zacznie zgodnie z harmonogramem tworzenia kopii zapasowej.
+10. Po włączeniu kopii zapasowej uruchamia tworzenie początkowej kopii zapasowej. Możesz natychmiast rozpocząć tworzenie początkowej kopii zapasowej lub poczekaj, aż zacznie zgodnie z harmonogramem tworzenia kopii zapasowej.
     - Dopiero po zakończeniu tworzenia początkowej kopii zapasowej, **stan ostatniej kopii zapasowej** jest wyświetlany jako **ostrzeżenie (początkowa kopia zapasowa oczekuje)**.
     - Aby wyświetlić podczas następnej zaplanowanej kopii zapasowej zostanie uruchomiony, kliknij nazwę zasad tworzenia kopii zapasowej.
     

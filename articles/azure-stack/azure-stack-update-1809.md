@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4298a8bd78f178c56776e703e72ff99aac54207
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694384"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887914"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -77,7 +77,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 ### <a name="changes"></a>Zmiany
 
 <!-- 2635202 - IS, ASDK -->
-- Infrastruktura usługi kopii zapasowej są przenoszone z [sieci publicznych infrastruktury](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) do [sieci publicznych adresów VIP](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Klienci będą musieli upewnić się, usługa ma dostęp do lokalizacji magazynu kopii zapasowych z sieci publicznych adresów VIP.  
+- Infrastruktura usługi kopii zapasowej są przenoszone z [sieci publicznych infrastruktury](https://docs.microsoft.com/azure/azure-stack/azure-stack-network) do [sieci publicznych adresów VIP](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Klienci będą musieli upewnić się, usługa ma dostęp do lokalizacji magazynu kopii zapasowych z sieci publicznych adresów VIP.  
 
 > [!IMPORTANT]  
 > Jeśli masz zaporą, która nie zezwala na połączenia z sieci publicznych adresów VIP do serwera plików, ta zmiana spowoduje, że kopie zapasowe infrastruktury, aby zakończyć się niepowodzeniem z "Błąd 53 nie można odnaleźć ścieżki sieciowej." Jest to istotną zmianę, która ma uzasadnione obejście tego problemu. Na podstawie opinii klientów, firmy Microsoft zostaną przywrócone, aby ta zmiana w poprawki. Przejrzyj [wpis w sekcji kroki aktualizacji](#post-update-steps) Aby uzyskać więcej informacji na temat dostępnych poprawek dla 1809. Gdy poprawka jest dostępna, upewnij się zastosować go po aktualizacji do 1809, tylko wtedy, gdy zasad sieci nie zezwalają na sieci publicznych adresów VIP na dostęp do zasobów infrastruktury. w 1811 tej zmiany zostaną zastosowane do wszystkich systemów. Jeśli zastosowano poprawkę w 1809, nie ma żadnych dodatkowych czynności.  

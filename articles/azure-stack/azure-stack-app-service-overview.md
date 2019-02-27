@@ -15,12 +15,12 @@ ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: a638d5cdfbd3af46335cfb8e4970306534fc1c3b
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: cbdf864c2c10d5eb1c0f9a903bd186370b96a72f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445988"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879641"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Omówienie usługi App Service w usłudze Azure Stack
 
@@ -53,7 +53,7 @@ Aplikacja może składać się z wielu aplikacji usługi App Service różnego r
 - Wdrożyć oba rozwiązania (fronton i interfejs API) w jednej aplikacji internetowej.
 - Wdrożyć kod frontonu w aplikacji internetowej i kod zaplecza w aplikacji interfejsu API.
 
-   [ ![Omówienie usługi App Service przy użyciu funkcji monitorowania danych](media/azure-stack-app-service-overview/image01.png "Omówienie usługi App Service przy użyciu danych monitorowania") ](media/azure-stack-app-service-overview/image01.png#lightbox)
+   [![Omówienie usługi App Service przy użyciu funkcji monitorowania danych](media/azure-stack-app-service-overview/image01.png "Omówienie usługi App Service przy użyciu danych monitorowania")](media/azure-stack-app-service-overview/image01.png#lightbox)
 
 ## <a name="what-is-an-app-service-plan"></a>Co to jest plan usługi App Service?
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 561982f7a7842ed717044c6709085bbd4621206e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002119"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868633"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
 **Dziennika aktywności platformy Azure** jest Dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które miały miejsce w systemie Azure. W tym zakresie danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji dla zdarzeń kondycji usługi. Dziennik aktywności była wcześniej znana jako "Dzienniki inspekcji" lub "Operacyjne dzienniki" od zdarzeń kategorii administracyjnej raporty płaszczyznę kontroli dla subskrypcji. Przy użyciu dziennika aktywności, można określić "co, kto i kiedy" dla dowolnego zapisu (PUT, POST, DELETE) wykonywanych na zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości. Dziennik aktywności nie obejmują operacji odczytu (GET) ani operacji dotyczących zasobów, które używają klasycznego / modelu "RDFE".
 
-![Dzienniki aktywności w programie vs innych typów dzienników ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Dzienniki aktywności w programie vs innych typów dzienników](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 Rysunek 1: Dzienniki aktywności w programie vs innych typów dzienników
 

@@ -1,6 +1,6 @@
 ---
 title: Przykład — Uniemożliwianie użycia korzyści użycia hybrydowego
-description: Te przykładowe zasady uniemożliwiają użycie korzyści użycia hybrydowego platformy Azure (AHUB).
+description: Te przykładowe definicje zasad uniemożliwiają użycie korzyści użycia hybrydowego platformy Azure (AHUB).
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: b880d46016fa64e0a433957723872c0269d7828a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0255a1dba3553bf83f38a795a6e4df9fb219b5d4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245018"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341287"
 ---
-# <a name="deny-hybrid-use-benefit"></a>Uniemożliwianie użycia korzyści użycia hybrydowego
+# <a name="sample---deny-hybrid-use-benefit"></a>Przykład — Uniemożliwianie użycia korzyści użycia hybrydowego
 
 Uniemożliwia użycie korzyści użycia hybrydowego platformy Azure (AHUB). Zastosuj tę zasadę, jeśli nie chcesz zezwolić na korzystanie z licencji lokalnych.
 

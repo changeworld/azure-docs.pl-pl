@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753592"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871540"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -152,7 +152,6 @@ Niezarządzane dyski są przechowywane jako stronicowe obiekty BLOB w usłudze A
 4. Poczekaj, aż **czas ostatniej synchronizacji** został zaktualizowany i jest późniejsza niż godzina, na którym są usuwane maszyny Wirtualnej. Ten krok jest ważny, ponieważ jeśli pomocniczy punkt końcowy nie został w pełni zaktualizowany przy użyciu plików wirtualnego dysku twardego po przejściu do trybu failover, następnie maszyna wirtualna może nie działać poprawnie w nowym regionie podstawowym.
 5. Zainicjuj tryb failover konta.
 6. Poczekaj, aż konta przełączenie w tryb failover została ukończona, a w regionie pomocniczym stał się nowego regionu podstawowego.
-6. Tworzenie konta magazynu w nowym regionie podstawowym, a następnie skopiuj dysk niezarządzany do niego.
 7. Tworzenie maszyny Wirtualnej w nowym regionie podstawowym, a następnie ponownie Dołącz wirtualne dyski twarde.
 8. Uruchom nową maszynę Wirtualną.
 

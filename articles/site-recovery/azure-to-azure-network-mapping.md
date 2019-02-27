@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b52bdd5948676c09c433cbda249248ce26ce8a48
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223786"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866032"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -32,7 +32,7 @@ Mapowania sieci w następujący sposób:
 
 3. W **Dodawanie mapowania sieci**, wybierz źródło i lokalizacje docelowe. W naszym przykładzie źródło maszyny Wirtualnej jest uruchomiona w regionie Azja Wschodnia i są replikowane do regionu Azja południowo-wschodnia.
 
-    ![Wybierz źródło i cel ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![Wybierz źródło i cel](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. Teraz Utwórz mapowanie sieci w przeciwny katalogu. W naszym przykładzie źródło będzie teraz Azja południowo-wschodnia, a lokalizacją docelową będzie Azja Wschodnia.
 
     ![Dodaj okienko mapowania sieci — wybierz lokalizacje źródłowe i docelowe dla sieci docelowej](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)

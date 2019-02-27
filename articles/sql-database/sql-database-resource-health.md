@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 02/26/2019
+ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039099"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889379"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Umożliwia Rozwiązywanie problemów z łącznością dla usługi Azure SQL Database Resource Health
 
@@ -53,9 +53,9 @@ Stan **Unavailable** oznacza, że usługa Resource Health wykrył nieudanych pr�
 
 ### <a name="unknown"></a>Nieznane
 
-Stan kondycji **nieznany** wskazuje, że kondycja zasobu nie odebrał informacji na temat tego zasobu na więcej niż 10 minut. Mimo że ten stan nie jest ostateczną wskazanie stan zasobu, to ważny punkt danych w proces rozwiązywania problemów.
-Jeśli zasób działa zgodnie z oczekiwaniami, stan zasobu zmieni się na dostępne po kilku minutach.
-Jeśli występują problemy z zasobem, Nieznana kondycja może sugerować, że zdarzenie na platformie ma wpływ na zasób.
+Stan kondycji **nieznany** wskazuje, że kondycja zasobu nie odebrał informacji na temat tego zasobu na więcej niż 10 minut. Mimo że ten stan nie jest ostateczną wskazanie stan zasobu, to ważny punkt danych w proces rozwiązywania problemów. Jeśli zasób działa zgodnie z oczekiwaniami, stan zasobu zmieni się na dostępne po kilku minutach. Jeśli występują problemy z zasobem, Nieznana kondycja może sugerować, że zdarzenie na platformie ma wpływ na zasób.
+
+![Nieznana](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>Informacje historyczne
 

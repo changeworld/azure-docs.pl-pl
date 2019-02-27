@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6ce10cd9947acbb74807a5288fc1753e794e69c7
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: edb2bbee8df24dc9f9747ff13f5e3526192d91b2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652301"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874022"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -204,7 +204,7 @@ Aby ułatwić dostęp core analytics, znajduje się przykładowy kod dla narzęd
 
 Poniżej przedstawiono sposób korzystania z narzędzia:
 
-1.  Skorzystaj z linku w usłudze GitHub: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Skorzystaj z linku w usłudze GitHub: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Pobierz kod.
 3.  Postępuj zgodnie z instrukcjami, aby skompilować i skonfigurować.
 4.  Uruchom narzędzie.

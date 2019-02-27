@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2eb47bede14b139d011d8a74b5196a94a93a62c7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e055ddc49120d77047fa349b7e58c612eb724b41
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817103"
+ms.locfileid: "56881553"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -301,7 +301,9 @@ Gdy klaster działa, [utworzyć bibliotekę](https://docs.databricks.com/user-gu
    |Dla usługi Databricks| Przekaż Python Egg lub PyPI | azureml-sdk[databricks]|
    |Dla usługi Databricks - with-<br> automatyczne możliwości usług ML| Przekaż Python Egg lub PyPI | azureml-sdk[automl_databricks]|
 
-   * Można zainstalować inne dodatki zestawu SDK. Wybierz tylko jedną z tych opcji [databricks] lub [automl_databricks].
+   > [!Warning]
+   > Można zainstalować inne dodatki zestawu SDK. Wybierz tylko jedną z tych opcji [databricks] lub [automl_databricks].
+
    * Nie należy wybierać **automatycznie dołączyć się do wszystkich klastrów**.
    * Wybierz **Dołącz** obok swojej nazwy klastra.
 
@@ -320,7 +322,7 @@ Jeśli instalacja się powiodła, zaimportowanej biblioteki powinien wyglądać 
    
 Zestaw SDK dla usługi Databricks **_bez_** automatyczne usługi machine learning ![Machine Learning zestawu SDK usługi Azure dla usługi Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Zestaw SDK dla usługi Databricks **WITH** automatyczne usługi machine learning ![zestawu SDK za pomocą zautomatyzowanego uczenia maszynowego zainstalowana w usłudze Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
+Zestaw SDK dla usługi Databricks **WITH** automatyczne usługi machine learning ![zestawu SDK za pomocą zautomatyzowanego uczenia maszynowego zainstalowana w usłudze Databricks](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>Rozpocznij eksplorację
 

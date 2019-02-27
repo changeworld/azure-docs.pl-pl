@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/26/2019
+ms.openlocfilehash: f6179c14c0a057a08203764316eeb43783cd7fc8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995068"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887747"
 ---
-# <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Utwórz odczytu pomocniczych baz danych przy użyciu aktywnej replikacji geograficznej
+# <a name="creating-and-using-active-geo-replication"></a>Tworzenie i korzystanie z aktywnej replikacji geograficznej
 
 Aktywna replikacja geograficzna to funkcja usługi Azure SQL Database, która pozwala na tworzenie odczytu pomocniczych baz danych w poszczególnych baz danych na serwerze bazy danych SQL w centrum danych w tej samej lub innej (region).
 
@@ -110,7 +110,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Synchronizacja poświadczeń i reguł zapory**
 
-  Firma Microsoft zaleca używanie [bazy danych reguły zapory](sql-database-firewall-configure.md) replikowanej geograficznie baz danych, dzięki czemu te reguły mogą być replikowane z bazą danych, aby upewnić się, wszystkie pomocnicze bazy danych ma te same reguły zapory jako podstawowy. To podejście eliminuje potrzebę stosowania klientów ręcznego konfigurowania i konserwacji reguły zapory na serwerach hostujących zarówno podstawowych i pomocniczych baz danych. Podobnie za pomocą [zawartych użytkowników bazy danych](sql-database-manage-logins.md) danych zapewnia podstawowych i pomocniczych baz danych zawsze mają taki sam dostęp do poświadczeń użytkownika, więc podczas pracy w trybie failover nie ma żadnych przerw w działaniu z powodu niezgodności z logowania i hasła. Z dodatkiem [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), klienci mogą zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych i całkowicie eliminując potrzebę zarządzania poświadczeniami w bazach danych.
+Firma Microsoft zaleca używanie [bazy danych reguły zapory](sql-database-firewall-configure.md) replikowanej geograficznie baz danych, dzięki czemu te reguły mogą być replikowane z bazą danych, aby upewnić się, wszystkie pomocnicze bazy danych ma te same reguły zapory jako podstawowy. To podejście eliminuje potrzebę stosowania klientów ręcznego konfigurowania i konserwacji reguły zapory na serwerach hostujących zarówno podstawowych i pomocniczych baz danych. Podobnie za pomocą [zawartych użytkowników bazy danych](sql-database-manage-logins.md) danych zapewnia podstawowych i pomocniczych baz danych zawsze mają taki sam dostęp do poświadczeń użytkownika, więc podczas pracy w trybie failover nie ma żadnych przerw w działaniu z powodu niezgodności z logowania i hasła. Z dodatkiem [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), klienci mogą zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych i całkowicie eliminując potrzebę zarządzania poświadczeniami w bazach danych.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawową bazą danych
 
@@ -125,6 +125,16 @@ Ze względu na duże opóźnienia sieci rozległej ciągłych kopii używa mecha
 
 > [!NOTE]
 > **Operacja sp_wait_for_database_copy_sync** zapobiega utracie danych po pracy awaryjnej, ale nie gwarantuje pełną synchronizację, aby uzyskać dostęp do odczytu. Opóźnienie spowodowane **operacja sp_wait_for_database_copy_sync** wywołanie procedury mogą być znaczące i zależy od rozmiaru dziennika transakcji w momencie wywołania.
+
+## <a name="monitoring-geo-replication-lag"></a>Monitorowanie opóźnienia replikacji geograficznej
+
+Aby monitorować opóźnieniem względem celu punktu odzyskiwania, użyj *replication_lag_sec* kolumny [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w głównej bazie danych. Pokazuje opóźnienie w sekundach między transakcje zatwierdzone na serwerze podstawowym i utrzymywana na pomocniczym. Na przykład Jeśli wartość opóźnienia wynosi 1 s, oznacza to, jeśli podstawowy jest wpływ awaria w tej chwili i pracy awaryjnej jest intiated, 1 sekundę najnowszych transtions nie zostaną zapisane. 
+
+Do mierzenia opóźnienie w odniesieniu do zmiany w podstawowej bazie danych, które zostały zastosowane na serwerze pomocniczym, czyli dostępne do odczytu z lokacji dodatkowej, porównaj *last_commit* czasu w pomocniczej bazie danych o tej samej wartości na serwerze podstawowym Baza danych.
+
+> [!NOTE]
+> Czasami *replication_lag_sec* na podstawowej bazy danych ma wartość NULL, oznacza to, czy podstawowy nie obecnie wie, jak daleko jest pomocnicza.   Zwykle dzieje się tak po ponownym uruchomieniu procesu i powinien być stan przejściowy. Należy wziąć pod uwagę alerty aplikacji, jeśli *replication_lag_sec* zwraca wartość NULL przez dłuższy czas. Może wskazywać, że pomocniczej bazy danych nie może komunikować się z podstawowym z powodu błędu połączenia trwałe. Dostępne są także warunki, które może spowodować, że różnica między *last_commit* czas na pomocniczym i podstawowej bazy danych, aby stać się duże. Na przykład Jeśli zatwierdzenie jest na serwerze podstawowym po długim czasie bez zmian, różnica korzystać z maksymalnie duża wartość przed zwróceniem szybko w 0. Należy wziąć pod uwagę jej warunek błędu podczas różnicę między tymi dwiema wartościami pozostaje dużych przez długi czas.
+
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programowe zarządzanie aktywnej replikacji geograficznej
 

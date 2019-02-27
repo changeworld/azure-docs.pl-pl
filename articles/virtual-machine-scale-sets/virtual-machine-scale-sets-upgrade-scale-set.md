@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 4e6186310f63fde8648ded03a62b207b5f81a8e2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984804"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873631"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Modyfikowanie zestawu skalowania maszyn wirtualnych
 
@@ -316,7 +316,7 @@ Aby zaktualizować istniejące maszyny wirtualne, należy wykonać "ręcznego ua
 - Możesz również użyć określonego języka [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
 
 >[!NOTE]
-> Klastry usługi Service Fabric można używać tylko *automatyczne* trybu, ale aktualizacja jest traktowany inaczej. Aby uzyskać więcej informacji, zobacz [ uaktualnień aplikacji usługi Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
+> Klastry usługi Service Fabric można używać tylko *automatyczne* trybu, ale aktualizacja jest traktowany inaczej. Aby uzyskać więcej informacji, zobacz [uaktualnień aplikacji usługi Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
 
 Istnieje jeden typ zmianami w skali globalnej zestaw właściwości, które nie jest zgodna z zasad uaktualniania. Zmiany do zestawu skalowania, profilu systemu operacyjnego (na przykład nazwa użytkownika administratora i hasło) można zmienić tylko w wersji interfejsu API *2017-12-01* lub nowszej. Te zmiany dotyczą tylko maszyny wirtualne utworzone po zmianie w skali modelu. Aby wyświetlić istniejące maszyny wirtualne, które są aktualne, należy wykonać "reimage" każdej istniejącej maszyny Wirtualnej. Możesz zrobić to odtworzenia z obrazu za pomocą:
 

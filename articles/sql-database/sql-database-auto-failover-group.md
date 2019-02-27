@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 5afd5020b060961d215b922c9e49466b73f2a69e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301931"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889889"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -129,6 +129,18 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   > [!IMPORTANT]
   > Wystąpienie zarządzane nie obsługuje wiele grup trybu failover.
+  
+## <a name="permissions"></a>Uprawnienia
+Uprawnienia dla grupy trybu failover są zarządzane za pośrednictwem [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md). [Współautor serwera SQL Server](../role-based-access-control/built-in-roles.md#sql-server-contributor) rola ma wszystkie uprawnienia wymagane do zarządzania grupy trybu failover. 
+
+### <a name="create-failover-group"></a>Tworzenie grupy trybu failover
+Aby utworzyć grupy trybu failover, musisz mieć uprawnienia zapisu RBAC, do podstawowych i pomocniczych serwerów, a także do wszystkich baz danych w grupie trybu failover. Dla wystąpienia zarządzanego musisz mieć uprawnienia zapisu RBAC do obu podstawowych i pomocniczych wystąpienia zarządzanego, ale uprawnienia do poszczególnych baz danych nie są istotne, ponieważ baz danych poszczególne wystąpienia zarządzanego nie dodawane do lub usunięte z grupy trybu failover. 
+
+### <a name="update-a-failover-group"></a>Aktualizowanie grupy trybu failover
+Do aktualizacji grupy trybu failover, należy RBAC do zapisu w grupie trybu failover i wszystkimi bazami danych na bieżącym serwerze podstawowym lub wystąpienia zarządzanego.  
+
+### <a name="failover-a-failover-group"></a>Tryb failover grupę trybu failover
+Do trybu failover grupę trybu failover, należy do grupy trybu failover w nowym serwerem podstawowym, dostęp do zapisu RBAC lub wystąpienia zarządzanego. 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Najlepsze rozwiązania przy użyciu grupy trybu failover przy użyciu pojedynczych baz danych i pul elastycznych
 

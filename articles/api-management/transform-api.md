@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: eab00663918eadea485aed17a91ce01e5718c36e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413676"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417334"
 ---
 # <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API 
 
@@ -42,7 +42,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 + Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
-+ Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
++ Ukończ również następujący samouczek: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -126,9 +126,10 @@ W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zap
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. Wybierz opcję **Wszystkie operacje**.
 3. W górnej części ekranu wybierz kartę **Projektowanie**.
-4. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
-5. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
-6. Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
+4. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
+5. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
+6. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
+7. Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

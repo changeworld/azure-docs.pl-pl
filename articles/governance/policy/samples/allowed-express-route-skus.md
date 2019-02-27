@@ -1,6 +1,6 @@
 ---
 title: Przykład — dozwolone jednostki SKU usługi ExpressRoute
-description: Ta przykładowa zasada wymaga, aby usługa ExpressRoute używała zatwierdzonej jednostki SKU.
+description: Ta przykładowa definicja zasad wymaga, aby usługa ExpressRoute używała zatwierdzonej jednostki SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/29/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e1ab0696cc89502715ae176ee58f73449095c79
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 818bb1c0aeac49daf2564c67bf095837b00853e5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242825"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337632"
 ---
-# <a name="allowed-expressroute-skus"></a>Dozwolone jednostki SKU usługi ExpressRoute
+# <a name="sample---allowed-expressroute-skus"></a>Przykład — dozwolone jednostki SKU usługi ExpressRoute
 
 Ta zasada wymaga, aby usługa ExpressRoute używała zatwierdzonej jednostki SKU. Należy określić tablicę dozwolonych jednostek SKU.
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: eda41870e86db206847f5ea81e23fa1b7612234c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b1f6024538c6807fd68a0d7b0b7ae2776938055b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817307"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888197"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -37,7 +37,7 @@ Eksportu ciągłego dane są kopiowane do magazynu (gdzie pozostawał dla tak d�
 
 Eksport ciągły **nie obsługuje** następujące funkcje usługi Azure storage/konfiguracje:
 
-* Korzystanie z [zapory sieci Wirtualnej/usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security) w powiązaniu z usługą Azure Blob storage.
+* Korzystanie z [zapory sieci Wirtualnej/usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security) w połączeniu z usługą Azure Blob storage.
 
 * [Niezmienny magazyn](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) dla usługi Azure Blob storage.
 
@@ -150,7 +150,7 @@ Na małą skalę można napisać działał kod służący do pobierania danych, 
 Dla większego przykładu kodu, zobacz [za pomocą roli procesu roboczego][exportasa].
 
 ## <a name="delete"></a>Usuń stare dane
-Należy pamiętać, że jesteś odpowiedzialny za zarządzanie pojemnością magazynu i usuwania starych danych, jeśli to konieczne.
+Odpowiedzialność za zarządzanie pojemnością magazynu i usuwania starych danych, jeśli to konieczne.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Jeśli należy ponownie wygenerować klucz magazynu...
 Jeśli zmienisz klucz do magazynu, Eksport ciągły przestaną działać. Zostanie wyświetlone powiadomienie na swoim koncie platformy Azure.

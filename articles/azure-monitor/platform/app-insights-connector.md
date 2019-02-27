@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447875"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878459"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (przestarzałe)
 
@@ -127,7 +127,7 @@ Po kliknięciu dowolnego miejsca w **wyjątki** wyświetlony blok wizualizację,
 
 Niezależnie od tego, czy wybrano opcję wystąpił jeden **łącznik usługi Application Insights** pulpitu nawigacyjnego, w ramach **wyszukiwania** strony, każde zapytanie zwraca dane usługi Application Insights zawiera aplikację Perspektywa szczegółowych informacji. Na przykład, jeśli przeglądasz dane usługi Application Insights **&#42;** zapytanie wyświetla również na karcie perspektywy, takich jak na poniższej ilustracji:
 
-![Application Insights ](./media/app-insights-connector/app-insights-search.png)
+![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
 Składniki perspektywy są aktualizowane w zależności od zapytania wyszukiwania. Oznacza to, czy można filtrować wyniki za pomocą dowolnego pola wyszukiwania, która daje możliwość wyświetlenia danych z:
 

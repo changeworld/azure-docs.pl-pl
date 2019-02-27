@@ -8,42 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 06/25/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: d1384e22d5a036002d59c30755a8a0e5de648102
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882968"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312603"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go
 
-W tym przewodniku Szybki start wykryjesz ludzką twarz na obrazie za pomocą interfejsu API rozpoznawania twarzy.
+W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka Go do wykrywania ludzkich twarzy na obrazie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
+- Edytor kodu, taki jak program [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>Żądanie Face — Detect
+## <a name="write-the-script"></a>Pisanie skryptu
 
-Użyj metody [Face — Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby wykryć twarze na obrazie i zwrócić atrybuty twarzy, w tym:
-
-* Identyfikator Face ID: unikatowy identyfikator używany w kilku scenariuszach dotyczących interfejsu API rozpoznawania twarzy.
-* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące lokalizację twarzy na obrazie.
-* Charakterystyczne punkty twarzy: układ 27 charakterystycznych punktów twarzy wskazujący położenie istotnych części twarzy.
-* Atrybuty twarzy, takie jak wiek, płeć, intensywność uśmiechu, położenie głowy i zarost.
-
-Aby uruchomić przykład, wykonaj następujące kroki:
-
-1. Skopiuj następujący kod do edytora.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień wartość `uriBase` na lokalizację, w której przechowywane są klucze subskrypcji, jeśli jest to konieczne.
-1. Opcjonalnie możesz zmienić wartość `imageUrl` na obraz, który chcesz przeanalizować.
-1. Zapisz plik z rozszerzeniem `.go`.
-1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia: `go build detect-face.go`.
-1. Uruchom plik, na przykład: `detect-face`.
+Utwórz nowy plik o nazwie _faceDetection.go_ i dodaj następujący kod. Spowoduje to wywołanie interfejsu API rozpoznawania twarzy dla danego adresu URL obrazu.
 
 ```go
 package main
@@ -115,9 +100,25 @@ func main() {
 }
 ```
 
-## <a name="face---detect-response"></a>Odpowiedź na żądanie Face — Detect
+Należy zaktualizować wartość `subscriptionKey` przy użyciu klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). 
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, na przykład:
+Możesz również zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy. Możliwa jest również zmiana pola `returnFaceAttributes`, które określa atrybuty twarzy do pobrania.
+
+## <a name="run-the-script"></a>Uruchamianie skryptu
+
+Otwórz wiersz polecenia i skompiluj program za pomocą następującego polecenia:
+
+```shell
+go build faceDetection.go
+```
+
+Następnie uruchom program:
+
+```shell
+detect-face
+```
+
+W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Następujący kod to przykład pomyślnej odpowiedzi w formacie JSON.
 
 ```json
 [
@@ -300,7 +301,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat interfejsów API rozpoznawania twarzy używanych do wykrywania ludzkich twarzy na obrazach, rozpoznawania ich obrysów i zwracania atrybutów, takich jak wiek i płeć.
+W tym przewodniku Szybki start napisano skrypt w języku Ruby służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 
 > [!div class="nextstepaction"]
-> [Interfejsy API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Interfejs API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

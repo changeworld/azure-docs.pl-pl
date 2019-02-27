@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: f3376b8077302eb6bd9a96710f92d692b641cac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866784"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874889"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
@@ -44,7 +44,7 @@ Usługa LUIS zezwala na maksymalnie 10 Wyświetla frazy na aplikację.
 
 5. Kliknij przycisk **te wartości są wymienne** Jeśli frazy dodano wartości listy są dostępne opcje alternatywne, które mogą być używane zamiennie.
 
-    ![Lista wartości proponowane frazę — zaznacz pole wymienne ](./media/luis-add-features/interchangeable.png)
+    ![Lista wartości proponowane frazę — zaznacz pole wymienne](./media/luis-add-features/interchangeable.png)
 
 6. Kliknij pozycję **Zapisz**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
 
