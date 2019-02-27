@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6f857e926343c4c3c26d746134bbb9d94754c12
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662894"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866015"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrowanie użytkowników z tożsamościami społecznościowymi
 Planując migrację dostawcy tożsamości do usługi Azure AD B2C, konieczne może być migrowanie użytkowników wraz z tożsamościami społecznościowymi. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont tożsamości społecznościowych, takich jak: Kont usługi Facebook, LinkedIn i firmy Microsoft oraz Google do usługi Azure AD B2C. Ten artykuł dotyczy również do tożsamości federacyjnej, jednak te migracje są mniej typowe.
@@ -139,7 +139,7 @@ Nazwa wystawcy lub nazwę dostawcy tożsamości jest skonfigurowany w zasadach. 
 1. Zaloguj się przy użyciu jednego z kont społecznościowych
 2. Skopiuj z tokenu JWT `sub` wartość. `sub` Zwykle zawiera identyfikator obiektu użytkownika w usłudze Azure AD B2C. Lub w witrynie Azure portal, otwórz właściwości użytkownika i skopiuj identyfikatora obiektu.
 3. Otwórz [funkcji Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net)
-4. Zaloguj się z administratorem. Nie
+4. Zaloguj się z administratorem.
 5. Uruchom poniższe żądanie GET. Zastąp userObjectId skopiowanego Identyfikatora użytkownika. **POBIERZ** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. Znajdź `userIdentities` element wewnątrz zwrot JSON z usługi Azure AD B2C.
 7. [Opcjonalnie] Możesz również chcieć dekodowania `issuerUserId` wartość.

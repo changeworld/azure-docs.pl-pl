@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 924befd2ec1949973123acc9b7c7d1b89e707e3e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6dad4fc98dccc5c8db22019fdc548efdf7165d9e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245630"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888750"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -252,4 +252,5 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Puppet przedsiębiorstwa](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet przedsiębiorstwa](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umożliwia automatyzowanie całego cyklu życia infrastruktury Azure Stack. **Pobierz oba elementy Puppet portalu Marketplace.** | Puppet |
 | ![Zażądaj Szybkie odzyskiwanie.](media/azure-stack-marketplace-azure-items/quest.png) | [Zażądaj Szybkie odzyskiwanie Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Szybkie odzyskiwanie Zaawansowana ochrona danych ujednolica kopii zapasowej, replikacji i odzyskiwania w jednym rozwiązaniu oprogramowania łatwy w użyciu. | Zażądaj oprogramowania |
 | ![Serwer Proxy Menedżera 3.1 SUSE (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [Serwer Proxy Menedżera 3.1 SUSE (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Zarządzanie infrastrukturą typu open-source najlepszych w klasie. | SUSE |
+| ![Menedżer klucza CipherTrust w chmurze](media/azure-stack-marketplace-azure-items/cckm.png) | [Menedżer klucza CipherTrust w chmurze](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Wykorzystując Microsoft Azure i innych dostawców chmury interfejsów API Bring Your Own Key (BYOK), Menedżer klucz w chmurze CipherTrust zmniejsza złożoność zarządzania kluczami i kosztów operacyjnych, oferując multicloud cyklu życia kontrolę nad kluczami szyfrowania za pomocą scentralizowanego Zarządzanie i widoczności. | ESecurity firmy Thales |
 | ![BCaaS ZeroDown oprogramowania](media/azure-stack-marketplace-azure-items/zerodown.png) | [Ciągłość biznesowa ZeroDown oprogramowanie jako usługa](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | Oprogramowanie® ZeroDown technologia, która umożliwia firmom ciągły dostęp do danych firmy za pośrednictwem ich ciągłość prowadzenia działalności biznesowej jako usługa (BCaaS)™ architektury, ochrona aplikacji i transakcje, jeśli występują problemy z połączeniem sieciowym, które normalnie cripple przedsiębiorstwa. | ZeroDown Software |

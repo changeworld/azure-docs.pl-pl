@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 02/18/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 191a6c9dc1cc5a24c1a46af21c5b63e3ff27a290
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9dbe641c5e22129f7db3d3f3b886fea4501300b0
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150397"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416143"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Samouczek: Analizowanie wideo za pomocą usługi Media Services w wersji 3 przy użyciu platformy .NET
 
@@ -125,6 +125,11 @@ Usługę Event Grid zaprojektowano pod kątem wysokiej dostępności, stałego p
 **Zadanie** zwykle przechodzi przez następujące stany: **Scheduled** (Zaplanowane), **Queued** (W kolejce), **Processing** (Przetwarzane), **Finished** (Zakończone — jest to stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)**. Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)**, a po zakończeniu tej operacji w stanie **Canceled (Anulowane)**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
+
+
+### <a name="job-error-codes"></a>Kody błędów zadań
+
+Zobacz [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="download-the-result-of-the-job"></a>Pobieranie wyniku zadania
 

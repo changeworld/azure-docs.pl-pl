@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac25473ecce86c2721eda9ede01b6d299c4b727b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31f10ba0c04ccbd9f52b95c43fea7cc551fe64ee
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179335"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888019"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi GitHub dla automatycznej aprowizacji użytkowników
 
@@ -33,11 +33,11 @@ Celem tego samouczka jest Wam czynności, które należy wykonać w witrynie Git
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
 *   Dzierżawy usługi Azure Active directory
-*   Dzierżawca usługi GitHub za pomocą [planu Business Cloud](https://help.github.com/articles/organization-billing-plans/#github-business-cloud) lub lepiej nie są włączone 
-*   Konto użytkownika w usłudze GitHub z uprawnieniami administratora 
+*   Organizacja usługi GitHub utworzona w [chmurze usługi GitHub dla przedsiębiorstw](https://help.github.com/articles/github-s-products/#github-enterprise), która wymaga [planu rozliczeniowego usługi GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
+*   Konto użytkownika w usłudze GitHub z uprawnieniami administratora w organizacji
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API usługi GitHub Standard SCIM](https://developer.github.com/v3/scim/), co jest dostępne dla zespołów usługi GitHub w planie Business lub większą.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API usługi GitHub Standard SCIM](https://developer.github.com/v3/scim/), który jest dostępny dla [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) klientom [GitHub Enterprise, plan rozliczeniowy](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) .
 
 ## <a name="assigning-users-to-github"></a>Przypisywanie użytkowników do usługi GitHub
 

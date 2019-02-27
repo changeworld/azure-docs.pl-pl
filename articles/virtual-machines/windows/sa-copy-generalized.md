@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf0eb7a0b9e38397034c03ef2b4310ed67c6e6dd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980384"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864978"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Sposób tworzenia obrazu maszyny Wirtualnej niezarządzanej maszyny wirtualnej platformy Azure
 
@@ -41,11 +41,11 @@ Upewnij się, że role serwera uruchomionego na maszynie są obsługiwane przez 
 > 
 > 
 
-Możesz również uogólnić maszyny Wirtualnej systemu Linux przy użyciu `sudo waagent -deprovision+user` i przechwytywanie maszyny Wirtualnej za pomocą programu PowerShell. Aby dowiedzieć się, jak przechwycić Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, zobacz [jak Uogólnij i Przechwyć maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure ](../linux/capture-image.md).
+Możesz również uogólnić maszyny Wirtualnej systemu Linux przy użyciu `sudo waagent -deprovision+user` i przechwytywanie maszyny Wirtualnej za pomocą programu PowerShell. Aby dowiedzieć się, jak przechwycić Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, zobacz [jak Uogólnij i Przechwyć maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](../linux/capture-image.md).
 
 
 1. Zaloguj się do maszyny wirtualnej Windows.
-2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom `sysprep.exe`.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom plik `sysprep.exe`.
 3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz pozycję **Włącz systemowy tryb OOBE** i upewnij się, że pole wyboru **Uogólnij** jest zaznaczone.
 4. W **opcje zamykania**, wybierz opcję **zamknięcia**.
 5. Kliknij przycisk **OK**.

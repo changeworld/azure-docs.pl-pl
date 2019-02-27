@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: e934c8bdc851f8c550e8b87a923215df3f95e389
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c4e71f3c355f00bda3df6d43bc81743b391ea0dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728263"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871965"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -31,7 +31,7 @@ Tworzeniu wizualizacji przy użyciu usługi Data Factory różni się od tworzen
 - Usługa Data Factory nie obejmuje repozytorium do przechowywania obiektów JSON dla Twoich zmian.
 - Usługa Data Factory nie jest zoptymalizowana pod kątem współpracy lub kontroli wersji.
 
-![Konfigurowanie usługi Data Factory ](media/author-visually/configure-data-factory.png)
+![Konfigurowanie usługi Data Factory](media/author-visually/configure-data-factory.png)
 
 Jeśli używasz środowiska użytkownika **Kanwa tworzenia** można tworzyć bezpośrednio w usłudze Data Factory, tylko **Opublikuj wszystkie** tryb jest dostępny. Wszelkie zmiany, które są publikowane bezpośrednio w usłudze Data Factory.
 

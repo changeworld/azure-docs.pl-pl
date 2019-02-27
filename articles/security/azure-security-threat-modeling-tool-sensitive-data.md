@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 93beef5702df9b4cf0a51a01fb286a3f023f9839
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892562"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876623"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Ramka zabezpieczeń: Danych poufnych | Środki zaradcze 
 | Produkt/usługę | Artykuł |
 | --------------- | ------- |
 | **Maszyny granicy zaufania** | <ul><li>[Upewnij się, że pliki binarne są zaciemniony plikach, jeśli zawierają one informacje poufne](#binaries-info)</li><li>[Należy wziąć pod uwagę, że za pomocą systemu szyfrowania plików (EFS) jest używany do ochrony danych poufnych specyficzne dla użytkownika](#efs-user)</li><li>[Upewnij się, że poufne dane przechowywane przez aplikację w systemie plików jest zaszyfrowany](#filesystem)</li></ul> | 
 | **Aplikacja sieci Web** | <ul><li>[Upewnij się, że poufnej zawartości nie jest buforowana w przeglądarce](#cache-browser)</li><li>[Szyfruj sekcje pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne](#encrypt-data)</li><li>[Jawnie Wyłącz Autouzupełnianie atrybutu HTML w formularzach poufnych i dane wejściowe](#autocomplete-input)</li><li>[Upewnij się, że poufne dane wyświetlane na ekranie użytkownika są wyświetlane jako znaki](#data-mask)</li></ul> | 
-| **Baza danych** | <ul><li>[Implementowanie dynamiczne maskowanie danych Aby ograniczyć użytkowników bez ujawniania uprzywilejowany poufnych danych](#dynamic-users)</li><li>[Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu](#salted-hash)</li><li>[ Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane](#db-encrypted)</li><li>[Upewnij się, że włączone jest szyfrowanie tego poziomu bazy danych (TDE)](#tde-enabled)</li><li>[Upewnij się, że są szyfrowane kopie zapasowe bazy danych](#backup)</li></ul> | 
+| **Baza danych** | <ul><li>[Implementowanie dynamiczne maskowanie danych Aby ograniczyć użytkowników bez ujawniania uprzywilejowany poufnych danych](#dynamic-users)</li><li>[Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu](#salted-hash)</li><li>[Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane](#db-encrypted)</li><li>[Upewnij się, że włączone jest szyfrowanie tego poziomu bazy danych (TDE)](#tde-enabled)</li><li>[Upewnij się, że są szyfrowane kopie zapasowe bazy danych](#backup)</li></ul> | 
 | **Interfejs API sieci Web** | <ul><li>[Upewnij się, że dane poufne, które są istotne dla interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce](#api-browser)</li></ul> | 
 | Azure Document DB | <ul><li>[Szyfruj poufne dane przechowywane w usłudze Azure Cosmos DB](#encrypt-docdb)</li></ul> | 
 | **Granicy zaufania maszyn wirtualnych IaaS platformy Azure** | <ul><li>[Usługa Azure Disk Encryption umożliwia szyfrowanie dysków używanych przez maszyny wirtualne](#disk-vm)</li></ul> | 
@@ -34,7 +34,7 @@ ms.locfileid: "55892562"
 | **Dynamics CRM** | <ul><li>[Wykonaj bezpieczeństwa modelowania i użyj zespoły jednostki biznesowe w przypadku, gdy wymagane](#modeling-teams)</li><li>[Minimalizacja dostępu, aby udostępnić funkcję na jednostkach krytyczne](#entities)</li><li>[Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i rozwiązania w zakresie zabezpieczeń](#good-practices)</li><li>[Obejmują reguły standardy programowania proscribing przedstawiający szczegóły konfiguracji w Zarządzanie wyjątkami](#exception-mgmt)</li></ul> | 
 | **Azure Storage** | <ul><li>[Użyj usługi Azure Storage Service Encryption (SSE) dla danych magazynowanych (wersja zapoznawcza)](#sse-preview)</li><li>[Użyj szyfrowania po stronie klienta do przechowywania poufnych danych w usłudze Azure Storage](#client-storage)</li></ul> | 
 | **Mobile Client** | <ul><li>[Szyfruj poufne lub dane osobowe dane zapisane w magazynie lokalnym telefonów](#pii-phones)</li><li>[Zaciemniania wygenerowanych plików binarnych, przed rozpoczęciem dystrybuowania dla użytkowników końcowych](#binaries-end)</li></ul> | 
-| **WCF** | <ul><li>[ Ustaw właściwości ClientCredentialType o wartości certyfikatu lub Windows](#cert)</li><li>[Nie jest włączony tryb zabezpieczeń programu WCF](#security)</li></ul> | 
+| **WCF** | <ul><li>[Ustaw właściwości ClientCredentialType o wartości certyfikatu lub Windows](#cert)</li><li>[Nie jest włączony tryb zabezpieczeń programu WCF](#security)</li></ul> | 
 
 ## <a id="binaries-info"></a>Upewnij się, że pliki binarne są zaciemniony plikach, jeśli zawierają one informacje poufne
 

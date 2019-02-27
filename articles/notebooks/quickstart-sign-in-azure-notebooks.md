@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4daae4357a7a9577c48edc8643355d319b701944
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106315"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881570"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Zaloguj się do niego Szybki Start: I Ustaw identyfikator użytkownika
+# <a name="quickstart-sign-in-and-set-a-user-id"></a>Szybki start: Logowanie się i ustawianie identyfikatora użytkownika
 
 Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musisz zarejestrować się uruchamianie notesów, dostęp do zapisanych projektów i notesy i udostępniać innym użytkownikom notesów programu.
 
@@ -52,6 +52,9 @@ Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musis
 
     ![Widok początkowy strony profilu notesy platformy Azure](media/accounts/profile-page-new.png)
 
+> [!NOTE]
+> Jeśli zostanie wyświetlony komunikat "Identyfikator użytkownika jest już w użyciu" spróbować innego identyfikatora. Nazwy użytkowników są unikatowe w obrębie wszystkich kont platformy Azure, notesy i notesy Azure rezerwuje również niektórych identyfikatory użytkownika, takich jak nazwy marki firmy Microsoft.
+
 ## <a name="sign-out"></a>Wyloguj
 
 Aby się wylogować, wybierz swoją nazwę użytkownika w prawym górnym rogu strony, a następnie wybierz **Wyloguj**:
@@ -61,4 +64,4 @@ Aby się wylogować, wybierz swoją nazwę użytkownika w prawym górnym rogu st
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki Start: Tworzenie i udostępnianie notesu](quickstart-create-share-jupyter-notebook.md)
+> [Szybki start: Tworzenie i udostępnianie notesu](quickstart-create-share-jupyter-notebook.md)

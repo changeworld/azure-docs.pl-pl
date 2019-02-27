@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124539"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873257"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wiadomości XML i pliki proste w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
@@ -30,8 +30,8 @@ Zawiera pakiet integracyjny dla przedsiębiorstw:
 * [Płaskie pliku kodowania i dekodowania pliku prostego](logic-apps-enterprise-integration-flatfile.md "więcej informacji na temat kodowania/dekodowanie pliku prostego") — kodowania i dekodowania pliku prostego. Na przykład SAP akceptuje i wysyła IDOC pliki w formacie pliku prostego. Integracja z wieloma platformami utworzyć wiadomości XML, łącznie z aplikacji logiki. Tak można utworzyć aplikację logiki, która używa kodera pliku prostego do "konwersji" pliki XML do plików prostych. 
 * [Wyrażenie XPath](https://msdn.microsoft.com/library/mt643789.aspx) — wzbogacanie komunikat i prowadzenie określonych właściwości wiadomości. Wyodrębnione właściwości służy następnie do rozsyłania wiadomości do miejsca docelowego lub pośredniczący punktu końcowego.
 
-## <a name="try-it-out"></a>Wypróbuj
-[Wdrażanie aplikacji logiki w pełni funkcjonalne ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (przykład GitHub) przy użyciu funkcji XML w usłudze Azure Logic Apps.
+## <a name="try-it-out"></a>Testowanie
+[Wdrażanie aplikacji logiki w pełni funkcjonalne](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (przykład GitHub) przy użyciu funkcji XML w usłudze Azure Logic Apps.
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: a37cfb19ab63335f120383a20753bf2b8333bd96
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9c4576633f98d38da7086711c24def88591ab71f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448929"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869415"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell
 
@@ -591,4 +591,4 @@ Errors           : {}
 Po przejściu w tryb failover gdy jesteś gotowy wrócić do oryginalnego regionie, Uruchom replikację odwrotną dla chronionego elementu replikacji za pomocą polecenia cmdlet Update-AzureRmRecoveryServicesAsrProtectionDirection.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Widok [dokumentacja programu PowerShell odzyskiwania witryn Azure ](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) Aby dowiedzieć się, jak można wykonywać inne zadania, takie jak tworzenie planów odzyskiwania i testowania pracy w trybie failover planów odzyskiwania za pomocą programu PowerShell.
+Widok [dokumentacja programu PowerShell odzyskiwania witryn Azure](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) Aby dowiedzieć się, jak można wykonywać inne zadania, takie jak tworzenie planów odzyskiwania i testowania pracy w trybie failover planów odzyskiwania za pomocą programu PowerShell.

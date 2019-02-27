@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/22/2018
+ms.date: 02/20/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4322b118268ee88235190f5672585d17ea365495
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872650"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453056"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
-Usługa przetwarzania obrazów platformy Azure oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład usługa przetwarzania obrazów może stwierdzić, czy na obrazie znajduje się zawartość przeznaczona dla dorosłych, lub znaleźć wszystkie twarze na obrazie.
+Usługa przetwarzania obrazów platformy Azure oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i informacji zwrotnych. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład usługa przetwarzania obrazów może stwierdzić, czy na obrazie znajduje się zawartość przeznaczona dla dorosłych, lub znaleźć wszystkie twarze na obrazie.
 
 Przetwarzania obrazów w aplikacji można używać, korzystając z natywnego zestawu SDK lub wywołując interfejs API REST bezpośrednio. Na tej stronie ogólnie omówiono, co można zrobić za pomocą przetwarzania obrazów.
 
@@ -45,17 +45,17 @@ Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazó
 
 ## <a name="extract-text-from-images"></a>Wyodrębnianie tekstu z obrazów
 
-Usługa przetwarzania obrazów umożliwia [wyodrębnianie tekstu za pomocą optycznego rozpoznawania znaków](concept-extracting-text-ocr.md) z obrazu do strumienia znaków czytelnych dla komputera. Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawiania kąt obrotu (w stopniach) rozpoznanego tekstu wokół poziomej osi obrazu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język wyodrębnionego tekstu.
+Usługa przetwarzania obrazów umożliwia [wyodrębnianie tekstu za pomocą optycznego rozpoznawania znaków (OCR, Optical Character Recognition)](concept-extracting-text-ocr.md) z obrazu do strumienia znaków czytelnych dla komputera. Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawia kąt obrotu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język rozpoznanego tekstu.
 
-Można również [rozpoznawać tekst drukowany i pismo odręczne](concept-recognizing-text.md) na obrazie. Przetwarzanie obrazów potrafi wykrywać i wyodrębniać zarówno tekst drukowany, jak i pismo odręczne z obrazów różnych obiektów na różnych powierzchniach i tłach, takich jak rachunki, plakaty, wizytówki, listy i tablice. Obecnie rozpoznawanie tekstu drukowanego i odręcznego jest w wersji zapoznawczej i jedynym obsługiwanym językiem jest angielski.  
+Można również [rozpoznawać tekst drukowany i pismo odręczne](concept-recognizing-text.md) na obrazie. Przetwarzanie obrazów potrafi wykrywać i wyodrębniać zarówno tekst drukowany, jak i pismo odręczne z obrazów różnych obiektów na różnych powierzchniach i tłach, takich jak rachunki, plakaty, wizytówki, listy i tablice. Obecnie rozpoznawanie tekstu drukowanego i odręcznego jest w wersji zapoznawczej i jedynym obsługiwanym językiem jest angielski. 
 
 ## <a name="moderate-content-in-images"></a>Moderowanie zawartości na obrazach
 
-Przy użyciu usługi przetwarzania obrazów można [wykrywać zawartość przeznaczoną dla dorosłych](concept-detecting-adult-content.md) na obrazie, oceniać prawdopodobieństwo, że obraz zawiera treści dla dorosłych, a także generować współczynnik ufności. Filtr umożliwiający wykrywanie zawartości dla dorosłych można ustawiać na ruchomej skali, aby dostosować go do swoich preferencji.
+Przy użyciu usługi przetwarzania obrazów można [wykrywać zawartość przeznaczoną dla dorosłych](concept-detecting-adult-content.md) na obrazie i zwracać współczynnik ufności. Filtr umożliwiający wykrywanie zawartości dla dorosłych można ustawiać na ruchomej skali, aby dostosować go do swoich preferencji.
 
 ## <a name="use-containers"></a>Korzystanie z kontenerów
 
-Po zainstalowaniu standardowego kontenera platformy Docker blisko danych można lokalnie rozpoznawać tekst drukowany i pismo odręczne, korzystając z [kontenerów przetwarzania obrazów](computer-vision-how-to-install-containers.md).
+Po zainstalowaniu standardowego kontenera platformy Docker blisko danych można lokalnie rozpoznawać tekst drukowany i pismo odręczne, [korzystając z kontenerów przetwarzania obrazów](computer-vision-how-to-install-containers.md).
 
 ## <a name="image-requirements"></a>Wymagania obrazu
 

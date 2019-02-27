@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a65aabc7b56c4dd5f2d22974756f5f3e54cebb31
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453498"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867715"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -220,7 +220,7 @@ Tak, platforma Azure rozdzieli wystąpień w domenach aktualizacji i błędów, 
 
 ### <a name="what-certificates-are-supported-on-application-gateway"></a>Jakie certyfikaty są obsługiwane w usłudze Application Gateway?
 
-Certyfikaty z podpisem własnym, certyfikaty urzędu certyfikacji i certyfikatów z symbolami wieloznacznymi są obsługiwane. Weryfikacją certyfikatów nie są obsługiwane.
+Certyfikaty z podpisem własnym, certyfikaty urzędu certyfikacji i Weryfikacją certyfikatów oraz certyfikatów z symbolami wieloznacznymi są obsługiwane.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-application-gateway"></a>Jakie są bieżące mechanizmów szyfrowania obsługiwanych przez usługę Application Gateway?
 

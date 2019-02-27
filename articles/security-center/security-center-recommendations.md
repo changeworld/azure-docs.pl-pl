@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8535a77c9f44a4dafca34ef24414f90741a9133e
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0a8680fbc8a3a051906f223d8b2476891c92d110
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652734"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888205"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -63,15 +63,9 @@ Można filtrować zalecenia. Aby filtrować zalecenia, wybierz **filtru** na **z
    * **Niski (niebieski)**: Istnieje luka w zabezpieczeniach, które powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale można filtrować według zalecenia o niskiej ważności, jeśli chcesz je zobaczyć). 
    * **Zdrowy (zielony)**:
    * **Niedostępny (szary)**:
- <!-- * **DESCRIPTION**: Explains the recommendation and what needs to be done to address it.
-**STATE**: Describes the current state of the recommendation:
-   * **Open**: The recommendation hasn't been addressed yet.
-    * **In Progress**: The recommendation is currently being applied to the resources, and no action is required by you.
-   * **Resolved**: The recommendation has already been completed (in this case, the line is grayed out).
-    -->
+ 
 
-Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych zaleceń i każdy z nich działanie w przypadku zastosowania.
-<!-- There is no table below -->
+
 > [!NOTE]
 > Należy zrozumieć [klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager](../azure-classic-rm.md) dla zasobów platformy Azure.
 >

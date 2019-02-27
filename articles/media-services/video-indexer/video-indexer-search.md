@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6c93c0228425b2ff020e5b4301e68eae5b1062a3
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 07b3c806dc5df5f93bee3206cbca53485675e7dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807834"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872407"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 
@@ -36,11 +36,13 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
 
     Po kliknięciu jednego z wyników, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [osadzić Video Indexer widżetów w aplikacji](video-indexer-embed-widgets.md). 
 4. Wyszukaj szczegółowy podział filmu wideo.
+    
+    Jeśli chcesz tworzyć własne klipu oparte na film wideo, który można znaleźć, naciśnij **Edytuj** przycisku. Ta strona pokazuje wideo wraz z jego insights jako filtry. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych indeksatora wideo](video-indexer-view-edit.md). 
 
-    Jeśli chcesz tworzyć własne podział oparty na film wideo, który można znaleźć, naciśnij **Edytuj** przycisku. Na stronie zostanie wyświetlone pełne zestawienie dotyczące tego pliku wideo. Możesz przeszukiwać podział do pokazania tylko wiersze, które Cię interesuje. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych indeksatora wideo](video-indexer-view-edit.md).
-
-    W tym przykładzie przeszukaliśmy tekst "identity protection". Możemy również stosowane dodatkowe filtry, jak pokazano na poniższym ekranie.
-
+    Możesz przeszukiwać wideo, aby tylko wyświetlić wiersze interesuje i używać szczegółowych danych po stronie, aby filtrować elementy, które mają być wyświetlane. Gdy skończysz, możesz wyświetlić podgląd usługi klipu, a następnie naciśnij klawisz **Publikuj** do utworzenia nowego klip, który pojawia się w galerii.
+    
+    W poniższym przykładzie firma Microsoft wyszukiwany tekst "mixed reality". Możemy również stosowane dodatkowe filtry, jak pokazano na poniższym ekranie.
+    
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>Kolejne kroki 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0885a469877d0ea9f52f6191b4cd894ddbbce5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a315933dcd438c68a1326d2b656c2353e4185f12
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162025"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą InsideView
 
@@ -116,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://my.insideview.com/iv/<STS Name>/login.iv`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwa. Zaktualizuj tę wartość przy użyciu rzeczywistego adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej InsideView ](mailto:support@insideview.com) aby zyskać tę wartość.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj tę wartość przy użyciu rzeczywistego adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej InsideView](mailto:support@insideview.com) aby zyskać tę wartość.
  
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Raw)** , a następnie zapisz plik certyfikatu na komputerze.
 

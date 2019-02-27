@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: 917bac81923650405c37dfee500c9606dc7c54ca
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d4bef53a21e6ab7b55c16e27083b818929fbd47c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816610"
+ms.locfileid: "56879258"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Tworzenie potoków uczenia maszynowego przy użyciu usługi Azure Machine Learning
 
@@ -34,13 +34,23 @@ Na poniższym diagramie przedstawiono przykład potoku:
 
 ![Usługi Machine learning potoki w usłudze Azure Machine Learning](./media/concept-ml-pipelines/pipelines.png)
 
+### <a name="which-azure-pipeline-technology-should-i-use"></a>Technologie Azure potoku należy używać?
+
+Chmura platformy Azure udostępnia kilka innych potokach, każdy z innego celu. W poniższej tabeli wymieniono różne potoki i ich używać:
+
+| Potok | Wyniki działania | Canonical potoku |
+| ---- | ---- | ---- |
+| Potoki usługi Azure Machine Learning | Definiuje wielokrotnego użytku usługi machine learning przepływów pracy, które mogą służyć jako szablon dla scenariuszy uczenia maszynowego. | Dane -> modelu |
+| [Potoki usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Przenoszenie danych grup, przekształcania i działania sterowania potrzebne do wykonania zadania.  | Dane -> data |
+| [Potoki usługi Azure](https://azure.microsoft.com/services/devops/pipelines/) | Ciągła integracja i dostarczanie aplikacji do dowolnego/dowolna platforma w chmurze  | Kod -> aplikacji/usługi |
+
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Dlaczego warto tworzyć potoki za pomocą usługi Azure Machine Learning?
 
 Możesz użyć [Azure Machine Learning SDK dla języka Python](#the-python-sdk-for-pipelines) do tworzenia potoków uczenia Maszynowego, jak również przesłać i śledzić uruchomienia potoku poszczególnych.
 
 W przypadku potoków można zoptymalizować przepływ pracy prostotę, szybkość, przenoszenia i ponownego użycia. Podczas kompilowania potoków przy użyciu usługi Azure Machine Learning, można skoncentrować się na swoje doświadczenie, uczenia maszynowego, a nie na infrastrukturze.
 
-Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzebujesz, jak dostosować i testowanie aplikacji logiki. Krok jest jednostki obliczeniowej w potoku. Jak pokazano na powyższym diagramie, zadanie przygotowania danych może obejmować wiele kroków. Te obejmują, ale nie są ograniczone do normalizacji, przekształcania, weryfikacji i cechowania. Źródła danych i danych pośrednich są ponownie używane w potoku, w którym zapisywane obliczenia czasu i zasobów. 
+Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzebujesz, jak dostosować i testowanie aplikacji logiki. Krok jest jednostki obliczeniowej w potoku. Jak pokazano na powyższym diagramie, zadanie przygotowania danych może obejmować wiele kroków. Te kroki obejmują, ale nie są ograniczone do normalizacji, przekształcania, weryfikacji i cechowania. Źródła danych i danych pośrednich są ponownie używane w potoku, w którym zapisywane obliczenia czasu i zasobów. 
 
 Po potok został zaprojektowany, jest często więcej dostrajanie wokół pętli szkolenia potoku. Kiedy ponowne uruchomienie potoku wykonywania przechodzi do czynności, które konieczne będzie ponowne uruchomienie, takich jak skrypt szkolenia zaktualizowane i pomija, co się nie zmienił. Tym samym modelu dotyczy niezmienione skrypty używane do wykonywania tego kroku. 
 

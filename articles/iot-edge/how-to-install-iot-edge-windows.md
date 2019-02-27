@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 3981ae197515803821891402e525852901963f63
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902809"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871617"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows
 
@@ -213,6 +213,34 @@ I uruchomione moduły z listy:
 ```powershell
 iotedge list
 ```
+
+Po zainstalowaniu nowego tylko moduł powinien zostać wyświetlony jest uruchomiona **edgeAgent**. Po zakończeniu [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md), widoczne będą inne. 
+
+## <a name="manage-module-containers"></a>Zarządzanie kontenerami modułu
+
+Usługa IoT Edge wymaga aparatu kontenera, na urządzeniu z. Podczas wdrażania modułu na urządzeniu, środowisko uruchomieniowe usługi IoT Edge używa aparatu kontenera do ściągania obrazu kontenera z rejestru w chmurze. Usługa IoT Edge umożliwia interakcję z moduły, a następnie pobrać dzienniki, ale czasami możesz chcieć użyć aparatu kontenera do interakcji z samego kontenera. 
+
+Aby uzyskać więcej informacji o pojęciach dotyczących modułu, zobacz [modułów Omówienie usługi Azure IoT Edge](iot-edge-modules.md). 
+
+Jeśli korzystasz z kontenerów Windows na urządzeniu z systemem Windows IoT Edge, instalacji usługi IoT Edge uwzględnione Moby aparatu kontenera. Jeżeli projektujesz kontenerów systemu Linux na maszynie deweloperskiej Windows, prawdopodobnie używasz pulpitu platformy Docker. Aparat Moby była oparta na te same standardy, jak Docker i zaprojektowano tak, aby uruchomić równolegle na tym samym komputerze co pulpitu platformy Docker. Z tego powodu aby kontenery docelowej zarządzana przez aparat Moby trzeba specjalnie docelowe silnika zamiast platformy Docker. 
+
+Na przykład aby wyświetlić listę wszystkich obrazów platformy Docker, użyj następującego polecenia:
+
+```powershell
+docker images
+```
+
+Aby wyświetlić listę wszystkich obrazów Moby, zmodyfikuj samo polecenie za pomocą wskaźnika do aparatu Moby: 
+
+```powershell
+docker -H npipe:////./pipe/iotedge_moby_engine images
+```
+
+Aparat, identyfikator URI znajduje się w danych wyjściowych skryptu instalacji, lub można znaleźć w sekcji Ustawienia środowiska uruchomieniowego kontenera dla pliku config.yaml. 
+
+![uri moby_runtime w config.yaml](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+
+Aby uzyskać więcej informacji dotyczących poleceń, można użyć do interakcji z kontenerami i obrazy uruchomione na urządzeniu, zobacz [interfejsów z wierszem polecenia platformy Docker](https://docs.docker.com/engine/reference/commandline/docker/).
 
 ## <a name="uninstall-iot-edge"></a>Odinstalowywanie usługi IoT Edge
 

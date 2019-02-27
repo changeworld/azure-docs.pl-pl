@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 56ad75bc0bed77c2107a49ab339368ab2a63c1fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458095"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881264"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -409,7 +409,7 @@ Poniższe procedury składowanej znajdują się w [bazy danych zadania](sql-data
 |Procedura składowana  |Opis  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     Dodaje nowe zadanie.    |
-|[sp_update_job ](#spupdatejob)    |      Aktualizuje istniejące zadanie.   |
+|[sp_update_job](#spupdatejob)    |      Aktualizuje istniejące zadanie.   |
 |[sp_delete_job](#spdeletejob)     |      Usuwa istniejące zadanie.   |
 |[sp_add_jobstep](#spaddjobstep)    |    Do dodawania kroku do zadania.     |
 |[sp_update_jobstep](#spupdatejobstep)     |     Aktualizuje krok zadania.    |
@@ -420,7 +420,7 @@ Poniższe procedury składowanej znajdują się w [bazy danych zadania](sql-data
 |[sp_delete_target_group](#spdeletetargetgroup)     |    Usuwa grupy docelowej.     |
 |[sp_add_target_group_member](#spaddtargetgroupmember)     |    Dodaje do grupy docelowej bazy danych lub grupy baz danych.     |
 |[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     Usuwa docelowy element członkowski grupy z grupy docelowej.    |
-|[sp_purge_jobhistory ](#sppurgejobhistory)    |    Usuwa rekordy historii zadania.     |
+|[sp_purge_jobhistory](#sppurgejobhistory)    |    Usuwa rekordy historii zadania.     |
 
 
 
@@ -448,7 +448,7 @@ Dodaje nowe zadanie.
 #### <a name="arguments"></a>Argumenty  
 
 [  **@job_name =** ] "parametr job_name"  
-Nazwa zadania. Nazwa musi być unikatowa i nie może zawierać znaku procentu (%). Parametr job_name jest nvarchar(128) bez wartości domyślnej.
+Nazwa zadania. Nazwa musi być unikatowa i nie może zawierać procentu (%) znak. Parametr job_name jest nvarchar(128) bez wartości domyślnej.
 
 [  **@description =** ] "opis"  
 Opis zadania. Długość opisu jest nvarchar(512) z domyślną wartością NULL. W przypadku pominięcia opis pusty ciąg jest używany.

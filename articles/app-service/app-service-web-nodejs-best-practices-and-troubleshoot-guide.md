@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6a22600f7d6653da64256d7ec63ba26f272b2184
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051856"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888274"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure App Service Windows
 
@@ -90,7 +90,7 @@ Oprócz tego do przesyłania strumieniowego aplikacji, należy także ustawić r
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Rozdzielana średnikami lista plików, które są monitorowane zmian. Każda zmiana w pliku powoduje, że aplikacja do Kosza. Każdy wpis zawiera nazwę katalogu opcjonalny, a także nazwę wymaganego pliku, które są względne wobec katalogu, w którym znajduje się punkt wejścia głównego aplikacji. Symbole wieloznaczne są dozwolone w tylko część nazwy pliku. Wartość domyślna to `*.js;web.config`
+Rozdzielana średnikami lista plików, które są monitorowane zmian. Każda zmiana w pliku powoduje, że aplikacja do Kosza. Każdy wpis zawiera nazwę katalogu opcjonalny, a także nazwę wymaganego pliku, które są względne wobec katalogu, w którym znajduje się punkt wejścia głównego aplikacji. Symbole wieloznaczne są dozwolone w tylko część nazwy pliku. Wartość domyślna to `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -283,6 +283,6 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat aplikacj
 * [Get started with Node.js web apps in Azure App Service (Rozpoczynanie pracy z aplikacjami internetowymi Node.js w usłudze Azure App Service)](app-service-web-get-started-nodejs.md)
 * [How to debug a Node.js web app in Azure App Service (Jak debugować aplikację internetową Node.js w usłudze Azure App Service)](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Using Node.js Modules with Azure applications (Używanie modułów Node.js z aplikacjami platformy Azure)](../nodejs-use-node-modules-azure-apps.md)
-* [Usługa Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Centrum deweloperów środowiska Node.js](../nodejs-use-node-modules-azure-apps.md)
 * [Exploring the Super Secret Kudu Debug Console (Szczegółowe informacje o ściśle tajnej konsoli debugowania aparatu Kudu)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

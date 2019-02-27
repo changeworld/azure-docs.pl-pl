@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 7211b7f5db14f4bad114556e5c080cf5d535b00b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 20c5d66f51cffeb7e4e73ba9f16b7ea5ce305e5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545488"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874107"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal
 Reguły zapory na poziomie serwera umożliwiają administratorom dostęp do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP. 
@@ -36,7 +36,7 @@ Użyj aparatu wyszukiwania lub innego narzędzia do trybu online, aby sprawdzić
 
 4. Dodaj zakresy adresów dodatkowe. W regułach zapory dla usługi Azure Database for PostgreSQL można określić pojedynczy adres IP lub zakresu adresów. Jeśli chcesz ograniczyć regułę do w pojedynczy adres IP, wpisz ten sam adres w polu, początkowy adres IP i końcowy adres IP. Otwarcie zapory pozwala administratorom, użytkowników i aplikacji, aby zalogować się do każdej bazy danych na serwer PostgreSQL, do którego mają prawidłowe poświadczenia.
 
-  ![Witryna Azure portal — reguły zapory ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+  ![Witryna Azure portal — reguły zapory](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Kliknij przycisk **Zapisz** na pasku narzędzi, aby zapisać tę regułę zapory na poziomie serwera. Czekaj na potwierdzenie, czy aktualizacja reguły zapory zakończyło się pomyślnie.
 

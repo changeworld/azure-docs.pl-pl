@@ -1,6 +1,6 @@
 ---
 title: Przykład — przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie bazy danych
-description: Te przykładowe zasady przeprowadzają inspekcję zasad alertu zabezpieczeń bazy danych SQL, dla których nie ustawiono określonego stanu.
+description: Te przykładowe definicje zasad przeprowadzają inspekcję zasad alertu zabezpieczeń bazy danych SQL, dla których nie ustawiono określonego stanu.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2ef0e83f73a30b0510ec728cd5c2a88845821dc9
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73f9300d2948337b8e397f544e1dde2d5d09ed0b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241669"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342359"
 ---
-# <a name="audit-db-level-threat-detection-setting"></a>Przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie bazy danych
+# <a name="sample---audit-db-level-threat-detection-setting"></a>Przykład — przeprowadzanie inspekcji ustawień wykrywania zagrożeń na poziomie bazy danych
 
 Te zasady przeprowadzają inspekcję zasad alertu zabezpieczeń bazy danych SQL, dla których nie ustawiono określonego stanu. Należy określić wartość, która wskazuje, czy wykrywanie zagrożeń ma być włączone czy wyłączone.
 

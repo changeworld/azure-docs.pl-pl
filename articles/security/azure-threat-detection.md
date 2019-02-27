@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 32e705c5c338d9bd7c16514b2dc2ab081a9caf6a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 301dd9357bc1585d96eda216d7e47601e488665b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115559"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871803"
 ---
 # <a name="azure-advanced-threat-detection"></a>Usługa Azure zaawansowane wykrywanie zagrożeń
 
@@ -108,7 +108,7 @@ W środku [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics
 
 Możesz zbierać dane do repozytorium z połączonych źródeł przez konfigurowanie źródeł danych i dodawanie rozwiązań do subskrypcji.
 
-![Pulpit nawigacyjny usługi Log Analytics ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Pulpit nawigacyjny usługi Log Analytics](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Źródeł danych, jak i rozwiązań należy utworzyć oddzielny rekord typy posiadają osobny zestaw właściwości, ale nadal możesz przeanalizować je razem w zapytaniach do repozytorium. Można użyć tych samych narzędzi i metod do pracy z różnymi rodzajami danych zbieranych przez różne źródła.
 

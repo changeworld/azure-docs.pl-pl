@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49412731823cb906e77835e2b915f7915b18dea2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203798"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268570"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
@@ -39,6 +39,7 @@ W tym samouczku pokazano, jak uzyskać dostęp do interfejsu API programu Micros
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - Aby można było udzielić tożsamości maszyny wirtualnej dostępu do funkcji Azure AD Graph, do konta musi być przypisana rola **Administrator globalny** w usłudze Azure AD.
+- Zainstaluj najnowszą wersję modułu [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), jeśli jeszcze nie zostało to zrobione. 
 
 ## <a name="connect-to-azure-ad"></a>Łączenie z usługą Azure AD
 

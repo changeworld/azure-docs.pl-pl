@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ece75ff84c9f45e7284d7a5976f55f8a4ac4680f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418096"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884036"
 ---
-W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć usługi Azure Cloud Shell, bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po prostu kliknij przycisk **Kopiuj**, aby skopiować kod, wklej go do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby go uruchomić. Istnieje kilka sposobów uruchomienia usługi Cloud Shell:
+W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć usługi Azure Cloud Shell. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, mającej typowych narzędzi platformy Azure, które są wstępnie zainstalowane i skonfigurowane do korzystania z Twoim kontem. Po prostu kliknij **kopiowania** będzie skopiować kod, wklej go w usłudze Cloud Shell, a następnie naciśnij klawisz enter, aby go uruchomić. Istnieje kilka sposobów uruchomienia usługi Cloud Shell:
 
 |  |   |
 |-----------------------------------------------|---|
@@ -24,4 +24,6 @@ W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polece
 | Kliknij przycisk **Cloud Shell** w menu w prawym górnym rogu witryny Azure Portal. | [![Usługa Cloud Shell w portalu](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
 |  |  |
 
-Jeśli nie chcesz używać usługi Azure Cloud Shell, można zainstalować programu PowerShell lokalnie zamiast tego. Jeśli zdecydujesz się zainstalować program PowerShell i używać lokalnie, należy zainstalować najnowszą wersję poleceń cmdlet programu Azure PowerShell Resource Manager można pobrać najnowszych wersji funkcji. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+**Uruchamianie programu PowerShell lokalnie**
+
+Można również zainstalować i uruchomić polecenia cmdlet programu PowerShell platformy Azure lokalnie na komputerze. Polecenia cmdlet programu PowerShell są często aktualizowane. Jeśli nie używasz najnowszej wersji, wartości określonych w instrukcji może zakończyć się niepowodzeniem. Aby znaleźć wersję programu PowerShell, które uruchamiasz lokalnie, należy użyć `Get-Module -ListAvailable Az` polecenia cmdlet. Aby zainstalować lub zaktualizować, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).

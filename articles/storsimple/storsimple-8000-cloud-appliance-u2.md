@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70a109b9aee46e6b6b65a9a5c139abdf1aa9bab9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387688"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330600"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 
@@ -45,7 +45,7 @@ Dostępne są dwa modele urządzenia StorSimple w chmurze: standardowy — 8010 
 | **Maksymalna pojemność** |30 TB |64 TB |
 | **Maszyna wirtualna platformy Azure** |Standard_A3 (4 rdzenie, 7 GB pamięci)| Standard_DS3 (4 rdzenie, 14 GB pamięci)|
 | **Dostępność w danym regionie** |Wszystkie regiony platformy Azure |Regiony świadczenia usługi Azure obsługujące usługę Premium Storage i maszyny wirtualne DS3 platformy Azure<br></br>Przy użyciu [tej listy](https://azure.microsoft.com/regions/services/) sprawdź, czy w Twoim regionie jest dostępna zarówno opcja **Maszyny wirtualne > Seria DS**, jak i opcja **Magazyn > Magazyn na dysku**. |
-| **Typ magazynu** |Używa usługi Azure Standard Storage dla dysków lokalnych<br></br> Informacje na temat [tworzenia konta Standard Storage](../storage/common/storage-create-storage-account.md) |Używa usługi Azure Premium Storage dla dysków lokalnych<sup>2</sup> <br></br>Informacje na temat [tworzenia konta Premium Storage](../virtual-machines/windows/premium-storage.md) |
+| **Typ magazynu** |Używa usługi Azure Standard Storage dla dysków lokalnych<br></br> Informacje na temat [tworzenia konta Standard Storage](../storage/common/storage-create-storage-account.md) |Używa usługi Azure Premium Storage dla dysków lokalnych<sup>2</sup> <br></br> |
 | **Wskazówki dotyczące obciążenia** |Pobieranie plików z kopii zapasowych na poziomie elementu |Scenariusze tworzenia i testowania w chmurze <br></br>Obciążenia o małych opóźnieniach i większej wydajności<br></br>Urządzenie pomocnicze do odzyskiwania po awarii |
 
 <sup>1</sup> *Poprzednia nazwa: 1100*.
@@ -63,7 +63,7 @@ W poniższej tabeli przedstawiono niektóre podstawowe różnice między urządz
 |  | Urządzenie fizyczne | Urządzenie w chmurze |
 | --- | --- | --- |
 | **Lokalizacja** |Znajduje się w centrum danych. |Działa w systemie Azure. |
-| **Interfejsy sieciowe** |Ma sześć interfejsów sieciowych: DANE 0 do DANE 5. |Ma tylko jeden interfejs sieciowy: DANE 0. |
+| **Interfejsy sieciowe** |Ma sześć interfejsów sieciowych: od DATA 0 do DATA 5. |Ma tylko jeden interfejs sieciowy: DATA 0. |
 | **Rejestracja** |Rejestrowane podczas wykonywania kroku konfiguracji początkowej. |Rejestracja jest osobnym zadaniem. |
 | **Klucz szyfrowania danych usługi** |Należy wygenerować ponownie w urządzeniu fizycznym, a następnie zaktualizować urządzenie w chmurze za pomocą nowego klucza. |Nie można ponownie wygenerować z urządzenia w chmurze. |
 | **Obsługiwane typy woluminów** |Obsługiwane są zarówno woluminy przypięte lokalnie, jak i woluminy warstwowe. |Obsługiwane są tylko woluminy warstwowe. |
@@ -94,7 +94,7 @@ Przed aprowizowaniem urządzenia w chmurze wykonaj następujące czynności przy
 Przed utworzeniem urządzenia w chmurze przeprowadź następujące aktualizacje usługi Menedżer urządzeń StorSimple:
 
 * Dodaj [rekordy kontroli dostępu](storsimple-8000-manage-acrs.md) do maszyn wirtualnych, które będą serwerami hosta dla urządzenia w chmurze.
-* Użyj [konta magazynu](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) w tym samym regionie, w którym działa urządzenie w chmurze. Jeśli konta usługi Storage są w różnych regionach, wydajność może zostać obniżona. W urządzeniu w chmurze można używać konta Standard lub Premium Storage. Więcej informacji na temat tworzenia [konta Standard Storage](../storage/common/storage-create-storage-account.md) lub [konta Premium Storage](../virtual-machines/windows/premium-storage.md)
+* Użyj [konta magazynu](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) w tym samym regionie, w którym działa urządzenie w chmurze. Jeśli konta usługi Storage są w różnych regionach, wydajność może zostać obniżona. W urządzeniu w chmurze można używać konta Standard lub Premium Storage. Więcej informacji na temat [tworzenia konta Standard Storage](../storage/common/storage-create-storage-account.md).
 * Do utworzenia urządzenia w chmurze użyj innego konta magazynu niż używane do obsługi danych. Użycie tego samego konta magazynu może spowodować obniżenie wydajności.
 
 Upewnij się, że przed rozpoczęciem masz przygotowane następujące informacje:
@@ -108,7 +108,7 @@ Przed wykonaniem tych procedur upewnij się, że spełniono [wymagania wstępne 
 
 Wykonaj poniższe kroki, aby utworzyć urządzenie StorSimple w chmurze.
 
-### <a name="step-1-create-a-cloud-appliance"></a>Krok 1. Tworzenie urządzenia w chmurze
+### <a name="step-1-create-a-cloud-appliance"></a>Krok 1: Tworzenie urządzenia w chmurze
 
 Wykonaj poniższe kroki, aby utworzyć urządzenie StorSimple w chmurze.
 
@@ -116,7 +116,7 @@ Wykonaj poniższe kroki, aby utworzyć urządzenie StorSimple w chmurze.
 
 Jeśli tworzenie urządzenia w chmurze zakończy się niepowodzeniem w trakcie tego kroku, może to oznaczać brak łączności z Internetem. Aby uzyskać więcej informacji, przejdź do sekcji [rozwiązywania problemów z błędami łączności internetowej](#troubleshoot-internet-connectivity-errors) podczas tworzenia urządzenia w chmurze.
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Krok 2. Konfigurowanie i rejestrowanie urządzenia w chmurze
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Krok 2: Konfigurowanie i rejestrowanie urządzenia w chmurze
 
 Przed rozpoczęciem tej procedury upewnij się, że masz kopię klucza szyfrowania danych usługi. Klucz szyfrowania danych usługi jest tworzony podczas rejestrowania pierwszego urządzenia fizycznego StorSimple w usłudze Menedżer urządzeń StorSimple. Zgodnie z instrukcją należy przechowywać go w bezpiecznym miejscu. Jeśli nie masz kopii klucza szyfrowania danych usługi, w celu uzyskania pomocy musisz skontaktować się z działem pomocy firmy Microsoft.
 
@@ -124,7 +124,7 @@ Wykonaj poniższe kroki, aby skonfigurować i zarejestrować urządzenie StorSim
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3 (opcjonalny): Modyfikowanie ustawień konfiguracji dla urządzeń
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3: (Opcjonalny) Modyfikowanie ustawień konfiguracji urządzenia
 
 W poniższej sekcji opisano ustawienia konfiguracji dla urządzeń wymagane dla urządzenia StorSimple w chmurze, jeśli chcesz użyć protokołu CHAP lub przystawki StorSimple Snapshot Manager albo zmienić hasło administratora urządzenia.
 

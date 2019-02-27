@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da3b09998d163ffcc16bfcbbf9f516467dd3311d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418632"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887594"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Zarządzanie elementami runbook w usłudze Azure Automation
 
-Element runbook można dodać do usługi Azure Automation, albo [tworzenia nowej](#creating-a-new-runbook) lub przez zaimportowanie istniejącego elementu runbook z pliku lub [galerii elementów Runbook](automation-runbook-gallery.md). Ten artykuł zawiera informacje na temat tworzenia i importowania elementów runbook z pliku.  Możesz uzyskać wszystkie szczegóły znajdujące się na dostęp do społeczności elementów runbook i modułów w [elementów Runbook i modułów galeriach, aby usługa Azure Automation](automation-runbook-gallery.md).
+Element runbook można dodać do usługi Azure Automation, albo [tworzenia nowej](#create-a-runbook) lub przez zaimportowanie istniejącego elementu runbook z pliku lub [galerii elementów Runbook](automation-runbook-gallery.md). Ten artykuł zawiera informacje na temat tworzenia i importowania elementów runbook z pliku.  Możesz uzyskać wszystkie szczegóły znajdujące się na dostęp do społeczności elementów runbook i modułów w [elementów Runbook i modułów galeriach, aby usługa Azure Automation](automation-runbook-gallery.md).
 
 ## <a name="create-a-runbook"></a>Tworzenie elementu runbook
 
@@ -65,7 +65,7 @@ Poniższa procedura służy do importowania pliku skryptu do usługi Azure Autom
 5. Jeśli **nazwa** pole jest włączone, a następnie użytkownik może go zmienić.  Nazwa elementu runbook musi zaczynać się literą i mogą mieć litery, cyfry, podkreślenia i łączniki.
 6. [Typ elementu runbook](automation-runbook-types.md) jest automatycznie wybierana, ale można zmienić typ, po uwzględnieniu ograniczenia stosowane do konta. 
 7. Nowy element runbook zostanie wyświetlony na liście elementów runbook dla konta usługi Automation.
-8. Należy najpierw [opublikować element runbook](#publishing-a-runbook) zanim będzie można go uruchomić.
+8. Należy najpierw [opublikować element runbook](#publish-a-runbook) zanim będzie można go uruchomić.
 
 > [!NOTE]
 > Po zaimportowaniu graficznego elementu runbook lub graficzny element runbook przepływu pracy programu PowerShell, istnieje możliwość do przekonwertowania do innych typów, jeśli chcieli. Nie można przekonwertować tekstowy element runbook.
@@ -89,7 +89,7 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Testowanie elementu Runbook
 
-Podczas testowania elementu runbook [wersję roboczą](#publishing-a-runbook) jest wykonywane i wykonywane są wszystkie akcje, które wykonuje. Historia zadań nie zostanie utworzony, ale [dane wyjściowe](automation-runbook-output-and-messages.md#output-stream) i [ostrzeżeń i błędów](automation-runbook-output-and-messages.md#message-streams) strumienie są wyświetlane w teście dane wyjściowe w okienku. Komunikaty dotyczące [pełne Stream](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych tylko wtedy, gdy [zmiennej $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) jest ustawiona, aby kontynuować.
+Podczas testowania elementu runbook [wersję roboczą](#publish-a-runbook) jest wykonywane i wykonywane są wszystkie akcje, które wykonuje. Historia zadań nie zostanie utworzony, ale [dane wyjściowe](automation-runbook-output-and-messages.md#output-stream) i [ostrzeżeń i błędów](automation-runbook-output-and-messages.md#message-streams) strumienie są wyświetlane w teście dane wyjściowe w okienku. Komunikaty dotyczące [pełne Stream](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych tylko wtedy, gdy [zmiennej $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) jest ustawiona, aby kontynuować.
 
 Mimo że jest uruchamiana wersja robocza elementu runbook nadal wykonywany normalnie i wykonuje wszystkie akcje dotyczące zasobów w środowisku. Z tego powodu należy przetestować tylko elementy runbook dotyczące zasobów spoza środowiska produkcyjnego.
 

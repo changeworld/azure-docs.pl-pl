@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0e96b87e46872bebe7563e08f0eb7a33b11015f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329852"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878068"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business jeden na maszynach wirtualnych platformy Azure
 Ten dokument zawiera wskazówki dotyczące wdrażania SAP Business One na maszynach wirtualnych platformy Azure. Dokumentacja nie jest zamiennikiem dokumentacji instalacji działalności jeden dla rozwiązania SAP. Dokumentacja obejmuje podstawowe wskazówki dotyczące planowania i wdrażania infrastruktury platformy Azure do uruchamiania aplikacji Business One na.
@@ -38,7 +38,7 @@ Aby użyć tego przewodnika, potrzebujesz podstawową wiedzę na temat następuj
 - [Maszyny wirtualne platformy Azure na Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - [Maszyny wirtualne platformy Azure w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure, sieci i wirtualnych sieci zarządzania przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [Sieci platformy Azure i sieci wirtualnych za pomocą interfejsu wiersza polecenia ](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Sieci platformy Azure i sieci wirtualnych za pomocą interfejsu wiersza polecenia](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [Zarządzanie dyskami platformy Azure przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Nawet jeśli interesuje Cię w firmie, jeden tylko dokumentu [planowanie maszyn wirtualnych platformy Azure i wdrażanie środowiska SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) może być dobrym źródłem informacji.

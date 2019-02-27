@@ -6,19 +6,18 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/26/2019
 ms.author: dobett
-ms.openlocfilehash: 02ea4b94f8d1442360bebb36fdbba13d973f8555
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 81cdd53769cc33daaed70ba824a0a3bbf68f8134
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242419"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877235"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Odczytywanie komunikatów przesyłanych z urządzeń do chmury z wbudowanego punktu końcowego
 
-Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych dla usługi (**komunikaty/zdarzenia**) jest zgodna z [usługi Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/
-). Ten punkt końcowy jest aktualnie korzystać tylko z uwidocznionymi [AMQP](https://www.amqp.org/) protokół, port 5671. Usługa IoT hub udostępnia poniższe właściwości do umożliwiają kontrolowanie wbudowanych zgodnego z Centrum zdarzeń obsługi komunikatów punktu końcowego **komunikaty/zdarzenia**.
+Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych dla usługi (**komunikaty/zdarzenia**) jest zgodna z [usługi Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Ten punkt końcowy jest aktualnie korzystać tylko z uwidocznionymi [AMQP](https://www.amqp.org/) protokół, port 5671. Usługa IoT hub udostępnia poniższe właściwości do umożliwiają kontrolowanie wbudowanych zgodnego z Centrum zdarzeń obsługi komunikatów punktu końcowego **komunikaty/zdarzenia**.
 
 | Właściwość            | Opis |
 | ------------------- | ----------- |
@@ -27,7 +26,7 @@ Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych d
 
 Usługa IoT Hub umożliwia także zarządzanie grupy konsumentów na wbudowane urządzenia do chmury otrzymywać punktu końcowego.
 
-Jeśli używasz [routing komunikatów](iot-hub-devguide-messages-d2c.md) i [rezerwowego trasy](iot-hub-devguide-messages-d2c.md#fallback-route) jest włączone, wszystkie komunikaty, które nie są zgodne z zapytaniem na wszystkie trasy są zapisywane wbudowany punkt końcowy. Jeśli wyłączysz tę trasę rezerwowy, wiadomości, które nie są zgodne z dowolnego zapytania są porzucane.
+Jeśli używasz [routing komunikatów](iot-hub-devguide-messages-d2c.md) i [rezerwowego trasy](iot-hub-devguide-messages-d2c.md#fallback-route) jest włączone, wszystkie komunikaty, które nie są zgodne z zapytaniem na wszystkie trasy, przejdź do wbudowany punkt końcowy. Jeśli wyłączysz tę trasę rezerwowy, wiadomości, które nie są zgodne z dowolnego zapytania są porzucane.
 
 Możesz zmodyfikować czas przechowywania albo programowo przy użyciu [dostawcy zasobów usługi IoT Hub interfejsów API REST](/rest/api/iothub/iothubresource), lub za pomocą [witryny Azure portal](https://portal.azure.com).
 
@@ -35,33 +34,45 @@ Usługa IoT Hub udostępnia **komunikaty/zdarzenia** wbudowany punkt końcowy dl
 
 ## <a name="read-from-the-built-in-endpoint"></a>Odczyt z wbudowanego punktu końcowego
 
-Kiedy używasz [usługi Azure Service Bus SDK dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.ServiceBus) lub [Event Hubs — hosta procesora zdarzeń](..//event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md), wszelkie parametry połączenia Centrum IoT Hub można użyć z odpowiednimi uprawnieniami. Następnie użyj **komunikaty/zdarzenia** jako nazwy Centrum zdarzeń.
+Niektóre integracji produktu i zestawy SDK z centrów zdarzeń zapoznali się z Centrum IoT Hub i umożliwiają nawiązywanie połączenia z wbudowanego punktu końcowego za pomocą parametrów połączenia usługi IoT hub.
 
-Kiedy używasz zestawów SDK (lub integracji produktu) rozpoznaje usługi IoT Hub, musisz pobrać punktu końcowego zgodnego z Centrum zdarzeń i nazwę zgodną z Centrum zdarzeń:
+Gdy używasz Event Hubs z zestawów SDK lub integracji produktu, które znają usługę IoT Hub, musisz punktu końcowego zgodnego z Centrum zdarzeń oraz nazwę zgodną z Centrum zdarzeń. Te wartości można pobrać z portalu w następujący sposób:
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT hub.
 
 2. Kliknij przycisk **wbudowanych punktach końcowych**.
 
-3. **Zdarzenia** sekcja zawiera następujące wartości: **punktu końcowego zgodnego z Centrum zdarzeń**, **nazwę zgodną z Centrum zdarzeń**, **partycje**, **Czas przechowywania**, i **grupy konsumentów**.
+3. **Zdarzenia** sekcja zawiera następujące wartości: **Partycje**, **nazwę zgodną z Centrum zdarzeń**, **punktu końcowego zgodnego z Centrum zdarzeń**, **czas przechowywania**, i **grupy konsumentów**.
 
     ![Ustawienia komunikacji między urządzeniem i chmurą](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-Wymaga zestawu SDK usługi IoT Hub, nazwę punktu końcowego usługi IoT Hub, która jest **komunikaty/zdarzenia** według **punktów końcowych**.
+W portalu pole punktu końcowego zgodnego z Centrum zdarzeń zawiera pełne parametry połączenia usługi Event Hubs, wygląda następująco: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Jeśli używasz zestawu SDK wymaga inne wartości, ich będzie:
 
-Jeśli zestaw SDK, którego używasz wymaga **Hostname** lub **Namespace** wartość, Usuń schemat z **punktu końcowego zgodnego z Centrum zdarzeń**. Na przykład, jeśli punktu końcowego zgodnego z Centrum zdarzeń jest **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, **Hostname** będzie  **narzędzia iothub-ns-myiothub-1234.servicebus.windows.net**. **Namespace** będzie **iothub-ns-myiothub-1234**.
+| Name (Nazwa) | Wartość |
+| ---- | ----- |
+| Endpoint | sb://abcd1234namespace.servicebus.windows.net/ |
+| Nazwa hosta | abcd1234namespace.servicebus.windows.net |
+| Przestrzeń nazw | abcd1234namespace |
 
 Następnie można użyć dowolnego zasady dostępu współdzielonego, który ma **ServiceConnect** uprawnień, aby nawiązać połączenie z określonym Centrum zdarzeń.
 
-Jeśli potrzebujesz utworzyć parametry połączenia Centrum zdarzeń przy użyciu poprzednich informacji, użyj następującego wzorca:
+Zestawy SDK, w którym można nawiązać połączenia z wbudowanego punktu końcowego zgodnego z Centrum zdarzeń, który usługa IoT Hub udostępnia obejmują:
 
-`Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy name};SharedAccessKey={iot hub policy key}`
+| Język | SDK | Przykład | Uwagi |
+| -------- | --- | ------ | ----- |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Szybki start](quickstart-send-telemetry-dotnet.md) | Używa informacji o zgodnych z usługą Event Hubs |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Szybki start](quickstart-send-telemetry-java.md) | Używa informacji o zgodnych z usługą Event Hubs |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Szybki start](quickstart-send-telemetry-node.md) | Używa parametrów połączenia usługi IoT Hub |
+| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Używa parametrów połączenia usługi IoT Hub |
 
-Zestawy SDK i integracji, korzystające z punktów końcowych zgodnych z Centrum zdarzeń, które usługa IoT Hub udostępnia zawiera elementy na poniższej liście:
+Integracje produktów, których można używać z wbudowanego punktu końcowego zgodnego z Centrum zdarzeń, który usługa IoT Hub udostępnia obejmują:
 
-* [Klient usługi Event Hubs w języku Java](https://github.com/Azure/azure-event-hubs-java).
+* [Usługa Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Zobacz [przetwarzanie danych z usługi IoT Hub przy użyciu usługi Azure Functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Zobacz [Stream dane jako dane wejściowe do usługi Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Zobacz [dodawania źródła zdarzeń Centrum IoT do środowiska usługi Time Series Insights](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
 * [Apache Storm spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Możesz wyświetlić [elementu spout źródła](https://github.com/apache/storm/tree/master/external/storm-eventhubs) w witrynie GitHub.
 * [Integracja platformy Apache Spark](../hdinsight/spark/apache-spark-eventhub-streaming.md).
+* [Usługa Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

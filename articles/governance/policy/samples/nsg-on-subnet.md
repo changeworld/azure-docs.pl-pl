@@ -1,6 +1,6 @@
 ---
 title: Przykład — sieciowa grupa zabezpieczeń x w każdej podsieci
-description: Te przykładowe zasady wymagają, aby dana sieciowa grupa zabezpieczeń była używana w każdej podsieci wirtualnej.
+description: Ta przykładowa definicja zasad wymaga, aby dana sieciowa grupa zabezpieczeń była używana w każdej podsieci wirtualnej.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: bf02e0df860b677ed1766e083834f894251f6b63
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1183a403c81dd71f123406991755157a4a4a1d26
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242842"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338550"
 ---
-# <a name="nsg-x-on-every-subnet"></a>Sieciowa grupa zabezpieczeń X w każdej podsieci
+# <a name="sample---network-security-group-x-on-every-subnet"></a>Przykład — sieciowa grupa zabezpieczeń X w każdej podsieci
 
 Ta zasada wymaga, aby określona sieciowa grupa zabezpieczeń była używana z każdą podsiecią wirtualną. Należy określić identyfikator sieciowej grupy zabezpieczeń do użycia.
 

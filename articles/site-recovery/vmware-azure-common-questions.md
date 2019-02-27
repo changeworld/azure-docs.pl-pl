@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 84f53b0ddf2d9dfbf25eabbe028c2cfaa0c3fb55
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235228"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880057"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -277,7 +277,7 @@ Po przejściu w tryb failover maszyn wirtualnych platformy Azure są dostępne z
 Platforma Azure została zaprojektowana z myślą o odporności danych. Usługa Site Recovery został zaprojektowany do trybu failover do pomocniczego centrum danych platformy Azure, zgodnie z umową SLA platformy Azure. Po przejściu do trybu failover, możemy zagwarantować metadane i magazyny pozostają w tym samym regionie geograficznym, który został wybrany dla magazynu.
 
 ### <a name="is-failover-automatic"></a>Czy tryb failover jest automatyczny?
-[Tryb failover](site-recovery-failover.md) nie jest automatyczny. Zainicjuj tryb failover z jednym kliknięciem w portalu lub użyć [ PowerShell](/powershell/module/azurerm.siterecovery) do wyzwolenia przejścia w tryb failover.
+[Tryb failover](site-recovery-failover.md) nie jest automatyczny. Zainicjuj tryb failover z jednym kliknięciem w portalu lub użyć [PowerShell](/powershell/module/azurerm.siterecovery) do wyzwolenia przejścia w tryb failover.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Może nie do innej lokalizacji?
 Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokalizacji Jeśli oryginalny jest niedostępna. [Dowiedz się więcej](concepts-types-of-failback.md#alternate-location-recovery-alr).

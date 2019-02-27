@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: e62bc0fff054f0392cd4f437565b5f4dae9cbfb7
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 41d9f21688df6f32918500365bc88f3f168604d2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594427"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869653"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration rozszerzenia z szablonami usługi Azure Resource Manager
 
@@ -180,17 +180,17 @@ Aby uzyskać listę argumentów, które są dostępne dla skryptu konfiguracji d
 
 | Nazwa właściwości | Type | Opis |
 | --- | --- | --- |
-| settings.wmfVersion |ciąg |Określa wersję programu Windows Management Framework (WMF), ma być zainstalowany na maszynie Wirtualnej. Ustawienie tej właściwości na **najnowsze** instaluje najnowszą wersję programu WMF. Obecnie jedyną możliwą wartości dla tej właściwości to **4.0**, **5.0**, **5.1**, i **najnowsze**. Te wartości możliwe jest zależna od aktualizacji. Wartość domyślna to **najnowsze**. |
-| settings.configuration.url |ciąg |Określa lokalizację adresu URL, z której można pobrać plik zip konfiguracji DSC. Jeśli adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, ustaw **protectedSettings.configurationUrlSasToken** właściwości na wartość tokenu sygnatury dostępu Współdzielonego. Ta właściwość jest wymagana, jeśli **settings.configuration.script** lub **settings.configuration.function** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych lokalizacji Configuration Manager (LCM), a powinien być dostarczony argumentów. |
-| settings.configuration.script |ciąg |Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi być w folderze głównym pliku zip, który jest pobierany z adresu URL określonego przez **settings.configuration.url** właściwości. Ta właściwość jest wymagana, jeśli **settings.configuration.url** lub **settings.configuration.script** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych LCM i powinien być dostarczony argumentów. |
-| settings.configuration.function |ciąg |Określa nazwę konfiguracji DSC. Konfiguracja, który nosi nazwę muszą być zawarte w skrypcie, **settings.configuration.script** definiuje. Ta właściwość jest wymagana, jeśli **settings.configuration.url** lub **settings.configuration.function** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych LCM i powinien być dostarczony argumentów. |
+| settings.wmfVersion |string |Określa wersję programu Windows Management Framework (WMF), ma być zainstalowany na maszynie Wirtualnej. Ustawienie tej właściwości na **najnowsze** instaluje najnowszą wersję programu WMF. Obecnie jedyną możliwą wartości dla tej właściwości to **4.0**, **5.0**, **5.1**, i **najnowsze**. Te wartości możliwe jest zależna od aktualizacji. Wartość domyślna to **najnowsze**. |
+| settings.configuration.url |string |Określa lokalizację adresu URL, z której można pobrać plik zip konfiguracji DSC. Jeśli adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, ustaw **protectedSettings.configurationUrlSasToken** właściwości na wartość tokenu sygnatury dostępu Współdzielonego. Ta właściwość jest wymagana, jeśli **settings.configuration.script** lub **settings.configuration.function** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych lokalizacji Configuration Manager (LCM), a powinien być dostarczony argumentów. |
+| settings.configuration.script |string |Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi być w folderze głównym pliku zip, który jest pobierany z adresu URL określonego przez **settings.configuration.url** właściwości. Ta właściwość jest wymagana, jeśli **settings.configuration.url** lub **settings.configuration.script** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych LCM i powinien być dostarczony argumentów. |
+| settings.configuration.function |string |Określa nazwę konfiguracji DSC. Konfiguracja, który nosi nazwę muszą być zawarte w skrypcie, **settings.configuration.script** definiuje. Ta właściwość jest wymagana, jeśli **settings.configuration.url** lub **settings.configuration.function** są zdefiniowane. Jeśli wartość nie zostanie podany dla tych właściwości, rozszerzenie wywołuje skrypt konfiguracji domyślnej można ustawić metadanych LCM i powinien być dostarczony argumentów. |
 | settings.configurationArguments |Collection |Określa wszelkie parametry, które mają być przekazane do konfiguracji DSC. Ta właściwość nie jest zaszyfrowany. |
-| settings.configurationData.url |ciąg |Określa adres URL do pobrania pliku (psd1) danych konfiguracji do użycia jako dane wejściowe dla danej konfiguracji DSC. Jeśli adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, ustaw **protectedSettings.configurationDataUrlSasToken** właściwości na wartość tokenu sygnatury dostępu Współdzielonego. |
-| settings.privacy.dataCollection |ciąg |Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko wtedy możliwe wartości dla tej właściwości to **Włącz**, **wyłączyć**, **''**, lub **$null**. Pozostawienie tej właściwości, puste ani mieć wartości null umożliwia danych telemetrycznych. Wartość domyślna to **''**. Aby uzyskać więcej informacji, zobacz [zbierania danych rozszerzenia DSC usługi Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
+| settings.configurationData.url |string |Określa adres URL do pobrania pliku (psd1) danych konfiguracji do użycia jako dane wejściowe dla danej konfiguracji DSC. Jeśli adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, ustaw **protectedSettings.configurationDataUrlSasToken** właściwości na wartość tokenu sygnatury dostępu Współdzielonego. |
+| settings.privacy.dataCollection |string |Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko wtedy możliwe wartości dla tej właściwości to **Włącz**, **wyłączyć**, **''**, lub **$null**. Pozostawienie tej właściwości, puste ani mieć wartości null umożliwia danych telemetrycznych. Wartość domyślna to **''**. Aby uzyskać więcej informacji, zobacz [zbierania danych rozszerzenia DSC usługi Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
 | settings.advancedOptions.downloadMappings |Collection |Definiuje alternatywnych lokalizacji, z którego będą pobierane programu WMF. Aby uzyskać więcej informacji, zobacz [rozszerzenie DSC usługi Azure 2.8 i sposób mapowania plików do pobrania zależności rozszerzenia na własnej lokalizacji](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings.configurationArguments |Collection |Określa wszelkie parametry, które mają być przekazane do konfiguracji DSC. Ta właściwość jest szyfrowana. |
-| protectedSettings.configurationUrlSasToken |ciąg |Określa tokenu sygnatury dostępu Współdzielonego na potrzeby dostępu do adresu URL, **settings.configuration.url** definiuje. Ta właściwość jest szyfrowana. |
-| protectedSettings.configurationDataUrlSasToken |ciąg |Określa tokenu sygnatury dostępu Współdzielonego na potrzeby dostępu do adresu URL, **settings.configurationData.url** definiuje. Ta właściwość jest szyfrowana. |
+| protectedSettings.configurationUrlSasToken |string |Określa tokenu sygnatury dostępu Współdzielonego na potrzeby dostępu do adresu URL, **settings.configuration.url** definiuje. Ta właściwość jest szyfrowana. |
+| protectedSettings.configurationDataUrlSasToken |string |Określa tokenu sygnatury dostępu Współdzielonego na potrzeby dostępu do adresu URL, **settings.configurationData.url** definiuje. Ta właściwość jest szyfrowana. |
 
 ## <a name="default-configuration-script"></a>Skrypt konfiguracji domyślnej
 
@@ -200,13 +200,13 @@ Skrypt konfiguracji domyślnej rozszerzenia DSC służy do konfigurowania właś
 | Nazwa właściwości | Type | Opis |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Wymagana właściwość. Określa klucz, który jest używany dla węzła do rejestracji w usłudze Azure Automation jako hasło obiekt poświadczeń PowerShell. Ta wartość może automatycznie odnalezione za pomocą **listkeys** metoda względem konta usługi Automation.  Zobacz [przykład](#example-using-referenced-azure-automation-registration-values). |
-| settings.configurationArguments.RegistrationUrl |ciąg |Wymagana właściwość. Określa adres URL punktu końcowego usługi Automation, gdzie węzeł, próbuje zarejestrować. Ta wartość może automatycznie odnalezione za pomocą **odwołania** metoda względem konta usługi Automation. |
-| settings.configurationArguments.NodeConfigurationName |ciąg |Wymagana właściwość. Określa konfigurację węzła na koncie usługi Automation, które można przypisać do węzła. |
-| settings.configurationArguments.ConfigurationMode |ciąg |Określa tryb LCM. Prawidłowe opcje to **ApplyOnly**, **ApplyandMonitor**, i **ApplyandAutoCorrect**.  Wartość domyślna to **ApplyandMonitor**. |
+| settings.configurationArguments.RegistrationUrl |string |Wymagana właściwość. Określa adres URL punktu końcowego usługi Automation, gdzie węzeł, próbuje zarejestrować. Ta wartość może automatycznie odnalezione za pomocą **odwołania** metoda względem konta usługi Automation. |
+| settings.configurationArguments.NodeConfigurationName |string |Wymagana właściwość. Określa konfigurację węzła na koncie usługi Automation, które można przypisać do węzła. |
+| settings.configurationArguments.ConfigurationMode |string |Określa tryb LCM. Prawidłowe opcje to **ApplyOnly**, **ApplyandMonitor**, i **ApplyandAutoCorrect**.  Wartość domyślna to **ApplyandMonitor**. |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | Określa, jak często LCM próbuje skontaktować się z konta usługi Automation, do aktualizacji.  Wartość domyślna to **30**.  Minimalna wartość to **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Określa, jak często LCM sprawdza bieżącą konfigurację. Wartość domyślna to **15**. Minimalna wartość to **15**. |
 | settings.configurationArguments.RebootNodeIfNeeded | wartość logiczna | Określa, czy węzeł zostanie automatycznie ponownie uruchomiony, jeśli operacja DSC żąda ona. Wartość domyślna to **false**. |
-| settings.configurationArguments.ActionAfterReboot | ciąg | Określa, co się stanie po ponownym uruchomieniu, gdy trwa operacja zastosowania konfiguracji. Prawidłowe opcje to **ContinueConfiguration** i **StopConfiguration**. Wartość domyślna to **ContinueConfiguration**. |
+| settings.configurationArguments.ActionAfterReboot | string | Określa, co się stanie po ponownym uruchomieniu, gdy trwa operacja zastosowania konfiguracji. Prawidłowe opcje to **ContinueConfiguration** i **StopConfiguration**. Wartość domyślna to **ContinueConfiguration**. |
 | settings.configurationArguments.AllowModuleOverwrite | wartość logiczna | Określa, czy LCM zastępuje istniejące moduły w węźle. Wartość domyślna to **false**. |
 
 ## <a name="settings-vs-protectedsettings"></a>ustawienia, a protectedSettings
@@ -254,7 +254,7 @@ Konfiguracja argumenty są przekazywane do skryptu konfiguracji domyślnej możn
 
 Poniższy przykład pochodzi z [Przegląd procedury obsługi rozszerzenia DSC](dsc-overview.md).
 W tym przykładzie używa szablonów usługi Resource Manager zamiast polecenia cmdlet, aby wdrożyć rozszerzenie.
-Zapisz konfigurację IisInstall.ps1, umieść go w formie pliku .zip, a następnie przekaż plik dostępny adres URL.
+Zapisz konfigurację IisInstall.ps1, umieść go w pliku zip (przykład: `iisinstall.zip`), a następnie przekaż plik dostępny adres URL.
 W tym przykładzie użyto usługi Azure Blob storage, ale możesz pobrać pliki zip z dowolnego miejsca i dowolnego.
 
 W szablonie usługi Resource Manager poniższy kod powoduje, że maszynę Wirtualną, aby pobrać prawidłowego pliku, a następnie uruchom odpowiednią funkcję programu PowerShell:
@@ -262,7 +262,7 @@ W szablonie usługi Resource Manager poniższy kod powoduje, że maszynę Wirtua
 ```json
 "settings": {
     "configuration": {
-        "url": "https://demo.blob.core.windows.net/",
+        "url": "https://demo.blob.core.windows.net/iisinstall.zip",
         "script": "IisInstall.ps1",
         "function": "IISInstall"
     }

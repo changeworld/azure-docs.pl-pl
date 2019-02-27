@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 0c2fd29990e180283eb25949b806c4ceac58e2f7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8c37093b5369d2390942bc00c1531248bc4424c8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653632"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869092"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Przegląd platformy Apache Spark Structured Streaming
 
@@ -24,7 +24,7 @@ Aplikacje do przesyłania strumieniowego Structured działały w klastrach HDIns
 
 Przesyłanie strumieniowe ze strukturą tworzy zapytanie długotrwałych, podczas którego operacje stosowane do danych wejściowych, takich jak zaznaczenia, projekcji, agregacji, obsługi okien i dołączenie do przesyłania strumieniowego ramkę danych za pomocą odwołania elementy Dataframe. Następnie wyjściowe wyniki do file storage (Azure Storage blob lub magazynu usługi Data Lake) lub dowolnym magazynem danych za pomocą kodu niestandardowego (np. bazy danych SQL lub usługi Power BI). Przesyłanie strumieniowe ze strukturą także dane wyjściowe do konsoli debugowania lokalnie, a także do tabeli w pamięci, dzięki czemu możesz zobaczyć dane wygenerowane na potrzeby debugowania w HDInsight. 
 
-![Przesyłanie strumieniowe ze strukturą Stream przetwarzania za pomocą HDInsight i platformy Spark ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![Przesyłanie strumieniowe ze strukturą Stream przetwarzania za pomocą HDInsight i platformy Spark](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
 > Przesyłanie strumieniowe ze strukturą platformy Spark zastępuje Spark Streaming (DStreams). Idąc dalej, przesyłanie strumieniowe ze strukturą otrzyma ulepszeń i konserwacji, podczas gdy DStreams będą w trybie konserwacji tylko. Przesyłanie strumieniowe ze strukturą nie jest obecnie jako funkcja uzupełniania jako DStreams dla źródeł i wychwytywanie, że obsługuje ona gotowych, więc ocena wymagań, aby wybrać odpowiednie Spark opcji przetwarzania strumienia. 

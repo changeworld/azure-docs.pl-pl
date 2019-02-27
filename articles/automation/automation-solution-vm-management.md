@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fcab4c7456295d8f7414232bc90bc5ab352e43a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 991a50828059d850627e1f8f3f34f65a55fdf3f6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817885"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890236"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -41,6 +41,8 @@ Ograniczenia związane z bieżącego rozwiązania są następujące:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Elementy runbook dla tego rozwiązania, pracować [konta Uruchom jako platformy](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa ona uwierzytelniania certyfikatu zamiast hasła, które może być wygaśnięcie lub ulegać częstym zmianom.
+
+Zaleca się użyć oddzielnego konta usługi Automation dla rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych. Jest to spowodowane często uaktualniane są wersje modułu platformy Azure i ich parametrach może ulec zmianie. Rozwiązanie uruchamianie/zatrzymywanie maszyny Wirtualnej nie zostanie uaktualniona na ten sam cykl, dzięki czemu mogą nie działać z nowszymi wersjami poleceń cmdlet, które używa. Zalecane do testowania aktualizacji modułu w teście konta usługi Automation, przed zaimportowaniem ich w środowisku produkcyjnym, konto usługi Automation.
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 

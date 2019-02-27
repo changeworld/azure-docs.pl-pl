@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: e1545e830ac04000920c3881486b2add79744201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d76a644de8cb55da5e743e482d14946d371c3dfe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548871"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867239"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for MySQL za pomocą witryny Azure portal
 
@@ -61,7 +61,7 @@ Poniższa procedura opisuje przywrócenie przykładowego serwera do punktu w cza
 
 3. Wypełnij formularz Przywracanie wymaganymi informacjami:
 
-   ![Azure Database for MySQL — informacje o przywracania ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database for MySQL — informacje o przywracania](./media/howto-restore-server-portal/3-restore.png)
    - **Punkt przywracania**: Wybierz punkt w czasie, który chcesz przywrócić.
    - **Serwer docelowy**: Podaj nazwę dla nowego serwera.
    - **Lokalizacja**: Nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.

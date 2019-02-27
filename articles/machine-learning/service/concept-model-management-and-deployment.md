@@ -11,18 +11,18 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 810456114e1ce11562ae2ba014feb0a9a706c15d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 583573db99eb6b59b82eb22ed88ed5265352e7dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820403"
+ms.locfileid: "56876028"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
 W tym artykule możesz Dowiedz się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać modele, które możesz skonfigurowanych pod kątem korzystania z usługi Azure Machine Learning na komputerze lokalnym lub z innych źródeł. 
 
-Na poniższym diagramie przedstawiono przepływ pracy całego procesu wdrażania: [ ![Wdrażanie przepływu pracy dla usługi Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+Na poniższym diagramie przedstawiono przepływ pracy całego procesu wdrażania: [![Wdrażanie przepływu pracy dla usługi Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Przepływ pracy wdrożenia obejmuje następujące kroki:
 1. **Zarejestruj model** w rejestrze hostowanych w obszarze roboczym usługi Azure Machine Learning
@@ -33,7 +33,7 @@ Przepływ pracy wdrożenia obejmuje następujące kroki:
 
 Poszczególne kroki można wykonać niezależnie lub jako część polecenia pojedynczego wdrożenia. Ponadto można zintegrować wdrożenie do **przepływu pracy ciągłej integracji/ciągłego Dostarczania** jak pokazano na poniższej ilustracji.
 
-[ !["Usługa azure Machine Learning ciągłej integracji/ciągłego wdrażania (CI/CD) cyklu"](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!["Usługa azure Machine Learning ciągłej integracji/ciągłego wdrażania (CI/CD) cyklu"](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>Krok 1: Rejestrowanie modelu
 
@@ -73,7 +73,7 @@ W chmurze lub na urządzeniach brzegowych, mogą wdrażać obrazy zarejestrowane
 
 Wdrożeń usług internetowych są również można wyszukiwać. Na przykład możesz wyszukać wszystkie wdrożenia określonego modelu lub obrazu.
 
-[ ![Obiekty docelowe wnioskowania](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![Obiekty docelowe wnioskowania](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 Obrazy można wdrażać w następujących lokalizacjach docelowych wdrożenia w chmurze:
 

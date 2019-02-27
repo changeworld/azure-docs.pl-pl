@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b55f8d44d12fa503a17218db4a5166819024f1aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543533"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872900"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu witryny Azure portal
 Reguły zapory na poziomie serwera umożliwiają administratorom dostęp do usługi Azure Database dla serwera MySQL z określonego adresu IP lub zakres adresów IP. 
@@ -34,7 +34,7 @@ Reguły zapory na poziomie serwera umożliwiają administratorom dostęp do usł
 
 4. Dodaj zakresy adresów dodatkowe. W regułach zapory dla usługi Azure Database for MySQL można określić pojedynczy adres IP lub zakresu adresów. Jeśli chcesz ograniczyć regułę do w pojedynczy adres IP, wpisz ten sam adres w polu początkowy adres IP i końcowy adres IP. Otwarcie zapory pozwala administratorom, użytkowników i aplikacji dostępu do dowolnej bazy danych na serwerze MySQL, do którego mają prawidłowe poświadczenia.
 
-   ![Witryna Azure portal — reguły zapory ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Witryna Azure portal — reguły zapory](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Kliknij przycisk **Zapisz** na pasku narzędzi, aby zapisać tę regułę zapory na poziomie serwera. Czekaj na potwierdzenie, czy powiodła się aktualizacja reguły zapory.
 

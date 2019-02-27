@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a72df28fbaed89076976f567774bd5fdb15bc2f9
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c24d8bd382dc57a8a354b61252d7a5e16640436f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229493"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864650"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie zasobów usługi Azure Automation do rozwiązania do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "54229493"
 [Rozwiązania do zarządzania]( solutions.md) zwykle zawierają elementy runbook w usłudze Azure Automation do automatyzacji procesów, takich jak zbieranie i przetwarzanie danych monitorowania.  Oprócz elementów runbook konta usługi Automation obejmuje zasoby, takie jak zmienne i harmonogramów, obsługujących elementy runbook, używane w rozwiązaniu.  W tym artykule opisano jak dołączać elementy runbook i ich powiązane zasoby w ramach rozwiązania.
 
 > [!NOTE]
-> Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure ]( solutions-creating.md) 
+> Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure]( solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -270,7 +270,7 @@ Właściwości dla zmiennej zasoby są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--- |:--- |
 | description | Opcjonalny opis dla zmiennej. |
-| IsEncrypted | Określa, czy ma być szyfrowana zmienna. |
+| isEncrypted | Określa, czy ma być szyfrowana zmienna. |
 | type | Ta właściwość aktualnie nie ma znaczenia.  Typ danych zmiennej będzie określana przez wartość początkową. |
 | wartość | Wartość do zmiennej. |
 
@@ -281,9 +281,9 @@ Jeśli ustawisz wartość początkową zmiennej, musi być skonfigurowany jako p
 
 | Typ danych | Opis | Przykład | Jest rozpoznawana jako |
 |:--|:--|:--|:--|
-| ciąg   | Wartość należy ująć w cudzysłów.  | "\"Witaj, świecie\"" | "Hello world" |
+| string   | Wartość należy ująć w cudzysłów.  | "\"Witaj, świecie\"" | "Hello world" |
 | Numeryczne  | Wartość liczbowa w apostrofy.| "64" | 64 |
-| wartość logiczna  | **wartość true,** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | wartość "prawda" | true |
+| wartość logiczna  | **wartość true,** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | "true" | true |
 | datetime | Wartość daty serializacji.<br>Polecenia cmdlet ConvertTo Json w programie PowerShell służy do generowania tej wartości dla określonej daty.<br>Przykład: get-date "5/24/2017 13:14:57" \| ConvertTo Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły

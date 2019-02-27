@@ -1,6 +1,6 @@
 ---
-title: Podręcznik informacyjny, do części projektanta widoku w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Przy użyciu projektanta widoku w usłudze Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, który wyświetlane różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
+title: Podręcznik informacyjny, do części projektanta widoku w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoku w usłudze Azure Monitor, można utworzyć niestandardowe widoki, które są wyświetlane w witrynie Azure portal i zawierają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 53323e70884e61b4643f7950a1a6333f08dbbb6f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193879"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889906"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Log Analytics
-Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych ze swojego obszaru roboczego usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Azure Monitor
+Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
 
 Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
@@ -33,9 +33,9 @@ W poniższej tabeli opisano dostępne typy kafelka projektanta widoków:
 
 | Typ widoku | Opis |
 |:--- |:--- |
-| [Lista zapytań](#list-of-queries-part) |Wyświetla listę zapytań funkcji przeszukiwania dzienników. Możesz wybrać każdej kwerendy, aby wyświetlić wyniki. |
-| [Numer i lista](#number-and-list-part) |Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów z zapytanie wyszukiwania w dzienniku. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu. |
-| [Dwie liczby i lista](#two-numbers-and-list-part) |Nagłówek przedstawia dwie liczby, przedstawiających liczby rekordów z oddzielnych dziennikach zapytania wyszukiwania. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu. |
+| [Lista zapytań](#list-of-queries-part) |Wyświetla listę zapytań log. Możesz wybrać każdej kwerendy, aby wyświetlić wyniki. |
+| [Numer i lista](#number-and-list-part) |Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów w wyniku zapytania dziennika. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu. |
+| [Dwie liczby i lista](#two-numbers-and-list-part) |Nagłówek przedstawia dwie liczby, przedstawiających liczby rekordów z oddzielnych dziennikach zapytania. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu. |
 | [Wykres pierścieniowy i lista](#donut-and-list-part) |Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapytaniu dziennika. Wykres pierścieniowy wyświetla w postaci graficznej wyniki pierwszych trzech rekordów. |
 | [Dwie osie czasu i lista](#two-timelines-and-list-part) |Nagłówek przedstawia wyniki dwóch zapytań log wraz z upływem czasu jako wykresy kolumnowe, z objaśnieniem, który wyświetla jeden numer, który podsumowuje kolumnę wartości w zapytaniu dziennika. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu. |
 | [Informacje o](#information-part) |Nagłówek Wyświetla tekst statyczny oraz opcjonalnie łącza. Zostanie wyświetlona lista jednego lub więcej elementów z tytułu statycznych i tekst. |
@@ -46,14 +46,14 @@ W poniższej tabeli opisano dostępne typy kafelka projektanta widoków:
 W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 
 ## <a name="list-of-queries-part"></a>Listę części zapytania
-Listy zapytań część Wyświetla listę zapytań funkcji przeszukiwania dzienników. Możesz wybrać każdej kwerendy, aby wyświetlić wyniki. Domyślnie widok zawiera jedno zapytanie i można wybrać **+ zapytania** można dodać dodatkowe zapytania.
+Listę części zapytania Wyświetla listę zapytań log. Możesz wybrać każdej kwerendy, aby wyświetlić wyniki. Domyślnie widok zawiera jedno zapytanie i można wybrać **+ zapytania** można dodać dodatkowe zapytania.
 
 ![Lista widoku zapytań](media/view-designer-parts/view-list-queries.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
 | **Ogólne** | |
-| Stanowisko |Tekst, który jest wyświetlany u góry widoku. |
+| Tytuł |Tekst, który jest wyświetlany u góry widoku. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Wstępnie wybrane filtry |Rozdzielana przecinkami lista właściwości, które mają zostać objęte okienko filtru po lewej stronie, po wybraniu zapytania. |
 | Tryb renderowania |Widok początkowy jest wyświetlane, gdy zostanie wybrane zapytanie. Po otwarciu kwerendy, można wybrać żadnych dostępnych widoków. |
@@ -62,7 +62,7 @@ Listy zapytań część Wyświetla listę zapytań funkcji przeszukiwania dzienn
 | Przyjazna nazwa | Opisowa nazwa, która jest wyświetlana. |
 
 ## <a name="number-and-list-part"></a>Część liczby i lista
-Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów z zapytanie wyszukiwania w dzienniku. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
+Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów w wyniku zapytania dziennika. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
 ![Lista widoku zapytań](media/view-designer-parts/view-number-list.png)
 
@@ -91,7 +91,7 @@ Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów z zapytani
 | Włącz progi |Wybierz ten link, aby umożliwić progów. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
 
 ## <a name="two-numbers-and-list-part"></a>Dwie liczby i części listy
-Nagłówek ma dwie liczby, które wyświetla liczbę rekordów niż zapytania wyszukiwania w oddzielnych dziennikach. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
+Nagłówek ma dwie liczby, które wyświetla liczbę rekordów z oddzielnych dziennikach zapytań. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
 ![Dwie liczby i widok listy](media/view-designer-parts/view-two-numbers-list.png)
 
@@ -134,7 +134,7 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
 | Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
 | **Nagłówek** | |
-| Stanowisko |Tekst, który jest wyświetlany w górnej części nagłówka. |
+| Tytuł |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części nagłówka. |
 | **Wykres pierścieniowy** | |
 | Zapytanie |Zapytanie do uruchamiania na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. |
@@ -143,7 +143,7 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 | Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
 | Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaje wartości wszystkich rekordów.</li><li>Procent: Współczynnik rekordów zwróconych przez wartości w **wyniku wartości używane w środku** łączna liczba rekordów w zapytaniu.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
-| **Dodatkowe opcje** |**> Kolory** |
+| **Dodatkowe opcje** |**> Colors** |
 | Kolor 1<br>Kolor 2<br>Kolor 3 |Wybierz kolor dla każdej wartości, które są wyświetlane w wykres pierścieniowy. |
 | **Dodatkowe opcje** |**> Zaawansowane mapowanie kolorów** |
 | Wartość pola |Wpisz nazwę pola do wyświetlenia w innym kolorze, jeśli jest on zawarty w wykres pierścieniowy. |
@@ -207,12 +207,12 @@ Nagłówek Wyświetla tekst statyczny oraz opcjonalnie łącza. Zostanie wyświe
 | Kolor |Kolor tła dla nagłówka. |
 | **Nagłówek** | |
 | Image (Obraz) |Plik obrazu, który jest wyświetlany w nagłówku. |
-| Etykieta |Tekst, który jest wyświetlany w nagłówku. |
+| Label |Tekst, który jest wyświetlany w nagłówku. |
 | **Nagłówek** |**> Link** |
-| Etykieta |Tekst łącza. |
+| Label |Tekst łącza. |
 | Url |Adres Url dla tego połączenia. |
 | **Elementy informacji** | |
-| Stanowisko |Tekst, który jest wyświetlany jako tytuł każdego elementu. |
+| Tytuł |Tekst, który jest wyświetlany jako tytuł każdego elementu. |
 | Zawartość |Tekst, który jest wyświetlany dla każdego elementu. |
 
 ## <a name="line-chart-callout-and-list-part"></a>Wykres liniowy, objaśnienie i listy
@@ -228,7 +228,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
 | Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
 | **Nagłówek** | |
-| Stanowisko |Tekst, który jest wyświetlany w górnej części nagłówka. |
+| Tytuł |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części nagłówka. |
 | **Wykres liniowy** | |
 | Zapytanie |Zapytanie, aby uruchomić wykresu liniowego. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. Jeśli zapytanie używa *interwał* — słowo kluczowe, osi x wykresu używa tego przedziału czasu. Jeśli zapytanie nie obejmuje *interwał* — słowo kluczowe, odstępów godzinowych używa osi x. |
@@ -268,7 +268,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
 | Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
 | **Nagłówek** | |
-| Stanowisko |Tekst, który jest wyświetlany w górnej części nagłówka. |
+| Tytuł |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części nagłówka. |
 | **Wykres liniowy** | |
 | Zapytanie |Zapytanie, aby uruchomić wykresu liniowego. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. Jeśli zapytanie używa *interwał* — słowo kluczowe, osi x wykresu używa tego przedziału czasu. Jeśli zapytanie nie obejmuje *interwał* — słowo kluczowe, odstępów godzinowych używa osi x. |
@@ -303,7 +303,7 @@ Stos wykres liniowy przedstawia trzy oddzielne wykresy, przy użyciu wielu serii
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
 | **Wykres 1<br>wykresu 2<br>wykresu 3** |**> Nagłówek** |
-| Stanowisko |Tekst, który jest wyświetlany w górnej części wykresu. |
+| Tytuł |Tekst, który jest wyświetlany w górnej części wykresu. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części wykresu. |
 | **Wykres 1<br>wykresu 2<br>wykresu 3** |**Wykres liniowy** |
 | Zapytanie |Zapytanie, aby uruchomić wykresu liniowego. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. Jeśli zapytanie używa *interwał* — słowo kluczowe, osi x wykresu używa tego przedziału czasu. Jeśli zapytanie nie obejmuje *interwał* — słowo kluczowe, odstępów godzinowych używa osi x. |
@@ -322,14 +322,14 @@ Separator nazw i wartości to ogranicznik można użyć do analizowania właści
 Na przykład rozważmy właściwość o nazwie *lokalizacji* , takich jak uwzględnione wartości *41 budynku Redmond* i *12 budynku Bellevue*. Separator nazw i wartości można określić kreski (-) i *budowania miast* dla nazwy. To podejście analizuje każdej wartości w dwie właściwości o nazwie *Miasto* i *budynku*.
 
 ### <a name="click-through-navigation"></a>Nawigacja za pomocą kliknięć
-Nawigacja za pomocą kliknięć definiuje, jakie działania zostaną wykonane po kliknięciu na nagłówek lub element listy w widoku.  To spowoduje to otwarcie kwerendy w [portalu przeszukiwania dzienników](../../azure-monitor/log-query/portals.md) lub uruchomić inny widok.
+Nawigacja za pomocą kliknięć definiuje, jakie działania zostaną wykonane po kliknięciu na nagłówek lub element listy w widoku.  To spowoduje to otwarcie kwerendy w [Analyticsl dziennika](../../azure-monitor/log-query/portals.md) lub uruchomić inny widok.
 
 W poniższej tabeli opisano ustawienia dla nawigacji za pomocą kliknięć.
 
 | Ustawienie           | Opis |
 |:--|:--|
-| Rejestruj wyszukiwanie (automatycznie) | Wyszukiwanie w dzienniku do uruchomienia po wybraniu elementu nagłówka.  Jest to to samo wyszukiwanie dziennika, na podstawie elementu.
-| Przeszukiwanie dzienników        | Wyszukiwanie w dzienniku do uruchomienia po wybraniu elementu na liście.  Wpisz zapytanie do **zapytanie nawigacji** pole.   Użyj *{wybranego elementu}* obejmujący składni dla elementu, który użytkownik zaznaczył.  Na przykład, jeśli zapytanie zawiera kolumnę o nazwie *komputera* i zapytanie nawigacji *{wybranego elementu}*, zapytanie takie jak *komputer = "Mój komputer"* jest uruchamiany po wybraniu komputer. Jeśli zapytanie nawigacji jest *typu = {wybranego elementu} zdarzeń*, zapytanie *typu = zdarzeń komputer = "Mój komputer"* jest uruchamiany. |
+| Rejestruj wyszukiwanie (automatycznie) | Dziennik zapytań do uruchomienia po wybraniu elementu nagłówka.  Jest to samo zapytanie dziennika, na podstawie elementu.
+| Przeszukiwanie dzienników        | Dziennik zapytań do uruchomienia po wybraniu elementu na liście.  Wpisz zapytanie do **zapytanie nawigacji** pole.   Użyj *{wybranego elementu}* obejmujący składni dla elementu, który użytkownik zaznaczył.  Na przykład, jeśli zapytanie zawiera kolumnę o nazwie *komputera* i zapytanie nawigacji *{wybranego elementu}*, zapytanie takie jak *komputer = "Mój komputer"* jest uruchamiany po wybraniu komputer. Jeśli zapytanie nawigacji jest *typu = {wybranego elementu} zdarzeń*, zapytanie *typu = zdarzeń komputer = "Mój komputer"* jest uruchamiany. |
 | Widok              | Widok, który chcesz otworzyć, po wybraniu elementu nagłówka lub element na liście.  Wybierz nazwę widoku w obszarze roboczym w **nazwy widoku** pole. |
 
 
@@ -361,4 +361,4 @@ W poniższej tabeli opisano ustawienia progów:
 | Kolor |Kolor, który wskazuje wartość progową. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) do obsługi zapytań w części wizualizacji.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) do obsługi zapytań w części wizualizacji.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 704c12bc2ea16fcad5672dde4181f63495fbe967
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002001"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870843"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "56002001"
 * **Dzienniki dzierżawy** — te dzienniki pochodzą z usługi na poziomie dzierżawy, które znajdują się poza subskrypcją platformy Azure, takich jak dzienniki usługi Azure Active Directory.
 * **Dzienniki zasobów** — te dzienniki pochodzą z usług platformy Azure, które wdrażanie zasobów w ramach subskrypcji platformy Azure, takich jak sieciowe grupy zabezpieczeń lub konta magazynu.
 
-    ![Dzienniki diagnostyczne zasobu a inne typy dzienników ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
+    ![Dzienniki diagnostyczne zasobu a inne typy dzienników](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
 
 Zawartość tych dzienników jest zależna od typu usługi i zasobów platformy Azure. Na przykład dwa typy dzienników diagnostycznych są liczniki reguł sieciowej grupy zabezpieczeń i inspekcji w usłudze Key Vault.
 

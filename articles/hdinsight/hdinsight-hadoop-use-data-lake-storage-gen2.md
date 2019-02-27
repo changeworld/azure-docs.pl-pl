@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: howto
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: bc3741be87238f1ac5f2146eb25919dd83711ce3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 313d26e354589611b36ed7c273858de2f919566f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819055"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889515"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -96,7 +96,7 @@ az storage account create --name hdinsightadlsgen2 \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-Następnie zaloguj się do portalu. Dodaj nowy użytkownik przypisany zarządzaną tożsamością do **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** roli na koncie magazynu, zgodnie z opisem w kroku 3 w sekcji [przy użyciu witryny Azure portal](hdinsight-hadoop-use-data-lake-storage-gen2.md#using-the-azure-portal).
+Następnie zaloguj się do portalu. Dodaj nowy użytkownik przypisany zarządzaną tożsamością do **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** roli na koncie magazynu, zgodnie z opisem w kroku 3 w sekcji [przy użyciu witryny Azure portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 Po przypisaniu roli dla zarządzanych tożsamości przypisanych przez użytkownika, należy wdrożyć szablon przy użyciu poniższego fragmentu kodu.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0b3128184942dbc750ea54bd7156c6e79b8bedea
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804845"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867579"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
 Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas przesyłanie danych do magazynu platformy Azure za pomocą usługi Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
@@ -138,7 +138,7 @@ Nie. Narzędzie WAImportExport jest zgodna tylko z 64-bitowych systemach operacy
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaka jest maksymalna blokowych obiektów Blob i rozmiar stronicowego obiektu Blob, obsługiwane przez usługi Azure Import/Export?
 
 Rozmiar maksymalny blokowych obiektów Blob jest około 4.768TB lub 5 000 000 MB.
-Rozmiar maksymalny stronicowych obiektów Blob to 1TB.
+Rozmiar maksymalny stronicowych obiektów Blob jest 8TB.
 
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Usługa Azure Import/Export obsługuje szyfrowanie AES-256?

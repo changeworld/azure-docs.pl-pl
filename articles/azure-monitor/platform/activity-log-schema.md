@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888145"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868548"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
@@ -119,10 +119,13 @@ Ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akc
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
 | description |Statyczny tekst opisu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
+| eventName | Przyjazna nazwa zdarzenia administracyjne. |
+| category | Zawsze "administracyjne" |
 | httpRequest |Obiekt blob opisujące żądania Http. Zwykle obejmuje "clientRequestId", "clientIpAddress" i "method" (metoda HTTP. Adapterem, umieść). |
 | poziom |Poziom zdarzenia. Jeden z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie" i "Informacyjne" |
 | resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem. |
 | resourceProviderName |Nazwa dostawcy zasobów dla zasób objęty wpływem |
+| Typ zasobu | Typ zasobu, który miała wpływ zdarzenie administracyjne. |
 | resourceId |Identyfikator zasobu zasób objęty wpływem. |
 | operationId |Identyfikator GUID współużytkowane przez zdarzenia, które odpowiadają jednej operacji. |
 | operationName |Nazwa operacji. |

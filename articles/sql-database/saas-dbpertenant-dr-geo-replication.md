@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b52e08485c5ce853f9c8eafaafd15f137aef10bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471151"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873456"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Odzyskiwanie po awarii dla aplikacji SaaS z wieloma dzierżawami przy użyciu replikacji geograficznej bazy danych
 
@@ -241,7 +241,7 @@ Po zakończeniu procesu odzyskiwania wszystkich dzierżaw i aplikacji są w peł
     * _Tenants2-dpt -&lt;użytkownika&gt;-recovery_ programu SQL server.  Ten serwer jest używany do aprowizacji nowych dzierżaw w czasie awarii.
     *   Usługi App Service o nazwie, _zdarzenia — wingtip-dpt —&lt;recoveryregion&gt;-&lt;użytkownik & gt_; co jest wystąpienie odzyskiwania aplikacji zdarzeń. 
 
-    ![Zasoby usługi Azure recovery ](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png)    
+    ![Zasoby usługi Azure recovery](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
 4. Otwórz _tenants2-dpt -&lt;użytkownika&gt;-recovery_ programu SQL server.  Zwróć uwagę, znajduje się baza danych _hawthornhall_ oraz puli elastycznej _Pool1_.  _Hawthornhall_ baza danych jest skonfigurowana jako elastycznej bazy danych w _Pool1_ puli elastycznej.
 

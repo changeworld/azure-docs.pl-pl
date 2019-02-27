@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747530"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887254"
 ---
 # <a name="your-marketplace-benefits"></a>Korzyści wynikające z witryny Marketplace
 
@@ -63,9 +63,9 @@ Aby uzyskać dostęp do tych korzyści, musisz:
 1. Publikowanie oferty w portalu Azure Marketplace lub w usłudze AppSource.
 2. Upewnij się, wprowadzono marketingu kontakt w **informacje kontaktowe** część oferty. Powinna to być dedykowanym zasobem marketingu, w przeciwieństwie do aliasu wychwytywania. (tj, należy unikać "obsługuje\@", "info\@", "marketing\@" itp.)
 
-Na podstawie Twojego rozwiązania stanu, otrzymasz wiadomość e-mail przy użyciu zasobów samodzielnej pomocy lub zaproszenia do wywołania konsultacji za pomocą dedykowanego Menedżera zaangażowania. Nie trzeba nic robić, aby zainicjować połączenie — Marketplace zespół organizujący dołączanie skontaktuje się z Tobą użytkownikowi na podstawie informacji podanych w [portalu Cloud Partner](https://cloudpartner.azure.com/).
+Na podstawie stanu swoje rozwiązanie, oferta listy, okres próbny lub Transact, otrzymasz wiadomość e-mail przy użyciu zasobów samodzielnej pomocy lub zaproszenia do wywołania konsultacji za pomocą dedykowanego Menedżera zaangażowania. Nie trzeba nic robić, aby zainicjować połączenie — Marketplace zespół organizujący dołączanie skontaktuje się z Tobą użytkownikowi na podstawie informacji podanych w [portalu Cloud Partner](https://cloudpartner.azure.com/).
 
-Zakres działań, które są dostępne dla Ciebie rozwija proporcjonalna do rozwoju środowiska ofert w portalu marketplace. Wszystkie listy otrzymują podstawowy poziom optymalizacji zalecenia i promocji.  Te oferty są również kwalifikuje się do dodatkowych korzyści marketingu na podstawie stanu rozwiązania, wybrane witryny marketplace i osiągnięcia kompetencji partnera firmy Microsoft. 
+Zakres działań, które są dostępne dla Ciebie rozwija proporcjonalna do rozwoju środowiska ofert w portalu marketplace. Wszystkie listy otrzymują podstawowy poziom optymalizacji zalecenia i promocji.  Te oferty są również kwalifikuje się do dodatkowych korzyści marketingu na podstawie stanu rozwiązania (listy, okres próbny lub Transact) wybrane witryny marketplace i osiągnięcia kompetencji partnera firmy Microsoft.
 
 W poniższej tabeli podsumowania wymagania kwalifikacyjne:
 

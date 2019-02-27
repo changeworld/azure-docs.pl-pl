@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 81684031ddaa1ca8fa63a6c7e512f3fe6769a639
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 621e691eaedb06c26b5e6a05a12d0b742c798172
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859814"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864519"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
@@ -53,7 +53,7 @@ Obsługa języka jest różny dla [ze wstępnie utworzonych jednostek](luis-refe
 
  - W `zh-cn` kultury, LUIS oczekuje zestawu zamiast zestawu znaków tradycyjnych uproszczone znaków chińskich.
  - Nazwy intencji, jednostki, funkcje i wyrażenia regularne mogą być znakami języka chińskiego lub litery rzymskie.
- - Zobacz [odwołania ze wstępnie utworzonych domen ](luis-reference-prebuilt-domains.md) informacje obsługiwanych ze wstępnie utworzonych domen w `zh-cn` kultury.
+ - Zobacz [odwołania ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md) informacje obsługiwanych ze wstępnie utworzonych domen w `zh-cn` kultury.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>* Informacje o pomocy technicznej japoński

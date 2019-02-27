@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 23adf2903a50727d920e4a20b8a325313fa39e2a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d5463b495620e441ad5371b5859c9ab543e0e7c6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428011"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874668"
 ---
 # <a name="azure-stack-registration"></a>Rejestracja w usłudze Azure Stack
 Instalacja usługi Azure Stack Development Kit (ASDK) można zarejestrować za pomocą platformy Azure, aby pobieranie elementów portalu marketplace z platformy Azure i Ustaw dane handlu odsyłanie do firmy Microsoft. Rejestracja jest wymagany do obsługi pełnego funkcje usługi Azure Stack, w tym portalu marketplace syndykacji. Aby umożliwić testowanie ważnych funkcji usługi Azure Stack, takich jak syndykacji portalu marketplace i raportowanie użycia, wymagana jest rejestracja. Po zarejestrowaniu usługi Azure Stack, użycie jest zgłaszany do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, których użyto podczas rejestracji. Jednak użytkownicy ASDK nie są naliczane za dotychczasowe użycie raportowane.
@@ -214,7 +214,7 @@ Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestrac
 
 2. Na pulpicie nawigacyjnym wybierz **zarządzanie regionami**.
 
-    [ ![Kafelek Zarządzanie region](media/asdk-register/admin1sm.png "Kafelek Zarządzanie regionu") ](media/asdk-register/admin1.png#lightbox)
+    [![Kafelek Zarządzanie region](media/asdk-register/admin1sm.png "Kafelek Zarządzanie regionu")](media/asdk-register/admin1.png#lightbox)
 
 3. Wybierz **właściwości**. Ten blok, stan i szczegółowe cechy danego środowiska. Możliwe stany **zarejestrowanej** lub **niezarejestrowany**. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack, wraz z rejestracji grupy zasobów i nazwę.
 

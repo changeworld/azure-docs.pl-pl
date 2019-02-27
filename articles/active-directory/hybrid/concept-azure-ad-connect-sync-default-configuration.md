@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae428f18a2b927f42716a1c00b55790fe73d81a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 06f51f56de29d5e598ea74b39352d3c15bf7b375
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173406"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880635"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Opis konfiguracji domyślnej
 W tym artykule wyjaśniono reguły konfiguracji out-of-box. Dokumentują reguł i wpływie na te reguły konfiguracji. On również przeprowadzi Cię przez domyślną konfigurację synchronizacji programu Azure AD Connect. Celem jest, że czytnik rozumie, jak działa model konfiguracji o nazwie aprowizacja deklaratywna w przykładzie rzeczywistych. W tym artykule założono, że masz już zainstalowany i Konfigurowanie synchronizacji usługi Azure AD Connect przy użyciu Kreatora instalacji.
@@ -151,7 +151,7 @@ Reguła synchronizacji ma cztery sekcje konfiguracji: Opis filtru Scoping, regu�
 #### <a name="description"></a>Opis
 Pierwsza sekcja zawiera podstawowe informacje, takie jak nazwa i opis.
 
-![Opis karty Edytor reguł synchronizacji ](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
+![Opis karty Edytor reguł synchronizacji](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
 Można również znaleźć informacje o który połączonego systemu dotyczy tej reguły, które obiekt typu w połączony system, w których on obowiązuje i typ obiektu metaverse. Typ obiektu metaverse zawsze jest osoba, niezależnie od tego, po użytkownik, iNetOrgPerson lub skontaktuj się z pomocą typ obiektu źródłowego. Typ obiektu metaverse nigdy nie należy zmieniać, dlatego jest tworzony jako typ ogólny. Join, StickyJoin lub Aprowizacja można ustawić typu łącza. To ustawienie działa razem z sekcji Dołącz do reguły i jest podawany później.
 
@@ -160,18 +160,18 @@ Widać również, że ta reguła synchronizacji jest używany do synchronizacji 
 #### <a name="scoping-filter"></a>Filtru określania zakresu
 Sekcja filtru określania zakresu jest używana do konfigurowania podczas stosowania reguły synchronizacji. Ponieważ nazwy reguły synchronizacji przeglądasz wskazuje, powinny być stosowane tylko do użytkowników z włączoną, zakres jest skonfigurowany tak atrybutu usługi AD **userAccountControl** nie może mieć bitu 2 ustawione. Aparat synchronizacji znajduje użytkownika w AD, zastosowanie tej synchronizacji regułę, gdy **userAccountControl** jest ustawiona na wartość dziesiętną 512 (włączone zwykłego użytkownika). Nie dotyczy reguła, gdy użytkownik ma **userAccountControl** równa 514 (wyłączone zwykłego użytkownika).
 
-![Wyznaczanie zakresu karta w edytorze reguły synchronizacji ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Wyznaczanie zakresu karta w edytorze reguły synchronizacji](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Filtru określania zakresu ma grup i klauzule, które mogą być zagnieżdżone. Wszystkie klauzule wewnątrz grupy, muszą być spełnione dla reguły synchronizacji do zastosowania. Po zdefiniowaniu wiele grup co najmniej jednej grupy, muszą być spełnione dla reguły do zastosowania. Oznacza to logiczne OR jest oceniany między grupami i wartość logiczna, a jest szacowana wewnątrz grupy. Przykład tej konfiguracji można znaleźć w reguły synchronizacji ruchu wychodzącego **Out do usługi AAD — Dołącz do grupy**. Istnieje kilka grup filtr synchronizacji, na przykład jednego dla grup zabezpieczeń (`securityEnabled EQUAL True`) i jeden dla grup dystrybucji (`securityEnabled EQUAL False`).
 
-![Wyznaczanie zakresu karta w edytorze reguły synchronizacji ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
+![Wyznaczanie zakresu karta w edytorze reguły synchronizacji](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 Ta reguła jest używana do definiowania, które grupy powinny zostać aprowizowane do usługi Azure AD. Grupy dystrybucji musi mieć włączoną obsługę mają być synchronizowane z usługą Azure AD poczty, ale dla grup zabezpieczeń wiadomość e-mail nie jest wymagana.
 
 #### <a name="join-rules"></a>Dołącz do reguły
 Trzecia sekcja służy do konfigurowania, jak obiekty w przestrzeni łącznika odnoszą się do obiektów w obiekcie metaverse. Reguła sprawdzono wcześniej nie ma żadnej konfiguracji dla Dołącz do reguł, zamiast przechodzenia do wzięcia pod **w z usługi AD — użytkownik przyłączyć**.
 
-![Dołącz kartę reguły Edytor reguł synchronizacji ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
+![Dołącz kartę reguły Edytor reguł synchronizacji](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
 Zawartość reguły dołączania zależy od opcji dopasowania wybrane w Kreatorze instalacji. Reguła ruchu przychodzącego ocena zaczyna się od obiektu w przestrzeni łącznika źródła i każdej grupy reguł dołączania jest obliczane w kolejności. Jeśli obiekt źródłowy jest oceniany w celu dopasowania dokładnie jeden obiekt w magazynie metaverse przy użyciu jednej reguły dołączania, obiekty są łączone. Jeśli wszystkie reguły zostały ocenione i nie zostanie odnaleziony odpowiednik, jest używany typ łącza na stronie z opisem. Jeśli ustawiono tę konfigurację **aprowizacji**, a następnie jest tworzony nowy obiekt w obiekcie metaverse w lokalizacji docelowej. Aprowizację, nazywane również jest nowy obiekt do obiektu metaverse **projektu** obiektu metaverse.
 
@@ -184,7 +184,7 @@ Spojrzeć na powyższej ilustracji widać, że reguła próbuje dołączyć **ob
 #### <a name="transformations"></a>Przekształcenia
 W sekcji transformacji zdefiniowano wszystkie przepływy atrybutów, które mają zastosowanie do obiektu docelowego, gdy obiekty są łączone i Filtr zakresu jest spełniony. Po powrocie do **w z usługi AD — AccountEnabled użytkownika** reguły synchronizacji, Znajdź następujące przekształcenia:
 
-![Przekształcenia kartę Edytor reguł synchronizacji ](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
+![Przekształcenia kartę Edytor reguł synchronizacji](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
 Aby przełączyć tę konfigurację w kontekście we wdrożeniu lasu zasobów dla konta, oczekuje się znaleźć włączone konto w lesie konta i wyłączonych kont w lesie zasobów przy użyciu ustawień programu Exchange i usługi Lync. Reguła synchronizacji przeglądasz zawiera atrybuty wymagane do logowania i przepływu te atrybuty z lasu w przypadku, gdy jest włączone konto. Te przepływy atrybutów zostały zbudowane w ramach jednej reguły synchronizacji.
 

@@ -1,6 +1,6 @@
 ---
 title: Przykład — inicjatywa zasad tagów rozliczeń
-description: Ten przykładowy zestaw zasad wymaga określonych wartości tagów dotyczących centrum kosztu i nazwy produktu.
+description: Ta przykładowa definicja zasad wymaga określonych wartości tagów dotyczących centrum kosztu i nazwy produktu.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4592ac63561a59bfc0e4351cc5ad83f138955370
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b659d6f681b980b956992f0d488995fd1a55de93
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242859"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337609"
 ---
-# <a name="billing-tags-policy-initiative"></a>Inicjatywa zasad tagów rozliczeń
+# <a name="sample---billing-tags-policy-initiative"></a>Przykład — inicjatywa zasad tagów rozliczeń
 
 Ten zestaw zasad wymaga określonych wartości tagów centrum kosztu i nazwy produktu. Przy użyciu wbudowanych zasad określa wymagane tagi i wymusza ich stosowanie. Wymagane wartości tagów są określane przez Ciebie.
 

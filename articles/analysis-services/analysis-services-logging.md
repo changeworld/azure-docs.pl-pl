@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35707b857c66f0f1b91f2f1b5dd7a0ffa24dd9e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 17058e1d1c7b961ce14d18ca52580b7969b4df34
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733762"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888121"
 ---
 # <a name="setup-diagnostic-logging"></a>Konfigurowanie rejestrowania diagnostycznego
 
@@ -83,7 +83,7 @@ Kategoria metryk rejestruje takie same [metryk serwera](analysis-services-monito
 
     * **Zarchiwizuj na koncie magazynu**. Aby użyć tej opcji, należy istniejące konto magazynu, aby nawiązać połączenie. Zobacz [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md). Postępuj zgodnie z instrukcjami, aby utworzyć Menedżera zasobów, konto ogólnego przeznaczenia, a następnie wybierz swoje konto magazynu, zwracając do tej strony w portalu. Może upłynąć kilka minut, zanim konta nowo utworzonego magazynu pojawią się w menu rozwijanym.
     * **Stream do usługi event hub**. Aby użyć tej opcji, należy istniejącego Centrum zdarzeń przestrzeni nazw i Centrum zdarzeń, aby nawiązać połączenie. Aby dowiedzieć się więcej, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą witryny Azure portal](../event-hubs/event-hubs-create.md). Następnie wróć do tej strony w portalu, aby wybrać nazwę przestrzeni nazw i zasad Centrum zdarzeń.
-    * **Wysyłanie do usługi Azure Monitor (obszaru roboczego usługi Log Analytics)**. Aby użyć tej opcji, użyj istniejącego obszaru roboczego lub [Utwórz nowy obszar roboczy](../azure-monitor/learn/quick-create-workspace.md) zasobu w portalu. Aby uzyskać więcej informacji dotyczących przeglądania dzienników, zobacz [Wyświetl dzienniki w obszarze roboczym usługi Log Analytics](#view-logs-in-log-analytics) w tym artykule.
+    * **Wysyłanie do usługi Azure Monitor (obszaru roboczego usługi Log Analytics)**. Aby użyć tej opcji, użyj istniejącego obszaru roboczego lub [Utwórz nowy obszar roboczy](../azure-monitor/learn/quick-create-workspace.md) zasobu w portalu. Aby uzyskać więcej informacji dotyczących przeglądania dzienników, zobacz [Wyświetl dzienniki w obszarze roboczym usługi Log Analytics](#view-logs-in-log-analytics-workspace) w tym artykule.
 
     * **Engine**. Wybierz tę opcję, aby rejestrować xEvents. Jeśli masz archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są autodeleted, po upływie okresu przechowywania.
     * **Usługa**. Wybierz tę opcję, aby rejestrować zdarzenia na poziomie usługi. Jeśli archiwizacji na koncie magazynu można wybrać okres przechowywania dla dzienników diagnostycznych. Dzienniki są autodeleted, po upływie okresu przechowywania.

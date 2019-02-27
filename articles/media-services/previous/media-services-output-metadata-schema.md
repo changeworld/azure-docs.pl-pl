@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b2d1c71049ae72ad974d9ab9761d4668aeb17929
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312586"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889124"
 ---
 # <a name="output-metadata"></a>Metadane wyjściowe
 ## <a name="overview"></a>Przegląd
@@ -33,7 +33,7 @@ W tym artykule omówiono elementów i typów schematu XML, na którym metada dan
 
 Można znaleźć schematu kompletny kod i XML — przykład na końcu tego artykułu.  
 
-## <a name="AssetFiles "></a> Element główny AssetFiles
+## <a name="AssetFiles"></a> Element główny AssetFiles
 Kolekcja wpisów AssetFile dla zadania kodowania.  
 
 ### <a name="child-elements"></a>Elementy podrzędne
@@ -41,7 +41,7 @@ Kolekcja wpisów AssetFile dla zadania kodowania.
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Element AssetFile, który jest częścią kolekcji AssetFiles. |
 
-## <a name="AssetFile "></a> AssetFile element
+## <a name="AssetFile"></a> AssetFile element
 Przykład XML można znaleźć [XML — przykład](#xml).  
 
 ### <a name="attributes"></a>Atrybuty
@@ -58,7 +58,7 @@ Przykład XML można znaleźć [XML — przykład](#xml).
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Każdy fizyczny AssetFile może zawierać w nim wideo zero lub więcej ścieżek do formatu odpowiedniego kontenera z przeplotem. Aby uzyskać więcej informacji zobacz VideoTracks element. |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Każdy fizyczny AssetFile może zawierać w nim zero lub więcej ścieżki audio z przeplotem do formatu odpowiedniego kontenera. To jest kolekcja wszystkie te ścieżki audio. Aby uzyskać więcej informacji zobacz AudioTracks element. |
 
-## <a name="Sources "></a> Element źródeł
+## <a name="Sources"></a> Element źródeł
 Kolekcja danych wejściowych/źródłowych plików multimedialnych, która została przetworzona w celu utworzenia tego AssetFile.  
 
 Przykład XML można znaleźć [XML — przykład](#xml).  
@@ -68,7 +68,7 @@ Przykład XML można znaleźć [XML — przykład](#xml).
 | --- | --- |
 | **Element źródłowy**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Plik źródła danych wejściowych/używana podczas generowania tego zasobu. Aby uzyskać więcej informacji zobacz element źródła. |
 
-## <a name="Source "></a> element źródłowy
+## <a name="Source"></a> element źródłowy
 Plik źródła danych wejściowych/używana podczas generowania tego zasobu.  
 
 Przykład XML można znaleźć [XML — przykład](#xml).  
@@ -78,7 +78,7 @@ Przykład XML można znaleźć [XML — przykład](#xml).
 | --- | --- | --- |
 | **Nazwa**<br/><br/> Wymagane |**xs:String** |Nazwa pliku źródła danych wejściowych. |
 
-## <a name="VideoTracks "></a> VideoTracks element
+## <a name="VideoTracks"></a> VideoTracks element
 Każdy fizyczny AssetFile może zawierać w nim wideo zero lub więcej ścieżek do formatu odpowiedniego kontenera z przeplotem. **VideoTracks** element reprezentuje kolekcję wideo ścieżki.  
 
 Przykład XML można znaleźć [XML — przykład](#xml).  
@@ -110,7 +110,7 @@ Przykład XML można znaleźć [XML — przykład](#xml).
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Celem średnia szybkość transmisji bitów dla tej ścieżki wideo, zgodnie z żądaniem przy użyciu kodowania ustawiony w kilobitów na sekundę. |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maksymalna liczba GOP średnia szybkość transmisji bitów dla tej ścieżki wideo w kilobitów na sekundę. |
 
-## <a name="AudioTracks "></a> AudioTracks element
+## <a name="AudioTracks"></a> AudioTracks element
 Każdy fizyczny AssetFile może zawierać w nim zero lub więcej ścieżki audio z przeplotem do formatu odpowiedniego kontenera. **AudioTracks** element reprezentuje kolekcję te ścieżki audio.  
 
 Przykład XML można znaleźć [XML — przykład](#xml).  
@@ -120,7 +120,7 @@ Przykład XML można znaleźć [XML — przykład](#xml).
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Określone ścieżki audio w obiekcie nadrzędnym AssetFile. Aby uzyskać więcej informacji zobacz AudioTrack element. |
 
-## <a name="AudioTrack "></a> AudioTrack element
+## <a name="AudioTrack"></a> AudioTrack element
 Określone ścieżki audio w obiekcie nadrzędnym AssetFile.  
 
 Przykład XML można znaleźć [XML — przykład](#xml).  
@@ -141,7 +141,7 @@ Przykład XML można znaleźć [XML — przykład](#xml).
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parametry wynik pomiaru głośności. Aby uzyskać więcej informacji zobacz LoudnessMeteringResultParameters element. |
 
-## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters element
+## <a name="LoudnessMeteringResultParameters"></a> LoudnessMeteringResultParameters element
 Parametry wynik pomiaru głośności.  
 
 Przykład XML można znaleźć [XML — przykład](#xml).  

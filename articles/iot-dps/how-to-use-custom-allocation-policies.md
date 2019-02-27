@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4c02df5684036aef078b0f79c70d3b66d60e013b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340060"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881519"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
 
@@ -100,7 +100,7 @@ W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandar
 
     **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
 
-    **Automatycznie Generuj klucze**: Już to pole wyboru powinno być zaznaczone.
+    **Automatycznie generuj klucze**: Już to pole wyboru powinno być zaznaczone.
 
     **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **niestandardowe (Użyj funkcji platformy Azure)**.
 
@@ -528,7 +528,7 @@ W poniższej tabeli przedstawiono oczekiwane scenariusze i kody błędów wyniki
 | Zwraca element webhook, 200 OK "iotHubHostName" obecne w odpowiedzi, ale ustawiony na pusty ciąg lub wartość null | Stan wyniku: Niepowodzenie<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
 | Element webhook zwraca 401 Brak autoryzacji | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
 | Rejestracja indywidualna została utworzona w celu Wyłącz urządzenie | Stan wyniku: Disabled (Wyłączony) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
-| Element webhook zwraca kod błędu: > = 429 | Organizowanie DPS ponowi próbę wiele razy. Zasady ponawiania jest obecnie:<br><br>&nbsp;&nbsp;-Liczba ponownych prób: 10<br>&nbsp;&nbsp;— Interwał początkowa: wartości 1<br>&nbsp;&nbsp;-Przyrostu: 9S | Zestaw SDK będzie zignorować błąd i przesłać inny komunikat o stanie get w określonym czasie |
+| Element webhook zwraca kod błędu: > = 429 | Organizowanie DPS ponowi próbę wiele razy. Zasady ponawiania jest obecnie:<br><br>&nbsp;&nbsp;-Liczba ponownych prób: 10<br>&nbsp;&nbsp;— Interwał początkowa: 1s<br>&nbsp;&nbsp;-Przyrostu: 9S | Zestaw SDK będzie zignorować błąd i przesłać inny komunikat o stanie get w określonym czasie |
 | Element webhook zwraca każdy inny kod stanu | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationFailed (400207) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
@@ -555,7 +555,7 @@ Aby usunąć grupę zasobów o nazwie:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej Reprovisioning, zobacz [pojęcia reprovisoning urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego ](how-to-unprovision-devices.md) 
+- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
 
 
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9686ac0bc75a219940fcadca78cff539c1b50f0a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844062"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876828"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
 
@@ -49,7 +49,7 @@ Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy po zarejestrowa
 
 Kiedy używasz **udziału** polecenia, a następnie wybierz pozycję **osadzania** karty, możesz skopiować kod HTML lub języka znaczników Markdown, który tworzy wskaźnik "uruchamiania notesu":
 
-![Uruchamianie notesu wskaźnika ](https://notebooks.azure.com/launch.png)
+![Uruchamianie notesu wskaźnika](https://notebooks.azure.com/launch.png)
 
 Jeśli nie masz projektu notesów usługi Azure można utworzyć łącze, które klony z serwisu GitHub bezpośrednio przy użyciu następujących szablonów, podstawiając odpowiednie nazwy użytkownika i nazwy repozytoriów:
 
@@ -67,10 +67,26 @@ Kiedy używasz **+ nowy projekt** polecenie wyświetla notesów usługi Azure **
 
 | Pole | Opis |
 | --- | --- |
-| Project name (Nazwa projektu) | Przyjazna nazwa dla projektu, które korzysta z notesów usługi Azure w celach wyświetlania. Na przykład "Ny notesu projektu". |
-| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL, możesz używać do udostępniania projektu. Tego Identyfikatora można użyć tylko litery, cyfry i łączniki i jest ograniczona do 30 znaków. Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w którym spacje są przekształcane w łączników, np. "Moja notesu projekt" (obcięty, jeśli to konieczne dopasować limit długości). |
+| Project name (Nazwa projektu) | Przyjazna nazwa dla projektu, które korzysta z notesów usługi Azure w celach wyświetlania. Na przykład "Mój notes projektu". |
+| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL, możesz używać do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Tego Identyfikatora można użyć tylko litery, cyfry i łączniki, jest ograniczona do 30 znaków i nie może być [zarezerwowany identyfikator projektu](#reserved-project-ids). Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w którym spacje są przekształcane w łączników, np. "Moja notesu projekt" (obcięty, jeśli to konieczne dopasować limit długości). |
 | Public | Jeśli ustawiona, umożliwia każdemu z linkiem do dostępu do projektu. Podczas tworzenia projektu prywatny, usuń zaznaczenie tej opcji. |
 | Inicjowanie projektu z pliku README | Jeśli ustawiona, tworzy domyślną klasę *README.md* pliku w projekcie. A *README.md* plików są określane dokumentacji dla projektu, w razie potrzeby. |
+
+### <a name="reserved-project-ids"></a>Zastrzeżone identyfikatorów projektu.
+
+Następujące słowa zastrzeżone nie może pełnić samodzielnie identyfikatorów projektu. Tych słów zastrzeżonych, jednak może być używana jako część dłuższego identyfikatorów projektu.
+
+| | | | | | |
+| --- | --- | --- | --- | --- | --- |
+| informacje | account | Administracja | api | blog | klasy |
+| content | pulpit nawigacyjny | Zapoznaj się z | faq | pomoc | html |
+| strona główna | Import | Biblioteka | zarządzanie | nowe | notebook |
+| Notesów | pdf | wersja zapoznawcza | cennik | profil | szukaj |
+| status | pomoc techniczna | test | | | |
+
+Jeśli spróbujesz użyć jednej z tych słów jako identyfikator projektu **Utwórz nowy projekt** i **ustawienia projektu** wskazują okna podręczne, "Identyfikator biblioteki jest zastrzeżony identyfikatora."
+
+Ponieważ identyfikator projektu jest również częścią adresu URL projektu, ad blocker oprogramowania może zablokować użycie elementu niektórych słów kluczowych, takich jak "anons." W takich przypadkach należy użyć innego programu word w identyfikatora projektu.
 
 ## <a name="import-a-project-from-github"></a>Importowanie projektu z usługi GitHub
 
@@ -81,7 +97,7 @@ Można łatwo importować całego publicznego repozytorium GitHub jako projekt, 
 | Repozytorium serwisu GitHub | Nazwa repozytorium źródłowe w witrynie github.com. Na przykład, aby sklonować notesów programu Jupyter dla usług Azure Cognitive Services na [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks), wpisz "Microsoft/cognitive-services notesów".  |
 | Rekursywnie Klonuj | Repozytoria GitHub może zawierać wiele repozytoriów podrzędnych. Ustaw tę opcję, jeśli chcesz klonować repozytorium nadrzędnego i jego elementów podrzędnych. Ponieważ jest możliwe w przypadku repozytorium można mieć wiele podrzędnych, pozostaw tę opcję, wyczyść, chyba że wiesz, że będą potrzebne. |
 | Project name (Nazwa projektu) | Przyjazna nazwa dla projektu, które korzysta z notesów usługi Azure w celach wyświetlania. |
-| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL, możesz używać do udostępniania projektu. Tego Identyfikatora można użyć tylko litery, cyfry i łączniki. |
+| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL, możesz używać do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Tego Identyfikatora można użyć tylko litery, cyfry i łączniki, jest ograniczona do 30 znaków i nie może być [zarezerwowany identyfikator projektu](#reserved-project-ids). Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w którym spacje są przekształcane w łączników, np. "Moja notesu projekt" (obcięty, jeśli to konieczne dopasować limit długości). |
 | Public | Jeśli ustawiona, umożliwia każdemu z linkiem do dostępu do projektu. Podczas tworzenia projektu prywatny, usuń zaznaczenie tej opcji. |
 
 Importowanie repozytorium z serwisu GitHub importuje także jego historię. Można użyć standardowych poleceń usługi Git z poziomu terminalu Zatwierdź nowych zmian, ściąganie zmian z usługi GitHub i tak dalej.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b22d18408d040d564d6220e74e8b8a893fe41ae9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: a074f0f9c08803e7227bcfb218863a5f0f094306
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646249"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875399"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Odzyskiwanie po awarii w usłudze Azure Service Fabric
 Kluczową częścią dostarczania wysokiej dostępności jest zapewnienie, że usługi mogą przetrwać różne rodzaje błędów. Jest to szczególnie ważne w przypadku awarii, znajdujących się niezaplanowane i poza Twoją kontrolą. W tym artykule opisano niektóre typowe trybów awarii, które może być awarii, w przeciwnym razie modelowane i poprawnie zarządzać. Omówiono także środki zaradcze i akcje do wykonania w przypadku awarii mimo to się stało. Celem jest ograniczenie lub wyeliminowania ryzyka przestoju lub utraty danych, gdy wystąpią błędy, planowane lub w przeciwnym razie wystąpić.
@@ -131,7 +131,7 @@ Ma dwa różne strategie pozostałych błąd stałe lub stałą w jednym centrum
 2. Uruchom jeden klaster usługi Service Fabric, obejmującej wielu centrów danych lub regionach. Minimalnej obsługiwanej konfiguracji dla tego jest trzech centrów danych lub regionach. Zalecana liczba regionów lub centrów danych wynosi pięć. Wymaga to bardziej złożona Topologia klastra. Zaletą tego modelu jest jednak, czy niepowodzenie jednego centrum danych lub regionu jest konwertowana po awarii na normalne awarii. Te błędy mogą być obsługiwane przez mechanizmów, które działają w przypadku klastrów w jednym regionie. Domeny błędów, domen uaktualnienia i reguły umieszczania usługi Service Fabric upewnij się, że obciążenia są dystrybuowane tak, aby ich tolerują błędy normalny. Aby uzyskać więcej informacji na temat zasad, które mogą pomóc świadczyć usługi w tym typie klastra, zapoznaj się [zasady umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
 
 ### <a name="random-failures-leading-to-cluster-failures"></a>Losowe awarie, co prowadzi do awarii klastra
-Usługa Service Fabric korzysta z koncepcji węzły obiektów początkowych. Są to węzły, które zachować dostępność klastra źródłowego. Te węzły pomóc upewnić się, że klaster będzie pozostawał się poprzez ustanowienie dzierżawy z innymi węzłami i służy jako tiebreakers podczas niektórych rodzajów błędów sieci. Jeśli ich nie zostaną zwrócone błędy losowe usunąć większość węzły obiektów początkowych w klastrze, klaster zostaje automatycznie zamknięty. Na platformie Azure, węzły obiektów początkowych są zarządzane automatycznie: są rozprowadzone dostępne domenach błędów i uaktualnień i usunięcie inicjatora jednego węzła z klastra innego zostanie utworzona w tym miejscu. 
+Usługa Service Fabric korzysta z koncepcji węzły obiektów początkowych. Są to węzły, które zachować dostępność klastra źródłowego. Te węzły pomóc upewnić się, że klaster będzie pozostawał się poprzez ustanowienie dzierżawy z innymi węzłami i służy jako tiebreakers podczas niektórych rodzajów błędów sieci. Jeśli błędy losowe usunięty większość węzły obiektów początkowych w klastrze, a ich on przełączony z powrotem, pierścień Federacji usługi klastra zwija jako utraty kworum węzła inicjatora i klastra kończy się niepowodzeniem. Na platformie Azure, dostawcy zasobów usługi Service Fabric zarządza konfiguracje klastra usługi Service Fabric i domyślnie rozkłada węzły obiektów początkowych na podstawowy typ węzła, błędu i i uaktualnień; Jeśli podstawowy element nodetype, jest oznaczana niezawodności na poziomie Silver lub Gold, po usunięciu węzła inicjatora, skalowanie w swojej podstawowego elementu nodetype lub ręczne usunięcie węzła inicjatora klastra spróbuje podwyższyć poziom innego węzła bez inicjatora z podstawowego elementu nodetype dostępne pojemność i zakończy się niepowodzeniem, jeśli masz mniej dostępnej pojemności, niż poziom niezawodności klastra wymaga typu węzła podstawowego.
 
 W autonomicznych klastrów usługi Service Fabric i platformie Azure "Podstawowy typ węzła" jest uruchamiana, ziarna. Podczas definiowania typu węzła podstawowego, Usługa Service Fabric będzie automatycznie zalet liczbę węzłów, tworząc maksymalnie 9 węzły obiektów początkowych i 7 replik wszystkich usług systemu. Jeśli zestaw losowo występować usterki zajmuje się większość tych repliki usługi systemu jednocześnie, usług systemu wprowadź utraciła kworum, możemy opisany powyżej. W przypadku utraty większość węzły obiektów początkowych w klastrze zostanie zamknięty wkrótce po.
 
@@ -142,6 +142,7 @@ W autonomicznych klastrów usługi Service Fabric i platformie Azure "Podstawowy
   - [Wykonywanie próbnego odzyskiwania po awarii](../sql-database/sql-database-disaster-recovery-drills.md)
   - [Odzyskiwanie po awarii i wysoka dostępność dla aplikacji platformy Azure][dr-ha-guide]
 - Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)
+
 
 <!-- External links -->
 

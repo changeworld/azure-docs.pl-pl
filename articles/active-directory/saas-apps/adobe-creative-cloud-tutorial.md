@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb593e198e4dff8f30bddfe26071523ea7a893d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a160c604050f567f3fc0f77ca20a22349f07fd9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179233"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Adobe Creative Cloud
 
@@ -45,7 +45,7 @@ Do skonfigurowania integracji usługi Azure AD z rozwiązaniem Adobe Creative Cl
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Rozwiązanie Adobe Creative Cloud obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług oraz dostawcę tożsamości**.
+* Rozwiązanie Adobe Creative Cloud obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Dodawanie rozwiązania Adobe Creative Cloud z galerii
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację rozwiązania Adobe Creative Cloud z usługą Azur
 
 4. W polu wyszukiwania wpisz **Adobe Creative Cloud**, wybierz pozycję **Adobe Creative Cloud** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Rozwiązanie Adobe Creative Cloud na liście wyników](common/search-new-app.png)
+    ![Rozwiązanie Adobe Creative Cloud na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -101,29 +101,23 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz przeprowadzić konfigurację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania Adobe Creative Cloud](common/idp-intiated.png)
+    ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania Adobe Creative Cloud](common/sp-identifier.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.okta.com/saml2/service-provider/<token>`
+    a. W polu tekstowym **Adres URL logowania** wpisz wartość: `https://adobe.com`.
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. W celu uzyskania tej wartości skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    W polu tekstowym **Adres URL logowania** wpisz wartość: `https://adobe.com`.
-
-    ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania Adobe Creative Cloud](common/metadata-upload-additional-signon.png)
-
-6. Aplikacja Adobe Creative Cloud oczekuje asercji SAML w konkretnym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+5. Aplikacja Adobe Creative Cloud oczekuje asercji SAML w konkretnym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
     ![image](common/edit-attribute.png)
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
- 
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
+
     | Nazwa | Atrybut źródłowy|
     |----- | --------- |
     | FirstName | user.givenname |
@@ -151,11 +145,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
     > [!NOTE]
     > Aby wartość oświadczenia e-mail była wypełniana w odpowiedzi SAML, użytkownicy muszą mieć ważną licencję usługi Office 365 ExO.
 
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-9. W sekcji **Skonfiguruj aplikację Adobe Creative Cloud** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+8. W sekcji **Skonfiguruj aplikację Adobe Creative Cloud** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 

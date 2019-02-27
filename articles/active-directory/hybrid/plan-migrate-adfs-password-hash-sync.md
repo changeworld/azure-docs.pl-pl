@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 806d060cd58322d745ea6ebdaa59eb85c6a35cbd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204444"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867154"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrowanie z Federacji na synchronizację skrótów haseł usługi Azure Active Directory
 
@@ -319,7 +319,7 @@ Najpierw należy zmienić metodę logowania:
    * **Bezproblemowe logowanie jednokrotne** ustawiono **włączone**.
    * **Synchronizacja haseł** ustawiono **włączone**.<br /> 
 
-   ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Przejdź do [testowania i następne kroki](#testing-and-next-steps).
 
@@ -337,7 +337,7 @@ Użyj tej opcji, które nie zostały wstępnie skonfigurowane domen federacyjnyc
 
    Przed włączeniem synchronizacji skrótów haseł: ![Zrzut ekranu pokazujący nie skonfigurowana opcja na stronie logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Po włączeniu synchronizacji skrótów haseł: ![Zrzut ekranu przedstawiający nowe opcje na stronie logowania użytkownika ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Po włączeniu synchronizacji skrótów haseł: ![Zrzut ekranu przedstawiający nowe opcje na stronie logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Począwszy od usługi Azure AD Connect w wersji 1.1.880.0, **bezproblemowego logowania jednokrotnego** pole wyboru jest zaznaczone domyślnie.

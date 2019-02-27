@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54aab6e9718b5a4a55cf2a3f9c472e9e02a53ea7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191082"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869551"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Program Azure AD Connect a federacja
 Platformy Azure umożliwia usługi Active Directory (Azure AD) Connect skonfigurowania federacji z usługą Active Directory Federation Services (AD FS) lokalną i usługą Azure AD. Za pomocą logowania federacyjnego można umożliwić użytkownikom Zaloguj się do usług platformy Azure na podstawie usługi AD za pomocą swoich haseł lokalnych — oraz znajduje się w sieci firmowej, bez konieczności ponownego wprowadzania haseł. Przy użyciu opcji federacji z usługami AD FS, można wdrożyć nowej instalacji usług AD FS, lub można określić istniejącą instalację w farmie programu Windows Server 2012 R2.
@@ -36,7 +36,7 @@ Ten temat jest miejsce, w którym informacji na temat funkcji związanych z fede
 | **Instalowanie usług AD FS za pomocą usługi Azure AD Connect** | |
 | [Wymagania wstępne](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Zobacz wymagania wstępne dotyczące pomyślnej instalacji usług AD FS za pomocą usługi Azure AD Connect. |
 | [Konfigurowanie farmy usług AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Zainstaluj nową farmę usług AD FS za pomocą usługi Azure AD Connect. |
-| [Utworzyć Federację z usługą Azure AD przy użyciu Identyfikatora logowania alternatywnej ](how-to-connect-fed-management.md#alternateid) | Konfigurowanie Federacji przy użyciu Identyfikatora logowania alternatywnej  |
+| [Utworzyć Federację z usługą Azure AD przy użyciu Identyfikatora logowania alternatywnej](how-to-connect-fed-management.md#alternateid) | Konfigurowanie Federacji przy użyciu Identyfikatora logowania alternatywnej  |
 | **Modyfikowanie konfiguracji usług AD FS** | |
 | [Napraw zaufanie](how-to-connect-fed-management.md#repairthetrust) |Napraw bieżącej relacji zaufania między lokalnych usług AD FS i Office 365/Azure. |
 | [Dodawanie nowego serwera usług AD FS](how-to-connect-fed-management.md#addadfsserver) |Po wstępnej instalacji, rozwiń węzeł farmy usług AD FS jest dodatkowy serwer usług AD FS. |

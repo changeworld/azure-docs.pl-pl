@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f2539674668a9738d03e9af9c4fb88327cb1933
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178094"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865063"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Szybki start
 
@@ -120,7 +120,7 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
 
 1. Otwórz narzędzie Edytor zarządzania zasadami grupy.
 2. Edytowanie zasad grupy, która jest stosowana do niektórych lub wszystkich użytkowników. W tym przykładzie użyto **domyślne zasady domeny**.
-3. Przejdź do **Konfiguracja użytkownika** > **Szablony administracyjne** > **składników Windows**  >   **Program Internet Explorer** > **internetowy Panel sterowania** > **strony zabezpieczeń**. Następnie wybierz pozycję **strefy Lista przypisywanie witryn do**.
+3. Przejdź do **Konfiguracja użytkownika** > **zasad** > **Szablony administracyjne** > **Windows Składniki** > **programu Internet Explorer** > **internetowy Panel sterowania** > **strony zabezpieczeń**. Następnie wybierz pozycję **strefy Lista przypisywanie witryn do**.
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Włącz zasady, a następnie wprowadź następujące wartości w oknie dialogowym:
    - **Nazwa wartości**: Usługa Azure AD adres URL gdzie bilety protokołu Kerberos są przesyłane dalej.
@@ -140,7 +140,7 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
 
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Przejdź do **Konfiguracja użytkownika** > **Szablony administracyjne** > **składników Windows**  >   **Program Internet Explorer** > **internetowy Panel sterowania** > **strony zabezpieczeń** > **strefy intranetowej**. Następnie wybierz pozycję **zezwala na aktualizacje na pasku stanu za pomocą skryptu**.
+6. Przejdź do **Konfiguracja użytkownika** > **Szablony administracyjne** **zasad** > ** > **składników Windows**  >  **Programu Internet Explorer** > **internetowy Panel sterowania** > **strony zabezpieczeń**  >   **Strefy intranetowej**. Następnie wybierz pozycję **zezwala na aktualizacje na pasku stanu za pomocą skryptu**.
 
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso11.png)
 

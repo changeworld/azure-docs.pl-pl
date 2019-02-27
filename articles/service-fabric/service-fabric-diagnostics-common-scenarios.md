@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 559409ac73fb28df18c2ddeca7eb2bcd06a24835
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 377b41f6ea011c06457fb6550ddd8d448574835e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817664"
+ms.locfileid: "56881340"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozowanie typowe scenariusze za pomocą usługi Service Fabric
 
@@ -70,7 +70,7 @@ Rozwiązania, w tym artykule użyje następujących narzędzi. Zaleca się, że 
 
     ```kusto
     ServiceFabricOperationalEvent
-    | where EventId >= 25623 or EventId <= 25626
+    | where EventID >= 25622 or EventID <= 25626
     ```
 
 5. Kliknij przycisk "Nową regułę alertu" u góry, a teraz w dowolnym momencie zdarzenia na podstawie dociera przy użyciu tego zapytania, otrzymasz alert w wybranego metody komunikacji.
@@ -83,7 +83,7 @@ Rozwiązania, w tym artykule użyje następujących narzędzi. Zaleca się, że 
 
     ```kusto
     ServiceFabricOperationalEvent
-    | where EventId == 29623 or EventId == 29624
+    | where EventID == 29623 or EventID == 29624
     ```
 
 2. Kliknij przycisk "Nową regułę alertu" u góry, a teraz w dowolnym momencie zdarzenia na podstawie dociera przy użyciu tego zapytania, zostanie wyświetlony alert.

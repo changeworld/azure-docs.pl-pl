@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 6d7cacf699df580b8a5c46b8bfc6d48e1a8daea1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 2c81369bc278a0995af04a38b0143eb0df8ba3a5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821734"
+ms.locfileid: "56877371"
 ---
 # <a name="manage-and-configure-projects"></a>Konfigurowanie projektów i zarządzanie nimi
 
@@ -66,7 +66,9 @@ Aby utworzyć nowe wystąpienie maszyny wirtualnej DSVM, postępuj zgodnie z ins
 >
 > 1. Ręcznie skopiuj pliki projektu do maszyny Wirtualnej.
 >
-> 2. Osadzanie plików w notesie ustawienia uruchamiania przed głównej notesu. W notesie Instalator Utwórz komórce kodu dla każdego pliku, w którym komórka zawiera zawartość pliku. Następnie w górnej części każda komórka Wstaw polecenie `%writefile <filename>`, gdzie `<filename>` to nazwa pliku do odbierania zawartości. Podczas uruchamiania notesu tworzy tych plików na maszynie Wirtualnej. Aby uzyskać przykład, zobacz [setup.ipynb pliku pokaz wykrywacz Pet Microsoft](https://github.com/microsoft/connect-petdetector) (GitHub).
+> 2. Osadzanie plików w notesie ustawienia uruchamiania przed głównej notesu. W notesie Instalator Utwórz komórce kodu dla każdego pliku, w którym komórka zawiera zawartość pliku. Następnie w górnej części każda komórka Wstaw polecenie `%%writefile <filename>`, gdzie `<filename>` to nazwa pliku do odbierania zawartości. Podczas uruchamiania notesu tworzy tych plików na maszynie Wirtualnej. Aby uzyskać przykład, zobacz [setup.ipynb pliku pokaz wykrywacz Pet Microsoft](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
+>
+>     ![Za pomocą %% writefile polecenia na początku komórkę kodu](media/setup-notebook-writefile-command.png)
 
 ## <a name="edit-project-metadata"></a>Edytowanie metadanych projektu
 
@@ -75,7 +77,7 @@ Na pulpicie nawigacyjnym projektu wybierz **ustawienia projektu**, a następnie 
 | Ustawienie | Opis |
 | --- | --- |
 | Project name (Nazwa projektu) | Przyjazna nazwa dla projektu, które korzysta z notesów usługi Azure w celach wyświetlania. Na przykład, "Hello World w języku Python". |
-| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL, możesz używać do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Tego Identyfikatora można użyć tylko litery, cyfry i łączniki i jest ograniczona do 30 znaków. Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w której miejsca do magazynowania są przekształcane w łączniki, na przykład "Moja nazwa projektu" jest przekształcany "name mój projekt". |
+| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL, możesz używać do udostępniania projektu. Tego Identyfikatora można użyć tylko litery, cyfry i łączniki, jest ograniczona do 30 znaków i nie może być [zarezerwowany identyfikator projektu](create-clone-jupyter-notebooks.md#reserved-project-ids). Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w którym spacje są przekształcane w łączników, np. "Moja notesu projekt" (obcięty, jeśli to konieczne dopasować limit długości). |
 | Publiczne projektu | Jeśli ustawiona, umożliwia każdemu z linkiem do dostępu do projektu. Podczas tworzenia projektu prywatny, usuń zaznaczenie tej opcji. |
 | Ukryj klony | Jeśli ustawiona, innych użytkowników nie można wyświetlić listę klonów, które zostały wprowadzone dla tego projektu. Ukrywanie klonów jest przydatne w przypadku projektów, które są współużytkowane z wielu osób, które nie są częścią tej samej organizacji, takich jak podczas korzystania z notesu nauczenia klasy. |
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: a2d799a85932f8b7fdf1f6ae53dc50579c266311
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 52c0799dd2f3c22b1ae3553869aafe9a1fcffc7f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674529"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887934"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -71,7 +71,7 @@ Instrukcje krok po kroku dotyczące implementowania komunikację równorzędną 
 
 ### <a name="commands"></a>Polecenia
 
-- **Interfejs wiersza polecenia Azure**: [tworzenie az sieci wirtualne sieci równorzędne](/cli/azure/network/vnet/peering#create)
+- **Interfejs wiersza polecenia Azure**: [tworzenie az sieci wirtualne sieci równorzędne](/cli/azure/network/vnet/peering)
 - **PowerShell**: [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Wyświetl lub zmień ustawienia komunikacji równorzędnej
@@ -88,7 +88,7 @@ Przed zmianą, komunikację równorzędną, zapoznaj się z wymagań i ogranicze
 
 **Polecenia**
 
-- **Wiersza polecenia platformy Azure**: [az listę komunikacji równorzędnej sieci wirtualnej sieci](/cli/azure/network/vnet/peering) do listy połączeń komunikacji równorzędnej sieci wirtualnej, [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) wyświetlanie ustawień dla określonych komunikacji równorzędnej i [az sieci Aktualizacja komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) zmiany ustawień komunikacji równorzędnej. |
+- **Wiersza polecenia platformy Azure**: [az listę komunikacji równorzędnej sieci wirtualnej sieci](/cli/azure/network/vnet/peering) do listy połączeń komunikacji równorzędnej sieci wirtualnej, [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering) wyświetlanie ustawień dla określonych komunikacji równorzędnej i [az sieci Aktualizacja komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering) zmiany ustawień komunikacji równorzędnej. |
 - **PowerShell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) można pobrać ustawień komunikacji równorzędnej widoku i [AzVirtualNetworkPeering zestaw](/powershell/module/az.network/set-azvirtualnetworkpeering) Aby zmienić ustawienia.
 
 ## <a name="delete-a-peering"></a>Usuwanie komunikacji równorzędnej
@@ -97,7 +97,7 @@ Przed usunięciem, komunikację równorzędną, upewnij się, Twoje konto ma [ni
 
 Gdy komunikacja równorzędna zostanie usunięty, ruch z sieci wirtualnej są już przekazywane do równorzędnej sieci wirtualnej. Po równorzędnym połączeniu sieci wirtualnych wdrożonych przy użyciu usługi Resource Manager, każda sieć wirtualna ma komunikację równorzędną w sieci wirtualnej. Chociaż usuwanie komunikacji równorzędnej z jednej sieci wirtualnej spowoduje wyłączenie komunikacji między sieciami wirtualnymi, nie zostanie usunięta komunikacja równorzędna z innej sieci wirtualnej. Stan komunikacji równorzędnej dla komunikacji równorzędnej, który znajduje się w innej sieci wirtualnej jest **Disconnected**. Nie można odtworzyć komunikacji równorzędnej do momentu ponownego tworzenia komunikacji równorzędnej w pierwszej sieci wirtualnej i stan komunikacji równorzędnej dla zmiany w obu sieciach wirtualnych *połączono*.
 
-Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze zamiast usuwanie komunikacji równorzędnej, możesz ustawić **zezwolić na dostęp do sieci wirtualnej** ustawienie **wyłączone** zamiast tego. Aby dowiedzieć się, jak to zrobić, przeczytaj kroku 6 procedury [utworzyć połączenie równorzędne](#create-a-peering) dalszej części tego artykułu. Może się okazać wyłączania i włączania dostępu do sieci łatwiejsze niż usunięcie i ponowne utworzenie komunikacji równorzędnej.
+Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze zamiast usuwanie komunikacji równorzędnej, możesz ustawić **zezwolić na dostęp do sieci wirtualnej** ustawienie **wyłączone** zamiast tego. Aby dowiedzieć się, jak to zrobić, przeczytaj kroku 6 procedury tworzenia komunikacji równorzędnej dalszej części tego artykułu. Może się okazać wyłączania i włączania dostępu do sieci łatwiejsze niż usunięcie i ponowne utworzenie komunikacji równorzędnej.
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją. Nie należy wybierać **sieci wirtualne (klasyczne)** Jeśli pojawia się na liście, ponieważ nie można utworzyć komunikację równorzędną z sieci wirtualnej, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania.
 2. Wybierz sieć wirtualną na liście, który chcesz usunąć komunikację równorzędną.

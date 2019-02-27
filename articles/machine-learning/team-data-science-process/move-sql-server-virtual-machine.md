@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dcab8d1cfd076e57a25ee3d36fadd86f158c53b8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478495"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880601"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure
 
@@ -50,7 +50,7 @@ W tym samouczku przyjęto założenie, że masz:
 Jeśli dane pochodzą z pliku prostego (ułożone w formacie wiersza/kolumny), można ją przenosić do maszyny Wirtualnej programu SQL Server na platformie Azure za pomocą następujących metod:
 
 1. [Narzędzie wiersza polecenia zbiorczego kopiowania (BCP)](#insert-tables-bcp)
-2. [Zapytanie SQL wstawiania zbiorczego ](#insert-tables-bulkquery)
+2. [Zapytanie SQL wstawiania zbiorczego](#insert-tables-bulkquery)
 3. [Graficznych narzędzi wbudowanych w programie SQL Server (Import/Export, SSIS)](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>Narzędzie wiersza polecenia zbiorczego kopiowania (BCP)

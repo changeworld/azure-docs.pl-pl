@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112550"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309866"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -51,7 +51,7 @@ Aby przenieść maszyny wirtualne, należy wykonać następujące kroki:
 > Obecnie usługa Azure Site Recovery obsługuje przenoszenie maszyn wirtualnych z jednego regionu do innego i nie obsługuje przenoszenia w ramach regionu. 
 
 > [!NOTE]
-> Szczegółowe wskazówki dotyczące tych kroków znajdują się w dokumentacji poszczególnych scenariuszy, zgodnie z tymi informacjami
+> Szczegółowe wskazówki dotyczące tych kroków znajdują się w dokumentacji poszczególnych scenariuszy, zgodnie z [tymi informacjami](#next-steps)
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>Typowe architektury wdrożenia wielowarstwowego
 W poniższej sekcji przedstawiono najczęściej spotykane architektury wdrożeń aplikacji wielowarstwowych na platformie Azure stosowane przez klientów. Przykład omówiony w tym miejscu dotyczy trójwarstwowej aplikacji z publicznym adresem IP. Każda z warstw — internetowa, aplikacji i bazy danych — zawiera 2 maszyny wirtualne, które są połączone z innymi warstwami przy użyciu modułu równoważenia obciążenia. Warstwa bazy danych ma zawsze włączoną replikację SQL między maszynami wirtualnymi w celu zapewnienia wysokiej dostępności.

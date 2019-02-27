@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 716c229fbd906798d39bf4ef54ba1f47cd5bd980
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 89b311edbae6b5f6679908b5d07b22b402b5c55e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651043"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888070"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieci platformy Azure
 
@@ -61,9 +61,9 @@ Można dodać tyle [prywatnej](#private) i [publicznych](#public) [IPv4](#ipv4) 
 
 **Polecenia**
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|Interfejs wiersza polecenia|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Zmień ustawienia adresu IP
@@ -82,9 +82,9 @@ Może potrzebujesz zmienić metodę przypisywania adresu IPv4 zmień statyczny a
 
 **Polecenia**
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Usuń adresy IP
@@ -98,9 +98,9 @@ Możesz usunąć [prywatnej](#private) i [publicznych](#public) adresy IP z inte
 
 **Polecenia**
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[AZ sieci nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|Interfejs wiersza polecenia|[AZ sieci nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfiguracje adresów IP
@@ -204,7 +204,7 @@ Publiczny adres IP jest tworzony z jednostką SKU podstawowa lub standardowa. Ab
 ## <a name="next-steps"></a>Kolejne kroki
 Aby utworzyć maszynę wirtualną z różnymi konfiguracjami adresów IP, przeczytaj następujące artykuły:
 
-|Zadanie|Narzędzie|
+|Zadanie|Tool|
 |---|---|
 |Tworzenie maszyny wirtualnej z wieloma interfejsami sieciowymi|[Interfejs wiersza polecenia](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [programu PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Tworzenie pojedynczej maszyny Wirtualnej karty Sieciowej z wieloma adresami IPv4|[Interfejs wiersza polecenia](virtual-network-multiple-ip-addresses-cli.md), [programu PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

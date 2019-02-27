@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106969"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882692"
 ---
 # <a name="handling-review-feedback"></a>Obsługa opinii
 
@@ -58,14 +58,14 @@ Użyj poniższej procedury, przejrzeć zagadnienia, opisane w żądaniu ściągn
 
 1. W **przeglądu Microsoft** części **publikowania kroki** formularza, kliknij Link żądania Ściągnięcia, aby uruchomić przeglądarkę i przejdź do **Przegląd** strony (macierzysty) dla tego żądania ściągnięcia.  Poniższa ilustracja przedstawia przykładową stronę główną krytyczny problem dla oferty aplikacji przykładowej firmy Contoso.  Ta strona zawiera przydatne podsumowanie informacji o problemach przeglądu w aplikacji platformy Azure.  
 
-    [ ![Strona główna żądania ściągnięcia](./media/pr-home-page-thumb.png) ](./media/pr-home-page.png)
+    [![Strona główna żądania ściągnięcia](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kliknij obraz, aby rozwinąć.*
     
 2. (Opcjonalnie) Po prawej stronie okna, w sekcji **zasady**, kliknąć komunikat wydania (w tym przykładzie: **Nie można zweryfikować zasad**) aby zbadać szczegóły niskiego poziomu wydania, w tym skojarzonych plików dziennika.  Błędy zwykle są wyświetlane w dolnej części plików dziennika.
 
 3. W menu po stronie lewej części strony głównej wybierz **pliki** do wyświetlania listy plików, wchodzące w skład zasoby techniczne dla tej oferty.  Recenzenci firmy Microsoft, należy dodać komentarz opisujący wykryte problemy krytyczne.  W poniższym przykładzie dwa problemy zostały odnalezione. 
 
-    [ ![Strona główna żądania ściągnięcia](./media/pr-files-page-thumb.png) ](./media/pr-files-page.png)
+    [![Strona główna żądania ściągnięcia](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Kliknij obraz, aby rozwinąć.*
 
 4. Kliknij pozycję w każdym węźle komentarza, w drzewie po lewej stronie, aby przejść do komentarzy w kontekście otaczającym kodem.  Napraw kod źródłowy w projekcie zespołu, aby rozwiązać ten problem opisany przez komentarz.

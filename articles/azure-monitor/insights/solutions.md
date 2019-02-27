@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001021"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887560"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorowanie rozwiązań w usłudze Azure Monitor
 Rozwiązania do monitorowania korzystać z usług na platformie Azure, aby zapewnić dodatkowy wgląd w działania określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązania na platformie Azure i uzyskać szczegółowe informacje na temat używania i instalując je do monitorowania.
@@ -65,7 +65,7 @@ Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania. Ta strona w
 ## <a name="install-a-monitoring-solution"></a>Zainstalować rozwiązanie do monitorowania
 Rozwiązania firmy Microsoft i partnerów do monitorowania są dostępne z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Możesz wyszukiwać dostępnych rozwiązań i zainstalować je przy użyciu poniższej procedury. Po zainstalowaniu rozwiązania, należy wybrać [obszaru roboczego usługi Log Analytics](../platform/manage-access.md) zainstalowanym rozwiązania i gdzie będą zbierane dane.
 
-1. Z [listę rozwiązań dla Twojej subskrypcji](#list-installed-management-solutions), kliknij przycisk **Dodaj**. 
+1. Z [listę rozwiązań dla Twojej subskrypcji](#list-installed-monitoring-solutions), kliknij przycisk **Dodaj**. 
 1. Po prawej stronie **rozwiązań do zarządzania**, kliknij przycisk **więcej**. 
 1. Znajdź rozwiązania do monitorowania ma i zapoznaj się z jego opis.
 1. Kliknij przycisk **Utwórz** do uruchamiania procesu instalacji.

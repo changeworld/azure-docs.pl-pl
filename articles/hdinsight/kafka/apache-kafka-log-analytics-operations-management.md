@@ -1,6 +1,6 @@
 ---
-title: Usługa log Analytics dla platformy Apache Kafka — usługa Azure HDInsight
-description: Dowiedz się, jak używać usługi Log Analytics do analizowania dzienników z klastra Apache Kafka w usłudze Azure HDInsight.
+title: Dzienniki monitora platformy Azure dla platformy Apache Kafka — Azure HDInsight
+description: Dowiedz się, jak analizować dzienniki z klastra platformy Apache Kafka w usłudze Azure HDInsight przy użyciu dzienników usługi Azure Monitor.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,37 +9,39 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 0862bcb2c04f3a8cd46a5e60644ebbb8c7735e51
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 65416a00ebd487e80625e4f3c8d8a95b5995daa9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729971"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886574"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla platformy Apache Kafka w HDInsight
 
-Dowiedz się, jak używać usługi Log Analytics do analizowania dzienników generowanych przez platformy Apache Kafka w HDInsight.
+Dowiedz się, jak analizować dzienniki generowane przez platformy Apache Kafka w HDInsight przy użyciu dzienników usługi Azure Monitor.
 
-## <a name="enable-log-analytics-for-apache-kafka"></a>Włączanie analizy dzienników dla platformy Apache Kafka
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Procedurę włączania usługi Log Analytics for HDInsight są takie same dla wszystkich klastrów HDInsight. Aby zrozumieć, jak utworzyć i skonfigurować wymagane usługi, należy użyć następujących łączy:
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Włączanie dzienników usługi Azure Monitor dla platformy Apache Kafka
+
+Kroki, aby włączyć dzienniki usługi Azure Monitor for HDInsight są takie same dla wszystkich klastrów HDInsight. Aby zrozumieć, jak utworzyć i skonfigurować wymagane usługi, należy użyć następujących łączy:
 
 1. Utwórz obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z obszarem roboczym usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics) dokumentu.
 
 2. Utwórz platformy Kafka w klastrze HDInsight. Aby uzyskać więcej informacji, zobacz [rozpoczynać platformy Apache Kafka w HDInsight](apache-kafka-get-started.md) dokumentu.
 
-3. Konfigurowanie klastra platformy Kafka usługa Log Analytics. Aby uzyskać więcej informacji, zobacz [za pomocą usługi Log Analytics do monitorowania HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
+3. Skonfiguruj klaster platformy Kafka przy użyciu dzienników usługi Azure Monitor. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Monitor dzienników do monitorowania HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
     > [!NOTE]  
-    > Możesz również skonfigurować używanie programu Log Analytics przy użyciu klastra `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
+    > Możesz również skonfigurować klaster do używania usługi Azure Monitor dzienników za pomocą `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
     >
     > * Nazwa klastra HDInsight.
-    > * Identyfikator obszaru roboczego usługi Log Analytics. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym usługi Log Analytics.
-    > * Klucz podstawowy połączenia usługi Log Analytics. Aby znaleźć podstawowego klucza, Otwórz obszar roboczy w witrynie Azure portal, wybierz __Zaawansowane ustawienia__ menu po lewej stronie. Wybierz z ustawień zaawansowanych __połączone źródła__>__serwerów z systemem Linux__.
+    > * Identyfikator obszaru roboczego dla dzienników usługi Azure Monitor. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym usługi Log Analytics.
+    > * Klucz podstawowy połączenia usługi log analytics. Aby znaleźć podstawowego klucza, Otwórz obszar roboczy w witrynie Azure portal, wybierz __Zaawansowane ustawienia__ menu po lewej stronie. Wybierz z ustawień zaawansowanych __połączone źródła__>__serwerów z systemem Linux__.
 
 
 > [!IMPORTANT]  
-> Może upłynąć około 20 minut, zanim dane są dostępne dla usługi Log Analytics.
+> Może upłynąć około 20 minut, zanim dane są dostępne w przypadku dzienników usługi Azure Monitor.
 
 ## <a name="query-logs"></a>Dzienniki zapytań
 
@@ -72,7 +74,7 @@ Procedurę włączania usługi Log Analytics for HDInsight są takie same dla ws
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat usługi Log Analytics, zobacz [Rozpoczynanie pracy z obszarem roboczym usługi Log Analytics](../../log-analytics/log-analytics-get-started.md) dokumentu.
+Aby uzyskać więcej informacji na temat usługi Azure Monitor, zobacz [Omówienie usługi Azure Monitor](../../log-analytics/log-analytics-get-started.md) dokumentu.
 
 Aby uzyskać więcej informacji na temat pracy z platformą Apache Kafka zobacz następujące dokumenty:
 

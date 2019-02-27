@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c62560d2f80375a725464607f38b9e8adf221d16
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236978"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875603"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -225,7 +225,7 @@ Wykonanie tych kroków powoduje, że rozszerzenie, należy ponownie zainstalowa�
 3. W **ustawienia** zaznacz **blokad** do wyświetlenia blokad.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
 
-    ![Usuń blokady ](./media/backup-azure-arm-vms-prepare/delete-lock.png)
+    ![Usuń blokady](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a> Wyczyścić kolekcję punktów przywracania
 Po usunięciu blokady, punkty przywracania zostały wyczyszczone. Aby wyczyścić punktów przywracania, wykonaj dowolną z metod:<br>
@@ -244,12 +244,12 @@ Ręcznie wyczyścić przywracania wskazuje kolekcji, które nie są usuwane z po
 1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
 2. Na **Centrum** menu, kliknij przycisk **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` gdzie znajduje się maszyna wirtualna.
 
-    ![Usuń blokady ](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Usuń blokady](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kliknij grupę zasobów, **Przegląd** zostanie wyświetlony blok.
 4. Wybierz **Pokaż ukryte typy** opcję, aby wyświetlić wszystkie ukryte zasoby. Wybierz kolekcje punktów przywracania w następującym formacie AzureBackupRG_`<VMName>`_`<number>`.
 
-    ![Usuń blokady ](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Usuń blokady](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
 5. Kliknij przycisk **Usuń**, aby wyczyścić kolekcję punktów przywracania.
 6. Ponów operację tworzenia kopii zapasowej.

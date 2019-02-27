@@ -4,16 +4,16 @@ description: Dowiedz się, jak pobrać i kontroli dużych zestawów danych podcz
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 8808f42cdd6fb547b70695278993faa0f52cdb61
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338397"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889039"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z zestawami danych w dużej ilości zasobów platformy Azure
 
@@ -22,6 +22,9 @@ Wykres zasobów platformy Azure jest przeznaczona dla pracę i pobieranie inform
 ## <a name="data-set-result-size"></a>Rozmiar wyników zestawu danych
 
 Domyślnie wykres zasobów ogranicza dowolne zapytanie zwraca tylko **100** rekordów. Ten formant użytkownika i usługa ochronę niezamierzone zapytań, które mogłyby spowodować dużych zestawów danych. W większości przypadków to zdarzenie występuje, ponieważ klient jest eksperymentowanie z zapytaniami do znalezienia i Filtruj zasoby w taki sposób, który odpowiada ich potrzebom. Ten formant jest inny niż w [górnej](/azure/kusto/query/topoperator) lub [limit](/azure/kusto/query/limitoperator) operatory języka Eksploratora danych usługi Azure, aby ograniczyć wyniki.
+
+> [!NOTE]
+> Korzystając z **pierwszy**, zaleca się Uporządkuj wyników według co najmniej jedną kolumnę z `asc` lub `desc`. Bez sortowania, zwrócone wyniki są losowych i repeatable nie.
 
 Domyślny limit można zastąpić za pomocą wszystkich metod interakcji z wykresem zasobów. W poniższych przykładach pokazano, jak zmienić limit rozmiaru zestawu danych, aby _200_:
 
@@ -43,6 +46,9 @@ Formant który jest _najbardziej restrykcyjne_ zostanie zarejestrowane. Na przyk
 
 Opcja dalej do pracy z dużymi zestawami danych jest **Pomiń** kontroli. Dzięki temu Twoje zapytanie, aby przeskoczyć nad lub pominąć zdefiniowanej liczby rekordów przed zwróceniem wyników. **Pomiń** jest przydatne w przypadku zapytań, które sortowanie wyników w znaczący sposób, w których celem jest pobrać teraz rekordów gdzieś w trakcie wykonywania zestawu wyników. Jeśli wyniki potrzebne znajdują się na końcu zwróconego zestawu danych, jest bardziej wydajne, korzysta z konfiguracji sortowania i zamiast tego Pobierz wyniki w górnej części zestawu danych.
 
+> [!NOTE]
+> Korzystając z **Pomiń**, zaleca się Uporządkuj wyników według co najmniej jedną kolumnę z `asc` lub `desc`. Bez sortowania, zwrócone wyniki są losowych i repeatable nie.
+
 W poniższych przykładach pokazano, jak pominąć pierwszy _10_ rekordów zapytanie spowoduje, zamiast uruchamiania zwracany wynik ustawione przy użyciu rekordu 11:
 
 ```azurecli-interactive
@@ -63,7 +69,7 @@ Gdy jest to konieczne, można przerwać zestawu do prezentowania mniejszych zest
 Gdy **resultTruncated** jest **true**, **$skipToken** właściwość jest ustawiona w odpowiedzi. Ta wartość jest używana przy użyciu tej samej wartości zapytania i subskrypcji do następnego zestawu rekordów pasujących do zapytania.
 
 > [!IMPORTANT]
-> Zapytanie musi **projektu** **identyfikator** pola w kolejności do dzielenia na strony do pracy. Jeśli brakuje zapytania, odpowiedzi interfejsu API REST nie będzie zawierać **$skipToken**.
+> Zapytanie musi **projektu** **identyfikator** pola w kolejności do dzielenia na strony do pracy. Jeśli brakuje zapytania, odpowiedź interfejsu API REST nie będzie zawierać **$skipToken**.
 
 Aby uzyskać przykład, zobacz [następnej strony kwerendy](/rest/api/azureresourcegraph/resources/resources#next_page_query) w dokumentacji interfejsu API REST.
 

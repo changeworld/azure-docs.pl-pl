@@ -1,5 +1,5 @@
 ---
-title: SalesForce | Dokumentacja firmy Microsoft
+title: Salesforce | Microsoft Docs
 description: Skonfiguruj zarządzanie potencjalnymi klientami SalesForce.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 54f9e19ae6cb9afba0de621c36352c3b1038b100
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2f2a96e46b76ce41131b8e745075648bf0c68716
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810650"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867341"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurowanie zarządzania potencjalnych klientów usługi Salesforce
 
@@ -38,4 +38,4 @@ W tym artykule opisano sposób konfigurowania systemu Salesforce do obsługi pot
 5. Na **Tworzenie formularza sieci Web do realizacji**, wybierz opcję **Generuj** ![Generowanie Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)
 
 6. Skopiuj identyfikator OID w przykładzie i zapisz go. Będziesz Wklej identyfikator OID w **identyfikatora obiektu** w portalu Cloud Partner.
-![Pobierz SalesForce identyfikatora OID ](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)
+![Pobierz SalesForce identyfikatora OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)

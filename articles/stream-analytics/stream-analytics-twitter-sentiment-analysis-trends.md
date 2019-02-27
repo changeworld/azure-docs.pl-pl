@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c34b3fa1597866e4f722fccee84f83f4caab6bfb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231142"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876300"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analiza tonacji w czasie rzeczywistym usługi Twitter w usłudze Azure Stream Analytics
 
@@ -58,7 +58,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
 
 5. Kliknij nową przestrzeń nazw, a następnie w bloku przestrzeni nazw kliknij  **+ &nbsp;Centrum zdarzeń**. 
 
-    ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+    ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
 6. Nazwa nowego Centrum zdarzeń `socialtwitter-eh`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj je, ponieważ nazwa będą potrzebne później. Nie ma potrzeby ustaw inne opcje dla Centrum zdarzeń.
 

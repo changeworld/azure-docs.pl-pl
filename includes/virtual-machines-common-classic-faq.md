@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bc3590e90cacfa4966f0d1f64aa1c8d49483cb1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735564"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883779"
 ---
 W tym artykule zostały podane odpowiedzi na niektóre często zadawane przez użytkowników pytania dotyczące maszyn wirtualnych na platformie Azure utworzonych za pomocą klasycznego modelu wdrażania.
 
@@ -136,5 +136,5 @@ Aby zapewnić nadmiarowość, umieść co najmniej dwie podobnie skonfigurowane 
 
 [Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą programu Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Utwórz Windows maszyn wirtualnych i zarządzanie przy użyciu programu Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

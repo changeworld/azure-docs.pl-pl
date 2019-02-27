@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 6907382fccaa463fe305ac5049b3858e59b8631b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991399"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888818"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu programu Azure PowerShell
 
@@ -238,7 +238,7 @@ Ta sekwencja operacji może być również *potokiem*, co oznacza, przekazać ob
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Powyższe przykłady pokazują, jak dodać rekord "" do istniejącego zestawu rekordów typu "A". Podobne sekwencja operacji jest używana do dodawania rekordów do zestawów rekordów innych typów, zastępując `-Ipv4Address` parametru `Add-AzDnsRecordConfig` z innymi parametrami, które są specyficzne dla każdego typu rekordu. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w [przykłady dodatkowych typów rekordów](#additional-record-type-examples) powyżej.
+Powyższe przykłady pokazują, jak dodać rekord "" do istniejącego zestawu rekordów typu "A". Podobne sekwencja operacji jest używana do dodawania rekordów do zestawów rekordów innych typów, zastępując `-Ipv4Address` parametru `Add-AzDnsRecordConfig` z innymi parametrami, które są specyficzne dla każdego typu rekordu. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w przykładach dodatkowy typ rekordu.
 
 Zestawy rekordów typu "CNAME" lub "SOA" nie może zawierać więcej niż jeden rekord. To ograniczenie wynika z standardy systemu DNS. Nie jest to ograniczenie usługi Azure DNS.
 
@@ -272,7 +272,7 @@ Podobnie do dodawania rekordów do zestawu rekordów, kolejność operacji możn
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Różne typy rekordów są obsługiwane, przekazując odpowiednie parametry specyficzne dla typu, aby `Remove-AzDnsRecordSet`. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w [przykłady dodatkowych typów rekordów](#additional-record-type-examples) powyżej.
+Różne typy rekordów są obsługiwane, przekazując odpowiednie parametry specyficzne dla typu, aby `Remove-AzDnsRecordSet`. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w przykładach dodatkowy typ rekordu.
 
 
 ## <a name="modify-an-existing-record-set"></a>Modyfikowanie istniejącego zestawu rekordów

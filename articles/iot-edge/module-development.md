@@ -4,17 +4,17 @@ description: Tworzenie niestandardowych modułów dla usługi Azure IoT Edge, kt
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3dd5005312e1c59fa53a0d917951c89033374192
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200636"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882743"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Twórz własne moduły usługi IoT Edge
 
@@ -65,5 +65,9 @@ Utwórz wystąpienie ModuleClient do łączenia z modułu do Centrum IoT Edge, d
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, po tworzenia modułu jak [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md).
+[Przygotuj swój rozwój i środowisko testowe dla usługi IoT Edge](development-environment.md)
+
+[Korzystanie z programu Visual Studio 2017 w celu projektowania C# moduły usługi IoT Edge](how-to-visual-studio-develop-csharp-module.md)
+
+[Użyj programu Visual Studio Code do tworzenia modułów dla usługi IoT Edge](how-to-vs-code-develop-module.md)
 

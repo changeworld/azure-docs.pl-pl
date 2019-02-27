@@ -1,6 +1,6 @@
 ---
 title: Przykład — dozwolone jednostki SKU usługi SQL DB
-description: Ta przykładowa zasada wymaga, aby bazy danych SQL używały zatwierdzonych jednostek SKU.
+description: Ta przykładowa definicja zasad wymaga, aby bazy danych SQL używały zatwierdzonych jednostek SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: fc9d068bab17c2780d81c5626620228fd8fc6469
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5506821dd7c3061594b9e4365980677f8322139e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242655"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341270"
 ---
-# <a name="allowed-sql-db-skus"></a>Dozwolone jednostki SKU usługi SQL DB
+# <a name="sample---allowed-sql-db-skus"></a>Przykład — dozwolone jednostki SKU usługi SQL DB
 
 Ta zasada wymaga, aby bazy danych SQL używały zatwierdzonych jednostek SKU. Należy określić tablicę identyfikatorów dozwolonych jednostek SKU lub tablicę nazw dozwolonych jednostek SKU.
 

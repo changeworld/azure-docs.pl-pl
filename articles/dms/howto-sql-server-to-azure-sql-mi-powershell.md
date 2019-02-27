@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 93ab8b2aca49fcd0d2f27ec17f7fc519b19bf563
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: bdf862cd49816000fdf264406647af1ab4cea9fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305181"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882913"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do bazy danych wystąpienia zarządzanego Azure SQL przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przywróconej do lokalnego wystąpienia programu SQL Server 2005 lub nowszego do wystąpienia zarządzanego bazy danych SQL Azure za pomocą programu Microsoft Azure PowerShell. Można migrować bazy danych z lokalnego wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database przy użyciu `AzureRM.DataMigration` modułu w programie Microsoft Azure PowerShell.
@@ -37,7 +37,7 @@ Aby wykonać te kroki, potrzebne są:
 - Wystąpienie usługi Azure SQL Database. Można utworzyć wystąpienie usługi Azure SQL Database, postępując zgodnie z szczegółowo w artykule [utworzyć bazę danych Azure SQL database w witrynie Azure portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 lub nowszej.
 - Aby zostały utworzone z siecią Wirtualną przy użyciu modelu wdrażania usługi Azure Resource Manager, który zapewnia łączność lokacja lokacja na serwerach źródłowych z lokalnych Azure Database Migration Service przy użyciu [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Aby ukończyć oceny migracji bazy danych i schemat w środowisku lokalnym przy użyciu Data Migration Assistant, zgodnie z opisem w artykule [ wykonywania oceny migracji programu SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
+- Aby ukończyć oceny migracji bazy danych i schemat w środowisku lokalnym przy użyciu Data Migration Assistant, zgodnie z opisem w artykule [wykonywania oceny migracji programu SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
 - Aby pobrać i zainstalować moduł AzureRM.DataMigration z galerii programu PowerShell przy użyciu [polecenia cmdlet Install-Module programu PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)
 - Aby upewnić się, że poświadczenia używane do połączenia z wystąpieniem programu SQL Server ma [serwera kontroli](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) uprawnień.
 - Aby upewnić się, że poświadczenia używane do połączenia z obiektem docelowym usługi Azure SQL DB wystąpienia ma uprawnienie Kontrola bazy danych na docelowych baz danych Azure SQL Database.

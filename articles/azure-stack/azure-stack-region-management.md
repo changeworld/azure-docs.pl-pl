@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244967"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871047"
 ---
 # <a name="region-management-in-azure-stack"></a>Zarządzanie regionami w usłudze Azure Stack
 
@@ -39,7 +39,7 @@ Usługa Azure Stack zawiera zestaw możliwości zarządzania regionu są dostęp
 
 Jeśli klikniesz regionu w **zarządzanie regionami** kafelka dostęp następujące informacje:
 
-[ ![Opis okienka, w bloku zarządzania Region](media/azure-stack-region-management/regionssm.png "blok zarządzania regionu") ](media/azure-stack-region-management/regions.png#lightbox)
+[![Opis okienka, w bloku zarządzania Region](media/azure-stack-region-management/regionssm.png "blok zarządzania regionu")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **W menu zasobów**. Dostęp do obszarów zarządzania określonej infrastruktury oraz wyświetlanie i zarządzanie zasobów użytkownika, takie jak konta magazynu i sieci wirtualnych.
 
@@ -55,5 +55,5 @@ Jeśli klikniesz regionu w **zarządzanie regionami** kafelka dostęp następuj�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Monitorowanie kondycji i alertów w usłudze Azure Stack](azure-stack-monitor-health.md)
+- [Monitor health and alerts in Azure Stack (Monitorowanie kondycji i alertów w usłudze Azure Stack)](azure-stack-monitor-health.md)
 - [Zarządzanie aktualizacjami w usłudze Azure Stack](azure-stack-updates.md)

@@ -5,23 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/30/2019
-ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/26/2019
+ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493052"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888475"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Odczytu replik w usłudze Azure Database for MySQL
 
-> [!IMPORTANT]
-> Funkcja odczytu repliki jest w publicznej wersji zapoznawczej.
-
 Funkcja odczytu replik pozwala na replikowanie danych z serwera Azure Database for MySQL (master) na maksymalnie pięciu tylko do odczytu serwerów (repliki) w tym samym regionie platformy Azure. Tylko do odczytu replik asynchronicznie są aktualizowane przy użyciu technologii replikacji na podstawie położenia pliku natywnych dziennik binarny (binlog) aparatu MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji usługi MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Repliki utworzone w usługa Azure Database for MySQL są nowe serwery, którymi można zarządzać w taki sam sposób jak normalne/autonomicznych serwerów MySQL. W przypadku każdej repliki do odczytu są naliczane opłaty za zaaprowizowane środowisko obliczeniowe (rozliczane w rdzeniach wirtualnych) i zaaprowizowany magazyn (rozliczany w GB/miesiąc). 
-
+Repliki utworzone w usługa Azure Database for MySQL są nowe serwery, którymi można zarządzać w taki sam sposób jak normalne/autonomicznych serwerów MySQL. W przypadku każdej repliki do odczytu są naliczane opłaty za zaaprowizowane środowisko obliczeniowe (rozliczane w rdzeniach wirtualnych) i zaaprowizowany magazyn (rozliczany w GB/miesiąc).
 
 Aby dowiedzieć się więcej na temat funkcji replikacji MySQL i problemów, zobacz [dokumentacji replikacji MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
@@ -39,7 +35,7 @@ Repliki do odczytu są obecnie dostępne tylko w warstw cenowych ogólnego przez
 
 ### <a name="master-server-restart"></a>Ponowne uruchomienie serwera głównego
 
-W tej wersji zapoznawczej podczas tworzenia repliki dla serwera głównego, który nie ma istniejących replik, wzorzec zostanie najpierw ponownie uruchomić przygotować się do replikacji. Wziąć pod uwagę i wykonywać te operacje podczas okresu poza godzinami.
+Po utworzeniu repliki dla serwera głównego, który nie ma istniejących replik wzorzec najpierw zostanie uruchomiony ponownie przygotować się do replikacji. Wziąć pod uwagę i wykonywać te operacje podczas okresu poza godzinami.
 
 ### <a name="stopping-replication"></a>Zatrzymywanie replikacji
 

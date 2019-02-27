@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d94bc570f47d71a7e2b626041acd4bb6e84d0dc1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099784"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876011"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -73,7 +73,7 @@ Warstwy usług na dużą skalę jest przeznaczone głównie dla klientów, któr
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jakie regiony obsługują obecnie na dużą skalę
 
-Na dużą skalę jest obecnie dostępna dla pojedynczych baz danych w następujących regionach:  US1 Zachodnia, zachodnie stany USA 2, wschodnie US1, środkowe stany USA, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, Azja południowo-wschodnia, Japonia Wschodnia, Korea środkowa, Australia Południowo-Wschodnia i Australia Wschodnia.
+Na dużą skalę jest obecnie dostępna dla pojedynczych baz danych w następujących regionach:  US1 Zachodnia, zachodnie stany USA 2, wschodnie US1, środkowe stany USA, Europa Zachodnia, Europa Północna, Azja południowo-wschodnia, Japonia Wschodnia, Korea środkowa, Australia Południowo-Wschodnia i Australia Wschodnia.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Można tworzyć wiele Hiperskali baz danych na serwerze bazy danych SQL
 

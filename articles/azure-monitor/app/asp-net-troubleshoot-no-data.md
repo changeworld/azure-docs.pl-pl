@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: e32d3fe30796015c8189eee819a0cc3dd4581e22
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 532121f4e9a3c658e544a8d322ac0f17fa22a2b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700914"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875909"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -213,7 +213,7 @@ Wykonaj te instrukcje, aby przechwycić dzienniki rozwiązywania problemów dla 
   
 ### <a name="net-core"></a>.Net Core
 
-1. Zainstaluj [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) pakietu NuGet. Wersję, którą należy zainstalować musi odpowiadać bieżącej zainstalowanej wersji programu `Microsoft.ApplicationInsighs`
+1. Zainstaluj [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) pakietu NuGet. Wersję, którą należy zainstalować musi odpowiadać bieżącej zainstalowanej wersji programu `Microsoft.ApplicationInsights`
 
 2. Modyfikowanie `ConfigureServices` method in Class metoda swoje `Startup.cs` klasy.:
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 3fd05e2dd5b55dd590af24f0757229bead041b6d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7c9f3c72d94955286d05cf68dbe698a46df3cdf3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859117"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867035"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
 
@@ -65,7 +65,7 @@ Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie należy używać
 
 1. Zaloguj się do portalu usługi LUIS, wybierz aplikację, aby dodać nowy klucz do, a następnie wybierz pozycję **Zarządzaj** w menu w prawym górnym rogu, a następnie zaznacz **kluczy i punktów końcowych**.
 
-    [ ![Strona klucze i punktów końcowych](./media/luis-manage-keys/keys-and-endpoints.png) ](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
+    [![Strona klucze i punktów końcowych](./media/luis-manage-keys/keys-and-endpoints.png)](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
 
 1. Aby dodać usługi LUIS, wybrać **przydzielania zasobów +**.
 

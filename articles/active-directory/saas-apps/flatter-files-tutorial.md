@@ -1,276 +1,243 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z plikami płaski | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i płaski plików.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Flatter Files | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Flatter Files.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f86fe5e3-0e91-40d6-869c-3df6912d27ea
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/21/2017
+ms.topic: tutorial
+ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 744d18b39ffc696d0973628c60687c6b70fbcaad
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: e086975f52a40eabcbec1fa4e7aedf1d717bde89
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168681"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455555"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Samouczek: Integracja usługi Azure Active Directory z plikami płaski
+# <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Flatter Files
 
-W tym samouczku dowiesz się, jak zintegrować płaski pliki z usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Flatter Files z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Flatter Files z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie płaski pliki z usługi Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Flatter Files.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Flatter Files (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do plików płaski
-- Użytkowników, aby automatycznie uzyskać zalogowanych do płaski plików (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z plikami płaski, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Flatter Files potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Pliki płaski logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Flatter Files z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Trwa dodawanie plików płaski z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-flatter-files-from-the-gallery"></a>Trwa dodawanie plików płaski z galerii
-Aby skonfigurować integrację płaski plików w usłudze Azure AD, musisz dodać pliki płaski z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Flatter Files obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać pliki płaski z galerii, wykonaj następujące czynności:**
+## <a name="adding-flatter-files-from-the-gallery"></a>Dodawanie aplikacji Flatter Files z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Flatter Files w usłudze Azure AD, należy dodać aplikację Flatter Files z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację Flatter Files z galerii, wykonaj następujące czynności:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **płaski pliki**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/flatter-files-tutorial/tutorial_flatterfiles_search.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **płaski pliki**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/flatter-files-tutorial/tutorial_flatterfiles_addfromgallery.png)
+4. W polu wyszukiwania wpisz **Flatter Files**, wybierz pozycję **Flatter Files** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą płaski plików, w oparciu o użytkownika testu o nazwie "Britta Simon".
+     ![Aplikacja Flatter Files na liście wyników](common/search-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w plikach płaski do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w plikach płaski musi zostać ustanowione.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Płaski plików, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Flatter Files, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Flatter Files.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą płaski plików, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Flatter Files, należy wykonać kroki opisane w poniższych blokach konstrukcyjnych:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego płaski pliki](#creating-a-flatter-files-test-user)**  — aby odpowiednikiem Britta Simon w płaski plików, które jest połączone z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Flatter Files](#configure-flatter-files-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Flatter Files](#create-flatter-files-test-user)** — aby mieć w aplikacji Flatter Files odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji płaski plików.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z plikami płaski, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Flatter Files, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **płaski pliki** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Flatter Files** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **płaski domena plików i adresy URL** sekcji, użytkownik nie ma do wykonywania żadnych czynności, jak aplikacja już jest wstępnie zintegrowana z platformą Azure.
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
- 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Kliknij przycisk **Save** (Zapisz).
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_general_400.png)
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Flatter Files](common/preintegrated.png)
 
-1. Na **płaski pliki konfiguracji** , kliknij przycisk **Konfigurowanie plików płaski** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Logowanie jednokrotne do aplikacji płaski plików jako administrator.
+6. W sekcji **Konfigurowanie aplikacji Flatter Files** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-1. Kliknij przycisk **pulpit NAWIGACYJNY**. 
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-flatter-files-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Flatter Files
+
+1. Zaloguj się do aplikacji Flatter File jako administrator.
+
+2. Kliknij pozycję **DASHBOARD** (Pulpit nawigacyjny). 
    
     ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
-1. Kliknij przycisk **ustawienia**, a następnie wykonaj następujące czynności na **firmy** karty: 
+3. Kliknij pozycję **Settings** (Ustawienia), a następnie wykonaj następujące czynności na karcie **Company** (Firma): 
    
     ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
-    a. Wybierz **używać uwierzytelniania SAML 2.0 na potrzeby uwierzytelniania**.
+    a. Wybierz pozycję **Use SAML 2.0 For Authentication** (Użyj protokołu SAML 2.0 na potrzeby uwierzytelniania).
     
     b. Kliknij pozycję **Skonfiguruj język SAML**.
 
-1. Na **plik konfiguracji SAML** okno dialogowe, należy wykonać następujące czynności: 
+4. W oknie dialogowym **SAML Configuration** (Konfiguracja SAML) wykonaj następujące kroki: 
    
     ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
-    a. W **domeny** polu tekstowym wpisz domenę zarejestrowane.
+    a. W polu tekstowym **Domain** (Domena) wpisz nazwę zarejestrowanej domeny.
    
     >[!NOTE]
-    >Jeśli nie posiadasz zarejestrowanej domeny jeszcze, skontaktuj się z zespołem za pośrednictwem pomocy technicznej płaski plików [ support@flatterfiles.com ](mailto:support@flatterfiles.com). 
+    >Jeśli nie masz jeszcze zarejestrowanej domeny, skontaktuj się z zespołem pomocy technicznej aplikacji Flatter pod adresem [support@flatterfiles.com](mailto:support@flatterfiles.com). 
     
-    b. W **adres URL dostawcy tożsamości** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** który skopiowano tworzą witryny Azure portal.
+    b. W polu tekstowym **Identity Provider URL** (Adres URL dostawcy tożsamości) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
    
-    c.  Otwórz swój certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikatu dostawcy tożsamości** pola tekstowego.
+    d.  Otwórz certyfikat kodowany algorytmem base-64 w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat dostawcy tożsamości**.
 
     d. Kliknij przycisk **Update** (Aktualizuj).
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/flatter-files-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/flatter-files-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/flatter-files-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/flatter-files-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-flatter-files-test-user"></a>Tworzenie użytkownika testowego płaski plików
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w plikach płaski.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-**Aby utworzyć użytkownika o nazwie Britta Simon w plikach płaski, wykonaj następujące czynności:**
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Flatter Files.
 
-1. Zaloguj się na swoje **płaski pliki** witryny firmy jako administrator.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Flatter Files**.
 
-1. W okienku nawigacji po lewej stronie kliknij pozycję **ustawienia**, a następnie kliknij przycisk **użytkowników** kartę.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz pozycję **Flatter Files**.
+
+    ![Link do aplikacji Flatter Files na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-flatter-files-test-user"></a>Tworzenie użytkownika testowego aplikacji Flatter Files
+
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Flatter Files.
+
+**Aby utworzyć użytkownika o nazwie Britta Simon w aplikacji Flatter Files, wykonaj następujące kroki:**
+
+1. Zaloguj się w witrynie firmowej **Flatter Files** jako administrator.
+
+2. W okienku nawigacji po lewej stronie kliknij pozycję **Settings** (Ustawienia), a następnie kartę **Users** (Użytkownicy).
    
-    ![Utwórz użytkownika płaski plików](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    ![Tworzenie użytkownika aplikacji Flatter Files](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
-1. Kliknij pozycję **Add User** (Dodaj użytkownika). 
+3. Kliknij pozycję **Add User** (Dodaj użytkownika). 
 
-1. Na **Dodaj użytkownika** okno dialogowe, należy wykonać następujące czynności:
+4. W oknie dialogowym **Add User** (Dodawanie użytkownika) wykonaj następujące kroki:
    
-    ![Utwórz użytkownika płaski plików](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
+    ![Tworzenie użytkownika aplikacji Flatter Files](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
 
-    a. W **imię** polu tekstowym wpisz **Britta**.
+    a. W polu tekstowym **First Name** (Imię) wpisz **Britta**.
    
-    b. W **nazwisko** polu tekstowym wpisz **Simon**. 
+    b. W polu tekstowym **Last Name** (Nazwisko) wpisz **Simon**. 
    
-    c. W **adres E-mail** pole tekstowe, wpisz adres e-mail Britty w witrynie Azure portal.
+    d. W polu tekstowym **Email Address** (Adres e-mail) wpisz adres e-mail użytkownika Britta w witrynie Azure Portal.
    
     d. Kliknij przycisk **Prześlij**.   
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do plików płaski.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon płaski plików, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **płaski pliki**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka płaski pliki w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do płaski pliki aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Flatter Files w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Flatter Files, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/flatter-files-tutorial/tutorial_general_01.png
-[2]: ./media/flatter-files-tutorial/tutorial_general_02.png
-[3]: ./media/flatter-files-tutorial/tutorial_general_03.png
-[4]: ./media/flatter-files-tutorial/tutorial_general_04.png
-
-[100]: ./media/flatter-files-tutorial/tutorial_general_100.png
-
-[200]: ./media/flatter-files-tutorial/tutorial_general_200.png
-[201]: ./media/flatter-files-tutorial/tutorial_general_201.png
-[202]: ./media/flatter-files-tutorial/tutorial_general_202.png
-[203]: ./media/flatter-files-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

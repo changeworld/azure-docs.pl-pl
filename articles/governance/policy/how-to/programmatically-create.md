@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b80a2effb4cdfe45ad3f37785f7e97449d60f00c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bf831936f86de9e43170a87c03b61df9a4865b3d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340148"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878051"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
@@ -95,8 +95,8 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
 
    Zastąp _ContosoRG_ nazwą grupy zasobów przeznaczone.
 
-   **Zakres** parametru `New-AzPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.
-   Zastąp `{rName}`, `{rgName}`, `{subId}`, i `{mgName}` nazwą zasobu, grupa zasobów nazwa, identyfikator subskrypcji i nazwę grupy zarządzania, odpowiednio. `{rType}` zostanie zamienione **typ zasobu** z zasobów, takich jak `Microsoft.Compute/virtualMachines` dla maszyny Wirtualnej.
+   **Zakres** parametru `New-AzPolicyAssignment` współpracuje z grupy zarządzania, subskrypcji, grupy zasobów lub pojedynczy zasób. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób. Zastąp `{rName}`, `{rgName}`, `{subId}`, i `{mgName}` nazwą zasobu, grupa zasobów nazwa, identyfikator subskrypcji i nazwę grupy zarządzania, odpowiednio.
+   `{rType}` zostanie zamienione **typ zasobu** z zasobów, takich jak `Microsoft.Compute/virtualMachines` dla maszyny Wirtualnej.
 
    - Zasób — `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Grupa zasobów- `/subscriptions/{subId}/resourceGroups/{rgName}`

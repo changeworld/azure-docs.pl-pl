@@ -4,17 +4,17 @@ description: Użyj usługi Azure IoT Edge, aby utworzyć przezroczyste, nieprzez
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092285"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877600"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak używać urządzenia usługi IoT Edge jako bramy
 
@@ -54,4 +54,4 @@ Poniżej przedstawiono szybki cheat-sheet, zawierająca porównanie podstawowych
 Udostępnianie tej samej kolejki chmury do urządzenia, który może zawierać maksymalnie 50 wiadomości, korzystając z wzorca nieprzezroczyste bramy (translację protokołu) wszystkich urządzeń, łącząc się za pośrednictwem tej bramy. Wynika, że wzorzec nieprzezroczyste bramy należy używać tylko wtedy, gdy kilka urządzenia nawiązują połączenie za pomocą każdej bramy w terenie, a ruch chmury do urządzenia jest niska.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak skonfigurować urządzenia usługi IoT Edge jako [przezroczystej bramy](how-to-create-transparent-gateway-linux.md).
+Dowiedz się, jak skonfigurować urządzenia usługi IoT Edge jako [przezroczystej bramy](how-to-create-transparent-gateway.md).

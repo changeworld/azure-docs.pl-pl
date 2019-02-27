@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54fa8d09d930069191fb48e0ab015d436496b725
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fb675778d899d6f4cec22de8a1c81fdae76ba17e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166406"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879768"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Wdrażanie usługi Azure AD Privileged Identity Management (PIM)
 
@@ -61,9 +61,9 @@ Aby uzyskać więcej informacji, zobacz [licencji wymagania dotyczące korzystan
 | Termin lub pojęcie | Opis |
 | --- | --- |
 | kwalifikowanie się | Przypisanie roli, które wymaga od użytkownika wykonania jednej lub kilku akcji w celu użycia tej roli. Jeśli użytkownik został zakwalifikowany do roli, oznacza to, że może aktywować tę rolę, kiedy musi wykonać zadanie uprzywilejowane. Nie ma żadnej różnicy między dostępem udzielonym komuś za pomocą trwałego przypisania roli i przypisania kwalifikowania się do roli. Jedyna różnica polega na tym, że niektórzy użytkownicy nie potrzebują tego dostępu przez cały czas. |
-| aktywuj | Proces, wykonując jedną lub więcej akcji, aby użyć roli, który użytkownik kwalifikuje się do. Akcje te mogą obejmować przeprowadzenie uwierzytelniania wieloskładnikowego (MFA), podanie uzasadnienia biznesowego lub żądanie zatwierdzenia od wyznaczonych osób zatwierdzających. |
-| dostęp just-in-time (JIT) | Model w którym użytkownicy otrzymają tymczasowe uprawnienia do wykonywania zadań uprzywilejowanego, co uniemożliwia rodzajach nieautoryzowanego lub złośliwego użytkownikom uzyskiwanie dostępu, po upływie limitu uprawnienia. Dostęp jest udzielany, tylko wtedy, gdy użytkownicy muszą go. |
-| zasady najniższych uprawnień dostępu | Rozwiązanie zabezpieczeń, w którym każdy użytkownik jest dostarczana z minimalnymi uprawnieniami wymaganych do zrealizowania zadania, które użytkownik jest uprawniony do wykonania. Praktyka ta minimalizuje liczba administratorów globalnych i zamiast tego używa ról administratora określone dla określonych scenariuszy. |
+| aktywuj | Proces wykonywania jednej lub kilku akcji w celu użycia roli, do której użytkownik został zakwalifikowany. Akcje te mogą obejmować przeprowadzenie uwierzytelniania wieloskładnikowego (MFA), podanie uzasadnienia biznesowego lub żądanie zatwierdzenia od wyznaczonych osób zatwierdzających. |
+| dostęp just-in-time (JIT) | Model, w którym użytkownicy uzyskują tymczasowe uprawnienia do wykonywania uprzywilejowanych zadań, dzięki czemu złośliwi lub nieautoryzowani użytkownicy nie mogą uzyskać dostępu po wygaśnięciu uprawnienia. Dostęp jest udzielany tylko wtedy, gdy użytkownicy go potrzebują. |
+| zasada dostępu z najniższymi uprawnieniami | Zalecane rozwiązanie dotyczące zabezpieczeń, w którym każdy użytkownik ma minimalne uprawnienia wymagane do wykonania zadania, które mu przydzielono. Takie rozwiązanie pozwala zminimalizować liczbę administratorów globalnych i zamiast tego korzystać ze specyficznych ról administratorów dla konkretnych scenariuszy. |
 
 Aby uzyskać więcej informacji, zobacz [terminologii](pim-configure.md#terminology).
 
@@ -120,7 +120,7 @@ Poniższa sekcja pomoże Ci Określ wszystkie zainteresowane strony, które są 
 
 W ramach procesu planowania, należy najpierw wyrazić zgodę na i włącz usługę PIM, postępując zgodnie z naszym [rozpocząć korzystanie z usługi PIM dokumentu](pim-getting-started.md). Włączanie usługi PIM daje dostęp do niektórych funkcji, które zostały zaprojektowane specjalnie pomagające w danym wdrożeniu.
 
-W przypadku celu wdrażania PIM dla zasobów platformy Azure, należy wykonać nasze [odnajdź zasoby platformy Azure do zarządzania w dokumencie usługi PIM](pim-resource-roles-discover-resources.md). Tylko właściciele każdego zasobu, grupy zasobów i subskrypcji będą mogli odnajdywać wewnątrz usługi PIM. Jeśli jesteś administratorem globalnym próby wdrażania PIM dla zasobów platformy Azure, możesz [podniesienie uprawnień dostępu do wszystkich subskrypcji platformy Azure do zarządzania ](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) udzielić sobie dostępu do wszystkich zasobów platformy Azure w katalogu do odnajdywania. Jednak zaleca się pobrać zatwierdzenia z każdej usługi właściciele subskrypcji przed zarządzanie zasobami za pomocą usługi PIM.
+W przypadku celu wdrażania PIM dla zasobów platformy Azure, należy wykonać nasze [odnajdź zasoby platformy Azure do zarządzania w dokumencie usługi PIM](pim-resource-roles-discover-resources.md). Tylko właściciele każdego zasobu, grupy zasobów i subskrypcji będą mogli odnajdywać wewnątrz usługi PIM. Jeśli jesteś administratorem globalnym próby wdrażania PIM dla zasobów platformy Azure, możesz [podniesienie uprawnień dostępu do wszystkich subskrypcji platformy Azure do zarządzania](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) udzielić sobie dostępu do wszystkich zasobów platformy Azure w katalogu do odnajdywania. Jednak zaleca się pobrać zatwierdzenia z każdej usługi właściciele subskrypcji przed zarządzanie zasobami za pomocą usługi PIM.
 
 ### <a name="enforce-principle-of-least-privilege"></a>Wymusić zasadę najmniejszych uprawnień
 
@@ -161,7 +161,7 @@ Przeglądy dostępu zależy od wiadomości e-mail, aby powiadomić użytkownikó
 
 W przypadku subskrypcji platformy Azure i zasobów można skonfigurować podobny proces przeglądu dostępu, aby zapoznać się z rolami w każdej subskrypcji lub zasobu. Celem tego procesu jest zminimalizowanie przypisania właściciela i Administrator dostępu użytkowników, dołączone do każdej subskrypcji lub zasobu również, aby usunąć niepotrzebne przydziały. Jednak organizacje często delegować takie zadania do właściciela w każdej subskrypcji lub zasobu, ponieważ mają one lepsze zrozumienie określonych ról (szczególnie niestandardowe role).
 
-Jeśli jesteś administratorem IT z rolą administratora globalnego próby wdrożenia usługi PIM dla zasobów platformy Azure w Twojej organizacji, możesz [podniesienie uprawnień dostępu do wszystkich subskrypcji platformy Azure do zarządzania ](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) uzyskać dostęp do każdej subskrypcji. Następnie można znaleźć każdego właściciela subskrypcji i pracować z nimi, aby usunąć niepotrzebne przydziały i zminimalizować przypisanie roli właściciela.
+Jeśli jesteś administratorem IT z rolą administratora globalnego próby wdrożenia usługi PIM dla zasobów platformy Azure w Twojej organizacji, możesz [podniesienie uprawnień dostępu do wszystkich subskrypcji platformy Azure do zarządzania](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) uzyskać dostęp do każdej subskrypcji. Następnie można znaleźć każdego właściciela subskrypcji i pracować z nimi, aby usunąć niepotrzebne przydziały i zminimalizować przypisanie roli właściciela.
 
 Użytkownicy o roli właściciel subskrypcji platformy Azure może również korzystać z [przeglądów dla zasobów platformy Azure dostępu](pim-resource-roles-start-access-review.md) do inspekcji i usuwanie przypisań ról niepotrzebne podobny do procesu opisanego wcześniej dla ról usługi Azure AD.
 

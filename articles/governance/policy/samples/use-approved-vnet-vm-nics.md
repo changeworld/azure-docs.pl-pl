@@ -1,6 +1,6 @@
 ---
 title: Przykład — Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
-description: Te przykładowe zasady wymagają używania zatwierdzonej sieci wirtualnej przez interfejsy sieciowe.
+description: Te przykładowe definicje zasad wymagają używania zatwierdzonej sieci wirtualnej przez interfejsy sieciowe.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 812ba3e5b8be19230f0a51820b28b279ede4a064
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 107074f6c173b33ce485aaaecf61ec50fb0d428b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243165"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341135"
 ---
-# <a name="use-approved-vnet-for-vm-network-interfaces"></a>Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
+# <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>Przykład — Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
 
 Ta zasada wymaga używania zatwierdzonej sieci wirtualnej przez interfejsy sieciowe. Należy określić identyfikator zatwierdzonej sieci wirtualnej.
 

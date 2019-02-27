@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: geg
-ms.openlocfilehash: b919adbaf665055ee19df9b9167984cc29388032
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 370428213414d1048478cb8413d45e2a39992e39
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428742"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887526"
 ---
 # <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
 
@@ -76,7 +76,7 @@ Jako jeden z [opcje przywracania](#restore-options), Utwórz Maszynę wirtualną
 Jako jeden z [opcje przywracania](#restore-options), możesz utworzyć dysk z punktu przywracania. Następnie za pomocą dysku, możesz wykonać jedną z następujących czynności:
 
 - Użyj szablonu, który jest generowany podczas operacji przywracania Dostosowywanie ustawień w celu wyzwolenia wdrożenia maszyny Wirtualnej. Zmodyfikuj domyślne ustawienia szablonu, a następnie przesyłanie szablonu podczas wdrażania maszyny Wirtualnej.
-- [Dołącz przywróconych dysków](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#option-2-attach-an-existing-disk) do istniejącej maszyny Wirtualnej.
+- [Dołącz przywróconych dysków](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) do istniejącej maszyny Wirtualnej.
 - [Utwórz nową maszynę Wirtualną] (https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks z przywróconych dysków przy użyciu programu PowerShell.
 
 

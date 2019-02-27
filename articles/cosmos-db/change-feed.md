@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2224c798d0854aab2d3ec7fc2c03b51de58dbfc0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244440"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886727"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Zmiana źródła danych w usłudze Azure Cosmos DB — omówienie
 
@@ -118,7 +118,7 @@ Kanał informacyjny zmian jest dostępna dla każdego klucza partycji logicznej 
 
 * Zmiany są dostępne w sposób równoległy, dla wszystkich kluczy partycji logicznej kontenera usługi Azure Cosmos. Ta funkcja umożliwia zmiany w porównaniu z dużych kontenerów, które ma być przetwarzana równolegle przez wielu odbiorców.
 
-* Aplikacje mogą żądać zmiany wielu kanałów informacyjnych w tym samym kontenerze jednocześnie. ChangeFeedOptions.StartTime może służyć do zapewnienia pierwszego punktu początkowego. Na przykład, aby znaleźć token kontynuacji odpowiadający godziny zegarowej. Token kontynuacji, jeśli zostanie określony, wins przez wartości StartTime i StartFromBeginning. Dokładność ChangeFeedOptions.StartTime jest OK. 5 sekund. 
+* Aplikacje mogą żądać równocześnie wiele zmian źródła danych na tym samym kontenerze. ChangeFeedOptions.StartTime może służyć do zapewnienia pierwszego punktu początkowego. Na przykład, aby znaleźć token kontynuacji odpowiadający godziny zegarowej. Token kontynuacji, jeśli zostanie określony, wins przez wartości StartTime i StartFromBeginning. Dokładność ChangeFeedOptions.StartTime jest OK. 5 sekund. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

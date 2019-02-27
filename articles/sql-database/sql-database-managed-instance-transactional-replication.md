@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3ad33968107aec551ea99e503797382c7fcea0c5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993813"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877090"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
@@ -90,7 +90,7 @@ Ogólnie rzecz biorąc wydawcy i dystrybutora musi być w chmurze lub lokalnie. 
 
 ### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Wydawcy o dystrybutor lokalny na wystąpienie zarządzane
 
-![Pojedyncze wystąpienie jako wydawcą i dystrybutorem ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![Pojedyncze wystąpienie jako wydawcą i dystrybutorem](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
 Wydawcą i dystrybutorem są skonfigurowane w ramach jednego wystąpienia zarządzanego i rozproszone zmiany do innego wystąpienia zarządzanego, pojedynczej bazy danych, baza danych w puli lub programu SQL Server w środowisku lokalnym. W tej konfiguracji wydawcy/dystrybutora wystąpienia zarządzanego nie można skonfigurować za pomocą [replikacji geograficznej i automatycznie grupy trybu failover](sql-database-auto-failover-group.md).
 

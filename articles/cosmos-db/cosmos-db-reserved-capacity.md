@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: bb2d57d3e119fd83d1a984fc31f29a5d93e957d1
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e7a5ed6274a0429726f0ed19c0765cfdc3378daa
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745949"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888529"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizowanie kosztów rezerwowanie pojemności w usłudze Azure Cosmos DB
 
@@ -68,6 +68,10 @@ Rozmiar rezerwacji powinna być oparta na łączną przepływność, która będ
 Po użytkownik kupić rezerwację, jest stosowana od razu do żadnych istniejących zasobów usługi Azure Cosmos DB, zgodne z warunkami rezerwacji. Jeśli nie masz żadnych istniejących zasobów usługi Azure Cosmos DB rezerwacji zostaną zastosowane podczas wdrażania nowego wystąpienia usługi Cosmos DB, odpowiadający warunki rezerwacji. W obu przypadkach okres rezerwacji rozpoczyna się natychmiast po zakupie się pomyślnie. 
 
 Po wygaśnięciu rezerwacji wystąpień usługi Azure Cosmos DB będą nadal działać i są rozliczane według stawek płatności zgodnie z rzeczywistym regularne.
+
+## <a name="cancellation-and-exchanges"></a>Anulowanie i wymiany
+
+Aby uzyskać pomoc w identyfikacji bezpośrednio rezerwowanie pojemności, zobacz [zrozumieć, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). W przypadku, należy anulować lub wymiany rezerwacji usługi Azure Cosmos DB, skontaktuj się z zespołem usługi Azure Cosmos DB w `askCosmosDB@microsoft.com`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

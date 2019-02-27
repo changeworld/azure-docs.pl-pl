@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 74bdcc831f19031162d004e1ba98c0cfc258ce4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116307"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879422"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -80,7 +80,7 @@ Ta sekcja zawiera dodatkowe informacje na temat kluczowych funkcji zabezpieczeń
 Ponadto można skonfigurować zabezpieczenia i zgodność w celu [automatyczne wykonywanie czynności określonych](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) po wykryciu określonego zdarzenia.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Usługa Azure Resource Manager ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Możesz użyć [szablonu usługi Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) dla wdrożenia szablonu, którego może pracować w różnych środowiskach, takich jak testowanie, etap przejściowy i produkcja. Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu.
+[Usługa Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Możesz użyć [szablonu usługi Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) dla wdrożenia szablonu, którego może pracować w różnych środowiskach, takich jak testowanie, etap przejściowy i produkcja. Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu.
 
 Wdrożeń platformy Azure na podstawie szablonu usługi Resource Manager poprawić zabezpieczenia rozwiązań wdrożonych na platformie Azure, ponieważ standardowych zabezpieczeń kontrolowania ustawień i może można zintegrować we wdrożeniach opartych na szablonach standardowych. Zmniejsza to ryzyko błędów konfiguracji zabezpieczeń, które mogą mieć miejsce podczas ręcznego wdrożenia.
 

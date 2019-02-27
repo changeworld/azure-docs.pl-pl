@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 99b981e6b5c9bc56c10b0491474c0c8773291b7e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e727e1ad9a4d202a3798f516d1db7d88464999fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309204"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875960"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
@@ -48,7 +48,7 @@ Dokładny czas oczekiwania RTT jest funkcja odległości szybkość świateł i 
 
 W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
 
-Tabela definiuje relację między relacji między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe do rozproszonej bazy danych za pomocą RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej o tym, dlaczego, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
+Tabela definiuje relację między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe do rozproszonej bazy danych za pomocą RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej o tym, dlaczego, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
 
 |**Regiony**|**Tryb replikacji**|**Poziom spójności**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|

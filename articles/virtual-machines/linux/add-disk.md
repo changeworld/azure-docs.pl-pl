@@ -16,15 +16,16 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1f545747b883ab70b597b4e598a86b192f89b027
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 453cb838792ff5e80b0dbbe8e90f96792f9c5484
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892780"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890134"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
 W tym artykule pokazano, jak dołączyć dysk trwały z maszyną wirtualną tak, aby zachować swoje dane — nawet wtedy, gdy maszyna wirtualna jest aprowizowany ponownie z powodu konserwacji lub zmienianie jej rozmiaru.
+
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Dołączyć nowy dysk do maszyny Wirtualnej
 
@@ -197,8 +198,10 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 > [!NOTE]
 > Później usunięcie dysku danych bez konieczności edytowania fstab spowodować, że maszyna wirtualna może zakończyć się niepowodzeniem, rozruch. Większości dystrybucji zapewniają albo *nofail* i/lub *nobootwait* opcje fstab. Te opcje umożliwiają systemowi rozruchu, nawet w przypadku awarii dysku, należy zainstalować w czasie rozruchu. Zapoznaj się dokumentacją danej dystrybucji, aby uzyskać więcej informacji na temat tych parametrów.
-> 
+>
 > *Nofail* opcja gwarantuje, że maszyna wirtualna zacznie nawet, jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji, możesz napotkać zachowanie zgodnie z opisem w [nie SSH do maszyny Wirtualnej systemu Linux z powodu błędów FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+>
+> Konsoli szeregowej maszyny Wirtualnej platformy Azure może służyć do dostępu do konsoli dla maszyny wirtualnej, jeśli modyfikowanie fstab spowodowało błąd rozruchu. Więcej szczegółów znajduje się w [dokumentację konsoli szeregowej](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-linux).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP obsługę systemu Linux na platformie Azure
 Niektóre jądra systemu Linux obsługuje TRIM/UNMAP operacji można odrzucić nieużywanych bloków na dysku. Ta funkcja jest szczególnie przydatne w magazynie standard storage platformy Azure, które usunięto strony nie są już prawidłowe i można odrzucać i może oszczędzać pieniądze, jeśli utworzysz dużych plików, a następnie je usunąć.
@@ -211,14 +214,14 @@ Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualne
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
 * W niektórych przypadkach `discard` opcji może mieć wpływ na wydajność. Alternatywnie, możesz uruchomić `fstrim` polecenie ręcznie z poziomu wiersza polecenia lub dodać do swojej crontab regularnego uruchamiania:
-  
+
     **Ubuntu**
-  
+
     ```bash
     sudo apt-get install util-linux
     sudo fstrim /datadrive
     ```
-  
+
     **RHEL/CentOS**
 
     ```bash

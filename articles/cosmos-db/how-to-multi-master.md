@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: effe6fa942ce0cabace08e72dba90baf8646680e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118861"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312144"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-in-azure-cosmos-db"></a>Jak skonfigurować wielowzorcowość w aplikacjach w usłudze Azure Cosmos DB
+# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Jak skonfigurować wielowzorcowość w aplikacjach korzystających z usługi Azure Cosmos DB
 
-Aby korzystać z funkcji wielowzorcowości w aplikacjach, należy włączyć w aplikacji operacje zapisu w wielu regionach i skonfigurować możliwość wieloadresowości przez ustawienie regionu, w którym ta aplikacja jest wdrożona.
+Aby używać funkcji wielowzorcowości w aplikacjach, należy włączyć zapisy w wielu regionach i skonfigurować możliwość wieloadresowości. Wieloadresowość jest konfigurowana przez ustawienie bieżącego regionu wdrożenia aplikacji.
 
 ## <a id="netv2">Zestaw .NET SDK w wersji 2</a>
 
-Aby włączyć wielowzorcowość w aplikacjach, ustaw parametr `UseMultipleWriteLocations` na wartość true i skonfiguruj parametr `SetCurrentLocation` na region, w którym aplikacja jest wdrażana, a usługa Cosmos DB replikowana.
+Aby włączyć wielowzorcowość w aplikacjach, ustaw parametr `UseMultipleWriteLocations` na wartość true i skonfiguruj parametr `SetCurrentLocation` jako region, w którym aplikacja jest wdrażana, a usługa Azure Cosmos DB replikowana.
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy

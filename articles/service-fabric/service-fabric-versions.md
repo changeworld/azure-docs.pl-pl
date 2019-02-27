@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: 9da51d40c4a94af9bdcf16b48302e8eb2b60eb2f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ac25ad0e43930555153abdba19bb81baaee40305
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807715"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879241"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane wersje usługi Service Fabric
 
@@ -27,8 +27,8 @@ Upewnij się, że klaster zawsze działa obsługiwana wersja usługi Service Fab
 
 Można znaleźć w następujących dokumentach na szczegółowe informacje na temat sposobów zabezpieczania klastra z obsługiwaną wersją usługi Service Fabric.
 
-- [Uaktualnij wersję usługi Service Fabric w klastrze platformy Azure ](service-fabric-cluster-upgrade.md)
-- [Uaktualnij wersję usługi Service Fabric w klastrze serwerów autonomicznych systemu windows ](service-fabric-cluster-upgrade-windows-server.md)
+- [Uaktualnij wersję usługi Service Fabric w klastrze platformy Azure](service-fabric-cluster-upgrade.md)
+- [Uaktualnij wersję usługi Service Fabric w klastrze serwerów autonomicznych systemu windows](service-fabric-cluster-upgrade-windows-server.md)
 
 Poniżej przedstawiono listę wersji usługi Service Fabric, które są obsługiwane i ich daty zakończenia wsparcia.
 

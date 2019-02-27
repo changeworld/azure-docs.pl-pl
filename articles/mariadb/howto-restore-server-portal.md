@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ec55a33874973bf9aeaaa34ab07b162a46db44eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548766"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874005"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal
 
@@ -63,7 +63,7 @@ Poniższa procedura opisuje przywrócenie przykładowego serwera do punktu w cza
 
 3. Wypełnij formularz Przywracanie wymaganymi informacjami:
 
-   ![Azure Database dla serwera MariaDB — informacje o przywracania ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database dla serwera MariaDB — informacje o przywracania](./media/howto-restore-server-portal/3-restore.png)
   - **Punkt przywracania**: Wybierz punkt w czasie, który chcesz przywrócić.
   - **Serwer docelowy**: Podaj nazwę dla nowego serwera.
   - **Lokalizacja**: Nie można wybrać region. Domyślnie jest taka sama jak na serwerze źródłowym.

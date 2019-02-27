@@ -1,6 +1,6 @@
 ---
 title: Przykład — przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server
-description: Te przykładowe zasady sprawdzają, czy ustawienia inspekcji programu SQL Server nie są zgodne z określonym ustawieniem.
+description: Ta przykładowa definicja zasad sprawdza, czy ustawienia inspekcji programu SQL Server nie są zgodne z określonym ustawieniem.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f23fd349a5e7c1016cc18f79cff408aefaa3fd35
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 90f91e46db9d25571bc34256ab1db737445ce3e6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244168"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337479"
 ---
-# <a name="audit-sql-server-level-audit-setting"></a>Przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server
+# <a name="sample---audit-sql-server-level-audit-setting"></a>Przykład — przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server
 
 Te zasady sprawdzają, czy ustawienia inspekcji programu SQL Server nie są zgodne z określonym ustawieniem. Należy określić wartość, która wskazuje, czy ustawienia inspekcji mają być włączone czy wyłączone.
 

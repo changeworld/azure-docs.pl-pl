@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba1e7d7f9226b3ca42d4117be33b9c236f0557b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164026"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867324"
 ---
 # <a name="azure-stack-administration-basics"></a>Podstawy administracji w usłudze Azure Stack
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Ten artykuł zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
@@ -119,7 +119,7 @@ Informacje przedstawione w tych artykułach zawiera podsumowanie różnic międz
 
 W środowisku deweloperskim zestaw Jeśli użytkownik nie ma dostępu pulpitu zdalnego na hoście kit rozwoju one należy skonfigurować połączenia wirtualnej sieci prywatnej (VPN) przed uzyskaniem dostępu do usługi Azure Stack. Zobacz [nawiązać połączenie z usługi Azure Stack](azure-stack-connect-azure-stack.md). 
 
-Użytkownicy chcą wiedzieć, jak [uzyskać dostęp do portalu użytkownika ](user/azure-stack-use-portal.md) lub sposób nawiązywania połączeń za pomocą programu PowerShell. W środowisku systemów zintegrowanych adres portalu użytkownika różni się dla wdrożenia. Należy zapewnić swoim użytkownikom poprawny adres URL.
+Użytkownicy chcą wiedzieć, jak [uzyskać dostęp do portalu użytkownika](user/azure-stack-use-portal.md) lub sposób nawiązywania połączeń za pomocą programu PowerShell. W środowisku systemów zintegrowanych adres portalu użytkownika różni się dla wdrożenia. Należy zapewnić swoim użytkownikom poprawny adres URL.
 
 Jeśli przy użyciu programu PowerShell, użytkownicy mogą mieć do rejestrowania dostawców zasobów, zanim rozpoczną korzystanie z usług. (Dostawca zasobów zarządza usługa. Adapterem, sieci dostawcy zasobów zarządza zasobami, takimi jak sieci wirtualnych, interfejsy sieciowe i moduły równoważenia obciążenia.) Muszą one [zainstalować](user/azure-stack-powershell-install.md) programu PowerShell, [Pobierz](user/azure-stack-powershell-download.md) dodatkowych modułów i [skonfigurować](user/azure-stack-powershell-configure-user.md) programu PowerShell (co obejmuje rejestracji dostawcy zasobów).
 

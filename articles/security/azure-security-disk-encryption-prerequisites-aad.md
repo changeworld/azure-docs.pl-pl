@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 76e25c04afbce215028699d54cb6022f0caeced5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aa4c4beacd6f6755c1e5ce56f70dcf5a74166c80
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118245"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880244"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -232,7 +232,7 @@ Aby wykonać następujące polecenia i korzystaj [modułu Azure AD PowerShell](/
 
 ### <a name="bkmk_ADappCLI"></a> Konfigurowanie aplikacji usługi Azure AD i usługi głównej przy użyciu wiersza polecenia platformy Azure
 
-Można zarządzać z jednostki usługi przy użyciu wiersza polecenia platformy Azure [az ad sp](/cli/azure/ad/sp) poleceń. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure ](/cli/azure/create-an-azure-service-principal-azure-cli).
+Można zarządzać z jednostki usługi przy użyciu wiersza polecenia platformy Azure [az ad sp](/cli/azure/ad/sp) poleceń. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Utwórz nową jednostkę usługi.
@@ -293,7 +293,7 @@ Użyj [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) ustaw
 
 ![Usługa Azure Key Vault operacje kryptograficzne - Opakuj klucz](./media/azure-security-disk-encryption/keyvault-portal-fig3.png)
 
-![Ustaw uprawnienia klucza wpisu tajnego z magazynu platformy Azure — ](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
+![Ustaw uprawnienia klucza wpisu tajnego z magazynu platformy Azure —](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
 
 ## <a name="bkmk_KVper"></a> Zestaw magazynu kluczy, zaawansowane zasady dostępu
 Platforma Azure wymaga dostępu do kluczy szyfrowania i wpisy tajne w magazynie kluczy, aby udostępnić je do maszyny Wirtualnej do rozruchu i odszyfrowywania woluminów. Włącz szyfrowanie dysków w magazynie kluczy lub wdrożenia zakończy się niepowodzeniem.  

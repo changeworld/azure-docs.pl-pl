@@ -1,6 +1,6 @@
 ---
-title: Samouczek — udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal | Microsoft Docs
-description: Użyj kontroli dostępu na podstawie ról (RBAC), aby przyznać uprawnienia użytkownikowi, przypisując rolę w witrynie Azure Portal.
+title: Samouczek — udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal | Microsoft Docs
+description: Dowiedz się, jak udzielić użytkownikowi dostępu do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC) w witrynie Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 8caa5c3b33ac1b483429251e0c1256636c4ece1a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 41f1c6dc8904f167f34ea72aeb9b3866504b7087
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634476"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341304"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-the-azure-portal"></a>Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym samouczku udzielisz użytkownikowi praw dostępu do tworzenia maszyn wirtualnych i zarządzania nimi w grupie zasobów.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. W tym samouczku udzielisz użytkownikowi praw dostępu do tworzenia maszyn wirtualnych i zarządzania nimi w grupie zasobów.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -113,5 +113,5 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i programu PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)
 

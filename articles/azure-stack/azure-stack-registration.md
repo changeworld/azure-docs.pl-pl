@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 1fa85fa26594ef6e5df2d05bb3bcc34e5689c3be
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1fb9917e30a88cf5a68c9e170d66eeaa1d477deb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728407"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877150"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -311,7 +311,7 @@ Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestrac
 
 3. Wybierz **właściwości**. Ten blok, stan i szczegółowe cechy danego środowiska. Możliwe stany **zarejestrowanej** lub **niezarejestrowany**.
 
-    [ ![Kafelek Zarządzanie region](media/azure-stack-registration/admin1sm.png "Kafelek Zarządzanie regionu") ](media/azure-stack-registration/admin1.png#lightbox)
+    [![Kafelek Zarządzanie region](media/azure-stack-registration/admin1sm.png "Kafelek Zarządzanie regionu")](media/azure-stack-registration/admin1.png#lightbox)
 
     Jeśli nie zarejestrowano, właściwości obejmują:
     

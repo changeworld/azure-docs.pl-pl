@@ -1,6 +1,6 @@
 ---
 title: Przykład — wymuszanie zgodności ze wzorcem like
-description: Te przykładowe zasady wymagają, aby zasoby były zgodne ze wzorcem like konwencji nazewnictwa.
+description: Ta przykładowa definicja zasad wymaga, aby zasoby były zgodne ze wzorcem podobieństwa konwencji nazewnictwa.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7bc7624cdcc6676d3f622f30e9549a2e444c1d6f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6ff890773a045220b7e2f343d86434fe9109ef1a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243047"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338482"
 ---
-# <a name="enforce-like-pattern-for-naming-conventions"></a>Wymuszanie zgodności ze wzorcem like konwencji nazewnictwa
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Przykład — wymuszanie zgodności ze wzorcem podobieństwa konwencji nazewnictwa
 
 Ta zasada wymaga, aby nazwy zasobów były zgodne ze wzorcem like dla konwencji nazewnictwa. Dozwolony wzorzec like należy podać jako parametr.
 

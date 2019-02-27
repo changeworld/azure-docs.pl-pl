@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f326c8608f92cc974a9decad3b010888c358c667
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b7e9a46caf39d736fd7fdc5b3742a47c2bab51fd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818531"
+ms.locfileid: "56876419"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Dokumentacja języka SQL dla usługi Azure Cosmos DB 
 
@@ -2351,7 +2351,7 @@ StringToArray(<expr>)
   
  **Przykłady**  
   
-Poniższy przykład pokazuje, jak StringToArray zachowuje się na różnych urządzeniach. 
+ Poniższy przykład pokazuje, jak StringToArray zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2395,7 +2395,7 @@ StringToBoolean(<expr>)
   
  **Przykłady**  
   
-Poniższy przykład pokazuje, jak StringToBoolean zachowuje się na różnych urządzeniach. 
+ Poniższy przykład pokazuje, jak StringToBoolean zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2438,7 +2438,7 @@ StringToNull(<expr>)
   
  **Przykłady**  
   
-Poniższy przykład pokazuje, jak StringToNull zachowuje się na różnych urządzeniach. 
+ Poniższy przykład pokazuje, jak StringToNull zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2480,7 +2480,7 @@ StringToNumber(<expr>)
   
  **Przykłady**  
   
-Poniższy przykład pokazuje, jak StringToNumber zachowuje się na różnych urządzeniach. 
+ Poniższy przykład pokazuje, jak StringToNumber zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2525,7 +2525,7 @@ StringToObject(<expr>)
   
  **Przykłady**  
   
-Poniższy przykład pokazuje, jak StringToObject zachowuje się na różnych urządzeniach. 
+ Poniższy przykład pokazuje, jak StringToObject zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 

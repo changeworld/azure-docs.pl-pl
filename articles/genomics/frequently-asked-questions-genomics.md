@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: df329d42022f4e56b3d6d4d26519acd42caa1ae4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683904"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881825"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Często zadawane pytania
 
@@ -97,6 +97,6 @@ Odstęp zostanie zignorowany.
 ## <a name="next-steps"></a>Kolejne kroki
 
 Użyj następujących zasobów, aby rozpocząć pracę z usługą Microsoft Genomics:
-- Rozpoczynanie pracy przez uruchomienie pierwszego przepływu pracy za pomocą usługi Microsoft Genomics. [Uruchamianie przepływu pracy za pośrednictwem usługi Microsoft Genomics ](quickstart-run-genomics-workflow-portal.md)
+- Rozpoczynanie pracy przez uruchomienie pierwszego przepływu pracy za pomocą usługi Microsoft Genomics. [Uruchamianie przepływu pracy za pośrednictwem usługi Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
 - Przesyłanie danych do przetwarzania przez usługę Microsoft Genomics: [sparowane pliki FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wiele plików FASTQ lub BAM](quickstart-input-multiple.md) 
 

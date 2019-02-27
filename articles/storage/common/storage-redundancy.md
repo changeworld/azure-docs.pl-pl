@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cbe8970e3e7b924025a93b50f9b8c9e46643b349
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330787"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872050"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
@@ -68,5 +68,5 @@ Jeśli zmienisz z GRS LRS, nie ma żadnych dodatkowych kosztów, ale replikowane
 - [Magazyn geograficznie nadmiarowy (GRS): Replikacji między regionami dla usługi Azure Storage](storage-redundancy-grs.md)
 - [Azure Storage scalability and performance targets](storage-scalability-targets.md) (Cele dotyczące skalowalności i wydajności usługi Azure Storage)
 - [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
-- [Usługa Microsoft Azure Storage nadmiarowości opcje i dostęp do odczytu magazyn geograficznie nadmiarowy ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [Usługa Microsoft Azure Storage nadmiarowości opcje i dostęp do odczytu magazyn geograficznie nadmiarowy](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [Dokument SOSP — usługa Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9b3c0f7b1ff56cb269f6852be8fd2affeca8b8f1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddc051eb5f9638f7afec34db41c0e9d6e6d9d57d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143801"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890066"
 ---
 # <a name="render-custom-data-on-raster-map"></a>Renderowanie danych niestandardowych na mapy rastrowej
 
@@ -38,9 +38,9 @@ Konto usługi Azure Maps, jednostki SKU S0 obsługuje tylko jedno wystąpienie `
 
 Do renderowania wypychania numerów PIN z etykietami i niestandardowego obrazu, wykonaj następujące czynności:
 
-1. Otwórz aplikację Postman i kliknij nowy | Utwórz nową, a następnie wybierz żądanie. Wprowadź nazwę żądania pinezki renderowania, wybierz kolekcję lub folder w celu zapisania go i kliknij przycisk Zapisz.
+1. Otwórz aplikację Postman i kliknij pozycję New | Create new (Nowe | Utwórz nowe), a następnie wybierz pozycję Request (Żądanie). Wprowadź nazwę żądania pinezki renderowania, wybierz kolekcję lub folder w celu zapisania go i kliknij przycisk Zapisz.
     
-    ![Przekaż wirtualne ogrodzenia przy użyciu narzędzia Postman](./media/tutorial-geofence/postman-new.png)
+    ![Przekazywanie geofencingu przy użyciu narzędzia Postman](./media/tutorial-geofence/postman-new.png)
 
 2. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL żądania GET.
 
@@ -59,17 +59,17 @@ Do renderowania wypychania numerów PIN z etykietami i niestandardowego obrazu, 
 
 Informacje o lokalizacji ścieżki i numerów PIN można także uzyskać za pośrednictwem [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/mapdata/upload). Wykonaj poniższe kroki, aby przekazać dane ścieżki i numerów PIN.
 
-1. W aplikacji Postman Otwórz na nowej karcie w tej samej kolekcji, które zostały utworzone powyżej. Wybierz metodę POST protokołu HTTP, na karcie konstruktora i wprowadź następujący adres URL żądania POST:
+1. W aplikacji Postman otwórz nową kartę w tej samej kolekcji, która została utworzona powyżej. Wybierz metodę POST protokołu HTTP, na karcie konstruktora i wprowadź następujący adres URL żądania POST:
 
     ```HTTP
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. Kliknij parametry, a następnie wprowadź następujące pary klucz-wartość służący do adresu URL żądania POST. Zastąp wartość klucz subskrypcji z kluczem subskrypcji usługi Azure Maps.
+2. Kliknij parametry, a następnie wprowadź następujące pary klucz-wartość służący do adresu URL żądania POST. Zastąp wartość subscription-key swoim kluczem subskrypcji usługi Azure Maps.
     
     ![Parametry klucz-wartość narzędzia Postman](./media/how-to-render-custom-data/postman-key-vals.png)
 
-3. Kliknij przycisk **treści** a następnie wybierz format raw danych wejściowych i wybrać JSON jako format wejściowy z listy rozwijanej. Podaj następujące dane JSON jako dane do przekazania:
+3. Kliknij pozycję **Body** (Treść), a następnie wybierz nieprzetworzony format danych wejściowych i z listy rozwijanej wybierz format danych wejściowych JSON. Jako dane do przekazania podaj następujące dane JSON:
     
     ```JSON
     {
@@ -131,7 +131,7 @@ Informacje o lokalizacji ścieżki i numerów PIN można także uzyskać za poś
     }
     ```
 
-4. Kliknij przycisk Wyślij i przejrzyj nagłówka odpowiedzi. Nagłówek location zawiera identyfikator URI do uzyskanie dostępu i pobranie danych do użycia w przyszłości. Zawiera ona także unikatowy `udId` przekazanych danych.   
+4. Kliknij przycisk wysyłania i przejrzyj nagłówek odpowiedzi. W nagłówku lokalizacji znajduje się identyfikator URI, który umożliwia uzyskanie dostępu do danych i pobranie ich do użycia w przyszłości. Zawiera także unikatowy identyfikator `udId` przekazanych danych.   
 
   ```HTTP
   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -154,9 +154,9 @@ Informacje o lokalizacji ścieżki i numerów PIN można także uzyskać za poś
 > [!Note]
 > W tym przykładzie wymaga konta usługi Azure Maps w modelu cen warstwy S1.
 
-Można zmodyfikować wygląd wielokąta przy użyciu stylu Modyfikatory z [parametr ścieżki](https://docs.microsoft.com/rest-staging/api/maps/render/getmapimage#uri-parameters).
+Można zmodyfikować wygląd wielokąta przy użyciu stylu Modyfikatory z [parametr ścieżki](https://docs.microsoft.com/rest-staging/api/maps/render/getmapimage).
 
-1. W aplikacji Postman Otwórz na nowej karcie w tej samej kolekcji, które zostały utworzone powyżej. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL, aby utworzyć żądanie GET do renderowania Wielokąt przy użyciu koloru i krycia:
+1. W aplikacji Postman otwórz nową kartę w tej samej kolekcji, która została utworzona powyżej. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL, aby utworzyć żądanie GET do renderowania Wielokąt przy użyciu koloru i krycia:
     
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&sku=S1&zoom=14&height=500&Width=500&center=-74.040701, 40.698666&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.50||-74.03995513916016 40.70090237454063|-74.04082417488098 40.70028420372218|-74.04113531112671 40.70049568385827|-74.04298067092896 40.69899904076542|-74.04271245002747 40.69879568992435|-74.04367804527283 40.6980961582905|-74.04364585876465 40.698055487620714|-74.04368877410889 40.698022951066996|-74.04168248176573 40.696444909137|-74.03901100158691 40.69837271818651|-74.03824925422668 40.69837271818651|-74.03809905052185 40.69903971085914|-74.03771281242369 40.699340668780984|-74.03940796852112 40.70058515602143|-74.03948307037354 40.70052821920425|-74.03995513916016 40.70090237454063
@@ -173,11 +173,11 @@ Obraz odpowiedź powinna wyglądać następująco:
 > [!Note]
 > W tym przykładzie wymaga konta usługi Azure Maps w modelu cen warstwy S1.
 
-Umożliwia pinezki i ich etykiet większy lub mniejszy przy użyciu modyfikatora styl skalowania "sc". Jest to wartość większą niż zero. Wartość 1 jest standardowa skali. Wartości większej niż 1 spowoduje, że numery PIN będzie większa, a wartości mniejszej niż 1 spowoduje, że ich mniejsze. Aby uzyskać więcej informacji na temat styl modyfikatorów, zobacz [parametry ścieżki usługi obraz statyczny](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Umożliwia pinezki i ich etykiet większy lub mniejszy przy użyciu modyfikatora styl skalowania "sc". Jest to wartość większą niż zero. Wartość 1 jest standardowa skali. Wartości większej niż 1 spowoduje, że numery PIN będzie większa, a wartości mniejszej niż 1 spowoduje, że ich mniejsze. Aby uzyskać więcej informacji na temat styl modyfikatorów, zobacz [parametry ścieżki usługi obraz statyczny](https://docs.microsoft.com/rest/api/maps/render/getmapimage).
 
 Wykonaj poniższe kroki, aby renderować wielokąta z okrąg i wypychania numerów PIN przy użyciu etykiet niestandardowych:
 
-1. W aplikacji Postman Otwórz na nowej karcie w tej samej kolekcji, które zostały utworzone powyżej. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL żądania GET:
+1. W aplikacji Postman otwórz nową kartę w tej samej kolekcji, która została utworzona powyżej. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL żądania GET:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}

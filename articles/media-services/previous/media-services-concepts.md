@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 32367559ba4ae6931804c1ea702dca6c2c5ee297
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993915"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870911"
 ---
 # <a name="azure-media-services-concepts"></a>Pojęcia dotyczące usługi Azure Media Services 
 
@@ -177,7 +177,7 @@ Domyślnie możesz mieć maksymalnie 2 punkty końcowe w ramach konta usługi Me
 Opłaty są naliczane tylko wtedy, gdy usługi StreamingEndpoint jest w stanie uruchomienia.
 
 ### <a name="asset-delivery-policy"></a>Zasady dostarczania elementu zawartości
-Jedną z czynności w przepływie pracy dostarczania zawartości usługi Media Services służy do konfigurowania [zasady dostarczania zasobów ](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy), którą chcesz przesyłane strumieniowo. Zasady dostarczania elementu zawartości informuje Media Services, jak chcesz uzyskać element zawartości został dostarczony: do protokołu przesyłania strumieniowego powinny element zawartości można dynamicznie spakować (na przykład, między innymi MPEG DASH, HLS, Smooth Streaming lub wszystkie), czy chcesz szyfrować dynamicznie element zawartości i w jaki sposób (koperty lub szyfrowania common encryption).
+Jedną z czynności w przepływie pracy dostarczania zawartości usługi Media Services służy do konfigurowania [zasady dostarczania zasobów](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy), którą chcesz przesyłane strumieniowo. Zasady dostarczania elementu zawartości informuje Media Services, jak chcesz uzyskać element zawartości został dostarczony: do protokołu przesyłania strumieniowego powinny element zawartości można dynamicznie spakować (na przykład, między innymi MPEG DASH, HLS, Smooth Streaming lub wszystkie), czy chcesz szyfrować dynamicznie element zawartości i w jaki sposób (koperty lub szyfrowania common encryption).
 
 Jeśli masz Magazyn trwały szyfrowane, zanim może być przesyłany strumieniowo element zawartości, serwer przesyłania strumieniowego usuwa szyfrowanie magazynu i przesyła strumieniowo zawartość przy użyciu zasad dostarczania określony. Na przykład w celu dostarczania elementów zawartości szyfrowane przy użyciu klucza szyfrowania Advanced Encryption Standard (AES), ustawić typ zasad DynamicEnvelopeEncryption. Aby usunąć szyfrowania magazynu i przesyłanie strumieniowe zawartości niezaszyfrowane, Ustaw typ zasad NoDynamicEncryption.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: d9c94f7bd1a10e5db084e4541081998dc3de2f05
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749713"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871642"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań
 
@@ -28,7 +28,7 @@ ms.locfileid: "56749713"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się pisać zapytania dziennika LMonitor platformy Azure. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się pisać zapytania dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
 
 - Zrozumienie struktury zapytań
 - Sortowanie wyników zapytania

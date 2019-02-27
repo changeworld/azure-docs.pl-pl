@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74b21a9dd8faa8eb35aa8a2ef738bd6303e4cdd7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196949"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870741"
 ---
 # <a name="azure-application-marketplace-tab"></a>Karta Marketplace aplikacji platformy Azure
 
@@ -35,7 +35,7 @@ W poniższej tabeli opisano ustawienia służące do tworzenia storefront dla of
 
 |    **Pole**       |  **Opis**  |
 |  ---------------   |  ---------------  |
-|        Stanowisko            |        Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace. Maksymalna długość to 50 znaków.           |
+|        Tytuł            |        Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace. Maksymalna długość to 50 znaków.           |
 |         Podsumowanie           |        Krótkie podsumowanie oferty. Maksymalna długość wynosi 100 znaków.           |
 |         Długie podsumowanie           |        Już podsumowanie ofertę (chociaż może być taki sam jak podsumowanie). Maksymalna długość to 256 znaków.           |
 |       Opis            |         Opis oferty. Maksymalna długość to 3000 znaków. Proste formatowanie HTML jest dozwolony, w tym &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; znacznikami nagłówka.           |
@@ -66,7 +66,7 @@ W poniższej tabeli opisano marketingu artefaktów.
 
 Następny zrzut ekranu przedstawia przykład wynik wyszukiwania w witrynie Marketplace.
 
-![Wynik wyszukiwania oferty w portalu Marketplace ](./media/azureapp-marketplace-example-browse.png)
+![Wynik wyszukiwania oferty w portalu Marketplace](./media/azureapp-marketplace-example-browse.png)
 
 Na poniższej ilustracji przedstawiono sposób wyświetlania oferty w portalu Marketplace po odbiorca kliknie kafelka oferty w wynikach wyszukiwania.
 

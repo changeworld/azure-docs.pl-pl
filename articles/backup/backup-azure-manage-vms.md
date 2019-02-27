@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: da686e53f711877642a33806719a0d71050e721b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: eef1b14f5f25c53877c0d364facfcf9817f508c2
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669384"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56885843"
 ---
 # <a name="manage-azure-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
 
@@ -58,7 +58,7 @@ Możesz zarządzać kopiami zapasowymi przy użyciu pulpitu nawigacyjnego, a prz
 
 
 ## <a name="manage-backup-policies"></a>Zarządzanie zasadami tworzenia kopii zapasowych
-1. Na [pulpitu nawigacyjnego magazynu elementu](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kliknij przycisk **wszystkie ustawienia** .
+1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **wszystkie ustawienia** .
 
     ![Blok zasady tworzenia kopii zapasowej](./media/backup-azure-manage-vms/all-settings-button.png)
 2. W **ustawienia**, kliknij przycisk**zasady tworzenia kopii zapasowej**e.
@@ -79,7 +79,7 @@ Na żądanie można wykonać kopii zapasowej maszyny wirtualnej, po został skon
 
 Aby wyzwolić kopii zapasowej na żądanie:
 
-1. Na [pulpitu nawigacyjnego magazynu elementu](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kliknij przycisk **Utwórz teraz kopię zapasową**.
+1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **Utwórz teraz kopię zapasową**.
 
     ![Kopia zapasowa teraz przycisk.](./media/backup-azure-manage-vms/backup-now-button.png)
 
@@ -107,7 +107,7 @@ Należy pamiętać, że:
 
 Aby zatrzymać ochronę dla maszyny wirtualnej:
 
-1. Na [pulpitu nawigacyjnego magazynu elementu](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kliknij przycisk **Zatrzymaj kopię zapasową**.
+1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **Zatrzymaj kopię zapasową**.
 2. Wybierz, czy zachować, czy usuwanie danych kopii zapasowej i upewnij się, zgodnie z potrzebami. Upewnij się, zgodnie z wymaganiami i opcjonalnie podaj komentarz. Jeśli nie masz pewności nazwy elementu, umieść kursor nad wykrzyknik, aby wyświetlić nazwę.
 
     ![Zatrzymaj ochronę](./media/backup-azure-manage-vms/retain-or-delete-option.png)
@@ -121,9 +121,9 @@ Dane kopii zapasowej jest zachowywana, gdy maszyna wirtualna została zatrzymana
 
 Usuń
 
-1. Na [pulpitu nawigacyjnego magazynu elementu](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kliknij przycisk **Wznów tworzenie kopii zapasowej**.
+1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **Wznów tworzenie kopii zapasowej**.
 
-2. Postępuj zgodnie z instrukcjami w [Zarządzanie zasadami kopii zapasowych](backup-azure-manage-vms.md#manage-backup-policies) Aby przypisać zasady dla maszyny wirtualnej. Możesz wybrać inne zasady niż zasady za pomocą której maszyna wirtualna była chroniona początkowo.
+2. Postępuj zgodnie z instrukcjami w [Zarządzanie zasadami kopii zapasowych](#manage-backup-policies) Aby przypisać zasady dla maszyny wirtualnej. Możesz wybrać inne zasady niż zasady za pomocą której maszyna wirtualna była chroniona początkowo.
 3. Po zastosowaniu zasad tworzenia kopii zapasowej maszyny wirtualnej zostanie wyświetlony następujący komunikat.
 
     ![Pomyślnie chronionej maszyny Wirtualnej](./media/backup-azure-manage-vms/success-message.png)
@@ -138,7 +138,7 @@ Można usunąć danych kopii zapasowej skojarzony z maszyną Wirtualną w trakci
 Ta procedura zakłada, zadanie tworzenia kopii zapasowej dla maszyny Wirtualnej została zatrzymana lub wyłączona.
 
 
-1. Na [pulpitu nawigacyjnego magazynu elementu](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kliknij przycisk **usuwania kopii zapasowej**.
+1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **usuwania kopii zapasowej**.
 
     ![Typ maszyny wirtualnej](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 

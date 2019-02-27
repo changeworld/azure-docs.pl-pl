@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 43989ff9dac7cdad76117aaa6e3c862453b24813
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344095"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865114"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
 
@@ -96,7 +96,7 @@ Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](con
 
     **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
 
-    **Automatycznie Generuj klucze**: Już to pole wyboru powinno być zaznaczone.
+    **Automatycznie generuj klucze**: Już to pole wyboru powinno być zaznaczone.
 
     **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **najmniejszego opóźnienia**.
 
@@ -132,7 +132,7 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
 
     **— Nazwa**: Wprowadź unikatową nazwę dla Twojej **wschodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
 
-    **Nazwa użytkownika administratora —**: Korzystać z własnej nazwy użytkownika administratora.
+    **--admin-username**: Korzystać z własnej nazwy użytkownika administratora.
 
     **hasło — administratora**: Użyj hasła administratora.
 
@@ -153,7 +153,7 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
 
     **— Nazwa**: Wprowadź unikatową nazwę dla Twojej **zachodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
 
-    **Nazwa użytkownika administratora —**: Korzystać z własnej nazwy użytkownika administratora.
+    **--admin-username**: Korzystać z własnej nazwy użytkownika administratora.
 
     **hasło — administratora**: Użyj hasła administratora.
 
@@ -421,7 +421,7 @@ Aby usunąć grupę zasobów o nazwie:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej Reprovisioning, zobacz [pojęcia reprovisoning urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego ](how-to-unprovision-devices.md) 
+- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
 
 
 

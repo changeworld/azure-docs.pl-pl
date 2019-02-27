@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 04b6ad25c1ecd10a9480dcbf3e2b4f75e114a6f9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331249"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890983"
 ---
 *Trwa rozgrzewanie pamięci podręcznej*  
 Dysk z buforowania hosta tylko do odczytu są mógł przekazać wyższym operacje We/Wy niż limit na dysku. Aby uzyskać ten maksymalną wydajność odczytu z pamięci podręcznej hosta, najpierw należy musi przećwiczeniu podstawowych zadań pamięci podręcznej tego dysku. Daje to gwarancję, że odczytu z systemem IOs, że na woluminie CacheReads regulują narzędzi porównawczych faktycznie trafienia pamięci podręcznej, a nie dysków bezpośrednio. Wynik trafień w pamięci podręcznej w dodatkowe operacje We/Wy z jednym pamięci podręcznej włączone dysku.
@@ -102,7 +102,7 @@ Poniżej przedstawiono zrzuty ekranu przedstawiające Iometer wyniki testu dla p
 
 ### <a name="fio"></a>FIO
 
-FIO to popularne narzędzie do magazynu testów porównawczych na maszynach wirtualnych z systemem Linux. Ma wybrać różne rozmiary we/wy, sekwencyjnych lub losowych operacji odczytu i zapisu. Jej spowoduje utworzenie wątków roboczych i realizowania innych procesów do wykonywania określonej operacji We/Wy. Można określić typ operacji We/Wy każdego wątku roboczego należy wykonać przy użyciu plików zadania. Utworzyliśmy jeden plik zadania na scenariusz pokazano w poniższych przykładach. Możesz zmienić specyfikacji w tych plikach zadania przeprowadzenie testu porównawczego różnych obciążeń uruchomionych na usługę Premium Storage. W przykładach użyto standardowego DS 14 w maszyny Wirtualnej z systemem **Ubuntu**. Użyj tej samej konfiguracji opisanych na początku [testów porównawczych sekcji](#Benchmarking) i rozgrzewanie pamięci podręcznej przed uruchomieniem testów porównawczych.
+FIO to popularne narzędzie do magazynu testów porównawczych na maszynach wirtualnych z systemem Linux. Ma wybrać różne rozmiary we/wy, sekwencyjnych lub losowych operacji odczytu i zapisu. Jej spowoduje utworzenie wątków roboczych i realizowania innych procesów do wykonywania określonej operacji We/Wy. Można określić typ operacji We/Wy każdego wątku roboczego należy wykonać przy użyciu plików zadania. Utworzyliśmy jeden plik zadania na scenariusz pokazano w poniższych przykładach. Możesz zmienić specyfikacji w tych plikach zadania przeprowadzenie testu porównawczego różnych obciążeń uruchomionych na usługę Premium Storage. W przykładach użyto standardowego DS 14 w maszyny Wirtualnej z systemem **Ubuntu**. Użycie tej samej konfiguracji opisanych na początku sekcji Benchmarking i dostępu do ciepłych pamięci podręcznej przed uruchomieniem testów porównawczych.
 
 Przed przystąpieniem do wykonywania [Pobierz FIO](https://github.com/axboe/fio) i zainstaluj go na maszynie wirtualnej.
 

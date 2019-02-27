@@ -1,6 +1,6 @@
 ---
 title: Przykład — sprawdzanie, czy rozszerzenie nie istnieje
-description: Te przykładowe zasady sprawdzają, czy rozszerzenie nie zostało wdrożone z maszyną wirtualną.
+description: Te przykładowe definicje zasad sprawdzają, czy rozszerzenie nie zostało wdrożone z maszyną wirtualną.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7e5f396bb4acfdef0d49d38019b6c4d19661d9ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0c0f41c01d33add81508d828259ddcdd48d0cbc8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244185"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340879"
 ---
-# <a name="audit-if-extension-does-not-exist"></a>Sprawdzanie, czy rozszerzenie nie istnieje
+# <a name="sample---audit-if-extension-does-not-exist"></a>Przykład — sprawdzanie, czy rozszerzenie nie istnieje
 
 Te zasady sprawdzają, czy rozszerzenie nie zostało wdrożone z maszyną wirtualną. Należy określić typ i wydawcę rozszerzenia, aby sprawdzić, czy zostało ono wdrożone.
 

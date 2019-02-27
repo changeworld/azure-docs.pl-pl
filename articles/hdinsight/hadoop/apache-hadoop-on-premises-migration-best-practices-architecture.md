@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f1e2b9dfc329e67d94fba998a01d593b992ba90f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434012"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886812"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
 
@@ -33,7 +33,7 @@ Usługa Azure klastry HDInsight są przeznaczone dla określonego typu wykorzyst
 |IoT / przesyłania strumieniowego|Platforma Kafka, Storm, Spark|
 |Przetwarzanie transakcyjne NoSQL|HBase|
 |Zapytania interakcyjne i szybciej za pomocą pamięci podręcznej w pamięci|Zapytanie interakcyjne|
-|Do nauki o danych|Usługi uczenie Maszynowe, platformy Spark|
+|Do nauki o danych|ML Services, Spark|
 
 W poniższej tabeli przedstawiono różne metody, które mogą służyć do tworzenia klastra usługi HDInsight.
 
@@ -105,7 +105,7 @@ Najważniejsze wskazówki magazynu metadanych HDInsight Hive są następujące:
 - Nie udostępniaj magazynu metadanych utworzone dla jednej wersji klastra HDInsight z klastrami w innej wersji. Różne wersje programu Hive używają różnych schematów. Na przykład metadanych nie mogą być udostępniane klastry Hive 1.2 i Hive 2.1.
 - Utwórz kopię zapasową niestandardowy Magazyn metadanych okresowo.
 - Zachowaj magazynu metadanych i klaster HDInsight, w tym samym regionie.
-- Monitorowanie magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub usługi Azure Log Analytics.
+- Monitorowanie magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub dzienniki usługi Azure Monitor.
 - Wykonaj **ANALIZOWANIE tabeli** polecenia na potrzeby generowania statystyk dla tabel i kolumn. Na przykład `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Najlepsze rozwiązania dotyczące różnych obciążeń

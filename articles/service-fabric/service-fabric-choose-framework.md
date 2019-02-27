@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f37e1ed2c7dd720e4a77076c8587fdf540b29ca5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d791148e6ee023239b0a6bf49c705c2da4eea9a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713956"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881876"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Omówienie modelu programowania usługi Service Fabric
 Usługa Service Fabric oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi można używać interfejsów API usługi Service Fabric w pełni wykorzystać funkcje platformy i struktury aplikacji. Usługi mogą być także skompilowany program wykonywalny napisane w dowolnym języku lub kodu uruchamianego w kontenerze hostowanych w klastrze usługi Service Fabric.
@@ -65,7 +65,7 @@ Ponieważ elementów Reliable Actors to struktura aplikacji oparta na usług Rel
 
 [Omówienie elementów Reliable Actors](service-fabric-reliable-actors-introduction.md)
 
-[Usługa Service Fabric i programu ASP.NET Core ](service-fabric-reliable-services-communication-aspnetcore.md)
+[Usługa Service Fabric i programu ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
 
 

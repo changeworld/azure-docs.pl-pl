@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c9a772af79cba8b5bfb592eaf03efa37520d5e48
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 97e29ba166d652f053f754482b6da36a33ec5bb5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870609"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878182"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights i Azure functions
 W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
@@ -51,11 +51,11 @@ Przechwytywanie LUIS żądania i odpowiedzi, bot aplikacji sieci web musi **[us�
 
 1. W witrynie Azure portal, usługę sieci web aplikacji bot wybierz **kompilacji** w obszarze **zarządzania Bot** sekcji. 
 
-    ![W witrynie Azure portal usługi bot aplikacji sieci web wybierz pozycję "Kompilacja" w sekcji "Zarządzanie Bot". ](./media/luis-tutorial-appinsights/build.png)
+    ![W witrynie Azure portal usługi bot aplikacji sieci web wybierz pozycję "Kompilacja" w sekcji "Zarządzanie Bot".](./media/luis-tutorial-appinsights/build.png)
 
 2. Nowa karta przeglądarki zostanie otwarty przy użyciu edytorze usługi App Service. Wybierz nazwę aplikacji na górnym pasku, a następnie wybierz **otwartej konsoli Kudu**. 
 
-    ![Wybierz nazwę aplikacji na górnym pasku, a następnie wybierz pozycję "Otwórz Konsola Kudu". ](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Wybierz nazwę aplikacji na górnym pasku, a następnie wybierz pozycję "Otwórz Konsola Kudu".](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. W konsoli wprowadź następujące polecenie, aby zainstalować usługi Application Insights i pakietów podkreślenia:
 

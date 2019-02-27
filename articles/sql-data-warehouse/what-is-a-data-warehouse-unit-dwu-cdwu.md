@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7da813022527830a5ede62c9f4ce98645fe63d4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447824"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871607"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (dwu) i moc obliczeniową jednostek magazynu danych (cDWUs)
 Zalecenia dotyczące wybierania idealne liczbę jednostek magazynu danych (jednostki dwu, cDWUs), aby zoptymalizować cenę i wydajność i jak zmienić liczbę jednostek. 
@@ -68,7 +68,7 @@ Każda warstwa wydajności używa nieco jednostkę miary dla ich liczbę jednost
 
 Zarówno jednostki dwu, jak i cDWUs obsługują skalowanie w usłudze compute w górę lub w dół oraz wstrzymywania obliczeń, gdy nie jest konieczne korzystanie z magazynu danych. Te operacje są wszystkie na żądanie. Gen2 używa lokalnej pamięci podręcznej opartej na dyskach w węzłach obliczeniowych, aby zwiększyć wydajność. Podczas skalowania lub wstrzymać systemu unieważnienia pamięci podręcznej, a więc okres ciepły pamięci podręcznej jest wymagany, zanim optymalna wydajność jest osiągana.  
 
-Jak możesz zwiększyć liczbę jednostek magazynu danych, możesz liniowo coraz więcej zasobów obliczeniowych. Gen2 — zapewnia najlepszą wydajność zapytań i najwyższej skali, ale ma wyższe cena wpisu. Jest ona przeznaczona dla firm, które mają stałe zapotrzebowanie na wydajność. Te systemy Wykorzystaj większość pamięci podręcznej. 
+Jak możesz zwiększyć liczbę jednostek magazynu danych, możesz liniowo coraz więcej zasobów obliczeniowych. Gen2 — zapewnia najlepszą wydajność zapytań i najwyższej skali. Te systemy Wykorzystaj większość pamięci podręcznej.
 
 ### <a name="capacity-limits"></a>Limity pojemności
 Każdy serwer SQL (na przykład myserver.database.windows.net) ma [jednostki transakcji bazy danych (DTU)](../sql-database/sql-database-what-is-a-dtu.md) limit przydziału, który zezwala na określoną liczbę jednostek magazynu danych. Aby uzyskać więcej informacji, zobacz [limitów pojemności zarządzania obciążenia](sql-data-warehouse-service-capacity-limits.md#workload-management).

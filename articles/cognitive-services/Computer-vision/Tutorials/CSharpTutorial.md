@@ -1,146 +1,146 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji przetwarzania obrazów —C#'
+title: 'Przykład: Zapoznanie z aplikacją do przetwarzania obrazów w języku C#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Zapoznaj się z podstawowej aplikacji Windows, który używa interfejsu API przetwarzania obrazów w usługach Microsoft Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
+description: Zapoznaj się z podstawową wersją aplikacji systemu Windows, która korzysta z interfejsu API przetwarzania obrazów w usługach Microsoft Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
-ms.date: 08/28/2018
+ms.topic: sample
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: MT
+ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224925"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310953"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>Samouczek: Zbuduj obraz przetwarzania aplikacji - C&#35;
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Przykład: Zapoznanie z aplikacją do przetwarzania obrazów z językiem C#
 
-Poznaj podstawowe aplikacji Windows, która używa przetwarzania obrazów, aby wykonywać optyczne rozpoznawanie znaków (OCR), tworzenie przycięte inteligentne miniatury oraz wykrywanie, klasyfikowanie tagu i opisano funkcje wizualne, twarzy, w tym obrazie. Poniższy przykład umożliwia przesłanie adresu URL obrazu lub lokalnego pliku. W tym przykładzie "open source" jako szablon służy do tworzenia własnych aplikacji dla Windows przy użyciu interfejsu API przetwarzania obrazów i Windows Presentation Foundation (WPF), część .NET Framework.
+Zapoznaj się z podstawową aplikacją dla systemu Windows, w której zastosowano przetwarzanie obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Poniższy przykład umożliwia przesłanie adresu URL obrazu lub lokalnego pliku. Ten przykład typu „open source” może służyć jako szablon do tworzenia własnej aplikacji systemu Windows korzystającej z interfejsu API przetwarzania obrazów i platformy WPF (Windows Presentation Foundation), która jest częścią programu .NET Framework.
 
 > [!div class="checklist"]
-> * Pobierz przykładową aplikację z usługi GitHub
-> * Otworzyć i skompilować przykładową aplikację w programie Visual Studio
-> * Uruchom przykładową aplikację i korzystać z niego do wykonywania różnych scenariuszy
-> * Poznaj różne scenariusze, które są dołączone do przykładowej aplikacji
+> * Pobieranie przykładowej aplikacji z usługi GitHub
+> * Otwieranie i kompilowanie przykładowej aplikacji w programie Visual Studio
+> * Uruchamianie przykładowej aplikacji i wchodzenie z nią w interakcje, aby wykonywać różne scenariusze
+> * Poznawanie różnych scenariuszy dołączonych do przykładowej aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem pracy z przykładowej aplikacji, upewnij się, że zostały spełnione następujące wymagania wstępne:
+Przed rozpoczęciem pracy z przykładową aplikacją upewnij się, że zostały spełnione następujące wymagania wstępne:
 
 * Musisz mieć program [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszy.
 * Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
 ## <a name="get-the-sample-app"></a>Pobieranie przykładowej aplikacji
 
-Przetwarzania obrazów w przykładowej aplikacji jest dostępna w usłudze GitHub z poziomu `Microsoft/Cognitive-Vision-Windows` repozytorium. To repozytorium zawiera również `Microsoft/Cognitive-Common-Windows` repozytorium jako modułu podrzędnego usługi Git. Możesz rekursywnie Klonuj repozytorium, w tym module podrzędnym, przy użyciu `git clone --recurse-submodules` polecenia z wiersza polecenia lub przy użyciu GitHub Desktop.
+Przykładowa aplikacja przetwarzania obrazów jest dostępna w serwisie GitHub z poziomu repozytorium `Microsoft/Cognitive-Vision-Windows`. To repozytorium zawiera również repozytorium `Microsoft/Cognitive-Common-Windows` jako moduł podrzędny usługi Git. Możesz rekursywnie klonować to repozytorium, łącznie z modułem podrzędnym, przy użyciu polecenia `git clone --recurse-submodules` z wiersza polecenia albo przy użyciu programu GitHub Desktop.
 
-Na przykład aby rekursywnie Klonuj repozytorium przykładowej aplikacji komputerowej w wierszu polecenia, uruchom następujące polecenie:
+Aby na przykład rekursywnie klonować repozytorium przykładowej aplikacji przetwarzania obrazów z wiersza polecenia, uruchom następujące polecenie:
 
 ```Console
 git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Windows.git
 ```
 
 > [!IMPORTANT]
-> Nie pobieraj to repozytorium jako ZIP. Git nie zawiera moduły podrzędne, podczas pobierania repozytorium w formie pliku ZIP.
+> Nie pobieraj tego repozytorium w formie pliku ZIP. Usługa Git nie dołącza modułów podrzędnych podczas pobierania repozytorium w formie pliku ZIP.
 
-### <a name="get-optional-sample-images"></a>Pobierz opcjonalny przykładowe obrazy
+### <a name="get-optional-sample-images"></a>Pobieranie opcjonalnych przykładowych obrazów
 
-Opcjonalnie możesz skorzystać z przykładowe obrazy dołączone do [twarzy](../../Face/Overview.md) przykładowej aplikacji, dostępne w serwisie GitHub z `Microsoft/Cognitive-Face-Windows` repozytorium. Tej przykładowej aplikacji zawiera folder, `/Data`, który zawiera wiele obrazów osób. Możesz rekursywnie Klonuj repozytorium, jak również za pomocą metod opisanych dla przykładowej aplikacji komputerowej.
+Opcjonalnie możesz skorzystać z przykładowych obrazów dołączonych do przykładowej aplikacji [Rozpoznawanie twarzy](../../Face/Overview.md) dostępnych w repozytorium `Microsoft/Cognitive-Face-Windows` w serwisie GitHub. Ta przykładowa aplikacja zawiera folder, `/Data`, zawierający wiele obrazów osób. Możesz rekursywnie klonować również to repozytorium za pomocą metod opisanych dla przykładowej aplikacji przetwarzania obrazów.
 
-Na przykład aby rekursywnie Klonuj repozytorium na potrzeby rozpoznawania twarzy przykładową aplikację z poziomu wiersza polecenia, uruchom następujące polecenie:
+Aby na przykład rekursywnie klonować repozytorium przykładowej aplikacji rozpoznawania twarzy z wiersza polecenia, uruchom następujące polecenie:
 
 ```Console
 git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windows.git
 ```
 
-## <a name="open-and-build-the-sample-app-in-visual-studio"></a>Otworzyć i skompilować przykładową aplikację w programie Visual Studio
+## <a name="open-and-build-the-sample-app-in-visual-studio"></a>Otwieranie i kompilowanie przykładowej aplikacji w programie Visual Studio
 
-Należy najpierw utworzyć przykładową aplikację tak, aby program Visual Studio może rozpoznać zależności, zanim będzie można uruchomić lub zapoznaj się z przykładową aplikację. Aby otworzyć i skompilować aplikację przykładową, wykonaj następujące czynności:
+Musisz najpierw utworzyć przykładową aplikację, aby program Visual Studio mógł rozwiązać zależności, zanim będzie można uruchomić przykładową aplikację lub zapoznać się z nią. Aby otworzyć i skompilować przykładową aplikację, wykonaj następujące czynności:
 
-1. Otwórz plik rozwiązania Visual Studio, `/Sample-WPF/VisionAPI-WPF-Samples.sln`, w programie Visual Studio.
+1. Otwórz plik rozwiązania programu Visual Studio, `/Sample-WPF/VisionAPI-WPF-Samples.sln`, w programie Visual Studio.
 1. Upewnij się, że rozwiązanie programu Visual Studio zawiera dwa projekty:  
 
    * SampleUserControlLibrary
    * VisionAPI-WPF-Samples  
 
-   Jeśli projekt SampleUserControlLibrary jest niedostępny, upewnij się, że pomyślnie dodano rekursywnie sklonowany `Microsoft/Cognitive-Vision-Windows` repozytorium.
-1. W programie Visual Studio, naciśnij klawisze Ctrl + Shift + B lub wybierz **kompilacji** menu wstążki, a następnie wybierz **Kompiluj rozwiązanie** do skompilowania rozwiązania.
+   Jeśli projekt SampleUserControlLibrary jest niedostępny, upewnij się, że repozytorium `Microsoft/Cognitive-Vision-Windows` zostało rekursywnie sklonowane.
+1. W programie Visual Studio naciśnij klawisze Ctrl+Shift+B albo wybierz pozycję **Kompilacja** z menu wstążki, a następnie wybierz pozycję **Kompiluj rozwiązanie**, aby skompilować rozwiązanie.
 
-## <a name="run-and-interact-with-the-sample-app"></a>Uruchom i interakcję z przykładowej aplikacji
+## <a name="run-and-interact-with-the-sample-app"></a>Uruchamianie przykładowej aplikacji i interakcja z nią
 
-Możesz uruchomić przykładową aplikację, aby zobaczyć sposób jej interakcji z Tobą i za pomocą biblioteki klienckiej przetwarzania obrazów podczas wykonywania różnych zadań, takich jak generowanie miniatur lub znakowania obrazów. Aby uruchomić i interakcję z przykładowej aplikacji, wykonaj następujące czynności:
+Możesz uruchomić przykładową aplikację, aby zobaczyć sposób jej interakcji z Tobą i z biblioteką klienta przetwarzania obrazów podczas wykonywania różnych zadań, takich jak generowanie miniatur lub znakowanie obrazów. Aby uruchomić przykładową aplikację i wejść z nią w interakcję, wykonaj następujące czynności:
 
-1. Po ukończeniu kompilacji albo naciśnij **F5** lub wybierz **debugowania** menu wstążki, a następnie wybierz **Rozpocznij debugowanie** uruchamianie przykładowej aplikacji.
-1. Gdy przykładowa aplikacja jest wyświetlana, wybierz **zarządzanie kluczami subskrypcji** z okienka nawigacji można wyświetlić strony Zarządzanie kluczami subskrypcji.
-   ![Strona zarządzania klucz subskrypcji](../Images/Vision_UI_Subscription.PNG)  
-1. Wprowadź klucz subskrypcji w **klucz subskrypcji**.
-1. Wprowadź adres URL punktu końcowego, pomijając `/vision/v1.0`, zasobu wizualizacji komputerowej dla klucza subskrypcji w **punktu końcowego**.  
-   Na przykład jeśli jest używany klucz subskrypcji z bezpłatnej wersji próbnej przetwarzania obrazów, wprowadź następujący adres URL punktu końcowego dla regionu zachodnie centralnej nam platformy Azure: `https://westcentralus.api.cognitive.microsoft.com`
-1. Jeśli nie chcesz wprowadzić klucz subskrypcji i punktu końcowego adresu URL przy następnym uruchomieniu aplikacji przykładowej, wybierz opcję **Zapisz ustawienia** można zapisać subskrypcji key i punktu końcowego adresu URL do komputera. Jeśli chcesz usunąć z uprzednio zapisany klucz i punkt końcowy adres URL subskrypcji, wybierz **Usuń ustawienie**.
+1. Po ukończeniu kompilacji naciśnij klawisz **F5** albo wybierz pozycję **Debugowanie** z menu wstążki, a następnie wybierz pozycję **Rozpocznij debugowanie**, aby uruchomić przykładową aplikację.
+1. Gdy zostanie wyświetlona przykładowa aplikacja, wybierz pozycję **Zarządzanie kluczami subskrypcji** z okienka nawigacji, aby wyświetlić stronę Zarządzanie kluczami subskrypcji.
+   ![Strona Zarządzanie kluczami subskrypcji](../Images/Vision_UI_Subscription.PNG)  
+1. Wprowadź swój klucz subskrypcji w polu **Klucz subskrypcji**.
+1. Wprowadź adres URL punktu końcowego, pomijając `/vision/v1.0`, zasobu przetwarzania obrazów dla Twojego klucza subskrypcji w pozycji **Punkt końcowy**.  
+   Jeśli na przykład używasz klucza subskrypcji z bezpłatnej wersji próbnej przetwarzania obrazów, wprowadź następujący adres URL punktu końcowego dla regionu Zachodnio-środkowe stany USA platformy Azure: `https://westcentralus.api.cognitive.microsoft.com`
+1. Jeśli nie chcesz wprowadzać klucza subskrypcji ani adresu URL punktu końcowego przy następnym uruchomieniu przykładowej aplikacji, wybierz pozycję **Zapisz ustawienie**, aby zapisać klucz subskrypcji i adres URL punktu końcowego na komputerze. Jeśli chcesz usunąć uprzednio zapisany klucz subskrypcji i adres URL punktu końcowego, wybierz pozycję **Usuń ustawienie**.
 
    > [!NOTE]
-   > Przykładowa aplikacja korzysta z wydzielonej pamięci masowej i `System.IO.IsolatedStorage`, aby Twoja subskrypcja key i punktu końcowego adresu URL Sklepu.
+   > Przykładowa aplikacja korzysta z wydzielonej pamięci masowej i `System.IO.IsolatedStorage`, aby zapisać klucz subskrypcji i adres URL punktu końcowego.
 
-1. W obszarze **wybierz scenariusz** w okienku nawigacji wybierz jednego ze scenariuszy obecnie dołączone do przykładowej aplikacji:  
+1. W obszarze **Wybierz scenariusz** w okienku nawigacji wybierz jeden ze scenariuszy obecnie dołączonych do przykładowej aplikacji:  
 
    | Scenariusz | Opis |
    |----------|-------------|
-   |Analizowanie obrazu | Używa [analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) operacji do analizowania obraz lokalnym lub zdalnym. Wybierz funkcje programu visual i język dla analizy i zobacz obrazu i wyniki.  |
-   |Analizowanie obrazu za pomocą modelu domeny | Używa [modele specyficzne dla domeny listy](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) na liście modeli domeny, z których możesz wybrać, operacji i [rozpoznawanie domeny określonej zawartości](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) na analizowanie obrazów lokalnych lub zdalnych przy użyciu operacji model wybranej domeny. Można także język dla analizy. |
-   |Opisz obrazu | Używa [opisują obraz](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fe) operację, aby utworzyć zrozumiałą dla użytkownika opis obrazu lokalnym lub zdalnym. Można także język opisu. |
-   |Generowanie tagi | Używa [Tag obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1ff) operację, aby oznaczyć cech wizualnych obrazów lokalnych lub zdalnych. Można także język używany do tagów. |
-   |Rozpoznawanie tekstu (OCR) | Używa [optyczne rozpoznawanie znaków](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) operację, aby rozpoznawać i wyodrębnianie drukowanych tekstu z obrazu. Możesz wybrać język do użycia lub umożliwić przetwarzanie obrazów, automatyczne wykrywanie języka. |
-   |Rozpoznawanie tekstu w wersji 2 (w języku angielskim) | Używa [Rozpoznaj tekst](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) i [uzyskać rozpoznaje wynik operacji tekstu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) operacje asynchroniczne rozpoznaje i wyodrębnianie tekstu drukowanego na klawiaturze lub odręcznie z obrazu. |
-   |Pobierz miniaturę | Używa [Pobierz miniaturę](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) operację, aby wygenerować miniatury obrazów lokalnych lub zdalnych. |
+   |Analizowanie obrazu | Używa operacji [Analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) do analizy lokalnego lub zdalnego obrazu. Możesz wybrać funkcje wizualne i język do analizy oraz zobaczyć zarówno obraz, jak i wyniki.  |
+   |Analizowanie obrazu za pomocą modelu domeny | Używa operacji [Wyświetlanie listy modeli specyficznych dla domeny](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd), aby wyświetlić listę modeli domeny, z których możesz wybierać, oraz operacji [Rozpoznawanie zawartości specyficznej dla domeny](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200), aby przeanalizować lokalne lub zdalne obrazy przy użyciu wybranego modelu domeny. Możesz też wybrać język do analizy. |
+   |Opisywanie obrazu | Używa operacji [Opisanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fe), aby utworzyć zrozumiały dla użytkownika opis lokalnego lub zdalnego obrazu. Możesz też wybrać język dla opisu. |
+   |Generowanie tagów | Używa operacji [Tagowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1ff), aby oznaczyć wizualne cechy lokalnego lub zdalnego obrazu. Możesz też wybrać język użyty do tagów. |
+   |Rozpoznawanie tekstu (OCR) | Używa operacji [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc), aby rozpoznawać i wyodrębniać drukowany tekst z obrazu. Możesz wybrać używany język albo umożliwić funkcji przetwarzania obrazów automatyczne wykrywanie języka. |
+   |Rozpoznawanie tekstu w wersji 2 (język angielski) | Używa operacji [Rozpoznaj tekst](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) i [Pobierz wynik operacji rozpoznawania tekstu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201), aby asynchronicznie rozpoznać i wyodrębniać tekst drukowany lub pismo odręczne z obrazu. |
+   |Pobieranie miniatury | Używa operacji [Pobieranie miniatury](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb), aby wygenerować miniaturę lokalnego lub zdalnego obrazu. |
 
-   Poniższy zrzut ekranu przedstawia stronę przewidzianych w scenariuszu analizowanie obrazów, po przeanalizowaniu przykładowy obraz.
-   ![Zrzut ekranu przedstawiający stronę obraz analizy](../Images/Analyze_Image_Example.PNG)
+   Poniższy zrzut ekranu przedstawia stronę przewidzianą w scenariuszu analizowania obrazów po przeanalizowaniu przykładowego obrazu.
+   ![Zrzut ekranu przedstawiający stronę analizy obrazu](../Images/Analyze_Image_Example.PNG)
 
-## <a name="explore-the-sample-app"></a>Zapoznaj się z przykładową aplikację
+## <a name="explore-the-sample-app"></a>Poznawanie przykładowej aplikacji
 
-Rozwiązanie dla przykładowej aplikacji komputerowej dla programu Visual Studio zawiera dwa projekty:
+Rozwiązanie programu Visual Studio dla przykładowej aplikacji przetwarzania obrazów zawiera dwa projekty:
 
 * SampleUserControlLibrary  
-  Projekt SampleUserControlLibrary zapewnia funkcje wspólne dla wielu próbkach usług Cognitive Services. Projekt zawiera następujące informacje:
+  Projekt SampleUserControlLibrary udostępnia funkcje wspólne dla wielu przykładów usług Cognitive Services. Projekt zawiera następujące elementy:
   * SampleScenarios  
-    UserControl, zapewniający ustandaryzowane prezentacji, takich jak pasek tytułu okienka nawigacji i w okienku zawartości, przykłady. Przetwarzanie obrazów Przykładowa aplikacja używa tego formantu w oknie MainWindow.xaml do wyświetlania stron scenariusza i dostęp do informacji o współdzielone w scenariuszach, takich jak adres URL key i punktu końcowego subskrypcji.
+    Kontrolka UserControl zapewniająca standaryzowaną prezentację przykładów obejmującą pasek tytułu, okienko nawigacji i okienko zawartości. Przykładowa aplikacja przetwarzania obrazów używa tej kontrolki w oknie MainWindow.xaml do wyświetlania stron scenariusza i uzyskiwania dostępu do informacji wspólnych dla scenariuszy, takich jak klucz subskrypcji i adres URL punktu końcowego.
   * SubscriptionKeyPage  
-    Strona, która udostępnia standardowy układ wprowadzenie subskrypcji key i punktu końcowego adresu URL dla przykładowej aplikacji. Komputerowej Przykładowa aplikacja korzysta z tej strony do zarządzania klucz subskrypcji i adres URL punktu końcowego używane przez strony scenariusza.
+    Strona, która udostępnia standardowy układ do wprowadzania klucza subskrypcji i adresu URL punktu końcowego dla przykładowej aplikacji. Przykładowa aplikacja przetwarzania obrazów używa tej strony do zarządzania kluczem subskrypcji i adresem URL punktu końcowego, które są używane przez strony scenariusza.
   * VideoResultControl  
-    UserControl, zapewniający ustandaryzowane prezentacja wideo informacji. Ten formant nie korzysta z przykładowej aplikacji komputerowej.
+    Kontrolka UserControl zapewniająca standaryzowaną prezentację informacji wideo. Przykładowa aplikacja przetwarzania obrazów nie korzysta z tej kontrolki.
 * VisionAPI-WPF-Samples  
-  Głównego projektu dla przykładowej aplikacji komputerowej, ten projekt zawiera wszystkie ciekawe funkcje do przetwarzania obrazów. Projekt zawiera następujące informacje:
+  Główny projekt dla przykładowej aplikacji przetwarzania obrazów, który zawiera wszystkie ciekawe funkcje przetwarzania obrazów. Projekt zawiera następujące elementy:
   * AnalyzeInDomainPage.xaml  
-    Strona scenariusz analizowanie obrazu ze scenariuszem modelu domeny.
+    Strona scenariusza analizowania obrazu za pomocą scenariusza modelu domeny.
   * AnalyzeImage.xaml  
-    Strona scenariusza dla scenariusza analizowanie obrazu.
+    Strona scenariusza dla scenariusza analizowania obrazu.
   * DescribePage.xaml  
-    Strona scenariusza dla scenariusza opis obrazu.
+    Strona scenariusza dla scenariusza opisu obrazu.
   * ImageScenarioPage.cs  
-    Klasa ImageScenarioPage, z której pochodzą wszystkie strony scenariusza w przykładowej aplikacji. Ta klasa zarządza funkcje, takie jak dostarczanie poświadczeń i formatowanie danych wyjściowych, które są współużytkowane przez wszystkie strony scenariusza.
+    Klasa ImageScenarioPage, z której pochodzą wszystkie strony scenariusza w przykładowej aplikacji. Ta klasa zarządza funkcjami, takimi jak dostarczanie poświadczeń i formatowanie danych wyjściowych, które są wspólne dla wszystkich stron scenariusza.
   * MainWindow.xaml  
-    Główne okno przykładowej aplikacji, kontrolki SampleScenarios używa do przedstawienia strony SubscriptionKeyPage i scenariusza.
+    Główne okno przykładowej aplikacji, które używa kontrolki SampleScenarios do prezentacji strony SubscriptionKeyPage i stron scenariusza.
   * OCRPage.xaml  
-    Strona scenariusza dla scenariusza rozpoznaje tekst (optyczne rozpoznawanie znaków).
+    Strona scenariusza dla scenariusza rozpoznawania tekstu (OCR).
   * RecognizeLanguage.cs  
-    Klasa RecognizeLanguage zawiera informacje o językach obsługiwanych przez różne metody w przykładowej aplikacji.
+    Klasa RecognizeLanguage, która udostępnia informacje o językach obsługiwanych przez różne metody w przykładowej aplikacji.
   * TagsPage.xaml  
     Strona scenariusza dla scenariusza generowania tagów.
   * TextRecognitionPage.xaml  
-    Strona scenariusza dla scenariusza (angielski) rozpoznaje V2 tekstu.
+    Strona scenariusza dla scenariusza rozpoznawania tekstu wersja 2 (język angielski).
   * ThumbnailPage.xaml  
-    Strona scenariusza dla scenariusza Pobierz miniaturę.
+    Strona scenariusza dla scenariusza pobierania miniatury.
 
-### <a name="explore-the-sample-code"></a>Omówimy przykładowy kod
+### <a name="explore-the-sample-code"></a>Poznawanie przykładowego kodu
 
-Kluczowych części przykładowego kodu są obramowane przy użyciu bloków komentarza, które zaczyna się `KEY SAMPLE CODE STARTS HERE` i kończyć się znakiem `KEY SAMPLE CODE ENDS HERE`, aby ułatwić zapoznaj się z przykładową aplikację. Tych kluczowych części przykładowego kodu zawierają kod, które są najbardziej potrzebne podczas nauki korzystania z biblioteki klienta interfejsu API przetwarzania obrazów do wykonywania różnych zadań. Możesz wyszukać `KEY SAMPLE CODE STARTS HERE` w programie Visual Studio do przenoszenia między najbardziej istotne sekcje kodu w przykładowej aplikacji komputerowej. 
+Kluczowe fragmenty kodu przykładowego są obramowane blokami komentarza, które rozpoczynają się od `KEY SAMPLE CODE STARTS HERE` i kończą się `KEY SAMPLE CODE ENDS HERE`, aby ułatwić Ci zapoznanie się z przykładową aplikacją. Te kluczowe fragmenty kodu przykładowego zawierają kod, który jest najbardziej odpowiedni do nauki korzystania z biblioteki klienta interfejsu API przetwarzania obrazów do wykonywania różnych zadań. W programie Visual Studio możesz wyszukać `KEY SAMPLE CODE STARTS HERE`, aby przenosić się między najbardziej odpowiednimi sekcjami kodu w przykładowej aplikacji przetwarzania obrazów. 
 
-Na przykład `UploadAndAnalyzeImageAsync` przedstawiona metoda następujące i uwzględniane w AnalyzePage.xaml, pokazuje, jak analizować lokalny obraz za pomocą wywołania za pomocą biblioteki klienta `ComputerVisionClient.AnalyzeImageInStreamAsync` metody.
+Na przykład metoda `UploadAndAnalyzeImageAsync` przedstawiona poniżej i zawarta w pliku AnalyzePage.xaml przedstawia sposób używania biblioteki klienta do analizy lokalnego obrazu za pomocą wywołania metody `ComputerVisionClient.AnalyzeImageInStreamAsync`.
 
 ```csharp
 private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePath)
@@ -175,11 +175,11 @@ private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePat
 }
 ```
 
-### <a name="explore-the-client-library"></a>Zapoznaj się z biblioteki klienta
+### <a name="explore-the-client-library"></a>Zapoznanie z biblioteką klienta
 
-Ta przykładowa aplikacja używa biblioteki klienta interfejsu API przetwarzania obrazów, cienka C# klienta otokę dla interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services. Biblioteka klienta jest dostępna z pakietów NuGet w [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) pakietu. Podczas tworzenia aplikacji programu Visual Studio z odpowiedniego pakietu NuGet jest pobierany z biblioteki klienta. Można również wyświetlić kod źródłowy biblioteki klienta w `/ClientLibrary` folderu `Microsoft/Cognitive-Vision-Windows` repozytorium.
+Ta przykładowa aplikacja używa biblioteki klienta interfejsu API przetwarzania obrazów, otoki cienkiego klienta języka C# dla interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services. Biblioteka klienta jest dostępna z narzędzia NuGet w pakiecie [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/). Podczas tworzenia aplikacji programu Visual Studio pobierasz bibliotekę klienta z odpowiedniego pakietu NuGet. Możesz również wyświetlić kod źródłowy biblioteki klienta w folderze `/ClientLibrary` repozytorium `Microsoft/Cognitive-Vision-Windows`.
 
-Funkcje biblioteki klienckiej koncentruje się wokół `ComputerVisionClient` klasy w `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` przestrzeni nazw podczas modeli używanych przez `ComputerVisionClient` klasy podczas interakcji z przetwarzania obrazów znajdują się w `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` przestrzeni nazw. Na różnych stronach scenariusz XAML dołączone do przykładowej aplikacji, znajdziesz następujące `using` dyrektywy dla tych przestrzeni nazw:
+Funkcje biblioteki klienckiej koncentrują się wokół klasy `ComputerVisionClient` w przestrzeni nazw `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`, zaś modele używane przez klasę `ComputerVisionClient` podczas interakcji z przetwarzaniem obrazów znajdują się w przestrzeni nazw `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models`. Na różnych stronach scenariuszy XAML dołączonych do przykładowej aplikacji znajdziesz następujące dyrektywy `using` dla tych przestrzeni nazw:
 
 ```csharp
 // -----------------------------------------------------------------------
@@ -193,121 +193,121 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 // -----------------------------------------------------------------------
 ```
 
-Dowiesz się więcej na temat różnych metod, które są dołączone do `ComputerVisionClient` klasy, gdy eksplorujesz scenariusze z przykładowej aplikacji komputerowej.
+Dowiesz się więcej na temat różnych metod dołączonych do klasy `ComputerVisionClient` w miarę poznawania scenariuszy dołączonych do przykładowej aplikacji przetwarzania obrazów.
 
-## <a name="explore-the-analyze-image-scenario"></a>Poznaj scenariusz analizowanie obrazu
+## <a name="explore-the-analyze-image-scenario"></a>Poznawanie scenariusza analizowania obrazu
 
-Ten scenariusz jest zarządzane przez stronę AnalyzePage.xaml. Wybierz funkcje programu visual i język dla analizy i zobacz obrazu i wyniki. Na stronie scenariusz ma następujące efekty przy użyciu jednej z następujących metod, w zależności od źródła obrazu:
+Ten scenariusz jest zarządzany przez stronę AnalyzePage.xaml. Możesz wybrać funkcje wizualne i język do analizy oraz zobaczyć zarówno obraz, jak i wyniki. Strona scenariusza realizuje to przy użyciu jednej z następujących metod w zależności od źródła obrazu:
 
 * UploadAndAnalyzeImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.AnalyzeImageInStreamAsync` metody.
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.AnalyzeImageInStreamAsync`.
 * AnalyzeUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.AnalyzeImageAsync` metody.
+  Ta metoda jest używana dla obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.AnalyzeImageAsync`.
 
-`UploadAndAnalyzeImageAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Ponieważ Przykładowa aplikacja jest analizowanie lokalny obraz, ma do wysłania zawartości obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego, określone w `imageFilePath` do odczytu jako `Stream`, następnie pobiera funkcje visual i język wybrany na stronie scenariusz. Wywołuje `ComputerVisionClient.AnalyzeImageInStreamAsync` jest metoda `Stream` dla pliku, funkcje visual i język, a następnie zwraca wynik w postaci `ImageAnalysis` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `UploadAndAnalyzeImageAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Ponieważ przykładowa aplikacja analizuje lokalny obraz, musi wysłać zawartość tego obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego określonego w `imageFilePath` do odczytu jako `Stream`, a następnie pobranie funkcji wizualnych i języka wybranego na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.AnalyzeImageInStreamAsync`, przekazując `Stream` dla pliku, funkcje wizualne i język, a następnie zwraca wynik w postaci wystąpienia `ImageAnalysis`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-`AnalyzeUrlAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Pobiera funkcje visual i język wybrany na stronie scenariusz. Wywołuje `ComputerVisionClient.AnalyzeImageInStreamAsync` metody, przekazując adres URL obrazu, funkcje visual i język, następnie zwraca wynik w postaci `ImageAnalysis` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `AnalyzeUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Pobiera ona funkcje wizualne i język wybrany na stronie scenariusza. Wywołuje ona metodę `ComputerVisionClient.AnalyzeImageInStreamAsync`, przekazując adres URL obrazu, funkcje wizualne i język, a następnie zwraca wynik w postaci wystąpienia `ImageAnalysis`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-## <a name="explore-the-analyze-image-with-domain-model-scenario"></a>Zapoznaj się z obrazu analizowanie ze scenariuszem modelu domeny
+## <a name="explore-the-analyze-image-with-domain-model-scenario"></a>Poznawanie scenariusza analizowania obrazu za pomocą modelu domeny
 
-Ten scenariusz jest zarządzane przez stronę AnalyzeInDomainPage.xaml. Można wybrać model domeny, takich jak `celebrities` lub `landmarks`i język, aby przeprowadzić analizę specyficznego dla domeny obrazu i zobacz obrazu i wyniki. Na stronie scenariusz korzysta z następujących metod, w zależności od źródła obrazu:
+Ten scenariusz jest zarządzany przez stronę AnalyzeInDomainPage.xaml. Możesz wybrać model domeny, taki jak `celebrities` lub `landmarks`, i język, aby przeprowadzić specyficzną dla domeny analizę obrazu i zobaczyć zarówno obraz, jak i wyniki. Strona scenariusza korzysta z następujących metod w zależności od źródła obrazu:
 
 * GetAvailableDomainModelsAsync  
-  Ta metoda pobiera na liście modeli domeny dostępne z przetwarzania obrazów i wypełnia `_domainModelComboBox` ComboBox — formant na stronie przy użyciu `ComputerVisionClient.ListModelsAsync` metody.
+  Ta metoda pobiera listę dostępnych modeli domeny z przetwarzania obrazów i zapełnia kontrolkę ComboBox `_domainModelComboBox` na stronie przy użyciu metody `ComputerVisionClient.ListModelsAsync`.
 * UploadAndAnalyzeInDomainImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` metody.
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync`.
 * AnalyzeInDomainUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.AnalyzeImageByDomainAsync` metody.
+  Ta metoda jest używana dla obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.AnalyzeImageByDomainAsync`.
 
-`UploadAndAnalyzeInDomainImageAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Ponieważ Przykładowa aplikacja jest analizowanie lokalny obraz, ma do wysłania zawartości obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego, określone w `imageFilePath` do odczytu jako `Stream`, następnie pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` jest metoda `Stream` dla pliku, nazwę modelu domeny i języka, następnie zwraca wynik w postaci `DomainModelResults` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `UploadAndAnalyzeInDomainImageAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Ponieważ przykładowa aplikacja analizuje lokalny obraz, musi wysłać zawartość tego obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego określonego w `imageFilePath` do odczytu jako `Stream`, a następnie pobranie języka wybranego na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` przekazującą `Stream` dla pliku, nazwę modelu domeny i język, a następnie zwraca wynik w postaci wystąpienia `DomainModelResults`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-`AnalyzeInDomainUrlAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.AnalyzeImageByDomainAsync` metody, przekazując adres URL obrazu, funkcje visual i język, następnie zwraca wynik w postaci `DomainModelResults` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `AnalyzeInDomainUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Pobiera ona język wybrany na stronie scenariusza. Wywołuje ona metodę `ComputerVisionClient.AnalyzeImageByDomainAsync`, przekazując adres URL obrazu, funkcje wizualne i język, a następnie zwraca wynik w postaci wystąpienia `DomainModelResults`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-## <a name="explore-the-describe-image-scenario"></a>Poznaj scenariusz opisują obrazu
+## <a name="explore-the-describe-image-scenario"></a>Poznawanie scenariusza opisywania obrazu
 
-Ten scenariusz jest zarządzane przez stronę DescribePage.xaml. Wybierz język, który chcesz utworzyć zrozumiałą dla użytkownika opis obrazu i wyświetlić wyniki i obraz. Na stronie scenariusz korzysta z następujących metod, w zależności od źródła obrazu:
+Ten scenariusz jest zarządzany przez stronę DescribePage.xaml. Możesz wybrać język do utworzenia zrozumiałego dla użytkownika opisu obrazu i zobaczyć zarówno obraz, jak wyniki. Strona scenariusza korzysta z następujących metod w zależności od źródła obrazu:
 
 * UploadAndDescribeImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.DescribeImageInStreamAsync` metody.
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.DescribeImageInStreamAsync`.
 * DescribeUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.DescribeImageAsync` metody.
+  Ta metoda jest używana dla obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.DescribeImageAsync`.
 
-`UploadAndDescribeImageAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Ponieważ Przykładowa aplikacja jest analizowanie lokalny obraz, ma do wysłania zawartości obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego, określone w `imageFilePath` do odczytu jako `Stream`, następnie pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.DescribeImageInStreamAsync` jest metoda `Stream` dla pliku, maksymalna liczba kandydatów (w tym przypadku 3) i język, następnie zwraca wynik w postaci `ImageDescription` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `UploadAndDescribeImageAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Ponieważ przykładowa aplikacja analizuje lokalny obraz, musi wysłać zawartość tego obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego określonego w `imageFilePath` do odczytu jako `Stream`, a następnie pobranie języka wybranego na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.DescribeImageInStreamAsync` przekazującą `Stream` dla pliku, maksymalną liczbę kandydatów (w tym przypadku 3) i język, a następnie zwraca wynik w postaci wystąpienia `ImageDescription`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-`DescribeUrlAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.DescribeImageAsync` metody, przekazując adres URL obrazu, maksymalna liczba kandydatów (w tym przypadku 3) i język, następnie zwraca wynik w postaci `ImageDescription` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `DescribeUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Pobiera ona język wybrany na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.DescribeImageAsync` przekazującą adres URL obrazu, maksymalną liczbę kandydatów (w tym przypadku 3) i język, a następnie zwraca wynik w postaci wystąpienia `ImageDescription`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-## <a name="explore-the-generate-tags-scenario"></a>Poznaj scenariusz Generowanie tagów
+## <a name="explore-the-generate-tags-scenario"></a>Poznawanie scenariusza generowania tagów
 
-Ten scenariusz jest zarządzane przez stronę TagsPage.xaml. Wybierz język, który chcesz oznaczyć cech wizualnych obrazów i wyświetlić wyniki i obraz. Na stronie scenariusz korzysta z następujących metod, w zależności od źródła obrazu:
+Ten scenariusz jest zarządzany przez stronę TagsPage.xaml. Możesz wybrać język do oznaczenia funkcji wizualnych obrazu oraz zobaczyć zarówno obraz, jak i wyniki. Strona scenariusza korzysta z następujących metod w zależności od źródła obrazu:
 
 * UploadAndGetTagsForImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.TagImageInStreamAsync` metody.
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.TagImageInStreamAsync`.
 * GenerateTagsForUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.TagImageAsync` metody.
+  Ta metoda jest używana dla obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.TagImageAsync`.
 
-`UploadAndGetTagsForImageAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Ponieważ Przykładowa aplikacja jest analizowanie lokalny obraz, ma do wysłania zawartości obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego, określone w `imageFilePath` do odczytu jako `Stream`, następnie pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.TagImageInStreamAsync` jest metoda `Stream` pliku i język, a następnie zwraca wynik w postaci `TagResult` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `UploadAndGetTagsForImageAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Ponieważ przykładowa aplikacja analizuje lokalny obraz, musi wysłać zawartość tego obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego określonego w `imageFilePath` do odczytu jako `Stream`, a następnie pobranie języka wybranego na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.TagImageInStreamAsync`, przekazując `Stream` dla pliku i język, a następnie zwraca wynik w postaci wystąpienia `TagResult`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-`GenerateTagsForUrlAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.TagImageAsync` metody, przekazując adres URL obrazu i język, następnie zwraca wynik w postaci `TagResult` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `GenerateTagsForUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Pobiera ona język wybrany na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.TagImageAsync`, przekazując adres URL i język, a następnie zwraca wynik w postaci wystąpienia `TagResult`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-## <a name="explore-the-recognize-text-ocr-scenario"></a>Poznaj scenariusz rozpoznaje tekst (optyczne rozpoznawanie znaków)
+## <a name="explore-the-recognize-text-ocr-scenario"></a>Poznawanie scenariusza rozpoznawania tekstu (OCR)
 
-Ten scenariusz jest zarządzane przez stronę OCRPage.xaml. Wybierz język do rozpoznawania i wyodrębnianie tekstu drukowanego z obrazu i wyświetlić obraz i wyniki. Na stronie scenariusz korzysta z następujących metod, w zależności od źródła obrazu:
-
-* UploadAndRecognizeImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metody.
-* RecognizeUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.RecognizePrintedTextAsync` metody.
-
-`UploadAndRecognizeImageAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Ponieważ Przykładowa aplikacja jest analizowanie lokalny obraz, ma do wysłania zawartości obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego, określone w `imageFilePath` do odczytu jako `Stream`, następnie pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metody, wskazujący, że orientacji nie została wykryta i przekazanie `Stream` pliku i język, a następnie zwraca wynik w postaci `OcrResult` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
-
-`RecognizeUrlAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Pobiera języka wybranego na stronie scenariusz. Wywołuje `ComputerVisionClient.RecognizePrintedTextAsync` metody, wskazujący, że orientacji nie została wykryta i przekazanie adresu URL obrazu i języka, a następnie zwraca wynik w postaci `OcrResult` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
-
-## <a name="explore-the-recognize-text-v2-english-scenario"></a>Poznaj scenariusz (angielski) rozpoznaje V2 tekstu
-
-Ten scenariusz jest zarządzane przez stronę TextRecognitionPage.xaml. Wybierz tryb rozpoznawania i język, który chcesz asynchronicznie rozpoznaje i wyodrębnianie tekstu drukowanych lub pisma odręcznego z obrazów i zobacz obrazu i wyniki. Na stronie scenariusz korzysta z następujących metod, w zależności od źródła obrazu:
+Ten scenariusz jest zarządzany przez stronę OCRPage.xaml. Możesz wybrać język do rozpoznawania i wyodrębniania tekstu drukowanego z obrazu oraz zobaczyć zarówno obraz, jak i wyniki. Strona scenariusza korzysta z następujących metod w zależności od źródła obrazu:
 
 * UploadAndRecognizeImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `RecognizeAsync` metody i przekazywanie sparametryzowane delegata dla `ComputerVisionClient.RecognizeTextInStreamAsync` metody.
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.RecognizePrintedTextInStreamAsync`.
 * RecognizeUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `RecognizeAsync` metody i przekazywanie sparametryzowane delegata dla `ComputerVisionClient.RecognizeTextAsync` metody.
-* RecognizeAsync ta metoda obsługuje wywołania asynchronicznego dla obu `UploadAndRecognizeImageAsync` i `RecognizeUrlAsync` metody, a także sondowania wyników, wywołując `ComputerVisionClient.GetTextOperationResultAsync` metody.
+  Ta metoda jest używana dla obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.RecognizePrintedTextAsync`.
 
-W przeciwieństwie do innych scenariusze przetwarzania obrazów w przykładowej aplikacji ten scenariusz jest asynchroniczny, w tym jedna metoda jest wywoływana, aby uruchomić proces, ale inna metoda jest wywoływana, aby sprawdzić stan i zwracają wyniki tego procesu. Logiczny przepływ w tym scenariuszu jest nieco inne niż w innych scenariuszach.
+Metoda `UploadAndRecognizeImageAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Ponieważ przykładowa aplikacja analizuje lokalny obraz, musi wysłać zawartość tego obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego określonego w `imageFilePath` do odczytu jako `Stream`, a następnie pobranie języka wybranego na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.RecognizePrintedTextInStreamAsync` wskazującą, że orientacja nie została wykryta i przekazującą `Stream` dla pliku i język, a następnie zwraca wynik w postaci wystąpienia `OcrResult`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-`UploadAndRecognizeImageAsync` Metoda otwiera plik lokalny, określone w `imageFilePath` do odczytu jako `Stream`, następnie wywołuje `RecognizeAsync` jest metoda:
+Metoda `RecognizeUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Pobiera ona język wybrany na stronie scenariusza. Wywołuje to metodę `ComputerVisionClient.RecognizePrintedTextAsync` wskazującą, że orientacja nie została wykryta i przekazującą adres URL i język, a następnie zwraca wynik w postaci wystąpienia `OcrResult`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-* Wyrażenie lambda do sparametryzowanej delegat asynchroniczne `ComputerVisionClient.RecognizeTextInStreamAsync` metody, za pomocą `Stream` pliku i trybu rozpoznawania jako parametry w `GetHeadersAsyncFunc`.
-* Wyrażenie lambda do delegata można pobrać `Operation-Location` wartości nagłówka odpowiedzi, `GetOperationUrlFunc`.
+## <a name="explore-the-recognize-text-v2-english-scenario"></a>Poznawanie scenariusza rozpoznawania tekstu w wersji 2 (język angielski)
 
-`RecognizeUrlAsync` Wywołania metody `RecognizeAsync` jest metoda:
+Ten scenariusz jest zarządzany przez stronę TextRecognitionPage.xaml. Możesz wybrać tryb rozpoznawania i język, aby asynchronicznie rozpoznawać i wyodrębniać tekst drukowany albo pismo odręczne z obrazu oraz wyświetlić zarówno obraz, jak i wyniki. Strona scenariusza korzysta z następujących metod w zależności od źródła obrazu:
 
-* Wyrażenie lambda do sparametryzowanej delegat asynchroniczne `ComputerVisionClient.RecognizeTextAsync` metody z adresem URL zdalnego obrazu i trybu rozpoznawania jako parametry w `GetHeadersAsyncFunc`.
-* Wyrażenie lambda do delegata można pobrać `Operation-Location` wartości nagłówka odpowiedzi, `GetOperationUrlFunc`.
+* UploadAndRecognizeImageAsync  
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłane do przetwarzania obrazów za pomocą metody `RecognizeAsync`, oraz przekazuje sparametryzowanego delegata dla metody `ComputerVisionClient.RecognizeTextInStreamAsync`.
+* RecognizeUrlAsync  
+  Ta metoda jest używana do obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `RecognizeAsync`, oraz przekazuje sparametryzowanego delegata dla metody `ComputerVisionClient.RecognizeTextAsync`.
+* RecognizeAsync Ta metoda obsługuje wywołania asynchroniczne zarówno dla metody `UploadAndRecognizeImageAsync`, jak i `RecognizeUrlAsync` oraz sondowanie wyników za pomocą wywołania metody `ComputerVisionClient.GetTextOperationResultAsync`.
 
-Gdy `RecognizeAsync` metoda zostanie zakończona, zarówno `UploadAndRecognizeImageAsync` i `RecognizeUrlAsync` metody zwracają wynik jako `TextOperationResult` wystąpienia. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+W odróżnieniu od innych scenariuszy dołączonych do przykładowej aplikacji przetwarzania obrazów ten scenariusz jest asynchroniczny w tym sensie, że jedna metoda jest wywoływana, aby uruchomić proces, ale inna metoda jest wywoływana, aby sprawdzić stan i zwrócić wyniki tego procesu. Logiczny przepływ w tym scenariuszu jest nieco inny niż w pozostałych scenariuszach.
 
-`RecognizeAsync` Metoda wywołuje delegata sparametryzowane dla dowolnego `ComputerVisionClient.RecognizeTextInStreamAsync` lub `ComputerVisionClient.RecognizeTextAsync` przekazanej metody `GetHeadersAsyncFunc` i czeka na odpowiedź. Następnie metoda wywołuje delegata przekazanej `GetOperationUrlFunc` można pobrać `Operation-Location` wartości nagłówka odpowiedzi z odpowiedzi. Ta wartość jest adres URL używany do pobierania wyników metoda przekazanej `GetHeadersAsyncFunc` z przetwarzania obrazów.
+Metoda `UploadAndRecognizeImageAsync` otwiera plik lokalny określony w `imageFilePath` do odczytu jako `Stream`, a następnie wywołuje metodę `RecognizeAsync`, przekazując:
 
-`RecognizeAsync` Następnie wywołuje metodę `ComputerVisionClient.GetTextOperationResultAsync` metody, przekazując adres URL, pobierane `Operation-Location` nagłówek odpowiedzi, można pobrać stanu i wynik metody przekazanej `GetHeadersAsyncFunc`. Jeśli stan nie oznacza, że metoda zakończona, pomyślnie lub niepomyślnie, `RecognizeAsync` wywołania metody `ComputerVisionClient.GetTextOperationResultAsync` 3 więcej razy oczekiwania 3 sekundy między wywołaniami. `RecognizeAsync` Metoda zwraca wyniki do metody, która nazwała go.
+* Wyrażenie lambda dla sparametryzowanego asynchronicznego delegata metody `ComputerVisionClient.RecognizeTextInStreamAsync` z `Stream` dla pliku i trybem rozpoznawania jako parametrami w `GetHeadersAsyncFunc`.
+* Wyrażenie lambda dla delegata, aby pobrać wartości nagłówka odpowiedzi `Operation-Location` w `GetOperationUrlFunc`.
 
-## <a name="explore-the-get-thumbnail-scenario"></a>Poznaj scenariusz uzyskiwanie miniatur
+Metoda `RecognizeUrlAsync` wywołuje metodę `RecognizeAsync`, przekazując:
 
-Ten scenariusz jest zarządzane przez stronę ThumbnailPage.xaml. Można wskazać, czy ma być używany, inteligentne przycinanie i określić żądaną wysokość i szerokość, do generowania miniatur za pomocą obrazu i zobacz obrazu i wyniki. Na stronie scenariusz korzysta z następujących metod, w zależności od źródła obrazu:
+* Wyrażenie lambda dla sparametryzowanego asynchronicznego delegata metody `ComputerVisionClient.RecognizeTextAsync` z adresem URL zdalnego obrazu i trybem rozpoznawania jako parametrami w `GetHeadersAsyncFunc`.
+* Wyrażenie lambda dla delegata, aby pobrać wartości nagłówka odpowiedzi `Operation-Location` w `GetOperationUrlFunc`.
+
+Gdy metoda `RecognizeAsync` zostanie zakończona, zarówno metoda `UploadAndRecognizeImageAsync`, jak i `RecognizeUrlAsync` zwracają wynik jako wystąpienie `TextOperationResult`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
+
+Metoda `RecognizeAsync` wywołuje sparametryzowanego delegata dla metody `ComputerVisionClient.RecognizeTextInStreamAsync` albo `ComputerVisionClient.RecognizeTextAsync` przekazanej w `GetHeadersAsyncFunc` i czeka na odpowiedź. Następnie metoda wywołuje delegata przekazanego w `GetOperationUrlFunc`, aby pobrać wartość nagłówka odpowiedzi `Operation-Location` z odpowiedzi. Ta wartość to adres URL służący do pobierania wyników metody przekazanej w `GetHeadersAsyncFunc` z przetwarzania obrazów.
+
+Następnie metoda `RecognizeAsync` wywołuje metodę `ComputerVisionClient.GetTextOperationResultAsync`, przekazując adres URL pobrany z nagłówka odpowiedzi `Operation-Location`, aby pobrać stan i wynik metody przekazanej w `GetHeadersAsyncFunc`. Jeśli stan nie wskazuje, że metoda została zakończona, pomyślnie lub niepomyślnie, metoda `RecognizeAsync` wywołuje `ComputerVisionClient.GetTextOperationResultAsync` jeszcze 3 razy, oczekując 3 sekundy między wywołaniami. Metoda `RecognizeAsync` zwraca wyniki do metody, która ją wywołała.
+
+## <a name="explore-the-get-thumbnail-scenario"></a>Poznawanie scenariusza pobierania miniatur
+
+Ten scenariusz jest zarządzany przez stronę ThumbnailPage.xaml. Możesz wskazać, czy ma być używane inteligentne przycinanie, i określić żądaną wysokość i szerokość w celu wygenerowania miniatury z obrazu oraz wyświetlić zarówno obraz, jak i wyniki. Strona scenariusza korzysta z następujących metod w zależności od źródła obrazu:
 
 * UploadAndThumbnailImageAsync  
-  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.GenerateThumbnailInStreamAsync` metody.
+  Ta metoda jest używana do obrazów lokalnych, w których obraz musi być zakodowany jako `Stream` i wysłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.GenerateThumbnailInStreamAsync`.
 * ThumbnailUrlAsync  
-  Ta metoda jest używana dla zdalnego obrazów, w których adres URL obrazu jest wysyłane do przetwarzania obrazów, wywołując `ComputerVisionClient.GenerateThumbnailAsync` metody.
+  Ta metoda jest używana dla obrazów zdalnych, w których adres URL obrazu jest wysyłany do przetwarzania obrazów za pomocą wywołania metody `ComputerVisionClient.GenerateThumbnailAsync`.
 
-`UploadAndThumbnailImageAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Ponieważ Przykładowa aplikacja jest analizowanie lokalny obraz, ma do wysłania zawartości obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego, określone w `imageFilePath` do odczytu jako `Stream`. Wywołuje `ComputerVisionClient.GenerateThumbnailInStreamAsync` jest metoda szerokości, wysokości `Stream` dla pliku oraz czy ma być używany, inteligentne przycinanie, a następnie zwraca wynik w postaci `Stream`. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `UploadAndThumbnailImageAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Ponieważ przykładowa aplikacja analizuje lokalny obraz, musi wysłać zawartość tego obrazu do przetwarzania obrazów. Spowoduje to otwarcie pliku lokalnego określonego w `imageFilePath` do odczytu jako `Stream`. Wywołuje to metodę `ComputerVisionClient.GenerateThumbnailInStreamAsync` przekazującą szerokość, wysokość, `Stream` dla pliku oraz to, czy ma być użyte inteligentne przycinanie, a następnie zwraca wynik w postaci `Stream`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
-`RecognizeUrlAsync` Metoda tworzy nowy `ComputerVisionClient` wystąpienia, przy użyciu określonej subskrypcji key i punktu końcowego adresu URL. Wywołuje `ComputerVisionClient.GenerateThumbnailAsync` jest metoda szerokość, wysokość, adres URL obrazu i czy ma być używany, inteligentne przycinanie, następnie zwraca wynik w postaci `Stream`. Odziedziczone po metody `ImageScenarioPage` klasy przedstawić zwracane wyniki na stronie scenariusz.
+Metoda `RecognizeUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, używając określonego klucza subskrypcji i adresu URL punktu końcowego. Wywołuje to metodę `ComputerVisionClient.GenerateThumbnailAsync` przekazującą szerokość, wysokość, adres URL dla pliku oraz to, czy ma być użyte inteligentne przycinanie, a następnie zwraca wynik w postaci `Stream`. Metody odziedziczone po klasie `ImageScenarioPage` przedstawiają zwracane wyniki na stronie scenariusza.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, usuń folder, do którego zostało sklonowane `Microsoft/Cognitive-Vision-Windows` repozytorium. Jeśli została wybrana do użycia przykładowe obrazy, również usunąć folder, do którego zostało sklonowane `Microsoft/Cognitive-Face-Windows` repozytorium.
+Gdy nie jest już potrzebny, usuń folder, do którego zostało sklonowane repozytorium `Microsoft/Cognitive-Vision-Windows`. Jeśli postanowisz użyć przykładowych obrazów, również usuń folder, do którego zostało sklonowane repozytorium `Microsoft/Cognitive-Face-Windows`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do interfejsu API rozpoznawania twarzy](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

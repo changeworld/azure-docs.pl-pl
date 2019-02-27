@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7d5bfba10fe68c4d29a66fe39a386aec975b978f
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 19d34e76c73c5ec2472d3eacddc01d6aebb6b9fb
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651536"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889107"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -30,7 +30,7 @@ Można wdrażać modele do następujących celów obliczeń:
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
 | [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
-| [Usługa Azure środowiska obliczeniowego usługi ML](#amlcompute) | Wnioskowanie usługi Batch | Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje normalne lub niskiego priorytetu maszyn wirtualnych. |
+| Azure ML Compute | Wnioskowanie usługi Batch | Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje normalne lub niskiego priorytetu maszyn wirtualnych. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
 | [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |

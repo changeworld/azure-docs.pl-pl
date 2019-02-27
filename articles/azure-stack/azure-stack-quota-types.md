@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239107"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877949"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -74,7 +74,7 @@ Istnieją dwa różne sposoby, aby wyświetlić istniejące limitu przydziału:
 3.  W otwartym bloku wybierz **usług i przydziałów**.
 4.  Wybierz limit przydziału, czy chcesz wyświetlić, klikając go w **nazwa** kolumny.
 
-    [ ![Przydziały](media/azure-stack-quota-types/quotas1sm.png "Wyświetl limity przydziału") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Przydziały](media/azure-stack-quota-types/quotas1sm.png "Wyświetl limity przydziału")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>Dostawcy zasobów
 
@@ -92,7 +92,7 @@ Istnieją dwa różne sposoby, aby edytować limit przydziału:
 2.  Wybierz plan, dla którego chcesz edytować limit przydziału, klikając jego nazwę.
 3.  W otwartym bloku wybierz **usług i przydziałów**.
 4.  Wybierz limit przydziału, czy chcesz edytować, klikając go w **nazwa** kolumny.
-    [ ![Przydziały](media/azure-stack-quota-types/quotas1sm.png "Wyświetl limity przydziału") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Przydziały](media/azure-stack-quota-types/quotas1sm.png "Wyświetl limity przydziału")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5.  W otwartym bloku wybierz **edytować w obliczeniowej**, **edytowania w sieci**, lub **edycji w magazynie**.
     ![Przydziały](media/azure-stack-quota-types/quotas3.png "Wyświetl limity przydziału")    

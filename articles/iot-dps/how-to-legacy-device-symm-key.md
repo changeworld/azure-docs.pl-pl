@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 963d03db2db811b44b1d89df8254f751ec7d3136
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341239"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877404"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
 
@@ -124,7 +124,7 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie
 
     - **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
 
-    - **Automatycznie Generuj klucze**: Zaznacz to pole wyboru.
+    - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
 
     - **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **statycznie** można przypisać do określonego koncentratora.
 
@@ -239,7 +239,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Znajdź wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** który jest ujęty w komentarz.
+6. Znajdź wywołanie funkcji `prov_dev_set_symmetric_key_info()` w pliku **prov\_dev\_client\_sample.c**, które jest ujęte w komentarz.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -293,8 +293,8 @@ Należy pamiętać, że spowoduje to pozostawienie klucza pochodnego urządzenia
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej Reprovisioning, zobacz [pojęcia reprovisoning urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-* [Szybki Start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
-* Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego ](how-to-unprovision-devices.md) 
+* [Szybki start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
+* Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
 
 
 

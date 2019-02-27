@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ae26a2daf2a65eaf56672c9e75147bd71e489a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b89c02aa0d30ec1928be2110fe6470da4f28080c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330736"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889923"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrożenie programu SQL Server Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -383,7 +383,7 @@ SQL Server 2014 i nowszych wersjach open możliwości mają być przechowywane p
 * Wymienione wcześniej dotyczące dystrybucji wirtualnych dysków twardych na różnych kontach magazynu Azure kwestie dla tej metody, a także wdrożeń. Oznacza, że liczba operacji We/Wy na wartości konta usługi Azure Storage.
 * Zamiast rachunku względem limit przydziału operacji We/Wy magazynu maszyny Wirtualnej, ruch z magazynu obiektów blob, reprezentujący plików danych i dziennika programu SQL Server, będzie brana pod uwagę na przepustowość sieci maszyny Wirtualnej z określonego typu maszyny Wirtualnej. Dotyczące przepustowości sieci i magazynu konkretnego typu maszyn wirtualnych, zapoznaj się z artykułem [rozmiary dla Windows maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
 * W wyniku wypychanie we/wy przez limit przydziału sieci, są mieliźnie głównie przydziału miejsca do magazynowania i korzystając z niego korzystać tylko częściowo ogólną przepustowość maszyny Wirtualnej.
-* Cele wydajności przepływności operacji We/Wy i operacje We/Wy z usługi Azure Premium Storage rozmiarów inny dysk nie mają już zastosowania. Nawet jeśli obiekty BLOB, który został utworzony znajdują się w usłudze Azure Premium Storage. Obiekty docelowe są udokumentowane artykuł [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets). W wyniku umieszczenia plików danych programu SQL Server i plików dziennika bezpośrednio na obiekty BLOB, które są przechowywane w usłudze Azure Premium Storage, charakterystyki wydajności mogą być różne w porównaniu do wirtualnych dysków twardych w usłudze Azure Premium Storage.
+* Cele wydajności przepływności operacji We/Wy i operacje We/Wy z usługi Azure Premium Storage rozmiarów inny dysk nie mają już zastosowania. Nawet jeśli obiekty BLOB, który został utworzony znajdują się w usłudze Azure Premium Storage. Obiekty docelowe są udokumentowane artykuł [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage). W wyniku umieszczenia plików danych programu SQL Server i plików dziennika bezpośrednio na obiekty BLOB, które są przechowywane w usłudze Azure Premium Storage, charakterystyki wydajności mogą być różne w porównaniu do wirtualnych dysków twardych w usłudze Azure Premium Storage.
 * Na podstawie buforowania hosta jako dostępnej do dysków usługi Premium Storage dla platformy Azure nie jest dostępna w przypadku umieszczenia plików danych programu SQL Server bezpośrednio na obiektach blob platformy Azure.
 * Na maszynach wirtualnych serii M akcelerator zapisu platformy Azure nie może służyć do obsługi liczone w ułamkach milisekund zapisu pliku dziennika transakcji programu SQL Server. 
 

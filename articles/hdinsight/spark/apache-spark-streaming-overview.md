@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d44dc7e7a7b3c63012518c3e854270555f469247
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652085"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873716"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Przegląd platformy Apache Spark Streaming
 
@@ -34,7 +34,7 @@ Rozpoczynać pojedyncze zdarzenie, na przykład temperatury odczytu z połączon
 
 Każdy RDD reprezentuje zdarzenia zebrane za pośrednictwem przedziału czasu zdefiniowanych przez użytkownika o nazwie *odstęp czasu dla partii*. Zgodnie z każdej partii on upłynie, nowe RDD jest generowany, która zawiera wszystkie dane z tego interwału. Ciągłego zestawu danych są zbierane w DStream. Na przykład jeśli czasu dla partii jest jedna sekunda długie, Twoje DStream emituje partii co drugi zawierający RDD jeden, zawierający wszystkie dane pozyskane w ciągu sekundy tego. Podczas przetwarzania DStream, temperatury zdarzenie pojawi się jeden z tych partii. Aplikacja usługi Spark Streaming przetwarza partii, które zawiera zdarzenia i ostatecznie działa na danych przechowywanych w każdej RDD.
 
-![Przykład DStream ze zdarzeniami temperatury ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Przykład DStream ze zdarzeniami temperatury](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Struktura aplikacji do przesyłania strumieniowego platformy Spark
 

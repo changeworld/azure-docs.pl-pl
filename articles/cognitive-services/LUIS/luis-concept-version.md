@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: b363f68b625a6f0987e58609477f51c7098423bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874094"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870656"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Zrozumienie, jak i kiedy używać wersji usługi LUIS
 
@@ -35,7 +35,7 @@ Aby [Ustaw wersję](luis-how-to-manage-versions.md#set-active-version) jako akty
 
 Nazwa aktualnie aktywnego wersji jest wyświetlane w panelu po lewej stronie, górna po nazwie aplikacji. 
 
-[ ![Zmień wersję active](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![Zmień wersję active](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
 ## <a name="versions-and-publishing-slots"></a>Wersje i gniazda publikowania
 Opublikuj etapu i produktu miejsca. Każdego miejsca może mieć inną wersję lub tej samej wersji. Jest to przydatne w celu sprawdzenia zmian między wersjami modelu za pośrednictwem punktu końcowego, który jest dostępny do botów lub inne usługi LUIS wywołanie aplikacji. 

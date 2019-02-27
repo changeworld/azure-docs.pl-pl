@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899e33db242a34d09df6109c2e195bdff9c65262
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5bb2c7d9eed2ed33f3cd0c33bfc479d2e3627370
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823607"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889855"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -31,6 +31,10 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 + **Nowe funkcje**
 
   + Obsługuje teraz w usłudze Azure Machine Learning SDK [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) narzędzie do szacowania klasy w celu usprawnienia procesu uczenia i wdrażania modelu za pomocą kodu niestandardowego Chainer.
+  + Azure potoków uczenia maszynowego dodano możliwość wyzwalacza, uruchomienie potoku, zależnie od zmian magazynu danych. Potok [notesu harmonogram](https://aka.ms/pl-schedule) zostanie zaktualizowany w celu uwzględnienia tej funkcji.
+  
++ **Poprawki błędów i ulepszenia**
+  + Dodaliśmy obsługę potoki usługi Azure Machine Learning do ustawiania właściwości source_directory_data_store żądanego magazynu danych (takich jak magazyn obiektów blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , są dostarczane do [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Domyślnie kroki używają magazyn plików Azure jako zapasowy magazyn danych, które mogą być uruchamiane do ograniczania problemy, gdy dużą liczbę czynności są wykonywane jednocześnie.
 
 ### <a name="azure-portal"></a>Azure Portal
 + **Nowe funkcje**
@@ -38,6 +42,18 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
     + Nowy przycisk Uruchom przesłane z ScriptRunConfig uruchomień. Użytkownicy mogą ponownie uruchamiać istniejące uruchamiania w klastrze zdalnym wybranych przez nich.
     + Nowy Podgląd plików dzienników
     + Linki do eksperymentów przebiegów, obliczeniowych, modele, obrazy i wdrożeń, na karcie działania
+
+### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Zestaw SDK v1.0.15 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Nowe funkcje**
+  + Zapisywanie plików strumieni z przepływu danych obsługuje teraz przygotowania bazy danych. Także zapewnia możliwość modyfikowania nazwy strumienia plików do tworzenia nowych nazw plików.
+    + Przewodnik: [Praca z strumieni plików notesu](https://aka.ms/aml-data-prep-file-stream-nb)
+ 
++ **Poprawki błędów i ulepszenia**
+  + Zwiększono wydajność t-Digest, w dużych zestawach danych.
+  + Przygotowywanie danych obsługuje teraz odczytu danych ze ścieżki danych.
+  + Gorąca kodowań działa teraz w kolumnach boolean i numeryczne.
+  + Inne różne poprawki błędów.
 
 ## <a name="2019-02-11"></a>2019-02-11
 
@@ -100,7 +116,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Zestaw SDK v1.0.7 przeznaczonego do przygotowania danych usługi Azure Machine Learning
 
 + **Nowe funkcje**
-  + Ulepszenia magazynu danych (udokumentowane w artykule [magazyn danych jak-to-przewodnik](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
+  + Ulepszenia magazynu danych (udokumentowane w artykule [magazyn danych jak-to-przewodnik](https://aka.ms/aml-data-prep-datastore-nb))
     + Dodano możliwość odczytu i zapisu do udziału plików platformy Azure i magazynów danych usługi ADLS w skalowanie w górę.
     + Korzystając z magazynów danych, przygotowywanie danych obsługuje teraz przy użyciu uwierzytelniania jednostki usługi zamiast przeprowadzić uwierzytelnianie interakcyjne.
     + Dodano obsługę wasb i wasbs adresów URL.

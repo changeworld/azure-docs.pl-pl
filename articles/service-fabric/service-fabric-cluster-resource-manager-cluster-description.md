@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7be10f03d65e53b51c3916849dc12feb4de9c919
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1020e18894f4bb307ad14f780e76eab1df1314bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737658"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875977"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klaster usługi Service fabric
 Menedżer zasobów klastra usługi Service Fabric udostępnia kilka mechanizmów do opisywania klastra. Podczas wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usług uruchomionych w klastrze. Wymuszając te reguły istotne, również próbuje zoptymalizować zużycie zasobów w klastrze.
@@ -603,7 +603,7 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać informacji na temat architektury i przepływem informacji w ramach Menedżer zasobów klastra, zapoznaj się [w tym artykule ](service-fabric-cluster-resource-manager-architecture.md)
+* Aby uzyskać informacji na temat architektury i przepływem informacji w ramach Menedżer zasobów klastra, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-architecture.md)
 * Definiowanie defragmentacji metryk jest jednym ze sposobów Konsolidacja obciążenia w węzłach zamiast rozkładanie go. Aby dowiedzieć się, jak skonfigurować defragmentacji, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Zacznij od początku i [zapoznaj się z wprowadzeniem do usługi Service Fabric Menedżer zasobów klastra](service-fabric-cluster-resource-manager-introduction.md)
 * Aby dowiedzieć się o zarządza Menedżer zasobów klastra i równoważy obciążenie w klastrze, zapoznaj się z artykułem na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)

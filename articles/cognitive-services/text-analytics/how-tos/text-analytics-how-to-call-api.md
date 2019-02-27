@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6fedc1b9a6b88419dbcae41b5bb6f89bd8c5cbf7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244032"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886882"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -43,7 +43,7 @@ Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji anali
 | Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
 |`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagane | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
-|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5000 znaków. | Wymagane | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
+|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5,120 znaków. | Wymagane | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
 |`language` | 2-znakowy [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kod [obsługiwanym językiem](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów; Opcjonalnie na potrzeby wykrywania języka. Nie ma żadnych błędów, jeśli go wykluczyć, ale analiza jest obniżony bez niego. Kod języka powinna odpowiadać `text` należy podać. |
 
 Aby uzyskać więcej informacji na temat limitów, zobacz [Text Analytics — Przegląd > limity danych](../overview.md#data-limits). 

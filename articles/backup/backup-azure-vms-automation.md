@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9c3dadb328bb49f3cb1897bb64390ed75620b3d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4dff64010b8b9d57810e37866f69cd5ee203e66f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311889"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888359"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych przy użyciu programu PowerShell
 
@@ -415,7 +415,7 @@ Szczegóły zadania wynikowe zawiera identyfikator URI, który można tworzyć z
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Wystarczy go wdrożyć szablon umożliwiający utworzenie nowej maszyny Wirtualnej, zgodnie z objaśnieniem [tutaj](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source).
+Wystarczy go wdrożyć szablon umożliwiający utworzenie nowej maszyny Wirtualnej, zgodnie z objaśnieniem [tutaj](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS

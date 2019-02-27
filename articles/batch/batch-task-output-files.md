@@ -13,12 +13,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0be7ae9658259b327014c5678777c963e6cb5
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 77d8504dba180cfb56807344e659d6b22231f931
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302820"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866644"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań do usługi Azure Storage za pomocą interfejsu API usługi Batch
 
@@ -38,7 +38,7 @@ Usługa Azure Batch udostępnia więcej niż jeden sposób, aby zachować dane w
 - Aby zachować dane wyjściowe do kontenera usługi Azure Storage, o nazwie zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
-> Interfejs API usługi Batch nie obsługuje utrwalanie danych od zadania uruchomione w przypadku pul utworzonych za pomocą konfiguracji usługi w chmurze. Aby uzyskać informacji o zadaniu utrwalanie danych wyjściowych z pul uruchamianie konfiguracji usługi w chmurze, zobacz [utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET w celu utrwalenia ](batch-task-output-file-conventions.md).
+> Interfejs API usługi Batch nie obsługuje utrwalanie danych od zadania uruchomione w przypadku pul utworzonych za pomocą konfiguracji usługi w chmurze. Aby uzyskać informacji o zadaniu utrwalanie danych wyjściowych z pul uruchamianie konfiguracji usługi w chmurze, zobacz [utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET w celu utrwalenia](batch-task-output-file-conventions.md).
 
 Jeśli scenariusz różni się od przedstawionych powyżej, może być konieczne należy wziąć pod uwagę innego podejścia. Na przykład interfejs API usługi Batch obecnie nie obsługuje przesyłania strumieniowego danych wyjściowych do usługi Azure Storage, podczas gdy zadanie jest uruchomione. Do strumienia wyjściowego, należy wziąć pod uwagę za pomocą biblioteki Konwencji plików usługi Batch, dostępna dla platformy .NET. W przypadku języków należy zaimplementować własnego rozwiązania. Aby uzyskać więcej informacji na temat innych opcji utrwalanie danych wyjściowych zadania, zobacz [utrwalanie danych wyjściowych zadań i zadań w usłudze Azure Storage](batch-task-output.md).
 

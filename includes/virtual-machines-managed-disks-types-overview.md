@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8a067474fb172d4ff7a7fdf7eb6d24536bd2d017
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1556a7d482a6644831589937b1847b1d63e72693
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443366"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56890961"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -99,7 +99,7 @@ Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Rozmiar dysku w GiB           | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8192     | 16,384     | 32,767    |
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | Maks. 500              | Maks. 500              | Maks. 500              | Maks. 500 | Maks. 500              | Maks. 500              | Maks. 500             | Maks. 500              | Maksymalnie 1300              | Do 2000              | Do 2000              |
-| Przepływność na dysk | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s| Maksymalnie 300 MiB/s |  Maks. 500 MiB/s | Maks. 500 MiB/s |
+| Przepływność na dysk |  Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s| Maksymalnie 300 MiB/s |  Maks. 500 MiB/s | Maks. 500 MiB/s |
 
 ## <a name="standard-hdd"></a>Standardowa, dysk twardy
 

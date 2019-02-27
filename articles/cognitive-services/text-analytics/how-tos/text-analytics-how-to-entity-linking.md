@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 135b684c67776da7d722074abe185b5ed2a860fa
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242757"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889413"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -74,7 +74,7 @@ Dokumenty JSON muszą mieć następujący format: identyfikator, tekst, język
 
 Dla aktualnie obsługiwanych języków, zobacz [tej listy](../text-analytics-supported-languages.md).
 
-Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustrację zawartość, którą może przesłać w celu łączenia jednostek.
+Rozmiar dokumentu musi być w obszarze 5,120 znaków na dokument, a może mieć maksymalnie 1000 elementów (ID) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustrację zawartość, którą może przesłać w celu łączenia jednostek.
 
 ```
 {"documents": [{"id": "1",

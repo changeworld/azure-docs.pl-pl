@@ -1,6 +1,6 @@
 ---
 title: Przykład — stosowanie tagu i jego wartości domyślnej
-description: Te przykładowe zasady dołączają określoną nazwę i wartość tagu, jeśli nie podano tagu.
+description: Ta przykładowa definicja zasad dołącza określoną nazwę i wartość tagu, jeśli nie podano tagu.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef044d5ccba706ebc0c7102414cb1e2b42b537cb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 989d09b3e4b576fa21156ec71485c54422c643b7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242162"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338228"
 ---
-# <a name="apply-tag-and-its-default-value"></a>Stosowanie tagu i jego wartości domyślnej
+# <a name="sample---apply-tag-and-its-default-value"></a>Przykład — stosowanie tagu i jego wartości domyślnej
 
 Ta zasada dołącza określoną nazwę i wartość tagu, jeśli nie podano tagu. Należy określić nazwę i wartość tagu do zastosowania.
 

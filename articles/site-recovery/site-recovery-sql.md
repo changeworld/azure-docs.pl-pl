@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e84c33b35ef7828cc16be4b532ab8406e0236ee3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847800"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876674"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurowanie odzyskiwania po awarii dla programu SQL Server 
 
@@ -26,9 +26,9 @@ Przed rozpoczęciem upewnij się, że rozumiesz możliwości odzyskiwania po awa
 
 Wiele obciążeń używania programu SQL Server jako podstawa i można zintegrować z aplikacji, takich jak SharePoint, Dynamics i SAP, wdrożenie usług danych.  Program SQL Server można wdrożyć na wiele sposobów:
 
-* **Autonomicznego serwera SQL**: SQL Server i wszystkich baz danych, które są hostowane na jednym komputerze (fizyczny lub wirtualny). Podczas wirtualizacji, hostów klastra jest używany dla lokalnej wysokiej dostępności. Poziomie gościa o wysokiej dostępności nie jest zaimplementowana.
-* **Tryb Failover Clustering wystąpienia programu SQL Server (zawsze na FCI)**: dwa lub więcej węzłów z uruchomionym programem SQL Server wystąpienia z dyskami udostępnionymi są skonfigurowane w klastrze pracy awaryjnej Windows. Jeśli węzeł jest wyłączony, klaster może pracy awaryjnej programu SQL Server do innego wystąpienia. Aby zaimplementować wysoką dostępność w lokacjach głównych, zazwyczaj służy tej konfiguracji. To wdrożenie nie chroni przed awarią lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel lub udostępnionego dysku vhdx.
-* **SQL zawsze włączonych grup dostępności**: co najmniej dwa węzły do ustawiania udostępnionego klastra nic za pomocą programu SQL Server baz danych skonfigurowanych w grupie dostępności, przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej.
+* **Autonomiczny program SQL Server**: Program SQL Server i wszystkimi bazami danych są hostowane na jednym komputerze (fizyczny lub wirtualny). Podczas wirtualizacji, hostów klastra jest używany dla lokalnej wysokiej dostępności. Poziomie gościa o wysokiej dostępności nie jest zaimplementowana.
+* **SQL Server awaryjnej wystąpienia (zawsze włączone FCI)**: Dwa lub więcej węzłów z uruchomionym programem SQL Server wystąpienia z dyskami udostępnionymi są skonfigurowane w klastrze pracy awaryjnej Windows. Jeśli węzeł jest wyłączony, klaster może pracy awaryjnej programu SQL Server do innego wystąpienia. Aby zaimplementować wysoką dostępność w lokacjach głównych, zazwyczaj służy tej konfiguracji. To wdrożenie nie chroni przed awarią lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel lub udostępnionego dysku vhdx.
+* **Zawsze włączone grupy dostępności programu SQL Server**: Co najmniej dwa węzły są konfigurowane w udostępnionym klastra nic za pomocą programu SQL Server baz danych skonfigurowanych w grupie dostępności, przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej.
 
  W tym artykule wykorzystuje następujące natywnych SQL awaryjnego odzyskiwania technologie do odzyskiwania baz danych do lokacji zdalnej:
 
@@ -62,7 +62,7 @@ Usługa Site Recovery może zostać zintegrowany z natywnych technologiami BCDR 
 **Funkcja** | **Szczegóły** | **SQL Server** |
 --- | --- | ---
 **Konfigurowanie zawsze włączonej grupy dostępności** | Autonomiczny uruchomić wiele wystąpień programu SQL Server w klastrze trybu failover, który ma wiele węzłów.<br/><br/>Bazy danych, można podzielić na grupy trybu failover, które można skopiować (dublowanych) w wystąpieniach programu SQL Server tak, aby Brak udostępnionego magazynu jest wymagana.<br/><br/>Zapewnia odzyskiwanie po awarii między lokacją główną a przynajmniej jednej lokacji dodatkowej. Dwa węzły można skonfigurować pod kątem w udostępnionej nic klastra przy użyciu bazy danych programu SQL Server jest skonfigurowany w grupie dostępności przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej. | SQL Server 2016, SQL Server 2014 i SQL Server 2012 Enterprise edition
-**(Zawsze na FCI) do klastra trybu failover** | Program SQL Server korzysta z Windows klastra trybu failover wysokiej dostępności obciążeń programu SQL Server w środowisku lokalnym.<br/><br/>Węzły uruchomione wystąpienia programu SQL Server z dyskami udostępnionymi są skonfigurowane w klastrze trybu failover. Jeśli wystąpienie jest wyłączony klastra kończy się niepowodzeniem przez inny.<br/><br/>Klaster nie chroni przed awarią lub przerw w magazynie udostępnionym. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel, lub udostępnione Vhdx. | Wersje programu SQL Server Enterprise<br/><br/>SQL Server Standard edition (ograniczoną do tylko dwa węzły)
+**(Zawsze na FCI) do klastra trybu failover** | Program SQL Server korzysta z Windows klastra trybu failover wysokiej dostępności obciążeń programu SQL Server w środowisku lokalnym.<br/><br/>Węzły uruchomione wystąpienia programu SQL Server z dyskami udostępnionymi są skonfigurowane w klastrze trybu failover. Jeśli wystąpienie jest wyłączony klastra kończy się niepowodzeniem przez inny.<br/><br/>Klaster nie chroni przed awarią lub przerw w magazynie udostępnionym. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel, lub udostępnione Vhdx. | SQL Server Enterprise editions<br/><br/>SQL Server Standard edition (ograniczoną do tylko dwa węzły)
 **(Wysokie bezpieczeństwo tryb) dublowania bazy danych** | Chroni pojedynczej bazy danych do pojedynczej kopii dodatkowej. Dostępne w obu wysokie bezpieczeństwo (synchroniczne) i trybach replikacji (asynchroniczny) o wysokiej wydajności. Nie wymaga klastra trybu failover. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise wszystkie wersje
 **Autonomiczny program SQL Server** | SQL Server i bazy danych są hostowane na jednym serwerze (fizyczny lub wirtualny). Klaster hosta jest używana do wysokiej dostępności, jeśli serwer znajduje się wirtualny. Nie wysokiej dostępności poziomie gościa. | Enterprise lub Standard
 
@@ -76,7 +76,7 @@ Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologia
 || Enterprise |Zawsze włączone grupy dostępności w celu zapewnienia wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności | |
 || Standardowa (Standard) |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne | |
 || Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |
-| SQL Server 2008 R2 lub 2008 |Enterprise lub Standard |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne |
+| SQL Server 2008 R2 or 2008 |Enterprise lub Standard |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne |
 || Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |
 | Program SQL Server (dowolna wersja) |Enterprise lub Standard |Wystąpienia klastra trybu failover — aplikacja usługi DTC |Replikacja usługi Site Recovery |Nieobsługiwane |
 
@@ -116,7 +116,7 @@ SQL Always On nie obsługuje natywnie testowy tryb failover. Dlatego zalecamy wy
 
 1. Przed wyzwoleniem testowy tryb failover planu odzyskiwania, należy odzyskać maszynę wirtualną z kopii zapasowej wykonywanej w poprzednim kroku.
 
-    ![Przywracanie z kopii zapasowej platformy Azure ](./media/site-recovery-sql/restore-from-backup.png)
+    ![Przywracanie z kopii zapasowej platformy Azure](./media/site-recovery-sql/restore-from-backup.png)
 
 1. [Wymuszenie kworum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) na maszynie wirtualnej przywróconej z kopii zapasowej.
 
@@ -130,9 +130,9 @@ SQL Always On nie obsługuje natywnie testowy tryb failover. Dlatego zalecamy wy
 
 1. Utwórz moduł równoważenia obciążenia z jeden z adresów IP utworzonych w ramach puli adresów IP frontonu, odpowiadający każdej odbiornika grupy dostępności i z maszyny wirtualnej SQL, które są dodawane do puli zaplecza.
 
-     ![Tworzenie modułu równoważenia obciążenia — pula adresów IP frontonu ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![Tworzenie modułu równoważenia obciążenia — pula adresów IP frontonu](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![Tworzenie modułu równoważenia obciążenia — puli zaplecza ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![Tworzenie modułu równoważenia obciążenia — puli zaplecza](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. Wykonaj test trybu failover planu odzyskiwania.
 
@@ -179,7 +179,7 @@ W przypadku klastra z programem SQL Server Standard edition lub SQL Server 2008 
 * Jeśli aplikacja korzysta z transakcji rozproszonych firma Microsoft zaleca wdrożeniem [Site Recovery dzięki replikacji sieci SAN](site-recovery-vmm-san.md) środowisku funkcji Hyper-V lub [serwer fizyczny/VMware do programu VMware](site-recovery-vmware-to-vmware.md) w środowisku VMware.
 * W przypadku aplikacji niewymagające usługi DTC powyżej metody należy użyć do odzyskania klastra jako autonomiczny serwer przy użyciu lokalnego wysokie bezpieczeństwo dublowania bazy danych.
 
-### <a name="on-premises-to-azure"></a>W środowisku lokalnym na platformie Azure
+### <a name="on-premises-to-azure"></a>Z serwera lokalnego do platformy Azure
 
 Usługa Site Recovery nie zapewnia gościa Obsługa klastrów, podczas replikacji do platformy Azure. Dla wersji Standard programu SQL Server także nie zapewnia rozwiązanie odzyskiwania po awarii niskie koszty. W tym scenariuszu firma Microsoft zaleca ochrony klastra programu SQL Server w środowisku lokalnym, do autonomicznego programu SQL Server i odzyskać ją na platformie Azure.
 

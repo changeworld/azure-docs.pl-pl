@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413553"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875790"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdowanie adresu przy użyciu usługi Azure Maps usługi wyszukiwania
 
@@ -37,7 +37,7 @@ Domyślnie większość zapytań wyszukiwania `maxFuzzyLevel=1` wydajność i ob
 
 2. Na karcie Builder wybierz **UZYSKAĆ** metody HTTP i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
 
-    ![Fuzzy Search ](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | Parametr | Sugerowana wartość |
     |---------------|------------------------------------------------|
@@ -49,7 +49,7 @@ Domyślnie większość zapytań wyszukiwania `maxFuzzyLevel=1` wydajność i ob
 
 3. Kliknij przycisk **Params**, a następnie wprowadź poniższy klucz / wartość pary do użycia jako parametry zapytania lub ścieżki w adresie URL żądania:
 
-    ![Fuzzy Search ](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_params.png)
 
     | Klucz | Wartość |
     |------------------|-------------------------|
@@ -75,7 +75,7 @@ Domyślnie większość zapytań wyszukiwania `maxFuzzyLevel=1` wydajność i ob
   
 6. W Params, wprowadź następujący klucz / wartość pary i kliknij przycisk **wysyłania**:
 
-    ![Fuzzy Search ](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
     | Klucz | Wartość |
     |-----|------------|
@@ -89,7 +89,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
 1. W narzędziu Postman, kliknij przycisk **nowe żądanie** | **żądanie GET** i nadaj mu nazwę **wyszukiwanie adresu**.
 2. Na karcie Builder wybierz **UZYSKAĆ** metodę HTTP, wprowadź adres URL żądania dla punktu końcowego interfejsu API i wybierz protokół autoryzacji, jeśli istnieje.
 
-    ![Wyszukiwanie adresu ](./media/how-to-search-for-address/address_search_url.png)
+    ![Wyszukiwanie adresu](./media/how-to-search-for-address/address_search_url.png)
   
     | Parametr | Sugerowana wartość |
     |---------------|------------------------------------------------|
@@ -99,7 +99,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
 
 3. Kliknij przycisk **Params**, a następnie wprowadź poniższy klucz / wartość pary do użycia jako parametry zapytania lub ścieżki w adresie URL żądania:
   
-    ![Wyszukiwanie adresu ](./media/how-to-search-for-address/address_search_params.png)
+    ![Wyszukiwanie adresu](./media/how-to-search-for-address/address_search_params.png)
   
     | Klucz | Wartość |
     |------------------|-------------------------|
@@ -130,7 +130,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
 
 2. Na karcie Builder wybierz **UZYSKAĆ** metody HTTP i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
   
-    ![Adres URL wyszukiwania wstecznego ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Adres URL wyszukiwania wstecznego](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Parametr | Sugerowana wartość |
     |---------------|------------------------------------------------|
@@ -140,7 +140,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
   
 3. Kliknij przycisk **Params**, a następnie wprowadź poniższy klucz / wartość pary do użycia jako parametry zapytania lub ścieżki w adresie URL żądania:
   
-    ![Adres parametry wyszukiwania wstecznego ](./media/how-to-search-for-address/reverse_address_search_params.png)
+    ![Adres parametry wyszukiwania wstecznego](./media/how-to-search-for-address/reverse_address_search_params.png)
   
     | Klucz | Wartość |
     |------------------|-------------------------|
@@ -190,7 +190,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
 
 2. Na karcie Builder wybierz **UZYSKAĆ** metody HTTP i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
   
-    ![Odwrócone wyszukiwanie ulicy wielu adresów ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Odwrócone wyszukiwanie ulicy wielu adresów](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Parametr | Sugerowana wartość |
     |---------------|------------------------------------------------|

@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3851e4c35b333e862ead296ad1e8448c3317228
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e5b06ad551b45bc0c892bc789c6f5c5a27b5bb0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210496"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882981"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -135,7 +135,7 @@ Usługa Azure AD Connect uaktualnianie kończy się niepowodzeniem, jeśli zawsz
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
 - Integracja Federację Ping w programie Azure AD Connect jest teraz dostępne za usługi ogólnie dostępne. [Dowiedz się więcej o sposobie federacyjnych usługi Azure AD za pomocą polecenia Ping Federację](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
-- Program Azure AD Connect utworzy teraz kopię zapasową zaufania usługi Azure AD w usługach AD FS, za każdym razem, gdy aktualizacja ma zostać i zapisuje go w osobny plik dla ułatwia przywracanie, jeśli jest to wymagane. [Dowiedz się więcej na temat nowych funkcji i usługi Azure AD zaufania zarządzania w programie Azure AD Connect ](https://aka.ms/fedtrustinaadconnect).
+- Program Azure AD Connect utworzy teraz kopię zapasową zaufania usługi Azure AD w usługach AD FS, za każdym razem, gdy aktualizacja ma zostać i zapisuje go w osobny plik dla ułatwia przywracanie, jeśli jest to wymagane. [Dowiedz się więcej na temat nowych funkcji i usługi Azure AD zaufania zarządzania w programie Azure AD Connect](https://aka.ms/fedtrustinaadconnect).
 - Nowe narzędzia do rozwiązywania problemów ułatwia rozwiązywanie problemów z zmiany podstawowego adresu e-mail i ukrywanie Zmiana warstwy konta z globalnej listy adresowej
 - Program Azure AD Connect została zaktualizowano o najnowsze programu SQL Server 2012 Native Client
 - Po przełączeniu logowania użytkownika synchronizacja skrótów haseł lub uwierzytelniania przekazywanego w zadaniu "Zmiana logowanie użytkownika", bezproblemowe logowanie jednokrotne pole wyboru jest domyślnie włączona.

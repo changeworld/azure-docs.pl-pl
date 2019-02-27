@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dc9d72afd14547a091acf64cea2c8f0bad75914
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234411"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267533"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Samouczek: Tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi
 
@@ -34,8 +34,6 @@ Ten samouczek obejmuje następujące zadania:
 > * Wdrożenie szablonu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -156,6 +154,9 @@ Istnieje wiele metod wdrażania szablonów.  W tym samouczku zostanie użyta us�
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile azuredeploy.json
     ```
+
+    > [!NOTE]
+    > Występuje problem z operacją we/wy na pliku podczas używania programu Azure PowerShell w usłudze Cloud Shell.  Komunikat o błędzie: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Nie można pobrać parametrów dynamicznych dla polecenia cmdlet. Nie można odnaleźć ścieżki „Azure:/azuredeploy.json”, ponieważ nie istnieje).  Tymczasowym obejściem jest niedołączanie przełącznika **-TemplateFile** w poleceniu `New-AzResourceGroupDeploy`. Polecenie wyświetli monit o wprowadzenie nazwy pliku.
 
 8. Uruchom następujące polecenie programu PowerShell, aby wyświetlić nowo utworzoną maszynę wirtualną:
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 722fc5366d8f6863d19d09bd6e555fcc9a73d570
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340114"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868123"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
@@ -470,7 +470,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
    * Przykład: Tylko pracownicy i nie tymczasowi pracownicy
 
-      * Atrybut: employeeID
+      * Atrybut: EmployeeID
 
       * Operator: NIE MA WARTOŚCI NULL
 
@@ -522,7 +522,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
 | ATRYBUT WORKDAY | ATRYBUT USŁUGI ACTIVE DIRECTORY |  ZGODNYM IDENTYFIKATOREM? | TWORZENIE I AKTUALIZOWANIE |
 | ---------- | ---------- | ---------- | ---------- |
-| **WorkerID**  |  employeeID | **Tak** | Zapisane podczas tworzenia tylko |
+| **WorkerID**  |  EmployeeID | **Tak** | Zapisane podczas tworzenia tylko |
 | **PreferredNameData**    |  cn    |   |   Zapisane podczas tworzenia tylko |
 | **SelectUniqueValue (Dołącz ("@", Dołącz do (".", \[FirstName\], \[LastName\]), "contoso.com"), Dołącz ("@", Dołącz (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Dołącz ("@", Dołącz (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Zapisane podczas tworzenia tylko 
 | **Zastąp(Mid(Zastąp(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisane podczas tworzenia tylko |
@@ -530,7 +530,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 | **Imię**   | givenName       |     |    Tworzenie i aktualizowanie |
 | **Nazwisko**   |   numery seryjne   |     |  Tworzenie i aktualizowanie |
 | **PreferredNameData**  |  displayName |     |   Tworzenie i aktualizowanie |
-| **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
+| **Firmy**         | company   |     |  Tworzenie i aktualizowanie |
 | **SupervisoryOrganization**  | department  |     |  Tworzenie i aktualizowanie |
 | **ManagerReference**   | menedżer  |     |  Tworzenie i aktualizowanie |
 | **BusinessTitle**   |  title     |     |  Tworzenie i aktualizowanie | 
@@ -1064,7 +1064,7 @@ W tej sekcji omówiono następujące aspekty rozwiązywania problemów:
 
 Po wykryciu nowego zatrudnienia w produkcie Workday (Załóżmy, identyfikatorze pracowników *21023*), programu Azure AD, inicjowanie obsługi administracyjnej prób usługi do tworzenia nowego konta użytkownika usługi AD dla pracownika i proces tworzy 4 rekordów dziennika inspekcji, zgodnie z poniższym opisem:
 
-  [ ![Dziennik inspekcji tworzenia platformy ops](media/workday-inbound-tutorial/wd_audit_logs_02.png) ](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![Dziennik inspekcji tworzenia platformy ops](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 Po kliknięciu poszczególnych rekordów dziennika inspekcji, **Szczeg** otwarcie strony. Oto, co **Szczeg** stronie są wyświetlane dla każdego typu rekordu dziennika.
 
@@ -1132,7 +1132,7 @@ Po kliknięciu poszczególnych rekordów dziennika inspekcji, **Szczeg** otwarci
 
 Atrybut menedżera jest atrybut odwołania w AD. Usługa aprowizowania nie atrybut manager w ramach operacji tworzenia użytkownika. Zamiast atrybutu menedżera jest ustawiona jako część *aktualizacji* operacji po utworzeniu konta usługi AD dla użytkownika. Rozszerzając powyższy przykład, załóżmy, że nowego zatrudnienia identyfikatorem pracowników "21451" została aktywowana w produkcie Workday i zatrudnienia nowego Menedżera (*21023*) ma już konto usługi AD. W tym scenariuszu przeszukiwanie dzienników inspekcji dla użytkownika 21451 wyświetlane wpisy 5.
 
-  [ ![Menedżer aktualizacji](media/workday-inbound-tutorial/wd_audit_logs_03.png) ](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![Menedżer aktualizacji](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 4 pierwsze rekordy są, takie jak te, które rozważyliśmy użytkownika w ramach operacji tworzenia. 5. rekord jest eksportu skojarzone z Menedżera atrybutu aktualizacji. Rekord dziennika wyświetla wynik operacji aktualizacji Menedżera konta usługi AD, która jest wykonywane przy użyciu Menedżera *objectGuid* atrybutu.
 

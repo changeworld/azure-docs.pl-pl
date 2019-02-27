@@ -1,6 +1,6 @@
 ---
-title: Samouczek — tworzenie roli niestandardowej przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: Rozpocznij pracę, tworząc rolę niestandardową przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Samouczek — tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Rozpocznij pracę, tworząc rolę niestandardową dla zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: d2b34fa12836416f68d57f0147dd0364a1501c13
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9cd736272fce71f08006d32a169b88d092a48231
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698023"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340216"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-cli"></a>Samouczek: Tworzenie roli niestandardowej przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Samouczek: Tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. W tym samouczku utworzysz rolę niestandardową o nazwie Reader Support Tickets przy użyciu interfejsu wiersza polecenia platformy Azure. Rola niestandardowa umożliwi użytkownikowi przeglądanie całej zawartości subskrypcji, a także otwieranie biletów pomocy technicznej.
+Jeśli [wbudowane role dla zasobów platformy Azure](built-in-roles.md) nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne role niestandardowe. W tym samouczku utworzysz rolę niestandardową o nazwie Reader Support Tickets przy użyciu interfejsu wiersza polecenia platformy Azure. Rola niestandardowa umożliwi użytkownikowi przeglądanie całej zawartości subskrypcji, a także otwieranie biletów pomocy technicznej.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -269,4 +269,4 @@ Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON, a następnie za
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie ról niestandardowych przy użyciu wiersza polecenia platformy Azure](custom-roles-cli.md)
+> [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](custom-roles-cli.md)

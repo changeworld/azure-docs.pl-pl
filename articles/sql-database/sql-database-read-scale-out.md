@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: cf32f3998e254e8f4a9c347980718dbc8d0b13c4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/25/2019
+ms.openlocfilehash: 3a937af5fba2c534e291a51c33c50434ab166ee0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461648"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868769"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
@@ -36,7 +36,7 @@ Po włączeniu odczytu skalowalnego w poziomie dla bazy danych aplikacji łącz�
 Jeśli odczyt skalowalnego w poziomie jest wyłączony lub ustaw właściwość ReadScale w warstwie usługi z nieobsługiwanego, wszystkie połączenia są kierowane do repliki odczytu i zapisu, niezależnie od `ApplicationIntent` właściwości.
 
 > [!NOTE]
-> W trakcie okresu zapoznawczego Store danych zapytania i zdarzeń rozszerzonych nie są obsługiwane w trybie tylko do odczytu replikach.
+> Zapytanie Data Store i zdarzeń rozszerzonych nie są obsługiwane w trybie tylko do odczytu replikach.
 
 ## <a name="data-consistency"></a>Spójność danych
 
@@ -125,7 +125,7 @@ Aby uzyskać więcej informacji, zobacz [baz danych — Utwórz lub zaktualizuj]
 Jeśli używasz odczytu skalowalnego w poziomie można załadować saldo tylko do odczytu na obciążenie bazy danych, która jest replikowana geograficznie (np. jako członek grupy trybu failover), upewnij się, że odczytu skalowalnego w poziomie jest włączona na podstawowe i pomocnicze bazy danych replikowanej geograficznie. Pozwoli to zagwarantować ten sam efekt równoważenia obciążenia, gdy aplikacja nawiązuje połączenie z nową podstawową po włączeniu trybu failover. Jeśli łączysz się do pomocniczej bazy danych replikowanej geograficznie skalę odczytu włączone, sesje z `ApplicationIntent=ReadOnly` będą kierowane do jednej z replik taki sam sposób, firma Microsoft trasy połączeń w głównej bazie danych.  Sesje bez `ApplicationIntent=ReadOnly` będą kierowane do repliki podstawowej replikowanej geograficznie pomocniczej, który również jest tylko do odczytu. Replikowanej geograficznie pomocniczej bazy danych jest inny punkt końcowy niż podstawowa baza danych, dlatego w przeszłości pomocniczy dostęp do jej nie muszą ustawić `ApplicationIntent=ReadOnly`. Aby zapewnić zgodność z poprzednimi wersjami `sys.geo_replication_links` Pokazuje widok DMV `secondary_allow_connections=2` (każde połączenie klienta jest dozwolone).
 
 > [!NOTE]
-> Podczas (wersja zapoznawcza), działanie okrężne lub inne obciążenia o zrównoważonym obciążeniu routingu między lokalnym repliki pomocniczej bazy danych nie jest obsługiwana.
+> Działanie okrężne ani żadnych innych ze zrównoważonym obciążeniem routingu między lokalnym repliki pomocniczej bazy danych nie jest obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

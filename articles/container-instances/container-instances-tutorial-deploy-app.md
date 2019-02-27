@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191110"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326743"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: Wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
 
@@ -36,26 +36,20 @@ W tej sekcji używa się interfejsu wiersza polecenia platformy Azure do wdroże
 
 ### <a name="get-registry-credentials"></a>Pobieranie poświadczeń rejestru
 
-Podczas wdrażania obrazu hostowanego w prywatnym rejestrze kontenerów, takim jak rejestr utworzony w [drugim samouczku](container-instances-tutorial-prepare-acr.md), musisz podać poświadczenia rejestru.
+Podczas wdrażania obrazu hostowanego w prywatnym rejestrze kontenerów, takim jak rejestr utworzony w [drugim samouczku](container-instances-tutorial-prepare-acr.md), musisz podać poświadczenia umożliwiające dostęp do rejestru. Jak pokazano w artykule [Uwierzytelnianie w usłudze Azure Container Registry z poziomu usługi Azure Container Instances](../container-registry/container-registry-auth-aci.md), w wielu scenariuszach najlepiej jest utworzyć jednostkę usługi Azure Active Directory i skonfigurować ją pod kątem uprawnień *ściągania* dla rejestru. W artykule tym można znaleźć przykładowe skrypty do tworzenia jednostki usługi z wymaganymi uprawnieniami. Zanotuj identyfikator jednostki usługi i hasło jednostki usługi. Poświadczenia te są używane podczas wdrażania kontenera.
 
-Najpierw uzyskaj pełną nazwę serwera logowania rejestru kontenerów (zastąp `<acrName>` nazwą rejestru):
+Potrzebna jest również pełna nazwa serwera logowania rejestru kontenerów (element `<acrName>` należy zastąpić nazwą rejestru):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-Następnie pobierz hasło rejestru kontenerów:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
 ### <a name="deploy-container"></a>Wdrażanie kontenera
 
-Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp elementy `<acrLoginServer>` i `<acrPassword>` wartościami uzyskanymi przy użyciu dwóch poprzednich poleceń. Zastąp wartość `<acrName>` nazwą rejestru kontenerów oraz wartość `<aciDnsLabel>` żądaną nazwą DNS.
+Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp element `<acrLoginServer>` wartością uzyskaną przy użyciu poprzedniego polecenia. Zastąp elementy `<service-principal-ID>` i `<service-principal-password>` identyfikatorem jednostki usługi i hasłem jednostki usługi, które umożliwiają dostęp do rejestru. Zastąp element `<aciDnsLabel>` odpowiednią nazwą DNS.
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label <aciDnsLabel> --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure. Wartość `--dns-name-label` musi być unikatowa w regionie platformy Azure, w którym tworzysz wystąpienia kontenera. Zmodyfikuj wartość w poprzednim poleceniu, jeśli podczas wykonywania polecenia zostanie wyświetlony komunikat o błędzie **etykiety nazwy DNS**.

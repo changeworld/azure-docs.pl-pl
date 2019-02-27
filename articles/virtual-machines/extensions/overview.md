@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 1d092f03013d98106138f35734d960567121a5bf
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692785"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881859"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia maszyny wirtualnej platformy Azure i funkcji
 Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure, możesz użyć istniejących obrazów i następnie dostosuj je, jako część wdrożenia, uzyskiwanie działalność niestandardowe Tworzenie obrazu.
@@ -54,6 +54,6 @@ Rozszerzenia instalowanie aplikacji, np. wszystkie aplikacje, które istnieją p
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać więcej informacji na temat działania agenta systemu Linux i rozszerzenia, zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcji dla systemu Linux](features-linux.md).
 * Aby uzyskać więcej informacji na temat działania agenta gościa Windows i rozszerzenia zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcji dla Windows](features-windows.md).  
-* Aby zainstalować agenta gościa Windows, zobacz [omówienie agenta maszyny wirtualnej Windows Azure ](agent-windows.md).  
-* Aby zainstalować agenta systemu Linux, zobacz [omówienie agenta maszyny wirtualnej systemu Linux platformy Azure ](agent-linux.md).  
+* Aby zainstalować agenta gościa Windows, zobacz [omówienie agenta maszyny wirtualnej Windows Azure](agent-windows.md).  
+* Aby zainstalować agenta systemu Linux, zobacz [omówienie agenta maszyny wirtualnej systemu Linux platformy Azure](agent-linux.md).  
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6433d130da108ce7bd0b6f8b4093161043c32645
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5317eb83552b5ea15b2d709f61b456a7a508e9ba
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733150"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876181"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: Wykrywanie oszustw w czasie rzeczywistym
 
@@ -68,7 +68,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
 
 5. Kliknij nową przestrzeń nazw, a następnie w okienku przestrzeni nazw kliknij **Centrum zdarzeń**.
 
-   ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
 6. Nazwa nowego Centrum zdarzeń `asa-eh-frauddetection-demo`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj je, ponieważ nazwa będą potrzebne później. Nie musisz teraz Ustaw inne opcje dla Centrum zdarzeń.
 

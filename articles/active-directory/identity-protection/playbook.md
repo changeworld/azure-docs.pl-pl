@@ -17,12 +17,12 @@ ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52d89d577d0bf50168104e9dae1ddc2a5278ff0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bc2f2f90029918955f00771acaac10b3cf5f4416
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201571"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868276"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Podręcznik usługi Azure Active Directory Identity Protection
 

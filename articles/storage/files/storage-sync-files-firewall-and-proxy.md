@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 96389e9aa5758ea51448affa389c90eaa8e5842d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 23bf70cd60639aec3ea7e8504dc3f6ebccd4923f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588606"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883593"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
@@ -93,14 +93,14 @@ Jak wspomniano w poprzedniej sekcji, port 443 wymaga Otwórz ruchu wychodzącego
 
 W poniższej tabeli opisano domen wymagana dla komunikacji:
 
-| Usługa | Domain | Sposób użycia |
-|---------|----------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | Każde wywołanie użytkownika (na przykład programu PowerShell) przechodzi przez ten adres URL, w tym wywołanie rejestracji serwera początkowego. |
-| **Azure Active Directory** | https://login.windows.net | Wywołania usługi Azure Resource Manager muszą być przekazywane uwierzytelnionego użytkownika. Została wykonana pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
-| **Azure Active Directory** | https://graph.windows.net/ | W ramach wdrażania usługi Azure File Sync nazwy głównej usługi dla subskrypcji usługi Azure Active Directory zostanie utworzona. Ten adres URL jest używany w tym. Ta jednostka służy delegowania minimalny zestaw praw do usługi Azure File Sync. Użytkownik wykonujący początkowej konfiguracji usługi Azure File Sync musi być uwierzytelniony użytkownik z uprawnieniami właściciela subskrypcji. |
-| **Azure Storage** | &ast;.core.windows.net | Gdy serwer pobiera plik, następnie serwera wykonuje tego przepływu danych bardziej wydajnie w przypadku bezpośrednio do udziału plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, który zezwala tylko na dostęp do udziału plików docelowych. |
-| **Azure File Sync** | &ast;.one.microsoft.com | Po zarejestrowaniu serwera początkowego serwer odebrał regionalnego adresu URL dla wystąpienia usługi Azure File Sync, w tym regionie. Serwer może komunikować się bezpośrednio i efektywnie z wystąpieniem, Obsługa synchronizację za pomocą adresu URL. |
-| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br>http://ocsp.msocsp.com | Po zainstalowaniu agenta usługi Azure File Sync adres URL infrastruktury kluczy publicznych jest używany do pobrania certyfikatów pośrednich wymagany do komunikowania się z usługą Azure File Sync i udziału plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
+| Usługa | Punkt końcowy w chmurze publicznej | Punkt końcowy platformy Azure dla instytucji rządowych | Sposób użycia |
+|---------|----------------|---------------|------------------------------|
+| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Każde wywołanie użytkownika (na przykład programu PowerShell) przechodzi przez ten adres URL, w tym wywołanie rejestracji serwera początkowego. |
+| **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Wywołania usługi Azure Resource Manager muszą być przekazywane uwierzytelnionego użytkownika. Została wykonana pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
+| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | W ramach wdrażania usługi Azure File Sync nazwy głównej usługi dla subskrypcji usługi Azure Active Directory zostanie utworzona. Ten adres URL jest używany w tym. Ta jednostka służy delegowania minimalny zestaw praw do usługi Azure File Sync. Użytkownik wykonujący początkowej konfiguracji usługi Azure File Sync musi być uwierzytelniony użytkownik z uprawnieniami właściciela subskrypcji. |
+| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Gdy serwer pobiera plik, następnie serwera wykonuje tego przepływu danych bardziej wydajnie w przypadku bezpośrednio do udziału plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, który zezwala tylko na dostęp do udziału plików docelowych. |
+| **Azure File Sync** | &ast;.one.microsoft.com | &ast;.afs.azure.us | Po zarejestrowaniu serwera początkowego serwer odebrał regionalnego adresu URL dla wystąpienia usługi Azure File Sync, w tym regionie. Serwer może komunikować się bezpośrednio i efektywnie z wystąpieniem, Obsługa synchronizację za pomocą adresu URL. |
+| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br />http://ocsp.msocsp.com | `https://www.microsoft.com/pki/mscorp`<br />http://ocsp.msocsp.com | Po zainstalowaniu agenta usługi Azure File Sync adres URL infrastruktury kluczy publicznych jest używany do pobrania certyfikatów pośrednich wymagany do komunikowania się z usługą Azure File Sync i udziału plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
 
 > [!Important]
 > Gdy zezwala na ruch do &ast;. one.microsoft.com, ruch do więcej niż tylko usługa synchronizacji jest możliwe z serwera. Istnieje wiele więcej usług firmy Microsoft są dostępne w obszarze domen podrzędnych.
@@ -109,22 +109,24 @@ Jeśli &ast;. one.microsoft.com jest zbyt szerokie, można ograniczyć komunikac
 
 Ciągłość prowadzenia działalności biznesowej po awarii (BCDR) odzyskiwania ze względu na i określono udziałów usługi plików platformy Azure na koncie magazynu globalnie nadmiarowy (GRS). Jeśli tak jest rzeczywiście, następnie udziałów plików platformy Azure zakończy się niepowodzeniem na sparowanym regionie w przypadku długotrwałej awarii regionalnej. Usługa Azure File Sync używa tej samej pary regionalnej jako magazyn. Dlatego jeśli używasz konta magazynu GRS, musisz włączyć dodatkowe adresy URL umożliwić serwerowi komunikować się sparowanym regionie dla usługi Azure File Sync. W poniższej tabeli wywołuje to "region Paired". Ponadto jest ruch adres URL profilu Menedżera, który musi być także włączona. Pozwoli to zagwarantować ruchu sieciowego można bezproblemowo ponownie kierowane do sparowanym regionie w przypadku pracy awaryjnej i nosi nazwę "Adres URL odnajdywania usługi" w tabeli poniżej.
 
-| Region | Adres URL podstawowego punktu końcowego | Region sparowany | Adres URL odnajdywania |
-|--------|---------------------------------------|--------|---------------------------------------|
-| Australia Wschodnia | https://kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https://kailani-aue.one.microsoft.com |
-| Australia Południowo-Wschodnia | https://kailani-aus.one.microsoft.com | Australia Wschodnia | https://tm-kailani-aus.one.microsoft.com |
-| Kanada Środkowa | https://kailani-cac.one.microsoft.com | Kanada Wschodnia | https://tm-kailani-cac.one.microsoft.com |
-| Kanada Wschodnia | https://kailani-cae.one.microsoft.com | Kanada Środkowa | https://tm-kailani.cae.one.microsoft.com |
-| Środkowe stany USA | https://kailani-cus.one.microsoft.com | Wschodnie stany USA 2 | https://tm-kailani-cus.one.microsoft.com |
-| Azja Wschodnia | https://kailani11.one.microsoft.com | Azja Południowo-Wschodnia | https://tm-kailani11.one.microsoft.com |
-| Wschodnie stany USA | https://kailani1.one.microsoft.com | Zachodnie stany USA | https://tm-kailani1.one.microsoft.com |
-| Wschodnie stany USA 2 | https://kailani-ess.one.microsoft.com | Środkowe stany USA | https://tm-kailani-ess.one.microsoft.com |
-| Europa Północna | https://kailani7.one.microsoft.com | Europa Zachodnia | https://tm-kailani7.one.microsoft.com |
-| Azja Południowo-Wschodnia | https://kailani10.one.microsoft.com | Azja Wschodnia | https://tm-kailani10.one.microsoft.com |
-| Południowe Zjednoczone Królestwo | https://kailani-uks.one.microsoft.com | Zachodnie Zjednoczone Królestwo | https://tm-kailani-uks.one.microsoft.com |
-| Zachodnie Zjednoczone Królestwo | https://kailani-ukw.one.microsoft.com | Południowe Zjednoczone Królestwo | https://tm-kailani-ukw.one.microsoft.com |
-| Europa Zachodnia | https://kailani6.one.microsoft.com | Europa Północna | https://tm-kailani6.one.microsoft.com |
-| Zachodnie stany USA | https://kailani.one.microsoft.com | Wschodnie stany USA | https://tm-kailani.one.microsoft.com |
+| Chmura  | Region | Adres URL podstawowego punktu końcowego | Region sparowany | Adres URL odnajdywania |
+|--------|--------|----------------------|---------------|---------------|
+| Public |Australia Wschodnia | https://kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https://kailani-aue.one.microsoft.com |
+| Public |Australia Południowo-Wschodnia | https://kailani-aus.one.microsoft.com | Australia Wschodnia | https://tm-kailani-aus.one.microsoft.com |
+| Public | Kanada Środkowa | https://kailani-cac.one.microsoft.com | Kanada Wschodnia | https://tm-kailani-cac.one.microsoft.com |
+| Public | Kanada Wschodnia | https://kailani-cae.one.microsoft.com | Kanada Środkowa | https://tm-kailani.cae.one.microsoft.com |
+| Public | Środkowe stany USA | https://kailani-cus.one.microsoft.com | Wschodnie stany USA 2 | https://tm-kailani-cus.one.microsoft.com |
+| Public | Azja Wschodnia | https://kailani11.one.microsoft.com | Azja Południowo-Wschodnia | https://tm-kailani11.one.microsoft.com |
+| Public | Wschodnie stany USA | https://kailani1.one.microsoft.com | Zachodnie stany USA | https://tm-kailani1.one.microsoft.com |
+| Public | Wschodnie stany USA 2 | https://kailani-ess.one.microsoft.com | Środkowe stany USA | https://tm-kailani-ess.one.microsoft.com |
+| Public | Europa Północna | https://kailani7.one.microsoft.com | Europa Zachodnia | https://tm-kailani7.one.microsoft.com |
+| Public | Azja Południowo-Wschodnia | https://kailani10.one.microsoft.com | Azja Wschodnia | https://tm-kailani10.one.microsoft.com |
+| Public | Południowe Zjednoczone Królestwo | https://kailani-uks.one.microsoft.com | Zachodnie Zjednoczone Królestwo | https://tm-kailani-uks.one.microsoft.com |
+| Public | Zachodnie Zjednoczone Królestwo | https://kailani-ukw.one.microsoft.com | Południowe Zjednoczone Królestwo | https://tm-kailani-ukw.one.microsoft.com |
+| Public | Europa Zachodnia | https://kailani6.one.microsoft.com | Europa Północna | https://tm-kailani6.one.microsoft.com |
+| Public | Zachodnie stany USA | https://kailani.one.microsoft.com | Wschodnie stany USA | https://tm-kailani.one.microsoft.com |
+| Instytucje rządowe | Administracja USA — Arizona | https://usgovarizona01.afs.azure.us | Administracja USA — Teksas | https://tm-usgovarizona01.afs.azure.us |
+| Instytucje rządowe | Administracja USA — Teksas | https://usgovtexas01.afs.azure.us | Administracja USA — Arizona | https://tm-usgovtexas01.afs.azure.us |
 
 - Jeśli używasz lokalnie nadmiarowy (LRS) lub strefy nadmiarowego (ZRS) konta magazynu, wystarczy włączyć adresu URL podanego w polu "adres URL podstawowego punktu końcowego".
 

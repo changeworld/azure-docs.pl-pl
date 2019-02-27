@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2018
+ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b05f2dc1ed766ccb06b71c2977ceaf2b7cd823d3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208830"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869670"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Program Azure AD Connect: Automatycznie uaktualnianie
 Ta funkcja została wprowadzona z kompilacją [1.1.105.0 (wydane w lutym 2016 r.)](reference-connect-version-history.md#111050).  Ta funkcja została zaktualizowana w [kompilacji 1.1.561](reference-connect-version-history.md#115610) i teraz obsługuje dodatkowe scenariusze, które wcześniej nie są obsługiwani.
@@ -43,7 +43,7 @@ Bieżący stan automatycznego uaktualniania można wyświetlić za pomocą polec
 | Wstrzymane |Ustaw tylko w systemie. System jest **nie jest obecnie** prawo do otrzymania automatycznych uaktualnień. |
 | Disabled (Wyłączony) |Automatyczne uaktualnianie jest wyłączona. |
 
-Można zmieniać **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko do systemu, należy ustawić stan **zawieszone**.
+Można zmieniać **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko do systemu, należy ustawić stan **zawieszone**.  Przed 1.1.750.0 polecenia cmdlet Set-ADSyncAutoUpgrade mogłyby spowodować zablokowanie Autoupgrade Jeśli ustawiono stan automatyczną aktualizację zawieszone. Ta funkcja zostanie zmieniona tak AutoUpgrade nie są blokowane.
 
 Automatyczne uaktualnianie jest przy użyciu programu Azure AD Connect Health dla uaktualnienie infrastruktury. Aby uzyskać automatyczne uaktualnienie do pracy, upewnij się, adresy URL został otwarty na serwerze proxy dla **programu Azure AD Connect Health** zgodnie z opisem w [URL usługi Office 365 i zakresy adresów IP](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 

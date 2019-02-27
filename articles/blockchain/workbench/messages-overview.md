@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 02a6cbabaeb7d9c6f764eec5dd86226e37aa6c2b
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593526"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878085"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Aplikacji Azure Blockchain Workbench komunikatów integracji
 
@@ -678,7 +678,7 @@ Zawiera informacje, gdy aplikacja zostanie przekazany do aplikacji Workbench, ta
 | id | Unikatowy identyfikator dla przepływu pracy aplikacji w aplikacji Azure Blockchain Workbench |
 | name | Nazwa przepływu pracy aplikacji |
 | displayName | Nazwa wyświetlana przepływu pracy aplikacji |
-| functions | Kolekcja [funkcji przepływ pracy aplikacji ](#workflow-function-information)|
+| functions | Kolekcja [funkcji przepływ pracy aplikacji](#workflow-function-information)|
 | Stany | Kolekcja [stanów przepływu pracy aplikacji](#workflow-state-information) |
 | properties | Aplikacja [informacje o właściwościach przepływu pracy](#workflow-property-information) |
 

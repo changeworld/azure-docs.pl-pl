@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1162eb7964c8ec40f2b342e33044b60385cbd5f6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f7829627352815bc96a7a81bcbbc7e51240c858e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727489"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870860"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -38,7 +38,7 @@ Nie, nie ma żadnych planów, aby obsługiwać zarządzanych tożsamości na pot
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Zarządzanych tożsamości dla zasobów platformy Azure działa z Active Directory Authentication Library (ADAL) lub biblioteka Microsoft Authentication Library (MSAL)?
 
-Dla zasobów platformy Azure nie jest jeszcze zintegrowana z biblioteką ADAL lub biblioteki MSAL, nie, zarządzanych tożsamości. Aby uzyskać więcej informacji na temat pozyskiwania token dla zarządzanych tożsamości dla zasobów platformy Azure przy użyciu punktu końcowego REST, zobacz [jak uzyskiwanie tokenu dostępu, za pomocą tożsamości zarządzanych zasobów platformy Azure na Maszynie wirtualnej platformy Azure ](how-to-use-vm-token.md).
+Dla zasobów platformy Azure nie jest jeszcze zintegrowana z biblioteką ADAL lub biblioteki MSAL, nie, zarządzanych tożsamości. Aby uzyskać więcej informacji na temat pozyskiwania token dla zarządzanych tożsamości dla zasobów platformy Azure przy użyciu punktu końcowego REST, zobacz [jak uzyskiwanie tokenu dostępu, za pomocą tożsamości zarządzanych zasobów platformy Azure na Maszynie wirtualnej platformy Azure](how-to-use-vm-token.md).
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Co to jest granicy zabezpieczeń z zarządzanych tożsamości dla zasobów platformy Azure?
 

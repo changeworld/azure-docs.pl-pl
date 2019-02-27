@@ -1,6 +1,6 @@
 ---
-title: Podręcznik informacyjny, kafelków Projektant widoków w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Przy użyciu projektanta widoku w usłudze Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, który wyświetlane różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
+title: Podręcznik informacyjny, kafelków Projektant widoków w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoku w usłudze Azure Monitor, można utworzyć niestandardowe widoki, które są wyświetlane w witrynie Azure portal i zawierają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817398"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887764"
 ---
-# <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Log Analytics
-Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
+# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Azure Monitor
+Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
 
 Aby uzyskać więcej informacji dotyczących projektanta widoków zobacz:
 
@@ -177,5 +177,5 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) do obsługi zapytań na kafelkach.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) do obsługi zapytań na kafelkach.
 * Dodaj [części wizualizacji](view-designer-parts.md) do widoku niestandardowego.

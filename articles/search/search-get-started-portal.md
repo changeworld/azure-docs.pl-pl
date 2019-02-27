@@ -1,21 +1,21 @@
 ---
 title: Samouczek szybkiego startu indeksowania i wykonywania zapytań przy użyciu witryny Azure Portal — usługa Azure Search
-description: Podczas pracy z tym samouczkiem szybkiego startu użyjesz wbudowanych danych przykładowych do wygenerowania indeksu w usłudze Azure Search za pomocą witryny Azure Portal. Dowiedz się więcej o wyszukiwaniu pełnotekstowym, filtrach, aspektach, wyszukiwaniu rozmytym, wyszukiwaniu geograficznym i innych funkcjach.
+description: Dowiedz się, jak utworzyć swój pierwszy indeks w usłudze Azure Search i wykonywać względem niego zapytania, korzystając z wbudowanych przykładowych danych i kreatora importu danych w witrynie Azure Portal.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991314"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270338"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
 
@@ -94,15 +94,17 @@ Pola mają typy danych i atrybuty. Pola wyboru w górnej części są *atrybutam
 
 Wymagania dotyczące rozmiaru magazynu nie są zależne od Twojego wyboru. Na przykład jeśli ustawisz atrybut **Możliwość pobierania** dla wielu pól, nie zwiększy to wymaganego rozmiaru magazynu.
 
-Domyślnie kreator skanuje źródło danych w poszukiwaniu unikatowych identyfikatorów jako podstawy dla pola klucza. Ciągi są określane jako możliwe do pobierania i przeszukiwania. Liczby całkowite są określane jako możliwe do pobierania, filtrowania, sortowania i tworzenia aspektów.
+Domyślnie kreator skanuje źródło danych w poszukiwaniu unikatowych identyfikatorów jako podstawy dla pola klucza. *Ciągi* mają ustawione atrybuty **Pobieranie** i **Wyszukiwanie**. *Liczby całkowite* mają ustawione atrybuty **Pobieranie**, **Możliwość filtrowania**, **Z możliwością sortowania** i **Możliwość tworzenia aspektów**.
 
-1. Zaakceptuj wszystkie ustawienia domyślne.
+1. Zaakceptuj wartości domyślne. 
 
-  ![Wygenerowany indeks realestate](media/search-get-started-portal/realestateindex2.png)
+   Jeśli uruchomisz kreatora po raz drugi przy użyciu istniejącego źródła danych realestate, indeks nie zostanie skonfigurowany z atrybutami domyślnymi. Konieczne będzie ręczne wybranie atrybutów podczas przyszłych importów.
+
+   ![Wygenerowany indeks realestate](media/search-get-started-portal/realestateindex2.png)
 
 2. Przejdź do następnej strony.
 
-  ![Następna strona — tworzenie indeksatora](media/search-get-started-portal/next-button-create-indexer.png)
+   ![Następna strona — tworzenie indeksatora](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Krok 4 — Konfigurowanie indeksatora
 

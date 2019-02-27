@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 714bf5f915cb588a99552a8bbbc5ffa76aa16846
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 372df0bc6ea540b4b2c030ec71acc6889e7c7d19
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426135"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874090"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zasobów certyfikatów w usłudze Azure Automation
 
@@ -105,7 +105,7 @@ Możesz dodać **Get AutomationCertificate** do graficznego elementu runbook, kl
 
 Na poniższej ilustracji przedstawiono przykład użycia certyfikatu w graficznego elementu runbook. To jest taka sama jak w poprzednim przykładzie Dodawanie certyfikatu do usługi w chmurze z tekstowej elementu runbook.
 
-![Przykład tworzenie graficzne ](media/automation-certificates/graphical-runbook-add-certificate.png)
+![Przykład tworzenie graficzne](media/automation-certificates/graphical-runbook-add-certificate.png)
 
 ### <a name="python2-sample"></a>Przykładowe Python2
 Poniższy przykład pokazuje sposób certyfikaty elementami runbook programu Python2 dostępu.

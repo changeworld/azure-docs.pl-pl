@@ -1,6 +1,6 @@
 ---
-title: Filtry w widokach w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Filtr w widoku do usługi Log Analytics umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
+title: Filtry w widokach usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Filtr w widoku usługi Azure Monitor umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 6a4ac2f26c01555ef54a4ee2248db7cd2818661e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189425"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888350"
 ---
-# <a name="filters-in-log-analytics-views"></a>Filtry w widokach usługi Log Analytics
-A **filtru** w [usługi Log Analytics przeglądać](view-designer.md) umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład możesz zezwolić użytkownikom widoku filtrowanie widoku danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku, który użytkownicy mogą filtrować według wielu właściwości.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
+# <a name="filters-in-azure-monitor-views"></a>Filtry w widokach usługi Azure Monitor
+A **filtru** w [widok usługi Azure Monitor](view-designer.md) umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład możesz zezwolić użytkownikom widoku filtrowanie widoku danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku, który użytkownicy mogą filtrować według wielu właściwości.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
 
 ## <a name="using-a-filter"></a>Przy użyciu filtru
-Kliknij zakres czasu danych, u góry widoku, aby otworzyć rozwijanego którym można zmienić zakres czasu danych widoku.
+Kliknij zakres czasu daty u góry widoku, aby otworzyć rozwijanego którym można zmienić zakres czasu daty dla widoku.
 
 ![Przykład filtru](media/view-designer-filters/filters-example-time.png)
 
@@ -46,8 +46,8 @@ W poniższej tabeli opisano ustawienia filtru.
 
 | Ustawienie | Opis |
 |:---|:---|
-| Nazwa pola | Nazwa pola używane do filtrowania.  To musi odpowiadać polu Podsumowanie w **zapytanie o wartości**. |
-| Zapytanie o wartości | Zapytanie, aby uruchomić, aby wypełnić listę rozwijaną Filtr dla użytkownika.  To należy użyć [Podsumuj](/azure/kusto/query/summarizeoperator) lub [distinct](/azure/kusto/query/distinctoperator) zapewnienie unikatowe wartości dla określonego pola, a musi być zgodna **nazwę pola**.  Możesz użyć [sortowania](/azure/kusto/query/sortoperator) Aby posortować wartości, które są wyświetlane użytkownikowi. |
+| Nazwa pola | Nazwa pola używane do filtrowania.  To pole musi odpowiadać polu Podsumowanie w **zapytanie o wartości**. |
+| Zapytanie o wartości | Zapytanie, aby uruchomić, aby wypełnić listę rozwijaną Filtr dla użytkownika.  To zapytanie musi użyć [Podsumuj](/azure/kusto/query/summarizeoperator) lub [distinct](/azure/kusto/query/distinctoperator) zapewnienie unikatowe wartości dla określonego pola, a musi być zgodna **nazwę pola**.  Możesz użyć [sortowania](/azure/kusto/query/sortoperator) Aby posortować wartości, które są wyświetlane użytkownikowi. |
 | Tag | Nazwa pola, które jest używany w zapytaniach obsługujące filtr i jest wyświetlany użytkownikowi. |
 
 ### <a name="examples"></a>Przykłady
@@ -57,20 +57,20 @@ Poniższa tabela zawiera kilka przykładów typowych filtrów.
 | Nazwa pola | Zapytanie o wartości | Tag |
 |:--|:--|:--|
 | Computer (Komputer)   | Puls &#124; distinct Computer &#124; sortowania przez usługę asc komputera | Komputery |
-| EventLevelName | Zdarzenie &#124; EventLevelName odrębne | Ważność |
-| SeverityLevel | SYSLOG &#124; SeverityLevel odrębne | Ważność |
-| SvcChangeType | Zmianakonfiguracji &#124; svcChangeType odrębne | ChangeType |
+| EventLevelName | Event &#124; distinct EventLevelName | Ważność |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | Ważność |
+| SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 
 ## <a name="modify-view-queries"></a>Modyfikowanie widoku zapytań
 
-Filtr, aby mieć żadnego efektu należy zmodyfikować wszelkie zapytania w widoku do filtrowania na podstawie wybranych wartości.  Jeśli użytkownik nie należy modyfikować żadnych zapytań w widoku wszystkie wartości, które użytkownik wybierze odniesie żadnego skutku.
+Filtr, aby mieć żadnego efektu należy zmodyfikować wszelkie zapytania w widoku do filtrowania na podstawie wybranych wartości.  Jeśli użytkownik nie należy modyfikować żadnych zapytań w widoku, wszystkie wartości, które użytkownik wybierze odniesie żadnego skutku.
 
 Składnia przy użyciu wartości filtru w zapytaniu jest następująca: 
 
     where ${filter name}  
 
-Na przykład jeśli widok ma zapytanie zwraca zdarzeń, używa filtru o nazwie komputery można następujące czynności.
+Na przykład, jeśli widok ma kwerendę, która zwraca zdarzenia i używa filtru o nazwie _komputerów_, można użyć następującego zapytania.
 
     Event | where ${Computers} | summarize count() by EventLevelName
 

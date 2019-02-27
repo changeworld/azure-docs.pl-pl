@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1609d413604e172b9c718bd11768c495dfa8afe8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191430"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867103"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 
@@ -83,7 +83,7 @@ Proces udostępniania Twoja domena zarządzana może potrwać do godziny.
 
 3. **Przegląd** karta pokazuje, że domena zarządzana jest aktualnie aprowizowany. Nie można skonfigurować domeny zarządzanej, dopóki nie jest w pełni zaaprowizowanym. Może potrwać do godziny dla Twojej domeny zarządzanej być w pełni zaaprowizowanym.
 
-    ![Usługi domenowe — karta Przegląd podczas stan aprowizacji ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![Usługi domenowe — karta Przegląd podczas stan aprowizacji](./media/getting-started/domain-services-provisioning-state-details.png)
 
 4. Po pełnym zaaprowizowaniu domeny zarządzanej, **Przegląd** karta przedstawia stan domeny jako **systemem**.
 

@@ -1,255 +1,232 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą stada | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i stada.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Flock | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Flock.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 7b2c3ac5-17f1-49a0-8961-c541b258d4b1
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/15/2018
+ms.topic: tutorial
+ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44204813e44dc725db774eec2cbecb35852cffde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 4eca01cd1566f54b7a9f940397cf47f55057ebd7
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198651"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453158"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flock"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą stada
+# <a name="tutorial-azure-active-directory-integration-with-flock"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Flock
 
-W tym samouczku dowiesz się, jak zintegrować stada w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Flock z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Flock z usługą Azure AD zapewnia następujące korzyści:
 
-Stada zintegrowanie z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Flock.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Flock (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do stada.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do stada (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą stada, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Flock potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Stada logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Flock z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie stada z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-flock-from-the-gallery"></a>Dodawanie stada z galerii
-Aby skonfigurować integrację stada w usłudze Azure AD, należy dodać stada z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Flock obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać stada z galerii, wykonaj następujące czynności:**
+## <a name="adding-flock-from-the-gallery"></a>Dodawanie aplikacji Flock z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Flock w usłudze Azure AD, należy dodać aplikację Flock z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację Flock z galerii, wykonaj następujące czynności:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Nowa aplikacja][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **stada**, wybierz opcję **stada** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Stadzie na liście wyników](./media/flock-tutorial/tutorial_flock_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+
+4. W polu wyszukiwania wpisz **Flock**, wybierz pozycję **Flock** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+
+     ![Aplikacja Flock na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą stada, w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Flock, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Flock.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w stada do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika z stada musi można ustanowić.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą stada, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Flock, należy wykonać kroki opisane w poniższych blokach konstrukcyjnych:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-1. **[Tworzenie użytkownika testowego stada](#create-a-flock-test-user)**  — aby odpowiednikiem Britta Simon w stada połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Flock](#configure-flock-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Flock](#create-flock-test-user)** — aby mieć w aplikacji Flock odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji stada.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z stada, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Flock, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **stada** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Flock** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/flock-tutorial/tutorial_flock_samlbase.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-1. Na **stada domena i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Stada domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/flock-tutorial/tutorial_flock_url.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.flock.com/`
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.flock.com/`
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Flock](common/sp-identifier.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.flock.com/`
+
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.flock.com/`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta stada](mailto:support@flock.com) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Flock](mailto:support@flock.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](./media/flock-tutorial/tutorial_flock_certificate.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. W sekcji **Konfigurowanie aplikacji Flock** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/flock-tutorial/tutorial_general_400.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Na **konfiguracji stada** , kliknij przycisk **skonfigurować stada** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+    a. Adres URL logowania
 
-    ![Konfiguracja stada](./media/flock-tutorial/tutorial_flock_configure.png) 
+    b. Identyfikator usługi Azure AD
 
-1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy stada.
+    d. Adres URL wylogowywania
 
-1. Wybierz **uwierzytelniania** w panelu nawigacyjnym po lewej stronie, a następnie wybierz pozycję **uwierzytelnianie SAML**.
+### <a name="configure-flock-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Flock
 
-    ![Konfiguracja stada](./media/flock-tutorial/configure1.png)
+1. W innym oknie przeglądarki internetowej zaloguj się w witrynie firmowej Flock jako administrator.
 
-1. W **uwierzytelnianie SAML** sekcji, wykonaj następujące czynności:
+2. Wybierz kartę **Authentication** (Uwierzytelnianie) z panelu nawigacyjnego po lewej stronie, a następnie pozycję **SAML Authentication** (Uwierzytelnianie SAML).
 
-    ![Konfiguracja stada](./media/flock-tutorial/configure2.png)
+    ![Konfigurowanie aplikacji Flock](./media/flock-tutorial/configure1.png)
 
-    a. W **SAML 2.0 Endpoint(HTTP)** pola tekstowego, Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości, które zostały skopiowane z witryny Azure portal.
+3. W sekcji **SAML Authentication** (Uwierzytelnianie SAML) wykonaj następujące kroki:
 
-    b. W **wystawca dostawcy tożsamości** pola tekstowego, Wklej **identyfikator jednostki SAML** wartości, które zostały skopiowane z witryny Azure portal.
+    ![Konfigurowanie aplikacji Flock](./media/flock-tutorial/configure2.png)
 
-    c. Otwórz pobrany **Certificate(Base64)** z witryny Azure portal w programie Notatnik, Wklej zawartość **certyfikatu publicznego** pola tekstowego.
+    a. W polu tekstowym **SAML 2.0 Endpoint (HTTP)** (Punkt końcowy SAML 2.0 — HTTP) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+
+    b. W polu tekstowym **Identity Provider Issuer** (Wystawca dostawcy tożsamości) wklej wartość pola **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal.
+
+    d. Otwórz **certyfikat (Base64)** pobrany z witryny Azure Portal w programie Notatnik i wklej jego zawartość w polu tekstowym **Public Certificate** (Certyfikat publiczny).
 
     d. Kliknij pozycję **Zapisz**.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/flock-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/flock-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/flock-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/flock-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-flock-test-user"></a>Tworzenie użytkownika testowego stada
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do stada, musi być obsługiwana w stada. W przypadku stada Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Flock.
+
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Flock**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz pozycję **Flock**.
+
+    ![Link do aplikacji Flock na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-flock-test-user"></a>Tworzenie użytkownika testowego aplikacji Flock
+
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Flock, muszą być oni aprowizowani w tej aplikacji. W przypadku aplikacji Flock aprowizowanie jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do witryny firmy stada jako administrator.
+1. Zaloguj się w witrynie firmowej Flock jako administrator.
 
-1. Kliknij przycisk **zespołu zarządzania** w panelu nawigacyjnym po lewej stronie.
+2. Kliknij pozycję **Manage Team** (Zarządzaj zespołem) na panelu nawigacyjnym po lewej stronie.
 
     ![Dodawanie pracownika](./media/flock-tutorial/user1.png)
 
-1. Kliknij przycisk **Dodawanie elementu członkowskiego** , a następnie wybierz pozycję **członków zespołu**.
+3. Kliknij kartę **Add Member** (Dodaj członka), a następnie pozycję **Team Members** (Członkowie zespołu).
 
     ![Dodawanie pracownika](./media/flock-tutorial/user2.png)
 
-1. Wprowadź adres e-mail użytkownika, takich jak **Brittasimon@contoso.com** , a następnie wybierz **Add Users**.
+4. Wprowadź adres e-mail użytkownika, na przykład **Brittasimon@contoso.com**, a następnie wybierz pozycje **Add Users** (Dodaj użytkowników).
 
     ![Dodawanie pracownika](./media/flock-tutorial/user3.png)
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do stada za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisanie roli użytkownika][200]
+Po kliknięciu kafelka Flock w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Flock, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-**Aby przypisać Britta Simon stada, wykonaj następujące czynności:**
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![Przypisz użytkownika][201]
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-1. Na liście aplikacji wybierz **stada**.
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-    ![Link stada na liście aplikacji](./media/flock-tutorial/tutorial_flock_app.png)
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Link "Użytkownicy i grupy"][202]
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Okienko Dodawanie przypisania][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka stada w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji stada.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
-
-## <a name="additional-resources"></a>Zasoby dodatkowe
-
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/flock-tutorial/tutorial_general_01.png
-[2]: ./media/flock-tutorial/tutorial_general_02.png
-[3]: ./media/flock-tutorial/tutorial_general_03.png
-[4]: ./media/flock-tutorial/tutorial_general_04.png
-
-[100]: ./media/flock-tutorial/tutorial_general_100.png
-
-[200]: ./media/flock-tutorial/tutorial_general_200.png
-[201]: ./media/flock-tutorial/tutorial_general_201.png
-[202]: ./media/flock-tutorial/tutorial_general_202.png
-[203]: ./media/flock-tutorial/tutorial_general_203.png

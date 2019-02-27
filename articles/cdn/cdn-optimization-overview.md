@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: magattus
-ms.openlocfilehash: 526f3522bff05618189ad4f8205fbb61afc47fdc
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320316"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870894"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optymalizacja usługi Azure CDN dla typu dostarczania zawartości
 
@@ -66,7 +66,7 @@ Po utworzeniu punktu końcowego usługi CDN wybierz typ optymalizacji, który na
 
 1. W **Azure CDN Standard from Akamai** profilu, wybierz punkt końcowy.
 
-    ![Punkt końcowy zaznaczenia ](./media/cdn-optimization-overview/01_Akamai.png)
+    ![Punkt końcowy zaznaczenia](./media/cdn-optimization-overview/01_Akamai.png)
 
 2. W obszarze Ustawienia wybierz **optymalizacji**. Następnie wybierz typ z **zoptymalizowane pod kątem** listy rozwijanej.
 

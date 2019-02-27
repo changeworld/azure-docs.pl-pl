@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 040fac6cd4feb60b6635ba0868634f16dd9f146f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733138"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881734"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optymalizuj koszt aprowizowanej przepływności w usłudze Azure Cosmos DB
 
@@ -159,7 +159,7 @@ Poniższe kroki ułatwiają upewnij rozwiązania wysoce skalowalny i ekonomiczny
 
 2. Jedną z metod oszacowania zarezerwowanej przepływności wymaganej przez aplikację jest rejestrowanie żądania opłata za jednostki RU, związanych z uruchamianiem typowych operacji względem reprezentatywny kontenera usługi Azure Cosmos lub bazy danych używane przez aplikację i następnie należy oszacować liczbę operacji, które planujesz wykonać co sekundę. Pamiętaj zmierzyć i obejmują typowe zapytania i ich użycia, jak również. Aby dowiedzieć się, w jaki sposób programowo oszacować koszty RU zapytań lub za pomocą portalu, zobacz [optymalizacji kosztów zapytania](online-backup-and-restore.md). 
 
-3. Innym sposobem na uzyskiwanie operacji i ich kosztów w (RUS) jest po włączeniu usługi Log Analytics, co zapewni podział czasu trwania i operacji i opłata za żądanie wyrażana. Usługa Azure Cosmos DB zapewnia opłata za żądanie wyrażana dla każdej operacji, dzięki czemu każdy opłaty za operację może być przechowywana powrót po awarii z odpowiedzi i następnie używany na potrzeby analizy. 
+3. Inny sposób pobrania operacji i ich kosztów w (RUS) jest włączenie dzienników usługi Azure Monitor, które zapewni podział czasu trwania i operacji i opłata za żądanie wyrażana. Usługa Azure Cosmos DB zapewnia opłata za żądanie wyrażana dla każdej operacji, dzięki czemu każdy opłaty za operację może być przechowywana powrót po awarii z odpowiedzi i następnie używany na potrzeby analizy. 
 
 4. Można elastycznie skalować aprowizowaną przepływność w górę i w dół na potrzeby dostosowania potrzeb obciążenia. 
 

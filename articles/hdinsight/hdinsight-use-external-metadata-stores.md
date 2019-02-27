@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408327"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889685"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Użyj zewnętrznych magazynów metadanych w usłudze Azure HDInsight
 
@@ -68,7 +68,7 @@ Poniżej przedstawiono pewne ogólne HDInsight Hive magazynu metadanych najlepsz
 - Jeśli jest planowane wielu klastrów HDInsight dostęp do oddzielnych danych na użytek oddzielnej bazy danych magazynu metadanych w każdym klastrze. Jeśli udostępniasz metadanych dla wielu klastrów HDInsight, oznacza to, że klastry używają tych samych metadanych i plików danych w usłudze podstawowej użytkownika.
 - Utwórz kopię zapasową swojej niestandardowy Magazyn metadanych okresowo. Usługa Azure SQL Database automatycznie generuje kopii zapasowych, ale różni się w przedziale czasu przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL](../sql-database/sql-database-automated-backups.md).
 - Znajdź Twojego magazynu metadanych i klaster HDInsight, w tym samym regionie, najwyższej wydajności i opłaty za ruch wychodzący z sieci najniższy.
-- Monitorowanie usługi magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub usługi Azure Log Analytics.
+- Monitorowanie usługi magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub dzienniki usługi Azure Monitor.
 - Po utworzeniu nowego wyższej wersji usługi Azure HDInsight względem istniejącej bazy danych niestandardowy Magazyn metadanych systemu uaktualnia schematu magazynu metadanych, jest nieodwracalne bez przywracania bazy danych z kopii zapasowej.
 - Jeśli udostępniasz metadanych w wielu klastrach, upewnij się, że wszystkie klastry mają taką samą wersję HDInsight. Różne wersje programu Hive, użyj innego magazynu metadanych schematy bazy danych. Na przykład nie można udostępniać metadanych w gałęzi rejestru 1.2 i Hive 2.1 klastrach numerów wersji. 
 

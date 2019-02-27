@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49a82e1452a4380920271f4fb4f7397208e32d78
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174456"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870945"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowywanie Active Directory Federation Services przy użyciu usługi Azure AD Connect
 W tym artykule opisano, jak zarządzanie i dostosowywanie Active Directory Federation Services (AD FS) przy użyciu usługi Azure Active Directory (Azure AD) Connect. Zawiera on również innych typowych zadań usług AD FS, które może być konieczne na pełną konfigurację farmy usług AD FS.
@@ -32,7 +32,7 @@ W tym artykule opisano, jak zarządzanie i dostosowywanie Active Directory Feder
 |:--- |:--- |
 | **Zarządzanie usługami AD FS** | |
 | [Napraw zaufanie](#repairthetrust) |Jak naprawić relację zaufania federacji z usługą Office 365. |
-| [Utworzyć Federację z usługą Azure AD przy użyciu Identyfikatora logowania alternatywnej ](#alternateid) | Konfigurowanie Federacji przy użyciu Identyfikatora logowania alternatywnej  |
+| [Utworzyć Federację z usługą Azure AD przy użyciu Identyfikatora logowania alternatywnej](#alternateid) | Konfigurowanie Federacji przy użyciu Identyfikatora logowania alternatywnej  |
 | [Dodawanie serwera usług AD FS](#addadfsserver) |Instrukcje, rozwiń węzeł farmy usług AD FS jest dodatkowy serwer usług AD FS. |
 | [Dodawanie serwera Proxy aplikacji sieci Web usług AD FS](#addwapserver) |Instrukcje, rozwiń węzeł farmy usług AD FS jest dodatkowy serwer Proxy aplikacji sieci Web (WAP). |
 | [Dodawanie domeny federacyjnej](#addfeddomain) |Jak dodać domeny federacyjnej. |

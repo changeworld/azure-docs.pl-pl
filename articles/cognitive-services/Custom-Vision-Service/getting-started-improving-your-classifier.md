@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6e97001497ebdddebe9b5b726e0526a987b6c63c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310224"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873325"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak poprawianie klasyfikatora
 
@@ -39,7 +39,7 @@ Aby rozwiązać ten problem, użyj poniższych wskazówek na szkolenie z bardzie
 
 ## <a name="data-quantity"></a>Ilość danych
 
-Liczba uczone obrazy jest najważniejszym czynnikiem. Firma Microsoft recomment przy użyciu co najmniej 50 obrazów na etykietę, jako punktu wyjścia. Przy użyciu mniejszej liczby obrazów istnieje większe ryzyko overfitting, a gdy numery wydajności może sugerować dobrej jakości, model może poradzić sobie z brakami rzeczywistych danych. 
+Liczba uczone obrazy jest najważniejszym czynnikiem. Zalecamy używanie co najmniej 50 obrazów na etykietę jako punktu wyjścia. Przy użyciu mniejszej liczby obrazów istnieje większe ryzyko overfitting, a gdy numery wydajności może sugerować dobrej jakości, model może poradzić sobie z brakami rzeczywistych danych. 
 
 ## <a name="data-balance"></a>Saldo danych
 

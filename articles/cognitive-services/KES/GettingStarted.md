@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: c9c336b9aed06095849f33060ff6969e8b7bfcaf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881710"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309645"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Wprowadzenie do usługi Knowledge Exploration Service
 
@@ -228,7 +228,7 @@ W przypadku uruchomienia polecenia `kes.exe` poza platformą Azure indeks jest o
 
 Aby umożliwić poleceniu `kes.exe` dostęp do konta platformy Azure, [pobierz plik ustawień publikowania platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) z witryny Azure Portal. Jeśli zostanie wyświetlony monit, zaloguj się na wybrane konto platformy Azure. Zapisz plik pod nazwą *AzurePublishSettings.xml* w katalogu roboczym, z którego uruchomiono polecenie `kes.exe`.
 
-Istnieją dwa sposoby tworzenia i hostowania dużych indeksów. Pierwszy to przygotowanie schematu i plików danych na maszynie wirtualnej platformy Azure z systemem Windows. Następnie należy uruchomić polecenie [`kes.exe build_index`](#building-index), aby utworzyć indeks lokalnie na maszynie wirtualnej bez żadnych ograniczeń rozmiaru. Wynikowy indeks można hostować lokalnie na maszynie wirtualnej za pomocą polecenia [`kes.exe host_service`](#hosting-service) na potrzeby szybkiego prototypowania — ponownie, bez żadnych ograniczeń. Aby uzyskać szczegółowe instrukcje, zobacz [samouczek dotyczący maszyn wirtualnych platformy Azure](../../../articles/virtual-machines/windows/quick-create-portal.md).
+Istnieją dwa sposoby tworzenia i hostowania dużych indeksów. Pierwszy to przygotowanie schematu i plików danych na maszynie wirtualnej platformy Azure z systemem Windows. Następnie należy uruchomić polecenie `kes.exe build_index`, aby utworzyć indeks lokalnie na maszynie wirtualnej bez żadnych ograniczeń rozmiaru. Wynikowy indeks można hostować lokalnie na maszynie wirtualnej za pomocą polecenia `kes.exe host_service` na potrzeby szybkiego prototypowania — ponownie, bez żadnych ograniczeń. Aby uzyskać szczegółowe instrukcje, zobacz [samouczek dotyczący maszyn wirtualnych platformy Azure](../../../articles/virtual-machines/windows/quick-create-portal.md).
 
 Druga metoda to przeprowadzenie zdalnego budowania na platformie Azure przy użyciu polecenia [`kes.exe build_index`](CommandLine.md#build_index-command) z parametrem `--remote`. W ten sposób określa się rozmiar maszyny wirtualnej platformy Azure. Jeśli parametr `--remote` jest określony, polecenie tworzy tymczasową maszynę wirtualną platformy Azure o danym rozmiarze. Następnie tworzy indeks na maszynie wirtualnej, przekazuje indeks do docelowego magazynu obiektów blob i usuwa maszynę wirtualną po zakończeniu. Opłata dla subskrypcji platformy Azure jest naliczana za koszt maszyny wirtualnej podczas tworzenia indeksu.
 

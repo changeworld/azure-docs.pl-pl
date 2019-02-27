@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b8cbeacda98aec639724f30fe3a7e94346f05ba4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435399"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308758"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -128,11 +128,10 @@ Podczas korzystania z jednostek usług AKS i Azure AD należy pamiętać o nast�
 - Na głównej maszynie wirtualnej i maszynach wirtualnych węzłów w klastrze Kubernetes poświadczenia jednostki usługi są przechowywane w pliku `/etc/kubernetes/azure.json`
 - Gdy używasz polecenia [az aks create][az-aks-create], aby automatycznie wygenerować jednostkę usługi, poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/aksServicePrincipal.json` na maszynie użytej do uruchomienia polecenia.
 - Usunięcie klastra AKS utworzonego za pomocą polecenia [az aks create][az-aks-create] nie powoduje usunięcia utworzonej automatycznie jednostki usługi.
-    - Aby usunąć jednostkę usługi, należy najpierw uzyskać jej identyfikator za pomocą polecenia [az ad app list][az-ad-app-list]. Poniższy przykład obejmuje wykonanie zapytania dotyczącego klastra o nazwie *myAKSCluster*, a następnie usunięcie aplikacji na podstawie identyfikatora za pomocą polecenia [az ad app delete][az-ad-app-delete]. Zastąp odpowiednie nazwy własnymi wartościami:
+    - Aby usunąć jednostkę usługi, utwórz zapytanie dotyczące klastra *servicePrincipalProfile.clientId*, a następnie usuń przy użyciu polecenia [az ad app delete][az-ad-app-delete]. Zastąp następujące nazwy klastra i grupy zasobów własnymi wartościami:
 
         ```azurecli
-        az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
-        az ad app delete --id <appId>
+        az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
 ## <a name="next-steps"></a>Następne kroki

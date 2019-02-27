@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f592cfdba940b95a9935c6b68f3294233d9fbf15
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730904"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888495"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Teraz możesz monitorować usługi systemu Azure i aplikacji w [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbieranych przez usługi Azure Monitor, łącznie z różnych dzienników i metryk. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -26,7 +26,8 @@ Wykonaj następujące kroki, aby skonfigurować serwer Grafana i tworzyć pulpit
 ## <a name="set-up-a-grafana-server"></a>Konfigurowanie serwera narzędzia Grafana
 
 ### <a name="set-up-grafana-locally"></a>Konfigurowanie narzędzia Grafana lokalnie
-Aby skonfigurować serwer lokalny Grafana [pobrać i zainstalować narzędzia Grafana w środowisku lokalnym](https://grafana.com/grafana/download). Aby korzystać z integracji usługi Log Analytics wtyczki, należy zainstalować narzędzia Grafana w wersji 5.3 lub nowszej.
+Aby skonfigurować serwer lokalny Grafana [pobrać i zainstalować narzędzia Grafana w środowisku lokalnym](https://grafana.com/grafana/download). Aby korzystać z integracji usługi Azure Monitor wtyczki, należy zainstalować narzędzia Grafana w wersji 5.3 lub nowszej.
+
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Konfigurowanie narzędzia Grafana na platformie Azure za pośrednictwem portalu Azure Marketplace
 1. Przejdź do portalu Azure Marketplace, a następnie wybierz Grafana przez Grafana Labs.
 
@@ -70,7 +71,7 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
     Interfejsu API programu Log Analytics wymaga [roli Czytelnik usługi Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), który obejmuje uprawnienia roli Czytelnik i dodaje do niego.
 
 4. Podaj szczegóły połączenia z interfejsami API, czy chcesz użyć. Możesz połączyć wszystkie lub niektóre z nich. 
-    * Jeśli łączysz się do usługi Azure Monitor (Aby zbierać metryki) i Azure Log Analytics (za dane dziennika), można ponownie użyć tych samych poświadczeń, wybierając **szczegółów tego samego interfejsu API usługi Azure Monitor**.
+    * Jeśli łączysz się metryk i dzienników w usłudze Azure Monitor możesz ponownie użyć tych samych poświadczeń, wybierając **szczegółów tego samego interfejsu API usługi Azure Monitor**.
     * Podczas konfigurowania wtyczki, można wskazać, jaka chmura Azure chcesz wtyczki do monitora (publiczne, dla administracji USA, Azure (Niemcy) lub chińska wersja platformy Azure).
     * Jeśli korzystasz z usługi Application Insights, można także dodać interfejs API usługi Application Insights oraz Identyfikatora aplikacji, aby zbieranie metryk usługi Application Insights na podstawie. Aby uzyskać więcej informacji, zobacz [uzyskiwanie Twojego klucza interfejsu API i identyfikator aplikacji](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
@@ -97,7 +98,7 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
 4. Wybierz źródło danych usługi Azure Monitor, które zostały skonfigurowane.
     * Wybierz metryki — zbierania usługi Azure Monitor **usługi Azure Monitor** na liście rozwijanej usługi. Lista pokazuje selektory w górę, którym można wybrać zasoby i metrykę do monitorowania na tym wykresie. Aby zbierać metryki z maszyny Wirtualnej, należy użyć przestrzeni nazw **Microsoft.Compute/VirtualMachines**. Po wybraniu maszyn wirtualnych i metryk, możesz rozpocząć wyświetlanie swoje dane na pulpicie nawigacyjnym.
     ![Grafana konfiguracji programu graph dla usługi Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Usługi Azure Log Analytics zbieranie danych — wybierz **usługi Azure Log Analytics** na liście rozwijanej usługi. Wybierz obszar roboczy, który chcesz zbadać i Ustaw tekst zapytania. W tym miejscu można skopiować każde zapytanie usługi Log Analytics istniejącego konta lub utworzyć nową. Podczas wpisywania w zapytaniu funkcji IntelliSense będą wyświetlane, a także sugerują opcje Autouzupełniania. Wybierz typ wizualizacji **czas serii** **tabeli**, i uruchom zapytanie.
+    * Zbieranie usługi Azure Monitor możesz rejestrować dane — wybieranie **usługi Azure Log Analytics** na liście rozwijanej usługi. Wybierz obszar roboczy, który chcesz zbadać i Ustaw tekst zapytania. W tym miejscu można skopiować dowolne zapytanie dziennika istniejącego konta lub utworzyć nową. Podczas wpisywania w zapytaniu funkcji IntelliSense będą wyświetlane, a także sugerują opcje Autouzupełniania. Wybierz typ wizualizacji **czas serii** **tabeli**, i uruchom zapytanie.
     
     > [!NOTE]
     >

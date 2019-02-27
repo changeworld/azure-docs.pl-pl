@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d7bcff89ba7f76980287f9aad3413a6ef3f41b4f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7d877f467f06768c31679752d9deff1ca19d0003
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807426"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882879"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -34,8 +34,8 @@ Usługa App Service oferuje funkcje diagnostyczne dla rejestrowanie informacji z
 ### <a name="web-server-diagnostics"></a>Diagnostyka serwera sieci Web
 Można włączyć lub wyłączyć następujące rodzaje dzienników:
 
-* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje na temat każde żądanie, które powoduje kod stanu HTTP 400 lub nowszej. Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu. Jeden plik HTML jest generowany dla każdego błędu (w *D:\LogFiles\DetailedErrors* domyślnie), i są zachowywane przez maksymalnie 50 błędów (pliki). Jeżeli liczba plików HTML przekracza 50, 26 najstarsze pliki są automatycznie usuwane.
-* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP.
+* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje na temat każde żądanie, które powoduje kod stanu HTTP 400 lub nowszej. Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu. Jeden plik HTML jest generowany dla każdego błędu, w systemie plików aplikacji i maksymalnie 50 błędów (pliki) są zachowywane. Jeżeli liczba plików HTML przekracza 50, 26 najstarsze pliki są automatycznie usuwane.
+* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP. Jeden folder jest generowany dla każdego błędu w systemie plików aplikacji. Zasady przechowywania plików są takie same jak szczegółowy komunikat o błędzie logowania powyżej.
 * **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
 ### <a name="application-diagnostics"></a>Diagnostyka aplikacji
@@ -213,6 +213,10 @@ Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego p
 Śledzenie żądań zakończonych niepowodzeniem są przechowywane w plikach XML o nazwie **fr ### .xml**. Aby ułatwić wyświetlać zarejestrowane informacje o nazwie arkusz stylów XSL **freb.xsl** znajduje się w tym samym katalogu co pliki XML. Po otwarciu pliki XML w programie Internet Explorer programu Internet Explorer używa arkusza stylów XSL, zapewnienie sformatowane wyświetlanie informacji o śledzeniu, podobny do poniższego przykładu:
 
 ![Żądanie zakończone niepowodzeniem w przeglądarce](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+
+> [!NOTE]
+> Prosty sposób, aby wyświetlić ślady sformatowanych żądań zakończonych niepowodzeniem jest przejście na stronę aplikacji w portalu. Z menu po lewej stronie wybierz **diagnozowanie i rozwiązywanie problemów**, a następnie wyszukaj **nie powiodło się dzienniki śledzenia żądań**, następnie kliknij ikonę, aby przeglądać i wyświetlać śledzenia ma.
+>
 
 ### <a name="detailed-error-logs"></a>Dzienniki szczegółowy komunikat o błędzie
 Dzienniki szczegółowy komunikat o błędzie są dokumenty HTML, które zawierają bardziej szczegółowe informacje dotyczące błędów protokołu HTTP, które wystąpiły. Ponieważ są one po prostu dokumentów HTML, ich można wyświetlić w przeglądarce sieci web.

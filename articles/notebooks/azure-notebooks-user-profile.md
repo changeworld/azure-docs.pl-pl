@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 0797a8a2d5633a30dcb2099ea475e4daae026686
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854177"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874039"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Identyfikator profilu i użytkownika dla notesów usługi Azure
 
@@ -46,7 +46,7 @@ A **skonfigurować identyfikator użytkownika** polecenie również pojawia się
 
 Można również zmienić swój identyfikator użytkownika w dowolnym momencie na stronie profilu.
 
-Nazwa użytkownika musi składać się z co najmniej cztery litery, cyfry i łączniki. Inne znaki są niedozwolone, a identyfikator użytkownika nie można rozpocząć lub kończyć znakiem łącznika ani używać wiele łączników w wierszu.
+Nazwa użytkownika musi składać się z między cztery a szesnastu litery, cyfry i łączniki. Inne znaki są niedozwolone, a identyfikator użytkownika nie można rozpocząć lub kończyć znakiem łącznika ani używać wiele łączników w wierszu. Ponieważ nazwy użytkowników są unikatowe w obrębie wszystkich kont notesy platformy Azure, może zostać wyświetlony komunikat, "Identyfikator użytkownika jest już w użyciu." (Komunikat pojawia się również w przypadku próby użycia znakiem towarowym firmy Microsoft jako identyfikator użytkownika.) W takich przypadkach należy wybrać nazwę innego użytkownika.
 
 > [!Important]
 > Zmiana Identyfikatora unieważnia wszelkie adresy URL mogą zostały udostępnione przy użyciu swojego identyfikatora poprzedniego. Możesz zmienić swój identyfikator powrót do poprzedniego Identyfikatora w celu ponownego zweryfikowania łącza. Jednak jest możliwe dla innego użytkownika skorzystać z nieużywane Identyfikatora, w tym samym czasie.

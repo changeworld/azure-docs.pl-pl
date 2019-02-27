@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3babcf0562a2f817f6ebd1fcc66df6d655d905bb
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807154"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889328"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy subskrypcji klasycznej platformy Azure
 
@@ -91,7 +91,7 @@ Istnieją dwa sposoby zmiany administratora usługi. Można zmienić w **witryny
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Pamiętaj, że dany scenariusz jest obsługiwany przez sprawdzanie [ograniczenia dotyczące zmieniania administratorów usługi](#limits).
+1. Upewnij się, że dany scenariusz jest obsługiwany przez sprawdzanie ograniczenia dotyczące zmieniania administratorów usługi.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) stanowisku administratora konta.
 
@@ -109,7 +109,7 @@ Istnieją dwa sposoby zmiany administratora usługi. Można zmienić w **witryny
 
 ### <a name="account-center"></a>Centrum konta
 
-1. Pamiętaj, że dany scenariusz jest obsługiwany przez sprawdzanie [ograniczenia dotyczące zmieniania administratorów usługi](#limits).
+1. Upewnij się, że dany scenariusz jest obsługiwany przez sprawdzanie ograniczenia dotyczące zmieniania administratorów usługi.
 
 1. Zaloguj się do [Centrum kont](https://account.windowsazure.com/subscriptions) stanowisku administratora konta.
 

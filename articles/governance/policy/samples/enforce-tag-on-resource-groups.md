@@ -1,6 +1,6 @@
 ---
 title: Przykład — wymuszanie tagu i jego wartości na grupach zasobów
-description: Ta przykładowa zasada wymaga użycia tagu i wartości na grupie zasobów.
+description: Ta przykładowa definicja zasad wymaga użycia tagu i wartości na grupie zasobów.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8fd9ba2e6e5eae43476102c8928c67d6015ec2eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73990de30525dff4e3a0981ebca96368f56845fe
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245664"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339077"
 ---
-# <a name="enforce-tag-and-its-value-on-resource-groups"></a>Wymuszanie tagu i jego wartości na grupach zasobów
+# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Przykład — wymuszanie tagu i jego wartości na grupach zasobów
 
 Ta zasada wymaga użycia tagu i wartości na grupie zasobów. Należy określić wymaganą nazwę i wartość tagu.
 

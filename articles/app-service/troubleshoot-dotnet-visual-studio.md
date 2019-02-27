@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e9c1c35236ce6449a9c9bf06ba291f46db472
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e749f68aba48ac258363a0a03e3474e1e28b064
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731287"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876776"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
@@ -96,7 +96,7 @@ Najprostszym sposobem, aby znaleźć przyczynę błędu jest często Włącz szc
     Zostanie wyświetlony węzły, które umożliwiają dostęp do plików zawartości i pliki dziennika aplikacji.
 2. Rozwiń **pliki** węzłem, a następnie kliknij dwukrotnie plik *Web.config* pliku.
 
-    ![Otwórz plik Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
     Visual Studio otwiera plik Web.config ze zdalnej aplikacji i pokazuje [zdalnego] obok nazwy pliku, na pasku tytułu.
 3. Dodaj następujący wiersz do `system.web` elementu:
@@ -225,7 +225,7 @@ Zdalne debugowanie działa tylko ciągłych zadań Webjob. Zadania Webjob zaplan
 
 15. Zaloguj się przy użyciu swoich poświadczeń platformy Azure, a następnie kliknij nazwę zadania WebJob, aby przejść do strony dla zadania WebJob.
 
-     ![Kliknij przycisk ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
+     ![Click ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
      Pulpit nawigacyjny pokazuje, że `GenerateThumbnail` funkcja ostatnio wykonane.
 
@@ -685,7 +685,7 @@ Aby uzyskać więcej informacji na temat analizowania dzienników serwera intern
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Narzędzie do wyświetlania danych w dzienniki serwera sieci web (*.log* plików).
-* [Rozwiązywanie problemów z wydajnością usług IIS lub błędy aplikacji przy użyciu LogParser ](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Rozwiązywanie problemów z wydajnością usług IIS lub błędy aplikacji przy użyciu LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Wprowadzenie do narzędzia Analizator dzienników, które służy do analizowania dzienników serwera internetowego.
 * [Wpisy na blogu, Robert McMurray przy użyciu LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Kod stanu HTTP w usługach IIS 7.0, IIS 7.5 i IIS 8.0](https://support.microsoft.com/kb/943891)

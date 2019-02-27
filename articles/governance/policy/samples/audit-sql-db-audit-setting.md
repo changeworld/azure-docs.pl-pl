@@ -1,6 +1,6 @@
 ---
 title: Przykład —przeprowadzanie inspekcji ustawień inspekcji na poziomie usługi SQL Database
-description: Ta przykładowa zasada sprawdza, czy ustawienia inspekcji usługi SQL Database nie są zgodne z określonym ustawieniem.
+description: Ta przykładowa definicja zasad sprawdza, czy ustawienia inspekcji usługi SQL Database nie są zgodne z określonym ustawieniem.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e9eae6d2b9768436eb838945af32df63be160bb8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e319886333a0270bc9535607a40d73944d1e78f7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242706"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338199"
 ---
-# <a name="audit-sql-db-level-audit-setting"></a>Przeprowadzanie inspekcji ustawień inspekcji na poziomie usługi SQL Database
+# <a name="sample---audit-sql-db-level-audit-setting"></a>Przykład —przeprowadzanie inspekcji ustawień inspekcji na poziomie usługi SQL Database
 
 Ta zasada sprawdza, czy ustawienia inspekcji usługi SQL Database nie są zgodne z określonym ustawieniem. Należy określić wartość, która wskazuje, czy ustawienia inspekcji mają być włączone czy wyłączone.
 

@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 926cd354064d1dc8ae6c49c0fa93515d31167370
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a610c7c8189c22e8aa15e14a205b11b7f6c05b82
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819841"
+ms.locfileid: "56873104"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i usługi Azure Machine Learning: Tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
 
@@ -36,7 +36,7 @@ Istnieje również ekosystemu narzędzi do wizualizacji i skróceniu modelami ON
 
 [Można wdrażać modele ONNX](#deploy) w chmurze za pomocą usługi Azure Machine Learning i środowisko uruchomieniowe ONNX. Można je również wdrożyć na urządzeniach z systemem Windows 10 przy użyciu [Windows ML](https://docs.microsoft.com/windows/ai/). Nawet wdrażania ich na innych platformach przy użyciu konwertery są dostępne przez społeczność ONNX. 
 
-[ ![Diagram przepływu ONNX pokazujący, szkolenia, konwerterów i wdrażania](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
+[![Diagram przepływu ONNX pokazujący, szkolenia, konwerterów i wdrażania](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Modele ONNX
 

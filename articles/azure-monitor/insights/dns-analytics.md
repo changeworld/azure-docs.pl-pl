@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6e3c456b3ee92f30b3b152a39faf3f1fe483013f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992725"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876606"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
@@ -142,7 +142,7 @@ Informacje pomagają zidentyfikować:
 
 **Nazwa żądania rejestracji**. Górny Kafelek pokazuje linię trendu udane i nieudane żądania dynamicznej aktualizacji DNS. Niższe fragment zawiera najważniejsze 10 klientów, które wysyłają żądania aktualizacji DNS nie powiodło się na serwerach DNS, posortowane według liczby awarii.
 
-![Blok żądania rejestracji nazw ](./media/dns-analytics/name-reg-req-blade.png)
+![Blok żądania rejestracji nazw](./media/dns-analytics/name-reg-req-blade.png)
 
 **Przykładowe zapytania usługi Analytics DDI**. Zawiera listę najczęściej występujące zapytania wyszukiwania, które pobierają dane pierwotne analytics bezpośrednio.
 

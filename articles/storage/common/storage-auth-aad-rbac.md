@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 68511d62887cb0463fd8db01cb5c90cbc40ac4cd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 622a7bc870aba58205c1811de2fcdcabffd177e5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818990"
+ms.locfileid: "56869687"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udzielanie dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ W tym artykule opisano, jak przypisać role RBAC przy użyciu witryny Azure port
 
 ## <a name="determine-resource-scope"></a>Określenie zakresu zasobów 
 
-Przed przypisaniem roli RBAC do podmiotu zabezpieczeń, należy określić zakres dostępu, którą powinien posiadać tego podmiotu zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest udzielić tylko to możliwe najwęższego zakresu.
+Przed przypisaniem roli RBAC do podmiotu zabezpieczeń, należy określić zakres dostępu, którą powinien posiadać podmiotu zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest udzielić tylko to możliwe najwęższego zakresu.
 
 Na poniższej liście opisano poziomów, w których możesz ograniczyć dostęp do zasobów platformy Azure obiektów blob i kolejek, począwszy od najwęższego zakresu:
 
@@ -43,7 +43,7 @@ Po określeniu żądany zakres przypisania roli, przejdź do odpowiedniego zasob
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>Przypisz role RBAC przy użyciu witryny Azure portal
 
-Udzielanie dostępu do zasobów obiektów blob i kolejek przy użyciu poświadczeń usługi Azure AD obejmuje następujące czynności: 
+Udzielanie dostępu do zasobów obiektów blob i kolejek przy użyciu poświadczeń usługi Azure AD w witrynie Azure portal obejmuje następujące czynności: 
 
 1. Przypisz odpowiednią rolę RBAC magazynu platformy Azure do udzielania dostępu do kontenerów i kolejki. Aby uzyskać dostęp do odczytu, Przypisz **czytnik danych obiektu Blob (wersja zapoznawcza)** lub **czytnik danych kolejki (wersja zapoznawcza)** roli. Do odczytu, zapisu i usuwania dostęp, Przypisz **Współautor danych obiektu Blob (wersja zapoznawcza)** lub **Współautor danych kolejki (wersja zapoznawcza)** roli. Można także przypisać rolę niestandardową.
 
@@ -80,7 +80,7 @@ Można wykonać podobne kroki, aby przypisać rolę ograniczone do konta magazyn
 > 
 > Nie można przypisać roli do kontenera lub kolejki zakresu, jeśli konto magazynu ma hierarchicznej przestrzeni nazw, włączone.
 
-### <a name="assign-the-azure-resource-manager-reader-role"></a>Przypisywanie roli Czytelnik usługi Resource Manager platformy Azure
+### <a name="assign-the-reader-role-for-portal-access"></a>Przypisywanie roli Czytelnik do dostępu do portalu
 
 Po przypisaniu roli wbudowanej lub niestandardowej dla usługi Azure Storage do podmiotu zabezpieczeń oznacza udzielenie uprawnień do tego podmiotu zabezpieczeń, aby wykonywać operacje na danych na koncie magazynu. Wbudowane **czytnik danych** role zawierają uprawnień do odczytu do danych w ramach kontenera lub kolejki, while wbudowanej w **Współautor Data** role zawierają odczytu, zapisu i usuwania uprawnień do kontenera lub kolejka. Uprawnienia są ograniczone do określonego zasobu.  
 
@@ -90,7 +90,7 @@ Jednakże, jeśli Mary chce, aby wyświetlić obiekt blob w witrynie Azure porta
 
 Jeśli użytkownicy muszą mieć możliwość dostępu do obiektów blob w witrynie Azure portal, a następnie przypisać je dodatkową rolę RBAC, [czytnika](../../role-based-access-control/built-in-roles.md#reader) roli do tych użytkowników. **Czytnika** roli jest rola usługi Azure Resource Manager, która pozwala użytkownikom na wyświetlanie zasobów konta magazynu, ale nie można ich modyfikować. Nie obejmuje uprawnień do odczytu do danych w usłudze Azure Storage, ale tylko dla konta zarządzania zasobami.
 
-Wykonaj następujące kroki, aby przypisać **czytnika** roli. W tym przypadku kontener obejmuje przypisania:
+Wykonaj następujące kroki, aby przypisać **czytnika** roli, aby użytkownik mógł korzystać z obiektów blob, w witrynie Azure portal. W tym przypadku kontener obejmuje przypisania:
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **Przegląd** dla konta.
 1. W obszarze usługi wybierz **obiektów blob**. 
@@ -100,6 +100,9 @@ Wykonaj następujące kroki, aby przypisać **czytnika** roli. W tym przypadku k
 1. Z **Przypisz dostęp do** listę rozwijaną, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**.
 1. Wyszukaj, aby zlokalizować podmiotu zabezpieczeń, do którego chcesz przypisać rolę.
 1. Zapisz przypisania roli.
+
+> [!NOTE]
+> Przypisywanie roli Czytelnik jest niezbędne tylko w przypadku użytkowników, którzy potrzebują dostępu do obiektów blob lub kolejkach przy użyciu witryny Azure portal. 
 
 ## <a name="use-azure-ad-credentials-with-the-portal"></a>Użyj poświadczeń usługi Azure AD za pomocą portalu
 

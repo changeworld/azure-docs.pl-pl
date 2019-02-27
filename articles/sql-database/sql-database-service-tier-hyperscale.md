@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 49c41b436e0d935d1f9fce5ba2de10e0f2d0c99d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2c32ef84c1016d0058ee07220729a291aff19b70
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991230"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868072"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
@@ -145,7 +145,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>Dostępne regiony
 
-Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w następujących regionach platformy Azure: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
+Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w następujących regionach platformy Azure: 1 wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA 2, środkowe stany USA, Północna CentralU S, Europa Zachodnia, Europa Północna, Australia Wschodnia, Australia Południowo-Wschodnia, Azja południowo-wschodnia, Japonia, część wschodnia i Korea środkowa
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 

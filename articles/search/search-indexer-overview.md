@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8dae593dea36944f8db037803c0dfac68cbac7c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 754bd06e6033b49d24112cb20686e1c9b200d0d0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384908"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875484"
 ---
 # <a name="indexers-in-azure-search"></a>Indeksatory w usłudze Azure Search
 
@@ -31,7 +31,7 @@ Indeksatory można uruchamiać na żądanie lub według cyklicznego harmonogramu
 
 Możesz tworzyć indeksatory i zarządzać nimi przy użyciu tych metod:
 
-* [Portal > Kreator importowania danych ](search-import-data-portal.md)
+* [Portal > Kreator importowania danych](search-import-data-portal.md)
 * [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
@@ -54,18 +54,18 @@ Indeksatory można przeszukiwać magazynów danych na platformie Azure.
 ## <a name="basic-configuration-steps"></a>Podstawowe kroki konfiguracji
 Indeksatory oferują funkcje, które są unikatowe dla źródła danych. W związku z tym niektóre aspekty konfiguracji indeksatora lub źródła danych różnią się w zależności od typu indeksatora. Wszystkie indeksatory korzystają jednak z takich samych kompozycji i wymagań. Kroki, które są wspólne dla wszystkich indeksatorów, znajdują się poniżej.
 
-### <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
+### <a name="step-1-create-a-data-source"></a>Krok 1: Tworzenie źródła danych
 Indeksator pobiera dane ze *źródła danych*, które zawiera na przykład parametry połączenia i poświadczenia. Wywołaj [Utwórz źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source) interfejsu API REST lub [klasy źródła danych](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) chcesz utworzyć zasób.
 
 Źródła danych są konfigurowane i zarządzane niezależnie od indeksatorów, które z nich korzystają. Oznacza to, że jedno źródło może być używane przez wiele indeksatorów w celu jednoczesnego ładowania kilku indeksów.
 
-### <a name="step-2-create-an-index"></a>Krok 2. Tworzenie indeksu
+### <a name="step-2-create-an-index"></a>Krok 2: Tworzenie indeksu
 Indeksator automatyzuje niektóre zadania związane z pozyskiwaniem danych, ale tworzenie indeksu na ogół nie należy do tych zadań. Jako warunek wstępny należy posiadać wstępnie zdefiniowany indeks z polami, które odpowiadają polom w zewnętrznym źródle danych. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksu, zobacz [Tworzenie indeksu (interfejs API REST usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) lub [Index, klasa](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Aby uzyskać pomoc dotyczącą skojarzeń pól, zobacz [Mapowania pól w indeksatorach usługi Azure Search](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Chociaż indeksatory nie generują automatycznie indeksu, kreator **Importowanie danych** w portalu może pomóc w wykonaniu tego zadania. W większości przypadków kreator może rozpoznać schemat indeksu na podstawie istniejących metadanych w źródle i przedstawić wstępny schemat indeksu, który można edytować przy użyciu funkcji wbudowanych w tym kreatorze. Po utworzeniu indeksu w usłudze możliwość dalszej edycji w portalu jest w większości ograniczona do dodawania nowych pól. Należy rozważyć użycie kreatora do tworzenia indeksu, ale nie do jego poprawiania. Aby nauczyć się wykonywania tych zadań w praktyce, skorzystaj z [przewodnika po portalu](search-get-started-portal.md).
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3. Tworzenie indeksatora i harmonogramu
+### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3: Tworzenie indeksatora i harmonogramu
 Definicja indeksatora to konstrukcja określająca indeks, źródło danych i harmonogram. Indeksator może odwoływać się do źródła danych z innej usługi pod warunkiem, że źródło danych jest z tej samej subskrypcji. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksatora, zobacz [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Tworzenie indeksatora — interfejs API REST usługi Azure Search).
 
 ## <a name="next-steps"></a>Kolejne kroki

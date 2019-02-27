@@ -1,6 +1,6 @@
 ---
 title: Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
-description: Te przykładowe zasady wymagają, aby konta magazynu i maszyny wirtualne korzystały z zatwierdzonych jednostek SKU.
+description: Te przykładowe definicje zasad wymagają, aby konta magazynu i maszyny wirtualne korzystały z zatwierdzonych jednostek SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4e194e70c13fe70702e700fcaafa7cdf981e0147
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: cb6ccf87cc14424801a06cc2e9749e2fc2f6ee4a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242077"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339910"
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>Dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
 
 Te zasady wymagają, aby konta magazynu i maszyny wirtualne używały zatwierdzonych jednostek SKU. Używają wbudowanych zasad w celu zapewnienia zatwierdzonych jednostek SKU. Do Ciebie należy określenie tablicy z zatwierdzonymi jednostkami SKU maszyn wirtualnych i tablicy z zatwierdzonymi jednostkami SKU kont magazynu.
 

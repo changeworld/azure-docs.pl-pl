@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5513948a6611e93833c7e70fa4e5667b3901a9f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238492"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880227"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Rozpoczynanie pracy z usługą Azure Data Catalog
 Azure Data Catalog to w pełni zarządzana usługa w chmurze służąca jako system rejestracji i odnajdywania zasobów danych przedsiębiorstwa. Szczegółowe omówienie tej usługi można znaleźć w artykule [Co to jest usługa Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -82,7 +82,7 @@ W ramach organizacji — domeny usługi Azure Active Directory — można aprowi
     ![Usługa Azure Data Catalog — wykaz widoczny na liście](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. Kliknij utworzony wykaz. W portalu pojawi się blok **Wykaz danych**.
    
-   ![Usługa Azure Data Catalog — blok w portalu ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+   ![Usługa Azure Data Catalog — blok w portalu](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
 4. Właściwości wykazu danych można wyświetlać i aktualizować. Możesz na przykład kliknąć pozycję **Warstwa cenowa** i zmienić wersję.
    
     ![Usługa Azure Data Catalog — warstwa cenowa](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
@@ -144,7 +144,7 @@ W tym ćwiczeniu zasoby danych z bazy danych firmy Adventure Works zostaną zare
       ![Usługa Azure Data Catalog — zarejestrowane obiekty](media/data-catalog-get-started/data-catalog-registered-objects.png)
    9. Aby wyświetlić zarejestrowane obiekty źródła danych, kliknij pozycję **Wyświetl portal**. Otwórz portal usługi Azure Data Catalog i sprawdź, czy w widoku siatki są widoczne wszystkie cztery tabele i baza danych.
       
-      ![Obiekty w portalu usługi Azure Data Catalog ](media/data-catalog-get-started/data-catalog-view-portal.png)
+      ![Obiekty w portalu usługi Azure Data Catalog](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 W tym ćwiczeniu zarejestrowano obiekty z przykładowej bazy danych firmy Adventure Works, aby użytkownicy w organizacji mogli je łatwo odnaleźć. W następnym ćwiczeniu zostanie przedstawiony sposób odnajdowania zarejestrowanych zasobów danych.
 

@@ -14,16 +14,14 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237182"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270219"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak pobrać wpisy tajne z usługi Azure Key Vault i przekazać te wpisy jako parametry podczas wdrażania usługi Resource Manager. Wartość nigdy nie jest uwidoczniana, ponieważ używane jest tylko odwołanie do jej identyfikatora magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
 
@@ -192,6 +190,9 @@ New-AzResourceGroupDeployment `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
+
+> [!NOTE]
+> Występuje problem z operacją we/wy na pliku podczas używania programu Azure PowerShell w usłudze Cloud Shell.  Komunikat o błędzie: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Nie można pobrać parametrów dynamicznych dla polecenia cmdlet. Nie można odnaleźć ścieżki „Azure:/azuredeploy.json”, ponieważ nie istnieje).  Tymczasowym obejściem jest niedołączanie przełączników **-TemplateFile** i **TemplateParameterFile** w poleceniu `New-AzResourceGroupDeploy`. Polecenie wyświetli monit o wprowadzenie nazwy pliku.
 
 Podczas wdrażania szablonu należy użyć tej samej grupy zasobów, która została użyta na potrzeby magazynu kluczy. Ułatwia to oczyszczanie zasobów. Wystarczy wówczas usunąć jedną grupę zasobów, a nie dwie.
 

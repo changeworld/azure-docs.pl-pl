@@ -1,291 +1,255 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem chlorowców | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i chlorowców oprogramowania.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Halogen Software | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Halogen Software.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 2ca2298d-9a0c-4f14-925c-fa23f2659d28
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/23/2017
+ms.topic: tutorial
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1ef8db71a6a9765eac4ec6ac8cae1d731e296b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 143c214e13d3a603b9d417c68acd7b74dd342040
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205889"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455232"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem chlorowców
+# <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Samouczek: Integracja usługi Azure Active Directory z Halogen Software
 
-W tym samouczku dowiesz się, jak zintegrować chlorowców oprogramowania z usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Halogen Software z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Halogen Software z usługą Azure AD zapewnia następujące korzyści:
 
-Integracja oprogramowania chlorowców z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Halogen Software.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Halogen Software (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do oprogramowania chlorowców
-- Użytkowników, aby automatycznie uzyskać zalogowanych do oprogramowania chlorowców (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu oprogramowania chlorowców, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Halogen Software potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Oprogramowanie chlorowców logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Halogen Software z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-1. Dodawanie oprogramowania chlorowców z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+* Aplikacja Halogen Software obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-## <a name="adding-halogen-software-from-the-gallery"></a>Dodawanie oprogramowania chlorowców z galerii
+## <a name="adding-halogen-software-from-the-gallery"></a>Dodawanie aplikacji Halogen Software z galerii
 
-Aby skonfigurować integrację chlorowców oprogramowania w usłudze Azure AD, należy dodać chlorowców oprogramowania z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację aplikacji Halogen Software w usłudze Azure AD, należy dodać aplikację Halogen Software z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać chlorowców oprogramowania z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację Halogen Software z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **oprogramowania chlorowców**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/halogen-software-tutorial/tutorial_halogensoftware_search.png)
+4. W polu wyszukiwania wpisz **Halogen Software**, wybierz pozycję **Halogen Software** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-1. W panelu wyników wybierz **oprogramowania chlorowców**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![Aplikacja Halogen Software na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/halogen-software-tutorial/tutorial_halogensoftware_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą oprogramowania chlorowców oparte na użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Halogen Software, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Halogen Software.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w oprogramowaniu chlorowców do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w oprogramowaniu chlorowców musi nawiązać.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Halogen Software, należy wykonać kroki opisane w poniższych blokach konstrukcyjnych:
 
-W oprogramowaniu chlorowców przypisze się wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Halogen Software](#configure-halogen-software-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Halogen Software](#create-halogen-software-test-user)** — aby mieć w aplikacji Halogen Software odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu oprogramowania chlorowców, należy wykonać poniższe bloki konstrukcyjne:
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego oprogramowania chlorowców](#creating-a-halogen-software-test-user)**  — aby odpowiednikiem Britta Simon w oprogramowaniu chlorowców, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Halogen Software, wykonaj następujące czynności:
 
-W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji chlorowców oprogramowania.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Halogen Software** wybierz pozycję **Logowanie jednokrotne**.
 
-**Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu oprogramowania chlorowców, wykonaj następujące czynności:**
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. W witrynie Azure portal na **oprogramowania chlorowców** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/halogen-software-tutorial/tutorial_halogensoftware_samlbase.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-1. Na **chlorowców oprogramowania domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/halogen-software-tutorial/tutorial_halogensoftware_url.png)
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://global.hgncloud.com/<companyname>`
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Halogen Software](common/sp-identifier.png)
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://global.halogensoftware.com/<companyname>`, `https://global.hgncloud.com/<companyname>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://global.hgncloud.com/<companyname>`
 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej chlorowców oprogramowanie klienckie](https://support.halogensoftware.com/) do uzyskania tych wartości. 
- 
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
 
+    | |
+    |--|
+    | `https://global.halogensoftware.com/<companyname>`|
+    | `https://global.hgncloud.com/<companyname>`|
+    | |
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Halogen Software](https://support.halogensoftware.com/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/halogen-software-tutorial/tutorial_halogensoftware_certificate.png) 
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Kliknij przycisk **Save** (Zapisz).
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/halogen-software-tutorial/tutorial_general_400.png)
+6. W sekcji **Konfigurowanie aplikacji Halogen Software** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-1. W oknie innej przeglądarki, zaloguj się do Twojej **oprogramowania chlorowców** aplikacji jako administrator.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Kliknij przycisk **opcje** kartę. 
-   
-    ![Co to jest program Azure AD Connect][12]
+    a. Adres URL logowania
 
-1. W okienku nawigacji po lewej stronie kliknij **plik konfiguracji SAML**. 
-   
-    ![Co to jest program Azure AD Connect][13]
+    b. Identyfikator usługi Azure AD
 
-1. Na **plik konfiguracji SAML** strony, wykonaj następujące czynności: 
+    d. Adres URL wylogowywania
 
-    ![Co to jest program Azure AD Connect][14]
+### <a name="configure-halogen-software-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Halogen Software
 
-     a. Jako **Unikatowy identyfikator**, wybierz opcję **NameID**.
+1. W oddzielnym oknie przeglądarki internetowej zaloguj się w dzierżawie aplikacji **Halogen Software** jako administrator.
 
-     b. Jako **mapy Unikatowy identyfikator do**, wybierz opcję **Username**.
+2. Kliknij kartę**Options** (Opcje).
   
-     c. Aby przekazać plik metadanych pobrany, kliknij przycisk **Przeglądaj** wybrać plik, a następnie **Przekaż plik**.
- 
-     d. Aby przetestować konfigurację, kliknij pozycję **Uruchom Test**. 
-    
-    >[!NOTE]
-    >Musisz czekać na komunikat "*testu SAML. Zamknij to okno*". Zamknięcie okna przeglądarki otwartego. **Włącz SAML** pole wyboru jest włączona jedynie wtedy, jeśli test został ukończony. 
-     
-     e. Wybierz **Włącz SAML**.
-    
-     f. Kliknij przycisk **Save Changes** (Zapisz zmiany). 
+    ![Co to jest program Azure AD Connect](./media/halogen-software-tutorial/tutorial_halogen_12.png)
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+3. W okienku nawigacji po lewej stronie kliknij pozycję **SAML Configuration** (Konfiguracja SAML).
+  
+    ![Co to jest program Azure AD Connect](./media/halogen-software-tutorial/tutorial_halogen_13.png)
 
+4. Na stronie **SAML Configuration** (Konfiguracja SAML) wykonaj następujące kroki:
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    ![Co to jest program Azure AD Connect](./media/halogen-software-tutorial/tutorial_halogen_14.png)
+
+    a. W sekcji **Unique Identifier** (Unikatowy identyfikator) wybierz opcję **NameID** (Id. nazwy).
+
+    b. W sekcji **Unique Identifier Maps To** (Unikatowy identyfikator jest mapowany na) wybierz opcję **Username** (Nazwa użytkownika).
+  
+    d. Aby przekazać pobrany plik metadanych, kliknij przycisk **Browse** (Przeglądaj), aby wybrać plik, a następnie wybierz przycisk **Upload File** (Przekaż plik).
+
+    d. Aby przetestować konfigurację, kliknij przycisk **Run test** (Uruchom test).
+
+    > [!NOTE]
+    > Musisz zaczekać na komunikat „*The SAML test is complete. Please close this window*” (Zakończono test SAML. Zamknij to okno). Następnie zamknij otwarte okno przeglądarki. Pole wyboru **Enable SAML** (Włącz SAML) jest włączone tylko wtedy, gdy ukończono test.
+
+    e. Wybierz pozycję **Enable SAML** (Włącz SAML).
+
+    f. Kliknij przycisk **Save Changes** (Zapisz zmiany).
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/halogen-software-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/halogen-software-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/halogen-software-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/halogen-software-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz nazwę jako **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-halogen-software-test-user"></a>Tworzenie użytkownika testowego chlorowców oprogramowania
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon chlorowców oprogramowania.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-**Aby utworzyć użytkownika o nazwie Britta Simon chlorowców oprogramowania, wykonaj następujące czynności:**
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Halogen Software.
 
-1. Zaloguj się na swoje **oprogramowania chlorowców** aplikacji jako administrator.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Halogen Software**.
 
-1. Kliknij przycisk **użytkownika Centrum** kartę, a następnie kliknij przycisk **Create User**.
-   
-    ![Co to jest program Azure AD Connect][300]  
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Na **nowego użytkownika** okna dialogowego strony, wykonaj następujące czynności:
-   
-    ![Co to jest program Azure AD Connect][301]
+2. Na liście aplikacji wybierz pozycję **Halogen Software**.
 
-    a. W **imię** polu tekstowym wpisz imię użytkownika, takich jak **Britta**.
-    
-    b. W **nazwisko** pole tekstowe, wpisz nazwisko użytkownika, takich jak **Simon**. 
+    ![Link do aplikacji Halogen Software na liście aplikacji](common/all-applications.png)
 
-    c. W **Username** polu tekstowym wpisz **Britta Simon**, nazwę użytkownika, tak jak w witrynie Azure portal.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    d. W **hasło** pole tekstowe, wpisz hasło dla Britta.
-    
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-halogen-software-test-user"></a>Tworzenie użytkownika testowego aplikacji Halogen Software
+
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Halogen Software.
+
+**Aby utworzyć użytkownika o nazwie Britta Simon w aplikacji Halogen Software, wykonaj następujące kroki:**
+
+1. Zaloguj się do aplikacji **Halogen Software** jako administrator.
+
+2. Kliknij kartę **User Center** (Centrum użytkowników), a następnie kliknij pozycję **Create User** (Utwórz użytkownika).
+
+    ![Co to jest program Azure AD Connect](./media/halogen-software-tutorial/tutorial_halogen_300.png)  
+
+3. Na stronie dialogowej **New User** (Nowy użytkownik) wykonaj następujące kroki:
+
+    ![Co to jest program Azure AD Connect](./media/halogen-software-tutorial/tutorial_halogen_301.png)
+
+    a. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak **Britta**.
+
+    b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
+
+    d. W polu tekstowym **Username** (Nazwa użytkownika) wpisz nazwę użytkownika **Britta Simon**, tak jak w witrynie Azure Portal.
+
+    d. W polu tekstowym **Password** (Hasło) wpisz hasło użytkownika Britta.
+
     e. Kliknij pozycję **Zapisz**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do oprogramowania chlorowców za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon chlorowców oprogramowania, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **oprogramowania chlorowców**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/halogen-software-tutorial/tutorial_halogensoftware_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-Celem tej sekcji jest test konfiguracji logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
-
-Po kliknięciu kafelka chlorowców oprogramowania w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji oprogramowania chlorowców.
+Po kliknięciu kafelka Halogen Software w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Halogen Software, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/halogen-software-tutorial/tutorial_general_01.png
-[2]: ./media/halogen-software-tutorial/tutorial_general_02.png
-[3]: ./media/halogen-software-tutorial/tutorial_general_03.png
-[4]: ./media/halogen-software-tutorial/tutorial_general_04.png
-
-[12]: ./media/halogen-software-tutorial/tutorial_halogen_12.png
-
-[13]: ./media/halogen-software-tutorial/tutorial_halogen_13.png
-
-[14]: ./media/halogen-software-tutorial/tutorial_halogen_14.png
-
-[100]: ./media/halogen-software-tutorial/tutorial_general_100.png
-
-[200]: ./media/halogen-software-tutorial/tutorial_general_200.png
-[201]: ./media/halogen-software-tutorial/tutorial_general_201.png
-[202]: ./media/halogen-software-tutorial/tutorial_general_202.png
-[203]: ./media/halogen-software-tutorial/tutorial_general_203.png
-
-[300]: ./media/halogen-software-tutorial/tutorial_halogen_300.png
-
-[301]: ./media/halogen-software-tutorial/tutorial_halogen_301.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
