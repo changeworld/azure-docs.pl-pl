@@ -1,6 +1,6 @@
 ---
-title: Samouczek — udzielanie dostępu grupie za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell | Microsoft Docs
-description: Aby przyznać grupie dostęp z możliwością wyświetlania wszystkiego w ramach subskrypcji i zarządzania wszystkim w grupie zasobów przy użyciu programu Azure PowerShell, należy użyć kontroli dostępu opartej na rolach (RBAC, Role Based Access Control).
+title: Samouczek — udzielanie grupie dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell | Microsoft Docs
+description: Dowiedz się, jak udzielić grupie dostępu do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC) i programu Azure PowerShell.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: ad6884067a756412efe27ce275387ff5ceb1b298
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f080682baf42c5852e167a20bfbad7f00fe8bd3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105675"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343693"
 ---
-# <a name="tutorial-grant-access-for-a-group-using-rbac-and-azure-powershell"></a>Samouczek: Udzielanie dostępu grupie za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Samouczek: Udzielanie grupie dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym samouczku przyznasz grupie dostęp z możliwością wyświetlania wszystkiego w ramach subskrypcji i zarządzania wszystkim w grupie zasobów przy użyciu programu Azure PowerShell.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. W tym samouczku przyznasz grupie dostęp z możliwością wyświetlania wszystkiego w ramach subskrypcji i zarządzania wszystkim w grupie zasobów przy użyciu programu Azure PowerShell.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -70,7 +70,7 @@ Do przypisania roli potrzebny jest użytkownik, grupa lub jednostka usługi. Je�
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Jeśli nie masz uprawnień do tworzenia grup, wypróbuj zamiast tego [Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md).
+Jeśli nie masz uprawnień do tworzenia grup, wypróbuj zamiast tego [Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -294,4 +294,4 @@ Aby wyczyścić zasoby utworzone w tym samouczku, usuń grupę zasobów i grupę
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Zarządzanie dostępem przy użyciu kontroli RBAC i programu PowerShell](role-assignments-powershell.md)
+> [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](role-assignments-powershell.md)

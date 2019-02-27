@@ -11,17 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: b3ad10c62d393e2508d3ea04f0e49d3ffbf184cd
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d1c7340038731ebde10a7ffcb0ef2adcde18e901
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886377"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267499"
 ---
 # <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
-Usługa Application Insights jest rozszerzalną usługą zarządzania wydajnością aplikacji (APM) dla deweloperów sieci Web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Usługa automatycznie wykryje nieprawidłowości w zakresie wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.  Usługa ta pomaga w ciągłym doskonaleniu wydajności i użyteczności tworzonych rozwiązań. Działa w przypadku aplikacji na różnych platformach, w tym .NET, Node.js i J2EE, hostowanych lokalnie w środowisku hybrydowym lub w dowolnej chmurze publicznej. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych. Może monitorować i analizować dane telemetryczne z aplikacji mobilnych dzięki integracji z usługą Visual Studio App Center.
+Usługa Application Insights jest rozszerzalną usługą zarządzania wydajnością aplikacji (APM) dla deweloperów sieci Web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Usługa automatycznie wykryje nieprawidłowości w zakresie wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.  Usługa ta pomaga w ciągłym doskonaleniu wydajności i użyteczności tworzonych rozwiązań. Działa w przypadku aplikacji na różnych platformach, w tym .NET, Node.js i Java EE, hostowanych lokalnie w środowisku hybrydowym lub w dowolnej chmurze publicznej. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych. Może monitorować i analizować dane telemetryczne z aplikacji mobilnych dzięki integracji z usługą Visual Studio App Center.
 
 [Obejrzyj animację wprowadzającą](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
@@ -89,7 +89,7 @@ Zainstaluj usługę Application Insights w swojej aplikacji, skonfiguruj [testy 
 Po odebraniu alertu lub odnalezieniu problemu:
 
 * Oceń, na ilu użytkowników ma to wpływ.
-* Skoreluj błędy z wyjątkami, wywołaniami i śledzeniem zależności.
+* Skoreluj błędy z wyjątkami, wywołaniami zależności i śladami.
 * Sprawdź profilera, migawki, zrzuty stosu i dzienniki śledzenia.
 
 ### <a name="build-measure-learn"></a>Kompilowanie, mierzenie, poznawanie
@@ -107,13 +107,13 @@ Istnieje kilka sposobów, aby rozpocząć. Zacznij od tego, co najlepiej sprawdz
 * **W czasie wykonywania: wdróż instrumentację aplikacji internetowej na serwerze.** Pozwala uniknąć wszelkich aktualizacji kodu. Musisz mieć dostęp administracyjny do serwera.
   * [**Usługi IIS lokalnie lub na maszynie wirtualnej**](../../azure-monitor/app/monitor-performance-live-website-now.md)
   * [**Aplikacja internetowa lub maszyna wirtualna na platformie Azure**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**J2EE**](../../azure-monitor/app/java-live.md)
+  * [**Java EE**](../../azure-monitor/app/java-live.md)
 * **W czasie tworzenia: dodaj usługę Application Insights do swojego kodu.** Umożliwia pisanie niestandardowych telemetrii oraz instrumentację zaplecza i aplikacji komputerowych.
   * [Program Visual Studio](../../azure-monitor/app/asp-net.md) 2013 Update 2 lub nowszy.
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Inne platformy](../../azure-monitor/app/platforms.md)
-* **[Instrumentacja stron sieci Web](../../azure-monitor/app/javascript.md)** dla widoku strony, wywołań AJAX i innych telemetrii po stronie klienta.
+* **[Instrumentacja stron internetowych](../../azure-monitor/app/javascript.md)** dla widoku strony, wywołań AJAX i innej telemetrii po stronie klienta.
 * **[Analizowanie użycia aplikacji mobilnej](../../azure-monitor/learn/mobile-center-quickstart.md)** dzięki integracji z usługą Visual Studio App Center.
 * **[Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md)** — regularnie używaj polecenia ping dla witryny sieci Web z naszych serwerów.
 
@@ -122,7 +122,7 @@ Istnieje kilka sposobów, aby rozpocząć. Zacznij od tego, co najlepiej sprawdz
 Rozpocznij pracę w czasie wykonywania za pomocą rozwiązań:
 
 * [Serwer usług IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Serwer J2EE](../../azure-monitor/app/java-live.md)
+* [Serwer Java EE](../../azure-monitor/app/java-live.md)
 
 Rozpocznij pracę w czasie programowania za pomocą rozwiązań:
 

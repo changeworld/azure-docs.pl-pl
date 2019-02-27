@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 1/16/2019
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 43ae1339b2b6880656c68957a3d4ed2d2f13b559
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859546"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447121"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla języka Python
 
@@ -26,16 +26,16 @@ W tym artykule pokazano, jak korzystać z usługi rozpoznawania mowy za pośredn
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
-* [Środowisko Python 3.5 lub nowsze](https://www.python.org/downloads/), 64-bitowe.
+* [Środowisko Python 3.5 lub nowsze](https://www.python.org/downloads/).
 * Pakiet zestawu Speech SDK dla języka Python jest dostępny dla tych systemów operacyjnych: 
-    * Windows: x64.
+    * Windows: x64 i x86.
     * Mac: macOS X w wersji 10.12 lub nowszej.
     * W systemie Linux: Ubuntu 16.04 lub 18.04 w wersji x64.
 * W systemie Ubuntu uruchom następujące polecenia, aby zainstalować wymagane pakiety:
 
   ```sh
   sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
   ```
 
 * W systemie Windows potrzebny jest też składnik [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) dla danej platformy.

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 50c17e6ce953b601cc4ac0a406f443a54b9db3e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d50bb6ca67d7d09525013b65d0635e8e16b4cb4e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162722"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417282"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Szybki start: Przesyłanie strumieniowe plików wideo — .NET
 
@@ -81,6 +81,8 @@ W tym artykule strumień jest testowany za pomocą odtwarzacza Azure Media Playe
 
 1. Otwórz przeglądarkę i przejdź pod adres [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. W polu **Adres URL** wklej jedną z wartości adresu URL przesyłania strumieniowego otrzymanych po uruchomieniu aplikacji. 
+ 
+     Adres URL możesz wkleić w formacie HLS, Dash, lub Smooth, a usługa Azure Media Player przełączy się na odpowiedni protokół przesyłania strumieniowego w celu automatycznego odtworzenia na urządzeniu.
 3. Naciśnij pozycję **Aktualizuj odtwarzacz**.
 
 Usługi Azure Media Player można użyć do testowania, ale nie należy jej używać w środowisku produkcyjnym. 
@@ -100,6 +102,10 @@ az group delete --name amsResourceGroup
 Objaśnienia działania poszczególnych funkcji w przykładzie znajdziesz po sprawdzeniu kodu i przyjrzeniu się komentarzom w [tym pliku źródłowym](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
 
 Samouczek [przekazywania, kodowania i strumieniowego przesyłania plików](stream-files-tutorial-with-api.md) zawiera bardziej zaawansowany przykład przesyłania strumieniowego wraz ze szczegółowymi objaśnieniami. 
+
+### <a name="job-error-codes"></a>Kody błędów zadań
+
+Zobacz [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="multithreading"></a>Wielowątkowość
 

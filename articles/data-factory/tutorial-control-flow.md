@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: 93f8a5e806bd10824a78dd62351fd3d9be0cf32c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 53540128b5a9a1e2690179a35f26a9a82c6cb584
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025831"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446957"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 W tym samouczku pokazano, jak utworzyć potok usługi Data Factory przedstawiający niektóre funkcje przepływu sterowania. Ten potok tworzy prostą kopię z kontenera w usłudze Azure Blob Storage w innym kontenerze na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się powodzeniem, warto wysłać szczegóły zakończonej pomyślnie operacji kopiowania (takie jak ilość zapisanych danych) w wiadomości e-mail z informacją o powodzeniu. W przypadku niepowodzenia działania kopiowania warto wysłać szczegóły błędu kopiowania (np. komunikat o błędzie) w wiadomości e-mail z informacją o niepowodzeniu. W samouczku pokazano, jak przekazać parametry.
@@ -71,11 +71,11 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
 ## <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
 1. Kliknij pozycję **Narzędzia** -> **Menedżer pakietów NuGet** -> **Konsola menedżera pakietów**.
-2. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety:
+2. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety. Aby uzyskać szczegóły, zobacz [pakiet nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

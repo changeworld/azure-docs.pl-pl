@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41771db4ff674b2f0df941286358d3154034ea1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e6f1174351f0907ce2bef21324c7ba81c81498b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194363"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266717"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co to jest dostęp warunkowy w usłudze Azure Active Directory?
 
@@ -109,11 +109,7 @@ Do korzystania z funkcji dostępu warunkowego wymagana jest licencja usługi Azu
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Więcej informacji:
-    - Na temat warunków — zobacz [Conditions in Azure Active Directory conditional access (Warunki w funkcji dostępu warunkowego usługi Azure Active Directory)](conditions.md).
+Aby dowiedzieć się, jak wdrożyć dostęp warunkowy w danym środowisku, zobacz [Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory](plan-conditional-access.md).
 
-    - Na temat mechanizmów kontroli dostępu — zobacz [Access controls in Azure Active Directory conditional access (Mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory)](controls.md).
 
-- Jeśli chcesz lepiej zapoznać się ze sposobem konfigurowania zasad dostępu warunkowego, zobacz [Require MFA for specific apps with Azure Active Directory conditional access (Korzystanie z dostępu warunkowego w usłudze Azure Active Directory w celu wymagania uwierzytelniania wieloskładnikowego dla określonych aplikacji)](app-based-mfa.md).
 
-- Jeśli chcesz zapoznać się z planem wdrożenia krok po kroku, wraz z zalecanymi zasadami, zobacz [plan wdrożenia dostępu warunkowego](https://aka.ms/conditionalaccessdeploymentplan).

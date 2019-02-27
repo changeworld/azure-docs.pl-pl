@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fb80af9df58fba41e5ece060099eb98e3d2f90fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693993"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883151"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -163,4 +163,4 @@ Można zastąpić domyślną trasę systemową platformy Azure dla prefiksu adre
 ## <a name="next-steps"></a>Kolejne kroki
 - Zacząć chronić swoje obciążenia przez [replikowanie maszyn wirtualnych platformy Azure](site-recovery-azure-to-azure.md).
 - Dowiedz się więcej o [przechowywania adresów IP](site-recovery-retain-ip-azure-vm-failover.md) dla trybu failover maszyny wirtualnej platformy Azure.
-- Dowiedz się więcej na temat odzyskiwania po awarii [maszyn wirtualnych platformy Azure przy użyciu usługi ExpressRoute ](azure-vm-disaster-recovery-with-expressroute.md).
+- Dowiedz się więcej na temat odzyskiwania po awarii [maszyn wirtualnych platformy Azure przy użyciu usługi ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

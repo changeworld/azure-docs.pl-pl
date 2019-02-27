@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6cdc7ef8ee991719153f6daed01fbb76f945a7a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e233de6f0909477e5033d2a0104f9165e86a9077
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194942"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Workplace by Facebook
 
@@ -143,31 +143,38 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
 
 1. W osobnym oknie przeglądarki internetowej zaloguj się w swojej witrynie firmowej aplikacji Workplace by Facebook jako administrator.
   
-   > [!NOTE]
-   > W ramach procesu uwierzytelniania SAML aplikacja Workplace może używać ciągów zapytań o rozmiarze do 2,5 kilobajta w celu przekazania parametrów do usługi Azure AD.
+    > [!NOTE]
+    > W ramach procesu uwierzytelniania SAML aplikacja Workplace może używać ciągów zapytań o rozmiarze do 2,5 kilobajta w celu przekazania parametrów do usługi Azure AD.
 
-2. W **Panelu administracyjnym** przejdź do karty**Zabezpieczenia**, a następnie **Uwierzytelnianie**.
+2. W **Panelu administracyjnym** przejdź do karty **Zabezpieczenia**.
 
-3. W obszarze **Uwierzytelnianie SAML** wybierz z listy rozwijanej pozycję **Tylko logowanie jednokrotne**.
+    ![Panel administracyjny](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-4. Wprowadź wartości skopiowane z sekcji **Konfiguracja aplikacji Workplace by Facebook** witryny Azure Portal do odpowiednich pól:
+3. Na karcie **Uwierzytelnianie** wybierz pozycję **Logowanie jednokrotne**, a następnie wykonaj następujące czynności:
 
-    * W polu tekstowym **Adres URL SAML** wklej wartość **Adres URL logowania** skopiowaną z witryny Azure Portal.
-    * W polu tekstowym **Adres URL wystawcy SAML** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
-    * W polu **Przekierowanie po wylogowaniu SAML** (opcjonalnie) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
-    * Otwórz w Notatniku swój **certyfikat zakodowany w formacie base-64** pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat SAML**.
+    ![Karta Uwierzytelnianie](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-5. Może być konieczne wprowadzenie adresu URL odbiorców, adresu URL adresata i adresu URL usługi ACS (Assertion Consumer Service) w sekcji **Podstawowa konfiguracja protokołu SAML**.
+    a. W polu tekstowym **Adres URL SAML** wklej wartość **Adres URL logowania** skopiowaną z witryny Azure Portal.
 
-6. Przewiń w dół do końca sekcji i kliknij przycisk **Testuj logowanie jednokrotne**. Zostanie wtedy otworzone okno podręczne ze stroną logowania usługi Azure AD. Wprowadź swoje poświadczenia jak zwykle w celu uwierzytelnienia.
+    b. W polu tekstowym **Identyfikator URI wystawcy SAML** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+
+    d. W polu **Przekierowanie po wylogowaniu SAML** (opcjonalnie) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+
+    d. Otwórz w Notatniku swój **certyfikat zakodowany w formacie base-64** pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat SAML**.
+
+    e. Skopiuj **Adres URL odbiorcy** dla swojego wystąpienia i wklej go w polu tekstowym **Identyfikator (identyfikator jednostki)** w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+    f. Skopiuj **Adres URL odbiorcy** dla swojego wystąpienia i wklej go w polu tekstowym **Adres URL logowania** w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+    g. Przewiń w dół do końca sekcji i kliknij przycisk **Testuj logowanie jednokrotne**. Zostanie wtedy otworzone okno podręczne ze stroną logowania usługi Azure AD. Wprowadź swoje poświadczenia jak zwykle w celu uwierzytelnienia.
 
     **Rozwiązywanie problemów:** Upewnij się, że adres e-mail zwracany z usługi Azure AD jest taki sama jak konto firmowe platformy Workplace, do którego się zalogowano.
 
-7. Po pomyślnym zakończeniu testu przewiń w dół do końca strony i kliknij przycisk **Zapisz**.
+    h. Po pomyślnym zakończeniu testu przewiń w dół do końca strony i kliknij przycisk **Zapisz**.
 
-8. Wszystkim użytkownikom korzystającym z aplikacji Workplace zostanie wyświetlona strona logowania usługi Azure AD w celu uwierzytelnienia.
+    i. Wszystkim użytkownikom korzystającym z aplikacji Workplace zostanie wyświetlona strona logowania usługi Azure AD w celu uwierzytelnienia.
 
-9. **Przekierowanie po wylogowaniu SAML (opcjonalnie)** -
+4. **Przekierowanie po wylogowaniu SAML (opcjonalnie)** -
 
     Możesz opcjonalnie skonfigurować adres URL wylogowywania SAML, który może prowadzić do strony wylogowywania usługi Azure AD. Gdy to ustawienie jest włączone i skonfigurowane, użytkownik nie będzie przekierowywany do strony wylogowywania aplikacji Workplace. Zamiast tego użytkownik zostanie przekierowany do adresu URL dodanego do ustawienia Przekierowanie po wylogowaniu SAML.
 

@@ -4,23 +4,23 @@ description: Więcej informacji na temat zabezpieczeń, uwierzytelniania i stand
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b174d7f9b4b8438687512a90dc7a65b5649f758a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 8aadddbc9ae13a87f89db4d7e7189ea7aa8aeef5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229894"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883508"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Standardy zabezpieczeń usługi Azure IoT Edge
 
-Przenoszenie danych i analizy na inteligentnych urządzeniach brzegowych tworzy ryzyka scenariusze, które usługi Azure IoT Edge jest przeznaczony do adresów. Standardy zabezpieczeń usługi IoT Edge są przeznaczone do zapewniają elastyczność dla wdrożeń i profile ryzyka różnych, jednocześnie zapewniając taką samą ochronę, który można oczekiwać od wszystkich usług platformy Azure. 
+Usługa Azure IoT Edge jest przeznaczona dla scenariuszy ryzyka, które są integralną częścią podczas przenoszenia danych i analiz w inteligentnych węzłach brzegowych. Standardy zabezpieczeń usługi IoT Edge zapewniają elastyczność wdrożeń i profile ryzyka różnych, jednocześnie zapewniając ochrony, który można oczekiwać od wszystkich usług platformy Azure. 
 
-Usługa Azure IoT Edge działa na różnych sprawia, że sprzęt i modeli, obsługuje kilka systemów operacyjnych i ma zastosowanie do różnorodnych wdrożeń. Oceny ryzyka scenariusz wdrażania, zależy od wielu zagadnienia, w tym własności rozwiązania obszaru geograficznego wdrożenia, wrażliwości danych, ochrony prywatności, aplikacji pionowy, wymaganiami prawnymi w zakresie. Zamiast oferty konkretnych rozwiązań dla konkretnych scenariuszy, IoT Edge to struktura extensible zabezpieczeń opartych na zasadach dobrze jest ona przeznaczona dla skalowania. 
+Usługa Azure IoT Edge działa na różnych sprawia, że sprzęt i modeli, obsługuje kilka systemów operacyjnych i ma zastosowanie do różnorodnych wdrożeń. Oceny ryzyka scenariusz wdrażania, zależy od wielu zagadnienia, w tym własności rozwiązania obszaru geograficznego wdrożenia, wrażliwości danych, ochrony prywatności, aplikacji pionowy, wymaganiami prawnymi w zakresie. Zamiast oferty konkretnych rozwiązań dla konkretnych scenariuszy, IoT Edge to struktura extensible zabezpieczeń opartych na zasadach dobrze jest ona, które są skonstruowane do skalowania. 
  
 Ten artykuł zawiera omówienie struktury zabezpieczeń usługi IoT Edge. Aby uzyskać więcej informacji, zobacz [zabezpieczanie inteligentnych rozwiązań brzegowych](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
@@ -30,15 +30,15 @@ Standardy wspieranie łatwość kontroli i łatwość implementacji, które są 
 
 ## <a name="authentication"></a>Authentication
 
-Podczas wdrażania rozwiązania IoT, musisz wiedzieć, że tylko zaufane aktorów, urządzenia i składniki mają dostęp do rozwiązania. Takie wiedzy oferuje bezpieczne odpowiedzialność uczestników z włączaniem podstawę do przyjęcia.  Usługa Azure IoT Edge zapewnia tej wiedzy za pomocą uwierzytelniania.  Podstawowy mechanizm uwierzytelniania dla platformy Azure IoT Edge jest uwierzytelnianie oparte na certyfikatach.  Ten mechanizm jest pochodną zestaw standardów dotyczących infrastruktury klucza publicznego (PKiX) przez Internet Engineering Task Force (IETF).     
+Podczas wdrażania rozwiązania IoT, musisz wiedzieć, że tylko zaufane aktorów, urządzeń i moduły mają dostęp do rozwiązania. Takie wiedzy oferuje bezpieczne odpowiedzialność uczestników. Usługa Azure IoT Edge zapewnia tej wiedzy za pomocą uwierzytelniania. Uwierzytelnianie oparte na certyfikatach jest podstawowym mechanizmem uwierzytelniania na platformie Azure IoT Edge. Ten mechanizm jest pochodną zestaw standardów dotyczących infrastruktury klucza publicznego (PKiX) przez Internet Engineering Task Force (IETF).     
 
-Wszystkie urządzenia, moduły i aktorów interakcji z urządzeniem Azure IoT Edge, czy fizycznie lub za pośrednictwem połączenia sieciowego, powinny mieć unikatowy certyfikat tożsamości. Nie każdy scenariusz lub składnika może przystosowany do uwierzytelniania opartego na certyfikatach. W tych scenariuszach extensibility Framework, zabezpieczenia oferuje bezpieczne alternatyw. 
+Wszystkie urządzenia, moduły i aktorów interakcji z urządzeniem Azure IoT Edge, czy fizycznie lub za pośrednictwem połączenia sieciowego, powinny mieć unikatowy certyfikat tożsamości. Jednak nie każdy scenariusz lub składnika może przystosowany do uwierzytelniania opartego na certyfikatach. W tych scenariuszach extensibility Framework, zabezpieczenia oferuje bezpieczne alternatyw. 
 
 ## <a name="authorization"></a>Autoryzacja
 
-Zasadę najmniejszych uprawnień mówi, że użytkownicy i składników systemu powinny mieć dostęp tylko minimalny zestaw zasobów i dane wymagane do wykonania ich ról. Urządzenia, moduły i aktorów powinien uzyskiwać dostęp do zasobów i danych w obrębie swojego zakresu uprawnień i tylko wtedy, gdy jest pod względem architektury dopuszczalny rozmiar. Niektóre uprawnienia są konfigurowalne o odpowiednich uprawnieniach i innych pod względem architektury wymuszane.  Na przykład moduł może dokonywać za pośrednictwem konfiguracji uprzywilejowanych inicjować połączenie z usługą Azure IoT Hub. Jednak nie ma powodu Dlaczego modułu w jedno urządzenie usługi Azure IoT Edge należy uzyskać dostępu do bliźniaczej reprezentacji modułu na innym urządzeniu usługi Azure IoT Edge.
+Zasadę najmniejszych uprawnień mówi, że użytkownicy i składników systemu powinny mieć dostęp tylko minimalny zestaw zasobów i dane wymagane do wykonania ich ról. Urządzenia, moduły i aktorów powinien uzyskiwać dostęp do zasobów i danych w obrębie swojego zakresu uprawnień i tylko wtedy, gdy jest pod względem architektury dopuszczalny rozmiar. Niektóre uprawnienia są konfigurowane z wystarczającymi uprawnieniami, a inne są architektonicznie wymuszane.  Na przykład moduł może dokonywać za pośrednictwem konfiguracji uprzywilejowanych inicjować połączenie z usługą Azure IoT Hub. Jednak nie ma powodu Dlaczego modułu w jedno urządzenie usługi Azure IoT Edge należy uzyskać dostępu do bliźniaczej reprezentacji modułu na innym urządzeniu usługi Azure IoT Edge.
 
-Inne schematy autoryzacji to certyfikat podpisywania prawa, kontrola dostępu oparta na rolach (RBAC) i innych systemów dojrzała autoryzacji. 
+Inne schematy autoryzacji to prawa podpisywania certyfikatów i kontroli dostępu opartej na rolach (RBAC). 
 
 ## <a name="attestation"></a>Zaświadczanie
 
@@ -54,11 +54,11 @@ Statyczne zaświadczania weryfikuje integralność wszystkich składników oprog
 
 ### <a name="runtime-attestation"></a>Środowisko uruchomieniowe zaświadczania
 
-Gdy system ukończeniu procesu bezpiecznego rozruchu i jest uruchomiona, dobrze zaprojektowanych systemów będzie wykryć próbuje wstrzyknąć złośliwe oprogramowanie i podejmij odpowiednie środki zaradcze. Atakami złośliwego oprogramowania mogą odnosić się do systemu porty i interfejsy w celu uzyskania dostępu do systemu. Lub, jeśli uczestników złośliwych działań ma fizyczny dostęp do urządzenia mogą manipulować samego urządzenia lub przy użyciu kanału po stronie ataków uzyskują dostęp. Takie malcontent, która może być w formie złośliwe oprogramowanie lub zmiany konfiguracji nieautoryzowany, są wstrzykiwane po zakończeniu procesu rozruchu, więc statyczne zaświadczania nie wykryje. Środki zaradcze oferowanych lub wymuszane przez urządzenia sprzętowe pomocy odwrócenia takiego zagrożenia.  Struktura zabezpieczeń dla usługi Azure IoT Edge jawnie wywołuje rozszerzeń, które walczyć z zagrożeniami w czasie wykonywania.  
+Gdy system ukończeniu procesu bezpiecznego rozruchu i jest uruchomiona, dobrze zaprojektowanych systemów będzie wykryć próbuje wstrzyknąć złośliwe oprogramowanie i podejmij odpowiednie środki zaradcze. Atakami złośliwego oprogramowania mogą odnosić się do systemu porty i interfejsy w celu uzyskania dostępu do systemu. Lub, jeśli uczestników złośliwych działań ma fizyczny dostęp do urządzenia mogą manipulować samego urządzenia lub przy użyciu kanału po stronie ataków uzyskują dostęp. Nie można wykryć takie malcontent, która może być w formie złośliwe oprogramowanie lub zmiany konfiguracji nieautoryzowany, za statyczne zaświadczania, ponieważ są wstrzykiwane po zakończeniu procesu rozruchu. Środki zaradcze oferowanych lub wymuszane przez urządzenia sprzętowe pomocy odwrócenia takiego zagrożenia.  Struktura zabezpieczeń dla usługi Azure IoT Edge jawnie wywołuje rozszerzeń, które walczyć z zagrożeniami w czasie wykonywania.  
 
 ### <a name="software-attestation"></a>Oprogramowanie zaświadczania
 
-Wszystkie systemy dobrej kondycji, w tym systemów inteligentnych rozwiązań brzegowych musi zaakceptować, poprawek i uaktualnień.  Zabezpieczenia jest ważne dla procesów aktualizacji w przeciwnym razie mogą być potencjalne wektorami zagrożenia.  Struktura zabezpieczeń dla wywołań usługi Azure IoT Edge aktualizacje za pośrednictwem mierzona i podpisanych pakietów do zapewnienia integralności i uwierzytelniania źródło pakietów.  Ten standard ma zastosowanie do wszystkich systemów operacyjnych i aplikacji oprogramowania z usługi bits. 
+Wszystkie systemy w dobrej kondycji, w tym systemów inteligentnych rozwiązań brzegowych, musisz zaakceptować poprawek i uaktualnień.  Zabezpieczenia jest ważne dla procesów aktualizacji w przeciwnym razie mogą być potencjalne wektorami zagrożenia.  Struktura zabezpieczeń dla wywołań usługi Azure IoT Edge aktualizacje za pośrednictwem mierzona i podpisanych pakietów do zapewnienia integralności i uwierzytelniania źródło pakietów.  Ten standard ma zastosowanie do wszystkich systemów operacyjnych i aplikacji oprogramowania z usługi bits. 
 
 ## <a name="hardware-root-of-trust"></a>Sprzęt elementu głównego zaufania
 
@@ -70,7 +70,7 @@ Aby pomóc klientom w podejmowaniu świadomych wyborów podczas nabywanie urząd
 
 ## <a name="extensibility"></a>Rozszerzalność
 
-Możliwość rozbudowy jest teraz najwyższej jakości dla obywateli w ramach zabezpieczeń usługi Azure IoT Edge.  Dzięki technologii IoT zapewniają różne rodzaje przekształcenia firmy go oznacza przyczyny ciągły zabezpieczeń powinny rozwój w sposób równoległy adres pojawiających się scenariuszy.  Struktura zabezpieczeń usługi Azure IoT Edge rozpoczyna się od solidną podstawę, na którym opiera się on w rozszerzalności w różnych wymiarach do uwzględnienia: 
+Dzięki technologii IoT zapewniają różne rodzaje przekształcenia firmy go oznacza przyczyny ciągły zabezpieczeń powinny rozwój w sposób równoległy adres pojawiających się scenariuszy.  Struktura zabezpieczeń usługi Azure IoT Edge rozpoczyna się od solidną podstawę, na którym opiera się on w rozszerzalności w różnych wymiarach do uwzględnienia: 
 
 * Pierwsze usługi zabezpieczeń innych firm, takich jak usługi Device Provisioning Service dla usługi Azure IoT Hub.
 * Usługi innych firm, takich jak usługi zarządzanej zabezpieczeń dla różnych aplikacji branżowych (np. przemysłowych lub opieki zdrowotnej) lub zespół technologii (np. monitorowanie zabezpieczeń siatki sieci lub dolina sprzętu zaświadczania usługi) za pośrednictwem sieci sformatowanego partnerów.

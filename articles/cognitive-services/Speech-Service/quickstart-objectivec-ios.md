@@ -1,23 +1,23 @@
 ---
 title: 'Szybki start: rozpoznawanie mowy, język Objective-C — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku Objective-C w systemie IOS przy użyciu zestawu SDK usługi Mowa
+description: Dowiedz się, jak rozpoznawać mowę w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 services: cognitive-services
 author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: f92a5c5ea064d91eae065c96e656416b21714e98
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5f6a66b4005a0fa7106830d7e53950a9902cd078
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878106"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447246"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie IOS przy użyciu zestawu SDK usługi Mowa
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.2.0`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.3.0`.
 
 Zestaw SDK usługi Mowa z zestawu Cognitive Services dla komputerów Mac i systemu iOS jest aktualnie dystrybuowany w ramach platformy Cocoa.
 Można go pobrać ze strony https://aka.ms/csspeech/iosbinary. Pobierz plik do katalogu macierzystego.

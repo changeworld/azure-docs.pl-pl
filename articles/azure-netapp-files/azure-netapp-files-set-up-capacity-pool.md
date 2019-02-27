@@ -12,26 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/28/2018
+ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: af3738849382317eeddf8bce3d2f87e38e0fb583
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412915"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427798"
 ---
 # <a name="set-up-a-capacity-pool"></a>Konfigurowanie puli pojemności
+
 Skonfigurowanie puli pojemności umożliwia tworzenie woluminów w tej puli.  
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem 
+
 Potrzebujesz utworzonego konta usługi NetApp.   
 
 [Tworzenie konta usługi NetApp](azure-netapp-files-create-netapp-account.md)
 
 ## <a name="steps"></a>Kroki 
 
-1. Przejdź do bloku zarządzania na koncie usługi NetApp, a następnie w okienku nawigacji wybierz pozycję **Pule pojemności**.
+1. Przejdź do bloku zarządzania na koncie usługi NetApp, a następnie w okienku nawigacji kliknij pozycję **Pule pojemności**.  
+    
+    ![Przechodzenie do puli pojemności](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
 
 2. Kliknij pozycję **+ Dodaj pule**, aby dodać nową pulę pojemności.   
     Zostanie wyświetlone okno Nowa pula pojemności.
@@ -43,18 +47,18 @@ Potrzebujesz utworzonego konta usługi NetApp.
 
   * **Poziom usługi**   
     To pole wskazuje docelową wydajność puli pojemności.  
-    Obecnie jest dostępny tylko poziom usługi Premium. 
+    Określ poziom usługi dla puli pojemności: [**Premium**](azure-netapp-files-service-levels.md#Premium) lub [**Standardowa**](azure-netapp-files-service-levels.md#Standard).
 
-  *  **Rozmiar**     
-      Określ rozmiar kupowanej puli pojemności.        
-      Minimalny rozmiar puli pojemności to 4 TiB. Można utworzyć pulę o rozmiarze będącym wielokrotnością 4 TiB.   
+  * **Rozmiar**     
+    Określ rozmiar kupowanej puli pojemności.        
+    Minimalny rozmiar puli pojemności to 4 TiB. Można utworzyć pulę o rozmiarze będącym wielokrotnością 4 TiB.   
       
-      ![Nowa pula pojemności](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+    ![Nowa pula pojemności](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Kliknij przycisk **OK**.
 
 ## <a name="next-steps"></a>Następne kroki 
 
-[Delegowanie podsieci do usługi Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
-
-
+- [Poziomy usług dla usługi Azure NetApp Files](azure-netapp-files-service-levels.md)
+- Informacje o różnych poziomach usługi można uzyskać na [stronie z cennikiem dla usługi Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Delegowanie podsieci do usługi Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

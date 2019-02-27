@@ -1,6 +1,6 @@
 ---
 title: Przykład — Przeprowadzanie inspekcji magazynów usługi Key Vault pod kątem braku punktów końcowych sieci wirtualnej
-description: Te przykładowe zasady przeprowadzają inspekcję magazynów usługi Key Vault w celu wykrycia wystąpień, które nie mają punktów końcowych usługi sieci wirtualnej.
+description: Te przykładowe definicje zasad przeprowadzają inspekcję magazynów usługi Key Vault w celu wykrycia wystąpień, które nie mają punktów końcowych usługi sieci wirtualnej.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: c9a5359303c1feecfbc905099a1bed2fc10fa52d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6b53c94787cfcabae1072f9879f14e0d890e967c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245800"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341533"
 ---
-# <a name="key-vault-vaults-with-no-virtual-network-endpoints"></a>Magazyny usługi Key Vault niemające punktów końcowych sieci wirtualnej
+# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Przykład — Magazyny usługi Key Vault niemające punktów końcowych sieci wirtualnej
 
 Te zasady umożliwiają przeprowadzenie inspekcji magazynów usługi Key Vault, które nie mają punktów końcowych sieci wirtualnej. Należy ich używać w celu wymuszenia wymagań dotyczących zabezpieczeń. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [punktów końcowych usługi sieci wirtualnej w usłudze Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 

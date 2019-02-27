@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1724454ff67f6cfe3646b59e8302a3dd099081
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79abead77705d13df909703a234bf72ee121a5be
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217449"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301183"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Czym jest aplikacja Microsoft Authenticator?
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
@@ -59,11 +59,11 @@ Jeśli do zakończenia procesu uwierzytelniania używasz numeru PIN, możesz sko
 ## <a name="who-decides-if-you-use-this-feature"></a>Kto decyduje o możliwości użycia tej funkcji?
 W zależności od typu konta o konieczności korzystania z weryfikacji dwuskładnikowej może zdecydować Twoja organizacja lub ta decyzja może zostać przeniesiona na użytkownika.
 
-- **Konto służbowe.** Jeśli używasz konta służbowego (na przykład alain@contoso.com), to Twoja organizacja decyduje, czy musisz korzystać z weryfikacji dwuskładnikowej i konkretnych metod weryfikacji. Aby uzyskać więcej informacji o dodawaniu konta służbowego do aplikacji Microsoft Authenticator, zobacz [Dodawanie konta służbowego](microsoft-authenticator-app-add-work-account.md).
+- **Konto służbowe.** Jeśli używasz konta służbowego (na przykład alain@contoso.com), to Twoja organizacja decyduje, czy musisz korzystać z weryfikacji dwuskładnikowej i konkretnych metod weryfikacji. Aby uzyskać więcej informacji o dodawaniu konta służbowego do aplikacji Microsoft Authenticator, zobacz [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md).
 
-- **Osobiste konto Microsoft.** Weryfikację dwuskładnikowa można skonfigurować dla osobistych kont Microsoft (na przykład alain@outlook.com). Aby uzyskać więcej informacji na temat dodawania Twojego osobistego konta Microsoft, zobacz 
+- **Osobiste konto Microsoft.** Weryfikację dwuskładnikowa można skonfigurować dla osobistych kont Microsoft (na przykład alain@outlook.com). Aby uzyskać więcej informacji na temat dodawania Twojego osobistego konta Microsoft, zobacz [Dodawanie kont osobistych](user-help-auth-app-add-personal-ms-account.md).
 
-- **Konto inne niż Microsoft.** Weryfikację dwuskładnikowa można skonfigurować dla kont innych niż Microsoft (na przykład alain@gmail.com). Konta nienależące do firmy Microsoft mogą używać innego terminu na oznaczenia weryfikacji dwuskładnikowej. Funkcja ta powinna znajdować się w ustawieniach zabezpieczeń (**Security**) lub ustawieniach logowania (**Sign-in**). Aplikacja Microsoft Authenticator działa przy użyciu dowolnego konta, które obsługuje standardy TOTP.
+- **Konto inne niż Microsoft.** Weryfikację dwuskładnikowa można skonfigurować dla kont innych niż Microsoft (na przykład alain@gmail.com). Konta nienależące do firmy Microsoft mogą używać innego terminu na oznaczenia weryfikacji dwuskładnikowej. Funkcja ta powinna znajdować się w ustawieniach zabezpieczeń (**Security**) lub ustawieniach logowania (**Sign-in**). Aplikacja Microsoft Authenticator działa przy użyciu dowolnego konta, które obsługuje standardy TOTP. Aby uzyskać więcej informacji na temat dodawanie kont innych niż Microsoft, zobacz [Dodawanie kont innych niż Microsoft](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="in-this-section"></a>W tej sekcji
 
@@ -71,7 +71,8 @@ W zależności od typu konta o konieczności korzystania z weryfikacji dwuskład
 |------|------------|
 |[Pobieranie i instalowanie aplikacji](user-help-auth-app-download-install.md)|W tym artykule opisano lokalizację oraz sposób pobierania i instalowania aplikacji Microsoft Authenticator dla urządzeń z systemami Android i iOS.|
 |[Dodawanie kont służbowych](user-help-auth-app-add-work-school-account.md)|W tym artykule opisano sposób dodawania różnych służbowych i osobistych kont do aplikacji Microsoft Authenticator.|
-|[Dodawanie kont osobistych](user-help-auth-app-add-personal-ms-account.md)|W tym artykule opisano sposób dodawania do aplikacji Microsoft Authenticator kont osobistych należących i nienależących do firmy Microsoft.|
+|[Dodawanie kont osobistych](user-help-auth-app-add-personal-ms-account.md)|W tym artykule opisano sposób dodawania do aplikacji Microsoft Authenticator osobistych kont Microsoft.|
+|[Dodawanie kont innych niż Microsoft](user-help-auth-app-add-non-ms-account.md)|W tym artykule opisano sposób dodawania do aplikacji Microsoft Authenticator kont nienależących do firmy Microsoft.|
 |[Ręczne dodawanie kont](user-help-auth-app-add-account-manual.md)|W tym artykule opisano ręczne dodawanie kont do aplikacji Microsoft Authenticator, jeśli nie można zeskanować udostępnionego kodu QR.|
 |[Logowanie się za pomocą aplikacji](user-help-auth-app-sign-in.md)|W tym artykule opisano sposób logowania się do różnych kont przy użyciu aplikacji Microsoft Authenticator.|
 |[Wykonywanie kopii zapasowych i odzyskiwanie poświadczeń konta](user-help-auth-app-backup-recovery.md)| Zawiera informacje dotyczące tworzenia kopii zapasowej i odzyskiwania poświadczeń konta za pomocą aplikacji Microsoft Authenticator.|

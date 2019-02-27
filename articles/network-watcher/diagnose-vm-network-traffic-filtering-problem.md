@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 1802df4e6cbe77b4bc7ee2ee49f24d8dc51de015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180525"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429234"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Szybki start: diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu witryny Azure Portal
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Szybki start: Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu witryny Azure Portal
 
 W tym przewodniku Szybki start wdrożysz maszynę wirtualną, a następnie sprawdzisz komunikację z adresem IP i adresem URL oraz komunikację z adresu IP. Określisz przyczynę niepowodzenia komunikacji oraz sposób rozwiązania problemu.
 
@@ -37,7 +37,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. Wybierz pozycję **Compute**, a następnie wybierz pozycję **Windows Server 2016 Datacenter** lub **Maszyna wirtualna z systemem Ubuntu Server 17.10**.
+2. Wybierz pozycję **Compute**, a następnie wybierz pozycję **Windows Server 2016 Datacenter** lub wersję **Ubuntu Server**.
 3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
 
     |Ustawienie|Wartość|

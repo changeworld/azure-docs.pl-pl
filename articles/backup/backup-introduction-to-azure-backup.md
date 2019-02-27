@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2601f81b4abecd98d645af9bc0d368e52534a04e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487884"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447365"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Omówienie funkcji usługi Azure Backup
 Azure Backup to oparta na platformie Azure usługa, która umożliwia tworzenie kopii zapasowej (lub ochronę) i przywracanie danych w chmurze Microsoft Cloud. Usługa Azure Backup pozwala zastąpić dotychczasowe rozwiązania tworzenia kopii zapasowych, istniejące lokalnie lub poza siedzibą firmy, rozwiązaniem opartym na chmurze, które jest niezawodne, bezpieczne i konkurencyjne cenowo. Usługa Azure Backup oferuje wiele składników, które możesz pobrać i wdrożyć na odpowiednim komputerze, serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Recovery Services na platformie Azure. Informacje o tym, jakich składników należy użyć do ochrony konkretnych danych, aplikacji lub obciążeń, znajdują się w [tabeli składników usługi Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (w dalszej części tego artykułu).
@@ -33,7 +33,7 @@ Tradycyjne rozwiązania do tworzenia kopii zapasowych rozwinęły się w kierunk
 
 * Magazyn lokalnie nadmiarowy (LRS) replikuje dane trzy razy (tworzy trzy kopie danych) w jednostce skalowania magazynu w centrum danych. Wszystkie kopie danych istnieją w tym samym regionie. Magazyn LRS to ekonomiczna opcja ochrony danych przed awariami sprzętu lokalnego.
 
-* Magazyn geograficznie nadmiarowy (GRS) jest ustawieniem domyślnym i zalecaną opcją replikacji. Magazyn GRS replikuje dane do regionu pomocniczego (setki kilometrów od lokalizacji głównej danych źródłowych). Magazyn GRS kosztuje więcej niż LRS, ale zapewnia wyższy poziom trwałości danych nawet w przypadku wystąpienia awarii regionalnej.
+* Magazyn geograficznie nadmiarowy (GRS) jest ustawieniem domyślnym i zalecaną opcją replikacji. Magazyn GRS replikuje dane do regionu pomocniczego, który jest [sparowanym regionem platformy Azure](../best-practices-availability-paired-regions.md) (setki kilometrów od lokalizacji głównej danych źródłowych). Magazyn GRS kosztuje więcej niż LRS, ale zapewnia wyższy poziom trwałości danych nawet w przypadku wystąpienia awarii regionalnej.
 
 **Nieograniczony transfer danych** — usługa Azure Backup nie ogranicza ilości przesyłanych danych przychodzących i wychodzących. W usłudze Azure Backup nie są również naliczane opłaty za przesyłane dane. Jeśli jednak używasz usługi Azure Import/Export do importowania dużych ilości danych, istnieje koszt związany z danymi przychodzącymi. Aby uzyskać więcej informacji o tym koszcie, zobacz [Offline-backup workflow in Azure Backup](backup-azure-backup-import-export.md) (Przepływ pracy tworzenia kopii zapasowej offline w usłudze Azure Backup). Dane wychodzące to dane transferowane z magazynu usługi Recovery Services podczas operacji przywracania.
 
@@ -44,7 +44,7 @@ Tradycyjne rozwiązania do tworzenia kopii zapasowych rozwinęły się w kierunk
 **Przechowywanie długoterminowe** — magazynów usług Recovery Services możesz użyć do krótko- i długoterminowego przechowywania danych. Platforma Azure nie ogranicza czasu przechowywania danych w magazynie usługi Recovery Services. Dane możesz przechowywać w magazynie tak długo, jak chcesz. Usługa Azure Backup ma limit 9999 punktów odzyskiwania dla każdego chronionego wystąpienia. Zobacz sekcję [Tworzenie kopii zapasowej i przechowywanie](backup-introduction-to-azure-backup.md#backup-and-retention) w tym artykule, aby uzyskać informacje o tym, jaki wpływ ten limit może mieć na Twoje potrzeby związane z kopiami zapasowymi.
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Jakich składników usługi Azure Backup mam użyć?
-Skorzystaj z poniższej tabeli, aby uzyskać informacje o tym, co możesz chronić za pomocą poszczególnych składników usługi Azure Backup. 
+Skorzystaj z poniższej tabeli, aby uzyskać informacje o tym, co możesz chronić za pomocą poszczególnych składników usługi Azure Backup.
 
 | Składnik | Korzyści | Limity | Co jest chronione? | Gdzie są przechowywane kopie zapasowe? |
 | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ Skorzystaj z poniższej tabeli, aby uzyskać informacje o tym, co możesz chroni
 | Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |<p>**Tak**</p><p>Część sieci szkieletowej Azure</p><p>Składnik przeznaczony do [tworzenia kopii zapasowych maszyn wirtualnych platformy Azure w modelu infrastruktura jako usługa (IaaS) ](backup-azure-vms-introduction.md).</p> |<p>**Nie**</p> <p>Program System Center DPM umożliwia tworzenie kopii zapasowych maszyn wirtualnych w centrum danych.</p> |<p>Magazyn usługi Recovery Services</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Dla których aplikacji i obciążeń można tworzyć kopie zapasowe?
-Poniższa tabela zawiera macierz danych i obciążeń, które mogą być chronione przy użyciu usługi Azure Backup. Kolumna rozwiązania usługi Azure Backup zawiera linki do dokumentacji wdrożeniowej dla tego rozwiązania. 
+Poniższa tabela zawiera macierz danych i obciążeń, które mogą być chronione przy użyciu usługi Azure Backup. Kolumna rozwiązania usługi Azure Backup zawiera linki do dokumentacji wdrożeniowej dla tego rozwiązania.
 
 | Dane lub obciążenie | Środowisko źródłowe | Rozwiązanie Azure Backup |
 | --- | --- | --- |
@@ -81,17 +81,17 @@ Poniższa tabela zawiera macierz danych i obciążeń, które mogą być chronio
 W poniższej tabeli przedstawiono składniki usługi Azure Backup obsługiwane w systemie Linux.  
 
 **Składnik** | **Linux (zatwierdzony przez Azure)**
---- | --- 
-Agent usługi Azure Backup (MARS) | Nie (tylko agent oparty na systemie Windows) 
+--- | ---
+Agent usługi Azure Backup (MARS) | Nie (tylko agent oparty na systemie Windows)
 System Center DPM | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
-Azure Backup Server | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure 
+Azure Backup Server | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
 Usługa Backup dla maszyn wirtualnych IaaS platformy Azure | Spójna na poziomie aplikacji kopia zapasowa korzystająca ze [struktury skryptów uruchamianych przed utworzeniem i po utworzeniu](backup-azure-linux-app-consistent.md)<br/><br/> [Odzyskiwanie na poziomie plików](backup-azure-restore-files-from-vm.md)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie przywróconego dysku](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie punktu odzyskiwania](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Korzystanie z maszyn wirtualnych usługi Premium Storage przy użyciu usługi Azure Backup
-Usługa Azure Backup chroni maszyny wirtualne usługi Premium Storage. Azure Premium Storage to magazyn oparty na dyskach SSD i zaprojektowany z myślą o obsłudze dużych obciążeń wejścia/wyjścia. Usługa Premium Storage jest atrakcyjna dla obciążeń maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Premium Storage, zobacz artykuł [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../virtual-machines/windows/premium-storage.md) (Magazyn Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
+Usługa Azure Backup chroni maszyny wirtualne usługi Premium Storage. Azure Premium Storage to magazyn oparty na dyskach SSD i zaprojektowany z myślą o obsłudze dużych obciążeń wejścia/wyjścia. Usługa Premium Storage jest atrakcyjna dla obciążeń maszyn wirtualnych. Aby uzyskać więcej informacji o usłudze Premium Storage i innych typach dysków, zobacz artykuł dotyczący [wybierania typu dysku](../virtual-machines/windows/disks-types.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Tworzenie kopii zapasowej maszyn wirtualnych usługi Premium Storage
-Podczas wykonywania kopii zapasowych maszyn wirtualnych usługi Premium Storage usługa Backup tworzy tymczasową lokalizację o nazwie „AzureBackup-” na koncie usługi Premium Storage. Rozmiar lokalizacji przejściowej jest równy rozmiarowi migawki punktu odzyskiwania. Upewnij się, że ilość wolnego miejsca na koncie Premium Storage jest wystarczająca do obsługi tymczasowej lokalizacji przejściowej. Aby uzyskać więcej informacji, zobacz [Premium Storage limitations](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) (Ograniczenia usługi Premium Storage). Po zakończeniu zadania tworzenia kopii zapasowej lokalizacja tymczasowa zostanie usunięta. Cena przestrzeni dyskowej użytej na potrzeby lokalizacji tymczasowej jest zgodna z ogólnym [cennikiem usługi Premium Storage](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+Podczas tworzenia kopii zapasowych maszyn wirtualnych usługi Premium Storage usługa Backup tworzy tymczasową lokalizację o nazwie „AzureBackup-” na koncie usługi Premium Storage. Rozmiar lokalizacji przejściowej jest równy rozmiarowi migawki punktu odzyskiwania. Upewnij się, że ilość wolnego miejsca na koncie Premium Storage jest wystarczająca do obsługi tymczasowej lokalizacji przejściowej. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [wartości docelowych skalowalności usługi Azure Storage](../storage/common/storage-scalability-targets.md). Po zakończeniu zadania tworzenia kopii zapasowej lokalizacja tymczasowa zostanie usunięta. Cena przestrzeni dyskowej użytej na potrzeby lokalizacji tymczasowej jest zgodna z ogólnym [cennikiem usługi Premium Storage](../virtual-machines/windows/disks-types.md).
 
 > [!NOTE]
 > Nie wolno modyfikować ani edytować tej lokalizacji tymczasowej.

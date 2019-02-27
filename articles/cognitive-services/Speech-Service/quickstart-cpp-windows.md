@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 3068c4e3c1bb7ddb41feb45f999398d533b66afa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d6504b97bbc6c1ba4bcd02da54a29501c164439f
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863044"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447994"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C++ w systemie Windows przy użyciu zestawu Speech SDK
 

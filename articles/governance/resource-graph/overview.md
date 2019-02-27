@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813283"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267958"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co to jest usługa Azure Resource Graph
 
@@ -38,7 +38,7 @@ Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właśc
 
 Teraz, gdy lepiej rozumiesz, czym jest usługa Azure Resource Graph, przyjrzyjmy się bliżej temu, jak tworzyć zapytania.
 
-Ważne jest zrozumienie, że język zapytań usługi Azure Resource Graph opiera się na [języku zapytań usługi Azure Data Explorer](../../data-explorer/data-explorer-overview.md).
+Ważne jest zrozumienie, że język zapytań usługi Azure Resource Graph opiera się na języku zapytań [Kusto Query Language](../../data-explorer/data-explorer-overview.md) używanym przez usługę Azure Data Explorer.
 
 Po pierwsze, aby poznać szczegółowe informacje dotyczące operacji i funkcji, które mogą być używane z usługą Azure Resource Graph, zobacz [język zapytań usługi Resource Graph](./concepts/query-language.md). Aby przejrzeć zasoby, zobacz [badanie zasobów](./concepts/explore-resources.md).
 

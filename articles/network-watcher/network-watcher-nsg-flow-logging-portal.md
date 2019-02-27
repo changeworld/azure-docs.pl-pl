@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: ce2d69e26909231383f3538d51387f27d8202a43
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332476"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428975"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -37,13 +37,10 @@ Sieciowa grupa zabezpieczeń umożliwia filtrowanie ruchu przychodzącego do i w
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-> [!NOTE] 
-> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączenie dzienników w wersji 2 w nieobsługiwanym regionie spowoduje zwrócenie na koncie magazynu dzienników w wersji 1.
-
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. Wybierz pozycję **Compute**, a następnie wybierz pozycję **Windows Server 2016 Datacenter** lub **Maszyna wirtualna z systemem Ubuntu Server 17.10**.
+2. Wybierz pozycję **Compute**, a następnie wybierz pozycję **Windows Server 2016 Datacenter** lub wersję **Ubuntu Server**.
 3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
 
     |Ustawienie|Wartość|

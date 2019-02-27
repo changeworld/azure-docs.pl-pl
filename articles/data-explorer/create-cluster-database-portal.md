@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer'
+title: 'Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć klaster i bazę danych usługi Azure Data Explorer oraz pozyskiwać (ładować) dane.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214821"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408837"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Aby używać usługi Azure Data Explorer, najpierw utwórz *klaster*, a następnie utwórz w tym klastrze co najmniej jedną *bazę danych*. Następnie *pozyskaj* (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki start utworzysz klaster i bazę danych. W kolejnych artykułach pokażemy, jak pozyskiwać dane.
 
@@ -77,8 +77,8 @@ Teraz możesz przystąpić do wykonania drugiego kroku w procesie — do utworze
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Nazwa bazy danych | *TestDatabase* | Nazwa bazy danych musi być unikatowa w obrębie klastra.
-    | Okres przechowywania | *3650* | Przedział czasu, w którym jest gwarantowana dostępność danych dla zapytania. Przedział czasu jest mierzony od momentu pozyskania danych.
-    | Okres pamięci podręcznej | *31* | Przedział czasu, w którym często używane w zapytaniach dane mają być dostępne na dysku SSD lub w pamięci RAM, zamiast w magazynie długoterminowym.
+    | Okres przechowywania | *3650* | Przedział czasu (w dniach), w którym gwarantowana jest dostępność danych dla zapytania. Przedział czasu jest mierzony od momentu pozyskania danych.
+    | Okres pamięci podręcznej | *31* | Przedział czasu (w dniach), w którym często używane w zapytaniach dane mają być dostępne na dysku SSD lub w pamięci RAM, zamiast w magazynie długoterminowym.
     | | | |
 
 1. Wybierz pozycję **Zapisz**, aby utworzyć bazę danych. Tworzenie zazwyczaj zajmuje mniej niż minutę. Po zakończeniu procesu wrócisz na kartę **Przegląd** klastra.
@@ -130,6 +130,6 @@ Jeśli zamierzasz skorzystać z naszych pozostałych przewodników Szybki start 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
+> [Szybki start: Pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
 
 

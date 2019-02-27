@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 1911b851e4e219ec4c6d2d4872b75e9c18706feb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893327"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337565"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
 
@@ -62,7 +62,7 @@ Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>�
 
 Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager zobacz: [Wymagania dotyczące nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="media-services-v3-api-design-principles"></a>Zasady projektowania interfejsów API usługi Media Services w wersji 3
+## <a name="v3-api-design-principles"></a>Zasady projektowania interfejsów API w wersji 3
 
 Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. Interfejsy API w wersji 3 nie zwracają wpisów tajnych ani poświadczeń w operacji **Get** lub **List**. Klucze mają zawsze wartość null, są puste lub oczyszczone z odpowiedzi. Należy wywołać oddzielną metodę akcji w celu pobrania wpisów tajnych lub poświadczeń. Oddzielne akcje umożliwiają ustawienie różnych uprawnień zabezpieczeń RBAC w przypadku, gdy niektóre interfejsy API pobierają/wyświetlają wpisy tajne, podczas gdy inne interfejsy API tego nie robią. Aby uzyskać informacje na temat zarządzania dostępem przy użyciu funkcji RBAC, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
 
@@ -76,25 +76,20 @@ Zobacz przykład [Get content key policy — .NET](get-content-key-policy-dotnet
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3?
 
-Jako deweloper możesz użyć [interfejsu API REST](https://go.microsoft.com/fwlink/p/?linkid=873030) usługi Media Services lub bibliotek klienckich, które umożliwiają interakcję z interfejsem API REST, aby łatwo tworzyć i utrzymywać niestandardowe przepływy pracy multimediów oraz zarządzać nimi. Interfejs API usługi Media Services w wersji 3 opiera się na [specyfikacji interfejsu OpenAPI](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media) (wcześniej znanej jako struktura Swagger).
+Aby uzyskać informacje na temat rozpoczynania programowania za pomocą interfejsu API usługi Media Services w wersji 3 oraz różnych narzędzi i zestawów SDK, zobacz [Rozpoczynanie programowania](developers-guide.md).
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) to narzędzie dostępne dla użytkowników systemu Windows, którzy chcą dowiedzieć się więcej o usłudze Media Services. Narzędzie AMSE to aplikacja Winforms/C# obsługująca przekazywanie, pobieranie, kodowanie oraz przesyłanie strumieniowe wideo na żądanie i na żywo zawartości za pomocą usługi Media Services. Narzędzie AMSE jest przeznaczone dla klientów, którzy chcą przetestować usługę Media Services bez konieczności pisania jakiegokolwiek kodu. Kod AMSE jest dostarczany jako zasób dla klientów, którzy chcą tworzyć aplikacje za pomocą usługi Media Services.
+## <a name="v3-content-map"></a>Mapa zawartości wersji 3
 
-Narzędzie AMSE to projekt typu Open Source, w przypadku którego pomoc techniczna jest świadczona przez społeczność (problemy można zgłaszać pod adresem https://github.com/Azure/Azure-Media-Services-Explorer/issues). W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) (Często zadawane pytania dotyczące kodeksu postępowania) lub wyślij wiadomość e-mail na adres opencode@microsoft.com w przypadku jakichkolwiek dodatkowych pytań lub komentarzy.
- 
-Usługa Azure Media Services obsługuje poniższe biblioteki klienckie: 
+Zawartość usługi Media Services w wersji 3 ma następującą organizację (uwzględnioną również w spisie treści):
 
-|Dokumentacja interfejsu API|Zestawy SDK/narzędzia|Przykłady|
-|---|---|---|---|
-|[Dokumentacja stylu REST](https://aka.ms/ams-v3-rest-ref)|[Zestaw SDK REST](https://aka.ms/ams-v3-rest-sdk)|[Przykłady kolekcji Postman REST](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Interfejs API REST bazujący na usłudze Azure Resource Manager](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
-|[Dokumentacja interfejsu wiersza polecenia platformy Azure](https://aka.ms/ams-v3-cli-ref)|[Interfejs wiersza polecenia platformy Azure](https://aka.ms/ams-v3-cli)|[Przykłady interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
-|[Dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref)|[Zestaw SDK platformy .NET](https://aka.ms/ams-v3-dotnet-sdk)|[Przykłady dla platformy .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
-||[Zestaw SDK platformy .NET Core](https://aka.ms/ams-v3-dotnet-sdk) (wybierz kartę **Interfejs wiersza polecenia platformy .NET**)|[Przykłady dla platformy .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
-|[Dokumentacja języka Java](https://aka.ms/ams-v3-java-ref)|[Zestaw SDK Java](https://aka.ms/ams-v3-java-sdk)||
-|[Dokumentacja środowiska Node.js](https://aka.ms/ams-v3-nodejs-ref)|[Zestaw SDK dla platformy Node.js](https://aka.ms/ams-v3-nodejs-sdk)|[Przykłady dla platformy Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
-|[Dokumentacja języka Python](https://aka.ms/ams-v3-python-ref)|[Zestaw SDK dla języka Python](https://aka.ms/ams-v3-python-sdk)||
-|[Dokumentacja języka Go](https://aka.ms/ams-v3-go-ref)|[Zestaw SDK dla języka Go](https://aka.ms/ams-v3-go-sdk)||
-|Ruby|[Zestaw SDK dla języka Ruby](https://aka.ms/ams-v3-ruby-sdk)||
+|Sekcje| Opis|
+|---|---|
+| Omówienie | Opis funkcjonalności i zastosowania usługi Media Services.|
+| Przewodniki Szybki start | Podstawowe instrukcje wprowadzające, które pozwalają nowym klientom szybko wypróbować usługę Media Services.|
+| Samouczki | Procedury oparte na scenariuszach dotyczące niektórych typowych zadań wykonywanych przy użyciu usługi Media Services.|
+| Przykłady | Linki do przykładów kodu. |
+| Pojęcia | Diagramy oraz szczegółowe objaśnienie funkcjonalności usługi Media Services w wersji 3. Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.<br/><br/>* Przekazywanie do chmury i magazynowanie w niej<br/>* Kodowanie<br/>* Media Analytics<br/>* Tworzenie pakietów, dostarczanie, ochrona<br/>* Transmisja strumieniowa na żywo<br/>* Monitorowanie ciągłe<br/>* Odtwarzacze klienckie<br/><br/>Wiele innych funkcji |
+| Przewodniki z instrukcjami | Sposób wykonania zadania.|
 
 ## <a name="next-steps"></a>Następne kroki
 

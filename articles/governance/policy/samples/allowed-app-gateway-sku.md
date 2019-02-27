@@ -1,6 +1,6 @@
 ---
 title: Przykład — dozwolone jednostki SKU bramy aplikacji
-description: Te przykładowe zasady wymagają, aby bramy aplikacji używały zatwierdzonej jednostki SKU.
+description: Te przykładowe definicje zasad wymagają, aby bramy aplikacji używały zatwierdzonej jednostki SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: db38c51a936b475b26b607cf873b25e46b894e25
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8bc1d9fc7622b4fad68b26836ce1ff3b96e02885
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242094"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343429"
 ---
-# <a name="allowed-application-gateway-skus"></a>Dozwolone jednostki SKU bramy aplikacji
+# <a name="sample---allowed-application-gateway-skus"></a>Przykład — dozwolone jednostki SKU bramy aplikacji
 
 Ta zasada wymaga, aby bramy aplikacji używały zatwierdzonej jednostki SKU. Należy określić tablicę zatwierdzonych jednostek SKU.
 

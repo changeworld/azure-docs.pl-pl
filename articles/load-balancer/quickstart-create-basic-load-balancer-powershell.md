@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d3f8ae94cd6896aba1db29a00f6f45c81995bbd1
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452687"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301268"
 ---
 # <a name="get-started"></a>Szybki start: tworzenie publicznego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell
 W tym przewodniku Szybki start przedstawiono sposób tworzenia podstawowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi.
@@ -72,7 +72,8 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
 
 W poniższym przykładzie zostanie utworzona sonda TCP. Możesz także tworzyć niestandardowe sondy HTTP na potrzeby bardziej szczegółowych kontroli kondycji. W przypadku użycia niestandardowej sondy HTTP należy utworzyć stronę kontroli kondycji, na przykład *healthcheck.aspx*. Aby dany host pozostał w rotacji, sonda musi zwrócić do modułu równoważenia obciążenia kod odpowiedzi **HTTP 200 OK**.
 
-Aby utworzyć sondę kondycji TCP, użyj polecenia [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). W poniższym przykładzie zostanie utworzona sonda kondycji o nazwie *myHealthProbe* monitorująca poszczególne maszyny wirtualne przy użyciu portu *HTTP* *80*:
+Aby utworzyć sondę kondycji TCP, użyj polecenia [New-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig).
+W poniższym przykładzie zostanie utworzona sonda kondycji o nazwie *myHealthProbe* monitorująca poszczególne maszyny wirtualne przy użyciu portu *HTTP* *80*:
 
 ```azurepowershell-interactive
 $probe = New-AzureRmLoadBalancerProbeConfig `

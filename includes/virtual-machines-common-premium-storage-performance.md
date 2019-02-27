@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e2dc82ee49b240fe562f02b38c4991c644c010d3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a04a9f225d46ae3dc51381f01984a4ac2af3448f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333823"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890934"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -67,6 +67,14 @@ Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, w
 
 Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje We/Wy i przepływność ma wpływ na opóźnienia w aplikacji. Po dostrajanie wydajności aplikacji, zawsze należy przeprowadzić ocenę opóźnienie aplikacji, aby uniknąć zachowania nieoczekiwany duże opóźnienie.
 
+Następujące operacje warstwy kontroli na dyskach zarządzanych może obejmować przenoszenie dysków z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, który może zająć kilka godzin, zależnie od ilości danych na dyskach zazwyczaj mniej niż 24 godziny. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.
+
+1. [Aktualizuj typ magazynu](../articles/virtual-machines/windows/convert-disk-storage.md).
+1. [Odłącz i dołączanie dysku z jednej maszyny Wirtualnej do innego](../articles/virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
+1. [Tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md).
+1. [Tworzenie dysku zarządzanego na podstawie migawki](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+1. [Konwertowanie z dysków niezarządzanych do usługi managed disks](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
+
 # <a name="performance-application-checklist-for-disks"></a>Lista kontrolna dotycząca wydajności aplikacji dla dysków
 
 Pierwszym etapem projektowanie wysoko wydajnych aplikacji uruchomionych na platformie Azure Premium Storage jest zrozumienie, wymagania dotyczące wydajności aplikacji. Po zgromadzeniu wymagań dotyczących wydajności, można zoptymalizować aplikację, aby uzyskać najbardziej optymalną wydajność.
@@ -102,9 +110,9 @@ Jeśli masz istniejącą aplikację i chcesz przenieść do usługi Premium Stor
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>Licznik do pomiaru wymagań dotyczących wydajności aplikacji
 
-Jest najlepszym sposobem, aby zmierzyć wymagań dotyczących wydajności aplikacji, za pomocą narzędzi monitorowania wydajności, dostarczone przez system operacyjny serwera. Można użyć Monitora wydajności dla Windows i iostat dla systemu Linux. Te narzędzia przechwytują liczniki odpowiadający Każda miara wyjaśniono w powyższej sekcji. Gdy aplikacja jest uruchomiona, jej normalny, obciążeń w szczycie i poza godzinami szczytu konieczne jest przechwycenie wartości z tych liczników.
+Jest najlepszym sposobem, aby zmierzyć wymagań dotyczących wydajności aplikacji, za pomocą narzędzi monitorowania wydajności, dostarczone przez system operacyjny serwera. Można użyć Monitora wydajności dla Windows i iostat dla systemu Linux. Te narzędzia przechwytują liczniki odpowiadający Każda miara wyjaśniono w powyższej sekcji. Gdy aplikacja jest uruchomiona na jej normalne, konieczne jest przechwycenie wartości z tych liczników szczycie i poza godzinami szczytu obciążeń.
 
-Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dysk logiczny w systemie i dysku fizycznego serwera. Korzystając z dysków magazynu premium storage z maszyną Wirtualną, są liczniki dysku fizycznego dla każdego dysku magazynu premium, a dysk logiczny w systemie liczniki są dla każdego woluminu, utworzone na dyskach magazynu premium storage. Konieczne jest przechwycenie wartości dla dysków, które hostują obciążenia aplikacji. Jeśli istnieje mapowanie jeden-do-jednego między dysków logicznych i fizycznych, może odnosić się do liczników dysków fizycznych; w przeciwnym razie można znaleźć liczniki dysk logiczny w systemie. W systemie Linux polecenie iostat generuje raport o wykorzystaniu Procesora i dysku. Raport o wykorzystaniu dysku zapewnia statystyk na urządzenie fizyczne lub partycji. Jeśli masz serwer bazy danych przy użyciu jego danych i dziennika na oddzielnych dyskach, zbierać dane dla obu dyskach. Poniższej tabeli opisano liczniki dla dysków, procesora i pamięci:
+Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dysk logiczny w systemie i dysku fizycznego serwera. Korzystając z dysków magazynu premium storage z maszyną Wirtualną, są liczniki dysku fizycznego dla każdego dysku magazynu premium, a dysk logiczny w systemie liczniki są dla każdego woluminu, utworzone na dyskach magazynu premium storage. Konieczne jest przechwycenie wartości dla dysków, które hostują obciążenia aplikacji. Jeśli istnieje mapowanie jeden-do-jednego między dysków logicznych i fizycznych, może odnosić się do liczników dysków fizycznych; w przeciwnym razie można znaleźć liczniki dysk logiczny w systemie. W systemie Linux polecenie iostat generuje raport o wykorzystaniu Procesora i dysku. Raport o wykorzystaniu dysku zapewnia statystyk na urządzenie fizyczne lub partycji. Jeśli masz serwer bazy danych przy użyciu jego danych i dzienniki na oddzielnych dyskach, zbierać dane dla obu dyskach. Poniższej tabeli opisano liczniki dla dysków, procesory i pamięć:
 
 | Licznik | Opis | Monitora wydajności | iostat |
 | --- | --- | --- | --- |
@@ -123,11 +131,11 @@ Dowiedz się więcej o [iostat](https://linux.die.net/man/1/iostat) i [monitora 
 
 ## <a name="optimize-application-performance"></a>Optymalizowanie wydajności aplikacji
 
-Główne czynniki wpływające na wydajność aplikacji uruchomionych na magazyn w warstwie Premium są charakter z operacji We/Wy żądania, rozmiar maszyny Wirtualnej, rozmiaru dysku, liczby dysków, dysk pamięci podręcznej, wielowątkowość i głębokość kolejki. Za pomocą pokrętła podał systemu, można kontrolować niektóre z tych czynników. Większość aplikacji może nie zapewniają możliwość bezpośrednio zmieniać rozmiar operacji We/Wy i głębokość kolejki. Na przykład jeśli używasz programu SQL Server, nie możesz wybrać głębokość rozmiar i kolejki we/wy. SQL Server wybiera optymalną we/wy rozmiar i kolejki głębokość wartości w celu uzyskania większość wydajności. Ważne jest zrozumienie wpływu oba rodzaje czynniki na wydajność aplikacji, aby aprowizować odpowiednich zasobów w celu spełnienia wymagań dotyczących wydajności.
+Główne czynniki wpływające na wydajność aplikacji uruchomionych na magazyn w warstwie Premium są żądania charakter operacji We/Wy, rozmiar maszyny Wirtualnej, rozmiaru dysku, liczby dysków, buforowania dysku, wielowątkowości i głębokość kolejki. Za pomocą pokrętła podał systemu, można kontrolować niektóre z tych czynników. Większość aplikacji może nie zapewniają możliwość bezpośrednio zmieniać rozmiar operacji We/Wy i głębokość kolejki. Na przykład jeśli używasz programu SQL Server, nie możesz wybrać głębokość rozmiar i kolejki we/wy. SQL Server wybiera optymalną we/wy rozmiar i kolejki głębokość wartości w celu uzyskania większość wydajności. Ważne jest zrozumienie wpływu oba rodzaje czynniki na wydajność aplikacji, aby aprowizować odpowiednich zasobów w celu spełnienia wymagań dotyczących wydajności.
 
-W tej sekcji dotyczą Lista kontrolna wymagań aplikacji, który został utworzony, aby zidentyfikować, ile należy zoptymalizować wydajność aplikacji. Oparte na tym, będzie możliwe ustalenie, jakie czynniki w tej sekcji należy dostosować. Aby Monitor wpływ każdy czynnik na wydajność aplikacji, należy uruchomić narzędzi porównawczych w ustawieniach aplikacji. Zapoznaj się [Benchmarking](#Benchmarking) sekcji na końcu tego artykułu kroków wspólnych narzędzi porównawczych systemem Windows i maszyn wirtualnych systemu Linux.
+W tej sekcji dotyczą Lista kontrolna wymagań aplikacji, który został utworzony, aby zidentyfikować, ile należy zoptymalizować wydajność aplikacji. Oparte na tym, będzie możliwe ustalenie, jakie czynniki w tej sekcji należy dostosować. Aby Monitor wpływ każdy czynnik na wydajność aplikacji, należy uruchomić narzędzi porównawczych w ustawieniach aplikacji. Zapoznaj się z sekcją Benchmarking na końcu tego artykułu kroków wspólnych narzędzi porównawczych systemem Windows i maszyn wirtualnych systemu Linux.
 
-### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Optymalizacja operacji We/Wy, przepustowości i opóźnień w skrócie
+### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Optymalizacja operacji We/Wy, przepustowości i opóźnień, w skrócie
 
 W poniższej tabeli podsumowano czynnikami wydajnościowymi i kroki niezbędne do optymalizacji operacji We/Wy, przepustowości i opóźnień. W sekcjach poniżej to podsumowanie opisano każdy czynnikiem jest znacznie bardziej szczegółowe informacje.
 
@@ -142,14 +150,14 @@ Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych i operacj
 | **Rozmiar dysku** |Użyj rozmiaru dysku, pozwalającą na operacje We/Wy większe wymagania Twojej aplikacji. |Rozmiar dysku za pomocą limit przepływności jest większa niż wymaganiami aplikacji. |Użyj rozmiaru dysku, czy oferuje skalowanie limity większa niż wymaganiami aplikacji. |
 | **Maszyna wirtualna i limity skalowania dysku** |Limit operacji We/Wy wybrany rozmiar maszyny Wirtualnej powinna być większa niż łączna liczba operacji We/Wy wynika z dysków magazynu premium storage dołączono do niego. |Limit przepływności wybrany rozmiar maszyny Wirtualnej powinna być większa niż całkowita przepływność wynika z dysków magazynu premium storage dołączono do niego. |Limity skalowania wybrany rozmiar maszyny Wirtualnej musi być większa niż limity skalowania łączna liczba dysków magazynu premium dołączonych. |
 | **Buforowanie dysku** |Włączenie pamięci podręcznej tylko do odczytu dla dysków magazynu premium storage z dużymi operacje odczytu, aby uzyskać wyższy operacje odczytu We/Wy. | &nbsp; |Włączenie pamięci podręcznej tylko do odczytu dla dysków magazynu premium storage gotowe mocno operacje można pobrać odczytu bardzo małe wartości opóźnienia. |
-| **Rozkładanie** |Używać wielu dysków i stripe je ze sobą, aby uzyskać połączone wyższy limit operacji We/Wy i przepływność. Należy pamiętać, że łączny limit dla maszyny Wirtualnej powinien być większy niż połączonej limitów dysków w warstwie premium dołączonych. | &nbsp; | &nbsp; |
-| **Rozmiar woluminu rozłożonego** |Mniejszy rozmiar woluminu rozłożonego dla losowych małych wzorzec operacji We/Wy w aplikacji OLTP. Np. na użytek rozmiar woluminu rozłożonego 64 KB aplikacji OLTP programu SQL Server. |Większy rozmiar woluminu rozłożonego dla sekwencyjne dużych wzorzec operacji We/Wy w aplikacji w magazynie danych. Np. użyć 256KB, rozmiar woluminu rozłożonego dla aplikacji do magazynu danych programu SQL Server. | &nbsp; |
+| **Rozkładanie** |Używać wielu dysków i stripe je ze sobą, aby uzyskać połączone wyższy limit operacji We/Wy i przepływność. Łączny limit dla maszyny Wirtualnej powinien być większy niż połączonej limitów dysków w warstwie premium dołączonych. | &nbsp; | &nbsp; |
+| **Rozmiar woluminu rozłożonego** |Mniejszy rozmiar woluminu rozłożonego dla losowych małych wzorzec operacji We/Wy w aplikacji OLTP. Na przykład użyć rozmiar woluminu rozłożonego 64 KB dla aplikacji OLTP programu SQL Server. |Większy rozmiar woluminu rozłożonego dla sekwencyjne dużych wzorzec operacji We/Wy w aplikacji w magazynie danych. Na przykład użyć 256 KB, rozmiar woluminu rozłożonego dla aplikacji do magazynu danych programu SQL Server. | &nbsp; |
 | **Wielowątkowość** |Użycie wielowątkowość do większej liczby żądań do usługi Premium Storage będzie prowadzić do wyższej operacje We/Wy i przepływność. Na przykład w programie SQL Server należy ustawić o wysokiej wartości MAXDOP do przydzielenia większej liczby procesorów CPU do programu SQL Server. | &nbsp; | &nbsp; |
 | **Queue Depth** |Głębokość kolejki większej daje wyższe operacje We/Wy. |Głębokość kolejki większej daje większą przepływność. |Głębokość kolejki mniejszych daje mniejsze opóźnienia. |
 
 ## <a name="nature-of-io-requests"></a>Rodzaj żądań We/Wy
 
-Żądanie operacji We/Wy jest jednostką operacji wejścia/wyjścia, która będzie wykonywać aplikacji. Identyfikowanie charakter żądań We/Wy, losowych lub sekwencyjnych, odczytu lub zapisu, małych i dużych, pomoże określić wymagania dotyczące wydajności aplikacji. Jest to bardzo ważne zrozumieć charakter żądań We/Wy, aby podejmować właściwe decyzje podczas projektowania infrastruktury aplikacji.
+Żądanie operacji We/Wy jest jednostką operacji wejścia/wyjścia, która będzie wykonywać aplikacji. Identyfikowanie charakter żądań We/Wy, losowych lub sekwencyjnych, odczytu lub zapisu, małych i dużych, pomoże określić wymagania dotyczące wydajności aplikacji. Należy zrozumieć charakter żądań We/Wy, aby podejmować właściwe decyzje podczas projektowania infrastruktury aplikacji.
 
 Rozmiar we/wy jest jednym z bardziej ważne czynniki. Rozmiar operacji We/Wy jest rozmiar żądania operacji wejścia/wyjścia wygenerowane przez aplikację. Rozmiar operacji We/Wy ma znaczący wpływ na wydajność, zwłaszcza na operacje We/Wy i przepustowości, która aplikacja jest w stanie osiągnąć. Następująca formuła przedstawiono relacje między operacje We/Wy, rozmiar operacji We/Wy i przepustowość/przepływność.  
     ![](media/premium-storage-performance/image1.png)
@@ -180,7 +188,7 @@ Aby uzyskać operacje We/Wy i przepustowości jest większa niż maksymalna wart
 > [!NOTE]
 > Zwiększenie operacje We/Wy lub innych również zwiększa przepływność, upewnij się, że nie trafisz przepływności lub limity operacji We/Wy dysku lub maszyny Wirtualnej podczas zwiększenie jeden.
 
-Aby Monitor wpływ rozmiar operacji We/Wy na wydajność aplikacji, można uruchomić narzędzi porównawczych na maszyna wirtualna i dyski. Tworzenie wielu przebiegów testowych i użyj innego rozmiaru operacji We/Wy dla każdego uruchomienia, aby zobaczyć wpływ. Zapoznaj się [Benchmarking](#Benchmarking) sekcji na końcu tego artykułu, aby uzyskać więcej informacji.
+Aby Monitor wpływ rozmiar operacji We/Wy na wydajność aplikacji, można uruchomić narzędzi porównawczych na maszyna wirtualna i dyski. Tworzenie wielu przebiegów testowych i użyj innego rozmiaru operacji We/Wy dla każdego uruchomienia, aby zobaczyć wpływ. Zapoznaj się z sekcją Benchmarking na końcu tego artykułu, aby uzyskać więcej informacji.
 
 ## <a name="high-scale-vm-sizes"></a>Rozmiary maszyn wirtualnych w dużej skali
 
@@ -203,7 +211,7 @@ Na przykład załóżmy, że to wymaganie dotyczące aplikacji jest maksymalnie 
 *Koszt działania*  
 W wielu przypadkach istnieje możliwość, że koszty ogólne operację przy użyciu usługi Premium Storage jest niższa niż przy użyciu magazynu w warstwie standardowa.
 
-Na przykład rozważmy aplikację konieczności 16 000 operacji We/Wy. Aby uzyskać to wydajność, konieczne będzie standardowy\_D14 IaaS maszyny Wirtualnej platformy Azure, dające maksymalna liczba IOPS z 16 000 przy użyciu 32 dysków 1 TB magazynu w warstwie standardowa. Każdy 1TB magazynu w warstwie standardowa dysk można osiągnąć maksymalnie 500 operacji We/Wy. Szacowany koszt tej maszyny Wirtualnej na miesiąc będzie 1,570 $. Koszt miesięczny 32 dyski magazynu w warstwie standardowa będzie 1,638 $. Szacowany łączny koszt miesięczny będzie 3,208 $.
+Na przykład rozważmy aplikację konieczności 16 000 operacji We/Wy. Aby uzyskać to wydajność, konieczne będzie standardowy\_D14 IaaS maszyny Wirtualnej platformy Azure, dające maksymalna liczba IOPS z 16 000 przy użyciu 32 dysków 1 TB magazynu w warstwie standardowa. Każdy dysk o rozmiarze 1 TB magazynu w warstwie standardowa można osiągnąć maksymalnie 500 operacji We/Wy. Szacowany koszt tej maszyny Wirtualnej na miesiąc będzie 1,570 $. Koszt miesięczny 32 dyski magazynu w warstwie standardowa będzie 1,638 $. Szacowany łączny koszt miesięczny będzie 3,208 $.
 
 Jednak jeśli przechowywana jest ta sama aplikacja w magazynie Premium Storage, konieczne będzie mniejszego rozmiaru maszyny Wirtualnej i mniejszą liczbę dysków magazynu premium storage, co zmniejsza całkowity koszt. Standardowa\_DS13 maszyna wirtualna spełnia wymagania w zakresie 16 000 wymagane operacje We/Wy przy użyciu cztery dyski P30. Maszyna wirtualna DS13 ma maksymalną liczbę IOPS dla 25,600 i każdy dysk P30 ma maksymalną liczbę IOPS 5000. Ogólne, ta konfiguracja może osiągnąć 5000 x 4 = 20 000 operacji We/Wy. Szacowany koszt tej maszyny Wirtualnej na miesiąc będzie 1,003 $. Koszt miesięczny cztery dyski magazynu premium P30 będzie 544.34 $. Szacowany łączny koszt miesięczny będzie 1,544 $.
 
@@ -212,7 +220,7 @@ W poniższej tabeli przedstawiono podział kosztów tego scenariusza Standard i 
 | &nbsp; | **Standardowa** | **Premium** |
 | --- | --- | --- |
 | **Koszt maszyn wirtualnych na miesiąc** |$1,570.58 (standardowa\_D14) |$1,003.66 (standardowa\_DS13) |
-| **Koszt dysków na miesiąc** |$1,638.40 (32 x 1 TB pojemności dysków) |$544.34 (4 dyski x P30) |
+| **Koszt dysków na miesiąc** |$1,638.40 (dyski 32 x 1 TB) |$544.34 (4 dyski x P30) |
 | **Całkowity koszt na miesiąc** |$3,208.98 |$1,544.34 |
 
 *Dystrybucje systemu Linux*  
@@ -223,7 +231,7 @@ Podczas uruchamiania systemu Linux dzięki usłudze Premium Storage, należy spr
 
 ## <a name="premium-storage-disk-sizes"></a>Rozmiary dysków magazynu Premium
 
-Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiarach dysków, które są obecnie dostępne w wersji zapoznawczej. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary dysków jedenaście i ich funkcji. Rozmiary P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
+Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiarach dysków, które obecnie znajdują się w wersji zapoznawczej. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary dysków 11 i ich funkcji. Rozmiary P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
 
 | Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
@@ -263,14 +271,14 @@ Należy włączyć pamięć podręczną dla odpowiedniego zestawu dysków. Czy n
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
 | Dysk systemu operacyjnego |Odczyt/zapis |
-| Dysk z danymi |Tylko do odczytu |
+| Dysk z danymi |ReadOnly |
 
 Poniżej przedstawiono ustawienia pamięci podręcznej dysków zalecany w przypadku dysków danych
 
 | **Ustawienia buforowania dysku** | **Zalecenie dotyczące kiedy należy używać tego ustawienia** |
 | --- | --- |
 | Brak |Skonfiguruj pamięci podręcznej hosta jako Brak w przypadku dysków tylko do zapisu i procesów. |
-| Tylko do odczytu |Konfigurowanie pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i odczytu i zapisu. |
+| ReadOnly |Konfigurowanie pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i odczytu i zapisu. |
 | Odczyt/zapis |Konfigurowanie pamięci podręcznej hosta jako odczytu i zapisu, tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych w pamięci podręcznej dysków trwałych, w razie potrzeby. |
 
 *ReadOnly*  
@@ -336,7 +344,7 @@ Przy dużej skali, które maszyna wirtualna jest połączona z kilku stałych dy
 
 W Windows umożliwia funkcji miejsca do magazynowania dysków stripe razem. Należy skonfigurować jedną kolumnę dla każdego dysku w puli. W przeciwnym razie może być krótszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami ogólną wydajność woluminu rozłożonego.
 
-Ważne: Za pomocą interfejsu użytkownika Menedżera serwera, można ustawić całkowita liczba kolumn maksymalnie 8 dla woluminu rozłożonego. Podczas dołączania dysków więcej niż 8, należy utworzyć wolumin za pomocą programu PowerShell. Przy użyciu programu PowerShell, można ustawić liczbę kolumn równa liczbie dysków. Na przykład w przypadku 16 dysków w zestawie pojedynczej usługi stripe; Określ 16 kolumn w *NumberOfColumns* parametru *New-VirtualDisk* polecenia cmdlet programu PowerShell.
+Ważne: Za pomocą interfejsu użytkownika Menedżera serwera, można ustawić całkowita liczba kolumn maksymalnie 8 dla woluminu rozłożonego. Podczas podłączania więcej niż ośmiu dysków, należy utworzyć wolumin za pomocą programu PowerShell. Przy użyciu programu PowerShell, można ustawić liczbę kolumn równa liczbie dysków. Na przykład w przypadku 16 dysków w zestawie pojedynczej usługi stripe; Określ 16 kolumn w *NumberOfColumns* parametru *New-VirtualDisk* polecenia cmdlet programu PowerShell.
 
 W systemie Linux za pomocą narzędzia MDADM na dyskach stripe razem. Aby uzyskać szczegółowe instrukcje dotyczące dysków Rozkładanie w systemie Linux, zobacz [konfigurowanie macierzy RAID oprogramowania w systemie Linux](../articles/virtual-machines/linux/configure-raid.md).
 
@@ -345,7 +353,7 @@ Ważne konfiguracji w rozkładanie jest rozmiar woluminu rozłożonego. Rozmiar 
 
 Na przykład jeśli żądanie operacji We/Wy, generowanych przez aplikację jest większy niż rozmiar woluminu rozłożonego dysku, system magazynowania zapisuje go między granicami jednostki na więcej niż jeden dysk. Gdy nadejdzie czas na dostęp do tych danych, jej do wyszukania w więcej niż jednej jednostki usługi stripe, można wykonać żądania. Skumulowany efekt takie zachowanie może prowadzić do obniżenia wydajności istotne. Z drugiej strony Jeśli rozmiar żądania operacji We/Wy jest mniejszy niż rozmiar woluminu rozłożonego i jest charakter losowy, żądań We/Wy może dodawać na tym samym dysku, co powoduje "wąskie gardło" i ostatecznie zmniejszenie wydajności operacji We/Wy.
 
-W zależności od typu obciążenia aplikacja jest uruchomiona, wybierz rozmiar woluminu rozłożonego odpowiednie. W przypadku małych losowych operacji We/Wy żądań należy użyć mniejszy rozmiar woluminu rozłożonego. Natomiast dużych sekwencyjnych operacji We/Wy żądań użytku większy rozmiar woluminu rozłożonego. Dowiedz się, stripe zaleceń dotyczących rozmiarów dla aplikacji, będzie działać w magazynie Premium Storage. W przypadku programu SQL Server należy skonfigurować rozmiar woluminu rozłożonego 64KB w przypadku obciążeń OLTP i 256KB dla obciążeń magazynowania danych. Zobacz [najlepsze rozwiązania dotyczące programu SQL Server na maszynach wirtualnych Azure wydajności](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) Aby dowiedzieć się więcej.
+W zależności od typu obciążenia aplikacja jest uruchomiona, wybierz rozmiar woluminu rozłożonego odpowiednie. W przypadku małych losowych operacji We/Wy żądań należy użyć mniejszy rozmiar woluminu rozłożonego. Natomiast dużych sekwencyjnych operacji We/Wy żądań użytku większy rozmiar woluminu rozłożonego. Dowiedz się, stripe zaleceń dotyczących rozmiarów dla aplikacji, będzie działać w magazynie Premium Storage. W przypadku programu SQL Server należy skonfigurować rozmiar woluminu rozłożonego 64 KB w przypadku obciążeń OLTP i 256 KB dla obciążeń magazynowania danych. Zobacz [najlepsze rozwiązania dotyczące programu SQL Server na maszynach wirtualnych Azure wydajności](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) Aby dowiedzieć się więcej.
 
 > [!NOTE]
 > Można można ze sobą stripe maksymalnie 32 dyski magazynu premium na maszyny Wirtualnej serii DS i 64 dysków magazynu premium storage na dla maszyny Wirtualnej serii GS.
@@ -381,19 +389,19 @@ Zazwyczaj aplikacja może osiągnąć maksymalną przepływność z 8-16 oczekuj
 
 Na przykład w programie SQL Server, ustawienie wartości MAXDOP dla zapytania "4" informuje programu SQL Server, można użyć maksymalnie cztery rdzenie do wykonania zapytania. Program SQL Server określi, co to jest najlepszą wartością głębokość kolejki i liczby rdzeni w celu wykonywania zapytań.
 
-*Optimal Queue Depth*  
-Głębokość kolejki bardzo duże również ma swoje wady. Głębokość kolejki jest zbyt wysoka, podejmie próbę dysków bardzo duże operacje We/Wy aplikacji. Jeśli aplikacja nie ma dysków trwałych, za pomocą wystarczające aprowizowane operacje We/Wy, to negatywnie wpłynąć na opóźnień działania aplikacji. Następujące formuły przedstawiono relację między operacje We/Wy, opóźnienia i głębokość kolejki.  
+*Optimal queue depth*  
+Głębokość kolejki bardzo duże również ma swoje wady. Głębokość kolejki jest zbyt wysoka, podejmie próbę dysków bardzo duże operacje We/Wy aplikacji. Jeśli aplikacja nie ma dysków trwałych, za pomocą wystarczające aprowizowane operacje We/Wy, to negatywnie wpłynąć na opóźnień działania aplikacji. Następujące formuły przedstawiono relacje między operacje We/Wy, opóźnienia i głębokość kolejki.  
     ![](media/premium-storage-performance/image6.png)
 
 Nie należy konfigurować głębokość kolejki o wysokiej wartości, ale optymalne wartość, która może dostarczać wystarczającej liczby operacji We/Wy dla aplikacji, bez wywierania wpływu na opóźnienia. Na przykład, jeśli opóźnienie aplikacji musi być 1 milisekundy, głębokości kolejki, wymagane do osiągnięcia 5000 operacji We/Wy jest, głębokość kolejki = 5000 x 0,001 = 5.
 
 *Głębokość kolejki dla woluminu rozłożonego*  
-Dla woluminu rozłożonego Obsługa głębokości kolejki wystarczająco wysoka, taki sposób, że każdego dysku, ma głębokość kolejki szczytu indywidualnie. Na przykład, rozważmy aplikację, która umieszcza głębokości kolejki wynoszącej 2 wiąże się z 4 dyski w stripe. Dwa żądania We/Wy zostanie umieszczona na dwóch dyskach, a pozostałe dwa dyski będą bezczynności. W związku z tym skonfiguruj głębokość kolejki w taki sposób, że wszystkie dyski mogą być zajęta. Formuła poniżej pokazano, jak ustalić głębokość kolejki woluminy rozłożone.  
+Dla woluminu rozłożonego Obsługa głębokości kolejki wystarczająco wysoka, taki sposób, że każdego dysku, ma głębokość kolejki szczytu indywidualnie. Na przykład, rozważmy aplikację, która umieszcza głębokości kolejki wynoszącej 2 wiąże się z czterech dysków w stripe. Dwa żądania We/Wy zostanie umieszczona na dwóch dyskach, a pozostałe dwa dyski będą bezczynności. W związku z tym skonfiguruj głębokość kolejki w taki sposób, że wszystkie dyski mogą być zajęta. Formuła poniżej pokazano, jak ustalić głębokość kolejki woluminy rozłożone.  
     ![](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Ograniczanie przepływności
 
-Zapisów systemu Azure Premium Storage określona liczba operacji We/Wy i Przepływność w zależności od rozmiarów maszyn wirtualnych i rozmiarach dysków, które wybierzesz. W dowolnym momencie Twoja aplikacja próbuje dysku na SEKUNDĘ lub przepływności powyżej tych limitów co maszyna wirtualna lub dysk może obsługiwać, będzie ograniczać usługi Premium Storage. To sytuacji, w postaci pogorszenie wydajności w aplikacji. To oznacza wyższe opóźnienie, obniżyć przepływności lub obniżyć operacje We/Wy. Jeśli Usługa Premium Storage nie ograniczać, aplikacji całkowicie może się nie powieść przekroczenia, co jej zasoby są w stanie osiągnięcia. Tak aby uniknąć problemów z wydajnością z powodu dławienia, zawsze aprowizować wystarczających zasobów dla aplikacji. Uwzględnia Omówiliśmy w sekcjach rozmiary dysków powyżej i rozmiarów maszyn wirtualnych. Analiza porównawcza to najlepszy sposób, aby zorientować się, jakie zasoby potrzebne do hostowania aplikacji.
+Zapisów systemu Azure Premium Storage określona liczba operacji We/Wy i Przepływność w zależności od rozmiarów maszyn wirtualnych i rozmiarach dysków, które wybierzesz. W dowolnym momencie Twoja aplikacja próbuje dysku na SEKUNDĘ lub przepływności powyżej tych limitów co maszyna wirtualna lub dysk może obsługiwać, będzie ograniczać usługi Premium Storage. To sytuacji, w postaci pogorszenie wydajności w aplikacji. Oznacza to, czas oczekiwania, przepływność niższe lub niższe operacje We/Wy. Jeśli Usługa Premium Storage nie ograniczać, aplikacji całkowicie może się nie powieść przekroczenia, co jej zasoby są w stanie osiągnięcia. Tak aby uniknąć problemów z wydajnością z powodu dławienia, zawsze aprowizować wystarczających zasobów dla aplikacji. Uwzględnia Omówiliśmy w sekcjach rozmiary dysków powyżej i rozmiarów maszyn wirtualnych. Analiza porównawcza to najlepszy sposób, aby zorientować się, jakie zasoby potrzebne do hostowania aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

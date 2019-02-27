@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/28/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 9846422405df491124a101a7898f356a1d9fb1d8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 780820f260657c2ca02572a3449802cf53a5e939
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998675"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446702"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Szybki start: Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
 
@@ -62,11 +62,11 @@ Za pomocą programu Visual Studio 2013/2015/2017 utwórz aplikację konsolową .
 ## <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
 1. Kliknij pozycję **Narzędzia** -> **Menedżer pakietów NuGet** -> **Konsola menedżera pakietów**.
-2. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety:
+2. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety. Aby uzyskać szczegóły, zobacz [pakiet nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

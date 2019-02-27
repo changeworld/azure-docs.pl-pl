@@ -1,38 +1,49 @@
 ---
 title: Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
-description: Domyślne limity przydziałów i dostępność regionów dla usługi Azure Container Instances.
+description: Limity przydziałów, ograniczenia i dostępność regionów dla usługi Azure Container Instances.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 02/08/2019
+ms.date: 02/15/2019
 ms.author: danlep
-ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c676989b4b882f2b1887a1b6a5091b60027f61d0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160581"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328416"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
 
-Wszystkich usług platformy Azure dotyczą określone limity i przydziały dla zasobów i funkcji. W poniższych sekcjach szczegółowo opisano domyślne limity zasobów dla kilku zasobów usługi Azure Container Instances (ACI), jak również dostępność usługi ACI w regionach platformy Azure.
+Wszystkich usług platformy Azure dotyczą określone limity i przydziały dla zasobów i funkcji. W poniższych sekcjach szczegółowo opisano domyślne limity dla kilku zasobów usługi Azure Container Instances, jak również dostępność tej usługi w regionach świadczenia usługi Azure.
 
 ## <a name="service-quotas-and-limits"></a>Limity i przydziały dotyczące usługi
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
 
+## <a name="feature-availability"></a>Dostępność funkcji
+
+Usługa Azure Container Instances umożliwia planowanie kontenerów systemów Windows i Linux przy użyciu tego samego interfejsu API. Jednak poniższe funkcje są obecnie dostępne tylko w grupach kontenerów systemu Linux. Planowane jest wprowadzenie obsługi w systemie Windows.
+
+* Wiele kontenerów na grupę kontenerów
+* Instalowanie woluminów (Azure Files, emptyDir, GitRepo, secret)
+* Sieć wirtualna (wersja zapoznawcza)
+* Zasoby procesora GPU (wersja zapoznawcza)
+
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Usługa Azure Container Instances jest dostępna w następujących regionach z określonymi limitami dotyczącymi procesora CPU i pamięci. Wartości są aktualne w momencie publikacji. Aby uzyskać aktualne informacje, należy użyć interfejsu API [List Capabilities](/rest/api/container-instances/listcapabilities/listcapabilities). Limity dostępności i zasobów mogą się różnić w zależności od tego, czy usługa Azure Container Instances jest używana z [siecią wirtualną](container-instances-vnet.md) (wersja zapoznawcza), czy z [zasobami procesora GPU](container-instances-gpu.md) (wersja zapoznawcza).
+Usługa Azure Container Instances jest dostępna w następujących regionach z określonymi limitami dotyczącymi procesora CPU i pamięci w każdej grupie kontenerów. Wartości są aktualne w momencie publikacji. Aby uzyskać aktualne informacje, należy użyć interfejsu API [List Capabilities](/rest/api/container-instances/listcapabilities/listcapabilities). 
+
+Limity dostępności i zasobów mogą się różnić w zależności od tego, czy usługa Azure Container Instances jest używana z [siecią wirtualną](container-instances-vnet.md) (wersja zapoznawcza), czy z [zasobami procesora GPU](container-instances-gpu.md) (wersja zapoznawcza).
 
 | Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada Środkowa, Środkowe stany USA, Wschodnie stany USA 2 | Linux | 4 | 16 |
+| Kanada Środkowa, Południowo-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA 2 | Linux | 4 | 16 |
 | Wschodnie stany USA, Europa Północna, Europa Zachodnia, Zachodnie stany USA, Zachodnie stany USA 2 | Linux | 4 | 14 |
 | Japonia Wschodnia | Linux | 2 | 8 |
 | Australia Wschodnia, Azja Południowo-Wschodnia | Linux | 2 | 7 |
-| Indie Środkowe, Azja Wschodnia, Północno-środkowe stany USA, Południowo-środkowe stany USA, Indie Południowe | Linux | 2 | 3,5 |
+| Indie Środkowe, Azja Wschodnia, Północno-środkowe stany USA, Indie Południowe | Linux | 2 | 3,5 |
 | Wschodnie stany USA, Europa Zachodnia, Zachodnie stany USA | Windows | 4 | 14 |
 | Australia Wschodnia, Kanada Środkowa, Indie Środkowe, Środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Japonia Wschodnia, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Indie Południowe, Azja Południowo-Wschodnia, Zachodnie stany USA 2 | Windows | 2 | 3,5 |
 

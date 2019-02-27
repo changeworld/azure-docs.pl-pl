@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8f35bda8c6925bdc10097ac6d180f5998bd5cf1d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d208d989fb9b84ae7bc94c6a1882754ed2bacb5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989790"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343965"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
 
@@ -90,22 +90,22 @@ Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. 
 
    Wypełnij następujące pola:
 
-   * **Tytuł**: Podaj tytuł dla tej jednostki SKU. Ten tytuł będzie widoczny w galerii dla tego elementu.
+   * **Tytuł**: Wprowadź tytuł dla tej jednostki SKU. Ten tytuł będzie widoczny w galerii dla tego elementu.
    * **Podsumowanie**: Wprowadź krótkie podsumowanie dla tej jednostki SKU. Ten tekst jest wyświetlany pod tytułem.
    * **Opis**: Wprowadź szczegółowy opis jednostki SKU.
    * **Typ jednostki SKU**: Dozwolone wartości to *Aplikacja zarządzana* i *Szablony rozwiązań*. W tym przypadku wybierz pozycję *Aplikacja zarządzana*.
-   * **Dostępność w krajach/regionach**: Wybierz kraje, w których dana aplikacja zarządzana jest dostępna.
+   * **Dostępność w kraju/regionie**: Wybierz kraje, w których dana aplikacja zarządzana jest dostępna.
    * **Cennik**: Podaj cenę za zarządzanie aplikacją. Przed ustawieniem ceny wybierz dostępne kraje.
 
 1. Dodaj nowy pakiet. Wypełnij sekcję **Szczegóły pakietu** w następującym formularzu:
 
    Wypełnij następujące pola:
 
-   * **Wersja**: wprowadź wersję przekazywanego pakietu. Powinna ona mieć format `{number}.{number}.{number}{number}`.
-   * **Plik pakietu (zip)**: ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
+   * **Wersja**: Wprowadź wersję przekazywanego pakietu. Powinna ona mieć format `{number}.{number}.{number}{number}`.
+   * **Plik pakietu (zip)**: Ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
    * **PrincipalId**: Ta właściwość jest identyfikatorem usługi Azure Active Directory (Azure AD) użytkownika, grupy użytkowników lub aplikacji, której udzielono uprawnień dostępu do zasobów w subskrypcji klienta. Uprawnienia są opisywane za pomocą definicji roli.
    * **Definicja roli**: Ta właściwość jest listą wszystkich wbudowanych kontroli dostępu na podstawie ról (RBAC, Role-Based Access Control) zapewnianych przez usługę Azure AD. Możesz wybrać rolę, która najbardziej nadaje się do zarządzania zasobami w imieniu klienta.
-   * **Ustawienia zasad**: zastosuj [zasady Azure Policy](../azure-policy/azure-policy-introduction.md) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonych rozwiązań. Z dostępnych opcji wybierz zasady do zastosowania. W polu **Parametry zasad** podaj ciąg JSON z wartościami parametrów. Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](../azure-policy/json-samples.md).
+   * **Ustawienia zasad**: Zastosuj [zasady Azure Policy](../governance/policy/overview.md) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonych rozwiązań. Z dostępnych opcji wybierz zasady do zastosowania. W polu **Parametry zasad** podaj ciąg JSON z wartościami parametrów. Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](../governance/policy/samples/index.md).
 
 Dodać można kilka autoryzacji. Zalecamy utworzenie grupy użytkowników usługi AD i określenie jej identyfikatora w polu **PrincipalId**. Dzięki temu będzie można dodawać kolejnych użytkowników do grupy użytkowników bez konieczności aktualizowania jednostki SKU.
 
@@ -117,7 +117,7 @@ Formularz witryny Marketplace zawiera pola, które są widoczne w witrynach [Azu
 
 ### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji wersji zapoznawczej
 
-Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Lista może składać się z maksymalnie 100 subskrypcji w portalu dla partnerów.
+Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Biała lista może składać się z maksymalnie 100 subskrypcji w portalu dla partnerów.
 
 ### <a name="suggested-categories"></a>Sugerowane kategorie
 

@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093044"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429251"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
 Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak inna maszyna wirtualna, może być krytyczna dla działania organizacji. Czasami są wprowadzane zmiany konfiguracji, co może powodować przerwy w komunikacji. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -73,11 +73,11 @@ Wykonaj ponownie kroki z sekcji [Tworzenie pierwszej maszyny wirtualnej](#create
 
 |Krok|Ustawienie|Wartość|
 |---|---|---|
-| 1 | Wybierz pozycję **Maszyna wirtualna z systemem Ubuntu Server 17.10** |                                                                         |
-| 3 | Name (Nazwa)                              | myVm2                                                                   |
-| 3 | Typ uwierzytelniania               | Wklej klucz publiczny SSH lub wybierz opcję **Hasło** i wprowadź hasło. |
-| 3 | Grupa zasobów                    | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.                 |
-| 6 | Rozszerzenia                        | **Network Agent for Linux**                                             |
+| 1 | Wybierz wersję **Ubuntu Server** |                                                                         |
+| 3 | Name (Nazwa)                                  | myVm2                                                                   |
+| 3 | Typ uwierzytelniania                   | Wklej klucz publiczny SSH lub wybierz opcję **Hasło** i wprowadź hasło. |
+| 3 | Grupa zasobów                        | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.                 |
+| 6 | Rozszerzenia                            | **Network Agent for Linux**                                             |
 
 Wdrożenie maszyny wirtualnej potrwa kilka minut. Zanim przejdziesz do pozostałych kroków, poczekaj na zakończenie wdrażania maszyny wirtualnej.
 
@@ -160,7 +160,7 @@ Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między
 
     Widać, że w kolumnie Stan znajduje się ikona czerwonego wykrzyknika dla interfejsu sieciowego **myvm2529**.
 
-6. Aby dowiedzieć się, jaka jest przyczyna zmiany stanu, wybierz adres 10.0.0.5 widoczny na poprzedniej ilustracji. Monitor połączeń informuje o następującej przyczynie komunikacji: *Zablokowano ruch zgodnie z następującą regułą grupy zabezpieczeń sieci: UserRule_DenySshInbound*.
+6. Aby dowiedzieć się, jaka jest przyczyna zmiany stanu, wybierz adres 10.0.0.5 widoczny na poprzedniej ilustracji. Monitor połączeń informuje, że przyczyna niepowodzenia komunikacji jest następująca: *Ruch zablokowany z powodu następującej reguły sieciowej grupy zabezpieczeń: UserRule_DenySshInbound*.
 
     Dzięki monitorowi połączeń możesz dowiedzieć się, że ktoś zaimplementował regułę zabezpieczeń podobną do tej, którą utworzono w kroku 4, i że ona powoduje problem z komunikacją. Następnie możesz zmienić, przesłonić lub usunąć tę regułę, aby przywrócić komunikację między maszynami wirtualnymi.
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3d79f106554bf4a80df835ac880fbb7a72c8bfe
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077459"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268400"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -70,7 +70,7 @@ A.  Aby otrzymać urządzenie Azure Data Box, zaloguj się do witryny Azure Port
 ### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>PYTANIE: Nie udało się utworzyć zamówienia na urządzenie Data Box w witrynie Azure Portal. Co może być powodem?
 A. Jeśli nie udało się utworzyć zamówienia na urządzenie Data Box, problem może być związany z typem subskrypcji lub dostępem. 
 
-Sprawdź swoją subskrypcję. Urządzenie Data Box jest dostępne wyłącznie dla umowy Enterprise Agreement (EA), programu Cloud Solution Provider (CSP) lub ofert subskrypcji z płatnością za rzeczywiste użycie. Jeśli Twoja subskrypcja nie kwalifikuje się do żadnego z powyższych typów, skontaktuj się z działem pomocy technicznej firmy Microsoft, aby ją zmienić.
+Sprawdź swoją subskrypcję. Urządzenie Data Box jest dostępne wyłącznie w dla ofert subskrypcji w ramach umowy Enterprise Agreement (EA) i programu Cloud Solution Provider (CSP). Jeśli Twoja subskrypcja nie kwalifikuje się do żadnego z powyższych typów, skontaktuj się z działem pomocy technicznej firmy Microsoft, aby ją zmienić.
 
 Jeśli masz obsługiwany typ oferty subskrypcji, sprawdź poziom dostępu swojej subskrypcji. Musisz być współautorem lub właścicielem subskrypcji, aby utworzyć zamówienie.
 

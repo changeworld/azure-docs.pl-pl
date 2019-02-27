@@ -8,56 +8,71 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 07868fd70c1b2601fa676f7069f2508468e2be0e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 588faa3c59c4e6b3ea704d953c20c4319ef4b01e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866954"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312127"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka JavaScript
 
-W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy.
+W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka JavaScript do wykrywania ludzkich twarzy na obrazie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
+- Edytor kodu, taki jak program [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="detect-faces-in-an-image"></a>Wykrywanie twarzy na obrazie
+## <a name="initialize-the-html-file"></a>Inicjowanie pliku HTML
 
-Użyj metody [Face — Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby wykryć twarze na obrazie i zwrócić atrybuty twarzy, w tym:
-
-* Identyfikator Face ID: unikatowy identyfikator używany w kilku scenariuszach dotyczących interfejsu API rozpoznawania twarzy.
-* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące lokalizację twarzy na obrazie.
-* Charakterystyczne punkty twarzy: układ 27 charakterystycznych punktów twarzy wskazujący położenie istotnych części twarzy.
-* Atrybuty twarzy, takie jak wiek, płeć, intensywność uśmiechu, położenie głowy i zarost.
-
-Aby uruchomić przykład, wykonaj następujące kroki:
-
-1. Skopiuj poniższy tekst i zapisz go w pliku, na przykład `detectFaces.html`.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. W razie potrzeby zmień wartość `uriBase`, aby użyć lokalizacji, w której zostały uzyskane Twoje klucze subskrypcji (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów).
-1. Przeciągnij plik i upuść go w przeglądarce.
-1. Kliknij przycisk `Analyze faces`.
-
-### <a name="face---detect-request"></a>Żądanie Face — Detect
+Utwórz nowy plik HTML o nazwie *detectFaces.html* i dodaj poniższy kod.
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Detect Faces Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-</head>
-<body>
+    <head>
+        <title>Detect Faces Sample</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    </head>
+    <body></body>
+</html>
+```
 
+Następnie dodaj poniższy kod wewnątrz elementu `body` dokumentu. Spowoduje to utworzenie podstawowego interfejsu użytkownika z polem adresu URL, przyciskiem **analizowania twarzy**, okienkiem odpowiedzi i okienkiem wyświetlania obrazu.
+
+```html
+<h1>Detect Faces:</h1>
+Enter the URL to an image that includes a face or faces, then click
+the <strong>Analyze face</strong> button.<br><br>
+Image to analyze: <input type="text" name="inputImage" id="inputImage"
+    value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
+<button onclick="processImage()">Analyze face</button><br><br>
+<div id="wrapper" style="width:1020px; display:table;">
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response:<br><br>
+        <textarea id="responseTextArea" class="UIInput"
+            style="width:580px; height:400px;"></textarea>
+    </div>
+    <div id="imageDiv" style="width:420px; display:table-cell;">
+        Source image:<br><br>
+        <img id="sourceImage" width="400" />
+    </div>
+</div>
+```
+
+## <a name="write-the-javascript-script"></a>Pisanie skryptu języka JavaScript
+
+Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Spowoduje to utworzenie kodu JavaScript, który wywołuje interfejs API rozpoznawania twarzy.
+
+```html
 <script type="text/javascript">
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
-
+    
         // NOTE: You must use the same region in your REST call as you used to
         // obtain your subscription keys. For example, if you obtained your
         // subscription keys from westus, replace "westcentralus" in the URL
@@ -68,7 +83,7 @@ Aby uruchomić przykład, wykonaj następujące kroki:
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-
+    
         // Request parameters.
         var params = {
             "returnFaceId": "true",
@@ -77,32 +92,32 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                 "age,gender,headPose,smile,facialHair,glasses,emotion," +
                 "hair,makeup,occlusion,accessories,blur,exposure,noise"
         };
-
+    
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
-
+    
         // Perform the REST API call.
         $.ajax({
             url: uriBase + "?" + $.param(params),
-
+    
             // Request headers.
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/json");
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
             },
-
+    
             type: "POST",
-
+    
             // Request body.
             data: '{"url": ' + '"' + sourceImageUrl + '"}',
         })
-
+    
         .done(function(data) {
             // Show formatted JSON on webpage.
             $("#responseTextArea").val(JSON.stringify(data, null, 2));
         })
-
+    
         .fail(function(jqXHR, textStatus, errorThrown) {
             // Display error message.
             var errorString = (errorThrown === "") ?
@@ -115,40 +130,17 @@ Aby uruchomić przykład, wykonaj następujące kroki:
         });
     };
 </script>
-
-<h1>Detect Faces:</h1>
-Enter the URL to an image that includes a face or faces, then click
-the <strong>Analyze face</strong> button.<br><br>
-
-Image to analyze: <input type="text" name="inputImage" id="inputImage"
-value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
-
-<button onclick="processImage()">Analyze face</button><br><br>
-
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:<br><br>
-
-        <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:400px;"></textarea>
-    </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:<br><br>
-
-        <img id="sourceImage" width="400" />
-    </div>
-</div>
-</body>
-</html>
 ```
 
-### <a name="face---detect-response"></a>Odpowiedź na żądanie Face — Detect
+Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON.
+## <a name="run-the-script"></a>Uruchamianie skryptu
+
+Otwórz plik *detectFaces.html* w przeglądarce. Po kliknięciu przycisk **analizowania twarzy** aplikacja powinna wyświetlić obrazu z podanego adresu URL oraz ciąg JSON danych rozpoznawania twarzy.
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-Poniżej znajduje się przykład pomyślnej odpowiedzi:
+Następujący kod to przykład pomyślnej odpowiedzi w formacie JSON.
 
 ```json
 [
@@ -244,7 +236,7 @@ Poniżej znajduje się przykład pomyślnej odpowiedzi:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat interfejsów API rozpoznawania twarzy używanych do wykrywania ludzkich twarzy na obrazach, rozpoznawania ich obrysów i zwracania atrybutów, takich jak wiek i płeć.
+W tym przewodniku Szybki start napisano skrypt w języku JavaScript służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 
 > [!div class="nextstepaction"]
-> [Interfejsy API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Interfejs API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

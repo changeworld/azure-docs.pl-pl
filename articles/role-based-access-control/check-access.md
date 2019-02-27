@@ -1,6 +1,6 @@
 ---
-title: Szybki start — wyświetlanie ról przypisanych do użytkownika za pomocą witryny Azure Portal | Microsoft Docs
-description: Dowiedz się, jak za pomocą witryny Azure Portal wyświetlać uprawnienia kontroli dostępu opartej na rolach przypisane do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej.
+title: Szybki start — wyświetlanie informacji o dostępie użytkownika do zasobów platformy Azure | Microsoft Docs
+description: Dowiedz się, jak przy użyciu kontroli dostępu opartej na rolach (RBAC) i witryny Azure Portal wyświetlić informacje o dostępie użytkownika lub innego podmiotu zabezpieczeń do zasobów platformy Azure.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b755dd6223c21084cafea82a1c8857f9f54b03b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641870"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337949"
 ---
-# <a name="quickstart-view-roles-assigned-to-a-user-using-the-azure-portal"></a>Szybki start: wyświetlanie ról przypisanych do użytkownika za pomocą witryny Azure Portal
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Szybki start: Wyświetlanie informacji o dostępie użytkownika do zasobów platformy Azure
 
-Za pomocą bloku **Kontrola dostępu (IAM)** w funkcji [kontroli dostępu opartej na rolach](overview.md) można wyświetlać przypisania ról dla wielu użytkowników, grup, jednostek usługi i tożsamości zarządzanych, ale czasami konieczne jest tylko szybkie wyświetlenie przypisań ról dla jednego użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej. Najłatwiej można to zrobić przy użyciu funkcji **Sprawdź dostęp** w witrynie Azure Portal.
+Informacje o dostępie użytkownika lub innego podmiotu zabezpieczeń do zasobów platformy Azure można wyświetlić w bloku **Kontrola dostępu (IAM)** w obszarze [Kontrola dostępu oparta na rolach (RBAC)](overview.md). Czasami jednak wystarczy szybki przegląd informacji o dostępie pojedynczego użytkownika lub innego podmiotu zabezpieczeń. Najłatwiej można to zrobić przy użyciu funkcji **Sprawdź dostęp** w witrynie Azure Portal.
 
 ## <a name="view-role-assignments"></a>Wyświetlanie przypisań ról
 
-Wykonaj następujące kroki, aby wyświetlić przypisania ról dla jednego użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w zakresie subskrypcji.
+ Aby sprawdzić informacje o dostępie użytkownika, należy wyświetlić jego przypisania ról. Wykonaj następujące kroki, aby wyświetlić przypisania ról dla jednego użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w zakresie subskrypcji.
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
@@ -54,4 +54,4 @@ Wykonaj następujące kroki, aby wyświetlić przypisania ról dla jednego użyt
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal](quickstart-assign-role-user-portal.md)
+> [Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](quickstart-assign-role-user-portal.md)

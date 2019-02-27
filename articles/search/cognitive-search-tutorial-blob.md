@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8c63b97f9d4423bf57909da7716675915a5271ef
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a4481e1bbc6248a9616fa7b3fe1d67c7d90af56e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994056"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429421"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: Wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
 
@@ -403,9 +403,7 @@ Skrypt ustawia dla elementu ```"maxFailedItems"``` wartość -1, która powoduje
 
 Ponadto zwróć uwagę na instrukcję ```"dataToExtract":"contentAndMetadata"``` w parametrach konfiguracji. Ta instrukcja nakazuje indeksatorowi automatyczne wyodrębnianie zawartości z plików w różnych formatach, a także metadanych związanych z każdym plikiem. 
 
-Gdy zawartość zostanie wyodrębniona, możesz ustawić element ```ImageAction```, aby wyodrębnić tekst z obrazów znalezionych w źródle danych. Element ```"ImageAction":"generateNormalizedImages"``` nakazuje indeksatorowi wyodrębnianie tekstu z obrazów (na przykład wyrazu „stop” ze znaku drogowego Stop) i osadzanie go jako części pola zawartości. To zachowanie dotyczy zarówno obrazów osadzonych w dokumentach (np. w pliku PDF), jak i znalezionych w źródle danych (np. pliku JPG).
-
-W tej wersji zapoznawczej wartość ```"generateNormalizedImages"``` jest jedyną poprawną wartością elementu ```"ImageAction"```.
+Gdy zawartość zostanie wyodrębniona, możesz ustawić element ```imageAction```, aby wyodrębnić tekst z obrazów znalezionych w źródle danych. Konfiguracja ```"imageAction":"generateNormalizedImages"```, w połączeniu z umiejętnością OCR i umiejętnością scalania tekstu, wskazuje indeksatorowi, aby wyodrębniał tekst z obrazów (np. wyraz „stop” ze znaku drogowego Stop) i osadzał go jako część pola zawartości. To zachowanie dotyczy zarówno obrazów osadzonych w dokumentach (np. w pliku PDF), jak i znalezionych w źródle danych (np. pliku JPG).
 
 ## <a name="check-indexer-status"></a>Sprawdzanie stanu indeksatora
 

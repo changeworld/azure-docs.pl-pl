@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 65780252fe19ff1af3c37d25c7a65c2071961fb9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 455b0bb0cb6c53200edb7a0f3540006408329321
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994877"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453238"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux
 
 Usługa Azure IoT Edge przenosi możliwości chmury na urządzenia Internetu rzeczy. Z tego przewodnika Szybki start dowiesz się, jak używać interfejsu do zdalnego wdrażania wstępnie skompilowanego kodu na urządzeniu z usługą IoT Edge.
 
@@ -29,7 +29,7 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 ![Diagram — architektura przewodnika Szybki start dla urządzenia i chmury](./media/quickstart-linux/install-edge-full.png)
 
-W tym przewodniku Szybki start komputer lub maszyna wirtualna z systemem Linux zmieni się w urządzenie usługi IoT Edge. Następnie wdrożysz modułu z witryny Azure Portal na swoim urządzeniu. Moduł wdrażany podczas pracy z tym przewodnikiem Szybki start to symulowany czujnik generujący dane dotyczące temperatury, wilgotności i ciśnienia. Z wykonanej tutaj pracy będziesz korzystać w pozostałych samouczkach usługi Azure IoT Edge, wdrażając moduły do analizy symulowanych danych na potrzeby biznesowe.
+Ten przewodnik Szybki start przeprowadzi Cię przez tworzenie maszyny wirtualnej platformy Azure skonfigurowanej do pełnienia roli urządzenia usługi IoT Edge. Następnie wdrożysz modułu z witryny Azure Portal na swoim urządzeniu. Moduł wdrażany podczas pracy z tym przewodnikiem Szybki start to symulowany czujnik generujący dane dotyczące temperatury, wilgotności i ciśnienia. Z wykonanej tutaj pracy będziesz korzystać w pozostałych samouczkach usługi Azure IoT Edge, wdrażając moduły do analizy symulowanych danych na potrzeby biznesowe.
 
 Jeśli nie masz aktywnej subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
@@ -62,12 +62,12 @@ Urządzenie usługi IoT Edge:
    ```
 
    Utworzenie i uruchomienie nowej maszyny wirtualnej może zająć kilka minut. 
+   
+   W tym momencie może zostać zwrócona informacja o błędzie `MarketplacePurchaseEligibilityFailed`. Jeśli tak się stanie, należy zaakceptować postanowienia, przechodząc do [usługi Azure IoT Edge w systemie Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) i klikając pozycję `Get It Now`. Przed ponowieniem próby wykonania polecenia zaloguj się tam i zaakceptuj postanowienia.
 
    Podczas tworzenia nowej maszyny wirtualnej zanotuj wartość elementu **publicIpAddress**. Jest ona widoczna w danych wyjściowych polecenia create. Tego publicznego adresu IP użyjesz później w tym przewodniku Szybki start do nawiązania połączenia z maszyną wirtualną.
 
-* Jeśli wolisz użyć środowiska uruchomieniowego usługi Azure IoT Edge w systemie lokalnym, postępuj zgodnie z instrukcjami w artykule [Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)](how-to-install-iot-edge-linux.md).
-
-* Jeśli chcesz użyć urządzenia z architekturą ARM32, takiego jak Raspberry Pi, postępuj zgodnie z instrukcjami w artykule [Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md).
+* Jeśli wolisz używać środowiska uruchomieniowego usługi Azure IoT Edge na własnym urządzeniu, postępuj zgodnie z instrukcjami w artykule [Install the Azure IoT Edge runtime on Linux (x64)](how-to-install-iot-edge-linux.md) (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux — x64) lub [Install Azure IoT Edge runtime on Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux — ARM32v7/armhf).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 

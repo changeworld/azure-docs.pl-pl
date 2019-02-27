@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 68bc3302874849a69249a50dcecd46024ad939ef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 007c63c163b6e972bd59189569c92c99d2718cbe
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448333"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301489"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -131,6 +131,9 @@ A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędz
 Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
  - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
  - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
+ 
+ ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
+ A. Urządzenie Data Box Disk nie obsługuje usługi Azure Files. Metadane nie są również zachowywane, jeśli dane pliku są później używane w usłudze Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Weryfikowanie i przekazywanie

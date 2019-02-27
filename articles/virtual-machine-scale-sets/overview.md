@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 23c04f85c994a8b300ffec23b4660d3d431ef69b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740429"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329617"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co to są zestawy skalowania maszyn wirtualnych?
 Zestawy skalowania maszyn wirtualnych platformy Azure pozwalają utworzyć grupę identycznych, mających zrównoważone obciążenie maszyn wirtualnych i zarządzać nimi. Liczba wystąpień maszyn wirtualnych może automatycznie zwiększać lub zmniejszać się w reakcji na zapotrzebowanie lub zdefiniowany harmonogram. Zestawy skalowania zapewniają wysoką dostępność Twoim aplikacjom i pozwalają na centralnie zarządzanie, konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych. Za pomocą zestawów skalowania maszyn wirtualnych możesz tworzyć usługi na dużą skalę dla takich obszarów jak obliczenia, dane big data i obciążenia kontenera.
@@ -47,7 +47,7 @@ Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają możliwości z
 
 - **Działa na dużą skalę**
     - Zestaw skalowania obsługuje maksymalnie 1000 wystąpień maszyn wirtualnych. Jeśli utworzysz i przekażesz własne niestandardowe obrazy maszyn wirtualnych, wtedy limit wynosi 300 wystąpień maszyn wirtualnych.
-    - Aby uzyskać najlepszą wydajność dla obciążeń produkcyjnych, użyj usługi [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) i [Premium Storage](../virtual-machines/windows/premium-storage.md).
+    - Aby uzyskać najlepszą wydajność dla obciążeń produkcyjnych, użyj usługi [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Różnice między maszynami wirtualnymi i zestawami skalowania

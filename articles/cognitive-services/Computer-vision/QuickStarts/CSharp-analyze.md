@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8e974852c0394eb7fd9e3e13eb8cde42a23977a6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 40145ee0e284f90dc1cf231db01d02219a58eeda
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862092"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313147"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>Szybki start: analizowanie obrazu lokalnego przy użyciu interfejsu API REST i języka C&#35; podczas przetwarzania obrazów
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>Szybki start: Analizowanie obrazu lokalnego przy użyciu interfejsu API REST i języka C# podczas przetwarzania obrazów
 
-W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego lokalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
+W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego lokalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie informacji o elementach wizualnych na podstawie zawartości obrazu.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
@@ -253,7 +253,7 @@ Gdy rozwiązanie Visual Studio nie będzie już potrzebne, usuń je. W tym celu 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z podstawową aplikacją dla systemu Windows, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z podstawową aplikacją dla systemu Windows, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie.
 
 > [!div class="nextstepaction"]
-> [Computer Vision API C&#35; Tutorial (Samouczek dla języka C# dotyczący interfejsu API przetwarzania obrazów)](../Tutorials/CSharpTutorial.md)
+> [Samouczek dla języka C# dotyczący interfejsu API przetwarzania obrazów](../Tutorials/CSharpTutorial.md)

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Tworzenie zasad dla niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Używając interfejsu wiersza polecenia platformy Azure, utwórz przypisanie usługi Azure Policy, aby zidentyfikować niezgodne zasoby.
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3b4f71e420c0d80594193f27739fd120881247d4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1f80171e8987f92688d564713e29fbfe2e103335
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856234"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342188"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji na temat identyfikatorów przypisań zasad, zoba
 
 Następnie uruchom poniższe polecenie, aby uzyskać identyfikatory niezgodnych zasobów, które są danymi wyjściowymi przekazywanymi do pliku JSON:
 
-```
+```console
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 

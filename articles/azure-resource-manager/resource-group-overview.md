@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691561"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268136"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
 Usługa Azure Resource Manager to usługa wdrażania i zarządzania dla platformy Azure. Zapewnia spójną warstwę zarządzania, która umożliwia tworzenie, aktualizowanie i usuwanie zasobów w subskrypcji platformy Azure. Udostępnia także funkcje dostępu, inspekcji i znakowania na potrzeby zabezpieczania i organizowania zasobów po wdrożeniu.
 
-Podczas wykonywania akcji za pomocą portalu, programu PowerShell, wiersza polecenia platformy Azure, interfejsów API REST lub zestawów SDK klienta żądania są obsługiwane przez interfejs API usługi Azure Resource Manager. Ponieważ wszystkie żądania są obsługiwane przez ten sam interfejs API, użytkownik widzi spójne wyniki i możliwości w różnych narzędziach.
+Podczas wykonywania akcji za pomocą portalu, programu PowerShell, wiersza polecenia platformy Azure, interfejsów API REST lub zestawów SDK klienta żądania są obsługiwane przez interfejs API usługi Azure Resource Manager. Ponieważ wszystkie żądania są obsługiwane przez ten sam interfejs API, użytkownik widzi spójne wyniki i możliwości w różnych narzędziach. Wszystkie funkcje, które są dostępne w portalu są również dostępne za pośrednictwem programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsów API REST oraz zestawów SDK klienta. Funkcje udostępnione najpierw za pośrednictwem interfejsów API zostaną wprowadzone w witrynie Portal w ciągu 180 dni od początkowego wydania.
 
 Na poniższej ilustracji przedstawiono, jak poszczególne narzędzia wchodzą w interakcję z samym interfejsem API usługi Azure Resource Manager. Interfejs API przekazuje żądania do usługi Resource Manager, która je uwierzytelnia i autoryzuje. Usługa Resource Manager kieruje następnie żądania do odpowiedniej usługi.
 

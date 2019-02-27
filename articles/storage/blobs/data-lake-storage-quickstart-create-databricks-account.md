@@ -7,13 +7,13 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/24/2019
-ms.openlocfilehash: 0ec682ea852f3c6da6248f3c16b539725ca18c0f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/15/2019
+ms.openlocfilehash: 9d00819143d9a8fc38bfc09844d55f088e732b46
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895809"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453030"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Szybki start: Analizowanie danych usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Databricks
 
@@ -25,27 +25,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Utworzenie konta magazynu z włączoną usługą Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
+* Utwórz konto magazynu usługi Data Lake Gen2. Zobacz [Szybki start: Tworzenie konta usługi Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 
-<a id="config"/>
+  Wklej nazwę konta magazynu do pliku tekstowego. Wkrótce będziesz jej potrzebować.
 
-## <a name="get-the-name-of-your-storage-account"></a>Uzyskiwanie nazwy konta magazynu
+*  Tworzenie jednostki usługi. Zobacz [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Aby uzyskać nazwę konta magazynu w witrynie Azure Portal, wybierz pozycję **Wszystkie usługi** i filtruj listę według terminu *Magazyn*. Następnie wybierz pozycję **Konta magazynu** i znajdź swoje konto magazynu.
+   Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
 
-Wklej tę nazwę do pliku tekstowego. Wkrótce będziesz jej potrzebować.
+   :heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano rolę **Współautor danych obiektu blob magazynu** do jednostki usługi.
 
-<a id="service-principal"/>
+   > [!IMPORTANT]
+   > Upewnij się, że przypisano rolę w zakresie konta magazynu usługi Data Lake Storage Gen2. Możesz przypisać rolę do nadrzędnej grupy zasobów lub subskrypcji, ale będzie zgłaszany błąd dotyczący uprawnień do momentu rozpropagowania przypisań roli do konta magazynu.
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
-
-Utwórz jednostkę usługi, wykonując czynności opisane w temacie: [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
-
-:heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano aplikację do **roli Współautor usługi Blob Storage**.
-
-:heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
+   :heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -126,11 +119,11 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
- 
+
     > [!NOTE]
     > Ten blok kodu uzyskuje bezpośredni dostęp do punktu końcowego usługi Data Lake Gen2 przy użyciu protokołu OAuth, ale istnieją też inne sposoby łączenia obszaru roboczego usługi Databricks z kontem usługi Data Lake Storage Gen2. Możesz na przykład zainstalować system plików przy użyciu protokołu OAuth lub użyć dostępu bezpośredniego z kluczem wspólnym. <br>Aby zapoznać się z przykładami tych metod, zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks.
 
-5. W tym bloku kodu zastąp symbole zastępcze `storage-account-name`, `application-id`, `authentication-id` i `tenant-id` wartościami uzyskanymi podczas wykonywaniu kroków opisanych w sekcjach [Uzyskiwanie nazwy konta magazynu](#config) i [Tworzenie jednostki usługi](#service-principal) tego artykułu.  Ustaw wartość symbolu zastępczego `file-system-name` na dowolną nazwę, którą chcesz nadać systemowi plików.
+5. W tym bloku kodu zamień symbole zastępcze `storage-account-name`, `application-id`, `authentication-id` i `tenant-id` na wartości zebrane podczas tworzenia jednostki usługi. Ustaw wartość symbolu zastępczego `file-system-name` na dowolną nazwę, którą chcesz nadać systemowi plików.
 
 6. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 

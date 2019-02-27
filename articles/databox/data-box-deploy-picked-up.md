@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 02/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 5a72bfccd69a51aa6bafb34bb768b48640e554af
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 254ebb9e23a80f71d2c46e6666362d764ff03141
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243012"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341593"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box i weryfikowanie przekazania danych na platformę Azure
 
@@ -42,9 +42,7 @@ Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 ## <a name="ship-data-box-back"></a>Wysyłka zwrotna urządzenia Data Box
 
 1. Upewnij się, że wyłączono zasilanie urządzenia, a kable zostały odłączone. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
-2. Jeśli urządzenie jest wysyłane w Stanach Zjednoczonych, upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. Jeśli etykieta jest uszkodzona, nie ma jej lub nie jest widoczna na wyświetlaczu E-ink, skontaktuj się z pomocą techniczną firmy Microsoft. Tylko wtedy, gdy otrzymasz takie instrukcje od pomocy technicznej, przejdź na stronę **Przegląd > Pobierz etykietę wysyłkową** w witrynie Azure Portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia.
-
-    Jeśli urządzenie jest wysyłane w Europie, na wyświetlaczu E-ink nie jest wyświetlana etykieta wysyłkowa. Zamiast tego jest dołączona zwrotna etykieta wysyłkowa w przezroczystej kieszeni pod etykietą wysyłkową. Usuń starą etykietę wysyłkową i upewnij się, że etykieta wysyłkowa jest dobrze widoczna.
+2. Upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. Jeśli etykieta jest uszkodzona, nie ma jej lub nie jest widoczna na wyświetlaczu E-ink, skontaktuj się z pomocą techniczną firmy Microsoft. Jeśli otrzymasz takie instrukcje od pomocy technicznej, możesz przejść na stronę **Przegląd > Pobierz etykietę wysyłkową** w witrynie Azure Portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia.
     
 3. Jeśli zwracasz urządzenie, zamów odbiór paczki przez firmę UPS. Aby zaplanować odbiór, zadzwoń do lokalnego biura firmy UPS (na bezpłatny numer odpowiedni dla danego kraju) lub dostarcz urządzenie Data Box do najbliższego punktu UPS.
 

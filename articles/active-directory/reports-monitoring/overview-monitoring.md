@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 228d54f1b2b438c05779b96025d3ad03a7757beb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 961f7bf85ed8bb67c8284edea1846e96895d7f46
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165097"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452852"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Co to jest funkcja monitorowania usługi Azure Active Directory? (wersja zapoznawcza)
 
@@ -57,9 +57,9 @@ Przekierowując dzienniki do konta magazynu usługi Azure, możesz przechowywać
 
 Przekierowywanie dzienników do centrum zdarzeń platformy Azure umożliwia integrację z narzędziami SIEM takimi jak Sumologic i Splunk. Ta integracja pozwala połączyć dane dzienników aktywności usługi Azure AD z innymi danymi zarządzanymi przez rozwiązania SIEM, co zapewnia lepszy wgląd w środowisko. Dowiedz się, jak [wysyłać strumieniowo dzienniki do centrum zdarzeń](tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
-## <a name="send-logs-to-log-analytics"></a>Wysyłanie dzienników do usługi Log Analytics
+## <a name="send-logs-to-azure-monitor-logs"></a>Wysyłanie dzienników do dzienników usługi Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to rozwiązanie, które konsoliduje dane monitorowania z różnych źródeł i udostępnia język zapytań oraz aparat analityczny, który zapewnia wgląd w działanie aplikacji i zasobów. Wysyłając dzienniki aktywności usługi Azure AD do usługi Log Analytics, możesz szybko pobierać i monitorować zebrane dane oraz wysyłać dotyczące ich alerty. Dowiedz się, jak [wysyłać dane do usługi Log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
+[Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to rozwiązanie, które konsoliduje dane monitorowania z różnych źródeł oraz udostępnia język zapytań i aparat analityczny, które zapewniają wgląd w działanie aplikacji i zasobów. Wysyłając dzienniki aktywności usługi Azure AD do dzienników usługi Azure Monitor, możesz szybko pobierać i monitorować zebrane dane oraz wysyłać dotyczące ich alerty. Dowiedz się, jak [wysyłać dane do dzienników usługi Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md).
 
 Możesz także zainstalować wstępnie utworzone widoki dla dzienników aktywności usługi Azure AD, aby monitorować typowe scenariusze obejmujące logowania i zdarzenia inspekcji. Dowiedz się, jak [zainstalować widoki usługi Log Analytics dla dzienników aktywności usługi Azure AD i używać ich](howto-install-use-log-analytics-views.md).
 
@@ -67,4 +67,4 @@ Możesz także zainstalować wstępnie utworzone widoki dla dzienników aktywno�
 
 * [Dzienniki aktywności w usłudze Azure Monitor](concept-activity-logs-azure-monitor.md)
 * [Przesyłanie strumieniowe dzienników do centrum zdarzeń](tutorial-azure-monitor-stream-logs-to-event-hub.md)
-* [Wysyłanie dzienników do usługi Log Analytics](howto-integrate-activity-logs-with-log-analytics.md)
+* [Wysyłanie dzienników do dzienników usługi Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

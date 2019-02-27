@@ -1,6 +1,6 @@
 ---
 title: Przykład — uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
-description: Te przykładowe zasady uniemożliwiają wdrażanie sieci wirtualnych przy użyciu tabeli tras zdefiniowanej przez użytkownika.
+description: Te przykładowe definicje zasad uniemożliwiają wdrażanie sieci wirtualnych przy użyciu tabeli tras zdefiniowanej przez użytkownika.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: db0e7ec5d684f71b3a8426cdf5256adaa8467383
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6155477f7ff70544032e4890cae215fb68523a11
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242876"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341423"
 ---
-# <a name="no-user-defined-route-table"></a>Uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
+# <a name="sample---no-user-defined-route-table"></a>Przykład — uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
 
 Ta zasada uniemożliwia wdrażanie sieci wirtualnych przy użyciu tabeli tras zdefiniowanej przez użytkownika.
 

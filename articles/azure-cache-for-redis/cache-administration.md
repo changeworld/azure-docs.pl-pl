@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: d36f2851f9c4f30725c8f8057d61970b6560009e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 81ef669b62c822e10d8bf5c45e58dd769c5dbeb9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313215"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888393"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Administrowanie pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [ponowny rozruch](#reboot) i [Planowanie aktualizacji](#schedule-updates) dla pamięci podręcznej Azure dla wystąpienia usługi Redis.
@@ -72,7 +72,7 @@ Tak, jeśli ponownym uruchomieniu pamięci podręcznej zostaną wyczyszczone wsz
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Spowoduje utratę danych z przepełnieniu pamięci podręcznej Jeśli teraz uruchomię ponowny rozruch?
-Jeśli ponowne uruchomienie obu **wzorzec** i **podrzędny** węzłów, wszystkich danych w pamięci podręcznej (lub w tym fragmencie, jeśli używasz cache w warstwie premium przy włączonym klastrowaniu) zostaną utracone. Jeśli skonfigurowano [funkcji trwałości danych](cache-how-to-premium-persistence.md), najbardziej ostatniej kopii zapasowej zostaną przywrócone, gdy pamięć podręczna powróci do trybu online, ale wszelkie operacje zapisu pamięci podręcznej, które wystąpiły po utworzenia kopii zapasowej zostaną utracone.
+Jeśli ponowne uruchomienie obu **wzorzec** i **podrzędny** węzłów, wszystkich danych w pamięci podręcznej (lub w tym fragmencie, jeśli używasz cache w warstwie premium przy włączonym klastrowaniu) mogą zostać utracone, ale nie jest to gwarantowane albo. Jeśli skonfigurowano [funkcji trwałości danych](cache-how-to-premium-persistence.md), najbardziej ostatniej kopii zapasowej zostaną przywrócone, gdy pamięć podręczna powróci do trybu online, ale wszelkie operacje zapisu pamięci podręcznej, które wystąpiły po utworzenia kopii zapasowej zostaną utracone.
 
 Jeśli ponowne uruchomienie tylko jeden z węzłów, dane nie są zwykle utracone, ale nadal może być. Na przykład, jeśli ponownego uruchomienia węzła głównego i zapis w pamięci podręcznej jest w toku, dane z pamięci podręcznej zapisu jest utracone. Inny scenariusz utraty danych będzie, jeśli ponowne uruchomienie jednego węzła, a inny węzeł stanie się przestaną działać z powodu błędu w tym samym czasie. Aby uzyskać więcej informacji na temat możliwych przyczyn utraty danych, zobacz [co się stało z moimi danymi w usłudze Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 

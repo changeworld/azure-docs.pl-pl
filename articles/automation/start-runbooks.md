@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fd2feb8bbd54e7aefab357b0b2ba4209aa29e09
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4c3c936a3d547389de3681b4f82f329c4978742d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418640"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886625"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Uruchamianie elementu runbook w usłudze Azure Automation
 
@@ -22,7 +22,7 @@ Poniższa tabela pozwala określić metodę, aby uruchomić element runbook w us
 
 | **Metoda** | **Właściwości** |
 | --- | --- |
-| [Azure Portal](#starting-a-runbook-with-the-azure-portal) |<li>Najprostszą metodą przy użyciu interfejsu użytkownika interaktywnego.<br> <li>Formularz, aby podać wartości parametrów proste.<br> <li>Łatwo śledzić stan zadania.<br> <li>Dostęp uwierzytelniony przy użyciu konta platformy Azure w. |
+| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Najprostszą metodą przy użyciu interfejsu użytkownika interaktywnego.<br> <li>Formularz, aby podać wartości parametrów proste.<br> <li>Łatwo śledzić stan zadania.<br> <li>Dostęp uwierzytelniony przy użyciu konta platformy Azure w. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell.<br> <li>Mogą być dołączane zautomatyzowane rozwiązanie z wielu kroków.<br> <li>Żądanie jest uwierzytelniane za pomocą certyfikatu lub użytkownika OAuth głównej / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone.<br> <li>Śledzić stan zadania.<br> <li>Oprogramowanie klienckie wymagane do obsługi poleceń cmdlet programu PowerShell. |
 | [Interfejs API usługi Azure Automation](/rest/api/automation/) |<li>Metoda najbardziej elastyczny, ale także większość złożonej.<br> <li>Wywoływanie z kodu niestandardowego, który może zgłaszać żądania HTTP.<br> <li>Żądanie uwierzytelnić się za pomocą certyfikatu lub użytkownika Oauth głównej / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone. *Jeśli wykonywane jest połączenie runbook języka Python przy użyciu interfejsu API, trzeba go serializować ładunek JSON.*<br> <li>Śledzić stan zadania. |
 | [Elementy Webhook](automation-webhooks.md) |<li>Uruchom element runbook z poziomu pojedynczego żądania HTTP.<br> <li>Uwierzytelniane przy użyciu tokenu zabezpieczającego w adresie URL.<br> <li>Klient nie może zastąpić wartości parametrów, które określono podczas tworzenia elementu webhook. Element Runbook może definiować pojedynczy parametr, który jest wypełniana przy użyciu szczegółów żądania HTTP.<br> <li>Brak możliwości, aby śledzić stan zadania przy użyciu adresu URL elementu webhook. |

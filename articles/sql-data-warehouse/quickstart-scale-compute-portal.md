@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
-ms.reviewer: igorstan
-ms.openlocfilehash: 31ec1537a0075f486130a3bcf1017d35b47e499d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.reviewer: jrasnick
+ms.openlocfilehash: 2e3bb00cee679671ed382ee46690fc4dff8bddfb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463654"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453889"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse w witrynie Azure Portal
 
@@ -31,9 +31,12 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 Skalować można istniejący magazyn danych lub można wykonać czynności opisane w przewodniku [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.  W tym przewodniku Szybki start jest skalowana baza danych **mySampleDataWarehouse**.
 
+>[!Note]
+>Używany magazyn danych musi być w trybie online, aby można było przeprowadzić skalowanie. 
+
 ## <a name="scale-compute"></a>Skalowanie zasobów obliczeniowych
 
-W usłudze SQL Data Warehouse można zwiększyć lub zmniejszyć ilość zasobów obliczeniowych przez odpowiednie dostosowanie jednostek magazynu danych. Postępując według czynności opisanych w artykule [Tworzenie i łączenie — portal](create-data-warehouse-portal.md) utworzono bazę danych **mySampleDataWarehouse** z 400 jednostkami DWU. Poniższe kroki umożliwiają dostosowanie liczby jednostek DWU dla bazy danych **mySampleDataWarehouse**.
+Zasoby obliczeniowe usługi SQL Data Warehouse można skalować, zmniejszając lub zwiększając liczbę jednostek magazynu danych. W ramach przewodnika Szybki start tworzenia i łączenia za pomocą portalu utworzono bazę danych **mySampleDataWarehouse** i zainicjowano ją z 400 jednostkami DWU. Poniższe kroki umożliwiają dostosowanie liczby jednostek DWU dla bazy danych **mySampleDataWarehouse**.
 
 Aby zmienić liczbę jednostek magazynu danych:
 

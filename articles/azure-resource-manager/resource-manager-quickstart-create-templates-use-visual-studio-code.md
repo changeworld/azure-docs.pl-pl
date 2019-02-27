@@ -10,25 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/14/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235397"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270253"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak używać kodu programu Visual Studio i rozszerzenia narzędzi usługi Azure Resource Manager do tworzenia i edytowania szablonów usługi Azure Resource Manager. Szablony usługi Resource Manager można tworzyć w programie Visual Studio Code bez korzystania z rozszerzenia, ale rozszerzenie udostępnia opcje autouzupełniania, które upraszczają proces tworzenia szablonu. Aby zrozumieć pojęcia związane z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Usługa Azure Resource Manager — omówienie](resource-group-overview.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,6 +50,7 @@ Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard sto
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
 4. Wybierz pozycję **File (Plik)**>**Save As (Zapisz jako)**, aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
 
@@ -94,6 +91,9 @@ Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Co
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start użyjesz usługi Azure Cloud Shell. Cloud Shell to aplikacja internetowa, która nie wymaga żadnej konfiguracji. Obsługuje ona zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 1. Logowanie do [usługi Azure Cloud Shell](https://shell.azure.com)
 
@@ -148,7 +148,10 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     
     ---
 
-    Zaktualizuj nazwę pliku szablonu, jeśli plik zapisano pod nazwą inną niż **azuredeploy.json**.
+    > [!NOTE]
+    > Występuje problem z operacją we/wy na pliku podczas używania programu Azure PowerShell w usłudze Cloud Shell.  Komunikat o błędzie: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Nie można pobrać parametrów dynamicznych dla polecenia cmdlet. Nie można odnaleźć ścieżki „Azure:/azuredeploy.json”, ponieważ nie istnieje).  Tymczasowym obejściem jest niedołączanie przełącznika **-TemplateFile** w poleceniu `New-AzResourceGroupDeploy`. Polecenie wyświetli monit o wprowadzenie nazwy pliku.
+
+    Zaktualizuj nazwę pliku szablonu, jeśli plik zapisano pod nazwą inną niż **azuredeploy.json**. 
 
     Poniższy zrzut ekranu przedstawia przykładowe wdrożenie:
 

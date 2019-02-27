@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800948"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341958"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -73,11 +73,11 @@ Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej gru
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Do aplikacji zarządzanej możesz zastosować [zasady Azure Policy](../azure-policy/azure-policy-introduction.md). Zasady są stosowane, aby zapewnić zgodność wdrożonych wystąpień aplikacji zarządzanych z wymaganiami dotyczącymi danych i zabezpieczeń. Jeśli aplikacja wchodzi w interakcje z danymi poufnymi, upewnij się, że oceniono sposoby ochrony tych danych. Jeśli na przykład aplikacja wchodzi w interakcje z danymi usługi Office 365, zastosuj zasady zapewniające włączenie szyfrowania danych.
+Do aplikacji zarządzanej możesz zastosować [zasady Azure Policy](../governance/policy/overview.md). Zasady są stosowane, aby zapewnić zgodność wdrożonych wystąpień aplikacji zarządzanych z wymaganiami dotyczącymi danych i zabezpieczeń. Jeśli aplikacja wchodzi w interakcje z danymi poufnymi, upewnij się, że oceniono sposoby ochrony tych danych. Jeśli na przykład aplikacja wchodzi w interakcje z danymi usługi Office 365, zastosuj zasady zapewniające włączenie szyfrowania danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym artykule omówiono korzyści z używania aplikacji zarządzanych. Przejdź do następnego artykułu, aby utworzyć definicję aplikacji zarządzanej.
 
 > [!div class="nextstepaction"]
-> [Szybki start: publikowanie definicji aplikacji zarządzanej platformy Azure](publish-managed-app-definition-quickstart.md)
+> [Szybki start: Publikowanie definicji aplikacji zarządzanej platformy Azure](publish-managed-app-definition-quickstart.md)
