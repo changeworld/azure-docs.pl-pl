@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: e6d16c31b8975036202fe77906e2d729391b5c59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038079"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983595"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Dostrajanie wydajności zapytań za pomocą usługi Azure Cosmos DB
 
@@ -215,6 +215,8 @@ Sekcję metryk wykonywania zapytania wyjaśnia, jak pobrać czas wykonywania zap
 
 ### <a name="indexing-policy"></a>Zasady indeksowania
 Zobacz [konfigurowania zasad indeksowania](index-policy.md) indeksowania ścieżek, typów i trybów i ich wpływ na wykonanie zapytania. Domyślnie zasady indeksowania używa skrótu indeksowania dla ciągów, która obowiązuje dla zapytań o równość, ale nie dla zakresu zapytania/order przez zapytania. Jeśli potrzebujesz zapytań o zakres dla ciągów, zaleca się określenie zakresu typu indeksu dla wszystkich ciągów. 
+
+Domyślnie usługa Azure Cosmos DB zostaną zastosowane, automatyczne indeksowanie wszystkich danych. Dla wysoko wydajnych Wstaw scenariuszy, należy rozważyć wykluczenie ścieżek, ponieważ spowoduje to zmniejszenie kosztów jednostek RU dla każdej operacji wstawiania. 
 
 ## <a name="query-execution-metrics"></a>Metryk wykonywania zapytania
 Możesz uzyskać szczegółowych metryk dotyczących wykonywania zapytań, przekazując opcjonalny `x-ms-documentdb-populatequerymetrics` nagłówka (`FeedOptions.PopulateQueryMetrics` w zestawie SDK platformy .NET). Wartość zwrócona w `x-ms-documentdb-query-metrics` ma następujące pary klucz-wartość przeznaczone do zaawansowanego rozwiązywania problemów dotyczących wykonywania zapytania. 
