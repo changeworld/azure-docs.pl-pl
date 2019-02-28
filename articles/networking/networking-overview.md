@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 56e203a212a4e0e81922336f72fd58ef3cb7dc64
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537549"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983510"
 ---
 # <a name="azure-networking"></a>Sieci platformy Azure
 
@@ -136,7 +136,7 @@ Platforma Azure utworzy domyślną tabel tras, które umożliwiają zasobów pod
 
 Platforma Azure udostępnia następujące narzędzia w celu monitorowania sieci i zarządzanie nią:
 - **Dzienniki aktywności:** Wszystkie zasoby platformy Azure mają dzienników aktywności, które zawierają informacje o operacjach przeprowadzeniu stanu operacji i kto zainicjował operację. Aby dowiedzieć się więcej na temat dzienników aktywności, przeczytaj [Przegląd Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
-- **Dzienniki diagnostyczne:** Zdarzenia okresowe i spontanicznej są utworzone przez zasoby sieciowe i rejestrowane w ramach kont usługi Azure storage, wysyłane do usługi Azure Event Hub lub wysyłane do usługi Azure Log Analytics. Dzienniki diagnostyczne zawierają szczegółowe informacje o kondycji zasobu. Dzienniki diagnostyczne są dostarczane dla modułu równoważenia obciążenia (dostępnym z Internetu), sieciowe grupy zabezpieczeń, trasy i Application Gateway. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, przeczytaj [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
+- **Dzienniki diagnostyczne:** Okresowe i spontanicznej zdarzeń są tworzone przez zasobów sieciowych i rejestrowane w ramach kont magazynu platformy Azure wysyłane do usługi Azure Event Hub lub wysyłane do usługi Azure Monitor dzienniki. Dzienniki diagnostyczne zawierają szczegółowe informacje o kondycji zasobu. Dzienniki diagnostyczne są dostarczane dla modułu równoważenia obciążenia (dostępnym z Internetu), sieciowe grupy zabezpieczeń, trasy i Application Gateway. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, przeczytaj [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Metryki:** Metryki są pomiarów wydajności i liczniki zebrane w danym okresie czasu na zasobach. Metryki może służyć do wyzwolenia alertów na podstawie progów. Obecnie metryki są dostępne w usłudze Application Gateway. Aby dowiedzieć się więcej o metrykach, przeczytaj [Przegląd metryk](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Rozwiązywanie problemów:** Informacje o rozwiązywaniu problemów są dostępne bezpośrednio w witrynie Azure portal. Informacje te pomagają zdiagnozować typowe problemy przy użyciu usługi ExpressRoute, bramy sieci VPN, usługa Application Gateway, dzienniki zabezpieczeń sieci, trasy, DNS, moduł równoważenia obciążenia i usługi Traffic Manager.
 - **Kontrola dostępu oparta na rolach (RBAC):** Formant, który można tworzyć i zarządzać zasobami sieciowymi przy użyciu kontroli dostępu opartej na rolach (RBAC). Dowiedz się więcej o ROLACH, czytając [wprowadzenie RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu. 
@@ -150,7 +150,7 @@ Platforma Azure udostępnia następujące narzędzia w celu monitorowania sieci 
 Możesz wdrożyć i skonfigurować zasoby sieciowe platformy Azure z dowolnymi z następujących narzędzi:
 
 - **Witryna Azure portal:** Graficzny interfejs użytkownika, który działa w przeglądarce. Otwórz [portal Azure](http://portal.azure.com).
-- **Program Azure PowerShell:** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów Windows. Więcej informacji na temat programu Azure PowerShell, czytając [Omówienie programu Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
+- **Azure PowerShell:** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów Windows. Więcej informacji na temat programu Azure PowerShell, czytając [Omówienie programu Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Interfejs wiersza polecenia platformy Azure (CLI):** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów z systemem Linux, macOS lub Windows. Więcej informacji na temat interfejsu wiersza polecenia platformy Azure, czytając [wiersza polecenia platformy Azure — omówienie](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Szablony usługi Azure Resource Manager:** Plik (w formacie JSON), który definiuje infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. Aby dowiedzieć się więcej na temat tworzenia szablonów, przeczytaj [najlepsze rozwiązania dotyczące tworzenia szablonów](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu. Szablony można wdrażać za pomocą witryny Azure portal, interfejsu wiersza polecenia lub programu PowerShell. Aby rozpocząć pracę już teraz za pomocą szablonów, Wdróż jedną z wielu wstępnie skonfigurowanych szablonów w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=network) biblioteki. 
 

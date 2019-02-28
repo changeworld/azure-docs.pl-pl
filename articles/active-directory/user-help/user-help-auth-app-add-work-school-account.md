@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad6dda9e41f1ea87439ffc315f020d4e3566e0c6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 231f3c44344f4119bab6e1efb5546e6fded0c784
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453549"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960627"
 ---
 # <a name="add-your-work-or-school-account"></a>Dodaj swoje konto służbowe
 Jeśli Twoja organizacja używa weryfikacji two-Factor Authentication, można ustawić konto służbowe, korzystać z aplikacji Microsoft Authenticator jako jednej z metod weryfikacji.
@@ -30,7 +30,7 @@ Jeśli Twoja organizacja używa weryfikacji two-Factor Authentication, można us
 1. Na komputerze, przejdź do [dodatkowej weryfikacji zabezpieczeń](https://aka.ms/mfasetup) strony.
 
     >[!Note]
-    >Jeśli nie widzisz **dodatkowej weryfikacji zabezpieczeń** strony, jest możliwe, że administrator wyłączył zabezpieczeń środowiska informacje (wersja zapoznawcza). Jeśli tak jest rzeczywiście powinien postępuj zgodnie z instrukcjami w [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](security-info-setup-auth-app.md) sekcji. Jeśli nie jest to przypadek, konieczne będzie skontaktuj się z działem pomocy technicznej w Twojej organizacji, aby uzyskać pomoc. Aby uzyskać więcej informacji na temat informacji zabezpieczających, zobacz [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
+    >Jeśli nie widzisz **dodatkowej weryfikacji zabezpieczeń** strony, jest możliwe, że administrator wyłączył zabezpieczeń środowiska informacje (wersja zapoznawcza). Jeśli tak jest rzeczywiście powinien postępuj zgodnie z instrukcjami w [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](security-info-setup-auth-app.md) sekcji. Jeśli nie jest to przypadek, konieczne będzie skontaktuj się z działem pomocy technicznej w Twojej organizacji, aby uzyskać pomoc. Aby uzyskać więcej informacji na temat informacji zabezpieczających, zobacz [zabezpieczeniami informacji (wersja zapoznawcza) — omówienie](user-help-security-info-overview.md).
 
 2. Zaznacz pole wyboru obok pozycji **aplikacji Authenticator**, a następnie wybierz pozycję **Konfiguruj**.
 

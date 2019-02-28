@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5458c7e74728952df89380a3649c6ed60eb6ea9a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0ec047f38596bed4d3f0bc5520dc9c7fc18b4c24
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749767"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585240"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 
@@ -248,7 +248,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłu
         datasource.add(routeLine, 0);
     });
     ```
-    Powyższy fragment kodu wysyła zapytanie do usługi trasowania Azure Maps za pośrednictwem metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) i analizuje odpowiedź w formacie GeoJSON przy użyciu metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest). Następnie tworzona jest tablica współrzędnych dla zwróconej trasy, która jest dodawana do źródła danych. Dodawany jest również do niej indeks o wartości 0, aby się upewnić, że będzie ona renderowana przed wszystkimi innymi liniami w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Do linii trasy dla samochodów ciężarowych są dodawane dwie właściwości — kolor pociągnięcia w odcieniach niebieskiego i szerokość pociągnięcia o wartości 9 pikseli. 
+    Powyższy fragment kodu wysyła zapytanie do usługi trasowania Azure Maps za pośrednictwem metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) i analizuje odpowiedź w formacie GeoJSON przy użyciu metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest). Następnie tworzona jest tablica współrzędnych dla zwróconej trasy, która jest dodawana do źródła danych. Dodawany jest również do niej indeks o wartości 0, aby się upewnić, że będzie ona renderowana przed wszystkimi innymi liniami w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Do linii trasy dla samochodów ciężarowych są dodawane dwie właściwości — kolor pociągnięcia w odcieniach niebieskiego i szerokość pociągnięcia o wartości 9 pikseli. 
 
 4. Dodaj następujący kod JavaScript, który umożliwia wysłanie żądania dotyczącego trasy dla samochodu osobowego i wyświetlenie wyników:
 
@@ -267,7 +267,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłu
         datasource.add(routeLine);
     });
     ```
-    Ten fragment kodu korzysta z tego samego zapytania dotyczącego trasy dla samochodu ciężarowego na potrzeby samochodu osobowego. Następnie wysyła zapytanie do usługi trasowania Azure Maps za pośrednictwem metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) i analizuje odpowiedź w formacie GeoJSON przy użyciu metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest). W dalszej kolejności tworzy tablicę współrzędnych dla zwróconej trasy i dodaje ją do źródła danych. Do linii trasy dla samochodów osobowych są dodawane dwie właściwości — kolor pociągnięcia w odcieniach purpurowego i szerokość pociągnięcia o wartości 5 pikseli. 
+    Ten fragment kodu korzysta z tego samego zapytania dotyczącego trasy dla samochodu ciężarowego na potrzeby samochodu osobowego. Następnie wysyła zapytanie do usługi trasowania Azure Maps za pośrednictwem metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) i analizuje odpowiedź w formacie GeoJSON przy użyciu metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest). W dalszej kolejności tworzy tablicę współrzędnych dla zwróconej trasy i dodaje ją do źródła danych. Do linii trasy dla samochodów osobowych są dodawane dwie właściwości — kolor pociągnięcia w odcieniach purpurowego i szerokość pociągnięcia o wartości 5 pikseli. 
 
 5. Zapisz plik **MapTruckRoute.html** i odśwież stronę w przeglądarce, aby wyświetlić wynik. W przypadku pomyślnego połączenia z interfejsami API usługi Maps powinna pojawić się mapa podobna do poniższej.
 

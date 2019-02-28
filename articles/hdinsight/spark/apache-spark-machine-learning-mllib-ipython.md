@@ -8,21 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: b5d1908201de803ae065403600fc3478e604eedd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653717"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959106"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Biblioteka MLlib platformy Spark Apache umożliwia tworzenie aplikacji uczenia maszynowego i analizować zestaw danych
 
 Dowiedz się, jak używać platformy Apache Spark [MLlib](https://spark.apache.org/mllib/) do tworzenia aplikacji w celu proste analizy predykcyjnej na zestaw open uczenia maszynowego. Z platforma Spark wbudowanych dotyczącym uczenia maszynowego bibliotek w tym przykładzie użyto *klasyfikacji* za pomocą regresji logistycznej. 
-
-> [!TIP]  
-> W tym przykładzie jest również dostępny jako [notesu programu Jupyter](https://jupyter.org/) w klastrze Spark (Linux), który zostanie utworzony w HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z samego notesu. Aby wykonać kroki samouczka z w ramach Notes, utworzyć klaster platformy Spark i uruchamiania notesu programu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Następnie należy uruchomić Notes **Spark Machine Learning — analizy predykcyjnej na danych inspekcji żywności za pomocą MLlib.ipynb** w obszarze **Python** folderu.
 
 Biblioteka MLlib jest podstawowej biblioteki platformy Spark, który udostępnia wiele narzędzi przydatne dla zadania uczenia maszynowego, w tym narzędzia, które są odpowiednie na potrzeby:
 
@@ -49,7 +46,7 @@ W poniższych krokach utworzysz model, aby zobaczyć, co jest potrzebne do powod
 
 1. Utwórz notes Jupyter przy użyciu jądra PySpark. Aby uzyskać instrukcje, zobacz [Tworzenie notesu Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-2. Zaimportuj typy wymagane dla tej aplikacji. Skopiuj i wklej następujący kod do pustej komórki, a następnie naciśnij **KOSZULI + ENTER**.
+2. Zaimportuj typy wymagane dla tej aplikacji. Skopiuj i wklej następujący kod do pustej komórki, a następnie naciśnij **SHIFT + ENTER**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -173,7 +170,7 @@ Zacznijmy od wolumenu zawiera zestaw danych.
 
     ```PySpark
     %%sql -o countResultsdf
-    SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
+    SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
     `%%sql` Magic następuje `-o countResultsdf` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze programu Jupyter (zazwyczaj węzła głównego klastra). Dane wyjściowe są utrwalane jako [Pandas](https://pandas.pydata.org/) ramka danych o określonej nazwie **countResultsdf**. Aby uzyskać więcej informacji na temat `%%sql` magic i innych poleceń magicznych dostępnych za pośrednictwem jądra PySpark, zobacz [jądra dostępne dla notesu Jupyter w klastrze z klastrami Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
@@ -200,14 +197,6 @@ Zacznijmy od wolumenu zawiera zestaw danych.
     Dane wyjściowe to:
 
     ![Wyjście aplikacji uczenia maszynowego platformy Spark - wykres kołowy z pięciu wyników inspekcji distinct](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "platformy Spark usługi machine learning wynik w danych wyjściowych")
-
-    Istnieje 5 unikatowe wyniki, które mogą mieć inspekcji:
-
-    - Firmy, które nie znajdują się
-    - Niepowodzenie
-    - Powodzenie
-    - Przekaż z warunkami
-    - Działalność
 
     Przewidywanie wyników inspekcji żywności, konieczne jest opracowanie modelu, w oparciu o naruszenia. Ponieważ regresji logistycznej jest metoda klasyfikacji binarnej, warto grupować dane wynikowe w dwie kategorie: **Niepowodzenie** i **przekazać**:
 
@@ -272,7 +261,7 @@ Możesz skorzystać z modelu utworzonego wcześniej do *przewidzieć* co ma być
 1. Uruchom poniższy kod, aby utworzyć nowy ramkę danych **predictionsDf** zawierający prognoz wygenerowanych przez model. Fragment kodu tworzy również tabeli tymczasowej o nazwie **prognozy** oparte na ramki danych.
 
     ```PySpark
-    testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+    testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
     testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -284,10 +273,6 @@ Możesz skorzystać z modelu utworzonego wcześniej do *przewidzieć* co ma być
     Powinny pojawić się dane wyjściowe podobne do następujących:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     ['id',
         'name',
         'results',
@@ -321,10 +306,6 @@ Możesz skorzystać z modelu utworzonego wcześniej do *przewidzieć* co ma być
     Dane wyjściowe wyglądają następująco:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
@@ -377,7 +358,7 @@ Teraz można utworzyć wizualizację końcowego ułatwiające przyczyny o wyniki
     Na tym wykresie "pozytywny" odnosi się do kontroli żywności nie powiodło się, gdy wynik ujemny oznacza sukces inspekcji.
 
 ## <a name="shut-down-the-notebook"></a>Zamknij Notes
-Po zakończeniu działania aplikacji, należy zamknąć notes, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zamknięcie i zamknięcie notesu.
+Po zakończeniu działania aplikacji, należy zamknąć notes, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie wybierz pozycję **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zamknięcie i zamknięcie notesu.
 
 ## <a name="seealso"></a>Zobacz też
 * [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)

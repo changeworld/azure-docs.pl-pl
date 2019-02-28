@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 58b97dd2df29a829b843d20c14cdb15644357653
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b4d8214608e8193172da078fc352c66145253ada
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053708"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878969"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -45,7 +45,7 @@ Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usług
 
 2. Wybierz żądane **źródło** oraz odpowiednie opcje w polach **Team project** (Projekt zespołowy), **Repository** (Repozytorium) i **Default branch for manual and scheduled builds** (Domyślna gałąź dla kompilacji ręcznych i zaplanowanych). Po wybraniu wymaganych opcji wybierz przycisk **Continue** (Kontynuuj)
 
-   ![Wybieranie projektu zespołowego, repozytorium i gałęzi dla potoku kompilacji ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   ![Wybieranie projektu zespołowego, repozytorium i gałęzi dla potoku kompilacji](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. Na koniec wybierz odpowiedni szablon dla potoku kompilacji. Do celów tego samouczka wybierzemy szablon **ASP.NET**. 
 

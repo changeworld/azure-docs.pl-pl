@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: c936d7946398183f0b0aac025503bb172bc147af
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bdfeb41c7881bfbd577cdf1a9190617e09979a7f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101012"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961027"
 ---
 # <a name="monitor-and-tune"></a>Monitorowanie i dostrajanie
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne opcje monitorowania zapewniają wgląd w zachowanie serwera.
@@ -40,7 +40,7 @@ Te metryki są dostępne dla usługi Azure Database for PostgreSQL:
 |backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Wielkość wykorzystanego magazynu kopii zapasowych.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
-Można włączyć rejestrowanie na serwerze. Te dzienniki są również dostępne za pośrednictwem dzienników diagnostycznych platformy Azure w [usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), usługa Event Hubs i konta magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
+Można włączyć rejestrowanie na serwerze. Te dzienniki są również dostępne za pośrednictwem dzienników diagnostycznych platformy Azure w [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md), usługa Event Hubs i konta magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
 
 ## <a name="query-store"></a>Magazyn zapytań
 [Query Store](concepts-query-store.md) to funkcja publicznej wersji zapoznawczej, która śledzi zapytania wydajność w tym czasie statystyki czasu wykonywania zapytań i poczekaj zdarzenia. Ta funkcja będzie nadal występować kwerendy informacji o wydajności środowiska uruchomieniowego w systemowej bazie danych o nazwie **azure_sys** w ramach schematu query_store. Można kontrolować zbieranie i przechowywanie danych za pośrednictwem różnych konfiguracji pokrętła.

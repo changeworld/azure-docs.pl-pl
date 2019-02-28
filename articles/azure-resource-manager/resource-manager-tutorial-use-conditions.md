@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 57e71261bad950b409da7a58b53712d84dc1b3df
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268893"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815862"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: Używanie warunków w szablonach usługi Azure Resource Manager
 
@@ -150,11 +150,8 @@ New-AzResourceGroupDeployment `
     -dnsLabelPrefix $dnsLabelPrefix `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
-
-> [!NOTE]
-> Występuje problem z operacją we/wy na pliku podczas używania programu Azure PowerShell w usłudze Cloud Shell.  Komunikat o błędzie: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Nie można pobrać parametrów dynamicznych dla polecenia cmdlet. Nie można odnaleźć ścieżki „Azure:/azuredeploy.json”, ponieważ nie istnieje).  Tymczasowym obejściem jest niedołączanie przełącznika **-TemplateFile** w poleceniu `New-AzResourceGroupDeploy`. Polecenie wyświetli monit o wprowadzenie nazwy pliku.
 
 > [!NOTE]
 > Wdrożenie zakończy się niepowodzeniem, jeśli parametr **newOrExisting** będzie mieć wartość **new**, ale konto magazynu o podanej nazwie będzie już istnieć.

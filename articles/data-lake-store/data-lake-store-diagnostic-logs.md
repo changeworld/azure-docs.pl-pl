@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a0bb320abb31b38461102e0e9a062ea0c2af51fb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966079"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959582"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Storage Gen1
 Dowiedz się włączyć diagnostyczne dla Twojego konta usługi Azure Data Lake Storage Gen1 i jak wyświetlić dzienniki zebrane dla swojego konta.
@@ -46,7 +46,7 @@ Organizacje mogą włączyć rejestrowania diagnostycznego dla swojego konta us�
         
         * Wybierz opcję, aby **Stream do usługi event hub** przesyłanie strumieniowe dzienników danych do usługi Azure Event Hub. Prawdopodobnie użyjesz tej opcji w przypadku potoku przetwarzania transmisji dla klientów w celu analizowania przychodzącej dzienników w czasie rzeczywistym. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla usługi Azure Event Hub, którego chcesz użyć.
 
-        * Wybierz opcję, aby **wysyłanie do usługi Log Analytics** analizować dane dzienników wygenerowane za pomocą usługi Azure Log Analytics. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla obszaru roboczego usługi Log Analytics zostanie wykorzystany wykonaj analizę dziennika. Zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics.
+        * Wybierz opcję, aby **wysyłanie do usługi Log Analytics** analizować dane dzienników wygenerowane za pomocą usługi Azure Monitor. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla obszaru roboczego usługi Log Analytics zostanie wykorzystany wykonaj analizę dziennika. Zobacz [wyświetlanie i analizowanie zebranych za pomocą usługi Azure Monitor dzienniki wyszukiwania danych](../azure-monitor/learn/tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Azure Monitor dzienniki.
      
    * Określ, czy chcesz pobrać dzienniki inspekcji, dzienniki żądania lub obu.
    * Określ liczbę dni, dla których dane muszą zostać zachowane. Przechowywanie ma zastosowanie tylko jeśli używasz konta magazynu platformy Azure pod kątem archiwizowania danych dziennika.
@@ -115,25 +115,25 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
 #### <a name="request-log-schema"></a>Schemat dziennika żądania
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| time |Ciąg |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |Ciąg |Identyfikator zasobu, która trwała operacja umieść na |
-| category |Ciąg |Kategoria dziennika. Na przykład **żądań**. |
-| operationName |Ciąg |Nazwa operacji, który jest zalogowany. Na przykład getfilestatus. |
-| resultType |Ciąg |Stan operacji, na przykład 200. |
-| callerIpAddress |Ciąg |Adres IP klienta wysyłającego żądanie |
-| correlationId |Ciąg |Identyfikator dziennika, która może być używane do grupowania zbiór wpisów dziennika powiązane |
+| time |String |Znacznik czasu (w formacie UTC) dziennika |
+| resourceId |String |Identyfikator zasobu, która trwała operacja umieść na |
+| category |String |Kategoria dziennika. Na przykład **żądań**. |
+| operationName |String |Nazwa operacji, który jest zalogowany. Na przykład getfilestatus. |
+| resultType |String |Stan operacji, na przykład 200. |
+| callerIpAddress |String |Adres IP klienta wysyłającego żądanie |
+| correlationId |String |Identyfikator dziennika, która może być używane do grupowania zbiór wpisów dziennika powiązane |
 | identity |Obiekt |Tożsamość, która wygenerowała dziennika |
 | properties |JSON |Poniżej znajdują się szczegółowe informacje |
 
 #### <a name="request-log-properties-schema"></a>Schemat właściwości dziennika żądania
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| HttpMethod |Ciąg |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
-| Ścieżka |Ciąg |Ścieżka operacja została wykonana w |
+| HttpMethod |String |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
+| Ścieżka |String |Ścieżka operacja została wykonana w |
 | RequestContentLength |int |Długość zawartości żądania HTTP |
-| ClientRequestId |Ciąg |Identyfikator, który unikatowo identyfikuje tego żądania |
-| Godzina rozpoczęcia |Ciąg |Czas, w którym serwer odebrał żądanie |
-| Godzina zakończenia |Ciąg |Czas wysłanego przez serwer odpowiedzi |
+| ClientRequestId |String |Identyfikator, który unikatowo identyfikuje tego żądania |
+| Godzina rozpoczęcia |String |Czas, w którym serwer odebrał żądanie |
+| Godzina zakończenia |String |Czas wysłanego przez serwer odpowiedzi |
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika
@@ -162,23 +162,23 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 #### <a name="audit-log-schema"></a>Schemat dziennika inspekcji
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| time |Ciąg |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |Ciąg |Identyfikator zasobu, która trwała operacja umieść na |
-| category |Ciąg |Kategoria dziennika. Na przykład **inspekcji**. |
-| operationName |Ciąg |Nazwa operacji, który jest zalogowany. Na przykład getfilestatus. |
-| resultType |Ciąg |Stan operacji, na przykład 200. |
-| resultSignature |Ciąg |Więcej informacji na temat operacji. |
-| correlationId |Ciąg |Identyfikator dziennika, która może być używane do grupowania zbiór wpisów dziennika powiązane |
+| time |String |Znacznik czasu (w formacie UTC) dziennika |
+| resourceId |String |Identyfikator zasobu, która trwała operacja umieść na |
+| category |String |Kategoria dziennika. Na przykład **inspekcji**. |
+| operationName |String |Nazwa operacji, który jest zalogowany. Na przykład getfilestatus. |
+| resultType |String |Stan operacji, na przykład 200. |
+| resultSignature |String |Więcej informacji na temat operacji. |
+| correlationId |String |Identyfikator dziennika, która może być używane do grupowania zbiór wpisów dziennika powiązane |
 | identity |Obiekt |Tożsamość, która wygenerowała dziennika |
 | properties |JSON |Poniżej znajdują się szczegółowe informacje |
 
 #### <a name="audit-log-properties-schema"></a>Schemat właściwości dziennika inspekcji
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| StreamName |Ciąg |Ścieżka operacja została wykonana w |
+| StreamName |String |Ścieżka operacja została wykonana w |
 
 ## <a name="samples-to-process-the-log-data"></a>Przykłady, aby przetwarzać dane dziennika
-Podczas wysyłania dzienników z usługi Azure Data Lake Storage Gen1 do usługi Azure Log Analytics (zobacz [wyświetlanie i analizowanie danych zebranych przez wyszukiwanie w dziennikach usługi Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Log Analytics), następujące zapytanie zwróci tabelę zawierającą listę użytkownika nazw wyświetlanych, czas zdarzenia, a liczba zdarzeń czasu dla zdarzenia wraz z visual wykresu. Łatwo możesz to modyfikować, aby wyświetlić identyfikator GUID użytkownika lub inne atrybuty:
+Podczas wysyłania dzienników z usługi Azure Data Lake Storage Gen1 dzienniki usługi Azure Monitor (zobacz [wyświetlanie i analizowanie zebranych za pomocą usługi Azure Monitor dzienniki wyszukiwania danych](../azure-monitor/learn/tutorial-viewdata.md) Aby uzyskać szczegółowe informacje na temat korzystania z usługi Azure Monitor dzienników), następujące zapytanie zwraca tabelę zawierającą listę użytkowników nazw wyświetlanych, czas zdarzenia, a liczba zdarzeń czasu dla zdarzenia wraz z visual wykresu. Łatwo możesz to modyfikować, aby wyświetlić identyfikator GUID użytkownika lub inne atrybuty:
 
 ```
 search *

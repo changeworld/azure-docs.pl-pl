@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/14/2019
+ms.date: 02/25/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 33bc10bb601fa14a34b6032c54b0c751a3608ccc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270253"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823658"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
@@ -132,8 +132,8 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     read resourceGroupName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
-    az group create --name $resourceGroupName --location $location &&
-    az group deployment create --resource-group $resourceGroupName --template-file "azuredeploy.json"
+    az group create --name $resourceGroupName --location "$location" &&
+    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
    
     # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
@@ -142,14 +142,11 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
     ```
     
     ---
-
-    > [!NOTE]
-    > Występuje problem z operacją we/wy na pliku podczas używania programu Azure PowerShell w usłudze Cloud Shell.  Komunikat o błędzie: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Nie można pobrać parametrów dynamicznych dla polecenia cmdlet. Nie można odnaleźć ścieżki „Azure:/azuredeploy.json”, ponieważ nie istnieje).  Tymczasowym obejściem jest niedołączanie przełącznika **-TemplateFile** w poleceniu `New-AzResourceGroupDeploy`. Polecenie wyświetli monit o wprowadzenie nazwy pliku.
 
     Zaktualizuj nazwę pliku szablonu, jeśli plik zapisano pod nazwą inną niż **azuredeploy.json**. 
 

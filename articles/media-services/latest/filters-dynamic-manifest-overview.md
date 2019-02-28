@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 87b68eceda6749e3bb0fdc64394b2b839f3963c3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7d40a29a0d9d708deb5485b18327d809ded0022d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866746"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959548"
 ---
 # <a name="dynamic-manifests"></a>Manifesty dynamiczne
 
@@ -41,7 +41,7 @@ W tym temacie opisano pojęcia związane z **manifestów dynamicznych** i zawier
 
 ## <a name="manifest-files-overview"></a>Przegląd plików manifestu
 
-Podczas kodowania zasobów do przesyłania strumieniowego o adaptacyjnej szybkości transmisji bitów, **manifestu** (listy odtwarzania), plik zostanie utworzony (pliku jest tekstowa lub opartych na języku XML). **Manifestu** plik zawiera przesyłania strumieniowego metadane, takie jak: śledzenie typu (audio, wideo lub tekst), śledzenie, name, godzina rozpoczęcia i zakończenia, szybkości transmisji bitów (właściwości), Śledź języków, okna prezentacji (przesuwającego się okna o określonej długości) i kodera-dekodera wideo ( FourCC). Informuje również gracza, aby pobrać następny fragment, podając informacje o następnej rozgrywane fragmenty wideo dostępne i ich lokalizacji. Fragmenty (lub segmentów) są rzeczywiste "fragmentów" zawartości wideo.
+A **manifestu** (odtwarzania), (na podstawie tekstu lub opartego na języku XML) obejmują przesyłanie strumieniowe metadane, takie jak: śledzenie typu (audio, wideo lub tekst), Śledź nazwę, godzina rozpoczęcia i zakończenia, szybkości transmisji bitów (właściwości), Śledź języków, okna prezentacji z (przesuwanie Okno stały czas trwania), kodera-dekodera wideo (FourCC). Informuje również gracza, aby pobrać następny fragment, podając informacje o następnej rozgrywane fragmenty wideo dostępne i ich lokalizacji. Fragmenty (lub segmentów) są rzeczywiste "fragmentów" zawartości wideo.
 
 Oto przykład HLS pliku manifestu: 
 

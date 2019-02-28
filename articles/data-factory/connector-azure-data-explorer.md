@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: orspod
-ms.openlocfilehash: f614c6770dd29bc3d6b42c36fe8c81d9f129cd81
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d30eab024fa988b3341c5efc9fe188ee4802720a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816661"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961078"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 
@@ -44,6 +44,22 @@ Możesz skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych
 Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi Data Factory określonych do Eksploratora danych usługi Azure łącznika.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+
+Łącznik Azure Eksplorator danych używa uwierzytelniania jednostki usługi. Wykonaj następujące kroki, aby uzyskać nazwy głównej usługi i udzielanie uprawnień:
+
+1. Zarejestruj jednostki aplikacji w usłudze Azure Active Directory (Azure AD), postępując zgodnie z [Zarejestruj swoją aplikację z dzierżawy usługi Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
+
+    - Identyfikator aplikacji
+    - Klucz aplikacji
+    - Identyfikator dzierżawy
+
+2. Przyznaj usługi głównej odpowiednie uprawnienia w Eksploratorze danych platformy Azure. Zapoznaj się [uprawnienia bazy danych zarządzania Eksploratora usługi Azure Data](../data-explorer/manage-database-permissions.md) ze szczegółowymi informacjami o role i uprawnienia, a także przewodnik dotyczący zarządzania uprawnieniami. Ogólnie rzecz biorąc należy
+
+    - **Jako źródło**, co najmniej udzielić **Podgląd bazy danych** roli bazy danych.
+    - **Jako obiekt sink**, co najmniej udzielić **dużych możliwościach skalowania bazy danych** roli bazy danych.
+
+>[!NOTE]
+>Tworzenie za pomocą interfejsu użytkownika usługi ADF, operacje listę baz danych na połączonej usługi, lub listę tabel w zestawie danych może wymagać wyższej uprzywilejowanych przyznano uprawnienia do nazwy głównej usługi. Alternatywnie można ręcznie wprowadź nazwę bazy danych i nazwę tabeli. Kopiuj działania wykonywania działań, tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami do odczytu/zapisu danych.
 
 Następujące właściwości są obsługiwane w przypadku Eksploratora danych platformy Azure, połączone usługi:
 
@@ -162,7 +178,7 @@ Aby skopiować dane do Eksploratora danych platformy Azure, należy ustawić wł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** musi być równa właściwości ujścia działania kopiowania: **AzureDataExplorerSink** | Yes |
-| ingestionMappingName | Nazwa wstępnie utworzone **[mapowania CSV](/azure/kusto/management/mappings#csv-mapping)** w tabeli Kusto; Mapowanie JSON i Avro mapowania na Eksplorator danych platformy Azure nie są bezpośrednio obsługiwane, ale nadal można skopiować danych z plików JSON/Avro. Aby zamapować kolumny ze źródła do Eksploratora danych platformy Azure, można użyć działania kopiowania [mapowania kolumn](copy-activity-schema-and-type-mapping.md) który wspólnie współpracuje również z mapowania CSV Eksploratora danych platformy Azure — kopiowanie działań map/ponowne-shapes danych ze źródła do ujścia na podstawie kolumny Mapowanie ustawienia, następnie mapuje dane ponownie oparte na konfiguracji mapowania pozyskiwania, jeśli istnieje. Dotyczy on [wszystkie obsługiwane magazyny źródłowy](copy-activity-overview.md#supported-data-stores-and-formats) tym formatów JSON i Avro. | Nie |
+| ingestionMappingName | Nazwa wstępnie utworzone **[mapowania CSV](/azure/kusto/management/mappings#csv-mapping)** w tabeli Kusto. Mapowania kolumn ze źródła do Eksploratora danych platformy Azure — w dotyczy **[wszystkie obsługiwane magazyny/format źródła](copy-activity-overview.md#supported-data-stores-and-formats)** tym CSV/JSON/Avro formatuje itp., można użyć działania kopiowania [kolumny Mapowanie](copy-activity-schema-and-type-mapping.md) (niejawnie według nazwy lub jawnie, zgodnie z konfiguracją) i/lub mapowania CSV Eksploratora danych platformy Azure. | Nie |
 
 **Przykład:**
 

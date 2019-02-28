@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4da387abe24318a29472c11dffa7aac67192408c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297428"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959616"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpieczenia w usługi Azure Data Lake Storage Gen1
 Wiele przedsiębiorstw są się korzystanie z analizy danych big data, aby uzyskać szczegółowe informacje biznesowe pomóc im inteligentne decyzje. Organizacja może być skomplikowane i podlegających regulacjom środowiska z coraz większą liczbę różnych użytkowników. Ważne jest dla przedsiębiorstw upewnić się, że kluczowe dane biznesowe są przechowywane w bardziej bezpiecznie z odpowiedniego poziomu dostępu przyznane dla poszczególnych użytkowników. Azure Data Lake Storage Gen1 ułatwia spełnienie tych wymagań dotyczących zabezpieczeń. Ten artykuł zawiera informacje na temat możliwości zabezpieczeń Data Lake Storage Gen1, w tym:
@@ -82,7 +82,7 @@ Data Lake Storage Gen1 umożliwia także szyfrowanie danych przechowywanych na k
 
 Do zarządzania kluczami Data Lake Storage Gen1 udostępnia dwa tryby zarządzania kluczami szyfrowania głównego (głównymi kluczami szyfrowania), które są wymagane w celu odszyfrowania żadnych danych, która jest przechowywana w Data Lake Storage Gen1. Można albo pozwolić Data Lake Storage Gen1 zarządzania głównymi kluczami szyfrowania lub zachowanych własności głównymi kluczami szyfrowania za pomocą konta usługi Azure Key Vault. Tryb zarządzania kluczami należy określić podczas tworzenia konta Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat sposobu zapewnienia konfiguracji związanych z szyfrowaniem, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-get-started-portal.md).
 
-## <a name="activity-and-diagnostic-logs"></a>Aktywności i dzienników diagnostycznych
+## <a name="activity-and-diagnostic-logs"></a>Dzienniki aktywności i diagnostyczne
 Można użyć działania lub dzienniki diagnostyczne, w zależności od tego, czy szukasz dzienniki działań związanych z zarządzaniem konta lub działań związanych z danymi.
 
 * Konta działań związanych z zarządzaniem Użyj interfejsów API usługi Azure Resource Manager i są udostępniane w witrynie Azure portal za pomocą dzienników aktywności.
@@ -98,7 +98,7 @@ Konto zarządzania ścieżki inspekcyjne wyświetlić i wybrać kolumny, które 
 Aby uzyskać więcej informacji na temat pracy z dziennikami aktywności, zobacz [wyświetlanie dzienników aktywności do inspekcji akcje na zasobach](../azure-resource-manager/resource-group-audit.md).
 
 ### <a name="diagnostics-logs"></a>Dzienniki diagnostyczne
-Można włączyć inspekcji dostępu do danych i rejestrowanie diagnostyczne w witrynie Azure portal i wysłać dzienniki do konta usługi Azure Blob storage, Centrum zdarzeń lub usługi Log Analytics.
+Można włączyć inspekcji dostępu do danych i rejestrowanie diagnostyczne w witrynie Azure portal i wysłać dzienniki do konta magazynu obiektów Blob platformy Azure z Centrum zdarzeń lub dzienniki usługi Azure Monitor.
 
 ![Dzienniki diagnostyczne](./media/data-lake-store-security-overview/diagnostic-logs.png "dzienniki diagnostyczne")
 

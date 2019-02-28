@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 1d047e3dfe37929a02c141af675062abb9718786
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: aa534ca4fb29237de6377c7225a11f4758f39c55
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448147"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588385"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
 
@@ -100,7 +100,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
 
       ![Ukończony kontener magazynu](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Aby utworzyć kontener magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
+   Aby utworzyć kontener magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
 
 Następnie połącz Eksplorator usługi Storage z kontem magazynu.
 

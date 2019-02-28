@@ -1,22 +1,22 @@
 ---
-title: Przykłady usługi Log Analytics dla zapory usługi Azure
-description: Przykłady usługi Log Analytics dla zapory usługi Azure
+title: Przykłady programu Azure analizy dziennika zapory
+description: Przykłady programu Azure analizy dziennika zapory
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: cff31ba73730b7cf7cb27ecb132ec70806234924
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2ea95a8e32e2162c31e95bc2e9dd5e60be07649f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233399"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958069"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Przykłady usługi Log Analytics dla zapory usługi Azure
+# <a name="azure-firewall-log-analytics-samples"></a>Przykłady programu Azure analizy dziennika zapory
 
-Poniższe przykłady usługi Log Analytics może służyć do analizowania dzienników zapory usługi Azure. Przykładowy plik jest wbudowana w Projektant widoków programu Log Analytics, [Projektant widoków programu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artykuł zawiera więcej informacji na temat koncepcji Wyświetl projekt.
+Poniższe przykłady log analytics może służyć do analizowania dzienników zapory usługi Azure. Przykładowy plik jest wbudowana w Projektant widoków programu Log Analytics, [Projektant widoków programu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artykuł zawiera więcej informacji na temat koncepcji Wyświetl projekt.
 
 ## <a name="log-analytics-view"></a>Widoki usługi Log Analytics
 
@@ -151,4 +151,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się o zapory usługi Azure, monitorowania i diagnostyki, zobacz [samouczek: dzienniki zapory usługi Azure Monitor i metryki](tutorial-diagnostics.md).
+Aby dowiedzieć się o zapory usługi Azure, monitorowania i diagnostyki, zobacz [samouczka: Monitoruj dzienniki zapory platformy Azure i metryk](tutorial-diagnostics.md).

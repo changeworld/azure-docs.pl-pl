@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/16/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 446c5393b654c7743371e4097517d16ba71da630
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 5f8dffa01b2d7dd7fa966d2b417019f1d2afb1bc
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270304"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867018"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Samouczek: Tworzenie połączonych szablonów usługi Azure Resource Manager
 
@@ -297,7 +297,7 @@ Ponieważ konto magazynu jest teraz zdefiniowane w połączonym szablonie, musis
 1. Otwórz plik azuredeploy.json w programie Visual Studio Code, jeśli nie jest otwarty.
 2. Rozwiń definicję zasobu maszyny wirtualnej i zaktualizuj element **dependsOn** w sposób pokazany na poniższym zrzucie ekranu:
 
-    ![Konfigurowanie zależności połączonych szablonów usługi Azure Resource Manager ](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
+    ![Konfigurowanie zależności połączonych szablonów usługi Azure Resource Manager](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
     *linkedTemplate* to nazwa zasobu wdrożeń.  
 3. Zaktualizuj wartość **properties/diagnosticsProfile/bootDiagnostics/storageUri** w sposób pokazany na poprzednim zrzucie ekranu.

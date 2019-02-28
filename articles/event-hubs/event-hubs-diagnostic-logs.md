@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540320"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957525"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Skonfiguruj dzienniki diagnostyczne na potrzeby Centrum zdarzeń platformy Azure
 
@@ -48,7 +48,7 @@ Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki dia
 
     ![Zmiana stanu dzienników diagnostycznych](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Ustaw docelowy archiwum, który ma; na przykład konto magazynu, Centrum zdarzeń lub usługi Azure Log Analytics.
+5.  Ustaw docelowy archiwum, który ma; na przykład konto magazynu, Centrum zdarzeń lub usługi Azure Monitor dzienników.
 
 6.  Zapisz nowe ustawienia diagnostyki.
 

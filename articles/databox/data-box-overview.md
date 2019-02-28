@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411411"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875042"
 ---
 # <a name="what-is-azure-data-box"></a>Co to jest usługa Azure Data Box?
 
@@ -76,7 +76,7 @@ Rozwiązanie Data Box składa się z następujących składników:
 
 * **Urządzenie Data Box** — urządzenie fizyczne zapewniające pierwotny magazyn danych, odpowiadające za komunikację z magazynem w chmurze oraz zapewniające bezpieczeństwo i poufność danych. Urządzenie Data Box ma 80 TB pojemności magazynu do wykorzystania. 
 
-    ![Urządzenie Data Box — widok z przodu i z tyłu ](media/data-box-overview/data-box-combined3.png)
+    ![Urządzenie Data Box — widok z przodu i z tyłu](media/data-box-overview/data-box-combined3.png)
 
     
 * **Usługa Data Box** — rozszerzenie witryny Azure Portal, które pozwala na zarządzanie urządzeniem Data Box za pomocą internetowego interfejsu umożliwiającego uzyskiwanie dostępu z różnych lokalizacji geograficznych. Usługa Data Box umożliwia wykonywanie bieżących zadań administracyjnych na urządzeniu Data Box. Zadania usługi obejmują tworzenie zamówień i zarządzanie nimi, wyświetlanie alertów i zarządzanie nimi oraz zarządzanie udziałami.  

@@ -6,25 +6,21 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 85a2810e8ab8de5ad2967aaf17f421d871368063
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314860"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958460"
 ---
 # <a name="indexing-external-data-for-queries-in-azure-search"></a>Indeksowanie danych zewnętrznych dla zapytań w usłudze Azure Search
-> [!div class="op_single_selector"]
-> * [Omówienie](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
-> 
-> 
 
 W usłudze Azure Search zapytania są wykonywane na zawartości ładowane i zapisywane w [indeksu wyszukiwania](search-what-is-an-index.md). W tym artykule sprawdza, czy dwa podstawowe podejścia do wypełniania indeksu: *wypychania* dane do indeksu programistycznie, lub punktów [indeksator usługi Azure Search](search-indexer-overview.md) na obsługiwanego źródła danych do  *ściągnięcia* w danych.
+
+W przypadku każdej metody celem jest *ładowanie danych* z zewnętrznego źródła danych do indeksu usługi Azure Search. Usługa Azure Search umożliwi utworzenie pustego indeksu, ale do momentu wypchnąć ani ściągnąć dane do niej, nie jest obsługą zapytań.
 
 ## <a name="pushing-data-to-an-index"></a>Wypychanie danych do indeksu
 Model wypychania, używany w celu programistycznego przesyłania danych do usługi Azure Search, jest najbardziej elastycznym podejściem. Po pierwsze nie ma żadnych ograniczeń dotyczących typu źródła danych. Do usługi Azure Search można wypchnąć dowolny zestaw danych złożony z dokumentów JSON, zakładając, że każdy dokument w zestawie danych ma pola zamapowane na pola zdefiniowane w schemacie indeksu. Po drugie nie ma żadnych ograniczeń dotyczących częstotliwości wykonywania. Możesz wypychać zmiany do indeksu tak często, jak tylko chcesz. W przypadku aplikacji wymagających bardzo niskich opóźnień (na przykład w razie konieczności synchronizowania operacji wyszukiwania z dynamicznymi bazami danych zapasów) model wypychania jest jedynym rozwiązaniem.

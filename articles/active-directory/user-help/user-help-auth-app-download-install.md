@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e11092057af3a7a16c60e55837f31ac3004e42a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 40be6f333bf259cc036bec9c0d9fc967dd33f2a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184843"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960041"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Pobierz i zainstaluj aplikację Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
@@ -28,6 +28,9 @@ Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykł
 - **Weryfikacja Two-Factor Authentication.** Metoda weryfikacji standardowa gdzie jest jednym z czynników hasła. Po użytkownik Zaloguj się przy użyciu nazwy użytkownika i hasła, możesz zatwierdzić powiadomienie lub wprowadzenie kodu weryfikacyjnego podana.
 
 - **Logowanie za pomocą telefonu.** Wersja weryfikacji two-Factor Authentication, która umożliwia logowanie bez hasła, przy użyciu nazwy użytkownika i urządzenia przenośnego z odciskiem palca, powierzchni lub numeru PIN.
+
+>[!Important]
+>Twoja organizacja może wymagać korzystanie z aplikacji wystawcy uwierzytelnienia do logowania i uzyskuj dostęp do danych organizacji i dokumentów. Mimo, że nazwa użytkownika może pojawić się w aplikacji, konto faktycznie nie jest skonfigurowane do działania jako metody weryfikacji, do momentu ukończenia procesu rejestracji. Aby uzyskać więcej informacji, zobacz [Dodaj swoje konto służbowe lub szkolne](user-help-auth-app-overview.md).
 
 >[!NOTE]
 >Jeśli masz problemy z zalogowaniem się do swojego konta, zobacz temat [Kiedy nie możesz zalogować się na swoje konto Microsoft](https://support.microsoft.com/help/12429).  Uzyskaj więcej informacji o tym, co zrobić, gdy podczas próby zalogowania się do konta Microsoft pojawia się komunikat [„To konto Microsoft nie istnieje”](https://support.microsoft.com/help/13811).

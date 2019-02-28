@@ -11,17 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 255cbff94e954dd05acfe77b97929c313b1dd3cf
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f0f45e50fba4587e604add937ed45fc78228d44f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808580"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960248"
 ---
-# <a name="classroom-labs-concepts"></a>Klasa Labs — pojęcia
+# <a name="classroom-labs-concepts"></a>Pojęcia związane z laboratoriami na potrzeby zajęć
 Poniższa lista zawiera podstawowe pojęcia Lab Services i definicje:
+
+## <a name="quota"></a>Przydział
+Przydział to limit czasu (w godzinach), który nauczyciel można ustawić dla uczniów lub studentów użyć maszynę Wirtualną laboratorium. Można go ustawić na 0, nieograniczone, lub określoną liczbę godzin. Jeśli limit przydziału jest równa 0, uczniem/uczennicą można używać maszyny wirtualnej tylko, gdy działa zgodnie z harmonogramem lub nauczyciel ręcznie włącza maszyny wirtualnej dla uczniów lub studentów.
+ 
+##<a name="schedules"></a>Harmonogramy
+Harmonogramy są odstępów czasu (jednorazowo lub cykliczne), tworzonych przez uczniów w klasie. Wszystkie maszyny wirtualne w laboratorium są uruchamiane automatycznie na początku z harmonogramem i pozostaną one zatrzymane na końcu harmonogramu. Godz. limit przydziału nie są używane, gdy działa zgodnie z harmonogramem.
+
+## <a name="template-virtual-machine"></a>Szablon maszyny wirtualnej
+Szablon maszyny wirtualnej w laboratorium jest obrazem podstawowa maszyna wirtualna, z której wszyscy użytkownicy, maszyny wirtualne są tworzone. Twórcy Instruktorzy/lab skonfigurować szablon maszyny wirtualnej i skonfiguruj je przy użyciu oprogramowania, które mają być zapewnienie uczestnicy szkolenia celu labs. Podczas publikowania szablonu maszyny Wirtualnej usługi Azure Lab Services tworzy lub aktualizuje laboratorium maszyn wirtualnych na podstawie szablonu maszyny Wirtualnej. 
+
 
 ## <a name="user-profiles"></a>Profile użytkowników
 W tym artykule opisano różne profile użytkowników w usłudze Azure Lab Services. 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 10b49c5ebcd73010a52da1fada32ba55198b287a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310278"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961537"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Często zadawane pytania dotyczące usługi Azure Backup
 
@@ -21,10 +21,8 @@ W tym artykule odpowiedzi na często zadawane pytania dotyczące [kopia zapasowa
 
 ## <a name="general-questions"></a>Pytania ogólne
 
-
 ### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Jakie maszyny wirtualne platformy Azure można można tworzyć kopie zapasowe przy użyciu usługi Azure Backup?
 [Przegląd](backup-azure-arm-vms-prepare.md#before-you-start) obsługiwanych systemów operacyjnych i ograniczenia.
-
 
 
 ## <a name="backup"></a>Backup
@@ -41,17 +39,16 @@ Tak, kopie zapasowe działają bezproblemowo. Nie ma potrzeby ponowne skonfiguro
 ### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Dlaczego nie widzę swojej maszyny Wirtualnej w Kreatorze konfigurowania kopii zapasowej?
 Kreator wyszczególnia tylko maszyny wirtualne w tym samym regionie co magazyn, a które nie są już trwa wykonywanie kopii zapasowej.
 
-
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Moja maszyna wirtualna jest zamknięta. Będą na żądanie lub zaplanowanych zadań tworzenia kopii zapasowej?
 Tak. Wykonywane kopie zapasowe, gdy maszyna zostanie zamknięta. Punkt odzyskiwania jest oznaczana awarii spójne.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Czy można anulować zadania tworzenia kopii zapasowej w toku?
 Tak. Możesz anulować zadanie tworzenia kopii zapasowej w **Trwa tworzenie zrzutu ekranu** stanu. Nie można anulować zadania, jeśli przesyłanie danych z migawki jest w toku.
 
-### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Zablokuj grupy zasobów I włączone na Moje kopie zapasowe maszyn wirtualnych dysku zarządzanego. Czy operacje tworzenia kopii zapasowych będą nadal działać?
-Jeśli zablokujesz grupy zasobów, usługa Azure Backup nie można usunąć starsze punkty przywracania.
-- Nowe kopie zapasowe będą kończyć się niepowodzeniem, ponieważ maksymalny limit punktów przywracania 18.
-- Jeśli kończy się niepowodzeniem z powodu błędu wewnętrznego po lock, [wykonaj następujące kroki](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) usunąć kolekcję punktów przywracania.
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Czy włączono blokadę dla grupy zasobów utworzonej w usłudze Kopia zapasowa Azure (tj.) ` AzureBackupRG_<geo>_<number>`), Moje kopie zapasowe będą pracować?
+Jeśli zablokujesz grupy zasobów utworzonej w usłudze Azure Backup, kopie zapasowe będą kończyć się niepowodzeniem, ponieważ maksymalny limit punktów przywracania 18.
+
+Użytkownik musi usunąć blokadę i wyczyścić kolekcję punktów przywracania z danej grupy zasobów, aby upewnić się powiedzie, wykonanie kolejnych kopii zapasowych [wykonaj następujące kroki](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) usunąć kolekcję punktów przywracania.
 
 ### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Zasad tworzenia kopii zapasowej należy wziąć pod uwagę czasu letniego (DST)?
 Nie. Data i godzina na komputerze lokalnym jest lokalny przy użyciu bieżącego letniego stosowane. Czas zaplanowanego tworzenia kopii zapasowych mogą się różnić od lokalnego czasu z powodu czasu letniego.

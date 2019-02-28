@@ -12,12 +12,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 7a77b8a1a2205465956d8c30a3fee6aec5e8428b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663795"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817426"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -125,9 +125,9 @@ Poniżej przedstawiono diagram, który pomoże Ci zrozumieć, jak działają ró
 Ta wbudowana funkcja usługi Azure Dev Spaces umożliwia kompleksowe testowanie kodu w udostępnionym środowisku bez konieczności ponownego tworzenia pełnych stosów usług przez wszystkich deweloperów w ich miejscach. Taki routing wymaga przekazywania nagłówków propagowania w kodzie aplikacji, jak pokazano w poprzednim kroku tego przewodnika.
 
 ### <a name="test-code-running-in-the-devscott-space"></a>Testowanie kodu uruchamianego w przestrzeni _dev/scott_
-Aby przetestować nową wersję aplikacji *mywebapi* w połączeniu z aplikacją *webfrontend*, otwórz w przeglądarce adres URL publicznego punktu dostępu dla aplikacji *webfrontend* (na przykład http://dev.webfrontend.123456abcdef.eastus.aksapp.io)) i przejdź do strony Informacje. Powinien zostać wyświetlony pierwotny komunikat „Hello from webfrontend and Hello from mywebapi”.
+Aby przetestować nową wersję aplikacji *mywebapi* w połączeniu z aplikacją *webfrontend*, otwórz w przeglądarce adres URL publicznego punktu dostępu dla aplikacji *webfrontend* (na przykład http://dev.webfrontend.123456abcdef.eus.azds.io)) i przejdź do strony Informacje. Powinien zostać wyświetlony pierwotny komunikat „Hello from webfrontend and Hello from mywebapi”.
 
-Teraz dodaj część „scott.s.” do adresu URL, aby wyglądał on mniej więcej tak: http://scott.s.dev.webfrontend.123456abcdef.eastus.aksapp.io i odśwież przeglądarkę. Powinien zostać osiągnięty punkt przerwania ustawiony w projekcie *mywebapi*. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji *mywebapi* jest uruchamiana w przestrzeni _dev/scott_.
+Teraz dodaj część „scott.s.” do adresu URL, aby wyglądał on mniej więcej tak: http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io i odśwież przeglądarkę. Powinien zostać osiągnięty punkt przerwania ustawiony w projekcie *mywebapi*. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji *mywebapi* jest uruchamiana w przestrzeni _dev/scott_.
 
 Mamy nadzieję, że po utworzeniu przestrzeni _dev_, która zawsze zawiera najnowsze zmiany, i zakładając, że aplikacja jest zaprojektowana tak, aby wykorzystywać oparty na przestrzeniach routing usługi DevSpace, łatwo będzie zobaczyć, że usługa Dev Spaces może znacznie ułatwić testowanie nowych funkcji w kontekście większej aplikacji. Zamiast wdrażać _wszystkie_ usługi w przestrzeni prywatnej, możesz utworzyć przestrzeń prywatną, która wywodzi się z przestrzeni _dev_, i uruchamiać tylko te usługi, nad którymi tak naprawdę pracujesz. Infrastruktura routingu usługi Dev Space zajmie się resztą, wykorzystując tyle usług spoza przestrzeni prywatnej, ile uda jej się znaleźć, jednocześnie przyjmując domyślnie najnowszą wersję uruchomioną w przestrzeni _dev_. A co najlepsze, _wielu_ deweloperów może aktywnie programować różne usługi w tym samym czasie we własnych przestrzeniach, nie przeszkadzając sobie nawzajem.
 

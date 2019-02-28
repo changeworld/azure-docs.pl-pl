@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998522"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649595"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: Konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -69,10 +69,8 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
     ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na stronie **Konfigurowanie szablonu** wykonaj następujące kroki: Te kroki samouczka są **opcjonalne**.
-    1. Uruchom maszynę wirtualną szablonu, wybierając pozycję **Uruchom**.
     2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. 
-    3. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu. 
-    4. **Zatrzymaj** maszynę wirtualną.  
+    3. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu.     
     5. Wprowadź **opis** szablonu.
 9. Wybierz przycisk **Dalej** na stronie szablonu. 
 10. Na stronie **Publikowanie szablonu** wykonaj następujące czynności. 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a7f4d10e3273fb2b4e17ff0a55c3a3ed6294833d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538809"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961282"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Dzienników serwera w usłudze Azure Database for PostgreSQL 
 Usługa Azure Database for postgresql w warstwie generuje zapytania i błąd dzienników. Dziennikami zapytań, błędów i może służyć do identyfikowania, rozwiązywanie problemów i naprawić błędy konfiguracji i nieoptymalne wydajności. (Dostęp do dzienników transakcji nie jest dołączony). 
@@ -28,7 +28,7 @@ Po włączeniu dzienniki użytkownik może uzyskiwać do nich dostęp z usługi 
 
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Usługa Azure Database for PostgreSQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki na Twoim serwerze PostgreSQL, możesz je emitowany do [usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję porad [dokumentacja dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Usługa Azure Database for PostgreSQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki na Twoim serwerze PostgreSQL, możesz je emitowany do [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md), usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję porad [dokumentacja dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od wyjściowy punkt końcowy możesz wybrać, zakres i kolejność, w jakiej są wyświetlane, mogą się różnić. 
@@ -38,7 +38,7 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | TenantId | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| Typ | Typ dziennika. zawsze `AzureDiagnostics` |
+| Type | Typ dziennika. zawsze `AzureDiagnostics` |
 | SubscriptionId | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
 | ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORPOSTGRESQL` |

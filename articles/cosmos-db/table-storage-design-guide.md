@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302067"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960221"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 
@@ -213,7 +213,7 @@ Wcześniej Omówienie usługi Azure Table sekcji opisano niektóre z kluczowymi 
 * Po drugie, najlepiej jest ***kwerendy zakresu*** , który używa **PartitionKey** i filtry na szeroką gamę **RowKey** wartości do zwrócenia więcej niż jedną jednostkę. **PartitionKey** wartość określa określonej partycji i **RowKey** wartości identyfikują podzestawu jednostek w partycji. Na przykład: $filter = PartitionKey eq "Sprzedaż i RowKey ge" i RowKey lt t "  
 * Trzeci najlepiej ***skanowania partycji*** , który używa **PartitionKey** i filtry na inną właściwość klucza i który może zwrócić więcej niż jedną jednostkę. **PartitionKey** wartość określa określonej partycji, a właściwość wartości wybranych dla podzestawu jednostek w partycji. Na przykład: $filter = PartitionKey eq "Sprzedaż" i LastName eq 'Smith'  
 * A ***skanowanie tabeli*** nie obejmuje **PartitionKey** jest nieefektywne, ponieważ wszystkie partycje, które tworzą tabelę z kolei do żadnych zgodnych jednostek wyszukiwania. Zostanie przeprowadzone skanowanie tabeli, niezależnie od tego, czy filtr używa **RowKey**. Na przykład: $filter = LastName eq "Kowalski"  
-* Azure zapytań magazynu tabel, które zwracają wiele jednostek zwraca je posortowane w **PartitionKey** i **RowKey** zamówienia. Aby uniknąć konieczności uciekania się jednostki w obiekcie klienta, wybierz opcję **RowKey** definiujący najbardziej typowe kolejność sortowania. Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB Cosmso nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+* Azure zapytań magazynu tabel, które zwracają wiele jednostek zwraca je posortowane w **PartitionKey** i **RowKey** zamówienia. Aby uniknąć konieczności uciekania się jednostki w obiekcie klienta, wybierz opcję **RowKey** definiujący najbardziej typowe kolejność sortowania. Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure Cosmos DB nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Za pomocą "**lub**" Aby określić filtr oparty na **RowKey** wartości wyniki podczas skanowania partycji i nie jest traktowana jako zapytanie zakresu. W związku z tym, należy unikać zapytań, które używają filtrów, takich jak: $filter = PartitionKey eq "Sales" oraz (RowKey eq "121" lub RowKey eq "322")  
 
@@ -255,7 +255,7 @@ Wiele projektów musi spełniać wymagania, aby włączyć wyszukiwanie jednoste
 Wyniki zapytania, zwracane przez usługę tabeli są sortowane w kolejności rosnącej na podstawie **PartitionKey** a następnie według **RowKey**.
 
 > [!NOTE]
-> Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB Cosmso nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Kluczy w tabeli usługi Azure Storage są wartości typu ciąg i aby zapewnić poprawne sortowanie wartości liczbowych, należy przekonwertować je na stałej długości i uzupełniania zer. Na przykład, jeśli wartość identyfikatora pracowników jest używany jako **RowKey** jest liczbą całkowitą, należy przekonwertować identyfikator pracownika **123** do **00000123**. 
 
@@ -723,7 +723,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 Pobieranie *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość, która sortuje w odwrotnej daty i porządku czasowym.  
 
 > [!NOTE]
-> Wyniki zapytania, zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB Cosmso nie są sortowane według klucza partycji i klucza wiersza. W związku z tym ten wzorzec jest odpowiednia dla usługi Azure Table Storage, a nie usługi Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice interfejsu API tabel w usłudze Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Wyniki zapytania, zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB nie są sortowane według klucza partycji i klucza wiersza. W związku z tym ten wzorzec jest odpowiednia dla usługi Azure Table Storage, a nie usługi Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice interfejsu API tabel w usłudze Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontekst i problem
 Typowym wymogiem jest będzie można go pobrać ostatnio utworzone jednostki, na przykład dziesięć ostatnich wydatków oświadczenia złożone przez pracownika. Tabela zapytania pomocy technicznej **$top** operację, aby powrócić do pierwszego zapytania *n* jednostki z zestawu: istnieje żadna operacja równoważne zapytania do zwrócenia ostatnie n jednostki w zestawie.  

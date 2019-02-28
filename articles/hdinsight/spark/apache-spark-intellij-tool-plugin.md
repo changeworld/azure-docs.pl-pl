@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: a22dd1114b6ad49695b1ce7cab2ff26f23b7e1be
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 76df7f57f44100a27fbe4583051fa25c61e27ee0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447858"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961826"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
@@ -27,7 +27,7 @@ Użyj zestawu narzędzi platformy Azure dla środowiska IntelliJ wtyczki do twor
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* [Zestaw Oracle Java Development](https://www.azul.com/downloads/azure-only/zulu/).  W tym samouczku jest używany język Java w wersji 8.0.202.
+* [Zestaw Oracle Java Development](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  W tym samouczku jest używany język Java w wersji 8.0.202.
 * IntelliJ IDEA. W tym artykule jest używane środowisko [IntelliJ IDEA Community w wersji  2018.3.4](https://www.jetbrains.com/idea/download/).
 * Azure Toolkit for IntelliJ.  Zobacz [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (Instalowanie zestawu Azure Toolkit for IntelliJ).
 * WINUTILS.EXE.  Zobacz [problemy z uruchamianiem usługi Hadoop na Windows](https://wiki.apache.org/hadoop/WindowsProblems).
@@ -165,7 +165,7 @@ Możesz połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika sy
         |----|----|
         |Typ zasobu linku|Wybierz **klastra HDInsight** z listy rozwijanej.|
         |Nazwa/adres URL klastra| Wprowadź nazwę klastra.|
-        |Typ uwierzytelniania| Pozostaw **uwierzytelnianie podstawowe**|
+        |Typ uwierzytelnienia| Pozostaw **uwierzytelnianie podstawowe**|
         |Nazwa użytkownika| Wprowadź nazwę użytkownika klastra, wartość domyślna to administratora.|
         |Hasło| Wprowadź hasło dla nazwy użytkownika.|
     
@@ -179,7 +179,7 @@ Możesz połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika sy
         |Punkt końcowy usługi Livy| Wprowadź punkt końcowy usługi Livy|
         |Nazwa klastra| Wprowadź nazwę klastra.|
         |Punkt końcowy usługi yarn|Opcjonalny.|
-        |Typ uwierzytelniania| Pozostaw **uwierzytelnianie podstawowe**|
+        |Typ uwierzytelnienia| Pozostaw **uwierzytelnianie podstawowe**|
         |Nazwa użytkownika| Wprowadź nazwę użytkownika klastra, wartość domyślna to administratora.|
         |Hasło| Wprowadź hasło dla nazwy użytkownika.|
 

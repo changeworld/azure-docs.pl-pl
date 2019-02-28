@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: a4eea340fe57ab3c05e527a476d9153113eedba5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f56b4f07b7155d9f465a6ce492b4718d4a66e76e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819398"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959327"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -40,11 +40,11 @@ Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduj
 ### <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 Dzienniki diagnostyczne za zasoby obliczeniowe nie są skonfigurowane za pomocą ustawień diagnostycznych. Ustawienia diagnostyczne dla formantu zasobów:
 
-* Której dzienniki diagnostyczne są wysyłane (konto magazynu, usługa Event Hubs lub usługi Log Analytics).
+* Której dzienniki diagnostyczne są wysyłane (konto magazynu, usługa Event Hubs lub dzienniki usługi Azure Monitor).
 * Kategorie dziennika, które są wysyłane.
 * Jak długo każda kategoria dziennika powinny być przechowywane na koncie magazynu.
 * Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 2147483647.
-* Jeśli ustawiono zasady przechowywania, ale przechowywania dzienników na koncie magazynu jest wyłączona (na przykład tylko usługi Event Hubs lub usługi Log Analytics są zaznaczone opcje), zasad przechowywania nie mają wpływu.
+* Jeśli ustawiono zasady przechowywania, ale przechowywania dzienników na koncie magazynu jest wyłączona (na przykład tylko usługi Event Hubs lub usługi Azure Monitor są zaznaczone opcje dzienników), zasad przechowywania przyniosło żadnego skutku.
 * Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte.
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>Włączanie dzienników diagnostycznych za pośrednictwem interfejsów API REST

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4d47192ea69047b0b12deffc41776a87c16ca6ab
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696808"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959752"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -59,14 +59,7 @@ Metoda wydajności kieruje ruch do najbliższego dostępnego punktu końcowego. 
 Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Po wykonaniu wyszukiwania DNS klienci łączą się z punktu końcowego aplikacji bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym połączenia, można użyć dowolnego protokołu aplikacji. Jeśli wybierzesz TCP jako protokół monitorowania, usługa Traffic Manager firmy monitorowania kondycji punktu końcowego może odbywać się bez korzystania z protokołów aplikacji. Jeśli zdecydujesz się kondycja weryfikowane przy użyciu protokołu aplikacji, punkt końcowy musi być w stanie odpowiadać na żądania HTTP lub HTTPS GET.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Nazwa domeny "naked" można używać usługi Traffic Manager?
-
-Nie. Standardy systemu DNS nie zezwalają na rekordy CNAME współistnieć z inne rekordy DNS o takiej samej nazwie. Zawsze zawiera dwa istniejące rekordy DNS; szczytu (lub katalogu głównego) strefy DNS SOA i autorytatywne rekordy NS. Oznacza to, że rekord CNAME nie można utworzyć w wierzchołku strefy bez naruszania standardy systemu DNS.
-
-Usługa Traffic Manager wymaga rekord CNAME w systemie DNS, aby zmapować znaczącą nazwę DNS. Na przykład mapować `www.contoso.com` na nazwę DNS usługi Traffic Manager profil `contoso.trafficmanager.net`. Ponadto profil usługi Traffic Manager zwraca drugiego rekordu CNAME systemu DNS w celu wskazania, który punkt końcowy klienta należy się połączyć.
-
-Aby obejść ten problem, zaleca się przy użyciu przekierowania HTTP do kierowania ruchu na podstawie nazwy domeny "naked" do innego adresu URL, którego można następnie użyć usługi Traffic Manager. Na przykład "naked" domeny "contoso.com" przekierować użytkowników do rekordu CNAME "www.contoso.com", który wskazuje nazwę DNS usługi Traffic Manager.
-
-Pełna obsługa "naked" domen w usłudze Traffic Manager jest śledzona w naszych planach funkcji. Możesz zarejestrować działu pomocy technicznej dla tego żądania funkcji przez [głosu dla niego w naszej witrynie opinii społeczności](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
+Tak. Aby dowiedzieć się, jak utworzyć rekord aliasu dla Twojego wierzchołku nazwy domeny można odwoływać się do profilu usługi Azure Traffic Manager, zobacz [Konfigurowanie rekordu aliasu do obsługi języka apex nazw domen przy użyciu usługi Traffic Manager](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Usługa Traffic Manager za adres podsieci klienta podczas przetwarzania zapytań DNS? 
 Tak, oprócz adres IP źródła zapytania DNS otrzymuje (co zwykle jest adres IP programu rozpoznawania nazw DNS), podczas przeprowadzania wyszukiwania dla metody routingu Geographic, wydajności i podsieci, usługa traffic manager również uwzględnia adres podsieci klienta, jeśli uwzględnione w zapytaniu przez program rozpoznawania nazw, dzięki czemu żądania w imieniu użytkownika końcowego.  

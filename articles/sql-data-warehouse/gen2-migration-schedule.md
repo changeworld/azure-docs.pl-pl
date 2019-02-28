@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8dbe282b919c988d5cb997a66914d81ce1981f88
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d21731549c55f8e3fe90711838fcd21e6770eefe
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592421"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960704"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 Firma Microsoft pomaga dysku szczegółów klasy podstawowej koszt uruchamiania wymagających zapytania, dodając dolnej warstwy wystąpień obliczeniowych dla usługi Azure SQL Data Warehouse do obsługi magazynu danych, przeczytaj pełne ogłoszenie [małe obliczeniowych warstwy obsługi Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nowa oferta jest już dostępna w regionach wymienionych w poniższej tabeli. Obsługiwane regiony można uaktualnić istniejących magazynów danych Gen1 do Gen2 przy użyciu jednej:
@@ -36,27 +36,29 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Kanada Wschodnia |\* |\* |
 | Środkowe stany USA |Dostępne |1 maja 2019 r. |
 | Chiny Wschodnie |\* |\* |
-| Chiny Północne 1 |\* |\* |
+| Chiny Wschodnie 2 |\* |\* |
+| Chiny Północne |\* |\* |
+| Chiny Północne 2 |\* |\* |
 | Azja Wschodnia |Dostępne |1 maja 2019 r. |
-| Wschodnie stany USA 1 |Dostępne |16 marca 2019 r. |
+| Wschodnie stany USA |Dostępne |16 marca 2019 r. |
 | Wschodnie stany USA 2 |Dostępne |16 marca 2019 r. |
 | Francja Środkowa |1 marca 2019 r. |1 maja 2019 r. |
 | Niemcy Środkowe |\* |\* |
 | Indie Środkowe |Dostępne |1 maja 2019 r. |
-| Indie Południowe 1 |1 marca 2019 r. |15 czerwca 2019 r. |
+| Indie Południowe |1 marca 2019 r. |15 czerwca 2019 r. |
 | Japonia Wschodnia |Dostępne |1 maja 2019 r. |
 | Japonia Zachodnia |Dostępne |15 czerwca 2019 r. |
 | Korea Środkowa |1 marca 2019 r. |1 maja 2019 r. |
-| Korea South 1 |1 marca 2019 r. |15 czerwca 2019 r. |
+| Korea Południowa |1 marca 2019 r. |15 czerwca 2019 r. |
 | Środkowo-północne stany USA |1 marca 2019 r. |15 czerwca 2019 r. |
 | Europa Północna |Dostępne |16 marca 2019 r. |
 | Środkowo-południowe stany USA |Dostępne |1 maja 2019 r. |
 | Azja Południowo-Wschodnia |Dostępne |16 marca 2019 r. |
 | Południowe Zjednoczone Królestwo |1 marca 2019 r. |1 maja 2019 r. |
-| Zachodnie Zjednoczone Królestwo 1 |1 marca 2019 r. |15 czerwca 2019 r. |
+| Zachodnie Zjednoczone Królestwo |1 marca 2019 r. |15 czerwca 2019 r. |
 | Środkowo-zachodnie stany USA |\* |\* |
 | Europa Zachodnia |Dostępne |16 marca 2019 r. |
-| Zachodnie stany USA 1 |1 marca 2019 r. |15 czerwca 2019 r. |
+| Zachodnie stany USA |1 marca 2019 r. |15 czerwca 2019 r. |
 | Zachodnie stany USA 2 |Dostępne |16 marca 2019 r. |
 
 ## <a name="automatic-upgrade-process"></a>Automatyczne uaktualnianie

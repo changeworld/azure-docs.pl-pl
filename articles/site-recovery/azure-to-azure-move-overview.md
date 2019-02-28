@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a73eac1dea731bbf1ffb903ddf2438e791fec9d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309866"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726453"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -70,7 +70,7 @@ W poniższej sekcji przedstawiono najczęściej spotykane architektury wdrożeń
 
 
 
- ## <a name="move-vms-as-is-to-a-target-region"></a>Przenoszenie maszyn wirtualnych bez zmian do regionu docelowego
+## <a name="move-vms-as-is-to-a-target-region"></a>Przenoszenie maszyn wirtualnych bez zmian do regionu docelowego
 
 Oto jak będą wyglądać wdrożenia po przeniesieniu bez zmian do regionu docelowego, zależnie od [architektur](#typical-architectures-for-a-multi-tier-deployment) omówionych powyżej.
 

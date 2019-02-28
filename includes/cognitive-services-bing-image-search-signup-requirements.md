@@ -4,11 +4,11 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/08/2018
-ms.openlocfilehash: 8ef93b4d126bd0774d9b26ff627c40f73c78d960
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
-ms.translationtype: MT
+ms.openlocfilehash: e783605a830bfdd19d17a58c993f91b284fb2319
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40100663"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738950"
 ---
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) dostęp do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz to zrobić [Tworzenie konta usługi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) za darmo. Przed kontynuowaniem, konieczne będzie klucz dostępu podany po aktywowaniu bezpłatną wersję próbną lub płatną subskrypcję klucza z pulpitu nawigacyjnego platformy Azure.
+Musisz mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz bezpłatnie utworzyć [konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Zanim będzie można kontynuować, potrzebny będzie klucz dostępu podawany po aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.

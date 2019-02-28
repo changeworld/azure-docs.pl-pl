@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 80fd458356cf5b375e0b3d922d9bdca3f3a30503
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456031"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961673"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do konta przy użyciu aplikacji Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
@@ -110,14 +110,17 @@ Kroki niezbędne do logowania się na pracy lub szkoły lub konto osobiste przy 
 |**Jak jest logowanie przy użyciu Mój telefon bezpieczniejsze niż wpisanie hasła?**|Obecnie większość osób Zaloguj się do witryny sieci web lub aplikacji za pomocą nazwy użytkownika i hasła. Niestety hasła mogą być utracone, skradzione lub odgadnięty przez hakerów.<br><br>Po skonfigurowaniu aplikacji Microsoft Authenticator tworzy klucz na telefonie, aby odblokować konto chronionej przez Twój telefon numeru PIN lub biometrycznych blokady. Ten klucz jest następnie używany do potwierdzenia tożsamości podczas logowania.<br><br>**Ważne**<br>Twoje dane tylko są używane Chroń klucz lokalnie. Go nie ma nigdy nie wysyłane do lub przechowywane w chmurze.|
 |**Logowanie za pomocą telefonu zastępuje weryfikację dwuetapową? Należy wyłączyć je?**|Logowanie za pomocą telefonu jest typem weryfikacji dwuetapowe, w której dwa kroki zarówno powinny być wykonywane dla urządzeń przenośnych. Należy zachować Weryfikacja obejmująca dwa kroki włączona, aby pomóc zapewnić większe bezpieczeństwo dla Twojego konta.|
 |**Jeśli włączono weryfikację dwuetapową dla mojego konta mogę zachować, czy muszę zatwierdzić dwa powiadomienia?**| Nie. Logowania się do swojego konta Microsoft, również przy użyciu telefonu jest liczona jako weryfikację dwuetapową, więc ma nie drugi wymagane zatwierdzenie.|
-|**Co zrobić, jeśli utracą Mój telefon lub nie jest ze mną? Jak uzyskać dostęp do mojego konta?**| Zawsze możesz wybrać użycie hasła utworzyć łącze na stronie logowania, aby wrócić do używał Twojego hasła. Jednak jeśli używasz weryfikacji dwuetapowej nadal należy zweryfikować Twoją tożsamość przy użyciu drugiej metody.<br><br>**Ważne**<br>Zdecydowanie zachęcamy do upewnij się, że masz więcej niż jeden, aktualne, metodę weryfikacji skojarzony z Twoim kontem.<br><br>Możesz zarządzać metody weryfikacji konta osobiste z Twojego [ustawienia zabezpieczeń](https://account.live.com/proofs/manage) strony. Dla konta służbowego lub szkolnego, możesz przejść do swojej organizacji [dodatkowej weryfikacji zabezpieczeń](https://aka.ms/MFASetup) strony lub **zabezpieczyć swoje konto** strony, jeśli administrator wyłączył informacji zabezpieczających. Aby uzyskać więcej informacji na temat informacji zabezpieczających, zobacz [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).<br><br>Jeśli nie możesz zarządzać metody weryfikacji, możesz skontaktować się z administratorem.|
+|**Co zrobić, jeśli utracą Mój telefon lub nie jest ze mną? Jak uzyskać dostęp do mojego konta?**| Zawsze możesz wybrać użycie hasła utworzyć łącze na stronie logowania, aby wrócić do używał Twojego hasła. Jednak jeśli używasz weryfikacji dwuetapowej nadal należy zweryfikować Twoją tożsamość przy użyciu drugiej metody.<br><br>**Ważne**<br>Zdecydowanie zachęcamy do upewnij się, że masz więcej niż jeden, aktualne, metodę weryfikacji skojarzony z Twoim kontem.<br><br>Możesz zarządzać metody weryfikacji konta osobiste z Twojego [ustawienia zabezpieczeń](https://account.live.com/proofs/manage) strony. Dla konta służbowego lub szkolnego, możesz przejść do swojej organizacji [dodatkowej weryfikacji zabezpieczeń](https://aka.ms/MFASetup) strony lub **zabezpieczyć swoje konto** strony, jeśli administrator wyłączył informacji zabezpieczających. Aby uzyskać więcej informacji na temat informacji zabezpieczających, zobacz [zabezpieczeniami informacji (wersja zapoznawcza) — omówienie](user-help-security-info-overview.md).<br><br>Jeśli nie możesz zarządzać metody weryfikacji, możesz skontaktować się z administratorem.|
 |**Jak uniemożliwić korzystanie z tej funkcji i wrócić do korzystania z hasła?**|Dla osobistych kont, wybierz **zamiast tego użyj hasła** łącze podczas logowania. Wybór najbardziej aktualne jest zapamiętanych i oferowana domyślnie przy następnym logowaniu. Jeśli kiedykolwiek chcesz wrócić do korzystania logowanie telefonem, wybierz **zamiast tego użyj aplikacji** łącze podczas logowania.<br><br>Dla konta służbowego lub szkolnego, należy do strony weryfikacji zabezpieczeń (takich jak https://aka.ms/MFASetup) i Usuń aplikację Microsoft Authenticator.|
 |**Dlaczego nie można użyć więcej niż jedno konto służbowe lub szkolne na logowanie za pomocą telefonu?**| Telefon musi być zarejestrowana do jednego konta firmowego lub szkolnego. Jeśli chcesz włączyć logowanie telefonem dla pracy lub konta służbowego, musisz najpierw wyrejestrować starym urządzeniem za pośrednictwem **ustawienia** strony.|
 |**Czy mogę zalogować się do komputera, używając Mój telefon?**| Dla komputera firma Microsoft zaleca, logowanie przy użyciu usługi Windows Hello w systemie Windows 10. Windows Hello pozwala korzystać z rozpoznawania twarzy, odcisk palca lub numeru PIN do logowania.|
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+- Jeśli występują problemy z przejściem Twój kod weryfikacyjny dla Twojego osobistego konta Microsoft, zobacz **Rozwiązywanie problemów z kodem weryfikacji** części [zabezpieczające dla konta Microsoft i weryfikacja kody](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) artykułu.
+
 - Jeśli masz więcej ogólne pytania dotyczące aplikacji, zobacz [Microsoft Authenticator często zadawane pytania](user-help-auth-app-faq.md)
 
 - Jeśli chcesz, aby dowiedzieć się więcej o weryfikację dwuetapową, zobacz [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md)
 
-- Jeśli chcesz, aby dowiedzieć się więcej o informacje o zabezpieczeniach, zobacz [Zarządzanie swoje informacje zabezpieczające](security-info-manage-settings.md)
+- Jeśli chcesz, aby dowiedzieć się więcej o informacje o zabezpieczeniach, zobacz [zabezpieczeniami informacji (wersja zapoznawcza) — omówienie](user-help-security-info-overview.md)

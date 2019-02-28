@@ -8,17 +8,17 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 83c4ae7ff942579d55a5855c24a28809f60fdc62
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0e1eedf497ea5fd4a8a9551996102a8aa72847fc
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382461"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961571"
 ---
 # <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>Analizowanie danych przy użyciu notesu Jupyter i KQL magic
 
 Notes Jupyter to aplikacja sieci web typu open source, która pozwala tworzyć i udostępniać dokumenty zawierające kodu na żywo, równania, wizualizacje i tekst narracji. Użycie obejmuje czyszczenie danych i transformacji, symulacja wartości liczbowych, modelowanie statystyczne, wizualizacji danych i uczenia maszynowego.
-[Notes Jupyter](https://jupyter.org/) obsługuje magic funkcje, które rozszerzają możliwości jądra dzięki obsłudze dodatkowych poleceń. Magiczna KQL to polecenie, które rozszerza możliwości języka Python jądra w notesie Jupyter, aby można było uruchomić zapytań w języku Kusto natywnie. Umożliwia łatwe łączenie języka Python i Kusto język zapytań w celu wykonywania zapytań i wizualizuj dane przy użyciu rozbudowane biblioteki Plot.ly zintegrowana z usługą `render` poleceń. Źródła danych na potrzeby uruchamiania zapytań są obsługiwane. Te źródła danych obejmują Eksploratora danych usługi Azure, eksploracji danych szybka i wysoce skalowalnego zapewniającej dane dzienników i danych telemetrycznych, a także usługi Log Analytics i usługi Application Insights. Magiczna KQL współpracuje również z rozszerzeniem notesów usługi Azure, laboratorium Jupyter i programu Visual Studio Code Jupyter.
+[Notes Jupyter](https://jupyter.org/) obsługuje magic funkcje, które rozszerzają możliwości jądra dzięki obsłudze dodatkowych poleceń. Magiczna KQL to polecenie, które rozszerza możliwości języka Python jądra w notesie Jupyter, aby można było uruchomić zapytań w języku Kusto natywnie. Umożliwia łatwe łączenie języka Python i Kusto język zapytań w celu wykonywania zapytań i wizualizuj dane przy użyciu rozbudowane biblioteki Plot.ly zintegrowana z usługą `render` poleceń. Źródła danych na potrzeby uruchamiania zapytań są obsługiwane. Te źródła danych obejmują Eksploratora danych usługi Azure, usługa eksploracji danych szybka i wysoce Skalowalna do dziennika i danych telemetrycznych, a także dzienniki usługi Azure Monitor i Application Insights. Magiczna KQL współpracuje również z rozszerzeniem notesów usługi Azure, laboratorium Jupyter i programu Visual Studio Code Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -171,6 +171,6 @@ W wielu scenariuszach analizy warto utworzyć notesy wielokrotnego użytku, któ
 Uruchom polecenie Pomoc, aby zapoznać się z następujących notesów próbki, zawierające obsługiwane funkcje:
 - [Rozpoczynanie pracy z usługą KQL magic w Eksploratorze danych platformy Azure](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
 - [Rozpoczynanie pracy z usługą KQL magic dla usługi Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [Rozpoczynanie pracy z usługą KQL magic usługi Log Analytics](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [Rozpoczynanie pracy z usługą magic KQL dla dzienników usługi Azure Monitor](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
 - [Parametrize KQL magic zapytania za pomocą języka Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
 - [Wybierz paletę kolorów, wykres wyników zapytania magic KQL](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

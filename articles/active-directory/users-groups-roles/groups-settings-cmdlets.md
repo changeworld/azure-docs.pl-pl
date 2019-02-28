@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456a094ed961b24e3db3944fe4ae2b9ff661d896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c672d6ab04694a6d0b147b0e38c046abc527676a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190878"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959395"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 Ten artykuł zawiera instrukcje dotyczące korzystania z poleceń cmdlet programu PowerShell usługi Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko do grup usługi Office 365 (czasami nazywany grupy ujednolicone). 
@@ -98,8 +98,7 @@ Poniżej przedstawiono ustawienia zdefiniowane w Group.Unified SettingsTemplate.
 |  <ul><li>EnableGroupCreation<li>Wpisz: Wartość logiczna<li>Domyślne: True |Flaga wskazująca, czy tworzenie grupy usługi Office 365 jest dozwolone w katalogu przez użytkowników bez uprawnień administratora. To ustawienie nie wymaga licencji usługi Azure Active Directory Premium P1.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Wpisz: String<li>Wartość domyślna: "" |Identyfikator GUID grupy zabezpieczeń, dla której członkowie mogą tworzyć grupy usługi Office 365, nawet wtedy, gdy EnableGroupCreation == false. |
 |  <ul><li>UsageGuidelinesUrl<li>Wpisz: String<li>Wartość domyślna: "" |Łącze do wytyczne dotyczące grupowego użycia. |
-|  <ul><li>ClassificationDescriptions<li>Wpisz: String<li>Wartość domyślna: "" | Rozdzielana przecinkami lista Opisy klasyfikacji. Wartość ClassificationDescriptions jest prawidłowy tylko w następującym formacie:
-  $setting ["ClassificationDescriptions"] = "Klasyfikacji: opis, Klasyfikacja: Description", gdy klasyfikacja odpowiada ciągów w ClassificationList.|
+|  <ul><li>ClassificationDescriptions<li>Wpisz: String<li>Wartość domyślna: "" | Rozdzielana przecinkami lista Opisy klasyfikacji. Wartość ClassificationDescriptions jest prawidłowy tylko w następującym formacie:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>Jeśli klasyfikacja odpowiada ciągów w ClassificationList.|
 |  <ul><li>DefaultClassification<li>Wpisz: String<li>Wartość domyślna: "" | Klasyfikacja, który ma być używana jako domyślna klasyfikacja dla grupy, jeśli żaden nie został określony.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Wpisz: String<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencji nazewnictwa skonfigurowane dla grup usługi Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Wpisz: String<li>Wartość domyślna: "" | Ciąg rozdzielony przecinkami wyrażeń, które użytkownicy mogą nie używać w grupie nazw ani aliasów. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |

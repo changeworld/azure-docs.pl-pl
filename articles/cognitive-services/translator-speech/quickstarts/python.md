@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 34d397412a6d461325465ccc5dd41a62d91c6fc5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 9a6afc4dfb25a2a5f6e778fbda877a93269a96eb
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872054"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673279"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla języka Python
 <a name="HOLTop"></a>
@@ -30,7 +31,7 @@ Aby uruchomić ten kod, potrzebne jest środowisko języka [Python 3.x](https://
 
 Konieczne też będzie zainstalowanie [pakietu websocket-client](https://pypi.python.org/pypi/websocket-client) dla języka Python.
 
-Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono. 
+Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono.
 
 Musisz mieć również [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API tłumaczenia mowy w usłudze Microsoft Translator**. Będziesz potrzebować klucza płatnej subskrypcji dostępnego na [pulpicie nawigacyjnym platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -132,7 +133,7 @@ Pomyślnym wynikiem jest utworzenie pliku o nazwie „speak2.wav”. Ten plik za
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący tłumaczenia mowy w usłudze Translator](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz też
 
 [Omówienie tłumaczenia mowy w usłudze Translator](../overview.md)
 [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

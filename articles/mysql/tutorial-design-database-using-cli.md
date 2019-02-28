@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 17a147b12d660e25bfba1e3b987f9c6ae219942d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545794"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882590"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -27,6 +27,8 @@ Usługa Azure Database for MySQL jest usługą relacyjnej bazy danych w chmurze 
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 Aby uruchamiać bloki kodu z tego samouczka, możesz użyć usługi Azure Cloud Shell w przeglądarce lub [zainstalować interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli) na swoim komputerze.
 

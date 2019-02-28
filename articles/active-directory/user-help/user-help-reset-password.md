@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6521dc8db663df5e19fb97c495b4a5bcb6d3c1d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 170b96810130d33935e54c85529129e7e0267fe9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208484"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957780"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetowanie hasła służbowego
 
@@ -163,13 +163,10 @@ Poniżej przedstawiono niektóre typowe przypadki błędów i sposoby ich rozwi�
 |Po wprowadzeniu czy mój identyfikator użytkownika, pojawia się komunikat o błędzie informujący, "Nie możemy zweryfikować Twoje konto".|Proces logowania nie może zweryfikować informacje o swoim koncie.|Istnieją dwa powody, że ten komunikat może być wyświetlany.<br><br>1. Administrator włączone resetowanie haseł dla organizacji, ale nie została zarejestrowana do korzystania z usługi. Aby zarejestrować się do resetowania hasła, zobacz jedną z następujących artykułów na podstawie swojej metody weryfikacji: [Ustawić informacje zabezpieczające, aby użyć aplikacji authenticator (wersja zapoznawcza)](security-info-setup-auth-app.md), [ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego (wersja zapoznawcza)](security-info-setup-phone-number.md), [ustawiane informacje zabezpieczające, aby używać wiadomości SMS (wersja zapoznawcza)](security-info-setup-text-msg.md), [ Ustawić informacje zabezpieczające, aby użyć adresu e-mail (wersja zapoznawcza)](security-info-setup-email.md), lub [ustawić informacje zabezpieczające, aby użycie tych pytań zabezpieczających (wersja zapoznawcza)](security-info-setup-questions.md).<br><br>2. Administrator nie zostało włączone resetowanie haseł dla Twojej organizacji. W takiej sytuacji należy wybrać "Skontaktuj się z administratorem łącze" Aby wysłać wiadomość e-mail do administratora, pytaniem zresetować hasło.|
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-- Edytuj informacjom zabezpieczającym, aby dodać lub zmienić swoje metody weryfikacji w [Zarządzanie zabezpieczających (wersja zapoznawcza)](security-info-manage-settings.md) artykułu. 
-
 - Dowiedz się więcej o informacje zabezpieczające w [zabezpieczeniami informacji (wersja zapoznawcza) — omówienie](user-help-security-info-overview.md) artykułu.
 
 - Dowiedz się więcej o weryfikacji dwuetapowej w [Przegląd weryfikacji dwuetapowej](user-help-two-step-verification-overview.md) artykułu. 
 
 - Resetowanie hasła, jeśli został zgubienia lub zapomnienia, z [portal resetowania haseł](https://passwordreset.microsoftonline.com/)
 
-- Pobierz rozwiązania problemu, wskazówki i pomoc dotyczącą problemów z logowania w [nie zalogować się do swojego konta Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
+- Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

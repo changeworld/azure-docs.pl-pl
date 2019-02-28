@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ad75d22d21a141d48e9664ae580dfb5577a389
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 41859195474f19906118dbe94503bcbe04d0ac65
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184928"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960364"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalowanie programu Azure AD Connect przy użyciu języka SQL delegowane uprawnienia administratora
 Przed najnowszej kompilacji program Azure AD Connect administracyjne delegowania, podczas wdrażania konfiguracje, które wymagały SQL, nie jest obsługiwana.  Użytkownicy, którzy chcieli zainstalować program Azure AD Connect potrzebne musi mieć uprawnienia administratora serwera w programie SQL server.
@@ -44,13 +44,19 @@ Aby aprowizować bazę danych poza pasmem i zainstalować program Azure AD Conne
 >Chociaż nie jest wymagane, jest **zdecydowanie zaleca się** czy sortowania Latin1_General_CI_AS wybrano podczas tworzenia bazy danych.
 
 
-1.  Tworzenie bazy danych ADSync sekwencji sortowania bez uwzględniania wielkości liter administratora SQL **(Latin1_General_CI_AS)**.  Baza danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawne wartości, gdy jest zainstalowany program Azure AD Connect.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie program Azure AD Connect spowoduje zablokowanie instalacji.  Aby odzyskać skojarzenia zabezpieczeń musi usunięcie i ponowne utworzenie bazy danych.</br>
-![Sortowanie](./media/how-to-connect-install-sql-delegation/sql4.png)
-2.  Przyznaj administrator usługi Azure AD Connect i konta usług domeny następujące uprawnienia:
+ 1. Tworzenie bazy danych ADSync sekwencji sortowania bez uwzględniania wielkości liter administratora SQL **(Latin1_General_CI_AS)**.  Baza danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawne wartości, gdy jest zainstalowany program Azure AD Connect.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie program Azure AD Connect spowoduje zablokowanie instalacji.  Aby odzyskać skojarzenia zabezpieczeń musi usunięcie i ponowne utworzenie bazy danych.
+ 
+ ![Sortowanie](./media/how-to-connect-install-sql-delegation/sql4.png)
+ 2. Przyznaj administrator usługi Azure AD Connect i konta usług domeny następujące uprawnienia:
     - Identyfikator logowania SQL 
-    - **Baza danych owner(dbo)** praw.  </br>
-![Uprawnienia](./media/how-to-connect-install-sql-delegation/sql3a.png)
-3.  Wyślij wiadomość e-mail do administratora usługi Azure AD Connect, wskazującą nazwę programu SQL serwer i wystąpienie, które mają być używane podczas instalowania usługi Azure AD Connect.
+    - **Baza danych owner(dbo)** praw.
+ 
+ ![Uprawnienia](./media/how-to-connect-install-sql-delegation/sql3a.png)
+
+ >[!NOTE]
+ >Program Azure AD Connect nie obsługuje logowania przy użyciu członkostwa zagnieżdżonego.  Oznacza to, że Twoje konto administratora usługi Azure AD Connect i konta usług domeny muszą być połączone z logowania, której przyznano prawa właściciela.  Po prostu nie może być członkiem grupy, która jest przypisana do logowania z uprawnieniami właściciela.
+
+ 3. Wyślij wiadomość e-mail do administratora usługi Azure AD Connect, wskazującą nazwę programu SQL serwer i wystąpienie, które mają być używane podczas instalowania usługi Azure AD Connect.
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 Po zaaprowizowaniu bazy danych, administrator usługi Azure AD Connect zainstalować i skonfigurować synchronizację lokalnych własnego uznania.  

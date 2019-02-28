@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie pojemność i wydajność w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Użyj rozwiązanie pojemność i wydajność w usłudze Log Analytics, aby ułatwić zrozumienie wydajności serwerów funkcji Hyper-V.
+title: Rozwiązanie pojemność i wydajność w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Użyj rozwiązanie pojemność i wydajność w monitorze, aby ułatwić zrozumienie wydajności serwerów funkcji Hyper-V.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 41508a1d99ed243d377cc72c0accc005c5ca737d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: db2bbd8c3c0e3d7d172ea2948a42f300c2875745
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189204"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983714"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V za pomocą rozwiązania pojemność i wydajność (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ ms.locfileid: "53189204"
 > [!NOTE]
 > Rozwiązanie pojemność i wydajność jest przestarzała.  Klienci, którzy już zainstalowano rozwiązania można nadal z niego korzystać, ale pojemności i wydajności nie można dodać do żadnych nowych obszarów roboczych.
 
-Rozwiązanie pojemność i wydajność w usłudze Log Analytics można użyć, aby ułatwić zrozumienie wydajności serwerów funkcji Hyper-V. Rozwiązanie zapewnia wgląd w środowisku funkcji Hyper-V, pokazując ogólnego użycia (procesor CPU, pamięci i dysku) hostów i maszyn wirtualnych uruchomionych na tych hostach funkcji Hyper-V. Metryki są zbierane dla procesora CPU, pamięci i dysków na wszystkie hosty i maszyny wirtualne uruchomione na nich.
+Rozwiązanie pojemność i wydajność w monitorze można użyć, aby ułatwić zrozumienie wydajności serwerów funkcji Hyper-V. Rozwiązanie zapewnia wgląd w środowisku funkcji Hyper-V, pokazując ogólnego użycia (procesor CPU, pamięci i dysku) hostów i maszyn wirtualnych uruchomionych na tych hostach funkcji Hyper-V. Metryki są zbierane dla procesora CPU, pamięci i dysków na wszystkie hosty i maszyny wirtualne uruchomione na nich.
 
 Rozwiązanie:
 

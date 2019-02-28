@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: 471bc34272b8e141c8640bd218bdafd840850d24
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cda029dd11e8cb4cb07e9fce7eef95d6d4d78d7e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672274"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960224"
 ---
 # <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
 
@@ -31,16 +31,14 @@ Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę 
 
 Firma Microsoft zaleca korzystanie z kont GPv2, aby można było korzystać z zalet wybór między gorąca i warstwy magazynowania chłodna. Aby dowiedzieć się więcej na temat kont magazynu, zobacz [Przegląd konta usługi Azure Storage](../../storage/common/storage-account-overview.md). 
 
-Istnieją różne jednostki SKU, można wybrać konta magazynu. Aby uzyskać więcej informacji, zobacz [kont magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Jeśli chcesz poeksperymentować z kontami magazynu, użyj `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU w środowisku produkcyjnym należy rozważyć, `--sku Standard_RAGRS`, zapewniającą replikacji geograficznej dla ciągłości działania. 
+Istnieją różne jednostki SKU, można wybrać konta magazynu. Aby uzyskać więcej informacji, zobacz temat [Konta magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Jeśli chcesz poeksperymentować z kontami magazynu, użyj parametru `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU dla środowiska produkcyjnego weź pod uwagę użycie parametru `--sku Standard_RAGRS`, co zapewnia replikację geograficzną na potrzeby zapewnienia ciągłości działania. 
 
 ## <a name="assets-in-a-storage-account"></a>Zasoby w ramach konta magazynu
 
-W wersji 3 usługa Media Services interfejsy API magazynu są używane do przekazywania plików.
+W Media Services v3 interfejsów API magazynu są używane do przekazywania plików do zasobów. Aby uzyskać więcej informacji, zobacz [koncepcji zasoby](assets-concept.md).
 
 > [!Note]
 > Nie należy próbować zmienić zawartość kontenerów obiektów blob, które zostały wygenerowane przez zestaw SDK usług Media Services bez korzystania z interfejsów API usług Media Services.
-
-Aby zobaczyć, jak używać interfejsów API Storage z usługą Media Services do przekazywanie plików wejściowych, zapoznaj się z [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md). 
  
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 38fe0e4901977637be22670d09dccffdfa274304
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5543fd5ee2b86a57414a384df9d808e87b297a5e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253826"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983034"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrowanie rozwiązań EDI serwera BizTalk Server do usługi BizTalk Services: Podręcznik techniczny
 
@@ -25,7 +25,7 @@ Autor: Tim Wieman i Nitin Mehrotra
 
 Recenzenci: Karthik Bharthy
 
-Napisane przy użyciu: wersji systemu Microsoft Azure BizTalk Services — lutego 2014 r.
+Napisane przy użyciu:  Microsoft Azure BizTalk Services — wersji z lutego 2014 r.
 
 ## <a name="introduction"></a>Wprowadzenie
 Elektronicznej wymiany danych (EDI) jest jednym z najbardziej rozpowszechnionych oznacza, że przez dane programu exchange, które firmom elektronicznie, również określane jako transakcje Business-to-Business lub B2B. BizTalk Server miał Obsługa ponad dziesięciu lat od czasu wydania wstępnego programu BizTalk Server EDI. Dzięki usłudze BizTalk Services firma Microsoft nadal obsługę rozwiązań EDI na platformie Microsoft Azure. Transakcji B2B są prawie zewnętrzne w stosunku do organizacji i dlatego jest łatwiejsze do wdrożenia, jeśli został wdrożony na platformie w chmurze. Microsoft Azure zapewnia tę funkcję za pomocą usługi BizTalk Services.
@@ -102,7 +102,7 @@ Jeśli chcesz przeprowadzić migrację aranżacji programu BizTalk Server, przet
 
 * [*Jak zintegrować usługę przepływu pracy WCF z kolejek usługi Service Bus i tematy* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) przez Paolo Salvatori. 
 * [*Tworzenie aplikacji za pomocą programu Windows Workflow Foundation i na platformie Azure* sesji](https://go.microsoft.com/fwlink/p/?LinkId=237314) z konferencji Build 2011.
-* [*Centrum deweloperów systemu Windows Workflow Foundation* ](https://go.microsoft.com/fwlink/p/?LinkId=237315) w witrynie MSDN.
+* [*Centrum deweloperów systemu Windows Workflow Foundation*](https://docs.microsoft.com/previous-versions/dotnet/articles/ee342461(v=msdn.10)).
 * [*Dokumentacja systemu Windows Workflow Foundation 4 (WF4)* ](https://msdn.microsoft.com/library/dd489441.aspx) w witrynie MSDN.
 
 ## <a name="other-considerations"></a>Inne zagadnienia

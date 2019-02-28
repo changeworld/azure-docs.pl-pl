@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 26b083069380d7bf107cd3be54cb2e4786789e11
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 4f4793e18185c16ef144de33b4f116eff89a9969
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593867"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960160"
 ---
 # <a name="powershell-dsc-extension"></a>Rozszerzenie DSC programu PowerShell
 
@@ -101,31 +101,31 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| Wydawcy | Microsoft.Powershell.DSC | ciąg |
-| type | DSC | ciąg |
+| Wydawcy | Microsoft.Powershell.DSC | string |
+| type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Wartości właściwości ustawień
 
 | Name (Nazwa) | Typ danych | Opis
 | ---- | ---- | ---- |
-| settings.wmfVersion | ciąg | Określa wersję Windows Management Framework, który powinien być zainstalowany na maszynie Wirtualnej. Ustawienie tej właściwości do "najnowszej" zainstaluje najbardziej zaktualizowanej wersji programu WMF. Jedyną możliwe wartości dla tej właściwości to "4.0", "5.0" lub "najnowsza". Te wartości możliwe jest zależna od aktualizacji. Wartość domyślna to "najnowszy". |
-| settings.configuration.url | ciąg | Określa lokalizację adresu URL, z której można pobrać plik zip konfiguracji DSC. Adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, należy ustawić właściwość protectedSettings.configurationUrlSasToken na wartość tokenu sygnatury dostępu Współdzielonego. Ta właściwość jest wymagana, jeśli zdefiniowano settings.configuration.script i/lub settings.configuration.function.
-| settings.configuration.script | ciąg | Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi być w folderze głównym pliku zip pobranego z adresu URL określonego przez właściwość configuration.url. Ta właściwość jest wymagana, jeśli zdefiniowano settings.configuration.url i/lub settings.configuration.script.
-| settings.configuration.function | ciąg | Określa nazwę konfiguracji DSC. Konfiguracja o nazwie musi być zawarty w skrypcie, zdefiniowane przez configuration.script. Ta właściwość jest wymagana, jeśli zdefiniowano settings.configuration.url i/lub settings.configuration.function.
+| settings.wmfVersion | string | Określa wersję Windows Management Framework, który powinien być zainstalowany na maszynie Wirtualnej. Ustawienie tej właściwości do "najnowszej" zainstaluje najbardziej zaktualizowanej wersji programu WMF. Jedyną możliwe wartości dla tej właściwości to "4.0", "5.0" lub "najnowsza". Te wartości możliwe jest zależna od aktualizacji. Wartość domyślna to "najnowszy". |
+| settings.configuration.url | string | Określa lokalizację adresu URL, z której można pobrać plik zip konfiguracji DSC. Adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, należy ustawić właściwość protectedSettings.configurationUrlSasToken na wartość tokenu sygnatury dostępu Współdzielonego. Ta właściwość jest wymagana, jeśli zdefiniowano settings.configuration.script i/lub settings.configuration.function.
+| settings.configuration.script | string | Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi być w folderze głównym pliku zip pobranego z adresu URL określonego przez właściwość configuration.url. Ta właściwość jest wymagana, jeśli zdefiniowano settings.configuration.url i/lub settings.configuration.script.
+| settings.configuration.function | string | Określa nazwę konfiguracji DSC. Konfiguracja o nazwie musi być zawarty w skrypcie, zdefiniowane przez configuration.script. Ta właściwość jest wymagana, jeśli zdefiniowano settings.configuration.url i/lub settings.configuration.function.
 | settings.configurationArguments | Collection | Określa wszelkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość nie będą szyfrowane.
-| settings.configurationData.url | ciąg | Określa adres URL do pobrania pliku (.pds1) danych konfiguracji do użycia jako dane wejściowe dla danej konfiguracji DSC. Adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, należy ustawić właściwość protectedSettings.configurationDataUrlSasToken na wartość tokenu sygnatury dostępu Współdzielonego.
-| settings.privacy.dataEnabled | ciąg | Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko to możliwe wartości dla tej właściwości to "Włącz", "Disable", ", lub $null. Pozostawienie tej właściwości, puste ani mieć wartości null spowoduje włączenie telemetrii
-| settings.advancedOptions.forcePullAndApply | Bool | Włącza rozszerzenia DSC do aktualizacji i wprowadź w życie konfiguracje DSC przy włączonym trybie odświeżania ściągnięcia.
+| settings.configurationData.url | string | Określa adres URL do pobrania pliku (.pds1) danych konfiguracji do użycia jako dane wejściowe dla danej konfiguracji DSC. Adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, należy ustawić właściwość protectedSettings.configurationDataUrlSasToken na wartość tokenu sygnatury dostępu Współdzielonego.
+| settings.privacy.dataEnabled | string | Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko to możliwe wartości dla tej właściwości to "Włącz", "Disable", ", lub $null. Pozostawienie tej właściwości, puste ani mieć wartości null spowoduje włączenie telemetrii
+| settings.advancedOptions.forcePullAndApply | Bool | To ustawienie jest przeznaczone do zwiększenia środowisko pracy z rozszerzeniem, aby zarejestrować węzłów za pomocą usługi Azure Automation DSC.  Jeśli wartość jest `$true`, rozszerzenie będzie czekać na pierwszym uruchomieniu konfiguracji pobierane z usługi przed zwróceniem Powodzenie/niepowodzenie.  Jeśli ustawiono wartość $false, stanie zwróconym przez rozszerzenie będzie odwoływać się tylko do tego, czy węzeł został zarejestrowany za pomocą usługi Azure Automation stan konfiguracji pomyślnie i konfiguracja węzła nie zostanie uruchomiona podczas rejestracji.
 | settings.advancedOptions.downloadMappings | Collection | Określa alternatywne lokalizacje, aby pobrać zależności, np. programu WMF i .NET
 
 ### <a name="protected-settings-property-values"></a>Chronione wartości ustawienia właściwości
 
 | Name (Nazwa) | Typ danych | Opis
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | ciąg | Określa wszelkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość będą szyfrowane. |
-| protectedSettings.configurationUrlSasToken | ciąg | Określa tokenu sygnatury dostępu Współdzielonego dostępu do adresu URL zdefiniowane przez configuration.url. Ta właściwość będą szyfrowane. |
-| protectedSettings.configurationDataUrlSasToken | ciąg | Określa tokenu sygnatury dostępu Współdzielonego dostępu do adresu URL zdefiniowane przez configurationData.url. Ta właściwość będą szyfrowane. |
+| protectedSettings.configurationArguments | string | Określa wszelkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość będą szyfrowane. |
+| protectedSettings.configurationUrlSasToken | string | Określa tokenu sygnatury dostępu Współdzielonego dostępu do adresu URL zdefiniowane przez configuration.url. Ta właściwość będą szyfrowane. |
+| protectedSettings.configurationDataUrlSasToken | string | Określa tokenu sygnatury dostępu Współdzielonego dostępu do adresu URL zdefiniowane przez configurationData.url. Ta właściwość będą szyfrowane. |
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu

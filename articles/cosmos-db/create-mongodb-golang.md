@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 4a7d8a8df291c1bf4ca527ce2c98a7f9ada79e5f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036039"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586884"
 ---
-# <a name="build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Tworzenie aplikacji konsolowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Golang
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki start: Tworzenie aplikacji konsolowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Golang
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 45d828b32984363f611828ca3ea33e5fa96a5017
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745847"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961894"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Storage Gen1
 
@@ -140,7 +140,7 @@ Jeśli Gen1 magazynu jeziora danych wysyłania dziennika nie jest włączona, Az
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-Gdy właściwość jest ustawiona, i węzły zostaną ponownie uruchomione, Data Lake Storage Gen1 diagnostyki są zapisywane dzienniki usługi YARN w węzłach (/tmp/\<użytkownika\>/yarn.log) oraz ważne szczegóły, takie jak błędy lub ograniczenia przepustowości (kod błędu HTTP 429) może być monitorowane. Informacje te można również monitorować w usłudze Log Analytics lub wszędzie tam, gdzie dzienniki są wysyłane do w [diagnostyki](data-lake-store-diagnostic-logs.md) bloku konta Data Lake Storage Gen1. Zalecane jest co najmniej rejestrowanie po stronie klienta lub korzystanie z opcji z Data Lake Storage Gen1 widoczność operacyjną i ułatwiają debugowanie wysyłania dziennika.
+Gdy właściwość jest ustawiona, i węzły zostaną ponownie uruchomione, Data Lake Storage Gen1 diagnostyki są zapisywane dzienniki usługi YARN w węzłach (/tmp/\<użytkownika\>/yarn.log) oraz ważne szczegóły, takie jak błędy lub ograniczenia przepustowości (kod błędu HTTP 429) może być monitorowane. Informacje te można również monitorować w dzienniki usługi Azure Monitor lub wszędzie tam, gdzie dzienniki są wysyłane do w [diagnostyki](data-lake-store-diagnostic-logs.md) bloku konta Data Lake Storage Gen1. Zalecane jest co najmniej rejestrowanie po stronie klienta lub korzystanie z opcji z Data Lake Storage Gen1 widoczność operacyjną i ułatwiają debugowanie wysyłania dziennika.
 
 ### <a name="run-synthetic-transactions"></a>Uruchamianie transakcji syntetycznych
 

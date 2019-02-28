@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 686e008a83924460b1f85212b5c06796b6bc8217
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354216"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593203"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
@@ -270,7 +270,7 @@ Podczas przenoszenia danych z magazynu danych w sieci prywatnej (lokalnej) do ma
 1. W oknie **Konfiguracja środowiska Integration Runtime** wybierz pozycję **Wykonuj przenoszenie danych i wysyłaj działania do obliczeń zewnętrznych**, a następnie kliknij pozycję **Dalej**. 
 
    ![Wybieranie typu środowiska Integration Runtime](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. Wybierz pozycję ** Sieć prywatna ** i kliknij pozycję **Dalej**. 
+1. Wybierz pozycję **Sieć prywatna** i kliknij pozycję **Dalej**. 
 
    ![Wybór sieci prywatnej](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
 1. Wprowadź ciąg **MySelfHostedIR** w polu **Nazwa** i kliknij pozycję **Dalej**. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28b15e950aa4ebbfcb1b04bfd495b3accf13528e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846680"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586906"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Wprowadzenie do tematów usługi Service Bus
 
@@ -41,40 +41,11 @@ Ten samouczek obejmuje następujące kroki:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Tworzenie przestrzeni nazw za pomocą usługi Azure Portal
-
-> [!NOTE] 
-> Przestrzeń nazw usługi Service Bus i jednostki obsługi komunikatów można tworzyć przy użyciu programu [PowerShell](/powershell/azure/get-started-azureps). Aby uzyskać więcej informacji, zobacz [Use PowerShell to manage Service Bus resources (Używanie programu PowerShell do zarządzania zasobami usługi Service Bus)](service-bus-manage-with-ps.md).
-
-Jeśli przestrzeń nazw obsługi komunikatów usługi Service Bus została już utworzona, przejdź do sekcji [Tworzenie tematu przy użyciu witryny Azure Portal](#2-create-a-topic-using-the-azure-portal).
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Tworzenie tematu przy użyciu witryny Azure Portal
+[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
 
-1. Zaloguj się w witrynie [Azure Portal][azure-portal].
-2. W lewym okienku nawigacji portalu kliknij pozycję **Service Bus** (jeśli pozycja **Service Bus** nie jest widoczna, kliknij pozycję **Wszystkie usługi** lub pozycję **Wszystkie zasoby**). Kliknij przestrzeń nazw, w której chcesz utworzyć temat. 
-3. Zostanie otwarte okno przeglądu przestrzeni nazw. Kliknij pozycję **Tematy**:
-   
-    ![Tworzenie tematu][createtopic1]
-4. Kliknij pozycję **+ Temat**.
-   
-    ![Wybieranie tematów][createtopic2]
-5. Wprowadź nazwę tematu. Pozostaw inne opcje z wartościami domyślnymi.
-   
-    ![Wybieranie nowych kolejek][createtopic3]
-6. W dolnej części okna dialogowego kliknij pozycję **Utwórz**.
-
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Tworzenie subskrypcji tematu
-
-1. W okienku zasobów portalu kliknij przestrzeń nazw utworzoną w kroku 1, a następnie kliknij pozycję **Tematy** i nazwę tematu utworzonego w kroku 2.
-2. W górnej części okienka przeglądu kliknij pozycję **+ Subskrypcja**, aby dodać subskrypcję do tego tematu.
-
-    ![Tworzenie subskrypcji][createtopic4]
-
-3. Wprowadź nazwę subskrypcji. Pozostaw inne opcje z wartościami domyślnymi.
-
-## <a name="4-send-messages-to-the-topic"></a>4. Wysyłanie komunikatów do tematu
+## <a name="send-messages-to-the-topic"></a>Wysyłanie komunikatów do tematu
 
 Aby wysyłać komunikaty do tematu, napisz aplikację konsolową w języku C# za pomocą programu Visual Studio.
 
@@ -231,7 +202,7 @@ Uruchom program Visual Studio i utwórz nowy projekt **Aplikacja konsoli (.NET C
    
       ![Rozmiar komunikatu][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Odbieranie komunikatów z subskrypcji
+## <a name="receive-messages-from-the-subscription"></a>Odbieranie komunikatów z subskrypcji
 
 Aby odbierać komunikaty wysłane w poprzednim kroku, utwórz nową aplikację konsolową .NET Core i zainstaluj pakiet NuGet **Microsoft.Azure.ServiceBus**, podobnie jak w przypadku poprzedniej aplikacji nadawcy.
 

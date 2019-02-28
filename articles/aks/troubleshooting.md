@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 53061d4d09ac2769e59269701467a22f292cd919
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327565"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959769"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 
@@ -63,10 +63,30 @@ Najprostszym sposobem uzyskania dostępu do usługi spoza klastra jest uruchomie
 
 Jeśli nie widzisz pulpit nawigacyjny platformy Kubernetes, sprawdź, czy `kube-proxy` zasobnik jest uruchomiony w `kube-system` przestrzeni nazw. Jeśli nie jest w stanie uruchomienia, usunąć zasobnik i zostanie uruchomiona ponownie.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę uzyskać dzienniki przy użyciu narzędzia kubectl dzienników lub nie można nawiązać połączenia serwera interfejsu API. Otrzymuję "błąd z serwera: błąd podczas wybierania zaplecza: wybierania tcp..." Co mam zrobić?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę uzyskać dzienniki przy użyciu narzędzia kubectl dzienników lub nie można nawiązać połączenia serwera interfejsu API. Otrzymuję "błąd z serwera: błąd podczas wybierania zaplecza: wybierania tcp...". Co mam zrobić?
 
-Upewnij się, że domyślną sieciową grupę zabezpieczeń (NSG) nie jest modyfikowana i że port 22 jest otwarty dla połączenia do serwera interfejsu API. Sprawdź, czy `tunnelfront` zasobnik jest uruchomiony w `kube-system` przestrzeni nazw. Jeśli nie, Wymuś usunięcie zasobnik i zostanie uruchomiony ponownie.
+Upewnij się, że nie jest modyfikowana domyślną sieciową grupę zabezpieczeń i że port 22 jest otwarty dla połączenia do serwera interfejsu API. Sprawdź, czy `tunnelfront` zasobnik jest uruchomiony w *systemu kubernetes* za pomocą nazw `kubectl get pods --namespace kube-system` polecenia. Jeśli nie, Wymuś usunięcie zasobnik i zostanie uruchomiony ponownie.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>I próbuję uaktualnienia lub skalowania i są zwracane "komunikat: Nie można zmienić właściwości "imageReference" "Wystąpił błąd.  Jak rozwiązać ten problem?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>I próbuję uaktualnienia lub skalowania i są zwracane "komunikat: Nie można zmienić właściwości "imageReference" "Wystąpił błąd. Jak rozwiązać ten problem?
 
 Użytkownik może się pojawiać ten błąd ponieważ znaczniki węzły agenta w ramach klastra usługi AKS został zmodyfikowany. Modyfikowanie i usuwanie tagów i innych właściwości zasobów w grupie zasobów MC_ * może prowadzić do nieoczekiwanych wyników. Modyfikowanie zasobów w grupie MC_ * w usłudze AKS klastra przerywa cel poziomu usług (SLO).
+
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Otrzymuję błędy, które Mój klaster jest w stanie niepowodzenia i uaktualnianie i skalowanie nie będzie działać do czasu jego naprawienia
+
+*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z https://aka.ms/aks-cluster-failed*
+
+Ten błąd występuje, gdy klastry przejść w stan nie powiodło się kilka przyczyn. Wykonaj poniższe kroki, aby rozwiązać Nazwa stanu klastra nie powiodło się przed ponowieniem próby wykonania operacji wcześniej zakończonej niepowodzeniem:
+
+1. Dopóki nie jest klastrem `failed` stanu, `upgrade` i `scale` operacji nie powiodło się. Typowe problemy głównego i rozwiązania obejmują:
+    * Skalowanie za pomocą **przydział usługi compute niewystarczające (CRP)**. Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z tymi [zwiększyć kroki, aby żądać przydziału obliczeniowych](../azure-supportability/resource-manager-core-quotas-request.md) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
+    * Skalowanie klastra za pomocą zaawansowanych sieci i **zasoby podsieci niewystarczające (sieć)**. Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z [zwiększyć te kroki, aby żądać przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
+2. Po usunięciu podstawowych przyczyn niepowodzenia uaktualniania klastra powinna być w stanie sukces. Po zweryfikowaniu stanie sukces, spróbuj ponownie wykonać operację.
+
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Otrzymuję błędy podczas próby uaktualnienia lub skali, do stanu klastra jest aktualnie jest uaktualniony lub uaktualnienie nie powiodło się
+
+*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z https://aka.ms/aks-pending-upgrade*
+
+Operacje klastra są ograniczone, podczas aktywnego uaktualniania operacje są wykonywane lub podjęto próbę uaktualnienia, ale następnie nie powiodło się. Aby zdiagnozować problem, uruchom `az aks show -g myResourceGroup -n myAKSCluster -o table` można pobrać szczegółowe informacje o tym w klastrze. Na podstawie wyniku:
+
+* Jeśli klaster jest aktywnie uaktualnienie, poczekaj, aż do zakończenia operacji. Jeśli zakończyło się pomyślnie, spróbuj ponownie operacji wcześniej zakończonej niepowodzeniem.
+* W przypadku niepowodzenia uaktualniania klastra, wykonaj czynności opisane [powyżej](#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade-directed-from-httpsakamsaks-pending-upgrade)

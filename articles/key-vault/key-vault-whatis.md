@@ -1,6 +1,6 @@
 ---
-title: Co to jest usługa Azure Key Vault? — Usługi azure Key Vault | Dokumentacja firmy Microsoft
-description: Usługa Azure Key Vault ochronę kluczy kryptograficznych i wpisów tajnych używanych przez aplikacje w chmurze i usług. Klient może szyfrować klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych. Pliki PFX i hasła przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (HSM).
+title: Co to jest usługa Azure Key Vault? | Microsoft Docs
+description: Dowiedz się, jak usługi Azure Key Vault chroni klucze kryptograficzne i wpisy tajne, które aplikacje i usługi w chmurze Użyj.
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -13,48 +13,57 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: cf45aeb88d9638dd2f0c93bbae0b8ff79b293435
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 48ac0c3efe74723099e87a77871aa1a78834efbd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108113"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958545"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
-Usługa Azure Key Vault pomaga rozwiązać następujące problemy:
+Aplikacje w chmurze i używają kluczy kryptograficznych i wpisów tajnych, aby zapewnić informacje, bezpieczne. Usługa Azure Key Vault chroni klucze i wpisy tajne. Korzystając z usługi Key Vault możesz szyfrować klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych, pliki PFX i hasła przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (HSM).
 
-- **Zarządzanie wpisami tajnymi** — usługi Azure Key Vault pozwala bezpiecznie przechowywać i ściśle kontrolować dostęp do tokenów, hasła, certyfikaty, klucze interfejsu API i innych wpisów tajnych.
-- **Zarządzanie kluczami** — usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
-- **Zarządzanie certyfikatami** — usługa Azure Key Vault pozwala również łatwo aprowizować i wdrażać prywatne i publiczne certyfikaty Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użycia z platformą Azure i połączonymi zasobami wewnętrznymi oraz zarządzać tymi certyfikatami. 
-- **Store wpisów tajnych, wspierane przez sprzętowe moduły zabezpieczeń** — klucze tajne i klucze mogą być chronione przez oprogramowanie lub ze standardem FIPS 140-2 Level 2 weryfikuje sprzętowych modułów zabezpieczeń.
+Key Vault pomaga rozwiązać następujące problemy:
+
+- **Zarządzanie wpisami tajnymi**: Bezpieczne przechowywanie i ściśle kontrolować dostęp do tokenów, hasła, certyfikaty, klucze interfejsu API i innych wpisów tajnych.
+- **Zarządzanie kluczami**: Utwórz i kontrolować klucze szyfrowania, które szyfrowania danych. 
+- **Zarządzanie certyfikatami**: Aprowizacji, zarządzania i wdrażania prywatnych i publicznych certyfikatów Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użytku z platformą Azure i usługi wewnętrznej połączonymi zasobami. 
+- **Wpisy tajne, wspierane przez sprzętowe moduły zabezpieczeń Store**: Użyj oprogramowania lub ze standardem FIPS 140-2 Level 2 zweryfikowane sprzętowych modułów zabezpieczeń, aby lepiej chronić klucze tajne i klucze.
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
 
-Usługa Azure Key Vault jest narzędziem do bezpiecznego przechowywania wpisów tajnych i uzyskiwania do nich dostępu. Wpis tajny to dowolny zasób, do którego dostęp powinien być ściśle kontrolowany. Przykładowe wpisy tajne to klucze interfejsu API, hasła i certyfikaty. A **magazynu** jest logiczną grupą wpisów tajnych. Teraz można wykonywać wszystkie operacje za pomocą usługi Key Vault należy najpierw uwierzytelnić się do niego. 
+Usługa Azure Key Vault jest narzędziem do bezpiecznego przechowywania wpisów tajnych i uzyskiwania do nich dostępu. Wpis tajny to dowolny zasób, do którego dostęp powinien być ściśle kontrolowany. Przykładowe wpisy tajne to klucze interfejsu API, hasła i certyfikaty. Magazyn jest logiczną grupą wpisów tajnych.
 
-Zasadniczo istnieją trzy sposoby uwierzytelniania w usłudze Key Vault:
+Poniżej przedstawiono inne ważne terminy:
 
-1. **Za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)**  (**zalecane i najlepszych praktyk**): Podczas wdrażania aplikacji na maszynie wirtualnej na platformie Azure, można przypisać tożsamość się z maszyną wirtualną, która ma dostęp do usługi Key Vault. Można także przypisać tożsamości do innych zasobów platformy azure, które są wymienione [tutaj](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Korzyści w przypadku tej metody jest aplikacja / Usługa nie zarządza obrót pierwszy klucz tajny. Azure automatycznie przełącza tożsamości. 
-2. **Za pomocą jednostki usługi i certyfikatu:** Drugą opcją jest używać nazwy głównej usługi i jest skojarzony certyfikat, który ma dostęp do usługi Key Vault. Ciężar rotacji certyfikatu znajduje się w właściciela aplikacji lub dla deweloperów i dlatego nie jest to zalecane.
-3. **Przy użyciu nazwy głównej usługi i klucza tajnego:** Trzecia opcja (nie preferowaną opcję) jest używać nazwy głównej usługi i wpisu tajnego do uwierzytelniania w usłudze Key Vault.
+- **Dzierżawa**: Dzierżawa to organizacja, która jest właścicielem i określone wystąpienie usług chmurowych firmy Microsoft. W większości przypadków służy do odwoływania się do zestawu usług platformy Azure i usługi Office 365 dla organizacji.
 
-> [!NOTE]
-> Opcja 3 powyżej nie należy używać, ponieważ trudno automatyczne obracanie bootstrap hasło używane do uwierzytelniania w usłudze Key Vault.
-
-Poniżej przedstawiono niektóre kluczowe terminy:
-
-- **Dzierżawa**: Dzierżawa to organizacja, która jest właścicielem i określone wystąpienie usług chmurowych firmy Microsoft. Tym terminem najczęściej określa się zestaw usług platformy Azure i Office 365 dla organizacji.
 - **Vault właściciel**: Właścicielem magazynu można utworzyć magazyn kluczy i korzystaj z pełnego dostępu i kontroli nad nim. Właściciel magazynu może też skonfigurować inspekcję, aby rejestrować, kto uzyskuje dostęp do wpisów tajnych i kluczy. Administratorzy mogą kontrolować cykl życia klucza. Mogą oni wdrażać nowe wersje klucza, tworzyć jego kopie zapasowe i wykonywać powiązane zadania.
-- **Vault konsumenta**: Konsument magazynu mogą wykonywać akcje na zasoby w magazynie kluczy, właściciela magazynu przyznaje dostęp odbiorców. Dostępne akcje zależą od przyznanych uprawnień.
-- **Zasób**: Zasób jest łatwe w zarządzaniu elementu, który jest dostępny za pośrednictwem platformy Azure. Niektóre typowe zasoby to: maszyna wirtualna, konto magazynu, aplikacja internetowa czy sieć wirtualna. Istnieje ich jednak wiele więcej.
-- **Grupa zasobów**: Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
-- **Nazwa główna usługi** -jednostki usługi platformy Azure to tożsamość zabezpieczeń używana przez aplikacje utworzone przez użytkownika, usługi i narzędzia automatyzacji, dostęp do określonych zasobów platformy Azure. Można ją traktować jako „tożsamość użytkownika” (nazwa logowania i hasło lub certyfikat) z określoną rolą i ściśle kontrolowanymi uprawnieniami. W odróżnieniu od ogólnej tożsamości użytkownika, jednostka usługi powinna wykonywać tylko określone czynności. Nazwa główna usługi pozwala poprawić bezpieczeństwo, jeśli przyznasz jej tylko minimalny poziom uprawnień potrzebny do wykonywania zadań zarządzania.
-- **[Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md)**: Usługa Azure AD jest usługa Active Directory dla dzierżawy. Każdy katalog ma co najmniej jedną domenę. Katalog może mieć wiele skojarzonych subskrypcji, ale tylko jedną dzierżawę. 
-- **Identyfikator dzierżawy usługi Azure**: Identyfikator dzierżawy jest nietypowy sposób do identyfikowania wystąpienia usługi Azure AD w ramach subskrypcji platformy Azure.
-- **Zarządzane tożsamości dla zasobów platformy Azure**: Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Za pomocą tożsamości zarządzanej sprawia, że rozwiązywania tego problemu, prostsze, zapewniając tożsamości automatycznie zarządzanych usług platformy Azure w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w usłudze Key Vault lub dowolnej innej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie. Aby uzyskać więcej informacji, zobacz poniższy obraz i [zarządzanych tożsamości dla zasobów platformy Azure — omówienie](../active-directory/managed-identities-azure-resources/overview.md).
 
-    ![Diagram przedstawiający sposób zarządzać tożsamościami do pracy z zasobami platformy Azure](./media/key-vault-whatis/msi.png)
+- **Vault konsumenta**: Konsument magazynu mogą wykonywać akcje na zasoby w magazynie kluczy, właściciela magazynu przyznaje dostęp odbiorców. Dostępne akcje zależą od przyznanych uprawnień.
+
+- **Zasób**: Zasób jest łatwe w zarządzaniu elementu, który jest dostępny za pośrednictwem platformy Azure. Typowe przykłady to maszyna wirtualna, konto magazynu, aplikacji sieci web, bazy danych i sieci wirtualnej. Istnieje wiele innych.
+
+- **Grupa zasobów**: Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
+
+- **Nazwa główna usługi**: Jednostka usługi platformy Azure to tożsamość zabezpieczeń, która umożliwia dostęp do określonych zasobów platformy Azure utworzone przez użytkownika aplikacji, usług i narzędzi automatyzacji. Ją traktować jako "tożsamość użytkownika" (nazwa użytkownika i hasło lub certyfikat) z określoną rolą i ściśle kontrolowanymi uprawnieniami. W odróżnieniu od ogólnej tożsamości użytkownika, jednostka usługi powinna wykonywać tylko określone czynności. Zwiększa bezpieczeństwo, gdy przyznasz jej tylko poziom minimalne uprawnienia wymagane do wykonywania zadań zarządzania.
+
+- [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md): Usługa Azure AD jest usługa Active Directory dla dzierżawy. Każdy katalog ma co najmniej jedną domenę. Katalog może mieć wiele skojarzonych subskrypcji, ale tylko jedną dzierżawę.
+
+- **Identyfikator dzierżawy usługi Azure**: Identyfikator dzierżawy jest nietypowy sposób do identyfikowania wystąpienia usługi Azure AD w ramach subskrypcji platformy Azure.
+
+- **Zarządzane tożsamości**: Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Za pomocą tożsamości zarządzanej sprawia, że rozwiązywania tego problemu, prostsze, zapewniając tożsamości automatycznie zarządzanych usług platformy Azure w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w usłudze Key Vault lub dowolnej innej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie. Aby uzyskać więcej informacji, zobacz poniższy obraz i [Przegląd zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
+
+    ![Diagram przedstawiający sposób zarządzanych tożsamości do pracy z zasobami platformy Azure](./media/key-vault-whatis/msi.png)
+
+## <a name="authentication"></a>Authentication
+Aby wykonać dowolne operacje w usłudze Key Vault, należy najpierw uwierzytelnić się do niego. Istnieją trzy sposoby uwierzytelniania w usłudze Key Vault:
+
+- [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview): Podczas wdrażania aplikacji na maszynie wirtualnej na platformie Azure, można przypisać tożsamość się z maszyną wirtualną, która ma dostęp do usługi Key Vault. Można także przypisać tożsamości [innych zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Zaletą tego podejścia jest to, że aplikacja lub usługa nie jest zarządzanie obrót pierwszy wpis tajny. Azure automatycznie przełącza tożsamości. Najlepszym rozwiązaniem jest firma Microsoft zaleca tego podejścia. 
+- **Podmiot zabezpieczeń i certyfikat usługi**: Można użyć nazwy głównej usługi i jest skojarzony certyfikat, który ma dostęp do usługi Key Vault. Nie zalecamy tego podejścia, ponieważ właściciel aplikacji lub deweloper musi Obróć certyfikatu
+- **Nazwa główna usługi i klucza tajnego**: Chociaż można używać nazwy głównej usługi i klucza tajnego do uwierzytelniania w usłudze Key Vault, nie zalecamy tego. Trudno jest automatyczna rotacja ładowania początkowego klucza tajnego, który jest używany do uwierzytelniania w usłudze Key Vault.
+
 
 ## <a name="key-vault-roles"></a>Role usługi Key Vault
 
@@ -62,11 +71,11 @@ Użyj poniższej tabeli, aby lepiej zrozumieć, w jaki sposób usługa Key Vault
 
 | Rola | Opis problemu | Rozwiązanie usługi Azure Key Vault |
 | --- | --- | --- |
-| Deweloper aplikacji platformy Azure |„Chcę napisać aplikację dla platformy Azure, która używa kluczy do logowania i szyfrowania, ale chcę, żeby te klucze znajdowały się poza moją aplikacją tak, aby rozwiązanie było odpowiednie dla aplikacji rozproszonej geograficznie. <br/><br/>Chcę także, aby klucze i wpisy tajne były chronione, ale bez konieczności samodzielnego pisania kodu. Powinny też być łatwe w użyciu w moich aplikacjach i mieć optymalną wydajność”. |√ Klucze są przechowywane w magazynie i w razie potrzeby wywoływane przez identyfikator URI.<br/><br/> √ Klucze są chronione przez platformę Azure przy użyciu branżowych standardów dotyczących algorytmów, długości klucza i sprzętowych modułów zabezpieczeń (HSM, hardware security module).<br/><br/> √ Klucze są przetwarzane w modułach HSM, które znajdują się w tych samych centrach danych platformy Azure co aplikacje. Ta metoda zapewnia większą niezawodność i mniejsze opóźnienia niż klucze przechowywane w osobnej lokalizacji, na przykład lokalnie. |
-| Deweloper oprogramowania jako usługi (SaaS) |„Nie chcę ponosić odpowiedzialności ani mieć potencjalnych problemów względem kluczy i kluczy tajnych dzierżawy moich klientów. <br/><br/>Chcę, aby klienci mogli niezależnie zarządzać swoimi kluczami. Dzięki temu będę w stanie się skupić na tym, co robię najlepiej – na tworzeniu podstawowych funkcji oprogramowania”. |√ Klienci mogą importować własne klucze do platformy Azure i zarządzać nimi. Gdy aplikacja SaaS musi wykonać operacje kryptograficzne przy użyciu kluczy swoich klientów, usługa Key Vault wykonuje te operacje w jej imieniu. Aplikacja nie ma wglądu w klucze klientów. |
+| Deweloper aplikacji platformy Azure |"Chcę napisać aplikację dla platformy Azure, która używa kluczy do podpisywania i szyfrowania. Ale chcę, aby te klucze znajdowały się poza moją aplikacją tak, aby rozwiązanie było odpowiednie dla aplikacji rozproszonej geograficznie. <br/><br/>Chcę także, aby klucze i wpisy tajne były chronione, ale bez konieczności samodzielnego pisania kodu. Powinny też być łatwe w użyciu w moich aplikacjach i mieć optymalną wydajność”. |√ Klucze są przechowywane w magazynie i w razie potrzeby wywoływane przez identyfikator URI.<br/><br/> √ Klucze są chronione przez platformę Azure przy użyciu branżowych standardów dotyczących algorytmów, długości klucza i sprzętowych modułów zabezpieczeń (HSM, hardware security module).<br/><br/> √ Klucze są przetwarzane w modułach HSM, które znajdują się w tych samych centrach danych platformy Azure co aplikacje. Ta metoda zapewnia większą niezawodność i mniejsze opóźnienia niż klucze przechowywane w osobnej lokalizacji, na przykład lokalnie. |
+| Deweloper oprogramowania jako usługi (SaaS) |„Nie chcę ponosić odpowiedzialności ani mieć potencjalnych problemów względem kluczy i kluczy tajnych dzierżawy moich klientów. <br/><br/>Chcę, aby klienci mogli niezależnie zarządzać swoimi kluczami. Dzięki temu będę w stanie się skupić na tym, co robię najlepiej – na tworzeniu podstawowych funkcji oprogramowania”. |√ Klienci mogą importować własne klucze do platformy Azure i zarządzać nimi. Gdy aplikacja SaaS musi wykonać operacje kryptograficzne przy użyciu kluczy klientów, usługa Key Vault wykonuje te operacje w imieniu aplikacji. Aplikacja nie ma wglądu w klucze klientów. |
 | Chief Security Officer (CSO) |„Chcę wiedzieć, że nasze aplikacje są zgodne z modułami HSM w trybie FIPS 140-2 poziom 2 w celu bezpiecznego zarządzania kluczami. <br/><br/>Chcę się upewnić, że moja organizacja kontroluje cykl życia klucza i monitoruje jego użycie. <br/><br/>I chociaż korzystamy z wielu usług i zasobów platformy Azure, chcę mieć możliwość zarządzania kluczami z jednej lokalizacji na platformie Azure”. |√ Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2.<br/><br/>√ Usługa Key Vault jest zaprojektowana w taki sposób, aby firma Microsoft nie miała wglądu w Twoje klucze ani nie mogła ich wyodrębnić.<br/><br/>√ Użycie klucza jest rejestrowane w czasie niemal rzeczywistym.<br/><br/>√ Magazyn zapewnia jeden interfejs, niezależnie od tego, jak wiele magazynów masz na platformie Azure, które regiony są przez nie obsługiwane oraz które aplikacje ich używają. |
 
-Każdy posiadacz subskrypcji Azure może tworzyć magazyny kluczy i z nich korzystać. Mimo że usługa Key Vault przynosi korzyści głównie deweloperom i administratorom zabezpieczeń, może być wdrażana i zarządzana przez administratora organizacji, który zarządza innymi usługami platformy Azure dla organizacji. Administrator może na przykład zalogować się przy użyciu subskrypcji platformy Azure, utworzyć dla organizacji magazyn, w którym będą przechowywane klucze, a następnie odpowiadać za takie zadania operacyjne jak:
+Każdy posiadacz subskrypcji Azure może tworzyć magazyny kluczy i z nich korzystać. Mimo że usługa Key Vault przynosi korzyści deweloperom i administratorom zabezpieczeń, można zaimplementować i zarządzane przez administratora organizacji, który zarządza innymi usługami platformy Azure. Na przykład administrator może zalogować się przy użyciu subskrypcji platformy Azure, utworzyć magazyn dla organizacji, w której chcesz przechowywać klucze, a następnie odpowiedzialne za zadania operacyjne, takie jak te:
 
 - Tworzenie lub importowanie klucza lub klucza tajnego
 - Odwoływanie lub usuwanie klucza lub klucza tajnego
@@ -74,7 +83,7 @@ Każdy posiadacz subskrypcji Azure może tworzyć magazyny kluczy i z nich korzy
 - Konfigurowanie użycia klucza (na przykład rejestrowanie lub szyfrowanie)
 - Monitorowanie użycia klucza
 
-Administrator może następnie dostarczyć deweloperom identyfikatory URI w celu wywoływania z aplikacji oraz dostarczyć administratorom zabezpieczeń informacje o rejestrowaniu użycia klucza. 
+Administrator daje deweloperom identyfikatory URI w celu wywoływania z aplikacji. Administrator ten zawiera też informacje rejestrowania użycia klucza do administratora zabezpieczeń. 
 
 ![Omówienie sposobu działania usługi Azure Key Vault][1]
 
@@ -82,7 +91,7 @@ Deweloperzy mogą również zarządzać kluczami bezpośrednio za pomocą interf
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [zabezpieczanie własnego magazynu](key-vault-secure-your-key-vault.md)
+Dowiedz się, jak [zabezpieczanie własnego magazynu](key-vault-secure-your-key-vault.md).
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png

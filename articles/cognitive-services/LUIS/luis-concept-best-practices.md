@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428911"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984207"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
 Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS. 
@@ -78,7 +78,9 @@ Więcej informacji:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Dodawanie listy frazy i wzorców w późniejszej iteracji
 
-Najlepszym rozwiązaniem jest nie chcesz stosować te rozwiązania przed aplikacja została przetestowana. Należy zrozumieć sposób działania aplikacji przed dodaniem list frazy i wzorce. Po zapoznaniu się, jak aplikacja zachowuje się bez nich, należy dodać każdą z tych funkcji odnoszących się do aplikacji. Nie trzeba dodawać te funkcje z każdym [iteracji](luis-concept-app-iteration.md) lub zmieniać funkcje z każdą wersją. 
+Najlepszym rozwiązaniem jest nie chcesz stosować te rozwiązania przed aplikacja została przetestowana. Należy zrozumieć sposób działania aplikacji przed dodaniem list frazy i wzorce, ponieważ te funkcje mają większą wagę niż przykład wypowiedzi i będzie pochylanie zaufania. 
+
+Po zapoznaniu się, jak aplikacja zachowuje się bez nich, należy dodać każdą z tych funkcji odnoszących się do aplikacji. Nie trzeba dodawać te funkcje z każdym [iteracji](luis-concept-app-iteration.md) lub zmieniać funkcje z każdą wersją. 
 
 Nie powoduje żadnych problemów, dodając je na początku projektu modelu, ale znacznie łatwiej zobaczyć każdej funkcji zmiany wyników po wypowiedzi została przetestowana dla modelu. 
 

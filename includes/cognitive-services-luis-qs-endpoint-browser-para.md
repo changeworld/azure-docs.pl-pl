@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 1b70c5e71c585524579171782dfdeda308592b30
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 67c95ffcdbdbcfbb9a86e15c91d984953d7bbffc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478694"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741292"
 ---
 Aby zrozumieć, co zwraca punkt końcowy przewidywania usługi LUIS, wyświetl wynik przewidywania w przeglądarce internetowej. Aby wysyłać zapytania do aplikacji publicznej, potrzebny jest własny klucz i identyfikator aplikacji. Publiczny identyfikator aplikacji IoT (`df67dcdb-c37d-46af-88e1-8b97951ca1c2`) jest udostępniany jako część adresu URL w pierwszym kroku.
 

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązanie do monitorowania programu VMware w usłudze Log Analytics | Dokumentacja firmy Microsoft
+title: Rozwiązanie do monitorowania programu VMware w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o tym, jak to rozwiązanie monitorowanie VMware mogą ułatwić zarządzanie dziennikami i monitorowanie hostów ESXi.
 services: log-analytics
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9f5bdc3686e35f09b461bd5c2df695218b48ede3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92889708df2df06096ac74d6f270af990d02c07a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993371"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984258"
 ---
-# <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
+# <a name="vmware-monitoring-preview-solution-in-azure-monitor"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Azure Monitor
 
 ![Symbol programu VMware](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
 > To rozwiązanie monitorowanie VMware jest przestarzała.  Klienci, którzy już zainstalowano rozwiązania można nadal z niego korzystać, ale monitorowanie VMware nie można dodać do żadnych nowych obszarów roboczych.
 
-Rozwiązanie monitorowanie VMware w usłudze Log Analytics to rozwiązanie, które pomaga w utworzeniu scentralizowanego rejestrowania i monitorowania podejście do dużych dzienników oprogramowania VMware. W tym artykule opisano, jak można rozwiązać, przechwytywania i zarządzać hostów ESXi w obrębie jednej lokalizacji za pomocą rozwiązania. Dzięki rozwiązaniu można poznać szczegółowe dane dla wszystkich hostów ESXi w obrębie jednej lokalizacji. Widać, liczby najważniejszych zdarzeń, stanu i trendów maszyn wirtualnych i ESXi hostów, oferowana w ramach dzienniki hostów ESXi. Można rozwiązać, wyświetlania i przeszukiwania scentralizowanych dzienników hostów ESXi. Ponadto możesz utworzyć alerty w oparciu o zapytań funkcji przeszukiwania dzienników.
+Rozwiązanie monitorowanie VMware w usłudze Azure Monitor to rozwiązanie, które pomaga w utworzeniu scentralizowanego rejestrowania i monitorowania podejście do dużych dzienników oprogramowania VMware. W tym artykule opisano, jak można rozwiązać, przechwytywania i zarządzać hostów ESXi w obrębie jednej lokalizacji za pomocą rozwiązania. Dzięki rozwiązaniu można poznać szczegółowe dane dla wszystkich hostów ESXi w obrębie jednej lokalizacji. Widać, liczby najważniejszych zdarzeń, stanu i trendów maszyn wirtualnych i ESXi hostów, oferowana w ramach dzienniki hostów ESXi. Można rozwiązać, wyświetlania i przeszukiwania scentralizowanych dzienników hostów ESXi. Ponadto możesz utworzyć alerty w oparciu o zapytań funkcji przeszukiwania dzienników.
 
-Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania danych do docelowej maszyny Wirtualnej, która ma agenta usługi Log Analytics. Jednak to rozwiązanie nie zapisywać pliki do usługi syslog w ramach docelowej maszyny Wirtualnej. Agent usługi Log Analytics otwiera port 1514 i nasłuchuje tej. Po odebraniu danych, agenta usługi Log Analytics wypycha dane do usługi Log Analytics.
+Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania danych do docelowej maszyny Wirtualnej, która ma agenta usługi Log Analytics. Jednak to rozwiązanie nie zapisywać pliki do usługi syslog w ramach docelowej maszyny Wirtualnej. Agent usługi Log Analytics otwiera port 1514 i nasłuchuje tej. Po odebraniu danych, agenta usługi Log Analytics wypycha dane do usługi Azure Monitor.
 
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
@@ -71,7 +71,7 @@ Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie da
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. W witrynie Azure portal, wykonaj wyszukiwanie w dzienniku `VMware_CL`. Log Analytics zbiera dane usługi syslog, zachowuje formatu syslog. W portalu, niektóre określonych pól są przechwytywane, takich jak *Hostname* i *ProcessName*.  
+1. W witrynie Azure portal, wykonaj zapytanie dziennika `VMware_CL`. Usługi Azure Monitor umożliwia zbieranie danych z serwera syslog, zachowuje formatu syslog. W portalu, niektóre określonych pól są przechwytywane, takich jak *Hostname* i *ProcessName*.  
 
     ![type](./media/vmware/type.png)  
 
@@ -129,7 +129,7 @@ W **VMware** widoku pulpitu nawigacyjnego bloki są uporządkowane według:
 
 Kliknij przycisk bloku, aby otworzyć okienko wyszukiwania usługi Log Analytics, która zawiera szczegółowe informacje specyficzne dla bloku.
 
-W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../log-query/log-query-overview.md).
+W tym miejscu możesz edytować zapytanie dziennika, aby go zmodyfikować, aby określonego elementu. Aby uzyskać szczegółowe informacje na temat tworzenia dziennika zapytań, zobacz [znaleźć dane przy użyciu zapytań dzienników w usłudze Azure Monitor](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Znajdź wydarzenia hosta ESXi
 Jeden host ESXi generuje wiele dzienników, w oparciu o ich procesów. To rozwiązanie monitorowanie VMware centralizuje je i zawiera podsumowanie liczby zdarzeń. To scentralizowany widok pomaga zrozumieć, które hostów ESXi ma dużej liczby zdarzeń i jakie zdarzenia występują najczęściej w danym środowisku.
@@ -151,14 +151,14 @@ Jeśli chcesz wyświetlić dodatkowe dane tworzenia maszyny Wirtualnej hosta ESX
 
 ![Przechodzenie do szczegółów](./media/vmware/createvm.png)
 
-#### <a name="common-search-queries"></a>Typowe zapytania wyszukiwania
+#### <a name="common-log-queries"></a>Typowe zapytania dotyczące dziennika
 Rozwiązanie zawiera inne przydatne zapytania, które mogą pomóc Ci w zarządzaniu hostów ESXi, takie jak miejsce do magazynowania o wysokiej, opóźnienie magazynu i ścieżka błędu.
 
 ![— zapytania](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Zapisywanie zapytań
-Zapisywanie zapytań wyszukiwania jest funkcją standard w usłudze Log Analytics i ułatwia przechowywanie żadnych zapytań, które znajdziesz przydatne. Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione**. Zapisane zapytanie pozwala z łatwością wykorzystać ją później [Mój pulpit nawigacyjny](../learn/tutorial-logs-dashboards.md) strony, w którym można utworzyć własne niestandardowe pulpity nawigacyjne.
+Zapisywanie dziennika zapytań jest funkcją standard w usłudze Azure Monitor i ułatwia przechowywanie żadnych zapytań, które znajdziesz przydatne. Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione**. Zapisane zapytanie pozwala z łatwością wykorzystać ją później [Mój pulpit nawigacyjny](../learn/tutorial-logs-dashboards.md) strony, w którym można utworzyć własne niestandardowe pulpity nawigacyjne.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 

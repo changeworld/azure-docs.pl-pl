@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: ba9dbeb01be5a9869b69836b118651cff7f0c92d
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 1bb729ecd532edf20a116c88a4773a6bb6617767
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750552"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959208"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -42,7 +42,7 @@ Gdy jest to możliwe, należą do nich stanowi dla obu wersji 3.x i wersji 2.x.
 >
 > Aby uzyskać więcej informacji, zobacz [porównanie zestawu SDK usługi WebJobs i usługi Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-## <a name="webhobs-host"></a>WebHobs hosta
+## <a name="webjobs-host"></a>Host usługi WebJobs
 
 Host jest kontener środowiska uruchomieniowego dla funkcji.  Nasłuchuje wyzwalaczy i wywołania funkcji. W wersji 3.x, host jest implementacją `IHost`i w wersji 2.x, możesz użyć `JobHost` obiektu. Utwórz wystąpienie hosta w kodzie i napisać kod, aby dostosować jego zachowanie.
 

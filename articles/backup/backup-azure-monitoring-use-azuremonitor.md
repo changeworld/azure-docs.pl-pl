@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 35ac69c4e61c370c72a7d503920e02ff7258ed60
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e7b1b3e3fba04276fc284fd71adabedc01185251
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885319"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984819"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -28,6 +28,9 @@ ms.locfileid: "56885319"
 
 ## <a name="using-log-analytics-workspace"></a>Za pomocą obszaru roboczego usługi Log Analytics
 
+> [!NOTE]
+> Dane z usługi Azure kopie zapasowe maszyn wirtualnych, agenta MAB programu System Center DPM (SC-DPM) to są kierowane do obszaru roboczego usługi Log Analytics, za pomocą ustawień diagnostycznych. Obsługa kopii zapasowych SQL na maszynach wirtualnych Azure, kopiami zapasowymi udziałów plików platformy Azure, Microsoft Azure Backup Server (MABS) będzie dostępna wkrótce.
+
 Firma Microsoft korzysta z możliwości usług platformy Azure, dwóch - **ustawień diagnostycznych** (w celu wysyłania danych z wielu zasobów usługi Azure Resource Manager do innego zasobu) i **usługi Log Analytics** (LA — w celu wygenerowania niestandardowe alerty, w którym można zdefiniować innych kanałów powiadomień przy użyciu grup akcji) do monitorowania na dużą skalę. W poniższych sekcjach szczegółowo o tym, jak używać LA do monitorowania usługi Azure Backup na dużą skalę.
 
 ### <a name="configuring-diagnostic-settings"></a>Konfigurowanie ustawień diagnostycznych
@@ -39,7 +42,7 @@ Zasób usługi Azure Resource Manager, takie jak magazyn usługi Azure Recovery 
 Możesz wybrać obszar roboczy LA z innej subskrypcji, jako element docelowy. *Wybranie tego samego obszaru roboczego LA wiele magazynów RS, można monitorować magazyny w subskrypcjach w jednym miejscu.* Wybierz pozycję "AzureBackupReport" do logowania w witrynie Channel wszystkie informacje, do obszaru roboczego LA związane z usługi Azure Backup.
 
 > [!IMPORTANT]
-> Po zakończeniu konfiguracji należy Poczekaj 24 godziny do wypychania danych początkowych zakończyć. Dzięki temu wszystkie zdarzenia są przekazywane w każdym przypadku, gdy są one generowane (które może przełożyć na ogólne opóźnienie 15 – 20 minut). Aby uzyskać bardzo często operacje, takie jak kopie zapasowe dziennika z obciążeń bazy danych, takich jak SQL, partii i wysyłane co X mins
+> Po zakończeniu konfiguracji należy Poczekaj 24 godziny do wypychania danych początkowych zakończyć. Dzięki temu wszystkie zdarzenia są wypychane zgodnie z opisem w [sekcji częstotliwość](#diagnostic-data-update-frequency).
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Wdrażanie rozwiązania do obszaru roboczego usługi Log Analytics
 

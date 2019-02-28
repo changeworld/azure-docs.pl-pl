@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454654"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959939"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ręcznie dodaj konto do aplikacji
 Jeśli aparat fotograficzny nie może przechwytywać kod QR, można ręcznie dodawać informacje o Twoim koncie do aplikacji Microsoft Authenticator podczas weryfikacji two-Factor Authentication. Działa to w przypadku pracy lub kont służbowych i kont innych niż Microsoft.
@@ -102,5 +102,7 @@ Przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie ko
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Po dodaniu konta do aplikacji, można zalogować się przy użyciu aplikacji Microsoft Authenticator na urządzeniu. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu aplikacji](user-help-auth-app-sign-in.md).
+
+- Jeśli występują problemy z przejściem Twój kod weryfikacyjny dla Twojego osobistego konta Microsoft, zobacz **Rozwiązywanie problemów z kodem weryfikacji** części [zabezpieczające dla konta Microsoft i weryfikacja kody](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) artykułu.
 
 - Dla urządzeń z systemem iOS można również wykonać kopię zapasową poświadczeń konta usługi i powiązane ustawienia aplikacji, takie jak kolejność Twoje konta z chmurą. Aby uzyskać więcej informacji, zobacz [tworzenia kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

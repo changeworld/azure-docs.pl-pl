@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045485"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959138"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Analytics
 
@@ -41,7 +41,7 @@ Rejestrowanie diagnostyczne można zbierać ślady inspekcji dostępu do danych.
 
      * Wybierz **Stream do usługi Event Hub** przesyłanie strumieniowe dzienników danych do usługi Azure Event Hub. Użyj tej opcji, jeśli masz potok przetwarzania transmisji dla klientów, który analizuje przychodzące dzienników w czasie rzeczywistym. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla usługi Azure Event Hub, którego chcesz użyć.
 
-     * Wybierz __wysyłanie do usługi Log Analytics__ do wysyłania danych do usługi Log Analytics. Użyj tej opcji, jeśli chcesz użyć usługi Log Analytics można zbierać i analizować dzienniki.
+     * Wybierz __wysyłanie do usługi Log Analytics__ do wysyłania danych do usługi Azure Monitor. Użyj tej opcji, jeśli chcesz używać dzienników usługi Azure Monitor do zbierania i analizowania dzienników.
    * Określ, czy chcesz pobrać dzienniki inspekcji, dzienniki żądania lub obu.  Dziennik żądań przechwytuje każde żądanie interfejsu API. Dziennik inspekcji rejestruje wszystkie operacje, które są wyzwalane przez żądanie tego interfejsu API.
 
    * Aby uzyskać __Zarchiwizuj na koncie magazynu__, określ liczbę dni przechowywania danych.
@@ -127,13 +127,13 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| time |Ciąg |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |Ciąg |Identyfikator zasobu, która trwała operacja umieść na |
-| category |Ciąg |Kategoria dziennika. Na przykład **żądań**. |
-| operationName |Ciąg |Nazwa operacji, który jest zalogowany. Na przykład GetAggregatedJobHistory. |
-| resultType |Ciąg |Stan operacji, na przykład 200. |
-| callerIpAddress |Ciąg |Adres IP klienta wysyłającego żądanie |
-| correlationId |Ciąg |Identyfikator dziennika. Ta wartość może służyć do grupowania zbiór wpisów dziennika powiązane. |
+| time |String |Znacznik czasu (w formacie UTC) dziennika |
+| resourceId |String |Identyfikator zasobu, która trwała operacja umieść na |
+| category |String |Kategoria dziennika. Na przykład **żądań**. |
+| operationName |String |Nazwa operacji, który jest zalogowany. Na przykład GetAggregatedJobHistory. |
+| resultType |String |Stan operacji, na przykład 200. |
+| callerIpAddress |String |Adres IP klienta wysyłającego żądanie |
+| correlationId |String |Identyfikator dziennika. Ta wartość może służyć do grupowania zbiór wpisów dziennika powiązane. |
 | identity |Obiekt |Tożsamość, która wygenerowała dziennika |
 | properties |JSON |W następnej sekcji (schemat właściwości dziennika żądania) Aby uzyskać szczegółowe informacje |
 
@@ -141,12 +141,12 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| HttpMethod |Ciąg |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
-| Ścieżka |Ciąg |Ścieżka operacja została wykonana w |
-| RequestContentLength |Int |Długość zawartości żądania HTTP |
-| ClientRequestId |Ciąg |Identyfikator, który unikatowo identyfikuje tego żądania |
-| Godzina rozpoczęcia |Ciąg |Czas, w którym serwer odebrał żądanie |
-| Godzina zakończenia |Ciąg |Czas wysłanego przez serwer odpowiedzi |
+| HttpMethod |String |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
+| Ścieżka |String |Ścieżka operacja została wykonana w |
+| RequestContentLength |int |Długość zawartości żądania HTTP |
+| ClientRequestId |String |Identyfikator, który unikatowo identyfikuje tego żądania |
+| Godzina rozpoczęcia |String |Czas, w którym serwer odebrał żądanie |
+| Godzina zakończenia |String |Czas wysłanego przez serwer odpowiedzi |
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 
@@ -179,13 +179,13 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| time |Ciąg |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |Ciąg |Identyfikator zasobu, która trwała operacja umieść na |
-| category |Ciąg |Kategoria dziennika. Na przykład **inspekcji**. |
-| operationName |Ciąg |Nazwa operacji, który jest zalogowany. Na przykład JobSubmitted. |
-| resultType |Ciąg |Podstan stan zadania (operationName). |
-| resultSignature |Ciąg |Więcej informacji na temat stanu zadania (operationName). |
-| identity |Ciąg |Użytkownik, który zażądał operacji. Na przykład susan@contoso.com. |
+| time |String |Znacznik czasu (w formacie UTC) dziennika |
+| resourceId |String |Identyfikator zasobu, która trwała operacja umieść na |
+| category |String |Kategoria dziennika. Na przykład **inspekcji**. |
+| operationName |String |Nazwa operacji, który jest zalogowany. Na przykład JobSubmitted. |
+| resultType |String |Podstan stan zadania (operationName). |
+| resultSignature |String |Więcej informacji na temat stanu zadania (operationName). |
+| identity |String |Użytkownik, który zażądał operacji. Na przykład susan@contoso.com. |
 | properties |JSON |W następnej sekcji (schemat właściwości dziennika inspekcji) Aby uzyskać szczegółowe informacje |
 
 > [!NOTE]
@@ -197,13 +197,13 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| JobId |Ciąg |Identyfikator przypisany do zlecenia |
-| JobName |Ciąg |Nazwa która została podana dla zadania |
-| JobRunTime |Ciąg |Środowiska uruchomieniowego użytego do przetworzenia zadania |
-| Godzina przesłania |Ciąg |Czas (w formacie UTC), które przesłano zadanie |
-| Godzina rozpoczęcia |Ciąg |Uruchomienia zadania uruchamiania po przesłaniu wizualizacji (w formacie UTC) |
-| Godzina zakończenia |Ciąg |Czas zakończenia zadania |
-| Równoległość |Ciąg |Liczba wymagane dla tego zadania podczas przesyłania jednostki usługi Data Lake Analytics |
+| JobId |String |Identyfikator przypisany do zlecenia |
+| JobName |String |Nazwa która została podana dla zadania |
+| JobRunTime |String |Środowiska uruchomieniowego użytego do przetworzenia zadania |
+| Godzina przesłania |String |Czas (w formacie UTC), które przesłano zadanie |
+| Godzina rozpoczęcia |String |Uruchomienia zadania uruchamiania po przesłaniu wizualizacji (w formacie UTC) |
+| Godzina zakończenia |String |Czas zakończenia zadania |
+| Równoległość |String |Liczba wymagane dla tego zadania podczas przesyłania jednostki usługi Data Lake Analytics |
 
 > [!NOTE]
 > **SubmitTime**, **StartTime**, **EndTime**, i **równoległości** zawierają informacje na temat operacji. Te wpisy tylko zawierać wartości, jeśli operacja ma rozpoczęciu lub zakończeniu, które. Na przykład **SubmitTime** zawiera tylko wartości po **operationName** ma wartość **JobSubmitted**.

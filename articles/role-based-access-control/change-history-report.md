@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 5a06b7f66742ad7e97e4ae2ab57aabf15f21faf3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338818"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957742"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Wyświetlanie dzienników aktywności dla zmian RBAC do zasobów platformy Azure
 
@@ -108,9 +108,9 @@ To polecenie wyświetla listę dzienników aktywności dla dostawcy zasobów aut
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-[Usługa Azure Log Analytics](../log-analytics/log-analytics-overview.md) to kolejne narzędzie, które umożliwia zbieranie i analizowanie zmian RBAC dla wszystkich zasobów platformy Azure. Usługa log Analytics ma następujące zalety:
+[Dzienniki platformy Azure Monitor](../log-analytics/log-analytics-overview.md) to kolejne narzędzie, które umożliwia zbieranie i analizowanie zmian RBAC dla wszystkich zasobów platformy Azure. Dzienniki platformy Azure Monitor ma następujące zalety:
 
 - Zapis złożonych kwerend i Logic Apps
 - Integracja z alertów, usługa Power BI i innymi narzędziami

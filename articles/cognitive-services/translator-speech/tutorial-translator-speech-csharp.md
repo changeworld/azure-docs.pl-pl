@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 383e17e0a9e60b52a63420af19c2bca4337083d4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876916"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673755"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Samouczek: Aplikacja z użyciem interfejsu API tłumaczenia mowy w usłudze Translator w języku C#
 
@@ -33,7 +34,7 @@ Plik rozwiązania Visual Studio dla tej aplikacji jest [dostępny w witrynie Git
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do celów tego samouczka potrzebna jest dowolna wersja programu Visual Studio 2017, na przykład wersja Community Edition. 
+Do celów tego samouczka potrzebna jest dowolna wersja programu Visual Studio 2017, na przykład wersja Community Edition.
 
 Rozwiązanie programu Visual Studio kompiluje również instalator aplikacji. Do obsługi tej funkcji potrzebne są również [zestaw narzędzi programu WiX](http://wixtoolset.org/) i [rozszerzenie programu Visual Studio zestawu narzędzi programu WiX](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 
@@ -63,7 +64,7 @@ W momencie pisania tego artykułu interfejs API tłumaczenia mowy w usłudze Tra
 
 Innymi słowy, w przypadku tłumaczenia mowy wymagana jest obsługa transkrypcji w języku źródłowym. Językiem wyjściowym może być dowolny język, w przypadku którego jest obsługiwane tłumaczenie — pod warunkiem, że chcesz uzyskać wynik w formie tekstu. Jeśli chcesz uzyskać wynik w formie mówionej, możesz wybrać wyłącznie język, w przypadku którego jest obsługiwana zamiana tekstu na mowę.
 
-Od czasu do czasu firma Microsoft może dodawać obsługę nowych języków. Z tego powodu nie należy kodować w aplikacji żadnych informacji na temat obsługiwanych języków. Interfejs API tłumaczenia mowy w usłudze Translator udostępnia punkt końcowy Languages (Języki), który umożliwia pobieranie obsługiwanych języków w środowisku uruchomieniowym. Możesz wybrać co najmniej jedną listę języków: 
+Od czasu do czasu firma Microsoft może dodawać obsługę nowych języków. Z tego powodu nie należy kodować w aplikacji żadnych informacji na temat obsługiwanych języków. Interfejs API tłumaczenia mowy w usłudze Translator udostępnia punkt końcowy Languages (Języki), który umożliwia pobieranie obsługiwanych języków w środowisku uruchomieniowym. Możesz wybrać co najmniej jedną listę języków:
 
 | | |
 |-|-|
@@ -73,7 +74,7 @@ Od czasu do czasu firma Microsoft może dodawać obsługę nowych języków. Z t
 
 Punkt końcowy Languages nie wymaga podawania klucza subskrypcji, a jego użycie nie jest wliczane do Twojego limitu przydziału. Jego identyfikator URI to `https://dev.microsofttranslator.com/languages` i zwraca on wyniki w formacie JSON.
 
-Pokazana tutaj metoda `UpdateLanguageSettingsAsync()` w pliku `MainWindow.xaml.cs` wywołuje punkt końcowy Languages, aby uzyskać listę obsługiwanych języków. 
+Pokazana tutaj metoda `UpdateLanguageSettingsAsync()` w pliku `MainWindow.xaml.cs` wywołuje punkt końcowy Languages, aby uzyskać listę obsługiwanych języków.
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -193,9 +194,9 @@ Ta metoda najpierw tworzy żądanie HTTP do punktu końcowego Languages, żądaj
 
 Punkt końcowy Languages korzysta z nagłówka żądania `Accept-Languages`, aby określić język, w którym przedstawione zostaną nazwy języków. Na przykład język znany osobom posługującym się językiem angielskim jako „German” jest nazywany „Deutsch” w języku niemieckim i „Alemán” w języku hiszpańskim, a lista języków odzwierciedla te różnice. W tym nagłówku używany jest domyślny język systemu.
 
-Po przesłaniu żądania i otrzymaniu odpowiedzi w formacie JSON odpowiedź jest analizowana pod kątem wewnętrznych struktur danych. Te struktury są następnie używane do konstruowania menu From Language (Z języka) i To Language (Na język). 
+Po przesłaniu żądania i otrzymaniu odpowiedzi w formacie JSON odpowiedź jest analizowana pod kątem wewnętrznych struktur danych. Te struktury są następnie używane do konstruowania menu From Language (Z języka) i To Language (Na język).
 
-Ponieważ dostępne głosy są uzależnione od języka docelowego wybranego przez użytkownika, skonfigurowanie menu Voice (Głos) nie jest jeszcze możliwe. Zamiast tego dostępne głosy dla każdego języka są przechowywane do późniejszego użycia. Procedura obsługi `ToLanguage_SelectionChanged` (w tym samym pliku źródłowym) aktualizuje menu Voice poprzez wywołanie metody `UpdateVoiceComboBox()` po wybraniu przez użytkownika języka docelowego. 
+Ponieważ dostępne głosy są uzależnione od języka docelowego wybranego przez użytkownika, skonfigurowanie menu Voice (Głos) nie jest jeszcze możliwe. Zamiast tego dostępne głosy dla każdego języka są przechowywane do późniejszego użycia. Procedura obsługi `ToLanguage_SelectionChanged` (w tym samym pliku źródłowym) aktualizuje menu Voice poprzez wywołanie metody `UpdateVoiceComboBox()` po wybraniu przez użytkownika języka docelowego.
 
 Jeśli użytkownik wcześniej nie uruchamiał aplikacji, język docelowy jest wybierany losowo. (Ustawienia menu są zachowywane między sesjami).
 
@@ -281,7 +282,7 @@ private void Connect()
         TranslateTo = ((ComboBoxItem)this.ToLanguage.SelectedItem).Tag.ToString(),
         Voice = voicename,
     };
-    
+
     options.Hostname = baseUrl;
     options.AuthHeaderKey = "Authorization";
     options.AuthHeaderValue = ""; // set later in ConnectAsync.
@@ -368,11 +369,11 @@ Oto metoda `ConnectAsync()`, która inicjuje klasę `speechClient` i podłącza 
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
 {
     await ADMAuthenticate(options);
-    
+
     TextMessageDecoder textDecoder;
-    
+
     s2smtClient = new SpeechClient((SpeechTranslateClientOptions)options, CancellationToken.None);
-    
+
     s2smtClient.OnBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnEndOfBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnTextData += (c, a) => { textDecoder.AppendData(a); lastReceivedPacketTick = DateTime.Now.Ticks; };
@@ -410,7 +411,7 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
     {
         SafeInvoke(() =>
         {
-            // We only care to react to server disconnect when our state is Connected. 
+            // We only care to react to server disconnect when our state is Connected.
             if (currentState == UiState.Connected)
             {
                 Log("E: Connection has been lost.");

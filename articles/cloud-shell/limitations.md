@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0cbd2c1f9a5a36d4e11eb86a3d531340b0e0ff03
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563885"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983731"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Ograniczenia dotyczące usługi Azure Cloud Shell
 
@@ -45,7 +45,7 @@ Usługi cloud Shell obsługuje najnowsze wersje programu Microsoft Edge, program
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Dla danego użytkownika może być aktywne tylko jedno powłoki
 
-Użytkownicy mogą uruchamiać tylko jeden rodzaj powłoki w czasie, albo **Bash** lub **PowerShell**. Jednakże może mieć wiele wystąpień powłoki Bash lub programu PowerShell działających w tym samym czasie. Trwa zamienianie między powłoki Bash lub programu PowerShell powoduje, że usługa Cloud Shell, aby ponownie uruchomić, które kończy się istniejącej sesji.
+Użytkownicy mogą uruchamiać tylko jeden rodzaj powłoki w czasie, albo **Bash** lub **PowerShell**. Jednakże może mieć wiele wystąpień powłoki Bash lub programu PowerShell działających w tym samym czasie. Trwa zamienianie między powłoki Bash lub programu PowerShell za pomocą menu powoduje, że Cloud Shell, aby ponownie uruchomić, która kończy istniejącej sesji. Alternatywnie można uruchomić bash wewnątrz programu PowerShell, wpisując `bash`, i programu PowerShell można uruchomić wewnątrz powłoki bash, wpisując `pwsh`.
 
 ### <a name="usage-limits"></a>Limity użycia
 
@@ -57,9 +57,9 @@ Usługa cloud Shell jest przeznaczony dla przypadków użycia interaktywne. W re
 
 Uprawnienia są ustawiane jako zwykli użytkownicy bez dostępu "sudo". Żadnej instalacji spoza Twojej `$Home` katalogu nie jest trwały.
 
-### <a name="editing-bashrc"></a>Edytowanie .bashrc
+### <a name="editing-bashrc-or-profile"></a>Edytowanie .bashrc lub $PROFILE
 
-Uwaga należy podjąć, gdy Edycja .bashrc w ten sposób może spowodować nieoczekiwane błędy w usłudze Cloud Shell.
+Uwaga należy podjąć, gdy Edycja .bashrc lub programu PowerShell $PROFILE pliku, w ten sposób może spowodować nieoczekiwane błędy w usłudze Cloud Shell.
 
 ## <a name="powershell-limitations"></a>Ograniczenia dotyczące programu PowerShell
 
@@ -73,23 +73,15 @@ Uwaga należy podjąć, gdy Edycja .bashrc w ten sposób może spowodować nieoc
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Domyślna lokalizacja pliku po utworzeniu z dysku platformy Azure:
 
-Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie można utworzyć plików w obszarze dysk platformy Azure. Podczas tworzenia nowych plików przy użyciu innych narzędzi, takich jak vim lub nano, pliki są zapisywane w `$HOME` domyślnie. 
+Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie mogą tworzyć pliki w ramach platformy Azure: dysk. Podczas tworzenia nowych plików przy użyciu innych narzędzi, takich jak vim lub nano, pliki są zapisywane w `$HOME` domyślnie. 
 
 ### <a name="gui-applications-are-not-supported"></a>Aplikacje graficznego interfejsu użytkownika nie są obsługiwane.
 
-Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe Windows, takich jak `Connect-AzureAD`, `Connect-AzureRmAccount`, lub `Connect-AzAccount` komunikat o błędzie jeden widzi, takich jak: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
-
-### <a name="tab-completion-crashes-psreadline"></a>Uzupełnianie po naciśnięciu tabulatora ulega awarii PSReadline
-
-Jeśli ustawiono trybu użytkownika edycji w PSReadline Emacs, użytkownik próbuje wyświetlić wszystkie możliwości za pośrednictwem uzupełniania po naciśnięciu tabulatora i wielkość okna jest zbyt mała, aby wyświetlić wszystkie możliwości, PSReadline ulegnie awarii.
+Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe Windows, jeden zobaczy następujący komunikat o błędzie takich jak: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Duży odstęp po wyświetleniu paska postępu
 
 Jeśli użytkownik wykona akcję, która Wyświetla pasek takie karty postępu ukończenia podczas w `Azure:` dysków jest możliwe, że kursor nie jest prawidłowo i przerwa pojawia się, gdzie poprzednio pasek postępu.
-
-### <a name="random-characters-appear-inline"></a>Wyświetlane losowo wybranych znaków w tekście
-
-Kody sekwencji pozycja kursora, na przykład `5;13R`, może być wyświetlany w danych wejściowych użytkownika.  Można ręcznie usunąć znaki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

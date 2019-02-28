@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455045"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961588"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Dodawanie osobistych kont Microsoft
 Dodaj osobistych kont Microsoft, takich jak Outlook.com, i Xbox LIVE w aplikacji Microsoft Authenticator dla procesu standardowa two-Factor Authentication weryfikacji i metodę logowania bez hasła telefonu.
@@ -67,5 +67,7 @@ Możesz dodać Twojego osobistego konta Microsoft, włączając weryfikacji two-
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Po dodaniu konta do aplikacji, można zalogować się przy użyciu aplikacji Authenticator na urządzeniu. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu aplikacji](user-help-auth-app-sign-in.md).
+
+- Jeśli występują problemy z przejściem Twój kod weryfikacyjny dla Twojego osobistego konta Microsoft, zobacz **Rozwiązywanie problemów z kodem weryfikacji** części [zabezpieczające dla konta Microsoft i weryfikacja kody](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) artykułu.
 
 - Dla urządzeń z systemem iOS można również wykonać kopię zapasową poświadczeń konta usługi i powiązane ustawienia aplikacji, takie jak kolejność Twoje konta z chmurą. Aby uzyskać więcej informacji, zobacz [tworzenia kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

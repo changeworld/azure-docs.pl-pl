@@ -6,23 +6,23 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: e613f660d4d1abfd45b11d71c2abfda53331cc31
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c3f8d06cf68714f3a8abc203421ae3ff9b533ca6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211212"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737811"
 ---
 # <a name="what-is-custom-translator"></a>Co to jest rozszerzenie Custom Translator?
 
 [Custom Translator](https://portal.customtranslator.azure.ai) to funkcja usługi Microsoft Translator, która umożliwia przedsiębiorstwom w usłudze Translator, deweloperom aplikacji i dostawcom usług językowych tworzenie dostosowanych systemów neuronowego tłumaczenia maszynowego (NMT). Dostosowane systemy tłumaczenia bezproblemowo integrują się z istniejącymi aplikacjami, przepływami pracy i witrynami internetowymi. Rozszerzenie [Custom Translator](https://portal.customtranslator.azure.ai/) oferuje możliwości podobne do tych, które usługa [Microsoft Translator Hub](https://hub.microsofttranslator.com/) oferuje w przypadku systemów statystycznego tłumaczenia maszynowego (SMT), ale wyłącznie dla systemów neuronowego tłumaczenia maszynowego (NMT).
 
-Systemy tłumaczenia wykorzystujące rozszerzenie [Custom Translator](https://portal.customtranslator.azure.ai) są dostępne za pośrednictwem tego samego opartego na chmurze, [bezpiecznego](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), wysoce wydajnego i wysoce skalowalnego [interfejsu API tłumaczenia tekstu w wersji V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) w usłudze Microsoft Translator, który obsługuje miliardy tłumaczeń każdego dnia. 
+Systemy tłumaczenia wykorzystujące rozszerzenie [Custom Translator](https://portal.customtranslator.azure.ai) są dostępne za pośrednictwem tego samego opartego na chmurze, [bezpiecznego](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), wysoce wydajnego i wysoce skalowalnego [interfejsu API tłumaczenia tekstu w wersji V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) w usłudze Microsoft Translator, który obsługuje miliardy tłumaczeń każdego dnia.
 
-Rozszerzenie Custom Translator obsługuje ponad trzy tuziny języków i jest mapowane bezpośrednio na języki dostępne dla neuronowego tłumaczenia maszynowego. Aby uzyskać pełną listę, zobacz [Microsoft Translator Language (Języki w usłudze Microsoft Translator)]( https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Rozszerzenie Custom Translator obsługuje ponad trzy tuziny języków i jest mapowane bezpośrednio na języki dostępne dla neuronowego tłumaczenia maszynowego. Aby uzyskać pełną listę, zobacz [Microsoft Translator Language (Języki w usłudze Microsoft Translator)](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="features"></a>Funkcje
 
@@ -48,7 +48,7 @@ Jeśli zostanie dostarczony odpowiedni typ i ilość danych szkoleniowych, częs
 
 ## <a name="be-productive-and-cost-effective"></a>Wydajność i niskie koszty
 
-W przypadku korzystania z rozszerzenia [Custom Translator](https://portal.customtranslator.azure.ai) uczenie i wdrażanie niestandardowego systemu nie wymaga żadnych umiejętności programistycznych. 
+W przypadku korzystania z rozszerzenia [Custom Translator](https://portal.customtranslator.azure.ai) uczenie i wdrażanie niestandardowego systemu nie wymaga żadnych umiejętności programistycznych.
 
 Przy użyciu bezpiecznego portalu rozszerzenia [Custom Translator](https://portal.customtranslator.azure.ai) użytkownicy mogą przekazywać dane szkoleniowe, szkolić systemy, testować systemy i wdrażać je w środowisku produkcyjnym za pośrednictwem intuicyjnego interfejsu użytkownika. System będzie następnie dostępny do użytku na dużą skalę w ciągu kilku godzin (rzeczywisty czas zależy od rozmiaru danych szkoleniowych).
 

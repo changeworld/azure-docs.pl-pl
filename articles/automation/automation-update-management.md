@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fb96d69604ce341cec2de029f9663f6b8d274876
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 214c67e34fc8d36f2618c94414fe1c305efbf7d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822382"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960143"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -119,6 +119,9 @@ Jeśli grupa zarządzania programu System Center Operations Manager jest połąc
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Pakiet administracyjny wdrożenia aktualizacji
+
+> [!NOTE]
+> W przypadku grupy zarządzania programu Operations Manager 1807 z agentami, konfigurowane na poziomie grupy zarządzania, ma zostać skojarzony z obszarem roboczym, jest zastąpienie bieżącego obejście pozwalające uzyskać ich pojawienie się **IsAutoRegistrationEnabled** do **True** w **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** reguły.
 
 Aby uzyskać więcej informacji na temat sposobu aktualizowania pakietów administracyjnych rozwiązania, zobacz [dzienniki łączenie programu Operations Manager do usługi Azure Monitor](../azure-monitor/platform/om-agents.md).
 
@@ -608,7 +611,7 @@ Aby usunąć Maszynę wirtualną z rozwiązania Update Management:
 
 * W obszarze roboczym usługi Log Analytics, należy usunąć maszynę Wirtualną z zapisanego wyszukiwania dla konfiguracji zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć w obszarze **ogólne** w obszarze roboczym.
 * Usuń [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta usługi Log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
-  
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Aby dowiedzieć się, jak rozwiązywać problemy z Twojego rozwiązania Update Management, zobacz [Rozwiązywanie problemów z rozwiązania Update Management](troubleshoot/update-management.md)

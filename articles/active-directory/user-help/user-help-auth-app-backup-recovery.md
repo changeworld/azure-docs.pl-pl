@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a06276bcaa989fa04f105ac7858c25ab4d0ef
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1927e9b4aeec6f424c69632d8811c49c97d3aad1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887509"
+ms.locfileid: "56961554"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator
 
@@ -28,7 +28,9 @@ ms.locfileid: "56887509"
 Aplikacja Microsoft Authenticator tworzy kopie zapasowe Twoje poświadczenia konta i ustawień aplikacji, takich jak kolejność kont do chmury. Po utworzeniu kopii zapasowej, można użyć jej do odzyskania danych na nowym urządzeniu potencjalnie unikanie wprowadzenie zablokowane ze specyfikatorem out lub konieczności ponownego tworzenia konta.
 
 >[!IMPORTANT]
-> Dla każdej lokalizacji magazynu kopii zapasowych należy jeden osobistego konta Microsoft i jednym koncie usługi iCloud. Ale w tej lokalizacji magazynu można utworzyć kopię zapasową kilku kont. Na przykład można mieć konto osobiste, konto służbowe i konto innych firm, takich jak Facebook, Google i tak dalej.<br><br>Tylko poświadczenia konta osobiste i firm 3 są przechowywane w tym nazwę użytkownika i kod weryfikacyjny konta, które są wymagane, aby potwierdzić swoją tożsamość. Nie przechowujemy inne informacje związane z kontami, w tym wiadomości e-mail lub plików. Możemy również nie skojarzyć lub Udostępnij swoje konta w dowolny sposób lub przy użyciu dowolnego produktu lub usługi. A na koniec administrator IT nie będą otrzymywać żadnych informacji na temat tych kont.
+> Dla każdej lokalizacji magazynu kopii zapasowych należy jeden osobistego konta Microsoft i jednym koncie usługi iCloud. Ale w tej lokalizacji magazynu można utworzyć kopię zapasową kilku kont. Na przykład można mieć konto osobiste, konto służbowe i konto innych firm, takich jak Facebook, Google i tak dalej.
+
+> Tylko poświadczenia konta osobiste i firm 3 są przechowywane w tym nazwę użytkownika i kod weryfikacyjny konta, które są wymagane, aby potwierdzić swoją tożsamość. Nie przechowujemy inne informacje związane z kontami, w tym wiadomości e-mail lub plików. Możemy również nie skojarzyć lub Udostępnij swoje konta w dowolny sposób lub przy użyciu dowolnego produktu lub usługi. A na koniec administrator IT nie będą otrzymywać żadnych informacji na temat tych kont.
 
 ## <a name="back-up-your-account-credentials"></a>Wykonaj kopię zapasową poświadczeń konta
 Przed utworzeniem kopii zapasowej swoje poświadczenia muszą istnieć metody:
@@ -98,10 +100,12 @@ Istnieje kilka powodów dlaczego kopii zapasowej może nie być dostępne:
 -   **Istniejących kont Microsoft Authenticator.** Jeśli zostały już skonfigurowane w aplikacji Microsoft Authenticator, aplikacja nie będzie możliwe odzyskanie kont usługi kopii zapasowej. Zapobieganie recovery pomaga, upewnij się, że szczegółów konta nie są zastąpione przy użyciu nieaktualnych informacji. W takiej sytuacji należy usunąć wszystkie istniejące informacje o koncie z istniejących kont, skonfiguruj w aplikacji wystawcy uwierzytelnienia, zanim będzie można odzyskać z kopii zapasowej.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, że wykonano kopię zapasową, a następnie odzyskać Twoje poświadczenia konta na nowe urządzenie, możesz zweryfikować swoją tożsamość za pomocą aplikacji Microsoft Authenticator.
+Teraz, że wykonano kopię zapasową, a następnie odzyskać Twoje poświadczenia konta na nowe urządzenie, możesz zweryfikować swoją tożsamość za pomocą aplikacji Microsoft Authenticator. Aby uzyskać więcej informacji, zobacz [Zaloguj się do konta przy użyciu aplikacji Microsoft Authenticator](user-help-sign-in.md).
 
 ## <a name="related-topics"></a>Powiązane tematy
-- [Get started with the Microsoft Authenticator app (Wprowadzenie do aplikacji Microsoft Authenticator)](user-help-auth-app-download-install.md)  
+
+- [Co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md)
+
 - [Microsoft Authenticator app FAQ (Aplikacja Microsoft Authenticator — często zadawane pytania)](user-help-auth-app-faq.md)
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

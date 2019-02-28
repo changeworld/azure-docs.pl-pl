@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera personName informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 342397264c364a4c07d8311cc1eda636e8a20e8d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7b748c507d5c848cc83a8a0c55cb7b05903bc542
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211436"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958536"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>PersonName wstępnie utworzone jednostki dla aplikacji usługi LUIS
 Jednostki wstępnie personName wykrywa nazwiska osób. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający personName do intencji aplikacji. Jednostka personName jest obsługiwana w językach angielskim i chiński [kultur](luis-reference-prebuilt-entities.md).

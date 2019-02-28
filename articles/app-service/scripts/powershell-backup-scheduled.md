@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1fe21e8c7a4f4b73648eb5cf0cd3ee5e96dff760
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 262706868fe286f2134e71f53330ebd2eeb66488
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107604"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587841"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Tworzenie zaplanowanej kopii zapasowej aplikacji internetowej przy użyciu programu PowerShell
 
@@ -50,8 +50,8 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Tworzy konto magazynu. |
-| [New-AzStorageContainer](/powershell/module/azure.storage/new-AzStoragecontainer) | Tworzy kontener usługi Azure Storage. |
-| [New-AzStorageContainerSASToken](/powershell/module/azure.storage/new-AzStoragecontainersastoken) | Generuje token SAS dla kontenera usługi Azure Storage. |
+| [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Tworzy kontener usługi Azure Storage. |
+| [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Generuje token SAS dla kontenera usługi Azure Storage. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [Edit-AzWebAppBackupConfiguration](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Edytuje konfigurację kopii zapasowej dla aplikacji internetowej. |

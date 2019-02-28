@@ -1,6 +1,6 @@
 ---
 title: Jak dzienniki zapytań z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor dla maszyn wirtualnych rozwiązania przekazuje metryki i rejestrowanie danych do usługi Log Analytics i w tym artykule opisano rekordy i zawiera przykładowe zapytania.
+description: Usługa Azure Monitor dla maszyn wirtualnych rozwiązania zbiera metryki i dane dziennika, aby w tym artykule opisano rekordy i zawiera przykładowe zapytania.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f33b87fa2c90eda7e4fa135e55565781e8491418
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864421"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983782"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
-Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
+Usługa Azure Monitor dla maszyn wirtualnych umożliwia zbieranie informacji o wydajności i metryki połączeń, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
 ## <a name="map-records"></a>Rekordy mapy
 Jeden rekord jest generowany na godzinę dla każdego komputera unikatowy i procesów, oprócz rekordów, które są generowane, gdy proces lub komputer uruchamia lub jest uruchomiona do usługi Azure Monitor dla funkcji mapy maszyn wirtualnych. Te rekordy mają właściwości podane w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasób maszynę w interfejsie API ServiceMap usługi Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobów procesu w interfejsie API ServiceMap usługi Azure Resource Manager. Pole ResourceName_s zgodne pola Nazwa odpowiedniego zasobu usługi Resource Manager. 
@@ -34,7 +34,7 @@ Istnieją wewnętrznie generowane właściwości, które służy do identyfikacj
 Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym okresie, zapytania może zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowsze rekord, należy dodać "| Funkcja deduplikacji ResourceId"zapytania.
 
 ### <a name="connections"></a>Połączenia
-Metryki połączeń są zapisywane do nowej tabeli w usłudze Log Analytics — VMConnection. Ta tabela zawiera informacje o połączeniach dla maszyny (przychodzące i wychodzące). Metryki połączeń są również udostępniane za pomocą interfejsów API, które zapewniają środki do uzyskania określona Metryka przedziale czasu.  Połączenia protokołu TCP, wynikające z "*zaakceptować*- ing nasłuchiwania gniazda są dla ruchu przychodzącego, a te utworzone przez *połączyć*- ing do danego adresu IP i portu są ruchu wychodzącego. Kierunek połączenie jest reprezentowane przez właściwość "Direction", który może być ustawiony na **dla ruchu przychodzącego** lub **wychodzących**. 
+Metryki połączeń są zapisywane w dziennikach w usłudze Azure Monitor — VMConnection nową tabelę. Ta tabela zawiera informacje o połączeniach dla maszyny (przychodzące i wychodzące). Metryki połączeń są również udostępniane za pomocą interfejsów API, które zapewniają środki do uzyskania określona Metryka przedziale czasu.  Połączenia protokołu TCP, wynikające z "*zaakceptować*- ing nasłuchiwania gniazda są dla ruchu przychodzącego, a te utworzone przez *połączyć*- ing do danego adresu IP i portu są ruchu wychodzącego. Kierunek połączenie jest reprezentowane przez właściwość "Direction", który może być ustawiony na **dla ruchu przychodzącego** lub **wychodzących**. 
 
 Rekordów w tych tabelach są generowane na podstawie danych przekazywanych przez agenta zależności. Każdy rekord reprezentuje obserwacji w przedziałach czasu jednej minuty. Właściwość TimeGenerated wskazuje początek przedziału czasu. Każdy rekord zawiera informacje w celu zidentyfikowania odpowiednich jednostek, to znaczy, połączenia lub portu, a także metryki skojarzone z tej jednostki. Obecnie jest zgłaszany tylko aktywność sieciową występujący za pomocą protokołu TCP za pośrednictwem protokołu IPv4.
 
@@ -255,5 +255,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Jeśli dopiero zaczynasz Pisanie zapytań w usłudze Log Analytics, zapoznaj się z [sposób użycia na stronie usługi Log Analytics](../../azure-monitor/log-query/get-started-portal.md) w witrynie Azure portal, aby pisać zapytania usługi Log Analytics.
+* Jeśli dopiero zaczynasz Pisanie zapytań dzienników w usłudze Azure Monitor, zapoznaj się z [jak używać usługi Log Analytics](../../azure-monitor/log-query/get-started-portal.md) w witrynie Azure portal do pisania zapytań log.
 * Dowiedz się więcej o [Pisanie zapytań wyszukiwania](../../azure-monitor/log-query/search-queries.md).

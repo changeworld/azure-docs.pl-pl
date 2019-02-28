@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: d9d87e0e6427c0a0d4b16947fd0427e1c79d8f0c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341049"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983799"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń
 
@@ -286,5 +286,5 @@ Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istn
 
 - Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
 - Aby dowiedzieć się, jak odczytywać dzienniki przepływu, zobacz [dzienników przepływu sieciowej grupy zabezpieczeń odczytu](network-watcher-read-nsg-flow-logs.md).
-- Aby dowiedzieć się więcej na temat rejestrowania sieciowej grupy zabezpieczeń, zobacz [Log analytics dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Aby dowiedzieć się więcej na temat rejestrowania sieciowej grupy zabezpieczeń, zobacz [usługi Azure Monitor dzienników dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - Aby określić, czy ruch jest dozwolony lub wychodzić do / z maszyny Wirtualnej, zobacz [diagnozowanie problemu z filtrowaniem ruchu maszyny Wirtualnej sieci](diagnose-vm-network-traffic-filtering-problem.md)

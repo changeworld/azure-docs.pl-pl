@@ -7,12 +7,12 @@ ms.service: batch-ai
 ms.topic: overview
 ms.date: 2/14/2019
 ms.author: garye
-ms.openlocfilehash: 87dcf18a2517561e3166726f8f1f1a70c2ec7713
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: fb1114e94c227ce6787532c6059186399d0f57f0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447807"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961363"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Co się dzieje z usługą Apache Batch AI?
 
@@ -282,7 +282,7 @@ ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 ```
 
-Dowiedz się więcej na temat rejestrowania dodatkowych kont magazynu lub pobierania odwołania do innego zarejestrowanego magazynu danych z [dokumentacji usługi Azure ML](../machine-learning/service/how-to-access-data.md#create-a-datastore).
+Dowiedz się więcej na temat rejestrowania dodatkowych kont magazynu lub pobierania odwołania do innego zarejestrowanego magazynu danych z [dokumentacji usługi Azure ML](../machine-learning/service/how-to-access-data.md#access).
 
 
 #### <a name="downloading-and-uploading-data"></a>Pobieranie i przekazywanie danych 
@@ -434,7 +434,7 @@ estimator = TensorFlow(source_directory=project_folder,
                        use_gpu=True)
 ```
 
-Pełne informacje na temat tego fragmentu kodu trenowania (w tym plik mnist_replica.py) można znaleźć w [repozytorium GitHub przykładowego notesu usługi Azure ML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server). Sam magazyn danych można instalować na pojedynczych węzłach lub dane treningowe można pobrać w samym węźle. Szczegółowe informacje na temat odwołań do magazynu danych w narzędziu do szacowania znajdują się w [dokumentacji usługi Azure ML](../machine-learning/service/how-to-access-data.md#access-datastores-for-training). 
+Pełne informacje na temat tego fragmentu kodu trenowania (w tym plik mnist_replica.py) można znaleźć w [repozytorium GitHub przykładowego notesu usługi Azure ML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server). Sam magazyn danych można instalować na pojedynczych węzłach lub dane treningowe można pobrać w samym węźle. Szczegółowe informacje na temat odwołań do magazynu danych w narzędziu do szacowania znajdują się w [dokumentacji usługi Azure ML](../machine-learning/service/how-to-access-data.md#access). 
 
 Przesyłanie przebiegu w usłudze Azure ML za pośrednictwem funkcji przesyłania.
 

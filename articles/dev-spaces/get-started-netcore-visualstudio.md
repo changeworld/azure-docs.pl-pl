@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 08903bcb15c69e3bc9a2b5435785d4a1ee8edb5c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f345ff2e64670536771a639a7619c6e1d4d2d82d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659052"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823947"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio
 
@@ -52,13 +52,6 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 1. Wybierz żądane ustawienie kontroli dostępu na podstawie ról (RBAC, role-based access control). Usługa Azure Dev Spaces obsługuje klastry z włączoną lub wyłączoną kontrolą RBAC.
 
     ![Ustawienie kontroli RBAC](media/common/k8s-RBAC.PNG)
-
-1. Upewnij się, że włączono routing aplikacji protokołu HTTP.
-
-   ![Włączanie routingu aplikacji protokołu HTTP](media/common/Kubernetes-Create-Cluster-3.PNG)
-
-    > [!Note]
-    > Aby włączyć [routing aplikacji protokołu HTTP](/azure/aks/http-application-routing) w istniejącym klastrze, użyj polecenia: `az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
 
 1. Wybierz pozycje **Przegląd + utwórz**, a następnie po zakończeniu wybierz pozycję **Utwórz**.
 

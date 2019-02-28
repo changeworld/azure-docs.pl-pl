@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee1b2a40dbcbd53a758ac71f30401778ef07e872
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229761"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960764"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Kreator importu danych dla usługi Azure Search
 
@@ -77,7 +77,9 @@ Indeks jest gotowa do obsługi zapytań, zaraz po załadowaniu pierwszy dokument
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Usługa Azure Table Storage](search-howto-indexing-azure-tables.md) (nieobsługiwane w przypadku [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) potoków)
 
-Wymaganymi danymi wejściowymi jest spłaszczony zestaw danych. Importu można dokonać tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych. Strukturę danych należy utworzyć przed uruchomieniem kreatora.
+Wymaganymi danymi wejściowymi jest spłaszczony zestaw danych. Importu można dokonać tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych. 
+
+Ta struktura danych należy utworzyć przed uruchomieniem kreatora, i może zawierać zawartości. Nie uruchamiaj **importowania danych** kreatora w źródle danych puste.
 
 |  Wybór | Opis |
 | ---------- | ----------- |
@@ -85,7 +87,7 @@ Wymaganymi danymi wejściowymi jest spłaszczony zestaw danych. Importu można d
 | **Przykłady**| Usługa Azure Search obsługuje bezpłatne publicznej Azure SQL database, można użyć, aby dowiedzieć się więcej o żądaniach importowania i zapytania w usłudze Azure Search. Zobacz [Szybki start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) przewodnik. |
 | **Azure SQL Database** |Nazwę usługi, poświadczenia użytkownika z uprawnieniem do odczytu bazy danych i nazwę bazy danych można określić na stronie lub przy użyciu parametrów połączenia ADO.NET. Wybierz opcję parametrów połączenia, aby wyświetlić lub dostosować właściwości. <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
 | **Program SQL Server na maszynie wirtualnej platformy Azure** |Określ w pełni kwalifikowaną nazwę, identyfikator użytkownika i hasło i bazy danych jako parametry połączenia. Aby użyć tego źródła danych, należy wcześniej zainstalować w magazynie lokalnym certyfikat szyfrujący połączenie. Aby uzyskać instrukcje, zobacz [SQL VM connection to Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) (Połączenie maszyny wirtualnej bazy danych SQL z usługą Azure Search). <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
-| **Azure Cosmos DB** |Wymagane jest konto, baza danych i kolekcja. Wszystkie dokumenty w kolekcji zostaną uwzględnione w indeksie. Można zdefiniować zapytanie w celu spłaszczenia lub filtrowania zestawu wierszy bądź wykrywania zmienionych dokumentów na potrzeby późniejszych operacji odświeżania danych. |
+| **Cosmos DB** |Wymagane jest konto, baza danych i kolekcja. Wszystkie dokumenty w kolekcji zostaną uwzględnione w indeksie. Można zdefiniować zapytanie w celu spłaszczenia lub filtrowania zestawu wierszy, lub pozostaw puste zapytanie. Zapytanie nie jest wymagane w tym kreatorze.|
 | **Azure Blob Storage** |Wymagane jest miedzy innymi konto magazynu i kontener. Opcjonalnie, jeśli nazwa obiektu blob jest zgodna z konwencją nazw wirtualnych do celów grupowania, można określić część nazwy oznaczającą katalog wirtualny jako folder w kontenerze. Więcej informacji zawiera artykuł [Indexing Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie w usłudze Blob Storage). |
 | **Azure Table Storage** |Wymagane jest miedzy innymi konto magazynu i nazwa tabeli. Opcjonalnie można określić zapytanie w celu pobrania podzbioru tabel. Więcej informacji zawiera artykuł [Indexing Table Storage](search-howto-indexing-azure-tables.md) (Indeksowanie w usłudze Table Storage). |
 

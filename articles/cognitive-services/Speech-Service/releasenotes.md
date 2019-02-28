@@ -11,14 +11,22 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e389df02966146b217802d4e93f844a4fee425a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446838"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958657"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>Zestaw SDK 1.3.1 mowy: Odświeżanie lutego 2019 r
+
+Jest to wersja poprawki i na komputerach z zestawu SDK natywnego/zarządzanego. Nie ma wpływ na JavaScript wersję zestawu SDK.
+
+**Naprawienie usterki**
+
+* Naprawiono przeciek pamięci, korzystając z mikrofonu w danych wejściowych. Nie ma wpływu na podstawie Stream lub plik wejściowy.
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Zestaw SDK 1.3.0 mowy: Wersji z lutego 2019 r
 
@@ -26,6 +34,8 @@ ms.locfileid: "56446838"
 
 * Zestaw SDK rozpoznawania mowy obsługuje wyboru wejściowego mikrofonu za pośrednictwem klasy AudioConfig. Umożliwia przesyłanie strumieniowe audio danych do usługi rozpoznawania mowy z mikrofonu innych niż domyślne. Aby uzyskać więcej informacji, zobacz temat opisujący dokumentacji [wybór urządzenia wejściowe audio](how-to-select-audio-input-devices.md). To nie jest jeszcze dostępna z poziomu języka JavaScript.
 * Zestaw SDK rozpoznawania mowy obsługuje teraz Unity w wersji beta. Prześlij opinię za pośrednictwem sekcji problem [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples). Ta wersja obsługuje platformy Unity na Windows x86 i x64 (pulpitu lub aplikacji Universal Windows Platform) i Android (ARM32/64 x86). Więcej informacji znajduje się w naszym [Szybki Start Unity](quickstart-csharp-unity.md).
+* Plik `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczane w poprzednich wersjach) nie jest już potrzebny. Funkcje jest teraz zintegrowany zestaw SDK core.
+
 
 **Przykłady**
 
@@ -54,6 +64,7 @@ Następujące Nowa zawartość jest dostępna w naszym [przykładowego repozytor
   * Początkowej obsługi i implementację wskazówek frazę.
   * Zwraca kolekcję właściwości z usługą JSON w celu rozpoznawania
 * Biblioteki dll Windows zawierają teraz zasobu wersji.
+* Jeśli tworzysz aparat rozpoznawania `FromEndpoint` parametrów można dodać bezpośrednio do adresu URL punktu końcowego. Za pomocą `FromEndpoint` nie można skonfigurować aparat rozpoznawania przy użyciu właściwości konfiguracji standardowej.
 
 **Poprawki błędów**
 

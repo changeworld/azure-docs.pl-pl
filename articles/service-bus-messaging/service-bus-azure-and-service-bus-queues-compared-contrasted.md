@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8c86ffaeb717914d9165ecb5b65f300ae7d903b2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852800"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959310"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejek usługi Service Bus — porównanie
 W tym artykule przeanalizowano różnice i podobieństwa dwóch typów kolejek oferowanych przez Microsoft Azure już dzisiaj: Kolejki magazynu i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
@@ -83,7 +83,8 @@ W tej sekcji przedstawiono porównanie, niektóre z podstawowych funkcji usługi
 * Komunikaty w kolejkach usługi Storage są zazwyczaj pierwsze wejściu — pierwszy na wyjściu, ale czasami może być uszkodzony; na przykład komunikat o widoczności limitu czasu wygaśnięcia (na przykład w wyniku awarii podczas przetwarzania aplikacji klienckiej). Po upływie tego czasu widoczności, komunikat staje się widoczna ponownie w kolejce dla innego procesu roboczego do usuwania go. W tym momencie nowo widoczny komunikat może być umieszczone w kolejce (usuniętej ponownie), po komunikat, który pierwotnie został umieszczony w kolejce po nim.
 * Gwarantowana wzorzec FIFO w kolejek usługi Service Bus wymaga użycia sesji komunikacji. W przypadku, gdy wystąpiła awaria podczas przetwarzania wiadomość zostaje odebrana w aplikacji **wgląd i blokowanie** trybu przy następnym odbiorcy kolejka akceptuje sesji obsługi komunikatów, rozpocznie się komunikatem nie powiodło się po jego czas wygaśnięcia (TTL) okres wygaśnięcia.
 * Kolejki magazynu są przeznaczone do wsparcia kolejkowania scenariusze standardowe, takie jak odsprzęgania składniki aplikacji w celu zwiększenia skalowalności i tolerancji w przypadku błędów ładowania wyrównywanie i przepływy pracy procesu kompilacji.
-* Obsługa kolejki usługi Service Bus *co najmniej jednokrotne* gwarancja dostarczenia. Ponadto *większość-jednocześnie* semantycznego jest możliwa przy użyciu stanu sesji na przechowywanie stanu aplikacji i za pomocą transakcji niepodzielne odbierania komunikatów i aktualizacja stanu sesji.
+* Obsługa kolejki usługi Service Bus *co najmniej jednokrotne* gwarancja dostarczenia. 
+* Można uniknąć niespójności w odniesieniu do obsługi komunikatów w ramach sesji usługi Service Bus przy użyciu stanu sesji na przechowywanie stanu aplikacji względem postęp obsługi sekwencji komunikatów na sesji i za pomocą transakcji wokół Rozliczanie odebrane wiadomości i aktualizowaniu stanu sesji. Czasami nazywa ten rodzaj funkcji spójności *dokładnie — po zakończeniu przetwarzania* w innych dostawców produktów, ale transakcji błędy oczywiście spowoduje, że komunikaty, aby być redeliveried i dlatego termin dokładnie odpowiednie.
 * Kolejki magazynu zapewnienia jednolitego i spójny model programowania kolejek, tabel i obiektów blob — dla deweloperów i zespołów operacyjnych.
 * Kolejki usługi Service Bus zapewnia obsługę lokalnej transakcji w ramach pojedynczej kolejki.
 * **Odbieranie i usuwanie** trybem obsługiwanym przez usługi Service Bus zapewnia możliwość zmniejszyć liczbę operacji obsługi komunikatów (i skojarzone z nim koszty) w zamian za zapewnienie skróconego dostarczania.

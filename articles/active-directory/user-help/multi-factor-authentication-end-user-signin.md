@@ -14,12 +14,12 @@ ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 153b3d61324d504fe260b104bf412913f9692627
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177334"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957542"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Środowisko logowania za pomocą usługi Azure Multi-Factor Authentication
 > [!NOTE]
@@ -83,9 +83,8 @@ Czasami nie masz telefon lub urządzenia, które można skonfigurować jako Twoj
   ![Należy użyć alternatywnej metody](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
+- Jeśli masz problemy z zarejestrowaniem się przy użyciu weryfikacji dwuetapowej, należy uzyskać więcej informacji o [problemy z usługą Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-Jeśli masz problemy z zarejestrowaniem się przy użyciu weryfikacji dwuetapowej, należy uzyskać więcej informacji o [problemy z usługą Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Dowiedz się, jak [Zarządzanie ustawieniami weryfikacji dwuetapowej](multi-factor-authentication-end-user-manage-settings.md).
 
-Dowiedz się, jak [Zarządzanie ustawieniami weryfikacji dwuetapowej](multi-factor-authentication-end-user-manage-settings.md).
-
-Dowiedz się, jak [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](user-help-auth-app-download-install.md) tak, aby powiadomienia można użyć do logowania, zamiast tekstów i połączeń telefonicznych.
+- Dowiedz się, jak [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](user-help-auth-app-download-install.md) tak, aby powiadomienia można użyć do logowania, zamiast tekstów i połączeń telefonicznych.

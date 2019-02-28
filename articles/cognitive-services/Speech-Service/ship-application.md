@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445121"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962030"
 ---
 # <a name="ship-an-application"></a>Dostarczanie aplikacji
 
@@ -42,8 +42,10 @@ W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK
 | Name (Nazwa) | Funkcja
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK, wymaganych do wdrożenia natywnych i zarządzanych
-| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | wymagane do wdrażania zarządzanego
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | wymagane do wdrażania zarządzanego
+
+>[!NOTE]
+> Począwszy od wersji 1.3.0 pliku `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczane w poprzednich wersjach) nie jest już potrzebny. Funkcje jest teraz zintegrowana w programie core SDK.
 
 ## <a name="linux"></a>Linux
 

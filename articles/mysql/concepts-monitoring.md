@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: de339fbab3d360507a77708816b5fccdca80a7d1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 05af196d115376d744df1976c6a3d9fe9cab74e0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544757"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958903"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorowanie usługi Azure Database for MySQL
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for MySQL zapewnia różne metryki, które zapewniają wgląd w zachowania serwera.
@@ -41,7 +41,7 @@ Te metryki są dostępne dla usługi Azure Database for MySQL:
 |backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Wielkość wykorzystanego magazynu kopii zapasowych.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
-Można włączyć wolnych zapytań rejestrowania na serwerze. Te dzienniki są również dostępne dzienniki diagnostyczne platformy Azure w usłudze OMS Log Analytics, usługi Event Hubs i konto magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
+Można włączyć wolnych zapytań rejestrowania na serwerze. Te dzienniki są również dostępne dzienniki diagnostyczne platformy Azure w dzienniki usługi Azure Monitor, usługa Event Hubs i konta magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.

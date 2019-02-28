@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie usługi Azure Key Vault — usługa Azure Key Vault | Dokumentacja firmy Microsoft
+title: Rejestrowania platformy Azure Key Vault | Dokumentacja firmy Microsoft
 description: Użyj tego samouczka, aby rozpocząć pracę z funkcją rejestrowania usługi Azure Key Vault.
 services: key-vault
 documentationcenter: ''
@@ -13,94 +13,86 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 61f277eda721c1490d9f4b354442718558830fe7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c9d8dd366ecabe9eb508998d526ddfe7b1da300d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300203"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960525"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
-Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
-
-## <a name="introduction"></a>Wprowadzenie
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Po utworzeniu co najmniej jednego magazynu kluczy można monitorować kto, w jaki sposób i kiedy uzyskiwał do niego dostęp. W tym celu możesz włączyć funkcję rejestrowania dla usługi Key Vault, która zapisuje informacje na podanym przez Ciebie koncie magazynu platformy Azure. Nowy kontener o nazwie **insights-logs-auditevent** jest tworzony automatycznie dla określonego konta magazynu. Tego samego konta magazynu możesz używać do zbierania dzienników dla wielu magazynów kluczy.
+Po utworzeniu co najmniej jednego magazynu kluczy, prawdopodobnie należy do monitorowania sposobu i czasu Twoich magazynów kluczy są używane i przez kogo. Można to zrobić, należy włączyć rejestrowanie dla usługi Azure Key Vault, który zapisuje informacje o koncie magazynu platformy Azure, które należy podać. Nowy kontener o nazwie **insights-logs-auditevent** jest tworzona automatycznie dla określonego konta magazynu. Do zbierania dzienników dla wielu magazynów kluczy, można użyć tego samego konta magazynu.
 
-Dostęp do informacji rejestrowania będzie możliwy maksymalnie po 10 minutach od wykonanej operacji magazynu kluczy. W większości przypadków czas będzie krótszy.  To Ty zarządzasz dziennikami na swoim koncie magazynu:
+Można się do informacji rejestrowania będzie 10 minut (maksymalnie) po wykonaniu operacji magazynu kluczy. W większości przypadków czas będzie krótszy.  To Ty zarządzasz dziennikami na swoim koncie magazynu:
 
 * Użyj standardowych metod kontroli dostępu platformy Azure w celu zabezpieczenia dzienników, wprowadzając ograniczenia co do tego, kto może uzyskiwać do nich dostęp.
 * Usuń dzienniki, których nie chcesz już przechowywać na koncie magazynu.
 
-Ten samouczek ułatwi rozpoczęcie pracy z funkcją rejestrowania usługi Azure Key Vault. Pomoże utworzyć konto magazynu, włączyć funkcję rejestrowania i zinterpretować zebrane informacje rejestrowania.  
+Użyj tego samouczka, aby rozpocząć pracę z funkcją rejestrowania usługi Azure Key Vault. Będzie Tworzenie konta magazynu, Włącz rejestrowanie i interpretować informacje zebrany dziennik.  
 
 > [!NOTE]
-> Ten samouczek nie zawiera instrukcji dotyczących sposobu tworzenia magazynów kluczy, kluczy ani kluczy tajnych. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia znajdują się w [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
+> Ten samouczek nie zawiera instrukcji dotyczących sposobu tworzenia magazynów kluczy, kluczy ani kluczy tajnych. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Lub, aby uzyskać instrukcje wiersza polecenia platformy Azure dla wielu platform, zobacz [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
 >
-> Ten artykuł zawiera instrukcje programu Azure PowerShell w celu zaktualizowania rejestrowania diagnostycznego. Jednak takie same włączona przy użyciu usługi Azure Monitor w witrynie Azure portal w **dzienniki diagnostyczne** sekcji. 
->
+> Ten artykuł zawiera instrukcje aktualizowania rejestrowania diagnostycznego programu Azure PowerShell. Rejestrowanie diagnostyczne można również aktualizować za pomocą usługi Azure Monitor w **dzienniki diagnostyczne** części witryny Azure portal. 
 >
 
-Aby uzyskać ogólne informacje na temat usługi Azure Key Vault, zobacz [Co to jest usługa Azure Key Vault?](key-vault-whatis.md)
+Aby uzyskać informacje ogólne o usłudze Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-whatis.md). Aby dowiedzieć się, jak gdzie dostępna jest usługa Key Vault, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Istniejący magazyn kluczy, który był przez Ciebie używany.  
-* Program Azure PowerShell **minimalną wersję 1.0.0**. Aby zainstalować program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [Sposób instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/overview). Jeśli masz już zainstalowany program Azure PowerShell, ale nie wiesz, z jakiej wersji korzystasz, w konsoli programu Azure PowerShell wpisz polecenie `$PSVersionTable.PSVersion`.  
+* Program Azure PowerShell w wersji 1.0.0. Aby zainstalować program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [Sposób instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/overview). Jeśli masz już zainstalowany program Azure PowerShell, nie wiadomo, wersja, z poziomu konsoli programu Azure PowerShell wprowadź `$PSVersionTable.PSVersion`.  
 * Wystarczająca ilość miejsca w magazynie platformy Azure dla dzienników usługi Key Vault.
 
-## <a id="connect"></a>Nawiązywanie połączenia z subskrypcjami
+## <a id="connect"></a>Połącz z subskrypcją usługi key vault
 
-Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
+Pierwszym krokiem w procesie konfigurowania klucza rejestracji jest punkt Azure PowerShell do magazynu kluczy, które mają być rejestrowane.
+
+Uruchom sesję programu Azure PowerShell, a następnie zaloguj się do konta platformy Azure przy użyciu następującego polecenia:  
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem, i domyślnie użyje pierwszej.
+W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem. Domyślnie program PowerShell użyje pierwszej.
 
-Jeśli masz wiele subskrypcji, określ konkretne konto, które zostało użyte do utworzenia usługi Azure Key Vault. Wpisz następujące polecenie, aby zobaczyć subskrypcje dla swojego konta:
+Może być określić subskrypcję, który został użyty do utworzenia magazynu kluczy. Wprowadź następujące polecenie, aby zobaczyć subskrypcje dla konta:
 
 ```PowerShell
-    Get-AzSubscription
+Get-AzSubscription
 ```
 
-Następnie, aby określić subskrypcję skojarzoną z Twoim magazynem kluczy, który będziesz rejestrować, wpisz polecenie:
+Następnie aby określić subskrypcję, która jest skojarzona z magazynem kluczy, który będzie można się zalogować, wprowadź:
 
 ```PowerShell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-> [!NOTE]
-> To jest ważny krok, szczególnie przydatny, jeśli masz wiele subskrypcji skojarzonych z Twoim kontem. Może wystąpić błąd rejestrowania usługi Microsoft.Insights, jeśli ten krok zostanie pominięty.
->   
->
+Wskazuje odpowiednią subskrypcję programu PowerShell jest to ważny krok, zwłaszcza, jeśli masz wiele subskrypcji skojarzonych z Twoim kontem. Aby uzyskać więcej informacji na temat konfigurowania programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
-Aby uzyskać więcej informacji na temat konfigurowania programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+## <a id="storage"></a>Tworzenie konta magazynu dla dzienników
 
-## <a id="storage"></a>Tworzenie nowego konta magazynu dla dzienników
+Chociaż można użyć istniejącego konta magazynu dla dzienników, utworzymy konto magazynu, które będzie przeznaczone dla dzienników usługi Key Vault. Jako udogodnienie dotyczące gdy mamy później określić, szczegółowe informacje będą przechowywane w zmiennej o nazwie **sa**.
 
-Chociaż można użyć istniejącego konta magazynu dla dzienników, utworzymy nowe konto magazynu, które będzie przeznaczone dla dzienników usługi Key Vault. Aby później można było wygodnie określić wszystkie szczegóły, będą one przechowywane w zmiennej o nazwie **sa**.
-
-W celu ułatwienia zarządzania użyjemy tej grupy zasobów, która zawiera nasz magazyn kluczy. Tak samo jak w [samouczku wprowadzającym](key-vault-overview.md) ta grupa zasobów ma nazwę **ContosoResourceGroup**. W dalszym ciągu będziemy też używać lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, w razie potrzeby:
+W celu ułatwienia zarządzania użyjemy tej samej grupie zasobów, która zawiera usługi key vault. Z [samouczek ułatwiający rozpoczęcie](key-vault-get-started.md), ta grupa zasobów nosi nazwę **ContosoResourceGroup**, i będziemy używać lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, zgodnie z wymaganiami:
 
 ```PowerShell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
 > [!NOTE]
-> Jeśli zdecydujesz się używać istniejącego konta magazynu, należy użyć tej samej subskrypcji, której użyto dla magazynu kluczy. Musi ona korzystać z modelu wdrażania przy użyciu usługi Resource Manager, a nie klasycznego modelu wdrażania.
+> Jeśli zdecydujesz się użyć istniejącego konta magazynu, ona używać tej samej subskrypcji co magazyn kluczy. I musi używać modelu wdrażania usługi Azure Resource Manager, a nie klasycznego modelu wdrażania.
 >
 >
 
 ## <a id="identify"></a>Identyfikowanie magazynu kluczy dla dzienników
 
-W naszym samouczku wprowadzającym magazyn kluczy został nazwany **ContosoKeyVault**, dlatego dalej będziemy używać tej nazwy, a szczegóły będziemy przechowywać w zmiennej o nazwie **kv**:
+W [samouczek ułatwiający rozpoczęcie](key-vault-get-started.md), nazwa usługi key vault **ContosoKeyVault**. Będziemy używać tej nazwy i przechowywać dane w zmiennej o nazwie **kv**:
 
 ```PowerShell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
@@ -108,13 +100,13 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a id="enable"></a>Włączanie rejestrowania
 
-Aby włączyć rejestrowanie dla usługi Key Vault, użyjemy polecenia cmdlet Set-AzDiagnosticSetting wraz ze zmiennymi utworzonymi dla naszego nowego konta magazynu i nasz magazyn kluczy. Ustawimy też **— włączone** flaga **$true** i Ustaw kategorię na AuditEvent (jedyna kategoria rejestrowania usługi Key Vault):
+Aby włączyć rejestrowanie dla usługi Key Vault, użyjemy **AzDiagnosticSetting zestaw** polecenia cmdlet, wraz ze zmiennymi utworzone dla nowego konta magazynu i magazynu kluczy. Ustawimy też **— włączone** flaga **$true** i Ustaw kategorię **AuditEvent** (jedyna kategoria rejestrowania usługi Key Vault):
 
 ```PowerShell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-Dane wyjściowe będą wyglądać następująco:
+Dane wyjściowe wyglądają następująco:
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -126,9 +118,9 @@ Dane wyjściowe będą wyglądać następująco:
         Enabled : False
         Days    : 0
 
-Stanowi to potwierdzenie, że włączono rejestrowanie dla magazynu kluczy i informacje są zapisywane na koncie magazynu.
+Te dane wyjściowe potwierdzają, że włączono rejestrowanie dla magazynu kluczy i zapisze informacje do swojego konta magazynu.
 
-Opcjonalnie można także ustawić zasady przechowywania dla dzienników tak, aby starsze dzienniki były automatycznie usuwane. Na przykład ustaw zasady przechowywania, ustawiając wartość flagi **-RetentionEnable** na **$true** i wartość parametru **-RetentionInDays** na **90**, aby dzienniki starsze niż 90 dni były automatycznie usuwane.
+Opcjonalnie można ustawić zasady przechowywania dla dzienników tak, aby starsze dzienniki są automatycznie usuwane. Na przykład ustawić zasady przechowywania, ustawiając **- Retentionenable** flaga **$true**i ustaw **- RetentionInDays** parametr **90**tak, aby dzienniki starsze niż 90 dni są automatycznie usuwane.
 
 ```PowerShell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -136,28 +128,30 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 Co jest rejestrowane:
 
-* Wszystkie uwierzytelnione żądania interfejsu API REST są rejestrowane, w tym żądania zakończone niepowodzeniem z powodu uprawnień dostępu, błędów systemu lub błędów w żądaniach.
-* Operacje na samym magazynie kluczy, łącznie z tworzeniem, usuwaniem, ustawianiem zasad dostępu do magazynu kluczy i aktualizowaniem atrybutów magazynu kluczy, takich jak tagi.
-* Operacje na kluczach i kluczach tajnych w magazynie kluczy (łącznie z tworzeniem, modyfikowaniem lub usuwaniem tych kluczy lub kluczy tajnych) oraz operacje, takie jak podpisywanie, weryfikowanie, szyfrowanie, odszyfrowywanie, opakowywanie i odpakowywanie kluczy, pobieranie kluczy tajnych, tworzenie listy kluczy i kluczy tajnych oraz ich wersji.
-* Nieuwierzytelnione żądania, które powodują uzyskanie odpowiedzi 401. Na przykład żądania, które nie mają tokenu elementu nośnego, są nieprawidłowo sformułowane, wygasły lub mają nieprawidłowy token.  
+* Wszystkie uwierzytelnione żądania interfejsu API REST, w tym żądań zakończonych niepowodzeniem w wyniku uprawnienia dostępu, błędów systemowych lub żądaniach.
+* Operacje na klucz magazynu siebie, łącznie z tworzeniem, usuwaniem, ustawianie zasad dostępu magazynu kluczy i aktualizowaniem atrybutów magazynu kluczy, takich jak tagi.
+* Operacje na kluczach i wpisach tajnych w magazynie kluczy, w tym:
+  * Tworzenie, modyfikowanie lub usuwaniem tych kluczy lub kluczy tajnych.
+  * Podpisywanie, weryfikowanie, szyfrowanie, odszyfrowywanie, zawijania i Odkodowywanie klucze pobierania wpisów tajnych oraz listę kluczy i wpisów tajnych (i ich wersje).
+* Nieuwierzytelnione żądania, które powodują uzyskanie odpowiedzi 401. Przykładami są żądań, które nie mają tokenu elementu nośnego, są źle sformułowane lub wygasły lub mają nieprawidłowy token.  
 
 ## <a id="access"></a>Uzyskiwanie dostępu do dzienników
 
-Dzienniki magazynu kluczy są przechowywane w kontenerze **insights-logs-auditevent** na podanym przez Ciebie koncie magazynu. Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz polecenie:
+Dzienniki magazynu kluczy są przechowywane w **insights-logs-auditevent** kontenera na koncie magazynu, podane. Aby wyświetlić dzienniki, musisz pobierać obiekty BLOB.
 
-Najpierw utwórz zmienną dla nazwy kontenera. To posłuży w pozostałej części przewodnika.
+Najpierw utwórz zmienną dla nazwy kontenera. Użyjesz tej zmiennej w pozostałej części przewodnika.
 
 ```PowerShell
 $container = 'insights-logs-auditevent'
 ```
 
-Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz polecenie:
+Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz:
 
 ```PowerShell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Dane wyjściowe będą wyglądać następująco:
+Dane wyjściowe wyglądają podobnie do następujących:
 
 ```
 Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent
@@ -172,13 +166,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Jak widać w przedstawionych danych wyjściowych, obiekty blob są zgodne z następującą konwencją nazewnictwa: **resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json**
+Jak widać na tych danych wyjściowych, obiekty BLOB konwencją nazewnictwa: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Wartości daty i godziny używają czasu UTC.
 
-Ponieważ tego samego konta magazynu może służyć do zbierania dzienników dla wielu zasobów, pełny identyfikator zasobu w nazwie obiektu blob jest uzyskanie dostępu i pobranie tylko tych obiektów blob, które są potrzebne. Jednak zanim do tego przejdziemy, najpierw zostanie omówiony sposób pobierania wszystkich obiektów blob.
+Ponieważ korzystają z tego samego konta magazynu, do zbierania dzienników dla wielu zasobów, pełny identyfikator zasobu w nazwie obiektu blob jest uzyskanie dostępu i pobranie tylko tych obiektów blob, które są potrzebne. Jednak zanim do tego przejdziemy, najpierw zostanie omówiony sposób pobierania wszystkich obiektów blob.
 
-Najpierw utwórz folder w celu pobrania obiektów blob. Na przykład:
+Utwórz folder w celu pobrania obiektów blob. Na przykład:
 
 ```PowerShell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -190,48 +184,48 @@ Następnie uzyskaj listę wszystkich obiektów blob:
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Prześlij tę listę, za pośrednictwem "Get-AzStorageBlobContent", aby pobrać obiekty BLOB do folderu docelowego:
+Prześlij tę listę, za pośrednictwem **Get AzStorageBlobContent** pobierania obiektów blob do folderu docelowego:
 
 ```PowerShell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Po uruchomieniu tego drugiego polecenia ogranicznik **/** w nazwach obiektów blob utworzy pełną strukturę folderów w folderze docelowym, a ta struktura będzie służyć do pobierania i przechowywania obiektów blob jako plików.
+Po uruchomieniu tego drugiego polecenia **/** ogranicznika w nazwach obiektów blob utworzy pełną strukturę folderów w folderze docelowym. Ta struktura będzie używana do pobierania i przechowywania obiektów blob jako plików.
 
 Aby selektywnie pobierać obiekty blob, użyj symboli wieloznacznych. Na przykład:
 
 * Jeśli masz wiele magazynów kluczy i chcesz pobrać dzienniki dla tylko jednego magazynu kluczy o nazwie CONTOSOKEYVAULT3:
 
-```PowerShell
-Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
-```
+  ```PowerShell
+  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  ```
 
 * Jeśli masz wiele grup zasobów i chcesz pobrać dzienniki dla tylko jednej grupy zasobów, użyj parametru `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
-```PowerShell
-Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
-```
+  ```PowerShell
+  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  ```
 
-* Jeśli chcesz pobrać wszystkie dzienniki ze stycznia 2016 roku, użyj parametru `-Blob '*/year=2016/m=01/*'`:
+* Aby pobrać wszystkie dzienniki w miesiącu 2019 stycznia, należy użyć `-Blob '*/year=2019/m=01/*'`:
 
-```PowerShell
-Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
-```
+  ```PowerShell
+  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  ```
 
-Teraz możesz rozpocząć wyszukiwanie informacji zawartych w dziennikach. Przed przejściem do tego, z dwoma parametrami AzDiagnosticSetting Get, który może być konieczne, aby dowiedzieć się, ale:
+Teraz możesz rozpocząć wyszukiwanie informacji zawartych w dziennikach. Jednak zanim przejdziemy dalej, należy znać dwie kolejne polecenia:
 
 * Aby wykonać zapytanie o stan ustawień diagnostycznych dla zasobu magazynu kluczy: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Aby wyłączyć rejestrowanie dla zasobu magazynu kluczy: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
 ## <a id="interpret"></a>Interpretowanie dzienników usługi Key Vault
 
-Poszczególne obiekty blob są przechowywane jako tekst w formacie obiektu blob JSON. Działanie
+Poszczególne obiekty blob są przechowywane jako tekst w formacie obiektu blob JSON. Przyjrzyjmy się przykładowy wpis dziennika. Uruchom następujące polecenie:
 
 ```PowerShell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 
-zwróci wpis dziennika podobny do przedstawionego poniżej:
+Zwraca wpis dziennika podobny do następującego:
 
 ```json
     {
@@ -256,72 +250,74 @@ zwróci wpis dziennika podobny do przedstawionego poniżej:
     }
 ```
 
-W poniższej tabeli wymieniono nazwy pól i ich opisy.
+W poniższej tabeli wymieniono nazwy pól i opisy:
 
 | Nazwa pola | Opis |
 | --- | --- |
-| time |Data i godzina (UTC). |
-| resourceId |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników usługi Key Vault jest nim zawsze identyfikator zasobu usługi Key Vault. |
-| operationName |Nazwa operacji zgodnie z opisem w następnej tabeli. |
-| operationVersion |To jest wersja interfejsu API REST zażądana przez klienta. |
-| category |W przypadku dzienników usługi Key Vault kategoria AuditEvent jest jedyną dostępną wartością. |
-| resultType |Wynik żądania interfejsu API REST. |
-| resultSignature |Stan HTTP. |
-| resultDescription |Dodatkowy opis wyniku, jeśli jest dostępny. |
-| durationMs |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Nie obejmuje opóźnienia sieci, więc czas zmierzony po stronie klienta może być niezgodny z tym czasem. |
-| callerIpAddress |Adres IP klienta, który wysłał żądanie. |
-| correlationId |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
-| identity |Tożsamość z tokenu, który został przedstawiony podczas przesyłania żądania interfejsu API REST. Jest to zazwyczaj „użytkownik”, „główna nazwa usługi” lub kombinacja „użytkownik+identyfikator appId”, jak w przypadku żądania wynikającego z polecenia cmdlet usługi Azure PowerShell. |
-| properties |To pole zawiera różne informacje w zależności od operacji (operationName). W większości przypadków zawiera informacje o kliencie (ciąg agenta użytkownika przekazany przez klienta), dokładny identyfikator URI żądania interfejsu API REST i kod stanu HTTP. Ponadto, gdy w wyniku żądania jest zwracany obiekt (na przykład KeyCreate lub VaultGet), będzie również zawierać identyfikator URI klucza (jako „id”), identyfikator URI magazynu lub identyfikator URI klucza tajnego. |
+| **czas** |Data i godzina w formacie UTC. |
+| **resourceId** |Identyfikator usługi Azure Resource Manager zasobu. W przypadku dzienników usługi Key Vault jest zawsze identyfikator zasobu usługi Key Vault |
+| **OperationName** |Nazwa operacji zgodnie z opisem w następnej tabeli. |
+| **operationVersion** |Wersja interfejsu API REST zażądane przez klienta. |
+| **category** |Typ wyniku. W przypadku dzienników usługi Key Vault **AuditEvent** jest dostępną wartością. |
+| **resultType** |Wynik żądania interfejsu API REST. |
+| **resultSignature** |Stan HTTP. |
+| **resultDescription** |Dodatkowy opis wyniku, jeśli jest dostępny. |
+| **durationMs** |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Nie obejmuje opóźnienia sieci, więc czas zmierzony po stronie klienta może być niezgodny z tym czasem. |
+| **callerIpAddress** |Adres IP klienta, który zgłosił żądanie. |
+| **correlationId** |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
+| **Tożsamość** |Tożsamość z tokenu, który został przedstawiony w żądania interfejsu API REST. Jest to zazwyczaj "użytkownik", "główna nazwa usługi" lub kombinacja "użytkownik + identyfikator appId,", tak jak w przypadku żądania, która wynika z polecenia cmdlet programu Azure PowerShell. |
+| **Właściwości** |Informacje, które różni się w zależności od operacji (**operationName**). W większości przypadków to pole zawiera informacje o kliencie (ciąg agenta użytkownika przekazany przez klienta), dokładny identyfikator URI żądania interfejsu API REST i kod stanu HTTP. Ponadto, gdy obiekt jest zwracany w wyniku żądania (na przykład **KeyCreate** lub **VaultGet**), zawiera ona także klucz identyfikatora URI (jako "id"), Magazyn, identyfikator URI lub identyfikator URI klucza tajnego. |
 
-Wartości pola **operationName** są w formacie ObjectVerb. Na przykład:
+**OperationName** wartości pól są w *ObjectVerb* formatu. Na przykład:
 
-* Wszystkie operacje magazynu kluczy mają format „Vault`<action>`”, np. `VaultGet` i `VaultCreate`.
-* Wszystkie operacje kluczy mają format „Key`<action>`”, np. `KeySign` i `KeyList`.
-* Wszystkie operacje kluczy tajnych mają format „Secret`<action>`”, np. `SecretGet` i `SecretListVersions`.
+* Wszystkie operacje kluczy mają `Vault<action>` formatowania, takich jak `VaultGet` i `VaultCreate`.
+* Wszystkie operacje kluczy mają `Key<action>` formatowania, takich jak `KeySign` i `KeyList`.
+* Wszystkie operacje kluczy tajnych mają `Secret<action>` formatowania, takich jak `SecretGet` i `SecretListVersions`.
 
-W poniższej tabeli wymieniono nazwy operacji operationName i odpowiadające im polecenie interfejsu API REST.
+W poniższej tabeli wymieniono **operationName** odpowiednich poleceń interfejsu API REST i wartości:
 
 | operationName | Polecenie interfejsu API REST |
 | --- | --- |
-| Authentication |Za pośrednictwem punktu końcowego usługi Azure Active Directory |
-| VaultGet |[Pobierz informacje o magazynie kluczy](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| VaultPut |[Utwórz lub zaktualizuj magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultDelete |[Usuń magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| VaultPatch |[Zaktualizuj magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[Utwórz listę wszystkich magazynów kluczy w grupie zasobów](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| KeyCreate |[Utwórz klucz](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| KeyGet |[Pobierz informacje o kluczu](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| KeyImport |[Importuj klucz do magazynu](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| KeyBackup |[Wykonaj kopię zapasową klucza](https://msdn.microsoft.com/library/azure/dn878058.aspx). |
-| KeyDelete |[Usuń klucz](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| KeyRestore |[Przywróć klucz](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| KeySign |[Podpisz przy użyciu klucza](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| KeyVerify |[Weryfikuj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| KeyWrap |[Opakuj klucz](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| KeyUnwrap |[Odpakuj klucz](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| KeyEncrypt |[Szyfruj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| KeyDecrypt |[Odszyfruj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| KeyUpdate |[Zaktualizuj klucz](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| KeyList |[Utwórz listę kluczy w magazynie](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| KeyListVersions |[Utwórz listę wersji klucza](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| SecretSet |[Utwórz klucz tajny](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| SecretGet |[Pobierz klucz tajny](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| SecretUpdate |[Zaktualizuj klucz tajny](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| SecretDelete |[Usuń klucz tajny](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| SecretList |[Utwórz listę kluczy tajnych w magazynie](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| SecretListVersions |[Utwórz listę wersji klucza tajnego](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **Uwierzytelnianie** |Uwierzytelnianie za pośrednictwem punktu końcowego usługi Azure Active Directory |
+| **VaultGet** |[Pobierz informacje o magazynie kluczy](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| **VaultPut** |[Utwórz lub zaktualizuj magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| **VaultDelete** |[Usuń magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
+| **VaultPatch** |[Zaktualizuj magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| **VaultList** |[Utwórz listę wszystkich magazynów kluczy w grupie zasobów](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| **KeyCreate** |[Utwórz klucz](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| **KeyGet** |[Pobierz informacje o kluczu](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| **KeyImport** |[Importuj klucz do magazynu](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| **KeyBackup** |[Utwórz kopię zapasową klucza](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
+| **KeyDelete** |[Usuń klucz](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| **KeyRestore** |[Przywróć klucz](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| **KeySign** |[Podpisz przy użyciu klucza](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| **KeyVerify** |[Weryfikuj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| **KeyWrap** |[Opakuj klucz](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| **KeyUnwrap** |[Odpakuj klucz](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| **KeyEncrypt** |[Szyfruj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| **KeyDecrypt** |[Odszyfruj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| **KeyUpdate** |[Zaktualizuj klucz](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| **KeyList** |[Utwórz listę kluczy w magazynie](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| **KeyListVersions** |[Utwórz listę wersji klucza](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| **SecretSet** |[Utwórz klucz tajny](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| **SecretGet** |[Pobierz klucz tajny](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| **SecretUpdate** |[Zaktualizuj klucz tajny](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| **SecretDelete** |[Usuń klucz tajny](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| **SecretList** |[Utwórz listę kluczy tajnych w magazynie](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| **SecretListVersions** |[Utwórz listę wersji klucza tajnego](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>Korzystanie z usługi Log Analytics
 
-Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent. Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../azure-monitor/insights/azure-key-vault.md). Artykuł ten zawiera również instrukcje w razie potrzeby migracji ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, w której najpierw należało skierować dzienniki do konta usługi Azure Storage, a następnie skonfigurować usługę Log Analytics do odczytu z tego konta.
+Rozwiązanie Key Vault można użyć w usłudze Azure Log Analytics, aby zapoznać się z usługi Key Vault **AuditEvent** dzienniki. W usłudze Log Analytics umożliwia dziennika zapytań analizy danych i uzyskać potrzebne informacje. 
+
+Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../azure-monitor/insights/azure-key-vault.md). Ten artykuł zawiera również instrukcje, jeśli chcesz przeprowadzić migrację ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, której najpierw należało skierować dzienniki do konta usługi Azure storage i skonfigurować usługę Log Analytics do odczytu z.
 
 ## <a id="next"></a>Następne kroki
 
-Aby uzyskać samouczek, który używa usługi Azure Key Vault w aplikacji sieci web platformy .NET, zobacz [użycia usługi Azure Key Vault z aplikacji sieci Web](tutorial-net-create-vault-azure-web-app.md).
+Aby uzyskać samouczek, który używa usługi Azure Key Vault w aplikacji sieci web platformy .NET, zobacz [użycia usługi Azure Key Vault z aplikacji sieci web](tutorial-net-create-vault-azure-web-app.md).
 
 Odwołania dotyczące programowania znajdują się w [przewodniku dewelopera usługi Azure Key Vault](key-vault-developers-guide.md).
 
-Aby zapoznać się z listą poleceń cmdlet usługi Azure PowerShell 1.0 dla usługi Azure Key Vault, zobacz artykuł [Azure Key Vault Cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) (Polecenia cmdlet w usłudze Azure Key Vault).
+Aby uzyskać listę poleceń cmdlet programu Azure PowerShell w wersji 1.0, usługi Azure Key Vault, zobacz [poleceń cmdlet usługi Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
 
-Aby znaleźć samouczek dotyczący rotacji kluczy i inspekcji dzienników w usłudze Azure Key Vault, zobacz [Jak skonfigurować usługę Key Vault na potrzeby rotacji i inspekcji typu end-to-end](key-vault-key-rotation-log-monitoring.md).
+Samouczek dotyczący rotacji kluczy i inspekcji dzienników w usłudze Azure Key Vault, zobacz [Konfigurowanie usługi Key Vault przy użyciu end-to-end rotacji i inspekcji kluczy](key-vault-key-rotation-log-monitoring.md).
