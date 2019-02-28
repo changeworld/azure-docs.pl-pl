@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119226"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961418"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak można debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -29,10 +29,10 @@ Wiedza, jak diagnozować problemy, które powstają w ramach wystąpienia Twins 
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Włączanie analizy dzienników dla wystąpienia usługi
 
-Dzienniki i metryki dla wystąpienia Twins cyfrowych platformy Azure są wyświetlane w usłudze Azure Monitor. Ta dokumentacja przyjęto utworzono [usługi Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) obszar roboczy za pomocą [witryny Azure Portal](../azure-monitor/learn/quick-create-workspace.md)za pośrednictwem [wiersza polecenia platformy Azure](../azure-monitor/learn/quick-create-workspace-cli.md), lub za pomocą [ Program PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+Dzienniki i metryki dla wystąpienia Twins cyfrowych platformy Azure są wyświetlane w usłudze Azure Monitor. Ta dokumentacja przyjęto utworzono [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md) obszar roboczy za pomocą [witryny Azure Portal](../azure-monitor/learn/quick-create-workspace.md)za pośrednictwem [wiersza polecenia platformy Azure](../azure-monitor/learn/quick-create-workspace-cli.md), lub za pomocą [ Program PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 > [!NOTE]
-> Podczas wysyłania zdarzeń do usługi Azure Log Analytics po raz pierwszy, może występować opóźnienie 5 minut.
+> Podczas wysyłania zdarzeń do usługi Azure Monitor dzienników po raz pierwszy, może występować opóźnienie 5 minut.
 
 Aby skonfigurować monitorowanie i rejestrowanie dla zasobów Twins cyfrowych platformy Azure, przeczytaj [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
 
@@ -43,11 +43,11 @@ Przeczytaj artykuł [zbieranie i używanie dane dzienników z zasobów platformy
 
 ### <a name="trace-sensor-telemetry"></a>Telemetria śledzenia usługi czujnika
 
-Śledź dane telemetryczne z czujników, sprawdź, czy ustawienia diagnostyczne są włączone dla swojego wystąpienia Twins cyfrowych platformy Azure. Następnie upewnij się, czy wszystkie żądane kategorie dziennika są zaznaczone. Ponadto upewnij się, że wybrane dzienniki są wysyłane do usługi Azure Log Analytics.
+Śledź dane telemetryczne z czujników, sprawdź, czy ustawienia diagnostyczne są włączone dla swojego wystąpienia Twins cyfrowych platformy Azure. Następnie upewnij się, czy wszystkie żądane kategorie dziennika są zaznaczone. Ponadto upewnij się, że wybrane dzienniki są wysyłane do usługi Azure Monitor dzienniki.
 
 Aby dopasować komunikaty telemetryczne czujnik, jego odpowiednich dzienniki, można określić identyfikator korelacji na dane zdarzenia są wysyłane. Aby to zrobić, należy ustawić `x-ms-client-request-id` właściwość identyfikatora GUID.
 
-Po wysłaniu danych telemetrycznych, otwiera się usługi Azure Log Analytics na zapytanie o dzienniki przy użyciu zestawu identyfikator korelacji:
+Po wysłaniu danych telemetrycznych, otwórz log analytics, aby zapytanie o dzienniki przy użyciu zestawu identyfikator korelacji:
 
 ```Kusto
 AzureDiagnostics
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Identyfikator korelacji, który został określony na dane zdarzeń |
 
-Jeśli włączysz rejestrowanie funkcji zdefiniowanych przez użytkownika, tych dzienników są wyświetlane w wystąpieniu usługi Azure Log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujące warunki zapytania w usłudze Azure Log Analytics:
+Włączenie rejestrowania dla funkcji zdefiniowanych przez użytkownika tych dzienników są wyświetlane w wystąpieniu log analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujące warunki zapytania w usłudze log analytics:
 
 ```Kusto
 AzureDiagnostics

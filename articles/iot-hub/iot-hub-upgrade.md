@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 6f6cf6de9b1f12451bf28a9bd7fc7077c1c6b1cd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 4acd4f3fd9c013d622a23853dc2f0d02b8b753d9
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673464"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985788"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Jak uaktualnić Centrum IoT hub
 
@@ -45,7 +45,9 @@ Te przykłady są przeznaczone do pomóc Ci zrozumieć, jak dostosować zmiany r
 4. Aby zmienić liczbę jednostek w Centrum, wprowadź nową wartość w obszarze **jednostek usługi IoT Hub**. 
 5. Wybierz **Zapisz** Aby zapisać zmiany. 
 
-Teraz jest korygowane w Twoim Centrum IoT hub, a konfiguracje nie ulegną zmianie. Limit maksymalny partycji dla usługi IoT Hub w warstwie podstawowa jest 8, a w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko cztery partycje. Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i odnosi się komunikaty urządzenie chmura z liczbą jednoczesnych czytników tych komunikatów. Ta wartość zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa. 
+Teraz jest korygowane w Twoim Centrum IoT hub, a konfiguracje nie ulegną zmianie. 
+
+Limit maksymalny partycji dla warstwy podstawowa usługi IoT Hub i IoT Hub w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i odnosi się komunikaty urządzenie chmura z liczbą jednoczesnych czytników tych komunikatów. Ta wartość zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

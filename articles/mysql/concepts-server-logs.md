@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/03/2018
-ms.openlocfilehash: c9f8fc4bee370f287b40275b76fa98d2552d7600
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60ef547cb3a6ef579f5ab0b3f5438212145d92ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545077"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961792"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Dzienniki serwera w usłudze Azure Database for MySQL
 W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów. 
@@ -44,7 +44,7 @@ Inne parametry, które można dostosować obejmują:
 Zobacz MySQL [wolne dokumentacji dziennika zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) pełne opisy parametrów dziennik wolnych zapytań.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Usługa Azure Database for MySQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki wolnych zapytań na Twoim serwerze MySQL możesz je wysyłanego do usługi Log Analytics, usługi Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz, jak części [dokumentacja dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md).
+Usługa Azure Database for MySQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki wolnych zapytań na Twoim serwerze MySQL możesz je emitowane dzienniki usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz, jak części [dokumentacja dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
 
@@ -53,7 +53,7 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | TenantId | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| Typ | Typ dziennika. zawsze `AzureDiagnostics` |
+| Type | Typ dziennika. zawsze `AzureDiagnostics` |
 | SubscriptionId | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
 | ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
@@ -74,7 +74,7 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | sql_text_s | Pełne zapytanie w języku |
 | server_id_s | Identyfikator serwera |
 | thread_id_s | Identyfikator wątku |
-| \_Identyfikator zasobu | Identyfikator URI zasobu |
+| \_ResourceId | Identyfikator URI zasobu |
 
 ## <a name="next-steps"></a>Następne kroki
 - [Jak skonfigurować i uzyskać dostęp do dzienników serwera z wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md).

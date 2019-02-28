@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5c63a838d6cffce5ca45dbf0dde50bb9bd01892c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171655"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961299"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -49,7 +49,7 @@ Aby zdefiniować trasach użytkownika obsługiwany przez zasady, **podróży uż
 
 Podróż użytkownika jest reprezentowany jako sekwencja aranżacji, która musi występować za pośrednictwem transakcja zakończona powodzeniem. Jeśli którykolwiek z kroków zakończy się niepowodzeniem, transakcja nie powiedzie się. Te kroki aranżacji odwoływać się bloki konstrukcyjne i dostawców oświadczeń są dozwolone w pliku zasad. Wszystkie kroki aranżacji, które odpowiada, aby wyświetlić lub renderowania środowisko użytkownika również odwołuje się do odpowiedniego identyfikatora definicji zawartości.
 
-Kroki Orchestration można conditionaly wykonywane, warunki wstępne zdefiniowane w elemencie kroku aranżacji w oparciu. Examle można sprawdzić wykonać krok aranżacji, tylko wtedy, gdy istnieje określonych oświadczeń, lub czy roszczenie jest równy lub nie z podaną wartością. 
+Aranżacji kroki mogą być warunkowo wykonywane, oparte na warunki wstępne zdefiniowane w elemencie kroku aranżacji. Na przykład można sprawdzić, wykonać krok aranżacji, tylko wtedy, gdy istnieje określonych oświadczeń, lub czy roszczenie jest równy lub nie z podaną wartością. 
 
 Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** element zostanie dodany jako część zasad. Ten element jest wymagany.
 
@@ -64,7 +64,7 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Zamówienie | Yes | Kolejność etapów aranżacji. | 
-| Typ | Yes | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
+| Type | Yes | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
 | ContentDefinitionReferenceId | Nie | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym samodzielnie. Gdy usługa Azure AD B2C musi wyświetlić coś bez profilu technicznego istnieją jednak przypadki. Istnieją dwa przykłady, jeśli typ kroku aranżacji jest jednym z następujących czynności: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`. Usługa Azure AD B2C wymaganych, aby wyświetlić wyboru dostawcy tożsamości bez profilu technicznego. | 
 | CpimIssuerTechnicalProfileReferenceId | Nie | Typ kroku aranżacji jest `SendClaims`. Ta właściwość określa identyfikator profilu technicznego dotyczącego dostawcy oświadczeń, który wystawia token dla jednostki uzależnionej.  Jeśli brak, jest tworzony token nie jednostki uzależnionej ze stron. |
 
@@ -77,7 +77,7 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | ClaimsProviderSelections | 0: n | Lista wyboru dostawcy oświadczeń dla kroku aranżacji. | 
 | ClaimsExchanges | 0: n | Lista wymiany oświadczeń dla kroku aranżacji. | 
 
-#### <a name="preconditions"></a>Warunki wstępne
+### <a name="preconditions"></a>Warunki wstępne
 
 **Warunki wstępne** element zawiera następującego elementu:
 
@@ -86,13 +86,13 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | Warunek wstępny | 0: n | W zależności od profilu technicznego używany albo przekierowuje klienta zgodnie z wyboru dostawcy oświadczeń lub sprawia, że oświadczenia wywołanie serwera programu exchange. | 
 
 
-##### <a name="precondition"></a>Warunek wstępny
+#### <a name="precondition"></a>Warunek wstępny
 
 **Wstępnym** element zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
+| Type | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
 | ExecuteActionsIf | Yes | Użyj testu prawda lub FAŁSZ, aby zdecydować, jeśli można wykonać akcje w warunku wstępnym. | 
 
 **Wstępnym** elementy zawierają następujące elementy:
@@ -102,7 +102,7 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | Wartość | 1: n | ClaimTypeReferenceId zostać wykonane zapytanie dla. Inny element wartość zawiera wartość do sprawdzenia.</li></ul>|
 | Akcja | 1:1 | Akcja, która powinna być wykonywana, jeśli sprawdzanie warunku wstępnego w ramach kroku aranżacji ma wartość true. Jeśli wartość `Action` ustawiono `SkipThisOrchestrationStep`, skojarzonego `OrchestrationStep` nie powinien być wykonywany. | 
 
-### <a name="preconditions-examples"></a>Przykłady warunków wstępnych
+#### <a name="preconditions-examples"></a>Przykłady warunków wstępnych
 
 Następujące warunki wstępne sprawdza, czy istnieje identyfikator obiektu użytkownika. W podróży użytkownika użytkownik wybrał logować się za pomocą konta lokalnego. Jeśli istnieje identyfikator obiektu, Pomiń ten krok aranżacji.
 
@@ -226,20 +226,3 @@ W poniższym kroku aranżacji użytkownika można zalogować się przy użyciu u
 | --------- | -------- | ----------- |
 | Identyfikator | Yes | Identyfikator kroku exchange oświadczeń. Identyfikator jest używana do odwołania, wymiana oświadczeń spośród dostawcy oświadczeń krok w ramach zasad. | 
 | TechnicalProfileReferenceId | Yes | Identyfikator profilu technicznego, który ma zostać wykonana. |
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

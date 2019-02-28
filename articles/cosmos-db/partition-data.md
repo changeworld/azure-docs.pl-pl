@@ -1,46 +1,46 @@
 ---
 title: Partycjonowanie i skalowanie w poziomie w usłudze Azure Cosmos DB
-description: Więcej informacji na temat sposobu partycjonowania działa w usługi Azure Cosmos DB, jak skonfigurować partycje i kluczy partycji i Wybieranie klucza partycji odpowiednie dla twojej aplikacji.
+description: Więcej informacji na temat działa jak partycjonowania w usługi Azure Cosmos DB, jak skonfigurować partycje i klucze partycji oraz sposobu wybierania klucza partycji odpowiednie dla twojej aplikacji.
 ms.author: mjbrown
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 55e9ef0f8bd268f36378c7d34cea95384c6f725e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4c6847d8f870c02228aa14ab9e11c85b091ec48b
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099349"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959956"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partycjonowanie i skalowanie w poziomie w usłudze Azure Cosmos DB
 
-W tym artykule opisano fizycznie i logicznie partycji w usłudze Azure Cosmos DB i najlepsze rozwiązania dotyczące skalowania i partycjonowanie. 
+W tym artykule opisano fizycznie i logicznie partycji w usłudze Azure Cosmos DB. Omawia także najlepsze rozwiązania dotyczące skalowania i partycjonowania. 
 
 ## <a name="logical-partitions"></a>Partycje logiczne
 
-Partycja logiczna składa się z zbiór elementów z tym samym kluczem partycji. Na przykład, należy wziąć pod uwagę kontenera, w którym zawierają wszystkie elementy `City` właściwość, należy użyć `City` jako klucza partycji dla kontenera. Grupy elementów z określonymi wartościami dla `City` takich jak "Londyn", "Paryż", "Warszawa" itp. będzie stanowić oddzielnej partycji logicznej.
+Partycja logiczna zawiera zestaw elementów, które mają ten sam klucz partycji. Na przykład w kontenerze, gdzie zawierać wszystkie elementy `City` właściwości, można użyć `City` jako klucza partycji dla kontenera. Grupy elementów, które mają określone wartości dla `City`, takich jak `London`, `Paris`, i `NYC`, tworzą oddzielnej partycji logicznej. Nie trzeba martwić się o usunięcie partycji, po usunięciu danych bazowych.
 
-W usłudze Azure Cosmos DB kontener jest podstawową jednostką skalowalności. Dane dodane do kontenera i przepływność, które można aprowizować w kontenerze są automatycznie (w poziomie) podzielonej na partycje w określonym zestawie partycji logicznej. Są one partycjonowane na podstawie określonego klucza partycji dla kontenera Cosmos. Aby dowiedzieć się więcej, zobacz [sposobu określania klucza partycji dla kontenera usługi Cosmos](how-to-create-container.md) artykułu.
+W usłudze Azure Cosmos DB kontener jest podstawową jednostką skalowalności. Dane, które jest dodawany do kontenera i przepływność, którą można aprowizować w kontenerze są automatycznie (w poziomie) podzielonej na partycje w określonym zestawie partycji logicznej. Danych i przepływności są partycjonowane na podstawie określonego klucza partycji dla kontenera usługi Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [utworzyć kontener usługi Azure Cosmos DB](how-to-create-container.md).
 
 Partycja logiczna definiuje zakres transakcji bazy danych. Należy zaktualizować elementów w ramach partycji logicznej przy użyciu transakcji z użyciem izolacji migawki. Kiedy nowe elementy są dodawane do kontenera, nowych partycji logicznej przezroczyste są tworzone przez system.
 
 ## <a name="physical-partitions"></a>Partycje fizyczne
 
-Kontener usługi Azure Cosmos skalowania przez dystrybucję dużej liczby partycji logicznej danych i przepływności. Wewnętrznie, co najmniej jedną partycję logiczne są mapowane na **fizyczną partycję** składający się z zestawu replik, nazywana także zestawu replik. Każdego zestawu replik znajduje się wystąpienie aparatu bazy danych Azure Cosmos. Zestawu replik sprawia, że dane są przechowywane w partycję fizyczną trwałych, wysoce dostępny i spójne. Fizyczną partycję obsługuje maksymalną ilość pamięci masowej i jednostek RU. Każdej repliki partycji fizycznych wchodzących w skład dziedziczy przydział magazynowania. I wszystkie repliki partycji fizycznej obsługuje zbiorczo przepływności przydzielone do fizyczną partycję. Na poniższej ilustracji przedstawiono, jak logicznej partycji są mapowane na partycje fizyczne, które są globalnie rozproszone:
+Kontener usługi Azure Cosmos DB jest skalowana przez dystrybucję dużej liczby partycji logicznej danych i przepływności. Wewnętrznie, co najmniej jedną partycję logiczne są mapowane na fizyczną partycję, która składa się z zestawu replik, nazywana także *zestawu replik*. Każdego elementu zestawu replik hosty wystąpienie aparatu bazy danych Azure Cosmos DB. Zestawu replik sprawia, że dane są przechowywane w partycję fizyczną trwałych, wysoce dostępny i spójne. Fizyczną partycję obsługuje maksymalną liczbę jednostek magazynu i żądań (ru). Każdej repliki, który tworzy partycję fizyczną dziedziczy przydział magazynowania partycji. Wszystkie repliki partycji fizycznej obsługuje zbiorczo przepływność, którą jest przydzielany do fizyczną partycję. 
 
-![Partycjonowanie usługi Azure Cosmos DB](./media/partition-data/logical-partitions.png)
+Na poniższej ilustracji przedstawiono, jak logicznej partycji są mapowane na partycje fizyczne, które są globalnie rozproszone:
 
-Przepływnością aprowizowaną dla kontenera jest równomiernie podzielone między partycje fizyczne. W związku z tym projekt klucza partycji, który nie równomierne rozłożenie żądania przepływności można utworzyć partycji "gorącymi". Gorąca partycji może spowodować ograniczanie szybkości i nieefektywne użycie aprowizowanej przepływności.
+![Obraz, który pokazuje partycjonowanie w usłudze Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 
-W odróżnieniu od partycjami logicznymi partycje fizyczne są wewnętrznej implementacji systemu. Nie można kontrolować, ich rozmiar, położenie, liczba lub mapowanie między partycjami logicznymi i partycje fizyczne. Jednak można kontrolować liczbę partycji logicznej i dystrybucję danych i przepływności, wybierając klawisz prawo partycji.
+Przepływnością aprowizowaną dla kontenera jest równomiernie podzielone między partycje fizyczne. Projekt klucza partycji, który nie równomierne rozłożenie żądania przepływności może tworzyć partycje "gorącymi". Gorąca partycji może spowodować, ograniczania szybkości i nieefektywne użycie aprowizowanej przepływności.
+
+W odróżnieniu od partycjami logicznymi partycje fizyczne są wewnętrznej implementacji systemu. Nie można kontrolować, rozmiar, położenie lub liczbę partycji fizycznych, a nie może kontrolować mapowanie między partycjami logicznymi i partycje fizyczne. Jednak można kontrolować liczbę partycji logicznej i dystrybucję danych i przepływności, wybierając klawisz prawo partycji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule omówienie partycjonowanie danych i najlepszych rozwiązań dla skalowania i udostępniane partycjonowanie w usłudze Azure Cosmos DB. 
-
-* Dowiedz się więcej o [aprowizowanej przepływności w usłudze Azure Cosmos DB](request-units.md)
-* Dowiedz się więcej o [dystrybucję globalną w usłudze Azure Cosmos DB](distribute-data-globally.md)
-* Dowiedz się więcej o [wybór klucza partycji](partitioning-overview.md#choose-partitionkey)
-* Dowiedz się, [jak aprowizować przepływność na kontenerze Cosmos](how-to-provision-container-throughput.md)
-* Dowiedz się, [jak aprowizować przepływność mierzoną w bazie danych Cosmos](how-to-provision-database-throughput.md)
+* Dowiedz się więcej o [wybór klucza partycji](partitioning-overview.md#choose-partitionkey).
+* Dowiedz się więcej o [aprowizowanej przepływności w usłudze Azure Cosmos DB](request-units.md).
+* Dowiedz się więcej o [dystrybucję globalną w usłudze Azure Cosmos DB](distribute-data-globally.md).
+* Dowiedz się, jak [aprowizować przepływność w kontenerze usługi Azure Cosmos DB](how-to-provision-container-throughput.md).
+* Dowiedz się, jak [aprowizowanie przepływności w bazie danych Azure Cosmos DB](how-to-provision-database-throughput.md).

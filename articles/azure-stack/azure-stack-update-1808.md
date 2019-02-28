@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d23aab91df2d69850e8c3b80a1c12f49f2e7fcaa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: b94d27e903fd01c3be029128a64c3e3369669bf7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965175"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986153"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -138,12 +138,13 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
   > - REKORDY ZASOBÓW: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
-
 - Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) z następującymi parametrami, aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono, w tym wszystkie ostrzeżenia i błędy. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji.  
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ```   
+  ```
+
+- Gdy usługi Azure Stack jest zarządzane przez System Center Operations Manager (SCOM), pamiętaj, że aktualizacji pakietu administracyjnego dla usługi Microsoft Azure Stack do wersji 10.0.3.11 przed zastosowaniem 1808.
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 

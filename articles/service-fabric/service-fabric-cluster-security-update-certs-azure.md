@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 37140b665f30d8bb99dd49dbdcca265969eaaf2f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 047e058fee6cd72a7eeaecdde976b1b9d49aeb5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806695"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958953"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
 Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
 
-Azure sieci szkieletowe zestawu SDK usług domyślne zachowanie obciążenia certyfikatu, to wdrożenie i używanie certyfikatów zdefiniowanych najdalej wygasające datę późniejszą; niezależnie od ich definicji podstawowej lub dodatkowej konfiguracji. Nastąpi powrót do klasycznego zachowanie jest zalecana Akcja zaawansowane i wymaga ustawienia wartości parametru "UseSecondaryIfNever" ustawienie na wartość false w ramach konfiguracji Fabric.Code.
+Azure sieci szkieletowe zestawu SDK usług domyślne zachowanie obciążenia certyfikatu, to wdrożenie i używanie certyfikatów zdefiniowanych najdalej wygasające datę późniejszą; niezależnie od ich definicji podstawowej lub dodatkowej konfiguracji. Nastąpi powrót do klasycznego zachowanie jest zalecana Akcja zaawansowane i wymaga ustawienia wartości parametru "UseSecondaryIfNewer" ustawienie na wartość false w ramach konfiguracji Fabric.Code.
 
 Usługi Service fabric umożliwia określenie dwóch certyfikatów klastra, podstawowy i pomocniczy, po skonfigurowaniu zabezpieczeń certyfikatu podczas tworzenia klastra, aby oprócz certyfikatów klienta. Zapoznaj się [tworzenia klastra usługi azure za pośrednictwem portalu](service-fabric-cluster-creation-via-portal.md) lub [tworzenia klastra usługi azure za pomocą usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) dla szczegółowe informacje na temat konfigurowania na czas utworzenia. Jeśli określisz tylko jeden certyfikat klastra na czas utworzenia, następnie używany jako podstawowego certyfikatu. Po utworzeniu klastra można dodać nowego certyfikatu jako pomocniczego.
 

@@ -1,52 +1,54 @@
 ---
 title: Partycjonowanie w usłudze Azure Cosmos DB
-description: Omówienie partycjonowanie w usłudze Azure Cosmos DB
+description: Przegląd partycjonowanie w usłudze Azure Cosmos DB.
 ms.author: mjbrown
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: d9bd1bec6d1df6fab634c5d929cb778abbd3d13d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a8db510bea57fa3d6ee873571e586bcef7508b26
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478410"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961639"
 ---
-# <a name="partitioning-in-azure-cosmos-db---overview"></a>Partycjonowanie w usłudze Azure Cosmos DB — omówienie
+# <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w usłudze Azure Cosmos DB
 
-Partycjonowanie to technika używana przez usługi Cosmos DB do skalowania poszczególnych kontenerów w bazie danych w celu spełnienia potrzeb dotyczących wydajności aplikacji. Za pomocą partycjonowania, elementy w kontenerze są podzielone na różne podzbiory, o nazwie partycjami logicznymi. Partycje logiczne są tworzone na podstawie wartości właściwości klucza partycji, związane z każdym elementem.
+Usługa Azure Cosmos DB używa partycjonowanie skalowania poszczególnych kontenerów w bazie danych w celu spełnienia potrzeb dotyczących wydajności aplikacji. W przypadku użycia partycjonowania elementów w kontenerze są podzielone na różne podzbiory o nazwie *partycjami logicznymi*. Partycje logiczne są tworzone na podstawie na wartości *klucza partycji* skojarzony z każdego elementu w kontenerze. Wszystkie elementy w partycji logicznej mają taką samą wartość klucza partycji.
 
-Partycja logiczna jest unikatowy podzestaw elementów w kontenerze. Elementy w partycji logicznej są identyfikowane przez wartość klucza partycji, który jest współużytkowany przez wszystkie elementy w partycji logicznej.  Rozważmy na przykład kontener, który zawiera dokumenty, a każdy dokument ma `UserID` właściwości.  Jeśli `UserID` służy jako partycja dla elementów w kontenerze, a dla klucza są unikatowe 1000 `UserID` wartości 1000 partycjami logicznymi zostaną utworzone dla kontenera.
+Na przykład kontener przechowuje dokumenty. Każdy dokument ma unikatową wartość dla `UserID` właściwości. Jeśli `UserID` służy jako partycję kluczy dla elementów w kontenerze i są unikatowe 1000 `UserID` wartości 1000 partycje logiczne są tworzone dla kontenera.
 
-Każdy element w kontenerze ma **klucza partycji** określający elementu **partycji logicznej**, a każdy element ma również **identyfikator elementu** (która jest unikatowa w obrębie wartość logiczna partycja).  **Indeksu** o jednoznacznie identyfikuje element i jego jest tworzony przez połączenie klucza partycji i identyfikatora elementu.
+Oprócz klucza partycji, który określa partycji logicznej elementu, każdy element w kontenerze ma *identyfikator elementu* (unikatowe w ramach partycji logicznej). Łącząc klucza partycji i Identyfikatora elementu spowoduje utworzenie elementu *indeksu*, który unikatowo identyfikuje element.
 
-Wybór klucza partycji jest ważnym krokiem, który będzie mieć wpływ na wydajność aplikacji.  Aby dowiedzieć się więcej, zobacz [wybór klucza partycji](partitioning-overview.md#choose-partitionkey) artykuł, aby uzyskać szczegółowe wskazówki.
+[Wybór klucza partycji](partitioning-overview.md#choose-partitionkey) jest ważnym krokiem, który będzie mieć wpływ na wydajność aplikacji.
 
-## <a name="logical-partition-management"></a>Partycja logiczna zarządzania
+## <a name="managing-logical-partitions"></a>Zarządzanie partycjami logicznymi
 
-Usługa cosmos DB, przejrzysty i automatyczny zarządza położenie partycjami logicznymi na partycje fizyczne (infrastruktury serwera), aby efektywnie zaspokoić potrzeby skalowalności i wydajności kontenera. Jak zwiększyć przepływność oraz Magazyn wymagań aplikacji, usługi Cosmos DB przenosi partycjami logicznymi, aby automatycznie rozłożenie obciążenia na większą liczbę serwerów. Aby dowiedzieć się więcej na temat sposobu zarządzania partycjami przez usługi Cosmos DB, zobacz [partycjami logicznymi](partition-data.md) artykułu. Nie jest to konieczne zrozumieć te informacje do kompilacji lub uruchamiaj swoje aplikacje.
+Usługa Azure Cosmos DB, przejrzysty i automatyczny zarządza umieszczania partycji logicznej na partycje fizyczne (infrastruktury serwera), aby efektywnie zaspokoić potrzeby skalowalności i wydajności kontenera. Jak zwiększyć przepływność oraz Magazyn wymagania aplikacji, usługi Azure Cosmos DB przenosi partycjami logicznymi, aby automatycznie rozłożenie obciążenia na większą liczbę serwerów. 
 
-Usługi cosmos DB używa bazujących na skrótach partycjonowania, aby rozłożyć partycjami logicznymi na partycje fizyczne.  Wartość klucza partycji elementu jest mieszany, Cosmos DB, a skróconego wyniku określa fizyczną partycję. Usługa cosmos DB przydziela miejsce klucza partycji skróty kluczy równomiernie na fizyczne partycje "n".
+Usługa Azure Cosmos DB używa bazujących na skrótach partycjonowania, aby rozłożyć partycjami logicznymi na partycje fizyczne. Usługa Azure Cosmos DB miesza wartość klucza partycji elementu. Skróconego wyniku określa fizyczną partycję. Następnie usługi Azure Cosmos DB przydziela miejsce klucza partycji skróty kluczy równomiernie na fizyczne partycje.
 
-Kwerendy, uzyskujących dostęp do danych w ramach jednej partycji są bardziej opłacalna niż zapytanie realizowane dostęp do wielu partycji. Transakcje (w procedury składowane i wyzwalacze) są dozwolone tylko dla elementów w obrębie jednej partycji logicznej.  
+Kwerendy, uzyskujących dostęp do danych w ramach jednej partycji są bardziej opłacalna niż zapytanie realizowane dostęp do wielu partycji. Transakcje (w procedury składowane i wyzwalacze) są dozwolone wyłącznie w odniesieniu do elementów w jednej partycji logicznej.
+
+Aby dowiedzieć się więcej o sposobie zarządzania partycjami w usłudze Azure Cosmos DB, zobacz [partycjami logicznymi](partition-data.md). (Go nie jest to konieczne zrozumieć te informacje do kompilacji lub uruchamiaj swoje aplikacje).
 
 ## <a id="choose-partitionkey"></a>Wybór klucza partycji
 
-Podczas wybierania klucza partycji, należy wziąć pod uwagę następujące informacje:
+W przypadku wybrania klucza partycji, należy wziąć pod uwagę następujące informacje:
 
-* Jednej partycji logicznej jest dozwolone górny limit 10 GB miejsca do magazynowania.  
+* Jedna partycja logiczny ma górny limit 10 GB miejsca do magazynowania.  
 
-* Partycjonowane kontenery są konfigurowane przy minimalnej przepływności równej 400 jednostek RU/s. Żądania do tego samego klucza partycji nie może przekraczać przepływności przydzielane do partycji. Jeśli przekraczają przydzielone przepływności, żądania będą ograniczone szybkość. Tak koniecznie wybierz taki klucz partycji, który nie powoduje "aktywne", w ramach aplikacji.
+* Kontenery podzielonym na partycje mają minimalna przepływność z 400 jednostek żądań na sekundę (RU/s). Żądania do tego samego klucza partycji nie może przekraczać przepływności, który jest przydzielony do partycji. Żądania przekroczy przydzielone przepływności, żądania są ograniczone szybkości. Tak koniecznie wybierz taki klucz partycji, który nie powoduje "aktywne", w ramach aplikacji.
 
-* Wybór klucza partycji, który równomiernie rozdziela obciążenia wszystkich partycji i równomiernie wraz z upływem czasu.  Wybór klucza partycji należy zrównoważyć potrzebę partycji wydajność zapytań i/lub transakcje w odniesieniu do założonego celu dystrybucji elementów na wielu partycjach w celu zapewnienia skalowalności.
+* Wybór klucza partycji, który równomiernie rozdziela obciążenia wszystkich partycji i równomiernie wraz z upływem czasu. Wybór klucza partycji należy zrównoważyć potrzebę partycji wydajne zapytania i transakcje w odniesieniu do założonego celu dystrybucji elementów na wielu partycjach w celu zapewnienia skalowalności.
 
-* Wybór klucza partycji, który oferuje szeroki zakres wartości i wzorce dostępu, które zostały rozmieszczone równomiernie w obrębie partycjami logicznymi. Wygląda to w celu rozłożenia danych i działania w kontenerze w zestawie partycjami logicznymi tak, aby zasoby dla magazynu danych i przepływności mogą być rozproszone między partycjami logicznymi.
+* Wybór klucza partycji, który oferuje szeroki zakres wartości i wzorce dostępu, które zostały rozmieszczone równomiernie w obrębie partycjami logicznymi. Pomaga to rozkłada zbiór partycjami logicznymi, danych i działania w Twoim kontenerze, aby zasoby dla magazynu danych i przepływności mogą być rozproszone między partycjami logicznymi.
 
 * Kandydaci do kluczy partycji może zawierać właściwości, które są często wyświetlane jako filtr zapytania. Zapytania można skutecznie kierować przez uwzględnienie klucza partycji w predykacie filtru.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [partycji](partition-data.md)
-* Dowiedz się więcej o [aprowizowanej przepływności w usłudze Azure Cosmos DB](request-units.md)
-* Dowiedz się więcej o [dystrybucję globalną w usłudze Azure Cosmos DB](distribute-data-globally.md)
+* Dowiedz się więcej o [partycje](partition-data.md).
+* Dowiedz się więcej o [aprowizowanej przepływności w usłudze Azure Cosmos DB](request-units.md).
+* Dowiedz się więcej o [dystrybucję globalną w usłudze Azure Cosmos DB](distribute-data-globally.md).

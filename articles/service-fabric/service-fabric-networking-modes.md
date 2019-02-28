@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 2ae533c81e68f8f6a32ad8fa0e45aed3c63eceb9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: cb918516a9180b4bffdc72c688df5d830e83833a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805260"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959667"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Tryby sieci kontenera usługi Service Fabric
 
@@ -30,7 +30,7 @@ Jeśli masz jedną usługę kontenera przy użyciu statycznego punktu końcowego
 Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do innego węzła w klastrze, adres IP zmienia się. Z tego powodu nie zaleca się przy użyciu przydzielony dynamicznie adres IP usługi kontenerów. Dla potrzeb odnajdowania usługi należy używać tylko Usługa nazewnictwa usługi Service Fabric lub usługi DNS. 
 
 >[!WARNING]
->Platforma Azure zezwoli daje w sumie 4096 adresy IP na sieć wirtualną. Suma liczba węzłów i liczbę wystąpień usługi kontenera, (które korzystają z Otwórz tryb) nie może przekraczać 4096 adresów IP w sieci wirtualnej. W przypadku scenariuszy o wysokiej gęstości, firma Microsoft zaleca tryb sieci translatora adresów sieciowych.
+>Platforma Azure zezwoli daje w sumie 65 356 adresy IP na sieć wirtualną. Suma liczba węzłów i liczbę wystąpień usługi kontenera, (które korzystają z Otwórz tryb) nie może przekraczać 65 356 adresów IP w sieci wirtualnej. W przypadku scenariuszy o wysokiej gęstości, firma Microsoft zaleca tryb sieci translatora adresów sieciowych. Ponadto inne zależności, np. moduł równoważenia obciążenia będzie mieć inne [ograniczenia](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) wziąć pod uwagę. Obecnie maksymalnie 50 adresy IP na węzeł zostały sprawdzone i sprawdzone stabilne. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Konfigurowanie Otwórz tryb sieci

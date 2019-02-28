@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 9ce21a6b01dc4f4a99e5c70faf1e004bf7918dad
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594121"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986247"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
@@ -60,6 +60,8 @@ Teraz możesz nawiązać połączenie z klastrem. Wzorzec znajdują się w grupi
 Można również znaleźć **Helm** Menedżera pakietów jest przydatne w przypadku instalowania i wdrażania aplikacji do klastra. Aby uzyskać instrukcje dotyczące instalowania i używania narzędzia Helm z klastrem, zobacz [helm.sh](https://helm.sh/).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+[Włącz pulpit nawigacyjny platformy Kubernetes](azure-stack-solution-template-kubernetes-dashboard.md)
 
 [Dodaj rozwiązania Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 

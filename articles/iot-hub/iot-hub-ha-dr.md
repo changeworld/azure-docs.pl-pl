@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 1596cf1337fa084fe6a160c99e52ae80ee3e2491
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 308d9a04e52572e00e1cbed24548e5f09adda571
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341977"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985924"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Usługa IoT Hub o wysokiej dostępności i odzyskiwania po awarii
 
@@ -64,6 +64,7 @@ Po zakończeniu operacji trybu failover dla usługi IoT hub, aby kontynuować pr
 >
 > - Po przejściu w tryb failover zdarzenia emitowane przy użyciu usługi Event Grid mogą być wykorzystywane za pomocą tej samej subskrypcji, skonfigurowane wcześniej tak długo, jak te subskrypcje usługi Event Grid są nadal dostępne.
 >
+> - Routing do magazynu obiektów blob, firma Microsoft zaleca funkcji rejestrowanie obiektów blob, a następnie Iterowanie po nich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania żadnych założeń partycji. Zakres partycji potencjalnie można zmienić podczas inicjowanych przez Microsoft trybu failover lub ręcznej pracy awaryjnej. Aby dowiedzieć się, jak wyliczyć listy obiektów blob, zobacz [routingu do magazynu obiektów blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
 ### <a name="microsoft-initiated-failover"></a>Zainicjowane przez Microsoft trybu failover
 
@@ -111,14 +112,14 @@ W modelu rozwiązania regionalnej pracy awaryjnej rozwiązania, należy utworzy�
 
 Na wysokim poziomie do wdrożenia modelu rozwiązania regionalnej pracy awaryjnej przy użyciu usługi IoT Hub, musisz wykonać następujące czynności:
 
-* **Pomocnicze Centrum IoT i urządzenia routingu logiki**: Jeśli usługi w danym regionie podstawowym zostanie przerwany, urządzenia należy uruchomić nawiązywania połączenia z regionu pomocniczego. Ze względu na charakter rozpoznawaniem stanu większości usług zaangażowani, jest typowe dla administratorów rozwiązania do wyzwalania procesu trybu failover między regionami. Najlepszym sposobem komunikacji nowego punktu końcowego na urządzeniach, przy jednoczesnym zachowaniu kontroli procesu, jest do nich regularnie sprawdzać *concierge* usługi, aby aktywny punkt końcowy. Usługi Konsjerż może być aplikacja sieci web, które są replikowane i przechowywane dostępny przy użyciu technik przekierowania DNS (na przykład za pomocą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
+* **Pomocnicze Centrum IoT i urządzenia routingu logiki**: Jeśli usługa w regionie podstawowym jest zakłócona, urządzenia należy uruchomić nawiązywania połączenia z regionu pomocniczego. Ze względu na charakter rozpoznawaniem stanu większości usług zaangażowani, jest typowe dla administratorów rozwiązania do wyzwalania procesu trybu failover między regionami. Najlepszym sposobem komunikacji nowego punktu końcowego na urządzeniach, przy jednoczesnym zachowaniu kontroli procesu, jest do nich regularnie sprawdzać *concierge* usługi, aby aktywny punkt końcowy. Usługi Konsjerż może być aplikacja sieci web, które są replikowane i przechowywane dostępny przy użyciu technik przekierowania DNS (na przykład za pomocą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
 
    > [!NOTE]
    > Usługi IoT hub nie jest typem obsługiwanych punktu końcowego w usłudze Azure Traffic Manager. Zalecane jest, aby zintegrować usługi Konsjerż proponowane z usługą Azure traffic manager czyniąc ją zaimplementować sondy kondycji punktu końcowego interfejsu API.
 
-* **Replikacja rejestru tożsamości**: może być używany, pomocniczego Centrum IoT hub musi zawierać wszystkie tożsamości urządzeń, które można połączyć z rozwiązaniem. Rozwiązanie powinno replikowanej geograficznie dane o tożsamości urządzeń i przekazać je do pomocniczego Centrum IoT, przed zmianą aktywny punkt końcowy dla urządzeń. Funkcja eksportu tożsamość urządzenia usługi IoT Hub przydaje się w tym kontekście. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub developer guide - rejestr tożsamości](iot-hub-devguide-identity-registry.md).
+* **Replikacja rejestru tożsamości**: Może być używany, pomocniczego Centrum IoT hub musi zawierać wszystkie tożsamości urządzeń, które można połączyć z rozwiązaniem. Rozwiązanie powinno replikowanej geograficznie dane o tożsamości urządzeń i przekazać je do pomocniczego Centrum IoT, przed zmianą aktywny punkt końcowy dla urządzeń. Funkcja eksportu tożsamość urządzenia usługi IoT Hub przydaje się w tym kontekście. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub developer guide - rejestr tożsamości](iot-hub-devguide-identity-registry.md).
 
-* **Scalanie logiki**: gdy region podstawowy staje się ponownie dostępny, wszystkie stan i dane, które zostały utworzone w lokacji dodatkowej muszą być migrowane z powrotem do regionu podstawowego. Ten stan i dane odnoszą się przede wszystkim do tożsamości urządzeń i metadanych aplikacji, które muszą zostać połączone z głównej usługi IoT hub i innych magazynach specyficzne dla aplikacji w regionie podstawowym. 
+* **Scalanie logiki**: Gdy region podstawowy staje się ponownie dostępny, stan i dane, które zostały utworzone w lokacji dodatkowej muszą być migrowane do regionu podstawowego. Ten stan i dane odnoszą się przede wszystkim do tożsamości urządzeń i metadanych aplikacji, które muszą zostać połączone z głównej usługi IoT hub i innych magazynach specyficzne dla aplikacji w regionie podstawowym. 
 
 Aby uprościć ten krok, należy użyć operacje idempotentne. Operacje Idempotentne zminimalizować skutki uboczne, z ostateczną spójne dystrybucję zdarzeń oraz duplikatów lub dostarczania zdarzeń poza kolejnością. Ponadto logiki aplikacji powinny zostać tak zaprojektowane, tolerować potencjalne niezgodności lub nieco nieaktualne stanu. Taka sytuacja może wystąpić z powodu dodatkowy czas, jaki zajmuje systemowi poprawianie w oparciu o cele punktu odzyskiwania (RPO).
 
@@ -126,10 +127,10 @@ Aby uprościć ten krok, należy użyć operacje idempotentne. Operacje Idempote
 
 Oto podsumowanie opcji wysokiej dostępności i odzyskiwania po awarii, przedstawione w tym artykule, który może służyć jako odwołanie do ramki o wybranie odpowiedniej opcji dla rozwiązania.
 
-| Opcja wysokiej dostępności i odzyskiwania po awarii | CEL CZASU ODZYSKIWANIA | RPO | Wymaga ręcznej interwencji? | Złożoność wdrożenia | Wpływ dodatkowych kosztów|
+| Opcja wysokiej dostępności i odzyskiwania po awarii | CEL CZASU ODZYSKIWANIA | Cel punktu odzyskiwania | Wymaga ręcznej interwencji? | Złożoność wdrożenia | Wpływ dodatkowych kosztów|
 | --- | --- | --- | --- | --- | --- | --- |
 | Zainicjowane przez Microsoft trybu failover |2 - 26 godzin|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Nie|Brak|Brak|
-| Ręczna praca awaryjna |10-minutowy materiał - 2 godziny|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Yes|Bardzo niskie. Wystarczy wyzwalać tę operację z portalu.|Brak|
+| Ręczne przejście do trybu failover |10-minutowy materiał - 2 godziny|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Yes|Bardzo niskie. Wystarczy wyzwalać tę operację z portalu.|Brak|
 | Obejmujące wiele regionów wysokiej dostępności |< 1 min|Zależy od częstotliwości replikacji, niestandardowego rozwiązania wysokiej dostępności|Nie|Wysoka|1 > x koszt 1 usługi IoT hub|
 
 ## <a name="next-steps"></a>Kolejne kroki

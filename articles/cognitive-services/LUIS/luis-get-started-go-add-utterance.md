@@ -4,18 +4,19 @@ description: W tym przewodniku Szybki start języka Go dodasz przykładowe wypow
 titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4bc76f67b2d8908abe601aa1fcdfd1962678c548
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 60594137306bfe58024877947959f2865fffe019
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865655"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961809"
 ---
 # <a name="quickstart-change-model-using-go"></a>Szybki start: zmiana modelu przy użyciu języka Go
 
@@ -45,7 +46,7 @@ W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplik
 
 3. Dodaj ogólną funkcję żądania HTTP, która obejmuje przekazywanie klucza tworzenia w nagłówku. 
 
-   [!code-go[Add HTTP request function which includes passing authoring key in header. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
+   [!code-go[Add HTTP request function which includes passing authoring key in header.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
 
 4. Dodaj przykładowe wypowiedzi z pliku JSON.
 
@@ -53,15 +54,15 @@ W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplik
 
 5. Zażądaj uczenia. Używa funkcji pomocnika, aby ustawić czasownik dla tej samej trasy co w przypadku stanu uczenia. 
 
-   [!code-go[Request training. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
+   [!code-go[Request training.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
 
 6. Zażądaj stanu uczenia. Używa funkcji pomocnika, aby ustawić czasownik dla tej samej trasy co w przypadku żądania uczenia. 
 
-   [!code-go[Request training status. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
+   [!code-go[Request training status.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
 
 7. Dodaj funkcję main, aby obsługiwać analizę wiersza polecenia.
 
-   [!code-go[Add main function to handle command line parsing. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
+   [!code-go[Add main function to handle command line parsing.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
 
 ## <a name="add-an-utterance-from-the-command-line-train-and-get-status"></a>Dodawanie wypowiedzi z poziomu wiersza polecenia, uczenie i uzyskiwanie stanu
 

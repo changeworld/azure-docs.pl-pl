@@ -1,5 +1,5 @@
 ---
-title: Rozwiązanie Dane o komunikacji sieciowej w usłudze Log Analytics | Microsoft Docs
+title: Połączenie rozwiązań danych w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Dane o komunikacji sieciowej jest skonsolidowane dane sieci i wydajności z komputerów przy użyciu agentów usługi Log Analytics. Dane sieciowe są połączone z danymi Twojego dziennika, aby ułatwić korelowanie danych.
 services: log-analytics
 documentationcenter: ''
@@ -13,25 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fb75f1af2b644325ea614816637880a54eb09e80
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104713"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986128"
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Połączenie rozwiązań danych w wersji 2.0 (wersja zapoznawcza) w usłudze Azure Monitor
 
-![Symbol rozwiązania Dane o komunikacji sieciowej](./media/wire-data/wire-data2-symbol.png)
+![Symbol rozwiązania Dane o komunikacji sieciowej](media/wire-data/wire-data2-symbol.png)
 
 Dane o komunikacji sieciowej jest skonsolidowane dane sieci i wydajności zbierane z komputerów połączonych Windows i połączone z systemem Linux za pomocą agenta usługi Log Analytics, łącznie z tymi monitorowane przez program Operations Manager w środowisku. Dane sieciowe są łączone z innymi danymi Twojego dziennika, aby ułatwić korelowanie danych.
 
-Oprócz agenta usługi Log Analytics rozwiązanie dane o komunikacji sieciowej używa agenci zależności firmy Microsoft, które zainstalujesz na komputerach w infrastrukturze IT. Agenci Dependency Agent monitorują dane sieciowe wysyłane do i z Twoich komputerów dla poziomów sieci 2 i 3 w [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), włącznie z różnymi używanymi protokołami i portami. Dane są następnie wysyłane do usługi Log Analytics przy użyciu agentów.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Oprócz agenta usługi Log Analytics rozwiązanie dane o komunikacji sieciowej używa agenci zależności firmy Microsoft, które zainstalujesz na komputerach w infrastrukturze IT. Agenci Dependency Agent monitorują dane sieciowe wysyłane do i z Twoich komputerów dla poziomów sieci 2 i 3 w [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), włącznie z różnymi używanymi protokołami i portami. Dane są następnie wysyłane do usługi Azure Monitor przy użyciu agentów.  
 
 >[!NOTE]
->Jeśli masz już wdrożone rozwiązania Service Map lub rozważa mapy usługi lub [usługi Azure Monitor dla maszyn wirtualnych](../../azure-monitor/insights/vminsights-overview.md), ma nowego połączenia metryki zestawu danych mogą zbierać i przechowywać w usłudze Log Analytics, który zawiera informacje porównywalne z danymi o komunikacji sieciowej.
+>Jeśli masz już wdrożone rozwiązania Service Map lub rozważa mapy usługi lub [usługi Azure Monitor dla maszyn wirtualnych](../../azure-monitor/insights/vminsights-overview.md), ma nowego połączenia metryki zestawu danych mogą zbierać i przechowywać w usłudze Azure Monitor, który zawiera informacje porównywalne z danymi o komunikacji sieciowej.
 
-Domyślnie usługa Log Analytics rejestruje dane dla procesora CPU, pamięci i dysku oraz dane wydajności sieci z liczników wbudowanych w systemy Windows i Linux oraz innych liczników wydajności, które możesz określić. Gromadzenie danych sieciowych i innych odbywa się w czasie rzeczywistym dla każdego agenta, łącznie z podsieciami i protokołami poziomu aplikacji używanymi przez komputer.  Rozwiązanie Dane o komunikacji sieciowej bierze pod uwagę dane sieciowe na poziomie aplikacji, a nie niżej, w warstwie transportu TCP.  Rozwiązanie nie bierze pod uwagę pojedynczych komunikatów potwierdzeń i synchronizacji.  Po zakończeniu uzgadniania połączenie jest uznawane za aktywne i oznaczane jako Połączono. To połączenie pozostaje aktywne, dopóki obie strony zgadzają się, że gniazdo jest otwarte i dane można przekazywać tam i z powrotem.  Gdy jedna ze stron zamknie połączenie, jest ono oznaczane jako Rozłączono.  W związku z tym zliczana jest tylko przepustowość pomyślnie zakończonych pakietów. Pakiety wysłane ponownie lub zakończone niepowodzeniem nie są raportowane.
+Domyślnie usługa Azure Monitor rejestruje dane dla procesora CPU, pamięci, dysku i sieci danych dotyczących wydajności z liczników wbudowane w Windows i Linux, a także inne liczniki wydajności, które można określić. Gromadzenie danych sieciowych i innych odbywa się w czasie rzeczywistym dla każdego agenta, łącznie z podsieciami i protokołami poziomu aplikacji używanymi przez komputer.  Rozwiązanie Dane o komunikacji sieciowej bierze pod uwagę dane sieciowe na poziomie aplikacji, a nie niżej, w warstwie transportu TCP.  Rozwiązanie nie bierze pod uwagę pojedynczych komunikatów potwierdzeń i synchronizacji.  Po zakończeniu uzgadniania połączenie jest uznawane za aktywne i oznaczane jako Połączono. To połączenie pozostaje aktywne, dopóki obie strony zgadzają się, że gniazdo jest otwarte i dane można przekazywać tam i z powrotem.  Gdy jedna ze stron zamknie połączenie, jest ono oznaczane jako Rozłączono.  W związku z tym zliczana jest tylko przepustowość pomyślnie zakończonych pakietów. Pakiety wysłane ponownie lub zakończone niepowodzeniem nie są raportowane.
 
 Jeśli zdarzało Ci się korzystać z programu [sFlow](http://www.sflow.org/) albo innego oprogramowania z [protokołem NetFlow firmy Cisco](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), statystyki i dane wyświetlane w danych o komunikacji sieciowej będą wyglądać znajomo.
 
@@ -50,33 +52,33 @@ Do niektórych typów wbudowanych zapytań przeszukiwania dzienników należą:
 
 Podczas wyszukiwania przy użyciu danych o komunikacji sieciowej możesz filtrować i grupować dane, aby wyświetlić informacje o najczęściej używanych agentach i protokołach. Możesz też sprawdzić, kiedy niektóre komputery (adresy IP/adresy MAC) komunikowały się ze sobą, ile to trwało i ile danych wysłano. Zasadniczo możesz przeglądać metadane dotyczące ruchu sieciowego, przeszukując je.
 
-Warto jednak podkreślić, że prezentowane są metadane, a więc niekoniecznie będzie to przydatne przy rozwiązywaniu bardziej złożonych problemów. Dane o komunikacji sieciowej w usłudze Log Analytics nie obejmują wszystkich danych sieciowych.  Nie są one przeznaczone do rozwiązywania problemów na poziomie pakietów. Zaletą używania agenta, w porównaniu do innych metod gromadzenia danych, jest to, że nie trzeba instalować urządzeń, ponownie konfigurować przełączników sieciowych ani przeprowadzać skomplikowanych konfiguracji. Dane o komunikacji sieciowej są po prostu oparte na agencie — instalujesz agenta na komputerze i będzie on monitorować własny ruch sieciowy. Inną zaletą jest możliwość monitorowania obciążeń działających u dostawców chmury lub dostawców usług hostingowych albo na platformie Microsoft Azure, gdy użytkownik nie jest właścicielem warstwy sieci szkieletowej.
+Warto jednak podkreślić, że prezentowane są metadane, a więc niekoniecznie będzie to przydatne przy rozwiązywaniu bardziej złożonych problemów. Dane o komunikacji sieciowej w usłudze Azure Monitor nie jest pełną przechwytywania danych sieciowych.  Nie są one przeznaczone do rozwiązywania problemów na poziomie pakietów. Zaletą używania agenta, w porównaniu do innych metod gromadzenia danych, jest to, że nie trzeba instalować urządzeń, ponownie konfigurować przełączników sieciowych ani przeprowadzać skomplikowanych konfiguracji. Dane o komunikacji sieciowej są po prostu oparte na agencie — instalujesz agenta na komputerze i będzie on monitorować własny ruch sieciowy. Inną zaletą jest możliwość monitorowania obciążeń działających u dostawców chmury lub dostawców usług hostingowych albo na platformie Microsoft Azure, gdy użytkownik nie jest właścicielem warstwy sieci szkieletowej.
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Rozwiązanie Dane o komunikacji sieciowej pobiera swoje dane z agenta Microsoft Dependency Agent. Agent zależności zależy od agenta usługi Log Analytics dla jego połączenia z usługą Log Analytics. Oznacza to, że serwer musi mieć agenta usługi Log Analytics, zainstalować i skonfigurować za pomocą agenta zależności. W poniższej tabeli opisano połączone źródła obsługiwane przez rozwiązanie Dane o komunikacji sieciowej.
+Rozwiązanie Dane o komunikacji sieciowej pobiera swoje dane z agenta Microsoft Dependency Agent. Agent zależności zależy od agenta usługi Log Analytics dla jego połączenia z usługi Azure Monitor. Oznacza to, że serwer musi mieć agenta usługi Log Analytics, zainstalować i skonfigurować za pomocą agenta zależności. W poniższej tabeli opisano połączone źródła obsługiwane przez rozwiązanie Dane o komunikacji sieciowej.
 
 | **Połączone źródło** | **Obsługiwane** | **Opis** |
 | --- | --- | --- |
 | Agenci dla systemu Windows | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Windows. <br><br> Oprócz [agenta usługi Log Analytics dla Windows](../../azure-monitor/platform/agent-windows.md), agenci Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
 | Agenci dla systemu Linux | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Linux.<br><br> Oprócz [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), agenci dla systemu Linux wymaga Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Grupa zarządzania programu System Center Operations Manager | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br> Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. |
+| Grupa zarządzania programu System Center Operations Manager | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br> Bezpośrednie połączenie z komputera z programem System Center Operations Manager agent usługi Azure Monitor jest wymagana. |
 | Konto magazynu Azure | Nie | Rozwiązanie Dane o komunikacji sieciowej gromadzi dane z komputerów agenta, więc nie ma od niego żadnych danych do gromadzenia z usługi Azure Storage. |
 
-W systemie Windows agent Microsoft Monitoring Agent (MMA) jest używany zarówno przez program System Center Operations Manager, jak i usługę Log Analytics do zbierania i wysyłania danych. W zależności od kontekstu agent nosi nazwę agenta programu System Center Operations Manager, agenta usługi Log Analytics, Agent MMA lub Agent bezpośredni. Program System Center Operations Manager i usługa Log Analytics udostępniają nieco inne wersje MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.
+W Windows Microsoft Monitoring Agent (MMA) jest używany zarówno przez System Center Operations Manager i usługi Azure Monitor do zbierania i wysyłania danych. W zależności od kontekstu agent nosi nazwę agenta programu System Center Operations Manager, agenta usługi Log Analytics, Agent MMA lub Agent bezpośredni. System Center Operations Manager i usługi Azure Monitor zapewnia nieco inne wersje programu MMA. Te wersje strony każdy raport do programu System Center Operations Manager, usługi Azure Monitor lub oba.
 
-W systemie Linux agent usługi Log Analytics dla systemu Linux zbiera i przesyła dane do usługi Log Analytics. Na serwerach z agentami podłączone bezpośrednio do usługi Log Analytics lub na serwerach, które nawiązujesz połączenie z usługą Log Analytics przy użyciu grup zarządzania programu System Center Operations Manager, można użyć dane o komunikacji sieciowej.
+W systemie Linux agent usługi Log Analytics dla systemu Linux zbiera i przesyła dane do usługi Azure Monitor. Na serwerach z agentami podłączone bezpośrednio do usługi Azure Monitor lub na serwerach, łączących się z monitora platformy Azure za pośrednictwem grupy zarządzania programu System Center Operations Manager, można użyć dane o komunikacji sieciowej.
 
-Agent Dependency Agent nie przesyła żadnych danych samodzielnie i nie wymaga żadnych zmian zapory lub portów. Dane w dane o komunikacji sieciowej zawsze są przesyłane przez agenta usługi Log Analytics z usługą Log Analytics, bezpośrednio lub za pośrednictwem bramy usługi Log Analytics.
+Agent Dependency Agent nie przesyła żadnych danych samodzielnie i nie wymaga żadnych zmian zapory lub portów. Dane w dane o komunikacji sieciowej zawsze są przesyłane przez agenta usługi Log Analytics do usługi Azure Monitor, bezpośrednio lub za pośrednictwem bramy usługi Log Analytics.
 
 ![diagram agenta](./media/wire-data/agents.png)
 
-Jeśli używasz programu System Center Operations Manager z grupą zarządzania połączoną z usługą Log Analytics:
+Jeśli jesteś użytkownikiem programu System Center Operations Manager z grupy zarządzania podłączone do usługi Azure Monitor:
 
-- Dodatkowa konfiguracja nie jest wymagana, jeśli agenci programu System Center Operations Manager mogą uzyskać dostęp do Internetu w celu nawiązania połączenia z usługą Log Analytics.
-- Należy skonfigurować bramę usługi Log Analytics do pracy z programu System Center Operations Manager, gdy Twoi agenci programu System Center Operations Manager nie uzyskują dostęp do usługi Log Analytics za pośrednictwem Internetu.
+- Dodatkowa konfiguracja nie jest wymagana, gdy agentów programu System Center Operations Manager ma dostęp do Internetu, aby nawiązać połączenie z usługi Azure Monitor.
+- Należy skonfigurować bramę usługi Log Analytics do pracy z programu System Center Operations Manager, gdy Twoi agenci programu System Center Operations Manager nie może uzyskać dostępu usługi Azure Monitor za pośrednictwem Internetu.
 
-Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics, aby nawiązać połączenie przy użyciu bramy usługi Log Analytics w usłudze Log Analytics. Można pobrać bramę usługi Log Analytics z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics, aby nawiązać połączenie przy użyciu bramy usługi Log Analytics w usłudze Azure Monitor. Można pobrać bramę usługi Log Analytics z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -195,7 +197,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Dane o komunikacji sieciowej dla Twoich obszarów roboczych.
 
-1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../../azure-monitor/insights/solutions.md).
+1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) lub przy użyciu procesu opisanego w [Dodaj mnitoring rozwiązania z galerii rozwiązań](../../azure-monitor/insights/solutions.md).
 2. Na każdym komputerze, z którego chcesz uzyskiwać dane, zainstaluj agenta Dependency Agent. Agent Dependency Agent może monitorować połączenia do najbliższych sąsiadów, więc nie jest konieczny na każdym komputerze.
 
 > [!NOTE]
@@ -359,7 +361,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
-Gdy rozwiązanie Dane o komunikacji sieciowej zostanie uaktywnione w obszarze roboczym usługi Log Analytics, pakiet administracyjny o wielkości 300 KB jest wysyłany do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz agentów programu System Center Operations Manager w [połączonej grupie zarządzania](../../azure-monitor/platform/om-agents.md), pakiet administracyjny monitora zależności zostanie wdrożony z programu System Center Operations Manager. Jeżeli agenci są połączeni bezpośrednio, usługa Log Analytics zapewni pakiet administracyjny.
+Gdy rozwiązanie Dane o komunikacji sieciowej zostanie uaktywnione w obszarze roboczym usługi Log Analytics, pakiet administracyjny o wielkości 300 KB jest wysyłany do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz agentów programu System Center Operations Manager w [połączonej grupie zarządzania](../platform/om-agents.md), pakiet administracyjny monitora zależności zostanie wdrożony z programu System Center Operations Manager. Jeśli agenci są połączone bezpośrednio usługi Azure Monitor zapewnia pakietu administracyjnego.
 
 Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Jest on zapisywany w folderze: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. Źródło danych, którego używa pakiet administracyjny, to: % Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
@@ -371,7 +373,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 
 - Rozwiązanie Dane o komunikacji sieciowej pozyskuje dane z komputerów z systemem Windows Server 2012 R2, Windows 8.1 i z nowszymi systemami operacyjnymi.
 - Na komputerach, z których chcesz pozyskiwać dane o komunikacji sieciowej, wymagana jest platforma Microsoft .NET Framework 4.0 lub nowsza.
-- Dodaj rozwiązanie Dane o komunikacji sieciowej do swojego obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../../azure-monitor/insights/solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
+- Dodaj rozwiązanie dane o komunikacji sieciowej do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [Dodaj rozwiązania z galerii rozwiązań do monitorowania](solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
 - Jeśli chcesz wyświetlić dane o komunikacji sieciowej dla konkretnego rozwiązania, to rozwiązanie musi być już dodane do Twojego obszaru roboczego.
 
 Po zainstalowaniu agentów i rozwiązania w Twoim obszarze roboczym pojawi się kafelek Dane o komunikacji sieciowej 2.0.
@@ -384,9 +386,9 @@ Na stronie **Omówienie** Twojego obszaru roboczego usługi Log Analytics w witr
 
 | **Blok** | **Opis** |
 | --- | --- |
-| Agenci przechwytujący ruch sieciowy | Pokazuje liczbę agentów, którzy przechwytują ruch sieciowy, i listę 10 najważniejszych komputerów przechwytujących ruch. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kliknij komputer na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę przechwyconych bajtów. |
-| Lokalne podsieci | Pokazuje liczbę lokalnych podsieci, które zostały odnalezione przez agentów.  Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>, które wyświetli listę wszystkich podsieci wraz z liczbą bajtów przesłanych w ramach każdej z nich. Kliknij podsieć na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów przesłanych w tej podsieci. |
-| Protokoły poziomu aplikacji | Pokazuje liczbę używanych protokołów poziomu aplikacji wykrytych przez agentów. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kliknij protokół, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów wysłanych przy użyciu tego protokołu. |
+| Agenci przechwytujący ruch sieciowy | Pokazuje liczbę agentów, którzy przechwytują ruch sieciowy, i listę 10 najważniejszych komputerów przechwytujących ruch. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla `WireData | summarize sum(TotalBytes) by Computer | take 500000`. Kliknij komputer na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę przechwyconych bajtów. |
+| Lokalne podsieci | Pokazuje liczbę lokalnych podsieci, które zostały odnalezione przez agentów.  Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla `WireData | summarize sum(TotalBytes) by LocalSubnet`, które wyświetli listę wszystkich podsieci wraz z liczbą bajtów przesłanych w ramach każdej z nich. Kliknij podsieć na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów przesłanych w tej podsieci. |
+| Protokoły poziomu aplikacji | Pokazuje liczbę używanych protokołów poziomu aplikacji wykrytych przez agentów. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla `WireData | summarize sum(TotalBytes) by ApplicationProtocol`. Kliknij protokół, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów wysłanych przy użyciu tego protokołu. |
 
 ![Pulpit nawigacyjny rozwiązania Dane o komunikacji sieciowej](./media/wire-data/wire-data-dash.png)
 
@@ -401,10 +403,6 @@ Analogicznie możesz użyć bloku **Podsieci lokalne**, aby określić, ile ruch
 Blok **Protokoły poziomu aplikacji** przydaje się, ponieważ pomaga dowiedzieć się, jakie protokoły są używane. Na przykład możesz spodziewać się, że protokół SSH nie będzie używany w Twoim środowisku sieciowym. Wyświetlanie informacji dostępnych w bloku może szybko potwierdzić lub obalić Twoje oczekiwania.
 
 ![przykład przeszukiwania dzienników](./media/wire-data/log-search-example03.png)
-
-W tym przykładzie możesz zagłębić się w szczegóły protokołu SSH, aby wyświetlić komputery, które korzystają z protokołu SSH, i wiele innych szczegółów komunikacji.
-
-![sh search results](./media/wire-data/ssh-details.png)
 
 Warto również wiedzieć, czy ruch w ramach protokołu zwiększa się, czy też zmniejsza wraz z upływem czasu. Jeśli na przykład wzrasta ilość danych przesyłanych przez aplikację, być może warto zwrócić uwagę.
 

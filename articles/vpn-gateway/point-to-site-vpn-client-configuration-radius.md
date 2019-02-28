@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8881582eac47e31b20e9eb96effea254b821ba34
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f59a871297189cfd5082b55a3dbdfd3156a4e501
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417299"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985708"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN, uwierzytelnianie usługi RADIUS P2S
 
@@ -48,9 +48,22 @@ Po skonfigurowaniu uwierzytelniania nazwy użytkownika i hasła, można tworzyć
 
 ### <a name="usernamefiles"></a> 1. Generowanie plików konfiguracji klienta sieci VPN
 
+Za pomocą witryny Azure portal lub za pomocą programu Azure PowerShell, można wygenerować plików konfiguracji klienta sieci VPN.
+
+#### <a name="azure-portal"></a>Azure Portal
+
+1. Przejdź do bramy sieci wirtualnej.
+2. Kliknij przycisk **Point-to-Site configuration**.
+3. Kliknij przycisk **klienta VPN Pobierz**.
+4. Wybierz klienta, a następnie wypełnij wszelkie informacje, które są wymagane.
+5. Kliknij przycisk **Pobierz** Generowanie pliku zip.
+6. Plik zip pobierze się zwykle w folderze pobrane.
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
 Generowanie plików konfiguracji klienta sieci VPN do użycia przy użyciu uwierzytelniania nazwy użytkownika i hasła. Pliki konfiguracji klienta sieci VPN można wygenerować za pomocą następującego polecenia:
 
-```powershell 
+```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
@@ -64,7 +77,7 @@ Jeśli już utworzono klienta pliki konfiguracji, można je pobrać za pomocą `
 
 Aby pobrać pliki konfiguracyjne wcześniej wygenerowanego klienta, użyj następującego polecenia:
 
-```powershell
+```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
@@ -182,7 +195,7 @@ Każde urządzenie klienta sieci VPN wymaga zainstalowany certyfikat klienta. Cz
 
 Generowanie plików konfiguracji klienta sieci VPN do użycia przy użyciu uwierzytelniania certyfikatu. Pliki konfiguracji klienta sieci VPN można wygenerować za pomocą następującego polecenia:
  
-```powershell
+```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
@@ -195,7 +208,7 @@ Jeśli już utworzono klienta pliki konfiguracji, można je pobrać za pomocą `
 
 Aby pobrać pliki konfiguracyjne wcześniej wygenerowanego klienta, użyj następującego polecenia:
 
-```powershell
+```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: saudas
-ms.openlocfilehash: 37a9712749a1575f81086d28ad461a665bef36d9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c55a12e6bd5ab57f790e5f161930851be10f5c2a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313453"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985244"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Na przykład, jeśli wprowadzono AKS *1.12.x* obecnie Pomoc techniczna jest świ
 
 Po wprowadzeniu nowej wersji pomocniczej obsługa najstarszej wersji pomocniczej i wydań poprawek jest wycofywana. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji anons jest nawiązywane za pomocą [kanałów aktualizacji usługi Azure][azure-update-channel]. W przykładzie powyżej gdzie *1.12.x* jest zwolniony, wycofane wersje są *1.8.g* + *1.8.h*.
 
-Podczas wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany na wersję pomocniczą n-1 i najnowszą poprawkę. Na przykład, jeśli obsługuje AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1,10 d*, *1.9.e* + *1.9f*, jest wersja domyślna dla nowych klastrów *1.10.b*.
+Podczas wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany na wersję pomocniczą n-1 i najnowszą poprawkę. Na przykład, jeśli obsługuje AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1,10 d*, *1.9.e* + *1.9f*, jest wersja domyślna dla nowych klastrów *1.11.b*.
 
 ## <a name="list-currently-supported-versions"></a>Lista aktualnie obsługiwane wersje
 

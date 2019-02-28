@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e8467912ad2b9b5199e3c8d66c80d8e238db1f57
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: edbdfeb87af78ba77aa0e418efc12116a38766fc
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043213"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960449"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Jeśli masz konto interfejsu API usługi DocumentDB przed, masz teraz konto inte
 
 ### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Co się stało z usługi Azure DocumentDB jako usługi?
 
-Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Usługa cosmos DB implementuje również [Cassandra](cassandra-introduction.md), [bazy danych MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) i [Azure Table Storage](table-introduction.md) połączenie protokołów bezpośrednio w usłudze. Umożliwia to punkt sterowników (i narzędzi klienta) dla często używanych interfejsów API NoSQL, bezpośrednio z bazą danych Cosmos.
+Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Usługa Cosmos DB wdraża również bezpośrednio w usłudze protokoły przewodowe [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) oraz [Azure Table Storage](table-introduction.md). Umożliwia to skierowanie sterowników klienta (i narzędzi) dla często używanych interfejsów API NoSQL bezpośrednio do bazy danych usługi Cosmos.
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Jakie są typowe przypadki użycia usługi Azure Cosmos DB?
 
@@ -608,7 +608,6 @@ g.V('mary').out('knows').executionProfile()
         },
         "storeOps": [
           {
-            "partitionsAccessed": 1,
             "count": 0,
             "size": 0,
             "time": 0.6

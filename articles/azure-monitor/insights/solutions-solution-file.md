@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0e2f6a8bd8bc8e6f0dd8ba1ec642bff50c9a7977
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999372"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984037"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -85,12 +85,12 @@ W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań 
 
 | Parametr | Type | Opis |
 |:--- |:--- |:--- |
-| accountName |ciąg |Nazwa konta usługi Azure Automation. |
-| pricingTier |ciąg |Warstwa cenowa obszaru roboczego usługi Log Analytics i konto usługi Azure Automation. |
-| regionId |ciąg |Region konta usługi Azure Automation. |
-| solutionName |ciąg |Nazwa rozwiązania.  Jeśli wdrażasz swoje rozwiązanie przy użyciu szablonów szybkiego startu, następnie należy zdefiniować solutionName jako parametr, dzięki czemu można zdefiniować ciąg zamiast konieczności użytkownikowi na określenie jednego. |
-| workspaceName |ciąg |Nazwa obszaru roboczego analizy dzienników. |
-| workspaceRegionId |ciąg |Region obszaru roboczego usługi Log Analytics. |
+| accountName |string |Nazwa konta usługi Azure Automation. |
+| pricingTier |string |Warstwa cenowa obszaru roboczego usługi Log Analytics i konto usługi Azure Automation. |
+| regionId |string |Region konta usługi Azure Automation. |
+| solutionName |string |Nazwa rozwiązania.  Jeśli wdrażasz swoje rozwiązanie przy użyciu szablonów szybkiego startu, następnie należy zdefiniować solutionName jako parametr, dzięki czemu można zdefiniować ciąg zamiast konieczności użytkownikowi na określenie jednego. |
+| workspaceName |string |Nazwa obszaru roboczego analizy dzienników. |
+| workspaceRegionId |string |Region obszaru roboczego usługi Log Analytics. |
 
 
 Poniżej przedstawiono strukturę standardowe parametry, które można skopiować i wkleić do pliku rozwiązania.  
@@ -229,13 +229,6 @@ W powyższym przykładzie jest rozwiązanie z elementu runbook, harmonogram i wi
 | produkt |Unikatowy ciąg do identyfikowania rozwiązania. |
 | Wydawcy |Z wydawcą rozwiązania. |
 
-
-
-## <a name="sample"></a>Sample
-Można wyświetlić przykłady pliki rozwiązania z zasobem rozwiązanie w następujących lokalizacjach.
-
-- [Zasoby do automatyzacji](solutions-resources-automation.md#sample)
-- [Zasoby wyszukiwania i generować alerty](solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

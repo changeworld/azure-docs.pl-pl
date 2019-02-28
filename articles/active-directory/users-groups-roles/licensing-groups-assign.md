@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 02/25/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92fc46dd3fe3c6526a9a85fd13ec7297bf270976
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 423399c93fca222dad2db3175036719a0cd5fdb9
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208898"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986162"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
 
@@ -35,38 +35,33 @@ W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KA
 
 ## <a name="step-1-assign-the-required-licenses"></a>Krok 1: Przypisywanie licencji
 
-1. Zaloguj się do [ **witryny Azure portal** ](https://portal.azure.com) przy użyciu konta administratora. Aby zarządzać licencjami, konto musi być administratorem konta administratora globalnego, jak rolę lub użytkownika.
+1. Zaloguj się do [ **Centrum administracyjnego usługi Azure AD** ](https://aad.portal.azure.com) przy użyciu konta administratora licencji. Aby zarządzać licencjami, konto musi być administrator licencji, użytkownika administrator lub administrator globalny.
 
-2. Wybierz **wszystkich usług** w okienku nawigacji po lewej stronie, a następnie wybierz **usługi Azure Active Directory**. Można to okienko, Dodaj do ulubionych lub przypiąć go do pulpitu nawigacyjnego portalu.
+2. Wybierz **licencji** aby otworzyć okienko, w którym można wyświetlić i zarządzać wszystkie licencjonowane produkty firmy w dzierżawie.
 
-3. Na **usługi Azure Active Directory** okienku wybierz **licencji** aby otworzyć okienko, w którym można wyświetlić i zarządzać wszystkie licencjonowane produkty firmy w dzierżawie.
-
-4. W obszarze **wszystkie produkty**, wybierz pozycję Office 365 Enterprise E3 i rozwiązania Enterprise Mobility + Security, wybierając nazw produktów. Aby rozpocząć przypisywanie, wybierz opcję **przypisać** u góry okienka.
+4. W obszarze **wszystkie produkty**, wybierz pozycję Office 365 Enterprise E5 i rozwiązania Enterprise Mobility + Security E3, wybierając nazw produktów. Aby rozpocząć przypisywanie, wybierz opcję **przypisać** u góry okienka.
 
    ![Wszystkie produkty jest przypisywanie licencji](./media/licensing-groups-assign/all-products-assign.png)
+  
+5. Na **przypisywanie licencji** okienku wybierz **użytkowników i grup** aby otworzyć listę użytkowników i grup.
 
-5. Na **przypisywanie licencji** okienku kliknij **użytkowników i grup** otworzyć **użytkowników i grup** okienka. Wyszukaj nazwę grupy *dział KADR*wybierz grupy, a następnie upewnij się potwierdzić, klikając **wybierz** w dolnej części okienka.
+6. Wybierz użytkownika lub grupę, a następnie użyj **wybierz** znajdujący się u dołu okienka, aby potwierdzić wybór.
 
-   ![Wybierz grupę](./media/licensing-groups-assign/select-a-group.png)
-
-6. Na **przypisywanie licencji** okienku kliknij **opcje przydziału (opcjonalnie)**, powoduje wyświetlenie wszystkich planach usługi uwzględnione w dwóch produktów, które wcześniej wybrano. Znajdź **Yammer Enterprise** i przekształcać je **poza** wyłączenie tej usługi, od licencji produktu. Potwierdź, klikając przycisk **OK** w dolnej części **opcje przydziału**.
+7. Na **przypisywanie licencji** okienku kliknij **opcje przydziału**, powoduje wyświetlenie wszystkich planach usługi uwzględnione w dwóch produktów, które wcześniej wybrano. Znajdź **Yammer Enterprise** i przekształcać je **poza** wyłączenie tej usługi, od licencji produktu. Potwierdź, klikając przycisk **OK** w dolnej części **opcji licencji**.
 
    ![Opcje przypisania](./media/licensing-groups-assign/assignment-options.png)
+  
+8. Aby zakończyć przypisywanie, w dolnej części okienka **Przypisz licencję** kliknij pozycję **Przypisz**.
 
-7. Aby zakończyć przypisywanie, w dolnej części okienka **Przypisz licencję** kliknij pozycję **Przypisz**.
+9. W prawym górnym rogu, który pokazuje stan i wynik procesu zostanie wyświetlone powiadomienie. Jeśli nie można ukończyć przypisanie do grupy (na przykład z powodu istniejących licencji do grupy), kliknij powiadomienie, aby wyświetlić szczegóły dotyczące błędu.
 
-8. W prawym górnym rogu, który pokazuje stan i wynik procesu zostanie wyświetlone powiadomienie. Jeśli nie można ukończyć przypisanie do grupy (na przykład z powodu istniejących licencji do grupy), kliknij powiadomienie, aby wyświetlić szczegóły dotyczące błędu.
-
-Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w usłudze Azure AD został uruchomiony do przetworzenia istniejący członkowie tej grupy. Ta początkowa operacja może trochę potrwać, w zależności od bieżącego rozmiaru grupy. Następnym krokiem w tym artykule opisano sposób sprawdzić, czy proces zostanie zakończony i określić, jeśli dalszej uwagi jest wymagane do rozwiązania problemów.
-
-> [!NOTE]
-> Przypisanie tych samych można uruchomić z lokalizacji alternatywnej: **Użytkownicy i grupy** w usłudze Azure AD. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Następnie znajdź grupę, wybierz ją i przejdź do **licencji** kartę. **Przypisać** przycisk u góry okienka powoduje otwarcie okienka przypisania licencji.
+Podczas przypisywania licencji do grupy, usługi Azure AD przetwarza istniejący członkowie tej grupy. Ten proces może potrwać pewien czas, zależne od rozmiaru grupy. Następnym krokiem w tym artykule opisano sposób sprawdzić, czy proces zostanie zakończony i określić, jeśli dalszej uwagi jest wymagane do rozwiązania problemów.
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2: Sprawdź, czy zakończyła początkowego przydziału
 
-1. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Następnie znajdź **dział KADR** licencje zostały przypisane do grupy.
+1. Przejdź do **usługi Azure Active Directory** > **grup**. Wybierz grupę, do której przypisano licencje.
 
-2. Na **dział KADR** grupy wybierz opcję **licencji**. Dzięki temu można szybko upewnij się, jeśli pełni przypisano licencje do użytkowników, a wystąpiły żadne błędy, które należy zbadać. Dostępne są następujące informacje:
+2. W okienku grupy wybierz **licencji**. Dzięki temu można szybko upewnij się, jeśli pełni przypisano licencje do użytkowników, a wystąpiły żadne błędy, które należy zbadać. Dostępne są następujące informacje:
 
    - Lista licencji produktu, które są obecnie przypisane do grupy. Wybierz wpis, aby wyświetlić konkretne usługi, które zostały włączone i wprowadzać zmiany.
 
@@ -86,8 +81,8 @@ Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w 
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: Sprawdź, czy problemów z licencją i ich rozwiązania
 
-1. Przejdź do **usługi Azure Active Directory** > **użytkowników i grup** > **wszystkich grup**i Znajdź **dział KADR** licencje zostały przypisane do grupy.
-2. Na **dział KADR** grupy wybierz opcję **licencji**. Powiadomienia u góry okienka pokazuje, że istnieją 10 użytkowników, których nie można przypisać licencji. Kliknięcie powoduje otwarcie listy wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.
+1. Przejdź do **usługi Azure Active Directory** > **grup**i Znajdź grupę, którą przypisano licencje.
+2. W okienku grupy wybierz **licencji**. Powiadomienia u góry okienka pokazuje, że istnieją 10 użytkowników, których nie można przypisać licencji. Otwórz go, aby wyświetlić listę wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.
 3. **Przypisań zakończonych niepowodzeniem** kolumny informuje NAS, że obie licencje produktu nie można przypisać do użytkowników. **Najważniejsze przyczyny niepowodzenia** kolumna zawiera przyczynę niepowodzenia. W tym przypadku ma **plany usług powodujące konflikt**.
 
    ![Przypisania nie powiodło się](./media/licensing-groups-assign/failed-assignments.png)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 14f1a92f701eaedd98b825316ebf213f7c144920
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745966"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959463"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitoruj aktywność zużycia i kwerendy zasobów w usłudze Azure Search
 
@@ -58,14 +58,14 @@ Usługa Azure Search nie przechowuje żadnych danych poza obiektów, którymi za
 
 W poniższej tabeli porównano opcje przechowywania dzienników oraz dodanie, szczegółowe monitorowanie operacji usługi i obciążeń związanych z zapytaniami za pomocą usługi Application Insights.
 
-| Zasób | Używane dla |
+| Zasób | Używana do |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej poniżej, schematy skorelowane ze zdarzeniami użytkownika w aplikacji. Jest to jedyne rozwiązanie, które uwzględnia akcji użytkownika lub sygnały, mapowania zdarzeń z wyszukiwania zainicjowanego przez użytkownika, w przeciwieństwie do Filtrowanie żądań przesyłanych przez kod aplikacji. Aby użyć tego podejścia, kopiowania i wklejania kod Instrumentacji do plików źródłowych do trasy żądania informacji do usługi Application Insights. Aby uzyskać więcej informacji, zobacz [analiza ruchu wyszukiwania](search-traffic-analytics.md). |
-| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane do obszaru roboczego w usłudze Log Analytics. Obszar roboczy, aby zwrócić szczegółowe informacje z dziennika można uruchamiać zapytania. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane do obszaru roboczego usługi Log Analytics. Obszar roboczy, aby zwrócić szczegółowe informacje z dziennika można uruchamiać zapytania. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z dziennikami usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane na kontener obiektów Blob i przechowywane w plikach w formacie JSON. Użyj edytora JSON, aby wyświetlić zawartość pliku.|
 | [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Zarejestrowane zdarzenia i metryki zapytania, w oparciu o schematy opisany w tym artykule. Wybierz tę opcję jako usługa zbierania danych alternatywnych dla bardzo dużych dzienników. |
 
-Zarówno usługi Log Analytics i usługi Blob storage są dostępne jako bezpłatna usługa udostępniona, dzięki czemu możesz wypróbować ją bezpłatnie przez okres istnienia subskrypcji platformy Azure. Application Insights jest bezpłatna zarejestrować i używać tak długo, jak rozmiar danych aplikacji podlega pewnym ograniczeniom (zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/) Aby uzyskać szczegółowe informacje).
+Dzienniki usługi Azure Monitor i usługi Blob storage są dostępne jako bezpłatna usługa udostępniona, dzięki czemu możesz wypróbować ją bezpłatnie przez okres istnienia subskrypcji platformy Azure. Application Insights jest bezpłatna zarejestrować i używać tak długo, jak rozmiar danych aplikacji podlega pewnym ograniczeniom (zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/) Aby uzyskać szczegółowe informacje).
 
 Następna sekcja przeprowadzi Cię przez kroki włączania i używania usługi Azure Blob storage do zbierania i uzyskać dostęp do danych dziennika utworzone przez operacje usługi Azure Search.
 
@@ -81,7 +81,7 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów Blob do przechowywani
 
    ![Aby włączyć monitorowanie](./media/search-monitor-usage/enable-monitoring.png "Włącz monitorowanie")
 
-3. Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do usługi Log Analytics.
+3. Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do dzienników usługi Azure Monitor.
 
    Aby uzyskać dane archiwalne do magazynu obiektów Blob na koncie magazynu, musi istnieć. Kontenery i obiekty BLOB zostaną utworzone podczas eksportowania danych dziennika.
 
@@ -114,7 +114,7 @@ Obiekty BLOB, zawierające dzienniki ruchu usługi wyszukiwania są skonstruowan
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
 | resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
 | operationName |ciąg |"Query.Search" |Nazwa operacji |
-| operationVersion |ciąg |"2017-11-11" |Używana wersja interfejsu api |
+| operationVersion |string |"2017-11-11" |Używana wersja interfejsu api |
 | category |ciąg |"OperationLogs" |Stałe |
 | resultType |ciąg |Komunikat "success" |Możliwe wartości: Powodzenie lub niepowodzenie |
 | resultSignature |int |200 |Kod wyniku protokołu HTTP |
@@ -126,7 +126,7 @@ Obiekty BLOB, zawierające dzienniki ruchu usługi wyszukiwania są skonstruowan
 | Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
 | Opis |ciąg |"Pobierz /indexes('content')/docs" |Operacja punktu końcowego |
-| Zapytanie |ciąg |"?search=AzureSearch&$count=true&api-version=2017-11-11" |Parametry zapytania |
+| Zapytanie |string |"?search=AzureSearch&$count=true&api-version=2017-11-11" |Parametry zapytania |
 | Dokumenty |int |42 |Liczba przetworzonych dokumentów |
 | indexName |ciąg |"testindex" |Nazwa indeksu skojarzone z operacją |
 

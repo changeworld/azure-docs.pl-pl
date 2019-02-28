@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 49bc3c22eecf804e6930899478fe3be189677382
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238117"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985907"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -143,6 +143,20 @@ KeyVault-BYOK-Tools-Japan.zip
 KeyVault-BYOK-Tools-Korea.zip
 
 71AB6BCFE06950097C8C18D532A9184BEF52A74BB944B8610DDDA05344ED136F
+
+- - -
+**Republika Południowej Afryki:**
+
+KeyVault-BYOK-Tools-SouthAfrica.zip
+
+C41060C5C0170AAAAD896DA732E31433D14CB9FC83AC3C67766F46D98620784A
+
+- - -
+**ZJEDNOCZONE EMIRATY ARABSKIE:**
+
+KeyVault-BYOK-Tools-UAE.zip
+
+FADE80210B06962AA0913EA411DAB977929248C65F365FD953BB9F241D5FC0D3
 
 - - -
 **Australia:**
@@ -304,6 +318,12 @@ Aby zweryfikować pobrany pakiet:
    * W przypadku Korei:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-KOREA-1 -w BYOK-SecurityWorld-pkg-KOREA-1
+   * Aby uzyskać Republika Południowej Afryki:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SA-1 -w BYOK-SecurityWorld-pkg-SA-1
+   * Aby uzyskać Zjednoczone Emiraty Arabskie:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UAE-1 -w BYOK-SecurityWorld-pkg-UAE-1
    * Dla Australii:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
@@ -390,6 +410,12 @@ Otwórz nowy wiersz polecenia i zmień bieżący katalog do lokalizacji, w któr
 * W przypadku Korei:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1
+* Aby uzyskać Republika Południowej Afryki:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1
+* Aby uzyskać Zjednoczone Emiraty Arabskie:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1
 * Dla Australii:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
@@ -453,6 +479,12 @@ Uruchom jedno z następujących poleceń w zależności od regionu geograficzneg
 * W przypadku Korei:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Aby uzyskać Republika Południowej Afryki:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Aby uzyskać Zjednoczone Emiraty Arabskie:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Dla Australii:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey

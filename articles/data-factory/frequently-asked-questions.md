@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 112ff38ad4e35ac284501c5dd3881c4f340b5f9b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024097"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984649"
 ---
 # <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.  
@@ -174,6 +174,33 @@ Tak. Wyjście działania mogą być używane w kolejnych działań z `@activity`
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Jak bezpiecznie obsługiwać wartości null w danych wyjściowych działania? 
 Możesz użyć `@coalesce` konstruowania w wyrażeniach, które można bezpiecznie obsłużyć wartości null. 
+
+## <a name="mapping-data-flows"></a>Mapowanie przepływu danych
+
+### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>Która wersja usługi ADF należy używać do tworzenia przepływu danych?
+Tworzenie przepływów danych przy użyciu wersji ADF w wersji 2
+  
+### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>Byłem poprzedniego klientów prywatnej wersji zapoznawczej, za pomocą przepływu danych i używany w wersji zapoznawczej przepływów w/Data ADF w wersji 2
+Ta wersja jest już nieaktualny. Użyj ADF w wersji 2 dla przepływów danych
+  
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>Co to została zmieniona z prywatnej wersji zapoznawczej ograniczonej publicznej wersji zapoznawczej w obszarze przepływy danych?
+Należy już do klastrów usługi Databricks. ADF zarządzać tworzenia klastra i zakończenia. Zestawy danych obiektów blob i zestawów danych Azure Data Lake Store są podzielone na tekst rozdzielany i Parquet, zestawów danych. Azure Data Lake Store i obiektów Blob Store można nadal używać do przechowywania tych plików. Na użytek tych aparaty magazynu odpowiednią połączoną usługę.
+
+### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>Aby ADF w wersji 2 można migrować fabryki Moje prywatnej wersji zapoznawczej?
+
+[Tak, postępuj zgodnie z instrukcjami w tym miejscu](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)
+
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>Potrzebuję pomocy w rozwiązywaniu problemów Moje logika przepływu danych, co jest potrzebne?
+
+Gdy firma Microsoft zapewnia pomoc i rozwiązywanie problemów przy użyciu przepływu danych, podaj "DSL kodu Plan". W tym celu wykonaj następujące kroki:
+
+* Z projektanta przepływu danych kliknij przycisk "Kod" w prawym górnym rogu. Spowoduje to wyświetlenie można edytować kod JSON dla przepływu danych.
+* Z widoku kodu kliknij polecenie "Plan" w prawym górnym rogu. Plan pomocą przełącznika z formatu JSON do sformatowanego planu skryptu języka DSL.
+* Skopiuj i wklej ten skrypt lub zapisać go w pliku tekstowym.
+
+### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Jak uzyskać dostęp do danych za pomocą 80 innych typów zestawu danych w usłudze ADF?
+
+Przepływ danych umożliwia obecnie korzystanie z bazy danych SQL Azure, Azure SQL data Warehouse, rozdzielonych plików testowych z obiektu Blob lub Azure Data Lake Store i pliki Parquet z obiektu Blob lub Azure Data Lake Store natywnie dla źródła i ujścia. Użyj działania Copy do przygotowania danych pochodzących z dowolnych innych łączników, a następnie wykonaj działania przepływu danych do przekształcania danych, po to zostały przygotowane. Na przykład najpierw skopiuje potokiem do obiektu Blob, a następnie przepływ danych działanie użyje zestawu danych w źródle do przekształcania danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać instrukcje krok po kroku utworzysz fabrykę danych zobacz następujące samouczki:

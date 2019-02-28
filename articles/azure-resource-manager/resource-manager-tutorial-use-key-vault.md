@@ -10,16 +10,16 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1390a3be20dd1fc66bb04939f9ce41139db3cb2e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270219"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873274"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
 
@@ -66,15 +66,23 @@ Szablon wymaga Twojego identyfikatora obiektu użytkownika z usługi Azure Activ
 
 1. Uruchom następujące polecenie programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.  
 
+    # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```azurecli-interactive
     echo "Enter your email address that is associated with your Azure subscription):" &&
     read upn &&
     az ad user show --upn-or-object-id $upn --query "objectId" &&
-    ```
+    ```   
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
     ```azurepowershell-interactive
-    $upn = Read-Host -Prompt "Input your user principal name (email address) used to sign in to Azure"
+    $upn = Read-Host -Prompt "Enter your user principal name (email address) used to sign in to Azure"
     (Get-AzADUser -UserPrincipalName $upn).Id
     ```
+    lub
+    ```azurepowershell-interactive
+    $displayName = Read-Host -Prompt "Enter your user display name (i.e. John Dole, see the upper right corner of the Azure portal)"
+    (Get-AzADUser -DisplayName $displayName).Id
+    ```
+    ---
 2. Zanotuj identyfikator obiektu. Będzie on potrzebny w dalszej części tego samouczka.
 
 Aby utworzyć magazyn kluczy:
@@ -187,12 +195,9 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateFile azuredeploy.json `
-    -TemplateParameterFile azuredeploy.parameters.json
+    -TemplateFile "$HOME/azuredeploy.json" `
+    -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
 ```
-
-> [!NOTE]
-> Występuje problem z operacją we/wy na pliku podczas używania programu Azure PowerShell w usłudze Cloud Shell.  Komunikat o błędzie: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Nie można pobrać parametrów dynamicznych dla polecenia cmdlet. Nie można odnaleźć ścieżki „Azure:/azuredeploy.json”, ponieważ nie istnieje).  Tymczasowym obejściem jest niedołączanie przełączników **-TemplateFile** i **TemplateParameterFile** w poleceniu `New-AzResourceGroupDeploy`. Polecenie wyświetli monit o wprowadzenie nazwy pliku.
 
 Podczas wdrażania szablonu należy użyć tej samej grupy zasobów, która została użyta na potrzeby magazynu kluczy. Ułatwia to oczyszczanie zasobów. Wystarczy wówczas usunąć jedną grupę zasobów, a nie dwie.
 

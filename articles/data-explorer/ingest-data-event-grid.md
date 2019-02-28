@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743689"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804652"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Szybki start: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer za pomocą subskrybowania powiadomień usługi Event Grid
 
@@ -58,7 +58,7 @@ Utwórz tabelę w usłudze Azure Data Explorer, do której będą wysyłane dane
 
 1. W witrynie Azure Portal w obszarze klastra wybierz pozycję **Zapytanie**.
 
-    ![Link do aplikacji Zapytanie](media/ingest-data-event-hub/query-explorer-link.png)
+    ![Link do aplikacji Zapytanie](media/ingest-data-event-grid/query-explorer-link.png)
 
 1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom**, aby utworzyć tabelę (TestTable), w której będą umieszczane pozyskiwane dane.
 
@@ -82,11 +82,11 @@ Teraz połączysz się z usługą Event Grid z usługi Azure Data Explorer, aby 
 
 1. W obszarze utworzonego klastra wybierz pozycję **Bazy danych**, a następnie pozycję **TestDatabase**.
 
-    ![Wybieranie testowej bazy danych](media/ingest-data-event-hub/select-test-database.png)
+    ![Wybieranie testowej bazy danych](media/ingest-data-event-grid/select-test-database.png)
 
 1. Wybierz pozycję **Pozyskiwanie danych**, a następnie pozycję **Dodaj połączenie danych**.
 
-    ![Wprowadzanie danych](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![Wprowadzanie danych](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1. Wybierz typ połączenia: **Blob Storage**.
 
@@ -185,9 +185,9 @@ Jeśli nie zamierzasz ponownie używać siatki zdarzeń, wyczyść grupę zasob�
 
 1. W witrynie Azure Portal wybierz **grupy zasobów** daleko po lewej stronie, a następnie wybierz utworzoną grupę zasobów.  
 
-    Jeśli menu po lewej stronie jest zwinięte, wybierz ![przycisk Rozwiń,](media/ingest-data-event-hub/expand.png) aby je rozwinąć.
+    Jeśli menu po lewej stronie jest zwinięte, wybierz ![przycisk Rozwiń,](media/ingest-data-event-grid/expand.png) aby je rozwinąć.
 
-   ![Wybieranie grupy zasobów do usunięcia](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Wybieranie grupy zasobów do usunięcia](media/ingest-data-event-grid/delete-resources-select.png)
 
 1. W obszarze **test-resource-group** wybierz pozycję **Usuń grupę zasobów**.
 

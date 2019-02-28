@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 45e87be071e09a19f1d8164eb9a002909a964201
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894721"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960398"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ Na tej stronie **stan dostawcy** zawiera informacje dotyczące bieżącego stanu
 
 Podczas tworzenia nowego obwodu usługi ExpressRoute obwód jest w następującym stanie:
 
-Stan dostawcy: Nie zainicjowano obsługi administracyjnej<BR>
+Stan dostawcy: Nie aprowizowano<BR>
 Stan obwodu: Enabled (Włączony)
 
 ![Zainicjuj proces aprowizacji](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
@@ -90,7 +90,7 @@ Stan obwodu: Enabled (Włączony)
 
 Należy mieć możliwość użycia obwodu usługi ExpressRoute musi być w następującym stanie:
 
-Stan dostawcy: Obsługiwane administracyjnie<BR>
+Stan dostawcy: Przeprowadzono aprowizację<BR>
 Stan obwodu: Enabled (Włączony)
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Okresowo sprawdzać stan i stan klawisza obwodu
@@ -119,9 +119,9 @@ Można wykonać poniższe zadania bez przerw w dostępności:
 
 * Włącz lub Wyłącz dodatek ExpressRoute Premium dla obwodu usługi ExpressRoute.
 * Zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie.
-  > [!IMPORTANT] Obniżenie przepustowości obwodu nie jest obsługiwane. 
+> [!IMPORTANT] Obniżenie przepustowości obwodu nie jest obsługiwane. 
 * Zmień zliczania plan z *plan taryfowy z danymi* do *dane nieograniczone*.
-  > [!IMPORTANT] Zmiana planu zliczania z danymi nieograniczonymi plan taryfowy z danymi nie jest obsługiwana.
+> [!IMPORTANT] Zmiana planu zliczania z danymi nieograniczonymi plan taryfowy z danymi nie jest obsługiwana.
 * Można włączać i wyłączać *Zezwalaj na klasyczne operacje*.
 > [!IMPORTANT]
 > Może być konieczne odtworzenie obwód usługi ExpressRoute, jeśli istnieje niewystarczająca wydajność przy użyciu istniejącego portu. Nie można uaktualnić obwodu, jeśli w tej lokalizacji jest dostępna nie dodatkowej pojemności.

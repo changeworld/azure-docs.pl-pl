@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6e3f0613e89ef7d6e9b44e519226a793940d41f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56006762"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823794"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Samouczek 3. Wdrażanie modelu ryzyka kredytowego — usługa Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania an
 
 Załóżmy, że chcesz przewidzieć ryzyko kredytowe osoby na podstawie informacji przekazanych we wniosku kredytowym.  
 
-Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Użyjesz go jako przykładu na potrzeby przedstawienia sposobu tworzenia rozwiązania analizy predykcyjnej przy użyciu usługi Microsoft Azure Machine Learning. W tym rozwiązaniu skorzystasz z usługi Azure Machine Learning Studio i usługi internetowej Machine Learning. 
+Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Użyjesz go jako przykładu na potrzeby przedstawienia sposobu tworzenia rozwiązania analizy predykcyjnej przy użyciu usługi Microsoft Azure Machine Learning Studio. W tym rozwiązaniu skorzystasz z usługi Azure Machine Learning Studio i usługi internetowej Machine Learning. 
 
 W tym trzyczęściowym samouczku zaczniesz od publicznie dostępnych danych ryzyka kredytowego.  Następnie wdrożysz i wytrenujesz model predykcyjny.  Na koniec wdrożysz model jako usługę internetową.
 
@@ -234,7 +234,7 @@ Jest to najszybszy i najłatwiejszy sposób uzyskania dostępu do klasycznej us�
 
 Te szablony aplikacji internetowej mogą tworzyć niestandardową aplikację internetową, która zna Twoje dane wejściowe usługi internetowej i to, co zwróci. Wystarczy, że zapewnisz dostęp do swojej usługi internetowej i danych, a szablon zajmie się resztą.
 
-Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji internetowych, zobacz [Korzystanie z usługi internetowej Azure Machine Learning za pomocą szablonu aplikacji internetowej](consume-web-service-with-web-app-template.md).
+Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji internetowych, zobacz [Korzystanie z usługi internetowej Azure Machine Learning za pomocą szablonu aplikacji internetowej](/azure/machine-learning/studio/consume-web-services).
 
 
 

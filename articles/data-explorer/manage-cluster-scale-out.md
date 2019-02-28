@@ -1,6 +1,6 @@
 ---
 title: Skalowanie klastrze Eksplorator danych platformy Azure w celu uwzględnienia zmiennym obciążeniem
-description: W tym artykule opisano kroki w celu skalowania w poziomie i klaster Eksploratora danych usługi Azure, w zależności od zmieniających się żądanie w skali.
+description: W tym artykule opisano kroki, aby skalować w poziomie i skalowanie w klastrze usługi Azure Eksplorator danych zależności od zmieniających się żądanie.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,32 +8,34 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 15ef5282e0a073e870f2ac12b5fc442407535770
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 7b99dcf621eac90d4b75d6827102b656f95aafbb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408446"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958885"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowalnego w poziomie do uwzględnienia zmiennym obciążeniem
 
-Odpowiednio rozmiaru klastra ma kluczowe znaczenie dla wydajności Eksploratora danych usługi Azure. Ale nie można przewidzieć zapotrzebowanie na klastrze z dokładnością 100%. Rozmiar klastra statyczne może prowadzić do niepełnego wykorzystania lub nadmiernego wykorzystania, z których żadna nie jest idealnym rozwiązaniem. Lepszym rozwiązaniem jest *skalowania* klastra, dodając i usuwając pojemności zmieniającymi się żądanie. Istnieją dwa przepływy pracy na potrzeby skalowania, skalowanie w górę i skalowania w poziomie. W tym artykule opisano przepływu pracy skalowalny w poziomie.
+Odpowiednio rozmiaru klastra ma kluczowe znaczenie dla wydajności Eksploratora danych usługi Azure. Jednak żądanie w klastrze nie można przewidzieć z dokładnością bezwzględne. Rozmiar klastra statyczne może prowadzić do niepełnego lub overutilization, z których żadna nie jest idealnym rozwiązaniem.
 
-W tym artykule dowiesz się, jak zarządzać klastra skalowalnego w poziomie, znany także jako funkcja automatycznego skalowania. Automatyczne skalowanie pozwala skalowanie w poziomie automatycznie na podstawie wstępnie zdefiniowanych reguł i harmonogramy liczba wystąpień. Określ ustawienia automatycznego skalowania klastra w witrynie Azure portal, zgodnie z poniższym opisem.
+Lepszym rozwiązaniem jest *skalowania* klastra, dodając i usuwając pojemności zmieniającymi się żądanie. Istnieją dwa przepływy pracy na potrzeby skalowania: skalowanie w górę i skalowania w poziomie. W tym artykule opisano przepływu pracy skalowalny w poziomie.
 
-Przejdź do klastra, a w obszarze **ustawienia** wybierz **skalowanie w poziomie**. W obszarze **Konfiguruj**, wybierz opcję **włączyć Skalowanie automatyczne**.
+W tym artykule przedstawiono sposób zarządzania klastra skalowalnego w poziomie, znany także jako funkcja automatycznego skalowania. Skalowanie automatyczne pozwala skalować liczbę wystąpień, automatycznie na podstawie wstępnie zdefiniowanych reguł i harmonogramy. Określ ustawienia automatycznego skalowania klastra w witrynie Azure portal, zgodnie z opisem w tym artykule.
+
+Przejdź do klastra. W obszarze **ustawienia**, wybierz opcję **skalowanie w poziomie**. W obszarze **Konfiguruj**, wybierz opcję **włączyć Skalowanie automatyczne**.
 
 ![Włącz skalowanie automatyczne](media/manage-cluster-scaling/enable-autoscale.png)
 
-Na poniższym rysunku przedstawiono przepływ następnych krokach. Firma Microsoft zapewnia szczegółowe informacje poniżej grafiki.
+Na poniższym rysunku przedstawiono przepływ następnych krokach. Szczegółowe informacje są poniżej grafiki.
 
 ![Reguła skalowania](media/manage-cluster-scaling/scale-rule.png)
 
-1. W obszarze **Nazwa ustawienia skalowania automatycznego**, podaj nazwę, taką jak *skalowalnego w poziomie: wykorzystanie w pamięci podręcznej*.
+1. W **Nazwa ustawienia skalowania automatycznego** Podaj nazwę, taką jak *skalowalnego w poziomie: wykorzystanie w pamięci podręcznej*.
 
-1. W obszarze **tryb skalowania**, wybierz opcję **skalowania na podstawie metryki**. Ten tryb zapewnia dynamiczne skalowanie; Możesz również wybrać **Skaluj do określonej liczby wystąpień**.
+1. Aby uzyskać **tryb skalowania**, wybierz opcję **skalowania na podstawie metryki**. Ten tryb zapewnia dynamiczne skalowanie. Możesz również wybrać **Skaluj do określonej liczby wystąpień**.
 
-1. Wybierz **Dodaj regułę**.
+1. Wybierz **+ Dodaj regułę**.
 
 1. W **reguły skalowania** sekcji po prawej stronie, podaj wartości dla każdego ustawienia.
 
@@ -45,7 +47,7 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Firma Microso
     | **Nazwa metryki** | Wybierz metrykę, chcesz, aby operacja skalowania na podstawie, takich jak **wykorzystania pamięci podręcznej**. |
     | **Statystyka ziarna czasu** | Wybór między **średni**, **Minimum**, **maksymalna**, i **suma**. |
     | **Operator** | Wybierz odpowiednią opcję, takich jak **większa lub równa**. |
-    | **Próg** | Wybierz odpowiednią wartość. Na przykład 80% wykorzystania pamięci podręcznej jest dobry punkt wyjścia. |
+    | **Próg** | Wybierz odpowiednią wartość. Na przykład o 80 procent wykorzystania pamięci podręcznej jest dobry punkt wyjścia. |
     | **Czas trwania (w minutach)** | Wybierz odpowiednią ilość czasu, sprawdź ponownie, gdy trwa obliczanie metryki systemu. Rozpocznij od domyślnego 10 minut. |
     |  |  |
 
@@ -53,7 +55,7 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Firma Microso
 
     | Ustawienie | Opis i wartość |
     | --- | --- | --- |
-    | **Operacja** | Wybierz odpowiednią opcję skalowania na zewnątrz lub skalowania w poziomie. |
+    | **Operacja** | Wybierz odpowiednią opcję na skalowanie w pionie lub w poziomie. |
     | **Liczba wystąpień** | Wybierz liczbę węzłów lub wystąpienia, które chcesz dodać lub usunąć po spełnieniu warunku metryki. |
     | **Czas ochładzania (minuty)** | Wybierz odpowiedni interwał między operacji skalowania. Rozpocznij od domyślnego pięć minut. |
     |  |  |
@@ -64,15 +66,15 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Firma Microso
 
     | Ustawienie | Opis i wartość |
     | --- | --- | --- |
-    | *Minimum* | Liczba wystąpień skalowanych klastra nie będzie poniżej, niezależnie od użycia. |
-    | *Maksymalna* | Liczba wystąpień skalowanych klastra nie będzie powyżej, niezależnie od użycia. |
-    | *Domyślne* | Domyślna liczba wystąpień, używane, jeśli występują problemy z odczytaniem metryk zasobów. |
+    | **Minimum** | Liczba wystąpień skalowanych klastra nie będzie poniżej, niezależnie od użycia. |
+    | **Maksymalna** | Liczba wystąpień skalowanych klastra nie będzie powyżej, niezależnie od użycia. |
+    | **Domyślne** | Domyślna liczba wystąpień. To ustawienie jest używane, jeśli występują problemy z odczytaniem metryk zasobów. |
     |  |  |
 
 1. Wybierz pozycję **Zapisz**.
 
-Operacja skalowania w poziomie, dla klastra Eksploratora danych usługi Azure został skonfigurowany. Dodaj inną regułę dla operacji skalowania na zewnątrz. Pozwoli to klastrowi skalowania dynamicznie na podstawie metryk, które określisz.
+Operacja skalowania w poziomie, dla klastra Eksploratora danych usługi Azure został skonfigurowany. Dodaj inną regułę dla operacji skalowania na zewnątrz. Ta konfiguracja umożliwia skalowanie klastra dynamicznie na podstawie metryk, które określisz.
 
-Można również wykonać [klastra skalowania w górę](manage-cluster-scale-up.md) dla odpowiedniego rozmiaru klastra.
+Możesz również [Zarządzanie klastrem skalowanie w górę](manage-cluster-scale-up.md) dla odpowiedniego rozmiaru klastra.
 
-Jeśli potrzebujesz pomocy z klastrem skalowanie problemy, otwórz żądanie obsługi w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Jeśli potrzebujesz pomocy w przypadku problemów skalowanie klastra [Otwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure portal.

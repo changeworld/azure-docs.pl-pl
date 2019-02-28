@@ -8,16 +8,18 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fb9ee97726632b7eeccc923596c1f5527a7c95bd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098582"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961619"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
-Ten artykuł pomoże Ci skonfigurować rozszerzenia programu Network Performance Monitor do monitorowania usługi ExpressRoute. Network Performance Monitor (NPM) jest sieci opartych na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożeniami w chmurze platformy Azure i lokalizacjami lokalnymi (oddziałów, itp.). NPM jest częścią usługi Log Analytics. NPM oferuje rozszerzenie dla usługi ExpressRoute, która umożliwia monitorowanie wydajności sieci obwodach usługi ExpressRoute, które są skonfigurowane do korzystania z prywatnej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft. Po skonfigurowaniu NPM dla usługi ExpressRoute, można wykryć problemy z siecią, aby zidentyfikować i wyeliminować. Ta usługa jest również dostępny dla chmury dla instytucji rządowych platformy Azure.
+Ten artykuł pomoże Ci skonfigurować rozszerzenia programu Network Performance Monitor do monitorowania usługi ExpressRoute. Network Performance Monitor (NPM) jest sieci opartych na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożeniami w chmurze platformy Azure i lokalizacjami lokalnymi (oddziałów, itp.). NPM jest częścią dzienniki usługi Azure Monitor. NPM oferuje rozszerzenie dla usługi ExpressRoute, która umożliwia monitorowanie wydajności sieci obwodach usługi ExpressRoute, które są skonfigurowane do korzystania z prywatnej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft. Po skonfigurowaniu NPM dla usługi ExpressRoute, można wykryć problemy z siecią, aby zidentyfikować i wyeliminować. Ta usługa jest również dostępny dla chmury dla instytucji rządowych platformy Azure.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Możesz:
 
@@ -58,7 +60,7 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
 
    ![portal](./media/how-to-npm/3.png)<br><br>
 2. W dolnej części głównej **rozwiązania Network Performance Monitor** kliknij **Utwórz** otworzyć **rozwiązania Network Performance Monitor — Utwórz nowe rozwiązanie** strony. Kliknij przycisk **obszar roboczy usługi Analytics Log - wybierz obszar roboczy** aby otworzyć stronę obszarów roboczych. Kliknij przycisk **+ Utwórz nowy obszar roboczy** aby otworzyć stronę obszaru roboczego.
-3. Na **obszar roboczy usługi Log Analytics** wybierz opcję **Utwórz nowy**, następnie skonfiguruj następujące ustawienia:
+3. Na **obszaru roboczego usługi Log Analytics** wybierz opcję **Utwórz nowy**, następnie skonfiguruj następujące ustawienia:
 
   * Zaloguj się obszar roboczy usługi Analytics — wpisz nazwę obszaru roboczego.
   * Subskrypcja — Jeśli masz wiele subskrypcji, wybierz jedną, które chcesz skojarzyć z nowym obszarem roboczym.
@@ -98,7 +100,7 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**.
 3. Na **postanowienia licencyjne** strony, zapoznaj się z licencyjnymi, a następnie kliknij **zgadzam się**.
 4. Na **Folder docelowy** strony, Zmień lub pozostaw domyślny folder instalacji, a następnie kliknij **dalej**.
-5. Na **opcje instalacji agenta** strony, możesz nawiązać połączenia z agentem usługi Azure Log Analytics lub Operations Manager. Lub puste opcje wyboru Jeśli chcesz później skonfigurować agenta. Po wprowadzeniu dokonane wybory, kliknij przycisk **dalej**.
+5. Na **opcje instalacji agenta** strony, możesz nawiązać połączenia z agentem dzienniki usługi Azure Monitor lub Operations Manager. Lub puste opcje wyboru Jeśli chcesz później skonfigurować agenta. Po wprowadzeniu dokonane wybory, kliknij przycisk **dalej**.
 
   * Jeśli chcesz nawiązać połączenie z **usługi Azure Log Analytics**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
 
@@ -111,7 +113,7 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
     ![Konto](./media/how-to-npm/10.png)
 6. Na **gotowy do instalacji** strony, przejrzyj wybrane opcje, a następnie kliknij przycisk **zainstalować**.
 7. Na stronie **Konfiguracja została zakończona pomyślnie** kliknij przycisk **Zakończ**.
-8. Po zakończeniu programu Microsoft Monitoring Agent zostanie wyświetlona w Panelu sterowania. Możesz tam przejrzeć konfigurację i sprawdzić, czy agent jest połączony z usługą Azure Log Analytics. Po nawiązaniu połączenia agent wyświetla komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
+8. Po zakończeniu programu Microsoft Monitoring Agent zostanie wyświetlona w Panelu sterowania. Możesz tam przejrzeć konfigurację i sprawdzić, czy agent jest połączony do dzienników usługi Azure Monitor. Po nawiązaniu połączenia agent wyświetla komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
 
 9. Powtórz tę procedurę dla każdej sieci Wirtualnej, które muszą być monitorowane.
 
@@ -135,7 +137,7 @@ Można łatwo sprawdzić, czy komunikują się agentów.
 1. Na serwerze z agenta monitorowania, należy otworzyć **Panelu sterowania**.
 2. Otwórz **Microsoft Monitoring Agent**.
 3. Kliknij przycisk **usługi Azure Log Analytics** kartę.
-4. W **stan** kolumny, powinien zostać wyświetlony, agent pomyślnie połączono z usługą Log Analytics.
+4. W **stan** kolumny, powinien zostać wyświetlony pomyślnie połączono agenta do dzienników usługi Azure Monitor.
 
   ![status](./media/how-to-npm/12.png)
 

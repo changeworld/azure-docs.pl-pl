@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 2bdd3cd05f78503962461abfcc85320c25350e69
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: a002c4ff843ad1e0bc48d490132d7499526f4d7b
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593135"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958766"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration
 
@@ -65,6 +65,25 @@ Instalowanie programu WMF wymaga ponownego uruchomienia komputera. Po ponownym u
 ### <a name="default-configuration-script"></a>Skrypt konfiguracji domyślnej
 
 Rozszerzenie DSC usługi Azure zawiera domyślny skrypt konfiguracyjny, który ma być używany podczas Ci przy dołączeniu maszyny Wirtualnej do usługi Azure Automation DSC. Parametry skryptu są wyrównane konfigurowalne właściwości [Local Configuration Manager](/powershell/dsc/metaconfig). Aby uzyskać Parametry skryptu, zobacz [domyślne skryptu konfiguracji](dsc-template.md#default-configuration-script) w [Desired State Configuration rozszerzenia z szablonami usługi Azure Resource Manager](dsc-template.md). Aby uzyskać pełny skrypt, zobacz [szablonu szybkiego startu platformy Azure w usłudze GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informacje dotyczące rejestrowania w usłudze Azure Automation stanu Configuration (DSC)
+
+Za pomocą rozszerzenia DSC zarejestrowania węzła w usłudze konfiguracji stanu, trzy wartości będą musieli podać.
+
+- RegistrationUrl — z adresu https konto usługi Azure Automation
+- RegistrationKey — wspólne hasło używane do rejestrowania węzłów z usługą
+- NodeConfigurationName — nazwa dla węzła konfiguracji (MOF) do ściągania z usługi, aby skonfigurować rolę serwera
+
+Te informacje są widoczne w [witryny Azure portal](../../automation/automation-dsc-onboarding.md#azure-portal) lub użyć programu PowerShell.
+
+```PowerShell
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
+```
+
+Nazwa konfiguracji węzła upewnij się, czy przy użyciu nazwy *konfiguracji węzła* i nie konfiguracji.
+Konfiguracja jest zdefiniowany w skrypcie, który jest używany [do kompilacji konfiguracji węzła (plik MOF)](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile).
+Nazwa będzie zawsze konfiguracji następuje kropka `.` i `localhost` lub określonej nazwy komputera.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenie DSC w szablonach usługi Resource Manager
 

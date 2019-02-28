@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: df83149126c439aae6256cd65473470461810bca
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560893"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961231"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty inne niż 1433 dla platformy ADO.NET 4.5
 
@@ -75,11 +75,11 @@ W tej sekcji wyjaśnia monikerów, które odwołują się do wersji produktu. Za
 
 * Microsoft® ODBC Driver 17 for SQL Server® — Windows, Linux i macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* Nawiązać połączenie z usługi Azure SQL Database V12 via przekierowania https://blogs.msdn.microsoft.com/sqlcat/2016/09/08/connect-to-azure-sql-database-v12-via-redirection/
+* Nawiązać połączenie z usługi Azure SQL Database V12 via przekierowania https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [Lista wersji protokołu TDS](http://www.freetds.org/userguide/tdshistory.htm)
 * [Omówienie tworzenia bazy danych SQL](sql-database-develop-overview.md)
 * [Zapora usługi SQL Database platformy Azure](sql-database-firewall-configure.md)
-* [Instrukcje: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md)
+* [Instrukcje: Konfigurowanie ustawień zapory w usłudze SQL Database](sql-database-configure-firewall-settings.md)
 
 

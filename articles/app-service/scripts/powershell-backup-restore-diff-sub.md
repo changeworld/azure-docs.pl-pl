@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 845d47af75495a158e56312126c8e246b43f789f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e8879b67b79523cc35fb28a707a6c77f3efb75c0
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112776"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56584983"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Przywracanie aplikacji internetowej z kopii zapasowej w innej subskrypcji przy użyciu programu PowerShell
 
@@ -48,7 +48,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-| [Add-AzAccount](/powershell/module/az.profile/add-azaccount) | Dodaje uwierzytelnione konto na potrzeby żądań poleceń cmdlet usługi Azure Resource Manager.  |
+| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Dodaje uwierzytelnione konto na potrzeby żądań poleceń cmdlet usługi Azure Resource Manager.  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Pobiera listę kopii zapasowych dla aplikacji internetowej. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Przywraca aplikację internetową z utworzonej wcześniej kopii zapasowej. |

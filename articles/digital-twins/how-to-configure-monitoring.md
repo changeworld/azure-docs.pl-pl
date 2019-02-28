@@ -9,18 +9,20 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 2749a5c6c4e6003c51523d83c46b48d3b55b3d45
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 23759a6c3d920e2b791a10ddd5ac5c5285ed1889
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807588"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959871"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w reprezentacji urządzeń cyfrowych platformy Azure
 
-Twins cyfrowych platformy Azure obsługuje niezawodne rejestrowanie, monitorowanie i analizy. Rozwiązania deweloperzy mogą używać usługi Azure Log Analytics, dzienniki diagnostyczne, rejestrowanie aktywności i innych usług, do obsługi złożonych potrzeb monitorowania aplikacji IoT. Opcje rejestrowania można łączyć z zapytania lub wyświetla rekordy w kilku usługach oraz zapewniają szczegółowe rejestrowanie pokrycie dla wielu usług.
+Twins cyfrowych platformy Azure obsługuje niezawodne rejestrowanie, monitorowanie i analizy. Rozwiązania deweloperzy mogą używać usługi Azure Monitor dzienników, dzienniki diagnostyczne, rejestrowanie aktywności i innych usług, do obsługi złożonych potrzeb monitorowania aplikacji IoT. Opcje rejestrowania można łączyć z zapytania lub wyświetla rekordy w kilku usługach oraz zapewniają szczegółowe rejestrowanie pokrycie dla wielu usług.
 
 Ten artykuł zawiera podsumowanie, rejestrowania i monitorowania opcje i sposób łączenia ich w sposoby określonych Twins cyfrowych platformy Azure.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="review-activity-logs"></a>Przejrzyj dzienniki aktywności
 
@@ -75,7 +77,7 @@ Aby włączyć dzienniki diagnostyczne na potrzeby wystąpienie:
 
     ![Ustawienia diagnostyczne dwóch][5]
 
-    Dzienniki diagnostyczne często są zapisywane przy użyciu [usługi Azure File Storage](../storage/files/storage-files-deployment-guide.md) i udostępniane [usługi Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md). Można wybrać obu opcji.
+    Dzienniki diagnostyczne często są zapisywane przy użyciu [usługi Azure File Storage](../storage/files/storage-files-deployment-guide.md) i udostępniane [dzienniki usługi Azure Monitor](../azure-monitor/log-query/get-started-portal.md). Można wybrać obu opcji.
 
 >[!TIP]
 >Użyj **dzienniki diagnostyczne** uzyskać wgląd w operacje zasobów.
@@ -84,7 +86,7 @@ Aby włączyć dzienniki diagnostyczne na potrzeby wystąpienie:
 
 Aplikacje IoT łączenia różnych zasobów, urządzenia, lokalizacji i dane w jedną. Szczegółowe rejestrowanie udostępnia szczegółowe informacje na temat każdej konkretne, usługi lub składnik architektury cała aplikacja, ale Przegląd ujednoliconego często jest wymagany do obsługi i debugowania.
 
-Usługa Azure Monitor obejmuje zaawansowane usługi Log Analytics umożliwia rejestrowanie źródeł, aby wyświetlać i analizować w jednej lokalizacji. Usługa Azure Monitor, dlatego jest bardzo przydatna w celu analizowania dzienników w zaawansowanych aplikacji IoT.
+Usługa Azure Monitor obejmuje zaawansowane usługi log analytics, która umożliwia rejestrowanie źródeł, aby wyświetlać i analizować w jednej lokalizacji. Usługa Azure Monitor, dlatego jest bardzo przydatna w celu analizowania dzienników w zaawansowanych aplikacji IoT.
 
 Przykłady użycia:
 
@@ -92,32 +94,32 @@ Przykłady użycia:
 * Wyświetlanie dzienników dla kilku funkcji zdefiniowanych przez użytkownika
 * Wyświetlanie dzienników dla dwóch lub więcej usług w określonym przedziale czasu
 
-Pełny dziennik zapytań jest oferowana w ramach [usługi Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md). Aby skonfigurować te zaawansowane funkcje:
+Pełny dziennik zapytań jest oferowana w ramach [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md). Aby skonfigurować te zaawansowane funkcje:
 
 1. Wyszukaj **usługi Log Analytics** w witrynie Azure portal.
-1. Zostanie wyświetlony dostępnych **usługi Log Analytics** wystąpień. Wybierz jedną, a następnie wybierz pozycję **dzienniki** zapytania:
+1. Zostanie wyświetlony dostępnych **obszaru roboczego usługi Log Analytics** wystąpień. Wybierz jedną, a następnie wybierz pozycję **dzienniki** zapytania:
 
     ![Log Analytics][6]
 
-1. Jeśli nie masz jeszcze **usługi Log Analytics** wystąpienia, możesz utworzyć obszar roboczy, klikając **Dodaj** przycisku:
+1. Jeśli nie masz jeszcze **obszaru roboczego usługi Log Analytics** wystąpienia, możesz utworzyć obszar roboczy, klikając **Dodaj** przycisku:
 
     ![Tworzenie pakietu OMS][7]
 
-Raz swoje **usługi Log Analytics** aprowizowano wystąpienie, możesz użyć zaawansowanych zapytań, aby odnaleźć wpisów w dziennikach wielokrotności lub wyszukiwanie przy użyciu kryteriów określonych za pomocą **Zarządzanie dziennikami**:
+Raz swoje **obszaru roboczego usługi Log Analytics** aprowizowano wystąpienie, możesz użyć zaawansowanych zapytań, aby odnaleźć wpisów w dziennikach wielokrotności lub wyszukiwanie przy użyciu kryteriów określonych za pomocą **Zarządzanie dziennikami**:
 
    ![Zarządzanie dziennikami][8]
 
 Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wprowadzenie do zapytań](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **usługi Log Analytics** po raz pierwszy.
+> Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **obszaru roboczego usługi Log Analytics** po raz pierwszy.
 
-Usługa Azure Log Analytics udostępnia również zaawansowane błąd i usług powiadomień o alertach, które można wyświetlić, klikając **diagnozowanie i rozwiązywanie problemów**:
+Dzienniki platformy Azure Monitor udostępnia również zaawansowane błąd i usług powiadomień o alertach, które można wyświetlić, klikając **diagnozowanie i rozwiązywanie problemów**:
 
    ![Alert i błąd powiadomienia][9]
 
 >[!TIP]
->Użyj **usługi Log Analytics** do historii dziennika zapytań dla wielu aplikacji funkcji, subskrypcji lub usług.
+>Użyj **obszaru roboczego usługi Log Analytics** do historii dziennika zapytań dla wielu aplikacji funkcji, subskrypcji lub usług.
 
 ## <a name="other-options"></a>Inne opcje
 
@@ -129,7 +131,7 @@ Twins cyfrowych platformy Azure obsługuje również specyficzne dla aplikacji, 
 
 - Dowiedz się więcej na konfiguracji ustawień diagnostyki platformy Azure, czytając [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-- Przeczytaj więcej na temat [usługi Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md).
+- Przeczytaj więcej na temat [dzienniki usługi Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
 
 <!-- Images -->
 [1]: media/how-to-configure-monitoring/activity-log.png

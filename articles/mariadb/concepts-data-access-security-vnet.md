@@ -5,18 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 82b72b45f9577c83e2c6619220b26e26d696c4f1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540261"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958919"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database dla serwera MariaDB
-
-> [!IMPORTANT]
-> Funkcja punktów końcowych usługi sieci wirtualnej jest w publicznej wersji zapoznawczej.
 
 *Reguły sieci wirtualnej* są jedną funkcję zabezpieczeń zapory, która kontroluje, czy usługi Azure Database dla serwera MariaDB akceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację z usługi Azure Database dla serwera MariaDB.
 

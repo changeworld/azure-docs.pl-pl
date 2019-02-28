@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 44f0309d472a79526537f79feabcd9777b70bcc7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 05802c2a6e1d5e0ea16aa8cfcc4333c14d05c7ae
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888781"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986085"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
 
@@ -28,7 +28,7 @@ Istnieje kilka sposobów na dostęp do informacji o zgodności, generowane przez
 Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy się po zaktualizowaniu informacje o zgodności oraz częstotliwości i zdarzenia, które mogą powodować cykl oceny.
 
 > [!WARNING]
-> Jeśli stan zgodności jest zgłaszany jako **niezarejestrowany**, upewnij się, że **Microsoft.PolicyInsights** zarejestrowaniu dostawcy zasobów i czy użytkownik ma odpowiedni dostęp opartej na rolach kontroli () Uprawnień RBAC), zgodnie z opisem [tutaj](../overview.md#rbac-permissions-in-azure-policy).
+> Jeśli stan zgodności jest zgłaszany jako **niezarejestrowany**, upewnij się, że **Microsoft.PolicyInsights** zarejestrowaniu dostawcy zasobów i czy użytkownik ma odpowiedni dostęp opartej na rolach kontroli () Uprawnień RBAC), zgodnie z opisem w [funkcji RBAC w usługi Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 

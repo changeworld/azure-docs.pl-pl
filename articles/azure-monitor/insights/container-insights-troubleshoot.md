@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a9211abdbc4c9ea7907dfac00d449317dd13089
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: abf833cc054bfac0581506f75259e357f0ab1b38
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190751"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985754"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Rozwiązywanie problemów z usługi Azure Monitor dla kontenerów
 
 Po skonfigurowaniu monitorowania klastra usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów, można napotkać problem uniemożliwia zbieranie danych i raportowania stanu. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Usługa Azure Monitor dla kontenerów jest włączona, ale nie zgłasza żadnych informacji
-Jeśli usługi Azure Monitor dla kontenerów została pomyślnie włączona i skonfigurowana, ale nie można wyświetlić informacje o stanie lub żadne wyniki nie są zwracane z zapytań dzienników usługi Log Analytics, można zdiagnozować problem, wykonaj następujące czynności: 
+Jeśli usługi Azure Monitor dla kontenerów została pomyślnie włączona i skonfigurowana, ale nie można wyświetlić informacje o stanie lub żadne wyniki nie są zwracane z zapytań log, można zdiagnozować problem, wykonaj następujące czynności: 
 
 1. Sprawdź stan agenta, uruchamiając polecenie: 
 
@@ -98,7 +98,7 @@ Poniższa tabela zawiera podsumowanie znanych błędów, które mogą wystąpić
 | Komunikaty o błędach  | Akcja |  
 | ---- | --- |  
 | Komunikat o błędzie `No data for selected filters`  | Może potrwać kilka nawiązać monitorowania przepływu danych w przypadku nowo utworzonego klastrów. Poczekaj co najmniej 10 do 15 minut, zanim dane zostaną wyświetlone dla klastra. |   
-| Komunikat o błędzie `Error retrieving data` | Gdy klaster usługi Azure Kubenetes Service to skonfigurowanie do monitorowania kondycji i wydajności, połączenie zostaje nawiązane między klastra i obszaru roboczego usługi Azure Log Analytics. Obszar roboczy usługi Log Analytics służy do przechowywania wszystkich danych monitorowania dla klastra. Ten błąd może wystąpić, gdy obszar roboczy usługi Log Analytics został usunięty lub utracony. Sprawdź, czy Twój obszar roboczy jest dostępna, przeglądając [zarządzanie dostępem](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Jeśli brakuje obszaru roboczego, należy ponownie dołączyć klastra za pomocą usługi Azure Monitor dla kontenerów. Składanie-dołączania, konieczne będzie [wyłączyć](container-insights-optout.md) monitorowania dla klastra i [Włącz](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) usługi Azure Monitor dla kontenerów ponownie. |  
+| Komunikat o błędzie `Error retrieving data` | Gdy klaster usługi Azure Kubenetes Service to skonfigurowanie do monitorowania kondycji i wydajności, połączenie zostaje nawiązane między klastra i obszaru roboczego usługi Azure Log Analytics. Obszar roboczy usługi Log Analytics służy do przechowywania wszystkich danych monitorowania dla klastra. Ten błąd może wystąpić, gdy obszar roboczy usługi Log Analytics został usunięty lub utracony. Sprawdź, czy Twój obszar roboczy jest dostępna, przeglądając [zarządzanie dostępem](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#view-workspace-details). Jeśli brakuje obszaru roboczego, należy ponownie dołączyć klastra za pomocą usługi Azure Monitor dla kontenerów. Składanie-dołączania, konieczne będzie [wyłączyć](container-insights-optout.md) monitorowania dla klastra i [Włącz](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) usługi Azure Monitor dla kontenerów ponownie. |  
 | `Error retrieving data` Po dodaniu usługi Azure Monitor dla kontenerów za pomocą interfejsu wiersza polecenia az aks | Podczas dołączania za pomocą `az aks cli`, bardzo rzadko, usługi Azure Monitor dla kontenerów może nie być poprawnie dołączone. Sprawdź, czy rozwiązanie jest dołączona. Aby to zrobić, przejdź do obszaru roboczego usługi Log Analytics i sprawdzić, czy rozwiązanie jest dostępne, wybierając **rozwiązania** w okienku po lewej stronie. Aby rozwiązać ten problem, należy ponownie wdrożyć rozwiązanie, postępując zgodnie z instrukcjami wyświetlanymi [sposób wdrażania usługi Azure Monitor dla kontenerów](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) |  
 
 Aby pomóc w zdiagnozowaniu problemu, udostępniliśmy skrypt rozwiązywania problemów dostępne [tutaj](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).  

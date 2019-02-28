@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884464"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984190"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Szybki start: Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
@@ -83,7 +83,7 @@ Aby utworzyć grupę zasobów w witrynie Azure Portal, wykonaj następujące kro
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure Portal, wykonaj następujące kroki:
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych. Jest ona obecnie niedostępna w suwerennych chmurach.
+> Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych.
 
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Storage** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
 2. Wybierz **subskrypcję** i **grupę zasobów**, które zostały utworzone wcześniej.
@@ -141,7 +141,7 @@ Login-AzAccount
 Aby utworzyć nową grupę zasobów za pomocą programu PowerShell, użyj polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup): 
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych. Jest ona obecnie niedostępna w suwerennych chmurach.
+> Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -201,7 +201,7 @@ az group create `
 ```
 
 > [!NOTE]
-> > Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych. Jest ona obecnie niedostępna w suwerennych chmurach.
+> > Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Tworzenie konta magazynu ogólnego przeznaczenia w wersji 2
 

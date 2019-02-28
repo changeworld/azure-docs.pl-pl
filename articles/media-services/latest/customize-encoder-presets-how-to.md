@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/08/2018
+ms.date: 02/26/2019
 ms.author: juliako
-ms.openlocfilehash: c62d9132cdd7eb2ebcbecc3c417ad30d368a278a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a0843e6c641ded75ded01da4c8a54cd4c0f48ee1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138708"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957474"
 ---
 # <a name="how-to-encode-with-a-custom-transform"></a>Jak kodowanie za pomocą niestandardowej transformacji
 
@@ -38,7 +38,7 @@ Niestandardowe ustawienia wstępnego przykładowe znajduje się w [EncodeCustomT
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Tworzenie przekształcenia przy użyciu niestandardowego ustawienia wstępnego 
 
-Podczas tworzenia nowego [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms), należy określić, co chcesz, aby wygenerować jako dane wyjściowe. Wymagany parametr to obiekt **TransformOutput**, jak pokazano w poniższym kodzie. Każdy obiekt **TransformOutput** zawiera element **Preset**. Element **Preset** zawiera szczegółowe instrukcje operacji przetwarzania wideo i/lub dźwięku używanych do wygenerowania wymaganego obiektu **TransformOutput**. Następujące **TransformOutput** tworzy niestandardowe ustawienia koderów-dekoderów i warstwy danych wyjściowych.
+Podczas tworzenia nowego [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms), należy określić, co chcesz, aby wygenerować jako dane wyjściowe. Wymagany parametr to obiekt [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput), jak pokazano w poniższym kodzie. Każdy obiekt **TransformOutput** zawiera element **Preset**. Element **Preset** zawiera szczegółowe instrukcje operacji przetwarzania wideo i/lub dźwięku używanych do wygenerowania wymaganego obiektu **TransformOutput**. Następujące **TransformOutput** tworzy niestandardowe ustawienia koderów-dekoderów i warstwy danych wyjściowych.
 
 Podczas tworzenia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**, tak jak przedstawiono w poniższym kodzie.  W Media Services v3 **uzyskać** metody na jednostkach zwracają **null** Jeśli jednostka nie istnieje (bez uwzględniania wielkości liter Sprawdź nazwy).
 

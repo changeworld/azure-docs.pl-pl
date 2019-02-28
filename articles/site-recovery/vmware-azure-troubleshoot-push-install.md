@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/07/2019
-ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/27/2019
+ms.openlocfilehash: 3b46ffe49aeb31aaf9040be038e8a9e83641ae51
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895690"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984393"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
@@ -58,7 +58,7 @@ Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępu
 
 ## <a name="insufficient-privileges-failure-errorid-95518"></a>Niewystarczające uprawnienia błąd (identyfikator błędu: 95518)
 
-Ustanowienia relacji zaufania domeny, między domeny głównej i stacji roboczej zakończy się niepowodzeniem podczas próby logowania do maszyny źródłowej, instalacji agenta mobilności nie powiedzie się o identyfikatorze błędu 95518. Dlatego upewnij się, że konto użytkownika używane do instalowania agenta mobilności ma uprawnienia administracyjne, aby zalogować się przy użyciu domeny podstawowej maszyny źródłowej.
+W przypadku awarii podczas próby zarejestrowania się na maszynie źródłowej ustanowienia relacji zaufania domeny, między domeny głównej i stacji roboczej instalacji agenta mobilności kończy się niepowodzeniem 95518. Identyfikator błędu. Tak upewnij się, że konto użytkownika używane do instalowania agenta mobilności ma uprawnienia administracyjne, aby zalogować się przy użyciu domeny podstawowej maszyny źródłowej.
 
 Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
@@ -80,7 +80,7 @@ Dlatego modyfikować poświadczeń wybranego przez zgodnie z instrukcjami [tutaj
 
 ### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Serwerów logowania nie są dostępne na maszynie źródłowej (identyfikator błędu: 95521)
 
-Ten błąd występuje, gdy serwerów logowania nie są dostępne na maszynie źródłowej. Niedostępności serwerów logowania doprowadzi do błędu żądanie logowania i w związku z tym nie można zainstalować agenta mobilności. Pomyślne logowanie upewnij się, że serwery logowania są dostępne na maszynie źródłowej, a następnie uruchom usługę logowania. Aby uzyskać szczegółowe instrukcje, kliknij przycisk [tutaj](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
+Ten błąd występuje, gdy serwerów logowania nie są dostępne na maszynie źródłowej. Niedostępności serwerów logowania doprowadzi do błędu żądanie logowania i w związku z tym nie można zainstalować agenta mobilności. Pomyślne logowanie upewnij się, że serwery logowania są dostępne na maszynie źródłowej, a następnie uruchom usługę logowania. Szczegółowe instrukcje można znaleźć w temacie KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) Err Msg: Brak dostępnych obecnie bez logowania serwerów.
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Usługa logowania nie jest uruchomiona na maszynie źródłowej (identyfikator błędu: 95522)
 
@@ -122,9 +122,9 @@ Aby uzyskać **windows 2008 R2 i wcześniejsze wersje**,
 * Aby włączyć udostępnianie za pomocą zasad grupy plików
   * Przejdź do ekranu startowego, wpisz polecenie gpmc.msc i wyszukiwania.
   * W okienku nawigacji otwórz następujące foldery: Lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, Windows, składników i udostępnianie w sieci.
-  * W okienku szczegółów kliknij dwukrotnie **uniemożliwić użytkownikom udostępnianie plików w swoim profilu**. Aby wyłączyć ustawienia zasad grupy, a następnie włącz możliwość jego udostępniania plików, kliknij przycisk wyłączone. Kliknij przycisk OK, aby zapisać zmiany. Aby dowiedzieć się więcej, kliknij przycisk [tutaj](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
+  * W okienku szczegółów kliknij dwukrotnie **uniemożliwić użytkownikom udostępnianie plików w swoim profilu**. Aby wyłączyć ustawienia zasad grupy, a następnie włącz możliwość jego udostępniania plików, kliknij przycisk wyłączone. Kliknij przycisk OK, aby zapisać zmiany. Aby dowiedzieć się więcej, zobacz [włączyć lub wyłączyć udostępnianie plików za pomocą zasad grupy](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
-Aby uzyskać **nowsze wersje**, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-install-mobility-service.md) umożliwiające udostępnianie plików i drukarek.
+Aby uzyskać **nowsze wersje**, postępuj zgodnie z instrukcjami podanymi w [zainstalować usługi mobilności na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych](vmware-azure-install-mobility-service.md) umożliwiające udostępnianie plików i drukarek.
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Sprawdzenie konfiguracji Instrumentacji zarządzania Windows (WMI) (kod błędu: 95103)
 
@@ -191,7 +191,7 @@ blkid /dev/sda2
 /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
 ```
 
-2. Teraz Zastąp nazwy urządzenia za pomocą jego identyfikatora UUID w formacie, takich jak "główny = UUID =<UUID>". Na przykład, jeśli firma Microsoft Zastąp nazwy urządzenia o identyfikatorze UUID dla głównego i wznowić parametrów wymienionych powyżej w plikach "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników:, a następnie wygląda wierszy w plikach. <br>
+2. Teraz Zastąp nazwy urządzenia za pomocą jego identyfikatora UUID w formacie, takich jak "główny = UUID =<UUID>". Na przykład, jeśli firma Microsoft Zastąp nazwy urządzenia o identyfikatorze UUID dla głównego i wznowić parametrów wymienionych powyżej w plikach "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników: wierszy w plikach wyglądać. <br>
 *jądra /boot/vmlinuz-3.0.101-63-default **główny = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **wznowić = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
 3. Ponownie uruchom ochronę ponownie
 
@@ -199,10 +199,10 @@ blkid /dev/sda2
 
 Usługę mobilności usługi Site Recovery ma wiele składników, z których jedno nosi nazwę sterownika filtru. Sterownik filtru pobiera ładowane do pamięci systemowej tylko na czas ponownego uruchomienia systemu. Oznacza to, że poprawki sterownika filtru tylko można realizować po załadowaniu nowego sterownika filtru; który może się zdarzyć tylko w momencie ponownego uruchomienia systemu.
 
-**Należy pamiętać,** to ostrzeżenie, która istniejącą mapowanie replikację będzie działać nawet po zakończeniu nowa aktualizacja agenta. Można ponownie uruchomić w dowolnym momencie w celu uzyskania korzyści z nowego sterownika filtru, ale użytkownik nie należy ponownie uruchomić niż również stare filtr sterownika przechowuje na temat pracy. Tak, po aktualizacji bez ponownego uruchomienia, oprócz sterownik filtru **zalety innych ulepszeń i poprawek w ramach usługi mobilności pobiera rzędu milionów dolarów**. Dlatego, chociaż jest to zalecane, nie jest wymagane ponowne uruchomienie po każdym uaktualnieniu. Instrukcje dotyczące podczas ponownego uruchomienia jest obowiązkowy, kliknij przycisk [tutaj](https://aka.ms/v2a_asr_reboot).
+**Należy pamiętać,** to ostrzeżenie, która istniejącą mapowanie replikację będzie działać nawet po zakończeniu nowa aktualizacja agenta. Można ponownie uruchomić w dowolnym momencie w celu uzyskania korzyści z nowego sterownika filtru, ale użytkownik nie należy ponownie uruchomić stare przechowuje sterownika filtru na temat pracy. Tak, po aktualizacji bez ponownego uruchomienia, oprócz sterownik filtru **zalety innych ulepszeń i poprawek w ramach usługi mobilności pobiera rzędu milionów dolarów**. Dlatego, chociaż jest to zalecane, nie jest wymagane ponowne uruchomienie po każdym uaktualnieniu. Informacje na temat gdy wymagane jest ponowne uruchomienie można ustawić [ponowne uruchomienie maszyny źródłowej po uaktualnieniu agenta mobilności ](https://aka.ms/v2a_asr_reboot) sekcji w aktualizacji usługi w usłudze Azure Site Recovery.
 
 > [!TIP]
->Aby uzyskać najlepsze rozwiązania dotyczące planowania uaktualnienia podczas okna obsługi, zobacz [tutaj](https://aka.ms/v2a_asr_upgrade_practice).
+>Aby uzyskać najlepsze rozwiązania dotyczące planowania uaktualnienia podczas okna obsługi, zobacz [Obsługa najnowszej wersji systemu operacyjnego/jądra](https://aka.ms/v2a_asr_upgrade_practice) w aktualizacji usługi w usłudze Azure Site Recovery.
 
 ## <a name="lvm-support-from-920-version"></a>Obsługa LVM 9.20 wersji
 
@@ -220,7 +220,7 @@ Instalacja usługi VSS jest częścią instalacji agenta mobilności. Ta usługa
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>Błąd VSS-2147023170 [0x800706BE] - kod zakończenia 511
 
-Ten problem występuje najczęściej, gdy oprogramowanie antywirusowe blokuje operacje usługi Azure Site Recovery. Aby rozwiązać problem,
+Ten problem występuje najczęściej, gdy oprogramowanie antywirusowe blokuje operacje usługi Azure Site Recovery. Aby rozwiązać ten problem:
 
 1. Wyklucz wszystkie foldery, o których wspomniano [tutaj](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
 2. Postępuj zgodnie z wytycznymi opublikowanych przez dostawcą oprogramowania antywirusowego w taki sposób, aby odblokować rejestracja biblioteki DLL w Windows.
@@ -250,6 +250,97 @@ Ten błąd występuje, gdy konto użytkownika używane do instalacji nie ma upra
 Spróbuj ręcznie zainstalować usługę dostawcy usługi VSS na maszynie źródłowej, uruchamiając następujące polecenie w wierszu
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+
+
+## <a name="vss-error---0x8004e00f"></a>Błąd VSS - 0x8004E00F
+
+Ten błąd zazwyczaj można napotkać podczas instalacji agenta mobilności ze względu na problemy w modelu DCOM i DCOM jest w stanie krytycznym.
+
+Użyj poniższej procedury w celu ustalenia przyczyny błędu.
+
+**Sprawdź dzienniki instalacji**
+
+1. Otwórz dziennik instalacji znajdujący się w c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+2. Obecność następującego błędu wskazuje ten problem:
+
+    Wyrejestrowywanie istniejącej aplikacji...  Tworzenie obiektu katalogu pobieranie kolekcji aplikacji 
+
+    BŁĄD:
+
+    - Kod błędu:-2147164145 [0x8004E00F]
+    - Kod zakończenia: 802
+
+Aby rozwiązać ten problem:
+
+Skontaktuj się z pomocą [zespół platformy Microsoft Windows](https://aka.ms/Windows_Support) uzyskać pomoc w rozwiązywaniu problemu modelu DCOM.
+
+Po usunięciu problemu modelu DCOM, należy ponownie zainstalować dostawcę usługi Azure Site Recovery VSS ręcznie przy użyciu następującego polecenia:
+ 
+**C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent > "C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
+  
+Jeśli spójność aplikacji nie jest krytyczna dla wymagań dotyczących odzyskiwania po awarii, można pominąć instalację dostawcy usługi VSS. 
+
+Aby pominąć instalację dostawcy usługi VSS usługi Azure Site Recovery i ręcznie zainstalować dostawcę usługi VSS usługi Azure Site Recovery po instalacji:
+
+1. Instalowanie usługi mobilności. 
+> [!Note]
+> 
+> Instalacja zakończy się niepowodzeniem na etapie "Poinstalacyjne configuration". 
+2. Aby pominąć instalację usługi VSS:
+   1. Otwórz znajdujący się w katalogu instalacji usługi mobilności Azure Site Recovery:
+   
+    C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent
+   2.  Zmodyfikowanie skryptów instalacji dostawcy usługi VSS usługi Azure Site Recovery **nMageVSSProvider_Install** i **InMageVSSProvider_Uninstall.cmd** zawsze została wykonana pomyślnie, dodając następujące wiersze:
+    
+    ```     
+    rem @echo off
+    setlocal
+    exit /B 0
+    ```
+
+3. Ręcznie uruchom ponownie instalację agenta mobilności. 
+4. Jeśli instalacja zakończy się pomyślnie i przechodzi do następnego kroku **Konfiguruj**, Usuń wiersze dodane.
+5. Aby zainstalować dostawcę usługi VSS, otwórz wiersz polecenia jako Administrator i uruchom następujące polecenie:
+   
+    **C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent >.\InMageVSSProvider_Install.cmd**
+
+9.  Sprawdź, czy dostawca VSS usługi ASR jest zainstalowany jako usługi w usługach Windows i Otwórz program MMC usługi składnika, aby sprawdzić, czy dostawca VSS usługi ASR jest wyświetlana.
+10. Jeśli instalowanie dostawcy usługi VSS w dalszym ciągu zakończyć się niepowodzeniem i pracować z CX, aby naprawić błędy uprawnień w CAPI2.
+
+## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalacja dostawcy VSS nie powiedzie się z powodu usługa klastrowania jest włączony na maszynie bez klastra
+
+Ten problem powoduje niepowodzenie podczas wykonywania kroku instalacji dostawcy usługi VSS RecoveryR witryny ASAzure ze względu na problem z modelu COM +, która zapobiega instalacji dostawcy usługi VSS instalacji agenta mobilności Azure Site Recovery.
+ 
+### <a name="to-identify-the-issue"></a>Aby zidentyfikować problem
+
+W dzienniku znajduje się na serwerze konfiguracji w C:\ProgramData\ASRSetupLogs\UploadedLogs\<daty / godziny > UA_InstallLogFile.log, można znaleźć następującego wyjątku:
+
+COM + nie może komunikować się z Microsoft Distributed Transaction Coordinator (wyjątek od HRESULT: 0x8004E00F)
+
+Aby rozwiązać ten problem:
+
+1.  Sprawdź, czy ten komputer jest maszyny bez klastra i czy składniki klastra nie są używane.
+3.  Jeśli składniki nie są używane, należy usunąć składniki klastra, na tej maszynie.
+
+## <a name="drivers-are-missing-on-the-source-server"></a>Sterowniki są nieobecne na serwerze źródłowym
+
+W przypadku niepowodzenia instalacji agenta mobilności, sprawdź dzienniki w obszarze C:\ProgramData\ASRSetupLogs Aby ustalić, czy niektóre sterowniki wymagane w niektórych zestawach sterowania.
+ 
+Aby rozwiązać ten problem:
+  
+1. Za pomocą Edytora rejestru, takie jak regedit.msc Otwórz rejestr.
+2. Otwórz węzeł HKEY_LOCAL_MACHINE\SYSTEM.
+3. W węźle SYSTEM zlokalizować formantu zestawów.
+4. Otwórz każdy zestaw formantów i sprawdź, czy występują następujące sterowniki Windows:
+
+   - ATAPI
+   - Vmbus
+   - storflt
+   - storvsc
+   - Intelide
+ 
+Ponownie zainstaluj wszystkie brakujące sterowniki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: b2676d16abe3fb3cb1ec59b261c6cc059b4795de
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cacc17464d15e8872508cff0e626b383ee9a2808
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674773"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985397"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob storage za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,7 +37,7 @@ W szczególności ten łącznik magazynu obiektów Blob obsługuje:
 - Kopiowanie obiektów blob jest analiza kodu lub generowania obiektów blob za pomocą [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
 
 >[!NOTE]
->Jeśli użytkownik włączy _"Zezwalaj na zaufane usługi firmy Microsoft dostęp do tego konta magazynu"_ opcję w ustawieniach zapory usługi Azure Storage, za pomocą środowiska Azure Integration Runtime do połączenia z magazynem obiektów Blob zakończy się niepowodzeniem z błąd "niedozwolone", ponieważ nie są ADF traktowane jako zaufane usługi firmy Microsoft. Użyj środowiskiem Integration Runtime, ponieważ nawiązywanie połączenia za pośrednictwem.
+>Po włączeniu _"Zezwalaj na zaufane usługi firmy Microsoft dostęp do tego konta magazynu"_ opcję w ustawieniach zapory usługi Azure Storage, za pomocą środowiska Azure Integration Runtime do połączenia z magazynem obiektów Blob zakończy się niepowodzeniem z błąd "niedozwolone", ponieważ nie jest ADF traktowane jako zaufane usługi firmy Microsoft. Połącz za pośrednictwem środowiskiem Integration Runtime zamiast tego.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 

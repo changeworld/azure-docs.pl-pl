@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d273e963c6191fdc87c4f19c6465d8a9026a074e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299694"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959412"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metryki usługi Azure Event Hubs w usłudze Azure Monitor
 
@@ -48,7 +48,7 @@ Dla metryk, obsługa wymiarów możesz filtrować z żądaną wartością jak po
 
 ## <a name="billing"></a>Rozliczenia
 
-Przy użyciu metryk w usłudze Azure Monitor jest aktualnie wolne. Jednak jeśli używasz dodatkowych rozwiązań, które pozyskiwania danych metryk, może zostać naliczona według tych rozwiązań. Na przykład opłaty są naliczane przez usługę Azure Storage archiwizowania danych metryk z kontem usługi Azure Storage. Są również rozliczane przez platformę Azure w przypadku strumienia danych metryk do usługi Log Analytics w celu zaawansowanej analizy.
+Przy użyciu metryk w usłudze Azure Monitor jest aktualnie wolne. Jednak jeśli używasz dodatkowych rozwiązań, które pozyskiwania danych metryk, może zostać naliczona według tych rozwiązań. Na przykład opłaty są naliczane przez usługę Azure Storage archiwizowania danych metryk z kontem usługi Azure Storage. Są również rozliczane przez platformę Azure w przypadku strumienia danych metryk z dziennikami usługi Azure Monitor do zaawansowanej analizy.
 
 Następujące metryki umożliwiają przegląd kondycji usługi. 
 

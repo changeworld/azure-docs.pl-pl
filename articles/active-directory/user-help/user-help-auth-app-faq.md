@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9b73acefa3dcddfedbcaee841f9b3560ed10407d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456065"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960415"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikacja Microsoft Authenticator — często zadawane pytania
 
@@ -54,8 +54,10 @@ Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- Jeśli występują problemy z przejściem Twój kod weryfikacyjny dla Twojego osobistego konta Microsoft, zobacz **Rozwiązywanie problemów z kodem weryfikacji** części [zabezpieczające dla konta Microsoft i weryfikacja kody](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) artykułu.
+
 -   Jeśli chcesz, aby dowiedzieć się więcej o weryfikację dwuetapową, zobacz [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md)
 
--   Jeśli chcesz, aby dowiedzieć się więcej o informacje o zabezpieczeniach, zobacz [Zarządzanie swoje informacje zabezpieczające](security-info-manage-settings.md)
+-   Jeśli chcesz, aby dowiedzieć się więcej o informacje o zabezpieczeniach, zobacz [zabezpieczeniami informacji (wersja zapoznawcza) — omówienie](user-help-security-info-overview.md)
 
 - Jeśli Twoje pytanie nie został tutaj odpowiedzi, chcemy poznać Twoją opinię. Przejdź do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) Opublikuj swoje pytanie i Uzyskaj pomoc od społeczności, lub pozostaw komentarz na tej stronie.

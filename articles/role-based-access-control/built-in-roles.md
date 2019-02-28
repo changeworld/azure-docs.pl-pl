@@ -15,16 +15,16 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 106cda22f8f7c54441f438b61eb427446f36a69a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ce9ef687643de7ec9b289f74feea613fb9a1db7a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807494"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960622"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) zawiera kilka wbudowanych ról dla zasobów platformy Azure, które można przypisać do użytkowników, grup, nazw głównych usług i zarządzanych tożsamości. Przypisania roli są sposób kontrolowania dostępu do zasobów platformy Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne [ról niestandardowych dla zasobów platformy Azure](custom-roles.md).
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) zawiera kilka wbudowanych ról dla zasobów platformy Azure, które można przypisać do użytkowników, grup, nazw głównych usług i zarządzanych tożsamości. Przypisania roli są sposób kontrolowania dostępu do zasobów platformy Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe dla zasobów platformy Azure](custom-roles.md).
 
 Ten artykuł zawiera listę wbudowanych ról dla zasobów platformy Azure, które zawsze są obecnie przekształcane. Aby uzyskać najnowsze ról, użyj [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) lub [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list). Jeśli szukasz dla ról administratora usługi Azure Active Directory, zobacz [uprawnienia roli administratora w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
@@ -1628,11 +1628,11 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Testy sieci web usługi Application Insights odczytu/zapisu/usuwania. |
-> | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Odczyt/zapis/usuwanie pakietów rozwiązań usługi Log Analytics. |
-> | Microsoft.OperationalInsights/workspaces/savedSearches/* | Odczyt/zapis/usuwanie Log Analytics zapisane wyszukiwania. |
+> | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Dziennik odczytu/zapisu/usuwania pakietów rozwiązań analizy. |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* | Odczyt/zapis/usuwanie usługa log analytics zapisane wyszukiwania. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Wykonuje zapytanie wyszukiwania |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Pobiera klucze wspólne dla obszaru roboczego. Te klucze są używane do łączenia agentów usługi Microsoft Operational Insights z obszarem roboczym. |
-> | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Konfiguracje szczegółowe informacje o odczytu/zapisu/usuwanie magazynu usługi Log Analytics. |
+> | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Odczyt/zapis/usuwanie dziennika analizy magazynu szczegółowe informacje o konfiguracji. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
@@ -1831,7 +1831,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Authorization/policySetDefinitions/* | Tworzenie i zarządzanie nimi zestawów zasad |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
 > | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
-> | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane usługi Log Analytics |
+> | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane analizy dziennika |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Security/*/read | Składniki zabezpieczeń Odczytaj i zasady |
@@ -1886,7 +1886,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
-> | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane usługi Log Analytics |
+> | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane analizy dziennika |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Security/*/read | Składniki zabezpieczeń Odczytaj i zasady |
@@ -2594,5 +2594,5 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
-- [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal](role-assignments-portal.md)
+- [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md)
 - [Uprawnienia w usłudze Azure Security Center](../security-center/security-center-permissions.md)

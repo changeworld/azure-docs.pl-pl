@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 5a5472e3790235caec65e56f31096de3abfae93d
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100265"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986366"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterowników procesora GPU NVIDIA dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
-To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Linux. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia akceptowanie i wyrażenie zgody na warunki [Umowa licencyjna użytkownika oprogramowania firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). W procesie instalacji maszyny Wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
+To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Linux. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia akceptowanie i wyrażenie zgody na warunki [Umowa licencyjna użytkownika oprogramowania firmy NVIDIA](http://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf). W procesie instalacji maszyny Wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
 
 Rozszerzenie jest również dostępna do zainstalowania sterowników procesora GPU NVIDIA na [maszyn wirtualnych serii N Windows](hpccompute-gpu-windows.md).
 
@@ -74,8 +74,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.HpcCompute | ciąg |
-| type | NvidiaGpuDriverLinux | ciąg |
+| Wydawcy | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Ustawienia
@@ -85,7 +85,7 @@ Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nie aktualizacj
 | Name (Nazwa) | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizacji jądra, nawet jeśli nie są wymagane do instalacji sterowników | false | wartość true, false | wartość logiczna |
-| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | najnowsza | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | ciąg |
+| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | najnowsza | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Zainstaluj zestaw narzędzi CUDA. Istotne tylko w przypadku maszyny wirtualne z serii NC/ND. | true | wartość true, false | wartość logiczna |
 
 

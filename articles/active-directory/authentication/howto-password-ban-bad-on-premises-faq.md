@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adbfb0e42bc7057313c7652402fce2b2ede47735
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6f0a10a56aeecf9973ea12b022e0030fb4635fbf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592506"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984552"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -26,10 +26,6 @@ ms.locfileid: "56592506"
 |     |
 
 ## <a name="general-questions"></a>Pytania ogólne
-
-**Pyt.: Podczas ochrony haseł usługi Azure AD będzie korzystał z ogólna dostępność (GA)?**
-
-GA planowane jest wprowadzenie Q1 CY2019 (końca marca 2019). Dziękujemy wszystkim, który dostarczył opinie na temat funkcji Data — Jesteśmy wdzięczni za jej!
 
 **Pyt.: Jakie wytyczne użytkowników należy zwrócić na sposób wybierania bezpieczne hasło?**
 

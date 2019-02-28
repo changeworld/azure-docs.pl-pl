@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/26/2019
-ms.openlocfilehash: f6179c14c0a057a08203764316eeb43783cd7fc8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 02/27/2019
+ms.openlocfilehash: 0d0ee3664a5f442e4fbf61af3111a53110afd740
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887747"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984751"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i korzystanie z aktywnej replikacji geograficznej
 
@@ -51,9 +51,6 @@ Korzysta z aktywnej replikacji geograficznej [Always On](https://docs.microsoft.
 > W przypadku awarii sieci między dwoma regionami, firma Microsoft ponów próbę wykonania co 10 sekund, aby ponownie ustanowić połączenia.
 > [!IMPORTANT]
 > Aby zagwarantować, że krytycznych zmian w podstawowej bazie danych są replikowane do dodatkowej przed przejścia w tryb failover, można wymusić synchronizacji w celu zapewnienia replikacji krytycznej zmian (na przykład, aktualizowania haseł). Wymuszone synchronizacji ma wpływ na wydajność, ponieważ blokuje wątek wywołujący, aż wszystkie zatwierdzone transakcje są replikowane. Aby uzyskać więcej informacji, zobacz [operacja sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Aby monitorować opóźnienie replikacji między podstawowej bazy danych i pomocnicza geograficzna, zobacz [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
-
-
-
 
 Poniższej ilustracji przedstawiono przykład aktywnej replikacji geograficznej skonfigurowaną główną w regionie północno-środkowe stany USA i dodatkowych w regionie południowo-środkowe stany USA.
 
@@ -110,7 +107,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Synchronizacja poświadczeń i reguł zapory**
 
-Firma Microsoft zaleca używanie [bazy danych reguły zapory](sql-database-firewall-configure.md) replikowanej geograficznie baz danych, dzięki czemu te reguły mogą być replikowane z bazą danych, aby upewnić się, wszystkie pomocnicze bazy danych ma te same reguły zapory jako podstawowy. To podejście eliminuje potrzebę stosowania klientów ręcznego konfigurowania i konserwacji reguły zapory na serwerach hostujących zarówno podstawowych i pomocniczych baz danych. Podobnie za pomocą [zawartych użytkowników bazy danych](sql-database-manage-logins.md) danych zapewnia podstawowych i pomocniczych baz danych zawsze mają taki sam dostęp do poświadczeń użytkownika, więc podczas pracy w trybie failover nie ma żadnych przerw w działaniu z powodu niezgodności z logowania i hasła. Z dodatkiem [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), klienci mogą zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych i całkowicie eliminując potrzebę zarządzania poświadczeniami w bazach danych.
+Firma Microsoft zaleca używanie [IP reguły zapory na poziomie bazy danych](sql-database-firewall-configure.md) replikowanej geograficznie baz danych, dzięki czemu te reguły mogą być replikowane z bazą danych, aby upewnić się, wszystkie pomocnicze bazy danych ma te same reguły zapory IP jako podstawowy. To podejście eliminuje potrzebę stosowania klientów ręcznego konfigurowania i konserwacji reguły zapory na serwerach hostujących zarówno podstawowych i pomocniczych baz danych. Podobnie za pomocą [zawartych użytkowników bazy danych](sql-database-manage-logins.md) danych zapewnia podstawowych i pomocniczych baz danych zawsze mają taki sam dostęp do poświadczeń użytkownika, więc podczas pracy w trybie failover nie ma żadnych przerw w działaniu z powodu niezgodności z logowania i hasła. Z dodatkiem [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), klienci mogą zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych i całkowicie eliminując potrzebę zarządzania poświadczeniami w bazach danych.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawową bazą danych
 

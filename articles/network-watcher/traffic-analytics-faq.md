@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 87c624e0fc5eac60b309a2535afc7508f1b6b3ac
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383004"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986111"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -105,7 +105,7 @@ Tak.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Czy można użyć istniejącego obszaru roboczego?
 
-Tak. Wybranie istniejącego obszaru roboczego, upewnij się, że jej została zmigrowana do nowego języka zapytań. Jeśli nie chcesz uaktualnić obszar roboczy, musisz utworzyć nowy. Aby uzyskać więcej informacji na temat nowego języka zapytań, zobacz [usługi Azure Log Analytics, uaktualnienie do nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md).
+Tak. Wybranie istniejącego obszaru roboczego, upewnij się, że jej została zmigrowana do nowego języka zapytań. Jeśli nie chcesz uaktualnić obszar roboczy, musisz utworzyć nowy. Aby uzyskać więcej informacji na temat nowego języka zapytań, zobacz [nową funkcją przeszukiwania dzienników usługi Azure Monitor rejestruje uaktualnienia](../log-analytics/log-analytics-log-search-upgrade.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Moje konto usługi Azure Storage można w jednej subskrypcji i Mój obszar roboczy usługi Log Analytics jest w innej subskrypcji?
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: b4ac0ccb249bac7149014861056c10f9093d6759
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878168"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593917"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Samouczek: Tworzenie aplikacji usługi LUIS umożliwiającej określanie intencji użytkownika
 
@@ -165,9 +165,13 @@ Wróć do portalu usługi LUIS i utwórz nową intencję, która będzie określ
     |Submit resume for engineering position (Prześlij CV w odpowiedzi na ofertę pracy dla inżyniera)|
     |To jest Moja doświadczeń for post 234123 in Tampa (To jest moje CV w odpowiedzi na ofertę pracy 234123 w Tampie)|
 
-    [![Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji ApplyForJob](media/luis-quickstart-intents-only/utterance-applyforjob.png "Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji ApplyForJob")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+<!--
 
-    Intencja z etykietą jest oznaczona kolorem czerwonym, ponieważ usługa LUIS obecnie nie ma pewności, czy intencja jest poprawna. Proces uczenia aplikacji informuje usługę LUIS, że wypowiedzi dotyczą poprawnej intencji. 
+    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+
+    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
+
+-->
 
 ## <a name="train-again"></a>Ponowne szkolenie
 

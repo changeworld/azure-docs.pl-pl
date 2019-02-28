@@ -1,5 +1,5 @@
 ---
-title: Rozwiązanie Agent Health na platformie Azure | Dokumentacja firmy Microsoft
+title: Rozwiązanie Agent Health w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Ten artykuł ma na celu pomóc Ci zrozumieć, jak korzystać z tego rozwiązania do monitorowania kondycji Twoich agentów raportujących bezpośrednio do usługi Log Analytics lub System Center Operations Manager.
 services: operations-management-suite
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 203a37071637a7e0e44b65240be4c4cae974d95f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335965"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983387"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Rozwiązanie Agent Health na platformie Azure
-Rozwiązanie Agent Health na platformie Azure pomaga zrozumieć, dla wszystkich agentów raportujących do obszaru roboczego usługi Log Analytics lub System Center Operations Manager grupy zarządzania podłączone bezpośrednio do usługi Log Analytics, które są nie odpowiada i wysyłaniem operacyjne dane.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
+Rozwiązanie Agent Health na platformie Azure pomaga zrozumieć, dla wszystkich agentów raportujących do obszaru roboczego usługi Log Analytics lub System Center Operations Manager grupy zarządzania podłączone bezpośrednio do usługi Azure Monitor, które są nie odpowiada i wysyłaniem operacyjne dane.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed wdrożeniem tego rozwiązania, upewnij się, masz aktualnie obsługiwanych [agenci Windows](../../log-analytics/log-analytics-windows-agent.md) raportowania do obszaru roboczego usługi Log Analytics lub serwerowi [grupy zarządzania programu Operations Manager](../../azure-monitor/platform/om-agents.md) zintegrowana z usługą obszar roboczy.    
+Przed wdrożeniem tego rozwiązania, upewnij się, masz aktualnie obsługiwanych [agenci Windows](../../log-analytics/log-analytics-windows-agent.md) raportowania do obszaru roboczego usługi Log Analytics lub serwerowi [grupy zarządzania programu Operations Manager](../../azure-monitor/platform/om-agents.md) zintegrowana z usługą obszar roboczy.
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 To rozwiązanie składa się z następujących zasobów, które są dodawane do Twojego obszaru roboczego, i bezpośrednio połączonych agentów lub grupy zarządzania połączonej z programem Operations Manager.
@@ -48,7 +48,7 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
 | Agenci dla systemu Windows | Yes | Zdarzenia pulsu są zbierane z bezpośrednich agentów systemu Windows.|
-| Grupa zarządzania programu System Center Operations Manager | Yes | Zdarzenia pulsu są zbierane z agentów raportujących do grupy zarządzania co 60 sekund, a następnie przekazywane do usługi Log Analytics. Bezpośrednie połączenie agenta programu Operations Manager z usługą Log Analytics nie jest wymagane. Dane zdarzeń pulsu są przekazywane z grupy zarządzania do repozytorium usługi Log Analytics.|
+| Grupa zarządzania programu System Center Operations Manager | Yes | Zdarzenia pulsu są zbierane z agentów raportujących do grupy zarządzania co 60 sekund, a następnie przekazywane do usługi Azure Monitor. Bezpośrednie połączenie agenta programu Operations Manager do usługi Azure Monitor nie jest wymagane. Dane zdarzeń pulsu są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics.|
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 Po dodaniu rozwiązania do obszaru roboczego usługi Log Analytics, **Agent Health** zostanie dodany Kafelek do pulpitu nawigacyjnego. Ten kafelek pokazuje całkowitą liczbę agentów oraz liczbę nieodpowiadających agentów w ciągu ostatnich 24 godzin.<br><br> ![Kafelek rozwiązania Agent Health na pulpicie nawigacyjnym](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -68,7 +68,7 @@ Kliknij kafelek **Agent Health**, aby otworzyć pulpit nawigacyjny rozwiązania 
 
 ![Przykład pulpitu nawigacyjnego rozwiązania Agent Health](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  
 
-## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
+## <a name="azure-monitor-log-records"></a>Rekordy dziennika w usłudze Azure Monitor
 Rozwiązanie tworzy jeden typ rekordu, w obszarze roboczym usługi Log Analytics.  
 
 ### <a name="heartbeat-records"></a>Rekordy Heartbeat
@@ -76,7 +76,7 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ | *Heartbeat*|
+| Type | *Heartbeat*|
 | Kategoria | Wartością jest *Direct Agent*, *SCOM Agent* lub *SCOM Management Server*.|
 | Computer | Nazwa komputera.|
 | OSType | System operacyjny Windows lub Linux.|
@@ -92,7 +92,7 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 | RemoteIPLongitude | Długość geograficzna lokalizacji geograficznej komputera.|
 | RemoteIPLatitude | Szerokość geograficzna lokalizacji geograficznej komputera.|
 
-Każdy agent raportujący do serwera zarządzania programu Operations Manager będzie wysyłać dwa pulsy, a wartość właściwości SCAgentChannel będzie obejmować obie **bezpośredniego** i **SCManagementServer** zależności od tego, jakie dziennika Analiza źródła danych i rozwiązania, które zostały włączone w Twojej subskrypcji. Jeżeli pamiętasz, dane z rozwiązań są albo przesyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi Log Analytics lub ze względu na ilość danych zgromadzonych na agencie, wysyłane bezpośrednio z agenta do usługi Log Analytics. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
+Każdy agent raportujący do serwera zarządzania programu Operations Manager będzie wysyłać dwa pulsy, a wartość właściwości SCAgentChannel będzie obejmować obie **bezpośredniego** i **SCManagementServer** zależności od tego, co źródła danych i rozwiązań do monitorowania włączono w Twojej subskrypcji. Jeżeli pamiętasz, dane z rozwiązań są albo przesyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi Azure Monitor lub ze względu na ilość danych zgromadzonych na agencie, wysyłane bezpośrednio z agenta do usługi Azure Monitor. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zbieranych przez to rozwiązanie.
@@ -117,4 +117,4 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zbi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej na temat [alertów w usłudze Log Analytics](../../azure-monitor/platform/alerts-overview.md), aby poznać szczegóły generowania alertów z usługi Log Analytics. 
+* Dowiedz się więcej o [alertów w usłudze Azure Monitor](../platform/alerts-overview.md) szczegółowe informacje na temat generowania alertów z usługi Log Analytics. 

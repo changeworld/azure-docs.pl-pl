@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b73a0efbe20b43b3ba8e94fce3aabf12ea918e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997104"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986060"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
@@ -31,7 +31,7 @@ ms.locfileid: "55997104"
 
 Rozwiązania Kubernetes jako elementu portalu Marketplace możesz zaoferować użytkownikom. Użytkownicy mogą następnie można wdrożyć rozwiązania Kubernetes w jednej, skoordynowanej operacji.
 
-Następujący artykuł przyjrzeć się przy użyciu szablonu usługi Azure Resource Manager, wdrażanie i Inicjowanie obsługi administracyjnej zasobów dla autonomicznego klastra usługi Kubernetes. Element Marketplace klastra Kubernetes 0.3.0 wymaga usługi Azure Stack w wersji 1808. Przed rozpoczęciem należy sprawdzić usługi Azure Stack i ustawienia globalnego dzierżawy usługi Azure. Zbieranie wymaganych informacji na temat usługi Azure Stack. Dodaj wymagane zasoby do swojej dzierżawy, a w portalu Azure Marketplace stosu. Klaster zależy od tego, serwer Ubuntu, niestandardowego skryptu i elementów rozwiązania Kubernetes w portalu marketplace.
+Następujący artykuł przyjrzeć się przy użyciu szablonu usługi Azure Resource Manager, wdrażanie i Inicjowanie obsługi administracyjnej zasobów dla autonomicznego klastra usługi Kubernetes. Przed rozpoczęciem należy sprawdzić usługi Azure Stack i ustawienia globalnego dzierżawy usługi Azure. Zbieranie wymaganych informacji na temat usługi Azure Stack. Dodaj wymagane zasoby do swojej dzierżawy, a w portalu Azure Marketplace stosu. Klaster zależy od tego, serwer Ubuntu, niestandardowego skryptu i handlowa klastra Kubernetes w portalu marketplace.
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>Tworzenie planu, oferty i subskrypcji
 

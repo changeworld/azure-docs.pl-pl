@@ -4,186 +4,204 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/02/2018
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3b6476fcedf849fb3305517ecfdcf29d07f545c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 4f54e3c21049908e85a394d6ac94d302a3a934c7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181545"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LogicMonitor
 
 W tym samouczku dowiesz się, jak zintegrować LogicMonitor w usłudze Azure Active Directory (Azure AD).
-
 Integrowanie LogicMonitor z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do LogicMonitor
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do LogicMonitor (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do LogicMonitor.
+* Aby umożliwić użytkownikom można automatycznie zalogowany do LogicMonitor (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą LogicMonitor, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- LogicMonitor logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* LogicMonitor logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie LogicMonitor z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Obsługuje LogicMonitor **SP** jednokrotne logowanie inicjowane przez
 
 ## <a name="adding-logicmonitor-from-the-gallery"></a>Dodawanie LogicMonitor z galerii
+
 Aby skonfigurować integrację LogicMonitor w usłudze Azure AD, należy dodać LogicMonitor z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać LogicMonitor z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **LogicMonitor**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/logicmonitor-tutorial/tutorial_logicmonitor_search.png)
+4. W polu wyszukiwania wpisz **LogicMonitor**, wybierz opcję **LogicMonitor** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **LogicMonitor**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![LogicMonitor na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/logicmonitor-tutorial/tutorial_logicmonitor_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą LogicMonitor w oparciu o użytkownika testu o nazwie "Britta Simon".
-
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w LogicMonitor do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w LogicMonitor musi można ustanowić.
-
-W LogicMonitor, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą LogicMonitor w oparciu o użytkownika testu o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w LogicMonitor musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą LogicMonitor, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego LogicMonitor](#creating-a-logicmonitor-test-user)**  — aby odpowiednikiem Britta Simon w LogicMonitor połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie LogicMonitor logowania jednokrotnego](#configure-logicmonitor-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego LogicMonitor](#create-logicmonitor-test-user)**  — aby odpowiednikiem Britta Simon w LogicMonitor połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji LogicMonitor.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z LogicMonitor, wykonaj następujące czynności:**
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z LogicMonitor, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **LogicMonitor** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **LogicMonitor** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/logicmonitor-tutorial/tutorial_logicmonitor_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **LogicMonitor domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/logicmonitor-tutorial/tutorial_logicmonitor_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.logicmonitor.com`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.logicmonitor.com`
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta LogicMonitor](https://www.logicmonitor.com/contact/) do uzyskania tych wartości. 
- 
+    ![LogicMonitor domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.logicmonitor.com`
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.logicmonitor.com`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta LogicMonitor](https://www.logicmonitor.com/contact/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Kliknij przycisk **Save** (Zapisz).
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/logicmonitor-tutorial/tutorial_general_400.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
+
+6. Na **Konfigurowanie LogicMonitor** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-logicmonitor-single-sign-on"></a>Konfigurowanie LogicMonitor logowanie jednokrotne
 
 1. Zaloguj się do Twojej **LogicMonitor** witryny firmy jako administrator.
 
-1. W menu u góry kliknij pozycję **Settings** (Ustawienia).
-   
+2. W menu u góry kliknij pozycję **Settings** (Ustawienia).
+
     ![Ustawienia](./media/logicmonitor-tutorial/ic790052.png "Ustawienia")
 
-1. Bat nawigacji po lewej stronie, kliknij **logowanie jednokrotne**
-   
+3. Bat nawigacji po lewej stronie, kliknij **logowanie jednokrotne**
+
     ![Logowanie jednokrotne](./media/logicmonitor-tutorial/ic790053.png "Logowanie jednokrotne")
 
-1. W **ustawień logowania jednokrotnego (SSO)** sekcji, wykonaj następujące czynności:
-   
-    ![Pojedynczy ustawień logowania jednokrotnego](./media/logicmonitor-tutorial/ic790054.png "pojedynczy ustawień logowania jednokrotnego")
-   
+4. W **ustawień logowania jednokrotnego (SSO)** sekcji, wykonaj następujące czynności:
+
+    ![Ustawienia logowania jednokrotnego](./media/logicmonitor-tutorial/ic790054.png "Ustawienia logowania jednokrotnego")
+
     a. Wybierz **włączyć rejestrację jednokrotną**.
 
     b. Jako **domyślne przypisania roli**, wybierz opcję **tylko do odczytu**.
-   
+
     c. Otwórz plik metadanych pobranego w Notatniku, a następnie wklej zawartość pliku do **metadanych dostawcy tożsamości** pola tekstowego.
-   
+
     d. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/logicmonitor-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/logicmonitor-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/logicmonitor-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/logicmonitor-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-logicmonitor-test-user"></a>Tworzenie użytkownika testowego LogicMonitor
+
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do LogicMonitor.
+
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **LogicMonitor**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz **LogicMonitor**.
+
+    ![Link LogicMonitor na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-logicmonitor-test-user"></a>Tworzenie użytkownika testowego LogicMonitor
 
 Dla użytkowników usługi Azure AD można było się zalogować musi być obsługiwana do aplikacji LogicMonitor, używając nazwy użytkowników usługi Azure Active Directory.
 
@@ -191,80 +209,36 @@ Dla użytkowników usługi Azure AD można było się zalogować musi być obsł
 
 1. Zaloguj się do witryny firmy LogicMonitor jako administrator.
 
-1. W menu u góry kliknij **ustawienia**, a następnie kliknij przycisk **ról i użytkowników**.
-   
+2. W menu u góry kliknij **ustawienia**, a następnie kliknij przycisk **ról i użytkowników**.
+
     ![Ról i użytkowników](./media/logicmonitor-tutorial/ic790056.png "ról i użytkowników")
 
-1. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij pozycję **Add** (Dodaj).
 
-1. W **Dodaj konto** sekcji, wykonaj następujące czynności:
-   
+4. W **Dodaj konto** sekcji, wykonaj następujące czynności:
+
     ![Dodaj konto](./media/logicmonitor-tutorial/ic790057.png "Dodaj konto")
-   
+
     a. Typ **Username**, **wiadomości E-mail**, **hasło**, i **wpisz ponownie hasło** wartości, które chcesz aprowizować użytkownika usługi Azure Active Directory do powiązanych pól tekstowych.
-   
+
     b. Wybierz **role**, **wyświetlanie uprawnień**i **stan**.
-   
+
     c. Kliknij przycisk **Prześlij**.
 
->[!NOTE]
->Można użyć jakichkolwiek innych LogicMonitor użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez LogicMonitor do świadczenia usługi Azure Active Directory kont użytkowników. 
+> [!NOTE]
+> Można użyć jakichkolwiek innych LogicMonitor użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez LogicMonitor do świadczenia usługi Azure Active Directory kont użytkowników.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do LogicMonitor.
-
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon LogicMonitor, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **LogicMonitor**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/logicmonitor-tutorial/tutorial_logicmonitor_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
- 
-Po kliknięciu kafelka LogicMonitor w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji LogicMonitor.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu). 
+
+Po kliknięciu kafelka LogicMonitor w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze LogicMonitor, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/logicmonitor-tutorial/tutorial_general_01.png
-[2]: ./media/logicmonitor-tutorial/tutorial_general_02.png
-[3]: ./media/logicmonitor-tutorial/tutorial_general_03.png
-[4]: ./media/logicmonitor-tutorial/tutorial_general_04.png
-
-[100]: ./media/logicmonitor-tutorial/tutorial_general_100.png
-
-[200]: ./media/logicmonitor-tutorial/tutorial_general_200.png
-[201]: ./media/logicmonitor-tutorial/tutorial_general_201.png
-[202]: ./media/logicmonitor-tutorial/tutorial_general_202.png
-[203]: ./media/logicmonitor-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -4,24 +4,21 @@ description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji goś
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/27/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 19f55c7d383d64e6c400e22e624b713f6c42dc58
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e6621172734ea02f971bd5064b403ad4844210a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649292"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960769"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
 Oprócz przeprowadzania inspekcji i [korygowanie](../how-to/remediate-resources.md) zasobów platformy Azure, usługi Azure Policy można przeprowadzać inspekcję ustawień na maszynie wirtualnej. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie, za pomocą klienta, sprawdza poprawność ustawień, takich jak konfiguracja systemu operacyjnego, Konfiguracja aplikacji lub obecności i ustawienia środowiska.
-
-> [!IMPORTANT]
-> Obecnie tylko **wbudowanych** zasady są obsługiwane przy użyciu konfiguracji gościa.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -83,7 +80,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 |SUSE|SLES|12 Z DODATKIEM SP3|
 
 > [!IMPORTANT]
-> Konfiguracja gościa nie jest obecnie obsługiwane w przypadku niestandardowych maszyn wirtualnych z obrazów.
+> Konfiguracja gościa można przeprowadzać inspekcję dowolnego serwera z uruchomionym obsługiwanego systemu operacyjnego.  Jeśli chcesz przeprowadzić inspekcję serwery, które używają niestandardowego obrazu, należy zduplikować **DeployIfNotExists** definicji i modyfikować **Jeśli** sekcji, aby uwzględnić właściwości obrazu.
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 
@@ -93,6 +90,17 @@ W poniższej tabeli wymieniono systemy operacyjne, które nie są obsługiwane:
 |-|-|
 |Klient systemu Windows | Systemy operacyjne klienta (takich jak Windows 7 i Windows 10) nie są obsługiwane.
 |Windows Server 2016 Nano Server | Nieobsługiwane.|
+
+### <a name="guest-configuration-extension-network-requirements"></a>Wymagania dotyczące sieci rozszerzenia konfiguracji gościa
+
+Aby komunikować się z dostawcą zasobów gościa konfiguracji na platformie Azure, maszyny wirtualne wymagają dostęp ruchu wychodzącego do centrów danych platformy Azure na porcie **443**. Jeśli używasz prywatnej sieci wirtualnej na platformie Azure, a nie zezwolić na ruch wychodzący, wyjątki musi być skonfigurowany przy użyciu [sieciowej grupy zabezpieczeń](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) reguły. W tej chwili tag usługi nie istnieje dla konfiguracji gościa zasad platformy Azure.
+
+Dla listy adresów IP, możesz pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i ma aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Musisz zezwolić na dostęp ruchu wychodzącego do adresów IP w regionach, w których maszyny wirtualne są wdrażane.
+
+> [!NOTE]
+> Plik XML adres IP centrum danych platformy Azure zawiera listę zakresów adresów IP, które są używane w centrach danych platformy Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i storage.
+> Tydzień jest publikowany zaktualizowany plik. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych, przez co najmniej jeden tydzień.
+> To dobry pomysł, aby pobrać nowy plik XML, co tydzień. Następnie należy zaktualizować lokację do prawidłowo identyfikować usługi uruchomione na platformie Azure. Użytkownicy usługi Azure ExpressRoute należy zauważyć, że ten plik jest używany do aktualizacji anonsu protokołu BGP (Border Gateway) miejsca platformy Azure w pierwszym tygodniu każdego miesiąca.
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 

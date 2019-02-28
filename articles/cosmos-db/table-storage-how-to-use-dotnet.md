@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
-ms.openlocfilehash: 7798af5d667bcf70ba562bb7198f9af570f3005a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 57ed02463555ce9e958aedd9c2b317f7a167567b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044420"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985890"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu platformy .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,7 +36,6 @@ Do pomyślnego ukończenia pracy z przykładem wymagane są następujące elemen
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Wspólna biblioteka usługi Azure Storage dla platformy .NET (wersja zapoznawcza)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). Jest to wymagany pakiet w wersji zapoznawczej obsługiwany w środowiskach produkcyjnych. 
 * [Biblioteka tabel usługi Microsoft Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) — ta biblioteka jest obecnie dostępna tylko dla platformy .NET Standard, nie jest jeszcze dostępna dla platformy .NET Core.
-* [Menedżer konfiguracji Azure dla programu .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -77,14 +76,11 @@ Istnieją trzy pakiety, do których należy dodać odwołania w projekcie, aby u
 
 * [Biblioteka tabel usługi Microsoft Azure Cosmos DB dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Ten pakiet zapewnia dostęp programowy do zasobów danych na koncie usługi Azure Table Storage lub koncie interfejsu API tabel usługi Azure Cosmos DB. Ta biblioteka jest obecnie dostępna tylko dla platformy .NET Standard, nie jest jeszcze dostępna dla platformy .NET Core.
 
-* [Biblioteka programu Microsoft Azure Configuration Manager dla środowiska .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): ten pakiet zawiera klasę do analizowania parametrów połączenia w pliku konfiguracji, niezależnie od tego, gdzie została uruchomiona aplikacja.
-
 Aby uzyskać pakiety NuGet, wykonaj następujące kroki:
 
 1. Kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań** i wybierz polecenie **Zarządzaj pakietami NuGet**.
 2. Wyszukaj w trybie online ciąg „Microsoft.Azure.Storage.Common”, wybierz wersję <= 9.0.0.1, a następnie wybierz pozycję **Zainstaluj**, aby zainstalować wspólną bibliotekę usługi Azure Storage dla platformy .NET (wersja zapoznawcza) oraz jej zależności. Upewnij się, że zaznaczono pole wyboru **Uwzględnij wersję wstępną**, ponieważ jest to pakiet w wersji zapoznawczej.
 3. Wyszukaj w trybie online ciąg „Microsoft.Azure.CosmosDB.Table” i wybierz opcję **Zainstaluj**, aby zainstalować bibliotekę tabel usługi Microsoft Azure Cosmos DB.
-4. Wyszukaj w trybie online ciąg „WindowsAzure.ConfigurationManager” i wybierz pozycję **Zainstaluj**, aby zainstalować bibliotekę programu Microsoft Azure Configuration Manager.
 
 > [!NOTE]
 > Zależności ODataLib we wspólnej bibliotece usługi Storage dla platformy .NET są rozpoznawane za pomocą pakietów ODataLib dostępnych w usłudze NuGet, a nie za pośrednictwem usług WCF Data Services. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez Bibliotekę klienta usługi Storage to [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/) i [Spatial](https://nuget.org/packages/System.Spatial/). Ze względu na to, że biblioteki te są używane przez klasy usługi Azure Table Storage, są one zależnościami wymaganymi w przypadku programowania z użyciem wspólnej biblioteki usługi Storage.

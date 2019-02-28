@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 02/27/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4bdc17e444239652fa612078e89ec85e357c9316
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 2a245a6e3d76a7df41b5ef28f9bac8a2c2122402
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750518"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985431"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Umiejętności cognitive rozpoznawania jednostek
 
@@ -43,7 +43,8 @@ Parametrów jest rozróżniana wielkość liter i są wszystkie opcjonalne.
 | categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
 |defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
 |minimumPrecision | Nieużywane. Zarezerwowane do użytku w przyszłości. |
-|includeTypelessEntities | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, będzie zwracany jako część `"entities"` złożonych danych wyjściowych. Wartość domyślna to `false` |
+|includeTypelessEntities | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, będzie zwracany jako część `"entities"` złożonych danych wyjściowych. 
+To są jednostki, które są dobrze znane, ale nie zostały sklasyfikowane jako część bieżącego obsługiwanych "kategorie". Na przykład "systemu Windows 10" jest dobrze znanych jednostek (produkt), ale "Produkty" nie znajdują się w kategorii obecnie obsługiwane. Wartość domyślna to `false` |
 
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności

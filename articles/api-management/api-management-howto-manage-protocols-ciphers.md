@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: a55d16a35b5eec1af2b24d02e158905493615999
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 91b6cd64a42319b2a5307919c2efe6bc8e5dcd64
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441116"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983204"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Zarządzanie protokołów i mechanizmów szyfrowania w usłudze Azure API Management
 
@@ -39,11 +39,9 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 ## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>Jak zarządzać szyfrowania TLS protokołów i 3DES
 
 1. Przejdź do swojej **wystąpienia usługi API Management** w witrynie Azure portal.
-2. Wybierz **SSL** z menu.  
-    ![Zarządzanie protokołów i szyfrów w APIM — menu](./media/api-management-howto-manage-protocols-ciphers/api-management-menu.png)
+2. Wybierz **protokołu ustawienia** z menu.  
 3. Włącz lub wyłącz żądane protokołów i szyfrów.
 4. Kliknij pozycję **Zapisz**. Zmiany zostaną zastosowane w ciągu godziny.  
-    ![Zarządzanie protokołów i szyfrów w APIM - zapisu](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers-save.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

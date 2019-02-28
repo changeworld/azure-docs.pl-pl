@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7eecd7f5da2b20cb80d8a04d105460baaf9ed4a2
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961274"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984717"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
-Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
+Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Podczas monitorowania może się w różnych warunkach, za pomocą usługi Azure Monitor, nie został on zaprojektowany do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
 
 Wyświetlanie ogólną kondycję maszyn wirtualnych platformy Azure i bazowych systemu operacyjnego, można zaobserwować z dwóch perspektyw z usługą Azure Monitor dla kondycji maszyn wirtualnych, bezpośrednio z maszyny wirtualnej lub wszystkich maszyn wirtualnych w grupie zasobów z usługi Azure Monitor.
 
@@ -251,7 +251,7 @@ Usługa Azure Monitor kondycji maszyn wirtualnych funkcji integruje się z [Azur
 
 Na **alerty** strony, to nie tylko obejmuje Pokaż alerty spełniające wybraną, ale również są filtrowane według **typ zasobu** tylko w celu wyświetlenia alertów dotyczących kondycji wygenerowane przez zasób maszyny wirtualnej.  Znajduje to odzwierciedlenie na liście alertów, w kolumnie **zasób docelowy**, gdzie pokazuje maszyny Wirtualnej platformy Azure, gdy kryteria kondycji konkretnego złej kondycji warunek został spełniony dla został zgłoszony alert.  
 
-Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnienia w tym widoku, takie jak alerty dziennika oparte na usłudze Log Analytics zapytania lub alertów metryk, który będzie zwykle wyświetlisz z domyślnej usługi Azure Monitor [wszystkie alerty](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) strony. 
+Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnienia w tym widoku, takie jak alertów dzienników opartych na kwerendach dziennika lub alertów metryk, który będzie zwykle wyświetlisz z domyślnej usługi Azure Monitor [wszystkie alerty](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) strony. 
 
 Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej części strony.
 

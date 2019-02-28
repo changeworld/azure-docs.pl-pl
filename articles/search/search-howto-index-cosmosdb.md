@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d63fdbfd71e812e9b445fb0055cb9aee5876ecc1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359497"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962149"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Łączenie usługi Cosmos DB przy użyciu usługi Azure Search przy użyciu indeksatorów
 
@@ -65,7 +65,7 @@ A **źródła danych** Określa dane do indeksu, poświadczeń i zasad do identy
 
 Aby skonfigurować indeksator usługi Azure Cosmos DB, musisz utworzyć indeks, źródło danych, a na końcu indeksatora. Można utworzyć za pomocą [portal](search-import-data-portal.md), [zestawu .NET SDK](/dotnet/api/microsoft.azure.search), lub [interfejsu API REST](/rest/api/searchservice/). 
 
-W tym artykule pokazano, jak używać interfejsu API REST. Jeśli postanowisz dla portalu [Kreatora importu danych](search-import-data-portal.md) przeprowadzi Cię przez tworzenie tych zasobów, łącznie z indeksu.
+W tym artykule pokazano, jak używać interfejsu API REST. Jeśli postanowisz portalu, upewnij się, że bazy danych usługi Cosmos DB zawiera dane. [Kreatora importu danych](search-import-data-portal.md) odczytuje metadane i wykonuje próbkowanie danych na potrzeby wnioskowania dotyczącego schematu indeksu, ale również ładowania danych z usługi Cosmos DB. Jeśli brakuje danych, Kreator przestanie się z powodu następującego błędu "błąd podczas wykrywania schematu indeksu na podstawie źródła danych: Nie można zbudować prototypu indeksu, ponieważ źródło danych "emptycollection" nie zwrócił danych. ".
 
 > [!TIP]
 > W celu uproszczenia indeksowania dla danego źródła danych można uruchomić kreator **Importuj dane** na pulpicie nawigacyjnym usługi Azure Cosmos DB. Aby rozpocząć, w obszarze nawigacyjnym po lewej stronie przejdź do pozycji **Kolekcje** > **Dodaj usługę Azure Search**.
@@ -96,7 +96,7 @@ Aby utworzyć źródło danych, czy WPIS:
 
 Treść żądania zawiera definicję źródła danych, który powinien zawierać następujące pola:
 
-* **Nazwa**: Wybierz dowolną nazwę do reprezentowania bazy danych.
+* **name**: Wybierz dowolną nazwę do reprezentowania bazy danych.
 * **Typ**: Musi być `documentdb`.
 * **poświadczenia**:
   
@@ -104,7 +104,7 @@ Treść żądania zawiera definicję źródła danych, który powinien zawierać
   Należy unikać numerów portów w programie adres url punktu końcowego. Jeśli uwzględniony numer portu usługi Azure Search można indeksować bazy danych Azure Cosmos DB.
 * **kontener**:
   
-  * **Nazwa**: Wymagany. Określ identyfikator kolekcji bazy danych, które mają być indeksowane.
+  * **name**: Wymagany. Określ identyfikator kolekcji bazy danych, które mają być indeksowane.
   * **Zapytanie**: Opcjonalny. Można określić zapytanie w celu spłaszczenia dowolny dokument JSON do płaski schemat, który usługa Azure Search umożliwia indeksowanie. Dla kolekcji usługi MongoDB zapytania nie są obsługiwane. 
 * **dataChangeDetectionPolicy**: Zalecane. Zobacz [indeksowania zmienione dokumenty](#DataChangeDetectionPolicy) sekcji.
 * **dataDeletionDetectionPolicy**: Opcjonalny. Zobacz [indeksowanie dokumentów usunięte](#DataDeletionDetectionPolicy) sekcji.
@@ -182,10 +182,10 @@ Upewnij się, że schemat indeksu docelowego jest zgodna z schemat źródła dok
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapowanie między typami danych JSON i typy danych w usłudze Azure Search
 | Typ danych JSON | Typy pól indeksu docelowego zgodne |
 | --- | --- |
-| wartość logiczna |Edm.Boolean, Edm.String |
+| Bool |Edm.Boolean, Edm.String |
 | Numery, które przypominają liczb całkowitych |Edm.Int32, Edm.Int64, Edm.String |
 | Numery tego wygląd, takich jak punkty liczb zmiennoprzecinkowych |Edm.Double, Edm.String |
-| Ciąg |Edm.String |
+| String |Edm.String |
 | Tablice typów pierwotnych, na przykład ["a", "b", "c"] |Collection(Edm.String) |
 | Ciągi, które mają postać daty |Edm.DateTimeOffset, Edm.String |
 | Obiekty GeoJSON, na przykład {"type": "Point", "coordinates": [długie, lat]} |Edm.GeographyPoint |

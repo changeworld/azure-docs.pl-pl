@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e5714f60b7fdd790f3af8e31250c41038110fd08
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047915"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984403"
 ---
 # <a name="application-layer-security-with-front-door"></a>Zabezpieczenia warstwy aplikacji przy wejściu
 Usługa Azure Service drzwiami frontowymi zapewnia możliwość ochrony aplikacji sieci web, zabezpieczenie aplikacji sieci web przed atakami sieciowymi oraz typowe luki luk w zabezpieczeniach sieci web jak wstrzykiwanie kodu SQL lub obejmujące wiele lokacji skryptów (XSS). Włączone dla frontonów HTTP (s), zabezpieczeń warstwy aplikacji drzwiami frontowymi jest globalnie rozproszone i zawsze, zatrzymywanie złośliwych ataków na sieć platformy Azure urządzenia brzegowe, daleko od zaplecza. Większe bezpieczeństwo i optymalizacji wydajności wejściu zapewnia szybkie i bezpieczne sieci web środowisk użytkowników końcowych.
@@ -25,9 +25,9 @@ Usługa Azure Service drzwiami frontowymi zapewnia możliwość ochrony aplikacj
 Ochrona aplikacji drzwiami frontowymi jest konfigurowany na każde środowisko brzegowych na całym świecie, tworzone są aplikacje i automatycznie blokuje bez — ruch HTTP (s) z docieranie do aplikacji sieci web. Nasza architektura rozproszona wielodostępnych włącza globalnego ochronę na dużą skalę, bez obniżania oczekiwanego poziomu wydajności. W przypadku obciążeń HTTP (s) usługa ochrony aplikacji sieci web drzwiami frontowymi zapewnia aparat reguł zaawansowanych reguł niestandardowych, zestawu wstępnie skonfigurowanych reguł przed typowymi atakami i szczegółowe rejestrowanie dla wszystkich żądań który jest zgodny z regułą. Zezwalaj na elastyczne działań, w tym bloku lub dziennika obsługiwane są tylko.
 
 ## <a name="custom-access-control-rules"></a>Zasady kontroli dostępu niestandardowych
-- **List elementów zabronionych adresów IP i dozwolonych:** można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci web, w oparciu o listę adresów IP klienta. Obsługiwane są zarówno IPv4 i IPv6
-- **Kontrola dostępu oparta na geograficznej:** można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci web, w oparciu o adres IP klienta należy z numer kierunkowy kraju
-- **Parametry HTTP filtrowania:** może skonfigurować reguły niestandardowego dostępu na podstawie zgodności parametry żądania HTTP (s), włącznie z nagłówkami, adres URL i ciągów zapytania
+- **Zezwalaj na adresów IP, listy i listy zablokowanych:** Można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci web, w oparciu o listę adresów IP klienta. Obsługiwane są zarówno IPv4 i IPv6
+- **Kontrola dostępu na podstawie geograficznych:** Możesz skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci web na podstawie kodu kraju, Data utworzenia adresu IP klienta
+- **Parametry protokołu HTTP, filtrowania:** Możesz skonfigurować reguły niestandardowego dostępu na podstawie zgodności parametry żądania HTTP (s), łącznie z nagłówkami, adres URL i ciągi zapytań
 
 ## <a name="azure-managed-rules"></a>Zasady usługi Azure managed
 - Wstępnie skonfigurowany zestaw reguł względem znanych luk OWASP najważniejsze jest domyślnie włączona. W wersji zapoznawczej zestaw reguł zawiera sqli i xss żądania kontroli. Dodatkowe zasady zostaną dodane. Możesz uruchomić za pomocą dziennika akcji tylko do sprawdzania poprawności pracy wstępnie skonfigurowanych reguł, zgodnie z oczekiwaniami dla aplikacji 
@@ -51,5 +51,5 @@ Zabezpieczenia warstwy aplikacji drzwiami frontowymi jest bezpłatne w wersji za
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

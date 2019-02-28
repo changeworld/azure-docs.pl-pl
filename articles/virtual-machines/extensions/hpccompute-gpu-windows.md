@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 67eadd45d4c9c3f3c83568dc7831eff37a4c376e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977630"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983442"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Procesor GPU NVIDIA sterownika rozszerzenia dla Windows
 
 ## <a name="overview"></a>Przegląd
 
-To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Windows. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia akceptowanie i wyrażenie zgody na warunki [Umowa licencyjna użytkownika oprogramowania firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). W procesie instalacji maszyny Wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
+To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Windows. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia akceptowanie i wyrażenie zgody na warunki [Umowa licencyjna użytkownika oprogramowania firmy NVIDIA](http://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf). W procesie instalacji maszyny Wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
 
 Rozszerzenie jest również dostępna do zainstalowania sterowników procesora GPU NVIDIA na [maszyny wirtualne z serii N Linux](hpccompute-gpu-linux.md).
 
@@ -74,8 +74,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.HpcCompute | ciąg |
-| type | NvidiaGpuDriverWindows | ciąg |
+| Wydawcy | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 

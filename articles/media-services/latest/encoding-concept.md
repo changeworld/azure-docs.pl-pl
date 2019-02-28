@@ -9,19 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 52e7fdf6de25300d4f78ee9822aca4ad83f646e9
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: ccf298c99851dc2418da894431c5c86adafe59b3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408429"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959446"
 ---
 # <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
-Usługa Azure Media Services umożliwia kodowanie plików multimediów cyfrowych wysokiej jakości do formatów, które można odtwarzać na różnych przeglądarek i urządzeń. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
+Usługa Azure Media Services umożliwia kodowanie do plików MP4 wysokiej jakości multimedialnych plików, więc zawartość może być odtwarzany na podstawie różnych przeglądarek i urządzeń. Pomyślne zadania kodowania usługi Media Services tworzy dane wyjściowe zasobów ze zbiorem każdego pliku MP4 z adaptacyjną szybkością transmisji bitów i plik manifestu (serwera i klienta). W tym momencie możesz korzystać z zalet [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md).
+
+Aby wprowadzić filmów wideo w danych wyjściowych dostępne dla klientów do odtwarzania elementu zawartości, należy utworzyć **lokalizatora przesyłania strumieniowego** i późniejszego kompilowania adresów URL przesyłania strumieniowego. Następnie na podstawie określonego formatu w manifeście, klientom strumień jest dostarczany za protokół, które wybrali.
+
+Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
+
+![Dynamiczne kodowania](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+
+Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
+
+## <a name="transforms-and-jobs"></a>Transformacje i zadania
 
 Kodowanie za pomocą usługi Media Services v3, musisz utworzyć [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) i [zadania](https://docs.microsoft.com/rest/api/media/jobs). Przekształcenie definiuje przepis na kodowania ustawień i danych wyjściowych, a zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [transformacje i zadania](transforms-jobs-concept.md)
 
@@ -60,9 +70,11 @@ Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w 
 
 ## <a name="scaling-encoding-in-v3"></a>Skalowanie kodowania w wersji 3
 
-Obecnie klienci mają używać witryny Azure portal lub interfejsów API w wersji 2 usługi Media Services do zestawu jednostek ru (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
+Skalowanie przetwarzania multimediów, zobacz [skalowanie przy użyciu interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Transformacje i zadania](transforms-jobs-concept.md)
+* [Kodowanie z adresu URL HTTPS, przy użyciu wbudowanych ustawień wstępnych](job-input-from-http-how-to.md)
+* [Kodowanie pliku lokalnego za pomocą wbudowanych ustawień wstępnych](job-input-from-local-file-how-to.md)
+* [Tworzenie niestandardowego ustawienia wstępnego pod kątem określonych wymagań scenariusza lub urządzenia](customize-encoder-presets-how-to.md)
 * [Przekazywanie, kodowanie i przesyłanie strumieniowe przy użyciu usługi Media Services](stream-files-tutorial-with-api.md)

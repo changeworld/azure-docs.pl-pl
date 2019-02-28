@@ -5,18 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 77602898df7d783367ffd78328082c3edcaac83e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: a1d92f324c30c498b1a42f6155a478cf131ecc96
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542343"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961962"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla punktów końcowych usługi sieci wirtualnej MariaDB oraz reguł sieci wirtualnej przy użyciu witryny Azure portal
-
-> [!IMPORTANT]
-> Funkcja punktów końcowych usługi sieci wirtualnej jest w publicznej wersji zapoznawczej.
 
 Punkty końcowe usługi sieci wirtualnej i reguł dotyczyć usługi Azure Database dla serwera MariaDB prywatnej przestrzeni adresowej sieci wirtualnej. Omówienie usługi Azure Database dla punktów końcowych usługi sieci wirtualnej MariaDB, łącznie z ograniczeniami, zobacz [— Azure Database for punkty końcowe usługi sieci wirtualnej serwera MariaDB](concepts-data-access-security-vnet.md). Punkty końcowe usługi sieci wirtualnej są dostępne we wszystkich obsługiwanych regionów dla usługi Azure Database dla serwera MariaDB.
 

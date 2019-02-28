@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 74bdcc831f19031162d004e1ba98c0cfc258ce4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c66f0e67b09dab15431a8c7c10db1c820038dea6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879422"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984989"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -116,7 +116,7 @@ Jednym z najprostszych sposobów, aby rozpocząć testowanie pod kątem luk w za
 Jeśli wolisz do przeprowadzenia testów penetracyjnych lub chcesz użyć innego dostawcy lub skaner pakietu, należy wykonać [platformy Azure proces zatwierdzania testów penetracyjnych](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) i uzyskać wcześniejsze zatwierdzenia do przeprowadzenia testów penetracyjnych żądaną.
 
 ### <a name="web-application-firewall"></a>Zapora aplikacji sieci Web
-Zapora aplikacji sieci web (WAF) w [usługi Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomaga chronić aplikacje sieci web przed typowymi atakami opartego na sieci web, takimi jak iniekcja SQL, ataki z użyciem skryptów między witrynami i przejęcie kontroli sesji. Ma wstępnie skonfigurowany ochrony przed zagrożeniami zidentyfikowanymi przez [Otwórz sieci Web aplikacji Security Project (OWASP) jako pierwszych 10 najpopularniejszych luk w zabezpieczeniach](https://msdn.microsoft.com/library/).
+Zapora aplikacji sieci web (WAF) w [usługi Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomaga chronić aplikacje sieci web przed typowymi atakami opartego na sieci web, takimi jak iniekcja SQL, ataki z użyciem skryptów między witrynami i przejęcie kontroli sesji. Ma wstępnie skonfigurowany ochrony przed zagrożeniami zidentyfikowanymi przez [Otwórz sieci Web aplikacji Security Project (OWASP) jako pierwszych 10 najpopularniejszych luk w zabezpieczeniach](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 [Uwierzytelnianie usługi App Service / autoryzacji](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) to funkcja, która umożliwia aplikacji do logowania użytkowników, tak aby nie trzeba zmieniać kodu zaplecza aplikacji. Zapewnia prosty sposób ochrona aplikacji i Praca z danymi użytkownika.

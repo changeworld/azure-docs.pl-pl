@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 02055ec07de2b08abdc949e17c668912431e00ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f45663fd0f63537f87ee4466ad5f17cce0bed6a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871255"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961724"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indeksu w usłudze Azure Cosmos DB
 
@@ -54,6 +54,9 @@ Poniżej przedstawiono przykłady kwerend, które wyznaczania wartości skrótu,
 
 ## <a name="index-precision"></a>Precyzja indeksu
 
+> [!NOTE]
+> Kontenery usługi Azure Cosmos obsługuje nowy układ indeksu, który nie wymaga już dokładności indeksie niestandardowym niż value(-1) maksymalna dokładność. Przy użyciu tej metody ścieżki zawsze jest indeksowana z maksymalną dokładnością. Jeśli określisz wartość dokładności pola na zasady indeksowania żądań CRUD w kontenerach będzie po cichu ignorować wartość dokładności pola i odpowiedzi z kontenera, zawiera tylko value(-1) maksymalna dokładność.  Domyślnie wszystkie nowe kontenery Cosmos używają nowego układu indeksu.
+
 - Zapewnienie kompromis między magazyn indeksów obciążenie i wydajność zapytań, można użyć indeksu dokładności. W przypadku liczb zaleca się przy użyciu domyślnej konfiguracji precision-1 (maksimum). Ponieważ cyfry 8 bajtów w formacie JSON, jest to równoważne do konfiguracji 8 bajtów. Wybieranie niższa wartość dokładności, np. od 1 do 7, oznacza, że wartości w niektórych zakresach mapy do tej samej pozycja indeksu. W związku z tym można zmniejszyć miejsce do magazynowania indeksu, ale wykonanie zapytania może być konieczne przetwarzanie większej liczby elementów. W związku z tym zużywa więcej jednostek przepływności/żądań.
 
 - Precyzja indeks ma praktyczniejsze w aplikacji przy użyciu ciągu zakresów. Ponieważ ciągi mogą być każdej dowolnej długości, wybór dokładności indeks może mieć wpływ na wydajność zapytań o zakres ciągu. To również może wpłynąć na ilość miejsca do magazynowania indeksów, które są wymagane. Zakres ciąg indeksów można skonfigurować z dokładnością indeks, od 1 do 100 lub wartość -1 (maksimum). Jeśli chcesz wykonywać zapytania w klauzuli ORDER BY, w odniesieniu do właściwości ciągów, należy określić dokładności-1 dla odpowiednich ścieżek.
@@ -61,9 +64,6 @@ Poniżej przedstawiono przykłady kwerend, które wyznaczania wartości skrótu,
 - Indeksy przestrzenne zawsze używaj domyślna dokładność indeksu dla wszystkich typów (punkt, LineString i wielokąta). Nie można zastąpić domyślną precyzję indeksu dla indeksów przestrzennych.
 
 Usługa Azure Cosmos DB zwraca błąd, gdy zapytanie używa klauzuli ORDER BY, ale nie ma indeksu zakresu na ścieżce kwerendy z maksymalną dokładnością.
-
-> [!NOTE]
-> Kontenery usługi Azure Cosmos obsługuje nowy układ indeksu, który nie wymaga już dokładności indeksie niestandardowym niż value(-1) maksymalna dokładność. Przy użyciu tej metody ścieżki zawsze jest indeksowana z maksymalną dokładnością. Jeśli określisz wartość dokładności pola na zasady indeksowania żądań CRUD w kontenerach będzie po cichu ignorować wartość dokładności pola i odpowiedzi z kontenera, zawiera tylko value(-1) maksymalna dokładność.  Domyślnie wszystkie nowe kontenery Cosmos używają nowego układu indeksu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

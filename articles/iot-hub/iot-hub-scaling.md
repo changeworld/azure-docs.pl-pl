@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26865acbf635f07db4799ab197e110d37cbe69e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810911"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984343"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -53,7 +53,7 @@ Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania
 
 Usługa Azure IoT Hubs zawiera wiele kluczowych elementów związanych z [usługi Azure Event Hubs](../event-hubs/event-hubs-features.md), w tym [partycje](../event-hubs/event-hubs-features.md#partitions). Strumienie zdarzeń dla centrów IoT Hub zwykle są wypełniane przy użyciu przychodzących danych telemetrycznych zgłoszonych przez różnych urządzeń IoT. Partycje strumienia zdarzeń służy do zmniejszenia rywalizacji, które występują, gdy jednocześnie odczytu i zapisu do strumieni zdarzeń. 
 
-Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i nie można zmienić. Limit maksymalny partycji centrów iot Hub w warstwie podstawowa jest 8, a w warstwie standardowa wartość maksymalna to 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Aby uzyskać więcej informacji na temat określania partycji, zobacz często zadawane pytania Event Hubs [partycje ile potrzebuję?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i nie można zmienić. Limit maksymalny partycji dla warstwy podstawowa usługi IoT Hub i IoT Hub w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Aby uzyskać więcej informacji na temat określania partycji, zobacz często zadawane pytania Event Hubs [partycje ile potrzebuję?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
 
 ## <a name="tier-upgrade"></a>Uaktualnienie warstwy
