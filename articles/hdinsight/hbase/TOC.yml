@@ -257,12 +257,12 @@ items:
       href: apache-hbase-replication.md
     - name: Konfigurowanie kopii zapasowej i replikacji dla bazy danych Apache HBase i rozwiązania Apache Phoenix
       href: apache-hbase-backup-replication.md
-  - name: Monitorowanie za pomocą usługi Log Analytics
+  - name: Monitorowanie przy użyciu dzienników usługi Azure Monitor
     items:
-    - name: Korzystanie z usługi Azure Log Analytics
+    - name: Korzystanie z dzienników usługi Azure Monitor
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
       maintainContext: true
-    - name: Używanie zapytań z usługą Log Analytics
+    - name: Używanie zapytań z dziennikami usługi Azure Monitor
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
       maintainContext: true
     - name: Monitorowanie wydajności klastra
@@ -367,9 +367,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: a501f1ea05306c00acab04cbdba51b51903305a6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cf1967a53e638f6415a9d7b77f0e9d2a4fe87db4
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326089"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889532"

@@ -180,6 +180,8 @@ items:
           href: learn/quick-create-workspace-posh.md
       - name: Usuwanie obszaru roboczego
         href: platform/delete-workspace.md
+      - name: Zarządzanie obszarem roboczym
+        href: platform/manage-access.md
       - name: Projekt dla dostawców usług
         href: platform/service-providers.md
   - name: Zbieranie danych
@@ -420,8 +422,6 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Dane diagnostyczne lub dziennika z usługi Azure Storage
         href: platform/azure-storage-iis-table.md
-      - name: Zasoby usługi Azure PaaS
-        href: platform/collect-azurepass-posh.md
       - name: Korelowanie niestandardowych źródeł danych
         href: app/custom-data-correlation.md
     - name: Zbieranie danych niestandardowych
@@ -448,10 +448,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: Magazynowanie dzienników diagnostycznych
         href: platform/diagnostic-logs-stream-log-store.md
+      - name: Dane zasobów platformy Azure do usługi Event Hub
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: Strumieniowe przesyłanie dzienników aktywności do usługi Event Hubs
         href: platform/activity-logs-stream-event-hubs.md
-      - name: Dzienniki i metryki do Centrum zdarzeń
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: Dzienniki diagnostyczne do usługi Centrum zdarzeń
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Dane aplikacji do usługi Log Analytics
@@ -636,8 +636,9 @@ items:
   - name: Wizualizowanie danych
     items:
     - name: Widoki
-      href: platform/view-designer.md
       items:
+      - name: Projektant widoków
+        href: platform/view-designer.md
       - name: Dokumentacja dotycząca kafelków
         href: platform/view-designer-tiles.md
       - name: Dokumentacja części wizualizacji
@@ -1031,9 +1032,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: cd33e8c02f85884bc47fd2db9a0bb626e181d1e3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455402"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985159"

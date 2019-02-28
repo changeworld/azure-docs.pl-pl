@@ -229,6 +229,8 @@ items:
       href: how-to-connect-health-operations.md
     - name: Używanie programu Azure AD Connect Health z usługą AD FS
       href: how-to-connect-health-adfs.md
+    - name: Raport ryzykownych adresów IP dla programu Azure AD Connect Health z usługami AD FS
+      href: how-to-connect-health-adfs-risky-ip.md
     - name: Używanie programu Azure AD Connect Health do celów synchronizacji
       href: how-to-connect-health-sync.md
     - name: Używanie programu Azure AD Connect Health z usługą AD DS
@@ -333,9 +335,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Informacje o module ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 3baf6790640a8504089fc47472f3f8a9fc22a873
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8eb252f12a4a1a66ba7e8bd5c584e7aad227e24c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765812"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889286"

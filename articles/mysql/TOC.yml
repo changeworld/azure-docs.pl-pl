@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Omówienie
   items:
-  - name: Azure DB dla MySQL
+  - name: Co to jest Azure DB dla MySQL?
     href: overview.md
 - name: Przewodniki Szybki start
   items:
@@ -45,9 +45,11 @@ items:
   - name: 2 — Tworzenie aplikacji internetowej
     items:
     - name: Witryny WordPress w kontenerach z użyciem bazy danych MySQL
-      href: ../app-service/containers/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json
+      href: ../app-service/containers/tutorial-multi-container-app.md
+      maintainContext: true
     - name: PHP z bazą danych MySQL
-      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+      href: ../app-service/app-service-web-tutorial-php-mysql.md
+      maintainContext: true
 - name: Przykłady
   items:
   - name: Interfejs wiersza polecenia platformy Azure
@@ -242,9 +244,9 @@ items:
     href: partners-migration-mysql.md
   - name: Przewodnik po migracji bazy danych
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 1a4816724407eaa78fd8ab3984a21da00f0e1f04
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f32f4fa87e8d770875c06462c32e984a72afdb92
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568332"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887373"

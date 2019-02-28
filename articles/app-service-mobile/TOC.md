@@ -126,7 +126,7 @@
 #### [Uwierzytelnianie za pomocą konta Twitter](../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### HTTPS
-#### [Konfigurowanie wzajemnego uwierzytelniania protokołu TLS ](../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Konfigurowanie wzajemnego uwierzytelniania protokołu TLS](../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Zakup certyfikatu SSL na platformie Azure](../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Używanie certyfikatu SSL uzyskanego w innym miejscu](../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
@@ -140,7 +140,7 @@
 ### [Przywracanie aplikacji na platformie Azure](../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Monitorowanie](../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Włączanie rejestrowania diagnostycznego ](../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Włączanie rejestrowania diagnostycznego](../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Rozwiązywanie problemów za pomocą programu Visual Studio](../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Integracja

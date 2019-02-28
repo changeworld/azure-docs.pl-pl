@@ -1,49 +1,44 @@
 ---
 layout: LandingPage
-description: Dowiedz się, jak rozwiązywać problemy z wdrożeniami maszyn wirtualnych.
+description: 'Dowiedz się, jak rozwiązywać problemy z wdrożeniami maszyn wirtualnych.'
 title: Dokumentacja dotycząca rozwiązywania problemów z usługą Azure Virtual Machines | Microsoft Docs
 services: virtual-machines
 author: genlin
 manager: jeconnoc
-ms.assetid: ''
+ms.assetid: null
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 493c8053af1648e415fc774dd0031e18554e0458
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877434"
 ---
+
 # <a name="troubleshooting-azure-virtual-machines"></a>Rozwiązywanie problemów z maszynami wirtualnymi platformy Azure
 
 - Błędy alokacji
-    - [ Błędy alokacji   ](allocation-failure.md)
-    - [ Błędy alokacji w przypadku wdrożeń klasycznych  ](allocation-failure-classic.md)
+    - [Błędy alokacji](allocation-failure.md)
+    - [Błędy alokacji w przypadku wdrożeń klasycznych](allocation-failure-classic.md)
 - [Diagnostyka rozruchu](boot-diagnostics.md)
 - RDP
-    - [ Resetowanie protokołu RDP  ](reset-rdp.md)
-    - [ Rozwiązywanie problemów z protokołem RDP  ](troubleshoot-rdp-connection.md)
-    - [ Szczegółowe rozwiązywanie problemów z protokołem RDP  ](detailed-troubleshoot-rdp.md)
-    - [ Rozwiązywanie problemów z konkretnymi błędami  ](troubleshoot-specific-rdp-errors.md)
+    - [Resetowanie protokołu RDP](reset-rdp.md)
+    - [Rozwiązywanie problemów z protokołem RDP](troubleshoot-rdp-connection.md)
+    - [Szczegółowe rozwiązywanie problemów z protokołem RDP](detailed-troubleshoot-rdp.md)
+    - [Rozwiązywanie problemów z konkretnymi błędami](troubleshoot-specific-rdp-errors.md)
 - Protokół SSH 
-    - [ Rozwiązywanie problemów z protokołem SSH  ](troubleshoot-ssh-connection.md)
-    - [ Szczegółowe rozwiązywanie problemów z protokołem RDP  ](detailed-troubleshoot-ssh-connection.md)
+    - [Rozwiązywanie problemów z protokołem SSH](troubleshoot-ssh-connection.md)
+    - [Szczegółowe rozwiązywanie problemów z protokołem RDP](detailed-troubleshoot-ssh-connection.md)
     - [Typowe komunikaty o błędach](error-messages.md)
     - [Problemy z wydajnością maszyn wirtualnych z systemem Windows](performance-diagnostics.md  )
-    - [ Jak korzystać z narzędzia PerfInsights  ](how-to-use-perfInsights.md)
-    - [ Rozszerzenie do diagnostyki wydajności  ](performance-diagnostics-vm-extension.md)
+    - [Korzystanie z narzędzia PerfInsights](how-to-use-perfInsights.md)
+    - [Rozszerzenie diagnostyki wydajności](performance-diagnostics-vm-extension.md)
 - [Instalowanie agenta maszyny wirtualnej z systemem Windows w trybie offline](install-vm-agent-offline.md)
 - Ponowne wdrażanie maszyny wirtualnej
-    - [ Linux  ](redeploy-to-new-node-linux.md)
-    - [ Windows  ](redeploy-to-new-node-windows.md)
+    - [Linux](redeploy-to-new-node-linux.md)
+    - [Windows](redeploy-to-new-node-windows.md)
 - Resetowanie hasła maszyny wirtualnej
-    - [ Windows  ](reset-local-password-without-agent.md)
-    - [ Linux  ](reset-password.md)
+    - [Windows](reset-local-password-without-agent.md)
+    - [Linux](reset-password.md)
 - [Zresetuj kartę sieciową](reset-network-interface.md)
 - [Ponowne uruchamianie maszyny wirtualnej lub zmienianie jej rozmiaru](restart-resize-error-troubleshooting.md)
 - Korzystanie z konsoli szeregowej
@@ -53,12 +48,12 @@ ms.locfileid: "52877434"
     - [Maszyna wirtualna z systemem Windows](serial-console-windows.md)
         - [Polecenia CMD i polecenia programu PowerShell](serial-console-cmd-ps-commands.md)
 - [Błędy podczas usuwania zasobów magazynu](storage-resource-deletion-errors.md      )
-- [Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD  ](unexpected-reboots-attached-vhds.md)
+- [Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD](unexpected-reboots-attached-vhds.md)
 - [Problemy z aktywacją systemu Windows](troubleshoot-activation-problems.md)
 - [Problemy z dostępem do aplikacji](troubleshoot-app-connection.md)
 - Rozwiązywanie problemów z wdrożeniami
-    - [Linux  ](troubleshoot-deploy-vm-linux.md)
-    - [Windows  ](troubleshoot-deploy-vm-windows.md)
+    - [Linux](troubleshoot-deploy-vm-linux.md)
+    - [Windows](troubleshoot-deploy-vm-windows.md)
 - [Nazwy urządzeń ulegają zmianie](troubleshoot-device-names-problems.md)
 - Dostęp do odzyskiwania maszyny wirtualnej
     - Windows
@@ -69,8 +64,8 @@ ms.locfileid: "52877434"
     - [Azure Portal](troubleshoot-recovery-disks-portal-linux.md)
 - [Błędy rozruchu](boot-error-troubleshoot.md)
 - [Błędy funkcji BitLocker](troubleshoot-bitlocker-boot-error.md)
-- [Sprawdzanie błędów systemu plików  ](troubleshoot-check-disk-boot-error.md)
-- [Błędy z błękitnym ekranem  ](troubleshoot-common-blue-screen-error.md)
+- [Sprawdzanie błędów systemu plików](troubleshoot-check-disk-boot-error.md)
+- [Błędy z błękitnym ekranem](troubleshoot-common-blue-screen-error.md)
 - [Błędy ograniczania przepustowości](troubleshooting-throttling-errors.md)
 - [Używanie wirtualizacji zagnieżdżonej](troubleshoot-vm-by-use-nested-virtualization.md)
 - [Omówienie ponownego uruchamiania systemu](understand-vm-reboot.md)
