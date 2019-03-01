@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 2f480fd4d5d7d6261776660f1a7eab587320c849
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0e668c0b31defd5c945ddf2fec1b00f75d92f174
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052517"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990157"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -88,10 +88,10 @@ Gdy połączenie zakończy się powodzeniem, Mxchip ponowny rozruch w ciągu kil
 
 ![Nazwa sieci Wi-Fi i adres IP](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ip.jpg)
 
-> [!NOTE] 
-> Adres IP wyświetlany w zdjęcia mogą być niezgodne z rzeczywistego adresu IP, które są przypisane i wyświetlane na ekranie Mxchip. Jest to normalne, ponieważ sieci Wi-Fi dynamiczne przypisywanie adresów IP za pomocą protokołu DHCP.
+> [!NOTE]
+> Aby mxchip IoT DevKit pracy należy sieci 2,4 GHz. Moduł sieci Wi-Fi na mxchip IoT DevKit nie jest zgodny z siecią 5GHz. Sprawdź [— często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) Aby uzyskać więcej informacji.
 
-Po skonfigurowaniu sieci Wi-Fi poświadczeń zostanie utrzymany na urządzeniu na potrzeby tego połączenia, nawet jeśli urządzenie jest odłączone. Na przykład jeśli Konfigurowanie Mxchip dla sieci Wi-Fi w domu, a następnie podjąć Mxchip do urzędu należy ponownie skonfigurować tryb AP (rozpoczyna się od w sekcji "Wprowadź AP tryb") do łączenia z Mxchip sieci Wi-Fi usługi Office. 
+Po skonfigurowaniu sieci Wi-Fi poświadczeń zostanie utrzymany na urządzeniu na potrzeby tego połączenia, nawet jeśli urządzenie jest odłączone. Na przykład jeśli Konfigurowanie Mxchip dla sieci Wi-Fi w domu, a następnie podjąć Mxchip do urzędu należy ponownie skonfigurować tryb AP (rozpoczyna się od w sekcji "Wprowadź AP tryb") do łączenia z Mxchip sieci Wi-Fi usługi Office.
 
 ## <a name="start-using-the-devkit"></a>Rozpoczynanie korzystania z Mxchip
 
@@ -129,7 +129,7 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
 
 1. Zainstaluj [środowisku IDE Arduino](https://www.arduino.cc/en/Main/Software). Udostępnia niezbędne łańcucha narzędzi do kompilowania i przekazywanie kodu Arduino.
     * **Windows**: Użyj wersji Instalatora Windows. Nie należy instalować ze sklepu z aplikacjami.
-    * **System macOS**: Przeciąganie i upuszczanie wyodrębnione **Arduino.app** do `/Applications` folderu.
+    * **macOS**: Przeciąganie i upuszczanie wyodrębnione **Arduino.app** do `/Applications` folderu.
     * **Ubuntu**: Takie jak Rozpakuj go do folderu `$HOME/Downloads/arduino-1.8.8`
 
 2. Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/), Edytor kodu źródłowego dla wielu platform, za pomocą zaawansowanych deweloperów narzędzi, takich jak uzupełniania kodu IntelliSense i debugowania.
@@ -154,7 +154,7 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-    * **System macOS**:
+    * **macOS**:
 
         ```json
         "arduino.path": "/Applications",
@@ -175,10 +175,10 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
 
 ### <a name="install-st-link-drivers"></a>Zainstaluj sterowniki łącze ST
 
-[ST-łącze/V2](http://www.st.com/en/development-tools/st-link-v2.html) jest interfejsem USB, który mxchip IoT DevKit używa do komunikacji z komputera deweloperskiego. Wykonaj kroki specyficzne dla systemu operacyjnego, aby zezwolić na dostęp do komputera, na urządzeniu.
+[ST-łącze/V2](http://www.st.com/en/development-tools/st-link-v2.html) jest interfejsem USB, który mxchip IoT DevKit używa do komunikacji z komputera deweloperskiego. Należy go zainstalować na Windows, aby umożliwić flash kodu skompilowanego deivce do Mxchip. Wykonaj kroki specyficzne dla systemu operacyjnego, aby zezwolić na dostęp do komputera, na urządzeniu.
 
 * **Windows**: Pobierz i zainstaluj sterownik USB z [STMicroelectronics witryny sieci Web](http://www.st.com/en/development-tools/stsw-link009.html).
-* **System macOS**: Sterownik nie jest wymagany dla systemu macOS.
+* **macOS**: Sterownik nie jest wymagany dla systemu macOS.
 * **Ubuntu**: Uruchom następujące polecenie w terminalu i wyloguj się i zaloguj się, aby zaczęły obowiązywać zmiany grupy:
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
