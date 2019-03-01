@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b1d7c50970107300676213707368f9f16e04812
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410493"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194805"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -130,7 +130,7 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     ```
 
   > [!NOTE]
-  > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrustions do [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#getting-device-connection-string) i kontynuować pracę z pozostałej części tego samouczka. Aby uzyskać dodatkową pomoc, możesz również znaleźć zestaw szczegółowych instrukcji w [przygotować kod klienta](tutorial-add-device.md#prepare-the-client-code) w samouczkach > Dodaj urządzenie.
+  > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrukcje, aby [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#get-a-connection-string) i kontynuować pracę z pozostałej części tego samouczka. Aby uzyskać dodatkową pomoc, możesz również znaleźć zestaw szczegółowych instrukcji w [przygotować kod klienta](tutorial-add-device.md#prepare-the-client-code) w samouczkach > Dodaj urządzenie.
 
 
   Aktualizuj symbol zastępczy `{your device connection string}` przy użyciu parametrów połączenia urządzenia. W tym przykładzie, możemy zainicjować `targetTemperature` na zero, można opcjonalnie wykonać bieżącej odczytu z urządzenia lub wartość z bliźniaczej reprezentacji urządzenia. 

@@ -1,19 +1,19 @@
 ---
 title: Usługa Azure IoT Hub komunikacji protokoły i porty | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — w tym artykule opisano protokołów komunikacyjnych obsługiwanych, komunikacji urządzenia do chmury i z chmury do urządzeń i numery portów, które muszą być otwarte.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: 3079b2414c44fc97bc8aff4b207e0943e94c7457
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 40297feca46910a3d5106134f8c2f45270d3f6df
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584340"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011232"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Odwołania — wybór protokołu komunikacyjnego
 
@@ -21,7 +21,7 @@ Usługa IoT Hub umożliwia urządzeniom używane następujące protokoły na pot
 
 * [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf)
 * MQTT za pośrednictwem obiektów WebSocket
-* [PROTOKÓŁ AMQP](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
+* [AMQP](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 * AMQP za pośrednictwem obiektów WebSocket
 * HTTPS
 

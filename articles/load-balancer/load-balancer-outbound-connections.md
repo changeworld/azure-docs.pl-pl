@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814830"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194082"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -70,7 +70,7 @@ Porty SNAT wstępnie są przydzielane zgodnie z opisem w [SNAT zrozumienie i oso
 
 Gdy [wiele publicznych adresów IP skojarzonych z podstawowego modułu równoważenia obciążenia](load-balancer-multivip-overview.md)te publiczne adresy IP są kandydatem do przepływy wychodzące i jeden losowo wybrany.  
 
-Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równoważenia obciążenia, możesz użyć [usługi Log Analytics dla usługi Load Balancer](load-balancer-monitor-log.md) i [alertów dzienników zdarzeń](load-balancer-monitor-log.md#alert-event-log) do monitorowania komunikatów wyczerpanie portów SNAT.
+Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równoważenia obciążenia, możesz użyć [usługi Azure Monitor dzienniki dla modułu równoważenia obciążenia](load-balancer-monitor-log.md) i [alertów dzienników zdarzeń](load-balancer-monitor-log.md#alert-event-log) do monitorowania komunikatów wyczerpanie portów SNAT.
 
 ### <a name="defaultsnat"></a>Scenariusz 3: Autonomiczny maszyn wirtualnych, bez adresu publicznym adresem IP na poziomie wystąpienia
 

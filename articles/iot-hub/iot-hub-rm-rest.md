@@ -1,20 +1,20 @@
 ---
 title: Tworzenie usługi Azure IoT hub przy użyciu interfejsu API REST dostawcy zasobów | Dokumentacja firmy Microsoft
 description: Jak używać interfejsu API REST dostawcy zasobów w celu utworzenia Centrum IoT Hub.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 7ace4c1827b340f6247d69902538fdaaf1243106
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d87ca39eb27673be8d5cd0feece3eabe3e214de1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727795"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011096"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Tworzenie Centrum IoT przy użyciu dostawcy zasobów interfejsu API REST (.NET)
 

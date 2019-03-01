@@ -1,19 +1,19 @@
 ---
 title: Konfigurowanie przekazywania plików za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
 description: Sposób konfigurowania usługi IoT hub, aby włączyć przekazywanie plików z połączonych urządzeń przy użyciu witryny Azure portal. Zawiera informacje na temat konfigurowania miejsca docelowego konta magazynu platformy Azure.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: dobett
-ms.openlocfilehash: a9f9eeaed2716c5d492099568fd6f90080471af2
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.author: robin.shahan
+ms.openlocfilehash: 04f3f05c8c18a3356c282144cda62d1f980362fe
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059255"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008445"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurowanie usługi IoT Hub, operacje przekazywania plików przy użyciu witryny Azure portal
 
@@ -29,13 +29,13 @@ Aby użyć [pliku funkcję przekazywania w usłudze IoT Hub](iot-hub-devguide-fi
 
    ![Wyświetl kontenery magazynu w celu przekazania pliku w portalu](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Odbieraj powiadomienia dotyczące przekazywanych plików**: Włącza lub wyłącza powiadomienia przekazywanie plików za pośrednictwem przełącznika.
+* **Odbieraj powiadomienia dotyczące przekazywanych plików**: Włącz lub Wyłącz powiadomienia o przekazywanie plików za pośrednictwem przełącznika.
 
-* **Czas wygaśnięcia połączenia SAS**: to ustawienie jest time-to-live identyfikatorów URI sygnatury dostępu Współdzielonego, zwrócone na urządzeniu przez usługę IoT Hub. Domyślnie ustawiony na jedną godzinę, ale można dostosować do innych wartości przy użyciu suwaka.
+* **CZAS WYGAŚNIĘCIA POŁĄCZENIA SAS**: To ustawienie jest time-to-live identyfikatorów URI sygnatury dostępu Współdzielonego, zwrócone na urządzeniu przez usługę IoT Hub. Domyślnie ustawiony na jedną godzinę, ale można dostosować do innych wartości przy użyciu suwaka.
 
-* **Plik powiadomienia, ustawienia domyślne czasu wygaśnięcia**: czas wygaśnięcia pliku przekazywania powiadomień, przed jego wygaśnięciem. Domyślnie ustawiany na jeden dzień, ale można dostosować do innych wartości przy użyciu suwaka.
+* **Plik powiadomienia, ustawienia domyślne czasu wygaśnięcia**: Czas wygaśnięcia pliku przekazywania powiadomień, przed jego wygaśnięciem. Domyślnie ustawiany na jeden dzień, ale można dostosować do innych wartości przy użyciu suwaka.
 
-* **Plik powiadomienia maksymalna liczba prób dostarczenia**: liczba prób Centrum IoT w celu dostarczenia pliku przekazywania powiadomień. Domyślnie ustawiony na 10, ale można dostosować do innych wartości przy użyciu suwaka.
+* **Plik powiadomienia maksymalna liczba prób dostarczenia**: Liczba prób Centrum IoT w celu dostarczenia pliku przekazywania powiadomień. Domyślnie ustawiony na 10, ale można dostosować do innych wartości przy użyciu suwaka.
 
    ![Konfigurowanie przekazywania plików Centrum IoT w portalu](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 

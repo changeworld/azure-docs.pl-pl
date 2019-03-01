@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6e57979e2c43cc47504495cce23947b93abb4020
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d09f03aed8a739eaaaf8c60c379a746551d3b6f8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414937"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009889"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
@@ -56,7 +56,7 @@ Można zresetować bramy sieci VPN usługi Resource Manager przy użyciu witryny
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Polecenie cmdlet służące do resetowania bramy to **AzVirtualNetworkGateway resetowania**. Przed przystąpieniem do wykonywania resetu, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell usługi Resource Manager](https://docs.microsoft.com/powershell/azure/azurerm/install-Az-ps?view=azurermps-4.0.0). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet1GW w grupie zasobów TestRG1:
+Polecenie cmdlet służące do resetowania bramy to **AzVirtualNetworkGateway resetowania**. Przed przystąpieniem do wykonywania resetu, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell Az](https://docs.microsoft.com/powershell/module/az.network). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet1GW w grupie zasobów TestRG1:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1

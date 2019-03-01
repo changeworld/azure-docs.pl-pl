@@ -4,7 +4,7 @@ description: " Migrację obciążeń do usługi Azure IaaS zapewnia możliwości
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de89e0a30f39ba97379b4d55914338702aef5c32
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341220"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990412"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -39,7 +39,7 @@ Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi m
 Pierwszym środkiem ochrony maszyn wirtualnych jest, aby upewnić się, że tylko autoryzowani użytkownicy mogą skonfigurować nowych maszyn wirtualnych i dostęp do maszyn wirtualnych.
 
 **Najlepsze rozwiązanie**: Kontrolowanie dostępu do maszyny Wirtualnej.   
-**Szczegóły**: Użyj [zasady usługi Azure](../governance/policy/overview.md) konwencje dla zasobów w Twojej organizacji i tworzenie zasad niestandardowych. Stosowanie tych zasad do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md). Maszyny wirtualne, które należą do grupy zasobów dziedziczy jej zasady.
+**Szczegóły**: Użyj [zasady usługi Azure](../azure-policy/azure-policy-introduction.md) konwencje dla zasobów w Twojej organizacji i tworzenie zasad niestandardowych. Stosowanie tych zasad do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md). Maszyny wirtualne, które należą do grupy zasobów dziedziczy jej zasady.
 
 Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposób wydajne zarządzanie dostępem, zasad i zgodności dla tych subskrypcji. [Grupy zarządzania systemu Azure](../azure-resource-manager/management-groups-overview.md) zapewniają poziom zakresu powyżej subskrypcji. Organizowanie subskrypcji do grup zarządzania (kontenery) i Zastosuj warunkach nadzoru do tych grup. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki stosowane do grupy. Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji.
 
@@ -153,10 +153,10 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z usługi A
 **Szczegóły**: Usługa Azure Disk Encryption generuje i zapisuje klucze szyfrowania w magazynie kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Na potrzeby uwierzytelniania, można użyć albo uwierzytelnianie oparte na klucz tajny klienta lub [uwierzytelnianie klienta oparte na certyfikatach usługi Azure AD](../active-directory/active-directory-certificate-based-authentication-get-started.md).
 
 **Najlepsze rozwiązanie**: Klucz szyfrowania klucza (KEK) na użytek dodatkową warstwę zabezpieczeń dla kluczy szyfrowania. Dodaj KEK do magazynu kluczy.   
-**Szczegóły**: Użyj [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można również zaimportować KEK z Twojego lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Utrzymywanie depozytu kopię tego klucza w lokalnym programie zarządzania kluczami przez moduł HSM oferuje dodatkową ochronę przed przypadkowym usunięciem kluczy.
+**Szczegóły**: Użyj [AzKeyVaultKey Dodaj](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można również zaimportować KEK z Twojego lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Utrzymywanie depozytu kopię tego klucza w lokalnym programie zarządzania kluczami przez moduł HSM oferuje dodatkową ochronę przed przypadkowym usunięciem kluczy.
 
 **Najlepsze rozwiązanie**: Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub utworzyć kopię zapasową przed dyski są szyfrowane. Kopie zapasowe podaj opcję odzyskiwania, jeśli wystąpił nieoczekiwany błąd będzie się działo podczas szyfrowania.   
-**Szczegóły**: Maszyny wirtualne z dyskami zarządzanymi wymagają kopię zapasową przed zaszyfrowaniem. Po utworzeniu kopii zapasowej można użyć **polecenia Set-AzureRmVMDiskEncryptionExtension** polecenia cmdlet, aby zaszyfrować dyski zarządzane, określając *- skipVmBackup* parametru. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) artykułu.
+**Szczegóły**: Maszyny wirtualne z dyskami zarządzanymi wymagają kopię zapasową przed zaszyfrowaniem. Po utworzeniu kopii zapasowej można użyć **AzVMDiskEncryptionExtension zestaw** polecenia cmdlet, aby zaszyfrować dyski zarządzane, określając *- skipVmBackup* parametru. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) artykułu.
 
 **Najlepsze rozwiązanie**: Aby upewnić się, że klucze tajne szyfrowania nie przekracza granic regionalne, usługa Azure Disk Encryption wymaga magazynu kluczy i maszyny wirtualne muszą znajdować się w tym samym regionie.   
 **Szczegóły**: Tworzenie i używanie magazynu kluczy, który znajduje się w tym samym regionie co maszyna wirtualna do zaszyfrowania.

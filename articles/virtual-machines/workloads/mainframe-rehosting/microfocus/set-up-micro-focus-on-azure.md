@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2b730179cecee32282b9a79d8b62e3a35ee91048
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46b135aabaefb3a94e4470927297fb696f216b7a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739616"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192534"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure
 
@@ -66,11 +66,11 @@ Przed rozpoczęciem pracy zapoznaj się z tych wymagań wstępnych:
 
 9. Kliknij dwukrotnie plik, aby rozpocząć instalację. W pierwszym oknie Wybierz lokalizację instalacji i zaakceptuj umowę licencyjną użytkownika końcowego.
 
-     ![](media/01-enterprise-server.png)
+     ![Micro ekran Instalatora serwera Enterprise koncentracji uwagi](media/01-enterprise-server.png)
 
      Po zakończeniu instalacji zostanie wyświetlony następujący komunikat:
 
-     ![](media/02-enterprise-server.png)
+     ![Micro ekran Instalatora serwera Enterprise koncentracji uwagi](media/02-enterprise-server.png)
 
 ### <a name="check-for-updates"></a>Sprawdź aktualizacje
 
@@ -82,11 +82,11 @@ Po zakończeniu instalacji upewnij się sprawdzić, czy są dodatkowych aktualiz
 
 2. Kliknij przycisk **Start** \> **Micro fokus License Manager** \> **licencji, administracji**, a następnie kliknij przycisk **zainstalować** kartę. Wybierz typ formatu licencji do przekazania: plik licencji lub licencji na 16-znakowy kod. Na przykład dla pliku w **plik licencji**, przejdź do **mflic** plik wcześniej przekazany do maszyny Wirtualnej, a następnie wybierz pozycję **licencje instalowanie**.
 
-     ![](media/03-enterprise-server.png)
+     ![Okno dialogowe wczesnych administracji licencji koncentracji uwagi](media/03-enterprise-server.png)
 
 3. Sprawdź, czy Enterprise Server ładuje. Spróbuj uruchomić witrynę administracji serwera przedsiębiorstwa z poziomu przeglądarki przy użyciu tego adresu URL <http://localhost:86/> . Zostanie wyświetlona strona Administracja Server Enterprise, jak pokazano.
 
-     ![](media/04-enterprise-admin.png)
+     ![Strony administrowania serwerem przedsiębiorstwa](media/04-enterprise-admin.png)
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Enterprise Developer zostaną zainstalowane na komputerze dewelopera
 
@@ -102,17 +102,17 @@ Po zakończeniu instalacji upewnij się sprawdzić, czy są dodatkowych aktualiz
 
 4. Kliknij dwukrotnie **edvs2017.exe** plik, aby rozpocząć instalację. W pierwszym oknie Wybierz lokalizację instalacji i zaakceptuj umowę licencyjną użytkownika końcowego. Jeśli chcesz, wybierz opcję **zainstalować 9.5 Rumba** do zainstalowania tego emulatora terminala, który prawdopodobnie będzie potrzebny.
 
-     ![](media/04-enterprise-server.png)
+     ![Micro Enterprise Developer koncentracji uwagi dla okna dialogowego Instalator programu Visual Studio 2017](media/04-enterprise-server.png)
 
 5. Po zakończeniu instalacji zostanie wyświetlony następujący komunikat:
 
-     ![](media/05-enterprise-server.png)
+     ![Instalator pomyślnie wiadomości](media/05-enterprise-server.png)
 
 6. Tak, jak została ona Enterprise Server, należy uruchomić Menedżera licencji Micro fokus. Wybierz **Start** \> **Micro fokus License Manager** \> **licencji, administracji**i kliknij przycisk **zainstalować**kartę.
 
 7. Wybierz typ formatu licencji do przekazania: plik licencji lub licencji na 16-znakowy kod. Na przykład dla pliku w **plik licencji**, przejdź do **mflic** plik wcześniej przekazany do maszyny Wirtualnej, a następnie wybierz pozycję **licencje instalowanie**.
 
-     ![](/edia/07-enterprise-server.png)
+     ![Okno dialogowe wczesnych administracji licencji koncentracji uwagi](/edia/07-enterprise-server.png)
 
 Po załadowaniu Enterprise Developer, zakończeniu wdrożenia środowiska deweloperskie i testowe Micro skoncentrować się na platformie Azure!
 

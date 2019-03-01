@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 2770c6a31f0117b96e08eb8a03986f37ebdb7098
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 98d8f530b91c2b2483d00838cd4001be88e18a6c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733745"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011215"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure rozpoczyna się od informacji w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -89,7 +89,7 @@ Można również włączyć połączenie między SIECIAMI przy użyciu poleceń 
 
 * **Tworzenie usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [New AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) do utworzenia usługi Azure API Management w sieci Wirtualnej.
 
-* **Wdrażanie istniejącej usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [AzApiManagementDeployment aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementdeployment) przenieść istniejącej usługi Azure API Management w sieci wirtualnej.
+* **Wdrażanie istniejącej usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [AzApiManagementRegion aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementregion) przenieść istniejącej usługi Azure API Management w sieci wirtualnej.
 
 ## <a name="connect-vnet"> </a>Łączenie z usługą sieci web hostowanych w ramach sieci wirtualnej
 Usługa API Management jest połączony z siecią wirtualną, uzyskiwanie dostępu do usług zaplecza w nim po nie różni się od uzyskiwania dostępu do usług publicznych. Po prostu wpisz lokalny adres IP lub nazwa hosta (Jeśli serwer DNS jest skonfigurowany do sieci Wirtualnej) usługę sieci web do **adres URL usługi sieci Web** pola podczas tworzenia nowego interfejsu API lub edycji istniejącego.
@@ -132,7 +132,7 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 
 + **Dostęp DNS**: Dostęp ruchu wychodzącego przez port 53 jest wymagany do komunikacji przy użyciu serwerów DNS. Jeśli niestandardowego serwera DNS znajduje się na drugiej stronie bramy sieci VPN, serwer DNS musi być osiągalna z podsieci obsługującej usługi API Management.
 
-+ **Monitorowanie kondycji i metryki**: Połączenia sieciowego ruchu wychodzącego do usługi Azure punktów końcowych monitorowania, które rozwiązania w ramach następujących domen: 
++ **Monitorowanie kondycji i metryki**: Połączenia sieciowego ruchu wychodzącego do usługi Azure punktów końcowych monitorowania, które rozwiązania w ramach następujących domen:
 
     | Środowisko platformy Azure | Punkty końcowe                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -202,7 +202,6 @@ Biorąc pod uwagę przy obliczaniu powyżej minimalny rozmiar podsieci, w który
 * [Tagi usługi](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
-[api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
 [api-management-setup-vpn-add-api]: ./media/api-management-using-with-vnet/api-management-using-vnet-add-api.png
 [api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-internal.png

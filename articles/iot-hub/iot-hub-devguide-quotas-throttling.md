@@ -1,19 +1,19 @@
 ---
 title: Omówienie usługi Azure IoT Hub, limity przydziału i ograniczanie wydajności | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — opis przydziały, które mają zastosowanie do usługi IoT Hub i oczekiwane zachowanie ograniczania przepływności.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: dobett
-ms.openlocfilehash: d75a2cef96eaafb606c66d469b0e27fed8bb3573
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31d3c404d22c9b8ad66c2d5d1adf34c38cc4a682
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466816"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010858"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: e727e1ad9a4d202a3798f516d1db7d88464999fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d8031d4984a278c04342853a06fecb3c8a9a8171
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875960"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194454"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
@@ -30,11 +30,11 @@ Każdy model zawiera wpływ na dostępność i wydajność i jest wspierana prze
 
 ## <a name="consistency-levels-and-latency"></a>Poziomy spójności i opóźnienia
 
-- Opóźnienie odczytu dla wszystkich poziomów spójności zawsze może być mniejsza niż 10 milisekund w 99. percentylu. To opóźnienie odczytu są objęte umową SLA. Średnia, opóźnienie w 50. percentyl odczytu jest zwykle 2 milisekund lub mniej. Azure konta usługi Cosmos span kilku regionach, które są skonfigurowane przy użyciu silnej spójności są wyjątkiem od tej gwarancji.
+Opóźnienie odczytu dla wszystkich poziomów spójności zawsze może być mniejsza niż 10 milisekund w 99. percentylu. To opóźnienie odczytu są objęte umową SLA. Średnia, opóźnienie w 50. percentyl odczytu jest zwykle 2 milisekund lub mniej. Azure konta usługi Cosmos span kilku regionach, które są skonfigurowane przy użyciu silnej spójności są wyjątkiem od tej gwarancji.
 
-- Opóźnienie zapisu dla pozostałych poziomów spójności zawsze może być mniejsza niż 10 milisekund w 99. percentylu. To opóźnienie zapisu są objęte umową SLA. Opóźnienie zapisu średnia, na 50. percentyl jest zazwyczaj 5 milisekund lub mniej.
+Opóźnienie zapisu dla wszystkich poziomów spójności zawsze może być mniejsza niż 10 milisekund w 99. percentylu. To opóźnienie zapisu są objęte umową SLA. Opóźnienie zapisu średnia, na 50. percentyl jest zazwyczaj 5 milisekund lub mniej.
 
-Niektóre konta usługi Azure Cosmos może być kilku regionach skonfigurowane za pomocą silnej spójności. W tym przypadku opóźnienie zapisu może być mniejsza niż dwa razy czas obustronnej konwersji (RTT) plus 10 milisekund w 99. percentylu. RTT między dowolnymi dwoma regionami położony jest skojarzony z Twoim kontem usługi Azure Cosmos. Jest równa RTT między dowolnymi dwoma regionami położony skojarzonych z Twoim kontem usługi Azure Cosmos. Ta opcja jest obecnie w wersji zapoznawczej.
+Dla konta usługi Azure Cosmos skonfigurowano wysoki poziom spójności z więcej niż jednym regionie opóźnienie zapisu może być mniejsza niż dwa razy czas obustronnej konwersji (RTT) między dowolnymi dwoma regionami położony plus 10 milisekund w 99. percentylu. Ta opcja jest obecnie w wersji zapoznawczej.
 
 Dokładny czas oczekiwania RTT jest funkcja odległości szybkość świateł i topologię sieci platformy Azure. Sieci platformy Azure nie zapewnia żadnych opóźnień umowy SLA dla RTT między wszystkie dwóch regionach platformy Azure. Konta usługi Azure Cosmos opóźnienia w replikacji są wyświetlane w witrynie Azure portal. Za pomocą witryny Azure portal do monitorowania opóźnienia w replikacji między różnych regionów, które są skojarzone z Twoim kontem.
 

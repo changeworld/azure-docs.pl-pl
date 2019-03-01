@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2019
+ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 0b548acc92ab1efedab963e9bd3318e8525ffee4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 73a88ec0280728b4a485bd095096e90bbc43ef40
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649564"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990955"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -226,7 +226,11 @@ Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania, aby zainstalowa
 |Maszyna|30|Instaluj rozwiązanie do oceny luk w zabezpieczeniach na maszynach wirtualnych|Instaluj rozwiązanie do oceny luk w zabezpieczeniach na maszynach wirtualnych|
 |Maszyna|1|Migrowanie maszyn wirtualnych na nowe zasoby usługi Azure Resource Manager|Usługa Azure Resource Manager dla maszyn wirtualnych zapewnienie wzmocnienia zabezpieczeń, takich jak: silniejsze kontroli dostępu (RBAC), lepiej inspekcji, wdrażania usługi Resource Manager i nadzoru, dostęp do zarządzanych tożsamości i dostępu do magazynu kluczy dla wpisów tajnych oraz ich Uwierzytelnianie na podstawie usługi AD systemu Azure i obsługa tagów i grupy zasobów, aby ułatwić zarządzanie zabezpieczeniami. |
 |Maszyna|30|Korygowanie luk w zabezpieczeniach przy użyciu rozwiązania do oceny luk w zabezpieczeniach|Maszyny wirtualne, dla których wdrożono luk w zabezpieczeniach 3rd strona rozwiązania do oceny są stale oceniane względem aplikacji i luk w zabezpieczeniach systemu operacyjnego. Zawsze, gdy zostaną znalezione lukami umożliwiającymi takie ataki, są dostępne, aby uzyskać więcej informacji, w ramach zalecenia.|
-
+|Zestaw skalowania maszyn wirtualnych |4|Włącz dzienniki diagnostyczne w usłudze Virtual Machine Scale Sets|Włączanie dzienników i Zachowaj ich do jednego roku. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy. Jest to przydatne, gdy wystąpi incydent zabezpieczeń lub złamania zabezpieczeń sieci.|
+|Zestaw skalowania maszyn wirtualnych|35|Skoryguj luki w zabezpieczeniach konfiguracji zabezpieczeń zestawów skalowania maszyn wirtualnych|Skoryguj luki w zabezpieczeniach konfiguracji zabezpieczeń zestawów skalowania maszyn wirtualnych, aby ochronić je przed atakami. |
+|Zestaw skalowania maszyn wirtualnych|5|Skoryguj błędy kondycji ochrony punktu końcowego w zestawach skalowania maszyn wirtualnych|Skoryguj błędy kondycji ochrony punktu końcowego w zestawach skalowania maszyn wirtualnych, aby chronić je przed zagrożeniami i lukami w zabezpieczeniach. |
+|Zestaw skalowania maszyn wirtualnych|10|Instaluj rozwiązanie do ochrony punktu końcowego w zestawach skalowania maszyn wirtualnych|Zainstaluj rozwiązanie do ochrony punktu końcowego na Twoje zestawy skalowania maszyn wirtualnych, aby chronić je przed zagrożeniami i lukami w zabezpieczeniach. |
+|Zestaw skalowania maszyn wirtualnych|40|Instaluj aktualizacje systemu w zestawach skalowania maszyn wirtualnych|Zainstaluj brakujące aktualizacje krytyczne oraz aktualizacje zabezpieczeń systemu w celu zabezpieczenia zestawów skalowania maszyn wirtualnych z systemem Windows i Linux. |
  
 
 

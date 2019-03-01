@@ -1,19 +1,19 @@
 ---
 title: Omówienie zestawów SDK usługi Azure IoT | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — informacje i łącza do różnych usługi Azure IoT urządzeniem i usługą zestawy SDK, które służy do tworzenia aplikacji dla urządzeń i aplikacji zaplecza.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: dobett
-ms.openlocfilehash: 3bdb09de04ec5041d671f5af709a1a1e7133d141
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: fcb6f564c97632e4d62f7f052ec5ecc35a9e479a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199514"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011249"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Zrozumienia i użycia, zestawami SDK Azure IoT Hub
 
@@ -37,7 +37,7 @@ Dowiedz się więcej o [korzyści związanych z tworzeniem, za pomocą usługi A
 
 Platformy obsługiwane przez zestawy SDK można znaleźć w [pomocy technicznej systemu Azure IoT SDKs platformy](iot-hub-device-sdk-platform-support.md).
 
-Aby uzyskać więcej informacji na temat zestawu SDK zgodność z określonego urządzenia, zobacz [certyfikatu platformy Azure dla IoT — wykaz urządzeń](https://catalog.azureiotsuite.com/) lub poszczególnych repozytorium.
+Aby uzyskać więcej informacji na temat zestawu SDK zgodność z określonego urządzenia, zobacz [certyfikatu platformy Azure dla IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/) lub poszczególnych repozytorium.
 
 ## <a name="azure-iot-hub-device-sdks"></a>Zestawy SDK urządzeń Azure IoT Hub
 

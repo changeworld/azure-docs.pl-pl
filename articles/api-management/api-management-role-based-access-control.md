@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: d2d62dea683d3e42411d526fe002596e6473b4a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 21e7406d566be5be73342d530a4ad66b80a1d23f
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736672"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990445"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Jak używać kontroli dostępu opartej na rolach w usłudze Azure API Management
 Usługa Azure API Management bazuje na kontroli dostępu based (RBAC) umożliwia precyzyjne zarządzanie dostępem dla usługi API Management i jednostek (na przykład interfejsów API i zasady). Ten artykuł zawiera przegląd ról wbudowanych i niestandardowych w usłudze API Management. Aby uzyskać więcej informacji na temat zarządzania dostępem w witrynie Azure portal, zobacz [wprowadzenie do zarządzania dostępem w witrynie Azure portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -47,6 +47,9 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Te role można przypis
 
 ## <a name="custom-roles"></a>Role niestandardowe
 Jeśli żadna z wbudowanych ról określonych potrzeb, aby zapewnić bardziej szczegółowe zarządzanie dostępem do jednostki usługi API Management można tworzyć role niestandardowe. Na przykład można utworzyć rolę niestandardową, która ma dostęp tylko do odczytu do usługi API Management, ale ma tylko uprawnienia do zapisu w jednym określonego interfejsu API. Aby dowiedzieć się więcej o niestandardowych rolach, zobacz [niestandardowych ról RBAC platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
+
+> [!NOTE]
+> Aby można było wyświetlić wystąpienia usługi API Management w witrynie Azure portal, musi zawierać rolę niestandardową ```Microsoft.ApiManagement/service/read``` akcji.
 
 Możesz utworzyć rolę niestandardową, łatwiej zacząć od jednego z wbudowanych ról. Edycja atrybutów do dodania **akcje**, **NotActions**, lub **AssignableScopes**, a następnie zapisz zmiany jako nową rolę. W poniższym przykładzie rozpoczyna się od roli "Czytelnik usługi zarządzania interfejsu API platformy Azure" i tworzy niestandardową rolę o nazwie "Edytor interfejsu API kalkulatora." Rolę niestandardową można przypisać do konkretnego interfejsu API. W związku z tym ta rola ma dostęp do tego interfejsu API. 
 

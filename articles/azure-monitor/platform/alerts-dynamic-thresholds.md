@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097813"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008909"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor (publiczna wersja zapoznawcza)
 
@@ -79,7 +79,11 @@ Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie zn
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Jak dużo danych jest używane do przeglądania i następnie obliczyć progi?
 
-Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie w ciągu ostatnich 10 dni dla danych historycznych, po utworzeniu reguły alertu dynamicznymi progami spowoduje nabyć dodatkowe dane historyczne, która jest dostępna i zostanie stale Dowiedz się, na podstawie nowych danych umożliwiają bardziej precyzyjne progów.
+Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie danych historycznych wystarczająco w celu obliczania godzinę lub codziennie wzorców sezonowych (10 dni). Naciśnięcie klawisza "Wyświetlana co tydzień wzorca" uzyska dostęp do wystarczającej ilości danych historycznych w celu obliczania tygodniowe wzorców sezonowych (28 dni). Po utworzeniu reguły alertu dynamicznymi progami zużyjesz wszystkie niezbędne dane historyczne, które są dostępne, a dowiesz się stale i doświadczenie, na podstawie nowych danych umożliwiają bardziej precyzyjne progów.
+
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Jak dużo danych jest wymagana do wyzwolenia alertu?
+
+Dynamicznymi progami wymaga co najmniej trzy dni danych w celu zapewnienia dokładne wartości progowe przed wyzwoleniem alertów.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dynamiczne progi najlepszych rozwiązań.
 

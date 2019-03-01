@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 21175e74bd40d0d4aeaf1c0a1e677f1c8113e80a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a2cf35203c673d6296754360ac4f794241d4c43
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738015"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008682"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
@@ -74,7 +74,7 @@ Połączenie sieci wirtualnej można również włączyć przy użyciu poleceń 
 
 * Tworzenie usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [New AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) Tworzenie usługi Azure API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
 
-* Wdrażanie istniejącej usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [AzApiManagementDeployment aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementdeployment) Aby przenieść istniejącą usługę API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
+* Aktualizacja istniejącego wdrożenia usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [AzApiManagementRegion aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementregion) Aby przenieść istniejącą usługę API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
 
 ## <a name="apim-dns-configuration"></a>Konfiguracja DNS
 Gdy usługa API Management jest w trybie zewnętrzną sieć wirtualną, DNS jest zarządzane przez platformę Azure. Dla trybu wewnętrznej sieci wirtualnej, które istnieje konieczność zarządzania własnych routingu.

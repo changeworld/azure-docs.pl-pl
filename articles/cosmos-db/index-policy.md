@@ -4,14 +4,14 @@ description: Dowiedz się, jak działa indeksowanie w usłudze Azure Cosmos DB. 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2018
+ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2b46638a7e0fa3dc80fa4d2fa23d49b37b8885ec
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460237"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193158"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Indeks zasadach w usłudze Azure Cosmos DB
 
@@ -23,9 +23,9 @@ Można zastąpić domyślnych zasad indeksowania w kontenerze usługi Azure Cosm
 
 * **Konfigurowanie trybów indeksu**: Za pomocą zasad indeksowania w kontenerze, można skonfigurować różne tryby indeksowania takich jak *spójność* lub *Brak*.
 
-## <a name="indexing-modes"></a>Tryby indeksowania 
+## <a name="indexing-modes"></a>Tryby indeksowania
 
-Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania, które można skonfigurować w kontenerze usługi Azure Cosmos. Można skonfigurować następujące dwa tryby indeksowania za pośrednictwem zasad indeksowania: 
+Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania, które można skonfigurować w kontenerze usługi Azure Cosmos. Można skonfigurować następujące dwa tryby indeksowania za pośrednictwem zasad indeksowania:
 
 * **Spójne**: Jeśli kontener usługi Azure Cosmos zasady są ustawione na spójność, kwerend w określonym kontenerze postępuj zgodnie z tego samego poziomu spójności, jak określony dla operacji odczytu punktu (na przykład silne, powiązana nieaktualność, "session" lub ostateczna). 
 
@@ -37,6 +37,9 @@ Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania, które można skonfig
   > Konfigurowanie trybu indeksowania jako Brak ma efektem ubocznym porzucenie wszelkie istniejące indeksy. Tej opcji należy używać czy Twoich wzorców dostępu wymagają Identyfikatora buduje łącze własne tylko.
 
 Poziomy spójności zapytania są obsługiwane podobne do regularnych operacji odczytu. Bazy danych Cosmos Azure zwraca błąd, jeśli zapytanie jest kontenerem, który nie ma żadnego indeksowania w trybie. Można wykonać zapytania jako skanowania za pomocą jawnego **x-ms-bazy danych documentdb — enable skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** zażądać opcja przy użyciu zestawu .NET SDK. Niektóre zapytania funkcji, jak w klauzuli ORDER BY nie są obecnie obsługiwane za pomocą **EnableScanInQuery**, ponieważ są one wymagane w odpowiedni indeks.
+
+> [!NOTE]
+> Usługa Azure Cosmos DB ma innego trybu indeksowania z opóźnieniem. Jednak to jest wyróżniony cofnąć ponieważ wydajność zapytań i koszty mogą być nieprzewidywalne. Zaleca się przy użyciu spójnego trybu indeksowania.
 
 ## <a name="modifying-the-indexing-policy"></a>Modyfikowanie zasad indeksowania
 

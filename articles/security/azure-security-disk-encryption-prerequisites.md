@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24e757c80e23cecb50419a4855ec3ea9f94bcf3b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d8dbdf3126b084b46d1b1bf30a5bb0a41a18d818
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112139"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992400"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -25,6 +25,7 @@ Przed włączeniem usługi Azure Disk Encryption na maszynach wirtualnych IaaS p
 > - Jeśli wcześniej używano [usługi Azure Disk Encryption przy użyciu aplikacji Azure AD](azure-security-disk-encryption-prerequisites-aad.md) do zaszyfrowania tej maszyny Wirtualnej, konieczne będzie kontynuować ta opcja służy do szyfrowania maszyny Wirtualnej. Nie można użyć [usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie jest to obsługiwany scenariusz znaczenie przełączania się aplikacja usługi AAD dla to zaszyfrowanych maszyn wirtualnych nie jest jeszcze obsługiwane.
 > - Zastosowanie niektórych zaleceń zamieszczonych może zwiększyć danych, sieci lub użycia zasobów obliczeniowych, wynikiem dodatkowych kosztów licencji lub subskrypcji. Musi mieć prawidłową aktywną subskrypcją platformy Azure do tworzenia zasobów na platformie Azure w obsługiwanych regionach.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="bkmk_OSs"></a> Obsługiwane systemy operacyjne
 Usługa Azure Disk Encryption jest obsługiwana w następujących systemach operacyjnych:
@@ -67,29 +68,28 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalowanie programu Azure PowerShell do użytku na komputerze lokalnym (opcjonalnie): 
 1. Postępuj zgodnie z instrukcjami w linkach w systemie operacyjnym, następnie Kontynuuj mimo że pozostałe kroki.      
-    - [Instalowanie i konfigurowanie programu PowerShell platformy Azure dla Windows](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0). 
-        - Zainstaluj moduł PowerShellGet, programu Azure PowerShell i Załaduj moduł AzureRM. 
+    - [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps). 
+        - Zainstaluj moduł PowerShellGet, programu Azure PowerShell, a następnie załadować moduł Az. 
 
-2. Sprawdź zainstalowane wersje modułu AzureRM. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module).
-    -  Moduł AzureRM musi być w wersji 6.0.0 lub nowszej.
-    - Zaleca się korzystanie z najnowszej wersji modułu AzureRM.
+2. Sprawdź zainstalowane wersje modułu Az. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/install-az-ps#update-the-azure-powershell-module).
+    Zaleca się korzystanie z najnowszej wersji modułu Az.
 
      ```powershell
-     Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
+     Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. Zaloguj się do platformy Azure za pomocą [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) polecenia cmdlet.
+3. Zaloguj się do platformy Azure za pomocą [Connect AzAccount](/powershell/module/az.profile/connect-azaccount) polecenia cmdlet.
      
      ```azurepowershell-interactive
-     Connect-AzureRmAccount
+     Connect-AzAccount
      # For specific instances of Azure, use the -Environment parameter.
-     Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
+     Connect-AzAccount –Environment (Get-AzEnvironment –Name AzureUSGovernment)
     
      <# If you have multiple subscriptions and want to specify a specific one, 
-     get your subscription list with Get-AzureRmSubscription and 
-     specify it with Set-AzureRmContext.  #>
-     Get-AzureRmSubscription
-     Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+     get your subscription list with Get-AzSubscription and 
+     specify it with Set-AzContext.  #>
+     Get-AzSubscription
+     Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
      ```
 
 4.  Jeśli to konieczne, przejrzyj [wprowadzenie do programu Azure PowerShell](/powershell/azure/get-started-azureps).
@@ -133,7 +133,7 @@ Jeśli już znasz z usługi Key Vault i Azure AD wymagania wstępne dotyczące u
 >Przed usunięciem magazynu kluczy, upewnij się, szyfruje wszystkie istniejące maszyny wirtualne z nim. Aby chronić w magazynie przed przypadkowym usunięciem [Włącz usuwanie nietrwałe](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) i [blokady zasobu](../azure-resource-manager/resource-group-lock-resources.md) w magazynie. 
  
 ## <a name="bkmk_KeyVault"></a> Tworzenie magazynu kluczy 
-Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzanie kluczami szyfrowania dysku i wpisami tajnymi w ramach subskrypcji usługi key vault. Można utworzyć magazyn kluczy lub użyć istniejącego dla usługi Azure Disk Encryption. Aby uzyskać więcej informacji dotyczących magazynów kluczy, zobacz [co to jest usługa Azure Key Vault?](../key-vault/key-vault-overview.md) i [zabezpieczanie własnego magazynu kluczy](../key-vault/key-vault-secure-your-key-vault.md). Szablon usługi Resource Manager, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure umożliwia tworzenie magazynu kluczy. 
+Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzanie kluczami szyfrowania dysku i wpisami tajnymi w ramach subskrypcji usługi key vault. Można utworzyć magazyn kluczy lub użyć istniejącego dla usługi Azure Disk Encryption. Aby uzyskać więcej informacji dotyczących magazynów kluczy, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md) i [zabezpieczanie własnego magazynu kluczy](../key-vault/key-vault-secure-your-key-vault.md). Szablon usługi Resource Manager, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure umożliwia tworzenie magazynu kluczy. 
 
 
 >[!WARNING]
@@ -142,20 +142,20 @@ Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Va
 
 ### <a name="bkmk_KVPSH"></a> Tworzenie magazynu kluczy przy użyciu programu PowerShell
 
-Można utworzyć magazynu kluczy przy użyciu programu Azure PowerShell [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/New-AzureRmKeyVault) polecenia cmdlet. Aby uzyskać dodatkowe polecenia cmdlet usługi Key Vault, zobacz [AzureRM.KeyVault](/powershell/module/azurerm.keyvault/). 
+Można utworzyć magazynu kluczy przy użyciu programu Azure PowerShell [New AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) polecenia cmdlet. Aby uzyskać dodatkowe polecenia cmdlet usługi Key Vault, zobacz [Az.KeyVault](/powershell/module/az.keyvault/). 
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
-2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup).  Aby wyświetlić lokalizacje centrów danych, użyj [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). 
+2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [New AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup).  Aby wyświetlić lokalizacje centrów danych, użyj [Get AzLocation](/powershell/module/az.resources/get-azlocation). 
      
      ```azurepowershell-interactive
-     # Get-AzureRmLocation 
-     New-AzureRmResourceGroup –Name 'MySecureRG' –Location 'East US'
+     # Get-AzLocation 
+     New-AzResourceGroup –Name 'MySecureRG' –Location 'East US'
      ```
 
-3. Tworzenie nowego magazynu kluczy przy użyciu [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/New-AzureRmKeyVault)
+3. Tworzenie nowego magazynu kluczy przy użyciu [New AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault)
     
       ```azurepowershell-interactive
-     New-AzureRmKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -Location 'East US'
+     New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -Location 'East US'
      ```
 
 4. Uwaga **nazwa magazynu**, **Nazwa grupy zasobów**, **identyfikator zasobu**, **identyfikator URI magazynu**i **obiekt o identyfikatorze** które są zwracane do późniejszego użycia podczas szyfrowania dysków. 
@@ -192,24 +192,24 @@ Można utworzyć magazynu kluczy przy użyciu [szablonu usługi Resource Manager
 Platforma Azure wymaga dostępu do kluczy szyfrowania i wpisy tajne w magazynie kluczy, aby udostępnić je do maszyny Wirtualnej do rozruchu i odszyfrowywania woluminów. Włącz szyfrowanie dysków w magazynie kluczy lub wdrożenia zakończy się niepowodzeniem.  
 
 ### <a name="bkmk_KVperPSH"></a> Zestaw magazynu kluczy, zaawansowane zasady dostępu przy użyciu programu Azure PowerShell
- Użyj polecenia cmdlet programu PowerShell usługi key vault [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) umożliwia szyfrowanie dysków dla magazynu kluczy.
+ Użyj polecenia cmdlet programu PowerShell usługi key vault [AzKeyVaultAccessPolicy zestaw](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) umożliwia szyfrowanie dysków dla magazynu kluczy.
 
   - **Włącz magazyn kluczy do szyfrowania dysku:** EnabledForDiskEncryption jest wymagany dla usługi Azure Disk encryption.
       
      ```azurepowershell-interactive 
-     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDiskEncryption
+     Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDiskEncryption
      ```
 
   - **Włączenie usługi Key Vault w przypadku wdrożenia w razie potrzeby:** Umożliwia dostawcy zasobów Microsoft.Compute można pobrać Wpisy tajne z tego magazynu kluczy, podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej odwołuje się do tego magazynu kluczy.
 
      ```azurepowershell-interactive
-      Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDeployment
+      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDeployment
      ```
 
   - **Włącz usługi Key Vault dla wdrożenia szablonu, w razie potrzeby:** Włącza usługi Azure Resource Manager można pobrać Wpisy tajne z tego magazynu kluczy, podczas wdrażania szablonu odwołuje się ten magazyn kluczy.
 
      ```azurepowershell-interactive             
-     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment
+     Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment
      ```
 
 ### <a name="bkmk_KVperCLI"></a> Zestaw magazynu kluczy, zaawansowane zasady dostępu przy użyciu wiersza polecenia platformy Azure
@@ -244,7 +244,7 @@ Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) umożliwia sz
 
 
 ## <a name="bkmk_KEK"></a> Konfigurowanie klucza szyfrowania (opcjonalnie)
-Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Użyj [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można także zaimportować KEK, z usługi zarządzania kluczami w środowisku lokalnym przez moduł HSM. Aby uzyskać więcej informacji, zobacz [Key Vault dokumentacji](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. 
+Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Użyj [Add-AzureKeyVaultKey](/powershell/module/az.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można także zaimportować KEK, z usługi zarządzania kluczami w środowisku lokalnym przez moduł HSM. Aby uzyskać więcej informacji, zobacz [Key Vault dokumentacji](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. 
 
 * KEK adresy URL i wpisu tajnego usługi key vault, na których musi być poddany kontroli wersji. Azure wymusza to ograniczenie wersji. Nieprawidłowy klucz tajny i adresy URL KEK zobacz następujące przykłady:
 
@@ -262,20 +262,20 @@ Przed użyciem skryptu programu PowerShell, należy zapoznać się z wstępnie w
  ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
      # Fill in 'MyLocation', 'MySecureRG', and 'MySecureVault' with your values.
-     # Use Get-AzureRmLocation to get available locations and use the DisplayName.
-     # To use an existing resource group, comment out the line for New-AzureRmResourceGroup
+     # Use Get-AzLocation to get available locations and use the DisplayName.
+     # To use an existing resource group, comment out the line for New-AzResourceGroup
      
      $Loc = 'MyLocation';
      $rgname = 'MySecureRG';
      $KeyVaultName = 'MySecureVault'; 
-     New-AzureRmResourceGroup –Name $rgname –Location $Loc;
-     New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname -Location $Loc;
-     $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
-     $KeyVaultResourceId = (Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).ResourceId;
-     $diskEncryptionKeyVaultUrl = (Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).VaultUri;
+     New-AzResourceGroup –Name $rgname –Location $Loc;
+     New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname -Location $Loc;
+     $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+     $KeyVaultResourceId = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).ResourceId;
+     $diskEncryptionKeyVaultUrl = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).VaultUri;
      
  #Step 2: Enable the vault for disk encryption.
-     Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
+     Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
       
  #Step 3: Create a new key in the key vault with the Add-AzureKeyVaultKey cmdlet.
      # Fill in 'MyKeyEncryptionKey' with your value.
@@ -288,7 +288,7 @@ Przed użyciem skryptu programu PowerShell, należy zapoznać się z wstępnie w
      # Fill in 'MySecureVM' with your value. 
      
      $VMName = 'MySecureVM';
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
+     Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
 ```
 
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cda95b8f7cbf1da85f080c7ea53306f48375db32
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813232"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992349"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
@@ -72,7 +72,7 @@ Następnie przejdź do [utworzyć Rozgałęzienie](#create-a-junction).
 Aby użyć usługi Azure Blob storage jako magazynu zaplecza w klastrze vFXT, należy pustego kontenera do dodania jako filtr core.
 
 > [!TIP] 
-> Jeśli zdecydujesz się utworzyć kontenera obiektów blob w tym samym czasie, możesz utworzyć klaster vFXT Avere, Szablon wdrożenia lub skrypt tworzy kontener magazynu, definiuje ją jako filtr podstawowych i tworzy połączenie przestrzeni nazw jako część tworzenia klastra vFXT. 
+> Jeśli zdecydujesz się utworzyć kontenera obiektów blob w tym samym czasie, możesz utworzyć klaster vFXT Avere, Szablon wdrożenia lub skrypt tworzy kontener magazynu, definiuje ją jako filtr podstawowych i tworzy połączenie przestrzeni nazw jako część tworzenia klastra vFXT. Ten szablon tworzy również punkt końcowy usługi magazynu w sieci wirtualnej klastra. 
 
 Dodawanie magazynu obiektów Blob do klastra wymaga tych zadań:
 

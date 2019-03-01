@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4ba597d28ddf4bbf1f2546c2bc7b498103b50efa
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 51c032aeca3717b126192efc9c83a9de6483cebd
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959480"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992655"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Umiejętności cognitive wykrywanie języka
 
-W przypadku maksymalnie 120 języków **wykrywanie języka** umiejętności wykrywa język wprowadzania tekstu i Raportowanie kodu jeden język dla każdego dokumentu na żądanie. Kod języka jest powiązany z wynikiem wskazujący siły analizy. Modele dostarczone przez uczenia maszynowego korzysta z tej umiejętności [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
+Aby uzyskać do [120 języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support), **wykrywanie języka** umiejętności wykrywa język wprowadzania tekstu i Raportowanie kodu jeden język dla każdego dokumentu na żądanie. Kod języka jest powiązany z wynikiem wskazujący siły analizy. Modele dostarczone przez uczenia maszynowego korzysta z tej umiejętności [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
 
 Ta funkcja jest szczególnie przydatne w przypadku, gdy konieczne będzie podanie język tekstu jako dane wejściowe dla innych umiejętności (na przykład [umiejętności analizę tonacji](cognitive-search-skill-sentiment.md) lub [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md)).
 

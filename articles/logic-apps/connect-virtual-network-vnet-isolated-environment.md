@@ -8,18 +8,18 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/24/2019
-ms.openlocfilehash: eb082d5194cb6948668c4944208ec11fab987206
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.date: 02/26/2019
+ms.openlocfilehash: c0f4d483c214847227059046c2dda305f63398d6
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806529"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991739"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
 > [!NOTE]
-> Ta funkcja jest w *publicznej wersji zapoznawczej*. 
+> Ta funkcja jest w [ *publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont integracji [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE jest prywatne i izolowanym środowisku, używającej dedykowanego magazynu i inne zasoby oddzielone z usługi Logic Apps publicznej lub "global". Ta separacja zmniejsza żadnego wpływu, której innych dzierżaw usługi Azure może występować na wydajność Twojej aplikacji. Twoje ISE jest *wprowadzony* w sieci wirtualnej platformy Azure, który następnie wdraża usługę Logic Apps do sieci wirtualnej. Podczas tworzenia konta aplikacji lub Integracja z usługą Logic Apps, wybierz ten ISE ich lokalizacji. Twoje konto aplikacji lub Integracja z usługą Logic Apps mogą uzyskiwać bezpośrednio dostęp do zasobów, takich jak maszyny wirtualne (VM), serwery, systemów i usług w Twojej sieci wirtualnej.
 
@@ -73,7 +73,7 @@ Aby kontrolować ruch przychodzący i wychodzący między podsieciami sieci wirt
 | Publikowanie dzienniki diagnostyczne i metryki | Wychodzący | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
 | Projektant aplikacji logiki — właściwości dynamiczne | Przychodzący | 454 | INTERNET  | VIRTUAL_NETWORK | Żądania pochodzą z aplikacji logiki [dostęp do punktu końcowego dla ruchu przychodzącego adresów IP w danym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
 | App Service Management zależności | Przychodzący | 454 & 455 | AppServiceManagement | VIRTUAL_NETWORK | |
-| Wdrażanie łącznika | Przychodzący | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcia lub blockng ten port powoduje wdrożenia ISE nie powiedzie się i zapobiega łącznika aktualizacji lub poprawki. |
+| Wdrażanie łącznika | Przychodzący | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | Niezbędne do wdrażania i aktualizowania łączników. Zamykanie lub blokuje ten port powoduje wdrożeń ISE, aby zakończyć się niepowodzeniem i zapobiega łącznika aktualizacji lub poprawki. |
 | API Management — punkt końcowy zarządzania | Przychodzący | 3443 | APIManagement  | VIRTUAL_NETWORK | |
 | Zależność od dziennika do zasad Centrum zdarzeń i agenta monitorowania | Wychodzący | 5672 | VIRTUAL_NETWORK  | EventHub | |
 | Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | 6379-6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | |
@@ -142,7 +142,7 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
    | **Grupa zasobów** | Yes | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
    | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
    | **Lokalizacja** | Yes | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
-   | **Dodatkowe możliwości obliczeniowe** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu środowiska ISE |
+   | **Dodatkowe możliwości obliczeniowe** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [dodanie pojemności](#add-capacity). |
    | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji, upewnij się, że już [Konfigurowanie kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps](#vnet-access). |
    | **Podsieci** | Yes | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Dlatego upewnij się, te podsieci *nie są delegowane* do każdej usługi. Możesz *nie można zmienić* tych adresów podsieci po utworzeniu środowiska. <p><p>Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet). Każda podsieć musi spełniać następujące kryteria: <p>-Musi być pusta. <br>-Używa nazwy, która nie zaczyna się od numeru lub łącznik. <br>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeń adresów klasy B. <br>-Zawiera co najmniej jeden `/27` przestrzeni adresowej, aby podsieć pobiera co najmniej 32 adresów. Aby dowiedzieć się więcej na temat obliczania liczby adresów, zobacz [bloków IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Na przykład: <p>- `10.0.0.0/24` ma 256 adresów, ponieważ 2<sup>(32-24)</sup> 2<sup>8</sup> lub 256. <br>- `10.0.0.0/27` zawiera 32 adresów, ponieważ 2<sup>(32-27)</sup> 2<sup>5</sup> lub 32. <br>- `10.0.0.0/28` ma tylko 16 adresów, ponieważ 2<sup>(32-28)</sup> 2<sup>4</sup> lub 16. |
    |||||
@@ -187,6 +187,30 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
    > Jeśli wdrożenie zakończy się niepowodzeniem lub usunąć platformy ISE, Azure *może* potrwać do godziny przed zwolnieniem podsieci. Dlatego trzeba odczekać przez ponowne użycie tych podsieci w innym środowisku ISE.
 
 1. Aby wyświetlić swoje środowisko, wybierz opcję **przejdź do zasobu** Jeśli Azure nie automatyczne przejście do środowiska, po zakończeniu wdrożenia.  
+
+<a name="add-capacity"></a>
+
+### <a name="add-capacity"></a>Dodawaj możliwości obliczeniowe
+
+Jednostkę podstawową ISE ma ustaloną pojemność, więc jeśli potrzebujesz więcej przepływności, można dodać kolejne jednostki skalowania. Możesz wybrać opcję skalowania automatycznego w oparciu o metryki wydajności lub na podstawie określonej liczby jednostek. Jeśli wybierzesz opcję skalowania automatycznego na podstawie metryk, należy wybrać różnych kryteriów i określić warunki progowe spełniających kryteria tego.
+
+1. W witrynie Azure portal Znajdź swoje ISE.
+
+1. Aby wyświetlić metryki wydajności dla Twojego środowiska ISE w menu głównym usługi ISE, wybierz **Przegląd**.
+
+1. Aby skonfigurować automatyczne skalowanie, w obszarze **ustawienia**, wybierz opcję **skalowanie w poziomie**. Na **Konfiguruj** kartę, wybrać **włączyć Skalowanie automatyczne**.
+
+1. W **domyślne** sekcji, wybierają **skalowania na podstawie metryki** lub **Skaluj do określonej liczby wystąpień**.
+
+1. Jeśli zdecydujesz się na podstawie wystąpienia, wprowadź liczbę jednostek przetwarzania zakresu od 0 do 3 (włącznie). W przeciwnym razie dla opartą na metryce, wykonaj następujące kroki:
+
+   1. W **domyślne** wybierz pozycję **Dodaj regułę**.
+
+   1. Na **reguły skalowania** okienku skonfigurować Twoje kryteria i akcję do wykonania po wyzwoleniu reguły.
+   
+   1. Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj**.
+
+1. Gdy skończysz, pamiętaj, aby zapisać zmiany.
 
 <a name="create-logic-apps-environment"></a>
 

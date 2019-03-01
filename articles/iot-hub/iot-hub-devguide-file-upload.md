@@ -1,19 +1,19 @@
 ---
 title: Omówienie usługi Azure IoT Hub, przekazywanie pliku | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — Użyj funkcji przekazywania plików w usłudze IoT Hub do zarządzania, przekazywanie plików z urządzenia do kontenera obiektów blob usługi Azure storage.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.author: dobett
-ms.openlocfilehash: 724f655229347aa73747476e6bb4837b30e0fc4f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7678c50cbda0ea112c737e8230586081efe61081
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839011"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008563"
 ---
 # <a name="upload-files-with-iot-hub"></a>Przekazywanie plików za pomocą usługi IoT Hub
 
@@ -125,10 +125,10 @@ Każde Centrum IoT hub ma następujące opcje konfiguracji dla pliku przekazywan
 
 | Właściwość | Opis | Zakres i domyślne |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Określa, czy powiadomienia o przekazywania plików są zapisywane w pliku punktu końcowego powiadomienia. |Bool. Domyślnie: True. |
-| **fileNotifications.ttlAsIso8601** |Domyślny czas wygaśnięcia pliku przekazywania powiadomień. |ISO_8601 interwał maksymalnie 48 godz. (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
-| **fileNotifications.lockDuration** |Czas trwania blokady kolejki powiadomień przekazywania plików. |5-300 sekund (minimalna 5 sekund). Wartość domyślna: 60 sekund. |
-| **fileNotifications.maxDeliveryCount** |Maksymalna liczba prób dostarczenia pliku przekazać kolejka powiadomień. |1 do 100. Domyślnie: 100. |
+| **enableFileUploadNotifications** |Określa, czy powiadomienia o przekazywania plików są zapisywane w pliku punktu końcowego powiadomienia. |Bool. Domyślne: True. |
+| **fileNotifications.ttlAsIso8601** |Domyślny czas wygaśnięcia pliku przekazywania powiadomień. |ISO_8601 interwał maksymalnie 48 godz. (minimalna 1 minuta). Domyślne: 1 godzinę. |
+| **fileNotifications.lockDuration** |Czas trwania blokady kolejki powiadomień przekazywania plików. |5-300 sekund (minimalna 5 sekund). Domyślne: 60 sekund. |
+| **fileNotifications.maxDeliveryCount** |Maksymalna liczba prób dostarczenia pliku przekazać kolejka powiadomień. |1 do 100. Domyślne: 100. |
 
 ## <a name="additional-reference-material"></a>Dodatkowe materiały
 

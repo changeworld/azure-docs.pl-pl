@@ -12,32 +12,32 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 315a96680674636f7cab9d93b362febcb25f9922
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: af3e7528e2312cef1832dc104e83384a91acf263
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447069"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991346"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Dotyczą aktualizacji 1809 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.4.
+> Dotyczą aktualizacji 1901 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem Azure App Service w wersji 1.5.
 
 Postępując zgodnie z instrukcjami w tym artykule, możesz zainstalować [dostawcy zasobów usługi App Service](azure-stack-app-service-overview.md) do środowiska usługi Azure Stack, który jest:
 
 - nie jest połączony z Internetem
 - zabezpieczone przez usługi Active Directory Federation Services (AD FS).
 
- > [!IMPORTANT]
- > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
- 
+> [!IMPORTANT]  
+> Przed uruchomieniem Instalatora dostawcy zasobów, upewnij się, że wykonano wskazówki zawarte w [przed rozpoczęciem pracy](azure-stack-app-service-before-you-get-started.md) i po ich przeczytaniu [informacje o wersji](azure-stack-app-service-release-notes-update-five.md) którym towarzyszą 1.5 wersji Dowiedz się więcej o nowych Funkcje, poprawki i znane problemy, które mogą wpłynąć na wdrożenie.
+
 Aby dodać dostawcę zasobów usługi App Service do wdrożenia usługi Azure Stack w trybie offline, należy wykonać te zadania najwyższego poziomu:
 
 1. Wykonaj [wstępnie wymagane kroki](azure-stack-app-service-before-you-get-started.md) (takich jak zakupienia certyfikatów, które może potrwać kilka dni, aby otrzymać).
@@ -105,7 +105,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
 
     ![Instalator usługi App Service][5]
 
-9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików należy użyć w pełni kwalifikowaną nazwę domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites
+9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików należy użyć w pełni kwalifikowaną nazwę domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.  Jeśli używasz serwera plików, który jest przyłączony do domeny, należy podać pełną nazwę użytkownika, łącznie z domeną, na przykład myfileserverdomain\FileShareOwner.
 
     > [!NOTE]
     > Instalator podejmuje próbę przetestuj łączność z udziałem plików przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej, Instalator nie może być możliwe nawiązanie połączenia z udziałem plików i wyświetla ostrzeżenie, pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące udziału plików, a następnie kontynuuj, jeśli są poprawne.
@@ -196,6 +196,11 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
 
     ![Instalator usługi App Service][18]
 
+## <a name="post-deployment-steps"></a>Czynności po wdrożeniu
+
+> [!IMPORTANT]  
+> Jeśli podano jednostki Uzależnionej usługi aplikacji przy użyciu zawsze w wystąpieniu SQL musi [Dodawanie appservice_hosting i appservice_metering baz danych do grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) i synchronizowanie baz danych w celu zapobieżenia utracie pracy w zdarzenia przejścia w tryb failover bazy danych.
+
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Weryfikowanie usługi App Service w usłudze Azure Stack instalacji
 
 1. W portalu administracyjnym usługi Azure Stack, przejdź do **administrowanie — usługa App Service**.
@@ -205,11 +210,11 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
-> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrznego adresu IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 > * Źródło: Dowolne
 > * Zakres portów źródłowych: *
 > * Miejsce docelowe: Adresy IP
-> * Docelowy zakres adresów IP: Zakres adresów IP dla magazynowi
+> * Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
 > * Zakres portów docelowych: 445
 > * Protokół: TCP
 > * Akcja: Zezwalaj

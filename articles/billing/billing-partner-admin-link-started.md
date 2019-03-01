@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 85beb9b7e0c62d5e1c8dae61fdd15d5faf3a294c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985873"
+ms.locfileid: "57008597"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
 
@@ -142,11 +142,11 @@ Tak. Identyfikator partnera połączonego można można zmienić, dodać ani usu
 
 **Identyfikator MPN, z którym należy użyć, jeśli Moja firma ma wiele?**
 
-Można użyć dowolnego prawidłowego Identyfikatora MPN, z wyjątkiem identyfikatora organizacji v MPN. Większość partnerów wybrać identyfikator MPN dla lokalizacji geograficznej, w którym opiera się klienta lub usługi są dostarczane.
+Można użyć dowolnego prawidłowego Identyfikatora MPN, z wyjątkiem orgnization(v-org) usuwać identyfikator MPN. Większość partnerów wybrać identyfikator MPN dla lokalizacji geograficznej, w którym opiera się klienta lub usługi są dostarczane.
 
 **Gdzie można znaleźć ich przychód raportowanie dla połączonych Partnerem?**
 
-Możesz znaleźć ich przychód raportowanie na [Insights Mój pulpit nawigacyjny](https://partner.microsoft.com/membership/reports/myinsights) , wybierając łącze administrator partnera, jak pokazano.
+Możesz znaleźć ich przychód raportowanie na [Insights Mój pulpit nawigacyjny](https://partner.microsoft.com/membership/reports/myinsights). Należy wybrać łącze administrator partnera jako typ skojarzenia partnera.
 
 **Dlaczego nie widzę mojego klienta w raportach**
 

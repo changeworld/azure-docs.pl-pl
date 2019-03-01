@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0df176185bde104a2beb34ea64d54e4069643f69
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d26cd97a248172955dcfcf2662424d1e782793bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190097"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192331"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
@@ -30,6 +30,8 @@ Po ustawieniu grupy wygaśnie:
 -   Właściciele grupy powiadomi o konieczności odnowienia grupy, zgodnie z zbliżą się do czasu wygaśnięcia
 -   Wszystkie grupy, która nie zostanie odnowiona, zostanie usunięty
 -   Można przywrócić żadnej grupy usługi Office 365, które zostało usunięte w ciągu 30 dni, właściciele grupy lub przez administratora
+
+Aktualnie można skonfigurować tylko jedną zasadę wygasania grup usługi Office 365 w dzierżawie.
 
 > [!NOTE]
 > Konfigurowanie i używanie zasady wygasania grup usługi Office 365 wymaga licencje na usługi Azure AD Premium dla wszystkich członków grupy, do których zastosowano zasady wygasania.
@@ -61,6 +63,10 @@ Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte 
   * Wybierz grupy usługi Office 365, które wygasną. Możesz włączyć wygaśnięcie dla **wszystkich** grup usługi Office 365, możesz włączyć tylko **wybrane** grup usługi Office 365, lub wybierz **Brak**  wyłączyć wygaśnięcia dla wszystkich grup.
   * Zapisz ustawienia w przypadku, gdy wszystko będzie gotowe, wybierając **Zapisz**.
 
+> [!NOTE]
+> * Jeśli najpierw skonfigurować wygaśnięcie żadnych grup, które są starsze niż interwał wygasania są ustawione na 30 dni do wygaśnięcia. Pierwszy odnowienia powiadomienie e-mail zostanie wysłane w ciągu dnia. Na przykład A grupa została utworzona 400 dni temu, a interwał wygasania jest ustawiona na 180 dni. Po zastosowaniu ustawień wygasania grupy A ma 30 dni przed usunięciem, chyba że właściciel odnawia je.
+> * Grupa dynamiczna, która została usunięta i przywrócona, jest widoczna jako nowa grupa. Jest ona ponownie wypełniana zgodnie z regułą. Ten proces może potrwać do 24 godzin.
+
 ## <a name="email-notifications"></a>Powiadomienia e-mail
 
 Taką jak ta są wysyłane powiadomienia e-mail właścicielom grup usługi Office 365 30 dni, 15 dni i 1 dzień przed wygaśnięciem grupy. Język wiadomości e-mail jest określana przez właściciela grupy preferowanego języka lub języku dzierżawy. Jeśli właściciel grupy zdefiniował preferowanego języka lub wielu właścicielom mają ten sam język preferowany, używany jest ten język. W pozostałych przypadkach jest używany język dzierżawy.
@@ -77,11 +83,12 @@ Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przy
     
 Jeśli grupy, do której są przywracane zawiera dokumentów, witryn programu SharePoint lub inne obiekty trwałe, może upłynąć do 24 godzin potrzeba pełnego przywrócenia grupy i jego zawartość.
 
+## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Jak pobrać datę wygaśnięcia grupy usługi Office 365
+Oprócz panelu dostępu, w którym użytkownicy mogą wyświetlać szczegóły grupy, w tym datę wygaśnięcia i Data ostatniego odnowienia datę wygaśnięcia grupy usługi Office 365 mogą być pobierane z programu Microsoft Graph REST API w wersji Beta. expirationDateTime jako właściwość grupy została włączona w wersji Beta programu Microsoft Graph. Mogą być pobierane przy użyciu żądania GET. Aby uzyskać więcej informacji, zapoznaj się [w tym przykładzie](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+
 > [!NOTE]
-> * Jeśli najpierw skonfigurować wygaśnięcie żadnych grup, które są starsze niż interwał wygasania są ustawione na 30 dni do wygaśnięcia. Pierwszy odnowienia powiadomienie e-mail zostanie wysłane w ciągu dnia. 
->   Na przykład A grupa została utworzona 400 dni temu, a interwał wygasania jest ustawiona na 180 dni. Po zastosowaniu ustawień wygasania grupy A ma 30 dni przed usunięciem, chyba że właściciel odnawia je.
-> * Aktualnie można skonfigurować tylko jedną zasadę wygasania grup usługi Office 365 w dzierżawie.
-> * Grupa dynamiczna, która została usunięta i przywrócona, jest widoczna jako nowa grupa. Jest ona ponownie wypełniana zgodnie z regułą. Ten proces może potrwać do 24 godzin.
+> Aby zarządzać członkostwem w grupach na panelu dostępu, "Ogranicz dostęp do grup w panelu dostępu" musi być równa "No", w ustawieniu ogólne usługi Azure Active Directory grupy.
+
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Jak działa wygaśnięcie grup usługi Office 365 ze skrzynką pocztową z przyczyn prawnych
 Gdy grupa wygaśnie i zostanie usunięty, następnie w ciągu 30 dni po usunięciu grupy danych z aplikacji, takich jak narzędzia planista witryn, lub zespoły są trwale usuwane, ale skrzynki pocztowej grupy, która jest z przyczyn prawnych są przechowywane i nie zostanie trwale usunięta. Administrator może użyć poleceń cmdlet programu Exchange do Przywróć skrzynkę pocztową, aby pobrać dane. 

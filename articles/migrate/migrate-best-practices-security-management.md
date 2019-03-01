@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8b895580f2edc0b7af1c6195212490ce083208ad
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700081"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991159"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczania i zarządzania nimi obciążeń migracji na platformę Azure
 
@@ -588,7 +588,7 @@ Zasoby platformy Azure generują szereg uczciwe rejestrowanie danych metryki i d
 
 - Domyślnie większość typów zasobów nie ma włączone rejestrowanie diagnostyczne.
 - Włączając rejestrowanie diagnostyczne różnych zasobów, wykonywanie zapytań o dane rejestrowania i tworzyć alerty i elementy playbook na jego podstawie.
-- Po włączeniu rejestrowania diagnostycznego każdego zasobu mają określone kategorie. Możesz wybrać jedną lub więcej kategorii rejestrowania i lokalizację danych dziennika. Dzienniki mogą być wysyłane do konta magazynu, Centrum zdarzeń lub do usługi Log Analytics. 
+- Po włączeniu rejestrowania diagnostycznego każdego zasobu mają określone kategorie. Możesz wybrać jedną lub więcej kategorii rejestrowania i lokalizację danych dziennika. Dzienniki mogą być wysyłane do konta magazynu, Centrum zdarzeń lub dzienniki usługi Azure Monitor. 
 
 
 ![Rejestrowanie diagnostyczne](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -679,7 +679,7 @@ Podobnie jak w przypadku dowolnego systemu produkcyjnego, dzięki czemu dowolneg
 Platforma Azure oferuje rozwiązania Change Tracking w usłudze Azure automation:
 
 - Rozwiązanie umożliwia śledzenie zmian do oprogramowania Windows i Linux i pliki, klucze rejestru Windows, usługi Windows oraz demony systemu Linux.
-- Zmiany na monitorowanych serwerach są wysyłane do usługi Log Analytics w chmurze służące do przetwarzania.
+- Zmiany na monitorowanych serwerach są wysyłane do usługi Azure Monitor w chmurze służące do przetwarzania.
 - Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
 - Na pulpicie nawigacyjnym śledzenia zmian możesz łatwo zobaczyć zmiany, które zostały wprowadzone w ramach infrastruktury serwera.
 

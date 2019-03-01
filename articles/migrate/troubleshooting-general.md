@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: cb1bed847f5b7afe7c1eff0243c64e8c25ddb814
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751909"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992570"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -170,7 +170,7 @@ Ten problem może wystąpić z powodu problemu z instalacją programu VMware Pow
 
 ### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 
-Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: Brak punktów końcowych nasłuchujących w https://Servername.com:9443/sdk który mógłby odebrać komunikat.
+Nie można nawiązać połączenia z programem vCenter Server „Servername.com:9443” z powodu następującego błędu: Brak punktów końcowych nasłuchujących w lokalizacji https://Servername.com:9443/sdk, które mogłyby zaakceptować komunikat.
 
 Sprawdź, jeśli możesz korzystają z najnowszej wersji urządzenia modułu zbierającego, jeśli nie, uaktualnić urządzenie [najnowszej wersji](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
@@ -222,14 +222,14 @@ Lista systemów operacyjnych Windows obsługiwanych przez agenta zależności je
 Lista systemów operacyjnych Linux obsługiwane przez agenta zależności jest [tutaj](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nie można wizualizować zależności w usłudze Azure Migrate dla więcej niż jedna godzina, czas trwania?
-Usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Mimo że usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Log Analytics do [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) przez dłuższy czas.
+Usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Mimo że usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Azure Monitor dzienniki, aby [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) przez dłuższy czas.
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nie można wizualizować zależności dla grup zawierających więcej niż 10 maszyn wirtualnych?
 Możesz [wizualizacja zależności dla grup](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) ma się do 10 maszyn wirtualnych, jeśli istnieje grupa z ponad 10 maszyn wirtualnych, zalecamy wizualizowanie zależności i podzielić grupy w mniejszym grupom.
 
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Czy mogę zainstalowanych agentów i umożliwiają tworzenie grup wizualizacji zależności. Teraz po przejściu w tryb failover maszyny Pokaż akcję "Zainstaluj agentów" zamiast "Widok zależności"
 * Wpis planowanej lub nieplanowanej pracy awaryjnej, lokalnych maszynach są wyłączone i równoważne maszyn są uruchamiane na platformie Azure. Te maszyny uzyskać inny adres MAC. Mogą one uzyskać na inny adres IP, które są oparte na tego, czy użytkownik wybrał opcję zachowania dla lokalnego adresu IP lub nie. Jeśli są różne adresy IP i MAC, usługa Azure Migrate nie kojarzy maszyn lokalnych z wszelkimi danymi, zależności mapy usługi i prosi użytkownika o zainstalowanie agentów zamiast wyświetlanie zależności.
-* Opublikuj testowania trybu failover maszyn lokalnych włączone zgodnie z oczekiwaniami. Równoważne maszyn przetworzyliśmy na platformie Azure uzyskać inny adres MAC i może uzyskać inny adres IP. Chyba że użytkownik blokuje ruch wychodzący usługi Log Analytics z tych maszyn, usługa Azure Migrate nie kojarzy maszyn lokalnych z wszelkimi danymi, zależności mapy usługi i prosi użytkownika o zainstalowanie agentów zamiast wyświetlanie zależności.
+* Opublikuj testowania trybu failover maszyn lokalnych włączone zgodnie z oczekiwaniami. Równoważne maszyn przetworzyliśmy na platformie Azure uzyskać inny adres MAC i może uzyskać inny adres IP. O ile nie blokuje użytkownika wychodzących usługi Azure Monitor dzienniki ruchu z tych maszyn, usługa Azure Migrate nie maszyn lokalnych z wszelkimi danymi, zależności mapy usługi i skojarzyć prosi użytkownika o zainstalowanie agentów zamiast wyświetlanie zależności.
 
 ## <a name="troubleshoot-azure-readiness-issues"></a>Rozwiązywanie problemów gotowości na platformę Azure
 

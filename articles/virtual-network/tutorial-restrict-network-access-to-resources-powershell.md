@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 501bfddd64d3353abc9212d63c76fb582e81a580
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b9672c55ae2285a7dd9d951038ef41eebcfa195c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649514"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192790"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej przy użyciu programu PowerShell
 
@@ -197,13 +197,13 @@ Klucz jest używany do utworzenia udziału plików w późniejszym kroku. Wprowa
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Tworzenie udziału plików w ramach konta magazynu
 
-Utwórz kontekst konta magazynu i klucz za pomocą [New AzStorageContext](/powershell/module/azure.storage/new-AzStoragecontext). W kontekście zawarta konta nazwy i klucza konta magazynu:
+Utwórz kontekst konta magazynu i klucz za pomocą [New AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext). W kontekście zawarta konta nazwy i klucza konta magazynu:
 
 ```azurepowershell-interactive
 $storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-Tworzenie udziału plików za pomocą [New AzStorageShare](/powershell/module/azure.storage/new-AzStorageshare):
+Tworzenie udziału plików za pomocą [New AzStorageShare](/powershell/module/az.storage/new-azstorageshare):
 
 $share = New-AzStorageShare my-file-share -Context $storageContext
 

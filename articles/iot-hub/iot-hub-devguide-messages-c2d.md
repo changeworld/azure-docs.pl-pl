@@ -1,19 +1,19 @@
 ---
 title: Omówienie obsługi komunikatów chmura urządzenie usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dla deweloperów — jak korzystać z chmury do urządzenia, obsługa komunikatów za pomocą usługi IoT Hub. Zawiera informacje na temat cykl życia komunikatów i opcje konfiguracji.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: dobett
-ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585649"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010246"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzeń z usługi IoT Hub
 
@@ -95,7 +95,7 @@ Treść jest serializacji JSON tablicą rekordów, każdy z następującymi wła
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Sygnatura czasowa wskazująca, kiedy się stało wynik komunikatu. Na przykład Centrum odebrał komunikat o opinie lub wygasła w oryginalnej wiadomości. |
 | OriginalMessageId  | **Identyfikator komunikatu** komunikatu chmura urządzenie dotyczy tych informacji opinii. |
-| StatusCode         | Wymagany ciąg. Używane w komunikatów zwrotnych generowane przez usługę IoT Hub. <br/> 'Success' <br/> "Wygasły" <br/> 'DeliveryCountExceeded' <br/> "Odrzucone" <br/> "Usunięte" |
+| StatusCode         | Wymagany ciąg. Używane w komunikatów zwrotnych generowane przez usługę IoT Hub. <br/> 'Success' <br/> "Wygasły" <br/> 'DeliveryCountExceeded' <br/> 'Rejected' <br/> "Usunięte" |
 | Opis        | Wartości dla ciągów **StatusCode**. |
 | DeviceId           | **DeviceId** urządzenia docelowego komunikatu chmura urządzenie, do którego odnosi się ten element opinii. |
 | DeviceGenerationId | **DeviceGenerationId** urządzenia docelowego komunikatu chmura urządzenie, do którego odnosi się ten element opinii. |
@@ -127,10 +127,10 @@ Każde Centrum IoT hub udostępnia następujące opcje konfiguracji dla komunika
 
 | Właściwość                  | Opis | Zakres i domyślne |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Domyślny czas wygaśnięcia dla komunikatów z chmury do urządzeń. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
-| maxDeliveryCount          | Maksymalna liczba dostarczonych komunikatów kolejek chmury do urządzenia na urządzenie. | 1 do 100. Domyślnie: 10. |
-| feedback.ttlAsIso8601     | Przechowywanie komunikatów zwrotnych powiązane z usługi. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
-| feedback.maxDeliveryCount |Maksymalna liczba dostarczonych komunikatów kolejki opinii. | 1 do 100. Domyślnie: 100. |
+| defaultTtlAsIso8601       | Domyślny czas wygaśnięcia dla komunikatów z chmury do urządzeń. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Domyślne: 1 godzinę. |
+| maxDeliveryCount          | Maksymalna liczba dostarczonych komunikatów kolejek chmury do urządzenia na urządzenie. | 1 do 100. Domyślne: 10. |
+| feedback.ttlAsIso8601     | Przechowywanie komunikatów zwrotnych powiązane z usługi. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Domyślne: 1 godzinę. |
+| feedback.maxDeliveryCount |Maksymalna liczba dostarczonych komunikatów kolejki opinii. | 1 do 100. Domyślne: 100. |
 
 Aby uzyskać więcej informacji na temat ustawiania tych opcji konfiguracji, zobacz [centra IoT tworzenie](iot-hub-create-through-portal.md).
 

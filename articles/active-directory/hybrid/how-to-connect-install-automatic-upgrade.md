@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b05f2dc1ed766ccb06b71c2977ceaf2b7cd823d3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b044edbc24a83aeb98ff603a43f160a6c88d940f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869670"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193351"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Program Azure AD Connect: Automatycznie uaktualnianie
 Ta funkcja została wprowadzona z kompilacją [1.1.105.0 (wydane w lutym 2016 r.)](reference-connect-version-history.md#111050).  Ta funkcja została zaktualizowana w [kompilacji 1.1.561](reference-connect-version-history.md#115610) i teraz obsługuje dodatkowe scenariusze, które wcześniej nie są obsługiwani.
@@ -100,7 +100,7 @@ Poniżej przedstawiono listę najbardziej typowych komunikatów, które znajduje
 | UpgradeNotSupportedNonMsolAccount |[Konta usługi AD DS łącznika](reference-connect-accounts-permissions.md#ad-ds-connector-account) nie jest domyślnym kontem MSOL_ już. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Podczas konfigurowania program AAD Connect, możesz wybrać *nie należy konfigurować* podczas wybierania metody logowania jednokrotnego. | 
 | UpgradeNotSupportedPtaSignInMethod | Jako metodę logowania wybrano uwierzytelnianie przekazywane. |
-| UpgradeNotSupportedStagingModeEnabled |Serwer jest ustawiony w [Tryb przejściowy](how-to-connect-sync-operations.md#staging-mode). |
+| UpgradeNotSupportedStagingModeEnabled |Serwer jest ustawiony w [Tryb przejściowy](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |Włączono [zapis zwrotny użytkowników](how-to-connect-preview.md#user-writeback) funkcji. |
 
 ## <a name="next-steps"></a>Kolejne kroki

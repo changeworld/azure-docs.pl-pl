@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e5e80ac2229c3a2962702527dc3162229c25a5c5
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 7d0743c09adf1c50d888d2e279ba85a8369bf286
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750875"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991633"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -135,15 +135,19 @@ Aby sprawdzić, czy Profiler jest poprawnie skonfigurowany przez diagnostykę pl
 
 Aby sprawdzić ustawienia, które były używane do konfigurowania usługi Azure Diagnostics:
 
-1. Zaloguj się do maszyny wirtualnej (VM), a następnie otwórz plik dziennika w następującej lokalizacji: 
+1. Zaloguj się do maszyny wirtualnej (VM), a następnie otwórz plik dziennika, w tym miejscu. (Dysk może być c: lub d:, a wersja wtyczka może się różnić).
 
     ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
+    ```
+    lub
+    ```
+    c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
 1. W pliku, możesz wyszukać ciąg **WadCfg** można znaleźć ustawienia, które zostały przekazane do maszyny Wirtualnej, aby skonfigurować diagnostykę platformy Azure. Można sprawdzić, czy klucz instrumentacji, używane przez obiekt sink Profiler jest poprawny.
 
-1. Sprawdź wiersz polecenia, który jest używany do uruchamiania Profiler. Argumenty, które są używane do uruchamiania Profiler znajdują się w następującym pliku:
+1. Sprawdź wiersz polecenia, który jest używany do uruchamiania Profiler. Argumenty, które są używane do uruchamiania Profiler znajdują się w następującym pliku. (Dysk może być c: i d:)
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json

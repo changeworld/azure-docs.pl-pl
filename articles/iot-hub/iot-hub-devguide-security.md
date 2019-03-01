@@ -1,19 +1,19 @@
 ---
 title: Omówienie zabezpieczeń usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dla deweloperów — jak kontrolować dostęp do usługi IoT Hub dla aplikacji dla urządzeń i aplikacji zaplecza. Zawiera informacje na temat tokeny zabezpieczające i pomoc techniczna dla certyfikatów X.509.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5d360e0959a61cde763f5aafe62de38f6c03e806
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563936"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011181"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 

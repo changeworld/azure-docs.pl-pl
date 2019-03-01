@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: df3ae6fbeceb85df6d6e5245a5bbad517179733c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697453"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991363"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: Ocena obciążeń lokalnych pod kątem migracji do platformy Azure
 
@@ -82,7 +82,7 @@ Zespół chmury Contoso zidentyfikowała cele dotyczące jej oceny migracji:
 - Po przeniesieniu aplikacji w chmurze, należy zminimalizować administracji bazą danych firmy Contoso.  
 - Firma Contoso chce zrozumienia nie tylko jego opcje migracji, ale także koszty związane z infrastrukturą, po przeniesieniu do chmury.
 
-## <a name="assessment-tools"></a>Narzędzia do oceny
+## <a name="assessment-tools"></a>Narzędzia oceny
 
 Firma Contoso używa narzędzi firmy Microsoft, jej oceny migracji. Narzędzia dostosowanie do celów firmy oraz Contoso powinien podać wszystkie informacje, których potrzebuje.
 
@@ -90,7 +90,7 @@ Technologia | Opis | Koszty
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Firma Contoso używa Data Migration Assistant do oceny i wykrycia problemów ze zgodnością, które mogłyby wpłynąć na jego działanie bazy danych na platformie Azure. Data Migration Assistant ocenia równoważność funkcji między źródłami SQL i elementy docelowe. Zaleca się wydajności i niezawodności. | Data Migration Assistant to narzędzie bezpłatna, udostępniona do pobrania.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Firma Contoso używa usługi Azure Migrate, aby ocenić jego maszyn wirtualnych VMware. Usługa Azure Migrate ocenia przydatność migracji maszyn. Oferuje ona oszacowania rozmiarów i kosztów, co działających na platformie Azure.  | Od maja 2018 r. Usługa Azure Migrate jest bezpłatna usługa.
-[Mapa usługi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Usługa Azure Migrate rozwiązania Service map przedstawia zależności między maszynami, które firma chce przeprowadzić migrację. | które jest częścią usługi Azure Log Analytics. Obecnie firmy Contoso, mogą używać rozwiązania Service Map przez 180 dni bez ponoszenia opłat.
+[Mapa usługi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Usługa Azure Migrate rozwiązania Service map przedstawia zależności między maszynami, które firma chce przeprowadzić migrację. | Mapa usługi jest częścią dzienniki usługi Azure Monitor. Obecnie firmy Contoso, mogą używać rozwiązania Service Map przez 180 dni bez ponoszenia opłat.
 
 W tym scenariuszu firma Contoso pobiera i uruchamia Data Migration Assistant do oceny lokalnej bazy danych programu SQL Server do swojej aplikacji turystycznej. Firma Contoso używa usługi Azure Migrate z mapowaniem zależności do oceny, maszyny wirtualne aplikacji przed migracją na platformę Azure.
 

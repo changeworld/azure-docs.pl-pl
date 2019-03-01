@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 9a267b48e185e02c1b1217380429453799308bbe
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 393a5c0af5ff7ccaef8aa462391c5c9457aa9c08
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886780"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011122"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Dodawanie repozytorium artefaktów do laboratorium w usłudze DevTest Labs
 DevTest Labs umożliwia określenie artefaktu ma zostać dodany do maszyny Wirtualnej w czasie tworzenia maszyny Wirtualnej lub po utworzeniu maszyny Wirtualnej. Ten artefakt może być narzędziem lub aplikacji, którą chcesz zainstalować na maszynie Wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowane z repozytorium GitHub i VSTS Git. 
@@ -172,7 +172,7 @@ Istnieje kilka sposobów wdrażania szablonu na platformie Azure i zasobów utwo
 - [Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Rozpocznijmy i zobacz, jak wdrożyć szablon w programie PowerShell. Polecenia cmdlet używane do wdrożenia szablonu są zależne od kontekstu, więc bieżącej dzierżawy i bieżącej subskrypcji są używane. Użyj [AzContext zestaw](/powershell/module/az.profile/set-azcontext) przed przystąpieniem do wdrażania szablonu, jeśli to konieczne, aby zmienić kontekst.
+Rozpocznijmy i zobacz, jak wdrożyć szablon w programie PowerShell. Polecenia cmdlet używane do wdrożenia szablonu są zależne od kontekstu, więc bieżącej dzierżawy i bieżącej subskrypcji są używane. Użyj [AzContext zestaw](/powershell/module/az.accounts/set-azcontext) przed przystąpieniem do wdrażania szablonu, jeśli to konieczne, aby zmienić kontekst.
 
 Najpierw utwórz grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Jeśli grupa zasobów, których chcesz użyć już istnieje, Pomiń ten krok.
 
@@ -375,7 +375,7 @@ if ($ArtifactRepositoryName -eq $null){
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | To polecenie jest używane do uzyskania szczegółowych informacji o laboratorium, takie jak jego lokalizacji. |
 | [Nowe AzResource](/powershell/module/az.resources/new-azresource) | Nie ma żadnych określonego polecenia umożliwiające dodawanie repozytoriów artefaktu. Ogólny [New AzResource](/powershell/module/az.resources/new-azresource) polecenia cmdlet jest zadanie. To polecenie cmdlet musi albo **ResourceId** lub **ResourceName** i **ResourceType** parę jest znany typ zasobu do utworzenia. Ten przykładowy skrypt używa pary typ zasobu i nazwę zasobu. <br/><br/>Należy zauważyć, że w przypadku tworzenia źródło repozytorium artefaktów w tej samej lokalizacji i w ramach tej samej grupie zasobów laboratorium.|
 
-Skrypt ten dodaje nowy zasób do bieżącej subskrypcji. Użyj [Get AzContext](/powershell/module/az.profile/get-azcontext) Aby wyświetlić te informacje. Użyj [AzContext zestaw](/powershell/module/az.profile/set-azcontext) można ustawić bieżącego dzierżawę i subskrypcję.
+Skrypt ten dodaje nowy zasób do bieżącej subskrypcji. Użyj [Get AzContext](/powershell/module/az.accounts/get-azcontext) Aby wyświetlić te informacje. Użyj [AzContext zestaw](/powershell/module/az.accounts/set-azcontext) można ustawić bieżącego dzierżawę i subskrypcję.
 
 Najlepszym sposobem, aby odnaleźć nazwy zasobów i informacji o typie zasobu jest użycie [interfejsów API REST usługi Azure Test Drive](https://azure.github.io/projects/apis/) witryny sieci Web. Zapoznaj się z [DevTest Labs — 2016-05-15](http://aka.ms/dtlrestapis) dostawcy, aby wyświetlić dostępne interfejsy API REST dla dostawcy usługi DevTest Labs. Użytkownicy skryptu następujący identyfikator zasobu. 
 

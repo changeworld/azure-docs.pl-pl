@@ -1,18 +1,19 @@
 ---
 title: Opis usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — Użyj bliźniaczych reprezentacji urządzeń do synchronizacji danych stanu i konfiguracji między centrum IoT Hub i urządzeniach
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: 606a7c64cc60fa81a71bf40a8087875e08e7c984
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4cbb8e389f403aeb149998acc21956ebce40be78
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053027"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011504"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używają bliźniaczych reprezentacji urządzeń w usłudze IoT Hub
 

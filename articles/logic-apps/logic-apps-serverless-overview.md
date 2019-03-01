@@ -10,12 +10,12 @@ ms.reviewer: klam, estfan, LADocs
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 068e5399073959d2c5aa6c4bbeb0d7bccf7d05e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9cd1946d8fa670764bcc95b82298d07cc70417bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393783"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191327"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Omówienie: Azure bez użycia serwera za pomocą usługi Azure Logic Apps i Azure Functions
 
@@ -29,7 +29,7 @@ Podstawowych usług na platformie Azure w całym aplikacje niewymagające użyci
 
 ## <a name="what-are-azure-functions"></a>Co to są usługi Azure Functions?
 
-Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Functions programowanie może być jeszcze wydajniejsze i można użyć z wyboru, takich jak C#, F #, Node.js, Python lub PHP języka programowania. Płać tylko za czas, jaki kod jest wykonywany i platformy Azure jest skalowana zgodnie z potrzebami.
+Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Functions programowanie może być jeszcze wydajniejsze i można użyć z wybranym języka programowania, takich jak C#, F#, Node.js, Python lub PHP. Płać tylko za czas, jaki kod jest wykonywany i platformy Azure jest skalowana zgodnie z potrzebami.
 
 Jeśli chcesz od razu rozpocząć korzystanie z usługi Azure Functions, skorzystaj z artykułu [Tworzenie pierwszej funkcji platformy Azure](../azure-functions/functions-create-first-azure-function.md). Jeśli chcesz uzyskać informacje techniczne o usłudze Functions, zobacz [dokumentację dla deweloperów](../azure-functions/functions-reference.md).
 
@@ -41,7 +41,7 @@ Aby rozpocząć pracę z usługą Logic Apps, zacznij od [: tworzenie pierwszej 
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Jak tworzyć i wdrażać aplikacje bezserwerowe na platformie Azure?
 
-System Azure oferuje bogaty zestaw narzędzi w całym programowania, wdrażania i zarządzania aplikacji bez użycia serwera.  Aplikacje mogą być wbudowane bezpośrednio w witrynie Azure portal lub za pomocą [narzędzi w programie Visual Studio](logic-apps-serverless-get-started-vs.md).  Gdy aplikacja została utworzona może być [natychmiast wdrożyć](logic-apps-create-deploy-template.md).  System Azure oferuje również monitorowanie aplikacji bez użycia serwera.  Monitorowanie są dostępne w witrynie Azure portal, za pomocą zestawów SDK lub interfejsu API lub za pomocą zintegrowanych narzędzi do usługi Log Analytics i usługi Application Insights.
+System Azure oferuje bogaty zestaw narzędzi w całym programowania, wdrażania i zarządzania aplikacji bez użycia serwera.  Aplikacje mogą być wbudowane bezpośrednio w witrynie Azure portal lub za pomocą [narzędzi w programie Visual Studio](logic-apps-serverless-get-started-vs.md).  Gdy aplikacja została utworzona może być [natychmiast wdrożyć](logic-apps-create-deploy-template.md).  System Azure oferuje również monitorowanie aplikacji bez użycia serwera.  Monitorowanie są dostępne w witrynie Azure portal, za pomocą zestawów SDK lub interfejsu API lub za pomocą zintegrowanych narzędzi do dzienników usługi Azure Monitor i usługi Application Insights.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

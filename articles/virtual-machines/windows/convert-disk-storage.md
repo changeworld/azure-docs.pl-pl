@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: b1230c033019d21228fe5283e3ee6cfa478bef4c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8f04f566d6d403d15a08a8900223061cdff1938c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727030"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008665"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizuj typ magazynu dysków zarządzanych
 
@@ -45,7 +45,7 @@ $rgName = 'yourResourceGroup'
 # Name of the your virtual machine
 $vmName = 'yourVM'
 
-# Choose between StandardLRS and PremiumLRS based on your scenario
+# Choose between Standard_LRS and Premium_LRS based on your scenario
 $storageType = 'Premium_LRS'
 
 # Premium capable size
@@ -88,7 +88,7 @@ Do tworzenia i testowania obciążenia możesz chcieć kombinację dysków stand
 $diskName = 'yourDiskName'
 # resource group that contains the managed disk
 $rgName = 'yourResourceGroupName'
-# Choose between StandardLRS and PremiumLRS based on your scenario
+# Choose between Standard_LRS and Premium_LRS based on your scenario
 $storageType = 'Premium_LRS'
 # Premium capable size 
 $size = 'Standard_DS2_v2'

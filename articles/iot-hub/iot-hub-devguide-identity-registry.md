@@ -1,19 +1,19 @@
 ---
 title: Informacje w rejestrze tożsamości usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — Opis rejestru tożsamości usługi IoT Hub i jak go używać do zarządzania urządzeniami. Zawiera informacje dotyczące importowania i eksportowania tożsamości urządzeń w trybie zbiorczym.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: dobett
-ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319136"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010264"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
 
@@ -184,14 +184,14 @@ Tożsamości urządzeń są reprezentowane jako dokumenty JSON z następującymi
 | Właściwość | Opcje | Opis |
 | --- | --- | --- |
 | deviceId |wymagane tylko do odczytu na aktualizacje |Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaki alfanumeryczne znaki ASCII 7-bitowych oraz niektórych znaków specjalnych: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| Identyfikator generacji |wymagane tylko do odczytu |IoT generowanych przez koncentrator, wielkość liter ciągu maksymalnie 128 znaków. Ta wartość jest używana do rozróżniania urządzeń o takiej samej **deviceId**, gdy został usunięty i utworzony ponownie. |
-| Element etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| generationId |wymagane tylko do odczytu |IoT generowanych przez koncentrator, wielkość liter ciągu maksymalnie 128 znaków. Ta wartość jest używana do rozróżniania urządzeń o takiej samej **deviceId**, gdy został usunięty i utworzony ponownie. |
+| etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | uwierzytelnianie |opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
 | auth.symkey |opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
 | status |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
 | statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, wyświetlane data i godzina ostatniej aktualizacji stanu. |
-| Element connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: to pole powinno używane tylko do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
+| connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: W tym polu powinna służyć wyłącznie do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
 | connectionStateUpdatedTime |tylko do odczytu |Wskaźnik danych czasowych przedstawiająca stan połączenia datę i godzinę ostatniego został zaktualizowany. |
 | lastActivityTime |tylko do odczytu |Wskaźnik danych czasowych zawierający datę i godzinę ostatniego urządzenie połączenia, odebranych lub wysłanych wiadomości. |
 
@@ -209,14 +209,14 @@ Moduł tożsamości są reprezentowane jako dokumenty JSON z następującymi wł
 | --- | --- | --- |
 | deviceId |wymagane tylko do odczytu na aktualizacje |Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaki alfanumeryczne znaki ASCII 7-bitowych oraz niektórych znaków specjalnych: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | moduleId |wymagane tylko do odczytu na aktualizacje |Ciąg uwzględniający wielkość liter (maksymalnie 128 znaków) znaki alfanumeryczne znaki ASCII 7-bitowych oraz niektórych znaków specjalnych: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| Identyfikator generacji |wymagane tylko do odczytu |IoT generowanych przez koncentrator, wielkość liter ciągu maksymalnie 128 znaków. Ta wartość jest używana do rozróżniania urządzeń o takiej samej **deviceId**, gdy został usunięty i utworzony ponownie. |
-| Element etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| generationId |wymagane tylko do odczytu |IoT generowanych przez koncentrator, wielkość liter ciągu maksymalnie 128 znaków. Ta wartość jest używana do rozróżniania urządzeń o takiej samej **deviceId**, gdy został usunięty i utworzony ponownie. |
+| etag |wymagane tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | uwierzytelnianie |opcjonalne |Obiekt złożony zawierające uwierzytelnianie materiały informacji i zabezpieczeń. |
 | auth.symkey |opcjonalne |Obiekt złożony, zawierający podstawowy i klucz pomocniczy, przechowywane w formacie base64. |
 | status |wymagane |Wskazuje dostęp. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie może uzyskać dostępu dowolnego punktu końcowego dostępnego z urządzenia. |
 | statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje przyczynę stanu tożsamości urządzenia. Wszystkie znaki UTF-8 są dozwolone. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, wyświetlane data i godzina ostatniej aktualizacji stanu. |
-| Element connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: to pole powinno używane tylko do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
+| connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: W tym polu powinna służyć wyłącznie do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
 | connectionStateUpdatedTime |tylko do odczytu |Wskaźnik danych czasowych przedstawiająca stan połączenia datę i godzinę ostatniego został zaktualizowany. |
 | lastActivityTime |tylko do odczytu |Wskaźnik danych czasowych zawierający datę i godzinę ostatniego urządzenie połączenia, odebranych lub wysłanych wiadomości. |
 

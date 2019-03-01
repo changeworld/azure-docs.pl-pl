@@ -1,19 +1,19 @@
 ---
 title: Omówienie punktów końcowych usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — informacje na temat usługi IoT Hub punktów końcowych przeznaczonych dla urządzeń i przeznaczonych dla usługi.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 72604f84297ddc77b9732c19789d249ac4fa7774
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251444"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010841"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 

@@ -1,20 +1,20 @@
 ---
 title: Rozpoczynanie pracy z usługą Azure IoT Hub bliźniaczych reprezentacji urządzeń (.NET/.NET) | Dokumentacja firmy Microsoft
 description: Jak używać usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń Dodawanie tagów, a następnie użyć zapytania usługi IoT Hub. Urządzenia usługi Azure IoT SDK dla platformy .NET umożliwia wdrożenie aplikacji symulowanego urządzenia i usługi Azure IoT SDK dla platformy .NET do zaimplementowania app service, który dodaje znaczniki i uruchamia zapytanie usługi IoT Hub.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: dobett
-ms.openlocfilehash: 1921395ed11c23ddb3d64d9d53124df7b7c8fd82
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: 63ec161f2f0d8be4572acf456c81e19ca75bd856
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514863"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010739"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Rozpoczynanie pracy z bliźniaczych reprezentacji urządzeń (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -40,7 +40,7 @@ Do ukończenia tego samouczka potrzebne są następujące elementy:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 

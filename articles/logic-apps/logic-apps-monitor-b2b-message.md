@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie komunikatów B2B w usłudze Log Analytics — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Monitorowanie AS2, X 12 i EDIFACT wiadomości dla konta integracji i Azure Logic Apps i skonfigurować rejestrowanie diagnostyki za pomocą usługi Azure Log Analytics
+title: Monitorowanie komunikatów B2B przy użyciu dzienników usługi Azure Monitor — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Monitorowanie AS2, X 12 i EDIFACT wiadomości dla konta integracji i Azure Logic Apps i konfigurowanie rejestrowania diagnostycznego przy użyciu dzienników usługi Azure Monitor
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,25 +9,27 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818298"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195170"
 ---
-# <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B w usłudze Azure Log Analytics w usłudze Azure Logic Apps
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B przy użyciu dzienników usługi Azure Monitor w usłudze Azure Logic Apps
 
-Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, można monitorować AS2, X12, i EDIFACT komunikatów i konfigurowanie logowania dla konta integracji z diagnostyki [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalnych zachowania ich dostępności i wydajności i zbiera szczegóły środowiska uruchomieniowego i zdarzenia dla bardziej zaawansowane debugowanie. Można również użyć tych danych z innymi usługami, takimi jak usługi Azure Storage i Azure Event Hubs.
+Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, można monitorować AS2, X12, i EDIFACT komunikatów i konfigurowanie logowania dla konta integracji z diagnostyki [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalnych zachowania ich dostępności i wydajności i zbiera szczegóły środowiska uruchomieniowego i zdarzenia dla bardziej zaawansowane debugowanie. Można również użyć tych danych z innymi usługami, takimi jak usługi Azure Storage i Azure Event Hubs.
 
 > [!NOTE]
 > Na tej stronie może nadal mieć odwołania do programu Microsoft Operations Management Suite (OMS), czyli [wycofywania w styczniu 2019](../azure-monitor/platform/oms-portal-transition.md), lecz zastępuje te kroki z usługą Azure Log Analytics, jeśli jest to możliwe. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Aplikację logiki, która została skonfigurowana za pomocą rejestrowania diagnostycznego. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do monitorowania i śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do monitorowania i śledzenia komunikacji B2B przy użyciu dzienników usługi Azure Monitor. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 * Konto integracji jest połączony z aplikacji logiki. Dowiedz się, [sposób tworzenia konta integracji z linkiem do aplikacji logiki](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -71,9 +73,9 @@ Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**
 
    Na przykład: 
 
-   ![Konfigurowanie usługi Log Analytics, co umożliwia wysyłanie danych diagnostycznych do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Konfigurowanie dzienników usługi Azure Monitor, co umożliwia wysyłanie danych diagnostycznych do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Teraz [skonfigurować śledzenie wiadomości B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Teraz [skonfigurować śledzenie wiadomości B2B w usłudze Azure Monitor dziennikach](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
@@ -113,13 +115,13 @@ Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**
 
    Na przykład: 
 
-   ![Konfigurowanie usługi Log Analytics, co umożliwia wysyłanie danych diagnostycznych do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Konfigurowanie dzienników usługi Azure Monitor, co umożliwia wysyłanie danych diagnostycznych do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Teraz [skonfigurować śledzenie wiadomości B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Teraz [skonfigurować śledzenie wiadomości B2B w usłudze Azure Monitor dziennikach](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="use-diagnostic-data-with-other-services"></a>Dane diagnostyczne używane z innymi usługami
 
-Wraz z usługi Azure Log Analytics można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
+Wraz z dzienników usługi Azure Monitor można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
 
 * [Archiwum, które dzienniki diagnostyczne platformy Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Dzienniki diagnostyczne platformy Azure Stream do usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -144,6 +146,6 @@ Platforma Azure obsługuje te śledzenie typów schematu, które ustalone schema
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Śledzenie komunikatów B2B w usłudze Azure Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "komunikatów śledzenie B2B w usłudze Azure Log Analytics")
+* [Śledzenie komunikatów B2B w usłudze Azure Monitor dziennikach](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "komunikatów B2B śledzenie w dziennikach w usłudze Azure Monitor")
 * [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")
 

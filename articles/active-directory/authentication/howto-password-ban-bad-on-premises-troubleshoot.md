@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5727965373752d40e3ce508c1bc79046c2b3b70b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8e3632fdb3b4d5c1d2b5465671f36a201c5ff990
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177755"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193300"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Wersja zapoznawcza: Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
@@ -27,27 +27,65 @@ ms.locfileid: "56177755"
 
 Po wdrożeniu ochrony haseł usługi Azure AD rozwiązywania problemów może być wymagane. W tym artykule przechodzi do szczegółów, aby lepiej zrozumieć niektóre typowe kroki rozwiązywania problemów.
 
-## <a name="weak-passwords-are-not-getting-rejected-as-expected"></a>Słabe hasła nie są wprowadzenie odrzucane, zgodnie z oczekiwaniami
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>Agent kontrolera domeny nie może zlokalizować serwera proxy w katalogu
 
-Może to mieć kilka możliwych przyczyn:
+Główne objawem tego problemu jest 30017 zdarzenia w dzienniku zdarzeń administratora agenta kontrolera domeny.
 
-1. Twoje agentach DC nie zostały jeszcze pobrane zasady. Objawem tego jest 30001 zdarzenia w dzienniku zdarzeń administratora agenta kontrolera domeny.
+Najczęstszą przyczyną tego problemu jest to, że serwer proxy nie została jeszcze zarejestrowana. Jeśli serwer proxy został zarejestrowany, może istnieć pewne opóźnienie, ze względu na opóźnienie replikacji usługi AD do momentu określonego agenta kontrolera domeny jest w stanie zobaczyć, że serwer proxy.
 
-    Możliwe przyczyny tego problemu to:
+## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>Agent kontrolera domeny nie jest w stanie nawiązać połączenia z serwerem proxy
 
-    1. Las nie został jeszcze zarejestrowany.
-    2. Serwer proxy nie jest jeszcze zarejestrowana.
-    3. Problemy z łącznością sieciową uniemożliwiają usługę serwera Proxy podczas komunikowania się z platformą Azure (wymagania dotyczące serwera Proxy HTTP wyboru)
+Główne objawem tego problemu jest 30018 zdarzenia w dzienniku zdarzeń administratora agenta kontrolera domeny. Może to mieć kilka możliwych przyczyn:
 
-2. Tryb wymuszania zasad haseł jest nadal równa inspekcji. Jeśli jest to możliwe, ją ponownie skonfigurować, aby wymusić przy użyciu portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Agent kontrolera domeny znajduje się w izolowanej część sieci, która nie zezwala na połączenie sieciowe z zarejestrowanych proxy(s). Ten problem może być w związku z tym expected\benign, tak długo, jak inni agenci kontroler domeny może komunikować się z proxy(s) w celu pobrania zasad haseł z platformy Azure, który następnie będzie można uzyskać za izolowane kontrolera domeny za pomocą replikacji plików zasad udziału sysvol.
 
-3. Zasady haseł zostało wyłączone. Jeśli jest to możliwe, należy ponownie skonfigurować ją włączyć za pomocą portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Blokuje dostęp do endpoint mapowania punktu końcowego usługi RPC (port 135) komputera hosta serwera proxy
 
-4. Algorytm sprawdzania poprawności hasła może działać zgodnie z oczekiwaniami. Zobacz [jak są hasła obliczane](concept-password-ban-bad.md#how-are-passwords-evaluated).
+   Instalator serwera Proxy ochrony haseł usługi Azure AD automatycznie tworzy regułę ruchu przychodzącego zapory Windows, która zezwala na dostęp do portu 135 protokołów. Jeśli ta reguła jest później usunięte lub wyłączone, agentów kontrolera domeny będzie mógł komunikować się z usługą serwera Proxy. Jeśli wbudowane zapory Windows została wyłączona audytów innego produktu do zapory, należy skonfigurować zapory w celu zezwolić na dostęp do portu 135 protokołów.
+
+1. Komputer hosta serwera proxy blokuje dostęp do końcowych wywołań RPC (dynamicznej lub statycznej) posłuchaliśmy na przez usługę serwera Proxy
+
+   Instalator serwera Proxy ochrony haseł usługi Azure AD automatycznie tworzy zaporę Windows regułę ruchu przychodzącego, która umożliwia uzyskanie dostępu do żadnych portów przychodzących wysłuchaliśmy przez usługę serwera Proxy ochrony haseł usługi Azure AD. Jeśli ta reguła jest później usunięte lub wyłączone, agentów kontrolera domeny będzie mógł komunikować się z usługą serwera Proxy. Jeśli wbudowane zapory Windows została wyłączona audytów innego produktu do zapory, należy skonfigurować, zaporę, aby zezwolić na dostęp do żadnych portów przychodzących wysłuchaliśmy przez usługę serwera Proxy ochrony haseł usługi Azure AD. Tej konfiguracji mogą być nawiązywane dokładniej, jeśli usługa serwera Proxy została skonfigurowana do nasłuchiwania na konkretnym porcie RPC statyczne (przy użyciu `Set-AzureADPasswordProtectionProxyConfiguration` polecenia cmdlet).
+
+## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>Usługa serwera Proxy może odbierać wywołania z agentów dla kontrolera domeny w domenie, ale nie może komunikować się z platformą Azure
+
+Upewnij się, komputera serwera proxy ma połączenia z punktami końcowymi na liście [wymagania w zakresie wdrażania](howto-password-ban-bad-on-premises-deploy.md).
+
+## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>Agent kontrolera domeny nie może zaszyfrować lub odszyfrować pliki zasad haseł i innych stanu
+
+Ten problem można manifestu z różnymi rodzajami objawy, ale zazwyczaj ma typowych głównych przyczyn.
+
+Ochrona za pomocą usługi Azure AD hasła ma krytyczne zależności od funkcji szyfrowania i odszyfrowywania, dostarczone przez usługi dystrybucji kluczy firmy Microsoft, co jest dostępne na kontrolerach domeny z systemem Windows Server 2012 i nowszych wersjach. Usługę KDS musi być włączona i działa na wszystkich systemu Windows Server 2012 i nowszych kontrolerów domeny w domenie.  
+
+Domyślnie KDS tryb uruchamiania usługi usługi jest skonfigurowany jako ręczne (uruchomienie wyzwalacza). Ta konfiguracja oznacza, że klient próbuje korzystać z tej usługi po raz pierwszy jej ponownym uruchomieniu na żądanie. To domyślny tryb uruchamiania usługi jest możliwa do obsługi ochrony haseł usługi Azure AD. 
+
+Jeśli tryb uruchamiania usługi KDS został skonfigurowany na wyłączone, ta konfiguracja muszą zostać usunięte przed ochrony haseł usługi Azure AD będzie działać prawidłowo.
+
+Prosty test tego problemu jest ręcznie uruchom usługę KDS, za pośrednictwem konsoli MMC zarządzania usługami lub przy użyciu innych narzędzi do zarządzania usługi (na przykład uruchomić z poziomu konsoli wiersza polecenia polecenie "net start kdssvc"). Usługę KDS powinien uruchomić się pomyślnie i działają bez przerw.
+
+Najbardziej typowe przyczyny jest zlokalizowane poza domyślnej jednostki Organizacyjnej kontrolery domeny obiektu kontrolera domeny usługi Active Directory. Ta konfiguracja nie jest obsługiwana przez usługę KDS i brak ograniczeń narzuconych przez funkcję ochrony haseł usługi Azure AD. Poprawka dla tego warunku jest przenoszenie obiektu kontrolera domeny do lokalizacji domyślnej jednostki Organizacyjnej kontrolery domeny.
+
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Słabe hasła są akceptowane, ale nie powinien być
+
+Ten problem może mieć kilka przyczyn.
+
+1. Twoje agentach DC nie można pobrać zasad lub nie jest w stanie odszyfrować istniejące zasady. Sprawdź możliwe przyczyny w tematach powyżej.
+
+1. Tryb wymuszania zasad haseł jest nadal równa inspekcji. Jeśli ta konfiguracja jest włączone, ją ponownie skonfigurować, aby wymusić przy użyciu portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+1. Zasady haseł zostało wyłączone. Jeśli ta konfiguracja jest włączone, należy ponownie skonfigurować ją włączyć za pomocą portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+1. Nie zainstalowano oprogramowanie agenta kontrolera domeny na wszystkich kontrolerach domeny w domenie. W tej sytuacji jest trudne upewnić się, że klienci zdalni Windows docelowy od określonego kontrolera domeny podczas operacji zmiany hasła. Jeśli mają określonego kontrolera domeny, których instalowane jest oprogramowanie agenta kontrolera domeny jest pomyślnie skierowany, można sprawdzić, podwójnej w dzienniku zdarzeń administratora agenta kontrolera domeny: niezależnie od tego, w wyniku, będzie istnieć co najmniej jedno zdarzenie, aby udokumentować wyniki hasło Sprawdzanie poprawności. Jeśli nie ma żadnego zdarzenia, które są obecne dla użytkownika, którego hasło zostało zmienione, zmiany hasła prawdopodobnie została przetworzona za pomocą innego kontrolera domeny.
+
+   Jako alternatywnego testu spróbuj setting\changing hasła po zalogowaniu się bezpośrednio z kontrolerem domeny, na których instalowane jest oprogramowanie agenta kontrolera domeny. Ta technika nie jest zalecane dla domen usługi Active Directory w środowisku produkcyjnym.
+
+   Wdrożenie przyrostowe oprogramowania agenta kontrolera domeny jest obsługiwana z zastrzeżeniem tych ograniczeń, firma Microsoft zdecydowanie zaleca oprogramowanie agenta kontrolera domeny jest zainstalowanie na wszystkich kontrolerach domeny w domenie, tak szybko, jak to możliwe.
+
+1. Algorytm sprawdzania poprawności hasła może rzeczywiście działa, zgodnie z oczekiwaniami. Zobacz [jak są hasła obliczane](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
 ## <a name="directory-services-repair-mode"></a>Trybie naprawy usług katalogowych
 
-Jeśli kontroler domeny jest uruchomiony w trybie naprawy usług katalogowych, Usługa agenta kontrolera domeny wykryje to i spowoduje, że wszystkie sprawdzenie poprawności hasła lub działań wykonawczych, można wyłączyć niezależnie od aktualnie aktywne zasady konfiguracji.
+Jeśli kontroler domeny jest uruchomiony w trybie naprawy usług katalogowych, Usługa agenta kontrolera domeny wykrywa ten warunek i spowoduje, że wszystkie sprawdzenie poprawności hasła lub działań wykonawczych, można wyłączyć niezależnie od aktualnie aktywne zasady konfiguracji.
 
 ## <a name="emergency-remediation"></a>Korygowanie awaryjnego
 

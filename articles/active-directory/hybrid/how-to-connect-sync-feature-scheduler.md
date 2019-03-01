@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40159a43db6f83029ed6eacd37d2a4eff28aa09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203854"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193062"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizacja programu Azure AD Connect: Scheduler
 W tym temacie opisano wbudowanych harmonogramu synchronizacji Azure AD Connect (zwany również aparatem synchronizacji).
@@ -55,7 +55,7 @@ Jeśli widzisz **polecenie synchronizacji lub polecenie cmdlet nie jest dostępn
 * **PurgeRunHistoryInterval**. Czas, powinny być przechowywane dzienniki operacji. Te dzienniki mogą być przeglądane na Menedżera usługi synchronizacji. Wartość domyślna to na potrzeby przechowywania tych dzienników przez 7 dni.
 * **SyncCycleEnabled**. Wskazuje, czy harmonogram działa importowania, synchronizacji i procesów eksportowania jako część operacji.
 * **MaintenanceEnabled**. Pokazuje, czy proces konserwacji jest włączony. Są aktualizowane kluczy/certyfikatów i Przeczyszcza dziennika operacji.
-* **StagingModeEnabled**. Pokazuje, jeśli [Tryb przejściowy](how-to-connect-sync-operations.md#staging-mode) jest włączona. Jeśli to ustawienie jest włączone, następnie go pomija eksporty uruchamianie, ale nadal działać, importowania i synchronizacji.
+* **StagingModeEnabled**. Pokazuje, jeśli [Tryb przejściowy](how-to-connect-sync-staging-server.md) jest włączona. Jeśli to ustawienie jest włączone, następnie go pomija eksporty uruchamianie, ale nadal działać, importowania i synchronizacji.
 * **SchedulerSuspended**. Ustaw przy użyciu Connect podczas uaktualniania tymczasowo bloku harmonogram uruchamiania.
 
 Można zmienić niektóre z tych ustawień z `Set-ADSyncScheduler`. Można zmodyfikować następujące parametry:

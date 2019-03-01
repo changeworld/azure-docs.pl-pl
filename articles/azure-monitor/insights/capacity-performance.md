@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: db2bbd8c3c0e3d7d172ea2948a42f300c2875745
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983714"
+ms.locfileid: "57008631"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V za pomocą rozwiązania pojemność i wydajność (wersja zapoznawcza)
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V rozwiązanie pojemność i wydajność (przestarzałe)
 
 ![Symbol pojemność i wydajność](./media/capacity-performance/capacity-solution.png)
 

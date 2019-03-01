@@ -1,5 +1,5 @@
 ---
-title: Przy użyciu ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure Dev miejsca do magazynowania | Dokumentacja firmy Microsoft
+title: Przy użyciu ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure Dev miejsca do magazynowania
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,22 +7,22 @@ ms.subservice: azds-kubernetes
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
-ms.topic: article
+ms.topic: conceptual
 manager: yuvalm
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 0abe2902248c8203046cfe891d136ca7d5d0a75b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b614a517874363be95ff17d802995a927a15af2f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666898"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194634"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Dev miejsca do magazynowania
 
 Ten artykuł przeprowadzi Cię przez skonfigurowanie ciągłej integracji/ciągłego wdrażania (CI/CD) do usługi Azure Kubernetes Service (AKS) ze spacjami Dev włączone. Ciągła Integracja/ciągłe dostarczanie do usługi AKS zezwala na aktualizacje aplikacji do automatycznego wdrożenia zawsze wtedy, gdy kod zatwierdzone są wypychane do repozytorium źródłowym. Przy użyciu ciągłej integracji/ciągłego wdrażania w połączeniu ze spacjami Dev włączone klastra przydaje się, ponieważ może prowadzić aktualne dla zespołu do pracy z linii bazowej w aplikacji.
 
-![Przykład ciągłej integracji/ciągłego Dostarczania diagramu](../media/common/ci-cd-simple.png)
+![Przykładowy diagram ciągłej integracji/ciągłego wdrażania](../media/common/ci-cd-simple.png)
 
 Chociaż w tym artykule opisano DevOps platformy Azure, te same pojęcia dotyczą będzie systemów ciągłej integracji/ciągłego Dostarczania, takich jak Jenkins, TeamCity, itp.
 
@@ -44,7 +44,7 @@ Utwórz nowy obszar o nazwie _dev_ przy użyciu `azds space select` polecenia. _
 azds space select -n dev
 ```
 
-Po wyświetleniu monitu wybrać miejsce dev nadrzędne, wybierz  _\<Brak\>_.
+Po wyświetleniu monitu o wybranie nadrzędnej przestrzeni deweloperskiej wybierz pozycję _\<none\>_.
 
 _Dev_ miejsca będzie zawsze zawierać najnowszy stan repozytorium planu bazowego, dzięki czemu deweloperzy mogą tworzyć _podrzędnych miejsca do magazynowania_ z _dev_ do testowania ich izolowane zmiany w kontekście większej aplikacji. To pojęcie została omówiona bardziej szczegółowo w samouczkach Dev miejsca do magazynowania.
 

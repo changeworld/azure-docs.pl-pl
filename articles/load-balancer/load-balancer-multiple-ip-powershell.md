@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: b06213b253b6a289513d5cc1b8fcf0f2e25897f5
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 1b130dff9d290dcce566570fd015d227d44a1310
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594801"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191905"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP przy użyciu programu PowerShell
 
@@ -143,4 +143,4 @@ Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule:
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o sposobie łączenia usług na platformie Azure w równoważenia obciążenia [przy użyciu usługi równoważenia obciążenia na platformie Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Dowiedz się, jak używać różnych typów dzienników na platformie Azure do zarządzania i rozwiązywanie problemów z modułu równoważenia obciążenia w [Analiza dzienników na potrzeby usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- Dowiedz się, jak używać różnych typów dzienników na platformie Azure do zarządzania i rozwiązywanie problemów z modułu równoważenia obciążenia w [usługi Azure Monitor dzienniki dla usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

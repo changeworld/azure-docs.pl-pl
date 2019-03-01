@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: c9d8dd366ecabe9eb508998d526ddfe7b1da300d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960525"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194099"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
@@ -306,11 +306,11 @@ W poniższej tabeli wymieniono **operationName** odpowiednich poleceń interfejs
 | **SecretList** |[Utwórz listę kluczy tajnych w magazynie](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Utwórz listę wersji klucza tajnego](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>Korzystanie z usługi Log Analytics
+## <a id="loganalytics"></a>Przy użyciu dzienników usługi Azure Monitor
 
-Rozwiązanie Key Vault można użyć w usłudze Azure Log Analytics, aby zapoznać się z usługi Key Vault **AuditEvent** dzienniki. W usłudze Log Analytics umożliwia dziennika zapytań analizy danych i uzyskać potrzebne informacje. 
+Rozwiązanie Key Vault można użyć w dziennikach w usłudze Azure Monitor, aby zapoznać się z usługi Key Vault **AuditEvent** dzienniki. W dziennikach usługi Azure Monitor umożliwia dziennika zapytań analizy danych i uzyskać potrzebne informacje. 
 
-Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../azure-monitor/insights/azure-key-vault.md). Ten artykuł zawiera również instrukcje, jeśli chcesz przeprowadzić migrację ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, której najpierw należało skierować dzienniki do konta usługi Azure storage i skonfigurować usługę Log Analytics do odczytu z.
+Aby uzyskać więcej informacji, w tym jak to skonfigurować, zobacz [rozwiązanie Azure Key Vault w dziennikach w usłudze Azure Monitor](../azure-monitor/insights/azure-key-vault.md). Ten artykuł zawiera również instrukcje, jeśli chcesz przeprowadzić migrację ze starego rozwiązania Key Vault, które było oferowane w trakcie dzienniki usługi Azure Monitor w wersji zapoznawczej, gdzie możesz najpierw należało skierować dzienniki do konta usługi Azure storage i skonfigurowane usługi Azure Monitor loguje się do odczytu z.
 
 ## <a id="next"></a>Następne kroki
 

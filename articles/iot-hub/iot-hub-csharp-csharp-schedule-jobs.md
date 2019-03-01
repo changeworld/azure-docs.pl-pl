@@ -1,19 +1,19 @@
 ---
 title: Planowanie zadań za pomocą usługi Azure IoT Hub (.NET/.NET) | Dokumentacja firmy Microsoft
 description: Jak zaplanować zadanie usługi Azure IoT Hub do wywołania metody bezpośredniej na wielu urządzeniach. Urządzenia usługi Azure IoT SDK dla platformy .NET umożliwia wdrożenie aplikacji urządzenia symulowanego i app service, aby uruchomić zadanie.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
-ms.author: dobett
-ms.openlocfilehash: 4089ee74b44bc17324c7cd33b1bbd734a651d75f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: b39d7d4af4c476778665e844f647beecf20e3d9f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514812"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008886"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Planowanie i emitowanie zadań (.NET/.NET)
 
@@ -29,9 +29,9 @@ Zadanie opakowuje jedną z następujących czynności i śledzenie wykonywanie k
 
 Aby dowiedzieć się więcej na temat każdego z tych funkcji, zobacz:
 
-* Bliźniacza reprezentacja urządzenia i właściwości: [wprowadzenie do bliźniaków urządzeń](iot-hub-csharp-csharp-twin-getstarted.md) i [samouczek: jak korzystać z właściwości bliźniaczych reprezentacji urządzeń](tutorial-device-twins.md)
+* Bliźniacza reprezentacja urządzenia i właściwości: [Wprowadzenie do bliźniaków urządzeń](iot-hub-csharp-csharp-twin-getstarted.md) i [samouczka: Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń](tutorial-device-twins.md)
 
-* Metody bezpośrednie: [usługi IoT Hub developer guide - metod bezpośrednich](iot-hub-devguide-direct-methods.md) i [samouczek: używanie metod bezpośrednich](quickstart-control-device-dotnet.md)
+* Metody bezpośrednie: [Usługi IoT Hub developer guide - metod bezpośrednich](iot-hub-devguide-direct-methods.md) i [samouczka: Używanie metod bezpośrednich](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -56,7 +56,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -291,6 +291,6 @@ Teraz można przystąpić do uruchomienia aplikacji.
 
 W tym samouczku użyto zadania można zaplanować metody bezpośredniej do urządzenia i aktualizację właściwości bliźniaczej reprezentacji urządzenia.
 
-Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, przeczytaj [samouczek: jak zaktualizować oprogramowanie układowe](tutorial-firmware-update.md).
+Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, przeczytaj [samouczka: Jak zaktualizować oprogramowanie układowe](tutorial-firmware-update.md).
 
 Aby dowiedzieć się o wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge, zobacz [wprowadzenie do usługi IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

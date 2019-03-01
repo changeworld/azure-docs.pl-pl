@@ -6,14 +6,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4246259445cf096b5353ab87a9ed83f87332dc78
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: df4fcb505cce17663334d9b80245f5c981cdbe1e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299330"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989630"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Sposób zarządzania połączeniami w usłudze Azure Functions
 
@@ -21,13 +21,13 @@ Funkcji w aplikacji funkcji udostępniania zasobów, a wśród tych zasoby udost
 
 ## <a name="connections-limit"></a>Limit połączeń
 
-Liczba dostępnych połączeń jest ograniczona, częściowo, ponieważ aplikacja funkcji jest uruchamiana w [piaskownicy usługi Azure App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). On ograniczenia, które piaskownicy nakłada się na kodzie [dzienny limit liczby połączeń obecnie 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Po osiągnięciu tego limitu, środowisko uruchomieniowe usługi functions tworzy dziennik z następującym komunikatem: `Host thresholds exceeded: Connections`.
+Liczba dostępnych połączeń jest ograniczona, częściowo, ponieważ aplikacja funkcji jest uruchamiana w [środowisku piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). On ograniczenia, które piaskownicy nakłada się na kodzie [dzienny limit liczby połączeń (obecnie w 600 aktywne połączenia, łączna liczba połączeń 1200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) dla każdego wystąpienia. Po osiągnięciu tego limitu, środowisko uruchomieniowe usługi functions tworzy dziennik z następującym komunikatem: `Host thresholds exceeded: Connections`.
 
-Prawdopodobieństwo przekracza limit rośnie, gdy [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-plan-works) do obsługi liczby żądań. Każde wystąpienie aplikacji funkcji, mogą działać wiele funkcji, które korzystają z połączeń, które są wliczane do limitu 300.
+To ograniczenie jest dla każdego wystąpienia.  Podczas [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-plan-works) do obsługi więcej żądań, każde wystąpienie ma limit połączeń niezależne.  Oznacza to, nie ma żadnego limitu połączenia globalnego, a w sumie mogą mieć znacznie więcej niż 600 aktywnych połączeń ze wszystkich aktywnych wystąpień.
 
 ## <a name="use-static-clients"></a>Przy użyciu statycznych klientów
 
-Aby uniknąć, zawierający więcej połączeń niż to konieczne, ponownie użyć wystąpienia klienta, zamiast tworzyć nowe przy każdym wywołaniu funkcji. Klienci platformy .NET, takich jak [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+Aby uniknąć, zawierający więcej połączeń niż to konieczne, ponownie użyć wystąpienia klienta, zamiast tworzyć nowe przy każdym wywołaniu funkcji.  Ponowne użycie połączenia klienta jest zalecana dla dowolnego języka, który może zapisać funkcji w. Na przykład, takich jak klientów programu .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ), i zarządzać połączeń klientów usługi Azure Storage, jeśli za pomocą pojedynczej, statycznej klienta.
 
 Poniżej przedstawiono kilka wskazówek, które należy wykonać podczas przy użyciu klienta specyficzne dla usługi w aplikacji usługi Azure Functions:

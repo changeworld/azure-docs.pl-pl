@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fc3e545db0529739659c1019cbed6d434b586f8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 10f34a24668981da5629bd9d03652aa76081bd44
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726962"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194116"
 ---
 # <a name="what-are-parallel-documents"></a>Co to są równoległe dokumenty?
 
@@ -23,7 +23,7 @@ Nieważne, jaki język jest oznaczony jako "źródło" i język, który jest ozn
 
 ## <a name="requirements"></a>Wymagania
 
-Należy co najmniej 10 000 równoległe zdania w celu szkolić system. Najlepszym rozwiązaniem jest stale można dodać większej ilości zawartości równoległe i ponownego próbkowania w celu poprawiania jakości tłumaczenia systemu.
+Należy co najmniej 10 000 unikatowy równoległe zdań szkolić system. Najlepszym rozwiązaniem jest stale można dodać większej ilości zawartości równoległe i ponownego próbkowania w celu poprawiania jakości tłumaczenia systemu.
 
 Firma Microsoft wymaga, dokumenty przekazane do niestandardowych w usłudze Translator naruszają właściwości praw autorskich lub własności intelektualnej innych firm. Aby uzyskać więcej informacji, zobacz [warunki użytkowania](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Przekazywanie dokumentu za pomocą portalu nie zmienia własności intelektualnej w dokumencie.

@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: f366b9eee3104527fb9e974b51f339494b552e3b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8af19056a343abdbafcd4ead8b072330cb41fd9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739567"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192076"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Ustaw się aplikacja deweloperów kontrolowane dystrybucji (ADCD) w IBM zD & T w wersji 1
 
@@ -89,7 +89,7 @@ Teraz, gdy pakiety, możesz przekazać je do maszyny Wirtualnej na platformie Az
         gunzip \*.gz
     ```
     
-![](media/01-gunzip.png)
+![Eksplorator plików dekompresja gz woluminów](media/01-gunzip.png)
 
 ## <a name="configure-the-image-storage"></a>Skonfiguruj magazyn obrazów
 
@@ -105,11 +105,11 @@ Następnym krokiem jest skonfigurować zD & T, aby używać przekazanego pakiet�
      >
      > Należy pamiętać, że dostęp do usługi sieci web używa portu 9443. Służy do logowania się do serwera sieci web. Identyfikator użytkownika dla ZD & T jest **zdtadmin** , a hasło to **hasło**.
 
-    ![](media/02-welcome.png)
+    ![IBM zD & T Enterprise Edition startowa](media/02-welcome.png)
 
 3. Na **— Szybki Start** w obszarze **Konfiguruj**, wybierz opcję **magazyn obrazów**.
 
-     ![](media/03-quickstart.png)
+     ![IBM zD & T Enterprise Edition — Szybki Start ekran](media/03-quickstart.png)
 
 4. Na **skonfigurować magazyn obrazów** wybierz opcję **SSH File Transfer Protocol**.
 
@@ -133,7 +133,7 @@ Następnym krokiem jest skonfigurowanie zD & T środowiska docelowego. Ten emulo
 
 5. W **etykiety środowiska docelowego** wprowadź etykietę, takich jak **MyCICS.**
 
-     ![](media/04-add-target.png)
+     ![Dodawanie ekranu środowiska docelowego](media/04-add-target.png)
 
 ## <a name="configure-adcd-and-deploy"></a>Konfigurowanie ADCD i wdrażanie
 
@@ -143,7 +143,7 @@ Po wykonaniu poprzednich kroków konfiguracji, należy skonfigurować zD & T, ab
 
 2. Zakładając, że wszystkie obrazy zostały przekazane do katalogów poprawne, kliknij przycisk **obraz z ADCD** łącza wyświetlane w lewym dolnym rogu (przedstawionym w kroku 7 na następującym zrzucie ekranu).
 
-     ![](media/05-adcd.png)
+     ![IBM zD & T Enterprise Edition — Konfigurowanie ADCD ekranu](media/05-adcd.png)
 
 ## <a name="create-the-image"></a>Tworzenie obrazu
 
@@ -157,7 +157,7 @@ Po ukończeniu poprzedniego kroku konfiguracji **utworzyć obraz przy użyciu sk
 
 4. Wybierz **Utwórz obraz** przycisk w prawym dolnym rogu.
 
-     ![](media/06-adcd.png)
+     ![IBM zD & T Enterprise Edition — Tworzenie obrazu przy użyciu składników ADCD ekranu](media/06-adcd.png)
 
 5. W wyświetlonym oknie informujący, obraz został pomyślnie wdrożony, wybierz polecenie **wdrażać obrazy**.
 
@@ -169,7 +169,7 @@ Po ukończeniu poprzedniego kroku konfiguracji **utworzyć obraz przy użyciu sk
 
 9. Upewnij się, że pole jest zaznaczone dla **automatyczne wdrażanie polecenia IPL problemu z/OS, po**.
 
-     ![](media/07-properties.png)
+     ![Właściwości ekranu](media/07-properties.png)
 
 10. Wybierz **pełną**.
 
@@ -194,5 +194,5 @@ Gratulacje! Środowisko komputera mainframe firmy IBM są uruchomione na platfor
 [microfocus-setup]: /microfocus/set-up-micro-focus-on-azure.md
 [microfocus-demo]: /microfocus/demo.md
 [ibm-get-started]: /ibm/get-started.md
-[ibm-install-z]: /ibm/install-ibm-z-environment.md
+[ibm-install-z]: install-ibm-z-environment.md
 [ibm-demo]: /ibm/demo.md

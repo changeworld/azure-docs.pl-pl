@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: fb8b3ac69797400af962ae40816943d6a32b8ec6
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dc22f1392d14529c2944dde67315a278fca4fa73
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245552"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195340"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -214,7 +214,7 @@ Nie włączaj [sygnatury czasowe TCP](https://tools.ietf.org/html/rfc1323).  Wł
 
 Zarówno public i internal [Balancer w warstwie standardowa](load-balancer-standard-overview.md) uwidocznić na stan sondy kondycji wystąpienie punktu końcowego i wewnętrznej bazy danych jako metryk wielowymiarowych za pomocą usługi Azure Monitor. Metryki te mogą być używane przez inne usługi platformy Azure lub innych arty aplikacje. 
 
-Podstawowe publicznej usługi Load Balancer udostępnia stan sondy kondycji podsumowywane na pulę zaplecza za pomocą usługi Log Analytics.  Usługa log Analytics nie są dostępne dla wewnętrznych modułów równoważenia obciążenia podstawowe.  Możesz użyć [dziennika analizy](load-balancer-monitor-log.md) można sprawdzić stanu zdrowia sondy modułu równoważenia obciążenia publiczny i sondowania count. Rejestrowanie może służyć za pomocą usługi Power BI lub usługi Azure Operational Insights umożliwia statystyki dotyczące stanu kondycji modułu równoważenia obciążenia.
+Podstawowe publicznej usługi Load Balancer udostępnia podsumowywane na pulę zaplecza przy użyciu dzienników usługi Azure Monitor stanu sondy kondycji.  Dzienniki platformy Azure Monitor nie są dostępne dla wewnętrznych modułów równoważenia obciążenia podstawowe.  Możesz użyć [dzienniki usługi Azure Monitor](load-balancer-monitor-log.md) można sprawdzić stanu zdrowia sondy modułu równoważenia obciążenia publiczny i sondowania count. Rejestrowanie może służyć za pomocą usługi Power BI lub usługi Azure Operational Insights umożliwia statystyki dotyczące stanu kondycji modułu równoważenia obciążenia.
 
 ## <a name="limitations"></a>Ograniczenia
 

@@ -1,5 +1,5 @@
 ---
-title: Jak udostępniać usługi Azure Dev miejsca do magazynowania | Dokumentacja firmy Microsoft
+title: Jak udostępniać usługi Azure Dev miejsca do magazynowania
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,15 +7,15 @@ ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 86a9400aca099bb79ca95dfc1c4ac2c4c241a6b2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
+ms.openlocfilehash: 76332c30143601d05fdf951e68f9e9aa8256a924
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466425"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191377"
 ---
 # <a name="share-azure-dev-spaces"></a>Miejsca do magazynowania udziału usługi Azure Dev
 

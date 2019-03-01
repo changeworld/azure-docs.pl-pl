@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: bd2f675fe646395b60aeb687f67269b0184563bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412572"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193402"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
 
@@ -51,7 +51,7 @@ Aby skonfigurować urządzenie Windows IoT Core wykonaj przewodnik krok po kroku
 W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows IoT Core** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**klucza podstawowego identyfikator zakresu, identyfikator urządzenia**). Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
 
  > [!NOTE]
-   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrustions do [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#getting-device-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
+   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrukcje, aby [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#get-a-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Przygotuj urządzenie Windows 10 IoT Core
 
@@ -119,7 +119,7 @@ Ustawienia liczbowe
 
 ### <a name="properties"></a>Właściwości
 
-| Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Tekst            | Lokalizacja     | location   | ND       |

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 6803e700a42a0d0279b48d38995c4fc299415075
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 58f16b0aa068c8b333ef4e7986bb49327b002fbb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985499"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195425"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Rozwiązanie do monitorowania kontenerów w usłudze Azure Monitor
 
@@ -496,28 +496,16 @@ Skorzystaj z informacji w sekcji, aby zainstalować i skonfigurować hosty konte
 
 Przed zainstalowaniem agentów na komputerach z systemem Windows, należy skonfigurować usługę Docker. Konfiguracja umożliwia Windows z agentem lub rozszerzenie maszyny wirtualnej usługi Azure Monitor do użycia gniazda TCP platformy Docker, dzięki czemu agenci mogą uzyskiwać dostęp do demona platformy Docker zdalnie i przechwytywania danych monitorowania.
 
-##### <a name="to-start-docker-and-verify-its-configuration"></a>Uruchom platformę Docker i sprawdzić jego konfigurację
+##### <a name="to-configure-the-docker-service"></a>Aby skonfigurować usługę Docker  
 
-Istnieją kroki niezbędne do skonfigurowania protokołu TCP, nazwany potok dla systemu Windows Server:
+Wykonaj następujące polecenia programu PowerShell, aby włączyć potoku TCP i nazwanych potoków dla systemu Windows Server:
 
-1. W programie Windows PowerShell umożliwiają potoku TCP i nazwanych potoków.
-
-    ```
-    Stop-Service docker
-    dockerd --unregister-service
-    dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
-    Start-Service docker
-    ```
-
-2. Konfigurowanie platformy Docker przy użyciu pliku konfiguracji dla potoku TCP i nazwany potok. Plik konfiguracji znajduje się w C:\ProgramData\docker\config\daemon.json.
-
-    W pliku daemon.json potrzebne następujące elementy:
-
-    ```
-    {
-    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
-    }
-    ```
+```
+Stop-Service docker
+dockerd --unregister-service
+dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
+Start-Service docker
+```
 
 Aby uzyskać więcej informacji na temat konfigurację demona platformy Docker, które są używane, za pomocą kontenerów Windows zobacz [aparat Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 

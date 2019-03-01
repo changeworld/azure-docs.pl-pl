@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie rozwiązania połączone fabryki - Azure | Dokumentacja firmy Microsoft
-description: Opis sposobu dostosowywania zachowanie akcelerator rozwiązań połączone fabryki.
+title: Dostosowanie rozwiązania połączonej fabryki — Azure | Dokumentacja firmy Microsoft
+description: Opis sposobu dostosowywania zachowania akcelerator rozwiązania połączonej fabryki.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,79 +9,79 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: e91f36c9d6f0cb3195e6903d55cd676f1e9ccf5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626554"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010076"
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Dostosuj sposób rozwiązania połączone fabryki wyświetlania danych z serwerów OPC UA
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Dostosowywanie sposobu wyświetlania danych z serwerów OPC UA w rozwiązaniu połączonej fabryki
 
-Rozwiązania połączone fabryki agreguje i wyświetla dane z serwerów OPC UA nawiązaniu połączenia z rozwiązaniem. Można wybrać i wysyłać polecenia do serwerów OPC UA w rozwiązaniu. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-accelerators-faq-cf.md).
+Rozwiązania połączonej fabryki, agreguje i wyświetla dane z serwerów OPC UA, połączonego z rozwiązaniem. Można przeglądać i wysyłanie poleceń do serwerów OPC UA w rozwiązaniu. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-accelerators-faq-cf.md).
 
-Przykładami zagregowane dane w rozwiązaniu ogólną wydajność sprzętu (OEE) oraz kluczowych wskaźników wydajności (KPI) widoczne na pulpicie nawigacyjnym poziomie fabryki, wiersza i stacji. Poniższy zrzut ekranu przedstawia wartości OEE i KPI **zestawu** stacji na **wiersza produkcyjnym 1**w **we Wrocławiu** fabryki:
+Przykładami zagregowane dane w rozwiązaniu ogólnej wydajności sprzętu (OEE) oraz kluczowych wskaźników wydajności (KPI) można wyświetlić na pulpicie nawigacyjnym poziomie fabryki, linii i stacji. Poniższy zrzut ekranu przedstawia wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności **zestawu** stacji na **linii produkcyjnej 1**w **Monachium** fabryki:
 
-![Przykładowe wartości OEE i wskaźnika KPI w rozwiązaniu][img-oee-kpi]
+![Przykład wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności w rozwiązaniu][img-oee-kpi]
 
-Rozwiązanie umożliwia wyświetlenie szczegółowych informacji z elementów określonych danych z serwerów OPC UA, nazywany *stacji*. Poniższy zrzut ekranu przedstawia powierzchni liczba wyprodukowanych elementów z określonym stacji:
+To rozwiązanie umożliwia wyświetlanie szczegółowych informacji z elementów określonych danych z serwerów OPC UA, o nazwie *stacji*. Poniższy zrzut ekranu przedstawia powierzchni liczby wyprodukowanych elementy z określonej stacji:
 
-![Liczba elementów wyprodukowanych wykresy][img-manufactured-items]
+![Liczba elementów to wykresy][img-manufactured-items]
 
-Kliknięcie wykresy można eksplorować danych za pomocą czasu serii Insights (TSI):
+Po kliknięciu poszczególnych wykresów możesz eksplorować dane, korzystając z usługi Time Series Insights (TSI):
 
-![Eksploruj dane przy użyciu czasu serii Insights][img-tsi]
+![Eksplorowanie danych za pomocą usługi Time Series Insights][img-tsi]
 
 W tym artykule opisano:
 
-- Jak danych ma zostać udostępnione różne widoki w rozwiązaniu.
-- Jak można dostosować sposób rozwiązania wyświetla dane.
+- Jak danych staje się dostępny do różnych widoków w rozwiązaniu.
+- W jaki sposób dostosować sposób rozwiązania Wyświetla określone dane.
 
 ## <a name="data-sources"></a>Źródła danych
 
-Rozwiązania połączone fabryki wyświetla dane z serwerów OPC UA nawiązaniu połączenia z rozwiązaniem. Domyślna instalacja obejmuje kilka serwerów OPC UA systemem symulacji fabryki. Można dodać serwery OPC UA który [łączenie się za pośrednictwem bramy] [ lnk-connect-cf] do rozwiązania.
+Rozwiązania połączonej fabryki są wyświetlane dane z serwerów OPC UA, połączonego z rozwiązaniem. Instalacja domyślna obejmuje kilka serwerów OPC UA, uruchamiania symulacji fabryki. Można dodać własnych serwerów OPC UA, [nawiązać połączenie za pośrednictwem bramy] [ lnk-connect-cf] do rozwiązania.
 
-Możesz przejść elementów danych, które połączony serwer OPC Agent użytkownika może wysłać do rozwiązania na pulpicie nawigacyjnym:
+Możesz przeglądać elementy danych, które połączony serwer OPC UA mogą wysyłać do rozwiązania na pulpicie nawigacyjnym:
 
 1. Wybierz **przeglądarki** można przejść do **wybierz serwer OPC UA** widoku:
 
-    ![Przejdź do wybierz Widok serwera OPC UA][img-select-server]
+    ![Przejdź do wyboru widoku serwerów OPC UA][img-select-server]
 
-1. Wybierz serwer i kliknij przycisk **Connect**. Kliknij przycisk **Kontynuuj** gdy pojawi się ostrzeżenie o zabezpieczeniach.
+1. Wybierz serwer, a następnie kliknij przycisk **Connect**. Kliknij przycisk **Kontynuuj** kiedy pojawi się ostrzeżenie o zabezpieczeniach.
 
     > [!NOTE]
-    > To ostrzeżenie występuje raz dla każdego serwera i tylko ustanawia relację zaufania między pulpit nawigacyjny rozwiązania i serwer.
+    > Ostrzeżenie to pojawia się jeden raz dla każdego serwera i tylko ustanawia relację zaufania między pulpit nawigacyjny rozwiązania a serwerem.
 
-1. Możesz teraz przeglądać elementów danych, które serwer może wysłać do rozwiązania. Zaznaczono elementów, które są wysyłane do rozwiązania:
+1. Możesz teraz przeglądać elementy danych, które serwer może wysłać do rozwiązania. Zaznaczono elementów, które są wysyłane do rozwiązania:
 
     ![Opublikowane elementy][img-published]
 
-1. Jeśli jesteś *administratora* w rozwiązaniu, możesz opublikować element danych, aby była ona dostępna w rozwiązaniu fabryka połączenia. Jako Administrator możesz zmienić wartości elementów danych i wywołanie metody Server OPC UA.
+1. Jeśli jesteś *administratora* w rozwiązaniu, użytkownik może opublikować elementu danych, aby udostępnić ją w rozwiązaniu połączonej fabryki. Jako Administrator możesz zmienić wartości elementów danych i wywoływać metody w serwera OPC UA.
 
 ## <a name="map-the-data"></a>Mapowania danych
 
-Rozwiązania połączone fabryki mapuje i agreguje elementy opublikowanych danych z serwera OPC UA do różnych widoków w rozwiązaniu. Podczas obsługi administracyjnej rozwiązania rozwiązania połączone fabryki wdraża się do konta platformy Azure. Plik JSON w rozwiązaniu Visual Studio połączone fabryki przechowuje informacje o mapowaniu. Można wyświetlać i modyfikować tego pliku konfiguracji JSON w rozwiązaniu fabryki połączone w Visual Studio. Po wprowadzeniu zmiany można ponownie wdrożyć rozwiązanie.
+Rozwiązania połączonej fabryki mapuje i agreguje elementy opublikowanych danych z serwerem OPC UA do różnych widoków w rozwiązaniu. Podczas aprowizacji rozwiązania rozwiązania połączonej fabryki wdraża się do konta platformy Azure. Plik w formacie JSON w rozwiązaniu Visual Studio Connected Factory przechowuje informacje o mapowaniu. Można wyświetlać i modyfikować tego pliku konfiguracji JSON w rozwiązaniu połączona fabryka programu Visual Studio. Po wprowadzeniu zmiany można ponownie wdrożyć rozwiązanie.
 
-Możesz użyć pliku konfiguracji do:
+Można użyć pliku konfiguracji, aby:
 
-- Edytowanie istniejącego fabryki symulowane, linii produkcyjnych i stacji.
-- Mapowanie danych rzeczywistych serwerów OPC UA, których połączenia z rozwiązaniem.
+- Edytuj istniejący symulowanej fabryki, linii produkcyjnych i stacji.
+- Dane mapy z prawdziwych serwerów OPC UA, z którymi się łączysz się z rozwiązaniem.
 
-Aby uzyskać więcej informacji dotyczących mapowania i agregowanie danych do własnych wymagań, zobacz [Konfigurowanie akcelerator rozwiązań połączone fabryki ](iot-accelerators-connected-factory-configure.md).
+Aby uzyskać więcej informacji na temat mapowania i agregowanie danych pod kątem wymagań dotyczących zobacz [sposobu konfigurowania akcelerator rozwiązania połączonej fabryki ](iot-accelerators-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>Wdrażanie zmiany
 
-Po zakończeniu wprowadzania zmian do **ContosoTopologyDescription.json** pliku, należy ponownie wdrożyć rozwiązanie fabryki połączony z kontem platformy Azure.
+Po zakończeniu wprowadzania zmian do **ContosoTopologyDescription.json** pliku, należy ponownie wdrożyć rozwiązania połączonej fabryki z kontem platformy Azure.
 
-**Azure iot — połączony fabryka** repozytorium zawiera **build.ps1** skrypt programu PowerShell, można użyć, aby ponownie skompilować i wdrożyć rozwiązanie.
+**Azure-iot-connected-factory** repozytorium zawiera **build.ps1** skrypt programu PowerShell, można użyć, aby ponownie skompilować i wdrożyć rozwiązanie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o akcelerator rozwiązań połączone fabryki przeczytaj następujące artykuły:
+Dowiedz się więcej o akcelerator rozwiązania połączonej fabryki, czytając następujące artykuły:
 
 * [Przewodnik po akceleratorze rozwiązania połączonej fabryki][lnk-rm-walkthrough]
-* [Wdrażanie bramy dla fabryki połączone][lnk-connect-cf]
-* [Uprawnienia w witrynie azureiotsuite.com][lnk-permissions]
+* [Wdrażanie bramy dla połączonej fabryki][lnk-connect-cf]
+* [Uprawnienia w witrynie azureiotsolutions.com][lnk-permissions]
 * [Połączona fabryka — często zadawane pytania](iot-accelerators-faq-cf.md)
 * [FAQ][lnk-faq]
 

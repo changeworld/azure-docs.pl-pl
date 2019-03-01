@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9b5054da56bdc6a88642ea7860702b280a76dbb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d09abfbec7ace3112de35869ccc95c56e113e6fe
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461172"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991839"
 ---
 # <a name="time-to-live-in-azure-cosmos-db"></a>Czas wygaśnięcia w usłudze Azure Cosmos DB 
 
@@ -30,7 +30,7 @@ Wartość czasu wygaśnięcia jest ustawiany w ciągu kilku sekund, a zostanie o
 
    - Jeśli istnieje, a wartość jest równa niektóre numer ("n") — elementy wygasają "n" sekund po ich ostatniej modyfikacji.
 
-2. **Czas wygaśnięcia elementu** (można ustawić przy użyciu `TimeToLive`):
+2. **Czas wygaśnięcia elementu** (można ustawić przy użyciu `ttl`):
 
    - Ta właściwość ma zastosowanie tylko wtedy, gdy `DefaultTimeToLive` jest obecny i nie jest ustawiona na wartość null dla kontenera nadrzędnego.
 

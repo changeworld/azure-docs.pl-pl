@@ -12,23 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 332722a1774eea41ab3566051da138f2383fef98
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 9d941c36499f851f20c41fa6dd01faf14e4192ba
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447671"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992774"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>W trybie offline aktualizacji usługi Azure App Service w usłudze Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Stosowanie aktualizacji 1809 później do usługi Azure Stack zintegrowany system lub wdrożyć najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.4. Przed zaktualizowaniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
+> Stosowanie aktualizacji 1901 później do usługi Azure Stack zintegrowany system lub wdrożyć najnowszy zestaw Azure Stack development kit przed wdrożeniem Azure App Service w wersji 1.5. 
 
 Postępując zgodnie z instrukcjami w tym artykule, możesz uaktualnić [dostawcy zasobów usługi App Service](azure-stack-app-service-overview.md) wdrożone w środowisku usługi Azure Stack, który jest:
 
@@ -36,9 +35,7 @@ Postępując zgodnie z instrukcjami w tym artykule, możesz uaktualnić [dostawc
 * zabezpieczone przez usługi Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Przed uruchomieniem uaktualniania, upewnij się, że zostały już wykonane [wdrożenia usługi Azure App Service dla dostawcy zasobów usługi Azure Stack](azure-stack-app-service-deploy-offline.md)
->
->
+> Przed uruchomieniem uaktualniania, upewnij się, że zostały już wykonane [wdrożenia usługi Azure App Service dla dostawcy zasobów usługi Azure Stack](azure-stack-app-service-deploy-offline.md) oraz że znasz [informacje o wersji](azure-stack-app-service-release-notes-update-five.md), którym towarzyszą wersję 1.5, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Uruchom Instalatora dostawcy zasobów usługi App Service
 

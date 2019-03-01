@@ -6,22 +6,22 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: abc20d8ef51f94e25d0e46ec199ca715bf6cce22
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736791"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194712"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
 Ten artykuł zawiera znane problemy i ograniczenia tymczasowe Data Lake Storage Gen2.
 
-## <a name="data-lake-storage-gen2-apis"></a>Interfejsy API usługi Data Lake Storage Gen2
+## <a name="sdk-support-for-data-lake-storage-gen2-accounts"></a>Obsługa zestawu SDK dla kont usługi Data Lake Storage Gen2
 
-Interfejsy API nie są jeszcze dostępne dla kont usługi Data Lake Storage Gen2.
+Nie ma dostępne są zestawy SDK, które będą współdziałać z konta Data Lake Storage Gen2.
 
 ## <a name="blob-storage-apis"></a>Magazyn obiektów blob interfejsów API
 

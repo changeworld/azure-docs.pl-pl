@@ -1,5 +1,5 @@
 ---
-title: Business ciągłości działania i odzyskiwanie po awarii w obszarach deweloperów platformy Azure | Dokumentacja firmy Microsoft
+title: Business ciągłości działania i odzyskiwania po awarii w Azure Dev miejsca do magazynowania
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,16 +7,16 @@ ms.subservice: azds-kubernetes
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
-ms.topic: article
+ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
 manager: jeconnoc
-ms.openlocfilehash: b7eba0e63f68cd56f2bcc310c3bde65c36e933dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 25397b52cbcfb141fe27e9261c78a2ef6adb677d
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822467"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192943"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business ciągłości działania i odzyskiwania po awarii w Azure Dev miejsca do magazynowania
 

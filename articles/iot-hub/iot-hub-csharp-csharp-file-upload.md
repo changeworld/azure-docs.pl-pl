@@ -1,19 +1,20 @@
 ---
 title: Przekazywanie plików z urządzeń do usługi Azure IoT Hub przy użyciu platformy .NET | Dokumentacja firmy Microsoft
 description: Sposób przekazywania plików z urządzenia do chmury przy użyciu zestawu SDK urządzeń Azure IoT dla platformy .NET. Przekazane pliki są przechowywane w kontenerze obiektów blob usługi Azure storage.
-author: fsautomata
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: elioda
-ms.openlocfilehash: 25ec3a158d1eca77a7ca622af9b249789ef3b5e2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: robin.shahan
+ms.openlocfilehash: d661f8834aec77957e0fd2713cde5da9a48903fd
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259330"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010579"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub przy użyciu platformy .NET
 

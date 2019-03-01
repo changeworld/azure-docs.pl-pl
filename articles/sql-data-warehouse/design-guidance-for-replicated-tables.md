@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c791dc8216a4c905b4147f59a42d52091f14aae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 93e1904862af7eaad395bf14b0d09555d9d1d2ab
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465983"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990139"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania dotyczące korzystania z zreplikowane tabele w usłudze Azure SQL Data Warehouse
 Ten artykuł zawiera zalecenia dotyczące projektowania zreplikowanych tabel w schemacie usługi SQL Data Warehouse. Użyj tych zaleceń, aby poprawić wydajność zapytań, redukowania poziomu złożoności procesów przepływu i zapytanie danych.
@@ -58,7 +58,7 @@ Zanim zdecydujesz się korzystający dystrybuuje lub replikacji tabeli, należy 
 
 Zapytania mocy procesora CPU działają najlepiej, gdy praca jest rozproszona na wszystkich węzłach obliczeniowych. Na przykład zapytania, które wykonywania obliczeń w każdym wierszu tabeli działać lepiej w tabelach rozproszonych niż zreplikowanych tabelach. Ponieważ replikowanej tabeli są przechowywane w całości w każdym węźle obliczeniowym, użycie Procesora CPU na replikowanej tabeli uruchomieniu zapytania względem całej tabeli w każdym węźle obliczeniowym. Dodatkowe obliczeń może zmniejszyć wydajność zapytań.
 
-Na przykład ta kwerenda ma predykatu złożone.  Działa szybciej, gdy dostawca jest rozproszona Tabela zamiast replikowanej tabeli. W tym przykładzie dostawca może być działanie okrężne rozproszonych.
+Na przykład ta kwerenda ma predykatu złożone.  Działa ona szybciej, gdy dane znajdują się w rozproszonych tabeli zamiast replikowanej tabeli. W tym przykładzie dane mogą być okrężnego rozproszonych.
 
 ```sql
 

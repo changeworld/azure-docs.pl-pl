@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/28/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6c1e0e7b1b5aa97137dc59e3e5cee1eb544af5a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fd42e1e06086a12b159a8510c3d53a7f32e46f6
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199411"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194643"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -30,6 +30,208 @@ Co to jest nowe informacje o wersji uzyskać informacje na temat:
 - Poprawki błędów
 - Przestarzałe funkcje
 - Plany dotyczące zmian
+
+---
+
+## <a name="july-2018"></a>Lipiec 2018 r.
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Ulepszenia powiadomień e-mail w usłudze Azure Active Directory
+
+**Typ:** Zmieniona funkcja  
+**Kategoria usług:** Inne  
+**Możliwości produktu:** Zarządzanie cyklem życia tożsamości
+ 
+Usługa Azure Active Directory (Azure AD) wiadomości e-mail teraz funkcji zaktualizowanego projektu, a także zmiany adres e-mail nadawcy i nazwa wyświetlana nadawcy, gdy wysyłane z następującymi usługami:
+ 
+- Przeglądy dostępu w usłudze Azure AD
+- Azure AD Connect Health 
+- Usługa Azure AD Identity Protection 
+- Usługa Azure AD Privileged Identity Management
+- Powiadomienia certyfikat wygasa aplikacji przedsiębiorstwa
+- Powiadomienia usługi inicjowania obsługi administracyjnej aplikacji przedsiębiorstwa
+ 
+Powiadomienia e-mail będą wysyłane na następujący adres e-mail nadawcy i nazwa wyświetlana:
+
+- Adres e-mail: azure-noreply@microsoft.com
+- Nazwa wyświetlana: Microsoft Azure
+ 
+Na przykład niektóre nowe projekty poczty e-mail i więcej informacji, zobacz [wiadomości E-mail z powiadomieniami w usłudze Azure AD PIM](https://go.microsoft.com/fwlink/?linkid=2005832).
+
+---
+
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Dzienniki aktywności w usłudze Azure AD są teraz dostępne za pośrednictwem usługi Azure Monitor
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Raportowanie  
+**Możliwości produktu:** Monitorowanie i raportowanie
+
+Dzienniki aktywności usługi Azure AD są teraz dostępne w publicznej wersji zapoznawczej dla usługi Azure Monitor (Usługa monitorowania całej platformy Azure). Usługa Azure Monitor udostępnia długoterminowego przechowywania i bezproblemową integrację, oprócz tych usprawnień:
+
+- Długoterminowe przechowywanie kierując pliki dzienników z kontem usługi Azure storage.
+
+- Bezproblemowa integracja rozwiązania SIEM, bez konieczności pisania lub obsługa skryptów niestandardowych.
+
+- Bezproblemowa integracja z własnych niestandardowych rozwiązań, narzędzia do analizy lub rozwiązania do zarządzania zdarzeniami.
+
+Aby uzyskać więcej informacji o tych nowych funkcjach, zobacz nasz blog [Dzienniki aktywności usługi Azure AD w usłudze Azure Monitor, diagnostykę znajduje się teraz w publicznej wersji zapoznawczej](https://cloudblogs.microsoft.com/enterprisemobility/2018/07/26/azure-ad-activity-logs-in-azure-monitor-diagnostics-now-in-public-preview/) i naszą dokumentacją [Dzienniki aktywności usługi Azure Active Directory na platformie Azure Monitor (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/reporting-azure-monitor-diagnostics-overview).
+
+---
+
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodany do raportów logowania usługi Azure AD
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Raportowanie  
+**Możliwości produktu:** Ochrona i zabezpieczanie tożsamości
+ 
+Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik loguje się wraz z wyników zasad. Ponadto raport zawiera teraz typ aplikacji klienckiej używane przez użytkownika, dzięki czemu można zidentyfikować ruch w protokole starszej wersji. Wpisy raportu mogą teraz również być wyszukiwane identyfikator korelacji, który można znaleźć w komunikacie o błędzie widocznych dla użytkownika i może służyć do identyfikowania i rozwiązywania problemów z pasujące żądanie logowania.
+
+---
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Widok starszych uwierzytelnienia za pomocą dzienników aktywności logowania
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Raportowanie  
+**Możliwości produktu:** Monitorowanie i raportowanie
+ 
+Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logowania, klienci mogą teraz Zobacz użytkowników, którzy używają starszej wersji uwierzytelnienia. Klienci będą mogli korzystać z tych informacji przy użyciu interfejsu API programu Graph w MS logowania lub za pośrednictwem logowania Dzienniki aktywności w portalu usługi Azure AD, w którym można korzystać z **aplikację kliencką** formantu, aby odfiltrować uwierzytelnień starszej wersji. Zapoznaj się z dokumentacją, aby uzyskać więcej informacji.
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lipca 2018 r.
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Aplikacje dla przedsiębiorstw  
+**Możliwości produktu:** Integracje innych firm
+ 
+W lipca 2018 Dodaliśmy obsługę 16 nowych aplikacjach z Federacją w galerii aplikacji:
+
+[Centrum innowacji](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial), [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial), [niektóre administrator rejestracji Jednokrotnej](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial), przemieszczania PSUC [iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial), [zrzut ekranu-O-obie](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial) , PowerSchool Unified zajęć, [dołączania Eli](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial), [obsługę zdalnego Bomgar](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial), [Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial), [Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial) , [Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial), [łącznika JoinNow SecureW2](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial), [Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial), [SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial), [Base umiejętności](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
+
+Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS w usłudze Azure Active Directory](https://aka.ms/appstutorial). Aby uzyskać więcej informacji o ofercie swoją aplikację w galerii aplikacji Azure AD, zobacz [umieść swoją aplikację w galerii aplikacji usługi Azure Active Directory](https://aka.ms/azureadapprequest).
+
+---
+ 
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nowy użytkownik inicjowania obsługi administracyjnej integracji aplikacji SaaS — lipca 2018 r.
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Aprowizowanie aplikacji  
+**Możliwości produktu:** Integracje innych firm
+ 
+Usługa Azure AD pozwala zautomatyzować procesy tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach SaaS, takich jak Dropbox, Salesforce, ServiceNow i nie tylko. Do lipca 2018 dodano obsługę następujących aplikacji w galerii aplikacji Azure AD aprowizacji użytkowników:
+
+- [Cisco Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial)
+
+- [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
+
+- [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
+
+Aby uzyskać listę wszystkich aplikacji, które obsługują aprowizowania użytkowników w galerii usługi Azure AD, zobacz [integracji aplikacji SaaS w usłudze Azure Active Directory](https://aka.ms/appstutorial).
+
+---
+
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health do celów synchronizacji — łatwiejszy sposób naprawić błędy synchronizacji oddzielone i zduplikowanego atrybutu
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** AD Connect  
+**Możliwości produktu:** Monitorowanie i raportowanie
+ 
+Program Azure AD Connect Health wprowadza samodzielne rozwiązanie problemu, ułatwiające wyróżnić i naprawić błędy synchronizacji. Ta funkcja rozwiązuje błędy synchronizacji zduplikowanym atrybutem i poprawki obiektów, które są oddzielone od usługi Azure AD. Diagnostyka to ma następujące zalety:
+
+- Zawęża zduplikowanym atrybutem błędy synchronizacji, zapewniając określonej poprawki
+
+- Stosuje poprawki dla scenariuszy usługi Azure AD, naprawianie błędów w jednym kroku w wersji dedykowanej
+
+- Nie uaktualnienia lub konfiguracja jest wymagana do włączenia i korzystać z tej funkcji
+
+Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie błędów synchronizacji zduplikowanym atrybutem](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-diagnose-sync-errors)
+
+---
+
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Visual aktualizacji do usługi Azure AD i logowania konta Microsoft napotyka
+
+**Typ:** Zmieniona funkcja  
+**Kategoria usług:** Azure AD  
+**Możliwości produktu:** Uwierzytelnianie użytkowników
+
+Zaktualizowaliśmy interfejs użytkownika dla usług online firmy Microsoft środowiska logowania takich jak dla usługi Office 365 i Azure. Ta zmiana sprawia, że ekrany mniej zatłoczoną i bardziej bezpośredni. Aby uzyskać więcej informacji na temat tej zmiany, zobacz [nadchodzące ulepszenia procesu logowania w usłudze Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2018/04/04/upcoming-improvements-to-the-azure-ad-sign-in-experience/) blogu.
+
+---
+
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nowa wersja programu Azure AD Connect — lipca 2018 r.
+
+**Typ:** Zmieniona funkcja  
+**Kategoria usług:** Aprowizowanie aplikacji  
+**Możliwości produktu:** Zarządzanie cyklem życia tożsamości
+
+Najnowsza wersja programu Azure AD Connect obejmuje: 
+
+- Poprawki i aktualizacje obsługi 
+
+- Ogólne udostępnienie usług integracji Federację Ping
+
+- Aktualizacje do najnowszego klienta SQL 2012 
+
+Aby uzyskać więcej informacji na temat tej aktualizacji, zobacz [program Azure AD Connect: Historia wersji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
+
+---
+
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizacje do Interfejsu użytkownika końcowego warunków użytkowania (ToU)
+
+**Typ:** Zmieniona funkcja  
+**Kategoria usług:** Warunki użytkowania  
+**Możliwości produktu:** Nadzór
+
+Trwa aktualizowanie ciągu akceptacji w Interfejsie użytkownika końcowego warunków użytkowania.
+
+**Aktualny tekst.** Aby uzyskać dostęp do zasobów [tenantName], musisz zaakceptować warunki użytkowania.<br>**Nowy tekst.** Aby uzyskać dostęp do zasobów [tenantName], możesz przeczytać warunki użytkowania.
+
+**Aktualny tekst:** Wybieranie zaakceptować oznacza, że zgadzasz się na wszystkie powyższe warunki użytkowania.<br>**Nowy tekst:** Kliknij przycisk Zaakceptuj, aby upewnić się, że użytkownik przeczytał i zrozumiał warunki użytkowania.
+
+---
+ 
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Uwierzytelnianie przekazywane obsługuje starsze protokoły i aplikacje
+
+**Typ:** Zmieniona funkcja  
+**Kategoria usług:** Uwierzytelnienia (logowania)  
+**Możliwości produktu:** Uwierzytelnianie użytkowników
+ 
+Uwierzytelnianie przekazywane teraz obsługuje starszych protokołów i aplikacji. Następujące ograniczenia są teraz w pełni obsługiwane:
+
+- Logowania użytkowników do starszych aplikacji klienckich pakietu Office, pakietu Office 2010 i Office 2013 bez nowoczesnego uwierzytelniania.
+
+- Dostęp do udostępnianie kalendarza i bezpłatne zajęty informacji w programie Exchange środowisk o hybrydowych w pakiecie Office 2010 tylko.
+
+- Logowania użytkowników do usługi Skype dla firm aplikacji klienckich bez nowoczesnego uwierzytelniania.
+
+- Użytkownik logowania do programu PowerShell w wersji 1.0.
+
+- Programu Apple Device Enrollment Program (DEP) firmy Apple, przy użyciu Asystenta ustawień systemu iOS. 
+
+---
+ 
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Zarządzanie zabezpieczeniami konwergentnej informacje samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** SSPR  
+**Możliwości produktu:** Uwierzytelnianie użytkowników
+
+Ta nowa funkcja umożliwia użytkownikom zarządzanie zabezpieczające (na przykład, numer telefonu, adres e-mail, aplikacji mobilnej i tak dalej) do samoobsługowego resetowania haseł (SSPR) i usługi Multi-Factor Authentication (MFA) w jednym środowisku. Użytkownicy mają już nie można zarejestrować tego samego jako informacje zabezpieczające dla funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego w dwóch różnych środowiskach. Nowe środowisko dotyczy również użytkowników, którzy mają funkcji samoobsługowego resetowania HASEŁ lub uwierzytelniania MFA.
+
+Jeśli organizacja nie ma wymuszanie rejestracji uwierzytelniania Wieloskładnikowego lub samoobsługowego resetowania HASEŁ, użytkownicy mogą rejestrować swoje informacje zabezpieczające za pośrednictwem **Moje aplikacje** portalu. W tym miejscu użytkownicy mogą rejestrować żadnych metod włączone dla uwierzytelniania Wieloskładnikowego lub samoobsługowego resetowania HASEŁ. 
+
+Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Administratorzy mogą włączyć nowe środowisko (w razie potrzeby) dla wybranej grupy użytkowników lub dla wszystkich użytkowników w dzierżawie.
+
+---
+ 
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Korzystanie z aplikacji Microsoft Authenticator do zweryfikowania Twojej tożsamości podczas resetowania hasła
+
+**Typ:** Zmieniona funkcja  
+**Kategoria usług:** SSPR  
+**Możliwości produktu:** Uwierzytelnianie użytkowników
+
+Ta funkcja pozwala użytkowników innych niż administratorzy zweryfikować swoją tożsamość podczas resetowania hasła przy użyciu powiadomienia lub kodu z Microsoft Authenticator (lub dowolną inną aplikację). Po Administratorzy, Włącz ten samoobsługowego resetowania haseł — metoda, użytkownicy, którzy zarejestrowali się do aplikacji mobilnej za pośrednictwem aka.ms/mfasetup lub aka.ms/setupsecurityinfo można użyć aplikacji mobilnej jako metody weryfikacji podczas resetowania hasła.
+
+Tylko powiadomienia aplikacji mobilnej może zostać włączona w ramach zasad, które wymagają dwóch metod, aby zresetować hasło.
 
 ---
 

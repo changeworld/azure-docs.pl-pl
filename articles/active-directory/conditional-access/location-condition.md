@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/21/2019
+ms.date: 02/28/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 14b277e505e2a4975945f4b2f8f8410e25e0f8b3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166033"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193589"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -59,7 +59,7 @@ Lokalizacja o nazwie zawiera następujące składniki:
 
 - **Nazwa** — Nazwa wyświetlana nazwanych lokalizacji.
 
-- **Zakresy adresów IP** — jeden lub więcej zakresów adresów IPv4 w formacie CIDR. Określenie zakresu adresów Ipv6 nie jest obsługiwana.
+- **Zakresy adresów IP** — jeden lub więcej zakresów adresów IPv4 w formacie CIDR. Określenie zakresu adresów IPv6 nie jest obsługiwana.
 
 - **Oznacz jako zaufaną lokalizację** -flagę można ustawić dla nazwanych lokalizacji do wskazania zaufanej lokalizacji. Zazwyczaj zaufanych lokalizacji są obszarów sieci, które są kontrolowane przez dział IT. Oprócz dostępu warunkowego, Zaufane lokalizacje nazwane są również używane przez raporty dotyczące zabezpieczeń usługi Azure Identity Protection i usługą Azure AD do zmniejszenia [wyników fałszywie dodatnich](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 
@@ -142,7 +142,7 @@ Domyślnie usługa Azure AD wystawia token w systemie godzinowym. Po przeniesien
 
 ### <a name="user-ip-address"></a>Adres IP użytkownika
 
-Adres IP, który jest używany podczas oceny zasad jest publiczny adres IP użytkownika. W przypadku urządzeń w sieci prywatnej nie jest to adres IP klienta urządzenia użytkownika w sieci intranet, jest to adres używanej przez sieć, aby nawiązać połączenie z publicznego Internetu. 
+Adres IP, który jest używany podczas oceny zasad jest publiczny adres IP użytkownika. W przypadku urządzeń w sieci prywatnej nie jest to adres IP klienta urządzenia użytkownika w sieci intranet, jest to adres używanej przez sieć, aby nawiązać połączenie z publicznego Internetu. Jeśli urządzenie ma adres IPv6, konfigurowanie warunek lokalizacji nie jest obsługiwana.
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Zbiorcze przekazywanie i pobieranie nazwane lokalizacje
 

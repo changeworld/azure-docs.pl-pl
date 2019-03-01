@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9208d9949ee68f966087c5e0bb50806ece8a2f60
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599948"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011419"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Wdrażanie bramy dla połączonej fabryki akcelerator rozwiązań w systemie Windows lub Linux krawędzi
 
@@ -39,7 +39,7 @@ Kroki opisane w tym artykule opisano do wdrożenia bramy krawędzi za pomocą pl
 
 ## <a name="choose-a-gateway-device"></a>Wybierz urządzenie bramy
 
-Jeśli jeszcze nie masz urządzenia bramy, firma Microsoft zaleca, Kup bram komercyjnych jednego z ich partnerów. Aby uzyskać listę bram urządzeń zgodnych z rozwiązania połączonej fabryki, odwiedź stronę [Azure IoT — wykaz urządzeń](https://catalog.azureiotsuite.com/?q=opc). Postępuj zgodnie z instrukcjami, które pochodzą z urządzenia do konfigurowania bramy.
+Jeśli jeszcze nie masz urządzenia bramy, firma Microsoft zaleca, Kup bram komercyjnych jednego z ich partnerów. Aby uzyskać listę bram urządzeń zgodnych z rozwiązania połączonej fabryki, odwiedź stronę [Azure IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/?q=opc). Postępuj zgodnie z instrukcjami, które pochodzą z urządzenia do konfigurowania bramy.
 
 Użyj poniższych instrukcji, jeśli musisz ręcznie skonfigurować istniejące urządzenie bramy.
 

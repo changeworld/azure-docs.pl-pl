@@ -1,15 +1,15 @@
 ---
-author: dominicbetts
+author: robinsh
+ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: e6ba2a9c27567ccbd3b744a9bfdc0603758c7068
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 163b479fdf2d6a4885604c52f36f707e558dc3a0
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213142"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011773"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Przygotowanie do uwierzytelniania żądań w usłudze Azure Resource Manager
 Musisz uwierzytelnić wszystkich operacji wykonywanych na zasobach za pomocą [usługi Azure Resource Manager] [ lnk-authenticate-arm] za pomocą usługi Azure Active Directory (AD). Najprostszym sposobem skonfigurowania tego ustawienia jest użycie programu PowerShell lub wiersza polecenia platformy Azure.

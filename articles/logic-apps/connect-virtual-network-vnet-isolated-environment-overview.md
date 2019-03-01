@@ -9,17 +9,17 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 02/24/2019
-ms.openlocfilehash: ed172db6aaa064cfed319a4190306d91aa846c48
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ff43a55429eb69a7f98fd4da7fdbeb5d4e51513c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806831"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991261"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów sieci wirtualnej platformy Azure z usługi Azure Logic Apps za pomocą środowiska usług integracji (ISEs)
 
 > [!NOTE]
-> Ta funkcja jest w *publicznej wersji zapoznawczej*.
+> Ta funkcja jest w [ *publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Czasami usługi logic apps i kont integracji muszą mieć dostęp do zabezpieczonych zasobów, takich jak maszyny wirtualne (VM) i innych systemów lub usług, w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Aby skonfigurować ten dostęp, możesz [tworzenie *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) do uruchamiania aplikacji logiki i konta integracji. Podczas tworzenia środowiska ISE, platforma Azure wdroży prywatnych i izolowane wystąpienie usługi Logic Apps do sieci wirtualnej platformy Azure. To wystąpienie prywatnej wykorzystuje dedykowane zasoby, takie jak storage i jest uruchamiana niezależnie od publicznego "global" Usługa Logic Apps. Oddzielanie izolowanym wystąpieniem prywatnym i publicznym wystąpieniu globalnego pomaga również zmniejszyć wpływ, jaki innych dzierżaw usługi Azure może mieć na wydajność Twojej aplikacji, która jest również znana jako [efektu "hałaśliwym sąsiadów"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
 

@@ -16,12 +16,12 @@ ms.date: 10/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91dd25eadd3842cf1a94608a6f0ad9cfcd25039a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b55a7016ec0068234dfc6110d9d4afc04119ccdd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197236"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194065"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -365,7 +365,7 @@ Istnieje możliwość skonfigurowania nowego serwera synchronizacji równolegle 
 
 W trybie przejściowym można wprowadzić wymagane zmiany w aparacie synchronizacji i sprawdzić to, co ma być wyeksportowane. Jeśli konfiguracja wygląda dobrze, uruchom ponownie kreatora instalacji i wyłącz tryb przejściowy. Dane z tego serwera zostaną wyeksportowane do usługi Azure AD. Pamiętaj, aby w tym samym czasie wyłączyć drugi serwer, aby aktywnie eksportował tylko jeden serwer.
 
-Więcej informacji znajduje się w temacie [Tryb przejściowy](how-to-connect-sync-operations.md#staging-mode).
+Więcej informacji znajduje się w temacie [Tryb przejściowy](how-to-connect-sync-staging-server.md).
 
 ### <a name="verify-your-federation-configuration"></a>Weryfikowanie konfiguracji federacji
 Po kliknięciu przycisku Weryfikuj program Azure AD Connect sprawdza ustawienia DNS.

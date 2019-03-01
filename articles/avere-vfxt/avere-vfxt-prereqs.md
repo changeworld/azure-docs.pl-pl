@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące vFXT Avere dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 045b010736f8cecf877408f23530022af1f94f14
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299211"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991426"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
@@ -57,7 +57,7 @@ Musi mieć wystarczającego limitu przydziału dla następujących składników 
 
 |Składnik platformy Azure|Przydział|
 |----------|-----------|
-|Maszyny wirtualne|3 lub więcej maszyny wirtualne D16s_v3 lub E32s_v3|
+|Maszyny wirtualne|co najmniej 3 E32s_v3|
 |Magazyn SSD w warstwie Premium|200 GB na system operacyjny i od 1 TB do 4 TB miejsca obszaru pamięci podręcznej na węzeł |
 |Konto magazynu (opcjonalnie) |v2|
 |Magazyn zaplecza danych (opcjonalnie) |Jeden nowy kontener obiektów Blob LRS |
@@ -151,6 +151,30 @@ Należy utworzyć rolę węzła klastra, aby można było utworzyć vFXT Avere k
    ```
 
 Nazwa roli jest używany podczas tworzenia klastra. W tym przykładzie nazwa to ``avere-operator``.
+
+## <a name="optional-create-a-storage-service-endpoint-in-your-virtual-network"></a>(Opcjonalnie) Tworzenie punktu końcowego usługi magazynu w sieci wirtualnej
+
+A [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) utrzymuje lokalnego zamiast przesyłać go poza siecią wirtualną ruchu obiektu Blob platformy Azure. Zalecane dla dowolnej vFXT Avere dla klastra platformy Azure, który używa obiektu Blob platformy Azure do przechowywania danych zaplecza. 
+
+Jeśli udostępniasz istniejącej sieci wirtualnej i utworzenia nowego kontenera obiektów Blob platformy Azure do obsługi magazynu zaplecza w ramach tworzenia klastra, musisz mieć punktu końcowego usługi w sieci wirtualnej dla usługi Microsoft storage. Ten punkt końcowy musi istnieć przed utworzeniem klastra lub tworzenia zakończy się niepowodzeniem. 
+
+Punkt końcowy usługi magazynu jest zalecana dla dowolnego vFXT Avere dla klastra platformy Azure, która używa usługi Azure Blob storage, nawet, jeśli magazyn jest dodawany do dalszej części. 
+
+> [!TIP] 
+> * Pomiń ten krok, jeśli tworzysz nową sieć wirtualną jako część tworzenia klastra. 
+> * Ten krok jest opcjonalny, jeśli nie utworzysz magazyn obiektów Blob podczas tworzenia klastra. W takim przypadku można utworzyć punktu końcowego usługi później Jeśli zdecydujesz się używać usługi Azure blob Storage.
+
+Tworzenie punktu końcowego usługi storage w witrynie Azure portal. 
+
+1. Z poziomu portalu, kliknij przycisk **sieci wirtualne** po lewej stronie.
+1. Wybierz sieć wirtualną dla klastra. 
+1. Kliknij przycisk **punkty końcowe usługi** po lewej stronie.
+1. Kliknij przycisk **Dodaj** u góry.
+1. Pozostaw usługę jako ``Microsoft.Storage`` i wybierz podsieć klastra.
+1. Kliknij u dołu, **Dodaj**.
+
+  ![Azure portal zrzut ekranu z adnotacjami, aby uzyskać instrukcje tworzenia punktu końcowego usługi](media/avere-vfxt-service-endpoint.png)
+
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Następny krok: Tworzenie klastra vFXT
 

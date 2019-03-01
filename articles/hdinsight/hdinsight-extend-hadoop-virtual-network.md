@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e752302baab14505e71c3f0f65840156833b8976
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447427"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194609"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+
+> [!IMPORTANT]  
+> Od 28 lutego 2019 roku zasobów sieciowych (takich jak karty sieciowe, modułów równoważenia obciążenia itp.) dla nowych klastrów utworzone w sieci Wirtualnej zostaną zainicjowane w tej samej grupie zasobów klastra HDInsight. Wcześniej te zasoby zostały aprowizowane w grupie zasobów sieci Wirtualnej. Nie ma zmian do bieżącego uruchamianie klastrów i tych klastrów, utworzone bez sieci Wirtualnej.
 
 Dowiedz się, jak używać HDInsight przy użyciu [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Korzystanie z usługi Azure Virtual Network umożliwia następujące scenariusze:
 
@@ -289,7 +292,7 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     | &nbsp; | Japonia Zachodnia | 40.74.125.69</br>138.91.29.150 | 443 | Przychodzący |
     | Korea | Korea Środkowa | 52.231.39.142</br>52.231.36.209 | 433 | Przychodzący |
     | &nbsp; | Korea Południowa | 52.231.203.16</br>52.231.205.214 | 443 | Przychodzący
-    | Wielka Brytania | Zachodnie Zjednoczone Królestwo | 51.141.13.110</br>51.141.7.20 | 443 | Przychodzący |
+    | Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | 51.141.13.110</br>51.141.7.20 | 443 | Przychodzący |
     | &nbsp; | Południowe Zjednoczone Królestwo | 51.140.47.39</br>51.140.52.16 | 443 | Przychodzący |
     | Stany Zjednoczone | Środkowe stany USA | 13.67.223.215</br>40.86.83.253 | 443 | Przychodzący |
     | &nbsp; | Wschodnie stany USA | 13.82.225.233</br>40.71.175.99 | 443 | Przychodzący |

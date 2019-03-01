@@ -16,12 +16,12 @@ ms.date: 07/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 437577ec68ee825bd0815735fef08e8297dad756
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa21b1054fa6860a8acc5d6971f75e1d74c889f7
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180543"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193759"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji
 W tym temacie opisano różne metody, których można użyć, aby zaktualizować swoją instalację usługi Azure Active Directory (Azure AD) Connect do najnowszej wersji. Firma Microsoft zaleca zachowywanie samodzielnie bieżącego z wersjami programu Azure AD Connect. Użyto również w krokach w [migracja typu Swing](#swing-migration) sekcji po wprowadzeniu znaczące zmiany konfiguracji.
@@ -62,7 +62,7 @@ Dwa serwery, możesz użyć innej wersji. Na przykład aktywnego serwera, z któ
 ![Serwer przejściowy](./media/how-to-upgrade-previous-version/stagingserver1.png)
 
 > [!NOTE]
-> Niektórzy klienci preferują trzy lub cztery serwery w tym scenariuszu. Po uaktualnieniu serwera przejściowego, nie masz kopii zapasowej serwera dla [odzyskiwania po awarii](how-to-connect-sync-operations.md#disaster-recovery). Za pomocą trzech lub czterech serwerów należy przygotować jednego zestawu serwerów podstawowy/w gotowości za pomocą nowej wersji, którą zapewnia, że zawsze jest serwer przejściowy, który jest gotowy do zastąpienia.
+> Niektórzy klienci preferują trzy lub cztery serwery w tym scenariuszu. Po uaktualnieniu serwera przejściowego, nie masz kopii zapasowej serwera dla [odzyskiwania po awarii](how-to-connect-sync-staging-server.md#disaster-recovery). Za pomocą trzech lub czterech serwerów należy przygotować jednego zestawu serwerów podstawowy/w gotowości za pomocą nowej wersji, którą zapewnia, że zawsze jest serwer przejściowy, który jest gotowy do zastąpienia.
 
 Te kroki są również działać można przenieść z usługi Azure AD Sync lub rozwiązania z usługą FIM + łącznik usługi Azure AD. Te kroki nie zadziałają z narzędziem DirSync, ale tej samej swing migracji metody (nazywane również wdrożenie równoległe) z krokami z narzędziem DirSync jest w [uaktualnienie usługi Azure Active Directory sync (DirSync)](how-to-dirsync-upgrade-get-started.md).
 
@@ -71,8 +71,8 @@ Te kroki są również działać można przenieść z usługi Azure AD Sync lub 
 2. Jeśli zostały wprowadzone w konfiguracji niestandardowej przejściowego serwer nie ma go, wykonaj opisane w sekcji [przenieść Konfiguracja niestandardowa z aktywnego serwera na serwer przejściowy](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
 3. Jeśli wykonujesz uaktualnienie z wcześniejszej wersji programu Azure AD Connect, należy uaktualnić serwer przejściowy do najnowszej wersji. Jeśli przenosisz z usługi Azure AD Sync, zainstaluj program Azure AD Connect na serwerze przejściowym.
 4. Pozwól, aparat synchronizacji, uruchom pełne importowanie i pełną synchronizację na serwerze przejściowym.
-5. Sprawdź, czy nowa konfiguracja nie powodują zmiany nieoczekiwany wykonując kroki opisane w obszarze "Zweryfikuj" w [Zweryfikuj konfigurację serwera](how-to-connect-sync-operations.md#verify-the-configuration-of-a-server). Jeśli coś, co nie jest, zgodnie z oczekiwaniami, popraw go, uruchomić operację importu i synchronizacji i sprawdzić dane, dopóki nie wygląda na to dobre rozwiązanie, wykonując następujące kroki.
-6. Przełącz serwer przejściowy jako aktywnego serwera. Jest to ostatni krok "Przełącznika active server" w [Zweryfikuj konfigurację serwera](how-to-connect-sync-operations.md#verify-the-configuration-of-a-server).
+5. Sprawdź, czy nowa konfiguracja nie powodują zmiany nieoczekiwany wykonując kroki opisane w obszarze "Zweryfikuj" w [Zweryfikuj konfigurację serwera](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server). Jeśli coś, co nie jest, zgodnie z oczekiwaniami, popraw go, uruchomić operację importu i synchronizacji i sprawdzić dane, dopóki nie wygląda na to dobre rozwiązanie, wykonując następujące kroki.
+6. Przełącz serwer przejściowy jako aktywnego serwera. Jest to ostatni krok "Przełącznika active server" w [Zweryfikuj konfigurację serwera](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server).
 7. Jeśli uaktualniasz program Azure AD Connect, należy uaktualnić serwer, który jest teraz w trybie przejściowym do najnowszej wersji. Wykonaj te same kroki przed pobierać dane i Konfiguracja uaktualnienia. Po uaktualnieniu z programu Azure AD Sync, możesz teraz wyłączyć i zlikwidować stary serwer.
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Przenoszenie konfiguracji niestandardowej z aktywnego serwera na serwer przejściowy

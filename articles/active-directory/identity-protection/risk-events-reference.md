@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1509f40b88e3dc9c51bd00ed379c5b0130230a99
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1c69705131cfea4e5ace9b5b9e829b3fdfa87e4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178842"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991652"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Dokumentacja zdarzeń o podwyższonym ryzyku w usłudze Azure Active Directory Identity Protection
 
@@ -83,6 +83,7 @@ Ten typ zdarzenia o podwyższonym ryzyku wskazuje logowania z adresów IP zainfe
 **Typ wykrywania:** Czas rzeczywisty  
 **Stara nazwa:** Logowania z nieznanych lokalizacji
 
-Tego typu zdarzenia o podwyższonym ryzyku uwzględnia ostatnie logowania właściwości (na przykład urządzenia, lokalizacji sieciowej) do określenia logowania z nieznanych właściwości. System przechowuje właściwości powyższych lokalizacjach, używane przez użytkownika i traktuje te "znanych". Zdarzenia o podwyższonym ryzyku jest wyzwalany, gdy logowania wystąpi z właściwościami, które nie są już na liście znanych właściwości. System ma wstępny okres uczenia wynoszący 30 dni, w których nie Flaga rozwiązaniami do wykrywania wszelkich nowych.
+Tego typu zdarzenia o podwyższonym ryzyku uwzględnia ostatnie historię logowania (IP, szerokości / długości geograficznej i jego numer ASN) do wyszukania nietypowe logowania. System przechowuje informacje o powyższych lokalizacjach, używane przez użytkownika i uwzględnia te lokalizacje "znanych". Zdarzenia o podwyższonym ryzyku jest wyzwalany, gdy logowania wystąpi z lokalizacji, która nie jest już na liście zaznajomiony lokalizacji. Nowo utworzony użytkownicy będą w "trybie uczenia" w okresie czasu w nieznanym logowania właściwości, które zdarzenia o podwyższonym ryzyku są wyłączone podczas nasze algorytmy Dowiedz się, zachowanie użytkowników. Szkoleniowe tryb czasu trwania jest dynamiczny, a także od tego, na ile czasu zajmuje algorytmu do zebrania wystarczającej ilości informacji na temat wzorców logowania użytkownika. Minimalny czas trwania wynosi pięć dni. Użytkownika można wrócić do trybu nauki po dłuższym okresie nieaktywności. System ignoruje także logowania z dobrze znanych urządzeń i lokalizacji, które geograficznie znajdują się blisko znanej lokalizacji. 
+
 Przeprowadzamy również wykrywanie dla uwierzytelniania podstawowego (lub starszych protokołów). Ponieważ te protokoły nie ma właściwości modern, takie jak identyfikator klienta, jest ograniczona telemetrię, aby redukować liczbę fałszywych alarmów. Zalecamy naszym klientom migrację do nowoczesnego uwierzytelniania.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4873c834a33ff5f401f38fdb810c65ca7ef20f5e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051394"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191191"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
 
@@ -39,11 +39,11 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
     - Temperatura
     - Ciśnienie
     - Magnetometrów (X, Y, Z)
-    - Przyspieszeniomierza (X, Y, Z)
+    - Accelerometer (X, Y, Z)
     - Żyroskop (X, Y, Z)
 - Ustawienia
     - Napięcie
-    - Bieżące
+    - Bieżący
     - Wentylator szybkości
     - Przełącz Podczerwieni.
 - Właściwości
@@ -275,7 +275,7 @@ Aby wykonać następujące czynności, można użyć programu Visual Studio Code
 Dodaj parametry połączenia specyficzne dla urządzenia do kodu dla tego urządzenia do uwierzytelniania za pomocą usługi Azure IoT Central. Zanotuj te parametry połączenia zostały wprowadzone po dodaniu rzeczywistego urządzenia do aplikacji usługi Azure IoT Central.
 
   > [!NOTE]
-   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrustions do [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#getting-device-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
+   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrukcje, aby [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#get-a-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
 
 1. Zastąp `{your device connection string}` w **Program.cs** pliku zanotowanymi wcześniej parametrami połączenia.
 
@@ -331,14 +331,14 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| Temp           | C     | -40     | 120     | 0              |
-| pressure       | hPa pakietu    | 260     | 1260    | 0              |
+| Temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | grupą zarządzania     | -2000   | 2000    | 0              |
-| accelerometerY | grupą zarządzania     | -2000   | 2000    | 0              |
-| accelerometerZ | grupą zarządzania     | -2000   | 2000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
@@ -350,7 +350,7 @@ Ustawienia liczbowe
 | Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Bieżące      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika
@@ -361,7 +361,7 @@ Ustawienia przełącznika
 
 ### <a name="properties"></a>Właściwości
 
-| Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Tekst            | Lokalizacja     | location   | ND       |

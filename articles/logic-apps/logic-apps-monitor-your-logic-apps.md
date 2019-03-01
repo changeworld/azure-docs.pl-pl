@@ -10,18 +10,20 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6a8c4583d86b41e767e8a2057bae4cef8943a1c1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543860"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193422"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, skonfigurować rejestrowanie diagnostyczne i Włącz alerty w usłudze Azure Logic Apps
 
 Po zakończeniu [tworzenia i uruchamiania aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md), można sprawdzić w historii uruchamiania, historii wyzwalania, stanu i wydajności. Do monitorowania zdarzeń w czasie rzeczywistym i bardziej zaawansowane debugowanie, konfiguracja [rejestrowania diagnostycznego](#azure-diagnostics) aplikacji logiki. W ten sposób możesz [wyszukiwanie i Podgląd zdarzeń](#find-events), takie jak wyzwalać zdarzenia, zdarzeń uruchamiania i zdarzenia akcji. Możesz również użyć tej funkcji [dane diagnostyczne z innymi usługami](#extend-diagnostic-data), takich jak Azure Storage i Azure Event Hubs. 
 
 Aby otrzymywać powiadomienia o awarii lub innych problemów, możliwe, należy skonfigurować [alerty](#add-azure-alerts). Na przykład można utworzyć alertu, który wykryje "więcej niż pięć uruchomienia zakończą się niepowodzeniem w ciągu godziny." Możesz również skonfigurować monitorowanie, śledzenie i rejestrowanie programowo przy użyciu [ustawienia zdarzeń diagnostycznych platformy Azure i właściwości](#diagnostic-event-properties).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>Wyświetl uruchomienia i historii wyzwalacza aplikacji logiki
 
@@ -72,7 +74,7 @@ Aby otrzymywać powiadomienia o awarii lub innych problemów, możliwe, należy 
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Włącz diagnostykę rejestrowanie dla aplikacji logiki
 
-Dla bardziej zaawansowane debugowanie za pomocą szczegóły środowiska uruchomieniowego i zdarzeń, możesz skonfigurować rejestrowanie za pomocą diagnostyki [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Usługa log Analytics to usługa platformy Azure, która monitoruje środowiska chmurowe i lokalne środowiska, aby pomóc w zachowania ich dostępności i wydajności. 
+Dla bardziej zaawansowane debugowanie za pomocą szczegóły środowiska uruchomieniowego i zdarzeń, możesz skonfigurować rejestrowanie za pomocą diagnostyki [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md). Usługa Azure Monitor to usługa platformy Azure, która monitoruje środowiska chmurowe i lokalne środowiska, aby pomóc w zachowania ich dostępności i wydajności. 
 
 Przed rozpoczęciem wykonywania tej procedury, musisz mieć obszar roboczy usługi Log Analytics. Dowiedz się, [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
@@ -125,7 +127,7 @@ Aby znaleźć i wyświetlić zdarzenia w aplikacji logiki, takich jak wyzwalać 
 
    ![Wprowadź ciąg wyszukiwania](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   Dowiedz się więcej o [jak znaleźć danych w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Dowiedz się więcej o [sposób znaleźć dane w dziennikach w usłudze Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 
 5. Na stronie wyników na pasku po lewej stronie Wybierz przedział czasu, który chcesz wyświetlić.
 Aby zawęzić zapytanie, dodając filtr, wybierz **+ Dodaj**.
@@ -153,7 +155,7 @@ Aby zawęzić zapytanie, dodając filtr, wybierz **+ Dodaj**.
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Rozszerzanie, jak i, w którym można korzystać z danych diagnostycznych z innymi usługami
 
-Wraz z usługi Azure Log Analytics można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
+Wraz z dzienników usługi Azure Monitor można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
 
 * [Archiwum, które dzienniki diagnostyczne platformy Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Dzienniki diagnostyczne platformy Azure Stream do usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -176,7 +178,7 @@ Oparte na opcje, które chcesz skonfigurować, upewnij się, że możesz pierwsz
 
 Do monitorowania określonych metryk lub przekroczono progi dla aplikacji logiki, skonfiguruj [alertów na platformie Azure](../azure-monitor/platform/alerts-overview.md). Dowiedz się więcej o [metryki na platformie Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
-Aby skonfigurować alerty bez [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md), wykonaj następujące kroki. Dla bardziej zaawansowanych kryteria alertów i działań [Konfigurowanie usługi Log Analytics](#azure-diagnostics) zbyt.
+Aby skonfigurować alerty bez [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md), wykonaj następujące kroki. Dla bardziej zaawansowanych kryteria alertów i działań [Konfigurowanie dzienników usługi Azure Monitor](#azure-diagnostics) zbyt.
 
 1. W bloku menu aplikacji logiki w ramach **monitorowanie**, wybierz **diagnostyki** > **reguły alertów** > **Dodaj alert dotyczący**jak pokazano poniżej:
 

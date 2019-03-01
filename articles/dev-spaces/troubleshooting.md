@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,15 +7,15 @@ ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 5be6f99067f1209fcd131dfc33c46995b2a537f8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
+ms.openlocfilehash: 67b4c3a74345d2f82cf10c3becb243df41f9406b
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498305"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195119"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 

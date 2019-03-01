@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 2555ce4b9485ba6464bde3422df114343b579641
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243423"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991085"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>Usługa App Service w usłudze Azure Stack update 4 — informacje o wersji
 
@@ -95,6 +95,11 @@ Usługa Azure App Service w usłudze Azure Stack Update 4 zawiera następujące 
 - Wyświetlany komunikat o błędzie w środowisku portalu administracyjnego usługi aplikacji, gdy na płaszczyźnie kontroli dostawcy zasobów nie można nawiązać połączenia skonfigurowanego wystąpienia programu SQL Server
 
 - Upewnij się, że punkt końcowy jest określony w parametrach połączenia magazynu niestandardowego, gdy określony w nowej aplikacji funkcji
+
+### <a name="post-deployment-steps"></a>Czynności po wdrożeniu
+
+> [!IMPORTANT]  
+> Jeśli podano jednostki Uzależnionej usługi aplikacji przy użyciu zawsze w wystąpieniu SQL musi [Dodawanie appservice_hosting i appservice_metering baz danych do grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) i synchronizowanie baz danych w celu zapobieżenia utracie pracy w zdarzenia przejścia w tryb failover bazy danych.
 
 ### <a name="post-update-steps-optional"></a>Kroki po aktualizacji (opcjonalnie)
 

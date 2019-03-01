@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: b579816a4367537a7da4aa0f68c8776465295448
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 61afefb955914c75606c4fff36ebcc05a4ad0057
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670757"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010909"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta usługi Microsoft Azure Recovery Services (MARS)
 
@@ -29,7 +29,7 @@ Agenta usług MARS jest używany przez usługę Azure Backup do kopie zapasowe d
 Co można utworzyć kopię, zależy od tego, gdzie agent jest zainstalowany.
 
 - [Dowiedz się więcej](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders) o architekturze kopii zapasowej za pomocą agenta usług MARS.
-- [Dowiedz się więcej]() o serwera usługi Mab/DPM [kopii zapasowej architektury](backup-architecture.md#architecture-back-up-to-dpmmabs)i [wymagania](backup-support-matrix-mabs-dpm.md).
+- Dowiedz się więcej na temat serwera usługi Mab/DPM [kopii zapasowej architektury](backup-architecture.md#architecture-back-up-to-dpmmabs)i [wymagania](backup-support-matrix-mabs-dpm.md).
 
 
 ## <a name="supported-installation"></a>Obsługiwane instalacji
@@ -37,7 +37,7 @@ Co można utworzyć kopię, zależy od tego, gdzie agent jest zainstalowany.
 **Instalowanie** | **Szczegóły**
 --- | ---
 **Pobierz najnowszą wersję agenta usług MARS** | Możesz pobrać najnowszą wersję agenta z magazynu, lub [pobrać go bezpośrednio](https://aka.ms/azurebackup_agent).
-**Zainstaluj bezpośrednio na maszynie** | Można zainstalować agenta usług MARS bezpośrednio na lokalnym serwerze Windows lub Windows maszyny Wirtualnej platformy Azure z dowolnym z [obsługiwane systemy operacyjne]().
+**Zainstaluj bezpośrednio na maszynie** | Można zainstalować agenta usług MARS bezpośrednio na lokalnym serwerze Windows lub Windows maszyny Wirtualnej platformy Azure z dowolnym z [obsługiwane systemy operacyjne](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 **Zainstaluj na serwerze kopii zapasowej** | Po skonfigurowaniu programu DPM lub serwera usługi Mab do tworzenia kopii zapasowych na platformie Azure, Pobierz i zainstaluj agenta usług MARS na serwerze. Agenta można zainstalować przy użyciu [obsługiwane systemy operacyjne](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) w macierzy obsługi Utwórz kopię zapasową serwera.
 
 > [!NOTE]

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9671d9f61b610a85cbf2475e045c641a29dac11b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878361"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010620"
 ---
 # <a name="live-event-types-comparison"></a>Porównanie typów zdarzeń na żywo
 
@@ -33,7 +33,7 @@ W poniższej tabeli porównano funkcje dwa typy wydarzenie na żywo.
 | Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Yes |
 | Maksymalna rozdzielczość wideo dla udziału kanału informacyjnego |4K (na 60 klatek na sekundę 4096 x 2160) |1080p (1920 x 1088 na 30 klatek na sekundę)|
 | Zalecana maksymalna warstwy w udziale kanału informacyjnego|Do 12|Jedną ścieżkę dźwiękową|
-| Maksymalna warstwy w danych wyjściowych| Takie same jak dane wejściowe|Do 7|
+| Maksymalna warstwy w danych wyjściowych| Takie same jak dane wejściowe|Do 6|
 | Maksymalna przepustowość agregacji wkładu kanału informacyjnego|60 MB/s|ND|
 | Maksymalna szybkość transmisji bitów dla pojedynczej warstwy w udziale |20 MB/s|20 MB/s|
 | Obsługa wielu języka ścieżki audio|Yes|Nie|

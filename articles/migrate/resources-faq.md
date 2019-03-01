@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 9577e2c8eea153b38475bf5126a41641b3642ae9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416194"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991329"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -176,7 +176,7 @@ Te właściwości dotyczą tylko ustalania rozmiaru na podstawie wydajności. Us
 
 ### <a name="what-is-dependency-visualization"></a>Co to jest wizualizacji zależności?
 
-Wizualizacja zależności umożliwia ocenę grupy maszyn wirtualnych do migracji z większą pewnością przez krzyżowe sprawdzanie zależności maszyny, przed uruchomieniem oceny. Wizualizacja zależności pomaga upewnić się, że nic nie jest pozostawione, unikanie nieoczekiwanych awarii podczas migracji na platformę Azure. Usługa Azure Migrate korzysta z rozwiązania mapy usługi w usłudze Log Analytics, aby umożliwić wizualizacji zależności.
+Wizualizacja zależności umożliwia ocenę grupy maszyn wirtualnych do migracji z większą pewnością przez krzyżowe sprawdzanie zależności maszyny, przed uruchomieniem oceny. Wizualizacja zależności pomaga upewnić się, że nic nie jest pozostawione, unikanie nieoczekiwanych awarii podczas migracji na platformę Azure. Usługa Azure Migrate korzysta z rozwiązania Service Map w dziennikach usługi Azure Monitor, aby umożliwić wizualizacji zależności.
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Czy muszę płacić za używanie funkcji wizualizacji zależności?
 
@@ -217,7 +217,7 @@ Lista systemów operacyjnych Windows obsługiwanych przez agenta zależności je
 Lista systemów operacyjnych Linux obsługiwane przez agenta zależności jest [tutaj](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Aby uzyskać więcej niż jedna godzina, czas trwania można zwizualizować zależności w usłudze Azure Migrate?
-Nie, usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, ale maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Log Analytics do [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) przez dłuższy czas.
+Nie, usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, ale maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Azure Monitor dzienniki, aby [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) przez dłuższy czas.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Wizualizacji zależności jest obsługiwane dla grup za pomocą ponad 10 maszyn wirtualnych?
 Możesz [wizualizacja zależności dla grup](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) maksymalnie 10 maszyn wirtualnych, które mają. Jeśli istnieje grupa z ponad 10 maszyn wirtualnych, zalecamy wizualizowanie zależności i podzielić grupy w mniejszym grupom.

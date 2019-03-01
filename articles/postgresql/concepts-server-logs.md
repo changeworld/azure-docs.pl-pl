@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: a7f4d10e3273fb2b4e17ff0a55c3a3ed6294833d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 02/28/2019
+ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961282"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195102"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Dzienników serwera w usłudze Azure Database for PostgreSQL 
 Usługa Azure Database for postgresql w warstwie generuje zapytania i błąd dzienników. Dziennikami zapytań, błędów i może służyć do identyfikowania, rozwiązywanie problemów i naprawić błędy konfiguracji i nieoptymalne wydajności. (Dostęp do dzienników transakcji nie jest dołączony). 
@@ -30,6 +30,8 @@ Po włączeniu dzienniki użytkownik może uzyskiwać do nich dostęp z usługi 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 Usługa Azure Database for PostgreSQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki na Twoim serwerze PostgreSQL, możesz je emitowany do [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md), usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję porad [dokumentacja dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
+> [!IMPORTANT]
+> Ta funkcja diagnostyki dla dzienników serwera jest dostępna tylko w ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci [warstw cenowych](concepts-pricing-tiers.md).
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od wyjściowy punkt końcowy możesz wybrać, zakres i kolejność, w jakiej są wyświetlane, mogą się różnić. 
 

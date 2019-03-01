@@ -17,12 +17,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07fc6c4ce7477cd6f1c64d5de1574ae7c4cecff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168956"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191991"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizacja programu Azure AD Connect: Uruchamianie kreatora instalacji po raz drugi
 Podczas pierwszego uruchomienia Kreatora instalacji usługi Azure AD Connect, przeprowadzi Cię on sposób skonfigurowania instalacji. Jeśli ponownie uruchom Kreatora instalacji, oferuje opcje w celu przeprowadzenia konserwacji.
@@ -73,7 +73,7 @@ Po wybraniu tej opcji, są wyświetlane wszystkie katalogi w konfiguracji. Może
 ![Strona z listą wszystkich katalogów w środowisku](./media/how-to-connect-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>Konfigurowanie trybu przejściowego
-Ta opcja umożliwia włączanie i wyłączanie trybu przejściowego na serwerze. Więcej informacji o tymczasowych tryb i sposobu ich wykorzystywania znajdują się w [operacji](how-to-connect-sync-operations.md#staging-mode).
+Ta opcja umożliwia włączanie i wyłączanie trybu przejściowego na serwerze. Więcej informacji o tymczasowych tryb i sposobu ich wykorzystywania znajdują się w [operacji](how-to-connect-sync-staging-server.md).
 
 Opcja umożliwia pokazanie Jeśli przemieszczania jest aktualnie włączone lub wyłączone:  
 ![Opcja, która również jest wyświetlany bieżący stan trybu przejściowego](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)

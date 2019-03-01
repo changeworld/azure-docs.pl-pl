@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 3825181d14605752e2407d9ffceb01d22c1bb710
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649343"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193997"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -157,7 +157,7 @@ Korzystając z rozpoznawania nazw platformy Azure, Azure Dynamic Host Configurat
 
 Jeśli to konieczne, można określić wewnętrznego sufiks DNS przy użyciu programu PowerShell lub interfejsu API:
 
-* Dla sieci wirtualnych w modelach wdrażania usługi Azure Resource Manager, jest dostępna za pośrednictwem sufiks [interfejsu sieciowego interfejsu API REST](/rest/api/virtualnetwork/networkinterfaces/get), [Get AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) polecenia cmdlet programu PowerShell, a [ Pokaż kartę sieciową sieci az](/cli/azure/network/nic#az-network-nic-show) polecenia wiersza polecenia platformy Azure.
+* Dla sieci wirtualnych w modelach wdrażania usługi Azure Resource Manager, jest dostępna za pośrednictwem sufiks [interfejsu sieciowego interfejsu API REST](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), [Get AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) polecenia cmdlet programu PowerShell, a [ Pokaż kartę sieciową sieci az](/cli/azure/network/nic#az-network-nic-show) polecenia wiersza polecenia platformy Azure.
 * W klasycznych modeli wdrażania, jest dostępna za pośrednictwem sufiks [uzyskać interfejsu API wdrożenia](https://msdn.microsoft.com/library/azure/ee460804.aspx) wywołania lub [Get-AzureVM-debugowanie](/powershell/module/servicemanagement/azure/get-azurevm) polecenia cmdlet.
 
 Jeśli przekazywanie zapytań na platformie Azure nie spełnia Twoich potrzeb, należy podać własne rozwiązanie DNS. W rozwiązaniu DNS musi:

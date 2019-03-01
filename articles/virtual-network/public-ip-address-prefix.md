@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700744"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195221"
 ---
 # <a name="public-ip-address-prefix"></a>Publiczny prefiks adresu IP
 
 Publiczny prefiks adresu IP jest zastrzeżony zakres adresów IP dla sieci publicznych punktów końcowych na platformie Azure. Platforma Azure przydziela ciągły zakres adresów ze swoją subskrypcją, w oparciu o ile określisz. Jeśli nie jesteś zaznajomiony z publicznymi adresami, zobacz [publiczne adresy IP.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 
-Publiczne adresy IP są przypisywane z puli adresów w każdym regionie platformy Azure. Możesz [Pobierz](https://www.microsoft.com/download/details.aspx?id=41653) listę zakresów adresów, platforma Azure używa dla każdego regionu. Na przykład 40.121.0.0/16 jest jedną z ponad 100 zakresów, używaną przez platformę Azure w regionie wschodnie stany USA. Ten zakres obejmuje można używać adresów 40.121.0.1 - 40.121.255.254.
+Publiczne adresy IP są przypisywane z puli adresów w każdym regionie platformy Azure. Możesz [Pobierz](https://www.microsoft.com/download/details.aspx?id=56519) listę zakresów adresów, platforma Azure używa dla każdego regionu. Na przykład 40.121.0.0/16 jest jedną z ponad 100 zakresów, używaną przez platformę Azure w regionie wschodnie stany USA. Ten zakres obejmuje można używać adresów 40.121.0.1 - 40.121.255.254.
 
 Utwórz publiczny prefiks adresu IP w regionie platformy Azure i subskrypcję, określając nazwę, a ile adresów mają prefiks do uwzględnienia. Na przykład, jeśli utworzysz publiczny prefiks adresu IP/28, platforma Azure przydziela 16 adresów z jednego z jego zakresów dla Ciebie. Nie wiesz, którym z zakresu platformy Azure zostanie przypisana do czasu utworzenia zakresu, ale adresy są ciągłe. Prefiksy publicznych adresów IP mają opłaty. Aby uzyskać więcej informacji, zobacz [cennik publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses).
 

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3e877733d473993a5acd2f44e088b8b0b4fe130
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 70a59ddc1b15693cb2a50c1dc2da6dd9233e0811
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447263"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990021"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
@@ -55,7 +55,7 @@ To uaktualnienie dotyczy magazyny danych warstwy obliczenia zoptymalizowane pod 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Po uaktualnieniu w obsługiwanym regionie przy użyciu witryny Azure portal
 
 > [!NOTE]
-> Migracja z GEN1 GEN2 za pośrednictwem witryny Azure portal jest trwały. Nie jest to proces, wracając do GEN1.  
+> Migracja z Gen1 Gen2 za pośrednictwem witryny Azure portal jest trwały. Nie jest to proces, wracając do Gen1.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 

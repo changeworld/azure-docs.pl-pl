@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5d0b53590e901cfa1686a71c3f0dda7fb771b56b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895435"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990309"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -21,9 +21,10 @@ W tym artykule opisano Uściślanie zawartości grupy przez wizualizację zależ
 > [!NOTE]
 > Grupy, dla których chcesz zwizualizować zależności nie powinien zawierać więcej niż 10 maszyny. Jeśli masz więcej niż 10 maszyn w grupie, firma Microsoft zaleca, aby podzielić ją na mniejszych grup, aby korzystać z funkcji wizualizacji zależności.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prepare-for-dependency-visualization"></a>Przygotowanie do wizualizacji zależności
-Usługa Azure Migrate korzysta z rozwiązania mapy usługi w usłudze Log Analytics, aby umożliwić wizualizacja zależności maszyn.
+Usługa Azure Migrate korzysta z rozwiązania Service Map w dzienniki usługi Azure Monitor, aby włączyć wizualizacja zależności maszyn.
 
 > [!NOTE]
 > Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
@@ -104,7 +105,7 @@ Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować za
 3. Aby wyświetlić bardziej szczegółowe zależności, kliknij zakres czasu, aby go zmodyfikować. Domyślnie zakres jest godzinę. Możesz modyfikować zakres czasu lub określ rozpoczęcia i zakończenia daty i czasu trwania.
 
     > [!NOTE]
-      Wizualizacji zależności interfejsu użytkownika nie obsługuje obecnie wybór zakresu czasu, więcej niż jedna godzina. Używanie programu Log Analytics do [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) przez dłuższy czas.
+      Wizualizacji zależności interfejsu użytkownika nie obsługuje obecnie wybór zakresu czasu, więcej niż jedna godzina. Użyj usługi Azure Monitor rejestruje [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) przez dłuższy czas.
 
 4. Sprawdź zależnych maszyn proces uruchomiony na każdej maszynie, a następnie zidentyfikuje maszyny, które powinny zostać dodane lub usunięte z grupy.
 5. Użyj klawiszy Ctrl + kliknięcie, aby wybrać maszyny na mapie, aby dodać lub usunąć je z niej.
@@ -117,19 +118,19 @@ Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować za
 
 Jeśli chcesz sprawdzić zależności określonej maszyny, która pojawia się na mapie zależności grupy [Konfigurowanie mapowania zależności maszyn](how-to-create-group-machine-dependencies.md).
 
-## <a name="query-dependency-data-from-log-analytics"></a>Wykonywanie zapytań dotyczących danych w zależności od usługi Log Analytics
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>Zależności zapytania o dane z dzienników usługi Azure Monitor
 
-Zależność dane przechwycone przez rozwiązania Service Map są dostępne do wykonywania zapytań w workspare usługi Log Analytics skojarzonych z projektu Azure Migrate. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) o tabele danych mapy usługi do wykonywania zapytań w usłudze Log Analytics. 
+Zależność dane przechwycone przez rozwiązania Service Map są dostępne do wykonywania zapytań w obszarze roboczym usługi Log Analytics skojarzonych z projektu Azure Migrate. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) o tabele danych mapy usługi do wykonywania zapytań w usłudze Azure Monitor dzienniki. 
 
-Aby uruchamiać zapytania usługi Log Analytics:
+Aby uruchamiać zapytania Kusto:
 
 1. Po zainstalowaniu agentów, przejdź do portalu i kliknij przycisk **Przegląd**.
 2. W **Przegląd**, przejdź do **Essentials** części projektu i kliknij przycisk Dalej, aby nazwa obszaru roboczego **obszaru roboczego pakietu OMS**.
 3. Na stronie obszaru roboczego usługi Log Analytics kliknij **ogólne** > **dzienniki**.
-4. Napisz zapytanie do zbierania danych zależności za pomocą usługi Log Analytics. Przykładowe zapytania, aby zebrać dane zależności są dostępne [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Napisz zapytanie do zbierania danych zależności przy użyciu dzienników usługi Azure Monitor. Przykładowe zapytania, aby zebrać dane zależności są dostępne [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 5. Uruchom zapytanie, klikając polecenie Uruchom. 
 
-[Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tym, jak pisać zapytania usługi Log Analytics. 
+[Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tym, jak pisać zapytania Kusto. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

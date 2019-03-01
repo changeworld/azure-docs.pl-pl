@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c6796d91835669ba174a866eb3c014e71549c0f2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2a08097b42f395bd0009353635cabbd264c3c421
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877966"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992094"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
 
@@ -448,7 +448,7 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 | **Właściwości** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszy. |
 | **Identyfikator działania** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
 | **userAgent** | **userAgent_s** | Ciąg, który określa agent użytkownika klienta, który wykonuje żądanie. Format to {nazwa agenta użytkownika} / {version}.|
-| **resourceType** | **ResourceType** | Typ dostęp do zasobów. Ta wartość może być dowolny z następujących zasobów: Bazy danych, kontenerów, dokumentów, załącznika, użytkownika, uprawnienie, StoredProcedure, wyzwalacza, UserDefinedFunction lub oferty. |
+| **requestResourceType** | **requestResourceType_s** | Typ dostęp do zasobów. Ta wartość może być dowolny z następujących zasobów: Bazy danych, kontenerów, dokumentów, załącznika, użytkownika, uprawnienie, StoredProcedure, wyzwalacza, UserDefinedFunction lub oferty. |
 | **statusCode** | **statusCode_s** | Stan odpowiedzi operacji. |
 | **requestResourceId** | **ResourceId** | Identyfikator zasobu, które odnoszą się do żądania. Wartość może wskazywać databaseRid, collectionRid lub documentRid w zależności od operacji wykonywanych.|
 | **clientIpAddress** | **clientIpAddress_s** | Adres IP klienta. |

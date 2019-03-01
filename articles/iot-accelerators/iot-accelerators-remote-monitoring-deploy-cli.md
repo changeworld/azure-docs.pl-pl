@@ -8,16 +8,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7f1b9bb9d542b54afb6bf8b7bfc0df9fc1a9e434
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463222"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009430"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
-Ten poradnik pokazuje, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego. Możesz wdrożyć rozwiązanie za pomocą interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie za pomocą interfejsu użytkownika opartego na sieci web w witrynie azureiotsuite.com, aby dowiedzieć się więcej na temat tej opcji, zobacz[wdrażanie akceleratora rozwiązania monitorowania zdalnego](quickstart-remote-monitoring-deploy.md) Szybki Start.
+Ten poradnik pokazuje, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego. Możesz wdrożyć rozwiązanie za pomocą interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie za pomocą interfejsu użytkownika opartego na sieci web w azureiotsolutions.com, aby dowiedzieć się więcej na temat tej opcji, zobacz [wdrażanie akceleratora rozwiązania monitorowania zdalnego](quickstart-remote-monitoring-deploy.md) Szybki Start.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -66,7 +66,7 @@ Wdrożenie w warstwie Podstawowa to wdrożenie ukierunkowane na prezentowanie ro
 
 Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
 
-| Licznik | Zasób                       | Typ         | Używane dla |
+| Licznik | Zasób                       | Type         | Używane dla |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1, wersja 2  | Mikrousługi hostingu |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa standardowa | Zarządzanie urządzeniami i komunikacja |

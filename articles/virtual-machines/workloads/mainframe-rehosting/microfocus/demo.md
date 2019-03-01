@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c921fd0c52d555264ab511486709b888b50bd68e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 2a29b484b58b887981b1879ceba5bf7426bb6c2e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739575"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192008"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na platformie Azure
 
@@ -73,7 +73,7 @@ Po zainstalowaniu Enterprise Developer 4.0 na maszynie Wirtualnej, należy skonf
     - Aktywacja TCP
     - Udostępnianie portów TCP
 
-     ![](media/01-demo-roles.png)
+     ![Kreatora dodawania ról i funkcji: Usługi ról](media/01-demo-roles.png)
 
 8. Po wybraniu wszystkich opcji kliknij przycisk **dalej** do zainstalowania.
 
@@ -101,7 +101,7 @@ Niektóre procesy Enterprise Server muszą być w stanie zalogować się do prog
 
 4. Wybierz **ról serwera** i sprawdź **sysadmin**.
 
-     ![](media/02-demo-explorer.png)
+     ![Okno Eksplorator obiektów programu SSMS: Właściwości identyfikatora logowania](media/02-demo-explorer.png)
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>Tworzenie bazy danych BankDemo i wszystkich jego obiektów
 
@@ -117,7 +117,7 @@ Niektóre procesy Enterprise Server muszą być w stanie zalogować się do prog
 
 Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mieć przykładowej bazy danych dla aplikacji BankDemo.
 
-![](media/03-demo-query.png)
+![SQLQuery1.sql output](media/03-demo-query.png)
 
 ## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Sprawdź, czy zostały utworzone tabele bazy danych i obiektów
 
@@ -125,7 +125,7 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
 2. Rozwiń **bazy danych** i wybierz **tabel**. Powinien zostać wyświetlony podobny do poniższego.
 
-     ![](media/04-demo-explorer.png)
+     ![Tabela BANKDEMO rozwinięty w Eksploratorze obiektów](media/04-demo-explorer.png)
 
 ## <a name="build-the-application-in-enterprise-developer"></a>Tworzenie aplikacji w Enterprise Developer
 
@@ -147,7 +147,7 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
 6. W przypadku kompilowania projektu sprawdzić **dane wyjściowe** okna. Powinno to wyglądać podobnie jak na poniższej ilustracji.
 
-     ![](media/05-demo-output.png)
+     ![Okno danych wyjściowych przedstawiający pomyślnej kompilacji](media/05-demo-output.png)
 
 ## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>Wdrażanie aplikacji BankDemo do bazy danych w regionach
 
@@ -164,7 +164,7 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 > [!NOTE]
 > Upewnij się, że używasz ukośnika (/) nie ukośnika odwrotnego (\\). Ten skrypt jest uruchamiany przez jakiś czas.
 
-![](media/06-demo-cmd.png)
+![Administracja: Okno Wiersz polecenia programisty dla przedsiębiorstw](media/06-demo-cmd.png)
 
 ## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>Tworzenie regionu BankDemo w administratora przedsiębiorstwa dla platformy .NET
 
@@ -178,11 +178,11 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
 5. Podaj wystąpieniem serwera bazy danych, kliknij przycisk **dalej**, a następnie wprowadź nazwę regionu **BANKDEMO**.
 
-     ![](media/07-demo-cics.png)
+     ![Definiowanie Region, okno dialogowe](media/07-demo-cics.png)
 
 6. Aby wybrać region plik definicji dla bazy danych między regionami, zlokalizuj **region\_bankdemo\_db.config** w **C:\\użytkowników\\publicznych\\ Dokumenty\\Micro Focus\\Enterprise Developer\\przykłady\\Mainframe\\CICS\\DotNet\\BankDemo**.
 
-     ![](media/08-demo-cics.png)
+     ![Zdefiniuj Region — nazwa regionu: BANKDEMO](media/08-demo-cics.png)
 
 7. Kliknij przycisk **Zakończ**.
 
@@ -198,11 +198,11 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
 5. Wybierz **definicji zasobu XA bazy danych** , a następnie wpisz **BANKDEMO** dla **nazwa** i **Region**.
 
-     ![](media/09-demo-xa.png)
+     ![Nowy ekran definicji zasobu XA bazy danych](media/09-demo-xa.png)
 
 6. Kliknij przycisk z wielokropkiem (**...** ) aby wywołać Kreatora parametry połączenia. Aby uzyskać **nazwy serwera**, typ **(local)\\SQLEXPRESS**. Aby uzyskać **logowania**, wybierz opcję **uwierzytelniania Windows**. Nazwa bazy danych, wpisz **BANKDEMO**
 
-     ![](media/10-demo-string.png)
+     ![Edytuj parametry połączenia ekranu](media/10-demo-string.png)
 
 7. Testuj połączenie.
 
@@ -217,11 +217,11 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
 3. Kliknij prawym przyciskiem myszy **BANKDEMO CICS Region** w **konsoli** okienka, a następnie wybierz **Region uruchomień/zatrzymań**.
 
-4. W dolnej części **Start / Stop** wyświetlonym w środkowym okienku wybierz **Start**. Po kilku sekundach rozpoczyna się Region.
+4. W dolnej części **Region uruchomień/zatrzymań** wyświetlonym w środkowym okienku wybierz **Start**. Po kilku sekundach rozpoczyna się region.
 
-     ![](/media/11-demo-sql.png)
+     ![Pole SQL uruchomień/zatrzymań](/media/11-demo-sql.png)
 
-     ![](media/12-demo-cics.png)
+     ![Region CICS BANKDEMO — wprowadzenie ekranu](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Utwórz odbiornik
 
@@ -245,7 +245,7 @@ Należy utworzyć odbiornik, sesje TN3270, które uzyskiwać dostęp do aplikacj
 
 9. Aby uruchomić odbiornik, kliknij przycisk **uruchomić odbiornika** ikonę lub wybierz **opcje** \> **uruchomić odbiornika**.
 
-     ![](media/13-demo-listener.png)
+     ![Okna Edytora konfiguracji odbiornika](media/13-demo-listener.png)
 
 
 ## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Konfigurowanie Rumba dostępu do aplikacji BankDemo
@@ -264,8 +264,8 @@ Końcowe rzeczą, jaką należy wykonać to skonfigurować sesję 3270 przy uży
 
 6. Identyfikator użytkownika, wpisz **B0001** i hasła, należy wpisać cokolwiek. Zostanie otwarty pierwszy ekran BANK20.
 
-![](media/14-demo.png)
-![](media/15-demo.png)
+![Ekran powitalny wyświetlania mainframe](media/14-demo.png)
+![ekran wyświetlania Mainframe - Rumba - podsystemu pokaz](media/15-demo.png)
 
 Gratulacje! Teraz uruchamiasz CICS aplikację na platformie Azure przy użyciu Micro fokus Enterprise Server.
 

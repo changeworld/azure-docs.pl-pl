@@ -4,14 +4,14 @@ description: Omówienie wdrażania Avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298538"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991805"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>VFXT Avere dla platformy Azure — Omówienie wdrożenia
 
@@ -52,10 +52,12 @@ Poniżej przedstawiono omówienie wszystkich kroków.
 
      Kontroler klastra jest prostą maszynę Wirtualną, która znajduje się w tej samej sieci wirtualnej jako klaster vFXT Avere i ma niestandardowe oprogramowanie wymagane do tworzenia i zarządzania klastrem. Kontroler tworzy vFXT węzłów i formularze klastra i zapewnia również interfejs wiersza polecenia do zarządzania klastrem jego okres istnienia.
 
-     Jeśli skonfigurujesz kontroler z publicznym adresem IP również służył jako host skok do łączenia się z klastrem z spoza sieci wirtualnej.
+     Jeśli tworzysz nową sieć wirtualną podczas wdrażania kontrolera sieci ma publiczny adres IP. Oznacza to, że kontroler może służyć jako host skok do łączenia się z klastrem z spoza sieci wirtualnej.
 
    * Tworzenie klastra maszyn wirtualnych węzła
-   * Konfigurowanie maszyn wirtualnych węzłów klastra jako klastra
+
+   * Skonfigurowanie węzła klastra maszyny wirtualne w celu utworzenia klastra
+
    * Opcjonalnie, tworzeniu nowego kontenera obiektów Blob i skonfigurowania go jako magazynu zaplecza dla klastra
 
 1. Konfigurowanie klastra 

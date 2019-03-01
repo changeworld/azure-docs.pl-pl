@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: ae3d1fa6a921067e8c3b629206e47e1a1314adc1
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c4567919490c8bc9094dea3dddbe22550d9eebb2
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889243"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192909"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną Windows dzięki przyspieszonej sieci
 
@@ -48,7 +48,7 @@ Poniższe dystrybucje obsługiwane są gotowe w galerii platformy Azure:
 ### <a name="supported-vm-instances"></a>Obsługiwane wystąpienia maszyny Wirtualnej
 Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są następujące: D/DSv2 i F/Fs
 
-W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Seria obsługiwane są następujące: D/DSv3, E/ESv3, Fsv2 i Ms/Mms
+W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Seria obsługiwane są następujące: D/Dsv3, E/Esv3, Fsv2, Lsv2, Ms/Mms i Ms/Mmsv2.
 
 Aby uzyskać więcej informacji na temat wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -73,7 +73,7 @@ Po utworzeniu maszyny wirtualnej, potwierdzasz, że przyspieszonej sieci jest w�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zainstaluj [programu Azure PowerShell](/powershell/azure/install-az-ps) wersji 1.0.0 lub nowszym. Aby znaleźć obecnie zainstalowaną wersją, uruchom `Get-Module -ListAvailable Az`. Jeśli potrzebujesz zainstalować lub uaktualnić, zainstaluj najnowszą wersję modułu Az na podstawie [galerii programu PowerShell](https://www.powershellgallery.com/packages/Az). W sesji programu PowerShell Zaloguj się do konta platformy Azure przy użyciu [Connect AzAccount](/powershell/module/az.profile/connect-azaccount).
+Zainstaluj [programu Azure PowerShell](/powershell/azure/install-az-ps) wersji 1.0.0 lub nowszym. Aby znaleźć obecnie zainstalowaną wersją, uruchom `Get-Module -ListAvailable Az`. Jeśli potrzebujesz zainstalować lub uaktualnić, zainstaluj najnowszą wersję modułu Az na podstawie [galerii programu PowerShell](https://www.powershellgallery.com/packages/Az). W sesji programu PowerShell Zaloguj się do konta platformy Azure przy użyciu [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *myNic*, i *myVM*.
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8f309d628ec4531ca5594ecb25533b1484e8b274
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732402"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010688"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell
 
@@ -51,7 +51,7 @@ Moduł — [Azure.AnalysisServices](https://www.powershellgallery.com/packages/A
 
 |Polecenie cmdlet|Opis| 
 |------------|-----------------| 
-|[Add-AzAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-AzAnalysisServicesaccount)|Dodaje uwierzytelnione konto do użycia dla żądań polecenia cmdlet serwera usług Azure Analysis Services.| 
+|[Add-AzAnalysisServicesAccount](/powershell/module/az.analysisservices/add-AzAnalysisServicesaccount)|Dodaje uwierzytelnione konto do użycia dla żądań polecenia cmdlet serwera usług Azure Analysis Services.| 
 |[Export-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/export-AzAnalysisServicesinstancelog)|Eksportuje dziennika z wystąpienia serwera usług Analysis Services w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzAnalysisServicesAccount|  
 |[Restart-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|Powoduje ponowne uruchomienie wystąpienia serwera usług Analysis Services w środowisku aktualnie zalogowany. określony w poleceniu Add-AzAnalysisServicesAccount.|  
 |[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|Synchronizuje określonej bazy danych w podanym wystąpieniu serwera usług Analysis Services do wszystkich wystąpień skalowalnego w poziomie zapytania w aktualnie zalogowanego w środowisku określony w poleceniu Add-AzAnalysisServicesAccount|  

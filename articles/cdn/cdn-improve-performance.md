@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4d1725b0559c34692d1a89d016fd2d6b7b1b26c1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997277"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193096"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN
 Kompresja plików jest prosta i skuteczna metoda zwiększanie szybkości transferu plików i poprawia wydajność ładowania strony, zmniejszając rozmiar tego pliku przed wysłaniem ich z serwera. Kompresja plików można obniżyć koszty przepustowości i zapewnić bardziej dynamiczne środowisko dla użytkowników.
@@ -102,8 +102,10 @@ Sieci CDN warstw standardowa i premium zapewniają taką samą funkcjonalność 
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Usługa Azure CDN Standard from profile firmy Microsoft
 
-Aby uzyskać **Azure CDN Standard from Microsoft** profile, tylko odpowiednie pliki są kompresowane. Kwalifikował się do kompresji, plik musi:-być typ MIME, który został [skonfigurowany dla kompresji](#enabling-compression).
--Być większe niż 1 KB — być mniejszy niż 8 MB
+Aby uzyskać **Azure CDN Standard from Microsoft** profile, tylko odpowiednie pliki są kompresowane. Aby kwalifikować się do kompresji, plik musi:
+- Mieć typ MIME, który został [skonfigurowany dla kompresji](#enabling-compression).
+- Jest większe niż 1 KB?
+- Być mniejszy niż 8 MB
 
 Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)
@@ -117,7 +119,7 @@ Podczas żądania zasobu określa kompresję gzip i wyniki żądania to Chybieni
 
 Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, tylko odpowiednie pliki są kompresowane. Aby kwalifikować się do kompresji, plik musi:
 - Być większa niż 128 bajtów
-- Być mniejszy niż 1 MB
+- Być mniejszy niż 3 MB
  
 Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)

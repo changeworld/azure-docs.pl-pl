@@ -1,19 +1,19 @@
 ---
 title: Omówienie zadań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dla deweloperów — Planowanie zadań do uruchamiania na wielu urządzeniach podłączonych do Centrum IoT. Zadania można zaktualizować tagi i żądane właściwości i wywoływanie metod bezpośrednich na wielu urządzeniach.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: dobett
-ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2b05b1854b4f1d7ee4ac65ebe635330ba8c604e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884228"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011368"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planowanie zadań na wielu urządzeniach
 
@@ -119,22 +119,22 @@ Na poniższej liście przedstawiono właściwości i opisy odpowiedniego, które
 | **startTime** |Aplikacja podany czas rozpoczęcia (ISO-8601) dla zadania. |
 | **endTime** |Usługa IoT Hub podana data (ISO-8601) ukończenia zadania. Prawidłowe tylko wtedy, gdy zadanie osiągnie stan "ukończone". |
 | **type** |Rodzaje zadań: |
-| | **scheduledUpdateTwin**: zadanie używane do aktualizowania zestawu żądane właściwości lub tagów. |
-| | **scheduledDeviceMethod**: zadanie umożliwia wywoływanie metody urządzenia na zestawie bliźniaczych reprezentacji urządzeń. |
+| | **scheduledUpdateTwin**: Zadanie, używane do aktualizowania zestawu żądane właściwości lub tagów. |
+| | **scheduledDeviceMethod**: Zadania umożliwiają wywoływanie metody urządzenia na zestawie bliźniaczych reprezentacji urządzeń. |
 | **status** |Bieżący stan zadania. Możliwe wartości dla stanu: |
-| | **Oczekujące**: zaplanowana i Trwa oczekiwanie na być pobierane przez usługę zadania. |
+| | **Oczekujące**: Zaplanowane i Trwa oczekiwanie na być pobierane przez usługę zadania. |
 | | **Zaplanowane**: Zaplanowane na godzinę w przyszłości. |
-| | **uruchamianie**: obecnie aktywnych zadań. |
-| | **Anulowano**: zadanie zostało anulowane. |
-| | **nie powiodło się**: zadanie nie powiodło się. |
-| | **Ukończono**: zadanie jest zakończone. |
+| | **Uruchamianie**: Obecnie aktywnych zadań. |
+| | **Anulowano**: Zadanie zostało anulowane. |
+| | **Nie powiodło się**: Zadanie nie powiodło się. |
+| | **Ukończono**: Zadanie zostało ukończone. |
 | **deviceJobStatistics** |Statystyki dotyczące wykonywania zadania. |
 | | **deviceJobStatistics** właściwości: |
-| | **deviceJobStatistics.deviceCount**: liczba urządzeń w ramach zadania. |
-| | **deviceJobStatistics.failedCount**: liczbę urządzeń, w którym zadanie nie powiodło się. |
-| | **deviceJobStatistics.succeededCount**: liczba urządzeń, w którym zadanie zakończyło się pomyślnie. |
-| | **deviceJobStatistics.runningCount**: liczba urządzeń, które są aktualnie uruchomione zadania. |
-| | **deviceJobStatistics.pendingCount**: liczba urządzeń, oczekujące, aby uruchomić zadanie. |
+| | **deviceJobStatistics.deviceCount**: Liczba urządzeń w ramach zadania. |
+| | **deviceJobStatistics.failedCount**: Liczba urządzeń, w którym zadanie nie powiodło się. |
+| | **deviceJobStatistics.succeededCount**: Liczba urządzeń, w którym zadanie zakończyło się pomyślnie. |
+| | **deviceJobStatistics.runningCount**: Liczba urządzeń, które są aktualnie uruchomione zadania. |
+| | **deviceJobStatistics.pendingCount**: Liczba urządzeń, oczekujące, aby uruchomić zadanie. |
 
 ### <a name="additional-reference-material"></a>Dodatkowe materiały
 

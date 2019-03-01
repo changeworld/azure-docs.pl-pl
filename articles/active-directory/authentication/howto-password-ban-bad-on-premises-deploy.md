@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9839d636ba582c5006a260aeb6a17ac1a12e9b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdd4ecb1bfc9385ea3fa23756fcbf8fb20b6d87c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986009"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193249"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrony haseł usługi Azure AD
 
@@ -57,6 +57,7 @@ Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za po
 * Konta administratora globalnego, aby zarejestrować usługę serwera Proxy ochrony haseł usługi Azure AD i lasu w usłudze Azure AD.
 * Konta z uprawnieniami administratora domeny usługi Active Directory w domenie głównej lasu, aby zarejestrować lasu usługi Active Directory systemu Windows Server z usługą Azure AD.
 * Dowolnej domeny usługi Active Directory, uruchamianie kontrolera domeny oprogramowanie usługi agenta należy użyć DFSR do replikacji folderu sysvol.
+* Usługa dystrybucji kluczy firmy Microsoft musi być włączona na wszystkich systemu Windows Server 2012 i nowszych kontrolerów domeny w domenie (włączone za pomocą wyzwalacza ręcznego rozpoczęcia jest domyślny stan tej usługi).
 
 ## <a name="single-forest-deployment"></a>Wdrożenie pojedynczego lasu
 

@@ -1,19 +1,20 @@
 ---
 title: Planowanie zadań za pomocą usługi Azure IoT Hub (Java) | Dokumentacja firmy Microsoft
 description: Jak zaplanować zadanie usługi Azure IoT Hub wywołuje metody bezpośredniej i ustawić żądaną właściwość na wielu urządzeniach. Urządzenia usługi Azure IoT SDK dla języka Java umożliwia wdrożenie aplikacji symulowanego urządzenia i usługi Azure IoT SDK dla języka Java do zaimplementowania app service, aby uruchomić zadanie.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/10/2017
-ms.author: dobett
-ms.openlocfilehash: 52c5e1a2166c2c609b2edc486bd451f01b3395fa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d2d92c05e54bc78d5b01e73b586e5c25fc431255
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515798"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011402"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Planowanie i emitowanie zadań (Java)
 
@@ -29,9 +30,9 @@ Zadanie opakowuje jedną z następujących czynności i śledzenie wykonywanie k
 
 Aby dowiedzieć się więcej na temat każdego z tych funkcji, zobacz:
 
-* Bliźniacza reprezentacja urządzenia i właściwości: [Rozpoczynanie pracy z bliźniaczych reprezentacji urządzeń](iot-hub-java-java-twin-getstarted.md)
+* Bliźniacza reprezentacja urządzenia i właściwości: [Wprowadzenie do zarządzania bliźniaczymi reprezentacjami urządzeń](iot-hub-java-java-twin-getstarted.md)
 
-* Metody bezpośrednie: [usługi IoT Hub developer guide - metod bezpośrednich](iot-hub-devguide-direct-methods.md) i [samouczek: używanie metod bezpośrednich](quickstart-control-device-java.md)
+* Metody bezpośrednie: [Usługi IoT Hub developer guide - metod bezpośrednich](iot-hub-devguide-direct-methods.md) i [samouczka: Używanie metod bezpośrednich](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -64,7 +65,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 

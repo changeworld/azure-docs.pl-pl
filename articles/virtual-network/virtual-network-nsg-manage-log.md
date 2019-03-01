@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 20c103c19de203d7598484b8f1d160256cb253e9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6cc75a70dfc7022efa8577234cc67659d53b2f88
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648867"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194421"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
 
@@ -78,7 +78,7 @@ $Oms=Get-AzOperationalInsightsWorkspace `
 
 Jeśli nie masz istniejącego obszaru roboczego, możesz utworzyć jeden z [New AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace).
 
-Istnieją dwie kategorie rejestrowania, który można włączyć dzienniki. Aby uzyskać więcej informacji, zobacz [dziennika kategorie](#log-categories). Włącz rejestrowanie diagnostyczne dla sieciowych grup zabezpieczeń przy użyciu [AzDiagnosticSetting zestaw](/powershell/module/az.insights/set-azdiagnosticsetting). Poniższy przykład dzienniki zdarzeń i liczników dane kategorii do obszaru roboczego dla sieciowej grupy zabezpieczeń, za pomocą identyfikatorów dla sieciowej grupy zabezpieczeń i obszar roboczy, którego wcześniej pobrano:
+Istnieją dwie kategorie rejestrowania, który można włączyć dzienniki. Aby uzyskać więcej informacji, zobacz [dziennika kategorie](#log-categories). Włącz rejestrowanie diagnostyczne dla sieciowych grup zabezpieczeń przy użyciu [AzDiagnosticSetting zestaw](/powershell/module/az.monitor/set-azdiagnosticsetting). Poniższy przykład dzienniki zdarzeń i liczników dane kategorii do obszaru roboczego dla sieciowej grupy zabezpieczeń, za pomocą identyfikatorów dla sieciowej grupy zabezpieczeń i obszar roboczy, którego wcześniej pobrano:
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 767021772fc86013cd8192216eb03840f1160807
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878701"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194966"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -51,7 +51,7 @@ Aby wymusić żądania, które mają być obsługiwane przez określone centrum 
 
 ## <a name="authentication"></a>Authentication
 
-Subskrybowanie do interfejsu API tłumaczenia tekstu lub [usług Cognitive Services All-in-one](https://azure.microsoft.com/pricing/details/cognitive-services/) usług Microsoft Cognitive Services i użycie subskrypcji kluczy (dostępny w witrynie Azure portal) do uwierzytelniania. 
+Subskrybowanie do interfejsu API tłumaczenia tekstu lub [wielu usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) usług Microsoft Cognitive Services i użycie subskrypcji kluczy (dostępny w witrynie Azure portal) do uwierzytelniania. 
 
 Istnieją trzy nagłówków, których można użyć do uwierzytelnienia Twojej subskrypcji. Ta tabela zawiera, w tym artykule opisano, jak każdy obiekt jest używany:
 
@@ -59,7 +59,7 @@ Istnieją trzy nagłówków, których można użyć do uwierzytelnienia Twojej s
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Używane z subskrypcją usług Cognitive Services, jeśli przekazujesz klucz tajny*.<br/>Wartość jest platformy Azure klucz tajny dla Twojej subskrypcji do interfejsu API tłumaczenia tekstu.|
 |Autoryzacja|*Jeśli przekazujesz tokenu uwierzytelniania za pomocą subskrypcji usług Cognitive Services.*<br/>Wartość tokenu elementu nośnego: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Jeśli przekazujesz klucz tajny w jednym za pomocą usług Cognitive Services w jednym subskrypcji.*<br/>Wartość jest subskrypcji w jednym regionie. Ta wartość jest opcjonalna, bez korzystania z subskrypcji w jednym.|
+|Ocp-Apim-Subscription-Region|*Jeśli przekazujesz klucz tajny wielu usług za pomocą subskrypcji wielu usług Cognitive Services.*<br/>Wartość jest region subskrypcji wielu usług. Ta wartość jest opcjonalna, bez korzystania z wieloma usługami subskrypcji.|
 
 ###  <a name="secret-key"></a>Klucz tajny
 Pierwszym z nich jest uwierzytelnianie przy użyciu `Ocp-Apim-Subscription-Key` nagłówka. Po prostu Dodaj `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` nagłówek na żądanie.
@@ -89,21 +89,22 @@ Authorization: Bearer <Base64-access_token>
 
 Token uwierzytelniania jest ważny przez 10 minut. Token powinien być ponownie używane, gdy wielu wywołań interfejsów API usługi Translator. Jednak jeśli program sprawia, że żądania do interfejsu API usługi Translator przez dłuższy czas, następnie program musi żądać nowy token dostępu w regularnych odstępach czasu (np. co 8 minut).
 
-### <a name="all-in-one-subscription"></a>W jednym subskrypcji
+### <a name="multi-service-subscription"></a>Wielu usług subskrypcji
 
-Ostatnia opcja uwierzytelniania jest korzystać z subskrypcji w jednym Cognitive Service. Dzięki temu można korzystać z jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. 
+Ostatnia opcja uwierzytelniania jest korzystać z subskrypcji wielu usług Cognitive Service. Dzięki temu można korzystać z jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. 
 
-Gdy jest używany klucz tajny w jednym, musi zawierać dwa nagłówki uwierzytelniania z żądaniem. Pierwszy przekazuje klucz tajny, drugi określa regionu skojarzonego z Twoją subskrypcją. 
-* `Ocp-Api-Subscription-Key`
+Korzystając z wieloma usługami klucz tajny musi zawierać dwa nagłówki uwierzytelniania z żądaniem. Pierwszy przekazuje klucz tajny, drugi określa regionu skojarzonego z Twoją subskrypcją. 
+* `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
+
+Region jest wymagane dla wielu usług subskrypcji interfejsu API tłumaczenia tekstu. Regionu, możesz wybrać to jedyny region, który umożliwia tłumaczenie tekstu po przy użyciu klucza subskrypcji z wieloma usługami, a musi być tym samym regionie, które są wybrane podczas tworzenia konta dla subskrypcji wielu usług za pośrednictwem witryny Azure portal.
+
+Dostępne regiony to `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, i `westus2`.
 
 Jeśli przesuwasz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, a następnie za pomocą parametru zapytania należy określić region `Subscription-Region`.
 
 Jeśli używasz tokenu elementu nośnego, należy uzyskać token z punktu końcowego regionu: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
-Dostępne regiony to `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, i `westus2`.
-
-Region jest wymagane dla subskrypcji interfejsu API tłumaczenia tekstu w jednym.
 
 ## <a name="errors"></a>Błędy
 

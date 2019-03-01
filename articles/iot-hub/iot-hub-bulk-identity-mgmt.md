@@ -1,19 +1,19 @@
 ---
 title: Importowanie/eksportowanie tożsamości urządzeń w usłudze Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Jak używać zestawu SDK usługi Azure IoT, aby wykonywały operacje zbiorcze na rejestrze tożsamości w celu importowania i eksportowania tożsamości urządzeń. Operacje importowania umożliwiają tworzenie, aktualizowanie i usuwanie tożsamości urządzeń w trybie zbiorczym.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: dobett
-ms.openlocfilehash: aedf2d0012f5af8ea2eb8e944f06b20c7f1a6bb8
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.author: robin.shahan
+ms.openlocfilehash: 5ef34fb039d35ff714e249a6ac107e6ec615093e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054767"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010994"
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Zarządzanie tożsamościami urządzeń usługi IoT Hub w zbiorcze
 

@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5b06ad551b45bc0c892bc789c6f5c5a27b5bb0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ca5dc106d3a524f9bdd6f2d989ef1189032cd60f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882981"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195527"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -1102,7 +1102,7 @@ Zmieniono nazwę z usługi Azure AD Sync do programu Azure AD Connect.
 * Można [konfiguracji usług AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
 * Można [uaktualnienie z narzędzia DirSync](how-to-dirsync-upgrade-get-started.md)
 * [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md)
-* Wprowadzono [Tryb przejściowy](how-to-connect-sync-operations.md#staging-mode)
+* Wprowadzono [Tryb przejściowy](how-to-connect-sync-staging-server.md)
 
 **Nowe funkcje w wersji zapoznawczej:**
 

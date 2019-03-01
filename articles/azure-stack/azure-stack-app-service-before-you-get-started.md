@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737488"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990539"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "56737488"
 Przed wdrożeniem usługi Azure App Service w usłudze Azure Stack, należy wykonać kroki wymagań wstępnych, w tym artykule.
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1809 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.4.
+> Zastosowanie aktualizacji 1901 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem Azure App Service w wersji 1.5.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Pobieranie skryptów Instalatora i pomocnika
 
@@ -49,15 +49,7 @@ Przed wdrożeniem usługi Azure App Service w usłudze Azure Stack, należy wyko
 
 ## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Zespól rozszerzenia niestandardowego skryptu z witryny Marketplace
 
-Usługa Azure App Service w usłudze Azure Stack wymaga v1.9.0 rozszerzenia niestandardowego skryptu.  Musi mieć rozszerzenie [zespolone z witryny Marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) przed rozpoczęciem wdrażania lub uaktualnienie usługi Azure App Service w usłudze Azure Stack
-
-## <a name="high-availability"></a>Wysoka dostępność
-
-Aktualizacja usługi Azure Stack w wersji 1802 dodano obsługę domen błędów. Nowych wdrożeń usługi Azure App Service w usłudze Azure Stack będą znajdować się w domenach błędów i zapewnienia odporności na uszkodzenia.
-
-Dla istniejących wdrożeń usługi Azure App Service w usłudze Azure Stack, które zostały wdrożone przed aktualizacją 1802, zobacz [ponowne zrównoważenie dostawcy zasobów usługi App Service w domenach błędów](azure-stack-app-service-fault-domain-update.md) artykułu.
-
-Ponadto wdrażanie serwera plików wymaganych i wystąpień programu SQL Server w konfiguracji wysokiej dostępności.
+Usługa Azure App Service w usłudze Azure Stack wymaga v1.9.1 rozszerzenia niestandardowego skryptu.  Musi mieć rozszerzenie [zespolone z witryny Marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) przed rozpoczęciem wdrażania lub uaktualnienie usługi Azure App Service w usłudze Azure Stack
 
 ## <a name="get-certificates"></a>Pobierz certyfikaty
 

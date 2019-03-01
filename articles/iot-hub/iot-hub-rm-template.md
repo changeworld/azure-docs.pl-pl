@@ -1,20 +1,20 @@
 ---
 title: Tworzenie usługi Azure IoT Hub przy użyciu szablonu (.NET) | Dokumentacja firmy Microsoft
 description: Jak utworzyć Centrum IoT Hub przy użyciu programu C# za pomocą szablonu usługi Azure Resource Manager.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 979e99e4f9aea692de9c9797f65e3cb6a8e0a1e4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fb3456f399e9fa8bbe35336a3b8933c39a0d03d9
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736825"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008962"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (.NET)
 

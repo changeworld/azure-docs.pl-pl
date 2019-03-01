@@ -1,5 +1,5 @@
 ---
-title: Śledzenie komunikatów B2B w usłudze Log Analytics — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Ścieżki komunikacji B2B dla konta integracji i Azure Logic Apps z usługą Azure Log Analytics
 services: logic-apps
 ms.service: logic-apps
@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996538"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193215"
 ---
-# <a name="track-b2b-messages-with-azure-log-analytics"></a>Śledzenie komunikatów B2B w usłudze Azure Log Analytics
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor
 
-Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty z protokołów, takich jak AS2, X 12 i EDIFACT. Aby sprawdzić, czy te komunikaty są przetwarzane prawidłowo, można śledzić te komunikaty z [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości opartych na sieci web śledzenia do śledzenia komunikatów:
+Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty z protokołów, takich jak AS2, X 12 i EDIFACT. Aby sprawdzić, czy te komunikaty są przetwarzane prawidłowo, można śledzić te komunikaty z [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości opartych na sieci web śledzenia do śledzenia komunikatów:
 
 * Liczba komunikatów i stan
 * Stan potwierdzenia
@@ -29,19 +29,21 @@ Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integ
 > [!NOTE]
 > Ta strona opisane wcześniej kroki dotyczące sposobu wykonywania tych zadań za pomocą programu Microsoft Operations Management Suite (OMS), który jest [wycofywania w styczniu 2019](../azure-monitor/platform/oms-portal-transition.md), zamiast tego zastępuje te kroki z usługą Azure Log Analytics. 
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Aplikację logiki, która została skonfigurowana za pomocą rejestrowania diagnostycznego. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Konto integracji skonfigurowanej z funkcjami monitorowania i rejestrowania. Dowiedz się, [jak utworzyć konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [jak skonfigurować monitorowanie i rejestrowanie dla tego konta](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Jeśli jeszcze nie, [publikowania danych diagnostycznych do usługi Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Jeśli jeszcze nie, [publikowania danych diagnostycznych do usługi Azure Monitor dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 * Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Instalowanie rozwiązania B2B aplikacji logiki
 
-Śledzenie komunikatów B2B dla twojej aplikacji logiki w usłudze Log Analytics może mieć, aby móc dodać **B2B aplikacji logiki** rozwiązania do usługi Log Analytics. Dowiedz się więcej o [Dodawanie rozwiązań do usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+Może mieć dzienniki usługi Azure Monitor śledzenie komunikatów B2B dla twojej aplikacji logiki, aby móc dodać **B2B aplikacji logiki** rozwiązania dzienniki usługi Azure Monitor. Dowiedz się więcej o [Dodawanie rozwiązań do dzienników usługi Azure Monitor](../azure-monitor/learn/quick-create-workspace.md).
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Wszystkie usługi**. W polu wyszukiwania Znajdź "log analytics", a następnie wybierz **usługi Log Analytics**.
 
@@ -128,7 +130,7 @@ Po przetworzeniu komunikatów B2B w można wyświetlić stan i szczegóły dotyc
    * Aby wyniki za pomocą wbudowanych zapytań wyszukiwania, wybierz opcję **ulubione**.
 
    * Dowiedz się, [jak tworzyć zapytania, dodając filtry](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   Lub Dowiedz się więcej o [sposób znaleźć dane za pomocą funkcji wyszukiwań w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Lub Dowiedz się więcej o [sposób znaleźć dane za pomocą funkcji wyszukiwań w dziennikach w usłudze Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 
    * Aby Zmień zapytanie w polu wyszukiwania, należy zaktualizować zapytania przy użyciu kolumny i wartości, które chcesz użyć jako filtry.
 
@@ -165,8 +167,8 @@ Poniżej przedstawiono formaty nazw dla każdej pobranej folderu komunikatu AS2 
 
 | Plik lub folder | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | [nadawcy] \_[odbiorcy]\_AS2\_[identyfikator korelacji]\_[identyfikator komunikatu]\_[sygnatura czasowa] |
-| Dane wejściowe, dane wyjściowe i konfigurowanie plików potwierdzenie, jeśli | **Wprowadzony ładunek**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_outputs.txt |
+| Folder wiadomości | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
+| Dane wejściowe, dane wyjściowe i konfigurowanie plików potwierdzenie, jeśli | **Input payload**: [sender]\_[receiver]\_AS2\_[correlation-ID]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiorcy]\_AS2\_[identyfikator korelacji]\_outputs.txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -198,7 +200,7 @@ Poniżej przedstawiono formaty nazwy dla każdego pobrane X12 folderów i plikó
 
 | Plik lub folder | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | [nadawcy] \_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_[numer globalnej kontroli]\_[transakcji — — numer kontrolny zestawu-]\_[sygnatura czasowa] |
+| Folder wiadomości | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
 | Dane wejściowe, dane wyjściowe i konfigurowanie plików potwierdzenie, jeśli | **Wprowadzony ładunek**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiorcy]\_X12\_[numer wymiany kontrolny]\_outputs.txt |
 |          |             |
 
@@ -237,7 +239,7 @@ Poniżej przedstawiono formaty nazw dla każdej pobranej folderu komunikatu EDIF
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wykonywanie zapytań dotyczących komunikatów B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Wykonywanie zapytań dotyczących komunikatów B2B w dziennikach w usłudze Azure Monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [Schematy śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schematy śledzenia X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Schematy śledzenia niestandardowe](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

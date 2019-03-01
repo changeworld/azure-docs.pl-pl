@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a1b045ecf10399ca2297e4d9d010d5c973c40f4e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661840"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193283"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -72,6 +72,14 @@ Aby rozpocząć pracę, przeczytaj [Omówienie usługi Azure Disk Encryption](az
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Czy można zaszyfrować woluminów rozruchowych i danych przy użyciu usługi Azure Disk Encryption?
 
 Tak, można zaszyfrować woluminy rozruchowe i dane dla Windows i maszyn wirtualnych IaaS z systemem Linux. W przypadku maszyn wirtualnych Windows nie można zaszyfrować dane bez pierwszy szyfrowania woluminu systemu operacyjnego. W przypadku maszyn wirtualnych systemu Linux jest umożliwia szyfrowanie ilości danych bez konieczności najpierw szyfrowania woluminu systemu operacyjnego. Po wolumin systemu operacyjnego został zaszyfrowany dla systemu Linux, wyłączenie szyfrowania na woluminie systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux nie jest obsługiwany.
+
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak obrócić klucze tajne i klucze szyfrowania
+
+Aby obrócić wpisów tajnych, po prostu Wywołaj tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku. Aby wymienić główny klucz szyfrowania klucza, należy wywołać tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku określenie nowego klucza szyfrowania. 
+
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak dodać lub usunąć klucz szyfrowania klucza, jeśli nie został pierwotnie korzystania z jednego?
+
+Aby dodać klucz szyfrowania klucza, wywołaj polecenie Włącz ponownie przekazując parametr klucza szyfrowania. Aby usunąć klucz szyfrowania klucza, wywołaj polecenie Włącz ponownie bez parametru klucza szyfrowania.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Czy usługa Azure Disk Encryption umożliwia używanie własnego klucza (BYOK)?
 

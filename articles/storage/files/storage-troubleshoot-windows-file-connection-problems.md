@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564446"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195510"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -75,12 +75,11 @@ Aby użyć `Test-NetConnection` polecenia cmdlet, AzureRM PowerShell w module mu
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
     Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-  
     
 Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się następujące dane wyjściowe:
     
   
-    ComputerName     : <storage-account-host-name>
+    ComputerName     : <your-storage-account-name>
     RemoteAddress    : <storage-account-ip-address>
     RemotePort       : 445
     InterfaceAlias   : <your-network-interface>
@@ -93,7 +92,19 @@ Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się nastę
 
 ### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
 
-Praca z działu IT, aby otworzyć port 445 ruch wychodzący do [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+#### <a name="solution-1---use-azure-file-sync"></a>Rozwiązanie 1. Użyj usługi Azure File Sync
+Usługa Azure File Sync może przekształca lokalnego systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Usługa Azure File Sync działa za pośrednictwem portu 443 i dlatego można obejść ten problem dostęp do usługi Azure Files z klientów, którzy mają portu 445 zablokowane. [Dowiedz się, jak skonfigurować usługę Azure File Sync](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-extend-servers).
+
+#### <a name="solution-2---use-vpn"></a>Rozwiązanie 2 — użycie sieci VPN
+Konfigurując sieci VPN do określonego konta magazynu, ruch zaczną za pośrednictwem bezpiecznego tunelu, w przeciwieństwie do za pośrednictwem Internetu. Postępuj zgodnie z [instrukcjami, aby skonfigurować sieci VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+) dostęp do usługi Azure Files z Windows.
+
+#### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Rozwiązanie 3 - Odblokuj port 445 przy pomocy z usługodawcą Internetowym / administrator IT
+Praca z personelem informatycznym lub usługodawcy internetowego, aby otworzyć port 445 ruch wychodzący do [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+
+#### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Rozwiązanie 4 — Korzystanie z interfejsu API REST oparte narzędzi takich jak Storage Explorer/programu Powershell
+Usługa pliki systemu Azure obsługuje również REST, oprócz protokołu SMB. Dostęp interfejsu REST działa za pośrednictwem portu 443 (standardowy protokół tcp). Istnieją różne narzędzia, które są zapisywane z użyciem interfejsu API REST, umożliwiających bogate funkcje interfejsu użytkownika. [Eksplorator usługi Storage](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) jest jednym z nich. [Pobieranie i instalowanie Eksploratora usługi Storage](https://azure.microsoft.com/en-us/features/storage-explorer/) i nawiąż połączenie z udziałem plików obsługiwane przez usługi Azure Files. Można również użyć [PowerShell](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell) który również użytkowników interfejsu API REST.
+
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Przyczyny 2: Włączono NTLMv1
 

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124847"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192388"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Utwórz schematy śledzenia niestandardowych, które monitorują end-to-end przepływów w usłudze Azure Logic Apps
 
@@ -60,17 +60,17 @@ Ten artykuł zawiera kod niestandardowy, który można użyć w warstwach poza a
 | --- | --- | --- |
 | sourceType |   | Typ uruchamiania źródła. Dozwolone wartości to **Microsoft.Logic/workflows** i **niestandardowe**. (Obowiązkowe) |
 | Element źródłowy |   | Jeśli typ źródła jest **Microsoft.Logic/workflows**, informacje o źródle musi wykonać tego schematu. Jeśli typ źródła jest **niestandardowe**, schemat jest JToken. (Obowiązkowe) |
-| systemId | Ciąg | Identyfikator logiki aplikacji systemu. (Obowiązkowe) |
-| runId | Ciąg | Identyfikator przebiegu aplikacji logiki (Obowiązkowe) |
-| operationName | Ciąg | Nazwa operacji (na przykład akcję lub wyzwalacz). (Obowiązkowe) |
-| repeatItemScopeName | Ciąg | Powtórz nazwa elementu, jeśli akcja znajduje się wewnątrz `foreach` / `until` pętli. (Obowiązkowe) |
+| systemId | String | Identyfikator logiki aplikacji systemu. (Obowiązkowe) |
+| runId | String | Identyfikator przebiegu aplikacji logiki (Obowiązkowe) |
+| operationName | String | Nazwa operacji (na przykład akcję lub wyzwalacz). (Obowiązkowe) |
+| repeatItemScopeName | String | Powtórz nazwa elementu, jeśli akcja znajduje się wewnątrz `foreach` / `until` pętli. (Obowiązkowe) |
 | repeatItemIndex | Liczba całkowita | Czy akcja jest wewnątrz `foreach` / `until` pętli. Wskazuje indeks elementu powtarzanego. (Obowiązkowe) |
-| trackingId | Ciąg | Identyfikator śledzenia: korelowanie komunikatów. (Opcjonalnie) |
-| correlationId | Ciąg | Identyfikator korelacji, aby skorelować komunikaty. (Opcjonalnie) |
-| clientRequestId | Ciąg | Klienta można wypełnić go do skorelowania wiadomości. (Opcjonalnie) |
+| trackingId | String | Identyfikator śledzenia: korelowanie komunikatów. (Opcjonalnie) |
+| correlationId | String | Identyfikator korelacji, aby skorelować komunikaty. (Opcjonalnie) |
+| clientRequestId | String | Klienta można wypełnić go do skorelowania wiadomości. (Opcjonalnie) |
 | eventLevel |   | Poziom zdarzenia. (Obowiązkowe) |
 | eventTime |   | Czas w UTC w formacie RRRR-MM-DDTHH:MM:SS.00000Z wydarzenia. (Obowiązkowe) |
-| RecordType |   | Typ rekordu śledzenia. Dozwolona wartość to **niestandardowe**. (Obowiązkowe) |
+| recordType |   | Typ rekordu śledzenia. Dozwolona wartość to **niestandardowe**. (Obowiązkowe) |
 | rekord |   | Typ rekordu niestandardowego. Dozwolony format to JToken. (Obowiązkowe) |
 ||||
 
@@ -84,4 +84,4 @@ Aby uzyskać informacji na temat protokołu B2B schematy śledzenia zobacz:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [monitorowanie komunikatów B2B](logic-apps-monitor-b2b-message.md)
-* Dowiedz się więcej o [śledzenie komunikatów B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* Dowiedz się więcej o [śledzenie komunikatów B2B w dziennikach w usłudze Azure Monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

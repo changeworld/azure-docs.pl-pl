@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608753"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009695"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 
@@ -71,9 +71,9 @@ Poprzednią wersję akceleratora rozwiązania monitorowania zdalnego jest znane 
 
 Tak, nowe monitorowania zdalnego jest dostępna w tych samych regionach geograficznych.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Jaka jest różnica między usunięciem grupy zasobów w witrynie Azure portal a usunięciem akceleratora rozwiązań w witrynie azureiotsuite.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Jaka jest różnica między usunięciem grupy zasobów w witrynie Azure portal a usunięciem akceleratora rozwiązań w azureiotsolutions.com?
 
-* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsolutions.com/), możesz usunąć wszystkie zasoby, które zostały wdrożone, podczas tworzenia akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
+* Jeśli usuniesz akcelerator rozwiązań w [azureiotsolutions.com](https://www.azureiotsolutions.com/), możesz usunąć wszystkie zasoby, które zostały wdrożone, podczas tworzenia akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
 * W przypadku usunięcia grupy zasobów w [witryny Azure portal](https://portal.azure.com), możesz usunąć tylko zasoby w tej grupie zasobów. Należy również usunąć aplikację usługi Azure Active Directory skojarzone z akceleratora rozwiązań.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Czy mogę nadal korzystać z moich istniejących inwestycji w akceleratorów rozwiązań Azure IoT?

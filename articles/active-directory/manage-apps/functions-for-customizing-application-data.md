@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164638"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991484"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -175,7 +175,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkcja:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Opis:**<br> Wymaga jednego argumentu ciągu. Zwraca ciąg, ale z dowolnego repalced znaków diakrytycznych znakami diakrytyczne równoważne.
+**Opis:**<br> Zwraca pojedynczy appRoleAssignment z listy wszystkich appRoleAssignments przypisane do użytkownika dla danej aplikacji. Ta funkcja jest wymagana do konwertowania obiektu appRoleAssignments do ciągu nazwy jedną rolę. Należy zauważyć, że najlepszym rozwiązaniem jest zapewnienie appRoleAssignment tylko jeden jest przypisany do jednego użytkownika w danym momencie, a jeśli wiele ról przypisano rolę ciąg zwracany nie mogą być przewidywalne. 
 
 **Parametry:**<br> 
 

@@ -10,18 +10,20 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 01bfd10b2f37a7990ab9a1badfcb09422baa391a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342205"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992740"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
 Grupy zarządzania są kontenery, które ułatwiają zarządzanie dostępem, zasady i zgodność w wielu subskrypcjach. Tworzenie tych kontenerów, aby tworzyć hierarchie skuteczny i wydajny, które mogą być używane z [usługi Azure Policy](../policy/overview.md) i [kontroli dostępu na podstawie roli Azure](../../role-based-access-control/overview.md). Aby uzyskać więcej informacji na temat grup zarządzania, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](overview.md).
 
 Pierwsza grupa zarządzania tworzony w katalogu może potrwać do 15 minut. Brak procesów, które są uruchamiane po raz pierwszy do skonfigurowania usługi grupy zarządzania w obrębie platformy Azure dla katalogu. Po zakończeniu procesu otrzymasz powiadomienie.
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-management-group"></a>Utwórz grupę zarządzania
 
@@ -48,10 +50,10 @@ Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy A
 
 ### <a name="create-in-powershell"></a>Tworzenie w programie PowerShell
 
-W programie PowerShell, możesz użyć polecenia cmdlet New-AzureRmManagementGroup:
+W programie PowerShell, możesz użyć polecenia cmdlet New-AzManagementGroup:
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso'
+New-AzManagementGroup -GroupName 'Contoso'
 ```
 
 **GroupName** jest unikatowym identyfikatorem tworzona. Ten identyfikator jest używany przez inne polecenia, aby odwoływać się do tej grupy i nie można zmienić później.
@@ -59,7 +61,7 @@ New-AzureRmManagementGroup -GroupName 'Contoso'
 Jeśli chce się grupy zarządzania, aby pokazać inną nazwę w witrynie Azure portal, należy dodać **DisplayName** parametr na ciąg. Na przykład jeśli chcesz utworzyć grupę zarządzania z GroupName Contoso i nazwę wyświetlaną grupy"Contoso", użyj następującego polecenia cmdlet:
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId 'ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
 ```
 
 Użyj **ParentId** parametru tej grupy zarządzania można utworzyć w ramach różnych zarządzania.
@@ -78,6 +80,6 @@ Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
 - [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Grupy zarządzania w module zasobów programu Azure PowerShell](https://aka.ms/mgPSdocs)
-- [Grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
-- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](/powershell/module/az.resources#resources)
+- [Grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)

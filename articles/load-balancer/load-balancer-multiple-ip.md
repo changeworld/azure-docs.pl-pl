@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4920d2a6c26da12effc2b44be8d3c6cbdb5e2a6f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0fd865a6890721d3889fc5cef39d9888fe1fb689
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199140"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191819"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP za pomocą witryny Azure portal
 
@@ -194,4 +194,4 @@ Ostatnim krokiem skonfigurować swoje rekordy zasobów DNS wskaż odpowiednie ad
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o sposobie łączenia usług na platformie Azure w równoważenia obciążenia [przy użyciu usługi równoważenia obciążenia na platformie Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Dowiedz się, jak można użyć różnych typów dzienników zarządzanie i rozwiązywanie problemów z modułu równoważenia obciążenia w [Analiza dzienników na potrzeby usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- Dowiedz się, jak można użyć różnych typów dzienników zarządzanie i rozwiązywanie problemów z modułu równoważenia obciążenia w [usługi Azure Monitor dzienniki dla usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

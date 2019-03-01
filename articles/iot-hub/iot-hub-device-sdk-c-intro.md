@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 7734a273f6e07290ec7124def5cb3b095f7f067b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe34668577efb1552731af7760896bccbb99cf67
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674254"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009192"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
 
@@ -23,7 +23,7 @@ ms.locfileid: "56674254"
 
 Zestaw SDK urządzeń Azure IoT dla języka C jest zapisywany w ANSI C (C99), aby zmaksymalizować przenośność. Ta funkcja sprawia, że biblioteki są dobrze nadaje się do działania na wielu platformach i urządzeniach, szczególnie w przypadku, gdy minimalizując dysku i ma najwyższy priorytet, zużycie pamięci.
 
-Istnieją szerokiego zakresu platform, na których został przetestowany zestaw SDK (zobacz [certyfikatu platformy Azure dla IoT — wykaz urządzeń](https://catalog.azureiotsuite.com/) Aby uzyskać szczegółowe informacje). Chociaż ten artykuł zawiera wskazówki dotyczące przykładowego kodu na platformie Windows, kodu opisanego w tym artykule jest identyczna w zakresie obsługiwanych platform.
+Istnieją szerokiego zakresu platform, na których został przetestowany zestaw SDK (zobacz [certyfikatu platformy Azure dla IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/) Aby uzyskać szczegółowe informacje). Chociaż ten artykuł zawiera wskazówki dotyczące przykładowego kodu na platformie Windows, kodu opisanego w tym artykule jest identyczna w zakresie obsługiwanych platform.
 
 Poniższy klip wideo zawiera omówienie zestawu SDK usługi Azure IoT dla języka C:
 

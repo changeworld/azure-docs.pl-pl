@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8d5ecd33f0bc67b6e0ec2e559a8475da490369e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8a21e300c2540ddefb79fcaf593f752eef7e2c2e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210666"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010195"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -98,7 +98,7 @@ Poniżej przedstawiono właściwości użytkownika, które można użyć do utwo
 | sipProxyAddress |Dowolną wartość ciągu lub *o wartości null* |(user.sipProxyAddress - eq "value") |
 | state |Dowolną wartość ciągu lub *o wartości null* |(user.state - eq "value") |
 | Adres |Dowolną wartość ciągu lub *o wartości null* |(user.streetAddress - eq "value") |
-| nazwisko |Dowolną wartość ciągu lub *o wartości null* |(user.surname - eq "value") |
+| surname |Dowolną wartość ciągu lub *o wartości null* |(user.surname - eq "value") |
 | telephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.telephoneNumber - eq "value") |
 | usageLocation |Numer kierunkowy kraju własną literą dwa |(user.usageLocation - eq "PL") |
 | userPrincipalName |dowolną wartość ciągu |(user.userPrincipalName - eq "alias@domain") |
@@ -137,7 +137,7 @@ Jeśli chcesz porównać wartości atrybutu użytkownika względem szereg różn
  W poniższym przykładzie wyrażenie ma wartość true, jeśli wartość user.department jest równa wartości na liście:
 
 ```
-   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003","50005","50006","50007","50008","50016","50020","50024","50038","50039","51100"]
 ```
 
 

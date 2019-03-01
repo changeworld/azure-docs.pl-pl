@@ -1,5 +1,5 @@
 ---
-title: Jak do zarządzania wpisami tajnymi, podczas pracy z usługą Azure Dev miejsca | Dokumentacja firmy Microsoft
+title: Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,16 +7,16 @@ ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
-ms.topic: article
+ms.topic: conceptual
 ms.technology: azds-kubernetes
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 7081412172b617632073cad4e76d7c8fc4e81519
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 45c893d6d61407f9c0f44b4a5961d351bba0035f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466561"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191802"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 

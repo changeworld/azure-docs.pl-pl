@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e2c3cfd509c9b0b77d0db00add31b58a07ce6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ca079fa2ec41f85c365102fbd81ffde23e97e2c4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206552"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990496"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -96,7 +96,7 @@ Przykład: użytkownik zmieni hasło "C0ntos0Blank12"
 
 Po normalizacji to hasło, staje się "contosoblank12". Proces dopasowywania wykryje, że to hasło zawiera dwa hasła zabronione: contoso i puste. To hasło następnie oblicza wynik:
 
-[contoso] + [puste] = [1] + [2] = 4 punkty, ponieważ jest to hasło w obszarze 5 punktów, jego zostanie odrzucone.
+[contoso] + [puste] + [1] + [2] = 4 punkty, ponieważ jest to hasło w obszarze 5 punktów, jego zostanie odrzucone.
 
 Przykład: hasła w celu zmiany przez użytkownika "ContoS0Bl@nkf9!".
 

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5a9ea460684383bd09e5a679f3140d3b8f083d4d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 579c23fc3092acb785e89ddfa390e9495fc004d3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823624"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194531"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -57,6 +57,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Certyfikaty usługi App Service — zobacz [ograniczenia certyfikatu usługi App Service](#app-service-certificate-limitations)
 * Automation — elementy Runbook muszą istnieć w tej samej grupie zasobów co konto usługi Automation.
 * Azure Active Directory B2C
+* Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Azure Cosmos DB
 * Azure Data Explorer
 * Azure Database for MariaDB
@@ -64,6 +65,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Azure Database for PostgreSQL
 * Azure DevOps — organizacjom przeprowadzającym platformy Azure z rozszerzeniem firmy Microsoft kupuje musi [anulować opłacenia zakupów](https://go.microsoft.com/fwlink/?linkid=871160) przed konta mogą przenosić między subskrypcjami.
 * Azure Maps
+* Dzienniki usługi Azure Monitor
 * Azure Relay
 * Usługa Azure Stack — rejestracji
 * Batch
@@ -91,11 +93,10 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Moduły równoważenia obciążenia — podstawowa jednostka SKU modułu równoważenia obciążenia mogą być przenoszone. Nie można przenieść standardowa jednostka SKU modułu równoważenia obciążenia.
 * Logic Apps
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
-* Managed Disks — zobacz [ograniczenia maszyn wirtualnych dla ograniczeń](#virtual-machines-limitations)
+* Usługa Managed Disks — Managed Disks w strefach dostępności nie można przenieść do innej subskrypcji
 * Tożsamość zarządzana — przypisanych przez użytkownika
 * Media Services
 * Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#monitor-limits)
-* Dzienniki usługi Azure Monitor
 * Notification Hubs
 * Operational Insights
 * Operations Management
@@ -103,7 +104,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
 * Usługi Recovery Services vault — Zarejestruj się w [Podgląd](#recovery-services-limitations).
-* Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
 * Service Bus
@@ -116,7 +116,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Bazy danych programu SQL server — bazy danych i serwera musi być w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines — w przypadku maszyn wirtualnych przy użyciu dysków zarządzanych, zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
+* Virtual Machines — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Maszyny wirtualne (klasyczne) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Zestawy skalowania maszyn wirtualnych — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Sieci wirtualne — Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations)
@@ -133,6 +133,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Azure Databricks
 * Azure Firewall
 * Azure Migrate
+* Azure NetApp Files
 * Certyfikaty — certyfikaty usługi App Service można przenosić, ale zostały przekazane certyfikaty [ograniczenia](#app-service-limitations).
 * Aplikacje klasyczne
 * Container Instances
@@ -145,7 +146,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Włączono Lab Services — przejście do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenie między subskrypcjami nie jest włączona.
 * Aplikacje zarządzane
 * Microsoft Genomics
-* Azure NetApp Files
 * Oprogramowanie SAP HANA na platformie Azure
 * Bezpieczeństwo
 * Site Recovery
@@ -166,13 +166,12 @@ Sekcja zawiera opis sposobu obsługi złożonych scenariuszy przenoszenia zasob�
 
 ### <a name="virtual-machines-limitations"></a>Ograniczenia dotyczące maszyn wirtualnych
 
-Z 24 września 2018 r. Możesz przenieść dysków zarządzanych. Ta obsługa oznacza, że można przenieść maszyny wirtualne z dyskami zarządzanymi, zarządzanych obrazów, zarządzanych migawek i zestawy dostępności przy użyciu maszyn wirtualnych, które korzystają z dysków zarządzanych.
+Można przenieść maszyny wirtualne z dyskami zarządzanymi, zarządzanych obrazów, zarządzanych migawek i zestawy dostępności przy użyciu maszyn wirtualnych, które korzystają z dysków zarządzanych. Dyski zarządzane w strefach dostępności nie można przenieść do innej subskrypcji.
 
 Jeszcze nie są obsługiwane następujące scenariusze:
 
 * Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
-* Dyski zarządzane w strefach dostępności nie można przenieść do innej subskrypcji
-* Nie można przenieść Virtual Machine Scale Sets przy użyciu standardowych jednostek SKU modułu równoważenia obciążenia lub standardowego publicznego adresu IP jednostki SKU
+* Nie można przenieść Virtual Machine Scale Sets przy użyciu standardowych jednostek SKU modułu równoważenia obciążenia lub standardowego publicznego adresu IP jednostki SKU.
 * Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Anulowanie aprowizacji maszyny wirtualnej w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
 
 Aby przenieść maszyny wirtualne skonfigurowane przy użyciu usługi Azure Backup, należy użyć następującego obejścia:
@@ -190,6 +189,8 @@ Aby przenieść maszyny wirtualne skonfigurowane przy użyciu usługi Azure Back
 ### <a name="virtual-networks-limitations"></a>Wirtualne sieci ograniczenia
 
 Podczas przenoszenia sieci wirtualnej, możesz również przenieść jego zasobów zależnych. Dla bramy sieci VPN należy przenieść adresy IP, bramy sieci wirtualnej i wszystkie zasoby skojarzone z nimi połączenie. Bramy sieci lokalnej może znajdować się w innej grupie zasobów.
+
+Aby przenieść maszynę wirtualną za pomocą karty interfejsu sieciowego, należy przenieść wszystkie zasoby zależne. Musisz przenieść sieci wirtualnej dla karty interfejsu sieciowego, wszystkie inne karty sieciowe dla sieci wirtualnej i bramy sieci VPN.
 
 Aby przenieść równorzędnej sieci wirtualnej, należy najpierw wyłączyć komunikacji równorzędnej sieci wirtualnej. Po wyłączeniu można przenieść sieci wirtualnej. Po przeniesieniu ponownie włączyć komunikację równorzędną sieci wirtualnej.
 

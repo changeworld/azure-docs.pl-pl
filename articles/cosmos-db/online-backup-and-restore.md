@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b5b56e39e1b9830d5b998ace2a384d6878cd510
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6ed968b1613a96a2f4ab449c7b52488e066a38ab
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041819"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991822"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Tworzenie kopii zapasowej online i danych na żądanie przywrócenia w usłudze Azure Cosmos DB
 
@@ -20,11 +20,18 @@ Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe danych w regularny
 
 ## <a name="automatic-and-online-backups"></a>Automatyczne i w trybie online kopii zapasowych
 
-Za pomocą usługi Azure Cosmos DB nie tylko dane, ale również kopie zapasowe danych są mocno nadmiarowy i odporna na regionalnej awarii. Zautomatyzowanych kopii zapasowych są obecnie pobierane co cztery godziny, i w dowolnym momencie, najnowsze dwie kopie zapasowe są przechowywane. Jeśli przypadkowo usunięty lub uszkodzone dane, należy skontaktować się ze [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) w ciągu ośmiu godzin, aby zespół usługi Azure Cosmos DB może pomagać przywracania danych z kopii zapasowych.
+Za pomocą usługi Azure Cosmos DB nie tylko dane, ale również kopie zapasowe danych są mocno nadmiarowy i odporna na regionalnej awarii. Poniższe kroki pokazują, jak usługa Azure Cosmos DB wykonuje kopię zapasową danych:
 
-Kopie zapasowe są wykonywane bez wywierania wpływu na wydajność i dostępność aplikacji. Usługa Azure Cosmos DB wykonuje kopii zapasowej danych w tle bez używania żadnych dodatkowych aprowizowana przepływność (ru) lub mające wpływ na wydajność i dostępność bazy danych.
+* Usługa Azure Cosmos DB automatycznie wykonuje kopię zapasową bazy danych co 4 godziny, i w dowolnym momencie, są przechowywane tylko najnowsze 2 kopie zapasowe. Jednak usunięcie kontenera lub bazy danych Azure Cosmos DB zachowuje istniejące migawki wybranego kontenera lub bazy danych przez 30 dni.
 
-Usługa Azure Cosmos DB przechowuje automatycznych kopii zapasowych w usłudze Azure Blob Storage, podczas gdy rzeczywisty znajdują się dane lokalnie w usłudze Azure Cosmos DB. Aby zagwarantować małych opóźnień, migawki kopii zapasowej są przechowywane w usłudze Azure Blob storage, w tym samym regionie jako bieżącego regionu zapisu (lub jeden z regionów zapisu, jeśli używana jest Konfiguracja wielu wzorców) usługi Cosmos DB konto bazy danych. Aby zachować odporność względem regionalnej awarii każdej migawki kopii zapasowej danych w usłudze Azure Blob storage ponownie są replikowane do innego regionu za pośrednictwem magazyn geograficznie nadmiarowy (GRS). Region, na którym kopii zapasowej są replikowane zależy od regionu źródłowego i pary regionalnej skojarzony w regionie źródłowym. Aby dowiedzieć się więcej, zobacz [lista magazynu geograficznie nadmiarowego par regionów świadczenia usługi Azure](../best-practices-availability-paired-regions.md) artykułu. Nie masz dostępu do tej kopii zapasowej bezpośrednio. Usługa Azure Cosmos DB będzie używać tej kopii zapasowej, tylko wtedy, gdy jest inicjowana przywracania kopii zapasowej.
+* Usługa Azure Cosmos DB przechowuje te kopie zapasowe w usłudze Azure Blob storage, podczas gdy rzeczywisty znajdują się dane lokalnie w usłudze Azure Cosmos DB.
+
+*  W celu zagwarantowania małych opóźnień, migawki kopii zapasowej znajduje się w usłudze Azure Blob storage, w tym samym regionie, co bieżącego regionu zapisu (lub jeden z regionów zapisu w przypadku, gdy używana jest Konfiguracja wielu wzorców) z usługi Cosmos Azure konto bazy danych. Aby zachować odporność względem regionalnej awarii każdej migawki kopii zapasowej danych w usłudze Azure Blob storage ponownie są replikowane do innego regionu za pośrednictwem magazyn geograficznie nadmiarowy (GRS). Region, na którym kopii zapasowej są replikowane zależy od regionu źródłowego i pary regionalnej skojarzony w regionie źródłowym. Aby dowiedzieć się więcej, zobacz [lista magazynu geograficznie nadmiarowego par regionów świadczenia usługi Azure](../best-practices-availability-paired-regions.md) artykułu. Nie masz dostępu do tej kopii zapasowej bezpośrednio. Usługa Azure Cosmos DB będzie używać tej kopii zapasowej, tylko wtedy, gdy jest inicjowana przywracania kopii zapasowej.
+
+* Kopie zapasowe są wykonywane bez wywierania wpływu na wydajność i dostępność aplikacji. Usługa Azure Cosmos DB wykonuje kopii zapasowej danych w tle bez używania żadnych dodatkowych aprowizowana przepływność (ru) lub mające wpływ na wydajność i dostępność bazy danych.
+
+* Jeśli przypadkowo usunięty lub uszkodzone dane, należy skontaktować się ze [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) w 8 godzin, aby zespół usługi Azure Cosmos DB może pomagać przywracania danych z kopii zapasowych.
+
 Na poniższej ilustracji przedstawiono sposób tworzenia kopii zapasowej w zdalnym konta usługi Azure Blob Storage w regionie zachodnie stany USA i następnie replikowane w regionie wschodnie stany USA kontenera usługi Azure Cosmos za pomocą wszystkie trzy podstawowe fizyczne partycje w regionie zachodnie stany USA:
 
 ![Okresowe pełne kopie zapasowe wszystkich jednostek usługi Cosmos DB w magazynie geograficznie Nadmiarowym usługi Azure Storage](./media/online-backup-and-restore/automatic-backup.png)

@@ -1,5 +1,5 @@
 ---
-title: Jak używać narzędzia kubectl za pomocą usługi Azure Dev miejsca do magazynowania | Dokumentacja firmy Microsoft
+title: Jak używać narzędzia kubectl za pomocą usługi Azure Dev miejsca do magazynowania
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,15 +7,15 @@ ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: b0ceccc4f8b16c21e8a66a5f1b8cf0e7b6f47a4f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
+ms.openlocfilehash: 328c67b04f8e582fcd7d953c7cd8b6c5312bada5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469315"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194318"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Narzędzia kubectl za pomocą usługi Azure Dev miejsca
 

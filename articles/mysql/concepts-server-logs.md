@@ -1,17 +1,17 @@
 ---
 title: Dzienniki serwera usługi Azure Database for MySQL
 description: W tym artykule opisano dzienników dostępnych w usłudze Azure Database for MySQL i dostępne parametry włączenie rejestrowania różnych poziomów.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/03/2018
-ms.openlocfilehash: 60ef547cb3a6ef579f5ab0b3f5438212145d92ff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 02/28/2019
+ms.openlocfilehash: bc3dd038a21786a75d6b519ef8523dc328829705
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961792"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192892"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Dzienniki serwera w usłudze Azure Database for MySQL
 W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów. 
@@ -45,6 +45,9 @@ Zobacz MySQL [wolne dokumentacji dziennika zapytań](https://dev.mysql.com/doc/r
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 Usługa Azure Database for MySQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki wolnych zapytań na Twoim serwerze MySQL możesz je emitowane dzienniki usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz, jak części [dokumentacja dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md).
+
+> [!IMPORTANT]
+> Ta funkcja diagnostyki dla dzienników serwera jest dostępna tylko w ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci [warstw cenowych](concepts-pricing-tiers.md).
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
 

@@ -1,19 +1,20 @@
 ---
 title: Wprowadzenie do zarządzania urządzeniami Azure IoT Hub (Java) | Dokumentacja firmy Microsoft
 description: Jak zainicjować ponownego uruchomienia urządzenia zdalnego za pomocą zarządzania urządzeniami Azure IoT Hub. Urządzenia usługi Azure IoT SDK dla języka Java umożliwia implementowanie aplikacji symulowanego urządzenia, która obejmuje metody bezpośredniej i usługi Azure IoT SDK dla języka Java w celu zaimplementowania app service, która wywołuje metody bezpośredniej.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 46b094e8436d74915a1cd5a0ccec402bee03e33b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 272f4cfd4d79ef6d4fca3f3c00afb1c251649db8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515288"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010756"
 ---
 # <a name="get-started-with-device-management-java"></a>Wprowadzenie do zarządzania urządzeniami (Java)
 
@@ -39,7 +40,7 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe Java:
 
 * Raporty czas ostatniego ponownego uruchomienia za pomocą zgłoszonych właściwości.
 
-**ponowne uruchomienie wyzwalacza**. Ta aplikacja:
+**trigger-reboot**. Ta aplikacja:
 
 * Wywołuje metody bezpośredniej w symulowanej aplikacji urządzenia.
 
@@ -62,7 +63,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 

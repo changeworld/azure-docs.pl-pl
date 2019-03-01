@@ -8,16 +8,18 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: faea1cc7c45393c10a240de2c92757ff8f2ac5c3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c0202dfa8316caec036b4ad288c2bd32f1c4eaf3
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694115"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989408"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
 Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, w których organizacje używają usługi Azure Disk Encryption. Ten artykuł stanowi pomagające w rozwiązywaniu problemów dotyczących szyfrowania dysku.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Rozwiązywanie problemów z szyfrowania dysku systemu operacyjnego Linux
 
@@ -55,17 +57,17 @@ W niektórych przypadkach Linux, szyfrowanie dysków prawdopodobnie nie reaguje 
 
 Sekwencja szyfrowania dysku systemu operacyjnego Linux tymczasowo umożliwia odinstalowanie dysku systemu operacyjnego. Następnie wykonuje blok po bloku szyfrowanie całego dysku systemu operacyjnego, przed jej ponownie instaluje on w stanie zaszyfrowane. W przeciwieństwie do usługi Azure Disk Encryption na Windows szyfrowania dysku systemu Linux nie pozwala na współbieżne używanie obiektu maszyny Wirtualnej, gdy szyfrowanie jest w toku. Charakterystyki wydajności maszyny wirtualnej można wprowadzać znaczące różnice w czas wymagany do ukończenia szyfrowania. Te właściwości obejmują rozmiar dysku i czy jest standardowe konto magazynu lub magazynu w warstwie premium (SSD).
 
-Aby sprawdzić stan szyfrowania, sondowanie **komunikat dotyczący postępu** pola zwróciło [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) polecenia. Podczas szyfrowania dysku systemu operacyjnego maszyny Wirtualnej przechodzi do stanu obsługi i wyłączenie protokołu SSH w celu uniknięcia zakłóceń w celu ciągły proces. **EncryptionInProgress** komunikatu raportów dla większości przypadków, gdy szyfrowanie jest w toku. Kilka godzin później, **VMRestartPending** monit o ponowne uruchomienie maszyny Wirtualnej. Na przykład:
+Aby sprawdzić stan szyfrowania, sondowanie **komunikat dotyczący postępu** pola zwróciło [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia. Podczas szyfrowania dysku systemu operacyjnego maszyny Wirtualnej przechodzi do stanu obsługi i wyłączenie protokołu SSH w celu uniknięcia zakłóceń w celu ciągły proces. **EncryptionInProgress** komunikatu raportów dla większości przypadków, gdy szyfrowanie jest w toku. Kilka godzin później, **VMRestartPending** monit o ponowne uruchomienie maszyny Wirtualnej. Na przykład:
 
 
 ```
-PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
 
-PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings

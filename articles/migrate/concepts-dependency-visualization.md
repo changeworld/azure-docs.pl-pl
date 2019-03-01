@@ -6,19 +6,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b266ff100d2573ce547564a52ec0efda6ec53458
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257978"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991856"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
 [Usługi Azure Migrate](migrate-overview.md) ocenia grupy maszyn lokalnych do migracji na platformę Azure. Skorzystać z funkcji wizualizacji zależności w usłudze Azure Migrate, aby utworzyć grupy. Ten artykuł zawiera informacje o tej funkcji.
 
 > [!NOTE]
-> Funkcji wizualizacji zależności nie jest dostępna na platformie Azure Government.
+> Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ## <a name="overview"></a>Przegląd
 
@@ -26,7 +26,7 @@ Wizualizacja zależności w usłudze Azure Migrate służy do tworzenia grup o w
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
-Usługa Azure Migrate korzysta [rozwiązania Service Map](../operations-management-suite/operations-management-suite-service-map.md) rozwiązania [usługi Log Analytics](../log-analytics/log-analytics-overview.md) dla wizualizacji zależności.
+Usługa Azure Migrate korzysta [rozwiązania Service Map](../operations-management-suite/operations-management-suite-service-map.md) rozwiązania [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md) dla wizualizacji zależności.
 - Aby korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy usługi Log Analytics, nowej lub istniejącej z projektem migracji platformy Azure.
 - Możesz tworzyć lub dołączyć obszaru roboczego w tej samej subskrypcji, w której jest tworzony projekt migracji.
 - Aby dołączyć obszar roboczy usługi Log Analytics z projektem, przejdź do **Essentials** części projektu **Przegląd** strony, a następnie kliknij przycisk **wymaga konfiguracji**

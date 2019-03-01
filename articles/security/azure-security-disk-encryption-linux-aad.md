@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/17/2018
 ms.custom: seodec18
-ms.openlocfilehash: ebc948e6f875fa39b09766342b7034d7b467fdeb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 22b04b6820d838122c38c258065ebe6cf52807ba
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549466"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990870"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych systemu Linux IaaS (poprzedniej wersji)
 
@@ -21,7 +21,7 @@ ms.locfileid: "53549466"
 
 Można włączyć wiele scenariuszy szyfrowania dysku i kroki zależą od scenariusza. W poniższych częściach omówiono scenariuszach szczegółowo dla maszyn wirtualnych IaaS z systemem Linux. Zanim będzie można użyć szyfrowania dysku [wymagania wstępne dotyczące usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) należy wykonać i [dodatkowe wymagania wstępne dotyczące maszyn wirtualnych IaaS z systemem Linux](azure-security-disk-encryption-prerequisites-aad.md#bkmk_LinuxPrereq) powinna zostać przejrzana pod sekcji.
 
-Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub wykonać kopię zapasową przed dyski są szyfrowane. Tworzenie kopii zapasowych upewnij się, że opcja odzyskiwania może wystąpić, jeśli wystąpił nieoczekiwany błąd występuje podczas szyfrowania. Maszyny wirtualne z dyskami zarządzanymi wymagają kopię zapasową przed zaszyfrowaniem. Po nawiązaniu kopia zapasowa służy polecenie cmdlet polecenia Set-AzureRmVMDiskEncryptionExtension do szyfrowania dysków zarządzanych, określając parametr - skipVmBackup. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) artykułu. 
+Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub wykonać kopię zapasową przed dyski są szyfrowane. Tworzenie kopii zapasowych upewnij się, że opcja odzyskiwania może wystąpić, jeśli wystąpił nieoczekiwany błąd występuje podczas szyfrowania. Maszyny wirtualne z dyskami zarządzanymi wymagają kopię zapasową przed zaszyfrowaniem. Po nawiązaniu kopia zapasowa służy polecenie cmdlet Set-AzVMDiskEncryptionExtension do szyfrowania dysków zarządzanych, określając parametr - skipVmBackup. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) artykułu. 
 
 >[!WARNING]
  > - Jeśli wcześniej używano [usługi Azure Disk Encryption przy użyciu aplikacji Azure AD](azure-security-disk-encryption-prerequisites-aad.md) do zaszyfrowania tej maszyny Wirtualnej, konieczne będzie kontynuować ta opcja służy do szyfrowania maszyny Wirtualnej. Nie można użyć [usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie jest to obsługiwany scenariusz znaczenie przełączania się aplikacja usługi AAD dla to zaszyfrowanych maszyn wirtualnych nie jest jeszcze obsługiwane.
@@ -29,6 +29,7 @@ Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/l
  > - W przypadku szyfrowania woluminów systemu operacyjnego Linux, proces może potrwać kilka godzin. Jest to normalny trwać dłużej niż woluminów danych na potrzeby szyfrowania woluminów systemu operacyjnego Linux. 
  > - Wyłączenie szyfrowania na maszynach wirtualnych z systemem Linux jest obsługiwana tylko dla woluminów danych. Go nie jest obsługiwana na woluminach systemu operacyjnego i danych, jeśli wolumin systemu operacyjnego został zaszyfrowany.  
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="bkmk_NewLinux"></a> Wdrażanie nowych maszyn wirtualnych IaaS systemu Linux przy użyciu włączone szyfrowanie dysków 
 
@@ -45,10 +46,10 @@ Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/l
          az vm encryption show --name "MySecureVM" --resource-group "MySecureRg"
          ```
 
-     - Weryfikuj za pomocą programu Azure PowerShell przy użyciu [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) polecenia cmdlet. 
+     - Weryfikuj za pomocą programu Azure PowerShell przy użyciu [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia cmdlet. 
 
          ```azurepowershell-interactive
-         Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName 'MySecureRg' -VMName 'MySecureVM'
+         Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MySecureRg' -VMName 'MySecureVM'
          ```
 
      - Wybierz maszynę Wirtualną, a następnie kliknij pozycję **dysków** w obszarze **ustawienia** nagłówek, aby zweryfikować stan szyfrowania w portalu. Wykres w obszarze **szyfrowania**, zobaczysz, czy jest włączony. 
@@ -65,7 +66,7 @@ Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/l
 W tym scenariuszu można włączyć szyfrowanie przy użyciu szablonu usługi Resource Manager, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia. 
 
 >[!IMPORTANT]
- >Jest to konieczne do migawki i/lub kopii zapasowej dysku zarządzanego na podstawie wystąpienia maszyny Wirtualnej poza i przed włączeniem usługi Azure Disk Encryption. Migawkę dysku zarządzanego, może zostać pobrany z portalu lub [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) mogą być używane. Tworzenie kopii zapasowych upewnij się, że opcja odzyskiwania możliwe w przypadku dowolnego nieoczekiwany błąd podczas szyfrowania. Po nawiązaniu kopii zapasowej polecenia cmdlet polecenia Set-AzureRmVMDiskEncryptionExtension może służyć do szyfrowania dysków zarządzanych, określając parametr - skipVmBackup. Polecenie polecenia Set-AzureRmVMDiskEncryptionExtension zakończy się niepowodzeniem dla maszyn wirtualnych dysku zarządzanego na podstawie, dopóki nie wykonano kopii zapasowej, a ten parametr został określony. 
+ >Jest to konieczne do migawki i/lub kopii zapasowej dysku zarządzanego na podstawie wystąpienia maszyny Wirtualnej poza i przed włączeniem usługi Azure Disk Encryption. Migawkę dysku zarządzanego, może zostać pobrany z portalu lub [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) mogą być używane. Tworzenie kopii zapasowych upewnij się, że opcja odzyskiwania możliwe w przypadku dowolnego nieoczekiwany błąd podczas szyfrowania. Po nawiązaniu kopii zapasowej polecenia cmdlet Set-AzVMDiskEncryptionExtension może służyć do szyfrowania dysków zarządzanych, określając parametr - skipVmBackup. Polecenie Set-AzVMDiskEncryptionExtension zakończy się niepowodzeniem dla maszyn wirtualnych dysku zarządzanego na podstawie, dopóki nie wykonano kopii zapasowej, a ten parametr został określony. 
 >
 >Szyfrowanie lub wyłączenie szyfrowania może spowodować ponowne uruchomienie maszyny Wirtualnej. 
 >
@@ -104,9 +105,9 @@ Składnia wartości parametru klucza szyfrowania jest pełny identyfikator URI d
      ```
 
 ### <a name="bkmk_RunningLinuxPSH"> </a> Włącz szyfrowanie dla istniejących lub uruchomionej maszyny Wirtualnej systemu Linux przy użyciu programu PowerShell
-Użyj [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) polecenia cmdlet, aby włączyć szyfrowanie na uruchomionej maszyny wirtualnej IaaS na platformie Azure. 
+Użyj [AzVMDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-azvmdiskencryptionextension) polecenia cmdlet, aby włączyć szyfrowanie na uruchomionej maszyny wirtualnej IaaS na platformie Azure. 
 
--  **Szyfruj uruchomionej maszyny Wirtualnej za pomocą klucza tajnego klienta:** Poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet polecenia Set-AzureRmVMDiskEncryptionExtension. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zastąp MySecureRg, MySecureVM, MySecureVault, My-AAD-client-ID, a My-AAD-client-secret z własnymi wartościami. Może być konieczne dodanie parametru - VolumeType, jeśli Szyfrujesz dysk danych i nie dysk systemu operacyjnego. 
+-  **Szyfruj uruchomionej maszyny Wirtualnej za pomocą klucza tajnego klienta:** Poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet Set-AzVMDiskEncryptionExtension. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zastąp MySecureRg, MySecureVM, MySecureVault, My-AAD-client-ID, a My-AAD-client-secret z własnymi wartościami. Może być konieczne dodanie parametru - VolumeType, jeśli Szyfrujesz dysk danych i nie dysk systemu operacyjnego. 
 
      ```azurepowershell-interactive
       $rgName = 'MySecureRg';
@@ -114,11 +115,11 @@ Użyj [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurer
       $aadClientID = 'My-AAD-client-ID';
       $aadClientSecret = 'My-AAD-client-secret';
       $KeyVaultName = 'MySecureVault';
-      $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+      $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
       $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
       $KeyVaultResourceId = $KeyVault.ResourceId;
 
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
     ```
 - **Szyfruj uruchomionej maszyny Wirtualnej przy użyciu klucza KEK zawijania wpisu tajnego klienta:** Usługa Azure Disk Encryption umożliwia określenie istniejącego klucza w magazynie kluczy na zawijanie kluczy tajnych szyfrowania dysków, które zostały wygenerowane podczas włączania szyfrowania. Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Może być konieczne dodanie parametru - VolumeType, jeśli Szyfrujesz dysk danych i nie dysk systemu operacyjnego. 
 
@@ -129,12 +130,12 @@ Użyj [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurer
      $aadClientSecret = 'My-AAD-client-secret';
      $KeyVaultName = 'MySecureVault';
      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
-     $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+     $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
      $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
      $KeyVaultResourceId = $KeyVault.ResourceId;
      $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
 
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
+     Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
 
      ```
 
@@ -142,16 +143,16 @@ Użyj [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurer
  > Składnia służąca do wartości parametru dysku — szyfrowanie — magazyn kluczy jest ciągiem pełny identyfikator: / subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> </br>
 Składnia wartości parametru klucza szyfrowania jest pełny identyfikator URI do KEK, podobnie jak w: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
     
-- **Sprawdź, czy dyski są szyfrowane:** Aby sprawdzić stan szyfrowania maszyny wirtualnej IaaS, należy użyć [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) polecenia cmdlet. 
+- **Sprawdź, czy dyski są szyfrowane:** Aby sprawdzić stan szyfrowania maszyny wirtualnej IaaS, należy użyć [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia cmdlet. 
     
      ```azurepowershell-interactive 
-     Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName MySecureRg -VMName MySecureVM
+     Get-AzVmDiskEncryptionStatus -ResourceGroupName MySecureRg -VMName MySecureVM
      ```
     
-- **Wyłącz szyfrowanie dysków:** Aby wyłączyć szyfrowanie, użyj [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) polecenia cmdlet. Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux.
+- **Wyłącz szyfrowanie dysków:** Aby wyłączyć szyfrowanie, użyj [Disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) polecenia cmdlet. Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux.
      
      ```azurepowershell-interactive 
-     Disable-AzureRmVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM'
+     Disable-AzVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM'
      ```
 
 
@@ -208,9 +209,9 @@ Aby użyć opcji EncryptFormatAll, należy użyć dowolnego istniejącego szablo
 
 
 ### <a name="bkmk_EFAPSH"> </a> Parametr EncryptFormatAll za pomocą polecenia cmdlet programu PowerShell
-Użyj [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) polecenia cmdlet z [parametru EncryptFormatAll](https://www.powershellgallery.com/packages/AzureRM/5.0.0). 
+Użyj [AzVMDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-azvmdiskencryptionextension) polecenia cmdlet z `EncryptFormatAll` parametru.
 
-**Szyfruj przy użyciu klucza tajnego klienta i jego EncryptFormatAll uruchomionej maszyny Wirtualnej:** Na przykład poniższy skrypt inicjuje zmiennych i uruchamia polecenia Set-AzureRmVMDiskEncryptionExtension polecenie cmdlet z parametrem EncryptFormatAll. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zastąp MySecureRg, MySecureVM, MySecureVault, My-AAD-client-ID, a My-AAD-client-secret z własnymi wartościami.
+**Szyfruj przy użyciu klucza tajnego klienta i jego EncryptFormatAll uruchomionej maszyny Wirtualnej:** Na przykład poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet Set-AzVMDiskEncryptionExtension z parametrem EncryptFormatAll. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zastąp MySecureRg, MySecureVM, MySecureVault, My-AAD-client-ID, a My-AAD-client-secret z własnymi wartościami.
   
    ```azurepowershell-interactive
      $rgName = 'MySecureRg';
@@ -218,11 +219,11 @@ Użyj [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurer
      $aadClientID = 'My-AAD-client-ID';
      $aadClientSecret = 'My-AAD-client-secret';
      $KeyVaultName = 'MySecureVault';
-     $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+     $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
      $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
      $KeyVaultResourceId = $KeyVault.ResourceId;
       
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -EncryptFormatAll
+     Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -EncryptFormatAll
    ```
 
 
@@ -244,9 +245,9 @@ Zaleca się instalacji LVM-crypt. Dla wszystkich poniższych przykładach Zamie�
          
         `echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab`
     
-    4. Uruchom polecenie cmdlet programu PowerShell polecenia Set-AzureRmVMDiskEncryptionExtension z - EncryptFormatAll można zaszyfrować te dyski.
+    4. Uruchom polecenie cmdlet programu PowerShell Set-AzVMDiskEncryptionExtension z - EncryptFormatAll można zaszyfrować te dyski.
          ```azurepowershell-interactive
-         Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
+         Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
          ```
     5. Skonfiguruj LVM na podstawie tych nowych dysków. Należy pamiętać, że zaszyfrowanych dysków są odblokowane, po zakończeniu maszyny Wirtualnej podczas uruchamiania. Tak instalowania LVM musi także zostać później opóźnione.
 
@@ -262,19 +263,19 @@ Postępuj zgodnie z instrukcjami w dodatku do przygotowania obrazów zaszyfrowan
 * [Przygotowywanie wirtualnego dysku twardego systemu Linux zaszyfrowane wstępnie](azure-security-disk-encryption-appendix.md#bkmk_preLinux)
 
 >[!IMPORTANT]
- >Jest to konieczne do migawki i/lub kopii zapasowej dysku zarządzanego na podstawie wystąpienia maszyny Wirtualnej poza i przed włączeniem usługi Azure Disk Encryption. Migawkę dysku zarządzanego, może zostać pobrany z portalu lub [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) mogą być używane. Tworzenie kopii zapasowych upewnij się, że opcja odzyskiwania możliwe w przypadku dowolnego nieoczekiwany błąd podczas szyfrowania. Po nawiązaniu kopii zapasowej polecenia cmdlet polecenia Set-AzureRmVMDiskEncryptionExtension może służyć do szyfrowania dysków zarządzanych, określając parametr - skipVmBackup. Polecenie polecenia Set-AzureRmVMDiskEncryptionExtension zakończy się niepowodzeniem dla maszyn wirtualnych dysku zarządzanego na podstawie, dopóki nie wykonano kopii zapasowej, a ten parametr został określony. 
+ >Jest to konieczne do migawki i/lub kopii zapasowej dysku zarządzanego na podstawie wystąpienia maszyny Wirtualnej poza i przed włączeniem usługi Azure Disk Encryption. Migawkę dysku zarządzanego, może zostać pobrany z portalu lub [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) mogą być używane. Tworzenie kopii zapasowych upewnij się, że opcja odzyskiwania możliwe w przypadku dowolnego nieoczekiwany błąd podczas szyfrowania. Po nawiązaniu kopii zapasowej polecenia cmdlet Set-AzVMDiskEncryptionExtension może służyć do szyfrowania dysków zarządzanych, określając parametr - skipVmBackup. Polecenie Set-AzVMDiskEncryptionExtension zakończy się niepowodzeniem dla maszyn wirtualnych dysku zarządzanego na podstawie, dopóki nie wykonano kopii zapasowej, a ten parametr został określony. 
 >
 >Szyfrowanie lub wyłączenie szyfrowania może spowodować ponowne uruchomienie maszyny Wirtualnej. 
 
 
 
 ### <a name="bkmk_VHDprePSH"> </a> Szyfrowanie maszyn wirtualnych IaaS z zaszyfrowane wstępnie dyskami VHD za pomocą programu Azure PowerShell 
-Można włączyć szyfrowanie dysków na zaszyfrowane wirtualnego dysku twardego za pomocą polecenia cmdlet programu PowerShell [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk#examples). W poniższym przykładzie zapewnia niektórych wspólnych parametrów. 
+Można włączyć szyfrowanie dysków na zaszyfrowane wirtualnego dysku twardego za pomocą polecenia cmdlet programu PowerShell [AzVMOSDisk zestaw](/powershell/module/az.compute/set-azvmosdisk#examples). W poniższym przykładzie zapewnia niektórych wspólnych parametrów. 
 
 ```powershell
-$VirtualMachine = New-AzureRmVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
-$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "SecureOSDisk" -VhdUri "os.vhd" Caching ReadWrite -Windows -CreateOption "Attach" -DiskEncryptionKeyUrl "https://mytestvault.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa" -DiskEncryptionKeyVaultId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mytestvault"
-New-AzureRmVM -VM $VirtualMachine -ResourceGroupName "MySecureRG"
+$VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name "SecureOSDisk" -VhdUri "os.vhd" Caching ReadWrite -Windows -CreateOption "Attach" -DiskEncryptionKeyUrl "https://mytestvault.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa" -DiskEncryptionKeyVaultId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mytestvault"
+New-AzVM -VM $VirtualMachine -ResourceGroupName "MySecureRG"
 ```
 
 ### <a name="bkmk_VHDpreRM"> </a> Szablon usługi Resource Manager służy do szyfrowania maszyn wirtualnych IaaS z zaszyfrowane wstępnie wirtualne dyski twarde 
@@ -294,7 +295,7 @@ Poniższa tabela zawiera listę parametrów szablonu usługi Resource Manager dl
 | virtualNetworkName | Nazwa sieci wirtualnej, która karty Sieciowej maszyny Wirtualnej powinny należeć do. Nazwa powinna już została utworzona w tej samej grupie zasobów i tej samej lokalizacji co maszyna wirtualna. |
 | subnetName | Nazwa podsieci w sieci wirtualnej, której karty Sieciowej maszyny Wirtualnej powinna należeć. |
 | vmSize | Rozmiar maszyny Wirtualnej. Obecnie są obsługiwane tylko standardowe A, D i G serii. |
-| keyVaultResourceID | Identyfikator zasobu, która identyfikuje zasób magazynu kluczy w usłudze Azure Resource Manager. Możesz pobrać go przy użyciu polecenia cmdlet programu PowerShell `(Get-AzureRmKeyVault -VaultName &lt;MyKeyVaultName&gt; -ResourceGroupName &lt;MyResourceGroupName&gt;).ResourceId` lub za pomocą polecenia wiersza polecenia platformy Azure `az keyvault show --name "MySecureVault" --query id`|
+| keyVaultResourceID | Identyfikator zasobu, która identyfikuje zasób magazynu kluczy w usłudze Azure Resource Manager. Możesz pobrać go przy użyciu polecenia cmdlet programu PowerShell `(Get-AzKeyVault -VaultName &lt;MyKeyVaultName&gt; -ResourceGroupName &lt;MyResourceGroupName&gt;).ResourceId` lub za pomocą polecenia wiersza polecenia platformy Azure `az keyvault show --name "MySecureVault" --query id`|
 | keyVaultSecretUrl | Adres URL klucza szyfrowania dysku, który jest skonfigurowany w usłudze key vault. |
 | keyVaultKekUrl | Adres URL klucza szyfrowania do szyfrowania klucza wygenerowanego szyfrowania dysków. |
 | vmName | Nazwa maszyny Wirtualnej IaaS. |
@@ -323,7 +324,7 @@ W przeciwieństwie do składni programu Powershell interfejsu wiersza polecenia 
  Szyfrowanie nowego dysku dla systemu Linux za pomocą programu Powershell, nowa wersja sekwencji musi być określona. Wersja sekwencji musi być unikatowa. Poniższy skrypt generuje identyfikator GUID wersji sekwencji. 
  
 
--  **Szyfruj uruchomionej maszyny Wirtualnej za pomocą klucza tajnego klienta:** Poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet polecenia Set-AzureRmVMDiskEncryptionExtension. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zastąp MySecureRg, MySecureVM, MySecureVault, My-AAD-client-ID, a My-AAD-client-secret z własnymi wartościami. Parametr - VolumeType ustawiono dysków z danymi i nie dysk systemu operacyjnego. Jeśli maszyna wirtualna wcześniej został zaszyfrowany za pomocą typu woluminu "System operacyjny" lub "All", następnie parametr - VolumeType należy je zmienić wszystkie tak, że zarówno system operacyjny, jak i nowy dysk danych zostaną dołączone.
+-  **Szyfruj uruchomionej maszyny Wirtualnej za pomocą klucza tajnego klienta:** Poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet Set-AzVMDiskEncryptionExtension. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zastąp MySecureRg, MySecureVM, MySecureVault, My-AAD-client-ID, a My-AAD-client-secret z własnymi wartościami. Parametr - VolumeType ustawiono dysków z danymi i nie dysk systemu operacyjnego. Jeśli maszyna wirtualna wcześniej został zaszyfrowany za pomocą typu woluminu "System operacyjny" lub "All", następnie parametr - VolumeType należy je zmienić wszystkie tak, że zarówno system operacyjny, jak i nowy dysk danych zostaną dołączone.
 
      ```azurepowershell-interactive
       $sequenceVersion = [Guid]::NewGuid();
@@ -332,11 +333,11 @@ W przeciwieństwie do składni programu Powershell interfejsu wiersza polecenia 
       $aadClientID = 'My-AAD-client-ID';
       $aadClientSecret = 'My-AAD-client-secret';
       $KeyVaultName = 'MySecureVault';
-      $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+      $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
       $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
       $KeyVaultResourceId = $KeyVault.ResourceId;
 
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion;
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion;
     ```
 - **Szyfruj uruchomionej maszyny Wirtualnej przy użyciu klucza KEK zawijania wpisu tajnego klienta:** Usługa Azure Disk Encryption umożliwia określenie istniejącego klucza w magazynie kluczy na zawijanie kluczy tajnych szyfrowania dysków, które zostały wygenerowane podczas włączania szyfrowania. Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Parametr - VolumeType ustawiono dysków z danymi i nie dysk systemu operacyjnego. Jeśli maszyna wirtualna wcześniej został zaszyfrowany za pomocą typu woluminu "System operacyjny" lub "All", następnie parametr - VolumeType należy je zmienić wszystkie tak, że zarówno system operacyjny, jak i nowy dysk danych zostaną dołączone.
 
@@ -347,12 +348,12 @@ W przeciwieństwie do składni programu Powershell interfejsu wiersza polecenia 
      $aadClientSecret = 'My-AAD-client-secret';
      $KeyVaultName = 'MySecureVault';
      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
-     $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+     $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
      $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
      $KeyVaultResourceId = $KeyVault.ResourceId;
      $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
 
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data';
+     Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data';
      ```
 
 
@@ -366,9 +367,9 @@ Można wyłączyć szyfrowanie przy użyciu programu Azure PowerShell, interfejs
 >[!IMPORTANT]
 >Wyłączenie szyfrowania za pomocą usługi Azure Disk Encryption na maszynach wirtualnych z systemem Linux jest obsługiwana tylko dla woluminów danych. Go nie jest obsługiwana na woluminach systemu operacyjnego i danych, jeśli wolumin systemu operacyjnego został zaszyfrowany.  
 
-- **Wyłącz szyfrowanie dysków za pomocą programu Azure PowerShell:** Aby wyłączyć szyfrowanie, użyj [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) polecenia cmdlet. 
+- **Wyłącz szyfrowanie dysków za pomocą programu Azure PowerShell:** Aby wyłączyć szyfrowanie, użyj [Disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) polecenia cmdlet. 
      ```azurepowershell-interactive
-     Disable-AzureRmVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
+     Disable-AzVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
      ```
 
 - **Wyłącz szyfrowanie za pomocą wiersza polecenia platformy Azure:** Aby wyłączyć szyfrowanie, użyj [az vm encryption, wyłącz](/cli/azure/vm/encryption#az-vm-encryption-disable) polecenia. 

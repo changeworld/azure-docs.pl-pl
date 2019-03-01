@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e79fdf2d7d680b3a229385c0fd96d844b3425b18
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455936"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992485"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Przywracanie danych z kopii zapasowej w usłudze Azure Cosmos DB 
 
@@ -33,6 +33,11 @@ Przed zażądaniem przywracania, powinny mieć następujące informacje:
 * Usunięcie co najmniej jednej bazy danych należy podać konto usługi Cosmos Azure, a także nazwy bazy danych Azure Cosmos i określ, czy nowej bazy danych o takiej samej nazwie istnieje.
 
 * Jeśli co najmniej jeden kontener zostaną usunięte, należy podać nazwę konta usługi Azure Cosmos, nazwy baz danych i nazwy kontenera. I określ, czy kontener o takiej samej nazwie istnieje.
+
+* Jeśli przypadkowo usunięty lub uszkodzone dane, należy skontaktować się ze [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) w 8 godzin, aby zespół usługi Azure Cosmos DB może pomagać przywracania danych z kopii zapasowych.
+  
+  * Jeśli została przypadkowo usunięta z bazy danych lub kontenera, należy otworzyć zgłoszenie do pomocy technicznej ważność B lub ważność C Azure. 
+  * Jeśli przypadkowo usunięty lub uszkodzony niektórych dokumentów w kontenerze, należy otworzyć zgłoszenie do pomocy technicznej ważność A. 
 
 Gdy wystąpi uszkodzenie danych, a dokumenty z kontenera zostaną zmodyfikowane lub usunięte, **jak najszybciej usunąć kontener**. Przez usunięcie kontenera, można uniknąć zastępowaniu kopie zapasowe usługi Azure Cosmos DB. Jeśli z jakiegoś powodu usunięcia nie jest możliwe, należy jak najszybciej założyć zgłoszenie. Oprócz nazwy konta usługi Azure Cosmos nazwy baz danych w przypadku nazw kolekcji należy określić punkt w czasie, do której można przywrócić dane do. Należy być dokładny jak to możliwe pomóc nam określić najlepszych dostępnych kopii zapasowych, w tym czasie. Jest również ważne określić godzinę w formacie UTC. 
 

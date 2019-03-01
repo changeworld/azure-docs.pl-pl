@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: spelluru
-ms.openlocfilehash: b69215a76b332db9b994827705d6bbc3b48af5c8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465517"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991210"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
 
@@ -24,17 +24,20 @@ Obecnie usługa Event Grid wysyła każde zdarzenie indywidualnie do subskrybent
 
 ## <a name="retry-schedule-and-duration"></a>Harmonogram ponownych prób i czas trwania
 
-Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas dostarczania zdarzeń. Jeśli punkt końcowy przestaje odpowiadać, zwraca kod błędu usługi Event Grid ponawia próbę dostarczania według następującego harmonogramu:
+Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas dostarczania zdarzeń. Jeśli punkt końcowy przestaje odpowiadać, zwraca kod błędu usługi Event Grid ponawia próbę dostarczania według następującego harmonogramu na optymalne rozwiązanie:
 
 1. 10 sekund
-2. 30 sekund
-3. 1 min
-4. 5 minut
-5. 10 minut
-6. 30 minut
-7. 1 godzina
+1. 30 sekund
+1. 1 min
+1. 5 minut
+1. 10 minut
+1. 30 minut
+1. 1 godzina
+1. Co godzinę przez maksymalnie 24 godziny
 
-Usługa Event Grid dodaje małe losowe do wszystkich kroków ponownych prób. Po upływie godziny dostarczania zdarzeń próba jest ponawiana co godzinę.
+Usługa Event Grid dodaje małe losowe do wszystkich kroków ponownych prób i tylko wtedy może pominąć niektóre ponownych prób, jeśli punkt końcowy jest stale złej kondycji, dół przez długi czas lub wydaje się być przeciążeniu.
+
+Deterministyczne zachowania, ustaw czas zdarzenia na żywo i w próby max dostarczania [zasady ponawiania prób subskrypcji](manage-event-delivery.md).
 
 Domyślnie usługi Event Grid wygasa wszystkie zdarzenia, które nie są dostarczane w ciągu 24 godzin. Możesz [Dostosuj zasady ponawiania](manage-event-delivery.md) podczas tworzenia subskrypcji zdarzeń. Podaj maksymalną liczbę prób dostarczenia (wartość domyślna to 30) i zdarzenia time to live (wartość domyślna to 1440 minut).
 

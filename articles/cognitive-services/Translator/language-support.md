@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4e8193a9996c9675a353e3e427c86ecfee45da8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a99c0157ef3afe9823d73379775ddcf564faccc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737845"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193810"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -33,7 +33,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 * Domyślnie neuronowej: Neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
 * Neuronowych tylko: Tylko tłumaczenie neuronowe jest dostępna.
 
-**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych.
+**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych. [Wyświetl dostępne w niestandardowych w usłudze Translator langauges](#customization).
 
 |Język|  Kod języka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
@@ -52,7 +52,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 |Holenderski| `nl`    |Neuronowych dostępne|  Neuronowych|
 |Polski|   `en`    |Neuronowych dostępne|  Neuronowych|
 |Estoński|  `et`    |Neuronowych dostępne|  Neuronowych|
-|Fidżi|    `fj`    |Tylko statystyczne|  Statystyczne|
+|Fidżyjski|    `fj`    |Tylko statystyczne|  Statystyczne|
 |Filipino|  `fil`   |Tylko statystyczne|  Statystyczne|
 |Fiński|   `fi`    |Neuronowych dostępne|  Neuronowych|
 |Francuski|    `fr`    |Neuronowych dostępne|  Neuronowych|
@@ -83,7 +83,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 |Queretaro Otomi|   `otq`   |Tylko statystyczne|  Statystyczne|
 |Rumuński|  `ro`    |Neuronowych dostępne|  Neuronowych|
 |Rosyjski|   `ru`    |Neuronowych dostępne|  Neuronowych|
-|(Samoa Zachodnie)|    `sm`    |Tylko statystyczne|  Statystyczne|
+|Samoański|    `sm`    |Tylko statystyczne|  Statystyczne|
 |Serbski (cyrylica)|    `sr-Cyrl`   |Tylko statystyczne|  Statystyczne|
 |Serbski (łaciński)|   `sr-Latn`   |Tylko statystyczne   |Statystyczne|
 |Słowacki|    `sk`    |Neuronowych dostępne|  Neuronowych|
@@ -94,7 +94,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 |Tamilski| `ta`    |Tylko statystyczne|  Statystyczne|
 |Telugu|    `te`    |Tylko neuronowych|   Neuronowych|
 |Tajlandzki|  `th`    |Neuronowych dostępne|  Neuronowych|
-|Pa'anga|    `to`    |Tylko statystyczne|  Statystyczne|
+|Tonga|    `to`    |Tylko statystyczne|  Statystyczne|
 |Turecki|   `tr`    |Neuronowych dostępne   |Neuronowych|
 |Ukraiński| `uk`    |Neuronowych dostępne|  Neuronowych|
 |Urdu|  `ur`    |Tylko statystyczne|  Statystyczne|

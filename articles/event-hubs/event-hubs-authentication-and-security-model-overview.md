@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6f4abd9f826864914abee0b5d513d5b1c530d416
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104156"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990038"
 ---
 # <a name="azure-event-hubs---authentication-and-security-model"></a>Usługa Azure Event Hubs — uwierzytelnianie i model zabezpieczeń
 
@@ -68,13 +68,13 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>Generowanie tokenów
 
-Można generować tokeny przy użyciu klucza sygnatury dostępu Współdzielonego. Musi mieć tylko jeden token na klienta. Następnie można tworzyć tokeny przy użyciu następującej metody. Wszystkie tokeny są generowane przy użyciu **EventHubSendKey** klucza. Każdy token jest przypisany unikatowy identyfikator URI.
+Można generować tokeny przy użyciu klucza sygnatury dostępu Współdzielonego. Musi mieć tylko jeden token na klienta. Następnie można tworzyć tokeny przy użyciu następującej metody. Wszystkie tokeny są generowane przy użyciu **EventHubSendKey** klucza. Każdy token jest przypisany unikatowy identyfikator URI. Parametr "resource" odnosi się do identyfikatora URI punktu końcowego usługi (w tym przypadku Centrum zdarzeń).
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-Po wywołaniu tej metody, identyfikator URI powinien być określony jako `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Wszystkie tokeny identyfikator URI jest identyczna, z wyjątkiem produktów `PUBLISHER_NAME`, powinna ona być inna dla każdego tokenu. W idealnym przypadku `PUBLISHER_NAME` reprezentuje identyfikator klienta, który odbiera token.
+Po wywołaniu tej metody, identyfikator URI powinien być określony jako `https://<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Wszystkie tokeny identyfikator URI jest identyczna, z wyjątkiem produktów `PUBLISHER_NAME`, powinna ona być inna dla każdego tokenu. W idealnym przypadku `PUBLISHER_NAME` reprezentuje identyfikator klienta, który odbiera token.
 
 Ta metoda generuje token o następującej strukturze:
 

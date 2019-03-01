@@ -8,16 +8,18 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d23e6d00b77e69f7f3353938c52b450eebbfd142
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208078"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990684"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
 Ten artykuł stanowi dodatek do [usługi Azure Disk Encryption dla maszyn wirtualnych IaaS](azure-security-disk-encryption-overview.md). Upewnij się, że odczytu usługa Azure Disk Encryption dla maszyn wirtualnych IaaS artykułów najpierw po to, aby zrozumieć kontekst. W tym artykule opisano sposób przygotowania zaszyfrowane wstępnie wirtualnych dysków twardych i innych zadań.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-your-subscription"></a>Nawiązywanie połączenia z subskrypcją
 Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-encryption-prerequisites.md) artykułu. Po spełnieniu wszystkich wymagań wstępnych, połącz się z subskrypcją, uruchamiając następujące polecenia cmdlet:
@@ -27,22 +29,22 @@ Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-
 1. Uruchom sesję programu Azure PowerShell i zaloguj się do konta platformy Azure za pomocą następującego polecenia:
 
      ```powershell
-     Connect-AzureRmAccount 
+     Connect-AzAccount 
      ```
 2. Jeśli masz wiele subskrypcji i chcesz określić, należy użyć, wpisz następujące polecenie, aby zobaczyć subskrypcje dla konta:
      
      ```powershell
-     Get-AzureRmSubscription
+     Get-AzSubscription
      ```
 3. Aby określić subskrypcję, której chcesz użyć, wpisz:
  
      ```powershell
-      Select-AzureRmSubscription -SubscriptionName <Yoursubscriptionname>
+      Select-AzSubscription -SubscriptionName <Yoursubscriptionname>
      ```
 4. Aby sprawdzić, czy subskrypcja skonfigurowane jest poprawna, wpisz:
      
      ```powershell
-     Get-AzureRmSubscription
+     Get-AzSubscription
      ```
 5. Jeśli to konieczne, połączyć się z usługi Azure AD z [Connect-AzureAD](/powershell/module/azuread/connect-azuread).
      
@@ -91,9 +93,9 @@ Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-
 - **Lista wszystkich zaszyfrowanych maszyn wirtualnych w ramach subskrypcji**
 
      ```azurepowershell-interactive
-     $osVolEncrypted = {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-     $dataVolEncrypted= {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-     Get-AzureRmVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+     $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+     Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
      ```
 
 - **Listę wszystkich dysków szyfrowania wpisów tajnych używany do szyfrowania maszyn wirtualnych w magazynie kluczy** 
@@ -112,8 +114,8 @@ W poniższej tabeli przedstawiono, w której parametry mogą być używane w skr
 |------|------|------|
 |$resourceGroupName| Nazwa grupy zasobów, do której należy magazynu kluczy.  Będzie można utworzyć nową grupę zasobów o tej nazwie, jeśli nie istnieje.| True|
 |$keyVaultName|Nazwa magazynu kluczy, w których szyfrowania mają być umieszczone klucze. Jeśli nie istnieje, zostanie utworzony nowy magazyn o tej nazwie.| True|
-|$location|Lokalizacja magazynu kluczy. Upewnij się, że magazyn kluczy i maszyny wirtualne, które były szyfrowane znajdują się w tej samej lokalizacji. Pobierz listę lokalizacji za pomocą polecenia `Get-AzureRMLocation`.|True|
-|$subscriptionId|Identyfikator subskrypcji platformy Azure do użycia.  Możesz pobrać identyfikator subskrypcji za pomocą polecenia `Get-AzureRMSubscription`.|True|
+|$location|Lokalizacja magazynu kluczy. Upewnij się, że magazyn kluczy i maszyny wirtualne, które były szyfrowane znajdują się w tej samej lokalizacji. Pobierz listę lokalizacji za pomocą polecenia `Get-AzLocation`.|True|
+|$subscriptionId|Identyfikator subskrypcji platformy Azure do użycia.  Możesz pobrać identyfikator subskrypcji za pomocą polecenia `Get-AzSubscription`.|True|
 |$aadAppName|Nazwa aplikacji usługi Azure AD, która będzie służyć do zapisu kluczy tajnych do magazynu kluczy. Jeśli taka aplikacja nie istnieje, zostanie utworzona nowa aplikacja o podanej nazwie. Jeśli ta aplikacja już istnieje, należy przekazać parametr aadClientSecret do skryptu.|False|
 |$aadClientSecret|Klucz tajny klienta aplikacji usługi Azure AD, który został utworzony wcześniej.|False|
 |$keyEncryptionKeyName|Nazwa opcjonalny klucz szyfrowania klucza w magazynie KeyVault. Jeśli nie istnieje, zostanie utworzony nowy klucz o tej nazwie.|False|
@@ -225,7 +227,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
  CentOS 7.2 szyfrowania dysku systemu operacyjnego jest obsługiwane za pośrednictwem niestandardowy obraz. Aby użyć tego obrazu, "7.2n" jako jednostkę SKU można określić podczas tworzenia maszyny Wirtualnej:
 
  ```powershell
-    Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
+    Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
  ```
 2. Konfigurowanie maszyny Wirtualnej, zgodnie z potrzebami. Jeśli zamierzasz do szyfrowania wszystkich (systemu operacyjnego i danych) dysków, dyski z danymi musi być określona i instalacja z/etc/fstab.
 
@@ -241,9 +243,9 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 
 5. Okresowo monitorować postęp szyfrowania zgodnie z instrukcjami podanymi w [następnej sekcji](#monitoring-os-encryption-progress).
 
-6. Po Get-AzureRmVmDiskEncryptionStatus pokazuje "VMRestartPending", należy ponownie uruchomić maszynę Wirtualną, logując się do niego albo za pomocą witryny portal, programu PowerShell lub interfejsu wiersza polecenia.
+6. Po Get AzVmDiskEncryptionStatus zawiera "VMRestartPending", należy ponownie uruchomić maszynę Wirtualną, logując się do niego albo za pomocą witryny portal, programu PowerShell lub interfejsu wiersza polecenia.
     ```powershell
-    C:\> Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
+    C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
 
     OsVolumeEncrypted          : VMRestartPending
@@ -256,7 +258,7 @@ Przed ponownym uruchomieniu, zaleca się zapisanie [diagnostykę rozruchu](https
 ## <a name="monitoring-os-encryption-progress"></a>Monitorowanie postępu szyfrowania systemu operacyjnego
 Możesz monitorować postęp szyfrowania systemu operacyjnego na trzy sposoby:
 
-* Użyj `Get-AzureRmVmDiskEncryptionStatus` polecenia cmdlet i sprawdź pole komunikat dotyczący postępu:
+* Użyj `Get-AzVmDiskEncryptionStatus` polecenia cmdlet i sprawdź pole komunikat dotyczący postępu:
     ```powershell
     OsVolumeEncrypted          : EncryptionInProgress
     DataVolumesEncrypted       : NotMounted
@@ -537,7 +539,7 @@ na
 ## <a name="bkmk_UploadVHD"></a> Przekazywanie zaszyfrowanego dysku VHD do konta usługi Azure storage
 Po włączeniu funkcji BitLocker szyfrowania lub szyfrowania DM-Crypt lokalny wirtualny dysk twardy zaszyfrowanych wymaga do przekazania do swojego konta magazynu.
 ```powershell
-    Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
+    Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> Przekaż klucz tajny dla wstępnie zaszyfrowanej maszyny Wirtualnej do magazynu kluczy
 W przypadku szyfrowania przy użyciu aplikacji usługi Azure AD (poprzedniej wersji), należy przekazać klucz tajny szyfrowania dysku, który został uzyskany wcześniej w formie wpisu tajnego w magazynie kluczy. Magazyn kluczy wymaga szyfrowania dysku i włączonymi uprawnieniami dla klienta usługi Azure AD.
@@ -546,14 +548,14 @@ W przypadku szyfrowania przy użyciu aplikacji usługi Azure AD (poprzedniej wer
  $AadClientId = "My-AAD-Client-Id"
  $AadClientSecret = "My-AAD-Client-Secret"
 
- $key vault = New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
+ $key vault = New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
 
- Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
- Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
+ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
+ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Wpis tajny szyfrowania dysku nie jest szyfrowana za pomocą klucza KEK
-Aby skonfigurować wpisu tajnego w magazynie kluczy, użyj [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret). Jeśli masz maszynę wirtualną Windows, plik klucza szyfrowania bloków jest zakodowany jako ciąg w formacie base64 i następnie przekazywane do usługi key vault przy użyciu `Set-AzureKeyVaultSecret` polecenia cmdlet. Dla systemu Linux hasło jest zakodowany jako ciąg w formacie base64, a następnie przekazywane do magazynu kluczy. Ponadto upewnij się, że następujące znaczniki są ustawione podczas tworzenia klucza tajnego w magazynie kluczy.
+Aby skonfigurować wpisu tajnego w magazynie kluczy, użyj [Set-AzureKeyVaultSecret](/powershell/module/az.keyvault/set-azurekeyvaultsecret). Jeśli masz maszynę wirtualną Windows, plik klucza szyfrowania bloków jest zakodowany jako ciąg w formacie base64 i następnie przekazywane do usługi key vault przy użyciu `Set-AzureKeyVaultSecret` polecenia cmdlet. Dla systemu Linux hasło jest zakodowany jako ciąg w formacie base64, a następnie przekazywane do magazynu kluczy. Ponadto upewnij się, że następujące znaczniki są ustawione podczas tworzenia klucza tajnego w magazynie kluczy.
 
 #### <a name="windows-bek-file"></a>Plik klucza szyfrowania bloków Windows
 ```powershell
@@ -578,7 +580,7 @@ $SecretName = [guid]::NewGuid().ToString()
 $SecureSecretValue = ConvertTo-SecureString $FileContentEncoded -AsPlainText -Force
 $Secret = Set-AzureKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
 
-# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzureRmVMOSDisk when you attach your OS disk. 
+# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzVMOSDisk when you attach your OS disk. 
 $SecretUrl=$secret.Id
 $SecretUrl
 ```
@@ -602,7 +604,7 @@ $SecretUrl
 Użyj `$secretUrl` w następnym kroku zapoznać [dołączenie dysku systemu operacyjnego bez użycia klucza KEK](#bkmk_URLnoKEK).
 
 ### <a name="bkmk_SecretKEK"></a> Wpis tajny szyfrowania dysku zaszyfrowane przy użyciu klucza KEK
-Przed przekazaniem wpisu tajnego do magazynu kluczy, można opcjonalnie zaszyfrować przy użyciu klucza szyfrowania. Użyj zawijania [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) najpierw szyfrowania klucza tajnego przy użyciu klucza szyfrowania. Dane wyjściowe tej operacji zawijania to ciąg zakodowany w adresie URL base64, możesz następnie przekazać jako wpis tajny przy użyciu [ `Set-AzureKeyVaultSecret` ](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) polecenia cmdlet.
+Przed przekazaniem wpisu tajnego do magazynu kluczy, można opcjonalnie zaszyfrować przy użyciu klucza szyfrowania. Użyj zawijania [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) najpierw szyfrowania klucza tajnego przy użyciu klucza szyfrowania. Dane wyjściowe tej operacji zawijania to ciąg zakodowany w adresie URL base64, możesz następnie przekazać jako wpis tajny przy użyciu [ `Set-AzureKeyVaultSecret` ](/powershell/module/az.keyvault/set-azurekeyvaultsecret) polecenia cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -699,7 +701,7 @@ Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku zapoznać [dołącze
 ###  <a name="bkmk_URLnoKEK"></a>Bez użycia klucza KEK
 Gdy dołączasz dysku systemu operacyjnego, musisz przekazać `$secretUrl`. Adres URL został wygenerowany w sekcji "nie jest szyfrowana za pomocą klucza KEK tajny szyfrowania dysku".
 ```powershell
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
             -VM $VirtualMachine `
             -Name $OSDiskName `
             -SourceImageUri $VhdUri `
@@ -712,7 +714,7 @@ Gdy dołączasz dysku systemu operacyjnego, musisz przekazać `$secretUrl`. Adre
 ### <a name="bkmk_URLKEK"></a>Za pomocą klucza KEK
 Po dołączeniu dysku systemu operacyjnego, należy przekazać `$KeyEncryptionKey` i `$secretUrl`. Adres URL został wygenerowany w sekcji "Wpis tajny szyfrowania dysku zaszyfrowane przy użyciu klucza KEK".
 ```powershell
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
             -VM $VirtualMachine `
             -Name $OSDiskName `
             -SourceImageUri $CopiedTemplateBlobUri `

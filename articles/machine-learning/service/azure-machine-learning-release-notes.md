@@ -11,18 +11,25 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bb2c7d9eed2ed33f3cd0c33bfc479d2e3627370
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: aeda7377a2d5d070a2e36126d53f8f5c203a8256
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889855"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991397"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełny opis każdego zestawu SDK odwiedź dokumenty referencyjne dotyczące:
 + Usługi Azure Machine Learning [ **głównego zestawu SDK dla języka Python**](https://aka.ms/aml-sdk)
 + Usługi Azure Machine Learning [ **przygotowania danych zestawu SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-27"></a>2019-02-27
+
+### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Zestaw SDK v1.0.16 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Naprawienie usterki**
+  + Rozwiązano nazwy głównej usługi problem z uwierzytelnianiem, które zostało spowodowane przez zmiany interfejsu API.
 
 ## <a name="2019-02-25"></a>2019-02-25
 
@@ -37,6 +44,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
   + Dodaliśmy obsługę potoki usługi Azure Machine Learning do ustawiania właściwości source_directory_data_store żądanego magazynu danych (takich jak magazyn obiektów blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , są dostarczane do [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Domyślnie kroki używają magazyn plików Azure jako zapasowy magazyn danych, które mogą być uruchamiane do ograniczania problemy, gdy dużą liczbę czynności są wykonywane jednocześnie.
 
 ### <a name="azure-portal"></a>Azure Portal
+
 + **Nowe funkcje**
     + Nowe przeciągania i upuszczania tabeli środowisko edytora raportów. Użytkownikom można przeciągnąć kolumnę z obszaru do obszaru tabeli, w której będzie można wyświetlić podglądu tabeli. Można zmieniać kolejności kolumn.
     + Nowy przycisk Uruchom przesłane z ScriptRunConfig uruchomień. Użytkownicy mogą ponownie uruchamiać istniejące uruchamiania w klastrze zdalnym wybranych przez nich.

@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0467f131ab4300ba3217ed01f37ebb7f4b8dbe5e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e8028bc9a4a6f3245dca61d6dd30db22dc295a7f
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732776"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992451"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "56732776"
 Użyj się ze wskazówkami w tym artykule, aby wdrożyć usługi App Service w usłudze Azure Stack.
 
 > [!IMPORTANT]  
-> Zastosowanie aktualizacji 1809 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.4.
+> Zastosowanie aktualizacji 1901 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem Azure App Service w wersji 1.5.
 
 Zapewnić użytkownikom możliwość tworzenia aplikacji interfejsu API sieci web i. Aby zezwolić użytkownikom na tworzenie tych aplikacji, należy:
 
@@ -38,7 +38,7 @@ Zapewnić użytkownikom możliwość tworzenia aplikacji interfejsu API sieci we
  - Po zainstalowaniu dostawcy zasobów usługi App Service, można uwzględnić go w swojej oferty i plany. Użytkownicy mogą następnie subskrybować Uzyskaj usługi i zacznij tworzyć aplikacje.
 
 > [!IMPORTANT]  
-> Przed uruchomieniem Instalatora dostawcy zasobów, upewnij się, że wykonano wskazówki zawarte w [przed rozpoczęciem pracy](azure-stack-app-service-before-you-get-started.md).
+> Przed uruchomieniem Instalatora dostawcy zasobów, upewnij się, że wykonano wskazówki zawarte w [przed rozpoczęciem pracy](azure-stack-app-service-before-you-get-started.md) i po ich przeczytaniu [informacje o wersji](azure-stack-app-service-release-notes-update-five.md), którym towarzyszą wersję 1.5, aby dowiedzieć się więcej o nowych Funkcje, poprawki i znane problemy, które mogą mieć wpływ na wdrożenie.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Uruchom Instalatora dostawcy zasobów usługi App Service
 
@@ -99,7 +99,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
    ![Instalator usługi App Service][4]
 
-8. Wprowadź informacje dotyczące udziału plików, a następnie wybierz pozycję **dalej**. Adres udziału plików należy użyć w pełni kwalifikowanej domeny nazwę (FQDN) lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.
+8. Wprowadź informacje dotyczące udziału plików, a następnie wybierz pozycję **dalej**. Adres udziału plików należy użyć w pełni kwalifikowanej domeny nazwę (FQDN) lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.  Jeśli używasz serwera plików, który jest przyłączony do domeny, należy podać pełną nazwę użytkownika, łącznie z domeną, na przykład myfileserverdomain\FileShareOwner.
 
    >[!NOTE]
    >Instalator spróbuje ją przetestować łączność z udziałem plików przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, ten test łączności może się nie powieść. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje o udziale plików jest poprawny, nadal wdrożenia.
@@ -184,6 +184,11 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     ![Instalator usługi App Service][17]
 
+## <a name="post-deployment-steps"></a>Czynności po wdrożeniu
+
+> [!IMPORTANT]  
+> Jeśli podano jednostki Uzależnionej usługi aplikacji przy użyciu zawsze w wystąpieniu SQL musi [Dodawanie appservice_hosting i appservice_metering baz danych do grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) i synchronizowanie baz danych w celu zapobieżenia utracie pracy w zdarzenia przejścia w tryb failover bazy danych.
+
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Weryfikowanie usługi App Service w usłudze Azure Stack instalacji
 
 1. W portalu administracyjnym usługi Azure Stack, przejdź do **administrowanie — usługa App Service**.
@@ -192,12 +197,12 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
-    Jeśli wdrażasz do istniejącej sieci wirtualnej i przy użyciu wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego. Ta reguła umożliwia ruch SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+    Jeśli wdrażasz do istniejącej sieci wirtualnej i przy użyciu wewnętrznego adresu IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego. Ta reguła umożliwia ruch SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 
     - Źródło: Dowolne
     - Zakres portów źródłowych: *
     - Miejsce docelowe: Adresy IP
-    - Docelowy zakres adresów IP: Zakres adresów IP dla magazynowi
+    - Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
     - Zakres portów docelowych: 445
     - Protokół: TCP
     - Akcja: Zezwalaj

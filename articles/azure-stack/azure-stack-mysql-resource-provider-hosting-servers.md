@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: e1a00ea36efa6af816c371f5498085fc2cf491b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165031"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194014"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych MySQL
 
@@ -44,7 +44,9 @@ Upewnij się, że masz poświadczenia dla konta z uprawnieniami administratora s
 4. Podaj szczegóły połączenia wystąpienia serwera MySQL.
 
    * Aby uzyskać **nazwę serwera obsługującego MySQL**, podaj w pełni kwalifikowana nazwa domeny (FQDN) lub prawidłowym adresem IPv4. Nie używaj krótką nazwę maszyny Wirtualnej.
-   * Domyślne wystąpienie MySQL nie podano, więc należy określić **rozmiar hostingu serwera w GB**. Wprowadź rozmiar, który znajduje się w pobliżu pojemności serwera bazy danych.
+   - Domyślny administrator **Username** Bitnami MySQL obrazów dostępnych w witrynie marketplace usługi Azure Stack jest *głównego*. 
+   - Jeśli nie znasz głównego **hasło**, zobacz [dokumentacji Bitnami](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) dowiesz się, jak można go pobrać. 
+   - Domyślne wystąpienie MySQL nie podano, więc należy określić **rozmiar hostingu serwera w GB**. Wprowadź rozmiar, który znajduje się w pobliżu pojemności serwera bazy danych.
    * Zachowaj domyślne ustawienie dla **subskrypcji**.
    * Aby uzyskać **grupy zasobów**, Utwórz nową lub użyj istniejącej grupy.
 

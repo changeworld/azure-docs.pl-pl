@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: b174b1279a2e93560932334c9ae1e926c1eeca3c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652699"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990768"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON za pomocą technologii Hive w usłudze Azure HDInsight
 
@@ -59,7 +59,7 @@ Dowiedz się, jak przetwarzać i analizować pliki JavaScript Object Notation (J
 
 Plik znajduje się w temacie **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Aby uzyskać więcej informacji na temat usługi Azure Blob storage za pomocą HDInsight, zobacz [zgodnego systemem plików HDFS użycia usługi Azure Blob storage przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-hadoop-use-blob-storage.md). Możesz skopiować plik do kontenera domyślnego klastra.
 
-W tym samouczku użyjesz konsoli Apache Hive. Aby uzyskać instrukcje na temat sposobu Otwórz konsolę Hive, zobacz [używanie programu Apache Hive przy użyciu technologii Apache Hadoop w HDInsight przy użyciu pulpitu zdalnego](apache-hadoop-use-hive-remote-desktop.md).
+W tym samouczku użyjesz konsoli Apache Hive. Aby uzyskać instrukcje na temat sposobu Otwórz konsolę Hive, zobacz [Użyj Apache Ambari programu Hive widoku przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a name="flatten-json-documents"></a>Spłaszczanie dokumentów JSON
 Z metod opisanych w następnej sekcji wymagają, że dokument JSON składać się z pojedynczego wiersza. Tak musisz spłaszczać dokument JSON do ciągu. Jeśli dokument JSON już jest spłaszczany, możesz pominąć ten krok i przejdź bezpośrednio do następnej sekcji, analizowanie danych JSON. Spłaszczanie dokumentów JSON, uruchom następujący skrypt:
@@ -103,7 +103,7 @@ Gałąź zawiera trzy różne mechanizmy uruchamianie zapytań dotyczących doku
 * Użyj niestandardowego serializatora/Deserializator (SerDe).
 * Napisz własny funkcji zdefiniowanej przez użytkownika za pomocą języka Python lub innych języków. Aby uzyskać więcej informacji na temat sposobu uruchamiania kodu języka Python za pomocą technologii Hive, zobacz [UDF języka Python przy użyciu Apache Hive i Apache Pig][hdinsight-python].
 
-### <a name="use-the-getjsonobject-udf"></a>Użyj get_json_object funkcji zdefiniowanej przez użytkownika
+### <a name="use-the-getjsonobject-udf"></a>Use the get_json_object UDF
 Gałąź udostępnia wbudowanego systemu plików UDF o nazwie [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , można wykonać zapytania JSON w czasie wykonywania. Ta metoda przyjmuje dwa argumenty — nazwę tabeli i nazwy metody, która ma spłaszczonych dokument JSON i pola JSON, który ma zostać przeanalizowany. Spójrzmy na przykład, aby zobaczyć, jak działa ta funkcji zdefiniowanej przez użytkownika.
 
 Następujące zapytanie zwraca imię i nazwisko dla każdego ucznia:

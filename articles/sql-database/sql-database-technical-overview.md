@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c11dc2b24e3cf5d201a73c1ed405ba4b7c09978b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982271"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992604"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -101,7 +101,15 @@ Narzędzi [wbudowanego monitorowania wydajności](sql-database-performance.md) i
 
 ## <a name="availability-capabilities"></a>Możliwości dostępności
 
-Umowa dotycząca poziomu usług [(SLA)](https://azure.microsoft.com/support/legal/sla/) o czołowej w branży dostępności 99,99% dla platformy Azure, która jest obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24 godziny na dobę, 7 dni w tygodniu. Platforma Azure w pełni zarządza każdej bazy danych i gwarantuje brak utraty danych i wysoki odsetek dostępność danych. Platforma Azure automatycznie obsługuje stosowanie poprawek, tworzenie kopii zapasowych, replikację, wykrywanie błędów, bazowe potencjalne awarie sprzętu, oprogramowania lub sieci, wdrażanie poprawek usterek, przełączanie w tryb failover, uaktualnianie bazy danych oraz inne zadania konserwacji. Dostępność w warstwie Standardowa jest osiągana przez oddzielenie warstw obliczeń i magazynu. Premium dostępność jest osiągana integracji zasobów obliczeniowych i magazynu na jednym węźle wydajności, a następnie wdrażania technologii podobne do zawsze włączonych grup dostępności w sposób niewidoczny. Aby uzyskać pełne omówienie możliwości wysokiej dostępności usługi Azure SQL Database, zobacz [dostępności bazy danych SQL](sql-database-high-availability.md). Ponadto usługa SQL Database oferuje wbudowane funkcje [zapewnienia ciągłości działalności biznesowej i globalnej skalowalności](sql-database-business-continuity.md), takie jak:
+W środowisku programu SQL Server tradycyjnych zazwyczaj trzeba maszyn (co najmniej) 2 lokalnie skonfigurować przy użyciu dokładnie (synchronicznie utrzymywane w dobrym stanie) kopii danych (za pomocą funkcji, takich jak zawsze włączone grupy dostępności lub wystąpienia klastra trybu Failover) do ochrony przed awaria pojedynczego komputera/składnika.  To zapewnia wysoką dostępność, ale nie chroni przed klęskami żywiołowymi niszczenie centrum danych.
+ 
+Odzyskiwanie po awarii przyjęto założenie, że katastrofy będzie geograficznie zlokalizowane wystarczająco dużo, aby mieć inny maszyny/zestaw maszyn przy użyciu kopii danych daleko.  W programie SQL Server można użyć zawsze włączone grupy dostępności działają w trybie async można pobrać tę możliwość.  Szybkość światła problemów zwykle oznacza, że osoby nie chcesz czekać replikacji się zdarzyć, że daleko przed zatwierdzeniem transakcji, dlatego jest potencjalną utratę danych podczas wykonywania nieplanowane tryby Failover.
+
+Bazy danych w usłudze premium i biznesowe krytyczne warstwy już [w bardzo podobny sposób użyć](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) do synchronizacji grupy dostępności. Bazy danych w niższych warstwach usług zapewniają nadmiarowość za pomocą magazynu [mechanizm różnych, ale równoważne](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Brak logiki, która chroni przed awarią pojedynczego komputera.  Funkcji aktywnej replikacji geograficznej zapewnia możliwość ochrony przed awarii gdzie jest niszczony całego regionu.
+
+Strefy dostępności platformy Azure jest play na problem wysokiej dostępności.  Próbuje ochronę przed awarią centrum danych jednego tworzenia w jednym regionie.  Dlatego chce zapobiec utracie zasilania lub sieć w celu tworzenia. W usługach SQL Azure, będzie to możliwe, umieszczając różnych replik w różnych strefach dostępności (różnych budynkach, efektywnie), a w przeciwnym razie działa tak jak poprzednio. 
+
+W rzeczywistości, Umowa dotycząca poziomu usług platformy Azure w branży wiodących 99,99% dostępności [(SLA)](https://azure.microsoft.com/support/legal/sla/), obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24/7. Platforma Azure w pełni zarządza każdej bazy danych i gwarantuje brak utraty danych i wysoki odsetek dostępność danych. Platforma Azure automatycznie obsługuje stosowanie poprawek, tworzenie kopii zapasowych, replikację, wykrywanie błędów, bazowe potencjalne awarie sprzętu, oprogramowania lub sieci, wdrażanie poprawek usterek, przełączanie w tryb failover, uaktualnianie bazy danych oraz inne zadania konserwacji. Dostępność w warstwie Standardowa jest osiągana przez oddzielenie warstw obliczeń i magazynu. Premium dostępność jest osiągana integracji zasobów obliczeniowych i magazynu na jednym węźle wydajności, a następnie wdrażania technologii podobne do zawsze włączonych grup dostępności w sposób niewidoczny. Aby uzyskać pełne omówienie możliwości wysokiej dostępności usługi Azure SQL Database, zobacz [dostępności bazy danych SQL](sql-database-high-availability.md). Ponadto usługa SQL Database oferuje wbudowane funkcje [zapewnienia ciągłości działalności biznesowej i globalnej skalowalności](sql-database-business-continuity.md), takie jak:
 
 - **[Automatyczne kopie zapasowe](sql-database-automated-backups.md)**:
 

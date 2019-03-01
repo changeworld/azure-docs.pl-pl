@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198751"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193333"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją skrótów haseł z usługą Azure AD Connect sync
 Ten temat zawiera procedurę rozwiązywania problemów z synchronizacją skrótów haseł. Nie można zsynchronizować hasła, zgodnie z oczekiwaniami, może być dla podzbioru użytkowników lub dla wszystkich użytkowników.
@@ -225,7 +225,7 @@ Aby rozwiązać problemy, w których brak synchronizowanych haseł dla użytkown
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Brak synchronizowanych haseł: ręczne kroki rozwiązywania problemów
 Wykonaj następujące kroki, aby ustalić, dlaczego Brak synchronizowanych haseł:
 
-1. Jest serwer programu Connect w [Tryb przejściowy](how-to-connect-sync-operations.md#staging-mode)? Serwer w trybie przejściowym nie synchronizuje hasła.
+1. Jest serwer programu Connect w [Tryb przejściowy](how-to-connect-sync-staging-server.md)? Serwer w trybie przejściowym nie synchronizuje hasła.
 
 2. Uruchom skrypt w [Pobierz stan ustawienia synchronizacji haseł](#get-the-status-of-password-sync-settings) sekcji. Daje Przegląd konfigurowania synchronizacji haseł.  
 

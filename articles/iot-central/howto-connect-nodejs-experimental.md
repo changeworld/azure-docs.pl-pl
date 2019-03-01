@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 7666af14f61ac04d82f73d439cda85063cfbc758
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b8f2df14e0aa0246d794bd56f4187002cfdeee02
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880142"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194472"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -130,7 +130,7 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     ```
 
     > [!NOTE]
-    > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrustions do [pobieranie parametrów połączenia urządzenia](concepts-connectivity-experimental.md#get-the-device-connection-string) i kontynuować pracę z pozostałej części tego samouczka. Aby uzyskać dodatkową pomoc, możesz również znaleźć zestaw szczegółowych instrukcji w [przygotować kod klienta](tutorial-add-device-experimental.md#prepare-the-client-code) w samouczkach > Dodaj urządzenie.
+    > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrukcje, aby [pobieranie parametrów połączenia urządzenia](concepts-connectivity-experimental.md#get-a-connection-string) i kontynuować pracę z pozostałej części tego samouczka. Aby uzyskać dodatkową pomoc, możesz również znaleźć zestaw szczegółowych instrukcji w [przygotować kod klienta](tutorial-add-device-experimental.md#prepare-the-client-code) w samouczkach > Dodaj urządzenie.
 
     Aktualizuj symbol zastępczy `{your device connection string}` przy użyciu parametrów połączenia urządzenia. W tym przykładzie, możemy zainicjować `targetTemperature` na zero, można opcjonalnie wykonać bieżącej odczytu z urządzenia lub wartość z bliźniaczej reprezentacji urządzenia. 
 

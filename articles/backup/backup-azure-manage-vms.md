@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: 0e05bf71c1689015be0b8e3a4be1b37447ba6eb8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b08e8ea6a8768510177f1ea664f3036813e1a890
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961248"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009923"
 ---
 # <a name="manage-azure-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
 
@@ -74,20 +74,23 @@ Możesz zarządzać kopiami zapasowymi przy użyciu pulpitu nawigacyjnego, a prz
 Na żądanie można wykonać kopii zapasowej maszyny wirtualnej, po został skonfigurowany do ochrony.
 - Jeśli tworzenie początkowej kopii zapasowej jest w stanie oczekiwania, kopii zapasowej na żądanie tworzy pełną kopię maszyny wirtualnej w magazynie usługi Recovery Services.
 - Jeśli tworzenie początkowej kopii zapasowej zostało ukończone, kopii zapasowej na żądanie wysyła zmian od poprzedniej migawki w magazynie usługi Recovery Services. Oznacza to, że kolejne kopie zapasowe są zawsze przyrostowe.
-- Zakres przechowywania dla kopii zapasowej na żądanie jest wartość przechowywania określona dla codziennego punktu kopii zapasowej w zasadach. Jeśli wybrano opcję nie codziennego punktu kopii zapasowej, tygodniowego punktu kopii zapasowej jest używany.
+- Zakres przechowywania dla kopii zapasowej na żądanie jest wartość przechowywania określona w momencie wyzwalanie zadania tworzenia kopii zapasowej.
 
 Aby wyzwolić kopii zapasowej na żądanie:
 
-1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **Utwórz teraz kopię zapasową**.
+1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **elementu kopii zapasowej** w obszarze **chronionego elementu** sekcji.
 
     ![Kopia zapasowa teraz przycisk.](./media/backup-azure-manage-vms/backup-now-button.png)
 
- 2. Kliknij przycisk **tak** można uruchomić zadania tworzenia kopii zapasowej.
+2. Kliknij przycisk **maszyny wirtualnej platformy Azure** z **zarządzania typ kopii zapasowej**. **Elementu kopii zapasowej (maszynie wirtualnej platformy Azure)** zostanie wyświetlony blok.
+3. Wybierz maszynę Wirtualną, a następnie kliknij przycisk **Utwórz kopię zapasową teraz** do utworzenia kopii zapasowej na żądanie. **Bloku Utwórz teraz kopię zapasową** pojawia się.
+4. W **Przechowuj kopię zapasową do** opcji, należy określić datę dla narzędzia Kopia zapasowa ma zostać zachowana.
 
     ![Kopia zapasowa teraz przycisk.](./media/backup-azure-manage-vms/backup-now-check.png)
 
+5. Kliknij przycisk **OK**, aby uruchomić zadanie tworzenia kopii zapasowej.
 
- Zadanie tworzenia kopii zapasowej tworzy punkt odzyskiwania. Zakres przechowywania punktu odzyskiwania jest taka sama jak zakres przechowywania określonym w zasadach skojarzonego z maszyną wirtualną. Aby śledzić postępy zadania, na pulpicie nawigacyjnym magazynu kliknij **zadania tworzenia kopii zapasowej** kafelka.  
+Aby śledzić postępy zadania, na pulpicie nawigacyjnym magazynu kliknij **zadania tworzenia kopii zapasowej** kafelka.
 
 ## <a name="stop-protecting-a-vm"></a>Zatrzymaj ochronę maszyny Wirtualnej
 
