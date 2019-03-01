@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f5e140e4f620362ca90a1e1cd06d23719cd2099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 236009a3292f26d7fda73013c022f40535aa1ecb
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471610"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992332"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Usługa Azure SQL Data Warehouse — równoległego (MPP) architekturę przetwarzania
 Dowiedz się, jak Azure SQL Data Warehouse łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności. 
@@ -84,7 +84,7 @@ Działanie okrężne dystrybuowanej tabeli rozprowadza dane równomiernie międz
 ## <a name="replicated-tables"></a>Zreplikowane tabele
 Replikowanej tabeli zapewnia największą wydajność zapytań dla małych tabel.
 
-Tabela, która jest replikowana buforuje pełną kopię tabeli w każdym węźle obliczeniowym. W związku z tym replikowanie tabeli eliminuje potrzebę na przesyłanie danych między węzłami obliczeniowymi przed przystąpieniem do dołączania lub agregacji. Zreplikowane tabele najlepiej są wykorzystywane przy użyciu małe tabele. Magazyn dodatkowy jest wymagana, i istnieją dodatkowe koszty ogólne, które są naliczane podczas zapisywania danych, które dużych tabel niepraktyczne.  
+Tabela, która jest replikowana buforuje pełną kopię tabeli w każdym węźle obliczeniowym. W związku z tym replikowanie tabeli eliminuje potrzebę na przesyłanie danych między węzłami obliczeniowymi przed przystąpieniem do dołączania lub agregacji. Zreplikowane tabele najlepiej są wykorzystywane przy użyciu małe tabele. Magazyn dodatkowy jest wymagana i dodatkowe obciążenie, który jest naliczany podczas zapisywania danych, co dużych tabel, że to niepraktyczne.  
 
 Na poniższym diagramie przedstawiono replikowanej tabeli. Usługi SQL Data Warehouse replikowanej tabeli są buforowane na pierwszym dystrybucji na każdym węźle obliczeniowym.  
 

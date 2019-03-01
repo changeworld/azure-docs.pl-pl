@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 8c60e7dec2d2a9bc3e063adfee0ffaff63417265
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bdc479c6cc91c3ebba343a8423a73fb2e0404a73
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960167"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992706"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory B2C w usłudze Azure API Management
 
@@ -38,7 +38,7 @@ Usługa Azure Active Directory B2C to rozwiązanie zarządzania tożsamością w
    > [!NOTE]
    > Jeśli jeszcze nie utworzono wystąpienia usługi API Management, zobacz [Tworzenie wystąpienia usługi API Management] [ Create an API Management service instance] w [Rozpoczynanie pracy z samouczkiem usługi Azure API Management] [Get started with Azure API Management].
 
-2. W obszarze **zabezpieczeń**, wybierz opcję **tożsamości**. Kliknij przycisk **+ Dodaj** u góry.
+2. W obszarze **tożsamości**. Kliknij przycisk **+ Dodaj** u góry.
 
    **Dostawcy tożsamości Dodaj** zostanie wyświetlone okienko po prawej stronie. Wybierz **usługi Azure Active Directory B2C**.
     
@@ -89,7 +89,7 @@ Usługa Azure Active Directory B2C to rozwiązanie zarządzania tożsamością w
   ![Zasady][api-management-howto-aad-b2c-policies]
 
   > [!NOTE]
-  > Aby uzyskać więcej informacji na temat zasad, zobacz [Usługa Azure Active Directory B2C: Rozszerzalna struktura zasad].
+  > Aby uzyskać więcej informacji na temat zasad, zobacz [Azure Active Directory B2C: Rozszerzalna struktura zasad].
 
 14. Po określeniu odpowiednią konfigurację, kliknij przycisk **Zapisz**.
 
@@ -119,7 +119,7 @@ Usługa Azure Active Directory B2C to rozwiązanie zarządzania tożsamością w
 ## <a name="next-steps"></a>Kolejne kroki
 
 *  [Omówienie usługi Azure Active Directory B2C]
-*  [Usługa Azure Active Directory B2C: Rozszerzalna struktura zasad]
+*  [Azure Active Directory B2C: Rozszerzalna struktura zasad]
 *  [Korzystanie z konta Microsoft jako dostawcy tożsamości w usłudze Azure Active Directory B2C]
 *  [Użyj konta Google jako dostawcy tożsamości w usłudze Azure Active Directory B2C]
 *  [Użyj konta LinkedIn jako dostawcy tożsamości w usłudze Azure Active Directory B2C]
@@ -190,7 +190,7 @@ Usługa Azure Active Directory B2C to rozwiązanie zarządzania tożsamością w
 [Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [Omówienie usługi Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
 [Jak autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
-[Usługa Azure Active Directory B2C: Rozszerzalna struktura zasad]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
+[Azure Active Directory B2C: Rozszerzalna struktura zasad]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [Korzystanie z konta Microsoft jako dostawcy tożsamości w usłudze Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [Użyj konta Google jako dostawcy tożsamości w usłudze Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
 [Użyj konta usługi Facebook jako dostawcy tożsamości w usłudze Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app

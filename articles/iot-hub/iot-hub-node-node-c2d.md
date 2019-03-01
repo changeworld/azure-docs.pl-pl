@@ -1,20 +1,20 @@
 ---
 title: Komunikaty z chmury do urządzenia z usługą Azure IoT Hub (Node) | Dokumentacja firmy Microsoft
 description: Jak wysyłanie komunikatów z chmury do urządzeń do urządzenia z usługi Azure IoT hub przy użyciu zestawów SDK usługi Azure IoT dla środowiska Node.js. Możesz zmodyfikować aplikacji symulowanego urządzenia do odbierania komunikatów z chmury do urządzeń i modyfikowania aplikacji zaplecza, do wysyłania komunikatów z chmury do urządzeń.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.author: dobett
-ms.openlocfilehash: c2b8df708a568fa995cf3af783c112127726811b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0cc60ef0cddc2867ce10324334782fa6ed418bdd
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221812"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009311"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]

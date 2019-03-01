@@ -1,19 +1,19 @@
 ---
 title: Usługa Azure IoT Hub słownik terminów związanych z | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — ze słownikiem pojęć wspólnych odnoszących się do usługi Azure IoT Hub.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: dobett
-ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d79485fa7587a6cf8783f2e5779fa0a1d593aea7
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817390"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011436"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -97,7 +97,7 @@ W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-t
 Odwołuje się do komunikatów wysyłanych z urządzenia podłączone do [usługi IoT Hub](#iot-hub). Te komunikaty mogą być [punktu danych](#data-point-message) lub [interaktywne](#interactive-message) wiadomości. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Urządzenie
-W kontekście IoT urządzenie jest zazwyczaj na małą skalę, urządzenie obliczeniowe autonomicznych, które może zbierać dane lub kontrolować innych urządzeń. Na przykład urządzenie może być urządzenie monitorowania środowiska lub kontrolera dla systemów nią i wentylatorów w cieplarnianych. [— Wykaz urządzeń](https://catalog.azureiotsuite.com/) zawiera listę urządzeń sprzętowych certyfikowana do pracy z [usługi IoT Hub](#iot-hub).
+W kontekście IoT urządzenie jest zazwyczaj na małą skalę, urządzenie obliczeniowe autonomicznych, które może zbierać dane lub kontrolować innych urządzeń. Na przykład urządzenie może być urządzenie monitorowania środowiska lub kontrolera dla systemów nią i wentylatorów w cieplarnianych. [— Wykaz urządzeń](https://catalog.azureiotsolutions.com/) zawiera listę urządzeń sprzętowych certyfikowana do pracy z [usługi IoT Hub](#iot-hub).
 
 ## <a name="device-app"></a>Aplikacja urządzenia
 Aplikacja urządzenie działa w swojej [urządzenia](#device) i obsługuje komunikację z Twojej [usługi IoT hub](#iot-hub). Zwykle, użyj jednej z [zestawy SDK urządzeń Azure IoT](#azure-iot-device-sdks) podczas implementacji aplikacji urządzenia. W wielu samouczki IoT [symulowane urządzenie](#simulated-device) dla wygody.
