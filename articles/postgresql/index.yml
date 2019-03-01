@@ -1,23 +1,23 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c9c717540e0ca71b0dcd2b82fa29240bffd5e40b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9fb6f65c05f6789177923a3e62e8978bb5cdf457
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547120"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992111"
 documentType: LandingData
 title: Dokumentacja usługi Azure Database dla PostgreSQL
 metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
   title: Dokumentacja usługi Azure PostgreSQL — samouczki i dokumentacja interfejsu API
-  description: Usługa Azure Database dla PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft utworzoną dla deweloperów i opartą na aparacie bazy danych PostgreSQL typu open source.
+  description: Usługa Azure Database dla PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft, utworzoną dla deweloperów i opartą na aparacie bazy danych PostgreSQL typu open source.
   author: rachel-msft
   ms.author: raagyema
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 11/30/2018
+  ms.date: 02/25/2019
 abstract:
-  description: Usługa Azure Database dla PostgreSQL jest usługą relacyjnej bazy danych opartą na aparacie bazy danych Postgres typu open source.  Jest to w pełni zarządzana baza danych oferowana jako usługa, za pomocą której można obsługiwać obciążenia o krytycznym znaczeniu — z przewidywalną wydajnością, zabezpieczeniami, wysoką dostępnością i dynamiczną skalowalnością.  Twórz aplikacje za pomocą usługi Azure Database dla PostgreSQL, korzystając z narzędzi open source i wybranej platformy.  Dowiedz się, jak używać usługi Azure Database dla PostgreSQL, korzystając z przewodników Szybki Start, samouczków i przykładów.
+  description: Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych opartą na aparacie bazy danych Postgres typu open source.  Jest to w pełni zarządzana baza danych oferowana jako usługa, która może obsługiwać obciążenia o krytycznym znaczeniu — z przewidywalną wydajnością, zabezpieczeniami, wysoką dostępnością i dynamiczną skalowalnością.  Twórz aplikacje za pomocą usługi Azure Database for PostgreSQL, korzystając z narzędzi open source i wybranej platformy.  Dowiedz się, jak używać usługi Azure Database dla PostgreSQL, korzystając z przewodników Szybki Start, samouczków i przykładów.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -43,6 +43,7 @@ sections:
     items:
     - html: Projektowanie bazy danych&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Interfejs wiersza polecenia platformy Azure</a>
     - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Tworzenie aplikacji internetowej za pomocą języka Python i interfejsu wiersza polecenia</a>
+    - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Monitorowanie i dostrajanie usługi</a>
 - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
   items:
   - type: list
@@ -72,6 +73,8 @@ sections:
     className: cardsD
     items:
     - title: Wiersz polecenia
-      html: <p><a href="/cli/azure">Interfejs wiersza polecenia platformy Azure</a></p>
+      html: <p><a href="/cli/azure/postgres">Interfejs wiersza polecenia platformy Azure</a></p>
     - title: REST
       html: <p><a href="/rest/api/postgresql">Interfejs API REST</a></p>
+    - title: Azure Resource Manager
+      html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Szablony usługi Resource Manager</a></p>

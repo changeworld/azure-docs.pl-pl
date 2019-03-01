@@ -70,10 +70,10 @@ W przypadku niektórych katalogów, które rozpoczęły korzystanie z grup zarz�
 Istnieją dwie opcje rozwiązania tego problemu.
 
 1. Usuń wszystkie przypisania ról i zasad z głównej grupy zarządzania
-    1. Usunięcie wszystkich przypisań ról i zasad z głównej grupy zarządzania spowoduje wypełnienie hierarchii przez usługę wszystkimi subskrypcjami podczas następnego cyklu nocnego.  Ten proces ma na celu zapewnienie, że nie został przypadkowo udzielony dostęp lub nie przypisano przypadkowo zasad do wszystkich subskrypcji dzierżawy.
-    1. Najlepszym sposobem wykonania tego procesu bez wpływu na usługi jest zastosowanie przypisań ról lub zasad na poziomie o jeden niższym niż główna grupa zarządzania. Wtedy będzie można usunąć wszystkie przypisania z zakresu głównego.
+   1. Usunięcie wszystkich przypisań ról i zasad z głównej grupy zarządzania spowoduje wypełnienie hierarchii przez usługę wszystkimi subskrypcjami podczas następnego cyklu nocnego.  Ten proces ma na celu zapewnienie, że nie został przypadkowo udzielony dostęp lub nie przypisano przypadkowo zasad do wszystkich subskrypcji dzierżawy.
+   1. Najlepszym sposobem wykonania tego procesu bez wpływu na usługi jest zastosowanie przypisań ról lub zasad na poziomie o jeden niższym niż główna grupa zarządzania. Wtedy będzie można usunąć wszystkie przypisania z zakresu głównego.
 1. Bezpośrednio wywołaj interfejs API, aby rozpocząć proces wypełniania
-    1. Każdy klient w katalogu może wywołać interfejs API *TenantBackfillStatusRequest* lub *StartTenantBackfillRequest*. Wywołanie interfejsu API StartTenantBackfillRequest powoduje rozpoczęcie procesu początkowej konfiguracji, który polega na przeniesieniu wszystkich subskrypcji do hierarchii. Ten proces rozpoczyna również wymuszanie dodawania wszystkich nowych subskrypcji jako elementu podrzędnego głównej grupy zarządzania. Ten proces można wykonać bez zmiany przydziałów na poziomie głównej grupy. Wywołując ten interfejs API, potwierdzasz, że dowolne zasady i przypisania dostępu określone w grupie głównej mogą być stosowane do wszystkich subskrypcji.
+   1. Każdy klient w katalogu może wywołać interfejs API *TenantBackfillStatusRequest* lub *StartTenantBackfillRequest*. Wywołanie interfejsu API StartTenantBackfillRequest powoduje rozpoczęcie procesu początkowej konfiguracji, który polega na przeniesieniu wszystkich subskrypcji do hierarchii. Ten proces rozpoczyna również wymuszanie dodawania wszystkich nowych subskrypcji jako elementu podrzędnego głównej grupy zarządzania. Ten proces można wykonać bez zmiany przydziałów na poziomie głównej grupy. Wywołując ten interfejs API, potwierdzasz, że dowolne zasady i przypisania dostępu określone w grupie głównej mogą być stosowane do wszystkich subskrypcji.
 
 Jeśli masz pytania na temat tego procesu wypełniania, napisz na adres managementgroups@microsoft.com  
   
@@ -116,6 +116,6 @@ Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
 - [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Grupy zarządzania w module zasobów programu Azure PowerShell](https://aka.ms/mgPSdocs)
-- [Grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
-- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](/powershell/module/az.resources#resources)
+- [Grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)

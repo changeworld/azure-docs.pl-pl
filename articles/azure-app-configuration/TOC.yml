@@ -26,8 +26,6 @@ items:
     href: integrate-azure-managed-service-identity.md
 - name: Przykłady
   items:
-  - name: Przykłady kodu
-    href: https://github.com/Azure/AppConfiguration/samples
   - name: Interfejs wiersza polecenia platformy Azure
     href: cli-samples.md
 - name: Pojęcia
@@ -52,9 +50,13 @@ items:
     href: https://go.microsoft.com/fwlink/?linkid=2074659
   - name: REST
     href: https://go.microsoft.com/fwlink/?linkid=2078296
-ms.openlocfilehash: 44586961e8baf9338f03995c6f420dbc88fb97ef
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+- name: Zasoby
+  items:
+  - name: Przekazywanie opinii dotyczących produktów
+    href: https://github.com/Azure/AppConfiguration
+ms.openlocfilehash: 6723ea35f6cc674c0e2776260c2077d781a5014c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958035"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989776"

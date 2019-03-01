@@ -211,6 +211,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: Zarządzanie relacją zaufania usługi AD FS z usługą Azure AD
       href: how-to-connect-azure-ad-trust.md
+    - name: Konfigurowanie oświadczeń grup dla aplikacji
+      href: how-to-connect-fed-group-claims.md
     - name: Zmienianie algorytmu wyznaczania wartości skrótu dla jednostki zależnej usługi O365
       href: how-to-connect-fed-sha256-guidance.md
     - name: Używanie serwera SAML 2.0 jako dostawcy tożsamości
@@ -243,8 +245,8 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Zarządzanie programem Azure AD Connect Sync
     items:
-    - name: Zarządzanie zadaniem operacyjnym
-      href: how-to-connect-sync-operations.md
+    - name: Serwer przejściowy i odzyskiwanie po awarii
+      href: how-to-connect-sync-staging-server.md
     - name: Najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: Zmienianie konfiguracji domyślnej
@@ -335,9 +337,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Informacje o module ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 8eb252f12a4a1a66ba7e8bd5c584e7aad227e24c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 613adb5c19c3ca7fa2f47700a0358a51beac98e4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889286"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193708"
