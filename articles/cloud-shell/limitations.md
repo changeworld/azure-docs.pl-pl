@@ -3,7 +3,7 @@ title: Ograniczenia platformy Azure Cloud Shell | Dokumentacja firmy Microsoft
 description: Omówienie ograniczeń usługi Azure Cloud Shell
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: juluk
-ms.openlocfilehash: 0cbd2c1f9a5a36d4e11eb86a3d531340b0e0ff03
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.author: damaerte
+ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983731"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245747"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Ograniczenia dotyczące usługi Azure Cloud Shell
 

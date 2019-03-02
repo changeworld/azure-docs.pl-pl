@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 214f52e8c9d2803b6e33c9347c87d0cc1cf7f7e9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0a230ff1c4d5c6bb36003f07cc1c411f7e2c3629
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991125"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241004"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
 
 Firmy, które implementują usługi Azure IoT Hub oczekiwane niezawodność, wydajność z zasobami. Aby ułatwić utrzymania Zamknij wyrażenia kontrolnego na operacje usługi IoT Hub to w pełni zintegrowana z [usługi Azure Monitor](../azure-monitor/index.yml) i [usługi Azure Resource Health](../service-health/resource-health-overview.md). Te dwie usługi współpracują, aby udostępniać dane, należy zachować rozwiązania IoT w górę i uruchamiania w dobrej kondycji. 
 
-Usługa Azure Monitor to pojedyncze źródło monitorowania i rejestrowania dla wszystkich usług platformy Azure. Możesz wysłać dzienniki diagnostyczne, które generuje usługi Azure Monitor do usługi Log Analytics, usługi Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania. Usługa Azure Monitor ustawienia metryki i Diagnostyka zapewniają wgląd w wydajność zasobów. Przeczytaj ten artykuł, aby dowiedzieć się, jak [użycia usługi Azure Monitor](#use-azure-monitor) za pomocą usługi IoT hub. 
+Usługa Azure Monitor to pojedyncze źródło monitorowania i rejestrowania dla wszystkich usług platformy Azure. Możesz wysłać dzienniki diagnostyczne, które usługi Azure Monitor generuje dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania. Usługa Azure Monitor ustawienia metryki i Diagnostyka zapewniają wgląd w wydajność zasobów. Przeczytaj ten artykuł, aby dowiedzieć się, jak [użycia usługi Azure Monitor](#use-azure-monitor) za pomocą usługi IoT hub. 
 
 > [!IMPORTANT]
 > Zdarzenia wyemitowane przez usługę IoT Hub przy użyciu dzienników diagnostycznych usługi Azure Monitor nie musi być niezawodne lub są uporządkowane. Niektóre zdarzenia mogły zostać utracone albo dostarczony poza kolejnością. Dzienniki diagnostyczne również nie należy traktować jako w czasie rzeczywistym i może potrwać kilka minut, zanim zdarzenia do zarejestrowania się w wybranej lokalizacji docelowej.

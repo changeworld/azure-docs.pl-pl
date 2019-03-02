@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 0f2e4ee393c07e6b15f128ed60922b8a280cabb5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b17706b09ce64735cd9d68ace579fd7f5b366dc3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984668"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244472"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal-legacy"></a>Zarządzanie punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal (starsza wersja)
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Zarządzanie punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal 
 
 W tym artykule pokazano, jak zarządzać punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal. 
 

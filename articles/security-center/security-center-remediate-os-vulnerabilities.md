@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a951e60b417167f2e1566efb689ea0f2d4e65374
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f3764e5f4a5d6bbc3d6988321a2d7648012825ae
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111428"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242245"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Skoryguj konfiguracje zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center analizuje codziennie systemu operacyjnego (OS) maszyn wirtualnych (VM) i konfigurację, która może spowodować, że maszyny wirtualne na komputerach i bardziej narażone na ataki. Usługa Security Center zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń zaleca się zmiany tych luk w konfiguracji.
@@ -84,7 +84,7 @@ W tym przykładzie opisano zalecenie "Skoryguj konfiguracje zabezpieczeń" w obs
    ![Uwzględnione na liście obszarów roboczych][4]
 
 5. Wybierz obszar roboczy.  
-  Zapytanie wyszukiwania usługi Log Analytics spowoduje otwarcie filtrowane do obszaru roboczego z niezgodności konfiguracji zabezpieczeń.
+  Zapytanie wyszukiwania dzienników usługi Azure Monitor otwiera filtrowane do obszaru roboczego z niezgodności konfiguracji zabezpieczeń.
 
    ![Obszar roboczy z luk w zabezpieczeniach systemu operacyjnego][5]
 

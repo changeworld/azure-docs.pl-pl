@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f57e793278af7eb03fe49fd657e45b0846db8b1c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3a8ee51656b5521916e68ee34edda91c34ea0c35
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817919"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216045"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -57,9 +57,11 @@ Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń usługi Azure AD, Azur
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
+Aby dowiedzieć się, jak przypisać rolę wbudowaną w witrynie Azure portal, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+
 ### <a name="access-permissions-granted-by-rbac-roles"></a>Uprawnienia przyznane przez role RBAC 
 
-W poniższej tabeli przedstawiono prawa dostępu do wbudowanych ról w zależności od zakresu:
+W poniższej tabeli przedstawiono prawa dostępu przyznane przez wbudowane role dla różnych poziomów zakresu:
 
 |Zakres|Właściciel danych obiektów blob|Współautor danych obiektu blob|Czytnik danych obiektu blob|Queue Data Contributor|Queue Data Reader|
 |---|---|---|---|---|---|

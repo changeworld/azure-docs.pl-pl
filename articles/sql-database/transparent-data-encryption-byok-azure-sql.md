@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: c8c2c58250b6f806b48241ad1bb2a85202b9b67a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: bccf79cea88890d02e2e1bfeb952ca9e754705cb
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456881"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217380"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault: Bring Your Own Key pomocy technicznej
 
@@ -72,7 +72,7 @@ Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi 
  > [!NOTE]
  > Jeśli szyfrowane TDE baz danych SQL utrata dostępu do magazynu kluczy, ponieważ nie można ich obejścia zapory, baz danych są niedostępne w ciągu 24 godzin.
 
-- Włączanie inspekcji i raporty dotyczące wszystkich kluczy szyfrowania: Usługa Key Vault oferuje dzienników, które są łatwe do dodania do innych informacji o zabezpieczeniach i narzędzia do zarządzania (SIEM) zdarzenia. Operations Management Suite (OMS) [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) jest przykładem usługi, która jest już zintegrowana.
+- Włączanie inspekcji i raporty dotyczące wszystkich kluczy szyfrowania: Usługa Key Vault oferuje dzienników, które są łatwe do dodania do innych informacji o zabezpieczeniach i narzędzia do zarządzania (SIEM) zdarzenia. Operations Management Suite (OMS) [dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) jest przykładem usługi, która jest już zintegrowana.
 - W celu zapewnienia wysokiej dostępności szyfrowanymi bazami danych, należy skonfigurować każdy serwer bazy danych SQL za pomocą dwóch usługi Azure Key Vault, które znajdują się w różnych regionach.
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>Wskazówki dotyczące konfigurowania ochrony TDE (klucz asymetryczny)

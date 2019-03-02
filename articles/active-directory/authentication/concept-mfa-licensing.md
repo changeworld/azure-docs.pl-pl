@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a8cfb39c26813b605d69fb3a2b3057ec2b0d897
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e68175471b24c48f23cc48cff9d0b47c937f588a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217466"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217193"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
 
@@ -65,6 +65,9 @@ Poniższa tabela zawiera listę funkcji, które są dostępne w różnych wersja
 | Zaufane adresy IP | | |● |
 | Pamiętanie uwierzytelniania MFA w przypadku zaufanych urządzeń |● |● |● |
 | Usługa MFA dla aplikacji lokalnych | | |● |
+
+> [!IMPORTANT]
+> Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ użytkowników w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Jak włączyć usługę Azure Multi-Factor Authentication dla administratorów usługi Azure AD
 

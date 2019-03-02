@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 902fbde0eca8db9113dda51e5d912fa9d94644ee
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004650"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215170"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 
@@ -57,7 +57,7 @@ Pul i baz danych w pulach, należy monitorować, aby upewnić się, że te kompu
 
 Witryna [Azure Portal](https://portal.azure.com) udostępnia wbudowane funkcje monitorowania i alertów dla większości zasobów. W usłudze SQL Database funkcje monitorowania i zgłaszania alertów są dostępne na poziomie baz danych i pul. To wbudowane funkcje monitorowania i alertów zależy od konkretnych zasobów, dlatego jest łatwa w użyciu dla małej liczby zasobów, ale przestaje być wygodna przy pracy z wieloma zasobami.
 
-Dla dużej liczby scenariuszy, w którym pracujesz z wieloma zasobami, [usługi Log Analytics](saas-dbpertenant-log-analytics.md) mogą być używane. Jest to osobna usługa Azure zapewnia analizy emitowany dzienników diagnostycznych i danych telemetrycznych zebranych w obszar roboczy usługi log analytics. Usługa log Analytics może zbierać dane telemetryczne z wielu usług i służyć do tworzenia zapytań i ustawiania alertów.
+Dla dużej liczby scenariuszy, w którym pracujesz z wieloma zasobami, [dzienniki usługi Azure Monitor](saas-dbpertenant-log-analytics.md) mogą być używane. Jest to osobna usługa Azure oferuje analytics za pośrednictwem emitowany dzienników diagnostycznych i danych telemetrycznych zebranych w obszarze roboczym usługi Log Analytics. Dzienniki platformy Azure Monitor umożliwia zbieranie danych telemetrycznych z wielu usług i służyć do tworzenia zapytań i ustawiania alertów.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobieranie skryptów aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy
 
@@ -247,4 +247,4 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Dodatkowe [samouczki nawiązujące do wdrożenia aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Pule elastyczne SQL](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
-* [Log Analytics](saas-dbpertenant-log-analytics.md) — samouczek konfigurowania usługi Log Analytics i korzystania z niej
+* [Dzienniki platformy Azure Monitor](saas-dbpertenant-log-analytics.md) — ustawienie się i korzystać z funkcji samouczek dzienniki usługi Azure Monitor

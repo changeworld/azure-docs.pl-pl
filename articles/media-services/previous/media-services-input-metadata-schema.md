@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 42e3464a190f296675b544e0087b664ff256f2fa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7ba5287b6214564a7be7e4b183aa8fe397bd24b8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003248"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243741"
 ---
-# <a name="input-metadata-legacy"></a>Metadane wejściowe (starsza wersja)
+# <a name="input-metadata"></a>Metadane wejściowe 
 
 Zadania kodowania jest skojarzony z wejściowego elementu (lub zasoby), w której chcesz wykonać kilka zadań kodowania.  Po zakończeniu zadania elementu zawartości wyjściowej jest generowany.  Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, manifest itp. Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące zasobu danych wejściowych. Nazwa pliku XML metadanych ma następujący format: &lt;asset_id&gt;_metadata.xml (na przykład 41114ad3-eb5e - 4c, d 57 8 92-5354e2b7d4a4_metadata.xml), gdzie &lt;asset_id&gt; jest wartością AssetId zasób wejściowy.  
 

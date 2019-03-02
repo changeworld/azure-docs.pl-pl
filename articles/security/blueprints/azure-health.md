@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 28d1ed43ecdb1ff853e066567f331b8c302ce7aa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 509d529c7e860f4c46bc3368028a4e8d24812051
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730447"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242823"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -361,8 +361,8 @@ Rozwiązanie obsługuje usługi Azure Event Grid, pojedynczą usługę zarządza
 ### <a name="azure-alerts"></a>Alerty platformy Azure
 - [Alerty oferują metodą monitorowania usług systemu Azure i pozwala na skonfigurowanie warunków nad danymi. Alerty zapewniają również powiadomienia, gdy warunek alertu jest zgodna z danych monitorowania.
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) to zbiór usług zarządzania.
+### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
+[Dzienniki platformy Azure Monitor](/azure/operations-management-suite/operations-management-suite-overview) to zbiór usług zarządzania.
 
 -   Obszar roboczy jest włączona dla usługi Security Center
 

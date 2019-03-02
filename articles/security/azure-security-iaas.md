@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: de89e0a30f39ba97379b4d55914338702aef5c32
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c60022d43af1601359ab5de8b4d3e4eb06dd239a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990412"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243231"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -128,7 +128,7 @@ Aby monitorować stan zabezpieczeń swojej [Windows](../security-center/security
 
 Usługa Security Center może aktywnie monitorować pod kątem zagrożeń i potencjalnych zagrożeń są widoczne w alertach zabezpieczeń. Skorelowane zagrożeń są agregowane w jednym widoku, który wywołuje zdarzenie naruszenia zabezpieczeń.
 
-Usługa Security Center przechowuje dane w [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Usługa log Analytics oferuje zapytania języka i aparat analityczny, który zapewnia wgląd w działania aplikacji i zasobów. Dane są również zbierane z [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), rozwiązania do zarządzania i agenci zainstalowani na maszynach wirtualnych w chmurze lub lokalnie. Ta wspólna funkcjonalność pomaga utworzyć pełny obraz środowiska.
+Usługa Security Center przechowuje dane w [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md). Dzienniki platformy Azure Monitor udostępnia zapytań języka i aparat analityczny, który zapewnia wgląd w działania aplikacji i zasobów. Dane są również zbierane z [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), rozwiązania do zarządzania i agenci zainstalowani na maszynach wirtualnych w chmurze lub lokalnie. Ta wspólna funkcjonalność pomaga utworzyć pełny obraz środowiska.
 
 Organizacje, które nie wymuszają silne zabezpieczenia maszyn wirtualnych pozostają niebranie pod uwagę potencjalny prób przez nieautoryzowanych użytkowników do obejścia kontroli zabezpieczeń.
 

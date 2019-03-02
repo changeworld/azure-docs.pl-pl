@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f9db156562692107a5603e15340f01ecf9f9d52c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: afc833775894a01e8061401fe7601267f09edded
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823420"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243248"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "56823420"
 
 Po uruchomieniu klastra usługi Azure Service Fabric to dobry pomysł, aby zbierać dzienniki z wszystkimi węzłami w centralnej lokalizacji. Posiadanie dzienniki w centralnej lokalizacji, ułatwiają analizowanie i rozwiązywanie problemów w klastrze lub problemy w aplikacji i usług działających w klastrze.
 
-Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki Azure Windows (WAD, Domain Name System), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Umożliwia także procesu zewnętrznego do odczytywania zdarzeń z magazynu i umieszczenie ich w produkcie platformy analizy, takie jak [usługi Log Analytics](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
+Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki Azure Windows (WAD, Domain Name System), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Umożliwia także procesu zewnętrznego do odczytywania zdarzeń z magazynu i umieszczenie ich w produkcie platformy analizy, takie jak [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule używane są następujące narzędzia:
@@ -57,7 +57,7 @@ Zdecydowanie zaleca się pobranie szablonu **przed kliknięciem przycisku Utwór
 
 ![Szablon klastra](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Teraz, gdy masz agregowania zdarzeń w usłudze Azure Storage [Konfigurowanie usługi Log Analytics](service-fabric-diagnostics-oms-setup.md) uzyskiwanie szczegółowych informacji i wyszukiwać w nich w portalu usługi Log Analytics
+Teraz, gdy masz agregowania zdarzeń w usłudze Azure Storage [Konfigurowanie dzienników usługi Azure Monitor](service-fabric-diagnostics-oms-setup.md) uzyskiwanie szczegółowych informacji i wykonywania zapytań w witrynie Azure Monitor dzienniki portalu
 
 >[!NOTE]
 >Obecnie nie ma sposobu filtrowania lub pielęgnacja zdarzenia, które są wysyłane do tabel. Jeśli nie możesz wdrożyć proces Usuń zdarzenia z tabeli, tabeli będą w dalszym ciągu Rozwijaj (cap domyślną jest 50 GB). Instrukcje dotyczące sposobu zmiany są [dalsze poniżej w tym artykule](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Ponadto jest przykładem pielęgnacji Usługa danych uruchomiona na [przykładowe strażnika](https://github.com/Azure-Samples/service-fabric-watchdog-service), i jest zalecana zapisu jedną dla siebie, chyba że powody do przechowywania dzienników ponad 30 lub 90 przedział czasu dnia.
@@ -340,11 +340,11 @@ Obecnie dzienników z klastra są wyświetlane jako **ślady** w przeglądarce d
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po skonfigurowaniu poprawnie diagnostyki platformy Azure, zobaczysz dane w tabelach magazynu z dzienników zdarzeń systemu Windows i źródła zdarzeń. Jeśli zdecydujesz się używać usługi Log Analytics, Kibana lub dowolnej innej danych analizy i wizualizacji platformy, która nie skonfigurowano bezpośrednio w szablonie usługi Resource Manager, upewnij się zdefiniować platformę możliwość odczytu danych z tych tabel magazynu. W ten sposób usługi Log Analytics jest stosunkowo prosta i została wyjaśniona w [analizy zdarzeń i dzienników](service-fabric-diagnostics-event-analysis-oms.md). Usługa Application Insights jest nieco szczególny przypadek, w tym sensie, ponieważ może on zostać skonfigurowany jako część konfiguracji rozszerzenia diagnostyki, aby zapoznać się [odpowiedniego artykułu](service-fabric-diagnostics-event-analysis-appinsights.md) Jeśli zdecydujesz się używać rozwiązań sztucznej Inteligencji.
+Po skonfigurowaniu poprawnie diagnostyki platformy Azure, zobaczysz dane w tabelach magazynu z dzienników zdarzeń systemu Windows i źródła zdarzeń. Jeśli zdecydujesz się używać dzienników usługi Azure Monitor, Kibana lub dowolnej innej danych analizy i wizualizacji platformy, która nie skonfigurowano bezpośrednio w szablonie usługi Resource Manager, upewnij się zdefiniować platformę możliwość odczytu danych z tych tabel magazynu. W ten sposób dzienników usługi Azure Monitor jest stosunkowo prosta i została wyjaśniona w [analizy zdarzeń i dzienników](service-fabric-diagnostics-event-analysis-oms.md). Usługa Application Insights jest nieco szczególny przypadek, w tym sensie, ponieważ może on zostać skonfigurowany jako część konfiguracji rozszerzenia diagnostyki, aby zapoznać się [odpowiedniego artykułu](service-fabric-diagnostics-event-analysis-appinsights.md) Jeśli zdecydujesz się używać rozwiązań sztucznej Inteligencji.
 
 >[!NOTE]
 >Obecnie nie ma sposobu filtrowania lub pielęgnacja zdarzenia, które są wysyłane do tabeli. Jeśli nie implementują proces usuwania zdarzenia z tabeli, tabeli będzie nadal rosnąć. Obecnie ma przykład pielęgnacji Usługa danych uruchomiona na [przykładowe strażnika](https://github.com/Azure-Samples/service-fabric-watchdog-service), i jest zalecana zapisu jedną dla siebie, chyba że powody do przechowywania dzienników ponad 30 lub 90 przedział czasu dnia.
 
 * [Dowiedz się, jak zbierać dzienniki lub liczniki wydajności za pomocą rozszerzenia diagnostyki](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Analiza zdarzeń i wizualizacji przy użyciu usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* [Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)

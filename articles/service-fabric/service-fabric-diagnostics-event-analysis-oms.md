@@ -1,6 +1,6 @@
 ---
-title: Analiza zdarzeń sieci szkieletowej usługi platformy Azure z usługą Log Analytics | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat wizualizowanie i analizowanie zdarzeń za pomocą usługi Log Analytics do monitorowania i diagnostyki klastrów usługi Azure Service Fabric.
+title: Dzienniki usługi Azure Analysis zdarzeń usługi Service Fabric z usługą Azure Monitor | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wizualizowanie i analizowanie zdarzeń za pomocą dzienników usługi Azure Monitor do monitorowania i diagnostyki klastrów usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,28 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: e8719b071bf2e836ed92fa4f6dcddc5f1865b320
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2f3106b33ab0cbea95efe2ac42c05a8543719190
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668798"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246920"
 ---
-# <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji przy użyciu usługi Log Analytics
- Log Analytics zbiera i analizuje dane telemetryczne z aplikacji i usług w chmurze i udostępnia narzędzia do analizy ułatwiają maksymalne wykorzystanie ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania zapytania w usłudze Log Analytics do uzyskiwania szczegółowych informacji i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor
+ Dzienniki platformy Azure Monitor zbiera i analizuje dane telemetryczne z aplikacji i usług w chmurze i udostępnia narzędzia do analizy ułatwiają maksymalne wykorzystanie ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania kwerend w dzienniki usługi Azure Monitor do uzyskiwania szczegółowych informacji i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
 
 * Jak rozwiązywać zdarzenia dotyczące kondycji?
 * Jak sprawdzić, kiedy węzeł ulegnie awarii?
 * Jak sprawdzić, jeśli Moja aplikacja usługi mają została zatrzymana lub uruchomiona?
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview-of-the-log-analytics-workspace"></a>Omówienie obszaru roboczego usługi Log Analytics
 
 >[!NOTE] 
 >Gdy magazynu diagnostyki jest domyślnie włączona w momencie tworzenia klastra, należy nadal ustawić obszaru roboczego usługi Log Analytics do odczytu z magazynu diagnostyki.
 
-Log Analytics zbiera dane z zarządzanych zasobów, w tym tabeli usługi Azure storage lub agenta i przechowuje je w centralnym repozytorium. Dane można następnie używane do analizy, alertów i wizualizację lub dodatkowo eksportowania. Usługa log Analytics obsługuje zdarzenia, dane dotyczące wydajności lub innych danych niestandardowych. Zapoznaj się z [kroki, aby skonfigurować rozszerzenie diagnostyki w celu agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroki, aby utworzyć obszar roboczy usługi Log Analytics do odczytu zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) się upewnić, że dane będą przepływać do usługi Log Analytics .
+Usługa Azure Monitor rejestruje zbiera dane z zarządzanych zasobów, w tym tabeli usługi Azure storage lub agenta i przechowuje je w centralnym repozytorium. Dane można następnie używane do analizy, alertów i wizualizację lub dodatkowo eksportowania. Usługa Azure Monitor rejestruje obsługuje zdarzenia, dane dotyczące wydajności lub innych danych niestandardowych. Zapoznaj się z [kroki, aby skonfigurować rozszerzenie diagnostyki w celu agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroki, aby utworzyć obszar roboczy usługi Log Analytics do odczytu zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) się upewnić, że dane będą przepływać do usługi Azure Monitor dzienniki.
 
-Po odebraniu danych przez usługę Log Analytics, platforma Azure oferuje kilka *rozwiązań do zarządzania* , które są to wstępnie spakowane zestawy rozwiązań lub operacyjne pulpity nawigacyjne mają być monitorowane dane przychodzące, dostosowane do kilku scenariuszy. Obejmują one *analiza usługi Service Fabric* rozwiązania i *kontenery* rozwiązania, które są dwie najbardziej odpowiednie do diagnostyki i monitorowania w przypadku korzystania z klastrów usługi Service Fabric. W tym artykule opisano, jak używać rozwiązania analiza usługi Service Fabric, który jest tworzony z obszarem roboczym.
+Po odebraniu danych przez dzienniki usługi Azure Monitor, platforma Azure oferuje kilka *monitorowania rozwiązań* , które są to wstępnie spakowane zestawy rozwiązań lub operacyjne pulpity nawigacyjne mają być monitorowane dane przychodzące, dostosowane do kilku scenariuszy. Obejmują one *analiza usługi Service Fabric* rozwiązania i *kontenery* rozwiązania, które są dwie najbardziej odpowiednie do diagnostyki i monitorowania w przypadku korzystania z klastrów usługi Service Fabric. W tym artykule opisano, jak używać rozwiązania analiza usługi Service Fabric, który jest tworzony z obszarem roboczym.
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Dostęp do rozwiązania analiza usługi Service Fabric
 
@@ -110,7 +112,7 @@ Język zapytania Kusto jest skuteczna. Inne przydatne zapytanie, które można u
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby włączyć liczniki wydajności do monitorowania tj infrastruktury, przejdź do [dodanie agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
-* W przypadku klastrów w środowisku lokalnym usługa Log Analytics oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Log Analytics. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z usługi Log Analytics przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md).
+* W przypadku klastrów w środowisku lokalnym dzienniki usługi Azure Monitor oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Azure Monitor dzienniki. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z dzienników usługi Azure Monitor, przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md).
 * Konfigurowanie [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
-* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań względem nich](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics.
-* Uzyskuj bardziej szczegółowym omówieniem usługi Log Analytics i co oferuje, przeczytaj [co to jest usługa Log Analytics?](../operations-management-suite/operations-management-suite-overview.md).
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Azure Monitor dzienników.
+* Uzyskuj bardziej szczegółowym omówieniem dzienniki usługi Azure Monitor i co oferuje, przeczytaj [co to jest dzienniki usługi Azure Monitor?](../operations-management-suite/operations-management-suite-overview.md).

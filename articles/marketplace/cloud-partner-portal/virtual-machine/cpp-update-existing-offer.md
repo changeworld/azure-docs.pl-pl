@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: b48910b74d90072a360bad504e2b826402dceea5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ee828c908cb3b103befa3890b43bb2c1f04f7cf0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639743"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214048"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizowanie istniejącej oferty maszyny Wirtualnej w portalu Azure Marketplace
 
@@ -35,6 +35,8 @@ Istnieje wiele możliwych przyczyn powszechnie używane, należy zaktualizować 
 
 Aby pomóc w tych zmian, oferuje portalu **porównania** i **historii** funkcji.  
 
+>[!Note]
+>Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Niedozwolonej zmiany oferty maszyny Wirtualnej lub jednostki SKU
 
@@ -149,12 +151,12 @@ Jeśli zostały one już zafakturowane cykl, w którym wystąpił spadek, otrzym
 
 Począwszy od września 2018 r. 1, nową sekcję o nazwie **uproszczony ceny waluty** zostanie dodany do portalu. Microsoft jest usprawnienie działalności w portalu Azure Marketplace, należy włączyć bardziej przewidywalne ceny i kolekcje z klientami na całym świecie. To usprawnienie zostaną uwzględnione w zmniejszeniu liczby walut, w których firma Microsoft faktury dla odbiorców.
 
-Nowa sekcja podejmie, ceny w tych nowych walutach. Po przeprowadzeniu migracji wszystkich klientów do tych nowych walutach rozliczenia oryginalnego sekcji zostaną wycofane, a pozostanie tylko sekcję uproszczony ceny waluty.
+Nowa sekcja podejmie, ceny w tych nowych walutach. Po przeprowadzeniu migracji wszystkich klientów do tych nowych walutach rozliczenia oryginalnego sekcji zostaną wycofane, a pozostanie tylko sekcję uproszczony ceny waluty.
 
 Będziesz mieć do momentu 1 listopada 2018 można ustawić nowej ceny dla regionów, polegającego na tym, Waluta rozliczenia ulega zmianie. Nie można zwiększyć ceny dla regionów, w którym nie ulega zmianie waluty rozliczenia.
 
 > [!NOTE] 
-> Jeśli publikowanie oferty przy użyciu interfejsów API, mogą pojawić się nowa sekcja w ramach oferty w formacie JSON. To może być oznaczona jako `virtualMachinePricingV2` lub `monthlyPricingV2`, w zależności od typu oferty. 
+> Jeśli publikowanie oferty przy użyciu interfejsów API, mogą pojawić się nowa sekcja w ramach oferty w formacie JSON. To może być oznaczona jako `virtualMachinePricingV2` lub `monthlyPricingV2`, w zależności od typu oferty. 
 
 Jeśli masz jakieś pytania dotyczące tej zmiany, skontaktuj się z pomocą [pomocy technicznej systemu Azure Marketplace](../../support-azure-marketplace.md).
 

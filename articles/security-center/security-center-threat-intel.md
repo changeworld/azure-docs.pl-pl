@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 07592c6852a7fce057381cb9086baedc9d2b1bd6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111751"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57239831"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Mapa alertów zabezpieczeń i analiza zagrożeń
 Ten artykuł ułatwia korzystanie Mapa alertów zabezpieczeń usługi Azure Security Center i Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń do rozwiązania problemów związanych z zabezpieczeniami.
@@ -62,7 +62,7 @@ Aby wyświetlić Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń nie
 4. W górnej części mapy wybierz **wyświetlić analizy zagrożeń klasycznego**. **Analiza zagrożeń** zostanie otwarty pulpit nawigacyjny.
 
    > [!NOTE]
-   > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center.
+   > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **wymaga aktualizacji**, zaktualizuj [dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) Aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center.
    >
 5. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, określ priorytet dochodzenia zgodnie z kolumną **Złośliwy adres IP**. Pokazuje ona bieżącą liczbę złośliwych adresów IP w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Analiza zagrożeń**.
 

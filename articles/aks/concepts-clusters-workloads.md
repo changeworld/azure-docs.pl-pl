@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d4293bf6a375f3e1a26c0c4fb50fcdc7bb5b8e8e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456524"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243860"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
-Jak projektowanie aplikacji została przeniesiona na podejście oparte na kontenerach, trzeba organizować oraz zarządzać nimi wzajemnie połączonych zasobów staje się ważne. Kubernetes to wiodąca platforma, zapewniająca zapewnia niezawodne planowania obciążeń odpornej na uszkodzenia aplikacji. Usługa Azure Kubernetes Service (AKS) jest zarządzane rozwiązanie Kubernetes ofertą, co dodatkowo upraszcza wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi.
+Przemieszcza się tworzenia aplikacji na podejście oparte na kontenerach, ważne jest trzeba zorganizować zasoby i zarządzać nimi. Kubernetes to wiodąca platforma, zapewniająca zapewnia niezawodne planowania obciążeń odpornej na uszkodzenia aplikacji. Usługa Azure Kubernetes Service (AKS) jest zarządzane rozwiązanie Kubernetes ofertą, co dodatkowo upraszcza wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi.
 
 W tym artykule przedstawiono podstawowe składniki infrastruktury usługi Kubernetes *klastra głównego*, *węzłów*, i *pule węzłów*. Obciążenie zasobów, takich jak *zasobników*, *wdrożeń*, i *ustawia* również zostaną wprowadzone wraz z jak grupy zasobów do *przestrzenie nazw*.
 
@@ -52,9 +52,11 @@ Głównego klastra obejmuje następujące podstawowe składniki usługi Kubernet
 
 AKS zapewnia wzorca pojedynczej dzierżawy klastra, za pomocą dedykowanego serwera interfejsu API usługi Scheduler, itp. Definiują liczbę i rozmiar węzłów, a platforma Azure umożliwia skonfigurowanie bezpiecznej komunikacji między klaster główny i węzły. Interakcja z poziomu głównego klastra odbywa się za pośrednictwem interfejsów API rozwiązania Kubernetes, takie jak `kubectl` lub pulpit nawigacyjny platformy Kubernetes.
 
-Ten wzorzec zarządzanego klastra oznacza, że nie ma potrzeby konfigurowania składników, takich jak o wysokiej dostępności *etcd* magazynu, ale również oznacza, że nie masz dostępu do poziomu głównego klastra bezpośrednio. Uaktualnienia do rozwiązania Kubernetes są zarządzane za pośrednictwem wiersza polecenia platformy Azure lub w witrynie Azure portal i uaktualnia poziomu głównego klastra, a następnie węzły. Aby rozwiązać problemy, możesz przejrzeć dzienniki głównego klastra za pomocą dzienników usługi Azure Monitor.
+Ten wzorzec zarządzanego klastra oznacza, że nie jest wymagane do konfigurowania składników, takich jak o wysokiej dostępności *etcd* magazynu, ale również oznacza, że nie masz dostępu do poziomu głównego klastra bezpośrednio. Uaktualnienia do rozwiązania Kubernetes są zarządzane za pośrednictwem wiersza polecenia platformy Azure lub w witrynie Azure portal i uaktualnia poziomu głównego klastra, a następnie węzły. Aby rozwiązać problemy, możesz przejrzeć dzienniki głównego klastra za pomocą dzienników usługi Azure Monitor.
 
 Jeśli musisz skonfigurować główny klastra w określony sposób lub potrzebujesz bezpośredni dostęp do nich, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine].
+
+Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze AKS][operator-best-practices-cluster-security].
 
 ## <a name="nodes-and-node-pools"></a>Węzły i pule węzłów
 
@@ -62,7 +64,7 @@ Można uruchamiać aplikacje i usługi pomocnicze, potrzebujesz rozwiązania Kub
 
 - `kubelet` Agent rozwiązania Kubernetes, który przetwarza żądania aranżacji z klastra głównego i planowania uruchomionych kontenerów żądanej.
 - Praca w sieci wirtualnej jest obsługiwany przez *serwera proxy klastra kubernetes w usłudze* w każdym węźle. Tras serwera proxy ruchu sieciowego i zarządza adresowania IP dla usług i zasobników.
-- *Kontener środowiska uruchomieniowego* jest składnikiem, który umożliwia konteneryzowanych aplikacji uruchomić i korzystać z dodatkowych zasobów, takich jak sieci wirtualnej i magazynu. W usłudze AKS Docker służy jako kontener środowiska uruchomieniowego.
+- *Kontener środowiska uruchomieniowego* jest składnikiem, który umożliwia konteneryzowanych aplikacji uruchomić i korzystać z dodatkowych zasobów, takich jak sieci wirtualnej i magazynu. W usłudze AKS Moby służy jako kontener środowiska uruchomieniowego.
 
 ![Maszyna wirtualna platformy Azure i zasoby pomocnicze dla węzła rozwiązania Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -70,7 +72,7 @@ Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę proce
 
 W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze opiera się obecnie w systemie Ubuntu Linux. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
 
-Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` wydania funkcji i udostępnia opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż platformy Docker kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
+Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` wydania funkcji i udostępnia opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż Moby kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
 
 ### <a name="resource-reservations"></a>Rezerwacji zasobu
 
@@ -92,6 +94,8 @@ Na przykład:
     - Daje w sumie *(32-4) = 28 GiB* jest dostępna dla węzła
     
 Węzeł podstawowy system operacyjny wymaga również pewien stopień zasobów Procesora i pamięci, aby przeprowadzić jego własnej funkcji podstawowych.
+
+Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące harmonogramu podstawowe funkcje w usłudze AKS][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Pule węzłów
 
@@ -115,7 +119,7 @@ A *wdrożenia* reprezentuje co najmniej jeden zasobników identyczne, zarządzan
 
 Możesz zaktualizować wdrożeń, aby zmienić konfigurację zasobników, obraz kontenera używane lub pamięć masowa. Kontroler wdrożenia wstrzymanie i kończy się określoną liczbę replik, tworzy repliki z nową definicję wdrożenia i kontynuuje ten proces, dopóki wszystkie repliki we wdrożeniu są aktualizowane.
 
-Większość aplikacji bezstanowych w usłudze AKS należy używać w modelu wdrażania, a nie poszczególnych zasobników planowania. Kubernetes można monitorować kondycję i stan wdrożenia, aby upewnić się, że wymagane liczby replik uruchamiane w ramach klastra. Jeśli określisz tylko poszczególne zasobników, zasobników nie zostaną ponownie uruchomione, jeśli wystąpi problem i nie zmienia się na węzłów w dobrej kondycji, jeśli ich bieżącego węzła napotka problem.
+Większość aplikacji bezstanowych w usłudze AKS należy używać w modelu wdrażania, a nie poszczególnych zasobników planowania. Kubernetes można monitorować kondycję i stan wdrożenia, aby upewnić się, że wymagane liczby replik uruchamiane w ramach klastra. Jeśli określisz tylko poszczególne zasobników, zasobników nie są uruchamiane ponownie, jeśli wystąpi problem i nie są ponownie zaplanować na węzłów w dobrej kondycji, jeśli ich bieżącego węzła napotka problem.
 
 Jeśli aplikacja wymaga kworum wystąpienia będą zawsze dostępne dla zarządzania decyzji w zakresie, które nie mają procesu aktualizacji w celu zakłócania tej możliwości. *Zasobnik budżetów przerw w działaniu* może służyć do definiowania, jak wiele replik w ramach wdrożenia mogą być podejmowane podczas uaktualniania aktualizacji lub węzeł w dół. Na przykład, jeśli masz *5* replik w danym wdrożeniu, można zdefiniować zakłócenia zasobnika *4* pozwalającą na tylko jedną replikę jako usunięte/zmienił czas w danym momencie. Jako z limitami zasobów zasobników, najlepszym rozwiązaniem jest określenie budżetów przerw w działaniu pod nad aplikacjami, które wymagają minimalna liczba replik zawsze być obecne.
 
@@ -236,3 +240,5 @@ W tym artykule omówiono niektóre z podstawowych składników platformy Kuberne
 [aks-concepts-network]: concepts-network.md
 [acr-helm]: ../container-registry/container-registry-helm-repos.md
 [aks-helm]: kubernetes-helm.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[operator-best-practices-scheduler]: operator-best-practices-scheduler.md

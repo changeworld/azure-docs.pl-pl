@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 28891c103df91baa16b895ece7909658fede3b91
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894398"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213317"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z inspekcją wystąpienie zarządzane bazy danych SQL Azure
 
@@ -158,9 +158,9 @@ Dodatkowe informacje:
 - [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Inspekcja serwera do Centrum zdarzeń lub usługi Log Analytics
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Inspekcja serwera, aby dzienniki Centrum zdarzeń lub usługi Azure Monitor
 
-Dzienniki inspekcji z wystąpienia zarządzanego, mogą być wysyłane do nawet Hubs lub usługi Log Analytics przy użyciu usługi Azure Monitor. W tej sekcji opisano sposób konfigurowania to:
+Dzienniki inspekcji z wystąpienia zarządzanego, mogą być wysyłane do dzienniki usługi Azure Monitor lub nawet koncentratorów. W tej sekcji opisano sposób konfigurowania to:
 
 1. Nawigowanie w [witryny Azure Portal](https://portal.azure.com/) do wystąpienia zarządzanego.
 
@@ -170,7 +170,7 @@ Dzienniki inspekcji z wystąpienia zarządzanego, mogą być wysyłane do nawet 
 
 4. Wybierz **SQLSecurityAuditEvents** na liście dzienniki.
 
-5. Wybierz lokalizację docelową dla zdarzeń inspekcji — Centrum zdarzeń i/lub usługi Log Analytics. Skonfiguruj dla każdego obiektu docelowego wymaganych parametrów (np. obszaru roboczego usługi Log Analytics).
+5. Wybierz lokalizację docelową dla zdarzeń inspekcji — Centrum zdarzeń i/lub dzienniki usługi Azure Monitor. Skonfiguruj dla każdego obiektu docelowego wymaganych parametrów (np. obszaru roboczego usługi Log Analytics).
 
 6. Kliknij pozycję **Zapisz**.
 
@@ -213,11 +213,13 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji zobacz dokumentacja usługi Azure Event Hubs.
 
-### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Używanie i analizowanie dzienników przechowywanych w usłudze Log Analytics
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Używanie i analizowanie dzienników przechowywanych w dziennikach w usłudze Azure Monitor
 
-Jeśli dzienniki inspekcji są zapisywane do usługi Log Analytics, są one dostępne w obszarze roboczym usługi Log Analytics, gdzie wyszukiwania zaawansowanego można uruchomić na danych inspekcji. Jako punktu wyjścia, przejdź do usługi Log Analytics i w obszarze *ogólne* kliknij sekcję *dzienniki* i wprowadzać proste zapytanie, takie jak: `search "SQLSecurityAuditEvents"` Aby wyświetlić inspekcji logowania.  
+Jeśli dzienniki inspekcji są zapisywane do dzienników usługi Azure Monitor, są one dostępne w obszarze roboczym usługi Log Analytics, gdzie wyszukiwania zaawansowanego można uruchomić na danych inspekcji. Jako punktu wyjścia, przejdź do obszaru roboczego usługi Log Analytics i w obszarze *ogólne* kliknij sekcję *dzienniki* i wprowadzać proste zapytanie, takie jak: `search "SQLSecurityAuditEvents"` Aby wyświetlić inspekcji logowania.  
 
-Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Dzienniki platformy Azure Monitor udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania dzienników usługi Azure Monitor i poleceń, zobacz [usługi Azure Monitor rejestruje dokumentacja wyszukiwania](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Inspekcja różnice między bazami danych w usłudze Azure SQL Database i baz danych programu SQL Server
 
@@ -232,7 +234,7 @@ Wystąpienie zarządzane inspekcji systemu XEvent obsługuje cele usługi Azure 
 Klucz różnice w `CREATE AUDIT` składnia inspekcji w usłudze Azure Blob storage są:
 
 - Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` pliki zostaną umieszczone.
-- Nowa składnia `TO EXTERNAL MONITOR` jest dostarczana, aby umożliwić cele nawet Centrum i usługi Log Analytics.
+- Nowa składnia `TO EXTERNAL MONITOR` jest dostarczana, aby umożliwić cele dzienniki nawet Centrum i usługi Azure Monitor.
 - Składnia `TO FILE` jest **nieobsługiwane** ponieważ bazy danych SQL nie może uzyskać dostępu do udziałów plików w Windows.
 - Opcja zamknięcie jest **nieobsługiwane**.
 - `queue_delay` 0 jest **nieobsługiwane**.

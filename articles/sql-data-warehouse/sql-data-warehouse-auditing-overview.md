@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d2093c5b4c07e6e62df4d1f52a7fbe6e12a91ea0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342308"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217057"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -131,7 +131,7 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
     4. Scalono plik zostanie otwarty w programie SSMS, gdzie możesz można wyświetlać i analizować je, a także go wyeksportować w pliku XEL lub CSV lub tabeli.
 
-* Użyj [synchronizacji aplikacji](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) który utworzyliśmy. On działającej na platformie Azure i korzysta z usługi Log Analytics publicznych interfejsów API do wypychania dzienniki inspekcji SQL w usłudze Log Analytics. Synchronizowanie aplikacji wypycha dzienniki inspekcji SQL w usłudze Log Analytics za użycie za pośrednictwem pulpitu nawigacyjnego usługi Log Analytics.
+* Użyj [synchronizacji aplikacji](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) który utworzyliśmy. Działa na platformie Azure i korzysta z usługi log analytics publicznych interfejsów API do wypychania SQL dzienniki inspekcji w usłudze Azure Monitor dzienniki. Synchronizowanie aplikacji wypycha dzienniki inspekcji SQL do dzienników usługi Azure Monitor do użycia, za pośrednictwem pulpitu nawigacyjnego analizy dziennika.
 
 * Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

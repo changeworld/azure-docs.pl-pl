@@ -1,10 +1,10 @@
 ---
-title: Opis zawartości rachunku na platformie Azure | Dokumentacja firmy Microsoft
+title: Informacje o rachunku Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak czytać i zrozumieć swoje użycia oraz rachunek dotyczące subskrypcji platformy Azure
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: alherz
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: fdf346348be11a9f592fa3eff40e2f56e94ba656
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ac36c76e8605df0fee3e39341c8be0fef7e58ddf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904322"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246600"
 ---
-# <a name="understand-your-bill-for-microsoft-azure"></a>Opis zawartości rachunku za korzystanie z platformy Microsoft Azure
+# <a name="understand-your-microsoft-azure-bill"></a>Opis zawartości rachunku Microsoft Azure
 Aby poznać rachunku dotyczącym platformy Azure, porównaj fakturze za pomocą szczegółowych codzienne pliku użycia i raportów rozwiązania cost management w witrynie Azure portal.
 
-Ten artykuł nie dotyczy klientów platformy Azure z umową Enterprise Agreement (EA klienci). Jeśli jesteś klientem z umową EA, zobacz [opis zawartości rachunku dla klientów platformy Azure z umową Enterprise Agreement](billing-understand-your-bill-ea.md).  
+Ten artykuł nie dotyczy klientów platformy Azure z umową Enterprise Agreement (EA klienci). Jeśli jesteś klientem z umową EA, zobacz [opis zawartości rachunku dla klientów platformy Azure z umową Enterprise Agreement](billing-understand-your-bill-ea.md).
+
+Ten artykuł nie dotyczy klientów platformy Azure z umową klienta firmy Microsoft. Jeśli masz konto rozliczeniowe dla umowy klienta firmy Microsoft, zobacz [opłatach platformy Azure na fakturze umowy klienta Microsoft](billing-mca-understand-your-bill.md).
 
 Aby uzyskać informacje dotyczące rozliczeń w programie Azure Cloud Solution Provider (CSP platformy Azure), w tym rozliczeń cyklu, ceny i użycia, zobacz [Przegląd rozliczeń Azure CSP](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
@@ -45,7 +47,7 @@ Twoje opłaty za użycie są wyświetlane na poziomie miernika. Poniższe termin
  | --- | --- |
 |Cykl rozliczeń | Okres rozliczeniowy |
  |Name (Nazwa) |Kategoria miernika |
- |Typ |Podkategoria miernika |
+ |Type |Podkategoria miernika |
  |Zasób |Nazwa miernika |
  |Region |Region miernika |
  |Zużyte |Zużyta ilość |
@@ -60,7 +62,7 @@ Twoje opłaty za użycie są wyświetlane na poziomie miernika. Poniższe termin
 
 ![Opłaty za użycie pliku CSV](./media/billing-understand-your-bill/2.png)
 
-Aby wyświetlić rozbiciem na poszczególne dni dodatkowego, przejdź do **dzienne użycie** sekcji CSV. Filtruj "Harmonogram" w obszarze *kategoria licznika*. Widać, które dni użyto licznika i ile Zużyto. *Zasobów* i *grupy zasobów* informacji znajduje się również do porównania. *Zużyto* wartości należy dodać w do przedstawionego na fakturze.
+Aby wyświetlić rozbiciem na poszczególne dni dodatkowego, przejdź do **dzienne użycie** sekcji CSV. Filtruj *harmonogramu* w obszarze *kategoria licznika*. Widać, które dni użyto licznika i ile Zużyto. *Zasobów* i *grupy zasobów* informacji znajduje się również do porównania. *Zużyto* wartości należy dodać w do przedstawionego na fakturze.
 
 ![Codzienne sekcji w woluminie CSV](./media/billing-understand-your-bill/3.png)
 
@@ -71,12 +73,12 @@ Aby dowiedzieć się więcej, zobacz:
 - [Omówienie usługi Azure faktury](billing-understand-your-invoice.md)
 - [Zrozumienie ze szczegółowym zestawieniem użycia platformy Azure](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>Opcja 2: Porównaj użycie i koszty za pomocą witryny Azure portal
+### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>Opcja 2: Porównywanie użycia i kosztów w witrynie Azure portal
 
 Witryna Azure portal może również pomóc, możesz sprawdzić opłat. Aby uzyskać szybki przegląd invoiced użycia i opłat, wyświetlać wykresy zarządzania kosztami.
 
 1. W witrynie Azure portal przejdź do [subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Wybierz swoją subskrypcję > **analiza kosztów**. 
+1. Wybierz swoją subskrypcję > **analiza kosztów**.
 1. Filtruj według **Timespan**.
 1. Kontynuując poprzedni przykład, zobaczysz opłata za użycie usługi Azure Scheduler.
 
@@ -96,9 +98,9 @@ Opłat za usługi zewnętrzne są rozliczane osobno. Opłaty nie ujęte na faktu
 
 ## <a name="resources-billed-by-usage-meters"></a>Opłata jest naliczana według mierników użycia zasobów
 
-Azure nie są bezpośrednio rachunek oparte na kosztów zasobów. Opłaty za zasób są obliczane przy użyciu jednego lub więcej liczników. Te liczniki są używane do śledzenia użycia zasobów, w okresie swojego istnienia. Te liczniki są następnie używane do obliczenia rachunku.
+Azure nie są bezpośrednio rachunek oparte na kosztów zasobów. Opłaty za zasób są obliczane przy użyciu jednego lub więcej liczników. Liczniki są używane do śledzenia użycia zasobów, w okresie swojego istnienia. Te liczniki są następnie używane do obliczenia rachunku.
 
-Na przykład po utworzeniu pojedynczej zasobów platformy Azure, takich jak maszyny wirtualne, ma co najmniej jedno wystąpienie licznika utworzone. Te liczniki są używane do śledzenia użycia zasobu wraz z upływem czasu. Każdy licznik emituje rekordów użycia, które są używane przez platformę Azure do obliczenia rachunku.
+Na przykład po utworzeniu pojedynczej zasobów platformy Azure, takich jak maszyny wirtualne, ma co najmniej jedno wystąpienie licznika utworzone. Liczniki są używane do śledzenia użycia zasobu wraz z upływem czasu. Każdy licznik emituje rekordów użycia, które są używane przez platformę Azure do obliczenia rachunku.
 
 Na przykład pojedynczej maszyny wirtualnej (VM) utworzonej na platformie Azure może mieć następujących liczników, utworzony w celu śledzenia jej użycie:
 
@@ -113,7 +115,7 @@ Na przykład pojedynczej maszyny wirtualnej (VM) utworzonej na platformie Azure 
 - Standardowe we/wy Block Blob zapisu
 - Usunięcie standardowe we/wy — blokowych obiektów Blob
 
-Po utworzeniu maszyny Wirtualnej w każdej z nich te liczniki rozpoczyna się emitowanie rekordów użycia. To użycie i opłaty wartość licznika jest śledzona w systemie Azure systemu zbierania danych.
+Po utworzeniu maszyny Wirtualnej rozpocznie się każdego miernika emitowania rekordów użycia. To użycie i opłaty wartość licznika jest śledzona w systemie Azure systemu zbierania danych.
 
 ## <a name="payment"></a>Zapłacić rachunku
 
@@ -134,6 +136,10 @@ Aby sprawdzić stan płatności, [Utwórz bilet pomocy technicznej](https://port
   - [Szczegółowe informacje o cenach informacji dla każdej usługi](https://azure.microsoft.com/pricing/)
 - [Przeglądanie użycia i kosztów regularnie w witrynie Azure portal](billing-getting-started.md#costs).
 
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
 ## <a name="learn-more"></a>Dowiedz się więcej
 
 - [Usługi platformy Azure faktury i dane dotyczące dziennego wykorzystania](billing-download-azure-invoice-daily-usage-date.md)
@@ -141,7 +147,3 @@ Aby sprawdzić stan płatności, [Utwórz bilet pomocy technicznej](https://port
 - [Zrozumienie warunki na usługi Microsoft Azure szczegółowe użycia](billing-understand-your-usage.md)
 - [Zarządzanie kosztami portalu Azure](https://docs.microsoft.com/azure/billing/billing-getting-started)
 - [Zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](billing-getting-started.md#costs)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

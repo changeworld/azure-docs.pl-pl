@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f53df953d0a879d029a1cae3819a0e3154bd8f75
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562389"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213861"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -244,6 +244,12 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
    Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage mogą odwoływać się do [ofert zgodności usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Dostęp lokalny
+
+* <a id="port-445-blocked"></a>
+**Zainstaluj Moje usługodawcy internetowego lub IT bloki portu 445 kończy się niepowodzeniem usługi Azure Files. Co zrobić?**
+
+    Informacje na temat [różne sposoby obejścia zablokowany port 445 tutaj](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Usługa Azure Files umożliwia tylko nawiązywanie połączeń za pomocą protokołu SMB 3.0 (z obsługą szyfrowania) z poza region lub centrum danych. Protokół SMB 3.0 wprowadził wielu funkcji zabezpieczeń, łącznie z szyfrowaniem kanału, który jest bardzo bezpieczny do użycia przez internet. Jednak jego się zdarzyć, że port 445 został zablokowany z przyczyn historycznych luk w zabezpieczeniach w niższych wersji protokołu SMB. W idealnym przypadku port powinien zostać zablokowany na tylko dla ruchu SMB 1.0 oraz protokół SMB 1.0 powinno zostać wyłączone na wszystkich klientach.
+
 * <a id="expressroute-not-required"></a>
 **Należy ponownie nawiązać połączenie z usługą Azure Files przy użyciu usługi Azure ExpressRoute lub używania usługi Azure File Sync w środowisku lokalnym?**  
 

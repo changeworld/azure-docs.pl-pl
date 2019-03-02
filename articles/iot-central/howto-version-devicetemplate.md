@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e6148a35540b08916a4f0468af39e0f088453286
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3889aa1e8b19e203a3f6354c2d26fb82afe2b922
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958870"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214286"
 ---
 # <a name="create-a-new-device-template-version"></a>Utwórz nową wersję szablonu urządzenia
 
@@ -56,7 +56,7 @@ Co się dzieje reguł i pulpitów nawigacyjnych z urządzenia po zmianie wersji?
 
 Możesz utworzyć wiele wersji szablonu urządzenia. Wraz z upływem czasu będziesz mieć wiele połączonych urządzeń, za pomocą tych szablonów urządzenia. Urządzenia można migrować z jednej wersji szablonu urządzenia do innego. W poniższych krokach opisano sposób migrowania urządzenia:
 
-1. Przejdź do **Explorer** strony.
+1. Przejdź do **Device Explorer** strony.
 1. Wybierz urządzenie, którego chcesz przeprowadzić migrację do innej wersji.
 1. Wybierz **migracji urządzenia**.
 1. Wybierz numer wersji, aby migrować urządzenia, a następnie wybierz **migracji**.

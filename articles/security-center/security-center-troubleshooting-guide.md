@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: af85600593e725f1d90d5fbb3aae2aab6dd3f367
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 658f38e32c2680e7c538147154a004359e431027
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114454"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246750"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, których organizacje używają usługi Azure Security Center i muszą rozwiązywać problemy związane z usługą Azure Security Center.
@@ -40,7 +40,7 @@ W tym przewodniku wyjaśniano, jak rozwiązywać problemy związane z usługą S
 Dziennik inspekcji zawiera informacje o wszystkich operacjach zapisu (PUT, POST, DELETE) wykonywanych względem zasobów, ale nie zawiera informacji dotyczących operacji odczytu (GET).
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-Do zbierania danych zabezpieczeń z maszyn wirtualnych platformy Azure usługa Security Center korzysta z programu Microsoft Monitoring Agent — jest to ten sam agent, którego używa usługa Log Analytics. Po włączeniu zbierania danych i poprawnym zainstalowaniu agenta na maszynie docelowej powinny być wykonywane poniższe procesy:
+Usługa Security Center używa programu Microsoft Monitoring Agent — jest to ten sam agent używany przez usługę Azure Monitor do zbierania danych zabezpieczeń z maszyn wirtualnych platformy Azure. Po włączeniu zbierania danych i poprawnym zainstalowaniu agenta na maszynie docelowej powinny być wykonywane poniższe procesy:
 
 * HealthService.exe
 

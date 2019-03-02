@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 97a033e9e539bddb600a450d358b81e3d31c1e1e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e81f2b42e725e50473c09622a486586fb6721ad5
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731365"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214847"
 ---
 # <a name="containers-offer-publishing-guide"></a>Kontenery oferują Podręcznik publikowania
 
@@ -42,7 +42,6 @@ Firma Microsoft obsługuje obecnie bezpłatna i bring-your-own-license (BYOL) Mo
 | Obraz utworzony na podstawie pliku Dockerfile | Obrazy kontenerów muszą być oparte na specyfikacji obrazu platformy Docker i muszą być zbudowane z pliku Dockerfile.<ul> <li>Aby uzyskać więcej informacji na temat Tworzenie obrazów platformy docker, odwiedź sekcję użycie znajdujący się w [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
 | Hosting w rejestru Azure container Registry | Obrazy kontenera musi być hostowany w repozytorium Azure Container Registry (ACR).<ul> <li>Aby uzyskać więcej informacji na temat pracy z rejestru Azure container Registry odwiedź tego przewodnika Szybki Start: Tworzenie rejestru kontenerów przy użyciu stronę witryny Azure portal znajduje się w [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
 | Obraz znakowania | Obrazy kontenera musi zawierać co najmniej 1 tag (maksymalna liczba tagów: 16).<ul> <li>Aby uzyskać więcej informacji na temat tagowanie obrazu stronę docker tag znajdujący się w [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

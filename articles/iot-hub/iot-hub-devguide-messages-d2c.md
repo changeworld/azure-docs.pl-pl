@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: cabfe4381f7f941f2a5e049eed73be546902f6ae
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dd811a48d6f3f1061bad49a81b7e833dcb40e1e3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485351"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241293"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów wysyłać komunikaty urządzenie chmura do różnych punktów końcowych
 
@@ -101,7 +101,7 @@ W większości przypadków Średni czas oczekiwania jest mniej niż 500 MS. Moż
 
 IoT Hub udostępnia kilka routingu i punktu końcowego powiązane metryki, aby Przegląd kondycji Centrum i wysłane wiadomości. Możesz połączyć informacje z wielu metryk, aby odkryć ich główną przyczynę problemów. Na przykład użyj metryki **routingu: porzucone komunikaty telemetryczne** lub **d2c.telemetry.egress.dropped** do identyfikowania liczbę wiadomości, które zostały usunięte, gdy nie odpowiadają one zapytań na żadnej trasy a trasy rezerwowego zostało wyłączone. [Metryki usługi IoT Hub](iot-hub-metrics.md) Wyświetla listę wszystkich metryk, które są domyślnie włączone dla usługi IoT Hub.
 
-Za pomocą **trasy** dzienników diagnostycznych w usłudze Azure Monitor [ustawień diagnostycznych](../iot-hub/iot-hub-monitor-resource-health.md), możesz śledzi błędy podczas oceny routingu zapytania i punktu końcowego kondycji wyobrażenia Centrum IoT, na przykład gdy punkt końcowy nie istnieje. Te dzienniki diagnostyczne mogą być wysyłane do usługi Log Analytics, usługi Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania.
+Za pomocą **trasy** dzienników diagnostycznych w usłudze Azure Monitor [ustawień diagnostycznych](../iot-hub/iot-hub-monitor-resource-health.md), możesz śledzi błędy podczas oceny routingu zapytania i punktu końcowego kondycji wyobrażenia Centrum IoT, na przykład gdy punkt końcowy nie istnieje. Te dzienniki diagnostyczne mogą być wysyłane do dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

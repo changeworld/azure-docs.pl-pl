@@ -9,14 +9,14 @@ ms.author: dwgeo
 ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: def72c1bb42d083c38640f7c6165c305a5820c75
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8dab462d5a79b0fe938f08591feff775da64a9b0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003282"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240290"
 ---
-# <a name="configure-localization-legacy"></a>Konfigurowanie lokalizacji (starsza wersja)
+# <a name="configure-localization"></a>Konfigurowanie lokalizacji 
 
 Usługa Azure Media Clipper jest dostępna w językach w 18. Aby ustawić język widżet, należy zdefiniować `language` parametr podczas inicjowania. Przekaż w ciągu kodu żądany język z następującej listy:
 - Chiński (uproszczony): nazwy zh-hans

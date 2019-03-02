@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9671d9f61b610a85cbf2475e045c641a29dac11b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010620"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243894"
 ---
 # <a name="live-event-types-comparison"></a>Porównanie typów zdarzeń na żywo
 
@@ -33,7 +33,7 @@ W poniższej tabeli porównano funkcje dwa typy wydarzenie na żywo.
 | Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Yes |
 | Maksymalna rozdzielczość wideo dla udziału kanału informacyjnego |4K (na 60 klatek na sekundę 4096 x 2160) |1080p (1920 x 1088 na 30 klatek na sekundę)|
 | Zalecana maksymalna warstwy w udziale kanału informacyjnego|Do 12|Jedną ścieżkę dźwiękową|
-| Maksymalna warstwy w danych wyjściowych| Takie same jak dane wejściowe|Do 6|
+| Maksymalna warstwy w danych wyjściowych| Takie same jak dane wejściowe|Do 6 (zobacz poniżej ustawienia systemu)|
 | Maksymalna przepustowość agregacji wkładu kanału informacyjnego|60 MB/s|ND|
 | Maksymalna szybkość transmisji bitów dla pojedynczej warstwy w udziale |20 MB/s|20 MB/s|
 | Obsługa wielu języka ścieżki audio|Yes|Nie|
@@ -54,6 +54,30 @@ W poniższej tabeli porównano funkcje dwa typy wydarzenie na żywo.
 | Obsługa niejednolitego GOPs danych wejściowych|Yes|Nie — dane wejściowe muszą naprawiona GOP czas trwania|
 | Obsługa dane wejściowe szybkość klatek zmiennej|Yes|Nie — dane wejściowe muszą zostać usunięte, szybkości klatek. Niewielkich zmian są dopuszczalne na przykład podczas sceny wysokiej ruchu. Ale wkład źródła danych nie można porzucić szybkość klatek (na przykład do 15 klatek na sekundę).|
 | Auto bliskie zdarzenia na żywo, gdy dane wejściowe źródła danych zostaną utracone|Nie|Po 12 godzinach, jeśli nie ma żadnych LiveOutput uruchamiania|
+
+## <a name="system-presets"></a>Ustawienia systemu
+
+Podczas korzystania z kodowania na żywo (wydarzenie na żywo jest równa **standardowa**), ustawienie wstępne kodowania definiuje, jak przychodzący strumień jest zakodowany w wielu różnych lub warstwy. Obecnie jedyną dozwoloną wartość dla ustawienia wstępnego jest *Default720p* (ustawienie domyślne).
+
+**Default720p** będzie kodowania wideo na następujące warstwy 6.
+
+### <a name="output-video-stream"></a>Dane wyjściowe Stream wideo
+
+| Szybkość transmisji bitów | Szerokość | Wysokość | MaxFPS | Profil | Nazwa Stream wyjściowego |
+| --- | --- | --- | --- | --- | --- |
+| 3500 |1280 |720 |30 |Wysoka |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Wysoka |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Wysoka |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Wysoka |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Wysoka |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Wysoka |Video_340x192_200kbps |
+
+> [!NOTE]
+> Jeśli musisz użyć niestandardowego ustawienia wstępnego kodowania na żywo, skontaktuj się z amshelp@microsoft.com. Należy określić odpowiednią tabelę, rozdzielczości i szybkości transmisji. Sprawdź, czy jest tylko jednej warstwy na 720 pikseli i maksymalnie 6 warstwy.
+
+### <a name="output-audio-stream"></a>Dane wyjściowe Audio Stream
+
+Dźwięk jest zakodowany w celu stereo AAC-LC na 128 Kb/s, częstotliwość próbkowania kHz 48.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

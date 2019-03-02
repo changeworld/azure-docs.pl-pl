@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: f1a3268fcacd4083b767a3fe89d6ab9b41b6cceb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2b9426043619887d99003677fd6e8488cb56cce2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114063"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241072"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Monitorowanie i przetwarzania zdarzeń zabezpieczeń w usłudze Azure Security Center
 Pulpit nawigacyjny zdarzeń zawiera omówienie liczby zdarzeń związanych z zabezpieczeniami, zbierane wraz z upływem czasu i listę istotnych zdarzeń, które mogą wymagać Twojej uwagi.  
@@ -28,6 +28,8 @@ Pulpit nawigacyjny zdarzeń zawiera omówienie liczby zdarzeń związanych z zab
 > Aby użyć tej funkcji, obszar roboczy musi być uruchomiona usługa Log Analytics w wersji 2 i na warstwy standardowa usługi Security Center. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](security-center-pricing.md) Aby uzyskać więcej informacji na temat warstwy standardowa.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>Co to jest zdarzenie związane z zabezpieczeniami?
 Usługa Security Center używa programu Microsoft Monitoring Agent do gromadzenia zabezpieczeń różnych konfiguracji związanych z i zdarzeń z maszyn i przechowuje te zdarzenia w obszarach roboczych usługi. Przykłady takich danych to: operacyjne dzienniki systemu (Windows dzienniki zdarzeń), uruchomione procesy i zdarzeń z rozwiązania w zakresie zabezpieczeń zintegrowanych z usługą Security Center. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do obszarów roboczych.
@@ -70,7 +72,7 @@ Możesz uzyskać dostęp do **zdarzenia** pulpitu nawigacyjnego z poziomu menu g
   ![Wyszukiwanie w dzienniku][6]
 
 ## <a name="add-a-notable-event"></a>Dodaj istotne zdarzenie
-Usługa Security Center zapewnia out-of--box istotnych zdarzeń. Możesz dodać istotnych zdarzeń w oparciu o własne zapytania za pomocą [języka zapytań usługi Log Analytics](../log-analytics/log-analytics-search-reference.md). Wrócimy do **pulpit nawigacyjny zdarzeń** do Dodaj istotne zdarzenie.
+Usługa Security Center zapewnia out-of--box istotnych zdarzeń. Możesz dodać istotnych zdarzeń w oparciu o własne zapytania za pomocą [język zapytania Kusto](../log-analytics/log-analytics-search-reference.md). Wrócimy do **pulpit nawigacyjny zdarzeń** do Dodaj istotne zdarzenie.
 
 1. Wybierz **Dodaj istotne zdarzenie**.
 
@@ -94,7 +96,7 @@ Jeśli wiersz obszaru roboczego:
 - Jest puste - obszaru roboczego spełnia wymagania i wybranie obszaru roboczego spowoduje przejście do pulpitu nawigacyjnego
 
 > [!NOTE]
-> W obszarze **pulpit nawigacyjny zdarzeń**, **zdarzenia** kolumna wskazuje ilość zdarzenia w poszczególnych obszarach roboczych.  W tej kolumnie jest puste w przypadku niektórych obszarów roboczych, ponieważ Security Center w warstwie bezpłatna została zastosowana do tego obszaru roboczego. W ramach warstwy bezpłatna usługi Security Center będzie zbierać zdarzenia, ale zdarzenia nie są zapisywane w usłudze Log Analytics i nie są dostępne na pulpicie nawigacyjnym.
+> W obszarze **pulpit nawigacyjny zdarzeń**, **zdarzenia** kolumna wskazuje ilość zdarzenia w poszczególnych obszarach roboczych.  W tej kolumnie jest puste w przypadku niektórych obszarów roboczych, ponieważ Security Center w warstwie bezpłatna została zastosowana do tego obszaru roboczego. W ramach warstwy bezpłatna usługi Security Center będzie zbierać zdarzenia, ale zdarzenia nie są zapisywane w dziennikach w usłudze Azure Monitor i nie są dostępne na pulpicie nawigacyjnym.
 >
 >
 
@@ -119,9 +121,9 @@ Jeśli wiersz obszaru roboczego:
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób korzystania z pulpitu nawigacyjnego zdarzenie Security Center. Aby dowiedzieć się więcej o tym, jak działa pulpitu nawigacyjnego i pisać własne zapytania zdarzeń, zobacz:
 
-- [Co to jest usługa Log Analytics?](../log-analytics/log-analytics-overview.md) — Omówienie w usłudze Log Analytics
-- [Understanding log wyszukiwania w usłudze Log Analytics](../log-analytics/log-analytics-log-search-new.md) — zawiera opis używania przeszukiwania dzienników w usłudze Log Analytics i zapewnia pojęcia, które należy rozumieć, przed utworzeniem przeszukiwania dzienników
-- [Usługa log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-search-reference.md) — Dowiedz się, jak pisać własne zapytania zdarzeń przy użyciu języka zapytań w Dzienniku
+- [Co to jest dzienniki usługi Azure Monitor?](../log-analytics/log-analytics-overview.md) — Rejestruje Omówienie usługi Azure Monitor
+- [Understanding log przeszukuje Kusto](../log-analytics/log-analytics-log-search-new.md) — zawiera opis używania wyszukiwań w dziennikach w usłudze Azure Monitor i oferuje pojęcia, które należy rozumieć, przed utworzeniem przeszukiwania dzienników
+- [Dokumentacja wyszukiwania Kusto](../log-analytics/log-analytics-search-reference.md) — Dowiedz się, jak pisać własne zapytania zdarzeń przy użyciu języka zapytań w Dzienniku
 
 Aby dowiedzieć się więcej na temat usługi Security Center, zobacz:
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/28/2019
+ms.openlocfilehash: dd06ae6046ab96d95cf1c1907c74d0b4d9a843bb
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963849"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214337"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -90,7 +90,7 @@ Aby pula 100 eDTU była bardziej opłacalna niż korzystanie z rozmiarów wystą
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maksymalna liczba baz danych z równoczesnymi szczytami użycia
 
-Dzięki udostępnieniu zasobów, nie wszystkie bazy danych w puli mogą jednocześnie używać zasobów do limitu dostępne dla pojedynczych baz danych. Mniejsza liczba baz danych, które jednocześnie odnotowują szczytowe użycie, tym niższy można ustawić zasobów w puli i tym bardziej opłacalne staje się puli. Ogólnie rzecz biorąc nie więcej niż 2/3 (lub 67%) baz danych w puli powinno jednocześnie doświadczać ich limitu zasobów.
+Dzięki udostępnieniu zasobów, nie wszystkie bazy danych w puli mogą jednocześnie używać zasobów do limitu dostępne dla pojedynczych baz danych. Mniejsza liczba baz danych, które jednocześnie odnotowują szczytowe użycie, tym niższy można ustawić zasobów w puli i tym bardziej opłacalne staje się puli. Ogólne, nie więcej niż 2/3 (lub 67%) baz danych w puli powinno jednocześnie doświadczać ich limitu zasobów.
 
 ***Oparte na jednostkach DTU przykładowy model zakupu***
 
@@ -200,6 +200,20 @@ Domyślnie wykresu w **wykorzystanie zasobów bazy danych** bloku pokaże baz da
 Możesz również wybrać więcej metryk, aby wyświetlić obok siebie w tej tabeli bazy danych, aby uzyskać bardziej szczegółowy widok wydajności bazy danych.
 
 Aby uzyskać więcej informacji, zobacz [tworzyć alerty bazy danych SQL w witrynie Azure portal](sql-database-insights-alerts-portal.md).
+
+## <a name="customer-case-studies"></a>Analizy przypadków klientów
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  Firma SnelStart umożliwia pul elastycznych za pomocą usługi Azure SQL Database szybko rozszerzyć swoje usługi biznesowe w wysokości 1000 nowe usługi Azure SQL bazy danych na miesiąc.
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco używa pul elastycznych za pomocą usługi Azure SQL Database do szybkiego aprowizację i skalowanie usług dla tysięcy dzierżaw w chmurze.
+
+- [Daxko/CSI](http://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI używa pul elastycznych za pomocą usługi Azure SQL Database, przyspieszyć cykl tworzenia i zwiększyć jej działu pomocy technicznej i wydajność.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

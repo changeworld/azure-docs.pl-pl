@@ -1,5 +1,5 @@
 ---
-title: Usługi Machine Learning (przy użyciu języka R) w Omówienie usługi Azure SQL Database (wersja zapoznawcza)
+title: SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza) — omówienie
 description: Ten temat zawiera opis usługi Azure SQL Database Machine Learning Services (przy użyciu języka R) i wyjaśniono, jak działa.
 services: sql-database
 ms.service: sql-database
@@ -11,30 +11,34 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 02/06/2019
-ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 03/01/2019
+ms.openlocfilehash: 5f876deef4c92c0d678380a49aa38628e0afa660
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875607"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240308"
 ---
-# <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Usługi Machine Learning (przy użyciu języka R) w usłudze Azure SQL Database (wersja zapoznawcza)
+# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza)
 
 Usługi Machine Learning to funkcja usługi Azure SQL Database, używany do wykonywania skryptów języka R w bazie danych. Ta funkcja obejmuje pakietów R firmy Microsoft o wysokiej wydajności, analizy predykcyjnej i uczenia maszynowego. Dane relacyjne może służyć w skryptów języka R za pomocą procedur składowanych, zawierający instrukcje języka R skryptu T-SQL lub kod R zawierający języka T-SQL.
 
 > [!IMPORTANT]
-> Usługi Machine Learning (przy użyciu języka R) w usłudze Azure SQL Database jest obecnie w publicznej wersji zapoznawczej dla pojedynczych baz danych i pul elastycznych za pomocą modelu zakupu opartego na rdzeniach wirtualnych w **ogólnego przeznaczenia** i **krytycznebiznesowych** warstwy usług. W tym początkowej publicznej wersji zapoznawczej **hiperskali** warstwy usług i **wystąpienia zarządzanego** opcji wdrożenia nie są obsługiwane. Obecnie język R jest jedynym obsługiwanym językiem. W tej chwili język Python nie jest obsługiwany. 
+> SQL Database usługi Azure Machine Learning (przy użyciu języka R) jest obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Podgląd jest obecnie dostępna w następujących regionach: w regionie Europa Zachodnia, Europa Północna, zachodnie stany USA 2, wschodnie stany USA, południowo-środkowe stany USA, północno-środkowe stany USA, Kanada Środkowa, Azja południowo-wschodnia, Indie Południowe i Australia południowo-wschodnia. 
+> Publiczna wersja zapoznawcza jest dostępna dla pojedynczych baz danych i pul elastycznych za pomocą modelu zakupu opartego na rdzeniach wirtualnych w **ogólnego przeznaczenia** i **krytyczne dla działania** warstwy usług. W tym początkowej publicznej wersji zapoznawczej **hiperskali** warstwy usług i **wystąpienia zarządzanego** opcji wdrożenia nie są obsługiwane. Obecnie język R jest jedynym obsługiwanym językiem. W tej chwili język Python nie jest obsługiwany.
+>
+> Podgląd jest obecnie dostępna w następujących regionach: Europa Zachodnia, Europa Północna, zachodnie stany USA 2, wschodnie stany USA, południowo-środkowe stany USA, środkowe stany USA Północna, Kanada Środkowa, Azja południowo-wschodnia, Indie Południowe i Australia południowo-wschodnia.
 >
 > [Zarejestruj się w wersji zapoznawczej](#signup) poniżej.
 
 ## <a name="what-you-can-do-with-r"></a>Co można zrobić przy użyciu języka R
 
-Korzystaj z możliwości języka R do tworzenia zaawansowanych analiz i usługi machine learning w bazie danych. Ta możliwość udostępnia obliczeń i przetwarzania do miejsca przechowywania danych, eliminując konieczność łączenia się do pobierania danych przez sieć. Ponadto możliwościom pakietów języka R enterprise można dostarczać zaawansowane funkcje analityczne na dużą skalę.
+Korzystaj z możliwości języka R, aby dostarczać zaawansowaną analizę i uczenie maszynowe w bazie danych. W ten sposób obliczenia i przetwarzanie przenoszone są do miejsca przechowywania danych, co eliminuje konieczność ściągania danych przez sieć. Ponadto wykorzystaj moc korporacyjnych pakietów języka R do dostarczania zaawansowanej analizy na dużą skalę.
 
-Usługi Machine Learning obejmuje podstawowy dystrybucja języka r, nałożony za pomocą pakietów języka R enterprise firmy Microsoft. Funkcje języka R i algorytmy firmy Microsoft jest zaprojektowany z myślą o skali wraz z narzędziem, zapewniając analizy predykcyjnej, modelowanie statystyczne, wizualizacje danych i algorytmów uczenia maszynowego najwyższą.
+Usługa Machine Learning Services obejmuje podstawową dystrybucję języka R z nakładką w postaci korporacyjnych pakietów języka R firmy Microsoft. Funkcje i algorytmy języka R firmy Microsoft zostały opracowane z myślą o skalowaniu i użyteczności, zapewniając analizę predykcyjną, modelowanie statystyczne, wizualizacje danych i najwyższej klasy algorytmy uczenia maszynowego.
 
 ### <a name="r-packages"></a>Pakiety języka R
 
@@ -54,13 +58,13 @@ Oprócz wstępnie zainstalowanych pakietów, możliwe jest również [zainstalow
 
 Aby zarejestrować się w publicznej wersji zapoznawczej, wykonaj następujące kroki:
 
-1. Jeśli nie masz subskrypcji platformy Azure, [Tworzenie konta usługi](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
+1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/).
 
 2. Wyślij wiadomość e-mail do firmy Microsoft na adres [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com), aby utworzyć konto na potrzeby korzystania z publicznej wersji zapoznawczej. Publiczna wersja zapoznawcza usługi Machine Learning (z językiem R) w usłudze SQL Database nie jest włączona domyślnie.
 
 Po zarejestrowaniu się w programie Microsoft będziesz dołączyć do publicznej wersji zapoznawczej i włączenia R do istniejącej lub nowej bazy danych.
 
-Nie należy używać usługi Machine Learning przy użyciu języka R dla obciążeń produkcyjnych w publicznej wersji zapoznawczej.
+Usługi Machine Learning przy użyciu języka R nie jest zalecane w przypadku obciążeń produkcyjnych w publicznej wersji zapoznawczej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

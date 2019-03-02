@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8e8bcc43a3bf26a40055e4258bf73bb047e61ef9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bbf9ab56bd7e070e40e2454a69f0a5e313597f14
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737607"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215375"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Aplikacje platformy Azure: Oferta szablonu rozwiązania Podręcznik publikowania
 
@@ -38,7 +38,6 @@ Szablony te rozwiązania są oferuje transakcji, które są wdrożone i rozlicza
 |Wirtualny dysk twardy (VHD) zgodnych z platformą Azure  |   Maszyny wirtualne muszą zostać skompilowane na systemie Windows lub Linux.  Aby uzyskać więcej informacji [Zobacz Tworzenie wirtualnego dysku twardego zgodnych z platformą Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
 | Uznanie autorstwa użycia klienta | Włączanie autorstwa użycia klienta jest wymagany na wszystkie szablony rozwiązań opublikowanych w portalu Azure Marketplace. Aby uzyskać więcej informacji na temat użycia klienta: uznanie autorstwa i jak go włączyć, zobacz [partnerów platformy Azure klienta użycia: uznanie autorstwa](./azure-partner-customer-usage-attribution.md).  |
 |  |  |
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli użytkownik jeszcze tego nie zrobiono, [zarejestrować](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.

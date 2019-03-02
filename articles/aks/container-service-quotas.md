@@ -3,17 +3,16 @@ title: Limity przydziałów i dostępność regionów dla usługi Azure Kubernet
 description: Domyślne limity przydziałów i dostępność regionów dla usługi Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: overview
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9fbc769ef428c41f0e133ec1e139ba9900025dc4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: c8a2c0cac963fcc0622cff547e85593a13aa076a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879360"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243843"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Limity przydziałów i dostępność regionów dla usługi Azure Kubernetes Service (AKS)
 
@@ -32,12 +31,14 @@ Do infrastruktury aprowizowanej mają zastosowanie wszystkie inne ograniczenia d
 Usługa Azure Kubernetes Service (AKS) jest dostępna w następujących regionach:
 
 - Australia Wschodnia
+- Australia Południowo-Wschodnia
 - Kanada Środkowa
 - Kanada Wschodnia
 - Środkowe stany USA
 - Azja Wschodnia
 - Wschodnie stany USA
 - Wschodnie stany USA 2
+- Francja Środkowa
 - Japonia Wschodnia
 - Europa Północna
 - Azja Południowo-Wschodnia

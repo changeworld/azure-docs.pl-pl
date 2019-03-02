@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie kontenerów w usłudze Azure Service Fabric z usługą Log Analytics | Dokumentacja firmy Microsoft
-description: Używanie programu Log Analytics do monitorowania kontenery działające w klastrach usługi Azure Service Fabric.
+title: Monitorowanie kontenerów w usłudze Azure Service Fabric przy użyciu dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Używać dzienników usługi Azure Monitor na potrzeby monitorowania kontenery działające w klastrach usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,25 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2123cf0eb575d632e871e23513128e67d5433c9d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d5840db718191c9b67a8b28a2efccd55146ae510
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820176"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246937"
 ---
-# <a name="monitor-containers-with-log-analytics"></a>Monitorowanie kontenerów za pomocą usługi Log Analytics
+# <a name="monitor-containers-with-azure-monitor-logs"></a>Monitorowanie kontenerów przy użyciu dzienników usługi Azure Monitor
  
-W tym artykule opisano kroki wymagane do skonfigurowania rozwiązania do monitorowania kontenerów w usłudze Azure Log Analytics, aby wyświetlić zdarzenia kontenera. Aby skonfigurować klaster, aby zbierać zdarzenia kontenera, zobacz ten [samouczek krok po kroku](service-fabric-tutorial-monitoring-wincontainers.md). 
+W tym artykule opisano kroki wymagane do skonfigurowania rozwiązania do monitorowania kontenerów dzienniki usługi Azure Monitor, aby wyświetlić zdarzenia kontenera. Aby skonfigurować klaster, aby zbierać zdarzenia kontenera, zobacz ten [samouczek krok po kroku](service-fabric-tutorial-monitoring-wincontainers.md). 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="set-up-the-container-monitoring-solution"></a>Konfigurowanie rozwiązania do monitorowania kontenerów
 
 > [!NOTE]
-> Musisz mieć zestawu usługi Log Analytics dla klastra, a także wdrożyć na węzły agenta usługi Log Analytics. Jeśli nie wykonaj kroki opisane w [Konfigurowanie usługi Log Analytics](service-fabric-diagnostics-oms-setup.md) i [dodać agenta usługi Log Analytics do klastra](service-fabric-diagnostics-oms-agent.md) pierwszy.
+> Musisz mieć usługi Azure Monitor dzienniki skonfigurować dla klastra, a także wdrożyć na węzły agenta usługi Log Analytics. Jeśli nie wykonaj kroki opisane w [Konfigurowanie dzienników usługi Azure Monitor](service-fabric-diagnostics-oms-setup.md) i [dodać agenta usługi Log Analytics do klastra](service-fabric-diagnostics-oms-agent.md) pierwszy.
 
-1. Po skonfigurowaniu klastra za pomocą usługi Log Analytics i agenta usługi Log Analytics wdrażanie kontenerów. Poczekaj, aż kontenerów można wdrożyć przed przejściem do następnego kroku.
+1. Po skonfigurowaniu klastra przy użyciu dzienników usługi Azure Monitor i agenta usługi Log Analytics wdrażanie kontenerów. Poczekaj, aż kontenerów można wdrożyć przed przejściem do następnego kroku.
 
 2. W portalu Azure Marketplace Wyszukaj *rozwiązanie do monitorowania kontenerów* i kliknij pozycję **rozwiązanie do monitorowania kontenerów** zasób, który pojawia się w obszarze monitorowanie + Zarządzanie kategorii.
 
@@ -42,7 +44,7 @@ W tym artykule opisano kroki wymagane do skonfigurowania rozwiązania do monitor
 
     ![Pulpit nawigacyjny analizy dziennika podstawowe](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Agenta umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które mogą być wysyłane zapytanie w usłudze Log Analytics lub umożliwia wizualizowanie wskaźników wydajności. Typy dzienników, które są zbierane są:
+Agenta umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które mogą być wysyłane zapytanie w dziennikach w usłudze Azure Monitor lub umożliwia wizualizowanie wskaźników wydajności. Typy dzienników, które są zbierane są:
 
 * ContainerInventory: zawiera informacje o lokalizację kontenera, nazwę i obrazów
 * ContainerImageInventory: informacje o wdrożonych obrazy, w tym identyfikatorów lub rozmiarów
@@ -53,7 +55,7 @@ Agenta umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [rozwiązanie Log Analytics Containers](../azure-monitor/insights/containers.md).
+* Dowiedz się więcej o [usługi Azure Monitor dzienniki rozwiązania Containers](../azure-monitor/insights/containers.md).
 * Dowiedz się więcej o aranżacji kontenerów w usłudze Service Fabric - [usługi Service Fabric i kontenery](service-fabric-containers-overview.md)
-* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics
-* Skonfiguruj usługę Log Analytics, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) reguły, aby ułatwić wykrywanie i przeprowadzanie diagnostyki
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach dzienniki usługi Azure Monitor
+* Skonfiguruj dzienniki usługi Azure Monitor, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) reguły, aby ułatwić wykrywanie i przeprowadzanie diagnostyki

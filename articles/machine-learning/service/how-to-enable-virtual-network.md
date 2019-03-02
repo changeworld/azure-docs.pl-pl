@@ -10,18 +10,27 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 60a76df6360ca66e8f55b03d5914283f669eb402
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 045a8fc3723c7bae176f0b99a83965bb2bef721d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118109"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242942"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
 W tym artykule dowiesz się, jak można uruchamiać eksperymenty i wnioskowania wewnątrz sieci wirtualnej. Sieć wirtualna działa jak granica bezpieczeństwa, izolowanie zasobów platformy Azure z publicznego Internetu. Usługa Azure virtual network można również dołączyć do sieci lokalnej. Umożliwia ona bezpiecznie szkolenie modeli i uzyskiwać dostęp do Twojej wdrożonej modeli do wnioskowania.
 
 Usługa Azure Machine Learning, zależy od innych usług platformy Azure za zasoby obliczeniowe. Zasoby obliczeniowe (celów obliczeń) są używane do uczenia i wdrażania modeli. Te obliczenia obiekty docelowe mogą być tworzone w sieci wirtualnej. Na przykład można użyć maszyny wirtualnej do nauki o danych firmy Microsoft do nauczenia modelu, a następnie wdrożyć model do usługi Azure Kubernetes Service (AKS). Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+W tym dokumencie przyjęto założenie, że znasz sieci wirtualnych platformy Azure i adresu IP sieci ogólnie rzecz biorąc. W tym dokumencie założono również, że utworzono sieć wirtualną i podsieć do korzystania z zasobów obliczeniowych. Jeśli nie jesteś zaznajomiony z sieciami wirtualnymi platformy Azure, przeczytaj następujące artykuły, aby dowiedzieć się więcej o usłudze:
+
+* [Adresowanie IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
+* [Grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [Szybki start: Tworzenie sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Filtrowanie ruchu sieciowego](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 ## <a name="storage-account-for-your-workspace"></a>Konto magazynu dla obszaru roboczego
 

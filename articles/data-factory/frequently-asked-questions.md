@@ -1,5 +1,5 @@
 ---
-title: 'Usługi Azure Data Factory: Często zadawane pytania | Dokumentacja firmy Microsoft'
+title: 'Azure Data Factory: Często zadawane pytania | Dokumentacja firmy Microsoft'
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 112ff38ad4e35ac284501c5dd3881c4f340b5f9b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984649"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240800"
 ---
 # <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.  
@@ -195,7 +195,7 @@ Należy już do klastrów usługi Databricks. ADF zarządzać tworzenia klastra 
 Gdy firma Microsoft zapewnia pomoc i rozwiązywanie problemów przy użyciu przepływu danych, podaj "DSL kodu Plan". W tym celu wykonaj następujące kroki:
 
 * Z projektanta przepływu danych kliknij przycisk "Kod" w prawym górnym rogu. Spowoduje to wyświetlenie można edytować kod JSON dla przepływu danych.
-* Z widoku kodu kliknij polecenie "Plan" w prawym górnym rogu. Plan pomocą przełącznika z formatu JSON do sformatowanego planu skryptu języka DSL.
+* Z widoku kodu kliknij polecenie "Plan" w prawym górnym rogu. Przełącz Plan zostanie przełączona z formatu JSON do tylko do odczytu sformatowane DSL skryptu planu.
 * Skopiuj i wklej ten skrypt lub zapisać go w pliku tekstowym.
 
 ### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Jak uzyskać dostęp do danych za pomocą 80 innych typów zestawu danych w usłudze ADF?

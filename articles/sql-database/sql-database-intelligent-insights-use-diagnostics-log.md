@@ -12,16 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561879"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217040"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Intelligent Insights usługi Azure SQL Database
 
-Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [usługi Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
+Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-sql.md), [usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
 
 ## <a name="log-header"></a>Nagłówek dziennika
 
@@ -135,7 +135,7 @@ Ostatnia część dziennika wydajności Intelligent Insights odnoszą się do an
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Można użyć dziennika wydajności Intelligent Insights za pomocą [usługi Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i możliwości raportowania.
+Można użyć dziennika wydajności Intelligent Insights za pomocą [dzienniki usługi Azure Monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i możliwości raportowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [Intelligent Insights](sql-database-intelligent-insights.md) pojęcia.

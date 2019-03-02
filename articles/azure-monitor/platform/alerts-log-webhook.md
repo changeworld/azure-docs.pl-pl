@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 24e159ea2cccfdaab9c732835506a1a22abab134
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 68fb7678fac2a0a32278e813d03a0eebd20565ec
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869155"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216054"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
 Gdy [alertu dziennika jest tworzony na platformie Azure](alerts-log.md), masz możliwość [konfigurowanie przy użyciu grup akcji](action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -78,9 +78,6 @@ Aby dołączyć wyniki wyszukiwania niestandardowy ładunek, upewnij się, że *
 ## <a name="sample-payloads"></a>Przykładowych ładunków
 W tej sekcji przedstawiono przykładowy ładunek elementu webhook dla dziennika alertów, w tym przypadku ładunek jest standardowa oraz datę jego niestandardowe.
 
-> [!NOTE]
-> Aby zapewnić zgodność z poprzednimi wersjami, ładunek standardowego elementu webhook dla alertów za pomocą usługi Azure Log Analytics jest taka sama jak [alert usługi Log Analytics, zarządzanie](alerts-metric.md). Ale w przypadku alertów dzienników przy użyciu [usługi Application Insights](../../azure-monitor/app/analytics.md), ładunek elementu webhook standardowa opiera się na schemat grupy akcji.
-
 ### <a name="standard-webhook-for-log-alerts"></a>Standardowa elementu Webhook dla dziennika alertów 
 Obu tych przykładów ma podać fikcyjny ładunku z jedynymi kolumnami i wierszami dwa.
 
@@ -118,7 +115,11 @@ Poniżej przedstawiono przykładowy ładunek działań standardowych elementów 
     "Description": null,
     "Severity": "Warning"
  }
- ```   
+ ```
+
+> [!NOTE]
+> Wartość pola ważności mogą ulec zmianie, jeśli masz [przełączona z preferencjami API](alerts-log-api-switch.md) dla dziennika alertów w usłudze Log Analytics.
+
 
 #### <a name="log-alert-for-azure-application-insights"></a>Alert dziennika dla usługi Azure Application Insights
 Poniżej przedstawiono przykładowy ładunek standardowego elementu webhook *bez niestandardowych opcji Json* gdy jest używana dla dziennika alertów na podstawie szczegółowych informacji aplikacji.
@@ -154,7 +155,7 @@ Poniżej przedstawiono przykładowy ładunek standardowego elementu webhook *bez
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error",
+    "Severity": "3",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
 }

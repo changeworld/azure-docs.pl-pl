@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0afc507a49ae7cc54fb0daa5c7ae71c3a40ee637
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 09abb8fa2c8d08b27b83a2510b4c1133458b8363
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731110"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240732"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane przy użyciu agenta usługi Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń na komputerze i kopiuje dane do swojego obszaru roboczego do analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Agent usługi Log Analytics kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -87,11 +87,11 @@ Aby wybrać obszar roboczy utworzony przez usługę Security Center:
 -   Usługa Security Center spowoduje automatyczne włączenie rozwiązania Security Center w obszarze roboczym na warstwy cenowej dla subskrypcji. 
 
 > [!NOTE]
-> Obszary robocze utworzone przez usługę Security Center w warstwie taryfowy usługi log Analytics nie ma wpływu na rozliczenia w usłudze Security Center. Rozliczanie usługi Security Center zawsze zależy od zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym. Dla warstwy bezpłatnej, usługa Security Center umożliwia *SecurityCenterFree* rozwiązania w domyślnym obszarze roboczym. W przypadku warstwy Standard usługi Security Center umożliwia *zabezpieczeń* rozwiązania w domyślnym obszarze roboczym.
+> Obszary robocze utworzone przez usługę Security Center w warstwie taryfowy usługi log analytics nie ma wpływu na rozliczenia w usłudze Security Center. Rozliczanie usługi Security Center zawsze zależy od zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym. Dla warstwy bezpłatnej, usługa Security Center umożliwia *SecurityCenterFree* rozwiązania w domyślnym obszarze roboczym. W przypadku warstwy Standard usługi Security Center umożliwia *zabezpieczeń* rozwiązania w domyślnym obszarze roboczym.
 
 Aby uzyskać więcej informacji na temat cen, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-Aby uzyskać więcej informacji na temat istniejących kont usługi Log Analytics, zobacz [klientów istniejącej usługi Log Analytics](security-center-faq.md#existingloganalyticscust).
+Aby uzyskać więcej informacji na temat istniejących kont analizy dziennika zobacz [istniejące log analytics klientów](security-center-faq.md#existingloganalyticscust).
 
 ### <a name="using-an-existing-workspace"></a>Przy użyciu istniejącego obszaru roboczego
 
@@ -149,7 +149,7 @@ Po wybraniu obszaru roboczego, w którym do przechowywania danych, wszystkie obs
 ## <a name="data-collection-tier"></a>Warstwa kolekcji danych
 Wybieranie warstwy zbierania danych w usłudze Azure Security Center mają wpływ tylko na magazyn zdarzeń zabezpieczeń w obszarze roboczym usługi Log Analytics. Agenta usługi Log Analytics będzie nadal Zbieraj i Analizuj zdarzenia zabezpieczeń wymaganych do wykrywania zagrożeń usługi Azure Security Center, niezależnie od tego, która warstwa zdarzeń zabezpieczeń zdecydujesz się przechowywać w obszarze roboczym usługi Log Analytics (jeśli istnieje). Wybieranie do przechowywania zdarzeń związanych z zabezpieczeniami w obszarze roboczym spowoduje włączenie analizy, wyszukiwania i inspekcji tych zdarzeń w obszarze roboczym. 
 > [!NOTE]
-> Przechowywanie danych w usłudze Log Analytics może Naliczanie dodatkowych opłat za magazyn danych, zobacz stronę cennika, aby uzyskać więcej informacji.
+> Przechowywanie danych w usłudze log analytics może Naliczanie dodatkowych opłat za magazyn danych, zobacz stronę cennika, aby uzyskać więcej informacji.
 >
 Możesz wybrać zasady dla subskrypcji i obszarów roboczych cztery rodzaje zdarzeń filtrowania prawej strony mają być przechowywane w obszarze roboczym: 
 
@@ -212,8 +212,8 @@ Aby uzyskać więcej informacji, zobacz [co się stanie w przypadku pakietu OMS 
 
 -   Istniejące rozszerzenia maszyny Wirtualnej jest obecny<br>
     - Usługa Security center obsługuje istniejących instalacji rozszerzenia, a nie zastępuje istniejące połączenia. Usługa Security Center przechowuje zabezpieczeń danych z maszyny Wirtualnej w obszarze roboczym już połączony i zapewnia ochronę w oparciu o rozwiązania włączone w obszarze roboczym.   
-    - Aby zobaczyć, na który obszar roboczy istniejące rozszerzenie wysyła dane, uruchom test, aby [sprawdzania poprawności łączności z usługą Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternatywnie można Otwórz program Log analytics, wybierz obszar roboczy, wybierz maszynę Wirtualną i przyjrzyj się połączenia agenta usługi Log Analytics. 
-    - Jeśli masz środowisko w którym zainstalowano agenta usługi Log Analytics na klienckich stacjach roboczych i raportowania do istniejącego obszaru roboczego usługi Log Analytics, przejrzyj listę [systemów operacyjnych obsługiwanych przez usługę Azure Security Center](security-center-os-coverage.md) aby upewnić się, system operacyjny jest obsługiwany, a następnie zobacz [klientów istniejącej usługi Log Analytics](security-center-faq.md#existingloganalyticscust) Aby uzyskać więcej informacji.
+    - Aby zobaczyć, na który obszar roboczy istniejące rozszerzenie wysyła dane, uruchom test, aby [sprawdzania poprawności łączności z usługą Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternatywnie można otworzyć obszarów roboczych usługi Log Analytics, wybierz obszar roboczy, wybierz maszynę Wirtualną i przyjrzyj się połączenia agenta usługi Log Analytics. 
+    - Jeśli masz środowisko w którym zainstalowano agenta usługi Log Analytics na klienckich stacjach roboczych i raportowania do istniejącego obszaru roboczego usługi Log Analytics, przejrzyj listę [systemów operacyjnych obsługiwanych przez usługę Azure Security Center](security-center-os-coverage.md) aby upewnić się, system operacyjny jest obsługiwany, a następnie zobacz [istniejące log analytics klientów](security-center-faq.md#existingloganalyticscust) Aby uzyskać więcej informacji.
  
 ### Wyłącz automatyczną aprowizację <a name="offprovisioning"></a>
 Można wyłączyć automatyczną aprowizację zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. 

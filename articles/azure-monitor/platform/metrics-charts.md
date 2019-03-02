@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e5c7d019a34736cfbc26e245dc54a93374aada9c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310947"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242432"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
@@ -76,16 +76,16 @@ Filtry można stosować do wykresów przedstawiających metryk z wymiarami. Na p
 
 5. Możesz powtórzyć kroki 1 – 4, aby zastosować wiele filtrów do tych samych wykresów.
 
-## <a name="segment-a-chart"></a>Segment wykresu
+## <a name="apply-splitting-to-a-chart"></a>Zastosuj rozdzielenie do wykresu
 
 Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metryki porównania między nimi i zidentyfikować odległe mniejsze segmenty wymiaru. 
 
-### <a name="to-segment-a-chart"></a>Aby podzielić wykres
+### <a name="to-apply-splitting"></a>Aby zastosować podział
 
 1. Kliknij pozycję **zastosować podział** powyżej wykresu.
  
    > [!NOTE]
-   > Może mieć wiele filtrów, ale podział/segmentacji tylko jedną wartość, na dowolnym pojedynczym wykresie.
+   > Dzielenie nie można używać z wykresów, które mają wiele metryk. Ponadto można mieć wiele filtrów, ale tylko jeden wymiar podziału stosowane do dowolnego pojedynczego wykresu.
 
 2. Wybierz wymiar, na którym chcesz podzielić wykresu:
 

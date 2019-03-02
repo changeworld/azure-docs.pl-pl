@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bbf04104d70ecb6ea8d83c6167b5b9b0dfe2c2dc
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339791"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217448"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -30,6 +30,8 @@ Przeprowadzanie inspekcji na platformie Azure [bazy danych SQL](sql-database-tec
 
 > [!NOTE] 
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
 ## <a id="subheading-1"></a>Omówienie inspekcji usługi Azure SQL database
@@ -85,7 +87,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
     ![Okienko nawigacji][3]
 
-5. **Nowe** — masz teraz wiele opcji dotyczących konfigurowania której będą zapisywane dzienniki inspekcji. Konto usługi Azure storage, obszar roboczy usługi Log Analytics do użycia przez usługę Log Analytics lub Centrum zdarzeń do użycia z Centrum zdarzeń, można napisać dzienników. Można skonfigurować dowolną kombinację tych opcji, a do każdego będą zapisywane w dziennikach inspekcji.
+5. **Nowe** — masz teraz wiele opcji dotyczących konfigurowania której będą zapisywane dzienniki inspekcji. Konto usługi Azure storage, obszar roboczy usługi Log Analytics do użycia przez dzienniki usługi Azure Monitor lub Centrum zdarzeń do użycia z Centrum zdarzeń, można napisać dzienników. Można skonfigurować dowolną kombinację tych opcji, a do każdego będą zapisywane w dziennikach inspekcji.
 
     ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -95,7 +97,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
 7. Aby skonfigurować zapisywanie inspekcji dzienniki do obszaru roboczego usługi Log Analytics, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy usługi Log Analytics, której będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
 
-    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Obszar roboczy usługi Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Aby skonfigurować zapisywanie inspekcji dzienników do Centrum zdarzeń, wybierz opcję **Centrum zdarzeń (wersja zapoznawcza)** , a następnie otwórz **szczegóły Centrum zdarzeń**. Wybierz Centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Pamiętaj, że Centrum zdarzeń znajduje się w tym samym regionie, co bazy danych i serwera.
 
@@ -112,7 +114,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
 
-W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analytics:
+Jeśli została wybrana opcja zapisywania dzienników inspekcji usługi Azure Monitor dzienników:
 
 - Użyj [witryny Azure portal](https://portal.azure.com).  Otwórz odpowiedniej bazy danych. W górnej części bazy danych **inspekcji** kliknij **Wyświetl dzienniki inspekcji**.
 
@@ -123,7 +125,7 @@ W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analyti
     ![Otwórz w usłudze Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - Alternatywnie można także przejść dzienniki inspekcji w bloku usługi Log Analytics. Otwórz obszar roboczy usługi Log Analytics i w obszarze **ogólne** kliknij **dzienniki**. Można zacząć od prostego zapytania, takie jak: *wyszukiwanie "SQLSecurityAuditEvents"* Aby wyświetlić inspekcji logowania.
-    W tym miejscu możesz również użyć [usługi Log Analytics](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-log-search.md).
+    W tym miejscu możesz również użyć [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Dzienniki platformy Azure Monitor udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania dzienników usługi Azure Monitor i poleceń, zobacz [usługi Azure Monitor rejestruje dokumentacja wyszukiwania](../log-analytics/log-analytics-log-search.md).
 
 W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:
 
@@ -187,7 +189,7 @@ Bazy danych replikowanej geograficznie po włączeniu inspekcji podstawowej bazy
     >[!IMPORTANT]
     >Za pomocą inspekcji poziomu bazy danych, ustawienia magazynu dla pomocniczej bazy danych będzie identyczne z podstawowej bazy danych, co spowoduje niepowodzenie ruch między regionami. Zaleca się włączania inspekcji tylko poziomu serwera i pozostaw inspekcji poziomu bazy danych wyłączone dla wszystkich baz danych.
     > [!WARNING]
-    > Przy użyciu zdarzenia koncentratora lub log analytics jako elementy docelowe dla dzienników inspekcji na poziomie serwera nie jest obecnie obsługiwane dla pomocniczych baz danych, które są replikowane geograficznie.
+    > Za pomocą Centrum zdarzeń i dzienników usługi Azure Monitor jako elementy docelowe dla dzienników inspekcji na poziomie serwera nie jest obecnie obsługiwane dla pomocniczych baz danych, które są replikowane geograficznie.
 
 ### <a id="subheading-6">Ponowne generowanie klucza magazynu</a>
 
@@ -256,7 +258,7 @@ Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dod
 Można zarządzać za pomocą inspekcja bazy danych Azure SQL [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) szablonów, jak pokazano w tych przykładach:
 
 - [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji do konta magazynu obiektów Blob platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Wdrażanie serwera SQL Azure za pomocą możliwość zapisywania dzienników inspekcji usługi Azure Monitor dzienników inspekcji](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 <!--Anchors-->

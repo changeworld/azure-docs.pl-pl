@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 93a4595ce0b36c8d0f447177bda69d2d8cab12c8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a8b792ee7731a9994ded76ef1614fc3966d033d0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117532"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243809"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
@@ -248,5 +248,5 @@ Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zo
 * [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md). Ten artykuł stanowi wprowadzenie do integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.
 * [Partner czynności konfiguracyjnych](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Ten wpis w blogu dowiesz się, jak skonfigurować program Azure Log Integration do pracy z rozwiązaniami partnerów Splunk, HP ArcSight i QRadar firmy IBM. Opisano w nim nasze Bieżące wskazówki dotyczące sposobu konfigurowania składników rozwiązania SIEM. Skontaktuj się z dostawcą rozwiązania SIEM, aby uzyskać więcej informacji.
 * [Integracja dzienników platformy Azure — często zadawane pytania (FAQ)](security-azure-log-integration-faq.md). Tych często zadawanych PYTAŃ, odpowiedzi na często zadawane pytania dotyczące usługi Azure Log Integration.
-* [Integrowanie alertów usługi Azure Security Center z usługą Azure Log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md). W tym artykule pokazano, jak można zsynchronizować alertów usługi Security Center i zdarzenia zabezpieczeń maszyny wirtualnej, które są zbierane przez usługi Azure Diagnostics i aktywności platformy Azure dzienników. Dzienniki są synchronizowane przy użyciu rozwiązania Azure Log Analytics lub rozwiązania SIEM.
+* [Integrowanie alertów usługi Azure Security Center z usługą Azure Log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md). W tym artykule pokazano, jak można zsynchronizować alertów usługi Security Center i zdarzenia zabezpieczeń maszyny wirtualnej, które są zbierane przez usługi Azure Diagnostics i aktywności platformy Azure dzienników. Dzienniki są synchronizowane przy użyciu dzienników usługi Azure Monitor lub rozwiązania SIEM.
 * [Dzienniki inspekcji nowe funkcje dla usługi Azure Diagnostics i Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/). Ten wpis w blogu zawiera wprowadzenie do dzienników inspekcji platformy Azure oraz inne funkcje, które mogą pomóc Ci uzyskać wgląd w operacje zasobów platformy Azure.

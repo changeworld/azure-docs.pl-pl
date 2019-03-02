@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: cfe0a4f68d77f278745b71c13beefc97cf92aa29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0d9de6e5cfa8ffa0c5f67607a60d930b623413cf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605929"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247277"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web PaaS dla PCI DSS
 
@@ -43,7 +43,7 @@ Aby zwiększyć bezpieczeństwo wszystkie zasoby w tym rozwiązaniu są zarządz
 
 Usługa Azure SQL Database zwykle odbywa się za pomocą programu SQL Server Management Studio, który jest uruchamiany z komputera lokalnego, która jest skonfigurowana do dostępu do bazy danych SQL Azure za pośrednictwem bezpiecznego połączenia sieci VPN lub usługi ExpressRoute.
 
-Ponadto usługa Application Insights zapewnia zarządzanie wydajnością aplikacji w czasie rzeczywistym i analizy przy użyciu usługi Log Analytics. **Firma Microsoft zaleca skonfigurowanie połączenia sieci VPN lub usługi ExpressRoute do importowania danych i zarządzania do podsieci architektury odwołanie.**
+Ponadto usługa Application Insights zapewnia zarządzanie wydajnością aplikacji w czasie rzeczywistym i analizy przy użyciu dzienników usługi Azure Monitor. **Firma Microsoft zaleca skonfigurowanie połączenia sieci VPN lub usługi ExpressRoute do importowania danych i zarządzania do podsieci architektury odwołanie.**
 
 ![Aplikacja sieci Web PaaS dla PCI DSS referencyjny diagram architektury](images/pcidss-paaswa-architecture.png "aplikacji sieci Web PaaS dla PCI DSS referencyjny diagram architektury")
 
@@ -67,8 +67,8 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe inf
 - Azure SQL Database
 - Azure Storage
 - Azure Virtual Network
-    - (1) /16 sieci
-    - (4) sieci prefiksie/24
+    - (1) /16 Network
+    - (4) /24 Networks
     - (4) grupy zabezpieczeń sieci
 - Aplikacja sieci Web platformy Azure
 
@@ -118,7 +118,7 @@ Architektura definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adres
 Każdej z grup zabezpieczeń sieci ma określone porty i protokoły Otwórz rozwiązanie może pracować bezpiecznie i poprawnie. Ponadto następujące konfiguracje są włączone dla każdej sieciowej grupy zabezpieczeń:
 
 - [Dzienniki diagnostyczne i zdarzenia](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) są włączone i przechowywane na koncie magazynu
-- Usługa log Analytics jest połączony z [sieciowej grupy zabezpieczeń&#39;s diagnostyki](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Dzienniki platformy Azure Monitor jest podłączony do [sieciowej grupy zabezpieczeń&#39;s diagnostyki](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **Podsieci**: Każda podsieć jest skojarzona z sieciową grupą zabezpieczeń odpowiednich.
 
@@ -134,11 +134,11 @@ Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyśl
 
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
 
-**Usługa Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to chronić i chronić dane posiadaczy takich kart we wspieraniu organizacji bezpieczeństwa i zdefiniowane przez PCI DSS 3.2 wymagania dotyczące zgodności.
+**Azure Storage**: Aby spełnić zaszyfrowanych danych na pozostałe wymagania, wszystkie [usługi Azure Storage](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Pomaga to chronić i chronić dane posiadaczy takich kart we wspieraniu organizacji bezpieczeństwa i zdefiniowane przez PCI DSS 3.2 wymagania dotyczące zgodności.
 
 **Usługa Azure Disk Encryption**: [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) korzysta z funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Azure Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
 
-**Usługa Azure SQL Database**: Wystąpienie usługi Azure SQL Database wykorzystuje następujące środki bezpieczeństwa bazy danych:
+**Azure SQL Database**: Wystąpienie usługi Azure SQL Database wykorzystuje następujące środki bezpieczeństwa bazy danych:
 
 - [Uwierzytelnianie usługi Active Directory i autoryzacji](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
 - [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je do inspekcji dzienniku na konto magazynu platformy Azure.
@@ -193,9 +193,9 @@ Usługi platformy Azure często dziennika systemu i aktywności użytkownika, a 
 - **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
 - **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki usługi Azure Storage, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Okres przechowywania jest konfigurowanych przez użytkownika, się do 730 dni, spełniają wymagania specyficzne dla organizacji przechowywania.
 
-**Log Analytics**: Te dzienniki i dalszych są skonsolidowane w [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych w obszarach roboczych usługi Log Analytics, która zezwala na wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto usługa Azure Security Center integruje się z usługą Log Analytics, umożliwiając klientom zapytań usługi Log Analytics umożliwia dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
+**Dzienniki platformy Azure Monitor**: Te dzienniki i dalszych są skonsolidowane w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych w obszarach roboczych usługi Log Analytics, która zezwala na wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto usługa Azure Security Center integruje się z dzienników usługi Azure Monitor, dzięki czemu klienci mogą korzystać z zapytania Kusto dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
 
-Następujące usługi Log Analytics [rozwiązań do zarządzania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
+Następujące Azure [rozwiązania do monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
 -   [Ocena usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie kondycja Sprawdzanie usługi Active Directory ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu i zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
 - [Ocena SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie SQL Health Check ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu i zapewnia klientom priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
 - [Kondycja agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health raporty są wdrażane liczby agentów i ich rozmieszczenie geograficzne, a także liczby agentów, które są nie odpowiada i liczbę agentów, które są przesyłanie danych operacyjnych.
@@ -203,7 +203,7 @@ Następujące usługi Log Analytics [rozwiązań do zarządzania](https://docs.m
 
 **Usługa Azure Automation**: [Usługa Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowywane i zarządza elementami runbook i jest uruchamiany. W tym rozwiązaniu elementów runbook pomagają zbieranie dzienników z usługi Azure SQL Database. Automatyzację [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) rozwiązanie umożliwia klientom łatwo identyfikować zmiany w środowisku.
 
-**Usługa Azure Monitor**: [Usługa Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów, umożliwiając organizacjom inspekcję, tworzyć alerty i archiwizować dane, w tym śledzenia wywołań interfejsu API w swoich zasobów platformy Azure.
+**Azure Monitor**: [Usługa Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów, umożliwiając organizacjom inspekcję, tworzyć alerty i archiwizować dane, w tym śledzenia wywołań interfejsu API w swoich zasobów platformy Azure.
 
 **Usługa Application Insights**: [Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to rozszerzalna Usługa zarządzania wydajnością aplikacji dla deweloperów sieci web na wielu platformach. Usługa Application Insights wykrywa anomalie wydajność i klienci mogą używać go do monitorowania aplikacji sieci web. Obejmuje ona zaawansowane narzędzia analityczne ułatwiające diagnozowanie problemów z klientami i aby zrozumieć, jak użytkownicy w rzeczywistości korzystają z aplikacji. Jego&#39;s zaprojektowane, aby pomóc klientom w ciągłym udoskonalaniu wydajności i użyteczności.
 
@@ -228,9 +228,9 @@ Ten zabezpieczeń platformy Azure i zgodności planu automatyzacji składa się 
 2. Przejrzyj AdministrativeAccountAndPermission.md-0-instalacji, a następnie uruchom podanego polecenia.
 
 3. Wdróż rozwiązanie testu z firmy Contoso przykładowe dane lub projekt pilotażowy w środowisku produkcyjnym początkowej.
-  - 1a ContosoWebStoreDemoAzureResources.ps1
+  - 1A-ContosoWebStoreDemoAzureResources.ps1
     - Ten skrypt służy do wdrażania zasobów platformy Azure do pokazania sklepu webstore przy użyciu Contoso przykładowych danych.
-  - 1 DeployAndConfigureAzureResources.ps1
+  - 1-DeployAndConfigureAzureResources.ps1
     - Ten skrypt służy do wdrażania zasobów platformy Azure służące do obsługi środowiska produkcyjnego dla aplikacji sieci web należącej do klienta. To środowisko powinno dodatkowo dostosowywać przez klienta na podstawie wymagań organizacyjnych.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia

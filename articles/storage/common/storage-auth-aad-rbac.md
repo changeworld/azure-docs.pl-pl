@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 622a7bc870aba58205c1811de2fcdcabffd177e5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19a4f8fc41ed4d6850f114e19f49f239befe08d0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869687"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242653"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udzielanie dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)
 
@@ -88,14 +88,12 @@ Na przykład, jeśli przypisujesz **Współautor danych obiektu Blob Storage (we
 
 Jednakże, jeśli Mary chce, aby wyświetlić obiekt blob w witrynie Azure portal, a następnie **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** roli samodzielnie, nie będą umożliwiać wystarczających uprawnień, aby przejść za pośrednictwem portalu do obiektu blob, aby go wyświetlić. Dodatkowe uprawnienia usługi Azure AD są wymagane do nawigacji w portalu i wyświetlić inne zasoby, które są widoczne.
 
-Jeśli użytkownicy muszą mieć możliwość dostępu do obiektów blob w witrynie Azure portal, a następnie przypisać je dodatkową rolę RBAC, [czytnika](../../role-based-access-control/built-in-roles.md#reader) roli do tych użytkowników. **Czytnika** roli jest rola usługi Azure Resource Manager, która pozwala użytkownikom na wyświetlanie zasobów konta magazynu, ale nie można ich modyfikować. Nie obejmuje uprawnień do odczytu do danych w usłudze Azure Storage, ale tylko dla konta zarządzania zasobami.
+Jeśli użytkownicy muszą mieć możliwość dostępu do obiektów blob w witrynie Azure portal, a następnie przypisać je dodatkową rolę RBAC, [czytnika](../../role-based-access-control/built-in-roles.md#reader) roli do tych użytkowników, na poziomie konta magazynu lub nowszej. **Czytnika** roli jest rola usługi Azure Resource Manager, która pozwala użytkownikom na wyświetlanie zasobów konta magazynu, ale nie można ich modyfikować. Nie obejmuje uprawnień do odczytu do danych w usłudze Azure Storage, ale tylko dla konta zarządzania zasobami.
 
-Wykonaj następujące kroki, aby przypisać **czytnika** roli, aby użytkownik mógł korzystać z obiektów blob, w witrynie Azure portal. W tym przypadku kontener obejmuje przypisania:
+Wykonaj następujące kroki, aby przypisać **czytnika** roli, aby użytkownik mógł korzystać z obiektów blob, w witrynie Azure portal. W tym przykładzie przypisanie obejmuje konta magazynu:
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **Przegląd** dla konta.
-1. W obszarze usługi wybierz **obiektów blob**. 
-1. Odszukaj kontener, dla którego chcesz przypisać rolę i wyświetlanie ustawień kontenera. 
-1. Wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla kontenera. Wybierz **przypisań ról** kartę, aby wyświetlić listę przypisań ról.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu.
+1. Wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta magazynu. Wybierz **przypisań ról** kartę, aby wyświetlić listę przypisań ról.
 1. W **Dodaj przypisanie roli** wybierz **czytnika** roli. 
 1. Z **Przypisz dostęp do** listę rozwijaną, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**.
 1. Wyszukaj, aby zlokalizować podmiotu zabezpieczeń, do którego chcesz przypisać rolę.

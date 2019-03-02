@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: eac0c1f2f7ded35cf09eec12f0406c754621f49c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dce19e750c5546ddd5cac18411dcbb4a603e5c45
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465466"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216105"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob CSV za pomocą indeksatora obiektów blob usługi Azure Search
 Domyślnie [indeksatora obiektów blob usługi Azure Search](search-howto-indexing-azure-blob-storage.md) analizuje rozdzielany tekst obiektów blob jako jeden fragment tekstu. Jednak za pomocą obiektów blob zawierający dane w formacie CSV, często zachodzi potrzeba traktują każdy wiersz w obiekcie blob jako oddzielny dokument. Na przykład, biorąc pod uwagę następujący tekst rozdzielany, warto go przeanalizować pod dwa dokumenty, zawierających każdego pola "tags", "datePublished" i "id": 
@@ -26,9 +26,8 @@ Domyślnie [indeksatora obiektów blob usługi Azure Search](search-howto-indexi
 
 W tym artykule dowiesz się, jak analizować obiektów blob CSV za pomocą indeksatora obiektów blob usługi Azure Search. 
 
-> [!IMPORTANT]
-> Indeksowanie obiektów blob CSV jest obecnie dostępna w publicznej wersji zapoznawczej i nie powinny być używane w środowiskach produkcyjnych. Aby uzyskać więcej informacji, zobacz [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
-> 
+> [!NOTE]
+> Postępuj zgodnie z zaleceniami konfiguracji indeksatora w [indeksowania jeden do wielu](search-howto-index-one-to-many-blobs.md) służący do wypełniania wyjściowego wiele dokumentów wyszukiwania z jednego obiektu blob platformy Azure.
 
 ## <a name="setting-up-csv-indexing"></a>Konfigurowanie indeksowania CSV
 Aby indeksowanie obiektów blob CSV, Utwórz lub zaktualizuj definicję indeksatora z `delimitedText` tryb analizy:  

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/28/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14b277e505e2a4975945f4b2f8f8410e25e0f8b3
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e405b592e75ca8b9fd811c7f891baafa19e528da
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193589"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241191"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -67,7 +67,7 @@ Lokalizacja o nazwie zawiera następujące składniki:
 
 - **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Użyj tego ustawienia podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach.
 
-Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Można skonfigurować:
+Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Można skonfigurować jedną z następujących czynności:
 
 - Jedną nazwę lokalizacji z maksymalnie 1200 zakresów adresów IP.
 

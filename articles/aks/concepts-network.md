@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7de97097e9678410537895c3bafc48d67809331e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 360caaec0033136ffa250d636864fbed8359b8ef
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594172"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244251"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono podstawowe pojęcia, które zapewniają sieci do ap
 - [Usługi](#services)
 - [Sieci wirtualne platformy Azure](#azure-virtual-networks)
 - [Ruch przychodzący kontrolerów](#ingress-controllers)
-- Zasady sieciowe
+- [Zasady sieciowe](#network-policies)
 
 ## <a name="kubernetes-basics"></a>Podstawy platformy Kubernetes
 
@@ -68,7 +68,7 @@ W usłudze AKS można wdrożyć klaster, który korzysta z jednego z następują
 
 *Wtyczki kubenet* sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Za pomocą *wtyczki kubenet*, węzły Uzyskaj adres IP z podsieci sieci wirtualnej platformy Azure. Zasobników otrzymują adres IP z logicznie różnymi przestrzeniami adresowymi w podsieci sieci wirtualnej platformy Azure z węzłów. Translator adresów sieciowych (NAT) jest następnie konfigurowana, tak aby zasobników może dotrzeć do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu jest translatora adresów Sieciowych do podstawowego adresu IP węzła zajmie się.
 
-Węzły używają [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes. Można pozwolić, aby utworzyć i konfigurowanie sieci wirtualnych dla Ciebie lub wybrać wdrożenie klastra usługi AKS na istniejącą podsieć sieci wirtualnej platformy Azure. Ponownie tylko węzły odbierać routingowi adresu IP i zasobników umożliwia komunikację z innymi zasobami poza klastrem AKS translatora adresów Sieciowych. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
+Węzły używają [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes. Można pozwolić, aby utworzyć i konfigurowanie sieci wirtualnych dla Ciebie lub wybrać wdrożenie klastra usługi AKS na istniejącą podsieć sieci wirtualnej platformy Azure. Ponownie tylko węzły otrzymują routingowi adresu IP i zasobników używać translatora adresów Sieciowych do komunikowania się z innymi zasobami poza klastrem usługi AKS. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie sieci dla klastra usługi AKS wtyczki kubenet][aks-configure-kubenet-networking].
 
@@ -104,8 +104,6 @@ Kolejną funkcją typowych danych przychodzących jest kończenia żądań SSL/T
 
 Sieciowa grupa zabezpieczeń służy do przefiltrowania ruchu dla maszyn wirtualnych, takich jak węzłów AKS. Podczas tworzenia usług, takich jak usługi równoważenia obciążenia, platforma Azure automatycznie skonfiguruje wszystkie reguły sieciowej grupy zabezpieczeń, które są potrzebne. Nie należy ręcznie konfigurować reguły sieciowej grupy zabezpieczeń do filtrowania ruchu do zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazywanie jako część Twojego manifestów usługi Kubernetes i pozwolić platformie Azure, Utwórz lub zaktualizuj odpowiednie zasady. Umożliwia także zasady sieciowe zgodnie z opisem w następnej sekcji, aby automatycznie zastosować reguły filtrowania ruchu do zasobników.
 
-Domyślną sieciową grupę zabezpieczeń, które istnieją reguły dla ruchu, takich jak SSH. Te reguły domyślne mają zastosowanie do zarządzania klastrem i rozwiązywaniu problemów z dostępem. Usunięcie tych reguł domyślnych może spowodować problemy z zarządzaniem AKS i przerywa cel poziomu usług (SLO).
-
 ## <a name="network-policies"></a>Zasady sieciowe
 
 Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo można zdefiniować reguły, które kontrolują przepływu ruchu. Aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
@@ -117,6 +115,8 @@ Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między zasobników za 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Rozpoczynanie pracy z usługą AKS, sieć, tworzenie i konfigurowanie klastra usługi AKS przy użyciu własnych zakresów adresów IP przy użyciu [wtyczki kubenet] [ aks-configure-kubenet-networking] lub [wtyczki Azure CNI] [ aks-configure-advanced-networking].
+
+Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze AKS][operator-best-practices-network].
 
 Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zostały przedstawione z usługi AKS zobacz następujące artykuły:
 
@@ -148,3 +148,4 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
+[operator-best-practices-network]: operator-best-practices-network.md

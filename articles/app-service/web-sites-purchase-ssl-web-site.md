@@ -4,7 +4,7 @@ description: Dowiedz się, jak kupić certyfikatu usługi App Service i powiąza
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: cfowler
+manager: jpconnoc
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b569165153ce713846be5e836a26f48e500be1fc
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594138"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216581"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -121,28 +121,35 @@ Skorzystaj z poniższej tabeli, aby skonfigurować powiązania w **powiązania S
 
 Odwiedź witrynę aplikacji przy użyciu `HTTPS://<domain_name>` zamiast `HTTP://<domain_name>` Aby sprawdzić, czy certyfikat został poprawnie skonfigurowany.
 
-## <a name="rekey-and-sync-certificate"></a>Wymiana klucza i synchronizacja certyfikatu
+## <a name="rekey-certificate"></a>Wymiana klucza certyfikatu
 
-Jeśli kiedykolwiek zajdzie potrzeba Wymiana klucza certyfikatu, należy wybrać certyfikat w [certyfikaty usługi App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stronie, a następnie wybierz **wymiany klucza i synchronizacja** w lewym obszarze nawigacji.
+Jeśli uważasz, że certyfikat użytkownika prywatny klucz zostanie naruszony, możesz wymienić certyfikat. Wybierz certyfikat w [certyfikaty usługi App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stronie, a następnie wybierz **Wymiana klucza i synchronizacja** w lewym obszarze nawigacji.
 
-Kliknij przycisk **wymiana** przycisk, aby rozpocząć proces. Ten proces może potrwać 1 do 10 minut.
+Kliknij przycisk **wymiana** do rozpoczęcia procesu. Ten proces może potrwać 1 do 10 minut.
 
 ![Wstaw obraz wymiany protokołu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 Wymiana klucza certyfikatu przedstawia certyfikat przy użyciu nowego certyfikatu wystawionego przez urząd certyfikacji.
 
+Po zakończeniu operacji ponownego generowania kluczy, kliknij przycisk **synchronizacji**. Operacja synchronizacji automatycznie aktualizuje powiązania nazwy hosta dla certyfikatu w usłudze App Service bez powodowania żadnych przestojów aplikacji.
+
+> [!NOTE]
+> Jeśli nie klikniesz **synchronizacji**, usługa App Service automatycznie synchronizuje swój certyfikat w ciągu 48 godzin.
+
 ## <a name="renew-certificate"></a>Odnów certyfikat
 
-Aby włączyć funkcję automatycznego odnawiania certyfikatu w dowolnym momencie, należy wybrać certyfikat w [certyfikaty usługi App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stronie, a następnie kliknij przycisk **ustawienia automatycznego odnawiania** w nawigacji po lewej stronie. 
+Aby włączyć funkcję automatycznego odnawiania certyfikatu w dowolnym momencie, należy wybrać certyfikat w [certyfikaty usługi App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stronie, a następnie kliknij przycisk **ustawienia automatycznego odnawiania** w nawigacji po lewej stronie.
 
 Wybierz **na** i kliknij przycisk **Zapisz**. Certyfikaty można uruchomić automatyczne odnawianie 60 dni przed wygaśnięciem, w przypadku automatycznego odnawiania włączona.
 
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+![automatyczne odnawianie certyfikatu](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
 Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie ręczne**. Możesz poprosić, aby ręcznie odnowić swój certyfikat 60 dni przed wygaśnięciem.
 
+Po zakończeniu operacji Odnów kliknij **synchronizacji**. Operacja synchronizacji automatycznie aktualizuje powiązania nazwy hosta dla certyfikatu w usłudze App Service bez powodowania żadnych przestojów aplikacji.
+
 > [!NOTE]
-> Odnowionego certyfikatu nie jest automatycznie powiązany z aplikacją, czy ręcznie odnowić automatyczne odnawianie. Aby powiązać go z aplikacją, zobacz [odnawiania certyfikatów](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> Jeśli nie klikniesz **synchronizacji**, usługa App Service automatycznie synchronizuje swój certyfikat w ciągu 48 godzin.
 
 ## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 

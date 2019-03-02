@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 7b06d7bb85e7445f50956a003e46542062b09165
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118279"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245050"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Wprowadzenie do integracji dzienników platformy Azure
 
@@ -61,7 +61,7 @@ Jeśli brak innych dostępnych opcji, należy wziąć pod uwagę za pomocą usł
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | Rozpocznij Migrowanie na [dodatek usługi Azure Monitor dla Splunk](https://splunkbase.splunk.com/app/3534/). | Użyj [łącznika Splunk](https://splunkbase.splunk.com/app/3534/). |
 |**QRadar** | Migrowanie do lub rozpocząć korzystanie z łącznika QRadar, które jest opisane w ostatniej sekcji [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). | Używanie łącznika QRadar wymienioną w ostatniej sekcji [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). |
-|**ArcSight** | W dalszym ciągu używać integratora dziennika platformy Azure, dopóki łącznik jest dostępny, a następnie przeprowadzić migrację do rozwiązań opartych na łącznika.  | Należy rozważyć użycie usługi Azure Log Analytics jako alternatywa. Powiadomień nie dołączy do integracji dziennika Azure, chyba że chcesz przejść przez proces migracji po udostępnieniu łącznika. |
+|**ArcSight** | W dalszym ciągu używać integratora dziennika platformy Azure, dopóki łącznik jest dostępny, a następnie przeprowadzić migrację do rozwiązań opartych na łącznika.  | Należy wziąć pod uwagę przy użyciu dzienników usługi Azure Monitor alternatywą. Powiadomień nie dołączy do integracji dziennika Azure, chyba że chcesz przejść przez proces migracji po udostępnieniu łącznika. |
 
 > [!NOTE]
 > Integracja dzienników platformy Azure jest bezpłatne rozwiązanie, istnieją koszty magazynów platformy Azure związane z magazynem informacje pliku dziennika.

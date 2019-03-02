@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 31d06c6329a8348a73533a42b73ce435c573c034
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: eee5e71863f9a9195dc1f6f711cbacbc95ab84f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823879"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246767"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Zdarzenie agregacji i zbieranie przy użyciu struktury EventFlow
 
@@ -157,5 +157,5 @@ Uruchom usługę i sprawdź debugowania okno danych wyjściowych w programie Vis
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Analiza zdarzeń i wizualizacji przy użyciu usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* [Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)
 * [Dokumentacja użyciu struktury EventFlow](https://github.com/Azure/diagnostics-eventflow)

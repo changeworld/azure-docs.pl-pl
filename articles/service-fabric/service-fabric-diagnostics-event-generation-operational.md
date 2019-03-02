@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 51a334557ddfb57ceab318963e319fd046d3a703
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6aec4e4bbf0abcfb6201da50381b6697a47716fa
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820046"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244591"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista zdarzeń usługi Service Fabric 
 
-Usługa Service Fabric udostępnia zestaw podstawowy zdarzenia klastra informujące o stanie klastra jako [usługi Service Fabric zdarzenia](service-fabric-diagnostics-events.md). Te są oparte na akcje wykonane przez usługę Service Fabric na węzły klastra lub przez klaster właściciela / — operator decyzji związanych z zarządzaniem. Te zdarzenia są dostępne przez skonfigurowanie na wiele sposobów, w tym konfigurowanie [usługi Log Analytics na potrzeby klastra](service-fabric-diagnostics-oms-setup.md), lub przeszukując [bazy danych EventStore](service-fabric-diagnostics-eventstore.md). Na maszynach Windows te zdarzenia są podawane w dzienniku zdarzeń — tak aby było widać usługi Service Fabric zdarzeniach w Podglądzie zdarzeń. 
+Usługa Service Fabric udostępnia zestaw podstawowy zdarzenia klastra informujące o stanie klastra jako [usługi Service Fabric zdarzenia](service-fabric-diagnostics-events.md). Te są oparte na akcje wykonane przez usługę Service Fabric na węzły klastra lub przez klaster właściciela / — operator decyzji związanych z zarządzaniem. Te zdarzenia są dostępne przez skonfigurowanie na wiele sposobów, w tym konfigurowanie [usługi Azure Monitor dzienników na potrzeby klastra](service-fabric-diagnostics-oms-setup.md), lub przeszukując [bazy danych EventStore](service-fabric-diagnostics-eventstore.md). Na maszynach Windows te zdarzenia są podawane w dzienniku zdarzeń — tak aby było widać usługi Service Fabric zdarzeniach w Podglądzie zdarzeń. 
 
 Poniżej przedstawiono niektóre cechy te zdarzenia
 * Każde zdarzenie jest powiązany z określonej jednostki w klastrze np. aplikacji, usługi, Node, repliki.

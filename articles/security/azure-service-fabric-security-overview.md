@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116224"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241395"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Omówienie zabezpieczeń usługi Azure Service Fabric
 [Usługa Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) to platforma systemów rozproszonych ułatwiająca pakowanie, wdrażanie i zarządzanie nimi skalowalnych i niezawodnych mikrousług. Usługa Service Fabric sprostać wyzwaniom związanym z opracowywaniem i zarządzaniem nimi aplikacji w chmurze. Deweloperzy i Administratorzy mogą uniknąć złożonych problemów z infrastrukturą i skoncentrować się na wdrażaniu krytycznych, wymagających obciążeń, które są skalowalne i niezawodne.
@@ -64,9 +64,9 @@ Aby dowiedzieć się, jak skonfigurować zabezpieczenia certyfikatu w klastrze, 
 
 Klastry, które działają na platformie Azure można także zabezpieczyć dostęp do punktów końcowych zarządzania przy użyciu usługi Azure Active Directory (Azure AD). Aby uzyskać informacje dotyczące sposobu tworzenia wymaganych artefaktów usługi Azure Active Directory, jak wypełniać je podczas tworzenia klastra i jak połączyć się z tymi klastrami, zobacz [Konfigurowanie klastra przy użyciu szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm).
 
-Usługi Azure AD umożliwia zarządzanie dostępem użytkowników do aplikacji organizacji (znanych jako dzierżaw). Istnieją aplikacje za pomocą interfejsu opartego na sieci web logowania użytkownika i aplikacji w środowisku klienta natywnego.
+Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. Istnieją aplikacje za pomocą interfejsu opartego na sieci web logowania użytkownika i aplikacji w środowisku klienta natywnego.
 
-Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkcje zarządzania, w tym narzędzia Service Fabric Explorer i Visual Studio opartego na sieci web. W rezultacie, utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jednej aplikacji sieci web i po jednej aplikacji natywnej.
+Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkcje zarządzania, w tym narzędzia Service Fabric Explorer i Visual Studio opartego na sieci web. W związku z tym utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną.
 
 W przypadku klastrów Azure zaleca się używać zabezpieczeń usługi Azure AD do uwierzytelniania klientów i certyfikaty dla zabezpieczeń między węzłami.
 
@@ -87,7 +87,7 @@ Przepływ pracy monitorowania i diagnostyki składa się z trzech kroków:
 
 2.  **Zdarzenie agregacji**: Wygenerowane zdarzenia muszą być zbierane i zagregowane, zanim będzie można je wyświetlić. Zwykle zaleca się używanie [diagnostyki Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobne do zbierania dzienników opartej o agentów) lub [użyciu struktury EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (w procesie zbieranie danych dziennika).
 
-3.  **Analiza**: Zdarzenia muszą być wizualizowany i jest dostępny w niektórych formacie, aby zezwolić na potrzeby analizy i wyświetlania. Istnieje kilka platformy do analizy i wizualizacji danych monitorowania i diagnostyki. Firma Microsoft zaleca [usługi Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) i [usługi Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) ponieważ ich bezproblemową integrację z usługi Service Fabric.
+3.  **Analiza**: Zdarzenia muszą być wizualizowany i jest dostępny w niektórych formacie, aby zezwolić na potrzeby analizy i wyświetlania. Istnieje kilka platformy do analizy i wizualizacji danych monitorowania i diagnostyki. Firma Microsoft zaleca [dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) i [usługi Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) ponieważ ich bezproblemową integrację z usługi Service Fabric.
 
 Można również użyć [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) do monitorowania wielu zasobów platformy Azure, na których bazuje klaster usługi Service Fabric.
 

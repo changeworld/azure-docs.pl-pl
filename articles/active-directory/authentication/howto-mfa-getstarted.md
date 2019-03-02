@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167154"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217750"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdróż usługę Azure Multi-Factor Authentication bazującą na chmurze
 
@@ -42,6 +42,9 @@ Przed rozpoczęciem upewnij się, że masz następujące wymagania wstępne:
 ## <a name="choose-authentication-methods"></a>Wybieranie metod uwierzytelniania
 
 Włącz co najmniej jedną metodę uwierzytelniania dla użytkowników na podstawie wymagań Twojej organizacji. Uważamy, że po włączeniu dla użytkowników aplikacji Microsoft Authenticator oferuje najlepsze środowisko użytkownika. Jeśli potrzebujesz zrozumieć metody, które są dostępne i sposobu ich ustawiania, zobacz artykuł [metody uwierzytelniania](concept-authentication-methods.md).
+
+> [!IMPORTANT]
+> Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ użytkowników w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
 
 ## <a name="get-users-to-enroll"></a>Zachęcenia użytkowników do rejestracji
 

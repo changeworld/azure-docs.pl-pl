@@ -3,17 +3,17 @@ title: Tworzenie i zarządzanie nimi reguły zdarzenia w aplikacji usługi Azure
 description: Zasady zdarzeń w usłudze Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail po wyzwoleniu reguły.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 02/02/2019
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8655265f5f793741c2d563d1e79d4565700e0128
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 937f8fe09cae6284b318201657cf112138ac17c7
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768532"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217227"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -27,29 +27,21 @@ Urządzenia mogą korzystać pomiaru zdarzenia do wysłania zdarzenia ważne lub
 
 Aby utworzyć regułę zdarzeń, szablon urządzenia musi mieć co najmniej jedno zdarzenie pomiarów zdefiniowane. W tym przykładzie użyto urządzenia mrożone Automat, która zgłasza zdarzenie błędu motor wentylator. Reguła monitoruje zdarzeń zgłoszonych przez urządzenia i wysyła wiadomość e-mail, gdy zdarzenie jest zgłaszane.
 
-1. Przy użyciu Device Explorer przejdź do szablonu urządzenia, dla którego dodajesz reguły dla.
-
-1. W ramach wybranego szablonu wybierz polecenie istniejące urządzenie.
-
-    >[!TIP] 
-    >Jeśli szablon nie ma żadnych urządzeń, najpierw Dodaj nowe urządzenie.
+1. Za pomocą **szablonów urządzeń** stronie, przejść do szablonu urządzenia, dla którego dodajesz reguły dla.
 
 1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
 
     ![Jeszcze żadnych reguł](media/howto-create-event-rules-experimental/Rules_Landing_Page.png)
 
+1. Na **reguły** kliknij pozycję **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
-1. Na **reguły** kliknij pozycję **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
-
-
-1. Kliknij pozycję **zdarzeń** Kafelek, aby utworzyć zdarzenia reguła monitorowania.
+1. Wybierz **zdarzeń** Kafelek, aby utworzyć zdarzenia reguła monitorowania.
 
     ![Typy zasad](media/howto-create-event-rules-experimental/Rule_Types.png)
 
-    
 1. Wprowadź nazwę, która pomaga w identyfikacji reguły, w tym szablonie urządzenia.
 
-1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone na podstawie tego szablonu, Przełącz **Włącz regułę dla wszystkich urządzeń dla tego szablonu**.
+1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone na podstawie tego szablonu, Przełącz **Włącz regułę dla wszystkich urządzeń z tego szablonu**.
 
     ![Szczegóły reguły](media/howto-create-event-rules-experimental/Rule_Detail.png)
 
@@ -65,17 +57,16 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 
    ![Warunek](media/howto-create-event-rules-experimental/Condition_Filled_Out.png)
 
-
 1. Opcjonalnie możesz również ustawić **liczba** jako **agregacji** i podaj odpowiednie wartości progowej.
 
-    - Bez agregacji, wyzwolenie reguły dla każdego punktu danych zdarzeń, który spełnia warunek. Na przykład w przypadku skonfigurowania warunków reguł do wyzwalania, gdy wystąpi zdarzenie "Wentylator Motor Error" reguła spowoduje wyzwolenie niemal natychmiast, gdy urządzenie zgłosi tego zdarzenia.
-    - Jeśli liczba jest używana jako funkcji agregującej, a następnie trzeba podać **próg** i **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. W tym przypadku liczbę zdarzeń są agregowane i reguły spowoduje wyzwolenie tylko wtedy, gdy liczba zdarzeń zagregowane dopasowuje wartość progową.
- 
-    Na przykład jeśli chcesz alert, gdy istnieje więcej niż trzy zdarzenia urządzenia w ciągu 5 minut, następnie wybierz zdarzenie i zestawu funkcji agregującej jako "liczba", operator jako "większe niż" i "próg" jako 3. Ustaw "Agregacji przedziale czasu" na "5 minut". Reguła jest wyzwalana w przypadku więcej niż trzy zdarzenia są wysyłane przez urządzenie w ciągu 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut. 
+    - Bez agregacji, wyzwolenie reguły dla każdego punktu danych zdarzeń, który spełnia warunek. Na przykład, jeśli konfigurujesz reguły warunku Wyzwalaj, gdy **błąd Motor wentylator** wystąpi zdarzenie, a następnie wyzwoleniu reguły niemal natychmiast, gdy urządzenie zgłosi tego zdarzenia.
+    - Jeśli liczba jest używana jako funkcji agregującej, a następnie trzeba podać **próg** i **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. W tym przypadku wartość jest agregowana liczbę zdarzeń i wyzwolenie reguły tylko wtedy, gdy liczba zdarzeń zagregowane dopasowuje wartość progową.
+
+    Na przykład jeśli chcesz alert, gdy istnieje więcej niż trzy zdarzenia urządzenia w ciągu 5 minut, następnie wybierz zdarzenie i zestawu funkcji agregującej jako "liczba", operator jako "większe niż" i "próg" jako 3. Ustaw "Agregacji przedziale czasu" na "5 minut". Reguła jest wyzwalana w przypadku więcej niż trzy zdarzenia są wysyłane przez urządzenie w ciągu 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
 
     ![Dodaj warunek zdarzenia](media/howto-create-event-rules-experimental/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >Można dodać więcej niż jednej miary zdarzeń w obszarze **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
 
 ### <a name="configure-actions"></a>Konfigurowanie akcji

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116477"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241089"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie kwestii bezpieczeństwa działania platformy Azure
 
@@ -29,13 +29,13 @@ ms.locfileid: "56116477"
 
 Dział operacji IT jest odpowiedzialny za zarządzanie infrastrukturę centrów danych, aplikacji i danych, w tym stabilność i bezpieczeństwo tych systemów. Jednak zyskuje wgląd w zabezpieczenia przez zwiększenie złożonych środowisk IT często wymaga organizacjom cobble razem dane z różnych systemów zabezpieczeń i zarządzania.
 
-[Analiza dzienników Microsoft](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) jest oparta na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Jego podstawowych funkcji jest zapewniana przez następujących usług, które działają na platformie Azure. System Azure zawiera wiele usług, które ułatwiają zarządzanie, chronić lokalne i infrastruktury chmury. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania. 
+[Dzienniki systemu Microsoft Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) jest oparta na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Jego podstawowych funkcji jest zapewniana przez następujących usług, które działają na platformie Azure. System Azure zawiera wiele usług, które ułatwiają zarządzanie, chronić lokalne i infrastruktury chmury. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania. 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Usługa Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) zbiera dane z zarządzanych źródeł do magazynów danych w centralnym. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności i niestandardowe dane dostarczane za pośrednictwem interfejsu API. Po zebraniu danych, jest dostępna dla alertów, analizy i eksportu. 
 
-Można skonsolidować dane z różnych źródeł i połączyć dane z usług platformy Azure z istniejącym środowiskiem w środowisku lokalnym. Tak, aby wszystkie akcje są dostępne dla wszystkich typów danych usługi log Analytics również wyraźnie oddziela do zbierania danych z akcji wykonywanych na tych danych.
+Można skonsolidować dane z różnych źródeł i połączyć dane z usług platformy Azure z istniejącym środowiskiem w środowisku lokalnym. Dzienniki platformy Azure Monitor również wyraźnie oddziela zbierania danych z akcji wykonywanych na tych danych, aby wszystkie akcje są dostępne dla wszystkich typów danych.
 
 ### <a name="automation"></a>Automatyzacja
 
@@ -93,7 +93,7 @@ Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować probl
 >[!Note]
 >Aby dowiedzieć się więcej o rolach i dozwolonych akcji w usłudze Security Center, zobacz [uprawnień w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-Usługa Security Center używa programu Microsoft Monitoring Agent. Jest to ten sam agent, który korzysta z usługi Log Analytics. Dane zbierane z tego agenta są przechowywane w istniejących analizy dzienników [obszaru roboczego](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) skojarzony z subskrypcją platformy Azure lub nowy obszar roboczy, biorąc pod uwagę geograficzną maszyny Wirtualnej.
+Usługa Security Center używa programu Microsoft Monitoring Agent. Jest to ten sam agent, który używa usługi Azure Monitor. Dane zbierane z tego agenta są przechowywane w istniejących analizy dzienników [obszaru roboczego](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) skojarzony z subskrypcją platformy Azure lub nowy obszar roboczy, biorąc pod uwagę geograficzną maszyny Wirtualnej.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

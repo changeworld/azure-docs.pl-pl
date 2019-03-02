@@ -5,20 +5,20 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 6af1c5347a522f7e42feecb6722dfbb64439d086
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7c8e2297426b098fa6e86a5cda81afc2d71b08f4
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341015"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214643"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Przełącz preferencji interfejsu API dla dziennika alertów
 
 > [!NOTE]
-> Podana zawartość **nie** mające zastosowanie do użytkowników platformy Azure GovCloud oraz tylko dla użytkowników chmury publicznej platformy Azure.  
+> Zawartość określonych użytkowników do chmury publicznej platformy Azure tylko i **nie** dla chmury Azure Government lub Azure (Chiny).  
 
 Niedawno, dopóki nie jest zarządzany reguły alertów w portalu Microsoft Operations Management Suite. Nowe środowisko alertów została zintegrowana z różnymi usługami na platformie Microsoft Azure, w tym usługi Log Analytics, a firma Microsoft poproszony o [rozszerzanie regułami alertów z portalu pakietu OMS na platformę Azure](alerts-extend.md). Jednak w celu zapewnienia minimalnym zakłóceniu dla klientów, ten proces nie spowodowała interfejs programistyczny dla jego użycie — [interfejsu API Log Analytics alertu](api-alerts.md) oparte na zapisanego wyszukiwania.
 
@@ -43,6 +43,7 @@ Wpływ przełącznika preferencję scheduledQueryRules interfejsu API są kompil
 
 - Wszystkie interakcje wykonywane Zarządzanie alertów dzienników za pośrednictwem interfejsów programistycznych teraz jest to niezbędne przy użyciu [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) zamiast tego. Aby uzyskać więcej informacji znajduje się pozycja [próbki użycia za pomocą szablonu usługi Azure Resource](alerts-log.md#managing-log-alerts-using-azure-resource-template) i [próbki użycia za pomocą wiersza polecenia platformy Azure i programu PowerShell](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)
 - Wszelkie nowe reguł alertów dzienników utworzone w witrynie Azure portal, zostanie utworzona z użyciem [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) tylko i zezwolić użytkownikom na stosowanie [dodatkowe funkcje nowego interfejsu API](#Benefits-of-switching-to-new-Azure-API) także w portalu Azure
+- Poziom ważności w przypadku reguł alertów dzienników będą przesunięcie z: *Krytyczne, ostrzeżenie i komunikat o charakterze informacyjnym*, *wartości ważności 0, 1 i 2*. Wraz z opcją do utworzenia/zaktualizowania reguł alertów o ważności oraz 4.
 
 Każdy klient, który zamierza dobrowolnie przełączyć się do nowego [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) i zablokować użycie od [interfejsu API starszych Log Analytics alertu](api-alerts.md); to zrobić, wykonując wywołania PUT na poniżej interfejsu API, aby przełączyć wszystkie alertu reguły skojarzone z określonym obszarem roboczym usługi Log Analytics.
 

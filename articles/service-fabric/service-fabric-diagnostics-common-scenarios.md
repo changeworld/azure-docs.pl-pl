@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 377b41f6ea011c06457fb6550ddd8d448574835e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 355b859428712b2e7b086fdfc152044814695b7b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881340"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243945"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozowanie typowe scenariusze za pomocą usługi Service Fabric
 
-W tym artykule przedstawiono typowe scenariusze, które użytkownicy napotkali w zakresie monitorowania i diagnostyki za pomocą usługi Service Fabric. Scenariusze przedstawione obejmują wszystkie warstwy 3 usługi service fabric: Aplikacja klastra i infrastruktury. Każde rozwiązanie korzysta z usługi Application Insights i Log Analytics, narzędzia do monitorowania platformy Azure, do ukończenia każdego scenariusza. Kroki w poszczególnych rozwiązaniach użytkownikom wprowadzenie na temat korzystania z usługi Application Insights i Log Analytics w ramach usługi Service Fabric.
+W tym artykule przedstawiono typowe scenariusze, które użytkownicy napotkali w zakresie monitorowania i diagnostyki za pomocą usługi Service Fabric. Scenariusze przedstawione obejmują wszystkie warstwy 3 usługi service fabric: Aplikacja klastra i infrastruktury. Każde rozwiązanie używa usługi Application Insights i dzienniki usługi Azure Monitor, narzędziami do monitorowania platformy Azure do ukończenia każdego scenariusza. Kroki w poszczególnych rozwiązaniach użytkownikom wprowadzenie na temat korzystania z usługi Application Insights i Azure Monitor rejestruje się w kontekście usługi Service Fabric.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites-and-recommendations"></a>Wymagania wstępne i zalecenia
 
@@ -31,7 +33,7 @@ Rozwiązania, w tym artykule użyje następujących narzędzi. Zaleca się, że 
 
 * [Usługa Application Insights z usługą Service Fabric](service-fabric-tutorial-monitoring-aspnet.md)
 * [Włącz diagnostykę platformy Azure w klastrze](service-fabric-diagnostics-event-aggregation-wad.md)
-* [Konfigurowanie obszaru roboczego usługi Log Analytics](service-fabric-diagnostics-oms-setup.md)
+* [Skonfiguruj obszar roboczy usługi Log Analytics](service-fabric-diagnostics-oms-setup.md)
 * [Zaloguj się Analytics agentowi Śledzenie liczników wydajności](service-fabric-diagnostics-oms-agent.md)
 
 ## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Jak sprawdzić nieobsługiwanych wyjątków w mojej aplikacji?
@@ -63,7 +65,7 @@ Rozwiązania, w tym artykule użyje następujących narzędzi. Zaleca się, że 
 1. Węzeł zdarzenia są śledzone przez Twój klaster usługi Service Fabric. Przejdź do zasobu rozwiązania analiza usługi Service Fabric o nazwie **ServiceFabric(NameofResourceGroup)**
 2. Kliknij na grafie w dolnej części bloku pod tytułem "Summary"
 
-    ![Rozwiązanie do analizy dzienników](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Usługa Azure Monitor dzienniki rozwiązania](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
 3. W tym miejscu masz wiele wykresów i Kafelki wyświetlanie różnych metryk. Kliknij jeden z wykresów i spowoduje przejście do przeszukiwania dzienników. W tym miejscu można wyszukiwać wszystkie liczniki wydajności lub zdarzenia klastra.
 4. Wprowadź następujące zapytanie. Te identyfikatory zdarzeń znajdują się w [informacje o zdarzeniach węzła](service-fabric-diagnostics-event-generation-operational.md#application-events)
@@ -75,7 +77,7 @@ Rozwiązania, w tym artykule użyje następujących narzędzi. Zaleca się, że 
 
 5. Kliknij przycisk "Nową regułę alertu" u góry, a teraz w dowolnym momencie zdarzenia na podstawie dociera przy użyciu tego zapytania, otrzymasz alert w wybranego metody komunikacji.
 
-    ![Nowy Alert usługi log Analytics](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Usługa Azure Monitor rejestruje nowy Alert](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Jak można I otrzymywać alerty o cofnięcia uaktualnienia aplikacji?
 
@@ -143,7 +145,7 @@ Sprawdź poniższe linki umożliwiają uzyskanie pełną listę liczników wydaj
 
 * [Konfigurowanie alertów związanych ze sztuczną Inteligencją](../azure-monitor/app/alerts.md) Aby otrzymywać powiadomienia o zmianach wprowadzonych w wydajności lub użycia
 * [Inteligentne wykrywanie w usłudze Application Insights](../azure-monitor/app/proactive-diagnostics.md) wykonuje aktywnego analizy telemetrii są wysyłane do sztucznej Inteligencji w celu otrzymania potencjalnych problemów z wydajnością
-* Dowiedz się więcej o usłudze Log Analytics [alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
-* W przypadku klastrów w środowisku lokalnym usługa Log Analytics oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Log Analytics. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z usługi Log Analytics przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md)
-* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics
-* Uzyskuj bardziej szczegółowym omówieniem usługi Log Analytics i co oferuje, przeczytaj [co to jest usługa Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)
+* Dowiedz się więcej na temat dzienników usługi Azure Monitor [alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
+* W przypadku klastrów w środowisku lokalnym dzienniki usługi Azure Monitor oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Azure Monitor dzienniki. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z dzienników usługi Azure Monitor, przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md)
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach dzienniki usługi Azure Monitor
+* Uzyskuj bardziej szczegółowym omówieniem dzienniki usługi Azure Monitor i co oferuje, przeczytaj [co to jest dzienniki usługi Azure Monitor?](../operations-management-suite/operations-management-suite-overview.md)

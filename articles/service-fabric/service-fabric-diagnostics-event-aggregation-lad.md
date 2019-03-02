@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: a41599194d6dd6230c80aa078375b798c3002adf
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9e4c4e8c8d7aa89e2a27efc2c2deebd4863be23e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824015"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242959"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu diagnostyki Azure Linux
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "56824015"
 
 Po uruchomieniu klastra usługi Azure Service Fabric to dobry pomysł, aby zbierać dzienniki z wszystkimi węzłami w centralnej lokalizacji. Posiadanie dzienniki w centralnej lokalizacji, ułatwiają analizowanie i rozwiązywanie problemów w klastrze lub problemy w aplikacji i usług działających w klastrze.
 
-Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki Azure Linux (LAD), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Umożliwia także procesu zewnętrznego do odczytywania zdarzeń z magazynu i umieszczenie ich w produkcie platformy analizy, takie jak [usługi Log Analytics](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
+Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki Azure Linux (LAD), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Umożliwia także procesu zewnętrznego do odczytywania zdarzeń z magazynu i umieszczenie ich w produkcie platformy analizy, takie jak [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
 
 ## <a name="log-and-event-sources"></a>Źródła dzienników i zdarzeń
 

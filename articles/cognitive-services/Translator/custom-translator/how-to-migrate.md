@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 13d446f9f2aa651c766f250e551a97a97cf4d5d8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6cab76a1169469853a4eb82a934bdc665e07ef8d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195238"
+ms.locfileid: "57217516"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrowanie centrum obszaru roboczego i projekty do niestandardowych w usłudze Translator
 
@@ -27,7 +27,7 @@ Te akcje są wykonywane podczas migracji:
 * W dowolnym momencie wynik BELEU migrowane z Centrum szkolenia można znaleźć na stronie TrainingDetails modelu w "Beleu wynik w Centrum MT" nagłówek.
 
 >[!Note]
->Szkolenia zakończyło się sukcesem, niestandardowe w usłudze Translator wymaga co najmniej 10 000 unikatowy wyodrębnione zdań. Niestandardowe w usłudze Translator nie należy przeprowadzić szkolenie przy użyciu mniejszej liczby zdań wyodrębnione niż [sugerowane minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
+Szkolenia zakończyło się sukcesem, niestandardowe w usłudze Translator wymaga co najmniej 10 000 unikatowy wyodrębnione zdań. Niestandardowe w usłudze Translator nie mogą przeprowadzić szkolenia z mniej niż [sugerowane minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="enable-account-migration"></a>Włącz migrację konta
 

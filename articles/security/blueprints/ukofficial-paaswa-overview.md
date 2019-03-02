@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7f67b7363719f544c485503e0f8207bb1f1078ce
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301801"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244710"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -57,9 +57,8 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe inf
 - Aplikacja interfejsu API
 - System DNS platformy Azure
 - Usługa Key Vault
-- Azure Monitor
+- Usługa Azure Monitor (Dzienniki)
 - Application Insights
-- Log Analytics
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
@@ -169,11 +168,11 @@ Szczegółowe informacje dotyczące zabezpieczania usługi Azure Storage można 
 
 ### <a name="monitoring-logging-and-audit"></a>Monitorowanie, rejestrowanie i inspekcja
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) to usługa platformy Azure, która ułatwia zbieranie oraz analizowanie danych generowanych przez zasoby w środowisku chmurowym i lokalnym.
+[Dzienniki platformy Azure Monitor](https://azure.microsoft.com/services/log-analytics/) to usługa platformy Azure, która ułatwia zbieranie oraz analizowanie danych generowanych przez zasoby w środowisku chmurowym i lokalnym.
 
-#### <a name="log-analytics-in-this-blueprint"></a>Usługa log Analytics, w tym planie
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>Usługa Azure Monitor loguje się tego planu
 
 - Ocena serwera SQL
 - Diagnostyka usługi Key Vault

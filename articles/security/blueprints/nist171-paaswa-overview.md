@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: e7851b39327e61f1676ae0cf1c3bff3de75b56bd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f9773c3b372ab22cbcd99828e147d23c185c4eb6
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409275"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244625"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla publikacji specjalne NIST 800-171
 
@@ -36,7 +36,7 @@ Aby zwiększyć bezpieczeństwo wszystkie zasoby w tym rozwiązaniu są zarządz
 
 Bazy danych SQL zwykle odbywa się za pomocą programu SQL Server Management Studio. Działa z komputera lokalnego, który jest skonfigurowany do dostępu do bazy danych SQL za pośrednictwem bezpiecznego połączenia sieci VPN lub usługi Azure ExpressRoute.
 
-Usługa Application Insights zapewnia zarządzania wydajnością aplikacji w czasie rzeczywistym i analizy przy użyciu usługi Azure Log Analytics. *Firma Microsoft zaleca, aby skonfigurować połączenie sieci VPN lub usługi ExpressRoute do importowania danych i zarządzania do podsieci architektury odwołanie.*
+Usługa Application Insights zapewnia zarządzania wydajnością aplikacji w czasie rzeczywistym i analizy przy użyciu dzienników usługi Azure Monitor *firma Microsoft zaleca, aby skonfigurować połączenie sieci VPN lub usługi ExpressRoute do importowania danych i zarządzania do odwołania architektury podsieci.*
 
 ![Aplikacja sieci Web PaaS dla SP NIST 800-171 referencyjny diagram architektury](images/nist171-paaswa-architecture.png "aplikacji sieci Web PaaS dla SP NIST 800-171 referencyjny diagram architektury")
 
@@ -60,21 +60,20 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Aby uzyskać wię
 - System DNS platformy Azure
 - W usłudze Azure Key Vault
 - Azure Load Balancer
-- Azure Monitor
+- Usługa Azure Monitor (Dzienniki)
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
 - Azure Storage
-- Azure Log Analytics
 - Azure Automation
 - Azure Web Apps
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 W poniższej sekcji przedstawiono elementy wdrożenia i implementacji.
 
-**Usługa Azure Resource Manager**: [usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) może służyć przez klientów do pracy z zasobami w rozwiązaniu jako grupa. Klientów można wdrożyć, zaktualizować lub usunąć wszystkie zasoby dla rozwiązania w jednej, skoordynowanej operacji. Klienci używają szablonu wdrożenia. Szablon można następnie używać w różnych środowiskach, takich jak testowania, przemieszczania i produkcji. Menedżer zasobów zapewnia zabezpieczeń, inspekcji i znakowania funkcje, aby pomóc klientom w zarządzaniu zasobami po wdrożeniu.
+**Usługa Azure Resource Manager**: [Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) może służyć przez klientów do pracy z zasobami w rozwiązaniu jako grupa. Klientów można wdrożyć, zaktualizować lub usunąć wszystkie zasoby dla rozwiązania w jednej, skoordynowanej operacji. Klienci używają szablonu wdrożenia. Szablon można następnie używać w różnych środowiskach, takich jak testowania, przemieszczania i produkcji. Menedżer zasobów zapewnia zabezpieczeń, inspekcji i znakowania funkcje, aby pomóc klientom w zarządzaniu zasobami po wdrożeniu.
 
-**Host bastionu**: hostem bastionu jest pojedynczym punktem wejścia, którego użytkownicy mogą uzyskać dostęp do zasobów wdrożonych w tym środowisku. Host bastionu zapewnia bezpieczne połączenie do wdrożonych zasobów, zezwalając tylko na zdalny ruch z publicznych adresów IP na liście bezpiecznych. Aby zezwolić na ruch pulpitu zdalnego, źródła ruchu musi być zdefiniowany w sieciowej grupie zabezpieczeń.
+**Host bastionu**: Host bastionu jest pojedynczym punktem wejścia, którego użytkownicy mogą uzyskać dostęp do zasobów wdrożonych w tym środowisku. Host bastionu zapewnia bezpieczne połączenie do wdrożonych zasobów, zezwalając tylko na zdalny ruch z publicznych adresów IP na liście bezpiecznych. Aby zezwolić na ruch pulpitu zdalnego, źródła ruchu musi być zdefiniowany w sieciowej grupie zabezpieczeń.
 
 To rozwiązanie umożliwia utworzenie maszyny Wirtualnej jako host bastionu przyłączone do domeny w następujący sposób:
 -   [Rozszerzenia ochrony przed złośliwym oprogramowaniem](https://docs.microsoft.com/azure/security/azure-security-antimalware).
@@ -83,9 +82,9 @@ To rozwiązanie umożliwia utworzenie maszyny Wirtualnej jako host bastionu przy
 -   [Zasady automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) można ograniczyć zużycie zasobów maszyny Wirtualnej nie w użyciu.
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) jest włączona, tak aby poświadczeń i innych wpisów tajnych uruchomić w środowisku chronionego, która jest odizolowana od systemem operacyjnym.
 
-**Aplikacje sieci Web**: [aplikacji sieci Web](https://docs.microsoft.com/azure/app-service/) to funkcja usługi Azure App Service. Klienci służy do tworzenia i hostowania wybranych przez nich aplikacji sieci web w języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoka dostępność. Go obsługuje Windows i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, DevOps platformy Azure lub z dowolnym repozytorium Git.
+**Aplikacje sieci Web**: [Aplikacje sieci Web](https://docs.microsoft.com/azure/app-service/) to funkcja usługi Azure App Service. Klienci służy do tworzenia i hostowania wybranych przez nich aplikacji sieci web w języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoka dostępność. Go obsługuje Windows i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, DevOps platformy Azure lub z dowolnym repozytorium Git.
 
-**Środowisko App Service Environment**: [środowiska App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro) to funkcja usługi App Service. Zapewnia w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali.
+**Środowisko usługi App Service**: [Środowisko App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro) to funkcja usługi App Service. Zapewnia w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali.
 
 Środowisko usługi App Service jest izolowane do uruchamiania tylko jednej aplikacji. Jest ona zawsze wdrażane w sieci wirtualnej. Z powodu funkcja izolacji architektury referencyjnej ma izolacji dzierżawcy ukończone, a zostanie on usunięty z platformy Azure w środowisku wielodostępnym. Klienci mają precyzyjną kontrolę nad ruchem sieciowym w obu aplikacji dla ruchu przychodzącego i wychodzącego. Aplikacje mogą nawiązywać bezpieczne szybkie połączenia za pośrednictwem wirtualnych sieci lokalnych zasobów firmowych. Klienci mogą "automatycznego skalowania" za pomocą środowiska App Service Environment na podstawie metryk obciążenia, dostępnego budżetu lub zdefiniowany harmonogram.
 
@@ -103,7 +102,7 @@ App Service Environment w przypadku tej architektury zapewnia następujące kont
 ### <a name="virtual-network"></a>Sieć wirtualna
 Architektura definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adresowej 10.200.0.0/16.
 
-**Sieciowe grupy zabezpieczeń**: [sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które blokują lub zezwalają na ruch w sieci wirtualnej. Sieciowe grupy zabezpieczeń może służyć do zabezpieczenia ruchu na poziomie podsieci lub poszczególnych maszyn wirtualnych. Istnieją następujące sieciowe grupy zabezpieczeń:
+**Sieciowe grupy zabezpieczeń**: [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawierają listy kontroli dostępu, które blokują lub zezwalają na ruch w sieci wirtualnej. Sieciowe grupy zabezpieczeń może służyć do zabezpieczenia ruchu na poziomie podsieci lub poszczególnych maszyn wirtualnych. Istnieją następujące sieciowe grupy zabezpieczeń:
 - Jednej sieciowej grupy zabezpieczeń w usłudze Application Gateway
 - Jednej sieciowej grupy zabezpieczeń w środowisku usługi App Service
 - Jednej sieciowej grupy zabezpieczeń usługi SQL Database
@@ -111,13 +110,13 @@ Architektura definiuje prywatnej sieci wirtualnej przy użyciu przestrzeni adres
 
 Każdy z sieciowych grup zabezpieczeń ma określone porty i protokoły Otwórz rozwiązanie może pracować bezpiecznie i poprawnie. Ponadto następujące konfiguracje są włączone dla każdej sieciowej grupy zabezpieczeń:
   - [Dzienniki diagnostyczne i zdarzenia](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) są włączone i przechowywane na koncie magazynu.
-  - Usługa log Analytics jest połączony z [diagnostyki sieciowej grupy zabezpieczeń](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json).
+  - Dzienniki platformy Azure Monitor jest podłączony do [diagnostyki sieciowej grupy zabezpieczeń](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json).
 
-**Podsieci**: każda podsieć jest skojarzona z jego odpowiedniego sieciowej grupy zabezpieczeń.
+**Podsieci**: Każda podsieć jest skojarzone z jego odpowiedniego sieciowej grupy zabezpieczeń.
 
 **Usługa Azure DNS**: System nazw domen (DNS) jest odpowiedzialny za tłumaczenia (lub rozpoznawanie) nazwę witryny sieci Web lub usługi na jej adres IP. [Usługa Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) to Usługa hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury platformy Azure. Hostowanie domen na platformie Azure, użytkownicy mogą zarządzać rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co inne usługi platformy Azure. Usługa DNS platformy Azure obsługuje również prywatne domen DNS.
 
-**Usługa Azure Load Balancer**: [modułu równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) może być używany przez klientów do skalowania swoich aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego. Zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP.
+**Usługa Azure Load Balancer**: [Moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) może być używany przez klientów do skalowania swoich aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego. Zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP.
 
 ### <a name="data-in-transit"></a>Przesyłane dane
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Wszystkie transakcje w usłudze Azure Storage za pośrednictwem witryny Azure portal występują za pośrednictwem protokołu HTTPS.
@@ -126,11 +125,11 @@ Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyśl
 
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
 
-**Usługa Azure Storage**: aby spełniać wymagania zaszyfrowanych danych w spoczynku, wszystkie [magazynu](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ta funkcja pomaga chronić i ochrony danych na rzecz organizacji bezpieczeństwa i zdefiniowane przez SP NIST 800-171 wymagań dotyczących zgodności.
+**Azure Storage**: Aby spełnić wymagania dla zaszyfrowanych danych w spoczynku, wszystkie [magazynu](https://azure.microsoft.com/services/storage/) używa [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ta funkcja pomaga chronić i ochrony danych na rzecz organizacji bezpieczeństwa i zdefiniowane przez SP NIST 800-171 wymagań dotyczących zgodności.
 
-**Usługa Azure Disk Encryption**: [szyfrowanie dysków](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) używa funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
+**Usługa Azure Disk Encryption**: [Szyfrowanie dysków](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) używa funkcji BitLocker Windows, aby zapewnić szyfrowanie woluminów dla dysków z danymi. To rozwiązanie integruje się z usługą Key Vault ułatwiają sterowanie i zarządzanie kluczami szyfrowania dysków.
 
-**Usługa Azure SQL Database**: następujące środki bezpieczeństwa bazy danych korzysta z wystąpienia bazy danych SQL:
+**Azure SQL Database**: Wystąpienie bazy danych SQL wykorzystuje następujące środki bezpieczeństwa bazy danych:
 -   [Uwierzytelnianie usługi Active Directory i autoryzacji](https://docs.microsoft.com/azure/sql-database/sql-database-AAD-authentication) umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
 -   [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je do inspekcji dzienniku na konto magazynu platformy Azure.
 -   Baza danych SQL jest skonfigurowana do używania [technologii transparent data encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Wykonuje się w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji, do ochrony informacji w stanie spoczynku. Przezroczyste szyfrowanie danych zapewnia pewność, że przechowywane dane, nie został narażone na nieautoryzowany dostęp.
@@ -148,7 +147,7 @@ Następujące technologie zapewniają możliwości, aby zarządzać dostępem do
 - [Usługa Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) wykrywa potencjalnych luk w zabezpieczeniach, które mają wpływ na tożsamości w organizacji. Konfiguruje automatycznych odpowiedzi na wykryte podejrzane akcje powiązane z tożsamości w organizacji. Bada go również podejrzane zdarzenia podejmowanie odpowiednich działań, aby je rozwiązać.
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie wpisami tajnymi**: rozwiązanie używa [usługi Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Key Vault ułatwia ochronę kluczy kryptograficznych i wpisów tajnych używanych przez aplikacje w chmurze i usług. Następujące funkcje usługi Key Vault pomagają chronić dane klientów:
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [usługi Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Key Vault ułatwia ochronę kluczy kryptograficznych i wpisów tajnych używanych przez aplikacje w chmurze i usług. Następujące funkcje usługi Key Vault pomagają chronić dane klientów:
 - Zaawansowane zasady dostępu są skonfigurowane na podstawie potrzeb.
 - Zasady dostępu magazynu kluczy są definiowane za pomocą minimalnych wymaganych uprawnień do kluczy i wpisów tajnych.
 - Wszystkie klucze i wpisy tajne w usłudze Key Vault ma daty wygaśnięcia.
@@ -157,7 +156,7 @@ Następujące technologie zapewniają możliwości, aby zarządzać dostępem do
 - Dzienniki diagnostyczne usługi Key Vault są włączone z okresem przechowywania, co najmniej 365 dni.
 - Dozwolone operacje kryptograficzne klucze są ograniczone do tych wymagane.
 
-**Usługa Azure Security Center**: za pomocą [usługi Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), klienci mogą centralnie zastosować i zarządzać zasadami zabezpieczeń na potrzeby różnych obciążeń, ograniczenia narażenia na zagrożenia i wykrywanie oraz reagowanie na ataki. Usługa Security Center również uzyskuje dostęp do istniejących konfiguracji usług platformy Azure w celu zapewnienia konfiguracji i zalecenia dotyczące usługi w celu zwiększenia poziomu bezpieczeństwa i ochrony danych.
+**Usługa Azure Security Center**: Za pomocą [usługi Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), klienci mogą centralnie zastosować i zarządzać zasadami zabezpieczeń na potrzeby różnych obciążeń, ograniczenia narażenia na zagrożenia i wykrywanie oraz reagowanie na ataki. Usługa Security Center również uzyskuje dostęp do istniejących konfiguracji usług platformy Azure w celu zapewnienia konfiguracji i zalecenia dotyczące usługi w celu zwiększenia poziomu bezpieczeństwa i ochrony danych.
 
 Usługa Security Center korzysta z rozmaitych możliwości wykrywania powiadamia klientów o potencjalnych ataków, których platformą docelową ich środowiska. Te alerty zawierają cenne informacje dotyczące przyczyny ich wyzwolenia, zasobów, których dotyczy atak, i źródła ataku. Usługa Security Center zawiera zbiór [wstępnie zdefiniowane alerty zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , są wyzwalane, gdy zagrożenia lub podejrzanej aktywności ma miejsce. Klienci mogą używać [niestandardowe reguły alertów](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) do definiowania nowych alertów zabezpieczeń, w oparciu o dane, które zostały już zebrane ze swoim środowisku.
 
@@ -177,22 +176,22 @@ Usługa Security Center zapewnia zdarzeń i alertów zabezpieczeń uporządkowan
 ### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 
 Usługi platformy Azure często dziennika systemu i aktywności użytkownika, a także kondycji systemu:
-- **Dzienniki aktywności**: [dzienników aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
-- **Dzienniki diagnostyczne**: [dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki magazynu, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania, nawet do 730 dni, aby spełnić konkretne wymagania.
+- **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki magazynu, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania, nawet do 730 dni, aby spełnić konkretne wymagania.
 
-**Usługa Azure Log Analytics**: dzienniki i dalszych są skonsolidowane w [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu danych, wartość jest zorganizowana w oddzielnych tabelach dla każdego typu danych w obszarach roboczych usługi Log Analytics. W ten sposób wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Usługa Security Center integruje się z usługą Log Analytics. Klienci mogą używać zapytań usługi Log Analytics, aby uzyskać dostęp do danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
+**Dzienniki platformy Azure Monitor**: Dzienniki i dalszych są skonsolidowane w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu danych, wartość jest zorganizowana w oddzielnych tabelach dla każdego typu danych w obszarach roboczych usługi Log Analytics. W ten sposób wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Usługa Security Center integruje się z dziennikami usługi Azure Monitor. Klienci mogą używać zapytania Kusto dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
 
-Następujące usługi Log Analytics [rozwiązań do zarządzania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
--   [Oceny usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory Health Check rozwiązanie ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
-- [Ocena SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): rozwiązania SQL Health Check ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Daje klientom z priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
-- [Kondycja agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): rozwiązanie Agent Health raporty są wdrażane liczby agentów i ich rozmieszczenie geograficzne. Zgłasza również odpowiadają liczby agentów i liczbę agentów, którzy przesłali danych operacyjnych.
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): rozwiązanie Activity Log Analytics obsługuje analizy dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klientów.
+Następujące Azure [rozwiązania do monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
+-   [Oceny usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie kondycja Sprawdzanie usługi Active Directory ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
+- [Ocena SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Rozwiązanie SQL Health Check ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Daje klientom z priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.
+- [Kondycja agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health raporty są wdrażane liczby agentów i ich rozmieszczenie geograficzne. Zgłasza również odpowiadają liczby agentów i liczbę agentów, którzy przesłali danych operacyjnych.
+-   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Rozwiązanie Activity Log Analytics obsługuje analizy dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klientów.
 
-**Usługa Azure Automation**: [automatyzacji](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowywane i zarządza elementami runbook i jest uruchamiany. W tym rozwiązaniu elementów runbook pomagają zbieranie dzienników z usługi SQL Database. Klienci mogą korzystać z automatyzacji [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) rozwiązania, aby łatwo identyfikować zmiany w środowisku.
+**Usługa Azure Automation**: [Automatyzacja](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) przechowywane i zarządza elementami runbook i jest uruchamiany. W tym rozwiązaniu elementów runbook pomagają zbieranie dzienników z usługi SQL Database. Klienci mogą korzystać z automatyzacji [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) rozwiązania, aby łatwo identyfikować zmiany w środowisku.
 
-**Usługa Azure Monitor**: [Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów. Organizacje mogą używać go do inspekcji, tworzyć alerty i archiwizować dane. Mogą również śledzić wywołań interfejsu API w swoich zasobów platformy Azure.
+**Azure Monitor**: [Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów. Organizacje mogą używać go do inspekcji, tworzyć alerty i archiwizować dane. Mogą również śledzić wywołań interfejsu API w swoich zasobów platformy Azure.
 
-**Usługa Application Insights**: [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to usługa zarządzania wydajnością aplikacji rozszerzalnej dla deweloperów sieci web na wielu platformach. Usługa Application Insights wykrywa anomalie wydajność. Klienci mogą go używać do monitorowania działającej aplikacji sieci web. Usługi Application Insights zawiera narzędzia zaawansowane funkcje analityczne, aby ułatwić klientom diagnozować problemy i zrozumieć, jak użytkownicy korzystają z aplikacji. Jego&#39;s zaprojektowane, aby pomóc klientom w ciągłym udoskonalaniu wydajności i użyteczności.
+**Usługa Application Insights**: [Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to usługa zarządzania wydajnością aplikacji rozszerzalnej dla deweloperów sieci web na wielu platformach. Usługa Application Insights wykrywa anomalie wydajność. Klienci mogą go używać do monitorowania działającej aplikacji sieci web. Usługi Application Insights zawiera narzędzia zaawansowane funkcje analityczne, aby ułatwić klientom diagnozować problemy i zrozumieć, jak użytkownicy korzystają z aplikacji. Jego&#39;s zaprojektowane, aby pomóc klientom w ciągłym udoskonalaniu wydajności i użyteczności.
 
 ## <a name="threat-model"></a>Model zagrożeń
 

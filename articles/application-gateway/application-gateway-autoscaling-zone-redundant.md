@@ -5,27 +5,25 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 3/1/2019
 ms.author: victorh
-ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c3ad62dd5f8af52ae9aed1f9469d4b00c4795fa7
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446515"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215858"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
 Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostępne w publicznej wersji zapoznawczej w ramach nowej jednostki SKU v2, oferuje ulepszenia wydajności, która dodaje obsługę krytyczne nowe funkcje, takie jak skalowanie automatyczne, nadmiarowości strefy i obsługę statycznych adresów VIP. Istniejących funkcji w ramach jednostki SKU jest ogólnie dostępna w dalszym ciągu być obsługiwane w nowej jednostki SKU w wersji 2 z pewnymi wyjątkami, wymienione w sekcji znanych ograniczeń polecenia. Nowe jednostki SKU w wersji 2 obejmują następujące ulepszenia:
 
-- **Skalowanie automatyczne**: Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach jednostki SKU skalowania automatycznego można skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Dzięki temu jednostka SKU oferuje elastyczność wartość true. W ramach nowej jednostki SKU bramy Application Gateway mogą działać zarówno w stałym pojemności (skalowanie automatyczne wyłączone), jak i w trybie z włączonym skalowaniem automatycznym. Tryb stałych pojemności jest przydatne w scenariuszach ze spójnego i przewidywalnego obciążenia. Tryb skalowania automatycznego jest korzystne w aplikacjach, które Zobacz mnóstwo wariancji w ruchu aplikacji.
+- **Skalowanie automatyczne**: Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach jednostki SKU skalowania automatycznego można skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Ta jednostka SKU oferuje elastyczność wartość true. W ramach nowej jednostki SKU bramy Application Gateway mogą działać zarówno w stałym pojemności (skalowanie automatyczne wyłączone), jak i w trybie z włączonym skalowaniem automatycznym. Tryb stałych pojemności jest przydatne w scenariuszach ze spójnego i przewidywalnego obciążenia. Tryb skalowania automatycznego jest korzystne w aplikacjach, które Zobacz mnóstwo wariancji w ruchu aplikacji.
 
-   > [!NOTE]
-   > Automatyczne skalowanie nie jest obecnie dostępna w ramach jednostki SKU zapory aplikacji sieci Web. Konfigurowanie zapory aplikacji sieci Web przy użyciu trybu stałych pojemności, zamiast trybu skalowania automatycznego.
 - **Strefa nadmiarowości**: Wdrożenie usługi Application Gateway lub zapory aplikacji sieci Web może obejmować wielu strefach dostępności, usuwając konieczność do aprowizacji i pokrętła osobnych wystąpień bramy Application Gateway w każdej strefie przy użyciu usługi Traffic Manager. Możesz wybrać jedną strefę lub wieloma strefami wdrożonym wystąpień bramy Application Gateway, dlatego zapewnianie odporności błąd strefy. Pula zaplecza dla aplikacji można rozpowszechniać podobnie w różnych strefach dostępności.
 - **Ulepszenia wydajności**: Skalowanie automatyczne, jednostki SKU oferty maksymalnie 5 X, lepsze SSL offload wydajność w porównaniu z ogólnie dostępnymi jednostkami SKU.
 - **Krótszy czas wdrożenia i zaktualizuj** skalowania automatycznego jednostki SKU zapewnia krótszy czas wdrażania i aktualizacji w porównaniu z ogólnie dostępnymi jednostkami SKU.
-- **Statyczny adres VIP**: Adres VIP bramy aplikacji obsługuje teraz typu statycznego adresu VIP wyłącznie. Dzięki temu adres VIP skojarzony z usługą Application Gateway nie zmienia się nawet po ponownym uruchomieniu.
+- **Statyczny adres VIP**: Adres VIP bramy aplikacji obsługuje teraz typu statycznego adresu VIP wyłącznie. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się nawet po ponownym uruchomieniu.
 
 > [!IMPORTANT]
 > Jednostka SKU autoskalowanej i strefowo nadmiarowej bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -38,7 +36,7 @@ Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach
 
 ## <a name="pricing"></a>Cennik
 
-W trakcie okresu zapoznawczego nie ma opłat. Opłata jest naliczana za zasobów innych niż bramy aplikacji, takich jak usługi Key Vault, maszyny wirtualne itp.
+W trakcie okresu zapoznawczego nie ma opłat. Opłaty naliczane są za zasobów innych niż bramy aplikacji, takich jak usługi Key Vault, maszyny wirtualne i tak dalej.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 

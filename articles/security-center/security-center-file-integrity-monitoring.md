@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: bb987bcc38dee1f3d4ea2fce19e5e546ebfc8f7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310744"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240239"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -37,7 +37,7 @@ Usługa Security Center zaleca jednostki do monitorowania, które można łatwo 
 
 > [!NOTE]
 > Funkcja pliku Integrity Monitoring (FIM) działa w przypadku komputerów Windows i Linux oraz maszyn wirtualnych i jest dostępne w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
-FIM służy do przekazywania danych do obszaru roboczego usługi Log Analytics. Dane naliczane są opłaty, na podstawie ilości danych, które zostaną przesłane. Zobacz [cen usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) Aby dowiedzieć się więcej.
+FIM służy do przekazywania danych do obszaru roboczego usługi Log Analytics. Dane naliczane są opłaty, na podstawie ilości danych, które zostaną przesłane. Zobacz [log analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/) Aby dowiedzieć się więcej.
 >
 >
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d1c2a35a6ad246eea593990c485181aa776594
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175109"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214762"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -59,7 +59,7 @@ Strona resetowania odczytu przez następujące kroki, aby dowiedzieć się więc
 
 ## <a name="authentication-methods"></a>Metody uwierzytelniania
 
-Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co najmniej jeden z następujących opcji dla metod uwierzytelniania. Czasami słyszysz te opcje określane jako "bramy". Zdecydowanie zalecamy możesz **wybierz dwa lub więcej metod uwierzytelniania** tak, aby użytkownicy mają większą elastyczność w przypadku, gdy są one nie można uzyskać dostępu do jednego, kiedy ich potrzebują.
+Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co najmniej jeden z następujących opcji dla metod uwierzytelniania. Czasami słyszysz te opcje określane jako "bramy". Zdecydowanie zalecamy możesz **wybierz dwa lub więcej metod uwierzytelniania** tak, aby użytkownicy mają większą elastyczność w przypadku, gdy są one nie można uzyskać dostępu do jednego, kiedy ich potrzebują. Dodatkowe szczegóły dotyczące metod wymienionych poniżej można znaleźć w artykule [metody uwierzytelniania?](concept-authentication-methods.md).
 
 * Powiadomienia w aplikacji mobilnej (wersja zapoznawcza)
 * Kod aplikacji mobilnej (wersja zapoznawcza)
@@ -69,6 +69,9 @@ Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co n
 * Pytania zabezpieczające
 
 Użytkownicy mogą zresetować swoje hasło tylko, jeśli mają one dane już obecne we metod uwierzytelniania, która została włączona przez administratora.
+
+> [!IMPORTANT]
+> Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ użytkowników w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
 
 > [!WARNING]
 > Konta przypisane role administratora platformy Azure będą musieli używać metod, zgodnie z definicją w sekcji [Administrator zresetować różnice zasad](concept-sspr-policy.md#administrator-reset-policy-differences).

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 68503b399d132aae5a4999e6ce08c51e4542e2e7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699146"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242619"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpieczenia platformy Azure i zgodności planu — IaaS trójwarstwowa aplikacja sieci Web dla UK-OFFICIAL
 
@@ -176,7 +176,7 @@ Te sieci wirtualne są nadal zarządzane jako oddzielne zasoby, ale są traktowa
 
 **Dzienniki zapory**: Usługa Application Gateway zapewnia pełne dzienniki dostępu i diagnostyki. Dzienniki zapory są dostępne dla zasobów usługi Application Gateway z włączoną zaporą aplikacji sieci Web.
 
-**Archiwizowanie dziennika**: Przechowywanie danych dziennika można skonfigurować do zapisu do konta scentralizowanej usługi Azure storage w celu archiwizacji i okres przechowywania zdefiniowany. Dzienniki mogą być przetwarzane przy użyciu usługi Azure Log Analytics lub systemów SIEM innych firm.
+**Archiwizowanie dziennika**: Przechowywanie danych dziennika można skonfigurować do zapisu do konta scentralizowanej usługi Azure storage w celu archiwizacji i okres przechowywania zdefiniowany. Dzienniki mogą być przetwarzane przy użyciu dzienników usługi Azure Monitor lub systemów SIEM innych firm.
 
 ### <a name="identity"></a>Tożsamość
 

@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429472"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240766"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -28,6 +28,8 @@ Każde żądanie do usługi Azure Cognitive Service musi zawierać nagłówek uw
 
 Zanim dokonasz, żądania, potrzebujesz konta platformy Azure i subskrypcja usługi Azure Cognitive Services. Jeśli masz już konto, przejdź dalej, a następnie przejdź do następnej sekcji. Jeśli nie masz konta, mamy wskazówki ułatwiające konfigurowanie w ciągu kilku minut: [Tworzenie konta usług Cognitive Services dla platformy Azure](cognitive-services-apis-create-account.md).
 
+Możesz uzyskać klucz subskrypcji z [witryny Azure portal](cognitive-services-apis-create-account.md#access-your-resource) po utworzeniu konta lub aktywowania [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/my-apis).
+ 
 ## <a name="authentication-headers"></a>Nagłówki uwierzytelniania
 
 Omówmy szybko nagłówki uwierzytelniania dostępne w połączeniu z usług Azure Cognitive Services.

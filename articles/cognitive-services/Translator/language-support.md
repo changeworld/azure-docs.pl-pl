@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3a99c0157ef3afe9823d73379775ddcf564faccc
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193810"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241580"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -33,7 +33,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 * Domyślnie neuronowej: Neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
 * Neuronowych tylko: Tylko tłumaczenie neuronowe jest dostępna.
 
-**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych. [Wyświetl dostępne w niestandardowych w usłudze Translator langauges](#customization).
+**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych. [Wyświetl języków jest obecnie dostępna w niestandardowych w usłudze Translator](#customization).
 
 |Język|  Kod języka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450749"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213623"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikacje SaaS oferują Podręcznik publikowania
 
@@ -143,6 +143,9 @@ Microsoft obsługuje transakcji handlowych. Firma Microsoft rozlicza klientów w
 |Unieważnieniu | Twoja oferta jest cancelable przez klienta w dowolnym momencie. |  
 |Strona docelowa transakcji | Możesz hostować Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzać ich konta usługi SaaS. |   
 | Subskrypcja interfejsu API | Należy udostępnić to usługa, która mogą wchodzić w interakcje z subskrypcją SaaS, tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Okresowo będą wydawane niekrytyczne zmiany interfejsu API. |  
+
+>[!Note]
+>Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](./cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli użytkownik jeszcze tego nie zrobiono,

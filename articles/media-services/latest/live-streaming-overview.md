@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: e90dd052f6a4af83d2dd794dd405a4700da75bde
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0f63896239615699db63c9f48be6b291208408db
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656342"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247175"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -42,13 +42,14 @@ Aby zrozumieć przepływ pracy transmisji strumieniowej na żywo w wersji 3 usł
 
 - [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)
 - [Wydarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md)
+- [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)
 
 ## <a name="live-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żywo
 
 Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
 
 1. Upewnij się, w ramach konta usługi Media Services **punkt końcowy przesyłania strumieniowego** jest uruchomiona. 
-2. Tworzenie [wydarzenie na żywo](live-events-outputs-concept.md). <br/>Podczas tworzenia zdarzenia, można określić automatyczne uruchamianie go. Alternatywnie możesz rozpocząć zdarzenie, gdy jesteś gotowy rozpocząć przesyłanie strumieniowe.<br/> Gdy autostart jest ustawiona na wartość true, wydarzenie na żywo zostanie uruchomiony prawo po utworzeniu. Naliczanie opłat rozpoczyna się zaraz po uruchomieniu wydarzenie na żywo. Należy jawnie wywołać Stop zasobu wydarzenie na żywo, aby zatrzymać dalsze rozliczeń. Aby uzyskać więcej informacji, zobacz [stany wydarzenie na żywo i rozliczenia](live-event-states-billing.md).
+2. Tworzenie [wydarzenie na żywo](live-events-outputs-concept.md). <br/>Podczas tworzenia zdarzenia, można określić automatyczne uruchamianie go. Alternatywnie możesz rozpocząć zdarzenie, gdy jesteś gotowy rozpocząć przesyłanie strumieniowe.<br/> Gdy autostart jest ustawiona na wartość true, wydarzenie na żywo zostanie uruchomiony prawo po utworzeniu. Naliczanie opłat rozpoczyna się zaraz po uruchomieniu wydarzenie na żywo. Należy jawnie wywołać operację zatrzymywania w zasobie wydarzenia na żywo, aby zatrzymać dalsze rozliczenia. Aby uzyskać więcej informacji, zobacz [Live Event states and billing](live-event-states-billing.md) (Stany i rozliczenia dotyczące wydarzenia na żywo).
 3. Uzyskaj adresy URL pozyskiwania i skonfigurować koder lokalnych wysyłać wkład źródła danych przy użyciu adresu URL.<br/>Zobacz [zalecane kodery na żywo](recommended-on-premises-live-encoders.md).
 4. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
 5. Utwórz nową **zasobów** obiektu.

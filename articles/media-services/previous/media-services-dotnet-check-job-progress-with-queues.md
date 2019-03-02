@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: a863915ceef437957170d87ac4cc452d651a8dab
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8bf2452afe3f9b11287848fb1e3880f7fac506ff
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994956"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243129"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net-legacy"></a>Usługa Azure Queue storage do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET (starsza wersja)
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Usługa Azure Queue storage do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET 
 
 Po uruchomieniu zadania kodowania, często wymagają sposób śledzenia postępu zadań. Można skonfigurować usługi Media Services w celu dostarczenia powiadomienia [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Aby monitorować postęp zadania, otrzymywanie powiadomień z usługi Queue storage. 
 

@@ -9,18 +9,18 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 01d7d197983638e415798b0b73e7ac7168c8cfab
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9dcfb40835202849761d5d81728caf6be63d9641
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192704"
+ms.locfileid: "57215476"
 ---
 # <a name="view-model-details"></a>Wyświetlanie szczegółów modelu
 
 Karta modeli w ramach projektu pokazuje wszystkie modele, w tym projekcie. Wszystkie modele uczony, dla których projekt znajduje się na tej karcie.
 
-Dla każdego modelu w projekcie są wyświetlane następujące dane modelu.
+Dla każdego modelu w projekcie te informacje są wyświetlane.
 
 1.  Nazwa modelu: Wyświetlana nazwa modelu danego modelu.
 

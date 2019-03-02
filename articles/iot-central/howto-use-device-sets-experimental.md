@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: dd8fa36acaf3f4871d63200a4863778180e9be1a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: b3bd157f06c922d96f71627f885fe6de2537987a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773478"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215297"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Za pomocą zestawów urządzeń w aplikacji usługi Azure IoT Central
 
@@ -94,10 +94,10 @@ Aby dodać mapę lokalizacji na urządzeniu ustawia pulpit nawigacyjny, musi mie
 1. Na pulpicie nawigacyjnym z zestawu urządzeń wybierz mapę z biblioteki.
 2. Nadaj tytuł, a następnie wybierz właściwość location, wcześniej skonfigurowane w ramach właściwości urządzenia.
 3. Zapisz, aby zobaczyć mapę kafelka, wyświetlanie lokalizacji urządzenia w zestawie urządzeń.
-4. Teraz gdy operator widoki urządzenie ustawia pulpitu nawigacyjnego, operator zobaczyć wszystkie Kafelki, które zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia w skrócie! 
-    
-> [!NOTE] 
-> Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.  
+4. Teraz gdy operator widoki urządzenie ustawia pulpitu nawigacyjnego, operator zobaczyć wszystkie Kafelki, które zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia w skrócie!
+
+> [!NOTE]
+> Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfiguruj listę zestawu urządzeń
 

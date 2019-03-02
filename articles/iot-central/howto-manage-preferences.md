@@ -3,17 +3,17 @@ title: Zarządzać swoimi preferencjami dotyczącymi aplikacji, na IoT Central |
 description: Jak zarządzać aplikacji i preferencji na IoT Central
 author: lmasieri
 ms.author: lmasieri
-ms.date: 12/13/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4a62ae1db151aff150d8132f190d32b32f650c02
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 21814ddf6af5e65725f5e0e6ebdf31206565baa2
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411017"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218009"
 ---
 # <a name="manage-your-application-preferences"></a>Zarządzać swoimi preferencjami dotyczącymi aplikacji
 
@@ -23,19 +23,17 @@ IoT Central zapewnia elastyczność dostosowywanie aplikacji do swoich potrzeb. 
 
 ## <a name="changing-language"></a>Zmiana języka
 
-IoT Central jest obsługiwana w 17 językach. Można przełączyć preferowanego języka, używając **selektor języka** na górnym pasku nawigacyjnym. Po zmianie języka, zapamiętamy *swoje* wybór i zastosować je we wszystkich aplikacjach. Należy pamiętać, że dostosowania w aplikacji, które takich obrazów pulpitu nawigacyjnego nie zlokalizowane. 
-
-![Selektor języka IoT Central](media/howto-manage-profile/language-picker.png)
+IoT Central jest obsługiwana w wielu językach. Można przełączyć preferowanego języka, używając **selektor języka** ikonę ustawień na górnym pasku nawigacyjnym. Po zmianie języka, IoT Central pamięta wybór i stosuje go we wszystkich aplikacjach. Należy pamiętać, że dostosowywania aplikacji, które nie są zlokalizowane takich obrazów pulpitu nawigacyjnego.
 
 ## <a name="changing-theme"></a>Trwa zmienianie motywu
 
-Oferujemy obsługę motyw jasny i ciemny motyw. Chociaż motyw ciemny motyw domyślny, możesz to zmienić, klikając swoją nazwę w prawym górnym rogu, a przełączanie motywu.
+Oferujemy obsługę motyw jasny i ciemny motyw. Motyw jasny jest wartość domyślna, możesz to zmienić, klikając ikonę ustawień, na górnym pasku nawigacyjnym.
 
-![Selektor motywu IoT Central](media/howto-manage-profile/theme-picker.png)
+![Selektor motywu IoT Central](media/howto-manage-preferences/settings.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, kiedy znasz sposób zarządzania swój profil w usłudze Azure IoT Central, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie strony głównej](howto-configure-homepage.md)
+> [Konfigurowanie pulpitu nawigacyjnego aplikacji](howto-configure-homepage.md)

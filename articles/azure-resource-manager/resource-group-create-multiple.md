@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c343dfa3c0eac4aeabaa9244c6675b235fc95552
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9914943cc5b3ef9e95f12c6890cb8e1646f7e335
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311720"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244238"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie więcej niż jedno wystąpienie zasobu lub właściwości w szablonach usługi Resource Manager platformy Azure
 
@@ -272,6 +272,8 @@ Możesz użyć zasobów i właściwości iteracji. Odwołanie do iteracji właś
 
 Aby utworzyć wiele wystąpień w zmiennej, użyj `copy` właściwości w sekcji zmiennych. Utwórz tablicę elementów skonstruowany na podstawie wartości w `input` właściwości. Możesz użyć `copy` właściwości w ramach zmiennej lub na najwyższym poziomie w sekcji zmiennych. Korzystając z `copyIndex` wewnątrz zmiennej iteracji, należy podać nazwę iteracji.
 
+Prosty przykład tworzenia tablicy wartości ciągu, można zobaczyć [kopiowania tablicy szablonu](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
+
 Poniższy przykład pokazuje kilka różnych sposobów tworzenia zmiennych tablicowych z elementami dynamicznie skonstruowany. Widoczny jest sposób kopii wewnątrz zmiennej należy użyć do tworzenia tablic obiektów i ciągów. Pokazano również, jak na potrzeby kopiowania na najwyższym poziomie tworzenie tablic obiektów, ciągi i liczby całkowite.
 
 ```json
@@ -344,6 +346,50 @@ Poniższy przykład pokazuje kilka różnych sposobów tworzenia zmiennych tabli
     }
   }
 }
+```
+
+Typ zmiennej, która zostanie utworzona, zależy od obiektu wejściowego. Na przykład zmienna o nazwie **top-poziomu-object tablica** w poprzednim przykładzie zwraca:
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
+]
+```
+
+A zmiennej o nazwie **top-poziomu-ciągu tablica** zwraca:
+
+```json
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Są zależne od zasobów w pętli

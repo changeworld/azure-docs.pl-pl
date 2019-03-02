@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7419baf99e4c508806361b408968dbf851a7f76c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 80c6e3cc29bdd6502640723385273328739d6ebb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343327"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245268"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje planują wdrożenie usługa Azure Security Center.
@@ -139,7 +139,7 @@ Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla 
 Przed skonfigurowaniem zasad zabezpieczeń przejrzyj poszczególne [zalecenia dotyczące zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-recommendations) i określ, czy te zasady są właściwe dla różnych subskrypcji i grup zasobów. Ważne jest również, aby zrozumieć, jakie działania powinny zostać podjęte w celu wypełnienia zaleceń dotyczących zabezpieczeń oraz kto w organizacji będzie odpowiedzialny za monitorowanie pod kątem nowych zaleceń i podejmowanie wymaganych działań.
 
 ## <a name="data-collection-and-storage"></a>Zbieranie i przechowywanie danych
-Do zbierania danych zabezpieczeń z maszyn wirtualnych usługa Azure Security Center korzysta z programu Microsoft Monitoring Agent — jest to ten sam agent, który jest używany przez usługę Log Analytics. [Dane zbierane](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) z tego agenta będą przechowywane w obszarach roboczych usługi Log Analytics.
+Usługa Azure Security Center używa programu Microsoft Monitoring Agent — jest to ten sam agent używany przez usługę Azure Monitor do zbierania danych zabezpieczeń z maszyn wirtualnych. [Dane zbierane](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) z tego agenta będą przechowywane w obszarach roboczych usługi Log Analytics.
 
 ### <a name="agent"></a>Agent
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1629e08d4ba1a7fd7cedb40b1e46d1bfd2766497
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002378"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215544"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
 
@@ -52,7 +52,7 @@ Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących w
 
 Witryna [Azure Portal](https://portal.azure.com) udostępnia wbudowane funkcje monitorowania i alertów dla większości zasobów. Usługi SQL Database jest dostępna w bazach danych monitorowania i alertów. To wbudowane funkcje monitorowania i alertów zależy od konkretnych zasobów, dlatego jest łatwa w użyciu dla małej liczby zasobów, ale nie jest wygodne w przypadku pracy z wieloma zasobami.
 
-Dla dużej liczby scenariuszy, w którym pracujesz z wieloma zasobami, [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/) mogą być używane. Jest to osobna usługa Azure zapewnia analizy emitowany dzienników diagnostycznych i danych telemetrycznych zebranych w obszar roboczy usługi log analytics. Usługa log Analytics może zbierać dane telemetryczne z wielu usług i służyć do tworzenia zapytań i ustawiania alertów.
+Dla dużej liczby scenariuszy, w którym pracujesz z wieloma zasobami, [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) mogą być używane. Jest to osobna usługa Azure oferuje analytics za pośrednictwem emitowany dzienników diagnostycznych i danych telemetrycznych zebranych w obszarze roboczym usługi Log Analytics. Dzienniki platformy Azure Monitor umożliwia zbieranie danych telemetrycznych z wielu usług i służyć do tworzenia zapytań i ustawiania alertów.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz kod źródłowy aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych i skryptów
 

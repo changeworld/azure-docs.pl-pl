@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 7577a05302dcf23cc68666685c1537c0eb31f831
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115576"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246138"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpieczenia usługi i technologie dostępne na platformie Azure
 
@@ -34,7 +34,7 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 |--------|--------|
 |[Azure&nbsp;zabezpieczeń&nbsp;Centrum](../security-center/security-center-intro.md)| Rozwiązanie ochrony obciążenia chmury, które zapewnia zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w obciążeniach chmury hybrydowej.|
 |[Usługa Azure Key Vault](../key-vault/key-vault-overview.md)| Bezpieczny magazyn wpisów tajnych dla hasła, parametry połączenia i inne informacje, które musisz zachować aplikacji działa. |
-|[Log Analytics](../log-analytics/log-analytics-overview.md)|Usługa monitorowania zbiera dane telemetryczne i inne dane, która zapewnia aparat zapytań języka i analizy, aby dostarczać usługi operational insights dla aplikacji i zasobów. Mogą być używane autonomicznie lub z innymi usługami takich jak usługa Security Center. |
+|[Dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md)|Usługa monitorowania zbiera dane telemetryczne i inne dane, która zapewnia aparat zapytań języka i analizy, aby dostarczać usługi operational insights dla aplikacji i zasobów. Mogą być używane autonomicznie lub z innymi usługami takich jak usługa Security Center. |
 |[Azure Dev/Test Labs](../devtest-lab/devtest-lab-overview.md)|To usługa, która pomaga programistom i testerom szybko twórz środowiska na platformie Azure, minimalizując równocześnie straty i kontrolując koszty.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

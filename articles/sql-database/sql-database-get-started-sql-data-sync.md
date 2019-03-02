@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 04bb32abf7100975d72e5782b79b44006f1ac965
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4cd7c61903bad5c0f1d6c41165e9bd7ff61a6d09
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567931"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213436"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Samouczek: Konfigurowanie synchronizacji danych programu SQL między usługi Azure SQL Database i programu SQL Server w środowisku lokalnym
 
@@ -232,7 +232,7 @@ Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
 - [Agent synchronizacji danych do usługi Azure SQL Data Sync](sql-database-data-sync-agent.md)
 - [Najlepsze praktyki](sql-database-best-practices-data-sync.md) i [sposób rozwiązywania problemów z usługą Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md)
-- [Monitorowanie SQL Data Sync za pomocą usługi Log Analytics](sql-database-sync-monitor-oms.md)
+- [Monitorowanie SQL Data Sync za pomocą dzienników usługi Azure Monitor](sql-database-sync-monitor-oms.md)
 - [Aktualizowanie schematu synchronizacji za pomocą instrukcji języka Transact-SQL](sql-database-update-sync-schema.md) lub [programu PowerShell](scripts/sql-database-sync-update-schema.md)
 
 Aby uzyskać więcej informacji na temat usługi SQL Database, zobacz:

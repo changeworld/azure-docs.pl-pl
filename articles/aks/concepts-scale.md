@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c7019eac4edc530de5ef64ba9eb32e8e4994e75b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456728"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245203"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Może być konieczne Dostosowywanie tych wartości ochładzania. Domyślne warto
 
 ## <a name="cluster-autoscaler"></a>Skalowanie klastra
 
-Aby reagować na zmieniające się potrzeby zasobników, Kubernetes oferuje skalowanie klastra, który dostosowuje liczbę węzłów, w oparciu o żądanej zasobów w puli węzłów obliczeniowych. Domyślnie skalowanie klastra umożliwia sprawdzenie serwera interfejsu API co 10 sekund, wymaga zmian w liczby węzłów. Jeśli automatyczne skalowanie klastra okaże się, że zmiana jest wymagane, liczbę węzłów w klastrze AKS zwiększania lub zmniejszania odpowiednio. Skalowanie klastra działa z klastrami usługi AKS z włączoną funkcją RBAC, systemem Kubernetes 1.10.x lub nowszej.
+Aby reagować na zmieniające się potrzeby zasobników, Kubernetes oferuje skalowanie klastra, który dostosowuje liczbę węzłów, w oparciu o żądanej zasobów w puli węzłów obliczeniowych. Skalowanie klastra używa Parametry uruchamiania dla elementów, takich jak przedziałów czasu między imprez i progi zasobów. Jeśli automatyczne skalowanie klastra okaże się, że zmiana jest wymagane, liczbę węzłów w klastrze AKS zwiększania lub zmniejszania odpowiednio. Uruchom klastrów usługi AKS, korzystających z skalowanie klastra na zestawach skalowania maszyn wirtualnych, aby zarządzać skalowania w górę i skalowania w dół zdarzenia węzłów AKS.
 
 ![Skalowanie klastra usługi Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 

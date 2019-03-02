@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 121011555d0ba6fdae392275495b89a9759f3978
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490384"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244268"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Usługa Azure Resource Manager szablon najlepszych rozwiązań
 
@@ -131,7 +131,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 ## <a name="variables"></a>Zmienne
 
-Poniższe informacje mogą być przydatne podczas pracy z [zmienne](resource-manager-templates-variables.md):
+Poniższe informacje mogą być przydatne podczas pracy z [zmienne](resource-group-authoring-templates.md#variables):
 
 * Używać zmiennych dla wartości, które trzeba użyć więcej niż raz w szablonie. Jeśli wartość jest używana tylko raz, ustaloną wartość sprawia, że szablon łatwiejsza do odczytania.
 
@@ -277,7 +277,7 @@ Poniższe informacje mogą być przydatne podczas pracy z [zasobów](resource-ma
 
 ## <a name="outputs"></a>Dane wyjściowe
 
-Jeśli używasz szablonu, aby utworzyć publiczne adresy IP, Uwzględnij [generuje sekcji](resource-manager-templates-outputs.md) zwracającego szczegółowe informacje o adresie IP i w pełni kwalifikowana nazwa domeny (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
+Jeśli używasz szablonu, aby utworzyć publiczne adresy IP, Uwzględnij [generuje sekcji](resource-group-authoring-templates.md#outputs) zwracającego szczegółowe informacje o adresie IP i w pełni kwalifikowana nazwa domeny (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
 
 ```json
 "outputs": {

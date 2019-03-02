@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 301dd9357bc1585d96eda216d7e47601e488665b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871803"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245259"
 ---
 # <a name="azure-advanced-threat-detection"></a>Usługa Azure zaawansowane wykrywanie zagrożeń
 
-Platforma Azure oferuje wbudowane funkcje wykrywania zaawansowanych zagrożeń za pośrednictwem usług, takich jak Azure Active Directory (Azure AD), usługi Azure Log Analytics i Azure Security Center. Ta kolekcja usług zabezpieczeń i możliwości zapewnia prosty i szybki sposób zorientować się w ramach wdrożeń na platformie Azure.
+Platforma Azure oferuje wbudowane funkcje wykrywania zaawansowanych zagrożeń za pośrednictwem usług, takich jak Azure Active Directory (Azure AD), dzienniki usługi Azure Monitor i Azure Security Center. Ta kolekcja usług zabezpieczeń i możliwości zapewnia prosty i szybki sposób zorientować się w ramach wdrożeń na platformie Azure.
 
 System Azure oferuje szeroką gamę opcji, aby skonfigurować i dostosować zabezpieczeń, aby spełnić wymagania wdrożenia aplikacji. W tym artykule omówiono sposób spełniają te wymagania.
 
@@ -75,17 +75,17 @@ Usługa PIM pomoże Ci:
 
 -   Uzyskiwanie alertów dotyczących dostępu do ról uprzywilejowanych.
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Ponieważ usługi Log Analytics jest zaimplementowany jako usługa w chmurze, możesz mieć ona działa szybko przy minimalnych inwestycjach w usługi infrastruktury. Nowe funkcje zabezpieczeń są dostarczane automatycznie, co rutynowej konserwacji i uaktualniania kosztów.
+[Dzienniki platformy Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Ponieważ dzienniki usługi Azure Monitor jest zaimplementowany jako usługa w chmurze, możesz mieć ona działa szybko przy minimalnych inwestycjach w usługi infrastruktury. Nowe funkcje zabezpieczeń są dostarczane automatycznie, co rutynowej konserwacji i uaktualniania kosztów.
 
-Oprócz dostarcza wartościowych usług swój własny, usługi Log Analytics można zintegrować z składników programu System Center, takich jak [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), aby rozszerzyć istniejące bezpieczeństwa zarządzania inwestycji do chmury. System Center oraz Log Analytics mogą pracować razem zapewniają środowisko zarządzania pełną hybrydowych.
+Oprócz dostarcza wartościowych usług własną, usługi Azure Monitor dzienniki można zintegrować ze składnikami programu System Center, takimi jak [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), aby rozszerzyć istniejące bezpieczeństwa zarządzania inwestować w w chmurze. Dzienniki programu System Center i Azure Monitor mogą współpracować ze sobą zapewnia komfort hybrydowego pełnego zarządzania.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Całościowe poziom zabezpieczeń i zgodności
 
-[Log Analytics zabezpieczenia i inspekcja w pulpicie nawigacyjnym](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) zapewnia kompleksowy wgląd w Twojej organizacji stan zabezpieczeń IT, za pomocą wbudowanych zapytań wyszukujących istotne problemy, które wymagają Twojej uwagi. Pulpit nawigacyjny zabezpieczenia i inspekcja jest ekran domowy dla wszystko, co jest związane z zabezpieczeniami w usłudze Log Analytics. Zawiera ogólne informacje o stanie zabezpieczeń komputerów. Można również wyświetlić wszystkie zdarzenia w ciągu ostatnich 24 godzin, 7 dni lub dowolnego innego niestandardowego przedziału czasu.
+[Log Analytics zabezpieczenia i inspekcja w pulpicie nawigacyjnym](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) zapewnia kompleksowy wgląd w Twojej organizacji stan zabezpieczeń IT, za pomocą wbudowanych zapytań wyszukujących istotne problemy, które wymagają Twojej uwagi. Pulpit nawigacyjny zabezpieczenia i inspekcja jest ekran domowy dla wszystko, co jest związane z zabezpieczeniami w dziennikach w usłudze Azure Monitor. Zawiera ogólne informacje o stanie zabezpieczeń komputerów. Można również wyświetlić wszystkie zdarzenia w ciągu ostatnich 24 godzin, 7 dni lub dowolnego innego niestandardowego przedziału czasu.
 
-Usługa log Analytics pomagają w szybkim i łatwo zrozumieć ogólny stan zabezpieczeń w każdym środowisku, wszystkie w kontekście operacji IT, łącznie z oprogramowaniem aktualizacji, ocena, ocena ochrony przed złośliwym oprogramowaniem i linii bazowych konfiguracji. Dane dziennika zabezpieczeń jest łatwo dostępne, aby uprościć procesy inspekcji zabezpieczeń i zgodności.
+Usługa Azure Monitor rejestruje pomoc można szybko i łatwo zrozumieć ogólny stan zabezpieczeń w każdym środowisku, wszystkie w kontekście operacji IT, w tym ocena aktualizacji oprogramowania, ocena ochrony przed złośliwym oprogramowaniem i linii bazowych konfiguracji. Dane dziennika zabezpieczeń jest łatwo dostępne, aby uprościć procesy inspekcji zabezpieczeń i zgodności.
 
 ![Pulpit nawigacyjny Log Analytics zabezpieczenia i inspekcja](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -102,25 +102,25 @@ Log Analytics zabezpieczenia i inspekcja pulpit nawigacyjny jest podzielony na c
 -   **Typowe zapytania dotyczące zabezpieczeń**: Wyświetla listę najbardziej typowych zapytań zabezpieczeń, które służą do monitorowania środowiska. Po wybraniu dowolnego zapytania, w okienku wyszukiwania otwiera i wyświetla wyniki tego zapytania.
 
 ### <a name="insight-and-analytics"></a>Usługa Insight and analytics
-W środku [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to repozytorium, która jest hostowana przez platformę Azure.
+W środku [dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to repozytorium, która jest hostowana przez platformę Azure.
 
 ![Diagram usługi Insight and analytics](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Możesz zbierać dane do repozytorium z połączonych źródeł przez konfigurowanie źródeł danych i dodawanie rozwiązań do subskrypcji.
 
-![Pulpit nawigacyjny usługi Log Analytics](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Pulpit nawigacyjny dzienniki usługi Azure Monitor](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Źródeł danych, jak i rozwiązań należy utworzyć oddzielny rekord typy posiadają osobny zestaw właściwości, ale nadal możesz przeanalizować je razem w zapytaniach do repozytorium. Można użyć tych samych narzędzi i metod do pracy z różnymi rodzajami danych zbieranych przez różne źródła.
 
 
-Większość interakcji z usługą Log Analytics jest w witrynie Azure portal, która działa w dowolnej przeglądarce i zapewnia dostęp do ustawień konfiguracji oraz wielu narzędzi służących do analizowania i działania dotyczące zebranych danych. Z poziomu portalu możesz użyć:
+Większość interakcji z dziennikami usługi Azure Monitor jest w witrynie Azure portal, która działa w dowolnej przeglądarce i zapewnia dostęp do ustawień konfiguracji oraz wielu narzędzi służących do analizowania i działania dotyczące zebranych danych. Z poziomu portalu możesz użyć:
 * [Przeszukiwanie dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) gdzie można tworzyć zapytania służące do analizowania zebranych danych.
 * [Pulpity nawigacyjne](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), które można dostosować za pomocą widoków graficznych dotyczących najbardziej wartościowych wyszukiwań.
 * [Rozwiązania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), które zapewniają dodatkowe funkcje i narzędzia analizy.
 
 ![Narzędzia do analizy](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-Rozwiązania powodują dodawanie funkcji do usługi Log Analytics. Przede wszystkim działają w chmurze i zapewniają analizę danych zebranych w repozytorium usługi Log Analytics. Rozwiązania mogą również definiować nowe typy rekordów do pobrania, które mogą być analizowane za pomocą funkcji wyszukiwań lub przy użyciu dodatkowego interfejsu użytkownika, rozwiązanie udostępnia na pulpicie nawigacyjnym usługi Log Analytics.
+Rozwiązania powodują dodawanie funkcji do dzienników usługi Azure Monitor. Przede wszystkim działają w chmurze i zapewniają analizę danych zebranych w repozytorium usługi log analytics. Rozwiązania mogą również definiować nowe typy rekordów do pobrania, które mogą być analizowane za pomocą funkcji wyszukiwań lub przy użyciu dodatkowego interfejsu użytkownika udostępniająca rozwiązania na pulpicie nawigacyjnym analizy dziennika.
 
 Pulpit nawigacyjny zabezpieczenia i inspekcja znajduje się przykład tego typu rozwiązań.
 

@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56f59a76ac3d11677d5b1f76904cf74e933fa7f6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3d1ee0b25fbbf0ef895bdf6ff8afad71ff82de25
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753210"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217176"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Relacje zakotwiczenia i sposób znalezienia w kotwic przestrzenne platformy Azure
 
@@ -77,4 +77,4 @@ Aplikacja może Sprawdź, czy dwie kotwice połączenie wysyłając kwerendy do 
 
 ### <a name="sample-code"></a>Przykładowy kod
 
-Widać przykładowy kod, który pokazuje, jak połączyć kotwic i wykonaj zapytania w pobliżu. Zapoznaj się z Azure przestrzenne kotwic przykładowych aplikacji w witrynie GitHub.
+Widać przykładowy kod, który pokazuje, jak połączyć kotwic i wykonaj zapytania w pobliżu. Zapoznaj się [kotwic przestrzenne Azure przykładowe aplikacje](https://github.com/Azure/azure-spatial-anchors-samples) w witrynie GitHub.

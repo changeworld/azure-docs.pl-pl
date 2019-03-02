@@ -4,16 +4,16 @@ description: Korzystania z łącznika IoT Central w Microsoft Flow, aby wyzwala�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/05/2019
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 76b1940ea1724c7eee8d2784c0e2c2328dd4c8bf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: ba6b8c76b31f09eb8f04097f935f865728a4e893
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55774136"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217499"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -26,9 +26,9 @@ Microsoft Flow umożliwia automatyzowanie przepływów pracy między wiele aplik
 - Aplikacja płatność za rzeczywiste użycie
 - Microsoft osobistym lub służbowym lub konta służbowego do logowania się do usługi Flow ([Dowiedz się więcej na temat planów Microsoft Flow](https://aka.ms/microsoftflowplans))
 
-## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>Wyzwalanie przepływu pracy po wyzwoleniu reguły
+## <a name="trigger-a-workflow"></a>Wyzwalacz przepływu pracy
 
-W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne w aplikacji mobilnej Flow, gdy reguła jest wyzwalana w IoT Central.
+W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne w aplikacji mobilnej Flow, gdy wyzwolenie reguły w IoT Central.
 
 1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Po zapisaniu warunki reguły kliknij **akcji Microsoft Flow** jako nową akcję. Nowa karta lub okna powinna zostać otwarta w przeglądarce, uwzględniając Microsoft Flow.
 
@@ -70,9 +70,10 @@ W tej sekcji dowiesz się, jak utworzyć nowe urządzenie w IoT Central o naciś
 
 1. Wybierz aplikację, a następnie wybierz szablon urządzenia, aby utworzyć urządzenie z na listach rozwijanych. Zobaczysz akcji rozszerzyć, aby wyświetlić wszystkie właściwości i ustawień urządzenia.
 
-1. Wybierz pole nazwy urządzenia. W okienku zawartości dynamicznej wybierz **nazwy urządzenia**. Ta wartość zostanie przekazany z danych wejściowych, wprowadzanych przez użytkownika za pośrednictwem aplikacji mobilnej i będzie nazwa nowe urządzenie IoT Central. W tym przykładzie jedyne wymagane pole jest nazwa urządzenia, wskazywanym przez czerwona gwiazdka. Inny szablon urządzenie może mieć wiele wymagane pola, które należy wypełnić, aby utworzyć nowe urządzenie.
+1. Wybierz pole nazwy urządzenia. W okienku zawartości dynamicznej wybierz **nazwy urządzenia**. Ta wartość jest przekazywany z danych wejściowych użytkownika przechodzi przez aplikację mobilną, a to nazwa nowe urządzenie IoT Central. W tym przykładzie jedyne wymagane pole jest nazwa urządzenia, wskazywanym przez czerwona gwiazdka. Inny szablon urządzenie może mieć wiele wymagane pola, które należy wypełnić, aby utworzyć nowe urządzenie.
 
     ![Przepływ utworzenie okienka dynamicznej akcji urządzenia](./media/howto-add-microsoft-flow-experimental/flowcreatedevice.png)
+
 1. (Opcjonalnie) Wypełnić inne pola, zgodnie z potrzebami dla tworzenia nowych urządzeń.
 
 1. Na koniec Zapisz przepływ pracy.
@@ -112,22 +113,24 @@ W tej sekcji dowiesz się, jak zaktualizować ustawień i właściwości w IoT C
 Możesz usunąć urządzenia za pomocą jego Identyfikatora urządzenia **Azure IoT Central — Usuń urządzenia z systemem** akcji. Oto przykładowy przepływ pracy, który służy do usuwania urządzenia o naciśnięcie przycisku w aplikacji mobilnej Microsoft Flow.
 
    ![Przepływ pracy urządzenia usuwanie przepływu](./media/howto-add-microsoft-flow-experimental/flowdeletedevice.png)
-    
+
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Jeśli występują problemy podczas tworzenia połączenia z łącznikiem usługi Azure IoT Central, Oto kilka porad ułatwiających.
 
-1. Osobistych kont Microsoft (takie jak @hotmail.com, @live.com, @outlook.com domen) nie są obsługiwane w tej chwili. Należy używać Praca AAD lub konta służbowego.
+1. Osobistych kont Microsoft (takie jak @hotmail.com, @live.com, @outlook.com domen) nie są obsługiwane w tej chwili. Musisz użyć pracy usługi Azure Active Directory (AD) lub konta służbowego.
 
 2. Aby użyć łącznika usługi IoT Central w Microsoft Flow, musisz mieć zarejestrowane do co najmniej raz aplikacji IoT Central. W przeciwnym razie aplikacja nie będzie wyświetlane na listach rozwijanych aplikacji.
 
-3. Jeśli podczas korzystania z konta usługi AAD jest komunikat o błędzie, spróbuj otworzyć programu Windows PowerShell i uruchom następujące polecenia cmdlet jako administrator.
+3. Jeśli podczas korzystania z konta usługi Azure AD jest komunikat o błędzie, spróbuj otworzyć programu Windows PowerShell i uruchom następujące polecenia cmdlet jako administrator.
+
     ``` PowerShell
     Install-Module AzureAD
     Connect-AzureAD
     New-AzureADServicePrincipal -AppId 9edfcdd9-0bc5-4bd4-b287-c3afc716aac7 -DisplayName "Azure IoT Central"
     ```
-    
+
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy wiesz jak tworzyć przepływy pracy za pomocą Microsoft Flow sugerowane następnym krokiem jest [zarządzania urządzeniami](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
+
+Teraz, kiedy znasz, jak tworzyć przepływy pracy za pomocą Microsoft Flow, sugerowane następnym krokiem jest [zarządzania urządzeniami](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 

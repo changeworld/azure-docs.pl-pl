@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: abfc7ce78e8676e9560621be1ec9a81717d958e5
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a802b12f34c5fe16202f55416a698823e55c01bb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994287"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245901"
 ---
 # <a name="create-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 
@@ -28,7 +28,7 @@ Szablon usługi Resource Manager jest plik w formacie JSON. Konieczne jest dobry
 
 Po zainstalowaniu programu VS Code, należy dodać [rozszerzenie narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). To rozszerzenie dodaje wiele funkcji, które upraszczają proces tworzenia szablonu.
 
-![Szablon programu Visual Studio Code](./media/how-to-create-template/template-visual-studio-code.png)
+![Template Visual Studio Code](./media/how-to-create-template/template-visual-studio-code.png)
 
 Na zrzucie ekranu przedstawiono szablon usługi Resource Manager, otwarty w programie Visual Studio Code. 
 
@@ -40,13 +40,13 @@ Omówmy teraz części szablonu w celu poznania sposobu działania tego szablonu
 
 * [Parametry](resource-manager-templates-parameters.md) sekcji, która wyświetla wartości można określić podczas wdrażania, aby dostosować infrastrukturę, która jest wdrażana. 
 
-* [Zmienne](resource-manager-templates-variables.md) sekcji znajdują się wartości, które są używane w szablonie.
+* [Zmienne](resource-group-authoring-templates.md#variables) sekcji znajdują się wartości, które są używane w szablonie.
 
 * [Funkcje](resource-group-authoring-templates.md#functions) sekcji, która zawiera dostosowany szablon wyrażeń, które są używane w szablonie.
 
 * [Zasobów](resource-manager-templates-resources.md) sekcję, która zawiera zasoby platformy Azure, które zostały wdrożone w subskrypcji.
 
-* [Generuje](resource-manager-templates-outputs.md) sekcję, która zawiera wartości, które są zwracane po zakończeniu wdrożenia.
+* [Generuje](resource-group-authoring-templates.md#outputs) sekcję, która zawiera wartości, które są zwracane po zakończeniu wdrożenia.
 
 ## <a name="look-for-similar-templates"></a>Wyszukaj podobne szablony
 

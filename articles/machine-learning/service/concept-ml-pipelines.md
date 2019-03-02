@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: d4bef53a21e6ab7b55c16e27083b818929fbd47c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879258"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213674"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Tworzenie potoków uczenia maszynowego przy użyciu usługi Azure Machine Learning
 
@@ -54,7 +54,7 @@ Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzeb
 
 Po potok został zaprojektowany, jest często więcej dostrajanie wokół pętli szkolenia potoku. Kiedy ponowne uruchomienie potoku wykonywania przechodzi do czynności, które konieczne będzie ponowne uruchomienie, takich jak skrypt szkolenia zaktualizowane i pomija, co się nie zmienił. Tym samym modelu dotyczy niezmienione skrypty używane do wykonywania tego kroku. 
 
-Za pomocą usługi Azure Machine Learning używając różnych zestawów narzędzi i platform, takich jak Microsoft Cognitive Toolkit lub TensorFlow, dla każdego kroku w potoku. Współrzędne platformy Azure między różnymi [celów obliczeń](concept-azure-machine-learning-architecture.md) używasz, tak aby pośrednie dane mogą być udostępniane podrzędnego obliczeniowych elementów docelowych łatwo. 
+Za pomocą usługi Azure Machine Learning używając różnych zestawów narzędzi i platform, takich jak PyTorch lub TensorFlow, dla każdego kroku w potoku. Współrzędne platformy Azure między różnymi [celów obliczeń](concept-azure-machine-learning-architecture.md) używasz, tak aby pośrednie dane mogą być udostępniane podrzędnego obliczeniowych elementów docelowych łatwo. 
 
 Możesz [śledzić metryki dla eksperymentów potoku](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) bezpośrednio w witrynie Azure portal. 
 

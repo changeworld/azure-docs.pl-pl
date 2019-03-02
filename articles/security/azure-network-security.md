@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 857672e8dee4dbe8d586db0cd80b206ec6ecb7df
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111292"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244574"
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
@@ -393,7 +393,7 @@ Ponadto, brama aplikacji zapory aplikacji internetowych ułatwia monitorowanie a
 
 W dzienniku sformatowanego JSON przechodzi bezpośrednio do konta magazynu klienta. Mają pełną kontrolę nad tych dzienników i można zastosować zasad przechowywania.
 
-Te dzienniki mogą również pozyskiwanie, do własnego analizę systemu przy użyciu [Azure Log Integration](https://aka.ms/AzLog). Dzienniki zapory aplikacji sieci Web jest również zintegrowana z [usługi Log Analytics](../log-analytics/log-analytics-overview.md) aby można było używać usługi Log Analytics do wykonywania zaawansowanych szczegółowych zapytań.
+Te dzienniki mogą również pozyskiwanie, do własnego analizę systemu przy użyciu [Azure Log Integration](https://aka.ms/AzLog). Dzienniki zapory aplikacji sieci Web jest również zintegrowana z [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md) tak dzienniki usługi Azure Monitor umożliwia wykonywanie zaawansowanych zapytań szczegółowych.
 
 #### <a name="azure-web-application-firewall-waf"></a>Zapora aplikacji sieci web platformy Azure (WAF)
 
@@ -507,7 +507,7 @@ Platforma Azure oferuje wiele narzędzi do monitorowania, zapobieganie, wykrywan
 
 -   Network Resource Level Monitoring
 
--   Log Analytics
+-   Dzienniki usługi Azure Monitor
 
 ### <a name="network-watcher"></a>Obserwator sieci
 
@@ -597,17 +597,17 @@ Metryki są pomiarów wydajności i liczniki zbierane w przedziale. Metryki są 
 
 #### <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Okresowe i spontanicznej zdarzenia są tworzone przez zasoby sieciowe i zarejestrowane w ramach kont magazynu, wysyłane do Centrum zdarzeń lub usługi Log Analytics. Te dzienniki zawierają szczegółowe informacje na temat kondycji zasobu. Te dzienniki mogą być wyświetlane w narzędzia, takie jak usługa Power BI i usługi Log Analytics. Aby dowiedzieć się, jak wyświetlić dzienniki diagnostyczne, odwiedź stronę [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
+Okresowe i spontanicznej zdarzenia są tworzone przez zasoby sieciowe i rejestrowane w ramach kont magazynu, wysłane do Centrum zdarzeń lub dzienniki usługi Azure Monitor. Te dzienniki zawierają szczegółowe informacje na temat kondycji zasobu. Te dzienniki mogą być wyświetlane w narzędzia, takie jak dzienniki usługi Power BI i usługi Azure Monitor. Aby dowiedzieć się, jak wyświetlić dzienniki diagnostyczne, odwiedź stronę [dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
 
 Dzienniki diagnostyczne są dostępne dla [modułu równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), [sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), tras i [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
 
 Usługa Network Watcher oferuje widok dla dzienników diagnostycznych. Ten widok zawiera wszystkie zasoby sieciowe, które obsługują rejestrowania diagnostycznego. W tym widoku można włączać i wyłączać zasobami sieciowymi w przypadku, szybko i wygodnie.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to usługa platformy Azure, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł.
+[Dzienniki platformy Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to usługa platformy Azure, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł.
 
-Usługa log Analytics oferuje następujące rozwiązania do monitorowania sieci:
+Dzienniki platformy Azure Monitor udostępnia następujące rozwiązania do monitorowania sieci:
 
 -   Rozwiązanie Network Performance Monitor (NPM)
 
@@ -627,7 +627,7 @@ Służy do monitorowania łączności między:
 -   Podsieci, które hostują różne warstwy aplikacji wielowarstwowych.
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>Usługi Azure application gateway analytics w usłudze log analytics
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Analiza bramy aplikacji platformy Azure w dziennikach w usłudze Azure Monitor
 
 Bramy Application Gateway obsługuje następujące dzienniki:
 
@@ -641,7 +641,7 @@ Następujące metryki są obsługiwane w przypadku bram Application Gateway:
 
 -   5-minutowych przepływności
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Analizy grupy zabezpieczeń sieci platformy Azure w usłudze log analytics
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Analizy grupy zabezpieczeń sieci platformy Azure w dziennikach w usłudze Azure Monitor
 
 Następujące dzienniki są obsługiwane w przypadku [sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log):
 
@@ -652,7 +652,7 @@ Następujące dzienniki są obsługiwane w przypadku [sieciowe grupy zabezpiecze
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o zabezpieczeń, zapoznając się niektóre z naszych tematy szczegółowe zabezpieczeń:
 
--   [Usługa log Analytics dla sieciowych grup zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [Dzienniki monitora platformy Azure dla sieciowych grup zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [Innowacje w sieci, które dysku przerw w działaniu chmury](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: c11dc2b24e3cf5d201a73c1ed405ba4b7c09978b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 29a0d0679adc51cf1493d241273e3b572a7fd57d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992604"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214303"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -95,7 +95,7 @@ Narzędzi [wbudowanego monitorowania wydajności](sql-database-performance.md) i
 
 - **Azure Storage**: W celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę
 - **Centrum zdarzeń platformy Azure**: Do integracji danych telemetrycznych usługi SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami
-- **Usługi Azure Log Analytics**: Aby uzyskać wbudowanego rozwiązania monitorowania obejmującego raportowania, zgłaszania alertów i łagodzenia możliwości.
+- **Dzienniki platformy Azure Monitor**: Aby uzyskać wbudowanego rozwiązania monitorowania obejmującego raportowania, zgłaszania alertów i łagodzenia możliwości.
 
     ![architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 

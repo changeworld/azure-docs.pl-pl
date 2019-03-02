@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 58bad793ba44ae91d75324257f55648cf3207cd0
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 90ec06b01b11b5cbe119f41483eaf794af4e991b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291452"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243095"
 ---
 # <a name="monitoring-the-cluster"></a>Monitorowanie klastra
 
@@ -90,13 +90,13 @@ Aby uzyskać listę liczników wydajności zbierających dane, korzystając z us
 Poniżej przedstawiono dwie typowe sposoby, w których możesz skonfigurować zbieranie danych o wydajności dla klastra:
 
 * **Przy użyciu agenta**  
-Jest to preferowany sposób zbierania wydajności na komputerze, ponieważ agenci mają zwykle listę metryk maksymalną wydajność, które mogą być zbierane i jest stosunkowo łatwe procesowi wybrać metryki, które chcesz zbierać lub zmienić. Przeczytaj na temat usługi Azure Monitor oferty usługi Log Analytics w usłudze Service Fabric [integracji usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) i [konfigurowania agenta usługi Log Analytics](../log-analytics/log-analytics-windows-agent.md) dowiedzieć się więcej o agenta usługi Log Analytics, który będzie miał jedną taki agent monitorowania, który jest w stanie wczytać dane wydajności dla maszyn wirtualnych klastra i wdrożone kontenery.
+Jest to preferowany sposób zbierania wydajności na komputerze, ponieważ agenci mają zwykle listę metryk maksymalną wydajność, które mogą być zbierane i jest stosunkowo łatwe procesowi wybrać metryki, które chcesz zbierać lub zmienić. Przeczytaj na temat usługi Azure Monitor oferty usługi Azure Monitor dzienników w usłudze Service Fabric [usługi Azure Monitor rejestruje integracji](service-fabric-diagnostics-event-analysis-oms.md) i [konfigurowania agenta usługi Log Analytics](../log-analytics/log-analytics-windows-agent.md) Aby dowiedzieć się więcej na temat agenta usługi Log Analytics, która jest jeden taki agent monitorowania, który jest w stanie wczytać dane wydajności dla maszyn wirtualnych klastra i wdrożone kontenery.
 
 * **Liczniki wydajności do usługi Azure Table Storage**  
 Można również wysłać metryki wydajności, tym samym magazynem tabeli jako zdarzeń. Wymaga to zmianę konfiguracji diagnostyki platformy Azure w celu zbierania liczników wydajności odpowiednich maszyn wirtualnych w klastrze i włączanie, aby wczytać statystyk platformy docker, jeśli będziesz wdrażać żadnych kontenerów. Przeczytaj o konfigurowaniu [liczników wydajności w WAD](service-fabric-diagnostics-event-aggregation-wad.md) w usłudze Service Fabric, aby skonfigurować zbieranie danych licznika wydajności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przeczytaj na temat usługi Service Fabric [integracji usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) zbieranie danych diagnostycznych z klastra i utworzenia niestandardowych kwerend i alerty
+* Przeczytaj na temat usługi Service Fabric [usługi Azure Monitor rejestruje integracji](service-fabric-diagnostics-event-analysis-oms.md) zbieranie danych diagnostycznych z klastra i utworzenia niestandardowych kwerend i alerty
 * Dowiedz się więcej o usłudze Service Fabric w skompilowanych doświadczenie diagnostyczne [bazy danych EventStore](service-fabric-diagnostics-eventstore.md)
 * Opisano niektóre [typowych scenariuszach diagnostycznych](service-fabric-diagnostics-common-scenarios.md) w usłudze Service Fabric

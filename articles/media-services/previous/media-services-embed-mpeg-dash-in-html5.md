@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2c8e71a058b2c770741c38f07c6c440fea90f2b2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ab9bf868191238d933ae301b9a7df293842e8e36
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998437"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247056"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs-legacy"></a>Osadzanie MPEG-DASH adaptacyjnego przesyłania strumieniowego wideo w aplikacji HTML5 z implementacją DASH.js (starsza wersja)
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Osadzanie MPEG-DASH adaptacyjne przesyłanie strumieniowe filmów wideo w aplikacji HTML5 z implementacją DASH.js  
 
 ## <a name="overview"></a>Przegląd
 MPEG-DASH jest standardem ISO do adaptacyjnego przesyłania strumieniowego zawartości wideo, która oferuje istotne korzyści dla deweloperów, które chcą dostarczanie wideo wysokiej jakości, adaptacyjne przesyłanie strumieniowe danych wyjściowych. Przy użyciu standardu MPEG-DASH strumienia wideo dopasowuje automatycznie niższych definicji podczas staje się przeciążenia sieci. Zmniejsza to prawdopodobieństwo podglądu oglądanie wideo "wstrzymane", gdy gracz pliki do pobrania następnej kilka sekund, aby odtworzyć (zwane również buforowania). Jak zmniejsza przeciążenie sieci, odtwarzacza wideo z kolei powróci do strumienia wyższej jakości. Ta możliwość dostosowania przepustowość wymaganą również powoduje szybsze uruchamianie filmu wideo. Oznacza to, że pierwsze kilka sekund, mogą być odtwarzane w segmencie niższa jakość fast do pobierania, a następnie została buforowana krok do wyższej jakości zawartości po wystarczające.

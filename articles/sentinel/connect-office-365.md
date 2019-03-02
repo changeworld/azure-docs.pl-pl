@@ -4,7 +4,7 @@ description: Dowiedz się, jak zbierać dane usługi Office 365 w przez wartowni
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 42d2bb69ac5f1e6669d82a3fc7236e967a6d9366
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 473dd307eac65856384e9d07dc307cf827d8140f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992922"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242194"
 ---
 # <a name="collect-data-from-office-365-logs"></a>Zbieranie danych z pakietu Office 365 dzienników
 

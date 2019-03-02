@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 0f70bb91ccb0cb403d9292c2e3f069a8a9d2da41
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 884f9025f4152c391b4b59384bc94b2136daa916
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993864"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240749"
 ---
-# <a name="publish-content-in-the-azure-portal-legacy"></a>Publikowanie zawartości w witrynie Azure portal (starsza wersja)
+# <a name="publish-content-in-the-azure-portal"></a>Publikowanie zawartości w witrynie Azure portal  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)

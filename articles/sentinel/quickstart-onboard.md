@@ -4,7 +4,7 @@ description: Dowiedz się, jak zbierać dane przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c5f4c73bb516172773f6aad5e5393db6d40b3d5
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c711ea3636a3ea045b4a145481f9da156b8c5bfc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992915"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246988"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Dołączyć wartownik platformy Azure (wersja zapoznawcza)
 
@@ -63,7 +63,7 @@ Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonal
 6. Kliknij przycisk **Dodaj Azure wartownik**.
   
 
-## <a name="connect-data-sources"></a>Połącz źródła danych
+## <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
 Wartownik Azure tworzy połączenie usług i aplikacji przez połączenie z usługą i funkcji przekazywania zdarzeń i dzienników do platformy Azure przez wartownika. Dla maszyn wirtualnych i komputerów można zainstalować agenta programu Azure przez wartownika służąca do zbierania dzienników i przekazuje je do platformy Azure przez wartownika. Dla zapór i serwerów proxy przez wartownika Azure korzysta z serwera Syslog systemu Linux. Agent jest zainstalowany na nim i z którego agent zbiera pliki dziennika i przekazuje je do platformy Azure przez wartownika. 
  

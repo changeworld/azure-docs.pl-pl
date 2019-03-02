@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1ce1faa13c541939335d188866e15c683b6ffc28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2065381063058eb59dd5896e12c1aa34184148bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110272"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247005"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje stan ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy dotyczące ochrony punktu końcowego. Usługa Security Center wyróżnia problemy, takie jak wykrytych zagrożeń i ochronę niewystarczające, co może narazić Twoje maszyny wirtualne (VM) i komputerów na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji podanych w ramach **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
@@ -84,13 +84,13 @@ W tym przykładzie użyjemy **obliczenia**.  Przedstawiony zostanie sposób inst
 
    ![Wybór ochrony punktu końcowego nie jest zainstalowany na komputerach nienależących do platformy Azure][4]
 
-2. W obszarze **programu Endpoint protection nie jest zainstalowany na komputerach nienależących do platformy Azure**, wybierz obszar roboczy. Zapytanie wyszukiwania usługi Log Analytics filtrowane do obszaru roboczego otwiera się i wyświetla komputery bez ochrony przed złośliwym oprogramowaniem. Wybierz komputer z listy, aby uzyskać więcej informacji.
+2. W obszarze **programu Endpoint protection nie jest zainstalowany na komputerach nienależących do platformy Azure**, wybierz obszar roboczy. Zapytanie wyszukiwania dzienników dla usługi Azure Monitor filtrowane do obszaru roboczego otwiera się i wyświetla komputery bez ochrony przed złośliwym oprogramowaniem. Wybierz komputer z listy, aby uzyskać więcej informacji.
 
-   ![Wyszukiwania usługi log Analytics][5]
+   ![Usługa Azure Monitor dzienniki wyszukiwania][5]
 
 Zostanie otwarty inny wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
 
-  ![Wyszukiwania usługi log Analytics][6]
+  ![Usługa Azure Monitor dzienniki wyszukiwania][6]
 
 > [!NOTE]
 > Firma Microsoft zaleca udostępniane programu endpoint protection dla wszystkich maszyn wirtualnych i komputerów ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: c4ce8e01b1dc819453610f68d044cc268e27eed7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290522"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242755"
 ---
 # <a name="service-fabric-events"></a>Zdarzenia usługi Service Fabric 
 
@@ -40,12 +40,12 @@ Poniżej przedstawiono niektóre przykładowe scenariusze, że powinny zostać w
 * Wdrażanie aplikacji/usługi / usuwania: dostępne są zdarzenia dla każdej aplikacji, usług i kontenerów, są utworzone lub usunięte i przydatne podczas skalowania do wewnątrz lub na zewnątrz np. zwiększenie liczby replik
 * Partycja przenosi (ponownej konfiguracji): zawsze, gdy stanowych partycji odbywa się przez rekonfiguracji (zmiany w zestawie), zdarzenie jest rejestrowane. Jest to przydatne, jeśli chcesz zrozumieć, jak często zmiany lub przejść w tryb failover zestawu replik partycji lub śledzenia, który węzeł była uruchomiona Twoja repliki podstawowej w dowolnym momencie w czasie.
 * Zdarzenia chaos: korzystając z usługi Service Fabric [Chaos](service-fabric-controlled-chaos.md) usługi, zobaczysz zdarzenia, za każdym razem, gdy usługa jest uruchomiona lub zatrzymana lub w przypadku, gdy jej wprowadza błędów w systemie.
-* Zdarzenia dotyczące kondycji: Usługi Service Fabric udostępnia zdarzenia dotyczące kondycji za każdym razem, gdy tworzony jest ostrzeżenie lub błąd raport o kondycji jednostki powraca do stanu kondycji OK lub raport o kondycji wygasa. Te zdarzenia są bardzo przydatne do śledzenia kondycji historyczne statystyki dla jednostki. 
+* Zdarzenia dotyczące kondycji: Usługa Service Fabric udostępnia zdarzenia dotyczące kondycji za każdym razem, gdy tworzony jest ostrzeżenie lub błąd raport o kondycji jednostki powraca do stanu kondycji OK lub raport o kondycji wygasa. Te zdarzenia są bardzo przydatne do śledzenia kondycji historyczne statystyki dla jednostki. 
 
 ## <a name="how-to-access-events"></a>Jak uzyskać dostęp do zdarzeń
 
 Istnieje kilka różnych sposobów, za pomocą których zdarzenia usługi Service Fabric można uzyskać dostęp:
-* Zdarzenia są rejestrowane za pomocą standardowych kanałów, takich jak dzienniki zdarzeń ETW/Windows i mogą być wizualizowane przez dowolnego narzędzia do monitorowania, który obsługuje takie jak usługa Log Analytics. Domyślnie klastry utworzone w portalu ma włączoną diagnostyką i agenta diagnostyki Windows Azure, wysyłanie zdarzeń do usługi Azure table storage, ale nadal konieczne zintegrowanie to z zasobem usługi Log Analytics. Dowiedz się więcej o konfigurowaniu [agenta funkcji Diagnostyka Azure](service-fabric-diagnostics-event-aggregation-wad.md) do modyfikowania konfiguracji diagnostyki do klastra, aby wczytać więcej dzienników lub liczniki wydajności i [integracji usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* Zdarzenia są rejestrowane za pomocą standardowych kanałów, takich jak dzienniki zdarzeń ETW/Windows i mogą być wizualizowane przez dowolnego narzędzia do monitorowania, który obsługuje takie jak dzienniki usługi Azure Monitor. Domyślnie klastry utworzone w portalu ma włączoną diagnostyką i agenta diagnostyki Windows Azure, wysyłanie zdarzeń do usługi Azure table storage, ale nadal konieczne zintegrowanie to z zasobem usługi log analytics. Dowiedz się więcej o konfigurowaniu [agenta funkcji Diagnostyka Azure](service-fabric-diagnostics-event-aggregation-wad.md) do modyfikowania konfiguracji diagnostyki do klastra, aby wczytać więcej dzienników lub liczniki wydajności i [usługi Azure Monitor rejestruje integracji](service-fabric-diagnostics-event-analysis-oms.md)
 * Usługa bazy danych EventStore interfejsów API Rest, dzięki czemu możesz zbadać klastra bezpośrednio lub za pomocą biblioteki klienckiej usługi Service Fabric. Zobacz [interfejsów API bazy danych EventStore zapytań dla zdarzenia klastra](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

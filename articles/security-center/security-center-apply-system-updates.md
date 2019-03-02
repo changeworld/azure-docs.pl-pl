@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9c2d6c48b9bf51062181886c8a9ef789b1c2b359
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105131"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240834"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje dzienne Windows i Linux maszyn wirtualnych (VM) i komputerów w celu znalezienia brakujących aktualizacji systemu operacyjnego. Usługa Security Center pobiera listę dostępnych zabezpieczeń i aktualizacje krytyczne z witryny Windows Update lub Windows Server Update Services (WSUS) w zależności od którego usługa jest skonfigurowana na komputerze Windows. Centrum zabezpieczeń sprawdza również uzyskać najnowsze aktualizacje w systemach Linux. Jeśli komputera lub maszyny Wirtualnej, na których brakuje aktualizacji systemu, usługa Security Center zaleca zastosowanie aktualizacji systemu.
@@ -63,13 +63,13 @@ W tym przykładzie użyjemy **obliczenia**.
 
    ![Brak aktualizacji zabezpieczeń][3]
 
-4. Wybierz **wyszukiwania** ikona na Wstążce najważniejsze.  Zapytanie wyszukiwania usługi Log Analytics spowoduje otwarcie filtrowane na komputerach brakujących aktualizacji.
+4. Wybierz **wyszukiwania** ikona na Wstążce najważniejsze.  Zapytanie wyszukiwania dzienników usługi Azure Monitor otwiera filtrowane na komputerach brakujących aktualizacji.
 
-   ![Wyszukiwania usługi log Analytics][4]
+   ![Usługa Azure Monitor dzienniki wyszukiwania][4]
 
 5. Wybierz komputer z listy, aby uzyskać więcej informacji. Zostanie otwarty inny wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
 
-    ![Wyszukiwania usługi log Analytics][5]
+    ![Usługa Azure Monitor dzienniki wyszukiwania][5]
 
 ## <a name="reboot-after-system-updates"></a>Uruchom ponownie po zaktualizowaniu systemu
 1. Wróć do **zalecenia** bloku. Wygenerowano nowy wpis, po zastosowaniu aktualizacji systemu, nazywany **Uruchom ponownie po zaktualizowaniu systemu**. Ten wpis informuje o tym, że musisz ponownie uruchomić maszynę Wirtualną w celu ukończenia procesu stosowania aktualizacji systemu.

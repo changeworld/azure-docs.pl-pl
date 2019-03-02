@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b8f2df14e0aa0246d794bd56f4187002cfdeee02
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ba5a8cc09a098e58c39d42475d18e92e45222937
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194472"
+ms.locfileid: "57216785"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -93,7 +93,7 @@ Wprowadź nazwę pola dokładnie tak jak pokazano w tabeli do szablonu urządzen
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central należy dodać rzeczywistego urządzenia za pomocą szablonu urządzenia, tworzenie i zanotuj parametry połączenia urządzenia. Aby uzyskać instrukcje krok po kroku dotyczące łączenia aplikacji Node.js IoT Central, zobacz [wygenerować parametry połączenia dla rzeczywistego urządzenia z poziomu aplikacji](tutorial-add-device-experimental.md#generate-connection-string-for-real-device-from-application) i [przygotować kod klienta](tutorial-add-device-experimental.md#prepare-the-client-code) samouczków > Dodawanie urządzenia.
+W aplikacji usługi Azure IoT Central należy dodać rzeczywistego urządzenia za pomocą szablonu urządzenia, tworzenie i zanotuj parametry połączenia urządzenia. Aby uzyskać instrukcje krok po kroku dotyczące łączenia aplikacji Node.js IoT Central, zobacz [wygenerować parametry połączenia dla rzeczywistego urządzenia z poziomu aplikacji](tutorial-add-device-experimental.md#generate-connection-string) i [przygotować kod klienta](tutorial-add-device-experimental.md#prepare-the-client-code) samouczków > Dodawanie urządzenia.
 
 ### <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 
@@ -268,11 +268,11 @@ Operator w aplikacji usługi Azure IoT Central rzeczywistego urządzenia możesz
 
     ![Wyświetlanie danych telemetrycznych](media/howto-connect-nodejs-experimental/viewtelemetry.png)
 
-* Wyświetlanie wartości właściwości urządzenia, które są wysyłane z urządzenia **właściwości** strony. Kafelki właściwości urządzenia zostaną zaktualizowane, jeśli połączenie zostanie nawiązane. 
+* Wyświetlanie wartości właściwości urządzenia, które są wysyłane z urządzenia **właściwości** strony. Właściwości Kafelki aktualizowania urządzenia, jeśli połączenie zostanie nawiązane.
 
     ![Wyświetl właściwości urządzenia](media/howto-connect-nodejs-experimental/viewproperties.png)
 
-* Ustaw wentylator temperatury szybkość i docelowej z **ustawienia** strony. Wartości ustawień zsynchronizuje, jeśli połączenie zostanie nawiązane. 
+* Ustaw wentylator temperatury szybkość i docelowej z **ustawienia** strony. Wartości ustawienia synchronizacji, jeśli połączenie zostanie nawiązane.
 
     ![Wentylator prędkości](media/howto-connect-nodejs-experimental/setfanspeed.png)
 

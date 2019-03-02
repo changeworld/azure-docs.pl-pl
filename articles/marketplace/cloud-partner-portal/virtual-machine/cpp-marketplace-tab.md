@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa43a6f1f7c757366e321e7da0fb1e47d4928cee
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 551f2bbc4846a1b47dafaa03cca08b424572ebf5
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639770"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214881"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Marketplace maszyny wirtualnej
 
-**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ten długich fragmentów jest podzielony na cztery sekcje: **Przegląd**, **marketingu artefaktów**, **prowadzić zarządzania**, i **prawne**. 
+**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**. 
 
 ## <a name="overview-section"></a>Sekcja — Omówienie
 W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.  Dołączonych gwiazdki (*) na nazwę pola wskazuje, że jest wymagane.
@@ -38,21 +38,23 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
 | **Podsumowanie**               | Krótki opis przeznaczenia lub funkcja rozwiązania.  Składać z maksymalnie 100 znaków. |
 | **Długie podsumowanie**          | Cel lub funkcja rozwiązania.  Maksymalna długość 256 znaków. |
 | **Opis**           | Opis rozwiązania.  Maksymalną długość znaków 3000 obsługuje prosty format HTML. |
+| **Kanał odsprzedawców dostawcy usług Kryptograficznych Microsoft** | Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów. |
 | **Identyfikator marketingu**  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Identyfikatory subskrypcji (wersja zapoznawcza)** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
-| **Przydatne linki**          | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie pięciu dozwolone.  |
+| **Przydatne linki**          | Dodaj adresy URL do przekazywania, informacje o wersji, często zadawane pytania i tak dalej. |
+| **Sugerowane kategorie (maks. 5)** | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie pięciu dozwolone.  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>Sekcja artefaktów marketingu
 
-Ta druga sekcja są podzielone na trzy podsekcje: **logo**, **zrzut ekranu**, i **wideo**. Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta.
+Ta druga sekcja odbywa się w trzech podsekcje: **Logo**, **zrzut ekranu**, i **wideo**. Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta.
 
 ![Marketing artefaktów części karty portalu Marketplace w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_009.png)
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Logo*  |  |
+| *Logos*  |  |
 | **Małe**                 | Mapa bitowa .ico 40 x 40 pikseli                                                      |
 | **Średni**                | Mapa bitowa .ico 90 x 90 pikseli                                                      |
 | **Duże**                 | Mapa bitowa .ico 115 x 115 pikseli                                                   |
@@ -120,7 +122,7 @@ Po pomyślnym opublikowaniu oferty, połączenia potencjalny klient zostanie zwe
 
 ## <a name="legal-section"></a>Sekcja prawne
 
-Ta ostatnia sekcja umożliwia podanie dwa dokumenty prawne wymagane dla każdej oferty: zasady ochrony prywatności i warunki użytkowania.
+Ta ostatnia sekcja umożliwia podanie dwa dokumenty prawne wymagane dla każdej oferty: Zasady ochrony prywatności i warunki użytkowania.
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |

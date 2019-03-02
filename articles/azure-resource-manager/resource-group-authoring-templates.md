@@ -10,18 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 34f34545e4511c4f8bc4af95f906f2871480bd47
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 7819dc62d766a6b35f5c2efe1179cb0adb0ab933
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310166"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243554"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
-W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
+W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia.
+
+Ten artykuł jest przeznaczony dla użytkowników, którzy posiadają pewną znajomość szablonów usługi Resource Manager. Zawiera ona szczegółowe informacje dotyczące struktury i składni szablonu. Jeśli chcesz, aby zapoznać się z wprowadzeniem do tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Format szablonu
 
@@ -197,15 +199,106 @@ Aby dowiedzieć się, jak Definiowanie parametrów, zobacz [sekcji parametrów s
 
 W sekcji zmiennych konstruujesz wartości, których można użyć w szablonie. Nie trzeba zdefiniować zmienne, ale często upraszczają działania do szablonu, zmniejszając złożonych wyrażeń.
 
-Poniższy przykład przedstawia definicję zmiennej proste:
+### <a name="available-definitions"></a>Dostępne definicje
+
+Poniższy przykład przedstawia dostępne opcje do definiowania zmiennej:
 
 ```json
 "variables": {
-  "webSiteName": "[concat(parameters('siteNamePrefix'), uniqueString(resourceGroup().id))]",
+    "<variable-name>": "<variable-value>",
+    "<variable-name>": { 
+        <variable-complex-type-value> 
+    },
+    "<variable-object-name>": {
+        "copy": [
+            {
+                "name": "<name-of-array-property>",
+                "count": <number-of-iterations>,
+                "input": <object-or-value-to-repeat>
+            }
+        ]
+    },
+    "copy": [
+        {
+            "name": "<variable-array-name>",
+            "count": <number-of-iterations>,
+            "input": <object-or-value-to-repeat>
+        }
+    ]
+}
+```
+
+Aby uzyskać informacje o używaniu `copy` Aby utworzyć kilka wartości zmiennej, zobacz [zmiennej iteracji](resource-group-create-multiple.md#variable-iteration).
+
+### <a name="define-and-use-a-variable"></a>Definiowanie i użyj zmiennej
+
+Poniższy przykład przedstawia definicję zmiennej. Tworzy wartość ciągu dla nazwy konta magazynu. Używa kilka funkcji szablonu, aby uzyskać wartości parametru i łączy ją z unikatowym ciągiem.
+
+```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 },
 ```
 
-Aby uzyskać informacji na temat definiowania zmiennych, zobacz [sekcji zmiennych szablonów usługi Azure Resource Manager](resource-manager-templates-variables.md).
+Podczas definiowania zasobu jest używana zmienna.
+
+```json
+"resources": [
+  {
+    "name": "[variables('storageName')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    ...
+```
+
+### <a name="configuration-variables"></a>Zmienne konfiguracji
+
+Typy złożone JSON służy do definiowania powiązanych wartości dla środowiska.
+
+```json
+"variables": {
+    "environmentSettings": {
+        "test": {
+            "instanceSize": "Small",
+            "instanceCount": 1
+        },
+        "prod": {
+            "instanceSize": "Large",
+            "instanceCount": 4
+        }
+    }
+},
+```
+
+W parametrach utworzysz wartość, która wskazuje, która Konfiguracja wartości do użycia.
+
+```json
+"parameters": {
+    "environmentName": {
+        "type": "string",
+        "allowedValues": [
+          "test",
+          "prod"
+        ]
+    }
+},
+```
+
+Możesz pobrać bieżące ustawienia za pomocą:
+
+```json
+"[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
+```
+
+### <a name="variables-example-templates"></a>Zmienne przykładowych szablonów
+
+Te przykładowe szablony pokazują niektóre scenariusze dotyczące używania zmiennych. Wdróż je do testowania, w jaki sposób zmienne są obsługiwane w różnych scenariuszach. 
+
+|Szablon  |Opis  |
+|---------|---------|
+| [definicje zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Demonstruje różne rodzaje zmiennych. Szablon nie wdroży żadnych zasobów. On tworzy wartości zmiennych i zwraca te wartości. |
+| [Zmienna konfiguracyjna](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Zademonstrowano użycie zmiennej, która definiuje wartości konfiguracji. Szablon nie wdroży żadnych zasobów. On tworzy wartości zmiennych i zwraca te wartości. |
+| [reguł zabezpieczeń sieciowych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) i [pliku parametrów](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Tworzy tablicę w poprawnym formacie przypisywania zabezpieczeń reguły do sieciowej grupy zabezpieczeń. |
+
 
 ## <a name="functions"></a>Funkcje
 
@@ -214,7 +307,7 @@ W ramach szablonu można utworzyć własne funkcje. Te funkcje są dostępne do 
 Podczas definiowania funkcji użytkownika, istnieją pewne ograniczenia:
 
 * Funkcja nie może uzyskać dostęp do zmiennych.
-* Funkcja może używać tylko parametry, które są zdefiniowane w funkcji. Kiedy używasz [parametrów funkcji](resource-group-template-functions-deployment.md#parameters) w funkcji zdefiniowanej przez użytkownika, użytkownik jest ograniczony do parametrów dla tej funkcji.
+* Funkcja może używać tylko parametry, które są zdefiniowane w funkcji. Kiedy używasz [parametrów funkcji](resource-group-template-functions-deployment.md#parameters) w funkcji zdefiniowanej przez użytkownika, są ograniczone do parametrów dla tej funkcji.
 * Funkcja nie można wywołać inne funkcje zdefiniowane przez użytkownika.
 * Nie można użyć funkcji [odwoływać się do funkcji](resource-group-template-functions-resource.md#reference).
 * Parametry funkcji nie może mieć wartości domyślne.
@@ -282,18 +375,91 @@ W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizo
 Aby warunkowo dołączyć lub wykluczyć zasób podczas wdrażania, należy użyć [element warunek](resource-manager-templates-resources.md#condition). Aby uzyskać więcej informacji na temat sekcji zasobów zobacz [sekcji zasobów usługi Azure Resource Manager](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Dane wyjściowe
-W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do dostępu do wdrożonych zasobów.
+
+W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Zwykle zwracane wartości od zasobów, które zostały wdrożone.
+
+### <a name="available-properties"></a>Dostępne właściwości
+
+Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 
 ```json
 "outputs": {
-  "newHostName": {
+    "<outputName>" : {
+        "condition": "<boolean-value-whether-to-output-value>",
+        "type" : "<type-of-output-value>",
+        "value": "<output-value-expression>"
+    }
+}
+```
+
+| Nazwa elementu | Wymagane | Opis |
+|:--- |:--- |:--- |
+| outputName |Yes |Nazwa wartości danych wyjściowych. Musi być prawidłowym identyfikatorem języka JavaScript. |
+| warunek |Nie | Wartość logiczna wskazująca, czy to danych wyjściowych wartość jest zwracana. Gdy `true`, wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`, wartość wyjściowa jest pomijana dla tego wdrożenia. Jeśli nie zostanie określony, wartością domyślną jest `true`. |
+| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. |
+| wartość |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
+
+### <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartości danych wyjściowych
+
+Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego adresu IP:
+
+```json
+"outputs": {
+  "resourceID": {
     "type": "string",
-    "value": "[reference(variables('webSiteName')).defaultHostName]"
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
   }
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [wyprowadza części szablonów usługi Azure Resource Manager](resource-manager-templates-outputs.md).
+W kolejnym przykładzie pokazano sposób zwracania warunkowo, czy jest to nowy, jeden został wdrożony na podstawie Identyfikatora zasobu, opłata za publiczny adres IP:
+
+```json
+"outputs": {
+  "resourceID": {
+    "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
+    "type": "string",
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+  }
+}
+```
+
+Dla prostego przykładu warunkowych danych wyjściowych, zobacz [szablonu warunkowych danych wyjściowych](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
+
+Po wdrożeniu można pobrać wartość za pomocą skryptu. W przypadku programu PowerShell użyj polecenia:
+
+```powershell
+(Get-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
+```
+
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
+
+```azurecli-interactive
+az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
+```
+
+Możesz pobrać wartość danych wyjściowych z dołączonego szablonu, za pomocą [odwołania](resource-group-template-functions-resource.md#reference) funkcji. Aby uzyskać wartość wyjściową dołączonego szablonu, pobrać wartość właściwości przy użyciu składni, takich jak: `"[reference('deploymentName').outputs.propertyName.value]"`.
+
+Podczas pobierania właściwości danych wyjściowych z dołączonego szablonu, nazwy właściwości nie może zawierać kreskę.
+
+Poniższy przykład pokazuje, jak skonfigurować adres IP modułu równoważenia obciążenia, poprzez pobranie wartości z połączonych szablonu.
+
+```json
+"publicIPAddress": {
+    "id": "[reference('linkedTemplate').outputs.resourceID.value]"
+}
+```
+
+Nie można użyć `reference` funkcji w danych wyjściowych części [zagnieżdżonych szablonów](resource-group-linked-templates.md#link-or-nest-a-template). Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
+
+### <a name="output-example-templates"></a>Dane wyjściowe przykładowych szablonów
+
+|Szablon  |Opis  |
+|---------|---------|
+|[Skopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy zmienne złożone i wysyła te wartości. Nie należy wdrażać żadnych zasobów. |
+|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP, a następnie generuje identyfikator zasobu. |
+|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Zawiera łącza do Powyższy szablon. Używa Identyfikatora zasobu w danych wyjściowych, podczas tworzenia modułu równoważenia obciążenia. |
+
 
 <a id="comments" />
 

@@ -5,24 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352142"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217295"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
 
 Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi Azure Storage i uwzględnić je wszystkie funkcje ogólnego przeznaczenia w wersji 1 i kont usługi Blob storage. Konta ogólnego przeznaczenia v2 są zalecane w przypadku większości scenariuszy magazynu. Konta ogólnego przeznaczenia w wersji 2 dostarczanie najniższy gigabajt ceny pojemności dla usługi Azure Storage oraz konkurencyjne w branży ceny transakcji.
 
-Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego przeznaczenia w wersji 1 lub kont usługi Blob storage jest proste. Można uaktualnić za pomocą witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure. 
+Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego przeznaczenia w wersji 1 lub kont usługi Blob storage jest proste. Można uaktualnić za pomocą witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure.
 
-> [!NOTE]
-> Uaktualnianie konta magazynu do konta ogólnego przeznaczenia w wersji 2 jest bezpłatny.
-> Zmiana warstwy dostępu do magazynu może spowodować zmiany na rachunku. Aby uzyskać więcej informacji, zapoznaj się z sekcją [Cennik i rozliczenia](#pricing-and-billing).
+> [!IMPORTANT]
+> Uaktualnianie konta magazynu w wersji 1 do ogólnego przeznaczenia w wersji 2 jest trwały i nie można cofnąć.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Uaktualnianie za pomocą witryny Azure portal
 
@@ -68,8 +67,10 @@ Domyślnie nowe konto magazynu jest tworzony w ramach warstwy dostępu gorąca, 
 
 W obu przypadkach priorytetem jest oszacować koszt przechowywania, uzyskiwanie dostępu i wykonywanie operacji na danych przechowywanych na koncie magazynu ogólnego przeznaczenia w wersji 2 i porównać z obecnie ponoszonymi kosztami.
 
-
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
+
+Trwa uaktualnianie konta magazynu w wersji 1 do konta ogólnego przeznaczenia w wersji 2 jest bezpłatny. Jednak zmiana warstwy dostępu do magazynu może spowodować zmiany na rachunku. 
+
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob opartego na warstwie każdego obiektu blob. W przypadku korzystania z konta magazynu mają zastosowanie następujące zagadnienia dotyczące rozliczeń:
 
 * **Koszty magazynowania**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy dostępu do magazynu. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.

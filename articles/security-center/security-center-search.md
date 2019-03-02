@@ -1,6 +1,6 @@
 ---
 title: Wyszukiwanie w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usługa Azure Security Center używa wyszukiwania usługi Log Analytics do pobierania i analizowania danych zabezpieczeń.
+description: Dowiedz się, jak usługa Azure Security Center używa wyszukiwania dzienników usługi Azure Monitor do pobierania i analizowania danych zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: c02a9f61a4a8b88f8b6c4d861f1a6cbe904ad70d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7fae267b74677e93527b4e185c5b52d421ef149e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110544"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244948"
 ---
 # <a name="azure-security-center-search"></a>Wyszukiwanie w usłudze Azure Security Center
-Usługa Azure Security Center używa [wyszukiwania usługi Log Analytics](../log-analytics/log-analytics-log-searches.md) pobieranie i analizowanie danych zabezpieczeń. Usługa log Analytics obejmuje język zapytań, można szybko pobierać i konsolidować dane. W usłudze Security Center możesz korzystać z wyszukiwania usługi Log Analytics w celu utworzenia zapytań i analizowania zebranych danych.
+Usługa Azure Security Center używa [usługi Azure Monitor dzienniki wyszukiwania](../log-analytics/log-analytics-log-searches.md) pobieranie i analizowanie danych zabezpieczeń. Dzienniki platformy Azure Monitor obejmuje język zapytań, można szybko pobierać i konsolidować dane. W usłudze Security Center możesz korzystać z wyszukiwania dzienników usługi Azure Monitor do tworzenia zapytań i analizowania zebranych danych.
 
 Wyszukiwanie jest dostępne w warstwie bezpłatnej i warstwie standardowa usługi Security Center.  Dostępne w Twojej wyszukiwań w dziennikach danych jest zależny od poziomów warstw zastosowane do Twojego obszaru roboczego.  Odwiedź Centrum zabezpieczeń [stronę z cennikiem](../security-center/security-center-pricing.md) Aby uzyskać więcej informacji.
 
@@ -49,15 +49,15 @@ Wyszukiwanie jest dostępne w warstwie bezpłatnej i warstwie standardowa usług
 
   ![Wyniki wyszukiwania][3]
 
-Zobacz [języka zapytań usługi Log Analytics](../log-analytics/log-analytics-search-reference.md) Aby uzyskać więcej informacji na temat wykonywania zapytań dla danych w ramach wybranego obszaru roboczego.
+Zobacz [język zapytania Kusto](../log-analytics/log-analytics-search-reference.md) Aby uzyskać więcej informacji na temat wykonywania zapytań dla danych w ramach wybranego obszaru roboczego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób dostępu do wyszukiwania w usłudze Security Center. Centrum zabezpieczeń używa wyszukiwania usługi Log Analytics. Aby dowiedzieć się więcej na temat wyszukiwania usługi Log Analytics, zobacz:
+W tym artykule przedstawiono sposób dostępu do wyszukiwania w usłudze Security Center. Centrum zabezpieczeń używa usługi Azure Monitor dzienniki wyszukiwania. Aby dowiedzieć się więcej na temat wyszukiwania dzienników usługi Azure Monitor, zobacz:
 
-- [Co to jest usługa Log Analytics?](../log-analytics/log-analytics-overview.md) — Omówienie w usłudze Log Analytics
-- [Understanding log wyszukiwania w usłudze Log Analytics](../log-analytics/log-analytics-log-search-new.md) — zawiera opis używania przeszukiwania dzienników w usłudze Log Analytics i zapewnia pojęcia, które należy rozumieć, przed utworzeniem przeszukiwania dzienników
-- [Wyszukiwanie danych przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md) — samouczek na temat korzystania z wyszukiwania w Dzienniku
-- [Usługa log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-search-reference.md) — w tym artykule opisano język zapytań w usłudze Log Analytics
+- [Co to jest dzienniki usługi Azure Monitor?](../log-analytics/log-analytics-overview.md) — Rejestruje Omówienie usługi Azure Monitor
+- [Understanding log wyszukiwania w dziennikach w usłudze Azure Monitor](../log-analytics/log-analytics-log-search-new.md) — zawiera opis używania wyszukiwań w dziennikach w usłudze Azure Monitor i oferuje pojęcia, które należy rozumieć, przed utworzeniem przeszukiwania dzienników
+- [Wyszukiwanie danych przy użyciu wyszukiwań w dziennikach w usłudze Azure Monitor](../log-analytics/log-analytics-log-searches.md) — samouczek na temat korzystania z wyszukiwania w Dzienniku
+- [Dokumentacja wyszukiwania Kusto](../log-analytics/log-analytics-search-reference.md) — w tym artykule opisano język zapytań w dziennikach w usłudze Azure Monitor
 
 Aby dowiedzieć się więcej na temat usługi Security Center, zobacz:
 

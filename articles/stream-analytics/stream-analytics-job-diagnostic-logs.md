@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818935"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247158"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych
 
-Od czasu do czasu zadania usługi Azure Stream Analytics nieoczekiwanie zatrzymuje przetwarzanie. Ważne jest, aby było możliwe rozwiązanie problemu z tego rodzaju zdarzeniem. Awarii może być spowodowane przez wynik nieoczekiwane zapytanie, łączność urządzeń lub awaria usługi nieoczekiwany. Dzienniki diagnostyczne w usłudze Stream Analytics może pomóc w zidentyfikowaniu przyczyny problemów, gdy wystąpi i skrócić czas odzyskiwania.
+Od czasu do czasu zadania usługi Azure Stream Analytics nieoczekiwanie zatrzymuje przetwarzanie. Ważne jest, aby było możliwe rozwiązanie problemu z tego rodzaju zdarzeniem. Mogą one być spowodowane przez nieoczekiwany wynik zapytania, problemy z łącznością z urządzeniami lub nieoczekiwaną awarię usługi. Dzienniki diagnostyczne w usłudze Stream Analytics może pomóc w zidentyfikowaniu przyczyny problemów, gdy wystąpi i skrócić czas odzyskiwania.
 
 ## <a name="log-types"></a>Typy dziennika
 
@@ -29,7 +29,9 @@ Stream Analytics oferuje dwa typy dzienników:
 * [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (z możliwością konfiguracji), zapewniających pełniejszy wgląd do wszystkiego się dzieje z zadaniem. Dzienniki diagnostyczne rozpoczęcia po utworzeniu zadania i zakończenia, gdy zadanie zostanie usunięte. Obejmują one zdarzenia, gdy zadanie zostanie zaktualizowany, i jest uruchomiona.
 
 > [!NOTE]
-> Za pomocą usług, takich jak Azure Storage, Azure Event Hubs i Azure Log Analytics do analizowania danych niestandardowych. Opłaty są naliczane zależnie od modelu cenowego dla tych usług.
+> Można użyć usług, takich jak usługi Azure Storage, Azure Event Hubs, a usługi Azure Monitor dzienników do analizowania danych niestandardowych. Opłaty są naliczane zależnie od modelu cenowego dla tych usług.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="debugging-using-activity-logs"></a>Debugowanie przy użyciu działania logowania
 
@@ -51,11 +53,11 @@ Dzienniki aktywności są domyślnie włączone i zapewniają wysokiego poziomu 
 
 5. Można wykonać akcje naprawcze, oparty na komunikat o błędzie w formacie JSON. W tym przykładzie sprawdza wartość szerokości geograficznej od-90 stopni i 90 stopni, należy dodać do zapytania.
 
-6. Jeśli komunikat o błędzie w dziennikach aktywności nie jest pomocne w określeniu głównych przyczyn, Włączanie dzienników diagnostycznych i używaj usługi Log Analytics.
+6. Jeśli komunikat o błędzie w dziennikach aktywności nie jest pomocne w określeniu głównych przyczyn, Włączanie dzienników diagnostycznych i przy użyciu dzienników usługi Azure Monitor.
 
-## <a name="send-diagnostics-to-log-analytics"></a>Wysyłanie danych diagnostycznych do usługi Log Analytics
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Wysyłanie danych diagnostycznych dzienników usługi Azure Monitor
 
-Zdecydowanie zaleca się włączenie dzienników diagnostycznych i wysyła je do usługi Log Analytics. Dzienniki diagnostyczne są **poza** domyślnie. Aby włączyć dzienniki diagnostyczne, wykonaj następujące kroki:
+Zdecydowanie zaleca się włączenie dzienników diagnostycznych i wysyła je do dzienników usługi Azure Monitor. Dzienniki diagnostyczne są **poza** domyślnie. Aby włączyć dzienniki diagnostyczne, wykonaj następujące kroki:
 
 1.  Zaloguj się do witryny Azure portal i przejdź do zadania usługi Stream Analytics. W obszarze **monitorowanie**, wybierz opcję **dzienniki diagnostyczne**. Następnie wybierz pozycję **Włącz diagnostykę**.
 
@@ -67,7 +69,7 @@ Zdecydowanie zaleca się włączenie dzienników diagnostycznych i wysyła je do
 
 3. Po uruchomieniu zadania usługi Stream Analytics, dzienniki diagnostyczne są kierowane do obszaru roboczego usługi Log Analytics. Przejdź do obszaru roboczego usługi Log Analytics i wybierz pozycję **dzienniki** w obszarze **ogólne** sekcji.
 
-   ![Dziennik dzienniki analizy w sekcji Ogólne](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Dzienniki platformy Azure Monitor w sekcji Ogólne](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
 4. Możesz [napisać własną kwerendę](../azure-monitor/log-query/get-started-portal.md) można wyszukiwać terminy, identyfikację trendów, analizować wzorce i szczegółowymi informacjami na podstawie danych. Na przykład piszesz zapytania w celu filtrowania tylko dzienniki diagnostyczne, które mają komunikat "zadanie przesyłania strumieniowego nie powiodło się." Dzienniki diagnostyczne z usługi Azure Stream Analytics są przechowywane w **AzureDiagnostics** tabeli.
 

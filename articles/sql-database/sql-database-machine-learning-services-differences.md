@@ -1,5 +1,5 @@
 ---
-title: Podstawowe różnice dla usługi Machine Learning (przy użyciu języka R) w usłudze Azure SQL Database (wersja zapoznawcza) — omówienie
+title: Podstawowe różnice dla SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)
 description: W tym temacie opisano podstawowe różnice między usługami Azure SQL Database Machine Learning (przy użyciu języka R) i SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,22 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: c750942f8f0f2727d1d11945a84bffb434a01193
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237488"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242126"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Podstawowe różnice między usługami Machine Learning w usłudze Azure SQL Database i programu SQL Server
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Podstawowe różnice między usługami Machine Learning w usłudze Azure SQL Database (wersja zapoznawcza) i programu SQL Server
 
-Funkcje usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database są podobne do usług [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Poniżej przedstawiono niektóre podstawowe różnice między tymi.
+Funkcje usługi Azure SQL Database Machine Learning Services (przy użyciu języka R) (wersja zapoznawcza) jest podobny do [programu SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Poniżej przedstawiono niektóre podstawowe różnice.
+
+> [!IMPORTANT]
+> SQL Database usługi Azure Machine Learning jest obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="language-support"></a>Obsługa języków
 
@@ -41,7 +46,19 @@ Zarządzanie pakietami języka R i instalacji pracy różnic między bazą danyc
 
 ## <a name="resource-governance"></a>Nadzór nad zasobami
 
-Nie jest możliwe do ograniczania zasobów języka R za pośrednictwem [zarządcy zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) i pule zasobów zewnętrznych. Zasoby języka R są procent zasobów bazy danych SQL i zależne w warstwie usługi, które wybierzesz. Aby uzyskać więcej informacji, zobacz [usługi Azure SQL Database, zakup modeli](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+Nie jest możliwe do ograniczania zasobów języka R za pośrednictwem [zarządcy zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) i pule zasobów zewnętrznych.
+
+Okresie publicznej wersji zapoznawczej zasoby języka R są ustawione na maksymalnie 20% zasobów bazy danych SQL i zależą od w warstwie usługi, które wybierzesz. Aby uzyskać więcej informacji, zobacz [usługi Azure SQL Database, zakup modeli](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+
+### <a name="insufficient-memory-error"></a>Błąd braku pamięci
+
+Jeśli jest dostępny dla języka R za mało pamięci, zostanie wyświetlony komunikat o błędzie. Typowe komunikaty o błędach są:
+
+- Nie można nawiązać komunikacji ze środowiskiem uruchomieniowym na potrzeby skryptu "R" identyfikator żądania: ***. Sprawdź wymagania środowiska uruchomieniowego "R"
+- "R" Wystąpił błąd skryptu podczas wykonywania "sp_execute_external_script" HRESULT 0x80004004. ... Zewnętrzny błąd skryptu: "... Nie można przydzielić pamięci (0 Mb) w funkcji języka C "R_AllocStringBuffer" "
+- Wystąpił zewnętrzny błąd skryptu: Błąd: nie można przydzielić wektor rozmiar.
+
+Użycie zależy od ilości pamięci jest używany w Twoje skrypty języka R oraz liczby zapytania równolegle wykonywane. Jeśli zostanie wyświetlony powyższe błędy, możesz skalować bazy danych na wyższą warstwę usługi, aby rozwiązać ten problem.
 
 ## <a name="security-isolation"></a>Izolacja na potrzeby zabezpieczeń
 

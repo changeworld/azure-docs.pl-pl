@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: cf16a01ef1003b73740c05ff45f703a65aaf0acc
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 8c344999839b3dcde98536b3d8d196a434f4cde8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961193"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244914"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porównanie platformy Azure i autonomicznego usługi Service Fabric klastrów w systemie Windows Server i Linux
 Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem klastra. Klastry można skalować do tysięcy węzłów. Po dodaniu nowych węzłów do klastra usługi Service Fabric rebalances replik partycji usługi i wystąpień na większą liczbę węzłów. Ogólna zwiększa wydajność aplikacji i zmniejsza rywalizacji o dostęp do pamięci. Jeśli nie są wydajnie używane węzły w klastrze, możesz zmniejszyć liczbę węzłów w klastrze. Usługa Service Fabric ponownie rebalances replik partycji i wystąpień na obniżenie liczby węzłów, aby lepiej wykorzystać możliwości sprzętu na każdym węźle.
@@ -33,7 +33,7 @@ Na platformie Azure firma Microsoft zapewnia integrację z usługą innych funkc
 * **Usługa Azure Resource Manager:** Korzystanie z usługi Azure Resource Manager umożliwia łatwe zarządzanie wszelkie zasoby używane przez klaster jako jednostki i ułatwia śledzenie kosztów i rozliczeń.
 * **Klaster usługi Service Fabric jako zasobu platformy Azure** klastra usługi Service Fabric jest zasobem platformy Azure, dzięki czemu można modelować je tak jak inne zasoby na platformie Azure.
 * **Integracja z infrastrukturą Azure** usługi Service Fabric koordynuje z podstawową infrastrukturą platformy Azure dla systemu operacyjnego, sieci i innych uaktualnień w celu zwiększenia dostępności i niezawodności aplikacji.  
-* **Diagnostyka:** Na platformie Azure firma Microsoft zapewnia integrację z usługą Diagnostyka Azure i usługi Log Analytics.
+* **Diagnostyka:** Na platformie Azure firma Microsoft zapewnia integrację z usługą Diagnostyka Azure i dzienniki usługi Azure Monitor.
 * **Skalowanie automatyczne:** W przypadku klastrów na platformie Azure firma Microsoft zapewnia wbudowane funkcje automatycznego skalowania ze względu na zestawach skalowania maszyn wirtualnych. W lokalnych i innych środowisk w chmurze musisz utworzyć własne automatyczne skalowanie się funkcji lub skalowania ręcznie przy użyciu interfejsów API, który udostępnia usługi Service Fabric Skalowanie klastrów.
 
 ## <a name="benefits-of-standalone-clusters"></a>Zalety klastry autonomiczne

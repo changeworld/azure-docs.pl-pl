@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1d6f43b23bddf2d1ff7a2a41a11b4a2c8623d372
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c8cba4006d1112ccc1529fc1769e046fe45468a7
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768628"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214184"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -27,12 +27,7 @@ Urządzenia mogą korzystać z pomiaru telemetrii, aby wysłać dane liczbowe z 
 
 Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej jednego pomiaru danych telemetrycznych zdefiniowane. W tym przykładzie użyto urządzenia mrożone Automat, który wysyła dane telemetryczne dotyczące temperatury i wilgotności. Reguła monitoruje temperatura zgłoszona przez urządzenia i wysyła wiadomość e-mail, gdy przejdzie ponad 80 stopni.
 
-1. Przy użyciu Device Explorer przejdź do szablonu urządzenia, dla którego dodajesz reguły dla.
-
-1. W ramach wybranego szablonu wybierz polecenie istniejące urządzenie. 
-
-    >[!TIP]
-    >Jeśli szablon nie ma żadnych urządzeń, najpierw Dodaj nowe urządzenie.
+1. Za pomocą **szablonów urządzeń** stronie, przejść do szablonu urządzenia, dla którego dodajesz reguły dla.
 
 1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
 
@@ -60,11 +55,11 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 
 1. Wybierz dane telemetryczne, którą chcesz monitorować z **pomiaru** listy rozwijanej.
 
-   ![Warunek](media/howto-create-telemetry-rules-experimental/Aggregate_Condition_Filled_Out.png)
-
 1. Następnie wybierz pozycję **agregacji**, **Operator**i podaj **próg** wartość.
-    - Agregacja jest opcjonalne. Bez agregacji, wyzwolenie reguły dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład, jeśli zasada jest skonfigurowana do Wyzwalaj, gdy temperatura przekracza 80, a następnie reguła wyzwoli niemal natychmiast, gdy urządzenie zgłosi temperatury > 80.
+    - Agregacja jest opcjonalne. Bez agregacji, wyzwolenie reguły dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład jeśli reguła jest skonfigurowany do wyzwalania, gdy temperatura przekracza 80, a następnie wyzwolenie reguły niemal natychmiast gdy urządzenie zgłosi temperatury > 80.
     - Jeśli funkcja agregująca takie jak średnia, wartość minimalna, maksymalna, liczba jest wybierany następnie użytkownik musi podać **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. Na przykład jeśli ustawisz okres na "5 minut" i reguła szuka średnia temperatura powyżej 80, reguła jest wyzwalana w przypadku średnia temperatura przekracza 80 dla co najmniej 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
+
+    ![Warunek](media/howto-create-telemetry-rules-experimental/Aggregate_Condition_Filled_Out.png)
 
     >[!NOTE]
     >Można dodać więcej niż jednej miary dane telemetryczne w ramach **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.

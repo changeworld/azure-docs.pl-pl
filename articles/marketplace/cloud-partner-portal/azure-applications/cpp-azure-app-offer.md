@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 82d072cc6f86ae758bd0fdd4d02b68b1ac1de53a
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 6d86d4c03a41834322c98438958c0b9e87e6025c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097154"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213529"
 ---
 # <a name="azure-application-offer"></a>Oferty aplikacji platformy Azure
 
@@ -44,6 +44,9 @@ Istnieją dwa rodzaje aplikacji platformy Azure: zarządzane aplikacje i szablon
 
 Oprócz witryny Azure Marketplace możesz oferować aplikacje zarządzane w katalogu usług. Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych dla użytkowników w organizacji. Wykaz umożliwia spełniają standardy organizacji, jednocześnie oferując rozwiązania dla grup w organizacji. Wykaz pozwala pracownikom łatwo znajdować aplikacje zalecane i zatwierdzone przez działy IT.
 
+>[!Note]
+>Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
+
 Aby uzyskać więcej informacji o zaletach i typów zarządzanych aplikacji, zobacz [usługi Azure managed applications overview](https://docs.microsoft.com/azure/managed-applications/overview).
 
 
@@ -64,7 +67,6 @@ Dostępne są następujące ogólne kroki programu stawiane ofertom aplikacji pl
 3. [Tworzenie jednostki SKU](./cpp-skus-tab.md) -tworzenie dla jednostek SKU, skojarzone z ofertą. Unikatowe jednostki SKU jest wymagana dla każdego obrazu, w którym planujesz opublikować.
 
 4. Certyfikowanie i [opublikować ofertę](./cpp-publish-offer.md) — po ukończeniu oferta i zasoby techniczne, możesz przesłać ofertę. Ten przesłany rozpoczyna się proces publikowania. W trakcie tego procesu rozwiązanie jest testowany, zweryfikowany, certyfikowane, następnie "miejsce na żywo" w witrynie Azure Marketplace.
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

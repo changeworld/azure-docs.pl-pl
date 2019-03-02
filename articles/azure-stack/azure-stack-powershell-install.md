@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 89e75afd3b9001f7a0b8a027744ef71c8bb69690
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 1f51aee41937c531a987482a6a367970305e6594
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299568"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218026"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure Stack
 
@@ -106,8 +106,8 @@ Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na de
     ```
 
     > [!Note]  
-    > Wersja modułu usługi Azure Stack 1.7.0 jest zmianą przerywającą. Migrowanie z usługi Azure Stack 1.6.0 można znaleźć w temacie [Przewodnik po migracji](https://aka.ms/azspshmigration170).
-
+    > Wersja modułu usługi Azure Stack 1.7.0 jest wersja zawierająca przełomowe zmiany. Migrowanie z usługi Azure Stack 1.6.0 można znaleźć w temacie [Przewodnik po migracji](https://aka.ms/azspshmigration170).
+    > AzureRm wersja modułu 2.4.0 jest powiązana z istotną zmianę dla polecenia cmdlet Remove-AzureRmStorageAccount. To polecenie cmdlet oczekuje - Force prameter może być określona dla usuwanie konta magazynu bez potwierdzenia.
 - Azure Stack 1811:
 
     ```PowerShell
@@ -216,6 +216,12 @@ Instalacja obejmuje cztery kroki:
     $Path = "<Path that is used to save the packages>"
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
+    ```
+
+    > [!NOTE]  
+    >Na komputerach bez połączenia z Internetem zaleca się wykonanie następującego polecenia cmdlet, aby wyłączyć zbieranie danych telemetrii. Może wystąpić obniżenie wydajności elementu cmldets bez konieczności wyłączania zbierania danych telemetrycznych. Ta opcja ma zastosowanie tylko w przypadku maszyn bez połączenia z Internetem
+    ```PowerShell
+    Disable-AzureRmDataCollection
     ```
 
 ### <a name="enable-additional-storage-features"></a>Włącz funkcje dodatkowego miejsca do magazynowania

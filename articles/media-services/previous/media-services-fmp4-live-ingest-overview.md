@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/03/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6de31da1809173fb5fae1abcde47861ed7542f31
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984838"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240273"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Usługa Azure Media Services na żywo podzielonej zawartości w formacie MP4 pozyskiwania specyfikacji (starsza wersja)
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specyfikacja odbierania usługi Azure Media Services na żywo podzielonej zawartości w formacie MP4 
 
 Tej specyfikacji opisuje protokół i format podzielonej zawartości w formacie MP4 oparte na żywo transmisji strumieniowej przyjmowanie danych z usługi Azure Media Services. Media Services udostępnia usługi przesyłania strumieniowego na żywo, którego klienci mogą przeprowadzać przesyłanie strumieniowe wydarzeń na żywo i emisji zawartość w czasie rzeczywistym, korzystając z platformy Azure jako platformy usług w chmurze. W tym dokumencie omówiono również najlepsze wskazówki dotyczące tworzenia wysoce nadmiarowy i niezawodne na żywo pozyskiwać mechanizmami.
 

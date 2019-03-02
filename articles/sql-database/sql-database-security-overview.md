@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235992"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213929"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -84,7 +84,7 @@ Aby uzyskać omówienie uprawnień w usłudze Azure SQL Database, zobacz [identy
 
 Usługa SQL Database zabezpiecza dane klientów, zapewniając możliwości wykrywania zagrożeń i inspekcji.
 
-### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Inspekcja SQL w usłudze Log Analytics i centrów zdarzeń
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Inspekcja SQL w dzienniki usługi Azure Monitor i usługi Event Hubs
 
 Inspekcji usługi SQL Database śledzi działania bazy danych i pomaga zachować zgodność ze standardami zabezpieczeń, rejestrując zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure należącej do klienta. Inspekcja umożliwia monitorowanie trwających działań bazy danych, a także analizowanie i badanie działań historycznych w celu zidentyfikowania potencjalnych zagrożeń, podejrzanych nadużyć i naruszeń zabezpieczeń. Aby uzyskać więcej informacji, zobacz wprowadzenie do [inspekcji usługi SQL Database](sql-database-auditing.md).  
 

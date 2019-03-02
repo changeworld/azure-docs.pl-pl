@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie usługi Azure SQL Data Sync za pomocą usługi Log Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować usługi Azure SQL Data Sync za pomocą usługi Log Analytics
+title: Monitorowanie usługi Azure SQL Data Sync za pomocą dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować usługi Azure SQL Data Sync za pomocą dzienników usługi Azure Monitor
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,16 +12,18 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 75bbae000fa0fbbf783b3df43bd51ed2f8a73e96
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a1f2b0e3095718caad7c35a20bf7e91c88568364
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561420"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213470"
 ---
-# <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorowanie SQL Data Sync za pomocą usługi Log Analytics 
+# <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorowanie SQL Data Sync za pomocą dzienników usługi Azure Monitor 
 
 Aby sprawdzić dziennik aktywności SQL Data Sync i wykrywać błędy i ostrzeżenia, należy wcześniej było ręcznie sprawdzić SQL Data Sync w witrynie Azure portal lub za pomocą programu PowerShell lub interfejsu API REST. Wykonaj kroki opisane w tym artykule, aby skonfigurować niestandardowe rozwiązanie, które zwiększa synchronizacji danych środowiska do monitorowania. Można dostosować to rozwiązanie, odpowiednio do scenariusza.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md).
 
@@ -30,27 +32,27 @@ Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud 
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Pulpit nawigacyjny monitorowania dla wszystkich grup synchronizacji 
 
-Nie potrzebujesz już szukać w dziennikach każdej grupy synchronizacji pojedynczo, aby wyszukać problemy. Wszystkie grupy synchronizacji można monitorować z poziomu dowolnej subskrypcji w jednym miejscu, za pomocą niestandardowych widok usługi Log Analytics. Ten widok udostępnia informacje, które są ważne klientom SQL Data Sync.
+Nie potrzebujesz już szukać w dziennikach każdej grupy synchronizacji pojedynczo, aby wyszukać problemy. Wszystkie grupy synchronizacji można monitorować z poziomu dowolnej subskrypcji w jednym miejscu, przy użyciu widoku analizy dzienników niestandardowych. Ten widok udostępnia informacje, które są ważne klientom SQL Data Sync.
 
 ![Pulpit nawigacyjny monitorowania synchronizacji danych](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Zautomatyzowane powiadomienia E-mail
 
-Nie trzeba sprawdzić dziennik ręcznie w witrynie Azure portal lub za pomocą programu PowerShell lub interfejsu API REST. Za pomocą [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), możesz utworzyć alerty, które bardziej szczegółowo bezpośrednio na adresy e-mail osób, którym chcesz wyświetlać je po wystąpieniu błędu.
+Nie trzeba sprawdzić dziennik ręcznie w witrynie Azure portal lub za pomocą programu PowerShell lub interfejsu API REST. Za pomocą [dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), możesz utworzyć alerty, które bardziej szczegółowo bezpośrednio na adresy e-mail osób, którym chcesz wyświetlać je po wystąpieniu błędu.
 
 ![Powiadomienia e-mail synchronizacji danych](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Jak można skonfigurować te funkcje? 
 
-Implementowanie niestandardowego Log Analytics, rozwiązanie do monitorowania dla SQL Data Sync w mniej niż godzinę, wykonując następujące czynności:
+Implementowanie niestandardowych usługi Azure Monitor dzienniki rozwiązania do monitorowania dla SQL Data Sync w mniej niż godzinę, wykonując następujące czynności:
 
 Należy skonfigurować trzy składniki:
 
--   Element runbook programu PowerShell do źródła danych dziennika SQL Data Sync do usługi Log Analytics.
+-   Element runbook programu PowerShell do źródła danych dziennika SQL Data Sync dzienniki usługi Azure Monitor.
 
--   Alert dotyczący powiadomienia e-mail w ramach usługi Log Analytics.
+-   Alert usługi log analytics powiadomień e-mail.
 
--   Widoki usługi Log Analytics do monitorowania.
+-   Usługi log analytics widoku monitorowania.
 
 ### <a name="samples-to-download"></a>Pobierz przykłady
 
@@ -70,7 +72,7 @@ Upewnij się, że zostały skonfigurowane następujące elementy:
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Element Runbook programu PowerShell można pobrać dziennik synchronizacji danych SQL 
 
-Użyj elementu runbook programu PowerShell, hostowana w usłudze Azure Automation do ściągania danych dziennika SQL Data Sync i wysyłać je do usługi Log Analytics. Przykładowy skrypt jest dołączony. Jako warunek wstępny musisz mieć konto usługi Azure Automation. Następnie należy utworzyć element runbook i zaplanuj jego uruchomienie. 
+Użyj elementu runbook programu PowerShell, hostowana w usłudze Azure Automation do ściągania danych dziennika SQL Data Sync i wysyłać dzienniki usługi Azure Monitor. Przykładowy skrypt jest dołączony. Jako warunek wstępny musisz mieć konto usługi Azure Automation. Następnie należy utworzyć element runbook i zaplanuj jego uruchomienie. 
 
 ### <a name="create-a-runbook"></a>Tworzenie elementu runbook
 
@@ -100,7 +102,7 @@ Aby uzyskać więcej informacji na temat tworzenia elementu runbook, zobacz [Mó
 
     2.  Informacje o grupie synchronizacji.
 
-    3.  Rejestrowanie informacji analitycznych. Te informacje można znaleźć w witrynie Azure Portal | Ustawienia | Połączone źródła. Aby uzyskać więcej informacji na temat wysyłania danych do usługi Log Analytics, zobacz [wysyłać dane do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (wersja zapoznawcza)](../azure-monitor/platform/data-collector-api.md).
+    3.  Usługa Azure Monitor rejestruje informacje. Te informacje można znaleźć w witrynie Azure Portal | Ustawienia | Połączone źródła. Aby uzyskać więcej informacji na temat wysyłania danych do usługi Azure Monitor dzienniki Zobacz [wysyłać dane do usługi Azure Monitor dzienników za pomocą interfejsu API modułu zbierającego dane HTTP (wersja zapoznawcza)](../azure-monitor/platform/data-collector-api.md).
 
 11. Uruchom element runbook w okienku testu. Sprawdź, upewnij się, że było pomyślne.
 
@@ -120,7 +122,7 @@ Aby zaplanować uruchamianie elementu runbook:
 
 4.  Wybierz **Utwórz nowy harmonogram.**
 
-5.  Ustaw **cyklu** cyklicznie i ustaw interwał chcesz. Użyj tego samego interwału w tym miejscu, w skrypcie, a w usłudze Log Analytics.
+5.  Ustaw **cyklu** cyklicznie i ustaw interwał chcesz. W skrypcie, a w dziennikach w usłudze Azure Monitor, należy użyć tego samego interwału w tym miejscu.
 
 6.  Wybierz pozycję **Utwórz**.
 
@@ -130,7 +132,7 @@ Do monitorowania, czy automatyzacji działa zgodnie z oczekiwaniami, w obszarze 
 
 ## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Tworzenie alertu Czytelnik usługi Log Analytics dla powiadomień E-mail
 
-Aby utworzyć alert, który korzysta z usługi Log Analytics, wykonaj następujące czynności. Jako warunek wstępny musi być połączona z obszaru roboczego usługi Log Analytics w usłudze Log Analytics.
+Aby utworzyć alert, który używa dzienników usługi Azure Monitor, wykonaj następujące czynności. Jako warunek wstępny musisz mieć dzienniki usługi Azure Monitor połączone z obszarem roboczym usługi Log Analytics.
 
 1.  W witrynie Azure portal wybierz **wyszukiwanie w dzienniku**.
 
@@ -152,7 +154,7 @@ Aby utworzyć alert, który korzysta z usługi Log Analytics, wykonaj następuj�
 
 ## <a name="create-a-log-analytics-view-for-monitoring"></a>Utwórz widoki usługi Log Analytics do monitorowania
 
-Spowoduje to utworzenie wizualnego monitorowania wszystkich grup synchronizacji określony widok usługi Log Analytics. Widok zawiera kilka składników:
+Spowoduje to utworzenie widoki usługi log analytics wizualnego monitorowania wszystkich grup synchronizacji określonej. Widok zawiera kilka składników:
 
 -   Kafelek przeglądu, który pokazuje, jak wiele błędów, sukcesów i ostrzeżenia mają wszystkie grupy synchronizacji.
 
@@ -160,9 +162,9 @@ Spowoduje to utworzenie wizualnego monitorowania wszystkich grup synchronizacji 
 
 -   Kafelek dla każdej grupy synchronizacji, która pokazuje liczbę błędów, sukcesów i ostrzeżenia i ostatnie komunikaty o błędach.
 
-Aby skonfigurować widok usługi Log Analytics, wykonaj następujące czynności:
+Aby skonfigurować widoki usługi log analytics, wykonaj następujące czynności:
 
-1.  Na stronie głównej usługi Log Analytics wybierz znak plus po lewej stronie, aby otworzyć **Projektant widoków**.
+1.  Na stronie głównej log analytics wybierz znak plus po lewej stronie, aby otworzyć **Projektant widoków**.
 
 2.  Wybierz **importu** na górnym pasku Projektant widoków. Następnie wybierz przykładowy plik "DataSyncLogOMSView".
 
@@ -186,7 +188,7 @@ W większości przypadków to rozwiązanie jest bezpłatna.
 
 **Usługa Azure Automation:** Może to być koszt przy użyciu konta usługi Azure Automation, w zależności od użycia. Pierwszych 500 minut zadań miesięcznie jest bezpłatnych. W większości przypadków to rozwiązanie powinien używać mniej niż 500 minut na miesiąc. Aby uniknąć opłat, Zaplanuj uruchomienie elementu runbook w odstępie dwie lub więcej godzin. Aby uzyskać więcej informacji, zobacz [cennik usługi Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Analiza dzienników:** Może to być koszt związany z usługą Log Analytics w zależności od użycia. Warstwy bezpłatna jest zapewniany 500 MB danych pozyskiwanych danych dziennie. W większości przypadków to rozwiązanie powinien pozyskiwania mniejszy niż 500 MB dziennie. Aby zmniejszyć użycie, należy użyć tylko do awarii filtrowania uwzględnione w elementu runbook. Jeśli używasz więcej niż 500 MB dziennie uaktualnienie do warstwy płatnej w celu uniknięcia ryzyka analytics po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [cen usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Dzienniki usługi Azure Monitor:** Może to spowodować naliczenie opłaty za pomocą dzienników usługi Azure Monitor, zależnie od użycia. Warstwy bezpłatna jest zapewniany 500 MB danych pozyskiwanych danych dziennie. W większości przypadków to rozwiązanie powinien pozyskiwania mniejszy niż 500 MB dziennie. Aby zmniejszyć użycie, należy użyć tylko do awarii filtrowania uwzględnione w elementu runbook. Jeśli używasz więcej niż 500 MB dziennie uaktualnienie do warstwy płatnej w celu uniknięcia ryzyka analytics po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [dzienniki usługi Azure Monitor, cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Przykłady kodu
 

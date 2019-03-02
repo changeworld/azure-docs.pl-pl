@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b99311a7a8742cdc5995e53a6b0d3e6a2ddf1328
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7cf6b08655174ce6d9b851d635d5c8b9d9d358dd
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736876"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245543"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Konstruktor wyrażeń przepływu danych mapowania
 
@@ -70,3 +70,12 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 Za pomocą funkcji wyrażenia, które zwracają tablice umożliwia adresu określonego indeksów wewnątrz tego obiektu w tablicy zwracanej nawiasy kwadratowe []. Tablica jest oparte na nich.
 
 ![Wyrażenie Konstruktor tablicy](media/data-flow/expb2.png "wyrażenie danych w wersji zapoznawczej")
+
+## <a name="handling-names-with-special-characters"></a>Obsługa nazw ze znakami specjalnymi
+
+W przypadku nazw kolumn, które zawierają znaków specjalnych ani spacji, należy ująć nazwę w nawiasach klamrowych.
+* ```{[dbo].this_is my complex name$$$}```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+[Rozpocznij tworzenie wyrażenia przekształcania danych](data-flow-expression-functions.md)

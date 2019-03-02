@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 670ca1b8ba16122d4e969a41f8679e1a6d1b27c6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/01/2019
+ms.openlocfilehash: 011aa97d44a92feced7328b2bd014395d2c5b765
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990108"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246702"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -73,6 +73,29 @@ Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zar
 
 - Zwiększenie usługi warstwy lub obliczenia rozmiaru bazy danych lub elastycznej puli. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
 - Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+
+### <a name="transaction-log-rate-governance"></a>Zarządzanie współczynnik dziennika transakcji 
+Nadzoru współczynnik dziennik transakcji jest procesu w usłudze Azure SQL Database, używana do ograniczania szybkości pozyskiwania wysokiej dla obciążeń, takich jak zbiorczo wstawić, SELECT INTO, i tworzy indeks. Te limity są śledzone i wymuszane na poziomie sekundy, aby szybkość generowania rekordów dziennika, ograniczanie przepływności, niezależnie od tego, ile z systemem IOs mogą być wydawane względem danych plików.  Stawki Generowanie dziennika transakcji obecnie skalowane liniowo do momentu, która jest zależna od sprzętu, w dzienniku maksymalną szybkość dozwolone, jest 48 MB/s z zakupem modelu rdzeni wirtualnych. 
+
+> [!NOTE]
+> Rzeczywiste fizycznych z systemem IOs do plików dziennika transakcji nie są zarządzane lub ograniczone. 
+
+Stawki dziennika są ustawiane w taki sposób, że mogą być osiągnięte i przez dłuższy w różnych scenariuszach, podczas gdy cały system może zachować jego działanie w trybie zminimalizowanym wpływu na obciążenia użytkownika. Dziennik współczynnik Zarządzanie zapewnia, że tego dziennika transakcji, których kopie zapasowe pozostać w opublikowanej odzysku umowy SLA.  To ładu zapobiega także nadmierne zaległości w replikach pomocniczych.
+
+Jak rekordy dziennika są generowane, każda operacja jest obliczane i oceny pod kątem tego, czy powinno zostać opóźnione utrzymane, gdy wskaźnik maksymalną żądaną dziennika (MB/s na sekundę). Opóźnienia nie są dodawane po rekordów dziennika zostały przesłane do magazynu, zamiast nadzoru współczynnik dziennika jest stosowany podczas generowania współczynnik dziennika, sam.
+
+Generowanie dziennika rzeczywiste stawki nałożone w czasie wykonywania mogą również mieć wpływ mechanizmy przesyłania opinii, tymczasowo zmniejszenie szybkości dopuszczalny rozmiar dziennika, dzięki czemu można ustabilizować system. Zarządzanie przestrzenią pliku dziennika, unikając kończy do warunków miejsca w dzienniku i grupy dostępności mechanizmów replikacji może tymczasowo obniżyć limity całego systemu. 
+
+Kształtowania ruchu zarządcy współczynnik dziennika jest udostępniane za pośrednictwem następujących typów oczekiwania (w [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+
+| Poczekaj typu | Uwagi |
+| :--- | :--- |
+| LOG_RATE_GOVERNOR | Ograniczenie bazy danych |
+| POOL_LOG_RATE_GOVERNOR | Ograniczanie puli |
+| INSTANCE_LOG_RATE_GOVERNOR | Ograniczenie poziomu wystąpienia |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Kontrolka opinii, replikacja fizycznych grupy dostępności w warstwie Premium/krytyczne dla działania firmy nie nadążają |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Kontrolka opinii, ograniczania szybkości, aby uniknąć stan miejsca na dziennik braku |
+||||
 
 ## <a name="next-steps"></a>Kolejne kroki
 

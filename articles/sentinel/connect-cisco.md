@@ -4,7 +4,7 @@ description: Dowiedz się, jak zbierać dane Cisco w przez wartownika platformy 
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 62029b5c-29d3-4336-8a22-a9db8214eb7e
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: fa95c087e51a7eac94d19b509ff0907f5dba71ac
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: bfdd2d2f78635f417127632d77b24c48dd6d5b81
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992964"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244506"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Łączenie urządzenia Cisco ASA 
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: be55fcd7bb4baab218f739094b91fc734c2fb70d
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f9d431fe0ee76edf5d41c1ce7831f335128402a8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985563"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244744"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
 
@@ -36,7 +36,7 @@ Po przekazaniu plików multimediów cyfrowych wysokiej jakości do zasobów, zak
 
 Kodowanie za pomocą usługi Media Services v3, musisz utworzyć **przekształca** i **zadań**.
 
-![Przekształcenia](./media/concepts/transforms-jobs.png)
+![Przekształcenia](./media/encoding/transforms-jobs.png)
 
 - [Transformacje i zadania](transforms-jobs-concept.md)
 - [Kodowanie za pomocą usługi Media Services](encoding-concept.md)
@@ -55,7 +55,7 @@ Podczas tworzenia **lokalizatora przesyłania strumieniowego**, oprócz nazwy za
 
 Funkcję dynamicznego tworzenia pakietów jest używany, czy strumieniowo zawartość na żywo lub na żądanie. Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
 
-![Dynamiczne kodowania](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Usługa Media Services umożliwia dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128) lub / i systemów zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
 
@@ -63,11 +63,13 @@ W przypadku określenia opcji szyfrowania na strumień, należy utworzyć **zasa
 
 Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochrona zawartości: 
 
-![Ochrona zawartości](./media/concepts/content-protection.png)
+![Ochrona zawartości](./media/content-protection/content-protection.svg)
+
+&#42;* dynamicznego szyfrowania obsługuje klucza AES-128"Wyczyść", CBCS i CENC. 
 
 Można użyć usługi Media Services **manifestów dynamicznych** do przesyłania strumieniowego tylko określonej wersji lub subclips filmu wideo. W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości można dynamicznie spakowane do żadnego z następujących protokołów: HLS, MPEG DASH i Smooth.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
 
-![Filtrowania wyświetlania](./media/concepts/media-services-rendition-filter.png)
+![Filtrowania wyświetlania](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
 - [dynamicznego tworzenia pakietów](dynamic-packaging-overview.md)
 - [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)
@@ -84,7 +86,7 @@ Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klie
 
 Na poniższym obrazie przedstawiono przepływu pracy typu przekazywania:
 
-![przekazywane](./media/concepts/pass-through.png)
+![przekazywane](./media/live-streaming/pass-through.svg)
 
 - [Omówienie transmisji strumieniowej na żywo](live-streaming-overview.md)
 - [Wydarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md)

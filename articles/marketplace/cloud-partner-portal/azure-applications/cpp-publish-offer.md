@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fdca47877d4cb2192eef0a26448cd21e8afe4b77
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098225"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217941"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
@@ -52,6 +52,8 @@ Możesz monitorować proces publikowania w **stan** karcie oferty w portalu Clou
 
 Po zakończeniu procesu publikowania, oferty, zostaną wyświetlone w [kategorii aplikacji Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
 
+>[!Note]
+>Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
 
 ## <a name="errors-and-review-feedback"></a>Błędy i opinii
 

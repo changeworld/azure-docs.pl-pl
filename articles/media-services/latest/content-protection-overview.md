@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6fc7da067e5680af0d4e3f07c5e87be2e9592f3f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: d16f730d7e801342290467a796ae0155bfe89b26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986043"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241531"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -27,7 +27,7 @@ Usługa Azure Media Services umożliwia zabezpieczenie multimediów od momentu w
 
 Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochrona zawartości: 
 
-![Ochrona zawartości](./media/content-protection/content-protection.png)
+![Ochrona zawartości](./media/content-protection/content-protection.svg)
 
 &#42;*szyfrowania dynamicznego obsługuje klucza AES-128"Wyczyść", CBCS i CENC. Szczegółowe informacje można znaleźć macierz obsługi [tutaj](#streaming-protocols-and-encryption-types).*
 

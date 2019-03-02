@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ed4b581cb962c7db706a71ab995963a3c445af55
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7acf4a0f937817b131763e040d452366c520fa6f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998216"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247600"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders-legacy"></a>Przegląd i porównanie platformy Azure na żądanie koderów multimediów (starsza wersja)
+# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Przegląd i porównanie platformy Azure na żądanie koderów multimediów 
 
 ## <a name="encoding-overview"></a>Omówienie kodowania
 Usługa Azure Media Services udostępnia wiele opcji kodowania multimediów w chmurze.

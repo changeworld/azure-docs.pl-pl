@@ -4,7 +4,7 @@ description: Użyj tego samouczka, dowiesz się, jak w celu zbadania sprawy z pl
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 424f7eeacf5ca3317462fa63cf684c0d5d1bac9e
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 8d44c1448296df16e9dd58a486d4cfb21bb053de
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993251"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244202"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Samouczek: Badanie przypadków z platformy Azure przez wartownika w wersji zapoznawczej
 

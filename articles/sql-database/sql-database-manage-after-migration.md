@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417639"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216938"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
@@ -261,9 +261,9 @@ Można tworzyć zapytania [sys.dm_db_resource_stats](/sql/relational-databases/s
 
 ![Szczegółowe informacje o wydajności zapytań](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-log-analytics"></a>Usługi Azure SQL Analytics (wersja zapoznawcza) w usłudze Log Analytics
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Dzienniki usługi Azure SQL Analytics (wersja zapoznawcza) w usłudze Azure Monitor
 
-[Usługa Azure Log Analytics](../azure-monitor/insights/azure-sql.md) umożliwia gromadzenie i wizualizowanie kluczowe metryki wydajności usługi Azure SQL Azure obsługuje maksymalnie 150 000 baz danych SQL i 5000 pule elastyczne SQL danego obszaru roboczego. Służy do monitorowania i otrzymywać powiadomienia. Można monitorować bazy danych SQL i metryki elastycznej puli w wielu subskrypcji platformy Azure i pule elastyczne i może służyć do identyfikowania problemów w każdej warstwie stosu aplikacji.
+[Dzienniki platformy Azure Monitor](../azure-monitor/insights/azure-sql.md) umożliwia gromadzenie i wizualizowanie kluczowe metryki wydajności usługi Azure SQL Azure obsługuje maksymalnie 150 000 baz danych SQL i 5000 pule elastyczne SQL danego obszaru roboczego. Służy do monitorowania i otrzymywać powiadomienia. Można monitorować bazy danych SQL i metryki elastycznej puli w wielu subskrypcji platformy Azure i pule elastyczne i może służyć do identyfikowania problemów w każdej warstwie stosu aplikacji.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Jestem zwracają uwagę problemy z wydajnością: Czym różni się Moje metodologię rozwiązywania problemów z bazy danych SQL z programu SQL Server
 

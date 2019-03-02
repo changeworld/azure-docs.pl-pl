@@ -1,6 +1,6 @@
 ---
 title: Utworzyć grupę dynamiczną i sprawdzić stan — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak utworzyć reguły członkostwa w grupie w witrynie Azure portal, sprawdź stan.
+description: Jak utworzyć reguły członkostwa grupy w witrynie Azure portal, sprawdź stan.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,44 +9,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5651d5e37613abcef8c8f5448af38637f91ebe30
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: df5668c3fa43130ee1a0271d6040b1989ee8ab79
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193632"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242636"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utworzyć grupę dynamiczną i sprawdzić stan
 
-W usłudze Azure Active Directory (Azure AD) aby utworzyć grupy zastosowania reguły w celu ustalenia członkostwa na podstawie właściwości użytkownika lub urządzenia. Podczas atrybuty zmiany urządzenia lub użytkownika usługi Azure AD wszystkich grup dynamicznych reguł w dzierżawie usługi Azure AD i wykonuje dowolną dodaje lub usuwa. Jeśli użytkownik lub urządzenie spełnia wymagania zasad grupy, są dodawane jako członek, a jeśli ich nie spełniają już reguły, są usuwane.
+W usłudze Azure Active Directory (Azure AD) można użyć reguły do określenia członkostwa grup na podstawie właściwości użytkownika lub urządzenia. Ten artykuł zawiera informacje dotyczące konfiguracji reguły dla grupy dynamicznej w witrynie Azure portal.
+Dynamiczne członkostwo jest obsługiwane dla grup zabezpieczeń lub grup usługi Office 365. Po zastosowaniu zasad członkostwa w grupie atrybutów użytkowników i urządzeń są oceniane pod kątem dopasowań za pomocą reguł członkostwa. Gdy atrybut dla użytkowników lub urządzeń, wszystkie reguły dynamicznego w grupach w organizacji są przetwarzane dla zmiany członkostwa. Użytkownicy i urządzenia są dodawane lub usuwane, jeśli spełniają warunki dla grupy.
 
-Ten artykuł szczegółowo opisuje sposób konfigurowania reguły w witrynie Azure portal, dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub grupach usługi Office 365. Przykłady składni reguł i pełną listę obsługiwanych właściwości, operatory i wartości dla reguły członkostwa, zobacz [reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory](groups-dynamic-membership.md).
+Przykłady składni, obsługiwanych właściwości, operatory i wartości dla reguły członkostwa, zobacz [reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory](groups-dynamic-membership.md).
 
 ## <a name="to-create-a-group-membership-rule"></a>Aby utworzyć regułę członkostwa grupy
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta należącego do roli administratora globalnego, administratora usługi Intune lub Administrator kont użytkowników w dzierżawie.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora globalnego, administratora usługi Intune lub roli użytkownika administrator dzierżawy.
 2. Wybierz **grup**.
 3. Wybierz **wszystkich grup**i wybierz **nową grupę**.
 
    ![Dodaj nową grupę](./media/groups-create-rule/new-group-creation.png)
 
-4. Na **grupy** bloku, wprowadź nazwę i opis dla nowej grupy. Wybierz **Typ członkostwa** albo **użytkownik dynamiczny** lub **urządzenie dynamiczne**, w zależności od tego, czy chcesz utworzyć regułę dla użytkowników lub urządzeń, a następnie wybierz **Dodaj zapytanie dynamiczne**. Można użyć konstruktora reguły do tworzenia prostej reguły lub samodzielnie zapisujesz reguły członkostwa. Ten artykuł zawiera więcej informacji na temat dostępnych atrybutów użytkowników i urządzeń, a także przykłady reguł członkostwa.
+4. Na **grupy** wpisz nazwę i opis dla nowej grupy. Wybierz **Typ członkostwa** dla użytkowników lub urządzeń i następnie wybierz pozycję **Dodaj zapytanie dynamiczne**. Można używać konstruktora reguły do tworzenia Prosta reguła lub [samodzielnie zapisujesz zastosowania reguły członkowskiej](groups-dynamic-membership.md).
 
    ![Dodaj dynamiczną regułę członkostwa](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Aby wyświetlić pełną listę właściwości niestandardowego rozszerzenia, które można dodać do zapytania o członkostwo, wybierz **pobieranie właściwości niestandardowego rozszerzenia**wprowadź identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. Pełne ISTA właściwości będzie teraz dostępne do wybrania.
+5. Aby wyświetlić dostępne dla zapytania o członkostwo właściwości niestandardowego rozszerzenia
+  1. Wybierz **pobieranie właściwości niestandardowego rozszerzenia**
+  2. Wprowadź identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. 
 6. Po utworzeniu reguły, wybierz **Dodaj zapytanie** w dolnej części bloku.
 7. Wybierz **Utwórz** na **grupy** bloku, aby utworzyć grupę.
 
-> [!TIP]
-> Tworzenie grupy kończy się niepowodzeniem, jeśli reguła wprowadzony został niepoprawnie sformułowany lub nieprawidłowy. W prawym górnym rogu portalu, zawierające wyjaśnienie, dlaczego nie można przetworzyć reguły zostanie wyświetlone powiadomienie. Przeczytaj uważnie, aby zrozumieć, jak musisz dostosować reguły, aby stał się nieprawidłowy.
+Jeśli wprowadzony reguły jest nieprawidłowy, wyjaśnienie, dlaczego nie można przetworzyć reguły jest wyświetlany w prawym górnym rogu portalu. Przeczytaj dokładnie, aby dowiedzieć się, jak rozwiązać reguły.
 
-## <a name="check-processing-status-for-a-membership-rule"></a>Sprawdź stan przetwarzania reguły członkostwa
+## <a name="turn-on-or-off-welcome-email"></a>Włączanie lub wyłączanie powitalnej wiadomości e-mail
+
+Podczas tworzenia nowej grupy usługi Office 365 powitalnej powiadomienie jest wysyłane użytkowników, którzy są dodawane do grupy. Później Jeśli zmienisz jakiekolwiek atrybuty użytkownika lub urządzenia, wszystkie reguły dynamicznego w grupach w organizacji są przetwarzane dla zmiany członkostwa. Użytkownicy, którzy są dodawani następnie otrzymają powiadomienie powitalnej. Możesz wyłączyć to zachowanie w [PowerShell programu Exchange](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+
+## <a name="check-processing-status-for-a-rule"></a>Sprawdź stan przetwarzania reguły
 
 Możesz zobaczyć członkostwa przetwarzanie stanu i Data ostatniej aktualizacji **Przegląd** stronie dla grupy.
   
@@ -57,14 +63,14 @@ Następujące komunikaty o stanie mogą być wyświetlane dla **przetwarzania cz
 * **Ocena**:  Zmiana grupy zostało odebrane i aktualizacji są oceniane.
 * **Przetwarzanie**: Aktualizacje są przetwarzane.
 * **Ukończono aktualizację**: Przetwarzanie zostało ukończone, a wszystkie odpowiednie aktualizacje zostały wprowadzone.
-* **Błąd przetwarzania**: Napotkano błąd podczas obliczania reguły członkostwa i nie można ukończyć przetwarzanie.
+* **Błąd przetwarzania**:  Nie można ukończyć przetwarzanie ze względu na błąd podczas oceny reguły członkostwa.
 * **Aktualizowanie wstrzymane**: Wstrzymano aktualizacje reguły członkostwa dynamicznego przez administratora. MembershipRuleProcessingState jest ustawiona na "Wstrzymana".
 
 Następujące komunikaty o stanie mogą być wyświetlane dla **członkostwa Ostatnia aktualizacja:** stanu:
 
 * &lt;**Data i godzina**&gt;: Czas ostatniej aktualizacji członkostwa.
 * **Trwającą**: Aktualizacje są obecnie w toku.
-* **Nieznany**: Nie można pobrać czas ostatniej aktualizacji. Może to być spowodowane nowo tworzonej grupy.
+* **Nieznany**: Nie można pobrać czas ostatniej aktualizacji. Grupa może być nowe.
 
 Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określonej grupy, alert jest wyświetlany w górnej części **strony Przegląd** dla grupy. Jeśli nie oczekujące członkostwo dynamiczne aktualizacje mogą być przetwarzane dla wszystkich grup w ramach dzierżawy więcej następnie 24 godziny, alert jest wyświetlany w górnej części **wszystkich grup**.
 

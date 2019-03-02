@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 66fc5c92410118f4e0042738d2107b272d68f9bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456507"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240341"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,13 @@ W tym artykule przedstawiono podstawowe pojęcia, z których zabezpieczania apli
 
 ## <a name="master-security"></a>Zabezpieczenia głównego
 
-W usłudze AKS składniki rozwiązania Kubernetes są częścią usług zarządzanych przez firmę Microsoft. Każdy klaster AKS jest własne wzorzec Kubernetes gośćmi jednego, przeznaczonego do zapewnienia serwera interfejsu API, harmonogram itp. Ten wzorzec jest zarządzana i obsługiwana przez firmę Microsoft
+W usłudze AKS składniki rozwiązania Kubernetes są częścią usług zarządzanych przez firmę Microsoft. Każdy klaster AKS jest własne wzorzec Kubernetes gośćmi jednego, przeznaczonego do zapewnienia serwera interfejsu API, harmonogram itp. Ten wzorzec jest zarządzana i obsługiwana przez firmę Microsoft.
 
 Domyślnie serwer interfejsu API rozwiązania Kubernetes używa publicznego adresu IP i za pomocą w pełni kwalifikowaną nazwę (FQDN). Można kontrolować dostęp do serwera interfejsu API przy użyciu kontroli dostępu opartej na rolach platformy Kubernetes i usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [integracji z usługą Azure AD za pomocą usługi AKS][aks-aad].
 
 ## <a name="node-security"></a>Węzeł zabezpieczeń
 
-Węzłów AKS są maszyn wirtualnych platformy Azure, które umożliwia zarządzanie i obsługa. Na węzłach jest uruchamiana zoptymalizowane dystrybucji systemu Ubuntu Linux przy użyciu rozwiązania Docker kontener środowiska uruchomieniowego. Gdy klaster AKS zostanie utworzony lub skalowany w górę, węzły zostają automatycznie wdrożone najnowsze aktualizacje zabezpieczeń systemu operacyjnego i konfiguracjach.
+Węzłów AKS są maszyn wirtualnych platformy Azure, które umożliwia zarządzanie i obsługa. Na węzłach jest uruchamiana zoptymalizowane dystrybucji Ubuntu Linux przy użyciu kontener środowiska uruchomieniowego Moby. Gdy klaster AKS zostanie utworzony lub skalowany w górę, węzły zostają automatycznie wdrożone najnowsze aktualizacje zabezpieczeń systemu operacyjnego i konfiguracjach.
 
 Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego węzłów w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Ręcznie uruchom ponownie węzły lub typowym podejściem jest użycie [Kured][kured], demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet] [ aks-daemonsets] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
 
@@ -65,7 +65,7 @@ Dla łączności i zabezpieczeń w sieciach lokalnych można wdrożyć klaster A
 
 ### <a name="azure-network-security-groups"></a>Grupy zabezpieczeń sieci platformy Azure
 
-Aby filtrować przepływu ruchu w sieciach wirtualnych, platforma Azure stosuje reguły sieciowej grupy zabezpieczeń. Te reguły określają źródło i docelowe zakresy adresów IP, portów i protokołów, które są dozwolone lub odmowa dostępu do zasobów. Aby zezwolić na ruch protokołu TLS do serwera interfejsu API platformy Kubernetes oraz dostęp SSH do węzłów tworzone są reguły domyślnej. Podczas tworzenia usługi przy użyciu usługi równoważenia obciążenia, mapowania portów lub ruch przychodzący trasy, AKS automatycznie modyfikuje sieciowej grupy zabezpieczeń dla ruchu odpowiedni przepływ.
+Aby filtrować przepływu ruchu w sieciach wirtualnych, platforma Azure stosuje reguły sieciowej grupy zabezpieczeń. Te reguły określają źródło i docelowe zakresy adresów IP, portów i protokołów, które są dozwolone lub odmowa dostępu do zasobów. Aby zezwolić na ruch protokołu TLS do serwera interfejsu API rozwiązania Kubernetes tworzone są reguły domyślne. Podczas tworzenia usługi przy użyciu usługi równoważenia obciążenia, mapowania portów lub ruch przychodzący trasy, AKS automatycznie modyfikuje sieciowej grupy zabezpieczeń dla ruchu odpowiedni przepływ.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes Secrets
 
@@ -76,6 +76,8 @@ Korzystanie z kluczy tajnych zmniejsza poufne informacje, które jest zdefiniowa
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby rozpocząć pracę z zabezpieczaniem klastry usługi AKS, zobacz [Uaktualnianie klastra usługi AKS][aks-upgrade-cluster].
+
+Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze AKS][operator-best-practices-cluster-security].
 
 Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zostały przedstawione z usługi AKS zobacz następujące artykuły:
 
@@ -99,3 +101,4 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md

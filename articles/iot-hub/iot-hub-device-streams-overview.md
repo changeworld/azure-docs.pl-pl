@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 7b436acb937216ad02289282f4a7ac5f88df2eea
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770792"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245153"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Strumienie urządzenia Centrum IoT (wersja zapoznawcza)
 
@@ -117,16 +117,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Rozwiązywanie problemów za pomocą urządzenia strumienie dzienników aktywności
 
-Można skonfigurować usługi Azure Log Analytics, można zebrać dziennika aktywności strumieni urządzenia w usłudze IoT Hub. Może to być bardzo przydatne w Rozwiązywanie problemów ze scenariuszami.
+Dzienniki usługi Azure Monitor można skonfigurować do zbierania dziennika aktywności strumieni urządzenia w usłudze IoT Hub. Może to być bardzo przydatne w Rozwiązywanie problemów ze scenariuszami.
 
-Wykonaj poniższe kroki, aby skonfigurować usługi Azure Log Analytics dla działań strumień urządzenie usługi IoT Hub:
+Wykonaj poniższe kroki, aby skonfigurować dzienniki usługi Azure Monitor działań strumień urządzenie usługi IoT Hub:
 
 1. Przejdź do *ustawień diagnostycznych* kartę w usłudze IoT Hub, a następnie kliknij *Włącz diagnostykę* łącza.
 
   ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "włączenie dzienników disgnostics")
 
 
-2. Podaj nazwę dla ustawienia diagnostyki, a następnie wybierz *wysyłanie do usługi Log Analytics* opcji. Przejdziesz do istniejącego zasobu usługi Log Analytics wybierz lub Utwórz nową. Dodatkowo sprawdź *DeviceStreams* z listy.
+2. Podaj nazwę dla ustawienia diagnostyki, a następnie wybierz *wysyłanie do usługi Log Analytics* opcji. Przejdziesz do istniejącego zasobu obszaru roboczego usługi Log Analytics wybierz lub Utwórz nową. Dodatkowo sprawdź *DeviceStreams* z listy.
 
     ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "Włącz urządzenie strumienie dzienników")
 

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/25/2019
+ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1b045ecf10399ca2297e4d9d010d5c973c40f4e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 305a5c5d4f82c732dd796f5c5140c0da04fe7b13
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193283"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245220"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -73,9 +73,13 @@ Aby rozpocząć pracę, przeczytaj [Omówienie usługi Azure Disk Encryption](az
 
 Tak, można zaszyfrować woluminy rozruchowe i dane dla Windows i maszyn wirtualnych IaaS z systemem Linux. W przypadku maszyn wirtualnych Windows nie można zaszyfrować dane bez pierwszy szyfrowania woluminu systemu operacyjnego. W przypadku maszyn wirtualnych systemu Linux jest umożliwia szyfrowanie ilości danych bez konieczności najpierw szyfrowania woluminu systemu operacyjnego. Po wolumin systemu operacyjnego został zaszyfrowany dla systemu Linux, wyłączenie szyfrowania na woluminie systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux nie jest obsługiwany.
 
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Czy można zaszyfrować odinstalowane woluminu za pomocą usługi Azure Disk Encryption?
+
+Nie, usługa Azure Disk Encryption szyfruje zainstalowanych woluminów.
+
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak obrócić klucze tajne i klucze szyfrowania
 
-Aby obrócić wpisów tajnych, po prostu Wywołaj tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku. Aby wymienić główny klucz szyfrowania klucza, należy wywołać tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku określenie nowego klucza szyfrowania. 
+Aby obrócić wpisów tajnych, po prostu Wywołaj tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku, określając inną usługę Key Vault. Aby wymienić główny klucz szyfrowania klucza, należy wywołać tego samego polecenia, które były pierwotnie włączyć szyfrowanie dysku określenie nowego klucza szyfrowania. 
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak dodać lub usunąć klucz szyfrowania klucza, jeśli nie został pierwotnie korzystania z jednego?
 
@@ -145,6 +149,10 @@ W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256Wit
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Czy w przypadku użycia EncryptFormatAll i określić wszystkie typy woluminu, jej spowoduje usunięcie danych na dyskach danych, które już zaszyfrowane?
 Nie, dane nie będą usuwane z dysków danych, które już są szyfrowane przy użyciu usługi Azure Disk Encryption. Podobnie jak EncryptFormatAll nie został ponownie zaszyfrować dysk systemu operacyjnego, go nie będzie ponownie zaszyfrować dysk już zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
+
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Czy mogę utworzyć kopię zapasową i przywrócić zaszyfrowanej maszyny Wirtualnej? 
+
+Usługa Azure Backup udostępnia mechanizm do tworzenia kopii zapasowych i przywracanie zaszyfrowanych maszyn wirtualnych w ramach tej samej subskrypcji i regionu.  Aby uzyskać instrukcje, zobacz [kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).  Przywracanie zaszyfrowanych maszyn wirtualnych do innego regionu nie jest obecnie obsługiwane.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Gdzie można zadawać pytania lub opinię?
 

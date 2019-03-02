@@ -9,25 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 02/27/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ccf298c99851dc2418da894431c5c86adafe59b3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959446"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243623"
 ---
 # <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
-Usługa Azure Media Services umożliwia kodowanie do plików MP4 wysokiej jakości multimedialnych plików, więc zawartość może być odtwarzany na podstawie różnych przeglądarek i urządzeń. Pomyślne zadania kodowania usługi Media Services tworzy dane wyjściowe zasobów ze zbiorem każdego pliku MP4 z adaptacyjną szybkością transmisji bitów i plik manifestu (serwera i klienta). W tym momencie możesz korzystać z zalet [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md).
+Usługa Azure Media Services umożliwia kodowanie do plików MP4 wysokiej jakości multimedialnych plików, więc zawartość może być odtwarzany na podstawie różnych przeglądarek i urządzeń. Pomyślne zadania kodowania usługi Media Services tworzy dane wyjściowe zasobów ze zbiorem każdego pliku MP4 z adaptacyjną szybkością transmisji bitów i przesyłanie strumieniowe plików konfiguracyjnych. Pliki konfiguracji zawierają ISM, .ismc, .mpi i innych plików, których nie należy modyfikować. Po zakończeniu zadania kodowania, możesz korzystać z zalet [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i rozpocząć przesyłanie strumieniowe.
 
-Aby wprowadzić filmów wideo w danych wyjściowych dostępne dla klientów do odtwarzania elementu zawartości, należy utworzyć **lokalizatora przesyłania strumieniowego** i późniejszego kompilowania adresów URL przesyłania strumieniowego. Następnie na podstawie określonego formatu w manifeście, klientom strumień jest dostarczany za protokół, które wybrali.
+Aby wprowadzić filmów wideo w danych wyjściowych dostępne dla klientów do odtwarzania elementu zawartości, należy utworzyć **lokalizatora przesyłania strumieniowego** i tworzenie adresów URL przesyłania strumieniowego. Następnie na podstawie określonego formatu w manifeście, klientom strumień jest dostarczany za protokół, które wybrali.
 
 Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
 
-![Dynamiczne kodowania](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
 

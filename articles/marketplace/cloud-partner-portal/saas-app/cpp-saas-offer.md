@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74f6d5989d86cc92371b060caf164f895b75511f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263632"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213555"
 ---
 # <a name="azure-saas-application-offer"></a>Oferta Azure aplikacji SaaS
 
@@ -36,6 +36,9 @@ Oto niektóre korzyści zapewnianych przez wyświetlanie listy aplikacji w porta
 - Rozszerzanie swojego zespołu: dotrzeć do użytkowników biznesowych na całym świecie i Uzyskaj wgląd w kanał sprzedaży, który angażuje użytkowników końcowych, ułatwia pozyskiwanie potencjalnych klientów i umożliwia inicjowanie rozmów z nowych klientów różnych branż.
 
 - Wprowadzenie wskazujące: Firma Microsoft będzie udostępniać szczegółowych informacji o jak aplikacja działa w usłudze AppSource, co działa dobrze i dalsze ulepszenie własnych procedur sprzedaży.
+ 
+>[!Note]
+>Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów.
 
 ## <a name="publishing-process-workflow"></a>Publikowanie procesów przepływu pracy 
 

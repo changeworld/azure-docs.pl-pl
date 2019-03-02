@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7e196a912db723d5d118b0aadc98f73f1c7271e0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556224"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243758"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -45,7 +45,10 @@ Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Kompute
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [ARM32 systemu Linux](./how-to-install-iot-edge-linux-arm.md)
 
-Można użyć dowolnej maszyny do generowania certyfikatów, a następnie skopiuj je do urządzenia usługi IoT Edge. 
+Można użyć dowolnej maszyny do generowania certyfikatów, a następnie skopiuj je do urządzenia usługi IoT Edge.
+
+>[!NOTE]
+>"Nazwa bramy" służąca do tworzenia certyfikatów w tej instrukcji musi mieć taką samą nazwę jak używana jako nazwa hosta w pliku config.yaml usługi IoT Edge i GatewayHostName w parametrach połączenia podrzędnego urządzenia. "Nazwa bramy" musi być rozpoznawana jako adres IP, albo za pomocą DNS lub wpisu w pliku hostów. Komunikacja oparta na protokół używany (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musi być możliwe między podrzędnymi urządzeniami i transparant usługi IoT Edge. Jeśli Zapora jest między, odpowiedni port musi być otwarty.
 
 ## <a name="generate-certificates-with-windows"></a>Generowanie certyfikatów z Windows
 

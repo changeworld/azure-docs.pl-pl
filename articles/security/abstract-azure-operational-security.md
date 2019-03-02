@@ -6,17 +6,17 @@ ms.author: TomSh
 ms.date: 09/05/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: ec0040887d22ee4089de0b9cf107e9910404e267
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 834210e3416d30c4001214c0d3108709e910513e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842937"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242874"
 ---
 # <a name="azure-operational-security"></a>Bezpieczeństwo działania platformy Azure
 ## <a name="abstract"></a>Abstrakcyjny
 Microsoft Azure operational security odnosi się do usługi, formanty i funkcje dostępne dla użytkowników na potrzeby ochrony danych, aplikacji i innych zasobów na platformie Azure. Bezpieczeństwa platformy Azure działa w oparciu o strukturę, która zawiera wiedzy uzyskanej dzięki różnych funkcji, które są unikatowe w firmie Microsoft, w tym Microsoft cykl projektowania zabezpieczeń (SDL), program Microsoft Security Response Center oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa. Ten dokument przedstawia można podejście do kwestii bezpieczeństwa działania za pomocą platformy Azure. Obejmuje kilka usług platformy Azure, w tym:
-* Azure Log Analytics
+* Dzienniki usługi Azure Monitor
 * Azure Backup
 * Azure Security Center
 * Azure Monitor

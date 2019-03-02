@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: aschhab
-ms.openlocfilehash: 4726143559a91c1b8b911d8538efa32c6bf19c2e
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 476c51d1835a1be0178faf28e6dd8a3c95371929
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587586"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240970"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka Python
 
@@ -39,7 +39,7 @@ W tym artykule opisano sposób używania tematów i subskrypcji usługi Service 
 **ServiceBusService** obiekt umożliwia pracę z obsługą tematów. Dodaj następujący kod u góry każdego pliku Python, w której chcesz uzyskać programowy dostęp do usługi Service Bus:
 
 ```python
-from azure.servicebus import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
+from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
 Poniższy kod tworzy **ServiceBusService** obiektu. Zastąp `mynamespace`, `sharedaccesskeyname`, i `sharedaccesskey` przy użyciu rzeczywistego przestrzeni nazw, nazwy i klucza wartość klucza sygnatury dostępu współdzielonego (SAS).

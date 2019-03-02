@@ -2,7 +2,7 @@
 title: Zarządzanie zasobami i powiązanymi jednostkami za pomocą usługi Media Services .NET SDK
 description: Dowiedz się, jak zarządzać zasobami i powiązanymi jednostkami za pomocą zestawu Media Services SDK dla platformy .NET.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f9f4dacc8aac2fc47002b65798c8367e354bb69c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979976"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240545"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Zarządzanie zasobami i powiązanymi jednostkami za pomocą usługi Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "55979976"
 > 
 > 
 
-W tym temacie pokazano, jak zarządzać jednostkami usługi Azure Media Services przy użyciu platformy .NET (starsza wersja)
+W tym temacie pokazano, jak zarządzać jednostkami usługi Azure Media Services przy użyciu platformy .NET.
 
 >[!NOTE]
 > Począwszy od 1 kwietnia 2017 roku, wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni, będą automatycznie usuwane wraz ze skojarzonymi rekordami zadań podrzędnych nawet wtedy, gdy całkowita liczba rekordów jest mniejsza niż maksymalny limit przydziału. Na przykład 1 kwietnia 2017 r. wszystkie rekordy zadań na Twoim koncie, które są starsze niż 31 grudnia 2016 r. zostaną automatycznie usunięte. Jeśli chcesz zarchiwizować informacje zadania lub zadania podrzędnego, można użyć kodu opisanego w tym temacie.

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c4be56b3ee32a5177c66353ba45c6b3647c732f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894066"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240086"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
@@ -42,7 +42,7 @@ A [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) mo
 
 ### <a name="pass-through"></a>Przekazywanie
 
-![przekazywane](./media/live-streaming/pass-through.png)
+![przekazywane](./media/live-streaming/pass-through.svg)
 
 Przy użyciu przekazywanego **wydarzenie na żywo**, opierają się na swoje lokalny koder na żywo do generowania wielu strumienia wideo o szybkości transmisji bitów i wysyłania, że jako udział Kanał informacyjny do wydarzenie na żywo (przy użyciu protokołu RTMP lub pofragmentowany plik MP4). Wydarzenie na żywo następnie niesie ze sobą za pośrednictwem przychodzących strumieni wideo bez dalszego przetwarzania. Takie przekazywanego element LiveEvent jest zoptymalizowany do wydarzeń na żywo długotrwałych lub 24 x 365 liniowej transmisja strumieniowa na żywo. Podczas tworzenia tego typu zdarzenia na żywo, należy określić Brak (LiveEventEncodingType.None).
 
@@ -56,11 +56,16 @@ Zobacz przykładowy kod platformy .NET w [MediaV3LiveApp](https://github.com/Azu
 
 ### <a name="live-encoding"></a>Kodowanie na żywo  
 
-![funkcji Live encoding](./media/live-streaming/live-encoding.png)
+![funkcji Live encoding](./media/live-streaming/live-encoding.svg)
 
 Korzystając z kodowania na żywo za pomocą usługi Media Services, należy skonfigurować usługi na lokalny koder na żywo, aby wysłać pojedyncza szybkość transmisji bitów wideo jako udział Kanał informacyjny do wydarzenie na żywo (przy użyciu protokołu RTMP lub podzielonej zawartości w formacie Mp4). Wydarzenie na żywo koduje tej przychodzącej pojedyncza szybkość transmisji bitów do usługi stream [wielu strumienia wideo o szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia dostarczania odtworzyć urządzeń za pośrednictwem protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu zdarzenia na żywo, określ typ kodowania jako **standardowa** (LiveEventEncodingType.Standard).
 
 Możesz wysłać wkład kanału informacyjnego w maksymalnie 1080 p rozwiązania z prędkością 30 klatek, / sekundę, przy użyciu kodera-dekodera wideo koder H.264/AVC i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio. Zobacz [wydarzenie na żywo typy porównania](live-event-types-comparison.md) artykuł, aby uzyskać więcej informacji.
+
+Podczas korzystania z kodowania na żywo (wydarzenie na żywo jest równa **standardowa**), ustawienie wstępne kodowania definiuje, jak przychodzący strumień jest zakodowany w wielu różnych lub warstwy. Aby uzyskać informacje, zobacz [ustawienia systemu](live-event-types-comparison.md#system-presets).
+
+> [!NOTE]
+> Obecnie jedyną dozwoloną wartość wstępnie zdefiniowane dla standardowego typu wydarzenie na żywo jest *Default720p*. Jeśli musisz użyć niestandardowego ustawienia wstępnego kodowania na żywo, skontaktuj się z amshelp@microsoft.com. Należy określić odpowiednią tabelę, rozdzielczości i szybkości transmisji. Sprawdź, czy jest tylko jednej warstwy na 720 pikseli i maksymalnie 6 warstwy.
 
 ## <a name="live-event-creation-options"></a>Opcje tworzenia zdarzenia na żywo
 

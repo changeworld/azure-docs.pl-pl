@@ -14,23 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 25452d3d65518511c47087d1cb712d0a512416fc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297671"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245560"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Zdarzenia klastra usługi Service Fabric systemu Linux usługi SYSLOG
 
 Usługa Service Fabric udostępnia zestaw zdarzeń platformy, które informują Cię o ważnych działań w klastrze. Pełną listę zdarzeń, które są dostępne, jest dostępna [tutaj](service-fabric-diagnostics-event-generation-operational.md). Istnieją różne sposoby, przez który te zdarzenia mogą być używane. W tym artykule użyjemy omówiono sposób konfigurowania usługi Service Fabric, aby zapisać te zdarzenia dziennika systemowego.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="introduction"></a>Wprowadzenie
 
 W wersji 6,4 SyslogConsumer został wprowadzony do wysyłania zdarzenia platformy usługi Service Fabric z dziennikiem systemowym dla klastrów systemu Linux. Po włączeniu zdarzenia będą automatycznie przekazywane z dziennikiem systemowym, który może być zbierane i wysyłany przez agenta usługi Log Analytics.
 
 Każde zdarzenie dziennika systemowego zawiera składniki 4
-* Funkcji
+* Funkcja
 * Tożsamość
 * Komunikat
 * Ważność
@@ -93,8 +95,8 @@ Oto zmiany w celu wyróżnienia
     }
 ```
 
-## <a name="log-analytics-integration"></a>Integracja analizy dzienników
-Może odczytywać te zdarzenia dziennika systemowego w narzędziu do monitorowania, takich jak usługi Log Analytics. Można utworzyć obszar roboczy usługi Log Analytics przy użyciu portalu Azure Marketplace, korzystając z tych [instrukcji]. (.. / azure-monitor/learn/quick-create-workspace.md) należy również dodać agenta usługi Log Analytics do klastra, aby zbierać i wysyłać te dane do obszaru roboczego. Jest to ten sam agent używany do zbierania liczników wydajności. 
+## <a name="azure-monitor-logs-integration"></a>Usługa Azure Monitor rejestruje integracji
+Może odczytywać te zdarzenia dziennika systemowego w narzędziu do monitorowania, takie jak dzienniki usługi Azure Monitor. Można utworzyć obszar roboczy usługi Log Analytics przy użyciu portalu Azure Marketplace, korzystając z tych [instrukcji]. (.. / azure-monitor/learn/quick-create-workspace.md) należy również dodać agenta usługi Log Analytics do klastra, aby zbierać i wysyłać te dane do obszaru roboczego. Jest to ten sam agent używany do zbierania liczników wydajności. 
 
 1. Przejdź do `Advanced Settings` bloku
 
@@ -120,6 +122,6 @@ W powyższym przykładzie jest to zdarzenie NodeDown. Można wyświetlić pełn�
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wdróż agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk platformy docker i dzienniki kontenerów
-* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics
-* [Tworzenie niestandardowych widoków w usłudze Log Analytics za pomocą projektanta widoku](../log-analytics/log-analytics-view-designer.md)
-* Dokumentacja dotycząca sposobu [integracji usługi Log Analytics z usługą Syslog](../log-analytics/log-analytics-data-sources-syslog.md).
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach dzienniki usługi Azure Monitor
+* [Projektant widoków umożliwia tworzenie niestandardowych widoków w dziennikach w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md)
+* Dokumentacja dotycząca sposobu [usługi Azure Monitor rejestruje integracji z platformą Syslog](../log-analytics/log-analytics-data-sources-syslog.md).

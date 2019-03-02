@@ -4,8 +4,8 @@ description: Dowiedz się więcej o usłudze Azure App Service w systemie Linux 
 keywords: Aplikacja sieci web, linux, oss w usłudze Azure app service
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: wesmc
+ms.date: 02/25/2019
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3b3a4b6767855fa2f7ba595072b187b7a8bff400
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984478"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216003"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
 
@@ -111,18 +111,6 @@ Za pomocą protokołu TCP tunelowania, możesz utworzyć połączenie sieciowe m
 
 Aby rozpocząć pracę, musisz zainstalować [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Aby zobaczyć, jak to działa bez konieczności instalowania interfejsu wiersza polecenia platformy Azure, otwórz [usługi Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Dodaj najnowsze rozszerzenie usługi App Service, uruchamiając [Dodaj rozszerzenie az](/cli/azure/extension?view=azure-cli-latest#az-extension-add):
-
-```azurecli-interactive
-az extension add --name webapp
-```
-
-Jeśli po uruchomieniu już `az extension add` , uruchom [aktualizacji rozszerzenia az](/cli/azure/extension?view=azure-cli-latest#az-extension-update) zamiast tego:
-
-```azurecli-interactive
-az extension update --name webapp
-```
-
 Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<subskrypcji\_identyfikator >_,  _\<grupy\_name >_ i \_< aplikacji\_nazwa > _ dla aplikacji.
 
 ```azurecli-interactive
@@ -167,7 +155,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-Masz teraz połączenie Twojego łącznika. 
+Masz teraz połączenie Twojego łącznika.  
 
 Spróbuj uruchomić [górnej](https://ss64.com/bash/top.html) polecenia. Można wyświetlić procesu aplikacji na liście procesu. W przykładzie danych wyjściowych poniżej, jest jednym z `PID 263`.
 

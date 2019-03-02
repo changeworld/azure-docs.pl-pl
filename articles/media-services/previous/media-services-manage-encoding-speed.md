@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2d36b10adbe277331eafdf1b68d0f5711508cc05
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c794326c9832308cac519617e46b05e311106802
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992216"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240426"
 ---
-#  <a name="manage-speed-and-concurrency-of-your-encoding-legacy"></a>Zarządzanie szybkością i współbieżnością kodowania (starsza wersja)
+#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>Zarządzanie szybkością i współbieżnością kodowania  
 
 Ten artykuł zawiera krótkie omówienie, jak można zarządzać szybkością i współbieżnością kodowania zadań/zadań.
 
 ## <a name="overview"></a>Przegląd
 
-W usłudze Media Services **zastrzeżony typ jednostki** określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2**, lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. [Skalowania jednostek kodowania](media-services-scale-media-processing-overview.md) temat zawiera tabelę, która pomoże Ci w podjęciu decyzji, wybierając między różne szybkości kodowania.
+W usłudze Media Services **zastrzeżony typ jednostki** określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. [Skalowania jednostek kodowania](media-services-scale-media-processing-overview.md) temat zawiera tabelę, która pomoże Ci w podjęciu decyzji, wybierając między różne szybkości kodowania.
 
 Oprócz określenia typu jednostki zarezerwowanej, można określić aprowizację swojego konta za pomocą **jednostek zarezerwowanych**. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Na przykład jeśli konto ma pięć jednostek zarezerwowanych, a następnie pięć zadań będą uruchomione jednocześnie tak długo, jak istnieją zadania do przetworzenia. Pozostałe zadania będzie oczekiwać w kolejce i będzie pobrać wybrany do przetwarzania sekwencyjnie, po zakończeniu bieżące zadanie. Jeśli konto nie ma żadnych jednostek zarezerwowanych zainicjowano obsługę administracyjną, następnie zadania zostaną pobrane po kolei. W tym przypadku czas oczekiwania między jedno zadanie zostało ukończone, a następnie bazujący będzie zależeć od dostępności zasobów w systemie.
 

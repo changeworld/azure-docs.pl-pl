@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471202"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217873"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS baza danych dzierżawy wzorców
 
@@ -99,7 +99,7 @@ Bazy danych są wdrażane w tej samej grupie zasobów, mogą być grupowane w pu
 
 ![Projekt aplikacji wielodostępnej za pomocą bazy danych — dla dzierżawcy, używając puli elastycznej.][image-mt-app-db-per-tenant-pool-153p]
 
-Usługa Azure SQL Database udostępnia narzędzia niezbędne do konfigurowania, monitorowania i zarządzania udostępnianiem.  Zarówno metryk wydajności puli i na poziomie bazy danych są dostępne w witrynie Azure portal i za pomocą usługi Log Analytics.  Metryki można nadać bardzo szczegółowych informacji o wydajności agregacji i specyficznym dla dzierżawy.  Pojedyncze bazy danych można przenosić między pulami, aby zapewnić zarezerwowanych zasobów do określonej dzierżawy.  Te narzędzia pozwalają zapewnić dobrą wydajność w sposób niskie koszty.
+Usługa Azure SQL Database udostępnia narzędzia niezbędne do konfigurowania, monitorowania i zarządzania udostępnianiem.  Zarówno metryk wydajności puli i na poziomie bazy danych są dostępne w witrynie Azure portal i za pomocą dzienników usługi Azure Monitor.  Metryki można nadać bardzo szczegółowych informacji o wydajności agregacji i specyficznym dla dzierżawy.  Pojedyncze bazy danych można przenosić między pulami, aby zapewnić zarezerwowanych zasobów do określonej dzierżawy.  Te narzędzia pozwalają zapewnić dobrą wydajność w sposób niskie koszty.
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Operacje skalowania bazy danych dla dzierżawy
 

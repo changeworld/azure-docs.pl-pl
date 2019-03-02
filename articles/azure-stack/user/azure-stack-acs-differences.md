@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 44fc096fa95be3a469ada7c7dc212ce4fc04e83b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486542"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218060"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Usługa Azure storage stosu: Różnice i zagadnienia
 
@@ -44,6 +44,7 @@ Ten artykuł zawiera podsumowanie znane różnice usługi Azure Stack Storage z 
 |Maksymalny rozmiar obiektu blob bloku|4.75 TB (100 MB X 50 000 bloków)|4.75 TB (100 MB x 50 000 bloków) dla aktualizacji 1802 lub nowszej wersji. 50 000 x 4 MB (około 195 GB) dla wcześniejszych wersji.
 |Kopiowanie migawki obiektu blob strony|Kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych dołączony do uruchomionej maszyny Wirtualnej obsługiwane|Nie jest jeszcze obsługiwany.
 |Kopiowanie przyrostowe migawki obiektu blob strony|W warstwie Premium i standardowa usługi Azure BLOB typu Page obsługiwane|Nie jest jeszcze obsługiwany.
+|Stronie rozliczeń obiektów blob|Opłaty są naliczane dla stron unikatowy, czy znajdują się w obiekcie blob lub migawki. Nie spowoduje Naliczanie dodatkowych opłat za migawki związane z obiektu blob, do czasu aktualizowana podstawowego obiektu blob.|Opłaty są naliczane dla podstawowej migawek obiektów blob i assiociated. Zostałyby naliczone dodatkowe opłaty za każdy poszczególnych migawki.
 |Warstwy magazynowania dla magazynu obiektów blob|Gorąca chłodna i archiwalna magazynu.|Nie jest jeszcze obsługiwany.
 |Usuwania nietrwałego dla magazynu obiektów blob|Ogólnie dostępna|Nie jest jeszcze obsługiwany.
 |Rozmiar maksymalny stronicowego obiektu blob|8 TB|1 TB

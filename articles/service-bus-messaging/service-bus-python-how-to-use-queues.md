@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: aschhab
-ms.openlocfilehash: 172fee19de77deb4ecf679d6884dfcea2a4968be
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865964"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242602"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak używać kolejek usługi Service Bus za pomocą języka Python
 
@@ -38,7 +38,7 @@ W tym artykule opisano sposób używania kolejek usługi Service Bus. Przykłady
 
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
-**ServiceBusService** obiekt umożliwia pracę z kolejkami. Dodaj następujący kod u góry każdego pliku Python, w której chcesz uzyskać programowy dostęp do usługi Service Bus:
+**ServiceBusClient** obiekt umożliwia pracę z kolejkami. Dodaj następujący kod u góry każdego pliku Python, w której chcesz uzyskać programowy dostęp do usługi Service Bus:
 
 ```python
 from azure.servicebus import ServiceBusClient
@@ -69,7 +69,7 @@ sb_client.create_queue("taskqueue", queue_options)
 Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure Service Bus dla języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Aby wysłać komunikat do kolejki usługi Service Bus, wywołania aplikacji `send_queue_message` metody **ServiceBusService** obiektu.
+Aby wysłać komunikat do kolejki usługi Service Bus, wywołania aplikacji `send` metody `ServiceBusClient` obiektu.
 
 Poniższy przykład pokazuje, jak wysyłać wiadomości testowej kolejkę o nazwie `taskqueue` przy użyciu `send_queue_message`:
 
@@ -89,7 +89,7 @@ Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [
 Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure Service Bus dla języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
-Komunikaty są odbierane z kolejki za pomocą `receive_queue_message` metody **ServiceBusService** obiektu:
+Komunikaty są odbierane z kolejki za pomocą `get_receiver` metody `ServiceBusService` obiektu:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -97,9 +97,12 @@ from azure.servicebus import QueueClient, Message
 # Create the QueueClient 
 queue_client = QueueClient.from_connection_string("<CONNECTION STRING>", "<QUEUE NAME>")
 
-# Send a test message to the queue
-msg = Message(b'Test Message')
-queue_client.send(Message("Message"))
+## Receive the message from the queue
+with queue_client.get_receiver() as queue_receiver:
+    messages = queue_receiver.fetch_next(timeout=3)
+    for message in messages:
+        print(message)
+        message.complete()
 ```
 
 Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure Service Bus dla języka Python](/python/api/overview/azure/servicebus?view=azure-python).

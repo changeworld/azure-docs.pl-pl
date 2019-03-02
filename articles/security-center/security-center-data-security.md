@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: af3cc229482021fe6d5e5c988bc98afe6f7f97ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 165617270bef58f7a92fab0adc75c916129ef317
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114165"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242704"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center — bezpieczeństwo danych
 Aby ułatwić klientom zapobieganie zagrożeniom, wykrywanie ich i reagowanie na nie, usługa Azure Security Center zbiera i przetwarza dane dotyczące zabezpieczeń, w tym informacje o konfiguracji, metadane, dzienniki zdarzeń, pliki zrzutu awaryjnego i inne. Firma Microsoft przestrzega surowych wymogów z zakresu zabezpieczeń i zgodności — od kodu po działanie usługi.
@@ -76,7 +76,7 @@ Jeśli jest używana warstwa Bezpłatna usługi Azure Security Center, zbieranie
 Klienci mogą używać danych związanych z usługą Security Center pochodzących z różnych strumieni danych, jak pokazano poniżej:
 
 * **Aktywność platformy Azure**: wszystkie alerty zabezpieczeń, zatwierdzone żądania [dokładnie na czas](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) usługi Security Center i wszystkie alerty generowane przez [adaptacyjne kontrolki aplikacji](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Log Analytics**: wszystkie alerty zabezpieczeń.
+* **Dzienniki platformy Azure Monitor**: wszystkie alerty zabezpieczeń.
 
 
 > [!NOTE]

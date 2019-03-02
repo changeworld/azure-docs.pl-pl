@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 197e79c2674d314c178444cc1f0d685503425031
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986926"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242415"
 ---
 # <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>Włącz pulpit nawigacyjny platformy Kubernetes w usłudze Azure Stack 
 
@@ -107,7 +107,6 @@ Adres URL pulpitu nawigacyjnego można pobrać z węzła głównego w klastrze.
 3. Zanotuj lokalizacji plików. Zaktualizuj skrypt przy użyciu lokalizacji, a następnie otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom zaktualizowanego skryptu:  
 
     ```PowerShell   
-    Import  /etc/kubernetes/certs/ca.crt -CertStoreLocation cert:\LocalMachine\Root 
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 
@@ -121,9 +120,11 @@ Adres URL pulpitu nawigacyjnego można pobrać z węzła głównego w klastrze.
 3.  Wybierz certyfikat klienta.
 4.  Wprowadź token. 
 5. Połącz ponownie w wierszu polecenia powłoki bash w węźle głównym i nadać uprawnienia do `kubernetes-dashboard`. Uruchom następujące polecenie:
-    ```Bash   
+
+    ```Bash  
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
     ``` 
+
     Skrypt podaje `kubernetes-dashboard` uprawnień administratora w chmurze. Aby uzyskać więcej informacji, zobacz [klastrów z obsługą funkcji RBAC dla](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
 
 Można użyć pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego rozwiązania Kubernetes, zobacz [pulpit nawigacyjny interfejsu użytkownika sieci Web rozwiązania Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 

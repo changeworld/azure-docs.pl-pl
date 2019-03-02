@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b975d7dccc85973a42408d87e3c03a91aaf1c450
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b0262ecbcc5a7f512c8779c230b2e2d4bb039842
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812757"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216683"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotuj i przekazywać obrazy do aplikacji usługi Azure IoT Central
 
@@ -30,13 +30,13 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 Możesz dodać niestandardowe obrazy w następujących lokalizacjach w aplikacji usługi Azure IoT Central:
 
-* **Menedżer aplikacji** strony
+* **Aplikacje** strony
 
     ![Obraz na stronie Menedżera aplikacji](media/howto-prepare-images-experimental/applicationmanager.png)
 
-* Strona główna
+* Pulpit nawigacyjny aplikacji
 
-    ![Obraz na stronie głównej](media/howto-prepare-images-experimental/homepage.png)
+    ![Obraz na pulpicie nawigacyjnym aplikacji](media/howto-prepare-images-experimental/homepage.png)
 
 * Szablon urządzenia
 
@@ -60,7 +60,7 @@ W poniższej tabeli przedstawiono rozmiary obrazów, których można użyć:
 | -------- | ------ |
 | Menedżer aplikacji | 268x160 px |
 | Szablon urządzenia | 64x64 px |
-| Strona główna i Kafelki pulpitu nawigacyjnego | Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks. |
+| Kafelki pulpitu nawigacyjnego | Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks. |
 
 Najlepsze wyświetlania w aplikacji należy utworzyć obrazy, które odpowiadają wymiarów przedstawionych w powyższej tabeli.
 
@@ -70,21 +70,21 @@ W poniższych sekcjach opisano sposób przekazywania obrazów w różnych miejsc
 
 ### <a name="application-manager"></a>Menedżer aplikacji
 
-Aby przekazać obraz na **Menedżer aplikacji**, przejdź do **ustawienia aplikacji** strony w **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
+Do przekazania obrazu do użycia na **aplikacje** stronie, przejść do **ustawienia aplikacji** strony w **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
 
 ![Przekaż obraz aplikacji](media/howto-prepare-images-experimental/uploadapplicationmanager.png)
 
 Kliknij Kafelek obrazu aplikacji, aby przekazać przygotowany obraz (268 x 160 pikseli) z komputera lokalnego.
 
-### <a name="home-page"></a>Strona główna
+### <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
-Aby przekazać obraz na stronie głównej, przejdź do **strony głównej** aplikacji i kliknij pozycję **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit nawigacyjny** strony aplikacji i kliknij pozycję **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
 
-![Przekaż obraz strony głównej](media/howto-prepare-images-experimental/uploadhomepage.png)
+![Przekaż obraz pulpitu nawigacyjnego](media/howto-prepare-images-experimental/uploadhomepage.png)
 
 W obszarze skonfigurować obraz kliknij Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
-**Zapisz** przekazanego obrazu. Możesz zmienić jego rozmiar w trybie edycji. Po zakończeniu kliknij przycisk **Done** (Gotowe). 
+**Zapisz** przekazanego obrazu. Możesz zmienić jego rozmiar w trybie edycji. Po zakończeniu kliknij przycisk **Done** (Gotowe).
 
 ### <a name="device-template"></a>Szablon urządzenia
 
@@ -92,7 +92,7 @@ Aby przekazać obraz na podstawie szablonu urządzenia, przejdź do **szablonów
 
 ![Przekazywanie obrazu szablonu urządzenia](media/howto-prepare-images-experimental/uploaddevicetemplate.png)
 
-Kliknij Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego. 
+Kliknij Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego.
 
 ### <a name="device-dashboard"></a>Pulpit nawigacyjny urządzenia
 

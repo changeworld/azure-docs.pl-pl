@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 25349593bd45949f662581160fa23d30b4682710
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894160"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214201"
 ---
 # <a name="marketplace-faqs"></a>Portal Marketplace — często zadawane pytania
 
@@ -66,10 +66,11 @@ Za pomocą portalu Azure Marketplace klienci mogą odnajdować aplikacji technic
 
 Oferty w witrynie Marketplace usługi Azure można kupić w ramach:
 
-* [internetowego](https://azuremarketplace.microsoft.com/marketplace/apps).
-* [Usługa Microsoft Azure Management portal](https://portal.azure.com/), lub za pośrednictwem [Azure Marketplace interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* [witryny sklepu internetowego](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Usługa Microsoft Azure Management portal](https://portal.azure.com/), lub za pośrednictwem [Azure Marketplace interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
-Uwaga: Środki przedpłacone i inne formy zobowiązań pieniężnych nie może służyć do uiszczania opłat licencyjnych oprogramowania, ale może służyć do opłaty za użycie platformy Azure skojarzone.  Wyjątki są wymienione w [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
+>[!Note]
+>Środki przedpłacone i inne formy zobowiązań pieniężnych nie może służyć do uiszczania opłat licencyjnych oprogramowania, ale może służyć do opłaty za użycie platformy Azure skojarzone.  Wyjątki są wymienione w [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
 
 **Czy mogę wybrać regiony Microsoft Azure, które wdrażania mojego zakupu w portalu Azure Marketplace?**
 
@@ -93,9 +94,11 @@ Obecnie tylko bezpłatne i bring-your-own-license oferty w witrynie Marketplace 
 
 **W jakich krajach za zakup aplikacji i usług sprzedawane/dostarczanymi za pośrednictwem portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest dostępny dla klientów Microsoft Azure w następujących krajach:
+Portal Azure Marketplace jest dostępny dla klientów Microsoft Azure w krajach na liście [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy).
 
-Algieria, Arabia Saudyjska, Argentyna, Australia, Austria, Bahrajn, Belgia, Białoruś, Brazylia, Bułgaria, Chile, Chorwacja, Cypr, Czarnogóra, Czechy, Dania, Dominikana, Egipt, Ekwador, Estonia, Filipiny, Finlandia, Francja, Grecja, Gwatemala, Hiszpania, Holandia, Indie, Indonezja, Irlandia, Islandia, Izrael, Japonia, Jordania, Kanada, Katar, Kazachstan, Kenia, Kolumbia, Korea Południowa, Kostaryka, Kuwejt, Liechtenstein, Litwa, Luksemburg, Łotwa, Macedonia (BJRM), Malezja, Malta, Maroko, Meksyk, Niemcy, Nigeria, Norwegia, Nowa Zelandia, Oman, Pakistan, Panama, Paragwaj, Peru, Polska, Portoryko, Portugalia, Republika Południowej Afryki, Rosja, Rumunia, Salwador, Serbia, Singapur, Słowacja, Słowenia, SRA Hongkong, Sri Lanka, Stany Zjednoczone, Szwajcaria, Szwecja, Tajlandia, Tajwan, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Urugwaj, Wenezuela, Węgry, Włochy, Zjednoczone Emiraty Arabskie i Zjednoczone Królestwo
+**Jakich walutach są obsługiwane przez Portal Azure Marketplace?**
+
+Transakcje mogą zostać przeprowadzone w 17 następujących walut: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Wdrażanie rozwiązania z witryny Azure Marketplace
 
@@ -180,17 +183,17 @@ Nie. Wydawcy, który jest właścicielem rozwiązań w portalu Azure Marketplace
 
 **Jak zapłacić za te subskrypcje? Czy moje zakupy w portalu Azure Marketplace są wyświetlane na rachunku za platformę Azure, lub czy istnieje innym rachunku?**
 
-Zakupy w portalu Azure Marketplace dziedziczą ta sama metoda płatności, co w przypadku subskrypcji platformy Azure.  One są rozliczane osobno od użycia platformy Azure, chyba że będą mogli korzystać z zobowiązania pieniężnego.
+MOSP - [Program subskrypcji Online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web bezpośrednich), klienci są obciążani względem sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure. Jeśli nie masz karty kredytowej w pliku, nie można kupić w witrynie Azure Marketplace. W takim przypadku możesz otrzymanie specjalnej informacji platformy Azure za opłaty będą wystawiane dla Ciebie.
 
-MOSP — Program subskrypcji Online firmy Microsoft (web direct) klientom zostanie naliczony względem sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure. Jeśli klient nie ma karty kredytowej w pliku (specjalne zwolnienie mieć doliczany do faktury opłaty usługi Azure), następnie one nie można kupić w witrynie Azure Marketplace.
-
-Klienci z umową Enterprise Agreement (EA) są naliczane względem ich umowy EA. Określonych ofert portalu Azure Marketplace, na liście [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) są najpierw odjęte z dowolnego dostępnego zobowiązania pieniężnego, a następnie rozliczane jako nadwyżkowe użycie w obrębie pojedynczej faktury kwartalnej. Pośrednią umową EA, education i dla instytucji rządowych, klienci są naliczane przez ich Licencjonowanie rozwiązania dostawcy (LSP).
+Klienci z umową Enterprise Agreement (EA) są naliczane względem ich umowy EA. Określonych ofert portalu Azure Marketplace, wymienione w tym miejscu są najpierw odjęte z dowolnego dostępnego zobowiązania pieniężnego, a następnie rozliczane jako nadwyżkowe użycie w obrębie pojedynczej faktury kwartalnej. Pośrednią umową EA, education i dla instytucji rządowych, klienci są naliczane przez ich Licencjonowanie rozwiązania dostawcy (LSP).
 
 **Gdzie mogę wyświetlić Moje Szczegóły subskrypcji portalu Azure Marketplace i informacje rozliczeniowe?**
 
-MOSP — klienci programu subskrypcji Online firmy Microsoft (sieci web) mogą wyświetlać szczegóły subskrypcji portalu Marketplace, w menu "Marketplace" w portalu rozliczeń systemu Azure. Klienci, którzy zakupili maszyny wirtualne z witryny Marketplace mogą wyświetlać szacowane naliczone opłaty w portalu zarządzania Microsoft Azure.
+MOSP - [Program subskrypcji Online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) klienci (sieci web) mogą wyświetlać szczegóły zakupu portalu Marketplace na karcie faktur Cost Management + rozliczenia części portalu zarządzania systemu Azure.
 
-Klienci z umową Enterprise Agreement (EA) mogą wyświetlać szczegóły subskrypcji portalu Marketplace na karcie Azure Marketplace w widoku zarządzania kontami i rozliczeniami witryny Enterprise Portal. Uwaga: Klienci z pośrednią umową EA może zobaczyć tylko o ofercie i użyciu informacji. Szczegóły cennika nie są dostępne w witrynie Enterprise portal.
+Klienci z umową Enterprise Agreement (EA) mogą wyświetlać szczegóły zakupu portalu Marketplace, w karcie faktur Cost Management + rozliczenia części portalu zarządzania systemu Azure.
+
+Partnerzy programu cloud Solution Provider (CSP) mogą wyświetlać szczegóły zakupu portalu Marketplace dla każdego klienta w Centrum partnerskiego na karcie Historia zamówień, po wybraniu firmy w widoku klientów.
 
 **Jak anulować dodatek portalu Azure Marketplace do maszyny Wirtualnej platformy Azure?**
 
@@ -198,9 +201,9 @@ Dodatek jest skojarzony Azure maszyn wirtualnych (VM), dlatego w celu anulowania
 
 **Jak często są rozliczane za zakupy w portalu Azure Marketplace?**
 
-Klienci z umową Enterprise dla [usług](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/), najpierw mieć dostępne funduszy zobowiązań pieniężnych o łączny koszt tych usług w ciągu miesiąca, będą używane. Wszystkich ofert z portalu Azure Marketplace, które nie odejmowane od zobowiązania pieniężnego, są rozliczane co miesiąc z dołu.
+Klienci z umową Enterprise, dla określonych usług, które są opisane w temacie, najpierw dostępne funduszy zobowiązań pieniężnych pomniejszone o łączny koszt tych usług w miesiącu, w którym będą używane. Wszystkich ofert z portalu Azure Marketplace, które nie odejmowane od zobowiązania pieniężnego, są rozliczane co miesiąc z dołu. Subskrypcje roczne SaaS są rozliczane raz dla usług przez cały rok.
 
-MOSP, będącego klientów bezpośrednio w sieci web jest naliczana co miesiąc przed sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure.
+MOSP - [Program subskrypcji Online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) klientów (sieci web) są naliczane co miesiąc przed sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure. Subskrypcje roczne SaaS są rozliczane raz dla usług przez cały rok.
 
 **Jak mogę przenieść zakupy w portalu Azure Marketplace z subskrypcji MOSP do mojej bezpośredniej subskrypcji Enterprise Agreement (EA)?**
 
@@ -246,7 +249,7 @@ Wszystkie pomoc techniczną, skontaktuj się z dostawcą wydawcy. Informacje kon
 
 **Jeśli nie podobają, mogę zwrócić zakup?**
 
-Produktów zakupionych w witrynie Azure Marketplace nie można zwrócić, ale można anulować lub usunąć zakup. Po anulowaniu/usunięciu subskrypcji nie jest rozliczany na kolejne miesiące.
+Produktów zakupionych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) nie można zwrócić, ale można anulować lub usunąć. Użycie na podstawie oferty są rozliczane zgodnie z użycia, więc po jej zatrzymaniu opłat również zatrzymać. Subskrypcje zostały anulowane i nie zostaną naliczone ostatnie bieżącego okresu rozliczeniowego. Jeśli subskrypcja zostanie wkrótce po zakupie (24 godziny, w przypadku opcji miesięcznej i 14 dni w przypadku opcji rocznej), znajduje się pełny zwrot kosztów.
 
 Klienci bezpośrednio skontaktuj się z wydawcą problemów technicznych związanych z ich usług witryny Marketplace lub zakupu. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w portalu Azure Marketplace.
 
@@ -336,6 +339,10 @@ Istnieje za publikowanie nie są przy przekazywaniu listy, okres próbny lub BYO
 
 Gdy jest kupowana za pośrednictwem witryny Azure Marketplace, przychody licencji na oprogramowanie są dzielone między wydawcy i firmy Microsoft.  To odbywa się zgodnie z warunków i postanowień w [umowie wydawcy portalu Marketplace](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Ponadto rozwiązania przy użyciu wydawcy BYOL (Bring Your Own License) nie są naliczane opłaty za transakcję.
 
+**Co to jest standardowej umowy?**
+
+Microsoft oferuje standardowych warunków umów wybranych Wydawca może wykorzystywać, tak, aby klienci mogli korzystać z uproszczonego zamówień i proces przeglądu prawnych.
+
 **Gdzie znaleźć wskazówki dotyczące integracji mojej aplikacji za pomocą usługi Azure Active Directory (AAD)?**
 
 Firma Microsoft uwierzytelnia wszystkich użytkowników witryny Marketplace przy użyciu usługi AAD.  Może być bezpośrednio aprowizowanej w wersji próbnej bez konieczności dodatkowego kroku logowania.  Na przykład uwierzytelniony użytkownik kliknie za pośrednictwem oferty próbnej w witrynie Marketplace i zostaje przekierowany do środowiska w wersji próbnej.
@@ -374,7 +381,7 @@ Po zakończeniu oferty i konfigurowania miejsca docelowego potencjalny klient, l
 
 **Kraje/regiony są dostępne dla wydawców do sprzedaży w portalu Azure Marketplace?**
 
-W witrynie Azure Marketplace sprzedaż mogą obecnie prowadzić wydawcy z następujących krajów: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswany, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, komory, Kongo, Kongo (DRK), Kostaryka, Republika Wybrzeża Kości Słoniowej (Côte d'Ivoire), Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Fidżi Wyspy, Finlandia, Francja, Georgia, (Niemcy), Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irak, Irlandii, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowej Zelandii, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Ruandy, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Leste, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, ugandyjski, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
+W witrynie Azure Marketplace sprzedaż mogą obecnie prowadzić wydawcy z następujących krajów: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswany, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, komory, Kongo, Kongo (DRK), Kostaryka, Wybrzeże Kości Słoniowej, Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Fidżi Wyspy, Finlandia, Francja, Georgia, (Niemcy), Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irak, Irlandii, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowej Zelandii, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Ruandy, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Leste, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, ugandyjski, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
 
 **Jak usunąć listę w portalu Azure Marketplace?**
 
@@ -489,7 +496,36 @@ Obecnie w portalu Marketplace są dostępne tylko oferty bezpłatne i typu bring
 
 Portal Azure Marketplace jest dostępny dla klientów platformy Microsoft Azure w następujących krajach:
 
-Algieria, Arabia Saudyjska, Argentyna, Australia, Austria, Bahrajn, Belgia, Białoruś, Brazylia, Bułgaria, Chile, Chorwacja, Cypr, Czarnogóra, Czechy, Dania, Dominikana, Egipt, Ekwador, Estonia, Filipiny, Finlandia, Francja, Grecja, Gwatemala, Hiszpania, Holandia, Indie, Indonezja, Irlandia, Islandia, Izrael, Japonia, Jordania, Kanada, Katar, Kazachstan, Kenia, Kolumbia, Korea Południowa, Kostaryka, Kuwejt, Liechtenstein, Litwa, Luksemburg, Łotwa, Macedonia (BJRM), Malezja, Malta, Maroko, Meksyk, Niemcy, Nigeria, Norwegia, Nowa Zelandia, Oman, Pakistan, Panama, Paragwaj, Peru, Polska, Portoryko, Portugalia, Republika Południowej Afryki, Rosja, Rumunia, Salwador, Serbia, Singapur, Słowacja, Słowenia, SRA Hongkong, Sri Lanka, Stany Zjednoczone, Szwajcaria, Szwecja, Tajlandia, Tajwan, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Urugwaj, Wenezuela, Węgry, Włochy, Zjednoczone Emiraty Arabskie i Zjednoczone Królestwo
+Algieria, Arabia Saudyjska, Argentyna, Australia, Austria, Bahrajn, Belgia, Białoruś, Brazylia, Bułgaria, Chile, Chorwacja, Cypr, Czarnogóra, Czechy, Dania, Dominikana, Egipt, Ekwador, Estonia, Filipiny, Finlandia, Francja, Grecja, Gwatemala, Hiszpania, Holandia, SRA Hongkong, Indie, Indonezja, Irlandia, Islandia, Izrael, Japonia, Jordania, Kanada, Katar, Kazachstan, Kenia, Kolumbia, Korea Południowa, Kostaryka, Kuwejt, Liechtenstein, Litwa, Luksemburg, Łotwa, Macedonia (BJRM), Malezja, Malta, Maroko, Meksyk, Niemcy, Nigeria, Norwegia, Nowa Zelandia, Oman, Pakistan, Panama, Paragwaj, Peru, Polska, Portoryko, Portugalia, Republika Południowej Afryki, Rosja, Rumunia, Salwador, Serbia, Singapur, Słowacja, Słowenia, Sri Lanka, Stany Zjednoczone, Szwajcaria, Szwecja, Tajlandia, Tajwan, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Urugwaj, Wenezuela, Węgry, Włochy, Zjednoczone Emiraty Arabskie i Zjednoczone Królestwo
+
+**Jak zdefiniować Moje dotyczącą dostępności geograficznej umożliwiające sprzedaży w różnych krajach?**
+
+1.  W portalu Cloud Partner przejdź do jednostki SKU, do której chcesz dodać nowych krajach.  W ciągu "Szczegóły jednostki SKU" Przejdź do "Kraj/Region availability", a następnie kliknij przycisk "Wybierz regiony".
+
+    ![Wybierz regiony](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+
+1.  Lista będzie się pojawiać, przy użyciu wszystkich krajów dostępne, aby je.  Kliknij pole wyboru obok każdego kraju, które chcesz udostępnić tej jednostki SKU. Kliknij przycisk "OK".
+
+    ![Wybierz listę krajów](media/marketplace-publishers-guide/FAQ-select-countries.png)
+
+1.  Na koniec zmian, które mają być stosowane do oferty na żywo, kliknij pozycję "Publikuj".  
+
+>[!Note]
+>Potrwa 24 godziny, aby zmiany zaczęły obowiązywać.
+
+<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
+
+**Jak wydawca zmienić dostępność geograficzna dla istniejącej oferty**
+
+Wydawcy mogą edytować istniejące oferty, wybierz nowych krajach, a następnie użyć funkcji pobierania/przekazywania arkusza kalkulacyjnego można ustawić, ceny.
+
+**W jakich krajach klienci mogą kupować ofert portalu Azure Marketplace?**
+
+Witryna Azure Marketplace obsługuje 141 zakup z różnych lokalizacji geograficznych, zgodnie z definicją adresu rozliczeniowego przez klienta. Zobacz [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy) listę krajów.
+
+**Jakich walutach są obsługiwane przez Portal Azure Marketplace?**
+
+Transakcje mogą zostać przeprowadzone w 17 następujących walut: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Wdrażanie rozwiązania z witryny Azure Marketplace
 

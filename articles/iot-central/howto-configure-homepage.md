@@ -1,45 +1,50 @@
 ---
-title: Konfigurowanie strony głównej aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako Konstruktor Dowiedz się, jak skonfigurować stronę główną aplikacji usługi Azure IoT Central.
+title: Konfigurowanie usługi Azure IoT Central pulpit nawigacyjny aplikacji | Dokumentacja firmy Microsoft
+description: Jako Konstruktor Dowiedz się, jak skonfigurować domyślny usługi Azure IoT Central aplikacji pulpit nawigacyjny.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a03ac0ef66f4ffdce53d0bd2a35839bbe1615d0b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: a42e88de693f93e0407c185efc84d17a03d16116
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199089"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215867"
 ---
-# <a name="configuring-homepage"></a>Konfigurowanie strony głównej
+# <a name="configure-the-application-dashboard"></a>Konfigurowanie pulpit nawigacyjny aplikacji
 
-Strona główna jest strona która ładuje, gdy użytkownicy, którzy mają dostęp do aplikacji, przejdź do adresu URL aplikacji. Zaznaczenie "Przykładowy Contoso" lub "Przykładowe Devkits" szablonów aplikacji podczas tworzenia aplikacji, aplikacja będzie mieć wstępnie zdefiniowane strony główne. Jeśli z drugiej strony został wybrany szablon aplikacji "Aplikacja niestandardowa", strony głównej będzie puste.
+**Pulpit nawigacyjny** jest strona, która ładuje, gdy użytkownicy, którzy mają dostęp do aplikacji, przejdź do adresu URL aplikacji. Jeśli została wybrana **Contoso przykładowe** lub **Devkits przykładowe** szablon aplikacji do tworzenia aplikacji, aplikacja jest wstępnie zdefiniowany pulpit nawigacyjny. Jeśli została wybrana opcja **aplikacji niestandardowych** szablon aplikacji pulpitu nawigacyjnego jest pusta.
 
-Na przykład Oto strona główna dla aplikacji na podstawie szablonu "Contoso próbki". Aby dostosować stronę główną dla aplikacji, należy najpierw wybrać **Edytuj** w prawym górnym rogu. 
+> [!NOTE]
+> Użytkownicy mogą również [tworzenie własnych osobistych pulpitów nawigacyjnych](howto-personalize-dashboard.md) zamiast domyślnego pulpitu nawigacyjnego aplikacji.
 
-![Strona główna dla aplikacji na podstawie szablonu "Contoso próbki"](media/howto-configure-homepage/image1.png)
+## <a name="add-tiles"></a>Dodaj Kafelki
 
-Wybieranie **Edytuj**, zostanie otwarty Biblioteka pulpitu nawigacyjnego w panelu po lewej stronie. Istnieje wiele rodzajów Kafelki pulpitu nawigacyjnego w nim elementów podstawowych, które można dodać w celu dostosowania strony głównej.
+Poniższy zrzut ekranu przedstawia pulpit nawigacyjny w aplikacji, który został utworzony na podstawie **Contoso przykładowe** szablonu. Aby dostosować domyślny pulpit nawigacyjny dla swojej aplikacji, kliknij przycisk **Edytuj** w prawym górnym rogu strony.
+
+![Pulpit nawigacyjny dla aplikacji na podstawie szablonu "Contoso próbki"](media/howto-configure-homepage/image1.png)
+
+Klikając **Edytuj**, zostanie otwarty panel Biblioteka pulpitu nawigacyjnego. Biblioteka zawiera Kafelki i podstawowych pulpitu nawigacyjnego, którym można dostosować pulpit nawigacyjny.
 
 ![Biblioteka pulpitu nawigacyjnego](media/howto-configure-homepage/image2.png)
 
-Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. W tym przypadku Wybraliśmy **Ustaw temperatury**. Klikając **gotowe** spowoduje, że ten Kafelek, aby są wyświetlane na stronie głównej.
+Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości dla urządzenia. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. Poniższy zrzut ekranu przedstawia **Ustaw temperatury** ustawienie wybranego do dodania do kafelka. Kliknij przycisk **gotowe** można zapisać zmiany do pulpitu nawigacyjnego.
 
 !["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media/howto-configure-homepage/image3.png)
 
-Teraz gdy operator wyświetla stronę główną, można wyświetlić tego kafelka, powoduje wyświetlenie właściwości lub ustawień urządzenia:
+Teraz gdy operator Wyświetla domyślny pulpit nawigacyjny aplikacji, zobacz temat nowy Kafelek z **Ustaw temperatury** ustawienia dla urządzenia:
 
 ![Karta "Pulpit nawigacyjny" z wyświetlanych ustawień i właściwości dla kafelka](media/howto-configure-homepage/image4.png)
 
-Poeksperymentuj z różnych innych kafelków typów w bibliotece Aby dowiedzieć się, jak można dostosować stronę główną w swojej aplikacji nawet więcej.
+Możesz eksplorować inne typy kafelków w bibliotece Dowiedz się, jak dostosować domyślny pulpit nawigacyjny aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposób konfigurowania strony głównej usługi Azure IoT Central, możesz wykonywać następujące czynności:
+Teraz, kiedy znasz sposób konfigurowania usługi Azure IoT Central domyślnego aplikacji pulpitu nawigacyjnego, możesz wykonywać następujące czynności:
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak przygotować i przekazać obrazy](howto-prepare-images.md)

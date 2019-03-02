@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: b1a39016907e697ab03a8a6962fb1e75e4433675
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382362"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218043"
 ---
 # <a name="openshift-in-azure"></a>OpenShift na platformie Azure
 
@@ -46,7 +46,7 @@ Tylko dwa pięć wersji omówione w tym artykule są obecnie dostępne dla klien
 
 Platforma kontenera jest przedsiębiorstw [komercyjnej wersji](https://www.openshift.com) z i obsługiwane przez firmy Red Hat. W tej wersji klienci zakupu niezbędnych uprawnień dla rozwiązania OpenShift Container Platform i jest odpowiedzialny za instalację i zarządzanie całą infrastrukturą.
 
-Ponieważ klienci "własnością" tej platformy, mogą ją zainstalować w ich lokalnym centrum danych lub w chmurze publicznej (np. Azure, AWS lub Google).
+Ponieważ klienci "własnością" tej platformy, mogą ją zainstalować w ich lokalnym centrum danych lub w chmurze publicznej (np. Azure).
 
 ## <a name="openshift-on-azure"></a>OpenShift na platformie Azure
 
@@ -58,7 +58,7 @@ Jest OKD [typu open-source](https://www.okd.io/) nadrzędnego projektu OpenShift
 
 ## <a name="openshift-dedicated"></a>W wersji dedykowanej platformy OpenShift
 
-Dedykowany jest zarządzana przez firmy Red Hat *pojedynczej dzierżawy* OpenShift, który używa OpenShift Container Platform. Red Hat zarządza wszystkimi podstawowej infrastruktury (maszyny wirtualne, klaster OpenShift, sieć, Magazyn itp.). Klaster jest przeznaczony dla jednego klienta i działa w chmurze publicznej (np. usług AWS lub Google). Począwszy od klastra zawiera cztery węzły aplikacji i wszelkie koszty są rocznych i płatnej z góry.
+Dedykowany jest zarządzana przez firmy Red Hat *pojedynczej dzierżawy* OpenShift, który używa OpenShift Container Platform. Red Hat zarządza wszystkimi podstawowej infrastruktury (maszyny wirtualne, klaster OpenShift, sieć, Magazyn itp.). Klaster jest przeznaczony dla jednego klienta i działa w chmurze publicznej (np. Azure). Począwszy od klastra zawiera cztery węzły aplikacji i wszelkie koszty są rocznych i płatnej z góry.
 
 ## <a name="openshift-online"></a>OpenShift Online
 

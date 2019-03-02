@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 98b2c0bc27336e9ee5fe9aaf6332d9854e9af4de
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5689cdb2e9f8028f8e1e05a9b43cc00719701fce
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650295"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213912"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -231,6 +231,26 @@ Komunikacji równorzędnej sieci wirtualnej (lub komunikacji równorzędnej siec
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>W innym regionie można utworzyć połączenie komunikacji równorzędnej z siecią wirtualną?
 Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure i regionów chmury w Chinach. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure w regionach chmury krajowe. Globalnej komunikacji równorzędnej nie ma obecnie w chmurze dla instytucji rządowych.
+
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jakie są ograniczenia związane z globalnych wirtualnych sieci równorzędnych i moduły równoważenia obciążenia?
+Jeśli dwie sieci wirtualne znajdują się w innym regionie (globalnych wirtualnych sieci równorzędnych), nie można połączyć się z zasobami, które używają podstawowego modułu równoważenia obciążenia. Możesz połączyć do zasobów, które używają standardowego modułu równoważenia obciążenia.
+Podstawowe usługi równoważenia obciążenia, co oznacza, że nie może komunikować się do nich w globalnych wirtualnych sieci równorzędnych jest używany przez następujące zasoby:
+- Maszyny wirtualne za modułem równoważenia obciążenia podstawowe
+- Usługi VM Scale Sets z modułami równoważenia obciążenia podstawowe 
+- Pamięć podręczna Redis 
+- Usługa Application Gateway (wersja 1) jednostek SKU
+- Service Fabric
+- Zawsze włączone programu SQL Server
+- SQL MI
+- API Managemenet
+- ADDS
+- Logic Apps
+- HD Insight
+-   Azure Batch
+- AKS
+- Środowisko usługi App Service
+
+Możesz połączyć się do tych zasobów za pośrednictwem usługi ExpressRoute lub sieci wirtualnej między sieciami wirtualnymi za pośrednictwem bram sieci wirtualnej.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Można włączyć komunikację równorzędną sieci wirtualnej Jeśli Moje sieci wirtualne należą do subskrypcji w ramach różnych dzierżaw usługi Azure Active Directory?
 Tak. Jest możliwe ustalenie, komunikacja równorzędna sieci wirtualnych (czy lokalnych lub globalnych), jeśli Twoje subskrypcje należą do różnych dzierżaw usługi Azure Active Directory. Można to zrobić za pomocą programu PowerShell lub interfejsu wiersza polecenia. Portal nie jest jeszcze obsługiwana.

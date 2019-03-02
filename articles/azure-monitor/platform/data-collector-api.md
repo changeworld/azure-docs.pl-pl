@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 79adde06e3a21e2fb8999d41ec113b61aa328ef5
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237930"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241378"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -465,6 +465,15 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+## <a name="alternatives-and-considerations"></a>Alternatywy i zagadnienia
+Interfejsu API modułu zbierającego dane powinny obejmować większość potrzeb można zbierać dane z dowolnych do dzienników platformy Azure, są wystąpienia, gdzie alternatywą może być konieczne pokonanie niektórych ograniczeń interfejsu API. Wszystkie opcje są następujące, główne kwestie dołączone:
+
+| Alternatywna | Opis | Najodpowiedniejsza dla |
+|---|---|---|
+| [Zdarzenia niestandardowe](https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Natywny zestaw SDK oparte na przyjmowanie danych w usłudze Application Insights | Usługa Application Insights, zwykle Instrumentacji za pomocą zestawu SDK w aplikacji, oferuje możliwość przesyłania danych niestandardowych zdarzeń niestandardowych. | <ul><li> Dane wygenerowane w aplikacji, ale nie są pobierane przez zestaw SDK za pomocą jednego z domyślnych typów danych (ie: żądania, zależności, wyjątki, itp.).</li><li> Dane, które najczęściej są skorelowane z innymi danymi aplikacji w usłudze Application Insights </li></ul> |
+| [Interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) w dziennikach w usłudze Azure Monitor | Interfejsu API modułu zbierającego dane w dziennikach monitora platformy Azure jest całkowicie nieograniczony sposób pozyskiwania danych. W tym miejscu można wysyłać żadnych danych sformatowanych w obiekcie JSON. Po wysłaniu będą przetwarzane i dostępne w dzienniki będą skorelowane z innymi danymi w dziennikach lub inne usługi Application Insights danych. <br/><br/> Jest to dość proste przekazać dane jako pliki do obiektu blob usługi Azure Blob z których przetwarzane i przekazany do usługi Log Analytics tych plików. Zobacz [to](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) artykuł, aby przykład implementacji takich potoku. | <ul><li> Dane, które nie są zawsze generowane w obrębie aplikacji zinstrumentowane w ramach usługi Application Insights.</li><li> Przykłady obejmują tabel odnośników i faktów, dane referencyjne, wstępnie zagregowanych danych statystycznych, itp. </li><li> Przeznaczona dla danych, który ma być odsyłaczy względem innych danych usługi Azure Monitor (na przykład usługi Application Insights, inne dzienniki typy danych, usługa Security Center, usługa Azure Monitor, kontenerów lub maszyny wirtualne itp). </li></ul> |
+| [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Usługa Azure Data Explorer (ADX) jest platformy danych, która obsługuje analizy usługi Application Insights i Azure Monitor dzienniki. Teraz jest ogólnie już dostępna ("GA"), za pomocą platformy danych w nieprzetworzonej postaci zapewnia pełną elastyczność (ale wymaga pracy związanej z zarządzaniem) za pośrednictwem klastra (RBAC, współczynnik utrzymania schematu, itp.). ADX jest dostępnych wiele [opcji pozyskiwania](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) tym [CSV, TSV i JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) plików. | <ul><li> Dane, które nie będą zostać skorelowane z wszelkimi innymi danymi, w ramach usługi Application Insights lub dzienniki. </li><li> Danych wymagających zaawansowanych pozyskiwania lub nie jest obecnie dostępna w dzienników monitora platformy Azure możliwości przetwarzania. </li></ul> |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Użyj [interfejsu API wyszukiwania w dzienniku](../log-query/log-query-overview.md) do pobierania danych z obszaru roboczego usługi Log Analytics.

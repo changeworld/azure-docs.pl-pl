@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/01/2019
 ms.author: raynew
-ms.openlocfilehash: 960d1df7c89383efc976fed959c1a39fae461c52
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2225c978eade3af12e910d7f403ca06287cabbef
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875815"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214235"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -230,6 +230,26 @@ Dysk FC | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobs�
 BitLocker | Nieobsługiwane. | Przed włączeniem replikacji dla maszyny, należy wyłączyć funkcję BitLocker. |
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi zaczynać i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach maszyny w usłudze Site Recovery.
 
+## <a name="azure-site-recovery-churn-limits"></a>Usługa Azure Site Recovery postęp dokonany w granicach
+
+W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji operacji we/wy aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. Aby uzyskać najlepsze wyniki, zdecydowanie zaleca się [Uruchom narzędzie planista wdrażania](site-recovery-deployment-planner.md) i dokładne przetestowanie aplikacji przez wystawienie testowy tryb failover w celu uzyskania prawdziwych informacji o wydajności aplikacji.
+
+**Cel magazynu replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
+---|---|---|---
+Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |  336 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dysk
+Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
+Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |10 MB/s | 842 GB na dysk
+
+**Źródłowy współczynnik zmian danych** | **Limit maksymalny**
+---|---
+Średni współczynnik zmian danych na maszynę wirtualną| 25 MB/s
+Szczytowy współczynnik zmian danych na wszystkich dyskach na maszynie wirtualnej | 54 MB/s
+Maksymalny współczynnik zmian danych dziennie obsługiwany przez serwer przetwarzania | 2 TB
+
+Są to średnie wartości przy założeniu 30-procentowego nakładania się operacji we/wy. Usługa Site Recovery może obsługiwać większą przepływność na podstawie zakresu nakładania się na siebie, większego rozmiaru operacji zapisu i rzeczywistego zachowania związanego z obciążeniem operacji we/wy. Poprzednie liczby zakładają typowe zaległości wynoszące około pięć minut. Oznacza to, że przekazane dane są przetwarzane i punkt odzyskiwania jest tworzony w ciągu pięciu minut.
 
 ## <a name="vault-tasks"></a>Zadania magazynu
 

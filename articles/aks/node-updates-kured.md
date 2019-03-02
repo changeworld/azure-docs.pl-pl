@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0bcc49df6540b73b8feb5bb1ec4312e680572797
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617874"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243333"
 ---
 # <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Zastosowanie aktualizacji zabezpieczeń i aktualizacji jądra dla węzłów w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ W tym artykule dowiesz się, jak używać typu open-source [kured (KUbernetes po
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.49 lub później zainstalowane i skonfigurowane. Uruchom `az --version` Aby znaleźć wersję. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Zrozumieć działanie aktualizacji węzłów AKS
 
@@ -78,15 +78,15 @@ Możesz monitorować stan węzłów przy użyciu [kubectl get-węzły] [ kubectl
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
-aks-nodepool1-79590246-2   Ready,SchedulingDisabled   agent     1h        v1.9.11
+aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Po zakończeniu procesu aktualizacji można wyświetlić stan węzłów przy użyciu [kubectl get-węzły] [ kubectl-get-nodes] polecenia `--output wide` parametru. Te dodatkowe dane wyjściowe pozwala zobaczyć różnicę w *wersja jądra* z jego węzłów podrzędnych, jak pokazano w następujących przykładowych danych wyjściowych. *Aks-nodepool1-79590246-2* został zaktualizowany w poprzednim kroku oraz wersja jądra pokazuje *4.15.0-1025-azure*. Węzeł *aks-nodepool1-79590246-1* który nie został zaktualizowany przedstawiono wersja jądra *4.15.0-1023-azure*.
+Po zakończeniu procesu aktualizacji można wyświetlić stan węzłów przy użyciu [kubectl get-węzły] [ kubectl-get-nodes] polecenia `--output wide` parametru. Te dodatkowe dane wyjściowe pozwala zobaczyć różnicę w *wersja jądra* z jego węzłów podrzędnych, jak pokazano w następujących przykładowych danych wyjściowych. *Aks-nodepool1-28993262-0* został zaktualizowany w poprzednim kroku oraz wersja jądra pokazuje *4.15.0-1039-azure*. Węzeł *aks-nodepool1-28993262-1* który nie został zaktualizowany przedstawiono wersja jądra *4.15.0-1037-azure*.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.11   10.240.0.6    <none>        Ubuntu 16.04.5 LTS   4.15.0-1023-azure   docker://1.13.1
-aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.11   10.240.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1025-azure   docker://1.13.1
+aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS   4.15.0-1039-azure   docker://3.0.4
+aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

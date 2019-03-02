@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d97a2350765ac321cf77f8a9f84825c88d0c9185
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9402c4b24c9d64b4b69d750fbd19de40cda396f3
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824257"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218094"
 ---
 Platforma Azure udostępnia następujące wbudowane role kontroli RBAC do uzyskiwania dostępu do magazynu danych:
 
@@ -23,6 +23,4 @@ Platforma Azure udostępnia następujące wbudowane role kontroli RBAC do uzyski
 - [Współautor danych kolejki magazynu (wersja zapoznawcza)](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview): Użyj, aby udzielić uprawnień odczytu/zapisu/usuwania do kolejek systemu Azure.
 - [Czytnik danych kolejki magazynu (wersja zapoznawcza)](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Użyj, aby udzielić uprawnień tylko do odczytu do kolejek systemu Azure.
 
-Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [zrozumienie definicji ról](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview).
-
-Usługa Azure Storage obsługuje również niestandardowe role RBAC. Aby uzyskać więcej informacji, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](../articles/role-based-access-control/custom-roles.md). 
+Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [zrozumienie definicji ról](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Aby uzyskać informacji na temat tworzenia niestandardowych ról RBAC, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](../articles/role-based-access-control/custom-roles.md). 

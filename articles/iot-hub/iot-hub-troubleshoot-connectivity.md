@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339760"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240171"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Wykrywanie i rozwiązywanie problemów z zamknie połączenie z usługą Azure IoT Hub
 
@@ -54,7 +54,7 @@ Aby dowiedzieć się więcej, zobacz [co to są alertów klasycznych na platform
 
 ## <a name="resolve-connectivity-errors"></a>Usuń błędy łączności
 
-Włącz dzienniki diagnostyczne i alerty dla połączonych urządzeń, możesz otrzymywać alerty, jeśli wystąpią błędy. W tej sekcji opisano sposób rozwiązać typowe problemy, gdy zostanie wyświetlony alert. W poniższych krokach przyjęto, że po skonfigurowaniu usługi Azure Log Analytics dla dzienników diagnostycznych.
+Włącz dzienniki diagnostyczne i alerty dla połączonych urządzeń, możesz otrzymywać alerty, jeśli wystąpią błędy. W tej sekcji opisano sposób rozwiązać typowe problemy, gdy zostanie wyświetlony alert. W poniższych krokach przyjęto, że po skonfigurowaniu usługi Azure Monitor dzienników dla dzienników diagnostycznych.
 
 1. Szukać obszaru roboczego **usługi Log Analytics** w witrynie Azure portal.
 1. Wybierz **wyszukiwania w dzienniku**.

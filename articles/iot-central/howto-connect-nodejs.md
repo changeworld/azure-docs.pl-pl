@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 7b1d7c50970107300676213707368f9f16e04812
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b22d719a25a93e1dffdba848e18f732b31e6e67d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194805"
+ms.locfileid: "57214524"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -269,11 +269,11 @@ Operator w aplikacji usługi Azure IoT Central rzeczywistego urządzenia możesz
 
     ![Wyświetlanie danych telemetrycznych](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Wyświetlanie wartości właściwości urządzenia, które są wysyłane z urządzenia **właściwości** strony. Kafelki właściwości urządzenia zostaną zaktualizowane, jeśli połączenie zostanie nawiązane. 
+* Wyświetlanie wartości właściwości urządzenia, które są wysyłane z urządzenia **właściwości** strony. Kafelki właściwości urządzenia zostały zaktualizowane, jeśli połączenie zostanie nawiązane.
 
     ![Wyświetl właściwości urządzenia](media/howto-connect-nodejs/viewproperties.png)
 
-* Ustaw wentylator temperatury szybkość i docelowej z **ustawienia** strony. Wartości ustawień zsynchronizuje, jeśli połączenie zostanie nawiązane. 
+* Ustaw wentylator temperatury szybkość i docelowej z **ustawienia** strony. Wartości ustawienia synchronizacji, jeśli połączenie zostanie nawiązane.
 
     ![Wentylator prędkości](media/howto-connect-nodejs/setfanspeed.png)
 
