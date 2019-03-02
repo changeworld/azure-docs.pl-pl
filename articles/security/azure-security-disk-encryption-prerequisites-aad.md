@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/14/2019
+ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c648d5f46fc046fd2f1d5a716f6f1df55a27bf0
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: baaf7a6eff05cac9dce69c85b102182aca791a55
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991992"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247515"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -350,6 +350,8 @@ Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) umożliwia sz
 
 ## <a name="bkmk_KEK"></a> Konfigurowanie klucza szyfrowania (opcjonalnie)
 Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Użyj [Add-AzureKeyVaultKey](/powershell/module/az.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można także zaimportować KEK, z usługi zarządzania kluczami w środowisku lokalnym przez moduł HSM. Aby uzyskać więcej informacji, zobacz [Key Vault dokumentacji](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. 
+
+* Podczas generowania kluczy, należy użyć typu klucza RSA. Usługa Azure Disk Encryption nie obsługuje jeszcze przy użyciu kluczy krzywej eliptycznej.
 
 * KEK adresy URL i wpisu tajnego usługi key vault, na których musi być poddany kontroli wersji. Azure wymusza to ograniczenie wersji. Nieprawidłowy klucz tajny i adresy URL KEK zobacz następujące przykłady:
 

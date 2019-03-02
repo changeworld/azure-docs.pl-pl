@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: e845adc3aad21e62009ee9b99dbd65bcff794bd9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 497fc1dd5691b5aa33207c6a3943a51c473d2f6c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117804"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247209"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -153,7 +153,7 @@ Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajno
 
 Użyj [usługi Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) monitorowanie dostępności, wydajności i użycia aplikacji, czy jest hostowana w chmurze lub lokalnie. Za pomocą usługi Application Insights, możesz szybko identyfikować i diagnozować błędy w aplikacji bez oczekiwania na zgłoszenie ich przez użytkownika. Dzięki zbieranym informacjom można podejmować świadome decyzje w zakresie konserwacji i ulepszeń aplikacji.
 
-Usługa Application Insights ma szeroką gamę narzędzi do interakcji z danymi, które zbiera. Usługa Application Insights przechowuje dane we wspólnym repozytorium. Może korzystać ze wspólnej funkcjonalności, np. alertów, pulpitów nawigacyjnych, a także szczegółowej analizy przy użyciu języka zapytań usługi Log Analytics.
+Usługa Application Insights ma szeroką gamę narzędzi do interakcji z danymi, które zbiera. Usługa Application Insights przechowuje dane we wspólnym repozytorium. Może korzystać z udostępnionego funkcje, takie jak alerty, pulpitów nawigacyjnych i szczegółowa analiza za pomocą języka zapytania Kusto.
 
 
 

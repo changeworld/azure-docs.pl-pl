@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c66f0e67b09dab15431a8c7c10db1c820038dea6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7c76f7c5810370fa396b81bcc16e7e2204393bc1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984989"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247549"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -75,7 +75,7 @@ Wbudowane funkcje są zorganizowane w obszarach funkcjonalnych sześć (6): Oper
 Ta sekcja zawiera dodatkowe informacje na temat kluczowych funkcji zabezpieczeń i podsumowanie informacji o tych możliwości.
 
 ### <a name="security-and-audit-dashboard"></a>Zabezpieczenia i inspekcja pulpitu nawigacyjnego
-[Rozwiązania zabezpieczenia i inspekcja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) zapewnia kompleksowy wgląd w Twojej organizacji stan zabezpieczeń IT za pomocą [wbudowanych zapytań](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) wyszukujących istotne problemy, które wymagają Twojej uwagi. [Zabezpieczenia i inspekcja](https://technet.microsoft.com/library/mt484091.aspx) pulpit nawigacyjny jest głównym ekranem, aby wszystkie elementy związane z zabezpieczeniami, w usłudze Log Analytics. Zawiera ogólne informacje o stanie zabezpieczeń komputerów. Daje również możliwość wyświetlenia wszystkich zdarzeń z ostatnich 24 godzin, 7 dni lub dowolnego innego przedziału czasu.
+[Rozwiązania zabezpieczenia i inspekcja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) zapewnia kompleksowy wgląd w Twojej organizacji stan zabezpieczeń IT za pomocą [wbudowanych zapytań](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) wyszukujących istotne problemy, które wymagają Twojej uwagi. [Zabezpieczenia i inspekcja](https://technet.microsoft.com/library/mt484091.aspx) pulpit nawigacyjny jest głównym ekranem, aby wszystkie elementy związane z bezpieczeństwem dzienniki usługi Azure Monitor. Zawiera ogólne informacje o stanie zabezpieczeń komputerów. Daje również możliwość wyświetlenia wszystkich zdarzeń z ostatnich 24 godzin, 7 dni lub dowolnego innego przedziału czasu.
 
 Ponadto można skonfigurować zabezpieczenia i zgodność w celu [automatyczne wykonywanie czynności określonych](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) po wykryciu określonego zdarzenia.
 
@@ -94,10 +94,10 @@ Jeśli występują awarie, błędy lub problemy z wydajnością, możesz wyszuka
 ### <a name="azure-monitor"></a>Azure Monitor
 [Usługa Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) oferuje wizualizacji, zapytania, routingu, alerty, automatyczne skalowanie i automatyzacja danych zarówno od infrastruktury platformy Azure ([dziennika aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) i każdego pojedynczego zasobu platformy Azure ([diagnostyczne Rejestruje](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Za pomocą usługi Azure Monitor ostrzega zdarzeń dotyczących zabezpieczeń, które są generowane w dziennikach platformy Azure.
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) — stanowi rozwiązanie zarządzania IT dla zarówno lokalnych, jak i innych firm infrastruktury chmurowej (np. usług AWS) oprócz zasobów platformy Azure. Można je skierować dane z usługi Azure Monitor bezpośrednio do usługi Log Analytics, dzięki czemu można przeglądać dzienniki i metryki dla całego środowiska, w tym miejscu.
+### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
+[Dzienniki platformy Azure Monitor](https://azure.microsoft.com/documentation/services/log-analytics/) — stanowi rozwiązanie zarządzania IT dla zarówno lokalnych, jak i innych firm infrastruktury chmurowej (np. usług AWS) oprócz zasobów platformy Azure. Można je skierować dane z usługi Azure Monitor bezpośrednio do usługi Azure Monitor dzienników, dzięki czemu można przeglądać dzienniki i metryki dla całego środowiska, w tym miejscu.
 
-Usługa log Analytics mogą być przydatne narzędzie analizy śledczej i innych zabezpieczeń, jak to narzędzie pozwala szybko przeszukiwać dużych ilości wpisy związane z zabezpieczeniami dzięki podejściu elastyczne możliwości tworzenia zapytań. Ponadto w środowisku lokalnym [dzienniki zapory i serwera proxy można eksportować do platformy Azure i dostępne do analizy przy użyciu usługi Log Analytics.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
+Dzienniki monitora platformy Azure mogą być przydatne narzędzie analizy śledczej i innych zabezpieczeń, jak to narzędzie pozwala szybko przeszukiwać dużych ilości wpisy związane z zabezpieczeniami dzięki podejściu elastyczne możliwości tworzenia zapytań. Ponadto w środowisku lokalnym [dzienniki zapory i serwera proxy można eksportować do platformy Azure i udostępniane dla analizy przy użyciu dzienników usługi Azure Monitor.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Usługa Azure Advisor](https://docs.microsoft.com/azure/advisor/) to spersonalizowany konsultant ds. chmury, która pomaga w celu optymalizacji wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania, aby pomóc w ulepszaniu [wydajności](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [zabezpieczeń](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), i [wysokiej dostępności](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) Twoich zasobów, a także szuka możliwości [zmniejszyć ogólną Azure spend](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Usługa Azure Advisor zawiera zalecenia dotyczące zabezpieczeń, które może znacznie zwiększyć ogólną strukturę bezpieczeństwa dla rozwiązania, które można wdrożyć na platformie Azure. Te zalecenia są pobierane z analizy zabezpieczeń, wykonywane przez [usługi Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)

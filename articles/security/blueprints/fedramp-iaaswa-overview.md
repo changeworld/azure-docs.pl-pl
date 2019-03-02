@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6dd413a6b6550e18551db1105d306f8a0bdaf9c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: daa81f4ec14a0e022ea22948324478b8e9cc3ce3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106753"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247362"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web IaaS dla FedRAMP
 
@@ -72,8 +72,7 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegóły archi
 - W usłudze Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
-- Log Analytics
-- Azure Monitor
+- Usługa Azure Monitor (Dzienniki)
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 
@@ -148,11 +147,11 @@ Następujące technologie zapewniają tożsamość możliwości zarządzania w �
 
 ### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 
-Usługa log Analytics oferuje szczegółowe rejestrowanie aktywności systemu i użytkownika, a także kondycji systemu. [Usługi Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) rozwiązanie zbiera i analizuje dane generowane przez zasoby na platformie Azure i środowiskach lokalnych.
+Dzienniki platformy Azure Monitor zapewnia szczegółowe rejestrowanie aktywności systemu i użytkownika, a także kondycji systemu. [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) rozwiązanie zbiera i analizuje dane generowane przez zasoby na platformie Azure i środowiskach lokalnych.
 
 - **Dzienniki aktywności:**  [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
 - **Dzienniki diagnostyczne:**  [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki usługi Azure storage, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory.
-- **Archiwizowanie dziennika:**  Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Okres przechowywania jest konfigurowanych przez użytkownika, się do 730 dni, spełniają wymagania specyficzne dla organizacji przechowywania. Te dzienniki połączyć z usługą Azure Log Analytics do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym.
+- **Archiwizowanie dziennika:**  Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Okres przechowywania jest konfigurowanych przez użytkownika, się do 730 dni, spełniają wymagania specyficzne dla organizacji przechowywania. Te dzienniki nawiązać dzienniki usługi Azure Monitor do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym.
 
 Ponadto następujące rozwiązania do monitorowania są instalowane w ramach tej architektury. Należy zwrócić uwagę na to, że odpowiada klienta do skonfigurowania tych rozwiązań, aby było zgodne z FedRAMP środki kontroli bezpieczeństwa:
 -   [Ocena usługi AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie kondycja Sprawdzanie usługi Active Directory ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu i zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.

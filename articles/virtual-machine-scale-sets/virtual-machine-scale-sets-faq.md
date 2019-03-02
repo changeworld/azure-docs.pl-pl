@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 924ed7c2a253ab74a4807559d190218d3125b92c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8627f5bb704c963b628fb3dab29b6d2cfee0789b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978599"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247328"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -374,9 +374,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 Można znaleźć wartości extensionName w `$vmss`.
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Czy istnieje zestawu skalowania maszyn wirtualnych na przykład szablonu, która integruje się z usługą Log Analytics?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Jest przykład szablonu, która integruje się z dziennikami usługi Azure Monitor zestawu skalowania maszyn wirtualnych?
 
-Aby uzyskać przykład szablonu, która integruje się z usługą Log Analytics zestawu skalowania maszyn wirtualnych, zobacz drugi przykład w [wdrażanie klastra usługi Azure Service Fabric i Włącz monitorowanie za pomocą usługi Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
+Aby uzyskać przykład szablonu, która integruje się z dziennikami usługi Azure Monitor zestawu skalowania maszyn wirtualnych, zobacz drugi przykład w [wdrażanie klastra usługi Azure Service Fabric i Włącz monitorowanie przy użyciu dzienników usługi Azure Monitor](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
 
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Rozszerzenia wydają się uruchomić równolegle na zestawach skalowania maszyn wirtualnych. Powoduje to, że Moje niestandardowe rozszerzenie skryptu nie powiedzie się. Co mogę zrobić, aby rozwiązać ten problem?
 
@@ -658,7 +658,7 @@ Tak, można użyć operacji odtworzenia z obrazu, aby przywrócić Maszynę wirt
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie wszystkich maszyn wirtualnych w zestawie skalowania maszyn wirtualnych](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set).
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>Czy jest możliwe umożliwia zintegrowanie zestawów skalowania za pomocą usługi Azure Log Analytics?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Czy jest możliwe umożliwia zintegrowanie zestawów skalowania przy użyciu dzienników usługi Azure Monitor?
 
 Tak, możesz przez zainstalowanie rozszerzenia Log Analytics na skali ustawić maszyn wirtualnych. Oto przykład wiersza polecenia platformy Azure:
 ```
@@ -666,7 +666,10 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 ```
 Wymagany identyfikator workspaceId i klucz workspaceKey można znaleźć w obszarze roboczym usługi Log Analytics w witrynie Azure portal. Na stronie Przegląd kliknij Kafelek ustawienia. Kliknij kartę połączone źródła u góry.
 
-Uwaga: Jeśli w zestawie skalowania _upgradePolicy_ jest ustawiony na ręczny, należy zastosować rozszerzenie do wszystkich maszyn wirtualnych w zestawie przez wywołanie metody uaktualniania na nich. W interfejsie wiersza polecenia to _az vmss update-instances_.
+> [!NOTE]
+> Jeśli w zestawie skalowania _upgradePolicy_ jest ustawiony na ręczny, należy zastosować rozszerzenie do wszystkich maszyn wirtualnych w zestawie przez wywołanie metody uaktualniania na nich. W interfejsie wiersza polecenia to _az vmss update-instances_.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

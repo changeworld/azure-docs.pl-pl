@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 5fd885acc4294ae9f370d3becd0ad8cfb7935193
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 312e6c3c102946bcd19247f0730369dc7d0c8aba
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992366"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247430"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -54,8 +54,8 @@ Zobacz [uprawnień w usłudze Azure Security Center](security-center-permissions
 ## <a name="data-collection-agents-and-workspaces"></a>Zbieranie danych, agentów i obszary robocze
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy.
 
-### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Czy są naliczane dla usługi Log Analytics na obszarach roboczych utworzonych przez usługę Security Center?
-Nie. Obszary robocze utworzone przez usługę Security Center, skonfigurować usługi Log Analytics na węzeł, rozliczenia, nie są naliczane opłaty za usługi Log Analytics. Usługa Security Center są zawsze naliczane zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym:
+### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Czy są naliczane w przypadku dzienników usługi Azure Monitor na obszarach roboczych utworzonych przez usługę Security Center?
+Nie. Obszary robocze utworzone przez usługę Security Center, gdy skonfigurowane dla dzienników usługi Azure Monitor Naliczanie węzła, nie są naliczane opłaty dzienniki usługi Azure Monitor. Usługa Security Center są zawsze naliczane zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym:
 
 - **W warstwie bezpłatna** — usługa Security Center umożliwia rozwiązanie "SecurityCenterFree" na domyślnego obszaru roboczego. Nie są rozliczane w warstwie bezpłatna.
 - **W warstwie standardowa** — usługa Security Center umożliwia rozwiązanie "Zabezpieczenia" na domyślnego obszaru roboczego.
@@ -63,9 +63,11 @@ Nie. Obszary robocze utworzone przez usługę Security Center, skonfigurować us
 Aby uzyskać więcej informacji na temat cen, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/). Strona cennika adresów zmiany w magazynowaniu danych zabezpieczeń i proporcjonalnie rozliczanie począwszy od czerwca 2017 r.
 
 > [!NOTE]
-> Obszary robocze utworzone przez usługę Security Center warstwy cenowej w usłudze Log Analytics nie ma wpływu na rozliczenia w usłudze Security Center.
+> Obszary robocze utworzone przez usługę Security Center warstwy cenowej w usłudze log analytics nie ma wpływu na rozliczenia w usłudze Security Center.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ### <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>Co to jest uprawniony Maszynę wirtualną do automatycznej aprowizacji instalacja programu Microsoft Monitoring Agent?
 Windows lub maszyn wirtualnych IaaS z systemem Linux kwalifikuje się, jeśli:
@@ -217,7 +219,7 @@ Agent korzysta nominalna ilość zasobów systemowych i powinno mieć większego
 ### <a name="where-is-my-data-stored"></a>Gdzie są przechowywane moje dane?
 Dane zbierane z tego agenta są przechowywane w istniejącego obszaru roboczego usługi Log Analytics skojarzonych z subskrypcją lub nowy obszar roboczy. Aby uzyskać więcej informacji, zobacz [bezpieczeństwo danych](security-center-data-security.md).
 
-## Istniejący klienci usługi Log Analytics<a name="existingloganalyticscust"></a>
+## Istniejące usługi Azure Monitor dzienniki klientów<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Usługa Security Center, powoduje zastąpienia istniejące połączenia między maszynami wirtualnymi i obszary robocze?
 Jeśli maszyna wirtualna ma już zainstalowany program Microsoft Monitoring Agent jako rozszerzenie platformy Azure, usługa Security Center nie zastępuje istniejące połączenie z obszaru roboczego. Zamiast tego usługa Security Center korzysta z istniejącego obszaru roboczego.

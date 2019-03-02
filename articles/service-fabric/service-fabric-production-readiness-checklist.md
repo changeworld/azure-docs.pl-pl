@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo
-ms.openlocfilehash: 963587415e1060997b4f90e822c6c57a05610544
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c6b923808b7d1a1e29fa6847f3a975785ad7e798
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807171"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247498"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
@@ -42,9 +42,9 @@ Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastr
 6. Zrozumienie i ustaw [poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Typy węzłów obciążeń stanowych zaleca trwałości Silver lub wyższego poziomu. Podstawowy typ węzła powinny mieć poziom trwałości, ustaw Silver lub wyższej.
 7. Informacje, a następnie wybierz [poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu węzła. Zaleca się niezawodność Silver lub wyższego.
 8. Obciążenia i skalowanie Testuj obciążenia w taki sposób, aby zidentyfikować [wymagania dotyczące pojemności](service-fabric-cluster-capacity.md) dla klastra. 
-9. Usługi i aplikacje są monitorowane i dzienniki aplikacji są generowane i przechowywane w usłudze alertów. Na przykład zobacz [Dodawanie rejestrowania aplikacji usługi Service Fabric](service-fabric-how-to-diagnostics-log.md) i [monitorowania kontenerów za pomocą usługi Log Analytics](service-fabric-diagnostics-oms-containers.md).
-10. Klaster jest monitorowana przy użyciu alertów (na przykład za pomocą [usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)). 
-11. Podstawowa infrastruktura zestawu skalowania maszyn wirtualnych odbywa się za pomocą alertów (na przykład za pomocą [usługi Log Analytics](service-fabric-diagnostics-oms-agent.md).
+9. Usługi i aplikacje są monitorowane i dzienniki aplikacji są generowane i przechowywane w usłudze alertów. Na przykład zobacz [Dodawanie rejestrowania aplikacji usługi Service Fabric](service-fabric-how-to-diagnostics-log.md) i [monitorowania kontenerów za pomocą usługi Azure Monitor dzienników](service-fabric-diagnostics-oms-containers.md).
+10. Klaster jest monitorowana przy użyciu alertów (na przykład za pomocą [dzienniki usługi Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)). 
+11. Podstawowa infrastruktura zestawu skalowania maszyn wirtualnych odbywa się za pomocą alertów (na przykład za pomocą [dzienniki usługi Azure Monitor](service-fabric-diagnostics-oms-agent.md).
 12. Klaster ma [głównego i dodatkowego certyfikatu](service-fabric-cluster-security-update-certs-azure.md) zawsze (dzięki czemu można nie uzyskać blokady).
 13. Obsługa osobne klastry do rozwoju, przejściowe i produkcyjne. 
 14. [Uaktualnienia aplikacji](service-fabric-application-upgrade.md) i [klastra uaktualnień](service-fabric-tutorial-upgrade-cluster.md) są testowane w rozwoju i najpierw przemieszczania klastrów. 

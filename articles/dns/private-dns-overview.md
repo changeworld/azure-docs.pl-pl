@@ -5,18 +5,20 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 2/25/2019
+ms.date: 3/1/2019
 ms.author: victorh
-ms.openlocfilehash: f1e92c8581f8528b3622ad88f086d3f66619b996
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7f5f377f34a43dfb01ea516e023bb98f118d0dd4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823483"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247226"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Użyj usługi Azure DNS dla domen prywatnych
 
 System nazw domen lub DNS, odpowiada za tłumaczenia (lub rozpoznawanie) nazwę usługi na jej adres IP. Usługa hostingowa przeznaczona dla domen DNS, usługa Azure DNS udostępnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Oprócz obsługi domeny DNS na dostępnym z Internetu, usługi Azure DNS teraz obsługuje również prywatne domen DNS jako funkcja w wersji zapoznawczej.
+
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 Usługa DNS platformy Azure zapewnia niezawodną i bezpieczną usługę DNS do zarządzania nazwami i rozpoznawania domeny w sieci wirtualnej bez konieczności dodawania niestandardowego rozwiązania DNS. Przy użyciu prywatnych stref DNS, można użyć nazwy domeny niestandardowej, a nie nazwy platformy Azure, które muszą być dostępne już dzisiaj. Przy użyciu niestandardowych nazw domen pomaga dostosować architektury sieci wirtualnej w zależności do potrzeb swojej organizacji. Oferuje ona rozpoznawanie nazw maszyn wirtualnych (VM) w sieci wirtualnej, a także między sieciami wirtualnymi. Ponadto można skonfigurować nazwy stref z widokiem split-horizon, co pozwala prywatnej i publicznej strefie DNS mieć nazwę.
 
@@ -26,7 +28,8 @@ Jeśli określisz sieć wirtualną rejestracji, rekordy DNS dla maszyn wirtualny
 
 ![Omówienie systemu DNS](./media/private-dns-overview/scenario.png)
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+> [!NOTE]
+> Najlepszym rozwiązaniem jest nieużywanie domeny .local dla prywatnej strefy DNS. Nie wszystkie systemy operacyjne obsługują to.
 
 ## <a name="benefits"></a>Korzyści
 

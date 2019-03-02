@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 38a69327e5aaa758dc70ca950956d0bdc8001a4f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6fd25bbf6910140a338267c51955a817d0195939
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818089"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247192"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -324,7 +324,7 @@ Firma Microsoft zapewnia ochronę przed atakami DDoS, znane jako **podstawowe** 
 * **Dostrajanie adaptacyjne:** Profilowanie ruchu inteligentne uzyskuje informacje o ruchu danej aplikacji wraz z upływem czasu i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil, który dostosowuje się zgodnie z ruchem zmienia się wraz z upływem czasu. Warstwa 3 warstwy 7 ochrony: Zapewnia ochronę przed atakami DDoS pełnego stosu, gdy jest używane z zapory aplikacji sieci web.
 * **Skaluj rozbudowane środki zaradcze:** Ponad 60 ataku różnych typów można zminimalizować globalnego pojemność, aby zapewnić ochronę przed największych znane ataki DDoS.
 * **Metryki ataku:** Skrócona metryki z każdego ataku są dostępne za pośrednictwem usługi Azure Monitor.
-* **Alertowanie ataku:** Alerty można skonfigurować na początku i Zatrzymaj atak i czasie trwania ataku przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak Microsoft Azure Log Analytics, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal.
+* **Alertowanie ataku:** Alerty można skonfigurować na początku i Zatrzymaj atak i czasie trwania ataku przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak dzienniki, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal Microsoft Azure Monitor.
 * **Gwarancja kosztów:**  Transfer danych i aplikacji skalowalnego w poziomie zniżki w ramach udokumentowane ataki DDoS.
 * **Dynamiczne Rapid przed atakami DDoS** klientom wersji Standard ochrony przed atakami DDoS mają teraz dostęp do zespołu Rapid Response podczas aktywnego ataku. DRR może ułatwić badanie ataku, niestandardowe środki zaradcze podczas ataku i analizy po ataku.
 
@@ -401,4 +401,4 @@ Rejestrowanie na poziomie sieci jest funkcją klucza dla dowolnych scenariuszy z
 Można również użyć [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), narzędzi do wizualizacji danych zaawansowane, aby przeglądać i analizować te dzienniki.
 Więcej informacji:
 
-* [Usługa log Analytics dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md)
+* [Dzienniki monitora platformy Azure dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md)

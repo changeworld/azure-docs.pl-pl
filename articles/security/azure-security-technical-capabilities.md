@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: f615c4ca9ffc56daafcedd711f27672e0855e4fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 22160a46b0c1d8fe53abe20b3d8a1b83891de5da
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883951"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247583"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -398,19 +398,19 @@ Ponadto lista kontrolna:
 
 Bezpieczeństwa platformy Azure działa w oparciu o strukturę, która zawiera wiedzy uzyskanej dzięki różnych funkcji, które są unikatowe w firmie Microsoft, w tym Microsoft cykl projektowania zabezpieczeń (SDL), program Microsoft Security odpowiedzi Centrum oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) to rozwiązanie zarządzania IT dla chmury hybrydowej. Użyte bez parametrów lub rozszerzenie istniejącego wdrożenia programu System Center, usługi Log Analytics zapewnia maksymalną elastyczność i kontrolę dla zarządzania infrastrukturą w chmurze.
+[Usługa Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) to rozwiązanie zarządzania IT dla chmury hybrydowej. Użyte bez parametrów lub rozszerzyć Twoje istniejące wdrożenie programu System Center, dzienniki usługi Azure Monitor zapewnia maksymalną elastyczność i kontrolę dla zarządzania infrastrukturą w chmurze.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Za pomocą usługi Log Analytics można zarządzać dowolne wystąpienie w chmurze, w tym w środowisku lokalnym, Azure, AWS, systemu Windows Server, Linux, VMware i OpenStack przy niskich kosztach niż konkurencyjne rozwiązania. Oparta na świecie chmurę, usługa Log Analytics oferuje nowe podejście do zarządzania w przedsiębiorstwie, który jest najszybszym i najbardziej ekonomiczny sposób spełniają wyzwania biznesowe i nowych obciążeń, aplikacji i środowisk w chmurze.
+Dzięki usłudze Azure Monitor możesz zarządzać dowolne wystąpienie w chmurze, w tym w środowisku lokalnym, Azure, AWS, systemu Windows Server, Linux, VMware i OpenStack przy niskich kosztach niż konkurencyjne rozwiązania. Stworzona z myślą world pierwszy chmury, usługi Azure Monitor udostępnia nowe podejście do zarządzania w przedsiębiorstwie, który jest najszybszym i najbardziej ekonomiczny sposób spełniają wyzwania biznesowe i nowych obciążeń, aplikacji i środowisk w chmurze.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
+[Dzienniki platformy Azure Monitor](https://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Dzienniki usługi Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 Ta metoda umożliwia konsolidowanie danych z różnych źródeł, dzięki czemu można połączyć dane z usług platformy Azure przy użyciu istniejących lokalnych środowiska. Ponadto wprowadza wyraźny podział między zbieraniem danych a akcjami wykonanymi na tych danych, tak aby wszystkie akcje były dostępne dla wszystkich typów danych.
 

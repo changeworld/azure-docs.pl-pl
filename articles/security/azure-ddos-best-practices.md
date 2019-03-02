@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 9f837a5dbea15b159a226b12c034add1dcf69834
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117854"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247345"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Usługa Azure DDoS Protection: Najlepsze rozwiązania i architektury referencyjne
 
@@ -126,7 +126,7 @@ Usługa Azure DDoS Protection w warstwie podstawowa ułatwia ochronę klientów 
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>Ochrona przed atakami DDoS telemetrii, monitorowania i alertów
 
-Standard ochrony przed atakami DDoS udostępnia bogate dane telemetryczne za pośrednictwem [usługi Azure Monitor](../azure-monitor/overview.md) na czas trwania ataków DDoS. Można skonfigurować alerty dotyczące wszystkich metryk usługi Azure Monitor, który używa usługi DDoS Protection. Rejestrowanie można zintegrować z Splunk (usługa Azure Event Hubs), usługi Azure Log Analytics i Azure Storage w celu zaawansowanej analizy za pośrednictwem interfejsu usługi Azure Monitor Diagnostics.
+Standard ochrony przed atakami DDoS udostępnia bogate dane telemetryczne za pośrednictwem [usługi Azure Monitor](../azure-monitor/overview.md) na czas trwania ataków DDoS. Można skonfigurować alerty dotyczące wszystkich metryk usługi Azure Monitor, który używa usługi DDoS Protection. Rejestrowanie można zintegrować z Splunk (usługa Azure Event Hubs), dzienniki usługi Azure Monitor i Azure Storage w celu zaawansowanej analizy za pośrednictwem interfejsu usługi Azure Monitor Diagnostics.
 
 ##### <a name="ddos-mitigation-policies"></a>Zasady ograniczania ryzyka ataków DDoS
 

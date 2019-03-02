@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d07e11d005ac05c9bf048a48c5865885813707cb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d6644cf923d439a9f6ef13b53a84ff6626f04ade
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874549"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247464"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Uaktualnienie rozwiązań do analizy danych big data z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2
 
@@ -45,7 +45,7 @@ Ponadto istnieją składniki przekrojowe aprowizację, zarządzanie i monitorowa
 
 **Rysunek 2** przedstawiono przykład implementacji tych składników przy użyciu określonych technologii.
 
-Funkcje przechowywanie w **rysunek 1** są dostarczane przez Data Lake Storage Gen1 (**na rysunku 2**). Należy zwrócić uwagę interakcje różnych składników przepływu danych z Data Lake Storage Gen1 przy użyciu interfejsów API REST lub zestawu SDK języka Java. Należy również zauważyć, jak interakcji składników funkcji przekrojowe Data Lake Storage Gen1. Składnik aprowizacji przy użyciu szablonów zasobów platformy Azure, natomiast składnik monitorowania, który korzysta z usługi Log Analytics korzysta z danych operacyjnych, który pochodzi z Data Lake Storage Gen1.
+Funkcje przechowywanie w **rysunek 1** są dostarczane przez Data Lake Storage Gen1 (**na rysunku 2**). Należy zwrócić uwagę interakcje różnych składników przepływu danych z Data Lake Storage Gen1 przy użyciu interfejsów API REST lub zestawu SDK języka Java. Należy również zauważyć, jak interakcji składników funkcji przekrojowe Data Lake Storage Gen1. Składnik aprowizacji przy użyciu szablonów zasobów platformy Azure, natomiast składnik monitorowania, który używa dzienników usługi Azure Monitor korzysta z danych operacyjnych, który pochodzi z Data Lake Storage Gen1.
 
 Aby uaktualnić to rozwiązanie z przy użyciu Data Lake Storage Gen1 do Data Lake Storage Gen2, należy skopiować dane i metadane, ponowne utworzenie punktu zaczepienia przepływów danych, a następnie wszystkie składniki będą musiały mieć możliwość pracy z Data Lake Storage Gen2.
 

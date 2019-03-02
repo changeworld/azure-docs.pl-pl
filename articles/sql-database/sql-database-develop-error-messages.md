@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/01/2019
+ms.openlocfilehash: 3e31842cf4b6afa2117ea71c644b0376e8434bd0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003673"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247311"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich bazy danych SQL: Błędy połączenia bazy danych i inne problemy
 
@@ -58,7 +58,7 @@ Następujące błędy są przejściowe i powinno być ponowione w aplikacji logi
 | 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |
 | 40197 |17 |Usługa napotkała błąd podczas przetwarzania Twojego żądania. Spróbuj ponownie. Kod błędu: %d.<br/><br/>Ten błąd jest wyświetlany, gdy usługa nie działa z powodu oprogramowania lub Modernizacje sprzętu, awarii sprzętu lub innych problemów trybu failover. Kod błędu: (%d) osadzane komunikat o błędzie 40197 zawiera dodatkowe informacje dotyczące rodzaju awarii lub pracy awaryjnej, który wystąpił. Niektóre przykłady błąd, który kodów są osadzane komunikat o błędzie 40197 są 40020, 40143, 40166 i 40540.<br/><br/>Ponowne nawiązywanie połączenia z serwerem bazy danych SQL Database automatycznie łączy dobrej kondycji kopię bazy danych. Aplikację należy przechwytywać 40197, dziennik błędów osadzony kod błędu: (%d) w ramach komunikatu w celu rozwiązywania problemów i ponowić próbę połączenia do bazy danych SQL, dopóki zasoby są dostępne, a następnie połączenie zostanie nawiązane ponownie. |
 | 40501 |20 |Usługa jest obecnie zajęta. Ponów żądanie po 10 sekundach. Identyfikator zdarzenia: %ls. Kod: %d.<br/><br/>Aby uzyskać więcej informacji, zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'. |
+| 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'.<br/><br/> Ten błąd może wystąpić, jeśli istnieje już istniejące dedykowane połączenie administratora (DAC) ustalone w bazie danych. |
 | 49918 |16 |Nie można przetworzyć żądania. Za mało zasobów do przetwarzania żądania.<br/><br/>Usługa jest obecnie zajęta. Ponów próbę żądania później. |
 | 49919 |16 |Nie można przetworzyć tworzenia lub aktualizacji żądania. Zbyt wiele operacji tworzenia lub aktualizacji w toku dla subskrypcji "% ld".<br/><br/>Usługa jest zajęta przetwarzania wielu Tworzenie lub żądania dla Twojej subskrypcji lub serwera aktualizacji. Żądania są obecnie zablokowane do optymalizacji zasobów. Zapytanie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dla oczekujących operacji. Poczekaj, aż do czasu tworzenia lub aktualizacji żądania są ukończone lub usuń jedno z oczekujących żądań i ponów żądanie później. |
 | 49920 |16 |Nie można przetworzyć żądania. Za dużo operacji w toku dla subskrypcji "% ld".<br/><br/>Usługa jest zajęta przetwarzaniem wiele żądań dla tej subskrypcji. Żądania są obecnie zablokowane do optymalizacji zasobów. Zapytanie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dotyczące stanu operacji. Zaczekaj, aż oczekujące żądania są zakończone lub usuń jedno z oczekujących żądań i ponów żądanie później. |
