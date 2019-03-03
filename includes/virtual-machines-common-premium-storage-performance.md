@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a04a9f225d46ae3dc51381f01984a4ac2af3448f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5f97c2997711c30ad52e5209ba86e0d1bfe30ea8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890934"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57251922"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -69,11 +69,11 @@ Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje W
 
 Następujące operacje warstwy kontroli na dyskach zarządzanych może obejmować przenoszenie dysków z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, który może zająć kilka godzin, zależnie od ilości danych na dyskach zazwyczaj mniej niż 24 godziny. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.
 
-1. [Aktualizuj typ magazynu](../articles/virtual-machines/windows/convert-disk-storage.md).
-1. [Odłącz i dołączanie dysku z jednej maszyny Wirtualnej do innego](../articles/virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
-1. [Tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md).
-1. [Tworzenie dysku zarządzanego na podstawie migawki](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-1. [Konwertowanie z dysków niezarządzanych do usługi managed disks](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
+- Zaktualizuj typ magazynu.
+- Odłącz i dołączanie dysku z jednej maszyny Wirtualnej do innego.
+- Tworzenie dysku zarządzanego na podstawie dysku VHD.
+- Tworzenie dysku zarządzanego na podstawie migawki.
+- Konwertowanie dysków niezarządzanych do dysków zarządzanych.
 
 # <a name="performance-application-checklist-for-disks"></a>Lista kontrolna dotycząca wydajności aplikacji dla dysków
 

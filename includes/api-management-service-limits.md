@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 646ebc79e3615b289b60e47c0a38595e7892d8cc
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 609eaa25640e74ffe3b39606051edd7048f72497
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55084893"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57251881"
 ---
 | Zasób | Limit |
 | --- | --- |
@@ -23,7 +23,8 @@ ms.locfileid: "55084893"
 | Połączenia współbieżne zaplecza<sup>3</sup> na urząd HTTP | 2048 jednostkę<sup>4</sup> |
 | Rozmiar maksymalny odpowiedzi z pamięci podręcznej | 2MB |
 | Zasady maksymalnego rozmiaru dokumentu | 256KB<sup>5</sup> | 
-| Maksymalna bram domen na wystąpienie usługi<sup>6</sup> | 20 | 
+| Maksymalna bram domen na wystąpienie usługi<sup>6</sup> | 20 |
+| Maksymalna liczba certyfikatów urzędu certyfikacji na wystąpienie usługi | 10 | 
 | Maksymalna liczba wystąpień usługi na subskrypcję<sup>7</sup> | 20 | 
 | Maksymalna liczba subskrypcji na wystąpienie usługi<sup>7</sup> | 500 |
 | Maksymalna liczba certyfikatów klienta dla każdego wystąpienia usługi<sup>7</sup> | 50 | 
