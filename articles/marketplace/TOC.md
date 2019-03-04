@@ -14,6 +14,7 @@
 #### [Zarządzanie potencjalnymi klientami](./lead-management-for-cloud-marketplace.md)
 #### [Przeprowadzanie transakcji w witrynie Azure Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 #### [Oferty prywatne](./private-offers.md)
+#### [Kontrakt standardowy](./standard-contract.md)
 
 ### [Podręcznik publikowania dla różnych typów ofert](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
@@ -30,13 +31,16 @@
 #### [Najlepsze rozwiązania dotyczące ofert](./gtm-offer-listing-best-practices.md)
 #### [Jak sprawić, by oferta była polecana](./gtm-how-to-get-featured.md)
 #### [Weryfikowanie zawartości w witrynie Marketplace](./marketplace-criteria-content-validation.md)
+#### [Dostawcy rozwiązań w chmurze](./cloud-solution-providers.md)
 
 ### [Korzyści na platformie handlowej](./gtm-your-marketplace-benefits.md)
 #### [Promowanie swojej firmy we współpracy z firmą Microsoft](./gtm-promote-your-business.md)
 #### [Preferowane rozwiązania](./preferred-solutions.md) 
+#### [Zintegrowane rozwiązania](./integrated-solutions.md)
 
 ### [Pomoc techniczna dla witryny Azure Marketplace i usługi AppSource](./support-azure-marketplace.md)
 #### [Portal Marketplace — często zadawane pytania](./marketplace-faq-publisher-guide.md)
+#### [Dostępność geograficzna i waluty](./marketplace-geo-availability-currencies.md)
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
