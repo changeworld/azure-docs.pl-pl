@@ -10,15 +10,15 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/09/2018
+ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2d171235a23d3e41fda6172efe29b3bb358f0e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 1d385fd8c8388e3ce54b89ff2ac863cd5a1aa0df
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804182"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216139"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
@@ -46,7 +46,7 @@ Podczas korzystania z planu zużycie wystąpień hosta usługi Azure Functions s
 > [!NOTE]
 > Domyślna wartość limitu czasu dla funkcji w ramach planu zużycie wynosi 5 minut. Wartość może zostać zwiększone dla aplikacji funkcji, maksymalnie do 10 minut, zmieniając właściwość `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
 
-Rozliczanie jest na podstawie liczby wykonań, czas wykonywania i używanej pamięci. Opłaty są agregowane w obrębie wszystkich funkcji w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Usługa Azure Functions, cennik].
+Rozliczanie jest na podstawie liczby wykonań, czas wykonywania i używanej pamięci. Opłaty są agregowane w obrębie wszystkich funkcji w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [usługi Azure Functions stronę z cennikiem].
 
 Plan zużycie jest domyślny plan hostingu i zapewnia następujące korzyści:
 
@@ -125,7 +125,8 @@ Jednostka skalowania jest aplikacja funkcji. Gdy aplikacja funkcji jest skalowan
 Skalowanie może się różnić od szeregu czynników, a inaczej w zależności od języka wybranego i wyzwalaczy skalowania. Jednak istnieje kilka aspektów skalowania, które już dziś istnieją w systemie:
 
 * Pojedynczą aplikację funkcji można skalować w górę do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jednego komunikatu lub żądania naraz, więc nie ma ustawiony limit na liczbę współbieżnych wykonań.
-* Nowe wystąpienia tylko zostaną przydzielone co najwyżej raz na 10 sekund.
+* Wyzwalaczy HTTP nowe wystąpienia zostaną tylko przydzielone co najwyżej raz na 1 sekundę.
+* Wyzwalaczy protokołu HTTP nowe wystąpienia zostaną tylko przydzielone co najwyżej raz na 30 sekund.
 
 Różnymi wyzwalaczami mogą także mieć różne, w ograniczonym zakresie, a także udokumentowanego poniżej:
 
@@ -137,9 +138,9 @@ Istnieje wiele aspektów aplikacji funkcji, które mają wpływ na sposób równ
 
 ### <a name="billing-model"></a>Model rozliczania
 
-Okres rozliczeniowy za plan zużycie został szczegółowo opisany na [Usługa Azure Functions, cennik]. Sposób użycia są agregowane na poziomie aplikacji funkcji i zlicza czas, który jest wykonywany kod funkcji. Jednostki do rozliczeń są następujące:
+Okres rozliczeniowy za plan zużycie został szczegółowo opisany na [usługi Azure Functions stronę z cennikiem]. Sposób użycia są agregowane na poziomie aplikacji funkcji i zlicza czas, który jest wykonywany kod funkcji. Jednostki do rozliczeń są następujące:
 
 * **Użycie zasobów w gigabajtosekundach (GB-s)**. Obliczona jako rozmiar pamięci i czas wykonywania dla wszystkich funkcji w ramach aplikacji funkcji. 
 * **Liczba wykonań**. Zliczane każdorazowo, gdy funkcja jest wykonywana w odpowiedzi na wyzwalacz zdarzenia.
 
-[Usługa Azure Functions, cennik]: https://azure.microsoft.com/pricing/details/functions
+[usługi Azure Functions stronę z cennikiem]: https://azure.microsoft.com/pricing/details/functions
