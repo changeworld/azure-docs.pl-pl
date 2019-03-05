@@ -1314,7 +1314,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                         <li>
                                             <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>Podstawy usługi IoT</p>
+                                                <p>Azure IoT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3929,12 +3929,12 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/iothub.svg" alt="" />
+                                                        <img src="media/index/question-mark-grey.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Podstawy usługi IoT</h3>
-                                                    <p>Wprowadzenie do łączenia urządzeń</p>
+                                                    <h3>Jesteś nowym użytkownikiem usługi Azure IoT?</h3>
+                                                    <p>Zacznij tutaj, aby dowiedzieć się, która usługa spełnia Twoje wymagania</p>
                                                 </div>
                                             </div>
                                         </div>

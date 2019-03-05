@@ -25,6 +25,10 @@ items:
       href: cost-mgt-best-practices.md
     - name: Omówienie danych usługi Cost Management
       href: understand-cost-mgt-data.md
+    - name: Opis zakresów i praca z nimi
+      href: understand-work-scopes.md
+    - name: Migrowanie z EA do interfejsów API umowy klienta firmy Microsoft
+      href: migrate-cost-management-api.md
   - name: Przewodniki z instrukcjami
     items:
     - name: Przypisywanie dostępu do danych
@@ -113,9 +117,9 @@ items:
         href: cost-mgt-faq.md
       - name: Skontaktuj się z pomocą techniczną platformy Cloudyn
         href: support-request-cost-management.md
-ms.openlocfilehash: ae9155548a839db18fc80f40c12e5264643cea9d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: deec8d274f50f2fad6b18141ec924245c3c2f5ec
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769019"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337859"

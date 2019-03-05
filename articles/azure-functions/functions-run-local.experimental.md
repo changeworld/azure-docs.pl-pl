@@ -11,18 +11,29 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2e2a388b399ff34e36ab65a734593704cf274dc0
+ms.openlocfilehash: 401cd6b2a78072c8299f32f60f1ac3677f05557c
 ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312090"
+ms.locfileid: "57318747"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
 Podstawowe narzędzia usługi Azure Functions umożliwia opracowywanie i testowanie funkcji na komputerze lokalnym z wiersza polecenia lub terminalu. Funkcji lokalnych można nawiązać połączenie na żywo usług platformy Azure, a następnie można debugować funkcje na komputerze lokalnym przy użyciu pełne środowisko uruchomieniowe usługi Functions. Możesz nawet wdrożyć aplikację funkcji do subskrypcji platformy Azure.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
+
+Tworzenie funkcji na komputerze lokalnym i publikowania ich na platformie Azure przy użyciu podstawowych narzędzi obejmuje następujące podstawowe kroki:
+
+> [!div class="checklist"]
+> * [Instalowanie podstawowych narzędzi i zależności.](#v2)
+> * [Tworzenie projektu aplikacji funkcji z szablonu specyficzny dla języka.](#create-a-local-functions-project)
+> * [Rejestrowanie rozszerzeń wyzwalacz i powiązania.](#register-extensions)
+> * [Zdefiniuj magazynu i innych połączeń.](#local-settings-file)
+> * [Tworzenie funkcji wyzwalacza i szablonów specyficzne dla języka.](#create-func)
+> * [Lokalne uruchamianie funkcji](#start)
+> * [Publikowanie projektu na platformie Azure](#publish)
 
 ## <a name="core-tools-versions"></a>Podstawowe narzędzia wersji
 

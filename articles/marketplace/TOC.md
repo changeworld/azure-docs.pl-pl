@@ -199,7 +199,9 @@
 ##### [Karta kontaktów](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
 #### [Publikowanie oferty](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [Aktualizowanie istniejącej oferty](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
-#### [Interfejsy API aplikacji SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+#### [Interfejsy API realizacji SaaS](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md)
+##### [Interfejs API SaaS w wersji 1](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md) 
+##### [Interfejs API SaaS w wersji 2](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md) 
 
 ### [Oferta maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [Wymagania wstępne](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)

@@ -10,23 +10,25 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: cae02627c539e543d27ea188d521605f187ea8a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: accb2b730d5b165e29a1ff050cbb2c0ffa2f379d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475350"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317173"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Czerwiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w czerwca 2018 r. 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
 Usługa SQL Data Warehouse automatycznie tworzy migawki magazynu danych, co 8 godzin, gwarantując, że cel punktu odzyskiwania ośmiu godzin (RPO). Chociaż to automatyczne migawki łatwość zarządzaniem uruchamiania usługi data warehouse ma trzeba wykonać migawki w czasie krytycznych, zgodnie z potrzebami firmy. Na przykład robienie bezpośrednio poprzedzający obciążenia duża ilość danych lub wdrażania nowych skryptów do magazynu danych, aby włączyć punkt przywracania, bezpośrednio przed wykonaniem operacji. 
 
-Usługa SQL Data Warehouse obsługuje teraz [punkty przywracania na zdefiniowanych przez użytkownika](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) za pośrednictwem [New AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) polecenia cmdlet.
+Usługa SQL Data Warehouse obsługuje teraz [punkty przywracania na zdefiniowanych przez użytkownika](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) za pośrednictwem [New AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) polecenia cmdlet.
 
 ```PowerShell
-New-AzureRmSqlDatabaseRestorePoint
+New-AzSqlDatabaseRestorePoint
     -ResourceGroupName $ResourceGroupName
     -ServerName $ServerName
     -DatabaseName $DatabaseName

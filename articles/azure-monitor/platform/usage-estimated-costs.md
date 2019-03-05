@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: e6207c44fbac63163d125a109cbdc1c6f08e9860
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1ae35c30e0379ed7a0f1fac16c279651e3bcd8fd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734508"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315881"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
 
@@ -23,6 +23,8 @@ ms.locfileid: "55734508"
 > - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](../../azure-monitor/platform/manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
 > - [Analizowanie użycia danych w usłudze Log Analytics](../../azure-monitor/platform/data-usage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
 > - [Zarządzanie cenami i ilością danych w usłudze Application Insights](../../azure-monitor/app/pricing.md) opisano, jak i analizowanie użycia danych w usłudze Application Insights.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 W Centrum monitora w witrynie Azure Portal **użycie i szacunkowe koszty** stronie wyjaśniamy użycia podstawowej platformy monitorowania funkcji, takich jak [, alertów metryk, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [usługi Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów na plany cenowe dostępne przed kwietnia 2018 r. obejmuje to także użycie usługi Log Analytics, które zostały zakupione w ramach wgląd w dane i Analytics oferuje.
 
@@ -112,14 +114,14 @@ Aby przenieść subskrypcję do nowego modelu cen, po prostu zaznacz pole, a nas
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Automatyzowanie przenoszenia do nowego modelu cen
 
-Poniższe skrypty wymagają modułu programu Azure PowerShell. Aby sprawdzić, czy masz najnowszą wersję, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.1.0).
+Poniższe skrypty wymagają modułu programu Azure PowerShell. Aby sprawdzić, czy masz najnowszą wersję, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
-Gdy masz najnowszą wersję programu Azure PowerShell, czy należy najpierw uruchomić ``Connect-AzureRmAccount``.
+Gdy masz najnowszą wersję programu Azure PowerShell, czy należy najpierw uruchomić ``Connect-AzAccount``.
 
 ``` PowerShell
 # To check if your subscription is eligible to adjust pricing models.
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -138,7 +140,7 @@ Aby przeprowadzić migrację tej subskrypcji do nowego modelu cen, uruchom:
 
 ```PowerShell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action migratetonewpricingmodel `
@@ -149,7 +151,7 @@ Aby sprawdzić, czy zmiana została pomyślnie ponownie:
 
 ```PowerShell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -170,7 +172,7 @@ Jeśli potrzebujesz powrócić do starego modelu cen, możesz uruchomić następ
 
 ```PowerShell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action rollbacktolegacypricingmodel `
@@ -184,7 +186,7 @@ Jeśli masz wiele subskrypcji, które chcesz zmigrować, które są obsługiwane
 ```PowerShell
 #Query tenant and create an array comprised of all of your tenants subscription ids
 $TenantId = <Your-tenant-id>
-$Tenant =Get-AzureRMSubscription -TenantId $TenantId
+$Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
 ```
 
@@ -194,7 +196,7 @@ Aby sprawdzić, czy wszystkie subskrypcje w ramach dzierżawy są kwalifikuje si
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -212,7 +214,7 @@ Skrypt może być dostosowany dalsze poprzez utworzenie skryptu, który generuje
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-$Result= Invoke-AzureRmResourceAction `
+$Result= Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action listmigrationdate `
@@ -244,7 +246,7 @@ Teraz, gdy masz subskrypcji, który został podzielony na trzy tablice należy d
 Foreach ($id in $Eligible)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzureRmResourceAction `
+Invoke-AzResourceAction `
  -ResourceId $ResourceID `
  -ApiVersion "2017-10-01" `
  -Action migratetonewpricingmodel `

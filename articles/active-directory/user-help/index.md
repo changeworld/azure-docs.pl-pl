@@ -51,10 +51,9 @@ Przygotowaliśmy tę zawartość, aby ułatwić konfigurowanie i używanie infor
                         <p>
                         <a href="/azure/active-directory/user-help/myprofile-portal-overview">Omówienie</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-security-info-overview">Zarządzanie informacjami zabezpieczającymi</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">Wyświetlanie ostatniej aktywności związanej z logowaniem</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Zarządzanie swoimi organizacjami</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Zarządzanie swoimi połączonymi urządzeniami</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Wyświetlanie swoich informacji związanych z prywatnością</a><br/>                       
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Wyświetlanie swoich informacji związanych z prywatnością</a>
                         </p>
                     </div>
                 </div>
