@@ -12,14 +12,16 @@ ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 3a937af5fba2c534e291a51c33c50434ab166ee0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5401c852decf0bcae3e86d1914b7cb6b47b4422a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868769"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317513"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Odczyt skalowalnego w poziomie** pozwala załadować saldo usługa Azure SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu.
 
@@ -29,7 +31,7 @@ Każda baza danych w warstwie Premium ([modelu zakupu opartego na jednostkach DT
 
 Te repliki są aprowizowane za pomocą tego samego rozmiaru obliczeń jako replika odczytu i zapisu, używanych przez połączenia bazy danych w regularnych. **Odczytu skalowalnego w poziomie** funkcja pozwala załadować saldo bazy danych SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu nie udostępniały repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu, a nie ma wpływu na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza, a w związku z tym można także umożliwia czerpanie korzyści wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
 
-Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, należy go najpierw włączyć podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [ Nowy-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metody.
+Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, należy go najpierw włączyć podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [AzSqlDatabase zestaw](/powershell/module/az.sql/set-azsqldatabase) lub [New AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metody.
 
 Po włączeniu odczytu skalowalnego w poziomie dla bazy danych aplikacji łączących się tej bazy danych z nastąpi przekierowanie do repliki odczytu i zapisu lub tylko do odczytu replik tej bazy danych zgodnie z opisem w `ApplicationIntent` właściwości skonfigurowane w aplikacji Parametry połączenia. Instrukcje dotyczące `ApplicationIntent` właściwości, zobacz [Określanie przeznaczenia aplikacji](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
@@ -82,24 +84,24 @@ Odczyt skalowalnego w poziomie jest domyślnie włączone w [wystąpienia zarzą
 
 Zarządzanie odczytu skalowalnego w poziomie w programie Azure PowerShell wymaga grudnia 2016 r. wersja programu Azure PowerShell lub nowszej. Dla najnowszej wersji programu PowerShell, zobacz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Włączanie lub wyłączanie odczytu skalowalnego w poziomie w programie Azure PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) polecenia cmdlet i przekazując żądaną wartość — `Enabled` lub `Disabled` — dla `-ReadScale` parametru. Alternatywnie można użyć [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) polecenia cmdlet, aby utworzyć nową bazę danych z odczytu skalowalnego w poziomie włączone.
+Włączanie lub wyłączanie odczytu skalowalnego w poziomie w programie Azure PowerShell, wywołując [AzSqlDatabase zestaw](/powershell/module/az.sql/set-azsqldatabase) polecenia cmdlet i przekazując żądaną wartość — `Enabled` lub `Disabled` — dla `-ReadScale` parametru. Alternatywnie można użyć [New AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) polecenia cmdlet, aby utworzyć nową bazę danych z odczytu skalowalnego w poziomie włączone.
 
 Na przykład aby włączyć odczytać skalowalnego w poziomie dla istniejącej bazy danych (zamianę elementów w nawiasy kątowe poprawne wartości dla danego środowiska i upuszczając nawiasy kątowe):
 
 ```powershell
-Set-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
+Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
 ```
 
 Aby wyłączyć odczytu skalowalnego w poziomie do istniejącej bazy danych (zamianę elementów w nawiasy kątowe poprawne wartości dla danego środowiska i upuszczając nawiasy kątowe):
 
 ```powershell
-Set-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
 ```
 
 Aby utworzyć nową bazę danych za pomocą odczytu skalowalnego w poziomie włączone (zastępując elementy w nawiasy kątowe poprawne wartości dla danego środowiska i upuszczając nawiasy kątowe):
 
 ```powershell
-New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
+New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
 ### <a name="rest-api-enable-and-disable-read-scale-out"></a>INTERFEJS API REST: Włączanie i wyłączanie odczytu skalowalnego w poziomie
@@ -129,5 +131,5 @@ Jeśli używasz odczytu skalowalnego w poziomie można załadować saldo tylko d
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak ustawić odczytu skalowalnego w poziomie przy użyciu programu PowerShell, zobacz [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) polecenia cmdlet.
+- Aby dowiedzieć się, jak ustawić odczytu skalowalnego w poziomie przy użyciu programu PowerShell, zobacz [AzSqlDatabase zestaw](/powershell/module/az.sql/set-azsqldatabase) lub [New AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) polecenia cmdlet.
 - Aby dowiedzieć się, jak ustawić odczytu skalowalnego w poziomie przy użyciu interfejsu API REST, zobacz [baz danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).

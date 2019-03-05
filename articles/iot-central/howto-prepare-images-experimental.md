@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b0262ecbcc5a7f512c8779c230b2e2d4bb039842
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 29f838637a3881ab36d6edb58c215a55de422d68
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216683"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315014"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotuj i przekazywać obrazy do aplikacji usługi Azure IoT Central
 
@@ -74,17 +74,17 @@ Do przekazania obrazu do użycia na **aplikacje** stronie, przejść do **ustawi
 
 ![Przekaż obraz aplikacji](media/howto-prepare-images-experimental/uploadapplicationmanager.png)
 
-Kliknij Kafelek obrazu aplikacji, aby przekazać przygotowany obraz (268 x 160 pikseli) z komputera lokalnego.
+Wybierz Kafelek obrazu aplikacji, aby przekazać przygotowany obraz (268 x 160 pikseli) z komputera lokalnego.
 
 ### <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
-Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit nawigacyjny** strony aplikacji i kliknij pozycję **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit nawigacyjny** strony aplikacji i wybierz **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
 
 ![Przekaż obraz pulpitu nawigacyjnego](media/howto-prepare-images-experimental/uploadhomepage.png)
 
-W obszarze skonfigurować obraz kliknij Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze skonfigurować obrazu wybierz Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
-**Zapisz** przekazanego obrazu. Możesz zmienić jego rozmiar w trybie edycji. Po zakończeniu kliknij przycisk **Done** (Gotowe).
+**Zapisz** przekazanego obrazu. Możesz zmienić jego rozmiar w trybie edycji. Wybierz **gotowe** po zakończeniu.
 
 ### <a name="device-template"></a>Szablon urządzenia
 
@@ -92,7 +92,7 @@ Aby przekazać obraz na podstawie szablonu urządzenia, przejdź do **szablonów
 
 ![Przekazywanie obrazu szablonu urządzenia](media/howto-prepare-images-experimental/uploaddevicetemplate.png)
 
-Kliknij Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego.
+Wybierz Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego.
 
 ### <a name="device-dashboard"></a>Pulpit nawigacyjny urządzenia
 
@@ -100,19 +100,19 @@ Aby przekazać obraz na pulpicie nawigacyjnym urządzenia, przejdź do **szablon
 
 ![Przekazywanie obrazu do pulpitu nawigacyjnego urządzeń](media/howto-prepare-images-experimental/uploaddevicedashboard.png)
 
-W ramach konfigurowania obrazu kliknij Kafelek obrazu, a następnie wybierz plik do przekazania z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W ramach konfigurowania obrazu wybierz Kafelek obrazu, a następnie wybierz plik do przekazania z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
-**Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Po zakończeniu kliknij przycisk **Done** (Gotowe).
+**Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Wybierz **gotowe** po zakończeniu.
 
 ### <a name="device-set-dashboard"></a>Pulpit nawigacyjny zestawu urządzeń
 
-Aby przekazać obraz na pulpicie nawigacyjnym zestawu urządzeń, przejdź do **zestawy urządzeń** i wybierz zestaw urządzeń, a następnie urządzenia. Następnie wybierz **pulpit nawigacyjny** strony, a następnie kliknij pozycję **Edytuj**:
+Aby przekazać obraz na pulpicie nawigacyjnym zestawu urządzeń, przejdź do **zestawy urządzeń** i wybierz zestaw urządzeń, a następnie urządzenia. Następnie wybierz **pulpit nawigacyjny** strony i wybierz **Edytuj**:
 
 ![Przekaż obraz pulpitu nawigacyjnego zestawu urządzeń](media/howto-prepare-images-experimental/uploaddevicesetdashboard.png)
 
-W obszarze skonfigurować obraz kliknij Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze skonfigurować obrazu wybierz Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
-**Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Po zakończeniu kliknij przycisk **Done** (Gotowe).
+**Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Wybierz **gotowe** po zakończeniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

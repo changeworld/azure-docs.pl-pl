@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: b08e8ea6a8768510177f1ea664f3036813e1a890
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 47acccf0cdb246683314322ed73f21446e3a9345
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009923"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310033"
 ---
 # <a name="manage-azure-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
 
 W tym artykule opisano sposób zarządzania maszynami wirtualnymi Azure kopii zapasowej za pomocą [usługę Azure Backup](backup-overview.md) kopie zapasowe, a także podsumowano alerty kopii zapasowej informacji dostępnych w pulpicie nawigacyjnym portalu.
-
 
 W witrynie Azure portal na pulpicie nawigacyjnym magazynu usług Recovery Services zapewnia dostęp do informacji na temat magazynu, w tym:
 
@@ -42,20 +41,17 @@ Możesz zarządzać kopiami zapasowymi przy użyciu pulpitu nawigacyjnego, a prz
 4. Otwórz pulpit nawigacyjny magazynu.
     ![Otwórz pulpit nawigacyjny i blok ustawień](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-4. Na **elementy kopii zapasowej** kafelków, kliknij przycisk **maszyn wirtualnych platformy Azure**.
+5. Na **elementy kopii zapasowej** kafelków, kliknij przycisk **maszyn wirtualnych platformy Azure**.
 
     ![Otwarte elementy kopii zapasowej kafelka](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-5. W **elementów kopii zapasowych** bloku, możesz zobaczyć ostatnie zadanie tworzenia kopii zapasowej dla każdego elementu. W tym przykładzie istnieje jedna maszyna wirtualna, demovm markgal, są chronione przez ten magazyn.  
+6. W **elementów kopii zapasowych** bloku, możesz zobaczyć ostatnie zadanie tworzenia kopii zapasowej dla każdego elementu. W tym przykładzie istnieje jedna maszyna wirtualna, demovm markgal, są chronione przez ten magazyn.  
 
     ![Kafelek elementów kopii zapasowych](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-
-6. Na pulpicie nawigacyjnym elementu magazynu można utworzyć lub zmodyfikować zasady tworzenia kopii zapasowych, Wyświetl punkty przywracania, uruchom zatrzymywanie tworzenia kopii zapasowej, na żądanie i wznowić ochronę maszyn wirtualnych, usunąć punkty odzyskiwania i uruchom Przywracanie.
+7. Na pulpicie nawigacyjnym elementu magazynu można utworzyć lub zmodyfikować zasady tworzenia kopii zapasowych, Wyświetl punkty przywracania, uruchom zatrzymywanie tworzenia kopii zapasowej, na żądanie i wznowić ochronę maszyn wirtualnych, usunąć punkty odzyskiwania i uruchom Przywracanie.
 
     ![Pulpit nawigacyjny elementów kopii zapasowych, z bloku ustawień](./media/backup-azure-manage-vms/item-dashboard-settings.png)
-
-
 
 ## <a name="manage-backup-policies"></a>Zarządzanie zasadami tworzenia kopii zapasowych
 1. Na [pulpitu nawigacyjnego magazynu elementu](#view-vms-in-the-dashboard), kliknij przycisk **wszystkie ustawienia** .
@@ -71,7 +67,9 @@ Możesz zarządzać kopiami zapasowymi przy użyciu pulpitu nawigacyjnego, a prz
 
 
 ## <a name="run-an-on-demand-backup"></a>Uruchomienie w kopii zapasowej na żądanie
+
 Na żądanie można wykonać kopii zapasowej maszyny wirtualnej, po został skonfigurowany do ochrony.
+
 - Jeśli tworzenie początkowej kopii zapasowej jest w stanie oczekiwania, kopii zapasowej na żądanie tworzy pełną kopię maszyny wirtualnej w magazynie usługi Recovery Services.
 - Jeśli tworzenie początkowej kopii zapasowej zostało ukończone, kopii zapasowej na żądanie wysyła zmian od poprzedniej migawki w magazynie usługi Recovery Services. Oznacza to, że kolejne kopie zapasowe są zawsze przyrostowe.
 - Zakres przechowywania dla kopii zapasowej na żądanie jest wartość przechowywania określona w momencie wyzwalanie zadania tworzenia kopii zapasowej.
@@ -101,7 +99,7 @@ Istnieją dwa sposoby na zatrzymanie ochrony maszyn wirtualnych:
 
 >[!NOTE]
 >
-* Jeśli użytkownik **Zatrzymaj kopię zapasową** z **Zachowaj dane kopii zapasowej**, nie wygasną punktów odzyskiwania zgodnie z zasadami tworzenia kopii zapasowych. Opłaty są naliczane za chronione wystąpienia i użytego miejsca do magazynowania. Punkty odzyskiwania zostaną tylko wyczyszczone po wznowienia tworzenia kopii zapasowych (ponownie włączysz ochronę) zgodnie z zasadami lub ręcznie usuń dane kopii zapasowej.
+* Jeśli użytkownik **Zatrzymaj kopię zapasową** z **Zachowaj dane kopii zapasowej**, zgodnie z zasadami tworzenia kopii zapasowych nie wygasną punktów odzyskiwania, ponieważ kolekcja pamięci (GC) nie działa dla nieaktywnych źródeł danych. Opłaty są naliczane za chronione wystąpienia i użytego miejsca do magazynowania. Punkty odzyskiwania zostaną tylko wyczyszczone po wznowienia tworzenia kopii zapasowych (ponownie włączysz ochronę) zgodnie z zasadami lub ręcznie usuń dane kopii zapasowej.
 * Jeśli usuniesz źródła danych bez zatrzymywania tworzenia kopii zapasowych, nowych kopii zapasowych będzie kończyć się niepowodzeniem. Ponownie wygaśnie stare punkty odzyskiwania zgodnie z zasadami, ale jeden z ostatniego punktu odzyskiwania zawsze zostaną zachowane, dopóki Zatrzymaj kopię zapasową i Usuń dane.
 
 Aby zatrzymać ochronę dla maszyny wirtualnej:
@@ -112,7 +110,6 @@ Aby zatrzymać ochronę dla maszyny wirtualnej:
     ![Zatrzymaj ochronę](./media/backup-azure-manage-vms/retain-or-delete-option.png)
 
  Komunikat powiadomienia informuje o tym, że zadania tworzenia kopii zapasowej zostały zatrzymane.
-
 
 ## <a name="resume-protection-of-a-vm"></a>Wznawianie ochrony maszyny Wirtualnej
 
@@ -145,7 +142,7 @@ Ta procedura zakłada, zadanie tworzenia kopii zapasowej dla maszyny Wirtualnej 
 
     ![Zatrzymaj weryfikacji](./media/backup-azure-manage-vms/item-verification-box.png)
 
-4. Aby usunąć dane kopii zapasowej dla bieżącego elementu, kliknij przycisk ![kopii zapasowej przycisk Zatrzymaj](./media/backup-azure-manage-vms/delete-button.png)
+3. Aby usunąć dane kopii zapasowej dla bieżącego elementu, kliknij przycisk ![kopii zapasowej przycisk Zatrzymaj](./media/backup-azure-manage-vms/delete-button.png)
 
     Komunikat powiadomienia informuje o tym, czy dane kopii zapasowej został usunięty.
 

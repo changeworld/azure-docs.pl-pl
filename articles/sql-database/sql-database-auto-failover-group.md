@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 5afd5020b060961d215b922c9e49466b73f2a69e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 862cc4da99aed02b81b6fd12913736bf30866f72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889889"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313603"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -304,14 +304,16 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Program PowerShell: Zarządzanie za pomocą pojedynczych baz danych i pul elastycznych, tryb failover bazy danych SQL
 
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+
 | Polecenie cmdlet | Opis |
 | --- | --- |
-| [New-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje je na serwerach podstawowych i pomocniczych|
-| [Remove-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | Usuwa grupę trybu failover z serwera i usuwa wszystkie pomocnicze bazy danych są uwzględnione grupy |
-| [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Pobiera konfigurację grupy trybu failover |
-| [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Modyfikuje konfigurację grupy trybu failover |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy |
-| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Dodaje jeden lub więcej baz danych do grupy trybu failover usługi Azure SQL Database|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje je na serwerach podstawowych i pomocniczych|
+| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Usuwa grupę trybu failover z serwera i usuwa wszystkie pomocnicze bazy danych są uwzględnione grupy |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Pobiera konfigurację grupy trybu failover |
+| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modyfikuje konfigurację grupy trybu failover |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Dodaje jeden lub więcej baz danych do grupy trybu failover usługi Azure SQL Database|
 |  | |
 
 > [!IMPORTANT]
@@ -341,11 +343,11 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 
 | Interfejs API | Opis |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |To polecenie tworzy grupę trybu failover i rejestruje je na serwerach podstawowych i pomocniczych|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Modyfikuje konfigurację grupy trybu failover|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Pobiera konfigurację grupy trybu failover|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
+| New-AzSqlDatabaseInstanceFailoverGroup |To polecenie tworzy grupę trybu failover i rejestruje je na serwerach podstawowych i pomocniczych|
+| Set-AzSqlDatabaseInstanceFailoverGroup |Modyfikuje konfigurację grupy trybu failover|
+| Get-AzSqlDatabaseInstanceFailoverGroup |Pobiera konfigurację grupy trybu failover|
+| Switch-AzSqlDatabaseInstanceFailoverGroup |Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy|
+| Remove-AzSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie grupy trybu failover bazy danych SQL za pomocą jednego i puli baz danych
 

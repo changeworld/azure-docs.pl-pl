@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0d49045eea5a65461b142262bae83b9b8e7f84c8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ff68bfc9cdd13563fa8f938870742e9e9ceac9c2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816593"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313263"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów przy użyciu planów usługi Azure
 
@@ -65,7 +65,7 @@ Przekazywanie parametru planu, który używa funkcji, takich jak `[resourceGroup
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Aby przekazać za pośrednictwem funkcji jako parametr, ucieczki cały ciąg z `[` taki sposób, że parametr planu wygląda `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że schematy traktowanie wartości jako ciąg, podczas przetwarzania planu. Schematy umieszcza funkcja artefaktu, co pozwala na dynamiczne, zgodnie z oczekiwaniami.
+Aby przekazać za pośrednictwem funkcji jako parametr, ucieczki cały ciąg z `[` taki sposób, że parametr planu wygląda `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że schematy traktowanie wartości jako ciąg, podczas przetwarzania planu. Schematy umieszcza funkcja artefaktu, co pozwala na dynamiczne, zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [pliku szablonu, struktura — składnia](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

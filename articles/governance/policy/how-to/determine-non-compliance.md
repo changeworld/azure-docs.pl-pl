@@ -1,5 +1,5 @@
 ---
-title: Określić przyczyny braku zgodności
+title: Ustalanie przyczyn niezgodności
 description: Jeśli zasób jest niezgodne, istnieje wiele możliwych przyczyn. Dowiedz się dowiedzieć się, co było przyczyną braku zgodności.
 services: azure-policy
 author: DCtheGeek
@@ -8,14 +8,14 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bdc7e635537eb4f836f0d4b5e2c18cc62b7fd310
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890465"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314130"
 ---
-# <a name="determine-causes-of-non-compliance"></a>Określić przyczyny braku zgodności
+# <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
 Zasób platformy Azure zostanie uznane za niezgodne reguły zasad, to zrozumieć, która część reguły, zasób nie jest zgodne z. Jest to również przydatne zrozumieć, jakie zmiany zmienić uprzednio zgodna zasobów, aby stał się brak zgodności. Istnieją dwa sposoby znajdowania tych informacji:
 
@@ -108,7 +108,7 @@ Następujące macierzy mapuje każdą możliwą _Przyczyna_ w odpowiedzialne [wa
 
 ## <a name="change-history-preview"></a>Historia zmian (wersja zapoznawcza)
 
-Jako część nowego **publicznej wersji zapoznawczej**, w ciągu ostatnich 14 dni historii zmian jest dostępny dla wszystkich zasobów platformy Azure, która obsługuje [ukończyć usuwanie tryb](../../../azure-resource-manager/complete-mode-deletion.md). Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości Menedżera zasobów.
+Jako część nowego **publicznej wersji zapoznawczej**, w ciągu ostatnich 14 dni zmian historii jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [ukończyć usuwanie tryb](../../../azure-resource-manager/complete-mode-deletion.md). Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości Menedżera zasobów.
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 

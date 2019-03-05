@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
 ms.date: 01/17/2019
-ms.openlocfilehash: c6d0d2eec61375760ee3dc4e4b100b24cef2b405
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: f27a5b0deb0dd446d4f05b0a6d6e96d67d24d9e9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388782"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316000"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrację certyfikatu chronione TDE w bazie danych do wystąpienia zarządzanego Azure SQL Database
 
@@ -35,17 +35,19 @@ Alternatywną możliwość bezproblemowej migracji zarówno bazy danych chronion
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Do wykonania kroków opisanych w tym artykule potrzebne jest spełnienie następujących wymagań wstępnych:
 
 - Narzędzie wiersza polecenia [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) zainstalowane na serwerze lokalnym lub innym komputerze z dostępem do certyfikatu wyeksportowanego jako plik. Narzędzie Pvk2Pfx stanowi część [Zestawu sterowników systemu Windows dla przedsiębiorstw](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) — autonomicznego, samodzielnego środowiska wiersza polecenia.
 - Zainstalowany program [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) w wersji 5.0 lub nowszej.
-- [Zainstalowany i zaktualizowany](https://docs.microsoft.com/powershell/azure/install-az-ps) moduł AzureRM PowerShell.
-- [Moduł AzureRM.Sql](https://www.powershellgallery.com/packages/AzureRM.Sql) w wersji 4.10.0 lub nowszej.
+- Moduł programu Azure PowerShell [zainstalować i zaktualizować](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
   Aby zainstalować/zaktualizować moduł programu PowerShell, w programie PowerShell uruchom następujące polecenia:
 
    ```powershell
-   Install-Module -Name AzureRM.Sql
-   Update-Module -Name AzureRM.Sql
+   Install-Module -Name Az.Sql
+   Update-Module -Name Az.Sql
    ```
 
 ## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>Eksportowanie certyfikatu TDE do pliku wymiany informacji osobistych (pfx)
@@ -116,13 +118,13 @@ Jeśli certyfikat jest przechowywany w magazynie certyfikatów komputera lokalne
 
    ```powershell
    # Import the module into the PowerShell session
-   Import-Module AzureRM
+   Import-Module Az
    # Connect to Azure with an interactive dialog for sign-in
-   Connect-AzureRmAccount
+   Connect-AzAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
-   Get-AzureRmSubscription
+   Get-AzSubscription
    # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
-   Select-AzureRmSubscription Guid_Subscription_Id
+   Select-AzSubscription Guid_Subscription_Id
    ```
 
 2. Po ukończeniu wszystkich kroków przygotowawczych uruchom następujące polecenia, aby przekazać certyfikat zakodowany w formacie Base-64 do docelowego wystąpienia zarządzanego:
@@ -133,7 +135,7 @@ Jeśli certyfikat jest przechowywany w magazynie certyfikatów komputera lokalne
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-   Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
+   Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
 Certyfikat jest teraz dostępny dla określonego wystąpienia zarządzanego i można pomyślnie przywrócić kopię zapasową odpowiedniej bazy danych chronionej przez funkcję TDE.

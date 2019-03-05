@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: c62581447cd395bd48a787fa7dc89659d5172486
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a1071bb690fc5714890116c757c3036916bf1700
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192249"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314099"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopiowanie lub klonowanie fabrykę danych w usłudze Azure Data Factory
 
@@ -35,6 +35,8 @@ Poniżej przedstawiono okoliczności, w których może okazać się przydatne ko
 1. Interfejs użytkownika usługi Data Factory w witrynie Azure portal umożliwia wyeksportowanie ładunku całej fabryki danych do szablonu usługi Resource Manager oraz plik parametrów, który pozwala zmienić wszelkie wartości, które chcesz zmienić podczas klonowania fabryką.
 
 1. Jako warunek wstępny należy utworzyć fabrykę danych docelowych w witrynie Azure portal.
+
+1. Jeśli masz SelfHosted IntegrationRuntime w fabryce źródła, musisz ponownie go utworzyć o tej samej nazwie w fabryce docelowego. Jeśli chcesz udostępnić IRs SelfHosted między różnych fabryk, możesz użyć wzorca opublikowane [tutaj](author-visually.md#best-practices-for-git-integration).
 
 1. Jeśli jesteś w trybie GIT, za każdym razem, gdy publikowanie z poziomu portalu, fabryka jest szablon usługi Resource Manager są zapisywane do repozytorium GIT w gałęzi adf_publish repozytorium.
 

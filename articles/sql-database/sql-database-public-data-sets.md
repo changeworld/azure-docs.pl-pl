@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 8aad3cf0bfeb2f8586bca1072f3e395e196f3e0c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 4963114f3646453510e20c7071157c952e52c40f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098497"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307143"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
@@ -46,7 +46,7 @@ Przeglądaj tej listy publicznych zestawach danych dla danych, które umożliwia
 | [Otwórz dane do analizy danych w chmurze](https://www.opensciencedatacloud.org/) | "Otwórz danych do analizy w chmurze zapewnia środowiska nauki z zasobami na potrzeby przechowywania, udostępnianie i analizowanie zestawów terabajtów i petabajtów danych naukowych".| Zestawy danych są w różnych formatach. |
 | [Global climate data - WorldClim](http://worldclim.org/) | "WorldClim to zbiór klimatycznych warstwy (gridded klimatu danych) z przestrzenny km2 około 1. Tych danych może służyć do mapowania i modelowanie przestrzennych." | Te pliki zawierają dane geograficzne. Aby uzyskać więcej informacji, zobacz [format danych](http://worldclim.org/formats1). |
 | [Dane dotyczące społeczności ludzkiej - GDELT projektu](http://www.gdeltproject.org/data.html) | "Projekt GDELT jest największy, najbardziej kompleksowy i najwyższą rozkład otworzyć bazy danych społeczeństwa ludzi, jakie kiedykolwiek było". | Pliki nieprzetworzone dane są w formacie CSV. |
-| [Reklamy kliknij danymi przewidywań uczenia maszynowego z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Największą kiedykolwiek publicznie wydana ML zestawu danych." Aby uzyskać więcej informacji, zobacz [firmy Criteo 1 TB kliknij prognozowania Dataset](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [Reklamy kliknij danymi przewidywań uczenia maszynowego z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Największą kiedykolwiek publicznie wydana ML zestawu danych." Aby uzyskać więcej informacji, zobacz [firmy Criteo 1 TB kliknij prognozowania Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
 | [Zestaw danych ClueWeb09 tekst wyszukiwania z projektu Lemur](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 zestawu danych został utworzony w celu obsługi badań pobierania informacji i technologii pokrewnych języka ludzi. Składa się z około 1 miliard stron sieci web w 10 językach, które zostały zebrane w styczniu i lutego 2009." | Zobacz [informacji zestawu danych](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
 ## <a name="online-service-data"></a>Dane usługi online

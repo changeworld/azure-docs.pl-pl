@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 15ca464e8e44183b445bfdabe9abf5dd560a4f70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456286"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312265"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Punkty końcowe usługi sieci wirtualnej i reguł na użytek serwerów baz danych
 
@@ -174,6 +174,8 @@ Program PolyBase jest najczęściej używany do ładowania danych do usługi Azu
 
 #### <a name="prerequisites"></a>Wymagania wstępne
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
@@ -182,9 +184,9 @@ Program PolyBase jest najczęściej używany do ładowania danych do usługi Azu
 1.  W programie PowerShell **zarejestrować serwer bazy danych SQL** za pomocą usługi Azure Active Directory (AAD):
 
     ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+    Connect-AzAccount
+    Select-AzSubscription -SubscriptionId your-subscriptionId
+    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
@@ -273,7 +275,7 @@ W tej sekcji przedstawiono, jak można użyć [witryny Azure portal] [ http-azur
 
 ## <a name="powershell-alternative"></a>Zamiast programu PowerShell
 
-Skrypt programu PowerShell można również tworzyć reguły sieci wirtualnej. Polecenia cmdlet kluczowym **New-AzureRmSqlServerVirtualNetworkRule**. Jeśli chcesz się dowiedzieć, zobacz [programu PowerShell, aby utworzyć regułę i punkt końcowy usługi sieci wirtualnej dla usługi Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Skrypt programu PowerShell można również tworzyć reguły sieci wirtualnej. Polecenia cmdlet kluczowym **New AzSqlServerVirtualNetworkRule**. Jeśli chcesz się dowiedzieć, zobacz [programu PowerShell, aby utworzyć regułę i punkt końcowy usługi sieci wirtualnej dla usługi Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>Alternatywą dla interfejsu API REST
 

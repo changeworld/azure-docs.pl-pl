@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d50f25fbe10fc5ac4e834141fe7ac45fbed918ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819454"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309030"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Rozwiązywanie problemów z błędami nieprawidłowej bramy w usłudze Application Gateway
 
 Dowiedz się, jak rozwiązywać problemy z nieprawidłową bramą (502) błędy odebrane podczas korzystania z bramy aplikacji.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Przegląd
 
@@ -50,21 +52,21 @@ Sprawdzanie poprawności konfiguracji sieciowej grupy zabezpieczeń, Routing zde
 * Sprawdź Routing zdefiniowany przez użytkownika skojarzona z podsiecią bramy aplikacji. Upewnij się, że trasa zdefiniowana przez użytkownika nie jest kierowanie ruchu od podsieci wewnętrznej bazy danych — na przykład wyszukać routingu do sieci wirtualnych urządzeń sieciowych lub domyślne trasy anonsowane do podsieci bramy aplikacji za pośrednictwem usługi ExpressRoute/sieci VPN.
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
-Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
 * Sprawdź skuteczne sieciowej grupy zabezpieczeń i tras za pomocą wewnętrznej bazy danych maszyny Wirtualnej
 
 ```powershell
-Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
-Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
 * Sprawdź występowanie niestandardowe DNS w sieci wirtualnej. DNS można sprawdzić, patrząc na szczegółowe informacje o właściwościach sieci wirtualnej w danych wyjściowych.
 
 ```json
-Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
 DhcpOptions            : {
                            "DnsServers": [
                              "x.x.x.x"
@@ -132,7 +134,7 @@ Po odebraniu żądania użytkownika usługa Application Gateway stosuje skonfigu
 Usługa Application Gateway umożliwia użytkownikom do skonfigurowania tego ustawienia za pośrednictwem parametr BackendHttpSetting, który można następnie zastosować do różnych pul. Różnych pul zaplecza może mieć inny parametr BackendHttpSetting i dlatego innego żądania limitu czasu skonfigurowane.
 
 ```powershell
-    New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+    New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
 ## <a name="empty-backendaddresspool"></a>Empty BackendAddressPool
@@ -146,7 +148,7 @@ Jeśli Application Gateway nie ma maszyn wirtualnych lub zestawu skalowania masz
 Upewnij się, że pula adresów zaplecza nie jest pusta. Można to zrobić za pośrednictwem programu PowerShell, interfejsu wiersza polecenia lub portalu.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
 Dane wyjściowe z poprzedniego polecenia cmdlet powinna zawierać puli adresów zaplecza niepusta. Poniżej znajduje się przykład gdzie dwie pule powrócisz, które są skonfigurowane przy użyciu nazwy FQDN lub adresów IP dla maszyn wirtualnych w wewnętrznej bazie danych. Stan aprowizacji BackendAddressPool musi mieć wartość "Succeeded".

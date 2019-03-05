@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 235d6174153e32b40885811350d967af5b98ecc4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fcfe8ed0bc132377fbaefaccb03e1d6a9374b8d6
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478368"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312483"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizowanie wydajności przy użyciu technologii w pamięci w bazie danych SQL
 
@@ -88,7 +88,7 @@ Szybkie Elementarz na OLTP w pamięci: [Szybki Start 1: Technologie OLTP w pami�
 Szczegółowe materiały wideo o technologii:
 
 - [OLTP w pamięci w usłudze Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (który zawiera pokaz korzyści wydajności i kroki umożliwiające odtworzenie tych wyników, samodzielnie)
-- [Przetwarzanie OLTP danych w pamięci wideo: Co to jest i gdy/jak z niej korzystać](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Przetwarzanie OLTP danych w pamięci wideo: Co to jest i gdy/jak z niej korzystać](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
 Brak programowy sposób, aby dowiedzieć się, czy określona baza danych obsługuje przetwarzanie OLTP danych w pamięci. Można wykonać następujące zapytanie Transact-SQL:
 ```
@@ -150,7 +150,7 @@ Istnieją dwa typy modeli magazynu kolumn, które umożliwiają organizowanie da
 
 Szczegółowe wideo na temat technologii:
 
-- [Indeks magazynu kolumn: Analizowania w pamięci wideo z konferencji Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Indeks magazynu kolumn: Analizowania w pamięci wideo z konferencji Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Rozmiar danych i magazynu dla indeksów magazynu kolumn
 

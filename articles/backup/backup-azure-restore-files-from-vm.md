@@ -7,14 +7,14 @@ manager: shivamg
 keywords: odzyskiwanie na poziomie elementu; odzyskiwanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure; Przywracanie plików z maszyny Wirtualnej platformy Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 2/26/2019
+ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 4bae9a09dad217b8d805a64372ed404eb7ada723
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6c2ade276e43f5e40d334a62c62a1abaa42b1b78
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874173"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308945"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -74,13 +74,15 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
     - wychodząca przez port 3260
 
 > [!Note]
-> Nazwa pliku pobranego skryptu będzie mieć "geo-name" ma zostać wypełniony w adresie URL. Na przykład: Nazwa pobranego skryptu, który rozpoczyna się od \'VMname\'\_\'geoname\'_\'GUID\', takich jak ContosoVM_wcus_12345678... Adres URL "https://pod01-rec2.wcus.backup.windowsazure.com"
-> 
+>
+* Nazwa pliku pobranego skryptu będą mieć **geo-name** ma zostać wypełniony w adresie URL. Na przykład: Nazwa pobranego skryptu, który rozpoczyna się od \'VMname\'\_\'geoname\'_\'GUID\', takich jak ContosoVM_wcus_12345678...<br><br>
+* Adres URL "https://pod01-rec2.wcus.backup.windowsazure.com"
+
 
    Dla systemu Linux skrypt wymaga "Otwórz za pomocą usługi iscsi" i "lshw" składników, aby połączyć się z punktem odzyskiwania. Jeśli nie istnieją składniki na komputerze, na którym skrypt jest uruchamiany, skrypt monituje o podanie uprawnień zainstalować składniki. Zgody Aby zainstalować wymagane składniki.
-   
+
    Dostęp do witrynie download.microsoft.com jest wymagany do pobierania składniki używane do tworzenia bezpiecznego kanału między komputerem, w której skrypt jest uruchamiany i danych w punkcie odzyskiwania.
-   
+
    Skrypt można uruchomić na dowolnym komputerze, który ma system operacyjny tego samego (lub zgodny) jako kopii zapasowej maszyny Wirtualnej. Zobacz [tabeli zgodny system operacyjny](backup-azure-restore-files-from-vm.md#system-requirements) zgodnych systemów operacyjnych. Jeśli chronionej maszyny wirtualnej platformy Azure używa do magazynowania systemu Windows (w przypadku maszyn wirtualnych platformy Azure Windows) lub tablic LVM/RAID (dla maszyn wirtualnych systemu Linux), nie możesz uruchomić plik wykonywalny lub skrypt na tej samej maszyny wirtualnej. Zamiast tego należy uruchomić plik wykonywalny lub skrypt na dowolnym komputerze, przy użyciu zgodny system operacyjny.
 
 ### <a name="identifying-volumes"></a>Identyfikowanie woluminów
@@ -96,7 +98,7 @@ Podczas uruchamiania pliku wykonywalnego systemu operacyjnego na komputerze inst
 W systemie Linux woluminy punktu odzyskiwania są instalowane w folderze, w którym skrypt jest uruchamiany. W związku z tym są wyświetlane dołączonych dysków, woluminów i odpowiadające im ścieżki instalacji. Zainstaluj te ścieżki są widoczne dla użytkowników mających dostęp na poziomie głównym. Przeglądaj woluminy wymienionych w danych wyjściowych skryptu.
 
   ![Menu odzyskiwania plików w systemie Linux](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
-  
+
 ## <a name="closing-the-connection"></a>Zamykanie połączenia
 
 Po Trwa identyfikowanie plików i skopiować je do lokalizacji magazynu lokalnego, usuń lub odinstaluj dodatkowe dyski. Aby odinstalować dyski, na **odzyskiwanie plików** menu w witrynie Azure portal kliknij **odinstaluj dyski**.
@@ -113,8 +115,8 @@ W systemie Linux, po połączenie punkt odzyskiwania jest oddzielone, system ope
 
 Jeśli chronione maszyny Wirtualnej platformy Azure ma woluminy zawierające jeden lub oba z następujących cech, nie można uruchomić pliku wykonywalnego skrypt na tej samej maszyny Wirtualnej.
 
-    - Woluminy, które obejmują wiele dysków (łączone i woluminów rozłożonych)
-    - Odporne na uszkodzenia (woluminy dublowane i RAID-5) w przypadku dysków dynamicznych
+- Woluminy, które obejmują wiele dysków (łączone i woluminów rozłożonych)
+- Odporne na uszkodzenia (woluminy dublowane i RAID-5) w przypadku dysków dynamicznych
 
 Zamiast tego należy uruchomić pliku wykonywalnego skryptów na dowolnym innym komputerze przy użyciu zgodny system operacyjny.
 
@@ -230,3 +232,41 @@ Jeśli masz problemy podczas odzyskiwania pliki z maszyn wirtualnych, sprawdź p
 | Dane wyjściowe pliku exe: Skrypt jest uruchamiany pomyślnie, ale "Nowe woluminy dołączony" nie jest wyświetlany w danych wyjściowych skryptu |    Jest to błąd przejściowy    | Woluminy będą zostały już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli do uruchamiania skryptów za każdym razem, gdy używane są tym samym komputerze, należy rozważyć ponowne uruchomienie komputera i lista powinna być wyświetlana w uruchamia kolejne exe. |
 | Systemu Linux jest szczególne: Nie można wyświetlić żądanego woluminy | Maszyny, na którym skrypt jest uruchamiany system operacyjny nie może rozpoznać bazowego systemu plików chronionych maszyn wirtualnych | Sprawdź, czy punkt odzyskiwania jest awarii zgodne lub spójna na poziomie plików. Jeśli plik spójne, uruchom skrypt na innej maszyny którego OS rozpoznaje chronionej maszyny Wirtualnej w systemie plików |
 | Windows jest szczególne: Nie można wyświetlić żądanego woluminy | Dyski zostały dołączone, ale nie skonfigurowano woluminów | Na ekranie zarządzania dyskami zidentyfikować dodatkowe dyski powiązane z punktem odzyskiwania. Jeśli dowolny z tych dysków znajdują się w trybie offline stan spróbuj, dzięki czemu ich w trybie online, klikając prawym przyciskiem myszy na dysku, a następnie kliknij przycisk "Online"|
+
+## <a name="security"></a>Bezpieczeństwo
+
+W tej sekcji omówiono różne środki bezpieczeństwa wykonaniu odzyskiwanie plików z kopii zapasowych maszyn wirtualnych platformy Azure, w taki sposób, że użytkownicy zapoznali się z aspektów zabezpieczeń funkcji.
+
+### <a name="feature-flow"></a>Funkcja przepływu
+
+Ta funkcja została skompilowana do dostępu do danych maszyny Wirtualnej bez konieczności przywracania całej maszyny Wirtualnej lub maszyny Wirtualnej dyski i minimalną procedurę. Dostęp do danych maszyny Wirtualnej znajduje się za pomocą skryptu, (które instaluje woluminu odzyskiwania, podczas uruchamiania, jak pokazano poniżej), a więc stanowi podstawę wszystkich implementacjach zabezpieczeń
+
+  ![Przepływ funkcji zabezpieczeń](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
+
+### <a name="security-implementations"></a>Implementacje zabezpieczeń
+
+#### <a name="select-recovery-point-who-can-generate-script"></a>Wybierz punkt odzyskiwania, (który można wygenerować skrypt)
+
+Skrypt zapewnia dostęp do danych maszyny Wirtualnej, należy koniecznie regulują, który można wygenerować w pierwszej kolejności. Jeden musi zalogować się do witryny Azure portal i powinna być [uprawnień RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) aby można było wygenerować skryptu.
+
+Odzyskiwanie plików wymaga takiego samego poziomu autoryzacji zgodnie z wymaganiami dotyczące przywracania maszyny Wirtualnej i przywracania dysków. Innymi słowy tylko autoryzowani użytkownicy mogą widoku danych maszyny Wirtualnej można wygenerować skryptu.
+
+Wygenerowany skrypt jest podpisany za pomocą oficjalnego certyfikatu firmy Microsoft dla usługi Azure Backup. Wszelkie manipulowanie skrypt oznacza, że podpis jest uszkodzony, a każda próba uruchomienia skryptu jest wyróżniony jako potencjalne ryzyko przez system operacyjny.
+
+#### <a name="mount-recovery-volume-who-can-run-script"></a>Odzyskiwanie instalacji woluminu, (który można uruchomić skrypt)
+
+Tylko administrator może uruchomić skrypt i uruchomić go w trybie podniesionych uprawnień. Skrypt tylko uruchamia wstępnie wygenerowanego zestawu kroków, a nie akceptuje dane wejściowe z dowolnego źródła zewnętrznego.
+
+Aby uruchomić skrypt, jeden wymaga hasła, która jest wyświetlana tylko do autoryzowanych użytkowników w czasie generowania skryptu w witrynie Azure portal lub programu PowerShell/interfejsu wiersza polecenia. To, aby upewnić się, że autoryzowanym użytkownikiem, który pobiera skrypt jest również odpowiedzialny za działanie skryptu.
+
+#### <a name="browse-files-and-folders"></a>Przeglądanie plików i folderów
+
+Aby przeglądać pliki i foldery, skrypt używa inicjatora iSCSI na maszynie i połączyć się z punktem odzyskiwania, który jest skonfigurowany jako obiektu docelowego iSCSI. W tym miejscu jeden założono scenariuszy, w którym jeden próbuje naśladowania/fałszywe albo/wszystkie składniki.
+
+Używamy wzajemnego mechanizm uwierzytelniania CHAP, dzięki czemu każdy składnik uwierzytelnia drugiego. Oznacza to, że trudno fałszywych inicjatora łączyć się z obiektem docelowym iSCSI i fałszywych docelowej będą podłączone do maszyny, na którym skrypt jest uruchamiany.
+
+Przepływ danych między usługą odzyskiwania i komputer jest chroniony przez tworzenia bezpiecznego tunelu protokołu SSL za pośrednictwem protokołu TCP ([protokołu TLS 1.2 powinna być obsługiwana](#system-requirements) na maszynie, na którym skrypt jest uruchamiany)
+
+Każdy plik kontroli dostępu do listy (ACL) w nadrzędnej/kopii zapasowej maszyny Wirtualnej są zachowywane również w zainstalowanym systemie plików.
+
+Skrypt umożliwia dostęp tylko do odczytu do punktu odzyskiwania i jest prawidłowy tylko przez 12 godzin. Jeśli użytkownik chce usunąć dostęp do wcześniej, następnie zaloguj się do portalu/PowerShell/wiersza polecenia platformy Azure i wykonać **odinstaluj dyski** dla tego określonego punktu odzyskiwania. Skrypt zostanie unieważniony natychmiast.

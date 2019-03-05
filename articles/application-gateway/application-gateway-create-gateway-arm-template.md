@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b41fbc3e834c7740d435e30a571d2a00671bfa64
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002092"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316408"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Tworzenie bramy aplikacji przy użyciu szablonu usługi Azure Resource Manager
 
@@ -125,18 +125,20 @@ Z witryny GitHub można pobrać istniejący szablon usługi Azure Resource Manag
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Wdrażanie szablonu usługi Azure Resource Manager przy użyciu programu PowerShell
 
-Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami, aby zalogować się do platformy Azure i wybierz swoją subskrypcję.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [Jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami, aby zalogować się do platformy Azure i wybierz swoją subskrypcję.
 
 1. Zaloguj się do programu PowerShell
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. Sprawdź subskrypcje dostępne na koncie.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     Zostanie wyświetlony monit o uwierzytelnienie przy użyciu własnych poświadczeń.
@@ -144,19 +146,19 @@ Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [ja
 1. Wybierz subskrypcję platformy Azure do użycia.
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. W razie potrzeby utwórz grupę zasobów za pomocą polecenia cmdlet **New-AzureResourceGroup**. W poniższym przykładzie utworzysz grupę zasobów o nazwie AppgatewayRG w lokalizacji wschodnie stany USA.
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Uruchom polecenie cmdlet **New-AzureRmResourceGroupDeployment**, aby wdrożyć nową sieć wirtualną przy użyciu uprzednio pobranych i zmodyfikowanych plików szablonu oraz parametrów.
+1. Uruchom **New AzResourceGroupDeployment** uprzednio pobranych i zmodyfikowanych plików przez polecenia cmdlet, aby wdrożyć nową sieć wirtualną przy użyciu szablonu oraz parametrów.
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
@@ -222,7 +224,7 @@ Aby usunąć wszystkie zasoby utworzone w tym artykule, wykonaj jedną z następ
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
@@ -233,9 +235,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz skonfigurować odciążanie protokołu SSL, odwiedź: [Configure an application gateway for SSL offload](application-gateway-ssl.md) (Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL).
+Jeśli chcesz skonfigurować odciążanie protokołu SSL, odwiedź stronę: [Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL](application-gateway-ssl.md).
 
-Jeśli chcesz skonfigurować bramę aplikacji do użycia z wewnętrznym modułem równoważenia obciążenia, odwiedź: [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md) (Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia).
+Jeśli chcesz skonfigurować bramę aplikacji za pomocą wewnętrznego modułu równoważenia obciążenia, odwiedź stronę: [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB)](application-gateway-ilb.md).
 
 Więcej ogólnych informacji na temat opcji równoważenia obciążenia możesz znaleźć, odwiedzając:
 

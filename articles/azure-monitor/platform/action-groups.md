@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a817e3681f6b94b1b9ad7d5a2d2a1369935ee064
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8e9208981dd54fef1f56ee552d34bab78210b96d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651774"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316561"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -69,7 +69,7 @@ Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monito
 > [!NOTE]
 > Zobacz [limity usług subskrypcji do monitorowania](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) dla ograniczeń numerycznych na każdym z poniższych elementów.  
 
-**Aplikacja platformy Azure wypychania** — mogą mieć ograniczoną liczbę akcji aplikacji platformy Azure w grupy akcji. W tej chwili akcji aplikacji platformy Azure obsługuje tylko ServiceHealth alertów. Dowolnym innym czasie alertu zostaną zignorowane. Zobacz [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+**Aplikacja platformy Azure wypychania** — mogą mieć ograniczoną liczbę akcji aplikacji platformy Azure w grupy akcji. W tej chwili akcji aplikacji platformy Azure obsługuje tylko ServiceHealth alertów. Inne typu alertu zostaną zignorowane. Zobacz [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **Adres e-mail** — wiadomości E-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie wiadomości e-mail jest prawidłowo skonfigurowany
    - azure-noreply@microsoft.com

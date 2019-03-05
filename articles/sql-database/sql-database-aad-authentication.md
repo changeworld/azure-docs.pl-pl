@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1318cd3d1c0c51889cc70b6836d06d6d6ee70c24
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453141"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308384"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Użyj uwierzytelniania usługi Azure Active Directory do uwierzytelniania przy użyciu języka SQL
 
@@ -81,7 +81,7 @@ Aby utworzyć użytkownika zawartej bazy danych w usłudze Azure SQL Database, w
 - Następujące elementy członkowskie programu Azure AD mogą być udostępniane w usłudze Azure SQL server lub SQL Data Warehouse:
 
   - Natywne elementy członkowskie: Element członkowski utworzone w usłudze Azure AD w domenie zarządzanej lub w domenie klienta. Aby uzyskać więcej informacji, zobacz [Dodaj własną nazwę domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
-  - Elementy członkowskie domeny federacyjnej: Element członkowski utworzone w usłudze Azure AD z domeny federacyjnej. Aby uzyskać więcej informacji, zobacz [Microsoft Azure obsługuje teraz federacji z usługą Active Directory systemu Windows Server](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Elementy członkowskie domeny federacyjnej: Element członkowski utworzone w usłudze Azure AD z domeny federacyjnej. Aby uzyskać więcej informacji, zobacz [Microsoft Azure obsługuje teraz federacji z usługą Active Directory systemu Windows Server](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
   - Zaimportowane członków z innych usługi Azure AD, którzy są członkami domeny natywny lub federacyjnego.
   - Grupy usługi Active Directory tworzone jako grupy zabezpieczeń.
 
@@ -105,11 +105,11 @@ Aby utworzyć użytkownika zawartej bazy danych w usłudze Azure SQL Database, w
 - Ustawienie podmiotów zabezpieczeń serwera usługi Azure AD (logowania) mapowane na grupę usługi Azure AD, jako właściciel bazy danych nie jest obsługiwana w [wystąpienia zarządzane przez usługę](sql-database-managed-instance.md).
     - Rozszerzenie tego jest fakt, że grupa jest dodawana jako część `dbcreator` roli serwera, użytkownicy z tej grupy mogą nawiązać połączenie z wystąpieniem zarządzanym i tworzyć nowe bazy danych, ale nie będzie dostępu do bazy danych. Jest to, ponieważ nowy właściciel bazy danych jest SA, a nie użytkownika usługi Azure AD. Ten problem nie manifestu, jeśli indywidualnego użytkownika jest dodawany do `dbcreator` roli serwera.
 - Wykonywanie zadań i zarządzania agenta SQL jest obsługiwana dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania).
-- Baza danych kopii zapasowej i przywracanie operacji może być wykonywane przez podmioty serwera usługi Azure AD (logowania).
+- Operacje tworzenia kopii zapasowej oraz przywracania bazy danych mogą być wykonywane przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD.
 - Funkcja inspekcji wszystkich instrukcji odnoszących się do podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i zdarzenia uwierzytelniania jest obsługiwana.
 - Dedykowane połączenie administratora dla jednostek serwera usługi Azure AD (logowania), które są członkami roli serwera sysadmin jest obsługiwane.
     - Obsługiwane za pomocą narzędzia SQLCMD i SQL Server Management Studio.
-- Wyzwalacze logowania są obsługiwane w przypadku zdarzeń logowania pochodzące z podmiotów zabezpieczeń serwera usługi Azure AD (logowania).
+- Wyzwalacze logowania są obsługiwane dla zdarzeń logowania przychodzących z jednostek usługi (identyfikatorów logowania) serwera Azure AD.
 - Wiadomości e-mail programu Service Broker i bazą danych może być instalację za pomocą usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania).
 
 

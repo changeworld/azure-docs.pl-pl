@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 98d48659225d89f476ca1e3cc437245bc9e9f753
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 453a048bc9e7c2878c0730b9002b10bdeb8c22fa
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564820"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316221"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurowanie uwierzytelniania wieloskładnikowego dla programu SQL Server Management Studio i usługi Azure AD
 
@@ -28,7 +28,7 @@ W tym temacie dowiesz się, jak używać usługi Azure Active Directory Multi-Fa
 
 ## <a name="configuration-steps"></a>Kroki konfiguracji
 
-1. **Konfigurowanie usługi Azure Active Directory** — Aby uzyskać więcej informacji, zobacz [administrowanie katalogiem usługi Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [ Dodaj własną nazwę domeny do usługi Azure AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure obsługuje teraz federacji z usługą Active Directory systemu Windows Server](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), i [zarządzania usługi Azure AD przy użyciu programu Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
+1. **Konfigurowanie usługi Azure Active Directory** — Aby uzyskać więcej informacji, zobacz [administrowanie katalogiem usługi Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [ Dodaj własną nazwę domeny do usługi Azure AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure obsługuje teraz federacji z usługą Active Directory systemu Windows Server](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), i [zarządzania usługi Azure AD przy użyciu programu Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
 2. **Skonfiguruj usługę MFA** — instrukcje krok po kroku, zobacz [co to jest usługa Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [warunkowego dostępu (MFA) za pomocą usługi Azure SQL Database i Data Warehouse](sql-database-conditional-access.md). (Dostęp warunkowy pełnej wymaga Premium usługi Azure Active Directory (Azure AD). Ograniczone usługi MFA jest dostępna przy użyciu standardowych usługi Azure AD).
 3. **Konfigurowanie bazy danych SQL Database lub SQL Data Warehouse dla usługi Azure AD Authentication** — instrukcje krok po kroku, zobacz [nawiązywania połączenia z bazą danych SQL lub SQL danych magazynu przez przy użyciu usługi Azure Active Directory Authentication](sql-database-aad-authentication.md).
 4. **Pobierz program SSMS** — na komputerze klienckim pobieranie najnowszej wersji środowiska SSMS z [Pobierz SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). W przypadku wszystkich funkcji w tym temacie Użyj co najmniej lipca 2017, wersja 17.2.  

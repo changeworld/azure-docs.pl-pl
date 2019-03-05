@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 003d5da137c88097d9555a9884286251af92d6f0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999304"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311004"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -30,6 +30,8 @@ Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środow
 - Wykrywanie i badanie użytkownika niepożądane zachowanie, które można dostosować do potrzeb organizacji.
 - Prezentacja inspekcje i zapewniaj zgodność. Na przykład można monitorować operacji na plikach dostęp do poufnych plików, które pomogą Ci z procesem inspekcje i zapewniaj zgodność.
 - Rozwiązywać problemy operacyjne przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowane i skonfigurowane.
@@ -123,10 +125,10 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
     
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
     $WorkspaceLocation
     
@@ -190,11 +192,11 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
     $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
@@ -365,12 +367,12 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 Może zostać wyświetlony następujący błąd, jeśli podano nieprawidłowe wartości parametrów.
 
 ```
-Select-AzureRmSubscription : Please provide a valid tenant or a valid subscription.
+Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
-+ ... cription = (Select-AzureRmSubscription -SubscriptionId $($Subscriptio ...
++ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureRmContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzureRMContextCommand
+    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
 
 ```
 
@@ -390,11 +392,11 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
     
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -522,7 +524,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 | ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to Succeeded, częściowe powodzenie lub niepowodzenie. Wartość dla działania administracyjnego programu Exchange, ma wartość PRAWDA lub FAŁSZ. |
 | UserId | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
 | UserKey | Alternatywnego Identyfikatora użytkownika zidentyfikowanego we właściwości identyfikatora użytkownika.  Na przykład właściwość ta jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia, wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i programem Exchange. Ta właściwość może również określić tę samą wartość jako właściwość identyfikatora użytkownika dla zdarzenia zachodzące w innych usługach i zdarzeniach wykonywanych przez konta systemowe|
-| UserType | Typ użytkownika, który wykonał operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowane<br>ServicePrincipal<br>System |
+| UserType | Typ użytkownika, który wykonał operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Normalna<br>Zarezerwowane<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Podstawowa usługi Azure Active Directory

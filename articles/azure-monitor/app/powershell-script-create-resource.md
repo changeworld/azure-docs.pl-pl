@@ -12,15 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3fe6a89073da731332a91ece40a6ea6f667d150a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 91790f372dce4322d316b42c4bfa7ad36625c91d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003515"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315575"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Skrypt programu PowerShell do tworzenia zasobu usługi Application Insights
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Gdy zachodzi potrzeba monitorowania nowej aplikacji — lub nową wersję aplikacji — przy użyciu [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/), konfigurowanie nowego zasobu w systemie Microsoft Azure. Ten zasób jest, gdzie analizowane i wyświetlane dane telemetryczne z Twojej aplikacji. 
 
@@ -36,8 +37,8 @@ Na przykład jeśli tworzysz aplikacji urządzenia przenośnego jest prawdopodob
 ## <a name="script-to-create-an-application-insights-resource"></a>Skrypt, aby utworzyć zasób usługi Application Insights
 Zobacz specyfikacje odpowiednie polecenia cmdlet:
 
-* [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
-* [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
+* [Nowe AzResource](https://msdn.microsoft.com/library/mt652510.aspx)
+* [New-AzRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 *Skrypt programu PowerShell*  
 
@@ -51,7 +52,7 @@ Zobacz specyfikacje odpowiednie polecenia cmdlet:
 # If running manually, uncomment before the first 
 # execution to login to the Azure Portal:
 
-# Connect-AzureRmAccount / Connect-AzureRmAccount
+# Connect-AzAccount / Connect-AzAccount
 
 # Set the name of the Application Insights Resource
 
@@ -75,7 +76,7 @@ Select-AzureSubscription -SubscriptionName "MySubscription"
 # Create the App Insights Resource
 
 
-$resource = New-AzureRmResource `
+$resource = New-AzResource `
   -ResourceName $appInsightsName `
   -ResourceGroupName $resourceGroupName `
   -Tag @{ applicationType = "web"; applicationName = $applicationTagName} `
@@ -86,7 +87,7 @@ $resource = New-AzureRmResource `
 
 # Give owner access to the team
 
-New-AzureRmRoleAssignment `
+New-AzRoleAssignment `
   -SignInName "myteam@fabrikam.com" `
   -RoleDefinitionName Owner `
   -Scope $resource.ResourceId 
@@ -104,10 +105,10 @@ Każdy zasób jest identyfikowany za pomocą klucza Instrumentacji (klucz Instru
 Istnieją dwa sposoby, aby udostępnić klucz Instrumentacji do zestawu SDK:
 
 * W [plik ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
-  * `<instrumentationkey>`*klucz Instrumentacji*`</instrumentationkey>`
+  * `<instrumentationkey>`*ikey*`</instrumentationkey>`
 * Lub [kod inicjujący](../../azure-monitor/app/api-custom-events-metrics.md): 
   * `Microsoft.ApplicationInsights.Extensibility.
-    TelemetryConfiguration.Active.InstrumentationKey = "`*klucz Instrumentacji*`";`
+    TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
 ## <a name="see-also"></a>Zobacz także
 * [Tworzenie usługi Application Insights i zasoby testu sieci web za pomocą szablonów](powershell.md)

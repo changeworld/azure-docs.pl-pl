@@ -12,22 +12,22 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6c77bb1f17f93e25605d251c717c2a4d61f940dd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567013"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313970"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Wprowadzenie do zadań elastycznych baz danych
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
 Zadania elastic Database (wersja zapoznawcza) dla usługi Azure SQL Database umożliwia niezawodne wykonywanie skryptów T-SQL, obejmujące wiele baz danych podczas Automatyczne ponawianie próby i ostateczną uzupełniania gwarantuje dostarczanie. Aby uzyskać więcej informacji na temat funkcji zadań elastycznej bazy danych, zobacz [zadań elastycznych](sql-database-elastic-jobs-overview.md).
 
 W tym artykule rozszerza przykładu w [rozpoczęcie korzystania z narzędzi elastycznych baz danych](sql-database-elastic-scale-get-started.md). Po zakończeniu dowiesz się, jak tworzyć i zarządzać zadaniami, które zarządzają grupą powiązanych baz danych. Nie jest wymagane do używania narzędzia elastyczne skalowanie, aby można było korzystać z zalet zadań elastycznych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pobierz i uruchom [wprowadzenie do przykładowej narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 
@@ -55,7 +55,7 @@ W tym miejscu będą zwykle utworzymy mapowania fragmentów w postaci docelowymi
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
     $ServerName = "samples"
-    $dbsinserver = Get-AzureRMSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+    $dbsinserver = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
     $dbsinserver | %{
     $currentdb = $_.DatabaseName
     $ErrorActionPreference = "Stop"

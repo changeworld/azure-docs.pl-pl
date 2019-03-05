@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 05dfece2a2e69c5cdb3f08b51424720a1c2898db
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f462940f652f568168c4d0b1e8012c7196d59b13
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561946"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314164"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Zarządzanie bazami danych Azure SQL przy użyciu usługi Azure Automation
 
@@ -37,7 +37,7 @@ Usługa Azure SQL Database można zarządzać w usłudze Azure Automation za pom
 
 Usługa Azure Automation ma również możliwość komunikacji z serwerami SQL bezpośrednio przez wydanie polecenia SQL przy użyciu programu PowerShell.
 
-[Galerii elementów runbook usługi Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) zawiera szereg produktu zespół i społeczności elementy runbook, aby rozpocząć automatyzację zarządzania bazami danych Azure SQL, innych usług platformy Azure i systemach innych firm. Galeria elementów runbook obejmują:
+[Galerii elementów runbook usługi Azure Automation](https://azure.microsoft.com/blog/20../../introducing-the-azure-automation-runbook-gallery/) zawiera szereg produktu zespół i społeczności elementy runbook, aby rozpocząć automatyzację zarządzania bazami danych Azure SQL, innych usług platformy Azure i systemach innych firm. Galeria elementów runbook obejmują:
 
 - [Uruchamiać zapytania SQL względem bazy danych programu SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 - [Skalowanie w pionie (górę lub w dół) usługi Azure SQL Database zgodnie z harmonogramem](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
@@ -50,4 +50,4 @@ Teraz, kiedy znasz już podstawy usługi Azure Automation i jak może służyć 
 
 - [Omówienie usługi Azure Automation](../automation/automation-intro.md)
 - [Mój pierwszy element Runbook](../automation/automation-first-runbook-graphical.md)
-- [Usługa Azure Automation: Agenta programu SQL w chmurze](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
+- [Usługa Azure Automation: Agenta programu SQL w chmurze](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 

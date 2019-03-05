@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a7de9126716437e4e90185f46c9cf95f7de20d40
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 2a989a98399e9d6701d92d8e4e22b243cb1ebff5
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220536"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315830"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Tworzenie i zarządzanie nimi osobistych pulpitów nawigacyjnych
 
@@ -21,15 +21,15 @@ ms.locfileid: "57220536"
 
 ## <a name="create-dashboard"></a>Tworzenie pulpitu nawigacyjnego
 
-Poniższy zrzut ekranu przedstawia pulpit nawigacyjny w aplikacji, który został utworzony na podstawie **Contoso przykładowe** szablonu. Osobisty pulpit nawigacyjny można zastąpić domyślny pulpit nawigacyjny aplikacji. Aby to zrobić, kliknij przycisk **+ nowy** w prawym górnym rogu strony.
+Poniższy zrzut ekranu przedstawia pulpit nawigacyjny w aplikacji, który został utworzony na podstawie **Contoso przykładowe** szablonu. Osobisty pulpit nawigacyjny można zastąpić domyślny pulpit nawigacyjny aplikacji. Aby to zrobić, wybierz **+ nowy** w prawym górnym rogu strony.
 
 ![Pulpit nawigacyjny dla aplikacji na podstawie szablonu "Contoso próbki"](media/howto-personalize-dashboard-experimental/defaultdashboard.png)
 
-Klikając **+ nowy**, zostanie otwarty Edytor pulpitu nawigacyjnego. W edytorze pulpitu nawigacyjnego można nadać nazwę, a wybrane elementy z biblioteki. Biblioteka zawiera Kafelki i podstawowych pulpitu nawigacyjnego, którym można dostosować pulpit nawigacyjny.
+Wybieranie **+ nowy**, zostanie otwarty Edytor pulpitu nawigacyjnego. W edytorze pulpitu nawigacyjnego można nadać nazwę, a wybrane elementy z biblioteki. Biblioteka zawiera Kafelki i podstawowych pulpitu nawigacyjnego, którym można dostosować pulpit nawigacyjny.
 
 ![Biblioteka pulpitu nawigacyjnego](media/howto-personalize-dashboard-experimental/dashboardeditor.png)
 
-Na przykład można dodać **ustawień i właściwości** Kafelek, aby wyświetlić wartości ustawień i właściwości dla jednego z urządzeń, którymi zarządzasz. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Następnie nadaj kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. Poniższy zrzut ekranu przedstawia **obsługuje szybkość** ustawienie wybranego do dodania do kafelka. Kliknij przycisk **gotowe** można zapisać zmiany do swojego pulpitu nawigacyjnego.
+Na przykład można dodać **ustawień i właściwości** Kafelek, aby wyświetlić wartości ustawień i właściwości dla jednego z urządzeń, którymi zarządzasz. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Następnie nadaj kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. Poniższy zrzut ekranu przedstawia **obsługuje szybkość** ustawienie wybranego do dodania do kafelka. Wybierz **gotowe** można zapisać zmiany do swojego pulpitu nawigacyjnego.
 
 !["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media/howto-personalize-dashboard-experimental/dashboardsetting.png)
 

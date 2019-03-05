@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af85ff8272853be82bae5c79622295fddfc60ade
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 84610c94621e887e20bb903385e2d6ddbe67189d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337278"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307857"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -29,7 +29,7 @@ Aby utworzyć regułę zdarzeń, szablon urządzenia musi mieć co najmniej jedn
 
 1. Przy użyciu Device Explorer przejdź do szablonu urządzenia, dla którego dodajesz reguły dla.
 
-1. W ramach wybranego szablonu wybierz polecenie istniejące urządzenie. 
+1. W obszarze wybranego szablonu wybierz istniejące urządzenie.
 
     >[!TIP] 
     >Jeśli szablon nie ma żadnych urządzeń, najpierw Dodaj nowe urządzenie.
@@ -39,10 +39,10 @@ Aby utworzyć regułę zdarzeń, szablon urządzenia musi mieć co najmniej jedn
     ![Jeszcze żadnych reguł](media/howto-create-event-rules/Rules_Landing_Page.png)
 
 
-1. Na **reguły** kliknij pozycję **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
+1. Na **reguły** zaznacz **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
 
-1. Kliknij pozycję **zdarzeń** Kafelek, aby utworzyć zdarzenia reguła monitorowania.
+1. Wybierz **zdarzeń** Kafelek, aby utworzyć zdarzenia reguła monitorowania.
 
     ![Typy zasad](media/howto-create-event-rules/Rule_Types.png)
 

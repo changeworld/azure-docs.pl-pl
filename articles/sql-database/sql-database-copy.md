@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 6e25c0970a48674e157dac5f51c9508596ff6ea1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 7631ec91b70e781b2818e99012e59e2aeafb3614
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097086"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317020"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
@@ -48,10 +48,12 @@ Aby skopiować bazę danych przy użyciu witryny Azure portal, otwórz stronę b
 
 ## <a name="copy-a-database-by-using-powershell"></a>Kopiowanie bazy danych przy użyciu programu PowerShell
 
-Aby skopiować bazę danych przy użyciu programu PowerShell, należy użyć [New-AzureRmSqlDatabaseCopy](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) polecenia cmdlet. 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Aby skopiować bazę danych przy użyciu programu PowerShell, należy użyć [New AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) polecenia cmdlet. 
 
 ```PowerShell
-New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
+New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -ServerName $sourceserver `
     -DatabaseName "MySampleDatabase" `
     -CopyResourceGroupName "myResourceGroup" `

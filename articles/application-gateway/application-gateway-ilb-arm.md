@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2018
 ms.author: victorh
-ms.openlocfilehash: 92d0e079f9fafbb6c000c6b1746f37a16add4cf7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 3b9108e08e1b1ad13fac75d00816755043d84672
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417351"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308724"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB)
 
@@ -29,7 +29,9 @@ W tym artykule przeprowadzimy Cię przez proces konfigurowania bramy aplikacji p
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-1. Zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShell za pomocą Instalatora platformy sieci Web. Najnowszą wersję można pobrać i zainstalować z sekcji **Windows PowerShell** strony [Pliki do pobrania](https://azure.microsoft.com/downloads/).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. Zainstaluj najnowszą wersję modułu Azure PowerShell, wykonując [instrukcje dotyczące instalacji](/powershell/azure/install-az-ps).
 2. Utworzysz sieć wirtualną i podsieć dla usługi Application Gateway. Upewnij się, że z podsieci nie korzystają żadne maszyny wirtualne ani wdrożenia w chmurze. Usługa Application Gateway musi sama znajdować się w podsieci sieci wirtualnej.
 3. Serwery konfigurowane do używania bramy aplikacji muszą być umieszczone w sieci wirtualnej lub z przypisanym adresem IP/VIP lub mieć w niej utworzone punkty końcowe.
 
@@ -60,7 +62,7 @@ Upewnij się, że program PowerShell został przełączony do trybu umożliwiaj�
 ### <a name="step-1"></a>Krok 1
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ### <a name="step-2"></a>Krok 2
@@ -68,7 +70,7 @@ Connect-AzureRmAccount
 Sprawdź subskrypcje dostępne na koncie.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Zostanie wyświetlony monit o uwierzytelnienie przy użyciu własnych poświadczeń.
@@ -78,7 +80,7 @@ Zostanie wyświetlony monit o uwierzytelnienie przy użyciu własnych poświadcz
 Wybierz subskrypcję platformy Azure do użycia.
 
 ```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
 ### <a name="step-4"></a>Krok 4
@@ -86,7 +88,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 Utwórz nową grupę zasobów (ten krok można pominąć, jeśli używasz istniejącej grupy zasobów).
 
 ```powershell
-New-AzureRmResourceGroup -Name appgw-rg -location "West US"
+New-AzResourceGroup -Name appgw-rg -location "West US"
 ```
 
 Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Będzie ona używana jako domyślna lokalizacja zasobów w danej grupie. Upewnij się, że we wszystkich poleceniach służących do tworzenia bramy aplikacji jest używana ta sama grupa zasobów.
@@ -100,7 +102,7 @@ W poniższym przykładzie pokazano, jak utworzyć sieć wirtualną przy użyciu 
 ### <a name="step-1"></a>Krok 1
 
 ```powershell
-$subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
+$subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
 W tym kroku przypisuje zakresu adresów 10.0.0.0/24 do zmiennej podsieci służącej do tworzenia sieci wirtualnej.
@@ -108,7 +110,7 @@ W tym kroku przypisuje zakresu adresów 10.0.0.0/24 do zmiennej podsieci służ�
 ### <a name="step-2"></a>Krok 2
 
 ```powershell
-$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
+$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
 Ten krok umożliwia utworzenie sieci wirtualnej o nazwie "appgwvnet" w grupie zasobów "appgw-rg" dla regionu zachodnie stany USA, użyciu prefiksu 10.0.0.0/16 i podsieci 10.0.0.0/24.
@@ -126,7 +128,7 @@ Ten krok umożliwia przypisanie obiektu podsieci do zmiennej $subnet na potrzeby
 ### <a name="step-1"></a>Krok 1
 
 ```powershell
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
+$gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
 Ten krok powoduje utworzenie konfiguracji adresu IP bramy aplikacji o nazwie "gatewayIP01". Uruchomiona usługa Application Gateway wybierze adres IP ze skonfigurowanej podsieci i skieruje ruch sieciowy do adresów IP w puli adresów IP zaplecza. Pamiętaj, że każde wystąpienie będzie mieć jeden adres IP.
@@ -134,7 +136,7 @@ Ten krok powoduje utworzenie konfiguracji adresu IP bramy aplikacji o nazwie "ga
 ### <a name="step-2"></a>Krok 2
 
 ```powershell
-$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
+$pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
 Ten krok obejmuje skonfigurowanie puli adresów IP zaplecza o nazwie "pool01" z adresem IP adresów "10.1.1.8 10.1.1.9, 10.1.1.10". Są to adresy IP odbierające ruch sieciowy pochodzący z punktu końcowego adresu IP frontonu. Powyższe adresy IP można zastąpić własnymi dodawanymi punktami końcowymi adresów IP aplikacji.
@@ -142,7 +144,7 @@ Ten krok obejmuje skonfigurowanie puli adresów IP zaplecza o nazwie "pool01" z 
 ### <a name="step-3"></a>Krok 3
 
 ```powershell
-$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+$poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
 Ten krok umożliwia skonfigurowanie ruch sieciowy bramy ustawienie "poolsetting01" dla obciążenia zrównoważone aplikacji w puli zaplecza.
@@ -150,7 +152,7 @@ Ten krok umożliwia skonfigurowanie ruch sieciowy bramy ustawienie "poolsetting0
 ### <a name="step-4"></a>Krok 4
 
 ```powershell
-$fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
+$fp = New-AzApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
 Ten krok umożliwia skonfigurowanie portu adresu IP frontonu o nazwie "frontendport01" dla wewnętrznego modułu równoważenia obciążenia.
@@ -158,7 +160,7 @@ Ten krok umożliwia skonfigurowanie portu adresu IP frontonu o nazwie "frontendp
 ### <a name="step-5"></a>Krok 5
 
 ```powershell
-$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
+$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
 Ten krok powoduje utworzenie konfiguracji adresów IP frontonu o nazwie "fipconfig01" i kojarzy ją z prywatnym adresem IP z bieżącej podsieci sieci wirtualnej.
@@ -166,7 +168,7 @@ Ten krok powoduje utworzenie konfiguracji adresów IP frontonu o nazwie "fipconf
 ### <a name="step-6"></a>Krok 6
 
 ```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
+$listener = New-AzApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
 Ten krok umożliwia utworzenie odbiornika o nazwie "listener01" i skojarzenie portu frontonu z konfiguracją IP frontonu.
@@ -174,7 +176,7 @@ Ten krok umożliwia utworzenie odbiornika o nazwie "listener01" i skojarzenie po
 ### <a name="step-7"></a>Krok 7
 
 ```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+$rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
 Spowoduje to utworzenie reguły routingu modułu równoważenia obciążenia o nazwie "rule01", która służy do konfigurowania zachowania modułu równoważenia obciążenia.
@@ -182,7 +184,7 @@ Spowoduje to utworzenie reguły routingu modułu równoważenia obciążenia o n
 ### <a name="step-8"></a>Krok 8
 
 ```powershell
-$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+$sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
 Ten krok umożliwia skonfigurowanie rozmiaru wystąpienia bramy aplikacji.
@@ -195,7 +197,7 @@ Ten krok umożliwia skonfigurowanie rozmiaru wystąpienia bramy aplikacji.
 Umożliwia utworzenie bramy aplikacji przy użyciu wszystkich elementów konfiguracji z poprzednich kroków. W tym przykładzie brama aplikacji ma nazwę „appgwtest”.
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+$appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
 Ten krok umożliwia utworzenie bramy aplikacji przy użyciu wszystkich elementów konfiguracji z poprzednich kroków. W przykładzie brama aplikacji ma nazwę „appgwtest”.
@@ -204,8 +206,8 @@ Ten krok umożliwia utworzenie bramy aplikacji przy użyciu wszystkich elementó
 
 Aby usunąć bramę aplikacji, należy wykonać następujące kroki w kolejności:
 
-1. Użyj polecenia cmdlet `Stop-AzureRmApplicationGateway`, aby zatrzymać bramę.
-2. Użyj polecenia cmdlet `Remove-AzureRmApplicationGateway`, aby usunąć bramę.
+1. Użyj polecenia cmdlet `Stop-AzApplicationGateway`, aby zatrzymać bramę.
+2. Użyj polecenia cmdlet `Remove-AzApplicationGateway`, aby usunąć bramę.
 3. Aby sprawdzić, czy brama została usunięta, użyj polecenia cmdlet `Get-AzureApplicationGateway`.
 
 ### <a name="step-1"></a>Krok 1
@@ -213,15 +215,15 @@ Aby usunąć bramę aplikacji, należy wykonać następujące kroki w kolejnośc
 Pobierz obiekt bramy aplikacji i skojarz go ze zmienną „$getgw”.
 
 ```powershell
-$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+$getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 
 ### <a name="step-2"></a>Krok 2
 
-Użyj polecenia `Stop-AzureRmApplicationGateway`, aby zatrzymać bramę aplikacji. W tym przykładzie pokazano `Stop-AzureRmApplicationGateway` polecenia cmdlet w pierwszym wierszu, a następnie dane wyjściowe.
+Użyj polecenia `Stop-AzApplicationGateway`, aby zatrzymać bramę aplikacji. W tym przykładzie pokazano `Stop-AzApplicationGateway` polecenia cmdlet w pierwszym wierszu, a następnie dane wyjściowe.
 
 ```powershell
-Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
+Stop-AzApplicationGateway -ApplicationGateway $getgw  
 ```
 
 ```
@@ -232,10 +234,10 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-Po zatrzymaniu bramy aplikacji użyj polecenia cmdlet `Remove-AzureRmApplicationGateway`, aby usunąć usługę.
+Po zatrzymaniu bramy aplikacji użyj polecenia cmdlet `Remove-AzApplicationGateway`, aby usunąć usługę.
 
 ```powershell
-Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
+Remove-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
 ```
 
 ```
@@ -249,10 +251,10 @@ Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 > [!NOTE]
 > Przełącznik **-force** umożliwia pomijanie komunikatu potwierdzającego usunięcie.
 
-Aby sprawdzić, czy usługa została usunięta, możesz użyć polecenia cmdlet `Get-AzureRmApplicationGateway`. Ten krok nie jest wymagany.
+Aby sprawdzić, czy usługa została usunięta, możesz użyć polecenia cmdlet `Get-AzApplicationGateway`. Ten krok nie jest wymagany.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 
 ```

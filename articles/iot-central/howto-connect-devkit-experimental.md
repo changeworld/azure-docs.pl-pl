@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1097d14c824bcdebb9062fcf63b04e9837b0d170
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 620ae30c684ad9105357d0d20bbde158d5ff0a5a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811617"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308996"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -43,14 +43,14 @@ Można znaleźć szczegółowe informacje o konfiguracji [Szczegóły szablonu z
 
 W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**identyfikator zakresu, identyfikator urządzenia i podstawowego klucza**).
 
-1. Dodaj **rzeczywistego urządzenia** z Device Explorer kliknij **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
+1. Dodaj **rzeczywistego urządzenia** Device Explorer, zaznacz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
 
     * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
     * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
 
     ![Dodaj urządzenie](media/howto-connect-devkit-experimental/add-device.png)
 
-1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodanego urządzenia, klikając **Connect** na stronie urządzenia.
+1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodane urządzenie, wybierając **Connect** na stronie urządzenia.
 
     ![Szczegóły połączenia](media/howto-connect-devkit-experimental/device-connect.png)
 

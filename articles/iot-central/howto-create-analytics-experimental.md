@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 83225af7cb2cbdff4a264693e30b2a813f6ec9c7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 69b941b97a533740322d9070497de6845e834a16
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214933"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315643"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak używać usługi analytics do analizowania danych urządzenia
 
@@ -23,7 +23,7 @@ Usługa Azure IoT Central zapewnia bogate możliwości analizy możliwości sens
 
 ## <a name="querying-your-data"></a>Wykonywanie zapytań do danych
 
-Musisz wybrać **zestaw urządzeń**, Dodaj **filtru** (opcjonalnie) i wybierz **okres** na rozpoczęcie pracy. Po wykonaniu tych czynności kliknij *Pokaż wyniki* można uruchomić wizualizowania danych.
+Musisz wybrać **zestaw urządzeń**, Dodaj **filtru** (opcjonalnie) i wybierz **okres** na rozpoczęcie pracy. Po wykonaniu tych czynności wybierz **Pokaż wyniki** można uruchomić wizualizowania danych.
 
 * **Zestawy urządzeń:** A [zestaw urządzeń](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) jest zdefiniowane przez użytkownika grupy urządzeń. Na przykład wszystkie lodówki w Oakland lub wszystkich wer. 2.0 turbiny wiatru.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 754bd06e6033b49d24112cb20686e1c9b200d0d0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0a6c894b08fd76a018035a824b463e41e31c2f2f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875484"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310203"
 ---
 # <a name="indexers-in-azure-search"></a>Indeksatory w usłudze Azure Search
 
@@ -48,14 +48,16 @@ Indeksatory można przeszukiwać magazynów danych na platformie Azure.
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) 
-    * Należy pamiętać, że usługa Azure Table Storage nie jest obsługiwana dla [wyszukiwania kognitywnego](cognitive-search-concept-intro.md)
 
+> [!Note]
+> Usługa Azure Table Storage nie jest obsługiwana dla [wyszukiwania kognitywnego](cognitive-search-concept-intro.md).
+>
 
 ## <a name="basic-configuration-steps"></a>Podstawowe kroki konfiguracji
 Indeksatory oferują funkcje, które są unikatowe dla źródła danych. W związku z tym niektóre aspekty konfiguracji indeksatora lub źródła danych różnią się w zależności od typu indeksatora. Wszystkie indeksatory korzystają jednak z takich samych kompozycji i wymagań. Kroki, które są wspólne dla wszystkich indeksatorów, znajdują się poniżej.
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Tworzenie źródła danych
-Indeksator pobiera dane ze *źródła danych*, które zawiera na przykład parametry połączenia i poświadczenia. Wywołaj [Utwórz źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source) interfejsu API REST lub [klasy źródła danych](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) chcesz utworzyć zasób.
+Indeksator uzyskuje połączenie ze źródłem danych z *źródła danych* obiektu. Definicję źródła danych zawiera parametry połączenia i ewentualnie poświadczeń. Wywołaj [Utwórz źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source) interfejsu API REST lub [klasy źródła danych](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) chcesz utworzyć zasób.
 
 Źródła danych są konfigurowane i zarządzane niezależnie od indeksatorów, które z nich korzystają. Oznacza to, że jedno źródło może być używane przez wiele indeksatorów w celu jednoczesnego ładowania kilku indeksów.
 
@@ -67,6 +69,59 @@ Indeksator automatyzuje niektóre zadania związane z pozyskiwaniem danych, ale 
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3: Tworzenie indeksatora i harmonogramu
 Definicja indeksatora to konstrukcja określająca indeks, źródło danych i harmonogram. Indeksator może odwoływać się do źródła danych z innej usługi pod warunkiem, że źródło danych jest z tej samej subskrypcji. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksatora, zobacz [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Tworzenie indeksatora — interfejs API REST usługi Azure Search).
+
+<a id="RunIndexer"></a>
+
+## <a name="run-indexers-on-demand"></a>Uruchamianie indeksatory na żądanie
+
+Choć często zaplanować indeksowania, indeksator można także uruchomić na żądanie przy użyciu polecenia Uruchom:
+
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
+    api-key: [Search service admin key]
+
+> [!NOTE]
+> Uruchom interfejs API zwraca pomyślnie, wywołanie indeksatora zostało zaplanowane, ale rzeczywisty przetwarzanie odbywa się asynchronicznie. 
+
+Możesz monitorować stan indeksatora w portalu lub za pomocą uzyskać indeksatora stan interfejsu API, który następnie opisano. 
+
+<a name="GetIndexerStatus"></a>
+
+## <a name="get-indexer-status"></a>Pobierz stan indeksatora
+
+Możesz pobrać historii stanu i wykonywanie indeksatora za pośrednictwem interfejsu API REST:
+
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
+    api-key: [Search service admin key]
+
+Odpowiedź zawiera ogólny stan indeksatora, wywołanie indeksatora ostatniego (lub w toku) i historię ostatnich wywołania indeksatora.
+
+    {
+        "status":"running",
+        "lastResult": {
+            "status":"success",
+            "errorMessage":null,
+            "startTime":"2014-11-26T03:37:18.853Z",
+            "endTime":"2014-11-26T03:37:19.012Z",
+            "errors":[],
+            "itemsProcessed":11,
+            "itemsFailed":0,
+            "initialTrackingState":null,
+            "finalTrackingState":null
+         },
+        "executionHistory":[ {
+            "status":"success",
+             "errorMessage":null,
+            "startTime":"2014-11-26T03:37:18.853Z",
+            "endTime":"2014-11-26T03:37:19.012Z",
+            "errors":[],
+            "itemsProcessed":11,
+            "itemsFailed":0,
+            "initialTrackingState":null,
+            "finalTrackingState":null
+        }]
+    }
+
+Historia wykonywania zawiera maksymalnie 50 ostatnich wykonań ukończone, które są sortowane w kolejności chronologicznej odwrotnej (tak, aby najnowsze wykonywania wykorzystasz w odpowiedzi).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy masz już podstawowe informacje, następnym krokiem jest przegląd wymagań i zadań specyficznych dla poszczególnych typów źródeł danych.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 2173bc46471fec6bfbacbda9362e5530075faf18
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857345"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311111"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co to jest usługa QnA Maker wiedzy?
 
@@ -28,7 +28,7 @@ Usługa QnA Maker wiedzy składa się z zestaw par pytanie/odpowiedź (pytań i 
 * **Odpowiedzi** — odpowiedź jest odpowiedzi, który jest zwracany, jeśli kwerenda użytkownika jest dopasowywany skojarzone zapytania.  
 * **Metadane** -metadane są znaczniki skojarzone z pary pytań i odpowiedzi i są reprezentowane jako pary klucz wartość. Znaczniki metadane są używane do filtrowania pary pytań i odpowiedzi i ograniczyć zestaw, w którym zapytaniu odpowiedników.
 
-Pojedynczy QnA, reprezentowany przez identyfikator numeryczny pytań i odpowiedzi ma wiele wariantów pytanie (alternatywny pytań) wszystkie mapowane do jednej odpowiedzi. Ponadto każda para takie może mieć wiele pól metadane skojarzone z nią.
+Pojedynczy QnA, reprezentowany przez identyfikator numeryczny pytań i odpowiedzi ma wiele wariantów pytanie (alternatywny pytań) wszystkie mapowane do jednej odpowiedzi. Ponadto każda para takie może mieć wiele pól metadane skojarzone z nią: jeden klucz i jedną wartość.
 
 ![Usługa QnA Maker baz wiedzy](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
@@ -36,7 +36,7 @@ Pojedynczy QnA, reprezentowany przez identyfikator numeryczny pytań i odpowiedz
 
 Po sformatowanej zawartości jest pozyskiwania w bazie wiedzy, narzędzie QnA Maker próbuje przekonwertować zawartości markdown. Odczyt [to](https://aka.ms/qnamaker-docs-markdown-support) blog, aby zrozumieć języku znaczników markdown formatuje zrozumiały dla większości klientów rozmowy.
 
-Pola metadanych składają się z pary klucz wartość oddzielone dwukropkiem **(produkt: strzępiarka)**. Klucz i wartość musi być tylko tekst. Klucza metadanych nie może zawierać spacji.
+Pola metadanych składają się z pary klucz wartość oddzielone dwukropkiem **(produkt: strzępiarka)**. Klucz i wartość musi być tylko tekst. Klucza metadanych nie może zawierać spacji. Metadane obsługuje tylko jedną wartość na klucz.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

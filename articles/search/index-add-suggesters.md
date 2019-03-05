@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd4b29134fd45ed2888fbc81ded413ecf7286959
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269930"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308656"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Dodaj sugestory do indeksu usługi Azure Search
 
@@ -34,52 +34,52 @@ Mimo że **sugestora** ma kilka właściwości, jest głównie to zbiór pól, d
 
 Może mieć tylko jeden **sugestora** zasobów dla każdego indeksu (w szczególności jeden **sugestora** w **sugestory** kolekcji).
 
-## <a name="creating-a-suggester"></a>Tworzenie sugestora 
+## <a name="creating-a-suggester"></a>Tworzenie sugestora
 
-Możesz utworzyć **sugestora** w dowolnym momencie, ale wpływ na indeks w zależności pól. 
+Możesz utworzyć **sugestora** w dowolnym momencie, ale wpływ na indeks w zależności pól.
 
 + Nowe pola dodane do sugestora w ramach tej samej aktualizacji są najmniej atrakcyjnych, w tym odbudowywanie indeksu, nie jest wymagane.
 + Istniejące pola dodane do sugestora, jednak zmienia definicję pola, wymagających pełnej rekompilacji indeksu.
 
- **Sugestory** działają najlepiej, gdy jest używana do sugerowania określonych dokumentów, a nie utracić wprowadzone terminów ani fraz. Najważniejsze pola Release candidate są tytułów, nazwy i innych względnie krótkich fraz, które można zidentyfikować element. Mniej skuteczne powtarzających się pola, takie jak kategorie i tagi, lub są bardzo długie pola, takie jak pola opisów i komentarzy.  
+**Sugestory** działają najlepiej, gdy jest używana do sugerowania określonych dokumentów, a nie utracić wprowadzone terminów ani fraz. Najważniejsze pola Release candidate są tytułów, nazwy i innych względnie krótkich fraz, które można zidentyfikować element. Mniej skuteczne powtarzających się pola, takie jak kategorie i tagi, lub są bardzo długie pola, takie jak pola opisów i komentarzy.
 
-Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) w logice zapytania, aby wywołać tę funkcję.  
+Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) w logice zapytania, aby wywołać tę funkcję.
 
-Właściwości, które definiują **sugestora** obejmują następujące elementy:  
+Właściwości, które definiują **sugestora** obejmują następujące elementy:
 
-|Właściwość|Opis|  
-|--------------|-----------------|  
-|`name`|Nazwa **sugestora**. Użyj nazwy **sugestora** podczas wywoływania [sugestie &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions).|  
-|`searchMode`|Strategia używana do wyszukiwania fraz kandydujących. To jedyny obecnie obsługiwany tryb `analyzingInfixMatching`, który przeprowadza elastyczne dopasowywanie fraz na początku lub w środku zdań.|  
-|`sourceFields`|Lista jednego lub więcej pól, które są źródłem zawartości sugestie. Tylko pola typu `Edm.String` i `Collection(Edm.String)` może być źródeł dla sugestie. Można tylko pola, które nie mają niestandardowego analizatora języków zestawu. |  
+|Właściwość|Opis|
+|--------------|-----------------|
+|`name`|Nazwa **sugestora**. Użyj nazwy **sugestora** podczas wywoływania [sugestie &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions).|
+|`searchMode`|Strategia używana do wyszukiwania fraz kandydujących. To jedyny obecnie obsługiwany tryb `analyzingInfixMatching`, który przeprowadza elastyczne dopasowywanie fraz na początku lub w środku zdań.|
+|`sourceFields`|Lista jednego lub więcej pól, które są źródłem zawartości sugestie. Tylko pola typu `Edm.String` i `Collection(Edm.String)` może być źródeł dla sugestie. Można tylko pola, które nie mają niestandardowego analizatora języków zestawu. |
 
-## <a name="suggester-example"></a>Przykład sugestora  
- A **sugestora** jest częścią definicji indeksu. Tylko jeden **sugestora** może znajdować się w **sugestory** kolekcji w bieżącej wersji obok **pola** kolekcji i **scoringProfiles**.  
+## <a name="suggester-example"></a>Przykład sugestora
+A **sugestora** jest częścią definicji indeksu. Tylko jeden **sugestora** może znajdować się w **sugestory** kolekcji w bieżącej wersji obok **pola** kolekcji i **scoringProfiles**.
 
-```  
-{  
-  "name": "hotels",  
-  "fields": [  
-     . . .   
-   ],  
-  "suggesters": [  
-    {  
-    "name": "sg",  
-    "searchMode": "analyzingInfixMatching",  
-    "sourceFields": ["hotelName", "category"]  
-    }  
-  ],  
-  "scoringProfiles": [  
-     . . .   
-  ]  
-}  
+```
+{
+  "name": "hotels",
+  "fields": [
+    . . .
+  ],
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": ["hotelName", "category"]
+    }
+  ],
+  "scoringProfiles": [
+    . . .
+  ]
+}
 
-```  
+```
 
-## <a name="see-also"></a>Zobacz także  
- [Tworzenie indeksu &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Aktualizowanie indeksu &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/update-index)   
- [Sugestie dotyczące &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions)   
- [Operacje indeksowania &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/index-operations)   
- [REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)   
- [Zestaw SDK platformy .NET usługi Azure Search](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+## <a name="see-also"></a>Zobacz także
+[Tworzenie indeksu &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+[Aktualizowanie indeksu &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/update-index)  
+[Sugestie dotyczące &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions)  
+[Operacje indeksowania &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/index-operations)  
+[REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)  
+[Zestaw SDK platformy .NET usługi Azure Search](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699350"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307993"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń usługi IoT Edge, moduły i podrzędny urządzenia (wersja zapoznawcza)
 
@@ -73,7 +73,7 @@ W celu poprawy niezawodności, zalecane jest określenie adresów serwerów DNS,
 
 ```json
 {
-    "dns": [“1.1.1.1”]
+    "dns": ["1.1.1.1"]
 }
 ```
 
@@ -136,7 +136,7 @@ Można skonfigurować w witrynie Azure portal w zmiennych środowiskowych i opcj
 
 Zastąp `<HostStoragePath>` i `<ModuleStoragePath>` z hosta i modułu magazynu ścieżka magazynu ścieżki; hosta i moduł musi być ścieżką bezwzględną. Za pomocą opcji tworzenia powiązania ścieżki magazynu hosta i modułów ze sobą. Następnie Utwórz zmienną środowiskową, wskazujący ścieżka magazynu modułu.  
 
-Na przykład `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` oznacza, że katalog **/etc/iotedge/storage** na hoście systemu jest zamapowany na katalog **/iotedge/storage/** w kontenerze. Lub inny przykład dla systemów Windows, `"Binds":["C:\\temp:C:\\contemp]"` oznacza, że katalog **C:\\temp** na hoście systemu jest zamapowany na katalog **C:\\contemp** w kontenerze. 
+Na przykład `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` oznacza, że katalog **/etc/iotedge/storage** na hoście systemu jest zamapowany na katalog **/iotedge/storage/** w kontenerze. Lub inny przykład dla systemów Windows, `"Binds":["C:\\temp:C:\\contemp"]` oznacza, że katalog **C:\\temp** na hoście systemu jest zamapowany na katalog **C:\\contemp** w kontenerze. 
 
 Można także znaleźć więcej szczegółów na temat tworzenia opcje [dokumentacja platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 

@@ -3,7 +3,7 @@ title: Dostęp just in time maszyny wirtualnej w usłudze Azure Security Center 
 description: W tym dokumencie przedstawiono kontrolować dostęp do maszyny Wirtualnej jak just-in-time w usłudze Azure Security Center ułatwia dostęp do usługi Azure virtual machines.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
-ms.author: rkarlin
-ms.openlocfilehash: 2bfa3b6001d714da39ebeb709600504f9d7331c5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 2/28/2019
+ms.author: monhaber
+ms.openlocfilehash: 9cdcfbc6074f8e343e2571063cc5dafe54072753
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733661"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314776"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -144,11 +144,11 @@ Dzięki temu dostęp just in time do maszyny wirtualnej, używając następując
 - Serwery Windows:
     - Port 3389 protokołu RDP
     - 3 godzin maksymalny dozwolony dostęp
-    - Dozwolone źródłowe adresy IP ustawiono na żądanie
+    - Dozwolone źródłowe adresy IP jest ustawiony do dowolnej
 - Serwery z systemem Linux:
     - Port 22 protokołu SSH
     - 3 godzin maksymalny dozwolony dostęp
-    - Dozwolone źródłowe adresy IP ustawiono na żądanie
+    - Dozwolone źródłowe adresy IP jest ustawiony do dowolnej
      
 Jeśli maszyna wirtualna ma już just-in-time włączone, po przejściu do strony konfiguracji będzie czy just in time jest włączone, i użyć linku, aby otworzyć zasady w usłudze Azure Security Center, aby wyświetlić i zmienić ustawienia.
 

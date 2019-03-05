@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c8cba4006d1112ccc1529fc1769e046fe45468a7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: f8af115824ec48492d0f53297a6e697f7011ff55
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214184"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316425"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -33,9 +33,9 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej je
 
     ![Jeszcze żadnych reguł](media/howto-create-telemetry-rules-experimental/Rules_Landing_Page.png)
 
-1. Na **reguły** kliknij pozycję **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
+1. Na **reguły** zaznacz **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
-1. Kliknij przycisk **Telemetrii** można utworzyć regułę do monitorowania danych telemetrycznych z urządzenia.
+1. Wybierz **Telemetrii** można utworzyć regułę do monitorowania danych telemetrycznych z urządzenia.
 
     ![Typy zasad](media/howto-create-telemetry-rules-experimental/Rule_Types.png)
 
@@ -51,7 +51,7 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej je
 
 Warunek definiuje kryteria, które są monitorowane przez regułę.
 
-1. Kliknij przycisk **+** obok **warunki** można dodać nowego warunku.
+1. Wybierz **+** obok **warunki** można dodać nowego warunku.
 
 1. Wybierz dane telemetryczne, którą chcesz monitorować z **pomiaru** listy rozwijanej.
 

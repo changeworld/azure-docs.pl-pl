@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 1a13f5f038afed914fd2b2a178974a0ba2e7255f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0377f192ea9bc6502065fa037704ec8461ce1447
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984224"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311122"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z problemów z połączeniami bazy danych SQL i błędom przejściowym
 
@@ -211,7 +211,7 @@ Jeśli program używa klas ADO.NET, takich jak **System.Data.SqlClient.SqlConnec
 
 Podczas korzystania z obiektu połączenia z puli połączeń, zaleca się, że program tymczasowo zamyka połączenie, gdy nie jest od razu użycia. Nie jest kosztowna ponownie otworzyć połączenie, ale można utworzyć nowe połączenie.
 
-Jeśli używasz ADO.NET 4.0 lub wcześniej, zaleca się uaktualnienie do najnowszej ADO.NET. Począwszy od sierpnia 2018 r. można [Pobierz ADO.NET 4.6.2](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
+Jeśli używasz ADO.NET 4.0 lub wcześniej, zaleca się uaktualnienie do najnowszej ADO.NET. Począwszy od sierpnia 2018 r. można [Pobierz ADO.NET 4.6.2](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

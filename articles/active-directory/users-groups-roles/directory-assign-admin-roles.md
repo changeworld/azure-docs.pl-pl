@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35927b038ee8caa7e826c4edfb7803a2bc0177c8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 31b65dc7a73d24066bee8088b3177a1300186eba
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750688"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316663"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -42,7 +42,7 @@ Dostępne są następujące role administratora:
 
 * **[Deweloper aplikacji](#application-developer)**: Użytkownicy w tej roli mogą tworzyć rejestracje aplikacji po "Użytkownicy mogą rejestrować aplikacje" został ustawiony na nie. Ta rola pozwala również elementy członkowskie do wyrażenia zgody we własnym imieniu po "Użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu" został ustawiony na nie. Członkowie tej roli są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
-* **[Administrator uwierzytelniania](#authentication-administrator)**: Użytkownicy z tą rolą ustawieniem lub zresetowaniem hasła bez poświadczeń. Uwierzytelnianie Administratorzy mogą wymagać od użytkowników ponownej rejestracji dla istniejących poświadczeń-password (na przykład, MFA lub FIDO) i odwoływanie **pamiętanie uwierzytelniania MFA w urządzeniu**, rompts pwhich usługi MFA na następnym logowaniu użytkowników, którzy są użytkowników niebędących administratorami lub członków z następujących ról:
+* **[Administrator uwierzytelniania](#authentication-administrator)**: Użytkownicy z tą rolą ustawieniem lub zresetowaniem hasła bez poświadczeń. Uwierzytelnianie Administratorzy mogą wymagać od użytkowników ponownej rejestracji dla istniejących poświadczeń-password (na przykład, MFA lub FIDO) i odwoływanie **pamiętanie uwierzytelniania MFA w urządzeniu**, powoduje wyświetlenie monitu o usługi MFA na następnym logowaniu użytkowników, którzy są użytkowników niebędących administratorami lub członków z następujących ról:
   * Administrator uwierzytelniania
   * Odczytywanie katalogów
   * Osoba zapraszająca gościa

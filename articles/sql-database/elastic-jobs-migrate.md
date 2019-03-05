@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: e8293f9ddeb112a6632779e44a0e5d84ae78e045
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2351bdbc9675ddaf4a801457ab5bd0e158b6d01d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564072"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315281"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migracja do nowego zadania elastycznych baz danych
 
@@ -27,6 +27,8 @@ Jeśli masz istniejącą wersję klienta hostowane [zadania Elastic Database](sq
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 Uaktualnioną wersją zadania elastycznych baz danych ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenieść wszystkie poświadczenia istniejącego zadania jest przeznaczony dla (w tym baz danych, serwery, kolekcje niestandardowe), wyzwalaczy zadań, harmonogramów zadań, zawartość zadania i zadań za pośrednictwem nowego agenta elastycznych zadań.
 
@@ -61,12 +63,12 @@ Po zainstalowaniu nowych poleceń cmdlet, należy utworzyć nowy agent elastyczn
 
 ```powershell
 # Register your subscription for the for the Elastic Jobs public preview feature
-Register-AzureRmProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
+Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
 
 # Get an existing database to use as the job database - or create a new one if necessary
-$db = Get-AzureRmSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName>
+$db = Get-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName>
 # Create a new elastic job agent
-$agent = $db | New-AzureRmSqlElasticJobAgent -Name <agentName>
+$agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 ```
 
 ### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Zainstaluj polecenia cmdlet programu stare zadania Elastic Database
@@ -83,7 +85,7 @@ Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
 .\InstallElasticDatabaseJobsCmdlets.ps1
 
 # Choose the subscription where your existing jobs are
-Select-AzureRmSubscription -SubscriptionId <subscriptionId>
+Select-AzSubscription -SubscriptionId <subscriptionId>
 Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 ```
 
@@ -126,12 +128,12 @@ function Migrate-Credentials ($agent) {
                          -Message ("Please enter in the password that was used for your credential " + $oldCredName)
         try
         {
-            $cred = New-AzureRmSqlElasticJobCredential -ParentObject $agent -Name $oldCredName -Credential $oldCredential
+            $cred = New-AzSqlElasticJobCredential -ParentObject $agent -Name $oldCredName -Credential $oldCredential
         }
         catch [System.Management.Automation.PSArgumentException]
         {
-            $cred = Get-AzureRmSqlElasticJobCredential -ParentObject $agent -Name $oldCredName
-            $cred = Set-AzureRmSqlElasticJobCredential -InputObject $cred -Credential $oldCredential
+            $cred = Get-AzSqlElasticJobCredential -ParentObject $agent -Name $oldCredName
+            $cred = Set-AzSqlElasticJobCredential -InputObject $cred -Credential $oldCredential
         }
 
         Log-ChildOutput ("Added user " + $oldUserName)
@@ -230,7 +232,7 @@ function Migrate-TargetGroups ($agent) {
         $tg = Setup-TargetGroup -tgName $targetGroup -agent $agent
         $targets = $targetGroups[$targetGroup]
         Migrate-Targets -targets $targets -tg $tg
-        $targetsAdded = (Get-AzureRmSqlElasticJobTargetGroup -ParentObject $agent -Name $tg.TargetGroupName).Targets
+        $targetsAdded = (Get-AzSqlElasticJobTargetGroup -ParentObject $agent -Name $tg.TargetGroupName).Targets
         foreach ($targetAdded in $targetsAdded)
         {
             Log-ChildOutput ("Added target " + (Format-NewTargetName $targetAdded))
@@ -260,7 +262,7 @@ function Add-ServerTarget ($target, $tg) {
   $jobTarget = Get-AzureSqlJobTarget -TargetId $target.TargetId
   $serverName = $jobTarget.ServerName
   $credName = $jobTarget.MasterDatabaseCredentialName
-  $t = Add-AzureRmSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -RefreshCredentialName $credName
+  $t = Add-AzSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -RefreshCredentialName $credName
 }
 
 # Migrate database target from old jobs to new job's target group
@@ -271,10 +273,10 @@ function Add-DatabaseTarget ($target, $tg) {
   $exclude = $target.Membership
 
   if ($exclude -eq "Exclude") {
-    $t = Add-AzureRmSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -DatabaseName $databaseName -Exclude
+    $t = Add-AzSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -DatabaseName $databaseName -Exclude
   }
   else {
-    $t = Add-AzureRmSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -DatabaseName $databaseName
+    $t = Add-AzSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -DatabaseName $databaseName
   }
 }
 
@@ -288,10 +290,10 @@ function Add-ShardMapTarget ($target, $tg) {
   $exclude = $target.Membership
 
   if ($exclude -eq "Exclude") {
-    $t = Add-AzureRmSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -ShardMapName $smName -DatabaseName $databasename -RefreshCredentialName $credName -Exclude
+    $t = Add-AzSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -ShardMapName $smName -DatabaseName $databasename -RefreshCredentialName $credName -Exclude
   }
   else {
-    $t = Add-AzureRmSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -ShardMapName $smName -DatabaseName $databasename -RefreshCredentialName $credName
+    $t = Add-AzSqlElasticJobTarget -ParentObject $tg -ServerName $serverName -ShardMapName $smName -DatabaseName $databasename -RefreshCredentialName $credName
   }
 }
 
@@ -357,11 +359,11 @@ function Get-ChildTargets($target) {
 # Migrates target groups
 function Setup-TargetGroup ($tgName, $agent) {
   try {
-    $tg = New-AzureRmSqlElasticJobTargetGroup -ParentObject $agent -Name $tgName
+    $tg = New-AzSqlElasticJobTargetGroup -ParentObject $agent -Name $tgName
     return $tg
   }
   catch [System.Management.Automation.PSArgumentException] {
-    $tg = Get-AzureRmSqlElasticJobTargetGroup -ParentObject $agent -Name $tgName
+    $tg = Get-AzSqlElasticJobTargetGroup -ParentObject $agent -Name $tgName
     return $tg
   }
 }
@@ -485,14 +487,14 @@ function Setup-Job ($job, $agent) {
     $intervalCount = $schedule.Interval.Count
 
     try {
-      $job = New-AzureRmSqlElasticJob -ParentObject $agent -Name $jobName `
+      $job = New-AzSqlElasticJob -ParentObject $agent -Name $jobName `
         -Description $jobDescription -IntervalType $intervalType -IntervalCount $intervalCount `
         -StartTime $startTime -EndTime $endTime
       return $job
     }
     catch [System.Management.Automation.PSArgumentException] {
-      $job = Get-AzureRmSqlElasticJob -ParentObject $agent -Name $jobName
-      $job = $job | Set-AzureRmSqlElasticJob -Description $jobDescription -IntervalType $intervalType -IntervalCount $intervalCount `
+      $job = Get-AzSqlElasticJob -ParentObject $agent -Name $jobName
+      $job = $job | Set-AzSqlElasticJob -Description $jobDescription -IntervalType $intervalType -IntervalCount $intervalCount `
         -StartTime $startTime -EndTime $endTime
       return $job
     }
@@ -500,13 +502,13 @@ function Setup-Job ($job, $agent) {
   # Create or update a job that runs once
   else {
     try {
-      $job = New-AzureRmSqlElasticJob -ParentObject $agent -Name $jobName `
+      $job = New-AzSqlElasticJob -ParentObject $agent -Name $jobName `
         -Description $jobDescription -RunOnce
       return $job
     }
     catch [System.Management.Automation.PSArgumentException] {
-      $job = Get-AzureRmSqlElasticJob -ParentObject $agent -Name $jobName
-      $job = $job | Set-AzureRmSqlElasticJob -Description $jobDescription -RunOnce
+      $job = Get-AzSqlElasticJob -ParentObject $agent -Name $jobName
+      $job = $job | Set-AzSqlElasticJob -Description $jobDescription -RunOnce
       return $job
     }
   }
@@ -527,18 +529,18 @@ function Setup-JobStep ($newJob, $job) {
     $outputCredentialName = $output.CredentialName
     $outputSchemaName = $output.SchemaName
     $outputTableName = $output.TableName
-    $outputDatabase = Get-AzureRmSqlDatabase -ResourceGroupName $job.ResourceGroupName -ServerName $outputServerName -Databasename $outputDatabaseName
+    $outputDatabase = Get-AzSqlDatabase -ResourceGroupName $job.ResourceGroupName -ServerName $outputServerName -Databasename $outputDatabaseName
 
     try {
-      $jobStep = $job | Add-AzureRmSqlElasticJobStep -Name $defaultJobStepName `
+      $jobStep = $job | Add-AzSqlElasticJobStep -Name $defaultJobStepName `
         -TargetGroupName $targetGroupName -CredentialName $credentialName -CommandText $commandText `
         -OutputDatabaseObject $outputDatabase `
         -OutputSchemaName $outputSchemaName -OutputTableName $outputTableName `
         -OutputCredentialName $outputCredentialName
     }
     catch [System.Management.Automation.PSArgumentException] {
-      $jobStep = $job | Get-AzureRmSqlElasticJobStep -Name $defaultJobStepName
-      $jobStep = $jobStep | Set-AzureRmSqlElasticJobStep -TargetGroupName $targetGroupName `
+      $jobStep = $job | Get-AzSqlElasticJobStep -Name $defaultJobStepName
+      $jobStep = $jobStep | Set-AzSqlElasticJobStep -TargetGroupName $targetGroupName `
         -CredentialName $credentialName -CommandText $commandText `
         -OutputDatabaseObject $outputDatabase `
         -OutputSchemaName $outputSchemaName -OutputTableName $outputTableName `
@@ -547,11 +549,11 @@ function Setup-JobStep ($newJob, $job) {
   }
   else {
     try {
-      $jobStep = $job | Add-AzureRmSqlElasticJobStep -Name $defaultJobStepName -TargetGroupName $targetGroupName -CredentialName $credentialName -CommandText $commandText
+      $jobStep = $job | Add-AzSqlElasticJobStep -Name $defaultJobStepName -TargetGroupName $targetGroupName -CredentialName $credentialName -CommandText $commandText
     }
     catch [System.Management.Automation.PSArgumentException] {
-      $jobStep = $job | Get-AzureRmSqlElasticJobStep -Name $defaultJobStepName
-      $jobStep = $jobStep | Set-AzureRmSqlElasticJobStep -TargetGroupName $targetGroupName -CredentialName $credentialName -CommandText $commandText
+      $jobStep = $job | Get-AzSqlElasticJobStep -Name $defaultJobStepName
+      $jobStep = $jobStep | Set-AzSqlElasticJobStep -TargetGroupName $targetGroupName -CredentialName $credentialName -CommandText $commandText
     }
   }
   Log-ChildOutput ("Added step " + $jobStep.StepName + " using target group " + $jobStep.TargetGroupName + " using credential " + $jobStep.CredentialName)
@@ -610,22 +612,22 @@ Job job4
 Aby upewnić się, że wszystkie elementy zostały poprawnie zmigrowane, należy użyć następujących skryptów:
 
 ```powershell
-$creds = $agent | Get-AzureRmSqlElasticJobCredential
-$targetGroups = $agent | Get-AzureRmSqlElasticJobTargetGroup
-$jobs = $agent | Get-AzureRmSqlElasticJob
-$steps = $jobs | Get-AzureRmSqlElasticJobStep
+$creds = $agent | Get-AzSqlElasticJobCredential
+$targetGroups = $agent | Get-AzSqlElasticJobTargetGroup
+$jobs = $agent | Get-AzSqlElasticJob
+$steps = $jobs | Get-AzSqlElasticJobStep
 ```
 
 Aby sprawdzić, czy zadania są wykonywane prawidłowo, uruchom je:
 
 ```powershell
-$jobs | Start-AzureRmSqlElasticJob
+$jobs | Start-AzSqlElasticJob
 ```
 
 Dla zadań, które zostały uruchomione zgodnie z harmonogramem Pamiętaj, aby je włączyć, dzięki czemu mogą być uruchamiane w tle:
 
 ```powershell
-$jobs | Set-AzureRmSqlElasticJob -Enable
+$jobs | Set-AzSqlElasticJob -Enable
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

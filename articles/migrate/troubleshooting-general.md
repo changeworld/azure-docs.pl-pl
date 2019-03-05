@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: cb1bed847f5b7afe7c1eff0243c64e8c25ddb814
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e85608c411c0aea7b7bf71be19939f6859139c56
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992570"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314377"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -163,10 +163,34 @@ Ten problem może wystąpić z powodu problemu z instalacją programu VMware Pow
         C:\Program Files (x86)\WindowsPowerShell\Modules
 
    d. Uruchom ponownie usługę Azure Migrate Collector w Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Uruchom.
-   
-   e. Kliknij dwukrotnie skrót "Uruchom moduł zbierający" Aby uruchomić aplikację modułu zbierającego. Aplikację modułu zbierającego automatycznie należy pobrać i zainstalować wymaganą wersję fo PowerCLI.
 
-3. Jeśli powyższe nie rozwiąże problemu, ręcznie zainstaluj [program VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) i sprawdź, czy problem został rozwiązany.
+   e. Kliknij dwukrotnie skrót "Uruchom moduł zbierający" Aby uruchomić aplikację modułu zbierającego. Aplikację modułu zbierającego automatycznie należy pobrać i zainstalować wymaganą wersję PowerCLI.
+
+3. Jeśli powyższe nie rozwiąże problemu, wykonaj kroki do c powyżej, a następnie ręcznie zainstaluj interfejs PowerCLI w urządzeniu wykonując następujące czynności:
+
+   a. Wyczyścić wszystkie niekompletne PowerCLI pliki instalacyjne, wykonując kroki #do #c w kroku 2 # powyżej.
+
+   b. Przejdź do menu Start > Uruchom > Otwórz PowerShell(x86) Windows w trybie administratora
+
+   c. Uruchom polecenie:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (typ 'A' prosi o potwierdzenie)
+
+   d. Uruchom ponownie usługę Azure Migrate Collector w Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Uruchom.
+
+   e. Kliknij dwukrotnie skrót "Uruchom moduł zbierający" Aby uruchomić aplikację modułu zbierającego. Aplikację modułu zbierającego automatycznie należy pobrać i zainstalować wymaganą wersję PowerCLI.
+
+4. Jeśli nie można załadować modułu w urządzeniu ze względu na problemy z zaporą, należy pobrać i zainstalować moduł w komputerze, który ma dostęp do Internetu wykonując następujące czynności:
+
+    a. Wyczyścić wszystkie niekompletne PowerCLI pliki instalacyjne, wykonując kroki #do #c w kroku 2 # powyżej.
+
+    b. Przejdź do menu Start > Uruchom > Otwórz PowerShell(x86) Windows w trybie administratora
+
+    c. Uruchom polecenie:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (typ 'A' prosi o potwierdzenie)
+
+    d. Skopiuj wszystkie moduły, rozpoczynając od "VMware" z "C:\Program Files (x86) \WindowsPowerShell\Modules" w tej samej lokalizacji na maszynie Wirtualnej modułu zbierającego.
+
+    e. Uruchom ponownie usługę Azure Migrate Collector w Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Uruchom.
+
+    f. Kliknij dwukrotnie skrót "Uruchom moduł zbierający" Aby uruchomić aplikację modułu zbierającego. Aplikację modułu zbierającego automatycznie należy pobrać i zainstalować wymaganą wersję PowerCLI.
 
 ### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 

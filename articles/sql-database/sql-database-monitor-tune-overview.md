@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1f2dcb43878359d20d737cef6ceb492eb79b7f4c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1e281c99fdbf5081122d7b132c5f2ca7f91a5980
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468329"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312702"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -102,10 +102,10 @@ Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich
 
 Aby uzyskać dodatkowe informacje na temat rozwiązywania tego rodzaju problemów Zobacz:
 
-- To [powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) wpis w blogu
-- To [parametru wykrywanie problemów i ich obejść](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/) wpis w blogu
+- To [powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/) wpis w blogu
+- To [parametru wykrywanie problemów i ich obejść](https://blogs.msdn.microsoft.com/turgays/20../../parameter-sniffing-problem-and-possible-workarounds/) wpis w blogu
 - To [syna i wykrywanie parametrów myszy](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) wpis w blogu
-- To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
+- To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Rozwiązywanie problemów z działania kompilacji z powodu nieprawidłowej parametryzacji
 

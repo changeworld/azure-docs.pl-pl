@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 03/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2d81207195eb19a386d0d98fd4bfa6ba53ca972e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446396"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316646"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -50,7 +50,7 @@ Po otrzymaniu jednostki dużych wystąpień HANA od firmy Microsoft, sprawdzanie
 
 Jednostka dużych wystąpień HANA mogą łączyć się tego wystąpienia SMT. (Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania serwera SMT SUSE Linux](hana-setup-smt.md)). Alternatywnie system operacyjny Red Hat muszą być zarejestrowane przy użyciu Red Hat subskrypcji Menedżera, musisz nawiązać połączenie. Aby uzyskać więcej informacji, zobacz uwagi w [co to jest oprogramowanie SAP HANA na platformie Azure (duże wystąpienia)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Ten krok jest również niezbędne jest stosowanie poprawek systemu operacyjnego, który jest odpowiedzialny za klienta. SUSE, znaleźć dokumentację dotyczące instalowania i konfigurowania SMT na tej stronie o [instalacji SMT](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+Ten krok jest niezbędny do stosowania poprawek systemu operacyjnego, który jest odpowiedzialny za klienta. SUSE, znaleźć dokumentację dotyczące instalowania i konfigurowania SMT na tej stronie o [instalacji SMT](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
 **Drugi etap** jest sprawdzenie, czy nowe poprawki i poprawki wersji/wersji określonego systemu operacyjnego. Sprawdź poziom poprawki duże wystąpienie oprogramowania HANA w najnowszy stan. Może to być przypadki, w którym najnowsze poprawki nie są uwzględniane. Po podjęciu przez jednostkę dużych wystąpień HANA, jest obowiązkowa, aby sprawdzić, czy mają zostać zastosowane poprawki.
 
@@ -80,6 +80,7 @@ W przypadku większej liczby wystąpień jest kolejność w dzierżawie, koniecz
 
 **Krok piąty** jest sprawdzenie etc/hosts. Jak uzyskać przekazywany bloki, mają różne adresy IP, które są przypisane do różnych celów. Sprawdź plik etc/hosts. Gdy jednostki są dodawane do istniejącej dzierżawy, nie będziesz już mieć etc/hosty systemów nowo wdrożony prawidłowo obsługiwane przy użyciu adresów IP, systemów, które zostały dostarczone wcześniej. Jest odpowiedzialny za jak klientowi upewnia się, czy nowo wdrożonego wystąpienia można wchodzić w interakcje i rozpoznawanie nazw jednostek, które są wdrożone wcześniej w tej dzierżawie. 
 
+
 ## <a name="operating-system"></a>System operacyjny
 
 > [!IMPORTANT] 
@@ -105,7 +106,7 @@ Poniżej przedstawiono informacje o pomocy technicznej SAP, które mają zastoso
 - [SAP Uwaga pomocy technicznej 171356 # — oprogramowanie SAP w systemie Linux:  Informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
 - [Uwaga SAP pomocy technicznej 1391070 # — Linux UUID rozwiązania](https://launchpad.support.sap.com/#/notes/1391070)
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) jest inną ofertę do uruchamiania oprogramowania SAP HANA w dużych wystąpieniach HANA. Dostępne są wersje systemu RHEL 6.7 i 7.2. Należy pamiętać, że w przeciwieństwie do natywnych maszynach wirtualnych platformy Azure których są obsługiwane tylko systemu RHEL 7.2 i nowsze wersje, dużych wystąpień HANA obsługują RHEL 6.7 także. Firma Microsoft zaleca jednak przy użyciu wersji 7.x systemu RHEL.
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) jest inną ofertę do uruchamiania oprogramowania SAP HANA w dużych wystąpieniach HANA. Dostępne są wersje systemu RHEL 6.7 i 7.2. Należy pamiętać, przeciwnym do natywnych maszynach wirtualnych platformy Azure, których obsługiwane są tylko systemu RHEL 7.2 i nowsze wersje, dużych wystąpień HANA obsługują RHEL 6.7 także. Firma Microsoft zaleca jednak przy użyciu wersji 7.x systemu RHEL.
 
 Poniżej przedstawiono dodatkowe przydatne SAP na łącza pokrewne firmy Red Hat:
 - [SAP HANA w systemie Red Hat Linux lokacji](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
@@ -200,6 +201,16 @@ W celu zoptymalizowania platformy SAP HANA w magazynie używane poniżej, ustawi
 W przypadku wersji SAP HANA 1.0 maksymalnie SPS12, te parametry można ustawić podczas instalacji bazy danych SAP HANA, zgodnie z opisem w [Uwaga SAP #2267798 — Konfiguracja bazy danych SAP HANA](https://launchpad.support.sap.com/#/notes/2267798).
 
 Można również skonfigurować parametry po instalacji baza danych SAP HANA przy użyciu struktury hdbparam. 
+
+Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ograniczenie rozmiaru jest 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) każdego pliku. W przeciwieństwie do przypadków ograniczenia rozmiaru plików takich jak w systemach plików EXT3, HANA nie jest świadomość niejawnie ograniczenia pamięci masowej, wymuszane przez Magazyn dużych wystąpień HANA. w rezultacie HANA nie automatycznie utworzy nowy plik danych po osiągnięciu limitu rozmiaru pliku o rozmiarze 16TB. Jako HANA próby rośnie pliku ponad 16TB, platformy HANA będzie raportów błędów i serwerze indeksowania ulegnie awarii na końcu.
+
+> [!IMPORTANT]
+> Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini Hana
+> 
+- datavolume_striping=true
+- datavolume_striping_size_gb = 15000
+- Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+
 
 SAP HANA 2.0 z hdbparam framework jest przestarzała. W rezultacie należy ustawić parametry przy użyciu poleceń SQL. Aby uzyskać więcej informacji, zobacz [Uwaga SAP #2399079: Eliminacja hdbparam HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 

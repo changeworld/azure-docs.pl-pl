@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 41ffd7229383f1006bb846f975aeccf83256032a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807732"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314674"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics
 
@@ -154,29 +154,39 @@ Aby zainstalować bramę, wykonaj następujące kroki.  (Jeśli zainstalowano po
 
 
 ## <a name="configure-network-load-balancing"></a>Konfigurowanie równoważenia obciążenia sieciowego 
-Konfigurowanie bramy w celu zapewnienia wysokiej dostępności przy użyciu równoważenia obciążenia sieciowego (NLB). Użyj usługi Microsoft Azure Load Balancer lub moduły równoważenia obciążenia oparte na sprzęcie.  Moduł równoważenia obciążenia zarządza ruchem, przekierowując żądanego połączenia z agentów usługi Log Analytics lub serwerów zarządzania programu Operations Manager w jego węzłach. Jeśli jeden serwer bramy ulegnie awarii, ruch jest przekierowywany do innych węzłów.
+Można skonfigurować bramy w celu zapewnienia wysokiej dostępności przy użyciu równoważenia obciążenia sieciowego (NLB) firmy Microsoft [obciążenia równoważenia sieciowego (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [usługi Azure Load Balancer](../../load-balancer/load-balancer-overview.md), lub modułów równoważenia obciążenia oparte na sprzęcie. Moduł równoważenia obciążenia zarządza ruchem, przekierowując żądanego połączenia z agentów usługi Log Analytics lub serwerów zarządzania programu Operations Manager w jego węzłach. Jeśli jeden serwer bramy ulegnie awarii, ruch jest kierowany do innych węzłów.
+
+### <a name="microsoft-network-load-balancing"></a>Równoważenie obciążenia sieciowego firmy Microsoft
+Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster równoważenia obciążenia sieciowego systemu Windows Server 2016, zobacz [równoważenia obciążenia sieciowego](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Poniżej opisano sposób konfigurowania klastra równoważenia obciążenia sieciowego firmy Microsoft.  
+
+1. Zaloguj się na serwerze Windows, który jest członkiem klastra równoważenia obciążenia Sieciowego przy użyciu konta administracyjnego.  
+2. Otwórz Menedżera równoważenia obciążenia sieciowego w Menedżerze serwera, kliknij pozycję **narzędzia**, a następnie kliknij przycisk **Menedżera równoważenia obciążenia sieciowego**.
+3. Aby połączyć się z serwerem bramy usługi Log Analytics z programu Microsoft Monitoring Agent zainstalowany, kliknij prawym przyciskiem myszy adres IP klastra, a następnie kliknij przycisk **Dodaj hosta do klastra**. 
+
+    ![Sieć obciążenia równoważenia Manager — Dodaj hosta do klastra](./media/gateway/nlb02.png)
+ 
+4. Wprowadź adres IP serwera bramy, który chcesz się połączyć. 
+
+    ![Sieć obciążenia równoważenia Manager — Dodaj hosta do klastra: Połączenie](./media/gateway/nlb03.png) 
+
+### <a name="azure-load-balancer"></a>Azure Load Balancer
+Aby dowiedzieć się, jak zaprojektować i wdrożyć usługi Azure Load Balancer, zobacz [co to jest usługa Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Aby wdrożyć podstawowego modułu równoważenia obciążenia, wykonaj czynności opisane w tym [Szybki Start](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) z wyłączeniem kroki opisane w sekcji **tworzenie serwerów zaplecza**.   
+
+> [!NOTE]
+> Konfigurowanie przy użyciu usługi Azure Load Balancer **podstawowej jednostki SKU**, wymaga się, że maszyny wirtualne platformy Azure należą do zestawu dostępności. Aby dowiedzieć się więcej o zestawach dostępności, zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure](../../virtual-machines/windows/manage-availability.md). Aby dodać istniejące maszyny wirtualne do zestawu dostępności, zobacz [zestawu usługi Azure Resource Manager zestawu dostępności maszyny Wirtualnej](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> 
+
+Po utworzeniu modułu równoważenia obciążenia, pulę zaplecza musi zostać utworzona, która dystrybuuje ruch do jednego lub więcej serwerów bramy. Wykonaj kroki opisane w sekcji artykułu szybkiego startu [tworzenie zasobów modułu równoważenia obciążenia](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
 
 >[!NOTE]
->Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster systemu Windows Server 2016 równoważenia obciążenia Sieciowego, zobacz [równoważenia obciążenia sieciowego](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing). 
+>Podczas konfigurowania sondę kondycji, powinien on zostać skonfigurowany do korzystania z portu protokołu TCP serwera bramy. Sonda kondycji dynamicznie dodaje lub usuwa serwery bramy z rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. 
 >
 
-Wykonaj następujące kroki, aby skonfigurować klaster równoważenia obciążenia firmy Microsoft:  
-
-1. Używane konto administratora do logowania do systemu Windows Server, który jest członkiem klastra równoważenia obciążenia.
-1. W Menedżerze serwera Otwórz **Menedżera równoważenia obciążenia sieciowego**, wybierz opcję **narzędzia**, a następnie wybierz pozycję **Menedżera równoważenia obciążenia sieciowego**.
-1. Aby połączyć serwer bramy usługi Log Analytics, który zawiera program Microsoft Monitoring Agent został zainstalowany, kliknij prawym przyciskiem myszy adres IP klastra, a następnie kliknij przycisk **Dodaj hosta do klastra**.
-
-   ![Zrzut ekranu z Menedżera równoważenia obciążenia sieciowego, za pomocą Dodaj hosta do klastra wybrane](./media/gateway/nlb02.png)
-
-1. Wprowadź adres IP serwera bramy, który chcesz się połączyć.
-
-   ![Zrzut ekranu z Menedżera równoważenia obciążenia sieciowego, przedstawiający stronę Dodaj Host do klastra: Połączenie](./media/gateway/nlb03.png)
-    
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurowanie agenta usługi Log Analytics i grupa zarządzania programu Operations Manager
 W tej sekcji pokazano, jak skonfigurować bezpośrednio połączonych agentów usługi Log Analytics, grupy zarządzania programu Operations Manager lub usługi Azure Automation hybrydowych — procesów roboczych Runbook z bramą usługi Log Analytics do komunikowania się z usługi Azure Automation i Log Analytics.  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>Konfigurowanie agenta usługi Log Analytics autonomiczny
-Podczas konfigurowania agenta usługi Log Analytics, Zamień adres IP serwera bramy programu Log Analytics i jego numer portu wartość serwera proxy. Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia Sieciowego konfiguracji serwera proxy agenta usługi Log Analytics jest wirtualny adres IP Równoważenie obciążenia Sieciowego.  
+Podczas konfigurowania agenta usługi Log Analytics, Zamień adres IP serwera bramy programu Log Analytics i jego numer portu wartość serwera proxy. Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia w konfiguracji serwera proxy agenta usługi Log Analytics jest wirtualny adres IP modułu równoważenia obciążenia.  
 
 >[!NOTE]
 >Aby zainstalować agenta usługi Log Analytics na komputerach Windows, które łączyć się bezpośrednio do usługi Log Analytics i bramy, zobacz [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](agent-windows.md). Aby połączyć komputery z systemem Linux, zobacz [konfigurowania agenta usługi Log Analytics dla komputerów z systemem Linux w środowisku hybrydowym](../../azure-monitor/learn/quick-collect-linux-computer.md). 
@@ -200,7 +210,7 @@ Aby użyć bramy pakietu OMS do obsługi programu Operations Manager, musisz mie
 > Jeśli nie określisz żadnej wartości dla bramy, wartości puste są wypychane do wszystkich agentów.
 >
 
-Jeśli rejestruje grupę zarządzania programu Operations Manager z obszarem roboczym usługi Log Analytics po raz pierwszy, nie zobaczysz opcję, aby określić konfigurację serwera proxy dla grupy zarządzania w konsoli operacje.  Ta opcja jest dostępna tylko w przypadku grupy zarządzania został zarejestrowany w usłudze.  
+Jeśli rejestruje grupę zarządzania programu Operations Manager z obszarem roboczym usługi Log Analytics po raz pierwszy, nie zobaczysz opcję, aby określić konfigurację serwera proxy dla grupy zarządzania w konsoli operacje. Ta opcja jest dostępna tylko w przypadku grupy zarządzania został zarejestrowany w usłudze.  
 
 Aby skonfigurować integrację, należy zaktualizować system konfiguracji serwera proxy przy użyciu polecenia Netsh w systemie, w którym pracujesz w konsoli operacje, jak i na wszystkich serwerach zarządzania w grupie zarządzania. Wykonaj następujące kroki:
 
@@ -220,7 +230,7 @@ Po ukończeniu integracji z usługą Log Analytics, należy usunąć zmiany, uru
 
    ![Zrzut ekranu programu Operations Manager, przedstawiający wybór skonfiguruj poświadczenia serwera Proxy](./media/gateway/scom01.png)
 
-1. Wybierz **Użyj serwera proxy do dostępu do pakietu Operations Management Suite** , a następnie wprowadź adres IP serwera bramy programu Log Analytics lub wirtualny adres IP Równoważenie obciążenia Sieciowego. Uważaj rozpoczynają się prefiksem `http://`.
+1. Wybierz **Użyj serwera proxy do dostępu do pakietu Operations Management Suite** , a następnie wprowadź adres IP serwera bramy programu Log Analytics lub wirtualny adres IP modułu równoważenia obciążenia. Uważaj rozpoczynają się prefiksem `http://`.
 
    ![Zrzut ekranu programu Operations Manager, przedstawiający adres serwera proxy](./media/gateway/scom02.png)
 

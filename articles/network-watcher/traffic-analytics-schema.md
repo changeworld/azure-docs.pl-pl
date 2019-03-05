@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ca7aba3d92542f1b73160c726a555487e17fd8e2
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 34c455b5bf77906d9b6525731c09b62f15e4ccd2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012035"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313229"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w analizy ruchu
 
@@ -112,15 +112,15 @@ Poniżej wymieniono pól w schemacie i ich oznaczającego
     
 1. W przypadku przepływów AzurePublic i ExternalPublic klient należące do adresów IP maszyn wirtualnych platformy Azure jest wypełniana w polu VMIP_s, gdy trwa wypełnianie listy publicznych adresów IP w polu PublicIPs_s. Dla tych typów dwóch przepływ powinien używamy VMIP_s i PublicIPs_s zamiast pól SrcIP_s i DestIP_s. Dla adresów AzurePublic i ExternalPublicIP firma Microsoft agregacji dodatkowo tak, aby liczba rekordów pozyskane do obszaru roboczego analizy dzienników klienta jest minimalny. (W tym polu wkrótce staną się przestarzałe i powinny być używamy SrcIP_ i DestIP_s w zależności od tego, czy maszyna wirtualna platformy azure był źródło lub miejsce docelowe w przepływie) 
 2. Szczegóły typów przepływu: Oparte na adresach IP zaangażowane w przepływ, firma Microsoft kategoryzowanie przepływów w następujących przepływów: 
- *  IntraVNet — adresy IP w usłudze flow znajdują się w tej samej sieci wirtualnej platformy Azure. 
- *  Między sieciami wirtualnymi — adresy IP w usłudze flow znajdują się w dwóch różnych sieciach wirtualnych platformy Azure. 
-*   S2S — (lokacja) jeden z adresów IP należy do sieci wirtualnej platformy Azure, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN lub usługi Expressroute. 
-*   P2S - (punkt lokacja) jeden z adresów IP należy do usługi Azure Virtual Network, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN.
-*   AzurePublic — jeden adresów IP nie należy do sieci wirtualnej platformy Azure podczas, gdy adres IP należy do usługi Azure wewnętrznego publiczne adresy IP należące do firmy Microsoft. Należące do klientów, publiczne adresy IP nie będzie należeć do tego typu przepływu. Na przykład maszyny Wirtualnej, ruch wysyłany do usługi platformy Azure (punkt końcowy magazynu) będzie dzielony na kategorie w ramach tego typu przepływu należące do każdego klienta. <br><br>
-*   ExternalPublic — jeden z adresów IP nie należy do usługi Azure Virtual Network adres IP jest publiczny adres IP, który nie jest na platformie Azure, nie został zgłoszony jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między " FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
-*   MaliciousFlow — która jeden z adresów IP należą do sieci wirtualnej platformy azure w adres IP jest publiczny adres IP, który nie znajduje się w usłudze Azure i jest zgłaszana jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między" FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
-*   UnknownPrivate — która jeden z adresów IP należą do sieci wirtualnej platformy Azure w adres IP należy do zakresu prywatnych adresów IP, zgodnie z definicją w dokumencie RFC 1918 i nie można zamapować za analizę ruchu należących do klienta lokacji lub w usłudze Azure Virtual Network.
-*   Nieznany — nie można mapować do jednego z tych adresów IP w przepływach z topologią klienta na platformie Azure, jak również w środowisku lokalnym (lokacja).
+* IntraVNet — adresy IP w usłudze flow znajdują się w tej samej sieci wirtualnej platformy Azure. 
+* Między sieciami wirtualnymi — adresy IP w usłudze flow znajdują się w dwóch różnych sieciach wirtualnych platformy Azure. 
+* S2S — (lokacja) jeden z adresów IP należy do sieci wirtualnej platformy Azure, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN lub usługi Expressroute. 
+* P2S - (punkt lokacja) jeden z adresów IP należy do usługi Azure Virtual Network, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN.
+* AzurePublic — jeden adresów IP nie należy do sieci wirtualnej platformy Azure podczas, gdy adres IP należy do usługi Azure wewnętrznego publiczne adresy IP należące do firmy Microsoft. Należące do klientów, publiczne adresy IP nie będzie należeć do tego typu przepływu. Na przykład maszyny Wirtualnej, ruch wysyłany do usługi platformy Azure (punkt końcowy magazynu) będzie dzielony na kategorie w ramach tego typu przepływu należące do każdego klienta. 
+* ExternalPublic — jeden z adresów IP nie należy do usługi Azure Virtual Network adres IP jest publiczny adres IP, który nie jest na platformie Azure, nie został zgłoszony jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między " FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
+* MaliciousFlow — która jeden z adresów IP należą do sieci wirtualnej platformy azure w adres IP jest publiczny adres IP, który nie znajduje się w usłudze Azure i jest zgłaszana jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między" FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
+* UnknownPrivate — która jeden z adresów IP należą do sieci wirtualnej platformy Azure w adres IP należy do zakresu prywatnych adresów IP, zgodnie z definicją w dokumencie RFC 1918 i nie można zamapować za analizę ruchu należących do klienta lokacji lub w usłudze Azure Virtual Network.
+* Nieznany — nie można mapować do jednego z tych adresów IP w przepływach z topologią klienta na platformie Azure, jak również w środowisku lokalnym (lokacja).
 
 ### <a name="next-steps"></a>Następne kroki
 Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md) Aby wyświetlić szczegółowe informacje o funkcjach, zobacz [dokumentacji analizy ruchu](traffic-analytics.md)

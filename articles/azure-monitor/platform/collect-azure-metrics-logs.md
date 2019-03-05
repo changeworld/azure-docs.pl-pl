@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1d01755ae62843ad1f2f1728df046b767fe123ca
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2137a2e1d7cea9f2a2dbf565295323cb133513ee
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886581"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315796"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -79,16 +79,19 @@ Zasoby platformy Azure, które obsługują [usługa Azure monitor](../../azure-m
 * Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Włączanie diagnostyki przy użyciu programu PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Potrzebujesz listopada 2016 r. (v2.3.0) lub nowszej wersji [programu Azure PowerShell](/powershell/azure/overview).
 
-W poniższym przykładzie programu PowerShell pokazuje, jak używać [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) na włączanie diagnostyki na sieciową grupę zabezpieczeń. To samo podejście działa w przypadku wszystkich obsługiwanych zasobów — Konfigurowanie `$resourceId` do zasobu, aby włączyć diagnostykę dla identyfikatora zasobu.
+W poniższym przykładzie programu PowerShell pokazuje, jak używać [AzDiagnosticSetting zestaw](/powershell/module/az.insights/set-azdiagnosticsetting) na włączanie diagnostyki na sieciową grupę zabezpieczeń. To samo podejście działa w przypadku wszystkich obsługiwanych zasobów — Konfigurowanie `$resourceId` do zasobu, aby włączyć diagnostykę dla identyfikatora zasobu.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
 
-Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>Włączanie diagnostyki przy użyciu szablonów usługi Resource Manager

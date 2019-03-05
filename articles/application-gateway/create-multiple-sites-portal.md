@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 58f448646efc4cac9298d5dc4ec7a99e0e39bddc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454324"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309098"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tworzenie i konfigurowanie bramy aplikacji do hostowania wielu witryn sieci web przy użyciu witryny Azure portal
 
@@ -94,6 +94,8 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Otwórz powłokę interaktywną i upewnij się, że jest ustawiona na program **PowerShell**.
 
     ![Instalowanie rozszerzenia niestandardowego](./media/create-multiple-sites-portal/application-gateway-extension.png)
@@ -102,7 +104,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -113,7 +115,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
       -Settings $publicSettings
     ```
 
-3. Tworzenie drugiej maszyny wirtualnej i instalowanie usług IIS przy użyciu czynności, które właśnie zostało zakończone. Wprowadź nazwy *fabrikamVM* dla nazwy i wartości VMName w Set-AzureRmVMExtension.
+3. Tworzenie drugiej maszyny wirtualnej i instalowanie usług IIS przy użyciu czynności, które właśnie zostało zakończone. Wprowadź nazwy *fabrikamVM* dla nazwy i wartości VMName w AzVMExtension zestawu.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Tworzenie puli wewnętrznej bazy danych z maszynami wirtualnymi
 

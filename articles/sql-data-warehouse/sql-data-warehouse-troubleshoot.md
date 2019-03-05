@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c9d8330e857a8f76e143631f17e29ba44244a88
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244593"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307925"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
@@ -52,7 +52,7 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 | Msg 40847: Nie można wykonać operacji, ponieważ serwer przekroczyłby dozwolony przydział jednostki transakcji bazy danych wynoszący 45000. | Obniż [DWU] [ DWU] próby utworzenia bazy danych lub [zażądać zwiększenia limitu przydziału][request a quota increase]. |
 | Badanie wykorzystania miejsca                              | Zobacz [tabeli rozmiary] [ Table sizes] do zrozumienia wykorzystania miejsca systemu. |
 | Pomoc w zarządzaniu tabel                                    | Zobacz [Omówienie tabel] [ Overview] artykuł, aby uzyskać pomoc w zarządzaniu tabel.  Ten artykuł zawiera także łącza do bardziej szczegółowych tematów, takich jak [typy danych w tabelach][Data types], [Dystrybucja tabeli][Distribute], [Indeksowania tabeli][Index], [partycjonowania tabeli][Partition], [utrzymywanie statystyki tabeli] [ Statistics] i [tabele tymczasowe][Temporary]. |
-| Pasek postępu usługi technologii transparent data encryption (TDE) nie aktualizuje się w witrynie Azure Portal | Można wyświetlić stan TDE za pośrednictwem [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption). |
+| Pasek postępu usługi technologii transparent data encryption (TDE) nie aktualizuje się w witrynie Azure Portal | Można wyświetlić stan TDE za pośrednictwem [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 ## <a name="polybase"></a>Program Polybase
 | Problem                                           | Rozwiązanie                                                   |

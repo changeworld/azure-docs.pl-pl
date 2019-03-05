@@ -1,7 +1,7 @@
 ---
 title: Łączenie i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów — usługa Azure Search
 description: Dowiedz się, jak przeszukiwać dane w usłudze Azure SQL Database przy użyciu indeksatorów w celu wyszukiwania pełnotekstowego w usłudze Azure Search. Ten artykuł dotyczy połączeń, konfiguracji indeksatora i wprowadzanie danych.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752896"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315218"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
@@ -305,8 +305,8 @@ Indeksator SQL udostępnia kilka ustawień konfiguracji:
 
 | Ustawienie | Typ danych | Przeznaczenie | Wartość domyślna |
 | --- | --- | --- | --- |
-| queryTimeout |ciąg |Ustawia limit czasu w celu wykonywania zapytań SQL |5 minut ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |wartość logiczna |Powoduje, że zapytania SQL używany przez zasady znacznik limitu górnego, aby pominąć klauzuli ORDER BY. Zobacz [zasad znacznik limitu górnego](#HighWaterMarkPolicy) |false |
+| queryTimeout |string |Ustawia limit czasu w celu wykonywania zapytań SQL |5 minut ("00: 05:00") |
+| disableOrderByHighWaterMarkColumn |bool |Powoduje, że zapytania SQL używany przez zasady znacznik limitu górnego, aby pominąć klauzuli ORDER BY. Zobacz [zasad znacznik limitu górnego](#HighWaterMarkPolicy) |false |
 
 Te ustawienia są używane w `parameters.configuration` obiektu w definicja indeksatora. Na przykład aby ustawić limit czasu zapytania do 10 minut, należy utworzyć lub zaktualizować indeksator o następującej konfiguracji:
 

@@ -7,14 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 176e6804e6c98a1b9e9ffe4af04f02748c80928b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103432"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310915"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji w ramach żądania lub odpowiedzi. Ponowne napisanie te ułatwia nagłówki HTTP, wykonanie kilku ważnych scenariuszy, takich jak dodawanie nagłówka związanych z zabezpieczeniami pól, takich jak HSTS / X XSS ochrony lub usuwanie pola nagłówka odpowiedzi, który może spowodować ujawnienie poufnych informacji, takich jak nazwa serwera wewnętrznej bazy danych.
 
@@ -27,7 +29,7 @@ Usługa Application Gateway obsługuje teraz możliwość ponownego zapisywania 
 Oferuje obsługę ponownego napisania nagłówka bramy aplikacji:
 
 - **Nagłówek globalnego ponowne zapisywanie adresów**: Można napisać ponownie określone nagłówki dla wszystkich żądań i odpowiedzi odnoszących się do witryny.
-- **Ponowne zapisywanie adresów opartego na ścieżkach nagłówka**: ten typ ponownego napisania pozwala nagłówka ponowne zapisywanie adresów dla tych żądań i odpowiedzi, które dotyczą tylko w obszarze określonej lokacji, na przykład obszar koszyka zakupów wskazywane przez/koszyka / *.
+- **Ponowne zapisywanie adresów opartego na ścieżkach nagłówka**: ten typ ponownego napisania pozwala nagłówka ponowne zapisywanie adresów dla tych żądań i odpowiedzi, które dotyczą tylko w obszarze określonej lokacji, na przykład obszar koszyka zakupów wskazywane przez /cart/\*.
 
 Dzięki tej zmianie należy:
 
@@ -48,7 +50,7 @@ Można napisać ponownie wartość w nagłówki, aby:
   *Przykład:* 
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
+  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
   ```
 
 - Wartość z innym nagłówkiem. 
@@ -56,7 +58,7 @@ Można napisać ponownie wartość w nagłówki, aby:
   *Przykład 1:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
+  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
   ```
 
   > [!Note] 
@@ -65,7 +67,7 @@ Można napisać ponownie wartość w nagłówki, aby:
   *Przykład 2*:
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
+  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
   ```
 
   > [!Note] 
@@ -76,7 +78,7 @@ Można napisać ponownie wartość w nagłówki, aby:
   *Przykład:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
+  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
   ```
 
   > [!Note] 

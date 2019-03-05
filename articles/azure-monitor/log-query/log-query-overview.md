@@ -2,22 +2,17 @@
 title: Analizuj dane dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Wymagane jest zapytanie dziennika, aby pobrać dane dzienników z usługi Azure Monitor.  W tym artykule opisano sposób nowy dziennik, zapytania są używane w usłudze Azure Monitor i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden.
 services: log-analytics
-documentationcenter: ''
 author: bwren
-manager: carmonm
-editor: ''
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 259a792acb4d2fb8f9695f0f5a856bdf5069f2cd
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3e0cc41b2bb9b5c8193e64ccec767e551b3525e1
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749753"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307399"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analizuj dane dzienników w usłudze Azure Monitor
 
@@ -34,14 +29,19 @@ Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane dzienników z usł
 
 ## <a name="where-log-queries-are-used"></a>Gdzie są używane dziennika zapytań
 
-Różne sposoby, że używany jest program zapytań dzienników w usłudze Azure Monitor są następujące:
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Różne sposoby, że używany jest program zapytań w usłudze Azure Monitor są następujące:
+
 
 - **Portal.** Można wykonać analizy interakcyjnej danych dziennika w [witryny Azure portal](portals.md).  Dzięki temu można edytować zapytania i analizować wyniki w różnych formatach i wizualizacji.  
 - **Reguły alertów.** [Reguły alertów](../platform/alerts-overview.md) aktywnego identyfikowania problemów z danych w obszarze roboczym.  Każda reguła alertu opiera się na wyszukiwanie w dzienniku, który jest automatycznie uruchamiane w regularnych odstępach czasu.  Wyniki są kontrolowane, aby określić, jeśli utworzony alert.
 - **Pulpity nawigacyjne.** Możesz przypiąć wyniki dowolnego zapytania do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-logs-dashboards.md) co pozwala użytkownikowi na wizualizować dane dzienników i metryk ze sobą i opcjonalnie udostępniać innym użytkownikom usługi Azure. 
 - **Widoki.**  Możesz utworzyć wizualizacje danych, które mają zostać uwzględnione w pulpitami nawigacyjnymi użytkownika za pomocą [Projektant widoków](../platform/view-designer.md).  Dziennik zapytań zawierają dane używane przez [Kafelki](../platform/view-designer-tiles.md) i [części wizualizacji](../platform/view-designer-parts.md) w każdym widoku.  
+
 - **Eksportowanie.**  Podczas importowania danych dziennika z usługi Azure Monitor do programu Excel lub [usługi Power BI](../platform/powerbi.md), Utwórz zapytanie dziennika do definiowania danych do wyeksportowania.
-- **PowerShell.** Skrypt programu PowerShell można uruchomić z wiersza polecenia lub element runbook usługi Automation, która używa [Get AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) można pobrać danych dziennika z usługi Azure Monitor.  To polecenie cmdlet wymaga zapytanie w celu określenia danych do pobrania.
+- **PowerShell.** Skrypt programu PowerShell można uruchomić z wiersza polecenia lub element runbook usługi Automation, która używa [Get AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) można pobrać danych dziennika z usługi Azure Monitor.  To polecenie cmdlet wymaga zapytanie w celu określenia danych do pobrania.
 - **Interfejs API dzienniki usługi Azure Monitor.**  [Interfejsu API usługi Azure Monitor dzienniki](../platform/alerts-overview.md) umożliwia dowolnego klienta interfejsu API REST do pobierania danych dziennika z obszaru roboczego.  Żądanie interfejsu API zawiera zapytanie, które jest uruchamiane w usłudze Azure Monitor do ustalenia danych, które można pobrać.
 
 ![Wyszukiwanie w Dzienniku](media/log-query-overview/queries-overview.png)

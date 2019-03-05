@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 6b74d83de0495e3436c9bef623a827e8a1496767
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3e5fa15bbd6890bc6f36c97aadf3aeaa980b5031
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343307"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310322"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie metryki alertów klasycznych przy użyciu usługi Azure Monitor
 
@@ -85,6 +85,8 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="with-powershell"></a>Z programem PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Tej sekcji pokazano, jak za pomocą programu PowerShell, poleceń tworzyć, wyświetlać i zarządzać klasycznego alertów dotyczących metryk. Przykłady w artykule pokazano, jak można użyć poleceń cmdlet usługi Azure Monitor dla klasycznego alertów dotyczących metryk.
 
 1. Jeśli jeszcze ich, konfigurowanie programu PowerShell do uruchamiania na komputerze. Aby uzyskać więcej informacji, zobacz [jak instalowanie i konfigurowanie programu PowerShell](/powershell/azure/overview). Możesz również przejrzeć całą listę Azure Monitor poleceń cmdlet programu PowerShell w [poleceń cmdlet usługi Azure Monitor (Insights)](https://docs.microsoft.com/powershell/module/azurerm.insights).
@@ -92,40 +94,40 @@ Tej sekcji pokazano, jak za pomocą programu PowerShell, poleceń tworzyć, wyś
 2. Najpierw zaloguj się do subskrypcji platformy Azure.
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Zostanie wyświetlony ekran logowania. Po zalogowaniu się na Twoim koncie, identyfikator dzierżawy, a domyślny identyfikator subskrypcji są wyświetlane. Wszystkie polecenia cmdlet platformy Azure działa w ramach subskrypcji domyślnej. Aby wyświetlić listę subskrypcji masz dostęp, użyj następującego polecenia:
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 4. Aby zmienić kontekst pracy do innej subskrypcji, użyj następującego polecenia:
 
     ```PowerShell
-    Set-AzureRmContext -SubscriptionId <subscriptionid>
+    Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
 5. Możesz pobrać wszystkie klasyczne reguły alertów metryk dla grupy zasobów:
 
     ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest
+    Get-AzAlertRule -ResourceGroup montest
     ```
 
 6. Możesz wyświetlić szczegóły klasycznej reguły alertu metryki
 
     ```PowerShell
-    Get-AzureRmAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
+    Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
 7. Możesz pobrać wszystkich reguł alertów dla zasobu docelowego. Na przykład wszystkich reguł alertów jest ustawiony na maszynie Wirtualnej.
 
     ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
+    Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Nie jest już można tworzyć reguły alertów klasycznych za pomocą programu PowerShell. Aby utworzyć regułę alertu, należy użyć nowego ["Add-AzureRmMetricAlertRule"](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) polecenia.
+8. Nie jest już można tworzyć reguły alertów klasycznych za pomocą programu PowerShell. Aby utworzyć regułę alertu, należy użyć nowego ["Add-AzMetricAlertRule"](https://docs.microsoft.com/powershell/module/az.insights/add-azmetricalertrule?view=azurermps-6.13.0) polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

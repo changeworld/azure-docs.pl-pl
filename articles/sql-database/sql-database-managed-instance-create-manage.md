@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5d9952581049198131e30cd7d0ba0ebf6a14cc54
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 852f181ff0bb84bc3bcdb6d674ecf72eca900d7d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098872"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312583"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja interfejsu API zarządzanego w wystąpieniach zarządzanych bazy danych SQL Azure
 
@@ -29,21 +29,23 @@ Aby uzyskać szybki start omawiający Tworzenie wystąpienia zarządzanego bazy 
 
 ## <a name="powershell-create-and-manage-managed-instances"></a>Program PowerShell: Tworzenie i zarządzanie nimi wystąpienia zarządzanego
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Tworzenie i zarządzanie nimi wystąpień zarządzanych przy użyciu programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> W przypadku skryptów przykład programu PowerShell, zobacz [skryptu szybki start: Tworzenie wystąpienia zarządzanego Azure SQL przy użyciu programu PowerShell biblioteki](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+> W przypadku skryptów przykład programu PowerShell, zobacz [skryptu szybki start: Tworzenie wystąpienia zarządzanego Azure SQL przy użyciu programu PowerShell biblioteki](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-|[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Tworzy wystąpienie zarządzane usługi Azure SQL Database |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Ustawia właściwości dla wystąpienia zarządzanego bazy danych SQL Azure|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Usuwa wystąpienie zarządzane bazy danych Azure SQL|
-|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Tworzy bazę danych Azure SQL Database Managed Instance|
-|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL database|
-|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Usuwa bazę danych Azure SQL Managed Instance bazy danych|
-|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Przywraca bazę danych Azure SQL Managed Instance bazy danych|
+|[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Tworzy wystąpienie zarządzane usługi Azure SQL Database |
+|[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL|
+|[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Ustawia właściwości dla wystąpienia zarządzanego bazy danych SQL Azure|
+|[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Usuwa wystąpienie zarządzane bazy danych Azure SQL|
+|[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Tworzy bazę danych Azure SQL Database Managed Instance|
+|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL database|
+|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Usuwa bazę danych Azure SQL Managed Instance bazy danych|
+|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Przywraca bazę danych Azure SQL Managed Instance bazy danych|
 
 ## <a name="azure-cli-create-and-manage-managed-instances"></a>Interfejs wiersza polecenia platformy Azure: Tworzenie i zarządzanie nimi wystąpienia zarządzanego
 
@@ -69,7 +71,7 @@ Tworzenie i zarządzanie nimi wystąpienia zarządzanego z [wiersza polecenia pl
 Tworzenie i zarządzanie nimi wystąpienia bazy danych, po utworzeniu wystąpienia zarządzanego, użyj następujących poleceń języka T-SQL. Można wydać tych poleceń w witrynie Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio Code](https://code.visualstudio.com/docs), lub innego programu, który mogą połączyć się z serwerem usługi Azure SQL Database i przekazać polecenia języka Transact-SQL.
 
 > [!TIP]
-> Przewodniki Szybki Start przedstawiający, należy skonfigurować i nawiązać połączenie z wystąpienia zarządzanego przy użyciu programu SQL Server Management Studio na Windows firmy Microsoft można znaleźć [Szybki Start: Konfigurowanie maszyny Wirtualnej platformy Azure, aby nawiązać połączenie z wystąpienia usługi Azure SQL Database Managed](sql-database-managed-instance-configure-vm.md) i [Szybki Start: Konfigurowanie połączenia typu punkt lokacja do wystąpienia usługi Azure SQL Database Managed ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md).
+> Przewodniki Szybki Start przedstawiający, należy skonfigurować i nawiązać połączenie z wystąpienia zarządzanego przy użyciu programu SQL Server Management Studio na Windows firmy Microsoft można znaleźć [Szybki Start: konfigurowanie maszyny wirtualnej platformy Azure w celu nawiązania połączenia z wystąpieniem zarządzanym usługi Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki start: konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym usługi Azure SQL Database ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > Nie można utworzyć ani usunąć wystąpienia zarządzanego przy użyciu języka Transact-SQL.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 500d22993830534027c7ba9b372b6880cb608510
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a434453d6164dbb9fed7aebc3b3636b45daafa21
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822740"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313246"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -111,7 +111,7 @@ Otwórz sesję programu PowerShell w trybie administratora i uruchom następują
 
 ```powershell-interactive
 cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\HybridRegistration"
-Import-Module HybridRegistration.psd1
+Import-Module .\HybridRegistration.psd1
 ```
 
 Następnie uruchom **Add-HybridRunbookWorker** polecenia cmdlet przy użyciu następującej składni:

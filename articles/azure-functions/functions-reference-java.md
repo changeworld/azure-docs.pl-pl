@@ -11,22 +11,26 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 96b22a6e44142fef8d47dc228d5491c31c65478f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 14a9e369f3366fc103cde2f0faafb570de409de7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823063"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311869"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
 Środowisko uruchomieniowe usługi Azure Functions obsługuje [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181 win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/).
 
-## <a name="programming-model"></a>Model programowania
+Ten przewodnik zawiera informacje dotyczące niewymagającego pisania usługi Azure Functions przy użyciu języka Java.
+
+Funkcja języka Java jest `public` metoda ozdobione adnotacji `@FunctionName`. Ta metoda definiuje wpis dla funkcji języka java i musi być unikatowa w danym pakietu. 
+
+W tym artykule założono, że już znasz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Należy również wykonać szybkiego startu usługi Functions, aby utworzyć pierwszą funkcję, za pomocą [programu Visual Studio Code](functions-create-first-function-vs-code.md) lub [przy użyciu narzędzia maven](functions-create-first-java-maven.md).
+
+## <a name="programming-model"></a>Model programowania 
 
 Pojęcia związane z [wyzwalaczy i powiązań](functions-triggers-bindings.md) mają zasadnicze znaczenie w usłudze Azure Functions. Wyzwalacze Rozpocznij wykonywanie Twojego kodu. Powiązania umożliwiają sposób przekazywania danych do i zwrócić dane z funkcji, bez konieczności pisania kodu dostępu do danych niestandardowych.
-
-Funkcja powinna być bezstanowe metodę, aby przetwarzać dane wejściowe i generować dane wyjściowe. Funkcja nie powinno zależeć od wszystkie pola wystąpienia klasy. Wszystkie metody funkcji powinny być `public` i metody z adnotacją @FunctionName musi być unikatowa, ponieważ nazwa metody definiuje wpis dla funkcji.
 
 ## <a name="folder-structure"></a>Struktura folderów
 

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d2093c5b4c07e6e62df4d1f52a7fbe6e12a91ea0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: d9a911dccf3d59bf1159cf8576b95d86ef26657b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217057"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314249"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -133,7 +133,7 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 * Użyj [synchronizacji aplikacji](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) który utworzyliśmy. Działa na platformie Azure i korzysta z usługi log analytics publicznych interfejsów API do wypychania SQL dzienniki inspekcji w usłudze Azure Monitor dzienniki. Synchronizowanie aplikacji wypycha dzienniki inspekcji SQL do dzienników usługi Azure Monitor do użycia, za pośrednictwem pulpitu nawigacyjnego analizy dziennika.
 
-* Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+* Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
 * Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
     * Po pobraniu pliku dziennika, który jest lokalnie, można kliknąć dwukrotnie plik, Otwórz, wyświetlać i analizować dzienniki w programie SSMS.
@@ -144,8 +144,8 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
    * Inspekcja obiektów blob widoku programowo dzienników:
 
-     * Użyj [czytnika zdarzeń rozszerzonych](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) bibliotekę języka C#.
-     * [Rozszerzone zdarzenia pliki zapytań](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) przy użyciu programu PowerShell.
+     * Użyj [czytnika zdarzeń rozszerzonych](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) bibliotekę języka C#.
+     * [Rozszerzone zdarzenia pliki zapytań](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) przy użyciu programu PowerShell.
 
 
 
@@ -169,17 +169,20 @@ W środowisku produkcyjnym prawdopodobnie okresowo odświeżyć klucze magazynu.
 4. Wróć do magazynu interfejsu użytkownika i **ponownie wygenerować** *pomocniczy klucz dostępu* (jako przygotowania do następnej klucze odświeżania w tle.
 
 ## <a id="subheading-5"></a>Automatyzacja (PowerShell/interfejs API REST)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Można również skonfigurować inspekcji w usłudze Azure SQL Data Warehouse przy użyciu następujących narzędzi do automatyzacji:
 
 * **Polecenia cmdlet programu PowerShell**:
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
-   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
-   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
-   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
-   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
-   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
-   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+   * [Get-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/get-azsqldatabaseauditingpolicy)
+   * [Get-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Get-azSqlServerAuditingPolicy)
+   * [Remove-AzSqlDatabaseAuditing](/powershell/module/az.sql/Remove-azSqlDatabaseAuditing)
+   * [Remove-AzSqlServerAuditing](/powershell/module/az.sql/Remove-azSqlServerAuditing)
+   * [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/Set-azSqlDatabaseAuditingPolicy)
+   * [Set-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Set-azSqlServerAuditingPolicy)
+   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy)
 
 
 ## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Klienci z obniżonym poziomem Obsługa inspekcji i dynamicznego maskowania danych

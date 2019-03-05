@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b537dd8360c39a744cf9963376387a4c89e33838
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110153"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311648"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku dla pojedynczych i puli baz danych w usłudze Azure SQL Database
 
@@ -27,6 +27,8 @@ W tym artykule opisano różne rodzaje miejsca w magazynie dla pojedynczego i pu
 > W tym artykule nie ma zastosowania do opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database.
 
 ## <a name="overview"></a>Przegląd
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Z jednej puli baz danych i w usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
 
@@ -40,7 +42,7 @@ Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być 
 
 Większość metryk miejsce magazynowania wyświetlane w witrynie Azure portal oraz następujące interfejsy API pomiaru tylko rozmiar stron używanych danych:
 
-- Usługa Azure Resource Manager, na podstawie metryk interfejsów API w tym program PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
+- Usługa Azure Resource Manager, na podstawie metryk interfejsów API w tym program PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.insights/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Jednak następujące interfejsy API pomiaru rozmiar ilość miejsca przydzielonego dla baz danych i elastyczne pule:
@@ -162,7 +164,7 @@ $userName = "name"
 $password = "password"
 
 # Get list of databases in elastic pool
-$databasesInPool = Get-AzureRmSqlElasticPoolDatabase `
+$databasesInPool = Get-AzSqlElasticPoolDatabase `
     -ResourceGroupName $resourceGroupName `
     -ServerName $serverName `
     -ElasticPoolName $poolName

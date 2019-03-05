@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3358c415e620165bf07e2810bc8f1873d1dea0d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5ef8c8f32422352c01b8c7ceb4811863faad4e57
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466391"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308775"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Tworzenie i wysyłanie zapytań usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell
 
@@ -23,32 +23,29 @@ Szybkie tworzenie usługi Azure SQL data warehouse przy użyciu programu Azure P
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.1.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, z jakiej wersji korzystasz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
-
-
 > [!NOTE]
 > Utworzenie bazy danych w usłudze SQL Data Warehouse może skutkować powstaniem nowej usługi płatnej.  Aby uzyskać więcej informacji, zobacz [Cennik usługi SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
->
->
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do swojej subskrypcji platformy Azure za pomocą [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami.
+Zaloguj się do swojej subskrypcji platformy Azure za pomocą [AzAccount Dodaj](/powershell/module/az.profile/add-azaccount) polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami.
 
 ```powershell
-Add-AzureRmAccount
+Add-AzAccount
 ```
 
-Aby zobaczyć, której subskrypcji używasz, uruchom [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+Aby zobaczyć, której subskrypcji używasz, uruchom [Get AzSubscription](/powershell/module/az.profile/get-azsubscription).
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
-Jeśli musisz użyć subskrypcji innej niż domyślna, uruchom polecenie [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
+Jeśli musisz użyć innej subskrypcji niż domyślna, uruchom [AzContext zestaw](/powershell/module/az.profile/set-azcontext).
 
 ```powershell
-Set-AzureRmContext -SubscriptionName "MySubscription"
+Set-AzContext -SubscriptionName "MySubscription"
 ```
 
 
@@ -75,17 +72,17 @@ $databasename = "mySampleDataWarehosue"
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`.
+Tworzenie [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) przy użyciu [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) polecenia. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`.
 
 ```powershell
-New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
+New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Tworzenie serwera logicznego
 
-Tworzenie [serwer logiczny Azure SQL](../sql-database/sql-database-logical-servers.md) przy użyciu [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) polecenia. Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. Poniższy przykład tworzy serwera o losowo wybranej nazwie w grupie zasobów za pomocą administratora o nazwie `ServerAdmin` i z hasłem `ChangeYourAdminPassword1`. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
+Tworzenie [serwer logiczny Azure SQL](../sql-database/sql-database-logical-servers.md) przy użyciu [New AzSqlServer](/powershell/module/az.sql/new-azsqlserver) polecenia. Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. Poniższy przykład tworzy serwera o losowo wybranej nazwie w grupie zasobów za pomocą administratora o nazwie `ServerAdmin` i z hasłem `ChangeYourAdminPassword1`. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
 
 ```powershell
-New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
+New-AzSqlServer -ResourceGroupName $resourcegroupname `
     -ServerName $servername `
     -Location $location `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
@@ -93,10 +90,10 @@ New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurowanie reguły zapory serwera
 
-Tworzenie [reguły zapory na poziomie serwera Azure SQL](../sql-database/sql-database-firewall-configure.md) przy użyciu [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) polecenia. Regułę zapory na poziomie serwera pozwala aplikacji zewnętrznej, takie jak SQL Server Management Studio lub narzędzie SQLCMD, aby nawiązać połączenie z SQL data warehouse przez zaporę usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
+Tworzenie [reguły zapory na poziomie serwera Azure SQL](../sql-database/sql-database-firewall-configure.md) przy użyciu [New AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) polecenia. Regułę zapory na poziomie serwera pozwala aplikacji zewnętrznej, takie jak SQL Server Management Studio lub narzędzie SQLCMD, aby nawiązać połączenie z SQL data warehouse przez zaporę usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
 
 ```powershell
-New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
+New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
     -ServerName $servername `
     -FirewallRuleName "AllowSome" -StartIpAddress $startip -EndIpAddress $endip
 ```
@@ -110,7 +107,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 Ten przykład tworzy magazyn danych, korzystając ze zmiennych zdefiniowanych wcześniej.  Określa cel usługi jako DW400, czyli niższą cenę punkt początkowy dla magazynu danych. 
 
 ```Powershell
-New-AzureRmSqlDatabase `
+New-AzSqlDatabase `
     -ResourceGroupName $resourcegroupname `
     -ServerName $servername `
     -DatabaseName $databasename `
@@ -133,7 +130,7 @@ Opcjonalne parametry:
 - **CollationName**: Sortowanie domyślne, jeśli nie zostanie określony, to SQL_Latin1_General_CP1_CI_AS. Nie można zmienić sortowania bazy danych.
 - **MaxSizeBytes**: Domyślny maksymalny rozmiar bazy danych wynosi 10 GB.
 
-Aby uzyskać więcej informacji na temat opcji parametrów, zobacz [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
+Aby uzyskać więcej informacji na temat opcji parametrów, zobacz [New AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -145,7 +142,7 @@ Inne samouczki Szybki start w tej kolekcji bazują na tym przewodniku Szybki sta
 >
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ace8eedf4b6f03c839fc2da7469e5e9c36bc5cae
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 167a7b008af521c5f4e403a3786b004138d69da9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213334"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311155"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Monitoruj łączność urządzeń przy użyciu usługi Azure IoT Central Explorer
 
@@ -48,10 +48,10 @@ W poniższych sekcjach opisano typowe polecenia i opcje używane po uruchomieniu
 Zanim można rozpocząć pracę, musisz mieć administrator aplikacji IoT Central w celu uzyskania tokenu dostępu do użycia. Administrator wykonuje następujące czynności:
 
 1. Przejdź do **administracji** następnie **tokeny dostępu**.
-1. Kliknij przycisk **Wygeneruj Token**.
+1. Wybierz **Wygeneruj Token**.
     ![Zrzut ekranu strony tokenu dostępu](media/howto-use-iotc-explorer-experimental/accesstokenspage.png)
 
-1. Wprowadź nazwę tokenu, kliknij przycisk **dalej**, a następnie **kopiowania**.
+1. Wprowadź nazwę tokenu, wybierz **dalej**, a następnie **kopiowania**.
     > [!NOTE]
     > Wartość tokenu jest wyświetlane tylko raz, więc należy skopiować przed zamknięciem okna dialogowego. Po zamknięciu okna dialogowego, nigdy nie wyświetleniem ponownie.
 

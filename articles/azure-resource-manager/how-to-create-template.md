@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: a802b12f34c5fe16202f55416a698823e55c01bb
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 67ea9ece7ba0c71484e9117db13fd2c708d87baf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245901"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312872"
 ---
 # <a name="create-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 
@@ -38,7 +38,7 @@ Samouczek dotyczący instalowania rozszerzenia narzędzia usługi Resource Manag
 
 Omówmy teraz części szablonu w celu poznania sposobu działania tego szablonu. Szablon może nie mieć każdej sekcji. Dostępne są następujące sekcje, które chcesz skupić się na:
 
-* [Parametry](resource-manager-templates-parameters.md) sekcji, która wyświetla wartości można określić podczas wdrażania, aby dostosować infrastrukturę, która jest wdrażana. 
+* [Parametry](resource-group-authoring-templates.md#parameters) sekcji, która wyświetla wartości można określić podczas wdrażania, aby dostosować infrastrukturę, która jest wdrażana. 
 
 * [Zmienne](resource-group-authoring-templates.md#variables) sekcji znajdują się wartości, które są używane w szablonie.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 15d85d30f73a9880a6a68a62ab208bb0bdbf5402
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 325df38cfea0c87cda8b7fb5ab37dca4a6a529fd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788042"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315677"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure
 
@@ -33,8 +33,8 @@ Funkcji Hyper-V bez programu Virtual Machine Manager | Dla maszyn wirtualnych ur
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) | System Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | W przypadku maszyn wirtualnych znajdujących się na hoście z systemem Windows Server 2016 odzyskiwania do alternatywnej lokalizacji nie jest obsługiwane.<br/><br/> Jeśli skonfigurowano już program Windows Server 2012 R2 z / lub programu SCVMM 2012 R2 przy użyciu usługi Azure Site Recovery i planujesz uaktualnić system operacyjny, postępuj zgodnie ze wskazówkami [dokumentacji.](upgrade-2012R2-to-2016.md) 
-Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/>
+Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) | System Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | Jeśli skonfigurowano już program Windows Server 2012 R2 z / lub programu SCVMM 2012 R2 przy użyciu usługi Azure Site Recovery i planujesz uaktualnić system operacyjny, postępuj zgodnie ze wskazówkami [dokumentacji.](upgrade-2012R2-to-2016.md) 
+Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replikowane maszyny wirtualne
@@ -129,7 +129,7 @@ Magazyn geograficznie nadmiarowy | Yes | Yes
 Magazyn geograficznie nadmiarowy z dostępem do odczytu | Yes | Yes
 Chłodny Magazyn | Nie | Nie
 Magazynu gorącego| Nie | Nie
-Obiekty BLOB typu Block | Nie | Nie
+Blokowe obiekty blob | Nie | Nie
 Szyfrowanie danych magazynowanych (SSE)| Yes | Yes
 Premium Storage | Yes | Yes
 Usługa import/export | Nie | Nie
@@ -159,7 +159,7 @@ Rozmiar wirtualnego dysku twardego dysku danych | Do 4095 GB. | Sprawdzanie wyma
 Karty sieciowe | Obsługiwana jest konfiguracja z wieloma kartami sieciowymi |
 Udostępniony wirtualny dysk twardy | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Dysk FC | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
-Format dysku twardego | WIRTUALNY DYSK TWARDY <br/><br/> VHDX | Usługa Site Recovery automatycznie konwertuje pliki VHDX na dysku VHD podczas przejścia w tryb failover na platformie Azure. Po powrocie po awarii do środowiska lokalnego, maszyny wirtualne nadal używają formatu VHDX.
+Format dysku twardego | VHD <br/><br/> VHDX | Usługa Site Recovery automatycznie konwertuje pliki VHDX na dysku VHD podczas przejścia w tryb failover na platformie Azure. Po powrocie po awarii do środowiska lokalnego, maszyny wirtualne nadal używają formatu VHDX.
 BitLocker | Nieobsługiwane | Przed włączeniem replikacji dla maszyny Wirtualnej, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków. Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą. | Zaktualizuj wartość we właściwościach maszyny Wirtualnej w usłudze Site Recovery.
 Typ maszyny Wirtualnej | 1. generacji<br/><br/> Generacja 2 — Windows | Maszyny wirtualne generacji 2, korzystając z typu dysku systemu operacyjnego basic (który zawiera jeden lub dwa woluminy danych w formacie VHDX) i mniej niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyny wirtualne systemu Linux generacji 2 nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|

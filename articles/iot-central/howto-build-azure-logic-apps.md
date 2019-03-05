@@ -8,12 +8,12 @@ ms.date: 1/3/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 971c01ec8002e73dbc6abfb66a0ede26f90a4d9c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8fd46bdc5971ce1e9bcee6599dd73f09cc3c00be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453319"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314351"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-azure-logic-apps"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w usłudze Azure Logic Apps
 
@@ -32,13 +32,13 @@ Za pomocą łącznika usługi IoT Central w Microsoft Flow. Usługi Azure Logic 
 
 W tej sekcji pokazano, jak Opublikuj wiadomość w usłudze Microsoft Teams po wyzwoleniu reguły. Możesz skonfigurować przepływ pracy na potrzeby innych łączników wykonywanie czynności takich jak wysyłanie zdarzeń do Centrum zdarzeń, Utwórz nowy element roboczy DevOps platformy Azure lub wstawić nowy wiersz w programie SQL server.
 
-1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules.md). Po zapisaniu warunki reguły kliknij **usługi Azure Logic Apps** Kafelek jako nową akcję. Kliknij przycisk **Utwórz w witrynie Azure portal**. Aby utworzyć nową aplikację logiki możesz zostaną wykonane do witryny Azure portal. Może być konieczne Zaloguj się do konta platformy Azure.
+1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules.md). Po zapisaniu warunki reguły wybierz **usługi Azure Logic Apps** Kafelek jako nową akcję. Wybierz **Utwórz w witrynie Azure portal**. Aby utworzyć nową aplikację logiki możesz zostaną wykonane do witryny Azure portal. Może być konieczne Zaloguj się do konta platformy Azure.
 
-1. Wprowadź wymagane informacje, aby utworzyć nową aplikację logiki. Możesz wybrać subskrypcję platformy Azure, aby zainicjować obsługę nowej aplikacji logiki do. Nie ma być ta sama subskrypcja, użytym do utworzenia aplikacji IoT Central. Kliknij pozycję **Utwórz**.
+1. Wprowadź wymagane informacje, aby utworzyć nową aplikację logiki. Możesz wybrać subskrypcję platformy Azure, aby zainicjować obsługę nowej aplikacji logiki do. Nie ma być ta sama subskrypcja, użytym do utworzenia aplikacji IoT Central. Wybierz pozycję **Utwórz**.
 
     ![Tworzenie aplikacji logiki w witrynie Azure portal](./media/howto-build-azure-logic-apps/createinazureportal.PNG)
 
-1. Po pomyślnym utworzeniu aplikacji logiki nastąpi automatyczne przejście do projektanta aplikacji logiki. Kliknij przycisk **pusta aplikacja logiki**. 
+1. Po pomyślnym utworzeniu aplikacji logiki nastąpi automatyczne przejście do projektanta aplikacji logiki. Wybierz **pusta aplikacja logiki**. 
 
     ![Tworzenie pustej aplikacji logiki](./media/howto-build-azure-logic-apps/blanklogicapp.PNG)
 
@@ -54,11 +54,11 @@ W tej sekcji pokazano, jak Opublikuj wiadomość w usłudze Microsoft Teams po w
 
 1. W akcji, wybierz **zespołu** i **kanału**. Wypełnij **komunikat** pole co chcesz każdą wiadomość mówią. Możesz uwzględnić *zawartości dynamicznej* z reguły IoT Central, przekazując wzdłuż ważne informacje, takie jak nazwa urządzenia i sygnatura czasowa do powiadomienia.
     > [!NOTE]
-    > Kliknij pozycję "Zobacz więcej" tekst w oknie zawartości dynamicznej miary i wartości właściwości, które spowodowały wyzwolenie reguły.
+    > Wybierz **Zobacz więcej** tekst w oknie zawartości dynamicznej można pobrać miary i wartości właściwości, które wyzwolona reguła.
 
     ![Otwórz edycji akcji aplikacji logiki za pomocą okienka dynamicznej](./media/howto-build-azure-logic-apps/buildworkflow.PNG)
 
-1. Po zakończeniu edycji akcję, kliknij **Zapisz**.
+1. Po zakończeniu edycji akcję, wybierz **Zapisz**.
 
 1. Po powrocie do aplikacji IoT Central, zobaczysz, że ta reguła zawiera akcję usługi Azure Logic Apps, w obszarze akcji.
 

@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3d9106fb682a370e18fc78d35ca31662bae44524
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813334"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310645"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -32,7 +32,7 @@ Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migr
 - Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
 - Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
 
-**Szybkie oceny:** Przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbierania danych o wydajności rozpoczyna się, gdy jest rozpoczynane odnajdywania, jeśli szukasz szybkiego ocen, należy wybrać kryterium ustalania rozmiaru w ocenie jako *jako lokalne*. W przypadku ocen na podstawie wydajności zaleca się poczekanie przez co najmniej jeden dzień po rozpoczęciu odnajdywania, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
+**Szybkie oceny:** Przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbieranie danych o wydajności rozpoczyna się wraz z rozpoczęciem odnajdywania, jeśli potrzebujesz szybkich ocen, wybierz w ocenie kryterium ustalania rozmiaru *zgodnie ze środowiskiem lokalnym*. W przypadku ocen na podstawie wydajności zaleca się poczekanie przez co najmniej jeden dzień po rozpoczęciu odnajdywania, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
 
 Urządzenie ciągle tylko zbiera dane wydajności, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
 
@@ -111,7 +111,7 @@ Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę
 --- | --- | ---
 *.portal.azure.com | Dotyczy globalna platforma Azure. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
 *.portal.azure.us | Dotyczy tylko systemu Azure dla instytucji rządowych. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Dostęp do adresów URL jest opcjonalne.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Należy ręcznie zainstalować moduł.
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Wymagany jest dostęp do adresów URL.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Musisz zainstalować moduł ręcznie na maszynie, która ma łączność z Internetem, a następnie skopiuj modułów do urządzenia. [Dowiedz się więcej, przechodząc do kroku nr 4 w tym przewodniku rozwiązywania problemów](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Zainstaluj ręcznie program VMware PowerCLI modułu

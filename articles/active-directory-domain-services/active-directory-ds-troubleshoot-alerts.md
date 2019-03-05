@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c71528ed8453bcde05e29eb609ca2cde64bad8de
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817533"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309421"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services — Rozwiązywanie problemów z alertami
 Ten artykuł zawiera przewodniki dotyczące rozwiązywania problemów w ramach wszystkich alertów, które mogą występować w domenie zarządzanej.
@@ -42,10 +42,10 @@ Wybierz kroki rozwiązywania problemów, które odnoszą się do Identyfikatora 
 | AADDS108 | *Subskrypcja używana przez usługę Azure AD Domain Services został przeniesiony do innego katalogu. Usługi domenowe Azure AD musi mieć aktywną subskrypcję, w tym samym katalogu, aby działać prawidłowo.* | [Katalogi przenieść subskrypcję](#aadds108-subscription-moved-directories) |
 | AADDS109 | *Usunięto zasób, który jest używany na potrzeby domeny zarządzanej. Ten zasób jest wymagany dla usług domenowych Azure AD działać prawidłowo.* | [Zasób został usunięty.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest pełny i nie ma miejsca na dodatkowy kontroler domeny, musi zostać utworzona.* | [Podsieć jest pełna](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | * Jednostki usługi używany przez usługi domenowe Azure AD do usługi domeny nie ma uprawnień do zarządzania zasobami w ramach subskrypcji Azure. Jednostka usługi musi uzyskać uprawnienia do obsługi Twojej domeny zarządzanej. * | Brak jednostki usługi autoryzacji |
+| AADDS111 | *Jednostki usługi używany przez usługi domenowe Azure AD do usługi domeny nie ma uprawnień do zarządzania zasobami w ramach subskrypcji Azure. Jednostka usługi musi uzyskać uprawnienia do obsługi Twojej domeny zarządzanej.* | [Brak jednostki usługi autoryzacji](#aadds111-service-principal-unauthorized) |
 | AADDS112 | *Odkryliśmy, że podsieć sieci wirtualnej w tej domenie może nie mieć wystarczającej liczby adresów IP. Azure AD Domain Services wymaga co najmniej dwóch dostępnych adresów IP w podsieci, w której jest włączone w. Firma Microsoft zaleca posiadanie co najmniej 3 – 5 Alokacja adresów IP w obrębie podsieci. To może wystąpić, jeśli inne maszyny wirtualne są wdrażane w obrębie podsieci, w związku z tym wyczerpaniem liczby dostępnych adresów IP lub czy istnieje ograniczenie liczby dostępnych adresów IP w podsieci.* | [Nie ma wystarczającej liczby adresów IP](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Zasoby używane przez usługi Azure AD Domain Services zostały wykryte w nieoczekiwanym stanie i nie można go odzyskać.* | [Zasoby są nie do odzyskania](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | * Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest nieprawidłowy i nie można użyć. * | [Podsieć jest nieprawidłowa](#aadds114-subnet-invalid) |
+| AADDS114 | *Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest nieprawidłowy i nie można użyć.* | [Podsieć jest nieprawidłowa](#aadds114-subnet-invalid) |
 | AADDS115 | *Co najmniej jeden z zasobów sieciowych, używane przez domena zarządzana nie może być obsługiwany na jak zakres docelowy został zablokowany.* | [Zasoby są zablokowane.](#aadds115-resources-are-locked) |
 | AADDS116 | *Co najmniej jeden z zasobów sieciowych, używane przez domena zarządzana nie może działać z powodu restriction(s) zasad.* | [Zasoby są bezużyteczne](#aadds116-resources-are-unusable) |
 | AADDS500 | *Domena zarządzana ostatniej synchronizacji z usługą Azure AD w dniu [date]. Użytkownicy nie mieć możliwości logowania się w domenie zarządzanej lub członkostwa w grupie może nie być zsynchronizowany z usługą Azure AD.* | [Synchronizacja nie wystąpił w chwilę](#aadds500-synchronization-has-not-completed-in-a-while) |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b1f6024538c6807fd68a0d7b0b7ae2776938055b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888197"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307823"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -29,7 +29,7 @@ Przed skonfigurowaniem Eksport ciągły istnieje kilka rozwiązań alternatywnyc
 * [Analiza](../../azure-monitor/app/analytics.md) udostępnia zaawansowany język zapytań dla danych telemetrycznych. Można także eksportować wyniki.
 * Jeśli zajmujesz się na [eksplorować dane w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ), możesz to zrobić, bez korzystania z eksportu ciągłego.
 * [Interfejsu API REST dostępu do danych](https://dev.applicationinsights.io/) pozwala uzyskiwać dostęp do danych telemetrycznych programowo.
-* Można także przejść do ustawień [eksportu ciągłego przy użyciu programu Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
+* Można także przejść do ustawień [eksportu ciągłego przy użyciu programu Powershell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 Eksportu ciągłego dane są kopiowane do magazynu (gdzie pozostawał dla tak długo, jak chcesz), jest nadal dostępny w usłudze Application Insights dla zwykłego [okres przechowywania](../../azure-monitor/app/data-retention-privacy.md).
 

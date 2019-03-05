@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895860"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308860"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -84,7 +84,7 @@ Obliczenia skrótu wygląda podobnie do poniższego kodu pseudotłumaczeń i zwr
 SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 ```
 
-Token zawiera wartości-mieszane, tak aby odbiorca może ponownie obliczyć skrótu z tymi samymi parametrami, weryfikowanie, czy wystawca ma prawidłowy klucz podpisywania. 
+Token zawiera wartości-mieszane, tak aby odbiorca może ponownie obliczyć skrótu z tymi samymi parametrami, weryfikowanie, czy wystawca ma prawidłowy klucz podpisywania.
 
 Identyfikator URI zasobu jest pełny identyfikator URI zasobu usługi Service Bus, do której dostęp jest zgłoszone. Na przykład `http://<namespace>.servicebus.windows.net/<entityPath>` lub `sb://<namespace>.servicebus.windows.net/<entityPath>`, czyli `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. Identyfikator URI musi być [zakodowane w formacie procent](https://msdn.microsoft.com/library/4fkewx0t.aspx).
 
@@ -156,7 +156,7 @@ helloMessage.MessageId = "SAS-Sample-Message";
 sendClient.Send(helloMessage);
 ```
 
-Można również użyć dostawcy tokenu, który bezpośrednio do wystawiania tokenów do przekazania do innych klientów. 
+Można również użyć dostawcy tokenu, który bezpośrednio do wystawiania tokenów do przekazania do innych klientów.
 
 Parametry połączenia mogą zawierać nazwę reguły (*SharedAccessKeyName*) i klucz reguły (*SharedAccessKey*) lub wcześniej wystawiony token (*SharedAccessSignature*). Jeśli są obecne w ciągu połączenia, przekazywane do dowolnego konstruktora lub metody fabryki, które przyjmuje parametry połączenia, dostawcy tokenu sygnatury dostępu Współdzielonego jest automatycznie tworzone i wypełniane.
 
@@ -171,7 +171,7 @@ POST https://<yournamespace>.servicebus.windows.net/<yourentity>/messages
 Content-Type: application/json
 Authorization: SharedAccessSignature sr=https%3A%2F%2F<yournamespace>.servicebus.windows.net%2F<yourentity>&sig=<yoursignature from code above>&se=1438205742&skn=KeyName
 ContentType: application/atom+xml;type=entry;charset=utf-8
-``` 
+```
 
 Należy pamiętać, że działa to wszystko. Można utworzyć sygnatury dostępu Współdzielonego dla kolejki, tematu lub subskrypcji.
 
@@ -183,7 +183,7 @@ W poprzedniej sekcji pokazano, jak za pomocą tokenu sygnatury dostępu Współd
 
 Przed rozpoczęciem do przesyłania danych do usługi Service Bus, wydawca musi wysłać tokenu sygnatury dostępu Współdzielonego w wiadomości protokołu AMQP do dobrze zdefiniowanych AMQP węzła o nazwie **$cbs** (można go było wyświetlić jako "specjalne" kolejka używane przez usługę, aby pobrać i zweryfikować wszystkie sygnatury dostępu Współdzielonego tokeny). Należy określić wydawcę **ReplyTo** pola wewnątrz komunikatu protokołu AMQP; jest to węzeł, w którym usługa odpowiada z wydawcą zostało nawiązane z wynikami weryfikacji tokenu (proste żądanie/nietypizowana odpowiedź wzorca od wydawcy i usługi ). Ten węzeł odpowiedzi jest tworzony "w locie," mówić o "dynamiczne tworzenie węzeł zdalny", jak opisano w specyfikacji protokołu AMQP 1.0. Po sprawdzeniu, czy token sygnatury dostępu Współdzielonego jest prawidłowa, wydawcy można przejść do przodu i wysyłać dane do usługi.
 
-Poniższe kroki pokazują sposób wysyłania tokenu sygnatury dostępu Współdzielonego przy użyciu protokołu AMQP [AMQP.Net Lite](https://github.com/Azure/amqpnetlite) biblioteki. Jest to przydatne, jeśli nie możesz użyć oficjalne zestawu SDK magistrali usług (na przykład na WinRT, .net Compact Framework, .net Micro Framework oraz Mono) Programowanie w języku C\#. Oczywiście, ta biblioteka jest przydatne lepiej zrozumieć, jak opartego na oświadczeniach zabezpieczeń działa na poziomie protokołu AMQP, co pokazano, jak to działa na poziomie protokołu HTTP (z żądania HTTP POST i tokenu sygnatury dostępu Współdzielonego, wysyłany w nagłówku "Autoryzacja"). Jeśli nie potrzebujesz takiego głębokiego wiedzę na temat protokołu AMQP za pomocą oficjalnego zestawu SDK magistrali usług .net Framework aplikacje, które zrobić to za Ciebie.
+Poniższe kroki pokazują sposób wysyłania tokenu sygnatury dostępu Współdzielonego przy użyciu protokołu AMQP [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) biblioteki. Jest to przydatne, jeśli nie możesz użyć usługi Service Bus z zestawu SDK (na przykład na WinRT, platformy .NET Compact Framework, .NET Micro Framework i Mono) oficjalne Programowanie w języku C\#. Oczywiście, ta biblioteka jest przydatne lepiej zrozumieć, jak opartego na oświadczeniach zabezpieczeń działa na poziomie protokołu AMQP, co pokazano, jak to działa na poziomie protokołu HTTP (z żądania HTTP POST i tokenu sygnatury dostępu Współdzielonego, wysyłany w nagłówku "Autoryzacja"). Jeśli nie potrzebujesz takiego głębokiego wiedzę na temat protokołu AMQP umożliwia oficjalne zestawu SDK magistrali usług w aplikacjach .NET Framework, które zrobić to za Ciebie.
 
 ### <a name="c35"></a>C&#35;
 
@@ -236,12 +236,12 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-`PutCbsToken()` Metoda otrzymuje *połączenia* (wystąpienie klasy połączenia AMQP zgodnie z informacjami od [AMQP .NET Lite biblioteki](https://github.com/Azure/amqpnetlite)) reprezentującą połączenie TCP do usługi i *sasToken* parametr, który jest sygnatura dostępu Współdzielonego token do wysłania. 
+`PutCbsToken()` Metoda otrzymuje *połączenia* (wystąpienie klasy połączenia AMQP zgodnie z informacjami od [AMQP .NET Lite biblioteki](https://github.com/Azure/amqpnetlite)) reprezentującą połączenie TCP do usługi i *sasToken* parametr, który jest sygnatura dostępu Współdzielonego token do wysłania.
 
 > [!NOTE]
 > Jest ważne, że połączenie jest tworzony z **mechanizm uwierzytelniania SASL ustawiono anonimowe** (i nie zwykły domyślne przy użyciu nazwy użytkownika i hasło użyte podczas nie trzeba będzie wysłać tokenu sygnatury dostępu Współdzielonego).
-> 
-> 
+>
+>
 
 Następnie wydawca tworzy dwa połączenia AMQP do wysyłania tokenu sygnatury dostępu Współdzielonego i odbierania odpowiedzi (wynik weryfikacji tokenu) z usługi.
 
@@ -295,7 +295,7 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane dla różnych operacji
 | **reguły** | | |
 | Tworzenie reguły |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
 | Usuwanie reguły |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
-| Wyliczanie zasad |Zarządzania lub nasłuchiwania |.. /myTopic/Subscriptions/mySubscription/Rules 
+| Wyliczanie zasad |Zarządzania lub nasłuchiwania |.. /myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Kolejne kroki
 

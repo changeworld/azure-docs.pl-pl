@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 2b032405a2fb3b8b608228d8a739bf91dcf439ef
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: afe1214299b7f1ecd741f992af75abedcfe77b84
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895945"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308707"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk przez system operacyjny gościa do usługi Azure Monitor metryki magazynu przy użyciu szablonu usługi Azure Resource Manager dla zestawu skalowania maszyn wirtualnych Windows
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Za pomocą usługi Azure Monitor [rozszerzenia diagnostyki Azure Windows (WAD)](diagnostics-extension-overview.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa), które zostaną uruchomione w ramach maszyny wirtualnej, usługa w chmurze lub klastra usługi Azure Service Fabric. Rozszerzenie może wysyłać telemetrię do wielu różnych lokalizacjach, wymienione w artykule wcześniej połączona.  
 
@@ -27,7 +29,7 @@ Jeśli dopiero zaczynasz pracę z szablonami usługi Resource Manager, Dowiedz s
 
 - Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) zainstalowany, możesz też [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
+- Musisz mieć [programu Azure PowerShell](/powershell/azure) zainstalowany, możesz też [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurowanie usługi Azure Monitor jako ujście danych 
@@ -236,17 +238,17 @@ Zapisz i zamknij oba pliki.
 Aby wdrożyć szablon usługi Resource Manager, należy użyć programu Azure PowerShell:  
 
 1. Uruchom program PowerShell. 
-1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`.
-1. Pobierz listę subskrypcji przy użyciu `Get-AzureRmSubscription`.
+1. Zaloguj się do platformy Azure za pomocą `Login-AzAccount`.
+1. Pobierz listę subskrypcji przy użyciu `Get-AzSubscription`.
 1. Ustaw subskrypcję będzie utworzyć lub zaktualizować maszyny wirtualnej: 
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
 1. Utwórz nową grupę zasobów dla wdrożenia maszyny Wirtualnej. Uruchom następujące polecenie: 
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
+    New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
@@ -258,7 +260,7 @@ Aby wdrożyć szablon usługi Resource Manager, należy użyć programu Azure Po
    > Jeśli chcesz zaktualizować istniejącego zestawu skalowania, należy dodać **— tryb Przyrostowy** na końcu polecenia. 
  
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
+   New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
 1. Po pomyślnym wdrożeniu, należy odnaleźć maszyny wirtualnej zestawu skalowania w witrynie Azure portal. Powinien on emituje metryk do usługi Azure Monitor. 

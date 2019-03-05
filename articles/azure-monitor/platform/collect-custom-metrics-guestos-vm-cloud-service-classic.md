@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: dba1f66be91d8fa8e151a2771bad70b721af02dc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893582"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313076"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Dzięki usłudze Azure Monitor [rozszerzenie diagnostyki](diagnostics-extension-overview.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa) uruchomiona w ramach maszyny wirtualnej, usługa w chmurze lub klaster usługi Service Fabric. Rozszerzenie może wysyłać telemetrię do [wielu różnych lokalizacjach.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +33,7 @@ Proces, który jest opisany w tym artykule dotyczy tylko liczniki wydajności w 
 
 - Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
+- Musisz mieć [programu Azure PowerShell](/powershell/azure) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Aprowizacja konta magazynu i usługi chmury 
 
@@ -141,7 +143,7 @@ Zapisz ten plik diagnostyki lokalnie.
 Uruchom program PowerShell i zaloguj się do platformy Azure. 
 
 ```PowerShell
-Login-AzureRmAccount 
+Login-AzAccount 
 ```
 
 Poniższe polecenia umożliwiają przechowywanie szczegółów konta magazynu, który został utworzony wcześniej. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3d4c1029315e754410f31b13042d1d6acb105da1
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429773"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309693"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 Można przesyłać strumieniowo [dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) niemal w czasie rzeczywistym do aplikacji przez:
@@ -58,21 +58,24 @@ Aby zaktualizować profil dziennika dziennika aktywności do uwzględnienia, prz
 6. Jeśli masz kilka subskrypcji, powtarzaj tę akcję, a następnie Wyślij wszystkie dane do tego samego Centrum zdarzeń.
 
 ### <a name="via-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Jeśli istnieje już profil dziennika, należy najpierw usunąć istniejący profil dziennika, a następnie utwórz nowy profil dziennika.
 
-1. Użyj `Get-AzureRmLogProfile` Aby ustalić, czy istnieje już profil dziennika.  Jeśli istnieje profil dziennika, zlokalizuj *nazwa* właściwości.
-2. Użyj `Remove-AzureRmLogProfile` do usunięcia profilu dziennika, używając wartości z *nazwa* właściwości.
+1. Użyj `Get-AzLogProfile` Aby ustalić, czy istnieje już profil dziennika.  Jeśli istnieje profil dziennika, zlokalizuj *nazwa* właściwości.
+2. Użyj `Remove-AzLogProfile` do usunięcia profilu dziennika, używając wartości z *nazwa* właściwości.
 
     ```powershell
     # For example, if the log profile name is 'default'
-    Remove-AzureRmLogProfile -Name "default"
+    Remove-AzLogProfile -Name "default"
     ```
-3. Użyj `Add-AzureRmLogProfile` Aby utworzyć nowy profil dziennika:
+3. Użyj `Add-AzLogProfile` Aby utworzyć nowy profil dziennika:
 
    ```powershell
    # Settings needed for the new log profile
    $logProfileName = "default"
-   $locations = (Get-AzureRmLocation).Location
+   $locations = (Get-AzLocation).Location
    $locations += "global"
    $subscriptionId = "<your Azure subscription Id>"
    $resourceGroupName = "<resource group name your event hub belongs to>"
@@ -81,7 +84,7 @@ Jeśli istnieje już profil dziennika, należy najpierw usunąć istniejący pro
    # Build the service bus rule Id from the settings above
    $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespace/authorizationrules/RootManageSharedAccessKey"
 
-   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
 ### <a name="via-azure-cli"></a>Za pomocą wiersza polecenia platformy Azure

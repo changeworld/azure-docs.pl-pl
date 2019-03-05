@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 047e058fee6cd72a7eeaecdde976b1b9d49aeb5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958953"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315280"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
 Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
@@ -259,7 +259,7 @@ Jako podręczna karta informacyjna Oto polecenie, aby pobrać stan klastra
 Get-ServiceFabricClusterHealth 
 ```
 
-## <a name="deploying-application-certificates-to-the-cluster"></a>Wdrażanie certyfikatów aplikacji do klastra.
+## <a name="deploying-client-certificates-to-the-cluster"></a>Wdrażanie certyfikatów klienta do klastra.
 
 Umożliwia te same czynności co zostało opisane w poprzednim kroki 5 mają certyfikaty wdrożone z magazynu kluczy do węzłów. Możesz po prostu należy zdefiniować i użyć innych parametrów.
 

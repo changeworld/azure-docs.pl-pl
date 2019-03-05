@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 3013365f96fa6841e4db826f9010c6ea994eba2a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b6077ee98a1c94d26a44f8686394d28213e0786e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879599"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315524"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie usługą Azure Blob storage w cyklu życia (wersja zapoznawcza)
 
@@ -228,8 +228,7 @@ W tym przykładzie pokazano, jak przejście blokowych obiektów blob z prefiksem
     {
       "name": "agingRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ],
             "prefixMatch": [ "container1/foo", "container2/bar" ]
@@ -257,8 +256,7 @@ Niektóre dane pozostaje w stanie bezczynności w chmurze i uzyskuje się rzadko
     {
       "name": "archiveRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ],
             "prefixMatch": [ "archivecontainer" ]
@@ -286,8 +284,7 @@ Niektóre dane powinien wygasają dni lub miesięcy po utworzeniu, aby zredukowa
     {
       "name": "expirationRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ]
           },
@@ -313,8 +310,7 @@ W przypadku danych, który został zmodyfikowany i uzyskać dostęp regularnie w
     {
       "name": "snapshotRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ],
             "prefixMatch": [ "activedata" ]

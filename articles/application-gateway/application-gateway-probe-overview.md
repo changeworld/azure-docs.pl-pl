@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 15481706d56af6cd9565e8c475b4770e432c1838
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998624"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337369"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
 
@@ -22,6 +22,8 @@ Usługa Azure Application Gateway domyślnie monitoruje kondycję wszystkich zas
 ![Przykładem sondy bramy aplikacji][1]
 
 Oprócz używania, sondowanie kondycji domyślnej funkcji monitorowania, można również dostosować sondę kondycji, aby odpowiadał wymaganiom Twojej aplikacji. W tym artykule opisano domyślne i niestandardowe sondy kondycji.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-health-probe"></a>Domyślnej funkcji badania kondycji
 
@@ -33,20 +35,20 @@ Jeśli domyślnego wyboru sondowania serwera A nie powiedzie się, bramy aplikac
 
 ### <a name="probe-matching"></a>Badanie dopasowania
 
-Domyślnie dobrej kondycji jest uznawany za odpowiedź HTTP (S) z kodem stanu 200. Niestandardowe sondy kondycji obsługuje również dwa kryteria dopasowania. Spełniające kryteria można opcjonalnie zmodyfikuj to domyślna interpretacja, co stanowi odpowiedzi dobrej kondycji.
+Domyślnie odpowiedź HTTP (S) z kodem stanu między 200 a 399 jest uważany za dobrej kondycji. Niestandardowe sondy kondycji obsługuje również dwa kryteria dopasowania. Spełniające kryteria można opcjonalnie zmodyfikuj to domyślna interpretacja, co stanowi odpowiedzi dobrej kondycji.
 
 Poniżej są spełniające kryteria: 
 
 - **Dopasuj kod stanu odpowiedzi HTTP** — kryterium do akceptowania dopasowywania sondy http odpowiedzi kod lub odpowiedzi kod zakresy określone przez użytkownika. Kody stanów odpowiedzi rozdzielonych przecinkami poszczególne lub zakres kodów stanu jest obsługiwana.
 - **Dopasowanie treści odpowiedzi HTTP** — sondy czy wygląda w treści odpowiedzi HTTP i zgodności z użytkownikiem określony ciąg kryterium dopasowywania. Dopasowanie tylko szuka obecności użytkownika określonego ciągu w treści odpowiedzi i nie jest zgodny z wyrażeniem regularnym pełnej.
 
-Kryteria dopasowania można określać z użyciem `New-AzureRmApplicationGatewayProbeHealthResponseMatch` polecenia cmdlet.
+Kryteria dopasowania można określać z użyciem `New-AzApplicationGatewayProbeHealthResponseMatch` polecenia cmdlet.
 
 Na przykład:
 
-```powershell
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```azurepowershell
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 Po określeniu kryteria dopasowania, może być dołączane do sondowania przy użyciu konfiguracji `-Match` parametru w programie PowerShell.
 

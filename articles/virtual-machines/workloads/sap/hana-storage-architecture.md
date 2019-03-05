@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2018
+ms.date: 03/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 364b0bf611581f88fc87f163acbbb7529862d096
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275997"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309574"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura magazynu oprogramowania SAP HANA (duże wystąpienia)
 
@@ -29,7 +29,7 @@ Duże wystąpienie typu klasy I HANA zawiera cztery razy woluminie pamięci jako
 
 Zobacz poniższą tabelę pod względem przydziału magazynu. W tabeli wymieniono nierównej pojemności dla różnych woluminach, które są dostarczane z różnych jednostek dużych wystąpień HANA.
 
-| Duże wystąpienie oprogramowania HANA jednostki SKU | dane oprogramowania Hana / | Hana/log | Hana/udostępnione | Hana/logbackups |
+| Duże wystąpienie oprogramowania HANA jednostki SKU | hana/data | Hana/log | Hana/udostępnione | Hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
@@ -52,7 +52,7 @@ Rzeczywistej objętości wdrożonej może się różnić w zależności od wdro�
 
 Jeśli dzielisz jednostki SKU HANA duże wystąpienie może wyglądać kilka przykładów dzielenia możliwych elementów:
 
-| Partycja pamięci w GB | dane oprogramowania Hana / | Hana/log | Hana/udostępnione | Hana / / kopia zapasowa dziennika |
+| Partycja pamięci w GB | hana/data | Hana/log | Hana/udostępnione | Hana / / kopia zapasowa dziennika |
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
@@ -73,9 +73,9 @@ Zapoznaj się [HLI obsługiwane scenariusze](hana-supported-scenario.md) szczeg�
 
 Istnieje możliwość hostowania więcej niż jednego aktywnego wystąpienia platformy SAP HANA w jednostkach dużych wystąpień HANA. Zapewnienie możliwości migawki magazynu i odzyskiwania po awarii, taka konfiguracja wymaga woluminu, który został ustawiony na wystąpienie. Obecnie dużych wystąpień HANA jednostki można podzielić w następujący sposób:
 
-- **S72 S72m, S96, S144, platformie S192**: przyrostem wynoszącym 256 GB z 256 GB najmniejszy początkowa jednostki. Można łączyć wielokrotności np. 256 GB do 512 GB do maksymalnej pamięci jednostki.
-- **S144m i platformie S192m**: przyrostem wynoszącym 256 GB i 512 GB najmniejsza jednostka. Można łączyć wielokrotności np. 512 GB i 768 GB do maksymalnej pamięci jednostki.
-- **Typ klasy II**: Z przyrostem równym 512 GB do najmniejszego początkowy jednostki 2 TB. Wielokrotności np. 512 GB, 1 TB i 1,5 TB, można połączyć do maksymalnej pamięci jednostki.
+- **S72, S72m, S96, S144, S192**: Przyrostem wynoszącym 256 GB z 256 GB najmniejszy początkowa jednostki. Można łączyć wielokrotności np. 256 GB do 512 GB do maksymalnej pamięci jednostki.
+- **S144m i platformie S192m**: Przyrostem wynoszącym 256 GB i 512 GB najmniejsza jednostka. Można łączyć wielokrotności np. 512 GB i 768 GB do maksymalnej pamięci jednostki.
+- **Typ klasy II**: W przyrostach 512 GB do najmniejszego początkowy jednostki 2 TB. Wielokrotności np. 512 GB, 1 TB i 1,5 TB, można połączyć do maksymalnej pamięci jednostki.
 
 Kilka przykładów uruchamianie wielu wystąpień oprogramowania SAP HANA może wyglądać następująco.
 
@@ -93,6 +93,19 @@ Istnieją także inne różnice.
 Magazyn używany dla dużych wystąpień HANA umożliwia przezroczyste szyfrowanie danych, ponieważ są przechowywane na dyskach. Po wdrożeniu jednostki dużych wystąpień HANA można włączyć ten rodzaj szyfrowania. Można także zmienić zaszyfrowanych woluminów po wdrożeniu. Przejście z protokołem szyfrowania zaszyfrowanych woluminach jest niewidoczna i bez przerywania. 
 
 O typie I klasy jednostek SKU, woluminu rozruchowego jednostki LUN są przechowywane, są szyfrowane. Dla klasy typu II jednostki SKU z duże wystąpienie HANA należy zaszyfrować rozruchu jednostki LUN z metodami systemu operacyjnego. Aby uzyskać więcej informacji skontaktuj się z zespołu zarządzania usługami firmy Microsoft.
+
+## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Wymagane ustawienia dla większych wystąpień HANA w dużych wystąpieniach HANA
+Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ograniczenie rozmiaru jest 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) każdego pliku. W przeciwieństwie do przypadków ograniczenia rozmiaru plików takich jak w systemach plików EXT3, HANA nie jest świadomość niejawnie ograniczenia pamięci masowej, wymuszane przez Magazyn dużych wystąpień HANA. w rezultacie HANA nie automatycznie utworzy nowy plik danych po osiągnięciu limitu rozmiaru pliku o rozmiarze 16TB. Jako HANA próby rośnie pliku ponad 16TB, platformy HANA będzie raportów błędów i serwerze indeksowania ulegnie awarii na końcu.
+
+> [!IMPORTANT]
+> Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini Hana
+> 
+- datavolume_striping=true
+- datavolume_striping_size_gb = 15000
+- Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+
+
+
 
 **Następne kroki**
 - Zapoznaj się [obsługiwane scenariusze dla dużych wystąpień HANA](hana-supported-scenario.md)

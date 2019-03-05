@@ -8,20 +8,22 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 707c04c22e54220f3020b5897c364318b427267b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 2ba0ea64aab67221aa1ee3a87ad35ce7d5516167
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586597"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310050"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Monitorowanie interfejsu API REST Azure — przewodnik
 
-W tym artykule pokazano, jak przeprowadzać uwierzytelnianie, dzięki czemu kod może użyć [dokumentacja interfejsu API REST dla usługi Azure Monitor, Microsoft](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+W tym artykule pokazano, jak przeprowadzać uwierzytelnianie, dzięki czemu kod może użyć [dokumentacja interfejsu API REST dla usługi Azure Monitor, Microsoft](https://docs.microsoft.com/rest/api/monitor/).
 
 Interfejs API usługi Azure Monitor umożliwia programowe pobieranie definicje metryk dostępnych domyślnych, poziom szczegółowości i wartości metryk. Dane mogą być zapisane w oddzielnym magazynem danych, takich jak Azure SQL Database, Azure Cosmos DB lub Azure Data Lake. W tym miejscu można wykonać dodatkowe analizy, zgodnie z potrzebami.
 
-Oprócz pracy z różnymi punktami danych metryk, interfejs API monitora również umożliwia na liście reguł alertów, wyświetlanie dzienników aktywności i wiele innych. Aby uzyskać pełną listę dostępnych operacji, zobacz [dokumentacja interfejsu API REST dla usługi Azure Monitor, Microsoft](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+Oprócz pracy z różnymi punktami danych metryk, interfejs API monitora również umożliwia na liście reguł alertów, wyświetlanie dzienników aktywności i wiele innych. Aby uzyskać pełną listę dostępnych operacji, zobacz [dokumentacja interfejsu API REST dla usługi Azure Monitor, Microsoft](https://docs.microsoft.com/rest/api/monitor/).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Żądania uwierzytelniania usługi Azure Monitor
 
@@ -34,24 +36,24 @@ $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
 # Authenticate to a specific Azure subscription.
-Connect-AzureRmAccount -SubscriptionId $subscriptionId
+Connect-AzAccount -SubscriptionId $subscriptionId
 
 # Password for the service principal
 $pwd = "{service-principal-password}"
 $secureStringPassword = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 
 # Create a new Azure AD application
-$azureAdApplication = New-AzureRmADApplication `
+$azureAdApplication = New-AzADApplication `
                         -DisplayName "My Azure Monitor" `
                         -HomePage "https://localhost/azure-monitor" `
                         -IdentifierUris "https://localhost/azure-monitor" `
                         -Password $secureStringPassword
 
 # Create a new service principal associated with the designated application
-New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
 # Assign Reader role to the newly created service principal
-New-AzureRmRoleAssignment -RoleDefinitionName Reader `
+New-AzRoleAssignment -RoleDefinitionName Reader `
                           -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 ```
@@ -59,9 +61,9 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader `
 Do wykonywania zapytań interfejsu API usługi Azure Monitor, aplikacja kliencka powinna użyć jednostki usługi utworzonej wcześniej do uwierzytelniania. Poniższy przykład skryptu programu PowerShell przedstawia jedną podejście, za pomocą [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL), można uzyskać tokenu uwierzytelniania tokenu JWT. JWT token jest przekazywany jako część parametru autoryzacji HTTP w żądaniach wysyłanych do interfejsu API REST usługi Azure Monitor.
 
 ```PowerShell
-$azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
+$azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
 
-$subscription = Get-AzureRmSubscription -SubscriptionId $subscriptionId
+$subscription = Get-AzSubscription -SubscriptionId $subscriptionId
 
 $clientId = $azureAdApplication.ApplicationId.Guid
 $tenantId = $subscription.TenantId
@@ -630,7 +632,7 @@ Identyfikator zasobu można uzyskać w taki sposób, w witrynie Azure portal. Ab
 Identyfikator zasobu można pobrać przy użyciu poleceń cmdlet programu Azure PowerShell w także. Na przykład aby uzyskać identyfikator zasobu dla aplikacji logiki platformy Azure, wykonaj następujące polecenie cmdlet Get-AzureLogicApp jak w poniższym przykładzie:
 
 ```PowerShell
-Get-AzureRmLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
+Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 ```
 
 Wyniki powinny wyglądać podobnie do poniższego przykładu:

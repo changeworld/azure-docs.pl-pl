@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: aee31f54ddf4e71dd9b9391ec93d0f2319addc3f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964819"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307965"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -29,18 +29,18 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej je
 
 1. Przy użyciu Device Explorer przejdź do szablonu urządzenia, dla którego dodajesz reguły dla.
 
-1. W ramach wybranego szablonu wybierz polecenie istniejące urządzenie. 
+1. W obszarze wybranego szablonu wybierz istniejące urządzenie.
 
-    >[!TIP] 
+    >[!TIP]
     >Jeśli szablon nie ma żadnych urządzeń, najpierw Dodaj nowe urządzenie.
 
 1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
 
     ![Jeszcze żadnych reguł](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. Na **reguły** kliknij pozycję **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
+1. Na **reguły** zaznacz **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
-1. Kliknij przycisk **Telemetrii** można utworzyć regułę do monitorowania danych telemetrycznych z urządzenia.
+1. Wybierz **Telemetrii** można utworzyć regułę do monitorowania danych telemetrycznych z urządzenia.
 
     ![Typy zasad](media/howto-create-telemetry-rules/Rule_Types.png)
 
@@ -57,7 +57,7 @@ Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć co najmniej je
 
 Warunek definiuje kryteria, które są monitorowane przez regułę.
 
-1. Kliknij przycisk **+** obok **warunki** można dodać nowego warunku.
+1. Wybierz **+** obok **warunki** można dodać nowego warunku.
 
 1. Wybierz dane telemetryczne, którą chcesz monitorować z **pomiaru** listy rozwijanej.
 

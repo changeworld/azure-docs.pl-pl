@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f08167b4f37193c9a04da02fdd31e066a97aec66
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724506"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317666"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Twórz i uruchamiaj zadanie w aplikacji centralnej IoT platformy Azure
 
@@ -25,7 +25,7 @@ W tej sekcji dowiesz się, jak utworzyć i uruchomić zadanie. Każdy krok przec
 
 1. Przejdź do zadania w okienku nawigacji.
 
-1. Kliknij przycisk **+ nowy** aby rozpocząć tworzenie nowego zadania.
+1. Wybierz **+ nowy** aby rozpocząć tworzenie nowego zadania.
 
     ![Tworzenie nowego zadania](./media/howto-run-a-job/createnewjob.png)
 
@@ -33,11 +33,11 @@ W tej sekcji dowiesz się, jak utworzyć i uruchomić zadanie. Każdy krok przec
 
 1. Wybierz zestaw urządzenia mają zadania mają być stosowane do. Po wybraniu urządzenia, zostaną wyświetlone po prawej stronie wypełniona urządzeń w zestawie wybranego urządzenia. Jeśli wybierzesz zestaw uszkodzone urządzeń, urządzenia nie będą wyświetlane i zostanie wyświetlony komunikat wyjaśniający, czy zestaw urządzenia został przerwany.
 
-1. Następnie wybierz typ zadania, który ma być zdefiniowane (ustawienie, właściwość lub polecenie). Kliknij przycisk **+** obok typ zadania zaznaczone, a następnie dodać żądanej operacji.
+1. Następnie wybierz typ zadania, który ma być zdefiniowane (ustawienie, właściwość lub polecenie). Wybierz **+** obok typ zadania zaznaczone, a następnie dodać żądanej operacji.
 
     ![Konfigurowanie zadania](./media/howto-run-a-job/configurejob.png)
 
-1. Po prawej stronie wybranie tylko urządzenia, aby zadanie zostanie uruchomione. Klikając pole wyboru w górnej, wszystkie urządzenia są wybierane w zestawie całego urządzenia. Klikając pole wyboru obok nazwy, są wybierane wszystkie urządzenia na bieżącej stronie.
+1. Po prawej stronie wybranie tylko urządzenia, aby zadanie zostanie uruchomione. Zaznaczając pole wyboru w górnej, wszystkie urządzenia są wybierane w zestawie całego urządzenia. Zaznaczając pole wyboru obok nazwy, są wybierane wszystkie urządzenia na bieżącej stronie.
 
 1. Po wybraniu urządzenia żądaną wybierz **Uruchom**. Zadania będą wyświetlane na głównego **zadań** strony. W ramach tego widoku jesteś w stanie zobaczyć aktualnie uruchomione zadania i historii wszelkich uprzednio uruchamiania zadań. Uruchamianie zadania zawsze będzie wyświetlany w górnej części listy.
 
@@ -48,19 +48,19 @@ W tej sekcji dowiesz się, jak utworzyć i uruchomić zadanie. Każdy krok przec
     > [!NOTE]
     > Będzie można wyświetlić historię poprzednio uruchomionych zadań przez maksymalnie 30 dni.
 
-1. Aby uzyskać przegląd zadania, kliknij nazwę zadania, które chcesz wyświetlić z listy. Ten przegląd zawiera szczegóły zadania, urządzeń i stanów urządzeń.
+1. Aby uzyskać przegląd zadania, wybierz nazwę zadania, które chcesz wyświetlić z listy. Ten przegląd zawiera szczegóły zadania, urządzeń i stanów urządzeń.
 
     ![Wyświetlanie stanu urządzenia](./media/howto-run-a-job/viewdevicestatus.png)
 
 ### <a name="stop-a-running-job"></a>Zatrzymaj uruchomione zadanie
 
-Jeśli chcesz zatrzymać zadanie, które jest aktualnie uruchomione, kliknij nazwę uruchomionego zadania, które chcesz zatrzymać. Wybierz **zatrzymać** przycisk na panel. Zobaczysz, że stan zadania został zmieniony, aby odzwierciedlić, że zadanie zostało zatrzymane.
+Jeśli chcesz zatrzymać zadanie, które jest aktualnie uruchomione, wybierz nazwę uruchomionego zadania, które chcesz zatrzymać. Wybierz **zatrzymać** przycisk na panel. Zobaczysz, że stan zadania został zmieniony, aby odzwierciedlić, że zadanie zostało zatrzymane.
 
    ![Zatrzymaj zadanie](./media/howto-run-a-job/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>Uruchom zadanie zatrzymania
 
-Jeśli chcesz uruchomić zadanie, które jest obecnie zatrzymana, kliknij nazwę zatrzymania zadania, które chcesz uruchomić. Wybierz **Uruchom** przycisk na panel. Zobaczysz, że stan zadania został zmieniony na odzwierciedlić, że zadanie zostało teraz uruchomione ponownie.
+Jeśli chcesz uruchomić zadanie, które jest obecnie zatrzymana, wybierz nazwę zatrzymania zadania, które chcesz uruchomić. Wybierz **Uruchom** przycisk na panel. Zobaczysz, że stan zadania został zmieniony na odzwierciedlić, że zadanie zostało teraz uruchomione ponownie.
 
    ![Wznowiono zadanie](./media/howto-run-a-job/resumejob.png)
 
@@ -85,7 +85,7 @@ Komunikat o stanie następuje przegląd urządzeń w ramach zadania. Te stany ur
 
 ### <a name="view-the-device-status"></a>Wyświetlanie stanu urządzeń
 
-Aby wyświetlić stan poszczególnych urządzeń w ramach zadania, kliknij nazwę zadania. W tym miejscu zobaczysz szczegółowe informacje o zadaniu i wszystkie urządzenia, które były częścią tego określonego zadania. Obok nazwy każdego urządzenia zostanie wyświetlony jeden z następujących komunikatów o stanie:
+Aby wyświetlić stan poszczególnych urządzeń w ramach zadania, wybierz nazwę zadania. W tym miejscu zobaczysz szczegółowe informacje o zadaniu i wszystkie urządzenia, które były częścią tego określonego zadania. Obok nazwy każdego urządzenia zostanie wyświetlony jeden z następujących komunikatów o stanie:
 
 | Komunikat o stanie       | Znaczenie stanu                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |

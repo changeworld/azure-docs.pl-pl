@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9cf4fd448527e8104883e1c23c8c4b64fde3f0d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8faeb06987577d7e0098e3b5047cdde91b1254ae
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213640"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315235"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 
@@ -48,7 +48,6 @@ Ta funkcja umożliwia ręcznie wyzwalacza migawki do utworzenia punktów przywra
 
 > [!NOTE]
 > Jeśli potrzebujesz więcej niż 7 dni punktów przywracania, należy głosowania dla tej funkcji [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Można również utworzenie punktu przywracania zdefiniowanych przez użytkownika i Przywróć z punktu przywracania nowo utworzony do nowego magazynu danych. Po przywróceniu, masz w magazynie danych online i rozwiązaniem przez czas nieokreślony, aby zapisać koszty operacji obliczeniowych. Wstrzymano bazę danych spowoduje naliczenie opłaty za magazyn zgodnie ze stawką usługi Azure Premium Storage. Aktywna kopia magazynu przywróconych danych, należy można wznowić, które powinny zająć tylko kilka minut.
->
 
 ### <a name="restore-point-retention"></a>Czas przechowywania punktu przywracania
 
@@ -66,17 +65,15 @@ Gdy upuścisz suszarkę hurtowni danych, usługa SQL Data Warehouse tworzy migaw
 
 > [!IMPORTANT]
 > Jeśli usuniesz logiczne wystąpienie programu SQL server, wszystkie bazy danych, które należą do wystąpienia również zostaną usunięte i nie można odzyskać. Nie można przywrócić usuniętego serwera.
->
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Po awarii i geograficznej kopie zapasowe odzyskiwania
 
 Usługa SQL Data Warehouse wykonuje geograficznej kopii zapasowej raz dziennie w celu [sparowanym centrum danych](../best-practices-availability-paired-regions.md). Cel punktu odzyskiwania dla przywracania geograficznego wynosi 24 godziny. Geograficznej kopii zapasowej można przywrócić serwer w każdym innym regionie, w których usługa SQL Data Warehouse jest obsługiwane. Geograficznej kopii zapasowej gwarantuje, że można przywrócić magazyn danych, w przypadku, gdy nie masz dostępu do punktów przywracania w regionie podstawowym.
 
-Kopie zapasowe geograficznej są domyślnie włączone. Jeśli magazyn danych jest Gen1, możesz to zrobić [zrezygnować](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) w razie potrzeby. Nie możesz zrezygnować z kopii zapasowych geograficznej dla Gen2 ochrony danych jest wbudowaną gwarantowane.
+Kopie zapasowe geograficznej są domyślnie włączone. Jeśli magazyn danych jest Gen1, możesz to zrobić [zrezygnować](/powershell/module/az.sql/set-azsqldatabasegeobackuppolicy) w razie potrzeby. Nie możesz zrezygnować z kopii zapasowych geograficznej dla Gen2 ochrony danych jest wbudowaną gwarantowane.
 
 > [!NOTE]
 > Jeśli potrzebujesz ustawić częstsze punkty odzyskiwania dla kopii zapasowych geograficznie, Zagłosuj na tę możliwość [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse). Można również utworzenie punktu przywracania zdefiniowanych przez użytkownika i przywracanie z punktu przywracania nowo utworzony nowy magazyn danych w innym regionie. Po przywróceniu, masz w magazynie danych online i rozwiązaniem przez czas nieokreślony, aby zapisać koszty operacji obliczeniowych. Wstrzymano bazę danych spowoduje naliczenie opłaty za magazyn zgodnie ze stawką usługi Azure Premium Storage. Potrzebujesz kopii aktywnej, magazynu danych, możesz wznowić, które powinny zająć tylko kilka minut.
->
 
 ## <a name="backup-and-restore-costs"></a>Koszty i przywracania kopii zapasowych
 
@@ -108,7 +105,6 @@ Możesz [Przywracanie magazynu danych](https://docs.microsoft.com/azure/sql-data
 
 > [!NOTE]
 > Do magazynu geograficznie nadmiarowego przywracania musi nie rezygnujesz z tej funkcji.
->
 
 ## <a name="next-steps"></a>Kolejne kroki
 

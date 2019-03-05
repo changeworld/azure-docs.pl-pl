@@ -5,67 +5,63 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 03/02/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: d8ed2c770d6d9a6208f3be10de9266702ef07ae0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e9ef73bbed83587f635492553f3e467922481ede
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250065"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309676"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
-Niezmienne magazynu dla magazynu obiektów Blob platformy Azure (obiekt) pozwala użytkownikom przechowywać dane krytyczne dla prowadzonej działalności w stanie ROBAK (jednokrotny zapis, wiele odczytu). Ten stan sprawia, że dane trwałe i nie można modyfikować dla interwału określonego przez użytkownika. Obiekty BLOB można utworzyć i odczytu, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania.
+Niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać obiekty strategicznych danych biznesowych w stanie ROBAK (jednokrotny zapis, wiele odczytu). Ten stan sprawia, że dane trwałe i nie można modyfikować dla interwału określonego przez użytkownika. Obiekty BLOB można utworzyć i odczytać, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania. Niezmienny magazyn jest włączona dla ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage we wszystkich regionach platformy Azure.
 
 ## <a name="overview"></a>Przegląd
 
-Niezmienne storage pomaga, instytucje finansowe i powiązanych branżach — szczególnie dealer brokera organizacjom — bezpiecznie przechowywać dane. On również nadającego się w każdym scenariuszu, w celu ochrony danych krytycznych, przed usunięciem.  
+Niezmienne storage pomaga organizacji opieki zdrowotnej, instytucje finansowe i powiązanych branżach — szczególnie dealer brokera organizacjom — bezpiecznie przechowywać dane. On również nadającego się w każdym scenariuszu, w celu ochrony danych krytycznych, modyfikacji lub usunięcia. 
 
 Typowe zastosowania tej funkcji to:
 
-- **Zgodność z przepisami**: Niezmienny magazyn dla usługi Azure Blob storage ułatwia organizacjom adres s 17a-4(f), CFTC 1.31(d), FINRA i innych przepisów.
+- **Zgodność z przepisami**: Niezmienny magazyn dla usługi Azure Blob storage ułatwia organizacjom adres s 17a-4(f), CFTC 1.31(d), FINRA i innych przepisów. Oficjalny dokument techniczny, kojarzy Cohasset szczegóły jak niezmienne adresów pamięci masowej te wymagania prawne jest dostępny do pobrania za pośrednictwem [Portal zaufania usługi Microsoft](https://aka.ms/AzureWormStorage). [Centrum zaufania systemu Azure](https://www.microsoft.com/trustcenter/compliance/compliance-overview) zawiera szczegółowe informacje na temat naszych związane ze zgodnością.
 
-- **Zabezpieczanie przechowywania dokumentu**: Usługi blob storage zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, w tym użytkowników z uprawnieniami administracyjnymi konta.
+- **Zabezpieczanie przechowywania dokumentu**: Niezmienny magazyn dla usługi Azure Blob storage zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, w tym użytkowników z uprawnieniami administracyjnymi konta.
 
-- **Prawnych**: Niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub śledztw w stanie odporne na żądany czas trwania.
+- **Prawnych**: Niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub business na użytek w stanie odporną na manipulacje określonego czasu trwania do momentu usunięcia blokady. Ta funkcja nie jest ograniczona tylko do przypadków użycia prawnych, ale może również być uważane za wstrzymanie oparte na zdarzeniach lub blokowanie przedsiębiorstwa, których potrzeba ochrony danych na podstawie wyzwalaczy zdarzeń lub zasad firmy jest wymagane.
 
-Włącza niezmienne magazynu:
+Niezmienny magazyn obsługuje następujące funkcje:
 
-- **Obsługa zasad przechowywania na podstawie czasu**: Użytkownicy ustawienia zasad w celu przechowywania danych w określonym przedziale czasu.
+- **[Obsługa zasad przechowywania na podstawie czasu](#time-based-retention)**: Użytkownicy mogą ustawić zasady przechowywania danych w określonym przedziale czasu. Podczas zasady przechowywania na podstawie czasu ustawiony, obiektów blob można utworzyć i odczytać, ale nie zmodyfikowane lub usunięte. Po upływie okresu przechowywania obiektów blob można usunąć, ale nie zostały zastąpione.
 
-- **Obsługa zasad ze względów prawnych**: Gdy zakres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Po ustawieniu archiwizacji ze względów prawnych można tworzyć i odczytywać obiekty blob, ale nie można ich modyfikować ani usuwać. Każde archiwum prawne jest skojarzone ze zdefiniowanym przez użytkownika tagiem alfanumerycznym, używanym jako ciąg identyfikatora (może to być na przykład numer sprawy).
+- **[Obsługa zasad ze względów prawnych](#legal-holds)**: Jeśli okres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Jeśli ustawiono zasady prawnych, obiektów blob można utworzyć i odczytać, ale nie zmodyfikowane lub usunięte. Każdy prawnych jest skojarzony z zdefiniowanych przez użytkownika alfanumeryczne tag (na przykład identyfikator przypadku, Nazwa zdarzenia, itp.), który jest używany jako ciąg identyfikatora. 
 
 - **Pomoc techniczna dla wszystkich obiektów blob warstw**: ROBAK niezależnie od warstwy magazynu obiektów Blob platformy Azure i zasad dotyczą wszystkich warstwy: gorąca, chłodna i archiwum. Użytkownicy mogą przechodzą danych do warstwy większość optymalizacji kosztów dla swoich obciążeń przy zachowaniu danych niezmienności.
 
-- **Konfiguracji na poziomie kontenera**: Użytkownicy mogą konfigurować zasady przechowywania na podstawie czasu i ze względów prawnych tagi na poziomie kontenera. Za pomocą prostych ustawień na poziomie kontenera, użytkownicy mogą tworzyć i blokowanie zasady przechowywania na podstawie czasu, Rozszerz interwały przechowywania, ustaw i wyczyść archiwizacją ze względów prawnych i wiele innych. Te zasady mają zastosowanie do wszystkich obiektów blob w kontenerze, nowych i istniejących.
+- **Konfiguracji na poziomie kontenera**: Użytkownicy mogą konfigurować zasady przechowywania na podstawie czasu i ze względów prawnych tagi na poziomie kontenera. Przy użyciu prostych ustawień na poziomie kontenera, użytkowników można utworzyć i Zablokuj zasady przechowywania na podstawie czasu, rozszerzyć interwały przechowywania, zestaw i archiwizacją wyczyść ze względów prawnych i nie tylko. Te zasady mają zastosowanie do wszystkich obiektów blob w kontenerze, nowych i istniejących.
 
-- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji. Pokazuje maksymalnie pięć polecenia na podstawie czasu przechowywania dla zasad zablokowany na podstawie czasu przechowywania, przy użyciu maksymalnie trzech dzienników dla rozszerzeń interwał przechowywania. Do przechowywania danych na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia tego kontenera, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) pokazuje bardziej kompleksowe dziennika wszystkie kontrolki działania płaszczyzny. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
-
-Niezmienny magazyn jest włączona we wszystkich publicznych regionach platformy Azure.
+- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji. Pokazuje maksymalnie pięć polecenia na podstawie czasu przechowywania dla zasad zablokowany na podstawie czasu przechowywania, przy użyciu maksymalnie trzech dzienników dla rozszerzeń interwał przechowywania. Do przechowywania danych na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia tego kontenera, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) pokazują dziennik bardziej kompleksowe wszystkich działań płaszczyzna kontroli; podczas włączania [dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) zachowuje i pokazuje operacje płaszczyzny danych. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia tych niezmienne zasad, zobacz [wprowadzenie](#getting-started) sekcji.
+Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Jeśli zasady przechowywania na podstawie czasu lub prawnych jest stosowany do kontenera, wszystkie istniejące obiekty BLOB przenieść się do niezmiennego stanu ROBAK w mniej niż 30 sekund. Wszystkie nowe obiekty BLOB, które są przekazywane do tego kontenera zostanie również przenieść do niezmiennego stanu. Po wszystkich obiektów blob zostały przeniesione do niezmiennego stanu, potwierdzono niezmienne zasad i wszystkie zastąpienia lub usuń operacje dla istniejących i nowych obiektów w kontenerze niezmienialnych nie są dozwolone.
 
-Po zastosowaniu zasad przechowywania na podstawie czasu lub prawnych w kontenerze, wszystkie istniejące obiekty BLOB przenieść się do niezmienne (zapisu i usuwania chroniony) stanu. Wszystkie nowe obiekty BLOB, które są przekazywane do kontenera, również zostanie przeniesione do niezmiennego stanu.
+### <a name="time-based-retention"></a>Na podstawie czasu przechowywania
 
 > [!IMPORTANT]
 > Zasady przechowywania na podstawie czasu musi być *zablokowane* dla obiektu blob w niezmienne (zapisu i usuwania chroniony) stanie 17a-4(f) s a innymi zgodność z przepisami. Zaleca się blokowanie zasady w rozsądnym czasie, zwykle w ciągu 24 godzin. Nie zalecamy używania *odblokowane* stanu w celu innym niż krótkoterminowej funkcji wersji próbnych.
 
-Stosowania zasad przechowywania na podstawie czasu na kontenerze wszystkich obiektów blob w kontenerze pozostaną niezmiennego stanu na czas trwania *skuteczne* okres przechowywania. Obowiązujący okres przechowywania w przypadku istniejących obiektów blob to różnica między czasem utworzenia obiektu blob a określonym przez użytkownika okresem przechowywania.
+Stosowania zasad przechowywania na podstawie czasu na kontenerze wszystkich obiektów blob w kontenerze pozostaną niezmiennego stanu na czas trwania *skuteczne* okres przechowywania. Okres przechowywania obowiązujące dla istniejących obiektów blob jest równy różnicy czas modyfikacji obiektu blob i okres przechowywania określony przez użytkownika.
 
 W przypadku nowych obiektów blob obowiązujący okres przechowywania jest równy okresowi przechowywania określonemu przez użytkownika. Ponieważ użytkownicy mogą wydłużyć okres przechowywania, niezmienne magazynu używa najnowszą wartość okres przechowywania określony przez użytkownika do obliczenia okres przechowywania skuteczne.
 
 > [!TIP]
-> Przykład:
+> **Przykład:** Użytkownik tworzy zasady przechowywania na podstawie czasu z interwałem przechowywania przez okres pięciu lat.
 >
-> Użytkownik tworzy zasady przechowywania na podstawie czasu z interwałem przechowywania przez okres pięciu lat.
+> Istniejący obiekt blob w kontenerze, w tym _testblob1_, utworzono rok temu. Okres przechowywania skuteczne _testblob1_ jest 4 lata.
 >
-> Istniejący obiekt blob w kontenerze, testblob1, utworzono rok temu. Okres przechowywania skuteczne testblob1 jest 4 lata.
->
-> Do kontenera zostaje przekazany nowy obiekt blob, testblob2. Okres przechowywania obowiązywać dla tego nowy obiekt blob jest pięć lat.
+> Nowy obiekt blob _testblob2_, teraz zostanie przekazany do kontenera. Okres przechowywania obowiązywać dla tego nowy obiekt blob jest pięć lat.
 
 ### <a name="legal-holds"></a>Archiwizacja ze względów prawnych
 
@@ -77,25 +73,24 @@ W poniższej tabeli przedstawiono typy obiekty blob — operacje, które są wy�
 
 |Scenariusz  |Stan obiektu blob  |Operacje obiektów blob nie jest dozwolone  |
 |---------|---------|---------|
-|Trwa obowiązujący okres przechowywania obiektu blob i/lub ustawiono stan archiwizacji ze względów prawnych     |Niezmienny: ochrona przed usuwaniem i zapisem         |Usuwanie kontenera, usuwanie obiektów Blob, umieszczania obiektu Blob<sup>1</sup>, umieść bloku<sup>1</sup>, umieść zablokowanych<sup>1</sup>, należy ustawić metadane obiektu Blob, umieść strony, należy ustawić właściwości obiektu Blob, wykonanie migawki obiektu Blob, obiektu Blob kopiowania przyrostowego Dołącz bloku         |
+|Trwa obowiązujący okres przechowywania obiektu blob i/lub ustawiono stan archiwizacji ze względów prawnych     |Niezmienny: ochrona przed usuwaniem i zapisem         | Wstawienie obiektu Blob<sup>1</sup>, umieść bloku<sup>1</sup>, umieść zablokowanych<sup>1</sup>, usuń metadane obiektu Blob zestaw kontenerów, Usuń obiekt Blob, umieść strony, ustaw właściwości obiektu Blob, wykonanie migawki obiektu Blob, obiektu Blob kopiowania przyrostowego Dołącz bloku         |
 |Upłynął obowiązujący okres przechowywania obiektu blob     |Ochrona tylko przed zapisem (operacje usuwania są dozwolone)         |Wstawienie obiektu Blob<sup>1</sup>, umieść bloku<sup>1</sup>, umieść zablokowanych<sup>1</sup>, ustaw metadane obiektu Blob, umieść strony, ustawianie obiektu Blob kopiowania przyrostowego właściwości, wykonywanie migawki obiektu Blob, obiektów Blob, Dołącz bloku         |
 |Wszystkie informacje prawne przechowuje wyczyszczone, a w kontenerze są ustawione żadne zasady przechowywania na podstawie czasu     |Modyfikowalny         |Brak         |
 |Brak zasad ROBAK zostanie utworzony (na podstawie czasu przechowywania lub prawnych)     |Modyfikowalny         |Brak         |
 
-<sup>1</sup> aplikacja może wywołać tej operacji po utworzenie obiektu blob. Wszystkie kolejne operacje na obiekcie blob są niedozwolone.
-
-> [!NOTE]
->
-> Niezmienne storage jest dostępna tylko w ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage. To konto należy utworzyć za pomocą [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+<sup>1</sup> aplikacja pozwala te operacje utworzyć nowy obiekt blob jeden raz. Wszystkie kolejne zastąpić operacje na istniejącą ścieżkę obiektu blob w kontenerze niezmienialnych nie są dozwolone.
 
 ## <a name="pricing"></a>Cennik
 
 Nie ma żadnych dodatkowych opłat za używanie tej funkcji. Niezmienialnymi danymi jest rozliczana w taki sam sposób, jak regularne, mutable danych. Aby uzyskać szczegóły cennika w usłudze Azure Blob Storage, zobacz [usługi Azure Storage, cennik](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-
 ## <a name="getting-started"></a>Wprowadzenie
 
-Najnowsze wersje [witryny Azure portal](http://portal.azure.com) i [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oraz wersję zapoznawczą [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) obsługiwać niezmienny magazyn dla usługi Azure Blob storage.
+Najnowsze wersje [witryny Azure portal](http://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), i [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) obsługiwać niezmienny magazyn dla usługi Azure Blob storage. [Obsługa bibliotek klienta](#client-libraries) jest również udostępniany.
+
+> [!NOTE]
+>
+> Niezmienne storage jest dostępna tylko w przypadku ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage. Te konta muszą być zarządzane za pośrednictwem [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Aby uzyskać informacje na temat aktualizowania istniejącego konta magazynu ogólnego przeznaczenia w wersji 1, zobacz [podnoszenie poziomu konta magazynu](../common/storage-account-upgrade.md).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -109,17 +104,17 @@ Najnowsze wersje [witryny Azure portal](http://portal.azure.com) i [wiersza pole
 
     !["Czas przechowywania na podstawie" wybranego w obszarze "Zasady type"](media/storage-blob-immutable-storage/portal-image-2.png)
 
-4. Wprowadź interwał przechowywania w dniach (wartość minimalna to jeden dzień).
+4. Wprowadź interwał przechowywania w dniach (dopuszczalne wartości 1 i 146000 dni).
 
     ![Pole "Okres przechowywania aktualizacji do"](media/storage-blob-immutable-storage/portal-image-5-retention-interval.png)
 
-    Początkowy stan zasad jest odblokowany, jak pokazano na zrzucie ekranu. Testowanie funkcji z mniejszych interwał przechowywania i wprowadzić zmiany do zasad, zanim je zablokować. Blokowanie ma zasadnicze znaczenie dla zgodności z przepisami, takich jak s 17a-4.
+    Początkowy stan zasad jest odblokowany, dzięki czemu możesz przetestować funkcję i wprowadzanie zmian z zasadami, zanim je zablokować. Zasady blokowania ma zasadnicze znaczenie dla zgodności z przepisami, takich jak s 17a-4.
 
-5. Zablokuj zasady. Kliknij prawym przyciskiem myszy wielokropek (**...** ), i zostanie wyświetlone następujące menu:
+5. Zablokuj zasady. Kliknij prawym przyciskiem myszy wielokropek (**...** ), i za pomocą dodatkowych akcji zostanie wyświetlone następujące menu:
 
     !["Blokowanie zasad" w menu](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    Wybierz **zasady blokowania**, a stan zasad jest teraz wyświetlany jako zablokowany. Po zasady zostaną zablokowane, nie można usunąć, i może być tylko rozszerzenia okres przechowywania.
+    Wybierz **zasad blokowania**. Zasada jest zablokowany i nie można usunąć, może być tylko rozszerzenia okres przechowywania.
 
 6. Aby włączyć archiwizacją ze względów prawnych, zaznacz **+ Dodaj zasady**. Wybierz **prawnych** z menu rozwijanego.
 
@@ -129,7 +124,7 @@ Najnowsze wersje [witryny Azure portal](http://portal.azure.com) i [wiersza pole
 
     ![Pole "Nazwa tagu" w obszarze Typ zasad](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. Aby wyczyścić prawnych, po prostu Usuń tag.
+8. Aby wyczyścić prawnych, po prostu usunąć tag identyfikatora zastosowane prawnych.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -157,7 +152,7 @@ Podanych niżej bibliotek klienta obsługują niezmienny magazyn dla usługi Azu
 
 ## <a name="supported-values"></a>Obsługiwane wartości
 
-- Interwał przechowywania minimalnej to jeden dzień. Maksymalna wartość to 400 lata.
+- Interwał przechowywania minimalnej to jeden dzień. Wartość maksymalna to 146,000 dni (400 lat).
 - Dla konta magazynu maksymalną liczbę kontenerów przy użyciu zablokowane zasady niezmienne wynosi 1000.
 - Dla konta magazynu maksymalną liczbę kontenerów z ustawieniem prawnych wynosi 1000.
 - Dla kontenera maksymalną liczbę tagów prawnych wynosi 10.
@@ -167,13 +162,25 @@ Podanych niżej bibliotek klienta obsługują niezmienny magazyn dla usługi Azu
 
 ## <a name="faq"></a>Często zadawane pytania
 
+**Można podać dokumentacji ROBAK zgodności?**
+
+Tak. Zapewnienie zgodności dokumentu Microsoft przechowywane wiodące przedsiębiorstwa niezależną ocenę, która specjalizuje się w rekordy zarządzania i informacje infrastruktur Cohasset partnerów, aby ocenić niezmienny magazyn obiektów Blob platformy Azure i jego zgodność z wymaganiami określonymi w branży usług finansowych. Cohasset zweryfikować, czy Azure niezmienne magazynu obiektów Blob, gdy jest używana do przechowywania na podstawie czasu obiektów blob w stanie ROBAK spełnia wymagania magazynu odpowiednie reguły CFTC 1.31(c)-(d), 4511 reguły FINRA i reguły s 17a-4. Microsoft celem tego zestawu reguł, ponieważ stanowią one najbardziej wskazówki globalnie dla przechowywania rekordów dla instytucji finansowych. Raport Cohasset jest dostępny w [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage).
+
 **Czy ta funkcja dotyczy tylko blokowe obiekty BLOB, lub na stronie obiektów blob i uzupełnialnych obiektów blob oraz?**
 
 Niezmienny magazyn może być używany z żadnym typem obiektów blob, ale zaleca się używać przede wszystkim dla blokowych obiektów blob. Inaczej niż w przypadku blokowych obiektów blob strony obiekty BLOB i uzupełnialnych obiektów blob należy utworzyć poza kontenerem ROBAK, a następnie kopiowane w. Po skopiowaniu tych obiektów blob w kontenerze ROBAK nie dalsze *dołącza* do dołączania obiektu blob lub zmiany stronicowych obiektów blob są dozwolone.
 
 **Czy w każdym przypadku należy utworzyć nowe konto magazynu, aby móc korzystać z tej funkcji?**
 
-Za pomocą niezmienialnych magazynu z wszystkich istniejących i nowo utworzony ogólnego przeznaczenia w wersji 2 lub kont usługi Blob Storage. Ta funkcja jest dostępna tylko w przypadku magazynu obiektów Blob.
+Niezmienne magazynu można użyć w przypadku istniejących i nowo utworzony ogólnego przeznaczenia w wersji 2 lub kont usługi Blob Storage. Ta funkcja jest przeznaczone do użycia z blokowych obiektów blob na kontach GPv2 i Blob Storage.
+
+**Czy mogę stosować prawnych i zasady przechowywania na podstawie czasu?**
+
+Kontener może mieć zarówno prawnych, jak i zasad przechowywania na podstawie czasu, w tym samym czasie. Wszystkie obiekty BLOB w kontenerze pozostanie w stanie niezmienne, dopóki nie zostaną wyczyszczone wszystkie archiwizacją ze względów prawnych, nawet wtedy, gdy ich okresu przechowywania skuteczne utracił ważność. Z drugiej strony obiekt blob pozostaje w niezmiennego stanu do wygaśnięcia okresu przechowywania skuteczne, nawet jeśli zostały wyczyszczone wszystkie archiwizacją ze względów prawnych.
+
+**Czy zasady prawnych tylko w przypadku postępowania, lub czy istnieją inne scenariusze użycia?**
+
+Nie, prawne przechowywania jest po prostu ogólny termin używany dla zasad przechowywania bez oparte na czasie. Nie musi być używane wyłącznie dla postępowań prawnych dotyczące postępowania. Prawne zasady blokady są przydatne do wyłączenie zastępowania i usuwania ochrony przedsiębiorstwa ważne dane ROBAK, gdy okres przechowywania jest nieznany. Może używać go jako zasady przedsiębiorstwa do ochrony Twojej obciążeń o znaczeniu krytycznym ROBAK lub użyj go jako zasad tymczasowych przed wyzwalacz zdarzenia niestandardowe wymaga użycia zasad przechowywania na podstawie czasu. 
 
 **Co się stanie, jeśli spróbuję usunąć kontener z *zablokowanymi* zasadami przechowywania na podstawie czasu lub z ustawionym stanem archiwizacji ze względów prawnych?**
 
@@ -185,7 +192,7 @@ Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jed
 
 **Czy mogę przenosić dane pomiędzy warstwami magazynowania (gorącą, chłodną, zimną), gdy obiekt blob znajduje się w stanie niezmiennym?**
 
-Tak, podczas przechowywania danych w stanie niezmiennym można przenosić je pomiędzy warstwami magazynowania obiektów blob za pomocą polecenia Set Blob Tier. Niezmienny magazyn jest obsługiwany na gorąca, chłodna i archiwalna obiektu blob.
+Tak, można użyć polecenia Ustawianie warstwy obiektu Blob do przenoszenia danych we wszystkie warstwy obiektu blob, zachowując dane w zgodne niezmiennego stanu. Niezmienny magazyn jest obsługiwany na gorąca, chłodna i archiwalna obiektu blob.
 
 **Co się stanie, jeśli nie uiszczę opłaty, a okres przechowywania jeszcze nie wygasł?**
 
@@ -193,11 +200,15 @@ W przypadku płatności zasady przechowywania zwykłych danych będzie stosowana
 
 **Czy jest oferowany okres próbny, umożliwiający przetestowanie tej funkcji?**
 
-Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowane* stanu. W tym stanie można żądane zmiany na okres przechowywania, np. zwiększenie lub zmniejszenie i nawet usunąć zasady. Po zablokowaniu zasady pozostaje on zablokowany do momentu wygaśnięcia ważności okres przechowywania. Zapobiega to usunięcia i modyfikacji okres przechowywania. Zdecydowanie zalecamy użycie *odblokowane* stanu tylko do celów wersji próbnej i Zablokuj zasady w okresie 24-godzinnym. Poniższe wskazówki ułatwiają 17a-4(f) s i innych przepisów.
+Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowane* stanu. W tym stanie można żądane zmiany na okres przechowywania, np. zwiększenie lub zmniejszenie i nawet usunąć zasady. Po zablokowaniu zasady pozostaje on zablokowany do momentu wygaśnięcia ważności okres przechowywania. Te zablokowane zasady uniemożliwia usunięcia i modyfikacji okres przechowywania. Zdecydowanie zalecamy użycie *odblokowane* stanu tylko do celów wersji próbnej i Zablokuj zasady w okresie 24-godzinnym. Poniższe wskazówki ułatwiają 17a-4(f) s i innych przepisów.
+
+**Czy można używać usuwania nietrwałego wraz z zasady niezmienne obiektów blob?**
+
+Tak. [Usuwanie nietrwałe dla usługi Azure Blob storage](storage-blob-soft-delete.md) ma zastosowanie do wszystkich kontenerów na koncie magazynu, niezależnie od tego, czy prawnych lub zasady przechowywania na podstawie czasu. Zalecamy włączenie usuwania nietrwałego, aby uzyskać dodatkową ochronę przed wszystkie niezmienne zasady ROBAK są stosowane i potwierdzone. 
 
 **Czy ta funkcja jest dostępna w chmurach krajowych i rządowych?**
 
-Niezmienne storage jest dostępna w regionach świadczenia publicznej platformy Azure (Chiny) i dla instytucji rządowych. Jeśli w Twoim regionie nie ma dostępnego magazynu niezmienne, Wyślij wiadomość e-mail azurestoragefeedback@microsoft.com.
+Niezmienne storage jest dostępna w regionach świadczenia publicznej platformy Azure (Chiny) i dla instytucji rządowych. Jeśli w Twoim regionie nie ma dostępnego magazynu niezmienne, skontaktuj się z pomocy technicznej i wiadomości e-mail azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-powershell-code"></a>Przykładowy kod programu PowerShell
 

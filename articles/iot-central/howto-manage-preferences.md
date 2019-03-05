@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 21814ddf6af5e65725f5e0e6ebdf31206565baa2
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218009"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315966"
 ---
 # <a name="manage-your-application-preferences"></a>Zarządzać swoimi preferencjami dotyczącymi aplikacji
 
@@ -27,7 +27,7 @@ IoT Central jest obsługiwana w wielu językach. Można przełączyć preferowan
 
 ## <a name="changing-theme"></a>Trwa zmienianie motywu
 
-Oferujemy obsługę motyw jasny i ciemny motyw. Motyw jasny jest wartość domyślna, możesz to zmienić, klikając ikonę ustawień, na górnym pasku nawigacyjnym.
+Oferujemy obsługę motyw jasny i ciemny motyw. Motyw jasny jest wartość domyślna, możesz to zmienić, wybierając ikonę ustawienia, na górnym pasku nawigacyjnym.
 
 ![Selektor motywu IoT Central](media/howto-manage-preferences/settings.png)
 

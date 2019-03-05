@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b5ec8df9ff08aace69680c188f9ab05e944ce891
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 80c98d151c1b42b0c6106d4fa1af921bbb5ef55f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734576"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308401"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Konfigurowanie szablonu urządzenia (nowy interfejs użytkownika projekt)
 
@@ -46,7 +46,7 @@ Za pomocą tego szablonu urządzenia można tworzyć i łączenie urządzeń rze
 
 1. Przejdź do **szablonów urządzeń** strony.
 
-2. Aby utworzyć pusty szablon, kliknij przycisk **+**, a następnie wprowadź nazwę, taką jak **lodówki** nowego szablonu urządzenia. Następnie wybierz pozycję **Utwórz**:
+2. Aby utworzyć pusty szablon, wybierz **+**, a następnie wprowadź nazwę, taką jak **lodówki** nowego szablonu urządzenia. Następnie wybierz pozycję **Utwórz**:
 
    ![Strony szczegółów urządzenia za pomocą "Lodówki" jako nazwa szablonu](./media/howto-set-up-template-experimental/devicedetailspage.png)
 
@@ -64,7 +64,7 @@ Pomiary są dane, które pochodzą z urządzenia. Możesz dodać wiele miar do s
 
 ### <a name="create-a-telemetry-measurement"></a>Tworzenie miary telemetrii
 
-Aby dodać nowe miary telemetrii, kliknij **+ nowej miary**, wybierz **Telemetrii** jako miary typu, a następnie wprowadź szczegóły na formularzu.
+Aby dodać nowe miary telemetrii, wybierz **+ nowej miary**, wybierz **Telemetrii** jako wartość typu, a następnie wprowadź szczegóły na formularzu.
 
 > [!NOTE]
 > Nazwy pól w szablonie urządzenia muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia w kolejności do pomiaru dane telemetryczne, mają być wyświetlane w aplikacji, jeśli rzeczywiste urządzenie jest połączone. Tak samo, podczas konfigurowania ustawień i właściwości urządzenia, poleceń, w miarę postępu definiowania szablonu urządzenia w poniższych sekcjach.
@@ -77,14 +77,14 @@ Na przykład można dodać nowej miary telemetrii temperatury:
 
 !["Utwórz dane telemetryczne" formularza przy użyciu szczegółów do pomiarów temperatury](./media/howto-set-up-template-experimental/measurementsform.png)
 
-Po kliknięciu **Zapisz**, **temperatury** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane dotyczące temperatury z symulowanego urządzenia.
+Po wybraniu **Zapisz**, **temperatury** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane dotyczące temperatury z symulowanego urządzenia.
 
 > [!NOTE]
 > Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.
 
 ### <a name="create-an-event-measurement"></a>Tworzenie miary zdarzeń
 
-Aby dodać nowe miary zdarzeń, kliknij **+ nowej miary** i wybierz **zdarzeń** jako typ miary. Wprowadź szczegóły **Utwórz zdarzenie** formularza.
+Aby dodać nowe miary zdarzenia, wybierz **+ nowej miary** i wybierz **zdarzeń** jako typ miary. Wprowadź szczegóły **Utwórz zdarzenie** formularza.
 
 Podaj **nazwę wyświetlaną**, **nazwę pola**, i **ważność** szczegóły zdarzenia. Możesz wybrać z trzech dostępnych poziomów ważności: **Błąd**, **ostrzeżenie**, i **informacji**.
 
@@ -96,9 +96,9 @@ Na przykład można dodać nowego **błąd Motor wentylator** zdarzeń.
 
 !["Utwórz zdarzenie" formularza ze szczegółowymi informacjami dla zdarzenia motor wentylatora](./media/howto-set-up-template-experimental/eventmeasurementsform.png)
 
-Po kliknięciu **Zapisz**, **błąd Motor wentylator** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane zdarzenia z symulowanego urządzenia.
+Po wybraniu **Zapisz**, **błąd Motor wentylator** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane zdarzenia z symulowanego urządzenia.
 
-Aby wyświetlić więcej szczegółów na temat zdarzenia, kliknij ikonę zdarzeń na wykresie:
+Aby wyświetlić więcej szczegółów na temat zdarzenia, wybierz ikonę zdarzeń na wykresie:
 
 ![Szczegóły dotyczące zdarzeń "Wentylator Motor Error"](./media/howto-set-up-template-experimental/eventmeasurementsdetail.png)
 
@@ -107,7 +107,7 @@ Aby wyświetlić więcej szczegółów na temat zdarzenia, kliknij ikonę zdarze
 
 ### <a name="create-a-state-measurement"></a>Tworzenie miary stanu
 
-Aby dodać nowe miary stan, kliknij **+ nowej miary** i wybrać **stanu** jako typ miary. Wprowadź szczegóły **stanu Utwórz** formularza.
+Aby dodać nowe miary stanu, wybierz **+ nowej miary** i wybrać **stanu** jako typ miary. Wprowadź szczegóły **stanu Utwórz** formularza.
 
 Podaj szczegóły **nazwę wyświetlaną**, **nazwę pola**, i **wartości** stanu. Każda wartość może mieć również nazwę wyświetlaną, który będzie używany, gdy wartość jest wyświetlana w wykresów i tabel.
 
@@ -119,9 +119,9 @@ Na przykład można dodać nowego **tryb wentylator** stanu, który ma dwa możl
 
 ![Formularz "Edytuj stan" ze szczegółowymi informacjami w trybie wentylatora](./media/howto-set-up-template-experimental/statemeasurementsform.png)
 
-Po kliknięciu **Zapisz**, **tryb wentylator** pomiaru stanu, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji danych o stanie z symulowanego urządzenia.
+Po wybraniu **Zapisz**, **tryb wentylator** pomiaru stanu, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji danych o stanie z symulowanego urządzenia.
 
-Jeśli urządzenie wysyła nadmiar punktów danych w małych czas pomiaru stanu jest za pomocą innej wizualizacji. Kliknij wykres, aby wyświetlić wszystkie punkty danych w tym przedziale czasu, w kolejności chronologicznej. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
+Jeśli urządzenie wysyła nadmiar punktów danych w małych czas pomiaru stanu jest za pomocą innej wizualizacji. Wybierz wykres, aby wyświetlić wszystkie punkty danych w tym przedziale czasu, w kolejności chronologicznej. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
 
 > [!NOTE]
 > Typ danych miary stanu jest ciągiem.
@@ -138,7 +138,7 @@ Ustawienia mogą być w jednym z trzech stanów. Urządzenie raportuje tych stan
 
 - **Błąd**: Urządzenie zwróciło błąd.
 
-Na przykład można dodać nowe ustawienie szybkość wentylator klikając **ustawienia** i wprowadzając w nowym **numer** ustawienia:
+Na przykład można dodać nowe ustawienie szybkość wentylator wybierając **ustawienia** i wprowadzając w nowym **numer** ustawienia:
 
 | Nazwa wyświetlana  | Nazwa pola    |  Jednostki  | Miejsca dziesiętne |Początkowa|
 | --------------| ------------- |---------| ---------|---- |
@@ -198,7 +198,7 @@ Właściwość location jako właściwość aplikacji można utworzyć za pomoc�
    - **Lokalizacja adresu**
    - **Lokalizacja jako współrzędne**
 
-4. Kliknij pozycję **Zapisz**. Operator może zaktualizować wartość lokalizacji **Device Explorer**.
+4. Wybierz pozycję **Zapisz**. Operator może zaktualizować wartość lokalizacji **Device Explorer**.
 
 #### <a name="add-location-as-a-device-property"></a>Dodaj lokalizację jako właściwości urządzenia
 
@@ -231,7 +231,7 @@ Czym różni się polecenie z ustawienia?
 
 * **Polecenie**: Polecenia aby natychmiast uruchomić polecenie na urządzeniu zdalnie z IoT Central. Jeśli urządzenie nie jest połączony, polecenie upłynie limit czasu i kończy się niepowodzeniem. Na przykład chcesz ponownie uruchomić urządzenie.
 
-Na przykład można dodać nowego **Echo** polecenia, wybierając **polecenia** kartę, klikając **+ nowe polecenie**i wprowadzić nowe szczegóły polecenia:
+Na przykład można dodać nowego **Echo** polecenia, wybierając **polecenia** kartę, a następnie wybierając pozycję **+ nowe polecenie**i wprowadzić nowe szczegóły polecenia:
 
 | Nazwa wyświetlana  | Nazwa pola | Domyślny limit czasu | Typ danych |
 | --------------| -----------|---------------- | --------- |

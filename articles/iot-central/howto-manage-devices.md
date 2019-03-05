@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 21c29d90d8ed149062f24b470603b0e0e03cc6ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658118"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315609"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji
 
@@ -67,7 +67,7 @@ Aby zbiorczo — rejestracja urządzeń w Twojej aplikacji:
  >   [!NOTE] 
     Jeśli nie masz szablon urządzenia jeszcze zaimportowanie urządzeń w obszarze **Brak skojarzenia urządzenia** i zarejestruj je bez żadnych szablonów. Po zaimportowaniu urządzenia można następnie skojarzyć je przy użyciu szablonu jako kolejny krok.
 
-1. Kliknij przycisk **Importuj**.
+1. Wybierz **importu**.
 
     [![Akcja importu](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
@@ -79,7 +79,7 @@ Aby zbiorczo — rejestracja urządzeń w Twojej aplikacji:
 
     [![Powodzenie importu](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-Jeśli urządzenie zaimportowany operacja kończy się niepowodzeniem, zobaczysz komunikat o błędzie na siatce urządzenia. Plik dziennika przechwytywania wszystkich błędów jest generowany i można je pobrać, klikając komunikat o błędzie.
+Jeśli urządzenie zaimportowany operacja kończy się niepowodzeniem, zobaczysz komunikat o błędzie na siatce urządzenia. Plik dziennika przechwytywania wszystkich błędów, zostanie wygenerowany i mogą być pobierane przez wybranie komunikat o błędzie.
 
 
 **Kojarzenie urządzeń przy użyciu szablonu**
@@ -89,9 +89,9 @@ Po zarejestrowaniu urządzenia przez uruchamianie importu w obszarze **Brak skoj
 1. W panelu po lewej stronie wybierz **Brak skojarzenia urządzenia**.
     [![Urządzenia nieskojarzone](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
 1. Wybierz urządzenia, które chcesz skojarzyć z szablonem.
-1. Kliknij przycisk **skojarzyć** opcji.
+1. Wybierz **skojarzyć** opcji.
     [![Skojarzenie urządzenia](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
-1. Wybierz szablon z listy dostępnych szablonów, a następnie kliknij przycisk **skojarzyć** przycisku.
+1. Wybierz szablon z listy dostępnych szablonów, a następnie wybierz **skojarzyć**.
 1. Wybrane urządzenia zostaną przeniesione na podstawie szablonu odpowiednie urządzenie.
 
  >   [!NOTE] 
@@ -106,7 +106,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Na lewym panelu wybierz szablon urządzenia, dla którego chcesz wyeksportować urządzenia.
 
-1. Wybierz urządzenia, które chcesz wyeksportować, a następnie kliknij przycisk **wyeksportować** akcji.
+1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz pozycję **wyeksportować** akcji.
 
     [![Export](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
 
@@ -114,7 +114,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Po zakończeniu eksportu, komunikat o powodzeniu jest wyświetlany wraz z linkiem do pobrania wygenerowany plik.
 
-1. Kliknij pozycję **komunikat o powodzeniu** można pobrać pliku do lokalnego folderu na dysku.
+1. Wybierz **komunikat o powodzeniu** można pobrać pliku do lokalnego folderu na dysku.
 
     [![Powodzenie eksportu](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 

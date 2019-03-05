@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 8218da62eb8c3d8c454ca1dca1bd1071e0de67b0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300265"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308758"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -118,9 +118,7 @@ Można dodatkowe dane telemetryczne są wysyłane do swojego konta przy użyciu 
 Jeśli kod jest współużytkowana z innymi projektami, pamiętaj, aby usunąć klucz instrumentacji.
 
 ## <a name="is-the-data-encrypted"></a>Czy dane są szyfrowane?
-Poza serwerów w chwili obecnej.
-
-Wszystkie dane są szyfrowane, kiedy przesuwa się on między centrami danych.
+Wszystkie dane są szyfrowane, gdy i ponieważ przechodzi między danymi centrów.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Czy dane są szyfrowane podczas przesyłania z mojej aplikacji na serwerach usługi Application Insights?
 Tak, będziemy używać protokołu https z wysyłania danych do portalu z niemal wszystkie zestawy SDK, w tym serwerów sieci web, urządzeń i stron sieci web protokołu HTTPS. Jedynym wyjątkiem jest dane wysyłane z zwykły stron sieci web HTTP.

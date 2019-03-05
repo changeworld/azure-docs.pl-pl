@@ -1,7 +1,7 @@
 ---
 title: Tworzenie indeksu w kodzie przy użyciu interfejsu API REST — usługa Azure Search
 description: Tworzenie indeksu wyszukiwania pełnotekstowego w kodzie za pomocą żądań HTTP i interfejsu API REST usługi Azure Search.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: b4d85d3b8ee7e6a872fdd6bf07917770c4d2ee9e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 98749e0900920d0d3541c78c79598123e4f987df
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265264"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313973"
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Tworzenie indeksu usługi Azure Search przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]

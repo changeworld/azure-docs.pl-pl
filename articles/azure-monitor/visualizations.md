@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: b903d20136beb306d3f38fbebdb70562b3634d31
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 55aed5d1133756789c3ed8979f0a9599f465e5d9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749787"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315099"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
@@ -71,9 +71,8 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Zapytania są ograniczone w odpowiedzi rozmiar 8MB, a zapytanie czas wykonywania 110 sekund.
 
 
-
-## <a name="application-insights-workbooks"></a>Application Insights skoroszytów
-[Skoroszyty](../application-insights/app-insights-usage-workbooks.md) są interaktywne dokumentów, które zawierają szczegółowe informacje w danych, analizy i współpracy w ramach zespołu. Szczegółowe przykłady, w którym skoroszyty są przydatne rozwiązywania problemów przewodniki i postmortem zdarzenia.
+## <a name="workbooks"></a>Skoroszyty
+[Skoroszyty](../azure-monitor/app/usage-workbooks.md) są interaktywne dokumentów, które zawierają szczegółowe informacje w danych, analizy i współpracy w ramach zespołu. Szczegółowe przykłady, w którym skoroszyty są przydatne rozwiązywania problemów przewodniki i postmortem zdarzenia.
 
 ![Skoroszyt](media/visualizations/workbook.png)
 
@@ -122,7 +121,6 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Obsługuje parametry.
 
 ### <a name="limitations"></a>Ograniczenia
-- Obsługuje metryki, ale niedostępne są dzienniki.
 - Brak integracji platformy Azure. Nie można zarządzać pulpitów nawigacyjnych i modeli za pomocą usługi Azure Resource Manager.
 - Koszty obsługi dodatkowej infrastruktury Grafana lub dodatkowych kosztów Grafana chmury.
 
@@ -142,6 +140,7 @@ Dane w dzienniku i dane metryk w usłudze Azure Monitor dostęp za pośrednictwe
 - Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](platform/data-collection.md).
 - Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
 - Dowiedz się więcej o [widoków w usłudze Azure Monitor](platform/view-designer.md).
-- Dowiedz się więcej o [skoroszytów w usłudze Application Insights](app/usage-workbooks.md).
-- Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](platform/powerbi.md).
-- Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](platform/grafana-plugin.md).
+- Dowiedz się więcej o [skoroszyty](../azure-monitor/app/usage-workbooks.md).
+- Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../azure-monitor/platform/powerbi.md).
+- Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../azure-monitor/platform/grafana-plugin.md).
+

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaedff2cb9f8eae30fd17c497b4a2f6de490b07
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d325c30173955ff7c08099a125094ffe620c7ee3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822599"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313382"
 ---
 # <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
@@ -46,7 +46,7 @@ Aby zmienić obraz aplikacji, zobacz [przygotowywania i przekazywania obrazów d
 ### <a name="copy-an-application"></a>Kopiuj aplikację
 Można utworzyć kopię dowolnej aplikacji, bez żadnych wystąpień urządzeń, Historia danych z urządzeń i danych użytkowników. Kopia zostanie umieszczona aplikacji płatność za rzeczywiste użycie, która zostanie naliczona opłata. Nie można utworzyć aplikacji wersji próbnej w ten sposób.
 
-Kliknij przycisk **kopiowania** przycisku. W oknie dialogowym wprowadź szczegóły nowej aplikacji płatność za rzeczywiste użycie. Następnie kliknij przycisk **kopiowania** przycisk, aby upewnić się, że chcesz kontynuować. Dowiedz się więcej na temat pól, w tym formularzu w [tworzenia aplikacji](quick-deploy-iot-central.md) Szybki Start.
+Wybierz **kopiowania**. W oknie dialogowym wprowadź szczegóły nowej aplikacji płatność za rzeczywiste użycie. Następnie wybierz pozycję **kopiowania** aby upewnić się, że chcesz kontynuować. Dowiedz się więcej na temat pól, w tym formularzu w [tworzenia aplikacji](quick-deploy-iot-central.md) Szybki Start.
 
 ![Strona ustawień aplikacji](media/howto-administer/appCopy2.png)
 
@@ -131,13 +131,13 @@ Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 
     ![Stan wersji próbnej](media/howto-administer/freetrialbilling.png)
 
-1. Kliknij przycisk **przekonwertować płatność za rzeczywiste użycie**. 
+1. Wybierz **przekonwertować płatność za rzeczywiste użycie**. 
 
     ![Konwertuj na wersję próbną](media/howto-administer/convert.png)
 
 1. Wybierz odpowiednie usługi Azure Active Directory, a następnie subskrypcji platformy Azure na potrzeby aplikacji płatność za rzeczywiste użycie.
 
-1. Po kliknięciu **przekonwertować**, Twoja aplikacja jest teraz aplikacją płatność za rzeczywiste użycie i rozpoczęciem rozliczanych.
+1. Po wybraniu **przekonwertować**, Twoja aplikacja jest teraz aplikacją płatność za rzeczywiste użycie i rozpoczęciem rozliczanych.
 
 ## <a name="export-data"></a>Eksportowanie danych
 

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 69ca51776a61b43768ce7cb1565451c4f118de6e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300255"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316527"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Wielomodelowa możliwości usługi Azure SQL Database
 
@@ -124,7 +124,7 @@ CREATE TABLE Collection (
 
 Można dostosować tę strukturę pary klucz wartość do własnych potrzeb bez żadnych ograniczeń. Na przykład wartość może być dokumentu XML zamiast `nvarchar(max)` typu, jeśli wartość to dokument JSON, możesz umieścić `CHECK` ograniczenia, które sprawdza poprawność zawartości w formacie JSON. Można umieścić dowolną liczbę wartości związane z jednego klucza w dodatkowych kolumn, dodawanie kolumn obliczanych i indeksy, aby uprościć i optymalizowanie dostępu do danych, zdefiniuj tabelę jako/zoptymalizowane pod kątem pamięci tylko do schematu tabeli, aby uzyskać lepszą wydajność, itp.
 
-Zobacz [jak BWin korzysta OLTP w pamięci, aby osiągnąć niezrównaną wydajność i skalę](https://blogs.msdn.microsoft.com/sqlcat/2016/10/26/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) ich buforowania platformy ASP.NET rozwiązanie, które uzyskuje 1.200.000 partii na sekundę, na przykład jak relacyjne modelu mogą być skutecznie używane jako rozwiązanie pary klucz wartość w praktyce.
+Zobacz [jak BWin korzysta OLTP w pamięci, aby osiągnąć niezrównaną wydajność i skalę](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) ich buforowania platformy ASP.NET rozwiązanie, które uzyskuje 1.200.000 partii na sekundę, na przykład jak relacyjne modelu mogą być skutecznie używane jako rozwiązanie pary klucz wartość w praktyce.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Wielomodelowa możliwości w bazach danych SQL Azure są również podstawowe funkcje aparatu bazy danych programu SQL Server, które są wspólne dla usługi Azure SQL Database i programu SQL Server. Aby uzyskać więcej informacji o tych funkcjach, odwiedź strony dokumentacji usługi SQL relacyjnej bazy danych:

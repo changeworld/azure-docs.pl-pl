@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5d769de62ccae1b1480e4da9e9643b63633073a4
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 9834feed7ee3139f70e481bafb301b2003c2e2b6
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215561"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317292"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurowanie pulpit nawigacyjny aplikacji
 
@@ -24,15 +24,15 @@ ms.locfileid: "57215561"
 
 ## <a name="add-tiles"></a>Dodaj Kafelki
 
-Poniższy zrzut ekranu przedstawia pulpit nawigacyjny w aplikacji, który został utworzony na podstawie **Contoso przykładowe** szablonu. Aby dostosować domyślny pulpit nawigacyjny dla swojej aplikacji, kliknij przycisk **Edytuj** w prawym górnym rogu strony.
+Poniższy zrzut ekranu przedstawia pulpit nawigacyjny w aplikacji, który został utworzony na podstawie **Contoso przykładowe** szablonu. Aby dostosować domyślny pulpit nawigacyjny dla swojej aplikacji, wybierz pozycję **Edytuj** w prawym górnym rogu strony.
 
 ![Pulpit nawigacyjny dla aplikacji na podstawie szablonu "Contoso próbki"](media/howto-configure-homepage-experimental/image1.png)
 
-Klikając **Edytuj**, zostanie otwarty panel Biblioteka pulpitu nawigacyjnego. Biblioteka zawiera Kafelki i podstawowych pulpitu nawigacyjnego, którym można dostosować pulpit nawigacyjny.
+Wybieranie **Edytuj**, zostanie otwarty panel Biblioteka pulpitu nawigacyjnego. Biblioteka zawiera Kafelki i podstawowych pulpitu nawigacyjnego, którym można dostosować pulpit nawigacyjny.
 
 ![Biblioteka pulpitu nawigacyjnego](media/howto-configure-homepage-experimental/image2.png)
 
-Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości dla urządzenia. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. Poniższy zrzut ekranu przedstawia ustawienia i właściwości wybranego do dodania do kafelka. Kliknij przycisk **gotowe** można zapisać zmiany do pulpitu nawigacyjnego.
+Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości dla urządzenia. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. Poniższy zrzut ekranu przedstawia ustawienia i właściwości wybranego do dodania do kafelka. Wybierz **gotowe** można zapisać zmiany do pulpitu nawigacyjnego.
 
 !["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media/howto-configure-homepage-experimental/image3.png)
 

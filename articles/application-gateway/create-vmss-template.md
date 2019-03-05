@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0f3bdaaa038dcd0ef2a0ad6466cbb7a09ec7c2bc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037416"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312447"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Tworzenie bramy aplikacji przy użyciu szablonu usługi Azure Resource Manager
 
@@ -27,6 +27,8 @@ Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 
 W tym artykule opisano poprzez pobieranie i modyfikowanie istniejącego [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) z serwisu GitHub i wdrażania szablonu z serwisu GitHub, programu PowerShell i wiersza polecenia platformy Azure.
 
 Jeśli po prostu wdrażasz szablon bezpośrednio z serwisu GitHub bez wprowadzania żadnych zmian, przejdź do wdrażania szablonu z serwisu GitHub.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scenariusz
 
@@ -123,13 +125,13 @@ Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [Ja
 1. Zaloguj się do programu PowerShell
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
 1. Sprawdź subskrypcje dostępne na koncie.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     Zostanie wyświetlony monit o uwierzytelnienie przy użyciu własnych poświadczeń.
@@ -137,19 +139,19 @@ Jeśli po raz pierwszy używasz programu Azure PowerShell, odwiedź stronę: [Ja
 1. Wybierz subskrypcję platformy Azure do użycia.
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. W razie potrzeby utwórz grupę zasobów za pomocą polecenia cmdlet **New-AzureResourceGroup**. W poniższym przykładzie utworzysz grupę zasobów o nazwie AppgatewayRG w lokalizacji wschodnie stany USA.
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Uruchom polecenie cmdlet **New-AzureRmResourceGroupDeployment**, aby wdrożyć nową sieć wirtualną przy użyciu uprzednio pobranych i zmodyfikowanych plików szablonu oraz parametrów.
+1. Uruchom **New AzResourceGroupDeployment** uprzednio pobranych i zmodyfikowanych plików przez polecenia cmdlet, aby wdrożyć nową sieć wirtualną przy użyciu szablonu oraz parametrów.
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
@@ -215,7 +217,7 @@ Aby usunąć wszystkie zasoby utworzone w tym artykule, wykonaj jedną z następ
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure

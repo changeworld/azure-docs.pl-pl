@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: c88fe7051519440056fe85e7ff9172ae0239bd41
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: da7556b909ec4eb544a6b4e4fab7af4a0919a158
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234241"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308180"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -204,13 +204,26 @@ Przykładowy kod json powyżej, można zapisać jako (np.) sampleActivityLogAler
 
 ## <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="deploy-resource-manager-template-with-powershell"></a>Wdrażanie szablonu usługi Resource Manager przy użyciu programu PowerShell
+Przy użyciu programu PowerShell do wdrożenia przykład szablonu usługi Resource pokazano w poprzedniej [sekcji zasobów szablonu] (#--szablonu usługi resource manager, użyj następującego polecenia:
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
+```
+
+gdy sampleActivityLogAlert.parameters.json zawiera wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
+
+### <a name="use-activity-log-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell z dziennika aktywności
+
 Alerty dziennika aktywności są wyposażone w dedykowane dostępnych poleceń cmdlet programu PowerShell:
 
-- [Set-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert): Aby utworzyć lub zaktualizować istniejący zasób reguły alertu dziennika aktywności
-- [Get-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert): Aby pobrać jeden lub więcej zasobów reguły alertu dziennika aktywności
-- [Remove-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert): Aby usunąć zasób reguły alertu dziennika aktywności o potwierdzenie przez użytkownika
-- [Enable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert): Aby włączyć istniejącego zasobu reguły alertu dziennika aktywności
-- [Disable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert): Aby wyłączyć istniejącego zasobu reguły alertu dziennika aktywności
+- [Zestaw AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) : Tworzy nową lub aktualizowanie istniejącego alertu dziennika aktywności.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) : Pobiera jeden lub więcej działań zasoby alertów dzienników.
+- [Włącz AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) : Umożliwia istniejącego alertu dziennika aktywności i ustawia jego tagów.
+- [Wyłącz AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Wyłącza istniejącego alertu dziennika aktywności i ustawia jego tagów.
+- [Usuń AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0) : Usuwa alertu dziennika aktywności.
 
 ## <a name="cli"></a>Interfejs wiersza polecenia
 

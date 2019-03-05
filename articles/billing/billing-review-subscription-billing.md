@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: a4e5307a151439dde5ac41cb5b1bbb80f43ad71c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3a487b56c3ce81f3a13add767a9bf7ad59cf79cd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112754"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315949"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Przegląd rozliczeń subskrypcji przy użyciu interfejsów API REST
 
-Pomoc platformy Azure interfejsy API raportowania usługi Przejrzyj i zarządzania kosztami platformy Azure.  
+Pomoc platformy Azure interfejsy API raportowania usługi Przejrzyj i zarządzania kosztami platformy Azure.
 
 Filtry pomagają dostosować wyniki do własnych potrzeb.
 
@@ -31,26 +31,26 @@ W tym miejscu możesz Dowiedz się, jak za pomocą interfejsu API REST do zwróc
 
 ``` http
 GET https://management.azure.com/subscriptions/${subscriptionID}/providers/Microsoft.Billing/billingPeriods/${billingPeriod}/providers/Microsoft.Consumption/usageDetails?$filter=properties/usageEnd ge '${startDate}' AND properties/usageEnd le '${endDate}'
-Content-Type: application/json   
+Content-Type: application/json
 Authorization: Bearer
 ```
 
-## <a name="build-the-request"></a>Tworzenie żądania  
+## <a name="build-the-request"></a>Tworzenie żądania
 
 `{subscriptionID}` Parametr jest wymagany i identyfikuje subskrypcji docelowej.
 
 `{billingPeriod}` Parametr jest wymagany i określa bieżącej [okresu rozliczeniowego](https://docs.microsoft.com/rest/api/billing/billingperiods/get#billingperiod).
 
-`${startDate}` i `${endDate}` parametry są wymagane dla tego przykładu, ale opcjonalne dla punktu końcowego.  Określają zakres dat jako ciąg w postaci RRRR-MM-DD (przykłady: `'20180501'` i `'20180615'`). 
+`${startDate}` i `${endDate}` parametry są wymagane dla tego przykładu, ale opcjonalne dla punktu końcowego. Określają zakres dat jako ciąg w postaci RRRR-MM-DD (przykłady: `'20180501'` i `'20180615'`).
 
-Wymagane są następujące nagłówki: 
+Wymagane są następujące nagłówki:
 
-|Nagłówek żądania|Opis|  
-|--------------------|-----------------|  
-|*Typ zawartości:*|Wymagany. Ustaw `application/json`.|  
-|*Autoryzacja:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|Nagłówek żądania|Opis|
+|--------------------|-----------------|
+|*Typ zawartości:*|Wymagany. Ustaw `application/json`.|
+|*Autoryzacja:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-## <a name="response"></a>Odpowiedź  
+## <a name="response"></a>Odpowiedź
 
 Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi zawiera listę szczegółowych kosztów dla swojego konta.
 
@@ -67,47 +67,47 @@ Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi zawiera listę szczegółowy
         "usageStart": "${startDate}}",
         "usageEnd": "${endDate}",
         "currency": "USD",
-        "usageQuantity": ${usageQuantity},
-        "billableQuantity": ${billableQuantity},
-        "pretaxCost": ${cost},
+        "usageQuantity": "${usageQuantity}",
+        "billableQuantity": "${billableQuantity}",
+        "pretaxCost": "${cost}",
         "meterId": "${meterID}",
-        "meterDetails": ${meterDetails}
+        "meterDetails": "${meterDetails}"
       }
     }
-    ],
-    "nextLink": "${nextLinkURL}"
-} 
-```  
+  ],
+  "nextLink": "${nextLinkURL}"
+}
+```
 
 Każdy element na **wartość** reprezentuje szczegóły dotyczące korzystania z usługi:
 
 |Właściwość Response|Opis|
 |----------------|----------|
-|**subscriptionGuid** | Globalnie unikatowy identyfikator dla subskrypcji. | 
+|**subscriptionGuid** | Globalnie unikatowy identyfikator dla subskrypcji. |
 |**startDate** | Data wykorzystania pracę. |
 |**endDate** | Data wykorzystania zakończył się. |
-|**useageQuantity** | Użytej ilości. | 
+|**useageQuantity** | Użytej ilości. |
 |**billableQuantity** | Ilość rzeczywiście jest rozliczane. |
-|**pretaxCost** | Koszt doliczany do faktury, przed obowiązujących podatków. | 
+|**pretaxCost** | Koszt doliczany do faktury, przed obowiązujących podatków. |
 |**meterDetails** | Szczegółowe informacje na temat użycia. |
-|**nextLink**| Po ustawieniu, określa adres URL następnego "page" szczegółowe informacje. Pusty, gdy strona jest ostatnim blokiem. |  
-||
-  
-W tym przykładzie jest skracana; zobacz [uzyskać szczegółowe informacje o liście](https://docs.microsoft.com/rest/api/consumption/usagedetails/listbybillingperiod#usagedetailslistresult) pełny opis każdego pola w odpowiedzi. 
+|**nextLink**| Po ustawieniu, określa adres URL następnego "page" szczegółowe informacje. Pusty, gdy strona jest ostatnim blokiem. |
+
+W tym przykładzie jest skracana; zobacz [uzyskać szczegółowe informacje o liście](https://docs.microsoft.com/rest/api/consumption/usagedetails/listbybillingperiod#usagedetailslistresult) pełny opis każdego pola w odpowiedzi.
 
 Inne kody stanu wskazują błędy. W takich przypadkach obiekt odpowiedzi wyjaśnia, dlaczego żądanie nie powiodło się.
 
 ``` json
-{  
-  "error": [  
-    { "code": "Error type." 
-      "message": "Error response describing why the operation failed."  
-    }  
-  ]  
-}  
-```  
+{
+  "error": [
+    {
+      "code": "Error type.",
+      "message": "Error response describing why the operation failed."
+    }
+  ]
+}
+```
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Kolejne kroki
 - Przegląd [Przegląd raportowania dla przedsiębiorstw.](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Badanie [przedsiębiorstwa, interfejs API REST rozliczeń](https://docs.microsoft.com/rest/api/billing/)   
-- [Wprowadzenie do interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)   
+- Badanie [przedsiębiorstwa, interfejs API REST rozliczeń](https://docs.microsoft.com/rest/api/billing/)
+- [Wprowadzenie do interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)

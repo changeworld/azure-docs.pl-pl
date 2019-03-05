@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 2ae8c14b40fa13a1aa8008588fb0efb1b1d2c3f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 33e24a8d8715dd6f2b37ed566a1479dffd93c466
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159421"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308095"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurowanie bramy aplikacji przy użyciu kończenia żądań SSL przy użyciu witryny Azure portal
 
@@ -29,6 +29,8 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Tworzenie maszyn wirtualnych, używane jako serwery zaplecza
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -132,7 +134,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -143,7 +145,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
       -Location EastUS
     ```
 
-3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki, które właśnie ukończono. Wprowadź wartość *myVM2* dla jej nazwy i dla parametru VMName polecenia Set-AzureRmVMExtension.
+3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki, które właśnie ukończono. Wprowadź *myVM2* dla nazwy i VMName w AzVMExtension zestawu.
 
 ### <a name="add-backend-servers"></a>Dodawanie serwerów zaplecza
 

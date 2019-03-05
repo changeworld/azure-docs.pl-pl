@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5412e0a7bae3667ceb29085da566ef3b73c82c35
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198732"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316629"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -45,14 +45,14 @@ Można znaleźć szczegółowe informacje o konfiguracji [Szczegóły szablonu z
 
 W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**identyfikator zakresu, identyfikator urządzenia i podstawowego klucza**).
 
-1. Dodaj **rzeczywistego urządzenia** z Device Explorer kliknij **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
+1. Dodaj **rzeczywistego urządzenia** Device Explorer, zaznacz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
     * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
     * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
     
     ![Dodaj urządzenie](media/concepts-connectivity/add-device.png)
 
 
-1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodanego urządzenia, klikając **Connect** na stronie urządzenia.
+1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodane urządzenie, wybierając **Connect** na stronie urządzenia.
  
     ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 
@@ -189,14 +189,14 @@ Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawier
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| Temp           | C     | -40     | 120     | 0              |
-| pressure       | hPa pakietu    | 260     | 1260    | 0              |
+| Temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | grupą zarządzania     | -2000   | 2000    | 0              |
-| accelerometerY | grupą zarządzania     | -2000   | 2000    | 0              |
-| accelerometerZ | grupą zarządzania     | -2000   | 2000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
@@ -230,7 +230,7 @@ Ustawienia przełącznika
 
 ### <a name="properties"></a>Właściwości
 
-| Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Właściwości urządzenia | Lokalizacji urządzenia   | location  | location    |

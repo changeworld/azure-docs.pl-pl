@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1eaf73e1d8b3c60ea32fa7d4aaf51a212d24a18c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6e79aba5ae6d06c207b0070fd7741471db7d820c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894602"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316918"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Wyślij metryki systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywania, przy użyciu szablonu usługi Resource Manager dla maszyny wirtualnej Windows
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Za pomocą usługi Azure Monitor [rozszerzenie diagnostyki](diagnostics-extension-overview.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa), który działa jako część maszyn wirtualnych, usługi w chmurze lub klaster usługi Service Fabric. Rozszerzenie może wysyłać telemetrię do [wielu różnych lokalizacjach.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -29,7 +31,7 @@ Jeśli dopiero zaczynasz pracę z szablonami usługi Resource Manager, Dowiedz s
 
 - Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services).
 
-- Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
+- Musisz mieć [programu Azure PowerShell](/powershell/azure) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurowanie usługi Azure Monitor jako ujście danych
@@ -237,17 +239,17 @@ Zapisz i zamknij oba pliki.
 Aby wdrożyć szablon usługi Resource Manager, będziemy korzystać z programu Azure PowerShell.
 
 1. Uruchom program PowerShell.
-1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`.
-1. Pobierz listę subskrypcji przy użyciu `Get-AzureRmSubscription`.
+1. Zaloguj się do platformy Azure za pomocą `Login-AzAccount`.
+1. Pobierz listę subskrypcji przy użyciu `Get-AzSubscription`.
 1. Ustaw subskrypcję, której używasz do utworzenia/zaktualizowania maszynę wirtualną w:
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>"
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. Aby utworzyć nową grupę zasobów dla maszyny Wirtualnej, który jest wdrażany, uruchom następujące polecenie:
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
+    New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
    > Pamiętaj, aby [region platformy Azure, która jest włączona na użytek metryki niestandardowe](metrics-custom-overview.md).
@@ -257,7 +259,7 @@ Aby wdrożyć szablon usługi Resource Manager, będziemy korzystać z programu 
    > Jeśli chcesz zaktualizować istniejącą maszynę Wirtualną, wystarczy dodać *— tryb Przyrostowy* -to-end następującego polecenia.
 
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
+   New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
 1. Po pomyślnym wdrożeniu maszyny Wirtualnej należy w witrynie Azure portal, emitowanie metryk do usługi Azure Monitor.

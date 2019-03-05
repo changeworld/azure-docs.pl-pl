@@ -4,19 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
 manager: nitinme
-displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 93e735958669dd39deaf88d1d468a9148b7db3d1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cff4199663bce39353f8c10c68f51f15d6a72a22
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960309"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314827"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
@@ -33,13 +32,13 @@ Usługa QnA Maker uzyskuje informacje o nowych zmian pytanie jawne i niejawne op
 
 Każda z tych metod zapewnia tematycznie przy użyciu podobnych zapytań, które są klastrowane.
 
-Podobnie zapytania są klastrowane, narzędzie QnA Maker sugeruje pytania oparte na użytkownikach do projektanta bazy wiedzy knowledge base, aby zaakceptować lub odrzucić.
-
 ## <a name="how-active-learning-works"></a>Jak aktywne uczenie działa
 
 Aktywne uczenie jest wyzwalana, oparte na wyniki najważniejsze odpowiedzi kilka zwrócone przez narzędzie QnA Maker dla dowolnej podanej kwerendy. Różnice wynik leży w obrębie małe, a następnie zapytanie jest traktowane jako potencjalnie _sugestii_ dla wszystkich możliwych odpowiedzi. 
 
 Wszystkie sugestie są zgrupowane razem wg podobieństwa i najbardziej oczekiwanych alternatywne pytania są wyświetlane na podstawie częstotliwości określonej zapytań przez użytkowników końcowych. Aktywna nauka zapewnia najlepsze możliwe sugestie w przypadkach, gdzie punkty końcowe są objęte ilość uzasadnione i różne zapytania do użycia.
+
+Po pytania są sugerowane w portalu narzędzia QnA Maker, należy przejrzeć i zaakceptować lub odrzucić te sugestie. 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Uaktualnij wersję na korzystanie z aktywnej nauki
 
@@ -58,6 +57,8 @@ Algorytm ustalania odległości między elementami nie jest proste obliczenia. Z
 ## <a name="turn-on-active-learning"></a>Włącz aktywne uczenie
 
 Aktywna nauka jest domyślnie wyłączona. Włącz ją wyświetlić sugerowane pytania. 
+
+1. Wybierz **Publikuj** publikowanie bazy wiedzy knowledge base. Aktywna nauka zapytania są zbierane z tylko endpoint prognoz GenerateAnswer interfejsu API. Zapytania, które okienko testowania, w portalu narzędzia Qna Maker nie wpływa na aktywne uczenie.
 
 1. Aby włączyć aktywne uczenie się na, kliknij pozycję Twoje **nazwa**, przejdź do [ **ustawienia usługi** ](https://www.qnamaker.ai/UserSettings) w prawym górnym rogu portalu narzędzia QnA Maker.  
 
@@ -88,6 +89,9 @@ Aktywna nauka jest domyślnie wyłączona. Włącz ją wyświetlić sugerowane p
 
 1. Wybierz **Zapisz i szkolenie** można zapisać zmian w bazie wiedzy knowledge base.
 
+1. Wybierz **Publikuj** do umożliwienia wprowadzania zmian ma być dostępny z poziomu interfejsu API GenerateAnswer.
+
+    5 lub więcej podobne zapytań są klastrowane, co 30 minut narzędzie QnA Maker sugeruje pytania oparte na użytkownikach do projektanta bazy wiedzy knowledge base, aby zaakceptować lub odrzucić.
 
 ## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>Określenia najlepszym wyborem w przypadku, gdy kilka pytań mają podobne wyniki
 

@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: ba6b8c76b31f09eb8f04097f935f865728a4e893
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c2c172dc5f03aee8b167cd65562de3329c54d563
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217499"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313013"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -30,24 +30,24 @@ Microsoft Flow umożliwia automatyzowanie przepływów pracy między wiele aplik
 
 W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne w aplikacji mobilnej Flow, gdy wyzwolenie reguły w IoT Central.
 
-1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Po zapisaniu warunki reguły kliknij **akcji Microsoft Flow** jako nową akcję. Nowa karta lub okna powinna zostać otwarta w przeglądarce, uwzględniając Microsoft Flow.
+1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Po zapisaniu warunki reguły wybierz **akcji Microsoft Flow** jako nową akcję. Nowa karta lub okna powinna zostać otwarta w przeglądarce, uwzględniając Microsoft Flow.
 
     ![Utwórz nową akcję Microsoft Flow](media/howto-add-microsoft-flow-experimental/createflowaction.png)
 
 1. Zaloguj się do Microsoft Flow. Nie musi to być to samo konto, którego używasz w IoT Central. Zostanie wyświetlona się na stronie Przegląd pokazujący łącznika usługi IoT Central nawiązywania połączenia z akcji niestandardowej.
 
-1. Zaloguj się do łącznika usługi IoT Central, a następnie kliknij przycisk **Kontynuuj**. Nastąpi przekierowanie do projektanta Microsoft Flow do utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
+1. Zaloguj się do łącznika usługi IoT Central, a następnie wybierz pozycję **Kontynuuj**. Nastąpi przekierowanie do projektanta Microsoft Flow do utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
 
 1. Wybierz **+ nowy krok** i **Dodaj akcję**. W tym momencie można dodawać żadnych działań do przepływu pracy. Na przykład możemy wysłać powiadomienie na urządzenie przenośne. Wyszukaj **powiadomień**i wybierz polecenie **powiadomienia — Wyślij mi powiadomienie na urządzenie przenośne**.
 
 1. W akcji Wypełnij pole tekstowe o co chcesz zgłoszeniu powiedzieć. Możesz uwzględnić *zawartości dynamicznej* z reguły IoT Central, przekazując wzdłuż ważne informacje, takie jak nazwa urządzenia i sygnatura czasowa do powiadomienia.
 
     > [!NOTE]
-    > Kliknij pozycję "Zobacz więcej" tekst w oknie zawartości dynamicznej miary i wartości właściwości, które spowodowały wyzwolenie reguły.
+    > Wybierz **Zobacz więcej** tekst w oknie zawartości dynamicznej można pobrać miary i wartości właściwości, które wyzwolona reguła.
 
     ![Przepływ edycji akcji z otwartym okienkiem dynamiczne](./media/howto-add-microsoft-flow-experimental/flowdynamicpane.png)
 
-1. Po zakończeniu edycji akcję, kliknij **Zapisz**. Nastąpi przekierowanie do strony Przegląd Twój przepływ pracy. Tutaj można zobaczyć historię uruchamiania i udostępniać go współpracownikom.
+1. Po zakończeniu edycji akcję, wybierz **Zapisz**. Nastąpi przekierowanie do strony Przegląd Twój przepływ pracy. Tutaj można zobaczyć historię uruchamiania i udostępniać go współpracownikom.
 
     > [!NOTE]
     > Aby inni użytkownicy w Twojej aplikacji IoT Central, aby edytować tę regułę, należy go udostępnisz je w Microsoft Flow. Dodaj ich konta Microsoft Flow jako właścicieli w przepływie pracy.

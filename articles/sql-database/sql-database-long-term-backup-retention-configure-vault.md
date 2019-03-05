@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma,carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5100ef307bc125b21e1c42c87856492a4a496065
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: efdcc4c8424fc1c330ac901bb42ec89897241d79
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455642"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316612"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych przy użyciu magazynu usługi Azure Recovery Services
 
@@ -147,11 +147,13 @@ Przywróceniu bazy danych do nowej bazy danych z kopii zapasowej w magazynie us�
 
 ## <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Poniższe sekcje pokazują, jak skonfigurować magazyn usługi Azure Recovery Services, wyświetlanie kopii zapasowych w magazynie i przywracania z magazynu przy użyciu programu PowerShell.
 
 ### <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-Użyj [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) do utworzenia magazynu usługi recovery services.
+Użyj [New AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) do utworzenia magazynu usługi recovery services.
 
 > [!IMPORTANT]
 > Magazyn musi znajdować się w tym samym regionie co serwer bazy danych SQL i musi używać tej samej grupie zasobów co serwer bazy danych SQL.
@@ -161,33 +163,33 @@ Użyj [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryserv
 
 #$resourceGroupName = "{resource-group-name}"
 #$serverName = "{server-name}"
-$serverLocation = (Get-AzureRmSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName).Location
+$serverLocation = (Get-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName).Location
 $recoveryServiceVaultName = "{new-vault-name}"
 
-$vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation
-Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
+$vault = New-AzRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation
+Set-AzRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
 ### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Skonfiguruj serwer na potrzeby magazynu usługi recovery jego długoterminowego przechowywania kopii zapasowych
 
-Użyj [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) polecenia cmdlet, aby skojarzyć magazyn usług odzyskiwania utworzone wcześniej z określonym serwerem Azure SQL.
+Użyj [AzSqlServerBackupLongTermRetentionVault zestaw](/powershell/module/az.sql/set-azsqlserverbackuplongtermretentionvault) polecenia cmdlet, aby skojarzyć magazyn usług odzyskiwania utworzone wcześniej z określonym serwerem Azure SQL.
 
 ```PowerShell
 # Set your server to use the vault to for long-term backup retention
 
-Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
+Set-AzSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
 ```
 
 ### <a name="create-a-retention-policy"></a>Tworzenie zasad przechowywania
 
-Zasady przechowywania określają czas przechowywania kopii zapasowej bazy danych. Użyj [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) polecenia cmdlet, aby uzyskać domyślne zasady przechowywania do użycia jako szablon do tworzenia zasad. W tym szablonie okres przechowywania ustawiono przez 2 lata. Następnie uruchom [New AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) Aby utworzyć zasady.
+Zasady przechowywania określają czas przechowywania kopii zapasowej bazy danych. Użyj [Get AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-Azrecoveryservicesbackupretentionpolicyobject) polecenia cmdlet, aby uzyskać domyślne zasady przechowywania do użycia jako szablon do tworzenia zasad. W tym szablonie okres przechowywania ustawiono przez 2 lata. Następnie uruchom [New AzRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-Azrecoveryservicesbackupprotectionpolicy) Aby utworzyć zasady.
 
 > [!NOTE]
-> Niektóre polecenia cmdlet wymagają, aby ustawić kontekst magazynu, przed uruchomieniem ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), to polecenie cmdlet w kilku powiązanych fragmentach kodu. Ustaw kontekst, ponieważ zasady są częścią magazynu. Można utworzyć wiele zasad przechowywania dla każdego magazynu, a następnie zastosować żądane zasady do określonych baz danych.
+> Niektóre polecenia cmdlet wymagają, aby ustawić kontekst magazynu, przed uruchomieniem ([AzRecoveryServicesVaultContext zestaw](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)), to polecenie cmdlet w kilku powiązanych fragmentach kodu. Ustaw kontekst, ponieważ zasady są częścią magazynu. Można utworzyć wiele zasad przechowywania dla każdego magazynu, a następnie zastosować żądane zasady do określonych baz danych.
 
 ```PowerShell
 # Retrieve the default retention policy for the AzureSQLDatabase workload type
-$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureSQLDatabase
+$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureSQLDatabase
 
 # Set the retention value to two years (you can set to any time between 1 week and 10 years)
 $retentionPolicy.RetentionDurationType = "Years"
@@ -195,21 +197,21 @@ $retentionPolicy.RetentionCount = 2
 $retentionPolicyName = "my2YearRetentionPolicy"
 
 # Set the vault context to the vault you are creating the policy for
-Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+Set-AzRecoveryServicesVaultContext -Vault $vault
 
 # Create the new policy
-$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -name $retentionPolicyName -WorkloadType AzureSQLDatabase -retentionPolicy $retentionPolicy
+$policy = New-AzRecoveryServicesBackupProtectionPolicy -name $retentionPolicyName -WorkloadType AzureSQLDatabase -retentionPolicy $retentionPolicy
 $policy
 ```
 
 ### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Konfigurowanie bazy danych do korzystania z wcześniej zdefiniowanej zasady przechowywania
 
-Użyj [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) polecenia cmdlet, aby zastosować nowe zasady z określoną bazą danych.
+Użyj [AzSqlDatabaseBackupLongTermRetentionPolicy zestaw](/powershell/module/az.sql/set-azsqldatabasebackuplongtermretentionpolicy) polecenia cmdlet, aby zastosować nowe zasady z określoną bazą danych.
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
 $policyState = "enabled"
-Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -State $policyState -ResourceId $policy.Id
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -State $policyState -ResourceId $policy.Id
 ```
 
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>Wyświetlanie informacji o kopiach zapasowych i kopii zapasowych podlegających długoterminowemu przechowywaniu
@@ -218,9 +220,9 @@ Wyświetlanie informacji o kopie zapasowe bazy danych w [długoterminowego przec
 
 Aby wyświetlić informacje o kopii zapasowej, użyj następujących poleceń cmdlet:
 
-- [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
-- [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
-- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)
+- [Get-AzRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer)
+- [Get-AzRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-Azrecoveryservicesbackupitem)
+- [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/azurerm.recoveryservices.backup/get-Azrecoveryservicesbackuprecoverypoint)
 
 ```PowerShell
 #$resourceGroupName = "{resource-group-name}"
@@ -228,24 +230,24 @@ Aby wyświetlić informacje o kopii zapasowej, użyj następujących poleceń cm
 $databaseNeedingRestore = $databaseName
 
 # Set the vault context to the vault we want to restore from
-#$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
-Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+#$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName
+Set-AzRecoveryServicesVaultContext -Vault $vault
 
 # the following commands find the container associated with the server 'myserver' under resource group 'myresourcegroup'
-$container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL -FriendlyName $vault.Name
+$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureSQL -FriendlyName $vault.Name
 
 # Get the long-term retention metadata associated with a specific database
-$item = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureSQLDatabase -Name $databaseNeedingRestore
+$item = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureSQLDatabase -Name $databaseNeedingRestore
 
 # Get all available backups for the previously indicated database
 # Optionally, set the -StartDate and -EndDate parameters to return backups within a specific time period
-$availableBackups = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $item
+$availableBackups = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item
 $availableBackups
 ```
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Przywracanie bazy danych z kopii zapasowej podlegającej długoterminowemu przechowywaniu kopii zapasowych
 
-Przywracania z długoterminowym przechowywaniem kopii zapasowych używa [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) polecenia cmdlet.
+Przywracania z długoterminowym przechowywaniem kopii zapasowych używa [AzSqlDatabase przywracania](/powershell/module/az.sql/restore-azsqldatabase) polecenia cmdlet.
 
 ```PowerShell
 # Restore the most recent backup: $availableBackups[0]
@@ -255,7 +257,7 @@ $restoredDatabaseName = "{new-database-name}"
 $edition = "Basic"
 $performanceLevel = "Basic"
 
-$restoredDb = Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $availableBackups[0].Id -ResourceGroupName $resourceGroupName `
+$restoredDb = Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $availableBackups[0].Id -ResourceGroupName $resourceGroupName `
  -ServerName $serverName -TargetDatabaseName $restoredDatabaseName -Edition $edition -ServiceObjectiveName $performanceLevel
 $restoredDb
 ```
@@ -284,31 +286,31 @@ Param (
     $VaultName
 )
 
-Login-AzureRmAccount
+Login-AzAccount
 
-Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+Select-AzSubscription -SubscriptionId $SubscriptionId
 
-$vaults = Get-AzureRmRecoveryServicesVault
+$vaults = Get-AzRecoveryServicesVault
 $vault = $vaults | where { $_.Name -eq $VaultName }
 
-Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+Set-AzRecoveryServicesVaultContext -Vault $vault
 
-$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL
+$containers = Get-AzRecoveryServicesBackupContainer -ContainerType AzureSQL
 
 ForEach ($container in $containers)
 {
    $canDeleteContainer = $true
    $ItemCount = 0
    Write-Host "Working on container" $container.Name
-   $items = Get-AzureRmRecoveryServicesBackupItem -container $container -WorkloadType AzureSQLDatabase
+   $items = Get-AzRecoveryServicesBackupItem -container $container -WorkloadType AzureSQLDatabase
    ForEach ($item in $items)
    {
     write-host "Deleting item" $item.name
-    Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
+    Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
    }
 
    Write-Host "Deleting container" $container.Name
-   Unregister-AzureRmRecoveryServicesBackupContainer -Container $container
+   Unregister-AzRecoveryServicesBackupContainer -Container $container
 }
 ```
 

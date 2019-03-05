@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 66d963ff833b27899c82b1e0399195321a1f0732
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6c4c001fc538e5ad93a5c4fc3d6405209be7fc53
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563596"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309370"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobieranie wymaganych wartości do uwierzytelniania aplikacji dostęp do bazy danych SQL z kodu
 
@@ -25,16 +25,18 @@ Tworzenie i zarządzanie usługą SQL Database z kodu, należy zarejestrować ap
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie jednostki usługi dostępu do zasobów z aplikacji
 
-Musisz mieć najnowsze [programu Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) zainstalowana i uruchomiona. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Instalowanie i konfigurowanie programu Azure PowerShell).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Musisz mieć najnowsze [programu Azure PowerShell](/powershell/azure) zainstalowana i uruchomiona. Aby uzyskać szczegółowe informacje, zobacz [sposobu instalowania programu Azure PowerShell](/powershell/azure/install-az-ps).
 
 Poniższy skrypt środowiska PowerShell tworzy aplikację usługi Active Directory (AD) oraz jednostkę usługi wymaganą do uwierzytelnienia aplikacji w języku C#. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
     # Sign in to Azure.
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
     # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
     #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
-    #Set-AzureRmContext -SubscriptionId $subscriptionId
+    #Set-AzContext -SubscriptionId $subscriptionId
 
     # Provide these values for your new AAD app.
     # $appName is the display name for your app, must be unique in your directory.
@@ -46,24 +48,24 @@ Poniższy skrypt środowiska PowerShell tworzy aplikację usługi Active Directo
     $secret = "{app-password}"
 
     # Create a AAD app
-    $azureAdApplication = New-AzureRmADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
+    $azureAdApplication = New-AzADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
 
     # Create a Service Principal for the app
-    $svcprincipal = New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    $svcprincipal = New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
     # To avoid a PrincipalNotFound error, I pause here for 15 seconds.
     Start-Sleep -s 15
 
     # If you still get a PrincipalNotFound error, then rerun the following until successful. 
-    $roleassignment = New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    $roleassignment = New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 
     # Output the values we need for our C# application to successfully authenticate
 
     Write-Output "Copy these values into the C# sample app"
 
-    Write-Output "_subscriptionId:" (Get-AzureRmContext).Subscription.SubscriptionId
-    Write-Output "_tenantId:" (Get-AzureRmContext).Tenant.TenantId
+    Write-Output "_subscriptionId:" (Get-AzContext).Subscription.SubscriptionId
+    Write-Output "_tenantId:" (Get-AzContext).Tenant.TenantId
     Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
     Write-Output "_applicationSecret:" $secret
 

@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 785ccba6766b6a4f7400f3fdacf7ac24a234adf5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c3148ebe11ba0e23cbded5965234ece9fb6082aa
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192774"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317700"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Rozwiązanie na platformie Azure Key Vault Analytics w usłudze Log Analytics
 
 ![Symbol usługi Key Vault](media/azure-key-vault/key-vault-analytics-symbol.png)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent.
 
@@ -55,13 +57,13 @@ Użyj poniższych instrukcji, aby zainstalować i skonfigurować rozwiązanie Az
 8. Kliknij przycisk *Zapisz* Aby włączyć rejestrowanie diagnostyczne do usługi Log Analytics
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Włącz diagnostykę usługi Key Vault przy użyciu programu PowerShell
-Poniższy skrypt programu PowerShell zawiera przykładowy sposób użycia `Set-AzureRmDiagnosticSetting` Aby włączyć rejestrowanie diagnostyczne dla usługi Key Vault:
+Poniższy skrypt programu PowerShell zawiera przykładowy sposób użycia `Set-AzDiagnosticSetting` Aby włączyć rejestrowanie diagnostyczne dla usługi Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+$kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 
@@ -103,7 +105,7 @@ Rozwiązanie Azure Key Vault analizuje rekordy, które mają typ **KeyVaults** ,
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*AzureDiagnostics* |
+| Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |Adres IP klienta, który wysłał żądanie |
 | Kategoria | *AuditEvent* |
@@ -113,15 +115,15 @@ Rozwiązanie Azure Key Vault analizuje rekordy, które mają typ **KeyVaults** ,
 | id_s |Unikatowy identyfikator żądania |
 | identity_claim_appid_g | Identyfikator GUID dla identyfikatora aplikacji |
 | OperationName |Nazwa operacji zgodnie z opisem w [rejestrowanie usługi Azure Key Vault](../../key-vault/key-vault-logging.md) |
-| operationVersion |Wersja interfejsu API REST zażądane przez klienta (na przykład *2015-06-01*) |
+| OperationVersion |Wersja interfejsu API REST zażądane przez klienta (na przykład *2015-06-01*) |
 | requestUri_s |Identyfikator URI żądania |
 | Zasób |Nazwa magazynu kluczy |
 | ResourceGroup |Grupa zasobów magazynu kluczy |
 | ResourceId |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników usługi Key Vault jest identyfikator zasobu usługi Key Vault |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | *VAULTS* |
-| resultSignature |Stan HTTP (na przykład *OK*) |
-| Typ resultType |Wynik żądania interfejsu API REST (na przykład *Powodzenie*) |
+| ResultSignature |Stan HTTP (na przykład *OK*) |
+| ResultType |Wynik żądania interfejsu API REST (na przykład *Powodzenie*) |
 | SubscriptionId |Identyfikator subskrypcji platformy Azure w subskrypcji zawierającej usługi Key Vault |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Migracja ze starego rozwiązania Key Vault

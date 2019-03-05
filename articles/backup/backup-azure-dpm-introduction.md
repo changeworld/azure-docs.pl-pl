@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: bb13e507e7992f4cd4d767a7a18850739b8dccf2
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270202"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306905"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Przygotowanie do tworzenia kopii zapasowych obciążeń na platformę Azure za pomocą programu System Center DPM
 
@@ -48,20 +48,17 @@ Program DPM na maszynie Wirtualnej platformy Azure | System Center 2012 R2 przy 
 Program DPM na serwerze fizycznym | System Center 2012 SP1 lub nowszym; System Center 2012 R2.
 Program DPM na maszynie Wirtualnej funkcji Hyper-V | System Center 2012 SP1 lub nowszym; System Center 2012 R2.
 Program DPM na maszynie Wirtualnej VMware | System Center 2012 R2 z pakietem zbiorczym aktualizacji 5 lub nowszym.
-Składniki | Serwer programu DPM powinien mieć, programu Windows PowerShell i .net Framework 4.5 zainstalowane.
+Składniki | Serwer programu DPM powinien mieć, programu Windows PowerShell i zainstalować program .NET Framework 4.5.
 Obsługiwane aplikacje | [Dowiedz się,](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) dla jakich elementów można wykonywać kopie zapasowe w programie DPM.
 Obsługiwane typy plików | Następujące typy plików można kopii zapasowej za pomocą usługi Azure Backup: Zaszyfrowane (tylko pełne kopie zapasowe); Skompresowane (obsługą przyrostowych kopii zapasowych); Rozrzedzone (obsługą przyrostowych kopii zapasowych); Skompresowane i rozrzedzone (traktowane jako rozrzedzone).
 Nieobsługiwane typy plików | Serwery w systemach plików rozróżniana wielkość liter; twarde linki (pomijane); (pomijane); punkty ponownej analizy zaszyfrowane i skompresowane (pomijane); zaszyfrowane i rozrzedzone (pomijane); Skompresowany strumień; Przeanalizuj strumień.
-Magazyn lokalny | Każda maszyna, który chcesz utworzyć kopię zapasową musi mieć lokalne ilość wolnego miejsca, który jest co najmniej 5% rozmiaru danych, która jest tworzona kopia zapasowa.  Na przykład tworzenie kopii zapasowej 100 GB danych wymaga co najmniej 5 GB wolnego miejsca w lokalizacji pliki tymczasowe.
+Magazyn lokalny | Każda maszyna, który chcesz utworzyć kopię zapasową musi mieć lokalne ilość wolnego miejsca, który jest co najmniej 5% rozmiaru danych, która jest tworzona kopia zapasowa. Na przykład tworzenie kopii zapasowej 100 GB danych wymaga co najmniej 5 GB wolnego miejsca w lokalizacji pliki tymczasowe.
 Vault storage | Nie ma żadnego limitu ilości danych, które można wykonać kopię zapasową do magazynu usługi Azure Backup, ale rozmiar źródła danych (na przykład maszyny wirtualnej lub bazy danych) nie może przekraczać 54400 GB.
 Agent usługi Azure Backup | Jeśli program DPM jest uruchomiony w programie System Center 2012 SP1, należy zainstalować Rollup 2 lub nowszego, programu DPM z dodatkiem SP1. Jest to wymagane do instalacji agenta.<br/><br/> W tym artykule opisano, jak wdrożyć najnowszą wersję agenta usługi Azure Backup, znany także jako agenta usługi Microsoft Azure Recovery Service (MARS). Jeśli masz wcześniejszą wersję wdrożone, zaktualizuj do najnowszej wersji, aby upewnić się, że tej kopii zapasowej działa zgodnie z oczekiwaniami.
 
-
 Przed rozpoczęciem należy konto platformy Azure z włączoną funkcją kopia zapasowa Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Przeczytaj o [cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
-
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
-
 
 ## <a name="modify-storage-settings"></a>Modyfikuj ustawienia magazynu
 
@@ -82,7 +79,6 @@ Aby edytować ustawienia replikacji magazynu:
 
     ![Lista magazynów kopii zapasowych](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
-
 ## <a name="download-vault-credentials"></a>Pobieranie poświadczeń magazynu
 
 Poświadczenia magazynu są używane podczas zarejestrowania serwera DPM w magazynie.
@@ -98,7 +94,7 @@ Aby uzyskać poświadczenia możesz pobrać plik poświadczeń magazynu za pośr
 
 - Poświadczenia magazynu są używane tylko podczas przepływu pracy rejestracji.
 - Jest odpowiedzialny za upewnij się, że plik poświadczeń magazynu jest bezpieczne, a nie ze złamanymi zabezpieczeniami.
-    -  W przypadku utraty kontrolę nad poświadczeniami poświadczenia magazynu może służyć do rejestrowania innych maszyn do magazynu.
+    - W przypadku utraty kontrolę nad poświadczeniami poświadczenia magazynu może służyć do rejestrowania innych maszyn do magazynu.
     - Jednak dane kopii zapasowej są szyfrowane przy użyciu hasła należącego do klienta, dlatego istniejące dane kopii zapasowej nie zostaną ujawnione.
 - Upewnij się, że ten plik jest zapisywany w lokalizacji, do którego dostęp można uzyskać z serwera programu DPM. Jeśli jest on przechowywany w udziale plików/SMB, sprawdź, czy uprawnienia dostępu.
 - Poświadczenia magazynu wygasają po upływie 48 godzin. Możesz pobrać nowe poświadczenia magazynu dowolną liczbę razy. Jednak podczas przepływu pracy rejestracji można tylko najnowszy plik poświadczeń magazynu.
@@ -138,8 +134,7 @@ Do każdej maszyny, którego kopia zapasowa jest tworzona kopia zapasowa Azure m
 7. Agent usługi Azure Backup instaluje .NET Framework 4.5 i programu Windows PowerShell (Jeśli nie są one zainstalowane) do ukończenia instalacji.
 8. Po zainstalowaniu agenta **Zamknij** okna.
 
-   ![Zamykanie](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
-
+    ![Zamykanie](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>Rejestrowanie serwera DPM w magazynie
 
@@ -175,8 +170,7 @@ Do każdej maszyny, którego kopia zapasowa jest tworzona kopia zapasowa Azure m
     > Masz hasło szyfrowania i firmy Microsoft nie ma wglądu do niego.
     > W przypadku zgubienia lub zapomnienia; hasło Firma Microsoft nie może pomóc w odzyskaniu danych kopii zapasowej.
 
-13. Kliknij przycisk **zarejestrować** Aby zarejestrować serwer programu DPM w magazynie.  
-
+13. Kliknij przycisk **zarejestrować** Aby zarejestrować serwer programu DPM w magazynie.
 
 Po zarejestrowaniu serwera pomyślnie do magazynu i są teraz gotowe do rozpoczęcia wykonywania kopii zapasowych Microsoft Azure.
 

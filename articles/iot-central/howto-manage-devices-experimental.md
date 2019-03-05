@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 69c7da1a529e46c054d9c824c2aee71fa67bd8ff
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8fbad5350170d0e5434dfc2db3c85c04c2807726
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768645"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311478"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji (nowy interfejs użytkownika projekt)
 
@@ -66,7 +66,7 @@ Aby zbiorczo — rejestracja urządzeń w Twojej aplikacji:
     > [!NOTE]
     > Jeśli nie masz szablon urządzenia jeszcze zaimportowanie urządzeń w obszarze **Brak skojarzenia urządzenia** i zarejestruj je bez szablonu. Po zaimportowaniu urządzeń można skojarzyć je z szablonem.
 
-1. Kliknij przycisk **Importuj**.
+1. Wybierz **importu**.
 
     ![Akcja importu](./media/howto-manage-devices-experimental/BulkImport1.png)
 
@@ -92,11 +92,11 @@ Po zarejestrowaniu urządzenia przez uruchamianie importu w obszarze **Brak skoj
 
 1. Wybierz urządzenia, które chcesz skojarzyć z szablonem:
 
-1. Kliknij przycisk **skojarzyć**:
+1. Wybierz **skojarzyć**:
 
     ![Skojarz urządzenia](./media/howto-manage-devices-experimental/UnassociatedDevices2.png)
 
-1. Wybierz szablon z listy dostępnych szablonów, a następnie kliknij przycisk **skojarzyć** przycisku.
+1. Wybierz szablon z listy dostępnych szablonów, a następnie wybierz **skojarzyć**.
 
 1. Wybrane urządzenia są skojarzone z wybranym szablonie urządzenia.
 
@@ -113,7 +113,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Na lewym panelu wybierz szablon urządzenia, z którego chcesz wyeksportować urządzenia.
 
-1. Wybierz urządzenia, które chcesz wyeksportować, a następnie kliknij przycisk **wyeksportować** akcji.
+1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz pozycję **wyeksportować** akcji.
 
     ![Eksportowanie](./media/howto-manage-devices-experimental/Export1.png)
 
@@ -121,7 +121,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Po zakończeniu eksportu, komunikat o powodzeniu jest wyświetlany wraz z linkiem do pobrania wygenerowany plik.
 
-1. Kliknij pozycję **komunikat o powodzeniu** można pobrać pliku do lokalnego folderu na dysku.
+1. Wybierz **komunikat o powodzeniu** można pobrać pliku do lokalnego folderu na dysku.
 
     ![Powodzenie eksportu](./media/howto-manage-devices-experimental/Export2.png)
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: a65aabc7b56c4dd5f2d22974756f5f3e54cebb31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5552ca80059b4aa7ef96caf7984b4c15ec177d38
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867715"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316595"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general"></a>Ogólne
 
@@ -41,10 +43,10 @@ Obsługa protokołu HTTP/2 jest dostępna dla klientów łączących się tylko 
 
 Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Poniższy przykład fragmentu kodu programu Azure PowerShell pokazuje, jak możesz je włączyć:
 
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+```azurepowershell
+$gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
 $gw.EnableHttp2 = $true
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Jakie zasoby są obecnie obsługiwane w ramach puli wewnętrznej bazy danych?
@@ -70,6 +72,10 @@ Odbiorniki są przetwarzane w kolejności, w której są wyświetlane. Dlatego j
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Gdzie znaleźć adres IP bramy aplikacji i DNS
 
 Korzystając z publicznego adresu IP jako punkt końcowy, te informacje można znaleźć na zasób publicznego adresu IP lub na stronie Przegląd usługi application gateway w portalu. Dla wewnętrznych adresów IP to można znaleźć na stronie Przegląd.
+
+### <a name="what-is-keep-alive-timeout-and-tcp-idle-timeout-setting-on-application-gateway"></a>Co to jest Keep-Alive limitu czasu i ustawienie limitu czasu bezczynności protokołu TCP dla usługi Application Gateway?
+
+Keep-Alive limit czasu w ramach jednostki SKU v1 jest 120 s. Keep-Alive upłynął limit czasu dla jednostki SKU w wersji 2 jest limit czasu bezczynności protokołu TCP 75 s. 4 min domyślne we frontonie VIP bramy aplikacji.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Nazwa DNS lub adresu IP zmienia się w okresie istnienia usługi Application Gateway?
 
@@ -126,7 +132,7 @@ Sieciowe grupy zabezpieczeń (NSG) są obsługiwane w podsieci bramy aplikacji z
 
 * Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534 w usłudze Application Gateway v1 jednostki SKU i porty 65200 – 65535 dla jednostki SKU w wersji 2. Zakres portów jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będą mogli zainicjować wszelkie zmiany w tych punktach końcowych.
 
-* Nie można zablokować wychodzące połączenie z Internetem.
+* Nie można zablokować wychodzące połączenie z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupie zabezpieczeń umożliwiają już połączenie z Internetem. Firma Microsoft zaleca, nie usuwaj domyślne reguły ruchu wychodzącego i że nie utworzono inne reguły ruchu wychodzącego, które odmawiają wychodzące połączenie z Internetem.
 
 * Ruch z AzureLoadBalancer tag musi być zablokowany.
 
@@ -342,7 +348,7 @@ Istnieją trzy dzienniki usługi Application Gateway. Aby uzyskać więcej infor
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Jak sprawdzić, jeśli Moja składowych puli zaplecza są w dobrej kondycji?
 
-Można użyć polecenia cmdlet programu PowerShell `Get-AzureRmApplicationGatewayBackendHealth` lub sprawdzać kondycję, za pośrednictwem portalu, odwiedzając [diagnostyki bramy aplikacji](application-gateway-diagnostics.md)
+Można użyć polecenia cmdlet programu PowerShell `Get-AzApplicationGatewayBackendHealth` lub sprawdzać kondycję, za pośrednictwem portalu, odwiedzając [diagnostyki bramy aplikacji](application-gateway-diagnostics.md)
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Jakie są zasady przechowywania dzienników diagnostycznych?
 

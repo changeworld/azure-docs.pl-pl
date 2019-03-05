@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: cc19a2d7641b20a413bbc39efe0d1c5ede362e6d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6d4f588a98e519298b91c158b11730a23567aa7f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734459"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310968"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
 
@@ -49,7 +49,7 @@ Możesz przeprowadzić migrację istniejącej aplikacji napisanej na potrzeby za
 
 ### <a name="changes-in-triggers-and-bindings"></a>Zmiany w wyzwalaczy i powiązań
 
-W wersji 2.x, musisz zainstalować rozszerzenia dla określonych wyzwalaczy i powiązań, które korzystają z funkcji w aplikacji. Jedynym wyjątkiem to HTTP oraz czasomierzem wyzwalacze, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [rejestru i instalowanie rozszerzeń powiązania](./functions-bindings-expressions-patterns.md).
+W wersji 2.x, musisz zainstalować rozszerzenia dla określonych wyzwalaczy i powiązań, które korzystają z funkcji w aplikacji. Jedynym wyjątkiem to HTTP oraz czasomierzem wyzwalacze, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [rejestru i instalowanie rozszerzeń powiązania](./functions-bindings-register.md).
 
 Wprowadzono również drobne zmiany w `function.json` lub atrybutów funkcji między wersjami. Na przykład Centrum zdarzeń `path` właściwość jest obecnie `eventHubName`. Zobacz [istniejącej tabeli powiązania](#bindings) linki do dokumentacji dla każdego powiązania.
 

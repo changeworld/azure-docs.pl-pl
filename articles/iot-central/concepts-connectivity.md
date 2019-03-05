@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 58129099eefeec969083821b448f4b06fd7df7ee
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5f89077980cc36bb2fd08b100da4625c39302c35
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195442"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311939"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -92,7 +92,7 @@ W poniższych krokach opisano, jak połączyć urządzenia IoT Central, za pomoc
     - Weryfikowanie własności certyfikatu gwarantuje, że przekazujesz certyfikat ma klucz prywatny certyfikatu. Aby zweryfikować certyfikat:
         - Kliknij przycisk Dalej, aby **kod weryfikacyjny** do generowania kodu.
         - Utwórz certyfikat X.509 weryfikacji z kodem weryfikacyjnym, który został wygenerowany w poprzednim kroku. Zapisz certyfikat jako plik cer.
-        - Przekazywanie certyfikatu podpisanego weryfikacji i sprawdź, kliknij przycisk.
+        - Przekaż certyfikat weryfikacji podpisem, a następnie wybierz pozycję **Sprawdź**.
 
           ![Ustawienia połączenia](media/concepts-connectivity/verify-cert.png)
 
@@ -173,7 +173,7 @@ Gdy rzeczywiste urządzenie łączy się z aplikacji IoT Central, jej udostępni
 
 W poniższych krokach opisano, jak uzyskać parametry połączenia dla urządzenia:
 
-1. Kliknij przycisk **Connect** na **Device Explorer** strony w celu uzyskania szczegółów połączenia: **Identyfikator zakresu**, **identyfikator urządzenia**, i **klucza podstawowego urządzenia**:
+1. Wybierz **Connect** na **Device Explorer** strony w celu uzyskania szczegółów połączenia: **Identyfikator zakresu**, **identyfikator urządzenia**, i **klucza podstawowego urządzenia**:
 
     ![Szczegóły połączenia](media/concepts-connectivity/device-connect.png)
 

@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: bbf04104d70ecb6ea8d83c6167b5b9b0dfe2c2dc
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 38a5434d4b6f27aacdf1861fa0b005501ad1e28b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217448"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308894"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -160,7 +160,7 @@ Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage
 
     4. Scalono plik zostanie otwarty w programie SSMS, gdzie możesz można wyświetlać i analizować je, a także go wyeksportować w pliku XEL lub CSV lub tabeli.
 
-- Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Aby uzyskać więcej informacji i uzyskać dostęp do pobrania szablonu, zobacz [Analizuj dane z dziennika inspekcji w usłudze Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+- Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Aby uzyskać więcej informacji i uzyskać dostęp do pobrania szablonu, zobacz [Analizuj dane z dziennika inspekcji w usłudze Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 - Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
   - Po pobraniu pliku dziennika, który jest lokalnie, kliknij dwukrotnie plik, Otwórz, wyświetlać i analizować dzienniki w programie SSMS.
   - Można również pobrać wielu plików jednocześnie, za pomocą Eksploratora usługi Azure Storage. Aby to zrobić, kliknij prawym przyciskiem myszy określony podfolder, a następnie wybierz **Zapisz jako** można zapisać w folderze lokalnym.
@@ -170,8 +170,8 @@ Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage
   - Po pobraniu kilka plików lub podfolder, który zawiera pliki dziennika, może scalić je lokalnie zgodnie z opisem w instrukcje plików inspekcji scalania SSMS opisanych powyżej.
   - Inspekcja obiektów blob widoku programowo dzienników:
 
-    - Użyj [czytnika zdarzeń rozszerzonych](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) bibliotekę języka C#.
-    - [Rozszerzone zdarzenia pliki zapytań](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) przy użyciu programu PowerShell.
+    - Użyj [czytnika zdarzeń rozszerzonych](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) bibliotekę języka C#.
+    - [Rozszerzone zdarzenia pliki zapytań](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) przy użyciu programu PowerShell.
 
 ## <a id="subheading-5"></a>Rozwiązania w środowisku produkcyjnym
 

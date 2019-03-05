@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 670bdd43a4a581f349ca84c17ead67975fa0232e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 27d25c0b7007489dbb3db3b44497268ad33e9b37
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110170"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309846"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -37,13 +37,16 @@ Wykonaj kroki opisane w tym artykule i Dowiedz się, jak skonfigurować Always E
 * Utwórz aplikację, która wstawia, wybiera i wyświetla dane z zaszyfrowanych kolumn.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 W tym samouczku będą potrzebne:
 
 * Konto i subskrypcja platformy Azure. Jeśli nie masz, należy zasubskrybować [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) wersji 13.0.700.242 lub nowszej.
 * [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) lub nowszej (na komputerze klienckim).
 * Program [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* [Program Azure PowerShell](/powershell/azure/overview), wersji 1.0 lub nowszej. Typ **(Get-Module azure - ListAvailable). Wersja** jakiej wersji programu PowerShell są uruchomione.
+* Zainstalowanie programu [Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Umożliwić aplikacji klienckiej dostęp do usługi SQL Database
 Należy włączyć aplikacji klienckiej dostęp do usługi SQL Database, konfigurowanie aplikacji usługi Azure Active Directory (AAD) i kopiowanie *identyfikator aplikacji* i *klucz* , konieczne będzie uwierzytelniania aplikacji.
@@ -65,15 +68,15 @@ Można szybko utworzyć magazyn kluczy, uruchamiając następujący skrypt. Aby 
     $vaultName = 'AeKeyVault'
 
 
-    Connect-AzureRmAccount
-    $subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).Id
-    Set-AzureRmContext -SubscriptionId $subscriptionId
+    Connect-AzAccount
+    $subscriptionId = (Get-AzSubscription -SubscriptionName $subscriptionName).Id
+    Set-AzContext -SubscriptionId $subscriptionId
 
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
-    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
+    Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 ```
 
 
@@ -247,7 +250,7 @@ Niniejszy przykład pokazuje, jak:
 * Wstawianie danych zaszyfrowanych kolumn.
 * Zaznacz rekord, filtrując dla określonej wartości w zaszyfrowanej kolumny.
 
-Zastąp zawartość **Program.cs** następującym kodem. Zastąp parametry połączenia dla zmiennej globalnej connectionString w wierszu, który bezpośrednio poprzedza metody Main, za pomocą usługi prawidłowe parametry połączenia w witrynie Azure portal. Jest to jedyna zmiana, które należy wprowadzić ten kod.
+Zastąp zawartość pliku **Program.cs** poniższym kodem. Zastąp parametry połączenia dla zmiennej globalnej connectionString w wierszu, który bezpośrednio poprzedza metody Main, za pomocą usługi prawidłowe parametry połączenia w witrynie Azure portal. Jest to jedyna zmiana, które należy wprowadzić ten kod.
 
 Uruchom aplikację, aby zobaczyć są zawsze szyfrowane w działaniu.
 ```CS

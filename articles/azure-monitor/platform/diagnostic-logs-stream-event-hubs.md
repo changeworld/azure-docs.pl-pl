@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 1ef779e64995c6996538b68b892cb45f11788067
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477468"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314082"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
 **[Dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure interfejsu wiersza polecenia.
@@ -83,10 +83,12 @@ Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla teg
 
 ### <a name="via-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
 
-Przesyłania strumieniowego za pośrednictwem [poleceń cmdlet programu PowerShell Azure](../../azure-monitor/platform/powershell-quickstart-samples.md), możesz użyć `Set-AzureRmDiagnosticSetting` polecenia cmdlet z następującymi parametrami:
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Przesyłania strumieniowego za pośrednictwem [poleceń cmdlet programu PowerShell Azure](../../azure-monitor/platform/powershell-quickstart-samples.md), możesz użyć `Set-AzDiagnosticSetting` polecenia cmdlet z następującymi parametrami:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
 Identyfikator reguły autoryzacji Centrum zdarzeń jest ciągiem o następującym formacie: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, na przykład `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Nie można obecnie wybierz nazwę Centrum określonego zdarzenia przy użyciu programu PowerShell.

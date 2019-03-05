@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 1c145f100e22dbb268a7cd491eb8a43b51988c69
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313037"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315813"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
 
 
@@ -168,7 +171,7 @@ Ruch do usługi Log Analytics używa obwód usługi ExpressRoute publicznej komu
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>PYTANIE: Czy istnieje prosty i łatwy sposób można przenieść istniejący obszar roboczy usługi Log Analytics do innej subskrypcji Azure/obszaru roboczego usługi Log Analytics?
 
-A. `Move-AzureRmResource` Polecenie cmdlet pozwala na przechodzenie obszar roboczy usługi Log Analytics i konto usługi Automation z jedną subskrypcją platformy Azure do innego. Aby uzyskać więcej informacji, zobacz [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
+A. `Move-AzResource` Polecenie cmdlet pozwala na przechodzenie obszar roboczy usługi Log Analytics i konto usługi Automation z jedną subskrypcją platformy Azure do innego. Aby uzyskać więcej informacji, zobacz [AzResource przenoszenia](https://msdn.microsoft.com/library/mt652516.aspx).
 
 Ta zmiana może również w witrynie Azure portal.
 
@@ -196,7 +199,7 @@ W obszarze **Azure Log Analytics (OMS)**, Usuń wszystkie obszary robocze na li�
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>PYT.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
 
-Odp.: Aby przenieść obszar roboczy do innej subskrypcji lub grupy zasobów, należy najpierw odłączyć konto usługi Automation, w obszarze roboczym. Odłączanie konta usługi Automation wymaga usunięcia tych rozwiązań, jeśli są zainstalowane w obszarze roboczym: Zarządzanie aktualizacjami, śledzenie zmian lub uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu są usuwane. Po usunięciu tych rozwiązań odłączanie konta usługi Automation, wybierając **połączone obszary robocze** w okienku po lewej stronie w usłudze Automation konta zasobu, a następnie kliknij przycisk **odłączanie obszaru roboczego** na Wstążce.
+Odp.: Aby przenieść obszar roboczy do innej subskrypcji lub grupy zasobów, należy najpierw odłączyć konto usługi Automation, w obszarze roboczym. Odłączenie konta usługi Automation wymaga usunięcia tych rozwiązań, jeśli są zainstalowane w obszarze roboczym: Zarządzanie aktualizacjami, śledzenie zmian lub uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu są usuwane. Po usunięciu tych rozwiązań odłączanie konta usługi Automation, wybierając **połączone obszary robocze** w okienku po lewej stronie w usłudze Automation konta zasobu, a następnie kliknij przycisk **odłączanie obszaru roboczego** na Wstążce.
  > Usunięte rozwiązania konieczność ponownego zainstalowania w obszarze roboczym, a łącze automatyzacji do obszaru roboczego musi być przekształcone po przeniesieniu.
 
 Upewnij się, że masz uprawnienia w obu subskrypcjach platformy Azure.

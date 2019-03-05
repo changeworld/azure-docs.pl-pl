@@ -10,22 +10,25 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 70a59ddc1b15693cb2a50c1dc2da6dd9233e0811
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990021"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314844"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
+
 Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
 
 ## <a name="why-upgrade"></a>Dlaczego warto wykonać uaktualnienie?
+
 Możesz teraz rozpocząć płynnie do warstwy SQL dane magazynu obliczenia zoptymalizowane pod kątem Gen2 w witrynie Azure portal, aby uzyskać [obsługiwane regiony](gen2-migration-schedule.md#automated-schedule-and-region-availability-table). Jeśli swój region nie obsługuje uaktualniania samodzielnie, można uaktualnić do obsługiwany region lub poczekaj, aż własnym uaktualnienie ma być dostępny w Twoim regionie. Uaktualnij teraz, aby móc korzystać z najnowszej generacji sprzętowych platformy Azure i architektury magazynu rozszerzonego, tym szybciej, skalowalności i nieograniczony magazyn kolumnowy. 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>Dotyczy
+
 To uaktualnienie dotyczy magazyny danych warstwy obliczenia zoptymalizowane pod kątem Gen1 w [obsługiwane regiony](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -49,10 +52,15 @@ To uaktualnienie dotyczy magazyny danych warstwy obliczenia zoptymalizowane pod 
    |           DW2000            |           DW2000c           |
    |           DW3000            |           DW3000c           |
    |           DW6000            |           DW6000c           |
->[!Note]
->Poziomy wydajności sugerowane nie są to bezpośrednia konwersji. Na przykład zalecamy przejście od wartości DW600 DW500c.
+
+> [!Note]
+> Poziomy wydajności sugerowane nie są to bezpośrednia konwersji. Na przykład zalecamy przejście od wartości DW600 DW500c.
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Po uaktualnieniu w obsługiwanym regionie przy użyciu witryny Azure portal
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
 > Migracja z Gen1 Gen2 za pośrednictwem witryny Azure portal jest trwały. Nie jest to proces, wracając do Gen1.  
@@ -73,13 +81,13 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
    Oryginalne polecenie Gen1 programu PowerShell:
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
    ```
 
    Zmodyfikowane w celu:
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
    ```
 
    > [!NOTE] 
@@ -100,8 +108,6 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
    > [!NOTE] 
    > SERVICE_OBJECTIVE = "DW300" jest zmieniana na SERVICE_OBJECTIVE = "DW300**c**"
 
-
-
 ## <a name="start-the-upgrade"></a>Uruchom operację uaktualniania
 
 1. Przejdź do obliczenia zoptymalizowane pod kątem Gen1 warstwy magazynu danych w witrynie Azure portal. Jeśli w magazynie danych warstwy obliczeń Gen1 zoptymalizowane pod kątem uaktualnienia jest wstrzymana, [hurtowni danych wznowić](pause-and-resume-compute-portal.md). 
@@ -110,7 +116,6 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
     > [!NOTE]
     > Jeśli nie widzisz **uaktualnienie do Gen2** karty, na karcie zadania, do typu Twojej subskrypcji jest ograniczona w bieżącym regionie.
     > [Wyślij bilet pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) można pobrać listy dozwolonych Twojej subskrypcji.
-
 
 3. Upewnij się, że obciążenie zostało zakończone przed uaktualnieniem uruchomiona i w stanie spoczynku. Kilka minut, zanim magazyn danych jest online jako magazyn danych warstwy obliczenia zoptymalizowane pod kątem Gen2 będzie środowisko przestojów. **Wybierz opcję uaktualnienia**:
 
@@ -173,6 +178,7 @@ FROM   sys.indexes idx
                        AND idx.object_id = part.object_id 
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE'; 
 ```
+
 ## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Uaktualnienie z regionu geograficznego platformy Azure przy użyciu funkcji przywracania w witrynie Azure portal
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Utwórz punkt przywracania zdefiniowanych przez użytkownika przy użyciu witryny Azure portal
@@ -190,6 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![Nazwa punktu przywracania](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Przywracanie aktywnych lub wstrzymania bazy danych przy użyciu witryny Azure portal
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do magazynu danych SQL, który chcesz przywrócić z.
 3. W górnej sekcji Przegląd, wybierz **przywrócić**.
@@ -205,11 +212,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![Punkty przywracania zdefiniowanych przez użytkownika](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
 ## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Przywróć z regionu geograficznego platformy Azure przy użyciu programu PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Aby odzyskać bazę danych, należy użyć [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) polecenia cmdlet.
 
 > [!NOTE]
 > Można przeprowadzić przywracania geograficznego, aby Gen2! Aby to zrobić, należy określić ServiceObjectiveName Gen2 (np. DW1000**c**) jako parametr opcjonalny.
->
 
 1. Otwórz program Windows PowerShell.
 2. Nawiąż połączenie z kontem platformy Azure i wyświetlanie listy wszystkich subskrypcji skojarzonych z Twoim kontem.
@@ -235,7 +244,6 @@ $GeoRestoredDatabase.status
 
 > [!NOTE]
 > Aby skonfigurować bazę danych, po ukończeniu przywracania, zobacz [konfiguracji bazy danych po odzyskaniu](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
->
 
 Odzyskanej bazy danych będzie włączona funkcja TDE źródłowa baza danych jest włączona funkcja TDE.
 
@@ -243,4 +251,5 @@ Odzyskanej bazy danych będzie włączona funkcja TDE źródłowa baza danych je
 Jeśli napotkasz jakiekolwiek problemy z magazynem danych, Utwórz [żądania pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i odwoływać się do "Gen2 uaktualnienia" jako możliwa przyczyna.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Magazyn danych uaktualnionego jest w trybie online. Aby móc korzystać z rozszerzonych architektury, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md).

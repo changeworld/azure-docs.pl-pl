@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 13da9e0d731e87b6cdd5830c9295847511c301ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2e7c06d7dd673ff2a638b94996667607a079e707
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567302"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307840"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Jak dodać usługi Azure Monitor dla kontenerów  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń, które są wdrażane do środowisk Kubernetes i w serwisie [usługi Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
 Usługa Azure Monitor dla kontenerów można włączyć dla nowych lub obsługiwane przez jedną lub więcej istniejących wdrożeń usługi AKS przy użyciu następujących metod:
@@ -31,8 +34,8 @@ Usługa Azure Monitor dla kontenerów można włączyć dla nowych lub obsługiw
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
-- Obszar roboczy usługi Log Analytics. Włącz monitorowanie dla nowego klastra AKS lub pozwolić proces dołączania, Utwórz domyślny obszar roboczy w domyślnej grupie zasobów subskrypcji klastra AKS możesz go utworzyć. Jeśli chcesz utworzyć samodzielnie, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)za pośrednictwem [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
-- Jesteś członkiem roli Współautor usługi Log Analytics, aby włączyć monitorowanie kontenerów. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../azure-monitor/platform/manage-access.md).
+- **Obszar roboczy usługi Log Analytics.** Włącz monitorowanie dla nowego klastra AKS lub pozwolić proces dołączania, Utwórz domyślny obszar roboczy w domyślnej grupie zasobów subskrypcji klastra AKS możesz go utworzyć. Jeśli chcesz utworzyć samodzielnie, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)za pośrednictwem [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+- Jesteś **członkiem roli Współautor usługi Log Analytics** umożliwiające monitorowanie kontenerów. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../azure-monitor/platform/manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -76,7 +79,7 @@ Po włączeniu monitorowania i wszystkie zadania konfiguracji zostaną ukończon
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>Włącz monitorowanie dla istniejących zarządzane klastry
-Aby umożliwić monitorowanie klastra usługi AKS, który jest już wdrożony za pomocą wiersza polecenia platformy Azure z poziomu portalu lub za pomocą podanego szablonu Azure Resource Manager za pomocą polecenia cmdlet programu PowerShell `New-AzureRmResourceGroupDeployment`. 
+Aby umożliwić monitorowanie klastra usługi AKS, który jest już wdrożony za pomocą wiersza polecenia platformy Azure z poziomu portalu lub za pomocą podanego szablonu Azure Resource Manager za pomocą polecenia cmdlet programu PowerShell `New-AzResourceGroupDeployment`. 
 
 ### <a name="enable-monitoring-using-azure-cli"></a>Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure
 Następny krok umożliwia monitorowanie klastra usługi AKS przy użyciu wiersza polecenia platformy Azure. W tym przykładzie nie należy utworzyć na lub określić istniejący obszar roboczy. To polecenie upraszcza ten proces dla Ciebie przez utworzenie domyślnego obszaru roboczego w domyślnej grupie zasobów subskrypcji klastra AKS, jeśli jeden nie istnieje w tym regionie.  Domyślny obszar roboczy utworzony podobny format *DefaultWorkspace -\<GUID >-\<Region >*.  
@@ -117,7 +120,7 @@ provisioningState       : Succeeded
 
 2. Dodaj [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) zgodnie z krokami w dokumentacji programu Terraform.
 
-### <a name="enable-monitoring-from-azure-monitor"></a>Aby włączyć monitorowanie z usługi Azure Monitor
+### <a name="enable-monitoring-from-azure-monitor-in-the-portal"></a>Aby włączyć monitorowanie z usługi Azure Monitor w portalu 
 Aby włączyć monitorowanie klastra usługi AKS w witrynie Azure portal z usługi Azure Monitor, wykonaj następujące czynności:
 
 1. W witrynie Azure portal wybierz **Monitor**. 
@@ -297,7 +300,7 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
     * Użyj następujących poleceń programu PowerShell w folderze, który zawiera szablon:
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ClusterResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
+        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
         ```
         Zmiana konfiguracji może potrwać kilka minut. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 

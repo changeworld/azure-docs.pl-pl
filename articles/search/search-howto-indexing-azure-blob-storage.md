@@ -1,7 +1,7 @@
 ---
 title: Indeksowanie zawartości magazynu obiektów Blob platformy Azure w celu wyszukiwania pełnotekstowego — usługa Azure Search
 description: Dowiedz się, jak indeksu usługi Azure Blob Storage i wyodrębnianie tekstu z dokumentów za pomocą usługi Azure Search.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 56afc933eff2e06df270b17403b767ebaddd4154
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 87dc1dab0670f69ff8c418be476986baec2821fb
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873002"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310883"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w usłudze Azure Blob Storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumentów programu Microsoft Office i kilka innych typowych formatów) przechowywanych w usłudze Azure Blob storage. Po pierwsze wyjaśnia podstawowe informacje dotyczące instalowania i konfigurowania indeksatora obiektów blob. Następnie oferuje bardziej zaawansowanej eksploracji zachowań, scenariuszy może wystąpić.
@@ -68,7 +68,7 @@ Aby uzyskać więcej informacji na temat interfejsu API tworzenia źródła dany
 
 Można podać poświadczenia dla kontenera obiektów blob w jednym z następujących sposobów:
 
-- **Parametry połączenia konta magazynu pełny dostęp**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Parametry połączenia można uzyskać w witrynie Azure portal, przechodząc do bloku konto magazynu > Ustawienia > klucze (dla kont magazynu Classic) lub Ustawienia > klucze (dla kont magazynu usługi Azure Resource Manager) dostępu.
+- **Parametry połączenia konta magazynu pełny dostęp**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Parametry połączenia można uzyskać w witrynie Azure portal, przechodząc do bloku konto magazynu > Ustawienia > klucze (dla kont magazynu Classic) lub Ustawienia > klucze (dla kont magazynu usługi Azure Resource Manager) dostępu.
 - **Sygnatura dostępu współdzielonego konta magazynu** parametry połączenia (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Sygnatury dostępu Współdzielonego powinny mieć listy i uprawnienia do odczytu z kontenerów i obiektów (obiekty BLOB w tym przypadku).
 -  **Sygnatury dostępu współdzielonego kontenera**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Sygnatury dostępu Współdzielonego powinny mieć listy i uprawnienia do odczytu w kontenerze.
 

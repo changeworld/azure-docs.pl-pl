@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 73c3c57df215a66d914f5ea75475f74eff05a1f0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 22e9954e66c05bfb2e425a01ffa6f9e3b93b761e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200296"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313722"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako dostawca CSP tworzenie i zarządzanie aplikację Central IoT platformy Azure w imieniu klienta 
 
@@ -25,7 +25,7 @@ Aby rozpocząć, zaloguj się na swoje konto w portalu dla partnerów firmy Micr
 
 ![Program Microsoft Partner Center, widoku klienta](media/howto-create-application-asCSP/image1.png)
 
-Usługa Azure IoT Central jest wyświetlany jako usługa dostępne do administrowania. Kliknij link usługi Azure IoT Central, na stronie, aby tworzyć nowe aplikacje i Zarządzaj istniejących aplikacji dla danego klienta.
+Usługa Azure IoT Central jest wyświetlany jako usługa dostępne do administrowania. Wybierz link usługi Azure IoT Central, na stronie, aby tworzyć nowe aplikacje i Zarządzaj istniejących aplikacji dla danego klienta.
 
 ![Usługa Azure IoT Central dostępne na potrzeby zarządzania](media/howto-create-application-asCSP/image2.png)
 
@@ -33,7 +33,7 @@ Zostanie wyświetlony na stronie usługi Azure IoT Central aplikacji Manager. Az
 
 ![Tworzenie menedżera dla dostawców CSP](media/howto-create-application-asCSP/image3.png)
 
-Aby utworzyć aplikację usługi Azure IoT Central, kliknij przycisk **nową aplikację** kafelka. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz wypełnić wszystkie pola na tej stronie, a następnie wybierz **Utwórz**. Możesz znaleźć więcej informacji na temat każdego z poniższych pól.
+Aby utworzyć aplikację usługi Azure IoT Central, wybierz pozycję **nową aplikację** kafelka. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz wypełnić wszystkie pola na tej stronie, a następnie wybierz **Utwórz**. Możesz znaleźć więcej informacji na temat każdego z poniższych pól.
 
 ![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-application-asCSP/image4.png)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d89e5d6fd21fdc37bffcc730fb20bae30ecc4f7c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453260"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315031"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tworzenie bramy aplikacji z zaporą aplikacji sieci web przy użyciu witryny Azure portal
 
@@ -30,6 +30,8 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Tworzenie konta magazynu i konfigurowanie diagnostyki
 
 ![Przykład zapory aplikacji internetowych](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -103,7 +105,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -114,7 +116,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
       -Location EastUS
     ```
 
-3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki, które właśnie ukończono. Wprowadź wartość *myVM2* dla jej nazwy i dla parametru VMName polecenia Set-AzureRmVMExtension.
+3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki, które właśnie ukończono. Wprowadź *myVM2* dla nazwy i VMName w AzVMExtension zestawu.
 
 ### <a name="add-backend-servers"></a>Dodawanie serwerów zaplecza
 
@@ -130,7 +132,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-W tym samouczku brama aplikacji używa konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Dzienniki usługi Azure Monitor lub Centrum zdarzeń można również użyć do rejestrowania danych.
+W tym samouczku brama aplikacji używa konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Do rejestrowania danych można też użyć dzienników usługi Azure Monitor lub usługi Event Hub.
 
 1. Kliknij przycisk **New** w lewym górnym rogu witryny Azure portal.
 2. Wybierz pozycję **Magazyn**, a następnie wybierz pozycję **Konto magazynu — obiekt blob, plik, tabela, kolejka**.

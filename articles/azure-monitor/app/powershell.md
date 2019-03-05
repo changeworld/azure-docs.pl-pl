@@ -12,14 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 74da56b5e90512f8b903d5a62f7dde4e903560b8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ea4bc61dec59308b2c2311e8300e44aae78fc041
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817868"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313518"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 W tym artykule pokazano, jak zautomatyzować tworzenie i aktualizowanie [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) zasoby automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md), skonfiguruj [alerty](../../azure-monitor/app/alerts.md)ustaw [ceny schemat](pricing.md)i tworzenie innych zasobów platformy Azure .
 
 Kluczem do tworzenia tych zasobów jest szablonów JSON dla [usługi Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Mówiąc, jest procedurą: pobieranie definicji JSON istniejących zasobów. parametryzacja określone wartości, takich jak nazwy; a następnie uruchom szablon zawsze wtedy, gdy chcesz utworzyć nowy zasób. Można spakować ze sobą kilka zasobów, do ich utworzenia w jednym go — na przykład monitorowanie aplikacji za pomocą testy dostępności, alerty i magazynu na potrzeby eksportu ciągłego. Istnieją pewne precyzyjnie do niektórych parameterizations, które wyjaśnimy, w tym miejscu.
@@ -154,12 +157,12 @@ Utwórz nowy plik JSON — nazwiemy to `template1.json` w tym przykładzie. Skop
 ## <a name="create-application-insights-resources"></a>Tworzenie zasobów usługi Application Insights
 1. W programie PowerShell Zaloguj się do platformy Azure:
    
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 2. Uruchom polecenie następująco:
    
     ```PS
    
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
 
@@ -175,8 +178,8 @@ Możesz dodać inne parametry - ich opisy znajdują się w sekcji Parametry szab
 Po utworzeniu zasobu aplikacji, musisz wykonać klucz Instrumentacji: 
 
 ```PS
-    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
+    $details = Get-AzResource -ResourceId $resource.ResourceId
     $ikey = $details.Properties.InstrumentationKey
 ```
 
@@ -189,7 +192,7 @@ Możesz ustawić [plan cenowy](pricing.md).
 Aby utworzyć zasób aplikacji usługi z planu cen w przedsiębiorstwie, przy użyciu powyższego szablonu:
 
 ```PS
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -priceCode 2 `
                -appName myNewApp

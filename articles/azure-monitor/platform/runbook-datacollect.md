@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 75ed69d749e23f39c03afb09f70a18cc1aed600b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5de5191ee616f38404e2423c23f4e8b363240b0e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078579"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308333"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md). Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł. W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST. Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.
 
 Ten samouczek przedstawia proces tworzenia i Planowanie elementu runbook w usłudze Azure Automation w celu zapisania danych do usługi Log Analytics.
@@ -62,8 +65,8 @@ Galeria programu PowerShell zapewnia jednak możliwość szybkiego wdrażania mo
 
 | Właściwość | Wartość Identyfikatora obszaru roboczego | Wartość klucza obszaru roboczego |
 |:--|:--|:--|
-| Name (Nazwa) | Identyfikator obszaru roboczego | Klucz WorkspaceKey |
-| Typ | Ciąg | Ciąg |
+| Name (Nazwa) | WorkspaceId | WorkspaceKey |
+| Type | String | String |
 | Wartość | Wklej identyfikator obszaru roboczego z obszaru roboczego usługi Log Analytics. | Wklej się przy użyciu podstawowy lub pomocniczy klucz obszaru roboczego usługi Log Analytics. |
 | Zaszyfrowane | Nie | Yes |
 
@@ -92,7 +95,7 @@ Usługa Azure Automation obejmuje redaktorem w portalu, w którym można edytowa
     # Code copied from the runbook AzureAutomationTutorial.
     $connectionName = "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -109,7 +112,7 @@ Usługa Azure Automation obejmuje redaktorem w portalu, w którym można edytowa
     $logType = "AutomationJob"
     
     # Get the jobs from the past hour.
-    $jobs = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
+    $jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
     
     if ($jobs -ne $null) {
         # Convert the job data to json

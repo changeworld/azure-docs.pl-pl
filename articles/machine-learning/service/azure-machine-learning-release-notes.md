@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: aeda7377a2d5d070a2e36126d53f8f5c203a8256
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d72676d7eaad539fc6e023bc96ccbb16f0958a7a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991397"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311376"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -47,7 +47,6 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 
 + **Nowe funkcje**
     + Nowe przeciągania i upuszczania tabeli środowisko edytora raportów. Użytkownikom można przeciągnąć kolumnę z obszaru do obszaru tabeli, w której będzie można wyświetlić podglądu tabeli. Można zmieniać kolejności kolumn.
-    + Nowy przycisk Uruchom przesłane z ScriptRunConfig uruchomień. Użytkownicy mogą ponownie uruchamiać istniejące uruchamiania w klastrze zdalnym wybranych przez nich.
     + Nowy Podgląd plików dzienników
     + Linki do eksperymentów przebiegów, obliczeniowych, modele, obrazy i wdrożeń, na karcie działania
 

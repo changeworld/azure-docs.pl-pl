@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bddfccaf0749bbb5eaf206e5961c713efa5eea17
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732162"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311903"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy z "środowisko uruchomieniowe usługi functions jest nieosiągalny"
 
@@ -66,7 +66,7 @@ W poprzednim kroku Jeśli nie masz parametry połączenia konta magazynu były p
 ### <a name="guidance"></a>Wskazówki
 
 * Nie sprawdzaj "ustawienie miejsca" dowolne z tych ustawień. Gdy zamiana miejsc wdrożenia funkcji spowoduje awarię.
-* Nie należy ustawiać tych ustawień, korzystając z używanie wdrożeń zautomatyzowanych.
+* Nie należy modyfikować tych ustawień w ramach wdrożeń zautomatyzowanych.
 * Te ustawienia musi być podana i prawidłowy w czasie jego tworzenia. Automatycznego wdrażania, który nie zawiera tych ustawień spowoduje współzależności funkcjonalnych aplikacji, nawet jeśli ustawienia są dodawane po fakcie.
 
 ## <a name="storage-account-credentials-invalid"></a>Nieprawidłowe poświadczenia konta magazynu

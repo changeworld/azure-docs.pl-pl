@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
 ms.author: carlrab
-ms.reviewer: sashan,moslake
+ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 011aa97d44a92feced7328b2bd014395d2c5b765
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 00b20b3f144a2e98fb028e3db7c50af61330d721
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246702"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316459"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -74,7 +74,7 @@ Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zar
 - Zwiększenie usługi warstwy lub obliczenia rozmiaru bazy danych lub elastycznej puli. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
 - Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="transaction-log-rate-governance"></a>Zarządzanie współczynnik dziennika transakcji 
+## <a name="transaction-log-rate-governance"></a>Zarządzanie współczynnik dziennika transakcji 
 Nadzoru współczynnik dziennik transakcji jest procesu w usłudze Azure SQL Database, używana do ograniczania szybkości pozyskiwania wysokiej dla obciążeń, takich jak zbiorczo wstawić, SELECT INTO, i tworzy indeks. Te limity są śledzone i wymuszane na poziomie sekundy, aby szybkość generowania rekordów dziennika, ograniczanie przepływności, niezależnie od tego, ile z systemem IOs mogą być wydawane względem danych plików.  Stawki Generowanie dziennika transakcji obecnie skalowane liniowo do momentu, która jest zależna od sprzętu, w dzienniku maksymalną szybkość dozwolone, jest 48 MB/s z zakupem modelu rdzeni wirtualnych. 
 
 > [!NOTE]

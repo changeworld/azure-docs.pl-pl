@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97508c05ea26df1aaae7f41738835380767c81d2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200500"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312719"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -235,6 +235,7 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 |--------|---------------------|
 | Australia Wschodnia | Stan Nowa Południowa Walia |
 | Australia Południowo-Wschodnia | Stan Wiktoria |
+| Brazylia Południowa | Sao Paolo stanu |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
@@ -242,6 +243,8 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Azja Wschodnia | SRA Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
+| Japonia Wschodnia | Tokyo, Saitama |
+| Japonia Zachodnia | Osaka |
 | Środkowo-północne stany USA | Illinois |
 | Europa Północna | Irlandia |
 | Środkowo-południowe stany USA | Teksas |

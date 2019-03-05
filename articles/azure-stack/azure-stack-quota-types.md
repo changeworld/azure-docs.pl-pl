@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4499424ef25e7d2ba32b691cce6d5d3d1face0d0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877949"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308469"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -44,7 +44,7 @@ ms.locfileid: "56877949"
 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
-| Maksymalna pojemność (GB) |2048 |Pojemność pamięci masowej, które mogą być używane przez subskrypcji w tej lokalizacji. |
+| Maksymalna pojemność (GB) |2048 |Pojemność pamięci masowej (w tym obiektów blob i wszystkie migawki assiociated, tabele i kolejki), które mogą być używane przez subskrypcji w tej lokalizacji. |
 | Łączna liczba kont magazynu |20 |Maksymalna liczba kont magazynu, które można utworzyć subskrypcji, w tej lokalizacji. |
 
 > [!NOTE]  

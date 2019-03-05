@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: f6bf672905fe7752a6c3d07492861f43af43e1f5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893973"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315133"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do magazynu danych usługi Azure Monitor na maszynie wirtualnej Windows (wersja klasyczna)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Usługi Azure Monitor [rozszerzenie diagnostyki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (nazywane "WAD" lub "Diagnostyki") umożliwia zbieranie metryk i dzienników z systemu operacyjnego gościa (systemu operacyjnego gościa) uruchomiona w ramach maszyny wirtualnej, usługa w chmurze lub usługi Service Fabric klaster. Rozszerzenie może wysyłać telemetrię do [wielu różnych lokalizacjach.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +33,7 @@ Proces, który jest opisany w tym artykule działa tylko w klasycznych maszyn wi
 
 - Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
+- Musisz mieć [programu Azure PowerShell](/powershell/azure) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Tworzenie klasycznej maszyny wirtualnej i konta magazynu
 
@@ -145,7 +147,7 @@ Nadaj tej aplikacji "Monitorowanie metryk Publisher" uprawnień do zasobów, kt�
 1. Uruchom program PowerShell i zaloguj się.
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
 1. Rozpocznij od kontekstu dla klasycznej maszyny Wirtualnej.
@@ -157,7 +159,7 @@ Nadaj tej aplikacji "Monitorowanie metryk Publisher" uprawnień do zasobów, kt�
 1. Ustaw kontekst konta klasycznego magazynu, które zostało utworzone z maszyną Wirtualną.
 
     ```powershell
-    $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
+    $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
 1.  Ustaw ścieżkę do pliku diagnostyki do zmiennej za pomocą następującego polecenia:

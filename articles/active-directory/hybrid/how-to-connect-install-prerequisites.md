@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9925f2ed9f5b24a4113c30f1d00eb3a5bbed8eb5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d21fe7c70c09ad41faf628db45d82b995c8f2515
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205345"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311444"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -117,7 +117,7 @@ Aby uzyskać więcej informacji, jeśli masz problemy z łącznością, zobacz [
 * Opcjonalnie: Testowe konto użytkownika weryfikowanie synchronizacji.
 
 ## <a name="component-prerequisites"></a>Wymagania wstępne dotyczące składników
-### <a name="powershell-and-net-framework"></a>Program PowerShell i .net Framework
+### <a name="powershell-and-net-framework"></a>Program PowerShell i .NET Framework
 Program Azure AD Connect, zależy od Microsoft PowerShell i .NET Framework 4.5.1. Należy tej wersji lub nowszej na serwerze jest zainstalowany. W zależności od wersji systemu Windows Server wykonaj następujące czynności:
 
 * Windows Server 2012R2
@@ -133,16 +133,16 @@ Przed wersją 1.1.614.0 program Azure AD Connect domyślnie używa protokołu TL
 
 1. Nie można włączyć protokołu TLS 1.2, przed systemu Windows Server 2008 R2 lub nowszym. Upewnij się, że masz po zainstalowaniu systemu operacyjnego poprawki platformę .net 4.5.1, zobacz [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). Może mieć tej poprawki lub jego nowsza wersja już zainstalowana na serwerze.
 2. Jeśli używasz systemu Windows Server 2008 R2, upewnij się, że jest włączony protokół TLS 1.2. W systemu Windows Server 2012 i nowszych wersjach już powinien być włączony protokół TLS 1.2.
-   ```
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-   ```
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    ```
 3. Dla wszystkich systemów operacyjnych ustaw następujący klucz rejestru, a następnie uruchom ponownie serwer.
-   ```
-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
-   "SchUseStrongCrypto"=dword:00000001
-   ```
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
+    "SchUseStrongCrypto"=dword:00000001
+    ```
 4. Jeśli użytkownik chce również Włącz szyfrowanie TLS 1.2 między serwerem aparat synchronizacji, a na zdalnym serwerze SQL, a następnie upewnij się, że masz wymagane wersje zainstalowane dla [Obsługa protokołu TLS 1.2 dla programu Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Wymagania wstępne dotyczące Federacji instalacja i Konfiguracja

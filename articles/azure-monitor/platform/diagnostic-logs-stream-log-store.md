@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 8f4b39141a9509990525769833e2cd193419752c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469376"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309319"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream dzienniki diagnostyczne platformy Azure do usługi Log Analytics
 
@@ -65,10 +65,13 @@ Obszar roboczy usługi Log Analytics nie musi znajdować się w tej samej subskr
 Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla tego zasobu, i jak tylko nowe dane zdarzenia są generowane dzienniki diagnostyczne są przesyłane strumieniowo do tego obszaru roboczego. Należy pamiętać, że może być maksymalnie 15 minut między podczas zdarzenia są emitowane i, gdy pojawia się w usłudze Log Analytics.
 
 ### <a name="via-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
-Przesyłania strumieniowego za pośrednictwem [poleceń cmdlet programu PowerShell Azure](../../azure-monitor/platform/powershell-quickstart-samples.md), możesz użyć `Set-AzureRmDiagnosticSetting` polecenia cmdlet z następującymi parametrami:
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Przesyłania strumieniowego za pośrednictwem [poleceń cmdlet programu PowerShell Azure](../../azure-monitor/platform/powershell-quickstart-samples.md), możesz użyć `Set-AzDiagnosticSetting` polecenia cmdlet z następującymi parametrami:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
 ```
 
 Należy pamiętać, że właściwość workspaceID przyjmuje identyfikator zasobu pełnej platformy Azure nie obszaru roboczego klucz/Identyfikatora wyświetlane w portalu usługi Log Analytics w obszarze roboczym.

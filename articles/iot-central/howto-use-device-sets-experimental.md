@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: b3bd157f06c922d96f71627f885fe6de2537987a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 935c9bbbb3e3d66eeef7258299677b44a32f7a13
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215297"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311041"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Za pomocą zestawów urządzeń w aplikacji usługi Azure IoT Central
 
@@ -27,7 +27,7 @@ Aby utworzyć zestaw urządzeń:
 
 1. Wybierz **zestawy urządzeń** w menu nawigacji po lewej stronie.
 
-1. Kliknij pozycję **+ Nowy**.
+1. Wybierz **+ nowe**.
 
     ![Nowy zestaw urządzeń](media/howto-use-device-sets-experimental/image1.png)
 
@@ -52,7 +52,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
 1. Wybierz kartę **Pulpit nawigacyjny**.
 
-1. Kliknij pozycję **Edytuj**.
+1. Wybierz pozycję **Edit** (Edytuj).
 
     ![Tryb projektowania na](media/howto-use-device-sets-experimental/image3.png)
 
@@ -61,7 +61,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 1. Dodaj Kafelek łącza:
     1. Wybierz **łącze** w okienku po prawej stronie.
     1. Nadaj link **tytuł**.
-    1. Wybierz adres URL, który ma zostać otwarty po kliknięciu linku.
+    1. Wybierz adres URL do otwarcia po wybraniu linku.
     1. Nadaj link opis, który pokazuje poniżej **tytuł**.
     1. Wybierz pozycję **Zapisz**.
 
@@ -83,7 +83,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
         > [!NOTE]
         > Można dodać wiele obrazów, łączy i siatki.
   
-    1. Kliknij przycisk **Gotowe**.
+    1. Wybierz pozycję **Done** (Gotowe).
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurowanie Mapa lokalizacji w urządzeniu ustawia pulpitu nawigacyjnego
 
@@ -97,7 +97,7 @@ Aby dodać mapę lokalizacji na urządzeniu ustawia pulpit nawigacyjny, musi mie
 4. Teraz gdy operator widoki urządzenie ustawia pulpitu nawigacyjnego, operator zobaczyć wszystkie Kafelki, które zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia w skrócie!
 
 > [!NOTE]
-> Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.
+> Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Wybieranie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz wybrać okno podręczne, aby przejść do strony właściwości urządzenia.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfiguruj listę zestawu urządzeń
 

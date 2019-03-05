@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7006d7ed56c58858e4b7c053af3ba1101455928c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214066"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312514"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
@@ -40,6 +40,8 @@ W tym scenariuszu wykonują następujące czynności:
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Do skonfigurowania end-to-end SSL z usługą application gateway, certyfikat jest wymagany dla bramy i certyfikaty są wymagane do serwerów zaplecza. Certyfikat bramy jest używany do uzyskania klucza symetrycznego zgodnie z specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany szyfruje i odszyfrowuje ruch wysyłany do bramy. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu.
 
 End-to-end szyfrowania SSL wewnętrznej musi być na liście dozwolonych usługi application gateway. Przekazywanie certyfikatu publicznego serwera zaplecza do usługi application gateway. Dodawanie certyfikatu gwarantuje, że bramy application gateway komunikuje się tylko ze znanych wystąpień zaplecza. W ten sposób dalszej komunikacji end-to-end.
@@ -54,21 +56,21 @@ Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bram�
    1. Zaloguj się do swojego konta platformy Azure.
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 
    2. Wybierz subskrypcję do użycia dla tego scenariusza.
 
    ```powershell
-   Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
+   Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
 
 
    3. Utwórz grupę zasobów. (Pomiń ten krok, jeśli używasz istniejącej grupy zasobów).
 
    ```powershell
-   New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
+   New-AzResourceGroup -Name appgw-rg -Location "West US"
    ```
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Tworzenie sieci wirtualnej i podsieci dla bramy aplikacji
@@ -79,7 +81,7 @@ Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jes
    1. Przypisz zakres adresów podsieci, która ma być używany dla usługi application gateway.
 
    ```powershell
-   $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
+   $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
    ```
 
    > [!NOTE]
@@ -90,21 +92,21 @@ Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jes
    2. Przypisz zakres adresów ma być używany dla puli adresów zaplecza.
 
    ```powershell
-   $nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
+   $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
    3. Utwórz sieć wirtualną z podsieciami, zdefiniowane w poprzednich krokach.
 
    ```powershell
-   $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+   $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
    4. Pobierz zasób sieci wirtualnej i podsieci zasobów do użycia w kolejnych krokach.
 
    ```powershell
-   $vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
-   $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
-   $nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
+   $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
+   $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
+   $nicSubnet = Get-AzVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
    ```
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Tworzenie publicznego adresu IP dla konfiguracji frontonu
@@ -112,7 +114,7 @@ Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jes
 Utwórz zasób publicznego adresu IP ma być używany dla usługi application gateway. Ten publiczny adres IP jest używany w jednej z opisanych poniżej.
 
 ```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
+$publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
 ```
 
 > [!IMPORTANT]
@@ -125,20 +127,20 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 1. Utwórz konfigurację adresu IP bramy aplikacji. To ustawienie określa korzystającego z podsieci bramy aplikacji. Uruchomiona usługa application gateway go wybierze adres IP ze skonfigurowanej podsieci i kieruje ruch sieciowy do adresów IP w puli adresów IP zaplecza. Pamiętaj, że każde wystąpienie będzie mieć jeden adres IP.
 
    ```powershell
-   $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
+   $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
 
 2. Utwórz konfigurację adresów IP frontonu. To ustawienie mapuje prywatny lub publiczny adres IP frontonu bramy aplikacji. Następny krok kojarzy publiczny adres IP w poprzednim kroku z konfiguracją adresów IP frontonu.
 
    ```powershell
-   $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
+   $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
 3. Skonfiguruj pulę adresów IP zaplecza za pomocą adresów IP serwerów sieci web zaplecza. Będą to adresy IP odbierające ruch sieciowy pochodzący z punktu końcowego adresu IP frontonu. Zastąp adresy IP w próbce własne punktami końcowymi adresów IP aplikacji.
 
    ```powershell
-   $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
+   $pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
    ```
 
    > [!NOTE]
@@ -148,14 +150,14 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 4. Skonfiguruj port adresu IP frontonu dla punktu końcowego publicznego adresu IP. Ten port jest numer portu, którego użytkownicy końcowi nawiązywać połączenie.
 
    ```powershell
-   $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
+   $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
 5. Konfigurowanie certyfikatu dla usługi application gateway. Ten certyfikat jest używany do odszyfrowania i ponownie zaszyfrować ruch w bramie aplikacji.
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $passwd 
+   $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $passwd 
    ```
 
    > [!NOTE]
@@ -164,7 +166,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 6. Utwórz odbiornik HTTP bramy application Gateway. Przypisywanie konfiguracji adresów IP frontonu, portu i certyfikat protokołu SSL do użycia.
 
    ```powershell
-   $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
+   $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
 7. Przekaż certyfikat do użycia zasobów w puli zaplecza z włączonym protokołem SSL.
@@ -175,7 +177,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    > Jeśli używasz nagłówki hosta i oznaczaniem nazwy serwera (SNI) na zapleczu pobrane klucz publiczny nie może być planowanej lokacji, do których widok przepływów ruchu sieciowego. Jeśli jesteś w stanie wątpliwości, odwiedź stronę https://127.0.0.1/ na serwerach zaplecza, aby upewnić się, który certyfikat jest używany dla *domyślne* powiązania SSL. W tej sekcji, należy użyć klucza publicznego z tym żądaniem. Jeśli używasz nagłówki hosta i SNI na powiązania HTTPS i nie otrzymasz odpowiedzi i certyfikat od żądanie ręcznej przeglądarki https://127.0.0.1/ na serwerach zaplecza, należy skonfigurować domyślne powiązanie SSL na nich. Jeśli nie zrobisz, sondy i zapleczu nie jest umieszczona na białej liście.
 
    ```powershell
-   $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
    ```
 
    > [!NOTE]
@@ -184,31 +186,31 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    Jeśli używasz bramy Application Gateway jednostkę SKU v2 następnie utworzyć z zaufanym certyfikatem głównym zamiast certyfikatu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [omówienie kompleksowej usługi SSL z usługą Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 
    ```powershell
-   $trustedRootCert01 = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
+   $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
    ```
 
 8. Skonfiguruj ustawienia HTTP zaplecza bramy aplikacji. Przypisać certyfikat przekazany w poprzednim kroku w ustawieniach protokołu HTTP.
 
    ```powershell
-   $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
+   $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
 
    W ramach jednostki SKU bramy Application Gateway w wersji 2 użyj następującego polecenia:
 
    ```powershell
-   $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+   $poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
    ```
 
 9. Utwórz regułę routingu modułu równoważenia obciążenia, która służy do konfigurowania zachowania modułu równoważenia obciążenia. W tym przykładzie tworzona jest podstawową regułę działania okrężnego.
 
    ```powershell
-   $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+   $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
 10. Skonfiguruj rozmiar wystąpienia bramy aplikacji. Dostępne rozmiary to **standardowa\_małych**, **standardowa\_średni**, i **standardowa\_duże**.  W przypadku pojemności dostępne wartości to **1** za pośrednictwem **10**.
 
     ```powershell
-    $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+    $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
     ```
 
     > [!NOTE]
@@ -225,7 +227,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    Poniższy przykład ustawia wersję protokołu minimalne **TLS 1_2** i umożliwia **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** tylko.
 
    ```powershell
-   $SSLPolicy = New-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+   $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
    ```
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
@@ -233,7 +235,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 Korzystając z powyższych kroków, Tworzenie bramy aplikacji. Tworzenie bramy to proces, który zajmuje dużo czasu do uruchomienia.
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Ograniczenie wersji protokołu SSL w istniejącej bramie aplikacji
@@ -243,20 +245,20 @@ Poprzednie kroki trwało Cię przez proces tworzenia aplikacji przy użyciu prot
    1. Pobierz bramy aplikacji w celu zaktualizowania.
 
    ```powershell
-   $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
    2. Definiowanie zasad protokołu SSL. W poniższym przykładzie **TLSv1.0** i **TLSv1.1** są wyłączone i mechanizmów szyfrowania **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** są jedynymi te dozwolone.
 
    ```powershell
-   Set-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
+   Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
    3. Na koniec zaktualizuj bramę. Ten ostatni krok to długotrwałe zadanie. Gdy wszystko będzie gotowe, end-to-end skonfigurowano protokół SSL na bramie aplikacji.
 
    ```powershell
-   $gw | Set-AzureRmApplicationGateway
+   $gw | Set-AzApplicationGateway
    ```
 
 ## <a name="get-an-application-gateway-dns-name"></a>Pobieranie nazwy DNS bramy aplikacji
@@ -266,7 +268,7 @@ Po utworzeniu bramy następnym krokiem jest skonfigurowanie frontonu na potrzeby
 Aby skonfigurować alias, Pobierz szczegóły bramy aplikacji i skojarzone nazwy DNS adresu IP za pomocą **publicznego adresu IP** elementu dołączonego do bramy aplikacji. Użyj nazwy DNS bramy aplikacji, aby utworzyć rekord CNAME wskazujący dwóch internetowych do tej nazwy DNS. Firma Microsoft nie zaleca się korzystanie z rekordów, ponieważ adres VIP można zmienić na ponowne uruchomienie usługi application gateway.
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
+Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
 ```
 
 ```

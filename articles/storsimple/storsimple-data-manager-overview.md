@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: fe4d332859b3ec0ba03e64f9a830b7710586aa17
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158821"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312495"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Omówienie rozwiązania StorSimple Data Manager
 
@@ -64,11 +64,13 @@ Ten zestaw jest większy, ponieważ wdrażania zasobów w żadnej z powyższych 
 
 ## <a name="choosing-a-region"></a>Wybierając region
 
-Zaleca się, że:
+Zalecenia:
  - Źródłowego konta magazynu (jedna skojarzony z urządzeniem StorSimple) i docelowe konto magazynu (gdzie mają dane w formacie natywnym) mieścić się w tym samym regionie platformy Azure.
  - Przenieś definicję Menedżera danych i zadań w regionie, który będzie zawierać konto magazynu StorSimple. Jeśli nie jest to możliwe, Przenieś Konfigurowanie Menedżera danych w najbliższym regionie platformy Azure, a następnie utworzyć definicję zadania w tym samym regionie co konto magazynu usługi StorSimple. 
 
-    Jeśli konto magazynu StorSimple nie jest w 26 regionach, które obsługują tworzenie definicji zadania, firma Microsoft zaleca, nie zostanie uruchomione usługi StorSimple Data Manager jak widać, długie opóźnienia i opłaty za ruch wychodzący potencjalnie dużego.
+    Konta magazynu StorSimple nie jest w 26 regionach, które obsługują tworzenie definicji zadania, zaleca się że nie zostanie uruchomione usługi StorSimple Data Manager jak widać, długie opóźnienia i potencjalne opłaty za ruch wychodzący.
+    
+Firma Microsoft dokłada starań upewnić się, że usługi platformy Azure są zawsze dostępne we wszystkich regionach. Jednak usługi nieplanowanych awarii może być krótkie okresy w danym regionie. W takich przypadkach można przywołać definicji Menedżera danych i zadań w regionie, który nie ma wpływu awarii i uruchomić zadanie przekształcania. Mogą wystąpić pewne dodatkowe opóźnienie w takiej sytuacji, ale może to być strategii odzyskiwania w rzadkich regionalnej awarii.
 
 ## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 

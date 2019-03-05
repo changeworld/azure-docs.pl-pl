@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4ca5803ca410e3250e025eb60b5c1ff9fc7216b1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55a7a26815dac1140d100c05a47057f8d5000f9d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465245"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317819"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom devops) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
 
 ## <a name="built-in-monitoring-roles"></a>Wbudowane role monitorowania
@@ -49,8 +52,8 @@ Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie 
 Osoby przypisane do roli Współautor monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji i utworzyć lub zmodyfikować ustawienia monitorowania, ale nie można modyfikować żadnych innych zasobów. Ta rola jest podzbiorem roli Czytelnik monitorowania i jest przeznaczona dla członków zespołu monitorowania lub dostawcy usług zarządzanych, które oprócz powyższego, uprawnienia muszą być również możliwość organizacji:
 
 * Publikuj monitorowania pulpitów nawigacyjnych jako udostępniony pulpit nawigacyjny.
-* Ustaw [ustawień diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) dla resource.*
-* Ustaw [profil dziennika](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) dla subscription.*
+* Ustaw [ustawień diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.\*
+* Ustaw [profil dziennika](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) dla subskrypcji.\*
 * Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Utwórz testy sieci web usługi Application Insights i składników.
 * Obszar roboczy usługi Log Analytics listy udostępnionych kluczy.
@@ -58,7 +61,7 @@ Osoby przypisane do roli Współautor monitorowania można wyświetlić wszystki
 * Tworzenie i usuwanie i wykonywanie zapisanego wyszukiwania analizy dzienników.
 * Tworzenie i usuwanie konfiguracji magazynu analizy dzienników.
 
-* użytkownik musi również oddzielnie udzielane uprawnienie ListKeys nad zasobem docelowym (magazynu konta lub zdarzenia przestrzeń nazw Centrum) można ustawić profil dziennika lub ustawienie diagnostyczne.
+\*użytkownik musi również oddzielnie udzielane uprawnienia ListKeys zasobu docelowego (magazynu konta lub zdarzenia przestrzeń nazw Centrum) można ustawić profil dziennika lub ustawienie diagnostyczne.
 
 > [!NOTE]
 > Ta rola nie daje dostęp do odczytu danych dziennika, które są przesyłane strumieniowo do Centrum zdarzeń lub przechowywane na koncie magazynu. [Zobacz poniżej](#security-considerations-for-monitoring-data) informacji na temat konfigurowania dostępu do tych zasobów.
@@ -98,7 +101,7 @@ Jeśli powyższe wbudowanych ról nie dokładne potrzeb Twojego zespołu, możes
 Na przykład przy użyciu powyższej tabeli, można utworzyć niestandardową rolę RBAC dla "działania czytnik dziennika" następująco:
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Activity Log Reader"
 $role.Description = "Can view activity logs."
@@ -106,7 +109,7 @@ $role.Actions.Clear()
 $role.Actions.Add("Microsoft.Insights/eventtypes/*")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 ## <a name="security-considerations-for-monitoring-data"></a>Zagadnienia dotyczące zabezpieczeń na potrzeby danych monitorowania
@@ -127,8 +130,8 @@ Wszystkie trzy typy danych mogą być przechowywane na koncie magazynu lub przes
 Gdy użytkownik lub aplikacja potrzebuje dostępu do danych na koncie magazynu monitorowania, należy [Generowanie sygnatury dostępu Współdzielonego konta](https://msdn.microsoft.com/library/azure/mt584140.aspx) na koncie magazynu, który zawiera dane monitorowania z poziomu usługi dostęp tylko do odczytu do magazynu obiektów blob. W programie PowerShell może to wyglądać jak:
 
 ```powershell
-$context = New-AzureStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
-$token = New-AzureStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
+$context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
+$token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
 Można następnie przekazać ten token do jednostki, musi odczytać z magazynu konta i jego można wyświetlić listę i odczytywanie wszystkich obiektów blob w ramach tego konta magazynu.
@@ -136,7 +139,7 @@ Można następnie przekazać ten token do jednostki, musi odczytać z magazynu k
 Alternatywnie Jeśli wymagane jest sterowanie to uprawnienie z RBAC, można przyznać tej jednostki uprawnienie Microsoft.Storage/storageAccounts/listkeys/action na tym koncie magazynu określonym. Jest to niezbędne dla użytkowników, którzy muszą mieć możliwość ustawienia diagnostyczne lub dziennika profilu zarchiwizować na koncie magazynu. Na przykład można utworzyć następujące niestandardową rolę RBAC dla użytkownika lub aplikacji, która musi tylko do odczytu z jednego konta magazynu:
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Monitoring Storage Account Reader"
 $role.Description = "Can get the storage account keys for a monitoring storage account."
@@ -145,7 +148,7 @@ $role.Actions.Add("Microsoft.Storage/storageAccounts/listkeys/action")
 $role.Actions.Add("Microsoft.Storage/storageAccounts/Read")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myMonitoringStorageAccount")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 > [!WARNING]
@@ -160,7 +163,7 @@ Podobny wzorzec można wykonać za pomocą usługi event hubs, ale najpierw nale
 2. Jeśli użytkownik musi można pobrać klucza usługi ad-hoc, Przyznaj użytkownikowi akcję klucze listy dla tego Centrum zdarzeń. To jest również dla użytkowników, którzy muszą mieć możliwość ustawienia diagnostyczne lub profil dziennika do strumienia usługi event hubs. Na przykład można utworzyć regułę RBAC:
    
    ```powershell
-   $role = Get-AzureRmRoleDefinition "Reader"
+   $role = Get-AzRoleDefinition "Reader"
    $role.Id = $null
    $role.Name = "Monitoring Event Hub Listener"
    $role.Description = "Can get the key to listen to an event hub streaming monitoring data."
@@ -169,7 +172,7 @@ Podobny wzorzec można wykonać za pomocą usługi event hubs, ale najpierw nale
    $role.Actions.Add("Microsoft.ServiceBus/namespaces/Read")
    $role.AssignableScopes.Clear()
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
-   New-AzureRmRoleDefinition -Role $role 
+   New-AzRoleDefinition -Role $role 
    ```
 
 ## <a name="monitoring-within-a-secured-virtual-network"></a>Monitorowanie w zabezpieczonej sieci wirtualnej

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 657b726dc3724637a3099e95d4974840fbb0cc8c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414748"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316340"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -31,8 +31,8 @@ Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo (omów
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
 
 - W przypadku przekazywania pliku wideo na podstawie adresu URL (opcja preferowana) punkt końcowy musi być zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszej wersji)
-- Rozmiar przekazywanych za pomocą opcji adres URL jest ograniczona do 25GB
-- Rozmiar przekazywanych z opcją tablicy bajtów jest ograniczona do 2GB
+- Rozmiar przekazywanych za pomocą opcji adres URL jest ograniczona do 30 GB
+- Rozmiar przekazywanych z opcją tablicy bajtów jest ograniczona do 2 GB
 - Opcja tablicy bajtów upłynie limit czasu po 30 min
 - Adres URL podany w parametrze `videoURL` musi być zakodowany
 

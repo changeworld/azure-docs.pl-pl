@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 34e4371902095c5802bf4fc180e09ce189c110fc
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214014"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316060"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -73,7 +73,7 @@ Dziennik diagnostyczny generuje skróty zapytania zapytań, które miała wpływ
 
 Jeśli osiągnięto limitów dostępnych sesji można zoptymalizować swoje aplikacje dzięki zmniejszeniu liczby logowań wprowadzonych w bazie danych. Jeśli nie możesz zmniejszyć liczbę logowania z poziomu aplikacji w bazie danych, należy rozważyć zwiększenie warstwy cenowej bazy danych. Lub możesz podzielić i przenieść bazę danych do wielu baz danych w celu zrównoważonego dystrybucji obciążenia.
 
-Aby uzyskać więcej wskazówek na temat stosowania ograniczeń sesji, zobacz [radzenia sobie z limitów maksymalnej logowania do bazy danych SQL](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+Aby uzyskać więcej wskazówek na temat stosowania ograniczeń sesji, zobacz [radzenia sobie z limitów maksymalnej logowania do bazy danych SQL](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 
 ## <a name="workload-increase"></a>Wzrost obciążenia
 
@@ -109,7 +109,7 @@ Można zoptymalizować i usuwać zapytań dotyczących urzędników o największ
 
 Możesz także zmniejszyć obciążenie, optymalizacja lub ich dystrybucję za pośrednictwem wielu baz danych. Lub można rozdzielić obciążenia między wieloma bazami danych. Jeśli te rozwiązania nie są możliwe, należy rozważyć zwiększenie warstwy cenowej subskrypcji bazy danych SQL, aby zwiększyć ilość zasobów pamięci, dostępne w bazie danych.
 
-Aby uzyskać dodatkowe porady dotyczące rozwiązywania problemów, zobacz [pamięci przydziela skalnym: Tajemniczymi konsumenta pamięci programu SQL Server z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Aby uzyskać dodatkowe porady dotyczące rozwiązywania problemów, zobacz [pamięci przydziela skalnym: Tajemniczymi konsumenta pamięci programu SQL Server z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Blokowanie
 
@@ -259,7 +259,7 @@ Wzorzec ten wykrywalny wydajność łączy trzy różne przypadki regresji plan:
 
 Nowy warunek regresji plan odnosi się do stanu, w którym uruchamia nowy plan wykonania zapytania, które nie są wydajne niż stary plan wykonywania bazy danych SQL. Stary plan regresji warunek odnosi się do stanu kiedy bazy danych SQL przełącza z przy użyciu nowego, bardziej wydajne plan stary plan, który nie jest tak wydajna, jak nowy plan. Istniejące regresji obciążenia zmienić plany odnosi się do stanu, w którym stare i nowe plany stale alternatywnych, z saldem bardziej przechodząc w kierunku plan wykonywania niska.
 
-Aby uzyskać więcej informacji na temat planu regresji, zobacz [co to jest plan regresji w programie SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/). 
+Aby uzyskać więcej informacji na temat planu regresji, zobacz [co to jest plan regresji w programie SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -267,7 +267,7 @@ Dziennik diagnostyczny generuje skróty zapytania, identyfikator dobrego planu, 
 
 Możesz analizować, który plan jest lepsze wykonywanie dla określonego zapytania, które można zidentyfikować za pomocą wartości zapytania. Po ustaleniu, jakiego planu sprawdzi się najlepiej w zapytaniach, możesz ją ręcznie wymusić. 
 
-Aby uzyskać więcej informacji, zobacz [Dowiedz się, jak program SQL Server zapobiega regresji plan](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+Aby uzyskać więcej informacji, zobacz [Dowiedz się, jak program SQL Server zapobiega regresji plan](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
 > Czy wiesz, wbudowana funkcja analizy SQL Database automatycznie zarządzać sprzedające plany wykonywania zapytań dla bazy danych?

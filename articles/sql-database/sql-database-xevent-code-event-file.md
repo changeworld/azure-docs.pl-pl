@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 035d2731a78ad6216f56255fb87e32444366ea97
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 61b3c01683318ff1c686ad9e96a420f8ae5e245e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563495"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306667"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL
 
@@ -37,6 +37,8 @@ W tym temacie przedstawiono przykładowy kod dwufazowe:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * Konto i subskrypcja platformy Azure. Po zarejestrowaniu się możesz skorzystać z [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 * Wszystkie bazy danych, które można utworzyć tabeli w.
   
@@ -48,7 +50,7 @@ W tym temacie przedstawiono przykładowy kod dwufazowe:
   * [Bezpośredni link do pobierania.](https://go.microsoft.com/fwlink/?linkid=616025)
 * Konieczne jest posiadanie [modułów programu Azure PowerShell](https://go.microsoft.com/?linkid=9811175) zainstalowane.
   
-  * Moduły udostępniają polecenia, takie jak - **New-AzureStorageAccount**.
+  * Moduły udostępniają polecenia, takie jak - **New AzStorageAccount**.
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Faza 1: Kod programu PowerShell dla kontenera usługi Azure Storage
 
@@ -78,8 +80,8 @@ cls;
 #--------------- 1 -----------------------
 
 'Script assumes you have already logged your PowerShell session into Azure.
-But if not, run  Connect-AzureRmAccount (or  Connect-AzureRmAccount), just one time.';
-#Connect-AzureRmAccount;   # Same as  Connect-AzureRmAccount.
+But if not, run  Connect-AzAccount (or  Connect-AzAccount), just one time.';
+#Connect-AzAccount;   # Same as  Connect-AzAccount.
 
 #-------------- 2 ------------------------
 
@@ -112,7 +114,7 @@ $policySasPermission = 'rwl';  # Leave this value alone, as 'rwl'.
 
 'Choose an existing subscription for the current PowerShell environment.';
 
-Select-AzureRmSubscription -Subscription $subscriptionName;
+Select-AzSubscription -Subscription $subscriptionName;
 
 #-------------- 4 ------------------------
 
@@ -122,7 +124,7 @@ before continuing this new run.';
 
 If ($storageAccountName)
 {
-    Remove-AzureRmStorageAccount `
+    Remove-AzStorageAccount `
         -Name              $storageAccountName `
         -ResourceGroupName $resourceGroupName;
 }
@@ -136,7 +138,7 @@ Create a storage account.
 This might take several minutes, will beep when ready.
   ...PLEASE WAIT...';
 
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
     -Name              $storageAccountName `
     -Location          $storageAccountLocation `
     -ResourceGroupName $resourceGroupName `
@@ -150,7 +152,7 @@ Get the access key for your storage account.
 ';
 
 $accessKey_ForStorageAccount = `
-    (Get-AzureRmStorageAccountKey `
+    (Get-AzStorageAccountKey `
         -Name              $storageAccountName `
         -ResourceGroupName $resourceGroupName
         ).Value[0];
@@ -168,21 +170,21 @@ Remainder of PowerShell .ps1 script continues.
 'Create a context object from the storage account and its primary access key.
 ';
 
-$context = New-AzureStorageContext `
+$context = New-AzStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey  $accessKey_ForStorageAccount;
 
 'Create a container within the storage account.
 ';
 
-$containerObjectInStorageAccount = New-AzureStorageContainer `
+$containerObjectInStorageAccount = New-AzStorageContainer `
     -Name    $containerName `
     -Context $context;
 
 'Create a security policy to be applied to the SAS token.
 ';
 
-New-AzureStorageContainerStoredAccessPolicy `
+New-AzStorageContainerStoredAccessPolicy `
     -Container  $containerName `
     -Context    $context `
     -Policy     $policySasToken `
@@ -195,7 +197,7 @@ Generate a SAS token for the container.
 ';
 Try
 {
-    $sasTokenWithPolicy = New-AzureStorageContainerSASToken `
+    $sasTokenWithPolicy = New-AzStorageContainerSASToken `
         -Name    $containerName `
         -Context $context `
         -Policy  $policySasToken;
@@ -219,7 +221,7 @@ REMINDER: sasTokenWithPolicy here might start with "?" character, which you must
 ';
 
 '
-(Later, return here to delete your Azure Storage account. See the preceding  Remove-AzureRmStorageAccount -Name $storageAccountName)';
+(Later, return here to delete your Azure Storage account. See the preceding  Remove-AzStorageAccount -Name $storageAccountName)';
 
 '
 Now shift to the Transact-SQL portion of the two-part code sample!';
@@ -442,7 +444,7 @@ GO
 DROP TABLE gmTabEmployee;
 GO
 
-PRINT 'Use PowerShell Remove-AzureStorageAccount to delete your Azure Storage account!';
+PRINT 'Use PowerShell Remove-AzStorageAccount to delete your Azure Storage account!';
 GO
 ```
 

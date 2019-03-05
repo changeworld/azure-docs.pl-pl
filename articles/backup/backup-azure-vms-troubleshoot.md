@@ -6,14 +6,14 @@ author: srinathv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/7/2018
+ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: 057057b155c6c48dabd0b97b3f6a57f3ee4c7cc1
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 8e49abb224cf37c875b0c071ea7c461879c08fc9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888954"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312770"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Backup, podając informacje przedstawione w poniższej tabeli:
@@ -58,7 +58,7 @@ Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Ba
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
-| Przywracanie nie powiodło się z powodu błędu wewnętrznego chmury. |<ol><li>Usługą w chmurze, do którego próbujesz przywrócić skonfigurowano ustawienia DNS. Możesz sprawdzić: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Jeśli **adres** jest skonfigurowany, a następnie ustawienia DNS są skonfigurowane.<br> <li>Skonfigurowano usługę chmurową, do którego próbujesz przywrócić **zastrzeżonego adresu IP**, i istniejących maszyn wirtualnych w usłudze w chmurze znajdują się w stanie zatrzymania. Możesz sprawdzić, czy usługa w chmurze zarezerwował adresu IP za pomocą następujących poleceń cmdlet programu PowerShell: **$deployment = Get-AzureDeployment - ServiceName "servicename"-miejsca $ "Produkcja" w programie dep. Nazwa zastrzeżonego adresu IP**. <br><li>Próbujesz przywrócić maszynę wirtualną za pomocą następujących specjalnymi konfiguracjami sieci w tej samej usłudze w chmurze: <ul><li>Maszyny wirtualne w ramach konfiguracji usługi równoważenia obciążenia, wewnętrznych i zewnętrznych.<li>Maszyny wirtualne za pomocą wielu zastrzeżonych adresów IP. <li>Maszyny wirtualne z wieloma kartami sieciowymi. </ul><li>Wybierz nową usługę w chmurze w interfejsie użytkownika lub zobacz [przywrócić zagadnienia](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations) dla maszyn wirtualnych ze specjalnymi konfiguracjami sieci.</ol> |
+| Przywracanie nie powiodło się z powodu błędu wewnętrznego chmury. |<ol><li>Usługą w chmurze, do którego próbujesz przywrócić skonfigurowano ustawienia DNS. Możesz sprawdzić: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Jeśli **adres** jest skonfigurowany, a następnie ustawienia DNS są skonfigurowane.<br> <li>Skonfigurowano usługę chmurową, do którego próbujesz przywrócić **zastrzeżonego adresu IP**, i istniejących maszyn wirtualnych w usłudze w chmurze znajdują się w stanie zatrzymania. Możesz sprawdzić, czy usługa w chmurze zarezerwował adresu IP za pomocą następujących poleceń cmdlet programu PowerShell: **$deployment = Get-AzureDeployment - ServiceName "servicename"-miejsca $ "Produkcja" w programie dep. Nazwa zastrzeżonego adresu IP**. <br><li>Próbujesz przywrócić maszynę wirtualną za pomocą następujących specjalnymi konfiguracjami sieci w tej samej usłudze w chmurze: <ul><li>Maszyny wirtualne w ramach konfiguracji usługi równoważenia obciążenia, wewnętrznych i zewnętrznych.<li>Maszyny wirtualne za pomocą wielu zastrzeżonych adresów IP. <li>Maszyny wirtualne z wieloma kartami sieciowymi. </ul><li>Wybierz nową usługę w chmurze w interfejsie użytkownika lub zobacz [przywrócić zagadnienia](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) dla maszyn wirtualnych ze specjalnymi konfiguracjami sieci.</ol> |
 | Wybrana nazwa DNS jest już zajęta: <br>Określ inną nazwę DNS i spróbuj ponownie. |Tę nazwę DNS, który odwołuje się do nazwa usługi w chmurze, kończąc się zwykle **. cloudapp.net**. Ta nazwa musi być unikatowa. Jeśli ten błąd, należy wybrać inną nazwę maszyny Wirtualnej podczas przywracania. <br><br> Ten błąd jest wyświetlany tylko dla użytkowników w witrynie Azure Portal. Operacja przywracania za pomocą programu PowerShell zakończy się pomyślnie, ponieważ przywraca tylko dyski i nie tworzy maszynę Wirtualną. Ten błąd będzie się sterowaną maszyny Wirtualnej jest jawnie utworzone przez użytkownika, po operacji przywracania dysku. |
 | Określona konfiguracja sieci wirtualnej nie jest prawidłowy: <br>Określ inną konfigurację sieci wirtualnej i spróbuj ponownie. |Brak |
 | Określona usługa w chmurze używa zastrzeżonego adresu IP, który nie odpowiada konfiguracji przywracanej maszyny wirtualnej: <br>Określ inną usługę w chmurze, która nie używa zastrzeżonego adresu IP. Lub wybierz inny punkt odzyskiwania, aby przywrócić z. |Brak |

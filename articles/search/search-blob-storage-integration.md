@@ -4,17 +4,17 @@ description: Zawartość tekstowa przeszukiwanie magazynu obiektów Blob platfor
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dcecb98d5e254e3fadd114c227e783a60fc6fa4e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310882"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316153"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Przeszukiwanie magazynu obiektów blob za pomocą usługi Azure Search
 
@@ -38,7 +38,7 @@ Typowy scenariusz, który ułatwia przeglądanie obiektów blob, typu zawartośc
 ## <a name="image-search"></a>Wyszukiwanie obrazów
 Wyszukiwanie pełnotekstowe, nawigacji aspektowej i sortowania możliwości usługi Azure Search można teraz stosować do metadanych obrazów przechowywanych w obiektach blob.
 
-Jeśli te obrazy są wstępnie przetwarzane przy użyciu [interfejs API przetwarzania obrazów](https://www.microsoft.com/cognitive-services/computer-vision-api) od firmy Microsoft Cognitive Services, możliwe jest indeksowanie zawartości wizualnej znajdującej każdego obrazu, w tym optyczne rozpoznawanie znaków i pisma ręcznego. Pracujemy nad dodaniem optyczne rozpoznawanie znaków i inne możliwości przetwarzania obrazu bezpośrednio do usługi Azure Search, jeśli interesują Cię te możliwości, Prześlij żądanie na naszych [UserVoice](https://aka.ms/azsuv) lub [Wyślij wiadomość e-mail adres](mailto:azscustquestions@microsoft.com).
+Usługa cognitive Search obejmuje umiejętności przetwarzania obrazu, takie jak [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikacji [funkcje programu visual](cognitive-search-skill-image-analysis.md) który umożliwiają programowi do indeksowania zawartości wizualnej, znajdującej się w każdym obraz.
 
 ## <a name="index-and-search-through-json-blobs"></a>Indeksowania i wyszukiwania za pomocą obiektów blob JSON
 Usługa Azure Search można skonfigurować do wyodrębnienia ze strukturą zawartości znajdującej się w obiektach blob, które zawierają JSON. Usługa Azure Search może odczytywać obiektów blob JSON i przeanalizować zawartość ze strukturą w odpowiednich polach dokumentu usługi Azure Search. Usługa Azure Search możesz skorzystać z obiektów blob, które zawiera tablicę obiektów JSON i mapowanie każdy element na osobny dokument usługi Azure Search.

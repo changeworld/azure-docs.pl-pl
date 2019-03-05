@@ -10,15 +10,15 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f287648758d2883226132c0f45418dacaaf27652
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: acbd3c9ed55556ac792c3a98e6dbc1e4f7455fe1
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216326"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311308"
 ---
-# <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
-W tym artykule pokazano, jak skonfigurować indeksator obiektów blob usługi Azure Search wyodrębniania zawartości ze strukturą z dokumenty JSON w usłudze Azure Blob storage i którą można przeszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z obiektów blob JSON. 
+# <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
+W tym artykule dowiesz się, jak skonfigurować obiekt blob usługi Azure Search [indeksatora](search-indexer-overview.md) wyodrębniania zawartości ze strukturą z dokumenty JSON w usłudze Azure Blob storage i którą można przeszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z obiektów blob JSON. 
 
 Możesz użyć [portal](#json-indexer-portal), [interfejsów API REST](#json-indexer-rest), lub [zestawu .NET SDK](#json-indexer-dotnet) do indeksu zawartość JSON. Wspólne wszystkich metod jest, że dokumenty JSON znajdują się w kontenerze obiektów blob na koncie usługi Azure Storage. Aby uzyskać wskazówki dotyczące wypychania dokumentów JSON z innych platform spoza platformy Azure, zobacz [importowanie danych w usłudze Azure Search](search-what-is-data-import.md).
 
@@ -40,10 +40,10 @@ Zalecamy używanie tej samej subskrypcji platformy Azure dla usługi Azure Searc
 
 ### <a name="1---prepare-source-data"></a>1 — Przygotowanie danych źródłowych
 
-Należy mieć konto magazynu platformy Azure przy użyciu usługi Blob storage i kontenerem dokumentów JSON. Jeśli nie jesteś zaznajomiony z dowolnym z tych zadań, zapoznaj się z wstępnie wymaganego składnika "Konfigurowanie obiektów Blob platformy Azure usługi i ładowanie danych przykładowych" w [cognitive search-quickstart](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
+Należy mieć konto magazynu platformy Azure przy użyciu usługi Blob storage i kontenerem dokumentów JSON. Jeśli nie jesteś zaznajomiony z dowolnym z tych wymagań, zapoznaj się z "Konfigurowanie obiektów Blob platformy Azure usługi i ładowanie danych przykładowych" w [cognitive search-quickstart](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
 
 > [!Important]
-> W kontenerze, upewnij się, że **poziom dostępu publicznego** jest ustawiona na "Kontener (anonimowy dostęp do odczytu dla kontenerów i obiektów blob.)".
+> W kontenerze, upewnij się, że **poziom dostępu publicznego** jest ustawiona na "Kontener (anonimowy dostęp do odczytu dla kontenerów i obiektów blob.)". Usługa Azure storage i Azure Search, powinien być w tej samej subskrypcji, a jeśli to możliwe, w tym samym regionie. 
 
 ### <a name="2---start-import-data-wizard"></a>2 — Uruchom Kreatora importu danych
 
@@ -83,11 +83,11 @@ Na tej stronie możesz przejść od razu do dostosowywania indeksu.
 
 ### <a name="5---set-index-attributes"></a>5 — Ustaw atrybuty indeksu
 
-W **indeksu** stronie powinien zostać wyświetlony listy pól z typem danych i serii pola wyboru do ustawiania atrybuty indeksu. Kreator może wygenerować domyślnego indeksu na podstawie metadanych i przez próbkowanie źródła danych. 
+W **indeksu** stronie powinien zostać wyświetlony listy pól z typem danych i serii pola wyboru do ustawiania atrybuty indeksu. Kreator może wygenerować listy pól na podstawie metadanych i przez próbkowanie źródła danych. 
 
-Ustawienia domyślne często tworzyć rozwiązania zwiększą: zaznaczania pola (rzutowany jako ciąg), aby służyć jako klucz lub dokumentów identyfikator do unikatowego identyfikowania każdego dokumentu, a także pola, które dobrze nadają się dla wyszukiwania pełnotekstowego i pobieranie w zestawie wyników. W przypadku obiektów blob `content` pole jest najlepsze Release candidate programu zawartość do przeszukiwania.
+Użytkownik może zbiorcze zaznaczania atrybutów, klikając pole wyboru w górnej części kolumny atrybutu. Wybierz **możliwość pobierania** i **z możliwością wyszukiwania** dla każdego pola, które ma zostać zwrócony do aplikacji klienckich i będą podlegać przetwarzania wyszukiwania pełnotekstowego. Można zauważyć, że liczb całkowitych nie są pełnotekstowego lub rozmyte wyszukiwanie (są oceniane verbatim i często są przydatne w filtrach).
 
-Możesz zaakceptować wartości domyślne lub przeczytaj jego opis [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) i [analizatory języka](https://docs.microsoft.com/rest/api/searchservice/language-support) do przesłaniające lub uzupełniające wartości początkowe. 
+Przejrzyj opis [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) i [analizatory języka](https://docs.microsoft.com/rest/api/searchservice/language-support) Aby uzyskać więcej informacji. 
 
 Poświęć chwilę, aby przejrzeć wybrane opcje. Po uruchomieniu kreatora, struktur danych fizycznych są tworzone i nie będzie można edytować tych pól bez porzucenie i ponowne utworzenie wszystkich obiektów.
 
@@ -114,7 +114,9 @@ Po zakończeniu indeksowania, można użyć [Eksploratora wyszukiwania](search-e
 
 ## <a name="use-rest-apis"></a>Używanie interfejsów API REST
 
-Interfejs API REST umożliwia indeksowanie obiektów blob JSON, zgodnie z przepływu pracy trzyczęściowej wspólne dla wszystkich indeksatorów w usłudze Azure Search: Utwórz źródło danych, Utwórz indeks, Utwórz indeksator. Wyodrębnianie danych z magazynu obiektów blob występuje, gdy wniosek tworzenie indeksatora. Po zakończeniu tego żądania, konieczne będzie odpytywalny indeksu. Aby wyświetlić przykład żądań, tworzonych wszystkie trzy obiekty, zobacz [przykład REST](#rest-example) na końcu tej sekcji.
+Interfejs API REST umożliwia indeksowanie obiektów blob JSON, zgodnie z przepływu pracy trzyczęściowej wspólne dla wszystkich indeksatorów w usłudze Azure Search: Utwórz źródło danych, Utwórz indeks, Utwórz indeksator. Wyodrębnianie danych z magazynu obiektów blob występuje, gdy wniosek tworzenie indeksatora. Po zakończeniu tego żądania, konieczne będzie odpytywalny indeksu. 
+
+Możesz przejrzeć [REST przykładowy kod](#rest-example) na końcu tej sekcji, która pokazuje, jak utworzyć wszystkie trzy obiekty. Ta sekcja zawiera również szczegółowe informacje o [analizy tryby JSON](#parsing-modes), [pojedynczy obiektów blob](#parsing-single-blobs), [tablice notacji JSON](#parsing-arrays), i [zagnieżdżonych tablic](#nested-json-arrays).
 
 Czy indeksowanie oparte na kodzie JSON, użyj [Postman](search-fiddler.md) i interfejsu API REST, aby utworzyć te obiekty:
 
@@ -122,7 +124,7 @@ Czy indeksowanie oparte na kodzie JSON, użyj [Postman](search-fiddler.md) i int
 + [Źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
 + [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-W przeciwieństwie do kreatora portalu podejście kodu wymaga, która ma indeks w miejscu, gotowy do akceptowania dokumentów JSON, gdy wysyłasz **tworzenie indeksatora** żądania.
+Kolejność operacji wymaga, aby utworzyć i wywoływanie obiektów w tej kolejności. W przeciwieństwie do portalu przepływu pracy, to podejście kod wymaga dostępny indeks, aby akceptować dokumenty JSON wysyłane za pośrednictwem **tworzenie indeksatora** żądania.
 
 Obiektów blob JSON w usłudze Azure Blob storage są zazwyczaj pojedynczego dokumentu JSON lub JSON "array". Indeksowanie obiektów blob w usłudze Azure Search może przeanalizować albo konstrukcji, w zależności od tego, jak ustawić **parsingMode** parametru w żądaniu.
 
@@ -211,147 +213,6 @@ Harmonogram i parametry są opcjonalne. Jeżeli pominięto ich uruchomieniu inde
 
 Nie ma tego konkretnego indeksatora [mapowania pól](#field-mappings). W ramach definicji indeksatora, możesz pozostawić **mapowania pól** Jeśli właściwości źródła dokument JSON zgodny pola z docelowym indeksem wyszukiwania. 
 
-### <a name="parsing-modes"></a>Tryby analizy
-
-Do tej pory definicje dla źródła danych i indeksu zostały parsingMode niezależny od. Jednak w kroku konfiguracji indeksatora ścieżkę diverges w zależności od sposobu obiektu blob JSON zawartości przeanalizowano i ze strukturą w indeksie usługi Azure Search. Można także wybrać opcję `json` lub `jsonArray`:
-
-+ Ustaw **parsingMode** do `json` do indeksowania każdy obiekt blob jako pojedynczy dokument.
-
-+ Ustaw **parsingMode** do `jsonArray` Jeśli obiekty BLOB składają się z tablice notacji JSON i potrzebny każdego elementu tablicy, aby stać się oddzielny dokument w usłudze Azure Search. 
-
-+ Ustaw **parsingMode** do `jsonLines` Jeśli obiekty BLOB składają się z wielu jednostek JSON, które są oddzielone znakiem nowego wiersza, i potrzebny każdej jednostki, aby stać się oddzielny dokument w usłudze Azure Search.
-
-Dokumentu można traktować jako pojedynczy element w wynikach wyszukiwania. Jeśli chcesz, aby każdy element w tablicy, które były wyświetlane w wynikach wyszukiwania jako niezależny element, należy użyć `jsonArray` lub `jsonLines` odpowiednią opcję.
-
-W ramach definicji indeksatora możesz opcjonalnie użyć [mapowania pól](search-indexer-field-mappings.md) wyboru właściwości dokumentu JSON źródła, które są używane do wypełnienia z docelowym indeksem wyszukiwania. Aby uzyskać `jsonArray` podczas analizowania trybu, jeśli tablica istnieje jako właściwość niższego poziomu, można ustawić katalog główny dokumentów wskazująca, gdzie tablicy jest umieszczany w ramach obiektu blob.
-
-> [!IMPORTANT]
-> Kiedy używasz `json`, `jsonArray` lub `jsonLines` tryb analizy, usługa Azure Search przyjęto założenie, że wszystkie obiekty BLOB ze źródła danych zawierają JSON. Daj nam znać, jeśli potrzebujesz do obsługi różnych obiektów blob JSON i -JSON, w tym samym źródle danych, na [naszą witrynę UserVoice](https://feedback.azure.com/forums/263029-azure-search).
-
-
-### <a name="how-to-parse-single-json-blobs"></a>Jak analizować pojedynczego obiektów blob JSON
-
-Domyślnie [indeksatora obiektów blob usługi Azure Search](search-howto-indexing-azure-blob-storage.md) analizuje obiektów blob JSON jako jeden fragment tekstu. Często chcesz zachować strukturę dokumentów JSON. Załóżmy na przykład, że masz następujący dokument JSON w usłudze Azure Blob storage:
-
-    {
-        "article" : {
-            "text" : "A hopefully useful article explaining how to parse JSON blobs",
-            "datePublished" : "2016-04-13",
-            "tags" : [ "search", "storage", "howto" ]    
-        }
-    }
-
-Indeksowanie obiektów blob analizuje dokument JSON w jednym dokumencie usługi Azure Search. Indeksator ładuje indeks, dopasowując "text", "datePublished" i "tags" ze źródła względem pola indeksu docelowego identycznie nazwane i wpisane.
-
-Jak wspomniano, mapowań pól nie są wymagane. Podany indeks z "text", "datePublished i"tags"pola, obiekt blob indeksator może wywnioskować poprawne mapowania bez pola mapowania znajduje się w żądaniu.
-
-### <a name="how-to-parse-json-arrays-in-a-well-formed-json-document"></a>Jak analizować tablice notacji JSON w poprawnie sformułowany dokument JSON
-
-Alternatywnie można wybrać funkcję tablicy JSON. Ta możliwość jest przydatna, gdy zawierają obiekty BLOB *Tablica obiektów JSON*, i chcesz, aby każdy element, aby stać się oddzielny dokument usługi Azure Search. Na przykład biorąc pod uwagę następujący obiekt blob JSON, które możesz wypełnić indeksu usługi Azure Search przy użyciu trzech oddzielnych dokumentów, każdy z pola "id" i "text".  
-
-    [
-        { "id" : "1", "text" : "example 1" },
-        { "id" : "2", "text" : "example 2" },
-        { "id" : "3", "text" : "example 3" }
-    ]
-
-Dla tablicy JSON definicja indeksatora powinien wyglądać podobnie do poniższego przykładu. Należy zauważyć, że parametr parsingMode Określa `jsonArray` analizatora. Określanie prawo analizator i posiadające odpowiednie dane dane wejściowe są tylko dwa wymagania specyficzne dla tablicy indeksowanie obiektów blob JSON.
-
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      "name" : "my-json-indexer",
-      "dataSourceName" : "my-blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
-      "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
-    }
-
-Ponownie Zwróć uwagę, że mapowania pól można pominąć. Zakładając, że indeks o nazwach "id" i "text" pól, indeksatora obiektów blob można wywnioskować poprawne mapowania bez jawnego pola mapowania listy.
-
-<a name="nested-json-arrays"></a>
-
-### <a name="nested-json-arrays"></a>Zagnieżdżone tablice notacji JSON
-Co zrobić, jeśli chcesz indeksu tablicy obiektów JSON, ale ta tablica jest zagnieżdżona gdzieś w obrębie dokumentu? Możesz wybrać właściwość, która zawiera tablicę przy użyciu `documentRoot` właściwość konfiguracji. Na przykład, jeśli obiekty BLOB wyglądać następująco:
-
-    {
-        "level1" : {
-            "level2" : [
-                { "id" : "1", "text" : "Use the documentRoot property" },
-                { "id" : "2", "text" : "to pluck the array you want to index" },
-                { "id" : "3", "text" : "even if it's nested inside the document" }  
-            ]
-        }
-    }
-
-Indeks tablicy zawarte w przy użyciu tej konfiguracji `level2` właściwości:
-
-    {
-        "name" : "my-json-array-indexer",
-        ... other indexer properties
-        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
-    }
-
-### <a name="how-to-parse-blobs-with-multiple-json-entities-separated-by-newlines"></a>Jak analizować obiektów blob z wieloma jednostkami JSON rozdzielone tabulacji
-
-Jeśli obiekt blob zawiera wiele jednostek JSON rozdzielone znakami nowego wiersza i chcesz, aby każdy element, aby stać się oddzielny dokument usługi Azure Search, możesz zdecydować się dla funkcji wiersze JSON. Na przykład, biorąc pod uwagę następujący obiekt blob (tam, gdzie istnieją trzy różne jednostki JSON), które możesz wypełnić indeksu usługi Azure Search, za pomocą trzech osobnych dokumentów, każdy z pola "id" i "text".
-
-    { "id" : "1", "text" : "example 1" }
-    { "id" : "2", "text" : "example 2" }
-    { "id" : "3", "text" : "example 3" }
-
-W przypadku wierszy JSON definicja indeksatora powinien wyglądać podobnie do poniższego przykładu. Należy zauważyć, że parametr parsingMode Określa `jsonLines` analizatora. 
-
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      "name" : "my-json-indexer",
-      "dataSourceName" : "my-blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
-      "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
-    }
-
-Ponownie Zwróć uwagę, że mapowania pól może być pominięty, podobnie jak `jsonArray` tryb analizy.
-
-### <a name="using-field-mappings-to-build-search-documents"></a>Tworzenie dokumentów wyszukiwania przy użyciu mapowań pól
-
-Gdy pola źródłowe i docelowe nie są dokładnie wyrównana, można zdefiniować sekcję mapowania pola w treści żądania dla jawnego skojarzeń pola do pola.
-
-Obecnie usługa Azure Search nie może indeksować dowolnych dokumentów JSON bezpośrednio, ponieważ obsługuje on pierwotne typy danych, tablic ciągów i GeoJSON punktów. Można jednak użyć **mapowania pól** wybrać części dokumentu JSON, a "lift" je do pól najwyższego poziomu dokumentu wyszukiwania. Aby poznać podstawy mapowania pól, zobacz temat [mapowania pól w indeksatorach usługi Azure Search](search-indexer-field-mappings.md).
-
-Ponowne spojrzenie na dokument JSON w naszym przykładzie:
-
-    {
-        "article" : {
-            "text" : "A hopefully useful article explaining how to parse JSON blobs",
-            "datePublished" : "2016-04-13"
-            "tags" : [ "search", "storage", "howto" ]    
-        }
-    }
-
-Przyjęto założenie, indeks wyszukiwania przy użyciu następujących pól: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset`, i `tags` typu `Collection(Edm.String)`. Zwróć uwagę rozbieżność między "datePublished" w źródle i `date` pola w indeksie. Aby zamapować JSON do żądanego kształtu, użyj następujące mapowania pola:
-
-    "fieldMappings" : [
-        { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
-        { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
-        { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
-      ]
-
-Źródło nazwy pól w mapowania są określane za pomocą [wskaźnik JSON](https://tools.ietf.org/html/rfc6901) notacji. Możesz zaczynać się ukośnikiem do odwoływania się do katalogu głównego dokumentu JSON, a następnie wybierz żądaną właściwość (na dowolny poziom zagnieżdżenia) przy użyciu ścieżki oddzielone ukośnikiem do przodu.
-
-Może również odnosić się do elementów tablicy poszczególnych przy użyciu indeksu zaczynającego się od zera. Na przykład wybierz pierwszy element tablicy "tags" z powyższego przykładu, należy użyć mapowania pól w następujący sposób:
-
-    { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
-
-> [!NOTE]
-> Jeśli nazwa pola źródła, w ścieżce mapowania pola odwołuje się do właściwości, która nie istnieje w formacie JSON, mapowanie jest pomijane bez błędów. Można to zrobić, aby firma Microsoft może obsługiwać dokumenty z innym schematem (jest to typowy przypadek użycia). Ponieważ nie ma możliwości weryfikacji, należy uważać, aby uniknąć błędów w specyfikacji mapowania pól.
->
->
 
 ### <a name="rest-example"></a>Przykład REST
 
@@ -424,6 +285,154 @@ Zestaw SDK platformy .NET ma pełni parzystości przy użyciu interfejsu API RES
 + [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
 + [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
 + [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+
+<a name="parsing-modes"></a>
+
+### <a name="parsing-modes"></a>Tryby analizy
+
+Wiele form, można założyć obiektów blob JSON. **ParsingMode** parametru indeksatora JSON Określa, jak zawartość obiektu blob JSON zostanie przeanalizowana i ze strukturą w indeksie usługi Azure Search:
+
+| parsingMode | Opis |
+|-------------|-------------|
+| `json`  | Indeks każdego obiektu blob jako pojedynczy dokument. Jest to opcja domyślna. |
+| `jsonArray` | Wybierz ten tryb, jeśli obiekty BLOB składają się z tablice notacji JSON i potrzebny każdego elementu tablicy, aby stać się oddzielny dokument w usłudze Azure Search. |
+|`jsonLines` | Wybierz ten tryb, jeśli obiekty BLOB składają się z wielu jednostek JSON, które są oddzielone znakiem nowego wiersza, i chcesz, aby każda jednostka, aby stać się oddzielny dokument w usłudze Azure Search. |
+
+Dokumentu można traktować jako pojedynczy element w wynikach wyszukiwania. Jeśli chcesz, aby każdy element w tablicy, które były wyświetlane w wynikach wyszukiwania jako niezależny element, należy użyć `jsonArray` lub `jsonLines` odpowiednią opcję.
+
+W ramach definicji indeksatora możesz opcjonalnie użyć [mapowania pól](search-indexer-field-mappings.md) wyboru właściwości dokumentu JSON źródła, które są używane do wypełnienia z docelowym indeksem wyszukiwania. Aby uzyskać `jsonArray` podczas analizowania trybu, jeśli tablica istnieje jako właściwość niższego poziomu, można ustawić katalog główny dokumentów wskazująca, gdzie tablicy jest umieszczany w ramach obiektu blob.
+
+> [!IMPORTANT]
+> Kiedy używasz `json`, `jsonArray` lub `jsonLines` tryb analizy, usługa Azure Search przyjęto założenie, że wszystkie obiekty BLOB ze źródła danych zawierają JSON. Daj nam znać, jeśli potrzebujesz do obsługi różnych obiektów blob JSON i -JSON, w tym samym źródle danych, na [naszą witrynę UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+
+
+<a name="parsing-single-blobs"></a>
+
+## <a name="parse-single-json-blobs"></a>Analizowanie pojedynczego obiektów blob JSON
+
+Domyślnie [indeksatora obiektów blob usługi Azure Search](search-howto-indexing-azure-blob-storage.md) analizuje obiektów blob JSON jako jeden fragment tekstu. Często chcesz zachować strukturę dokumentów JSON. Załóżmy na przykład, że masz następujący dokument JSON w usłudze Azure Blob storage:
+
+    {
+        "article" : {
+            "text" : "A hopefully useful article explaining how to parse JSON blobs",
+            "datePublished" : "2016-04-13",
+            "tags" : [ "search", "storage", "howto" ]    
+        }
+    }
+
+Indeksowanie obiektów blob analizuje dokument JSON w jednym dokumencie usługi Azure Search. Indeksator ładuje indeks, dopasowując "text", "datePublished" i "tags" ze źródła względem pola indeksu docelowego identycznie nazwane i wpisane.
+
+Jak wspomniano, mapowań pól nie są wymagane. Podany indeks z "text", "datePublished i"tags"pola, obiekt blob indeksator może wywnioskować poprawne mapowania bez pola mapowania znajduje się w żądaniu.
+
+<a name="parsing-arrays"></a>
+
+## <a name="parse-json-arrays"></a>Analizowanie tablice notacji JSON
+
+Alternatywnie można użyć opcji tablicy JSON. Ta opcja jest przydatna, gdy zawierają obiekty BLOB *Tablica obiektów JSON sformułowany*, i chcesz, aby każdy element, aby stać się oddzielny dokument usługi Azure Search. Na przykład biorąc pod uwagę następujący obiekt blob JSON, które możesz wypełnić indeksu usługi Azure Search przy użyciu trzech oddzielnych dokumentów, każdy z pola "id" i "text".  
+
+    [
+        { "id" : "1", "text" : "example 1" },
+        { "id" : "2", "text" : "example 2" },
+        { "id" : "3", "text" : "example 3" }
+    ]
+
+Dla tablicy JSON definicja indeksatora powinien wyglądać podobnie do poniższego przykładu. Należy zauważyć, że parametr parsingMode Określa `jsonArray` analizatora. Określanie prawo analizator i posiadające odpowiednie dane dane wejściowe są tylko dwa wymagania specyficzne dla tablicy indeksowanie obiektów blob JSON.
+
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "name" : "my-json-indexer",
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
+    }
+
+Ponownie Zwróć uwagę, że mapowania pól można pominąć. Zakładając, że indeks o nazwach "id" i "text" pól, indeksatora obiektów blob można wywnioskować poprawne mapowania bez jawnego pola mapowania listy.
+
+<a name="nested-json-arrays"></a>
+
+## <a name="parse-nested-arrays"></a>Analizowanie zagnieżdżonych tablic
+Dla formatu JSON tablice o zagnieżdżone elementy, można określić `documentRoot` do wskazania wielopoziomowe struktury. Na przykład, jeśli obiekty BLOB wyglądać następująco:
+
+    {
+        "level1" : {
+            "level2" : [
+                { "id" : "1", "text" : "Use the documentRoot property" },
+                { "id" : "2", "text" : "to pluck the array you want to index" },
+                { "id" : "3", "text" : "even if it's nested inside the document" }  
+            ]
+        }
+    }
+
+Indeks tablicy zawarte w przy użyciu tej konfiguracji `level2` właściwości:
+
+    {
+        "name" : "my-json-array-indexer",
+        ... other indexer properties
+        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
+    }
+
+## <a name="parse-blobs-separated-by-newlines"></a>Analizowanie obiektów blob, oddzielone tabulacji
+
+Jeśli obiekt blob zawiera wiele jednostek JSON rozdzielone znakami nowego wiersza i chcesz, aby każdy element, aby stać się oddzielny dokument usługi Azure Search, możesz zdecydować się opcji linii JSON. Na przykład, biorąc pod uwagę następujący obiekt blob (tam, gdzie istnieją trzy różne jednostki JSON), które możesz wypełnić indeksu usługi Azure Search przy użyciu trzech oddzielnych dokumentów, każdy z pola "id" i "text".
+
+    { "id" : "1", "text" : "example 1" }
+    { "id" : "2", "text" : "example 2" }
+    { "id" : "3", "text" : "example 3" }
+
+Dla wierszy w formacie JSON definicja indeksatora powinien wyglądać podobnie do poniższego przykładu. Należy zauważyć, że parametr parsingMode Określa `jsonLines` analizatora. 
+
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "name" : "my-json-indexer",
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
+    }
+
+Ponownie Zwróć uwagę, że mapowania pól może być pominięty, podobnie jak `jsonArray` tryb analizy.
+
+## <a name="add-field-mappings"></a>Dodaj mapowań pól
+
+Gdy pola źródłowe i docelowe nie są dokładnie wyrównana, można zdefiniować sekcję mapowania pola w treści żądania dla jawnego skojarzeń pola do pola.
+
+Obecnie usługa Azure Search nie może indeksować dowolnych dokumentów JSON bezpośrednio, ponieważ obsługuje on pierwotne typy danych, tablic ciągów i GeoJSON punktów. Można jednak użyć **mapowania pól** wybrać części dokumentu JSON, a "lift" je do pól najwyższego poziomu dokumentu wyszukiwania. Aby poznać podstawy mapowania pól, zobacz temat [mapowania pól w indeksatorach usługi Azure Search](search-indexer-field-mappings.md).
+
+Ponowne spojrzenie na dokument JSON w naszym przykładzie:
+
+    {
+        "article" : {
+            "text" : "A hopefully useful article explaining how to parse JSON blobs",
+            "datePublished" : "2016-04-13"
+            "tags" : [ "search", "storage", "howto" ]    
+        }
+    }
+
+Przyjęto założenie, indeks wyszukiwania przy użyciu następujących pól: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset`, i `tags` typu `Collection(Edm.String)`. Zwróć uwagę rozbieżność między "datePublished" w źródle i `date` pola w indeksie. Aby zamapować JSON do żądanego kształtu, użyj następujące mapowania pola:
+
+    "fieldMappings" : [
+        { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
+        { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
+        { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
+      ]
+
+Źródło nazwy pól w mapowania są określane za pomocą [wskaźnik JSON](https://tools.ietf.org/html/rfc6901) notacji. Możesz zaczynać się ukośnikiem do odwoływania się do katalogu głównego dokumentu JSON, a następnie wybierz żądaną właściwość (na dowolny poziom zagnieżdżenia) przy użyciu ścieżki oddzielone ukośnikiem do przodu.
+
+Może również odnosić się do elementów tablicy poszczególnych przy użyciu indeksu zaczynającego się od zera. Na przykład wybierz pierwszy element tablicy "tags" z powyższego przykładu, należy użyć mapowania pól w następujący sposób:
+
+    { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
+
+> [!NOTE]
+> Jeśli nazwa pola źródła, w ścieżce mapowania pola odwołuje się do właściwości, która nie istnieje w formacie JSON, mapowanie jest pomijane bez błędów. Można to zrobić, aby firma Microsoft może obsługiwać dokumenty z innym schematem (jest to typowy przypadek użycia). Ponieważ nie ma możliwości weryfikacji, należy uważać, aby uniknąć błędów w specyfikacji mapowania pól.
+>
+>
 
 ## <a name="see-also"></a>Zobacz także
 

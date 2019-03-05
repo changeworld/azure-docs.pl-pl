@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8d638743b3cb07b0d060e754ecb76e74bd02719d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 512956d2de0f9a838cc6378345a334e489d1d120
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215017"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306871"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Wyzwalanie usługi Azure Functions przy użyciu elementów webhook w usłudze Azure IoT Central
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Utwórz nową aplikację funkcji w witrynie Azure Portal](media/howto-trigger-azure-functions/createfunction.png)
 
-2. Rozwiń swoją aplikację funkcji, a następnie kliknij przycisk **przycisk +** obok funkcji. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **Funkcja niestandardowa**. Spowoduje to wyświetlenie pełnego zestawu szablonów funkcji.
+2. Rozwiń swoją aplikację funkcji, a następnie wybierz pozycję **przycisk +** obok funkcji. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **Funkcja niestandardowa**. Spowoduje to wyświetlenie pełnego zestawu szablonów funkcji.
 
     ![Wybierz funkcję niestandardowego w aplikacji funkcji](media/howto-trigger-azure-functions/customfunction.png)
 
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Wybieranie wyzwalacza ogólnego elementu webhook](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 
-4. W nowej funkcji kliknij pozycję **</> Pobierz adres URL funkcji**, po czym skopiuj i zapisz wartość. Będzie ona używana do skonfigurowania elementu webhook.
+4. W nowej funkcji, wybierz **<> / Pobierz adres URL funkcji**, a następnie skopiuj i Zapisz wartość. Będzie ona używana do skonfigurowania elementu webhook.
 
     ![Pobierz adres URL funkcji](media/howto-trigger-azure-functions/getfunctionurl.png)
 
@@ -49,7 +49,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Wprowadź adres URL funkcji w polu adres URL wywołania zwrotnego](media/howto-trigger-azure-functions/configurewebhook.PNG)
 
-6. Zapisać reguły. Teraz po wyzwoleniu reguły, element webhook wywołuje aplikację funkcji, aby uruchomić. W aplikacji funkcji, można kliknąć opcje **Monitor** Aby wyświetlić historię wywołania funkcji. App Insights lub widok klasyczny umożliwia Przyjrzyj się historii.
+6. Zapisać reguły. Teraz po wyzwoleniu reguły, element webhook wywołuje aplikację funkcji, aby uruchomić. W aplikacji funkcji, można wybrać **Monitor** Aby wyświetlić historię wywołania funkcji. App Insights lub widok klasyczny umożliwia Przyjrzyj się historii.
 
     ![Monitorowanie historii wywołania funkcji](media/howto-trigger-azure-functions/monitorfunction.PNG)
 

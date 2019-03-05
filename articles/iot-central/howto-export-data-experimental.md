@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: c595627275848de5489fe11e1327a72bf6251199
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 80ba612bf0f76fb0c1e202bec0bf88fa75fb2c98
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213266"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314011"
 ---
 # <a name="export-your-data-from-azure-iot-central"></a>Eksportowanie danych z usługi Azure IoT Central
 
@@ -85,14 +85,14 @@ Teraz, gdy masz docelowym magazynu/Event Hubs/Service Bus, aby wyeksportować da
 
 1. Zaloguj się do aplikacji IoT Central.
 
-2. W menu po lewej stronie kliknij **ciągły Eksport danych**.
+2. W menu po lewej stronie wybierz **ciągły Eksport danych**.
 
     > [!Note]
     > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
 
     ![Utwórz nowe Centrum zdarzeń](media/howto-export-data-experimental/export_menu.png)
 
-3. Kliknij przycisk **+ nowy** przycisk w prawym górnym rogu. Wybierz jedną z **usługi Azure Blob Storage**, **usługi Azure Event Hubs**, lub **usługi Azure Service Bus** jako miejsce docelowe eksportu.
+3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz jedną z **usługi Azure Blob Storage**, **usługi Azure Event Hubs**, lub **usługi Azure Service Bus** jako miejsce docelowe eksportu.
 
     > [!NOTE]
     > Maksymalna liczba eksportów aplikacji wynosi pięć.
@@ -111,10 +111,10 @@ Teraz, gdy masz docelowym magazynu/Event Hubs/Service Bus, aby wyeksportować da
 
 5. (Opcjonalnie) Jeśli została wybrana opcja **wprowadź parametry połączenia**, nowe pole pojawia się należy wkleić parametry połączenia. Aby uzyskać parametry połączenia dla usługi:
     - Konto magazynu, przejdź do konta magazynu w witrynie Azure Portal.
-        - W obszarze **ustawienia**, kliknij przycisk **klucze dostępu**
+        - W obszarze **ustawienia**, wybierz opcję **klucze dostępu**
         - Skopiuj parametry połączenia klucz1 lub klucz2 parametry połączenia
     - Usługa Event Hubs lub usługi Service Bus, przejdź do przestrzeni nazw w witrynie Azure Portal.
-        - W obszarze **ustawienia**, kliknij przycisk **współużytkowane zasady dostępu**
+        - W obszarze **ustawienia**, wybierz opcję **współużytkowane zasady dostępu**
         - Wybierz domyślne **RootManageSharedAccessKey** lub Utwórz nową
         - Skopiuj parametry połączenia podstawowej lub dodatkowej
 
