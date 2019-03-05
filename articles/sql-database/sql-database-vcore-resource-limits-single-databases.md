@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 735c3dc4764f45512386a0c53a389f355f069aa3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/04/2019
+ms.openlocfilehash: f4d6826d13f92db7a430f668c56825926d198235
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998161"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340103"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -47,6 +47,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|500|1000|1500|2000|2500|3000|
+|Limity szybkości dziennika (MB/s)|2.5|5|7.5|10|12.5|15|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|
@@ -69,6 +70,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)
 |Docelowy operacji We/Wy (64 KB)|3500|4000|4500|5000|7000|7000|
+|Limity szybkości dziennika (MB/s)|17.5|20|20|20|20|20|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1400|1600|1800|2000|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|
@@ -85,12 +87,13 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
-|Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|1536|
+|Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
 |Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|500|1000|1500|2000|2500|3000|3500|
+|Limity szybkości dziennika (MB/s)|2.5|56|7.5|10|12.5|15|17.5|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|1400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|1|
@@ -113,6 +116,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|4000|4500|5000|6000|7000|7000|7000|
+|Limity szybkości dziennika (MB/s)|20|20|20|20|20|20|20|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|1|
@@ -129,15 +133,17 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
-|Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
-|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
+|Maksymalny rozmiar danych (GB)|650|650|650|650|650|650|
+|Maksymalny rozmiar dziennika (GB)|195|195|195|195|195|195|
 |Rozmiar bazy danych TempDB (GB)|32|64|96|128|160|192|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|15000|20000|25000|30000|
+|Limity szybkości dziennika (MB/s)|6|12|18|24|30|36|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|
+|Maksymalna liczba współbieżnych logowań|200|400|600|800|1000|1200|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -151,15 +157,17 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
-|Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|7|8|9.5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
-|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
+|Maksymalny rozmiar danych (GB)|650|650|650|650|1024|1024|
+|Maksymalny rozmiar dziennika (GB)|195|195|195|195|307|307|
 |Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|35000|40000|45000|50000|80000|120000|
+|Limity szybkości dziennika (MB/s)|42|48|48|48|48|48|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1400|1600|1800|2000|3200|4800|
+|Maksymalna liczba współbieżnych logowań (żądań)|1400|1600|1800|2000|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -175,13 +183,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Pojemność magazynu OLTP w pamięci (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
-|Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|1536|
-|Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
+|Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|922|922|
 |Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|15000|20000|25000|30000|35000|
+|Limity szybkości dziennika (MB/s)|6|12|18|24|30|36|42|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|1400|
+|Maksymalna liczba współbieżnych logowań|200|400|600|800|1000|1200|1400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|4|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -203,10 +213,12 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|40000|45000|50000|60000|80000|100000|200000|
+|Limity szybkości dziennika (MB/s)|48|48|48|48|48|48|48|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1600|1800|2000|2400|3200|4000|8000|
+|Maksymalna liczba współbieżnych logowań|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
-|Liczba replik|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Liczba replik|4|4|4|4|4|4|4|
+|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
@@ -262,7 +274,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 
 - Limity zasobów jednostek DTU dla pojedynczej bazy danych, można zobaczyć [limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-single-databases.md)
 - Limity zasobów (rdzeń wirtualny) dla pul elastycznych, zobacz [limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na rdzeniach wirtualnych](sql-database-vcore-resource-limits-elastic-pools.md)
-- Aby uzyskać limites zasobów jednostek DTU dla pul elastycznych, zobacz [limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-elastic-pools.md)
+- Limity zasobów jednostek DTU dla pul elastycznych, zobacz [limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-elastic-pools.md)
 - Limity zasobów dla wystąpienia zarządzanego, można zobaczyć [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md).
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 - Aby uzyskać informacji na temat limitów zasobów na serwerze bazy danych, zobacz [Przegląd limity zasobów na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0202dfa8316caec036b4ad288c2bd32f1c4eaf3
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d4698ad54e08587b223bb65388d399c0cbf3ff63
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989408"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342517"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -60,14 +60,14 @@ Sekwencja szyfrowania dysku systemu operacyjnego Linux tymczasowo umożliwia odi
 Aby sprawdzić stan szyfrowania, sondowanie **komunikat dotyczący postępu** pola zwróciło [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia. Podczas szyfrowania dysku systemu operacyjnego maszyny Wirtualnej przechodzi do stanu obsługi i wyłączenie protokołu SSH w celu uniknięcia zakłóceń w celu ciągły proces. **EncryptionInProgress** komunikatu raportów dla większości przypadków, gdy szyfrowanie jest w toku. Kilka godzin później, **VMRestartPending** monit o ponowne uruchomienie maszyny Wirtualnej. Na przykład:
 
 
-```
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
 
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
@@ -93,7 +93,7 @@ Wszelkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane nadal mu
 Jeśli szyfrowanie jest włączone za pomocą [poświadczeń usługi Azure AD](azure-security-disk-encryption-prerequisites-aad.md), docelowa maszyna wirtualna musi zezwalać na łączność z punktami końcowymi usługi Azure Active Directory i punkty końcowe usługi Key Vault. Bieżące punkty końcowe uwierzytelniania usługi Azure Active Directory znajdują się w sekcji 56 i 59 z [URL usługi Office 365 i zakresy adresów IP](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentacji. Usługa Key Vault instrukcje znajdują się w dokumentacji na temat sposobu [dostępu do usługi Azure Key Vault za zaporą](../key-vault/key-vault-access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Wystąpienie usługi Azure Metadata Service 
-Maszyna wirtualna musi być w stanie uzyskać dostęp do [Azure Instance Metadata service](../virtual-machines/windows/instance-metadata-service.md) punktu końcowego, który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny Wirtualnej.
+Maszyna wirtualna musi być w stanie uzyskać dostęp do [Azure Instance Metadata service](../virtual-machines/windows/instance-metadata-service.md) punktu końcowego, który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny Wirtualnej.  Konfiguracja serwera proxy, zmienić lokalne ruchu HTTP na ten adres (np. Dodawanie nagłówka X-Forwarded-uzyskać) nie są obsługiwane.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Zarządzanie pakietami systemu Linux za zaporą
 
@@ -138,6 +138,12 @@ DISKPART> list vol
 
 If the expected encryption state does not match what is being reported in the portal, see the following support article:
 [Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
+
+## <a name="troubleshooting-encryption-status"></a>Rozwiązywanie problemów z stanu szyfrowania 
+
+Portalu może wyświetlać dysku formie zaszyfrowanej, nawet po jego niezaszyfrowane na maszynie wirtualnej.  Taka sytuacja może wystąpić, gdy polecenia niskiego poziomu są używane bezpośrednio odszyfrować dysk z poziomu maszyny Wirtualnej, zamiast korzystać z wyższym poziomie polecenia zarządzania usługi Azure Disk Encryption.  Wyższy poziom polecenia nie tylko odszyfrowanie dysku z poziomu maszyny Wirtualnej, ale poza maszyną Wirtualną są również zaktualizować ustawienia szyfrowania na poziomie platformy ważne i rozszerzenie skojarzone z maszyną Wirtualną.  Jeśli nie są one przechowywane w wyrównanie, platforma nie będzie można zgłosić stan szyfrowania lub prawidłowo aprowizowania maszyny Wirtualnej.   
+
+Aby prawidłowo wyłączyć usługi Azure Disk Encryption, rozpoczynać się od znanego, dobrego stanu jest włączone szyfrowanie, a następnie użyj [Disable-AzureRmVmDiskEncryption](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) i [polecenia Remove-AzureRmVmDiskEncryptionExtension](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdiskencryptionextension) Polecenia programu PowerShell lub [az vm encryption, wyłącz](https://docs.microsoft.com/en-us/cli/azure/vm/encryption) interfejsu wiersza polecenia. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

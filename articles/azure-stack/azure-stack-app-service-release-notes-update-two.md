@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 0fa938b02b24bd79017bede5346b882e6587bd5d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8126397dfb3b02778413ab6ee696a8138c792c15
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766928"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342568"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>Usługa App Service w usłudze Azure Stack update 2 — informacje o wersji
 
@@ -56,7 +56,7 @@ Usługa Azure App Service w usłudze Azure Stack Update 2 obejmuje następujące
 - Aktualizacje do podstawowej usługi, aby zwiększyć niezawodność i komunikatów o włączenie łatwiejsze Diagnostyka typowe problemy.
 
 - **Aktualizacje do narzędzi i struktur aplikacji na następujących**:
-  - Added .Net Framework 4.7.1
+  - Added .NET Framework 4.7.1
   - Dodano **Node.JS** wersji:
     - NodeJS 6.12.3
     - NodeJS 8.9.4
@@ -84,15 +84,15 @@ Usługa Azure App Service w usłudze Azure Stack Update 2 obejmuje następujące
 - Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej.
 
 Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
- * Źródło: Dowolne
- * Zakres portów źródłowych: *
- * Miejsce docelowe: Adresy IP
- * Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
- * Zakres portów docelowych: 445
- * Protokół: TCP
- * Akcja: Zezwalaj
- * Priorytet: 700
- * Nazwa: Outbound_Allow_SMB445
+* Źródło: Dowolne
+* Zakres portów źródłowych: *
+* Miejsce docelowe: Adresy IP
+* Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
+* Zakres portów docelowych: 445
+* Protokół: TCP
+* Akcja: Zezwalaj
+* Priorytet: 700
+* Nazwa: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Znane problemy dotyczące administratorów chmury, działania usługi Azure App Service w usłudze Azure Stack
 

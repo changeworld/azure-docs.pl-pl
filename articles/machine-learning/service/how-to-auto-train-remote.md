@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95c495bf3a8ad7b82c42d4071899d045cb49f27b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b45f48289eda9096c84537eaaa7bc2df74c9d05d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247548"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341423"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -80,8 +80,8 @@ Można również dołączyć istniejącej maszyny wirtualnej DSVM systemu Linux 
 
 > [!NOTE]
 >
-> Poniższy kod używa `RemoteCompute` docelowej klasy, aby dołączyć istniejącej maszyny Wirtualnej jako obliczeniowego elementu docelowego.
-> `DsvmCompute` Klasy staną się przestarzałe w przyszłych wersjach na rzecz tym wzorcu projektowym.
+> Poniższy kod używa [RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py) docelowej klasy, aby dołączyć istniejącej maszyny Wirtualnej jako obliczeniowego elementu docelowego.
+> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py) klasy staną się przestarzałe w przyszłych wersjach na rzecz tym wzorcu projektowym.
 
 Uruchom poniższy kod, aby utworzyć obliczeniowego elementu docelowego na podstawie istniejących DSVM systemu Linux.
 

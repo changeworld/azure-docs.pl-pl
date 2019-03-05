@@ -12,24 +12,36 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 3/3/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ec3784a91f8aeb7f0fedd13c9ab86a844832a578
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7df96d53b02e80283f263901dc7e26ed4edb947d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810254"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342381"
 ---
-<a name="seller-insights-release-notes"></a>Sprzedawcy szczegółowe informacje o wersji 
-===============================
-(Data wydania: 28 lipca 2018 r.)
+# <a name="seller-insights-release-notes"></a>Sprzedawcy szczegółowe informacje o wersji 
+
+(Data wydania: 1 marca 2019 r.)
 
 Ten artykuł zawiera informacje na temat zmian z tą funkcją sprzedawcy wgląd w [portalu Cloud Partner](https://cloudpartner.azure.com/#insights).
 
+## <a name="release-highlights-for-march-1-2019"></a>Najważniejsze informacje o wersji dla 1 marca 2019 r.
 
-<a name="release-highlights"></a>Najważniejsze informacje o wersji
-------------------
+* *Trend klienta* dodawane do podsumowania
+* *Pierwszych pięć klientów* na podsumowanie odzwierciedlać wszystkich subskrypcji platformy Azure przez klienta
+* *Znormalizowane trendów użycia i aktywne Trend zamówienia* na podsumowanie została przeniesiona do obszaru *miesięczne zamówienia na pierwszy rzut oka*
+* *Informacje dotyczące wypłat raport uzgadniania* zaktualizowane
+* *Pierwszych pięć klientów* na informacje dotyczące wypłat odzwierciedlać wszystkich subskrypcji platformy Azure przez klienta
+* *Raport użycia* aktualizowane przy użyciu Identyfikatora klienta
+* *Klientów na stanowisku* na zamówień i użycie odzwierciedla wszystkich subskrypcji platformy Azure przez klienta
+
+
+(Data wydania: 28 lipca 2018 r.)
+
+## <a name="release-highlights-for-july-28-2018"></a>Najważniejsze informacje o wersji dla 28 lipca 2018 r.
+
 
 -   *Szacowane ceny* udostępnić widok opłat klienta waluty skutki konwersji.
 -   *Prognozowane wypłaty* podać wcześniej wgląd w potencjalne wypłaty.
@@ -37,8 +49,7 @@ Ten artykuł zawiera informacje na temat zmian z tą funkcją sprzedawcy wgląd 
 -   *Użycie dokładnością* zapewnia większą szczegółowość i lepszy wgląd w użycie klienta.
 
 
-<a name="changes-to-data-structure-and-taxonomy"></a>Zmiany struktury danych i taksonomii
---------------------------------------
+### <a name="changes-to-data-structure-and-taxonomy"></a>Zmiany struktury danych i taksonomii
 
 Poniższa tabela zawiera listę metryk, które zostały dodane lub znaczne zmiany w tej wersji. 
 

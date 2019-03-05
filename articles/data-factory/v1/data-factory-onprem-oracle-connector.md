@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 28227ce9ebc5680f68c05cb1296a8ba35eac2c74
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822259"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338352"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -183,7 +183,7 @@ W działaniu kopiowania, gdy źródłem jest **OracleSource** , następujące w�
 | writeBatchTimeout |Czas oczekiwania dla partii wstawić na zakończenie przed upływem limitu czasu operacji. |**timespan**<br/><br/> Przykład: 00:30:00 (30 minut) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie wartość **writeBatchSize**. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 100) |
 | sqlWriterCleanupScript |Określa kwerendę dla działania kopiowania, które można wykonać, aby po oczyszczeniu danych określonego wycinka. |Instrukcja zapytania. |Nie |
-| sliceIdentifierColumnName |Określa nazwę kolumny działanie kopiowania w celu wypełnienia odpowiadającym wycinek wygenerowany automatycznie.  Wartość **sliceIdentifierColumnName** służy do czyszczenia danych określonego wycinka, gdy ponowne uruchomienie. |Nazwa kolumny, która ma typ danych kolumny **binary(32)**. |Nie |
+| sliceIdentifierColumnName |Określa nazwę kolumny działanie kopiowania w celu wypełnienia odpowiadającym wycinek wygenerowany automatycznie. Wartość **sliceIdentifierColumnName** służy do czyszczenia danych określonego wycinka, gdy ponowne uruchomienie. |Nazwa kolumny, która ma typ danych kolumny **binary(32)**. |Nie |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Przykłady JSON do kopiowania danych z bazy danych Oracle
 
@@ -557,7 +557,7 @@ Potoku zawierającego działanie kopiowania, który został skonfigurowany do ko
 
 **komunikat o błędzie**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **Możliwe przyczyny**
 
@@ -568,8 +568,8 @@ Potoku zawierającego działanie kopiowania, który został skonfigurowany do ko
 
 * Jeśli nie zainstalowano dostawcy .NET dla Oracle, [go zainstalować](http://www.oracle.com/technetwork/topics/dotnet/downloads/), a następnie ponów próbę wykonania tego scenariusza.
 * Jeśli widzisz komunikat o błędzie, nawet po zainstalowaniu dostawcy, wykonaj następujące czynności:
-   1. Otwórz plik konfiguracji maszyny dla platformy .NET w wersji 2.0 z folderu < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-   2. Wyszukaj **dostawca danych programu Oracle dla platformy .NET**. Powinno być możliwe odnaleźć wpisu, jak pokazano w poniższym przykładzie w obszarze **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+    1. Otwórz plik konfiguracji maszyny dla platformy .NET w wersji 2.0 z folderu < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Wyszukaj **dostawca danych programu Oracle dla platformy .NET**. Powinno być możliwe odnaleźć wpisu, jak pokazano w poniższym przykładzie w obszarze **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Skopiuj ten wpis do pliku machine.config w następującym folderze .NET 4.0: < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Następnie należy zmienić wersję na 4.xxx.x.x.
 * Zainstaluj < ścieżka zainstalowane ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll w globalnej pamięci podręcznej zestawów (GAC), uruchamiając **gacutil /i [ścieżka dostawcy]**.
 

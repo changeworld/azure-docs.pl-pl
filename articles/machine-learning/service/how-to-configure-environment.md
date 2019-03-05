@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: e055ddc49120d77047fa349b7e58c612eb724b41
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6a51e57cfac326663d41b545c9f2883a446467d3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881553"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340766"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -42,7 +42,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 - Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
 
-- Albo [Anaconda firmy Continuum](https://www.anaconda.com/download/) lub [Miniconda](https://conda.io/miniconda.html) Menedżera pakietów.
+- Albo [Anaconda](https://www.anaconda.com/download/) lub [Miniconda](https://conda.io/miniconda.html) Menedżera pakietów.
 
     > [!IMPORTANT]
     > Anaconda i Miniconda nie są wymagane, gdy używasz notesy platformy Azure.

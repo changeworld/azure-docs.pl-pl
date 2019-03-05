@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a55839550b57da2ae346e66f4908da39e78b76f3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 231c6bbdb3ab1766cfccf19806e64c5dbe4d7b5d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328297"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339934"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozwiń wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
 
 W tym artykule opisano, jak rozwinąć dysków zarządzanych dla maszyny wirtualnej systemu Linux (VM) z wiersza polecenia platformy Azure. Możesz [dodawanie dysków danych](add-disk.md) zapewnienie dodatkowego miejsca do magazynowania miejsca, a także rozszerzyć istniejący dysk danych. Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zazwyczaj 30 GB na Maszynę wirtualną systemu Linux na platformie Azure. 
 
 > [!WARNING]
-> Zawsze upewnij się, że utworzono kopię zapasową danych przed wykonaniem dysku zmiany rozmiaru operacji. Aby uzyskać więcej informacji, zobacz [tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure](tutorial-backup-vms.md).
+> Zawsze upewnij się, że z systemu plików jest w dobrej kondycji i upewnij się, że przed wykonaniem operacji zmiany rozmiaru dysku danych jest wykonywana kopia zapasowa. Aby uzyskać więcej informacji, zobacz [tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure](tutorial-backup-vms.md).
 
 ## <a name="expand-an-azure-managed-disk"></a>Rozwiń dysku zarządzanego platformy Azure
 Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i jest zalogowany na koncie platformy Azure przy użyciu [az login](/cli/azure/reference-index#az-login).

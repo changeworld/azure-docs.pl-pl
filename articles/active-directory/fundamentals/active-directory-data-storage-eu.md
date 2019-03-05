@@ -9,49 +9,37 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a2f243b1a8b891419de7e3ca949e7591f55879
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b21f82dc0a1eb8edf571da13e0d34fecae5f401b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211363"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337689"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Przechowywanie danych tożsamości na potrzeby klientów w Europie w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) pomaga zarządzać tożsamościami użytkowników i tworzenia zasad dostępu opartych na analizie, których zabezpieczania zasobów organizacji. Dane tożsamości są przechowywane w lokalizacji opartej na adresie podanym przez Twoją organizację podczas dokonywania subskrypcji usługi. Na przykład subskrybowania usługi Office 365 lub platformy Azure. Aby uzyskać szczegółowe informacje na temat przechowywania danych tożsamości, zobacz sekcję [Gdzie przechowywane są Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) w Centrum zaufania Microsoft.
 
-Chociaż większość danych tożsamości usługi Azure AD pochodzących od klientów z Europy jest przechowywana w europejskich centrach danych, to istnieje pięć atrybutów związanych z użytkownikiem, które są zazwyczaj przechowywane w centrach danych zlokalizowanych w Stanach Zjednoczonych. Te atrybuty to: GivenName, Surname, userPrincipalName, Domain i PasswordHash. Wyjątkiem jest atrybut PasswordHash, który może być przechowywany poza Stanami Zjednoczonymi. Dzieje się tak, gdy użytkownik korzysta z lokalnej metody uwierzytelniania federacyjnego, która nie pozwala na synchronizowanie wartości PasswordHash z usługą Azure AD. Ponadto istnieją pewne specyficzne dla usługi dane operacyjne niezbędne do prawidłowego działania usługi Azure AD, które są przechowywane w Stanach Zjednoczonych i nie zawierają żadnych danych osobowych.
+Chociaż większość Azure danych związanych z usługi AD Europejskiego tożsamości pozostaje w europejskich centrach danych, istnieją pewne dane operacyjne, specyficzne dla usługi, które są wymagane do normalnego działania usługi Azure AD, są przechowywane w Stanach Zjednoczonych, która nie zawiera żadnych danych osobowych.
 
 ## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>Dane należące do klientów z Europy przechowywane poza europejskimi centrami danych
 
 W przypadku organizacji korzystających z europejskich adresów większość danych tożsamości dotyczących usługi Azure AD pozostaje w europejskich centrach danych. Azure AD danych przechowywane w europejskich centrach danych, również replikowane do centrów danych w Stanach Zjednoczonych, obejmuje:
-
-- **Atrybuty dotyczące tożsamości**
-
-    Następujące atrybuty dotyczące tożsamości są replikowane do Stanów Zjednoczonych:
-
-    - GivenName
-    - Nazwisko
-    - userPrincipalName
-    - Domain
-    - PasswordHash
-    - SourceAnchor
-    - AccountEnabled
-    - PasswordPolicies
-    - StrongAuthenticationRequirement
-    - ApplicationPassword
-    - PUID
 
 - **Usługa Microsoft Azure Multi-Factor Authentication (MFA) i samoobsługowe resetowanie haseł w usłudze Azure AD (SSPR)**
     
     Usługa MFA przechowuje wszystkie dane użytkownika w europejskich centrach danych. Jednak niektóre dane specyficzne dla usługi MFA są przechowywane w Stanach Zjednoczonych, w tym:
     
     - Dane uwierzytelniania dwuskładnikowego i powiązane z nim dane osobowe mogą być przechowywane w Stanach Zjednoczonych w przypadku korzystania z uwierzytelniania wieloskładnikowego lub samoobsługowego resetowania hasła.
+
         - Wszystkie procedury uwierzytelniania dwuskładnikowego korzystające z połączeń telefonicznych lub wiadomości tekstowych mogą być wykonywane przez operatorów w Stanach Zjednoczonych.
+    
         - Powiadomienia push używające aplikacji Microsoft Authenticator wymagają zastosowania powiadomień pochodzących z usługi powiadomień producenta (firmy Apple lub Google), która może znajdować się poza Europą.
+    
         - Kody OATH są zawsze weryfikowane w Stanach Zjednoczonych. 
+    
     - Niektóre dzienniki uwierzytelniania wieloskładnikowego i samoobsługowego resetowania hasła są przechowywane w Stanach Zjednoczonych przez 30 dni, niezależnie od typu zastosowanego uwierzytelniania.
 
 - **Microsoft Azure Active Directory B2C (Azure AD B2C)**
@@ -75,7 +63,11 @@ W przypadku organizacji korzystających z europejskich adresów większość dan
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji o tych funkcji i możliwości opisanych powyżej zobacz następujące artykuły:
 - [Co to jest uwierzytelnianie wieloskładnikowe?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
+
 - [Samoobsługowe resetowanie haseł w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
+
 - [Co to jest usługa Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+
 - [Czym jest współpraca B2B w usłudze Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+
 - [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 52058469b531383b32974ccc5bc77b31783583bd
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700591"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339951"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Przykładowa aplikacja do użycia z sieci obwodowej
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -42,7 +42,7 @@ Korzystając z poniższych skryptów, to dodawanie reguły zapory jest pierwszą
 Ten skrypt wykonują następujące czynności:
 
 1. Otwórz IMCPv4 (Ping), zapory systemu windows serwer lokalny, aby ułatwić sobie testowanie
-2. Instalacja usług IIS i .net Framework 4.5
+2. Instalacja usług IIS i .NET Framework 4.5
 3. Tworzenie strony sieci web ASP.NET i pliku Web.config
 4. Zmienianie domyślnej puli aplikacji, aby ułatwić dostęp do plików
 5. Ustaw użytkownika anonimowego do konta administratora i hasła
@@ -152,12 +152,12 @@ Ten skrypt konfiguruje zaplecza dla tej prostej aplikacji. Ten skrypt wykonują 
 2. Utwórz katalog dla witryny sieci web
 3. Utwórz plik tekstowy jako zdalnego dostępu przez stronę sieci web
 4. Ustaw uprawnienia dla katalogu i pliku na anonimowe, aby zezwolić na dostęp
-5. Wyłącz zwiększone zabezpieczenia programu Internet Explorer umożliwia łatwiejsze przeglądania z tego serwera 
+5. Wyłącz zwiększone zabezpieczenia programu Internet Explorer umożliwia łatwiejsze przeglądania z tego serwera
 
 > [!IMPORTANT]
 > **Najlepsze rozwiązanie**: Nigdy nie zostanie wyłączone zwiększonych zabezpieczeń programu Internet Explorer na serwerze produkcyjnym, a także zazwyczaj jest to zły pomysł przeglądania stron internetowych z serwera produkcyjnego. Ponadto otwierania udziałów plików dla dostępu anonimowego jest to zły pomysł, ale gotowe w tym miejscu dla uproszczenia.
-> 
-> 
+>
+>
 
 Ten skrypt programu PowerShell powinno być uruchamiane lokalnie, podczas gdy RDP ma pod AppVM01. PowerShell jest wymagany do uruchamiania jako Administrator, aby zapewnić pomyślne wykonanie.
 

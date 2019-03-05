@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a2cf35203c673d6296754360ac4f794241d4c43
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 0fe4da13e8242d858d553e0532b82cf1adca450a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008682"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338763"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
@@ -59,7 +59,7 @@ Usługa API Management w wewnętrznej sieci wirtualnej znajduje się za zaporą 
 
 4. Wybierz pozycję **Zapisz**.
 
-Po pomyślnym zakończeniu wdrożenia wirtualnego wewnętrzny adres IP usługi powinien być widoczny na pulpicie nawigacyjnym.
+Po pomyślnym zakończeniu wdrożenia powinien zostać wyświetlony **prywatnej** wirtualnego adresu IP i **publicznych** wirtualnego adresu IP w bloku przeglądu usługi API Management. **Prywatnej** wirtualny adres IP jest obciążenia o zrównoważonym obciążeniu adresu IP z w ramach usługi API Management delegowane podsieci, nad którym `gateway`, `portal`, `management` i `scm` punkty końcowe można uzyskać dostęp. **Publicznych** wirtualny adres IP jest używany **tylko** ruchu płaszczyznę kontroli dla `management` punkt końcowy ponad portu 3443 i może być zablokowany w dół do [ApiManagement] [ ServiceTags] servicetag.
 
 ![Pulpit nawigacyjny usługi API Management, z wewnętrzną siecią wirtualną skonfigurowane][api-management-internal-vnet-dashboard]
 
@@ -83,25 +83,25 @@ Gdy usługa API Management jest w trybie zewnętrzną sieć wirtualną, DNS jest
 > Usługa API Management nie będzie nasłuchiwać żądań pochodzących z adresów IP. Odpowiadały na żądania dla nazwy hosta skonfigurowane na jego punktów końcowych usługi. Te punkty końcowe obejmują bramy, witryny Azure portal i portalu dla deweloperów, punkt końcowy zarządzania bezpośredniego i Git.
 
 ### <a name="access-on-default-host-names"></a>Dostęp do domyślnej nazwy hostów
-Podczas tworzenia usługi API Management, o nazwie "contoso", na przykład, następujące punkty końcowe usługi są konfigurowane domyślnie:
+Podczas tworzenia usługi API Management, o nazwie "contosointernalvnet", na przykład, następujące punkty końcowe usługi są konfigurowane domyślnie:
 
-   * Brama lub serwer proxy: contoso.azure-api.net.
+   * Brama lub serwer proxy: contosointernalvnet.azure-api.net.
 
-   * Witryna Azure portal i portalu dla deweloperów: contoso.portal.azure-api.net.
+   * Witryna Azure portal i portalu dla deweloperów: contosointernalvnet.portal.azure-api.net.
 
-   * Punkt końcowy zarządzania bezpośredniego: contoso.management.azure-api.net.
+   * Punkt końcowy zarządzania bezpośredniego: contosointernalvnet.management.azure-api.net.
 
-   * Git: contoso.scm.azure-api.net
+   * Git: contosointernalvnet.scm.azure-api.net.
 
-Aby uzyskać dostęp do tych punktów końcowych usługi API Management, można utworzyć maszynę wirtualną w podsieci podłączone do sieci wirtualnej, w której jest wdrażany usługi API Management. Przy założeniu, że wewnętrznego wirtualnego adresu IP dla usługi jest 10.0.0.5, można mapować pliku hosts % SystemDrive%\drivers\etc\hosts, w następujący sposób:
+Aby uzyskać dostęp do tych punktów końcowych usługi API Management, można utworzyć maszynę wirtualną w podsieci podłączone do sieci wirtualnej, w której jest wdrażany usługi API Management. Przy założeniu, że wewnętrznego wirtualnego adresu IP dla usługi jest 10.1.0.5, można mapować pliku hosts % SystemDrive%\drivers\etc\hosts, w następujący sposób:
 
-   * 10.0.0.5 contoso.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.azure-api.net.
 
-   * 10.0.0.5 contoso.portal.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.portal.azure-api.net.
 
-   * 10.0.0.5 contoso.management.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.management.azure-api.net.
 
-   * 10.0.0.5 contoso.scm.azure-api.net.
+   * 10.1.0.5 contosointernalvnet.scm.azure-api.net.
 
 Mogą uzyskiwać dostęp do wszystkich punktów końcowych usługi z maszyny wirtualnej, który został utworzony. Jeśli używasz niestandardowego serwera DNS w sieci wirtualnej, możesz również utworzyć rekordy DNS i uzyskać dostęp do tych punktów końcowych z dowolnego miejsca w sieci wirtualnej. 
 
@@ -125,10 +125,12 @@ Aby dowiedzieć się więcej, zobacz następujące artykuły:
 * [Sieć wirtualna — często zadawane pytania](../virtual-network/virtual-networks-faq.md)
 * [Utworzenie rekordu DNS](https://msdn.microsoft.com/library/bb727018.aspx)
 
-[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
+[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
+
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags
 

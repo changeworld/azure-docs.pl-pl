@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 58a84848c8a0ccfe906cde7027129e2ca022ec0f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9004802220f6aeb867e8a9880336416573c795fb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244897"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341530"
 ---
 # <a name="view-your-billing-accounts-in-azure-portal"></a>Wyświetl konta rozliczeniowego w witrynie Azure portal  
 
-Konto rozliczeniowe jest tworzona dla każdej umowy, zarejestruj się z firmą Microsoft za pomocą platformy Azure. Użyj konta rozliczeniowego Zarządzanie metody faktury i płatności i śledzić koszty używania usług systemu Azure. Masz dostęp do wielu kont rozliczeń. Na przykład może być zarejestrowaniu się na platformie Azure dla Twoich projektów osobistych. Może również mieć dostęp za pośrednictwem umowy Enterprise Agreement lub umowy klienta firmy Microsoft Twojej organizacji.
+Konto rozliczeniowe jest tworzona dla każdej umowy, zarejestruj się z firmą Microsoft za pomocą platformy Azure. Użyj konta rozliczeniowego Zarządzanie metody faktury i płatności i śledzić koszty używania usług systemu Azure. Masz dostęp do wielu kont rozliczeń. Na przykład może być zarejestrowaniu się na platformie Azure dla Twoich projektów osobistych. Może również mieć dostęp za pośrednictwem umowy Enterprise Agreement lub umowy klienta firmy Microsoft Twojej organizacji. Dla każdego z tych scenariuszy trzeba oddzielnego konta rozliczeniowego.
 
 Azure portal obsługuje obecnie następującego typu konta rozliczeniowego:
 
@@ -33,17 +33,21 @@ Azure portal obsługuje obecnie następującego typu konta rozliczeniowego:
 
 - **Umowy klienta Microsoft**: Konto rozliczeniowe dla umowy klienta Microsoft powstaje, gdy organizacja rejestruje umowy klienta firmy Microsoft za pomocą platformy Azure. Administratorzy w ramach konta rozliczeniowego dla umowy klienta Microsoft rozliczeń profile i faktury sekcje rozliczeń zakresy do zarządzania i uporządkowania rozliczeń dla danej organizacji. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie korzystania z konta rozliczeniowego dla umowy klienta Microsoft](billing-mca-overview.md).
 
-## <a name="change-billing-account-view"></a>Zmienianie widoku konta rozliczeniowego
+## <a name="change-billing-account-view-in-the-azure-portal"></a>Zmiany rozliczeń widoku konto w witrynie Azure portal
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+Zakres jest węzłem w ramach konta rozliczeniowego, używanego przez użytkowników do wyświetlania i zarządzania rozliczeniami. Na przykład rozliczanie konta Microsoft Online Services Program ma tylko zakres - rozliczenia konta, podczas gdy rozliczanie konta umowy Enterprise Agreement ma konta rozliczeniowego, dział i zakresy konta. Jeśli masz dostęp do wielu zakresów rozliczeń, domyślnie, wyświetlony zostanie jeden z zakresów w usłudze Azure Cost Management + rozliczenia strony. Można zmienić zakres, postępując zgodnie z poniższymi instrukcjami:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukiwanie **Cost Management + rozliczenia**.
 
-   ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
+   ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-3. Domyślnie wyświetlane są szczegóły zakresu rozliczeń, takich jak konta rozliczeniowego, dział umowy Enterprise Agreement lub profil rozliczeniowy w umowie klienta firmy Microsoft.
+3. Wybierz **wszystkie zakresy rozliczeń** z lewej strony.
 
-4. Można zmienić zakres, wybierając **zakresy rozliczeń** z lewej strony, a następnie wybierz zakres.
+   ![Zrzut ekranu przedstawiający wszystkie zakresy rozliczeń](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+
+4. Wybierz zakres, aby wyświetlić szczegóły.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

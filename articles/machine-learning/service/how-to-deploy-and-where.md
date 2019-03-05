@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f89fab47cf07538d1915d359fc29a21deb1e560
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f402aeb82271d4e0f5023f05b0d61713c4ab73c1
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986094"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338471"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -482,7 +482,7 @@ sudo ./deploymodel <ContainerRegistryName> <username> <password> <imageLocationU
 Alternatywnie, możesz wykonać kroki opisane w [modułów wdrożenia usługi Azure IoT Edge w witrynie Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) dokumentu do wdrożenia obrazu do Twojego urządzenia. Podczas konfigurowania __ustawień rejestru__ dla urządzenia, należy użyć __serwer logowania__, __username__, i __hasło__ dla obszaru roboczego Rejestr kontenerów.
 
 > [!NOTE]
-> Jeśli jesteś zaznajomiony z usługi Azure IoT, zobacz następujące dokumenty, aby uzyskać informacje na temat rozpoczynania pracy z usługą:
+> Jeśli jesteś zaznajomiony z usługi Azure IoT Edge, zobacz następujące dokumenty, aby uzyskać informacje na temat rozpoczynania pracy z usługą:
 >
 > * [Szybki start: Wdrażanie usługi pierwszy moduł usługi IoT Edge na urządzeniu z systemem Linux](../../iot-edge/quickstart-linux.md)
 > * [Szybki start: Wdrażanie usługi pierwszy moduł usługi IoT Edge na urządzeniu Windows](../../iot-edge/quickstart.md)

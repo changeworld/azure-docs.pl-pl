@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b5bca3b4c9f5fbe4c9d7dd917b4e2f0767abf145
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857152"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341021"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -329,7 +329,8 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
 
 * *Czy jest obsługiwany protokół HTTPS?*
 
-    Obsługujemy protokół TLS 1.1 i TLS 1.2.
+    Obsługujemy protokół TLS 1.1 i TLS 1.2. Firma Microsoft obecnie bez sprawdzania błędów certyfikatów protokołu HTTPS.  
+
 * *Czym różnią się „testy sieci Web” i „testy dostępności”?*
 
     Te dwa terminy mogą być używane zamiennie. Testy dostępności to bardziej ogólny termin, który, oprócz wieloetapowych testów witryny, obejmuje testy ping pojedynczego adresu URL.

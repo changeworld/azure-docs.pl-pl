@@ -3,15 +3,15 @@ title: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odz
 description: W tym artykule opisano sposób włączania replikacji maszyn wirtualnych programu VMware do odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: mayurigupta13
 ms.service: site-recovery
-ms.date: 1/29/2019
+ms.date: 3/3/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 043a49e679f2b8ec48213e28d229121d3f0e070d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329954"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338641"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -49,26 +49,19 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 
 6. W **docelowej**, wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne w trybie failed-over. Wybierz model wdrażania, który chcesz użyć na platformie Azure dla maszyn wirtualnych w trybie failed-over.
 
-7. Wybierz konto usługi Azure Storage, którego chcesz użyć na potrzeby replikacji danych. 
-
-    > [!NOTE]
-
-    >   * Możesz wybrać — wersja premium lub konta magazynu w warstwie standardowa. Jeśli wybierzesz konto usługi premium, należy określić dodatkowe konto magazynu dla dzienników trwającej replikacji. Konta muszą być w tym samym regionie co magazyn usługi Recovery Services.
-    >   * Jeśli chcesz użyć innego konta magazynu, możesz to zrobić [utworzyć](../storage/common/storage-create-storage-account.md). Aby utworzyć konto magazynu przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. 
-
-8. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne Azure, gdy zostaną uruchomione po przejściu do trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. Jeśli nie masz sieci, należy ją utworzyć. Aby utworzyć sieć przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie kliknij przycisk **OK**.
+7. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne Azure, gdy zostaną uruchomione po przejściu do trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. Jeśli nie masz sieci, należy ją utworzyć. Aby utworzyć sieć przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie kliknij przycisk **OK**.
 
     ![Włącz ustawienie obiektu docelowego replikacji](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
+8. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
 
     ![Włączanie replikacji wybierz maszyn wirtualnych](./media/vmware-azure-enable-replication/enable-replication5.png)
-10. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie.  
-11. Domyślnie wszystkie dyski są replikowane. Aby wykluczyć dyski z replikacji, kliknij przycisk **wszystkie dyski** i wyczyść wszystkie dyski, które nie mają być replikowane.  Następnie kliknij przycisk **OK**. Później możesz skonfigurować dodatkowe właściwości. [Dowiedz się więcej](vmware-azure-exclude-disk.md) informacji na temat wykluczania dysków.
+9. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie.  
+10. Domyślnie wszystkie dyski są replikowane. Aby wykluczyć dyski z replikacji, kliknij przycisk **wszystkie dyski** i wyczyść wszystkie dyski, które nie mają być replikowane.  Następnie kliknij przycisk **OK**. Później możesz skonfigurować dodatkowe właściwości. [Dowiedz się więcej](vmware-azure-exclude-disk.md) informacji na temat wykluczania dysków.
 
     ![Włączanie replikacji, skonfiguruj właściwości](./media/vmware-azure-enable-replication/enable-replication6.png)
 
-12. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji. Można zmodyfikować ustawień zasad replikacji w **ustawienia** > **zasady replikacji** > (nazwa zasad) > **edytowanie ustawień**. Zmiany dotyczą zasady, ale także dotyczą replikowanych i nowych maszyn.
-13. Włącz **spójność wielu maszyn wirtualnych** jeśli mają być zbierane z maszyn w grupie replikacji. Określ nazwę grupy, a następnie kliknij przycisk **OK**. 
+11. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji. Można zmodyfikować ustawień zasad replikacji w **ustawienia** > **zasady replikacji** > (nazwa zasad) > **edytowanie ustawień**. Zmiany dotyczą zasady, ale także dotyczą replikowanych i nowych maszyn.
+12. Włącz **spójność wielu maszyn wirtualnych** jeśli mają być zbierane z maszyn w grupie replikacji. Określ nazwę grupy, a następnie kliknij przycisk **OK**. 
 
     > [!NOTE]
 
@@ -76,7 +69,7 @@ Podczas replikowania maszyn wirtualnych programu VMware:
     >    * Grupowania maszyn wirtualnych i serwerów fizycznych, aby odzwierciedlały obciążeń. Włączenie spójności wielu maszyn wirtualnych może wpłynąć na wydajność obciążenia. Użyj tylko wtedy, gdy maszyn są to samo obciążenie i jest wymagana spójność.
 
     ![Włączanie replikacji](./media/vmware-azure-enable-replication/enable-replication7.png)
-14. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
+13. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 
 
 
@@ -87,17 +80,17 @@ Następnie możesz sprawdzić właściwości maszyny źródłowej. Należy pami�
 1. Kliknij przycisk **ustawienia** > **zreplikowane elementy** >, a następnie wybierz maszynę. **Essentials** strona zawiera informacje o ustawieniach komputera i stanu.
 2. W obszarze **Właściwości** możesz wyświetlić informacje dotyczące replikacji i trybu failover dla danej maszyny wirtualnej.
 3. W **obliczenia i sieć** > **właściwości obliczania**, można zmienić wiele propoerties maszyny Wirtualnej:
-* Maszyna wirtualna platformy Azure name - zmodyfikuj nazwę aby spełniać wymagania dotyczące usługi Azure, jeśli to konieczne
-* Rozmiar docelowej maszyny Wirtualnej lub typ — domyślny rozmiar maszyny Wirtualnej zostanie wybrany na podstawie źródła rozmiar maszyny Wirtualnej. Możesz wybrać innego rozmiaru maszyny Wirtualnej, w oparciu o potrzeby dowolnym momencie przed włączeniem trybu failover. Należy pamiętać, że rozmiar dysku maszyny Wirtualnej również zależy od rozmiaru dysku źródłowego i może być tylko zmieniane po pracy awaryjnej. Dowiedz się więcej na rozmiary dysków i operacje We/Wy w naszym [wartości docelowe skalowalności dysków](../virtual-machines/windows/disk-scalability-targets.md) artykułu.
+    * Maszyna wirtualna platformy Azure name - zmodyfikuj nazwę aby spełniać wymagania dotyczące usługi Azure, jeśli to konieczne
+    * Rozmiar docelowej maszyny Wirtualnej lub typ maszyny Wirtualnej — domyślny rozmiar maszyny Wirtualnej zostanie wybrany na podstawie źródła rozmiar maszyny Wirtualnej. Możesz wybrać innego rozmiaru maszyny Wirtualnej, w oparciu o potrzeby dowolnym momencie przed włączeniem trybu failover. Należy pamiętać, że rozmiar dysku maszyny Wirtualnej również zależy od rozmiaru dysku źródłowego i może być tylko zmieniane po pracy awaryjnej. Dowiedz się więcej na rozmiary dysków i operacje We/Wy w naszym [wartości docelowe skalowalności dysków](../virtual-machines/windows/disk-scalability-targets.md) artykułu.
 
     ![Właściwości sieci i obliczeń](./media/vmware-azure-enable-replication/vmproperties.png)
 
-*  Grupy zasobów — możesz wybrać [grupy zasobów](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) z którym maszynę staje się częścią po przejściu w tryb failover. Można zmienić tego ustawienia, ilekroć przed włączeniem trybu failover. Po przejściu w tryb failover w przypadku migrowania komputera do innej grupy zasobów, ustawienia ochrony dla tego podziału maszyny.
-* Zestaw dostępności — możesz wybrać [zestaw dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Jeśli komputerze musi być częścią po przejściu w tryb failover. Podczas zaznaczania zestawie dostępności, należy pamiętać, że:
+    *  Grupy zasobów — możesz wybrać [grupy zasobów](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) z którym maszynę staje się częścią po przejściu w tryb failover. Można zmienić tego ustawienia, ilekroć przed włączeniem trybu failover. Po przejściu w tryb failover w przypadku migrowania komputera do innej grupy zasobów, ustawienia ochrony dla tego podziału maszyny.
+    * Zestaw dostępności — możesz wybrać [zestaw dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Jeśli komputerze musi być częścią po przejściu w tryb failover. Podczas zaznaczania zestawie dostępności, należy pamiętać, że:
 
-    * Wyświetlane są tylko zestawy dostępności należących do określonej grupy zasobów.  
-    * Maszyny z różnych sieci wirtualnych nie może być częścią tego samego zestawu dostępności.
-    * Tylko maszyny wirtualne w tej samej wielkości może być częścią zestawu dostępności.
+        * Wyświetlane są tylko zestawy dostępności należących do określonej grupy zasobów.  
+        * Maszyny z różnych sieci wirtualnych nie może być częścią tego samego zestawu dostępności.
+        * Tylko maszyny wirtualne w tej samej wielkości może być częścią zestawu dostępności.
 4. Można również wyświetlić i dodać informacje dotyczące sieci docelowej, podsieci i adresu IP przypisywanego do maszyny Wirtualnej platformy Azure.
 5. W **dysków**, można wyświetlić systemu operacyjnego i dysków z danymi, które znajdują się na maszynę Wirtualną do replikacji.
 

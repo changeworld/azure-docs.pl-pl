@@ -2,18 +2,18 @@
 title: 'Usługa Azure Site Recovery: Często zadawane pytania | Dokumentacja firmy Microsoft'
 description: W tym artykule omówiono często zadawane pytania dotyczące usługi Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
-ms.author: raynew
-ms.openlocfilehash: 1300ac9b6ba0eee8698e268fb9cc613955deb74e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 3/3/2019
+ms.author: mayg
+ms.openlocfilehash: c63a5205f58d014d06b79b075b3d3d9328502e48
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321925"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338046"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
 Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Site Recovery. Jeśli masz pytania dotyczące po przeczytaniu tego artykułu, opublikuj je na [Forum usług odzyskiwania Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -88,10 +88,10 @@ Dla maszyn wirtualnych i serwerów fizycznych replikowanych między lokalnych wi
 ## <a name="replication"></a>Replikacja
 
 ### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Można replikować za pośrednictwem sieci VPN lokacja lokacja na platformie Azure?
-Usługa Azure Site Recovery replikuje dane do konta usługi Azure storage za pośrednictwem publicznego punktu końcowego. Replikacja nie jest za pośrednictwem sieci VPN lokacja lokacja. Można utworzyć sieci VPN lokacja lokacja z siecią wirtualną platformy Azure. To nie koliduje z replikacji usługi Site Recovery.
+Usługa Azure Site Recovery replikuje dane do konta usługi Azure storage lub dyski zarządzane za pośrednictwem publicznego punktu końcowego. Replikacja nie jest za pośrednictwem sieci VPN lokacja lokacja. Można utworzyć sieci VPN lokacja lokacja z siecią wirtualną platformy Azure. To nie koliduje z replikacji usługi Site Recovery.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Replikacja maszyn wirtualnych na platformie Azure mogą używać usługi ExpressRoute?
-Tak, [można użyć usługi ExpressRoute](concepts-expressroute-with-site-recovery.md) replikowania lokalnych maszyn wirtualnych do platformy Azure. Usługa Azure Site Recovery replikuje dane na koncie usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Po maszyny wirtualne mają zostały przełączone w tryb failover siecią wirtualną platformy Azure można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering) konfiguracji sieci wirtualnej platformy Azure. Replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej. W przypadku, gdy są chronione maszyn VMware lub fizycznych komputerów, upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. 
+Tak, [można użyć usługi ExpressRoute](concepts-expressroute-with-site-recovery.md) replikowania lokalnych maszyn wirtualnych do platformy Azure. Usługa Azure Site Recovery replikuje dane do usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Po maszyny wirtualne mają zostały przełączone w tryb failover siecią wirtualną platformy Azure można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering) konfiguracji sieci wirtualnej platformy Azure. Replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej. W przypadku, gdy są chronione maszyn VMware lub fizycznych komputerów, upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. 
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Czy istnieją wymagania wstępne związane z replikacją maszyn wirtualnych do platformy Azure?
 [Maszyny wirtualne VMware](vmware-physical-azure-support-matrix.md#replicated-machines) i [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) ma zostać zreplikowana na platformie Azure, powinny być zgodne z wymaganiami platformy Azure.
@@ -111,8 +111,8 @@ Tak. Przepływy pracy usługi Site Recovery można zautomatyzować przy użyciu 
 * [Replikacja maszyn wirtualnych funkcji Hyper-V, bez programu VMM do usługi Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)
 * [Replikacja VMware do platformy Azure przy użyciu programu PowerShell Resource Manager](vmware-azure-disaster-recovery-powershell.md)
 
-### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Jeśli przeprowadzam replikację do platformy Azure, jakiego konta magazynu potrzebuję?
-Wymagane jest konto magazynu LRS lub GRS. Zalecamy użycie konta GRS, dzięki czemu dane będą odporne w przypadku regionalnej awarii lub sytuacji, w której nie można odzyskać regionu podstawowego. Konto musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Usługa Premium storage jest obsługiwane dla maszyny Wirtualnej VMware, maszyn wirtualnych funkcji Hyper-V i replikacji serwera fizycznego, gdy należy wdrożyć usługę Site Recovery w witrynie Azure portal.
+### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Jeśli przeprowadzam replikację do platformy Azure, jakiego rodzaju konta magazynu i dysku zarządzanego potrzebuję?
+Potrzebny jest magazyn LRS lub GRS. Zalecamy użycie konta GRS, dzięki czemu dane będą odporne w przypadku regionalnej awarii lub sytuacji, w której nie można odzyskać regionu podstawowego. Konto musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Usługa Premium storage jest obsługiwane dla maszyny Wirtualnej VMware, maszyn wirtualnych funkcji Hyper-V i replikacji serwera fizycznego, gdy należy wdrożyć usługę Site Recovery w witrynie Azure portal. Dyski zarządzane obsługują tylko magazyn LRS.
 
 ### <a name="how-often-can-i-replicate-data"></a>Jak często mogę replikować dane?
 * **Funkcja Hyper-V:** Maszyny wirtualne funkcji Hyper-V mogą być replikowane co 30 sekund (z wyjątkiem usługi premium storage), 5 minut lub 15 minut. Jeśli po skonfigurowaniu replikacji sieci SAN replikacja jest synchroniczne.
@@ -183,7 +183,7 @@ Jeśli przeprowadzasz replikację do platformy Azure, dane aplikacji są wysyła
 Nie. Relacja rozliczeniowa platformy Azure jest nawiązana bezpośrednio z dostawcą usług. Dostawcy usług są odpowiedzialni za generowanie konkretnych rachunków dla swoich dzierżaw.
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Jeśli przeprowadzam replikację do platformy Azure, czy moje maszyny wirtualne muszą być uruchomione na platformie Azure przez cały czas?
-Nie, dane są replikowane do konta usługi Azure storage w ramach subskrypcji. Podczas testowego (test odzyskiwania po awarii) lub rzeczywistego uruchamiania trybu failover usługa Site Recovery automatycznie tworzy maszyny wirtualne w ramach subskrypcji.
+Nie, dane są replikowane do usługi Azure storage w ramach subskrypcji. Podczas testowego (test odzyskiwania po awarii) lub rzeczywistego uruchamiania trybu failover usługa Site Recovery automatycznie tworzy maszyny wirtualne w ramach subskrypcji.
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>Czy podczas replikacji do platformy Azure jest zapewniana izolacja na poziomie dzierżawy?
 Tak.

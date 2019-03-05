@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/05/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4660a45014e6afdb091fb40b8fe7f03fdb647aab
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251898"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339202"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: — Wersja Premium (wersja zapoznawcza), warstw magazynowania gorąca, chłodna i archiwum
 
@@ -56,16 +56,6 @@ Blob storage i GPv2 kont udostępniają **warstwy dostępu** atrybut na poziomie
 Dostępna w wersji zapoznawczej jest dostępu w warstwie Premium, co sprawia, że często używane dane dostępne za pośrednictwem sprzętu wysokiej wydajności. Dane przechowywane w tej warstwie jest przechowywana na dyskach SSD, które są optymalizowane w celu zmniejszenia opóźnień i wyższej szybkości transakcji w porównaniu do tradycyjnych dysków twardych. Warstwa dostępu — wersja Premium jest dostępna za pośrednictwem typu konta magazynu blokowych obiektów Blob tylko.
 
 Ta warstwa jest idealny dla obciążeń wymagających czasy reakcji szybkie i spójne. Dane, które obejmuje użytkowników końcowych, takich jak interaktywne wideo edycji statyczne zawartość sieci web, transakcji w trybie online i jak dobrze nadają się dla warstwy dostępu do wersji Premium. Ta warstwa jest przeznaczony dla obciążeń, które wykonują wiele małych transakcji, takich jak przechwytywanie danych telemetrycznych, wiadomości błyskawiczne i transformacji danych.
-
-Aby korzystać z tej warstwy aprowizować nowe konto magazynu blokowych obiektów Blob i rozpocząć tworzenie kontenerów i obiektów blob za pomocą [interfejsu API REST usługi Blob](/rest/api/storageservices/blob-service-rest-api), [AzCopy](/azure/storage/common/storage-use-azcopy), lub [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
-
-W trakcie okresu zapoznawczego warstwy dostępu do usługi Premium:
-
-- Jest dostępna jako magazyn lokalnie nadmiarowy (LRS)
-- Jest dostępna tylko w następujących regionach: Wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA
-- Nie obsługuje warstw na poziomie obiektu lub automatyczną obsługą warstw pozwalająca za pomocą funkcji zarządzania cyklem życia danych
-
-Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej z warstwy Premium dostępu, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](https://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Warstwa dostępu Gorąca
 

@@ -2,18 +2,18 @@
 title: Wdrażanie serwera konfiguracji na potrzeby odzyskiwania po awarii programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób wdrażania serwera konfiguracji w celu odzyskiwania po awarii programu VMware przy użyciu usługi Azure Site Recovery
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/05/2018
-ms.author: ramamill
-ms.openlocfilehash: 4260aaf814b344c1a30106651959d4e4e9ad2335
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.date: 02/28/2019
+ms.author: mayg
+ms.openlocfilehash: e7ee8f58e42f99ebc087f21837511979c578fb89
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594223"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340086"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -121,7 +121,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 ### <a name="configure-settings"></a>Konfigurowanie ustawień
 
-1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, której używa serwer przetwarzania do odbierania ruchu związanego z replikacją z maszyn wirtualnych. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go. Zdecydowanie zalecane jest aby nie zmieniać adresu IP serwera konfiguracji. Upewnij się, że adres IP przypisane do serwera konfiguracji jest statyczny adres IP i nie IP protokołu DHCP.
+1. W Kreatorze konfiguracji serwera zarządzania zaznacz **Konfiguracja łączności**. Z list rozwijanych najpierw wybierz kartę Sieciową, używanego przez serwer w tworzonym przez proces odnajdywania i wypychanie instalacji usługi mobilności na maszynach źródła, a następnie wybierz kartę Sieciową, która korzysta z serwera konfiguracji dla łączności z platformą Azure. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go. Zdecydowanie zalecane jest aby nie zmieniać adresu IP serwera konfiguracji. Upewnij się, że adres IP przypisane do serwera konfiguracji jest statyczny adres IP i nie IP protokołu DHCP.
 2. W **magazyn usługi Recovery Services zaznacz**, zaloguj się do systemu Microsoft Azure przy użyciu poświadczeń używanych w **kroku 6** z "[Zarejestruj serwer konfiguracji za pomocą usług Azure Site Recovery](#register-the-configuration-server-with-azure-site-recovery-services)" .
 3. Po zalogowaniu wybierz swoją subskrypcję platformy Azure i grupę zasobów i magazyn.
 

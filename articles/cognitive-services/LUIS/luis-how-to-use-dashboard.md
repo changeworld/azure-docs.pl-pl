@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8927213dc4f1cf01eccdd8f54a946f9dbbaaa04d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869963"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338437"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>Statystyki modelu i użycia na pulpicie nawigacyjnym
 Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji w jednym skrócie. **Pulpit nawigacyjny** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** stronie wybierz **pulpit nawigacyjny** z górnym panelu. 
@@ -69,21 +69,8 @@ Liczba trafień używane z klucza punktu końcowego aplikacji. Aby uzyskać wię
 
 ![Podział intencji](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-Aby kontrolować, czy podział jest oparta na wypowiedzi etykietą lub trafienia punktu końcowego:
-
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk Określ dodatkowe ustawienia do listy dostępu](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
-
-    ![Lista opcji podziału](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. Wybierz wartość z listy, a następnie kliknij przycisk strzałki wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres.
-
 ## <a name="entity-breakdown"></a>Podział jednostki
 Pulpit nawigacyjny przedstawia podział jednostki na podstawie wypowiedzi etykietą lub trafienia punktu końcowego. Ten wykres podsumowania przedstawia względnego każdej jednostki w aplikacji. Po umieszczeniu wskaźnika myszy nad wycinek zostanie wyświetlony, nazwa podmiotu i wartość procentowa w trafień etykietami wypowiedzi/punktu końcowego. 
 
 ![Podział jednostki](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-Aby kontrolować, czy podział jest oparta na wypowiedzi etykietą lub trafienia punktu końcowego:
-
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk Określ dodatkowe ustawienia, aby uzyskać listę](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
-
-    ![Lista podział jednostek](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. Wybierz wartość z listy, a następnie kliknij przycisk strzałki wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres odpowiednio.

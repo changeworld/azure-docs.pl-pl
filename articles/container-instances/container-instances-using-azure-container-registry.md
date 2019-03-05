@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b596af8ae9fbbaee6964622df44d316a11582cb9
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727912"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337927"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdrażanie usługi Azure Container instances z usługi Azure Container Registry
 
@@ -33,7 +33,7 @@ W poniższej sekcji Tworzenie usługi Azure key vault i nazwy głównej usługi 
 
 ### <a name="create-key-vault"></a>Tworzenie magazynu kluczy
 
-Jeśli nie masz jeszcze magazynu w usłudze [Azure Key Vault](/azure/key-vault/), utwórz go przy użyciu interfejsu wiersza polecenia platformy Azure przy użyciu poniższych poleceń.
+Jeśli nie masz jeszcze magazynu w usłudze [Azure Key Vault](../key-vault/key-vault-overview.md), utwórz go przy użyciu interfejsu wiersza polecenia platformy Azure przy użyciu poniższych poleceń.
 
 Aktualizacja `RES_GROUP` zmiennej z nazwą istniejącej grupy zasobów, w której chcesz utworzyć magazyn kluczy i `ACR_NAME` nazwą rejestru kontenerów. Określ nazwę dla nowego magazynu kluczy w `AKV_NAME`. Nazwa magazynu musi być unikatowa w obrębie platformy Azure i musi być 3 do 24 znaków alfanumerycznych oraz zaczynać się literą, kończyć literą lub cyfrą i nie może zawierać występujących po sobie łączników.
 

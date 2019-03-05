@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 3c5f5778d68b8df4d4b3132ff96bedb9d5da24ee
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9e43d122bfb758e2e9e14db2ef200cbf3adbefcb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249232"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340415"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Informacje o opłatach na fakturze umowy klienta firmy Microsoft
 
-Można uzgodnić opłaty na fakturze, analizując poszczególnych transakcji na fakturze.
+Aby zrozumieć opłaty na fakturze, analizowanie poszczególnych transakcji.
 
-W koncie rozliczeniowym umowy klienta firmy Microsoft faktury jest generowany co miesiąc przez każdy profil rozliczeniowy. Faktura obejmuje wszystkie opłaty z poprzedniego miesiąca. Fakturach można wyświetlić w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [widoku i pobierania usługi Microsoft Azure faktury](billing-download-azure-invoice.md).
+W koncie rozliczeniowym umowy klienta firmy Microsoft faktury jest generowany co miesiąc przez każdy profil rozliczeniowy. Faktura obejmuje wszystkie opłaty z poprzedniego miesiąca. Fakturach można wyświetlić w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pobierać faktury dla umowy klienta Microsoft](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
 Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
@@ -59,13 +59,13 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 ### <a name="view-transactions-by-invoice-sections"></a>Wyświetl transakcje w sekcjach faktury
 
-Sekcje faktury umożliwiają organizowanie koszty, faktury profil rozliczeniowy. Aby uzyskać więcej informacji, zobacz [sekcji faktury omówienie](billing-mca-overview.md#understand-invoice-sections). Po wygenerowaniu faktury, opłaty za wszystkie sekcje profil rozliczeniowy ujęte na fakturze.
+Sekcje faktury umożliwiają organizowanie koszty, faktury profil rozliczeniowy. Aby uzyskać więcej informacji, zobacz [zrozumienie faktury sekcji](billing-mca-overview.md#understand-invoice-sections). Po wygenerowaniu faktury, opłaty za wszystkie sekcje profil rozliczeniowy odzwierciedlają na fakturze.
 
-Na poniższej ilustracji przedstawiono opłaty za części faktury dział IT na fakturze próbki.
+Na poniższej ilustracji przedstawiono opłaty za części faktury dział księgowości na fakturze próbki.
 
 ![Przykładowy obraz przedstawiający szczegóły faktury sekcji informacje](./media/billing-understand-your-bill-mca/invoicesection-details.png)
 
-Po zidentyfikowaniu opłaty sekcji faktury transakcji można wyświetlić w witrynie Azure portal, aby uzgodnić opłaty.
+Po zidentyfikowaniu opłaty sekcji faktury transakcji można wyświetlić w witrynie Azure portal, aby zrozumieć opłaty.
 
 1. Przejdź do wszystkich transakcji strony w witrynie Azure portal, aby wyświetlić następującą liczbę transakcji: faktury. Aby uzyskać więcej informacji, zobacz [Wyświetl transakcje dla faktury w witrynie Azure portal](#view-transactions-for-an-invoice-in-the-azure-portal).
 
@@ -73,9 +73,9 @@ Po zidentyfikowaniu opłaty sekcji faktury transakcji można wyświetlić w witr
 
 ## <a name="understand-pending-charges-to-estimate-your-next-invoice"></a>Zrozumienie oczekujące opłat można oszacować, na następnej fakturze
 
-W koncie rozliczeniowym umowy klienta firmy Microsoft do momentu opłaty są fakturowane, są one szacowania i traktowane jako oczekujące. Czy sfinalizowana, a uważane za naliczane, gdy występują na fakturze. Możesz wyświetlić oczekujące opłaty za profil rozliczeniowy oszacowanie opłat na następnej fakturze.
+W koncie rozliczeniowym umowy klienta firmy Microsoft do momentu opłaty są fakturowane, są one szacowania i traktowane jako oczekujące. Możesz wyświetlić oczekujące opłaty w witrynie Azure portal można oszacować, na następnej fakturze. Oczekujące opłaty są szacowania i nie zawierają podatku, więc rzeczywiste opłaty na następnej fakturze będą się różnić od oczekujących obciążeń.
 
-### <a name="view-charges-summary"></a>Wyświetl podsumowanie kosztów
+### <a name="view-summary-of-pending-charges"></a>Wyświetl podsumowanie oczekujących opłaty
 
 1. Zaloguj się w witrynie [Azure Portal](https://www.azure.com).
 
@@ -91,11 +91,11 @@ W koncie rozliczeniowym umowy klienta firmy Microsoft do momentu opłaty są fak
 
    ![Zrzut ekranu pokazujący Azure portal Wyszukaj Zarządzanie kosztami i rozliczenia](./media/billing-understand-your-bill-mca/mca-billing-profile-summary.png)
 
-Opłaty od początku miesiąca są oczekujące opłaty dla bieżącego miesiąca i są rozliczane po wygenerowaniu faktury na miesiąc. Jeśli faktury w ostatnim miesiącu nie nadal jest generowany, a następnie opłaty za ostatni miesiąc, są również oczekujące.
+Opłaty od początku miesiąca są oczekujące opłaty dla bieżącego miesiąca i są rozliczane po wygenerowaniu faktury na miesiąc. Jeśli faktury w ostatnim miesiącu nie nadal jest generowany, a następnie opłaty za ostatni miesiąc, są również oczekujące i zostanie naliczona na następnej fakturze.
 
 ### <a name="view-pending-transactions"></a>Wyświetlanie oczekujących transakcji
 
-Po zidentyfikowaniu oczekujące opłat, możesz wyświetlić poszczególnych transakcji, które przyczyniają się do opłat za na stronie wszystkie transakcje. W tym momencie do czasu użycia opłaty nie są wyświetlane na stronie wszystkich transakcji. Opłaty za użycie oczekujące można wyświetlić na stronie subskrypcje platformy Azure. Aby uzyskać więcej informacji, zobacz [Wyświetl oczekujące opłaty za użycie](#view-pending-usage-charges)
+Po zidentyfikowaniu oczekujące opłaty może zrozumieć opłaty, analizując poszczególnych transakcji, które przyczyniły się do opłat za. W tym momencie do czasu użycia opłaty nie są wyświetlane na stronie wszystkich transakcji. Opłaty za użycie oczekujące można wyświetlić na stronie subskrypcje platformy Azure. Aby uzyskać więcej informacji, zobacz [Wyświetl oczekujące opłaty za użycie](#view-pending-usage-charges)
 
 1. Zaloguj się w witrynie [Azure Portal](https://www.azure.com).
 
@@ -127,11 +127,9 @@ Po zidentyfikowaniu oczekujące opłat, możesz wyświetlić poszczególnych tra
 
     ![Zrzut ekranu, który wyświetla listę subskrypcji platformy Azure dla profil rozliczeniowy](./media/billing-understand-your-bill-mca/mca-billing-profile-subscriptions-list.png)
 
-Można wyświetlić opłat szczegółowym zestawieniem użycia, za pomocą plików platformy Azure, użycia i opłat. Aby uzyskać więcej informacji zobacz następną sekcję.
-
 ## <a name="analyze-your-azure-usage-charges"></a>Analizuj Twoje opłaty za użycie platformy Azure
 
-Użyj platformy Azure pliku csv użycia i opłat do analizowania opłat na podstawie użycia. Możesz pobrać plik dla faktury lub do czasu opłaty. Aby uzyskać więcej informacji, zobacz [pobrać faktury i dane dziennego użycia rozliczeniową za platformę Azure](billing-download-azure-invoice-daily-usage-date.md).
+Użyj platformy Azure pliku csv użycia i opłat do analizowania opłaty na podstawie użycia. Możesz pobrać plik dla faktury lub do czasu opłaty. Aby uzyskać więcej informacji, zobacz [pobrać faktury i dane dziennego użycia rozliczeniową za platformę Azure](billing-download-azure-invoice-daily-usage-date.md).
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Wyświetl szczegóły użycia przez sekcję faktury
 
@@ -143,9 +141,9 @@ W poniższych krokach objaśniono za pośrednictwem uzgadnianie opłaty za zasob
 
  | Invoice PDF | Użycie platformy Azure i opłaty CSV |
  | --- | --- |
- |Dział IT |invoiceSectionName |
- |Opłaty za użycie — Standard platformy Azure |productOrderName |
- |Magazyn |serviceFamily |
+ |Dział księgowości |invoiceSectionName |
+ |Opłaty za użycie — planu platformy Microsoft Azure |productOrderName |
+ |Wystąpienia obliczeniowe |serviceFamily |
 
 1. Filtr **invoiceSectionName** kolumny w pliku CSV do **działu księgowości**.
 2. Filtr **productOrderName** kolumny w pliku CSV do **Plan usługi Microsoft Azure**.
@@ -173,7 +171,7 @@ Filtr **subscriptionName** kolumny w usłudze Azure pliku CSV użycia i opłat d
 
 Instrukcje dotyczące płacenia rachunku są wyświetlane na dole faktury. [Dowiedz się, jak płacić](billing-mca-understand-your-invoice.md#how-to-pay).
 
-Jeśli została już zapłacono swój rachunek, możesz sprawdzić stan płatności na stronie faktur w witrynie Azure portal. 
+Jeśli została już zapłacono swój rachunek, możesz sprawdzić stan płatności na stronie faktur w witrynie Azure portal.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

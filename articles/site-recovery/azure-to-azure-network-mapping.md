@@ -5,24 +5,24 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: b52bdd5948676c09c433cbda249248ce26ce8a48
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c4309b20664520bc1912adadee72d614a085f573
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866032"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338957"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
-W tym artykule opisano sposób mapowania dwóch wystąpień z sieciami wirtualnymi platformy Azure (Vnet) znajduje się w różnych regionach platformy Azure oraz konfigurowanie adresów IP między sieciami. Mapowanie sieci zapewnia, że zreplikowanej maszyny Wirtualnej jest tworzony w lokalizacji docelowej usługi Azure region jest tworzony w sieci wirtualnej, która jest mapowana do sieci wirtualnej źródłowej maszyny Wirtualnej.
+W tym artykule opisano sposób mapowania dwóch wystąpień z sieciami wirtualnymi platformy Azure (Vnet) znajduje się w różnych regionach platformy Azure oraz konfigurowanie adresów IP między sieciami. Mapowanie sieci zapewnia domyślne zachowanie wybór sieci docelowej, na podstawie źródła sieci podczas włączania replikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed mapowaniem sieci powinny mieć [sieciami wirtualnymi platformy Azure](../virtual-network/virtual-networks-overview.md) w źródle i określania elementów docelowych regionów platformy Azure. 
 
-## <a name="set-up-network-mapping"></a>Konfigurowanie mapowania sieci
+## <a name="set-up-network-mapping-manually-optional"></a>Konfigurowanie sieci mapowanie ręcznie (opcjonalnie)
 
 Mapowania sieci w następujący sposób:
 
@@ -44,8 +44,13 @@ Jeśli nie zostały przygotowane, mapowanie sieci, przed rozpoczęciem konfiguro
 
 - Oparte na docelowym, którą wybierzesz, Usługa Site Recovery automatycznie tworzy mapowania sieci ze źródła do docelowego regionu, a także z docelowej do regionu źródłowego.
 - Domyślnie usługa Site Recovery tworzy sieć w regionie docelowym, który jest identyczny ze źródłową siecią. Usługa Site Recovery dodaje **— asr** jako sufiks do nazwy źródłowej sieci. Można dostosować sieci docelowej.
-- Jeśli już wystąpiła mapowanie sieci, nie można zmienić docelowej sieci wirtualnej, po włączeniu replikacji. Aby zmienić docelowej sieci wirtualnej, musisz zmodyfikować istniejące mapowanie sieci.
-- Jeśli zmodyfikujesz mapowania sieci z regionu, A do regionu B, upewnij się, również zmodyfikować mapowania sieci z regionu B do regionu A.]
+- Jeśli już wystąpiła mapowania sieci w sieci źródłowej, Sieć docelowa zamapowanego zawsze będzie domyślnie podczas włączania replikacji, aby uzyskać więcej maszyn wirtualnych. Można zmienić docelowa sieć wirtualna, wybierając inne dostępne opcje z listy rozwijanej. 
+- Aby zmienić domyślne docelowa sieć wirtualna dla nowych replikacji, musisz zmodyfikować istniejące mapowanie sieci.
+- Jeśli chcesz zmodyfikować mapowania sieci z regionu, A do regionu B, upewnij się, że należy najpierw usunąć mapowanie sieci z regionu B do regionu A. Po usunięciu potrzeby mapowania odwrotnego Modyfikuj mapowanie sieci z regionu, A do regionu B, a następnie utwórz odpowiednie mapowania odwrotnego.
+
+>[!NOTE]
+>* Modyfikowanie mapowania sieci zmienia tylko wartości domyślne dla nowych replikacji maszyny Wirtualnej. Nie ma wpływu na wybór wirtualnej sieci docelowej dla istniejących replikacji. 
+>* Jeśli chcesz zmodyfikować Sieć docelowa dla istniejących replikacji, przejdź do obliczeń i ustawień sieci replikowanego elementu.
 
 ## <a name="specify-a-subnet"></a>Określ podsieć
 

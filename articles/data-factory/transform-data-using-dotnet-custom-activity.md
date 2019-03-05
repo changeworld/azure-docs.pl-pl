@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 408776b0b0053b2b2d45112568a2e28467123768
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ba59ca4ac9a200c4579a4f71ff94be6bd554f180
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805379"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341565"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -107,12 +107,13 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | folderPath            | Ścieżka do folderu niestandardowych aplikacji i wszystkich jego zależności<br/><br/>Jeśli występują zależności przechowywane w podfolderach — czyli w hierarchicznej struktury folderów w obszarze *folderPath* — struktura folderów jest spłaszczany obecnie, gdy pliki są kopiowane do usługi Azure Batch. Oznacza to, że wszystkie pliki są kopiowane do pojedynczego folderu z bez podfolderów. Aby obejść ten problem, należy wziąć pod uwagę kompresowanie plików, Kopiowanie skompresowanego pliku i rozpakowywania go przy użyciu niestandardowego kodu w dowolnym miejscu. | Brak&#42;       |
 | referenceObjects      | Tablica istniejących połączonych usług i zestawów danych. Odwołania usługi połączone i zestawy danych są przekazywane do aplikacji niestandardowej w formacie JSON, dzięki czemu niestandardowy kod może odwoływać się do zasobów usługi Data Factory | Nie       |
 | extendedProperties    | Właściwości zdefiniowane przez użytkownika, które mogą być przekazywane do aplikacji niestandardowej w formacie JSON, dzięki czemu niestandardowy kod może odwoływać się do dodatkowych właściwości | Nie       |
+| retentionTimeInDays | Czas przechowywania plików przesłanych dla działań niestandardowych. Wartość domyślna to 30 dni. | Nie |
 
 &#42;Właściwości `resourceLinkedService` i `folderPath` muszą być jednocześnie określone lub oba, można pominąć.
 
 > [!NOTE]
 > Jeśli przekazujesz połączone usługi jako referenceObjects w działaniu niestandardowym, jest dobrym sposobem do przekazania do usługi Azure Key Vault włączony połączonej usługi (ponieważ nie zawiera żadnych bezpiecznego ciągów) i pobierania poświadczeń przy użyciu nazwy klucza tajnego bezpośrednio z klucza Magazyn z kodu. Przykład można znaleźć [tutaj](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) odwołania AKV włączenia połączona usługa pobiera poświadczenia z usługi Key Vault, a następnie uzyskuje dostęp do magazynu w kodzie.  
- 
+
 ## <a name="custom-activity-permissions"></a>Działanie niestandardowe uprawnienia
 
 Niestandardowe działanie Ustawia konto usługi Azure Batch automatycznie użytkownika *dostępu inni niż administratorzy z zakresem zadań* (domyślna Specyfikacja użytkownika automatycznie). Nie można zmienić poziom uprawnień konta użytkownika automatycznie. Aby uzyskać więcej informacji, zobacz [uruchamianie zadań w ramach kont użytkowników w usłudze Batch | Konta użytkowników automatycznie](../batch/batch-user-accounts.md#auto-user-accounts).
@@ -321,7 +322,7 @@ Dostęp do właściwości typu *SecureString* z niestandardowych działań odczy
 
 ## <a name="compare-v2-v1"></a> Porównaj działaniu niestandardowym w wersji 2 i w wersji 1 (niestandardowy) działania DotNet
 
-W usłudze Azure Data Factory w wersji 1 wykonania działania DotNet (niestandardowy), tworząc .net projekt biblioteki klas z klasą, która implementuje `Execute` metody `IDotNetActivity` interfejsu. Usługi połączone, zestawy danych i właściwości rozszerzone w ładunku JSON działania DotNet (niestandardowy) są przekazywane do metody wykonywania jako silnie typizowanych obiektów. Aby uzyskać szczegółowe informacje o zachowaniu w wersji 1, zobacz [DotNet (niestandardowy) w wersji 1](v1/data-factory-use-custom-activities.md). Z powodu tej implementacji w wersji 1 Kod działania DotNet ma pod kątem platformy .net Framework 4.5.2. Wersja 1 działania DotNet również musi być wykonywane w węzłach puli usługi Batch opartych na Windows Azure.
+W usłudze Azure Data Factory w wersji 1 wykonania działania DotNet (niestandardowy), tworząc .net projekt biblioteki klas z klasą, która implementuje `Execute` metody `IDotNetActivity` interfejsu. Usługi połączone, zestawy danych i właściwości rozszerzone w ładunku JSON działania DotNet (niestandardowy) są przekazywane do metody wykonywania jako silnie typizowanych obiektów. Aby uzyskać szczegółowe informacje o zachowaniu w wersji 1, zobacz [DotNet (niestandardowy) w wersji 1](v1/data-factory-use-custom-activities.md). Z powodu tej implementacji w wersji 1 Kod działania DotNet ma pod kątem platformy .NET Framework 4.5.2. Wersja 1 działania DotNet również musi być wykonywane w węzłach puli usługi Batch opartych na Windows Azure.
 
 W przypadku działania niestandardowego Azure danych fabryki V2 nie należy implementować interfejsu .net. Można teraz bezpośrednio uruchomić polecenia, skrypty i własny kod niestandardowy skompilowany jako wykonywalny. Aby skonfigurować tę implementację, należy określić `Command` właściwości wraz z `folderPath` właściwości. Niestandardowe działanie przekazuje plik wykonywalny i jego zależności, aby `folderpath` i wykonuje polecenie dla Ciebie.
 
@@ -335,7 +336,7 @@ W poniższej tabeli opisano różnice między działań niestandardowych w wersj
 |Różnice      | Działanie niestandardowe      | Wersja 1 (niestandardowy) działania DotNet      |
 | ---- | ---- | ---- |
 |Jak jest zdefiniowany w niestandardowej logiki      |Dostarczając plik wykonywalny      |Implementując .net biblioteki DLL      |
-|Środowisko wykonywania logiki niestandardowej      |Windows lub Linux      |Windows (.Net Framework 4.5.2)      |
+|Środowisko wykonywania logiki niestandardowej      |Windows lub Linux      |Windows (.NET Framework 4.5.2)      |
 |Wykonywanie skryptów      |Obsługuje wykonywanie skryptów bezpośrednio (na przykład "cmd /c echo hello world" na maszynie Wirtualnej Windows)      |Wymaga wdrożenia na platformie .net biblioteki DLL      |
 |Zestaw danych jest wymagana      |Optional (Opcjonalność)      |Wymagane do działania połączyć w łańcuch informacjami i przekazują      |
 |Przekazywanie informacji z działania do logiki niestandardowej      |Za pomocą ReferenceObjects (LinkedServices i zestawów danych) i ExtendedProperties (właściwości niestandardowych)      |Przy użyciu właściwości rozszerzone (właściwości niestandardowych), dane wejściowe i wyjściowe zestawy danych      |

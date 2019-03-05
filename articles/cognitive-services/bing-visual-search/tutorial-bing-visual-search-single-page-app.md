@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: cf8525d4cc829805532210bf09e9ea9da240405d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857753"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338658"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego 
 
-Interfejs API wyszukiwania wizualnego Bing udostępnia środowisko podobne do szczegółów obrazu pokazanego w witrynie Bing.com/images. Za pomocą wyszukiwania wizualnego można określić obraz i uzyskać szczegółowe informacje dotyczące tego obrazu, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko. 
+Interfejs API wyszukiwania wizualnego Bing udostępnia środowisko podobnie jak pokazano na Bing.com/images szczegółowe informacje dotyczące obrazu. Za pomocą wyszukiwania wizualnego można określić obraz i uzyskać szczegółowe informacje dotyczące tego obrazu, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko. 
 
 W tym artykule wyjaśniono, jak rozszerzyć aplikacji jednej strony sieci web dla interfejsu API wyszukiwania obrazów Bing. Aby wyświetlić ten samouczek lub pobrać kodu źródłowego użytego w tym miejscu, zobacz [samouczka: Tworzenie aplikacji jednostronicowej dla interfejsu API wyszukiwania obrazów Bing](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md). 
 

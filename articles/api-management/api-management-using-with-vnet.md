@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 98d8f530b91c2b2483d00838cd4001be88e18a6c
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 6ace19339eb3f89c3b0cde6f5b9b0ecc783e2597
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011215"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341616"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure rozpoczyna się od informacji w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -140,26 +140,25 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure (Chiny)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
-+ **Przekazywania SMTP**: Połączenia sieciowego ruchu wychodzącego do przekazywania SMTP, który jest rozpoznawany jako na hoście `ies.global.microsoft.com`.
++ **Przekazywania SMTP**: Połączenia sieciowego ruchu wychodzącego do przekazywania SMTP, który jest rozpoznawany jako na hoście `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` i `ies.global.microsoft.com`
 
 + **Portal dla deweloperów CAPTCHA**: Połączenia sieciowego ruchu wychodzącego dla CAPTCHA portalu dla deweloperów, który jest rozpoznawany jako na hoście `client.hip.live.com`.
 
 + **Azure portal Diagnostics**: Aby włączyć przepływ dzienników diagnostycznych z witryny Azure portal, korzystając z rozszerzenia usługi API Management z poziomu wewnątrz sieci wirtualnej, a dostęp ruchu wychodzącego do `dc.services.visualstudio.com` na porcie 443 jest wymagany. Pomaga to w rozwiązywaniu problemów, które mogą twarzy w przypadku korzystania z rozszerzenia.
 
-+ **Trasy Instalacja ekspresowa**: Typowa konfiguracja klienta jest definiowanie własnych trasy domyślnej (0.0.0.0/0), co zmusza wychodzącego ruchu internetowego, aby zamiast tego przepływu w środowisku lokalnym. Ten przepływ ruchu niezmiennie przerywa łączność z usługą Azure API Management, ponieważ ruch wychodzący jest zablokowane w środowisku lokalnym lub translatora adresów Sieciowych będzie nierozpoznawalną zbiór adresów, które nie będą działać z różnymi punkty końcowe platformy Azure. Rozwiązanie polega na zdefiniowaniu jedną (lub więcej) trasy zdefiniowane przez użytkownika ([tras zdefiniowanych przez użytkownika][UDRs]) w tej podsieci, który zawiera usługi Azure API Management. Trasa zdefiniowana przez użytkownika definiuje trasy specyficzne dla podsieci, które będą honorowane zamiast trasy domyślnej.
++ **Wymuszanie tunelowania ruchu do zapory środowiska lokalnego przy użyciu Expressroute lub sieci wirtualne urządzenie**: Typowa konfiguracja klienta jest, aby zdefiniować własne trasy domyślnej (0.0.0.0/0), która wymusza cały ruch z usługi API Management delegowane podsieci do usługi flow za pośrednictwem zapory w środowisku lokalnym lub do wirtualnego urządzenia sieciowego. Ten przepływ ruchu niezmiennie przerywa łączność z usługą Azure API Management, ponieważ ruch wychodzący jest zablokowane w środowisku lokalnym lub translatora adresów Sieciowych będzie nierozpoznawalną zbiór adresów, które nie będą działać z różnymi punkty końcowe platformy Azure. To rozwiązanie wymaga, należy wykonać kilka czynności:
 
-    Jeśli to możliwe zaleca się użyć następującej konfiguracji:
+    * Włączanie punktów końcowych usługi w podsieci, w której wdrażana jest usługa API Management. [Punkty końcowe usługi] [ ServiceEndpoints] muszą być włączone dla usługi Azure Sql, Azure Storage, Azure Event Hub i Azure, magistrali usług. Włączanie punktów końcowych bezpośrednio z usługi API Management delegowanego podsieci z tymi usługami umożliwia ich do używania sieci szkieletowej platformy Microsoft Azure, zapewniając optymalny routing ruchu usług sieci. Jeśli używasz punktów końcowych usługi przy wymuszonego tunelowania usługa Api Management, powyżej usług Azure, których ruch nie jest wymuszone tunelowanie. Innych API Management który ruch zależności usługi jest wymuszone tunelowanie i nie mogą zostać utracone lub usługa API Management nie będzie działać prawidłowo.
+    
+    * Wszystkie kontrolki płaszczyzny ruch z Internetu do punktu końcowego zarządzania usługi API Management są przesyłane za pośrednictwem określony zbiór adresów IP dla ruchu przychodzącego, hostowane przez usługę API Management. Ruch jest wymuszonego tunelowania odpowiedzi nie będzie symetrycznie mapować do tych dla ruchu przychodzącego źródłowych adresów IP. Aby wyeliminować to ograniczenie, należy dodać następujące trasy zdefiniowane przez użytkownika ([tras zdefiniowanych przez użytkownika][UDRs]) do kierowania ruchu do platformy Azure, ustawiając miejsce docelowe te trasy hostów do "Internet". Zestaw przychodzące adresy IP dla ruchu płaszczyzna kontroli jest następująca:
+    
+    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
 
-     * Konfiguracji usługi ExpressRoute anonsuje 0.0.0.0/0 i domyślnie życie tuneli całego ruchu wychodzącego środowiska lokalnego.
-     * Trasa zdefiniowana przez użytkownika zastosowane do podsieci zawierającej usługi Azure API Management definiuje 0.0.0.0/0 z typem następnego przeskoku Internet.
-
-    Połączony wpływ tych kroków jest, czy poziomu podsieci trasy zdefiniowanej przez użytkownika ma pierwszeństwo przed ExpressRoute wymuszonego tunelowania, co pozwala na zapewnienie ruch wychodzący do Internetu z usługi Azure API Management.
-
-+ **Routing za pośrednictwem wirtualnych urządzeń sieciowych**: Konfiguracje, które za pomocą trasy zdefiniowanej przez użytkownika trasa domyślna (0.0.0.0/0) do kierowania internet kierowany ruch z podsieci za pośrednictwem wirtualnego urządzenia sieciowego działających na platformie Azure będzie blokować ruch związany z zarządzaniem, pochodzące z Internetu do usługi API Management API Management wystąpienie wdrożonych w ramach podsieci sieci wirtualnej. Ta konfiguracja nie jest obsługiwana.
-
->[!WARNING]
->Usługa Azure API Management nie jest obsługiwana w przypadku konfiguracji usługi ExpressRoute, **niepoprawnie cross anonsować tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej**. Konfiguracje usługi ExpressRoute, które mają skonfigurowaną, publiczną komunikacją równorzędną otrzymają anonsy tras od firmy Microsoft na duży zestaw zakresów adresów IP platformy Microsoft Azure. Jeśli te zakresy adresów są niepoprawnie anonsowania krzyżowego ścieżką prywatnej sieci równorzędnej, efekt jest, czy wszystkie pakiety sieciowe wychodzące z podsieci z wystąpieniem usługi Azure API Management są niepoprawnie sposób wymuszony tunelowany do sieci lokalnej klienta infrastruktura. Ten przepływ sieciowy przerywa usługi Azure API Management. Rozwiązanie tego problemu jest zatrzymanie anonsowania krzyżowego tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej.
-
+    * Dla innych użytkowników usługi API Management service zależności, które są wymuszonego tunelowania, ich powinna być sposób, aby rozpoznać nazwę hosta i skontaktowanie się z punktem końcowym. Należą do nich
+        - Monitorowanie kondycji i metryki
+        - Azure portal Diagnostics
+        - Przekazywania protokołu SMTP
+        - Portal dla deweloperów CAPTCHA
 
 ## <a name="troubleshooting"> </a>Rozwiązywanie problemów
 * **Początkowej instalacji**: Po początkowym wdrożeniu usługi API Management w podsieci nie powiedzie się, zaleca się najpierw wdrożyć maszynę wirtualną w tej samej podsieci. Dalej pulpitu zdalnego z maszyną wirtualną i sprawdź, czy jest łączność z jedną z każdego zasobu poniżej w Twojej subskrypcji platformy azure
@@ -179,7 +178,7 @@ Platforma Azure rezerwuje pewnych adresów IP w każdej podsieci, a nie można u
 
 Oprócz adresy IP używane przez infrastrukturę sieci Wirtualnej platformy Azure każde wystąpienie usługi Api Management w podsieci używa dwóch adresów IP zgodnie z jednostką Premium SKU lub jeden adres IP dla jednostki SKU Developer. Każde wystąpienie rezerwuje dodatkowe adresu IP dla modułu równoważenia obciążenia zewnętrznych. W przypadku wdrażania w wewnętrznej sieci wirtualnej, wymaga dodatkowych adresów IP dla wewnętrznego modułu równoważenia obciążenia.
 
-Biorąc pod uwagę przy obliczaniu powyżej minimalny rozmiar podsieci, w którym można wdrożyć usługi API Management jest rozmiarze/29, co daje 3 adresów IP.
+Biorąc pod uwagę przy obliczaniu powyżej minimalny rozmiar podsieci, w którym można wdrożyć usługi API Management jest rozmiarze/29, co daje trzech adresów IP.
 
 ## <a name="routing"> </a> Routing
 + Równoważenia obciążenia publiczny adres IP (VIP) zostanie zarezerwowany zapewniać dostęp do wszystkich punktów końcowych usługi.
@@ -213,3 +212,5 @@ Biorąc pod uwagę przy obliczaniu powyżej minimalny rozmiar podsieci, w który
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/security-overview.md
+[ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags

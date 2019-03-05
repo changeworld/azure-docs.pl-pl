@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: ced83fc31e9e4944f7392169b703056dc5b4fd98
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/04/2019
+ms.openlocfilehash: e4ccb9be5d13ea72086fbaae2ffb2ec63ad55786
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454841"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340324"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory przy użyciu języka SQL
 
@@ -28,11 +28,13 @@ W tym artykule pokazano, jak utworzyć i wypełnić usługi Azure AD, a następn
 > [!IMPORTANT]  
 > Nawiązywanie połączenia z SQL Server uruchomiony na Maszynie wirtualnej platformy Azure nie jest obsługiwana przy użyciu konta usługi Azure Active Directory. Zamiast tego użyj domeny konta usługi Active Directory.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-and-populate-an-azure-ad"></a>Utworzyć i wypełnić usługi Azure AD
 
 Tworzenie usługi Azure AD i wypełnianie jej użytkowników i grup. Usługa Azure AD może być początkowej usługi Azure AD domeny zarządzanej. Usługa Azure AD może być również lokalne Active Directory Domain Services, które są Sfederowane z usługą Azure AD.
 
-Aby uzyskać więcej informacji, zobacz tematy [Integrating your on-premises identities with Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) (Integrowanie tożsamości lokalnych z usługą Azure Active Directory), [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/) (Platforma Microsoft Azure obsługuje teraz federację z usługą Windows Servder Active Directory), [Administering your Azure AD directory](../active-directory/fundamentals/active-directory-administer.md) (Administrowanie katalogiem usługi Azure AD), [Manage Azure AD using Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) (Zarządzanie usługą Azure AD przy użyciu programu Windows PowerShell) i [Hybrid Identity Required Ports and Protocols](../active-directory/hybrid/reference-connect-ports.md) (Wymagane porty i protokoły tożsamości hybrydowych).
+Aby uzyskać więcej informacji, zobacz tematy [Integrating your on-premises identities with Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) (Integrowanie tożsamości lokalnych z usługą Azure Active Directory), [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Platforma Microsoft Azure obsługuje teraz federację z usługą Windows Servder Active Directory), [Administering your Azure AD directory](../active-directory/fundamentals/active-directory-administer.md) (Administrowanie katalogiem usługi Azure AD), [Manage Azure AD using Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) (Zarządzanie usługą Azure AD przy użyciu programu Windows PowerShell) i [Hybrid Identity Required Ports and Protocols](../active-directory/hybrid/reference-connect-ports.md) (Wymagane porty i protokoły tożsamości hybrydowych).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory
 
@@ -186,35 +188,35 @@ Aby później usunąć administratora, w górnej części **administratora usłu
 
 Aby uruchomić polecenia cmdlet programu PowerShell, musisz mieć programu Azure PowerShell zainstalowany i uruchomiony. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Aby zainicjować obsługę administratora usługi Azure AD, wykonaj następujące polecenia programu Azure PowerShell:
 
-- Connect-AzureRmAccount
-- Select-AzureRmSubscription
+- Połącz AzAccount
+- Select-AzSubscription
 
 Polecenia cmdlet używane do udostępniania i zarządzania nimi administrator usługi Azure AD:
 
 | Nazwa polecenia cmdlet | Opis |
 | --- | --- |
-| [Set-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |Aprowizuje administrator usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. (Musi być z bieżącej subskrypcji). |
-| [Remove-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Usuwa administratora usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. |
-| [Get-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator) |Zwraca informacje o obecnie skonfigurowane dla serwera Azure SQL lub usługi Azure SQL Data Warehouse administratora usługi Azure Active Directory. |
+| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Aprowizuje administrator usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. (Musi być z bieżącej subskrypcji). |
+| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Usuwa administratora usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Zwraca informacje o obecnie skonfigurowane dla serwera Azure SQL lub usługi Azure SQL Data Warehouse administratora usługi Azure Active Directory. |
 
-Użyj polecenia PowerShell get-help, aby wyświetlić dodatkowe informacje dotyczące każdego z tych poleceń, na przykład ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``.
+Użyj polecenia PowerShell get-help, aby wyświetlić dodatkowe informacje dotyczące każdego z tych poleceń, na przykład ``get-help Set-AzSqlServerActiveDirectoryAdministrator``.
 
 Poniższy skrypt aprowizuje grupy administrator usługi Azure AD o nazwie **DBA_Group** (identyfikator obiektu `40b79501-b343-44ed-9ce7-da4c8cc7353f`) dla **demo_server** serwer w grupie zasobów o nazwie **grupy-23**:
 
 ```powershell
-Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
 **DisplayName** akceptuje parametr wejściowy, nazwę wyświetlaną usługi Azure AD lub główną nazwę użytkownika. Na przykład ``DisplayName="John Smith"`` i ``DisplayName="johns@contoso.com"``. Dla grup usługi Azure AD tylko usługi Azure AD Nazwa wyświetlana jest obsługiwane.
 
 > [!NOTE]
-> Polecenia programu Azure PowerShell ```Set-AzureRmSqlServerActiveDirectoryAdministrator``` uniemożliwia Inicjowanie obsługi administracyjnej Administratorzy usługi Azure AD dla użytkowników nieobsługiwany. Nieobsługiwana użytkownika mogą być udostępniane, ale nie można nawiązać połączenia z bazą danych.
+> Polecenia programu Azure PowerShell ```Set-AzSqlServerActiveDirectoryAdministrator``` uniemożliwia Inicjowanie obsługi administracyjnej Administratorzy usługi Azure AD dla użytkowników nieobsługiwany. Nieobsługiwana użytkownika mogą być udostępniane, ale nie można nawiązać połączenia z bazą danych.
 
 W poniższym przykładzie użyto opcjonalnego **ObjectID**:
 
 ```powershell
-Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353f"
 ```
 
@@ -224,16 +226,16 @@ Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 Poniższy przykład zwraca informacje o bieżącej administrator usługi Azure AD dla usługi Azure SQL server:
 
 ```powershell
-Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
+Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
 ```
 
 Poniższy przykład usuwa administrator usługi Azure AD:
 
 ```powershell
-Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
+Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Administrator usługi Azure Active Directory można również udostępniać za pomocą interfejsów API REST. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST zarządzania usługi i operacji na operacje bazy danych SQL Azure dla usługi Azure SQL Database](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+Administrator usługi Azure Active Directory można również udostępniać za pomocą interfejsów API REST. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST zarządzania usługi i operacji na operacje bazy danych SQL Azure dla usługi Azure SQL Database](https://docs.microsoft.com/rest/api/sql/)
 
 ### <a name="cli"></a>Interfejs wiersza polecenia  
 
@@ -308,7 +310,7 @@ Aby uzyskać więcej informacji o tworzeniu zawarte bazy danych użytkowników w
 > [!NOTE]
 > Usuwanie administratora usługi Azure Active Directory dla serwera Azure SQL uniemożliwia łączenie się z serwerem dowolnego użytkownika uwierzytelniania usługi Azure AD. Jeśli to konieczne, pustych użytkowników usługi Azure AD można porzucić ręcznie przez administratora bazy danych SQL.
 > [!NOTE]
-> Jeśli zostanie wyświetlony **upłynął limit czasu połączenia**, może być konieczne ustawienie `TransparentNetworkIPResolution` parametr parametry połączenia na wartość false. Aby uzyskać więcej informacji, zobacz [problem limitu czasu połączenia z programem .NET Framework 4.6.1 — TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
+> Jeśli zostanie wyświetlony **upłynął limit czasu połączenia**, może być konieczne ustawienie `TransparentNetworkIPResolution` parametr parametry połączenia na wartość false. Aby uzyskać więcej informacji, zobacz [problem limitu czasu połączenia z programem .NET Framework 4.6.1 — TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
 Podczas tworzenia użytkownika bazy danych, użytkownik otrzymuje **CONNECT** uprawnień i mogą się łączyć z tą bazą danych jako członek **publicznych** roli. Początkowo tylko uprawnienia dostępne dla użytkownika są wszystkie uprawnienia przyznane **publicznych** rolę lub uprawnienia udzielone do żadnej z grup usługi Azure AD, są członkami. Po zainicjowaniu użytkownikiem platformy Azure na podstawie usługi AD zawarte bazy danych można przyznać użytkownikowi dodatkowe uprawnienia, taki sam sposób jak udzielić uprawnień do jakichkolwiek innych typów użytkownika. Zazwyczaj przyznać uprawnienia do ról bazy danych i dodawania użytkowników do ról. Aby uzyskać więcej informacji, zobacz [podstawowe uprawnienia aparatu bazy danych](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Aby uzyskać więcej informacji na temat specjalne role bazy danych SQL, zobacz [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL Database](sql-database-manage-logins.md).
 Konto użytkownika domeny federacyjnej, który jest importowany do domeny zarządzanej, jako użytkownik zewnętrzny, należy użyć tożsamość domeny zarządzanej.
@@ -403,7 +405,7 @@ conn.AccessToken = "Your JWT token"
 conn.Open();
 ```
 
-Aby uzyskać więcej informacji, zobacz [Blog zabezpieczeń programu SQL Server](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/). Aby dowiedzieć się, jak dodawanie certyfikatu, zobacz [wprowadzenie do uwierzytelniania opartego na certyfikatach w usłudze Azure Active Directory](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+Aby uzyskać więcej informacji, zobacz [Blog zabezpieczeń programu SQL Server](https://blogs.msdn.microsoft.com/sqlsecurity/20../../token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/). Aby dowiedzieć się, jak dodawanie certyfikatu, zobacz [wprowadzenie do uwierzytelniania opartego na certyfikatach w usłudze Azure Active Directory](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 ### <a name="sqlcmd"></a>sqlcmd
 

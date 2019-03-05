@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf0e421572a9a698bcc68af47d8950795ac8791
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456813"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341107"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Zarządzanie hasłami aplikacji z Twojego stronę informacji zabezpieczających (wersja zapoznawcza)
 Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. To Brak obsługi oznacza, że w przypadku używania weryfikacji dwuetapowej w Twojej organizacji nie będzie działać aplikacji. Aby obejść ten problem, można utworzyć hasło wygenerowane automatycznie za pomocą każdej aplikacji niekorzystających z przeglądarki, niezależnie od normalnych hasła.
@@ -47,11 +47,11 @@ Jeśli używasz weryfikacji dwuetapowej za pomocą konta służbowego lub szkoln
 ### <a name="to-create-a-new-app-password"></a>Aby utworzyć nowe hasło aplikacji
 1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łączy informacje zabezpieczeń](media/security-info/securityinfo-myprofile.png)
+    ![Strona Moje profilu, pokazujący wyróżnione łączy informacje zabezpieczeń](media/security-info/securityinfo-myprofile-page.png)
 
 2. Wybierz **zabezpieczające** z lewego okienka nawigacji lub linku w **zabezpieczające** zablokować, a następnie wybierz **Dodaj metodę** z **informacje zabezpieczające**  strony.
 
-    ![Strona informacji zabezpieczających przy użyciu opcji Dodaj wyróżnione w — metoda](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![Strona informacji zabezpieczających przy użyciu opcji Dodaj wyróżnione w — metoda](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Na **Dodaj metodę** wybierz opcję **hasła aplikacji** z listy rozwijanej, a następnie wybierz **Dodaj**.
 

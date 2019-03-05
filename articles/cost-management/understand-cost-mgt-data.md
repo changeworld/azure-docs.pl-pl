@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e418cf8d619b55fde56a4d6d7d7cd9a8b36a112e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447467"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339236"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -62,8 +62,9 @@ W poniższej tabeli przedstawiono oferty nieobsługiwany.
 | **Plany pomocy technicznej** | Pomoc techniczna Pro-Direct platformy Azure dla instytucji rządowych | MS-AZR-USGOV-0042P |
 | **Plany pomocy technicznej** | Pomoc techniczną Developer platformy Azure dla instytucji rządowych | MS-AZR-USGOV-0043P |
 
-W przypadku klientów z kategoriami ofertę płatność za rzeczywiste użycie, MSDN i Visual Studio dane są dostępne w Cost Management, zaczynając od 10 02 2018.
+W przypadku klientów z kategoriami ofertę płatność za rzeczywiste użycie, MSDN i Visual Studio dane są dostępne w Cost Management, zaczynając od 10 02 2018. Aby uzyskać dostęp do danych dla Twojej subskrypcji przed 10 02 2018, można użyć [Centrum konta platformy Azure](https://account.azure.com/subscriptions) można pobrać użycia szczegółowych informacji w pliku CSV lub użyć [interfejs API szczegóły użycia](/rest/api/consumption/usagedetails).
 
+## <a name="determine-your-offer-type"></a>Określić typ oferty
 Jeśli nie widzisz danych w ramach subskrypcji i chcesz określić, jeśli Twoja subskrypcja jest objęta obsługiwanych oferty, może sprawdzić, czy Twoja subskrypcja jest obsługiwana. Aby zweryfikować, że subskrypcja platformy Azure jest obsługiwany, zaloguj się do [witryny Azure portal](https://portal.azure.com). Następnie wybierz pozycję **wszystkich usług** w okienku menu po lewej stronie. Na liście usług wybierz **subskrypcje**. W menu listy subskrypcji kliknij subskrypcję, którą chcesz zweryfikować. Twoja subskrypcja jest wyświetlana na karcie Przegląd i będzie widoczny **oferują** i **identyfikatora oferty Offer ID**. Na poniższej ilustracji przedstawiono przykładowy raport.
 
 ![Przykład na karcie Przegląd subskrypcji, oferty i identyfikator oferty](./media/understand-cost-mgt-data/offer-and-offer-id.png)

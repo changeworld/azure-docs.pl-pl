@@ -1,0 +1,76 @@
+---
+title: Wprowadzenie do Eksploratora metryk platformy Azure
+description: Dowiedz się, jak tworzenie pierwszego wykresu metryki z Eksploratorem metryk platformy Azure.
+author: vgorbenko
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 02/25/2019
+ms.author: vitalyg
+ms.subservice: metrics
+ms.openlocfilehash: a94e53644b2032af7be1575cd13807e0484eb182
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57344875"
+---
+# <a name="getting-started-with-azure-metrics-explorer"></a>Wprowadzenie do Eksploratora metryk platformy Azure
+
+## <a name="where-do-i-start"></a>Gdzie rozpocząć
+
+> [!NOTE]
+> W tym artykule opisano kluczowe pojęcia, ułatwiający nowym użytkownikom rozpocząć pracę z Eksploratorem metryk usługi Azure Monitor. Aby uzyskać bardziej szczegółowe, dokumentacji i informacji o ustawieniach zaawansowanych wykresu i metryk, zobacz [zaawansowane funkcje Eksploratora metryk usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts).
+
+Skorzystaj z Eksploratora metryk do badania kondycji i wykorzystania zasobów. Uruchom w następującej kolejności:
+
+1. Rozpocznij od [pobrania zasobu i metryki](#creating-your-first-metric-chart) zobaczyć podstawowego wykresu. Następnie [wybierz zakres czasu](#picking-time-range) jest odpowiednie dla badania.
+
+1. Po zapoznaniu się podstawowe wykresy, możesz spróbować [stosowanie filtrów wymiaru i dzielenia](#applying-dimension-filters-and-splitting). Filtry i dzielenia pozwalają analizować, jakie segmenty metryki przyczyniają się do wartości ogólne metryki i zidentyfikować elementy odstające możliwe.
+
+1. Użyj [Zaawansowane ustawienia](#advanced-chart-settings-and-next-steps) dostosować wykres przed przypięciem do pulpitów nawigacyjnych. [Konfigurowanie alertów](alerts-metric-overview.md) Aby otrzymywać powiadomienia, gdy wartość metryki przekracza lub spadnie poniżej wartości progowej.
+
+## <a name="create-your-first-metric-chart"></a>Tworzenie pierwszego wykresu metryki
+
+Aby utworzyć wykres metryk z zasobu, grupy zasobów, subskrypcji lub widok usługi Azure Monitor, otwórz **metryki** kartę i wykonaj następujące czynności:
+
+1. Za pomocą selektora zasobów, wybierz zasób, dla którego chcesz wyświetlać metryki. (Zasób jest wstępnie wybrane, jeśli otworzysz **metryki** w kontekście określonego zasobu).
+
+    > ![Wybieranie zasobu](./media/metrics-getting-started/resource-picker.png)
+
+2. Dla niektórych zasobów należy wybrać przestrzeni nazw. Przestrzeń nazw jest po prostu sposób organizowania metryk, aby można je łatwo odnaleźć. Na przykład konta magazynu mają oddzielne przestrzenie nazw do przechowywania plików, tabel, obiektów blob i kolejek metryki. Wiele typów zasobów mieć tylko jedną przestrzeń nazw.
+
+3. Wybierz metrykę, z listy dostępnych metryk.
+
+    > ![Wybierz metrykę](./media/metrics-getting-started/metric-picker.png)
+
+4. Opcjonalnie można zmienić agregacji metryk. Na przykład możesz zechcieć wykresu do wyświetlania wartości minimalna, maksymalna lub średniej metryki.
+
+> [!NOTE]
+> Użyj **Dodaj metrykę** przycisku i powtórz te kroki, jeśli chcesz wyświetlić wiele metryk, w tym samym wykresie. W przypadku wielu wykresów w jednym widoku, wybierz **Dodaj wykres** przycisk u góry.
+
+## <a name="pick-a-time-range"></a>Wybierz zakres czasu
+
+Domyślnie wykres przedstawia w ostatnich 24 godzin dane metryk. Użyj **selektor czasu** panelu, aby zmienić zakres czasu, powiększyć lub pomniejszyć na wykresie. 
+
+![Panel zakresów czasu zmiany](./media/metrics-getting-started/time-picker.png)
+
+## <a name="apply-dimension-filters-and-splitting"></a>Zastosuj filtry wymiarów i dzielenia
+
+[Filtrowanie](metrics-charts.md#apply-filters-to-charts) i [podział](metrics-charts.md#apply-splitting-to-a-chart) są zaawansowane narzędzia diagnostyczne dla metryk, który ma wymiarów. Tych funkcji Pokaż różnych segmentów metryki ("wartości wymiaru") mieć wpływ na ogólną wartość metryki i pozwalają zidentyfikować elementy odstające możliwe.
+
+- **Filtrowanie** pozwala wybrać, wartości wymiarów, które znajdują się na wykresie. Na przykład możesz chcieć Pokaż liczba pomyślnych żądań, gdy wykresy *czas odpowiedzi serwera* metryki. Będziesz potrzebować zastosować filtr *Powodzenie żądanie* wymiaru. 
+
+- **Dzielenie** kontrolki, czy na wykresie kreślone są oddzielne wiersze dla każdej wartości wymiaru lub wartości są zagregowane w jednym wierszu. Można na przykład znajdują się jeden wiersz Średni czas odpowiedzi we wszystkich wystąpieniach serwera lub zobacz osobnych wierszach dla każdego serwera. Czy chcesz zastosować, dzielenie na *wystąpienie serwera* wymiaru, aby zobaczyć w osobnych wierszach.
+
+Zobacz [przykładów wykresów](metric-chart-samples.md) , filtrowania i dzielenia zastosowano. W tym artykule opisano kroki zostały służące do konfigurowania na wykresach.
+
+## <a name="advanced-chart-settings-and-next-steps"></a>Ustawienia zaawansowane wykresu i następne kroki
+
+Można dostosować styl wykresu, tytuł i zmodyfikuj ustawienia zaawansowane wykresu. Po zakończeniu wprowadzania dostosowań, należy ją przypiąć do pulpitu nawigacyjnego, aby zapisać swoją pracę. Można również skonfigurować alerty metryki. Postępuj zgodnie z [dokumentacji produktu](metrics-charts.md) Aby dowiedzieć się więcej na temat tych i innych zaawansowanych funkcji Eksploratora metryk usługi Azure Monitor.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Wyświetlenie listy dostępnych metryk dla usług platformy Azure](metrics-supported.md)
+* [Dowiedz się więcej o zaawansowanych funkcji Eksploratora metryk](metrics-charts.md)
+* [Zobacz przykłady, skonfigurowanego wykresów](metric-chart-samples.md)

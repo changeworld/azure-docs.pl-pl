@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2255f14d026d406dc41802c321d0a673ee2f2f23
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6a26b4c08915b44d24290fde2c74d71b9362c11c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766864"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338573"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizowanie kosztów od zalecanych
 
@@ -29,7 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Sprawdź akcji, aby upewnić się, że maszyna wirtualna został pomyślnie zmieniony
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Zalecenia są dostępne dla różnych typów konta platformy Azure, w tym [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) klientów. Aby wyświetlić pełną listę typów obsługiwanych kont, zobacz [danych rozwiązania Cost Management zrozumieć](understand-cost-mgt-data.md). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów.
+Zalecenia są dostępne dla różnych zakresów i typy konta platformy Azure, w tym [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) klientów. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
 - Subskrypcja
 - Grupa zasobów

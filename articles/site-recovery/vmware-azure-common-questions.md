@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 02/13/2019
+ms.date: 03/03/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 84f53b0ddf2d9dfbf25eabbe028c2cfaa0c3fb55
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 038716161845e94011688e8af80a5d4830ac1a5b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880057"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338148"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -33,13 +33,10 @@ Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić
 
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Czego potrzebujesz na platformie Azure?
-Potrzebujesz subskrypcji platformy Azure, magazyn usługi Recovery Services, konta magazynu i sieci wirtualnej. Magazyn, konto magazynu i sieci musi być w tym samym regionie.
-
-### <a name="what-azure-storage-account-do-i-need"></a>Konto usługi Azure storage, które jest potrzebne?
-Wymagane jest konto magazynu LRS lub GRS. Zalecamy użycie konta GRS, dzięki czemu dane będą odporne w przypadku regionalnej awarii lub sytuacji, w której nie można odzyskać regionu podstawowego. Usługa Premium storage jest obsługiwana.
+Potrzebujesz subskrypcji platformy Azure, magazyn usługi Recovery Services, konto magazynu pamięci podręcznej, następująca liczba dysków zarządzanych i sieci wirtualnej. Dyski zarządzane magazynu, konto magazynu pamięci podręcznej, a sieć musi znajdować się w tym samym regionie.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Czy Moje konto platformy Azure potrzebuje uprawnień do tworzenia maszyn wirtualnych?
-Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz, potrzebujesz uprawnień, aby utworzyć Maszynę wirtualną platformy Azure w grupie zasobów i sieci wirtualnej można określić podczas konfigurowania Site Recovery i uprawnienia do zapisu do wybranego konta magazynu. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz, musisz mieć uprawnienia do utworzenia maszyny Wirtualnej platformy Azure w grupie zasobów i sieci wirtualnej można określić podczas konfigurowania Site Recovery i uprawnienia do zapisu do wybranego konta magazynu lub zarządzanych dysków na podstawie konfiguracji. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Czy można używać licencji serwera systemu operacyjnego gościa, na platformie Azure?
 Tak, Microsoft Software Assurance klienci mogą używać [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) oszczędności na koszty licencjonowania **maszyn z systemem Windows Server** , migracji na platformę Azure lub korzystanie z systemu Azure w celu odzyskiwania po awarii.
@@ -107,7 +104,7 @@ Lokalny serwer konfiguracji można wdrożyć w następujący sposób:
 
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Gdzie są lokalne maszyny wirtualne replikowane do
-Dane są replikowane do usługi Azure storage. Po uruchomieniu trybu failover Usługa Site Recovery automatycznie tworzy maszyny wirtualne platformy Azure z konta magazynu.
+Dane są replikowane do usługi Azure storage. Po uruchomieniu trybu failover Usługa Site Recovery automatycznie tworzy maszyny wirtualne platformy Azure z konta magazynu lub zgodnie z konfiguracją dysku zarządzanego.
 
 ## <a name="replication"></a>Replikacja
 
@@ -122,15 +119,19 @@ Nie, jest to nieobsługiwany scenariusz.
 Usługa Site Recovery replikuje dane ze środowiska lokalnego do usługi Azure storage za pośrednictwem publicznego punktu końcowego lub przy użyciu usługi ExpressRoute publicznej komunikacji równorzędnej. Replikacja za pośrednictwem sieci VPN typu lokacja lokacja nie jest obsługiwana.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Można replikować na platformę Azure przy użyciu usługi ExpressRoute?
-Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na platformie Azure. Usługa Site Recovery replikuje dane na koncie usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. Po maszyny wirtualne nie za pośrednictwem sieci wirtualnej platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na platformie Azure. Usługa Site Recovery replikuje dane do usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. Po maszyny wirtualne nie za pośrednictwem sieci wirtualnej platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Jak mogę zmienić konta magazynu, po włączeniu ochrony maszyny?
 
-Konto magazynu można uaktualnić tylko do wersji premium. Jeśli chcesz użyć innego konta magazynu, należy wyłączyć replikację maszyny źródłowej i ponownie włącz ochronę przy użyciu nowego konta magazynu. Niezależnie od tego, nie ma innych możliwości zmiany na koncie magazynu po włączeniu ochrony.
+Trwającą replikację konta magazynu można tylko uaktualnić do wersji premium. Aby użyć standardowego cennika, należy wyłączyć replikację maszyny źródłowej i ponownie włącz ochronę w przypadku standardowych dysków zarządzanych. Niezależnie od tego, nie ma innych możliwości zmiany na koncie magazynu po włączeniu ochrony.
+
+### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Jak można zmienić typ dysku zarządzanego, po włączeniu ochrony maszyny?
+
+Tak, można łatwo zmienić typ dysku zarządzanego. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage).
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
-Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
+Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publicznych punktów końcowych usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Co to są replikowane wymagań dotyczących maszyn wirtualnych?
 
@@ -150,6 +151,9 @@ Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](ht
 
 ### <a name="can-i-exclude-disks"></a>Czy można wykluczyć dysków?
 Tak, można wykluczyć dyski z replikacji.
+
+### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>Można zmienić rozmiar docelowej maszyny Wirtualnej lub typ maszyny Wirtualnej przed włączeniem trybu failover?
+Tak, można zmienić typu i rozmiaru maszyny Wirtualnej kiedykolwiek przed włączeniem trybu failover, przechodząc do ustawień elementu replikację z poziomu portalu obliczenia i sieć.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Maszyny wirtualne można replikować z dyskami dynamicznymi?
 Dyski dynamiczne mogą być replikowane. Dysk systemu operacyjnego musi być dyskiem podstawowym.
@@ -267,6 +271,9 @@ Tak, zarówno szyfrowanie przesyłanych w i [szyfrowania na platformie Azure](ht
 
 
 ## <a name="failover-and-failback"></a>Praca w trybie failover i powrót po awarii
+### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Czy za pomocą serwera przetwarzania w lokalnych uzyskać powrotu po awarii
+Zdecydowanie zaleca się tworzenie serwera przetwarzania na platformie Azure w celu powrotu po awarii, aby uniknąć opóźnienia transferu danych. Ponadto w przypadku, gdy za pomocą sieci platformy Azure umożliwiający dostęp do Internetu na serwerze konfiguracji jest oddzielone ze źródłową siecią maszyn wirtualnych, jest niezbędne, aby użyć serwera przetwarzania na platformie Azure utworzone do powrotu po awarii.
+
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko można odzyskać?
 Dla replikacji VMware – Azure najstarszy punkt odzyskiwania, których można użyć to 72 godziny.
 

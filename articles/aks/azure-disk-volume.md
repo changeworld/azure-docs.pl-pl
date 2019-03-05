@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068188"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337995"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,13 +21,13 @@ Oparte na kontenerach aplikacje często muszą uzyskać dostęp do utrwalania da
 > [!NOTE]
 > Dysku platformy Azure można instalować tylko pojedynczy zasobnik w danym momencie. Jeśli musisz udostępniać trwały wolumin w wielu zasobnikach, użyj [usługi Azure Files][azure-files-volume].
 
-Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kubernetes][kubernetes-volumes].
+Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [opcji magazynu dla aplikacji w usłudze AKS][concepts-storage].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.46 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Tworzenie dysku platformy Azure
 
@@ -35,7 +35,7 @@ Podczas tworzenia dysku platformy Azure do użycia za pomocą usługi AKS, możn
 
 W tym artykule należy utworzyć dysku w węźle grupy zasobów. Najpierw Uzyskaj nazwę grupy zasobów za pomocą [az aks show] [ az-aks-show] polecenie i Dodaj `--query nodeResourceGroup` parametr zapytania. Poniższy przykład pobiera węzeł grupy zasobów dla nazwy klastra AKS *myAKSCluster* w polu Nazwa grupy zasobów *myResourceGroup*:
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -52,7 +52,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Dyski platformy Azure są rozliczane według jednostki SKU dla określonego rozmiaru. Te jednostki SKU w zakresie od 32GiB S4 lub P4 dysków do 8TiB S60 lub P60 dysków. Przepływność i wydajność operacji We/Wy — wersja Premium managed dysku zależy od rozmiaru wystąpienia węzłów w klastrze AKS i jednostki SKU. Zobacz [ceny i wydajności dysków zarządzanych][managed-disk-pricing-performance].
+> Dyski platformy Azure są rozliczane według jednostki SKU dla określonego rozmiaru. Te jednostki SKU w zakresie od 32GiB S4 lub P4 dysków do 32TiB S80 lub P80 dysków (w wersji zapoznawczej). Przepływność i wydajność operacji We/Wy — wersja Premium managed dysku zależy od rozmiaru wystąpienia węzłów w klastrze AKS i jednostki SKU. Zobacz [ceny i wydajności dysków zarządzanych][managed-disk-pricing-performance].
 
 Identyfikator zasobu dysku jest wyświetlany, gdy polecenie zostanie pomyślnie zakończony, jak pokazano w następujących przykładowych danych wyjściowych. Ten identyfikator dysku jest używany do zainstalowania dysku w następnym kroku.
 
@@ -126,6 +126,8 @@ Events:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze AKS][operator-best-practices-storage].
+
 Aby uzyskać więcej informacji o usłudze AKS klastrów oddziałują na dyskach platformy Azure, zobacz [wtyczka Kubernetes dla usługi Azure Disks][kubernetes-disks].
 
 <!-- LINKS - external -->
@@ -143,3 +145,5 @@ Aby uzyskać więcej informacji o usłudze AKS klastrów oddziałują na dyskach
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-files-volume]: azure-files-volume.md
+[operator-best-practices-storage]: operator-best-practices-storage.md
+[concepts-storage]: concepts-storage.md

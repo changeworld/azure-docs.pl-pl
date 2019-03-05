@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a8c4d4fe5476d00677c08bef9668066c4ec4f3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458063"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339746"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Zarządzanie Twojej organizacji z poziomu portalu Mój profil (wersja zapoznawcza)
 Możesz zarządzać Twojej organizacji z **organizacje** strony **Mój profil** portalu.
@@ -35,7 +35,7 @@ Istnieją dwa typy widoczne w organizacji **organizacje** strony:
 
 2. Wybierz **organizacje** z lewego okienka nawigacji lub wybierz **Zarządzanie organizacjami** link z **organizacje** bloku.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łącza organizacji](media/myprofile-portal/myprofile-portal-organizations-links.png)
+    ![Strona Moje profilu, pokazujący wyróżnione łącza organizacji](media/myprofile-portal/myprofile-portal-organizations.png)
 
 3. Przejrzyj informacje dotyczące Twojego **główna organizacji**. 
 
@@ -57,4 +57,4 @@ Możesz pozostawić każdej organizacji, które nie są główną organizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Po obejrzeniu swoją ostatnią aktywność logowania, można wybrać wyświetlanie i zarządzanie swoje [zabezpieczające](user-help-security-info-overview.md), [ostatnią aktywność logowania](myprofile-portal-recent-activity-page.md), połączone [urządzeń](myprofile-portal-devices-page.md), lub aby wyświetlić jak usługi Organizacja [używa danych](myprofile-portal-privacy-page.md).
+- Po obejrzeniu Twojej organizacji, można wybrać wyświetlanie i zarządzanie swoje [informacje zabezpieczające](user-help-security-info-overview.md), połączone [urządzeń](myprofile-portal-devices-page.md), lub widoku jak Twoja organizacja [używa danych](myprofile-portal-privacy-page.md).

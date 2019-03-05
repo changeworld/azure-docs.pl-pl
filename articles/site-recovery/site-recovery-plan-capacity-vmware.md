@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 29e01177d4b096449cd906a22b47223078c6493e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8325e2d1dccf1184c5297a60161200b41fc1d412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107824"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338284"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -42,7 +42,7 @@ Procesor CPU | Memory (Pamięć) | Rozmiar dysku w pamięci podręcznej | Wspó�
 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB do 1 TB | Umożliwia replikowanie maszyn 100-150.
 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB do 2 TB | Umożliwia replikowanie maszyn 151 do 200.
 Wdrażanie z innego serwera konfiguracji za pomocą [szablonu pakietu OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Jeśli replikujesz ponad 200 maszyn, należy wdrożyć nowy serwer konfiguracji.
-Wdrażanie drugiego [serwera przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | &GT; 2 TB| Wdrażanie nowego serwera przetwarzania skalowalnego w poziomie, jeśli całkowity Dzienny współczynnik zmian danych jest większa niż 2 TB.
+Wdrażanie drugiego [serwera przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Wdrażanie nowego serwera przetwarzania skalowalnego w poziomie, jeśli całkowity Dzienny współczynnik zmian danych jest większa niż 2 TB.
 
 W tych konfiguracjach:
 
@@ -114,7 +114,7 @@ Przed skonfigurowaniem infrastruktura usługi Site Recovery dostęp do środowis
 1. W celu mierzenia tych parametrów, należy uruchomić planista wdrażania usługi Site Recovery w środowisku. Aby uzyskać pomocne wskazówki, zobacz [Planisty wdrożenia o Site Recovery dla oprogramowania VMware na platformę Azure](site-recovery-deployment-planner.md).
 2. Wdrażanie serwera konfiguracji, który spełnia [zalecenia dotyczące serwera konfiguracji rozmiaru](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Jeśli obciążenie produkcyjne przekracza 650 maszyn wirtualnych, należy wdrożyć innym serwerze konfiguracji.
 3. Oparte na mierzonego dziennych zmian danych, wdrażanie [serwerów przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#download-installation-file) za pomocą [rozmiar wytycznych](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
-4. Jeśli oczekujesz, że szybkość dysku maszyny wirtualnej przekracza 2 MB/s, zmian danych [Konfigurowanie konta usługi Premium storage](tutorial-prepare-azure.md#create-a-storage-account). Planista wdrażania usługi Site Recovery jest uruchamiany dla określonego przedziału czasu. Szczytowe współczynnik zmian danych w innym czasie nie zostaną przechwycone w raporcie.
+4. Jeśli spodziewasz się, że szybkość dysku maszyny wirtualnej przekracza 2 MB/s zmian danych, upewnij się, korzystać z dysków zarządzanych w warstwie premium. Planista wdrażania usługi Site Recovery jest uruchamiany dla określonego przedziału czasu. Szczytowe współczynnik zmian danych w innym czasie nie zostaną przechwycone w raporcie.
 5. [Ustaw przepustowość sieci](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) oparte na cel punktu odzyskiwania chcesz osiągnąć.
 6. Po skonfigurowaniu infrastruktury włączyć odzyskiwanie po awarii dla obciążenia. Aby dowiedzieć się więcej, zobacz temat [Konfigurowanie środowiska źródłowego dla oprogramowania VMware do platformy Azure replikacji](vmware-azure-set-up-source.md).
 

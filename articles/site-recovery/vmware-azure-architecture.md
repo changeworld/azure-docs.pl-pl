@@ -1,18 +1,18 @@
 ---
 title: Program VMware do architektury odzyskiwania po awarii platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
-ms.author: raynew
-ms.openlocfilehash: 3d91788544c49c260eff051185950bdfd164b802
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 3/3/2019
+ms.author: mayg
+ms.openlocfilehash: 5f9ead8df3d0dfb2695def46087d2ea994b8b75b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217955"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340445"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Program VMware do architektury odzyskiwania po awarii platformy Azure
 
@@ -25,7 +25,7 @@ Poniższej tabeli i grafika przedstawia ogólny widok składniki używane do odz
 
 **Składnik** | **Wymaganie** | **Szczegóły**
 --- | --- | ---
-**Azure** | Subskrypcja platformy Azure, konta usługi Azure Storage i sieci platformy Azure. | Replikowane dane z lokalnych maszyn wirtualnych są przechowywane na koncie magazynu. Maszyny wirtualne platformy Azure są tworzone z replikowanych danych, po uruchomieniu trybu failover ze środowiska lokalnego do platformy Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
+**Azure** | Subskrypcja platformy Azure, konta usługi Azure Storage dla pamięci podręcznej, dysku zarządzanego i sieci platformy Azure. | Replikowane dane z lokalnych maszyn wirtualnych są przechowywane w usłudze Azure storage. Maszyny wirtualne platformy Azure są tworzone z replikowanych danych, po uruchomieniu trybu failover ze środowiska lokalnego do platformy Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
 **Konfiguracja komputera serwera** | Pojedynczy na komputerze lokalnym. Firma Microsoft zaleca, uruchom go jako maszyny Wirtualnej VMware, które mogą być wdrażane z pobranego szablonu OVF.<br/><br/> Komputer uruchamia wszystkie składniki usługi Site Recovery w środowisku lokalnym, które obejmują serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. | **Serwer konfiguracji**: Służy do koordynowania komunikacji między lokalną i platformą Azure oraz do zarządzania replikacją danych.<br/><br/> **Serwer przetwarzania**: Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Serwer przetwarzania instaluje także usługę mobilności usługi Azure Site Recovery na maszynach wirtualnych, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn lokalnych. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.<br/><br/> **Główny serwer docelowy**: Domyślnie instalowany na serwerze konfiguracji. Obsługuje on replikację danych podczas powrotu po awarii z platformy Azure. W przypadku dużych wdrożeń możesz dodać dodatkowe, oddzielny główny serwer docelowy do powrotu po awarii.
 **Serwery VMware** | Maszyny wirtualne VMware są hostowane na serwerach lokalnych vSphere ESXi. Firma Microsoft zaleca serwera vCenter do zarządzania hostami. | Podczas wdrażania usługi Site Recovery serwery VMware są dodawane do magazynu usługi Recovery Services.
 **Zreplikowane maszyny** | Usługa mobilności jest zainstalowana na każdej maszynie Wirtualnej VMware są replikowane. | Zaleca się, że zezwalają na automatycznej instalacji z serwera przetwarzania. Można też ręcznie zainstalować usługę, lub użyć metody wdrażania automatycznego, takie jak System Center Configuration Manager.

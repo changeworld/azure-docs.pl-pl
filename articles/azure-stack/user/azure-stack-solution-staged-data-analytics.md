@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/01/2018
+ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: be7bf4596989cf8dfd154e0a366f93650546224b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0261dff10e553ecbd39d394eb19e7ad3dd76f0a2
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247361"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340970"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
@@ -185,7 +185,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
     | Ustawienie | Sugerowana wartość | Opis |
     | ------- | ------- | ------- |
-    | Name | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez obiekt blob. |
+    | Name (Nazwa) | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez obiekt blob. |
     | Ścieżka | \<Ścieżka z powyższych lokalizacji magazynu > | Lokalizacja w monitorowanym magazynie obiektów Blob. Nazwa pliku obiektu blob jest przekazywana w powiązaniu jako parametr name. |
     | Połączenie konta magazynu | Połączenie aplikacji — funkcja | Można użyć połączenie konta magazynu, które są już używane przez aplikację funkcji lub utworzyć nową. |
 
@@ -245,7 +245,7 @@ Skorzystaj z kroków i ustawień opisanych powyżej, można utworzyć innego kon
 
     | Ustawienie | Sugerowana wartość | Opis |
     | ------- | ------- | ------- |
-    | Name | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez kolejkę. |
+    | Name (Nazwa) | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez kolejkę. |
     | Ścieżka | \<Ścieżka z powyższych lokalizacji magazynu > | Lokalizacja w monitorowanym magazynie. Nazwa pliku kolejki jest przekazywana w powiązaniu jako parametr name. |
     | Połączenie konta magazynu | Połączenie aplikacji — funkcja | Można użyć połączenie konta magazynu, które są już używane przez aplikację funkcji lub utworzyć nową. |
 

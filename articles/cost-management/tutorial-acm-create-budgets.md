@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1db3fbbd39418504f98469c7b4999c5a91b5d6de
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814048"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342194"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
@@ -35,11 +35,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Budżetów są obsługiwane w przypadku różnych typów konta platformy Azure. Aby wyświetlić pełną listę typów obsługiwanych kont, zobacz [danych rozwiązania Cost Management zrozumieć](understand-cost-mgt-data.md). Aby wyświetlić budżety, muszą mieć co najmniej odczytu dostępu dla konta platformy Azure.
+Budżetów są obsługiwane w przypadku różnych typów konta platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlić budżety, muszą mieć co najmniej odczytu dostępu dla konta platformy Azure.
 
  W przypadku subskrypcji umowy EA platformy Azure musi mieć dostęp do odczytu, aby wyświetlić budżet. Tworzenie i zarządzanie nimi budżety, musi mieć uprawnienia współautora. Można utworzyć indywidualne budżetów dla subskrypcji EA i grupy zasobów. Jednak nie można utworzyć budżetów dla rozliczeń konta EA.
 
-Następujące uprawnienia platformy Azure są obsługiwane na subskrypcję dla budżetów przez użytkowników i grup:
+Następujące uprawnienia platformy Azure lub zakresów, są obsługiwane na subskrypcję dla budżetów przez użytkowników i grup. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
 - Właściciel — może tworzyć, modyfikować i usuwać budżety dla subskrypcji.
 - Współautor i współautor Cost Management — można utworzyć, zmodyfikować lub usunąć swoje własne budżetów. Może też modyfikować kwoty budżetów utworzonych przez innych użytkowników.
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji na temat przypisywania uprawnień do danych rozw
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Tworzenie budżetu w witrynie Azure portal
 
-W okresie miesięczne, kwartałów lub można utworzyć budżet subskrypcji platformy Azure. Nawigacyjne zawartości w witrynie Azure portal Określa, czy utworzyć budżetu dla subskrypcji lub grupy zasobów. Na przykład w witrynie Azure portal przejdź do **subskrypcje** &gt; Wybierz subskrypcję, &gt; **budżetów**. W tym przykładzie budżet, tworzona jest wybrana subskrypcja. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **grup zasobów** > Wybierz grupę zasobów > **budżetów**.
+W okresie miesięczne, kwartałów lub można utworzyć budżet subskrypcji platformy Azure. Nawigacyjne zawartości w witrynie Azure portal Określa, czy utworzyć budżetu dla subskrypcji lub grupy zasobów. Na przykład w witrynie Azure portal przejdź do **subskrypcje** &gt; Wybierz subskrypcję, &gt; **budżetów**. W tym przykładzie budżet, tworzona jest wybrana subskrypcja. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **grup zasobów** > Wybierz grupę zasobów > **budżetów**...
 
 Po utworzeniu budżetów pokazują widok prosty bieżące wydatki względem nich.
 
@@ -85,6 +85,28 @@ W zależności od poziomu dostępu użytkownika można edytować budżetu, aby z
 
 ![Przykład edycji budżetu można zmieniać właściwości](./media/tutorial-acm-create-budgets/edit-budget.png)
 
+## <a name="trigger-an-action-group"></a>Wyzwalacz grupy akcji
+
+Podczas tworzenia lub edytowania budżetu dla subskrypcji lub w zakresie grupy zasobów, można skonfigurować go do wywoływania grupy akcji. Grupy akcji można wykonać szereg różnych działań, gdy spełnione jest próg budżetu. Aby uzyskać więcej informacji o grupach akcji, zobacz [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](../azure-monitor/platform/action-groups.md). Aby uzyskać więcej informacji o korzystaniu z budżetu na podstawie automation z grup akcji, zobacz [Zarządzanie kosztami przy użyciu platformy Azure budżetów](../billing/billing-cost-management-budget-scenario.md).
+
+Aby utworzyć lub zaktualizować grupy akcji, kliknij przycisk **Zarządzanie grupami działań** podczas tworzenia lub edytowania budżetu.
+
+![Przykład tworzenia budżetu, aby wyświetlić grupy akcji zarządzania](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
+Następnie kliknij przycisk **Dodaj grupę akcji** i Utwórz grupę akcji.
+
+
+![Obraz przedstawiający okno Dodawanie grupy akcji](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+
+Po wykonaniu akcji zostanie utworzona grupa, zamknij okno, aby powrócić do Twojego budżetu.
+
+Skonfiguruj swój budżet, aby użyć grupy akcji po osiągnięciu progu indywidualnych. Maksymalnie pięciu różnych wartości progowe są obsługiwane.
+
+![Przykład przedstawiający wybór grupy akcji dla stanu alertu](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+
+Poniższy przykład pokazuje progów budżetu równa 50%, 75% do 100%. Każdy jest skonfigurowany do wyzwalania określonych akcji w obrębie grupy wyznaczonym akcji.
+
+![Przykład przedstawiający warunki alertu skonfigurowane przy użyciu różnych grup akcji i typ akcji](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

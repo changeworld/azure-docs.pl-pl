@@ -1,5 +1,5 @@
 ---
-title: Dodają użytkowników we współpracy B2B bez zaproszenia — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Dodają użytkowników we współpracy B2B bez zaproszenia łącze lub wiadomość e-mail — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Można pozwolić, aby użytkownik-Gość innych użytkowników-gości można dodawać do usługi Azure AD, bez realizowanie zaproszenia we współpracy B2B usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -12,14 +12,14 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a75656eec8e2c79c48ab48bd96a504d6e5dbac3a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8c33d9a3755f2fb5397dd013c88ab542e727e125
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672240"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337672"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>Dodawanie użytkowników-gości współpracy B2B bez zaproszenia
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Dodawanie użytkowników-gości współpracy B2B bez zaproszenia łącze lub wiadomości e-mail
 
 Aby zaprosić użytkowników-gości, można teraz wysłać bezpośredni link do udostępnionej aplikacji. Przy użyciu tej metody użytkownicy-goście nie muszą już używać wiadomości e-mail z zaproszeniem, z wyjątkiem w niektórych przypadkach specjalne. Użytkownik-Gość klika link do aplikacji, przeglądy akceptuje postanowienia dotyczące prywatności i następnie bezproblemowo uzyskuje dostęp do aplikacji. Aby uzyskać więcej informacji, zobacz [realizacja zaproszenia współpracy B2B](redemption-experience.md).   
 

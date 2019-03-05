@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: a9fa2ed58cbd84c83d3109fe173515b07d93db30
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f903f85dfafb61562698a437465f8421aaf3a3d8
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249148"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339491"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Tworzenie sekcji na fakturze w taki sposób, aby zorganizować koszty
 
-Tworzenie sekcji na fakturze do organizowania koszty działu, środowisko programistyczne, lub odpowiednio do potrzeb Twojej organizacji. Następnie Zezwól na uprawnienia do tworzenia subskrypcji platformy Azure, w sekcji. Opłaty za użycie lub zakupów dla subskrypcji, a następnie show w sekcji faktury. Wyświetl łączne opłaty dla sekcji na fakturze w witrynie Azure portal lub zapoznaj się z nimi w analizy kosztów platformy Azure. Aby uzyskać więcej informacji, zobacz [wyświetlać transakcje w sekcjach faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
+Tworzenie sekcji na fakturze do organizowania koszty działu, środowisko programistyczne, lub odpowiednio do potrzeb Twojej organizacji. Następnie Zezwól na uprawnienia do tworzenia subskrypcji platformy Azure, w sekcji. Wszelkie opłaty za użycie lub Zakupy dla subskrypcji odzwierciedlają sekcji faktury. Wyświetl łączne opłaty dla sekcji na fakturze w witrynie Azure portal lub zapoznaj się z nimi w analizy kosztów platformy Azure. Aby uzyskać więcej informacji, zobacz [wyświetlać transakcje w sekcjach faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
 
 Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="create-an-invoice-section-in-the-azure-portal"></a>Utwórz sekcję faktury w witrynie Azure portal
 
-Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** lub **rozliczeń Współautor profilu**. Aby uzyskać więcej informacji, zobacz [Zarządzaj sekcje faktury dla rozliczeń profilu](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
+Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** lub **rozliczeń Współautor profilu**. Aby uzyskać więcej informacji, zobacz [zarządzania sekcjami faktury dla rozliczeń profilu](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
 1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 
@@ -44,7 +44,7 @@ Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** l
 
    ![Zrzut ekranu przedstawiający stronę tworzenia sekcji faktury](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 
-6. Wybierz profil rozliczeniowy. Wszelkie opłaty za użycie lub zakupy w sekcji faktury będą wyświetlane na fakturze profil rozliczeniowy.
+6. Wybierz profil rozliczeniowy. Wszelkie opłaty za użycie lub zakupy w sekcji faktury, zostanie naliczona na fakturze profil rozliczeniowy.
 
 7. Wybierz pozycję **Utwórz**.
 

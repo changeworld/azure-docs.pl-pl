@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 621e691eaedb06c26b5e6a05a12d0b742c798172
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864519"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340868"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
@@ -30,7 +30,7 @@ Jeśli potrzebujesz aplikacji klienckiej usługi LUIS wielu języków, takich ja
 
 Usługa LUIS rozumie wypowiedzi w następujących językach:
 
-| Język |Ustawienia regionalne  |  Wstępnie utworzone domeny | Wstępnie utworzone jednostki | Fraza sugestie | **[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Tonacji i<br>Słowa kluczowe)|
+| Język |Ustawienia regionalne  |  Wstępnie utworzone domeny | Wstępnie utworzone jednostki | Zalecenia dotyczące listy fraz | **[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Tonacji i<br>Słowa kluczowe)|
 |--|--|:--:|:--:|:--:|:--:|
 | Angielski |`en-US` | ✔ | ✔  |✔|✔|
 | *[Chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|

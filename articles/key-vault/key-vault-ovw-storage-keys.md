@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: barbkess
 ms.date: 10/03/2018
-ms.openlocfilehash: 9b1a4e23ed0da0637b44ac52dd4d1baeb22cd6ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 684d6a87b5cf33a3ebed36381d2db21b285a6f0c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118058"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338811"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -55,42 +55,36 @@ W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mie�
 > [!NOTE]
 > . Należy pamiętać, że po skonfigurowaniu usługi Azure Key Vault zarządzanego konta magazynu kluczy one powinien **nie** już można zmienić z wyjątkiem za pośrednictwem usługi Key Vault. Zarządzanego magazynu kluczy konta oznacza, że usługa Key Vault będą zarządzać, wymiana klucza konta magazynu
 
+> [!IMPORTANT]
+> Dzierżawa usługi Azure AD zapewnia każdej aplikacji zarejestrowanej za pomocą  **[nazwy głównej usługi](/azure/active-directory/develop/developer-glossary#service-principal-object)**, który służy jako tożsamości aplikacji. Identyfikator aplikacji nazwy głównej usługi jest używany w przypadku nadania jej zezwolenie na dostęp do innych zasobów platformy Azure za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Ponieważ usługa Key Vault jest aplikacją firmy Microsoft, jest wstępnie zarejestrowane w wszystkich dzierżaw usługi Azure AD, w tym samym Identyfikatorem aplikacji w ramach każdej chmury platformy Azure:
+> - Usługa Azure dzierżaw usługi AD w chmurze platformy Azure dla instytucji rządowych użyć Identyfikatora aplikacji `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
+> - Azure dzierżaw usługi AD w chmurze publicznej Azure oraz wszystkich innych użyć Identyfikatora aplikacji `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
+
+
 1. Po utworzeniu konta magazynu, uruchom następujące polecenie, aby uzyskać identyfikator zasobu konta magazynu, którymi chcesz zarządzać
 
     ```
     az storage account show -n storageaccountname 
     ```
-    Skopiuj identyfikator pola z wynikiem powyższego polecenia
-    
-2. Pobierz identyfikator obiektu z usługi Azure Key Vault usługi jednostki, uruchamiając poniższe polecenie
-
+    Skopiuj identyfikator pola z wynikiem powyższego polecenia, który wygląda jak poniżej
     ```
-    az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
+    /subscriptions/0xxxxxx-4310-48d9-b5ca-0xxxxxxxxxx/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
     ```
-    
-    Po pomyślnym zakończeniu tego polecenia można znaleźć Identyfikatora obiektu w wyniku:
-    ```console
-        {
-            ...
             "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
-            ...
-        }
+    
+2. Przypisz rolę RBAC "Magazynu klucz Rola usługi Operator kont" do usługi Key Vault, ograniczając zakres dostępu do konta magazynu. Dla klasycznego konta magazynu Użyj "Klasyczne konto klucz Rola usługi Operator magazynu."
+    ```
+    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
     ```
     
-3. Przypisz rolę operatora klucza magazynu do usługi Azure Identity magazynu klucza.
-
-    ```
-    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>
-    ```
+    "93c27d83-f79b-4cb2-8dd4-4aa716542e74" to identyfikator obiektu dla usługi Key Vault w chmurze publicznej. Aby uzyskać identyfikator obiektu dla usługi Key Vault w chmurach narodowych Zobacz powyższej sekcji ważne
     
-4. Tworzenie magazynu kluczy zarządzanego konta magazynu.     <br /><br />
+3. Tworzenie magazynu kluczy zarządzanego konta magazynu.     <br /><br />
    Poniżej ustawiamy okres ponowne generowanie 90 dni. Po upływie 90 dni Key Vault ponownie wygenerować "klucz1" i Zamień aktywnego klucza, z "klucz2" do "klucz1". Go spowoduje oznaczenie klucz1 jako aktywnego klucza teraz. 
    
     ```
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
     ```
-    W przypadku, gdy użytkownik nie utworzono konta magazynu i nie ma uprawnień do konta magazynu, poniższe kroki, ustaw uprawnienia dla konta upewnić się, że wszystkie uprawnienia magazynu Key Vault można zarządzać.
-    
 
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>Krok po kroku instrukcje dotyczące sposobu używania usługi Key Vault do tworzenia i generowanie tokenów sygnatur dostępu Współdzielonego
 --------------------------------------------------------------------------------

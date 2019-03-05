@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: e214870e74b2680555cf1d116862c568cc5068b1
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 76531e3ebba5519d9ddab7733abb2890003cbcd5
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213125"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339916"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Waluta wstępnie utworzone jednostki dla aplikacji usługi LUIS
 Jednostkę waluty wbudowanych wykrywa waluty w wielu nazw i kraje, niezależnie od kultury aplikacji usługi LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający Waluta intencji aplikacji. Jednostkę waluty jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 

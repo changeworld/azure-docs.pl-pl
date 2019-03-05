@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4f1c4e7695e0c260b6486b3c3d4d0bd8b3f951f6
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250031"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342619"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Szkolenie modeli PyTorch za pomocą usługi Azure Machine Learning
 
-Za pomocą PyTorch szkolenia sieci neuronowej (DNN), usługi Azure Machine Learning zapewnia niestandardowego `PyTorch` klasy `Estimator`. Zestaw Azure SDK `PyTorch` narzędzie do szacowania umożliwia łatwe przesyłanie zadania szkolenia PyTorch uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
+Za pomocą PyTorch szkolenia sieci neuronowej (DNN), usługi Azure Machine Learning zapewnia niestandardowego [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) klasy `Estimator`. Zestaw Azure SDK `PyTorch` narzędzie do szacowania umożliwia łatwe przesyłanie zadania szkolenia PyTorch uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
 Szkolenie z `PyTorch` narzędzie do szacowania jest podobne do [podstawowy `Estimator` ](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: 813ec8f74371b6ae76ac306aea2c462f0beea1fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d6f7a597ff5737bb5e9a3f07122ece313bd432ff
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55774173"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337784"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Używać alertów koszt monitorowanie użycia i wydatków
 
@@ -23,7 +23,7 @@ Ten artykuł pomoże Ci zrozumieć i zastosować Cost Management alerty monitoro
 
 ## <a name="budget-alerts"></a>Alerty budżetu
 
-Budżet alerty powiadamiają użytkownika, na podstawie użycia lub koszt, osiągnie lub nadmiarowe wydatki przekracza kwotę zdefiniowane w [alert, stanu budżetu](tutorial-acm-create-budgets.md). Usługa Cost Management budżetów są tworzone przy użyciu witryny Azure portal lub [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) interfejsu API. 
+Budżet alerty powiadamiają użytkownika, na podstawie użycia lub koszt, osiągnie lub nadmiarowe wydatki przekracza kwotę zdefiniowane w [alert, stanu budżetu](tutorial-acm-create-budgets.md). Usługa Cost Management budżetów są tworzone przy użyciu witryny Azure portal lub [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) interfejsu API.
 
 W witrynie Azure portal budżety są definiowane przez kosztów. Za pomocą interfejsu API użycia platformy Azure, budżety są definiowane przez koszt lub za rzeczywiste użycie. Alerty budżetu obsługuje budżetów opartych na kosztach i na podstawie użycia. Budżet alerty są generowane automatycznie zawsze wtedy, gdy są spełnione warunki alertu budżetu. Wszystkie alerty koszt można wyświetlić w witrynie Azure portal. Zawsze, gdy alert jest generowany, jest wyświetlana na koszt alertów. Wiadomość e-mail z alertem również są wysyłane do osób z listy adresatów alertów budżetu.
 
@@ -34,6 +34,18 @@ W witrynie Azure portal budżety są definiowane przez kosztów. Za pomocą inte
 ## <a name="department-spending-quota-alerts"></a>Dział wydatków przydział alertów
 
 Dział wydatków przydziału alerty powiadamiają użytkownika wydatków działu osiągnie Stały próg limitu przydziału. Limity przydziału wydatków są konfigurowane w portalu EA. Zawsze, gdy jest próg generuje wiadomość e-mail do działu właścicieli i jest wyświetlany w alertach kosztów. Na przykład co najmniej 75% przydziału 50%.
+
+## <a name="supported-alert-features-by-offer-categories"></a>Obsługiwane funkcje alertów według kategorii oferty
+
+Obsługa typów alertów, zależy od typu konta platformy Azure, czy masz (Microsoft oferują). W poniższej tabeli przedstawiono funkcje alertów, które są obsługiwane przez różne oferty firmy Microsoft. Można wyświetlić pełną listę ofert Microsoft [danych rozwiązania Cost Management zrozumieć](understand-cost-mgt-data.md).
+
+| Typ alertu | Umowa Enterprise | Umowa klienta firmy Microsoft | W sieci Web bezpośrednio/płatności-zgodnie-You-rzeczywistym |
+|---|---|---|---|
+| Budżet | ✔ | ✔ | ✔ |
+| Środki | ✔ |✘ | ✘ |
+| Limit przydziału wydatków dla działu | ✔ | ✘ | ✘ |
+
+
 
 ## <a name="view-cost-alerts"></a>Wyświetlanie kosztów alertów
 

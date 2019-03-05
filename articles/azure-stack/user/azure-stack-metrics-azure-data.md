@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 03/04/2018
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b8df87e5d5091219b9b44a6b957250e254c97fec
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239115"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341816"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Usługa Azure Monitor w usłudze Azure Stack
 
@@ -27,7 +27,7 @@ ms.locfileid: "55239115"
 
 Ten artykuł zawiera omówienie usługi Azure Monitor w usłudze Azure Stack. Omówiono w nim działania usługi Azure Monitor i dodatkowe informacje na temat korzystania z usługi Azure Monitor w usłudze Azure Stack. 
 
-Wprowadzenie omówienie i jak rozpocząć pracę z usługą Azure Monitor, artykuł globalnej platformy Azure [Rozpoczynanie pracy z usługą Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
+Wprowadzenie omówienie i jak rozpocząć pracę z usługą Azure Monitor, artykuł globalnej platformy Azure [Rozpoczynanie pracy z usługą Azure Monitor w usłudze Azure Stack](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
 
 ![Blok usługi Azure Monitor stosu](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
@@ -36,7 +36,7 @@ Usługa Azure Monitor to usługa platformy, która zapewnia jedno źródło moni
 > [!Note]  
 Metryki i dzienniki diagnostyczne nie są dostępne dla usługi Azure Stack Development Kit.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Wymagania wstępne dotyczące usługi Azure Monitor w usłudze Azure Stack
 
 Zarejestruj **Microsoft.insights** dostawcy zasobów na ustawienia dostawcy zasobów oferty Twojej subskrypcji. Aby sprawdzić, czy dostawcy zasobów jest dostępna w ofercie skojarzonych z subskrypcją:
 
@@ -46,13 +46,13 @@ Zarejestruj **Microsoft.insights** dostawcy zasobów na ustawienia dostawcy zaso
 4. Wybierz **dostawców zasobów** w obszarze **ustawienia.** 
 5. Znajdź **Microsoft.Insights** na liście i sprawdź, że jest w stanie **zarejestrowana.**.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview-of-azure-monitor-on-azure-stack"></a>Omówienie usługi Azure Monitor w usłudze Azure Stack
 
 Takich jak Azure Monitor na platformie Azure usługi Azure Monitor w usłudze Azure Stack zapewnia podstawowy poziom infrastrukturą metryk i dzienników dla większości usług.
 
-## <a name="azure-monitor-sources-compute-subset"></a>Usługa Azure monitor źródeł: obliczenia podzbioru
+## <a name="azure-monitor-sources-compute-subset"></a>Usługa Azure Monitor źródeł: obliczenia podzbioru
 
-![Usługa Azure monitor źródła - podzbioru obliczeń](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Usługa Azure Monitor w usłudze Azure Stack źródła - podzbioru obliczeń](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 **Microsoft.Compute** dostawcy zasobów w usłudze Azure Stack obejmuje:
  - Maszyny wirtualne 
@@ -86,7 +86,7 @@ Można przeszukiwać dzienniki aktywności, aby uzyskać informacje dotyczące z
 
 ## <a name="azure-monitor-sources-everything-else"></a>Usługa Azure monitor źródeł: wszystkie inne elementy
 
-![Źródła usługi Azure monitor — wszystko inne](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
+![Usługa Azure Monitor na źródła w usłudze Azure Stack — wszystkie inne elementy](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
 
 ### <a name="resources---metrics-and-diagnostics-logs"></a>Rejestruje zasoby — metryki i Diagnostyka
 

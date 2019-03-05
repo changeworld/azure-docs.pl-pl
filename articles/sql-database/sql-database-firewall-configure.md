@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 03/04/2019
+ms.openlocfilehash: 58eb7729dd0d2dda728d2008d5bb674f5222c08e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894704"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337842"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse IP
 
@@ -82,7 +82,7 @@ Aby umożliwić aplikacjom z platformy Azure łączenie się z serwerem Azure SQ
 
 ## <a name="creating-and-managing-ip-firewall-rules"></a>Tworzenie i zarządzanie regułami zapory adresów IP
 
-Pierwsze ustawienie zapory na poziomie serwera mogą być tworzone za pomocą [witryny Azure portal](https://portal.azure.com/) lub programowo przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [wiersza polecenia platformy Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Kolejne reguły zapory IP w poziomie serwera mogą być tworzone i zarządzane przy użyciu tych metod oraz za pomocą instrukcji języka Transact-SQL.
+Pierwsze ustawienie zapory na poziomie serwera mogą być tworzone za pomocą [witryny Azure portal](https://portal.azure.com/) lub programowo przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), [wiersza polecenia platformy Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Kolejne reguły zapory IP w poziomie serwera mogą być tworzone i zarządzane przy użyciu tych metod oraz za pomocą instrukcji języka Transact-SQL.
 
 > [!IMPORTANT]
 > Reguły zapory IP poziomu bazy danych tylko mogą być tworzone i zarządzane przy użyciu języka Transact-SQL.
@@ -149,17 +149,19 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Zarządzanie regułami zapory na IP na poziomie serwera przy użyciu programu Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 | Polecenie cmdlet | Poziom | Opis |
 | --- | --- | --- |
-| [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |Serwer |Zwraca bieżące reguły zapory na poziomie serwera IP |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |Serwer |Tworzy nową regułę zapory na poziomie serwera IP |
-| [Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule) |Serwer |Aktualizuje właściwości istniejącej reguły zapory poziomu serwera IP |
-| [Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule) |Serwer |Usuwa reguły zapory IP poziomu serwera |
+| [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Serwer |Zwraca bieżące reguły zapory na poziomie serwera |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Serwer |Tworzy nową regułę zapory na poziomie serwera |
+| [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Serwer |Aktualizuje właściwości istniejącej reguły zapory na poziomie serwera |
+| [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Serwer |Usuwa reguły zapory na poziomie serwera |
 
 W poniższym przykładzie ustawiono regułę zapory na poziomie serwera IP przy użyciu programu PowerShell:
 
 ```powershell
-New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
+New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
     -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
 ```

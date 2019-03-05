@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 89c2f380fb4007256273b10b1fcc0fc99627ccb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7c93911ce824bc1111e0c348070cc11817c5b45c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249238"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341854"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Należy utworzyć dodatkową subskrypcję platformy Azure dla umowy klienta firmy Microsoft
 
@@ -27,7 +27,7 @@ Tworzenie dodatkowych subskrypcji dla swojego konta rozliczeniowego, aby skonfig
 
 Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement). Jeśli chcesz tworzyć subskrypcji na inne konta rozliczeniowego, zobacz [należy utworzyć dodatkową subskrypcję w witrynie Azure portal](billing-create-subscription.md).
 
-Aby utworzyć subskrypcję, musisz być **właściciel sekcji faktury**, **Współautor sekcji faktury**, lub **twórca subskrypcji platformy Azure**. Aby uzyskać więcej informacji, zobacz [subskrypcji role i zadania](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Aby podać inne uprawnienia do tworzenia subskrypcji platformy Azure dla swojego konta rozliczeniowego, zobacz [daje uprawnienia do tworzenia subskrypcji platformy Azure](#give-others-permission-to-create-azure-subscriptions).
+Aby utworzyć subskrypcję, musisz być **właściciel sekcji faktury**, **Współautor sekcji faktury**, lub **twórca subskrypcji platformy Azure**. Aby uzyskać więcej informacji, zobacz [role rozliczeń subskrypcji i zadania](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Aby podać inne uprawnienia do tworzenia subskrypcji platformy Azure dla swojego konta rozliczeniowego, zobacz [daje uprawnienia do tworzenia subskrypcji platformy Azure](#give-others-permission-to-create-azure-subscriptions).
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Tworzenie subskrypcji w witrynie Azure portal
 
@@ -43,9 +43,9 @@ Aby utworzyć subskrypcję, musisz być **właściciel sekcji faktury**, **Wspó
 
    ![Zrzut ekranu przedstawiający tworzenie strony subskrypcji](./media/billing-mca-create-subscription/billing-mca-create-azure-subscription.png)
 
-5. Wybierz profil rozliczeniowy. Opłaty za subskrypcję będzie widoczny na fakturze profil rozliczeniowy i będzie wypłacane przy użyciu jego metod płatności. Jeśli masz dostęp do tylko jeden profil rozliczeniowy, wybór będą wyszarzone.
+5. Wybierz profil rozliczeniowy. Opłaty za subskrypcję, zostanie naliczona na fakturze profil rozliczeniowy i będzie wypłacane przy użyciu jego metod płatności. Jeśli masz dostęp do tylko jeden profil rozliczeniowy, wybór będą wyszarzone.
 
-6. Wybierz sekcję faktury. Opłaty za subskrypcję zostaną wyświetlone w tej sekcji profil rozliczeniowy faktury. Jeśli masz dostęp do tylko jednej sekcji faktury zaznaczenia będą wyszarzone.
+6. Wybierz sekcję faktury. Opłaty za subskrypcję, zostanie naliczona w tej sekcji profil rozliczeniowy faktury. Jeśli masz dostęp do tylko jednej sekcji faktury zaznaczenia będą wyszarzone.
 
 7. Wybierz plan dla subskrypcji. Wybierz **Microsoft Azure planowanie DevTest**, jeśli planujesz używać tej subskrypcji do tworzenia lub testowania obciążenia innego za pomocą **Microsoft Azure Plan**. Jeśli masz dostęp do tylko jeden plan, wybór będą wyszarzone.
 

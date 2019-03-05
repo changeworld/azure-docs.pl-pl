@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06151b9cb5603ef54c8e84d261bb7a4e7885e1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880465"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338556"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Szkolenia TensorFlow i Keras modeli za pomocą usługi Azure Machine Learning
 
-Szkolenia sieci neuronowej (DNN) przy użyciu TensorFlow, Azure Machine Learning zapewnia niestandardowego `TensorFlow` klasy `Estimator`. Zestaw Azure SDK `TensorFlow` narzędzie do szacowania (nie można być conflated z [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) klasy) umożliwia łatwe przesyłanie zadania szkolenia TensorFlow uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
+Szkolenia sieci neuronowej (DNN) przy użyciu TensorFlow, Azure Machine Learning zapewnia niestandardowego `TensorFlow` klasy `Estimator`. Zestaw Azure SDK [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) narzędzie do szacowania (nie można być conflated z [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) klasy) umożliwia łatwe przesyłanie zadania szkolenia TensorFlow jednym węzłem i rozproszonych działa na platformie Azure zasobów obliczeniowych.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
 Szkolenie z `TensorFlow` narzędzie do szacowania jest podobne do [podstawowy `Estimator` ](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.

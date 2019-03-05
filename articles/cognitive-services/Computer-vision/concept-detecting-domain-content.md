@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312549"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339015"
 ---
 # <a name="detect-domain-specific-content"></a>Wykrywanie zawartości specyficznego dla domeny
 
-Ponadto do znakowania i wysokiego poziomu kategoryzacji, przetwarzanie obrazów obsługuje również dalszej analizy specyficznego dla domeny przy użyciu modeli, które są przeszkoleni wyspecjalizowane danych. 
+Ponadto do znakowania i wysokiego poziomu kategoryzacji, przetwarzanie obrazów obsługuje również dalszej analizy specyficznego dla domeny przy użyciu modeli, które są przeszkoleni wyspecjalizowane danych.
 
 Istnieją dwa sposoby użycia modeli specyficznych dla domeny: samodzielnie (analiza o określonym zakresie) lub jako rozszerzenie funkcji kategoryzacji.
 
 ### <a name="scoped-analysis"></a>Analizy o określonym zakresie
 
-Możesz analizować obrazu przy użyciu tylko wybranym modelu specyficznego dla domeny, wywołując [modeli /\<modelu\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) interfejsu API. 
+Możesz analizować obrazu przy użyciu tylko wybranym modelu specyficznego dla domeny, wywołując [modeli /\<modelu\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) interfejsu API.
 
 Poniżej przedstawiono przykładowe JSON odpowiedź zwrócona przez **modeli/osobistości/analizowanie** interfejsu API dla danego obrazu:
 
@@ -55,28 +55,28 @@ Poniżej przedstawiono przykładowe JSON odpowiedź zwrócona przez **modeli/oso
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Rozszerzone kategoryzacji analizy  
+### <a name="enhanced-categorization-analysis"></a>Rozszerzone kategoryzacji analizy
 
-Aby uzupełnić analizy obrazów Ogólne umożliwia także modeli specyficznych dla domeny. Można to zrobić w ramach [wysokiego poziomu kategoryzacji](concept-categorizing-images.md) , określając modeli specyficznych dla domeny w *szczegóły* parametru [analizy](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) wywołania interfejsu API. 
+Aby uzupełnić analizy obrazów Ogólne umożliwia także modeli specyficznych dla domeny. Można to zrobić w ramach [wysokiego poziomu kategoryzacji](concept-categorizing-images.md) , określając modeli specyficznych dla domeny w *szczegóły* parametru [analizy](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) wywołania interfejsu API.
 
-W tym przypadku klasyfikatora Taksonomia kategorii 86 nazywa się najpierw. Jeśli którykolwiek z kategorii wykryte dopasowania modelu specyficznego dla domeny, obraz, który jest przekazywane również model i wyniki są dodawane. 
+W tym przypadku klasyfikatora Taksonomia kategorii 86 nazywa się najpierw. Jeśli którykolwiek z kategorii wykryte dopasowania modelu specyficznego dla domeny, obraz, który jest przekazywane również model i wyniki są dodawane.
 
 Następującą odpowiedź JSON pokazuje, jak specyficznego dla domeny analiza może być uwzględniany jako `detail` węzła w szerszym analizy kategoryzacji.
 
 ```json
-"categories":[  
-  {  
+"categories":[
+  {
     "name":"abstract_",
     "score":0.00390625
   },
-  {  
+  {
     "name":"people_",
     "score":0.83984375,
-    "detail":{  
-      "celebrities":[  
-        {  
+    "detail":{
+      "celebrities":[
+        {
           "name":"Satya Nadella",
-          "faceRectangle":{  
+          "faceRectangle":{
             "left":597,
             "top":162,
             "width":248,
@@ -85,8 +85,8 @@ Następującą odpowiedź JSON pokazuje, jak specyficznego dla domeny analiza mo
           "confidence":0.999028444
         }
       ],
-      "landmarks":[  
-        {  
+      "landmarks":[
+        {
           "name":"Forbidden City",
           "confidence":0.9978346
         }
@@ -108,20 +108,20 @@ Obecnie Usługa przetwarzania obrazów obsługuje następujące modele specyficz
 Wywoływanie [modeli](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) interfejs API zwróci te informacje wraz z kategorii, do których każdy model można zastosować:
 
 ```json
-{  
-  "models":[  
-    {  
+{
+  "models":[
+    {
       "name":"celebrities",
-      "categories":[  
+      "categories":[
         "people_",
         "人_",
         "pessoas_",
         "gente_"
       ]
     },
-    {  
+    {
       "name":"landmarks",
-      "categories":[  
+      "categories":[
         "outdoor_",
         "户外_",
         "屋外_",

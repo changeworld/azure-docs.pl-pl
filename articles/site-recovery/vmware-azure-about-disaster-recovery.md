@@ -1,18 +1,18 @@
 ---
 title: Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery.
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
-ms.author: raynew
-ms.openlocfilehash: 38f344ef9e24816a17975c60a5863be46da1364b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 3/3/2019
+ms.author: mayg
+ms.openlocfilehash: aa7ea43f3c41c6200e4cf796b0f09dca995791df
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210339"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339678"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure
 
@@ -34,7 +34,7 @@ Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) odzyskiwa
     - Przechodzenie do szczegółów pomaga, upewnij się, że tryb failover będą działać zgodnie z oczekiwaniami, gdy zajdzie potrzeba rzeczywistych.
     - Przechodzenie do szczegółów wykonuje test trybu failover bez wywierania wpływu na środowisko produkcyjne.
 5. Jeśli wystąpi awaria, możesz uruchomić pełną przejścia w tryb failover na platformie Azure. Możesz przełączać awaryjnie pojedynczą maszynę lub można utworzyć plan odzyskiwania, który przechodzi w trybie Failover wiele maszyn w tym samym czasie.
-6. W tryb failover maszyn wirtualnych platformy Azure są tworzone na podstawie danych maszyny Wirtualnej w usłudze Azure Storage. Użytkownicy mogą nadal dostęp do aplikacji i obciążeń maszyny wirtualnej platformy Azure
+6. W tryb failover maszyn wirtualnych platformy Azure są tworzone na podstawie danych maszyny Wirtualnej w Managed disks i kont magazynu. Użytkownicy mogą nadal dostęp do aplikacji i obciążeń maszyny wirtualnej platformy Azure
 7. Gdy w lokacji sieci lokalnej będzie znowu dostępna, powrotu po awarii z platformy Azure.
 8. Po powrotu po awarii i pracy z witryny głównej raz, uruchom ponownie replikowania lokalnych maszyn wirtualnych do platformy Azure.
 
@@ -56,13 +56,12 @@ Site Recovery może replikować dowolne obciążenia uruchomione na obsługiwane
 Na platformie Azure, należy przygotować następujące elementy:
 
 1. Sprawdź, czy Twoje konto platformy Azure ma uprawnienia do tworzenia maszyn wirtualnych na platformie Azure.
-2. Utwórz konto magazynu do przechowywania obrazy replikowanych maszyn.
-3. Utwórz sieć platformy Azure, do której zostaną dołączone maszyny wirtualne platformy Azure, gdy są tworzone z magazynu po włączeniu trybu failover.
-4. Skonfiguruj magazyn usługi Azure Recovery Services dla usługi Site Recovery. Magazyn znajduje się w witrynie Azure portal i służy do wdrażania, konfigurowania, możesz odpowiednio organizować w, monitorowanie i rozwiązywanie problemów z wdrożenia usługi Site Recovery.
+2. Utwórz sieć platformy Azure, do której zostaną dołączone maszyny wirtualne platformy Azure, gdy są tworzone z konta magazynu lub dyski zarządzane po włączeniu trybu failover.
+3. Skonfiguruj magazyn usługi Azure Recovery Services dla usługi Site Recovery. Magazyn znajduje się w witrynie Azure portal i służy do wdrażania, konfigurowania, możesz odpowiednio organizować w, monitorowanie i rozwiązywanie problemów z wdrożenia usługi Site Recovery.
 
 *Potrzebujesz dodatkowej pomocy?*
 
-Dowiedz się, jak konfigurowanie platformy Azure przez [weryfikowanie konta](tutorial-prepare-azure.md#verify-account-permissions), tworzenie [konta magazynu](tutorial-prepare-azure.md#create-a-storage-account) i [sieci](tutorial-prepare-azure.md#set-up-an-azure-network), i [konfigurowania magazynu](tutorial-prepare-azure.md#create-a-recovery-services-vault).
+Dowiedz się, jak konfigurowanie platformy Azure przez [weryfikowanie konta](tutorial-prepare-azure.md#verify-account-permissions), tworzenie [sieci](tutorial-prepare-azure.md#set-up-an-azure-network), i [konfigurowania magazynu](tutorial-prepare-azure.md#create-a-recovery-services-vault).
 
 
 
@@ -94,10 +93,10 @@ Po utworzeniu infrastruktury platformy Azure i lokalnie w miejscu, możesz skonf
     - Serwer konfiguracji jest pojedynczy na komputerze lokalnym. Do odzyskiwania po awarii programu VMware firma Microsoft zaleca, wdrożyć go jako maszyny Wirtualnej VMware, które mogą być wdrażane z szablonu pakietu OVF do pobrania.
     - Serwer konfiguracji służy do koordynowania komunikacji między lokalną i platformą Azure
     - Uruchom kilka innych składników na komputerze z serwerem konfiguracji.
-        - Serwer przetwarzania odbiera optymalizuje i wysyła dane replikacji do magazynu platformy Azure. Obsługuje także automatycznej instalacji usługi mobilności na maszynach, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn wirtualnych na serwerach VMware.
+        - Serwer przetwarzania odbiera optymalizuje i wysyła dane replikacji do konta magazynu pamięci podręcznej na platformie Azure. Obsługuje także automatycznej instalacji usługi mobilności na maszynach, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn wirtualnych na serwerach VMware.
         - Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
     - Konfiguracja obejmuje rejestrowania serwera konfiguracji w magazynie, pobieranie serwera MySQL i program VMware PowerCLI i określania kont utworzonych dla automatyczne odnajdywanie i instalacja usługi mobilności.
-4. **Środowisko docelowe**: Należy skonfigurować urządzenie docelowe środowisko platformy Azure, określając Twojej subskrypcji platformy Azure, Magazyn i ustawień sieci.
+4. **Środowisko docelowe**: Należy skonfigurować urządzenie docelowe środowisko platformy Azure, określając Twoich subskrypcji platformy Azure i ustawień sieci.
 5. **Zasady replikacji**: Należy określić, jak powinna być wykonywana replikacja. Ustawienia obejmują, jak często punkty odzyskiwania są tworzone i przechowywane, i czy powinny być tworzone migawki spójne z aplikacji.
 6. **Włącz replikację**. Należy włączyć replikację dla maszyn lokalnych. Jeśli utworzono konto, aby zainstalować usługę mobilności, następnie zostanie zainstalowana po włączeniu replikacji dla maszyny. 
 

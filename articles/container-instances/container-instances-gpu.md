@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: adb893a9d37219409f81b2fb402f2d4afd36aa34
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755023"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338862"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów, które używają zasobów procesora GPU
 
@@ -55,7 +55,7 @@ Aby użyć procesorach GPU znajdujących się w wystąpieniu kontenera, określ 
 
   | SKU | Rodzina maszyn wirtualnych |
   | --- | --- |
-  | K80 | [KONTROLER SIECI](../virtual-machines/linux/sizes-gpu.md#nc-series) |
+  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
@@ -85,6 +85,10 @@ Podczas wdrażania zasobów procesora GPU, zasobów Procesora i pamięci należy
 
 * **Sterowniki CUDA** — usługa Container instances za pomocą zasobów procesora GPU to wstępnie zainicjowana sterowniki NVIDIA CUDA i środowiska uruchomieniowe kontenera, aby można było używać obrazów kontenerów opracowana dla obciążeń CUDA.
 
+  Na tym etapie firma Microsoft obsługuje CUDA 9.0. Na przykład można użyć następującego obrazy podstawowe dla pliku platformy Docker:
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+    
 ## <a name="yaml-example"></a>Przykład kodu YAML
 
 Jednym ze sposobów, aby dodać zasoby procesora GPU jest wdrożenie grupy kontenerów za pomocą [pliku YAML](container-instances-multi-container-yaml.md). Skopiuj poniższego kodu YAML do nowego pliku o nazwie *procesora gpu wdrażanie aci.yaml*, następnie zapisz plik. Ta YAML tworzy grupę kontenerów o nazwie *gpucontainergroup* określając wystąpienie kontenera z K80 GPU. Przykładowa aplikacja dodanie wektor CUDA uruchamiane wystąpienie. Żądania zasobów są wystarczające do uruchomienia obciążenia.
