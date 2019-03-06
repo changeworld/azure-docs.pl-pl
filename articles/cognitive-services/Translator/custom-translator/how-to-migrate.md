@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6cab76a1169469853a4eb82a934bdc665e07ef8d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 3442e322ac75f7757d7a59f6035fc35d77e70702
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217516"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431584"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrowanie centrum obszaru roboczego i projekty do niestandardowych w usłudze Translator
 
@@ -31,7 +31,7 @@ Szkolenia zakończyło się sukcesem, niestandardowe w usłudze Translator wymag
 
 ## <a name="enable-account-migration"></a>Włącz migrację konta
 
-Aby użyć narzędzia do migracji, musisz mieć włączone migracji konta Centrum. Aby to zrobić, Wyślij wiadomość e-mail [ custommt@microsoft.com ](mailto:custommt@microsoft.com) z listą wszystkich liveid kont, które chcesz włączyć. Te konta powinny być adresy e-mail, które logują się przy użyciu.
+Aby użyć narzędzia do migracji, musisz mieć włączone migracji konta Centrum. Aby to zrobić, Wyślij wiadomość e-mail [ custommt@microsoft.com ](mailto:custommt@microsoft.com) z listą wszystkich identyfikator live id kont, które chcesz włączyć. Te konta powinny być adresy e-mail, które logują się przy użyciu.
 
 ## <a name="find-custom-translator-workspace-id"></a>Znajdź identyfikator obszaru roboczego niestandardowych w usłudze Translator
 
@@ -141,6 +141,10 @@ Ta tabela zawiera zestawienie funkcji między centrum w usłudze Translator firm
 | Dostosowywanie NMT | Nie    | Yes |
 | Nowe ujednolicone dostosowywanie usług mowy | Nie    | Yes |
 | Bez śledzenia | Yes | Yes |
+
+## <a name="new-languages"></a>Nowe języki
+
+Jeśli jesteś społeczności lub organizacja działa na temat tworzenia nowego systemu języka dla Microsoft Translator skontaktowanie się z [ custommt@microsoft.com ](mailto:custommt@microsoft.com) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

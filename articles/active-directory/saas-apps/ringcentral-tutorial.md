@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d86dc27822c91bd6b2b1cb3ec53b07978061cc7d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173304"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RingCentral
 
@@ -191,7 +191,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. Kliknij pozycję **Zapisz**.
 
-    e. Z **krok 2** kliknij **Pobierz** można pobrać **plik metadanych usługodawcy** i przekaż go w **podstawową konfigurację protokołu SAML** sekcji automatyczne polulate **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal.
+    e. Z **krok 2** kliknij **Pobierz** można pobrać **plik metadanych usługodawcy** i przekaż go w **podstawową konfigurację protokołu SAML** sekcji Aby automatycznie wypełniać **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal.
 
     ![image](./media/ringcentral-tutorial/ringcentral6.png) 
 

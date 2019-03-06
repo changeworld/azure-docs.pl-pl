@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c1c36736e9d023ab1bd2ed607638b600bc468f2c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d6677733339babf45e7351e10d6de1c002a6ea93
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437220"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436514"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planowanie elementu Runbook w usłudze Azure Automation
 
@@ -52,7 +52,7 @@ W witrynie Azure portal lub za pomocą programu Windows PowerShell, można utwor
 1. Na **nowy harmonogram** okienku wpisz **nazwa** i opcjonalnie **opis** nowego harmonogramu.
 1. Wybierz harmonogram jest uruchamiane jeden raz, czy zgodnie z harmonogramem cyklicznych, wybierając **raz** lub **cyklicznie**. Jeśli wybierzesz **raz** określ **czas rozpoczęcia**, a następnie kliknij przycisk **Utwórz**. Jeśli wybierzesz **cyklicznie**, określ **czas rozpoczęcia** i **Powtórz co**, wybierz częstotliwość, jak często chcesz elementu runbook Powtórz - przez **godzinę**, **dzień**, **tydzień**, lub **miesiąca**.
     1. Jeśli wybierzesz **tygodnia**, podano listę dni tygodnia do wyboru. Wybierz liczbę dni, jak chcesz. Pierwsze uruchomienie harmonogramu nastąpi w pierwszym dniu wybrane po czasie rozpoczęcia.
-    2. Jeśli wybierzesz **miesiąca**, możesz skorzystać z różnych opcji. Aby uzyskać **miesięczne occurrances** , wybierz opcję **dni miesiąca** lub **dni tygodnia**. Jeśli wybierzesz **dni miesiąca** kalendarz jest wyświetlany, który pozwala wybrać dowolną liczbę dni, jak chcesz. Jeśli wybierzesz datę, takie jak 31, która nie występuje w bieżącym miesiącu, harmonogram nie będzie działać. Uruchomienie ostatniego dnia harmonogramu, wybierz opcję **tak** w obszarze **Uruchom ostatniego dnia miesiąca**. Jeśli wybierzesz **dni tygodnia**, **Powtórz co** opcję jest przedstawiany. Wybierz **pierwszy**, **drugi**, **trzeci**, **czwarty**, lub **ostatniego**. Na koniec wybierz dzień do powtarzania.
+    2. Jeśli wybierzesz **miesiąca**, możesz skorzystać z różnych opcji. Aby uzyskać **comiesięczne wystąpienia** , wybierz opcję **dni miesiąca** lub **dni tygodnia**. Jeśli wybierzesz **dni miesiąca** kalendarz jest wyświetlany, który pozwala wybrać dowolną liczbę dni, jak chcesz. Jeśli wybierzesz datę, takie jak 31, która nie występuje w bieżącym miesiącu, harmonogram nie będzie działać. Uruchomienie ostatniego dnia harmonogramu, wybierz opcję **tak** w obszarze **Uruchom ostatniego dnia miesiąca**. Jeśli wybierzesz **dni tygodnia**, **Powtórz co** opcję jest przedstawiany. Wybierz **pierwszy**, **drugi**, **trzeci**, **czwarty**, lub **ostatniego**. Na koniec wybierz dzień do powtarzania.
 1. Po zakończeniu kliknij przycisk **Utwórz**.
 
 ### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Aby utworzyć nowy harmonogram za pomocą programu Windows PowerShell

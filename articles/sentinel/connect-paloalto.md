@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: c3546b70298c1f700701a3cbca1433bf3fce72ae
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6b0c991d0f9d94d8ecef8d5f73f95cbca63476b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247379"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436072"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Łączenie urządzenia Palo Alto Networks
 
@@ -34,7 +34,7 @@ Możesz połączyć przez wartownika platformy Azure do dowolnego urządzenia Pa
 
 ## <a name="step-1-connect-your-palo-alto-appliance-using-an-agent"></a>Krok 1: Łączenie urządzenia Palo Alto przy użyciu agenta
 
-Aby połączyć urządzenia Palo Alto przez wartownika platformy Azure, musisz wdrożyć agenta na dedykowanej maszynie (maszyna wirtualna lub lokalnej) do obsługi komunikacji między urządzeniem i platformy Azure przez wartownika. Możesz deploly agent automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
+Aby połączyć urządzenia Palo Alto przez wartownika platformy Azure, musisz wdrożyć agenta na dedykowanym komputerze (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Możesz deploly agent automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
 
 Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualnej platformy Azure, na maszynie Wirtualnej w innej chmurze lub na maszynie lokalnej.
 
@@ -75,7 +75,7 @@ Aby wyświetlić diagram sieciowy obie opcje, zobacz [połączyć źródeł dany
       2. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Wdróż agenta na serwerze z systemem Linux w lokalnej
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Wdróż agenta na lokalny serwer systemu Linux
 
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
 

@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5dc106d3a524f9bdd6f2d989ef1189032cd60f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: fd90cd18be1fdbac5948fb076a3358b070bad8eb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195527"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455076"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -154,7 +154,7 @@ Usługa Azure AD Connect uaktualnianie kończy się niepowodzeniem, jeśli zawsz
 - Rozwiązano kilka problemów ułatwień dostępu dla Edytor reguł synchronizacji i synchronizacji Service Manager  
 - Usunięto usterkę, w którym program Azure AD Connect nie można uzyskać informacje o ustawieniach rejestru
 - Naprawiono usterkę, która utworzone problemy, gdy użytkownik przechodzi do przodu i Wstecz w Kreatorze
-- Naprawiono usterkę, aby zapobiec błędem ze względu na nieprawidłowe multi wątek pierwszemu w Kreatorze
+- Naprawiono usterkę, aby zapobiec błędem ze względu na nieprawidłowe wątek wielu pierwszemu w Kreatorze
 - Gdy strona Filtrowanie synchronizacji grupy napotka błąd LDAP, podczas rozpoznawania grup zabezpieczeń, program Azure AD Connect teraz zwraca wyjątek z pełnej rozdzielczości.  Przyczyny, dla wyjątku odwołania jest nadal nieznane i zostanie rozwiązany przez różnych błędów.
 -  Usunięto usterkę, w której uprawnienia do kluczy STK i NGC (ms-DS-KeyCredentialLink atrybut obiektów użytkownika/urządzenie dla funkcji WHfB) nie zostały prawidłowo ustawione.     
 - Usunięto usterkę, w którym "Set-ADSyncRestrictedPermissions" nie została wywołana poprawnie
@@ -833,7 +833,7 @@ Wydanie: Marca 2017 r.
 Synchronizacja programu Azure AD Connect
 * Rozwiązano problem, co powoduje, że Kreator Azure AD Connect zakończyć się niepowodzeniem, jeśli nazwa wyświetlana łącznika usługi Azure AD nie zawiera początkowej domeny onmicrosoft.com przypisane do dzierżawy usługi Azure AD.
 * Rozwiązano problem powoduje błąd podczas tworzenia połączenia z bazą danych SQL, gdy hasło konta usługi synchronizacji programu zawiera znaki specjalne, takie jak apostrof, dwukropek i miejsca na kreatora Azure AD Connect.
-* Rozwiązano problem, co powoduje błąd "dimage ma kotwicę, który jest inny niż obraz" występuje na serwerze programu Azure AD Connect w trybie przejściowym, po zostały tymczasowo wyłączone w lokalnym AD obiektu synchronizowanie i następnie dołączony ponownie do synchronizacji.
+* Rozwiązano problem, co powoduje błąd "obraz ma kotwicę, który jest inny niż obraz" występuje na serwerze programu Azure AD Connect w trybie przejściowym, po zostały tymczasowo wyłączone w lokalnym AD obiektu synchronizowanie i następnie dołączony ponownie do synchronizacji.
 * Rozwiązano problem, co powoduje błąd "obiekt znajduje się przez nazwa Wyróżniająca jest Fantom" występuje na serwerze programu Azure AD Connect w trybie przejściowym, po zostały tymczasowo wyłączone w lokalnym AD obiektu synchronizowanie i następnie dołączony ponownie do synchronizacji.
 
 Zarządzanie usługami AD FS

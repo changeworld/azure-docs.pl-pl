@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0d9ee24e9ab104fb554033802507f78fcbf38fc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e3aae5f7936204a7fe4fbce4102fc2727088e025
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170933"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442035"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Wybierz, zarządzanie i działają z klastrami usługi Service Fabric.
@@ -37,7 +37,7 @@ Wybierz, zarządzanie i działają z klastrami usługi Service Fabric.
 | aprowizacja | Aprowizuj pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
 | recover-system | Klaster usługi Service Fabric wskazywać, że powinien podejmować próbę odzyskiwania usług systemowych, które są aktualnie zablokowane utraciła kworum. |
 | report-health | Wysyła raport o kondycji w klastrze usługi Service Fabric. |
-| wybierz | Nawiązanie połączenia z punktem końcowym klastra usługi Service Fabric. |
+| zaznacz | Nawiązanie połączenia z punktem końcowym klastra usługi Service Fabric. |
 | show-connection | Pokaż klaster usługi Service Fabric, w którym to wystąpienie interfejsu sfctl jest połączony z. |
 | Wstrzymanie obsługi administracyjnej | Wstrzymaj obsługę administracyjną pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
 | uaktualnij | Uruchom uaktualnianie wersji kodu lub konfiguracji klastra usługi Service Fabric. |
@@ -140,7 +140,7 @@ Pobierz manifest klastra usługi Service Fabric. Manifest klastra zawiera właś
 ## <a name="sfctl-cluster-operation-cancel"></a>Interfejs sfctl klastra operacji anulowania
 Anuluje operację błędów wywołane przez użytkownika.
 
-Następujące interfejsy API uruchomić operacji błędów, które może zostać anulowana, za pomocą CancelOperation\: StartDataLoss StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Jeśli wymuszone ma wartość false, następnie określonej operacji usługi wywołane przez użytkownika zostanie bez problemu zmieniała zatrzymany i wyczyszczone.  Jeśli życie ma wartość true, polecenia zostaną przerwane i mogą pozostać pewne stanu wewnętrznego.  Określanie życie jako wartość true, należy używać ostrożnie. Wywołanie tego interfejsu API przy wymuszonego ma wartość true nie jest dozwolone, dopóki tego interfejsu API została już wywołana na tym samym poleceniu życie równa false pierwszego testu lub jeśli tego polecenia nie ma jeszcze OperationState OperationState.RollingBack. 
+Następujące interfejsy API uruchomić operacji błędów, które mogą zostać anulowane, za pomocą CancelOperation\: StartDataLoss StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Jeśli wymuszone ma wartość false, następnie określonej operacji usługi wywołane przez użytkownika zostanie bez problemu zmieniała zatrzymany i wyczyszczone.  Jeśli życie ma wartość true, polecenia zostaną przerwane i mogą pozostać pewne stanu wewnętrznego.  Określanie życie jako wartość true, należy używać ostrożnie. Wywołanie tego interfejsu API przy wymuszonego ma wartość true nie jest dozwolone, dopóki tego interfejsu API została już wywołana na tym samym poleceniu życie równa false pierwszego testu lub jeśli tego polecenia nie ma jeszcze OperationState OperationState.RollingBack. 
 
 Wyjaśnienie\: OperationState.RollingBack oznacza, że system będzie/czyści systemu wewnętrznego stanu spowodowanych wykonaniem polecenia.  Go nie spowoduje przywrócenia danych Jeśli polecenie testu zakończyło się do utraty danych.  Na przykład jeśli wywołanie StartDataLoss wywołać ten interfejs API, system będzie wyczyścić tylko stan wewnętrzny z uruchomieniem polecenia. Go nie spowoduje przywrócenia danych na partycji docelowej, jeśli polecenie wykazała postępów w stopniu do utraty danych. 
 

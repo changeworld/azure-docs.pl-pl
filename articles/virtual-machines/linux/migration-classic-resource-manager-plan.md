@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: ff3fdec2f427e095c748e4a47079d783fa83802d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bd3bd4937bd376c696df98af0b535aeda5027ddc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341338"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437092"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele funkcji wspaniałe, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji. 
@@ -124,7 +124,7 @@ Poniżej zostały problemów znalezionych w wielu większych migracji. To nie je
 
     Możesz sprawdzić bieżące limity przydziału usługi Azure Resource Manager przy użyciu następujących poleceń do najnowszej wersji interfejsu wiersza polecenia platformy Azure.
 
-    **Obliczenia** *(rdzenie, zestawy dostępność)*
+    **Obliczenia** *(rdzenie, zestawy dostępności)*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 

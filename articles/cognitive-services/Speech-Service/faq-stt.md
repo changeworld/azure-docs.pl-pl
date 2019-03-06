@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 5c5a42908198b3a8f473efbe4f54bc481e250efa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875998"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431992"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst — często zadawane pytania
 
@@ -63,7 +63,7 @@ Stary zestaw danych i nowy zestaw danych musi być połączone jednego pliku zip
 
 **A**: Wdrożenia nie zostanie automatycznie zaktualizowany.
 
-Jeśli masz dostosowane i wdrożyć model z linią bazową w wersji 1.0, tego wdrożenia pozostaje niezmieniona. Klienci mogą decommision wdrożony model, ponownie dostosowania przy użyciu nowszej wersji linii bazowej i Wdróż ponownie.
+Jeśli masz dostosowane i wdrożyć model z linią bazową w wersji 1.0, tego wdrożenia pozostaje niezmieniona. Klientów można zlikwidować wdrożony model, ponownie dostosowania przy użyciu nowszej wersji linii bazowej i Wdróż ponownie.
 
 **Pyt.: Co zrobić, jeśli potrzebne zapewnienie większej współbieżności dla mojego wdrożony model niż treści oferowanych w portalu?**
 

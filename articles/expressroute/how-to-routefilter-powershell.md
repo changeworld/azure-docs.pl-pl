@@ -1,20 +1,19 @@
 ---
 title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft — ExpressRoute: Program PowerShell: Azure | Microsoft Docs'
 description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu programu PowerShell
-documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 680bd80261e1f8b026f6e885156b2ef090b0764d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415300"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404488"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: PowerShell
 > [!div class="op_single_selector"]
@@ -75,6 +74,9 @@ Przed rozpoczęciem konfiguracji upewnij się, że spełniają następujące kry
 
 
 ### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ### <a name="log-in-to-your-azure-account"></a>Zaloguj się do konta platformy Azure
@@ -84,19 +86,19 @@ Przed rozpoczęciem tej konfiguracji musisz zalogować się na koncie platformy 
 Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Skorzystaj z następującego przykładu w celu łatwiejszego nawiązania połączenia. Jeśli używasz usługi Azure Cloud Shell, nie trzeba uruchomić to polecenie cmdlet, jak użytkownik zostanie automatycznie zarejestrowany w.
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Jeśli masz wiele subskrypcji platformy Azure, wyświetl subskrypcje dla konta.
 
 ```azurepowershell-interactive
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Wskaż subskrypcję, której chcesz użyć.
 
 ```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
 ## <a name="prefixes"></a>Krok 1. Pobierz listę prefiksów i wartości społeczności BGP
@@ -106,7 +108,7 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 Aby uzyskać listę wartości społeczności BGP skojarzone z usługami za pośrednictwem komunikacji równorzędnej firmy Microsoft i listę prefiksów skojarzonych z nimi, należy użyć następującego polecenia cmdlet:
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Tworzenie listy wartości, które chcesz użyć
 
@@ -118,10 +120,10 @@ Filtr trasy może mieć tylko jedną regułę, a reguła musi być typu "Zezwala
 
 ### <a name="1-create-a-route-filter"></a>1. Tworzenie filtru tras
 
-Najpierw utwórz filtr tras. Polecenie "New-AzureRmRouteFilter" tylko tworzy zasób filtru trasy. Po utworzeniu zasobu, należy utworzyć regułę i dołącz je do obiektu filtru trasy. Uruchom następujące polecenie, aby utworzyć zasób filtru trasy:
+Najpierw utwórz filtr tras. Polecenie "New-AzRouteFilter" tylko tworzy zasób filtru trasy. Po utworzeniu zasobu, należy utworzyć regułę i dołącz je do obiektu filtru trasy. Uruchom następujące polecenie, aby utworzyć zasób filtru trasy:
 
 ```azurepowershell-interactive
-New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
 ### <a name="2-create-a-filter-rule"></a>2. Utwórz regułę filtru
@@ -129,7 +131,7 @@ New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup
 Można określić zbiór społeczności BGP jako listę rozdzielaną przecinkami, jak pokazano w przykładzie. Uruchom następujące polecenie, aby utworzyć nową regułę:
  
 ```azurepowershell-interactive
-$rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
+$rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
 ```
 
 ### <a name="3-add-the-rule-to-the-route-filter"></a>3. Dodaj regułę do filtru trasy
@@ -137,9 +139,9 @@ $rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -R
 Uruchom następujące polecenie, aby dodać regułę filtru do filtru trasy:
  
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.Rules.Add($rule)
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ## <a name="attach"></a>Krok 3. Dołącz filtru tras do obwodu usługi ExpressRoute
@@ -147,9 +149,9 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
 Uruchom następujące polecenie, aby dołączyć filtru tras do obwodu usługi ExpressRoute, przy założeniu, że tylko komunikacji równorzędnej firmy Microsoft:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 $ckt.Peerings[0].RouteFilter = $routefilter 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## <a name="tasks"></a>Typowe zadania
@@ -161,12 +163,12 @@ Można pobrać właściwości filtru tras, wykonaj następujące kroki:
 1. Uruchom następujące polecenie, aby pobrać zasób filtru trasy:
 
   ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+  $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
   ```
 2. Pobierz reguły filtru trasy dla zasobu filtru tras, uruchamiając następujące polecenie:
 
   ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+  $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
   $rule = $routefilter.Rules[0]
   ```
 
@@ -175,9 +177,9 @@ Można pobrać właściwości filtru tras, wykonaj następujące kroki:
 Jeśli filtr tras jest już dołączony do obwodu, aktualizacje do listy społeczności BGP automatycznie rozpropagowane zmiany anonsowania prefiksu za pośrednictwem ustanowionych sesji protokołu BGP. Można zaktualizować listy społeczności BGP filtru tras za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ### <a name="detach"></a>Aby odłączyć filtr tras z obwodem usługi ExpressRoute
@@ -186,7 +188,7 @@ Gdy filtr tras jest odłączona od obwodu usługi ExpressRoute, nie prefiksy są
   
 ```azurepowershell-interactive
 $ckt.Peerings[0].RouteFilter = $null
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="delete"></a>Można usunąć filtru tras
@@ -194,7 +196,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 Filtr tras można usunąć tylko wtedy, jeśli nie jest dołączony do dowolnego obwodu. Upewnij się, że filtr tras nie jest dołączony do dowolnego obwodu przed próbą usunięcia go. Można usunąć filtru tras, używając następującego polecenia:
 
 ```azurepowershell-interactive
-Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
+Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
 
 ## <a name="next-steps"></a>Następne kroki

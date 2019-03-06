@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b4b514350e36e9fe71e7c5cb5cd978764e0108d5
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 90f7ef32a54f257a64942b37938cff5703112d6c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317190"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409869"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -141,7 +141,7 @@ Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych możn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Aby przywrócić autonomiczny lub baza danych w puli, zobacz [AzSqlDatabase przywracania](https://docs.microsoft.com/powershell/module/az.sql/restore-azurermsqldatabase)
+- Aby przywrócić autonomiczny lub baza danych w puli, zobacz [AzSqlDatabase przywracania](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
 
   | Polecenie cmdlet | Opis |
   | --- | --- |
@@ -153,7 +153,7 @@ Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych możn
   > [!TIP]
   > Aby uzyskać przykładowy skrypt programu PowerShell przedstawiający sposób wykonywania w momencie przywracania bazy danych, zobacz [przywrócić bazę danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 
-- Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [punktu w czasie przywracania bazy danych o wystąpienia zarządzanego Azure SQL przy użyciu programu PowerShell elementu AzureRm.Sql biblioteki](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-Az-sql-powershell-library/)
+- Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [punktu w czasie przywracania bazy danych o wystąpienia zarządzanego Azure SQL przy użyciu programu PowerShell elementu AzureRm.Sql biblioteki](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/).
 
 ### <a name="rest-api"></a>Interfejs API REST
 

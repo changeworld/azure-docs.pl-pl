@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b8b07db6e21fb685ed76409336c98bb5f4ce5bde
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7a478a9f73edae463a5dace1b1a28180e5d09bdc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009440"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437738"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory
 
@@ -26,10 +26,10 @@ Wprowadzenie do usługi Azure SQL Data Warehouse jest teraz łatwiejsze niż kie
 
 Usługa Azure Data Factory oferuje następujące korzyści dotyczące ładowania danych do usługi Azure SQL Data Warehouse:
 
-* **Łatwe do skonfigurowania**: intuicyjny Kreator krok 5 z bez skryptu wymagane.
-* **Obsługa magazynu danych sformatowanego**: wbudowaną obsługę bogaty zestaw w środowisku lokalnym i magazynami danych w chmurze. Aby uzyskać szczegółową listę, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
-* **Bezpieczeństwo i zgodność**: dane są przesyłane za pośrednictwem protokołu HTTPS lub usługi ExpressRoute. Obecność usługi global service gwarantuje, że danych nigdy nie opuszcza granicy geograficznej.
-* **Zapewnia niezrównaną wydajność przy użyciu programu PolyBase**: funkcja Polybase jest najbardziej skutecznym sposobem przenoszenia danych do usługi Azure SQL Data Warehouse. Funkcja przejściowego obiektu blob do osiągnięcia szybkości dużym obciążeniem z wszystkich typów magazynów danych, w tym usługi Azure Blob storage i Data Lake Store. (Funkcja Polybase obsługuje usługi Azure Blob storage i Azure Data Lake Store domyślnie). Aby uzyskać więcej informacji, zobacz [wydajności działania kopiowania](copy-activity-performance.md).
+* **Łatwe do skonfigurowania**: Intuicyjny Kreator krok 5 z bez skryptu wymagane.
+* **Szczegółowe dane sklepu obsługują**: Wbudowana obsługa bogaty zestaw w środowisku lokalnym i magazynami danych w chmurze. Aby uzyskać szczegółową listę, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Bezpieczeństwo i zgodność**: Dane są przesyłane za pośrednictwem protokołu HTTPS lub usługi ExpressRoute. Obecność usługi global service gwarantuje, że danych nigdy nie opuszcza granicy geograficznej.
+* **Zapewnia niezrównaną wydajność przy użyciu programu PolyBase**: Program Polybase jest najbardziej skutecznym sposobem przenoszenia danych do usługi Azure SQL Data Warehouse. Funkcja przejściowego obiektu blob do osiągnięcia szybkości dużym obciążeniem z wszystkich typów magazynów danych, w tym usługi Azure Blob storage i Data Lake Store. (Funkcja Polybase obsługuje usługi Azure Blob storage i Azure Data Lake Store domyślnie). Aby uzyskać więcej informacji, zobacz [wydajności działania kopiowania](copy-activity-performance.md).
 
 W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ładowanie danych z usługi Azure SQL Database do usługi Azure SQL Data Warehouse_. Możesz wykonać podobne kroki w celu skopiowania danych z innych typów magazynów danych.
 
@@ -38,10 +38,10 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
-* Usługa Azure SQL Data Warehouse: Magazyn danych przechowuje dane, które jest kopiowana z bazy danych SQL. Jeśli nie masz usługi Azure SQL Data Warehouse, zapoznaj się z instrukcjami w [utworzyć SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
-* Usługa Azure SQL Database: W tym samouczku kopiuje dane z usługi Azure SQL database za pomocą Adventure Works LT przykładowych danych. Można utworzyć bazę danych SQL, postępując zgodnie z instrukcjami wyświetlanymi w [utworzyć bazę danych Azure SQL](../sql-database/sql-database-get-started-portal.md). 
-* Konto usługi Azure storage: Usługa Azure Storage jest używana jako _przemieszczania_ obiektu blob w operacji kopiowania zbiorczego. Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
+* Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+* Azure SQL Data Warehouse: Magazyn danych przechowuje dane, które jest kopiowana z bazy danych SQL. Jeśli nie masz usługi Azure SQL Data Warehouse, zapoznaj się z instrukcjami w [utworzyć SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
+* Azure SQL Database: W tym samouczku kopiuje dane z usługi Azure SQL database za pomocą Adventure Works LT przykładowych danych. Można utworzyć bazę danych SQL, postępując zgodnie z instrukcjami wyświetlanymi w [utworzyć bazę danych Azure SQL](../sql-database/sql-database-get-started-portal.md). 
+* Konto magazynu Azure: Usługa Azure Storage jest używana jako _przemieszczania_ obiektu blob w operacji kopiowania zbiorczego. Jeśli nie masz konta usługi Azure Storage, zobacz instrukcje podane w temacie [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -52,7 +52,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
       
    ![Strona Nowa fabryka danych](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
-    * **Nazwa**: wprowadź unikatową w skali globalnej nazwę fabryki danych platformy Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadSQLDWDemo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_**ADFTutorialDataFactory**. Spróbuj ponownie utworzyć fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
+    * **Nazwa**: Wprowadź unikatową w skali globalnej nazwę fabryki danych platformy Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadSQLDWDemo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_**ADFTutorialDataFactory**. Spróbuj ponownie utworzyć fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
     * **Subskrypcja**: Wybieranie subskrypcji platformy Azure, w której chcesz utworzyć fabrykę danych. 
     * **Grupa zasobów**: Wybierz istniejącą grupę zasobów z listy rozwijanej lub **Utwórz nową** opcji, a następnie wprowadź nazwę grupy zasobów. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
     * **Wersja**: Wybierz **V2**.
@@ -84,7 +84,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
 
     ![Wybieranie bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. W **nowa połączona usługa** stronie, wybierz nazwę serwera i nazwa bazy danych z listy rozwijanej i określić nazwę użytkownika i passworkd. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
+    c. W **nowa połączona usługa** stronie, wybierz nazwę serwera i nazwa bazy danych z listy rozwijanej i określić nazwę użytkownika i hasło. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
    
     ![Konfigurowanie bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
@@ -106,7 +106,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
 
     ![Wybierz magazyn danych Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. W **nowa połączona usługa** stronie, wybierz nazwę serwera i nazwa bazy danych z listy rozwijanej i określić nazwę użytkownika i passworkd. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
+    c. W **nowa połączona usługa** stronie, wybierz nazwę serwera i nazwa bazy danych z listy rozwijanej i określić nazwę użytkownika i hasło. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
    
     ![Skonfiguruj Magazyn danych Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 

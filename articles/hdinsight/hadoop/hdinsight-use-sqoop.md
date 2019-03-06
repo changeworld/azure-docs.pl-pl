@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 4e56d22dde5fca50d17c055be93db5b91deeb287
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0a03bfe61da6a1de073401fca9c61f3212b9d0bb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819177"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440101"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Z usługą Hadoop w HDInsight przy użyciu narzędzia Apache Sqoop
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -41,7 +41,7 @@ Klaster HDInsight jest dostarczany z pewnymi przykładowymi danymi. Możesz uży
   
   | Pole | Typ danych |
   | --- | --- |
-  | ClientID |string |
+  | clientid |string |
   | querytime |string |
   | na rynku |string |
   | deviceplatform |string |
@@ -82,9 +82,9 @@ Jeśli wolisz korzystać z programu Azure PowerShell do tworzenia klastra i bazy
     - **Nazwa logowania i hasło klastra**: Domyślna nazwa logowania to admin.
     - **Nazwa użytkownika i hasło SSH**.
     - **Baza danych SQL server, nazwa logowania i hasło**.
-    - **Lokalizacja _artifacts**: Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku backpac w innej lokalizacji.
+    - **Lokalizacja _artifacts**: Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku bacpac w innej lokalizacji.
     - **Token sygnatury dostępu współdzielonego lokalizacji _artifacts**: Pozostaw to pole puste.
-    - **Nazwa pliku Bacpac**: Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku backpac.
+    - **Nazwa pliku Bacpac**: Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku bacpac.
      
         Trwale zakodowana w sekcji zmiennych są następujące wartości:
         

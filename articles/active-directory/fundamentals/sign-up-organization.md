@@ -1,5 +1,5 @@
 ---
-title: Utwórz konto organizacji, aby usługa Azure Active Directory | Dokumentacja firmy Microsoft
+title: Utwórz konto organizacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące sposobu logowania Twojej organizacji do używania platformy Azure i usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91fe15cfbf855f18894ef602c86f780b97d62974
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 937f53ecd60d6bbcc8fbd02f978974ac34f77c00
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205192"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442018"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Utwórz konto organizacji, aby usługa Azure Active Directory
 Załóż konto usługi Azure Active Directory (Azure AD) lub nowej subskrypcji Microsoft Azure za pomocą:

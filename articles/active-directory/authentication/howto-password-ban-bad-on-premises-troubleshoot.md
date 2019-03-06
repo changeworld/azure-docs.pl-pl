@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3632fdb3b4d5c1d2b5465671f36a201c5ff990
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 63fdd60c4c462626cc43a7a453bddc0b020b92cf
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193300"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409894"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Wersja zapoznawcza: Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
@@ -55,9 +55,9 @@ Upewnij się, komputera serwera proxy ma połączenia z punktami końcowymi na l
 
 Ten problem można manifestu z różnymi rodzajami objawy, ale zazwyczaj ma typowych głównych przyczyn.
 
-Ochrona za pomocą usługi Azure AD hasła ma krytyczne zależności od funkcji szyfrowania i odszyfrowywania, dostarczone przez usługi dystrybucji kluczy firmy Microsoft, co jest dostępne na kontrolerach domeny z systemem Windows Server 2012 i nowszych wersjach. Usługę KDS musi być włączona i działa na wszystkich systemu Windows Server 2012 i nowszych kontrolerów domeny w domenie.  
+Ochrona za pomocą usługi Azure AD hasła ma krytyczne zależności od funkcji szyfrowania i odszyfrowywania, dostarczone przez usługi dystrybucji kluczy firmy Microsoft, co jest dostępne na kontrolerach domeny z systemem Windows Server 2012 i nowszych wersjach. Usługę KDS musi być włączona i działa na wszystkich systemu Windows Server 2012 i nowszych kontrolerów domeny w domenie.
 
-Domyślnie KDS tryb uruchamiania usługi usługi jest skonfigurowany jako ręczne (uruchomienie wyzwalacza). Ta konfiguracja oznacza, że klient próbuje korzystać z tej usługi po raz pierwszy jej ponownym uruchomieniu na żądanie. To domyślny tryb uruchamiania usługi jest możliwa do obsługi ochrony haseł usługi Azure AD. 
+Domyślnie KDS tryb uruchamiania usługi usługi jest skonfigurowany jako ręczne (uruchomienie wyzwalacza). Ta konfiguracja oznacza, że klient próbuje korzystać z tej usługi po raz pierwszy jej ponownym uruchomieniu na żądanie. To domyślny tryb uruchamiania usługi jest możliwa do obsługi ochrony haseł usługi Azure AD.
 
 Jeśli tryb uruchamiania usługi KDS został skonfigurowany na wyłączone, ta konfiguracja muszą zostać usunięte przed ochrony haseł usługi Azure AD będzie działać prawidłowo.
 
@@ -118,7 +118,7 @@ Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie w publicznej 
 
    Nie pominięto gwiazdki ("*") na końcu $keywords wartość zmiennej.
 
-   Obiekty wynikowe znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie. 
+   Obiekty wynikowe znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie.
 
 4. Ręcznie usuń wszystkie punkty połączenia agenta kontrolera domeny w każdym kontekście nazewnictwa domeny. Może istnieć tylko jeden tych obiektów na kontrolerze domeny w lesie, w zależności od tego, jak powszechnie prapremiery publicznej została wdrożona. Lokalizacja tego obiektu może zostać odnalezionych za pomocą następującego polecenia środowiska PowerShell usługi Active Directory:
 

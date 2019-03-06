@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: a94e53644b2032af7be1575cd13807e0484eb182
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9d23d4b30ca4d394fb4afd0bb6620be6df179600
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344875"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444943"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Wprowadzenie do Eksploratora metryk platformy Azure
 
@@ -26,7 +26,7 @@ Skorzystaj z Eksploratora metryk do badania kondycji i wykorzystania zasobów. U
 
 1. Rozpocznij od [pobrania zasobu i metryki](#creating-your-first-metric-chart) zobaczyć podstawowego wykresu. Następnie [wybierz zakres czasu](#picking-time-range) jest odpowiednie dla badania.
 
-1. Po zapoznaniu się podstawowe wykresy, możesz spróbować [stosowanie filtrów wymiaru i dzielenia](#applying-dimension-filters-and-splitting). Filtry i dzielenia pozwalają analizować, jakie segmenty metryki przyczyniają się do wartości ogólne metryki i zidentyfikować elementy odstające możliwe.
+1. Spróbuj [stosowanie filtrów wymiaru i dzielenia](#applying-dimension-filters-and-splitting). Filtry i dzielenia pozwalają analizować, jakie segmenty metryki przyczyniają się do wartości ogólne metryki i zidentyfikować elementy odstające możliwe.
 
 1. Użyj [Zaawansowane ustawienia](#advanced-chart-settings-and-next-steps) dostosować wykres przed przypięciem do pulpitów nawigacyjnych. [Konfigurowanie alertów](alerts-metric-overview.md) Aby otrzymywać powiadomienia, gdy wartość metryki przekracza lub spadnie poniżej wartości progowej.
 
@@ -59,7 +59,7 @@ Domyślnie wykres przedstawia w ostatnich 24 godzin dane metryk. Użyj **selekto
 
 [Filtrowanie](metrics-charts.md#apply-filters-to-charts) i [podział](metrics-charts.md#apply-splitting-to-a-chart) są zaawansowane narzędzia diagnostyczne dla metryk, który ma wymiarów. Tych funkcji Pokaż różnych segmentów metryki ("wartości wymiaru") mieć wpływ na ogólną wartość metryki i pozwalają zidentyfikować elementy odstające możliwe.
 
-- **Filtrowanie** pozwala wybrać, wartości wymiarów, które znajdują się na wykresie. Na przykład możesz chcieć Pokaż liczba pomyślnych żądań, gdy wykresy *czas odpowiedzi serwera* metryki. Będziesz potrzebować zastosować filtr *Powodzenie żądanie* wymiaru. 
+- **Filtrowanie** pozwala wybrać, wartości wymiarów, które znajdują się na wykresie. Na przykład możesz chcieć Pokaż liczba pomyślnych żądań, gdy wykresy *czas odpowiedzi serwera* metryki. Będziesz potrzebować zastosować filtr na *Powodzenie żądanie* wymiaru. 
 
 - **Dzielenie** kontrolki, czy na wykresie kreślone są oddzielne wiersze dla każdej wartości wymiaru lub wartości są zagregowane w jednym wierszu. Można na przykład znajdują się jeden wiersz Średni czas odpowiedzi we wszystkich wystąpieniach serwera lub zobacz osobnych wierszach dla każdego serwera. Czy chcesz zastosować, dzielenie na *wystąpienie serwera* wymiaru, aby zobaczyć w osobnych wierszach.
 

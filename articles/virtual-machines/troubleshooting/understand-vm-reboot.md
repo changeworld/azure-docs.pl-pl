@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 734889905719e0b15b32988e90b48721372076cc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329153"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433165"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Omówienie ponownego uruchamiania systemu dla maszyny Wirtualnej platformy Azure
 
@@ -102,7 +102,7 @@ Wszystkie maszyny wirtualne na tym hoście są automatycznie przeniesiona na ser
 
 W rzadkich przypadkach zespół operacji na platformie Azure może być konieczne wykonanie czynności konserwacyjnych w celu zapewnienia dobrej ogólnej kondycji platformy Azure. To zachowanie może wpłynąć na dostępność maszyn wirtualnych i zwykle powoduje ona to ta sama akcja automatycznego odzyskiwania zgodnie z wcześniejszym opisem.  
 
-Nieplanowane maintenances są następujące:
+Nieplanowana konserwacja są następujące:
 
 - Defragmentacja pilne węzła
 - Aktualizacje przełącznik sieci pilnych

@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2804ebdbeb72bd35c7e63553184157066f9cfd32
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93e33ea311a064058e739bfcf6d63dc2d5462110
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177321"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435069"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w usłudze Azure Active Directory
 
@@ -60,7 +60,7 @@ Aby skonfigurować usługę Azure AD, wprowadź podstawową konfigurację protok
 
   ![Firma litware, domena i adresy URL](./media/configure-single-sign-on-non-gallery-applications/customapp4.png)
 
-- **Na adres URL logowania (zainicjowanego przez dostawcę usług tylko)** — w przypadku, gdy użytkownik przechodzi do logowania się w tej aplikacji. Jeśli aplikacja jest skonfigurowany do wykonania usługi zainicjowane z dostawcą logowania jednokrotnego, gdy użytkownik przechodzi do tego adresu URL, dostawca usług będzie wykonywać niezbędne przekierowanie do usługi Azure AD do uwierzytelniania i logowania użytkownika w. Jeśli to pole zostanie wypełnione, usługi Azure AD będzie używać tego adresu URL można uruchomić aplikacji z usługi Office 365 i stronie panelu dostępu usługi Azure AD. Jeśli to pole zostanie pominięte, a następnie usługi Azure AD zamiast tego będzie wykonywać dostawcy tożsamości — inicjowane logowania jednokrotnego, gdy aplikacja jest uruchamiana z panelu dostępu usługi Azure AD, Office 365 lub Azure AD pojedynczy adres URL logowania (z możliwością kopiowania z karty Pulpit nawigacyjny).
+- **Na adres URL logowania (zainicjowanego przez dostawcę usług tylko)** — w przypadku, gdy użytkownik przechodzi do logowania się w tej aplikacji. Jeśli aplikacja jest skonfigurowany do wykonania usługi zainicjowane z dostawcą logowania jednokrotnego, gdy użytkownik przechodzi do tego adresu URL, dostawca usług będzie wykonywać niezbędne przekierowanie do usługi Azure AD do uwierzytelniania i logowania użytkownika w. Jeśli to pole zostanie wypełnione, usługi Azure AD będzie używać tego adresu URL można uruchomić aplikacji z usługi Office 365 i stronie panelu dostępu usługi Azure AD. Jeśli to pole zostanie pominięte, a następnie usługi Azure AD zamiast tego będzie wykonywać dostawcy tożsamości — inicjowane logowania jednokrotnego, gdy aplikacja jest uruchamiana z panelu dostępu usługi Azure AD, Office 365 lub Azure AD pojedynczy adres URL logowania (można skopiować z karty Pulpit nawigacyjny).
 - **Identyfikator** -musi jednoznacznie wskazywać na aplikację, dla których logowanie jednokrotne jest konfigurowane. Możesz znaleźć tę wartość jako element wystawcy w AuthRequest (żądaniu SAML) wysłana przez aplikację. Ta wartość pojawia się również jako **identyfikator jednostki** w żadnych metadanych SAML udostępniany przez aplikację. W dokumentacji aplikacji SAML szczegółowe informacje na temat co to jest wartość Identyfikatora jednostki lub grupy odbiorców. 
 
     Oto przykład sposobu wyświetlania identyfikatora lub wystawcy żądania języka SAML wysłanego przez aplikację do usługi Azure AD:

@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8784acc0180be1c3e0ac277b7c2a21d422ebccd0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341055"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432247"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorowanie i zarządzanie testami w portalu VaaS
 
@@ -140,7 +140,7 @@ W przepływie pracy przebiegu testu **korzystanie z odpraw** wystąpieniem testu
 
 #### <a name="cancel-a-test-instance"></a>Anuluj wystąpieniem testu
 
-Zaplanowane testy może zostać anulowana, jeśli jego stan to `Pending` lub `Running`.  
+Zaplanowane testy mogą zostać anulowane, jeśli jego stan to `Pending` lub `Running`.  
 
 1. Wybierz **anulować** z menu kontekstowego, aby otworzyć wiersz anulowania wystąpieniem testu.
 

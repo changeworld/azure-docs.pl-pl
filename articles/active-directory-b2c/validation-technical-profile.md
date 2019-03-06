@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4652f23bdf30e1b9e582cd1e83dc95f7716c8394
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175098"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436412"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego sprawdzania poprawności w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator odwołania | Yes | Identyfikator profilu technicznego już zdefiniowane w zasadach lub zasady nadrzędne. |
-|ContinueOnError|Nie| Wskazująca, czy sprawdzanie poprawności wszystkie profile techniczne kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny validaiton zgłasza błąd. Możliwe wartości: `true` lub `false` (ustawienie domyślne, zostanie zatrzymane przetwarzanie dalszych weryfikacji profile i komunikat o błędzie). |
+|ContinueOnError|Nie| Wskazująca, czy sprawdzanie poprawności wszystkie profile techniczne kolejnych weryfikacji powinno być kontynuowane, zgłasza błąd, jeśli ten profil techniczny sprawdzania poprawności. Możliwe wartości: `true` lub `false` (ustawienie domyślne, zostanie zatrzymane przetwarzanie dalszych weryfikacji profile i komunikat o błędzie). |
 |ContinueOnSuccess | Nie | Wskazująca, czy Weryfikacja profile żadnych kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny sprawdzania poprawności zakończy się pomyślnie. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów sprawdzania poprawności będzie kontynuowane. |
 
 **ValidationTechnicalProfile** element zawiera następującego elementu:
@@ -72,7 +72,7 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Value | 1: n | Dane, które jest używane przez wyboru. Jeśli typ to sprawdzanie jest `ClaimsExist`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Jeśli typ wyboru `ClaimEquals`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Podczas gdy inny element wartość zawiera wartość do sprawdzenia.|
+| Wartość | 1: n | Dane, które jest używane przez wyboru. Jeśli typ to sprawdzanie jest `ClaimsExist`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Jeśli typ wyboru `ClaimEquals`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Podczas gdy inny element wartość zawiera wartość do sprawdzenia.|
 | Akcja | 1:1 | Akcja, która należy podjąć, jeśli sprawdzanie warunku wstępnego w ramach kroku aranżacji ma wartość true. Wartość **akcji** ustawiono `SkipThisValidationTechnicalProfile`. Określa profil techniczny skojarzone sprawdzania poprawności nie powinien być wykonywany. |
 
 ### <a name="example"></a>Przykład

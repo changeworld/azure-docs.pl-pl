@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: c8cfa0174d3e3300bdc3cfbc68ca416d9b736300
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cefdc8819162a19a9b73b99a38f7028aa5fbacac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674909"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438146"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -327,7 +327,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |EndpointProviderEnabled| wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia zarządzanie zasobami punktu końcowego przez sieć szkieletową. Wymaga określenia początek i koniec zakresu portów aplikacji w FabricNode. |
 |FabricContainerAppsEnabled| wartość logiczna, domyślna to FALSE|Statyczny| |
 |FirewallPolicyEnabled|wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia otwarcie portów zapory dla punktu końcowego zasobów za pomocą jawnego porty określone w pliku ServiceManifest |
-|GetCodePackageActivationContextTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny|Określ przedział czasu w sekundach. Wartość limitu czasu dla wywołań CodePackageActivationContext. Nie ma to zastosowania do usług ad hoc. |
+|GetCodePackageActivationContextTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny|Określ przedział czasu w sekundach. Wartość limitu czasu dla wywołań CodePackageActivationContext. Nie ma to zastosowania do usług ad-hoc. |
 |GovernOnlyMainMemoryForProcesses|wartość logiczna, domyślna to FALSE|Statyczny|Domyślne zachowanie nadzór nad zasobami polega na umieszczeniu limitu określonego we MemoryInMB na ilości całkowitej ilości pamięci (RAM + wymiany) przetwarzające używa. Jeśli zostanie przekroczony limit; Ten proces zostanie wyświetlony zdarzeń OutOfMemory wyjątku. Jeśli ten parametr ma wartość true; limit zostaną zastosowane tylko do ilości pamięci RAM, używanego przez proces. W przypadku przekroczenia tego limitu; a jeśli to ustawienie ma wartość true; system operacyjny zostanie następnie zamienić głównego pamięci na dysk. |
 |IPProviderEnabled|wartość logiczna, domyślna to FALSE|Statyczny|Umożliwia zarządzanie adresami IP. |
 |IsDefaultContainerRepositoryPasswordEncrypted|wartość logiczna, domyślna to FALSE|Statyczny|Czy DefaultContainerRepositoryPassword jest zaszyfrowany.|
@@ -374,7 +374,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |SharedLogId |ciąg, domyślna to "" |Statyczny|Unikatowy identyfikator guid dla udostępnionego dziennika kontenera. Użyj "" Jeśli przy użyciu domyślnej ścieżki, w obszarze katalogu głównego danych sieci szkieletowej. |
 |SharedLogPath |ciąg, domyślna to "" |Statyczny|Ścieżka i nazwa pliku do lokalizacji, aby umieścić kontenera udostępnionego dziennika. Użyj "" dotyczące korzystania z domyślnej ścieżki, w obszarze katalogu głównego danych sieci szkieletowej. |
 |SharedLogSizeInMB |Int, wartością domyślną jest 8192 |Statyczny|Liczba MB do przydzielenia w kontenerze udostępnionego dziennika. |
-|SharedLogThrottleLimitInPercentUsed|int, domyślna to 0 | Statyczny | Procent użycia udostępnionego dziennika, który będzie wywoływać ograniczania przepustowości. Wartość powinna być z zakresu od 0 do 100. Wartość 0 oznacza użyta domyślna wartość procentową. Wartości 100 oznacza bez ograniczania przepływności w ogóle. Wartość z zakresu od 1 do 99 określa wartość procentową użycia dziennika powyższe ograniczenie, które nastąpią; na przykład, jeśli udostępniony dziennik jest 10GB, a wartość jest 90 throttleing miało miejsce, gdy 9GB, jest w użyciu. Zaleca się przy użyciu wartości domyślnej.|
+|SharedLogThrottleLimitInPercentUsed|int, domyślna to 0 | Statyczny | Procent użycia udostępnionego dziennika, który będzie wywoływać ograniczania przepustowości. Wartość powinna być z zakresu od 0 do 100. Wartość 0 oznacza użyta domyślna wartość procentową. Wartości 100 oznacza bez ograniczania przepływności w ogóle. Wartość z zakresu od 1 do 99 określa wartość procentową użycia dziennika powyższe ograniczenie, które nastąpią; na przykład jeśli udostępniony dziennik jest 10GB, a wartość jest 90, a następnie ograniczania nastąpi po 9GB, jest w użyciu. Zaleca się przy użyciu wartości domyślnej.|
 |WriteBufferMemoryPoolMaximumInKB | int, domyślna to 0 |Dynamiczny|Liczba KB, aby umożliwić puli pamięci bufor zapisu do rozwijania. Użycie wartości 0, aby wskazać, bez ograniczeń. |
 |WriteBufferMemoryPoolMinimumInKB |Int, wartością domyślną jest 8388608 |Dynamiczny|Numer bazy wiedzy można wstępnie przydzielić dla puli pamięci buforu zapisu. Użycie wartości 0, aby wskazać, ma ograniczenia domyślne powinny być zgodne z SharedLogSizeInMB poniżej. |
 
@@ -671,7 +671,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |InvokeInfrastructureCommand |ciąg, domyślna to "Admin" |Dynamiczny| Konfiguracja zabezpieczeń infrastruktury zadań zarządzania poleceń. |
 |InvokeInfrastructureQuery |ciąg, domyślna to "Admin\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń podczas wykonywania zapytań zadań związanych z infrastrukturą. |
 |List |ciąg, domyślna to "Admin\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla obrazu przechowywać operacja wygenerowania listy plików klienta. |
-|MoveNextFabricUpgradeDomain |ciąg, domyślna to "Admin" |Dynamiczny| Konfiguracja zabezpieczeń w przypadku wznawiania Uaktualnianie klastra za pomocą wyraźnie określone domeny uaktualnienia. |
+|MoveNextFabricUpgradeDomain |ciąg, domyślna to "Admin" |Dynamiczny| Konfiguracja zabezpieczeń w przypadku wznawiania Uaktualnianie klastra za pomocą jawnego domeny uaktualnienia. |
 |MoveNextUpgradeDomain |ciąg, domyślna to "Admin" |Dynamiczny| Konfiguracja zabezpieczeń w przypadku wznawiania uaktualnień aplikacji za pomocą jawnego domeny uaktualnienia. |
 |MoveReplicaControl |ciąg, domyślna to "Admin" | Dynamiczny|Przenieś repliki. |
 |NameExists |ciąg, domyślna to "Admin\|\|użytkownika" | Dynamiczny|Sprawdza, czy konfiguracja zabezpieczeń istnienie identyfikatora URI nazewnictwa. |

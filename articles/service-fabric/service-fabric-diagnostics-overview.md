@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: bb4ffe959fd3b973f55b08908ea603839222365d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 71bff5473abe9f53804d702625b871f41309a787
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243266"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441835"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowanie i Diagnostyka Azure Service Fabric
 
@@ -73,7 +73,7 @@ Teraz, gdy Omówiliśmy już diagnostyki w aplikacji oraz platformę, jak wiemy,
 
 Listę liczników wydajności, które powinny być zbierane na poziomie infrastruktury znajduje się w temacie [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md). 
 
-Alsp usługi Service Fabric udostępnia zestaw liczników wydajności dla modeli programowania usługi Reliable Services i uczestników. Jeśli używasz jednej z tych modeli te liczniki wydajności mogą informacje, aby upewnić się, że Twoje aktorów są obrotowych i zmniejszana poprawnie lub czy żądań usługi reliable service są aktualnie obsługiwane wystarczająco szybko. Aby uzyskać więcej informacji, zobacz [niezawodne zdalna komunikacja usług monitorowania](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) i [monitorowanie wydajności struktury Reliable actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
+Usługa Service Fabric udostępnia również zestaw liczników wydajności dla modeli programowania usługi Reliable Services i uczestników. Jeśli używasz jednej z tych modeli te liczniki wydajności mogą informacje, aby upewnić się, że Twoje aktorów są obrotowych i zmniejszana poprawnie lub czy żądań usługi reliable service są aktualnie obsługiwane wystarczająco szybko. Aby uzyskać więcej informacji, zobacz [niezawodne zdalna komunikacja usług monitorowania](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) i [monitorowanie wydajności struktury Reliable actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
 
 Rozwiązania usługi Azure Monitor do zbierania tych to dzienniki usługi Azure Monitor, podobnie jak poziom monitorowania platformy. Należy używać [agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) do zbierania liczników wydajności odpowiednie i wyświetlać je w dziennikach w usłudze Azure Monitor.
 

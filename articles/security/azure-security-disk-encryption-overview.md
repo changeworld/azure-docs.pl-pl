@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c07fbccdcf77e68f497fe940fa730f294b5c34a1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 67f1488af330ac666aa3f9fe83e5b5ee42e6df2f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727867"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410047"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS
 
@@ -72,7 +72,7 @@ Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, j
    > [!NOTE]
    > Szyfrowanie dysku systemu operacyjnego dla niektórych dystrybucjach systemu Linux nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące usługi Azure dysku szyfrowanie](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu.
    
-* Włącz szyfrowanie na maszynach wirtualnych Windows, które są skonfigurowane przy użyciu funkcji miejsca do magazynowania systemu Windows.
+* Włącz szyfrowanie na maszynach wirtualnych, które są skonfigurowane przy użyciu funkcji miejsca do magazynowania systemu Windows począwszy od wersji programu Windows Server 2016.
 * Zaktualizuj ustawienia szyfrowania dla zaszyfrowanego istniejących w warstwie Premium i innych niż - magazynu maszyny Wirtualnej usługi Premium.
 * Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zarówno klucz szyfrowania klucza (KEK), jak i bez klucza KEK scenariuszy.
 * Wszystkie publiczne platformy Azure i Azure dla instytucji rządowych regiony są obsługiwane.

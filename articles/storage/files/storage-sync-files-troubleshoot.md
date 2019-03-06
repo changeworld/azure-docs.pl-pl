@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57bd65006058ab91dcacd4749c1677036f134ff3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194241"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443372"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -730,7 +730,7 @@ if ($fileShare -eq $null) {
 1. Kliknij przycisk **przypisań ról** kartę do listy użytkowników i aplikacji (*jednostki usług*), mają dostęp do swojego konta magazynu.
 1. Sprawdź **usługi hybrydowe File Sync** pojawia się na liście za pomocą **czytnik i dostęp do danych** roli. 
 
-    ![Zrzut ekranu: nazwy głównej usługi usługi hybrydowe File Sync na karcie kontrola dostępu do konta magazynu](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+    ![Zrzut ekranu przedstawiający nazwy głównej usługi usługi hybrydowe File Sync na karcie kontrola dostępu do konta magazynu](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     Jeśli **usługi hybrydowe File Sync** nie jest wyświetlana na liście, należy wykonać następujące czynności:
 

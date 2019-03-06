@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5282f2e153ec2f1304bec9aadaf8fab88961edd9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792986"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443625"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Konfigurowanie środowiska źródłowego dla oprogramowania VMware do platformy Azure replikacji
 
@@ -41,7 +41,7 @@ Możesz skonfigurować serwer konfiguracji jako maszyny Wirtualnej VMware w śro
 
 1. Dowiedz się więcej o [wymagania wstępne](vmware-azure-deploy-configuration-server.md#prerequisites) dla wdrożenia serwera konfiguracji.
 2. [Sprawdź pojemność liczby](vmware-azure-deploy-configuration-server.md#capacity-planning) dla wdrożenia.
-3. [Pobierz](vmware-azure-deploy-configuration-server.md#download-the-template) i [zaimportować](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) szablon OVA, aby skonfigurować lokalnych zasobów programu VMware maszynę Wirtualną, która działa na serwerze konfiguracji. Licencja dostarczane z szablonem jest licencji ewaluacyjnej i jest ważna przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
+3. [Pobierz](vmware-azure-deploy-configuration-server.md#download-the-template) i [zaimportować](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) szablon OVA, aby skonfigurować lokalnych zasobów programu VMware maszynę Wirtualną, która działa na serwerze konfiguracji. Licencja dostarczane z szablonem jest licencją wersji ewaluacyjnej i jest ważna przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
 4. Włącz na maszynie Wirtualnej programu VMware i [go zarejestrować](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) w usługi Recovery Services vault.
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Usługa Azure Site Recovery wykluczenia folderów z programu antywirusowego
@@ -62,7 +62,7 @@ Wyklucz następujące foldery z oprogramowania antywirusowego do sprawnego repli
  - C:\Temp
  - C:\strawberry
  - C:\ProgramData\MySQL
- - C:\Program pliki (x86) \MySQL
+ - C:\Program Files (x86)\MySQL
  - C:\ProgramData\ASR
  - C:\ProgramData\Microsoft Azure Site Recovery
  - C:\ProgramData\ASRLogs

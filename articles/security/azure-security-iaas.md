@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: c60022d43af1601359ab5de8b4d3e4eb06dd239a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243231"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409758"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -153,7 +153,7 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z usługi A
 **Szczegóły**: Usługa Azure Disk Encryption generuje i zapisuje klucze szyfrowania w magazynie kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Na potrzeby uwierzytelniania, można użyć albo uwierzytelnianie oparte na klucz tajny klienta lub [uwierzytelnianie klienta oparte na certyfikatach usługi Azure AD](../active-directory/active-directory-certificate-based-authentication-get-started.md).
 
 **Najlepsze rozwiązanie**: Klucz szyfrowania klucza (KEK) na użytek dodatkową warstwę zabezpieczeń dla kluczy szyfrowania. Dodaj KEK do magazynu kluczy.   
-**Szczegóły**: Użyj [AzKeyVaultKey Dodaj](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można również zaimportować KEK z Twojego lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Utrzymywanie depozytu kopię tego klucza w lokalnym programie zarządzania kluczami przez moduł HSM oferuje dodatkową ochronę przed przypadkowym usunięciem kluczy.
+**Szczegóły**: Użyj [AzKeyVaultKey Dodaj](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można również zaimportować KEK z Twojego lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Utrzymywanie depozytu kopię tego klucza w lokalnym programie zarządzania kluczami przez moduł HSM oferuje dodatkową ochronę przed przypadkowym usunięciem kluczy.
 
 **Najlepsze rozwiązanie**: Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub utworzyć kopię zapasową przed dyski są szyfrowane. Kopie zapasowe podaj opcję odzyskiwania, jeśli wystąpił nieoczekiwany błąd będzie się działo podczas szyfrowania.   
 **Szczegóły**: Maszyny wirtualne z dyskami zarządzanymi wymagają kopię zapasową przed zaszyfrowaniem. Po utworzeniu kopii zapasowej można użyć **AzVMDiskEncryptionExtension zestaw** polecenia cmdlet, aby zaszyfrować dyski zarządzane, określając *- skipVmBackup* parametru. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) artykułu.

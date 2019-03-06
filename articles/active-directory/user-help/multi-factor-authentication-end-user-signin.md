@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure MFA Zaloguj się przy użyciu weryfikacji dwuetapowej | Dokumentacja firmy Microsoft
+title: Usługa Azure MFA Zaloguj się przy użyciu weryfikacji dwuetapowej — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Ta strona udostępnia wskazówki na gdzie można zobaczyć różne logowania metod dostępnych przy użyciu usługi Azure MFA.
 keywords: uwierzytelnianie użytkowników, logowania, zaloguj się przy użyciu telefonu komórkowego, zaloguj się przy użyciu telefonu biurowego
 services: active-directory
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
+ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 153b3d61324d504fe260b104bf412913f9692627
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cd109637379f1fd2cdb108fbbb6c6c47224e00a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957542"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431771"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Środowisko logowania za pomocą usługi Azure Multi-Factor Authentication
 > [!NOTE]
@@ -32,8 +33,8 @@ ms.locfileid: "56957542"
 | --- |
 | [Za pomocą rozmowy telefonicznej, aby Mój telefon komórkowy lub pakietu office](#signing-in-with-a-phone-call) |
 | [Tekst na Mój telefon komórkowy](#signing-in-with-a-text-message)
-| Powiadomienia z aplikacji Microsoft Authenticator |
-| Przy użyciu kodów weryfikacyjnych z aplikacji Microsoft Authenticator |
+| [Powiadomienia z aplikacji Microsoft Authenticator](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| [Przy użyciu kodów weryfikacyjnych z aplikacji Microsoft Authenticator](#to-sign-in-using-a-verification-with-the-microsoft-authenticator-app) |
 | [Za pomocą alternatywnej metody ponieważ nie mogę używać mojej preferowaną metodą teraz](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Logowanie się przy użyciu połączenia telefonicznego

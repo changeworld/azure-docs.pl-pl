@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 859add6c9310cf5f18ed7090c8e93d4896b59a0b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852936"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433386"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Usługa Service Bus, cen i rozliczeń
 
@@ -74,7 +74,7 @@ Warstwa standardowa usuwa limit połączeń obsługiwanych przez brokera na prze
 <br />
 
 > [!NOTE]
-> Opłata zależy do szczytowej liczby jednoczesnych połączeń i jest naliczana proporcjonalnie w oparciu o godziny przy założeniu 744 godzin na miesiąc.
+> Opłata zależy od szczytowej liczby jednoczesnych połączeń i jest naliczana proporcjonalnie do liczby 730 godzin miesięcznie.
 >
 >
 
@@ -91,12 +91,12 @@ Połączenie obsługiwane przez brokera jest definiowane jako jedna z następuj�
 1. Połączenie AMQP od klienta do usługi Service Bus, kolejki lub tematu/subskrypcji.
 2. Wywołanie HTTP mające na celu odebranie komunikatu z tematu lub kolejki usługi Service Bus, dla którego wartość limitu czasu odbierania jest większa od zera.
 
-Usługa Service Bus opłaty za szczytową liczbę jednoczesnych połączeń obsługiwanych przez brokera, która przekracza wliczoną w usługę wartość (1000 połączeń w warstwie standardowa). Wartości szczytowe są mierzone godzinowo, proporcjonalnie dzielone przez 744 godziny w miesiącu i dodawane w ciągu miesięcznego okresu rozliczeniowego. Uwzględniona liczba (1000 połączeń obsługiwanych przez brokera na miesiąc) jest stosowana na koniec okresu rozliczeniowego względem sumy proporcjonalnie naliczonych szczytów wyrażonych w godzinach.
+Usługa Service Bus opłaty za szczytową liczbę jednoczesnych połączeń obsługiwanych przez brokera, która przekracza wliczoną w usługę wartość (1000 połączeń w warstwie standardowa). Wartości szczytowe są mierzone godzinowo, proporcjonalnie dzielone przez 730 godzin w miesiącu i dodawane w ciągu miesięcznego okresu rozliczeniowego. Uwzględniona liczba (1000 połączeń obsługiwanych przez brokera na miesiąc) jest stosowana na koniec okresu rozliczeniowego względem sumy proporcjonalnie naliczonych szczytów wyrażonych w godzinach.
 
 Na przykład:
 
-1. Każde z 10 000 urządzeń łączy pojedyncze połączenie AMQP i odbiera polecenia z tematu usługi Service Bus. Urządzenia wysyła zdarzenia telemetryczne do Centrum zdarzeń. Jeśli wszystkie urządzenia łączą się przez 12 godzin dziennie, następujące połączenia opłaty (poza innymi opłatami usługi Service Bus temat): 10 000 połączeń * 12 godzin * 31 dni / 744 = 5000 połączeń obsługiwanych przez brokera. Po wykorzystaniu miesięcznego limitu 1000 połączeń obsługiwanych przez brokera możesz być naliczona opłata za 4000 połączeń obsługiwanych przez brokera, zgodnie ze stawką 0,03 USD za połączenia obsługiwane przez brokera, w sumie $120.
-2. 10 000 urządzeń odbiera komunikaty z kolejki usługi Service Bus za pośrednictwem protokołu HTTP z limitem czasu różna od zera. Jeśli wszystkie urządzenia łączą się przez 12 godzin dziennie, zobaczysz następujące opłaty (poza innymi opłatami usługi Service Bus): 10 000 połączeń odebranych HTTP * 12 godzin dziennie * 31 dni / 744 godzin = 5000 połączeń obsługiwanych przez brokera.
+1. Każde z 10 000 urządzeń łączy pojedyncze połączenie AMQP i odbiera polecenia z tematu usługi Service Bus. Urządzenia wysyła zdarzenia telemetryczne do Centrum zdarzeń. Jeśli wszystkie urządzenia łączą się przez 12 godzin dziennie, następujące połączenia opłaty (poza innymi opłatami usługi Service Bus temat): 10 000 połączeń * 12 godzin * 30 dni / 730 = 4,931 połączeń obsługiwanych przez brokera. Po wykorzystaniu miesięcznego limitu 1000 połączeń obsługiwanych przez brokera możesz być naliczona opłata za 4000 połączeń obsługiwanych przez brokera, zgodnie ze stawką 0,03 USD za połączenia obsługiwane przez brokera, w sumie $120.
+2. 10 000 urządzeń odbiera komunikaty z kolejki usługi Service Bus za pośrednictwem protokołu HTTP z limitem czasu różna od zera. Jeśli wszystkie urządzenia łączą się przez 12 godzin dziennie, zobaczysz następujące opłaty (poza innymi opłatami usługi Service Bus): 10 000 połączeń odebranych HTTP * 12 godzin dziennie * 730 godzin/30 dni = 4,931 połączeń obsługiwanych przez brokera.
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>Czy opłaty za połączenia obsługiwane przez brokera mają zastosowanie w przypadku kolejek i tematów/subskrypcji?
 

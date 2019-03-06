@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ea76f28995dfa7f7dd5a6f280f8319f5b4ca26
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180765"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431313"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -30,15 +30,15 @@ Możesz podać jednokrotne logowanie lokalne aplikacje opublikowane za pośredni
 Można włączyć logowanie jednokrotne do aplikacji przy użyciu zintegrowanego Windows Authentication (Zintegrowane), zapewniając uprawnieniu łączników serwera Proxy aplikacji w usłudze Active Directory na personifikowanie użytkowników. Łączniki Użyj tego uprawnienia do wysyłania i odbierania tokenów w ich imieniu.
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>Jak logowanie jednokrotne za pomocą działania ograniczonego delegowania protokołu Kerberos
-Ten diagram opisano przepływ, gdy użytkownik próbuje uzyskać dostęp do aplikacji lokalnych, używającej IWA.
+Ten diagram opisano przepływ, gdy użytkownik próbuje uzyskać dostęp w aplikacji lokalnej, która używa IWA.
 
 ![Diagram przepływu uwierzytelniania AAD firmy Microsoft](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. Użytkownik musi wprowadzić adres URL, aby uzyskać dostęp do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji.
+1. Użytkownik musi wprowadzić adres URL, aby uzyskać dostęp w aplikacji lokalnej za pośrednictwem serwera Proxy aplikacji.
 2. Serwer Proxy aplikacji przekierowuje żądanie do usług uwierzytelniania usługi Azure AD, aby preauthenticate. W tym momencie usługa Azure AD ma zastosowanie wszelkich mających zastosowanie uwierzytelniania i zasady autoryzacji, takie jak uwierzytelnianie wieloskładnikowe. Jeśli użytkownik zostanie zweryfikowana, usługi Azure AD tworzy token i wysyła go do użytkownika.
 3. Użytkownik przekazuje token do serwera Proxy aplikacji.
 4. Serwer Proxy aplikacji weryfikuje token pobiera główną nazwę użytkownika (UPN) z niego i wysyła następnie żądanie, nazwy UPN i głównej nazwy usługi (SPN) do łącznika usługi za pośrednictwem uwierzytelnionych dually bezpiecznego kanału.
-5. Łącznik negocjowanie delegowanie ograniczone protokołu Kerberos (KCD) za pomocą lokalnej usługi AD, personifikacji użytkownika w celu pobrania tokenu protokołu Kerberos do aplikacji.
+5. Łącznik negocjowanie delegowanie ograniczone protokołu Kerberos (KCD) przy użyciu usługi AD, personifikacji użytkownika w celu pobrania tokenu protokołu Kerberos do aplikacji lokalnych.
 6. Usługi Active Directory wysyła ten token protokołu Kerberos, do łącznika aplikacji.
 7. Łącznik wysyła oryginalne żądanie do serwera aplikacji przy użyciu tokenu protokołu Kerberos, otrzymanego z usługi AD.
 8. Aplikacja wysyła odpowiedź do łącznika, która jest zwracana do serwera Proxy aplikacji usługi a na koniec do użytkownika.
@@ -118,7 +118,7 @@ Ta funkcja umożliwia wiele organizacji, które mają różne lokalne i tożsamo
 * Wewnętrznie mają kilka domen (joe@us.contoso.com, joe@eu.contoso.com) i jednej domeny w chmurze (joe@contoso.com).
 * Wewnętrznie mają nazwy domeny bez obsługi routingu (joe@contoso.usa) i prawne jeden w chmurze.
 * Nie używaj nazw domen wewnętrznie (Jan)
-* Użyj innych aliasów lokalnych i w chmurze. Na przykład joe-johns@contoso.com programu vs. joej@contoso.com  
+* Użyj innych aliasów, lokalnie i w chmurze. Na przykład joe-johns@contoso.com programu vs. joej@contoso.com  
 
 Dzięki serwerowi Proxy aplikacji możesz wybrać tożsamość do użycia w celu uzyskania biletu protokołu Kerberos. To ustawienie jest na aplikację. Niektóre z tych opcji nadają się dla systemów, które nie akceptują format adresu e-mail, inne są zaprojektowane dla alternatywnej nazwy logowania.
 

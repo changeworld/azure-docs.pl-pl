@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 7e5d04f3ead4353c88a6b56ab530f41ff15022d1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005390"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444127"
 ---
-# <a name="computer-groups-in-azure-monitor-log-quereies"></a>Grupy komputerów w usłudze Azure Monitor dziennika quereies
+# <a name="computer-groups-in-azure-monitor-log-queries"></a>Grupy komputerów w usłudze Azure Monitor rejestrowania zapytań
 Grupy komputerów w usłudze Azure Monitor pozwala do zakresu [rejestrowania zapytań](../log-query/log-query-overview.md) do konkretnego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupa jest dołączany do zapytania dziennika, wyniki są ograniczone do rekordy spełniające komputerów w grupie.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]

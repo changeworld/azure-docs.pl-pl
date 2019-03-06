@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d7d23300936cd512466e5c4b18f1f0922c81ceff
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447178"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408194"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
 Po uruchomieniu aplikacji nowoczesnych, opartych na mikrousługach w usłudze Kubernetes, często zachodzi potrzeba kontroli, które składniki mogą komunikować się ze sobą. Zasadę najmniejszych uprawnień powinny być stosowane do jak ruch może przepływać między zasobników w klastrze AKS. Na przykład prawdopodobnie chcesz zablokować ruch bezpośrednio do aplikacji zaplecza. W usłudze Kubernetes *zasad sieciowych* funkcja pozwala zdefiniować reguły dla ruchu przychodzącego i wychodzącego ruchu między zasobników w klastrze.
 
-W tym artykule pokazano, jak sterować przepływem ruchu między zasobników w usłudze AKS za pomocą zasad sieciowych.
+Calico, typu open source, sieci i rozwiązań zabezpieczeń sieciowych przez Tigera, oferuje aparatu zasad sieci, które można zaimplementować reguły zasad sieciowych usługi Kubernetes. W tym artykule pokazano, jak zainstalować Calico aparat zasad sieciowych i Kubernetes sieci utworzone zasady służące do sterowania przepływem ruchu między zasobników w usłudze AKS.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.

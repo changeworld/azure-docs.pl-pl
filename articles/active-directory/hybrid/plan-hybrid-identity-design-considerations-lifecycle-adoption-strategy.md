@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d11de9dc82dad0426f141049603e99e99690f5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873223"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433743"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Określić strategia wdrożenia cyklu życia tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategii zarządzania tożsamości do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w [określić zadania związane z zarządzaniem tożsamości hybrydowej](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -95,7 +95,7 @@ Przejrzyj poniższą tabelę, aby porównać opcji synchronizacji:
 | Opcja zarządzania synchronizacji | Zalety | Wady |
 | --- | --- | --- |
 | Na podstawie synchronizacji (przy użyciu narzędzia DirSync lub AADConnect) |Użytkownicy i grupy synchronizowane z lokalną i chmurą <br>  **Kontrola zasad**: Zasady kont, można ustawić za pomocą usługi Active Directory, która umożliwia administratorowi Zarządzanie zasady dotyczące haseł, stacji roboczej, ograniczenia, formanty blokady i uzyskać więcej informacji, bez konieczności wykonywania dodatkowych zadań w chmurze.  <br>  **Kontrola dostępu**: Można ograniczyć dostęp do usługi w chmurze, tak, aby usług jest możliwy za pośrednictwem środowiska firmy za pośrednictwem serwerach w trybie online lub obu. <br>  Ograniczona obsługa wywołania: Jeśli użytkownicy mają mniejszą liczbę haseł do zapamiętania, są one mniej prawdopodobne zapomnieć je. <br>  Zabezpieczenia: Tożsamości użytkowników i informacji są chronione, ponieważ wszystkie serwery i usług używanych w rejestracji jednokrotnej, są zarządzane i kontrolowany w środowisku lokalnym. <br>  Obsługa silnego uwierzytelniania: Za pomocą silnego uwierzytelniania (nazywane również uwierzytelnianie dwuskładnikowe) z usługą w chmurze. Jednak jeśli używasz silne uwierzytelnianie, należy użyć logowania jednokrotnego. | |
-| Na podstawie federacyjnych (za pośrednictwem usług AD FS) |Włączone przez usługę tokenu zabezpieczającego (STS). Po skonfigurowaniu usługi tokenu Zabezpieczającego w celu zapewnienia dostępu rejestracji jednokrotnej z usługą w chmurze firmy Microsoft, zostanie utworzona relację zaufania federacji między lokalnej usługi STS i domeny federacyjnej, wskazana w dzierżawie usługi Azure AD. <br> Umożliwia użytkownikom końcowym użyć tego samego zestawu poświadczeń, aby uzyskać dostęp do wielu zasobów <br>Użytkownicy końcowi nie jest konieczne Obsługa wielu zestawów poświadczeń. Jeszcze, użytkownicy muszą podawać swoich poświadczeń do każdego z nich uczestniczących w programie zasobów., scenariusze B2B i B2C obsługiwane. |Wymaga sprawdzenia personelu dotyczące wdrażania i konserwacji lokalnego dedykowanych serwerów usług AD FS. Brak ograniczeń dotyczących używania silnego uwierzytelniania, jeśli planujesz użyć usług AD FS do usługi STS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usług AD FS 2.0 zaawansowane opcje](https://go.microsoft.com/fwlink/?linkid=235649). |
+| Na podstawie federacyjnych (za pośrednictwem usług AD FS) |Włączone przez usługę tokenu zabezpieczającego (STS). Po skonfigurowaniu usługi tokenu Zabezpieczającego w celu zapewnienia dostępu rejestracji jednokrotnej z usługą w chmurze firmy Microsoft, zostanie utworzona relację zaufania federacji między lokalnej usługi STS i domeny federacyjnej, wskazana w dzierżawie usługi Azure AD. <br> Umożliwia użytkownikom końcowym użyć tego samego zestawu poświadczeń, aby uzyskać dostęp do wielu zasobów <br>Użytkownicy końcowi nie jest konieczne Obsługa wielu zestawów poświadczeń. Jeszcze, użytkownicy muszą podawać swoich poświadczeń do każdego z nich uczestniczących w programie zasobów., scenariusze B2B i B2C obsługiwane. |Wymaga sprawdzenia personelu, wdrażania i utrzymywania dedykowanych na lokalnych serwerach usług AD FS. Brak ograniczeń dotyczących używania silnego uwierzytelniania, jeśli planujesz użyć usług AD FS do usługi STS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usług AD FS 2.0 zaawansowane opcje](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]
 > Aby uzyskać więcej informacji, zobacz [integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

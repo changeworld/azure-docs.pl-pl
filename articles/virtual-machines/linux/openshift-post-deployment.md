@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 8436b530ac01f03e071604e5023b50f8de6989fd
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b2a2e0ed48004a731ca15b3fb1d985bbee7e0c29
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034811"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440663"
 ---
 # <a name="post-deployment-tasks"></a>Po wdrożeniu zadania
 
@@ -40,9 +40,9 @@ Do uwierzytelniania usługi Azure Active Directory, musisz najpierw utworzyć re
 Te kroki odnoszą się do utworzenia rejestracji aplikacji i Graficznym (portal), aby ustawić uprawnienia wiersza polecenia platformy Azure. Do utworzenia rejestracji aplikacji, potrzebne są następujące pięć rodzajów informacji:
 
 - Nazwa wyświetlana: Nazwa rejestracji aplikacji (na przykład OCPAzureAD)
-- Strona główna: (na przykład adres URL konsoli platformy OpenShift https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Strona główna: Adres URL konsoli OpenShift (na przykład https://masterdns343khhde.westus.cloudapp.azure.com/console)
 - Identyfikator URI: Adres URL konsoli OpenShift (na przykład https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Adres URL odpowiedzi: Głównym publiczny adres URL i nazwa rejestracji aplikacji (np.) https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Adres URL odpowiedzi: Główna publiczny adres URL i nazwę rejestracji aplikacji (np.) https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - Hasło: Bezpieczne hasło (Użyj silnego hasła)
 
 Poniższy przykład tworzy rejestracji aplikacji, korzystając z informacji przedstawionych powyżej:

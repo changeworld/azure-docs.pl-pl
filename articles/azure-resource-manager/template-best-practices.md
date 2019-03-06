@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: d40fcacc4612761b2c43b0dd3658042c38a0df75
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309523"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440476"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Usługa Azure Resource Manager szablon najlepszych rozwiązań
 
@@ -26,7 +26,25 @@ Aby uzyskać zalecenia dotyczące sposobu zarządzania subskrypcjami platformy A
 
 Aby uzyskać zalecenia dotyczące sposobu tworzenia szablonów, które działają we wszystkich środowiskach w chmurze platformy Azure, zobacz [szablony Tworzenie usługi Azure Resource Manager w celu zachowania spójności chmury](templates-cloud-consistency.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="template-limits"></a>Limity szablonu
+
+Limit rozmiaru szablonu do 1 MB, a każdy plik parametrów do 64 KB. Aby stan końcowy szablonu obowiązuje limit 1 MB, po została rozszerzona o definicjach iteracyjne zasobów i wartości dla zmiennych i parametrów. 
+
+Możesz również są ograniczone do:
+
+* Parametry 256
+* zmienne 256
+* 800 zasoby (w tym liczba kopii)
+* wartości wyjściowe 64
+* 24 576 znaków w wyrażeniu szablonu
+
+Pewne ograniczenia szablonu może przekroczyć przy użyciu zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [podczas wdrażania zasobów platformy Azure, za pomocą połączonymi szablonami](resource-group-linked-templates.md). Aby zmniejszyć liczbę parametrów, zmienne ani danych wyjściowych, możesz połączyć kilka wartości do obiektu. Aby uzyskać więcej informacji, zobacz [obiektów jako parametrów](resource-manager-objects-as-parameters.md).
+
+## <a name="resource-group"></a>Grupa zasobów
+
+Podczas wdrażania zasobów w grupie zasobów, grupa zasobów przechowuje metadane dotyczące zasobów. Metadane są przechowywane w lokalizacji grupy zasobów.
+
+Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można zaktualizować. Aby zminimalizować ryzyko, Znajdź swoją grupę zasobów i zasobów, w tym samym regionie.
 
 ## <a name="parameters"></a>Parametry
 Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [parametry](resource-group-authoring-templates.md#parameters).
@@ -155,7 +173,7 @@ Podejmując decyzję co [zależności](resource-group-define-dependencies.md) mo
 
 * Ustawić zasobu podrzędnego jako zależny od jej zasobu nadrzędnego.
 
-* Zasoby z [element warunek](resource-manager-templates-resources.md#condition) ma wartość false, są automatycznie usuwane z kolejności wg zależności. Zależności należy ustawić tak, jakby zawsze wdrożono zasób.
+* Zasoby z [element warunek](resource-group-authoring-templates.md#condition) ma wartość false, są automatycznie usuwane z kolejności wg zależności. Zależności należy ustawić tak, jakby zawsze wdrożono zasób.
 
 * Pozwalają zastosować kaskadowo bez konieczności ustawiania ich jawnie zależności. Na przykład maszyna wirtualna jest zależny od interfejsu sieci wirtualnej, a interfejs sieci wirtualnej zależy od sieci wirtualnej i publicznych adresów IP. W związku z tym maszyna wirtualna jest wdrożone zasoby po wszystkich trzech, ale nie jest jawnie ustawiana maszyny wirtualnej jako zależny od wszystkich trzech zasobów. To podejście wyjaśnia kolejność zależności oraz ułatwia później zmienić szablonu.
 
@@ -163,7 +181,7 @@ Podejmując decyzję co [zależności](resource-group-define-dependencies.md) mo
 
 ## <a name="resources"></a>Zasoby
 
-Poniższe informacje mogą być przydatne podczas pracy z [zasobów](resource-manager-templates-resources.md):
+Poniższe informacje mogą być przydatne podczas pracy z [zasobów](resource-group-authoring-templates.md#resources):
 
 * Aby ułatwić innymi współautorami zrozumienie przeznaczenia zasobu, określić **komentarze** dla każdego zasobu w szablonie:
    

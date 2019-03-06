@@ -1,5 +1,5 @@
 ---
-title: 'Sprawdź łączność — przewodnik rozwiązywania problemów z usługi ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+title: 'Sprawdź łączność — przewodnik rozwiązywania problemów z usługi ExpressRoute: Azure| Microsoft Docs'
 description: Ta strona zawiera instrukcje dotyczące rozwiązywania problemów i sprawdzania poprawności łączność typu end to end obwodu usługi ExpressRoute.
 services: expressroute
 author: rambk
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: a64aa59b205e8986b80a575c50041f826606e16f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c4b20b4007a4824ee2dea0e1b22f1ea886218885
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272817"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453613"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Weryfikowanie połączenia usługi ExpressRoute
 Ten artykuł pomoże Ci Sprawdź i rozwiązywanie problemów z łącznością usługi ExpressRoute. Usługi ExpressRoute, która rozszerza sieć lokalną na chmurę Microsoft za pośrednictwem połączenia prywatnego, który jest zapewniana przez dostawcę połączenia, obejmuje następujące trzy strefy odrębnych sieci:
 
 -   Sieć klienta
--   Dostawcy sieci
+-   Provider Network
 -   Microsoft Datacenter
 
 Ten dokument ma na celu pomóc użytkownikowi, aby wskazać, gdzie (lub nawet wtedy, gdy) istnieje problem z łącznością i w ramach której strefy, w ten sposób, aby poszukać pomocy z odpowiedniego zespołu, aby rozwiązać ten problem. W razie potrzeby pomocy technicznej firmy Microsoft jest aby rozwiązać problem, otwórz bilet pomocy technicznej za pomocą [Microsoft Support][Support].
@@ -28,6 +28,8 @@ Ten dokument ma na celu pomóc użytkownikowi, aby wskazać, gdzie (lub nawet wt
 > Ten dokument ma na celu ułatwić diagnozowanie i rozwiązywanie problemów z prostego. Nie ma być zastępczy pomocy technicznej firmy Microsoft. Otwórz bilet pomocy technicznej za pomocą [Microsoft Support] [ Support] Jeśli nie możesz rozwiązać problem, zgodnie ze wskazówkami.
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Przegląd
 Na poniższym diagramie przedstawiono logiczne łączność sieci klientów do sieci firmy Microsoft przy użyciu usługi ExpressRoute.
@@ -88,16 +90,16 @@ Dla obwodu usługi ExpressRoute działać *Circuit stan* musi być *włączone* 
 ### <a name="verification-via-powershell"></a>Weryfikacja za pomocą programu PowerShell
 Aby wyświetlić listę wszystkich obwodów usługi ExpressRoute w grupie zasobów, użyj następującego polecenia:
 
-    Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Nazwa grupy zasobów można uzyskać za pośrednictwem platformy Azure. Zobacz podsekcję poprzedniej części tego dokumentu, a następnie należy pamiętać, że nazwa grupy zasobów znajduje się na zrzucie ekranu przykładu.
+>Nazwa grupy zasobów można uzyskać za pośrednictwem platformy Azure. Zobacz podsekcję poprzedniej części tego dokumentu, a następnie należy pamiętać, że nazwa grupy zasobów znajduje się przykładowy zrzut ekranu.
 >
 >
 
 Aby wybrać określonego obwodu usługi ExpressRoute w grupie zasobów, użyj następującego polecenia:
 
-    Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
 
 Przykładowa odpowiedź to:
 
@@ -186,8 +188,8 @@ W poprzednim przykładzie jak wspomniano Azure prywatnej komunikacji równorzęd
 ### <a name="verification-via-powershell"></a>Weryfikacja za pomocą programu PowerShell
 Aby uzyskać Azure prywatnej komunikacji równorzędnej szczegółów konfiguracji, użyj następujących poleceń:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
 Przykładowa odpowiedź dla pomyślnie skonfigurowano prywatnej komunikacji równorzędnej, to:
 
@@ -210,21 +212,21 @@ Przykładowa odpowiedź dla pomyślnie skonfigurowano prywatnej komunikacji rów
 
 Aby uzyskać Azure publicznej komunikacji równorzędnej szczegółów konfiguracji, użyj następujących poleceń:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
 Aby uzyskać szczegóły konfiguracji komunikacji równorzędnej firmy Microsoft, użyj następujących poleceń:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 Jeśli komunikacja równorzędna nie jest skonfigurowany, może to być komunikat o błędzie. Przykładowa odpowiedź, gdy podane komunikacji równorzędnej (Azure publicznej komunikacji równorzędnej w tym przykładzie) nie jest skonfigurowany w ramach obwodu:
 
-    Get-AzureRmExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
-        + Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
         + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzureRmExpr...itPeeringConfig], InvalidOperationException
+            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
             + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
 
 

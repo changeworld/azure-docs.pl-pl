@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 53061d4d09ac2769e59269701467a22f292cd919
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959769"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432638"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 
@@ -89,4 +89,4 @@ Ten błąd występuje, gdy klastry przejść w stan nie powiodło się kilka prz
 Operacje klastra są ograniczone, podczas aktywnego uaktualniania operacje są wykonywane lub podjęto próbę uaktualnienia, ale następnie nie powiodło się. Aby zdiagnozować problem, uruchom `az aks show -g myResourceGroup -n myAKSCluster -o table` można pobrać szczegółowe informacje o tym w klastrze. Na podstawie wyniku:
 
 * Jeśli klaster jest aktywnie uaktualnienie, poczekaj, aż do zakończenia operacji. Jeśli zakończyło się pomyślnie, spróbuj ponownie operacji wcześniej zakończonej niepowodzeniem.
-* W przypadku niepowodzenia uaktualniania klastra, wykonaj czynności opisane [powyżej](#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade-directed-from-httpsakamsaks-pending-upgrade)
+* W przypadku niepowodzenia uaktualniania klastra, wykonaj kroki opisane powyżej

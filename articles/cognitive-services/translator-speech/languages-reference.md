@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 111adad627ffd830d69efc61bc7a06a99fee30f3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673328"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435766"
 ---
 # <a name="translator-speech-api-languages"></a>Interfejs API mowy usługi Translator Languages
 
@@ -65,7 +65,7 @@ Podana wartość każdej właściwości jest w następujący sposób.
 Wartość skojarzona z właściwością mowy na tekst, `speech`, jest słownikiem (klucz, wartość) pary. Każdy klucz identyfikuje język obsługiwane w przypadku mowy na tekst. Klucz jest identyfikatorem tego Klient przechodzi do interfejsu API. Wartość skojarzoną z kluczem jest obiektem z następującymi właściwościami:
 
 * `name`: Nazwa wyświetlana języka.
-* `language`: Tag języka skojarzonego napisane w języku. Zobacz "Transakcja tekst" poniżej.
+* `language`: Tag języka skojarzonego napisane w języku. Zobacz "Tekst transakcji" poniżej.
 Przykładem jest:
 
 ```
@@ -134,16 +134,16 @@ Langagues {mowy (object, opcjonalnie), tekst (object, opcjonalnie), tts (object,
 
 |Nagłówek|Opis|Type|
 :--|:--|:--|
-X-RequestId|Wartość wygenerowany przez serwer w celu zidentyfikowania żądania i używana na potrzeby rozwiązywania problemów.|ciąg|
+X-RequestId|Wartość wygenerowany przez serwer w celu zidentyfikowania żądania i używana na potrzeby rozwiązywania problemów.|string|
 
 ### <a name="parameters"></a>Parametry
 
 |Parametr|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|
-|wersja interfejsu API    |Wersja interfejsu API zażądane przez klienta. Dozwolone wartości to: `1.0`.|query|ciąg|
-|scope  |Zestawy obsługiwane języki lub głosy do zwrócenia do klienta. Ten parametr jest określony jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Udostępnia zestaw języków obsługiwanych na transkrypcja mowy.</li><li>`tts`: Udostępnia zestaw głosy są obsługiwane dla konwersji tekstu na mowę.</li><li>`text`: Udostępnia zestaw języki obsługiwane w przypadku tłumaczenie tekstu.</li></ul>Jeśli wartość nie jest określony, wartość `scope` wartość domyślna to `text`.|query|ciąg|
-|X-ClientTraceId    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. W celu ułatwienia rozwiązywania problemów, klientów należy podać nową wartość z każdym żądaniem i ją.|nagłówek|ciąg|
-|Zaakceptuj języka    |Niektóre pola w odpowiedzi są nazwami językach i regionach. Użyj tego parametru, aby określić język, w której zwracane są nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Wybierz tag z listy identyfikatorów języka zwrócono `text` zakresu. Dla języków nieobsługiwanych nazw znajdują się w języku angielskim.<br/>Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.|nagłówek|ciąg|
+|wersja interfejsu API    |Wersja interfejsu API zażądane przez klienta. Dozwolone wartości to: `1.0`.|query|string|
+|scope  |Zestawy obsługiwane języki lub głosy do zwrócenia do klienta. Ten parametr jest określony jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Udostępnia zestaw języków obsługiwanych na transkrypcja mowy.</li><li>`tts`: Udostępnia zestaw głosy są obsługiwane dla konwersji tekstu na mowę.</li><li>`text`: Udostępnia zestaw języki obsługiwane w przypadku tłumaczenie tekstu.</li></ul>Jeśli wartość nie jest określony, wartość `scope` wartość domyślna to `text`.|query|string|
+|X-ClientTraceId    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. W celu ułatwienia rozwiązywania problemów, klientów należy podać nową wartość z każdym żądaniem i ją.|nagłówek|string|
+|Zaakceptuj języka    |Niektóre pola w odpowiedzi są nazwami językach i regionach. Użyj tego parametru, aby określić język, w której zwracane są nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Wybierz tag z listy identyfikatorów języka zwrócono `text` zakresu. Dla języków nieobsługiwanych nazw znajdują się w języku angielskim.<br/>Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 

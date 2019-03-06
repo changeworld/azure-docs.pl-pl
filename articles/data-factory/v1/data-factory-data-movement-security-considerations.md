@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0d601df7914b7280de4b3c16c8b00c96cb5427e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015750"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435988"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Usługa Azure Data Factory — zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych
 
@@ -45,6 +45,8 @@ W tym artykule omówimy zagadnienia dotyczące zabezpieczeń w następujących s
 
 - **Scenariusz chmury**— w tym scenariuszu źródłowe i docelowe są publicznie dostępne za pośrednictwem Internetu. Obejmują one usług magazynu zarządzana usługa w chmurze, takich jak usługi Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, usług SaaS, takich jak Salesforce i protokołów sieci web, takich jak FTP i OData. Pełną listę obsługiwanych źródeł danych można znaleźć [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
 - **Scenariusza hybrydowego**— w tym scenariuszu źródłowych i docelowych jest za zaporą lub wewnątrz sieci firmowej w środowisku lokalnym lub dane magazynu jest w sieci prywatnej / wirtualnych sieci (w większości przypadków źródła) i nie jest dostępny publicznie. Serwery bazy danych hostowanych na maszynach wirtualnych również wchodzą w zakres tego scenariusza.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Scenariusze chmury
 ### <a name="securing-data-store-credentials"></a>Zabezpieczanie poświadczeń magazynu danych
@@ -93,7 +95,7 @@ Poświadczenia dla swoich lokalnych magazynów danych są przechowywane lokalnie
 - Za pomocą **zwykłego tekstu** (mniej bezpieczna opcja) za pośrednictwem protokołu HTTPS w witrynie Azure Portal / Kreator kopiowania. Poświadczenia są przekazywane w postaci zwykłego tekstu do bramy w środowisku lokalnym.
 - Za pomocą **biblioteki kryptografii JavaScript za pomocą Kreatora kopiowania**.
 - Za pomocą **kliknij — po na podstawie aplikacji Menedżer poświadczeń**. Kliknięcie — gdy aplikacja wykonuje na maszynie lokalnej, która ma dostęp do bramy i ustawia poświadczenia dla magazynu danych. Tę opcję, a kolejny są najbardziej bezpieczne opcje. Aplikacji Menedżer poświadczeń, domyślnie używa portu 8050 na komputerze przy użyciu bramy na potrzeby bezpiecznej komunikacji.  
-- Użyj [New AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) polecenia cmdlet programu PowerShell, aby zaszyfrować poświadczenia. Polecenie cmdlet używa certyfikatu że brama jest skonfigurowana na potrzeby szyfrowania poświadczeń. Można użyć zaszyfrowane poświadczenia, które są zwracane przez to polecenie cmdlet i dodaj go do **EncryptedCredential** elementu **connectionString** w pliku JSON, który jest używany z [ Nowe AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) polecenia cmdlet lub fragment kodu JSON w edytorze fabryki danych w portalu. Tę opcję, a następnie kliknij — po najbezpieczniejszych dostępnych aplikacji. 
+- Użyj [New AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) polecenia cmdlet programu PowerShell, aby zaszyfrować poświadczenia. Polecenie cmdlet używa certyfikatu że brama jest skonfigurowana na potrzeby szyfrowania poświadczeń. Można użyć zaszyfrowane poświadczenia, które są zwracane przez to polecenie cmdlet i dodaj go do **EncryptedCredential** elementu **connectionString** w pliku JSON, który jest używany z [ Nowe AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) polecenia cmdlet lub fragment kodu JSON w edytorze fabryki danych w portalu. Tę opcję, a następnie kliknij — po najbezpieczniejszych dostępnych aplikacji. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Szyfrowanie oparte na bibliotece kryptografii JavaScript
 Umożliwia ona szyfrowanie poświadczeń magazynu danych przy użyciu [biblioteki JavaScript kryptografii](https://www.microsoft.com/download/details.aspx?id=52439) z [kreatora kopiowania](data-factory-copy-wizard.md). Po wybraniu tej opcji, Kreator kopiowania pobiera klucz publiczny, bramy i używa go do zaszyfrowania poświadczeń magazynu danych. Poświadczenia są odszyfrowywane przez maszynie bramy i chronione przez Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).
@@ -137,7 +139,7 @@ Na poniższych ilustracjach przedstawiono użycie bramy zarządzania danymi do p
  
 ![Expressroute za pomocą bramy](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
 
-**IPSec sieci VPN:**
+**IPSec VPN:**
 
 ![Sieć VPN IPSec za pomocą bramy](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 

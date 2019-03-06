@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c4d694621e4ac5428256346e3994bc3233d399a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015087"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441410"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-salesforce-connector.md)
 > * [Bieżąca wersja](connector-salesforce.md)
 
@@ -311,25 +311,25 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 
 | Typ danych usługi SalesForce | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| Liczba automatycznie |Ciąg |
+| Liczba automatycznie |String |
 | Zaznacz pole wyboru |Wartość logiczna |
-| Waluta |Dziesiętny |
+| Waluta |Decimal |
 | Date |DateTime |
 | Data/godzina |DateTime |
-| Email |Ciąg |
-| Identyfikator |Ciąg |
-| Relacje odnośników |Ciąg |
-| Lista wyboru wielokrotnego |Ciąg |
-| Liczba |Dziesiętny |
-| Procent |Dziesiętny |
-| Numer telefonu |Ciąg |
-| Listy wyboru |Ciąg |
-| Tekst |Ciąg |
-| Obszar tekstu |Ciąg |
-| Obszar tekstu (Long) |Ciąg |
-| Obszar tekstu (zaawansowane) |Ciąg |
-| Tekst (zaszyfrowane) |Ciąg |
-| Adres URL |Ciąg |
+| Email |String |
+| Identyfikator |String |
+| Relacje odnośników |String |
+| Lista wyboru wielokrotnego |String |
+| Liczba |Decimal |
+| Procent |Decimal |
+| Numer telefonu |String |
+| Listy wyboru |String |
+| Tekst |String |
+| Obszar tekstu |String |
+| Obszar tekstu (Long) |String |
+| Obszar tekstu (zaawansowane) |String |
+| Tekst (zaszyfrowane) |String |
+| Adres URL |String |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

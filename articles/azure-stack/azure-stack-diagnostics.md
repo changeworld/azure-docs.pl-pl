@@ -11,12 +11,12 @@ ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: bd1994aca3dbbc23977b01d3511f87b5ec08b96d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 41609a75efec6c15d894b61867fb9d3ae727dc8c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251864"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440560"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyczne w usłudze Azure Stack
 
@@ -163,7 +163,7 @@ Wykonaj następujące kroki, aby uruchomić Get AzureStackLog na komputerze-hoś
     -   Zbierane są dzienniki usługi ACS w *magazynu* i *ACS* ról.
 
 > [!NOTE]
-> Rozmiar i wiek limity są wymuszane w dziennikach zbieranych jako istotne jest zapewnienie efektywnego wykorzystania miejsca do magazynowania, aby upewnić się, że nie nastąpi pobranie propagowane za pomocą dzienników. Podczas diagnozowania problemu czasami potrzebny, dzienników, które już nie istnieje ze względu na limity. Dlatego jest **zdecydowanie zaleca się** czy odciążania dzienniki do miejsca do magazynowania zewnętrznych (konto magazynu na platformie Azure, urządzenie magazynu lokalnego dodatkowe itp.) co 8 do 12 godzin i Zatrzymaj ich tam 1 – 3 miesięcy, w zależności od usługi wymagania. Ponadto upewnij się, że ta lokalizacja magazynu jest zaszyfrowany.
+> Rozmiar i wiek limity są wymuszane w dziennikach zbieranych jako istotne jest zapewnienie efektywnego wykorzystania miejsca do magazynowania, aby upewnić się, że nie nastąpi pobranie propagowane za pomocą dzienników. Podczas diagnozowania problemu czasami potrzebny, dzienników, które już nie istnieje ze względu na limity. Dlatego jest **zdecydowanie zaleca się** odciążania dzienniki do miejsca do magazynowania zewnętrznych (konto magazynu na platformie Azure, dodatkowy na lokalnym urządzeniu magazynującym itp.), co 8 do 12 godzin, a następnie Zatrzymaj ich tam 1 – 3 miesięcy, w zależności od usługi wymagania. Ponadto upewnij się, że ta lokalizacja magazynu jest zaszyfrowany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Rozwiązywanie problemów z usługi Microsoft Azure Stack](azure-stack-troubleshooting.md)

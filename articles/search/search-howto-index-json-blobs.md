@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: acbd3c9ed55556ac792c3a98e6dbc1e4f7455fe1
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311308"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405117"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
 W tym artykule dowiesz się, jak skonfigurować obiekt blob usługi Azure Search [indeksatora](search-indexer-overview.md) wyodrębniania zawartości ze strukturą z dokumenty JSON w usłudze Azure Blob storage i którą można przeszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z obiektów blob JSON. 
@@ -288,7 +288,7 @@ Zestaw SDK platformy .NET ma pełni parzystości przy użyciu interfejsu API RES
 
 <a name="parsing-modes"></a>
 
-### <a name="parsing-modes"></a>Tryby analizy
+## <a name="parsing-modes"></a>Tryby analizy
 
 Wiele form, można założyć obiektów blob JSON. **ParsingMode** parametru indeksatora JSON Określa, jak zawartość obiektu blob JSON zostanie przeanalizowana i ze strukturą w indeksie usługi Azure Search:
 

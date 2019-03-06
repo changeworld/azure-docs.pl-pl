@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dc9f24f948e32d1b87745016852a875d440323de
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493596"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443702"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -25,11 +25,13 @@ Własne środowisko integration runtime można uruchomić działania kopiowania 
 
 W tym dokumencie opisano, jak utworzyć i skonfigurować samodzielnie hostowane podczerwieni.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>Ogólne kroki, aby zainstalować własnego środowiska IR
 1. Utwórz własne środowisko Integration Runtime. Interfejs użytkownika usługi Azure Data Factory służy do tego zadania. Oto przykład programu PowerShell:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
   
 2. [Pobierz](https://www.microsoft.com/download/details.aspx?id=39717) i zainstaluj własne środowisko integration runtime na maszynie lokalnej.
@@ -37,7 +39,7 @@ W tym dokumencie opisano, jak utworzyć i skonfigurować samodzielnie hostowane 
 3. Pobierz klucz uwierzytelniania i zarejestrowania własnego środowiska integration runtime przy użyciu klucza. Oto przykład programu PowerShell:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Konfigurowanie własnego środowiska IR na Maszynie wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager (automation)
@@ -96,7 +98,7 @@ Własne środowisko integration runtime można zainstalować, pobierając pakiet
 9. Pobierz klucz uwierzytelniania przy użyciu programu Azure PowerShell. Poniżej przedstawiono przykład programu PowerShell do pobierania klucza uwierzytelniania:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. Na **rejestrowanie produktu Integration Runtime (Self-Hosted)** strony programu Microsoft Integration Runtime Configuration Manager uruchomiony na Twoim komputerze, wykonaj następujące czynności:
 
@@ -112,7 +114,7 @@ Własne środowisko integration runtime może być skojarzony z wieloma maszynam
 * Wyższą dostępność własnego środowiska integration runtime, tak że użytkownika nie jest już pojedynczym punktem awarii w danych big data rozwiązania lub w chmurze integrację danych dzięki usłudze Azure Data Factory, zapewniając ciągłość działania w przypadku maksymalnie czterech węzłów.
 * Zwiększona wydajność i przepływność podczas przenoszenia danych między lokalizacją lokalną i chmurą magazynów danych. Uzyskaj więcej informacji [porównania wydajności](copy-activity-performance.md).
 
-Można skojarzyć wiele węzłów, instalując oprogramowanie Self-Hosted integration runtime z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717). Następnie, zarejestruj go przy użyciu klucza uwierzytelniania uzyskanego z **New AzureRmDataFactoryV2IntegrationRuntimeKey** polecenia cmdlet, zgodnie z opisem w [samouczek](tutorial-hybrid-copy-powershell.md).
+Można skojarzyć wiele węzłów, instalując oprogramowanie Self-Hosted integration runtime z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717). Następnie, zarejestruj go przy użyciu klucza uwierzytelniania uzyskanego z **New AzDataFactoryV2IntegrationRuntimeKey** polecenia cmdlet, zgodnie z opisem w [samouczek](tutorial-hybrid-copy-powershell.md).
 
 > [!NOTE]
 > Nie ma potrzeby tworzenia nowych własnego środowiska integration runtime do kojarzenia każdego węzła. Można zainstalować własnego środowiska integration runtime na inny komputer i zarejestrować go za pomocą tego samego klucza uwierzytelniania. 
@@ -197,8 +199,6 @@ Wprowadzenie 12 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film 
 * Fabryki danych, w której zostaną utworzone połączone środowisko IR musi mieć [MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Domyślnie fabryk danych utworzone w witrynie Azure portal lub poleceń cmdlet programu PowerShell mają Instalatora MSI tworzone niejawnie. Jednak po utworzeniu fabryki danych przy użyciu szablonu usługi Azure Resource Manager lub zestaw SDK **tożsamości** właściwość musi być ustawiona jawnie, aby upewnić się, że usługi Azure Resource Manager do tworzenia fabryki danych, zawierającą Instalatora MSI. 
 
 * Azure Data Factory zestawu .NET SDK obsługującej tę funkcję jest wersji 1.1.0 lub nowszej.
-
-* Wersja programu Azure PowerShell, która obsługuje tę funkcję jest 6.6.0 lub nowszej (AzureRM.DataFactoryV2, 0.5.7 pakietu lub nowszej).
 
 * Aby udzielić uprawnień, użytkownik musi roli właściciela lub dziedziczone właściciela w usłudze data factory, w której istnieje IR udostępnionych.
 
@@ -343,7 +343,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > Aplikacji Menedżer poświadczeń nie jest jeszcze dostępna w celu szyfrowania poświadczeń w usłudze Azure Data Factory V2.  
 
-Jeśli wybierzesz nie otworzyć port 8060 maszynie Self-Hosted integration runtime, użyj mechanizmów innej niż aplikacja Ustawianie poświadczeń, aby skonfigurować poświadczenia magazynu danych. Na przykład, można użyć **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** polecenia cmdlet programu PowerShell.
+Jeśli wybierzesz nie otworzyć port 8060 maszynie Self-Hosted integration runtime, użyj mechanizmów innej niż aplikacja Ustawianie poświadczeń, aby skonfigurować poświadczenia magazynu danych. Na przykład, można użyć **New AzDataFactoryV2LinkedServiceEncryptCredential** polecenia cmdlet programu PowerShell.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

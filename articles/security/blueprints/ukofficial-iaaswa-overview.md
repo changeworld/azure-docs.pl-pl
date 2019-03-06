@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 68503b399d132aae5a4999e6ce08c51e4542e2e7
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242619"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443474"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpieczenia platformy Azure i zgodności planu — IaaS trójwarstwowa aplikacja sieci Web dla UK-OFFICIAL
 
@@ -129,7 +129,7 @@ Magazyn
 
 ### <a name="deployment-architecture"></a>Architektura wdrożenia:
 
-**Sieci lokalnej**: Prywatna sieć lokalna zaimplementowane w organizacji.
+**Sieci lokalnej**: Prywatna sieć lokalna zaimplementowana w organizacji.
 
 **Sieć wirtualna produkcji**: Produkcyjne [sieci wirtualnej](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (Virtual Network) hostuje aplikację i inne zasoby operacyjnych działających na platformie Azure. Każda sieć wirtualna może zawierać kilka podsieci, które są używane do izolowania i zarządzaniem ruchem sieciowym.
 
@@ -176,7 +176,7 @@ Te sieci wirtualne są nadal zarządzane jako oddzielne zasoby, ale są traktowa
 
 **Dzienniki zapory**: Usługa Application Gateway zapewnia pełne dzienniki dostępu i diagnostyki. Dzienniki zapory są dostępne dla zasobów usługi Application Gateway z włączoną zaporą aplikacji sieci Web.
 
-**Archiwizowanie dziennika**: Przechowywanie danych dziennika można skonfigurować do zapisu do konta scentralizowanej usługi Azure storage w celu archiwizacji i okres przechowywania zdefiniowany. Dzienniki mogą być przetwarzane przy użyciu dzienników usługi Azure Monitor lub systemów SIEM innych firm.
+**Archiwizowanie dziennika**: Przechowywanie danych dziennika można skonfigurować do zapisu do konta scentralizowany magazyn platformy Azure w celu archiwizacji i okres przechowywania zdefiniowany. Dzienniki mogą być przetwarzane przy użyciu dzienników usługi Azure Monitor lub systemów SIEM innych firm.
 
 ### <a name="identity"></a>Tożsamość
 
@@ -208,7 +208,7 @@ Klienci mogą również wziąć pod uwagę przy użyciu [modelu administracyjneg
 
 **Ograniczenia kontroli dostępu**: Użyj [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) do zarządzania zasobami w swojej aplikacji za pomocą [ról niestandardowych](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC można ograniczyć możliwość wykonywania operacji, które rola DevOps może wykonywać w każdej warstwie. Podczas nadawania uprawnień użyj [zasadę najmniejszych uprawnień](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Rejestruj wszystkie operacje administracyjne i przeprowadzaj regularne inspekcje, aby mieć pewność, że wszelkie zmiany konfiguracji są planowane.
 
-**Dostęp do Internetu**: Ta architektura referencyjna wykorzystuje [usługi Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) jako bramy i obciążenia równoważenia połączonego z Internetem. Niektórzy klienci mogą również wziąć pod uwagę przy użyciu dodatkowych warstw zabezpieczeń jako alternatywę dla sieci wirtualnych urządzeń sieciowych innych firm [usługi Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
+**Dostęp do Internetu**: Ta architektura referencyjna korzysta z [usługi Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) jako bramy i obciążenia równoważenia połączonego z Internetem. Niektórzy klienci mogą również wziąć pod uwagę przy użyciu dodatkowych warstw zabezpieczeń jako alternatywę dla sieci wirtualnych urządzeń sieciowych innych firm [usługi Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 
 **Usługa Azure Security Center**: [Usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) oferuje centralny widok stanu zabezpieczeń zasobów w subskrypcji i zapewnia zaleceń, które pomagają zapobiegać zaatakowanych zasobów. Może również służyć można włączyć bardziej szczegółowe zasady. Na przykład zasady można stosować do określonych grup zasobów, co umożliwia przedsiębiorstwa dostosować jego poziom ryzyka. Zaleca się, że klienci włączą usługi Azure Security Center w ramach swojej subskrypcji platformy Azure.
 
@@ -226,7 +226,7 @@ Ponadto Cloud Security Alliance (CSA) opublikowane macierzy kontroli chmury, aby
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
-Istnieją dwie metody, których użytkownicy wdrożenia może użyć do wdrożenia tego planu usługi automation. Pierwsza metoda używa skryptu programu PowerShell, natomiast druga metoda wykorzystuje portalu Azure, aby wdrożyć tę architekturę referencyjną. Dostępne są instrukcje wdrożenia są szczegółowo [tutaj](https://aka.ms/ukofficial-iaaswa-repo).
+Istnieją dwie metody, których użytkownicy wdrożenia może użyć do wdrożenia tego planu usługi automation. Pierwsza metoda używa skryptu programu PowerShell, natomiast druga metoda korzysta z portalu Azure, aby wdrożyć tę architekturę referencyjną. Dostępne są instrukcje wdrożenia są szczegółowo [tutaj](https://aka.ms/ukofficial-iaaswa-repo).
 
 ## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
 

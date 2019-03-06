@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: a9b90fe119bc56620a7bd3087d4842f604fc18f0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 96911efb541fc861aa7dd5f735efca8309763428
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582545"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443100"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Usługa Service Fabric udostępnia zestaw interfejsów API, aby osiągnąć nast
     - Azure Storage
     - Udziału plików (lokalny)
 - Wyliczanie kopii zapasowych
-- Wyzwalanie tworzenia kopii zapasowej ad hoc partycji
+- Wyzwalanie tworzenia kopii zapasowej ad-hoc partycji
 - Przywróć partycji przy użyciu poprzedniej kopii zapasowej
 - Czasowo zawieszają kopii zapasowych
 - Zarządzanie przechowywania kopii zapasowych (nadchodzących)
