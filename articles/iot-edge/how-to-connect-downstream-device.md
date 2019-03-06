@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d41ec0bc959eb264564d49ae6ac31aa30b3be98a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492763"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445929"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge
 
@@ -40,7 +40,10 @@ Przed wykonaniem kroków opisanych w tym artykule, musisz mieć dwa urządzenia 
 2. Urządzenie podrzędne, które ma tożsamości urządzenia w usłudze IoT Hub. 
     Nie można użyć urządzenia usługi IoT Edge jako urządzenie podrzędne. Zamiast tego należy użyć urządzenia zarejestrowane jako regularne urządzeń IoT w usłudze IoT Hub. W portalu, możesz zarejestrować nowe urządzenie **urządzeń IoT** sekcji. Lub można użyć wiersza polecenia platformy Azure do [rejestrowanie urządzenia](../iot-hub/quickstart-send-telemetry-c.md#register-a-device). Skopiuj parametry połączenia i jest dostępny do użycia w kolejnych sekcjach. 
 
-    Obecnie tylko podrzędnym urządzenia przy użyciu uwierzytelniania za pomocą klucza symetrycznego można połączyć za pośrednictwem bramy usługi IoT Edge. Urzędy certyfikacji X.509 i certyfikaty X.509 z podpisem własnym nie są obecnie obsługiwane. 
+    Obecnie tylko podrzędnym urządzenia przy użyciu uwierzytelniania za pomocą klucza symetrycznego można połączyć za pośrednictwem bramy usługi IoT Edge. Urzędy certyfikacji X.509 i certyfikaty X.509 z podpisem własnym nie są obecnie obsługiwane.
+    
+> [!NOTE]
+> "Nazwa bramy" służąca do tworzenia certyfikatów w tej instrukcji musi mieć taką samą nazwę jak używana jako nazwa hosta w pliku config.yaml usługi IoT Edge i GatewayHostName w parametrach połączenia podrzędnego urządzenia. "Nazwa bramy" musi być rozpoznawana jako adres IP, albo za pomocą DNS lub wpisu w pliku hostów. Komunikacja oparta na protokół używany (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musi być możliwe między podrzędnymi urządzeniami i transparant usługi IoT Edge. Jeśli Zapora jest między, odpowiedni port musi być otwarty.
 
 ## <a name="prepare-a-downstream-device"></a>Przygotuj urządzenie podrzędne
 

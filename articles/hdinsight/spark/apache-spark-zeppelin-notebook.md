@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 70d1e08b1b81fd3aba159e18de3ee8829bc36548
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 600b2796f1cca5d6ac2c478a5eb30e12f30b670a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331014"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449754"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin przy użyciu klastra Apache Spark w usłudze Azure HDInsight
 
@@ -103,7 +103,7 @@ Klastry HDInsight Spark obejmują [Apache Zeppelin](https://zeppelin.apache.org/
     ![Uruchom interpreter](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive danych wyjściowych")
 1. Przewiń do usługi Livy interpreter ustawienia, a następnie kliknij przycisk **ponowne uruchomienie**.
    
-    ![Uruchom ponownie Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "ponowne uruchomienie Zeppelin intepreter")
+    ![Uruchom ponownie usługi Livy interpreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "ponownie uruchomić interpretera Zeppelin")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Jak korzystanie z zewnętrznych pakietów z notesem?
 Notes Zeppelin w klastrze Apache Spark na HDInsight (Linux) można skonfigurować na korzystanie z pakietów zewnętrznych, przez społeczność, które nie są uwzględniane out-of--box w klastrze. Możesz wyszukiwać [repozytorium Maven](https://search.maven.org/) uzyskać pełną listę pakietów, które są dostępne. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełną listę pakietów przez społeczność jest dostępne pod adresem [pakietów platformy Spark](https://spark-packages.org/).
@@ -150,7 +150,7 @@ W takim przypadku należy wykonać następujące kroki, przed rozpoczęciem, uru
     ![Uruchom interpreter](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive danych wyjściowych")
 1. Przewiń do usługi Livy interpreter ustawienia, a następnie kliknij przycisk **ponowne uruchomienie**.
    
-    ![Uruchom ponownie Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "ponowne uruchomienie Zeppelin intepreter")
+    ![Uruchom ponownie usługi Livy interpreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "ponownie uruchomić interpretera Zeppelin")
 1. Uruchomić komórkę kodu z istniejących Notes Zeppelin. Spowoduje to utworzenie nowej sesji usługi Livy w klastrze HDInsight.
 
 ## <a name="seealso"></a>Zobacz też

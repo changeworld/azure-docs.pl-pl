@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9b53a26f5163eae17198302fc26c079185cb7bd8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355606"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454548"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Tworzenie oferty w portalu Azure Marketplace i AppSource
 
@@ -37,7 +37,7 @@ Po utworzeniu oferty, możesz użyć **edytora** kartę, aby wprowadzić informa
 
 Poziomym pasku narzędzi znajduje się nad obszarem danych wejściowych zawiera następujące przyciski:
 
-|   Przycisk    |   Przeznaczenie                                                          |
+|   Button    |   Przeznaczenie                                                          |
 |   ------    |  --------                                                          |
 | **Zapisz**    | Zapisuje bieżące zmiany danych.  Należy ręcznie Zapisz zmiany, zanim przejdziesz do innej strony lub wszystkie zmiany zostaną utracone. | 
 | **Odrzuć** | Odrzuca wszystkie ostatnie zmiany danych (ponieważ jest to ostatnia zapisywania)             |
@@ -55,7 +55,7 @@ Podczas tworzenia oferty, dostarczasz danych wymaganych i opcjonalnych na każde
 |      --------       |   -------                                                            |
 | **Ustawienia oferty**  | Zbiera dane o ofercie i wydawcy informacji o tożsamości.                    |
 | **Jednostki SKU**            | Definiuje właściwości techniczne i biznesowe, dla każdej wersji jednostkę magazynową (SKU) oferty |
-| **Test Drive**      | Dla tych typów, które obsługują to opcjonalna funkcja definiuje pokaz oferty.  Aby uzyskać więcej informacji, zobacz [co to jest wersja testowa?](../../cloud-partner-portal-orig/what-is-test-drive.md)  |
+| **Test Drive**      | Dla tych typów, które obsługują to opcjonalna funkcja definiuje pokaz oferty.  Aby uzyskać więcej informacji, zobacz [co to jest wersja testowa?](../test-drive/what-is-test-drive.md)  |
 | **Portal Marketplace** lub **sklepu** | Gromadzi informacje o ciągi tekstowe, dokumenty i obrazy, używany do tworzenia listy oferty w portalu marketplace |
 | **Pomoc techniczna**         | Zbiera informacje kontaktowe klienta, inżynieria i pomocy technicznej online  |
 |  |  |

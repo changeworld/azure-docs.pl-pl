@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a0d5f42fa6725ba23a89904779040f379f31e59e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822752"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454157"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -26,9 +26,12 @@ ms.locfileid: "55822752"
 
 W tym artykule opisano architekturę przykładowe rozwiązanie, która przenosi i przetwarza dużych ilości danych w sposób automatycznego i zaplanowane. Zawiera także wskazówki end-to-end, aby zaimplementować to rozwiązanie przy użyciu usługi Data Factory i Azure Batch.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 W tym artykule jest dłuższa niż typowy artykułu, ponieważ zawiera ona wskazówki dotyczące całej przykładowe rozwiązanie. Jeśli jesteś nowym użytkownikiem usługi Batch i Data Factory, informacje na temat tych usług i w jaki sposób działają razem. Jeśli znasz coś o usługach i są projektowanie/Projektowanie rozwiązania, możesz skoncentrować się na architekturze części tego artykułu. Jeżeli projektujesz prototyp lub rozwiązania, można wypróbować instrukcjami krok po kroku w instruktażu. Zapraszamy komentarze dotyczące tej zawartości i sposobu ich używania.
 
 Najpierw Przyjrzyjmy się jak usługi Data Factory i Batch mogą pomóc Ci przetwarzania dużych zestawów danych w chmurze.     
+
 
 ## <a name="why-azure-batch"></a>Dlaczego usługa Azure Batch?
  Batch umożliwia wydajne uruchamianie dużych równoległych i o wysokiej wydajności obliczeń (HPC) aplikacji w chmurze. Jest to usługa platformy, która planuje pracę intensywnych obliczeń do uruchamiania na zarządzanej kolekcji maszyn wirtualnych (VM). Umożliwia też automatyczne skalowanie zasobów obliczeniowych w celu spełnienia potrzeb Twoich zadań.
@@ -40,7 +43,7 @@ W usłudze Batch definiuje się zasoby obliczeniowe Azure do wykonywania aplikac
 * [Podstawy usługi Batch](../../batch/batch-technical-overview.md)
 * [Omówienie funkcji usługi Batch](../../batch/batch-api-basics.md)
 
-Opcjonalnie, aby dowiedzieć się więcej o usłudze Batch, zobacz [documentatnion partii](https://docs.microsoft.com/azure/batch/).
+Opcjonalnie, aby dowiedzieć się więcej o usłudze Batch, zobacz [dokumentacji usługi Batch](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Dlaczego warto wybrać usługę Azure Data Factory?
 Fabryka danych jest usługą integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych. Data Factory służy do tworzenia potoków danych zarządzanych, służące do przenoszenia danych ze środowiska lokalnego i magazynów danych do scentralizowanego magazynu danych w chmurze. Przykładem są usługi Azure Blob storage. Data Factory służy do przetworzenia/przekształcenia danych za pomocą usług, takich jak Azure HDInsight i Azure Machine Learning. Można także zaplanować potoki danych, które będą uruchamiane w sposób zaplanowane, (na przykład co godzinę, codziennie, a co tydzień). Można monitorować i zarządzać potoków w celu zidentyfikowania problemów i podjąć działania.
@@ -93,7 +96,7 @@ Jeśli nie masz subskrypcji platformy Azure, można szybko utworzyć bezpłatne 
 Konto usługi storage umożliwia przechowywanie danych w ramach tego samouczka. Jeśli nie masz konta magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md). Przykładowe rozwiązanie korzysta z magazynu obiektów blob.
 
 #### <a name="azure-batch-account"></a>Konto usługi Azure Batch
-Utwórz konto usługi Batch za pomocą [witryny Azure portal](http://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie nim](../../batch/batch-account-create-portal.md). Należy pamiętać, partii konta nazwy i klucza konta. Możesz również użyć [New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) polecenia cmdlet, aby utworzyć konto usługi Batch. Aby uzyskać instrukcje dotyczące sposobu używania tego polecenia cmdlet, zobacz [wprowadzenie do poleceń cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
+Utwórz konto usługi Batch za pomocą [witryny Azure portal](http://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie nim](../../batch/batch-account-create-portal.md). Należy pamiętać, partii konta nazwy i klucza konta. Możesz również użyć [New AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) polecenia cmdlet, aby utworzyć konto usługi Batch. Aby uzyskać instrukcje dotyczące sposobu używania tego polecenia cmdlet, zobacz [wprowadzenie do poleceń cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
 Przykładowe rozwiązanie używa usługi Batch (pośrednio za pośrednictwem potoku fabryki danych) do przetwarzania danych w sposób równoległy, w ramach puli węzłów obliczeniowych (zarządzanej kolekcji maszyn wirtualnych).
 
@@ -201,7 +204,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 1. Importuj **usługi Azure Storage** pakiet NuGet do projektu. Ten pakiet jest konieczne, ponieważ używają interfejsu API magazynu obiektów Blob w tym przykładzie:
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. Dodaj następujące dyrektywy using do pliku źródłowego w projekcie:
 

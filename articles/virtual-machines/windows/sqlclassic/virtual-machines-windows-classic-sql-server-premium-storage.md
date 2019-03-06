@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b9a668a71b0fb7b2bb57f759cc54a8d1930a0f03
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 8686e2c518bb2dc778c120350657aa54c856aec6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329068"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440322"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
 
@@ -140,7 +140,7 @@ Dla każdego dysku wykonaj następujące czynności:
 Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 ```
 
-2. Zanotuj Diskname i jednostki LUN.
+2. Zanotuj DiskName i jednostki LUN.
 
     ![DisknameAndLUN][2]
 3. Pulpit zdalny do maszyny Wirtualnej. Następnie przejdź do **Zarządzanie komputerem** | **Menedżera urządzeń** | **dysków**. Sprawdź właściwości każdej "Dysków wirtualnych firmy Microsoft"
@@ -261,7 +261,7 @@ $ipaddr = "192.168.0.8"
 #Remember to change to DS series VM
 $newInstanceSize = "Standard_DS1"
 
-#create new Avaiability Set
+#create new Availability Set
 $availabilitySet = "cloudmigAVAMS"
 
 #Machine User Credentials
@@ -380,7 +380,7 @@ $destcloudsvc = "danregsvcamsxio2"
 #Use to DS Series VM
 $newInstanceSize = "Standard_DS1"
 
-#create new Avaiability Set
+#create new Availability Set
 $availabilitySet = "cloudmigAVAMS3"
 
 #Machine User Credentials
@@ -926,7 +926,7 @@ $ipaddr = "192.168.0.5"
 $newInstanceSize = "Standard_DS13"
 $subnet = "SQL"
 
-#Create new Avaiability Set
+#Create new Availability Set
 $availabilitySet = "cloudmigAVAMS"
 
 #build machine config into object
@@ -1125,7 +1125,7 @@ ForEach ($disk in $diskobjects)
 
 #Check for copy progress
 
-#check induvidual blob status
+#check individual blob status
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContext
 ```
 
@@ -1152,7 +1152,7 @@ Poczekaj, aż wszystkie te są rejestrowane jako Powodzenie.
 Aby uzyskać informacje dotyczące poszczególnych obiektów blob:
 
 ```powershell
-#Check induvidual blob status
+#Check individual blob status
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 ```
 
@@ -1176,7 +1176,7 @@ Add-AzureDisk -DiskName $xioDiskName -MediaLocation  "https://$newxiostorageacco
 $ipaddr = "192.168.0.4"
 $newInstanceSize = "Standard_DS13"
 
-#Join to existing Avaiability Set
+#Join to existing Availability Set
 
 #Build machine config into object
 $vmConfig = New-AzureVMConfig -Name $vmNameToMigrate -InstanceSize $newInstanceSize -DiskName $xioDiskName -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
@@ -1223,7 +1223,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #### <a name="step-23-test-failover"></a>Krok 23: Testowanie pracy w trybie failover
 
-Poczekaj, aż migrowanych węzeł, aby zsynchronizować z węzłem Always On w środowisku lokalnym. Umieść go w tryb replikacji synchronicznej i zaczekaj, aż jest zsynchronizowany. Następnie tryb failover ze środowiska lokalnego w pierwszym węźle migracji, czyli AFP. Po pracował, zmień ostatniego węzła migrowanych AFP.
+Poczekaj, aż migrowanych węzeł, aby zsynchronizować z węzłem Always On w środowisku lokalnym. Umieść go w tryb replikacji synchronicznej i zaczekaj, aż jest zsynchronizowany. Następnie tryb failover z lokalnych pierwszy węzeł migracji, czyli AFP. Po pracował, zmień ostatniego węzła migrowanych AFP.
 
 Należy testować tryb failover między wszystkie węzły, a następnie uruchomić, chociaż oczekiwano chaos testy, aby upewnić się działać przejścia w tryb failover, jak i w odpowiednim czasie manor.
 

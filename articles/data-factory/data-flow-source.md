@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 80f0aa3158ce4f3eeafaeb5c7834dc820e8ba75b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e33606e0b5be0db5306cfd42f87baf59671eb2a8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886599"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451733"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapowanie przekształceń źródła przepływu danych
 
@@ -74,7 +74,7 @@ Opcjonalnie można podzielić połączenia na podstawie zapytania. Dla tej opcji
 ## <a name="source-file-management"></a>Zarządzanie plikami źródła
 ![Nowe ustawienia źródła](media/data-flow/source2.png "nowe ustawienia")
 
-* Symbol wieloznaczny ścieżka do pobrania szeregu pliki z folderu źródłowego, które pasują do wzorca. Spowoduje to zastąpienie dowolnego pliku ustawionym w swojej definicji zestawu danych.
+* Symbol wieloznaczny ścieżka do pobrania szeregu pliki z folderu źródłowego, które pasują do wzorca. Spowoduje to zastąpienie dowolnego pliku ustawionym w definicji zestawu danych.
 * Lista plików. Tak samo jak zestaw plików. Wskaż plik tekstowy, który utworzysz listę plików ścieżkę względną do przetworzenia.
 * Kolumny do przechowywania nazwy pliku będzie przechowywać nazwę pliku ze źródła, w kolumnie w Twoich danych. Wprowadź nową nazwę do przechowywania ciągu nazwy pliku.
 * Po zakończeniu (istnieje możliwość nic nie rób z plikiem źródłowym, po wykonaniu przepływu danych, usuń plik źródłowy lub Przenieś pliki źródłowe. Ścieżki do przeniesienia są ścieżki względne.

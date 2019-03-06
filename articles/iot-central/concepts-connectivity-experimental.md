@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 47fde9099ed8172b83f9f12085c5aee219c4716c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 46e8c0185ec94d0ea3429f761b3760dcbccc25aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318023"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432621"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -33,9 +33,9 @@ Korzystanie z punktu dystrybucji umożliwia:
 W tym artykule opisano następujące cztery zastosowań:
 
 1. [Szybkie łączenie pojedynczego urządzenia przy użyciu sygnatury dostępu Współdzielonego](#connect-a-single-device)
-1. [Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego](#connect-devices-at-scale-using-shared-access-signatures)
+1. Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego
 1. [Łączenie urządzeń na dużą skalę za pomocą certyfikatów X.509](#connect-devices-using-x509-certificates) jest to zalecane podejście do środowisk produkcyjnych.
-1. [Połączenia bez pierwszej rejestracji urządzenia](#connect-without-first-registering-devices) 
+1. Połączenia bez pierwszej rejestracji urządzenia
 
 ## <a name="connect-a-single-device"></a>Łączenie pojedynczego urządzenia
 
@@ -69,7 +69,7 @@ Aby zarejestrować dużą liczbę urządzeń z aplikacją IoT Central, przy uży
 Aby pobrać informacje o połączeniu dla zaimportowanych urządzeń [wyeksportować plik CSV z aplikacji IoT Central](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json#export-devices).
 
 > [!NOTE]
-> Aby dowiedzieć się, jak można podłączyć urządzenia bez rejestrowania ich pierwszym w IoT Central, zobacz [Połącz bez pierwszej rejestracji urządzenia](#connect-without-first-registering-devices).
+> Aby dowiedzieć się, jak można podłączyć urządzenia bez rejestrowania ich pierwszym w IoT Central, zobacz łączenie bez pierwszej rejestracji urządzenia.
 
 ### <a name="set-up-your-devices"></a>Konfigurowanie urządzeń
 

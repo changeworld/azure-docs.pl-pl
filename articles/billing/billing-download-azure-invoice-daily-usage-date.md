@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: f4559c05a9f3d09feef12b0391e313ecd9a88142
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b03b787e245129e5e51304a2bcc8740ebf3f6196
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241242"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406159"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
 
@@ -65,7 +65,7 @@ Faktury są generowane dla każdego [rozliczeń profilu](billing-mca-overview.md
 5. Kliknij wielokropek (`...`) na końcu wiersza.
 6. Wybierz z menu kontekstowego pobierania **faktury**.
 
-Jeśli nie widzisz faktury w ostatnim okresie rozliczeniowym, zobacz [dodatkowe informacje]() <!-- Fix this -->
+Jeśli nie widzisz faktury w ostatnim okresie rozliczeniowym, zobacz **dodatkowe informacje**. <!-- Fix this -->
 ### <a name="noinvoice"></a> Dlaczego nie widzę faktury dla ostatniego okresu rozliczeniowego?
 
 Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
@@ -100,7 +100,7 @@ Jeśli nie otrzymasz wiadomość e-mail po wykonaniu kroków upewnij się, Twój
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Zrezygnować z pobierania faktur swoją subskrypcję w wiadomości e-mail
 
-Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonując kroki opisane powyżej i kliknięcie przycisku **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail, ustaw w celu otrzymywania faktur pocztą e-mail. Można ponownie skonfigurować adresatów w przypadku zgody na uczestnictwo w.
+Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonując kroki opisane powyżej i kliknięcie przycisku **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail ustawione w celu otrzymywania faktur pocztą e-mail. Można ponownie skonfigurować adresatów w przypadku zgody na uczestnictwo w.
 
  ![Zrzut ekranu pokazujący przepływ rezygnacji z](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 

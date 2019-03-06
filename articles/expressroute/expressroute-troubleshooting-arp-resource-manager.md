@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 1807bda35f6bfcc9dbbb30f054cedb9454a88a7f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158574"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432145"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Pobieranie tabel ARP w modelu wdrażania usługi Resource Manager
 > [!div class="op_single_selector"]
@@ -28,6 +28,8 @@ W tym artykule przedstawiono kroki, aby dowiedzieć się, tabele ARP dla obwodu 
 > Ten dokument ma ułatwić diagnozowanie i rozwiązywanie problemów z prostego. Nie ma być zastępczy pomocy technicznej firmy Microsoft. Należy otworzyć bilet pomocy technicznej za pomocą [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Jeśli nie możesz rozwiązać problem, korzystając ze wskazówek opisanych poniżej.
 > 
 > 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Adres tabel Resolution Protocol (ARP) i protokołu ARP
 Protokół ARP (Address Resolution) to protokół warstwy 2 zdefiniowane w [RFC 826](https://tools.ietf.org/html/rfc826). ARP jest używany do mapowania adres ethernetowy (adres MAC) z adresem ip.
@@ -69,10 +71,10 @@ Następujące polecenie cmdlet udostępnia protokołu ARP tabel dla prywatnej ko
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure private peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
         # ARP table for Azure private peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
 Przykładowe dane wyjściowe poniżej pokazano dla jednej ze ścieżek
 
@@ -90,10 +92,10 @@ Następujące polecenie cmdlet udostępnia protokołu ARP tabel dla publicznej k
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure public peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
         # ARP table for Azure public peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
 Przykładowe dane wyjściowe poniżej pokazano dla jednej ze ścieżek
@@ -112,10 +114,10 @@ Następujące polecenie cmdlet udostępnia protokołu ARP tabel dla komunikacji 
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Microsoft peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
         # ARP table for Microsoft peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
 Przykładowe dane wyjściowe poniżej pokazano dla jednej ze ścieżek
@@ -141,7 +143,7 @@ Tabeli protokołu ARP komunikacji równorzędnej może służyć do określenia 
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Tabeli protokołu ARP, gdy lokalne / po stronie dostawcy łączności występują problemy
-Jeśli występują problemy z lokalną lub dostawcy łączności, które mogą być widoczne, albo tylko jeden wpis pojawi się w tabeli protokołu ARP lub adres MAC w lokalnej pokaże niekompletne. Spowoduje to wyświetlenie mapowanie między adresu MAC i adres IP używany po stronie firmy Microsoft. 
+Jeśli występują problemy z lokalną lub dostawcy łączności, które mogą być widoczne, albo tylko jeden wpis pojawi się w tabeli protokołu ARP lub adres MAC na lokalnym pokaże niekompletne. Spowoduje to wyświetlenie mapowanie między adresu MAC i adres IP używany po stronie firmy Microsoft. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    

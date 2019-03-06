@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7b436acb937216ad02289282f4a7ac5f88df2eea
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b5e42585178505ee4c23ca4054e83f61ee1254b8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245153"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436140"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Strumienie urządzenia Centrum IoT (wersja zapoznawcza)
 
@@ -153,7 +153,7 @@ Dwa boki każdego strumienia (po stronie usług i urządzeń) Użyj zestawu SDK 
 ## <a name="iot-hub-device-stream-samples"></a>Przykłady Stream urządzenia Centrum IoT
 
 Opublikowane dotychczas dwa [quickstart — przykłady](/azure/iot-hub) aby zademonstrować użycie strumieni urządzenia przez aplikacje.
-* *Echo* w przykładzie pokazano programistyczny korzystanie z urządzeń, strumieni (przez bezpośrednie wywoływanie interfejsów API zestawu SDK).
+* *Echo* w przykładzie pokazano programowe korzystanie z urządzeń, strumieni (przez bezpośrednie wywoływanie interfejsów API zestawu SDK).
 * *Lokalnego serwera proxy* w przykładzie pokazano tunelowania ruchu aplikacji gotowych klient/serwer (na przykład protokołu SSH, protokołu RDP lub sieci web) za pośrednictwem urządzenia strumieni.
 
 Te przykłady zostały omówione bardziej szczegółowo poniżej.

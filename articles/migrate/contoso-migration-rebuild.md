@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: a4e5087e53d4505d54b5ff4b8d17ad6166c6174b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002505"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437318"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migracja Contoso: Ponownie skompiluj aplikację lokalną na platformę Azure
 
@@ -154,7 +154,7 @@ Administratorzy firmy Contoso, uruchom skrypt wdrażania, aby utworzyć zarządz
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-1. Przed rozpoczęciem, upewnij się Administratorzy Contoso prerequisitie w nich zainstalowane całe oprogramowanie na komputerze deweloperskim, używane do wdrożenia.
+1. Przed rozpoczęciem, upewnij się Administratorzy firmy Contoso, wymagań wstępnych w nich zainstalowane całe oprogramowanie na komputerze deweloperskim, używane do wdrożenia.
 2. One sklonuj repozytorium lokalnego na komputerze deweloperskim, przy użyciu narzędzia Git: **klona usługi git https://github.com/Microsoft/SmartHotel360-Azure-backend.git**
 
 
@@ -291,7 +291,7 @@ Wdrażanych w następujący sposób:
 1. Otwórz wiersz polecenia dla deweloperów i używać danych polecenia az logowania dla subskrypcji platformy Azure.
 2. Korzystanie z pliku pliku deploy.cmd do wdrażania zasobów platformy Azure w regionie EUS2 i grupy zasobów ContosoRG, wpisując następujące polecenie:
 
-    **.\deploy.cmd azuredeploy - c eastus2 ContosoRG**
+    **.\deploy.cmd azuredeploy ContosoRG -c eastus2**
 
     ![Wdrażanie zaplecza](./media/contoso-migration-rebuild/backend1.png)
 

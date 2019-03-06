@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80ed6af005f04ec48729e918543b2de67810eba
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738593"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452033"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -68,7 +68,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS50032 | WeakRsaKey — wskazuje użytkownik błędnie próbę użycia słabe klucza RSA. |
 | AADSTS50033 | RetryableError — wskazuje błąd przejściowy, nie są związane z operacji w bazie danych. |
 | AADSTS50034 | UserAccountNotFound — logowanie się do tej aplikacji, musisz dodać to konto do katalogu. |
-| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt - ziarna wymagane do generowania identyfikatora parowania w brakuje podmiotu zabezpieczeń. Skontaktuj się z administratorem dzierżawy. |
+| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt — ziarna wymagane do wygenerowania parowania identyfikator nie istnieje w zasadzie. Skontaktuj się z administratorem dzierżawy. |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | SubjectMismatchesIssuer - podmiotu niezgodność wystawcy oświadczenia w potwierdzenia klienta. Skontaktuj się z administratorem dzierżawy. |
 | AADSTS50049 | NoSuchInstanceForDiscovery — nieznany lub nieprawidłowy wystąpienia. |
@@ -140,7 +140,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist — użytkownik albo administrator nie wyraził zgody na używanie aplikacji z Identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. |
 | AADSTS65004 | UserDeclinedConsent — użytkownik odmówił wyrażenia zgody na dostęp do aplikacji. Użytkownik musi ponowić próbę zalogowania się i wyrazić zgodę na aplikację|
-| AADSTS65005 | MisconfiguredApplication — aplikacja wymagana listy dostępu do zasobów nie zawiera aplikacji wykrywalny przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony w jej listy dostępu do wymaganych zasobów lub usługi Graph zwrócił nieprawidłowy żądanie lub nie można odnaleźć zasobu. Jeśli aplikacja obsługuje SAML, może skonfigurowano aplikację z identyfikatorem niewłaściwego (jednostki). Wypróbuj rozwiązania dla języka SAML, korzystając z linku poniżej: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list) |
+| AADSTS65005 | MisconfiguredApplication — aplikacja wymagana listy dostępu do zasobów nie zawiera aplikacji wykrywalny przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony w jej listy dostępu do wymaganych zasobów lub usługi Graph zwrócił nieprawidłowy żądanie lub nie można odnaleźć zasobu. Jeśli aplikacja obsługuje SAML, może skonfigurowano aplikację z identyfikatorem niewłaściwego (jednostki). Wypróbuj rozwiązania dla języka SAML, korzystając z linku poniżej: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant — uwierzytelnianie nie powiodło się. Token odświeżania jest nieprawidłowy. Błąd może być z następujących przyczyn:<ul><li>Nagłówek tworzenia powiązań tokenu jest puste</li><li>Skrót tworzenia powiązań tokenu nie jest zgodny</li></ul> |
 | AADSTS70001 | UnauthorizedClient — aplikacja jest wyłączona. |

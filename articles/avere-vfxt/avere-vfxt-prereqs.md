@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 045b010736f8cecf877408f23530022af1f94f14
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0fedfdbb04dd7aa3ff077c13653a22ed710aff9f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991426"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405321"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
@@ -152,7 +152,7 @@ Należy utworzyć rolę węzła klastra, aby można było utworzyć vFXT Avere k
 
 Nazwa roli jest używany podczas tworzenia klastra. W tym przykładzie nazwa to ``avere-operator``.
 
-## <a name="optional-create-a-storage-service-endpoint-in-your-virtual-network"></a>(Opcjonalnie) Tworzenie punktu końcowego usługi magazynu w sieci wirtualnej
+## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Tworzenie punktu końcowego usługi magazynu w sieci wirtualnej (w razie potrzeby)
 
 A [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) utrzymuje lokalnego zamiast przesyłać go poza siecią wirtualną ruchu obiektu Blob platformy Azure. Zalecane dla dowolnej vFXT Avere dla klastra platformy Azure, który używa obiektu Blob platformy Azure do przechowywania danych zaplecza. 
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3bae6d93ffe7ea028d3329dcc69c2f33bdf7aa2a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: ce458328967337976ed713f78ead24e2f1fcdb96
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635463"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451285"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -48,7 +48,7 @@ System Storm w usłudze HDInsight oferuje następujące funkcje:
 
 Lista firm, które używają systemu Apache Storm w rozwiązaniach analitycznych działających w czasie rzeczywistym, jest dostępna na stronie [Companies Using Apache Storm](https://storm.apache.org/documentation/Powered-By.html) (Firmy korzystające z systemu Apache Storm).
 
-Aby rozpocząć korzystanie z systemu Storm, zobacz [wprowadzenie pache systemu Storm w HDInsight][gettingstarted].
+Aby rozpocząć korzystanie z systemu Storm, zobacz [Rozpoczynanie pracy z usługą Apache Storm w HDInsight][gettingstarted].
 
 ## <a name="how-does-apache-storm-work"></a>Jak działa systemu Apache Storm
 
@@ -92,7 +92,7 @@ Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. A
 
 ## <a name="integration-with-other-azure-services"></a>Integracja z innymi usługami platformy Azure
 
-* __Usługi Azure Data Lake Storage__: Na przykład korzystania z usługi Data Lake Storage w połączeniu z klastrem Storm zobacz [użycia Azure magazyn usługi Data Lake za pomocą Storm Apache na HDInsight](apache-storm-write-data-lake-store.md).
+* __Azure Data Lake Storage__: Na przykład korzystania z usługi Data Lake Storage w połączeniu z klastrem Storm zobacz [użycia Azure magazyn usługi Data Lake za pomocą Storm Apache na HDInsight](apache-storm-write-data-lake-store.md).
 
 * __Usługa Event Hubs__: Przykład użycia usługi Event Hubs w klastrze Storm zobacz następujące przykłady:
 
@@ -142,7 +142,7 @@ Aby uzyskać więcej informacji, zobacz [Guarantees on data processing](https://
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-Wzorzec obejmujący odczytywanie krotki wejściowej, emitującej zero lub więcej krotek, a następnie potwierdzanie krotki wejściowej natychmiast po zakończeniu przetwarzania jest typowy. System Storm udostępnia interfejs [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) w celu automatyzacji tego wzorca.
+Wzorzec odczytywanie krotki wejściowej, emitowanie zero lub więcej krotek i następnie potwierdzenie krotki wejściowej natychmiast po zakończeniu metody execute jest wspólne. System Storm udostępnia interfejs [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) w celu automatyzacji tego wzorca.
 
 ### <a name="joins"></a>Sprzężenia
 

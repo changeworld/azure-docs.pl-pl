@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ceb9c7b18de5262a38fc724aad9605e82a615a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 322615203d188581dd04aadeff2a08307b733d06
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238423"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450570"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Samouczek: Integracja usługi Azure Active Directory z wieloma kontami usług Amazon Web Services (AWS)
 
@@ -215,7 +215,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
   
     d. Kliknij pozycję **Next: Permissions** (Dalej: uprawnienia).
 
-9. Na **Dołącz zasady uprawnień** okno dialogowe, należy dołączyć odpowiednie zasady zgodnie z Twojej organizacji. Kliknij pozycję **Next: Review** (Dalej: przegląd).  
+9. W oknie dialogowym **Attach Permissions Policies** (Dołączanie zasad uprawnień) dołącz zasady odpowiednie dla Twojej organizacji. Kliknij pozycję **Next: Review** (Dalej: przegląd).  
 
     ![Konfigurowanie logowania jednokrotnego — zasady][33]
 

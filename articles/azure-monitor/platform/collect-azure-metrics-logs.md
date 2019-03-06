@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 2137a2e1d7cea9f2a2dbf565295323cb133513ee
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ae4e4487b3d9df4b2cf756174f0a56e721af91c4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315796"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406913"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -84,7 +84,7 @@ Zasoby platformy Azure, które obsługują [usługa Azure monitor](../../azure-m
 
 Potrzebujesz listopada 2016 r. (v2.3.0) lub nowszej wersji [programu Azure PowerShell](/powershell/azure/overview).
 
-W poniższym przykładzie programu PowerShell pokazuje, jak używać [AzDiagnosticSetting zestaw](/powershell/module/az.insights/set-azdiagnosticsetting) na włączanie diagnostyki na sieciową grupę zabezpieczeń. To samo podejście działa w przypadku wszystkich obsługiwanych zasobów — Konfigurowanie `$resourceId` do zasobu, aby włączyć diagnostykę dla identyfikatora zasobu.
+W poniższym przykładzie programu PowerShell pokazuje, jak używać [AzDiagnosticSetting zestaw](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) na włączanie diagnostyki na sieciową grupę zabezpieczeń. To samo podejście działa w przypadku wszystkich obsługiwanych zasobów — Konfigurowanie `$resourceId` do zasobu, aby włączyć diagnostykę dla identyfikatora zasobu.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 848663c509fd3635b33b8e7735feb940da215bfa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332102"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441818"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](https://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](https://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
@@ -71,7 +71,7 @@ ISCPSpout jest interfejs spout nietransakcyjnej.
 
 Gdy `NextTuple()` nosi C\# kod użytkownika może emitować jeden lub więcej krotek. Jeśli nie ma nic do emisji, ta metoda powinna zwrócić bez emitowania niczego. Należy zauważyć, że `NextTuple()`, `Ack()`, i `Fail()` wszystkie noszą nazwę w pętli w pojedynczych wątkach w języku C\# procesu. W przypadku krotek, nie można wyemitować jest uprzejmy mieć NextTuple uśpienia przez krótki czas (na przykład 10 ms), tak aby nie tracić dużo procesora CPU.
 
-`Ack()` i `Fail()` są wywoływane tylko wtedy, gdy jest to mechanizm potwierdzenia jest włączany w specyfikacji pliku. `seqId` Służy do identyfikowania spójną kolekcją, która jest potwierdzone lub nie powiodło się. Dlatego po włączeniu potwierdzenia w topologii nietransakcyjnych w Spout należy użyć następujących funkcji emitowanie:
+`Ack()` i `Fail()` są wywoływane tylko wtedy, gdy jest to mechanizm potwierdzenia jest włączany w specyfikacji pliku. `seqId` Służy do identyfikowania spójną kolekcją, która jest potwierdzony lub nie powiodło się. Dlatego po włączeniu potwierdzenia w topologii nietransakcyjnych w Spout należy użyć następujących funkcji emitowanie:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -431,7 +431,7 @@ Dodano dwie metody w obiekcie kontekstu platformy SCP.NET. Służą one do emito
 Emitowanie do strumienia nieistniejące powoduje, że wyjątki środowiska uruchomieniowego.
 
 ### <a name="fields-grouping"></a>Grupowanie pól
-Wbudowane grupy pól w Strom nie działa prawidłowo w platformy SCP.NET. Po stronie serwera Proxy w języku Java wszystkie typy danych pola są rzeczywiście byte [], a pola Grupowanie używa byte [] obiektu skrótu do wykonywania grupowania. Byte [] obiektu skrótu jest adres tego obiektu w pamięci. Dlatego grupowanie będą nieprawidłowe dla obiektów [] dwubajtowy, które mają taką samą zawartość, ale nie sam adres.
+Wbudowane grupy pól w Storm nie działa prawidłowo w platformy SCP.NET. Po stronie serwera Proxy w języku Java wszystkie typy danych pola są rzeczywiście byte [], a pola Grupowanie używa byte [] obiektu skrótu do wykonywania grupowania. Byte [] obiektu skrótu jest adres tego obiektu w pamięci. Dlatego grupowanie będą nieprawidłowe dla obiektów [] dwubajtowy, które mają taką samą zawartość, ale nie sam adres.
 
 Platformy SCP.NET dodaje metodę grupowania dostosowane i używa zawartości byte [] w celu grupowania. W **specyfikacja** pliku przypomina składnię:
 

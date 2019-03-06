@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 3/3/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 043a49e679f2b8ec48213e28d229121d3f0e070d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 47cd1c8e7a8ea02175f1f35eaf8c1658e03a2a53
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338641"
+ms.locfileid: "57403315"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -51,12 +51,15 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 
 7. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne Azure, gdy zostaną uruchomione po przejściu do trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. Jeśli nie masz sieci, należy ją utworzyć. Aby utworzyć sieć przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie kliknij przycisk **OK**.
 
-    ![Włącz ustawienie obiektu docelowego replikacji](./media/vmware-azure-enable-replication/enable-rep3.png)
+>[!NOTE]
+>Usługa Azure Site Recovery replikuje teraz bezpośrednio do usługi Managed Disks dla wszystkich nowych replikacji. Nie ma to wpływ na istniejące replikacji. Replikacja do kont magazynu do nowego komputera jest dostępna tylko za pośrednictwem interfejsu API REST i Powershell. 
+
+    ![Enable replication target setting](./media/vmware-azure-enable-replication/enable-rep3.png)
 8. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
 
     ![Włączanie replikacji wybierz maszyn wirtualnych](./media/vmware-azure-enable-replication/enable-replication5.png)
-9. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie.  
-10. Domyślnie wszystkie dyski są replikowane. Aby wykluczyć dyski z replikacji, kliknij przycisk **wszystkie dyski** i wyczyść wszystkie dyski, które nie mają być replikowane.  Następnie kliknij przycisk **OK**. Później możesz skonfigurować dodatkowe właściwości. [Dowiedz się więcej](vmware-azure-exclude-disk.md) informacji na temat wykluczania dysków.
+9. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie. Ponadto należy wybrać typ docelowy dysk zarządzany, który chcesz replikować do na podstawie danych churn wzorców.
+10. Domyślnie wszystkie dyski na maszynie źródłowej są replikowane. Wykluczanie dysków z replikacji, usuń zaznaczenie pola wyboru **Include** pola wyboru dla wszystkich dysków, które nie mają być replikowane.  Następnie kliknij przycisk **OK**. Później możesz skonfigurować dodatkowe właściwości. [Dowiedz się więcej](vmware-azure-exclude-disk.md) informacji na temat wykluczania dysków.
 
     ![Włączanie replikacji, skonfiguruj właściwości](./media/vmware-azure-enable-replication/enable-replication6.png)
 

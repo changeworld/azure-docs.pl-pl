@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 66ac3cf786abeebc2579a937d8670d639c1af270
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408803"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447000"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki start: Konfigurowanie maszyny Wirtualnej platformy Azure, nawiązać połączenia z bazą danych wystąpienia zarządzanego Azure SQL
 
@@ -84,7 +84,7 @@ Najprostszym sposobem utworzenia maszyny wirtualnej klienta za pomocą wszystkie
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>To hasło jest używane wtedy, gdy [nawiązać połączenie z maszyną Wirtualną](#connect-to-virtual-machine).|
    | **Rozmiar maszyny wirtualnej** | Wszelkie prawidłowy rozmiar | Wartość domyślna, w tym szablonie o **Standard_B2s** jest wystarczająca na potrzeby tego przewodnika Szybki Start. |
    | **Lokalizacja**|[resourceGroup () .location].| Nie zmieniaj tej wartości. |
-   | **Nazwa sieci wirtualnej**|Wirtualne sieciowy, w którym utworzono wystąpienie zarządzane.|
+   | **Nazwa sieci wirtualnej**|Sieć wirtualna, w którym utworzono wystąpienie zarządzane.|
    | **Nazwa podsieci**|Nazwa podsieci, który został utworzony w poprzedniej procedurze| Nie wybieraj podsieci, w której utworzono wystąpienie zarządzane.|
    | **Artefakty lokalizacji** | [.properties.templateLink.uri wdrożenia ()] | Nie zmieniaj tej wartości. |
    | **token sygnatury dostępu współdzielonego lokalizacji artefaktów** | Pozostaw to pole puste | Nie zmieniaj tej wartości. |

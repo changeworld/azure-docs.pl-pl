@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: ec23d4cec5ec1dbcaba5eca73ae6aba8391f2742
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 55949da97f58f1d8c1670f69d25e92d6bb4e9eef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242143"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447306"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Połącz swoje rozwiązanie zewnętrznych przy użyciu protokołu Syslog
 
@@ -27,7 +27,7 @@ ms.locfileid: "57242143"
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Możesz połączyć wszystkie lokalne urządzenie, obsługującego usługi Syslog do platformy Azure przez wartownika. Odbywa się przy użyciu agenta, oparte na maszynie z systemem Linux między urządzeniem i przez wartownika Azure. W przypadku maszyną z systemem Linux na platformie Azure, można przesyłać strumieniowo dzienniki z urządzenia lub aplikacji z obszarem roboczym dedykowanym tworzenie na platformie Azure i połączyć ją. Jeśli maszyną z systemem Linux nie jest na platformie Azure, można przesyłać strumieniowo dzienniki z urządzenia do dedykowanych lokalnej maszyny Wirtualnej lub maszyny, na którym jest instalowana agenta dla systemu Linux. 
+Możesz połączyć wszystkie lokalne urządzenie, obsługującego usługi Syslog do platformy Azure przez wartownika. Odbywa się przy użyciu agenta, oparte na maszynie z systemem Linux między urządzeniem i przez wartownika Azure. W przypadku maszyną z systemem Linux na platformie Azure, można przesyłać strumieniowo dzienniki z urządzenia lub aplikacji z obszarem roboczym dedykowanym tworzenie na platformie Azure i połączyć ją. Jeśli maszyną z systemem Linux nie jest na platformie Azure, można przesyłać strumieniowo dzienniki z urządzenia do dedykowanej na lokalnej maszynie Wirtualnej lub maszyny, na którym należy zainstalować agenta dla systemu Linux. 
 
 > [!NOTE]
 > Jeśli urządzenie obsługuje format CEF Syslog, połączenie jest pełniejszy i należy wybrać tę opcję i postępuj zgodnie z instrukcjami w [zbieranie danych z formatu CEF](connect-common-event-format.md).

@@ -16,12 +16,12 @@ ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 1bfdaef4523a714aed0f1b7bbdb5a600f7775ffb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5934d075378df9f04130b79eb43131d71eaa25af
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244814"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449465"
 ---
 # <a name="mysql-resource-provider-11300--release-notes"></a>Informacje o wersji 1.1.30.0 dostawcy zasobów MySQL
 
@@ -49,7 +49,7 @@ Ta wersja dostawcy zasobów usługi Azure Stack MySQL obejmuje następujące ule
 
 ### <a name="fixes"></a>Poprawki
 
-- **Zgodność platformy Azure Stack PowerShell dostawcy zasobów MySQL**. Dostawcy zasobów bazy danych MySQL została zaktualizowana do pracy z profilem stosu 2018-03-01-hybrydowej platformy Azure PowerShell i w celu zapewnienia zgodności przy użyciu usługi AzureRM 1.3.0 lub nowszy.
+- **Dostawcy zasobów MySQL zgodności usługi Azure Stack PowerShell**. Dostawcy zasobów bazy danych MySQL została zaktualizowana do pracy z profilem stosu 2018-03-01-hybrydowej platformy Azure PowerShell i w celu zapewnienia zgodności przy użyciu usługi AzureRM 1.3.0 lub nowszy.
 
 - **MySQL logowania zmiany hasła bloku**. Rozwiązano problem, w którym bloku zmiany hasła, w którym nie można zmienić hasła. Powiadomienia o zmianie usunięto łączy na podstawie hasła.
 

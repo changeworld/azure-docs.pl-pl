@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 01688c120a8302da4903302ab8bcd2d1fa4ab351
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3fb6e42e55119684ace8547a55297d38dbb9a26e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113417"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402380"
 ---
 # <a name="azure-security-white-papers"></a>Usługa Azure Security oficjalne dokumenty
 | | |
@@ -42,4 +42,4 @@ ms.locfileid: "56113417"
 |[Przegląd zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Ten dokument do pobrania w tym artykule omówiono oferty zgodności platformy Azure, w tym posiadanie certyfikaty, poświadczenia, sprawdzania poprawności, autoryzacji i ocen produkowane przez niezależnie od innych firm z branży inspekcji, a także umownych zmiany samooceny i dokumenty wskazówek dotyczących klienta generowany przez firmę Microsoft. <br/> Każda oferta opis stanów, którymi usługami platformy Azure przeznaczoną dla klienta znajdują się w zakresie do oceny i zawiera linki do zasobów do pobrania, by pomóc klientom ze zobowiązaniami zgodności.|
 |[Zarządzanie zabezpieczeniami na platformie Azure](azure-security-management.md)|W tym artykule omówiono zagadnienia w dostępie zdalnym zasobów platformy Azure. Najważniejszą kwestią jest charakter chmury żądania dostępu zdalnego administrowania i, w związku z tym, zabezpieczeń. Opisano ogólne wytyczne, konfiguracja klienta, najlepsze rozwiązania i operacyjne zasad i procedur. |
 |[Dane usługi Active Directory systemu Azure i zabezpieczenia](https://aka.ms/aaddatawhitepaper) | Dokument do pobrania przedstawia różnych składników usługi Azure Active Directory i ich interakcji ze sobą. Przedstawia, jak różne składniki ochrony, zabezpieczanie, szyfrowanie lub wyznaczania wartości skrótu ich dane przesyłane (na przykład w Internecie) i sposób ochrony magazynowanych. Wyjaśniono różne lokalizacje usługi Azure AD w centrum danych i ich interakcji z katalogami lokalnymi, a także przepływy do i z usługi Azure AD. Ponadto opisano procedury operacyjne używane przez zespół inżynierów usługi Azure AD, zarządzanie i zabezpieczanie usługi.|
-
+|[Omówienie uwierzytelniania bez hasła](https://aka.ms/pwdless-whitepaper)|W tym dokumencie przedstawiono omówienie najważniejszych korzyści zapewnianych przez uwierzytelnianie bez hasła przy użyciu Windows Hello dla firm, kluczy zabezpieczeń FIDO2 i z aplikacji Microsoft Authenticator. Zalecane jest, specjaliści ds. zabezpieczeń i CISOs zainteresowanym ustawami zrozumienie, jak firma Microsoft może pomóc wykraczają poza hasła i wdrożyć poświadczenia uwierzytelniania w usłudze następnej generacji.|

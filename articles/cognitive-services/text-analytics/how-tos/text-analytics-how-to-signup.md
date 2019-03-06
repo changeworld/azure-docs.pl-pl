@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 355a144597ce384725d92e64d4a5e4909b18c3d7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246106"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449967"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Jak zarejestrować się do interfejsu API analizy tekstu
 
@@ -25,7 +25,7 @@ Zasoby analizy tekstu są dostępne w chmurze 24 godziny na dobę przez 7 dni w 
 
 + Utwórz [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), wybierając **interfejs API analizy tekstu**. Klucz jest generowany podczas tworzenia konta.
 
-Na potrzeby analizy tekstu przygotowano warstwę Bezpłatna umożliwiającą badanie i ocenę oraz płatne warstwy dla obciążeń produkcyjnych. W każdej subskrypcji możesz mieć wiele kont: jedno bezpłatne, inne płatne i tak dalej. Jeśli Twój wolumin żądań zwiększy się, możesz przełączyć się do warstwy oferującej więcej transakcji.
+Na potrzeby analizy tekstu przygotowano warstwę Bezpłatna umożliwiającą badanie i ocenę oraz płatne warstwy dla obciążeń produkcyjnych. Może mieć wiele tworzenia kont w poszczególnych subskrypcjach: jeden bezpłatna, jedną z płatnych i tak dalej. Jeśli Twój wolumin żądań zwiększy się, możesz przełączyć się do warstwy oferującej więcej transakcji.
 
 W przypadku usług dostępnych w wersji zapoznawczej lub oferowanych w warstwie bezpłatnej nie jest zawierana umowa dotycząca poziomu usług. Aby uzyskać więcej informacji, zobacz [Usługi poznawcze — umowa SLA](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)
 

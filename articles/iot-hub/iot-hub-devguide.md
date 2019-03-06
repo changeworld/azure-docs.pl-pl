@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 0246b19c0155fe2707ac780c7acb61be424d2caf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008935"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450995"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure IoT Hub
 
@@ -55,7 +55,7 @@ Ten przewodnik dla deweloperów usługi IoT Hub zawiera następujące artykuły:
 
 * [Kontrola dostępu do usługi IoT Hub](iot-hub-devguide-security.md) w tym artykule opisano model zabezpieczeń umożliwia udzielanie dostępu do funkcji usługi IoT Hub dla obu urządzeń i w chmurze składniki. Artykuł zawiera informacje dotyczące używania tokenów i certyfikaty X.509 i szczegółowe informacje o uprawnienia, które można udzielić uprawnień.
 
-* [Użyj bliźniacze reprezentacje urządzeń, aby zsynchronizować stan i konfiguracje](iot-hub-devguide-device-twins.md) opisuje *bliźniaczej reprezentacji urządzenia* koncepcji. Artykuł również udostępnić tym bliźniaczych reprezentacji urządzeń funkcje, takie jak synchronizacja urządzenia za pomocą jego bliźniaczej reprezentacji urządzenia. Artykuł zawiera informacje o danych przechowywanych w bliźniaczej reprezentacji urządzenia.
+* [Użyj bliźniacze reprezentacje urządzeń, aby zsynchronizować stan i konfiguracje](iot-hub-devguide-device-twins.md) opisuje *bliźniaczej reprezentacji urządzenia* koncepcji. Opisano również urządzenie funkcje, które udostępnić twins, takie jak synchronizacja urządzenia za pomocą jego bliźniaczej reprezentacji urządzenia. Artykuł zawiera informacje o danych przechowywanych w bliźniaczej reprezentacji urządzenia.
 
 * [Wywoływanie metody bezpośredniej o urządzeniu](iot-hub-devguide-direct-methods.md) opisuje cykl życia metody bezpośredniej. W artykule opisano, jak wywoływać metody na urządzeniu z poziomu aplikacji zaplecza i obsługiwać bezpośrednie metody na urządzeniu.
 

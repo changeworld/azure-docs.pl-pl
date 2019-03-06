@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729799"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452134"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -119,19 +119,13 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
 
    **ExpressRoute Monitor**: Wybierz **odnajdywanie teraz** do odnajdywania wszystkich ExpressRoute prywatnej komunikacji równorzędnej, które są połączone z sieciami wirtualnymi w subskrypcji platformy Azure są połączone z tym obszarem roboczym usługi Log Analytics. 
 
-   >[!NOTE] 
-   > Rozwiązania aktualnie odnajduje tylko prywatne komunikacje równorzędne usługi ExpressRoute. 
-
-   >[!NOTE] 
-   > Tylko do prywatnej komunikacji równorzędnej, które są podłączone do sieci wirtualne, skojarzony z subskrypcją, połączone z tym obszarem roboczym usługi Log Analytics są odnajdywane. Jeśli usługa ExpressRoute jest podłączony do sieci wirtualnej znajdującej się poza subskrypcji połączonej z tym obszarem roboczym, należy utworzyć obszar roboczy usługi Log Analytics w tych subskrypcjach. Rozwiązanie Network Performance Monitor umożliwia monitorowanie tych komunikacji równorzędnej.
-
    ![Widok monitorowania usługi ExpressRoute](media/network-performance-monitor/npm-express-route.png)
 
-   Po zakończeniu odnajdywania odnalezionych prywatne komunikacje równorzędne są wymienione w tabeli. 
+   Po zakończeniu odnajdywania odnalezionych obwodów i komunikacji równorzędnej są wymienione w tabeli. 
 
    ![Stronę Konfiguracja Monitora wydajności sieci](media/network-performance-monitor/npm-private-peerings.png)
     
-Monitorowanie te komunikacje równorzędne początkowo jest w stanie wyłączenia. Wybierz każdego wystąpienia komunikacji równorzędnej, którą chcesz monitorować, a następnie skonfigurować monitorowanie dla nich z widoku szczegółów po prawej stronie. Wybierz **Zapisz** Aby zapisać konfigurację. Aby dowiedzieć się więcej, zobacz artykuł "Monitorowanie Konfigurowanie usługi ExpressRoute". 
+Monitorowanie tych obwodów i komunikacji równorzędnej początkowo jest w stanie wyłączenia. Wybierz wszystkie zasoby, które chcesz monitorować, a następnie skonfigurować monitorowanie dla nich z widoku szczegółów po prawej stronie. Wybierz **Zapisz** Aby zapisać konfigurację. Aby dowiedzieć się więcej, zobacz artykuł "Monitorowanie Konfigurowanie usługi ExpressRoute". 
 
 Po zakończeniu pracy Instalatora trwa 30 minut do godziny danych do wypełnienia. Gdy rozwiązanie agregują dane z Twojej sieci, zostanie wyświetlony komunikat *rozwiązanie wymaga dodatkowej konfiguracji* na Network Performance Monitor **Przegląd** kafelka. Po dane są zbierane i indeksowane, **Przegląd** kafelka zmienia się i informuje Cię o kondycję swojej sieci w podsumowaniu. Następnie można edytować monitorowanie węzłów, na które Log Analytics agenci są zainstalowani, a także podsieci, odnalezione ze środowiska.
 
@@ -269,7 +263,7 @@ Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem witryny Azu
 3. Jeśli zdecydujesz się użyć grup akcji, należy wybrać grupy akcji utworzone wcześniej. Możesz dowiedzieć się, jak utworzyć grupy akcji [tutaj.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Po pomyślnym utworzeniu alertu, można użyć łącza Zarządzanie alertami zarządzania alertami. 
 
-W przypadku tworzenia alertu, NPM tworzy na podstawie zapytania reguł alertów dzienników w usłudze Azure Monitor. To zapytanie jest triggerred co 5 minut, domyślnie. Usługa Azure monitor nie jest opłata w wysokości 250 pierwszego logowania reguły alertów utworzone, a wszystkie reguły alertów powyżej limit 250 reguł alertów dzienników będą naliczane zgodnie [alerty ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+W przypadku tworzenia alertu, NPM tworzy na podstawie zapytania reguł alertów dzienników w usłudze Azure Monitor. To zapytanie jest wyzwalana co 5 minut, domyślnie. Usługa Azure monitor nie jest opłata w wysokości 250 pierwszego logowania reguły alertów utworzone, a wszystkie reguły alertów powyżej limit 250 reguł alertów dzienników będą naliczane zgodnie [alerty ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 Powiadomienia są rozliczane osobno zgodnie [powiadomienia ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 
 

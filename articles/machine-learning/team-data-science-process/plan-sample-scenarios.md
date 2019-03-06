@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 514242eb759a2349d96b38ebe54bb98cf0e83423
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468822"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454956"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning
 W tym artykule przedstawiono różne źródła danych przykładowych i scenariusze docelowe, które są obsługiwane przez [Team Data Science naukowych](overview.md). Przetwarzania TDSP zapewnia to systematyczne podejście dla zespołów usługi umożliwiające wspólną pracę nad tworzeniem inteligentnych aplikacji. Scenariusze przedstawione w tym miejscu przedstawiono opcje dostępne w przepływie pracy przetwarzania danych, które są zależne od właściwości danych, lokalizacji źródłowych i docelowych repozytoriów na platformie Azure.
@@ -146,7 +146,7 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Odczytywanie danych bezpośrednio za pomocą programu SQL Server [importu danych] [ import-data] modułu. Wklej zapytanie to konieczne, który wyodrębnia pola i tworzy funkcje oraz próbkuje dane, w razie potrzeby bezpośrednio w [importu danych] [ import-data] zapytania.
 1. Prosty przepływ eksperymentu usługi Azure Machine Learning, począwszy od przekazano zestaw danych
 
-## <a name="largedbtodb"></a>Scenariusz \#6: Duży zestaw danych w programie SQL Server bazy danych lokalnych, przeznaczonych dla programu SQL Server w maszynie wirtualnej platformy Azure
+## <a name="largedbtodb"></a>Scenariusz \#6: Duży zestaw danych w bazie programu SQL Server w środowisku lokalnym, przeznaczonych dla programu SQL Server w maszynie wirtualnej platformy Azure
 ![Duże SQL DB środowiska lokalnego do bazy danych SQL na platformie Azure][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
@@ -154,7 +154,7 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Użyj jednego z danych eksportowania metod, aby wyeksportować dane z programu SQL Server do plików zrzutu.
    
    > [!NOTE]
-   > Jeśli użytkownik zdecyduje się przeniesienie wszystkich danych z lokalnej bazy danych, alternatywna metoda (szybsze), aby przenieść pełnej bazy danych do wystąpienia programu SQL Server na platformie Azure. Pomiń kroki, aby wyeksportować dane, utworzyć bazę danych, a obciążenia/importowanie danych do docelowej bazy danych i postępuj zgodnie z alternatywna metoda.
+   > Jeśli zdecydujesz przenieść wszystkie dane w lokalnej bazy danych i alternatywna metoda (szybsze), aby przenieść pełnej bazy danych do wystąpienia programu SQL Server na platformie Azure. Pomiń kroki, aby wyeksportować dane, utworzyć bazę danych, a obciążenia/importowanie danych do docelowej bazy danych i postępuj zgodnie z alternatywna metoda.
    > 
    > 
 1. Przekaż pliki zrzutu do kontenera usługi Azure storage.

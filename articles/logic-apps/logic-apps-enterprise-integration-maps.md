@@ -11,16 +11,16 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: da5b099a5574d34c3676819c930f3e89610cf4ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767439"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455806"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Przekształć element XML z mapami w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
-Na przesyłanie danych XML między formatami integracji dla scenariuszy dla przedsiębiorstw w usłudze Azure Logic Apps, aplikacja logiki można użyć mapy lub dokładniej, mapuje Extensible arkusza stylów języka przekształcenia (XSLT). Mapa jest dokument XML, który opisuje sposób konwertowania danych z dokumentu XML do innego formatu. 
+Na przesyłanie danych XML między formatami integracji dla scenariuszy dla przedsiębiorstw w usłudze Azure Logic Apps, aplikacja logiki można użyć, mapy lub dokładniej, arkusz stylów Extensible, który mapuje języka przekształcenia (XSLT). Mapa jest dokument XML, który opisuje sposób konwertowania danych z dokumentu XML do innego formatu. 
 
 Na przykład załóżmy, że regularnie otrzymywać zleceń B2B lub faktur od klienta, który używa formatu daty YYYMMDD. Jednak Twoja organizacja korzysta z MMDDYYY format daty. Można zdefiniować i użyć mapy, który przekształca format daty YYYMMDD do formatu MMDDYYY przed zapisaniem szczegóły zamówienia lub faktury w bazie danych działań klientów.
 

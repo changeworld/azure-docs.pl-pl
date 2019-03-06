@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652625"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433454"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
 
@@ -167,12 +167,12 @@ Ta lista kontrolna stanowi punkt wyjścia dla reguł zapory:
 
    | Adres URL (\* = symboli wieloznacznych) | Porty TCP ruchu wychodzącego | Sposób użycia |
    | ----- | ----- | ----- |
-   | MCR.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
-   | Global.Azure urządzeń provisioning.net  | 443 | Usługa DPS dostępu (opcjonalnie) |
+   | mcr.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
+   | global.azure-devices-provisioning.net  | 443 | Usługa DPS dostępu (opcjonalnie) |
    | \*. azurecr.io | 443 | Rejestry kontenerów strony osobistych, jak i 3 |
    | \*.blob.core.windows.net | 443 | Pobierz obraz różnic | 
-   | \*.Azure-devices.net | 5671, 8883, 443 | Dostęp do usługi IoT Hub |
-   | \*. docker.io  | 443 | Docker dostępu (opcjonalnie) |
+   | \*.azure-devices.net | 5671, 8883, 443 | Dostęp do usługi IoT Hub |
+   | \*.docker.io  | 443 | Docker dostępu (opcjonalnie) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurowanie komunikacji za pośrednictwem serwera proxy
 
@@ -186,7 +186,7 @@ Urządzenia mają zostać wdrożone w sieci, która korzysta z serwera proxy, mu
 
 ### <a name="set-up-logs-and-diagnostics"></a>Konfigurowanie dzienników i Diagnostyka
 
-W systemie Linux demon usługi IoT Edge korzysta journald jako domyślnego sterownika rejestrowania. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-WinEvent` dzienniki zapytania z demona. Moduły usługi IoT Edge użyć sterownika JSON do rejestrowania, co jest ustawieniem domyślnym platformy Docker.  
+W systemie Linux demon usługi IoT Edge korzysta z arkuszy jako domyślne rejestrowanie sterownika. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-WinEvent` dzienniki zapytania z demona. Moduły usługi IoT Edge użyć sterownika JSON do rejestrowania, co jest ustawieniem domyślnym platformy Docker.  
 
 Podczas testowania wdrożenia usługi IoT Edge, zwykle dostęp urządzenia do pobierania dzienników i rozwiązywanie problemów. W scenariuszu wdrażania możesz nie mieć tej opcji. Należy wziąć pod uwagę, jak możesz zacząć zbierać informacje dotyczące urządzeń w środowisku produkcyjnym. Jedną z opcji jest używać moduł rejestrowania, który zbiera informacje z innymi modułami i wysyła je do chmury. Jednym z przykładów moduł rejestrowania jest [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), lub projektować własne. 
 
@@ -194,7 +194,7 @@ Martwisz dzienników staje się zbyt duży, na urządzeniu zasobów ograniczone,
 
 * W szczególności można ograniczyć rozmiar wszystkich logfiles platformy docker w demona platformy Docker, sam. W przypadku systemu Linux skonfiguruj demona na `/etc/docker/daemon.json`. Dla Windows `C:\ProgramData\docker\confige\daemon.json`. 
 * Aby dostosować rozmiar pliku dziennika dla każdego kontenera, możesz to zrobić w CreateOptions, można żądań każdego modułu. 
-* Konfigurowanie platformy Docker do automatycznego zarządzania Dzienniki przez ustawienie journald jako domyślne rejestrowanie sterownika dla platformy Docker. 
+* Konfigurowanie platformy Docker do automatycznego zarządzania dziennikami, ustawiając arkuszy jako domyślnego sterownika rejestrowanie dla platformy Docker. 
 * Okresowo należy usunąć stare dzienniki z urządzenia, instalując narzędzia logrotate dla platformy Docker. Użyj następujących specyfikacji pliku: 
 
    ```

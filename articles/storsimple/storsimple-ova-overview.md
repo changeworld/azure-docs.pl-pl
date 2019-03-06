@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: decc63ad7ce0b35de41ec53e6b5e02276aa33705
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811209"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456078"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do macierzy wirtualnej StorSimple
 
@@ -101,7 +101,7 @@ Usługa Menedżer urządzeń StorSimple uruchomione w witrynie Azure portal umo�
 ![Zarządzanie magazynami oparte na chmurze](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>Niezależnie od lokalizacji kopii zapasowej
-Za pomocą macierzy wirtualnej migawki w chmurze zapewniają niezależnie od lokalizacji, w momencie kopia woluminu lub udziału. Migawki w chmurze są domyślnie włączone i nie może być wyłączony. Wszystkie woluminy i udziały są tworzenie kopii zapasowej w tym samym czasie za pomocą pojedynczego codzienne zasad tworzenia kopii zapasowej i może potrwać kopii zapasowych dodatkowych zapytań ad-hoc, jeśli zajdzie taka potrzeba.
+Za pomocą macierzy wirtualnej migawki w chmurze zapewniają niezależnie od lokalizacji, w momencie kopia woluminu lub udziału. Migawki w chmurze są domyślnie włączone i nie może być wyłączony. Wszystkie woluminy i udziały są tworzenie kopii zapasowej w tym samym czasie za pomocą pojedynczego codzienne zasad tworzenia kopii zapasowej i może potrwać dodatkowych ad-hoc kopii zapasowych zawsze, gdy jest to konieczne.
 
 ### <a name="data-protection-and-disaster-recovery"></a>Dane ochrony i odzyskiwania po awarii
 Macierz wirtualna obsługuje następujące ochrony danych i scenariuszy odzyskiwania po awarii:

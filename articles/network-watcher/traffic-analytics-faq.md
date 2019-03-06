@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 87c624e0fc5eac60b309a2535afc7508f1b6b3ac
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 946af124c5e16620c5052ac32d47ddb5fe4537d2
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986111"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406030"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -83,6 +83,7 @@ Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następ
 - Indie Środkowe
 - Indie Południowe
 - Japonia Wschodnia
+- Administracja USA — Wirginia
 
 Obszar roboczy usługi Log Analytics muszą znajdować się w następujących regionach:
 - Kanada Środkowa
@@ -94,6 +95,7 @@ Obszar roboczy usługi Log Analytics muszą znajdować się w następujących re
 - Azja Południowo-Wschodnia 
 - Indie Środkowe
 - Japonia Wschodnia
+- Administracja USA — Wirginia
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Można włączyć przepływu sieciowych grup zabezpieczeń dzienniki mieścić się w różnych regionach niż Mój obszar roboczy?
 

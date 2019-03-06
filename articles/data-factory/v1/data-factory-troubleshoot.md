@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 053cabfa29bd5e436fecd922e4bcdbca9483d25a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023026"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455687"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Rozwiązywanie problemów z usługą Data Factory
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. 
 
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów w przypadku problemów, korzystając z usługi Azure Data Factory. W tym artykule nie są wyświetlane wszystkie możliwe problemy podczas korzystania z usługi, ale obejmuje pewne problemy i ogólne porady dotyczące rozwiązywania problemów.   
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Błąd: Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw "Microsoft.DataFactory"
@@ -34,20 +36,20 @@ Wyświetlenie tego błędu oznacza, że dostawca zasobów usługi Azure Data Fac
 2. Zaloguj się do konta platformy Azure, używając następującego polecenia.
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. Uruchom następujące polecenie, aby zarejestrować dostawcę usługi Azure Data Factory.
 
     ```powershell        
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problem: Błąd dotyczący nieautoryzowanego dostępu przy uruchamianiu polecenia cmdlet usługi Data Factory
 Przypuszczalnie nie używasz prawidłowego konta lub subskrypcji platformy Azure w programie Azure PowerShell. Użyj następujących poleceń cmdlet, aby wybrać odpowiednie konto i subskrypcję platformy Azure do stosowania w programie Azure PowerShell.
 
-1. Connect-AzureRmAccount - Użyj odpowiedniego Identyfikatora użytkownika i hasła
-2. Get-AzureRmSubscription - wyświetlić wszystkie subskrypcje dla konta.
-3. SELECT-AzureRmSubscription &lt;Nazwa subskrypcji&gt; — wybierz odpowiednią subskrypcję. Użyj tego samego używanej do tworzenia fabryki danych w witrynie Azure portal.
+1. Connect — AzAccount — Użyj odpowiedniego Identyfikatora użytkownika i hasła
+2. Get-AzSubscription — Wyświetl wszystkie subskrypcje dla konta.
+3. Wybierz AzSubscription &lt;Nazwa subskrypcji&gt; — wybierz odpowiednią subskrypcję. Użyj tego samego używanej do tworzenia fabryki danych w witrynie Azure portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problem: Nie można uruchomić danych ekspresowej instalacji bramy zarządzania w witrynie Azure portal
 Instalacja ekspresowa bramy zarządzania danymi wymaga przeglądarki Internet Explorer lub przeglądarki zgodnej z technologią Microsoft ClickOnce. Jeśli uruchomienie instalacji ekspresowej nie powiedzie się, wykonaj jedną z poniższych czynności:

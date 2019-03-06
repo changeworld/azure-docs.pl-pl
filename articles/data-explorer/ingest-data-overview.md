@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 2/18/2019
-ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bd1cb101a3bf9a4da9c681169d2a5c999e56b1b3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340182"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438418"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
 
@@ -81,7 +81,7 @@ Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapy
 
 * Dane wprowadzane bezpośrednio do aparatu Eksplorator danych platformy Azure (najbardziej odpowiednie do potrzeb eksploracji i tworzenia prototypów):
 
-  * **Wbudowane pozyskiwania**: polecenia sterowania (.ingest wbudowany) zawierający dane wewnątrzpasmowe jest przeznaczony do testowania zapytań ad-hoc.
+  * **Wbudowane pozyskiwania**: polecenia sterowania (.ingest wbudowany) zawierający dane wewnątrzpasmowe jest przeznaczony dla ad hoc do celów testowych.
 
   * **Pozyskiwanie z kwerendy**: polecenia sterowania (.set, .set lub dołączania, .set lub zastępowanie), który wskazuje na wyniki zapytania jest używana do generowania raportów lub małych tabel tymczasowych.
 

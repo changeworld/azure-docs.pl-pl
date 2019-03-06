@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0d42ff70bfaebf4d544fd81e6767592198ccef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205600"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431176"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Za pomocą łączników za pomocą usługi Azure AD Connect synchronizacji Menedżera usług
 
@@ -86,7 +86,7 @@ Aby rozwiązać ten problem, zaktualizuj konto użytkownika usług AD DS przy u�
 3. Wybierz łącznik usługi AD, który jest skonfigurowany do używania konta usługi AD DS.
 4. W obszarze akcji wybierz **właściwości**.
 5. W oknie podręcznym wybierz nawiązywanie połączenia z lasu usługi Active Directory:
-6. Nazwa lasu wskazuje odpowiedniego środowiska lokalnego usługi AD.
+6. Nazwa lasu wskazuje odpowiadającego lokalna Usługa AD.
 7. Nazwa użytkownika wskazuje, że konto usług AD DS, używane na potrzeby synchronizacji.
 8. Wprowadź nowe hasło konta usługi AD DS w pole tekstowe z hasłem ![platformy Azure AD Connect Sync szyfrowania klucza narzędzia](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Kliknij przycisk OK, aby zapisać nowe hasło, a następnie uruchom ponownie usługi synchronizacji, aby usunąć stare hasło z pamięci podręcznej.

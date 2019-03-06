@@ -9,12 +9,12 @@ author: brjohnstmsft
 ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314231"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453494"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpieczeń dla wyników przycinania w usłudze Azure Search
 
@@ -111,7 +111,7 @@ Aby uzyskać szczegółowe informacje o Dodawanie lub aktualizowanie dokumentów
    
 ## <a name="apply-the-security-filter"></a>Zastosuj filtr zabezpieczeń
 
-Aby przyciąć dokumentów na podstawie `group_ids` dostępu, należy wydać zapytania wyszukiwania z `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtr, gdzie "group_id1 group_id2..." grup, do których należy wydawcy żądania wyszukiwania.
+Aby przyciąć dokumentów na podstawie `group_ids` dostępu, należy wydać zapytania wyszukiwania z `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtr, gdzie "group_id1 group_id2..." to grupy, do których należy wydawcy żądania wyszukiwania.
 Ten filtr dopasowuje wszystkie dokumenty, dla którego `group_ids` pole zawiera jeden z identyfikatorów danego.
 Aby uzyskać szczegółowe informacje na wyszukiwanie dokumentów za pomocą usługi Azure Search, możesz przeczytać [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Należy pamiętać, że w tym przykładzie przedstawiono sposób wyszukiwania dokumentów za pomocą żądania POST.
@@ -152,7 +152,7 @@ Pobieraj dokumenty Wstecz, gdzie `group_ids` zawiera "group_id1" lub "group_id2"
 ```
 ## <a name="conclusion"></a>Podsumowanie
 
-Jest to, jak możesz filtrować wyniki na podstawie tożsamości użytkownika i usługa Azure Search `search.in()` funkcji. Ta funkcja służy do przekazywania identyfikatorów jednostki dla użytkownika do dopasowywania identyfikatorów jednostki skojarzone z każdym dokumencie docelowym. Podczas obsługi żądania wyszukiwania `search.in` funkcja filtruje wyniki wyszukiwania, dla których żadna z podmiotami zabezpieczeń użytkownika nie ma dostępu do odczytu. Identyfikatory jednostki może reprezentować elementów, takich jak grupy zabezpieczeń, ról lub nawet tożsamości przez użytkownika.
+Jest to, jak możesz filtrować wyniki na podstawie tożsamości użytkownika i usługa Azure Search `search.in()` funkcji. Funkcja ta jest przydatna do przekazania w identyfikatorach zasady dla użytkownika do dopasowywania identyfikatorów jednostki skojarzone z każdym dokumencie docelowym. Podczas obsługi żądania wyszukiwania `search.in` funkcja filtruje wyniki wyszukiwania, dla których żadna z podmiotami zabezpieczeń użytkownika nie ma dostępu do odczytu. Identyfikatory jednostki może reprezentować elementów, takich jak grupy zabezpieczeń, ról lub nawet tożsamości przez użytkownika.
  
 ## <a name="see-also"></a>Zobacz także
 

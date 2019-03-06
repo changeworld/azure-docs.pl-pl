@@ -1,5 +1,5 @@
 ---
-title: Uzyskaj pomoc dotyczącą dostęp i w usłudze Azure Active Directory za pomocą portalu MyApps | Dokumentacja firmy Microsoft
+title: Uzyskaj pomoc dotyczącą otwieranie i korzystanie z portalu MyApps — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Pomoc dotycząca logowania się w usłudze i wykonywanie typowych zadań w panelu dostępu.
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64090e67c7bdc019498d35d7e9f5dfc8402ea57e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e35cc4d5500cdfda0af4e130928434af34b1497f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175766"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449788"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Rozwiązywanie problemów z usługą dostępu do i korzystania z portalu MyApps
 

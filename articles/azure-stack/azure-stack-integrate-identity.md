@@ -6,29 +6,19 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 01/23/19
-ms.openlocfilehash: 86a7f98f8232d4fb3e915efee6d9b53f1fae6e7e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737709"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410285"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
-Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
-
-W poniższej tabeli przedstawiono różnice między tożsamości dwie opcje:
-
-||Połączenia z Internetem|Połączenie z Internetem|
-|---------|---------|---------|
-|Rozliczenia|Musi być pojemności<br> Umowy Enterprise Agreement (EA) tylko|Pojemność i płatność za użycie<br>EA lub dostawcy rozwiązań w chmurze (CSP)|
-|Tożsamość|Musi być usług AD FS|Azure AD lub AD FS|
-|Portal Marketplace |Obsługiwane<br>BYOL licencjonowania|Obsługiwane<br>BYOL licencjonowania|
-|Rejestracja|Wymagane, wymaga nośnik wymienny<br> i oddzielnych podłączonego urządzenia.|Automatyczne|
-|Poprawek i aktualizacji|Wymagane, wymaga nośnik wymienny<br> i oddzielnych podłączonego urządzenia.|Pakiet aktualizacji, które mogą być pobierane bezpośrednio<br> z Internetu do usługi Azure Stack.|
+Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. W przypadku połączonych można wybrać usługi Azure AD lub AD FS. Odłączonego scenariuszu obsługiwane są tylko usługi AD FS.
 
 > [!IMPORTANT]
 > Nie można przełączyć dostawcę tożsamości, bez konieczności ponownego wdrażania całe rozwiązanie usługi Azure Stack.
@@ -43,7 +33,7 @@ Uwierzytelnianie jest częścią tożsamości. Do zarządzania rolą na podstawi
 
 Istniejące usługi AD FS jest konto usługi tokenu zabezpieczającego (STS), która wysyła oświadczenia do usługi Azure Stack usług AD FS (zasób usługi STS). W usłudze Azure Stack usługa automation tworzy relacji zaufania dostawcy oświadczeń z punktem końcowym metadanych dla istniejących usług AD FS.
 
-W istniejących usługach AD FS można skonfigurować zaufanie jednostki uzależnionej. Ten krok nie jest wykonywane przez automatyzację i musi zostać skonfigurowane przez operatora. Punkt końcowy metadanych usługi Azure Stack jest udokumentowany w pliku AzureStackStampDeploymentInfo.JSON lub za pośrednictwem uprzywilejowanych punktu końcowego, uruchamiając polecenie `Get-AzureStackInfo`.
+W istniejących usługach AD FS można skonfigurować zaufanie jednostki uzależnionej. Ten krok nie jest wykonywane przez automatyzację i musi zostać skonfigurowane przez operatora. Punkt końcowy usługi Azure Stack VIP dla usług AD FS można utworzyć za pomocą wzorca `https://adfs.<Region>.<ExternalFQDN>/`.
 
 Konfiguracji jednostki uzależnionej zaufania strony wymaga skonfigurowania reguły przekształcania oświadczeń, które są dostarczane przez firmę Microsoft.
 

@@ -1,27 +1,27 @@
 ---
-title: 'Szybki start: Przesyłanie przepływu pracy przy użyciu wielu danych wejściowych — Microsoft Genomics'
+title: Przesyłanie przepływu pracy przy użyciu wielu danych wejściowych — Microsoft Genomics
 titleSuffix: Azure
-description: W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
+description: W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli plik wejściowy to wiele plików FASTQ lub BAM pliki pochodzące z tej samej próbki. Już masz zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
 services: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1007d81a73ce9f183f997354188e534274b2fe95
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 6d7ce959c92755a1da9eca0b069ebb7a8269e0a6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730366"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450723"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Przesyłanie przepływu pracy przy użyciu wielu danych wejściowych z tej samej próbki
 
-Ten poradnik Szybki start przedstawia sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli plik wejściowy to wiele plików FASTQ lub BAM **pochodzących z tej samej próbki**. Na przykład w przypadku uruchomienia **tej samej próbki** w wielu pasmach w sekwenserze mógłby on zwrócić parę plików FASTQ dla każdego pasma. Zamiast łączyć te pliki FASTQ przed dopasowywaniem i wywoływaniem wariantów, można bezpośrednio przesłać wszystkie te dane wejściowe do klienta `msgen`. Dane wyjściowe z klienta `msgen` stanowiłyby **pojedynczy zestaw** plików, obejmujący pliki bam, bai i vcf. 
+W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli plik wejściowy to wiele plików FASTQ lub BAM **pochodzące z tej samej próbki**. Na przykład w przypadku uruchomienia **tej samej próbki** w wielu pasmach w sekwenserze mógłby on zwrócić parę plików FASTQ dla każdego pasma. Zamiast łączyć te pliki FASTQ przed dopasowywaniem i wywoływaniem wariantów, można bezpośrednio przesłać wszystkie te dane wejściowe do klienta `msgen`. Dane wyjściowe z klienta `msgen` stanowiłyby **pojedynczy zestaw** plików, obejmujący pliki bam, bai i vcf. 
 
 Należy jednak pamiętać, że **nie można** mieszać plików FASTQ i BAM podczas tego samego przesyłania. Ponadto **nie** można przesłać wielu plików FASTQ ani BAM od wielu osób. 
 
-W tym artykule założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Po pomyślnym przesłaniu przepływu pracy przy użyciu podanych przykładowych danych masz wszystko gotowe, aby kontynuować pracę z tym poradnikiem Szybki start. 
+W tym artykule założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
 
 
 ## <a name="multiple-bam-files"></a>Wiele plików BAM
@@ -154,5 +154,5 @@ output_storage_account_container: outputs
 
 Prześlij plik `config.txt` przy użyciu tego wywołania: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przekazano wiele plików BAM lub sparowanych plików FASTQ do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby uzyskać więcej informacji o przesyłaniu przepływów pracy i innych poleceniach, których możesz użyć wraz z usługą Microsoft Genomics, zobacz [często zadawane pytania](frequently-asked-questions-genomics.md). 

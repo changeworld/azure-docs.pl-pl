@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: fab5d69239c420c394645cef632d119848d0f4c4
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 64829cad24d7f436b8539659dc1f0c6ef6ed4da4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818837"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404777"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w usłudze Azure Data Factory
 
@@ -313,7 +313,7 @@ Można utworzyć potoku, aby wyczyścić stare lub wygasłe plików przy użyciu
         },
         "type": "AzureBlob",
         "typeProperties": {
-            "fileName": "",
+            "fileName": "*",
             "folderPath": "mycontainer",
             "modifiedDatetimeEnd": "2018-01-01T00:00:00.000Z"
         }
@@ -563,6 +563,11 @@ Zestaw danych jako miejsce docelowe danych używane przez działanie kopiowania.
     }
 }
 ```
+## <a name="known-limitation"></a>Znane ograniczenia
+
+-   Usuń działanie nie obsługuje usuwania listy folderów, opisanego przez symbol wieloznaczny.
+
+-   Korzystając z filtru atrybutu pliku: modifiedDatetimeStart i modifiedDatetimeEnd, aby wybrać pliki do usunięcia, upewnij się ustawić "nazwa_pliku": "*" w zestawie danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

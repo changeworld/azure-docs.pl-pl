@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b283f2691d2cb3135007a752348a8d9759e870f5
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214167"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455925"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie usługi Azure Monitor dzienniki wielodostępnych aplikacji SaaS usługi SQL Database
 
@@ -57,7 +57,7 @@ Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics
 
 1. Teraz uruchom generator obciążenia, aby uruchomić symulowane obciążenia na wszystkich dzierżaw.
 
-    a. Ustaw **$DemoScenario = 2**, _obciążenia o normalnym natężeniu Generuj (o 30 jednostek DTU)_.
+    a. Ustaw **$DemoScenario = 2**, _obciążenia o normalnym natężeniu Generuj (około 30 jednostek DTU)_.
 
     b. Aby uruchomić skrypt, naciśnij klawisz F5.
 

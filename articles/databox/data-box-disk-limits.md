@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 6a7f7943e9d567a953c0e21697dfe4fdedd6e8f0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 70a611f6a9b52ba6a4c904cc4cfa9bc8f0b4df8e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744793"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409588"
 ---
 # <a name="azure-data-box-disk-limits"></a>Ogranicza dysku Azure Data Box
 
 
-Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania dysku systemu Microsoft Azure Data Box. 
+Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania dysku systemu Microsoft Azure Data Box.
 
 ## <a name="data-box-service-limits"></a>Limity usługi pole danych
 
- - Usługa Data Box jest dostępna tylko w USA, Europa, Kanadzie i Australii we wszystkich regionach platformy Azure dla chmury publicznej platformy Azure.
+ - Usługa Data Box jest dostępna w regionach platformy Azure, na liście [dostępność w poszczególnych regionach](data-box-disk-overview.md#region-availability).
  - Pojedynczego konta magazynu jest obsługiwana przy użyciu dysku Data Box.
 
 ## <a name="data-box-disk-performance"></a>Wydajność dysku pole danych
@@ -44,12 +44,17 @@ Aby uzyskać najnowsze informacje o limitach magazynu platformy Azure i najlepsz
 
 ## <a name="data-upload-caveats"></a>Przekazywanie danych do zastrzeżenia
 
-- Nie Kopiuj danych bezpośrednio do dysków. Kopiowanie danych do wstępnie utworzonego *BlockBlob* i *PageBlob* folderów.
+- Nie Kopiuj danych bezpośrednio do dysków. Kopiowanie danych do wstępnie utworzonego *BlockBlob*,*PageBlob*, i *AzureFile* folderów.
 - Folder w węźle *BlockBlob* i *PageBlob* jest kontenerem. Na przykład kontenery są tworzone jako *BlockBlob/kontenera* i *PageBlob/kontenera*.
 - Jeśli masz istniejący obiekt platformy Azure (np. obiekt blob) w chmurze o tej samej nazwie jako obiektu, które są kopiowane dysku Data Box spowoduje zastąpienie plików w chmurze.
 - Każdy plik zapisywane *BlockBlob* i *PageBlob* akcji jest przekazywany jako blokowe obiekty blob i stronicowych obiektów blob odpowiednio.
 - Dowolne puste hierarchii katalogów (bez żadnych plików) utworzone w ramach *BlockBlob* i *PageBlob* folderów nie zostało załadowane.
 - Jeśli występują błędy podczas przekazywania danych na platformie Azure, w dzienniku błędów jest tworzony w docelowym koncie magazynu. Ścieżka do tego dziennika błędów jest dostępna w portalu, po zakończeniu przekazywania i przejrzeć dziennik podjęcia akcji naprawczej. Nie należy usuwać dane ze źródła bez weryfikowania przekazane dane.
+- Jeśli określono dysków zarządzanych w kolejności, przejrzyj następujące dodatkowe kwestie:
+
+    - Użytkownik może mieć tylko jeden dysk zarządzany o określonej nazwie w grupie zasobów we wszystkich folderach precreated i we wszystkich dysku Data Box. Oznacza to, że wirtualne dyski twarde przekazany do folderów precreated powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa jest niezgodna już istniejącego dysku zarządzanego w grupie zasobów. Jeśli wirtualne dyski twarde mają takie same nazwy, tylko jeden wirtualny dysk twardy jest konwertowany na dysk zarządzany o tej nazwie. Inne dyski VHD są ładowane jako stronicowe obiekty BLOB konta magazynu przejściowego.
+    - Zawsze Kopiuj wirtualne dyski twarde do jednego z precreated folderów. W przypadku kopiowania wirtualnych dysków twardych poza te foldery lub w folderze, który został utworzony, wirtualne dyski twarde są przekazywane do konta usługi Azure Storage jako stronicowe obiekty BLOB i dyski zarządzane nie.
+    - Do utworzenia dysków zarządzanych można przekazać tylko stałych dysków VHD. Dynamicznych wirtualnych dysków twardych, różnicowych wirtualnych dysków twardych lub dysk VHDX pliki nie są obsługiwane.
 
 ## <a name="azure-storage-account-size-limits"></a>Limity rozmiaru konta usługi Azure storage
 
@@ -67,16 +72,26 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 | Typ obiektu platformy Azure | Limit domyślny                                             |
 |-------------------|-----------------------------------------------------------|
 | Blokowy obiekt blob        | ~ 4.75 TiB                                                 |
-| Stronicowy obiekt blob         | 8 TiB <br> (Każdy plik przekazany w formacie stronicowych obiektów Blob musi być 512 bajtów wyrównane (całkowitą wielokrotnością), w przeciwnym wypadku przekazywania nie powiedzie się. <br> VHD i VHDX są 512 bajtów wyrównane). |
+| Stronicowy obiekt blob         | 8 TiB <br> (Każdy plik przekazany w formacie stronicowy obiekt Blob musi być 512 bajtów wyrównane, inne przekazywanie nie powiodło się. <br> Dysk VHD i VHDX są 512 bajtów wyrównane). |
+|Azure Files        | 1 TiB <br> Maksymalnie z rozmiar udziału wynosi 5 TiB     |
+| Dyski zarządzane     |4 TiB <br> Aby uzyskać więcej informacji o wielkości i ograniczeń zobacz: <li>[Wartości docelowe skalowalności dysków zarządzanych](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)
+</li>|
 
 
-## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Usługa Azure blokowych obiektów blob i stronicowych obiektów blob, konwencje nazewnictwa
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure blokowych obiektów blob, stronicowych obiektów blob i konwencje nazewnictwa plików
 
 | Jednostka                                       | Konwencja                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nazwy kontenerów dla blokowych obiektów blob i stronicowych obiektów blob | Musi być prawidłową nazwą DNS, który składa się z 3 do 63 znaków. <br>  Musi zaczynać się literą lub cyfrą. <br> Może zawierać tylko małe litery, cyfry i znaki łącznika (-). <br> Bezpośrednio przed łącznikiem (-) i bezpośrednio po nim musi znajdować się cyfra lub litera. <br> Nazwy nie mogą zawierać sąsiadujących ze sobą łączników. |
+| Nazwy kontenerów dla blokowych obiektów blob i stronicowych obiektów blob <br> Nazwy udziału plików dla usługi Azure Files | Musi być prawidłową nazwą DNS, który składa się z 3 do 63 znaków. <br>  Musi zaczynać się literą lub cyfrą. <br> Może zawierać tylko małe litery, cyfry i znaki łącznika (-). <br> Bezpośrednio przed łącznikiem (-) i bezpośrednio po nim musi znajdować się cyfra lub litera. <br> Nazwy nie mogą zawierać sąsiadujących ze sobą łączników. |
+| Nazwy katalogów i plików dla usługi Azure files     |<li> Zachowywanie, bez uwzględniania wielkości liter i nie może przekraczać 255 znaków długości. </li><li> Nie może kończyć się ukośnikiem (/). </li><li>Jeśli nie dostarczono, zostaną automatycznie usunięte. </li><li> Następujące znaki nie są dozwolone: "" \ /: | < > * ?`</li><li> Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki. </li><li> Niedozwolone znaki ścieżki adresu URL nie są dozwolone. Punkty kodowe, takich jak \uE000 nie są prawidłowymi znakami Unicode. Niektóre znaki ASCII lub Unicode, takie jak znaki kontrolne (\u0081 0x00 do 0x1F itp.), również nie są dozwolone. Zasady dotyczące Unicode ciągów w HTTP/1.1 znajduje się dokumencie RFC 2616 2.2 sekcji: Podstawowe zasady i RFC 3987. </li><li> Następujące nazwy plików nie są dozwolone: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, znak kropki (.) i kropka dwa znaki (.).</li>|
 | Nazwy blokowych i stronicowych obiektów blob      | W nazwach obiektów blob jest rozróżniana wielkość liter. Mogą zawierać dowolną kombinację znaków. <br> Nazwa obiektu blob musi zawierać od 1 do 1024 znaków. <br> Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki. <br>Liczba segmentów ścieżki w nazwie obiektu blob nie może przekraczać 254. Segment ścieżki to ciąg znajdujący się pomiędzy następującymi po sobie znakami ogranicznika (na przykład ukośnikami „/”), co odpowiada nazwie katalogu wirtualnego. |
 
+## <a name="managed-disk-naming-conventions"></a>Konwencje nazewnictwa dysku zarządzanego
+
+| Jednostka | Konwencja                                             |
+|-------------------|-----------------------------------------------------------|
+| Nazwy dysku zarządzanego       | <li> Nazwa musi być 1 do 80 znaków. </li><li> Nazwa musi zaczynać się literą lub cyfrą, kończyć literą, cyfrą lub znakiem podkreślenia. </li><li> Nazwa może zawierać tylko litery, cyfry, podkreślenia, kropki lub łączniki. </li><li>   Nazwa nie powinien mieć miejsca do magazynowania lub `/`.                                              |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Przegląd [wymagania systemowe urządzenia Data Box](data-box-system-requirements.md)
+
+- Przegląd [wymagania systemowe urządzenia Data Box](data-box-system-requirements.md)

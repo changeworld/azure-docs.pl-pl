@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d3a02a850059dc96e4e4ba306fed7cded2f7dd7d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259755"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454191"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Wyświetl miesięczne szacowane trendu kosztów laboratorium Azure DevTest Labs
 Funkcja zarządzania kosztami DevTest Labs pomaga śledzić koszty środowiska laboratoryjnego. W tym artykule przedstawiono sposób użycia **miesięczne szacowane trendu kosztów** wykres, aby wyświetlić bieżący miesiąc kalendarza szacowany koszt od początku i przewidywany koszt koniec miesiąca dla bieżącego miesiąca kalendarzowego. W tym artykule również pokazano, jak w lepszym zarządzaniu kosztami laboratorium, ustawiając wydatków celów i progów, gdy osiągnięty wyzwalacza usługi DevTest Labs zgłosić wyników.
@@ -76,8 +76,8 @@ DevTest Labs pozwala lepiej zarządzać kosztami w środowisku laboratoryjnym, u
       - **Naprawiono**: elementy docelowe kosztów są śledzone dla zakresu dat, określ daty rozpoczęcia i zakończenia. Zwykle to może odpowiadać, o ile projekt jest zaplanowane do uruchomienia.
    - Określ **docelowe koszt**. Na przykład może to być ile plan do wydania na tym środowisku laboratoryjnym w przedziale czasu, który został zdefiniowany.
    - Zaznacz, aby włączyć lub wyłączyć wszelkie próg ma zgłoszone — w przyrostach co 25% — do 125% z określonym **docelowe koszt**.
-      - **Powiadom**: po spełnieniu tego progu, zostanie wyświetlone powiadomienie, należy określić adres URL elementu webhook.
-      - **Vykreslit v**: po spełnieniu tego progu, wyniki są oznaczane na wykresach na wykres trendu kosztów, który można wyświetlić, zgodnie z opisem w [wyświetlania wykresu trendu kosztów szacowany miesięczny](#viewing-the-monthly-estimated-cost-trend-chart).
+      - **Powiadom**: Po spełnieniu tego progu, otrzymasz powiadomienie, należy określić adres URL elementu webhook.
+      - **Vykreslit v**: Po spełnieniu tego progu, wyniki są oznaczane na wykresach na wykres trendu kosztów, który można wyświetlić, zgodnie z opisem w [wyświetlania wykresu trendu kosztów szacowany miesięczny](#viewing-the-monthly-estimated-cost-trend-chart).
    - Jeśli zdecydujesz się **powiadamiania** po osiągnięciu wartości progowej, należy określić adres URL elementu webhook. W obszarze integracji kosztów, wybierz **kliknij tutaj, aby dodać integracji**.
 
       Wprowadź adres URL elementu Webhook w okienku Konfiguracja powiadomień, a następnie wybierz pozycję **OK**.

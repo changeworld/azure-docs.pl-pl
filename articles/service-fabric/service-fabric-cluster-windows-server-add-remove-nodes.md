@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 69680331bdad0faa36cb3df6117baf8b358da132
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e9b87c19977fe35132d80729810c3a0547c486fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251023"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446116"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Dodawanie lub usuwanie węzłów do klastra usługi Service Fabric autonomicznego w systemie Windows Server
 Po utworzeniu [utworzony klaster usługi Service Fabric autonomiczne maszyny z systemem Windows Server](service-fabric-cluster-creation-for-windows-server.md), może zmienić Twoje potrzeby (biznesowe) i konieczne będzie dodawać lub usuwać węzły do klastra. Ten artykuł zawiera szczegółowy opis kroków, aby to osiągnąć. Należy pamiętać, że dodawania i usuwania węzłów funkcji nie jest obsługiwany w klastrach rozwoju lokalnego.
@@ -38,7 +38,7 @@ Po utworzeniu [utworzony klaster usługi Service Fabric autonomiczne maszyny z s
     ```
     Po zakończeniu działania skryptu uruchamiania można sprawdzić, czy nowy węzeł został dodany, uruchamiając [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) polecenia cmdlet.
 
-7. W celu zapewnienia spójności w różnych węzłach w klastrze, należy zainicjować uaktualnienie konfiguracji. Uruchom [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) Pobierz najnowszy plik konfiguracji i Dodaj węzeł nowo dodane do sekcji "Węzły". Zalecane jest również zawsze mieć najnowsze dostępne w przypadku, że konieczne ponowne wdrożenie klastra z taką samą konfiguracją konfiguracji klastra.
+7. W celu zapewnienia spójności w różnych węzłach w klastrze, należy zainicjować uaktualnienie konfiguracji. Uruchom [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) Pobierz najnowszy plik konfiguracji i Dodaj węzeł nowo dodane do sekcji "Węzły". Zalecane jest również zawsze mieć najnowsze dostępne w przypadku, że będzie konieczne ponowne wdrożenie klastra z taką samą konfiguracją konfiguracji klastra.
 
     ```
         {

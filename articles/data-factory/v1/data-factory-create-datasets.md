@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811090"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433437"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -238,7 +238,7 @@ W poniższej tabeli opisano właściwości, które można użyć w sekcji dostę
 | frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Yes |Nie dotyczy |
 | interval |Określa mnożnik częstotliwości.<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany. Na przykład, jeśli potrzebujesz zestawu danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/>Należy pamiętać, że jeśli określisz **częstotliwość** jako **minutę**, należy ustawić interwał nie może być mniej niż 15. |Yes |Nie dotyczy |
 | Styl |Określa, czy wycinek powinny być tworzone na początku lub końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Jeśli **częstotliwość** ustawiono **miesiąca**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na ostatni dzień miesiąca. Jeśli **styl** ustawiono **StartOfInterval**, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli **częstotliwość** jest ustawiona na **dzień**, i **styl** ustawiono **EndOfInterval**, wycinek jest generowany w ciągu ostatniej godziny dnia.<br/><br/>Jeśli **częstotliwość** ustawiono **godzinę**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 - 14: 00, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
-| anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/>Należy pamiętać o tym, jeśli ta propoerty części daty, które są bardziej szczegółowe niż określoną częstotliwością, bardziej szczegółową części są ignorowane. Na przykład jeśli **interwał** jest **co godzinę** (frequency: hour, interval: 1), a **anchorDateTime** zawiera **minuty i sekundy**, a następnie minuty i sekundy części **anchorDateTime** są ignorowane. |Nie |01/01/0001 |
+| anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/>Należy pamiętać, że jeśli ta właściwość ma części daty, które są bardziej szczegółowe niż określoną częstotliwością, części bardziej szczegółowe są ignorowane. Na przykład jeśli **interwał** jest **co godzinę** (frequency: hour, interval: 1), a **anchorDateTime** zawiera **minuty i sekundy**, a następnie minuty i sekundy części **anchorDateTime** są ignorowane. |Nie |01/01/0001 |
 | offset |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/>Należy pamiętać, że jeśli oba **anchorDateTime** i **przesunięcie** są określone, wynik jest połączone shift. |Nie |Nie dotyczy |
 
 ### <a name="offset-example"></a>przykład przesunięcia

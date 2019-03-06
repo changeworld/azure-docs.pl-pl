@@ -1,6 +1,6 @@
 ---
-title: Na użytek urządzenia Data Box i innych metod wprowadzania w trybie offline do usługi Azure File Sync.
-description: Obsługuje proces i najlepsze rozwiązania, aby umożliwić migrację zgodne zbiorcze synchronizacji.
+title: Przeprowadzić migrację danych do usługi Azure File Sync za pomocą usługi Azure Data Box i innymi metodami
+description: Migracja danych zbiorczego w sposób, który jest zgodny z usługi Azure File Sync.
 services: storage
 author: fauhse
 ms.service: storage
@@ -8,86 +8,83 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 6781ce4a3cf5f6f883678ac848162790d45a5a0f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 3b286bbe2c246345bf6acd84a4fc0c400451c706
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669809"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445351"
 ---
-# <a name="migrate-to-azure-file-sync"></a>Migracja do usługi Azure File Sync
-Dostępnych jest kilka opcji, aby przejść do usługi Azure File Sync:
+# <a name="migrate-bulk-data-to-azure-file-sync"></a>Migracja danych zbiorczo do usługi Azure File Sync
+Zbiorcze danych można migrować do usługi Azure File Sync na dwa sposoby:
 
-### <a name="uploading-files-via-azure-file-sync"></a>Przekazywanie plików za pomocą usługi Azure File Sync
-Jest to najprostsza opcja do przenoszenia plików lokalnie do wersji Windows Server 2012 R2 lub nowszej i zainstalować agenta usługi Azure File Sync. Po skonfigurowaniu synchronizacji przekazać pliki z serwera. Firma Microsoft napotykasz prędkości średniej przekazywania obecnie we wszystkich naszych klientów 1 TB, o co 2 dni.
-Należy wziąć pod uwagę [przepustowości harmonogram](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter) aby upewnić się, Twój serwer jest dobre dla obywateli w centrum danych.
+* **Przekazywanie plików za pomocą usługi Azure File Sync.** Jest to najprostsza metoda. Przenieś swoje pliki lokalnie do wersji Windows Server 2012 R2 lub nowszej, a następnie zainstaluj agenta usługi Azure File Sync. Po skonfigurowaniu synchronizacji plików zostanie przekazany z serwera. (Naszych klientów obecnie doświadczenie prędkości średniej przekazywania 1 TiB o określony na 2 dni). Aby upewnić się, że serwer nie używa zbyt dużej ilości przepustowości dla centrum danych, możesz chcieć skonfigurować [przepustowości harmonogram](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter).
+* **Transfer plików w trybie offline.** Jeśli nie masz wystarczającą przepustowość nie można przekazać pliki na platformie Azure w rozsądnym czasie. Wyzwanie polega na synchronizacji początkowej całego zestawu plików. Aby stawić czoła temu wyzwaniu, użycie narzędzi migracji w trybie offline zbiorcze takich jak [rodziny Azure Data Box](https://azure.microsoft.com/services/storage/databox). 
 
-### <a name="offline-bulk-transfer"></a>Przeniesienia zbiorczego w trybie offline
-Podczas przekazywania na pewno jest to najprostsza opcja, może nie działać dla Ciebie Jeśli dostępną przepustowość nie pozwoli na synchronizowanie plików na platformę Azure w rozsądnym czasie. Wezwanie do pokonania tutaj jest synchronizacja początkowa całego zestawu plików. Następnie usługi Azure File Sync będzie tylko przenosić zmiany, w jakiej występują w przestrzeni nazw, co zwykle zużywa znacznie mniej przepustowości.
-Aby wyeliminować to żądanie przekazywanie początkowej, narzędzi migracji zbiorczego w trybie offline, takich jak Azure [rodziny urządzenia Data Box](https://azure.microsoft.com/services/storage/databox) mogą być używane. Następujący artykuł koncentruje się na temat procesu, które należy wykonać, aby korzystać z migracji w trybie offline w sposób zgodny usługi Azure File Sync. Będzie on opisano najlepsze rozwiązania, które mogą pomóc uniknąć konfliktów plików i zachować swoje listy ACL plików i folderów i sygnatury czasowe, po włączeniu synchronizacji.
+W tym artykule opisano sposób migracji plików w trybie offline w sposób, który jest zgodny z usługi Azure File Sync. Wykonaj te instrukcje, aby uniknąć konfliktów plików i zachowanie usługi plików i listy kontroli dostępu folderu (kontroli dostępu ACL) i sygnatury czasowe, po włączeniu synchronizacji.
 
-### <a name="online-migration-tools"></a>Narzędzia migracji w trybie online
-Z poniższą procedurą nie działa tylko dla urządzenia Data Box. Działa to w przypadku dowolnego narzędzia do migracji w trybie offline (na przykład urządzenia Data Box) lub online narzędzi, takich jak narzędzia AzCopy, Robocopy lub innych firm i usługi. Dlatego niezależnie od metody rozwiązywania wyzwanie przekazywanie początkowej jest nadal ważna, wykonaj kroki opisane poniżej, korzystanie z tych narzędzi w synchronizacji sposób zgodne.
+## <a name="online-migration-tools"></a>Narzędzia migracji w trybie online
+Ten proces opisano w tym artykule działa nie tylko dla urządzenia Data Box, ale także inne narzędzia migracji w trybie offline. Działa także dla narzędzia online, takich jak narzędzia AzCopy, Robocopy, lub partnera narzędzi i usług. Jednak przezwyciężyć początkowego przesłać żądanie, wykonaj kroki opisane w tym artykule, aby użyć tych narzędzi w sposób, który jest zgodny z usługi Azure File Sync.
 
 
-## <a name="offline-data-transfer-benefits"></a>Korzyści transferu danych w trybie offline
-Najważniejsze zalety migracji w trybie offline, korzystając z urządzenia Data Box są następujące:
+## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Zalety używania narzędzia do przenoszenia danych w trybie offline
+Poniżej przedstawiono główne korzyści z używania narzędzie do transferu takich jak urządzenia Data Box dla migracji w trybie offline:
 
-- Podczas migracji plików na platformę Azure za pośrednictwem procesu przeniesienia zbiorczego w trybie offline, takich jak pole danych, nie trzeba przekazać wszystkie pliki z serwera za pośrednictwem sieci. Dla dużych przestrzeni nazw może to oznaczać znaczne oszczędności przepustowości sieci i czas.
-- Gdy możesz użyć usługi Azure File Sync, a następnie niezależnie od tego trybu transportu używane (urządzenia Data Box, Azure Import itp.), serwer na żywo tylko służy do przekazywania plików, które zostały zmienione, ponieważ dostarczone dane na platformę Azure.
-- Usługa Azure File Sync zapewnia, że listy ACL plików i folderów są synchronizowane także — nawet wtedy, gdy produkt migracji zbiorczego w trybie offline nie transportu list ACL.
-- Korzystając z usługi Azure Data Box i usługi Azure File Sync, brak przestojów. Transfer danych na platformę Azure za pomocą urządzenia Data Box sprawia, że efektywne wykorzystanie przepustowości sieci przy jednoczesnym zachowaniu jakości pliku. Również zapewnia przestrzeń nazw aktualne, przekazując tylko te pliki, które uległy zmianie od czasu urządzenia Data Box zostało wysłane.
+- Nie masz do przekazania wszystkich plików za pośrednictwem sieci. Dla dużych przestrzeni nazw to narzędzie można zapisać znaczące przepustowości oraz czas.
+- Gdy używasz usługi Azure File Sync, niezależnie od tego, w których narzędzie do transferu używasz (urządzenia Data Box, usługa Azure Import/Export itd.), serwer na żywo wysyła tylko te pliki, które zmieniają się po przeniesieniu danych do platformy Azure.
+- Usługa Azure File Sync synchronizuje listy ACL plików i folderów, nawet wtedy, gdy narzędzie do migracji w trybie offline zbiorczego nie transportować list ACL.
+- Urządzenie Data Box i usługi Azure File Sync wymagają bez przestojów. Podczas transferu danych na platformę Azure za pomocą urządzenia Data Box efektywnie używać przepustowości sieci i zachować wierność pliku. Możesz również przestrzeni nazw na bieżąco, przekazując tylko te pliki, które zmieniają się po przeniesieniu danych do platformy Azure.
 
-## <a name="plan-your-offline-data-transfer"></a>Planowanie transferu danych w trybie offline
-Przed rozpoczęciem należy przejrzeć następujące informacje:
+## <a name="prerequisites-for-the-offline-data-transfer"></a>Wymagania wstępne dotyczące transferu danych w trybie offline
+Przed rozpoczęciem transferu danych w trybie offline:
 
-- Wykonaj migrację zbiorczo do jednego lub wielu udziałów plików platformy Azure, przed włączeniem synchronizacji za pomocą usługi Azure File Sync.
-- Jeśli planujesz używać urządzenia Data Box do zbiorczego migracji: Przegląd [wymagania wstępne dotyczące wdrażania dla urządzenia Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
-- Planowanie topologii końcowego usługi Azure File Sync: [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
-- Wybieranie konta magazynu platformy Azure, który będzie przechowywać udziałów plików, które mają być synchronizowane ze. Upewnij się, że migrację zbiorcze stanie się tymczasowe przemieszczania udziałów w ramach tego samego konta magazynu. Zbiorcze migracji można włączyć tylko przy użyciu ostatecznego — a udziałem przemieszczania znajdujących się w tym samym koncie magazynu.
-- Migracji zbiorcze być wykorzystywane tylko w przypadku, gdy utworzysz nową relację synchronizacji z lokalizacją serwera. Nie można włączyć migracji zbiorcze za pomocą istniejącej relacji synchronizacji.
+- Migruj dane zbiorczo do jednego lub wielu udziałów plików platformy Azure, przed włączeniem synchronizacji za pomocą usługi Azure File Sync.
+- Jeśli planujesz używać urządzenia Data Box do zbiorczego migracji, zapoznaj się z [wymagania wstępne dotyczące wdrażania dla urządzenia Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
+- Planowanie topologii końcowego usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md).
+- Wybierz konto usługi Azure Storage lub konta, które będą przechowywane udziałów plików, które mają być synchronizowane ze. Migruj dane zbiorczo do tymczasowego przemieszczania udziałów, które znajdują się w tym samym koncie magazynu lub konta. Można użyć końcowy udziału i przemieszczania udziału, które znajdują się w tym samym koncie magazynu.
+- Utwórz nową relację synchronizacji z lokalizacją serwera. Za pomocą istniejącą relację synchronizacji nie można migrować dane zbiorcze.
 
-## <a name="offline-data-transfer-process"></a>Proces transferu danych w trybie offline
-W tej sekcji opisano proces konfigurowania usługi Azure File Sync w sposób zgodny z narzędzia migracji zbiorcze, takie jak Azure Data Box.
+## <a name="process-for-offline-data-transfer"></a>Proces transferu danych w trybie offline
+Poniżej przedstawiono sposób konfigurowania usługi Azure File Sync w sposób, który jest zgodny z narzędzia migracji zbiorcze, takie jak Azure Data Box:
 
-![Wizualizacja kroki procesu, który również jest omówiona szczegółowo w następujący akapit](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
+![Diagram przedstawiający sposób konfigurowania usługi Azure File Sync](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
 | Krok | Szczegół |
 |---|---------------------------------------------------------------------------------------|
-| ![Krok 1 procesu](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamówienie usługi Data Box](../../databox/data-box-deploy-ordered.md). Istnieją [kilku ofert w ramach rodziny urządzenia Data Box](https://azure.microsoft.com/services/storage/databox/data) do potrzeb. Odbieranie usługi Data Box i postępuj zgodnie z urządzenia Data Box [dokumentacji, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box). Upewnij się, że dane zostały skopiowane do tej ścieżki UNC, na urządzenie Data Box: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>` gdzie `ShareName` to nazwa udziału przemieszczania. Urządzenie Data Box można wysyłać do platformy Azure. |
-| ![Proces krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Poczekaj, aż pliki pojawiają się w udziałów plików platformy Azure, który wyznaczony jako tymczasowy przemieszczania udziałów. **Nie włączaj synchronizację w tych udziałach!** |
-| ![Proces krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Utwórz nowy udział, który jest pusty dla każdego udziału plików, które urządzenia Data Box utworzone dla Ciebie. Upewnij się, że ten nowy udział w tym samym koncie magazynu, udziału urządzenia Data Box. [Jak utworzyć nowy udział plików platformy Azure](storage-how-to-create-file-share.md). |
-| ![Proces krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Tworzenie grupy synchronizacji](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) w usłudze synchronizacji magazynu i odwołanie do pustego udziału jako punktu końcowego w chmurze. Powtórz ten krok dla każdego udziału plików urządzenia Data Box. Przegląd [wdrożenia usługi Azure File Sync](storage-sync-files-deployment-guide.md) przewodnika i wykonaj kroki wymagane do skonfigurowania usługi Azure File Sync. |
-| ![Proces krok 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Dodawanie katalogu serwera na żywo jako punkt końcowy serwera](storage-sync-files-deployment-guide.md#create-a-server-endpoint). Określ w procesie już przeniesionych plików na platformę Azure i odwoływać się do akcji przejściowej. Jest możliwość Włączanie lub wyłączanie obsługi warstw zgodnie z potrzebami w chmurze. Podczas tworzenia punktu końcowego serwera na serwerze na żywo, należy odwoływać się do tymczasowej udziału. Włącz "W trybie Offline Transfer danych" (obraz poniżej) w nowym bloku punktu końcowego serwera, a następnie Odwołaj przejściowym udziału, który musi znajdować się w tym samym koncie magazynu jako punkt końcowy w chmurze. Lista dostępnych udziałów są filtrowane według konta magazynu i udziałów, które nie są już synchronizuje. |
+| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamówienie usługi Data Box](../../databox/data-box-deploy-ordered.md). Urządzenie Data Box oferty rodziny [kilka produktów](https://azure.microsoft.com/services/storage/databox/data) stosownie do potrzeb. Gdy pojawi się usługi Data Box, postępuj zgodnie z jego [dokumentacji, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do ścieżki UNC na urządzenie Data Box: *\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>*. W tym miejscu *ShareName* to nazwa udziału przemieszczania. Urządzenie Data Box można wysyłać do platformy Azure. |
+| ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Poczekaj, aż pliki pojawiają się w udziałów plików platformy Azure, wybranych przez Ciebie jako tymczasowy udziały przemieszczania. *Nie włączaj synchronizację w tych udziałach.* |
+| ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Utwórz nowy pusty udział dla każdego udziału plików, które urządzenia Data Box utworzone dla Ciebie. Ten nowy udział powinien być na tym samym koncie magazynu, udziału urządzenia Data Box. [Jak utworzyć nowy udział plików platformy Azure](storage-how-to-create-file-share.md). |
+| ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Tworzenie grupy synchronizacji](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) w usłudze synchronizacji magazynu. Odwołanie do pustego udziału jako punktu końcowego w chmurze. Powtórz ten krok dla każdego udziału plików urządzenia Data Box. [Konfigurowanie usługi Azure File Sync](storage-sync-files-deployment-guide.md). |
+| ![Krok 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Dodawanie katalogu serwera na żywo jako punkt końcowy serwera](storage-sync-files-deployment-guide.md#create-a-server-endpoint). W procesie Określ, przeniesionych plików na platformę Azure i odwoływać się do akcji przejściowej. Można włączyć lub wyłączyć obsługi warstw zgodnie z potrzebami w chmurze. Podczas tworzenia punktu końcowego serwera na serwerze na żywo odwoływać się do tymczasowej udziału. Na **Dodaj punkt końcowy serwera** bloku, w obszarze **transferu danych w trybie Offline**, wybierz opcję **włączone**, a następnie wybierz pozycję udział przemieszczania, który musi znajdować się w tym samym koncie magazynu jako chmury punkt końcowy. W tym miejscu listę dostępnych udziałów jest filtrowana według konta magazynu i udziałów, które nie są już synchronizowanie. |
 
-![Wizualizowanie interfejsu użytkownika witryny Azure portal, włączania trybu Offline transferu danych podczas tworzenia nowego punktu końcowego serwera.](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
+![Zrzut ekranu przedstawiający interfejs użytkownika witryny Azure portal pokazujący sposób umożliwia transfer danych w trybie offline podczas tworzenia nowego punktu końcowego serwera](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>Udział synchronizacji
-Po utworzeniu punktu końcowego serwera rozpocznie się synchronizacja. Dla każdego pliku, który nie istnieje na serwerze synchronizacji określi, jeśli ten plik już istnieje też w udziale tymczasowej, której urządzenia Data Box złożone pliki, a więc synchronizacji skopiuje plik z przemieszczania udziału, zamiast przekazywać go z serwera. Jeśli plik nie istnieje w udziale tymczasowej lub nowsza wersja jest dostępna na serwerze lokalnym, synchronizacja będzie Przekaż plik z serwera lokalnego.
+Po utworzeniu punktu końcowego serwera, rozpocznie się synchronizacja. Proces synchronizacji Określa, czy każdy plik na serwerze występuje także w tymczasowej udziału, w których urządzenie Data Box nadawane pliki. Jeśli plik istnieje procesu synchronizacji kopiuje plik z przemieszczania udziału, zamiast przekazywać go z serwera. Jeśli plik nie istnieje w udziale tymczasowej lub nowsza wersja jest dostępna na serwerze lokalnym, proces synchronizacji służy do przekazywania plików z serwera lokalnego.
 
 > [!IMPORTANT]
-> Tryb migracji zbiorczego można włączyć tylko podczas tworzenia punktu końcowego serwera. Po ustanowieniu punkt końcowy serwera nie istnieje obecnie sposób zintegrować zbiorcze dane zostały migrowane z już synchronizowanie serwera do przestrzeni nazw.
+> Tryb migracji zbiorczego można włączyć tylko wtedy, gdy tworzysz punkt końcowy serwera. Po ustaleniu punktu końcowego serwera nie można zintegrować zbiorczego, migracji danych z serwera już synchronizacji przestrzeni nazw.
 
 ## <a name="acls-and-timestamps-on-files-and-folders"></a>Listy kontroli dostępu i sygnatury czasowe dla plików i folderów
-Usługa Azure File Sync zapewnia, że listy ACL plików i folderów są synchronizowane z serwerem na żywo, nawet wtedy, gdy narzędzie migracji zbiorcze, który został użyty nie transportu list ACL początkowo. Oznacza to, że jest to poprawne przejściowym udziału nie zawiera żadnych list kontroli dostępu do plików i folderów. Po włączeniu funkcji migracji danych w trybie offline podczas tworzenia nowego punktu końcowego serwera, listy ACL zostaną zsynchronizowane w tym czasie dla wszystkich plików na serwerze. To samo dotyczy dla tworzenia — i zmodyfikować-sygnatur czasowych.
+Usługa Azure File Sync zapewnia, że listy ACL plików i folderów są synchronizowane z serwerem na żywo, nawet wtedy, gdy narzędzia migracji zbiorcze, którego używano początkowo nie transportować list ACL. W związku z tym przejściowym udziału nie musi zawierać wszystkie listy ACL dla plików i folderów. Po włączeniu funkcji migracji danych w trybie offline podczas tworzenia nowego punktu końcowego serwera, wszystkie listy ACL plików są synchronizowane na serwerze. Również są synchronizowane z nowo utworzonych lub zmodyfikowanych sygnatur czasowych.
 
 ## <a name="shape-of-the-namespace"></a>Kształt obszaru nazw
-Kształt obszaru nazw jest określany przez co znajduje się na serwerze po włączeniu synchronizacji. Jeśli pliki są usuwane z serwera lokalnego po urządzenia Data Box "-snapshot" i - migracji, a następnie pliki te nie zostać dostosowane do przestrzeni nazw na żywo, synchronizacji. Nadal będą w udziale przemieszczania, ale nigdy nie są kopiowane. Jest żądane zachowanie synchronizacji przechowuje przestrzeń nazw zgodnie z serwerem na żywo. Urządzenie Data Box "snapshot" jest po prostu przemieszczania podstaw związanym z kopiowaniem plików wydajne i nie urzędu dla kształtu na żywo przestrzeni nazw.
+Po włączeniu synchronizacji, zawartość serwera określa kształt obszaru nazw. Jeśli pliki zostaną usunięte z serwera lokalnego, po zakończeniu migawki urządzenia Data Box i migracji, pliki te nie przenoś do przestrzeni nazw na żywo, synchronizacji. Te komputery pozostaną w udziale przemieszczania, ale nie są one kopiowane. Jest to konieczne, ponieważ synchronizacja zapewnia przestrzeń nazw zgodnie z serwerem na żywo. Urządzenie Data Box *migawki* jest po prostu przemieszczania podstaw związanym z kopiowaniem plików wydajne. Nie ma uprawnienia dla kształtu na żywo przestrzeni nazw.
 
-## <a name="finishing-bulk-migration-and-clean-up"></a>Kończenie migracji zbiorcze i czyszczenia
-Poniższy zrzut ekranu przedstawiono bloku właściwości punktu końcowego serwera w witrynie Azure portal. W trybie offline sekcji transferu danych możesz obserwować stan procesu. Widoczna będzie albo "W toku" lub "Ukończone".
+## <a name="cleaning-up-after-bulk-migration"></a>Czyszczenie po migracji zbiorcze 
+Jako serwer zakończy synchronizację początkową przestrzeni nazw, pliki usługi Box danych migracji zbiorcze Użyj przejściowym udziału plików. Na **właściwości punktu końcowego serwera** bloku w witrynie Azure portal w **transferu danych w trybie Offline** sekcji stan zmieni się z **w toku** do **ukończone** . 
 
-Po ukończeniu jego synchronizacji początkowej całej przestrzeni nazw serwer będzie została zakończona, wykorzystując plik przemieszczania udziału za pomocą zbiorczego urządzenia Data Box migrowane pliki. Sprawdź we właściwościach punktu końcowego serwera transferu danych w trybie offline, który zmienia stan "Ukończone". W tym momencie możesz wyczyścić przejściowym udziału koszty:
+![Zrzut ekranu przedstawiający blok właściwości punktu końcowego serwera, gdzie znajdują się stan i Wyłącz formanty do transferu danych w trybie offline](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
 
-1. Odwołań "Wyłącz transferu danych w trybie offline" we właściwościach punktu końcowego serwera, gdy stan to "ukończone".
-2. Należy rozważyć usunięcie udziału przemieszczania koszty. Przejściowym udziału jest mało prawdopodobne zawierała plików i folderów ACL i jako takie jest ograniczone. Do wykonywania kopii zapasowych "punktu w czasie", zamiast tworzyć rzeczywistych [migawki udziału plików platformy Azure, synchronizowanie](storage-snapshots-files.md). Możesz [włączyć usługi Azure Backup do robienia migawek]( ../../backup/backup-azure-files.md) zgodnie z harmonogramem.
+Teraz możesz wyczyścić przejściowym udziału w celu obniżenia kosztów:
 
-![Wizualizowanie interfejsu użytkownika witryny Azure portal dla właściwości punktu końcowego serwera, na którym znajdują się stan i Wyłącz formantów w trybie Offline transferu danych.](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
+1. Na **właściwości punktu końcowego serwera** bloku, jeśli jest w stanie **Ukończono**, wybierz opcję **wyłączyć transferu danych w trybie offline**.
+2. Należy rozważyć usunięcie udziału tymczasowej w celu obniżenia kosztów. Przejściowym udziału prawdopodobnie nie zawiera listy ACL plików i folderów, dlatego nie jest to bardzo przydatne. Do celów tworzenia kopii zapasowych w momencie tworzenia rzeczywistych [migawki udziału plików platformy Azure, synchronizowanie](storage-snapshots-files.md). Możesz [skonfigurować usługę Azure Backup do robienia migawek]( ../../backup/backup-azure-files.md) zgodnie z harmonogramem.
 
-W tym trybie należy wyłączyć tylko w przypadku, gdy stan to "ukończone" lub naprawdę chcesz przerwać z powodu błędnej konfiguracji. Jeśli wyłączasz sposób środku tryb wdrożenia uzasadnione plików zostanie uruchomiona do przekazania z serwera, nawet jeśli przejściowym udziału jest nadal dostępna.
+Wyłącz tryb transferu danych w trybie offline, tylko wtedy, gdy stan **Ukończono** lub gdy chcesz anulować z powodu błędnej konfiguracji. Po wyłączeniu trybu podczas wdrażania plików rozpocznie się do przekazania z serwera, nawet jeśli przejściowym udziału jest nadal dostępna.
 
 > [!IMPORTANT]
-> Po wyłączeniu transferu danych w trybie offline nie ma możliwości jej włączenia, nawet jeśli przejściowym udziału z migracji zbiorczego jest nadal dostępna.
+> Po wyłączeniu trybu transferu danych w trybie offline, nie można włączyć ją ponownie, nawet jeśli przejściowym udziału z migracji zbiorczego jest nadal dostępna.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)

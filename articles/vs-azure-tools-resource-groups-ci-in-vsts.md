@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955171"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456350"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
-Do wdrożenia szablonu platformy Azure, wykonywania zadań w poszczególnych etapach: kopiowania kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
+Aby wdrożyć szablon platformy Azure, należy wykonać zadania w poszczególnych etapach: Kopiuj kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
 
 1. Dodaj pojedynczego kroku do potoku Twojej kompilacji, który uruchamia skrypt programu PowerShell, który znajduje się w projekcie wdrożenia grupy zasobów platformy Azure (wdrażanie AzureResourceGroup.ps1). Skrypt kopiuje artefakty, a następnie wdrażania szablonu.
 2. Dodaj wielu usługom DevOps platformy Azure kroków kompilacji, każdy z nich do wykonania zadania etapu.
@@ -136,7 +136,7 @@ Poniższe procedury opisują czynności niezbędne do skonfigurowania ciągłego
 
 1. Edytuj potoku kompilacji usługom DevOps platformy Azure, aby dodać dwa nowe kroki kompilacji. Wybierz proces kompilacji w ramach **definicje kompilacji** kategorii, a następnie wybierz **Edytuj** łącza.
    
-   ![Edytowanie definicji kompilacji][12]
+   ![Edytuj definicję kompilacji][12]
 2. Dodaj nowe kroki kompilacji do potoku kompilacji przy użyciu **Dodaj krok kompilacji...** Dodaj...
    
    ![Dodaj krok kompilacji][13]

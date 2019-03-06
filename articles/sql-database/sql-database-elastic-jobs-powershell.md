@@ -12,20 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dc9b58402ed0fcc48d60b51d30f891ffcadddbe0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472656"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315626"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Tworzenie i zarządzanie nimi zadania elastyczne bazy danych SQL przy użyciu programu PowerShell (wersja zapoznawcza)
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 Interfejsy API programu PowerShell dla **zadania Elastic Database** (w wersji zapoznawczej) pozwalają zdefiniować grupy baz danych, względem których będą wykonywane skryptów. W tym artykule pokazano, jak tworzyć i zarządzać nimi **zadania Elastic Database** przy użyciu poleceń cmdlet programu PowerShell. Zobacz [Przegląd zadań elastycznej](sql-database-elastic-jobs-overview.md). 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure. Bezpłatnej wersji próbnej, zobacz [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
@@ -34,9 +32,9 @@ Interfejsy API programu PowerShell dla **zadania Elastic Database** (w wersji za
 * **Zadania elastic Database** pakietami programu PowerShell: Zobacz [zadania instalowania elastycznych baz danych](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Wybierz swoją subskrypcję platformy Azure
-Aby wybrać subskrypcję należy Twojego identyfikatora subskrypcji (**- SubscriptionId**) lub Nazwa subskrypcji (**- SubscriptionName**). Jeśli masz wiele subskrypcji możesz uruchomić **Get-AzureRmSubscription** polecenia cmdlet i skopiować informacje o odpowiedniej subskrypcji, z wyniku ustawione. Po uzyskaniu informacji o subskrypcji, uruchom następujące polecenie cmdlet można ustawić tej subskrypcji jako wartość domyślna, czyli cel dla tworzenia zadania i zarządzać nimi:
+Aby wybrać subskrypcję należy Twojego identyfikatora subskrypcji (**- SubscriptionId**) lub Nazwa subskrypcji (**- SubscriptionName**). Jeśli masz wiele subskrypcji możesz uruchomić **Get AzSubscription** polecenia cmdlet i skopiować informacje o odpowiedniej subskrypcji, z wyniku ustawione. Po uzyskaniu informacji o subskrypcji, uruchom następujące polecenie cmdlet można ustawić tej subskrypcji jako wartość domyślna, czyli cel dla tworzenia zadania i zarządzać nimi:
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) jest zalecane w przypadku użycia do tworzenia i wykonywanie skryptów programu PowerShell dla zadania elastycznych baz danych.
 

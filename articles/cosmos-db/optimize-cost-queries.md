@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e6814224827aac0da9c6faf5108ecf585bae7c35
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457670"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445385"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optymalizuj koszt zapytania w usłudze Azure Cosmos DB
 
@@ -53,7 +53,7 @@ while (queryable.HasMoreResults)
 
 ## <a name="factors-influencing-request-unit-charge-for-a-query"></a>Czynniki wpływające na opłat za jednostkę żądania dla zapytania
 
-Jednostki żądań zapytań są zależne od szeregu czynników. Na przykład liczba elementów w usłudze Azure Cosmos załadowany/zwrócone, Liczba wyszukiwań względem indeksu, czas kompilacji zapytania szczegóły itp. Usługa Azure Cosmos DB gwarantuje tego samego zapytania podczas wykonywania na tych samych danych zużyje zawsze taką samą liczbę jednostek żądania, nawet w przypadku wykonania Powtórz tę procedurę. Profilu zapytania przy użyciu metryk wykonywania zapytania daje on dobry pogląd zasad jak upłynęły jednostek żądania.  
+Jednostki żądań zapytań są zależne od szeregu czynników. Na przykład liczba elementów w usłudze Azure Cosmos załadowany/zwrócone, Liczba wyszukiwań względem indeksu, kompilowanie zapytania czasu itp. szczegółowe informacje. Usługa Azure Cosmos DB gwarantuje tego samego zapytania podczas wykonywania na tych samych danych zużyje zawsze taką samą liczbę jednostek żądania, nawet w przypadku wykonania Powtórz tę procedurę. Profilu zapytania przy użyciu metryk wykonywania zapytania daje on dobry pogląd zasad jak upłynęły jednostek żądania.  
 
 W niektórych przypadkach może zostać wyświetlony ciąg 200 i 429 odpowiedzi oraz jednostki zmiennych wniosek stronicowane wykonywania zapytań, określonego, ponieważ kwerendy będą uruchamiane tak szybko, jak to możliwe, w oparciu o dostępne (RUS). Wykonywanie zapytania, Podziel na wielu stronach/rund między serwerem a klientem może zostać wyświetlony. Na przykład 10 000 elementów mogą być zwracane jako wiele stron, każdy obciążany obliczenia wykonywane dla tej strony. Jeśli suma, na tych stronach, powinna pojawić się taką samą liczbę jednostek zarezerwowanych podczas całego zapytania.  
 

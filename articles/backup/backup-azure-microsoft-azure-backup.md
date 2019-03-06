@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: b94d6bd9cc129d80f3ece82c13df375abecafd26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f81e7a0008c015c033d30045970fe1bd67597ff9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493440"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452202"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ W tym artykule opisano sposób przygotowania środowiska do tworzenia kopii zapa
 >
 >
 
-Serwera usługi Mab wdrożone w Maszynie wirtualnej platformy Azure można tworzyć kopie zapasowe maszyn wirtualnych na platformie Azure, ale powinny one znajdować się w tej samej domenie, aby umożliwić operację tworzenia kopii zapasowej. Proces tworzenia kopii maszyn wirtualnych platformy Azure pozostaje taki sam jak tworzenie kopii zapasowych maszyn wirtualnych w warstwie Premium, jednak wdrażania serwera usługi Mab na platformie Azure ma pewne ograniczenia. Aby uzyskać więcej informacji na temat ograniczeń zobacz [Program DPM jako maszynę wirtualną platformy Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
+Serwera usługi Mab wdrożone w Maszynie wirtualnej platformy Azure można tworzyć kopie zapasowe maszyn wirtualnych na platformie Azure, ale powinny one znajdować się w tej samej domenie, aby umożliwić operację tworzenia kopii zapasowej. Proces tworzenia kopii maszyn wirtualnych platformy Azure pozostaje taki sam jak wykonywanie kopii zapasowych maszyn wirtualnych w środowisku lokalnym, jednak wdrażania serwera usługi Mab na platformie Azure ma pewne ograniczenia. Aby uzyskać więcej informacji na temat ograniczeń zobacz [Program DPM jako maszynę wirtualną platformy Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
 > Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł zawiera informacje i procedury w celu przywrócenia maszyn wirtualnych wdrożonych przy użyciu modelu usługi Resource Manager.

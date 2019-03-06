@@ -1,18 +1,18 @@
 ---
 title: Usługa Azure Key Vault — jak używać usuwania nietrwałego za pomocą interfejsu wiersza polecenia
 description: Wielkość przykłady usuwania nietrwałego za pomocą wycinki kodu interfejsu wiersza polecenia
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: bryanla
-ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 5af9ac4b694eccddacebdf387992226930bf1125
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116727"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450288"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia
 
@@ -195,7 +195,7 @@ az keyvault secret recover --name SQLPassword --vault-name ContosoVault
 > [!IMPORTANT]
 > Trwałe usuwanie magazynu kluczy lub jeden zawartych w nim obiektów, spowoduje to trwałe usunięcie go, co oznacza, że nie będzie możliwe do odzyskania!
 
-Fuction przeczyszczania jest używany na stałe usunąć obiekt magazynu kluczy lub całego magazynu kluczy, który został wcześniej wszystkie usunięte nietrwale. Jak pokazano w poprzedniej sekcji, obiekty przechowywane w magazynie kluczy przy użyciu funkcji usuwania nietrwałego, włączone, można przejść przez różne stany:
+Funkcja przeczyszczania umożliwia trwałe usunięcie obiektu usługi key vault lub całego magazynu kluczy, który został wcześniej wszystkie usunięte nietrwale. Jak pokazano w poprzedniej sekcji, obiekty przechowywane w magazynie kluczy przy użyciu funkcji usuwania nietrwałego, włączone, można przejść przez różne stany:
 
 - **Aktywne**: przed usunięciem.
 - **Wszystkie usunięte nietrwale**: po jego usunięciu stanie się na liście i odzyskany do stanu aktywna.

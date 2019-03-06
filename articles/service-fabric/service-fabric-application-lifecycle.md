@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 1e714faa04717ac8e6687db3c074b8a77d649fb2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 65104503af2e177f1898d8509c2d82bd9b58c266
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217211"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446967"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Cykl życia aplikacji usługi Service Fabric
 Zgodnie z innymi platformami aplikacji w usłudze Azure Service Fabric zwykle odbywa się przez następujące fazy: projektowania, rozwoju, testowania, wdrażanie, uaktualnianie, obsługi i usuwania. Usługa Service Fabric zapewnia najwyższej jakości pomoc techniczna dla całego cyklu życia aplikacji z aplikacji w chmurze, od projektowania do wdrażania, zarządzania infrastrukturą i konserwacji do ostatecznego wycofania. Model usługi umożliwia kilku różnych ról niezależnie uczestniczyć w cyklu życia aplikacji. Ten artykuł zawiera omówienie interfejsów API i jak są one używane przez różne role, w fazach cyklu życia aplikacji usługi Service Fabric.
@@ -29,7 +29,7 @@ Zgodnie z innymi platformami aplikacji w usłudze Azure Service Fabric zwykle od
 ## <a name="service-model-roles"></a>Usługi modelu ról
 Role usługi w modelu są:
 
-* **Usługi dla deweloperów**: Rozwija modułowego i ogólny usług, które może być ponownie wiedząc i używany w wielu aplikacjach typu tej samej lub różnych typów. Na przykład usługa kolejki może służyć do tworzenia biletów aplikacji (Pomoc techniczna) lub aplikacji handlu elektronicznego (koszyka).
+* **Usługi dla deweloperów**: Rozwija modułowego i ogólny usług, które może być przeznaczenie i używany w wielu aplikacjach typu tej samej lub różnych typów. Na przykład usługa kolejki może służyć do tworzenia biletów aplikacji (Pomoc techniczna) lub aplikacji handlu elektronicznego (koszyka).
 * **Deweloper aplikacji**: Tworzy aplikacje dzięki integracji kolekcję usług, które spełniają pewne określone wymagania lub scenariuszy. Na przykład w witrynie sieci Web handlu elektronicznego może zintegrować "JSON bezstanowej frontonu usługi", "Usługa stanowa aukcji" i "Usługa stanowa kolejki" Tworzenie auctioning rozwiązania.
 * **Administrator aplikacji**: Podejmuje decyzje dotyczące konfiguracji aplikacji (wypełnianie za pomocą parametrów szablonu konfiguracji), wdrażania (mapowanie dostępnych zasobów i) i jakości usługi. Na przykład administrator aplikacji decyduje o języka ustawień regionalnych (w języku angielskim dla Stanów Zjednoczonych) lub w języku japońskim dla Japonii, na przykład aplikacji. Różne wdrożonej aplikacji może mieć różne ustawienia.
 * **Operator**: Wdraża aplikacje na podstawie konfiguracji aplikacji i wymaganiami określonymi przez administratora aplikacji. Na przykład operator aprowizuje i wdraża aplikację i gwarantuje, że jest on uruchomiony na platformie Azure. Operatory monitorować informacje o kondycji i wydajności aplikacji i obsługa infrastruktury fizycznej, zgodnie z potrzebami.

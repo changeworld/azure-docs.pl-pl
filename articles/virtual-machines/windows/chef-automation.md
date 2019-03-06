@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6659b49ecfbcb6bf571fccc258a65aa547f72f86
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663200"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453817"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -175,7 +175,7 @@ knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 Następnie [Pobierz i zainstaluj](https://downloads.chef.io/chef-workstation/) stacji roboczej programu Chef.
 Zainstaluj Chef stacji roboczej domyślnej lokalizacji. Ta instalacja może potrwać kilka minut.
 
-Na komputerze stacjonarnym zobaczysz "efektywna PowerShell", który jest załadowany za pomocą narzędzia, które będą potrzebne do interakcji z produktów Chef środowiska. PowerShell efektywna udostępnia nowe polecenia ad hoc, takich jak `chef-run` również jako tradycyjne CLI Chef, polecenia takie jak `chef`. Zobacz stacji roboczej programu Chef i narzędzia Chef z zainstalowaną wersją `chef -v`. Możesz również sprawdzić wersji stacji roboczej, wybierając pozycję "Dotyczące programu Chef stacji roboczej" z aplikacji stacji roboczej programu Chef.
+Na komputerze stacjonarnym zobaczysz "efektywna PowerShell", który jest załadowany za pomocą narzędzia, które będą potrzebne do interakcji z produktów Chef środowiska. PowerShell efektywna udostępnia nowe polecenia ad-hoc, takich jak `chef-run` również jako tradycyjne CLI Chef, polecenia takie jak `chef`. Zobacz stacji roboczej programu Chef i narzędzia Chef z zainstalowaną wersją `chef -v`. Możesz również sprawdzić wersji stacji roboczej, wybierając pozycję "Dotyczące programu Chef stacji roboczej" z aplikacji stacji roboczej programu Chef.
 
 `chef --version` powinny zostać zwrócone mniej więcej tak:
 

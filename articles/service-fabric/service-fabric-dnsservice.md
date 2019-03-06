@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b49df76bc5b9c4d5f469e702b65ffd5762e49a39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035932"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455840"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Usługa DNS w usłudze Azure Service Fabric
 Usługa DNS to opcjonalna usługa systemowa, możesz włączyć w klastrze, aby odkrywanie innych usług za pomocą protokołu DNS. 
@@ -53,7 +53,7 @@ Podczas tworzenia klastra przy użyciu portalu usługa DNS jest domyślnie włą
 Jeśli nie używasz portalu do tworzenia klastra lub Trwa aktualizowanie istniejącego klastra, należy włączyć usługę DNS w szablonie:
 
 - Aby wdrożyć nowy klaster, można użyć [przykładowe szablony](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) lub Utwórz własny szablon usługi Resource Manager. 
-- Aby zaktualizować istniejący klaster, możesz przejść do grupy zasobów klastra w portalu i kliknij przycisk **skrypt automatyzacji** do pracy z szablonu, który reprezentuje bieżący stan klastra i innych zasobów w grupie. Aby dowiedzieć się więcej, zobacz [wyeksportować szablon z grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group).
+- Aby zaktualizować istniejący klaster, możesz przejść do grupy zasobów klastra w portalu i kliknij przycisk **skrypt automatyzacji** do pracy z szablonu, który reprezentuje bieżący stan klastra i innych zasobów w grupie. Aby dowiedzieć się więcej, zobacz [wyeksportować szablon z grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
 
 Po utworzeniu szablonu, należy włączyć usługę DNS wykonując następujące kroki:
 

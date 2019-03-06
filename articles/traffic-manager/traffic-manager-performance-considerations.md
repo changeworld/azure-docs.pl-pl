@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 454d06912c34a07b0b2617936769888e92adaba1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257701"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453664"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Zagadnienia dotyczące wydajności dla usługi Traffic Manager
 
@@ -28,7 +28,7 @@ Masz wystąpień witryny sieci Web w regionach WestUS i Azja Wschodnia. Jedno z 
 
 Jedynie wpływ na wydajność usługi Traffic Manager może mieć w witrynie sieci Web jest początkowa wyszukiwania DNS. Żądanie DNS dla nazwy profilu usługi Traffic Manager jest obsługiwana przez główny serwer DNS firmy Microsoft, który hostuje strefy trafficmanager.net. Traffic Manager umożliwia wypełnienie i regularnie aktualizuje, głównych serwerów DNS firmy Microsoft opartych na zasadach usługi Traffic Manager i wyniki badania. Dlatego nawet w trakcie początkowego wyszukiwania DNS nie ma zapytań DNS są wysyłane do usługi Traffic Manager.
 
-Usługa Traffic Manager składa się z kilku składników: nazwa DNS, serwerów, usługi interfejsu API, warstwa magazynu i punkt końcowy usługi monitorowania. W przypadku awarii składnika Usługa Traffic Manager nie ma żadnego wpływu na nazwę DNS skojarzone z profilu usługi Traffic Manager. Rekordów na serwerach DNS firmy Microsoft pozostaną bez zmian. Jednak nie nawiązały monitorowania punktu końcowego i aktualizacji DNS. W związku z tym usługi Traffic Manager nie będzie mógł aktualizowanie systemu DNS, aby wskazywał lokacji trybu failover, gdy ulegnie awarii lokacji głównej.
+Usługa Traffic Manager składa się z kilku składników: Nazwy DNS serwerów, usługi interfejsu API, warstwa magazynu i punkt końcowy usługi monitorowania. W przypadku awarii składnika Usługa Traffic Manager nie ma żadnego wpływu na nazwę DNS skojarzone z profilu usługi Traffic Manager. Rekordów na serwerach DNS firmy Microsoft pozostaną bez zmian. Jednak nie nawiązały monitorowania punktu końcowego i aktualizacji DNS. W związku z tym usługi Traffic Manager nie będzie mógł aktualizowanie systemu DNS, aby wskazywał lokacji trybu failover, gdy ulegnie awarii lokacji głównej.
 
 Rozpoznawanie nazw DNS to szybka i wyniki są buforowane. Na serwerach DNS, którego klient używa do rozpoznawania nazw zależy od prędkości początkowej wyszukiwania DNS. Zazwyczaj klient można wykonać wyszukiwania DNS, w ramach ~ 50 ms. Wyniki wyszukiwania są buforowane na czas trwania DNS Time-to-live (TTL). Wartość domyślna TTL usługa Traffic Manager to 300 sekund.
 
@@ -58,7 +58,7 @@ Narzędzia te lokacje miary DNS opóźnienia i wyświetlania adresy IP rozwiąza
 
 * [Monitorowanie aplikacji syntetycznych urzędu certyfikacji](https://asm.ca.com/en/checkit.php)
 
-    Wcześniej znane jako narzędzia Watchmouse wyboru witryny sieci Web, ta lokacja pokazują czas rozpoznawania nazw DNS z wielu regionów geograficznych jednocześnie. Wprowadź adres URL, aby wyświetlić czas rozpoznawania nazw DNS, czas połączenia i szybkość, z kilku lokalizacjach geograficznych. Użyj tego testu, aby zobaczyć, które usługa hostowana jest zwracany w różnych lokalizacjach na całym świecie.
+    Wcześniej znane jako narzędzia myszy Obejrzyj wyboru witryny sieci Web, ta lokacja pokazują czas rozpoznawania nazw DNS z wielu regionów geograficznych jednocześnie. Wprowadź adres URL, aby wyświetlić czas rozpoznawania nazw DNS, czas połączenia i szybkość, z kilku lokalizacjach geograficznych. Użyj tego testu, aby zobaczyć, które usługa hostowana jest zwracany w różnych lokalizacjach na całym świecie.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 

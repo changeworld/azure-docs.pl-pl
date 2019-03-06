@@ -1,260 +1,258 @@
 ---
-title: Tworzenie kopii zapasowych plików i folderów przy użyciu agenta usługi Azure Backup
-description: Użyj agenta usługi Microsoft Azure Backup, aby utworzyć kopię zapasową Windows plików i folderów na platformie Azure. Utwórz magazyn usługi Recovery Services, zainstaluj agenta kopii zapasowej, definiowanie zasad tworzenia kopii zapasowej i uruchom tworzenie początkowej kopii zapasowej plików i folderów.
+title: Tworzenie kopii zapasowych maszyn Windows za pomocą agenta usług MARS kopia zapasowa Azure
+description: Tworzenie kopii zapasowych maszyn Windows przy użyciu agenta usługi Azure Backup Microsoft Recovery Services (MARS).
 services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/5/2018
+ms.date: 02/04/2019
 ms.author: raynew
-ms.openlocfilehash: 006d47d397bab0869ae8a75d6c17d239e71608c3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 5558fbc3ecaad2ae3ca7fce7da57b1f0fed9081b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310579"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451811"
 ---
-# <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Tworzenie kopii zapasowych systemu Windows Server lub Client na platformie Azure przy użyciu modelu wdrażania używającego usługi Resource Manager
-W tym artykule opisano sposób tworzenia kopii zapasowej systemu Windows Server (lub klienta Windows) plików i folderów na platformie Azure przy użyciu usługi Azure Backup przy użyciu modelu wdrażania usługi Resource Manager.
+# <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Tworzenie kopii zapasowych maszyn Windows za pomocą agenta usług MARS kopia zapasowa Azure
+
+W tym artykule wyjaśniono, jak tworzyć kopie zapasowe maszyn Windows przy użyciu [kopia zapasowa Azure](backup-overview.md) usługę i agenta usługi Microsoft Azure Recovery Services (MARS), znany także jako agenta usługi Azure Backup.
+
+W tym artykule omówiono sposób wykonywania następujących zadań: 
+
+
+> [!div class="checklist"]
+> * Sprawdzenie wymagań wstępnych i utworzyć magazyn usługi Recovery Services.
+> * Pobieranie i konfigurowanie agenta usług MARS
+> * Utworzenie zasad kopii zapasowych i harmonogramu. 
+> * Tworzenie kopii zapasowej, należy wykonać ad hoc.
+
+## <a name="about-the-mars-agent"></a>Temat agenta usług MARS
+
+Agenta usług MARS jest używany przez usługę Azure Backup do tworzenia kopii zapasowych plików, folderów i stanu systemu z maszyn lokalnych i maszyn wirtualnych platformy Azure do tworzenia kopii zapasowej magazynu usługi Recovery Services na platformie Azure. Agenta można uruchomić w następujący sposób:
+
+- Uruchom agenta bezpośrednio na maszynach Windows w środowisku lokalnym, tak aby ich kopię zapasową można wykonać bezpośrednio do tworzenia kopii zapasowej magazynu usługi Recovery Services na platformie Azure.
+- Uruchamianie agenta Azure maszyn wirtualnych z systemem Windows (side-by-side przy użyciu rozszerzenia kopii zapasowej maszyny Wirtualnej platformy Azure), aby utworzyć kopię zapasową określonych plików i folderów na maszynie Wirtualnej.
+- Uruchom agenta na Microsoft Azure Backup Server (MABS) lub programu System Center Data Protection - server Manager (DPM). W tym scenariuszu maszyn i obciążeń wykonać kopię zapasową serwera usługi Mab/DPM, a następnie serwera usługi Mab/DPM tworzy kopię zapasową do magazynu na platformie Azure przy użyciu agenta usług MARS.
+Co można utworzyć kopię, zależy od tego, gdzie agent jest zainstalowany.
+
+> [!NOTE]
+> Jest podstawową metodą tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu rozszerzenia usługi Azure Backup na maszynie Wirtualnej. To wykonuje kopię zapasową całej maszyny Wirtualnej. Można zainstalować i używać agenta usług MARS obok rozszerzenia, jeśli chcesz utworzyć kopię zapasową określonych plików i folderów na maszynie Wirtualnej. [Dowiedz się więcej](backup-architecture.md#architecture-direct-backup-of-azure-vms).
+
+
 
 ![Kroki procesu tworzenia kopii zapasowej](./media/backup-configure-vault/initial-backup-process.png)
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
-Aby utworzyć kopię zapasową serwera lub klienta na platformie Azure, potrzebne jest konto platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) w zaledwie kilka minut.
+
+- [Dowiedz się, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders) usługi Azure Backup tworzy kopię zapasową maszyn Windows za pomocą agenta usług MARS.
+- [Dowiedz się więcej o](backup-architecture.md#architecture-back-up-to-dpmmabs) architektura kopii zapasowych uruchamiania agenta usług MARS na serwerze pomocniczym serwera usługi Mab lub programu DPM.
+- [Przegląd](backup-support-matrix-mars-agent.md) elementy obsługiwane i co można utworzyć kopię za pomocą agenta usług MARS.
+- Sprawdź dostęp do Internetu na maszynach, które chcesz utworzyć kopię zapasową.
+- Aby utworzyć kopię zapasową serwera lub klienta na platformie Azure, potrzebne jest konto platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) w zaledwie kilka minut.
+
+
+### <a name="verify-internet-access"></a>Sprawdź dostęp do Internetu
+
+Jeśli komputer ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwer proxy zezwalać na te adresy URL: 
+
+- www.msftncsi.com
+- *.Microsoft.com
+- *.WindowsAzure.com
+- *.microsoftonline.com
+- *.windows.net
+
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
-Magazyn usługi Recovery Services jest jednostką, która przechowuje wszystkie kopie zapasowe i punkty odzyskiwania, które utworzyć wraz z upływem czasu. Magazyn usługi Recovery Services zawiera także zasady tworzenia kopii zapasowej stosowane do chronionych plików i folderów. Po utworzeniu magazynu usługi Recovery Services, należy również wybrać opcję nadmiarowości magazynu odpowiednie.
 
-### <a name="to-create-a-recovery-services-vault"></a>Aby utworzyć magazyn usługi Recovery Services
-1. Jeśli nie zostało to wcześniej zrobione, zaloguj się witryny [Azure Portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
-2. W menu Centrum kliknij pozycję **Wszystkie usługi**, na liście zasobów wpisz ciąg **Recovery Services**, a następnie kliknij pozycję **Magazyny usługi Recovery Services**.
+Magazyn usługi Recovery Services przechowuje kopie zapasowe i punkty odzyskiwania, które utworzyć wraz z upływem czasu i zawiera zasad tworzenia kopii zapasowej stosowane do kopii zapasowej maszyn. Utwórz magazyn w następujący sposób:
 
-    ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
+1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
+2. W polu wyszukiwania wpisz **usługi Recovery Services** i kliknij przycisk **Magazyny usługi Recovery Services**.
 
-    Jeśli w ramach subskrypcji istnieją magazyny usług odzyskiwania, zostaną one wyświetlone.
+    ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png)
 
-3. W menu **Magazyny usługi Recovery Services** kliknij pozycję **Dodaj**.
+3. Na **Magazyny usługi Recovery Services** menu, kliknij przycisk **+ Dodaj**.
 
     ![Tworzenie magazynu Usług odzyskiwania — krok 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-    Zostanie otwarty blok magazynu Usług odzyskiwania i pojawi się monit o podanie wartości w polach **Nazwa**, **Subskrypcja**, **Grupa zasobów** i **Lokalizacja**.
+4. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Nazwa musi być unikalna w tej subskrypcji platformy Azure. Wpisz nazwę o długości od 2 do 50 znaków. Musi ona rozpoczynać się od litery i może zawierać tylko litery, cyfry i łączniki.
+
+5. Wybierz subskrypcję platformy Azure, grupę zasobów i region geograficzny, w którym można utworzyć magazynu. Dane kopii zapasowej są wysyłane do magazynu. Następnie kliknij pozycję **Utwórz**.
 
     ![Tworzenie magazynu usługi Recovery Services — krok 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-4. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Nazwa musi być unikalna w tej subskrypcji platformy Azure. Wpisz nazwę o długości od 2 do 50 znaków. Musi ona rozpoczynać się od litery i może zawierać tylko litery, cyfry i łączniki.
+  Może potrwać kilka minut na utworzenie magazynu. Monitoruj powiadomienia o stanie wyświetlane w portalu. Po utworzeniu magazynu pojawi się na liście magazynów usługi Recovery Services. Jeśli po kilku minutach nie widzisz magazynu, kliknij przycisk **Odśwież**.
 
-5. W sekcji **Subskrypcja** użyj menu rozwijanego, aby wybrać subskrypcję platformy Azure. Jeśli używasz tylko jednej subskrypcji, zostanie ona wyświetlona i możesz przejść do następnego kroku. Jeśli nie masz pewności, której subskrypcji użyć, wybierz domyślną (lub sugerowaną). Większa liczba opcji do wyboru jest dostępna tylko w przypadku, gdy konto organizacji jest skojarzone z wieloma subskrypcjami platformy Azure.
+      ![Klikanie pozycji Odśwież](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
 
-6. W sekcji **Grupa zasobów**:
-
-    * Kliknij przycisk **wybierz istniejący...**  menu rozwijane, aby wyświetlić listę dostępnych grup zasobów.
-    Lub
-    * wybierz pozycję **Utwórz nową**, jeśli chcesz utworzyć nową grupę zasobów.
-
-  Pełne informacje na temat grup zasobów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-
-7. Kliknij pozycję **Lokalizacja**, aby wybrać region geograficzny magazynu. Ten wybór określa region geograficzny, do którego wysyłane są dane kopii zapasowej.
-
-8. W dolnej części bloku magazynu usług Recovery Services kliknij pozycję **Utwórz**.
-
-  Utworzenie magazynu usług Recovery Services może potrwać kilka minut. Monitoruj powiadomienia o stanie wyświetlane w prawej górnej części obszaru portalu. Po utworzeniu magazynu pojawi się on na liście magazynów Usług odzyskiwania. Jeśli po kilku minutach nie widzisz swojego magazynu, kliknij pozycję **Odśwież**.
-
-  ![Klikanie pozycji Odśwież](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
-
-  Po wyświetleniu magazynu na liście magazynów usług Recovery Services możesz rozpocząć ustawianie nadmiarowości przechowywania.
-
+  
 
 ### <a name="set-storage-redundancy"></a>Zestaw nadmiarowości magazynu
-Podczas tworzenia magazynu usługi Recovery Services określany jest sposób replikowania magazynu.
 
-1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn.
+Usługa Azure Backup automatycznie obsługuje magazynu dla magazynu. Należy określić sposób replikowania tego magazynu. 
 
-    ![Wybieranie nowego magazynu z listy magazynów usług Recovery Services](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
+1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn. W obszarze **ustawienia** kliknij **właściwości**.
+2. W **właściwości**w obszarze **konfiguracji kopii zapasowej**, kliknij przycisk **aktualizacji**.
 
-    Po zaznaczeniu magazyn usługi Recovery Services magazynu zwężenie bloku i **Przegląd** bloku (*mającego nazwę magazynu u góry*) i otwórz blok szczegółów magazynu.
-
-    ![Wyświetlanie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
-
-2. W nowym magazynie w obszarze **ustawienia** przejdź do sekcji **właściwości**.
-
-  **Właściwości** zostanie otwarty blok.
-
-3. W **właściwości** bloku kliknij **aktualizacji** w obszarze **konfiguracji kopii zapasowej** bloku. **Konfiguracji kopii zapasowej** zostanie otwarty blok.
+  
+4. Wybierz typ replikacji magazynu, a następnie kliknij przycisk **Zapisz**.
 
   ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. Wybierz odpowiednią opcję replikacji swojego magazynu, a następnie kliknij przycisk **Zapisz**.
+  - Zaleca się, jeśli używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych w dalszym ciągu używać ustawień domyślnych **magazynu geograficznie nadmiarowego** ustawienie.
+  - Jeśli nie używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, wybierz pozycję **Lokalnie nadmiarowy**, co zmniejszy koszty magazynów platformy Azure.
+  - Dowiedz się więcej o [geograficznie](../storage/common/storage-redundancy-grs.md) i [lokalnego](../storage/common/storage-redundancy-lrs.md) nadmiarowości.
 
-  ![Opcje konfiguracji usługi Storage](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+## <a name="download-the-mars-agent"></a>Pobierz agenta usług MARS
 
-  Domyślnie magazyn jest nadmiarowy geograficznie. Jeśli używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, kontynuuj korzystanie z magazynu **geograficznie nadmiarowego**. Jeśli nie używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, wybierz pozycję **Lokalnie nadmiarowy**, co zmniejszy koszty magazynów platformy Azure. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w tym [omówieniu nadmiarowości magazynu](../storage/common/storage-redundancy.md).
+Pobierz agenta usług MARS zainstalowany na maszynach, które chcesz utworzyć kopię zapasową.
 
-Teraz, po utworzeniu magazynu, przygotować infrastrukturę do tworzenia kopii zapasowych plików i folderów, pobieranie i instalowanie agenta usług odzyskiwania Microsoft Azure, pobierając poświadczenia magazynu i rejestrowaniu agenta z przy użyciu tych poświadczeń Magazyn.
+- Jeśli po zainstalowaniu agenta na maszynach, upewnij się, że używasz najnowszej wersji. 
+- Najnowsza wersja jest dostępna w portalu lub przy użyciu [pobieranie bezpośrednie](https://aka.ms/azurebackup_agent)
 
-## <a name="configure-the-vault"></a>Konfigurowanie magazynu
-
-1. W bloku Magazyn usługi Recovery Services (dla właśnie utworzonego magazynu) w sekcji Wprowadzenie kliknij pozycję **Kopia zapasowa**, a następnie w bloku **Wprowadzenie do kopii zapasowej** wybierz pozycję **Cel kopii zapasowej**.
+1. W magazynie w obszarze **wprowadzenie**, kliknij przycisk **kopii zapasowej**.
 
   ![Otwieranie bloku celu kopii zapasowej](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-  Zostanie otwarty blok **Cel kopii zapasowej**. Jeśli wcześniej skonfigurowano magazyn usługi Recovery Services, a następnie **cel kopii zapasowej** kliknięcie powoduje otwarcie bloków **kopii zapasowej** bloku magazyn usług odzyskiwania.
 
-  ![Otwieranie bloku celu kopii zapasowej](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
-
-2. Z menu **Gdzie działa Twoje obciążenie?** wybierz pozycję **Lokalnie**.
-
-  Pozycję **Lokalnie** trzeba wybrać, ponieważ Twój serwer lub komputer z systemem Windows jest maszyną fizyczną spoza platformy Azure.
-
-3. Z menu **Dla jakich elementów chcesz utworzyć kopię zapasową?** wybierz pozycję **Pliki i foldery**, a następnie kliknij przycisk **OK**.
+2. W **gdzie jest uruchomione Twoje obciążenie?**, wybierz opcję **On-premises**. Należy wybierz tę opcję, nawet jeśli chcesz zainstalować agenta MARS na Maszynie wirtualnej platformy Azure.
+3. W **jakich elementów chcesz utworzyć kopię zapasową?**, wybierz opcję **pliki i foldery** i/lub **stanu systemu**. Istnieje wiele innych opcji, ale są one obsługiwane tylko, jeśli korzystasz z pomocniczego serwera kopii zapasowych. Kliknij przycisk **przygotowanie infrastruktury**.
 
   ![Konfigurowanie plików i folderów](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-  Po kliknięciu przycisku OK obok pozycji **Cel kopii zapasowej** pojawi się znacznik wyboru i zostanie otwarty blok **Przygotowywanie infrastruktury**.
 
-  ![Cel kopii zapasowej został skonfigurowany, następnym krokiem jest przygotowanie infrastruktury](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
-
-4. W bloku **Przygotowywanie infrastruktury** kliknij pozycję **Pobierz agenta dla systemu Windows Server lub klienta systemu Windows**.
+4. Na **przygotowanie infrastruktury**w obszarze **agenta usługi Recovery Services Zainstaluj**, Pobierz agenta usług MARS.
 
   ![Przygotowywanie infrastruktury](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-  Jeśli używasz systemu Windows Server Essential, wybierz opcję pobrania agenta dla systemu Windows Server Essential. Zostanie wyświetlone menu rozwijane z monitem o uruchomienie lub zapisanie pliku MARSAgentInstaller.exe.
+5. W menu rozwijanym pobierania kliknij pozycję **Zapisz**. Domyślnie plik **MARSagentinstaller.exe** jest zapisywany w folderze Pobrane. 
+  
+6. Sprawdź **już albo Pobierz lub przy użyciu najnowszego agenta usług odzyskiwania**, a następnie Pobierz poświadczenia magazynu. 
+  ![Pobierz poświadczenia magazynu](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-  ![Okno dialogowe MARSAgentInstaller](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
-
-5. W menu rozwijanym pobierania kliknij pozycję **Zapisz**.
-
-  Domyślnie plik **MARSagentinstaller.exe** jest zapisywany w folderze Pobrane. Po ukończeniu pobierania pojawi się okno podręczne z pytaniem, czy chcesz uruchomić Instalatora, czy otworzyć folder.
-
-  ![Przygotowywanie infrastruktury](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
-
-  Nie musisz jeszcze instalować agenta. Agenta możesz zainstalować po pobraniu poświadczeń magazynu.
-
-6. W bloku **Przygotowywanie infrastruktury** kliknij pozycję **Pobierz**.
-
-  ![Pobieranie poświadczeń magazynu](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
-
-  Poświadczenia magazynu zostaną pobrane do folderu Pobrane. Po zakończeniu pobierania poświadczeń magazynu zobaczysz okno podręczne z pytaniem, czy chcesz otworzyć poświadczenia, czy je zapisać. Kliknij pozycję **Zapisz**. Jeśli przypadkowo klikniesz pozycję **Otwórz**, zaczekaj, aż działanie okna dialogowego, które spróbuje otworzyć poświadczenia magazynu, zakończy się niepowodzeniem. Poświadczeń magazynu nie da się otworzyć. Przejdź do następnego kroku. Poświadczenia magazynu znajdują się w folderze Pobrane.   
-
-  ![Zakończenie pobierania poświadczeń magazynu](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
-
-
-[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
+7. Kliknij pozycję **Zapisz**. Plik jest pobierany do folderu pobierania. Nie można otworzyć pliku poświadczeń magazynu. 
+    
+  
 
 ## <a name="install-and-register-the-agent"></a>Instalowanie i rejestrowanie agenta
 
-> [!NOTE]
-> Opcja włączania kopii zapasowych za pośrednictwem witryny Azure Portal jest jeszcze niedostępna. Do tworzenia kopii zapasowej plików i folderów należy używać agenta usług Microsoft Azure Recovery Services.
->
+1. Uruchom **MARSagentinstaller.exe** plik na komputerach, które chcesz utworzyć kopię zapasową.
+2. W Kreatorze instalacji agenta usług MARS > **ustawienia instalacji**, określ, w którym chcesz zainstalować agenta i lokalizację do użycia dla pamięci podręcznej. Następnie kliknij przycisk **Next** (Dalej).
+    - Usługa Azure Backup używa pamięci podręcznej do przechowywania migawki danych przed wysłaniem ich do platformy Azure.
+    - Lokalizacja pamięci podręcznej powinien mieć miejsca równa co najmniej 5% rozmiaru danych, które będzie można utworzyć kopię zapasową.
 
-1. Zlokalizuj i kliknij dwukrotnie plik **MARSagentinstaller.exe** w folderze Pobrane (lub innej lokalizacji).
+    ![Ustawienia instalacji Kreator MARS](./media/backup-configure-vault/mars1.png)
 
-  Instalator wyświetli serię komunikatów w miarę wypakowywania, instalowania i rejestrowania agenta usługi Recovery Services.
+2. W **konfigurację serwera Proxy**, określ, jak agenta uruchomionego na komputerze Windows połączy się z Internetem. Następnie kliknij przycisk **Next** (Dalej).
 
-  ![Uruchamianie Instalatora agenta usługi Recovery Services — poświadczenia](./media/backup-try-azure-backup-in-10-mins/mars-installer-registration.png)
+    - Jeśli używasz za pomocą niestandardowego serwera proxy, określ ustawienia serwera proxy i poświadczenia, jeśli to konieczne.
+    - Należy pamiętać, że agent musi mieć dostęp do [tych adresów URL](#verify-internet-access).
 
-2. Wykonaj kroki kreatora instalacji agenta usługi Microsoft Azure Recovery Services. Aby zakończyć pracę kreatora, wykonaj następujące czynności:
+    ![Dostęp do Internetu kreatora MARS](./media/backup-configure-vault/mars2.png)
 
-  * Wybierz lokalizację folderu instalacji i folderu pamięci podręcznej.
-  * Podaj informacje o serwerze proxy, jeśli korzystasz z niego do łączenia się z Internetem.
-  * Podaj swoją nazwę użytkownika i hasło, jeśli korzystasz z uwierzytelnionego serwera proxy.
-  * Udostępnianie pobranych poświadczeń magazynu
-  * Zapisz hasło szyfrowania w bezpiecznej lokalizacji.
+3. W **instalacji** Przejrzyj sprawdzania wymagań wstępnych, a następnie kliknij przycisk **zainstalować**.
+4. Po zainstalowaniu agenta kliknij **przejść do rejestracji**.
+5. W **kreatora rejestrowania serwera** > **identyfikacji magazynu**Wyszukaj i wybierz pobrany plik poświadczeń. Następnie kliknij przycisk **Next** (Dalej).
 
-  > [!NOTE]
-  > Jeśli utracisz lub zapomnisz hasło, firma Microsoft nie będzie mogła pomóc w odzyskaniu danych kopii zapasowej. Zapisz plik w bezpiecznej lokalizacji. Jest ono wymagane do przywrócenia kopii zapasowej.
-  >
-  >
+    ![Register — poświadczenia magazynu](./media/backup-configure-vault/register1.png)
 
-Agent jest teraz zainstalowany, a maszyna zarejestrowana w magazynie. Wszystko jest gotowe do skonfigurowania kopii zapasowej i zaplanowania jej tworzenia.
+6. W **ustawienie szyfrowania**, określ hasło, który będzie używany do szyfrowania i odszyfrowywania kopii zapasowych dla maszyny. 
+    
+    - Zapisz hasło szyfrowania w bezpiecznej lokalizacji.
+    - Jeśli utracisz lub zapomnisz hasło, Microsoft nie może odzyskać danych kopii zapasowej. Zapisz plik w bezpiecznej lokalizacji. Będziesz ich potrzebować do przywrócenia kopii zapasowej.
 
-## <a name="network-and-connectivity-requirements"></a>Wymagania dotyczące sieci i łączności
-
-Jeśli komputer/serwer proxy ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputer/serwer proxy są skonfigurowane i umożliwiają następujące adresy URL: <br>
-    1. www.msftncsi.com
-    2. *.Microsoft.com
-    3. *.WindowsAzure.com
-    4. *.microsoftonline.com
-    5. *.windows.net
+7. Kliknij przycisk **Zakończ**. Agent jest teraz zainstalowany, a maszyna zarejestrowana w magazynie. Wszystko jest gotowe do skonfigurowania kopii zapasowej i zaplanowania jej tworzenia.
 
 
-## <a name="create-the-backup-policy"></a>Tworzenie zasad kopii zapasowych
-Zasady kopii zapasowych jest harmonogram punktów odzyskiwania są pobierane i czas, w których punkty odzyskiwania są zachowywane. Agent Microsoft Azure Backup umożliwia tworzenie zasad kopii zapasowych plików i folderów.
+## <a name="create-a-backup-policy"></a>Tworzenie zasad kopii zapasowych
+Zasady kopii zapasowych określa, kiedy migawek danych do tworzenia punktów odzyskiwania i czas przechowywania punktów odzyskiwania. 
 
-### <a name="to-create-a-backup-schedule"></a>Aby utworzyć harmonogram tworzenia kopii zapasowych
+- Możesz skonfigurować zasady tworzenia kopii zapasowych za pomocą agenta usług MARS.
+- Usługa Azure Backup nie automatycznie uwzględnia czasu letniego (DST). Może to spowodować pewne rozbieżności między rzeczywisty czas i według harmonogramu wykonywania kopii zapasowej. 
 
-Ustaw harmonogram tworzenia kopii zapasowych na komputerze, który chcesz utworzyć kopię zapasową. Należy pamiętać, że czasu przeznaczonego na kopie zapasowe mogą się różnić od czas na komputerze lokalnym, ponieważ usługa Azure Backup nie przyjmuje czasu letniego (DST) do konta.
-1. Otwórz agenta usługi Microsoft Azure Backup. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
+Utwórz zasady w następujący sposób:
 
-    ![Uruchamianie agenta usługi Azure Backup](./media/backup-configure-vault/snap-in-search.png)
-2. Agenta kopii zapasowej **akcje** okienku kliknij **Zaplanuj wykonywanie kopii zapasowej** do uruchomienia Kreatora harmonogramu kopii zapasowej.
+1. Na każdym komputerze należy otworzyć agenta usług MARS. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
+2. W **akcje**, kliknij przycisk **Zaplanuj wykonywanie kopii zapasowej**.
 
     ![Planowanie tworzenia kopii zapasowej systemu Windows Server](./media/backup-configure-vault/schedule-first-backup.png)
 
-3. Na **wprowadzenie** strony Kreatora harmonogramu kopii zapasowej, kliknij przycisk **dalej**.
-4. Na **Wybieranie elementów do wykonywania kopii zapasowych** kliknij **Dodaj elementy**.
-
-  Zostanie otwarte okno dialogowe Wybieranie elementów.
-
-5. Wybierz pliki i foldery, które chcesz chronić, a następnie kliknij przycisk **OK**.
+3. W Kreatorze harmonogramu kopii zapasowej > **wprowadzenie**, kliknij przycisk **dalej**.
+4. W **Wybieranie elementów do wykonywania kopii zapasowych**, kliknij przycisk **Dodaj elementy**.
+5. W **wybierz elementy**, wybierz program do tworzenia kopii zapasowych. Następnie kliknij przycisk **OK**.
 6. W **Wybieranie elementów do wykonywania kopii zapasowych** kliknij **dalej**.
-7. Na **Określanie harmonogramu tworzenia kopii zapasowej** strony, określ harmonogram tworzenia kopii zapasowych i kliknij **dalej**.
+7. W **Określ harmonogram tworzenia kopii zapasowych** Określ, kiedy chcesz korzystać z kopii zapasowych codziennie lub co tydzień. Następnie kliknij przycisk **Next** (Dalej). 
 
-    Można zaplanować tworzenie kopii zapasowych codziennie (maksymalnie trzy razy) lub co tydzień.
+    - Punkt odzyskiwania jest tworzony, gdy jest wykonywana kopia zapasowa.
+    - Liczba punktów odzyskiwania utworzonych w środowisku jest zależny od harmonogramu tworzenia kopii zapasowych.
 
-    ![Elementy związane z tworzeniem kopii zapasowej systemu Windows Server](./media/backup-configure-vault/specify-backup-schedule-close.png)
+1. Można zaplanować codzienne kopie zapasowe, maksymalnie trzy razy dziennie. Na przykład na zrzucie ekranu przedstawiono dwa codzienne wykonywanie kopii zapasowych — jedną o północy, a jedna po godzinie 18: 00.
 
-   > [!NOTE]
-   > Aby uzyskać więcej informacji o sposobie określania harmonogramu tworzenia kopii zapasowych, zobacz artykuł [Use Azure Backup to replace your tape infrastructure](backup-azure-backup-cloud-as-tape.md) (Użycie usługi Azure Backup do zastąpienia infrastruktury taśm).
-   >
-   >
+    ![Dzienny harmonogram](./media/backup-configure-vault/day-schedule.png)
 
-8. Na **wybierz zasady przechowywania** wybierz zasady przechowywania określonej kopii zapasowej, a następnie kliknij przycisk **dalej**.
+9. Możesz uruchomić cotygodniowe kopie zapasowe za. Na przykład na zrzucie ekranu przedstawiono kopii zapasowych wykonanych każdej alternatywny niedziela & środa 9:30:00 i 1:00:00.
 
-    Zasady przechowywania określają czas trwania, którego kopia zapasowa jest przechowywana. Zamiast określać wspólne zasady dla wszystkich punktów kopii zapasowej, można określić różne zasady przechowywania w zależności od momentu tworzenia kopii zapasowej. Możliwe jest modyfikowanie, zgodnie z potrzebami, zasad przechowywania codziennych, cotygodniowych, comiesięcznych i corocznych kopii zapasowych.
-9. Na stronie Wybieranie typu początkowej kopii zapasowej wybierz typ początkowej kopii zapasowej. Pozostaw zaznaczoną opcję **Automatycznie przez sieć**, a następnie kliknij przycisk **Dalej**.
+    ![Harmonogram tygodniowy](./media/backup-configure-vault/week-schedule.png)  
 
-    Kopie zapasowe można tworzyć automatycznie za pośrednictwem sieci lub w trybie offline. W dalszej części tego artykułu opisano proces automatycznego tworzenia kopii zapasowych. Jeśli chcesz tworzyć kopie zapasowe w trybie offline, zapoznaj się z artykułem [Offline backup workflow in Azure Backup](backup-azure-backup-import-export.md) (Przepływ pracy tworzenia kopii zapasowej w trybie offline w usłudze Azure Backup), aby uzyskać dodatkowe informacje.
-10. Przejrzyj informacje na stronie Potwierdzenie, a następnie kliknij przycisk **Zakończ**.
+8. Na **wybierz zasady przechowywania** Określ, jak przechowywać historyczne kopie danych. Następnie kliknij przycisk **Next** (Dalej).
+
+
+    - Ustawienia przechowywania określ punkty odzyskiwania, które powinny być przechowywane i jak długo są przechowywane dla.
+    - Na przykład ustawiając dzienny ustawienia przechowywania, wskazujesz, czy w chwili określony do przechowywania codziennych najnowszego punktu odzyskiwania będą przechowywane przez określoną liczbę dni. Lub inny przykład można określić miesięczne zasady przechowywania, aby wskazać, że punkt odzyskiwania utworzony na 30 dnia każdego miesiąca powinny znajdować się w ciągu 12 miesięcy.
+    - Czas przechowywania punktu odzyskiwania dzienne i tygodniowe pokrywa się zazwyczaj z harmonogramu tworzenia kopii zapasowych. Co oznacza, że podczas tworzenia kopii zapasowej jest wyzwalane zgodnie z harmonogramem, punkt odzyskiwania utworzony przez tworzenie kopii zapasowej jest przechowywany na czas trwania czcionką codziennie lub co tydzień zasady przechowywania.
+    - Na przykład na poniższym zrzucie ekranu:
+        - Codzienne wykonywanie kopii zapasowych o północy i 18: 00 są utrzymywane przez siedem dni.
+        - Kopie zapasowe wykonane w sobotę o północy i 18: 00 są utrzymywane przez 4 tygodnie.
+        - Kopie zapasowe wykonane w sobotę w ostatnim tygodniu miesiąca o północy i 18: 00, są przechowywane w ciągu 12 miesięcy. — Kopie zapasowe wykonane w sobotę w ostatnim tygodniu marca są zachowywane przez okres 10 lat. 
+
+        ![Przykład przechowywania](./media/backup-configure-vault/retention-example.png)  
+
+11. W **wybierz typ początkowej kopii zapasowej** Określ sposób wykonania początkowej kopii zapasowej, za pośrednictwem sieci lub w trybie offline. Następnie kliknij przycisk **Next** (Dalej).
+
+
+10. W **potwierdzenie**, zapoznaj się z informacjami, a następnie kliknij przycisk **Zakończ**.
 11. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
 
+### <a name="perform-the-initial-backup-offline"></a>Wykonania początkowej kopii zapasowej w trybie offline
+
+Możesz uruchomić początkowej kopii zapasowej automatycznie za pośrednictwem sieci lub w trybie offline. Rozmieszczanie offline początkowa kopia zapasowa jest przydatne w przypadku dużych ilości danych, które wymagają dużej ilości przepustowości sieci do transferu. W trybie offline przeniesienia wykonaj następujące czynności:
+
+1. Piszesz dane kopii zapasowej do lokalizacji tymczasowej.
+2. Narzędzie AzureOfflineBackupDiskPrep Aby skopiować dane z lokalizacji tymczasowej do co najmniej jeden dysk SATA.
+3. Narzędzie tworzy zadanie usługi Azure Import. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) dotyczące usługi Azure import i eksport.
+4. Dyski SATA wysyła do centrum danych platformy Azure.
+5. W centrum danych dane dysku jest kopiowana do konta usługi Azure storage.
+6. Usługa Azure Backup kopiuje dane z konta magazynu do magazynu, a przyrostowych kopii zapasowych.
+
+[Dowiedz się więcej](backup-azure-backup-import-export.md) o rozmieszczania w trybie offline.
+
 ### <a name="enable-network-throttling"></a>Włącz ograniczanie przepustowości sieci
-Agenta usługi Microsoft Azure Backup umożliwia ograniczanie przepustowości sieci. Ograniczanie kontrolek z wykorzystaniem przepustowości sieci podczas transferu danych. Ten formant może być przydatne, jeśli chcesz utworzyć kopię zapasową danych podczas godzin pracy, ale nie chcesz, aby proces tworzenia kopii zapasowej kolidować z innym ruchem internetowym. Ograniczenie ma zastosowanie do kopii zapasowej i przywracania działania.
 
-> [!NOTE]
-> Ograniczanie przepustowości sieci nie jest dostępne w systemu Windows Server 2008 R2 z dodatkiem SP1, Windows Server 2008 z dodatkiem SP2 lub Windows 7 (za pomocą dodatków service pack). Sieć usługi Azure Backup funkcji ograniczania angażuje jakości usług (QoS) w lokalnym systemie operacyjnym. Chociaż usługa Azure Backup może chronić tych systemów operacyjnych, wersji QoS jest dostępny na tych platformach nie działa z ograniczanie przepustowości sieci w usłudze Azure Backup. Ograniczanie przepustowości sieci, mogą być używane na wszystkich innych [obsługiwane systemy operacyjne](backup-azure-backup-faq.md).
->
->
+Można kontrolować, jak przepustowość sieci jest używane przez agenta usług MARS, należy włączyć ograniczanie przepustowości sieci. Ograniczanie przepływności jest przydatne, jeśli potrzebujesz danych poza godzinami pracy, ale umożliwia kontrolowanie, ile przepustowości jest używany do tworzenia kopii zapasowych i przywracanie kopii zapasowej działania. 
 
-**Aby włączyć ograniczenie przepustowości sieci**
+- Sieć platformy Azure Backup ograniczania używa [jakości usług (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) w lokalnym systemie operacyjnym.
+- Ograniczania dla kopii zapasowej sieci jest dostępna w systemie Windows Server 2008 R2 lub nowszym i Windows 7 lub nowszy. Systemy operacyjne powinna być uruchomiona najnowszymi dodatkami service pack.
 
-1. W agencie programu Kopia zapasowa Microsoft Azure, kliknij przycisk **Zmień właściwości**.
+Włącz ograniczenie w następujący sposób:
 
-    ![Zmień właściwości](./media/backup-configure-vault/change-properties.png)
-2. Na **ograniczania** zaznacz **włączyć internetowe ograniczanie użycia przepustowości dla operacji tworzenia kopii zapasowej** pole wyboru.
+1. Agenta usług MARS kliknij **Zmień właściwości**.
+2. Na **ograniczania** karcie wyboru **włączyć internetowe ograniczanie użycia przepustowości dla operacji tworzenia kopii zapasowej**.
 
     ![Ograniczanie przepustowości sieci](./media/backup-configure-vault/throttling-dialog.png)
-3. Po włączeniu ograniczenia przepustowości, określ dozwolone przepustowości dla transferu danych kopii zapasowej podczas **godzin pracy** i **godziny wolne**.
+3. Określ dozwolone przepustowości podczas pracy i poza godzinami pracy. Wartości przepustowości, Rozpocznij na 512 KB/s i przejdź do 1,023 MB/s. Następnie kliknij przycisk **OK**.
 
-    Wartości przepustowości rozpocząć 512 kilobitów na sekundę (KB/s) i można przejść do 1,023 MB na sekundę (MB/s). Można również wyznaczyć rozpoczęcia i zakończenia dla **godzin pracy**, i dni tygodnia, dniach roboczych uważane. Godziny poza wyznaczonym pracą, którą godziny są traktowane jako innych niż godziny pracy.
-4. Kliknij przycisk **OK**.
+## <a name="run-an-ad-hoc-backup"></a>Uruchom tworzenie kopii zapasowej ad-hoc 
 
-### <a name="to-back-up-files-and-folders-for-the-first-time"></a>Aby utworzyć kopię zapasową plików i folderów po raz pierwszy
-1. Agenta kopii zapasowej, kliknij **Utwórz kopię zapasową teraz** aby zakończyć początkowe umieszczanie za pośrednictwem sieci.
+1. Agenta usług MARS kliknij **Utwórz kopię zapasową teraz**. To dotyczącego Replikacja początkowa przez sieć.
 
     ![Natychmiastowe tworzenie kopii zapasowej systemu Windows Server](./media/backup-configure-vault/backup-now.png)
-2. Na stronie Potwierdzenie przejrzyj ustawienia, które zostaną użyte przez Kreatora natychmiastowego tworzenia kopii zapasowej do utworzenia kopii zapasowej maszyny. Następnie kliknij pozycję **Utwórz kopię zapasową**.
-3. Kliknij przycisk **Zamknij**, aby zamknąć kreatora. Jeśli zrobisz to przed zakończeniem procesu tworzenia kopii zapasowej, kreator będzie nadal działał w tle.
+2. W **potwierdzenie**, przejrzyj ustawienia i kliknij przycisk **Utwórz kopię zapasową**.
+3. Kliknij przycisk **Zamknij**, aby zamknąć kreatora. Jeśli możesz to zrobić przed zakończeniem wykonywania kopii zapasowej, Kreator będzie nadal działać w tle.
 
 Po zakończeniu tworzenia początkowej kopii zapasowej w konsoli usługi Backup zostanie wyświetlony stan **Ukończono zadanie**.
 
-![Początkowa replikacja została zakończona](./media/backup-configure-vault/ircomplete.png)
-
-## <a name="questions"></a>Pytania?
-Jeśli masz pytania lub jeśli brakuje Ci jakiejś funkcji, [prześlij nam opinię](https://aka.ms/azurebackup_feedback).
-
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać dodatkowe informacje na temat tworzenia kopii zapasowych maszyn wirtualnych lub innych obciążeń zobacz:
 
-* Teraz, gdy utworzono kopię zapasową plików i folderów, możesz [zarządzać swoimi magazynami i serwerami](backup-azure-manage-windows-server.md).
-* Jeśli chcesz przywrócić kopię zapasową, w tym artykule znajdziesz informacje dotyczące [przywracania plików na maszynę z systemem Windows](backup-azure-restore-windows-server.md).
+[Dowiedz się, jak](backup-azure-restore-windows-server.md) przywracania plików.

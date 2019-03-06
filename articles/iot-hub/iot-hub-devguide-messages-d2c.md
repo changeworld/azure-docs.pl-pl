@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dd811a48d6f3f1061bad49a81b7e833dcb40e1e3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20e7f8f5d2c0eb9fbfb231adfd20ff54d9eda20a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241293"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404199"
 ---
-# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów wysyłać komunikaty urządzenie chmura do różnych punktów końcowych
+# <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów usługi IoT Hub wysyłanie komunikatów z urządzenia do chmury do różnych punktów końcowych
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -35,19 +35,39 @@ Centrum IoT hub ma domyślnego wbudowanych-w-punktu końcowego (**komunikaty/zda
 
 ### <a name="built-in-endpoint"></a>Wbudowany punkt końcowy
 
-Można użyć standardowego [integracji usługi Event Hubs i zestawy SDK](iot-hub-devguide-messages-read-builtin.md) do odbierania komunikatów z urządzenia do chmury z wbudowanego punktu końcowego (**komunikaty/zdarzenia**). Należy pamiętać, że po utworzeniu trasy dane przestaną docierać do wbudowanych-w-punktu końcowego, chyba że trasa służy do tego punktu końcowego.
+Można użyć standardowego [integracji usługi Event Hubs i zestawy SDK](iot-hub-devguide-messages-read-builtin.md) do odbierania komunikatów z urządzenia do chmury z wbudowanego punktu końcowego (**komunikaty/zdarzenia**). Po utworzeniu trasy dane przestaną docierać do wbudowanych-w-punktu końcowego, chyba że trasa służy do tego punktu końcowego.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Usługa IoT Hub obsługuje tylko, zapisywanie danych w usłudze Azure Blob Storage w [Apache Avro](http://avro.apache.org/) formatu. Usługa IoT Hub partii komunikatów i zapisuje dane do obiektu blob, zawsze, gdy zadanie wsadowe osiągnie określony rozmiar lub upłynął określoną ilość czasu.
+Centrum IoT Hub obsługuje zapisywanie danych w usłudze Azure Blob Storage w [Apache Avro](http://avro.apache.org/) oraz JSON format. Funkcja do zakodowania w formacie JSON jest w wersji zapoznawczej we wszystkich regionach, w których IoT Hub jest dostępna, z wyjątkiem wschodnie stany USA, zachodnie stany USA i Europa Zachodnia. Wartość domyślna to AVRO. Można wybrać format kodowania za pomocą Tworzenie Centrum IoT lub aktualizacji interfejsu API REST, w szczególności [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), witryny Azure Portal [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#optional-parameters) lub [platformy Azure Program PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0#optional-parameters). Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów blob. Nie można edytować format dla istniejącego punktu końcowego. Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w witrynie Azure Portal.
 
-Usługa IoT Hub wartością domyślną jest następująca Konwencja nazewnictwa pliku:
+![Obiekt blob magazynu punktu końcowego kodowania](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
+
+Usługa IoT Hub partii komunikatów i zapisuje dane do obiektu blob, zawsze, gdy zadanie wsadowe osiągnie określony rozmiar lub upłynął określoną ilość czasu. Usługa IoT Hub wartością domyślną jest następująca Konwencja nazewnictwa pliku:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
 Może używać dowolnego konwencję nazewnictwa plików, jednak należy użyć listy wszystkich tokenów. Usługi IoT Hub będzie zapisywać do pustego obiektu blob, jeśli nie ma żadnych danych do zapisu.
+
+Routing do magazynu obiektów blob, firma Microsoft zaleca funkcji rejestrowanie obiektów blob, a następnie Iterowanie po nich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania żadnych założeń partycji. Zakres partycji potencjalnie mogą ulec zmianie podczas [inicjowanych przez Microsoft trybu failover](iot-hub-ha-dr.md#microsoft-initiated-failover) lub usługi IoT Hub [ręczna praca awaryjna](iot-hub-ha-dr.md#manual-failover-preview). Możesz użyć [listy obiektów blob API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) wyliczyć listy obiektów blob. Jako wskazówki, zobacz poniższy przykład.
+
+   ```csharp
+        public void ListBlobsInContainer(string containerName, string iothub)
+        {
+            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+            if (cloudBlobContainer.Exists())
+            {
+                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+                foreach (IListBlobItem item in results)
+                {
+                    Console.WriteLine(item.Uri);
+                }
+            }
+        }
+   ```
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Kolejki usługi Service Bus i tematów usługi Service Bus
 
@@ -56,8 +76,6 @@ Kolejki usługi Service Bus i tematy, używane jako punktów końcowych usługi 
 ### <a name="event-hubs"></a>Event Hubs
 
 Oprócz wbudowanych — Event Hubs punkt końcowy zgodny można również kierować dane do niestandardowych punktów końcowych typu Event Hubs. 
-
-Gdy używasz routingu, jak i niestandardowe punkty końcowe, wiadomości tylko są dostarczane do wbudowany punkt końcowy, jeśli nie pasują do żadnych reguł. W celu dostarczenia komunikatu do endpoint wbudowane i niestandardowe punkty końcowe, Dodaj trasę, która wysyła komunikaty do endpoint zdarzenia.
 
 ## <a name="reading-data-that-has-been-routed"></a>Odczyt danych, który został przesłany
 
@@ -77,7 +95,7 @@ Użyj następujących samouczków dowiesz się, jak odczytać wiadomość z punk
 
 ## <a name="fallback-route"></a>Rezerwowy trasy
 
-Rezerwowy trasa wysyła wszystkie komunikaty, które nie spełniają warunki zapytania na dowolnym istniejące trasy do wbudowanych w — Event Hubs (**komunikaty/zdarzenia**), która jest zgodna z [usługi Event Hubs](/azure/event-hubs/). Routing komunikatów jest włączona, po włączeniu możliwości rezerwowego trasy. Należy pamiętać, że po utworzeniu trasy dane przestaną docierać do wbudowanych-w-punktu końcowego, chyba że zostanie utworzona trasa tego punktu końcowego. Jeśli nie ma żadnych tras do wbudowanych-w-punktu końcowego i rezerwowego trasy jest włączona, tylko komunikaty, które nie są zgodne wszelkie warunki zapytania na trasach, będą wysyłane do wbudowanych-w-punktu końcowego. Również usunięcie wszystkich istniejących tras rezerwowego trasy musi mieć możliwość odbierania wszystkie dane w wbudowanych-w-punkcie końcowym. 
+Rezerwowy trasa wysyła wszystkie komunikaty, które nie spełniają warunki zapytania na dowolnym istniejące trasy do wbudowanych w — Event Hubs (**komunikaty/zdarzenia**), która jest zgodna z [usługi Event Hubs](/azure/event-hubs/). Routing komunikatów jest włączona, po włączeniu możliwości rezerwowego trasy. Po utworzeniu trasy dane przestaną docierać do wbudowanych-w-punktu końcowego, chyba że zostanie utworzona trasa tego punktu końcowego. Jeśli nie ma żadnych tras do wbudowanych-w-punktu końcowego i rezerwowego trasy jest włączona, tylko komunikaty, które nie są zgodne wszelkie warunki zapytania na trasach, będą wysyłane do wbudowanych-w-punktu końcowego. Również usunięcie wszystkich istniejących tras rezerwowego trasy musi mieć możliwość odbierania wszystkie dane w wbudowanych-w-punkcie końcowym. 
 
 Możesz włączyć/wyłączyć rezerwowego trasy w witrynie Azure Portal -> Routing komunikatów bloku. Można również użyć usługi Azure Resource Manager dla [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) do użycia niestandardowego punktu końcowego dla trasy rezerwowego.
 
@@ -95,11 +113,11 @@ Podczas tworzenia nowej trasy lub Edytuj istniejącą trasę, należy przetestow
 
 Podczas rozsyłania komunikatów telemetrycznych przesyłanych z urządzenia do chmury za pomocą wbudowanych punktach końcowych po utworzeniu pierwszego trasy jest niewielki wzrost opóźnienia end-to-end.
 
-W większości przypadków Średni czas oczekiwania jest mniej niż 500 MS. Można monitorować za pomocą opóźnienie **routingu: komunikat o opóźnieniu komunikaty/zdarzenia** lub **d2c.endpoints.latency.builtIn.events** metryki usługi IoT Hub. Tworzenie lub usuwanie jakiejkolwiek trasy po pierwszy z nich nie ma wpływu na opóźnienie end-to-end.
+W większości przypadków Średni czas oczekiwania jest mniej niż 500 ms. Można monitorować za pomocą opóźnienie **routingu: komunikat o opóźnieniu komunikaty/zdarzenia** lub **d2c.endpoints.latency.builtIn.events** metryki usługi IoT Hub. Tworzenie lub usuwanie jakiejkolwiek trasy po pierwszy z nich nie ma wpływu na opóźnienie end-to-end.
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorowanie i rozwiązywanie problemów
 
-IoT Hub udostępnia kilka routingu i punktu końcowego powiązane metryki, aby Przegląd kondycji Centrum i wysłane wiadomości. Możesz połączyć informacje z wielu metryk, aby odkryć ich główną przyczynę problemów. Na przykład użyj metryki **routingu: porzucone komunikaty telemetryczne** lub **d2c.telemetry.egress.dropped** do identyfikowania liczbę wiadomości, które zostały usunięte, gdy nie odpowiadają one zapytań na żadnej trasy a trasy rezerwowego zostało wyłączone. [Metryki usługi IoT Hub](iot-hub-metrics.md) Wyświetla listę wszystkich metryk, które są domyślnie włączone dla usługi IoT Hub.
+IoT Hub udostępnia kilka routingu i punktu końcowego powiązane metryki, aby Przegląd kondycji Centrum i wysłane wiadomości. Możesz połączyć informacje z wielu metryk, aby odkryć ich główną przyczynę problemów. Na przykład użyć metryki **routingu: porzucone komunikaty telemetryczne** lub **d2c.telemetry.egress.dropped** do identyfikowania liczbę wiadomości, które zostały usunięte, gdy nie odpowiadają one zapytań na żadnej trasy a trasy rezerwowego zostało wyłączone. [Metryki usługi IoT Hub](iot-hub-metrics.md) Wyświetla listę wszystkich metryk, które są domyślnie włączone dla usługi IoT Hub.
 
 Za pomocą **trasy** dzienników diagnostycznych w usłudze Azure Monitor [ustawień diagnostycznych](../iot-hub/iot-hub-monitor-resource-health.md), możesz śledzi błędy podczas oceny routingu zapytania i punktu końcowego kondycji wyobrażenia Centrum IoT, na przykład gdy punkt końcowy nie istnieje. Te dzienniki diagnostyczne mogą być wysyłane do dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania.
 

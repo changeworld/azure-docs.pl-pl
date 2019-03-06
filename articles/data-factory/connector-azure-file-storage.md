@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d464fc6dd67e036348b6de74c8920895cf99e113
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 16ac5684d519dc41326ada4afd1bb2965a738070
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663849"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404998"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopiowanie danych z lub do usługi Azure File Storage przy użyciu usługi Azure Data Factory
 
@@ -43,7 +43,7 @@ Następujące właściwości są obsługiwane w przypadku pliku połączoną us�
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **FileServer**. | Yes |
 | host | Określa punkt końcowy usługi Azure File Storage jako: <br/>— Za pomocą interfejsu użytkownika: Określ `\\<storage name>.file.core.windows.net\<file service name>`<br/>-Przy użyciu formatu JSON: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Yes |
-| Identyfikator użytkownika | Określ użytkownikowi dostęp do usługi Azure File Storage jako: <br/>— Za pomocą interfejsu użytkownika: Określ `AZURE\<storage name>`<br/>-Przy użyciu formatu JSON: `"userid": "AZURE\\<storage name>"`. | Yes |
+| userid | Określ użytkownikowi dostęp do usługi Azure File Storage jako: <br/>— Za pomocą interfejsu użytkownika: Określ `AZURE\<storage name>`<br/>-Przy użyciu formatu JSON: `"userid": "AZURE\\<storage name>"`. | Yes |
 | hasło | Określ klucz dostępu do magazynu. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Brak źródła tak dla ujścia |
 
@@ -109,6 +109,7 @@ Aby skopiować dane z/do usługi Azure File Storage, należy ustawić właściwo
         },
         "typeProperties": {
             "folderPath": "folder/subfolder/",
+            "fileName": "*",
             "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
             "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {

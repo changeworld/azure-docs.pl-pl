@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 19a4f8fc41ed4d6850f114e19f49f239befe08d0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242653"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431860"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udzielanie dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)
 
@@ -62,7 +62,7 @@ Przedstawionych tu procedurach przypisuje rolę ograniczone do kontenera, ale mo
 1. Odszukaj kontener, dla którego chcesz przypisać rolę i wyświetlanie ustawień kontenera. 
 1. Wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla kontenera. Wybierz **przypisań ról** kartę, aby wyświetlić listę przypisań ról.
 
-    ![Ustawienia kontroli dostępu do kontenera zrzut ekranu](media/storage-auth-aad-rbac/portal-access-control-container.png)
+    ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do kontenera](media/storage-auth-aad-rbac/portal-access-control-container.png)
 
 1. Kliknij przycisk **Dodaj przypisanie roli** przycisk, aby dodać nową rolę.
 1. W **Dodaj przypisanie roli** okna, wybierz rolę usługi Azure Storage, którą chcesz przypisać. Następnie wyszukaj, aby zlokalizować podmiotu zabezpieczeń, do którego chcesz przypisać tę rolę.

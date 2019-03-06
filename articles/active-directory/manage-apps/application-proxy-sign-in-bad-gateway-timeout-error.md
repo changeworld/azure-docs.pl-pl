@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc032a15a2938333cd25d05c271187f218f9be4d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 995f9d2bc0ad0a6b985790d75a63866a3a2d55bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206807"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445368"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -69,7 +69,7 @@ Jeśli upewnij się, że użytkownik jest przypisany do aplikacji na platformie 
 
 ## <a name="check-the-applications-internal-url"></a>Sprawdź wewnętrzny adres URL aplikacji
 
-Pierwszym krokiem szybki, sprawdź i rozwiązać wewnętrzny adres URL, otwierając aplikację za pomocą **aplikacje dla przedsiębiorstw**, a następnie wybierając pozycję **serwera Proxy aplikacji** menu. Sprawdź, czy wewnętrzny adres URL jest używana z sieci lokalnej, aby uzyskać dostęp do aplikacji.
+Pierwszym krokiem szybki, sprawdź i rozwiązać wewnętrzny adres URL, otwierając aplikację za pomocą **aplikacje dla przedsiębiorstw**, a następnie wybierając pozycję **serwera Proxy aplikacji** menu. Sprawdź, czy wewnętrzny adres URL jest używana z siecią lokalną, aby uzyskać dostęp do aplikacji.
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Sprawdź, czy aplikacja jest przypisany do działającego grupy łączników
 
@@ -85,7 +85,7 @@ Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
   * Łącznik usługi active przenieść do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
 
-  * Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Typicall łącznika jest zainstalowana na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
+  * Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Zazwyczaj łącznik jest zainstalowany na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
 
   * Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
 

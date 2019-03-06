@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 893e0f5738a013f22404d7ccfdd9a73647a511f6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3b367619e2d22754b45e8178a25021a677cab6da
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316085"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405764"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -78,7 +78,7 @@ Alternatywnie, możesz przejść do **właściwości** strona magazynu można po
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurowanie przechowywania migawki za pomocą witryny Azure portal
-Ta opcja jest obecnie dostępna w **zachodnio-środkowe stany USA**, **Indie Południowe**, **Australia Wschodnia**, **Europa Północna**,  **Kanada Środkowa**, **Kanada Wschodnia**, **Francja środkowa**, **Francja Południowa**, **Korea środkowa**,  **Korea Południowa**, **Południowe Zjednoczone Królestwo 2**, **Północne Zjednoczone Królestwo**, **Południowe Zjednoczone Królestwo**, i **zachodnie Zjednoczone Królestwo**.
+Ta opcja jest obecnie dostępna w **zachodnio-środkowe stany USA**, **Indie Południowe**, **Australia Wschodnia**, **Europa Północna**,  **Kanada Środkowa**, **Kanada Wschodnia**, **Francja środkowa**, **Francja Południowa**, **Korea środkowa**,  **Korea Południowa**, **Południowe Zjednoczone Królestwo 2**, **Północne Zjednoczone Królestwo**, **Południowe Zjednoczone Królestwo**, **zachodnie Zjednoczone Królestwo**, **Indie środkowe** , **Australia południowo-wschodnia**, **Azja Wschodnia**, **środkowe stany USA**, **Azja południowo-wschodnia**,  **Północnośrodkowa**, **zachodnie stany USA 2**, **południowo-środkowe stany USA**, **Japonia, część wschodnia**, **Japonia, część zachodnia**i **Wschodnie stany USA 2**.
 
 Dla uaktualnionego użytkowników w witrynie Azure portal można wyświetlić pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
 

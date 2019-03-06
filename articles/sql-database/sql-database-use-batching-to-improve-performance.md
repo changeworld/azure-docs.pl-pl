@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0ef6d258be0165c7a73ce060879f55f1c7f404f9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751637"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453528"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak zwiększyć wydajność aplikacji bazy danych SQL za pomocą adapterów przetwarzania wsadowego
 
@@ -94,7 +94,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Transakcje są rzeczywiście używane w obu tych przykładów. W pierwszym przykładzie poszczególnych wywołań jest transakcji niejawnej. W drugim przykładzie transakcji jawnej opakowuje wszystkich połączeń. Na dokumentację [dziennika transakcji zapisu z wyprzedzeniem](https://msdn.microsoft.com/library/ms186259.aspx), rekordy dziennika jest opróżniany do dysku, gdy zatwierdzenia transakcji. Tak, tym więcej wywołań w ramach transakcji zapisu w dzienniku transakcji można opóźnienie, dopóki nie transakcja została zatwierdzona. W efekcie jest włączane, przetwarzanie wsadowe do zapisu do dziennika transakcji serwera.
 
-W poniższej tabeli przedstawiono niektóre wyniki testów ad hoc. Testy wykonywane tego samego sekwencyjnego wstawiania i bez transakcji. Dla perspektywy więcej pierwszy zestaw testów został uruchomiony zdalnie z laptopa do bazy danych w systemie Microsoft Azure. Drugi zestaw testów został uruchomiony z usługą w chmurze i bazy danych, zarówno znajdowały się w obrębie tego samego centrum danych Microsoft Azure (zachodnie stany USA). W poniższej tabeli przedstawiono czas trwania w milisekundach sekwencyjnego wstawiania i bez transakcji.
+W poniższej tabeli przedstawiono niektóre ad-hoc wyniki testów. Testy wykonywane tego samego sekwencyjnego wstawiania i bez transakcji. Dla perspektywy więcej pierwszy zestaw testów został uruchomiony zdalnie z laptopa do bazy danych w systemie Microsoft Azure. Drugi zestaw testów został uruchomiony z usługą w chmurze i bazy danych, zarówno znajdowały się w obrębie tego samego centrum danych Microsoft Azure (zachodnie stany USA). W poniższej tabeli przedstawiono czas trwania w milisekundach sekwencyjnego wstawiania i bez transakcji.
 
 **W środowisku lokalnym na platformie Azure**:
 
@@ -232,7 +232,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Istnieją przypadki, gdzie kopiowania masowego jest preferowana względem parametry z wartościami przechowywanymi w tabeli. Zobacz Tabela porównawcza z wartościami przechowywanymi w tabeli parametrów i operacji WSTAWIANIA ZBIORCZEGO w artykule [parametry Table-Valued](https://msdn.microsoft.com/library/bb510489.aspx).
 
-Następujące wyniki testów ad hoc Pokaż wydajność przetwarzania wsadowego za pomocą **SqlBulkCopy** w milisekundach.
+Następujące wyniki testów ad-hoc Pokaż wydajność przetwarzania wsadowego za pomocą **SqlBulkCopy** w milisekundach.
 
 | Operacje | W środowisku lokalnym na platformie Azure (ms) | Tym samym centrum danych platformy Azure (ms) |
 | --- | --- | --- |
@@ -277,7 +277,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 W tym przykładzie jest przeznaczona do wyświetlenia podstawowe pojęcia. Zrealizować bardziej realistyczny scenariusz będzie pętli wymaganych jednostek do konstruowania ciągu zapytania oraz parametry polecenia jednocześnie. Są ograniczone do sumy parametrów zapytania 2100, co ogranicza łączną liczbę wierszy, które mogą być przetwarzane w ten sposób.
 
-Następujące wyniki testów ad hoc Pokaż wydajności tego typu instrukcji insert w milisekundach.
+Następujące wyniki testów ad-hoc Pokaż wydajności tego typu instrukcji insert w milisekundach.
 
 | Operacje | Parametry z wartościami przechowywanymi w tabeli (ms) | Wstaw pojedynczej instrukcji (ms) |
 | --- | --- | --- |

@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Usługa cosmos DB, otwórz Service Broker, usługi Open Service Broker for Azure
-ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0655176a044da6b4dd6b7327aedf5eb17d79f04a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977019"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432808"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrowanie istniejącej aplikacji MongoDB przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i usługi Open Service Broker for Azure (OSBA)
 
@@ -189,7 +189,7 @@ Przejdź do http://localhost:8080 w przeglądarce. Zwróć uwagę, że Przywróc
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Uruchom aplikację w klastrze usługi AKS
 
-Możesz użyć [miejsca do magazynowania Azure Dev](../dev-spaces/azure-dev-spaces.md) Aby wdrożyć aplikację w klastrze AKS. Usługa Azure Dev spacje ułatwia Generowanie artefaktów, takich jak wykresy Dockefiles i Helm, wdrożyć i uruchomić aplikację w usłudze AKS.
+Możesz użyć [miejsca do magazynowania Azure Dev](../dev-spaces/azure-dev-spaces.md) Aby wdrożyć aplikację w klastrze AKS. Usługa Azure Dev spacje ułatwia Generowanie artefaktów, takich jak wykresy plików Dockerfile i Helm, wdrożyć i uruchomić aplikację w usłudze AKS.
 
 Aby włączyć usługi Azure Dev miejsca do magazynowania w klastrze AKS:
 

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7fa2dad124b5ef9e93402d6d4c03d956b00184af
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990227"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442380"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo za pomocą koderów lokalnych tworzących strumienie o różnej szybkości transmisji bitów
 
@@ -45,7 +45,7 @@ Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, mo
 > [!NOTE]
 > W tym artykule omówiono atrybuty kanały, które nie są włączone do przeprowadzania kodowania na żywo. Aby uzyskać informacje dotyczące pracy z kanałami obsługującymi kodowanie na żywo, zobacz [transmisja strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu usługi Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 >
->Aby uzyskać informacji na temat zalecanych lokalnych koderów, zobacz [zalecane kodery lokalne](media-services-recommended-encoders.md).
+>Zaleca się koderów lokalnych można znaleźć informacje o [zalecane w kodery lokalne](media-services-recommended-encoders.md).
 
 Poniższy diagram przedstawia transmisji strumieniowej na żywo przepływu pracy, który używa lokalny koder na żywo, aby mieć RTMP o różnej szybkości transmisji bitów lub plików MP4 (Smooth Streaming) strumieni jako dane wyjściowe.
 
@@ -229,7 +229,7 @@ Poniżej przedstawiono inne zagadnienia związane z pracy, korzystając z kanał
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Powiązane tematy
-[Zalecane lokalnych koderów](media-services-recommended-encoders.md)
+[Zalecane w kodery lokalne](media-services-recommended-encoders.md)
 
 [Specyfikacja odbierania Azure Media Services pofragmentowane życie w formacie MP4](media-services-fmp4-live-ingest-overview.md)
 

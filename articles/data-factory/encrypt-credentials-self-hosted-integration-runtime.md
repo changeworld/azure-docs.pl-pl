@@ -12,17 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 8e8a4cabd948783278981c61fa718e51b679ad72
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 65518e7515f9e233b12ae5406819c91e8e3f2a77
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014169"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453171"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Szyfruj poświadczenia dla lokalnych magazynów danych w usłudze Azure Data Factory
 Można zaszyfrować i przechowywać poświadczenia dla swoich magazynów danych w środowisku lokalnym (połączone usługi z poufnych informacji) na maszynie z własnego środowiska integration runtime. 
 
-Przekaż plik definicji JSON przy użyciu poświadczeń na <br/>[**Nowe AzureRmDataFactoryV2LinkedServiceEncryptedCredential** ](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential?view=azurermps-4.4.0) polecenia cmdlet, aby wygenerować plik danych wyjściowych JSON definicji z zaszyfrowanymi poświadczeniami. Następnie użyj zaktualizowanych definicji JSON do utworzenia połączonych usług.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Przekaż plik definicji JSON przy użyciu poświadczeń na <br/>[**Nowe AzDataFactoryV2LinkedServiceEncryptedCredential** ](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) polecenia cmdlet, aby wygenerować plik danych wyjściowych JSON definicji z zaszyfrowanymi poświadczeniami. Następnie użyj zaktualizowanych definicji JSON do utworzenia połączonych usług.
 
 ## <a name="author-sql-server-linked-service"></a>Tworzenie połączonej usługi SQL Server
 Utwórz plik JSON o nazwie **C:\adfv2tutorial** w dowolnym folderze o następującej zawartości:  
@@ -49,17 +51,17 @@ Zastąp `<servername>`, `<databasename>`, `<username>`, i `<password>` wartości
 ```
 
 ## <a name="encrypt-credentials"></a>Szyfruj poświadczenia
-Aby zaszyfrować poufnych danych z ładunku w formacie JSON w środowisku lokalnym własnego środowiska integration runtime, uruchom **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential**i przekazywać ładunek w formacie JSON. To polecenie cmdlet gwarantuje, że poświadczenia są szyfrowane przy użyciu interfejsu DPAPI i przechowywane na samodzielnie hostowany węzeł środowiska integration runtime lokalnie. Ładunek danych wyjściowych może zostać przekierowany do innego pliku JSON (w tym przypadku "encryptedLinkedService.json"), który zawiera zaszyfrowane poświadczenia.
+Aby zaszyfrować poufnych danych z ładunku w formacie JSON w środowisku lokalnym własnego środowiska integration runtime, uruchom **New AzDataFactoryV2LinkedServiceEncryptedCredential**i przekazywać ładunek w formacie JSON. To polecenie cmdlet gwarantuje, że poświadczenia są szyfrowane przy użyciu interfejsu DPAPI i przechowywane na samodzielnie hostowany węzeł środowiska integration runtime lokalnie. Ładunek danych wyjściowych może zostać przekierowany do innego pliku JSON (w tym przypadku "encryptedLinkedService.json"), który zawiera zaszyfrowane poświadczenia.
 
 ```powershell
-New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
 ```
 
 ## <a name="use-the-json-with-encrypted-credentials"></a>Za pomocą pliku JSON za pomocą zaszyfrowanych poświadczeń
 Teraz Użyj wyjściowego pliku JSON z poprzedniego polecenia zawierające zaszyfrowanych poświadczeń do skonfigurowania **SqlServerLinkedService**.
 
 ```powershell
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -DefinitionFile ".\encryptedSqlServerLinkedService.json" 
+Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -DefinitionFile ".\encryptedSqlServerLinkedService.json" 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

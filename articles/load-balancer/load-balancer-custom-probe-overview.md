@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: dc22f1392d14529c2944dde67315a278fca4fa73
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195340"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450451"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -212,7 +212,7 @@ Nie włączaj [sygnatury czasowe TCP](https://tools.ietf.org/html/rfc1323).  Wł
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Zarówno public i internal [Balancer w warstwie standardowa](load-balancer-standard-overview.md) uwidocznić na stan sondy kondycji wystąpienie punktu końcowego i wewnętrznej bazy danych jako metryk wielowymiarowych za pomocą usługi Azure Monitor. Metryki te mogą być używane przez inne usługi platformy Azure lub innych arty aplikacje. 
+Zarówno public i internal [Balancer w warstwie standardowa](load-balancer-standard-overview.md) uwidocznić na stan sondy kondycji wystąpienie punktu końcowego i wewnętrznej bazy danych jako metryk wielowymiarowych za pomocą usługi Azure Monitor. Metryki te mogą być używane przez inne usługi platformy Azure lub aplikacje partnerów. 
 
 Podstawowe publicznej usługi Load Balancer udostępnia podsumowywane na pulę zaplecza przy użyciu dzienników usługi Azure Monitor stanu sondy kondycji.  Dzienniki platformy Azure Monitor nie są dostępne dla wewnętrznych modułów równoważenia obciążenia podstawowe.  Możesz użyć [dzienniki usługi Azure Monitor](load-balancer-monitor-log.md) można sprawdzić stanu zdrowia sondy modułu równoważenia obciążenia publiczny i sondowania count. Rejestrowanie może służyć za pomocą usługi Power BI lub usługi Azure Operational Insights umożliwia statystyki dotyczące stanu kondycji modułu równoważenia obciążenia.
 

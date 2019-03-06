@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 39084fd8408a123e8152ad96fa92025fd04ed42b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 70154a50086fabc84671e7e540d8496490ab5b2d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092817"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436633"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Zmienne HTTP dla usługi Azure CDN aparatu reguł
 Zmienne HTTP udostępniają oznacza, że za pomocą którego można pobrać metadanych żądań i odpowiedzi HTTP. Następnie można te metadane dynamicznie zmieniać żądania lub odpowiedzi. Używanie zmiennych HTTP jest ograniczone do następujących funkcje aparatu reguł:
@@ -37,33 +37,33 @@ W poniższej tabeli opisano obsługiwane zmienne HTTP. Po geograficznie metadany
 | Name (Nazwa) | Zmienna | Opis | Wartość przykładowa |
 | ---- | -------- | ----------- | ------------ |
 | Numer ASN (żądającego) | % {geo_asnum} | Wskazuje żądającego jako numer. <br /><br />**Przestarzałe:** % {virt_dst_asnum}. <br />Ta zmienna została zastąpiona % {geo_asnum}. Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej. | AS15133 |
-| Miasto (żądającego) | % {geo_city} | Wskazuje Miasto żądającego. | Los Angeles |
-| Kontynent (żądającego) | % {geo_continent} | Wskazuje, kontynent żądającego za pośrednictwem jej skrót. <br />Prawidłowe wartości to: <br />AF: Afryka<br />AS: Azja Wschodnia<br />UE: Europa<br />NA: Ameryka Północna<br />OC: Oceania<br />Ameryka Południowa: Ameryka Południowa<br /><br />**Przestarzałe:** % {virt_dst_continent}. <ber />Ta zmienna została zastąpiona % {geo_continent}. <br />Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej.| ND |
-| Wartość pliku cookie | % {cookie_Cookie} | Zwraca wartość odpowiadającą kluczowi plik cookie identyfikowane przez określenie pliku Cookie. | Przykładowe zastosowanie: <br />% {cookie__utma}<br /><br />Wartość próbek:<br />111662281.2.10.1222100123 |
+| Miasto (żądającego) | %{geo_city} | Wskazuje Miasto żądającego. | Los Angeles |
+| Kontynent (żądającego) | % {geo_continent} | Wskazuje, kontynent żądającego za pośrednictwem jej skrót. <br />Prawidłowe wartości to: <br />AF: Afryka<br />AS: Azja<br />UE: Europa<br />NAZWA: Ameryka Północna<br />OC: Oceania<br />AMERYKA POŁUDNIOWA: Ameryka Południowa<br /><br />**Przestarzałe:** % {virt_dst_continent}. <ber />Ta zmienna została zastąpiona % {geo_continent}. <br />Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej.| ND |
+| Wartość pliku cookie | %{cookie_Cookie} | Zwraca wartość odpowiadającą kluczowi plik cookie identyfikowane przez określenie pliku Cookie. | Przykładowe zastosowanie: <br />%{cookie__utma}<br /><br />Wartość próbek:<br />111662281.2.10.1222100123 |
 | Kraj (żądającego) | % {geo_country} | Wskazuje żądającego kraju pochodzenia za pośrednictwem jego numer kierunkowy kraju. <br />**Przestarzałe:** % {virt_dst_country}. <br /><br />Ta zmienna została zastąpiona % {geo_country}. Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej. | USA |
-| Obszar wyznaczonym rynku (żądającego) | % {geo_dma_code} |Wskazuje na rynku media żądającego przez jego kod regionu. <br /><br />To pole ma zastosowanie tylko do żądania, które pochodzą ze Stanów Zjednoczonych.| 745 |
-| Metoda żądania HTTP | % {request_method} | Wskazuje, Metoda żądania HTTP. | GET |
-| Kod stanu HTTP | % {status} | Wskazuje kod stanu HTTP dla odpowiedzi. | 200 |
-| Adres IP (żądającego) | % {virt_dst_addr} | Wskazuje adres IP żądającego. | 192.168.1.1 |
-| Szerokość (żądającego) | % {geo_latitude} | Określa szerokość żądającego. | 34.0995 |
-| Długość geograficzną (żądającego) | % {geo_longitude} | Wskazuje żądającego długości geograficznej. | -118.4143 |
-| Statystyczne obszarze metropolitarnym (żądającego) | % {geo_metro_code} | Wskazuje obszarze metropolitarnym żądającego. <br /><br />To pole ma zastosowanie tylko do żądania, które pochodzą ze Stanów Zjednoczonych.<br />| 745 |
-| Port (żądającego) | % {virt_dst_port} | Wskazuje portów efemerycznych żądającego. | 55885 |
+| Obszar wyznaczonym rynku (żądającego) | %{geo_dma_code} |Wskazuje na rynku media żądającego przez jego kod regionu. <br /><br />To pole ma zastosowanie tylko do żądania, które pochodzą ze Stanów Zjednoczonych.| 745 |
+| Metoda żądania HTTP | %{request_method} | Wskazuje, Metoda żądania HTTP. | GET |
+| Kod stanu HTTP | %{status} | Wskazuje kod stanu HTTP dla odpowiedzi. | 200 |
+| Adres IP (żądającego) | %{virt_dst_addr} | Wskazuje adres IP żądającego. | 192.168.1.1 |
+| Szerokość (żądającego) | %{geo_latitude} | Określa szerokość żądającego. | 34.0995 |
+| Długość geograficzną (żądającego) | %{geo_longitude} | Wskazuje żądającego długości geograficznej. | -118.4143 |
+| Statystyczne obszarze metropolitarnym (żądającego) | %{geo_metro_code} | Wskazuje obszarze metropolitarnym żądającego. <br /><br />To pole ma zastosowanie tylko do żądania, które pochodzą ze Stanów Zjednoczonych.<br />| 745 |
+| Port (żądającego) | %{virt_dst_port} | Wskazuje portów efemerycznych żądającego. | 55885 |
 | Kod pocztowy (żądającego) | % {geo_postal_code} | Wskazuje kod pocztowy żądającego. | 90210 |
-| Znaleziono ciąg zapytania | % {is_args} | Wartość tej zmiennej, zależy od tego, czy żądanie zawiera ciąg zapytania.<br /><br />-Znaleziono ciąg zapytania:?<br />-Brak ciągu zapytania: wartość NULL | ? |
-| Znaleziono parametr ciągu zapytania | % {is_amp} | Wartość tej zmiennej, zależy od tego, czy żądanie zawiera co najmniej jeden parametr ciągu zapytania.<br /><br />-Znaleziono parametru: &<br />-Brak parametrów: wartości NULL | & |
-| Wartość parametru ciągu zapytania | % {arg_&lt;parametru&gt;} | Zwraca wartość, odpowiadającą parametr ciągu zapytania, które są identyfikowane za pomocą &lt;parametru&gt; termin. | Przykładowe zastosowanie: <br />% {arg_language}<br /><br />Przykładowy parametr ciągu zapytania: <br />? języka = pl<br /><br />Przykładowe wartości: pl |
-| Wartość ciągu zapytania | % {query_string} | Wskazuje wartość ciągu całe zapytanie, które są zdefiniowane w adresie URL żądania. |klucz1 = val1 & klucz2 = val2 & klucz3 = val3 |
-| Domeny odwołania | % {referring_domain} | Wskazuje domenę zdefiniowane w nagłówku żądania Odnośnik. | www.google.com |
-| Region (żądającego) | % {geo_region} | Wskazuje region żądającego (na przykład wtedy, Województwo) za pośrednictwem jej skrót alfanumeryczne. | Urząd certyfikacji |
-| Wartość nagłówka żądania | % {http_RequestHeader} | Zwraca wartość odpowiadającą identyfikowane przez określenie RequestHeader nagłówka żądania. <br /><br />Jeśli nazwa nagłówka żądania zawiera znak łącznika (na przykład agenta użytkownika), zastąp go znakiem podkreślenia (na przykład User_Agent).| Przykładowe zastosowanie: % {http_Connection}<br /><br />Wartość próbek: Keep-Alive | 
-| Host żądania | % {hosta} | Wskazuje hosta zdefiniowane w adresie URL żądania. | www.myDomain.com |
-| Żądanie protokołu | % {request_protocol} | Określa protokół żądania. | HTTP/1.1 |
-| Schemat żądania | % {scheme} | Wskazuje schemat żądania. |http |
-| Identyfikator URI (względny) żądania | % {request_uri} | Wskazuje względną ścieżkę, łącznie z ciągu zapytania, zdefiniowane w identyfikatorze URI żądania. | /Marketing/foo.js?loggedin=true |
-| Identyfikator URI (względem bez ciągu zapytania) żądania | % {Identyfikator uri} | Określa ścieżkę względną do żądanej zawartości. <br /><br/>Informacje o kluczu:<br />— W tym ścieżki względnej wyklucza ciągu zapytania.<br />— W tym ścieżki względnej odzwierciedla ponownego adresu URL. Adres URL będzie przepisany w następujących warunkach:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Funkcja ponowne zapisywanie adresów URL: Tę funkcję ponownie zapisuje ścieżki względnej, zdefiniowane w identyfikatorze URI żądania.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Adres URL CNAME edge: Ten typ żądania jest przepisany do odpowiedniego adresu URL usługi CDN. |/800001/corigin/rewrittendir/foo.js |
-| Identyfikator URI żądania | % {żądania} | W tym artykule opisano żądania. <br />Składnia: &lt;metody HTTP&gt; &lt;ścieżki względnej&gt; &lt;protokołu HTTP&gt; | Pobierz /marketing/foo.js?loggedin=true HTTP/1.1 |
-| Wartość nagłówka odpowiedzi | % {resp_&lt;ResponseHeader&gt;} | Zwraca wartość, odpowiadającą nagłówek odpowiedzi identyfikowane przez &lt;ResponseHeader&gt; termin. <br /><br />Jeśli nazwa nagłówka żądania zawiera znak łącznika (na przykład agenta użytkownika), należy go zastąpić od znaku podkreślenia (na przykład User_Agent). | Przykładowe zastosowanie: % {resp_Content_Length}<br /><br />Przykładowe wartości: 100 |
+| Znaleziono ciąg zapytania | %{is_args} | Wartość tej zmiennej, zależy od tego, czy żądanie zawiera ciąg zapytania.<br /><br />-Znaleziono ciąg zapytania:?<br />-Brak ciągu zapytania: NULL | ? |
+| Znaleziono parametr ciągu zapytania | % {is_amp} | Wartość tej zmiennej, zależy od tego, czy żądanie zawiera co najmniej jeden parametr ciągu zapytania.<br /><br />-Znaleziono parametru: &<br />-Brak parametry: NULL | & |
+| Wartość parametru ciągu zapytania | %{arg_&lt;parameter&gt;} | Zwraca wartość, odpowiadającą parametr ciągu zapytania, które są identyfikowane za pomocą &lt;parametru&gt; termin. | Przykładowe zastosowanie: <br />% {arg_language}<br /><br />Przykładowy parametr ciągu zapytania: <br />? języka = pl<br /><br />Przykładowe wartości: pl |
+| Wartość ciągu zapytania | % {query_string} | Wskazuje wartość ciągu całe zapytanie, które są zdefiniowane w adresie URL żądania. |key1=val1&key2=val2&key3=val3 |
+| Domeny odwołania | % {referring_domain} | Wskazuje domenę zdefiniowane w nagłówku żądania odwołania. | www.google.com |
+| Region (żądającego) | %{geo_region} | Wskazuje region żądającego (na przykład wtedy, Województwo) za pośrednictwem jej skrót alfanumeryczne. | CA |
+| Wartość nagłówka żądania | %{http_RequestHeader} | Zwraca wartość odpowiadającą identyfikowane przez określenie RequestHeader nagłówka żądania. <br /><br />Jeśli nazwa nagłówka żądania zawiera znak łącznika (na przykład agenta użytkownika), zastąp go znakiem podkreślenia (na przykład User_Agent).| Przykładowe zastosowanie: % {http_Connection}<br /><br />Wartość próbek: Keep-Alive | 
+| Host żądania | %{host} | Wskazuje hosta zdefiniowane w adresie URL żądania. | www.myDomain.com |
+| Żądanie protokołu | %{request_protocol} | Określa protokół żądania. | HTTP/1.1 |
+| Schemat żądania | %{scheme} | Wskazuje schemat żądania. |http |
+| Identyfikator URI (względny) żądania | %{request_uri} | Wskazuje względną ścieżkę, łącznie z ciągu zapytania, zdefiniowane w identyfikatorze URI żądania. | /Marketing/foo.js?loggedin=true |
+| Identyfikator URI (względem bez ciągu zapytania) żądania | % {Identyfikator uri} | Określa ścieżkę względną do żądanej zawartości. <br /><br/>Informacje o kluczu:<br />— W tym ścieżki względnej wyklucza ciągu zapytania.<br />— W tym ścieżki względnej odzwierciedla ponownego adresu URL. Adres URL będzie przepisany w następujących warunkach:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Funkcja ponowne zapisywanie adresów URL: Ta funkcja jest ponownie zapisuje ścieżki względnej, zdefiniowane w identyfikatorze URI żądania.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Adres URL CNAME edge: Ten typ żądania jest przepisany do odpowiedniego adresu URL usługi CDN. |/800001/corigin/rewrittendir/foo.js |
+| Identyfikator URI żądania | % {żądania} | W tym artykule opisano żądania. <br />Składnia: &lt;Metoda HTTP&gt; &lt;ścieżki względnej&gt; &lt;protokołu HTTP&gt; | Pobierz /marketing/foo.js?loggedin=true HTTP/1.1 |
+| Wartość nagłówka odpowiedzi | %{resp_&lt;ResponseHeader&gt;} | Zwraca wartość, odpowiadającą nagłówek odpowiedzi identyfikowane przez &lt;ResponseHeader&gt; termin. <br /><br />Jeśli nazwa nagłówka żądania zawiera znak łącznika (na przykład agenta użytkownika), należy go zastąpić od znaku podkreślenia (na przykład User_Agent). | Przykładowe zastosowanie: % {resp_Content_Length}<br /><br />Wartość próbek: 100 |
 
 ## <a name="usage"></a>Sposób użycia
 W poniższej tabeli opisano poprawna składnia określająca zmienną HTTP.
@@ -71,7 +71,7 @@ W poniższej tabeli opisano poprawna składnia określająca zmienną HTTP.
 
 | Składnia | Przykład | Opis |
 | ------ | -------- | ---------- |
-| %{&lt;HTTPVariable&gt;} | % {hosta} | Użyj następującej składni, aby uzyskać całą wartość odpowiadającą określonej &lt;HTTPVariable&gt;. |
+| %{&lt;HTTPVariable&gt;} | %{host} | Użyj następującej składni, aby uzyskać całą wartość odpowiadającą określonej &lt;HTTPVariable&gt;. |
 | %{&lt;HTTPVariableDelimiter&gt;} | % {hosta} | Użyj następującej składni można ustawić w przypadku całą wartość odpowiadającą określonej &lt;HTTPVariableDelimiter&gt;. |
 | %{&lt;HTTPVariableDelimiterExpression&gt;} | %{Host/=^www\.([^\.] +)\.([^\.:] +) /cdn.$2.$3:80} | Użycie wyrażenia regularnego dla &lt;HTTPVariableDelimiterExpression&gt; zastąpić, usunąć lub przetwarzać wartość zmiennej HTTP. |
 
@@ -82,7 +82,7 @@ Ogranicznik, można określić po zmienną HTTP, aby osiągnąć następujące e
 
 - Przekształć wartość skojarzona ze zmienną.
 
-     Przykład: Przekonwertować całą wartość na małe litery.
+     Przykład: Całą wartość przekonwertowania na małe litery.
 
 - Usuń wartość skojarzona ze zmienną.
 
@@ -112,11 +112,11 @@ W poniższej tabeli opisano okoliczności, w których określony tekst nie jest 
 
 | Warunek | Opis | Przykład |
 | --------- | ----------- | --------|
-| Anulowania zapewnianego element % symboli | Symbol procentu można wyjściowym przy użyciu ukośnik odwrotny. <br />Przykładowa wartość po prawej stronie będzie traktowana jako wartość literału, a nie zmienną HTTP.| \%{hosta} |
+| Anulowania zapewnianego element % symboli | Symbol procentu można wyjściowym przy użyciu ukośnik odwrotny. <br />Przykładowa wartość po prawej stronie będzie traktowana jako wartość literału, a nie zmienną HTTP.| \%{host} |
 | Nieznany zmiennych | Pusty ciąg jest zawsze zwracane nieznany zmiennych. | % {unknownvariable} |
 | Nieprawidłowe znaki lub nieprawidłowa składnia | Zmienne, które zawierają nieprawidłowe znaki lub nieprawidłowa składnia są traktowane jako wartości literału. <br /><br />Przykład #1: Określona wartość zawiera nieprawidłowy znak (na przykład-). <br /><br />Przykład #2: Określona wartość zawiera zbiór podwójne nawiasy klamrowe. <br /><br />Przykład #3: Określona wartość Brak nawiasu zamykającego nawiasu klamrowego.<br /> | Przykład #1: % {resp_user agenta} <br /><br />Przykład #2: % {{hosta}} <br /><br />Przykład #3: % {hosta |
 | Brak nazwy zmiennej | Zawsze zostanie zwrócona wartość NULL, jeśli zmienna nie zostanie określony. | %{} |
-| Tylko | Znaki, które końcu zmiennej są traktowane jako wartości literału. <br />Przykładowa wartość po prawej stronie zawiera końcowe nawiasów klamrowych, który będzie traktowane jako wartości literału. | % {hosta}} |
+| Tylko | Znaki, które końcu zmiennej są traktowane jako wartości literału. <br />Przykładowa wartość po prawej stronie zawiera końcowe nawiasów klamrowych, który będzie traktowane jako wartości literału. | %{host}} |
 
 ## <a name="setting-default-header-values"></a>Ustawienie domyślne wartości nagłówka
 Wartość domyślną można przypisać do nagłówka, gdy spełnia dowolne z następujących warunków:
@@ -127,8 +127,8 @@ W poniższej tabeli opisano sposób definiowania wartości domyślnej.
 
 | Warunek | Składnia | Przykład | Opis |
 | --------- | ------ | --------| ----------- |
-| Ustaw nagłówek w wartości domyślnej spełnia dowolne z następujących warunków: <br /><br />-Brak nagłówka <br /><br />-Header wartość jest równa NULL.| % {Zmiennej: = wartość} | % {http_referer: = nieokreślony} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* po go lub nie jest ustawiona na wartość NULL. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
-| Nagłówek należy ustawić wartość domyślną, gdy jest Brak. | % {Zmiennej = wartość} | % {http_referer = nieokreślony} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* gdy jest Brak. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
+| Ustaw nagłówek w wartości domyślnej spełnia dowolne z następujących warunków: <br /><br />-Brak nagłówka <br /><br />-Header wartość jest równa NULL.| % {Zmiennej: = wartość} | %{http_referer:=unspecified} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* po go lub nie jest ustawiona na wartość NULL. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
+| Nagłówek należy ustawić wartość domyślną, gdy jest Brak. | % {Zmiennej = wartość} | %{http_referer=unspecified} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* gdy jest Brak. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
 | Ustaw nagłówek na wartość domyślną, gdy go nie spełnia żadnego z następujących warunków: <br /><br />-Brak<br /><br /> -Ustawienia na wartość NULL. | % {Zmiennej: + wartość} | % {http_referer: + nieokreślony} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* po wartości zostały przypisane do niego. Żadna akcja będzie miała miejsce, jeśli go lub nie jest ustawiona na wartość NULL. |
 
 ## <a name="manipulating-variables"></a>Manipulowanie zmiennych
@@ -147,28 +147,28 @@ Informacje o kluczu:
 - Wartość przypisana do termin przesunięcie Określa początkowy znak podciąg:
 
      - Dodatnia: Początkowy znak podciągu jest obliczana na podstawie pierwszego znaku w ciągu.
-     - Zero: Początkowy znak podciągu jest pierwszy znak w ciągu.
-     - Ujemna: Początkowy znak podciągu jest obliczana na podstawie ostatniego znaku w ciągu.
+     - Zero: Początkowy znak podciąg to pierwszy znak w ciągu.
+     - Ujemne: Początkowy znak podciągu jest obliczany od ostatniego znaku w ciągu.
 
 - Długość podciągu jest określana przez *długość* termin:
 
-     - Pominięto: Pomijanie termin długość umożliwia podciąg uwzględnić wszystkie znaki między początkowy znak i końca ciągu.
+     - Pominięto: Pominięcie termin długość umożliwia podciąg uwzględnić wszystkie znaki między początkowy znak i końca ciągu.
      - Dodatnia: Określa długość podciągu z początkowy znak po prawej stronie.
-     - Ujemna: Określa długość podciągu z początkowy znak w lewo.
+     - Ujemne: Określa długość podciągu z początkowy znak w lewo.
 
 #### <a name="example"></a>Przykład:
 
 Poniższy przykład opiera się na następujący adres URL żądania próbki:
 
-protokół https:\//cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
+https:\//cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
 
 Następujący ciąg przedstawia różne metody do manipulowania zmiennych:
 
-protokół https:\//www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm
+https:\//www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm
 
 Oparte na adresie URL żądania próbki, powyżej manipulowania zmiennej dadzą następującą wartość:
 
-protokół https:\//www.mydomain.com/mobile/marketing/proposal.htm
+https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 
 ### <a name="pattern-removal"></a>Wzorzec usuwania
@@ -176,8 +176,8 @@ Tekst, który jest zgodny ze wzorcem określonym można usunąć od początku lu
 
 | Składnia | Akcja |
 | ------ | ------ |
-| {Zmienna #Pattern} % | Usuń tekst, gdy określony wzorzec znajduje się na początku wartość zmiennej. |
-| {Zmienna % wzorzec} % | Usuń tekst, gdy określony wzorzec znajduje się na końcu wartości zmiennej. |
+| %{Variable#Pattern} | Usuń tekst, gdy określony wzorzec znajduje się na początku wartość zmiennej. |
+| %{Variable%Pattern} | Usuń tekst, gdy określony wzorzec znajduje się na końcu wartości zmiennej. |
 
 #### <a name="example"></a>Przykład:
 
@@ -189,8 +189,8 @@ Poniższa tabela przedstawia, jak działa ta składnia.
 
 | Przykład składni | Wyniki |
 | ------------- | ------- |
-| %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/Marketing/Product.HTML?Language=en-us | Ponieważ zmienna rozpoczyna się od wzorca, został zastąpiony. |
-| % {request_uri % html} htm | /800001/myorigin/Marketing/Product.HTML?Language=en-us | Ponieważ zmienna nie kończy się za pomocą wzorca, nie było zmiany.|
+| %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | Ponieważ zmienna rozpoczyna się od wzorca, został zastąpiony. |
+| %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | Ponieważ zmienna nie kończy się za pomocą wzorca, nie było zmiany.|
 
 ### <a name="find-and-replace"></a>Znajdź i Zamień
 W poniższej tabeli opisano składnię Znajdź i Zamień.
@@ -200,7 +200,7 @@ W poniższej tabeli opisano składnię Znajdź i Zamień.
 | %{Variable/Find/replace} | Znajdź i Zamień pierwsze wystąpienie określonego wzorca. |
 | %{Variable//Find/replace} | Znajdź i Zamień wszystkie wystąpienia określonego wzorca. |
 | % {Zmiennej ^} |Całą wartość przekonwertowania na wielkie litery. |
-| % {Zmiennej ^ znaleźć} | Pierwsze wystąpienie określonego wzorca przekonwertowania na wielkie litery. |
+| %{Variable^Find} | Pierwsze wystąpienie określonego wzorca przekonwertowania na wielkie litery. |
 | % {Zmiennej} | Całą wartość przekonwertowania na małe litery. |
 | {Zmienna, Znajdź} % | Pierwsze wystąpienie określonego wzorca przekonwertowania na małe litery. |
 
@@ -227,13 +227,13 @@ Informacje o kluczu:
     W poprzednim przykładzie nazwa hosta jest przepisane, aby `cdn.$2.$3:80` (na przykład cdn.mydomain.com:80).
 
 - W przypadku symbolu zastępczego wzorca (na przykład $1) można modyfikować za pomocą następujących flag:
-     - U: wielkie rozwinięte wartości.
+     - U: Wielkie litery rozwinięte wartości.
 
          Przykład składni:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
-     - L: małe rozwinięte wartości.
+     - L: Małe litery, rozwinięte wartości.
 
          Przykład składni:
 

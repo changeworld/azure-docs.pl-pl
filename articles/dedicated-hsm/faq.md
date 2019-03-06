@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: cd84607f426d8a54ca21302b9a612f5ec09c9a1e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2c77f5abac69a1bade523d2a4b6793c2a9df8cf2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670387"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447867"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -164,7 +164,7 @@ Tak. Możesz wysłać dzienniki z urządzenia przez moduł HSM do serwera syslog
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>PYT.: Czy jest możliwe do skonfigurowania wysokiej dostępności, w tym samym regionie lub w wielu regionach?
 
-Tak. Konfiguracja wysokiej dostępności i konfiguracji są wykonywane w oprogramowaniu klienckim przez moduł HSM, które są dostarczane przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci Wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w wielu regionach lub w lokalnej sprzętowych modułów zabezpieczeń połączone z siecią Wirtualną przy użyciu lokacja lokacja lub sieci VPN typu punkt-punkt mogą być dodawane do tej samej konfiguracji o wysokiej dostępności.
+Tak. Konfiguracja wysokiej dostępności i konfiguracji są wykonywane w oprogramowaniu klienckim przez moduł HSM, które są dostarczane przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci Wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w regionach lub w środowisku lokalnym sprzętowych modułów zabezpieczeń połączone z siecią Wirtualną przy użyciu lokacja lokacja lub sieci VPN typu punkt-punkt mogą być dodawane do tej samej konfiguracji o wysokiej dostępności.
 
 ### <a name="can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Czy mogę dodać sprzętowych modułów zabezpieczeń z sieci lokalnej do grupy o wysokiej dostępności przy użyciu sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej
 

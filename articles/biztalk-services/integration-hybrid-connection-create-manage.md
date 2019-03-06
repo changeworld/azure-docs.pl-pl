@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0a9197c8c46cc480f5f096f1d2ef98c0d5823f35
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232984"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455789"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Tworzenie połączeń hybrydowych i zarządzanie nimi
 
@@ -42,7 +42,7 @@ Ten temat zawiera następujące kroki.
 > Na przykład (pseudokodzie), należy zdefiniować **10.4.5.6** jako hosta lokalnego:
 > 
 > **Działa w sposób następujący scenariusz:**  
-> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on premises host`
 > 
 > **Poniższy scenariusz nie działa:**  
 > `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
@@ -55,8 +55,8 @@ Można utworzyć połączenie hybrydowe w [połączeń hybrydowych usługi Azure
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
 #### <a name="additional"></a>Informacje dodatkowe
-* Można tworzyć wiele połączeń hybrydowych. Zobacz [usługi BizTalk Services: Editions Chart](biztalk-editions-feature-chart.md) liczbę dozwolonych połączeń. 
-* Każde połączenie hybrydowe jest tworzony przy użyciu pary ciągów połączeń: aplikacja klucze tego WYSYŁANIA lokalnych i w klucze, które NASŁUCHUJĄ. Każdej pary ma podstawowy i klucz pomocniczy. 
+* Można tworzyć wiele połączeń hybrydowych. Zobacz [usługi BizTalk Services: Wykres przedstawiający wersje](biztalk-editions-feature-chart.md) liczbę dozwolonych połączeń. 
+* Każde połączenie hybrydowe jest tworzony przy użyciu pary ciągów połączenia: Klucze aplikacji, które WYSYŁAĆ i klucze, które NASŁUCHUJĄ lokalnych. Każdej pary ma podstawowy i klucz pomocniczy. 
 
 ## <a name="LinkWebSite"></a>Łączenie aplikacji mobilnej lub aplikacji sieci Web w usłudze Azure App Service
 Aby połączyć aplikację sieci Web lub aplikacji mobilnej w usłudze Azure App Service z istniejącego połączenia hybrydowe, wybierz **użyć istniejącego połączenia hybrydowego** w bloku połączeń hybrydowych. 
@@ -119,9 +119,9 @@ Po skopiowaniu służy Edytor zasad grupy do zmiany zasad.
 
 ## <a name="see-also"></a>Zobacz też
 [REST API for Managing BizTalk Services on Microsoft Azure (Interfejs API REST do zarządzania usługą BizTalk Services na platformie Microsoft Azure)](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[BizTalk Services: Editions Chart (Usługa BizTalk Services: zestawienie wersji)](biztalk-editions-feature-chart.md)  
+[BizTalk Services: Wykres przedstawiający wersje](biztalk-editions-feature-chart.md)  
 [Tworzenie usługi BizTalk](biztalk-provision-services.md)  
-[BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](biztalk-dashboard-monitor-scale-tabs.md)
+[BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png

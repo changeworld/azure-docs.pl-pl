@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5ea510d8335437cb43f3e8824ec73175c35dcd03
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454678"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452372"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 Aby przygotować jeden lub więcej dysków twardych do zadania importu, wykonaj następujące kroki:
@@ -108,7 +108,7 @@ Aby przygotować jeden lub więcej dysków twardych do zadania importu, wykonaj 
 |**/csas:**< ContainerSas\>|`Optional`. Kontener sygnatur dostępu Współdzielonego umożliwia importowanie danych do konta magazynu. Należy uwzględnić **/sk:**< StorageAccountKey\> lub **/csas:**< ContainerSas\> w poleceniu.<br /><br /> Wartość tego parametru musi zaczynać się od nazwy kontenera, następuje znak zapytania (?) i tokenu sygnatury dostępu Współdzielonego. Na przykład:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Uprawnienia, czy określone w polu adres URL lub przechowywanych zasad dostępu, musi zawierać odczytu, zapisu i usuwania zadań importu i odczytu, zapisu i listy dla zadania eksportu.<br /><br /> Jeśli ten parametr jest określony, wszystkie obiekty BLOB można zaimportować lub wyeksportować musi być w kontenerze, który został określony w sygnatury dostępu współdzielonego.|
 |**/t:**<TargetDriveLetter\>|`Required.` Litera dysku docelowego dysku twardego dla bieżącej sesji kopiowania bez końcowych dwukropka.|
 |**wystąpiły**|`Optional.` Określenia tego parametru, gdy dysk musi być sformatowany; w przeciwnym razie Pomiń ją. Zanim narzędzie formatuje dysk, pojawi się monit o potwierdzenie z konsoli. Aby pominąć potwierdzenie, należy określić parametr /silentmode.|
-|**/silentmode**|`Optional.` Określenia tego parametru, aby pominąć potwierdzenie formatowania dysku targert.|
+|**/silentmode**|`Optional.` Określenia tego parametru, aby pominąć potwierdzenie formatowania dysku docelowego.|
 |**/ szyfrowanie**|`Optional.` Ten parametr należy określić, gdy dysk jeszcze nie został zaszyfrowany za pomocą funkcji BitLocker i musi być zaszyfrowane za pomocą narzędzia. Jeśli już został zaszyfrowany dysk z funkcją BitLocker, Pomiń ten parametr i określ `/bk` parametru, zapewniając istniejącego klucza funkcji BitLocker.<br /><br /> Jeśli określisz `/format` należy także określić parametr, następnie `/encrypt` parametru.|
 |**/bk:**<BitLockerKey\>|`Optional.` Jeśli `/encrypt` jest określony, Pomiń ten parametr. Jeśli `/encrypt` jest pominięty, musisz już mieć zaszyfrowany dysk z funkcją BitLocker. Użyj tego parametru do określenia klucza funkcji BitLocker. Szyfrowanie funkcją BitLocker jest wymagana dla wszystkich dysków twardych do zadania importu.|
 |**/ logdir:**< LogDirectory\>|`Optional.` Katalog dziennika określa katalog ma być używany do przechowywania pełne dzienniki, jak również tymczasowych plików manifestu. Jeśli nie zostanie określony, bieżący katalog będzie służyć jako katalog dziennika.|

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 940a5839fe2c2eea11d9570d3dca48cd514e21af
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417248"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454905"
 ---
 # <a name="azure-automation-runbook-types"></a>Typy elementów runbook w usłudze Azure Automation
 
@@ -22,10 +22,10 @@ Usługa Azure Automation obsługuje kilka typów elementów runbook, krótko opi
 
 | Type | Opis |
 |:--- |:--- |
-| [Element graficzny](#graphical-runbooks) |Oparte na programie Windows PowerShell i tworzone oraz edytowane całkowicie w edytorze graficznym w witrynie Azure portal. |
-| [Graficzny przepływ pracy programu PowerShell](#graphical-runbooks) |Oparte na przepływie pracy programu Windows PowerShell i tworzone oraz edytowane całkowicie za edytor graficzny, w witrynie Azure portal. |
+| [Element graficzny](#graphical-runbooks)|Oparte na programie Windows PowerShell i tworzone oraz edytowane całkowicie w edytorze graficznym w witrynie Azure portal. |
+| [Graficzny przepływ pracy programu PowerShell](#graphical-runbooks)|Oparte na przepływie pracy programu Windows PowerShell i tworzone oraz edytowane całkowicie za edytor graficzny, w witrynie Azure portal. |
 | [Program PowerShell](#powershell-runbooks) |Element runbook tekstu, oparte na skrypt programu Windows PowerShell. |
-| [Przepływ pracy programu PowerShell](#powershell-workflow-runbooks) |Element runbook tekstu, oparte na przepływie pracy programu Windows PowerShell. |
+| [Przepływ pracy programu PowerShell](#powershell-workflow-runbooks)|Element runbook tekstu, oparte na przepływie pracy programu Windows PowerShell. |
 | [Python](#python-runbooks) |Element runbook tekst oparty na języku Python. |
 
 ## <a name="graphical-runbooks"></a>Graficzne elementy runbook
@@ -45,6 +45,7 @@ Usługa Azure Automation obsługuje kilka typów elementów runbook, krótko opi
 * Nie można edytować element runbook poza witryny Azure portal.
 * Może wymagać działania kodu zawierające kod programu PowerShell do wykonywania złożonej logiki.
 * Nie można wyświetlić ani bezpośrednio edytować kod programu PowerShell, który jest tworzony przez graficzny przepływ pracy. Możesz wyświetlić kod, który tworzysz w żadnych działań kodu.
+* Nie uruchomiono na systemie Linux hybrydowego procesu roboczego Runbook
 
 ## <a name="powershell-runbooks"></a>Elementy runbook programu PowerShell
 
@@ -54,6 +55,7 @@ Elementy runbook programu PowerShell są oparte na programie Windows PowerShell.
 
 * Zaimplementuj wszystkie złożonej logiki przy użyciu programu PowerShell kodu bez przeprowadzania dodatkowej złożoności przepływu pracy programu PowerShell.
 * Element Runbook uruchamia się szybciej niż w elementach runbook przepływu pracy programu PowerShell, ponieważ nie musi on być skompilowany przed uruchomieniem.
+* Można uruchomić na platformie Azure lub z systemem Linux i Windows hybrydowych procesów roboczych Runbook
 
 ### <a name="limitations"></a>Ograniczenia
 
@@ -88,6 +90,7 @@ Elementy runbook przepływu pracy programu PowerShell są tekstowymi elementami 
 * Element Runbook musi obsłużyć dodatkowe złożoność przepływu pracy programu PowerShell takich jak [deserializacji obiektów](automation-powershell-workflow.md#code-changes).
 * Element Runbook zajmuje więcej czasu start niż elementy runbook programu PowerShell, który musi być skompilowany przed uruchomieniem.
 * Elementy runbook programu PowerShell może być tylko dołączone jako podrzędne elementy runbook za pomocą polecenia cmdlet Start-AzureAutomationRunbook, co powoduje utworzenie nowego zadania.
+* Nie uruchomiono na systemie Linux hybrydowego procesu roboczego Runbook
 
 ## <a name="python-runbooks"></a>Elementy runbook języka Python
 
@@ -96,6 +99,7 @@ Elementy runbook języka Python kompilacji w ramach języka Python 2.  Można be
 ### <a name="advantages"></a>Zalety
 
 * Korzystaj z niezawodnej biblioteki języka Python.
+* Może być uruchomione na platformie Azure lub na oba Linux hybrydowych procesów roboczych Runbook. Windows hybrydowych procesów roboczych Runbook są obsługiwane za pomocą [python2.7](https://www.python.org/downloads/release/latest/python2) zainstalowane.
 
 ### <a name="limitations"></a>Ograniczenia
 

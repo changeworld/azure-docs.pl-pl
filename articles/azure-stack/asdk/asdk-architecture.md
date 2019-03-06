@@ -16,15 +16,15 @@ ms.date: 01/21/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9157acc7517aea56f087a3dbff0fe7114f8b4c87
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c69b124f84e87e8f0b937dfa275378c376894f9b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55958809"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447204"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura systemu Microsoft Azure Stack Development Kit
-Azure Stack Development Kit (ASDK) jest wdrożenia z pojedynczym węzłem usługi Azure Stack, działającego na komputerze hosta. Krawędź compontents routingu są instalowane na komputerze hosta, aby zapewnić funkcje usługi translatora adresów Sieciowych i sieci VPN dla usługi Azure Stack. Role infrastruktury w usłudze Azure Stack, uruchom na warstwie komputera fizycznego hosta funkcji Hyper-V.
+Azure Stack Development Kit (ASDK) jest wdrożenia z pojedynczym węzłem usługi Azure Stack, działającego na komputerze hosta. Składniki routingu Edge są zainstalowane na komputerze hosta, aby zapewnić funkcje usługi translatora adresów Sieciowych i sieci VPN dla usługi Azure Stack. Role infrastruktury w usłudze Azure Stack, uruchom na warstwie komputera fizycznego hosta funkcji Hyper-V.
 
 
 ## <a name="virtual-machine-roles"></a>Role maszyny wirtualnej

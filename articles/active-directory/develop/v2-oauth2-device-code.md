@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1f34796a98acb3ed4241edff57e506990479d1a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170198"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443270"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory w wersji 2.0 i przepływ kodu urządzenia OAuth 2.0
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170198"
 Usługa Azure AD obsługuje [przyznawania kodu urządzenia](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), co pozwala użytkownikom na logowanie się do ograniczonych danych wejściowych urządzeń, takich jak telewizor smart TV, urządzenia IoT lub drukarki.  Aby włączyć ten przepływ, do urządzenia przypisano użytkownika odwiedź strony sieci Web w przeglądarce na innym urządzeniu, aby zalogować się.  Gdy użytkownik się zaloguje, urządzenie jest w stanie uzyskiwanie tokenów dostępu i tokenów odświeżania, zgodnie z potrzebami.  
 
 > [!Important] 
-> W tej chwili punktu końcowego v2.0 obsługuje przepływ urządzenia tylko dla dzierżaw usługi Azure AD, ale nie osobistych kont.  Oznacza to, czy należy użyć gośćmi punktu końcowego lub punkt końcowy organizacji.  
+> W tej chwili punktu końcowego v2.0 obsługuje przepływ urządzenia tylko dla dzierżaw usługi Azure AD, ale nie osobistych kont.  Oznacza to, że punkt końcowy skonfigurowany jako dzierżawca lub punkt końcowy organizacje należy użyć.  
 >
 > Konta osobiste, które są zaproszeni do dzierżawy usługi Azure AD będzie używać grant flow urządzenia, ale tylko w kontekście dzierżawy.
 

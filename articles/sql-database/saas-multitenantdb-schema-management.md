@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: b3855386f89eda71e145df6dd83d1b1e7e093735
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 55e414a35574f8437a30ffb75aebd82eded14fa9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563647"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447927"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematami w aplikacji SaaS, która używa podzielonej na fragmenty wielodostępnych baz danych SQL
 
@@ -173,5 +173,5 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 > * Aktualizowanie danych referencyjnych we wszystkich bazach danych dzierżaw
 > * Tworzenie indeksu tabeli we wszystkich bazach danych dzierżaw
 
-Następnie spróbuj [samouczek raportowania Ad hoc](saas-multitenantdb-adhoc-reporting.md) do eksplorowania uruchamiania rozproszonych zapytań w dzierżawie baz danych.
+Następnie spróbuj [raportowanie Ad hoc samouczek](saas-multitenantdb-adhoc-reporting.md) do eksplorowania uruchamiania rozproszonych zapytań w dzierżawie baz danych.
 

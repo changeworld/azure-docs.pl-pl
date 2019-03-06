@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53eb0c4ad5c0a21f46985062ef8202a87dc0d5e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c23f16f5d3c665cb74e9e0460d2e5658fa716d72
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189365"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -48,8 +48,8 @@ Do konfigurowania integracji z usługą Azure AD z Kampusu nieskończoną, potrz
 Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-- Co najmniej musisz być administratorem usługi Azure Active Directory, aby zakończyć konfigurację.
+- Jeśli nie masz środowiska usługi Azure AD w wersji próbnej, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+- Co najmniej musisz być administratorem usługi Azure Active Directory i mieć rolę zabezpieczeń produktu Campus z "Student informacji systemu (SIS)" Aby ukończyć konfigurację.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -112,7 +112,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy**pełne kroki 4.a za pośrednictwem 4.d, a następnie przejdź do kroku 11.c. Jeśli nie masz pliku metadanych dostawcy usługi, przejdź do kroku 5.
+4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy** wyeksportowany z Kampusu nieskończoną, wykonaj kroki 4.a za pośrednictwem 4.d, a następnie przejdź do kroku 11.c. Jeśli nie masz pliku metadanych dostawcy usługi, przejdź do kroku 5.
 
     a. Kliknij przycisk **przekazywania pliku metadanych**.
 
@@ -168,13 +168,15 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     a. Wybierz **Włącz SAML logowania jednokrotnego**.
     
-    b. Na **opcję Pobierz dane serwera dostawcy tożsamości (IDP)** wybierz **adres URL metadanych**, Wklej **adres Url metadanych Federacji aplikacji** w oknie dialogowym a Kliknij przycisk **synchronizacji**.
+    b. Edytuj **opcjonalna nazwa atrybutu** zawierać **nazwy**
+    
+    c. Na **opcję Pobierz dane serwera dostawcy tożsamości (IDP)** wybierz **adres URL metadanych**, Wklej **adres Url metadanych Federacji aplikacji** (z kroku 6 powyżej) w pola, a następnie kliknij przycisk **synchronizacji**.
 
-    c. Kliknij **metadanych dostawcy usługi** łącze, aby zapisać **plik metadanych dostawcy usług** na komputerze, a następnie przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie Wypełnij **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal (w tym celu należy odwoływać się do kroku 4 do przekazywania i automatyczne wypełnianie wartości, lub krok 5 do ręcznego wprowadzania).
+    d. Kliknij **metadanych dostawcy usługi** łącze, aby zapisać **plik metadanych dostawcy usług** na komputerze, a następnie przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie Wypełnij **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal (w tym celu należy odwoływać się do kroku 4 do przekazywania i automatyczne wypełnianie wartości, lub krok 5 do ręcznego wprowadzania).
 
-    d. Po kliknięciu przycisku **synchronizacji** wartości pobrać, automatycznie wypełnione w **Konfiguracja dostawcy usługi logowania jednokrotnego** strony.
+    e. Po kliknięciu przycisku **synchronizacji** wartości pobrać, automatycznie wypełnione w **Konfiguracja dostawcy usługi logowania jednokrotnego** strony.
 
-    e. Kliknij pozycję **Zapisz**.
+    f. Kliknij pozycję **Zapisz**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -233,7 +235,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Campus nieskończonej w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do aplikacji Campus nieskończone. Jeśli logujesz się do aplikacji Camnpus nieskończonej w tej samej przeglądarce, które są administrowaniu usługą Azure AD, upewnij się, że użytkownik jest zalogowany do usługi Azure AD jako użytkownika testowego. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Campus nieskończonej w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do aplikacji Campus nieskończone. Jeśli logujesz się do aplikacji Campus nieskończonej w tej samej przeglądarce, które są administrowaniu usługą Azure AD, upewnij się, że użytkownik jest zalogowany do usługi Azure AD jako użytkownika testowego. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

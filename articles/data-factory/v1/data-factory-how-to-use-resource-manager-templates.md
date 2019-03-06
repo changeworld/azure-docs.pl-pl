@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9fb63ae141665dbeb64ee7046427098d4482aa55
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 904b5db35281ed07745b33c364c03e3f4c4bfd2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111326"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449210"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Szablony umożliwiają tworzenie jednostki usługi Azure Data Factory
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "56111326"
 ## <a name="overview"></a>Przegląd
 Podczas używania usługi Azure Data Factory na potrzeby integracji danych, może się okazać samodzielnie ponowne użycie tego samego wzorca co w różnych środowiskach lub wdrażanie tego samego zadania kilkukrotnie w obrębie tego samego rozwiązania. Szablony ułatwiają implementować oraz zarządzać nimi tych scenariuszy w łatwy sposób. Szablony usługi Azure Data Factory jest idealny dla scenariuszy, które obejmują możliwość ponownego wykorzystania i powtórzenie.
 
-Rozważmy sytuację, w którym organizacja ma 10 zakładów produkcyjnych na całym świecie. Dzienniki z każdego zakładu są przechowywane w oddzielnych lokalnej bazy danych programu SQL Server. Firma chce utworzyć pojedynczego magazynu danych w chmurze na potrzeby analizy ad-hoc. Również chce mieć tę samą logikę, ale różnych konfiguracji dla środowisk programowania, testowania i produkcji.
+Rozważmy sytuację, w którym organizacja ma 10 zakładów produkcyjnych na całym świecie. Dzienniki z każdego zakładu są przechowywane w oddzielnych lokalnej bazy danych programu SQL Server. Firma chce kompilacji pojedynczego magazynu danych w chmurze na potrzeby analizy ad-hoc. Również chce mieć tę samą logikę, ale różnych konfiguracji dla środowisk programowania, testowania i produkcji.
 
 W tym przypadku zadania konieczne należy powtórzyć w tym samym środowisku, ale z różnymi wartościami dla fabryki danych 10 dla każdego zakładu produkcyjnego. W efekcie **powtórzenia** jest obecny. Tworzenie szablonów pozwala pozyskiwania ten ogólny przepływ (czyli potoki o tych samych czynności w każda fabryka danych), ale korzysta z pliku parametrów osobne dla każdego zakładu produkcyjnego.
 

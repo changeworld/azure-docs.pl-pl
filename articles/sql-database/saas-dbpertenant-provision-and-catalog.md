@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ada0a54f014e4e896c0e91d1eeafb94e6d254d5b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565222"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445088"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak aprowizowanie nowych dzierżaw i rejestrowanie ich w wykazie
 
@@ -46,7 +46,7 @@ Wykaz umożliwia nazwę lub lokalizację bazy danych można zmienić przy minima
 
 Katalog również przechowywać dodatkowe dzierżawy lub metadanych bazy danych, takie jak wersja schematu, plan usługi lub umowy SLA oferowanych dzierżawcom. Katalog może przechowywać inne informacje, które umożliwiają zarządzanie aplikacjami, dział obsługi klienta lub metodyki DevOps. 
 
-Poza aplikacją SaaS katalogu można włączyć narzędzia graficzne bazy danych. W tym przykładzie bazy danych dla dzierżawcy SaaS o nazwie Wingtip Tickets umożliwia włączanie kwerenda międzydzierżawowa, który jest przedstawione w katalogu [samouczek raportowania Ad hoc](saas-tenancy-cross-tenant-reporting.md). Zarządzanie bazami danych zadania są przedstawione w [Zarządzanie schematami](saas-tenancy-schema-management.md) i [Tenant analytics](saas-tenancy-tenant-analytics.md) samouczków. 
+Poza aplikacją SaaS katalogu można włączyć narzędzia graficzne bazy danych. W tym przykładzie bazy danych dla dzierżawcy SaaS o nazwie Wingtip Tickets umożliwia włączanie kwerenda międzydzierżawowa, który jest przedstawione w katalogu [raportowanie Ad hoc samouczek](saas-tenancy-cross-tenant-reporting.md). Zarządzanie bazami danych zadania są przedstawione w [Zarządzanie schematami](saas-tenancy-schema-management.md) i [Tenant analytics](saas-tenancy-tenant-analytics.md) samouczków. 
 
 W przykładach SaaS o nazwie Wingtip Tickets wykazu jest implementowany przy użyciu funkcji zarządzania fragmentami [Biblioteka kliencka Elastic Database (EDCL)](sql-database-elastic-database-client-library.md). Biblioteka EDCL jest dostępna w języku Java i .NET Framework. Biblioteka EDCL umożliwia aplikacji na tworzenie i zarządzanie nimi za pomocą mapy fragmentów kopii bazy danych. 
 

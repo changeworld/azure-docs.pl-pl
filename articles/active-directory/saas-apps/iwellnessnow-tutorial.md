@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441a00f066e897ee78476100b0fb34d411e86ac1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 02b831df98db5b9d63873a0da93e603cd7cbf308
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185506"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą iWellnessNow
 
@@ -180,7 +180,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-an-iwellnessnow-test-user"></a>Tworzenie użytkownika testowego iWellnessNow
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iWellnessNow. Praca z [zespołem pomocy technicznej iWellnessNow](mailto:info@iwellnessnow.com) Aby dodać użytkowników na platformie iWellnessNow. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iWellnessNow. Praca z [zespołem pomocy technicznej iWellnessNow](mailto:info@iwellnessnow.com) Aby dodać użytkowników na platformie iWellnessNow. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

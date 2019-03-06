@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 39ff70670d628ca672022b84e59ed3cc8a17d925
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476251"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447040"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Raportowanie przy użyciu międzydzierżawowe rozproszonych zapytań
 
@@ -61,7 +61,7 @@ Aby uruchamiać zapytania dla zestawu danych bardziej interesujące, należy utw
 
 1. W *PowerShell ISE*, Otwórz... \\Learning Modules\\Operational Analytics\\raportowania ad hoc\\*AdhocReporting.ps1 pokaz* skrypt i Ustaw następującą wartość:
    * **$DemoScenario** = 1, **zakup biletów dla zdarzeń na wszystkie lokalizacje**.
-2. Naciśnij klawisz **F5** do uruchamiania skryptu i generowaniu możliwości sprzedaży biletów. Po uruchomieniu skryptu można kontynuować czynności w ramach tego samouczka. Dane biletu zostanie wysłane *uruchamianie zapytań ad hoc distributed* sekcji, więc poczekaj, aż generator biletu zakończyć.
+2. Naciśnij klawisz **F5** do uruchamiania skryptu i generowaniu możliwości sprzedaży biletów. Po uruchomieniu skryptu można kontynuować czynności w ramach tego samouczka. Dane biletu zostanie wysłane *wykonywania ad hoc rozproszonych zapytań* sekcji, więc poczekaj, aż generator biletu zakończyć.
 
 ## <a name="explore-the-global-views"></a>Zapoznaj się z widoki globalne
 
@@ -106,7 +106,7 @@ To ćwiczenie wdraża _adhocreporting_ bazy danych. Jest to główny bazy danych
 
 1. w *PowerShell ISE*, Otwórz... \\Learning Modules\\Operational Analytics\\raportowania ad hoc\\*AdhocReporting.ps1 pokaz*. 
 
-1. Ustaw **$DemoScenario = 2**, _bazy danych raportowania wdrażanie Ad-hoc_.
+1. Ustaw **$DemoScenario = 2**, _wdrażanie Ad hoc, baza danych raportowania_.
 
 1. Naciśnij klawisz **F5** Aby uruchomić skrypt i utworzyć *adhocreporting* bazy danych.
 

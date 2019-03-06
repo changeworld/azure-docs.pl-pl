@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 777d5cb9449bcf9424e2514b2b8f90a9ca6c479c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c6918126c36e1940daf564ee7eae562e31b280c3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285450"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449108"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nie można zdalnie połączyć się z systemem Windows 10 lub Windows Server 2016 VM in Azure z netvsc.sys
 
@@ -26,7 +26,7 @@ W tym artykule wyjaśniono, jak rozwiązać problem, w których jest braku poł�
 
 ## <a name="symptoms"></a>Objawy
 
-Nie można nawiązać Azure Windows 10 lub maszyny Wirtualnej systemu Windows Server 2016, korzystając z nazwa Desktop Protocol (RDP). W [diagnostykę rozruchu](boot-diagnostics.md), ekran pokazuje czerwony krzyżyk w karcie interfejsu sieciowego (NIC). Oznacza to, że maszyna wirtualna nie ma łączności po w pełni załadowany system operacyjny.
+Nie można nawiązać Azure Windows 10 lub maszyny Wirtualnej systemu Windows Server 2016, za pomocą protokołu RDP (Remote Desktop). W [diagnostykę rozruchu](boot-diagnostics.md), ekran pokazuje czerwony krzyżyk w karcie interfejsu sieciowego (NIC). Oznacza to, że maszyna wirtualna nie ma łączności po w pełni załadowany system operacyjny.
 
 Zazwyczaj ten problem występuje w Windows [kompilacji 14393](http://support.microsoft.com/help/4093120/) i [kompilacji 15063](http://support.microsoft.com/help/4015583/). Jeśli wersja systemu operacyjnego jest późniejsza niż te wersje, w tym artykule nie ma zastosowania do danego scenariusza. Aby sprawdzić wersję systemu, otwórz sesję CMD w [funkcji konsoli szeregowej dostępu](serial-console-windows.md), a następnie uruchom **Ver**.
 

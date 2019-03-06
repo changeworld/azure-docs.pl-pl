@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3df48fd42ca998e2a64f2fbe685047da16a8bae7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f6fcc4d2920841c730ef179497f9184b1f6649d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193490"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451964"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Syncplicity
 
@@ -206,7 +206,7 @@ Dla użytkowników usługi AAD można było się zalogować musi być obsługiwa
    
     ![Zarządzanie użytkownikami](./media/syncplicity-tutorial/ic769764.png "Zarządzanie użytkownikami")
 
-1. Typ **Zezwól E-mail** chcesz aprowizować konta usługi AAD, wybierz **użytkownika** jako **roli**, a następnie kliknij przycisk **dalej**.
+1. Typ **adresy E-mail** wybierz konto usługi AAD do aprowizowania **użytkownika** jako **roli**, a następnie kliknij przycisk **dalej**.
    
     ![Informacje o koncie](./media/syncplicity-tutorial/ic769765.png "informacje o koncie")
    

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c68fdadcf115f57ba524b1b4dc8a2c800cbfaf8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a48b9e70fe3373b9bc87788ff11fc0a8edc7bdf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177924"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi PagerDuty
 
@@ -252,7 +252,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka usługi PagerDuty w Panelyou dostępu należy pobrać automatycznie zalogowanych do aplikacji usługi PagerDuty.
+Po kliknięciu kafelka usługi PagerDuty w panelu dostępu użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji usługi PagerDuty.
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
 

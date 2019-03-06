@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: ce377234cceb22bc2c6979bedd92d800355e75da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f567e66a1e84dccaa18db550f30d6bb34ad8162
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872088"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442940"
 ---
 # <a name="bake-acoustics"></a>Tworzenie Akustyka
 
@@ -243,7 +243,7 @@ Na przykład na komputerze przy użyciu Intel Xeon E5-1660 @ 3 GHz oraz 32 GB pa
 ### <a name="setup-docker"></a>Setup Docker
 Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie przetwarzał Symulacja-
 1. Zainstaluj [zestawu narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
-2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowany", a następnie konfiguruje zasoby, aby w przynajmniej 8 GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Przykład ustawień platformy Docker](media/DockerSettings.png)
+2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowane", a następnie konfiguruje zasoby, które mają co najmniej 8GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Przykład ustawień platformy Docker](media/DockerSettings.png)
 3. Przejdź do "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![DockerDriveSharing](media/DockerSharedDrives.png)
 
 ### <a name="run-local-bake"></a>Tworzenie lokalnego uruchomienia

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 24af2150438d3db13323aaecdfd89302b8152fa9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ed6d567be255fe9b72be564c31d734541a1ffa73
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879126"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453341"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Rozwiązywanie problemów z dysku Azure Data Box
 
@@ -73,7 +73,7 @@ Dzienniki aktywności są przechowywane przez 90 dni. Możesz wykonać zapytanie
 | Could not unlock or verify any volumes. Contact Microsoft Support.  <br><br>Za pomocą narzędzia nie można odblokować lub sprawdzić żadnego zablokowanego dysku. | Narzędzie nie mogło odblokować żadnego z zablokowanych dysków przy użyciu podanego klucza dostępu. Skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać informacje o kolejnych krokach.                                                |
 | Following volumes are unlocked and verified. <br>Litery dysku woluminu: E:<br>Could not unlock any volumes with the following passkeys: werwerqomnf, qwerwerqwdfda <br><br>Narzędzie odblokowało niektóre dyski i wyświetla listę liter dysków, które udało się odblokować, i tych, których nie udało się odblokować.| Częściowe powodzenie. Nie udało się odblokować niektórych dysków przy użyciu podanego klucza dostępu. Skontaktuj się z pomocą techniczną firmy Microsoft, aby uzyskać informacje o kolejnych krokach. |
 | Could not find locked volumes. Verify disk received from Microsoft is connected properly and is in locked state.          | Narzędzie nie odnajduje żadnych zablokowanych dysków. Dyski są już odblokowane lub nie zostały wykryte. Upewnij się, że dyski są podłączone i zablokowane.                                                           |
-| Błąd krytyczny: Nieprawidłowy parametr<br>Parameter name: invalid_arg<br>USAGE:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>Przykład: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>Przykład: DataBoxDiskUnlock /SystemCheck<br>Przykład: DataBoxDiskUnlock /Help<br><br>/ Klucze dostępu:       Pobierz ten klucz dostępu z usługi Azure DataBox Disk zamówienia. The passkey unlocks your disks.<br>/ Help:           Ta opcja zapewnia pomoc na użycie polecenia cmdlet i przykładów.<br>/SystemCheck:    Ta opcja sprawdza, czy system spełnia wymagania, aby uruchomić narzędzie.<br><br>Press any key to exit. | Wprowadzono nieprawidłowy parametr. Dozwolone parametry to: /SystemCheck, /PassKey oraz /Help.                                                                            |
+| Błąd krytyczny: Nieprawidłowy parametr<br>Parameter name: invalid_arg<br>USAGE:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>Przykład: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>Przykład: DataBoxDiskUnlock /SystemCheck<br>Przykład: DataBoxDiskUnlock /Help<br><br>/ Klucze dostępu:       Pobierz ten klucz dostępu z usługi Azure DataBox Disk zamówienia. The passkey unlocks your disks.<br>/ Help:           Ta opcja zapewnia pomoc na użycie polecenia cmdlet i przykładów.<br>/SystemCheck:    Ta opcja sprawdza, czy system spełnia wymagania, aby uruchomić narzędzie.<br><br>Press any key to exit. | Wprowadzono nieprawidłowy parametr. Tylko parametry dozwolone są /SystemCheck /PassKey i/Help.                                                                            |
 
 ## <a name="data-box-disk-split-copy-tool-errors"></a>Błędy narzędzia do dzielenia skopiowanych dysków Data Box Disk
 

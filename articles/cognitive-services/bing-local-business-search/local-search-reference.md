@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: de9c79d09c400aa95775b332580c3658c349ede7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820746"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449091"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
@@ -73,7 +73,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
   
 |Name (Nazwa)|Wartość|Type|Wymagane|  
 |----------|-----------|----------|--------------|
-|<a name="count" />Liczba|Liczba wizualizacji wyników do zwrócenia, począwszy od indeksu określonego przez `offset` parametru.|String|Nie|   
+|<a name="count" />Liczba|Liczba wyników do zwrócenia, począwszy od indeksu określonego przez `offset` parametru.|String|Nie|   
 |<a name="localCategories" />localCategories|Lista opcji, które definiują wyszukiwania według kategorii biznesowych.  Zobacz [wyszukiwania lokalnych firm kategorii](local-categories.md)|String|Nie|  
 |<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Interfejsu API wyszukiwania w lokalnych firm aktualnie obsługuje tylko en-us rynku i język.<br /><br />|String|Yes|
 |<a name="offset"/>offset|Indeks, aby uruchomić wyników określony przez `count` parametru.|Liczba całkowita|Nie|  
@@ -154,7 +154,7 @@ Definiuje informacje o lokalnych firmach, takich jak restauracji lub hotelu.
 |Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typ może być ustawiona na jedną z następujących czynności:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restauracja</ul><li>|String|  
-|address|Adres pocztowy, z którym znajduje się jednostka.|PostalAddress|  
+|adres|Adres pocztowy, z którym znajduje się jednostka.|PostalAddress|  
 |entityPresentationInfo|Dodatkowe informacje o jednostce, takiej jak wskazówek, które można użyć w celu określenia typu jednostki. Na przykład czy jest to restauracji lub hotelu. `entityScenario` Pole jest ustawione na element listy.|entityPresentationInfo|  
 |name|Nazwa jednostki.|String|  
 |Telefon|Numer telefonu jednostki.|String|  

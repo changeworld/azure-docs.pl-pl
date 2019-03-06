@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: terrylan
-ms.openlocfilehash: 497fc1dd5691b5aa33207c6a3943a51c473d2f6c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247209"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404811"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -85,7 +85,7 @@ Zasady i wzorców dla sieci obwodowej były dostępne od dziesięcioleci. Natomi
 Poniżej przedstawiono najlepsze rozwiązania dotyczące zarządzania obwodowej tożsamości.
 
 **Najlepsze rozwiązanie**: Zabezpiecz swoje klucze i poświadczenia, aby zabezpieczyć wdrożenie PaaS.   
-**Szczegóły**: Utraty kluczy i poświadczeń jest to powszechny problem. Umożliwia to scentralizowane rozwiązanie, których klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń. Platforma Azure udostępnia w chmurze za pomocą modułu HSM [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
+**Szczegóły**: Utraty kluczy i poświadczeń jest to powszechny problem. Umożliwia to scentralizowane rozwiązanie, których klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń (HSM). [Usługa Azure Key Vault](../key-vault/key-vault-whatis.md) zabezpiecza kluczy i wpisów tajnych, szyfrując klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych, pliki PFX i hasła, przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń.
 
 **Najlepsze rozwiązanie**: Nie umieszczaj poświadczeń i innych wpisów tajnych w kodzie źródłowym lub GitHub.   
 **Szczegóły**: Jedyną czynnością co gorsza, nie tracąc kluczy i poświadczeń jest nieautoryzowana osoba uzyskać do nich dostęp. Osoby atakujące mogą korzystać z bota technologie, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj klucza i wpisów tajnych w tych repozytoriów publicznych.

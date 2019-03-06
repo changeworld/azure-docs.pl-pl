@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 1fb9917e30a88cf5a68c9e170d66eeaa1d477deb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877150"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405202"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -303,7 +303,7 @@ Opcjonalnie służy polecenie cmdlet Get-Content wskaż plik zawierający tokenu
 
 ## <a name="verify-azure-stack-registration"></a>Weryfikuj rejestrację w usłudze Azure Stack
 
-Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestracji w usłudze Azure Stack zakończyła się pomyślnie. Ten Kafelek jest dostępny na domyślny pulpit nawigacyjny w portalu administratora. Stan mogą być zarejestrowane lub niezarejestrowany. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack oraz rejestracji grupy zasobów i nazwę.
+Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestracji w usłudze Azure Stack zakończyła się pomyślnie. Ten Kafelek jest dostępny na domyślny pulpit nawigacyjny w portalu administracyjnym. Stan mogą być zarejestrowane lub niezarejestrowany. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack oraz rejestracji grupy zasobów i nazwę.
 
 1. Zaloguj się do [portalu administratora usługi Azure Stack](https://adminportal.local.azurestack.external).
 
@@ -325,7 +325,7 @@ Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestrac
 
     Rejestracje aplikacji w usłudze Azure Stack mają prefiks **usługi Azure Stack**.
 
-Alternatywnie można sprawdzić, czy rejestracja powiodła się przy użyciu funkcji zarządzania w portalu Marketplace. Jeśli zobaczysz listę elementów portalu marketplace w bloku zarządzania portalu Marketplace, proces rejestracji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie będzie można zobaczyć elementy portalu marketplace w portalu Marketplace zarządzania. Jednak można użyć narzędzia w trybie offline, aby zweryfikować rejestrację.
+Alternatywnie można sprawdzić, czy rejestracja powiodła się przy użyciu funkcji zarządzania w portalu Marketplace. Jeśli zobaczysz listę elementów portalu marketplace w bloku zarządzania portalu Marketplace, proces rejestracji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie będzie można zobaczyć elementy portalu marketplace w portalu Marketplace zarządzania.
 
 > [!NOTE]
 > Po zakończeniu rejestracji pojawi się nie jest już aktywne ostrzeżenie nie rejestrowania. W scenariuszach bez połączenia zostanie wyświetlony komunikat w portalu Marketplace management prośbą do rejestrowania i aktywowania usługi Azure Stack, nawet wtedy, gdy został pomyślnie zarejestrowany.

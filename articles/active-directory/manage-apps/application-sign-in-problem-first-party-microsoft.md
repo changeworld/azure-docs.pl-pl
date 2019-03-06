@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc5143803c7d031071cccbb9c6c3842bbdacd9c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09f1ef137bbad50e72771c4368346716336c4faf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177193"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447102"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -33,7 +33,7 @@ Istnieją trzy sposoby, czy użytkownik może uzyskać dostęp do aplikacji opub
 
 -   W przypadku aplikacji, które firmy Microsoft lub inna firma publikuje bezpłatnie dla wszystkich użytkowników może otrzymać dostęp za pośrednictwem **zgody użytkownika**. This0 oznacza Zaloguj się do aplikacji za pomocą konta usługi Azure AD konta służbowego i zezwala na dostęp do niektórych ograniczony zestaw danych na koncie.
 
--   W przypadku aplikacji, które firmy Microsoft lub innych firm 3 publikuje bezpłatnie dla wszystkich użytkowników może również uzyskać dostęp za pośrednictwem **zgody administratora**. Oznacza to, że administrator wykrył, że aplikacji mogą być używane przez wszystkich użytkowników w organizacji, tak aby zalogować się do aplikacji przy użyciu konta administratora globalnego i przyznać dostęp do wszystkich osób w organizacji.
+-   W przypadku aplikacji, które publikuje firmy Microsoft lub 3 bezpłatnie dla wszystkich użytkowników może również uzyskać dostęp za pośrednictwem **zgody administratora**. Oznacza to, że administrator wykrył, że aplikacji mogą być używane przez wszystkich użytkowników w organizacji, tak aby zalogować się do aplikacji przy użyciu konta administratora globalnego i przyznać dostęp do wszystkich osób w organizacji.
 
 Aby rozwiązać problem, zacznij od [ogólne obszarów problemów z dostępem aplikacji do należy wziąć pod uwagę](#general-problem-areas-with-application-access-to-consider) , a następnie zapoznaj się z tym przewodnikiem: Kroki rozwiązywania problemów z Microsoft Application dostępu, aby uzyskać szczegóły.
 

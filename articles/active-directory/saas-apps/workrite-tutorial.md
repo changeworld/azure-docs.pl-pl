@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d3b3702ca2daad002bde1b4e64bf9d43a03028d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb64debca10cf7be6e2e328a1f401f125b67d940
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180440"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Workrite
 
@@ -184,7 +184,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Workri
 
 1. Na **Create User** okno dialogowe, należy wykonać następujące czynności:
    
-    ![Tworzenie użytkownika Dailog][402]
+    ![Tworzenie użytkownika w oknie dialogowym][402]
     
     a. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. Brittasimon@contoso.com.
 

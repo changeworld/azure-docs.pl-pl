@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a45ed3ad5360f613a4949799c60ec09f4a30afb9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 7a02fff5a727bd0a3be762e9e458a71f66b87ba2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427772"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452678"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Usługa SQL Data Warehouse business intelligence partnerów
 Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej gamy narzędzi wiodące w branży.  W tym artykule przedstawiono firm partnerskich Microsoft business intelligence (BI) rozwiązań Obsługa usługi Azure SQL Data Warehouse.
@@ -34,7 +34,7 @@ Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej
 | ![SiSense][9] |**SiSense**<br>SiSense to oprogramowanie do analizy biznesowej pełnym stosie, które jest dostarczana z narzędziami, które firma musi Analizuj i wizualizuj dane: analitycznej bazy danych o wysokiej wydajności, możliwość Dołącz do wielu źródeł, wyodrębnianie proste danych (ETL) i danych opartych na sieci web wizualizacji. Rozpocznij analizowanie i wizualizowanie dużych zestawów danych przy użyciu analizy i analizy Biznesowej SiSense już dziś. |[Witryny sieci Web][sisense_website]<br>[Arkusz danych][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense wideo](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
 | ![TABLEAU][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Marketplace][tableau_marketplace]<br>[Witryny sieci Web][tableau_website]<br>[Arkusz danych][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![TABLEAU wideo](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
 | ![Targit][11] |**Targit**<br>Pakiet decyzji Targit zapewnia analizy i analizy Biznesowej platformy, która zapewnia pulpity nawigacyjne czasu rzeczywistego, samoobsługowej analizy, raportowanie przyjazny dla użytkownika, atrakcyjnych funkcji mobilnych i technologii proste odnajdywanie danych w rozwiązaniu pojedyncze, spójne. Targit zapewnia firmom odwagę do działania. |[Marketplace][targit_marketplace]<br>[Witryny sieci Web][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit wideo](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
-| ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc, raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Marketplace][yellowfin_marketplace]<br>[Witryny sieci Web][yellowfin_website]<br>[Arkusz danych][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![Platforma yellowfin wideo](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
+| ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Marketplace][yellowfin_marketplace]<br>[Witryny sieci Web][yellowfin_website]<br>[Arkusz danych][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![Platforma yellowfin wideo](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

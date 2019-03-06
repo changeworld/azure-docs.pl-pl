@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5412e0a7bae3667ceb29085da566ef3b73c82c35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6c9f128a046904eb8df90625ce1043b3d42e8be4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316629"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448547"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -31,7 +31,7 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **zestawu deweloperskiego** szablon urządzenia o następującej charakterystyce: 
 
-- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **Magnometer** (mierzoną wzdłuż X Y, osi Z), **Accelorometer** (mierzoną wzdłuż X, Y osi Z) i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
+- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **Magnometer** (mierzoną wzdłuż X Y, osi Z), **przyspieszeniomierza** (mierzoną wzdłuż X, Y osi Z) i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
 - Stan, który zawiera przykład miary **stan urządzenia**.
 - Miara zdarzeń z **użycia B przycisku** zdarzeń. 
 - Ustawień przedstawiający **napięcia**, **bieżącego**, **szybkość wentylator**i **IR** przełącznika.
@@ -56,7 +56,7 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
  
     ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 
-3. Upewnij się zapisać te informacje, jak będzie temporaritly uzyskać połączenia z Internetem podczas przygotowywania urządzenia Mxchip. 
+3. Upewnij się zapisać te informacje, jak będzie tymczasowo rozłączenia połączenia z Internetem podczas przygotowywania urządzenia Mxchip. 
 
 
 ### <a name="prepare-the-devkit-device"></a>Przygotuj urządzenie Mxchip

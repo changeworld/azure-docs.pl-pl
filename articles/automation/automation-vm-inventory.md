@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c0caece57885dfa3c26d368990a6af8e5b14eed6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823998"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441393"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu
 
@@ -105,7 +105,7 @@ Wybór grupy maszyn z listy spowoduje otwarcie strony grupy maszyn. Ta strona za
 
 Kliknij przycisk **+ klonowania** przycisk, aby sklonować grupy maszyn. W tym miejscu należy nadać grupie nową nazwę i alias dla grupy. Definicja może się zmienić w tej chwili. Po zmianie naciśnij zapytania **zapytanie weryfikacji** nad wersją zapoznawczą maszyn, które będzie można wybrać. Gdy jesteś zadowolony z grupy kliknij **Utwórz** można utworzyć grupy maszyn
 
-Jeśli chcesz utworzyć nową grupę mchine, wybierz opcję **+ Utwórz grupę maszyny**. Ten przycisk otwiera **Utwórz stronę grupy maszyny** gdzie można zdefiniować nowej grupy. Kliknij przycisk **Utwórz** do utworzenia grupy.
+Jeśli chcesz utworzyć nową grupę maszyny wybierz **+ Utwórz grupę maszyny**. Ten przycisk otwiera **Utwórz stronę grupy maszyny** gdzie można zdefiniować nowej grupy. Kliknij przycisk **Utwórz** do utworzenia grupy.
 
 ![Utwórz nową grupę maszyn](./media/automation-vm-inventory/create-new-group.png)
 

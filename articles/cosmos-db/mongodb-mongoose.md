@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 26eccfd2a144d5bfcb285e6b52af246c3eefde75
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c1343326b6db18608eb6a8994957d560124116ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822038"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450706"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Łączenie aplikacji Node.js platformy Mongoose w usłudze Azure Cosmos DB
 
@@ -183,7 +183,7 @@ Domyślnym zachowaniem platformy Mongoose jest tworzenie kolekcji usługi MongoD
 
 1. Teraz przechodząc do witryny Azure portal, zauważysz dwie kolekcje tworzone w usłudze Cosmos DB.
 
-    ![Samouczek środowiska Node.js — zrzut ekranu witryny Azure Portal przedstawiający konto usługi Azure Cosmos DB z wyróżnionymi wieloma nazwami kolekcji — baza danych Node][multiple-coll]
+    ![Node.js samouczka — zrzut ekranu witryny Azure Portal przedstawiający konto usługi Azure Cosmos DB z wyróżnionymi wieloma nazwami kolekcji — baza danych Node][multiple-coll]
 
 1. Na koniec spróbujmy odczytać dane z usługi Cosmos DB. Ponieważ korzystamy z domyślnego modelu działania platformy Mongoose, operacje odczytywania są takie same jak inne operacje odczytywania na platformie Mongoose.
 
@@ -288,7 +288,7 @@ W tym miejscu utworzymy bazowy model obiektów, zdefiniujemy klucz różnicując
 
 1. Jeśli teraz wrócisz do witryny Azure Portal, zauważysz, że znajduje się tam tylko jedna kolekcja o nazwie ```alldata```, która zawiera dane zarówno z modelu „Family”, jak i „VacationDestinations”.
 
-    ![Samouczek środowiska Node.js — zrzut ekranu witryny Azure Portal przedstawiający konto usługi Azure Cosmos DB z wyróżnioną nazwą kolekcji — baza danych Node][alldata]
+    ![Node.js samouczka — zrzut ekranu witryny Azure Portal przedstawiający konto usługi Azure Cosmos DB z wyróżnioną nazwą kolekcji — baza danych Node][alldata]
 
 1. Zauważ również, że każdy obiekt ma jeszcze jeden atrybut o nazwie ```__type```, który pomaga rozróżnić te dwa różne modele obiektów.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747326"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407633"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Wymagania systemowe w usłudze Azure dysku Data Box
 
@@ -52,7 +52,7 @@ Klient systemu Linux narzędzi dysku Data Box instaluje również następujące 
 
 ## <a name="supported-connection"></a>Połączenia obsługiwane
 
-Komputer kliencki, zawierający dane musi mieć USB 3.0 lub nowszej portu. Dyski nawiązać tego klienta przy użyciu dostarczonego kabla. 
+Komputer kliencki, zawierający dane musi mieć USB 3.0 lub nowszej portu. Dyski nawiązać tego klienta przy użyciu dostarczonego kabla.
 
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
@@ -62,19 +62,22 @@ Poniżej przedstawiono listę typów obsługiwanych magazynu dla dysku Data Box.
 | --- | --- |
 | Wdrożenie klasyczne | Standardowa (Standard) |
 | Ogólne zastosowanie  |Standardowe; obsługiwane są zarówno V1 i V2. Obsługiwane są zarówno gorące i chłodne warstwy. |
+| Konta usługi blob storage | |
 
 >[!NOTE]
 > Usługa Azure Data Lake Storage Gen 2 konta nie są obsługiwane.
 
 
-## <a name="supported-storage-types"></a>Obsługiwane typy
+## <a name="supported-storage-types-for-upload"></a>Obsługiwane typy dla przekazywania
 
-Poniżej przedstawiono listę typów obsługiwanych magazynu dla dysku Data Box.
+Poniżej przedstawiono listę typów pamięci masowej, obsługiwane w przypadku przekazany na platformę Azure przy użyciu dysku Data Box.
 
 | **Format pliku** | **Uwagi** |
 | --- | --- |
 | Usługa Azure blokowych obiektów blob | |
 | Obiekt blob typu page platformy Azure  | |
+| Azure Files  | |
+| Managed Disks | |
 
 
 ## <a name="next-step"></a>Następny krok

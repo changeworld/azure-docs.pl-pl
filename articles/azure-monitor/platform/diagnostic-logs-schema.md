@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 6470e2e48854d091c219fb4ec3224e87b1567dd7
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 6e67b049ca179b1e93bcf645afd89b4a2eb0048d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300221"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436506"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -47,7 +47,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 
 | Usługa | Schemat i dokumenty |
 | --- | --- |
-| Usługa Azure Active Directory | [Omówienie](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schemat dziennika inspekcji](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) i [Sign-Ins schematu](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Usługa Azure Active Directory | [Omówienie](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schemat dziennika inspekcji](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) i [schematu logowania](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Dzienniki diagnostyczne usługi API Management](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Bramy aplikacji |[Rejestrowanie diagnostyczne bramy Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |

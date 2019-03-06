@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 618412f27efb71caf6e044b4768d7be00f0d0f47
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009244"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407540"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Tryby wdrażania usługi Azure Resource Manager
 
@@ -26,7 +26,7 @@ Dla obu trybów usługi Resource Manager spróbuje utworzyć wszystkie zasoby, k
 
 ## <a name="complete-mode"></a>W trybie
 
-W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby, które są określone w szablonie, ale nie wdrożona, ponieważ [warunek](resource-manager-templates-resources.md#condition) zwróci wartość false, nie są usuwane.
+W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby, które są określone w szablonie, ale nie wdrożona, ponieważ [warunek](resource-group-authoring-templates.md#condition) zwróci wartość false, nie są usuwane.
 
 Istnieją pewne różnice w sposób typów zasobów sposób usuwania w trybie. Nadrzędny zasoby są automatycznie usuwane, gdy nie znajduje się w szablonie, które jest wdrożone w trybie. Niektóre zasoby podrzędne nie są automatycznie usuwane po nie w szablonie. Jednak te zasobu podrzędnego są usuwane po usunięciu zasobu nadrzędnego. 
 

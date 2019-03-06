@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412193"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447850"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Utwórz maszynę wirtualną systemu Linux, która korzysta z uwierzytelniania SSH przy użyciu interfejsu API REST
 
@@ -65,8 +65,8 @@ Następujące typowe definicje są używane do tworzenia treści żądania:
 
 | Name (Nazwa)                       | Wymagane | Typ                                                                                | Opis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | ciąg                                                                              | Lokalizacja zasobu. |
-| name                       |          | ciąg                                                                              | Nazwa maszyny wirtualnej. |
+| location                   | True     | string                                                                              | Lokalizacja zasobu. |
+| name                       |          | string                                                                              | Nazwa maszyny wirtualnej. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia przechowywania dla dysków maszyny wirtualnej. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Określa ustawienia systemu operacyjnego dla maszyny wirtualnej. |

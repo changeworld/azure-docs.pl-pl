@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 403e126795a877be018cf4f4eb42581dee080e9c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 59524a9a08b16100598b7713cb0507646245d90b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163164"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445827"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -33,7 +33,7 @@ Aby dołączyć listę funkcji transformacji roszczenia, które mogą być używ
 </ClaimsTransformations>
 ```
 
-**ClaimsTransformation** conatains element następujące atrybuty:
+**ClaimsTransformation** element zawiera następujące atrybuty:
 
 | Atrybut |Wymagane | Opis |
 | --------- |-------- | ----------- |
@@ -71,9 +71,9 @@ Aby dołączyć listę funkcji transformacji roszczenia, które mogą być używ
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Oświadczenie InputClaim | 1: n | Typ oświadczenia oczekiwanych danych wejściowych. |
+| oświadczenie inputClaim | 1: n | Typ oświadczenia oczekiwanych danych wejściowych. |
 
-#### <a name="inputclaim"></a>Oświadczenie InputClaim
+#### <a name="inputclaim"></a>oświadczenie inputClaim
 
 **Oświadczenie InputClaim** element zawiera następujące atrybuty:
 
@@ -96,7 +96,7 @@ Aby dołączyć listę funkcji transformacji roszczenia, które mogą być używ
 | --------- | ----------- |----------- |
 | Identyfikator | Yes | Identyfikator, który jest odwołaniem do parametru metody przekształcania oświadczeń. Każda metoda przekształcania oświadczeń ma własne wartości. Znajdują się w tabeli przekształcania oświadczeń, aby uzyskać pełną listę dostępnych wartości. |
 | DataType | Yes | Typ danych parametru, takie jak ciąg, wartość logiczna, Int lub daty/godziny zgodnie z wyliczenia typu danych w schemacie XML zasad niestandardowych. Ten typ służy do wykonywania operacji arytmetycznych poprawnie. Każde przekształcenie oświadczeń ma własne wartości. Zobacz [odwołanie do przekształcania oświadczeń](#Claims-transformations-reference) pełną listę dostępnych wartości. |
-| Value | Yes | Wartość, która jest przekazywana verbatim do przekształcania. Niektóre wartości są dowolne, niektóre z nich, możesz wybrać spośród metoda przekształcania oświadczeń. |
+| Wartość | Yes | Wartość, która jest przekazywana verbatim do przekształcania. Niektóre wartości są dowolne, niektóre z nich, możesz wybrać spośród metoda przekształcania oświadczeń. |
 
 ### <a name="outputclaims"></a>OutputClaims
 

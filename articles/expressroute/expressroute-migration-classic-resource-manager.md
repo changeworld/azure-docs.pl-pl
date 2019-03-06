@@ -8,18 +8,21 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7b95c8b230714e1ba9306620e58628104cd676c9
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 5fab6c6d6af7b0f7c61fcff269a214aff96c7a1e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401645"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407327"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrowanie usługi ExpressRoute skojarzonych sieci wirtualnych z wersji klasycznej do usługi Resource Manager
 
 W tym artykule wyjaśniono, jak przeprowadzić migrację usługi ExpressRoute skojarzonych sieci wirtualnych z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager po przeniesieniu obwód usługi ExpressRoute. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * Sprawdź, czy masz najnowszą wersję modułów programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 * Upewnij się, że użytkownik przejrzał [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
 * Zapoznaj się z informacjami, który znajduje się w obszarze [przenoszenie obwodu usługi ExpressRoute z modelu klasycznego do usługi Resource Manager](expressroute-move.md). Upewnij się, że w pełni rozumiesz limity i ograniczenia.
@@ -61,9 +64,9 @@ W tej sekcji opisano kroki, aby wykonać migrację sieci wirtualnej, bramy i sko
 3. Zarejestruj swoją subskrypcję dla migracji zasobów. Aby zarejestrować subskrypcję w celu migracji zasobów, użyj następującego fragmentu kodu programu PowerShell:
 
   ```powershell 
-  Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+  Select-AzSubscription -SubscriptionName <Your Subscription Name>
+  Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+  Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
   ```
 4. Sprawdzanie poprawności, przygotowywania i migracji. Aby przenieść sieć wirtualną, należy użyć następującego fragmentu kodu programu PowerShell:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: fff484f2ee6722083a34383b8960931cb37b8316
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 206cca95c590a01f69d3664fb87398bc2fcb4ad9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700450"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445793"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Usługa Azure Relay uwierzytelnianie i autoryzacja
 
@@ -29,7 +29,7 @@ Aplikacje mogą uwierzytelniać się do usługi Azure Relay przy użyciu uwierzy
 
 [Uwierzytelniania sygnatury dostępu Współdzielonego](../service-bus-messaging/service-bus-sas.md) umożliwia udzielenie użytkownikom dostępu do zasobów usługi Azure Relay przy użyciu określonych praw. Uwierzytelniania sygnatury dostępu Współdzielonego obejmuje konfigurację klucza kryptograficznego ze skojarzonymi prawami do zasobu. Klienci mogą zatem uzyskiwać dostęp do tego zasobu, prezentując tokenu sygnatury dostępu Współdzielonego, który składa się z identyfikatora URI, dostęp do zasobu i wygaśnięcia podpisany przy użyciu skonfigurowanego klucza.
 
-Klucze sygnatur dostępu współdzielonego można skonfigurować w przestrzeni nazw usługi Relay. W przeciwieństwie do komunikatów usługi Service Bus, [połączeń hybrydowych usługi Relay](relay-hybrid-connections-protocol.md) obsługuje nadawców nieautoryzowani lub anonimowe. Możesz włączyć anonimowy dostęp do jednostki podczas tworzenia, jak pokazano na poniższym ekranie zrzut z portalu:
+Klucze sygnatur dostępu współdzielonego można skonfigurować w przestrzeni nazw usługi Relay. W przeciwieństwie do komunikatów usługi Service Bus, [połączeń hybrydowych usługi Relay](relay-hybrid-connections-protocol.md) obsługuje nadawców nieautoryzowani lub anonimowe. Możesz włączyć anonimowy dostęp do jednostki podczas tworzenia, jak pokazano na poniższym zrzucie ekranu z portalu:
 
 ![][0]
 

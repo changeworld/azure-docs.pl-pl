@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21e300c2540ddefb79fcaf593f752eef7e2c2e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010195"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450672"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -318,7 +318,7 @@ device.objectid -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Właściwości rozszerzenia i właściwości niestandardowego rozszerzenia
 
-Właściwości niestandardowe extenson i rozszerzeń atrybuty są obsługiwane jako właściwości parametrów w regułach członkostwa dynamicznego. Atrybuty rozszerzenia są synchronizowane z lokalną Windows Server AD i mieć format "ExtensionAttributeX", gdzie X jest równa 1 – 15. Oto przykład reguły używającej atrybutu rozszerzenia jako właściwość:
+Rozszerzeń atrybuty i właściwości niestandardowego rozszerzenia są obsługiwane jako parametry właściwości reguły członkostwa dynamicznego. Atrybuty rozszerzenia są synchronizowane z lokalną Windows Server AD i mieć format "ExtensionAttributeX", gdzie X jest równa 1 – 15. Oto przykład reguły używającej atrybutu rozszerzenia jako właściwość:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 00b20b3f144a2e98fb028e3db7c50af61330d721
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 801b7de4b82c37503f2a14619112cbf46ca60a43
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316459"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447085"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -96,6 +96,11 @@ Kształtowania ruchu zarządcy współczynnik dziennika jest udostępniane za po
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Kontrolka opinii, replikacja fizycznych grupy dostępności w warstwie Premium/krytyczne dla działania firmy nie nadążają |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Kontrolka opinii, ograniczania szybkości, aby uniknąć stan miejsca na dziennik braku |
 ||||
+
+Gdy wystąpią limit szybkości dziennika, który hamuje odpowiednią skalowalność, należy wziąć pod uwagę następujące opcje:
+- Skalowanie w górę do warstwy większa Aby uzyskać maksymalną szybkość dziennika 48 MB/s. 
+- Jeśli dane są ładowane jest przejściowy, czyli przemieszczania danych w proces ETL może być załadowany do bazy danych tempdb, (które są rejestrowane w minimalnym). 
+- W przypadku scenariuszy analitycznych załadować do tabeli klastrowanego magazynu kolumn objętych usługą. Pozwala to zmniejszyć częstotliwość wymagane dzienników z powodu stosowania kompresji. Ta technika zwiększenie wykorzystania procesora CPU i ma zastosowanie tylko do zestawów danych, które korzystają z klastrowane indeksy magazynu kolumn. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

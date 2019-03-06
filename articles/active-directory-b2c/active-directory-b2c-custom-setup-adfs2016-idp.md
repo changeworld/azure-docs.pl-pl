@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b76162606c4d21cb6979d410fbaaaafc539cf403
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b53e052182e3d775bdd3309bfd1e986c4f5896ed
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668657"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432264"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -167,7 +167,7 @@ Otwórz przeglądarkę i przejdź do adresu URL. Upewnij się, wpisz poprawny ad
 10. W **szablonu reguły w oświadczenie**, wybierz opcję **Wyślij atrybuty LDAP jako oświadczenia**.
 11. Podaj **Nazwa reguły oświadczeń**. Dla **magazyn atrybutów**, wybierz opcję **usługi Active Directory wybierz**, Dodaj następujące oświadczeń, a następnie kliknij przycisk **Zakończ** i **OK**.
 
-    | LDAP attrubute | Typ oświadczenia wychodzącego |
+    | Atrybut LDAP | Typ oświadczenia wychodzącego |
     | -------------- | ------------------- |
     | User-Principal-Name | userPrincipalName |
     | Nazwisko | family_name |

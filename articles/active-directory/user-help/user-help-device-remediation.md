@@ -1,5 +1,5 @@
 ---
-title: Potencjalne przyczyny komunikat o błędzie "Nie można dostać się tam z tego miejsca" w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z błąd "Nie można dostać się tam z tego miejsca" — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Rozwiązywanie problemów z potencjalnych przyczyn, które otrzymujesz komunikat o błędzie "Nie można dostać się tam z tego miejsca".
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7cd67a9a7027e8567e470acab006fd09748de54
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181715"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452041"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Potencjalne przyczyny komunikat o błędzie "Nie można dostać się tam z tego miejsca"
 Podczas uzyskiwania dostępu do wewnętrznej sieci web aplikacji lub usług w organizacji, może uzyskać komunikat o błędzie informujący, że, **nie możesz tam przejść stąd**. Ten komunikat oznacza, że Twoja organizacja opracowała zasady, co uniemożliwia urządzeniu dostęp do zasobów organizacji. Gdy użytkownik może pozostać konieczności kontaktowania się z pomocą techniczną, aby rozwiązać ten problem, Oto kilka rzeczy, które możesz najpierw wypróbować.

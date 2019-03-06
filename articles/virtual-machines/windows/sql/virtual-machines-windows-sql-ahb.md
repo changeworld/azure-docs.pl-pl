@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c3f67cbe422ffe839018f0682fa2de6440de773
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8578cd24b585bb5f0ba4930f005d8d2b2fece7f7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823369"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449686"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure
 W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure za pomocą nowego dostawcę zasobów maszyny Wirtualnej SQL — **Microsoft.SqlVirtualMachine**. Istnieją dwa modele dla maszyny wirtualnej (VM) hostowany program SQL Server — zgodnie z rzeczywistym użyciem, licencjonowanie i model dostarczania własnej licencji (BYOL). A teraz przy użyciu programu PowerShell lub wiersza polecenia platformy Azure, możesz zmodyfikować model licencjonowania, który korzysta z maszyny Wirtualnej programu SQL Server. 
@@ -32,7 +32,7 @@ W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej p
 Przełączanie między dwoma modelami licencji spowoduje naliczenie **bez przerwy w działaniu**, ponownego uruchamiania maszyny Wirtualnej, dodaje **bez dodatkowych kosztów** (w rzeczywistości aktywowanie AHB *zmniejsza* koszt) i jest **obowiązywać natychmiast**. 
 
   >[!NOTE]
-  > - Możliwość konwertowania modelu licencjonowania jest obecnie dostępna tylko podczas uruchamiania przy użyciu obrazu maszyny Wirtualnej programu SQL Server zgodnie z rzeczywistym użyciem. W przypadku uruchomienia przy użyciu obrazu bring-your-own-license, z poziomu portalu, nie można przekonwertować tego obrazu na płatność za rzeczywiste użycie.
+  > - Możliwość konwertowania modelu licencjonowania jest obecnie dostępna tylko w przypadku rozpoczęcia od obrazu maszyny wirtualnej z programem SQL Server w wersji z płatnością zgodnie z rzeczywistym użyciem. W przypadku rozpoczęcia od obrazu typu „bring-your-own-license” z portalu nie można przekonwertować obrazu na wersję z płatnością zgodnie z rzeczywistym użyciem.
   > - Klienci programu CSP mogą wykorzystywać korzyści AHB najpierw wdrażanie maszyny Wirtualnej zgodnie z rzeczywistym użyciem, a następnie konwertując go bring-your-own-license. 
   > - Obecnie ta możliwość jest włączona tylko dla urządzeń w chmurze publicznej.
 
@@ -65,7 +65,7 @@ Poniższe kroki zarejestruje dostawcy zasobów bazy danych SQL w ramach subskryp
   ![Modyfikowanie dostawcy](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
 ### <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
-Poniższy fragment kodu będzie zarejestrować dostawcy zasobów bazy danych SQL za pomocą usługi Azure susbcription. 
+Poniższy fragment kodu zarejestruje dostawcy zasobów bazy danych SQL w ramach subskrypcji platformy Azure. 
 
 ```cli
 # Register the new SQL resource provider for your subscription 
@@ -109,7 +109,7 @@ Maszyna wirtualna serwera SQL został zarejestrowany za pomocą dostawcy zasobó
 
 
   >[!NOTE]
-  >  Możliwość konwertowania modelu licencjonowania jest obecnie dostępna tylko podczas uruchamiania przy użyciu obrazu maszyny Wirtualnej programu SQL Server zgodnie z rzeczywistym użyciem. W przypadku uruchomienia przy użyciu obrazu bring-your-own-license, z poziomu portalu, nie można przekonwertować tego obrazu na płatność za rzeczywiste użycie. 
+  >  Możliwość konwertowania modelu licencjonowania jest obecnie dostępna tylko w przypadku rozpoczęcia od obrazu maszyny wirtualnej z programem SQL Server w wersji z płatnością zgodnie z rzeczywistym użyciem. W przypadku rozpoczęcia od obrazu typu „bring-your-own-license” z portalu nie można przekonwertować obrazu na wersję z płatnością zgodnie z rzeczywistym użyciem. 
 
 ### <a name="with-the-azure-portal"></a>Z witryną Azure Portal
 Możesz zmodyfikować model licencjonowania bezpośrednio z portalu. 

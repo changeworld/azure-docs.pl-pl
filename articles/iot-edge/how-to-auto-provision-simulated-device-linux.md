@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 72d6784eec847d610c4dfecea2f73953a9ed8615
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5e53c427564e37e04045d59d35c0d5d5ff285d05
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312668"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403954"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi IoT Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 
@@ -95,7 +95,7 @@ Na maszynie wirtualnej kompilacji narzędzi zestawu SDK języka C, używanej do 
 3. Zaloguj się do maszyny Wirtualnej, a następnie postępuj zgodnie z instrukcjami w [skonfiguruj środowisko projektowe systemu Linux](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) do zainstalowania i Skompiluj zestaw SDK urządzeń Azure IoT dla języka C. 
 
    >[!TIP]
-   >W trakcie tego artykułu możesz skopiować i wklejenia z maszyny wirtualnej, która nie jest łatwe dzięki aplikacji połączenia Menedżera funkcji Hyper-V. Może chcesz się połączyć z maszyną wirtualną za pomocą Menedżera funkcji Hyper-V po można pobrać jego adres IP: `ifconfig`. Następnie można użyć adresu IP do łączenia za pośrednictwem protokołu SSH: `ssh <username>@<ipaddress>`.
+   >W trakcie tego artykułu możesz skopiować i wklejenia z maszyny wirtualnej, która nie jest łatwe dzięki aplikacji połączenia Menedżera funkcji Hyper-V. Chcesz nawiązać połączenie z maszyną wirtualną za pośrednictwem Menedżera funkcji Hyper-V po można pobrać jego adres IP: `ifconfig`. Następnie można użyć adresu IP do łączenia za pośrednictwem protokołu SSH: `ssh <username>@<ipaddress>`.
 
 4. Uruchom następujące polecenia, aby tworzyć narzędzia zestawu SDK języka C, która pobiera dane inicjowania obsługi administracyjnej urządzeń. 
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c62560d2f80375a725464607f38b9e8adf221d16
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 530bb83d753d27db4869b5725bc6d4c4e020e179
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875603"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446609"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -229,14 +229,14 @@ Wykonanie tych kroków powoduje, że rozszerzenie, należy ponownie zainstalowa�
 
 ### <a name="clean_up_restore_point_collection"></a> Wyczyścić kolekcję punktów przywracania
 Po usunięciu blokady, punkty przywracania zostały wyczyszczone. Aby wyczyścić punktów przywracania, wykonaj dowolną z metod:<br>
-* [Wyczyścić kolekcję punktów przywracania przez uruchamianie zapytań ad-hoc kopii zapasowej.](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+* [Czyszczenie przywracania kolekcję punktów, uruchamiając kopii zapasowej ad-hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 * [Czyszczenie Przywracanie punktu kolekcji z witryny Azure portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Wyczyścić kolekcję punktów przywracania przez uruchamianie zapytań ad-hoc kopii zapasowej.
-Po usunięciu blokady, wyzwalanie ad-hoc/ręcznego tworzenia kopii zapasowej. Pozwoli to zagwarantować, że punkty przywracania są automatycznie czyszczone. Ta operacja ad-hoc/ręcznie zakończyć się niepowodzeniem po raz pierwszy; oczekiwane jednak zapewni automatycznego czyszczenia zamiast ręczne usuwanie punktów przywracania. Po oczyszczaniu następnej zaplanowanej kopii zapasowej powinna zakończyć się pomyślnie.
+#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Czyszczenie przywracania kolekcję punktów, uruchamiając kopii zapasowej ad-hoc
+Po usunięciu blokady, Wyzwól kopię zapasową ad hoc/ręczne. Pozwoli to zagwarantować, że punkty przywracania są automatycznie czyszczone. Oczekiwane operacja ad hoc/ręczne się niepowodzeniem po raz pierwszy; jednak zapewni automatycznego czyszczenia zamiast ręczne usuwanie punktów przywracania. Po oczyszczaniu następnej zaplanowanej kopii zapasowej powinna zakończyć się pomyślnie.
 
 > [!NOTE]
-    > Automatyczne oczyszczanie nastąpi po kilku godzinach wyzwolenie tworzenia kopii zapasowej ad-hoc/ręczne. Jeśli zaplanowane tworzenie kopii zapasowej nadal kończy się niepowodzeniem, a następnie spróbuj ręcznie usunąć kolekcję punktów przywracania wykonując kroki wymienione [tutaj](#clean-up-restore-point-collection-from-azure-portal).
+    > Automatyczne oczyszczanie nastąpi po kilku godzinach wyzwalanie tworzenia kopii zapasowej ad hoc/ręczne. Jeśli zaplanowane tworzenie kopii zapasowej nadal kończy się niepowodzeniem, a następnie spróbuj ręcznie usunąć kolekcję punktów przywracania wykonując kroki wymienione [tutaj](#clean-up-restore-point-collection-from-azure-portal).
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Czyszczenie Przywracanie punktu kolekcji z witryny Azure portal <br>
 

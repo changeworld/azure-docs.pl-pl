@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 8115994d1e4ac116a410cfa69824dc800717ab6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9aebe878be97b489b460fff96001e2908cdb7b87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819254"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432383"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definiowanie niestandardowych modułów R dla usługi Azure Machine Learning Studio
 
@@ -123,7 +123,7 @@ Zasady ograniczeń znaków w elementach modułu:
 * Zawartość **opis** element nie może przekraczać 128 znaków.
 * Zawartość **właściciela** element nie może przekraczać 32 znaków.
 
-Wyniki modułu mogą być deterministyczna lub nondeterministic.* * Domyślnie, wszystkie moduły są traktowane jako deterministyczna. Oznacza to biorąc pod uwagę niezmiennych zbiór parametrów wejściowych i danych, moduł powinien zwrócić ten sam eacRAND wyników lub czas functionh uruchomienia. Biorąc pod uwagę to zachowanie, Azure Machine Learning Studio uruchomienia tylko moduły oznaczone jako deterministyczna, jeśli parametr lub zmienione dane wejściowe. Zwracanie wyników buforowanych także znacznie szybsze wykonywanie eksperymentów.
+Wyniki modułu mogą być deterministyczna lub nondeterministic.* * Domyślnie, wszystkie moduły są traktowane jako deterministyczna. Oznacza to biorąc pod uwagę niezmiennych zbiór parametrów wejściowych i danych, moduł powinien zwrócić ten sam eacRAND wyników lub czasu funkcji, które jest uruchamiane. Biorąc pod uwagę to zachowanie, Azure Machine Learning Studio uruchomienia tylko moduły oznaczone jako deterministyczna, jeśli parametr lub zmienione dane wejściowe. Zwracanie wyników buforowanych także znacznie szybsze wykonywanie eksperymentów.
 
 Dostępne są funkcje, które są jednoznaczne wyniki, takie jak RAND lub funkcji, która zwraca bieżącą datę lub godzinę. Jeśli niedeterministyczna funkcja korzysta z modułu, można określić, czy moduł jest niejednoznaczne, ustawienie opcjonalne **isDeterministic** atrybutu **FALSE**. Temu, że moduł ponownego uruchomienia po każdym uruchomieniu eksperymentu nawet, jeśli moduł danych wejściowych i parametry nie uległy zmianie. 
 

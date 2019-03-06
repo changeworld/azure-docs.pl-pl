@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 1345a5814faefd4074e7d9548d374bd79d977514
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015589"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453987"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Exchange zdarzeń między konsumentów i producentów, które używają różnych protokołów: AMQP, Kafka i HTTPS
-Usługa Azure Event Hubs obsługuje trzy protokoły dla konsumentów i producentów: AMQP, Kafka i HTTPS. Każda z tych protokołów ma swój własny sposób przedstawiania wiadomości, więc naturalnie pojawia się następujące pytanie: aplikacja wysyła zdarzenia do Centrum zdarzeń za pomocą jednego protokołu i wykorzystuje je z innym protokołem, co zrobić, jeżeli różnych części i wartości Zdarzenie wyglądać po ich nadejściu na użytkownika? W tym artykule omówiono najlepsze rozwiązania dotyczące zarówno producentów i konsumentów upewnić się, że wartości w ramach zdarzenia są prawidłowo interpretowane przez aplikacja odbierająca komunikaty.
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Zdarzenia programu Exchange między konsumentów i producentów, które używają różnych protokołów: Protokół AMQP, Kafka i HTTPS
+Usługa Azure Event Hubs obsługuje trzy protokoły dla konsumentów i producentów: Protokół AMQP, Kafka i HTTPS. Każda z tych protokołów ma swój własny sposób przedstawiania wiadomości, więc naturalnie pojawia się następujące pytanie: aplikacja wysyła zdarzenia do Centrum zdarzeń za pomocą jednego protokołu i wykorzystuje je z innym protokołem, co zrobić, jeżeli różnych części i wartości Zdarzenie wyglądać po ich nadejściu na użytkownika? W tym artykule omówiono najlepsze rozwiązania dotyczące zarówno producentów i konsumentów upewnić się, że wartości w ramach zdarzenia są prawidłowo interpretowane przez aplikacja odbierająca komunikaty.
 
 Porady w tym artykule omówiono specjalnie tych klientów, za pomocą wymienionych wersji stosowane w opracowywaniu fragmenty kodu:
 
@@ -107,7 +107,7 @@ EventData ed = /* receive event */
 String receivedJson = new String(ed.getBytes(), StandardCharsets.UTF_8);
 ```
 
-### <a name="c-net-utf-8-string-producer"></a>C#Producent ciągu .NET UTF-8
+### <a name="c-net-utf-8-string-producer"></a>C# .NET UTF-8 string producer
 ```csharp
 string exampleJson = "{\"name\":\"John\", \"number\":9001}";
 EventData working = new EventData(Encoding.UTF8.GetBytes(exampleJson));
@@ -344,5 +344,5 @@ W tym artykule przedstawiono sposób przesyłania strumieniowego usługi Event H
 * [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Dowiedz się więcej na temat usługi Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Poznaj więcej przykładów w usłudze Event Hubs dla platformy Kafka](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Użyj narzędzia [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330), aby [przesyłać strumieniowo zdarzenia z lokalnego środowiska platformy Kafka do usługi Event Hubs z obsługą platformy Kafka w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Użyj [narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do [Przesyłaj strumieniowo wydarzenia z platformy Kafka w środowisku lokalnym, do platformy Kafka włączone usługi Event Hubs w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Dowiedz się, jak przesyłać strumieniowo do platformy Kafka włączone za pomocą usługi Event Hubs [natywnych aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), lub [Akka strumieni](event-hubs-kafka-akka-streams-tutorial.md)

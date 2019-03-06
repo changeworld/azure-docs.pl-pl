@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: anuragm
-ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 8bfa9f2fcdc3047ed5541db058f670a4bc464164
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428623"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449907"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -37,7 +37,7 @@ Skorzystaj z informacji w poniższych tabelach, aby rozwiązywać problemy i bł
 
 | Ważność | Opis | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|---|
-| Ostrzeżenie | Bieżące ustawienia dla tej bazy danych nie obsługują pewnego rodzaju typy kopii zapasowych, które są obecne w skojarzonych zasad. | <li>**Bazy danych Master**: Tylko operacja tworzenia kopii zapasowej pełnej bazy danych może zostać wykonana w bazie danych master; ani **różnicowej** kopii zapasowych ani transakcji **dzienniki** kopii zapasowej są możliwe. </li> <li>Wszystkie bazy danych w **model odzyskiwania prostego** nie zezwala na transakcji **dzienniki** kopii zapasowej należy podjąć.</li> | Zmodyfikuj ustawienia bazy danych w taki sposób, że wszystkie typy kopii zapasowych w ramach zasad są obsługiwane. Alternatywnie Zmień bieżące zasady w celu uwzględnienia tylko obsługiwane typy kopii zapasowych. W przeciwnym razie nieobsługiwane typy kopii zapasowych zostaną pominięte podczas zaplanowanej kopii zapasowej lub kopii zapasowej ad hoc zadania tworzenia kopii zapasowej zakończy się niepowodzeniem.
+| Ostrzeżenie | Bieżące ustawienia dla tej bazy danych nie obsługują pewnego rodzaju typy kopii zapasowych, które są obecne w skojarzonych zasad. | <li>**Bazy danych Master**: Tylko operacja tworzenia kopii zapasowej pełnej bazy danych może zostać wykonana w bazie danych master; ani **różnicowej** kopii zapasowych ani transakcji **dzienniki** kopii zapasowej są możliwe. </li> <li>Wszystkie bazy danych w **model odzyskiwania prostego** nie zezwala na transakcji **dzienniki** kopii zapasowej należy podjąć.</li> | Zmodyfikuj ustawienia bazy danych w taki sposób, że wszystkie typy kopii zapasowych w ramach zasad są obsługiwane. Alternatywnie Zmień bieżące zasady w celu uwzględnienia tylko obsługiwane typy kopii zapasowych. W przeciwnym razie nieobsługiwane typy kopii zapasowych zostaną pominięte podczas zaplanowanej kopii zapasowej lub kopii zapasowej ad-hoc zadania tworzenia kopii zapasowej zakończy się niepowodzeniem.
 
 
 ## <a name="backup-failures"></a>Niepowodzeniami tworzenia kopii zapasowych
@@ -61,7 +61,7 @@ Poniższe tabele są uporządkowane według kodu błędu.
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Łańcuch dzienników został przerwany. | Baza danych lub maszyna wirtualna kopia zapasowa jest tworzona przy użyciu innego rozwiązania tworzenia kopii zapasowych, które obcina łańcuch dziennika.|<ul><li>Sprawdź, czy innego rozwiązania tworzenia kopii zapasowych lub skryptu jest w użyciu. Jeśli tak, Zatrzymaj inne rozwiązania tworzenia kopii zapasowych. </li><li>Jeśli wykonano kopię zapasową kopii zapasowej dziennika zapytań ad-hoc, Wyzwól pełnej kopii zapasowej, aby rozpocząć nowy łańcuch dziennika. Dziennik zaplanowanego tworzenia kopii zapasowych ponieważ usługa Azure Backup automatycznie spowoduje wyzwolenie pełnej kopii zapasowej, aby rozwiązać ten problem jest wymagana żadna akcja.</li>|
+| Łańcuch dzienników został przerwany. | Baza danych lub maszyna wirtualna kopia zapasowa jest tworzona przy użyciu innego rozwiązania tworzenia kopii zapasowych, które obcina łańcuch dziennika.|<ul><li>Sprawdź, czy innego rozwiązania tworzenia kopii zapasowych lub skryptu jest w użyciu. Jeśli tak, Zatrzymaj inne rozwiązania tworzenia kopii zapasowych. </li><li>Jeśli wykonano kopię zapasową kopii zapasowej dziennika ad-hoc, Wyzwól pełnej kopii zapasowej, aby rozpocząć nowy łańcuch dziennika. Dziennik zaplanowanego tworzenia kopii zapasowych ponieważ usługa Azure Backup automatycznie spowoduje wyzwolenie pełnej kopii zapasowej, aby rozwiązać ten problem jest wymagana żadna akcja.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -73,7 +73,7 @@ Poniższe tabele są uporządkowane według kodu błędu.
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Pierwsza pełna kopia zapasowa brakuje dla tego źródła danych. | Pełna kopia zapasowa jest Brak bazy danych. Dziennik i różnicowe kopie zapasowe element nadrzędny do pełnej kopii zapasowej, dzięki czemu pełnych kopii zapasowych należy podjąć przed wyzwoleniem różnicowej lub kopie zapasowe dzienników. | Wyzwalanie ad hoc pełnej kopii zapasowej.   |
+| Pierwsza pełna kopia zapasowa brakuje dla tego źródła danych. | Pełna kopia zapasowa jest Brak bazy danych. Dziennik i różnicowe kopie zapasowe element nadrzędny do pełnej kopii zapasowej, dzięki czemu pełnych kopii zapasowych należy podjąć przed wyzwoleniem różnicowej lub kopie zapasowe dzienników. | Wyzwalanie ad-hoc pełnej kopii zapasowej.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 

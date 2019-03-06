@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0bb9ad5c3a39f4065a81fb218a4b167f6fde9b1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452045"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447561"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do usługi Azure Cosmos DB z sieciami wirtualnymi (VNet)
 
@@ -47,7 +47,7 @@ Tylko sieć wirtualną i ich podsieci dodane do konta usługi Azure Cosmos mają
 Obecnie usługa może mieć co najwyżej 64 podsieci dozwolona dla konta usługi Azure Cosmos.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Można włączyć dostęp z sieci VPN i Expressroute? 
-Aby uzyskać dostęp do konta usługi Azure Cosmos za pośrednictwem expressroute z lokalnie, należy włączyć komunikację równorzędną firmy Microsoft. Po wprowadzeniu zapory adresów IP lub reguły dostępu do sieci wirtualnej można dodać publiczne adresy IP, używany do komunikacji równorzędnej firmy Microsoft na zaporze IP konta usługi Azure Cosmos w celu umożliwienia lokalnej usługi dostępu do konta usługi Azure Cosmos. 
+Do uzyskania dostępu do konta usługi Azure Cosmos za pośrednictwem expressroute z lokalnie, należy włączyć komunikację równorzędną firmy Microsoft. Po wprowadzeniu zapory adresów IP lub reguły dostępu do sieci wirtualnej można dodać publiczne adresy IP, używany do komunikacji równorzędnej firmy Microsoft na zaporze IP konta usługi Azure Cosmos w celu umożliwienia lokalnej usługi dostępu do konta usługi Azure Cosmos. 
 
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Należy zaktualizować zasady grupy zabezpieczeń sieci (NSG)? 
 Reguły sieciowej grupy zabezpieczeń są używane do ograniczenia łączności do i z podsieci z sieci wirtualnej. Po dodaniu punkt końcowy usługi dla usługi Azure Cosmos DB do podsieci, nie ma potrzeby można otworzyć połączenia wychodzącego w sieciowej grupie zabezpieczeń dla konta usługi Azure Cosmos. 
