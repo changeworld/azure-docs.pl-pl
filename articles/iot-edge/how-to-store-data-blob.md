@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ac40c4c974049f802da97846db5010652a420691
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 556ed3553185445432f9f95731ccfec0578fab62
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961214"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455670"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -236,7 +236,7 @@ Języki, które są również obsługiwane przez usługi IoT Edge, dzięki czemu
 
 Moduły magazynu obiektów blob na brzegowych urządzeniach IoT używać tych samych zestawów SDK usługi Azure Storage i są zgodne z interfejsu API usługi Azure Storage dla blokowych obiektów blob z punktów końcowych w wersji 2018-03-28. Nowszych są zależne od potrzeb klienta. 
 
-Nie wszystkie operacje usługi Azure Blob Storage są obsługiwane przez usługi Azure Blob Storage w usłudze IoT Edge. W poniższych sekcjach szczegółowo, jakie operacje są nie są obsługiwane. 
+Nie wszystkie operacje usługi Azure Blob Storage są obsługiwane przez usługi Azure Blob Storage w usłudze IoT Edge. W poniższych sekcjach szczegółowo operacje, które nie są obsługiwane. 
 
 ### <a name="account"></a>Konto
 

@@ -1,26 +1,26 @@
 ---
-title: 'Szybki start: przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ — Microsoft Genomics'
+title: Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ — Microsoft Genomics
 titleSuffix: Azure
-description: W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
+description: W tym artykule przyjęto założenie, mieć zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: acbcceb32ec54ab85db05ef743e9c10cd8cf025c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 2662a8f52c58a39916e5789fa9ed7fadd91216c0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735853"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438809"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ w usłudze Microsoft Genomics
 
-Ten poradnik Szybki start przedstawia sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli pliki wejściowe to jedna para plików FASTQ. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Po pomyślnym przesłaniu przepływu pracy przy użyciu podanych przykładowych danych masz wszystko gotowe, aby kontynuować pracę z tym poradnikiem Szybki start. 
+W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli pliki wejściowe to jedna para plików FASTQ. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
 
-## <a name="set-up-upload-your-fastq-files-to-azure-storage"></a>Konfiguracja: przekazywanie plików FASTQ do magazynu platformy Azure
+## <a name="set-up-upload-your-fastq-files-to-azure-storage"></a>Konfiguracja: Przekazywanie plików FASTQ do usługi Azure storage
 Załóżmy, że mamy dwa pliki, *reads_1.fq.gz* i *reads_2.fq.gz*, oraz że zostały one przekazane do konta magazynu *myaccount* na platformie Azure jako obiekty **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads_1<span></span>.fq<span></span>.gz<span></span>** oraz **https://<span></span>myaccount.blob.core.<span></span>windows<span></span>.net/<span></span>inputs/<span></span>reads_2.fq<span></span>.gz<span></span>**. Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
 
 
@@ -81,5 +81,5 @@ output_storage_account_container: outputs
 
 Prześlij plik `config.txt` przy użyciu tego wywołania: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Następne kroki
-W tym artykule przekazano parę plików FASTQ do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby uzyskać dodatkowe informacje o przesyłaniu przepływów pracy i innych poleceniach, których możesz użyć wraz z usługą Microsoft Genomics, zobacz [często zadawane pytania](frequently-asked-questions-genomics.md). 
+## <a name="next-steps"></a>Kolejne kroki
+W tym artykule przekazano parę plików FASTQ do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby dowiedzieć się więcej o przesyłaniu przepływów pracy i innych poleceniach, za pomocą usługi Microsoft Genomics, zobacz nasze [— często zadawane pytania](frequently-asked-questions-genomics.md). 

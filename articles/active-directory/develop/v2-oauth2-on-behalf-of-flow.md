@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0b1e784d4ca92f0da0e37d4afc1efcf09282cb4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162870"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445759"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory w wersji 2.0 i przepływ OAuth 2.0 "w imieniu"
 
@@ -193,7 +193,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Uzyskanie zgody dla aplikacji warstwy środkowej
 
-W zależności od odbiorców dla aplikacji można rozważyć różne strategie zapewniania, że przepływu OBO jest zakończone pomyślnie. We wszystkich przypadkach ostatecznym celem jest upewnij się, że podano odpowiedniej zgody. Jak ma to miejsce, jednak jest zależna od użytkowników, którzy aplikacja obsługuje. 
+W zależności od odbiorców dla aplikacji można rozważyć różne strategie za zapewnienie, że przepływu OBO zakończyła się powodzeniem. We wszystkich przypadkach ostatecznym celem jest upewnij się, że podano odpowiedniej zgody. Jak ma to miejsce, jednak jest zależna od użytkowników, którzy aplikacja obsługuje. 
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Zgoda na usługi Azure AD aplikacji
 

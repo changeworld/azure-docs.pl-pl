@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: 08009ca7f9faaa75e593670c22cf864c12236e8b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414108"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450307"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Rozwiązywanie problemów dotyczących wdrożenia usługi Resource Manager za pomocą tworzenia nowej maszyny wirtualnej systemu Linux na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -43,23 +43,23 @@ Aby rozpocząć rozwiązywanie problemów, zbieranie dzienników aktywności, ab
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Katalog** Jeśli systemu operacyjnego jest uogólniony, Linux i przekazać lub przechwycone z ustawieniem uogólniony, a następnie nie będzie żadnych błędów. Podobnie jeśli systemem operacyjnym jest Linux wyspecjalizowany, przekazany lub przechwycone z ustawieniem wyspecjalizowane, a następnie nie będzie żadnych błędów.
+**Y:** Jeśli systemem operacyjnym jest Linux uogólniony, a przekazane lub przechwycone z ustawieniem uogólniony, nie będzie żadnych błędów. Podobnie jeśli systemem operacyjnym jest Linux wyspecjalizowany, przekazany lub przechwycone z ustawieniem wyspecjalizowane, a następnie nie będzie żadnych błędów.
 
 **Błędy przekazywania:**
 
-**N<sup>1</sup>:** Jeśli systemem operacyjnym jest Linux uogólnione i jest przekazywany jako wyspecjalizowany, otrzymasz błąd limitu czasu inicjowania obsługi, ponieważ maszyna wirtualna jest zablokowany na etapie inicjowania obsługi administracyjnej.
+**N<sup>1</sup>:** Jeśli system operacyjny Linux uogólniony, a jest przekazywany jako wyspecjalizowany, otrzymasz błąd limitu czasu inicjowania obsługi, ponieważ maszyna wirtualna jest zablokowany na etapie inicjowania obsługi administracyjnej.
 
-**N<sup>2</sup>:** w przypadku systemu operacyjnego Linux wyspecjalizowane i przekazaniu jako uogólniony, otrzymasz błąd inicjowania obsługi, ponieważ nowa maszyna wirtualna jest uruchomiona przy użyciu oryginalnej nazwy komputera, nazwę użytkownika i hasło.
+**N<sup>2</sup>:** Jeśli systemem operacyjnym jest Linux wyspecjalizowane i przekazaniu jako uogólniony, zostanie wyświetlony błąd inicjowania obsługi administracyjnej, ponieważ nowa maszyna wirtualna jest uruchomiona przy użyciu oryginalnej nazwy komputera, nazwę użytkownika i hasło.
 
 **Rozwiązanie:**
 
-Aby rozwiązać obu tych błędów, należy przekazać oryginalny dysk VHD dostępne lokalnie, za pomocą tego samego ustawienia, jak dla systemu operacyjnego (uogólniony/wyspecjalizowane). Można przekazać jako uogólniony, pamiętaj, aby uruchomić — najpierw anulować aprowizację.
+Aby rozwiązać obu tych błędów, należy przekazać oryginalny dysk VHD, dostępne w środowisku lokalnym za pomocą tego samego ustawienia, jak dla systemu operacyjnego (uogólniony/wyspecjalizowane). Można przekazać jako uogólniony, pamiętaj, aby uruchomić — najpierw anulować aprowizację.
 
 **Przechwytywania błędów:**
 
-**N<sup>3</sup>:** Jeśli systemem operacyjnym jest Linux uogólniony, a jest przechwytywany jako wyspecjalizowany, otrzymasz błąd limitu czasu inicjowania obsługi administracyjnej ponieważ oryginalna maszyna wirtualna nie jest używany, ponieważ jest ona oznaczona jako uogólniona.
+**N<sup>3</sup>:** Jeśli system operacyjny Linux uogólniony, a jest przechwytywany jako wyspecjalizowany, otrzymasz błąd limitu czasu inicjowania obsługi administracyjnej ponieważ oryginalna maszyna wirtualna nie jest używany, ponieważ jest ona oznaczona jako uogólniona.
 
-**N<sup>4</sup>:** w przypadku systemu operacyjnego Linux wyspecjalizowane i są przechwytywane, jako uogólniony, otrzymasz błąd inicjowania obsługi, ponieważ nowa maszyna wirtualna jest uruchomiona przy użyciu oryginalnej nazwy komputera, nazwę użytkownika i hasło. Ponadto oryginalnego maszyny Wirtualnej nie jest używany, ponieważ jest ona oznaczona jako specjalne.
+**N<sup>4</sup>:** Jeśli systemem operacyjnym jest Linux wyspecjalizowane i są przechwytywane, jako uogólniony, zostanie wyświetlony błąd inicjowania obsługi, ponieważ nowa maszyna wirtualna jest uruchomiona przy użyciu oryginalnej nazwy komputera, nazwę użytkownika i hasło. Ponadto oryginalnego maszyny Wirtualnej nie jest używany, ponieważ jest ona oznaczona jako specjalne.
 
 **Rozwiązanie:**
 
@@ -68,7 +68,7 @@ Usuń oba te błędy, Usuń bieżący obraz z portalu i [ponownie wykonaj operac
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problem: Niestandardowe / Galeria / obrazu z witryny marketplace; Niepowodzenie alokacji
 Ten błąd pojawia się w sytuacjach, gdy nowe żądanie maszyna wirtualna jest przypięta do klastra, który nie obsługuje żądanego rozmiaru maszyny Wirtualnej lub nie ma dostępnego wolnego miejsca, aby obsłużyć żądanie.
 
-**Przyczyny 1:** klaster nie obsługuje żądanego rozmiaru maszyny Wirtualnej.
+**Przyczyny 1:** Klaster nie obsługuje żądanego rozmiaru maszyny Wirtualnej.
 
 **Rozwiązanie nr 1.**
 
@@ -79,7 +79,7 @@ Ten błąd pojawia się w sytuacjach, gdy nowe żądanie maszyna wirtualna jest 
   * Po zatrzymania wszystkich maszyn wirtualnych, należy utworzyć nową maszynę Wirtualną w żądany rozmiar.
   * Najpierw należy uruchomić nową maszynę Wirtualną, a następnie wybierz poszczególne zatrzymanych maszyn wirtualnych i kliknij **Start**.
 
-**Przyczyny 2:** klastra ma bezpłatnymi zasobami.
+**Przyczyny 2:** Klaster nie ma bezpłatnymi zasobami.
 
 **Rozwiązanie nr 2.**
 

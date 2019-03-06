@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873091"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437466"
 ---
 # <a name="paper-entity"></a>Jednostka papieru
 
@@ -61,7 +61,7 @@ VSN     | Krótka nazwa właściwości - krótką nazwę dziennika lub konferenc
 V       | Wolumin — wolumin dziennika
 BV      | Nazwa dziennika
 BT      | 
-PB      | Abreviations dziennika
+PB      | Skróty dziennika
 I       | Problem — problem dziennika
 FP      | FirstPage — pierwsza strona papieru
 LP      | LastPage - ostatniej strony dokumentu

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: c09e999779ddc384cf70d20c9368f9d93d695e2a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b1065c583bb7f10f2a584f77b182e4e53084073b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243537"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440210"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Połączenia zewnętrzne rozwiązania przy użyciu Common Event Format
 
@@ -48,13 +48,13 @@ Połączenie między przez wartownika platformy Azure i urządzeniem w formacie 
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>Krok 1: Łączenie do urządzenia w formacie CEF za pośrednictwem dedykowanej maszynie Wirtualnej platformy Azure
 
-Należy wdrożyć agenta na dedykowanej maszynie z systemem Linux (maszyna wirtualna lub lokalnej) do obsługi komunikacji między urządzeniem i przez wartownika Azure. Agenta można wdrożyć automatycznie lub ręcznie. Automatyczne wdrażanie jest oparte na szablonach usługi Resource Manager i mogą służyć tylko wtedy, gdy tworzysz na platformie Azure nowej maszyny Wirtualnej dedykowanej maszynie z systemem Linux.
+Należy wdrożyć agenta na dedykowanej maszynie z systemem Linux (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Agenta można wdrożyć automatycznie lub ręcznie. Automatyczne wdrażanie jest oparte na szablonach usługi Resource Manager i mogą służyć tylko wtedy, gdy tworzysz na platformie Azure nowej maszyny Wirtualnej dedykowanej maszynie z systemem Linux.
 
  ![CEF na platformie Azure](./media/connect-cef/cef-syslog-azure.png)
 
 Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualnej platformy Azure, na maszynie Wirtualnej w innej chmurze lub na maszynie lokalnej. 
 
- ![CEF środowiska lokalnego](./media/connect-cef/cef-syslog-onprem.png)
+ ![CEF w środowisku lokalnym](./media/connect-cef/cef-syslog-onprem.png)
 
 ### <a name="deploy-the-agent-in-azure"></a>Wdrażanie agenta w systemie Azure
 
@@ -91,7 +91,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
       2. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Wdróż agenta na serwerze z systemem Linux w lokalnej
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Wdróż agenta na lokalny serwer systemu Linux
 
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
 

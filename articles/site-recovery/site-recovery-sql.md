@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: e84c33b35ef7828cc16be4b532ab8406e0236ee3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2d141a330b6b6c5fc102dd70ae1d6b3b01283d19
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876674"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444875"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurowanie odzyskiwania po awarii dla programu SQL Server 
 
@@ -70,7 +70,7 @@ Usługa Site Recovery może zostać zintegrowany z natywnych technologiami BCDR 
 
 Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologiami BCDR serwera SQL z usługą Site Recovery.
 
-| **Wersja** | **Wersja** | **Wdrożenie** | **Środowiska lokalnego do środowiska lokalnego** | **Środowiska lokalnego do platformy Azure** |
+| **Wersja** | **Wersja** | **Wdrożenie** | **Na infrastrukturę lokalną w środowisku lokalnym** | **Środowiska lokalnego do platformy Azure** |
 | --- | --- | --- | --- | --- |
 | Program SQL Server 2016, 2014 lub 2012 |Enterprise |Wystąpienia klastra trybu failover |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
 || Enterprise |Zawsze włączone grupy dostępności w celu zapewnienia wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności | |

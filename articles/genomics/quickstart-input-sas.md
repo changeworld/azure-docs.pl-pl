@@ -1,24 +1,26 @@
 ---
-title: Przesyłanie przepływu pracy przy użyciu sygnatury dostępu współdzielonego, a nie klucza konta magazynu
+title: Przesyłanie przepływu pracy przy użyciu sygnatury dostępu współdzielonego — Microsoft Genomics
 titleSuffix: Azure
-description: W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
+description: Tego artykułu przyjęto założenie, mieć zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: db0f18f0e7028f01044cdba8a5d7b719d3fb9e23
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749025"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451386"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Przesyłanie przepływu pracy do usługi Microsoft Genomics przy użyciu sygnatury dostępu współdzielonego zamiast klucza konta magazynu 
 
-W tym przewodniku Szybki start przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics przy użyciu pliku config.txt zawierającego [sygnaturę dostępu współdzielonego (SAS, shared access signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) zamiast kluczy konta magazynu. Ta funkcja może być przydatna, jeśli występują obawy związane z bezpieczeństwem dotyczące klucza konta magazynu widocznego w pliku config.txt. W tym artykule założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Po pomyślnym przesłaniu przepływu pracy przy użyciu podanych przykładowych danych masz wszystko gotowe, aby kontynuować pracę z tym poradnikiem Szybki start. 
+W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics przy użyciu pliku config.txt zawierającego [(SAS). sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) zamiast kluczy konta magazynu. Ta funkcja może być przydatna, jeśli występują obawy związane z bezpieczeństwem dotyczące klucza konta magazynu widocznego w pliku config.txt. 
+
+W tym artykule założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
 
 ## <a name="what-is-a-sas"></a>Co to jest sygnatura dostępu współdzielonego?
 [Sygnatura dostępu współdzielonego (SAS, shared access signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) zapewnia delegowany dostęp do zasobów w ramach konta magazynu. Za pomocą sygnatury dostępu współdzielonego możesz udzielić dostępu do zasobów w ramach konta magazynu bez udostępniania kluczy konta. Jest to najbardziej istotna kwestia związana z używaniem sygnatur dostępu współdzielonego w aplikacjach — są one bezpiecznym sposobem udostępniania zasobów magazynu bez narażania kluczy konta.
@@ -54,7 +56,7 @@ Zakres sygnatury dostępu współdzielonego dla plików wejściowych powinien by
  ![Eksplorator magazynu sygnatur dostępu współdzielonego usługi Genomics](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Eksplorator magazynu sygnatur dostępu współdzielonego usługi Genomics")
 
 
-### <a name="set-up-create-a-sas-programattically"></a>Konfiguracja: Tworzenie sygnatury dostępu współdzielonego w sposób programowy
+### <a name="set-up-create-a-sas-programmatically"></a>Konfiguracja: Programistyczne tworzenie sygnatury dostępu Współdzielonego
 
 Aby utworzyć sygnaturę dostępu współdzielonego przy użyciu zestawu SDK usługi Azure Storage, zapoznaj się z istniejącą dokumentacją w kilku językach, w tym [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) i [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
@@ -83,5 +85,5 @@ W tym przypadku użyj klienta języka Python usługi Microsoft Genomics, aby prz
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule użyto tokenów sygnatur dostępu współdzielonego zamiast kluczy magazynu do przesłania przepływu pracy do usługi Microsoft Genomics za pośrednictwem klienta języka Python `msgen`. Aby uzyskać dodatkowe informacje o przesyłaniu przepływów pracy i innych poleceniach, których możesz użyć wraz z usługą Microsoft Genomics, zobacz [często zadawane pytania](frequently-asked-questions-genomics.md). 

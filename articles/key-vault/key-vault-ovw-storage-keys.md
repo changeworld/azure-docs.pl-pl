@@ -8,13 +8,13 @@ ms.service: key-vault
 author: prashanthyv
 ms.author: pryerram
 manager: barbkess
-ms.date: 10/03/2018
-ms.openlocfilehash: 684d6a87b5cf33a3ebed36381d2db21b285a6f0c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/01/2019
+ms.openlocfilehash: dc743f7e8ebaebf2b253a1c2c199133bc4266dd5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338811"
+ms.locfileid: "57404371"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -24,12 +24,25 @@ ms.locfileid: "57338811"
 > - Użyj [tożsamości zarządzanej usługi Azure AD](/azure/active-directory/managed-identities-azure-resources/) podczas uruchamiania na platformie Azure. Zarządzane, Usuń tożsamości potrzeby uwierzytelniania klienta, które razem i zapisywanie poświadczeń na lub z aplikacją.
 > - Użyj kontroli dostępu na podstawie ról (RBAC) do zarządzania autoryzacji, co jest również obsługiwana przez usługi Key Vault.
 
-- Usługa Azure Key Vault umożliwia zarządzanie kluczami z konta magazynu platformy Azure (ASA).
-    - Wewnętrznie usługa Azure Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage.    
-    - Usługa Azure Key Vault generuje (rotuje) okresowo kluczy.
-    - Wartości kluczy nigdy nie są zwracane w odpowiedzi na obiekt wywołujący.
-    - Usługa Azure Key Vault zarządza klucze kont magazynu i klasycznego konta magazynu.
-    
+[Konta usługi Azure storage](/azure/storage/storage-create-storage-account) używa poświadczeń, który składa się z nazwy konta i klucz. Klucz jest generowana automatycznie i służy tylko jako "password" w przeciwieństwie do klucza kryptograficznego. Usługa Key Vault można zarządzać te klucze konta magazynu, przechowując je jako [wpisy tajne usługi Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+
+## <a name="overview"></a>Przegląd
+
+Magazynu kluczy zarządzanego konta magazynu, że funkcja wykonuje kilka funkcji zarządzania w Twoim imieniu:
+
+- Klucze listy (synchronizacje) za pomocą konta usługi Azure storage.
+- Ponownie generuje (rotuje) okresowo kluczy.
+- Zarządza klucze kont magazynu i klasycznego konta magazynu.
+- Wartości kluczy nigdy nie są zwracane w odpowiedzi na obiekt wywołujący.
+
+Kiedy używasz funkcji klucza konta magazynu zarządzanego:
+
+- **Zezwalaj tylko na usłudze Key Vault do zarządzania kluczami konta magazynu.** Nie podejmuj próby zarządzać samodzielnie, jak będzie zakłócać procesów usługi Key Vault.
+- **Nie zezwalaj na klucze konta magazynu, które będą zarządzane przez więcej niż jeden obiekt usługi Key Vault**.
+- **Ręcznie nie Generuj ponownie klucze konta magazynu**. Firma Microsoft zaleca regenerować je za pośrednictwem usługi Key Vault.
+
+Poniższy przykład pokazuje, jak umożliwić usługi Key Vault do zarządzania kluczami konta magazynu.
+
 > [!IMPORTANT]
 > Dzierżawa usługi Azure AD zapewnia każdej aplikacji zarejestrowanej za pomocą  **[nazwy głównej usługi](/azure/active-directory/develop/developer-glossary#service-principal-object)**, który służy jako tożsamości aplikacji. Identyfikator aplikacji nazwy głównej usługi jest używany w przypadku nadania jej zezwolenie na dostęp do innych zasobów platformy Azure za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Ponieważ usługa Key Vault jest aplikacją firmy Microsoft, jest wstępnie zarejestrowane w wszystkich dzierżaw usługi Azure AD, w tym samym Identyfikatorem aplikacji w ramach każdej chmury platformy Azure:
 > - Usługa Azure dzierżaw usługi AD w chmurze platformy Azure dla instytucji rządowych użyć Identyfikatora aplikacji `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.

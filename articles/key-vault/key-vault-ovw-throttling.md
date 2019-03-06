@@ -3,7 +3,7 @@ title: Wskazówki dotyczące ograniczania usługi Azure Key Vault
 description: Ograniczania usługi Key Vault ogranicza liczbę równoczesnych wywołań, aby zapobiec nadmiernemu zużyciu zasobów.
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: ''
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
@@ -11,13 +11,13 @@ ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
-ms.author: bryanla
-ms.openlocfilehash: aa71eac9bdcc841337891a1a8c281f5c18efbf13
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 823eebeddb64c15ef20d103f2f9290c800753f1a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107722"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404764"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Wskazówki dotyczące ograniczania usługi Azure Key Vault
 

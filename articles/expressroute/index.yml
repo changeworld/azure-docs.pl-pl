@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1f6448dc4cf31b3bb7597979587e1854a4878d50
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 108f737f88f8b470846b3699fb4cccce6e08541f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190016"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409095"
 documentType: LandingData
 title: Dokumentacja usługi ExpressRoute
 metadata:
@@ -56,6 +56,6 @@ sections:
     className: cardsD
     items:
     - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/azurerm.network/#expressroute">Program PowerShell</a></p><p><a href="/cli/azure/network/express-route">Interfejs wiersza polecenia platformy Azure</a></p>
+      html: <p><a href="/powershell/module/az.network/#expressroute">Program PowerShell</a></p><p><a href="/cli/azure/network/express-route">Interfejs wiersza polecenia platformy Azure</a></p>
     - title: REST
       html: <p><a href="https://msdn.microsoft.com/library/azure/mt586720">Dokumentacja interfejsu API REST</a></p><p><a href="https://msdn.microsoft.com/library/azure/dn606310">Dokumentacja klasycznego interfejsu API REST</a></p>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648597"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457912"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -347,7 +347,7 @@ Aby osiągnąć przepływność dysku SSD w warstwie standardowa i standardowych
 
 **Jakie regiony są większe niż 4 TiB obsługiwane w rozmiary dysków zarządzanych?**
 
-W tej chwili w wersji zapoznawczej w zachodnio-środkowe stany USA, Europa Północna, Europa Zachodnia, zachodnie stany USA 2, wschodnie stany USA 2, wschodnie stany USA są obsługiwane rozmiary dysków zarządzanych.
+Rozmiary dysków zarządzanych, ponad 4 TiB w wersji zapoznawczej są obsługiwane we wszystkich regionach platformy Azure w środowisku produkcyjnym, z wyjątkiem klientów rządowych, Chinach i Niemczech. 
 
 **Czy firma Microsoft obsługuje włączenie buforowania hosta na nowsze rozmiary dysków**
 

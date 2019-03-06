@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 305a5c5d4f82c732dd796f5c5140c0da04fe7b13
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 14804de1d8507a49cda2ce1dd8ee97dc56c0223b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245220"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439557"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -145,7 +145,7 @@ Jeśli ten przepływ pracy nie jest możliwe, opierając się na [szyfrowanie us
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Metodę szyfrowania używa usługi Azure Disk Encryption?
 
-W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256WithDiffuser w wersjach starszych niż Windows Server 2012). W systemie Linux ADE używa domyślnego dmcrypt xts-aes-plain64 za pomocą klucza głównego woluminu 256-bitowego.
+W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256WithDiffuser w wersjach starszych niż Windows Server 2012). W systemie Linux ADE używa domyślnego odszyfrowywania xts-aes-plain64 za pomocą klucza głównego woluminu 256-bitowego.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Czy w przypadku użycia EncryptFormatAll i określić wszystkie typy woluminu, jej spowoduje usunięcie danych na dyskach danych, które już zaszyfrowane?
 Nie, dane nie będą usuwane z dysków danych, które już są szyfrowane przy użyciu usługi Azure Disk Encryption. Podobnie jak EncryptFormatAll nie został ponownie zaszyfrować dysk systemu operacyjnego, go nie będzie ponownie zaszyfrować dysk już zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

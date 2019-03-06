@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bdffcdee87c0c5c9c878948797ac7c6be566c7ea
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a8be44201a2181ab252dfba501469719dd675ffa
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818854"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410166"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -44,7 +44,7 @@ Ten błąd może być spowodowany przez następujących przyczyn:
 
 1. Odwiedź stronę, [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) Aby dowiedzieć się więcej o tym, jakie adresy i porty muszą być dozwolone do zarządzania aktualizacjami do pracy.
 2. Jeśli przy użyciu sklonowanego obrazu:
-   1. W obszarze roboczym usługi Log Analytics, należy usunąć maszynę Wirtualną z zapisanego wyszukiwania dla konfiguracji zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć w obszarze **ogólne** w obszarze roboczym.
+   1. W obszarze roboczym usługi Log Analytics, należy usunąć maszynę Wirtualną z zapisanego wyszukiwania dla konfiguracji zakresu `MicrosoftDefaultScopeConfig-Updates` Jeśli zostanie on wyświetlony. Zapisane wyszukiwania można znaleźć w obszarze **ogólne** w obszarze roboczym.
    2. Uruchom polecenie `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
    3. Uruchom `Restart-Service HealthService` ponownego uruchomienia `HealthService`. Spowoduje to ponowne utworzenie klucza i generowanie nowego identyfikatora UUID.
    4. Jeśli to nie rozwiąże problemu, obraz sysprep pierwszy i zainstalować agenta MMA po fakcie.

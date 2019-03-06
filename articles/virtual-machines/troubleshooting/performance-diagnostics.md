@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387396"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441070"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostyka wydajności maszyn wirtualnych platformy Azure
 
@@ -42,7 +42,7 @@ Diagnostyka wydajności instaluje rozszerzenia maszyny Wirtualnej, które jest u
     ![Zrzut ekranu usługi Azure portal, z wyróżnionym przyciskiem diagnostyki wydajności instalacji](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
-    > Na tym zrzucie ekranu jest ukryty bloku nazw maszyn wirtualnych.
+    > W tym zrzucie ekranu jest ukryty bloku nazw maszyn wirtualnych.
 1. Wybierz konto magazynu (opcjonalnie)
 
     Jeśli chcesz używać jednego konta magazynu do przechowywania wyników diagnostyki wydajności dla wielu maszyn wirtualnych, można wybrać konto magazynu, klikając **ustawienia** przycisku na pasku narzędzi. Kliknij przycisk **OK** przycisku po wybraniu konta magazynu.
@@ -143,10 +143,10 @@ Możesz wyświetlić informacje o koncie magazynu przy użyciu przycisku Ustawie
 ### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>Jak udostępnić te dane za pomocą techniczną firmy Microsoft? 
 Istnieje wiele sposobów, aby udostępnić raport diagnostyczny z firmą Microsoft.
 
-**Opcja 1:** automatycznie udostępniać najnowszy raport  
+**Opcja 1:** Automatycznie udostępniaj najnowszy raport  
 Możesz otworzyć bilet pomocy technicznej firmy Microsoft, jest ważne, aby udostępnić raport diagnostyki wydajności. Jeśli wybrana została opcja udostępniać tych informacji z firmą Microsoft, podczas gdy uruchomić diagnostyki (, wybierając pozycję "**zgodę na udostępnianie informacji diagnostycznych firmie Microsoft**" pole wyboru), firma Microsoft będzie uzyskiwać dostęp do raportu z usługi storage konta, używając linku sygnatury dostępu Współdzielonego do pliku zip, dane wyjściowe do 30 dni od daty uruchomienia. Tylko najnowszy raport jest dostępny do ze specjalistą pomocy technicznej. 
 
-**Opcja 2:** wygenerować sygnaturę dostępu współdzielonego dla diagnostyki raportu skompresowany plik  
+**Opcja 2:** Generuj sygnaturę dostępu współdzielonego dla skompresowanego pliku raportu diagnostyki  
 Link do skompresowanego pliku raportów może udostępniać za pomocą sygnatur dostępu współdzielonego. W tym celu wykonaj następujące kroki: 
 1.  W witrynie Azure portal przejdź do konta magazynu, w którym przechowywane są dane diagnostyczne.
 1.  Wybierz **obiektów blob** w obszarze **usługi Blob service** sekcji. 
@@ -156,7 +156,7 @@ Link do skompresowanego pliku raportów może udostępniać za pomocą sygnatur 
 1.  Kliknij przycisk **generowania tokenu sygnatury dostępu Współdzielonego obiektów blob i adres URL**.
 1.  Kopiuj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob**i udostępnij je ze specjalistą pomocy technicznej. 
 
-**Opcja 3:** pobrać raport z konta magazynu
+**Opcja 3:** Pobierz raport z konta magazynu
 
 Możesz również znaleźć skompresowany plik raportu diagnostyki wydajności, wykonując kroki 1 – 4 w — opcja 2. Zaznacz, aby pobrać plik, a następnie udostępnić je za pośrednictwem poczty e-mail lub poproś ze specjalistą pomocy technicznej, aby uzyskać instrukcje przekazać plik.  
 

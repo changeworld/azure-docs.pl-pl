@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: a5c08536614476de38c7bfde524a12163162bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339267"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405525"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -37,7 +37,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | AllocationFailed | Klaster lub regionie nie ma dostępu do zasobów lub nie obsługuje żądanego rozmiaru maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub żądania innego rozmiaru maszyny Wirtualnej. | [Problemy z aprowizacji i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z aprowizacji i alokacji w Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z błędami alokacji](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Poczekaj na zakończenie operacji jednoczesnych. | |
 | AuthorizationFailed | Twoje konto lub jednostki usługi nie ma wystarczające uprawnienia dostępu do ukończenia wdrażania. Sprawdź, Twoje konto należy do roli, a jego dostęp dla zakresu wdrożenia.<br><br>Ten błąd może występować, gdy dostawca wymagany zasób nie jest zarejestrowany. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| BadRequest | Wysłano wartości wdrożenia, które nie jest inna niż oczekiwana przez usługę Resource Manager. Sprawdź komunikat o stanie wewnętrzny, aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Dokumentacja dotycząca szablonów](/azure/templates/) i [obsługiwane lokalizacje](resource-manager-templates-resources.md#location) |
+| BadRequest | Wysłano wartości wdrożenia, które nie jest inna niż oczekiwana przez usługę Resource Manager. Sprawdź komunikat o stanie wewnętrzny, aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Dokumentacja dotycząca szablonów](/azure/templates/) i [obsługiwane lokalizacje](resource-group-authoring-templates.md#resource-location) |
 | Konflikt | W przypadku żądania operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
 | DeploymentActive | Poczekaj, aż współbieżnych wdrożenie do tej grupy zasobów, aby zakończyć. | |
 | Niepowodzenia wdrożenia | Błąd niepowodzenia wdrożenia jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz rozwiązać błąd. Sprawdź szczegóły błędu dla kodu błędu, który zawiera więcej informacji. | [Znajdź kod błędu:](#find-error-code) |
@@ -58,7 +58,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | InvalidTemplateCircularDependency | Usuń niepotrzebne zależności. | [Rozwiąż zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Sprawdź, czy Twoje konto należy do tej samej dzierżawie, co grupa zasobów, który jest wdrażany na. | |
 | LinkedInvalidPropertyId | Identyfikator zasobu dla zasobu nie jest poprawnie rozpoznawania. Należy sprawdzić, możesz podać wartości wszystkich wymaganych dla Identyfikatora zasobu, w tym identyfikator subskrypcji, nazwę grupy zasobów, typ zasobu, nazwa zasobu nadrzędnego (jeśli jest to konieczne) i nazwę zasobu. | |
-| LocationRequired | Podaj lokalizację zasobu bazy danych. | [Ustawianie lokalizacji](resource-manager-templates-resources.md#location) |
+| LocationRequired | Podaj lokalizację zasobu bazy danych. | [Ustawianie lokalizacji](resource-group-authoring-templates.md#resource-location) |
 | MismatchingResourceSegments | Upewnij się, że zagnieżdżone zasób ma poprawną liczbę segmentów w nazwie i typie. | [Rozwiąż segmenty zasobu](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Sprawdź stan rejestracji dostawcy zasobów oraz obsługiwane lokalizacje. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |

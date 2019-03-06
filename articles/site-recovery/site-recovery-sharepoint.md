@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848480"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443491"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
 
@@ -29,7 +29,7 @@ Rozwiązanie odzyskiwania po awarii w dobrej powinna zezwalać na modelowanie pl
 
 W tym artykule opisano szczegółowo sposobu ochrony aplikacji programu SharePoint przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md). W tym artykule opisano najlepsze rozwiązania dotyczące replikowania trzy warstwy aplikacji programu SharePoint do platformy Azure, jak odzyskiwanie po awarii i jak możesz przełączyć działanie aplikacji na platformie Azure.
 
-Możesz obejrzeć poniższy film o odzyskiwaniu aplikacji warstwowej dla wielu na platformie Azure.
+Możesz obejrzeć poniższy film o odzyskiwaniu wielowarstwową aplikację na platformie Azure.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -73,7 +73,7 @@ Obsługiwane są następujące wersje serwera programu SharePoint.
 * Program SharePoint server 2013 standardowe
 * SharePoint server 2013 Enterprise
 * Program SharePoint server 2016 Standard
-* Program SharePoint server 2016 Enterprise
+* SharePoint server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Warto pamiętać o
 
@@ -147,9 +147,9 @@ Najczęściej używane skryptów usługi Azure Site Recovery można wdrożyć na
 
 1. Dodać skrypt akcję wstępną "Grupa 1", aby przełączyć awaryjnie grupy dostępności programu SQL. Użyj skryptu "ASR-SQL-FailoverAG" opublikowany w przykładowych skryptach. Upewnij się, zgodnie z wytycznymi w skrypcie i wprowadź wymagane zmiany w skrypcie, odpowiednio.
 
-    ![Dodaj AG-skryptu kroku-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
+    ![Add-AG-Script-Step-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
 
-    ![Dodaj AG-skryptu kroku-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
+    ![Add-AG-Script-Step-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
 
 2. Dodaj skrypt akcji post w celu dołączenia modułu równoważenia obciążenia w trybie za pośrednictwem maszyn wirtualnych warstwy internetowej (Grupa 2). Użyj skryptu "ASR-AddSingleLoadBalancer" opublikowany w przykładowych skryptach. Upewnij się, zgodnie z wytycznymi w skrypcie i wprowadź wymagane zmiany w skrypcie, odpowiednio.
 

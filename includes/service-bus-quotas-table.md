@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e2335beba521a612d03b1d12cd4bf6139e1330fb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1123f16e11dd5e35f49e1435eef097f0d53f613b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410882"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57350511"
 ---
 W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne dla komunikatów usługi Service Bus. Aby uzyskać informacje o cenach i inne limity przydziału dla usługi Service Bus, zobacz [cennik usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) Przegląd.
 
 | Nazwa limitu przydziału | Zakres | Uwagi | Wartość |
 | --- | --- | --- | --- | --- |
 | Maksymalna liczba Podstawowa / standardowa przestrzeni nazw na subskrypcję platformy Azure |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe przestrzenie nazw Podstawowa / standardowa są odrzucane przez portal. |100|
-| Maksymalna liczba przestrzeni nazw premium na subskrypcję platformy Azure |Przestrzeń nazw |Kolejne żądania dla przestrzeni nazw premium dodatkowe są odrzucane przez portal. |10 |
+| Maksymalna liczba przestrzeni nazw premium na subskrypcję platformy Azure |Przestrzeń nazw |Kolejne żądania dla przestrzeni nazw premium dodatkowe są odrzucane przez portal. |25 |
 | Rozmiar kolejki/tematu |Jednostka |Zdefiniowane podczas tworzenia kolejki lub tematu. <br/><br/> Kolejne komunikaty przychodzące są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |1, 2, 3, 4 GB lub 5 GB.<br /><br />W jednostce SKU Premium, jak również Standard z [partycjonowanie](/azure/service-bus-messaging/service-bus-partitioning) włączone, rozmiar maksymalny kolejki lub tematu jest 80 GB. |
-| Liczba równoczesnych połączeń w przestrzeni nazw |Przestrzeń nazw |Kolejne żądania dla dodatkowych połączeń są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Operacje REST są wliczane równoczesne połączenia TCP. |NetMessaging: 1000<br /><br />PROTOKÓŁ AMQP: 5000 |
+| Liczba równoczesnych połączeń w przestrzeni nazw |Przestrzeń nazw |Kolejne żądania dla dodatkowych połączeń są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Operacje REST są wliczane równoczesne połączenia TCP. |NetMessaging: 1000<br /><br />AMQP: 5000 |
 | Liczba równoczesnych odbierania żądań w jednostce kolejki/tematu/subskrypcji |Jednostka |Otrzymywać kolejne żądania są odrzucane, a wyjątek jest odbierany przez kod wywołujący. Ten limit przydziału dotyczy łączna liczba równoczesnych operacji odbioru we wszystkich subskrypcjach na temat. |5000 |
 | Liczba tematów/kolejek na przestrzeń nazw |Przestrzeń nazw |Kolejne żądania w celu utworzenia nowego tematu lub kolejki w przestrzeni nazw są odrzucane. W rezultacie, jeśli skonfigurowana za pośrednictwem [witryny Azure portal][Azure portal], generowany jest komunikat o błędzie. Jeśli jest wywoływana z interfejsem API zarządzania, wyjątek jest odbierany przez kod wywołujący. |1000 (warstwa podstawowa/standardowa). Całkowita liczba tematów i kolejek w przestrzeni nazw musi być mniejsza lub równa 1000. <br/><br/>Dla warstwy premium, 1000 na unit(MU) obsługi komunikatów. Maksymalny limit wynosi 4000. |
 | Liczba [podzielona na partycje kolejek/tematów](/azure/service-bus-messaging/service-bus-partitioning) na przestrzeń nazw |Przestrzeń nazw |Kolejne żądania do tworzenia nowego podzielonym na partycje tematu lub kolejki w przestrzeni nazw są odrzucane. W rezultacie, jeśli skonfigurowana za pośrednictwem [witryny Azure portal][Azure portal], generowany jest komunikat o błędzie. Jeśli wywoływane z interfejsu API, zarządzania **QuotaExceededException** wyjątek jest odbierany przez kod wywołujący. |Warstw podstawowa i standardowa — 100<br/><br/>Partycjonowane jednostki nie są obsługiwane w [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) warstwy.<br/><br />Każdy podzieleniu kolejki lub tematu, liczy się do limitu przydziału 1000 jednostek na obszar nazw. |

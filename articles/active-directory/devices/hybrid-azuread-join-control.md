@@ -17,12 +17,12 @@ ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66506a8abf130f27950fd958ba1a7c291e55a5a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8b113dd3e354e778d2cf16182665afff5440d2e5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674263"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408534"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>Kontrolowanie dołączania Twoich urządzeń do hybrydowej usługi Azure AD
 
@@ -99,16 +99,16 @@ Można kontrolować zachowanie rejestracji urządzenia bieżącego urządzeń, k
 
 Aby skonfigurować ustawienia klienta:
 
-1.  Otwórz **programu Configuration Manager**, a następnie przejdź do **usług w chmurze**.
+1.  Otwórz **programu Configuration Manager**, wybierz opcję **administracji**, a następnie przejdź do **ustawienia klienta**.
 
-2.  W obszarze **ustawienia urządzenia**, wybierz jedną z następujących ustawień **automatycznego rejestrowania nowych urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory**:
+2.  Otwórz właściwości **domyślne ustawienia klienta** i wybierz **usług w chmurze**.
+
+3.  W obszarze **ustawienia urządzenia**, wybierz jedną z następujących ustawień **automatycznego rejestrowania nowych urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory**:
 
     - **Nie**: Aby zapobiec automatycznej rejestracji urządzeń.
     - **Tak**: Aby włączyć automatycznej rejestracji urządzeń.
 
-
-3.  Kliknij przycisk **OK**.
-    
+4.  Kliknij przycisk **OK**.
 
 Należy połączyć to ustawienie klienta z wybraną lokalizację. Na przykład aby skonfigurować to ustawienie dla wszystkich urządzeń bieżącego Windows w organizacji klienta, należy połączyć ustawienia domeny klienta. Przeprowadzenie wdrożenia kontrolowanego, można skonfigurować ustawienie klienta umożliwiające Windows przyłączone do domeny bieżącego urządzenia, które należą do jednostki organizacyjnej lub grupie zabezpieczeń.
 

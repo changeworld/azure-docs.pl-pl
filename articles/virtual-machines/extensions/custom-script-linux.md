@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b8f343c2293df6a1dec808addf8881c27514fc06
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456966"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436659"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
@@ -110,16 +110,16 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | Name (Nazwa) | Wartość / przykład | Typ danych | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.Compute.Extensions | ciąg |
-| type | CustomScript | ciąg |
+| Wydawcy | Microsoft.Compute.Extensions | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
-| commandToExecute (np.) | python MyPythonScript.py <my-param1> | ciąg |
-| skrypt | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | ciąg |
+| commandToExecute (np.) | python MyPythonScript.py <my-param1> | string |
+| skrypt | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix (np.) | false | wartość logiczna |
 | Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
-| storageAccountName (np.) | examplestorageacct | ciąg |
-| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
+| storageAccountName (np.) | examplestorageacct | string |
+| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>Szczegóły dotyczące wartości właściwości
 * `skipDos2Unix`: (opcjonalne, wartość logiczna) Pomiń konwersji dos2unix adresów URL opartych na skryptach plików lub skryptu.
@@ -364,7 +364,7 @@ Rozszerzenie skryptu platformy Azure generuje dziennik, który można znaleźć 
 /var/log/azure/custom-script/handler.log
 ```
 
-Należy szukać wykonywania induvidual, będzie on wyglądać mniej więcej tak:
+Powinien wyglądać do wykonywania pojedynczych, będzie on wyglądać mniej więcej tak:
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check

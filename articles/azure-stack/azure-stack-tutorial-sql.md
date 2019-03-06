@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: f81a781bf3d1232c0af519b81f38c1d27fa6b2df
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ed149398a1244ad0cb09c3e0fe128973c6caa00d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818395"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408007"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Samouczek: Oferowanie baz danych SQL o wysokiej dostępności
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem wykonywania tych kroków w ramach tego samouczka, upewnij si
 > Wszystkie z następujących czynności są wymagane dla szablonu szybkiego startu usługi Azure Stack, który ma być używany.
 
 - [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) obrazu z witryny marketplace.
-- SQL Server 2016 z dodatkiem SP1 lub z dodatkiem SP2 (Enterprise, Standard lub deweloper) w systemie Windows Server 2016 server obrazu. W tym samouczku [programu SQL Server 2016 z dodatkiem SP2 Enterprise w systemie Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.sqlserver2016sp2enterprisewindowsserver2016) obrazu z witryny marketplace.
+- SQL Server 2016 z dodatkiem SP1 lub z dodatkiem SP2 (Enterprise, Standard lub deweloper) w systemie Windows Server 2016 server obrazu. W tym samouczku [programu SQL Server 2016 z dodatkiem SP2 Enterprise w systemie Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) obrazu z witryny marketplace.
 - [Rozszerzenie programu SQL Server IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) wersji 1.2.30 lub nowszej. Rozszerzenie SQL IaaS instaluje wymagane składniki, które są wymagane przez elementy programu SQL Server w portalu Marketplace, wszystkie wersje Windows. Dzięki temu ustawienia specyficzne dla SQL do skonfigurowania na maszynach wirtualnych programu SQL. Jeśli rozszerzenie nie jest zainstalowany na rynku lokalnym, inicjowania obsługi programu SQL Server zakończy się niepowodzeniem.
 - [Rozszerzenie niestandardowego skryptu dla Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) wersji 1.9.1 lub nowszej. Rozszerzenie niestandardowego skryptu jest narzędziem, które może służyć do automatycznego uruchomienia zadań dostosowywania maszyny Wirtualnej po wdrożeniu.
 - [Program PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) wersji 2.76.0.0 lub nowszej. DSC to platforma zarządzania w programie Windows PowerShell, umożliwiająca wdrażanie i zarządzanie danymi konfiguracji usług oprogramowania i zarządzanie środowiskiem, w którym są uruchomione te usługi.

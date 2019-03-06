@@ -9,12 +9,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 6444a49a95ee53fb624501bc464f6378423e6e26
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f7de10eeb65b36823d6c4cc84b0032913638889
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863027"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444603"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Samouczek: Przytnij obraz za pomocą usługi Bing wyszukiwania zestawu SDK programu Visual dlaC#
 
@@ -28,7 +28,7 @@ W tym samouczku przedstawiono sposób:
 > * Wyślij żądanie przy użyciu zestawu SDK usługi Bing Visual Search
 > * Przytnij obszar obrazu do wyszukiwania z wyszukiwania wizualnego Bing
 > * Otrzymywanie i obsługę odpowiedzi
-> * Znajdź adresy URL czynności do wykonania w resposne
+> * Znajdź adresy URL czynności do wykonania w odpowiedzi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

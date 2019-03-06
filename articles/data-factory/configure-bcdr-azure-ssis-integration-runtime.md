@@ -13,18 +13,20 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054803"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453035"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurowanie środowiska Azure-SSIS Integration Runtime przy użyciu replikacji geograficznej usługi Azure SQL Database i trybu failover
 
 W tym artykule opisano sposób konfigurowania środowiska Azure-SSIS Integration Runtime przy użyciu usługi Azure SQL Database replikacji geograficznej dla bazy danych SSISDB. W przypadku przejścia w tryb failover można zapewnić, że Azure-SSIS IR nadal działa z dodatkowej bazy danych.
 
-Aby uzyskać więcej informacji na temat replikacji geograficznej i trybu failover dla usługi SQL Database, zobacz [omówienie: aktywnej replikacji geograficznej i automatyczny tryb failover grup](../sql-database/sql-database-geo-replication-overview.md).
+Aby uzyskać więcej informacji na temat replikacji geograficznej i trybu failover dla usługi SQL Database, zobacz [omówienie: Aktywnej replikacji geograficznej i automatyczny tryb failover grup](../sql-database/sql-database-geo-replication-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Scenariusz 1 — wskazuje Azure-SSIS IR do odczytu i zapisu punkt końcowy odbiornika
 
@@ -34,7 +36,7 @@ Ten rozdział ma zastosowanie, gdy są spełnione następujące warunki:
 
 - Azure-SSIS IR wskazuje punkt końcowy odbiornika do odczytu i zapisu grupy trybu failover.
 
-  I
+  AND
 
 - Serwer bazy danych SQL jest *nie* skonfigurowano reguły punktu końcowego usługi sieci wirtualnej.
 
@@ -87,7 +89,7 @@ Wykonaj następujące kroki, aby zatrzymać środowiska IR Azure-SSIS, przełąc
 2. Wywołaj następujące polecenie w programie PowerShell, aby zaktualizować środowisko IR z nowymi ustawieniami.
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `
+    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
                     -CatalogServerEndpoint "Azure SQL Database server endpoint" `
                     -CatalogAdminCredential "Azure SQL Database server admin credentials" `
                     -VNetId "new VNet" `

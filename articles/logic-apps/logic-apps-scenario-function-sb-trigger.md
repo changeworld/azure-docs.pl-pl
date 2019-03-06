@@ -9,14 +9,14 @@ ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3a72689be1902a05a2df409366bc5caba94d6a77
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231614"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436106"
 ---
-# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Scenariusz: Wyzwalacza aplikacji logiki za pomocą usługi Azure Functions i Azure Service Bus
+# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Scenariusz: Wyzwalacz aplikacji logiki za pomocą usługi Azure Functions i Azure Service Bus
 
 Usługa Azure Functions umożliwia tworzenie wyzwalacza aplikacji logiki, gdy należy wdrożyć odbiornika długotrwałych lub zadania. Można na przykład utworzyć funkcję, która nasłuchuje kolejki i natychmiast wyzwolenie aplikacji logiki jako wyzwalacz wypychania.
 
@@ -34,9 +34,9 @@ W tym przykładzie istnieje funkcja uruchomione dla każdej aplikacji logiki, kt
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Tworzenie pustej aplikacji logiki. 
 
-   Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. W polu wyszukiwania wpisz "żądanie http". W obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **zostanie odebrane żądanie po HTTP**
+1. W polu wyszukiwania wpisz "żądanie http". W obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **Po odebraniu żądania HTTP**
 
    ![Wybierz wyzwalacz](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -98,7 +98,7 @@ Następnie należy utworzyć funkcję, która działa jako wyzwalacz i nasłuchu
 
 1. W witrynie Azure portal Otwórz i rozwiń aplikację funkcji, jeśli nie już otwarty. 
 
-1. W obszarze nazwę swojej aplikacji funkcji, rozwiń węzeł **funkcji**. Na **funkcje** okienku wybierz **nową funkcję**. Wybierz ten szablon: **wyzwalacz kolejki usługi Service Bus — C#**
+1. W obszarze nazwę swojej aplikacji funkcji, rozwiń węzeł **funkcji**. Na **funkcje** okienku wybierz **nową funkcję**. Wybierz ten szablon: **Wyzwalacz kolejki usługi Service Bus —C#**
    
    ![Wybierz portal usługi Azure Functions](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 
@@ -114,14 +114,14 @@ Następnie należy utworzyć funkcję, która działa jako wyzwalacz i nasłuchu
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   private static HttpClient httpClient = new HttpClient();
+   
    public static void Run(string myQueueItem, TraceWriter log)
    {
        log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
-       using (var client = new HttpClient())
-       {
-           var response = client.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
-       }
+       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
    }
    ```
 

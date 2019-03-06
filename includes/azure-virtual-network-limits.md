@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: fe1993a914ea4d3bd8ab9116748198cbb0c1c43c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d43424e1377f7fa9cb8b272cc4ffbf3e5323f2ba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55905180"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457964"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -23,7 +23,7 @@ ms.locfileid: "55905180"
 | Lokalne lokacje sieciowe |20 |kontakt z pomocą techniczną |
 | Serwery DNS na sieć wirtualną |20 |20 |
 | Prywatne adresy IP na sieć wirtualną |4096 |4096 |
-| Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500 000 |500 000 |
+| Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500 KB, maksymalnie 1000 KB dla co najmniej dwóch kart interfejsu sieciowego |500 KB, maksymalnie 1000 KB dla co najmniej dwóch kart interfejsu sieciowego |
 | Sieciowe grupy zabezpieczeń (NSG) |100 |200 |
 | Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |200 |1000 |
 | Zdefiniowane przez użytkownika tabele tras |100 |200 |

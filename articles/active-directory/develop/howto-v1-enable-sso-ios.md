@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602fba95b3cc69521fe3fe17d8c89cc332131566
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190232"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448683"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
 
@@ -231,7 +231,7 @@ W przypadku uprawnień skonfiguruj poprawnie powinien zostać wyświetlony plik 
 </plist>
 ```
 
-Po użytkownik ma uprawnienie pęku kluczy włączone we wszystkich aplikacjach i wszystko będzie gotowe do użycia logowania jednokrotnego, opisz odentity SDK pęku kluczy przy użyciu następujących ustawień swojej `ADAuthenticationSettings` z następującymi ustawieniami:
+Po użytkownik ma uprawnienie pęku kluczy włączone we wszystkich aplikacjach i wszystko będzie gotowe do użycia logowania jednokrotnego, opisz tożsamość SDK pęku kluczy przy użyciu następujących ustawień swojej `ADAuthenticationSettings` z następującymi ustawieniami:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";

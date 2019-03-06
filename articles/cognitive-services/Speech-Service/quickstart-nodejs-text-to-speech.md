@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e44b4a2c21cf340683ffbca71f609db58c8f363b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5e25de83ddec2884d4bd10ea85f4708d534b8e3f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337043"
+ms.locfileid: "57403247"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu środowiska Node.js
 
@@ -136,7 +136,7 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
 
-To już prawie koniec. Ostatnim krokiem jest tworzenie funkcji asynchronicznych. Ta funkcja będzie odczytywać Twój klucz subskrypcji ze zmiennej środowiskowej, wybór opcji Monituj o tekstu, uzyskać token, poczekaj, aż żądanie zakończyć, a następnie Konwertuj tekst na mowę i zapisać audio jako wav.
+To już prawie koniec. Ostatnim krokiem jest, aby utworzyć funkcję asynchroniczną. Ta funkcja będzie odczytywać Twój klucz subskrypcji ze zmiennej środowiskowej, wybór opcji Monituj o tekstu, uzyskać token, poczekaj, aż żądanie zakończyć, a następnie Konwertuj tekst na mowę i zapisać audio jako wav.
 
 Jeśli masz doświadczenia w pracy ze zmiennymi środowiskowymi lub wolisz przetestuj na Twojej subskrypcji klucza zapisane na stałe jako ciąg znaków, należy zastąpić `process.env.SPEECH_SERVICE_KEY` z kluczem subskrypcji jako ciąg.
 

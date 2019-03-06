@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 22b3480093b85507123cab886340713747433928
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e4e29f4b714fe187622d778db58743ca4f02e84e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818361"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445589"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -233,7 +233,7 @@ Być może jest znaną bazy danych ma zostać odnaleziona w literaturze rozpozna
 <tr>
   <td>Film Tweetów</td>
   <td>
-Zestaw danych jest rozszerzona wersja zestawu Tweetings filmu. Zestaw danych zawiera 170K klasyfikację filmów, programów wyodrębnione z odpowiedniej strukturze tweety w serwisie Twitter. Każde wystąpienie reprezentuje tweet i jest spójną kolekcją: identyfikator użytkownika, identyfikator filmu ZAUFANI, klasyfikacja, sygnatury czasowej, numer Ulubione dla tego tweetu, a liczba retweets tego tweetu. Zestaw danych została udostępniona przez powiedział A., S. Dooms, Loni b i D. Tikk polecania systemów wyzwanie 2014.
+Zestaw danych jest rozszerzona wersja zestawu Tweetings filmu. Zestaw danych zawiera 170K klasyfikację filmów, programów wyodrębnione z odpowiedniej strukturze tweety w serwisie Twitter. Każde wystąpienie reprezentuje tweet i jest spójną kolekcją: identyfikator użytkownika, identyfikator filmu ZAUFANI, klasyfikacji, sygnatury czasowej, liczba Ulubione dla tego tweetu i liczba retweets tego tweetu. Zestaw danych została udostępniona przez powiedział A., S. Dooms, Loni b i D. Tikk polecania systemów wyzwanie 2014.
   </td>
 </tr>
 

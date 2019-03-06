@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7081d46af335f29e5723ef8d471814a1564907c2
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990208"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409690"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -32,7 +32,7 @@ Przed użyciem szablonu tworzenia, upewnij się, że zostały rozwiązane te wym
 1. [Uprawnienia właściciela do subskrypcji](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Limit przydziału dla klastra vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [Role niestandardowe dostępu](avere-vfxt-prereqs.md#create-access-roles) -musi utworzyć rolę kontroli dostępu opartej na rolach można przypisać do węzłów klastra. Użytkownik może również utworzyć rolę niestandardowego dostępu dla kontrolera klastra, ale większość użytkowników potrwa roli właściciela domyślnej, która zapewnia uprawnienia kontrolera odpowiadającego do właściciela grupy zasobów. Odczyt [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md#owner) Aby uzyskać więcej szczegółów.
-1. [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#optional-create-a-storage-service-endpoint-in-your-virtual-network) — jest to wymagane do wdrażania za pomocą istniejącej sieci wirtualnej i tworzenia usługi blob storage
+1. [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) — jest to wymagane do wdrażania za pomocą istniejącej sieci wirtualnej i tworzenia usługi blob storage
 
 Aby uzyskać więcej informacji na temat kroków wdrażania klastra i planowania, przeczytaj [Planowanie systemu vFXT Avere](avere-vfxt-deploy-plan.md) i [Przegląd wdrażania](avere-vfxt-deploy-overview.md).
 
@@ -104,7 +104,7 @@ Na drugiej stronie Szablon wdrożenia umożliwia ustawianie rozmiaru klastra, ty
 
 * **Nazwa klastra vFXT Avere** -nadaj unikatową nazwę klastra. 
 
-* **Rozmiar** — w tej sekcji przedstawiono typ maszyny Wirtualnej, który będzie używany dla węzłów klastra. Mimo że istnieje tylko jedna opcja zalecana, **Zmień rozmiar** łącze powoduje otwarcie tabeli ze szczegółowymi informacjami na temat tego typu wystąpienia oraz link do Kalkulatora cen.  <!-- old: Specify the VM type to use when creating the cluster nodes.  -->
+* **Rozmiar** — w tej sekcji przedstawiono typ maszyny Wirtualnej, który będzie używany dla węzłów klastra. Mimo że istnieje tylko jedna opcja zalecana, **Zmień rozmiar** łącze powoduje otwarcie tabeli ze szczegółowymi informacjami na temat tego typu wystąpienia oraz link do Kalkulatora cen.  
 
 * **Rozmiar każdego węzła w pamięci podręcznej** -klastra pamięci podręcznej jest rozłożona się między węzłami klastra, więc całkowity rozmiar pamięci podręcznej w klastrze vFXT Avere będą rozmiar pamięci podręcznej w każdym węźle pomnożona przez liczbę węzłów. 
 
@@ -120,7 +120,7 @@ Na drugiej stronie Szablon wdrożenia umożliwia ustawianie rozmiaru klastra, ty
   >  * Jeśli nie skonfigurowano publiczny adres IP na kontrolerze, musisz podać innego hosta szybkie, połączenie sieci VPN lub usługi ExpressRoute do dostępu do klastra. Na przykład utworzyć kontroler sieci wirtualnej, który ma już skonfigurowane połączenie sieci VPN.
   >  * Jeśli utworzysz kontroler z publicznym adresem IP, należy chronić maszyny Wirtualnej kontrolera z sieciową grupą zabezpieczeń. Domyślnie vFXT Avere wdrożenia platformy Azure tworzy sieciową grupę zabezpieczeń i ograniczenie dostępu dla ruchu przychodzącego na tylko port 22 dla kontrolerów z publicznych adresów IP. System można dodatkowo zabezpieczyć, blokując szczegółów dostępu do sieci zakres adresów IP, źródłowy — oznacza to, Zezwalaj na połączenia tylko z komputerów, które mają być używane dla dostępu do klastra.
 
-  Wdróż szablon konfiguruje również nową sieć wirtualną z punktu końcowego usługi storage dla usługi Azure Blob storage i ograniczona do tylko adresy IP z podsieci klastra kontroli dostępu do sieci. <!-- xxx make sure this is accurate --> <!-- do I need to say that this only happens if you choose to create storage? -->
+  Wdróż szablon konfiguruje również nową sieć wirtualną z punktu końcowego usługi storage dla usługi Azure Blob storage i ograniczona do tylko adresy IP z podsieci klastra kontroli dostępu do sieci. 
 
 * **Podsieci** — Wybierz podsieć w istniejącej sieci wirtualnej lub utworzyć nową. 
 

@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 56dab93087249082330c0f685e5457bc2585664c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bc04afead8742c9f384287ecb8d33c54770456b6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237935"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447391"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak wdrożyć bot uczeń konwersacji
 
@@ -94,7 +94,7 @@ Bot jest teraz uruchomiona lokalnie.  Można do niego dostęp za pomocą emulato
 
 Opublikuj bota uczeń konwersacji, podobnie jak chcesz opublikować innych bot tak samo. Na wysokim poziomie możesz przekazywanie kodu do witryny sieci Web hostowanej, ustaw wartości prawidłowej konfiguracji, a następnie zarejestrować bota przy użyciu różnych kanałów. Szczegółowe instrukcje znajdują się w tym wideo przedstawiający sposób publikowania bota przy użyciu usługi Azure Bot Service.
 
-Po wdrożeniu bot i uruchomionych możesz nawiązać połączenie różnych kanałów takich jak Facebook, Teams, Skype itp. przy użyciu rejestracji kanałów Botów Azure. Dokumentacja na temat tego procesu, zobacz: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
+Po wdrożeniu bot i uruchomionych możesz nawiązać połączenie różnych kanałów takich jak Facebook, Teams, Skype itp. Korzystanie z usługi Azure Bot kanału rejestracji. Dokumentacja na temat tego procesu, zobacz: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
 Poniżej przedstawiono instrukcje krok po kroku dotyczące wdrażania Bot uczeń konwersacji na platformie Azure.  W instrukcjach założono, że Twoje źródło bot jest dostępny ze źródła oparta na chmurze, takich jak Azure DevOps Services, GitHub, BitBucket lub OneDrive i skonfiguruje Twój bot ciągłego wdrażania.
 

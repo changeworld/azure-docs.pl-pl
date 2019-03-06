@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228967"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444637"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure table storage i Visual Studio połączonych usług (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -114,7 +114,7 @@ Poniższe kroki ilustrują Tworzenie tabeli:
     }
     ```
 
-1. W ramach **CreateTable** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (zmiany  *&lt;nazwa konta magazynu >* do nazwy konta magazynu platformy Azure wszystko Uzyskiwanie dostępu do.)
+1. W ramach **CreateTable** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure, użyj następującego kodu: (Zmień  *&lt;nazwa konta magazynu >* nazwę konta usługi Azure storage uzyskiwany jest dostęp.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -169,7 +169,7 @@ Poniższe kroki ilustrują Tworzenie tabeli:
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **Tworzenie tabeli** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **Tworzenie tabeli** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
     ![Utwórz tabelę](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -203,7 +203,7 @@ Klasa jednostki *musi* zadeklarować publicznego konstruktora bez parametrów.
     }
     ```
 
-1. W ramach **AddEntity** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (zmiany  *&lt;nazwa konta magazynu >* do nazwy konta magazynu platformy Azure wszystko Uzyskiwanie dostępu do.)
+1. W ramach **AddEntity** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure, użyj następującego kodu: (Zmień  *&lt;nazwa konta magazynu >* nazwę konta usługi Azure storage uzyskiwany jest dostęp.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -271,7 +271,7 @@ Klasa jednostki *musi* zadeklarować publicznego konstruktora bez parametrów.
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **Dodaj jednostkę** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **Dodaj jednostkę** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
     ![Dodawanie jednostki](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -298,7 +298,7 @@ Oprócz możliwości [Dodawanie jednostki do tabeli, jeden w danym momencie](#ad
     }
     ```
 
-1. W ramach **AddEntities** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (zmiany  *&lt;nazwa konta magazynu >* do nazwy konta magazynu platformy Azure wszystko Uzyskiwanie dostępu do.)
+1. W ramach **AddEntities** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure, użyj następującego kodu: (Zmień  *&lt;nazwa konta magazynu >* nazwę konta usługi Azure storage uzyskiwany jest dostęp.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -391,7 +391,7 @@ Oprócz możliwości [Dodawanie jednostki do tabeli, jeden w danym momencie](#ad
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **Dodaj jednostki** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **Dodaj jednostki** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
     ![Dodawanie jednostek](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -418,7 +418,7 @@ W tej sekcji pokazano, jak można pobrać pojedynczą jednostkę z tabeli za pom
     }
     ```
 
-1. W ramach **GetSingle** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (zmiany  *&lt;nazwa konta magazynu >* do nazwy konta magazynu platformy Azure wszystko Uzyskiwanie dostępu do.)
+1. W ramach **GetSingle** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure, użyj następującego kodu: (Zmień  *&lt;nazwa konta magazynu >* nazwę konta usługi Azure storage uzyskiwany jest dostęp.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -493,7 +493,7 @@ W tej sekcji pokazano, jak można pobrać pojedynczą jednostkę z tabeli za pom
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **pobieranie pojedynczego** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **pobieranie pojedynczego** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
     ![Pobieranie pojedynczego](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -518,7 +518,7 @@ Jak wspomniano w sekcji [Dodawanie jednostki do tabeli](#add-an-entity-to-a-tabl
     }
     ```
 
-1. W ramach **GetPartition** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (zmiany  *&lt;nazwa konta magazynu >* do nazwy konta magazynu platformy Azure wszystko Uzyskiwanie dostępu do.)
+1. W ramach **GetPartition** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure, użyj następującego kodu: (Zmień  *&lt;nazwa konta magazynu >* nazwę konta usługi Azure storage uzyskiwany jest dostęp.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -603,7 +603,7 @@ Jak wspomniano w sekcji [Dodawanie jednostki do tabeli](#add-an-entity-to-a-tabl
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **uzyskać partycji** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **uzyskać partycji** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
     ![Pobierz partycji](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -628,7 +628,7 @@ W tej sekcji przedstawiono sposób usuwania jednostki z tabeli.
     }
     ```
 
-1. W ramach **DeleteEntity** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (zmiany  *&lt;nazwa konta magazynu >* do nazwy konta magazynu platformy Azure wszystko Uzyskiwanie dostępu do.)
+1. W ramach **DeleteEntity** metody, Pobierz **CloudStorageAccount** obiekt, który reprezentuje dane konta magazynu. Aby uzyskać parametry połączenia z magazynem i informacje o koncie magazynu z konfiguracji usługi platformy Azure, użyj następującego kodu: (Zmień  *&lt;nazwa konta magazynu >* nazwę konta usługi Azure storage uzyskiwany jest dostęp.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -703,7 +703,7 @@ W tej sekcji przedstawiono sposób usuwania jednostki z tabeli.
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. Uruchom aplikację, a następnie wybierz pozycję **Usuń jednostkę** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
+1. Uruchom aplikację, a następnie wybierz pozycję **Usuń jednostkę** aby zobaczyć wyniki, podobnie jak poniższy zrzut ekranu:
   
     ![Pobieranie pojedynczego](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 

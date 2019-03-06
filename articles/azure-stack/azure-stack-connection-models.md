@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: f58d4e4f8b0e095fe64489fb42f78ef82c5af359
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182021"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407820"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Modele połączeń systemy zintegrowane usługi Azure Stack
 Jeśli interesuje Cię zakupu to system zintegrowany z usługi Azure Stack, musisz zrozumieć [kilka zagadnień integracji datacenter](azure-stack-datacenter-integration.md) dla wdrożenia usługi Azure Stack określić, jak system zmieści się w centrum danych. Ponadto należy zdecydować, jak będzie Zintegruj usługę Azure Stack w środowisku chmury hybrydowej. W tym artykule omówiono następujące główne decyzje, takich jak połączenie platformy Azure, Magazyn tożsamości i rozliczeń decyzji modelu.
@@ -38,12 +38,14 @@ Można wdrożyć usługę Azure Stack, połączony z Internetem (i na platformie
 
 
 |Opcje|Połączony z platformą Azure|Odłączono od platformy Azure|
-|-----|-----|-----|
+|-----|:-----:|:-----:|
 |Azure AD|![Obsługiwane](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Obsługiwane](media/azure-stack-connection-models/check.png)|![Obsługiwane](media/azure-stack-connection-models/check.png)|
 |Rozliczanie na podstawie użycia|![Obsługiwane](media/azure-stack-connection-models/check.png)| |
 |Rozliczanie na podstawie pojemności|![Obsługiwane](media/azure-stack-connection-models/check.png)|![Obsługiwane](media/azure-stack-connection-models/check.png)|
-|Pobierz pakiety aktualizacji bezpośrednio do usługi Azure Stack|![Obsługiwane](media/azure-stack-connection-models/check.png)|  |
+|Licencjonowanie| Umowy Enterprise Agreement lub dostawcy rozwiązań w chmurze | Umowa Enterprise |
+|Poprawek i aktualizacji|Pakiet aktualizacji można pobrać bezpośrednio z Internetu w usłudze Azure Stack |  Wymagane<br><br>Wymaga również nośnik wymienny<br> i oddzielnych podłączonego urządzenia |
+| Rejestracja | Automatyczne | Wymagane<br><br>Wymaga również nośnik wymienny<br> i oddzielnych podłączonego urządzenia |
 
 Po podjęciu model połączenia platformy Azure można użyć do wdrożenia usługi Azure Stack, dodatkowe, zależnych od połączenia decyzji należy przewidzieć magazynem tożsamości i metody rozliczeń. 
 

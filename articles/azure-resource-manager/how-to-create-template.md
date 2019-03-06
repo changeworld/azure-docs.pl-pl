@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67ea9ece7ba0c71484e9117db13fd2c708d87baf
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312872"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403519"
 ---
 # <a name="create-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 
@@ -44,7 +44,7 @@ Omówmy teraz części szablonu w celu poznania sposobu działania tego szablonu
 
 * [Funkcje](resource-group-authoring-templates.md#functions) sekcji, która zawiera dostosowany szablon wyrażeń, które są używane w szablonie.
 
-* [Zasobów](resource-manager-templates-resources.md) sekcję, która zawiera zasoby platformy Azure, które zostały wdrożone w subskrypcji.
+* [Zasobów](resource-group-authoring-templates.md#resources) sekcję, która zawiera zasoby platformy Azure, które zostały wdrożone w subskrypcji.
 
 * [Generuje](resource-group-authoring-templates.md#outputs) sekcję, która zawiera wartości, które są zwracane po zakończeniu wdrożenia.
 
@@ -98,7 +98,7 @@ Dodawanie tagów do zasobów w celu logicznego uporządkowania według kategorii
 }
 ```
 
-Tagi można także zastosować dynamicznie z parametrów. Aby uzyskać więcej informacji, zobacz [tagów w szablonie](resource-manager-templates-resources.md#tags).
+Tagi można także zastosować dynamicznie z parametrów. Aby uzyskać więcej informacji, zobacz [tagów w szablonie](resource-group-using-tags.md#templates).
 
 ## <a name="review-template-functions"></a>Przejrzyj funkcje szablonów
 
@@ -176,7 +176,7 @@ Warunkowo wdraża konto magazynu w następującym przykładzie:
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [element warunek](resource-manager-templates-resources.md#condition).
+Aby uzyskać więcej informacji, zobacz [element warunek](resource-group-authoring-templates.md#condition).
 
 ## <a name="review-dependencies"></a>Przejrzyj zależności
 

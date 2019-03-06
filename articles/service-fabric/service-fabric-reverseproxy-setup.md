@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 52d6781f83262162f261d094d4818f803e5f3866
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8c405941417ad1a4e877cfd8fd0bdb53e186f6d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670217"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452304"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Instalowanie i konfigurowanie zwrotnego serwera proxy w usłudze Azure Service Fabric
 Zwrotny serwer proxy to opcjonalna usługa Azure Service Fabric, która ułatwia mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http. Aby dowiedzieć się więcej, zobacz [zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy.md). W tym artykule przedstawiono sposób instalowania i konfigurowania zwrotny serwer proxy w klastrze. 
@@ -47,7 +47,7 @@ Dla nowego klastra możesz [utworzyć niestandardowy szablon usługi Resource Ma
 
 Przykładowe szablony usługi Resource Manager, które mogą pomóc Ci skonfigurować bezpieczne zwrotny serwer proxy w klastrze platformy Azure można znaleźć [bezpiecznego odwrotnego serwera Proxy przykładowe szablony](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) w witrynie GitHub. Zapoznaj się [Konfigurowanie protokołu HTTPS zwrotny serwer Proxy w zabezpieczonym klastrem](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) w pliku README, aby uzyskać instrukcje i szablony służące do konfigurowania bezpiecznej zwrotny serwer proxy przy użyciu certyfikatu i obsługiwać Przerzucanie certyfikatów.
 
-W przypadku istniejącego klastra, możesz wyeksportować szablon usługi Resource Manager dla zasobu klastra grupy za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell#export-resource-group-as-template), lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli#export-resource-group-as-template).
+W przypadku istniejącego klastra, możesz wyeksportować szablon usługi Resource Manager dla zasobu klastra grupy za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell), lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
 
 Po utworzeniu szablonu usługi Resource Manager, należy włączyć zwrotny serwer proxy wykonując następujące kroki:
 
@@ -334,7 +334,7 @@ Na przykład można ustawić wartość **DefaultHttpRequestTimeout** umożliwiaj
 
 Aby uzyskać więcej informacji na temat aktualizowania ustawień sieci szkieletowej dla klastrów platformy Azure, zobacz [dostosować ustawienia klastra przy użyciu szablonów usługi Resource Manager](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych, zobacz [Dostosuj ustawienia klastra dla autonomicznych klastrów](service-fabric-cluster-config-upgrade-windows-server.md). 
 
-Kilka ustawień sieci szkieletowej są używane nawiązywania bezpiecznej komunikacji między zwrotny serwer proxy i usługami. Aby uzyskać szczegółowe informacje o te ustawienia, zobacz [nawiązywanie połączenia z bezpiecznej usłudze przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md).
+Kilka ustawień sieci szkieletowej są używane nawiązywania bezpiecznej komunikacji między zwrotny serwer proxy i usługami. Aby uzyskać szczegółowe informacje o tych ustawieniach, zobacz [nawiązywanie połączenia z bezpiecznej usłudze przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Konfigurowanie funkcji przekazywania danych do bezpiecznej usługi HTTP przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md)

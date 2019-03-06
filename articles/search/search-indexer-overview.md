@@ -7,21 +7,21 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2017
+ms.date: 03/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0a6c894b08fd76a018035a824b463e41e31c2f2f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310203"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407990"
 ---
 # <a name="indexers-in-azure-search"></a>Indeksatory w usłudze Azure Search
 
-*Indeksatora* w usłudze Azure Search jest przeszukiwarką, która wyodrębnia dane z możliwością wyszukiwania i metadane ze źródła zewnętrznego danych platformy Azure i wypełnienie indeksu na podstawie mapowania pól do pól między indeksem a źródłem danych. Ta metoda jest czasami określana jako „model ściągania”, ponieważ usługa pobiera dane bez konieczności pisania kodu, który wypycha dane do indeksu.
+*Indeksatora* w usłudze Azure Search jest przeszukiwarką, która wyodrębnia dane z możliwością wyszukiwania i metadane ze źródła zewnętrznego danych platformy Azure i wypełnienie indeksu na podstawie mapowania pól do pól między indeksem a źródłem danych. Ta metoda jest czasami określane jako "model ściągania", ponieważ usługa pobiera dane bez konieczności pisania kodu, który dodaje dane do indeksu.
 
-Indeksatory są oparte na typach źródeł danych lub platformach — obejmują one indeksatory programu SQL Server na platformie Azure, usług Cosmos DB, Azure Table Storage oraz Blob Storage itp.
+Indeksatory są oparte na typach źródeł danych lub platformach — obejmują indeksatory programu SQL Server na platformie Azure, Cosmos DB, Azure Table Storage i Blob Storage. Indeksatory magazynu obiektów blob mają dodatkowe właściwości specyficzne dla typów zawartości obiektu blob.
 
 Dane można wprowadzać tylko za pomocą indeksatora lub kombinacji metod obejmujących użycie indeksatora w celu załadowania tylko niektórych pól w indeksie.
 
@@ -37,6 +37,9 @@ Możesz tworzyć indeksatory i zarządzać nimi przy użyciu tych metod:
 
 Początkowo nowy indeksator jest ogłaszany jako funkcja w wersji zapoznawczej. Funkcje w wersji zapoznawczej są wprowadzane w interfejsach API (REST i .NET), a następnie integrowane z portalem po przejściu do poziomu ogólnej dostępności. Jeśli oceniasz nowy indeksator, zaplanuj napisanie kodu.
 
+## <a name="permissions"></a>Uprawnienia
+
+Wszystkie operacje związane z indeksatorów, w tym żądaniach GET dotyczących stanu lub definicji, wymagają [klucz api-key administratora](search-security-api-keys.md). 
 
 <a name="supported-data-sources"></a>
 
@@ -62,19 +65,19 @@ Indeksator uzyskuje połączenie ze źródłem danych z *źródła danych* obiek
 Źródła danych są konfigurowane i zarządzane niezależnie od indeksatorów, które z nich korzystają. Oznacza to, że jedno źródło może być używane przez wiele indeksatorów w celu jednoczesnego ładowania kilku indeksów.
 
 ### <a name="step-2-create-an-index"></a>Krok 2: Tworzenie indeksu
-Indeksator automatyzuje niektóre zadania związane z pozyskiwaniem danych, ale tworzenie indeksu na ogół nie należy do tych zadań. Jako warunek wstępny należy posiadać wstępnie zdefiniowany indeks z polami, które odpowiadają polom w zewnętrznym źródle danych. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksu, zobacz [Tworzenie indeksu (interfejs API REST usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) lub [Index, klasa](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Aby uzyskać pomoc dotyczącą skojarzeń pól, zobacz [Mapowania pól w indeksatorach usługi Azure Search](search-indexer-field-mappings.md).
+Indeksator automatyzuje niektóre zadania związane z pozyskiwaniem danych, ale tworzenie indeksu na ogół nie należy do tych zadań. Jako warunek wstępny należy posiadać wstępnie zdefiniowany indeks z polami, które odpowiadają polom w zewnętrznym źródle danych. Pola muszą odpowiadać przez nazwę i typ danych. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksu, zobacz [Tworzenie indeksu (interfejs API REST usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) lub [Index, klasa](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Aby uzyskać pomoc dotyczącą skojarzeń pól, zobacz [Mapowania pól w indeksatorach usługi Azure Search](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Chociaż indeksatory nie generują automatycznie indeksu, kreator **Importowanie danych** w portalu może pomóc w wykonaniu tego zadania. W większości przypadków kreator może rozpoznać schemat indeksu na podstawie istniejących metadanych w źródle i przedstawić wstępny schemat indeksu, który można edytować przy użyciu funkcji wbudowanych w tym kreatorze. Po utworzeniu indeksu w usłudze możliwość dalszej edycji w portalu jest w większości ograniczona do dodawania nowych pól. Należy rozważyć użycie kreatora do tworzenia indeksu, ale nie do jego poprawiania. Aby nauczyć się wykonywania tych zadań w praktyce, skorzystaj z [przewodnika po portalu](search-get-started-portal.md).
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3: Tworzenie indeksatora i harmonogramu
-Definicja indeksatora to konstrukcja określająca indeks, źródło danych i harmonogram. Indeksator może odwoływać się do źródła danych z innej usługi pod warunkiem, że źródło danych jest z tej samej subskrypcji. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksatora, zobacz [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Tworzenie indeksatora — interfejs API REST usługi Azure Search).
+Definicja indeksatora to konstrukcja, który łączy w sobie wszystkie elementy związane z pozyskiwaniem danych. Wymagane elementy obejmują źródło danych i indeksu. Opcjonalne elementy obejmują mapowania harmonogram i pola. Mapowanie pola są tylko opcjonalne, jeśli wyraźnie odpowiadają pola źródłowego i pola indeksu. Indeksator może odwoływać się do źródła danych z innej usługi pod warunkiem, że źródło danych jest z tej samej subskrypcji. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksatora, zobacz [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Tworzenie indeksatora — interfejs API REST usługi Azure Search).
 
 <a id="RunIndexer"></a>
 
 ## <a name="run-indexers-on-demand"></a>Uruchamianie indeksatory na żądanie
 
-Choć często zaplanować indeksowania, indeksator można także uruchomić na żądanie przy użyciu polecenia Uruchom:
+Choć często zaplanować indeksowania, indeksator może być wywołana na żądanie przy użyciu [Uruchom polecenie](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
     api-key: [Search service admin key]
@@ -82,13 +85,14 @@ Choć często zaplanować indeksowania, indeksator można także uruchomić na �
 > [!NOTE]
 > Uruchom interfejs API zwraca pomyślnie, wywołanie indeksatora zostało zaplanowane, ale rzeczywisty przetwarzanie odbywa się asynchronicznie. 
 
-Możesz monitorować stan indeksatora w portalu lub za pomocą uzyskać indeksatora stan interfejsu API, który następnie opisano. 
+Możesz monitorować stan indeksatora w portalu lub za pośrednictwem uzyskać stan interfejsu API indeksatora. 
 
 <a name="GetIndexerStatus"></a>
 
 ## <a name="get-indexer-status"></a>Pobierz stan indeksatora
 
-Możesz pobrać historii stanu i wykonywanie indeksatora za pośrednictwem interfejsu API REST:
+Można pobrać historii stanu i wykonywanie indeksatora za pośrednictwem [polecenie pobierania stanu indeksatora](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
     api-key: [Search service admin key]
@@ -100,8 +104,8 @@ Odpowiedź zawiera ogólny stan indeksatora, wywołanie indeksatora ostatniego (
         "lastResult": {
             "status":"success",
             "errorMessage":null,
-            "startTime":"2014-11-26T03:37:18.853Z",
-            "endTime":"2014-11-26T03:37:19.012Z",
+            "startTime":"2018-11-26T03:37:18.853Z",
+            "endTime":"2018-11-26T03:37:19.012Z",
             "errors":[],
             "itemsProcessed":11,
             "itemsFailed":0,
@@ -111,8 +115,8 @@ Odpowiedź zawiera ogólny stan indeksatora, wywołanie indeksatora ostatniego (
         "executionHistory":[ {
             "status":"success",
              "errorMessage":null,
-            "startTime":"2014-11-26T03:37:18.853Z",
-            "endTime":"2014-11-26T03:37:19.012Z",
+            "startTime":"2018-11-26T03:37:18.853Z",
+            "endTime":"2018-11-26T03:37:19.012Z",
             "errors":[],
             "itemsProcessed":11,
             "itemsFailed":0,

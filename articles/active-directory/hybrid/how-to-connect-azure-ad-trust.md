@@ -18,12 +18,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a45d776ea241e04aacf39e45f7bf6d2cc58c689
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172169"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446643"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Zarządzania relacjami zaufania usług AD FS z usługą Azure AD za pomocą usługi Azure AD Connect
 
@@ -105,7 +105,7 @@ Program Azure AD Connect zapewnia się, że zawsze Konfiguracja zaufania usługi
 
 Wersja usługi Azure AD Connect 1.1.873.0 lub nowszej sprawia, że kopii zapasowej usługi Azure AD ufa ustawienia po każdej aktualizacji ustawień zaufania usługi Azure AD. Ustawienia zaufania usługi Azure AD kopie zapasowe są tworzone w **%ProgramData%\AADConnect\ADFS**. Nazwa pliku jest w następującym formacie AadTrust -&lt;data&gt;-&lt;czasu&gt;.txt, na przykład - AadTrust-20180710-150216.txt
 
-![Sanpshot przykładu, wykonaj kopię zapasową zaufania usługi Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
+![Zrzut ekranu przedstawiający przykładowy tworzenie kopii zapasowych zaufania usługi Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
 
 Można przywrócić reguły przekształcania wystawiania, wykonując poniższe kroki sugerowane
 

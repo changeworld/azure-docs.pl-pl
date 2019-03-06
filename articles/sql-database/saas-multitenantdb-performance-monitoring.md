@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1629e08d4ba1a7fd7cedb40b1e46d1bfd2766497
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 731b87d7958bb461466b16f2ff724ea33f234ba8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215544"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439812"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
 
@@ -78,10 +78,10 @@ Skrypt wdroży 17 dzierżaw w wielodostępnej bazie danych w ciągu kilku minut.
 
 | Demonstracja | Scenariusz |
 |:--|:--|
-| 2 | Generowanie obciążenia o normalnym natężeniu (w przybliżeniu 30 jednostek DTU) |
+| 2 | Generowanie obciążenia o normalnym natężeniu (około 30 jednostek DTU) |
 | 3 | Generowanie obciążenia o dłużej wzrosty każdego dzierżawcy|
-| 4 | Generowanie obciążenia o wyższych wzrosty liczby jednostek DTU na dzierżawę (w przybliżeniu 70 jednostek DTU)|
-| 5 | Generuj wysokiej intensywność (w przybliżeniu 90 jednostek DTU) na pojedynczej dzierżawy, a także normalnym natężeniu obciążenie na innych dzierżaw |
+| 4 | Generowanie obciążenia o wyższych wzrosty liczby jednostek DTU na dzierżawę (około 70 DTU)|
+| 5 | Generuj wysokiej intensywność (około 90 DTU) na pojedynczej dzierżawy wraz z obciążeniem normalnym natężeniu innych dzierżaw |
 
 Generator obciążenia stosuje obciążenie *syntetyczne* wyłącznie do procesorów dla każdej bazy danych dzierżawy. Generator uruchamia zadanie dla każdej bazy danych dzierżawy, co powoduje cykliczne wywołanie procedury składowanej, która generuje obciążenie. Poziomy obciążenia (w jednostkach Dtu), czas trwania i interwały są zróżnicowane dla wszystkich baz danych, symulując nieprzewidywalną aktywność dzierżawy.
 
@@ -168,7 +168,7 @@ Jeśli obciążenie pojedynczej dzierżawy w wielodostępnej bazie danych, może
 To ćwiczenie symuluje efekt Salsa wierzbowate występuje wysokie obciążenie, gdy promocją na popularną imprezę biletów.
 
 1. Otwórz... \\ *Demo-PerformanceMonitoringAndManagement.ps1* skryptu.
-1. Ustaw **$DemoScenario = 5**, _Generowanie normalnego obciążenia oraz wysokiego obciążenia dla jednej dzierżawy (w przybliżeniu 90 DTU)._
+1. Ustaw **$DemoScenario = 5**, _Generowanie normalnego obciążenia oraz wysokiego obciążenia dla jednej dzierżawy (około 90 DTU)._
 1. Ustaw **$SingleTenantName = Salix Salsa**
 1. Wykonaj skrypt, używając klawisza **F5**.
 

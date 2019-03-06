@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 997727acd1bbaf17577160bb996aad7e21d49c86
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2ebc0c90d62d1299c076f8d91ba9fed1998a20e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810398"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450196"
 ---
 <a name="get-customer-leads"></a>Pozyskiwanie potencjalnych klientów
 ==================
@@ -93,9 +93,9 @@ W polach w poniższym przykładzie wyświetlane informacje o kliencie, który je
 - Nazwisko: Smith
 - Adres e-mail: jsmith\@microsoft.com
 - Telefon: 1234567890
-- Kraj: Stany Zjednoczone
-- Firma: Microsoft
-- Tytuł: Dyrektor ds. technologii
+- Kraj: USA
+- Firmy: Microsoft
+- Tytuł: DYREKTOR DS. TECHNOLOGII
 
 >[!Note]
 >Nie wszystkie dane w poprzednim przykładzie jest zawsze dostępna dla każdego potencjalnego klienta.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dce345c39918e7471531710051797c848a3c7cde
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968812"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444076"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Wprowadzenie do usług ML w usłudze Azure HDInsight
 
@@ -88,7 +88,7 @@ Z poziomu portalu:
     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
    > [!IMPORTANT]  
-   > Niezależnie od wybranej metody, pierwsze logowanie wymaga dwukrotnego uwierzytelnienia.  Po wyświetleniu pierwszego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika administratora klastra* i *hasło*. Po wyświetleniu drugiego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika protokołu SSH* i *hasło*. Podczas kolejnych logowań będą wymagane tylko poświadczenia protokołu SSH.
+   > Niezależnie od wybranej metody, pierwsze logowanie wymaga dwukrotnego uwierzytelnienia.  Po wyświetleniu pierwszego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika administratora klastra* i *hasło*. Po wyświetleniu drugiego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika protokołu SSH* i *hasło*. Kolejne dodatki dziennika wymagane tylko poświadczenia protokołu SSH.
 
 Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekranu:
 

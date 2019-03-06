@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: da615d76e9efa0ad8d0952a6d75bc341336a6596
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 264f10be1ecb22b6261a14f7185f88b101242d36
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312974"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440781"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -157,8 +157,8 @@ Tworzenie kopii zapasowych maszyn wirtualnych, które są migrowane na platformi
 **Składnik** | **Pomoc techniczna**
 --- | ---
 Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny Wirtualnej z dyskami danych 16 lub mniej.
-Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/> Jeśli używasz najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywanych, natychmiastowe przywracanie) dysków o rozmiarach do 4 TB są obsługiwane. [Dowiedz się więcej](backup-instant-restore-capability.md).
-Typ magazynu | Standardowa HDD i SSD w warstwie standardowa, premium SSD. <br/><br/> SSD w warstwie standardowa jest obsługiwany, jeśli używasz najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywane natychmiastowe przywracanie). [Dowiedz się więcej](backup-instant-restore-capability.md).
+Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/> Jeśli Twoich magazynów jest najnowszą wersją programu Kopia zapasowa Azure (nazywanych, natychmiastowe przywracanie), dysków o rozmiarach do 4 TB są obsługiwane. [Dowiedz się więcej](backup-instant-restore-capability.md).
+Typ magazynu | Standardowa HDD i SSD w warstwie standardowa, premium SSD. <br/><br/> SSD w warstwie standardowa jest obsługiwany, jeśli Twoich magazynów zostaną uaktualnione do najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywane natychmiastowe przywracanie). [Dowiedz się więcej](backup-instant-restore-capability.md).
 Dyski zarządzane | Obsługiwane.
 Zaszyfrowanych dysków | Obsługiwane.<br/><br/> Maszyny wirtualne platformy Azure, włączyć za pomocą usługi Azure Disk Encryption utworzeniem kopii zapasowej (z lub bez aplikację usługi Azure AD).<br/><br/> Nie można odzyskać zaszyfrowanych maszyn wirtualnych na poziomie plików/folderów. Odzyskaj całą maszynę Wirtualną.<br/><br/> Użytkownik może włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez usługę Azure Backup.
 Dysków z włączonym akceleratorem zapisu | Nieobsługiwane.<br/><br/> Jeśli używasz najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywane [natychmiastowe Przywracanie](backup-instant-restore-capability.md)), można wykluczyć dyski z akceleratorem zapisu włączone z kopii zapasowej.

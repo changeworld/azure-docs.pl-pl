@@ -13,16 +13,18 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 01ed1b94ffedb273321fa49653a614c659611e6a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024046"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453205"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Fabryki danych platformy Azure — często zadawane pytania
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [— często zadawane pytania — Data Factory](../frequently-asked-questions.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Pytania ogólne
 ### <a name="what-is-azure-data-factory"></a>Czym jest usługa Azure Data Factory?
@@ -69,7 +71,7 @@ Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez u
 
 | Środowisko obliczeniowe | activities |
 | --- | --- |
-| [Klaster HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) lub [klaster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[Polecenia DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md) |
+| [Klaster HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) lub [klaster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning działania: Wykonywanie wsadowe i aktualizacja zasobów](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Język U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md) |
@@ -171,12 +173,12 @@ Możesz ponownie uruchomić wycinek w jednym z następujących sposobów:
 
 * Ponowne uruchamianie okna działania lub wycinka, należy użyć aplikacji monitorowanie i zarządzanie. Zobacz [Uruchom ponownie wybrane okien działania](data-factory-monitor-manage-app.md#perform-batch-actions) instrukcje.   
 * Kliknij przycisk **Uruchom** na pasku poleceń u **WYCINKA danych** blok wycinek w witrynie Azure portal.
-* Uruchom **Set-AzureRmDataFactorySliceStatus** polecenia cmdlet ze stanem równa **oczekiwania** dla wycinka.   
+* Uruchom **AzDataFactorySliceStatus zestaw** polecenia cmdlet ze stanem równa **oczekiwania** dla wycinka.   
 
     ```PowerShell
-    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-Zobacz [Set-AzureRmDataFactorySliceStatus] [ set-azure-datafactory-slice-status] szczegółowe informacje na temat polecenia cmdlet.
+Zobacz [AzDataFactorySliceStatus zestaw] [ set-azure-datafactory-slice-status] szczegółowe informacje na temat polecenia cmdlet.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak długo trwało przetworzyć wycinek?
 Aby dowiedzieć się, jak długo można przetworzyć wycinek danych, należy użyć Eksploratorze okien działania w aplikacji monitorowanie i zarządzanie. Zobacz [Eksploratorze okien działania](data-factory-monitor-manage-app.md#activity-window-explorer) Aby uzyskać szczegółowe informacje.
@@ -191,7 +193,7 @@ Można również wykonać następujące czynności w witrynie Azure portal:
 6. Powinien zostać wyświetlony **czas trwania** pole z wartością. Ta wartość jest czas poświęcony na przetworzenie wycinka przez.   
 
 ### <a name="how-to-stop-a-running-slice"></a>Jak zatrzymać uruchomione wycinka?
-Jeśli musisz zatrzymać potoku wykonanie, możesz użyć [AzureRmDataFactoryPipeline Wstrzymaj](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) polecenia cmdlet. Obecnie wstrzymywania potoku nie zatrzymuje wykonań wycinek, które są w toku. Po zakończenia wykonywania w toku, nie dodatkowe wycinka zostaje pobrana.
+Jeśli musisz zatrzymać potoku wykonanie, możesz użyć [AzDataFactoryPipeline Wstrzymaj](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) polecenia cmdlet. Obecnie wstrzymywania potoku nie zatrzymuje wykonań wycinek, które są w toku. Po zakończenia wykonywania w toku, nie dodatkowe wycinka zostaje pobrana.
 
 Jeśli na pewno chcesz zatrzymać natychmiast wszystkich wykonań, jedynym sposobem jest usunięcie potoku i utworzyć ją ponownie. Jeśli zdecydujesz się usunąć potoku, nie musisz usuwać tabele i połączone usługi używane przez potok.
 
@@ -199,9 +201,9 @@ Jeśli na pewno chcesz zatrzymać natychmiast wszystkich wykonań, jedynym sposo
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: /powershell/module/azurerm.datafactories/
+[adf-powershell-reference]: /powershell/module/az.datafactory/
 [azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: /powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
+[set-azure-datafactory-slice-status]: /powershell/module/az.datafactory/set-Azdatafactoryslicestatus
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/

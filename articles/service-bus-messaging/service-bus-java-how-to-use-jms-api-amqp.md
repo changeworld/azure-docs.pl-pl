@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312893"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453409"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać języka Java wiadomości usługi (JMS) interfejsu API za pomocą usługi Service Bus i protokołu AMQP 1.0
 Zaawansowane komunikat (QUEUING Protocol) 1.0 to wydajny, niezawodny i protokół sieciowy niskiego poziomu obsługi komunikatów protokołu używanego do tworzenia niezawodnych, międzyplatformowych aplikacji do obsługi wiadomości.
@@ -341,6 +341,16 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
+## <a name="jms-topics-vs-service-bus-topics"></a>Tematy JMS programu vs. Tematy dotyczące usługi Service Bus
+Za pomocą usługi Azure Service Bus tematów i subskrypcji za pomocą języka Java wiadomości usługi (JMS) interfejsu API zapewnia podstawowe wysyłania i odbierania możliwości. Podczas przenoszenia aplikacji z innymi brokerami przy użyciu zgodnych interfejsów API JMS, mimo że tematów usługi Service Bus różnią się od tematów JMS i wymagają kilka zmian, to wygodne wybór. 
+
+Usługa Azure tematów usługi Service Bus kierowanie komunikatów w postaci do nazwanych, udostępniony i trwałe subskrypcje, które są zarządzane za pomocą interfejsu zarządzania zasobami platformy Azure, narzędzia wiersza polecenia platformy Azure lub za pośrednictwem witryny Azure portal. Każda subskrypcja umożliwia dla maksymalnie 2000 reguł zaznaczenie wszystkich które mogą mieć warunek filtru, a filtry SQL, również działań przekształcania metadanych. Każdego dopasowania warunek filtru wybiera komunikat wejściowy ma zostać skopiowana do tehj subskrypcji.  
+
+Odbieranie komunikatów z subskrypcji jest taka sama, otrzymywanie komunikatów z kolejki. Każda subskrypcja ma skojarzona kolejka utraconych wiadomości, a także możliwość automatycznego przekazywania komunikatów do innej kolejki lub tematy. 
+
+Tematy JMS Zezwalaj klientom na dynamiczne tworzenie subskrybentów nietrwałymi i trwałe, opcjonalnie umożliwiające filtrowanie komunikatów z selektory wiadomości. Te jednostki nieudostępnionych nie są obsługiwane przez usługę Service Bus. Składnia reguły filtru SQL dla usługi Service Bus jest bardzo podobne do składni selektor komunikatów obsługiwanych przez JMS. 
+
+Po stronie wydawcy JMS tematu jest zgodny z usługi Service Bus, jak pokazano w tym przykładzie, ale subskrybenci dynamiczne nie są. Następujące związane z topologii JMS interfejsy API nie są obsługiwane z usługą Service Bus. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Nieobsługiwane funkcje i ograniczenia
 Korzystając z JMS za pośrednictwem protokołu AMQP 1.0 przy użyciu usługi Service Bus, a mianowicie obowiązują następujące ograniczenia:

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 273b0f1105d8b71b90a06e2627e201b97f12a754
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095399"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454259"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Ponowne wdrażanie maszyny Wirtualnej w laboratorium Azure DevTest Labs
-Jeśli nie możesz połączyć z maszyną wirtualną (VM) w laboratorium za pomocą połączenia pulpitu zdalnego, to należy ponownie wdrożyć maszyny Wirtualnej i spróbuj ponownie conencting do niego. Podczas ponownego wdrażania maszyny Wirtualnej usługi DevTest Labs przenosi maszyny Wirtualnej z węzła, na którym jest uruchomiony w nowym węźle w ramach infrastruktury platformy Azure. Następnie uruchamia maszynę Wirtualną przy zachowaniu wszystkich opcji konfiguracji i skojarzonych zasobów. Tej funkcji można zaoszczędzić możesz czas spędzony w rozwiązaniu usługi Podłączanie pulpitu zdalnego lub aplikacji dostęp do maszyn wirtualnych opartych na Windows w środowisku laboratoryjnym. 
+Jeśli nie możesz połączyć z maszyną wirtualną (VM) w laboratorium za pomocą połączenia pulpitu zdalnego, ponowne wdrażanie maszyny Wirtualnej i spróbuj ponownie nawiązać połączenie do niego. Podczas ponownego wdrażania maszyny Wirtualnej usługi DevTest Labs przenosi maszyny Wirtualnej z węzła, na którym jest uruchomiony w nowym węźle w ramach infrastruktury platformy Azure. Następnie uruchamia maszynę Wirtualną przy zachowaniu wszystkich opcji konfiguracji i skojarzonych zasobów. Tej funkcji można zaoszczędzić możesz czas spędzony w rozwiązaniu usługi Podłączanie pulpitu zdalnego lub aplikacji dostęp do maszyn wirtualnych opartych na Windows w środowisku laboratoryjnym. 
 
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Kroki, aby przeprowadzić ponowne wdrożenie maszyny Wirtualnej w laboratorium 
 Aby przeprowadzić ponowne wdrożenie maszyny Wirtualnej w laboratorium Azure DevTest Labs, wykonaj następujące czynności: 

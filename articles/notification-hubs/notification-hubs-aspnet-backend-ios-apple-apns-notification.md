@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d69a2a26fb0b487a3efa4b5376ca6480569aa846
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227713"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450893"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Samouczek: Powiadomienia wypychane do określonych użytkowników przy użyciu usługi Azure Notification Hubs
 
@@ -54,7 +54,7 @@ Jeśli chcesz używać jako usługi zaplecza usługi Mobile Apps, zobacz [Mobile
 
 2. W `Main.storyboard` plików, dodawanie składników pokazano na zrzucie ekranu z biblioteki obiektów.
 
-    ![Edytuj storybard w programie Xcode interface builder][1]
+    ![Edytuj scenorysu w programie Xcode interface builder][1]
 
    * **Nazwa użytkownika**: A UITextField z tekstem zastępczym *wprowadź nazwę użytkownika*tuż poniżej Wyślij wyniki etykiety i ograniczone do lewego i prawego marginesu oraz pod etykieta wyników wysyłania.
    * **Hasło**: A UITextField z tekstem zastępczym *wprowadź hasło*, tuż poniżej nazwę użytkownika tekst pola i ograniczone do lewego i prawego marginesu oraz poniżej pola tekstowego nazwy użytkownika. Sprawdź **Secure wprowadzania tekstu** w obszarze opcji w Inspektorze atrybut *klucz zwracają*.

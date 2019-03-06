@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1e61ef59bba56a7cc7271c3b42f4d7986c59c004
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 33dfbe70d75335eca79d32807407b97e32c2dbbf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337787"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440866"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Uzyskaj szczegółowe informacje o obrazach za pomocą interfejsu API wyszukiwania obrazów Bing
 
@@ -374,7 +374,7 @@ Odpowiedź zawiera jedną jednostkę rozpoznane.
 
 ## <a name="finding-visually-similar-products"></a>Wyszukiwanie podobnych produktów  
 
-Aby znaleźć obrazów zawierających produktów, które wizualnie podobnych produktów w oryginalnego obrazu, ustaw [modueles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr do SimilarProducts zapytania.  
+Aby znaleźć obrazów zawierających produktów, które wizualnie podobnych produktów w oryginalnego obrazu, ustaw [modułów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr do SimilarProducts zapytania.  
 
 Następujące żądanie pokazano, jak można pobrać obrazów wizualnie podobnych produktów. Żądanie używa [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) zapytania parametru do identyfikacji oryginalnego obrazu, który został zwrócony z poprzedniego żądania. Aby zwiększyć znaczenie, należy dołączyć ciąg zapytania użytkownika.  
 

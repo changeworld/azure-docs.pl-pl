@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i udostępnianie notesu programu Jupyter na platformie Azure | Dokumentacja firmy Microsoft
+title: Tworzenie i udostępnianie notesu programu Jupyter na platformie Azure
 description: Szybko Utwórz uruchamiania notesu programu Jupyter na notesy platformy Azure, a następnie udostępniać innym użytkownikom tego notesu.
 services: app-service
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 3e9850a40d949ce09e9c44a6b4b63a1f58259e7a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865127"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447136"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>Szybki Start: Tworzenie i udostępnianie notesu
+# <a name="quickstart-create-and-share-a-notebook"></a>Szybki start: Tworzenie i udostępnianie notesu
 
 1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać więcej informacji, zobacz [Szybki Start — Zaloguj się do platformy Azure, notesy](quickstart-sign-in-azure-notebooks.md)).
 
@@ -93,7 +93,7 @@ ms.locfileid: "52865127"
 
     ![Zapisz ikonę na pasku narzędzi notesu programu Jupyter](media/quickstarts/hello-results-save-icon.png)
 
-1. Wybierz **pliku** > **zatrzymania, a następnie Zamknij** polecenie menu, aby zatrzymać serwer, a następnie zamknij okno przeglądarki.
+1. Wybierz **pliku** > **Zamknij i zatrzymanie** polecenie menu, aby zatrzymać serwer, a następnie zamknij okno przeglądarki.
 
 ## <a name="share-the-notebook"></a>Udostępnianie notesu
 

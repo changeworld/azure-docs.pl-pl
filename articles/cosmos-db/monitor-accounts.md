@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 9c307bbbef7b9eecc980dc6013c317f1ee231a0c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034305"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448242"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitoruj metryki wydajności i magazynu w usłudze Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze
 ## <a name="set-up-alerts-in-the-portal"></a>Konfigurowanie alertów w portalu
 1. W [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **wszystkich usług**, kliknij przycisk **usługi Azure Cosmos DB**, a następnie kliknij nazwę konta usługi Azure Cosmos DB, dla której chcesz skonfigurować wydajności alerty metryki.
 2. W menu zasobów kliknij pozycję **reguł alertów** aby otworzyć stronę reguł alertów.  
-   ![Zrzut ekranu przedstawiający Alert reguł wybrane części](./media/monitor-accounts/madocdb10.5.png)
+   ![Wybrane zrzut ekranu przedstawiający część reguły alertów](./media/monitor-accounts/madocdb10.5.png)
 3. W **reguły alertów** kliknij **Dodaj alert dotyczący**.  
    ![Zrzut ekranu przedstawiający stronę reguł alertów z wyróżnionym przyciskiem Dodaj Alert](./media/monitor-accounts/madocdb11.png)
 4. W **Dodawanie reguły alertów** określ:
@@ -61,7 +61,7 @@ Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze
    * Warunek, próg i okres, które określają, kiedy aktywuje alertu. Na przykład błąd serwera liczba większa niż 5 w ciągu ostatnich 15 minut.
    * Czy administratora usługi i współadministratorów są wysłane pocztą e-mail po zgłoszeniu alertu.
    * Adresy e-mail dodatkowych powiadomień o alertach.  
-     ![Zrzut ekranu przedstawiający dodawanie na stronie reguły alertu](./media/monitor-accounts/madocdb12.png)
+     ![Zrzut ekranu przedstawiający dodawanie reguły alertu](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Programowe monitorowanie usługi Azure Cosmos DB
 Metryki poziomu konta dostępne w portalu, takich jak żądania użycia i łączna liczba kont magazynu, nie są dostępne za pośrednictwem interfejsów API SQL. Jednakże możesz pobrać dane użycia na poziomie kolekcji przy użyciu interfejsów API SQL. Aby pobrać danych na poziomie kolekcji, wykonaj następujące czynności:

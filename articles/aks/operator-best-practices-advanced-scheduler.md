@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1534a3f010183cd91c444b577d26e3f21e296d27
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016882"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434323"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
 
@@ -151,7 +151,7 @@ Aby uzyskać więcej informacji, zobacz [koligacji i antykoligację][k8s-affinit
 
 Jedno z podejść końcowe usługi scheduler Kubernetes do logicznie izolowania obciążeń używa koligację między zasobnika lub konfiguracji zapobiegającej koligacji. Ustawienia definiują tego zasobników *nie powinien* można zaplanować na węzeł, który ma istniejące odpowiadającego zasobnika lub, *powinien* zaplanowane. Domyślnie harmonogram Kubernetes próbuje zaplanować wielu zasobnikach w zestawie węzłów replik. Można zdefiniować bardziej szczegółowych reguł dotyczących tego zachowania.
 
-Dobrym przykładem jest aplikacja sieci web, która również korzysta z usługi Azure Cache dla usługi Redis. Reguły konfiguracji zapobiegającej koligacji zasobnika służy do żądania, że harmonogram Kubernetes dystrybuuje replik w węzłach. Następnie możesz ise koligacji reguły, aby upewnić się, że każdy składnik aplikacji sieci web jest zaplanowane na tym samym hoście jako odpowiedniej pamięci podręcznej. Rozkład zasobników w węzłach wygląda następująco:
+Dobrym przykładem jest aplikacja sieci web, która również korzysta z usługi Azure Cache dla usługi Redis. Reguły konfiguracji zapobiegającej koligacji zasobnika służy do żądania, że harmonogram Kubernetes dystrybuuje replik w węzłach. Koligacja reguły umożliwiają następnie upewnij się, że każdy składnik aplikacji sieci web jest zaplanowane na tym samym hoście jako odpowiedniej pamięci podręcznej. Rozkład zasobników w węzłach wygląda następująco:
 
 | **Węzeł 1** | **Węzeł 2** | **Węzeł 3** |
 |------------|------------|------------|

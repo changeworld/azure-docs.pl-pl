@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: dc30b28203ad416370f1304436e7e6e642921be9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416789"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441512"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Zarządzanie skryptami przed i po (wersja zapoznawcza)
 
-Skrypty przed i po umożliwiają uruchamianie elementów runbook programu PowerShell na koncie usługi Automation, przed (zadań wstępne) i po wdrożeniu (po zadanie) aktualizacji. Skrypty przed i po Uruchom w kontekście platformy Azure, a nie lokalnie. Wstępnie skrypty są uruchamiane na początku wdrożenia aktualizacji. Opublikuj skrypty uruchamiane po zakończeniu wdrożenia i za wszelkie ponowne uruchomienia, które są skonfigurowane.
+Skrypty przed i po umożliwiają uruchamianie elementów runbook programu PowerShell na koncie usługi Automation, przed (zadań wstępne) i po wdrożeniu (po zadanie) aktualizacji. Skrypty przed i po Uruchom w kontekście platformy Azure, a nie lokalnie. Wstępne skrypty uruchamiane po rozpoczęciu wdrażania aktualizacji. Opublikuj skrypty uruchamiane po zakończeniu wdrożenia i za wszelkie ponowne uruchomienia, które są skonfigurowane.
 
 ## <a name="runbook-requirements"></a>Wymagania elementów Runbook
 

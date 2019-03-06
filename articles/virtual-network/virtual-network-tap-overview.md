@@ -13,39 +13,40 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 03/04/2019
 ms.author: kaanan
-ms.openlocfilehash: 7270ab6203cfa3602fc36bc6fa7d30cd622ce3a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5532174b6fc72f51e7ba7a946e601e7d97c7808e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946599"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408449"
 ---
-# <a name="virtual-network-tap"></a>PODSŁUCHU sieci wirtualnej
+# <a name="virtual-network-tap"></a>Virtual Network TAP
 
 Usługa Azure virtual network TAP (Terminal punktem dostępu) umożliwia ciągłego strumienia do narzędzia sieci pakiet modułu zbierającego lub analizy ruchu sieciowego maszyny wirtualnej. Narzędzie modułu zbierającego lub analizy są dostarczane przez [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/) partnera. Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane do pracy z usługą virtual network TAP zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Sieć wirtualna wzorca TAP jest obecnie dla deweloperów w wersji zapoznawczej w regionie WestCentralUS Azure. Aby korzystać z PODSŁUCHU sieci wirtualnej, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres <azurevnettap@microsoft.com> przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie można użyć funkcji, dopóki nie otrzymasz wiadomość e-mail z potwierdzeniem. Dla deweloperów w wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Sieć wirtualna wzorca TAP jest obecnie dla deweloperów w wersji zapoznawczej w regionie WestCentralUS Azure. Aby korzystać z PODSŁUCHU sieci wirtualnej, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres <azurevnettap@microsoft.com> przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie można użyć funkcji, dopóki nie otrzymasz wiadomość e-mail z potwierdzeniem. Dla deweloperów w wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Aby uzyskać szczegółowe informacje.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Rozwiązania partnerów wzorca TAP sieci wirtualnej
 
 ### <a name="network-packet-brokers"></a>Brokerzy pakietów sieciowych
 
 - [Big przełącznika big Data, monitorowanie sieci szkieletowej](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
-- [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>Narzędzia analizy zabezpieczeń, zarządzanie wydajnością aplikacji/Sieć
 
+- [Aktywne zabezpieczeń](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cyberbezpieczeństwa](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Pryzmatów Nubeva](https://www.nubeva.com/azurevtap)
+- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [Platforma NetWitness® RSA](https://www.rsa.com/azure)
-- [Usługi Vectra Cognito](https://vectra.ai/microsoftazure)
+- [Vectra Cognito](https://vectra.ai/microsoftazure)
 
 Na poniższym obrazie jak wirtualne sieci działa wzorca TAP. Można dodać konfiguracji NACIŚNIJ [interfejs sieciowy](virtual-network-network-interface.md) dołączony do maszyny wirtualnej wdrożony w sieci wirtualnej. Miejsce docelowe jest adresem IP sieci wirtualnej w tej samej sieci wirtualnej jako interfejs sieciowy monitorowanych lub [skomunikowane równorzędnie wirtualnego](virtual-network-peering-overview.md) sieci. Rozwiązania modułu zbierającego dla sieci wirtualnej wzorca TAP można wdrożyć za zaporą [Azure wewnętrznego modułu równoważenia obciążenia](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) wysokiej dostępności. Umożliwia ocenę opcji wdrażania dla poszczególnych rozwiązań, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 

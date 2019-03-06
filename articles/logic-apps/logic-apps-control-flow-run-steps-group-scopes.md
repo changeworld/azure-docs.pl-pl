@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9e485797dcc40c426b208971c04acffa168e528a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233076"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455908"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Uruchom akcje na podstawie stanu grupy z zakresów w usłudze Azure Logic Apps
 
@@ -54,7 +54,7 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
 
 1. Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, jeśli jeszcze go. Tworzenia pustej aplikacji logiki.
 
-1. Dodaj **harmonogram — cyklicznie** wyzwalacz za pomocą tych ustawień: **interwał** = "1" i **częstotliwość** = "Minute"
+1. Dodaj **harmonogram — cyklicznie** wyzwalacz za pomocą tych ustawień: **Interwał** = "1" i **częstotliwość** = "Minute"
 
    ![Konfigurowanie wyzwalacza "Harmonogram — cyklicznie"](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -83,7 +83,7 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
       | **Punkt nawigacyjny 2** | <*koniec*> | Wprowadź trasy. | 
       | **Unikaj** | Brak | Wprowadź elementy, aby unikać trasy, na przykład autostrady, drogi i tak dalej. Możliwe wartości, zobacz [obliczanie trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optymalizacja** | timeWithTraffic | Wybierz parametr używany do optymalizowania trasy, na przykład odległość, czas przy użyciu bieżących informacji o ruchu i tak dalej. W tym przykładzie użyto tej wartości: "timeWithTraffic" | 
-      | **Jednostka odległości** | <*według_preferencji*> | Wprowadź Jednostka odległości trasy obliczania. W tym przykładzie użyto tej wartości: "Ogniw w łańcuchu" | 
+      | **Jednostka odległości** | <*według_preferencji*> | Wprowadź Jednostka odległości trasy obliczania. W tym przykładzie użyto tej wartości: "Mile" | 
       | **Tryb podróży** | Jazda samochodem | Tryb podróży dla trasy. W tym przykładzie użyto tej wartości "Prawa jazdy." | 
       | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko tryb przesyłania. | 
       | **Typ Data Type przesyłania** | Brak | Dotyczy tylko tryb przesyłania. | 
@@ -99,7 +99,7 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
 
    1. W środkowym polu Wybierz następujący operator: **jest większa niż**
 
-   1. W kolumnie po prawej stronie wprowadź wartość porównania, który znajduje się w ciągu kilku sekund i equivlent do 10 minut: **600**
+   1. W kolumnie po prawej stronie wprowadź tej wartości porównania, która znajduje się w ciągu kilku sekund i równoważne do 10 minut: **600**
 
       Gdy wszystko będzie gotowe, warunek będzie wyglądać następująco:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 4de6e4429543ea4f691cc3a38c15b896b866075b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d692eb471c514015271a688e4660700788f1baaa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980724"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431466"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla systemu Windows Server umożliwia użycie licencji na system Windows Server w środowisku lokalnym i uruchamianie maszyn wirtualnych Windows na platformie Azure, przy niższych kosztach. Azure korzyści użycia hybrydowego dla systemu Windows Server służy do wdrażania nowych maszyn wirtualnych z systemem operacyjnym Windows. W tym artykule przechodzi przez instrukcje dotyczące sposobu wdrażania nowych maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oraz jak zaktualizować istniejące uruchamianie maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oszczędności licencjonowania i kosztów, zobacz [strony licencjonowania platformy Azure korzyści użycia hybrydowego dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -33,7 +33,7 @@ Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla sy
 >
 
 > [!NOTE]
-> Klasyczne maszyny wirtualne obsługiwane są tylko wdrożenie nowej maszyny Wirtualnej na podstawie niestandardowych obrazów środowiska lokalnego. Aby móc korzystać z funkcji obsługiwanych w tym artykule, należy najpierw przeprowadzić migrację maszyn wirtualnych w klasycznym modelu usługi Resource Manager.
+> Dla klasycznych maszyn wirtualnych jest obsługiwane tylko Wdrażanie nowej maszyny Wirtualnej z na obrazach niestandardowych lokalnie. Aby móc korzystać z funkcji obsługiwanych w tym artykule, należy najpierw przeprowadzić migrację maszyn wirtualnych w klasycznym modelu usługi Resource Manager.
 >
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]

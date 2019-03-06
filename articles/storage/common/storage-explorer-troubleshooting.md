@@ -1,6 +1,6 @@
 ---
 title: Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure | Dokumentacja firmy Microsoft
-description: Omówienie dwóch debugowanie funkcji platformy Azure
+description: Przegląd debugowania dla usługi Azure Storage Explorer
 services: virtual-machines
 author: Deland-Han
 ms.service: virtual-machines
@@ -8,18 +8,59 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 15ceaf1a75859ca53ddb946555880b360b29ee58
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415514"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405695"
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów do usługi Azure Storage Explorer
 
 Eksplorator usługi Microsoft Azure Storage jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux. Aplikacja, mogą łączyć się kont magazynu hostowana na platformie Azure, chmurach krajowych i usługi Azure Stack.
 
 Ten przewodnik zawiera podsumowanie rozwiązań typowych problemów występujących w Eksploratorze usługi Storage.
+
+## <a name="role-based-access-control-permission-issues"></a>Problemy z uprawnieniami kontroli dostępu opartej na rolach
+
+[Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) umożliwia szczegółowe zarządzanie dostępem zasobów platformy Azure, łącząc zestawy uprawnień do _role_. Poniżej przedstawiono kilka sugestii, które można wykonać, aby pobrać RBAC Praca w Eksploratorze usługi Storage.
+
+### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>Co muszę zobaczyć Moje zasoby w Eksploratorze usługi Storage?
+
+Jeśli występują problemy z dostępem do zasobów magazynu, korzystając z modelu RBAC, może to być, ponieważ nie zostały przypisane odpowiednie role. W poniższych sekcjach opisano uprawnienia, obecnie Eksploratora usługi Storage wymaga dostępu do zasobów magazynu.
+
+Jeśli wiesz, że masz odpowiednie role i uprawnienia, skontaktuj się z administratorem konta platformy Azure.
+
+#### <a name="read-listget-storage-accounts"></a>Odczyt: Wyświetl/pobierz konta magazynu
+
+Musi mieć uprawnienia do listy kont magazynu. To uprawnienie można uzyskać po przypisaniu roli "Czytelnik".
+
+#### <a name="list-storage-account-keys"></a>Wyświetl klucze konta magazynu
+
+Eksplorator usługi Storage umożliwia również klucze konta do uwierzytelniania żądań. Możesz uzyskać dostęp do kluczy za pomocą bardziej zaawansowanych ról, takich jak rola "Współpracownik".
+
+> [!NOTE]
+> Klucze dostępu przyznaj uprawnienia bez ograniczeń dla każdego, kto je ma. W związku z tym zazwyczaj nie zaleca ich można przekazać do kont użytkowników. Jeśli zajdzie potrzeba odwołania kluczy dostępu, można odtworzyć je z [witryny Azure Portal](https://portal.azure.com/).
+
+#### <a name="data-roles"></a>Role danych
+
+Musi być przypisany co najmniej jedną rolę, która udziela dostępu do odczytu danych z zasobów. Na przykład jeśli potrzebujesz wyświetlić listę lub Pobierz obiekty BLOB, należy co najmniej rolę "Czytnik danych obiektu Blob magazynu".
+
+### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Dlaczego muszę roli warstwę zarządzania, aby zobaczyć Moje zasoby w Eksploratorze usługi Storage?
+
+Usługa Azure Storage ma dwie warstwy dostępu: _zarządzania_ i _danych_. Subskrypcje i konta magazynu są dostępne za pośrednictwem warstwy zarządzania. Kontenerów, obiektów blob i inne zasoby danych są dostępne za pośrednictwem warstwy danych. Na przykład jeśli chcesz uzyskać listę kont magazynu platformy Azure, wysłaniu żądania do punktu końcowego zarządzania. Chcąc listę kontenerów obiektów blob na koncie, wysłaniu żądania do punktu końcowego odpowiednią usługę.
+
+Role RBAC, może zawierać uprawnień dostępu do warstwy zarządzania lub danych. Tej roli "Czytelnik", udziela na przykład zasoby warstwy zarządzania dostęp tylko do odczytu.
+
+Ściśle rzecz ujmując roli "Czytelnik" zapewnia brak uprawnień do warstwy danych i nie jest konieczne do uzyskania dostępu do warstwy danych.
+
+Eksplorator usługi Storage ułatwia dostęp do zasobów Dzięki zbieraniu informacje wymagane do połączenia z zasobami platformy Azure dla Ciebie. Na przykład aby wyświetlić swoje kontenery obiektów blob, Eksploratora usługi Storage wysyła żądanie kontenery listy punkt końcowy usługi blob. Aby uzyskać punkt końcowy, Eksploratora usługi Storage wyszukuje listę subskrypcji, i kont magazynu, że masz dostęp do. Jednak aby dowiedzieć się, Twoje subskrypcje i konta magazynu, Eksploratora usługi Storage również musi mieć dostęp do warstwy zarządzania.
+
+Jeśli nie masz roli udzielanie jakiegokolwiek uprawnień warstwy Eksploratora usługi Storage nie można pobrać informacji wymaganych do łączenia z warstwą danych.
+
+### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co zrobić, jeśli nie mogę uruchomić Zarządzanie uprawnieniami warstwy potrzebujesz mojego administratora?
+
+Nie mamy jeszcze rozwiązanie związane z funkcji RBAC w tej chwili. Jako obejście tego problemu, możesz poprosić o identyfikatora URI sygnatury dostępu Współdzielonego do [dołączyć do zasobu](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#attach-a-service-by-using-a-shared-access-signature-sas).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Błąd: Certyfikat z podpisem własnym w łańcuchu certyfikatów (i podobne błędy)
 
@@ -38,15 +79,13 @@ Ten problem może być również wynikiem wielu certyfikatów (głównych i poś
 Jeśli wiesz skąd pochodzą certyfikatu, możesz wypróbować następujące kroki, aby go znaleźć:
 
 1. Zainstaluj protokół Open SSL
-
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html) (z wersji światła, powinny być wystarczające)
     * Systemów Mac i Linux: powinien być dołączony do systemu operacyjnego
 2. Uruchom protokół Open SSL
-
     * Windows: kliknij pozycję Otwórz katalog instalacyjny **/bin/**, a następnie kliknij dwukrotnie **openssl.exe**.
     * Systemów Mac i Linux: Uruchom **openssl** z poziomu terminalu.
 3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`
-4. Wyszukaj certyfikaty z podpisem własnym. Jeśli wiesz, które są podpisem, poszukaj dowolnym temat `("s:")` i Wystawca `("i:")` są takie same.
+4. Wyszukaj certyfikaty z podpisem własnym. Jeśli wiesz o certyfikatach, które mają podpis własny, poszukaj dowolnym temat `("s:")` i Wystawca `("i:")` są takie same.
 5. Po znalezieniu żadnych certyfikatów z podpisem własnym dla każdego z nich, skopiuj i Wklej wszystko, od i tym **---BEGIN CERTIFICATE---** do **---END CERTIFICATE---** do nowego pliku cer.
 6. Otwórz Eksploratora usługi Storage, kliknij przycisk **Edytuj** > **certyfikaty SSL** > **Importuj certyfikaty**, a następnie za pomocą selektora plików Znajdź, wybierz opcję, i Otwórz pliki cer, które zostały utworzone.
 
@@ -54,8 +93,10 @@ Jeśli nie można odnaleźć żadnych certyfikatów z podpisem własnym za pomoc
 
 ## <a name="sign-in-issues"></a>Problemy dotyczące logowania
 
-### <a name="blank-sign-in-dialog"></a>Puste okno dialogowe logowania do
-Pusty znak w oknach dialogowych są najczęściej powodowane przez usługi AD FS pytaniem Eksploratora usługi Storage do wykonania przekierowania, który jest nieobsługiwany przez elektronów. Aby obejść ten problem, można spróbować użyć przepływu kodu urządzenia podczas logowania. W tym celu wykonaj następujące kroki:
+### <a name="blank-sign-in-dialog"></a>Puste okno logowania
+
+Puste logowania wyświetlanymi w oknach dialogowych są najczęściej powodowane przez usługi AD FS pytaniem Eksploratora usługi Storage do wykonania przekierowania, który jest nieobsługiwany przez elektronów. Aby obejść ten problem, można spróbować użyć przepływu kodu urządzenia podczas logowania. W tym celu wykonaj następujące kroki:
+
 1. "Przejdź do celów doświadczalnych" -> "Użyj logowania kodu urządzenia".
 2. Otwórz okno dialogowe Łączenie (za pośrednictwem ikony plug pionowy pasek po lewej stronie, lub "Dodawanie konta" na panelu konta).
 3. Wybierz środowisko, które chcesz zalogować się do.
@@ -64,21 +105,27 @@ Pusty znak w oknach dialogowych są najczęściej powodowane przez usługi AD FS
 
 Uwaga: Ta funkcja jest obecnie dostępna tylko w 1.7.0 (wersja zapoznawcza).
 
-Jeśli okaże się, że problemy, logując się do konta chcesz użyć, ponieważ domyślna przeglądarka już zalogowali się do innego konta, możesz:
+Jeśli okaże się problemy, logując się do konta którego chcesz użyć, ponieważ domyślna przeglądarka już zalogowali się do innego konta, możesz:
+
 1. Ręcznie skopiować link i kod do prywatnego sesji przeglądarki.
 2. Ręcznie skopiować link i kodu w innej przeglądarce.
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Ponowne uwierzytelnianie pętli lub zmień nazwę UPN
+
 Jeśli w pętli ponownego lub zostały zmienione nazwy UPN jednego z kont, spróbuj wykonać następujące czynności:
+
 1. Usuń wszystkie konta, a następnie Zamknij Eksploratora usługi Storage
 2. Usuń. Folder IdentityService z Twojego komputera. W Windows, folderze znajduje się w `C:\users\<username>\AppData\Local`. Dla systemów Mac i Linux można znaleźć folderu w folderze głównym katalogu użytkownika.
 3. Jeśli na komputerze Mac lub Linux, należy również usunąć wpis Microsoft.Developer.IdentityService z magazynu kluczy Twojego systemu operacyjnego. Na komputerze Mac magazynu kluczy to aplikacja "Gnome Pęk kluczy". Dla systemu Linux aplikacji jest zwykle nazywane "Pęku kluczy", ale nazwa może się różnić w zależności od Twojej dystrybucji.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
+
 Dostęp warunkowy nie jest obsługiwana, gdy Eksplorator usługi Storage jest używany w systemie Windows 10, Linux lub macOS. Jest to spowodowane ograniczenia w bibliotece usługi AAD używane przez Eksploratora usługi Storage.
 
 ## <a name="mac-keychain-errors"></a>Błędy pęku kluczy komputera Mac.
-Systemu macOS pęku kluczy czasami może przejść do stanu, który powoduje, że problemy z biblioteki uwierzytelniania usługi Storage Explorer. Aby uzyskać łańcucha kluczy, poza tym spróbuj stanu następujące czynności:
+
+Systemu macOS pęku kluczy czasami może przejść do stanu, który powoduje, że problemy z biblioteki uwierzytelniania usługi Storage Explorer. Aby uzyskiwać dostęp do pęku kluczy najważniejszych ten stan, spróbuj wykonać następujące kroki:
+
 1. Zamknij Eksploratora usługi Storage.
 2. Otwórz łańcucha kluczy (**cmd + spacja**, wpisz w pęku kluczy, trafienia wprowadź).
 3. Wybierz łańcucha kluczy "Logowanie".
@@ -91,11 +138,12 @@ Systemu macOS pęku kluczy czasami może przejść do stanu, który powoduje, ż
 7. Spróbuj zalogować się.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Ogólne logowania kroki rozwiązywania problemów
-* Jeśli jesteś w systemie macOS i za pośrednictwem okna dialogowego "Oczekiwanie... uwierzytelniania" nigdy nie zostanie wyświetlone okno logowania, spróbuj [następujące kroki](#mac-keychain-errors)
+
+* Jeśli jesteś w systemie macOS, i za pośrednictwem "Oczekiwanie na uwierzytelnianie..." nigdy nie zostanie wyświetlone okno logowania okno dialogowe, spróbuj [następujące kroki](#mac-keychain-errors)
 * Uruchom program Storage Explorer
 * Jeśli okno uwierzytelniania jest pusty, zaczekaj co najmniej jedną minutę przed zamknięciem okna dialogowego uwierzytelniania.
 * Upewnij się, że usługi serwera proxy i certyfikatu, że ustawienia są poprawnie skonfigurowane dla komputera i Eksploratora usługi Storage.
-* Jeśli znajdują się na Windows i mieć dostęp do programu Visual Studio 2017 na tym samym komputerze i logowania, zaloguj się do programu Visual Studio 2017. Po pomyślnym zalogowaniu do programu Visual Studio 2017 należy otworzyć Eksploratora usługi Storage i wyświetlenia ekranu konto użytkownika w panelu konta.
+* Jeśli znajdują się na Windows i mają dostęp do programu Visual Studio 2017 na tym samym komputerze i zaloguj się, spróbuj zalogować się do programu Visual Studio 2017. Po pomyślnym zalogowaniu do programu Visual Studio 2017 należy otworzyć Eksploratora usługi Storage i wyświetlenia ekranu konto użytkownika w panelu konta.
 
 Jeśli żadna z tych metod działa [Otwórz problem w serwisie GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
@@ -103,7 +151,7 @@ Jeśli żadna z tych metod działa [Otwórz problem w serwisie GitHub](https://g
 
 Jeśli nie można pobrać subskrypcji po pomyślnym zalogowaniu, wypróbuj poniższe metody rozwiązywania problemów:
 
-* Sprawdź, czy Twoje konto ma dostęp do subskrypcji, których oczekujesz. Aby sprawdzić, czy masz dostęp, logując się do portalu dla środowiska platformy Azure, którą próbujesz użyć.
+* Sprawdź, czy Twoje konto ma dostęp do subskrypcji, których oczekujesz. Możesz sprawdzić dostęp, logując się do portalu dla środowiska platformy Azure, którą próbujesz użyć.
 * Upewnij się, że jesteś użytkownikiem zarejestrowanym w przy użyciu Azure poprawne środowiska (Azure, Azure China 21Vianet, Azure (Niemcy), dla administracji USA lub środowisko niestandardowe).
 * Jeśli używasz serwera proxy, upewnij się, poprawnie skonfigurowany serwer proxy Eksploratora usługi Storage.
 * Spróbuj usunąć i ponownie dodać konto.
@@ -118,10 +166,10 @@ Jeśli nie można usunąć konta dołączonych lub zasób magazynu za pośrednic
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
->  Zamknij Eksploratora usługi Storage przed usunięciem powyżej folderów.
+> Zamknij Eksploratora usługi Storage przed usunięciem powyżej folderów.
 
 > [!NOTE]
->  Jeśli nigdy nie zaimportowano żadnych certyfikatów SSL, następnie utworzyć kopię zapasową zawartości `certs` katalogu. Później można użyć kopii zapasowej, aby ponowne zaimportować certyfikaty SSL.
+> Jeśli nigdy nie zaimportowano żadnych certyfikatów SSL, następnie utworzyć kopię zapasową zawartości `certs` katalogu. Później można użyć kopii zapasowej, aby ponowne zaimportować certyfikaty SSL.
 
 ## <a name="proxy-issues"></a>Problemy dotyczące serwera proxy
 
@@ -130,7 +178,8 @@ Najpierw upewnij się, że następujące wprowadzone informacje są poprawne:
 * Adres URL serwera proxy i numer portu
 * Nazwa użytkownika i hasło, jeśli jest to wymagane przez serwer proxy
 
-Należy pamiętać, że Eksplorator usługi Storage nie obsługuje plików automatyczna konfiguracja serwera proxy do konfigurowania ustawień serwera proxy.
+> [!NOTE]
+> Eksplorator usługi Storage nie obsługuje plików automatyczna konfiguracja serwera proxy do konfigurowania ustawień serwera proxy.
 
 ### <a name="common-solutions"></a>Typowe rozwiązania
 
@@ -161,15 +210,16 @@ Jeśli ustawienia serwera proxy są poprawne, należy skontaktować się z admin
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Komunikat o błędzie "Nie można pobrać elementów podrzędnych"
 
-Jeśli na platformie Azure są połączone za pośrednictwem serwera proxy, sprawdź, czy ustawienia serwera proxy są poprawne. Jeśli z właścicielem subskrypcji, czy konta zostały przyznano dostęp do zasobu, sprawdź, czy po ich przeczytaniu lub listy uprawnień dla tego zasobu.
+Jeśli na platformie Azure są połączone za pośrednictwem serwera proxy, sprawdź, czy ustawienia serwera proxy są poprawne. Udzielenie dostępu do zasobu z właścicielem subskrypcji lub konta, sprawdź, czy po ich przeczytaniu lub listy uprawnień dla tego zasobu.
 
 ## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Parametry połączenia nie ma pełną konfigurację ustawień
 
-Jeśli zostanie wyświetlony ten komunikat o błędzie, jest to możliwe, że nie masz wymaganych uprawnień do uzyskania kluczy dla konta magazynu. Aby upewnić się, jeśli jest to możliwe, przejdź do portalu, a następnie zlokalizuj konto magazynu. Możesz szybko to zrobić, kliknij prawym przyciskiem myszy kliknij węzeł konta usługi Storage, a następnie klikając polecenie "Otwórz w Portal". Po wykonaniu tej czynności, przejdź do bloku "Klucze dostępu". Jeśli nie masz uprawnień do wyświetlania kluczy zostanie wyświetlona strona, z komunikatem "Nie masz dostępu.". Aby obejść ten problem, można uzyskać klucz konta od kogoś innego i dołączyć nazwą i kluczem lub może być poproszenie o sygnatury dostępu Współdzielonego do konta magazynu i umożliwia dołączanie konta magazynu.
+Jeśli zostanie wyświetlony ten komunikat o błędzie, jest to możliwe, że nie masz wymaganych uprawnień do uzyskania kluczy dla konta magazynu. Aby upewnić się, jeśli jest to możliwe, przejdź do portalu, a następnie zlokalizuj konto magazynu. To zrobić szybko prawym przyciskiem myszy węzeł konta usługi Storage, a następnie klikając polecenie "Otwórz w Portal". Po wykonaniu tej czynności, przejdź do bloku "Klucze dostępu". Jeśli nie masz uprawnień, aby wyświetlić klucze, zostanie wyświetlona strona, z komunikatem "Nie masz dostępu.". Aby obejść ten problem, można uzyskać klucz konta od kogoś innego i dołączyć nazwą i kluczem, lub może być poproszenie o sygnatury dostępu Współdzielonego do konta magazynu i umożliwia dołączanie konta magazynu.
 
-Jeśli możesz wyświetlić klucze konta, a następnie Zgłoś problem w serwisie GitHub, dzięki czemu możemy Ci pomóc rozwiązać ten problem.
+Jeśli widzisz kluczy konta pliku problemu w serwisie GitHub, dzięki czemu możemy Ci pomóc rozwiązać ten problem.
 
 ## <a name="issues-with-sas-url"></a>Problemy związane z adresu URL sygnatury dostępu Współdzielonego
+
 Jeśli łączysz się z usługą przy użyciu adresu URL sygnatury dostępu Współdzielonego i występuje ten błąd:
 
 * Upewnij się, że adres URL zawiera niezbędne uprawnienia do odczytu lub wyświetla listę zasobów.
@@ -177,21 +227,23 @@ Jeśli łączysz się z usługą przy użyciu adresu URL sygnatury dostępu Wsp�
 * Adres URL sygnatury dostępu Współdzielonego zależy od zasad dostępu, sprawdź, czy zasady dostępu nie został odwołany.
 
 Jeśli przypadkowo dołączany przy użyciu nieprawidłowego adresu URL sygnatury dostępu Współdzielonego i nie można odłączyć, wykonaj następujące kroki:
-1.  Podczas uruchamiania programu Storage Explorer, naciśnij klawisz F12, aby otworzyć okno narzędzi programistycznych.
-2.  Kliknij kartę aplikacji, a następnie kliknij pozycję Magazyn lokalny > file:// w drzewie po lewej stronie.
-3.  Znajdź klucz skojarzony z typem usługi problematyczne identyfikatora URI sygnatury dostępu Współdzielonego. Na przykład, jeśli nieprawidłowego identyfikatora URI połączenia SAS dla kontenera obiektów blob, poszukaj klucza o nazwie `StorageExplorer_AddStorageServiceSAS_v1_blob`.
-4.  Wartość klucza powinna być tablicą JSON. Znajdź obiekt skojarzony z nieprawidłowy identyfikator URI i usuń go.
-5.  Naciśnij klawisze Ctrl + R, aby ponownie załadować Eksploratora usługi Storage.
+
+1. Podczas uruchamiania programu Storage Explorer, naciśnij klawisz F12, aby otworzyć okno narzędzi programistycznych.
+2. Kliknij kartę aplikacji, a następnie kliknij pozycję Magazyn lokalny > file:// w drzewie po lewej stronie.
+3. Znajdź klucz skojarzony z typem usługi problematyczne identyfikatora URI sygnatury dostępu Współdzielonego. Na przykład, jeśli nieprawidłowego identyfikatora URI połączenia SAS dla kontenera obiektów blob, poszukaj klucza o nazwie `StorageExplorer_AddStorageServiceSAS_v1_blob`.
+4. Wartość klucza powinna być tablicą JSON. Znajdź obiekt skojarzony z nieprawidłowy identyfikator URI i usuń go.
+5. Naciśnij klawisze Ctrl + R, aby ponownie załadować Eksploratora usługi Storage.
 
 ## <a name="linux-dependencies"></a>Zależności systemu Linux
 
-Na dystrybucje systemu Linux niż Ubuntu 16.04 może być konieczne ręczne zainstalowanie niektóre zależności. Ogólnie rzecz biorąc wymagane są następujące pakiety:
+Dystrybucje systemu Linux niż Ubuntu 16.04 może być konieczne ręczne zainstalowanie niektóre zależności. Ogólnie rzecz biorąc wymagane są następujące pakiety:
+
 * [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libsecret`
 * `libgconf-2-4`
 * Aktualne GCC
 
-W zależności od Twojej dystrybucji może być inne pakiety, które są potrzebne do zainstalowania. Program Storage Explorer [wersji](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) zawierają poznać konkretne kroki dla niektórych dystrybucjach.
+W zależności od Twojej dystrybucji może być inne pakiety, które są potrzebne do zainstalowania. Program Storage Explorer [wersji](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) zawierają poznać konkretne kroki dla niektórych dystrybucji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

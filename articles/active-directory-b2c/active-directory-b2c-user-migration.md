@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a168ca3aafc171e4ed9b9f7572ee60b2ac7c350
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e19e21ab31fcee87aac6e7e8a0e1d0fbd0a7452c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182272"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409911"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migracja użytkowników
 W przypadku migracji dostawcy tożsamości do usługi Azure Active Directory B2C (Azure AD B2C), może być również konieczne migracji konta użytkownika. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont użytkowników z dowolnego dostawcy tożsamości do usługi Azure AD B2C. Artykuł jest nie należy traktować jako przetestowanego rozwiązania ze szczegółami, ale raczej opisano w nim kilka scenariuszy. Deweloper jest odpowiedzialny za przydatności każde podejście.
@@ -137,7 +137,7 @@ Zmiana `$AppId` wartości za pomocą usługi Azure AD **identyfikator aplikacji*
 ## <a name="step-2-pre-migration-application-sample"></a>Krok 2: Przykład aplikacji przed migracją
 [Pobieranie i uruchamianie przykładowego kodu][UserMigrationSample]. Możesz ją pobrać jako plik .zip.
 
-### <a name="step-21-edit-the-migration-data-file"></a>Krok 2.1: Edytuj plik danych migracji
+### <a name="step-21-edit-the-migration-data-file"></a>Krok 2.1. Edytuj plik danych migracji
 Przykładowa aplikacja używa pliku JSON, który zawiera dane użytkownika fikcyjnego z rolą. Po pomyślnym uruchomieniu przykładu możesz zmienić kod do pracy z danymi z własną bazę danych. Lub można wyeksportować profilu użytkownika do pliku JSON, a następnie ustaw aplikację, aby użyć tego pliku.
 
 Aby edytować plik JSON, otwórz `AADB2C.UserMigration.sln` rozwiązania Visual Studio. W `AADB2C.UserMigration` otwarty projekt `UsersData.json` pliku.
@@ -154,7 +154,7 @@ Jak widać, plik zawiera listę jednostek użytkownika. Każda jednostka użytko
 > [!NOTE]
 > W czasie kompilacji program Visual Studio kopiuje plik do `bin` katalogu.
 
-### <a name="step-22-configure-the-application-settings"></a>Krok 2.2: Konfigurowanie ustawień aplikacji
+### <a name="step-22-configure-the-application-settings"></a>Krok 2.2. Konfigurowanie ustawień aplikacji
 W obszarze `AADB2C.UserMigration` otwarty projekt *App.config* pliku. Zastąp następujące ustawienia aplikacji przy użyciu własnych wartości:
 
 ```XML
@@ -370,4 +370,4 @@ Po ukończeniu [wprowadzenie do zasad niestandardowych] [ B2C-GetStartedCustom] 
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration
+[UserMigrationSample]: https://github.com/yoelhor/Azure-AD-B2C-UserMigration

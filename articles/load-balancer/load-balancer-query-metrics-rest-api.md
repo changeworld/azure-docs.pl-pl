@@ -11,18 +11,18 @@ ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
-ms.openlocfilehash: 5f92ae386730032e7da278b9dd2b0effef313741
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0d8ac22679bc4e789c22396c21c51dacee201302
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752062"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433845"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Pobierz metryki użycia modułu równoważenia obciążenia przy użyciu interfejsu API REST
 
 Niniejszy instruktaż pokazuje, jak zbierać liczbę bajtów przetworzonych przez [Balancer w warstwie standardowa](/azure/load-balancer/load-balancer-standard-overview) interwał czasu przy użyciu [interfejsu API REST usługi Azure](/rest/api/azure/).
 
-Dokumentacja pełną dokumentację i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
+Pełna dokumentacja i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
 
 ## <a name="build-the-request"></a>Tworzenie żądania
 

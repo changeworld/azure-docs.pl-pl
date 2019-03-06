@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bf9d8e6d3aa8d1995c705ecdec95b6f3dea028ff
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8a67b94c7f2355872b243a05a7908604e88cf778
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242347"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433794"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -245,7 +245,7 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń lub tras 
 
 #### <a name="forced-tunneling-to-on-premise"></a>Wymuszonego tunelowania do środowiska lokalnego
 
-Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu którym cały ruch z podsieci jest zmuszony do określonej sieci lub lokalizacji, takiej jak sieć lokalną. HDInsight jest __nie__ obsługi wymuszonego tunelowania do sieci lokalnej. Jeśli używasz zapory usługi Azure lub karta urządzenie wirtualne hostowane na platformie Azure, można użyć tras zdefiniowanych przez użytkownika, przekierowywanie ruchu do konta magazynu do celów monitorowania i zezwolić na cały ruch wychodzący.
+Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu którym cały ruch z podsieci jest zmuszony do określonej sieci lub lokalizacji, takiej jak sieć lokalną. HDInsight jest __nie__ obsługi wymuszonego tunelowania do sieci lokalnej. Jeśli używasz zapory usługi Azure lub sieciowe urządzenie wirtualne hostowane na platformie Azure, można użyć tras zdefiniowanych przez użytkownika, przekierowywanie ruchu do konta magazynu do celów monitorowania i zezwolić na cały ruch wychodzący.
 
 ## <a id="hdinsight-ip"></a> Wymaganych adresów IP
 

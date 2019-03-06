@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 951bb978ac78529959acbf878a72c22573400f11
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7d93e5777e3456098e1282fd70da55e85e1f80d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822790"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438249"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Użyj narzędzi Data Lake Tools for Visual Studio, aby nawiązać połączenie z usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive
 
@@ -62,7 +62,7 @@ Do wykonania kroków tego samouczka i korzystania z narzędzi Data Lake Tools w 
 
 3. Z **rozszerzenia i aktualizacje** okna, rozwiń węzeł **aktualizacje** po lewej stronie.
 
-4. Jeśli aktualizacja jest dostępna, **Azure Data Lake i Stream Analytics Tools** pojawi się w głównym oknie.  Wybierz **aktualizacji**.
+4. Jeśli aktualizacja jest dostępna, **Azure Data Lake i Stream Analytics Tools** pojawi się w głównym oknie.  Wybierz pozycję **Update** (Aktualizuj).
 
 > [!NOTE]  
 > Możesz użyć tylko narzędzi Data Lake Tools w wersji 2.3.0.0 lub nowszej, aby nawiązać połączenie z klastrami zapytań interaktywnych oraz uruchamiać zapytania interaktywne usługi Hive.
@@ -113,7 +113,7 @@ Po otwarciu kontenera można używać następujących przycisków do przekazywan
 ## <a name="run-interactive-apache-hive-queries"></a>Uruchamianie interakcyjnych zapytań technologii Hive
 [Apache Hive](https://hive.apache.org) to infrastruktura magazynu danych oparta na platformie Hadoop. Usługa Hive jest używana do wykonywania podsumowań danych, zapytań i analizy. Możesz użyć narzędzi Data Lake Tools for Visual Studio, aby uruchomić zapytania usługi Hive z poziomu programu Visual Studio. Aby uzyskać więcej informacji na temat programu Hive, zobacz [używanie programu Apache Hive z HDInsight](hdinsight-use-hive.md).
 
-[Zapytanie interakcyjne](../interactive-query/apache-interactive-query-get-started.md) używa narzędzia [Hive on LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) w wersji Apache Hive 2.1. Zapytanie interakcyjne zapewnia interakcyjność w złożonych zapytaniach opartych na magazynie danych kierowanych do dużych, magazynowanych zestawów danych. Zapytania Hive w zapytaniu interakcyjnym działają dużo szybciej niż tradycyjne zadania wsadowe Hive. Aby uzyskać więcej informacji, zobacz [uruchamianie Apache zadań wsadowych Hive](#run-hive-batch-jobs).
+[Zapytanie interakcyjne](../interactive-query/apache-interactive-query-get-started.md) używa narzędzia [Hive on LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) w wersji Apache Hive 2.1. Zapytanie interakcyjne zapewnia interakcyjność w złożonych zapytaniach opartych na magazynie danych kierowanych do dużych, magazynowanych zestawów danych. Zapytania Hive w zapytaniu interakcyjnym działają dużo szybciej niż tradycyjne zadania wsadowe Hive. Aby uzyskać więcej informacji zobacz Uruchamianie Apache zadań wsadowych Hive.
 
 > [!NOTE]  
 > Uruchamianie interakcyjnych zapytań Hive jest możliwe tylko po nawiązaniu połączenia z klastrem [interakcyjnych zapytań usługi HDInsight](../interactive-query/apache-interactive-query-get-started.md).

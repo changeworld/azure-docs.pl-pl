@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 4c431b149edb0677585da3c84e37d64873478ccf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331238"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432740"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -228,7 +228,7 @@ Jeśli nie są spełnione wymagania, Azure Data Factory sprawdza ustawienia i au
 Źródło danych nie spełnia kryteria, wprowadzona w poprzedniej sekcji, umożliwia kopiowanie danych za pośrednictwem tymczasowego przemieszczania usługi Azure Blob Storage (nie może być magazyn w warstwie Premium). W tym przypadku usługi Azure Data Factory automatycznie wykonuje przekształcenia na danych, które spełniają wymagania dotyczące formatu danych PolyBase, a następnie przy użyciu technologii PolyBase do ładowania danych do usługi SQL Data Warehouse i na ostatnich oczyszczania temp dane z magazynu obiektów Blob. Zobacz [kopiowania etapowego](data-factory-copy-activity-performance.md#staged-copy) Aby uzyskać szczegółowe informacje na temat kopiowania danych za pośrednictwem przejściowego magazynu obiektów Blob Azure działania ogólnie rzecz biorąc.
 
 > [!NOTE]
-> Podczas kopiowania danych z lokalnych danych przechowywane w usłudze Azure SQL Data Warehouse przy użyciu technologii PolyBase i przemieszczania, jeśli jest w wersji bramy zarządzania danymi poniżej 2.4 środowiska JRE (Java Runtime Environment) jest wymagany na maszynie bramy, która jest używana do przekształcania danych źródłowych do prawidłowego formatu. Sugerują, że uaktualnienie bramy do najnowszej wersji w celu uniknięcia takie zależności.
+> Podczas kopiowania danych z lokalnych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase magazynu danych i przemieszczania, jeśli jest w wersji bramy zarządzania danymi poniżej 2.4 środowiska JRE (Java Runtime Environment) jest wymagany na maszynie bramy, która jest używana do przekształcania źródła dane do właściwego formatu. Sugerują, że uaktualnienie bramy do najnowszej wersji w celu uniknięcia takie zależności.
 >
 
 Aby użyć tej funkcji, należy utworzyć [połączonej usługi Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) odwołujący się do konta magazynu platformy Azure, które ma magazynu tymczasowego obiektu blob, a następnie wprowadź `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w Poniższy kod:
@@ -307,8 +307,8 @@ Data Factory tworzy tabelę w magazynie docelowym o takiej nazwie tabeli w magaz
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | Bit | Bit |
-| Dziesiętny | Dziesiętny |
-| Liczbowy | Dziesiętny |
+| Decimal | Decimal |
+| Liczbowy | Decimal |
 | Liczba zmiennoprzecinkowa | Liczba zmiennoprzecinkowa |
 | pieniędzy | pieniędzy |
 | Real | Real |

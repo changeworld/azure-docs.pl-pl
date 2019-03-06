@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6eb0ce9098b5cc5f66035851c6837e9e46fcf2df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 69aecf3d107000408f98f8ae53968355943c2881
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414224"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440815"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Polecenia Windows - CMD i programu PowerShell
 
@@ -118,7 +118,7 @@ Gdy jest ograniczony do metod, które są dostępne w Windows domyślnie, progra
 ### <a name="disable-windows-firewall"></a>Wyłącz zaporę Windows
 `netsh advfirewall set allprofiles state off`
 
-Można użyć tego polecenia podczas rozwiązywania problemów z tymczasowo wyeliminuj zapory Windows. Będzie można włączyć po następnym uruchomieniu komputera lub gdy użytkownik enaable go za pomocą poniższego polecenia. Usługa Windows zapory (MPSSVC) lub usługa Podstawowy aparat filtrowania (BFE) nie zostanie zatrzymana jako sposób wykluczenia zapory Windows. Zatrzymywanie MPSSVC lub BFE spowoduje łączności wszystkie blokowane.
+Można użyć tego polecenia podczas rozwiązywania problemów z tymczasowo wyeliminuj zapory Windows. Będzie ono włączone przy następnym ponownym uruchomieniu lub po włączeniu go za pomocą poniższego polecenia. Usługa Windows zapory (MPSSVC) lub usługa Podstawowy aparat filtrowania (BFE) nie zostanie zatrzymana jako sposób wykluczenia zapory Windows. Zatrzymywanie MPSSVC lub BFE spowoduje łączności wszystkie blokowane.
 ### <a name="enable-windows-firewall"></a>Włącz zaporę Windows
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>Zarządzanie użytkownikami i grupami

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 32fc3f1c93261f6fb19c084f51dea4942310ac47
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7ef8f80f44c921cc1f2524351c8acb78ebd713bf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664152"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434797"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Table storage za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,6 +25,8 @@ ms.locfileid: "55664152"
 > * [Bieżąca wersja](connector-azure-table-storage.md)
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych do i z usługi Azure Table storage. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -114,15 +116,15 @@ Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na 
 
 > [!TIP]
 > Aby wygenerować sygnaturę dostępu współdzielonego usługi dla konta magazynu, można wykonać następujące polecenia programu PowerShell. Zastąp symbole zastępcze i udzielić wymaganych uprawnień.
-> `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Aby użyć uwierzytelniania sygnatury dostępu współdzielonego, następujące właściwości są obsługiwane.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **AzureTableStorage**. |Yes |
-| sasUri | Określ identyfikator URI sygnatury dostępu Współdzielonego do tabeli identyfikatora URI sygnatury dostępu współdzielonego. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić tokenu sygnatury dostępu Współdzielonego w usłudze Azure Key Vault do leverate automatyczne obracanie i usunąć token. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
+| sasUri | Określ identyfikator URI sygnatury dostępu Współdzielonego do tabeli identyfikatora URI sygnatury dostępu współdzielonego. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić tokenu sygnatury dostępu Współdzielonego w usłudze Azure Key Vault, aby wykorzystać automatyczne obracanie i usunąć część tokenu. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 >[!NOTE]
@@ -331,7 +333,7 @@ Podczas przenoszenia danych do i z usługi Azure Table następujące [mapowania 
 | Typ danych w usłudze Azure Table | Typ danych tymczasowych fabryki danych | Szczegóły |
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |Tablica bajtów do 64 KB. |
-| Edm.Boolean |wartość logiczna |Wartość logiczna. |
+| Edm.Boolean |bool |Wartość logiczna. |
 | Edm.DateTime |DateTime |Wartość 64-bitową, wyrażone jako uniwersalny czas koordynowany (UTC). Obsługiwanym zakresem daty/godziny rozpocznie się o północy, 1 stycznia, 1601 r. N.E. (C.E.), UTC. Zakres kończy się 31 grudnia 9999 r. |
 | Edm.Double |double |64-bitowy zmiennoprzecinkowy wartość punktu. |
 | Edm.Guid |Guid |Globalnie unikatowy identyfikator 128-bitowego. |

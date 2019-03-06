@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: db13064c93381f87f82959ed3386abfc0a8e4593
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238666"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434763"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Tabele tymczasowe w usłudze SQL Data Warehouse
 Ten artykuł zawiera podstawowe wskazówki dotyczące korzystania z tabel tymczasowych i wyróżnienie zasadami poziomu tabel tymczasowych sesji. Korzystając z informacji w tym artykule mogą pomóc w modularyzacji kodu, zwiększanie prostotę konserwacji kodu i możliwość ponownego wykorzystania.
@@ -193,7 +193,7 @@ FROM    t1
 GO
 ```
 
-Na tym etapie, jedyną akcją, która jest przeprowadzana jest tworzenie procedury składowanej tego generatess tabelę tymczasową stats_ddl #, za pomocą instrukcji DDL.  Tę procedurę składowaną porzuca #stats_ddl, jeśli istnieje już upewnij się, że nie niepowodzeniem, jeśli więcej niż jeden raz w ramach sesji.  Jednakże ponieważ ma nie `DROP TABLE` na końcu procedury składowanej, po ukończeniu działania procedury składowanej, instalacja pozostawia utworzonej tabeli, aby mogły zostać odczytane poza procedury składowanej.  W usłudze SQL Data Warehouse w przeciwieństwie do innych baz danych programu SQL Server, jest możliwość użycia tabeli tymczasowej poza procedury, której został utworzony.  Tabele tymczasowe SQL Data Warehouse może służyć **dowolnym** wewnątrz sesji. Może to prowadzić do więcej kodu modułowego i łatwe w zarządzaniu, jak w poniższym przykładzie:
+Na tym etapie jedyną akcją, która jest przeprowadzana jest tworzenie procedury składowanej, która generuje tabelę tymczasową stats_ddl #, za pomocą instrukcji DDL.  Tę procedurę składowaną porzuca #stats_ddl, jeśli istnieje już upewnij się, że nie niepowodzeniem, jeśli więcej niż jeden raz w ramach sesji.  Jednakże ponieważ ma nie `DROP TABLE` na końcu procedury składowanej, po ukończeniu działania procedury składowanej, instalacja pozostawia utworzonej tabeli, aby mogły zostać odczytane poza procedury składowanej.  W usłudze SQL Data Warehouse w przeciwieństwie do innych baz danych programu SQL Server, jest możliwość użycia tabeli tymczasowej poza procedury, której został utworzony.  Tabele tymczasowe SQL Data Warehouse może służyć **dowolnym** wewnątrz sesji. Może to prowadzić do więcej kodu modułowego i łatwe w zarządzaniu, jak w poniższym przykładzie:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

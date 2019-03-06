@@ -1,19 +1,19 @@
 ---
-title: 'Dodawanie bramy sieci wirtualnej do sieci wirtualnej dla usługi ExpressRoute: programu PowerShell: Azure | Dokumentacja firmy Microsoft'
+title: 'Dodaj bramę sieci wirtualnej do sieci wirtualnej dla usługi ExpressRoute: Program PowerShell: Azure | Microsoft Docs'
 description: W tym artykule ułatwiają dodawanie bramy sieci wirtualnej do sieci wirtualnej usługi Resource Manager zostały już utworzone dla usługi ExpressRoute.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8f8d021adae1cb25198c53e486fdb50e42ac211b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3c91fd6140b460d29b33e7d9b1fabafbbcf99422
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097917"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406222"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute za pomocą programu PowerShell
 > [!div class="op_single_selector"]
@@ -24,14 +24,19 @@ ms.locfileid: "53097917"
 > 
 > 
 
-Ten artykuł ułatwia dodawanie, zmienianie rozmiaru i usuwanie bramy sieci wirtualnej (VNet) wstępnie istniejącej sieci wirtualnej. W krokach dla tej konfiguracji są przeznaczone na potrzeby sieci wirtualnych, które zostały utworzone przy użyciu modelu wdrażania usługi Resource Manager, który będzie używany w konfiguracji usługi ExpressRoute. Aby uzyskać więcej informacji na temat bram sieci wirtualnej i ustawienia konfiguracji bramy usługi ExpressRoute, zobacz [o bramach sieci wirtualnej dla usługi ExpressRoute](expressroute-about-virtual-network-gateways.md). 
-
+Ten artykuł ułatwia dodawanie, zmienianie rozmiaru i usuwanie bramy sieci wirtualnej (VNet) wstępnie istniejącej sieci wirtualnej. W krokach dla tej konfiguracji dotyczy sieci wirtualnych, które zostały utworzone przy użyciu modelu wdrażania usługi Resource Manager dla konfiguracji usługi ExpressRoute. Aby uzyskać więcej informacji, zobacz [o bramach sieci wirtualnej dla usługi ExpressRoute](expressroute-about-virtual-network-gateways.md).
 
 ## <a name="before-beginning"></a>Przed rozpoczęciem
-Sprawdź, czy zostały zainstalowane najnowsze polecenia cmdlet programu Azure PowerShell. Jeśli nie zainstalowano najnowsze polecenia cmdlet, należy to zrobić przed rozpoczęciem procedury konfiguracji. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+
+### <a name="working-with-powershell"></a>Praca z programu PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [working with cloud shell](../../includes/expressroute-cloud-shell-powershell-about.md)]
+
+### <a name="configuration-reference-list"></a>Lista odwołań konfiguracji
 
 [!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu bramy sieci wirtualnej, możesz połączyć sieć wirtualną z obwodem usługi ExpressRoute. Zobacz [łączenie sieci wirtualnej z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-arm.md).
-

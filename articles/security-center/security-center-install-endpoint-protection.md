@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2065381063058eb59dd5896e12c1aa34184148bf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c2cb4c2f1154be56b7237a6cb12c87fcc3e00467
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247005"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455874"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje stan ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy dotyczące ochrony punktu końcowego. Usługa Security Center wyróżnia problemy, takie jak wykrytych zagrożeń i ochronę niewystarczające, co może narazić Twoje maszyny wirtualne (VM) i komputerów na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji podanych w ramach **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
@@ -60,7 +60,7 @@ W tym przykładzie użyjemy **obliczenia**.  Przedstawiony zostanie sposób inst
    - Zainstalowanych dostawców ochrony punktu końcowego — listy różnych dostawców identyfikowane przez usługę Security Center.
    - Zainstalowano program endpoint protection kondycja — pokazuje stan kondycji maszyn wirtualnych i komputerów, na których jest zainstalowane oprogramowanie ochrony punktu końcowego. Wykres przedstawia liczbę maszyn wirtualnych i komputerów, które są w dobrej kondycji oraz numer z niewystarczającą ochroną.
    - Wykryto — złośliwe oprogramowanie zawiera liczbę maszyn wirtualnych i komputerów, których usługa Security Center jest raportowanie wykrytego złośliwego oprogramowania.
-   - Zaatakowane komputery — pokazuje liczbę maszyn wirtualnych i komputerów, których usługa Security Center jest raportowanie ataków przez złośliwego oprogramowania.
+   - Zaatakowane komputery — pokazuje liczbę maszyn wirtualnych i komputerów, których usługa Security Center jest raportowanie ataków przez złośliwe oprogramowanie.
 
    W dolnej części pulpitu nawigacyjnego znajduje się lista punktu końcowego problemy związane z ochroną, które zawiera następujące informacje:  
 

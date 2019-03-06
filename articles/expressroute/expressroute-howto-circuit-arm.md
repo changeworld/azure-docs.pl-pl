@@ -1,19 +1,19 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — program PowerShell: Azure | Dokumentacja firmy Microsoft'
+title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — program PowerShell: Azure | Microsoft Docs'
 description: Tworzenie, aprowizować, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2b32c97f636cc6b918a883ea3e2a2b540890084f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105006"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409874"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Tworzenie i modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell
 > [!div class="op_single_selector"]
@@ -31,37 +31,23 @@ Ten artykuł pomoże Ci utworzyć obwodu ExpressRoute za pomocą poleceń cmdlet
 Przed rozpoczęciem należy przejrzeć [wymagania wstępne](expressroute-prerequisites.md) i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
 
 ### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="create"></a>Tworzenie i aprowizowanie obwodu usługi ExpressRoute
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Zaloguj się do konta platformy Azure i wybierz swoją subskrypcję
-Aby rozpocząć konfigurację, zaloguj się do konta platformy Azure. Poniższe przykłady umożliwiają łatwiejszego nawiązania połączenia:
 
-Jeśli używasz usługi Azure CloudShell, nie trzeba uruchomić polecenie Connect-AzureRmAccount, jak będziesz się łączyć automatycznie.
-
-```azurepowershell
-Connect-AzureRmAccount
-```
-
-Sprawdź subskrypcje dla konta:
-
-```azurepowershell-interactive
-Get-AzureRmSubscription
-```
-
-Wybierz subskrypcję, której chcesz utworzyć obwód usługi ExpressRoute dla:
-
-```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
-```
+[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Pobieranie listy obsługiwanych dostawców, lokalizacji i przepustowości
 Przed przystąpieniem do tworzenia obwodu usługi ExpressRoute, należy listę dostawców łączności obsługiwanych, lokalizacji i opcje przepustowości.
 
-Polecenia cmdlet programu PowerShell **Get AzureRmExpressRouteServiceProvider** zwraca te informacje, która będzie używana w dalszych krokach:
+Polecenia cmdlet programu PowerShell **Get AzExpressRouteServiceProvider** zwraca te informacje, która będzie używana w dalszych krokach:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteServiceProvider
+Get-AzExpressRouteServiceProvider
 ```
 
 Sprawdź, czy dostawca połączenia znajduje się tam. Zanotuj następujące informacje, które będą potrzebne później, po utworzeniu obwodu:
@@ -70,20 +56,19 @@ Sprawdź, czy dostawca połączenia znajduje się tam. Zanotuj następujące inf
 * PeeringLocations
 * BandwidthsOffered
 
-Teraz możesz utworzyć obwód usługi ExpressRoute.   
+Teraz możesz utworzyć obwód usługi ExpressRoute.
 
 ### <a name="3-create-an-expressroute-circuit"></a>3. Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)
 Jeśli nie masz jeszcze grupy zasobów, należy utworzyć jedną przed utworzeniem obwód usługi ExpressRoute. Możesz to zrobić, uruchamiając następujące polecenie:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
+New-AzResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
-
 
 Poniższy przykład pokazuje, jak utworzyć obwód usługi ExpressRoute za pośrednictwem Equinix 200-MB/s w Dolinie Krzemowej. Jeśli używasz innego dostawcy i inne ustawienia, należy zastąpić te informacje podczas Prześlij żądanie. Skorzystaj z następującego przykładu, aby zażądać nowego klucza usługi:
 
 ```azurepowershell-interactive
-New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
+New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
 ```
 
 Upewnij się, że podajesz poprawne warstwa jednostki SKU i rodzina jednostek SKU:
@@ -99,15 +84,15 @@ Upewnij się, że podajesz poprawne warstwa jednostki SKU i rodzina jednostek SK
 Odpowiedź zawiera klucz usługi. Szczegółowy opis wszystkich parametrów można uzyskać, uruchamiając następujące polecenie:
 
 ```azurepowershell-interactive
-get-help New-AzureRmExpressRouteCircuit -detailed
+get-help New-AzExpressRouteCircuit -detailed
 ```
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Lista wszystkich obwodów usługi ExpressRoute
-Aby uzyskać listę wszystkich obwodów usługi ExpressRoute, które zostały utworzone, uruchom **Get AzureRmExpressRouteCircuit** polecenia:
+Aby uzyskać listę wszystkich obwodów usługi ExpressRoute, które zostały utworzone, uruchom **Get AzExpressRouteCircuit** polecenia:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 Odpowiedź wygląda podobnie do poniższego przykładu:
@@ -134,10 +119,10 @@ Odpowiedź wygląda podobnie do poniższego przykładu:
     ServiceKey                        : **************************************
     Peerings                          : []
 
-Te informacje w dowolnym momencie można pobrać za pomocą `Get-AzureRmExpressRouteCircuit` polecenia cmdlet. Wywołania bez parametrów wyświetla listę wszystkich obwodów. Klucz usługi znajduje się w *klucza ServiceKey* pola:
+Te informacje w dowolnym momencie można pobrać za pomocą `Get-AzExpressRouteCircuit` polecenia cmdlet. Wywołania bez parametrów wyświetla listę wszystkich obwodów. Klucz usługi znajduje się w *klucza ServiceKey* pola:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit
 ```
 
 
@@ -166,12 +151,6 @@ Odpowiedź wygląda podobnie do poniższego przykładu:
     Peerings                         : []
 
 
-Szczegółowy opis wszystkich parametrów można uzyskać, uruchamiając następujące polecenie:
-
-```azurepowershell-interactive
-get-help Get-AzureRmExpressRouteCircuit -detailed
-```
-
 ### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. Wyślij klucz usługi dostawcy łączności dla inicjowania obsługi administracyjnej
 *ServiceProviderProvisioningState* zawiera informacje o bieżącym stanie inicjowania obsługi administracyjnej po stronie dostawcy usług. Stan zawiera stanu po stronie firmy Microsoft. Aby uzyskać więcej informacji o stanach aprowizacji obwodu, zobacz [przepływy pracy](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
@@ -196,7 +175,7 @@ Należy mieć możliwość użycia obwodu usługi ExpressRoute musi być w nast�
 Sprawdzanie stanu i stan klawisza obwodu informuje o tym, kiedy Twój dostawca włączył obwodu. Po skonfigurowaniu obwodu *ServiceProviderProvisioningState* pojawia się jako *Aprowizowana*, jak pokazano w poniższym przykładzie:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
@@ -236,10 +215,10 @@ Aby uzyskać instrukcje krok po kroku, zobacz [obwód usługi ExpressRoute, konf
 Następnie łączenie sieci wirtualnej na obwód usługi ExpressRoute. Użyj [łączenie sieci wirtualnych obwodów usługi ExpressRoute](expressroute-howto-linkvnet-arm.md) artykuł podczas pracy z modelem wdrażania usługi Resource Manager.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Uzyskiwanie stanu obwodu usługi ExpressRoute
-Te informacje w dowolnym momencie można pobrać za pomocą **Get AzureRmExpressRouteCircuit** polecenia cmdlet. Wywołania bez parametrów wyświetla listę wszystkich obwodów.
+Te informacje w dowolnym momencie można pobrać za pomocą **Get AzExpressRouteCircuit** polecenia cmdlet. Wywołania bez parametrów wyświetla listę wszystkich obwodów.
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit
 ```
 
 
@@ -271,7 +250,7 @@ Odpowiedź jest podobna do poniższego przykładu:
 Można uzyskać informacji na temat określonego obwodu usługi ExpressRoute przez przekazanie nazwy grupy zasobów i nazwy obwodu jako parametr do wywołania:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
@@ -322,12 +301,12 @@ Aby uzyskać więcej informacji na temat limity i ograniczenia, zobacz [ExpressR
 Należy włączyć dodatek premium usługi ExpressRoute dla istniejącego obwodu, przy użyciu następującego fragmentu kodu programu PowerShell:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Tier = "Premium"
 $ckt.sku.Name = "Premium_MeteredData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 Obwód ma teraz funkcje dodatku premium usługi ExpressRoute, włączone. Zaczniemy rozliczenia dla funkcji dodatku premium tak szybko, jak polecenie zostało pomyślnie uruchomione.
@@ -347,12 +326,12 @@ Zanotuj następujące informacje:
 Możesz wyłączyć dodatek premium usługi ExpressRoute dla istniejącego obwodu za pomocą następującego polecenia cmdlet programu PowerShell:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Tier = "Standard"
 $ckt.sku.Name = "Standard_MeteredData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Aby zaktualizować przepustowości obwodu usługi ExpressRoute
@@ -367,11 +346,11 @@ Obsługiwane opcje przepustowości dla dostawcy, można sprawdzić [ExpressRoute
 Po podjęciu decyzji rozmiar, jakiego potrzebujesz, użyj następującego polecenia, aby zmienić rozmiar obwodu:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.ServiceProviderProperties.BandwidthInMbps = 1000
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 
@@ -381,12 +360,12 @@ Obwód usługi będą mieć rozmiar po stronie firmy Microsoft. Następnie nale�
 Jednostka SKU obwodu usługi ExpressRoute można zmienić za pomocą następującego fragmentu kodu programu PowerShell:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Family = "UnlimitedData"
 $ckt.sku.Name = "Premium_UnlimitedData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Aby kontrolować dostęp do klasycznej sieci wirtualnej i środowiska usługi Resource Manager
@@ -402,7 +381,7 @@ Zanotuj następujące informacje:
 Możesz usunąć obwód usługi ExpressRoute, uruchamiając następujące polecenie:
 
 ```azurepowershell-interactive
-Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
+Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

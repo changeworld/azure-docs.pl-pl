@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ba332bb0f77dc198abdd76ccf024336788a77a33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385435"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435038"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
 
 W usłudze Azure HDInsight istnieje kilka typów klastrów i technologie, które można uruchomić zapytania usługi Apache Hive. Podczas tworzenia klastra usługi HDInsight, należy wybrać typ klastra odpowiednie do optymalizowania wydajności na potrzeby związane z obciążeniem. 
 
-Na przykład wybrać **Interactive Query** typ zoptymalizowane pod kątem zapytań ad-hoc, zapytania interakcyjne klastra. Wybierz pozycję Apache **Hadoop** typ zoptymalizowane pod kątem zapytań programu Hive, używane jako proces wsadowy klastra. **Platforma Spark** i **HBase** typy klastrów można również uruchomić zapytania programu Hive. Aby uzyskać więcej informacji na temat uruchamiania zapytań programu Hive na różne typy klastrów HDInsight, zobacz [co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?](hadoop/hdinsight-use-hive.md).
+Na przykład wybrać **Interactive Query** typ zoptymalizowane pod kątem zapytań ad-hoc, interaktywne klastra. Wybierz pozycję Apache **Hadoop** typ zoptymalizowane pod kątem zapytań programu Hive, używane jako proces wsadowy klastra. **Platforma Spark** i **HBase** typy klastrów można również uruchomić zapytania programu Hive. Aby uzyskać więcej informacji na temat uruchamiania zapytań programu Hive na różne typy klastrów HDInsight, zobacz [co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 
 Klastry HDInsight typu klastra Hadoop nie są zoptymalizowane pod kątem wydajności domyślnie. W tym artykule opisano niektóre z najczęściej stosowanych do zapytań metody optymalizacji wydajności technologii Hive.
 

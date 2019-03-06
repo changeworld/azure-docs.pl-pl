@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 902fbde0eca8db9113dda51e5d912fa9d94644ee
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df54f9dd4047fffb578a1a95a2edc47cba711ba1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215170"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433522"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 
@@ -83,10 +83,10 @@ Ten skrypt wdroży 17 dzierżaw w czasie krótszym niż pięć minut.
 
 | Demonstracja | Scenariusz |
 |:--|:--|
-| 2 | Generowanie obciążenia o normalnym natężeniu (ok. 40 jednostek DTU) |
+| 2 | Generowanie obciążenia o normalnym natężeniu (około 40 jednostek DTU) |
 | 3 | Generowanie obciążenia z dłuższymi i częstszymi skokami wartości dla każdej bazy danych|
-| 4 | Generowanie obciążenia o wyższych skokach wartości DTU dla każdej bazy danych (ok. 80 jednostek DTU)|
-| 5 | Generowanie normalnego obciążenia oraz wysokiego obciążenia dla jednej dzierżawy (ok. 95 jednostek DTU)|
+| 4 | Generowanie obciążenia o wyższych wzrosty liczby jednostek DTU na bazę danych (około 80 jednostek DTU)|
+| 5 | Generowanie normalnego obciążenia oraz wysokiego obciążenia dla jednej dzierżawy (około 95 jednostek DTU)|
 | 6 | Generowanie niezrównoważonego obciążenia dla wielu pul|
 
 Generator obciążenia stosuje obciążenie *syntetyczne* wyłącznie do procesorów dla każdej bazy danych dzierżawy. Generator uruchamia zadanie dla każdej bazy danych dzierżawy, co powoduje cykliczne wywołanie procedury składowanej, która generuje obciążenie. Poziomy obciążenia (mierzone w jednostkach eDTU), czas trwania i interwały są zróżnicowane dla wszystkich baz danych, co symuluje nieprzewidywalną aktywność dzierżawy.
@@ -196,7 +196,7 @@ Jeśli obciążenie, w zależności od konfiguracji puli poszczególne bazy dany
 W tym ćwiczeniu zostanie zasymulowane zwiększone obciążenie dotyczące miejsca Contoso Concert Hall wywołane wzmożonym pobytem na bilety na popularny koncert.
 
 1. W **PowerShell ISE**, Otwórz... \\ *Demo-PerformanceMonitoringAndManagement.ps1* skryptu.
-1. Ustaw wartość zmiennej **$DemoScenario = 5, Generate a normal load plus a high load on a single tenant (approx. 95 DTU)** (Generowanie normalnego obciążenia oraz wysokiego obciążenia dla jednej dzierżawy (ok. 95 jednostek DTU)).
+1. Ustaw **$DemoScenario = 5, generowanie normalnego obciążenia oraz wysokiego obciążenia dla jednej dzierżawy (około 95 jednostek DTU).**
 1. Ustaw wartość zmiennej **$SingleTenantDatabaseName = contosoconcerthall**
 1. Wykonaj skrypt, używając klawisza **F5**.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c3a5cb540843c5ec4ceaf8522e9148cc7171149c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965260"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456469"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie sieci obwodowej do ochrony sieci z zapory, przez i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -356,7 +356,7 @@ Szczegółowe informacje na temat każdej reguły wymaganiem do wykonania w tym 
   
     Ta zasada — dostęp próbny umożliwia dowolnego serwera usług IIS w podsieci frontonu w celu osiągnięcia AppVM01 (adresu IP 10.0.2.5) na dowolnym porcie przy użyciu dowolnego protokołu dostępu do danych wymagane przez aplikację sieci web.
   
-    Na tym zrzucie ekranu "\<jawne dest\>" jest używana w pole docelowe oznaczającego 10.0.2.5 jako miejsca docelowego. Może to być albo jawne pokazany lub w nazwie obiektu Network (jak zostało to zrobione w sekcji wymagania wstępne dla serwera DNS). Jest to w gestii administratora zapory, które zostanie użyta metoda. Aby dodać 10.0.2.5 jako miejsce docelowe stosowany jawny, kliknij dwukrotnie ikonę na pierwszym pustym wierszu pod \<jawne dest\> i w oknie wyskakującym wprowadź adres.
+    W tym zrzucie ekranu "\<jawne dest\>" jest używana w pole docelowe oznaczającego 10.0.2.5 jako miejsca docelowego. Może to być albo jawne pokazany lub w nazwie obiektu Network (jak zostało to zrobione w sekcji wymagania wstępne dla serwera DNS). Jest to w gestii administratora zapory, które zostanie użyta metoda. Aby dodać 10.0.2.5 jako jawne miejsce docelowe, kliknij dwukrotnie ikonę na pierwszym pustym wierszu pod \<jawne dest\> i w oknie wyskakującym wprowadź adres.
   
     Z tą regułą przekazać odłączenia translatora adresów Sieciowych jest wymagana, ponieważ jest to ruch wewnętrzny, aby metoda połączenia można ustawić na "Brak SNAT".
   
@@ -381,7 +381,7 @@ Szczegółowe informacje na temat każdej reguły wymaganiem do wykonania w tym 
   
     ![Reguła DNS][15]
   
-    **Uwaga**: Na tym ekranie zrzut metodę połączenia jest dołączony. Ponieważ ta reguła ma wewnętrzny adres IP, aby ruch wewnętrzny adres IP, NATing nie jest wymagany, to metoda połączenia jest równa "No SNAT" dla tej reguły — dostęp próbny.
+    **Uwaga**: W tym zrzucie ekranu dołączono metodę połączenia. Ponieważ ta reguła ma wewnętrzny adres IP, aby ruch wewnętrzny adres IP, NATing nie jest wymagany, to metoda połączenia jest równa "No SNAT" dla tej reguły — dostęp próbny.
 * **Reguła podsieci do sieci**: Ta reguła — dostęp próbny jest domyślną regułę, która została aktywowana i zmodyfikowane, aby każdy serwer w podsieci zaplecza, aby nawiązać połączenie z dowolnego serwera w podsieci frontonu. Ta reguła jest ruch wewnętrzny wszystkich, więc SNAT nie można ustawić metodę połączenia.
   
     ![Reguły sieci wirtualnej wewnątrz zapory][16]

@@ -1,5 +1,5 @@
 ---
-title: Jak zalogować się przy użyciu dwuetapowej weryfikacji lub informacji zabezpieczających — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Zaloguj się przy użyciu dwuetapowej weryfikacji lub informacji zabezpieczających — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o tym, jak zarejestrować się przy użyciu różnych metod weryfikacji tożsamości zabezpieczających.
 services: active-directory
 author: eross-msft
@@ -11,13 +11,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aca321ac0902d115f4fc7622992d29183c1d35c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c892d616609151b5ad6025b4d0b535c494e6af82
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452603"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454225"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Zaloguj się przy użyciu dwuetapowej weryfikacji lub informacji zabezpieczających
 Po skonfigurowaniu weryfikacji dwuetapowej lub informacji zabezpieczających, będzie można zalogować się do swojego konta przy użyciu metody uwierzytelniania określonej.
@@ -62,4 +63,4 @@ Po skonfigurowaniu weryfikacji dwuetapowej lub informacji zabezpieczających, b�
 
 - Resetowanie hasła, jeśli został zgubienia lub zapomnienia, z [portal resetowania haseł](https://passwordreset.microsoftonline.com/)
 
-- Pobierz rozwiązania problemu, wskazówki i pomoc dotyczącą problemów z logowania w [nie zalogować się do swojego konta Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
+- Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

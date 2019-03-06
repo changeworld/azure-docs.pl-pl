@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f65b9904b15815c997c1608940109ad296ee6007
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7b32a493dc7dc8aa3ac2bbf1f195a43621c7449a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822871"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447187"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Usługi Azure Data Factory — Dokumentacja skryptów JSON
 > [!NOTE]
@@ -26,6 +26,8 @@ ms.locfileid: "55822871"
 
 
 Ten artykuł zawiera przykłady i schematy JSON do definiowania jednostek usługi Azure Data Factory (potok, działania, zestaw danych i połączonej usługi).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="pipeline"></a>Potok
 Struktury ogólne definicji potoku jest następująca:
@@ -50,7 +52,7 @@ Poniższa tabela zawiera opis właściwości w definicji JSON potok:
 | name | Nazwa potoku. Określ nazwę, która reprezentuje akcję działania lub potoku zostanie skonfigurowana w tym<br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description |Tekst opisujący działanie lub potoku do czego służy | Nie |
 | activities | Zawiera listę działań. | Yes |
-| rozpoczynanie |Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, które jest szacowane AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzureRmDataFactoryPipelineActivePeriod. |
+| rozpoczynanie |Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, które jest szacowane AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
 | end |Data / Godzina zakończenia dla potoku. Jeśli zostanie określony, musi być w formacie ISO. Na przykład: 2014-10-14T17:32:41 <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, które jest szacowane AM 6<br/><br/>Aby uruchomić potok bezterminowo, określ 9999-09-09 jako wartość właściwości end. |Nie <br/><br/>Jeśli określisz wartości dla właściwości uruchamiania, należy określić wartość dla właściwości end.<br/><br/>Zobacz informacje o **start** właściwości. |
 | isPaused |Jeśli ustawiono wartość true, potok nie jest uruchamiany. Wartość domyślna = false. Ta właściwość służy do włączania lub wyłączania. |Nie |
 | pipelineMode |Metoda Planowanie uruchomienia potoku. Dozwolone wartości to: (ustawienie domyślne), zaplanowane jednorazowa.<br/><br/>"Regularne" wskazuje, że potok jest uruchamiany w określonych odstępach czasu zgodnie z jego aktywny okres (czas rozpoczęcia i zakończenia). "Jednorazowe" wskazuje, że potok jest uruchamiany tylko raz. Jednorazowa potoki po utworzeniu nie może być zmodyfikowane/zaktualizowane obecnie. Zobacz [potoku Onetime](data-factory-create-pipelines.md#onetime-pipeline) Aby uzyskać szczegółowe informacje o ustawieniach jednorazowa. |Nie |
@@ -2230,13 +2232,13 @@ Aby zdefiniować SAP Business Warehouse (BW) połączoną usługę, należy usta
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | ciąg | Yes
+serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | string | Yes
 systemNumber | Numer systemu systemu SAP BW. | Liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes
 clientId | Identyfikator klienta klienta w SAP W systemie. | Liczba dziesiętna trzycyfrowy reprezentowane jako ciąg. | Yes
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Yes
-hasło | Hasło użytkownika. | ciąg | Yes
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | ciąg | Yes
-encryptedCredential | Ciąg zaszyfrowane poświadczenia. | ciąg | Nie
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Yes
+hasło | Hasło użytkownika. | string | Yes
+gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | string | Yes
+encryptedCredential | Ciąg zaszyfrowane poświadczenia. | string | Nie
 
 #### <a name="example"></a>Przykład
 
@@ -2340,12 +2342,12 @@ Aby zdefiniować platformy SAP HANA połączoną usługę, należy ustawić **ty
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | ciąg | Yes
+serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | string | Yes
 Element authenticationType | Typ uwierzytelnienia. | ciąg. "Podstawowa" lub "Windows" | Yes
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Yes
-hasło | Hasło użytkownika. | ciąg | Yes
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem oprogramowania SAP HANA. | ciąg | Yes
-encryptedCredential | Ciąg zaszyfrowane poświadczenia. | ciąg | Nie
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Yes
+hasło | Hasło użytkownika. | string | Yes
+gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem oprogramowania SAP HANA. | string | Yes
+encryptedCredential | Ciąg zaszyfrowane poświadczenia. | string | Nie
 
 #### <a name="example"></a>Przykład
 
@@ -2458,7 +2460,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |
 | hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 
-Umożliwia ona szyfrowanie poświadczeń za pomocą **New AzureRmDataFactoryEncryptValue** polecenia cmdlet i używać ich w parametrach połączenia, jak pokazano w poniższym przykładzie (**EncryptedCredential** właściwość):
+Umożliwia ona szyfrowanie poświadczeń za pomocą **New AzDataFactoryEncryptValue** polecenia cmdlet i używać ich w parametrach połączenia, jak pokazano w poniższym przykładzie (**EncryptedCredential** właściwość):
 
 ```json
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -3151,7 +3153,7 @@ Aby zdefiniować Amazon S3 połączoną usługę, należy ustawić **typu** poł
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |ciąg |Yes |
+| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |string |Yes |
 | secretAccessKey |Sam klucz dostępu do kluczy tajnych. |Zaszyfrowanego ciągu wpisu tajnego |Yes |
 
 #### <a name="example"></a>Przykład
@@ -3319,7 +3321,7 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 | host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady. |Yes |
 | Identyfikator użytkownika |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
 | hasło |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
-| encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzureRmDataFactoryEncryptValue. |Nie (Jeśli chcesz określić identyfikator użytkownika i hasło w postaci zwykłego tekstu) |
+| encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzDataFactoryEncryptValue. |Nie (Jeśli chcesz określić identyfikator użytkownika i hasło w postaci zwykłego tekstu) |
 | gatewayName |Określa nazwę bramy, która Data Factory powinna używać do łączenia się z serwerem plików lokalnych. |Yes |
 
 #### <a name="sample-folder-path-definitions"></a>Ścieżka folderu definicje
@@ -3732,7 +3734,7 @@ Aby zdefiniować systemu plików HDFS połączoną usługę, należy ustawić **
 | userName |Uwierzytelnianie nazwy użytkownika dla Windows. |Tak (dla uwierzytelniania Windows) |
 | hasło |Hasło do uwierzytelniania Windows. |Tak (dla uwierzytelniania Windows) |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z systemu plików HDFS. |Yes |
-| encryptedCredential |[Nowe AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) poświadczeń dostępu do danych wyjściowych. |Nie |
+| encryptedCredential |[Nowe AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) poświadczeń dostępu do danych wyjściowych. |Nie |
 
 #### <a name="example-using-anonymous-authentication"></a>Przykład: Przy użyciu uwierzytelniania anonimowego
 
@@ -4462,7 +4464,7 @@ Aby zdefiniować ODBC połączoną usługę, należy ustawić **typu** połączo
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>Przykład — przy użyciu poświadczeń zaszyfrowane przy użyciu uwierzytelniania podstawowego
-Umożliwia ona szyfrowanie poświadczeń za pomocą [New AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) polecenia cmdlet (w wersji 1.0 programu Azure PowerShell) lub [New AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 lub starszej wersji platformy Azure Program PowerShell).
+Umożliwia ona szyfrowanie poświadczeń za pomocą [New AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) polecenia cmdlet.
 
 ```json
 {
@@ -5062,7 +5064,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |
 | hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 
-Umożliwia ona szyfrowanie poświadczeń za pomocą **New AzureRmDataFactoryEncryptValue** polecenia cmdlet i używać ich w parametrach połączenia, jak pokazano w poniższym przykładzie (**EncryptedCredential** właściwość):
+Umożliwia ona szyfrowanie poświadczeń za pomocą **New AzDataFactoryEncryptValue** polecenia cmdlet i używać ich w parametrach połączenia, jak pokazano w poniższym przykładzie (**EncryptedCredential** właściwość):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/28/2019
-ms.author: mayg
-ms.openlocfilehash: e7ee8f58e42f99ebc087f21837511979c578fb89
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.author: ramamill
+ms.openlocfilehash: 3f500abe0ea37b35236547824c655adc1a4c4d93
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340086"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448836"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -74,7 +74,7 @@ Jeśli replikujesz więcej niż jednej maszyny Wirtualnej VMware, zapoznaj się 
 >Możesz również pobrać najnowszą wersję szablonu serwera konfiguracji bezpośrednio z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 >[!NOTE]
-Licencja dostarczane z szablonem OVA jest pozwolenia oceny prawidłowe przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
+Licencja dostarczane z szablonem OVA jest ocena prawidłowe przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
 
 ## <a name="import-the-template-in-vmware"></a>Importowanie szablonu do programu VMware
 
@@ -113,8 +113,8 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 3. Po zakończeniu instalacji zaloguj się na maszynie wirtualnej jako administrator.
 4. Rozpoczyna się podczas pierwszego logowania, w ciągu kilku sekund narzędzie konfiguracji usługi Azure Site Recovery.
 5. Wprowadź nazwę używaną do zarejestrowania serwera konfiguracji w usłudze Site Recovery. Następnie wybierz przycisk **Dalej**.
-6. Narzędzie sprawdza, czy maszyna wirtualna może połączyć się z platformą Azure. Po nawiązaniu połączenia wybierz pozycję **Zaloguj się**, aby zalogować się do subskrypcji platformy Azure.
-    a. Użyte poświadczenia muszą zapewniać dostęp do magazynu, w którym chcesz zarejestrować serwer konfiguracji.
+6. Narzędzie sprawdza, czy maszyna wirtualna może połączyć się z platformą Azure. Po nawiązaniu połączenia wybierz pozycję **Zaloguj się**, aby zalogować się do subskrypcji platformy Azure.</br>
+    a. Użyte poświadczenia muszą zapewniać dostęp do magazynu, w którym chcesz zarejestrować serwer konfiguracji.</br>
     b. Upewnij się, że wybrane konto użytkownika ma uprawnienia do tworzenia aplikacji na platformie Azure. Aby włączyć wymagane uprawnienia, postępuj zgodnie z wytycznymi podanymi [tutaj](#azure-active-directory-permission-requirements).
 7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie.
 8. Ponownie zaloguj się do maszyny. Zostanie uruchomiony Kreator zarządzania serwerem konfiguracji **automatycznie** w ciągu kilku sekund.
@@ -155,7 +155,7 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
 
 1. Jak długo trwa, czy licencja na serwerze konfiguracji wdrożonymi za pośrednictwem pakietu OVF jest prawidłowy? Co się stanie, jeśli mam nie Uaktywniaj ponownie licencji?
 
-    Licencja dostarczane z szablonem OVA jest pozwolenia oceny prawidłowe przez 180 dni. Przed wygaśnięciem musisz aktywować licencję. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powoduje hinderance do działań replikacji.
+    Licencja dostarczane z szablonem OVA jest ocena prawidłowe przez 180 dni. Przed wygaśnięciem musisz aktywować licencję. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powoduje hinderance do działań replikacji.
 
 2. Czy można używać maszyny Wirtualnej, w którym zainstalowano serwer konfiguracji do różnych celów?
 

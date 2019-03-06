@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820117"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445640"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Korzystanie z programu PowerShell do tworzenia maszyny wirtualnej platformy Azure z serwerem raportów pracującym w trybie macierzystym
 > [!IMPORTANT] 
@@ -124,7 +124,7 @@ Certyfikat z podpisem własnym został utworzony na maszynie Wirtualnej, gdy mas
       
        Na przykład na poniższej ilustracji Nazwa maszyny Wirtualnej jest **ssrsnativecloud** i nazwa użytkownika jest **testuser**.
       
-       ![Nazwa maszyny wirtualnej zawiera logowania](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+       ![Zaloguj się obejmuje nazwę maszyny wirtualnej](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
    2. Uruchom mmc.exe. Aby uzyskać więcej informacji, zobacz [Instrukcje: Wyświetlanie certyfikatów za pomocą przystawki programu MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. W aplikacji konsolowej **pliku** menu Dodaj **certyfikaty** przystawki, wybierz opcję **konto komputera** po wyświetleniu monitu, a następnie kliknij przycisk **dalej**.
    4. Wybierz **komputera lokalnego** zarządzać, a następnie kliknij przycisk **Zakończ**.
@@ -160,7 +160,7 @@ Aby użyć skryptu programu Windows PowerShell do konfigurowania serwera raport�
    
     Na przykład na poniższej ilustracji Nazwa maszyny Wirtualnej jest **ssrsnativecloud** i nazwa użytkownika jest **testuser**.
    
-    ![Nazwa maszyny wirtualnej zawiera logowania](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![Zaloguj się obejmuje nazwę maszyny wirtualnej](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. Na maszynie Wirtualnej, należy otworzyć **środowiska Windows PowerShell ISE** z uprawnieniami administracyjnymi. W środowisku ISE programu PowerShell jest instalowany domyślnie w systemie Windows server 2012. Zalecane jest, że używasz zamiast standardowego okna programu Windows PowerShell ISE tak, aby użytkownik Wklej skrypt do środowiska ISE, zmodyfikuj skrypt, a następnie uruchom skrypt.
 3. W środowisku Windows PowerShell ISE kliknij **widoku** menu, a następnie kliknij przycisk **Pokaż okienko skryptu**.
 4. Skopiuj poniższy skrypt, a następnie wklej skrypt w okienku skryptów środowiska Windows PowerShell ISE.
@@ -294,7 +294,7 @@ Aby skonfigurować serwer raportów przy użyciu programu Windows PowerShell, wy
    
     Na przykład na poniższej ilustracji Nazwa maszyny Wirtualnej jest **ssrsnativecloud** i nazwa użytkownika jest **testuser**.
    
-    ![Nazwa maszyny wirtualnej zawiera logowania](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![Zaloguj się obejmuje nazwę maszyny wirtualnej](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. Na maszynie Wirtualnej, należy otworzyć **środowiska Windows PowerShell ISE** z uprawnieniami administracyjnymi. W środowisku ISE programu PowerShell jest instalowany domyślnie w systemie Windows server 2012. Zalecane jest, że używasz zamiast standardowego okna programu Windows PowerShell ISE tak, aby użytkownik Wklej skrypt do środowiska ISE, zmodyfikuj skrypt, a następnie uruchom skrypt.
 3. Aby włączyć uruchamianie skryptów, uruchom następujące polecenie programu Windows PowerShell:
    

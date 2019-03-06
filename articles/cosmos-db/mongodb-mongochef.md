@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: f2ba1a6fef944911c0706ca4e71be6a55bc4b16a
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961843"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449380"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Łączenie się z kontem Cosmos korzystanie z programu Studio 3T
 
@@ -40,10 +40,10 @@ Aby dodać swoje konto Cosmos Menedżera połączeń z programu 3T Studio, wykon
     ![Zrzut ekranu przedstawiający kartę uwierzytelnianie Menedżera połączeń z programu 3T Studio](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 5. W **nowe połączenie** okna na **SSL** karcie wyboru **Użyj protokołu SSL do łączenia z** pole wyboru i **akceptować certyfikaty SSL z podpisem własnym serwera**  przycisku radiowego.
 
-    ![Zrzut ekranu: karta SSL Menedżera połączeń programu Studio z programu 3T](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
+    ![Zrzut ekranu przedstawiający kartę SSL Menedżera połączenie z programu 3T Studio](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
 6. Kliknij przycisk **Testuj połączenie** przycisk, aby zweryfikować informacje o połączeniu, kliknij przycisk **OK** wróć do okna nowe połączenie, a następnie kliknij przycisk **Zapisz**.
 
-    ![Zrzut ekranu przedstawiający okno połączenia testowego z programu 3T Studio](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Zrzut ekranu z programu Studio 3T przetestować okno połączenia](./media/mongodb-mongochef/TestConnectionResults.png)
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Umożliwia tworzenie bazy danych, kolekcji i dokumentów z programu Studio 3T
 Aby utworzyć bazę danych, kolekcję i dokumenty przy użyciu z programu Studio 3T, wykonaj następujące czynności:
@@ -107,7 +107,7 @@ Aby utworzyć bazę danych, kolekcję i dokumenty przy użyciu z programu Studio
         }
 7. Wykonywanie przykładowego zapytania. Na przykład wyszukaj rodziny o nazwisku "Andersen" i zwrócić pól Stan i elementy nadrzędne.
 
-    ![Zrzut ekranu przedstawiający wyniki zapytania programu Chef Mongo](./media/mongodb-mongochef/QueryDocument1.png)
+    ![Zrzut ekranu Mongo Chef wyników zapytania](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

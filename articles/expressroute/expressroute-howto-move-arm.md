@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ganesr;cherylmc
+ms.date: 02/25/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a561ae5d46222ed9da75d0d32948ee3f0b66658d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106770"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408415"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell
 
@@ -21,7 +21,9 @@ Aby użyć obwodu usługi ExpressRoute dla wdrożeń klasycznych, jak i modelem 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-* Sprawdź, czy masz najnowszą wersję modułów programu Azure PowerShell (co najmniej w wersji 1.0). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* Sprawdź, czy zainstalowano wdrożeń klasycznych, jak i moduły programu Azure PowerShell Az lokalnie na komputerze. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 * Upewnij się, że użytkownik przejrzał [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
 * Zapoznaj się z informacjami, który znajduje się w obszarze [przenoszenie obwodu usługi ExpressRoute z modelu klasycznego do usługi Resource Manager](expressroute-move.md). Upewnij się, że w pełni rozumiesz limity i ograniczenia.
 * Sprawdź, że obwód jest w pełni funkcjonalne w klasycznym modelu wdrażania.
@@ -65,19 +67,19 @@ Zaloguj się do środowiska usługi Resource Manager i Utwórz nową grupę zaso
 1. Zaloguj się do środowiska usługi Azure Resource Manager.
 
   ```powershell
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ```
 
 2. Wybierz odpowiednią subskrypcję platformy Azure.
 
   ```powershell
-  Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
+  Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
   ```
 
 3. Zmodyfikuj fragmencie kodu poniżej, aby utworzyć nową grupę zasobów, jeśli nie masz jeszcze grupy zasobów.
 
   ```powershell
-  New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
+  New-AzResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Przenoszenie obwodu usługi ExpressRoute do modelu wdrażania usługi Resource Manager
@@ -87,10 +89,10 @@ Teraz można przystąpić do przenoszenie obwodów usługi ExpressRoute z klasyc
 Aby przenieść obwodu, Modyfikuj, a następnie uruchom poniższy fragment kodu:
 
 ```powershell
-Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
+Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-W trybie klasycznym obwodu usługi ExpressRoute nie ma koncepcji jest powiązany z obszarem. Jednak w usłudze Resource Manager, każdy zasób musi być zamapowany na region platformy Azure. Określone w poleceniu cmdlet Move-AzureRmExpressRouteCircuit województwo z technicznego punktu widzenia może być dowolnym regionie. Do celów organizacji można wybrać region, który reprezentuje blisko swojej lokalizacji komunikacji równorzędnej.
+W trybie klasycznym obwodu usługi ExpressRoute nie ma koncepcji jest powiązany z obszarem. Jednak w usłudze Resource Manager, każdy zasób musi być zamapowany na region platformy Azure. Określone w poleceniu cmdlet Move-AzExpressRouteCircuit województwo z technicznego punktu widzenia może być dowolnym regionie. Do celów organizacji można wybrać region, który reprezentuje blisko swojej lokalizacji komunikacji równorzędnej.
 
 > [!NOTE]
 > Po zakończeniu przenoszenia nową nazwę, która znajduje się w poprzednim poleceniu cmdlet będzie wykorzystywana do adresowania zasobów. Zasadniczo można zmienić nazwy obwodu.
@@ -105,7 +107,7 @@ Po przeniesieniu obwód usługi ExpressRoute klasycznego modelu wdrażania usłu
 1. Uzyskaj szczegółowe informacje obwodu.
 
   ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+  $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
 2. Ustaw "Zezwalaj na klasyczne operacje" na wartość TRUE.
@@ -117,7 +119,7 @@ Po przeniesieniu obwód usługi ExpressRoute klasycznego modelu wdrażania usłu
 3. Zaktualizuj obwodu. Po tej operacji zakończyło się pomyślnie, będzie można wyświetlić obwód w klasycznym modelu wdrażania.
 
   ```powershell
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 4. Uruchom następujące polecenie cmdlet, aby uzyskać szczegółowe informacje z obwodem usługi ExpressRoute. Musi być można zobaczyć klucz usługi na liście.
@@ -138,7 +140,7 @@ Uruchom następujące polecenia cmdlet, aby wyłączyć dostęp do klasycznego m
 1. Uzyskaj szczegółowe informacje obwodu usługi ExpressRoute.
 
   ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+  $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
 2. Ustaw "Zezwalaj na klasyczne operacje" na wartość FALSE.
@@ -150,7 +152,7 @@ Uruchom następujące polecenia cmdlet, aby wyłączyć dostęp do klasycznego m
 3. Zaktualizuj obwodu. Po tej operacji zakończyło się pomyślnie, nie można wyświetlić obwód w klasycznym modelu wdrażania.
 
   ```powershell
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 ## <a name="next-steps"></a>Kolejne kroki

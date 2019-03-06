@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: bfdd2d2f78635f417127632d77b24c48dd6d5b81
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 92b42c54afd06a9ded3e9d9e672ae2d4558ad415
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244506"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442804"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Łączenie urządzenia Cisco ASA 
 
@@ -34,7 +34,7 @@ Możesz połączyć przez wartownika platformy Azure, do dowolnego urządzenia C
 
 ## <a name="step-1-connect-your-cisco-asa-appliance-using-an-agent"></a>Krok 1: Połącz urządzenie Cisco ASA przy użyciu agenta
 
-Połącz się przez wartownika platformy Azure z urządzenia Cisco ASA, należy wdrożyć agenta na dedykowanej maszynie (maszyna wirtualna lub lokalnej) do obsługi komunikacji między urządzeniem i platformy Azure przez wartownika. Możesz deploly agent automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
+Połącz się przez wartownika platformy Azure z urządzenia Cisco ASA, należy wdrożyć agenta na dedykowanym komputerze (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Możesz deploly agent automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
 
 Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualnej platformy Azure, na maszynie Wirtualnej w innej chmurze lub na maszynie lokalnej.
 
@@ -74,7 +74,7 @@ Aby wyświetlić diagram sieciowy obie opcje, zobacz [połączyć źródeł dany
       2. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Wdróż agenta na serwerze z systemem Linux w lokalnej
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Wdróż agenta na lokalny serwer systemu Linux
 
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9157466f0768b052f55f6d225e72ae7a036f8b9c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c5bae17008e2d664a09999daf3244213dfa2364f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822176"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406749"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak skonfigurować bezpośrednio z usługi ExpressRoute
 
@@ -24,14 +24,14 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
 1. Logowanie do platformy Azure i wybierz subskrypcję. Zasób bezpośrednio z usługi ExpressRoute i obwodów usługi ExpressRoute musi być w tej samej subskrypcji.
 
   ```powershell
-  Connect-AzureRMAccount 
+  Connect-AzAccount 
 
-  Select-AzureRMSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+  Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
   ```
 2. Wyświetl listę wszystkich lokalizacji, w którym są obsługiwane bezpośrednio z usługi ExpressRoute.
   
   ```powershell
-  Get-AzureRmExpressRoutePortsLocation
+  Get-AzExpressRoutePortsLocation
   ```
 
   **Przykładowe dane wyjściowe**
@@ -64,7 +64,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
 3. Określa, czy lokalizacja z wymienionych powyżej ma dostępną przepustowość
 
   ```powershell
-  Get-AzureRmExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
+  Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
   ```
 
   **Przykładowe dane wyjściowe**
@@ -94,7 +94,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
   > 
  
   ```powershell 
-  $ERDirect = New-AzureRMExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName -PeeringLocation $PeeringLocationName -BandwidthInGbps 100.0 -Encapsulation QinQ | Dot1Q -Location $AzureRegion
+  $ERDirect = New-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName -PeeringLocation $PeeringLocationName -BandwidthInGbps 100.0 -Encapsulation QinQ | Dot1Q -Location $AzureRegion
   ```
 
   > [!NOTE]
@@ -156,7 +156,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
 1. Szczegółowe informacje bezpośrednio z usługi ExpressRoute.
 
   ```powershell
-  $ERDirect = Get-AzureRmExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
+  $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
   ```
 2. Włącz łącze. Powtórz ten krok, aby ustawić każdy link włączony.
 
@@ -164,10 +164,10 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
 
   ```powershell
   $ERDirect.Links[0].AdminState = “Enabled”
-  Set-AzureRmExpressRoutePort -ExpressRoutePort $ERDirect
-  $ERDirect = Get-AzureRmExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
+  Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
+  $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
   $ERDirect.Links[1].AdminState = “Enabled”
-  Set-AzureRmExpressRoutePort -ExpressRoutePort $ERDirect
+  Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
   ```
   **Przykładowe dane wyjściowe:**
 
@@ -231,7 +231,7 @@ Można tworzyć obwodów standardowa lub premium. Standardowa obwodów znajdują
 Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute.
 
   ```powershell
-  New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
+  New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
   Inne przepustowości obejmują: 5.0, 10.0 i 40.0

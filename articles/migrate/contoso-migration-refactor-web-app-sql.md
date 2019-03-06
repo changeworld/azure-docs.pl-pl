@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e8b9536c96b1f5ed899695a3715021b9f9875cf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808463"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440373"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migracja Contoso: Refaktoryzacja lokalnych aplikacji z bazą danych Azure SQL i aplikacji sieci Web platformy Azure
 
@@ -277,7 +277,7 @@ Administratorzy firmy Contoso, musisz upewnić się, aplikacje sieci web i bazy 
 
     ![Parametry połączenia](media/contoso-migration-refactor-web-app-sql/strings3.png)
 
-5. Po zmiany w kodzie, Administratorzy muszą zatwierdzić zmiany. Za pomocą programu Team Explorer w programie Visual Studio, one commmit i synchronizacji.
+5. Po zmiany w kodzie, Administratorzy muszą zatwierdzić zmiany. Za pomocą programu Team Explorer w programie Visual Studio, one Zatwierdź i Synchronizuj.
 
 
 ## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>Krok 6: Konfigurowanie kompilacji i wydawania potoków w DevOps platformy Azure

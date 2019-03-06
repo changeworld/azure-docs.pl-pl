@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 914dcd02f2d35d56b50169967ca1f5c251a6e6f3
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446668"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408619"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -101,7 +101,8 @@ Windows 8.1 64-bitowy | Enterprise, Pro | Powinna być uruchomiona maszyn, najno
 Windows 8 64-bitowy | Enterprise, Pro | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
 Windows 7 64-bitowy | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
 Serwer | |
-Windows Server 2016 w wersji 64-bitowych | Standard, Datacenter, Essentials | Typ elementu roboczego najnowsze usługi pakiety/aktualizacje.
+Windows Server 2019 64 bitowych | Standard, Datacenter, Essentials | Przy użyciu najnowszych pakietów usługi/aktualizacji.
+Windows Server 2016 w wersji 64-bitowych | Standard, Datacenter, Essentials | Przy użyciu najnowszych pakietów usługi/aktualizacji.
 Windows Server 2012 R2 64-bitowy | Standard, Datacenter, Foundation | Przy użyciu najnowszych pakietów usługi/aktualizacji.
 Windows Server 2012 64 bit | Datacenter, Foundation, Standard | Przy użyciu najnowszych pakietów usługi/aktualizacji.
 Windows Storage Server 2016 64 bit | Standard, Workgroup | Przy użyciu najnowszych pakietów usługi/aktualizacji.

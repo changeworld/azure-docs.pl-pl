@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565245"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441376"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Zarządzanie bazami danych w chmurze skalowanych w poziomie
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
-**Zadania elastic Database** jest hostowana przez klienta usługa w chmurze umożliwiający wykonywanie zapytań ad-hoc i zaplanowane zadania administracyjne, które są nazywane **zadań**. Za pomocą zadań można łatwo i niezawodne zarządzanie dużymi grupami baz danych Azure SQL Database dzięki uruchamianiu skryptów języka Transact-SQL, aby wykonywać operacje administracyjne.
+**Zadania elastic Database** jest hostowana przez klienta usługa w chmurze umożliwiająca wykonanie ad hoc i zaplanowane zadania administracyjne, które są nazywane **zadań**. Za pomocą zadań można łatwo i niezawodne zarządzanie dużymi grupami baz danych Azure SQL Database dzięki uruchamianiu skryptów języka Transact-SQL, aby wykonywać operacje administracyjne.
 
 Do zarządzania bazami danych podzielonych na fragmenty skalowanych w poziomie, **zadania Elastic Database** funkcji (wersja zapoznawcza) umożliwia niezawodne wykonywanie skryptów języka Transact-SQL (T-SQL) w grupie baz danych, w tym:
 
@@ -114,7 +114,7 @@ Niestandardowe grupy z drugiej strony, sztywno zdefiniowano. Należy jawnie doda
 
 ## <a name="components-and-pricing"></a>Składniki i ceny
 
-Następujące składniki współpracują ze sobą, aby utworzyć to usługa w chmurze platformy Azure, która umożliwia wykonywanie zapytań ad-hoc zadań administracyjnych. Składniki są instalowane i konfigurowane automatycznie podczas instalacji, w ramach subskrypcji. Usługi można zidentyfikować, ponieważ wszystkie one mają taką samą nazwę wygenerowany automatycznie. Nazwa jest unikatowa i składa się z prefiksu "edj" następują znaki losowo generowany 21.
+Następujące składniki współpracują ze sobą do utworzenia usługą w chmurze platformy Azure, która umożliwia ad-hoc wykonywania zadań administracyjnych. Składniki są instalowane i konfigurowane automatycznie podczas instalacji, w ramach subskrypcji. Usługi można zidentyfikować, ponieważ wszystkie one mają taką samą nazwę wygenerowany automatycznie. Nazwa jest unikatowa i składa się z prefiksu "edj" następują znaki losowo generowany 21.
 
 - Azure Cloud Service
 

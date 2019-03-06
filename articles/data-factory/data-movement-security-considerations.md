@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a996703f3719c2be90851241c1fe23c89f24e606
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498077"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447952"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,6 +51,8 @@ W tym artykule omówimy zagadnienia dotyczące zabezpieczeń w następujących s
 
 - **Scenariusz chmury**: W tym scenariuszu zarówno w źródle, jak i w lokalizacji docelowej są publicznie dostępne za pośrednictwem Internetu. Obejmują one zarządzana usługa w chmurze usługi magazynu, np. usługi Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, usług SaaS, takich jak Salesforce i protokołów sieci web, takich jak FTP i OData. Znajdź pełną listę obsługiwanych źródeł danych w [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Scenariusza hybrydowego**: W tym scenariuszu źródła lub lokalizacji docelowej jest za zaporą lub wewnątrz sieci firmowej w środowisku lokalnym. Lub magazynie danych jest w prywatnej sieci lub sieci wirtualnej (w większości przypadków źródła) i nie jest dostępny publicznie. Serwery bazy danych hostowanych na maszynach wirtualnych również wchodzą w zakres tego scenariusza.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Scenariusze chmury
 
@@ -109,9 +111,9 @@ Poświadczenia dla swoich lokalnych magazynów danych są zawsze zaszyfrowane i 
 
 - **Store poświadczenia lokalnie**. Szyfrowanie i przechowywanie poświadczeń lokalnie na własnym środowisku integration runtime, wykonaj kroki opisane w [szyfrowanie poświadczeń dla lokalnych magazynów danych w usłudze Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Wszystkie łączniki obsługuje tę opcję. Windows korzysta z własnego środowiska integration runtime [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) do szyfrowania informacji poufnych danych i poświadczeń. 
 
-   Użyj **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** polecenia cmdlet do szyfrowania poświadczeń połączonej usługi i poufnych informacji w połączonej usłudze. Następnie można użyć do zwróconego kodu JSON (przy użyciu **EncryptedCredential** elementu w parametrach połączenia) aby utworzyć połączoną usługę przy użyciu **Set-AzureRmDataFactoryV2LinkedService** polecenia cmdlet.  
+   Użyj **New AzDataFactoryV2LinkedServiceEncryptedCredential** polecenia cmdlet do szyfrowania poświadczeń połączonej usługi i poufnych informacji w połączonej usłudze. Następnie można użyć do zwróconego kodu JSON (przy użyciu **EncryptedCredential** elementu w parametrach połączenia) aby utworzyć połączoną usługę przy użyciu **AzDataFactoryV2LinkedService zestaw** polecenia cmdlet.  
 
-- **Store w magazynie usługi Azure Data Factory zarządzać**. Jeśli używasz bezpośrednio **Set-AzureRmDataFactoryV2LinkedService** polecenia cmdlet z połączeniem ciągi i poświadczeniami bezpośrednio w kodzie JSON, połączonej usługi jest zaszyfrowane i przechowywane w magazynie usługi Azure Data Factory zarządzane. Certyfikat nadal szyfrowany poufne informacje, a firma Microsoft zarządza tymi certyfikatami.
+- **Store w magazynie usługi Azure Data Factory zarządzać**. Jeśli używasz bezpośrednio **AzDataFactoryV2LinkedService zestaw** polecenia cmdlet z połączeniem ciągi i poświadczeniami bezpośrednio w kodzie JSON, połączonej usługi jest zaszyfrowane i przechowywane w magazynie usługi Azure Data Factory zarządzane. Certyfikat nadal szyfrowany poufne informacje, a firma Microsoft zarządza tymi certyfikatami.
 
 
 

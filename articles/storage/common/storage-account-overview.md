@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 03/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c95fcd2e6369fae920481db2623124342c34a730
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327854"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447634"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -60,11 +60,9 @@ Mimo, że kont ogólnego przeznaczenia v2 są zalecane w większości przypadkó
 
 * Używasz wersji [interfejsu API REST usług Storage](https://msdn.microsoft.com/library/azure/dd894041.aspx) wcześniejsza niż 2014-02-14 lub biblioteka klienta w wersji wcześniejszej niż 4.x i nie można uaktualnić aplikacji.
 
-### <a name="blob-storage-accounts"></a>Konta usługi Blob Storage
+### <a name="block-blob-storage-accounts"></a>Blok konta usługi blob storage
 
-Konta usługi Blob storage to specjalne konto magazynu do przechowywania danych obiektów bez struktury jako blokowe obiekty BLOB. Konta usługi blob storage zapewnić samą trwałość, dostępność, skalowalność i funkcje wydajności, które są dostępne z kontami magazynu ogólnego przeznaczenia w wersji 2. Konta usługi blob storage obsługuje przechowywania blokowych obiektów blob i uzupełnialnych obiektów blob, ale nie stronicowych obiektów blob.
-
-Konta usługi blob storage oferują wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
+Konto usługi block blob storage to specjalne konto magazynu do przechowywania danych obiektów bez struktury jako blokowe obiekty BLOB lub uzupełnialnych obiektów blob. Blok konta usługi blob storage oferują wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
 
 ## <a name="naming-storage-accounts"></a>Nazw kont magazynu
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f3c50a272ef5cc0d4980cb4a623ac043d764dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f1ce786b748fedd1ec4c722b28bc11c28672c2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190912"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443406"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raport aktywności logowania 
 
@@ -79,7 +79,7 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |50027|Token JWT jest nieprawidłowy z następujących przyczyn:<ul><li>nie zawiera oświadczenia nonce, oświadczenia sub</li><li>niezgodność identyfikatora podmiotu</li><li>zduplikowane oświadczenie w oświadczeniach idToken</li><li>nieoczekiwany wystawca</li><li>nieoczekiwani odbiorcy</li><li>nie mieści się w prawidłowym zakresie czasu </li><li>format tokenu nie jest prawidłowy</li><li>weryfikacja tokenu zewnętrznego identyfikatora od wystawcy nie powiodła się.</li></ul>Skontaktuj się z właścicielem aplikacji|
 |50029|Nieprawidłowy identyfikator URI — nazwa domeny zawiera nieprawidłowe znaki. Skontaktuj się z administratorem dzierżawy.|
 |50034|Użytkownik nie istnieje w katalogu. Skontaktuj się z administratorem dzierżawy.|
-|50042|Podmiot zabezpieczeń nie ma ciągu inicjującego wymaganego do wygenerowania identyfikatora parowania. Skontaktuj się z administratorem dzierżawy.|
+|50042|Ziarna wymagane do wygenerowania parowania identyfikator nie istnieje w zasadzie. Skontaktuj się z administratorem dzierżawy.|
 |50048|Podmiot jest niezgodny z oświadczeniem wystawcy w potwierdzeniu klienta. Skontaktuj się z administratorem dzierżawy.|
 |50050|Żądanie jest źle sformułowane. Skontaktuj się z właścicielem aplikacji.|
 |50053|Konto zostało zablokowane, ponieważ użytkownik podjął zbyt wiele prób zalogowania przy użyciu niepoprawnego Identyfikatora użytkownika lub hasło.|
@@ -129,7 +129,7 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |50180|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego.|
 |51001|Wskazówka dotycząca domeny nie jest dostępny z identyfikatorem zabezpieczeń w środowisku lokalnym — nazwę UPN lokalnie.|
 |51004|Konto użytkownika nie istnieje w katalogu.|
-|51006|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Użytkownik zalogowany przy użyciu tokenu sesji, w którym brakuje oświadczenia wia. Zażądaj od użytkownika, aby zalogował się ponownie.|
+|51006|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Użytkownik zalogowany przy użyciu tokenu sesji, który jest brak za pośrednictwem oświadczeń. Zażądaj od użytkownika, aby zalogował się ponownie.|
 |52004|Użytkownik nie wyraził zgody na dostęp do zasobów usługi LinkedIn. |
 |53000|Zasady dostępu warunkowego wymagają zgodnego urządzenia, ale urządzenie nie jest zgodne. Należy mieć użytkownika zarejestrować swoje urządzenie przy użyciu zatwierdzonych dostawcy zarządzania urządzeniami Przenośnymi, takiej jak Intune.|
 |53001|Zasady dostępu warunkowego wymagają urządzenia przyłączonego do domeny, ale urządzenie nie jest przyłączone do domeny. Użyj użytkownika domeny dołączają do urządzenia.|
@@ -138,7 +138,7 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |53004|Użytkownik musi ukończyć proces rejestracji w celu używania uwierzytelniania wieloskładnikowego przed uzyskaniem dostępu do tej zawartości. Użytkownik powinien zarejestrować się w celu uwierzytelniania wieloskładnikowego.|
 |65001|Aplikacja X nie ma uprawnienia dostępu do aplikacji Y lub uprawnienie zostało odwołany. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z Identyfikatorem X. Wyślij żądanie autoryzacji do administratora dzierżawy na działanie w imieniu aplikacji: Y dla zasobu: Z.|
 |65004|Użytkownik odmówił wyrażenia zgody na dostęp do aplikacji. Użytkownik musi ponowić próbę zalogowania się i wyrazić zgodę na aplikację|
-|65005|Lista dostępu do wymaganych zasobów aplikacji nie zawiera aplikacji możliwych do wykrycia przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów, lub usługa programu Graph zwróciła nieprawidłowe żądanie lub nie można odnaleźć zasobu. Jeśli aplikacja obsługuje język SAML, być może aplikację skonfigurowano z nieprawidłowym identyfikatorem (jednostką). Wypróbuj rozwiązania dla języka SAML, korzystając z linku poniżej: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
+|65005|Lista dostępu do wymaganych zasobów aplikacji nie zawiera aplikacji możliwych do wykrycia przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów, lub usługa programu Graph zwróciła nieprawidłowe żądanie lub nie można odnaleźć zasobu. Jeśli aplikacja obsługuje język SAML, być może aplikację skonfigurowano z nieprawidłowym identyfikatorem (jednostką). Wypróbuj rozwiązania dla języka SAML, korzystając z linku poniżej: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|Udzielenie dostępu jest nieprawidłowe z następujących przyczyn:<ul><li>Żądane potwierdzenie SAML 2.0 ma nieprawidłową metodę potwierdzenia podmiotu</li><li>Przepływ OnBehalfOf aplikacji nie jest obsługiwany w wersji 2</li><li>Podstawowy token odświeżania nie jest podpisany przy użyciu klucza sesji</li><li>Nieprawidłowy zewnętrzny token odświeżania</li><li>Udzielenie dostępu uzyskano dla innej dzierżawy.</li></ul>|
 |70001|Nie można odnaleźć aplikacji o nazwie X w dzierżawie o nazwie Y. Taka sytuacja może wystąpić, jeśli aplikacja o identyfikatorze X nie została zainstalowana przez administratora dzierżawy lub żaden użytkownik w dzierżawie nie wyraził odpowiedniej zgody. Możesz może być nieprawidłowo skonfigurowana wartość identyfikatora dla aplikacji, lub wysłać żądanie uwierzytelnienia do nieprawidłowej dzierżawy.|
 |70002|Aplikacja zwróciła nieprawidłowe poświadczenia klienta. Skontaktuj się z właścicielem aplikacji.|

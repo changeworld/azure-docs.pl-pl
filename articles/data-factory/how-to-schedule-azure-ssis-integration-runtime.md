@@ -13,17 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2f08d5b8548b8b7af282356d41c26442edd145b0
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe38ffd5e9e57c0357417144e733311f3b14ea83
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669585"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448343"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowisko Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania środowiska Azure-SSIS Integration Runtime (IR) przy użyciu usługi Azure Data Factory (ADF). Azure-SSIS IR to ADF obliczenia zasobów dedykowanych do wykonywania pakietów usług SQL Server Integration Services (SSIS). Uruchamianie środowiska Azure-SSIS IR ma koszt związany z nim. W związku z tym zazwyczaj chcesz uruchomić środowiska IR tylko wtedy, gdy konieczne wykonywanie pakietów usług SSIS na platformie Azure i Zatrzymaj środowiska IR, gdy nie trzeba go dłużej. Możesz użyć usługi ADF interfejsu użytkownika (UI) / aplikacji lub programu Azure PowerShell [ręcznie rozpocząć lub zatrzymać środowiska IR](manage-azure-ssis-integration-runtime.md)).
 
 Alternatywnie można utworzyć działania internetowe w potokach ADF uruchamianie/zatrzymywanie środowiska IR zgodnie z harmonogramem, np. uruchamianie rano, przed wykonaniem dziennego obciążenia ETL i zatrzymując ją po południu, po wykonaniu.  Ponadto można połączyć w łańcuch działanie wykonanie pakietu SSIS między dwa działania internetowe, które uruchamiają i zatrzymują środowiska IR, dzięki czemu środowiska IR będzie uruchamianie/zatrzymywanie na żądanie w odpowiednim czasie przed lub po wykonywanie pakietu. Aby uzyskać więcej informacji o działaniu wykonywanie pakietu SSIS, zobacz [uruchamianie pakietów SSIS za pomocą działania wykonywania pakietów SSIS w potoku usługi ADF](how-to-invoke-ssis-package-ssis-activity.md) artykułu.
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli nie zostały już aprowizowane środowiska IR Azure-SSIS, aprowizować go, wykonując instrukcje przedstawione w [samouczek](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -188,19 +190,19 @@ Monitoruj potoki i wyzwalacze za pomocą skryptów, jak w następujących przyk�
 1. Pobierz stan uruchomienia potoku.
 
   ```powershell
-  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+  Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
   ```
 
 2. Uzyskaj informacje na temat wyzwalacza.
 
   ```powershell
-  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+  Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
   ```
 
 3. Pobierz stan uruchomienia wyzwalacza.
 
   ```powershell
-  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+  Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
   ```
 
 ## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Tworzenie i Planowanie elementu runbook usługi Azure Automation, który rozpoczyna/zatrzymuje Azure-SSIS IR
@@ -292,7 +294,7 @@ Poniższa sekcja zawiera instrukcje tworzenia elementu runbook programu PowerShe
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Connect-AzureRmAccount `
+        Connect-AzAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -312,12 +314,12 @@ Poniższa sekcja zawiera instrukcje tworzenia elementu runbook programu PowerShe
     if($Operation -eq "START" -or $operation -eq "start")
     {
         "##### Starting #####"
-        Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
+        Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
     }
     elseif($Operation -eq "STOP" -or $operation -eq "stop")
     {
         "##### Stopping #####"
-        Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+        Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     }  
     "##### Completed #####"    
     ```
@@ -328,7 +330,7 @@ Poniższa sekcja zawiera instrukcje tworzenia elementu runbook programu PowerShe
 
    ![Element runbook przycisk Start](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
     
-5. W **uruchamianie elementu Runbook** okienko, wykonaj następujące ations: 
+5. W **uruchamianie elementu Runbook** okienko, wykonaj następujące czynności: 
 
     1. Aby uzyskać **nazwy grupy zasobów**, wprowadź nazwę grupy zasobów zawierającej usługi ADF dzięki Azure-SSIS IR. 
     2. Aby uzyskać **nazwa FABRYKI danych**, wprowadź nazwę usługi ADF dzięki Azure-SSIS IR. 

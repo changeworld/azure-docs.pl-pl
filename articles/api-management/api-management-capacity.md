@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 31959cc1bef6b6434f6d3f586052a845837aa438
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442595"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454511"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Pojemność wystąpienia usługi Azure API Management
 
@@ -78,7 +78,7 @@ Są bardziej złożonych operacji w odpowiedzi na żądania, tym wyżej **pojemn
 4. W sekcji zielony, wybierz **lokalizacji** do dzielenia metryki według wymiaru.
 5. Wybierz żądany przedział czasu, z górnym pasku sekcji.
 
-    Można ustawić alert dotyczący metryki informacją o tym, kiedy się coś nieoczekiwanego dzieje. Na przykład Otrzymuj powiadomienia, gdy wystąpienie usługi APIM został przekracza możliwości oczekiwanego szczytowego przez ponad 20 minut.
+    Można ustawić alert dotyczący metryki informacją o tym, kiedy się coś nieoczekiwanego dzieje. Na przykład Otrzymuj powiadomienia, gdy wystąpienie usługi APIM zostały przekraczające pojemności oczekiwanego szczytowego przez ponad 20 minut.
 
     >[!TIP]
     > Można skonfigurować alerty, aby umożliwić wiadomo, kiedy usługa zaczyna brakować pojemności lub automatycznie dodawać jednostki usługi Azure API Management za pomocą funkcji skalowania automatycznego usługi Azure Monitor. Skalowanie w operacji może zająć około 30 minut, dlatego należy odpowiednio zaplanować reguł.  

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099330"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431119"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedynczej bazy danych w usłudze Azure SQL Database
 
@@ -28,7 +28,7 @@ Opcja wdrażania pojedynczej bazy danych tworzy bazę danych w usłudze Azure SQ
 > [!NOTE]
 > Słownik terminów w usłudze Azure SQL Database, zobacz [słownik terminów bazy danych SQL](sql-database-glossary-terms.md)
 
-## <a name="dynamic-scalabilty"></a>Dynamiczne scalabilty
+## <a name="dynamic-scalability"></a>Dynamiczna skalowalność
 
 Możesz utworzyć swoją pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie usług niskiej ceny do wydajności i następnie [zmienić jej warstwę usług](sql-database-single-database-scale.md) ręcznie lub programowo w dowolnym momencie thehigher ceny do wydajności usługi warstwy, aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
@@ -42,7 +42,7 @@ Możesz użyć wbudowanych [monitorowania wydajności](sql-database-performance.
 
 ## <a name="availability-capabilities"></a>Możliwości dostępności
 
-Pojedyncze bazy danych, pul elastycznych i zarządzanych wystąpień przez zapewniają wiele characterics dostępności. Aby uzyskać informacje, zobacz [charakterystykę dostępności](sql-database-technical-overview.md#availability-capabilities).
+Pojedyncze bazy danych, pul elastycznych i zarządzanych wystąpień przez zapewniają wiele charakterystykę dostępności. Aby uzyskać informacje, zobacz [charakterystykę dostępności](sql-database-technical-overview.md#availability-capabilities).
 
 ## <a name="transact-sql-differences"></a>Różnice w języku Transact-SQL
 

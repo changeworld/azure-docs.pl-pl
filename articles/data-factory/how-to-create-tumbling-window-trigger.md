@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: e5910d08cf7ea5e1da094a0313513123d7c7813c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567040"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433233"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Utwórz wyzwalacz, który uruchamia potok okna wirowania
 Ten artykuł zawiera kroki umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza okna wirowania. Aby uzyskać ogólne informacje na temat wyzwalaczy i obsługiwanych typów, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
@@ -120,7 +120,7 @@ Możesz użyć **WindowStart** i **WindowEnd** zmiennych systemu wyzwalacza okna
 Aby użyć **WindowStart** i **WindowEnd** odpowiednio parametry "MyWindowStart" i "MyWindowEnd", użyj wartości zmiennych systemowych w definicji potoku.
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Kolejność wykonywania systemu windows w scenariuszu wypełniania
-Istnieje wiele okien na potrzeby wykonywania (szczególnie w przypadku scenariusza wypełniania), kolejność wykonywania dla systemu windows jest deterministyczna, od najstarszych do najnowszych odstępach czasu. Obecnie nie można zmodyfikować to zachowanie.
+Istnieje wiele okien na potrzeby wykonywania (szczególnie w przypadku scenariusza wypełniania), kolejność wykonywania dla systemu windows jest deterministyczna, od najstarszych do najnowszych odstępach czasu. Obecnie nie można zmodyfikować tego zachowania.
 
 ### <a name="existing-triggerresource-elements"></a>Istniejące elementy TriggerResource
 Obowiązują następujące reguły do istniejącej **TriggerResource** elementy:
@@ -129,6 +129,9 @@ Obowiązują następujące reguły do istniejącej **TriggerResource** elementy:
 * Jeśli wartość **endTime** elementu wyzwalacza zmiany (dodania lub zaktualizowania), stan systemu windows, które już są przetwarzane *nie* resetowania. Wyzwalacz honoruje nowy **endTime** wartość. Jeśli nowy **endTime** wartość przed systemu windows, które są już wykonane zatrzymuje wyzwalacza. W przeciwnym razie wyzwalacza, zatrzymuje się, gdy nowy **endTime** napotkano wartość.
 
 ## <a name="sample-for-azure-powershell"></a>Przykład dla programu Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą programu Azure PowerShell.
 
 1. Utwórz plik JSON o nazwie **MyTrigger.json** w folderze C:\ADFv2QuickStartPSH\ o następującej zawartości:
@@ -167,34 +170,34 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
     }
     ```
 
-2. Tworzenie wyzwalacza za pomocą **Set-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+2. Tworzenie wyzwalacza za pomocą **AzDataFactoryV2Trigger zestaw** polecenia cmdlet:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
     
-3. Upewnij się, że jest w stanie wyzwalacz **zatrzymane** przy użyciu **Get-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+3. Upewnij się, że jest w stanie wyzwalacz **zatrzymane** przy użyciu **Get AzDataFactoryV2Trigger** polecenia cmdlet:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Uruchom wyzwalacz za pomocą **Start-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+4. Uruchom wyzwalacz za pomocą **Start AzDataFactoryV2Trigger** polecenia cmdlet:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Upewnij się, że jest w stanie wyzwalacz **uruchomiono** przy użyciu **Get-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+5. Upewnij się, że jest w stanie wyzwalacz **uruchomiono** przy użyciu **Get AzDataFactoryV2Trigger** polecenia cmdlet:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6. GET, o których uruchamiany jest wyzwalacz w programie Azure PowerShell przy użyciu **Get AzureRmDataFactoryV2TriggerRun** polecenia cmdlet. Aby uzyskać informacje na temat uruchomienia wyzwalacza, wykonaj następujące polecenie okresowo. Aktualizacja **TriggerRunStartedAfter** i **TriggerRunStartedBefore** wartości odpowiadają wartościom w definicji wyzwalacza:
+6. GET, o których uruchamiany jest wyzwalacz w programie Azure PowerShell przy użyciu **Get AzDataFactoryV2TriggerRun** polecenia cmdlet. Aby uzyskać informacje na temat uruchomienia wyzwalacza, wykonaj następujące polecenie okresowo. Aktualizacja **TriggerRunStartedAfter** i **TriggerRunStartedBefore** wartości odpowiadają wartościom w definicji wyzwalacza:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
 Do monitorowania potoku i uruchomienia wyzwalacza jest uruchamiany w witrynie Azure portal, zobacz [monitorowanie uruchomień potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 038b1d9fa319837f3877c20c9fc3b1b83970e7b4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b072efbbf02528a3c62662c5543007ef3332d434
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158622"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440716"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Używaj DevKit az3166 usługi IoT z usługi Azure Functions i Cognitive Services umożliwia języka w usłudze translator
 
@@ -54,7 +54,7 @@ Wykonanie czynności opisanych w tym samouczku, należy najpierw wykonać nastę
 
   Zanotuj nazwę urządzenia Azure IoT Hub, który został utworzony.
 
-1. Otwórz `Functions\DevKitTranslatorFunction.cs` i zaktualizuj następujące wiersze kodu przy użyciu nazwy devce i klucza usługa rozpoznawania mowy, możesz zauważyć, że w dół.
+1. Otwórz `Functions\DevKitTranslatorFunction.cs` i zaktualizuj następujące wiersze kodu przy użyciu nazwy urządzenia i klucz usługi mowy, możesz zauważyć, że w dół.
   ```csharp
   // Subscription Key of Speech Service
   const string speechSubscriptionKey = "";
@@ -128,7 +128,7 @@ Na ekranie tłumaczenia wyników możesz wykonywać następujące czynności:
 
 ## <a name="how-it-works"></a>Jak to działa
 
-![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
+![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
 Mxchip IoT DevKit rejestruje swój głos, a następnie wysyła żądanie HTTP do wyzwalacza usługi Azure Functions. Usługa Azure Functions wywołuje translatorze interfejsu API tłumaczenia mowy usługi cognitive Services. Po usługi Azure Functions pobiera tekst tłumaczenia, wysyła komunikat C2D na urządzeniu. Następnie tłumaczenie jest wyświetlany na ekranie.
 

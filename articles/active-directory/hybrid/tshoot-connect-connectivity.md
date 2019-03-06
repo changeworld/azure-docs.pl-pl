@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f7d72be86a05b9785f7714380363d9c6ddb5c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205702"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436667"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością z programem Azure AD Connect
 W tym artykule wyjaśniono, jak działa łączność między program Azure AD Connect a usługą Azure AD i jak rozwiązać problemy z łącznością. Te problemy z największym prawdopodobieństwem mogą być widoczne w środowisku przy użyciu serwera proxy.
@@ -76,7 +76,7 @@ Ten błąd pojawia się, gdy punkt końcowy **https://secure.aadcdn.microsoftonl
 
 ### <a name="the-password-cannot-be-verified"></a>Nie można zweryfikować hasła
 Jeśli Kreator instalacji zakończy się podczas łączenia z usługą Azure AD, ale nie można zweryfikować hasła, że zostanie wyświetlony ten błąd:  
-![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
+![Nieprawidłowe hasło.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Jest to hasło hasło tymczasowe i muszą być zmienione? Jest to rzeczywiście poprawne hasło? Spróbuj zalogować się do https://login.microsoftonline.com (na innym komputerze niż serwer programu Azure AD Connect) i Sprawdź konta są wykorzystywane.
 
@@ -165,7 +165,7 @@ Wygasły poświadczenia. Zmień hasło.
 ### <a name="authorization-failure"></a>Błąd autoryzacji
 Nie można autoryzować użytkownika do wykonania akcji w usłudze Azure AD.
 
-### <a name="authentication-cancelled"></a>Uwierzytelnianie anulowane
+### <a name="authentication-canceled"></a>Uwierzytelnianie zostało anulowane
 Uwierzytelnienia Multi-Factor Authentication (MFA) zostało anulowane.
 
 <div id="connect-msolservice-failed">

@@ -13,17 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2a948a75ce3f6c21d7e92e3e1ccb1ef98dbe2ea0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 846fc5de6470326fbd51d19397503e4eee2ee15b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114387"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436089"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania wykonywania pakietów SSIS w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory (ADF) za pomocą działania wykonywanie pakietu SSIS. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tworzenie środowiska Azure-SSIS Integration Runtime (IR), jeśli nie masz już zgodnie z instrukcjami krok po kroku w [samouczka: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md).
 
@@ -111,7 +113,7 @@ Można również utworzyć zaplanowane wyzwalanie dla potoku, tak aby potok jest
 ## <a name="run-a-package-with-powershell"></a>Uruchom pakiet przy użyciu programu PowerShell
 W tej sekcji użyjesz programu Azure PowerShell do utworzenia potoku usługi ADF z działania wykonywanie pakietu SSIS, które uruchamia pakietu SSIS. 
 
-Zainstaluj najnowsze moduły programu Azure PowerShell, postępując zgodnie z instrukcjami krok po kroku [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+Zainstaluj najnowsze moduły programu Azure PowerShell, postępując zgodnie z instrukcjami krok po kroku [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="create-an-adf-with-azure-ssis-ir"></a>Tworzenie usługi ADF za pomocą środowiska Azure-SSIS IR
 Możesz użyć istniejącego ADF, który ma już Azure-SSIS IR aprowizowane lub utworzyć nowe usługi ADF środowiska Azure-SSIS IR, postępując zgodnie z instrukcjami krok po kroku w [samouczka: Wdrażanie pakietów usług SSIS na platformie Azure za pośrednictwem programu PowerShell](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell).
@@ -198,10 +200,10 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
 
 2. W programie Azure PowerShell Przełącz się do `C:\ADF\RunSSISPackage` folderu.
 
-3. Aby utworzyć potok **RunSSISPackagePipeline**Uruchom **Set-AzureRmDataFactoryV2Pipeline** polecenia cmdlet.
+3. Aby utworzyć potok **RunSSISPackagePipeline**Uruchom **AzDataFactoryV2Pipeline zestaw** polecenia cmdlet.
 
    ```powershell
-   $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+   $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
                                                   -ResourceGroupName $ResGrp.ResourceGroupName `
                                                   -Name "RunSSISPackagePipeline"
                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -218,10 +220,10 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
    ```
 
 ### <a name="run-the-pipeline"></a>Uruchamianie potoku
-Użyj **Invoke-AzureRmDataFactoryV2Pipeline** polecenia cmdlet, aby uruchomić potok. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
+Użyj **Invoke AzDataFactoryV2Pipeline** polecenia cmdlet, aby uruchomić potok. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
 
 ```powershell
-$RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+$RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
                                              -ResourceGroupName $ResGrp.ResourceGroupName `
                                              -PipelineName $DFPipeLine.Name
 ```
@@ -232,7 +234,7 @@ Uruchom następujący skrypt programu PowerShell, aby stale sprawdzać stan uruc
 
 ```powershell
 while ($True) {
-    $Run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
+    $Run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
                                                -DataFactoryName $DataFactory.DataFactoryName `
                                                -PipelineRunId $RunId
 
@@ -280,31 +282,31 @@ W poprzednim kroku uruchomiono potoku na żądanie. Można również utworzyć w
    }    
    ```
 2. W **programu Azure PowerShell**, przełącz się do **C:\ADF\RunSSISPackage** folderu.
-3. Uruchom **Set-AzureRmDataFactoryV2Trigger** polecenia cmdlet, który tworzy wyzwalacz. 
+3. Uruchom **AzDataFactoryV2Trigger zestaw** polecenia cmdlet, który tworzy wyzwalacz. 
 
    ```powershell
-   Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+   Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-4. Domyślnie wyzwalacz jest w stanie zatrzymania. Uruchom wyzwalacz, uruchamiając **Start-AzureRmDataFactoryV2Trigger** polecenia cmdlet. 
+4. Domyślnie wyzwalacz jest w stanie zatrzymania. Uruchom wyzwalacz, uruchamiając **Start AzDataFactoryV2Trigger** polecenia cmdlet. 
 
    ```powershell
-   Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+   Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-5. Upewnij się, że wyzwalacz jest uruchomiona, uruchamiając **Get-AzureRmDataFactoryV2Trigger** polecenia cmdlet. 
+5. Upewnij się, że wyzwalacz jest uruchomiona, uruchamiając **Get AzDataFactoryV2Trigger** polecenia cmdlet. 
 
    ```powershell
-   Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
+   Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
                                    -DataFactoryName $DataFactoryName `
                                    -Name "MyTrigger"     
    ```    
 6. Uruchom następujące polecenie, po następnej pełnej godziny. Na przykład jeśli aktualna godzina jest 3:25 czasu UTC, uruchom polecenie o 16: 00 czasu UTC. 
     
    ```powershell
-   Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
+   Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
                                       -DataFactoryName $DataFactoryName `
                                       -TriggerName "MyTrigger" `
                                       -TriggerRunStartedAfter "2017-12-06" `

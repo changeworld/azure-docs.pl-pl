@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d72f4ac39ac992d0386b3971cd4d3bc6616f0a28
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 62320d6523652d91f35e55196a84cc32ea7bc55d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186459"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440169"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Procore
 
@@ -214,7 +214,7 @@ Wykonaj poniższe kroki, aby utworzyć użytkownika testowego Procore stronie Pr
 
     ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. Kliknij pozycję **zapisywanie i wysyłanie Invitiation** (Jeśli wymagane jest za pośrednictwem wiadomości e-mail) lub **Zapisz** (zapisane bezpośrednio), aby ukończyć rejestrację użytkownika.
+5. Kliknij pozycję **Zapisz i Wyślij zaproszenie** (Jeśli wymagane jest za pośrednictwem wiadomości e-mail) lub **Zapisz** (zapisane bezpośrednio), aby ukończyć rejestrację użytkownika.
     
     ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/Procore_user_save.png)
 

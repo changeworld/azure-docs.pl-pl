@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118979"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437602"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Zrozumienie typowe komunikaty o błędach, gdy można zarządzać maszynami wirtualnymi na platformie Azure
 
@@ -99,8 +99,8 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  InvalidParameter  |  "Podane hasło musi składać się {0}-{1} znaków i musi spełniać co najmniej {2} o wymagania dotyczące złożoności hasła z następujących wartości: <ol><li> Zawiera wielką literę</li><li>Zawiera małą literę</li><li>Zawiera zawierać cyfrę</li><li>Zawiera znaki specjalne.</li></ol>  |
 |  InvalidParameter  |  Określona nazwa użytkownika administratora jest niedozwolona.  |
 |  InvalidParameter  |  Nie można podłączyć istniejącego dysku z systemem operacyjnym, jeśli maszyna wirtualna jest utworzona z obrazu użytkownika lub platformy.  |
-|  InvalidParameter  |  Nazwa kontenera {0} jest nieprawidłowy. Nazwa kontenera musi mieć długość 3 – 63 znaków i może zawierać tylko małe znaki alfanumeryczne i łącznik. Łącznik musi być poprzedzany i następuje znak alfanumeryczny.  |
-|  InvalidParameter  |  Nazwa kontenera {0} w adresie URL {1} jest nieprawidłowy. Nazwa kontenera musi mieć długość 3 – 63 znaków i może zawierać tylko małe znaki alfanumeryczne i łącznik. Łącznik musi być poprzedzany i następuje znak alfanumeryczny.  |
+|  InvalidParameter  |  Nazwa kontenera {0} jest nieprawidłowy. Nazwa kontenera musi mieć długość 3 – 63 znaków i może zawierać tylko małe znaki alfanumeryczne i łącznik. Łącznik musi być poprzedzony i następuje znak alfanumeryczny.  |
+|  InvalidParameter  |  Nazwa kontenera {0} w adresie URL {1} jest nieprawidłowy. Nazwa kontenera musi mieć długość 3 – 63 znaków i może zawierać tylko małe znaki alfanumeryczne i łącznik. Łącznik musi być poprzedzony i następuje znak alfanumeryczny.  |
 |  InvalidParameter  |  Nazwa obiektu blob w adresie URL {0} zawiera ukośnik odwrotny. Nie jest to obecnie obsługiwane w przypadku dysków.  |
 |  InvalidParameter  |  Identyfikator URI {0} nie wygląda na prawidłowy identyfikator URI obiektu blob.  |
 |  InvalidParameter  |  Dysk o nazwie "{0}" używa już tego samego numeru LUN: {1}.  |

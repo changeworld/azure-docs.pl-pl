@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: cff4199663bce39353f8c10c68f51f15d6a72a22
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7281fb15e91195e1dd20095d9fdf80d3d9894a26
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314827"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433063"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
@@ -37,6 +37,8 @@ Każda z tych metod zapewnia tematycznie przy użyciu podobnych zapytań, które
 Aktywne uczenie jest wyzwalana, oparte na wyniki najważniejsze odpowiedzi kilka zwrócone przez narzędzie QnA Maker dla dowolnej podanej kwerendy. Różnice wynik leży w obrębie małe, a następnie zapytanie jest traktowane jako potencjalnie _sugestii_ dla wszystkich możliwych odpowiedzi. 
 
 Wszystkie sugestie są zgrupowane razem wg podobieństwa i najbardziej oczekiwanych alternatywne pytania są wyświetlane na podstawie częstotliwości określonej zapytań przez użytkowników końcowych. Aktywna nauka zapewnia najlepsze możliwe sugestie w przypadkach, gdzie punkty końcowe są objęte ilość uzasadnione i różne zapytania do użycia.
+
+5 lub więcej podobne zapytań są klastrowane, co 30 minut narzędzie QnA Maker sugeruje pytania oparte na użytkownikach do projektanta bazy wiedzy knowledge base, aby zaakceptować lub odrzucić.
 
 Po pytania są sugerowane w portalu narzędzia QnA Maker, należy przejrzeć i zaakceptować lub odrzucić te sugestie. 
 
@@ -77,7 +79,7 @@ Aktywna nauka jest domyślnie wyłączona. Włącz ją wyświetlić sugerowane p
 
     [![Na stronie Ustawienia usługi przycisk Pokaż sugestie dotyczące przełączania](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. Filtruj wiedzy z parami pytań i odpowiedzi, aby były wyświetlane tylko sugestie, wybierając **Filtruj według sugestii**.
+1. Filtruj wiedzy za pomocą pary pytań i odpowiedzi, aby pokazać tylko sugestie, wybierając **Filtruj według sugestii**.
 
     [![Na stronie Ustawienia usługi filtrowanie według sugestii, aby wyświetlić tylko te pytania/odpowiedzi par](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -162,6 +164,31 @@ Content-Type: application/json
 ```
 
 Dowiedz się więcej o sposobie używania aktywne uczenie z [Azure Bot C# przykład](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
+## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktywna nauka są zapisywane w pliku tsv Wyeksportowano aplikację
+
+Gdy Twoja aplikacja ma aktywne uczenie włączone i wyeksportować aplikację, `SuggestedQuestions` kolumna w pliku tsv przechowuje dane aktywne uczenie. 
+
+`SuggestedQuestions` Kolumny jest obiektem JSON informacji niejawne (`autosuggested`) i jawne (`usersuggested`) [opinii](#active-learning). Przykładem obiektu JSON do pojedynczego zapytania przesłane przez użytkownika z `help` jest:
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Gdy możesz ponownie zaimportować tej aplikacji, aktywne uczenie nadal zbierać informacje i zaleca się sugestie dotyczące wiedzy. 
 
 ## <a name="next-steps"></a>Kolejne kroki
  

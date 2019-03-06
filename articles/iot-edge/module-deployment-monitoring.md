@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 72238db8322132f42e14656c106b82d8604af21f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100110"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435103"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Omówienie automatycznego wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
@@ -62,7 +62,7 @@ Jeśli obraz modułu jest przechowywany w prywatnym rejestrze kontenerów, agent
 
 ### <a name="target-condition"></a>Warunek docelowy
 
-Warunek docelowy jest stale ocenianą throughtout okres istnienia wdrożenia. Uwzględniono nowych urządzeń, które spełniają wymagania, a wszystkie istniejące urządzenia, które nie są usuwane. Wdrażanie jest możliwe, jeśli usługa wykrywa wszelkie zmiany stanu docelowego. 
+Warunek docelowy jest stale oceniany w okresie istnienia wdrożenia. Uwzględniono nowych urządzeń, które spełniają wymagania, a wszystkie istniejące urządzenia, które nie są usuwane. Wdrażanie jest możliwe, jeśli usługa wykrywa wszelkie zmiany stanu docelowego. 
 
 Na przykład masz wdrożenie obejmuje A tags.environment warunek docelowy = "prod". Gdy wdrożenie jest rozpoczynane, istnieją 10 urządzeń w środowisku produkcyjnym. Moduły zostali pomyślnie zainstalowani na tych urządzeniach 10. Stan agenta IoT Edge jest wyświetlany jako 10 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, odpowiedzi 0 i 0 oczekujące odpowiedzi. Teraz możesz dodać pięć więcej urządzeń za pomocą tags.environment = "prod". Usługa wykrywa zmianę i stan agenta IoT Edge staje się 15 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi podczas próby wdrożenia do pięciu nowych urządzeń.
 

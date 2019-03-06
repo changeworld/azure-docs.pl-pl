@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5696c376ad64df01d7f9d43ff59c87402c334c52
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ab066fef4bffe35408fdc5f3ad6d66796b4d0818
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443974"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Korzystać z programu 3T Robo przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -33,17 +33,17 @@ Aby dodać konto usługi Cosmos do Menedżera połączeń z programu 3T Robo, wy
 
 4. W **ustawienia połączenia** okna, wybierz nazwę. Następnie, Znajdź **hosta** i **portu** z informacje o połączeniu w kroku 1, a następnie wprowadź je do **adres** i **portu**odpowiednio.
 
-    ![Zrzut ekranu przedstawiający Zarządzanie połączeniami z narzędzia Robomongo](./media/mongodb-robomongo/manageconnections.png)
+    ![Zrzut ekranu z narzędzia Robomongo Zarządzanie połączeniami](./media/mongodb-robomongo/manageconnections.png)
 5. Na **uwierzytelniania** kliknij pozycję **Przeprowadź uwierzytelnianie**. Następnie wprowadź bazy danych (wartość domyślna to *administratora*), **nazwa_użytkownika** i **hasło**.
 Zarówno **nazwa_użytkownika** i **hasło** znajdują się informacje o połączeniu w kroku 1.
 
-    ![Zrzut ekranu: karta uwierzytelniania z programu Robomongo](./media/mongodb-robomongo/authentication.png)
+    ![Zrzut ekranu przedstawiający kartę uwierzytelnianie z narzędzia Robomongo](./media/mongodb-robomongo/authentication.png)
 6. Na **SSL** karcie wyboru **Użyj protokołu SSL**, następnie zmienić **metodę uwierzytelniania** do **certyfikatu z podpisem własnym**.
 
-    ![Zrzut ekranu: karta SSL z narzędzia Robomongo](./media/mongodb-robomongo/SSL.png)
+    ![Zrzut ekranu przedstawiający kartę SSL z narzędzia Robomongo](./media/mongodb-robomongo/SSL.png)
 7. Na koniec kliknij **testu** Aby zweryfikować, że jesteś w stanie nawiązać połączenie, następnie **Zapisz**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) przy użyciu interfejsu API usługi Azure Cosmos DB, bazy danych mongodb.
-- Zapoznaj się z bazą danych MongoDB [przykłady](mongodb-samples.md) przy użyciu interfejsu API usługi Azure Cosmos DB, bazy danych mongodb.
+- Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+- Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.

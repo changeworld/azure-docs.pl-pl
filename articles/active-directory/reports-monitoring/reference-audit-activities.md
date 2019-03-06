@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a60f95bc8a98ea15c174f48bc3c3e63eae534d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88fc78a1263ac4587a98288dc71df26385bc81ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164061"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453647"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -66,10 +66,10 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Przeglądy dostępu|Aktualizowanie przeglądu dostępu|
 |Przeglądy dostępu|Aktualizacja stanu dołączania przeglądów dostępu usługi Azure AD|
 |Przeglądy dostępu|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
-|Przeglądy dostępu|Aktualizowanie ustawienia licznika cyklu przeglądu dostępu|
-|Przeglądy dostępu|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu (w dniach)|
-|Przeglądy dostępu|Aktualizowanie ustawienia typu zakończenia cyklu przeglądu dostępu|
-|Przeglądy dostępu|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
+|Przeglądy dostępu|Aktualizuj ustawienie czasu trwania (w dniach) cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizuj ustawienie typu cyklu przeglądu dostępu|
 |Przeglądy dostępu|Aktualizowanie ustawień przypomnienia przeglądu dostępu|
 |Przeglądy dostępu|Aktualizowanie programu|
 |Przeglądy dostępu|Aktualizowanie zatwierdzenia żądania|

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d770e091c8786972e3f15a03fc5af9ec9445002
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: da9aec6c449802ee9296ea4e60efe47650176212
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327804"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433352"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache i serwer zawartości wdrożenia na maszynach wirtualnych platformy Azure
 
@@ -440,7 +440,7 @@ Aby dowiedzieć się, obsługiwaną wersję Windows dla serwera zawartości SAP 
 Zdecydowanie zaleca się używać najnowszej wersji systemu Microsoft Windows Server.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania serwera zawartości SAP dla instalacji SAP na maszynach wirtualnych platformy Azure
-#### <a name="storage-configuration-foir-content-server-in-azure"></a>Magazyn konfiguracji foir serwera zawartości na platformie Azure
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Konfigurację magazynu dla serwera zawartości na platformie Azure
 Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w bazie danych SAP MaxDB, wszystkich usługi Azure storage najlepsze rozwiązania w zakresie zaleceń wymienionych w niniejszym dokumencie SAP MaxDB również są prawidłowe dla scenariusza SAP serwer zawartości. 
 
 Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w systemie plików, zaleca się użyć dedykowanego dysku logicznego. Przy użyciu funkcji miejsca do magazynowania systemu Windows umożliwia również zwiększyć rozmiar dysku logicznego i przepływności operacji We/Wy, zgodnie z opisem w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). 

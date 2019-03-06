@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: f0d3641800d8ec2f9fd403b006e81af04444c143
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a6e4f816d3c5be9d3a4f4824ad7ed26d48763034
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813130"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433276"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Upewnij się, że poprawnie wprowadzono nazwę użytkownika, hasła, identyfikator klienta i klucz tajny klienta dla każdego połączenia.  
     - Sprawdź, że masz wystarczające uprawnienia w odpowiednich produkcie ITSM, aby nawiązać połączenie.  
  - W przypadku połączeń programu Service Manager  
-    - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną lokalną programu Service Manager, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
+    - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną programu Service Manager na lokalnych, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Jeśli dane z usługi ServiceNow, nie podlega wprowadzenie do usługi Log Analytics, upewnij się, że nie jest uśpiony wystąpienia usługi ServiceNow. Wystąpienia deweloperów usługi ServiceNow czasami przechodzi w tryb uśpienia podczas bezczynności przez długi czas. W przeciwnym wypadku zgłosić problem.
 3.  Jeśli wyzwolenie alertów usługi Log Analytics, ale działają elementy nie są tworzone w produkcie ITSM lub elementy konfiguracji nie są tworzone/połączone elementy robocze lub inne ogólne informacje, można znaleźć w następujących miejscach:

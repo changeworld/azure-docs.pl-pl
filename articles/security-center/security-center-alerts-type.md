@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1f9ea2fd1e9a346046c55db451bc333373896db5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bd05a417bfb011dd86b61d654be836ef76099b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118092"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439687"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Informacje o alertach zabezpieczeń w usłudze Azure Security Center
 Ten artykuł ułatwia zapoznanie się z różnymi typami alertów zabezpieczeń i powiązanych szczegółowych informacji dostępnych w usłudze Azure Security Center. Więcej informacji na temat zarządzania alertami i zdarzeniami znajduje się w artykule [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -96,7 +96,7 @@ Usługa Security Center używa zaawansowanej analizy w celu identyfikacji zasob�
 * **Usunięto wszystkie kopie w tle pliku**: Ten alert wskazuje, że kopie w tle zostały usunięte.
 * **Podejrzane polecenia czyszczenia pliku**: Ten alert wskazuje na kombinacji poleceń systeminfo do wykonania działania samodzielnego czyszczenia po wystąpieniu naruszenia.  Plik *systeminfo.exe* to autentyczne narzędzie systemu Windows, ale jego uruchomienie dwa razy z rzędu, a następnie użycie polecenia Usuń w opisany tutaj sposób jest rzadkie.
 * **Podejrzane utworzenie konta**: Ten alert wskazuje, że zostało utworzone konto bardzo podobne do istniejącego wbudowanego konta z uprawnieniami administracyjnymi. Ta technika może zostać użyta przez osoby atakujące do utworzenia nieautoryzowanego konta bez wykrycia.
-* **Działanie kopiowania w tle woluminu podejrzane**: Ten alert wskazuje na działanie usunięcia kopii w tle dla danego zasobu. Kopiowanie woluminów w tle (VSC, Volume Shadow Copy) to ważny artefakt, który przechowuje migawki danych. To działanie jest skojarzone z oprogramowaniem wymuszającym Okup, ale może być również autentyczne.
+* **Działanie kopiowania w tle woluminu podejrzane**: Ten alert wskazuje na działanie usunięcia kopii w tle dla danego zasobu. Kopiowanie woluminów w tle (VSC, Volume Shadow Copy) to ważny artefakt, który przechowuje migawki danych. To działanie jest skojarzony z wykorzystaniem oprogramowania wymuszającego Okup, ale może być również autentyczne.
 * **Metoda trwałości rejestru Windows**: Ten alert wskazuje na próbę utrzymania pliku wykonywalnego w rejestrze systemu Windows. Złośliwe oprogramowanie często używa takiej techniki w celu przetrwania rozruchu.
 * **Podejrzana Nowa reguła zapory**: Ten alert wskazuje na to, że dodano nową regułę zapory za pośrednictwem *netsh.exe* zezwalająca na ruch z pliku wykonywalnego w podejrzanej lokalizacji.
 * **Podejrzane wykonania XCOPY**: Ten alert wskazuje serię wykonań XCOPY, które może oznaczać, że jedna z maszyn zostało naruszone i użyto do propagowania złośliwego oprogramowania.

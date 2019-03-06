@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037d1de83e34aa8489498c65dbc5fd3423b081b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7475969f3b1437a8d42345f00a974957c15d00fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162666"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444302"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nieoczekiwaną aplikację na liście aplikacji
 
@@ -108,7 +108,7 @@ Aby **usunąć aplikację**, wykonaj następujące kroki:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chcę wyłączyć wszystkie operacje zgody użytkownika przyszłych do dowolnej aplikacji
 
-Wyłączanie zgody użytkownika dla całego katalogu uniemożliwić użytkownikom wyrażanie zgody na dowolnej aplikacji. Administratorzy nadal mogą wyrazić zgodę na behalves użytkownika. Dowiedz się więcej na temat zgody aplikacji i dlatego może być lub może nie chcieć zgodę, przeczytaj [opis użytkowników i zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+Wyłączanie zgody użytkownika dla całego katalogu uniemożliwić użytkownikom wyrażanie zgody na dowolnej aplikacji. Administratorzy nadal mogą wyrazić zgodę w imieniu użytkownika. Dowiedz się więcej na temat zgody aplikacji i dlatego może być lub może nie chcieć zgodę, przeczytaj [opis użytkowników i zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 Aby **Wyłącz wszystkie operacje zgody użytkownika przyszłych całego katalogu**, wykonaj następujące kroki:
 

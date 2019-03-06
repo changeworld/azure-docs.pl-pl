@@ -12,19 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: e004dc6b7d78849705f8d3fa3545efe7318d3911
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 938392cea3e6fe001e662a60e17b936415e7e4f2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022805"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439285"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programowe monitorowanie usługi Azure data factory
 W tym artykule opisano sposób monitorowania potoku w fabryce danych przy użyciu różnych software development Kit (SDK). 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="data-range"></a>Zakres danych
 
-Fabryka danych przechowuje tylko po danych uruchomieniom 45 dni. Podczas wysyłania zapytania programowo uzyskać dane dotyczące uruchomienia potoku fabryki danych — na przykład za pomocą polecenia PowerShell `Get-AzureRmDataFactoryV2PipelineRun` — istnieją maksymalna dat dla opcjonalnego `LastUpdatedAfter` i `LastUpdatedBefore` parametrów. Ale jeśli zapytania dla danych przez ostatni rok, na przykład, zapytanie nie zwraca błędu, ale tylko zwraca potoku wykonywania dane z ostatnich 45 dni.
+Fabryka danych przechowuje tylko po danych uruchomieniom 45 dni. Podczas wysyłania zapytania programowo uzyskać dane dotyczące uruchomienia potoku fabryki danych — na przykład za pomocą polecenia PowerShell `Get-AzDataFactoryV2PipelineRun` — istnieją maksymalna dat dla opcjonalnego `LastUpdatedAfter` i `LastUpdatedBefore` parametrów. Ale jeśli zapytania dla danych przez ostatni rok, na przykład, zapytanie nie zwraca błędu, ale tylko zwraca potoku wykonywania dane z ostatnich 45 dni.
 
 Jeśli chcesz zachować uruchomieniom danych przez ponad 45 dni, należy skonfigurować własne rejestrowania diagnostycznego z [usługi Azure Monitor](monitor-using-azure-monitor.md).
 
@@ -119,7 +121,7 @@ Aby uzyskać szczegółowy przewodnik tworzenia i monitorowanie potoku przy uży
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
@@ -137,7 +139,7 @@ Aby uzyskać szczegółowy przewodnik tworzenia i monitorowanie potoku przy uży
 
     ```powershell
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result
     
     Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"
@@ -147,7 +149,7 @@ Aby uzyskać szczegółowy przewodnik tworzenia i monitorowanie potoku przy uży
     $result.Error -join "`r`n"
     ```
 
-Aby uzyskać pełną dokumentację poleceń cmdlet programu PowerShell, zobacz [Dokumentacja poleceń cmdlet programu PowerShell do fabryki danych](/powershell/module/azurerm.datafactoryv2/?view=azurermps-4.4.1).
+Aby uzyskać pełną dokumentację poleceń cmdlet programu PowerShell, zobacz [Dokumentacja poleceń cmdlet programu PowerShell do fabryki danych](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz [monitorowania potoków przy użyciu usługi Azure Monitor](monitor-using-azure-monitor.md) artykuł, aby dowiedzieć się więcej o korzystaniu z usługi Azure Monitor do monitorowania potoków usługi Data Factory. 

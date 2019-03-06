@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3bfc3d0f444bece0afe7b7f5bcdac343a693a13
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243707"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451879"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Analytics for FedRAMP
 
@@ -140,7 +140,7 @@ Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń usługi Azure
 [Usługa Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) jest Zarządzanie wdrożeniem i inicjowania obsługi dostępu do personelu wchodzenie w interakcje ze środowiskiem. Istniejącego systemu Windows Server Active Directory można zintegrować z usługą AAD w [cztery kliknięcia](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Klienci również powiązać wdrożonej infrastrukturę usługi Active Directory (kontrolery domeny) do istniejącej usługi AAD, wprowadzając wdrożonej infrastrukturę usługi Active Directory poddomeny las usługi AAD.
 
 ### <a name="additional-services"></a>Usługi dodatkowe
-#### <a name="iaas---vm-vonsiderations"></a>IaaS — vonsiderations maszyny Wirtualnej
+#### <a name="iaas---vm-considerations"></a>IaaS — zagadnienia dotyczące maszyn wirtualnych
 To rozwiązanie PaaS nie zawierać żadnych maszyn wirtualnych IaaS platformy Azure. Klient może utworzyć Maszynę wirtualną platformy Azure do uruchomienia wielu z tych usług PaaS. W tym przypadku określonych funkcji i usług dla ciągłości działania i dzienniki usługi Azure Monitor może wykorzystać:
 
 ##### <a name="business-continuity"></a>Ciągłość działalności biznesowej

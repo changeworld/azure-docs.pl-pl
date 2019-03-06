@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3933f10a777a1aa10a4e04f8901e7fd1af5c48
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09bdffbceafc11d99889cbda1461e4af4d89168e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195638"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444620"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanego dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
 
@@ -294,7 +294,7 @@ Aby wyłączyć przypisany systemowo tożsamości zarządzanej maszyny wirtualne
 
    Aby usunąć przypisany systemowo tożsamości zarządzanej maszyny wirtualnej, z zarządzanych tożsamości przypisanych przez użytkownika, należy usunąć `SystemAssigned` z `{"identity":{"type:" "}}` wartość przy zachowaniu `UserAssigned` wartość i `userAssignedIdentities` słownika wartości, jeśli używasz **Interfejsu API w wersji 2018-06-01**. Jeśli używasz **interfejsu API w wersji 2017-12-01** lub wcześniej, Zachowaj `identityIds` tablicy.
 
-## <a name="user-assigned-managed-identity"></a>Przypisane przez użytkownika z tożsamości zarządzanej
+## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
 W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure przy użyciu programu CURL w celu wykonywania wywołań do punktu końcowego usługi Azure Resource Manager REST.
 
@@ -511,7 +511,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
    |---------|---------|
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.
 
-    Jeśli masz jakiekolwiek użytkownika lub przypisany systemowo przypisane do maszyny Wirtualnej, jak wskazano w zarządzanych tożsamości `identity` wartość w odpowiedzi, przejdź do kroku 5, pokazujący, jak zachować tożsamość zarządzaną przypisany systemowo t podczas dodawania tożsamości zarządzanej użytkownik przypisany na Maszyna wirtualna.
+    Jeśli masz jakiekolwiek użytkownika lub przypisany systemowo przypisane do maszyny Wirtualnej, jak wskazano w zarządzanych tożsamości `identity` wartość w odpowiedzi, przejdź do kroku 5, pokazujący, jak zachować tożsamość zarządzaną przypisana przez system podczas dodawania tożsamości zarządzanej użytkownik przypisany na Maszyna wirtualna.
 
 4. Jeśli nie masz żadnych tożsamości przypisanych przez użytkownika zarządzanego przypisane do maszyny Wirtualnej, należy użyć następującego polecenia CURL wywołać punkt końcowy usługi Azure Resource Manager REST można przypisać pierwszy tożsamość zarządzaną użytkownik przypisany do maszyny Wirtualnej.
 

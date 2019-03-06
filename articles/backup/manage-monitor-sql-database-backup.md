@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie i monitorowanie bazy danych SQL Server na maszynie Wirtualnej platformy Azure z kopii zapasowej przez usługę Azure Backup | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób przywracania baz danych SQL Server uruchomiony na Maszynie wirtualnej platformy Azure kopie zapasowe są tworzone za pomocą usługi Azure Backup
+title: Monitorowanie baz danych programu SQL Server na maszynie Wirtualnej platformy Azure, którego kopia zapasowa jest tworzona kopia zapasowa Azure i zarządzanie nim | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób przywracania bazy danych SQL Server, są uruchamiane na Maszynie wirtualnej platformy Azure, które są uwzględnione w przez usługę Azure Backup.
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,44 +8,40 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 1c2ce0ba42f0bc3efd1dcc951113b05ab6941b98
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: da4264047830b21b3ac4dae723dd1fd2f9d7a8f4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430801"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432859"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie i monitorowanie kopii zapasowej bazy danych programu SQL Server 
 
 
-W tym artykule opisano typowe zadania dla zarządzania i monitorowania baz danych SQL Server uruchomiony na Maszynie wirtualnej platformy Azure, które tworzy kopię zapasową do usługi Azure Backup Recovery Services vault przez [kopia zapasowa Azure](backup-overview.md) usługi. Zadania, w tym monitorowania zadania i alerty, zatrzymywanie i wznowienie ochrony bazy danych, uruchomione zadania tworzenia kopii zapasowej i wyrejestrowywania Maszynę wirtualną z kopii zapasowej.
+W tym artykule opisano typowe zadania dla zarządzania i monitorowania baz danych serwera SQL są uruchamiane na maszynie wirtualnej platformy Azure (VM) i który tworzy kopię zapasową do usługi Azure Backup Recovery Services vault przez [kopia zapasowa Azure](backup-overview.md) usługi. Dowiesz się, jak monitorować zadania i alerty, Zatrzymaj i wznowić ochronę bazy danych, uruchamianie zadań tworzenia kopii zapasowej i wyrejestruj Maszynę wirtualną z kopii zapasowych.
 
 
 > [!NOTE]
-> Kopia zapasowa bazy danych SQl Server uruchomiony na Maszynie wirtualnej platformy Azure z usługą Azure Backup jest obecnie w publicznej wersji zapoznawczej.
+> Tworzenie kopii zapasowych baz danych SQL Server, które są uruchomione na Maszynie wirtualnej platformy Azure za pomocą usługi Azure Backup jest obecnie w publicznej wersji zapoznawczej.
 
 
-Nie zostały jeszcze skonfigurowane kopie zapasowe baz danych programu SQL Server, postępuj zgodnie z instrukcjami TIf [w tym artykule](backup-azure-sql-database.md)
+Jeśli jeszcze nie skonfigurowano tworzenia kopii zapasowych baz danych programu SQL Server, zobacz [Utwórz kopię zapasową bazy danych SQL Server na maszynach wirtualnych platformy Azure](backup-azure-sql-database.md)
 
-## <a name="monitor-backup-jobs"></a>Monitorowanie zadań kopii zapasowej
+##  <a name="monitor-manual-backup-jobs-in-the-portal"></a>Monitorowanie ręcznych zadań tworzenia kopii zapasowej w portalu
 
-###  <a name="monitor-ad-hoc-jobs-in-the-portal"></a>Monitorowanie zadań ad hoc w portalu
+Usługa Azure Backup pokazuje wszystkie zadania wyzwalanych ręcznie w **zadania tworzenia kopii zapasowej** portalu. Zadania widoczne w tym portalu dołączania bazy danych odnajdywania i rejestrowania i kopii zapasowej i przywracanie operacji.
 
-Usługa Azure Backup pokazuje wszystkie zadania wyzwalanych ręcznie w **zadania tworzenia kopii zapasowej** portalu, w tym odnajdywanie i rejestrowanie baz danych i operacje tworzenia kopii zapasowych i przywracania.
-
-![Portal zadań kopii zapasowej](./media/backup-azure-sql-database/jobs-list.png)
+![Portal zadania kopii zapasowej](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> Zaplanowanych zadań kopii zapasowej nie są wyświetlane w **zadania tworzenia kopii zapasowej** portalu. Do monitorowania zaplanowanych zadań kopii zapasowych należy użyć programu SQL Server Management Studio zgodnie z opisem w następnej sekcji.
+> **Zadania tworzenia kopii zapasowej** portal nie wyświetla zaplanowanych zadań kopii zapasowej. Do monitorowania zaplanowanych zadań kopii zapasowych należy użyć programu SQL Server Management Studio zgodnie z opisem w następnej sekcji.
 >
 
-### <a name="monitor-backup-jobs-with-sql-server-management-studio"></a>Monitorowanie zadań tworzenia kopii zapasowych w programie SQL Server Management Studio 
+## <a name="monitor-scheduled-backup-jobs-in-sql-server-management-studio"></a>Monitorowanie zaplanowanych zadań kopii zapasowej w programie SQL Server Management Studio 
 
-Usługa Azure Backup używa natywnych interfejsów API SQL na potrzeby wszystkich operacji dotyczących kopii zapasowych.
+Usługa Azure Backup używa natywnych interfejsów API SQL na potrzeby wszystkich operacji dotyczących kopii zapasowych. Natywnych interfejsów API należy użyć do pobrania wszystkich informacji o zadaniu z [tabeli zestawu kopii zapasowych SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) w bazie danych msdb.
 
-Natywnych interfejsów API należy użyć do pobrania wszystkich informacji o zadaniu z [tabeli zestawu kopii zapasowych SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) w bazie danych msdb.
-
-Poniższy przykład to zapytanie, które pobiera wszystkie zadania kopii zapasowej dla bazy danych o nazwie **DB1**. Dostosowywanie zapytania na potrzeby monitorowania zaawansowanego.
+Poniższy przykład to zapytanie, które pobiera wszystkie zadania tworzenia kopii zapasowej bazy danych, który nosi nazwę **DB1**. Dostosowywanie zapytania na potrzeby monitorowania zaawansowanego.
 
 ```
 select CAST (
@@ -70,21 +66,21 @@ backup_size AS BackupSizeInBytes
 
 ## <a name="view-backup-alerts"></a>Wyświetlanie alertów dotyczących kopii zapasowych
 
-Ponieważ kopie zapasowe dziennika występuje co 15 minut, monitorowanie zadań tworzenia kopii zapasowej może być żmudne. Usługa Azure Backup ułatwia monitorowanie za pomocą wiadomości e-mail dla alertów.
+Ponieważ kopie zapasowe dziennika występuje co 15 minut, monitorowanie zadań tworzenia kopii zapasowej może być żmudne. Usługa Azure Backup ułatwia monitorowania przez wysłanie wiadomości e-mail dla alertów. Alerty poczty e-mail są:
 
-- Alerty są wyzwalane dla wszystkich błędów kopii zapasowych.
-- Alerty są konsolidowane na poziomie bazy danych według kodu błędu.
-- Alerty e-mail są wysyłane tylko w przypadku pierwszego niepowodzenia tworzenia kopii zapasowej bazy danych. 
+- Wywołany przez wszystkie błędy tworzenia kopii zapasowej.
+- Skonsolidowane na poziomie bazy danych przez kod błędu.
+- Wysyłane tylko w przypadku pierwszego niepowodzenia wykonywania kopii zapasowej bazy danych. 
 
-Aby monitorować alerty dotyczące kopii zapasowej:
+Aby monitorować alerty kopii zapasowej bazy danych:
 
-1. Zaloguj się do subskrypcji platformy Azure w [witryny Azure portal](https://portal.azure.com) monitorować alerty bazy danych.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Na pulpicie nawigacyjnym magazynu wybierz **alerty i zdarzenia**.
+1. Na pulpicie nawigacyjnym magazynu wybierz **alerty i zdarzenia**.
 
    ![Wybieranie pozycji Alerty i zdarzenia](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-4. W **alerty i zdarzenia**, wybierz opcję **alerty kopii zapasowej**.
+1. W **alerty i zdarzenia**, wybierz opcję **alerty kopii zapasowej**.
 
    ![Wybieranie pozycji Alerty kopii zapasowej](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -93,49 +89,50 @@ Aby monitorować alerty dotyczące kopii zapasowej:
 Aby zatrzymać, tworzenie kopii zapasowej bazy danych programu SQL Server na kilka sposobów:
 
 * Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowej i Usuń wszystkie punkty odzyskiwania.
-* Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowej, ale pozostawić bez zmian do punktów odzyskiwania.
+* Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowych i punktów odzyskiwania należy pozostawić bez zmian.
 
-Należy pamiętać, że:
+Jeśli zdecydujesz się pozostawienie punktów odzyskiwania, pamiętać o tych szczegółów:
 
-Pozostawienie punktów odzyskiwania, punkty zostaną wyczyszczone zgodnie z zasadami tworzenia kopii zapasowej. Zostaną naliczone opłaty za chronione wystąpienie i użytego miejsca do magazynowania, dopóki wszystkie punkty odzyskiwania są czyszczone. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/backup/) o cenach.
-- Gdy punkty odzyskiwania pozostanie bez zmian, mimo że wygasają zgodnie z zasadami przechowywania, kopia zapasowa Azure zawsze przechowuje jeden ostatniego punktu odzyskiwania aż jawnie usuniesz dane kopii zapasowej.
-- Jeśli usuniesz źródła danych bez zatrzymywania tworzenia kopii zapasowych, nowych kopii zapasowych będzie kończyć się niepowodzeniem. Ponownie wygaśnie stare punkty odzyskiwania zgodnie z zasadami, ale jeden z ostatniego punktu odzyskiwania zawsze zostaną zachowane, dopóki Zatrzymaj kopię zapasową i Usuń dane.
-- Nie można zatrzymać tworzenie kopii zapasowej dla bazy danych włączony do automatycznej ochrony, dopóki automatycznej ochrony jest wyłączone.
+* Zostaną wyczyszczone wszystkie punkty odzyskiwania, które pozostaną zgodnie z zasadami tworzenia kopii zapasowej. 
+* Dopóki wszystkie punkty odzyskiwania są czyszczone, Opłata zostanie naliczona za chronione wystąpienie i użytego miejsca do magazynowania. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+* Kopia zapasowa Azure zawsze przechowuje jeden ostatniego punktu odzyskiwania, dopóki nie usuniesz dane kopii zapasowej. 
+* Jeśli usuniesz źródła danych bez konieczności zatrzymywania tworzenia kopii zapasowych nowych kopii zapasowych zakończy się niepowodzeniem. 
+* Jeśli baza danych jest włączone dla autoprotection, nie można zatrzymać kopie zapasowe, o ile nie wyłączysz autoprotection.
 
 Aby zatrzymać ochronę bazy danych:
 
 1. Na pulpicie nawigacyjnym magazynu w ramach **użycia**, wybierz opcję **elementy kopii zapasowej**.
 
-    ![Otwieranie menu Elementy kopii zapasowej](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
-
-2. W **typ zarządzania kopiami zapasowymi**, wybierz opcję **SQL na maszynie Wirtualnej platformy Azure**.
+1. W obszarze **typ zarządzania kopiami zapasowymi**, wybierz opcję **SQL na maszynie Wirtualnej platformy Azure**.
 
     ![Wybieranie pozycji SQL na maszynie wirtualnej platformy Azure](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
 
-3. Wybierz bazę danych, dla którego chcesz zatrzymać ochronę.
+1. Wybierz bazę danych, dla którego chcesz zatrzymać ochronę.
 
     ![Wybieranie bazy danych w celu zatrzymania ochrony](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
 
-5. W menu bazy danych wybierz **Zatrzymaj kopię zapasową**.
+1. W menu bazy danych wybierz **Zatrzymaj kopię zapasową**.
 
     ![Wybieranie pozycji Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-sql-database/stop-db-button.png)
 
 
-6. W **Zatrzymaj tworzenie kopii zapasowej** menu, wybierz, czy chcesz zachować lub usunąć dane. Opcjonalnie podaj przyczynę i komentarz.
+1. Na **Zatrzymaj tworzenie kopii zapasowej** menu, wybierz, czy chcesz zachować lub usunąć dane. Jeśli chcesz, podaj przyczynę i komentarz.
 
-    ![Menu Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-sql-database/stop-backup-button.png)
+    ![Zachować lub usunąć dane w menu Zatrzymaj kopię zapasową](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. Kliknij przycisk **Zatrzymaj kopię zapasową** .
+1. Wybierz **Zatrzymaj kopię zapasową**.
 
   
 
-### <a name="resume-protection-for-a-sql-database"></a>Wznawianie ochrony bazy danych SQL
+## <a name="resume-protection-for-a-sql-database"></a>Wznawianie ochrony bazy danych SQL
 
-Jeśli opcja **Zachowaj dane kopii zapasowej** została wybrana po zatrzymaniu ochrony bazy danych SQL, można wznowić ochronę. Jeśli dane kopii zapasowej nie zostały zachowane, nie można wznowić ochrony.
+Po zatrzymaniu ochrony usługi SQL database, jeśli zostanie wybrana **Zachowaj dane kopii zapasowej** opcji później można wznowić ochronę. Jeśli nie Zachowaj dane kopii zapasowej, nie można wznowić ochronę.
 
-1. Aby wznowić ochronę bazy danych SQL, otwórz element kopii zapasowej, a następnie wybierz pozycję **Wznów tworzenie kopii zapasowej**.
+Aby wznowić ochronę bazy danych SQL:
+
+1. Otwórz element kopii zapasowej i wybrać **Wznów tworzenie kopii zapasowej**.
 
     ![Wybieranie pozycji Wznów tworzenie kopii zapasowej w celu wznowienia ochrony bazy danych](./media/backup-azure-sql-database/resume-backup-button.png)
 
@@ -150,11 +147,11 @@ Można uruchomić poszczególnych typów kopii zapasowych na żądanie:
 * Różnicowa kopia zapasowa
 * Kopia zapasowa dziennika
 
-[Dowiedz się więcej](backup-architecture.md#sql-server-backup-types) o programie SQL Server należy utworzyć kopię zapasową typów.
+Aby uzyskać więcej informacji, zobacz [typy kopii zapasowych programu SQL Server](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Wyrejestrowywanie wystąpienia programu SQL Server
 
-Po po wyłączeniu ochrony, ale przed usunięciem magazynu, należy wyrejestrować wystąpienia programu SQL Server:
+Po wyłączeniu ochrony, ale przed usunięciem magazynu, należy wyrejestrować wystąpienia programu SQL Server:
 
 1. Na pulpicie nawigacyjnym magazynu w ramach **Zarządzaj**, wybierz opcję **infrastruktura zapasowa**.  
 
@@ -167,11 +164,11 @@ Po po wyłączeniu ochrony, ale przed usunięciem magazynu, należy wyrejestrowa
 
 3. W **serwerów chronionych**, wybierz serwer, które chcesz wyrejestrować. Aby usunąć magazyn, musisz wyrejestrować wszystkie serwery.
 
-4. Kliknij prawym przyciskiem myszy serwer chroniony > **Usuń**.
+4. Kliknij prawym przyciskiem myszy serwer chroniony, a następnie wybierz pozycję **Usuń**.
 
    ![Wybieranie pozycji Usuń](./media/backup-azure-sql-database/delete-protected-server.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przegląd](backup-sql-server-azure-troubleshoot.md) informacje dla kopii zapasowej bazy danych programu SQL Server dotyczące rozwiązywania problemów.
+Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z kopiami zapasowymi w bazie danych programu SQL Server](backup-sql-server-azure-troubleshoot.md).

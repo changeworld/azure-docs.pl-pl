@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: hrasheed
-ms.openlocfilehash: 59d32657b3f65ee3e087ea8da3b95fff8a79a6fd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3041fba89ef29cb40cbdfdf9cd3d261ffeae816f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975427"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450009"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
@@ -59,7 +59,7 @@ Te kroki odnoszą się [witryny Azure portal](https://portal.azure.com) utworzy�
   
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
   
-1. Z menu po lewej stronie wybierz **+ Utwórz zasób**.
+1. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**.
  
 1. Wybierz **obliczenia**.
 
@@ -126,7 +126,7 @@ Po utworzeniu maszyny wirtualnej zostanie wyświetlony **wdrażanie zakończyło
     > * [Azure Cloud Shell](../cloud-shell/quickstart.md)
     > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. Aby zainstalować Bind, użyj następujących poleceń w sesji SSH:
 
@@ -135,7 +135,7 @@ Po utworzeniu maszyny wirtualnej zostanie wyświetlony **wdrażanie zakończyło
     sudo apt-get install bind9 -y
     ```
 
-3. Aby skonfigurować powiązania do przekazywania żądań rozpoznawania nazw na serwerze DNS w sieci lokalnej, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
+3. Aby skonfigurować powiązania do przekazywania żądań rozpoznawania nazw do na lokalny serwer DNS, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network

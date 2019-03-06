@@ -3,7 +3,7 @@ title: Wdrażanie istniejącego pliku wykonywalnego w usłudze Azure Service Fab
 description: Dowiedz się, jak pakiet istniejącą aplikację jako plik wykonywalny gościa, aby można było wdrożyć w klastrze usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: mfussell
-ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: 2035ee27aecdf2ec1ab8bf1166f667b5595a7cbb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168417"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439489"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakowanie i wdrażanie istniejącego pliku wykonywalnego do usługi Service Fabric
 Podczas pakowania istniejącego pliku wykonywalnego jako [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md), możesz wybrać użycie szablonu projektu programu Visual Studio lub [ręcznie utworzyć pakiet aplikacji](#manually). W programie Visual Studio struktury pakietu aplikacji i plików manifestu są tworzone przez nowy szablon projektu.
@@ -73,7 +73,7 @@ Proces pakowania ręcznie wykonywalnej gościa opiera się na następujące ogó
 -->
 
 ### <a name="create-the-package-directory-structure"></a>Tworzenie struktury katalogów pakietu
-Możesz uruchomić tworzenie struktury katalogów, zgodnie z opisem w poprzedniej sekcji "Struktura pliku pakietu aplikacji".
+Możesz uruchomić tworzenie struktury katalogów, zgodnie z opisem w [pakietów usługi Azure Service Fabric App](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Dodaj pliki kodu i konfiguracji aplikacji
 Po utworzeniu struktury katalogów, możesz dodać kod aplikacji i plików konfiguracji w ramach kodu i konfiguracji. Można również utworzyć dodatkowe katalogi lub podkatalogi w kodzie lub konfiguracji katalogów.

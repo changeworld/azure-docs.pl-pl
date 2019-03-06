@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e6a671470a87f4509e466bcdfe7845b7bf7ec8dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ebe555bfd7b34efd87d400d786049964665c76e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209167"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451063"
 ---
 # <a name="entity-resolvers"></a>Mechanizmy rozpoznawania elementów jednostki
 
@@ -80,7 +80,7 @@ Ten samouczek wymaga działa ogólne bot samouczek
 8. Opisać tekst "Niedziela w następnym tygodniu" jako "Wróć"
 9. Kliknij przycisk "Wynik akcje".
     - Zwróć uwagę, jak okienko "Pamięć" zawiera wyjścia i zwrócenie daty.
-    - Umieść kursor nad każdym z nich i obserwuj, jak jednostki są obiekty daty, które wyraźnie przechwytywania Data calandar rzeczywiste zamiast "Niedziela" lub "jutro".
+    - Umieść kursor nad każdym z nich i obserwuj, jak jednostki są obiekty daty, które wyraźnie przechwytywania datę w kalendarzu rzeczywiste zamiast "Niedziela" lub "jutro".
 10. Wybierz pozycję "Opuszczasz na..." Bot odpowiedź.
 11. Kliknij przycisk "Zapisz".
 

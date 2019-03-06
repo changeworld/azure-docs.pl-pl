@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: 5fab0446fe28cc279a732f48ca7560792f611e86
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46af936cc479770fe5db8085106c9da310a9717e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731484"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452406"
 ---
 # <a name="data-filtering"></a>Filtrowanie danych
 
@@ -23,7 +23,7 @@ Po przesłaniu dokumentów służący do szkolenia niestandardowego systemu doku
 ## <a name="sentence-alignment"></a>Wyrównanie zdań
 Jeśli dokument nie jest w formacie XLIFF, TMX lub WYRÓWNANIA, niestandardowe w usłudze Translator wyrównuje zdania źródłowe i docelowe dokumentów ze sobą, zdanie po zdaniu. W usłudze Translator nie wykonuje wyrównanie dokumentu — jest zgodna z usługi nazw dokumentów można znaleźć pasującego dokumentu innego języka. W tym dokumencie niestandardowe w usłudze Translator próbuje znaleźć odpowiedniego zdanie w innym języku. Używa ona dokumentu znaczników, takich jak HTML osadzonego tagi ułatwiające wykonywanie wyrównania.  
 
-Jeśli Zobacz duża rozbieżność między liczbę zdań w źródle i docelowej po stronie dokumentów, dokument nie mogły być równoległe w pierwszej kolejności lub z innych przyczyn, które nie są dobrze alignable. Dokument współdziała z duża różnica (> 10%) zdań na każdej stronie oświadcza drugi wygląd, aby upewnić się, że są one w rzeczywistości równoległych. Niestandardowe w usłudze Translator wyświetla ostrzeżenie obok dokumentu, jeśli liczba zdania podejrzanie różni się.  
+Zobacz w przypadku dużych różnic między liczbę zdań w źródle i docelowej po stronie dokumentów, dokument nie mogły być równoległe w pierwszej kolejności, czy innego powodu nie można wyrównać. Dokument współdziała z duża różnica (> 10%) zdań na każdej stronie oświadcza drugi wygląd, aby upewnić się, że są one w rzeczywistości równoległych. Niestandardowe w usłudze Translator wyświetla ostrzeżenie obok dokumentu, jeśli liczba zdania podejrzanie różni się.  
 
 
 ## <a name="deduplication"></a>Deduplikacja

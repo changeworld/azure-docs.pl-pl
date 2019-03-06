@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 22160a46b0c1d8fe53abe20b3d8a1b83891de5da
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: aa003d5c56e374c99b26beb884fce27b9b16298e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247583"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440067"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -192,8 +192,8 @@ Obsługuje co najmniej jeden z modeli zalecane szyfrowania szczegółowo opisane
 | Modele szyfrowania |  |  |  |
 | ----------------  | ----------------- | ----------------- | --------------- |
 | Szyfrowanie serwera | Szyfrowanie serwera | Szyfrowanie serwera | Szyfrowanie klienta
-| Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę | Szyfrowanie po stronie serwera za pomocą kluczy Customer-Managed w usłudze Azure Key Vault | Klucze zarządzane przez szyfrowanie po stronie serwera przy użyciu lokalnej klienta |
-| • Dostawców zasobów platformy azure, wykonywać operacje szyfrowania i odszyfrowywania <br> • Firma Microsoft zarządza kluczami <br>• Pełni opartej na chmurze funkcji | • Dostawców zasobów platformy azure, wykonywać operacje szyfrowania i odszyfrowywania<br>• Klient kontroluje kluczy przy użyciu usługi Azure Key Vault<br>• Pełni opartej na chmurze funkcji | • Dostawców zasobów platformy azure, wykonywać operacje szyfrowania i odszyfrowywania <br>• Klient kontroluje kluczy środowiska lokalnego <br> • Pełni opartej na chmurze funkcji| • Usług platformy azure nie można wyświetlić odszyfrowane dane <br>• Klienci zachować klucze w środowisku lokalnym lub w innych secure magazynów. Klucze nie są dostępne dla usług platformy Azure <br>• Zmniejszona funkcji w chmurze|
+| Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę | Szyfrowanie po stronie serwera za pomocą kluczy Customer-Managed w usłudze Azure Key Vault | Klucze zarządzane przez szyfrowanie po stronie serwera za pomocą klienta lokalnego |
+| • Dostawców zasobów platformy azure, wykonywać operacje szyfrowania i odszyfrowywania <br> • Firma Microsoft zarządza kluczami <br>• Pełni opartej na chmurze funkcji | • Dostawców zasobów platformy azure, wykonywać operacje szyfrowania i odszyfrowywania<br>• Klient kontroluje kluczy przy użyciu usługi Azure Key Vault<br>• Pełni opartej na chmurze funkcji | • Dostawców zasobów platformy azure, wykonywać operacje szyfrowania i odszyfrowywania <br>• Klient kontroluje kluczy w środowisku lokalnym <br> • Pełni opartej na chmurze funkcji| • Usług platformy azure nie można wyświetlić odszyfrowane dane <br>• Klienci zachować klucze w środowisku lokalnym lub w innych secure magazynów. Klucze nie są dostępne dla usług platformy Azure <br>• Zmniejszona funkcji w chmurze|
 
 ### <a name="enabling-encryption-at-rest"></a>Włączanie szyfrowanie w spoczynku
 

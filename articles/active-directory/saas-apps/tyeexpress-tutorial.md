@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e294a8b0e34e1fac24d0cbe01791e2eb290a43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 334f5fa2309c44bebe8583f497fdaa3c7578e5ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162582"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą języka T & E Express
 
@@ -134,7 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
 
     ![Konfigurowanie logowania jednokrotnego](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Wybierz **Activar(Activate)** opcję **nie** do **SI(Yes)**. W **metadanych dostawcy tożsamości** pola tekstowego, Wklej metadane XML, który masz pobrano z witryny Azure portal.
+1. Wybierz **Activar(Activate)** opcję **nie** do **SI(Yes)**. W **metadanych dostawcy tożsamości** pola tekstowego, Wklej metadane XML, który został pobrany z witryny Azure portal.
 
     ![Konfigurowanie logowania jednokrotnego](./media/tyeexpress-tutorial/tyeAdmin.png)
 

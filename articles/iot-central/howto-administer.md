@@ -1,6 +1,6 @@
 ---
 title: Administrowanie aplikacją usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako administratora jak zarządzać aplikacją usługi Azure IoT Central
+description: Jako administrator jak zarządzać aplikacją usługi Azure IoT Central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d325c30173955ff7c08099a125094ffe620c7ee3
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1b79b6870766f9595e731206bae2d4251d294942
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313382"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431330"
 ---
 # <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
@@ -149,7 +149,7 @@ Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urząd
 
 ## <a name="use-access-tokens"></a>Używanie tokenów dostępu
 
-Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany w propreties i ustawień. Dowiedz się więcej o Eksploratorze IoT Central. 
+Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany ustawień i właściwości. Dowiedz się więcej o Eksploratorze IoT Central. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Zestawy SDK platformy Azure na użytek operacje warstwy kontroli
 

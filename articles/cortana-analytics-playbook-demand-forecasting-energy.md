@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bb5ef610e55495c372a47ff78e3252c9d8ec7055
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078784"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435920"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Podręcznik dotyczący szablonu rozwiązań analizy Cortany na prognozowaniu popytu energii
 ## <a name="executive-summary"></a>Podsumowanie dla kierownictwa
@@ -187,7 +187,7 @@ Jest to zilustrowane na poniższym diagramie:
 
 Następujący akapit w tym artykule opisano proces ten krok 4:
 
-1. **Zbieranie danych** — wszystkie zaawansowane rozwiązanie do analizy na podstawie opiera się na danych (zobacz **interpretacji danych**). W szczególności jeśli chodzi o analizy predykcyjnej i przygotowywać trafniejsze prognozy, Polegamy na stałe, dynamicznych przepływu danych. W przypadku energii prognozowaniu popytu, te dane mogą być pobierane bezpośrednio z inteligentnych mierników lub agregowania się już w lokalnej bazie danych. Możemy również zależy od innych zewnętrznych źródeł danych, takich jak pogoda i temperatury. Ten przepływ bieżących danych należy zorganizowanych, planowane i przechowywane. [Usługa Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) jest naszym głównym najważniejszą metodą roboczą dla wykonania tego zadania.
+1. **Zbieranie danych** — wszystkie zaawansowane rozwiązanie do analizy na podstawie opiera się na danych (zobacz **interpretacji danych**). W szczególności jeśli chodzi o analizy predykcyjnej i przygotowywać trafniejsze prognozy, Polegamy na stałe, dynamicznych przepływu danych. W przypadku energii prognozowaniu popytu, te dane mogą być pobierane bezpośrednio z inteligentnych mierników lub już być agregowana na w lokalnej bazie danych. Możemy również zależy od innych zewnętrznych źródeł danych, takich jak pogoda i temperatury. Ten przepływ bieżących danych należy zorganizowanych, planowane i przechowywane. [Usługa Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) jest naszym głównym najważniejszą metodą roboczą dla wykonania tego zadania.
 2. **Modelowanie** — dla prognoz energii dokładnych i wiarygodnych jeden rozwijania (train) i utrzymywania doskonały model, sprawia, że korzystanie z danych historycznych i wyodrębnia zrozumiałe i predykcyjne wzorce w danych. Obszar Machine Learning (ML) ma zostały rośnie szybko za pomocą bardziej zaawansowanych algorytmów rutynowo opracowywane. Usługa Azure ML Studio udostępnia doskonałe środowisko użytkownika, który ułatwia korzystanie z najbardziej zaawansowanych algorytmów uczenia Maszynowego w ramach przepływu pracy nad. Ten przepływ pracy przedstawia intuicyjne diagram przepływu i obejmuje przygotowywania danych, funkcja wyodrębniania, modelowania i ocenę modelu. Użytkownika można ściągać setki różnych modeli, które znajdują się w tym środowisku. Przed zakończeniem tej fazy analitykiem danych mają model roboczy, który jest w pełni ocenione i gotowe do wdrożenia.
 
    Poniższy diagram jest ilustrację Typowy przepływ pracy:

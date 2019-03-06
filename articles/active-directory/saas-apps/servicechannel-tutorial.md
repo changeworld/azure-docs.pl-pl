@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190504"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ServiceChannel
 
@@ -155,7 +155,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     ![Konfigurowanie logowania jednokrotnego](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-1. Na **konfiguracji ServiceChannel** , kliknij przycisk **skonfigurować ServiceChannel** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Należy pamiętać, **identyfikator jednostka SAML** z **krótki** sekcji.
+1. Na **konfiguracji ServiceChannel** , kliknij przycisk **skonfigurować ServiceChannel** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Należy pamiętać, **identyfikator jednostki SAML** z **krótki** sekcji.
 
 1. Aby skonfigurować logowanie jednokrotne na **ServiceChannel** stronie, musisz wysłać pobrany **certyfikat (Base64)** i **identyfikator jednostki SAML** do [kanale usługi zespołu pomocy technicznej](https://servicechannel.zendesk.com/hc/en-us). One będzie wybrać tę opcję, aby mogła mieć ustawione prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 

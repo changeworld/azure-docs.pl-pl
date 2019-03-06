@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a81bcf26234f3b7840a75e7134596cb777071e8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245732"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432791"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
 
@@ -82,7 +82,7 @@ Nie można utworzyć certyfikatu, które są wymagane do uwierzytelniania Usług
 
 ## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Nie można aktywować licencji Windows Server Standard w wersji EWALUACYJNEJ do serwera w warstwie standardowa
 
-1. W ramach wdrożenia serwera konfiguracji za pomocą pakietu OVF jest używana licencję na ocenę, która jest ważna przez 180 dni. Należy aktywować tej licencji, zanim to pobiera wygasł. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powoduje hinderance do działań replikacji.
+1. W ramach wdrożenia serwera konfiguracji za pomocą pakietu OVF licencji ewaluacyjnej jest używana, która jest ważna przez 180 dni. Należy aktywować tej licencji, zanim to pobiera wygasł. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powoduje hinderance do działań replikacji.
 2. Jeśli nie można aktywować licencji Windows skontaktowanie się z [zespołu pomocy technicznej Windows](https://aka.ms/Windows_Support) Aby rozwiązać ten problem.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Zarejestrowanie komputera źródłowego serwera konfiguracji

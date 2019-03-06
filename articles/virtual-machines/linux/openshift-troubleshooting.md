@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f94189e8f39771e0c3d7856ccbb8a23ba81d94aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085839"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447278"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azure
 
 Jeśli klaster OpenShift nie wdrożony pomyślnie, witryny Azure portal zapewnia dane wyjściowe błędu. Dane wyjściowe może być trudne do odczytania, co czyni go trudno zidentyfikować problem. Szybko przeskanować te dane wyjściowe dla kodu zakończenia 3, 4 lub 5. Poniżej znajdują się informacje na te kody zakończenia trzy:
 
-- 3 kod zakończenia: Red Hat subskrypcji nazwa użytkownika / hasło lub identyfikator organizacji / klucz aktywacji jest nieprawidłowy
-- 4 kod zakończenia: usługi Red Hat puli identyfikator jest nieprawidłowy lub uprawnienia nie są dostępne
-- 5 kod zakończenia: nie można aprowizować rozmiar woluminu puli elastycznej platformy Docker
+- Kod zakończenia 3: Nazwa Red Hat subskrypcji użytkownika / hasło lub identyfikator organizacji / klucz aktywacji jest nieprawidłowy
+- Kod zakończenia 4: Identyfikator puli Red Hat są niepoprawne lub uprawnienia nie są dostępne
+- Kod zakończenia 5: Nie można aprowizować rozmiar woluminu puli elastycznej platformy Docker
 
 Wszystkie pozostałe kody zakończenia można znaleźć hostami za pośrednictwem protokołu ssh do wyświetlania plików dziennika.
 
@@ -119,5 +119,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Niektóre błędy umożliwia także następujące polecenia, aby uzyskać więcej informacji:
 
-1. Stan systemctl <service>
+1. systemctl status <service>
 2. journalctl -xe
