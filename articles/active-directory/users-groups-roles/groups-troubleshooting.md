@@ -13,20 +13,50 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1fef19c555b9d2e52d4734a8f7bc5e39183e684
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2a1210360690384b07e6d88007ccd118731ecce0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169313"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405440"
 ---
-# <a name="troubleshooting-dynamic-memberships-for-groups"></a>Rozwiązywanie problemów z członkostwem dynamicznym w grupach
+# <a name="troubleshoot-and-resolve-groups-issues"></a>Rozwiązywanie problemów i eliminowanie problemów z grupy
 
-**Czy mogę skonfigurować regułę w grupie, ale zaktualizowani nie członkostwa w grupie**<br/>Sprawdź wartości atrybutów użytkownika w regule: istnieją użytkownicy, którzy spełniają reguły? Jeśli wszystko wygląda dobrze, może potrwać trochę czasu na wypełnienie grupy. W zależności od rozmiaru dzierżawy pierwsze wypełnienie grupy lub wypełnienie grupy po zmianie reguły może potrwać do 24 godzin.
+## <a name="troubleshooting-group-creation-issues"></a>Rozwiązywanie problemów z tworzenia grupy
+**Czy wyłączone Tworzenie grupy zabezpieczeń w witrynie Azure portal, ale nadal można tworzyć grupy za pomocą programu Powershell** **użytkownika mogą tworzyć grupy zabezpieczeń w portalach platformy Azure** ustawienie w kontroli portalu systemu Azure czy bez uprawnień administratora Użytkownicy mogą tworzyć grupy zabezpieczeń, w panelu dostępu lub w witrynie Azure portal. Ta funkcja nie kontroluje tworzenie grupy zabezpieczeń za pomocą programu Powershell.
+
+Aby wyłączyć tworzenie grupy dla użytkowników bez uprawnień administratora w programie Powershell:
+1. Sprawdź, czy użytkownicy niebędący administratorami mogą tworzyć grupy:
+   
+  ```
+  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+  ```
+  
+2. Jeśli zostanie zwrócona `UsersPermissionToCreateGroupsEnabled : True`, a następnie użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
+  
+  ``` 
+  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+  ```
+
+<br/>**Został wyświetlony grup maksymalny dozwolony błąd podczas próby utworzenia grupy dynamicznej w programie Powershell**<br/>
+Jeśli komunikat o błędzie programu Powershell wskazującym _zasady grupy dynamicznej max dozwoloną liczbę grup osiągnięto_, oznacza to, że osiągnięto maksymalny limit grup dynamicznych w dzierżawie. Maksymalna liczba grup dynamicznych na dzierżawę wynosi 5000.
+
+Aby utworzyć żadnych nowych grup dynamicznych, musisz najpierw usunąć niektórych istniejących grup dynamicznych. Nie ma możliwości do zwiększenia limitu.
+
+## <a name="troubleshooting-dynamic-memberships-for-groups"></a>Rozwiązywanie problemów z członkostwem dynamicznym w grupach
+
+**Czy mogę skonfigurować regułę w grupie, ale zaktualizowani nie członkostwa w grupie**<br/>
+1. Sprawdź wartości dla użytkownika lub atrybuty urządzenia w regule. Upewnij się, że istnieją użytkownicy, którzy spełniają reguły. W przypadku urządzeń Sprawdź właściwości urządzenia, aby upewnić się, wszystkie zsynchronizowane atrybuty zawierają oczekiwane wartości.<br/>
+2. Sprawdź członkostwo stanu przetwarzania, aby upewnić się, jeśli został ukończony. Możesz sprawdzić [członkostwa stanu przetwarzania](\groups-create-rule.md#check-processing-status-for-a-rule) i Data ostatniej aktualizacji na **Przegląd** stronie dla grupy.
+
+Jeśli wszystko wygląda dobrze, może potrwać trochę czasu na wypełnienie grupy. W zależności od rozmiaru dzierżawy pierwsze wypełnienie grupy lub wypełnienie grupy po zmianie reguły może potrwać do 24 godzin.
 
 **Po skonfigurowaniu reguły, ale teraz są usuwane istniejący członkowie reguły**<br/>Jest to oczekiwane zachowanie. Istniejący członkowie grupy są usuwane, gdy reguła jest włączona lub zmienione. Użytkownicy, zwrócone w wyniku oceny reguły są dodawane jako elementy członkowskie do grupy.
 
 **Nie widzę, że członkostwo ulegnie zmianie, natychmiast po dodać lub zmienić reguły, dlaczego nie?**<br/>Ocena członkowstwa dedykowanych odbywa się okresowo w proces w tle asynchronicznego. Jak długo trwa proces zależy od liczby użytkowników w katalogu i rozmiar grupy utworzone w wyniku reguły. Zazwyczaj katalogów przy użyciu niewielkiej ich liczby użytkowników zobaczą zmiany członkostwa w grupie w mniej niż kilka minut. Katalogi z dużą liczbą użytkowników może potrwać 30 minut lub dłużej w celu wypełnienia.
+
+**Jak wymusić, grupy, które mają być przetwarzane teraz?**<br/>
+Obecnie nie ma możliwości automatycznie wyzwalać grupy, które mają być przetwarzane na żądanie. Jednak możesz ręcznie wyzwolić ponowne przetwarzanie, aktualizując regułę członkowską, aby dodać spacji na końcu.  
 
 **Wystąpił błąd przetwarzania reguły**<br/>W poniższej tabeli wymieniono typowe błędy reguły członkostwa dynamicznego i ich rozwiązania.
 

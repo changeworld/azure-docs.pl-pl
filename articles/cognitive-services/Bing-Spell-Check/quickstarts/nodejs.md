@@ -1,74 +1,77 @@
 ---
-title: 'Szybki start: Interfejs API sprawdzania pisowni Bing, Node.js'
+title: 'Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i środowiska Node.js'
 titlesuffix: Azure Cognitive Services
-description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API sprawdzania pisowni Bing.
+description: Rozpocznij korzystanie z interfejsu API REST sprawdzania pisowni Bing, aby sprawdzać pisownię i poprawność gramatyczną.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0fea6f163e6d977f26e13c816c4eaa514eea676b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e3379a086eb09745142f4e3997ed195eb4d1de5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864897"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56885911"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-nodejs"></a>Szybki start: interfejs API sprawdzania pisowni Bing w środowisku Node.js 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i środowiska Node.js
 
-W tym artykule pokazano, jak używać [interfejsu API sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/)  ze środowiskiem Node.js. Interfejs API sprawdzania pisowni zwraca listę wyrazów, których nie rozpoznaje, oraz sugestie ich zastąpienia. Typowym sposobem korzystania z tego interfejsu API jest przesłanie tekstu, a następnie wprowadzenie sugerowanych zmian w tekście lub pokazanie ich użytkownikowi aplikacji, aby zdecydował, czy wprowadzić zmiany. W tym artykule pokazano, jak wysłać żądanie zawierające tekst „Hollo, wrld!”. Sugerowane zamiany to „Hello” i „world”.
+Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu API REST sprawdzania pisowni Bing. Ta prosta aplikacja w języku Python wysyła żądanie do interfejsu API i zwraca listę nierozpoznanych słów oraz sugerowane poprawki. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy tej aplikacji jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić ten kod, potrzebne jest środowisko [Node.js 6](https://nodejs.org/en/download/).
+* Środowisko [Node.js 6](https://nodejs.org/en/download/) lub nowsze.
 
-Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API sprawdzania pisowni Bing w wersji 7**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/#lang) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>Pobieranie wyników sprawdzania pisowni
 
-1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+## <a name="create-and-initialize-a-project"></a>Tworzenie i inicjowanie projektu
 
-```nodejs
-'use strict';
+1. Utwórz nowy plik JavaScript w ulubionym środowisku IDE lub edytorze. Ustaw poziom ścisłości i włącz wymaganie protokołu https. Następnie utwórz zmienne dla hosta punktu końcowego interfejsu API, ścieżki i klucza subskrypcji.
 
-let https = require ('https');
+    ```javascript
+    'use strict';
+    let https = require ('https');
+    
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/spellcheck';
+    let key = 'ENTER KEY HERE';
+    ```
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/spellcheck';
+2. Utwórz zmienne dla rynku, trybu sprawdzania pisowni i tekstu, który ma być sprawdzany. Następnie utwórz ciąg, który dołącza parametr `?mkt=` do rynku i parametr `&mode=` do trybu.
 
-/* NOTE: Replace this example key with a valid subscription key (see the Prequisites section above). Also note v5 and v7 require separate subscription keys. */
-let key = 'ENTER KEY HERE';
+    ```javascript
+    let mkt = "en-US";
+    let mode = "proof";
+    let text = "Hollo, wrld!";
+    let query_string = "?mkt=" + mkt + "&mode=" + mode;
+    ```
 
-// These values are used for optional headers (see below).
-// let CLIENT_ID = "<Client ID from Previous Response Goes Here>";
-// let CLIENT_IP = "999.999.999.999";
-// let CLIENT_LOCATION = "+90.0000000000000;long: 00.0000000000000;re:100.000000000000";
+## <a name="create-the-request-parameters"></a>Tworzenie parametrów żądania
 
-let mkt = "en-US";
-let mode = "proof";
-let text = "Hollo, wrld!";
-let query_string = "?mkt=" + mkt + "&mode=" + mode;
+Utwórz parametry żądania przez utworzenie nowego obiektu przy użyciu metody `POST`. Dodaj ścieżkę utworzoną przez połączenie ścieżki do punktu końcowego i ciągu zapytania. Dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
 
+```javascript
 let request_params = {
-    method : 'POST',
-    hostname : host,
-    path : path + query_string,
-    headers : {
-        'Content-Type' : 'application/x-www-form-urlencoded',
-        'Content-Length' : text.length + 5,
-        'Ocp-Apim-Subscription-Key' : key,
-//        'X-Search-Location' : CLIENT_LOCATION,
-//        'X-MSEdge-ClientID' : CLIENT_ID,
-//        'X-MSEdge-ClientIP' : CLIENT_ID,
-    }
+   method : 'POST',
+   hostname : host,
+   path : path + query_string,
+   headers : {
+   'Content-Type' : 'application/x-www-form-urlencoded',
+   'Content-Length' : text.length + 5,
+      'Ocp-Apim-Subscription-Key' : key,
+   }
 };
+```
 
+## <a name="create-a-response-handler"></a>Tworzenie procedury obsługi odpowiedzi
+
+Utwórz funkcję o nazwie `response_handler`, która będzie przyjmować odpowiedź JSON z interfejsu API i wyświetlać ją. Utwórz zmienną na potrzeby treści odpowiedzi. Dołącz odpowiedź w przypadku odebrania flagi `data` za pomocą funkcji `response.on()`. Po odebraniu flagi `end` treść odpowiedzi JSON powinna zostać wyświetlona w konsoli.
+
+```javascript
 let response_handler = function (response) {
     let body = '';
     response.on ('data', function (d) {
@@ -81,13 +84,19 @@ let response_handler = function (response) {
         console.log ('Error: ' + e.message);
     });
 };
+```
 
+## <a name="send-the-request"></a>Wysyłanie żądania
+
+Wywołaj interfejs API przy użyciu funkcji `https.request()` z parametrami żądania i procedurą obsługi odpowiedzi. Wpisz tekst do interfejsu API, a następnie zakończ żądanie.
+
+```javascript
 let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
 
-**Odpowiedź**
+## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -132,9 +141,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek sprawdzania pisowni Bing](../tutorials/spellcheck.md)
+> [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Zobacz też
-
-- [Omówienie sprawdzania pisowni Bing](../proof-text.md)
+- [Czym jest interfejs API sprawdzania pisowni Bing?](../overview.md)
 - [Dokumentacja interfejsu API sprawdzania pisowni Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

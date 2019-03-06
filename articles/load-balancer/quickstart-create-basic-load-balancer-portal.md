@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231975"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986332"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: Tworzenie podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
 
 Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między maszyny wirtualne. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia i równoważyć obciążenie wśród maszyn wirtualnych. W tym przewodniku Szybki start pokazano, jak utworzyć i skonfigurować moduł równoważenia obciążenia, serwery zaplecza i zasoby sieciowe w warstwie cenowej Podstawowa.
 
@@ -34,21 +34,23 @@ Aby wykonać zadania z tego przewodnika Szybki start, zaloguj się do witryny [A
 
 Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy użyciu portalu. Utworzona przez Ciebie nazwa i publiczny adres IP są automatycznie konfigurowane jako fronton modułu równoważenia obciążenia.
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-   
-1. W okienku **Tworzenie modułu równoważenia obciążenia** wpisz lub wybierz następujące wartości:
-   
-   - **Nazwa**: wpisz *MyLoadBalancer*.
-   - **Typ**: wybierz pozycję **Publiczny**. 
-   - **SKU**: Wybierz pozycję **Podstawowa**.
-   - **Publiczny adres IP:** Wybierz pozycję**Utwórz nowy**. 
-     - Pole **Publiczny adres IP**: wpisz *MyPublicIP*.
-     - **Skonfiguruj publiczny adres IP** > **Przypisanie**: wybierz pozycję **Dynamiczne**.
-   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź nazwę *MyResourceGroupLB* i wybierz przycisk **OK**. 
-   
-1. Wybierz pozycję **Utwórz**.
-   
-![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
+
+    | Ustawienie                 | Wartość                                              |
+    | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz pozycję **Podstawowa**.                          |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Nazwa publicznego adresu IP              | *MyPublicIP*   |
+    | Przypisanie| Statyczny|
+
+3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
+
 
 ## <a name="create-back-end-servers"></a>Tworzenie serwerów zaplecza
 

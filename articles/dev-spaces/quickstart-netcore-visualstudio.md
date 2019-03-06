@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 224b8fac3634e5ee9e5ffadc7664bd046467d2ce
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89fd64be0ea7b5b02ed446f2ee6d4c6a9c69dd0e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660854"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819688"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Szybki start: Tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (platforma .NET Core i program Visual Studio)
 
@@ -32,9 +32,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klaster Kubernetes z uruchomioną platformą Kubernetes 1.9.6 lub nowszą w regionie EastUS, EastUS2, CentralUS, WestUS2, WestEurope, SoutheastAsia, CanadaCentral lub CanadaEast z włączonym routingiem aplikacji protokołu HTTP.
-
-  ![Pamiętaj, aby włączyć routing aplikacji protokołu HTTP.](media/common/Kubernetes-Create-Cluster-3.PNG)
+- Klaster Kubernetes z uruchomioną platformą Kubernetes 1.9.6 lub nowszą w regionie EastUS, EastUS2, CentralUS, WestUS2, WestEurope, SoutheastAsia, CanadaCentral lub CanadaEast.
 
 - Program Visual Studio 2017 z zainstalowanym obciążeniem Tworzenie aplikacji internetowych. Jeśli program nie został zainstalowany, pobierz go [tutaj](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 

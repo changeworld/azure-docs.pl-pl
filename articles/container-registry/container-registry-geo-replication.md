@@ -1,109 +1,109 @@
 ---
-title: Rejestr Azure container registry replikacji geograficznej
-description: Rozpocznij tworzenie i zarządzanie nimi rejestry kontenerów platformy Azure z replikacją geograficzną.
+title: Replikacja geograficzna rejestru kontenerów platformy Azure
+description: Rozpocznij tworzenie rejestrów kontenerów platformy Azure z replikacją geograficzną i zarządzanie nimi.
 services: container-registry
 author: stevelas
 manager: jeconnoc
 ms.service: container-registry
-ms.topic: overview-article
+ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: a83cf6b37a28ec38165778faa7a9ecc266cce7bd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858267"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674705"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
-Wybierz firmy chcące obecność na rynku lokalnym lub gorąca kopii zapasowej do uruchamiania usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem jest umieszczenie rejestr kontenera w każdym regionie, w którym są uruchamiane obrazów umożliwia wykonywanie operacji sieci w pobliżu, umożliwiające szybkie, transfer warstwy niezawodne obrazu. Replikacja geograficzna umożliwia rejestr Azure container registry działa jak pojedynczy rejestr obsługująca wielu regionów za pomocą wielu wzorców, regionalnych rejestrów.
+Firmy, które chcą zaznaczyć swoją obecność lokalną lub wykonywać dynamiczną kopię zapasową, decydują się na uruchamianie usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem jest umieszczenie rejestru kontenerów w każdym regionie, w którym uruchamiane są obrazy. Umożliwia to wykonywanie operacji w pobliskiej sieci, dzięki czemu transfery w warstwie obrazu są szybkie i niezawodne. Replikacja geograficzna umożliwia działanie rejestru kontenerów platformy Azure jako pojedynczego rejestru obsługującego wiele regionów przy użyciu wielowzorcowych rejestrów regionalnych.
 
 Rejestr z replikacją geograficzną zapewnia następujące korzyści:
 
-* Jednej nazwy tagu/obrazu/rejestru mogą być używane w wielu regionach
-* Dostęp do rejestru pobliskiej sieci od wdrożeń regionalnych
-* Nie trzeba ponosić opłat dodatkowy ruch wychodzący jako obrazy są pobierane z lokalnego, replikowany rejestru w tym samym regionie, co hosta kontenera
-* To samo Zarządzanie rejestru w wielu regionach
+* Możliwość używania pojedynczych nazw rejestru/obrazu/tagu w wielu regionach
+* Dostęp do rejestru z pobliskiej sieci z poziomu wdrożeń regionalnych
+* Brak dodatkowych opłat za ruch wychodzący — obrazy są pobierane z lokalnego, zreplikowanego rejestru znajdującego się w tym samym regionie co host kontenera
+* Pojedyncza usługa zarządzania rejestrem w wielu regionach
 
 > [!NOTE]
-> Jeśli zachodzi potrzeba obsługa kopiowania obrazów kontenerów w więcej niż jednej usługi Azure container registry, Azure Container Registry obsługuje również [obraz importowania](container-registry-import-images.md). Na przykład w przepływie pracy DevOps zaimportowaniem obrazu z rejestru rozwoju do rejestru produkcji, bez konieczności używania poleceń platformy Docker.
+> Jeśli zachodzi potrzeba obsługi kopii obrazów kontenerów w więcej niż jednym rejestrze kontenerów platformy Azure, usługa Azure Container Registry obsługuje również [importowanie obrazów](container-registry-import-images.md). Na przykład w ramach przepływu pracy DevOps można zaimportować obraz z rejestru deweloperskiego do rejestru produkcyjnego bez konieczności używania poleceń platformy Docker.
 >
 
-## <a name="example-use-case"></a>Przykład przypadek użycia
-Contoso uruchamia obecności publicznej witryny sieci Web znajdujących się w różnych Stanach Zjednoczonych, Kanadzie i Europie. Aby obsługiwać te rynki z zawartości lokalnej i sieci w pobliżu, uruchamia Contoso [usługi Azure Kubernetes Service](/azure/aks/) (AKS), klastrów w regionie zachodnie stany USA, wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Aplikację witryny sieci Web, wdrażane jako obraz platformy Docker, korzysta z tego samego kodu i obrazów we wszystkich regionach. Zawartość lokalnego do tego regionu są pobierane z bazy danych, która jest obsługiwana w sposób unikatowy w każdym regionie. Każde wdrożenie regionalnych ma konfigurację unikatowy dla zasobów, takich jak lokalnej bazy danych.
+## <a name="example-use-case"></a>Przykładowy przypadek użycia
+Firma Contoso posiada dostępną publicznie witryny internetową zlokalizowaną w Stanach Zjednoczonych, Kanadzie i Europie. Aby obsługiwać te rynki przy użyciu zawartości lokalnej dostępnej w pobliskiej sieci, firma Contoso uruchamia klastry usługi [Azure Kubernetes Service](/azure/aks/) (AKS) w regionach Zachodnie stany USA, Wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Aplikacja internetowa wdrożona jako obraz platformy Docker korzysta z tego samego kodu i obrazu we wszystkich regionach. Zawartość, lokalna w danym regionie, jest pobierana z bazy danych aprowizowanej w sposób unikatowy w każdym regionie. Dla każdego wdrożenia regionalnego istnieje unikatowa konfiguracja zasobów, takich jak lokalna baza danych.
 
-Zespół deweloperów znajduje się w Seattle, WA, przy użyciu Centrum danych w regionie zachodnie stany USA.
+Zespół programistyczny znajduje się w Seattle w stanie Waszyngton i korzysta z centrum danych w regionie Zachodnie stany USA.
 
 ![Wypychanie do wielu rejestrów](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Wypychanie do wielu rejestrów*
 
-Przed użyciem funkcji replikacji geograficznej, firma Contoso ma rejestru amerykańskiej w regionie zachodnie stany USA, za pomocą dodatkowych rejestru w regionie Europa Zachodnia. Do obsługi tych różnych regionach, zespół opracowujący wypchnąć obrazy do dwóch różnych rejestrów.
+Zanim były używane funkcje replikacji geograficznej, firma Contoso posiadała rejestr znajdujący się w regionie Zachodnie stany USA oraz dodatkowy rejestr w regionie Europa Zachodnia. W celu obsługi tych regionów zespół programistyczny wypychał obrazy do dwóch różnych rejestrów.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2
 docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
-![Pobieranie z wielu rejestrów](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Pobieranie z wielu rejestrów*
+![Ściąganie z wielu rejestrów](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Ściąganie z wielu rejestrów*
 
-Typowe problemy z wielu rejestrów obejmują:
+Typowe wyzwania związane z korzystaniem z wielu rejestrów:
 
-* Klastry wschodnie stany USA, zachodnie stany USA i Kanada Środkowa ściąganie z rejestru zachodnie stany USA, naliczania opłat za ruch wychodzący zgodnie z każdego z tych hostów w zdalnym kontenerze ściągania obrazów z centrów danych w regionie zachodnie stany USA.
-* Zespół programistyczny musi wypychanie obrazów do rejestrów zachodnie stany USA i Europa Zachodnia.
-* Zespół programistyczny musi konfigurowania i konserwacji każdego regionalne wdrożenia przy użyciu nazwy obrazów odwołujące się do rejestru lokalnego.
+* Klastry w regionach Wschodnie stany USA, Zachodnie stany USA i Kanada Środkowa są ściągane z rejestru w regionie Zachodnie stany USA, co powoduje naliczanie opłat za ruch wychodzący, ponieważ każdy z tych zdalnych hostów kontenerów ściąga obrazy z centrów danych w regionie Zachodnie stany USA.
+* Zespół programistyczny musi wypychać obrazy do rejestrów w regionach Zachodnie stany USA i Europa Zachodnia.
+* Zespół programistyczny musi konfigurować i konserwować każde wdrożenie regionalne przy użyciu nazw obrazów odwołujących się do rejestru lokalnego.
 * Dostęp do rejestru musi być skonfigurowany dla każdego regionu.
 
-## <a name="benefits-of-geo-replication"></a>Korzyści z replikacją geograficzną
+## <a name="benefits-of-geo-replication"></a>Korzyści z replikacji geograficznej
 
 ![Ściąganie z rejestru z replikacją geograficzną](media/container-registry-geo-replication/after-geo-replicate-pull.png)
 
-Przy użyciu funkcji replikacji geograficznej usługi Azure Container Registry, są realizowane następujące korzyści:
+Funkcja replikacji geograficznej usługi Azure Container Registry zapewnia następujące korzyści:
 
-* Zarządzanie pojedynczym rejestrem we wszystkich regionach: `contoso.azurecr.io`
-* Zarządzanie jedną konfigurację wdrożenia obrazu, ponieważ we wszystkich regionach jest używany ten sam adres URL obrazu: `contoso.azurecr.io/public/products/web:1.2`
-* Wypychanie do pojedynczym rejestrem, podczas gdy, rejestru Azure container Registry zarządza replikację geograficzną, w tym regionalne elementy webhook dla powiadomień lokalnych
+* Zarządzanie pojedynczym rejestrem w wielu regionach: `contoso.azurecr.io`
+* Zarządzanie jedną konfiguracją wdrożeń obrazów, ponieważ we wszystkich regionach jest używany ten sam adres URL obrazu: `contoso.azurecr.io/public/products/web:1.2`
+* Wypychanie do pojedynczego rejestru, podczas gdy usługa ACR zarządza replikacją geograficzną, co obejmuje regionalne elementy webhook na potrzeby powiadomień lokalnych
 
 ## <a name="configure-geo-replication"></a>Konfigurowanie replikacji geograficznej
-Konfigurowanie replikacji geograficznej jest równie proste jak klikając regiony na mapie.
+Konfigurowanie replikacji geograficznej jest równie proste, co klikanie regionów na mapie.
 
-Replikacja geograficzna jest funkcją [rejestrach w warstwie Premium](container-registry-skus.md) tylko. Jeśli rejestru nie jest jeszcze — wersja Premium, możesz zmienić podstawowa i standardowa do warstwy Premium w [witryny Azure portal](https://portal.azure.com):
+Replikacja geograficzna jest funkcją dotyczącą tylko [rejestrów w warstwie Premium](container-registry-skus.md). Jeśli Twój rejestr nie znajduje się jeszcze w warstwie Premium, możesz zmienić warstwę z warstwy Podstawowa i Standardowa na warstwę Premium w [witrynie Azure Portal](https://portal.azure.com):
 
-![Przełączanie jednostek SKU w witrynie Azure portal](media/container-registry-skus/update-registry-sku.png)
+![Przełączanie jednostek SKU w witrynie Azure Portal](media/container-registry-skus/update-registry-sku.png)
 
-Aby skonfigurować replikację geograficzną dla rejestr w warstwie Premium, zaloguj się do witryny Azure portal pod http://portal.azure.com.
+Aby skonfigurować replikację geograficzną dla rejestru w warstwie Premium, zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
-Przejdź do usługi Azure Container Registry, a następnie wybierz pozycję **replikacje**:
+Przejdź do używanego rejestru Azure Container Registry, a następnie wybierz pozycję **Replikacje**:
 
 ![Replikacje w interfejsie użytkownika rejestru kontenerów w witrynie Azure Portal](media/container-registry-geo-replication/registry-services.png)
 
-Zostanie wyświetlona mapa przedstawiająca wszystkie bieżące regionów platformy Azure:
+Zostanie wyświetlona mapa przedstawiająca wszystkie bieżące regiony platformy Azure:
 
  ![Mapa regionów w witrynie Azure Portal](media/container-registry-geo-replication/registry-geo-map.png)
 
-* Sześciokąty niebieskiego reprezentują bieżącej repliki
-* Zielony Sześciokąty reprezentują możliwe repliki regionów
-* Szara Sześciokąty reprezentują regiony platformy Azure nie jest jeszcze dostępna dla replikacji
+* Niebieskie sześciokąty reprezentują bieżące repliki
+* Zielone sześciokąty reprezentują możliwe regiony replik
+* Szare sześciokąty reprezentują regiony platformy Azure, które nie są jeszcze dostępne dla replikacji
 
-Aby skonfigurować replikę, wybierz zielony sześciokąt, a następnie wybierz **Utwórz**:
+Aby skonfigurować replikę, wybierz zielony sześciokąt, a następnie wybierz pozycję **Utwórz**:
 
  ![Tworzenie interfejsu użytkownika replikacji w witrynie Azure Portal](media/container-registry-geo-replication/create-replication.png)
 
-Aby skonfigurować dodatkowe repliki, zaznacz zielony Sześciokąty innych regionów, a następnie kliknij **Utwórz**.
+Aby skonfigurować dodatkowe repliki, wybierz zielone sześciokąty dla innych regionów, a następnie kliknij pozycję **Utwórz**.
 
-Rejestru Azure container Registry rozpoczyna synchronizowanie obrazów między replikami skonfigurowany. Po wykonaniu tych czynności, portalu będzie wyświetlany stan *gotowe*. Stan repliki w portalu nie są automatycznie aktualizowane. Użyj przycisku Odśwież, aby zobaczyć zaktualizowany stan.
+Usługa ACR rozpocznie synchronizowanie obrazów między skonfigurowanymi replikami. Po ukończeniu tego zadania w portalu zostanie wyświetlony stan *Gotowe*. Stan repliki w portalu nie jest automatycznie aktualizowany. Użyj przycisku odświeżania, aby wyświetlić zaktualizowany stan.
 
 ## <a name="geo-replication-pricing"></a>Cennik replikacji geograficznej
 
-Replikacja geograficzna jest funkcją [jednostki SKU Premium](container-registry-skus.md) usługi Azure Container Registry. W przypadku replikacji rejestru regionom żądaną wiąże się z wersji Premium opłaty rejestru dla każdego regionu.
+Replikacja geograficzna jest funkcją [jednostki SKU w warstwie Premium](container-registry-skus.md) usługi Azure Container Registry. Replikacja rejestru w żądanych regionach wiąże się z naliczaniem opłat za rejestr w warstwie Premium w danym regionie.
 
-W poprzednim przykładzie Contoso skonsolidowane dwóch rejestrów do jednego, dodawanie replik wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Contoso płaci Premium cztery razy na miesiąc, bez dodatkowej konfiguracji lub zarządzania. Każdy region ściąga teraz obrazów lokalnie, zwiększania wydajności i niezawodności bez opłatami za dane wychodzące w sieci z regionu zachodnie stany USA do Kanady i wschodnie stany USA.
+W poprzednim przykładzie firma Contoso skonsolidowała dwa rejestry w ramach jednego, dodając repliki do regionu Wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Firma Contoso zapłaciłaby miesięcznie czterokrotną opłatę za warstwę Premium bez dodatkowej konfiguracji ani zarządzania. W każdym regionie obrazy są teraz ściągane lokalnie, co zwiększa wydajność i niezawodność bez ponoszenia opłat za ruch wychodzący w sieci z regionu Zachodnie stany USA do regionu Kanada Środkowa i Wschodnie stany USA.
 
 ## <a name="summary"></a>Podsumowanie
 
-Dzięki replikacji geograficznej można zarządzać swoje regionalnych centrach danych jako jedna chmura globalnego. Obrazy są używane w wielu usługach platformy Azure, mogą korzystać z pojedynczej powierzchni zarządzania, przy zachowaniu sieci w pobliżu, szybkie i niezawodne lokalny obraz ściąga.
+Dzięki replikacji geograficznej możesz zarządzać swoimi regionalnymi centrami danych jako jedną chmurą globalną. Ze względu na to, że obrazy są używane w wielu usługach platformy Azure, możesz korzystać z zalet pojedynczego obszaru zarządzania, obsługując równocześnie szybkie i niezawodne lokalne operacje ściągania obrazów w pobliskiej sieci.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z częścią trzyczęściowej serii samouczków [replikacja geograficzna w usłudze Azure Container Registry](container-registry-tutorial-prepare-registry.md). Opisano tworzenie rejestru z replikacją geograficzną, utworzenie kontenera i wdrażania go za pomocą jednego `docker push` polecenia do wielu aplikacji sieci Web regionalnych wystąpień kontenerów.
+Zapoznaj się z trzyczęściową serią samouczków dostępną w sekcji [Replikacja geograficzna w usłudze Azure Container Registry](container-registry-tutorial-prepare-registry.md). Opisano w niej tworzenie rejestru z replikacją geograficzną, tworzenie kontenera, a następnie wdrażanie go w ramach wielu regionalnych aplikacji usługi Web Apps na potrzeby wystąpień kontenerów za pomocą pojedynczego polecenia `docker push`.
 
 > [!div class="nextstepaction"]
 > [Replikacja geograficzna w usłudze Azure Container Registry](container-registry-tutorial-prepare-registry.md)

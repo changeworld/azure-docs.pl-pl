@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 3eff78aa6b13c48868b95bae03a8406a550a42c9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243877"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440985"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla Australii CHRONIONA
 
@@ -30,7 +30,7 @@ To rozwiązanie zapewnia architekturę referencyjną dla aplikacji sieci web Paa
 
 Architektura może dostarczać środowiska bezpieczną hybrydową, która rozszerza sieć lokalną na platformę Azure, umożliwiając obciążeń opartych na sieci web na dostęp do bezpiecznego firmy użytkownicy w organizacji prywatnej sieci lokalnej lub z Internetu. W przypadku rozwiązań lokalnych klient jest odpowiedzialne i odpowiada za wszystkie aspekty zabezpieczeń, działań i zgodności.
 
-Zasoby platformy Azure zawartych w tym rozwiązaniu mogą łączyć się z lokalną sieć lub centra danych funkcji wspólnej lokalizacji (np. Przechwytywanie zmian danych Canberra) za pośrednictwem protokołu IPSec VPN przy użyciu bramy sieci VPN i za pośrednictwem usługi ExpressRoute. Decyzja o wykorzystanie sieci VPN powinna być podejmowana z klasyfikacją przesyłanych danych i ścieżka sieciowa, należy pamiętać. Klienci, którzy hostują na dużą skalę, obciążeń o znaczeniu krytycznym, za pomocą wymagających danych big Data, należy rozważyć architektury sieci hybrydowej za pomocą usługi ExpressRoute w sieci prywatnej łączności z usługami platformy Azure. Zapoznaj się [wskazówki i zalecenia](#guidance-and-recommendations) sekcji, aby uzyskać więcej szczegółowych informacji dotyczących mechanizmów połączeń opartych na platformie Azure.
+Zasoby platformy Azure zawartych w tym rozwiązaniu mogą łączyć się z lokalną sieć lub centra danych funkcji wspólnej lokalizacji (np. Przechwytywanie zmian danych Canberra) za pośrednictwem protokołu IPSec VPN przy użyciu bramy sieci VPN i za pośrednictwem usługi ExpressRoute. Decyzja o korzystanie z sieci VPN powinna być podejmowana z klasyfikacją przesyłanych danych i ścieżka sieciowa, należy pamiętać. Klienci, którzy hostują na dużą skalę, obciążeń o znaczeniu krytycznym, za pomocą wymagających danych big Data, należy rozważyć architektury sieci hybrydowej za pomocą usługi ExpressRoute w sieci prywatnej łączności z usługami platformy Azure. Zapoznaj się [wskazówki i zalecenia](#guidance-and-recommendations) sekcji, aby uzyskać więcej szczegółowych informacji dotyczących mechanizmów połączeń opartych na platformie Azure.
 
 Aby umożliwić użytkownikom uwierzytelnianie przy użyciu poświadczeń lokalnych i dostęp do wszystkich zasobów w chmurze przy użyciu lokalnej infrastruktury usług Active Directory Federation Services, stosuje się federacji z usługą Azure Active Directory. Active Directory Federation Services zapewniają uproszczoną, zabezpieczoną tożsamości federacyjnych i sieci web jednej funkcji logowania jednokrotnego dla tego środowiska hybrydowego. Zapoznaj się [wskazówki i zalecenia](#guidance-and-recommendations) sekcji dalsze szczegóły dotyczące usługi Azure Active Directory Instalatora.
 
@@ -123,11 +123,11 @@ Każdej z grup zabezpieczeń sieci ma określone porty i protokoły Otwórz rozw
 **Usługa Azure Load Balancer**: [Usługa Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) pozwala klientom na skalowanie swoich aplikacji i zapewniać wysoką dostępność usług. Modułu równoważenia obciążenia obsługuje scenariusze dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność oraz skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP.
 
 ### <a name="data-in-transit"></a>Przesyłane dane
-Azure szyfruje cała komunikacja do i z platformy Azure w centrach danych, domyślnie. 
+Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. 
 
 W przypadku chronionych danych w drodze od klienta do sieci architektura używa platformy Azure Internet lub usługi ExpressRoute za pośrednictwem bramy sieci VPN skonfigurowane przy użyciu protokołu IPSEC.
 
-Ponadto wszystkie transakcje na platformie Azure za pośrednictwem portalu zarządzania systemu Azure występować za pośrednictwem protokołu HTTPS z protokołu TLS 1.2.
+Ponadto wszystkie transakcje na platformie Azure za pośrednictwem portalu zarządzania systemu Azure występować za pośrednictwem protokołu HTTPS przy użyciu protokołu TLS 1.2.
 
 ### <a name="data-at-rest"></a>Dane magazynowane
 Architektura chroni dane za pomocą funkcji szyfrowania, inspekcja bazy danych i innych miar.
@@ -189,7 +189,7 @@ Usługi platformy Azure często dziennika systemu i aktywności użytkownika, a 
 - **Dzienniki aktywności**: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
 - **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki usługi Azure Storage, dzienników inspekcji usługi Key Vault i usługa Application Gateway Dzienniki dostępu i zapory. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Okres przechowywania jest konfigurowanych przez użytkownika, się do 730 dni, spełniają wymagania specyficzne dla organizacji przechowywania.
 
-**Dzienniki platformy Azure Monitor**: Te dzienniki i dalszych są skonsolidowane w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych, co pozwala wszystkie dane do analizy ze sobą niezależnie od ich oryginalnego źródła. Ponadto usługa Azure Security Center integruje się z dzienników usługi Azure Monitor, dzięki czemu klienci mogą korzystać z zapytania Kusto dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
+**Dzienniki platformy Azure Monitor**: Te dzienniki i dalszych są skonsolidowane w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych, dzięki czemu wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto usługa Azure Security Center integruje się z dzienników usługi Azure Monitor, dzięki czemu klienci mogą korzystać z zapytania Kusto dostęp do swoich danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
 
 Następujące Azure [rozwiązania do monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
 -   [Ocena usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie kondycja Sprawdzanie usługi Active Directory ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu i zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.

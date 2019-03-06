@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 2439244edcc1b7026a2cc8a62a946188e279f15f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4489fc82f836d8c311fcd776e211670897618b54
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245834"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889481"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Samouczek: Integracja usługi Power BI z usługą analizy tekstu w usłudze Cognitive Service
 
@@ -94,7 +94,7 @@ Możesz również rozważyć odfiltrowanie pustych wiadomości, używając filtr
 | | |
 | - | - |
 | `id`  | Unikatowy identyfikator dla tego dokumentu w żądaniu. Odpowiedź również zawiera to pole. Dzięki temu podczas przetwarzania więcej niż jednego dokumentu można łatwo skojarzyć wyodrębnione frazy kluczowe z dokumentem, z którego pochodzą. Ponieważ w tym samouczku przetwarzasz tylko jeden dokument w każdym żądaniu, możesz trwale zakodować wartość `id`, aby była taka sama dla każdego żądania.|
-| `text`  | Tekst do przetworzenia. Wartość tego pola pochodzi z kolumny `Merged` zawierającej wiersz tematu połączony z tekstem komentarza, która została utworzona w [poprzedniej sekcji](#PreparingData). Interfejs API fraz kluczowych wymaga, aby te dane nie były dłuższe niż około 5000 znaków.|
+| `text`  | Tekst do przetworzenia. Wartość tego pola pochodzi z kolumny `Merged` zawierającej wiersz tematu połączony z tekstem komentarza, która została utworzona w [poprzedniej sekcji](#PreparingData). Interfejs API fraz kluczowych wymaga, aby te dane nie były dłuższe niż około 5120 znaków.|
 | `language` | Kod języka naturalnego, w którym został napisany dokument. Wszystkie wiadomości w przykładowych danych są w języku angielskim, dlatego możesz trwale zakodować wartość `en` dla tego pola.|
 
 ## <a name="create-a-custom-function"></a>Tworzenie funkcji niestandardowej

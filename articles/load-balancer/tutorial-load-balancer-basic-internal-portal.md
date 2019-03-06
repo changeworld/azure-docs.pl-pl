@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232621"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983187"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -87,20 +87,23 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
 
 1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
    
-1. W okienku **Tworzenie modułu równoważenia obciążenia** wpisz lub wybierz następujące wartości:
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
+
+    | Ustawienie                 | Wartość                                              |
+    | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz pozycję **Podstawowa**.                          |
+    | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
+| Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Przypisywanie publicznego adresu IP              | Wybierz wartość **Statyczny**.   |
+    | Prywatny adres IP|wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
+
+3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**. 
    
-   - **Nazwa**: wpisz *MyLoadBalancer*.
-   - **Typ**: wybierz pozycję **Wewnętrzny**. 
-   - **SKU**: Wybierz pozycję **Podstawowa**.
-   - **Sieć wirtualna**: wybierz listę **Wybierz sieć wirtualną**, a następnie wybierz pozycję **MyVNet**.
-   - **Podsieć**: wybierz listę **Wybierz podsieć**, a następnie wybierz pozycję **MyBackendSubnet**.
-   - **Przypisanie adresu IP**: wybierz pozycję **Statyczne**, jeśli nie została zaznaczona.
-   - **Prywatny adres IP**: wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.
-   - **Grupa zasobów**: rozwiń listę **Wybierz istniejącą**, a następnie wybierz pozycję **MyResourceGroupLB**. 
-   
-1. Wybierz pozycję **Utwórz**.
-   
-![Tworzenie modułu równoważenia obciążenia](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>Tworzenie zasobów podstawowego modułu równoważenia obciążenia
 

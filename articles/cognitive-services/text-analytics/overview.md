@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242943"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889291"
 ---
 # <a name="what-is-text-analytics"></a>Co to jest analiza tekstu?
 
@@ -64,11 +64,11 @@ Ta sekcja została przeniesiona do oddzielnego artykułu, aby zapewnić lepszą 
 
 ## <a name="data-limits"></a>Limity danych
 
-Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postaci nieprzetworzonego tekstu. Aktualne ograniczenie to 5000 znaków dla każdego dokumentu; jeśli chcesz przeanalizować większe dokumenty, możesz podzielić je na mniejsze części. Jeśli nadal potrzebujesz większego limitu, [skontaktuj się z nami](https://azure.microsoft.com/overview/sales-number/), abyśmy mogli omówić Twoje wymagania.
+Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postaci nieprzetworzonego tekstu. Aktualne ograniczenie to 5120 znaków dla każdego dokumentu; jeśli chcesz przeanalizować większe dokumenty, możesz podzielić je na mniejsze części. Jeśli nadal potrzebujesz większego limitu, [skontaktuj się z nami](https://azure.microsoft.com/overview/sales-number/), abyśmy mogli omówić Twoje wymagania.
 
 | Limit | Wartość |
 |------------------------|---------------|
-| Maksymalny rozmiar pojedynczego dokumentu | 5000 znaków, mierzone przy użyciu funkcji [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
+| Maksymalny rozmiar pojedynczego dokumentu | 5120 znaków, mierzone przy użyciu funkcji [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maksymalny rozmiar całego żądania | 1 MB |
 | Maksymalna liczba dokumentów w żądaniu | 1000 dokumentów |
 
@@ -80,7 +80,7 @@ Interfejs API analizy tekstu używa kodowania Unicode na potrzeby przedstawiania
 
 ## <a name="next-steps"></a>Następne kroki
 
-Najpierw wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Możesz wkleić tekst (maksymalnie 5000 znaków), aby wykryć język (do 120 języków), obliczyć ocenę tonacji lub wyodrębnić kluczowe frazy. Rejestracja nie jest wymagana.
+Najpierw wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Możesz wkleić tekst (maksymalnie 5120 znaków), aby wykryć język (do 120 języków), obliczyć ocenę tonacji lub wyodrębnić kluczowe frazy. Rejestracja nie jest wymagana.
 
 Gdy wszystko będzie gotowe, aby wywołać interfejs API bezpośrednio:
 

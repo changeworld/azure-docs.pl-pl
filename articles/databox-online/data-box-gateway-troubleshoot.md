@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e6042d9a1d6dc0e737fb4cf7e55d2c6938f9b0f4
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106988"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961053"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Rozwiązywanie problemów związanych z usługą Azure Data Box Gateway 
 
@@ -103,6 +103,7 @@ Wszelkie błędy występujące podczas procesów przekazywania i odświeżania s
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nie można przekazać danych do konta, ponieważ konto lub udział jest wyłączony.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nie można nawiązać połączenia z kontenerem, ponieważ uprawnienia konta są nieprawidłowe lub nieaktualne. Sprawdź dostęp.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nie można dodać nowych danych, ponieważ kontener jest pełny. Sprawdź specyfikacje dotyczące platformy Azure pod kątem obsługiwanych rozmiarów kontenerów na podstawie ich typu. Na przykład maksymalny rozmiar dla plików platformy Azure wynosi 5 TB.                                     |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Nie można przekazać danych, ponieważ nie istnieje kontener skojarzony z udziałem.                                     |    
     |    2997            |    ERROR_ITEM_CANCELED                                     |    Wystąpił nieoczekiwany błąd. Jest to błąd przejściowy, który zostanie naprawiony automatycznie.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Wystąpił nieoczekiwany błąd. Ten błąd może zostać rozwiązany automatycznie, ale jeśli utrzymuje się przez więcej niż 24 godziny, należy skontaktować się z pomocą techniczną firmy Microsoft.                                                                                                     |
     |    16000           |    RefreshException                                        |    Nie można pobrać tego pliku.                                                                                                                                                                                                        |

@@ -13,14 +13,14 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190470"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881808"
 ---
-# <a name="what-is-hybrid-identity"></a>Co to jest tożsamość hybrydowa? 
+# <a name="what-is-hybrid-identity"></a>Co to jest tożsamość hybrydowa?
 
 Obecnie małe i duże firmy w coraz większym stopniu korzystają zarówno z aplikacji lokalnych, jak i aplikacji w chmurze.  Użytkownicy wymagają dostępu do aplikacji zarówno lokalnie, jak i w chmurze. To wymaganie stało się wyzwaniem. 
 
@@ -30,7 +30,7 @@ Aby uzyskać tożsamość hybrydową, można użyć jednej z trzech metoda uwier
 
 - **[Synchronizacja skrótów haseł](whatis-phs.md)**  
 - **[Uwierzytelnianie przekazywane](how-to-connect-pta.md)**  
-- **[Federacja](whatis-fed.md)** 
+- **[Federacja (AD FS)](whatis-fed.md)** 
 
 Te metody uwierzytelniania oferują również funkcję [logowania jednokrotnego](how-to-connect-sso.md).  Logowanie jednokrotne umożliwia automatyczne logowanie użytkowników, gdy ich urządzenia firmowe są połączone z siecią firmową.
 
@@ -47,7 +47,7 @@ Poniżej przedstawiono kilka typowych scenariuszy związanych z tożsamościami 
 |Umożliwienie użytkownikom logowania się i uzyskiwania dostępu do usług w chmurze przy użyciu swojego lokalnego hasła.|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| ![Zalecane](./media/whatis-hybrid-identity/ic195031.png) |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Zaimplementowanie logowania jednokrotnego przy użyciu poświadczeń firmowych.|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| ![Zalecane](./media/whatis-hybrid-identity/ic195031.png) |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|  
 |Zagwarantowanie, że żadne skróty haseł nie będą przechowywane w chmurze.| |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
-|Umożliwienie działania rozwiązań obsługujących uwierzytelnianie wieloskładnikowe w chmurze.| |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
+|Umożliwienie działania rozwiązań obsługujących uwierzytelnianie wieloskładnikowe oparte na chmurze.|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Umożliwienie działania rozwiązań obsługujących lokalne uwierzytelnianie wieloskładnikowe.| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Obsługa uwierzytelniania użytkowników za pomocą kart inteligentnych.<sup>4</sup>| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Wyświetlanie powiadomień dotyczących wygasania haseł w portalu pakietu Office i na pulpicie systemu Windows 10.| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 

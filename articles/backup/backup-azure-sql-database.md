@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 61219fc4e1fc329708a7e58ee6a293e4e25cca31
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446855"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887815"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure 
 
@@ -52,8 +52,7 @@ Ta publiczna wersja zapoznawcza ma ograniczenia.
 - Nie są obsługiwane operacje tworzenia kopii zapasowych i przywracania dla duplikatów baz danych wystąpienia klastra trybu failover oraz baz danych i ich migawek.
 - Nie można chronić baz danych z dużą liczbą plików. Maksymalna liczba obsługiwanych plików nie jest deterministyczna. Zależy ona nie tylko od liczby plików, ale też od długości ścieżki plików. 
 
-Zapoznaj się z [sekcją często zadawanych pytań](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq), aby uzyskać więcej informacji na temat pomocy technicznej/nieobsługiwanych scenariuszy.
-
+Zobacz [często zadawane pytania](faq-backup-sql-server.md) na temat tworzenia kopii zapasowych baz danych programu SQL Server.
 ## <a name="scenario-support"></a>Obsługa scenariuszy
 
 **Pomoc techniczna** | **Szczegóły**
@@ -69,9 +68,9 @@ Zapoznaj się z [sekcją często zadawanych pytań](https://docs.microsoft.com/a
 Przed utworzeniem kopii zapasowej bazy danych programu SQL Server sprawdź następujące warunki:
 
 1. Zidentyfikuj lub [utwórz](backup-azure-sql-database.md#create-a-recovery-services-vault) magazyn usługi Recovery Services w obrębie tego samego regionu lub ustawień regionalnych co maszyna wirtualna, która hostuje wystąpienie programu SQL Server.
-2. [Sprawdź uprawnienia maszyny wirtualnej](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) potrzebne do tworzenia kopii zapasowych baz danych SQL.
+2. [Sprawdź uprawnienia maszyny wirtualnej](#fix-sql-sysadmin-permissions) potrzebne do tworzenia kopii zapasowych baz danych SQL.
 3. Sprawdź, czy maszyna wirtualna ma [połączenie sieciowe](backup-azure-sql-database.md#establish-network-connectivity).
-4. Sprawdź, czy bazy danych programu SQL Server są nazwane zgodnie ze [wskazówkami dotyczącymi nazewnictwa](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup) dla usługi Azure Backup.
+4. Sprawdź, czy bazy danych programu SQL Server są nazwane zgodnie ze [wskazówkami dotyczącymi nazewnictwa](backup-azure-sql-database.md) dla usługi Azure Backup.
 5. Sprawdź, czy dla bazy danych nie są włączone inne rozwiązania do tworzenia kopii zapasowych. Wyłącz wszystkie inne kopie zapasowe programu SQL Server przed skonfigurowaniem tego scenariusza. Możesz bez konfliktów włączyć usługę Azure Backup dla maszyny wirtualnej platformy Azure razem z usługą Azure Backup dla bazy danych programu SQL Server uruchomioną na tej maszynie wirtualnej.
 
 
@@ -197,7 +196,7 @@ Skonfiguruj tworzenie kopii zapasowych w następujący sposób:
 
     - Wybrać zasady domyślne: **HourlyLogBackup**.
     - Wybrać istniejące zasady kopii zapasowych utworzone wcześniej dla środowiska SQL.
-    - [Zdefiniować nowe zasady](backup-azure-sql-database.md#define-a-backup-policy) oparte na własnym celu punktu odzyskiwania i zakresie przechowywania.
+    - [Zdefiniować nowe zasady](backup-azure-sql-database.md#configure-a-backup-policy) oparte na własnym celu punktu odzyskiwania i zakresie przechowywania.
     - W wersji zapoznawczej nie można edytować istniejących zasad kopii zapasowych.
     
 9. W menu **Kopia zapasowa** wybierz pozycję **Włącz kopię zapasową**.
@@ -326,7 +325,7 @@ Aby rozwiązać problem z uprawnieniami spowodowany błędem **UserErrorSQLNoSys
 
     ![Komunikat o powodzeniu wdrożenia](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-Możesz również włączyć [automatyczną ochronę](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) całego wystąpienia lub zawsze włączonej grupy dostępności, wybierając opcję **WŁ.** na odpowiedniej liście rozwijanej w kolumnie **AUTOMATYCZNA OCHRONA**. Funkcja [automatycznej ochrony](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) nie tylko równocześnie włącza ochronę wszystkich istniejących baz danych, ale również automatycznie chroni wszystkie nowe bazy danych, które w przyszłości zostaną dodane do wystąpienia lub grupy dostępności.  
+Możesz również włączyć [automatyczną ochronę](backup-azure-sql-database.md#enable-auto-protection) całego wystąpienia lub zawsze włączonej grupy dostępności, wybierając opcję **WŁ.** na odpowiedniej liście rozwijanej w kolumnie **AUTOMATYCZNA OCHRONA**. Funkcja [automatycznej ochrony](backup-azure-sql-database.md#enable-auto-protection) nie tylko równocześnie włącza ochronę wszystkich istniejących baz danych, ale również automatycznie chroni wszystkie nowe bazy danych, które w przyszłości zostaną dodane do wystąpienia lub grupy dostępności.  
 
    ![Włączanie automatycznej ochrony zawsze włączonej grupy dostępności](./media/backup-azure-sql-database/enable-auto-protection.png)
 

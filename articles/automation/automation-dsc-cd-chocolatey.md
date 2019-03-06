@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3eb68c4394afeb4719d92fb56d3ae9028d8566c9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b53cb65ec99637dadb16ed9d97c495571be956d7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456116"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451199"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -51,7 +51,7 @@ Kluczowa funkcja klasy szablonu usługi Resource Manager polega na instalowanie 
 ## <a name="quick-trip-around-the-diagram"></a>Szybkie podróży wokół diagramu
 
 Począwszy od góry pisania kodu, kompilacji i testowania, a następnie utwórz pakiet instalacyjny.
-Narzędzia Chocolatey może obsługiwać różne rodzaje pakietów instalacyjnych, na przykład pliku MSI polecenie MSU, ZIP. I pełnych możliwości programu PowerShell w razie rzeczywista instalacja Chocolateys natywnych możliwości nie są dość maksymalnie go. Umieść pakiet zwrócono komunikatu nieosiągalny — repozytorium pakietów. W tym przykładzie użycie użyto folderu publicznego na koncie magazynu obiektów blob platformy Azure, ale może być dowolnym miejscu. Narzędzia Chocolatey działa natywnie przy użyciu serwerów NuGet i kilka innych zasobów pod kątem zarządzania metadane pakietów. [W tym artykule](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) opisano opcje. W tym przykładzie użycie użyto NuGet. Nuspec to metadane dotyczące pakietów. Nuspec "kompilowania", do jego NuPkg i przechowywane na serwerze NuGet. Gdy konfigurację zażąda pakiet według nazwy, a następnie odwołuje się serwer NuGet, Chocolatey zasobów DSC (teraz na maszynie Wirtualnej) bierze pakietu i zainstaluje ją automatycznie. Możesz również poprosić o określonej wersji pakietu.
+Narzędzia Chocolatey może obsługiwać różne rodzaje pakietów instalacyjnych, na przykład pliku MSI polecenie MSU, ZIP. I pełnych możliwości programu PowerShell w razie rzeczywista instalacja Chocolateys natywnych możliwości nie są dość maksymalnie go. Wprowadzenia pakietu niektóre dostępne — repozytorium pakietów. W tym przykładzie użycie użyto folderu publicznego na koncie magazynu obiektów blob platformy Azure, ale może być dowolnym miejscu. Narzędzia Chocolatey działa natywnie przy użyciu serwerów NuGet i kilka innych zasobów pod kątem zarządzania metadane pakietów. [W tym artykule](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) opisano opcje. W tym przykładzie użycie użyto NuGet. Nuspec to metadane dotyczące pakietów. Nuspec "kompilowania", do jego NuPkg i przechowywane na serwerze NuGet. Gdy konfigurację zażąda pakiet według nazwy, a następnie odwołuje się serwer NuGet, Chocolatey zasobów DSC (teraz na maszynie Wirtualnej) bierze pakietu i zainstaluje ją automatycznie. Możesz również poprosić o określonej wersji pakietu.
 
 W lewej dolnej części obrazu jest szablonu usługi Azure Resource Manager. W tym przykładzie użycie rozszerzenia maszyny Wirtualnej rejestruje tej maszyny Wirtualnej z serwera usługi Azure Automation stan konfiguracji ściągnięcia (czyli serwera ściągania) jako węzeł. Konfiguracja jest przechowywana na serwerze ściągania.
 W rzeczywistości jest on przechowywany dwa razy: jeden raz w postaci zwykłego tekstu i gdy kompilowany jako plik MOF (dla tych, które wiedzieć o takich operacji.) W portalu MOF jest "konfiguracji węzła" (a nie po prostu "Konfiguracja"). Jest artefakt, który jest skojarzona z węzłem, więc węzeł będzie wiadomo, jego konfiguracji. Szczegóły poniżej pokazano, jak można przypisać konfiguracji węzła do węzła.

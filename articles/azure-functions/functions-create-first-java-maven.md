@@ -12,53 +12,30 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dfbd8425048ddc5c96349bfd6a7462dcd32dc1d9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a72d6b180db35f3e0f0e0527e8ae0f544a585b25
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727760"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822974"
 ---
-# <a name="create-your-first-function-with-java-and-maven-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven (wersja zapoznawcza)
+# <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
 
-> [!NOTE] 
-> Język Java dla usługi Azure Functions jest obecnie w wersji zapoznawczej.
-
-Ten przewodnik Szybki start przeprowadzi Cię przez tworzenie projektu funkcji [bezserwerowej](https://azure.microsoft.com/solutions/serverless/) za pomocą narzędzia Maven, testowanie jej lokalnie i wdrażanie na platformie Azure. Gdy skończysz, kod funkcji języka Java będzie działał w chmurze i będzie można go wyzwolić żądaniem HTTP.
-
-![Uzyskiwanie dostępu do funkcji Hello world z poziomu wiersza polecenia za pomocą programu cURL](media/functions-create-java-maven/hello-azure.png)
+Ten artykuł opisuje używanie narzędzia wiersza polecenia Maven do tworzenia i publikowania funkcji języka Java w usłudze Azure Functions. Gdy wszystko będzie gotowe, Twój kod funkcji zostanie uruchomiony w [planie zużycia](functions-scale.md#consumption-plan) na platformie Azure i może być wyzwalany za pomocą żądania HTTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby opracowywać aplikacje funkcji przy użyciu języka Java, trzeba mieć zainstalowane następujące składniki:
 
--  Zestaw [Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8.
--  Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
--  [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
+Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane następujące składniki:
 
-> [!IMPORTANT] 
+- Zestaw [Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8.
+- Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
+- [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
+- [Narzędzia Azure Functions Core Tools](functions-run-local.md#v2) (wymagany **zestaw SDK platformy .NET Core 2.x**)
+
+> [!IMPORTANT]
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
-
-## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
-
-[Podstawowe narzędzia usługi Azure Functions w wersji 2.0](https://www.npmjs.com/package/azure-functions-core-tools) zapewniają lokalne środowisko deweloperskie do pisania, uruchamiania i debugowania usługi Azure Functions. 
-
-Aby je zainstalować, odwiedź sekcję [Installing (Instalowanie)](https://github.com/azure/azure-functions-core-tools#installing) projektu podstawowych narzędzi usługi Azure Functions w celu uzyskania szczegółowych instrukcji dla używanego systemu operacyjnego.
-
-Możesz także zainstalować je ręcznie za pomocą programu [npm](https://www.npmjs.com/), dołączonego do platformy [Node.js](https://nodejs.org/), po zainstalowaniu następujących wymaganych składników:
-
--  Oprogramowanie [.NET Core](https://www.microsoft.com/net/core), najnowsza wersja.
--  Środowisko [Node.js](https://nodejs.org/download/), wersja 8.6 lub nowsza.
-
-Aby kontynuować instalację z użyciem programu npm, uruchom następujące polecenie:
-
-```
-npm install -g azure-functions-core-tools
-```
-
-> [!NOTE]
-> Jeśli podczas instalowania podstawowych narzędzi usługi Azure Functions w wersji 2.0 występują problemy, zobacz [Środowisko uruchomieniowe w wersji 2.x](/azure/azure-functions/functions-run-local).
 
 ## <a name="generate-a-new-functions-project"></a>Generowanie nowego projektu usługi Functions
 

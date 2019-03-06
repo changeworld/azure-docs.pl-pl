@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175731"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958188"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -63,7 +63,7 @@ Gdy sieci wirtualne są połączone za pomocą komunikacji równorzędnej w tym 
 
 ![przesyłanie w równorzędnych sieciach wirtualnych](./media/virtual-networks-peering-overview/figure04.png)
 
-Przesyłanie danych za pomocą bramy nie jest obsługiwane w relacji komunikacji równorzędnej między sieciami wirtualnymi utworzonymi w różnych regionach. Aby przesyłanie danych za pomocą bramy działało, obie sieci wirtualne będące w relacji komunikacji równorzędnej muszą znajdować się w tym samym regionie. Przesyłanie danych za pomocą bramy między sieciami wirtualnym utworzonymi przy użyciu różnych modeli wdrażania (klasycznego i za pomocą usługi Resource Manager) jest obsługiwane tylko wtedy, gdy brama znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Przesyłanie danych za pomocą bramy nie jest obsługiwane w relacji komunikacji równorzędnej między sieciami wirtualnymi utworzonymi w różnych regionach. Aby przesyłanie danych za pomocą bramy działało, obie sieci wirtualne będące w relacji komunikacji równorzędnej muszą znajdować się w tym samym regionie. Przesyłanie danych za pomocą bramy między sieciami wirtualnym utworzonymi przy użyciu różnych modeli wdrażania (klasycznego i za pomocą usługi Resource Manager) jest obsługiwane tylko wtedy, gdy brama (sieci VPN lub usługi ExpressRoute) znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 W przypadku połączenia za pomocą komunikacji równorzędnej sieci wirtualnych współużytkujących jedno połączenie sługi Azure ExpressRoute ruch między nimi jest oparty na relacji komunikacji równorzędnej (to znaczy odbywa się za pośrednictwem sieci szkieletowej platformy Azure). Użytkownicy mogą nadal korzystać z bram lokalnych w poszczególnych sieciach wirtualnych, aby łączyć się z obwodem lokalnym. Można również użyć bramy współdzielonej i skonfigurować tranzyt dla łączności lokalnej.
 
@@ -77,8 +77,7 @@ Informacje na ten temat zawiera również artykuł [Troubleshooter for virtual n
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
-Sieci wirtualne globalnie połączone za pomocą sieci równorzędnych mają następujące ograniczenia:
-- Sieci wirtualne mogą istnieć w dowolnym regionie chmury publicznej platformy Azure i w regionach chmury Azure w Chinach, ale nie w chmurach Azure Government.
+Następujące ograniczenia mają zastosowanie tylko wtedy, gdy sieci wirtualne są globalnie połączone za pomocą sieci równorzędnych:
 - Zasoby w jednej sieci wirtualnej nie mogą komunikować się z adresem IP frontonu wewnętrznego modułu równoważenia obciążenia platformy Azure w sieci wirtualnej globalnie połączonej za pomocą sieci równorzędnych. Moduł obciążenia równoważenia i zasoby, które się z nim komunikują, muszą być w tym samym regionie.
 - Nie można używać zdalnych bram ani zezwalać na tranzyt bramy. Aby używać zdalnych bram lub zezwalać na tranzyt bramy, równorzędne sieci wirtualne muszą być w tym samym regionie.
 

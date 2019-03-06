@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 0530dbac88fcfbfb05ab29d1c5934a468f263034
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096640"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804965"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
 W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
@@ -80,7 +80,7 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
 1. Utworzona maszyna wirtualna jest wyświetlana na liście **Maszyny wirtualne możliwe do przejęcia**. 
 
     > [!NOTE] 
-    > Podczas dodawania maszyny wirtualnej z systemem Linux do laboratorium można włączyć dostęp SSH i RDP do maszyny wirtualnej. Jeśli nie włączysz dostępu podczas tworzenia maszyny wirtualnej, możesz ręcznie dodać reguły w sieciowej grupie zabezpieczeń skojarzonej z maszyną wirtualną, aby otworzyć porty dla dostępu SSH i RDP.
+    > Na stronie **Ustawienia zaawansowane** można skonfigurować publiczny, prywatny lub współużytkowany adres IP dla maszyny wirtualnej. Gdy opcja **współużytkowanego adresu IP** jest włączona, usługa Azure DevTest Labs automatycznie włącza protokół RDP dla maszyn wirtualnych z systemem Windows oraz protokół SSH dla maszyn wirtualnych z systemem Linux. Jeśli tworzysz maszyny wirtualne z **publicznym adresem IP**, protokoły RDP i SSH są włączone bez wprowadzania żadnych zmian w usłudze DevTest Labs.  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Dodawanie użytkownika do roli użytkownika laboratorium
 

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d28a88efc1a9f980d74737936bb960ba13573fa3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606252"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675096"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Samouczek: wykrywanie anomalii na urządzeniach brzegowych za pomocą akceleratora rozwiązań do zdalnego monitorowania
 
@@ -55,12 +55,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Dodawanie urządzenia do akceleratora rozwiązań zdalnego monitorowania przebiega w dwóch etapach. W tej sekcji przedstawiono następujące czynności:
 
-* Dodawanie urządzenia usługi IoT Edge na stronie **Urządzenia** w internetowym interfejsie użytkownika zdalnego monitorowania.
+* Dodawanie urządzenia usługi IoT Edge na stronie **Device Explorer** w internetowym interfejsie użytkownika zdalnego monitorowania.
 * Instalowanie środowiska uruchomieniowego usługi IoT Edge na maszynie wirtualnej z systemem Linux.
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>Dodawanie urządzenia usługi IoT Edge do rozwiązania
 
-Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania, przejdź do strony **Urządzenia** w internetowym interfejsie użytkownika i kliknij pozycję **+ Nowe urządzenie**.
+Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania, przejdź do strony **Device Explorer** w internetowym interfejsie użytkownika i kliknij pozycję **+ Nowe urządzenie**.
 
 Na panelu **Nowe urządzenie** wybierz pozycję **Urządzenie usługi IoT Edge** i wpisz **oil-pump** jako identyfikator urządzenia. Dla innych właściwości możesz pozostawić ustawienia domyślne. Następnie kliknij pozycję **Zastosuj**:
 
@@ -68,13 +68,13 @@ Na panelu **Nowe urządzenie** wybierz pozycję **Urządzenie usługi IoT Edge**
 
 Zanotuj parametry połączenia urządzenia, które będą potrzebne w kolejnej sekcji tego samouczka.
 
-Urządzenie zarejestrowane w centrum IoT Hub w akceleratorze rozwiązań do zdalnego monitorowania pojawi się na liście na stronie **Urządzenia** w internetowym interfejsie użytkownika:
+Urządzenie zarejestrowane w centrum IoT Hub w akceleratorze rozwiązań do zdalnego monitorowania pojawi się na liście na stronie **Device Explorer** w internetowym interfejsie użytkownika:
 
 [![Nowe urządzenie usługi IoT Edge](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 Aby ułatwić zarządzanie urządzeniami usługi IoT Edge w ramach rozwiązania, utwórz grupę urządzeń i dodaj do niej urządzenie usługi IoT Edge:
 
-1. Wybierz urządzenie **oil-pump** z listy na stronie **Urządzenia**, a następnie kliknij pozycję **Zadania**.
+1. Wybierz urządzenie **oil-pump** z listy na stronie **Device Explorer**, a następnie kliknij pozycję **Zadania**.
 
 1. Utwórz zadanie obejmujące dodanie tagu **IsEdge** do urządzenia, używając następujących ustawień:
 
@@ -90,7 +90,7 @@ Aby ułatwić zarządzanie urządzeniami usługi IoT Edge w ramach rozwiązania,
 
 1. Kliknij przycisk **Zastosuj**, a następnie **Zamknij**.
 
-1. Na stronie **Urządzenia** kliknij pozycję **Zarządzaj grupami urządzeń**.
+1. Na stronie **Device Explorer** kliknij pozycję **Zarządzaj grupami urządzeń**.
 
 1. Kliknij przycisk **Utwórz nową grupę urządzeń**. Utwórz nową grupę urządzeń z następującymi ustawieniami:
 
@@ -300,7 +300,7 @@ Na stronie **Wdrożenia** są widoczne następujące metryki:
 
 Możesz wyświetlać przesyłane z urządzenia pompy dane telemetryczne dotyczące temperatury w internetowym interfejsie użytkownika zdalnego monitorowania:
 
-1. Przejdź do strony **Urządzenia** i wybierz urządzenie pompy olejowej.
+1. Przejdź do strony **Device Explorer** i wybierz urządzenie pompy olejowej.
 1. W sekcji **Telemetria** na panelu **Szczegóły urządzenia** kliknij pozycję **Temperatura**:
 
     [![Wyświetlanie danych telemetrycznych](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)

@@ -8,24 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 02/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 3043067f326f782c51be38382070ae0db0e90f4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314177"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889634"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Zestaw SDK przetwarzania obrazów usług Azure Cognitive Services dla języka Python
 
-Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Algorytmy przetwarzania obrazów pozwalają analizować zawartość obrazu na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład usługa przetwarzania obrazów może określić, czy na obrazie znajduje się zawartość przeznaczona dla dorosłych, znaleźć wszystkie twarze na obrazie albo wyodrębnić odręczny lub drukowany tekst. Usługa ta współpracuje z popularnymi formatami obrazów, takimi jak JPEG i PNG. 
+Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Algorytmy przetwarzania obrazów pozwalają analizować zawartość obrazu na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. 
 
-Przetwarzanie obrazów pozwala aplikacjom wykonywać następujące zadania:
+* [Analizowanie obrazu](#analyze-an-image)
+* [Pobieranie listy domen tematycznych](#get-subject-domain-list)
+* [Analizowanie obrazu według domeny](#analyze-an-image-by-domain)
+* [Pobieranie tekstu opisu obrazu](#get-text-description-of-an-image)
+* [Pobieranie tekstu odręcznego z obrazu](#get-text-from-image)
+* [Generowanie miniatury](#generate-thumbnail)
 
-- Analizowanie obrazów w celu uzyskania szczegółowych informacji
-- Wyodrębnianie tekstu z obrazów
-- Generowanie miniatur
+Aby uzyskać więcej informacji na temat tej usługi, zobacz [Czym jest przetwarzanie obrazów?][computervision_docs].
 
 Szukasz dodatkowej dokumentacji?
 
@@ -34,11 +37,21 @@ Szukasz dodatkowej dokumentacji?
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — można [utworzyć bezpłatne konto][azure_sub]
-* [Zasób przetwarzania obrazów][computervision_resource] platformy Azure
 * [Python 3.6+][python]
+* Bezpłatny [klucz interfejsu API przetwarzania obrazów][computervision_resource] i skojarzony region. Te wartości są potrzebne do utworzenia wystąpienia obiektu klienta [ComputerVisionAPI][ref_computervisionclient]. Aby uzyskać te wartości, użyj jednej z następujących metod. 
 
-Jeśli potrzebujesz konta interfejsu API przetwarzania obrazów, możesz je utworzyć za pomocą poniższego polecenia [interfejsu wiersza polecenia platformy Azure][azure_cli]:
+### <a name="if-you-dont-have-an-azure-subscription"></a>Jeśli nie masz subskrypcji platformy Azure
+
+Utwórz bezpłatny klucz ważny przez 7 dni, używając funkcji **Wypróbuj**. Po utworzeniu klucza skopiuj klucz i nazwę regionu. Będą one potrzebne do [utworzenia klienta](#create-client).
+
+Po utworzeniu klucza zachowaj następujące wartości:
+
+* Wartość klucza: ciąg 32 znaków w formacie `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 
+* Region klucza: poddomena adresu URL punktu końcowego — https://**westcentralus**.api.cognitive.microsoft.com
+
+### <a name="if-you-have-an-azure-subscription"></a>Jeśli masz subskrypcję platformy Azure
+
+Jeśli potrzebujesz konta interfejsu API przetwarzania obrazów, najłatwiejszą metodą utworzenia go w ramach swojej subskrypcji jest użycie następującego polecenia w [interfejsie wiersza polecenia platformy Azure][azure_cli]. Należy wybrać nazwę grupy zasobów, na przykład „my-cogserv-group”, oraz nazwę zasobu interfejsu API przetwarzania obrazów, na przykład „my-computer-vision-resource”. 
 
 ```Bash
 RES_REGION=westeurope 
@@ -54,18 +67,20 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="installation"></a>Instalacja
+<!--
+## Installation
 
-Zainstaluj zestaw SDK przetwarzania obrazów usług Azure Cognitive Services za pomocą programu [pip][pip], opcjonalnie w [środowisku wirtualnym][venv].
+Install the Azure Cognitive Services Computer Vision SDK with [pip][pip], optionally within a [virtual environment][venv].
 
-### <a name="configure-a-virtual-environment-optional"></a>Konfigurowanie środowiska wirtualnego (opcjonalnie)
+### Configure a virtual environment (optional)
 
-Chociaż nie jest to wymagane, można odizolować od siebie środowiska podstawowego systemu i zestawu Azure SDK. Umożliwia to [środowisko wirtualne][virtualenv]. Wykonaj następujące polecenia, aby skonfigurować, a następnie uruchomić środowisko wirtualne przy użyciu modułu [venv][venv], na przykład `cogsrv-vision-env`:
+Although not required, you can keep your base system and Azure SDK environments isolated from one another if you use a [virtual environment][virtualenv]. Execute the following commands to configure and then enter a virtual environment with [venv][venv], such as `cogsrv-vision-env`:
 
 ```Bash
 python3 -m venv cogsrv-vision-env
 source cogsrv-vision-env/bin/activate
 ```
+-->
 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
@@ -81,9 +96,20 @@ Po utworzeniu zasobu przetwarzania obrazów należy utworzyć wystąpienie obiek
 
 Wartości te umożliwiają utworzenie wystąpienia obiektu klienta [ComputerVisionAPI][ref_computervisionclient]. 
 
-### <a name="get-credentials"></a>Pobieranie poświadczeń
+<!--
 
-Poniższy fragment kodu [interfejsu wiersza polecenia platformy Azure][cloud_shell] umożliwia wypełnienie dwóch zmiennych środowiskowych wartościami **regionu** i jednego z **kluczy** konta przetwarzania obrazów (wartości te można również znaleźć w witrynie [Azure Portal][azure_portal]). Ten fragment kodu został sformatowany dla powłoki Bash.
+For example, use the Bash terminal to set the environment variables:
+
+```Bash
+ACCOUNT_REGION=<resourcegroup-name>
+ACCT_NAME=<computervision-account-name>
+```
+
+### For Azure subscription usrs, get credentials for key and region
+
+If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+
+Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -101,44 +127,25 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
+-->
 
 ### <a name="create-client"></a>Tworzenie klienta
 
-Po wypełnieniu zmiennych środowiskowych `ACCOUNT_REGION` i `ACCOUNT_KEY` można utworzyć obiekt klienta [ComputerVisionAPI][ref_computervisionclient].
+Utwórz obiekt klienta [ComputerVisionAPI][ref_computervisionclient]. W poniższym przykładowym kodzie zastąp wartości regionu i klucza własnymi wartościami.
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-import os
-region = os.environ['ACCOUNT_REGION']
-key = os.environ['ACCOUNT_KEY']
+region = "westcentralus"
+key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 credentials = CognitiveServicesCredentials(key)
 client = ComputerVisionAPI(region, credentials)
 ```
 
-## <a name="usage"></a>Sposób użycia
-
-Po zainicjowaniu obiektu klienta [ComputerVisionAPI][ref_computervisionclient] można wykonywać następujące działania:
-
-* Analizowanie obrazu: obraz można analizować pod kątem określonych cech, takich jak twarze, kolory czy tagi.   
-* Generowanie miniatur: można utworzyć niestandardowy obraz JPEG i używać go jako miniatury oryginalnego obrazu.
-* Pobieranie opisu obrazu: można pobrać opis obrazu na podstawie domeny tematycznej. 
-
-Aby uzyskać więcej informacji na temat tej usługi, zobacz [Czym jest przetwarzanie obrazów?][computervision_docs].
-
-## <a name="examples"></a>Przykłady
-
-Poniższe sekcje zawierają kilka fragmentów kodu, które dotyczą najbardziej typowych zadań przetwarzania obrazów, m.in:
-
-* [Analizowanie obrazu](#analyze-an-image)
-* [Pobieranie listy domen tematycznych](#get-subject-domain-list)
-* [Analizowanie obrazu według domeny](#analyze-an-image-by-domain)
-* [Pobieranie tekstu opisu obrazu](#get-text-description-of-an-image)
-* [Pobieranie tekstu odręcznego z obrazu](#get-text-from-image)
-* [Generowanie miniatury](#generate-thumbnail)
+Aby wykonać dowolne z poniższych zadań, potrzebujesz obiektu klienta [ComputerVisionAPI][ref_computervisionclient].
 
 ### <a name="analyze-an-image"></a>Analizowanie obrazu
 
@@ -169,8 +176,13 @@ for x in models.models_property:
 Za pomocą operacji [`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain] można analizować obraz według domeny tematycznej. Prawidłowe nazwy domen można znaleźć na [liście obsługiwanych domen tematycznych](#get-subject-domain-list).  
 
 ```Python
+# type of prediction
 domain = "landmarks"
-url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
+
+# Public domain image of Eiffel tower
+url = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg"
+
+# English language response
 language = "en"
 
 analysis = client.analyze_image_by_domain(domain, url, language)
@@ -202,6 +214,10 @@ for caption in analysis.captions:
 Można wyodrębnić dowolny odręczny lub drukowany tekst znajdujący się na obrazie. Wymaga to dwóch wywołań zestawu SDK: [`recognize_text`][ref_computervisionclient_recognize_text] i [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]. Wywołanie operacji recognize_text jest asynchroniczne. Przed wyodrębnieniem danych tekstowych musisz sprawdzić w wynikach wywołania operacji get_text_operation_result, czy pierwsze wywołanie zostało ukończone z wyliczeniem [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes]. Wyniki obejmują tekst oraz współrzędne pola ograniczenia tekstu. 
 
 ```Python
+# import models
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+
 url = "https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
 mode = TextRecognitionMode.handwritten
 raw = True
@@ -231,10 +247,19 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 Za pomocą operacji [`generate_thumbnail`][ref_computervisionclient_generate_thumbnail] można wygenerować miniaturę obrazu w formacie JPG. Miniatura nie musi mieć takich samych proporcji co oryginalny obraz. 
 
-W tym przykładzie użyto pakietu [Pillow][pypi_pillow], aby zapisać lokalnie nowy obraz miniatury.
+Aby skorzystać z tego przykładu, zainstaluj pakiet **Pillow**:
+
+```bash
+pip install Pillow
+``` 
+
+Po zainstalowaniu pakietu Pillow możesz użyć go w poniższym przykładowym kodzie w celu wygenerowania miniatury.
 
 ```Python
+# Pillow package
 from PIL import Image
+
+# IO package to create local image
 import io
 
 width = 50
@@ -281,17 +306,16 @@ except HTTPFailure as e:
 
 Podczas korzystania z klienta [ComputerVisionAPI][ref_computervisionclient] mogą wystąpić błędy przejściowe, związane z [ograniczeniami liczby wywołań][computervision_request_units] wymuszonymi przez usługę, lub inne przejściowe problemy, takie jak awarie sieci. Aby uzyskać informacje na temat obsługi takich błędów, zobacz temat [Wzorzec ponawiania][azure_pattern_retry] w przewodniku po wzorcach projektowych opartych na chmurze i powiązany temat [Wzorzec wyłącznika][azure_pattern_circuit_breaker].
 
-## <a name="next-steps"></a>Następne kroki
-
 ### <a name="more-sample-code"></a>Więcej przykładów kodu
 
 Kilka przykładów dotyczących zestawu SDK przetwarzania obrazów dla języka Python jest dostępnych w repozytorium GitHub zestawu SDK. Zawierają one przykładowy kod dla innych scenariuszy, często występujących podczas korzystania z przetwarzania obrazów:
 
 * [recognize_text][recognize-text]
 
-### <a name="additional-documentation"></a>Dodatkowa dokumentacja
+## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji o usłudze przetwarzania obrazów można znaleźć w [dokumentacji dotyczącej przetwarzania obrazów na platformie Azure][computervision_docs] dostępnej w witrynie docs.microsoft.com.
+> [!div class="nextstepaction"]
+> [Applying content tags to images (Stosowanie tagów zawartości do obrazów)](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

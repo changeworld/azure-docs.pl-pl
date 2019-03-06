@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97d1cf2817ebfbf2eb1a6ba5a4d20d457b6369c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232672"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961741"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
 
@@ -40,21 +40,20 @@ Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http:
 W tej sekcji utworzysz publiczny moduł równoważenia obciążenia, który pomaga równoważyć obciążenie maszyn wirtualnych. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia usługi Load Balancer w warstwie Standardowa musisz także utworzyć nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton (domyślnie o nazwie *LoadBalancerFrontend*) dla usługi Load Balancer w warstwie Standardowa. 
 
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupSLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
-    | Typ          | Public                                        |
-    | SKU           | Standardowa (Standard)                          |
-    | Publiczny adres IP | Wybierz polecenie **Utwórz nowy** i w polu tekstowym wpisz wartość *myPublicIP*. Dla publicznego adresu IP domyślnie zaznaczono standardową jednostkę SKU. W obszarze **Strefa dostępności** wybierz pozycję **Strefowo nadmiarowy**. |
-    | Subskrypcja               | Wybierz subskrypcję.    |
-    |Grupa zasobów | Wybierz polecenie **Utwórz nową**, a następnie wpisz wartość *myResourceGroupSLB*.    |
-    | Lokalizacja           | Wybierz pozycję **Europa Zachodnia**.                          |
-    
-
-![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
+    |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
+3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
 
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
@@ -84,7 +83,7 @@ W tej sekcji utworzysz sieć wirtualną, następnie dwie maszyny wirtualne dla p
         2. Na stronie **Tworzenie sieciowej grupy zabezpieczeń** w polu **Nazwa** wprowadź wartość *myNetworkSecurityGroup*, a następnie wybierz pozycję **OK**.
 5. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
 6. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
-7. Korzystając z kroków 1–6, utwórz drugą maszynę wirtualną o nazwie *VM2* z następującymi ustawieniami: zestawem dostępności *myAvailibilityset*, siecią wirtualną *myVnet*, podsiecią *myBackendSubnet* i sieciową grupą zabezpieczeń *myNetworkSecurityGroup*. 
+7. Korzystając z kroków 1–6, utwórz drugą maszynę wirtualną o nazwie *VM2* z następującymi ustawieniami: siecią wirtualną *myVnet*, podsiecią *myBackendSubnet* i sieciową grupą zabezpieczeń **myNetworkSecurityGroup*. 
 
 ### <a name="create-nsg-rule"></a>Tworzenie reguły sieciowej grupy zabezpieczeń
 

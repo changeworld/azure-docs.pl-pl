@@ -1,31 +1,32 @@
 ---
-title: 'Szybki start: Interfejs API sprawdzania pisowni Bing, PHP'
+title: 'Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka PHP'
 titlesuffix: Azure Cognitive Services
-description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API sprawdzania pisowni Bing.
+description: Rozpocznij korzystanie z interfejsu API sprawdzania pisowni Bing, aby sprawdzać pisownię i poprawność gramatyczną.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: abce882edb9b6c97ea3b8a91219f8e2887cfb78d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb952a9169710a7ba8248293e1eab30c7a2da6c0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862313"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888937"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-php"></a>Szybki start: interfejs API sprawdzania pisowni Bing w środowisku PHP 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka PHP
 
-W tym artykule przedstawiono sposób korzystania z [interfejsu API sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) przy użyciu języka PHP. Interfejs API sprawdzania pisowni zwraca listę wyrazów, których nie rozpoznaje, oraz sugestie ich zastąpienia. Typowym sposobem korzystania z tego interfejsu API jest przesłanie tekstu, a następnie wprowadzenie sugerowanych zmian w tekście lub pokazanie ich użytkownikowi aplikacji, aby zdecydował, czy wprowadzić zmiany. W tym artykule pokazano, jak wysłać żądanie zawierające tekst „Hollo, wrld!”. Sugerowane zamiany to „Hello” i „world”.
+Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu API REST sprawdzania pisowni Bing. Ta prosta aplikacja w języku Python wysyła żądanie do interfejsu API i zwraca listę sugerowanych poprawek. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić ten kod, potrzebne jest środowisko języka [PHP 5.6.x](http://php.net/downloads.php).
+* [PHP 5.6.x](http://php.net/downloads.php)
 
-Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API sprawdzania pisowni Bing w wersji 7**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/#lang) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
+
 
 ## <a name="get-spell-check-results"></a>Pobieranie wyników sprawdzania pisowni
 
@@ -130,13 +131,10 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
    ]
 }
 ```
-
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek sprawdzania pisowni Bing](../tutorials/spellcheck.md)
+> [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Zobacz też
-
-- [Omówienie sprawdzania pisowni Bing](../proof-text.md)
+- [Czym jest interfejs API sprawdzania pisowni Bing?](../overview.md)
 - [Dokumentacja interfejsu API sprawdzania pisowni Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

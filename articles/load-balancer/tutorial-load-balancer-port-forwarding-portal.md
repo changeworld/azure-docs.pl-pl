@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/18
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6cb9e839b1fffd29ce1d78e82fb4ab054b92efc6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232196"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959132"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekierowania portów w usłudze Azure Load Balancer za pomocą portalu
 
@@ -44,25 +44,26 @@ Aby wykonać wszystkie kroki tego samouczka, zaloguj się do witryny Azure Porta
 
 Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standardowa, który może równoważyć obciążenie ruchu sieciowego maszyn wirtualnych. Moduł równoważenia obciążenia w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia modułu równoważenia obciążenia w warstwie Standardowa tworzysz także nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton modułu równoważenia obciążenia (domyślnie o nazwie **LoadBalancerFrontEnd**). 
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-   
-1. W okienku **Tworzenie modułu równoważenia obciążenia** wpisz lub wybierz następujące wartości:
-   
-   - **Nazwa**: wpisz *MyLoadBalancer*.
-   - **Typ**: wybierz pozycję **Publiczny**. 
-   - **SKU**: Wybierz opcję **Standardowa**.
-   - **Publiczny adres IP**: wybierz opcję **Utwórz nowy**, a następnie w polu wpisz *MyPublicIP*.
-   - **Skonfiguruj publiczny adres IP** > **Strefa dostępności**: Wybierz pozycję **Strefowo nadmiarowa**.
-   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź nazwę *MyResourceGroupLB* i wybierz przycisk **OK**. 
-   - **Lokalizacja**: Wybierz pozycję **Europa Zachodnia**. 
-     
-     >[!NOTE]
-     >Upewnij się, że moduł równoważenia obciążenia i wszystkie zasoby dla niego są tworzone w lokalizacji, która obsługuje strefy dostępności. Aby uzyskać więcej informacji, zobacz [Regiony obsługujące strefy dostępności](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
-   
-1. Wybierz pozycję **Utwórz**.
-   
-![Tworzenie modułu równoważenia obciążenia](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
+1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
+    | Ustawienie                 | Wartość                                              |
+    | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
+    |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
+     
+    >[!NOTE]
+     >Upewnij się, że moduł równoważenia obciążenia i wszystkie zasoby dla niego są tworzone w lokalizacji, która obsługuje strefy dostępności. Aby uzyskać więcej informacji, zobacz [Regiony obsługujące strefy dostępności](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+
+3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.  
+  
 ## <a name="create-and-configure-back-end-servers"></a>Tworzenie i konfigurowanie serwerów zaplecza
 
 Utwórz sieć wirtualną z dwiema maszynami wirtualnymi i dodawaj maszyny wirtualne do puli zaplecza modułu równoważenia obciążenia. 

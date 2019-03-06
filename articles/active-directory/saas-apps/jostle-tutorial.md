@@ -1,235 +1,202 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Jostle | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Jostle.
+title: 'Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Jostle | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i rozwiązaniem Jostle.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 9ca4ca1f-8f68-4225-81a6-1666b486d6a8
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/30/2017
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214cd2ac20207e32d862086f82f6e3c775d88721
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 5483d4e50770f3e4cd323c654cbab8cc7794a517
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210445"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984360"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Jostle
+# <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Jostle
 
-W tym samouczku dowiesz się, jak zintegrować Jostle w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować rozwiązanie Jostle z usługą Azure Active Directory (Azure AD).
+Integrowanie rozwiązania Jostle z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Jostle z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do rozwiązania Jostle.
+* Umożliwianie użytkownikom automatycznego logowania się do rozwiązania Jostle (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Jostle
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Jostle (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Jostle, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z rozwiązaniem Jostle potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Jostle logowania jednokrotnego włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja rozwiązania Jostle z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
-Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Jostle z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-jostle-from-the-gallery"></a>Dodawanie Jostle z galerii
-Aby skonfigurować integrację Jostle w usłudze Azure AD, należy dodać Jostle z galerii z listą zarządzanych aplikacji SaaS.
+* Rozwiązanie Jostle obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać Jostle z galerii, wykonaj następujące czynności:**
+## <a name="adding-jostle-from-the-gallery"></a>Dodawanie pozycji Jostle z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+Aby skonfigurować integrację rozwiązania Jostle z usługą Azure AD, musisz dodać rozwiązanie Jostle z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać rozwiązanie Jostle z galerii, wykonaj następujące czynności:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Kliknij przycisk **Dodaj** w górnej części okna.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![add_01](./media/jostle-tutorial/add_01.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W polu wyszukiwania w obszarze **dodać aplikację** typu **Jostle**.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![add_02](./media/jostle-tutorial/add_02.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-1. W panelu wyników wybierz **Jostle**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Jostle**, wybierz pozycję **Jostle** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/jostle-tutorial/tutorial_jostle_addfromgallery.png)
+     ![Pozycja Jostle na liście wyników](common/search-new-app.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Jostle w oparciu o użytkownika testu o nazwie "Britta Simon."
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Jostle do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Jostle musi można ustanowić.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z rozwiązaniem Jostle, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem rozwiązania Jostle.
 
-W Jostle, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z rozwiązaniem Jostle, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Jostle, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w rozwiązaniu Jostle](#configure-jostle-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego rozwiązania Jostle](#create-jostle-test-user)** — aby mieć w rozwiązaniu Jostle odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Jostle](#creating-a-jostle-test-user)**  — aby odpowiednikiem Britta Simon w Jostle połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Jostle.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z rozwiązaniem Jostle, wykonaj następujące kroki:
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Jostle, wykonaj następujące czynności:**
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Jostle** wybierz pozycję **Logowanie jednokrotne**.
 
-1. W witrynie Azure portal na **Jostle** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/jostle-tutorial/tutorial_jostle_samlbase.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-1. Na **Jostle domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![url_01](./media/jostle-tutorial/url_01.png)
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    a. W **adres URL logowania** pole tekstowe, wpisz: `https://login-prod.jostle.us`
+    ![Informacje o logowaniu jednokrotnym — domena i adresy URL rozwiązania Jostle](common/sp-identifier-reply.png)
 
-    b. W **identyfikator** pole tekstowe, wpisz: `https://jostle.us`
+    a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://login-prod.jostle.us`
 
-    c. Zaznacz pole wyboru obok pozycji **Pokaż zaawansowane ustawienia adresu URL**
+    b. W polu **Identyfikator** wpisz adres URL: `https://jostle.us`
 
-    d. W **adres URL odpowiedzi** pole tekstowe, wpisz: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
 
-1. Na **atrybutów użytkownika** sekcji, aby uzyskać **identyfikator użytkownika** wprowadź: `user.userprincipalname`
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![url_02](./media/jostle-tutorial/url_02.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. Kliknij przycisk **Zapisz** w górnej części okna.
+6. W sekcji **Konfigurowanie rozwiązania Jostle** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-1. Przejdź do **certyfikat podpisywania SAML** i sprawdź, czy jest równa **Active**. Następnie kliknij przycisk **XML metadanych** można pobrać pliku metadanych.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    ![url_03](./media/jostle-tutorial/url_03.png)
+    a. Adres URL logowania
 
-1. Aby skonfigurować logowanie jednokrotne, po stronie firmy Jostle, musisz wysłać kod XML metadanych pobrany do [zespołem pomocy technicznej Jostle](mailto:support@jostle.me). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+    b. Identyfikator usługi Azure AD
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
->
+    d. Adres URL wylogowywania
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="configure-jostle-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w rozwiązaniu Jostle
+
+Aby skonfigurować logowanie jednokrotne po stronie rozwiązania **Jostle**, musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej rozwiązania Jostle](mailto:support@jostle.me). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/jostle-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/jostle-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/jostle-tutorial/create_aaduser_03.png)
-
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
-
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/jostle-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="creating-a-jostle-test-user"></a>Tworzenie użytkownika testowego Jostle
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Jostle. Jeśli nie wiesz, jak dodać Britta Simon w Jostle, skontaktuj się z [zespołem pomocy technicznej Jostle](mailto:support@jostle.me) do dodawania użytkownika testowego i włączyć logowanie Jednokrotne.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do rozwiązania Jostle.
+
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Jostle**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz pozycję **Jostle**.
+
+    ![Link do rozwiązania Jostle na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-jostle-test-user"></a>Tworzenie użytkownika testowego rozwiązania Jostle
+
+W tej sekcji utworzysz użytkownika Britta Simon w rozwiązaniu Jostle. Współpracując z  [zespołem pomocy technicznej rozwiązania Jostle](mailto:support@jostle.me), dodaj użytkowników na platformie Jostle. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 > [!NOTE]
-> Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+> Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Jostle.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200]
-
-**Aby przypisać Britta Simon Jostle, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201]
-
-1. Na liście aplikacji wybierz **Jostle**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/jostle-tutorial/tutorial_jostle_app.png)
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202]
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka Jostle w panelu dostępu, powinna pojawić się automatycznie strony logowania Jostle aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Jostle na panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Jostle, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/jostle-tutorial/tutorial_general_01.png
-[2]: ./media/jostle-tutorial/tutorial_general_02.png
-[3]: ./media/jostle-tutorial/tutorial_general_03.png
-[4]: ./media/jostle-tutorial/tutorial_general_04.png
-
-[100]: ./media/jostle-tutorial/tutorial_general_100.png
-
-[200]: ./media/jostle-tutorial/tutorial_general_200.png
-[201]: ./media/jostle-tutorial/tutorial_general_201.png
-[202]: ./media/jostle-tutorial/tutorial_general_202.png
-[203]: ./media/jostle-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

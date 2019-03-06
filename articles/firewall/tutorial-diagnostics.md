@@ -7,18 +7,20 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426171"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958987"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: monitorowanie dzienników i metryk usługi Azure Firewall
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: Monitorowanie dzienników i metryk usługi Azure Firewall
 
 Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall. Za pomocą metryk możesz wyświetlać liczniki wydajności w portalu. 
 
-Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do usługi [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage i Event Hubs oraz analizowane za pomocą usługi Log Analytics lub innych narzędzi, takich jak program Excel i usługa Power BI.
+Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do [dzienników usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), usługi Storage i Event Hubs oraz analizowane za pomocą dzienników usługi Azure Monitor lub innych narzędzi, takich jak program Excel i usługa Power BI.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -48,7 +50,7 @@ Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego moż
 
 3. Aby rozpocząć zbieranie danych, kliknij pozycję **Włącz diagnostykę**.
 4. Strona **Ustawienia diagnostyczne** zawiera ustawienia dzienników diagnostycznych. 
-5. W tym przykładzie dzienniki są przechowywane w usłudze Log Analytics, więc wpisz nazwę **Firewall log analytics**.
+5. W tym przykładzie dzienniki są przechowywane w dziennikach usługi Azure Monitor, więc wpisz nazwę **Firewall log analytics**.
 6. Kliknij pozycję **Wyślij do usługi Log Analytics** w celu skonfigurowania obszaru roboczego. Na potrzeby zapisywania dzienników diagnostycznych można także skorzystać z usługi Event Hubs i konta magazynu.
 7. W obszarze **Log Analytics** kliknij pozycję **Konfiguruj**.
 8. Na stronie Obszary robocze usługi Log Analytics kliknij pozycję **Utwórz nowy obszar roboczy**.
@@ -89,12 +91,12 @@ Aby włączyć rejestrowanie diagnostyczne, wykonaj następujące kroki:
 
 Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia platformy Azure**: pobierz informacje z dziennika aktywności przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub witryny Azure Portal. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w artykule [Activity operations with Resource Manager (Operacje działań przy użyciu usługi Resource Manager)](../azure-resource-manager/resource-group-audit.md).
-* **Usługa Power BI**: jeśli nie masz jeszcze konta usługi [Power BI](https://powerbi.microsoft.com/pricing), możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
+* **Narzędzia platformy Azure**: Pobierz informacje z dziennika aktywności przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub witryny Azure Portal. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w artykule [Activity operations with Resource Manager (Operacje działań przy użyciu usługi Resource Manager)](../azure-resource-manager/resource-group-audit.md).
+* **Power BI**: Jeśli nie masz jeszcze konta usługi [Power BI](https://powerbi.microsoft.com/pricing), możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Wyświetlanie i analizowanie dzienników reguł sieci i aplikacji
 
-Usługa Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) zbiera pliki dzienników liczników i zdarzeń. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
+[Dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md) zbierają pliki dzienników liczników i zdarzeń. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
 
 Przykładowe zapytania usługi Log Analytics w usłudze Azure Firewall można znaleźć w temacie [Przykłady usługi Log Analytics w usłudze Azure Firewall](log-analytics-samples.md).
 
@@ -108,10 +110,10 @@ Przejdź do usługi Azure Firewall, a następnie w obszarze **Monitorowanie** kl
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy skonfigurowano zaporę na potrzeby zbierania dzienników, możesz eksplorować usługę Log Analytics, aby wyświetlać dane.
+Teraz, gdy skonfigurowano zaporę na potrzeby zbierania dzienników, możesz eksplorować dzienniki usługi Azure Monitor, aby wyświetlać dane.
 
 > [!div class="nextstepaction"]
-> [Rozwiązania do monitorowania sieci w usłudze Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)
+> [Rozwiązania do monitorowania sieci w dziennikach usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

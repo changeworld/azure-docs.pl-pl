@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fa6d2b7d1fbd99e482cc013720c39b4b150f6742
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264024"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889549"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Szybki start: używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus
 Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz całkowitą niezawodność. Typowy scenariusz usługi Service Bus zwykle wiąże się z rozdzieleniem co najmniej dwóch aplikacji, usług lub procesów oraz przesłaniem zmian stanu lub danych. Takie scenariusze mogą obejmować planowanie wielu zadań wsadowych w innej aplikacji lub innych usługach bądź wyzwalanie realizacji zamówienia. Na przykład firma handlowa może wysłać dane z punktu sprzedaży na zaplecze biura lub do regionalnego centrum dystrybucji w celu uzupełnienia zapasów oraz aktualizacji spisu inwentarza. W tym scenariuszu aplikacja kliencka wysyła komunikaty do kolejki usługi Service Bus i je z niej odbiera.  
@@ -33,46 +33,9 @@ Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następują
 - [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy.
 - [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
 
-## <a name="log-on-to-the-azure-portal"></a>Logowanie w witrynie Azure Portal
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Przejdź do witryny [Azure Portal][Azure portal] i zaloguj się przy użyciu subskrypcji platformy Azure. Pierwszym krokiem jest utworzenie przestrzeni nazw usługi Service Bus typu **Komunikaty**.
-
-## <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
-
-Przestrzeń nazw obsługi komunikatów w usłudze Service Bus udostępnia unikatowy kontener zakresu przywoływany przy użyciu jego [w pełni kwalifikowanej nazwy domeny][], w którym można utworzyć co najmniej jedną kolejkę, temat i subskrypcję. W poniższym przykładzie jest tworzona przestrzeń nazw obsługi komunikatów w usłudze Service Bus w nowej lub istniejącej [grupie zasobów](/azure/azure-resource-manager/resource-group-portal):
-
-1. W lewym okienku nawigacji portalu kliknij kolejno pozycje **+ Utwórz zasób**, **Integracja w przedsiębiorstwie** i **Service Bus**.
-2. W oknie dialogowym **Tworzenie przestrzeni nazw** wprowadź nazwę przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.
-3. Po upewnieniu się, że nazwa przestrzeni nazw jest dostępna, wybierz warstwę cenową (Standardowa lub Premium).
-4. W polu **Subskrypcja** wybierz subskrypcję platformy Azure, w której ma zostać utworzona przestrzeń nazw.
-5. W polu **Grupa zasobów** wybierz istniejącą grupę zasobów, w której znajdzie się przestrzeń nazw, lub utwórz nową.      
-6. W polu **Lokalizacja** wybierz kraj lub region, w którym powinna być hostowana przestrzeń nazw.
-7. Kliknij pozycję **Utwórz**. W systemie zostanie utworzona i włączona przestrzeń nazw. Proces aprowizacji zasobów dla konta w systemie może potrwać kilka minut.
-
-![przestrzeń nazw](./media/service-bus-quickstart-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Uzyskiwanie poświadczeń zarządzania
-
-Utworzenie nowej przestrzeni nazw powoduje automatyczne wygenerowanie początkowej reguły sygnatury dostępu współdzielonego ze skojarzoną parą kluczy podstawowego i pomocniczego, która przyznaje pełną kontrolę nad wszystkimi aspektami przestrzeni nazw. Aby skopiować początkową regułę, wykonaj następujące kroki: 
-
-1.  Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij nowo utworzoną nazwę przestrzeni nazw.
-2. W oknie przestrzeni nazw kliknij pozycję **Zasady dostępu współdzielonego**.
-3. Na ekranie **Zasady dostępu współdzielonego** kliknij pozycję **RootManageSharedAccessKey**.
-4. W oknie **Zasady: RootManageSharedAccessKey** kliknij przycisk **Kopiuj** obok pozycji **Podstawowe parametry połączenia**, aby skopiować parametry połączenia do schowka w celu późniejszego użycia. Wklej tę wartość do Notatnika lub innej tymczasowej lokalizacji. 
-
-    ![connection-string][connection-string]
-5. Powtórz poprzedni krok, kopiując i wklejając wartość pozycji **Klucz podstawowy** w lokalizacji tymczasowej do późniejszego użycia.
-
-## <a name="create-a-queue"></a>Tworzenie kolejki
-
-Aby utworzyć kolejkę usługi Service Bus, określ przestrzeń nazw, w ramach której chcesz ją utworzyć. Poniższy przykład pokazuje, jak utworzyć kolejkę w portalu:
-
-1. W lewym okienku nawigacji portalu kliknij pozycję **Service Bus** (jeśli pozycja **Service Bus** nie jest widoczna, kliknij pozycję **Więcej usług**).
-2. Kliknij przestrzeń nazw, w której chcesz utworzyć kolejkę.
-3. W oknie przestrzeni nazw kliknij pozycję **Kolejki**, a następnie w oknie **Kolejki** kliknij pozycję **+ Kolejka**.
-4. W polu **Nazwa** wprowadź nazwę kolejki, a pozostałe wartości pozostaw domyślne.
-5. W dolnej części okna kliknij pozycję **Utwórz**.
-6. Zanotuj nazwę kolejki.
+[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów
 
@@ -82,28 +45,22 @@ Aby uruchomić kod, wykonaj następujące czynności:
 
 1. Sklonuj [repozytorium GitHub usługi Service Bus](https://github.com/Azure/azure-service-bus/), wydając następujące polecenie:
 
-   ```shell
+   ```
    git clone https://github.com/Azure/azure-service-bus.git
    ```
-
 3. Przejdź do folderu przykładów `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
-
-4. Skopiuj parametry połączenia i nazwę kolejki uzyskane w sekcji [Uzyskiwanie poświadczeń zarządzania](#obtain-the-management-credentials).
-
+4. Skopiuj parametry połączenia i nazwę kolejki uzyskane w sekcji Uzyskiwanie poświadczeń zarządzania.
 5.  W wierszu polecenia wpisz następujące polecenie:
 
-   ```shell
-   dotnet build
-   ```
-
+    ```
+    dotnet build
+    ```
 6.  Przejdź do folderu `bin\Debug\netcoreapp2.0`.
-
 7.  Wpisz następujące polecenie, aby uruchomić program. Pamiętaj, aby zastąpić `myConnectionString` wcześniej uzyskaną wartością, a `myQueueName` nazwą utworzonej przez siebie kolejki:
 
-   ```shell
-   dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
-   ``` 
-
+    ```shell
+    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
+    ``` 
 8. Obserwuj 10 komunikatów wysłanych do kolejki, a następnie odebranych z niej:
 
    ![dane wyjściowe programu](./media/service-bus-quickstart-portal/dotnet.png)
@@ -254,8 +211,7 @@ W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby w
 
 
 [bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[w pełni kwalifikowanej nazwy domeny]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
-[connection-string]: ./media/service-bus-quickstart-portal/connection-string.png
 [service-bus-flow]: ./media/service-bus-quickstart-portal/service-bus-flow.png

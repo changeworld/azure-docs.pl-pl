@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/07/2019
+ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337565"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960653"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
 
@@ -76,7 +76,7 @@ Zobacz przykład [Get content key policy — .NET](get-content-key-policy-dotnet
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3?
 
-Aby uzyskać informacje na temat rozpoczynania programowania za pomocą interfejsu API usługi Media Services w wersji 3 oraz różnych narzędzi i zestawów SDK, zobacz [Rozpoczynanie programowania](developers-guide.md).
+Aby uzyskać informacje na temat rozpoczynania programowania za pomocą interfejsu API usługi Media Services v3 oraz różnych narzędzi i zestawów SDK, zobacz [Rozpoczynanie programowania](developers-guide.md).
 
 ## <a name="v3-content-map"></a>Mapa zawartości wersji 3
 
@@ -88,7 +88,7 @@ Zawartość usługi Media Services w wersji 3 ma następującą organizację (uw
 | Przewodniki Szybki start | Podstawowe instrukcje wprowadzające, które pozwalają nowym klientom szybko wypróbować usługę Media Services.|
 | Samouczki | Procedury oparte na scenariuszach dotyczące niektórych typowych zadań wykonywanych przy użyciu usługi Media Services.|
 | Przykłady | Linki do przykładów kodu. |
-| Pojęcia | Diagramy oraz szczegółowe objaśnienie funkcjonalności usługi Media Services w wersji 3. Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.<br/><br/>* Przekazywanie do chmury i magazynowanie w niej<br/>* Kodowanie<br/>* Media Analytics<br/>* Tworzenie pakietów, dostarczanie, ochrona<br/>* Transmisja strumieniowa na żywo<br/>* Monitorowanie ciągłe<br/>* Odtwarzacze klienckie<br/><br/>Wiele innych funkcji |
+| Pojęcia | Szczegółowe objaśnienie [funkcji usługi Media Services v3 i związanych z nią pojęć](concepts-overview.md). Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.<br/><br/>* Przekazywanie do chmury i magazynowanie w niej<br/>* Kodowanie<br/>* Media Analytics<br/>* Tworzenie pakietów, dostarczanie, ochrona<br/>* Transmisja strumieniowa na żywo<br/>* Monitorowanie<br/>* Odtwarzacze klienckie<br/><br/>Wiele innych funkcji |
 | Przewodniki z instrukcjami | Sposób wykonania zadania.|
 
 ## <a name="next-steps"></a>Następne kroki

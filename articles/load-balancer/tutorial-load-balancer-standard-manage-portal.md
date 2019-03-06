@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/18
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: c22f69764447ffd4f8b67e9162fd8b45b40b175b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fa40f4f666444209f70d3f49b7947450af01ec36
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230037"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983290"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych przy użyciu witryny Azure Portal
 
@@ -45,21 +45,22 @@ Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http:
 W tej sekcji utworzysz publiczny moduł równoważenia obciążenia, który pomaga równoważyć obciążenie maszyn wirtualnych. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. Podczas tworzenia usługi Load Balancer w warstwie Standardowa musisz także utworzyć nowy publiczny adres IP w warstwie Standardowa, który jest skonfigurowany jako fronton (domyślnie o nazwie *LoadBalancerFrontend*) dla usługi Load Balancer w warstwie Standardowa. 
 
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
-    
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
+
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupSLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
-    | Typ          | Public                                        |
-    | SKU           | Standardowa (Standard)                          |
-    | Publiczny adres IP | Wybierz polecenie **Utwórz nowy** i w polu tekstowym wpisz wartość *myPublicIP*. Dla publicznego adresu IP domyślnie zaznaczono standardową jednostkę SKU. W obszarze **Strefa dostępności** wybierz pozycję **Strefowo nadmiarowy**. |
-    | Subskrypcja               | Wybierz subskrypcję.    |
-    |Grupa zasobów | Wybierz polecenie **Utwórz nową**, a następnie wpisz wartość *myResourceGroupSLB*.    |
-    | Lokalizacja           | Wybierz pozycję **Europa Zachodnia**.                          |
-    
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
+    |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
+3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
 
-![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-   
+  
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tej sekcji utworzysz sieć wirtualną i trzy maszyny wirtualne dla puli zaplecza modułu równoważenia obciążenia, a następnie zainstalujesz usługi IIS na tych maszynach wirtualnych, aby ułatwić testowanie modułu równoważenia obciążenia.

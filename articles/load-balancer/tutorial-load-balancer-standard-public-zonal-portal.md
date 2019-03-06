@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229816"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985992"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w strefie dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -48,18 +48,22 @@ Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http:
 Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy publiczny adres IP. W przypadku tworzenia nowego publicznego adresu IP podczas tworzenia modułu równoważenia obciążenia jest on automatycznie konfigurowany jako standardowa jednostka SKU. Jest on również automatycznie konfigurowany jako strefowo nadmiarowy.
 
 1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości dla modułu równoważenia obciążenia:
-    - **myLoadBalancer** — jako nazwę modułu równoważenia obciążenia.
-    - **Publiczny** — jako typ modułu równoważenia obciążenia.
-      - **myPublicIPZonal** — jako nowo tworzony publiczny adres IP. Wybierz pozycję **Wybierz publiczny adres IP**. Następnie wybierz pozycję **Utwórz nowy**. Jako jego nazwę wpisz **myPublicIP**. Jednostka SKU ma domyślnie wartość Standardowa. W obszarze **Strefa dostępności** wybierz pozycję **Strefa 1**.
-    - **myResourceGroupZLB** — jako nazwę nowo tworzonej grupy zasobów.
-    - **westeurope** — jako lokalizację.
-3. Wybierz pozycję **Utwórz**, aby utworzyć moduł równoważenia obciążenia.
-   
-    ![Tworzenie strefowego wystąpienia usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
+    | Ustawienie                 | Wartość                                              |
+    | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupZLB* w polu tekstowym.|
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
+    |Strefa dostępności| Wybierz pozycję **1**.    |
+3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
 
-## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
+ ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tej sekcji utworzysz sieć wirtualną. Utworzysz też dwie maszyny wirtualne w tej samej strefie (strefie 1) w regionie, aby dodać je do puli zaplecza modułu równoważenia obciążenia. Następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie strefowo nadmiarowego modułu równoważenia obciążenia. Jeśli jedna z maszyn wirtualnych ulegnie awarii, sonda kondycji maszyny wirtualnej w tej samej strefie również ulegnie awarii. Ruch będzie nadal obsługiwany przez pozostałe maszyny wirtualne w tej samej strefie.
 

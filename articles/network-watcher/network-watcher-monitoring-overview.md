@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 8738ac52eeaf1f27df5f9cc21ffb0c683a912195
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427033"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984408"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
@@ -97,7 +97,7 @@ Więcej informacji na temat dzienników przepływu NSG znajduje się w samouczku
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Wyświetlanie dzienników diagnostycznych dla zasobów sieciowych
 
-Funkcję rejestrowania diagnostycznego można włączyć dla zasobów sieciowych Azure takich jak sieciowe grupy zabezpieczeń, publiczne adresy IP, moduły równoważenia obciążenia, bramy sieci wirtualnych i bramy aplikacji. Funkcja *dzienników diagnostycznych* udostępnia pojedynczy interfejs służący do włączania i wyłączania dzienników diagnostycznych zasobów sieciowych dla każdego istniejącego zasobu sieci, który generuje dziennik diagnostyczny. Dzienniki diagnostyczne można wyświetlać za pomocą narzędzi takich jak Microsoft Power BI i Azure Log Analytics. Aby dowiedzieć się więcej na temat analizowania dzienników diagnostycznych sieci platformy Azure, zobacz [Rozwiązania dotyczące sieci Azure w usłudze Log Analytics](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Funkcję rejestrowania diagnostycznego można włączyć dla zasobów sieciowych Azure takich jak sieciowe grupy zabezpieczeń, publiczne adresy IP, moduły równoważenia obciążenia, bramy sieci wirtualnych i bramy aplikacji. Funkcja *dzienników diagnostycznych* udostępnia pojedynczy interfejs służący do włączania i wyłączania dzienników diagnostycznych zasobów sieciowych dla każdego istniejącego zasobu sieci, który generuje dziennik diagnostyczny. Dzienniki diagnostyczne można wyświetlać za pomocą narzędzi, takich jak dzienniki usług Microsoft Power BI i Azure Monitor. Aby dowiedzieć się więcej na temat analizowania dzienników diagnostycznych sieci platformy Azure, zobacz [Rozwiązania dotyczące sieci platformy Azure w dziennikach usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Automatyczne włączanie usługi Network Watcher
 Podczas tworzenia lub aktualizowania sieci wirtualnej w ramach subskrypcji usługa Network Watcher zostanie automatycznie włączona w regionie sieci wirtualnej. Automatyczne włączanie usługi Network Watcher nie wpływa na zasoby i nie wiąże się z opłatami. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi Network Watcher](network-watcher-create.md).

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230836"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56982797"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -50,16 +50,20 @@ Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http:
 Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. W przypadku tworzenia nowego publicznego adresu IP podczas tworzenia modułu równoważenia obciążenia jest on automatycznie konfigurowany jako standardowa jednostka SKU. Jest on również automatycznie strefowo nadmiarowy.
 
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
-2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości dla modułu równoważenia obciążenia:
-    - *myLoadBalancer* — jako nazwę modułu równoważenia obciążenia.
-    - **Public** — jako typ modułu równoważenia obciążenia.
-     - *myPublicIP* — jako nowy publiczny adres IP, który tworzysz. W tym celu kliknij pozycję **Wybierz publiczny adres IP**, a następnie kliknij pozycję **Utwórz nowy**. Wpisz nazwę *myPublicIP*. Jednostka SKU ma domyślnie typ Standardowa. Wybierz pozycję **Strefowo nadmiarowa** w obszarze **Strefa dostępności**.
-    - *myResourceGroupLBAZ* — jako nazwę nowo tworzonej grupy zasobów.
-    - **westeurope** — jako lokalizację.
-3. Kliknij pozycję **Utwórz**, aby utworzyć moduł równoważenia obciążenia.
-   
-    ![Tworzenie modułu równoważenia obciążenia](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
+2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
+    | Ustawienie                 | Wartość                                              |
+    | ---                     | ---                                                |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
+    |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
+   
 
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
@@ -177,7 +181,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
 4. Kliknij pozycję **Dodaj nowy zasób zaplecza**, aby dodać wszystkie maszyny wirtualne (*myVM2* i *myVM3*) do dodania do puli zaplecza modułu równoważenia obciążenia.
 5. Kliknij pozycję **Add** (Dodaj).
 
-    ![Dodawanie do puli adresów zaplecza ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
+    ![Dodawanie do puli adresów zaplecza](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
 3. Upewnij się, że ustawienie puli zaplecza modułu równoważenia obciążenia wyświetla wszystkie trzy maszyny wirtualne — **myVM1**, **myVM2** i **myVM3**.
 

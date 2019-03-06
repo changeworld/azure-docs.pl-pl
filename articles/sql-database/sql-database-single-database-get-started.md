@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 66640bd60f6ba8c2f612a6bc9b88a07b13012997
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990038"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984887"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database za pomocą witryny Azure Portal
 
@@ -29,7 +29,7 @@ W przypadku wszystkich kroków z tego przewodnika Szybki start musisz zalogować
 
 ## <a name="create-a-single-database"></a>Tworzenie pojedynczej bazy danych
 
-Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci, we/wy i magazynu przy użyciu jednego z dwóch modeli zakupu [purchasing model(sql-database-purchase-models.md). Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
+Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci, we/wy i magazynu przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md). Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
 
 Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works LT:
 
@@ -42,8 +42,8 @@ Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works
    - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz *myResourceGroup*, a następnie wybierz przycisk **OK**.
    - **Wybierz źródło**: otwórz listę rozwijaną i wybierz pozycję **Przykład (AdventureWorksLT)**.
 
-    >[!IMPORTANT]
-    >Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)**, co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
+    > [!IMPORTANT]
+    > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)**, co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
   
    ![Tworzenie pojedynczej bazy danych](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -56,18 +56,18 @@ Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works
    - **Potwierdź hasło**: wpisz ponownie hasło.
    - **Lokalizacja**: otwórz listę rozwijaną, a następnie wybierz dowolną prawidłową lokalizację.  
 
-   >[!IMPORTANT]
-   >Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
+   > [!IMPORTANT]
+   > Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
 
     ![Tworzenie serwera](./media/sql-database-get-started-portal/create-database-server.png)
 
 6. Wybierz pozycję **Wybierz**.
 7. W formularzu **SQL Database** wybierz opcję **Warstwa cenowa**. Sprawdź liczbę jednostek DTU i wielkość miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
 
-   >[!NOTE]
-   >W tym przewodniku Szybki start jest używany [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
-   >[!IMPORTANT]
-   >Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Północne Zjednoczone Królestwo, Zachodnio-środkowe stany USA, Południowe Zjednoczone Królestwo2, Chiny Wschodnie, USDoDCentral, Niemcy Środkowe, USDoDEast, Południowo-Zachodnie Stany USA US Gov, Południowo-środkowe stany USA US Gov, Niemcy Północno-Wschodnie, Chiny Północne oraz Wschodnie stany US Gov. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > [!NOTE]
+   > W tym przewodniku Szybki start jest używany [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+   > [!IMPORTANT]
+   > Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 8. Na potrzeby tego przewodnika Szybki start wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **10 jednostek DTU (S0)** i **1** GB miejsca do magazynowania.
 9. Wybierz przycisk **Zastosuj**.  

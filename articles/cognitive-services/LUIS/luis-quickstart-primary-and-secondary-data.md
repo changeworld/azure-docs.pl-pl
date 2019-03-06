@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867243"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732708"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -233,7 +233,9 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-s
 
     [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Jeśli chcesz dodać więcej wyrazów do listy fraz, przejrzyj pozycję **Powiązane wartości** i dodaj odpowiednie pozycje. 
+    Jeśli chcesz dodać więcej wyrazów do listy fraz, wybierz opcję **Recommand (Zalecane)**, a następnie przejrzyj nowe elementy w pozycji **Related Values (Powiązane wartości)** i dodaj odpowiednie pozycje. 
+
+    Upewnij się, że pole **These values are interchangeable (Te wartości są wymienne)** jest zaznaczone, ponieważ wszystkie te wartości powinny być traktowane jako synonimy dla zadań. Dowiedz się więcej o [koncepcjach z zakresu listy pojęć](luis-concept-feature.md#how-to-use-phrase-lists) związanych wymiennością i niewymiennością.
 
 1. Wybierz pozycję **Save** (Zapisz), aby aktywować listę fraz.
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 852cc5e5b3b018d871bd40775dce64d669fb3011
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492236"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880618"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Samouczek: bot usługi LUIS w środowisku Node.js przy użyciu platformy Bot Framework 4.x i bota aplikacji internetowej platformy Azure
 Przy użyciu platformy Node.js można utworzyć czatbot zintegrowany z usługą Language Understanding (LUIS). Ten bot używa aplikacji HomeAutomation do implementacji rozwiązania bota. Bot jest kompilacją aplikacji [bot aplikacji internetowej](https://docs.microsoft.com/azure/bot-service/) na platformie Azure z [Bot Framework w wersji](https://github.com/Microsoft/botbuilder-js) 4.
@@ -66,7 +66,7 @@ Przy użyciu platformy Node.js można utworzyć czatbot zintegrowany z usługą 
     
 5. Wybierz pozycję **Utwórz**. To powoduje utworzenie i wdrożenie usługi bota na platformie Azure. W ramach tego procesu jest tworzona nowa aplikacja usługi LUIS o nazwie `luis-nodejs-bot-XXXX`. Ta nazwa zależy od nazwy bota i aplikacji w poprzedniej sekcji.
 
-    [ ![Tworzenie bota aplikacji internetowej](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [![Tworzenie bota aplikacji internetowej](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
 6. Pozostaw tę kartę przeglądarki otwartą. Aby wykonać inne kroki w portalu LUIS otwórz nową kartę przeglądarki. Po wdrożeniu nowej usługi bota przejdź do następnej sekcji.
 
@@ -106,7 +106,7 @@ Aby tworzyć kod bota aplikacji internetowej, pobierz kod i użyj go na komputer
 
 3. Wybierz przycisk **Download Bot source code** (Pobierz kod źródłowy bota). 
 
-    [ ![Pobieranie kodu źródłowego bota aplikacji internetowej dla bota podstawowego](../../../includes/media/cognitive-services-luis/bfv4/download-code.png) ](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Pobieranie kodu źródłowego bota aplikacji internetowej dla bota podstawowego](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 4. Po spakowaniu kodu źródłowego w komunikacie zostanie podany hiperlink umożliwiający pobranie kodu. Wybierz hiperlink. 
 
@@ -230,7 +230,7 @@ Przed zmianą kodu lub ustawień sprawdź, czy bot działa.
 
 2. W emulatorze bota wybierz plik *.bot w korzeniu projektu. Ten plik `.bot` zawiera punkt końcowy adresu URL bota dla komunikatów:
 
-    [ ![Emulator bota w wersji 4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png) ](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
+    [![Emulator bota w wersji 4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
 3. Wprowadź wpis tajny skopiowany z ustawień aplikacji usługi bota platformy Azure w kroku 1 sekcji **[Pobieranie bota aplikacji internetowej](#download-the-web-app-bot)**. To pozwoli emulatorowi na dostęp do zaszyfrowanych pól w pliku .bot.
 
@@ -239,7 +239,7 @@ Przed zmianą kodu lub ustawień sprawdź, czy bot działa.
 
 4. W emulatorze bota wpisz `Hello` i pobierz właściwą odpowiedź dla bota podstawowego.
 
-    [ ![Odpowiedź bota podstawowego w emulatorze](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png) ](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
+    [![Odpowiedź bota podstawowego w emulatorze](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
 
 ## <a name="modify-bot-code"></a>Modyfikowanie kodu bota 
 
