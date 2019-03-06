@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 1/29/2019
+ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 811d75ec2246199662a25afd6b96b23035444211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207500"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436038"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny Wirtualnej VMware lub maszyny fizyczne na platformie Azure
 
@@ -110,7 +110,50 @@ Jeśli **Connect** przycisku w trybie Failover maszyny Wirtualnej na platformie 
 
 W przypadku uruchamiania systemu Windows maszyny Wirtualnej po przejściu w tryb failover, jeśli zostanie wyświetlony komunikat nieoczekiwanego zamknięcia w odzyskanej maszyny Wirtualnej, oznacza to, stan zamknięcia maszyny Wirtualnej nie została przechwycona w punkcie odzyskiwania do trybu failover. Dzieje się tak, podczas odzyskiwania do punktu, gdy maszyna wirtualna ma nie została w pełni zamknięta.
 
-Zwykle nie jest przyczyną problemu i zazwyczaj można zignorować dla niezaplanowanych operacji Failover. W przypadku planowanego trybu failover upewnij się, że maszyna wirtualna jest zamknięta prawidłowo przed trybu failover i zapewnić wystarczającą ilość czasu do czasu replikacji danych w sieci lokalnej do wysłania do platformy Azure. Następnie użyj **najnowsze** opcja [ekranu trybu Failover](site-recovery-failover.md#run-a-failover) tak, aby wszystkie oczekujące dane na platformie Azure są przetwarzane na punkt odzyskiwania, który jest następnie używany na potrzeby trybu failover maszyny Wirtualnej.
+Zwykle nie jest przyczyną problemu i zazwyczaj można zignorować dla niezaplanowanych operacji Failover. Jeśli jest planowane przełączenie w tryb failover, upewnij się, że maszyna wirtualna jest zamknięta prawidłowo przed trybu failover i zapewnić wystarczającą ilość czasu do czasu replikacji danych w sieci lokalnej do wysłania do platformy Azure. Następnie użyj **najnowsze** opcja [ekranu trybu Failover](site-recovery-failover.md#run-a-failover) tak, aby wszystkie oczekujące dane na platformie Azure są przetwarzane na punkt odzyskiwania, który jest następnie używany na potrzeby trybu failover maszyny Wirtualnej.
+
+## <a name="unable-to-select-the-datastore"></a>Nie można wybrać magazyn danych
+
+Ten problem jest wskazywany, gdy nie są widoczne w portalu w magazynie danych na platformie Azure, podczas próby ponownego włączenia ochrony maszyny wirtualnej, która napotkała przejścia w tryb failover. Jest to spowodowane Master target nie został rozpoznany jako maszynę wirtualną w ramach vCenters dodane do usługi Azure Site Recovery.
+
+Aby uzyskać więcej informacji na temat ponowne włączanie ochrony maszyny wirtualnej, zobacz [ponowne włączanie ochrony i zakończyć się niepowodzeniem maszynami wstecz do lokacji lokalnej po włączeniu trybu failover na platformie Azure](vmware-azure-reprotect.md).
+
+Aby rozwiązać ten problem:
+
+Ręczne tworzenie Master target w programie vCenter, który zarządza maszyna źródłowa. Magazyn danych będzie dostępna po następny operacjach vCenter odnajdywania i Odśwież sieci szkieletowej.
+
+> [!Note]
+> 
+> Operacje odnajdywania i Odśwież sieci szkieletowej może potrwać do 30 minut. 
+
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux główny element docelowy rejestracji CS zakończy się niepowodzeniem z powodu błędu protokołu SSL 35 
+
+Rejestracja usługi Azure Site Recovery Master Target z serwerem konfiguracji kończy się niepowodzeniem z powodu serwera Proxy uwierzytelniony, włączane na główny element docelowy. 
+ 
+Ten błąd jest wskazywany przez następujące ciągi w dzienniku instalacji: 
+
+RegisterHostStaticInfo napotkała wyjątek config/talwrapper.cpp(107) [wpis] CurlWrapper Post nie powiodło się: serwer: 10.38.229.221, port: 443, phpUrl: request_handler.php bezpieczne: ignoreCurlPartialError ma wartość true,: false z powodu błędu: [na curlwrapperlib/curlwrapper.cpp:processCurlResponse:231] nie powiodło się żądanie publikowania: (35) — Błąd połączenia SSL. 
+ 
+Aby rozwiązać ten problem:
+ 
+1. Na serwerze konfiguracji maszyny Wirtualnej Otwórz wiersz polecenia i sprawdź ustawienia serwera proxy, za pomocą następujących poleceń:
+
+    cat /etc/environment echo $że echo $https_proxy 
+
+2. Jeśli dane wyjściowe z poprzedniego polecenia pokazują, że albo https_proxy ustawień zdefiniowanych, użyj jednej z następujących metod można odblokować główny element docelowy komunikacji z serwerem konfiguracji:
+   
+   - Pobierz [narzędzia PsExec](https://aka.ms/PsExec).
+   - Narzędzie dostępu do kontekstu użytkownika systemu i sprawdzenie, czy adres serwera proxy jest skonfigurowany. 
+   - Jeśli skonfigurowano serwer proxy, należy uruchomić program IE w kontekście użytkownika systemu za pomocą narzędzia PsExec.
+  
+     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+
+   - Aby upewnić się, że główny serwer docelowy może komunikować się z serwerem konfiguracji:
+  
+     - Zmodyfikuj ustawienia serwera proxy w programie Internet Explorer, aby pominąć adres IP serwera głównego serwera docelowego za pośrednictwem serwera proxy.   
+     Lub
+     - Wyłącz serwer proxy na głównym serwerze docelowym. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Rozwiązywanie problemów z [połączenia RDP z maszyną Wirtualną Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)

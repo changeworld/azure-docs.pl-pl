@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785c02a0187cf02df3bb3cf5d248f97a3edf74c6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b1b1fd5976189c4c74791bf2e6a80a494a2fccc6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961758"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433301"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -51,7 +51,7 @@ W tym artykule jest podzielony na cztery sekcje:
 * **[Odwołanie do schematu użytkowników i grup](#user-and-group-schema-reference)**  — w tym artykule opisano schematów użytkowników i grup, jest obsługiwana przez implementację Standard SCIM programu Azure AD dla aplikacji spoza galerii. 
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Inicjowanie obsługi administracyjnej użytkowników i grup do aplikacji obsługujących standard SCIM
-Usługa Azure AD można skonfigurować, aby automatycznie aprowizować przypisanych użytkowników i grup do aplikacje, które implementują określonego profilu [protokołu 2.0 Standard SCIM](https://tools.ietf.org/html/rfc7644). Szczegółowe informacje na temat profilu są udokumentowane w artykule [zrozumienie implementacji usługi Azure AD w Standard SCIM](#implementing-a-scim-endpoint-that-works-with-azure-ad-user-provisioning).
+Usługa Azure AD można skonfigurować, aby automatycznie aprowizować przypisanych użytkowników i grup do aplikacje, które implementują określonego profilu [protokołu 2.0 Standard SCIM](https://tools.ietf.org/html/rfc7644). Szczegółowe informacje na temat profilu są udokumentowane w zrozumienie implementacji Standard SCIM programu Azure AD.
 
 Skontaktuj się z dostawcą aplikacji lub dokumentacji dostawcy aplikacji dla instrukcji zgodność z tymi wymaganiami.
 

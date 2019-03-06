@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci wirtualnej z obwodem usługi ExpressRoute: programu PowerShell: klasyczny: Azure | Dokumentacja firmy Microsoft'
+title: 'Łączenie sieci wirtualnej z obwodem usługi ExpressRoute: PowerShell: klasycznym: Azure | Microsoft Docs'
 description: Ten dokument zawiera omówienie sposobu łączenia sieci wirtualnych (Vnet) do obwodów usługi ExpressRoute za pomocą klasycznego modelu wdrażania i programu PowerShell.
 services: expressroute
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
-ms.openlocfilehash: 008d1dca14f6d1850d7fe13d2e21948c4cd5b4e2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c3b96904a2a6016b7080bba68d098212cefd89a0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245193"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405950"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Maksymalnie 10 sieciami wirtualnymi można połączyć z obwodem usługi Express
 
 **Modele wdrażania Azure — informacje**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>Wymagania wstępne dotyczące konfiguracji
 

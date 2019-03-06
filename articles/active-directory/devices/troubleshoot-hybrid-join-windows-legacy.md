@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ea658f18af7ae44d73f78cb5fe4f7ae1316ea901
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185132"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439126"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -95,7 +95,7 @@ Jeśli urządzenie nie było hybrydowe przyłączone do usługi Azure AD, można
      
      - Problemy z łącznością sieciową uniemożliwiają **autoworkplace.exe** dotrze usług AD FS lub adresy URL platformy Azure AD. 
      
-     - **Autoworkplace.exe** wymaga od klienta bezpośredniego linii wzroku od klienta do orgnanization lokalnego kontrolera domeny usługi AD, co oznacza, że dołączenie do hybrydowej usługi Azure AD powiedzie się tylko wtedy, gdy klient jest podłączony do sieci intranet w organizacji .
+     - **Autoworkplace.exe** wymaga od klienta bezpośredniego linii wzroku od klienta do organizacji lokalnego kontrolera domeny usługi AD, co oznacza, że dołączenie do hybrydowej usługi Azure AD powiedzie się tylko wtedy, gdy klient jest podłączony do sieci intranet w organizacji.
      
      - Twoja organizacja korzysta z usługi Azure AD bezproblemowego logowania jednokrotnego, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są obecne urządzenia IE ustawień sieci intranet, a **zezwala na aktualizacje na pasku stanu za pomocą skryptu** nie jest włączona dla strefy intranetowej.
 

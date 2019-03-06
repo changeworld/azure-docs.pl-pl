@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: c49cff297404174a6331eaa82ab5efd585a345c4
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: daafac3cd89b2af7f6d7fa9a8ae28eecd334b623
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438470"
 ---
-# <a name="managed-identity-for-data-factory"></a>Tożsamość zarządzaną przez usługę Data Factory
+# <a name="managed-identity-for-data-factory"></a>Tożsamość zarządzana dla usługi Data Factory
 
 Ten artykuł pomoże Ci zrozumieć, jaka jest tożsamość zarządzaną dla fabryki danych (wcześniej znane jako tożsamość usługi zarządzanej/MSI) i jak to działa.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Przegląd
 
@@ -54,10 +56,10 @@ Możesz odnaleźć fabryki danych nie ma tożsamości zarządzanej skojarzone na
 
 ### <a name="generate-managed-identity-using-powershell"></a>Generowanie tożsamości zarządzanej przy użyciu programu PowerShell
 
-Wywołaj **Set-AzureRmDataFactoryV2** polecenie ponownie, a następnie zostanie wyświetlony "Tożsamość" fields nowo generowany:
+Wywołaj **AzDataFactoryV2 zestaw** polecenie ponownie, a następnie zostanie wyświetlony "Tożsamość" fields nowo generowany:
 
 ```powershell
-PS C:\WINDOWS\system32> Set-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
+PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
 
 DataFactoryName   : ADFV2DemoFactory
 DataFactoryId     : /subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/ADFV2DemoFactory
@@ -167,7 +169,7 @@ Można znaleźć informacje o tożsamości zarządzanej z witryny Azure portal -
 Tożsamość zarządzaną identyfikator podmiotu zabezpieczeń i identyfikator dzierżawy jest zwracana, gdy otrzymasz fabrykę danych określonego w następujący sposób:
 
 ```powershell
-PS C:\WINDOWS\system32> (Get-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
+PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
 
 PrincipalId                          TenantId
 -----------                          --------
@@ -177,7 +179,7 @@ PrincipalId                          TenantId
 Skopiuj identyfikator podmiotu zabezpieczeń, a następnie uruchom poniższe polecenie w usłudze Azure Active Directory o identyfikatorze podmiotu zabezpieczeń jako parametru, aby pobrać **ApplicationId**, którego używasz, aby udzielić dostępu:
 
 ```powershell
-PS C:\WINDOWS\system32> Get-AzureRmADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
+PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 
 ServicePrincipalNames : {76f668b3-XXXX-XXXX-XXXX-1b3348c75e02, https://identity.azure.net/P86P8g6nt1QxfPJx22om8MOooMf/Ag0Qf/nnREppHkU=}
 ApplicationId         : 76f668b3-XXXX-XXXX-XXXX-1b3348c75e02

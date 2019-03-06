@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 25349593bd45949f662581160fa23d30b4682710
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 3ad38b215cf33bda0c9f9d0bcd7403b6201282ee
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214201"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437160"
 ---
 # <a name="marketplace-faqs"></a>Portal Marketplace — często zadawane pytania
 
@@ -249,7 +249,7 @@ Wszystkie pomoc techniczną, skontaktuj się z dostawcą wydawcy. Informacje kon
 
 **Jeśli nie podobają, mogę zwrócić zakup?**
 
-Produktów zakupionych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) nie można zwrócić, ale można anulować lub usunąć. Użycie na podstawie oferty są rozliczane zgodnie z użycia, więc po jej zatrzymaniu opłat również zatrzymać. Subskrypcje zostały anulowane i nie zostaną naliczone ostatnie bieżącego okresu rozliczeniowego. Jeśli subskrypcja zostanie wkrótce po zakupie (24 godziny, w przypadku opcji miesięcznej i 14 dni w przypadku opcji rocznej), znajduje się pełny zwrot kosztów.
+Produktów zakupionych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) nie można zwrócić, ale można anulować lub usunąć. Użycie na podstawie oferty są rozliczane zgodnie z użycia, więc po jej zatrzymaniu opłat również zatrzymać. Subskrypcje zostały anulowane i nie zostaną naliczone ostatnie bieżącego okresu rozliczeniowego. Jeśli subskrypcja została anulowana wkrótce po zakupie (24 godziny, w przypadku opcji miesięcznej i 14 dni w przypadku opcji rocznej), znajduje się pełny zwrot kosztów.
 
 Klienci bezpośrednio skontaktuj się z wydawcą problemów technicznych związanych z ich usług witryny Marketplace lub zakupu. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w portalu Azure Marketplace.
 
@@ -541,7 +541,7 @@ Aby przeprowadzić migrację maszyn wirtualnych z modelu BYOL do subskrypcji umo
 
 **Jak są naliczane subskrypcje portalu Azure Marketplace?**
 
-Ceny różnią się w zależności od typów produktów i specyfikacji wydawcy. Opłaty za licencje na oprogramowanie oraz koszty użycia platformy Azure są naliczane osobno za pośrednictwem subskrypcji platformy Azure. Modele cenowe obejmują:
+Ceny różnią się w zależności od typów produktów i specyfikacji wydawcy. Opłaty za licencje na oprogramowanie oraz koszty użycia platformy Azure są naliczane osobno za pośrednictwem subskrypcji platformy Azure. Modele cenowe:
 
 * **BYOL Model**: Bring-Your-Own-License (przynieś swoją licencję). W przypadku uzyskania licencji na oprogramowanie do użycia w portalu Azure Marketplace bezpośrednio od wydawcy lub odsprzedawcy, nie są naliczane wszelkie dodatkowe opłaty związane z oprogramowaniem do użycia.
 

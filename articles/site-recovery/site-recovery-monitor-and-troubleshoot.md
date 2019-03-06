@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7deea91a016616d9015004857ad9e5ae70e24111
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210424"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432876"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorowanie i rozwiązywanie problemów Site Recovery
 
@@ -84,7 +84,7 @@ Aktualizacje oprogramowania | Dostępność nowych aktualizacji oprogramowania o
 **Widok infrastruktury** przedstawiono składniki infrastruktury zaangażowanych w replikacji i kondycję połączenia między serwerami i usługami platformy Azure.
 
 - Zielona linia wskazuje, że połączenie jest w dobrej kondycji.
-- Czerwona linia z verlaid ikona błędu wskazuje na istnienie objawy błędu co najmniej jeden tego mieć wpływ na łączność.
+- Czerwona linia z ikoną nałożone błąd wskazuje na istnienie objawy błędu co najmniej jeden tego mieć wpływ na łączność.
 -  Umieść wskaźnik myszy nad ikonie błędu, aby pokazać błąd i liczby jednostek objęte wpływem. Kliknij ikonę filtrowana lista jednostek objęte wpływem.
 
     ![Widok infrastruktury odzyskiwania lokacji (magazyn)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)

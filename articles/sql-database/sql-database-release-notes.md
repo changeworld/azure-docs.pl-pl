@@ -8,18 +8,18 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/05/2019
 ms.author: carlrab
-ms.openlocfilehash: af0fd591393f9f187a75f79fea980d41085df5cb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9bd330c2be2b543bd7238dd1641df0d092a8a17d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342449"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434907"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
-Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Database i w dokumentacji usługi SQL Database. Ulepszenia do innych usług platformy Azure, można zobaczyć [aktualizowaniem usługi](https://azure.microsoft.com/updates).
+Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Database i w dokumentacji usługi SQL Database. Ulepszeń usługi SQL Database, zobacz też [aktualizacji usługi SQL Database](https://azure.microsoft.com/updates/?product=sql-database). Ulepszenia do innych usług platformy Azure, można zobaczyć [aktualizowaniem usługi](https://azure.microsoft.com/updates).
 
 ## <a name="march-2019"></a>Marca 2019 r
 
@@ -27,15 +27,17 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
 
 | Udoskonalenia dokumentacji | Szczegóły |
 | --- | --- |
-| Dodano dziennika limity dla pojedynczych baz danych|Aby uzyskać więcej informacji, zobacz [pojedynczy limity zasobów na rdzeniach wirtualnych bazy danych](sql-database-vcore-resource-limits-single-databases.md)|
-| Dodano dziennika limity dla pul elastycznych i baz danych w puli|Aby uzyskać więcej informacji, zobacz [vCore zasobów limity pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)|
-| Dodano nadzoru współczynnik dziennika transakcji| Dodano nową zawartość dotyczącą [nadzoru współczynnik dziennika transakcji](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)|
-| Zaktualizowano przykłady programu PowerShell dla pojedynczych baz danych i pul elastycznych, aby użyć modułu az.sql | Aby uzyskać więcej informacji, zobacz [przykłady programu PowerShell dla pojedynczych baz danych i pul elastycznych](sql-database-powershell-samples.md#single-database-and-elastic-pools).
+| Dodano dziennika limity dla pojedynczych baz danych|Aby uzyskać więcej informacji, zobacz [pojedynczy limity zasobów na rdzeniach wirtualnych bazy danych](sql-database-vcore-resource-limits-single-databases.md).|
+| Dodano dziennika limity dla pul elastycznych i baz danych w puli|Aby uzyskać więcej informacji, zobacz [vCore zasobów limity pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).|
+| Dodano nadzoru współczynnik dziennika transakcji| Dodano nową zawartość dotyczącą [nadzoru współczynnik dziennika transakcji](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|
+| Zaktualizowano przykłady programu PowerShell dla pojedynczych baz danych i pul elastycznych, aby użyć modułu az.sql | Aby uzyskać więcej informacji, zobacz [przykłady programu PowerShell dla pojedynczych baz danych i pul elastycznych](sql-database-powershell-samples.md#single-database-and-elastic-pools).|
+| &nbsp; |
 
 ## <a name="february-2019"></a>Lutego 2019 r
 
@@ -43,16 +45,24 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
-|Tworzenie z możliwością wznowienia indeksu w trybie online jest teraz ogólnie dostępna| Aby uzyskać więcej informacji, zobacz [Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)|
-|Wystąpienie zarządzane Obsługa tabel tras, ulepszone| Aby uzyskać więcej informacji, zobacz [wymagania dotyczące sieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements)|
+|Tworzenie z możliwością wznowienia indeksu w trybie online jest teraz ogólnie dostępna| Aby uzyskać więcej informacji, zobacz [Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql).|
+|Wystąpienie zarządzane Obsługa tabel tras, ulepszone| Aby uzyskać więcej informacji, zobacz [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
+|Zmień nazwę bazy danych obsługiwane w wystąpieniu zarządzanym | Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) i [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) składni.|
+|Baza danych SQL jako źródła danych referencyjnych dla usługi Stream Analytics. | Aby uzyskać więcej informacji, zobacz [usługi Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
+|Data Migration Assistant dodaje obsługę dla wystąpienia zarządzanego. |Aby uzyskać więcej informacji, zobacz [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew?view=sql-server-2017).|
+|SQL Server Migration Assistant alokowanej oceny gotowości docelowego dla wystąpienia zarządzanego. | Aby uzyskać więcej informacji, zobacz [Asystenta migracji programu SQL Server](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
+|Usługa migracji danych obsługuje migrację z usług RDS Amazon do wystąpienia zarządzanego | Aby uzyskać więcej informacji, zobacz [Samouczek: Migrowanie usług pulpitu zdalnego programu SQL Server do usługi Azure SQL Database lub wystąpienia zarządzanego usługi Azure SQL Database i online przy użyciu usługi DMS](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
 
 | Udoskonalenia dokumentacji | Szczegóły |
 | --- | --- |
-|Dodawanie zarządzanych wyjaśnienia opcji wdrożenia wystąpienia|Zaktualizowano wiele artykułów, aby wyjaśnić, ma zastosowanie do pojedynczej bazy danych, pul elastycznych i opcji wdrożenia wystąpienia zarządzanego |
-|Zaktualizowano bazę danych tempdb rozmiary modelu zakupu opartego na jednostkach DTU | Aby uzyskać więcej informacji, zobacz [bazy danych Tempdb w bazie danych SQL](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)|
-|Zaktualizowano importowanie i eksportowanie z pliku bacpac do obsługi wystąpienia zarządzanego| Aby uzyskać więcej informacji, zobacz [Importuj z pliku BACPAC](sql-database-import.md) i [wyeksportować do pliku BACPAC](sql-database-export.md) |
+|Dodawanie zarządzanych wyjaśnienia opcji wdrożenia wystąpienia|Zaktualizowano wiele artykułów, aby wyjaśnić, ma zastosowanie do pojedynczej bazy danych, pul elastycznych i opcji wdrożenia wystąpienia zarządzanego. |
+|Zaktualizowano bazę danych tempdb rozmiary modelu zakupu opartego na jednostkach DTU | Aby uzyskać więcej informacji, zobacz [bazy danych Tempdb w bazie danych SQL](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).|
+|Zaktualizowano importowanie i eksportowanie z pliku bacpac do obsługi wystąpienia zarządzanego| Aby uzyskać więcej informacji, zobacz [Importuj z pliku BACPAC](sql-database-import.md) i [wyeksportować do pliku BACPAC](sql-database-export.md). |
+| &nbsp; |
+
 
 ## <a name="january-2019"></a>Styczeń 2019
 
@@ -62,7 +72,7 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 | --- | --- |
 | Opcje dodatkowe stopień szczegółowości za zasoby obliczeniowe | Ogólnego przeznaczenia i krytyczne dla działania usługi warstwy [pojedyncze bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md) mają teraz więcej opcji obliczeniowych szczegółowych.|
 | Wyświetlanie rekordów inspekcji dla wystąpienia zarządzanego w witrynie Azure portal | Wyświetlanie [rekordy dla wystąpienia zarządzanego inspekcji](sql-database-managed-instance-auditing.md) w witrynie Azure portal jest teraz obsługiwane.|
-| Funkcja wykrywania zagrożeń wcześniejszym zmieniona na zaawansowane zabezpieczenia danych | Funkcja wykrywania zagrożeń wcześniejszym zmieniona na [zaawansowanych danych](sql-advanced-threat-protection.md) dla pojedynczych baz danych, pul elastycznych i wystąpienia zarządzanego |
+| Funkcja wykrywania zagrożeń wcześniejszym zmieniona na zaawansowane zabezpieczenia danych | Funkcja wykrywania zagrożeń wcześniejszym zmieniona na [zaawansowanych danych](sql-advanced-threat-protection.md) dla pojedynczych baz danych, pul elastycznych i wystąpienia zarządzanego. |
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6062c31d1ec87d7b958feafef5824a5814995541
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888434"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431975"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak zainstalować oprogramowanie MySQL na platformie Azure
 W tym artykule dowiesz się, jak zainstalować i skonfigurować serwer MySQL na maszynie wirtualnej platformy Azure z systemem Linux.
@@ -51,7 +51,7 @@ W tym miejscu użyjemy maszyny Wirtualnej systemu Linux z systemem Ubuntu na pla
             #[root@mysqlnode ~]# apt-get update
             #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
   
-    Podczas instalacji pojawi się okno dialogowe okna poping maksymalnie z pytaniem, czy hasła głównego MySQL poniższe ustawienia, na które należy ustawić hasło w tym miejscu.
+    Podczas instalacji zostanie wyświetlone okno dialogowe wydają się monit o ustawienie hasła głównego MySQL poniżej, a w tym miejscu należy ustawić hasło.
   
     ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 

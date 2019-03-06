@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 509d529c7e860f4c46bc3368028a4e8d24812051
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ed43a376dd5bb3279fd7e6aa6522980234db3c5f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242823"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441801"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -48,7 +48,7 @@ Ten plan ma służyć jako podstawa modułowej klienci będą mogli dostosować 
 
 -   **Diagram architektury.** Na diagramie przedstawiono architekturę referencyjną, używany do planu, a przykładowy scenariusz przypadków użycia.
 
--   [Rozszerzenie IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) to rozwiązanie pokażemy, jak migrować rozwiązanie SQL na podstawie lokalnych na platformę Azure oraz do wykonywania uprzywilejowanych stacji roboczej z dostępem do bezpiecznego zarządzania bsed chmurze usług i rozwiązań. 
+-   [Rozszerzenie IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) to rozwiązanie pokażemy, jak migrować rozwiązanie SQL na podstawie lokalnych na platformę Azure oraz do wykonywania uprzywilejowanych stacji roboczej z dostępem do bezpiecznego zarządzania usługami w chmurze i rozwiązań. 
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 

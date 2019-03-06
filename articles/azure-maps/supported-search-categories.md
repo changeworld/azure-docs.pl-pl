@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b2bb5e0f9b138af5ff69599b7ba35457788c8a65
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968451"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437349"
 ---
 # <a name="azure-maps-supported-categories"></a>Usługi Azure Maps obsługiwane kategorie
 
@@ -25,9 +25,9 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | --- | --- |
 | DOSTĘP\_BRAMY | dostęp do linii lotniczych, bramy zabezpieczeń, dostęp do stacji, bramę usługi dostęp |
 | ADMINISTRACYJNE\_DZIELENIA | Województwo, podział administracyjny czwarty zamówienia, podział administracyjny pierwszego rzędu, historyczne innej kolejności podział administracyjny, stanowisko podział administracyjny kolejności czwarty stanowisko podział administracyjny kolejności sekundę zależnych od ustawień lokalnych polityczne jednostki, wypełnione miejscu stanowisko podział administracyjny innego zamówienia, wypełnione miejsc, podział administracyjny w określonej kolejności na sekundę, stanowisko pierwszego rzędu administracyjne dzielenie, dzielenie administracyjne wypełnione miejscowość, historyczne regionu, historyczne witryny, historyczne miejsce wypełnione, szekel rozliczenia, historyczne podział administracyjny czwarty kolejności, podział administracyjny piątym kolejności, historyczne podział administracyjny pierwszego rzędu, innej kolejności podział administracyjny, historyczne polityczne jednostki, historyczne podział administracyjny, stanowisko dla instytucji rządowych polityczne jednostki, historyczne podział administracyjny sekundę zamówienia, Stolicą polityczne jednostki |
-| ADVENTURE\_SPORT\_MIEJSC | Adventure Sport miejsc |
+| ADVENTURE\_SPORTS\_VENUE | Adventure Sport miejsc |
 | ROLNICTWO | ogrodnictwo, producent podstawowego, rolnictwa, farmy, wieś farmy, farmstead, homestead, wypasu obszar, typowe, funkcji akwakultury, farm, rybołówstwo obszarze mleka, następującą liczbę pól: |
-| PORT LOTNICZY | prywatne urzędu wojskowe urzędu, lotnisko dla śmigłowców, Kuwejcie zamknięte, Średni, Kuwejcie dużych, port małej lotniczy, lotniska, seaplane base, publiczny urząd, portu dymek, Kuwejcie |
+| AIRPORT | prywatne urzędu wojskowe urzędu, lotnisko dla śmigłowców, Kuwejcie zamknięte, Średni, Kuwejcie dużych, port małej lotniczy, lotniska, seaplane base, publiczny urząd, portu dymek, Kuwejcie |
 | ROZRYWKA\_PARK | Rozrywka zręcznościowe, miejscu rozrywki, park Rozrywka |
 | AUTOMOTIVE\_DEALER | ATV/Pojazdy śniegowe, łodzi, motocykl, samochód, ciężarówka, pojazdów rekreacyjnych, Service bus, van, motoryzacyjnej |
 | BANK | Bank, banki, bank(s) |
@@ -37,7 +37,7 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | CAFE\_PUB | Internet kawiarni, herbaty domu, kawiarni, kawiarni internet, kawiarni, kawiarni, ogrodzie microbrewery/piwo, publikowania, kawiarni/pub, kawiarni/pub |
 | POLACH\_PODSTAW | Recreational, witryny kempingowych, w polach podstaw |
 | SAMOCHÓD\_WASH | wash samochód |
-| ŚRODKÓW PIENIĘŻNYCH\_ROZDZIELACZ | automatyczne dla kasjerów maszyny, pieniężnych rozdzielacz |
+| CASH\_DISPENSER | automatyczne dla kasjerów maszyny, pieniężnych rozdzielacz |
 | CASINO | Casino |
 | KINOWYCH | Drive-in kinowych, kinowych |
 | MIASTO\_CENTRUM | Otoczenie obszaru administracyjnego Centrum Miasto Centrum |
@@ -45,14 +45,14 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | COLLEGE\_UNIVERSITY | inny poziom uczelni/policealnej uczelni/university, uczelni, szkoły prep university, university |
 | KOMERCYJNE\_KOMPILOWANIE | Tworzenie pakietu Office Tworzenie centrali park komercyjnych |
 | SPOŁECZNOŚĆ\_CENTRUM | Centrum społeczności |
-| FIRMY | Electronics, produkcji i usług danych komputera, technologii zdrowia publicznego, Finanse, chroniły zwierząt, linii lotniczych, dzierżawa urządzenia, usługi, dostarczania poczty/pakietu/transport, linii magistrali, naprawy głównego urządzenia, czyszczenie usług, oem, opodatkowaniem usługi, olej gazowniczym, usług prawnych, konstrukcji, teleobiektyw komunikacji, transport, samochodów produkcji, chemiczne, mortuaries usługi pogrzebowe, operacje tunelu mostek, samochodów, mechaniczne, usług, doradców inwestycji reklamy/marketing, przenoszenie magazynu, instytucja oszczędności, branży ubezpieczeniowej, oprogramowanie komputerowe środków farmaceutycznych, świadcząc usługi wesele, rolnicze technologii, nieruchomości, taksówek, limousine shuttle usługi Service bus wynajem karty, wyszukiwania, publikowania technologie, kabel telefonu, firmy, brewery, osoby, estate(s), dystrybucji importu/eksportu, mine(s) węgla, gold mine(s) |
+| FIRMA | Electronics, produkcji i usług danych komputera, technologii zdrowia publicznego, Finanse, chroniły zwierząt, linii lotniczych, dzierżawa urządzenia, usługi, dostarczania poczty/pakietu/transport, linii magistrali, naprawy głównego urządzenia, czyszczenie usług, oem, opodatkowaniem usługi, olej gazowniczym, usług prawnych, konstrukcji, telekomunikacyjnych, transport, samochodów produkcji, chemiczne, mortuaries usługi pogrzebowe, operacje tunelu mostek, samochodów, mechaniczne, usług, doradców inwestycji reklamy/marketing, przenoszenie magazynu, instytucja oszczędności, branży ubezpieczeniowej, oprogramowanie komputerowe środków farmaceutycznych, świadcząc usługi wesele, rolnicze technologii, nieruchomości, taksówek, limousine shuttle usługi Service bus wynajem karty, wyszukiwania, publikowania technologie, kabel telefonu, firmy, brewery, osoby, estate(s), dystrybucji importu/eksportu, mine(s) węgla, gold mine(s) |
 | COURTHOUSE | courthouse |
 | KULTURY\_CENTRUM | Centrum kultury |
 | DENTIST | dentist |
 | DZIAŁ\_MAGAZYNU | Dział magazynu |
 | LEKARZEM | Ogólne lekarza, specjalista, lekarzem |
 | ELECTRIC\_POJAZDU\_STACJI | Stacja Electric pojazdu |
-| EMBASSY | Embassy |
+| EMBASSY | embassy |
 | AWARYJNEGO\_MEDYCZNYCH\_USŁUGI | awaryjnego usług medycznych |
 | ROZRYWKA | Rozrywka |
 | PROGRAM EXCHANGE | Gold w programie exchange, operacji wymiany walut, notowań giełdowych, programu exchange |
@@ -76,7 +76,7 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | BIBLIOTEKA | Biblioteka |
 | PRODUKCYJNY\_FUNKCJI | zakładu |
 | MARINA | dorzeczu większym, marina |
-| NA RYNKU | hipermarketów supermarkety, rolników, publiczny, nieformalne rynku |
+| MARKET | hipermarketów supermarkety, rolników, publiczny, nieformalne rynku |
 | NOŚNIK\_FUNKCJI | funkcji multimediów |
 | MILITARY\_INSTALACJI | Military podstawowy, ochrony wybrzeża stacji, wojskowe instalacji, naval base |
 | NAPĘD ZA\_ORGANIZACJI\_PAKIETU OFFICE | Uruchamianie organizacji office |
@@ -94,7 +94,7 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | MIEJSCE\_OF\_ZE ŚWIĄTYŃ | ashram synagogue, meczet, gurudwara, church, temple, miejsce wydarzenia, misji, retreat, temple(s), religijnej witryny, religijnej Centrum, klasztor, convent |
 | POLICJI\_STACJI | kolejność 1 obszar, stacji policji, wpis policji |
 | PORT\_MAGAZYNU\_FUNKCJI | Harbor(s) i dokowanie dorzeczu, port, funkcji portu/magazynu dock(s) dockyard, |
-| WPIS\_PAKIETU OFFICE | lokalne, pocztowym |
+| POST\_OFFICE | lokalne, pocztowym |
 | PODSTAWOWY\_ZASOBÓW\_NARZĘDZIA | Narzędzie/zasobów podstawowego, elektrowni, roślin separator ropa naftowa gazu |
 | WIĘZIENIU\_CORRECTIONAL\_FUNKCJI | więzieniu, więzieniu/poprawczych funkcji |
 | PUBLICZNE\_REKREACYJNE | pieszych całość, toaletowe, ratownictwa drogi, pasażerskich transportu biletu office, publiczne pole wywołania, rekreacyjne publicznych, Centrum komunikacji |
@@ -108,20 +108,20 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | RESTAURACJI | Niemiecki, Cajun haitański, holenderski, pokoje bankiet, bistro, Izraela, słowackim, jamajski, vegetarian, owoce morza, wietnamski, maltański, prowincji Syczuan, walijski, chińskim, japońskim, przedstawicielami Algierii Californian syntezy jądrowej, Shandong, Sałatka pasku główki, hiszpański, Birr, tajwańskich, pierścienie, Iranu, kanadyjski, American, norweski, francuski, Hunan, polinezyjski, afghan, drogach, Wschodnia, Szwajcaria, erotic, crêperie, Surinamese egipska, węgierski, Nepalu, barbecue, pot ciepłej, hamburgers, Śródziemnego, Ameryce Łacińskiej, tapas, British, Polską, Guangdong, Azji (inne), buffet, sushi, mongolski, international, małży, Thai, Boliwar, Rumanian, kurczaka, od początku kosher, steak dom, pasek jogurt/soku, włoski, koreański, Cypriot, bośniacki, boliwijskie, Dominikana, Belgia, tunezyjska, Szkocki, Angielski, pakistańskich, czeski, Hawajski, Maghrib, Tybetański, arabskiego, środkowy Wschodniej, chilijskie, Szanghaj, Polski, Filipiny, sudański, ormiański, Birmański, Brazylia, skandynawskich, bułgarski, duszę żywności, Kolumbii, żydowski, głosi, Sicilian organiczny, grecki, baskijski, Urugwajskiej, bufetach, fiński, Afryki, Korsykański, arabska, Karaibów, Dongbei, rosyjski, gril, wynos, szybko żywności, pub irlandzki, Australii, żywności, fondue Libańską indonezyjski, duński, Provençal, teppanyaki, Rupia, Mauritiusa western kontynentalnych, Nuevo Riel, przekąsek, szwedzki, macrobiotic, lodów parlor, Słowiański, turecki, Argentinean, Austria, egzotycznych, portugalskim, Luksemburski, marokański, restauracji Cuban, sandwich, |
 | RESTAURACJA\_OBSZARU | obszar restauracji |
 | REST\_OBSZARU | REST obszarze powstrzymanie zmniejszania miejsce |
-| SCEN\_PANORAMIC\_WIDOKU | Widok scen/panoramicznych punktu obserwacji |
+| SCENIC\_PANORAMIC\_VIEW | Widok scen/panoramicznych punktu obserwacji |
 | SCHOOL | school kulinarnych, szkoły podstawowe, szkoły grafikę, starszy szkole, prowadzenie szkoły, school języka, sportu służbowe, przed wiekiem szkolnym, szkole, school bliski, szkolenia zawodowego, szkoły specjalne, podrzędnych opieki funkcji, szkoły, school Technical Preview, wojskowe szkoły, towarzystwo szkoły |
 | REJESTRATOR | gniazda fabryki produktów zabezpieczeń, Wyspa Bożego Narodzenia/dzień wolny magazyn, opticians, ogrodzie DOM: oświetlenia, lottery sklep, instrumentów, w kompozycją nail salon, lokalne ogrodzie: malowanie urządzanie hobby/wolne, ogólnospożywcze newsagents, godzina Akcesoria odzieży: specjalizacja, środków próbnego czyszczących, leatherwear zbiory domowe dostaw, odzież akcesoria: elementy podrzędne, sprzętem materiału, biżuteria, zarejestruje zegarki, odzież akcesoria: obuwie buta naprawy, ogrodzie DOM: zasłony/tkaniny, elektryczny, pakietu office go: konsumenta Electronics, elektryczny, pakietu office go: aparatu&#39;s fotografii, dysku cd&#39;s, filmy wideo z dysku DVD, prania Akcesoria odzieży: mężczyzn florists, sklep pion, sklepach książki, morskich elektroniczny sprzęt, w przeddzień żywności: rynków żywności, ogrodzie DOM: Dywan/piętro pokrycia , fotokopia, łodzie Akcesoria urządzenia, wybierz telefon komórkowy, zabawki gry, foods w specjalizacji, Akcesoria odzieży: Ogólne, w przeddzień żywności: wyroby, dostosować Sklep, prezenty, kart, pamiątki zabawki, zwierząt usług, odzieży sprzętu dyscyplin sportowych, sklep sygnatury office elektryczny, elektryczny urządzenia go: sprzętu pakietu office, zdjęcia laboratorium/rozwój, kluby całościowego, ogrodzie DOM: meble wyposażenia, specjalizacje lokalnych, w przeddzień żywności: butchers, różnych magazynu, w przeddzień żywności: sklepach żywności, w przeddzień żywności: spirytusowym wina, drug sklep , meble/wyposażenie, elektryczny, sieć domowa go: dostarcza komputera, dzierżawa dysku cd/wideo, sprzętu medyczne, dostarcza rolnicze, salon estetyki, ogrodzie DOM: ogrodzie centrów usługi, w przeddzień żywności: fishmongers wyczerpania estetyki odzież Akcesoria: kobiet, agentów podróży, sprzedaży detalicznej, odtwarzania sklep, ogrodzie DOM: szkła systemu windows, sprzęt, rzeczywistym nieruchomościami, szkło/ceramiczne delicatessen, ogrodzie DOM: łazienki kuchni, zakład stacji, hairdressers barbers, w przeddzień żywności: grocers, w przeddzień żywności: zielony grocers, magazyny wygody dysku za pośrednictwem sklepu bottle, ogrodzie DOM: obsługiwanymi centra, antyki/grafikę, sklep, Magazyn |
 | ZAKUPY\_CENTRUM | małe, zakupy Centrum |
 | SPORT\_CENTRUM | tematycznych sport typu "Squash" sądu, Centrum club przydatności, Centrum dyscyplin sportowych |
 | STADION | netball, football, Śledź wyścigu, podstaw rugby, uniwersalny, podstaw cricket, mecz, motor sportu, hokeja, athletic, koni racing przeciwna, soccer, stadion, athletic pola, torów wyścigów |
-| SWIMMING\_PULI | swimming puli |
+| SWIMMING\_POOL | swimming puli |
 | TENISA\_ORZECZENIA | Sąd tenisa |
 | KINOWY | amphitheater, concert hall, theater obiad, Centrum utworów muzycznych, opera, cabaret, sponsorowanymi, opera DOM |
 | TURYSTYCZNE\_INFORMACJI\_PAKIETU OFFICE | office informacje turystyczne |
 | RUCH\_ŚWIATŁA | sygnalizacji ulicznej |
 | RUCH\_USŁUGI\_CENTRUM | Dział kontroli ruchu, Centrum obsługi ruchu |
 | RUCH\_LOGOWANIA | znak ruchu |
-| HISTORIA\_SYSTEMU | Adventure pojazdu, dzieła Wspinanie się koń była bardzo często, rowerów górski, górach, Historia systemu |
+| TRAIL\_SYSTEM | Adventure pojazdu, dzieła Wspinanie się koń była bardzo często, rowerów górski, górach, Historia systemu |
 | TRANSPORT\_POJAZDU URZĄD\_REJESTRACJI | transport urzędu/pojazdu rejestracji |
 | TRUCK\_STOP | Zatrzymaj Truck |
 | WETERYNARII | weterynaryjnych funkcji, weterynarii |

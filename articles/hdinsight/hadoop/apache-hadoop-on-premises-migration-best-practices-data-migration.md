@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 488e1adb6d533dc88994e1dc08513870f56bd9c0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433427"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433046"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania migracji danych
 
@@ -94,7 +94,7 @@ Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu f
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Migracja magazynu metadanych hive za pomocą skryptów
 
-1. Generuj Hive DDLs z Magazyn metadanych Hive środowiska lokalnego. Ten krok można wykonać przy użyciu [skryptu powłoki systemowej otoki](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. Generowanie DDLs Hive z na Magazyn metadanych Hive lokalnie. Ten krok można wykonać przy użyciu [skryptu powłoki systemowej otoki](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
 1. Edytuj wygenerowany kod DDL, aby zastąpić adres url systemu HDFS przy użyciu adresów URL usługi ADLS/WASB/ABFS.
 1. Uruchom zaktualizowane DDL na Magazyn metadanych z klastra HDInsight.
 1. Upewnij się, że wersja magazynu metadanych Hive jest zgodna między lokalizacją lokalną i chmurą.
@@ -111,7 +111,7 @@ Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu f
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - Eksportuj zasady platformy Ranger w środowisku lokalnym do plików xml.
-- Przekształć lokalnych określonych opartych na systemie plików HDFS ścieżki do WASB/Azure Data Lake Store przy użyciu narzędzia, takiego jak XSLT.
+- Przekształć w środowisku lokalnym określonych ścieżek opartych na systemie plików HDFS do WASB/Azure Data Lake Store przy użyciu narzędzia, takiego jak XSLT.
 - Importowanie zasad do systemem HDInsight platformy Ranger.
 
 ## <a name="next-steps"></a>Kolejne kroki

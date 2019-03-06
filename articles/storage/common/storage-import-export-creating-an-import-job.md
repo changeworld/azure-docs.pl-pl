@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 42246a5d2c8515c26ed399f041476c8ad70decfe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729408"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442141"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 
@@ -33,7 +33,7 @@ Tworzenie zadania importu dla usługi Microsoft Azure Import/Export, za pomocą 
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Przygotowywanie dysków za pomocą narzędzia Azure Import/Export
 
-Kroki, aby przygotować dyski do zadania importu, są takie same, czy tworzysz jobvia portalu lub za pośrednictwem interfejsu API REST.
+Kroki, aby przygotować dyski do zadania importu, są takie same, czy tworzyć zadania w portalu lub za pośrednictwem interfejsu API REST.
 
 Poniżej przedstawiono krótkie omówienie przygotowania dysku. Zapoznaj się [odwołanie do usługi Azure Import ExportTool](storage-import-export-tool-how-to-v1.md) pełne instrukcje. Narzędzie importu/eksportu platformy Azure można pobrać [tutaj](https://go.microsoft.com/fwlink/?LinkID=301900).
 

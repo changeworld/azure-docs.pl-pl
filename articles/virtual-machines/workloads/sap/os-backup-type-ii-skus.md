@@ -1,6 +1,6 @@
 ---
-title: System operacyjny kopii zapasowej i przywracania SAP HANA na platformie Azure (wystąpienia duże) wpisz jednostki SKU II | Dokumentacja firmy Microsoft
-description: Wykonaj Operatign systemu z kopii zapasowej i przywracania dla SAP HANA na jednostki SKU II typu Azure (wystąpienia duże)
+title: Tworzenie kopii zapasowej systemu operacyjnego i przywracania środowiska SAP Hana na platformie Azure (duże wystąpienia) typ jednostki SKU II | Dokumentacja firmy Microsoft
+description: Wykonaj Operatign systemu z kopii zapasowej i przywracania dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jednostek SKU typu z II
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,76 +14,76 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c82c5c74fe13bad99528486be69089df5f477457
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063278"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436344"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus"></a>Kopia zapasowa systemu operacyjnego i przywracania dla jednostki SKU II typu
+# <a name="os-backup-and-restore-for-type-ii-skus"></a>Kopia zapasowa systemu operacyjnego i przywracania dla jednostek SKU typu II
 
-W tym dokumencie opisano kroki, aby wykonywać kopie zapasowe poziomu pliku systemu operacyjnego i przywracania dla **jednostki SKU II typu** wystąpień dużych HANA. 
+W tym dokumencie opisano kroki, aby wykonywać kopie zapasowe poziomu pliku systemu operacyjnego i przywracania dla **jednostek SKU typu II** dużych wystąpień HANA. 
 
 >[!NOTE]
->Skrypty kopii zapasowej systemu operacyjnego przy użyciu oprogramowania tyłu, który jest wstępnie zainstalowane na serwerze.  
+>Skrypty kopii zapasowej systemu operacyjnego korzysta z oprogramowania tylko przemyślane decyzje, które jest wstępnie instalowane na serwerze.  
 
-Po ukończeniu inicjowania obsługi administracyjnej przez zespół zarządzania usługami firmy Microsoft, domyślnie serwer jest skonfigurowany z harmonogramem dwóch kopii zapasowych, aby utworzyć kopię zapasową systemu plików poziomu Utwórz kopię zapasową systemu operacyjnego. Harmonogram zadania tworzenia kopii zapasowej można sprawdzić za pomocą następującego polecenia:
+Po zakończeniu aprowizacji przez zespół zarządzania usługami firmy Microsoft, domyślnie serwer jest skonfigurowany z harmonogramem dwie kopie zapasowe do tworzenia kopii zapasowej systemu plików na poziomie Utwórz kopię zapasową systemu operacyjnego. Harmonogram zadania tworzenia kopii zapasowej można sprawdzić za pomocą następującego polecenia:
 ```
 #crontab –l
 ```
-Można zmienić harmonogram tworzenia kopii zapasowych dowolnej chwili za pomocą następującego polecenia:
+Możesz zmienić harmonogram tworzenia kopii zapasowych w dowolnym momencie przy użyciu następującego polecenia:
 ```
 #crontab -e
 ```
 ## <a name="how-to-take-a-manual-backup"></a>Jak wykonać kopię zapasową ręczne?
 
-Kopia zapasowa systemu plików systemu operacyjnego jest zaplanowane, za pomocą **zadania cron** już. Można jednak wykonać systemu operacyjnego plik poziomu kopii zapasowej także ręcznie. Aby wykonać kopię zapasową ręczne, uruchom następujące polecenie:
+Kopia zapasowa systemu plików systemu operacyjnego jest zaplanowane, za pomocą **zadania cron** już. Można jednak wykonać systemu operacyjnego plik Kopia zapasowa na poziomie także ręcznie. Aby ręcznie wykonaj kopię zapasową, uruchom następujące polecenie:
 
 ```
 #rear -v mkbackup
 ```
-Następujący program ekranu pokazuje przykładowe ręcznego wykonywania kopii zapasowej:
+Poniższy pokaz ekranie przedstawiono przykładowe ręcznego tworzenia kopii zapasowej:
 
-![jak](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
+![Jak](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
-## <a name="how-to-restore-a-backup"></a>Jak przywrócić z kopii zapasowej?
+## <a name="how-to-restore-a-backup"></a>Jak przywrócić kopię zapasową?
 
-Pełnej kopii zapasowej lub pojedynczy plik można przywrócić z kopii zapasowej. Aby przywrócić, użyj następującego polecenia:
+Możesz przywrócić pełnej kopii zapasowej lub pojedynczy plik z kopii zapasowej. Aby przywrócić, użyj następującego polecenia:
 
 ```
 #tar  -xvf  <backup file>  [Optional <file to restore>]
 ```
-Po przywróceniu plik jest odzyskiwana w bieżącym katalogu roboczym.
+Po przywróceniu plik jest odzyskiwany w bieżącym katalogu roboczym.
 
-Polecenie przedstawia przywracania pliku */etc/fstabfrom* plik kopii zapasowej *backup.tar.gz*
+Następujące polecenie wyświetla Przywracanie pliku */etc/fstabfrom* pliku kopii zapasowej *backup.tar.gz*
 ```
 #tar  -xvf  /osbackups/hostname/backup.tar.gz  etc/fstab 
 ```
 >[!NOTE] 
->Należy skopiować plik do odpowiedniej lokalizacji po przywróceniu z kopii zapasowej.
+>Należy skopiować plik do żądanej lokalizacji, po przywróceniu z kopii zapasowej.
 
-Poniższy zrzut ekranu przedstawia przywracania pełnej kopii zapasowej:
+Poniższy zrzut ekranu przedstawia Przywracanie pełnej kopii zapasowej:
 
 ![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
-## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Jak zainstalować narzędzie tyłu i zmienić konfigurację? 
+## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Jak zainstalować narzędzie do tyłu i zmienić konfigurację? 
 
-Pakiety Relax i Odzyskaj (tylne) **preinstalowanym** w **jednostki SKU II typu** HANA dużych wystąpień i żadna akcja ze strony użytkownika. Bezpośrednio możesz rozpocząć korzystanie z tyłu dla kopii zapasowej systemu operacyjnego.
-Jednak w sytuacjach, w którym należy zainstalować pakiety w ramach własnego, można wykonać wymienionych kroki, aby zainstalować i skonfigurować narzędzie do tyłu.
+Pakiety Relax i odzyskiwanie (tylne) **preinstalowanym** w **jednostek SKU typu II** dużych wystąpień HANA i wykonywać żadnych czynności ze strony użytkownika. Bezpośrednio aby zacząć korzystać z tyłu do utworzenia kopii zapasowej systemu operacyjnego.
+Jednak w sytuacjach, w którym należy zainstalować te pakiety w ramach własnego, możesz wykonać wymienione kroki, aby zainstalować i skonfigurować narzędzie do tyłu.
 
-Aby zainstalować **tyłu** zapasowe pakietów, użyj następujących poleceń:
+Aby zainstalować **tyłu** kopie zapasowe pakietów, użyj następujących poleceń:
 
-Aby uzyskać **SLES** systemie operacyjnym, użyj następującego polecenia:
+Aby uzyskać **SLES** system operacyjny, użyj następującego polecenia:
 ```
 #zypper install <rear rpm package>
 ```
-Aby uzyskać **RHEL** systemie operacyjnym, użyj następującego polecenia: 
+Aby uzyskać **RHEL** system operacyjny, użyj następującego polecenia: 
 ```
 #yum install rear -y
 ```
-Aby skonfigurować narzędzie do tyłu, musisz zaktualizować parametrów **OUTPUT_URL** i **BACKUP_URL** w *pliku /etc/rear/local.conf*.
+Aby skonfigurować narzędzie do tyłu, należy zaktualizować parametry **OUTPUT_URL** i **BACKUP_URL** w *pliku /etc/rear/local.conf*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -96,4 +96,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-Poniższy zrzut ekranu przedstawia przywracania pełnej kopii zapasowej: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+Poniższy zrzut ekranu przedstawia Przywracanie pełnej kopii zapasowej: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

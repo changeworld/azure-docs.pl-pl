@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 52b52cce1e93e55563cf695f06bd7821ebcfc585
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653819"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444909"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
 
@@ -70,7 +70,7 @@ Część zakodowanych wartości w szablonie:
 | Właściwość | Wartość |
 |----------|-------|
 | Lokalizacja | Zachodnie stany USA |
-| Nazwa sieci wirtualnej | &lt;ClusterNamePrevix >-vnet1 |
+| Nazwa sieci wirtualnej | &lt;ClusterNamePrevix>-vnet1 |
 | Prefiks przestrzeni adresowej | 10.1.0.0/16 |
 | Nazwa podsieci | Podsieć 1 |
 | Prefiks podsieci | 10.1.0.0/24 |
@@ -87,7 +87,7 @@ Część zakodowanych wartości w szablonie:
 | Właściwość | Wartość |
 |----------|-------|
 | Lokalizacja | Wschodnie stany USA |
-| Nazwa sieci wirtualnej | &lt;ClusterNamePrevix >-vnet2 |
+| Nazwa sieci wirtualnej | &lt;ClusterNamePrevix>-vnet2 |
 | Prefiks przestrzeni adresowej | 10.2.0.0/16 |
 | Nazwa podsieci | Podsieć 1 |
 | Prefiks podsieci | 10.2.0.0/24 |
@@ -127,7 +127,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. Aby zainstalować Bind, użyj następujących poleceń w sesji SSH:
 
@@ -136,7 +136,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     sudo apt-get install bind9 -y
     ```
 
-3. Konfigurowanie powiązania do przekazywania żądań rozpoznawania nazw na serwerze DNS w sieci lokalnej. Aby to zrobić, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
+3. Konfigurowanie powiązania do przekazywania żądań rozpoznawania nazw do na lokalny serwer DNS. Aby to zrobić, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
 
     ```
     acl goodclients {
@@ -262,7 +262,7 @@ Tworzenie [bazy danych Apache HBase](https://hbase.apache.org/) klastrowania w k
 
 - **Nazwa grupy zasobów**: Użyj tej samej nazwy grupy zasobów, podczas tworzenia sieci wirtualnych.
 - **Typ klastra**: HBase
-- **Wersja**: Baza danych HBase 1.1.2 (HDI 3.6)
+- **Wersja**: HBase 1.1.2 (HDI 3.6)
 - **Lokalizacja**: Użyj tej samej lokalizacji co sieć wirtualna.  Domyślnie jest vnet1 *zachodnie stany USA*, a sieć vnet2 *wschodnie stany USA*.
 - **Magazyn**: Utwórz nowe konto magazynu dla klastra.
 - **Sieć wirtualna** (z ustawień zaawansowanych w portalu): Wybierz sieć vnet1, utworzony w poprzedniej procedurze.
@@ -304,8 +304,8 @@ Wymagane argumenty:
 
 |Name (Nazwa)|Opis|
 |----|-----------|
-|-s, — src-klaster | Określa nazwę DNS klastra HBase źródła. Na przykład: hbsrccluster -s, klaster — src = hbsrccluster |
-|-d, klaster — czasu letniego | Określa nazwę DNS klastra HBase docelowego (repliki). Na przykład: dsthbcluster -s, klaster — src = dsthbcluster |
+|-s, --src-cluster | Określa nazwę DNS klastra HBase źródła. Na przykład: hbsrccluster -s, klaster — src = hbsrccluster |
+|-d, --dst-cluster | Określa nazwę DNS klastra HBase docelowego (repliki). Na przykład: dsthbcluster -s, klaster — src = dsthbcluster |
 |-sp, w src — hasło ambari | Określa hasło administratora dla Ambari w klaster HBase źródła. |
 |— punkt dystrybucji, w czasu letniego — hasło ambari | Określa hasło administratora dla Ambari w docelowym klastrze bazy danych HBase.|
 
@@ -313,12 +313,12 @@ Argumenty opcjonalne:
 
 |Name (Nazwa)|Opis|
 |----|-----------|
-|-polecenia su, w--src użytkownika systemu ambari | Określa nazwę użytkownika administratora Ambari w klaster HBase źródła. Wartość domyślna to **administratora**. |
+|-su, --src-ambari-user | Określa nazwę użytkownika administratora Ambari w klaster HBase źródła. Wartość domyślna to **administratora**. |
 |— jednostka bazy danych, czasu letniego — ambari użytkownika | Określa nazwę użytkownika administratora Ambari w docelowym klastrze bazy danych HBase. Wartość domyślna to **administratora**. |
 |-t,--listy tabel | Określa tabele, które mają być replikowane. Na przykład:--listy tabel = "Tabela1; table2; Tabela3". Jeśli nie określisz tabele są replikowane wszystkich istniejących tabel HBase.|
 |-m,--maszyny | Określa węzeł główny, w którym jest uruchamiany akcji skryptu. Wartość to **hn0** lub **hn1** i powinna być wybrana oparta na który jest aktywnym węzłem głównym. Użyj tej opcji, po uruchomieniu skryptu $0 jako akcja skryptu HDInsight portal lub programu Azure PowerShell.|
-|-cp, - copydata | Umożliwia migrację istniejących danych w tabelach, w którym replikacja jest włączona. |
-|-obr. / min, - replikacja-phoenix-meta | Umożliwia replikację dla rozwiązania Phoenix tabel systemowych. <br><br>*Użyj tej opcji z rozwagą.* Firma Microsoft zaleca, możesz ponownie utworzyć tabele Phoenix w klastrach repliki przed użyciem tego skryptu. |
+|-cp, -copydata | Umożliwia migrację istniejących danych w tabelach, w którym replikacja jest włączona. |
+|-rpm, -replicate-phoenix-meta | Umożliwia replikację dla rozwiązania Phoenix tabel systemowych. <br><br>*Użyj tej opcji z rozwagą.* Firma Microsoft zaleca, możesz ponownie utworzyć tabele Phoenix w klastrach repliki przed użyciem tego skryptu. |
 |-h, — pomoc | Wyświetla informacje o użyciu. |
 
 `print_usage()` Części [skryptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) zawiera szczegółowy opis parametrów.

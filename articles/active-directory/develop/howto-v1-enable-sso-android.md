@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e27ecc73c19b92f8dcf77849c2f91a5eb57ac8e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168050"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442175"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie Android za pomocą biblioteki ADAL
 
@@ -119,7 +119,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 #### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 2: Ustanowienie nowych przekierowania URI ze schematem Twojego adresu URL
 
-Aby upewnić się, że recevies aplikacji odpowiednie zwracanego poświadczenie tokenów, jest wymagane, aby upewnić się, wywołania zwrotnego aplikacji w taki sposób, aby sprawdzić, systemu operacyjnego Android. Systemu operacyjnego Android używa skrót certyfikatu w sklepie Google Play. Ten skrót certyfikatu nie sfałszowane przez aplikację nieautoryzowanych. Wraz z identyfikatora URI aplikacji brokera firma Microsoft zapewnia, że tokeny są zwracane do właściwej aplikacji. Przekierowanie Unikatowy identyfikator URI jest wymagany do zarejestrowania się w aplikacji.
+W celu zapewnienia, że odpowiednie aplikacja otrzymuje zwracanego poświadczenie tokenów jest wymagane, aby upewnić się, wywołania zwrotnego aplikacji w taki sposób, aby sprawdzić, systemu operacyjnego Android. Systemu operacyjnego Android używa skrót certyfikatu w sklepie Google Play. Ten skrót certyfikatu nie sfałszowane przez aplikację nieautoryzowanych. Wraz z identyfikatora URI aplikacji brokera firma Microsoft zapewnia, że tokeny są zwracane do właściwej aplikacji. Przekierowanie Unikatowy identyfikator URI jest wymagany do zarejestrowania się w aplikacji.
 
 Identyfikator URI przekierowania musi być w postaci prawidłowego:
 

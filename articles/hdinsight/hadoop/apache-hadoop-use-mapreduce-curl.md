@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fc2333b6bd41b9efdd1fcafd6168906525cb537a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406797"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440577"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu interfejsu REST
 
@@ -36,7 +36,7 @@ Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomieni
 >
 > Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego dostępu](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
 
-1. Aby ustawić logowania do klastra, który jest używany przez skrypty w tym dokumencie, użyj jednego z poleceń followig:
+1. Aby ustawić logowania do klastra, który jest używany przez skrypty w tym dokumencie, użyj jednej z następujących poleceń:
 
     ```bash
     read -p "Enter your cluster login account name: " LOGIN

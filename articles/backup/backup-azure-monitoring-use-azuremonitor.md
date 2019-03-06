@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e7b1b3e3fba04276fc284fd71adabedc01185251
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984819"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439167"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -254,7 +254,7 @@ Oto zasób na sam magazyn RS i dlatego należy powtórzyć tę samą akcję dla 
 
 ***Wszystkie alerty utworzone na podstawie dzienników aktywności i obszary robocze LA mogą być wyświetlane w usłudze Azure Monitor w okienku "Alerty" po lewej stronie.***
 
-Powiadomienia za pomocą dzienników aktywności można zastosować, ***usługi Azure Backup, zdecydowanie zaleca się [monitorowanie na dużą skalę na użytek LA](#monitoring-at-scale) i nie dzienników aktywności z następujących powodów***.
+Powiadomienia za pomocą dzienników aktywności można zastosować, ***usługi Azure Backup zdecydowanie zaleca się na potrzeby monitorowania w skali i nie Dzienniki aktywności z następujących powodów LA***.
 
 - **Ograniczonej liczbie scenariuszy:** Dotyczy tylko tworzenia kopii zapasowych maszyn wirtualnych platformy Azure i należy powtórzyć dla każdego magazynu RS.
 - **Definicja dopasowania:** Zaplanowane działania tworzenia kopii zapasowej nie mieści się przy użyciu najnowszej definicji dzienników aktywności i zgodne z [dzienniki diagnostyczne](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). To doprowadzić do nieoczekiwanego wpływ po zmianie danych przekazywanie za pośrednictwem kanału dzienników aktywności jako wskaźnik poniżej.

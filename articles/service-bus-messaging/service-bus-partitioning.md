@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: aaa8615c0358b89c02aad8241262320771e426a8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ea5f0e1ad6af6f301b684337941c7d9bce8590c1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818077"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444484"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
 
@@ -27,9 +27,9 @@ Nie jest możliwe zmienić opcję partycjonowania na dowolnym istniejącej kolej
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Każdy podzieleniu kolejki lub tematu składa się z wielu fragmentów. Poszczególne fragmenty są przechowywane w różnych Magazyn obsługi komunikatów i obsługiwane przez brokera inny komunikat. Gdy wiadomość jest wysyłana na podzieleniu kolejki lub tematu, Service Bus przydziela ten komunikat do jednego z fragmentów. Wybór odbywa się losowo przez usługę Service Bus lub za pomocą klucza partycji, określające nadawcę.
+Każdy podzieleniu kolejki lub tematu składa się z wielu partycji. Każdej partycji są przechowywane w różnych Magazyn obsługi komunikatów i obsługiwane przez brokera inny komunikat. Gdy wiadomość jest wysyłana na podzieleniu kolejki lub tematu, Service Bus przydziela ten komunikat do jednej z partycji. Wybór odbywa się losowo przez usługę Service Bus lub za pomocą klucza partycji, określające nadawcę.
 
-Gdy klient chce komunikat o błędzie z podzieleniu kolejki lub subskrypcji podzielonym na partycje tematu usługi Service Bus zapytania wszystkie fragmenty wiadomości, funkcja zwraca pierwszy komunikat, który jest uzyskiwana z dowolnego magazyny obsługi komunikatów do odbiorcy. Pamięci podręczne usługi Service Bus, innych komunikatów i zwraca je po odebraniu dodatkowe odbierania żądań. Odbieranie klienta nie ma informacji o partycjonowanie; zachowanie ukierunkowane na klienta podzieleniu kolejki lub tematu (np. odczytywać, wykonaj, odroczone utraconych wiadomości, pobieranie z wyprzedzeniem) jest taka sama jak zachowanie regularne jednostki.
+Gdy klient chce komunikat o błędzie z podzieleniu kolejki lub subskrypcji podzielonym na partycje tematu usługi Service Bus zapytania wszystkich partycji dla komunikatów, funkcja zwraca pierwszy komunikat, który jest uzyskiwana z dowolnego magazyny obsługi komunikatów do odbiorcy. Pamięci podręczne usługi Service Bus, innych komunikatów i zwraca je po odebraniu dodatkowe odbierania żądań. Odbieranie klienta nie ma informacji o partycjonowanie; zachowanie ukierunkowane na klienta podzieleniu kolejki lub tematu (np. odczytywać, wykonaj, odroczone utraconych wiadomości, pobieranie z wyprzedzeniem) jest taka sama jak zachowanie regularne jednostki.
 
 Nie ma żadnych dodatkowych kosztów, podczas wysyłania wiadomości do lub odebranie komunikatu z podzieleniu kolejki lub tematu.
 
@@ -43,7 +43,7 @@ W warstwie standardowej obsługi komunikatów można utworzyć kolejki usługi S
 
 ### <a name="premium"></a>Premium
 
-W danej przestrzeni nazw warstwy Premium partycjonowanie jednostki nie jest obsługiwane. Jednakże można nadal utworzyć tematów i kolejek usługi Service Bus w 1, 2, 3, 4, 5, 10, 20, 40 lub rozmiary 80 GB (wartość domyślna to 1 GB). Zobaczysz rozmiar kolejki lub tematu, analizując jego wpis [witryny Azure portal][Azure portal]w **Przegląd** bloku dla tej jednostki.
+W danej przestrzeni nazw warstwy Premium partycjonowania jednostki nie są obsługiwane. Jednakże można nadal utworzyć tematów i kolejek usługi Service Bus w 1, 2, 3, 4, 5, 10, 20, 40 lub rozmiary 80 GB (wartość domyślna to 1 GB). Zobaczysz rozmiar kolejki lub tematu, analizując jego wpis [witryny Azure portal][Azure portal]w **Przegląd** bloku dla tej jednostki.
 
 ### <a name="create-a-partitioned-entity"></a>Tworzenie jednostki podzielonej na partycje
 
@@ -61,11 +61,11 @@ Alternatywnie można utworzyć podzieleniu kolejki lub tematu w [witryny Azure p
 
 ## <a name="use-of-partition-keys"></a>Korzystanie z kluczy partycji
 
-Komunikat po umieszczonych w kolejce na podzieleniu kolejki lub tematu usługi Service Bus sprawdza obecność klucza partycji. Jeśli zostanie znaleziony, wybiera fragmentu na podstawie tego klucza. Jeśli nie znajdzie klucza partycji, wybiera fragmentu, w oparciu o wewnętrznego algorytmu.
+Komunikat po umieszczonych w kolejce na podzieleniu kolejki lub tematu usługi Service Bus sprawdza obecność klucza partycji. Jeśli zostanie znaleziony, wybiera partycji na podstawie tego klucza. Jeśli nie znajdzie klucza partycji, wybiera partycji, w oparciu o wewnętrznego algorytmu.
 
 ### <a name="using-a-partition-key"></a>Użycie klucza partycji
 
-Niektóre scenariusze, takie jak sesji lub transakcji, wymagają wiadomości, które mają być przechowywane w określonego fragmentu. Te scenariusze wymagają użycia klucza partycji. Wszystkie komunikaty, które używają tego samego klucza partycji są przypisane do tego samego fragmentu. Jeśli fragmentu jest tymczasowo niedostępny, Usługa Service Bus zwraca błąd.
+Niektóre scenariusze, takie jak sesji lub transakcji, wymagają wiadomości, które mają być przechowywane w określonej partycji. Te scenariusze wymagają użycia klucza partycji. Wszystkie komunikaty, które używają tego samego klucza partycji są przypisane do tej samej partycji. Jeśli partycja jest tymczasowo niedostępny, Usługa Service Bus zwraca błąd.
 
 W zależności od scenariusza inny komunikat właściwości są używane jako klucza partycji:
 
@@ -77,13 +77,13 @@ W zależności od scenariusza inny komunikat właściwości są używane jako kl
 
 ### <a name="not-using-a-partition-key"></a>Nie używa klucza partycji
 
-W przypadku braku klucza partycji usługi Service Bus dystrybuuje wiadomości w okrężne do wszystkich fragmentów podzieleniu kolejki lub tematu. Jeśli wybrany fragment jest niedostępny, usługi Service Bus przydziela ten komunikat do różnych fragmentów. W ten sposób wysyłania powiedzie się niezależnie od tymczasową niedostępność Magazyn obsługi komunikatów. Jednak nie będzie osiągnąć gwarantowaną kolejność, który zawiera klucz partycji.
+W przypadku braku klucza partycji usługi Service Bus dystrybuuje wiadomości w okrężne wszystkich partycji podzieleniu kolejki lub tematu. Jeśli wybranej partycji nie jest dostępna, usługi Service Bus przydziela ten komunikat do różnych partycji. W ten sposób wysyłania powiedzie się niezależnie od tymczasową niedostępność Magazyn obsługi komunikatów. Jednak nie będzie osiągnąć gwarantowaną kolejność, który zawiera klucz partycji.
 
 Aby uzyskać bardziej szczegółowe omówienie zależnościami między dostępnością (nie klucz partycji) i spójności (przy użyciu klucza partycji), zobacz [w tym artykule](../event-hubs/event-hubs-availability-and-consistency.md). Te informacje dotyczą równie partycjonowane jednostki usługi Service Bus.
 
-Aby zapewnić usługi Service Bus wystarczająco dużo czasu można umieścić w kolejce wiadomości do różnych fragmentów, [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) wartość określoną przez klienta, który wysyła wiadomości musi być większa niż 15 sekund. Zalecane jest, aby ustawić [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) właściwość domyślną wartość 60 sekund.
+Aby zapewnić usługi Service Bus wystarczająco dużo czasu można umieścić w kolejce wiadomości do innej partycji, [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) wartość określoną przez klienta, który wysyła wiadomości musi być większa niż 15 sekund. Zalecane jest, aby ustawić [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) właściwość domyślną wartość 60 sekund.
 
-Klucz partycji "Przypina" wiadomość do określonego fragmentu. Jeśli Magazyn obsługi komunikatów, który zawiera ten fragment jest niedostępny, Usługa Service Bus zwraca błąd. W przypadku braku klucza partycji usługi Service Bus można wybrać różne fragmentu, a operacja powiedzie się. Dlatego zalecane jest, że nie zostanie podany klucz partycji, chyba że jest to wymagane.
+Klucz partycji "Przypina" komunikat do określonej partycji. Jeśli Magazyn obsługi komunikatów, który przechowuje tę partycję jest niedostępny, Usługa Service Bus zwraca błąd. W przypadku braku klucza partycji usługi Service Bus można wybrać innej partycji, a operacja powiedzie się. Dlatego zalecane jest, że nie zostanie podany klucz partycji, chyba że jest to wymagane.
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Tematy zaawansowane: transakcji za pomocą partycjonowane jednostki
 
@@ -101,7 +101,7 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-Jeśli dowolne z właściwości, które służą jako klucza partycji są skonfigurowane, Usługa Service Bus Przypina komunikatu do określonego fragmentu. Dzieje się tak, czy transakcja jest używany. Zaleca się, że nie określisz klucza partycji, jeśli nie jest konieczne.
+Jeśli dowolne z właściwości, które służą jako klucza partycji są skonfigurowane, Usługa Service Bus Przypina komunikatu do określonej partycji. Dzieje się tak, czy transakcja jest używany. Zaleca się, że nie określisz klucza partycji, jeśli nie jest konieczne.
 
 ## <a name="using-sessions-with-partitioned-entities"></a>Korzystanie z sesji przy użyciu partycjonowane jednostki
 
@@ -126,9 +126,9 @@ committableTransaction.Commit();
 Usługa Service Bus obsługuje wiadomości automatycznego przekazywania z, aby nie lub między partycjonowane jednostki. Aby włączyć przekazywanie komunikatów automatycznego, należy ustawić [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] właściwości kolejki źródłowej lub subskrypcji. Jeśli komunikat określa klucz partycji ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey), lub [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)), ten klucz partycji służy do jednostki docelowej.
 
 ## <a name="considerations-and-guidelines"></a>Zagadnienia i wytyczne
-* **Wysoka spójność funkcji**: Jeśli jednostka korzysta z funkcji, takich jak sesje, wykrywania duplikatów lub jawną kontrolę partycjonowania klucza, operacji obsługi komunikatów są zawsze kierowane do określonych fragmentów. Jeśli dowolny z fragmentów występują duże zwiększenie ruchu lub źródłowy magazyn jest w złej kondycji, te operacje kończą się niepowodzeniem, i zmniejsza dostępności. Generalnie spójności jest nadal znacznie wyższa niż niepartycjonowana jednostki; tylko część ruchu ma problemy, a nie cały ruch. Aby uzyskać więcej informacji, zobacz ten [dyskusję na temat dostępności i spójności](../event-hubs/event-hubs-availability-and-consistency.md).
-* **Zarządzanie**: Operacje, takie jak tworzenie, Update i Delete muszą być wykonywane na fragmenty jednostki. Jeśli wszystkie fragment jest w złej kondycji, może to spowodować błędy dla tych operacji. Dla operacji pobierania informacji takich jak liczba komunikatów musi być agregowana ze wszystkich fragmentów. Jeśli wszystkie fragment jest w złej kondycji, stan dostępności jednostki zostanie zgłoszone jako ograniczona.
-* **Mało scenariuszy komunikat zbiorczej**: W przypadku takich scenariuszy, zwłaszcza w przypadku korzystania z protokołu HTTP, może być konieczne wykonanie wielu operacji pobrania, aby można było uzyskać wszystkie komunikaty. W przypadku odbierania żądań frontonu wykonuje odbioru na wszystkich fragmentów i przechowuje wszystkie odpowiedzi. Żądanie kolejnych odbioru w ramach tego samego połączenia będą korzystać z tej pamięci podręcznej i odbierać opóźnienia będzie niższa. Jednak jeśli masz wiele połączeń lub korzystać z protokołu HTTP, która ustanawia nowego połączenia dla każdego żądania. W efekcie nie ma żadnej gwarancji, że jej spowoduje przejście na tym samym węźle. Jeśli wszystkie istniejące komunikaty są zablokowane i buforowane w innym frontonu, operacja odbioru zwraca **null**. Po pewnym czasie wygaśnięcia komunikatów i można odbierać je ponownie. Zaleca się utrzymanie aktywności HTTP.
+* **Wysoka spójność funkcji**: Jeśli jednostka korzysta z funkcji, takich jak sesje, wykrywania duplikatów lub jawną kontrolę partycjonowania klucza, operacji obsługi komunikatów są zawsze kierowane do określonej partycji. Jeśli środowisko żadnej partycji dużego ruchu lub źródłowy magazyn jest w złej kondycji, te operacje kończą się niepowodzeniem, i zmniejsza dostępności. Generalnie spójności jest nadal znacznie wyższa niż niepartycjonowana jednostki; tylko część ruchu ma problemy, a nie cały ruch. Aby uzyskać więcej informacji, zobacz ten [dyskusję na temat dostępności i spójności](../event-hubs/event-hubs-availability-and-consistency.md).
+* **Zarządzanie**: Operacje, takie jak tworzenie, Update i Delete muszą być wykonywane na wszystkich partycjach jednostki. Jeśli każda partycja jest w złej kondycji, może to spowodować błędy dla tych operacji. Dla operacji pobierania informacji takich jak liczby wiadomości musi być agregowana ze wszystkich partycji. Jeśli każda partycja jest w złej kondycji, stan dostępności jednostki jest zgłaszany jako ograniczone.
+* **Mało scenariuszy komunikat zbiorczej**: W przypadku takich scenariuszy, zwłaszcza w przypadku korzystania z protokołu HTTP, może być konieczne wykonanie wielu operacji pobrania, aby można było uzyskać wszystkie komunikaty. W przypadku odbierania żądań frontonu wykonuje odbioru na wszystkie partycje i przechowuje wszystkie odpowiedzi. Żądanie kolejnych odbioru w ramach tego samego połączenia będą korzystać z tej pamięci podręcznej i odbierać opóźnienia będzie niższa. Jednak jeśli masz wiele połączeń lub korzystać z protokołu HTTP, która ustanawia nowego połączenia dla każdego żądania. W efekcie nie ma żadnej gwarancji, że jej spowoduje przejście na tym samym węźle. Jeśli wszystkie istniejące komunikaty są zablokowane i buforowane w innym frontonu, operacja odbioru zwraca **null**. Po pewnym czasie wygaśnięcia komunikatów i można odbierać je ponownie. Zaleca się utrzymanie aktywności HTTP.
 * **Przeglądaj/Odbierz komunikaty**: Dostępne tylko w starszej wersji [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) biblioteki. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nie zawsze zwraca liczby komunikatów określonej w [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) właściwości. Istnieją dwie typowe przyczyny to zachowanie. Jedną z przyczyn jest to, że rozmiar zagregowanych kolekcję komunikatów przekracza maksymalny rozmiar wynoszący 256 KB. Inną przyczyną jest to, że jeśli kolejka lub temat [właściwość EnablePartitioning](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) równa **true**, partycji może nie mieć wystarczającej liczby wiadomości do wykonania żądanej liczby komunikatów. Ogólnie rzecz biorąc, jeśli aplikacja chce otrzymywać określoną liczbę wiadomości, powinien wywoływać [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) wielokrotnie, dopóki nie otrzymuje tę liczbę wiadomości lub Brak dalszych komunikatów do wglądu. Aby uzyskać więcej informacji, w tym przykłady kodu, zobacz [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) lub [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) dokumentacji interfejsu API.
 
 ## <a name="latest-added-features"></a>Najnowsze funkcje dodane

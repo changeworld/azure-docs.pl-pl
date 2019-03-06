@@ -1,6 +1,6 @@
 ---
-title: Przykład sieci obwodowej — tworzenie sieci obwodowej w ochronie aplikacji z zaporą i grup NSG | Dokumentacja firmy Microsoft
-description: Tworzenie sieci obwodowej z zaporą i grup zabezpieczeń sieci (NSG)
+title: Przykład sieci obwodowej — kompilacja sieci obwodowej do ochrony aplikacji z zaporą i sieciowymi grupami zabezpieczeń | Dokumentacja firmy Microsoft
+description: Tworzenie sieci obwodowej z zaporą i sieciowymi grupami zabezpieczeń (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,263 +14,274 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 31d945f64cccd0c811d4dc45163583224102fb8a
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c1c64945aaa0bc4cd83cc769dab1c2a755896c01
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965243"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442482"
 ---
-# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Przykład 2 — Tworzenie sieci obwodowej w ochronie aplikacji z zaporą i grupy NSG
-[Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
+# <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>Przykład 2: Tworzenie sieci obwodowej do ochrony aplikacji z zaporą i sieciowymi grupami zabezpieczeń
+[Wróć do usług chmurowych firmy Microsoft i Strona zabezpieczeń sieci][HOME]
 
-W tym przykładzie utworzy sieć obwodową z zaporą, windows czterech serwerów i grup zabezpieczeń sieci. On również przeprowadzi każdego odpowiednie polecenia, aby zapewnić lepiej zrozumieć każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Na koniec w odwołaniach sekcja jest kompletny kod i instrukcje umożliwiające tworzenie tego środowiska do testowania i eksperymentowania z różnymi scenariuszami. 
+W tym przykładzie przedstawiono sposób tworzenia sieci obwodowej (znanej także jako *DMZ*, *strefą zdemilitaryzowaną*, i *podsiecią ekranowaną*) za pomocą zapory, cztery komputery serwerów systemu Windows, i sieciowe grupy zabezpieczeń (NSG). Zawiera szczegółowe informacje o poszczególnych odpowiednie polecenia, aby zapewnić lepiej zrozumieć każdego kroku. Sekcja "Scenariusze ruchu" zawiera instrukcje krok po kroku wyjaśnienie, w jaki sposób ruch przechodzi przez warstwy obrony w sieci obwodowej. Na koniec sekcji "Odwołań" zawiera kompletny kod i instrukcje dotyczące sposobu tworzenia tego środowiska do testowania i eksperymentowania z różnymi scenariuszami.
 
-![Przychodzący sieć obwodowa NVA i grupy NSG][1]
+![Dla ruchu przychodzącego sieci obwodowej przy użyciu urządzeń WUS i sieciowymi grupami zabezpieczeń][1]
 
-## <a name="environment-description"></a>Opis środowiska
-W tym przykładzie ma subskrypcję, która zawiera następujące elementy:
+## <a name="environment"></a>Środowisko 
+Ten przykład jest oparty na scenariuszu z subskrypcją platformy Azure, która zawiera następujące elementy:
 
-* Dwie usługi w chmurze: "FrontEnd001" i "BackEnd001"
-* Sieć wirtualna "CorpNetwork" z dwiema podsieciami: "Fronton" i "Wewnętrzna"
-* Jednej grupy zabezpieczeń sieci, stosowany do obu podsieci
-* Wirtualne urządzenie sieciowe, w tym przykładzie zapora Barracuda NextGen, połączone z podsiecią Frontend
-* Windows Server, który reprezentuje serwer aplikacji sieci web ("IIS01")
-* Serwery dwa okna, które reprezentują aplikacji z powrotem zakończenia serwerów ("AppVM01", "AppVM02")
-* Serwer Windows, który reprezentuje serwer DNS ("DNS01")
+* Dwie usługi w chmurze: FrontEnd001 i BackEnd001.
+* Sieć wirtualną o nazwie CorpNetwork, która ma dwie podsieci: Frontonu i zaplecza.
+* Jednej sieciowej grupy zabezpieczeń, jest stosowany do obu podsieci.
+* Wirtualne urządzenie sieciowe: Barracuda NextGen Firewall podłączone do podsieci frontonu.
+* Komputer systemu Windows Server, który reprezentuje serwer aplikacji sieci web: IIS01.
+* Dwa komputery serwera Windows, które reprezentują serwery zaplecza aplikacji: AppVM01 i AppVM02.
+* Komputer systemu Windows Server, który reprezentuje serwer DNS: DNS01.
 
 > [!NOTE]
-> Mimo że w tym przykładzie użyto Barracuda NextGen Firewall, w tym przykładzie można użyć wielu różne wirtualne urządzenia sieciowe.
+> Mimo że w tym przykładzie użyto Barracuda NextGen Firewall, można użyć wielu wirtualnych urządzeń sieciowych.
 > 
 > 
 
-W poniższej sekcji odwołania są skrypt programu PowerShell, który zostanie skompilowany większość środowiska opisanych powyżej. Tworzenie maszyn wirtualnych i sieci wirtualne, chociaż są wykonywane tylko przez przykładowy skrypt, nie opisano szczegółowo w tym dokumencie.
+Skrypt programu PowerShell w części "Informacje" w tym artykule tworzy większość środowiska opisane w tym miejscu. Maszyny wirtualne i sieci wirtualne są tworzone przy użyciu skryptu, ale te procesy nie są szczegółowo opisane w tym dokumencie.
 
 Aby skompilować środowiska:
 
-1. Zapisz plik xml konfiguracji sieci znajdujących się w części odwołania (zaktualizowane przy użyciu nazwy, lokalizacji i adresów IP adresy, które mają odpowiadać danym scenariuszu)
-2. Zaktualizuj zmienne użytkownika w skrypcie, aby dopasować środowiska, które skrypt ma być uruchamiana względem (subskrypcji, nazwy usług itp.)
-3. Uruchom skrypt programu PowerShell
+1. Zapisz plik XML konfiguracji sieci znajdujących się w części "Informacje" (zaktualizowane przy użyciu nazwy, lokalizacji i adresów IP adresy, które mają odpowiada Twojemu scenariuszowi).
+2. Zaktualizuj zmienne zdefiniowane przez użytkownika w skrypcie programu PowerShell, aby dopasować środowiska, w których skrypt będzie uruchamiany przed (subskrypcji, nazwy usługi i tak dalej).
+3. Uruchom skrypt programu PowerShell.
 
-**Uwaga**: Region oznaczony w skrypcie programu PowerShell musi odpowiadać oznaczony w pliku xml konfiguracji sieci.
+> [!NOTE]
+> Region określonego w skrypcie programu PowerShell musi odpowiadać określony w pliku XML konfiguracji sieci.
+>
+>
 
-Poniższe kroki skryptu używanego po utworzeniu mogą zostać podjęte, gdy skrypt zostanie uruchomiony pomyślnie:
+Po pomyślnym uruchomieniu skryptu możesz wykonać następujące czynności:
 
-1. Konfigurowanie reguł zapory, znajdują się w sekcji poniżej: Reguły zapory.
-2. Opcjonalnie w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej.
+1. Konfigurowanie reguł zapory. Zobacz sekcję "Reguły zapory" tego artykułu.
+2. Jeśli chcesz, możesz skonfigurować serwer sieci web i serwera aplikacji przy użyciu prostej aplikacji sieci web umożliwia testowanie za pomocą konfiguracji sieci obwodowej. Można użyć skryptów dwoma aplikacji podanego w sekcji "Odwołania".
 
-W następnej sekcji objaśniono większość instrukcji skryptów względem sieciowych grup zabezpieczeń.
+W następnej sekcji objaśniono większość instrukcji skryptu, które odnoszą się do sieciowych grup zabezpieczeń.
 
-## <a name="network-security-groups-nsg"></a>Sieciowe grupy zabezpieczeń (NSG)
-Na przykład grupy NSG jest utworzone i następnie ładowany za pomocą sześciu reguł. 
+## <a name="nsgs"></a>Sieciowe grupy zabezpieczeń
+W tym przykładzie grupa sieciowej grupy zabezpieczeń jest utworzone i następnie ładowany za pomocą sześciu reguł.
 
 > [!TIP]
-> Ogólnie rzecz biorąc należy najpierw utworzyć określone reguły "Zezwalaj", a następnie ostatniego bardziej ogólnymi zasadami "Deny". Określają priorytetem, których zasady są oceniane pierwszy. Nie dodatkowe reguły są oceniane, po znalezieniu ruchu do zastosowania do określonej reguły. Reguły sieciowej grupy zabezpieczeń można stosować w jednym kierunku ruchu przychodzącego lub wychodzącego (z punktu widzenia podsieci).
+> Ogólnie rzecz biorąc należy najpierw utworzyć określone reguły "Zezwalaj", a ostatni bardziej ogólnymi zasadami "Deny". Formanty priorytetem, których zasady są oceniane pierwszy. Po znalezieniu ruchu, która odnosi się do określonej reguły, nie dodatkowe reguły są oceniane. Reguły sieciowej grupy zabezpieczeń można stosować w przychodzący lub wychodzący kierunek (z punktu widzenia podsieci).
 > 
 > 
 
-Deklaratywne są tworzone następujące reguły dla ruchu przychodzącego:
+Deklaratywne te reguły są tworzone dla ruchu przychodzącego:
 
 1. Ruch DNS wewnętrzny (port 53) jest dozwolone.
 2. Ruch protokołu RDP (port 3389) z Internetu do dowolnej maszyny Wirtualnej jest dozwolony.
-3. Jest dozwolony ruch HTTP (port 80) z Internetu do urządzenia WUS (zapora)
-4. Cały ruch (wszystkich portów) z IIS01 do AppVM1 jest dozwolone.
+3. Ruch HTTP (port 80) z Internetu do urządzenia WUS (zapora) jest dozwolone.
+4. Cały ruch (wszystkich portów) z IIS01 do AppVM01 jest dozwolone.
 5. Cały ruch (wszystkich portów) z Internetu do całej sieci wirtualnej (zarówno podsieci) zostanie odrzucone.
-6. Cały ruch (wszystkich portów) z podsieci Frontend do podsieci zaplecza jest zabroniony.
+6. Cały ruch (wszystkich portów) z podsieci FrontEnd do podsieci zaplecza jest odrzucane.
 
-Przy użyciu tych reguł powiązany z każdej podsieci, jeśli żądanie HTTP zostało ruch przychodzący z Internetu do serwera sieci web, obie reguły 3 (Zezwalaj na) i 5 (odmowa) będzie miało zastosowanie, ale ponieważ reguła 3 ma wyższy priorytet, tylko naliczona zostałaby i reguły 5 nie przybyły, aby wpływające na. Ten sposób żądania HTTP będzie mogła zapory. Jeśli ten sam ruch próbował uzyskać dostęp do serwera DNS01, reguła 5 (odmowa) może być pierwszy do zastosowania, a ruch będzie nie można przekazać do serwera. Reguła 6 (Odmów) blokuje podsieć frontonu w rozmowie z podsieci wewnętrznej bazy danych (z wyjątkiem dozwolonego ruchu w regułach 1 i 4), ochronę sieci wewnętrznej bazy danych, w przypadku, gdy osoba atakująca naruszeń aplikacji sieci web we frontonie, osoba atakująca może mają ograniczony dostęp do sieci wewnętrznej bazy danych "chroniony" (tylko do zasobów udostępnianych na serwerze AppVM01).
+Przy użyciu tych reguł powiązany do każdej podsieci, gdyby żądania HTTP dla ruchu przychodzącego z Internetu do serwera sieci web, zarówno reguła 3 (Zezwalaj na) i reguły 5 (odmowa), wydaje się do zastosowania, ale ponieważ reguła 3 ma wyższy priorytet, tylko będzie stosowana. Reguła 5 nie dochodzą do głosu. Dlatego zapory możliwość żądania HTTP.
 
-Brak domyślną regułę ruchu wychodzącego, która umożliwia ruchu wychodzącego z Internetem. W tym przykładzie firma Microsoft zezwala na ruch wychodzący i nie modyfikowanie żadnych reguł dla ruchu wychodzącego. Aby zablokować ruch sieciowy w obie kierunki, routingu zdefiniowanego użytkownika jest wymagana, jest to przedstawione w innym przykładzie, który znajduje się w [dokumentu granic zabezpieczeń głównych][HOME].
+Jeśli ten sam ruch próbował uzyskać dostęp do serwera DNS01, zasada 5 (odmowa) będzie pierwszy do zastosowania, dzięki czemu ruch nie można przekazać do serwera. Reguła 6 (odmowa) blokuje podsieć frontonu komunikację z podsieci wewnętrznej bazy danych (z wyjątkiem ruch w regułach 1 i 4). Chroni to sieci wewnętrznej bazy danych, w przypadku, gdy osoba atakująca obniża aplikacji sieci web we frontonie. W takim przypadku osoba atakująca będzie ograniczony dostęp do sieci wewnętrznej bazy danych "chronione". (Osoba atakująca może mieć możliwość dostępu tylko do zasobów, które są udostępniane na serwerze AppVM01).
 
-Reguły NSG opisanych powyżej są bardzo podobne do reguł NSG w [przykład 1 — Tworzenie prostej sieci obwodowej z grup NSG][Example1]. Przejrzyj opis sieciowej grupy zabezpieczeń, w tym dokumencie, aby wyświetlić szczegółowy widok każdej reguły sieciowej grupy zabezpieczeń i jego atrybuty.
+Brak domyślną regułę ruchu wychodzącego, która umożliwia ruchu wychodzącego z Internetem. W tym przykładzie firma Microsoft zezwala na ruch wychodzący i nie modyfikowanie żadnych reguł dla ruchu wychodzącego. Aby zablokować ruch w obu kierunkach, musisz mieć routingu zdefiniowanego przez użytkownika. Informacje na temat tej techniki w innym przykładzie w [dokumentu granic zabezpieczeń głównych][HOME].
+
+Reguły sieciowej grupy zabezpieczeń opisane w tym miejscu są podobne do reguł sieciowej grupy zabezpieczeń w [przykład 1 — Tworzenie prosta strefa DMZ z sieciowymi grupami zabezpieczeń][Example1]. Przejrzyj opis sieciowej grupy zabezpieczeń, w tym artykule, aby wyświetlić szczegółowy widok każdej reguły sieciowej grupy zabezpieczeń i jego atrybuty.
 
 ## <a name="firewall-rules"></a>Reguły zapory
-Klient zarządzania będzie muszą być zainstalowane na komputerze do zarządzania zaporą i tworzyć konfiguracje wymagane. Wyświetlone dostawcę dokumentacji zapory (lub innego urządzenia WUS) do zarządzania urządzeniem. Dalszej części tej sekcji opisano konfigurację zapory, za pomocą klienta zarządzania dostawcami, (tj. nie witryny Azure portal lub programu PowerShell).
+Musisz zainstalować klienta zarządzania na komputerze do zarządzania zaporą i tworzyć konfiguracje wymagane. Zobacz dostawcę dokumentacji zapory (lub innego urządzenia WUS) o tym, jak do zarządzania urządzeniem. W pozostałej części tej sekcji opisano konfigurację zapory, za pomocą dostawcy zarządzania klienta (nie witryny Azure portal lub programu PowerShell).
 
-Instrukcje dotyczące pobierania klienta i nawiązywania połączenia z Barracuda, używany w tym przykładzie można znaleźć tutaj: [Barracuda NG administratora](https://techlib.barracuda.com/NG61/NGAdmin)
+Zobacz [Barracuda NG administratora](https://techlib.barracuda.com/NG61/NGAdmin) instrukcje dotyczące pobierania klienta i nawiązywania połączenia z zapory Barracuda, używany w tym przykładzie.
 
-Na zaporze reguły przekazywania będzie muszą zostać utworzone. Ponieważ w tym przykładzie tylko trasy ruchu internetowego przychodzącego do zapory, a następnie do serwera sieci web, przekazywanie tylko jedną regułę NAT jest wymagane. Na Barracuda NextGen Firewall, używany w tym przykładzie reguła będzie reguła NAT do docelowej ("czasu letniego NAT") można przekazywać ten ruch.
+Musisz utworzyć zasady przekazywania na zaporze. Ponieważ w ramach scenariusza opisywanego w tym przykładzie tylko kieruje ruch z Internetu dla ruchu przychodzącego zapory i serwer sieci web, wystarczy przekazywania jednej reguły translatora adresów Sieciowych. Zapory Barracuda, używany w tym przykładzie reguła będzie regułę docelowego translatora adresów Sieciowych (NAT Dst) do przekazania tego ruchu.
 
-Aby utworzyć następującą regułę (lub Sprawdź istniejące reguły domyślne), uruchamianie na pulpicie nawigacyjnym administratora NG Barracuda klienta, przejdź na kartę Konfiguracja w konfiguracji operacyjnej sekcji kliknij pozycję zestaw reguł. Siatce o nazwie "Main reguły" pokaże istniejące reguły aktywne i nieaktywne w zaporze. W prawym górnym rogu tej siatce są małe, zielony "+" przycisk, kliknij tutaj, aby utworzyć nową regułę (Uwaga: Zapora może być "zablokowany" w przypadku zmian, jeśli zostanie wyświetlony przycisk oznaczona jako "Zablokuj" i nie można utworzyć lub edytować reguły, kliknij ten przycisk, aby "Odblokuj" zestaw reguł i Zezwól na edytowanie). Jeśli chcesz edytować istniejącą regułę, wybierz regułę, że prawym przyciskiem myszy i wybierz pozycję Edytuj regułę.
+Aby utworzyć następującą regułę (lub sprawdzić istniejące reguły domyślne), wykonaj następujące kroki:
+1. Na pulpicie nawigacyjnym klienta administrator NG Barracuda na karcie Konfiguracja w **konfigurację operacyjną** zaznacz **zestaw reguł**. 
 
-Utwórz nową regułę, a następnie podaj nazwę, na przykład "WebTraffic". 
+   Siatka o nazwie **reguły Main** pokazuje istniejący aktywny i dezaktywowane reguły zapory.
+
+2. Aby utworzyć nową regułę, wybierz zielony małych **+** przycisk w prawym górnym rogu tej siatki. (Zapora może być zablokowany. Jeśli zostanie wyświetlony przycisk oznaczony **blokady** i nie można utworzyć lub edytować reguły, wybierz przycisk, aby odblokować zestaw reguł i Zezwól na edytowanie.)
+  
+3. Aby edytować istniejącą regułę, wybierz regułę, kliknij prawym przyciskiem myszy, a następnie wybierz **edytowanie reguły**.
+
+Utwórz nową regułę o nazwie podobny **WebTraffic.** 
 
 Ikona reguły translatora adresów Sieciowych docelowego wygląda następująco: ![Ikona translatora adresów Sieciowych docelowego][2]
 
-Reguła sam będzie wyglądać mniej więcej tak:
+Reguła sam będą wyglądać mniej więcej tak:
 
 ![Reguły zapory][3]
 
-W tym miejscu żadnego ruchu przychodzącego adresu, który uderza w zaporze próba nawiązania połączenia HTTP (port 80 i 443 dla protokołu HTTPS) zostanie wysłane interfejsu "Lokalny adres IP komputera DHCP1" zapory i Przekierowanie do serwera sieci Web o adresie IP 10.0.1.5. Ponieważ ruch jest mieszczących się na porcie 80 i przesyłane na serwer sieci web na porcie 80 było wymagane nie zmiany portu. Jednak listy docelowej mogło być 10.0.1.5:8080 Jeśli Nasz serwer sieci Web posłuchaliśmy na porcie 8080, w związku z tym tłumaczenia przychodzący port 80 w zaporze na przychodzący port 8080 na serwerze sieci web.
+Każdego przychodzącego adresu, który trafienia zapory próba nawiązania połączenia HTTP (port 80 i 443 dla protokołu HTTPS) zostaną wysłane poza interfejsu lokalnego adresu IP komputera DHCP1 zapory i Przekierowanie do serwera sieci web o adresie IP 10.0.1.5. Ponieważ przychodzącym ruch na porcie 80 i przesyłane na serwer sieci web na porcie 80, nie zmiany portu nie jest wymagana. Ale listy docelowej mogło być 10.0.1.5:8080 Jeśli serwer sieci web posłuchaliśmy na porcie 8080, przetłumaczy przychodzący port 80 w zaporze na przychodzący port 8080 na serwerze sieci web.
 
-Metody połączenia powinien również można oznaczony, docelowy reguły z Internetu, "SNAT dynamicznego" jest najbardziej odpowiednie. 
+Należy także określić metodę połączenia. Reguła docelowa z Internetu SNAT dynamicznych jest najbardziej odpowiednią metodę.
 
-Mimo że tylko jedna reguła została utworzona ważne jest, że jego priorytet jest prawidłowo. Jeśli w siatce wszystkie reguły zapory tej nowej reguły znajduje się w dolnej części (poniżej reguła "BLOCKALL") nigdy nie będą pochodzić do gry. Upewnij się, że nowo utworzonej reguły dla ruchu w sieci web przekracza reguły BLOCKALL.
+Mimo, że po utworzeniu tylko jedną regułę, należy poprawnie ustawić jego priorytetu. W siatce wszystkie reguły zapory w przypadku tej nowej reguły u dołu (poniżej reguła BLOCKALL) go nigdy nie pojawią się do gry. Upewnij się, że powyżej reguły BLOCKALL nową regułę dla ruchu w sieci web.
 
-Gdy ta reguła jest tworzona, musi być wypchnięte do zapory i następnie aktywowany, jeśli nie zostanie to zrobione zmianie reguły nie zostały zastosowane. W następnej sekcji opisano sposób wypychania i aktywacji.
+Po utworzeniu reguły należy wypchnąć go do zapory, a następnie aktywować go. Jeśli użytkownik nie wykona następujące czynności, zmień reguły zaczyna obowiązywać. W następnej sekcji opisano proces wypychania i aktywacji.
 
 ## <a name="rule-activation"></a>Reguła aktywacji
-Za pomocą reguł zmodyfikować, aby dodać tę regułę zestaw reguł należy przekazać do zapory i aktywowane.
+Teraz, że reguła jest dodawana do zestaw reguł, musisz przekazać zestaw reguł zapory i aktywuj go.
 
 ![Aktywacja reguły zapory][4]
 
-W prawym górnym rogu klienta zarządzania są klastra przycisków. Kliknij przycisk "Wyślij zmiany", aby wysyłać modyfikacji reguły zapory, a następnie kliknij przycisk "Aktywuj".
+W prawym górnym rogu klienta zarządzania zobaczysz grupę przycisków. Wybierz **wysłać zmiany** do wysyłania zmodyfikowane zestaw reguł zapory, a następnie wybierz **Aktywuj**.
 
-Za pomocą aktywacji zestawu reguł zapory na przykład kompilacji środowiska zostało ukończone. Opcjonalnie można uruchamiać skrypty kompilacji post, w sekcji odwołań do dodania aplikacji do tego środowiska, aby przetestować poniższe scenariusze ruchu.
+Teraz, gdy aktywowano zestaw reguł zapory, środowisko jest pełny. Przykładowe skrypty aplikację można uruchomić w sekcji "Odwołania do", aby dodać aplikację do środowiska. Po dodaniu aplikacji, możesz przetestować scenariusze ruchu opisane w następnej sekcji.
 
 > [!IMPORTANT]
-> Koniecznie należy pamiętać, że nie nastąpi trafienie serwer sieci web bezpośrednio. Gdy przeglądarka zgłasza strony HTTP z FrontEnd001.CloudApp.Net, punkt końcowy HTTP (port 80) przekazuje ruch do zapory nie na serwerze sieci web. Zapora następnie zgodnie z regułą utworzonego powyżej translatorami adresów sieciowych, które żądania do serwera sieci Web.
+> Należy należy pamiętać, że zostanie osiągnięta serwer sieci web bezpośrednio. Gdy przeglądarka zgłasza strony HTTP z FrontEnd001.CloudApp.Net, punkt końcowy HTTP (port 80) przekazuje ruch do zapory, a nie do serwera sieci web. Zapora, ze względu na reguły, która została utworzona wcześniej, używa translatora adresów Sieciowych do mapowania żądania do serwera sieci web.
 > 
 > 
 
 ## <a name="traffic-scenarios"></a>Scenariusze ruchu
-#### <a name="allowed-web-to-web-server-through-firewall"></a>(Dozwolone) Serwer sieci Web w sieci Web za pośrednictwem zapory
-1. Stronę internetową użytkownika żądania HTTP z FrontEnd001.CloudApp.Net (usługa chmury połączonego z Internetem)
-2. Chmury usługi przekazuje ruch przez otwarty punkt końcowy na porcie 80 do lokalnego interfejsu zapory 10.0.1.4:80
+#### <a name="allowed-web-to-web-server-through-the-firewall"></a>(Dozwolone) Do serwera sieci web przez zaporę w sieci Web
+1. Użytkownik internet żąda strony HTTP z FrontEnd001.CloudApp.Net (połączone z Internetem usługi w chmurze).
+2. Usługi w chmurze przekazuje ruch przez otwarty punkt końcowy na porcie 80 do interfejsu lokalnego zapory na 10.0.1.4:80.
 3. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-   3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do zapory), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
-4. Ruch osiąga wewnętrzny adres IP zapory (10.0.1.4)
-5. Reguły przekazywania zapory, zobacz ten jest ruch na porcie 80, przekierowuje go do serwera sieci web IIS01
-6. IIS01 nasłuchuje ruchu w sieci web, odbiera żądania i rozpoczyna przetwarzanie żądania
-7. IIS01 programu SQL Server na AppVM01 monituje o podanie informacji
-8. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
-9. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-   3. 3 reguły sieciowej grupy zabezpieczeń (Internet do zapory) nie zastosować, przenieść następną regułę
-   4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
-10. AppVM01 odbiera zapytanie SQL i odpowiada
-11. Ponieważ brak reguł ruchu wychodzącego w podsieci zaplecza jest dozwolone odpowiedzi
+   1. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 1 (DNS). Przenieś na następną regułę.
+   2. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 2 (RDP). Przenieś na następną regułę.
+   3. Zastosuj reguły sieciowej grupy zabezpieczeń 3 (internet do zapory). Zezwalać na ruch. Zatrzymaj przetwarzanie reguł.
+4. Ruch osiąga wewnętrzny adres IP zapory (10.0.1.4).
+5. Zapora regułę przesyłania określa, czy to jest ruch na porcie 80 i przekieruje go do serwera sieci web IIS01.
+6. IIS01 nasłuchuje ruchu w sieci web, odbiera żądanie, a następnie rozpoczyna przetwarzanie żądania.
+7. IIS01 żąda informacji z wystąpienia programu SQL Server na AppVM01.
+8. Brak reguł ruchu wychodzącego w podsieci frontonu, więc ruch jest dozwolony.
+9. Podsieci wewnętrznej bazy danych rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 1 (DNS). Przenieś na następną regułę.
+   2. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 2 (RDP). Przenieś na następną regułę.
+   3. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 3 (internet do zapory). Przenieś na następną regułę.
+   4. Reguły sieciowej grupy zabezpieczeń 4 (IIS01 do AppVM01) ma zastosowania. Zezwalać na ruch. Zatrzymaj przetwarzanie reguł.
+10. Wystąpienie programu SQL Server na AppVM01 odbiera żądanie i odpowiada.
+11. Ponieważ w podsieci wewnętrznej bazy danych nie zawiera żadnych reguł dla ruchu wychodzącego, odpowiedź jest dozwolone.
 12. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
-    2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
-13. Na serwerze usług IIS odbiera odpowiedź SQL i kończy odpowiedź HTTP i wysyła do obiektu żądającego
-14. Ponieważ jest to sesji translatora adresów Sieciowych z zaporą, miejsce docelowe odpowiedzi (wstępnie) jest zapory
-15. Zapora odbiera odpowiedź z serwera sieci Web i przekazuje użytkownikowi Internet
-16. Ponieważ istnieją nie reguł ruchu wychodzącego w podsieci frontonu odpowiedzi jest dozwolone, a użytkownik Internet otrzymuje żądanej strony sieci web.
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do przychodzący ruch z podsieci zaplecza do podsieci frontonu, więc żaden z reguły sieciowej grupy zabezpieczeń.
+    2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
+13. IIS01 odbiera odpowiedź od AppVM01 kończy odpowiedź HTTP i wysyła je do osoby zgłaszającej żądanie.
+14. Ponieważ jest to sesji translatora adresów Sieciowych z zaporą, miejsce docelowe odpowiedzi jest początkowo zapory.
+15. Zapora odbiera odpowiedź z serwera sieci web i przekazuje go do użytkownika internet.
+16. Ponieważ nie zawiera żadnych reguł ruchu wychodzącego w podsieci frontonu, odpowiedź jest dozwolone, a użytkownik internet otrzymuje strony sieci web.
 
 #### <a name="allowed-rdp-to-backend"></a>(Dozwolone) Protokół RDP do wewnętrznej bazy danych
-1. Administrator serwera w Internecie żądań sesji protokołu RDP, aby AppVM01 na BackEnd001.CloudApp.Net:xxxxx gdzie xxxxx jest liczbą losowo przypisany port dla protokołu RDP do AppVM01 (przypisanego portu można znaleźć w witrynie Azure Portal lub za pośrednictwem programu PowerShell)
-2. Ponieważ zapory nasłuchuje tylko adres FrontEnd001.CloudApp.Net, nie jest zaangażowana za pomocą tego przepływu ruchu
-3. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-   2. Stosowanie 2 reguły sieciowej grupy zabezpieczeń (RDP), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
-4. Za pomocą reguł ruchu wychodzącego domyślne reguły i ruch powrotny jest dozwolone
+1. Administrator serwera w Internecie żądań sesję RDP do AppVM01 na BackEnd001.CloudApp.Net:*xxxxx*, gdzie *xxxxx* jest liczbą losowo przypisany port dla protokołu RDP do AppVM01. (Można znaleźć przypisanego portu w witrynie Azure portal lub przy użyciu programu PowerShell).
+2. Ponieważ zapory nasłuchuje tylko adres FrontEnd001.CloudApp.Net, nie jest zaangażowana z tym przepływem ruchu sieciowego.
+3. Podsieci wewnętrznej bazy danych rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 1 (DNS). Przenieś na następną regułę.
+   2. Zastosuj reguły sieciowej grupy zabezpieczeń 2 (RDP). Zezwalać na ruch. Zatrzymaj przetwarzanie reguł.
+4. Ponieważ nie zawiera żadnych reguł dla ruchu wychodzącego, domyślne reguły zastosowania i zwracać ruch jest dozwolony.
 5. Sesję RDP jest włączona.
-6. AppVM01 monituje o podanie hasła nazwy użytkownika
+6. AppVM01 monituje o podanie nazwy użytkownika i hasła.
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Dozwolone) Wyszukiwanie DNS serwera sieci Web na serwerze DNS
-1. Sieci Web Server, IIS01, potrzeb w www.data.gov strumieniowych źródeł danych, ale musi rozpoznać adresu.
-2. W konfiguracji sieci VNet list DNS01 (10.0.2.4 w podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądania DNS DNS01
-3. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
-4. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-   1. Zastosuj 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
-5. Serwer DNS odbiera żądanie
-6. Serwer DNS nie ma adresu pamięci podręcznej i prosi główny serwer DNS w Internecie
-7. Nie reguł ruchu wychodzącego w podsieci zaplecza ruch jest dozwolony.
-8. Odpowiada internetowym serwerze DNS, ponieważ ta sesja została zainicjowana wewnętrznie, odpowiedź jest dozwolone.
-9. Serwer DNS będzie buforować odpowiedź i odpowiada na żądanie początkowy powrót do IIS01
-10. Nie reguł ruchu wychodzącego w podsieci zaplecza ruch jest dozwolony.
+1. Musi IIS01, serwera sieci web źródła danych na www.data.gov danych, ale musi rozpoznać adres.
+2. W konfiguracji sieci w sieci wirtualnej przedstawiono DNS01 (10.0.2.4 w podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS. IIS01 spowoduje wysłanie żądania DNS DNS01.
+3. Ponieważ nie zawiera żadnych reguł ruchu wychodzącego w podsieci frontonu, ruch jest dozwolony.
+4. Podsieci wewnętrznej bazy danych rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. Ma zastosowanie reguła sieciowej grupy zabezpieczeń 1 (DNS). Zezwalać na ruch. Zatrzymaj przetwarzanie reguł.
+5. Serwer DNS odbiera żądanie.
+6. Serwer DNS nie ma adresu pamięci podręcznej i zapytania główny serwer DNS w Internecie.
+7. Ponieważ w podsieci wewnętrznej bazy danych nie zawiera żadnych reguł dla ruchu wychodzącego, ruch jest dozwolony.
+8. DNS w sieci internet serwer odpowiada. Odpowiedź jest dozwolona, ponieważ wewnętrznie zainicjowaniu sesji.
+9. Serwer DNS będzie buforować odpowiedź, odpowiada na żądania IIS01.
+10. Ponieważ w podsieci wewnętrznej bazy danych nie zawiera żadnych reguł dla ruchu wychodzącego, ruch jest dozwolony.
 11. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
-    2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami będzie zezwalającej na ten ruch, więc ruch jest dozwolony
-12. IIS01 odbiera odpowiedź od DNS01
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do przychodzący ruch z podsieci zaplecza do podsieci frontonu, więc żaden z reguły sieciowej grupy zabezpieczeń.
+    2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, więc ruch jest dozwolony.
+12. IIS01 odbiera odpowiedź od DNS01.
 
-#### <a name="allowed-web-server-access-file-on-appvm01"></a>(Dozwolone) Plik dostępu do serwera sieci Web na AppVM01
-1. IIS01 poprosi o podanie pliku na AppVM01
-2. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
-3. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-   3. 3 reguły sieciowej grupy zabezpieczeń (Internet do zapory) nie zastosować, przenieść następną regułę
-   4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
-4. AppVM01 odbiera żądanie i odpowiada za pomocą pliku (przy założeniu, że dostęp jest autoryzowany)
-5. Ponieważ brak reguł ruchu wychodzącego w podsieci zaplecza jest dozwolone odpowiedzi
+#### <a name="allowed-web-server-file-access-on-appvm01"></a>(Dozwolone) Dostęp do plików serwera sieci Web na AppVM01
+1. IIS01 żąda pliku na AppVM01.
+2. Ponieważ nie zawiera żadnych reguł ruchu wychodzącego w podsieci frontonu, ruch jest dozwolony.
+3. Podsieci wewnętrznej bazy danych rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 1 (DNS). Przenieś na następną regułę.
+   2. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 2 (RDP). Przenieś na następną regułę.
+   3. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 3 (internet do zapory). Przenieś na następną regułę.
+   4. Reguły sieciowej grupy zabezpieczeń 4 (IIS01 do AppVM01) ma zastosowania. Zezwalać na ruch. Zatrzymaj przetwarzanie reguł.
+4. AppVM01 odbiera żądanie i odpowiada za pomocą pliku (przy założeniu, że dostęp jest autoryzowany).
+5. Ponieważ w podsieci wewnętrznej bazy danych nie zawiera żadnych reguł dla ruchu wychodzącego, odpowiedź jest dozwolone.
 6. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-   1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
-   2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
-7. Serwer IIS odbiera pliku
+   1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do przychodzący ruch z podsieci zaplecza do podsieci frontonu, więc żaden z reguły sieciowej grupy zabezpieczeń.
+   2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, więc ruch jest dozwolony.
+7. IIS01 odbiera pliku.
 
-#### <a name="denied-web-direct-to-web-server"></a>(Odrzucony) Bezpośrednio do serwera sieci Web w sieci Web
-Ponieważ serwer sieci Web, IIS01 i zapory znajdują się w tej samej usługi w chmurze współużytkują one ten sam publiczny IP adres. Ten sposób cały ruch HTTP będzie nastąpi przekierowanie do zapory. Gdy żądanie będzie obsłużone pomyślnie, nie można przejść bezpośrednio do serwera sieci Web, jego zakończonych powodzeniem, zgodnie z założeniami przez zaporę najpierw. Zobacz pierwszego scenariusza, w tej sekcji dla ruchu przychodzącego.
+#### <a name="denied-web-direct-to-web-server"></a>(Odrzucony) Bezpośrednio do serwera sieci web w sieci Web
+Ponieważ serwer sieci web IIS01 i zapory znajdują się w tej samej usłudze w chmurze, współużytkują one ten sam adres IP publicznego. Dlatego cały ruch HTTP jest kierowany do zapory. Gdy żądanie będzie służyć pomyślnie, wartość nie może przejść bezpośrednio do serwera sieci web. Przekazuje, zgodnie z założeniami przez zaporę najpierw. Zobacz pierwszego scenariusza, w tej sekcji dla ruchu przychodzącego.
 
 #### <a name="denied-web-to-backend-server"></a>(Odrzucony) Do serwera wewnętrznej bazy danych w sieci Web
-1. Internet użytkownik próbuje uzyskać dostęp pliku na AppVM01 za pośrednictwem usługi BackEnd001.CloudApp.Net
-2. Punkty końcowe nie są otwarte dla udziału plików, to nie przejdzie z usługą w chmurze, a nie dociera do serwera
-3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie reguły sieciowej grupy zabezpieczeń 5 (Internetu do sieci wirtualnej)
+1. Użytkownik internet próbuje dostęp do pliku na AppVM01 za pośrednictwem usługi BackEnd001.CloudApp.Net.
+2. Ponieważ nie zawiera żadnych punktów końcowych otwarte na potrzeby udostępniania plików, to nie będzie przekazywać usługi w chmurze i nie dociera do serwera.
+3. Jeśli punkty końcowe są otwarte niektóre przyczyny, reguła sieciowej grupy zabezpieczeń 5 (internet z siecią wirtualną) blokuje ruch.
 
-#### <a name="denied-web-dns-lookup-on-dns-server"></a>(Odrzucony) Wyszukiwanie DNS w sieci Web na serwerze DNS
-1. Internet użytkownik podejmuje próbę wyszukiwania wewnętrznego rekord DNS na DNS01 za pośrednictwem usługi BackEnd001.CloudApp.Net
-2. Punkty końcowe nie są otwarte w systemie DNS, to nie przejdzie z usługą w chmurze, a nie dociera do serwera
-3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie reguły sieciowej grupy zabezpieczeń 5 (Internet z siecią wirtualną) (Uwaga: nie ma zastosowania tej reguły 1 domen (DNS) z dwóch przyczyn, najpierw adres źródłowy jest internet, ta zasada ma zastosowanie tylko do lokalnej sieci wirtualnej jako źródło również jest regułę zezwalania więc go może nigdy nie zezwalają na ruch)
+#### <a name="denied-web-dns-lookup-on-the-dns-server"></a>(Odrzucony) Wyszukiwanie DNS w sieci Web na serwerze DNS
+1. Użytkownik internet próbuje wyszukać wewnętrzny rekord DNS na DNS01 za pośrednictwem usługi BackEnd001.CloudApp.Net.
+2. Ponieważ punkty końcowe nie są otwarte w systemie DNS, to nie będzie przekazywać usługi w chmurze i nie dociera do serwera.
+3. Jeśli punkty końcowe są otwarte niektóre przyczyny, reguła sieciowej grupy zabezpieczeń 5 (internet z siecią wirtualną) blokuje ruch. (Reguła 1 [DNS] nie ma zastosowania w dwóch powodów. Najpierw adres źródłowy jest internet, a ta reguła ma zastosowanie tylko wtedy, gdy lokalnej sieci wirtualnej jest źródłem. Po drugie, ta reguła ma regułę zezwalającą tak go nigdy nie zezwala na ruch.)
 
-#### <a name="denied-web-to-sql-access-through-firewall"></a>(Odrzucony) Dostęp do programu SQL, za pośrednictwem zapory w sieci Web
-1. Internet użytkownik żąda danych serwera SQL z FrontEnd001.CloudApp.Net (usługa chmury połączonego z Internetem)
-2. Punkty końcowe nie są otwarte dla programu SQL, to nie przejdzie z usługą w chmurze i w takich sytuacjach przydałaby dotrzeć do zapory
-3. Jeśli punkty końcowe były otwarte niektóre przyczyny, z podsiecią Frontend rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-   3. Stosowanie 2 reguły sieciowej grupy zabezpieczeń (Internet do zapory), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
-4. Ruch osiąga wewnętrzny adres IP zapory (10.0.1.4)
-5. Zapory SQL nie ma żadnych reguł przekazywania i odrzuca ruch
+#### <a name="denied-web-to-sql-access-through-the-firewall"></a>(Odrzucony) Aby SQL dostęp przez zaporę w sieci Web
+1. Użytkownik internet żąda danych serwera SQL z FrontEnd001.CloudApp.Net (usługi w chmurze połączone z Internetem).
+2. Ponieważ punkty końcowe nie są otwarte dla programu SQL, to nie będzie przekazywać usługi w chmurze i nie będzie dotrzeć do zapory.
+3. Jeśli punkty końcowe są otwarte niektóre przyczyny, z podsiecią FrontEnd rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 1 (DNS). Przenieś na następną regułę.
+   2. Nie ma zastosowania reguły sieciowej grupy zabezpieczeń 2 (RDP). Przenieś na następną regułę.
+   3. Zastosuj reguły sieciowej grupy zabezpieczeń 3 (internet do zapory). Zezwalać na ruch. Zatrzymaj przetwarzanie reguł.
+4. Ruch osiąga wewnętrzny adres IP zapory (10.0.1.4).
+5. Zapora nie ma żadnych reguł przekazywania do języka SQL i odrzuca ruch.
 
 ## <a name="conclusion"></a>Podsumowanie
-Jest to stosunkowo proste sposób ochrony aplikacji z zaporą i izolowanie podsieci wewnętrznej od ruchu przychodzącego.
+Ten przykład przedstawia stosunkowo prosty sposób ochrony aplikacji z zaporą i odizolowania podsieci zaplecza z ruchu przychodzącego.
 
-Więcej przykładów i przegląd granice zabezpieczeń sieci można znaleźć [tutaj][HOME].
+Możesz znaleźć więcej przykładów i Przegląd sieci granic zabezpieczeń [tutaj][HOME].
 
 ## <a name="references"></a>Dokumentacja
-### <a name="main-script-and-network-config"></a>Skrypt głównego i konfiguracji sieci
-Pełny skrypt należy zapisać w pliku skryptu programu PowerShell. W pliku o nazwie "NetworkConf2.xml", można zapisać konfiguracji sieci.
-Zmodyfikuj zmienne zdefiniowane przez użytkownika, zgodnie z potrzebami. Uruchom skrypt, a następnie postępuj zgodnie z powyższych instrukcji konfiguracji reguły zapory.
+### <a name="full-script-and-network-config"></a>Pełna Konfiguracja skryptu i sieci
+Pełny skrypt należy zapisać w pliku skryptu programu PowerShell. Zapisz skrypt konfiguracji sieci w pliku o nazwie NetworkConf2.xml.
+Zmień zdefiniowane — zmienne użytkownika, zgodnie z potrzebami. Uruchom skrypt, a następnie postępuj zgodnie z instrukcjami w sekcji "Reguły zapory" tego artykułu.
 
 #### <a name="full-script"></a>Pełny skrypt
-Ten skrypt będzie na podstawie zmiennych zdefiniowanych przez użytkownika:
+Ten skrypt na podstawie zmiennych zdefiniowanych przez użytkownika będzie wykonaj następujące czynności:
 
-1. Łączenie się z subskrypcją platformy Azure
-2. Tworzenie nowego konta magazynu
-3. Utwórz nową sieć wirtualną z dwoma podsieciami, zgodnie z definicją w pliku konfiguracji sieci
-4. Tworzenie maszyn wirtualnych z serwera dla systemu windows 4
-5. Konfigurowanie sieciowej grupy zabezpieczeń w tym:
-   * Tworzenie sieciowej grupy zabezpieczeń
-   * Zapełnianie reguły
-   * Powiązanie odpowiednie podsieci sieciową grupę zabezpieczeń
+1. Połącz z subskrypcją platformy Azure.
+2. Tworzenie konta magazynu
+3. Utwórz sieć wirtualną i dwie podsieci, zgodnie z definicją w pliku konfiguracji sieci.
+4. Twórz cztery maszyny wirtualne bramy Windows Server.
+5. Konfigurowanie sieciowej grupy zabezpieczeń. Konfiguracja zostanie ukończona następujące kroki:
+   * Tworzy sieciową grupę zabezpieczeń.
+   * Wypełnia sieciowej grupy zabezpieczeń z regułami.
+   * Tworzy powiązanie odpowiednie podsieci sieciową grupę zabezpieczeń.
 
-Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Internetem, komputera lub serwera.
+Ten skrypt programu PowerShell należy uruchamiać lokalnie na serwerze lub komputerze połączonym z Internetem.
 
 > [!IMPORTANT]
-> Po uruchomieniu tego skryptu można ostrzeżenia lub inne komunikaty informacyjne, które punktów obecności w programie PowerShell. Tylko komunikaty o błędach w kolorze czerwonym są zaniepokoić.
+> Po uruchomieniu tego skryptu, ostrzeżenia i inne komunikaty informacyjne, które mogą być wyświetlane w programie PowerShell. Musisz mieć wątpliwości dotyczące komunikatów o błędach, które są wyświetlane w kolorze czerwonym.
 > 
 > 
 
 ```powershell
     <# 
      .SYNOPSIS
-      Example of DMZ and Network Security Groups in an isolated network (Azure only, no hybrid connections)
+      Example of a perimeter network and Network Security Groups in an isolated network. (Azure only. No hybrid connections.)
 
      .DESCRIPTION
-      This script will build out a sample DMZ setup containing:
-       - A default storage account for VM disks
-       - Two new cloud services
-       - Two Subnets (FrontEnd and BackEnd subnets)
-       - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
-       - One server on the FrontEnd Subnet (plus the NVA on the FrontEnd subnet)
-       - Three Servers on the BackEnd Subnet
-       - Network Security Groups to allow/deny traffic patterns as declared
+      This script will build out a sample perimeter network setup containing:
+       - A default storage account for VM disks.
+       - Two new cloud services.
+       - Two subnets (the FrontEnd and BackEnd subnets).
+       - A network virtual appliance (NVA): a Barracuda NextGen Firewall.
+       - One server on the FrontEnd subnet (plus the NVA on the FrontEnd subnet).
+       - Three servers on the BackEnd subnet.
+       - Network Security Groups to allow/deny traffic patterns as declared.
 
-      Before running script, ensure the network configuration file is created in
-      the directory referenced by $NetworkConfigFile variable (or update the
+      Before running the script, ensure the network configuration file is created in
+      the directory referenced by the $NetworkConfigFile variable (or update the
       variable to reflect the path and file name of the config file being used).
 
      .Notes
-      Security requirements are different for each use case and can be addressed in a
-      myriad of ways. Please be sure that any sensitive data or applications are behind
+      Security requirements are different for each use case and can be addressed in many ways. Be sure that any sensitive data or applications are behind
       the appropriate layer(s) of protection. This script serves as an example of some
-      of the techniques that can be used, but should not be used for all scenarios. You
-      are responsible to assess your security needs and the appropriate protections
-      needed, and then effectively implement those protections.
+      of the techniques that you can use, but it should not be used for all scenarios. You
+      are responsible for assessing your security needs and the appropriate protections
+      and then effectively implementing those protections.
 
       FrontEnd Service (FrontEnd subnet 10.0.1.0/24)
        myFirewall - 10.0.1.4
@@ -293,9 +304,9 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
         $SubnetName = @()
         $VMIP = @()
 
-    # User Defined Global Variables
-      # These should be changes to reflect your subscription and services
-      # Invalid options will fail in the validation section
+    # User-Defined Global Variables
+      # These should be changed to reflect your subscription and services.
+      # Invalid options will fail in the validation section.
 
       # Subscription Access Details
         $subID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -324,15 +335,15 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
       # NSG Details
         $NSGName = "MyVNetSG"
 
-    # User Defined VM Specific Config
-        # Note: To ensure proper NSG Rule creation later in this script:
-        #       - The Web Server must be VM 1
-        #       - The AppVM1 Server must be VM 2
-        #       - The DNS server must be VM 4
+    # User-Defined VM-Specific Config
+        # To ensure proper NSG rule creation later in this script:
+        #       - The web server must be VM 1.
+        #       - The AppVM1 server must be VM 2.
+        #       - The DNS server must be VM 4.
         #
         #       Otherwise the NSG rules in the last section of this
         #       script will need to be changed to match the modified
-        #       VM array numbers ($i) so the NSG Rule IP addresses
+        #       VM array numbers ($i) so the NSG rule IP addresses
         #       are aligned to the associated VM IP addresses.
 
         # VM 0 - The Network Virtual Appliance (NVA)
@@ -381,8 +392,8 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Variables or   #
-    # Configuration past this point #
+    # No user-defined variables or   #
+    # configuration past this point #
     # ----------------------------- #
 
       # Get your Azure accounts
@@ -390,14 +401,14 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
         Set-AzureSubscription –SubscriptionId $subID -ErrorAction Stop
         Select-AzureSubscription -SubscriptionId $subID -Current -ErrorAction Stop
 
-      # Create Storage Account
+      # Create storage account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
             Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
 
-      # Update Subscription Pointer to New Storage Account
+      # Update subscription pointer to new storage account
         Write-Host "Updating Subscription Pointer to New Storage Account" -ForegroundColor Cyan 
         Set-AzureSubscription –SubscriptionId $subID -CurrentStorageAccountName $StorageAccountName -ErrorAction Stop
 
@@ -432,11 +443,11 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
-    # Create VNET
+    # Create virtual network
         Write-Host "Creating VNET" -ForegroundColor Cyan 
         Set-AzureVNetConfig -ConfigurationPath $NetworkConfigFile -ErrorAction Stop
 
-    # Create Services
+    # Create services
         Write-Host "Creating Services" -ForegroundColor Cyan
         New-AzureService -Location $DeploymentLocation -ServiceName $FrontEndService -ErrorAction Stop
         New-AzureService -Location $DeploymentLocation -ServiceName $BackEndService -ErrorAction Stop
@@ -452,16 +463,16 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
                     Set-AzureSubnet  –SubnetNames $SubnetName[$i] | `
                     Set-AzureStaticVNetIP -IPAddress $VMIP[$i] | `
                     New-AzureVM –ServiceName $ServiceName[$i] -VNetName $VNetName -Location $DeploymentLocation
-                # Set up all the EndPoints we'll need once we're up and running
-                # Note: Web traffic goes through the firewall, so we'll need to set up a HTTP endpoint.
-                #       Also, the firewall will be redirecting web traffic to a new IP and Port in a
+                # Set up all the endpoints we'll need once we're up and running.
+                # Note: Web traffic goes through the firewall, so we'll need to set up an HTTP endpoint.
+                #       Also, the firewall will be redirecting web traffic to a new IP and port in a
                 #       forwarding rule, so the HTTP endpoint here will have the same public and local
                 #       port and the firewall will do the NATing and redirection as declared in the
                 #       firewall rule.
                 Add-AzureEndpoint -Name "MgmtPort1" -Protocol tcp -PublicPort 801  -LocalPort 801  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "MgmtPort2" -Protocol tcp -PublicPort 807  -LocalPort 807  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "HTTP"      -Protocol tcp -PublicPort 80   -LocalPort 80   -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
-                # Note: A SSH endpoint is automatically created on port 22 when the appliance is created.
+                # Note: An SSH endpoint is automatically created on port 22 when the appliance is created.
                 }
             Else
                 {
@@ -484,7 +495,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
         Write-Host "Building the NSG" -ForegroundColor Cyan
         New-AzureNetworkSecurityGroup -Name $NSGName -Location $DeploymentLocation -Label "Security group for $VNetName subnets in $DeploymentLocation"
 
-      # Add NSG Rules
+      # Add NSG rules
         Write-Host "Writing rules into the NSG" -ForegroundColor Cyan
         Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" -Type Inbound -Priority 100 -Action Allow `
             -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
@@ -516,15 +527,15 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
             -DestinationAddressPrefix $BEPrefix -DestinationPortRange '*' `
             -Protocol *
 
-        # Assign the NSG to the Subnets
+        # Assign the NSG to the subnets
             Write-Host "Binding the NSG to both subnets" -ForegroundColor Cyan
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $FESubnet -VirtualNetworkName $VNetName
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
-    # Optional Post-script Manual Configuration
-      # Configure Firewall
-      # Install Test Web App (Run Post-Build Script on the IIS Server)
-      # Install Backend resource (Run Post-Build Script on the AppVM01)
+    # Optional Post-Script Manual Configuration
+      # Configure firewall
+      # Install test web app (run post-build script on the IIS server)
+      # Install back-end resources (run post-build script on AppVM01)
       Write-Host
       Write-Host "Build Complete!" -ForegroundColor Green
       Write-Host
@@ -536,7 +547,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
 ```
 
 #### <a name="network-config-file"></a>Plik konfiguracji sieci
-Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w skrypcie powyżej.
+Zapisz ten plik XML przy użyciu zaktualizowanych lokalizacji, a następnie dodać łącze do tego pliku w zmiennej $NetworkConfigFile w poprzednim skrypcie.
 
 ```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -571,7 +582,7 @@ Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do
 ```
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Jeśli chcesz zainstalować przykładową aplikację w tym i inne przykłady strefy DMZ, jedno zostało podane z łącza: [Przykładowy skrypt aplikacji][SampleApp]
+Jeśli chcesz zainstalować przykładową aplikację dla tego programu oraz inne przykłady sieci obwodowej, zobacz [przykładowy skrypt aplikacji][SampleApp].
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Przychodząca sieć obwodowa z grupy NSG"

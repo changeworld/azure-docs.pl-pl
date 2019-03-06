@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f80142fa1733f91bbe0b854798999d67bdb565c6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 895499865fb1d47669fcca2aeaa571b2fb79237b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650467"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438724"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej
 
@@ -57,7 +57,7 @@ Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [tworzenie az podsieci sieci wirtualnej](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)
+- Interfejs wiersza polecenia platformy Azure: [tworzenie az podsieci sieci wirtualnej](/cli/azure/network/vnet/subnet)
 - Program PowerShell: [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)
 
 ## <a name="change-subnet-settings"></a>Zmień ustawienia podsieci

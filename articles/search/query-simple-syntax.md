@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 12589d9fa4623dbb6ebfd12d2e007eb9303ecdbf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008328"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441564"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Prosta składnia zapytań w usłudze Azure Search
 Usługa Azure Search implementuje dwóch języków zapytań Lucene: [Prosty analizator zapytań](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) i [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). W usłudze Azure Search prosta składnia zapytań nie obejmuje opcje rozmyte/odstojnika.  
@@ -46,7 +46,7 @@ Zwykle jest bardziej prawdopodobne wyświetlić te zachowania we wzorcach intera
 
 ## <a name="operators-in-simple-search"></a>Operatory w proste wyszukiwanie
 
-Operatorzy mogą osadzać w ciągu zapytania do tworzenia zestawu ryżu kryteriów, wobec których zostaną znalezione pasujących dokumentów. 
+Operatorzy mogą osadzać w ciągu zapytania, aby zbudować bogaty zestaw kryteriów, wobec których zostaną znalezione pasujących dokumentów. 
 
 ## <a name="and-operator-"></a>AND — operator `+`
 

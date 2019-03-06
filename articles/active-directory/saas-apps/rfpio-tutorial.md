@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af5c3d5d92dea804221b2285d4fa5b9cedae665
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c6b8109c8d3834f932ba492eddb8d6332acc1707
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168094"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443624"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RFPIO
 
@@ -234,12 +234,12 @@ W przypadku RFPIO Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
     a. Wprowadź **adres E-mail** w **Podaj jeden adres e-mail dla każdego wiersza** pola.
 
-    b. Wybierz pół godziny **roli** zgodnie z wymaganiami użytkownika.
+    b. Wybierz **roli** zgodnie z wymaganiami użytkownika.
 
     c. Kliknij przycisk **Dodaj członków**.
         
     > [!NOTE]
-    > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+    > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -273,7 +273,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka RFPIO w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji RFPIO.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).

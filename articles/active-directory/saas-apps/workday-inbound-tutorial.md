@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722fc5366d8f6863d19d09bd6e555fcc9a73d570
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 73c921df493eeda25c50047e861d3d30e6dc52a8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868123"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456486"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
@@ -853,12 +853,12 @@ Zmienne [serwer proxy] i [port serwera proxy] Zamień na nazwę serwera proxy i 
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Jak zagwarantować, że aprowizacji agenta jest w stanie komunikować się z dzierżawy usługi Azure AD i zapory nie blokują porty wymagane przez agenta?
 
-Możesz również sprawdzić, czy masz wszystkie wymagane porty otwarte, otwierając [narzędzie Test porty łącznika](https://aadap-portcheck.connectorporttest.msappproxy.net/) z sieci lokalnej. Więcej zielone znaczniki wyboru oznacza większą odporność.
+Możesz również sprawdzić, czy masz wszystkie wymagane porty otwarte, otwierając [narzędzie Test porty łącznika](https://aadap-portcheck.connectorporttest.msappproxy.net/) z siecią lokalną. Więcej zielone znaczniki wyboru oznacza większą odporność.
 
 Aby upewnić się, że narzędzie zapewnia odpowiednich wyników, należy koniecznie:
 
 * Otwórz narzędzie w przeglądarce z serwera, na którym zainstalowano agenta inicjowania obsługi administracyjnej.
-* Upewnij się, czy wszystkie serwery proxy lub zapory mające zastosowanie do aprowizacji agenta są również stosowane do tej strony. Można to zrobić w programie Internet Explorer, przechodząc do **Ustawienia -> Opcje internetowe -> połączeń -> Ustawienia sieci Lan**. Na tej stronie zobaczysz pola "Użyj serwera Proxy serwera dla Twojej sieci LAN". Zaznacz to pole, a następnie umieścić adres serwera proxy w polu "Address".
+* Upewnij się, czy wszystkie serwery proxy lub zapory mające zastosowanie do aprowizacji agenta są również stosowane do tej strony. Można to zrobić w programie Internet Explorer, przechodząc do **Ustawienia -> Opcje internetowe -> połączeń -> Ustawienia sieci LAN**. Na tej stronie zobaczysz pola "Użyj serwera Proxy serwera dla Twojej sieci LAN". Zaznacz to pole, a następnie umieścić adres serwera proxy w polu "Address".
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Jednego agenta inicjowania obsługi administracyjnej można skonfigurować do obsługi administracyjnej wielu domen AD?
 

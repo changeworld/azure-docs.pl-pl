@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/03/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 038716161845e94011688e8af80a5d4830ac1a5b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9e15f2e1b064ec2e64bfa8254075eac5bc801115
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338148"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442617"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -49,7 +49,7 @@ Zob. często zadawanych Pytaniach dotyczących licencji [tutaj](https://aka.ms/a
 
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Jak obliczyć przybliżoną opłaty za podczas stosowania Site Recovery
 
-Możesz użyć [Kalkulator cen](https://aka.ms/asr_pricing_calculator) do szacowania kosztów podczas korzystania z usługi Azure Site Recovery. Aby uzyskać szczegółową prognozę kosztów, uruchom narzędzie planista wdrażania (https://aka.ms/siterecovery_deployment_planner) i analizuje [raport szacowania kosztów](https://aka.ms/asr_DP_costreport).
+Możesz użyć [Kalkulator cen](https://aka.ms/asr_pricing_calculator) do szacowania kosztów podczas korzystania z usługi Azure Site Recovery. Aby uzyskać szczegółową prognozę kosztów, uruchom narzędzie planista wdrażania (https://aka.ms/siterecovery_deployment_planner) i analizowanie [raport szacowania kosztów](https://aka.ms/asr_DP_costreport).
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jestem użytkownikiem usługi Azure Site Recovery od ponad miesiąca. Czy nadal uzyskam pierwsze 31 bezpłatnych dni dla każdego chronionego wystąpienia?
 
@@ -165,7 +165,7 @@ Tak, można dodać nowe maszyny wirtualne do istniejącej grupy replikacji po w�
 
 Potrzeby replikacji oprogramowania VMware do platformy Azure można zmodyfikować rozmiaru dysku. Jeśli chcesz dodać nowe dyski, czego potrzebujesz, aby dodać dysk, a następnie ponownie włączyć ochronę maszyny Wirtualnej.
 
-### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Można przeprowadzić migrację maszyn lokalnych nowe Vcenter bez wywierania wpływu na trwającą replikację?
+### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Czy mogę zmigrować na komputerach lokalnych, aby nowe Vcenter bez wywierania wpływu na trwającą replikację?
 Nie, zmiany Vcenter lub migracji będzie miało wpływ na trwającą replikację. Należy skonfigurować usługi ASR za pomocą nowego Vcenter i włączyć replikację dla maszyn.
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Można replikować do pamięci podręcznej/docelowego konta magazynu, która ma sieci wirtualnej (przy użyciu zapór usługi Azure storage) skonfigurowane na nim?

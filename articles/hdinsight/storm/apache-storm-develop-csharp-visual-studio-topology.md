@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf258637311cd22964723da6bad3451dff6cccf6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632018"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437398"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Opracowywanie topologii języka C# dla Apache Storm przy użyciu narzędzi Data Lake tools for Visual Studio
 
@@ -433,7 +433,7 @@ Topologie transakcyjnych zaimplementować następujące polecenie, aby obsługiw
 
 * **Buforowanie metadanych**: Spout muszą być przechowywane metadane na temat danych emitowanych tak, aby można je pobrać i emitowane ponownie, jeśli wystąpi błąd danych. Ponieważ dane wyemitowane przez próbki jest mała, dane pierwotne dotyczące każda krotka znajduje się w słownik na potrzeby powtarzania.
 
-* **Potwierdzenia**: Każdy element bolt w topologii można wywołać `this.ctx.Ack(tuple)` można potwierdzić, że pomyślnie przetworzył spójnej kolekcji. Gdy wszystkie elementy bolt potwierdzone krotki `Ack` wywoływana jest metoda spout. `Ack` Metoda umożliwia spout usunąć dane, które zostało w pamięci podręcznej powtórzeń.
+* **Potwierdzenia**: Każdy element bolt w topologii można wywołać `this.ctx.Ack(tuple)` można potwierdzić, że pomyślnie przetworzył spójnej kolekcji. Gdy wszystkie elementy bolt potwierdzeniu krotki, `Ack` wywoływana jest metoda spout. `Ack` Metoda umożliwia spout usunąć dane, które zostało w pamięci podręcznej powtórzeń.
 
 * **Niepowodzenie**: Każdy element bolt może wywołać `this.ctx.Fail(tuple)` do wskazania, że przetwarzanie nie powiodło się dla krotki. Błąd propaguje do `Fail` metoda spout, gdzie można odtworzyć spójna kolekcja znajdująca się przy użyciu buforowanych metadanych.
 
@@ -684,7 +684,7 @@ Chociaż jest łatwa do wdrożenia topologii do klastra, w niektórych przypadka
 
 2. Zapisz zmiany, a następnie kliknij przycisk **F5** lub wybierz **debugowania** > **Rozpocznij debugowanie** Aby uruchomić projekt. Okno konsoli należy pojawiają się i rejestrowanie stanu, postępu testów. Gdy **testy Zakończono** zostanie wyświetlony, naciśnij dowolny klawisz, aby zamknąć okno.
 
-3. Użyj **Eksplorator Windows** można zlokalizować katalogu, który zawiera projekt. Na przykład: **C:\Users\<your_user_name > \Documents\Visual Studio 2013\Projects\WordCount\WordCount**. W tym katalogu, otwórz **Bin**, a następnie kliknij przycisk **debugowania**. Powinien zostać wyświetlony pliki tekstowe, które zostały utworzone, gdy testy zostały uruchomione: sentences.txt counter.txt i splitter.txt. Otwórz każdy plik tekstowy i sprawdzać dane.
+3. Użyj **Eksplorator Windows** można zlokalizować katalogu, który zawiera projekt. Na przykład: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. W tym katalogu, otwórz **Bin**, a następnie kliknij przycisk **debugowania**. Powinien zostać wyświetlony pliki tekstowe, które zostały utworzone, gdy testy zostały uruchomione: sentences.txt counter.txt i splitter.txt. Otwórz każdy plik tekstowy i sprawdzać dane.
 
    > [!NOTE]  
    > Dane ciągu są utrwalane jako tablica wartości dziesiętnych w tych plikach. Na przykład \[[97,103,111]] w **splitter.txt** pliku ma postać wyrazu *i*.

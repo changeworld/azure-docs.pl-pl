@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie urządzenia osobistego w sieci swojej organizacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Rejestrowanie urządzeń osobistych w sieci organizacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zarejestrować urządzenia osobistego w sieci organizacji, aby dostęp do chronionych zasobów w organizacji.
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cae464531dee86f7a4c9ec2396b90787825ec2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172301"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439744"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Rejestrowanie urządzenia osobistego w sieci organizacji
 Zarejestruj urządzenie osobiste (zazwyczaj telefonie lub tablecie) w sieci organizacji. Po zarejestrowaniu urządzenia będzie dostęp do zasobów z ograniczeniami w organizacji.
