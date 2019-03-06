@@ -40,6 +40,22 @@ items:
       href: terraform-create-vm-scaleset-network-disks-hcl.md
     - name: Aprowizowanie zestawu skalowania maszyn wirtualnych na podstawie niestandardowego obrazu usługi Packer
       href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Sieci
+    items:
+    - name: Topologia gwiazdy
+      items:
+      - name: 1. Tworzenie topologii gwiazdy
+        href: terraform-hub-spoke-introduction.md
+      - name: 2. Tworzenie lokalnej sieci wirtualnej
+        href: terraform-hub-spoke-on-prem.md
+      - name: 3. Tworzenie sieci wirtualnej będącej koncentratorem
+        href: terraform-hub-spoke-hub-network.md
+      - name: 4. Tworzenie urządzenia dla sieci wirtualnej będącej koncentratorem
+        href: terraform-hub-spoke-hub-nva.md
+      - name: 5. Tworzenie sieci będącej promieniem
+        href: terraform-hub-spoke-spoke-network.md
+      - name: 6. Weryfikowanie łączności dla topologii sieci
+        href: terraform-hub-spoke-validation.md
   - name: Narzędzia
     items:
     - name: Instalowanie rozszerzenia Terraform dla programu Visual Studio Code
@@ -72,9 +88,9 @@ items:
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 352b6bcf9bbce9e38ba2b048d1b8997896870f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f37cb15bccf0fe07ace24d3277015a69b9881091
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750243"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404828"

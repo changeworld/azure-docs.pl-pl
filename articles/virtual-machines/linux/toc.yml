@@ -186,16 +186,12 @@ items:
         href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       - name: Przełączanie maszyny wirtualnej do pracy w trybie failover w innym regionie
         href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Przenoszenie maszyn wirtualnych do innego regionu
-      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: Zarządzanie maszynami wirtualnymi
     items:
     - name: Użycie maszyny wirtualnej
       href: vm-usage.md
     - name: Typowe zadania interfejsu wiersza polecenia
       href: cli-manage.md
-    - name: Przenoszenie maszyny wirtualnej
-      href: move-vm.md
     - name: Zmiana rozmiaru maszyny wirtualnej
       href: change-vm-size.md
     - name: Przełączanie dysku systemu operacyjnego
@@ -491,8 +487,14 @@ items:
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
   - name: Korzystanie z rozszerzeń maszyn wirtualnych
     href: ../extensions/overview.md
-  - name: Migrowanie maszyn wirtualnych
+  - name: Przenoszenie i migrowanie maszyn wirtualnych
     items:
+    - name: Zmienianie subskrypcji lub grupy zasobów
+      href: move-vm.md
+    - name: Przenoszenie maszyn wirtualnych do innego regionu
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Przenoszenie do strefy dostępności
+      href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS
       href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       items:
@@ -557,9 +559,9 @@ items:
     href: faq.md
 - name: Rozwiązywanie problemów
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 201f0834f2e2f61d1e6521838add251bc486fc75
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 776adc5310db7c4a7762409a53c57e896cc95360
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429812"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438293"

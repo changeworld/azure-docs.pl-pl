@@ -25,6 +25,9 @@
 #### [2 — Programowanie wielu usług](multi-service-nodejs.md)
 #### [3 — Programowanie zespołowe](team-development-nodejs.md)
 
+## Pojęcia
+### [Jak działa usługa Dev Spaces](how-dev-spaces-works.md)
+
 ## Instrukcje
 ### [Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell](how-to/create-cluster-cloud-shell.md)
 ### [Udostępnianie obszarów Azure Dev Spaces](how-to/share-dev-spaces.md)

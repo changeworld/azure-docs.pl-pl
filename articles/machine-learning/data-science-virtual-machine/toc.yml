@@ -9,8 +9,7 @@ items:
     href: deep-learning-dsvm-overview.md
   - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
     href: geo-ai-dsvm-overview.md
-  expanded: true
-- name: Rozpoczęcie pracy
+- name: Przewodniki Szybki start
   items:
   - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
     href: provision-vm.md
@@ -22,27 +21,8 @@ items:
     href: provision-deep-learning-dsvm.md
   - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
     href: provision-geo-ai-dsvm.md
-- name: Instrukcje
-  items:
-  - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
-    href: vm-do-ten-things.md
-  - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
-    href: linux-dsvm-walkthrough.md
-  - name: Używanie maszyny wirtualnej do uczenia głębokiego
-    href: use-deep-learning-dsvm.md
-  - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
-    href: use-geo-ai-dsvm.md
-- name: Wskazówki dla przedsiębiorstw
-  items:
-  - name: Omówienie
-    href: dsvm-enterprise-overview.md
-  - name: Skalowanie
-    href: dsvm-pools.md
-  - name: Integracja z usługą Active Directory
-    href: dsvm-common-identity.md
-  - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
-    href: dsvm-secure-access-keys.md
-- name: Dokumentacja
+  expanded: true
+- name: Pojęcia
   items:
   - name: Odnajdywanie maszyny wirtualnej do analizy danych
     href: dsvm-tools-overview.md
@@ -62,10 +42,29 @@ items:
     href: dsvm-data-platforms.md
   - name: Przykłady i przewodniki
     href: dsvm-samples-and-walkthroughs.md
-  expanded: true
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
+    href: vm-do-ten-things.md
+  - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
+    href: linux-dsvm-walkthrough.md
+  - name: Używanie maszyny wirtualnej do uczenia głębokiego
+    href: use-deep-learning-dsvm.md
+  - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+    href: use-geo-ai-dsvm.md
+  - name: Wskazówki dla przedsiębiorstw
+    items:
+    - name: Omówienie
+      href: dsvm-enterprise-overview.md
+    - name: Skalowanie
+      href: dsvm-pools.md
+    - name: Integracja z usługą Active Directory
+      href: dsvm-common-identity.md
+    - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
+      href: dsvm-secure-access-keys.md
 - name: Zasoby
   items:
-  - name: Przewodnik dewelopera
+  - name: Przewodnik dla deweloperów języka R
     href: ../r-developers-guide.md
   - name: Blog
     href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
@@ -73,9 +72,9 @@ items:
     href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
   - name: Stack Overflow
     href: https://stackoverflow.com/search?q=dsvm
-ms.openlocfilehash: e1617f3f5c36a5b006003e2f375dfac4143af7cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: eddadfc7b10cea364f8235bbd8ba378d9aeaf362
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032568"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431635"
