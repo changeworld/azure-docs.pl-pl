@@ -10,12 +10,12 @@ ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: c3e7d27fa0e62c1dcc92e7eac7ddb56a1de5ba49
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857820"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594036"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>Samouczek: Tworzenie aplikacji do łączenia jednostek w języku C#
 
@@ -55,7 +55,7 @@ Pakiet Entity Linking jest teraz zainstalowany jako część aplikacji. Możesz 
  ![Biblioteka NuGet dołączona do projektu](./Images/NugetLibraryInProject.png)
  
 ### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Krok 4. Dodanie pola wprowadzania tekstu i bloku tekstu wyjściowego do pliku XAML aplikacji</a>
-Znajdź plik ** MainPage.xaml ** w **Eksploratorze rozwiązań** i kliknij go dwukrotnie. Zostanie otwarty w nowym oknie. Dla wygody możesz kliknąć dwukrotnie przycisk **XAML** na karcie **Projektant**, aby ukryć **Wizualnego projektanta**, powiększając widok kodu.
+Znajdź plik **MainPage.xaml** w **Eksploratorze rozwiązań** i kliknij go dwukrotnie. Zostanie on otwarty w nowym oknie. Dla wygody możesz kliknąć dwukrotnie przycisk **XAML** na karcie **Projektant**, aby ukryć **Wizualnego projektanta**, powiększając widok kodu.
 
  ![Biblioteka NuGet dołączona do projektu](./Images/UWPMainPage.png)
  

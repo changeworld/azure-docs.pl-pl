@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 39c4884fcca2b041603305d73526e3310ab99a21
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054850"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441886"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Zarządzanie schematami w aplikacji SaaS przy użyciu wzorca bazy danych dla dzierżawy usługa Azure SQL Database
  
@@ -73,7 +73,7 @@ Ten samouczek wymaga użycia programu PowerShell, aby utworzyć agenta zadań i 
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Tworzenie zadania służącego do wdrożenia nowych danych referencyjnych we wszystkich dzierżawach
 
-W aplikacji Wingtip Tickets każda baza danych dzierżawy obejmuje zestaw typów miejsc obsługiwane. Każde miejsce jest typu określonych miejsc, który definiuje typ zdarzenia, które mogą być hostowane oraz określa obrazu tła używane w aplikacji. Dla aplikacji do obsługi nowych rodzajów zdarzeń to dane referencyjne muszą być miejsc zaktualizowanych i nowych typów dodanych.  W tym ćwiczeniu wdrożysz i uaktualnisz wszystkie bazy danych dzierżaw w celu dodania dwóch dodatkowych typów miejsc: *Motorcycle Racing* i *Swimming Club*.
+W aplikacji Wingtip Tickets każda baza danych dzierżawy obejmuje zestaw typów miejsc obsługiwane. Każde miejsce jest typu określonych miejsc, który definiuje typ zdarzenia, które mogą być hostowane oraz określa obrazu tła używane w aplikacji. Dla aplikacji do obsługi nowych rodzajów zdarzeń to dane referencyjne muszą być miejsc zaktualizowanych i nowych typów dodanych.  W tym ćwiczeniu wdrożenia aktualizacji do wszystkich baz danych dzierżawy do dodania dwóch dodatkowych typów miejsc: *Motorcycle Racing* i *Swimming Club*.
 
 Po pierwsze Przejrzyj typów miejsc zawarte w każdej bazie danych dzierżawy. Połącz się z jednym baz danych dzierżaw w SQL Server Management Studio (SSMS) i sprawdź w tabeli VenueTypes.  Możesz także zbadać tej tabeli w edytorze zapytań w witrynie Azure portal, dostępny na stronie bazy danych. 
 
@@ -87,7 +87,7 @@ Aby utworzyć nowe zadanie, należy użyć zestaw zadań systemu procedury przec
 1. W programie SSMS, połączenia z serwerem wykazu: *catalog-dpt -&lt;użytkownika&gt;. database.windows.net* serwera 
 1. W programie SSMS Otwórz plik... \\Learning Modules\\Zarządzanie schematami\\DeployReferenceData.sql
 1. Modyfikowanie instrukcji: Ustaw @wtpUser = &lt;użytkownika&gt; i zastąp wartość użytkownika podanej podczas wdrażania aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy
-1. Upewnij się, nawiązano _jobagent_ bazy danych i naciśnij klawisz **F5** do uruchomienia skryptu
+1. Upewnij się, nawiązano _jobagent_ bazy danych i naciśnij klawisz **F5** do uruchomienia skryptu
 
 Sprawdź następujące elementy w *DeployReferenceData.sql* skryptu:
 * **SP\_Dodaj\_docelowej\_grupy** tworzy nazwę grupy docelowej DemoServerGroup.
@@ -127,10 +127,10 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 > * Aktualizowanie danych referencyjnych we wszystkich bazach danych dzierżaw
 > * Tworzenie indeksu tabeli we wszystkich bazach danych dzierżaw
 
-Następnie spróbuj [samouczek raportowania Ad hoc](saas-tenancy-cross-tenant-reporting.md) do eksplorowania uruchamiania rozproszonych zapytań w dzierżawie baz danych.
+Następnie spróbuj [raportowanie Ad hoc samouczek](saas-tenancy-cross-tenant-reporting.md) do eksplorowania uruchamiania rozproszonych zapytań w dzierżawie baz danych.
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Dodatkowe samouczki nawiązujące do wdrożenia aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Zarządzanie skalowaną w poziomie bazą danych w chmurze](sql-database-elastic-jobs-overview.md)

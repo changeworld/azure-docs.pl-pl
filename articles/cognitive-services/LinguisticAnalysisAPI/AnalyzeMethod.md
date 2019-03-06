@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861684"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431142"
 ---
 # <a name="analyze-method"></a>Metoda analyze
 
@@ -24,7 +24,7 @@ ms.locfileid: "55861684"
 > Wersja zapoznawcza analizy językowej została wycofana 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 **Analizowanie** interfejsu API REST jest używany do analizowania danych wejściowych danego języka naturalnego.
-Który może obejmować tylko znajdowanie [zdania i tokeny](Sentences-and-Tokens.md) w tym dane wejściowe, znajdowanie [tagów części mowy](POS-tagging.md), lub znajdowania [drzewa constitutency](Constituency-Parsing.md).
+Który może obejmować tylko znajdowanie [zdania i tokeny](Sentences-and-Tokens.md) w tym dane wejściowe, znajdowanie [tagów części mowy](POS-tagging.md), lub znajdowania [drzewa fraz](Constituency-Parsing.md).
 Można określić wyników, wybierając odpowiednie analizatorów.
 Aby wyświetlić listę wszystkich dostępnych analizatorów, Przyjrzyj się  **[analizatory](AnalyzersMethod.md)**.
 
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Name (Nazwa) | Type | Wymagane | Opis
 -----|-------|----------|------------
-**Język**    | ciąg | Yes | Dwuliterowa kod języka ISO ma być używany do analizy. Na przykład "en" jest angielski.
+**Język**    | string | Yes | Dwuliterowa kod języka ISO ma być używany do analizy. Na przykład "en" jest angielski.
 **analyzerIds** | Lista ciągów | Yes | Lista identyfikatorów GUID analizatorów, aby zastosować. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
-**Tekst**        | ciąg | Yes | Nieprzetworzone dane wejściowe do analizy. Może to być krótkiego ciągu, takiej jak słowo lub frazę, pełną zdania, akapitu pełną lub discourse.
+**Tekst**        | string | Yes | Nieprzetworzone dane wejściowe do analizy. Może to być krótkiego ciągu, takiej jak słowo lub frazę, pełną zdania, akapitu pełną lub discourse.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
 
@@ -52,7 +52,7 @@ Wyniki wyglądają następująco:
 
 Name (Nazwa) | Typ | Opis
 -----|------|--------------
-analyzerId | ciąg | Analizator określony identyfikator GUID
+analyzerId | string | Analizator określony identyfikator GUID
 wynik | obiekt | wynik analizatora
 
 Należy pamiętać, że typ wyniku zależy od typu analizatora danych wejściowych.
@@ -67,8 +67,8 @@ result[x].Len | int | Długość w znakach każdego zdania |
 result[x].Tokens | Lista obiektów tokenu | Token granice wskazane w zdaniu |
 wynik [x]. Tokeny [t]. Przesunięcie | int | początkowe przesunięcie znaku tokenu |
 result[x].Tokens[y].Len | int | Długość w znakach tokenu |
-wynik [x]. Tokeny [t]. RawToken | ciąg | znak wewnątrz ten token, zanim normalizacji |
-wynik [x]. Tokeny [t]. NormalizedToken | ciąg | znormalizowana postać znaku bezpieczne użycie [drzewo analizy](Constituency-Parsing.md); na przykład znak nawiasu otwierającego "(" staje się - LRB - |
+wynik [x]. Tokeny [t]. RawToken | string | znak wewnątrz ten token, zanim normalizacji |
+wynik [x]. Tokeny [t]. NormalizedToken | string | znormalizowana postać znaku bezpieczne użycie [drzewo analizy](Constituency-Parsing.md); na przykład znak nawiasu otwierającego "(" staje się - LRB - |
 
 Przykładowe dane wejściowe: "to jest test. Witaj. "
 Przykładowa odpowiedź JSON:

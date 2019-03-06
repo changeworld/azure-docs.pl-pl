@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19039a6a1337c2ddc7494805b18f564466d4f1f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85e773d74231b0b0847dad41a071be499724e2d4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168735"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją InstaVR Viewer
 
@@ -136,11 +136,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji InstaVR Vi
 
 2. Kliknij **ikonę użytkownika** i wybierz pozycję **Konto**.
 
-    ![Konfiguracja aplikacji InstaVR Viewer ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![Konfiguracja aplikacji InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Przewiń w dół do pozycji **Uwierzytelnianie SAML** i wykonaj następujące kroki:
 
-    ![Konfiguracja aplikacji InstaVR Viewer ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![Konfiguracja aplikacji InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. W polu tekstowym **Adres URL logowania jednokrotnego** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
@@ -215,22 +215,22 @@ W tej sekcji w aplikacji InstaVR Viewer jest tworzony użytkownik o nazwie Britt
 
 2. Wybierz pozycję **Pakiet** w panelu nawigacyjnym po lewej stronie i wybierz pozycję **Utwórz pakiet internetowy**.
 
-    ![Konfiguracja aplikacji InstaVR Viewer ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![Konfiguracja aplikacji InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Wybierz przycisk **Download** (Pobierz).
 
-    ![Konfiguracja aplikacji InstaVR Viewer ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![Konfiguracja aplikacji InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Wybierz pozycję **Otwórz hostowaną stronę**, co spowoduje przekierowanie do usługi Azure AD w celu zalogowania.
 
-    ![Konfiguracja aplikacji InstaVR Viewer ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![Konfiguracja aplikacji InstaVR Viewer](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Wprowadź swoje poświadczenia usługi Azure AD, aby pomyślnie zalogować się do usługi Azure AD za pomocą logowania jednokrotnego.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

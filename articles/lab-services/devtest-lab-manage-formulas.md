@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076438"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452661"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Zarządzanie formułami Azure DevTest Labs
 
@@ -69,7 +69,7 @@ Poniższe kroki ułatwiają tworzenie formuły z niestandardowego obrazu, obrazu
     - **Konfiguracja adresu IP** — Określ, czy adresy prywatnej, publicznej lub udostępnione adresów IP. Aby uzyskać więcej informacji o współużytkowanych adresach IP, zobacz [omówienie udostępnionych adresów IP w usłudze Azure DevTest Labs](./devtest-lab-shared-ip.md).
     - **Data i godzina wygaśnięcia** — Podaj datę wygaśnięcia i godzina dla maszyny Wirtualnej tak, aby maszyna wirtualna zostanie automatycznie usunięty. 
     - **Przydziel tej maszynie przejęcia** -wprowadzania maszynę "przejęcia" oznacza, że go nie można przypisać własności w czasie tworzenia. Zamiast tego użytkownicy laboratorium będzie przejęcie na własność ("oświadczenia") maszyny w laboratorium strony.     
-    - **Liczba wystąpień przejęcia** — Określ, ile instacnes przejęcia, którą chcesz utworzyć. 
+    - **Liczba wystąpień przejęcia** — Określ, ile wystąpień przejęcia, którą chcesz utworzyć. 
 8. Wybierz **przesyłania** utworzyć formułę.
 
 9. Formuła został utworzony, jest wyświetlana na liście na **formuły** strony.

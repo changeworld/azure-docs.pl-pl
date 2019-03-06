@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: yegu
-ms.openlocfilehash: e5e60e3370cc813685403cc979e6ef8dc043b7ac
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 383ea07005d7dae47cd0ef1da8a4a57d8b20d613
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233272"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435817"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Jak skonfigurować replikację geograficzną dla usługi Azure Cache dla pamięci podręcznej Redis
 
@@ -175,7 +175,7 @@ Ogólnie rzecz biorąc zaleca się dla pamięci podręcznej istnieje w tym samym
 
 ### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Jak działa przechodzenie w tryb failover do pomocniczej połączonej pamięci podręcznej?
 
-W wersji początkowej replikacji geograficznej pamięci podręcznej Redis Azure nie obsługuje automatycznej pracy awaryjnej w regionach platformy Azure. Replikacja geograficzna jest używana głównie w scenariuszu odzyskiwania po awarii. W przypadku scenariusza odzyskiwania distater klientów należy uzupełnić całego stosu aplikacji w regionie kopii zapasowej w skoordynowany sposób, a nie o poszczególnych składników aplikacji zdecyduj, kiedy należy przełączyć się do ich kopie zapasowe własnych. Jest to szczególnie istotne w pamięci podręcznej Redis. Jedną z kluczowych zalet usługi Redis jest on magazynu bardzo małym opóźnieniem. Jeśli używany przez aplikację pamięci podręcznej Redis wprowadza tryb failover do innego regionu platformy Azure, ale warstwy obliczeniowej nie, czas obiegu dodano musi zauważalnego wpływu na wydajność. Z tego powodu firma Microsoft chce uniknąć niepowodzenia pamięci podręcznej Redis za pośrednictwem automatycznie ze względu na problemy z dostępnością przejściowy.
+W wersji początkowej replikacji geograficznej pamięci podręcznej Redis Azure nie obsługuje automatycznej pracy awaryjnej w regionach platformy Azure. Replikacja geograficzna jest używana głównie w scenariuszu odzyskiwania po awarii. W scenariuszu odzyskiwania po awarii klienci należy uzupełnić całego stosu aplikacji w regionie kopii zapasowej w skoordynowany sposób, a nie o poszczególnych składników aplikacji zdecyduj, kiedy należy przełączyć się do ich kopie zapasowe własnych. Jest to szczególnie istotne w pamięci podręcznej Redis. Jedną z kluczowych zalet usługi Redis jest on magazynu bardzo małym opóźnieniem. Jeśli używany przez aplikację pamięci podręcznej Redis wprowadza tryb failover do innego regionu platformy Azure, ale warstwy obliczeniowej nie, czas obiegu dodano musi zauważalnego wpływu na wydajność. Z tego powodu firma Microsoft chce uniknąć niepowodzenia pamięci podręcznej Redis za pośrednictwem automatycznie ze względu na problemy z dostępnością przejściowy.
 
 Obecnie Aby zainicjować trybu failover, należy do usunięcia łącza replikacji geograficznej w witrynie Azure portal, a następnie Zmień punkt końcowy połączenia klienta pamięci podręcznej Redis z podstawowego połączonej pamięci podręcznej do pomocniczej pamięci podręcznej (dawniej połączone). Po dwóch pamięci podręczne są odłączyć, replik ponownie staje się regularne pamięci podręcznej odczytu / zapisu i akceptuje żądania bezpośrednio od klientów usługi Redis.
 

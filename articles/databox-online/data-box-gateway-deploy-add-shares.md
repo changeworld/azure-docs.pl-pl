@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 02/04/2019
+ms.date: 02/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ceff87cd3075d517ee1c0027e19dbf423e44f5c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f36e13ccf91c983c54897dcff7e1c02689fb055c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108759"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592659"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Samouczek: Transfer danych za pomocą usługi Azure Data Box Gateway (wersja zapoznawcza)
 
@@ -133,6 +133,7 @@ Wykonaj poniższe kroki na kliencie systemu Linux połączonym z urządzeniem us
 > Do wersji zapoznawczej mają zastosowanie następujące zastrzeżenia:
 > - Po utworzeniu pliku w udziałach nie można zmienić nazwy pliku. 
 > - Usunięcie pliku z udziału nie powoduje usunięcia wpisu na koncie magazynu.
+> - W przypadku kopiowania danych za pomocą narzędzia `rsync` opcja `rsync -a` nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Następne kroki
 

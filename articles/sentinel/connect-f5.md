@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c64bfa2d02e4c65f3be60a1b11a8d1eb5d54afa
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 552d78869a9b4b7eb65497bd0c5e6efe5f7aa8c9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242449"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434712"
 ---
 # <a name="connect-your-f5-appliance"></a>Połącz urządzenie F5
 
@@ -34,7 +34,7 @@ Możesz połączyć przez wartownika platformy Azure na dowolnym urządzeniu F5 
 
 ## <a name="step-1-connect-your-f5-appliance-using-an-agent"></a>Krok 1: Połącz urządzenie F5 przy użyciu agenta
 
-Aby połączyć urządzenie F5 przez wartownika platformy Azure, musisz wdrożyć agenta na dedykowanej maszynie (maszyna wirtualna lub lokalnej) do obsługi komunikacji między urządzeniem i platformy Azure przez wartownika. Możesz deploly agent automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
+Aby połączyć urządzenie F5 przez wartownika platformy Azure, musisz wdrożyć agenta na dedykowanym komputerze (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Możesz deploly agent automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
 
 Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualnej platformy Azure, na maszynie Wirtualnej w innej chmurze lub na maszynie lokalnej.
 
@@ -74,7 +74,7 @@ Aby wyświetlić diagram sieciowy obie opcje, zobacz [połączyć źródeł dany
       2. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Wdróż agenta na serwerze z systemem Linux w lokalnej
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Wdróż agenta na lokalny serwer systemu Linux
 
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
 

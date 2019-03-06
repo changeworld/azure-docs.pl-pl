@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: b9c39b1f6987db045669c821416312f88a590cbb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f489abeab0e1374d2d40ade79c4eb55fd633b909
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982864"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443287"
 ---
 # <a name="access-data-from-your-datastores"></a>Dostęp do danych z usługi magazynów danych
 W tym artykule dowiesz się różne sposoby dostępu i interakcję z danymi w przepływach pracy usługi Azure Machine Learning, za pomocą magazynów danych.
@@ -25,7 +25,7 @@ Niniejszy instruktaż zawiera przykłady dla następujących zadań:
 * [Wybierz magazyn danych](#access)
 * [Pobierz magazyn danych](#get)
 * [Przekazywanie i pobieranie danych do magazynów danych](#upload-and-download-data)
-* [Dostęp do magazynu danych, podczas szkolenia](#access-datastores-for-training)
+* Dostęp do magazynu danych, podczas szkolenia
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -62,7 +62,7 @@ Jeśli masz istniejące usługi Azure Storage, należy zarejestrować go jako ma
 
 W poniższych przykładach pokazano można zarejestrować kontenera obiektów Blob platformy Azure lub udziału plików platformy Azure jako magazynu danych.
 
-+ Aby uzyskać **Datastore kontenera obiektów Blob platformy Azure**, użyj [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-:)
++ Aby uzyskać **Datastore kontenera obiektów Blob platformy Azure**, użyj [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
 
   ```Python
   ds = Datastore.register_azure_blob_container(workspace=ws, 

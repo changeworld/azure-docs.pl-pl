@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: d93ebb01c905be6bf799ed6e4a037e3ddfdc2430
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 527ab4ee0edaf3ac2048403d7063edef8fc58ae8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094176"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451981"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Klastry skalowania usługi Azure Service Fabric
 Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Klastry mogą zawierać potencjalnie tysiącach węzłów. Po utworzeniu klastra usługi Service Fabric można skalować klastra w poziomie (zmienić liczbę węzłów), czy w pionie (zmienić zasoby węzłów).  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
@@ -81,7 +81,7 @@ Podczas skalowania w klastrze platformy Azure, należy przestrzegać następują
 Proces skalowania typ węzła w górę lub w dół różni się w zależności od tego, czy jest to typ węzła innego niż podstawowy lub podstawowego.
 
 ### <a name="scaling-non-primary-node-types"></a>Skalowanie typy węzłów innych niż podstawowe
-Tworzenie nowego typu węzła z zasobami, które są potrzebne.  Zaktualizuj ograniczenia dotyczące umieszczania uruchomionych usług w celu uwzględnienia nowego typu węzła.  Stopniowo (po jednym naraz), zmniejszyć liczbę wystąpień stare liczba wystąpień typów węzłów na zero, tak aby niezawodności klastra nie ma wpływu.  Usługi stopniowo zostaną zmigrowane do nowego typu węzła, ponieważ stary typ węzła jest decommisioned.
+Tworzenie nowego typu węzła z zasobami, które są potrzebne.  Zaktualizuj ograniczenia dotyczące umieszczania uruchomionych usług w celu uwzględnienia nowego typu węzła.  Stopniowo (po jednym naraz), zmniejszyć liczbę wystąpień stare liczba wystąpień typów węzłów na zero, tak aby niezawodności klastra nie ma wpływu.  Usługi stopniowo zostaną zmigrowane do nowego typu węzła, ponieważ stary typ węzła jest zamknięty.
 
 ### <a name="scaling-the-primary-node-type"></a>Skalowanie podstawowy typ węzła
 Zaleca się, że nie należy zmieniać jednostki SKU maszyny Wirtualnej typu węzła podstawowego. Jeśli potrzebujesz większej pojemności klastra, zaleca się dodanie większej liczby wystąpień. 

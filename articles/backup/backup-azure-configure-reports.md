@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: 945d8690ccb61916455ba4137f59c67c9a3d9f76
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dbfe33d062c4609ba29adbaa2d9956687115cb5a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237692"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441002"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 W tym artykule przedstawiono kroki, aby wykonać, aby skonfigurować raporty usługi Azure Backup przy użyciu magazynu usługi Recovery Services. Pokazano również, jak dostęp do raportów przy użyciu usługi Power BI. Po wykonaniu tych czynności, możesz przejść bezpośrednio do usługi Power BI, aby wyświetlić, dostosowywanie i tworzenie raportów.
@@ -29,7 +29,7 @@ Pobierz najnowszą wersję aplikacji (wersja 1.8) aby uniknąć tego problemu.
 - Usługa Azure Backup, raporty, są obsługiwane w przypadku kopii zapasowych maszyn wirtualnych platformy Azure, plików i folderów kopii zapasowych w chmurze za pomocą agenta usług odzyskiwania Azure.
 - Raporty dotyczące usługi Azure SQL Database, udziałów plików platformy Azure, programu Data Protection Manager i usługi Azure Backup server nie są obsługiwane w tej chwili.
 - Raporty można wyświetlać między magazynami i subskrypcji, skonfigurowanie tego samego konta magazynu dla każdego z magazynów. Wybrane konto magazynu musi być w tym samym regionie co magazyn usługi Recovery Services.
-- Częstotliwość zaplanowanego odświeżania raportów wynosi 24 godziny w usłudze Power BI. Możesz również wykonać odświeżania zapytań ad-hoc raportów w usłudze Power BI. W tym przypadku najnowsze dane na koncie magazynu klienta używany do renderowania raportów.
+- Częstotliwość zaplanowanego odświeżania raportów wynosi 24 godziny w usłudze Power BI. Możesz również wykonać ad-hoc odświeżanie raportów w usłudze Power BI. W tym przypadku najnowsze dane na koncie magazynu klienta używany do renderowania raportów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Tworzenie [konta usługi Azure storage](../storage/common/storage-quickstart-create-account.md) ją skonfigurować do raportów. To konto magazynu jest używane do przechowywania danych związanych z raportami.

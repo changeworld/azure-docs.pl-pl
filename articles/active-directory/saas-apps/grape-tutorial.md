@@ -1,198 +1,195 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą środowiska preinstalacyjnego gramatyczne | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i gramatyczne Pe.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Gra-Pe | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Gra-Pe.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 073f8641-b64d-4754-b1a6-2b91c865b13d
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/15/2018
+ms.topic: tutorial
+ms.date: 02/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02df0a5d13aeb90049383f61d743e8a11e93fc79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 689d0cdea70da4f4ad3c11ba25025ac4f9f342fb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188532"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866151"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą gramatyczne Pe
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Gra-Pe
 
-W tym samouczku dowiesz się, jak zintegrować gramatyczne Pe za pomocą usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Gra-Pe z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Gra-Pe z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie gramatyczne Pe za pomocą usługi Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Gra-Pe.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Gra-Pe (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do środowiska preinstalacyjnego gramatyczne.
-- Aby umożliwić użytkownikom automatycznie pobrać zalogowanych do środowiska preinstalacyjnego gramatyczne (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą środowiska preinstalacyjnego gramatyczne, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Gra-Pe potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Pe gramatyczne logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Gra-Pe z włączoną obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie gramatyczne Pe za pomocą galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-gra-pe-from-the-gallery"></a>Dodawanie gramatyczne Pe za pomocą galerii
-Aby skonfigurować integrację gramatyczne PE w usłudze Azure AD, należy dodać gramatyczne Pe z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Gra-Pe obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-**Aby dodać gramatyczne Pe z galerii, wykonaj następujące czynności:**
+## <a name="adding-gra-pe-from-the-gallery"></a>Dodawanie aplikacji Gra-Pe z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Gra-Pe z usługą Azure AD, musisz dodać aplikację Gra-Pe z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![image](./media/grape-tutorial/selectazuread.png)
+**Aby dodać aplikację Gra-Pe z galerii, wykonaj następujące czynności:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![image](./media/grape-tutorial/a_select_app.png)
-    
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
+
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
 3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![image](./media/grape-tutorial/a_new_app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Pe gramatyczne**, wybierz opcję **Pe gramatyczne** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Gra-Pe**, wybierz pozycję **Gra-Pe** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![image](./media/grape-tutorial/tutorial_grape_addfromgallery.png)
+     ![Aplikacja Gra-Pe na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Pe gramatyczne w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Gra-Pe, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem aplikacji Gra-Pe.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w środowisku preinstalacyjnym gramatyczne do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w środowisku preinstalacyjnym gramatyczne musi zostać ustanowione.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą gramatyczne Pe, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Gra-Pe, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-3. **[Tworzenie użytkownika testowego Pe gramatyczne](#create-a-gra-pe-test-user)**  — aby odpowiednikiem Britta Simon w gramatyczne-Pe, która jest połączona z usługi Azure AD reprezentacja użytkownika.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Gra-Pe](#configure-gra-pe-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+5. **[Tworzenie użytkownika testowego aplikacji Gra-Pe](#create-gra-pe-test-user)** — aby mieć w aplikacji Gra-Pe odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji gramatyczne Pe.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Pe gramatyczne, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Gra-Pe, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Pe gramatyczne** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Gra-Pe** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![image](./media/grape-tutorial/b1_b2_select_sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![image](./media/grape-tutorial/b1_b2_saml_sso.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![image](./media/grape-tutorial/b1-domains_and_urlsedit.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL jako:  `https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Gra-Pe](common/sp-signonurl.png)
 
-    ![image](./media/grape-tutorial/tutorial_grape_url.png)
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **Certyfikat (Base64)** i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![image](./media/grape-tutorial/tutorial_grape_certficate.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **Konfigurowanie Pe gramatyczne** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie aplikacji Gra-Pe** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
     a. Adres URL logowania
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-    ![image](./media/grape-tutorial/d1_samlsonfigure.png) 
+### <a name="configure-gra-pe-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Gra-Pe
 
-7. Aby skonfigurować logowanie jednokrotne na **Pe gramatyczne** stronie, musisz wysłać pobrany **certyfikat (Base64)** i skopiowany **adres URL wylogowania adres URL logowania, usługa Azure AD identyfikator,** do [ Zespół pomocy technicznej Pe gramatyczne](https://www.toppantravel.com/inquiry/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Gra-Pe**, należy wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal do [zespołu pomocy technicznej aplikacji Gra-Pe](https://www.toppantravel.com/inquiry/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![image](./media/grape-tutorial/d_users_and_groups.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![image](./media/grape-tutorial/d_adduser.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
 3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![image](./media/grape-tutorial/d_userproperties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
     b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Wybierz pozycję **Utwórz**.
- 
-### <a name="create-a-gra-pe-test-user"></a>Tworzenie użytkownika testowego gramatyczne Pe
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w środowisku preinstalacyjnym gramatyczne. Praca z [zespołem pomocy technicznej Pe gramatyczne](https://www.toppantravel.com/inquiry/) Aby dodać użytkowników na platformie gramatyczne Pe. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do środowiska preinstalacyjnego gramatyczne.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Gra-Pe.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Gra-Pe**.
 
-    ![image](./media/grape-tutorial/d_all_applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Pe gramatyczne**.
+2. Na liście aplikacji wybierz pozycję **Gra-Pe**.
 
-    ![image](./media/grape-tutorial/tutorial_grape_app.png)
+    ![Link Gra-Pe na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![image](./media/grape-tutorial/d_leftpaneusers.png)
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-4. Wybierz **Dodaj** przycisk, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![image](./media/grape-tutorial/d_assign_user.png)
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-Po kliknięciu kafelka gramatyczne Pe w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji gramatyczne Pe.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+### <a name="create-gra-pe-test-user"></a>Tworzenie użytkownika testowego aplikacji Gra-Pe
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+W tej sekcji utworzysz użytkownika Britta Simon w aplikacji Gra-Pe. Aby dodać użytkowników na platformie aplikacji Gra-Pe, współpracuj z  [zespołem pomocy technicznej aplikacji Gra-Pe](https://www.toppantravel.com/inquiry/). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka Gra-Pe na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Gra-Pe, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+
+## <a name="additional-resources"></a>Dodatkowe zasoby
+
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

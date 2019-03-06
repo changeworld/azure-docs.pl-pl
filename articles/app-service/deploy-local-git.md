@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c547eba931e23b6ffc7cae176e19959d43bcf5e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602498"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405032"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -44,29 +44,29 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-from-local-git-with-kudu-builds"></a>Wdrażanie z lokalnego repozytorium Git z kompilacjami Kudu
+## <a name="deploy-with-kudu-builds"></a>Wdrażanie przy użyciu kompilacji Kudu
 
-Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu serwer kompilacji Kudu najłatwiej do użycia w usłudze Cloud Shell.
+Najprostszym sposobem włączenia lokalnego wdrożenia usługi Git dla Twojej aplikacji z serwerem kompilacji Kudu jest użycie usługi Cloud Shell.
 
 ### <a name="configure-a-deployment-user"></a>Konfigurowanie użytkownika wdrożenia
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="enable-local-git-with-kudu"></a>Włącz lokalnego narzędzia Git za pomocą aparatu Kudu
+### <a name="enable-local-git-with-kudu"></a>Włączanie lokalnej usługi Git za pomocą serwera Kudu
 
-Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu serwer kompilacji Kudu, uruchom [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) w usłudze Cloud Shell.
+Aby włączyć lokalne wdrożenie usługi Git dla Twojej aplikacji przy użyciu serwera kompilacji Kudu, uruchom polecenie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) w usłudze Cloud Shell.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Aby zamiast tego utworzyć aplikację z obsługą usługi Git, uruchom [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) w usłudze Cloud Shell za pomocą `--deployment-local-git` parametru.
+Aby zamiast tego utworzyć aplikację z obsługą usługi Git, uruchom w usłudze Cloud Shell polecenie [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) z parametrem `--deployment-local-git`.
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-`az webapp create` Polecenia powinien zapewnić podobne do następujących danych wyjściowych:
+Polecenie `az webapp create` powinno dać dane wyjściowe podobne do poniższych:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -86,7 +86,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>Wdrażanie projektu
 
-W _lokalnym oknie terminala_ dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp  _\<adresu url >_ z adresem URL zdalnego repozytorium Git, uzyskany z [Włącz Git dla aplikacji](#enable-local-git-with-kudu).
+W _lokalnym oknie terminala_ dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp element _\<url>_ adresem URL zdalnego repozytorium Git uzyskanego po [włączeniu usługi Git dla Twojej aplikacji](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>
@@ -98,11 +98,11 @@ Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą nast
 git push azure master
 ```
 
-Może zostać wyświetlony automatyzacji specyficzne dla środowiska uruchomieniowego w danych wyjściowych, takiego Jakmsbuild programu ASP.NET, `npm install` dla środowiska Node.js, i `pip install` dla języka Python. 
+W danych wyjściowych możesz zobaczyć automatyzację specyficzną dla środowiska uruchomieniowego, takiego jak MSBuild dla programu ASP.NET, `npm install` dla platformy Node.js i `pip install` dla języka Python. 
 
 Przejdź do aplikacji, aby sprawdzić, czy zawartość jest wdrażana.
 
-## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Wdrażanie z lokalnego repozytorium Git z kompilacjami usługom DevOps platformy Azure
+## <a name="deploy-with-azure-devops-builds"></a>Wdrażanie przy użyciu kompilacji DevOps platformy Azure
 
 > [!NOTE]
 > Usługi App Service utworzyć niezbędne potoki usługi Azure w Twojej organizacji usługom DevOps platformy Azure, Twoje konto platformy Azure musi mieć rolę **właściciela** w subskrypcji platformy Azure.
@@ -110,20 +110,18 @@ Przejdź do aplikacji, aby sprawdzić, czy zawartość jest wdrażana.
 
 Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu serwer kompilacji Kudu, przejdź do aplikacji w [witryny Azure portal](https://portal.azure.com).
 
-W lewym obszarze nawigacji strony aplikacji kliknij **Centrum wdrażania** > **lokalnego narzędzia Git** > **Kontynuuj**. 
+W lewym obszarze nawigacji strony aplikacji kliknij **Centrum wdrażania** > **lokalnego narzędzia Git** > **Kontynuuj**.
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Kliknij przycisk **ciągłe dostarczanie Services — Azure DevOps** > **nadal**.
+Kliknij przycisk **potoki platformy Azure (wersja zapoznawcza)** > **nadal**.
 
-![](media/app-service-deploy-local-git/vsts-build-server.png)
+![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-W **Konfiguruj** strony, konfigurowania nowej organizacji usługom DevOps platformy Azure lub określ istniejącą organizację. Po zakończeniu kliknij przycisk **Kontynuuj**.
+W **Konfiguruj** strony, konfigurowania nowej organizacji DevOps platformy Azure lub określ istniejącą organizację. Po zakończeniu kliknij przycisk **Kontynuuj**.
 
 > [!NOTE]
-> Jeśli chcesz użyć istniejącej organizacji usługom DevOps platformy Azure, która nie ma na liście, musisz [łączenie organizacji usługom DevOps platformy Azure z subskrypcją platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
-
-W **testu** stronie, wybierz, czy włączyć testów obciążenia, a następnie kliknij przycisk **Kontynuuj**.
+> Jeśli chcesz użyć istniejącej organizacji DevOps platformy Azure, która nie ma na liście, musisz [łączenie organizacji usługom DevOps platformy Azure z subskrypcją platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 W zależności od [warstwy cenowej](https://azure.microsoft.com/pricing/details/app-service/plans/) planu usługi App Service może również zostać wyświetlony **Deploy do wdrażania przejściowego** strony. Wybierz, czy włączyć miejsc wdrożenia, a następnie kliknij przycisk **Kontynuuj**.
 
@@ -160,21 +158,21 @@ Poniżej przedstawiono typowe błędy lub problemy, gdy za pomocą narzędzia Gi
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli aplikacja nie będzie działać.
 
-**Rozpoznawanie**: Uruchom aplikację w witrynie Azure portal. Wdrażanie usługi Git jest niedostępna, jeśli aplikacja sieci Web została zatrzymana.
+**Rozwiązanie**: Uruchom aplikację w witrynie Azure portal. Wdrażanie usługi Git jest niedostępna, jeśli aplikacja sieci Web została zatrzymana.
 
 ---
 **Objaw**: `Couldn't resolve host 'hostname'`
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli adres wartości wprowadzonej podczas tworzenia zdalnego "azure" była nieprawidłowa.
 
-**Rozpoznawanie**: Użyj `git remote -v` polecenie, aby wyświetlić listę wszystkich dostępów zdalnych, wraz z powiązanego adresu URL. Sprawdź, czy adres URL "Azure" zdalny jest poprawna. W razie potrzeby usuń i ponownie utwórz ten zdalnego przy użyciu prawidłowego adresu URL.
+**Rozwiązanie**: Użyj `git remote -v` polecenie, aby wyświetlić listę wszystkich dostępów zdalnych, wraz z powiązanego adresu URL. Sprawdź, czy adres URL "Azure" zdalny jest poprawna. W razie potrzeby usuń i ponownie utwórz ten zdalnego przy użyciu prawidłowego adresu URL.
 
 ---
 **Objaw**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli nie określisz gałęzi podczas `git push`, lub jeśli nie został ustawiony `push.default` wartość w `.gitconfig`.
 
-**Rozpoznawanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
+**Rozwiązanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
 
 ```bash
 git push azure master
@@ -185,7 +183,7 @@ git push azure master
 
 **Przyczyna**: Ten błąd może wystąpić, Jeśli spróbujesz wypchnąć do rozgałęzienia innego niż główny "Azure" zdalnego.
 
-**Rozpoznawanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
+**Rozwiązanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
 
 ```bash
 git push azure master
@@ -196,7 +194,7 @@ git push azure master
 
 **Przyczyna**: Ten błąd może wystąpić, Jeśli spróbujesz wypchnąć repozytorium git w dużej za pośrednictwem protokołu HTTPS.
 
-**Rozpoznawanie**: Zmienianie konfiguracji usługi git na komputerze lokalnym, aby powiększyć postBuffer
+**Rozwiązanie**: Zmienianie konfiguracji usługi git na komputerze lokalnym, aby powiększyć postBuffer
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -207,7 +205,7 @@ git config --global http.postBuffer 524288000
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli wdrożysz aplikację Node.js przy użyciu _package.json_ pliku, który określa dodatkowe wymagane moduły.
 
-**Rozpoznawanie**: Dodatkowe wiadomości przy użyciu funkcji "npm błąd!" powinny być rejestrowane, zanim ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu, a odpowiedni "npm błąd!" Komunikat:
+**Rozwiązanie**: Dodatkowe wiadomości przy użyciu funkcji "npm błąd!" powinny być rejestrowane, zanim ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu, a odpowiedni "npm błąd!" Komunikat:
 
 * **Plik package.json źle sformułowane**: npm błąd! Nie można odczytać zależności.
 * **Moduł macierzysty, który nie ma binarne dystrybucji dla Windows**:

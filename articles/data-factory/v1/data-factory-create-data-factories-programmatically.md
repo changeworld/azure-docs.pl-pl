@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d05661c131d981538dada988131c39d4fd956ee9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8f333b626fa51fa60f80350547ee53f346d6cc3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016742"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436771"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie, monitorowanie i zarządzanie fabryki danych platformy Azure przy użyciu zestawu SDK .NET usługi Azure Data Factory
 > [!NOTE]
@@ -31,6 +31,9 @@ Można tworzyć, monitorować i zarządzać fabryki danych platformy Azure, prog
 > Ten artykuł nie obejmuje całego interfejsu API .NET usługi Data Factory. Zobacz [dokumentacja interfejsu API .NET usługi Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) pełna dokumentacja dotycząca interfejsu API .NET usługi Data Factory. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * Program Visual Studio w wersji 2012, 2013 lub 2015.
 * Pobierz i zainstaluj [Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Azure PowerShell. Postępuj zgodnie z instrukcjami w artykule [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell), aby zainstalować program Azure PowerShell na komputerze. Program Azure PowerShell służy do tworzenia aplikacji Azure Active Directory.
@@ -42,17 +45,17 @@ Utwórz aplikację usługi Azure Active Directory, utwórz nazwę główną usł
 2. Uruchom poniższe polecenie i wprowadź nazwę użytkownika oraz hasło, których używasz do logowania się w witrynie Azure Portal.
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. Uruchom poniższe polecenie, aby wyświetlić wszystkie subskrypcje dla tego konta.
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 4. Uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zastąp ciąg **&lt;NameOfAzureSubscription**&gt; nazwą subskrypcji platformy Azure.
 
     ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
    > [!IMPORTANT]
@@ -61,7 +64,7 @@ Utwórz aplikację usługi Azure Active Directory, utwórz nazwę główną usł
 5. Utwórz grupę zasobów platformy Azure o nazwie **ADFTutorialResourceGroup** przez uruchomienie następującego polecenia w programie PowerShell.
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
     Jeśli istnieje już grupa zasobów, można określić, czy należy ją zaktualizować (Y), czy zachować (N).
@@ -70,7 +73,7 @@ Utwórz aplikację usługi Azure Active Directory, utwórz nazwę główną usł
 6. Utwórz aplikację usługi Azure Active Directory.
 
     ```PowerShell
-    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
+    $azureAdApplication = New-AzADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
     Jeśli zostanie wyświetlony następujący błąd, określ inny adres URL i uruchom polecenie ponownie.
@@ -81,12 +84,12 @@ Utwórz aplikację usługi Azure Active Directory, utwórz nazwę główną usł
 7. Utwórz nazwę główną usługi AD.
 
     ```PowerShell
-    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. Dodaj nazwę główną usługi do roli **Współautor Data Factory**.
 
     ```PowerShell
-    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. Uzyskaj identyfikator aplikacji.
 
@@ -175,7 +178,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     ```
 
    > [!IMPORTANT]
-   > Zastąp wartość **resourceGroupName** nazwą grupy zasobów platformy Azure. Można utworzyć grupę zasobów za pomocą [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) polecenia cmdlet.
+   > Zastąp wartość **resourceGroupName** nazwą grupy zasobów platformy Azure. Można utworzyć grupę zasobów za pomocą [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) polecenia cmdlet.
    >
    > Zaktualizuj nazwę fabryki danych (dataFactoryName), aby była unikatowa. Nazwa fabryki danych musi być globalnie unikatowa. Artykuł [Data Factory — Naming Rules](data-factory-naming-rules.md) (Fabryka danych — zasady nazewnictwa) zawiera zasady nazewnictwa artefaktów usługi Fabryka danych.
 7. Dodaj następujący kod, który tworzy **fabrykę danych**, do metody **Main**.
@@ -454,7 +457,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     ```
 17. Uruchom próbkę, klikając pozycję **Debuguj** -> **Rozpocznij debugowanie** w menu. Po wyświetleniu komunikatu **Pobieranie szczegółów uruchomienia wycinka danych** zaczekaj kilka minut, a następnie naciśnij klawisz **ENTER**.
 18. Użyj witryny Azure Portal, aby upewnić się, że fabryka danych **APITutorialFactory** została utworzona z następującymi artefaktami:
-    * Połączoną usługę: **AzureStorageLinkedService**
+    * Połączona usługa: **AzureStorageLinkedService**
     * Zestaw danych: **DatasetBlobSource** i **DatasetBlobDestination**.
     * Potok: **PipelineBlobSample**
 19. Sprawdź, czy plik wyjściowy został utworzony w **apifactoryoutput** folderu w **adftutorial** kontenera.

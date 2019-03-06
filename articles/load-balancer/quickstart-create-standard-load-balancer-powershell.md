@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell'
+title: 'Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa — program Azure PowerShell'
 titlesuffix: Azure Load Balancer
 description: W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu PowerShell
 services: load-balancer
@@ -10,20 +10,20 @@ Customer intent: I want to create a Standard Load balancer so that I can load ba
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: qucikstart
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: b2da2092c71d109081f05f3e4f12d7d11de37397
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: MT
+ms.openlocfilehash: 56fc3942b82d43273ea39f6075382bcb255fc0f7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593951"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673823"
 ---
-# <a name="get-started"></a>Szybki start: Tworzenie standardowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell
+# <a name="get-started"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi. Aby dowiedzieć się więcej na temat usługi Load Balancer w warstwie Standardowa, zobacz [Co to jest usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
@@ -35,7 +35,7 @@ Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Zanim będzie można utworzyć moduł równoważenia obciążenia, należy utworzyć grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupLB* w lokalizacji *EastUS*:
+Zanim będzie można utworzyć moduł równoważenia obciążenia, musisz utworzyć grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupLB* w lokalizacji *EastUS*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -58,11 +58,11 @@ $publicIP = New-AzPublicIpAddress `
 
 ## <a name="create-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
 
-W tej sekcji można skonfigurować adres IP frontonu i puli adresów zaplecza modułu równoważenia obciążenia, a następnie utwórz podstawowego modułu równoważenia obciążenia.
+W tej sekcji skonfigurujesz adres IP frontonu i pulę adresów zaplecza na potrzeby modułu równoważenia, a następnie utworzysz usługę Load Balancer w warstwie Standardowa.
 
-### <a name="create-front-end-ip"></a>Utwórz adres IP frontonu
+### <a name="create-front-end-ip"></a>Tworzenie adresu IP frontonu
 
-Utwórz adres IP frontonu z [New AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). W poniższym przykładzie utworzono konfigurację IP frontonu o nazwie *myFrontEnd* i dołącza *myPublicIP* adresu:
+Utwórz adres IP frontonu przy użyciu polecenia [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Poniższy przykład obejmuje tworzenie konfiguracji adresu IP frontonu o nazwie *myFrontEnd* i dołączanie do niej adresu *myPublicIP*:
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -70,9 +70,9 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-### <a name="configure-back-end-address-pool"></a>Skonfiguruj pulę adresów zaplecza
+### <a name="configure-back-end-address-pool"></a>Konfigurowanie puli adresów zaplecza
 
-Utwórz pulę adresów zaplecza przy użyciu [New AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). Maszyny wirtualne zostaną dołączone do tej puli zaplecza w kolejnych krokach. Poniższy przykład tworzy pulę adresów zaplecza o nazwie *myBackEndPool*:
+Utwórz pulę adresów zaplecza przy użyciu polecenia [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). W kolejnych krokach maszyny wirtualne zostaną dołączone do tej puli zaplecza. Poniższy przykład przedstawia sposób tworzenia puli adresów zaplecza o nazwie *myBackEndPool*:
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
@@ -113,7 +113,7 @@ $lbrule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>Tworzenie reguł NAT
 
-Tworzenie reguły NAT za pomocą [AzLoadBalancerRuleConfig Dodaj](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Poniższy przykład obejmuje tworzenie reguły translatora adresów Sieciowych o nazwie *myLoadBalancerRDP1* i *myLoadBalancerRDP2* zezwalać na połączenia RDP do serwerów zaplecza z portem 4221 i 4222:
+Utwórz reguły NAT przy użyciu polecenia [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Poniższy przykład obejmuje tworzenie reguł NAT o nazwie *myLoadBalancerRDP1* i *myLoadBalancerRDP2* w celu zezwolenia na nawiązywanie połączeń protokołu RDP z serwerami zaplecza przy użyciu portów 4221 i 4222:
 
 ```azurepowershell-interactive
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
@@ -133,7 +133,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Tworzenie standardowego modułu równoważenia obciążenia za pomocą [nowe AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład tworzy publicznego podstawowego modułu równoważenia obciążenia o nazwie myLoadBalancer przy użyciu konfiguracji adresów IP frontonu, puli zaplecza, sondy kondycji, reguły równoważenia obciążenia i reguł translatora adresów Sieciowych, które zostały utworzone w poprzednich krokach:
+Utwórz usługę Load Balancer w warstwie Standardowa przy użyciu polecenia [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład obejmuje tworzenie publicznej usługi Load Balancer w warstwie Standardowa o nazwie myLoadBalancer przy użyciu konfiguracji adresu IP frontonu, puli zaplecza, sondy kondycji, reguły równoważenia obciążenia i reguł NAT, które zostały utworzone w poprzednich krokach:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -173,7 +173,7 @@ $vnet = New-AzVirtualNetwork `
 Utwórz sieciową grupę zabezpieczeń w celu zdefiniowania połączeń przychodzących do sieci wirtualnej.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Tworzenie reguły sieciowej grupy zabezpieczeń dla portu 3389
-Tworzenie reguły grupy zabezpieczeń sieci, aby zezwolić na połączenia RDP przez port 3389 z [New AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwolić na połączenia protokołu RDP za pośrednictwem portu 3389 przy użyciu polecenia [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
 
@@ -191,7 +191,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
 ```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Tworzenie reguły sieciowej grupy zabezpieczeń dla portu 80
-Tworzenie reguły grupy zabezpieczeń sieci, aby zezwolić na połączenia przychodzące za pośrednictwem portu 80 z [New AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące za pośrednictwem portu 80 przy użyciu polecenia [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -209,7 +209,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig `
 
 #### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Utwórz sieciową grupę zabezpieczeń z [New AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+Utwórz sieciową grupę zabezpieczeń przy użyciu polecenia [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -220,7 +220,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 
 ### <a name="create-nics"></a>Tworzenie kart sieciowych
-Tworzenie wirtualnych kart sieciowych utworzonych za pomocą [New AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). W poniższym przykładzie zostaną utworzone dwie wirtualne karty sieciowe. (Po jednej karcie na każdą maszynę wirtualną, która zostanie utworzona na potrzeby aplikacji w kolejnych krokach). Możesz w dowolnym momencie utworzyć i dodać do modułu równoważenia obciążenia dodatkowe wirtualne karty sieciowe i maszyny wirtualne:
+Utwórz wirtualne karty sieciowe przy użyciu polecenia [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). W poniższym przykładzie zostaną utworzone dwie wirtualne karty sieciowe. (Po jednej karcie na każdą maszynę wirtualną, która zostanie utworzona na potrzeby aplikacji w kolejnych krokach). Możesz w dowolnym momencie utworzyć i dodać do modułu równoważenia obciążenia dodatkowe wirtualne karty sieciowe i maszyny wirtualne:
 
 ```azurepowershell-interactive
 # Create NIC for VM1
@@ -288,7 +288,7 @@ Parametr `-AsJob` umożliwia tworzenie maszyny wirtualnej w tle, co powoduje pow
 
 ### <a name="install-iis-with-custom-web-page"></a>Instalowanie usług IIS przy użyciu niestandardowej strony internetowej
 
-Instalowanie usług IIS za pomocą niestandardowej strony sieci web na obu maszynach wirtualnych zaplecza w następujący sposób:
+Zainstaluj usługi IIS przy użyciu niestandardowej strony internetowej na obu maszynach wirtualnych zaplecza w następujący sposób:
 
 1. Pobierz publiczny adres IP modułu równoważenia obciążenia. Przy użyciu polecenia `Get-AzPublicIPAddress` uzyskaj publiczny adres IP usługi Load Balancer.
 
@@ -345,9 +345,9 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
 Remove-AzResourceGroup -Name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start utworzono podstawowy moduł równoważenia obciążenia, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu modułu równoważenia obciążenia i sondę kondycji, a następnie przetestowano moduł równoważenia obciążenia. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
+W tym przewodniku Szybki start utworzono moduł równoważenia obciążenia usługi Load Balancer w warstwie Standardowa, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu modułu równoważenia obciążenia i sondę kondycji, a następnie przetestowano moduł równoważenia obciążenia. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Samouczki usługi Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)

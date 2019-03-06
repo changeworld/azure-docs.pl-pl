@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9396fbc470f25e3cf6fad883ab525af1f96e96a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 23ce02bd35d9cd4afd881ec276fabb0720b61c09
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188753"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444042"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -65,7 +65,7 @@ Wybierz żądane źródło `NameIdentifier` (lub NameID) oświadczenia. Możesz 
 | userprincipalName | Główna nazwa użytkownika (UPN) |
 | onpremisessamaccount | Nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD |
 | Identyfikator obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
-| employeeID | EmployeeID użytkownika |
+| EmployeeID | EmployeeID użytkownika |
 | Rozszerzenia katalogów | Rozszerzenia katalogów [synchronizowanych z lokalnej przy użyciu usługi Azure AD Connect Sync Active Directory.](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atrybuty rozszerzenia 1 – 15 | W środowisku lokalnym atrybutów rozszerzenia, używanej do rozszerzania schematu usługi Azure AD |
 
@@ -82,7 +82,7 @@ Można również użyć funkcji przekształcenia oświadczeń specjalne.
 
 ## <a name="adding-claims"></a>Dodawanie oświadczeń
 
-Podczas dodawania roszczenia, można określić nazwę atrybutu, (które ściśle nie należy wykonywać wzorzec identyfikatora URI, zgodnie z specyfikacja języka SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu lub użyj wartości zawartość jako statyczny wpis dla wszystkich użytkowników w Twojej organizacji.
+Podczas dodawania roszczenia, można określić nazwę atrybutu, (które ściśle nie należy wykonywać wzorzec identyfikatora URI, zgodnie z specyfikacja języka SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu, lub użyj wartości stałej jako statyczny wpis dla wszystkich użytkowników w Twojej organizacji.
 
 ![Dodaj atrybut użytkownika][7]
 

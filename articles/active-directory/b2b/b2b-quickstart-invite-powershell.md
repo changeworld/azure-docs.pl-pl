@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start omawiający dodawanie użytkownika-gościa za pomocą programu PowerShell na potrzeby współpracy w usłudze Azure Active Directory B2B | Microsoft Docs
+title: 'Przewodnik Szybki start: dodawanie użytkownika-gościa za pomocą programu PowerShell — Azure Active Directory | Microsoft Docs'
 description: Z tego przewodnika Szybki start dowiesz się, jak za pomocą programu PowerShell wysłać zaproszenie do zewnętrznego użytkownika współpracy w usłudze Azure AD B2B.
 services: active-directory
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb34fa0552eaa8f0d567ff85843e4b7df3fa967
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205379"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675147"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Szybki start: Dodawanie użytkownika-gościa przy użyciu programu PowerShell
 

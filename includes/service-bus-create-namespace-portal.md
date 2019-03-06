@@ -5,16 +5,17 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b38f66670ba29022713ae39824a190fcffb688c7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238766"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588946"
 ---
+## <a name="create-a-namespace-in-the-azure-portal"></a>Tworzenie przestrzeni nazw w witrynie Azure Portal
 Aby rozpocząć korzystanie z obsługi wiadomości usługi Service Bus na platformie Azure, musisz najpierw utworzyć przestrzeń nazw o nazwie, która jest unikatowa w obrębie platformy Azure. Przestrzeń nazw zapewnia kontener określania zakresu na potrzeby adresowania zasobów usługi Service Bus w aplikacji.
 
 Aby utworzyć przestrzeń nazw:
@@ -27,7 +28,7 @@ Aby utworzyć przestrzeń nazw:
     1. Wprowadź **nazwę przestrzeni nazw**. System od razu sprawdza, czy nazwa jest dostępna.
     2. Wybierz warstwę cenową (Podstawowa, Standardowa lub Premium) dla przestrzeni nazw. Jeśli chcesz korzystać z [tematów i subskrypcji](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), wybierz warstwę Standardowa lub Premium. Tematy/subskrypcje nie są obsługiwane w warstwie cenowej Podstawowa.
     3. W przypadku wybrania warstwy cenowej **Premium** wykonaj następujące czynności: 
-        1. Określ liczbę **jednostek obsługi komunikatów**. Warstwa Premium zapewnia izolację zasobów na poziomie procesora i pamięci, dlatego poszczególne obciążenia są od siebie odizolowane. Ten kontener zasobów jest nazywany jednostką obsługi komunikatów. Każda przestrzeń nazw w warstwie Premium ma przydzieloną co najmniej jedną jednostkę obsługi komunikatów. Możesz wybrać 1, 2 lub 4 jednostki obsługi komunikatów dla każdej przestrzeni nazw usługi Service Bus w warstwie Premium. Aby uzyskać więcej informacji, zobacz [Obsługa komunikatów w usłudze Service Bus w warstwie Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        1. Określ liczbę **jednostek obsługi komunikatów**. Warstwa Premium zapewnia izolację zasobów na poziomie procesora i pamięci, dlatego poszczególne obciążenia są od siebie odizolowane. Ten kontener zasobów jest nazywany jednostką obsługi komunikatów. Przestrzeń nazw w warstwie Premium ma co najmniej jedną jednostkę obsługi komunikatów. Możesz wybrać 1, 2 lub 4 jednostki obsługi komunikatów dla każdej przestrzeni nazw usługi Service Bus w warstwie Premium. Aby uzyskać więcej informacji, zobacz [Obsługa komunikatów w usłudze Service Bus w warstwie Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md).
         2. Określ, czy chcesz utworzyć **strefowo nadmiarową** przestrzeń nazw. Nadmiarowość strefowa zapewnia rozszerzoną dostępność przez rozproszenie replik w różnych strefach dostępności w jednym regionie bez dodatkowych kosztów. Aby uzyskać więcej informacji, zobacz [Availability zones in Azure (Strefy dostępności na platformie Azure)](../articles/availability-zones/az-overview.md).
     4. W polu **Subskrypcja** wybierz subskrypcję platformy Azure, w której ma zostać utworzona przestrzeń nazw.
     5. W polu **Grupa zasobów** wybierz istniejącą grupę zasobów, w której znajdzie się przestrzeń nazw, lub utwórz nową.      
@@ -45,7 +46,7 @@ Aby utworzyć przestrzeń nazw:
 
     ![Strona główna przestrzeni nazw usługi Service Bus](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
 
-### <a name="get-the-management-credentials"></a>Uzyskiwanie poświadczeń zarządzania
+## <a name="get-the-connection-string"></a>Pobieranie parametrów połączenia 
 Utworzenie nowej przestrzeni nazw powoduje automatyczne wygenerowanie początkowej reguły sygnatury dostępu współdzielonego ze skojarzoną parą kluczy podstawowego i pomocniczego, która przyznaje pełną kontrolę nad wszystkimi aspektami przestrzeni nazw. Zapoznaj się z artykułem [Uwierzytelnianie i autoryzacja w usłudze Service Bus](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md), aby dowiedzieć się, jak utworzyć reguły z bardziej ograniczonymi prawami dla zwykłych nadawców i odbiorców. Aby skopiować klucze podstawowe i pomocnicze dla przestrzeni nazw, wykonaj następujące czynności: 
 
 1. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij nowo utworzoną nazwę przestrzeni nazw.

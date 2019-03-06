@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: magoedte
-ms.openlocfilehash: b42eb963e33c14b003c053bb0f7fca6361dbd555
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: d09ce810605055b5be53219f254beb6660addbee
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985108"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445708"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
 Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
@@ -153,7 +153,7 @@ Aby skonfigurować tryb dostępu w szablonie usługi Azure Resource Manager, nal
 
 
 ## <a name="manage-accounts-and-users"></a>Zarządzanie kontami i użytkownikami
-Uprawnienia do obszaru roboczego, które są stosowane do określonego użytkownika są definiowane przez ich [tryb dostępu](#access-mode) i [tryb kontroli dostępu](#access-control-mode) obszaru roboczego. **Uprawnień obszaru roboczego** są stosowane, gdy użytkownik uzyskuje dostęp do dowolnego obszaru roboczego przy użyciu **skoncentrowane na obszar roboczy** w [skoncentrowane na obszar roboczy tryb](#access-modes). **Uprawnień dotyczących zasobów** są stosowane, gdy użytkownik uzyskuje dostęp do obszaru roboczego z **Użyj uprawnień zasobów lub obszaru roboczego** [tryb kontroli dostępu](#access-control-mode) przy użyciu [tryb skoncentrowane na zasób ](#access-modes).
+Uprawnienia do obszaru roboczego, które są stosowane do określonego użytkownika są definiowane przez ich tryb dostępu i [tryb kontroli dostępu](#access-control-mode) obszaru roboczego. **Uprawnień obszaru roboczego** są stosowane, gdy użytkownik uzyskuje dostęp do dowolnego obszaru roboczego przy użyciu **skoncentrowane na obszar roboczy** w [skoncentrowane na obszar roboczy tryb](#access-modes). **Uprawnień dotyczących zasobów** są stosowane, gdy użytkownik uzyskuje dostęp do obszaru roboczego z **Użyj uprawnień zasobów lub obszaru roboczego** [tryb kontroli dostępu](#access-control-mode) przy użyciu [tryb skoncentrowane na zasób ](#access-modes).
 
 ### <a name="workspace-permissions"></a>Uprawnień obszaru roboczego
 Każdy obszar roboczy może mieć wiele kont skojarzonych z nim, a każde konto może uzyskiwać dostęp do wielu obszarów roboczych. Dostęp odbywa się za pośrednictwem [dostępu opartej na rolach na platformie Azure](../../role-based-access-control/role-assignments-portal.md). 

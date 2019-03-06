@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 664a2c6bfc4a73b7d792b71c4b81df54b05fcd74
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083032"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454973"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement aplikacji testowej karta
 
-Użyj **wersji testowej** kartę, aby utworzyć środowisko próbne dla swoich klientów.  Daje klientom z wersją próbną praktyczne, przeprowadzanemu samodzielnie procesowi kluczowe funkcje i korzyści, przedstawione w scenariuszu wdrożenia rzeczywistych swojej oferty.  Z dostępnych opcji wersji próbnej wersji testowej jest najbardziej efektywne, wysokiej jakości generowania potencjalnych klientów i zwiększonej konwersji tych potencjalnych klientów.  Aby uzyskać więcej informacji, zobacz [co to jest wersja testowa?](../../cloud-partner-portal-orig/what-is-test-drive.md)
+Użyj **wersji testowej** kartę, aby utworzyć środowisko próbne dla swoich klientów.  Daje klientom z wersją próbną praktyczne, przeprowadzanemu samodzielnie procesowi kluczowe funkcje i korzyści, przedstawione w scenariuszu wdrożenia rzeczywistych swojej oferty.  Z dostępnych opcji wersji próbnej wersji testowej jest najbardziej efektywne, wysokiej jakości generowania potencjalnych klientów i zwiększonej konwersji tych potencjalnych klientów.  Aby uzyskać więcej informacji, zobacz [co to jest wersja testowa?](../test-drive/what-is-test-drive.md)
 
-Środowisko wersję testową aplikacji Dynamics 365, która jest automatycznie uruchamia jako rozwiązanie hostowanych przez firmę Microsoft.  Aby uzyskać więcej informacji, zobacz [wersji testowej hostowana](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive).
+Środowisko wersję testową aplikacji Dynamics 365, która jest automatycznie uruchamia jako rozwiązanie hostowanych przez firmę Microsoft.  Aby uzyskać więcej informacji, zobacz [wersji testowej hostowana](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive).
 
 Na karcie wersja testowa będzie mieć trzy sekcje potencjalnych: **Wersja testowa**, **szczegóły**, i **konfiguracji technicznej**.  Ostatnie dwie sekcje są wyświetlane tylko po włączeniu funkcji wersji testowej.  Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane. 
 

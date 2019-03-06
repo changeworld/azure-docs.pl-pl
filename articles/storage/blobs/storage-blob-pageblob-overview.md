@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: a61e78ff54cdc2a3db6c166686c2c51a19856a9c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252315"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456214"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Omówienie usługi Azure BLOB typu Page
 
@@ -29,7 +29,7 @@ Omówmy kilka przypadków użycia w przypadku stronicowych obiektów blob, pocz�
 
 Pierwszy usług firmy Microsoft innych firm, takich jak usługi Azure Site Recovery, usługi Azure Backup, a także wielu innych deweloperów wdrożono wiodące w branży innowacje za pomocą interfejsu REST stronicowych obiektów blob. Poniżej przedstawiono niektóre unikatowych scenariuszy implementowane na platformie Azure: 
 * Zarządzanie migawek przyrostowych skierowane do aplikacji: Aplikacje mogą korzystać z migawek obiektów blob strony i interfejsów API REST do zapisywania punkty kontrolne aplikacji bez konieczności kosztownych zduplikowanie danych. Usługa Azure Storage obsługuje lokalne migawki dla stronicowych obiektów blob, które nie wymagają kopiowania całego obiektu blob. Te migawki publicznych interfejsów API również włączyć dostęp i kopiowanie różnic między migawkami.
-* Migracja na żywo aplikacji i danych ze środowiska lokalnego do chmury: Kopiowanie danych lokalnych i używanie interfejsów API REST do zapisu bezpośrednio do platformy Azure stronicowych obiektów blob podczas lokalnej maszyny Wirtualnej będzie nadal działać. Gdy element docelowy ma zawiera, możesz szybko przejściu w tryb failover maszyny Wirtualnej platformy Azure przy użyciu tych danych. W ten sposób można migrować maszyny wirtualne i dyski wirtualne ze środowiska lokalnego do chmury przy minimalnych przestojach, ponieważ migracja danych przebiega w tle, gdy będziesz nadal używać maszyny Wirtualnej i przestojów potrzebne w trybie failover będzie krótki (w minutach).
+* Migracja na żywo aplikacji i danych z lokalnych do chmury: Kopiowanie w danych lokalnych i zapisują bezpośrednio do platformy Azure stronicowych obiektów blob podczas lokalnych, w których maszyna wirtualna będzie kontynuowane do czasu za pomocą interfejsów API REST. Gdy element docelowy ma zawiera, możesz szybko przejściu w tryb failover maszyny Wirtualnej platformy Azure przy użyciu tych danych. W ten sposób można migrować maszyny wirtualne i wirtualne dyski z lokalnych do chmury przy minimalnych przestojach, ponieważ migracja danych przebiega w tle, gdy będziesz nadal używać maszyny Wirtualnej i przestojów potrzebne w trybie failover będzie krótki (w minutach).
 * [Na podstawie sygnatury dostępu Współdzielonego](../common/storage-dotnet-shared-access-signature-part-1.md) udostępnione dostęp, co umożliwia obsługę scenariuszy takich jak czytniki wielu i jednego składnika zapisywania z obsługą mechanizmu kontroli współbieżności.
 
 ## <a name="page-blob-features"></a>Cechy stronicowego obiektu blob

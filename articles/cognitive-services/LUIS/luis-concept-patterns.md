@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1c408a77f0bdd097db1fb462fa06245133773b71
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: af73d78b911d59f68c5e824931b5634d8c69f309
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195391"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449006"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
@@ -62,7 +62,7 @@ Jednostki we wzorcach są ujęte w nawiasach klamrowych `{}`. Wzorce mogą obejm
 
 Składnia wzorca obsługuje następującej składni:
 
-|Funkcja|Składnia|[Poziom zagnieżdżenia](#nesting-syntax)|Przykład|
+|Funkcja|Składnia|Poziom zagnieżdżenia|Przykład|
 |--|--|--|--|
 |jednostka| {} -nawiasów klamrowych|2|Gdzie znajduje się w formie {nazwa jednostki}?|
 |opcjonalne|[] — nawiasami kwadratowymi<BR><BR>Obowiązuje limit 3 dla poziomów zagnieżdżenia z dowolnej kombinacji opcjonalne i grupowania |2|Znak zapytania jest opcjonalne [?]|
@@ -167,7 +167,7 @@ Oznacz opcjonalny tekst w wypowiedź przy użyciu składni wyrażeń regularnych
 |Wzorzec z opcjonalnym tekstem|Znaczenie|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` i `from {person}` są opcjonalne|
-|"Proszę [?] o pomoc | Znak interpunkcyjny jest opcjonalna|
+|' Można prosić o [?]|Znak interpunkcyjny jest opcjonalna|
 
 Znaki interpunkcyjne (`?`, `!`, `.`) mają być ignorowane i trzeba je przy użyciu składni nawias kwadratowy we wzorcach zignorować. 
 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 4d5c7f8a91bb63cdd80a6f70603e34f8130b92ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aa55dce4b06eb895ef0b8745978d644e4e2f52b5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106685"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408857"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -48,8 +48,6 @@ W pozostałej części tego przewodnika opisano obszary, które należy wziąć 
 * Sprawdź, że dostępne są właściwości specyficzne dla zasobu chmury docelowego.
 
 Wprowadzenie do szablonów usługi Azure Resource Manager, zobacz [wdrożenie szablonu](resource-group-overview.md#template-deployment).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="ensure-template-functions-work"></a>Upewnij się, że praca template — funkcje
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 79a53c1b11a1bac0ea83afdd1333423aff4d6aa6
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b590d75abb9e3f6465594a5c8c684b94e6f2e07f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428470"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864306"
 ---
 # <a name="what-is-azure-backup"></a>Co to jest Azure Backup?
 
@@ -86,12 +86,12 @@ Dowiedz się więcej o [sposobie działania kopii zapasowych](backup-architectur
 
 ## <a name="what-can-i-back-up"></a>Dla jakich danych mogę tworzyć kopię zapasową?
 
-**Maszyna** | **Metoda tworzenia kopii zapasowych** | **Kopie zapasowe**
+**Maszyna** | **Metoda tworzenia kopii zapasowych** | **Wykonywanie kopii zapasowej**
 --- | --- | ---
-**Lokalne maszyny wirtualne z systemem Windows** | Uruchamianie agenta MARS | Tworzenie kopii zapasowych plików, folderów i stanu systemu.<br/><br/> Maszyny z systemem Linux nie są obsługiwane.
+**Lokalne maszyny wirtualne z systemem Windows** | Uruchamianie agenta MARS | Wykonywanie kopii zapasowej plików, folderów i stanu systemu.<br/><br/> Maszyny z systemem Linux nie są obsługiwane.
 **Maszyny lokalne** | Tworzenie kopii zapasowych w programie DPM lub usłudze MABS | Można tworzyć kopie zapasowe wszystkich elementów chronionych przez program [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) lub usługę [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs), w tym plików/folderów/udziałów/woluminów i danych aplikacji. 
 **Maszyny wirtualne platformy Azure** | Uruchamianie rozszerzenia kopii zapasowej dla agenta maszyny wirtualnej platformy Azure | Tworzenie kopii zapasowych całej maszyny wirtualnej
-**Maszyny wirtualne platformy Azure** | Uruchamianie agenta MARS | Tworzenie kopii zapasowych plików, folderów i stanu systemu.<br/><br/> Maszyny z systemem Linux nie są obsługiwane.
+**Maszyny wirtualne platformy Azure** | Uruchamianie agenta MARS | Wykonywanie kopii zapasowej plików, folderów i stanu systemu.<br/><br/> Maszyny z systemem Linux nie są obsługiwane.
 **Maszyny wirtualne platformy Azure** | Tworzenie kopii zapasowych w usłudze MABS lub programie DPM na platformie Azure | Można tworzyć kopie zapasowe wszystkich elementów chronionych przez usługę [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) lub program [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807), w tym plików/folderów/udziałów/woluminów i danych aplikacji.
 
 ## <a name="what-backup-agents-do-i-need"></a>Jakich agentów kopii zapasowych potrzebuję?

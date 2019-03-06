@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d980bf28fb9248cc88c4b0802817e85992ef9ee
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4091b20e97ca76629260a7420beecb77412b0d39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869704"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Shmoop dla szkół
 
@@ -47,7 +47,7 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Shmoop dla szkół, p
 
 Aby przetestować kroki opisane w tym samouczku, zalecamy:
 
-- Przy użyciu usługi evironment produkcji, tylko wtedy, gdy jest to konieczne.
+- Przy użyciu środowiska produkcyjnego, tylko wtedy, gdy jest to konieczne.
 - Wprowadzenie [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) Jeśli nie masz jeszcze środowisko w wersji próbnej usługi Azure AD.
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -89,7 +89,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 2. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą użytkownika Britta Simon.
 3. [Tworzenie użytkownika testowego Shmoop dla szkół](#create-a-shmoop-for-schools-test-user) mieć odpowiednikiem Britta Simon Shmoop dla szkół połączonego z usługi Azure AD reprezentacja użytkownika.
 4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. [Testowanie logowania jednokrotnego](#test-single-sign-on) można sprawdzić, czy konfiguracja działa.
+5. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -114,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** wpisz adres URL z następującym wzorcem: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej Shmoop dla szkół klienta](mailto:support@shmoop.com) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości, używając rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Shmoop dla szkół klienta](mailto:support@shmoop.com) do uzyskania tych wartości. 
  
 4. Aplikacja Shmoop dla szkół oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Poniższy zrzut ekranu pokazuje, jak skonfigurować potwierdzenia:
 

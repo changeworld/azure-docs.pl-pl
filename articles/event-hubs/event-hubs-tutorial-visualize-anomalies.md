@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/26/2019
+ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233408"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888665"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: Wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
@@ -324,6 +324,8 @@ W ramach zadania usługi Stream Analytics kliknij pozycje **Uruchom**, następni
 
     ![Zrzut ekranu przedstawiający określanie tytułu i podtytułu dla kafelka pulpitu nawigacyjnego.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > Po uruchomieniu przykładowej aplikacji i rozpoczęciu strumieniowego przesyłania danych do centrum zdarzeń liczba na tym kafelku zacznie się szybko zmieniać (co sekundę). Oznacza to, że zapytanie usługi Stream Analytics faktycznie aktualizuje wartość **co sekundę**. Zaktualizuj zapytanie do 3-minutowego okna wirowania, aby wyświetlać sumę z ostatnich kilku minut. 
 11. Dodaj kolejną wizualizację. Powtórz ponownie kilka pierwszych kroków:
 
    * Kliknij przycisk **Dodaj kafelek**.

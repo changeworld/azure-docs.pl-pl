@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: snehaa
-ms.openlocfilehash: c0fc4fa0bdd58b8ecdf4f26051d60324118c4b21
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 74dabc49dd3d0e38f43dc758204c35ea1c0efd99
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896691"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438486"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Skala migracji maszyn wirtualnych przy użyciu usługi Azure Site Recovery
 
@@ -31,7 +31,7 @@ Przed rozpoczęciem pracy należy wykonać następujące czynności:
 - Upewnij się, że serwer konfiguracji i serwer przetwarzania, które są zainstalowane w środowisku źródłowym, jak i magazynu jest w stanie wykryć środowiska
 - Upewnij się, że zasady replikacji jest utworzona i skojarzona z serwerem konfiguracji
 - Upewnij się, że dodano konto administratora maszyny Wirtualnej serwera konfiguracji (który będzie używany do replikowania lokalnych maszyn wirtualnych)
-- Upewnij się, że artefaktów docelowego na platformie Azure są tworzone
+- Upewnij się, że artefakty docelowy, na platformie Azure są tworzone
     - Docelowa grupa zasobów
     - Docelowe konto magazynu (i jej grupy zasobów)
     - Docelowa sieć wirtualna dla trybu failover (i jej grupy zasobów)

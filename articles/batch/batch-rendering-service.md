@@ -6,18 +6,18 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bc8c96345aeb1886696326edd230666ac8b6c41d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: dbe3fe59fd2674cf3475fc5b589a2c938e706ab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542214"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441342"
 ---
 # <a name="rendering-using-azure"></a>Renderowanie przy użyciu platformy Azure
 
 Renderowanie to proces pobierania modele 3D i konwertowania ich na obrazów 2D. Sceny 3D, pliki są tworzone w aplikacji, takich jak Autodesk 3ds Max, programy Autodesk Maya i Blender.  Renderowanie aplikacji, takich jak Autodesk Maya, Autodesk Arnold, Chaos Group V-Ray i Blender cykle tworzenia obrazów 2D.  Czasami pojedynczego obrazy są tworzone na podstawie pliki sceny. Jednak jest wspólne dla modelu i przetworzyć wiele obrazów, a następnie łączyć je w animacji.
 
-Obciążenia renderowania jest intensywnie używana do efekty specjalne (filmowych efektów specjalnych) w branży multimedia i rozrywka. Renderowanie jest również używane w wielu industires takich jak reklam, handlu detalicznego, ropa naftowa i gaz i produkcji.
+Obciążenia renderowania jest intensywnie używana do efekty specjalne (filmowych efektów specjalnych) w branży multimedia i rozrywka. Renderowanie jest również używane w wielu branżach, takich jak reklam, handlu detalicznego, ropa naftowa i gaz i produkcji.
 
 Proces renderowania jest wymaga dużej mocy obliczeniowej; może istnieć wiele ramek/obrazów do produkcji i każdego obrazu może zająć wiele godzin do renderowania.  Renderowanie w związku z tym jest obciążenie przetwarzania doskonałe przetwarzania wsadowego, które mogą korzystać z platformy Azure i usługi Azure Batch do równoległego uruchamiania wielu renderów.
 
@@ -77,7 +77,7 @@ Usługa Azure Batch jest używany w przypadku wielu obciążeń, ale następują
 
 Istnieje kilka sposobów korzystania z usługi Azure Batch, które mają zastosowanie również do usługi Azure Batch rendering.
 
-* Interfejsy API:
+* APIs:
   * Pisz kod, używając [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch), lub inne obsługiwane interfejsy API.  Deweloperzy mogą integrować możliwości usługi Azure Batch istniejącej aplikacji lub przepływu pracy, czy chmura lub oparte na środowisku lokalnym.  Na przykład [Autodesk Maya wtyczki](https://github.com/Azure/azure-batch-maya) korzysta z interfejsu API języka Python usługi Batch do wywołania usługi Batch, tworzenie i Zarządzanie pulami, przesyłanie zadań i zadań podrzędnych oraz monitorowanie stanu.
 * Narzędzia wiersza polecenia:
   * [Wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/) lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) może służyć do skryptu Użyj usługi Batch.
@@ -90,7 +90,7 @@ Istnieje kilka sposobów korzystania z usługi Azure Batch, które mają zastoso
   * Dostępne są następujące dodatki plug-in:
     * [Usługa Azure Batch dla programu Maya](https://github.com/Azure/azure-batch-maya)
     * [3DS Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-    * [Mikser](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+    * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 
 ## <a name="getting-started-with-azure-batch-rendering"></a>Wprowadzenie do usługi Azure Batch rendering
 

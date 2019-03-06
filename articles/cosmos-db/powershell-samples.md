@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: f4220653b39381c360b4b05ab018262e46288e8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043808"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873801"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Przykłady sla programu Azure PowerShell dla usługi Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |**Tworzenie konta usługi Azure Cosmos DB**||
 |[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API SQL](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem API SQL. |
 |[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. |
-|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API języka Gremlin ](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem Gremlin API. |
+|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API języka Gremlin](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem Gremlin API. |
 |[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API Cassandra](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem Cassandra API. |
 |[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API tabel](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem API tabel. |
 |**Skalowanie usługi Azure Cosmos DB**||

@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do platformy Apache Kafka w usłudze HDInsight — Azure
-description: 'Uzyskaj informacje o platformie Apache Kafka w usłudze HDInsight: artykuł zawiera opis platformy, jej działania oraz informacje o tym, gdzie można znaleźć przykłady i informacje ułatwiające rozpoczęcie pracy.'
+description: 'W tym artykule przedstawiono informacje dotyczące platformy Apache Kafka w usłudze HDInsight: Artykuł zawiera opis platformy, opis jej działania oraz informacje o tym, gdzie można znaleźć przykłady i informacje ułatwiające rozpoczęcie pracy.'
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 587279d247b945b787051721d256f00a090d56db
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4d054542d600f2569170f40b8f6c053e005fc8af
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313966"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889192"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>Co to jest platforma Apache Kafka w usłudze HDInsight?
 
@@ -38,7 +38,7 @@ Cechy charakterystyczne platformy Kafka w usłudze HDInsight są następujące:
 
     Aby uzyskać więcej informacji, zobacz [High availability with Apache Kafka on HDInsight](apache-kafka-high-availability.md) (Wysoka dostępność na platformie Apache Kafka w usłudze HDInsight).
 
-* Do monitorowania platformy Kafka w usłudze HDInsight można użyć usługi Azure Log Analytics. Usługa Log Analytics wydobywa informacje dotyczące maszyn wirtualnych, takie jak metryki dysków i kart sieciowych oraz metryki JMX z platformy Kafka.
+* Do monitorowania platformy Kafka w usłudze HDInsight można użyć dzienników usługi Azure Monitor. Dzienniki usługi Azure Monitor wydobywają informacje dotyczące maszyn wirtualnych, takie jak metryki dysków i kart sieciowych oraz metryki JMX z platformy Kafka.
 
     Aby uzyskać więcej informacji, zobacz [Analyze logs for Apache Kafka on HDInsight](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników na potrzeby platformy Apache Kafka w usłudze HDInsight).
 
@@ -82,7 +82,7 @@ Poniżej przedstawiono typowe zadania i wzorce, które mogą być wykonywane prz
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 
-* **Komunikaty**: platforma Kafka obsługuje wzorzec przesyłania komunikatów dotyczących publikowania i subskrybowania, dlatego jest często używana jako broker komunikatów.
+* **Obsługa komunikatów**: platforma Kafka obsługuje wzorzec przesyłania komunikatów dotyczących publikowania i subskrybowania, dlatego jest często używana jako broker komunikatów.
 
 * **Śledzenie działań**: platforma Kafka rejestruje rekordy w określonej kolejności, dlatego może służyć do śledzenia i ponownego tworzenia działań. Mogą to być na przykład działania użytkownika w witrynie sieci Web lub aplikacji.
 
@@ -94,7 +94,7 @@ Poniżej przedstawiono typowe zadania i wzorce, które mogą być wykonywane prz
 
 Aby dowiedzieć się, jak korzystać z platformy Apache Kafka w usłudze HDInsight, użyj następujących linków:
 
-* [Szybki Start: tworzenie platformy Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md)
+* [Szybki start: tworzenie platformy Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md)
 
 * [Samouczek: korzystanie z systemu Apache Spark z platformą Apache Kafka w usłudze HDInsight](../hdinsight-apache-spark-with-kafka.md)
 

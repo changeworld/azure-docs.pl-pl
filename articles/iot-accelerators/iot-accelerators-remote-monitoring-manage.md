@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 869f6d2391632c77e01e4383c1457f88b9171c8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448078"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651196"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="add-a-simulated-device"></a>Dodawanie symulowanego urządzenia
 
-Przejdź do strony **Urządzenia** w rozwiązaniu, a następnie kliknij przycisk **+ Nowe urządzenie**:
+Przejdź do strony **Device Explorer** w rozwiązaniu, a następnie kliknij przycisk **+ Nowe urządzenie**:
 
 [![Aprowizowanie urządzenia symulowanego](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Na panelu **Nowe urządzenie** wybierz pozycję **Symulowane**, pozostaw liczbę
 
 ## <a name="test-the-simulated-device"></a>Testowanie symulowanego urządzenia
 
-Aby sprawdzić, czy symulowany silnik wysyła dane telemetryczne i zgłasza wartości właściwości, wybierz go z listy urządzeń na stronie **Urządzenia**. Bieżące informacje o silniku są wyświetlane na panelu **Szczegóły urządzenia**:
+Aby sprawdzić, czy symulowany silnik wysyła dane telemetryczne i zgłasza wartości właściwości, wybierz go z listy urządzeń na stronie **Device Explorer**. Bieżące informacje o silniku są wyświetlane na panelu **Szczegóły urządzenia**:
 
 [![Wyświetlanie nowego symulowanego silnika](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Aby wyświetlić szczegółowe dane diagnostyczne, przewiń w dół zawartość 
 
 ## <a name="reconfigure-a-device"></a>Zmiana konfiguracji urządzenia
 
-Aby przetestować aktualizowanie właściwości konfiguracji silnika, wybierz go z listy urządzeń na stronie **Urządzenia**. Kliknij przycisk **Zadania**, a następnie wybierz pozycję **Właściwości**. Na panelu Zadania wyświetlane są wartości właściwości, które można zaktualizować dla wybranego urządzenia:
+Aby przetestować aktualizowanie właściwości konfiguracji silnika, wybierz go z listy urządzeń na stronie **Device Explorer**. Kliknij przycisk **Zadania**, a następnie wybierz pozycję **Właściwości**. Na panelu Zadania wyświetlane są wartości właściwości, które można zaktualizować dla wybranego urządzenia:
 
 [![Zmienianie konfiguracji urządzenia](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Aby ułatwić operatorom organizowanie urządzeń i zarządzanie nimi, warto je 
 * Zespół Smart Vehicle zajmuje się ciężarówkami i urządzeniami do tworzenia prototypów.
 * Zespół Smart Building zajmuje się chłodniami, podnośnikami i silnikami.
 
-Aby wyświetlić wszystkie urządzenia, przejdź do strony **Urządzenia** i wybierz filtr **Wszystkie urządzenia**:
+Aby wyświetlić wszystkie urządzenia, przejdź do strony **Device Explorer** i wybierz filtr **Wszystkie urządzenia**:
 
 [![Wyświetlanie wszystkich urządzeń](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Na panelu **Zadania** wybierz pozycję **Tag**, ustaw nazwę zadania **AddSmartB
 
 ### <a name="create-filters"></a>Tworzenie filtrów
 
-Teraz możesz użyć wartości tagów do utworzenia filtrów. Na stronie **Urządzenia** kliknij opcję **Zarządzaj grupami urządzeń**:
+Teraz możesz użyć wartości tagów do utworzenia filtrów. Na stronie **Device Explorer** kliknij pozycję **Zarządzaj grupami urządzeń**:
 
 [![Zarządzanie grupami urządzeń](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

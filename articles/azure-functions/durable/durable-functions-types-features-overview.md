@@ -1,6 +1,6 @@
 ---
-title: Omówienie typy funkcji i funkcji dla funkcje trwałe - Azure
-description: Dowiedz się, jakiego rodzaju funkcje i role, które umożliwiają komunikację funkcji do funkcji w ramach aranżacji trwałe — funkcja
+title: Typy funkcji i funkcji w rozszerzenia funkcji trwałych usługi Azure Functions
+description: Informacje o typach funkcji i ról, które obsługują komunikację funkcji do funkcji w aranżacji funkcje trwałe, w usłudze Azure Functions.
 services: functions
 author: jeffhollan
 manager: jeconnoc
@@ -10,78 +10,94 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2885ce740fab58e675c529dfab8d0dadeed2904c
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301625"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455738"
 ---
-# <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Omówienie typy funkcji i funkcji dla funkcje trwałe (usługi Azure Functions)
+# <a name="durable-functions-types-and-features-azure-functions"></a>Trwałe funkcje typy i funkcje (usługi Azure Functions)
 
-Trwałe funkcje zapewnia aranżacji stanowej wykonywania funkcji. Trwałe funkcji to rozwiązanie składa się z różnych funkcji platformy Azure. Każda z tych funkcji można odtworzyć różne role w ramach aranżacji. Ten dokument zawiera omówienie typy funkcji, które są zaangażowane w aranżacji funkcji trwałe. Zawiera również niektóre typowe wzorce w łączenie funkcji.  Aby teraz rozpocząć pracę, należy utworzyć pierwszą funkcję trwałego w [ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md).
+Funkcje trwałe to rozszerzenie [usługi Azure Functions](../functions-overview.md). Trwałe funkcje służy do aranżacji stanowej wykonywania funkcji. Funkcja trwałe to rozwiązanie, które składa się z różnych funkcji platformy Azure. Funkcje można odtworzyć różne role w aranżacji funkcji trwałe. 
 
-![Typy trwałe funkcje][1]  
+Ten artykuł zawiera omówienie, jakiego rodzaju funkcje, których można używać w aranżacji funkcje trwałe. Artykuł zawiera niektóre typowe wzorce, używane do łączenia z funkcji. Dowiedz się, jak trwałe funkcje mogą pomóc w rozwiązywaniu wyzwaniom związanym z programowaniem aplikacji.
 
-## <a name="types-of-functions"></a>Typy funkcji
+![Obraz, który zawiera typy trwałe funkcje][1]  
+
+## <a name="types-of-durable-functions"></a>Typy trwałe funkcje
+
+Można użyć trzech typów trwałe funkcji w usłudze Azure Functions: działanie programu orchestrator i klienta.
 
 ### <a name="activity-functions"></a>Działanie funkcji
 
-Działanie funkcji to podstawowa jednostka pracy w trwałych aranżacji.  Działanie funkcji są funkcje i zadania są zorganizowanych w procesie.  Może na przykład tworzenie trwałych funkcji do przetwarzania zamówienia — Sprawdź plik spisu, klienta i utworzyć wydanie.  Każdej z nich te zadania będą funkcję działania.  Działanie funkcji nie ma żadnych ograniczeń w typie praca wykonywana w nich.  Mogą być napisane w dowolnym [języków obsługiwanych przez funkcje trwałe](durable-functions-overview.md#language-support). Trwałe Framework zadań gwarantuje, że każdej funkcji, działania o nazwie zostanie uruchomiony przynajmniej raz podczas aranżacji.
+Działanie funkcji są podstawową jednostką pracy w aranżacji funkcji trwałych. Działanie funkcji są funkcji i zadań, które są zarządzane w procesie. Na przykład może utworzyć trwałe funkcji do przetwarzania zamówienia. Zadania obejmują sprawdzanie spisu, ładowania klienta i tworzenia wysyłki. Każde zadanie podrzędne może być funkcją działania. 
 
-Działanie funkcji musi zostać wyzwolone przez [działania wyzwalacza](durable-functions-bindings.md#activity-triggers).  Funkcje platformy .NET będzie otrzymywać [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Możesz również powiązać wyzwalacza do innego obiektu, aby przekazać dane wejściowe do funkcji. W języku JavaScript, danych wejściowych jest możliwy za pośrednictwem `<activity trigger binding name>` właściwość [ `context.bindings` obiektu](../functions-reference-node.md#bindings).
+Działanie funkcji nie są ograniczone w typie praca wykonywana w nich. Można napisać funkcję działania w dowolnym [język, który obsługuje funkcje trwałe](durable-functions-overview.md#language-support). Framework trwałe zadań gwarantuje, że każdej funkcji, działania o nazwie zostanie uruchomiony przynajmniej raz podczas aranżacji.
 
-Działanie funkcji może również zwracać wartości, wróć do programu orchestrator.  Jeśli wysyłanie lub zwracanie wielu wartości z funkcją działań, możesz to zrobić [korzystaj z krotek lub tablic](durable-functions-bindings.md#passing-multiple-parameters).  Działanie funkcji mogą być wywoływane tylko z wystąpienia aranżacji.  Podczas gdy jakiś kod może być współużytkowane między funkcję działania i inną funkcję (np. funkcję wyzwalaną przez protokół HTTP), każda funkcja może mieć tylko jeden wyzwalacz.
+Użyj [działania wyzwalacza](durable-functions-bindings.md#activity-triggers) do wyzwolenia funkcji przez działanie. Odbieranie funkcji .NET [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Możesz również powiązać wyzwalacza do innego obiektu, aby przekazać dane wejściowe do funkcji. W języku JavaScript, możesz uzyskać dostęp za pośrednictwem danych wejściowych `<activity trigger binding name>` właściwość [ `context.bindings` obiektu](../functions-reference-node.md#bindings).
 
-Więcej informacji i przykładów można znaleźć w [funkcje trwałe powiązanie artykułu](durable-functions-bindings.md#activity-triggers).
+Funkcja działanie może również zwracać wartości do programu orchestrator. Jeśli wysyłanie lub zwrócić dużą liczbę wartości z działania funkcji, możesz użyć [krotek lub tablic](durable-functions-bindings.md#passing-multiple-parameters). Możesz wyzwolić funkcję działanie tylko z wystąpieniem aranżacji. Mimo że funkcja działania i inną funkcję (na przykład funkcji wyzwalanej przez HTTP) może udostępnić kodu, każda funkcja może mieć tylko jeden wyzwalacz.
+
+Aby uzyskać więcej informacji i przykładów, zobacz [działania funkcji](durable-functions-bindings.md#activity-triggers).
 
 ### <a name="orchestrator-functions"></a>Funkcje programu orchestrator
 
-Funkcje programu orchestrator są niezwykle niezawodne funkcji.  Funkcje programu orchestrator opisują sposób i kolejności, w jakiej są wykonywane akcje.  Funkcje programu orchestrator opisują aranżacji w kodzie (C# czy języka JavaScript) jak pokazano na [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md).  Organizacja może mieć wiele różnych rodzajów działań, takie jak [działania funkcji](#activity-functions), [podrzędnych aranżacji](#sub-orchestrations), [oczekiwanie na zdarzenia zewnętrzne](#external-events), i [ czasomierze](#durable-timers).  
+Funkcje programu orchestrator opisano, jak akcje są wykonywane i kolejność wykonywania działań. Funkcje programu orchestrator opisują aranżacji w kodzie (C# czy języka JavaScript) jak pokazano na [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md). Organizacja może mieć wiele różnych rodzajów działań, w tym [działania funkcji](#activity-functions), [podrzędnych aranżacji](#sub-orchestrations), [oczekiwanie na zdarzenia zewnętrzne](#external-events)i [czasomierzy](#durable-timers). 
 
 Funkcja orkiestratora musi zostać wyzwolone przez [wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-triggers).
 
-Program orchestrator jest uruchamiany przez [klienta programu orchestrator](#client-functions) która sama można wywołać z dowolnego źródła (HTTP, kolejek, strumienie zdarzeń).  Każde wystąpienie aranżacji ma identyfikator wystąpienia, które mogą być generowane automatycznie (zalecane) lub wygenerowanej przez użytkowników.  Ten identyfikator może być używany do [Zarządzanie wystąpieniami](durable-functions-instance-management.md) aranżacji.
+Program orchestrator jest uruchamiany przez [klienta orchestrator](#client-functions). Można uruchomić programu orchestrator z dowolnego źródła (HTTP, kolejki, strumienia zdarzeń). Każde wystąpienie aranżacji ma identyfikator wystąpienia. Identyfikator wystąpienia mogą być automatycznie wygenerowany (zalecane) lub wygenerowanej przez użytkowników. Można użyć identyfikatora wystąpienia, aby [Zarządzanie wystąpieniami](durable-functions-instance-management.md) aranżacji.
 
-Więcej informacji i przykładów można znaleźć w [funkcje trwałe powiązanie artykułu](durable-functions-bindings.md#orchestration-triggers).
+Aby uzyskać więcej informacji i przykładów, zobacz [wyzwalaczy aranżacji](durable-functions-bindings.md#orchestration-triggers).
 
 ### <a name="client-functions"></a>Funkcje klienta
 
-Funkcje klienta są wyzwalane funkcje, które spowoduje utworzenie nowych wystąpień aranżacji.  Są one punkt wejścia dla tworzenia wystąpienia obiektu trwałego aranżacji.  Funkcje klienta można wyzwolone przez dowolnego wyzwalacza (HTTP, kolejek, strumienie zdarzeń, itp.) i napisane w dowolnym języku, obsługiwanych przez aplikację.  Oprócz wyzwalacza ma funkcje klienta [klient orkiestracji](durable-functions-bindings.md#orchestration-client) powiązania, który pozwala na tworzenie i zarządzanie nimi trwałe aranżacji.  Przykład najbardziej podstawowa funkcja klienta jest funkcją wyzwalaną przez protokół HTTP, rozpoczyna się funkcja orkiestratora, która zwraca odpowiedź dotycząca stanu wyboru jako [pokazano w poniższym przykładzie następujące](durable-functions-http-api.md#http-api-url-discovery).
+Funkcje klienta są wyzwalane funkcji, służących do tworzenia nowych wystąpień aranżacji. Funkcje klienta są punkt wejścia dla tworzenia wystąpienia obiektu aranżacji funkcje trwałe. Możesz wyzwolić funkcję klienta z dowolnego źródła (HTTP, kolejki, strumienia zdarzeń). Można napisać funkcję klienta w dowolnym języku, który obsługuje aplikacja. 
 
-Więcej informacji i przykładów można znaleźć w [funkcje trwałe powiązanie artykułu](durable-functions-bindings.md#orchestration-client).
+Funkcje klienta również mieć [klient orkiestracji](durable-functions-bindings.md#orchestration-client) powiązania. Funkcja klienta można użyć klient orkiestracji powiązania do tworzenia i zarządzania trwałego aranżacji. 
+
+Przykład najbardziej podstawowa funkcja klienta jest funkcji wyzwalanej przez HTTP, który rozpoczyna się funkcja orkiestratora, a następnie zwraca odpowiedź dotycząca stanu wyboru. Aby uzyskać przykład, zobacz [Odnajdywanie adresu URL interfejsu API HTTP](durable-functions-http-api.md#http-api-url-discovery).
+
+Aby uzyskać więcej informacji i przykładów, zobacz [klient Orkiestracji](durable-functions-bindings.md#orchestration-client).
 
 ## <a name="features-and-patterns"></a>Funkcje i wzorców
 
+W kolejnych sekcjach opisano funkcje i wzorce typów funkcje trwałe.
+
 ### <a name="sub-orchestrations"></a>Orkiestracje podrzędne
 
-Oprócz wywoływanie funkcji działania, funkcje programu orchestrator może wywoływać innych funkcji programu orchestrator. Można na przykład, utworzyć większy aranżacji poza bibliotekę funkcji programu orchestrator. Lub można uruchomić wiele wystąpień funkcji orkiestratora równolegle.
+Funkcje programu orchestrator można wywołać funkcji działań, ale można to również wywołać inne funkcje programu orchestrator. Można na przykład, utworzyć większy aranżacji poza bibliotekę funkcji programu orchestrator. Alternatywnie można uruchomić wiele wystąpień funkcji orkiestratora równolegle.
 
-Więcej informacji i przykładów można znaleźć w [artykułu podrzędnych aranżacji](durable-functions-sub-orchestrations.md).
+Aby uzyskać więcej informacji i przykładów, zobacz [podrzędnych aranżacji](durable-functions-sub-orchestrations.md).
 
 ### <a name="durable-timers"></a>Czasomierze trwałe
 
-[Trwałe funkcje](durable-functions-overview.md) zapewnia *trwałe czasomierzy* do użytku w funkcjach programu orchestrator do zaimplementowania opóźnienia lub skonfigurować przekroczeń limitu czasu na operacje asynchroniczne. Czasomierze trwałe powinien być używany w funkcji programu orchestrator, zamiast `Thread.Sleep` i `Task.Delay` (C#) lub `setTimeout()` i `setInterval()` (JavaScript).
+[Trwałe funkcje](durable-functions-overview.md) zapewnia *trwałe czasomierzy* używanej w funkcjach programu orchestrator do zaimplementowania opóźnienia lub skonfigurować przekroczeń limitu czasu na operacje asynchroniczne. Używaj czasomierzy trwałe w funkcjach programu orchestrator, zamiast `Thread.Sleep` i `Task.Delay` (C#) lub `setTimeout()` i `setInterval()` (JavaScript).
 
-Więcej informacji i przykładów czasomierzy trwałych, można znaleźć w [artykułu czasomierzy trwałe](durable-functions-timers.md)
+Aby uzyskać więcej informacji i przykładów, zobacz [trwałe czasomierzy](durable-functions-timers.md).
 
 ### <a name="external-events"></a>Zdarzenia zewnętrzne
 
-Funkcje programu orchestrator poczekać, aż zdarzenia zewnętrzne, można zaktualizować wystąpienia aranżacji. Ta funkcja funkcje trwałe jest często przydatny w przypadku obsługi z reakcji człowieka lub innych zewnętrznych wywołań zwrotnych.
+Funkcje programu orchestrator poczekać, aż zdarzenia zewnętrzne, można zaktualizować wystąpienia aranżacji. Ta funkcja funkcje trwałe często jest przydatny w przypadku obsługi z reakcji człowieka lub innych zewnętrznych wywołań zwrotnych.
 
-Więcej informacji i przykładów można znaleźć w [artykułu zdarzenia zewnętrzne](durable-functions-external-events.md).
+Aby uzyskać więcej informacji i przykładów, zobacz [zdarzenia zewnętrzne](durable-functions-external-events.md).
 
 ### <a name="error-handling"></a>Obsługa błędów
 
-Trwałe aranżacji funkcji są implementowane w kodzie i można korzystać z funkcji obsługi błędów języka programowania.  Oznacza to, wzorców, takich jak "try/catch" będzie działać w Twojej orkiestracji.  Trwałe funkcje mają również niektórych wbudowanych zasad ponawiania.  Akcję można opóźnić i ponów próbę działania automatycznie na wyjątki.  Ponowne próby umożliwiają obsługę przejściowych wyjątków bez konieczności porzucania aranżacji.
+Użyj kodu, aby zaimplementować funkcje trwałe aranżacji. Można użyć funkcji obsługi błędów języka programowania. Wzorców, takich jak `try` / `catch` działają w Twojej orkiestracji. 
 
-Więcej informacji i przykładów można znaleźć w [dodanymi komentarzami artykułu](durable-functions-error-handling.md).
+Trwałe funkcje również pochodzić z wbudowanych zasad ponawiania. Akcję można opóźnić i ponów próbę wykonania działania automatycznie po wystąpieniu wyjątku. Ponownych prób służy do obsługi przejściowych wyjątków bez porzucania aranżacji.
+
+Aby uzyskać więcej informacji i przykładów, zobacz [obsługi błędów](durable-functions-error-handling.md).
 
 ### <a name="cross-function-app-communication"></a>Aplikacja dla wielu funkcji komunikacji
 
-Trwałe orchestration znajduje się zwykle w kontekście aplikacji jednej funkcji, są wzorce umożliwiają do koordynowania aranżacji wielu aplikacji funkcji.  Mimo że komunikacji między aplikacjami, może być wykonywane za pośrednictwem protokołu HTTP, za pomocą trwałych framework dla każdego działania tak oznacza, że nadal można zachować procesu trwałe w dwóch aplikacjach.
+Mimo że trwałe aranżacji działa w kontekście aplikacji jednej funkcji, można użyć wzorców do koordynowania aranżacji wielu aplikacji funkcji. Dla wielu aplikacji może komunikować się za pośrednictwem protokołu HTTP, ale przy użyciu platformy trwałe dla każdego działania oznacza, że nadal można zachować procesu trwałe w dwóch aplikacjach.
 
-Przykłady aranżacji aplikacji dla wielu funkcji, w C# i języka JavaScript są przedstawione poniżej.  Jedno działanie zostanie uruchomione zewnętrznych aranżacji. Następnie pobierze i przywrócenie stanu innego działania.  Koordynatora będzie czekać na stanie, które mają być ukończone przed kontynuowaniem.
+W poniższych przykładach pokazano aplikację dla wielu funkcji aranżacji w C# i JavaScript. W każdym przykładzie jedno działanie uruchamia zewnętrznych aranżacji. Pobiera innego działania, a zwraca stan. Koordynatora czeka, aż stan był `Complete` przed kontynuowaniem.
+
+Poniżej przedstawiono kilka przykładów aranżacji aplikacji dla wielu funkcji:
 
 #### <a name="c"></a>C#
 
@@ -92,11 +108,11 @@ public static async Task RunRemoteOrchestrator(
 {
     // Do some work...
 
-    // Call a remote orchestration
+    // Call a remote orchestration.
     string statusUrl = await context.CallActivityAsync<string>(
         "StartRemoteOrchestration", "OrchestratorB");
 
-    // Wait for the remote orchestration to complete
+    // Wait for the remote orchestration to complete.
     while (true)
     {
         bool isComplete = await context.CallActivityAsync<bool>("CheckIsComplete", statusUrl);
@@ -108,7 +124,7 @@ public static async Task RunRemoteOrchestrator(
         await context.CreateTimer(context.CurrentUtcDateTime.AddMinutes(1), CancellationToken.None);
     }
 
-    // B is done. Now go do more work...
+    // B is done. Now, go do more work...
 }
 
 [FunctionName("StartRemoteOrchestration")]
@@ -143,10 +159,10 @@ const moment = require("moment");
 module.exports = df.orchestrator(function*(context) {
     // Do some work...
 
-    // Call a remote orchestration
+    // Call a remote orchestration.
     const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
 
-    // Wait for the remote orchestration to complete
+    // Wait for the remote orchestration to complete.
     while (true) {
         const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
         if (isComplete) {
@@ -157,7 +173,7 @@ module.exports = df.orchestrator(function*(context) {
         yield context.df.createTimer(waitTime);
     }
 
-    // B is done. Now go do more work...
+    // B is done. Now, go do more work...
 });
 ```
 
@@ -194,8 +210,10 @@ module.exports = async function(context, statusUrl) {
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+Aby rozpocząć pracę, należy utworzyć pierwszą funkcję trwałego w [ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md).
+
 > [!div class="nextstepaction"]
-> [Kontynuuj czytanie dokumentacji trwałe funkcje](durable-functions-bindings.md)
+> [Dowiedz się więcej o funkcje trwałe](durable-functions-bindings.md)
 
 <!-- Media references -->
 [1]: media/durable-functions-types-features-overview/durable-concepts.png

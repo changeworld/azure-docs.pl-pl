@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 127002dc59db6ab9940e4bc2a66678adecc33160
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 06dd24b9909da9c3358c876a71de7d0df45a5223
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354131"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585328"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Usługa Azure Cosmos DB tworzenie aplikacji z listą zadań do wykonania za pomocą oprogramowania Xamarin
+# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji z listą zadań do wykonania za pomocą platformy Xamarin przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)

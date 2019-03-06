@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: efaa9101fbe46e0db2f582fe5a208dd8b16f095f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003588"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442107"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Zarządzanie usługą Traffic Manager przy użyciu programu PowerShell
 
@@ -63,7 +63,7 @@ W poniższej tabeli opisano parametry:
 | ResourceGroupName |Nazwa grupy zasobów zawierającej zasób profilu. |
 | TrafficRoutingMethod |Określa metodę routingu ruchu, używany do określenia, który punkt końcowy jest zwracany w odpowiedzi na kwerendę DNS. Możliwe wartości to "Wydajność", "Ważona" lub "Priority". |
 | RelativeDnsName |Określa nazwę hosta część nazwy DNS podane przez ten profil usługi Traffic Manager. Ta wartość jest połączone z nazwą domeny DNS, które są używane przez usługę Azure Traffic Manager w celu utworzenia w pełni kwalifikowana nazwa domeny (FQDN) profilu. Na przykład ustawienie wartości "contoso" staje się "contoso.trafficmanager.net." |
-| TTL |Określa DNS Time-to-Live (TTL) w ciągu kilku sekund. Ten czas wygaśnięcia informuje rozpoznawania nazw DNS lokalnym i klientów DNS, jak długo buforowanie odpowiedzi DNS dla tego profilu usługi Traffic Manager. |
+| Czas wygaśnięcia |Określa DNS Time-to-Live (TTL) w ciągu kilku sekund. Ten czas wygaśnięcia informuje rozpoznawania nazw DNS lokalnym i klientów DNS, jak długo buforowanie odpowiedzi DNS dla tego profilu usługi Traffic Manager. |
 | MonitorProtocol |Określa protokół używany do monitorowania kondycji punktu końcowego. Możliwe wartości to "HTTP" i "HTTPS". |
 | MonitorPort |Określa port TCP używany do monitorowania kondycji punktu końcowego. |
 | MonitorPath |Określa ścieżkę względną nazwa domeny punktu końcowego, które są używane do sondowania dla punktu końcowego kondycji. |
@@ -208,7 +208,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>Dodawanie punktów końcowych z innej subskrypcji
 
-Usługa Traffic Manager może współpracować z punktów końcowych z różnych subskrypcji. Musisz przełączyć się do subskrypcji z punktem końcowym, który chcesz dodać do pobrania wymaganych danych wejściowych do usługi Traffic Manager. Następnie należy przełączyć się do subskrypcji z profilu usługi Traffic Manager, a następnie dodaj encpoint do niego. Poniższy przykład przedstawia sposób to zrobić przy użyciu publicznego adresu IP.
+Usługa Traffic Manager może współpracować z punktów końcowych z różnych subskrypcji. Musisz przełączyć się do subskrypcji z punktem końcowym, który chcesz dodać do pobrania wymaganych danych wejściowych do usługi Traffic Manager. Następnie należy przełączyć się do subskrypcji z profilu usługi Traffic Manager, a następnie Dodaj punkt końcowy do niego. Poniższy przykład przedstawia sposób to zrobić przy użyciu publicznego adresu IP.
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription

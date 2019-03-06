@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: dea623684454d4b14a370251df10599eb03bbb34
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c17a74c81d9c9d2ac3f585ab17f0b7d2acc628f6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856924"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873928"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych powiązanych kontekstowo z wypowiedzi
 
@@ -74,7 +74,7 @@ Jednostka hierarchiczna jest odpowiednia dla tego typu danych, ponieważ oba ele
     |Transfer Steve Standish from San Diego toward Bellevue (Transferuj Steve’a Standisha z San Diego do Bellevue) |
     |lift Tanner Thompson from Kansas city and shift to Chicago (Tannera Thompsona z Kansas City przenieś do Chicago)|
 
-    [ ![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+    [![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
 ## <a name="create-a-location-entity"></a>Tworzenie jednostki Location (Lokalizacja)
 Usługa LUIS musi zrozumieć, czym jest lokalizacja, oznaczając źródło i miejsce docelowe w wypowiedziach. Jeśli chcesz zobaczyć wypowiedź w widoku tokenu (nieprzetworzonym), na pasku nad wypowiedziami wybierz przełącznik oznaczony etykietą **Entities View** (Widok jednostek). Po przełączeniu przełącznika kontrolka będzie mieć etykietę **Tokens View** (Widok tokenów).
@@ -91,7 +91,7 @@ Jeśli obecny jest tylko jeden element podrzędny jednostki hierarchicznej (loka
 
 1. W wypowiedzi `move John W. Smith leaving Seattle headed to Dallas` zaznacz wyraz `Seattle`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części. Wprowadź nazwę jednostki `Location` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
 
-    [![Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
+    [![Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png#lightbox)
 
 1. W oknie podręcznym wybierz typ jednostki **Hierarchical** (Hierarchiczna) z elementami `Origin` i `Destination` jako podrzędnymi. Wybierz pozycję **Done** (Gotowe).
 
@@ -99,7 +99,7 @@ Jeśli obecny jest tylko jeden element podrzędny jednostki hierarchicznej (loka
 
 1. Etykieta dla elementu `Seattle` jest oznaczona jako `Location`, ponieważ usługa LUIS nie może ustalić, czy termin jest lokalizacją początkową, docelową czy żadną z nich. Wybierz pozycję `Seattle`, wybierz pozycję **Location** (Lokalizacja), a następnie przejdź do menu z prawej strony i wybierz pozycję `Origin`.
 
-    [![Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
+    [![Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png "Zrzut ekranu okna dialogowego tworzenia etykiety jednostki w celu zmiany elementu podrzędnego jednostki lokalizacji")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png#lightbox)
 
 1. Dodaj etykiety do innych lokalizacji we wszystkich innych wypowiedziach. Po oznaczeniu wszystkich lokalizacji wypowiedzi będą wyglądać podobnie do wzorca. 
 

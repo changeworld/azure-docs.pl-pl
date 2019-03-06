@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 60876cb95e6efe4fbde55bd8a224eab658b10d66
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608361"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749991"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: Testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
 
@@ -45,7 +45,7 @@ W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiąza
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy regionu **Wschodnie stany USA**.
 Możesz wybrać opcję **Visual Studio Enterprise**, ale w tym celu musisz być [administratorem globalnym lub użytkownikiem](iot-accelerators-permissions.md).
 
-Aby rozpocząć wdrożenie, kliknij przycisk **Utwórz rozwiązanie**. Ten proces trwa co najmniej pięć minut:
+Aby rozpocząć wdrożenie, kliknij pozycję **Utwórz**. Ten proces trwa co najmniej pięć minut:
 
 ![Szczegóły rozwiązania do monitorowania zdalnego](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązań do
 
 ![Wybieranie nowego rozwiązania](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Możesz przejrzeć informacje o akceleratorze rozwiązań do zdalnego monitorowania w wyświetlonym panelu. Wybierz pozycję **Pulpit nawigacyjny rozwiązania**, aby wyświetlić akcelerator rozwiązań do zdalnego monitorowania:
+Możesz przejrzeć informacje o akceleratorze rozwiązań do zdalnego monitorowania w wyświetlonym panelu. Wybierz pozycję **Przejdź do własnego akceleratora rozwiązań**, aby wyświetlić akcelerator rozwiązań do zdalnego monitorowania:
 
 ![Panel rozwiązania](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -134,6 +134,9 @@ Jeśli zamierzasz przejść do samouczków, nie usuwaj wdrożenia akceleratora r
 Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard), wybierając go, a następnie klikając pozycję **Usuń rozwiązanie**:
 
 ![Usuwanie rozwiązania](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+
+
+![Usuwanie rozwiązania](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

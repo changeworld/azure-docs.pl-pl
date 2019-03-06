@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301676"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438367"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i transferu danych przychodzących w wersji zapoznawczej Azure czas serii szczegółowych informacji
 
@@ -116,7 +116,7 @@ Należy wybrać odpowiedni identyfikator serii czasu, ponieważ jest właściwo�
 
 Kiedy należy utworzyć środowisko zgodnie z rzeczywistym użyciem usługi Time Series Insights, tworzysz dwa zasoby: środowisko usługi Time Series Insights i Azure Storage ogólnego przeznaczenia w wersji 1 konto przechowywania danych. Wybraliśmy uczynić usługi Azure Storage ogólnego przeznaczenia w wersji 1 zasobu domyślnego z powodu jej współdziałanie, cen i wydajności. 
 
-Usługa Time Series Insights publikuje maksymalnie dwie kopie każdego zdarzenia na Twoim koncie usługi Azure storage. Zawsze są zachowywane kopii początkowej, dzięki czemu można tworzyć zapytania go performantly przy użyciu innych usług. Łatwo służy platformy Spark, Hadoop i inne dobrze znanych narzędzi w identyfikatorach serii czasu nieprzetworzone pliki Parquet, ponieważ te aparaty obsługuje filtrowanie podstawowe nazwę pliku. Grupowanie obiektów blob według roku i miesiąca jest wygodnym sposobem na wyświetlanie listy obiektów blob w określonym zakresie czasu dla niestandardowego zadania. 
+Usługa Time Series Insights publikuje maksymalnie dwie kopie każdego zdarzenia na Twoim koncie usługi Azure storage. Zawsze są zachowywane kopii początkowej, dzięki czemu mogą szybko przeszukiwać je za pomocą innych usług. Łatwo służy platformy Spark, Hadoop i inne dobrze znanych narzędzi w identyfikatorach serii czasu nieprzetworzone pliki Parquet, ponieważ te aparaty obsługuje filtrowanie podstawowe nazwę pliku. Grupowanie obiektów blob według roku i miesiąca jest wygodnym sposobem na wyświetlanie listy obiektów blob w określonym zakresie czasu dla niestandardowego zadania. 
 
 Ponadto usługa Time Series Insights repartitions pliki Parquet zoptymalizowane pod kątem API Insights serii czasu. Najbardziej niedawno repartitioned plik również jest zapisywany.
 

@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 56ad75bc0bed77c2107a49ab339368ab2a63c1fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: de0227ac3e3d963b5ec196b58e467dbeaf0dff42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881264"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453460"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -284,7 +284,7 @@ select * from jobs.jobsteps
 ```
 
 
-## <a name="begin-ad-hoc-execution-of-a-job"></a>Rozpoczęcie wykonywania zapytań ad-hoc zadania
+## <a name="begin-ad-hoc-execution-of-a-job"></a>Rozpocznij ad-hoc wykonywania zadania
 
 Poniższy przykład pokazuje, jak natychmiast uruchomić zadanie.  
 Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:

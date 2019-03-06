@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 507aa1485cb039db2c26d0e513af58d67bb9fa58
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381265"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57430921"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Czyszczenie dzienników bazy danych SSISDB za pomocą zadania Elastic Database usługi Azure
 
@@ -30,6 +30,8 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami bazami danych za p
 W poniższych sekcjach opisano sposób włączania procedury składowanej `[internal].[cleanup_server_retention_window_exclusive]`, co spowoduje usunięcie dzienników bazy danych SSISDB, które są poza oknem przechowywania ustawionych przez administratora.
 
 ## <a name="clean-up-logs-with-power-shell"></a>Czyszczenie dzienników za pomocą powłoki Power Shell
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 Następujące przykładowe skrypty programu PowerShell utworzyć nowe zadanie elastycznej do wyzwolenia procedurę składowaną dla Oczyszczanie dziennika bazy danych SSISDB. Aby uzyskać więcej informacji, zobacz [Utwórz agenta elastycznych zadań przy użyciu programu PowerShell](../sql-database/elastic-jobs-powershell.md).
 

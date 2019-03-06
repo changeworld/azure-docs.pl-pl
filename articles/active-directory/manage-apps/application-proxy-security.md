@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef9dbe1bb0ed9e5aad545453c409b0959bdd3fd4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7bb9fc806779565581fa7667749402f5608edd80
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207232"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438078"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD
 
@@ -69,7 +69,7 @@ Aby uzyskać więcej informacji na temat łączników, zobacz [łączników serw
 
 Uzyskaj zaawansowane zabezpieczenia.
 
-Ponieważ jest częścią usługi Azure Active Directory, mogą korzystać z serwera Proxy aplikacji [usługi Azure AD Identity Protection](../active-directory-identityprotection.md), przy użyciu danych z Microsoft Security Response Center i Digital Crimes Unit. Razem możemy aktywnego identyfikowania zagrożonych konta i oferuje ochronę przed wysokiego ryzyka logowania. Firma Microsoft wziąć pod uwagę wiele czynników, w celu określenia, które logowania dla którego są o wysokim ryzyku. Czynniki te obejmują flag zainfekowanych urządzeń, sieci zachowywanie anonimowości i nietypowe lub mało prawdopodobne lokalizacji.
+Ponieważ jest częścią usługi Azure Active Directory, mogą korzystać z serwera Proxy aplikacji [usługi Azure AD Identity Protection](../active-directory-identityprotection.md), przy użyciu danych z Microsoft Security Response Center i Digital Crimes Unit. Razem możemy aktywnego identyfikowania zagrożonych konta i oferuje ochronę przed wysokiego ryzyka logowania. Firma Microsoft wziąć pod uwagę wiele czynników, w celu określenia, które prób logowania są o wysokim ryzyku. Czynniki te obejmują flag zainfekowanych urządzeń, sieci zachowywanie anonimowości i nietypowe lub mało prawdopodobne lokalizacji.
 
 Wiele z tych raportów i zdarzeń są już dostępne za pośrednictwem interfejsu API w celu integracji z usługą security information and event management (SIEM) systemów.
 

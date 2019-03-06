@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 9236a340c05bc5e342b9fc2c377d6d8eacb94f7d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036435"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588096"
 ---
-# <a name="quickstart-quickstart-build-a-xamarinforms-app-with-net-and-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: Szybki start: Tworzenie aplikacji Xamarin.Forms za pomocą platformy .NET i interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: Tworzenie aplikacji Xamarin.Forms za pomocą zestawu SDK platformy .NET i interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

@@ -7,16 +7,16 @@ ms.service: terraform
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 408e07e9b6214dbd223bd4ec7959b00ecc414f1e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869181"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736927"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Tworzenie konfiguracji programu Terraform na platformie Azure
 
-Dzięki informacjom zawartym w tym przykładzie zyskasz doświadczenie w tworzeniu konfiguracji programu Terraform i wdrażaniu jej na platformie Azure. W tym przykładzie będzie miało miejsce wdrożenie wystąpienia usługi Azure Cosmos DB, usługi Azure Container Instances i aplikacji, która działa w obrębie tych dwóch zasobów. W tym dokumencie przyjęto założenie, że cała praca odbywa się w usłudze Azure Cloud Shell, w ramach której program Terraform jest wstępnie zainstalowany. Jeśli chcesz pracować z tym przykładem we własnym systemie, możesz zainstalować program Terraform, korzystając z instrukcji znajdujących się [tutaj](../virtual-machines/linux/terraform-install-configure.md).
+Dzięki informacjom zawartym w tym przykładzie zyskasz doświadczenie w tworzeniu konfiguracji programu Terraform i wdrażaniu jej na platformie Azure. W tym przykładzie będzie miało miejsce wdrożenie wystąpienia usługi Azure Cosmos DB, usługi Azure Container Instance i aplikacji, która działa w obrębie tych dwóch zasobów. W tym dokumencie przyjęto założenie, że cała praca odbywa się w usłudze Azure Cloud Shell, w ramach której program Terraform jest wstępnie zainstalowany. Jeśli chcesz pracować z tym przykładem we własnym systemie, możesz zainstalować program Terraform, korzystając z instrukcji znajdujących się [tutaj](../virtual-machines/linux/terraform-install-configure.md).
 
 ## <a name="create-first-configuration"></a>Tworzenie pierwszej konfiguracji
 
@@ -30,7 +30,7 @@ code .
 
 Skopiuj i wklej poniższą konfigurację programu Terraform.
 
-Ta konfiguracja modeluje grupę zasobów platformy Azure, losową liczbę całkowitą i wystąpienia usługi Azure Cosmos DB. W nazwie wystąpienia usługi Cosmos DB używana jest losowa liczba całkowita. Konfigurowanych jest również kilka ustawień usługi Cosmos DB. Aby uzyskać pełną listę konfiguracji usługi Cosmos DB w narzędziu Terraform, zobacz [dokumentację programu Terraform w usłudze DB Cosmos](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
+Ta konfiguracja modeluje grupę zasobów platformy Azure, losową liczbę całkowitą i wystąpienie usługi Azure Cosmos DB. W nazwie wystąpienia usługi Cosmos DB używana jest losowa liczba całkowita. Konfigurowanych jest również kilka ustawień usługi Cosmos DB. Aby uzyskać pełną listę konfiguracji usługi Cosmos DB w narzędziu Terraform, zobacz [dokumentację programu Terraform w usłudze DB Cosmos](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
 
 Po zakończeniu zapisz plik jako `main.tf`. Tę operację można wykonać przy użyciu wielokropka w prawej górnej części edytora kodu.
 

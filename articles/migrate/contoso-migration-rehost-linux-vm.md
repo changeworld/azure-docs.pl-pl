@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5f6cb29d8fb3fd1c3b75e18330e3ad2711a61aab
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698330"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444926"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migracja Contoso: Ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym, na maszynach wirtualnych platformy Azure
 
@@ -408,7 +408,7 @@ Administratorzy firmy Contoso są teraz gotowe do uruchomienia przejścia w tryb
 
 ### <a name="connect-the-vm-to-the-database"></a>Połącz maszynę Wirtualną do bazy danych
 
-Ostatni krok w procesie migracji Contoso adins zaktualizować parametry połączenia aplikacji, aby wskazywał bazie aplikacji uruchomionych na **OSTICKETMYSQL** maszyny Wirtualnej. 
+Ostatni krok w procesie migracji Administratorzy Contoso zaktualizować parametry połączenia aplikacji, aby wskazywał bazie aplikacji uruchomionych na **OSTICKETMYSQL** maszyny Wirtualnej. 
 
 1. Dokonają połączenia SSH **OSTICKETWEB** maszyny Wirtualnej przy użyciu programu Putty lub innego klienta SSH. Maszyna wirtualna jest prywatny, dzięki czemu łączą się przy użyciu prywatnego adresu IP.
 

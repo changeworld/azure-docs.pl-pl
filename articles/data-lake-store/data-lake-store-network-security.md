@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: ed2d1256508e588000970879dae7ac653797fbf9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7f20f237b83550b4c78b1fb7488e62119470a85a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883317"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876997"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integracja z siecią wirtualną w usłudze Azure Data Lake Storage Gen1
 
@@ -87,7 +87,7 @@ Dostępne opcje to między innymi:
 
 1.  Przejdź do witryny Azure Portal i zaloguj się na swoim koncie.
  
-2.  [Utwórz nową sieć wirtualną ](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)w ramach subskrypcji. Możesz też przejść do istniejącej sieci wirtualnej. Sieć wirtualna musi znajdować się w tym samym regionie co konto usługi Data Lake Storage Gen1.
+2.  [Utwórz nową sieć wirtualną ](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)w ramach swojej subskrypcji. Możesz też przejść do istniejącej sieci wirtualnej. Sieć wirtualna musi znajdować się w tym samym regionie co konto usługi Data Lake Storage Gen1.
  
 3.  W bloku **Sieć wirtualna** wybierz pozycję **Punkty końcowe usługi**.
  

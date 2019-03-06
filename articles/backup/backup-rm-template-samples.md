@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 96d4a61a14d3b1fac1c31c485edf66742c763673
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c0b023b6bdd01bc64eb5a6deb5fafa8e3c34c616
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497761"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819024"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Szablony usługi Azure Resource Manager dla usługi Azure Backup
 
@@ -31,6 +31,6 @@ Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager uży
 | [Tworzenie zasad codziennego tworzenia kopii zapasowej dla maszyn wirtualnych infrastruktury IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-daily-backup-policy-create) | Szablon umożliwia utworzenie magazynu usługi Recovery Services i zasad codziennego tworzenia kopii zapasowej używanych do tworzenia kopii zapasowej klasycznych maszyn wirtualnych i maszyn wirtualnych usługi Resource Manager.|
 | [Wdrażanie maszyny wirtualnej z systemem Windows Server i włączoną kopią zapasową](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | Szablon umożliwia utworzenie maszyny wirtualnej z systemem Windows Server i magazynu usługi Recovery Services z włączonymi domyślnymi zasadami kopii zapasowej.|
 |**Monitorowanie zadań kopii zapasowej** |  |
-| [Use Log Analytics to monitor Azure Backup (Monitorowanie usługi Azure Backup za pomocą usługi Log Analytics)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Szablon wdraża funkcję monitorowania usługi Log Analytics dla usługi Azure Backup, która pozwala na monitorowanie zadań tworzenia i przywracania kopii zapasowej, alertów kopii zapasowych i magazynu w chmurze używanego przez magazyny usługi Recovery Services.|  
+| [Używanie dzienników usługi Azure Monitor za pomocą usługi Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Szablon umożliwia wdrożenie dzienników usługi Azure Monitor za pomocą usługi Azure Backup, co pozwala na monitorowanie zadań tworzenia i przywracania kopii zapasowej, alertów kopii zapasowych i magazynu w chmurze używanego przez magazyny usługi Recovery Services.|  
 |   |   |
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: tulasim
-ms.openlocfilehash: d41c7a24d72cdafac953e0215a6cbd2d9e8bba01
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316476"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433114"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -25,7 +25,7 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 
 |Typ źródła|Typ zawartości| Przykłady|
 |--|--|--|
-|Adres URL|Często zadawane pytania<br> (Stosowana jest stała, sekcji lub z określonej strony głównej tematy)<br>Strony pomocy technicznej <br> (Jednostronicowej artykuły, rozwiązywanie problemów z artykułów itp.)|[Zwykły — często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Często zadawane pytania wraz z łączami](https://www.microsoft.com/software-download/faq),<br> [Często zadawane pytania dotyczące ze strony głównej — tematy](https://support.microsoft.com/products/windows?os=windows-10)<br>[Artykuł pomocy technicznej](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|Adres URL|Często zadawane pytania<br> (Stosowana jest stała, sekcji lub z określonej strony głównej tematy)<br>Strony pomocy technicznej <br> (Jednostronicowej artykuły, rozwiązywanie problemów z artykułów itp.)|[Zwykły — często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Często zadawane pytania wraz z łączami](https://www.microsoft.com/software-download/faq),<br> [Często zadawane pytania dotyczące ze strony głównej — tematy](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Artykuł pomocy technicznej](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
 |PLIK PDF / DOC|Często zadawane pytania,<br> Obsługi produktu<br> Broszury,<br> Dokument,<br> Ulotka zasad<br> Przewodnik obsługi<br> QnA ze strukturą<br> etc.|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy Manual.pdf produktu](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Przykładowy structured.doc o częściowej lub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy paper.pdf biały](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
 |Excel|Ze strukturą pliku pytań i odpowiedzi<br> (w tym formacie RTF, HTML pomocy technicznej)|[Przykładowy FAQ.xls pytań i odpowiedzi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Ze strukturą pliku pytań i odpowiedzi|[Przykładowe chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|

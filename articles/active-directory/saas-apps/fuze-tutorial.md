@@ -1,227 +1,197 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Fuze | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Fuze.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Fuze | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Fuze.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 9780b4bf-1fd1-48c1-9ceb-f750225ae08a
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
+ms.topic: tutorial
+ms.date: 02/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebad54fa93379cc3c445de660df4e86b997014c5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 702b5fb7145d0312489bf0eae1a025e2277dd1df
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193360"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869279"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Fuze
+# <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Fuze
 
-W tym samouczku dowiesz się, jak zintegrować Fuze w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Fuze z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Fuze z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Fuze z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Fuze.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Fuze (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Fuze
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Fuze (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Fuze, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Fuze potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Fuze logowania jednokrotnego włączonych subskrypcji
-
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Fuze z włączoną obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Fuze z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
+* Aplikacja Fuze obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-## <a name="adding-fuze-from-the-gallery"></a>Dodawanie Fuze z galerii
-Aby skonfigurować integrację Fuze w usłudze Azure AD, należy dodać Fuze z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Fuze obsługuje aprowizowanie użytkowników typu **Just In Time**
 
-**Aby dodać Fuze z galerii, wykonaj następujące czynności:**
+## <a name="adding-fuze-from-the-gallery"></a>Dodawanie aplikacji Fuze z galerii
 
-1. W  **[portalu zarządzania systemu Azure](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Fuze z usługą Azure AD, musisz dodać aplikację Fuze z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację Fuze z galerii, wykonaj następujące czynności:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Kliknij przycisk **Dodaj** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **Fuze**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/fuze-tutorial/tutorial_fuze_000.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **Fuze**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/fuze-tutorial/tutorial_fuze_0001.png)
+4. W polu wyszukiwania wpisz **Fuze**, wybierz pozycję **Fuze** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
+     ![Aplikacja Fuze na liście wyników](common/search-new-app.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Fuze w oparciu o użytkownika testu o nazwie "Britta Simon".
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Fuze do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Fuze musi można ustanowić.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Fuze, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem aplikacji Fuze.
 
-Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w Fuze.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Fuze, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Fuze, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Fuze](#configure-fuze-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Fuze](#create-fuze-test-user)** — aby mieć w aplikacji Fuze odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Fuze](#creating-a-fuze-test-user)**  — aby odpowiednikiem Britta Simon w Fuze połączonego z jej reprezentacji usługi Azure AD.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu zarządzania platformy Azure i konfigurowanie logowania jednokrotnego w aplikacji Fuze.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Fuze, wykonaj następujące kroki:
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Fuze, wykonaj następujące czynności:**
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Fuze** wybierz pozycję **Logowanie jednokrotne**.
 
-1. W portalu zarządzania platformy Azure na **Fuze** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **logowanie jednokrotne** okno dialogowe, jako **tryb** wybierz **opartej na SAML logowania jednokrotnego** na włączanie logowania jednokrotnego.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/fuze-tutorial/tutorial_fuze_01.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-1. Na **Fuze domena i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/fuze-tutorial/tutorial_fuze_020.png)
-    
-    W **adres URL logowania** polu tekstowym adresu URL typu logowania jednokrotnego, jako: `https://www.thinkingphones.com/jetspeed/portal/`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1.  Kliknij przycisk **Save** (Zapisz).
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/fuze-tutorial/tutorial_general_400.png)
+    ![Informacje o domenie i adresach URL aplikacji Fuze na potrzeby logowania jednokrotnego](common/sp-signonurl.png)
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik xml na tym komputerze.
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.thinkingphones.com/jetspeed/portal/`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/fuze-tutorial/tutorial_fuze_05.png) 
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Aby skonfigurować logowanie jednokrotne na **Fuze** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Fuze](https://www.fuze.com/support). One będzie wybrać tę opcję, aby mogła mieć ustawione prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
+6. W sekcji **Konfigurowanie aplikacji Fuze** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania platformy Azure o nazwie Britta Simon.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-![Utwórz użytkownika usługi Azure AD][100]
+    a. Adres URL logowania
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    b. Identyfikator usługi Azure AD
 
-1. W **portalu zarządzania Azure**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+    d. Adres URL wylogowywania
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/fuze-tutorial/create_aaduser_01.png) 
+### <a name="configure-fuze-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Fuze
 
-1. Przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy** do wyświetlania listy użytkowników.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/fuze-tutorial/create_aaduser_02.png) 
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Fuze**, musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Fuze](https://www.fuze.com/support). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-1. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/fuze-tutorial/create_aaduser_03.png) 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/fuze-tutorial/create_aaduser_04.png) 
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    d. Kliknij pozycję **Utwórz**. 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-### <a name="creating-a-fuze-test-user"></a>Tworzenie użytkownika testowego Fuze
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-Fuze aplikacji obsługuje tylko pełne czas aprowizacji użytkownika, dzięki czemu użytkownicy zostaną utworzone automatycznie podczas logowania. Inne wyjaśnienia, skontaktuj się z pomocą Fuze [obsługuje](https://www.fuze.com/support).
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej Fuze.
+    d. Kliknij pozycję **Utwórz**.
 
-![Przypisz użytkownika][200] 
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-**Aby przypisać Britta Simon Fuze, wykonaj następujące czynności:**
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Fuze.
 
-1. W portalu zarządzania platformy Azure powoduje ono otwarcie widoku aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Fuze**.
 
-    ![Przypisz użytkownika][201] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Na liście aplikacji wybierz **Fuze**.
+2. Na liście aplikacji wybierz pozycję **Fuze**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/fuze-tutorial/tutorial_fuze_50.png) 
+    ![Link aplikacji Fuze na liście aplikacji](common/all-applications.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Przypisz użytkownika][202] 
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Przypisz użytkownika][203]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="create-fuze-test-user"></a>Tworzenie użytkownika testowego aplikacji Fuze
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Aplikacja Fuze obsługuje aprowizowanie użytkowników typu „just in time”, dzięki czemu użytkownicy są tworzeni automatycznie podczas logowania. Aby uzyskać dodatkowe informacje, skontaktuj się z [pomocą techniczną](https://www.fuze.com/support) aplikacji Fuze.
 
-Po kliknięciu kafelka Fuze w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Fuze.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka Fuze w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Fuze, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-<!--Image references-->
-
-[1]: ./media/fuze-tutorial/tutorial_general_01.png
-[2]: ./media/fuze-tutorial/tutorial_general_02.png
-[3]: ./media/fuze-tutorial/tutorial_general_03.png
-[4]: ./media/fuze-tutorial/tutorial_general_04.png
-
-[100]: ./media/fuze-tutorial/tutorial_general_100.png
-
-[200]: ./media/fuze-tutorial/tutorial_general_200.png
-[201]: ./media/fuze-tutorial/tutorial_general_201.png
-[202]: ./media/fuze-tutorial/tutorial_general_202.png
-[203]: ./media/fuze-tutorial/tutorial_general_203.png

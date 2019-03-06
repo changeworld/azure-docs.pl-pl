@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4768c38b2e76bfa8cdff3187c32c03fdaaf57bbf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207657"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją dmarcian
 
@@ -143,15 +143,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją dmarcian,
 
 2. Kliknij pozycję **Profile** (Profil) w prawym górnym rogu, a następnie przejdź do obszaru **Preferences** (Preferencje).
 
-    ![Preferencje ](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
+    ![Preferencje](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
 3. Przewiń w dół i kliknij sekcję **Single Sign-On** (Logowanie jednokrotne), a następnie kliknij przycisk **Configure** (Konfiguruj).
 
-    ![Logowanie jednokrotne ](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
+    ![Logowanie jednokrotne](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
 4. Na stronie **SAML Single Sign-On** (Logowanie jednokrotne języka SAML) ustaw pozycję **Status** (Stan) na **Enabled** (Włączono) i wykonaj następujące kroki:
 
-    ![Uwierzytelnianie ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![Uwierzytelnianie](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
     * W sekcji **Add dmarcian to your Identity Provider** (Dodawanie aplikacji dmarcian do dostawcy tożsamości) kliknij pozycję **COPY** (Kopiuj), aby skopiować **adres URL usługi Assertion Consumer Service** dla wystąpienia i wkleić go w polu tekstowym **Adres URL odpowiedzi** w **sekcji Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
@@ -229,15 +229,15 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji dmarc
 
 2. Kliknij pozycję **Profile** (Profil) w górnym prawym rogu i przejdź do obszaru **Manage Users** (Zarządzanie użytkownikami).
 
-    ![Użytkownik ](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
+    ![Użytkownik](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
 3. Po prawej stronie sekcji **SSO Users** (Użytkownicy logowania jednokrotnego) kliknij pozycję **Add New User** (Dodaj nowego użytkownika).
 
-    ![Dodawanie użytkownika ](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![Dodawanie użytkownika](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
 4. W wyskakującym okienku **Add New User** (Dodawanie nowego użytkownika) wykonaj następujące kroki:
 
-    ![Nowy użytkownik ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![Nowy użytkownik](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
     a. W polu tekstowym **New User Email** (Adres e-mail nowego użytkownika) wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
 
@@ -253,9 +253,9 @@ Po kliknięciu kafelka dmarcian w panelu dostępu powinno nastąpić automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

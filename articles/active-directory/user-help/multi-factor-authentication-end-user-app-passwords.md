@@ -1,6 +1,6 @@
 ---
-title: Jak zarządzać hasłami aplikacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Ta strona pomoże użytkownikom w zrozumieniu, co to są hasła aplikacji i co to są używane dla z uwzględnieniem weryfikacji dwuetapowej.
+title: Jak zarządzać hasłami aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o hasłach aplikacji i jakie są używane do w odniesieniu do weryfikacji dwuetapowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,13 +12,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdcd078714d8311cf59471492187314183de28b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ee21080fd95815289f73654cc5bc650296c8e8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187308"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433369"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji weryfikacji dwuetapowej
 

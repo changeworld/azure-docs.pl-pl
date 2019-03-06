@@ -10,18 +10,22 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 282b07a384ac6db5bfbc144ca06440f3a8f01a6a
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: e8473ece2ed08798836dc66067e1ce042924f469
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301200"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431259"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak uruchamiać funkcje trwałe jako zadania Webjob
 
-[Usługa Azure Functions](../functions-overview.md) i [funkcje trwałe](durable-functions-overview.md) rozszerzenia są oparte na [zestawu SDK usługi WebJobs](../../app-service/webjobs-create.md). `JobHost` w zestawie SDK usługi WebJobs jest środowisko uruchomieniowe w usłudze Azure Functions. Jeśli potrzebujesz do kontroli `JobHost` zachowanie w sposób nie były możliwe w usłudze Azure Functions, mogą tworzyć i uruchamiać funkcje trwałe przy użyciu zestawu SDK usługi WebJobs, samodzielnie. Następnie możesz uruchomić swoje funkcje trwałe w zadaniu Azure WebJob lub gdziekolwiek uruchamia aplikację konsolową w języku.
+Domyślnie funkcje trwałe używa środowiska uruchomieniowego usługi Azure Functions do aranżacji hosta. Jednak może być korzystniejsze, gdzie możesz muszą większa kontrola nad kodem nasłuchującym zdarzeń. W tym artykule dowiesz się, jak wdrożyć swoje aranżacji przy użyciu zestawu SDK usługi WebJobs. Aby wyświetlić bardziej szczegółowe porównanie usługi Functions i WebJobs, zobacz [porównania Functions i WebJobs](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-Łańcucha Przykładowe funkcje trwałe jest dostępna w wersji zestawu SDK usługi WebJobs: Pobierz lub sklonuj [repozytorium funkcje trwałe](https://github.com/azure/azure-functions-durable-extension/) i przejdź do *przykłady\\webjobssdk\\łańcucha* folderu.
+[Usługa Azure Functions](../functions-overview.md) i [funkcje trwałe](durable-functions-overview.md) rozszerzenia są oparte na [zestawu SDK usługi WebJobs](../../app-service/webjobs-sdk-how-to.md). Host zadania w zestawie SDK usługi WebJobs jest środowisko uruchomieniowe w usłudze Azure Functions. Jeśli potrzebujesz do sterowania zachowaniem w sposób nie były możliwe w usłudze Azure Functions, mogą tworzyć i uruchamiać funkcje trwałe przy użyciu zestawu SDK usługi WebJobs, samodzielnie.
+
+W wersji 3.x zestaw SDK zadań Webjob, host jest implementacją `IHost`i w wersji 2.x, możesz użyć `JobHost` obiektu.
+
+Łańcucha Przykładowe funkcje trwałe jest dostępna w wersji 2.x zestawu SDK usługi WebJobs: Pobierz lub sklonuj [repozytorium funkcje trwałe](https://github.com/azure/azure-functions-durable-extension/)i przejdź do *przykłady\\webjobssdk\\łańcucha* folderu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +39,7 @@ Wykonanie czynności opisanych w tym artykule:
 
 * [Instalowanie programu Visual Studio 2017 w wersji 15.6 lub nowszej](https://docs.microsoft.com/visualstudio/install/) z **programowanie na platformie Azure** obciążenia.
 
-  Jeśli masz już program Visual Studio, ale nie ma tego obciążenia, dodać obciążenie, wybierając **Narzędzia > Pobierz narzędzia i funkcje**.
+  Jeśli już zainstalowano oprogramowania Visual Studio, ale nie ma tego obciążenia, dodać obciążenie, wybierając **narzędzia** > **Pobierz narzędzia i funkcje**.
 
   (Możesz użyć [programu Visual Studio Code](https://code.visualstudio.com/) zamiast tego, ale niektóre instrukcje są specyficzne dla programu Visual Studio.)
 
@@ -45,17 +49,17 @@ Wykonanie czynności opisanych w tym artykule:
 
 W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJobs (równoważne z usługi Azure Functions w wersji 1.x). Aby uzyskać informacje o wersji 3.x, zobacz [zestawu SDK usługi WebJobs 3.x](#webjobs-sdk-3x) w dalszej części tego artykułu.
 
-## <a name="create-console-app"></a>Tworzenie aplikacji konsoli
+## <a name="create-a-console-app"></a>Tworzenie aplikacji konsolowej
 
-Projekt zestawu SDK usługi WebJobs jest po prostu projekt aplikacji konsoli przy użyciu odpowiednich zainstalowanych pakietów NuGet.
+Aby uruchomić funkcje trwałe jako zadania Webjob, należy najpierw utworzyć aplikację konsoli. Projekt zestawu SDK usługi WebJobs jest po prostu projekt aplikacji konsoli przy użyciu odpowiednich zainstalowanych pakietów NuGet.
 
-W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **Windows Classic Desktop > Aplikacja Konsolowa (.NET Framework)**. W pliku projektu `TargetFrameworkVersion` powinien być `v4.6.1`.
+W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **Windows Classic Desktop** > **Aplikacja konsoli (.NET Framework)**. W pliku projektu `TargetFrameworkVersion` powinien być `v4.6.1`.
 
-Program Visual Studio zawiera również szablonu projektu zadania WebJob, którego można użyć, wybierając **chmura > zadań WebJob platformy Azure (.NET Framework)**. Ten szablon instaluje wielu pakietów, z których część może nie być konieczny.
+Program Visual Studio zawiera również szablonu projektu zadania WebJob, którego można użyć, wybierając **chmury** > **zadań WebJob platformy Azure (.NET Framework)**. Ten szablon instaluje wielu pakietów, z których część może nie być konieczny.
 
 ## <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
-Pakiety NuGet jest wymagany dla zestawu WebJobs SDK, podstawowe powiązania, struktury rejestrowania i rozszerzenie trwałe zadań. Poniżej przedstawiono **Konsola Menedżera pakietów** poleceń w przypadku tych pakietów z międzynarodowymi numerami identyfikującymi najnowszej stabilnej wersji w dniu, w tym artykule został napisany:
+Pakiety NuGet jest wymagany dla zestawu WebJobs SDK, podstawowe powiązania, struktury rejestrowania i rozszerzenie trwałe zadań. Poniżej przedstawiono **Konsola Menedżera pakietów** polecenia dla tych pakietów, numerami najnowszej stabilnej wersji w dniu, w tym artykule został napisany:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
@@ -63,7 +67,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
 ```
 
-Należy również rejestrowania dostawców. Następujące polecenia instaluje się dostawcę usługi Application Insights i `ConfigurationManager`. `ConfigurationManager` Pozwala uzyskać klucz Instrumentacji usługi Application Insights z aplikacji ustawienia.
+Należy również rejestrowania dostawców. Następujące polecenia instaluje się dostawcę usługi Azure Application Insights i `ConfigurationManager`. `ConfigurationManager` Pozwala uzyskać klucz Instrumentacji usługi Application Insights z aplikacji ustawienia.
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -77,6 +81,8 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 ```
 
 ## <a name="jobhost-code"></a>Kod JobHost
+
+Istnienie utworzyliśmy aplikację konsoli i zainstalowanych pakietów NuGet należy, wszystko jest gotowe do użycia funkcje trwałe. Możesz to zrobić przy użyciu kodu JobHost.
 
 Aby użyć rozszerzenia funkcji trwałych, należy wywołać `UseDurableTask` na `JobHostConfiguration` obiektu w swojej `Main` metody:
 
@@ -121,7 +127,7 @@ static void Main(string[] args)
 
 ## <a name="functions"></a>Funkcje
 
-Istnieje kilka różnic w kodzie, który napiszesz funkcji zestaw SDK zadań Webjob w porównaniu do zapisu dla usługi Azure Functions.
+Trwałe funkcje w kontekście zadania Webjob nieco różne od funkcje trwałe w kontekście usługi Azure Functions. Należy mieć świadomość różnice podczas pisania kodu.
 
 Zestaw SDK zadań Webjob nie obsługuje następujących funkcji usługi Azure Functions:
 
@@ -151,13 +157,13 @@ public static async Task CronJob(
 
 Ponieważ ma ona żaden wyzwalacz protokołu HTTP, zestaw SDK zadań Webjob nie ma przypisanego [interfejsu API zarządzania HTTP](durable-functions-http-api.md).
 
-W projekcie zestawu SDK usługi WebJobs można wywoływać metody dla obiektu klienta orkiestracji zamiast wysyłania żądań HTTP. Następujące metody odnoszą się do trzech zadań, które można wykonać za pomocą interfejsu API zarządzania HTTP:
+W projekcie zestawu SDK usługi WebJobs może wywoływać metody dla obiektu klienta aranżacji, zamiast, przez wysłanie żądania HTTP. Następujące metody odnoszą się do trzech zadań, które można wykonać za pomocą interfejsu API zarządzania HTTP:
 
 * `GetStatusAsync`
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-Funkcja klienta aranżacji w przykładowym projekcie uruchamiania funkcji programu orchestrator i następnie przechodzi w pętli, która wywołuje `GetStatusAsync` co 2 sekundy:
+Funkcja klienta aranżacji w przykładowym projekcie rozpoczyna się funkcja orkiestratora, a następnie przechodzi w pętli, która wywołuje `GetStatusAsync` co 2 sekundy:
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -182,15 +188,17 @@ while (true)
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
+Masz funkcje trwałe uruchamiane jako zadanie WebJob, i masz teraz zrozumienia, jak będzie to różni się od działających funkcji trwałych jako autonomicznej usługi Azure Functions. W tym momencie niewidoczny Praca w próbce mogą być pomocne.
+
 Ta sekcja zawiera omówienie sposobu uruchamiania [przykładowy projekt](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Aby uzyskać szczegółowe instrukcje, które wyjaśniają, jak uruchomić lokalnie projekt zestawu SDK zadań Webjob i wdrożyć ją w zadanie WebJob systemu Azure, zobacz [Rozpoczynanie pracy z zestawem SDK usługi WebJobs](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Uruchamianie lokalnie
 
 1. Upewnij się, emulator magazynu jest uruchomiona (zobacz [wymagania wstępne](#prerequisites)).
 
-1. Jeśli chcesz wyświetlić dzienniki w usłudze Application Insights po uruchomieniu lokalnie:
+1. Jeśli chcesz zobaczyć dzienników w usłudze Application Insights, gdy lokalne uruchamianie projektu:
 
-    a. Utwórz zasób usługi Application Insights, typ aplikacji **ogólne**.
+    a. Utworzenie zasobu usługi Application Insights i użycie **ogólne** typu aplikacji.
 
     b. Zapisz klucz Instrumentacji w *App.config* pliku.
 
@@ -200,26 +208,28 @@ Ta sekcja zawiera omówienie sposobu uruchamiania [przykładowy projekt](https:/
 
 1. Tworzenie aplikacji sieci web i konta magazynu.
 
-1. Zapisz parametry połączenia magazynu w ustawieniach aplikacji o nazwie AzureWebJobsStorage w aplikacji sieci web.
+1. W aplikacji sieci web, Zapisz parametry połączenia magazynu w aplikacji, ustawienie o nazwie `AzureWebJobsStorage`.
 
-1. Utwórz zasób usługi Application Insights, typ aplikacji **ogólne**.
+1. Utworzenie zasobu usługi Application Insights i użycie **ogólne** typu aplikacji.
 
-1. Zapisz klucz Instrumentacji w ustawieniu aplikacji o nazwie APPINSIGHTS_INSTRUMENTATIONKEY.
+1. Zapisz klucz Instrumentacji w aplikacji, ustawienie o nazwie `APPINSIGHTS_INSTRUMENTATIONKEY`.
 
 1. Wdróż jako zadanie WebJob.
 
 ## <a name="webjobs-sdk-3x"></a>Zestaw SDK usługi WebJobs 3.x
 
-Główne zmiany wprowadzone przez 3.x polega na użyciu platformy .NET Core, a nie .NET Framework. Aby utworzyć projekt 3.x instrukcje są takie same, z uwzględnieniem poniższych wyjątków:
+W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJobs. Jeśli tworzysz projekt 3.x zestaw SDK zadań Webjob w tej sekcji pomaga zrozumieć różnice.
 
-1. Tworzenie aplikacji konsolowej .NET Core. W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **platformy .NET Core > Aplikacja Konsolowa (.NET Core)**. Plik projektu określa, że `TargetFramework` jest `netcoreapp2.0`.
+Główne zmiana wprowadzona polega na użyciu platformy .NET Core, a nie .NET Framework. Aby utworzyć projekt 3.x zestawu SDK usługi WebJobs, instrukcje są takie same, z uwzględnieniem poniższych wyjątków:
 
-1. Wybierz wersję wstępną 3.x następujące pakiety:
+1. Tworzenie aplikacji konsolowej .NET Core. W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **platformy .NET Core** > **Aplikacja konsoli (.NET Core)**. Plik projektu określa, że `TargetFramework` jest `netcoreapp2.0`.
+
+1. Wybierz wersję wstępną wersję zestawu SDK usługi WebJobs 3.x następujące pakiety:
 
     * `Microsoft.Azure.WebJobs.Extensions`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. Zmiana `Main` kod metody, aby uzyskać parametry połączenia magazynu oraz klucz Instrumentacji usługi Application Insights z *appsettings.json* plików, za pomocą programu .NET Core framework konfiguracji.  Oto przykład:
+1. Pobierz parametry połączenia magazynu i klucz Instrumentacji usługi Application Insights z *appsettings.json* pliku przy użyciu platformy .NET Core framework konfiguracji. Zmiana `Main` kod metody, aby to zrobić. Oto przykład:
 
    ```cs
    static void Main(string[] args)

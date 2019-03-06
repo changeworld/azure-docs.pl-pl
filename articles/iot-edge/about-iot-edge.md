@@ -7,24 +7,24 @@ ms.reviewer: chipalost
 ms.service: iot-edge
 services: iot-edge
 ms.topic: overview
-ms.date: 06/12/2018
+ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6bd72fd91190c9ed54b4dfd3e7b1e957c375bd4c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2d1e4ce719311a28fb4b2075864f8f411cd2713d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230564"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877457"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co to jest usługa Azure IoT Edge
 
-Usługa IoT Edge przenosi analizę w chmurze i niestandardową logikę biznesową na urządzenia, aby Twoja organizacja mogła skoncentrować się na szczegółowych informacjach dotyczących działalności zamiast na zarządzaniu danymi. Zapewnij swojemu rozwiązaniu rzeczywiste możliwości skalowania, konfigurując oprogramowanie IoT, wdrażając je na urządzeniach za pomocą standardowych kontenerów i monitorując wszystko z poziomu chmury.
+Usługa IoT Edge przenosi analizę w chmurze i niestandardową logikę biznesową na urządzenia, aby Twoja organizacja mogła skoncentrować się na szczegółowych informacjach dotyczących działalności zamiast na zarządzaniu danymi. Skonfiguruj oprogramowanie IoT, wdrażając je na urządzeniach za pomocą standardowych kontenerów i monitorując wszystko z poziomu chmury.
 
 >[!NOTE]
 >Usługa Azure IoT Edge jest dostępna w warstwie Bezpłatna oraz Standardowa usługi IoT Hub. Warstwa Bezpłatna służy wyłącznie do testowania i oceny. Aby uzyskać więcej informacji na temat warstw Podstawowa i Standardowa, zobacz [Jak wybrać właściwą warstwę usługi IoT Hub](../iot-hub/iot-hub-scaling.md).
 
-Dzięki analizie wzrasta wartość biznesowa w rozwiązaniach IoT, ale nie wszystkie operacje analizy muszą być wykonywane w chmurze. Aby urządzenie reagowało na sytuacje awaryjne tak szybko, jak to możliwe, możesz przeprowadzać wykrywanie anomalii na samym urządzeniu. Podobnie jeśli chcesz obniżyć koszty przepustowości i uniknąć przesyłania terabajtów danych pierwotnych, czyszczenie i agregację danych możesz przeprowadzać lokalnie. Następnie możesz wysłać szczegółowe informacje do chmury. 
+Dzięki analizie wzrasta wartość biznesowa w rozwiązaniach IoT, ale nie wszystkie operacje analizy muszą być wykonywane w chmurze. Aby urządzenie reagowało na sytuacje awaryjne tak szybko, jak to możliwe, możesz przeprowadzać wykrywanie anomalii na samym urządzeniu. Podobnie jeśli chcesz obniżyć koszty przepustowości i uniknąć przesyłania terabajtów danych pierwotnych, czyszczenie i agregację danych możesz przeprowadzać lokalnie. Następnie możesz wysłać szczegółowe informacje do chmury na potrzeby analizy. 
 
 Usługa Azure IoT Edge obejmuje trzy składniki:
 * Moduły usługi IoT Edge to kontenery, które uruchamiają usługi platformy Azure, usługi innych firm lub Twój własny kod. Moduły są wdrażane na urządzeniach usługi IoT Edge i wykonywane lokalnie na tych urządzeniach. 
@@ -33,11 +33,11 @@ Usługa Azure IoT Edge obejmuje trzy składniki:
 
 ## <a name="iot-edge-modules"></a>Moduły usługi IoT Edge
 
-Moduły usługi IoT Edge to jednostki wykonywania, obecnie zaimplementowane jako kontenery zgodne z platformą Docker, które uruchamiają logikę biznesową na urządzeniach brzegowych. Wiele modułów można skonfigurować do komunikowania się ze sobą i w ten sposób utworzyć potok przetwarzania danych. Aby zapewnić szczegółowe informacje w trybie offline i na urządzeniach brzegowych, możesz opracować moduły niestandardowe lub spakować niektóre usługi platformy Azure w moduły. 
+Moduły usługi IoT Edge to jednostki wykonywania, zaimplementowane jako kontenery zgodne z platformą Docker, które uruchamiają logikę biznesową na urządzeniach brzegowych. Wiele modułów można skonfigurować do komunikowania się ze sobą i w ten sposób utworzyć potok przetwarzania danych. Aby zapewnić szczegółowe informacje w trybie offline i na urządzeniach brzegowych, możesz opracować moduły niestandardowe lub spakować niektóre usługi platformy Azure w moduły. 
 
 ### <a name="artificial-intelligence-on-the-edge"></a>Sztuczna inteligencja na urządzeniach brzegowych
 
-Usługa Azure IoT Edge pozwala na wdrożenie kompleksowego przetwarzania zdarzeń, uczenia maszynowego, rozpoznawania obrazów i innych możliwości SI o wysokiej wartości bez samodzielnego ich tworzenia. Wszystkie usługi platformy Azure, takie jak Azure Functions, Azure Stream Analytics i Azure Machine Learning mogą być uruchamiane lokalnie za pomocą usługi Azure IoT Edge. Jednak nie trzeba ograniczać się do usług platformy Azure. Każdy może utworzyć moduły SI i udostępnić je społeczności do użycia. 
+Usługa Azure IoT Edge pozwala na wdrożenie kompleksowego przetwarzania zdarzeń, uczenia maszynowego, rozpoznawania obrazów i innych możliwości SI o wysokiej wartości bez samodzielnego ich tworzenia. Wszystkie usługi platformy Azure, takie jak Azure Functions, Azure Stream Analytics i Azure Machine Learning mogą być uruchamiane lokalnie za pomocą usługi Azure IoT Edge. Jednak nie trzeba ograniczać się do usług platformy Azure. Każdy może utworzyć moduły SI i udostępnić je społeczności do użycia za pośrednictwem witryny Azure Marketplace. 
 
 ### <a name="bring-your-own-code"></a>Model dostarczania własnego kodu
 
@@ -55,7 +55,7 @@ Usługa Azure IoT Edge obsługuje również wdrażanie własnego kodu na urządz
 
 ![Środowisko uruchomieniowe usługi IoT Edge wysyła szczegółowe informacje i raporty do usługi IoT Hub](./media/about-iot-edge/runtime.png)
 
-Sposób używania urządzenia usługi Azure IoT Edge zależy od Ciebie. Środowisko uruchomieniowe jest często używane do wdrażania funkcji SI w bramach, które agregują i przetwarzają dane z wielu innych urządzeń lokalnych. Jednak taki model wdrażania to tylko jedna z możliwości. Urządzenia liścia również mogą być urządzeniami usługi Azure IoT Edge, niezależnie od tego, czy są połączone z bramą, czy bezpośrednio z chmurą.
+Sposób używania urządzenia usługi Azure IoT Edge zależy od Ciebie. Środowisko uruchomieniowe jest często używane do wdrażania funkcji SI w bramach, które agregują i przetwarzają dane z innych urządzeń lokalnych. Jednak taki model wdrażania to tylko jedna z możliwości. Urządzenia liścia również mogą być urządzeniami usługi Azure IoT Edge, niezależnie od tego, czy są połączone z bramą, czy bezpośrednio z chmurą.
 
 Środowisko uruchomieniowe usługi Azure IoT Edge działa na wielu różnych urządzeniach IoT, aby umożliwić używanie go na wiele różnych sposobów. Obsługuje zarówno system operacyjny Linux, jak i Windows oraz tworzy abstrakcję szczegółów sprzętu. Zastosuj urządzenie mniejsze niż Raspberry Pi 3, jeśli nie przetwarzasz dużych ilości danych, lub użyj serwera przemysłowego, aby uruchamiać obciążenia intensywnie korzystające z zasobów.
 
@@ -74,5 +74,3 @@ Usługa Azure IoT Edge bezproblemowo integruje się z akceleratorami rozwiązań
 ## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj te koncepcje w praktyce, [wdrażając usługę IoT Edge na symulowanym urządzeniu](quickstart.md).
-
- 

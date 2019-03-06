@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7bc6b57122072c2fe0c063c1278cf11d97469b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191321"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Snowflake
 
@@ -141,7 +141,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Snowflake
     > [!NOTE]
     > Jest to oddzielone od kontekstu wybranego w prawym górnym rogu pod Twoją nazwą użytkownika
     
-    ![Administrator aplikacji Snowflake ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Administrator aplikacji Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 10. Otwórz **pobrany certyfikat Base 64** w Notatniku. Skopiuj wartość z zakresu od „---BEGIN CERTIFICATE---” do „---END CERTIFICATE---” i wklej ją w znaki cudzysłowu obok **certyfikatu** poniżej. W polu **ssoUrl** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal. Wybierz pozycję **Wszystkie zapytania** i kliknij przycisk **Uruchom**.
 
@@ -219,11 +219,11 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie do aplikacji Snowflake,
 
 2. **Przełącz rolę** na **ACCOUNTADMIN**, klikając **profil** w prawej górnej części strony.  
 
-    ![Administrator aplikacji Snowflake ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Administrator aplikacji Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 3. Utwórz użytkownika, uruchamiając poniższe zapytanie SQL, zapewniając, że „Nazwa logowania” jest ustawiona na nazwę użytkownika usługi Azure AD w arkuszu, jak pokazano poniżej.
 
-    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
     use role accountadmin;
@@ -238,9 +238,9 @@ Po kliknięciu kafelka Snowflake w panelu dostępu powinno nastąpić automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

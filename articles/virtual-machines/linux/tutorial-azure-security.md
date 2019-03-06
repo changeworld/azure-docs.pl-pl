@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841170"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593305"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
 
 Usługa Azure Security Center ułatwia wgląd w rozwiązania z zakresu zabezpieczeń zasobów platformy Azure. Usługa Security Center oferuje zintegrowane monitorowanie zabezpieczeń. Potrafi wykrywać zagrożenia, które inaczej mogłyby ujść uwadze. W tym samouczku poznasz usługę Azure Security Center oraz następujące zagadnienia:
  
@@ -65,7 +65,7 @@ Aby skonfigurować zasady zabezpieczeń dla całej subskrypcji:
 
 1. Na pulpicie nawigacyjnym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**, a następnie wybierz swoją subskrypcję.
 2. W bloku **Zasady zabezpieczeń** wybierz pozycję **Zasady zabezpieczeń**. 
-3. W bloku ** Zasady zabezpieczeń — Zasady zabezpieczeń ** włącz lub wyłącz elementy zasad, które chcesz zastosować do subskrypcji.
+3. W bloku **Zasady zabezpieczeń — Zasady zabezpieczeń** włącz lub wyłącz elementy zasad, które chcesz zastosować do subskrypcji.
 4. Po zakończeniu wybierania ustawień wybierz przycisk **Zapisz** w górnej części bloku. 
 
 ![Unikatowe zasady](./media/tutorial-azure-security/unique-policy.png)

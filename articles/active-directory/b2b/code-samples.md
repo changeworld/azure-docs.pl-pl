@@ -1,5 +1,5 @@
 ---
-title: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory | Microsoft Docs
+title: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B — Azure Active Directory | Microsoft Docs
 description: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88b4300db6ef70b0a727b18e50fcbc269dd7ed15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01e91797fea785d5e5e065bc77c102254a32ca5f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172896"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670285"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 

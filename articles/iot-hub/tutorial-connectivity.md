@@ -6,15 +6,15 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745813"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674521"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: Testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
@@ -122,7 +122,7 @@ Tym razem, gdy aplikacja spróbuje nawiązać połączenie, wyświetlony zostani
 
 Jeśli urządzenie korzysta z jednego z zestawów SDK urządzeń usługi IoT Hub, kod biblioteki SDK generuje token SAS używany do uwierzytelniania w centrum. Token SAS jest generowany przy użyciu nazwy centrum, nazwy urządzenia oraz klucza urządzenia.
 
-W niektórych scenariuszach, na przykład w przypadku bramy protokołu w chmurze lub w ramach niestandardowego schematu uwierzytelniania, może być konieczne samodzielne wygenerowanie tokenu SAS. Aby rozwiązać problemy z kodem generującym token SAS, warto wiedzieć, jak wygenerować znany sprawny token SAS do użycia podczas testów.
+W niektórych scenariuszach, na przykład w przypadku bramy protokołu w chmurze lub w ramach niestandardowego schematu uwierzytelniania, może być konieczne samodzielne wygenerowanie tokenu SAS. Aby rozwiązać problemy z kodem generującym token SAS, warto wygenerować znany sprawny token SAS do użycia podczas testów.
 
 > [!NOTE]
 > Przykładowy plik SimulatedDevice-2.js zawiera przykłady generowania tokenu sygnatury dostępu współdzielonego (SAS) z zestawem SDK i bez niego.
@@ -133,7 +133,7 @@ Aby wygenerować znany sprawny token SAS przy użyciu interfejsu wiersza polecen
 az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-Zanotuj pełen tekst wygenerowanego tokenu SAS. Token SAS wygląda następująco: `'SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307'`
+Zanotuj pełen tekst wygenerowanego tokenu SAS. Token SAS wygląda następująco: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
 W oknie terminalu na komputerze deweloperskim przejdź do folderu głównego pobranego projektu przykładowego Node.js. Następnie przejdź do folderu **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
 
@@ -189,13 +189,9 @@ Podczas wysyłania danych telemetrycznych do centrum w oknie terminalu zostaną 
 
 ![Wysyłanie komunikatów przez symulowane urządzenie](media/tutorial-connectivity/sim-3-sending.png)
 
-Możesz użyć pozycji **Metryki** w portalu, aby sprawdzić, czy komunikaty zawierające dane telemetryczne docierają do centrum IoT:
+Możesz użyć pozycji **Metryki** w portalu, aby sprawdzić, czy komunikaty zawierające dane telemetryczne docierają do centrum IoT. Wybierz centrum IoT w menu rozwijanym **Zasób**, a następnie wybierz metrykę **Komunikaty telemetrii wysłane** i wybierz przedział czasowy **Ostatnia godzina**. Wykres pokazuje zagregowaną liczbę komunikatów wysłanych przez urządzenie symulowane:
 
-![Przechodzenie do metryk usługi IoT Hub](media/tutorial-connectivity/metrics-portal.png)
-
-Wybierz centrum IoT w menu rozwijanym **Zasób**, a następnie wybierz metrykę **Komunikaty telemetrii wysłane** i wybierz przedział czasowy **Ostatnia godzina**. Wykres pokazuje zagregowaną liczbę komunikatów wysłanych przez urządzenie symulowane:
-
-![Wyświetlanie metryk usługi IoT Hub](media/tutorial-connectivity/metrics-active.png)
+![Wyświetlanie metryk usługi IoT Hub](media/tutorial-connectivity/metrics-portal.png)
 
 Po uruchomieniu urządzenia symulowanego udostępnienie metryk zajmuje kilka minut.
 

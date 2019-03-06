@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 359606c6dfe75d9910565cffa555b1e52d29267d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448534"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594087"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Jak wybrać urządzenie wejściowe audio za pomocą zestawu SDK usługi Mowa 
+# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Wybieranie urządzenia wejściowego audio za pomocą zestawu SDK usługi Mowa
 
 Wersja 1.3.0 zestawu SDK usługi Mowa wprowadza interfejs API umożliwiający wybranie wejścia audio. W tym artykule opisano sposób uzyskiwania identyfikatorów urządzeń audio podłączonych do systemu.
 Następnie można ich użyć w zestawie SDK usługi Mowa do skonfigurowania urządzenia audio za pomocą obiektu `AudioConfig`:
@@ -367,3 +367,13 @@ Na przykład instrukcja
 ```
 
 umożliwia użycie zestawu słuchawkowego Bluetooth przez aplikację z obsługą mowy.
+
+## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"]
+> [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)
+
+## <a name="see-also"></a>Zobacz też
+
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

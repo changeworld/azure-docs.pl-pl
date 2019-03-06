@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 8c3883ae6dd2928fb6cc4f22510e7992daac7793
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 60d4d9224a6a70c8fa2702dede8721f742fa6256
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015308"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434950"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska integration runtime w usłudze Azure Data Factory  
 **Środowisko Integration runtime** jest infrastruktura obliczeniowa używana przez usługę Azure Data Factory, aby zapewnić różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowiska integration Runtime oferowane przez usługę Data Factory:
@@ -26,16 +26,18 @@ ms.locfileid: "54015308"
 - Infrastruktura Integration Runtime (Self-hosted)
 - Azure SSIS Integration Runtime
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Aby uzyskać stan wystąpienia środowiska integration Runtime (IR), uruchom następujące polecenie programu PowerShell: 
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
 Polecenie cmdlet zwraca różne informacje dla różnych typów środowiska integration runtime. W tym artykule opisano, właściwości i Stany dla każdego typu środowiska integration runtime.  
 
 ## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
-Zasób obliczeniowy do środowiska Azure integration runtime jest w pełni zarządzana elastycznie na platformie Azure. Poniższa tabela zawiera opis właściwości zwrócony przez **Get-AzureRmDataFactoryV2IntegrationRuntime** polecenia:
+Zasób obliczeniowy do środowiska Azure integration runtime jest w pełni zarządzana elastycznie na platformie Azure. Poniższa tabela zawiera opis właściwości zwrócony przez **Get AzDataFactoryV2IntegrationRuntime** polecenia:
 
 ### <a name="properties"></a>Właściwości
 Poniższa tabela zawiera opisy właściwości zwracany przez polecenie cmdlet środowiska Azure integration Runtime:
@@ -58,7 +60,7 @@ W poniższej tabeli przedstawiono możliwe stany środowiska Azure integration r
 | Offline | Produkt Azure integration runtime jest w trybie offline z powodu błędu wewnętrznego. |
 
 ## <a name="self-hosted-integration-runtime"></a>Infrastruktura Integration Runtime (Self-hosted)
-Ta sekcja zawiera opis właściwości zwracany przez polecenie cmdlet Get-AzureRmDataFactoryV2IntegrationRuntime. 
+Ta sekcja zawiera opis właściwości zwracany przez polecenie cmdlet Get-AzDataFactoryV2IntegrationRuntime. 
 
 > [!NOTE] 
 > Zwrócone właściwości i stan zawierają informacje dotyczące ogólnej własnego środowiska integration runtime i każdego węzła w środowisku uruchomieniowym.  
@@ -86,7 +88,7 @@ Wartość domyślna równoczesnych zadań, których limit jest ustawiony na pods
 
 Możesz skalować w poziomie przez odpowiednie zwiększenie liczby węzłów. Wraz ze zwiększeniem liczby węzłów limit współbieżnych zadań jest sumą wartości limit współbieżnych zadania wszystkich dostępnych węzłów.  Na przykład jeśli jeden węzeł można uruchomić maksymalnie 12 równoczesnych zadań, następnie dodając trzy węzły bardziej przypominające umożliwia uruchamianie maksymalnie 48 równoczesnych zadań (czyli 4 x 12). Firma Microsoft zaleca, zwiększ limit współbieżnych zadań, tylko wtedy, gdy zostanie wyświetlony w każdym węźle niskie użycie zasobów z wartościami domyślnymi.
 
-Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. Wybierz autor > połączeń > środowiska Integration Runtime > Edytuj > węzły > zmodyfikuj wartość równoczesnych zadań na węzeł. Możesz również użyć programu PowerShell [azurermdatafactoryv2integrationruntimenode aktualizacji](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) polecenia.
+Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. Wybierz autor > połączeń > środowiska Integration Runtime > Edytuj > węzły > zmodyfikuj wartość równoczesnych zadań na węzeł. Możesz również użyć programu PowerShell [Azdatafactoryv2integrationruntimenode aktualizacji](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) polecenia.
   
 ### <a name="status-per-node"></a>Stan (na węzeł)
 W poniższej tabeli przedstawiono możliwe stany węzeł Self-Hosted integration runtime:
@@ -111,10 +113,10 @@ W poniższej tabeli przedstawiono możliwe stany własnego środowiska integrati
 | Offline | Żaden węzeł nie jest w trybie online. |
 | Ograniczone | Nie wszystkie węzły w tym własne środowisko integration runtime jest w dobrej kondycji. Ten stan jest ostrzeżenie, że niektóre węzły mogą być wyłączone. Ten stan może wynikać z problemu z synchronizacją poświadczeń na węzeł dyspozytora/procesu roboczego. |
 
-Użyj **Get AzureRmDataFactoryV2IntegrationRuntimeMetric** polecenia cmdlet, aby pobrać ładunek JSON zawierającego szczegółowe Self-Hosted integration runtime właściwości i ich migawki wartości w czasie wykonywania polecenie cmdlet.
+Użyj **Get AzDataFactoryV2IntegrationRuntimeMetric** polecenia cmdlet, aby pobrać ładunek JSON zawierającego szczegółowe Self-Hosted integration runtime właściwości i ich migawki wartości w czasie wykonywania polecenia cmdlet.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
 Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojarzone z tym własnego środowiska integration runtime):
@@ -174,7 +176,7 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 | VNetId | Identyfikator sieci wirtualnej zasobów dla Twojego środowiska Azure-SSIS integration runtime do dołączenia do. |
 | Podsieć | Nazwa podsieci dla Twojego środowiska Azure-SSIS integration runtime do dołączenia do. |
 | ID | Identyfikator zasobu środowiska Azure-SSIS integration runtime. |
-| Typ | Typ (Managed/samoobsługowego-Hosted) środowiska Azure-SSIS integration runtime. |
+| Type | Typ (Managed/samoobsługowego-Hosted) środowiska Azure-SSIS integration runtime. |
 | ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym zostały utworzone fabryki danych i środowiska Azure-SSIS integration runtime. |
 | DataFactoryName | Nazwa fabryki danych platformy Azure. |
 | Name (Nazwa) | Nazwa środowiska Azure-SSIS integration runtime. |
@@ -213,7 +215,7 @@ Poniższych zrzutach ekranu przedstawiono sposób wybierania Azure-SSIS IR do mo
 Sprawdź stan Azure-SSIS IR. za pomocą skryptu, jak w poniższym przykładzie
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Więcej informacji na temat środowiska Azure-SSIS integration runtime
@@ -222,7 +224,7 @@ Zobacz następujące artykuły, aby dowiedzieć się więcej na temat środowisk
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowiska integration Runtime, ogólnie rzecz biorąc w tym Azure-SSIS IR. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
-- [Jak: Tworzenie środowiska Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 
+- [Instrukcje: Tworzenie środowiska Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
 - [Join an Azure-SSIS IR to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md) (Dołączanie środowiska IR Azure SSIS do sieci wirtualnej). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska IR Azure-SSIS do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej, tak, aby dołączyć Azure-SSIS IR do sieci wirtualnej przy użyciu witryny Azure portal. 
 

@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561199"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736587"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
 
@@ -55,10 +55,10 @@ Aby ukończyć ten przewodnik Szybki start:
 
 Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK, narzędzi programu Visual Studio i platformy Docker oraz uruchomieniu platformy Docker utwórz pięciowęzłowy lokalny klaster projektowy.
 
-> [!IMPORTANT]
-> Utworzenie klastra **wymaga**  uruchomienia platformy Docker.
+> [!Note]
+> Powodem uruchamiania platformy Docker podczas tworzenia klastra jest utworzenie klastra z włączonymi funkcjami kontenerów. Jeśli platforma Docker nie będzie uruchomiona, konieczne będzie ponowne utworzenie klastra w celu włączenia funkcji kontenerów.
+> Mimo iż nie jest to konieczne w przypadku tego przewodnika Szybki Start, instrukcja dotycząca uruchamiania platformy Docker podczas tworzenia klastra jest uwzględniona jako najlepsze rozwiązanie.
 > Aby sprawdzić, czy platforma Docker jest uruchomiona, otwórz okno terminalu i uruchom polecenie `docker ps`. Jeśli odpowiedź nie wskazuje na wystąpienie błędu, oznacza to, że platforma Docker jest uruchomiona i można przystąpić do tworzenia klastra.
-
 
 1. Otwórz nowe okno programu PowerShell jako administrator.
 2. Utwórz klaster projektowy za pomocą następującego polecenia programu PowerShell:

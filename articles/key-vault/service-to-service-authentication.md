@@ -6,16 +6,16 @@ author: msmbaldwin
 manager: barbkess
 services: key-vault
 ms.author: mbaldwin
-ms.date: 01/04/2019
+ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: d0ccf25ed0071e9d89b3728048435b0b657026c0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4436fc3c1bec4cdb8e301edd185f4416c931e24f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342325"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456503"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Usługa Usługa uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
 
@@ -27,7 +27,7 @@ Podczas tworzenia lokalnego przy użyciu poświadczeń dewelopera jest bezpieczn
 
 `Microsoft.Azure.Services.AppAuthentication` Biblioteki zarządza uwierzytelnianiem automatycznie, co z kolei pozwala na skoncentrowanie się na swoje rozwiązanie, a nie poświadczeń.
 
-`Microsoft.Azure.Services.AppAuthentication` Biblioteka obsługuje lokalny rozwój za pomocą programu Microsoft Visual Studio, wiersza polecenia platformy Azure lub zintegrowane uwierzytelnianie usługi Azure AD. Podczas wdrażania zasobów platformy Azure, który obsługuje tożsamości zarządzanej, biblioteka automatycznie używa [zarządzanych tożsamości dla zasobów platformy Azure](/azure/active-directory/msi-overview). Nie kodu lub zmiany konfiguracji są wymagane. Biblioteka obsługuje również bezpośredniemu wykorzystaniu usługi Azure AD [poświadczeń klienta](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) gdy tożsamość zarządzana nie jest dostępna lub nie można ustalić kontekstu zabezpieczeń dla deweloperów podczas tworzenia lokalnego.
+`Microsoft.Azure.Services.AppAuthentication` Biblioteka obsługuje lokalny rozwój za pomocą programu Microsoft Visual Studio, wiersza polecenia platformy Azure lub zintegrowane uwierzytelnianie usługi Azure AD. Podczas wdrażania zasobów platformy Azure, który obsługuje tożsamości zarządzanej, biblioteka automatycznie używa [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/msi-overview.md). Nie kodu lub zmiany konfiguracji są wymagane. Biblioteka obsługuje również bezpośredniemu wykorzystaniu usługi Azure AD [poświadczeń klienta](../azure-resource-manager/resource-group-authenticate-service-principal.md) gdy tożsamość zarządzana nie jest dostępna lub nie można ustalić kontekstu zabezpieczeń dla deweloperów podczas tworzenia lokalnego.
 
 ## <a name="using-the-library"></a>Za pomocą biblioteki
 
@@ -52,7 +52,7 @@ Dla aplikacji .NET jest najprostszym sposobem, aby pracować z tożsamości zarz
 
 `AzureServiceTokenProvider` Klasa przechowuje w pamięci podręcznej tokenu w pamięci i przywraca je z usługi Azure AD tylko przed jego wygaśnięciem. W związku z tym, nie musisz już do sprawdzenia wygaśnięcia przed wywołaniem `GetAccessTokenAsync` metody. Po prostu Wywołaj metodę, gdy użytkownik chce użyć tokenu. 
 
-`GetAccessTokenAsync` Metoda wymaga identyfikatora zasobu. Aby dowiedzieć się więcej, zobacz [którymi usługami platformy Azure obsługują zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/msi-overview).
+`GetAccessTokenAsync` Metoda wymaga identyfikatora zasobu. Aby dowiedzieć się więcej, zobacz [którymi usługami platformy Azure obsługują zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/msi-overview.md).
 
 ## <a name="samples"></a>Przykłady
 
@@ -71,9 +71,6 @@ Dla wdrożenia lokalnego istnieją dwa scenariusze uwierzytelniania podstawowego
 - [Uwierzytelniania do usług platformy Azure](#authenticating-to-azure-services)
 - [Uwierzytelnianie na niestandardowych usług](#authenticating-to-custom-services)
 
-W tym miejscu znajdziesz informacje dotyczące każdego scenariusza i obsługiwanych narzędzi.
-
-
 ### <a name="authenticating-to-azure-services"></a>Uwierzytelniania do usług platformy Azure
 
 Lokalne maszyny nie obsługują zarządzanych tożsamości dla zasobów platformy Azure.  W rezultacie `Microsoft.Azure.Services.AppAuthentication` biblioteki wykorzystuje swoje poświadczenia dla deweloperów do uruchamiania w swojego lokalnego środowiska deweloperskiego. Po wdrożeniu rozwiązania na platformie Azure biblioteka używa tożsamości zarządzanej, aby przełączyć się do przepływie przyznawania poświadczeń klienta OAuth 2.0.  Oznacza to, że możesz przetestować ten sam kod lokalnie i zdalnie bez obaw.
@@ -82,17 +79,17 @@ Na potrzeby lokalnego programowania dla `AzureServiceTokenProvider` pobiera toke
 
 ### <a name="authenticating-with-visual-studio"></a>Uwierzytelnianie za pomocą programu Visual Studio
 
-Aby korzystać z programu Visual Studio, należy zweryfikować:
+Uwierzytelnianie za pomocą programu Visual Studio ma następujące wymagania wstępne:
 
-1. Po zainstalowaniu [v15.5 programu Visual Studio 2017](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/) lub nowszej.
+1. [Visual Studio 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/) lub nowszej.
 
-2. [Rozszerzenie do uwierzytelniania aplikacji dla programu Visual Studio](https://go.microsoft.com/fwlink/?linkid=862354) jest zainstalowany.
+2. [Rozszerzenie do uwierzytelniania aplikacji dla programu Visual Studio](https://go.microsoft.com/fwlink/?linkid=862354)dostępna jako osobne rozszerzenie dla programu Visual Studio 2017 Update 5 i powiązane z produktu w aktualizacji 6 lub nowszy. Aktualizacji 6 lub nowszym instalacja rozszerzenia uwierzytelniania aplikacji można sprawdzić, wybierając pozycję Narzędzia programowanie na platformie Azure w Instalatorze programu Visual Studio.
  
-3. Logowanie do programu Visual Studio i wybrano konto będzie używane dla rozwoju lokalnego. Użyj **narzędzia**&nbsp;>&nbsp;**opcje**&nbsp;>&nbsp;**uwierzytelnianie usługi platformy Azure**wybrać konto rozwoju lokalnego. 
+Zaloguj się do programu Visual Studio i użyć **narzędzia**&nbsp;>&nbsp;**opcje**&nbsp;>&nbsp;**usługi platformy Azure Uwierzytelnianie** wybierz konto dla wdrożenia lokalnego. 
 
 Jeśli napotkasz problemy przy użyciu programu Visual Studio, takie jak błędy dotyczące pliku dostawcę tokenów, należy dokładnie przejrzeć następujące kroki. 
 
-Również może być konieczne ponowne uwierzytelnianie tokenu programu dla deweloperów.  Aby to zrobić, przejdź do **narzędzia**&nbsp;>&nbsp;**opcje**>**Azure&nbsp;usługi&nbsp;uwierzytelniania**  i poszukaj **ponowne uwierzytelnienie** łącze w ramach wybranego konta.  Wybierz go do uwierzytelniania. 
+Również może być konieczne ponowne uwierzytelnianie tokenu programu dla deweloperów. Aby to zrobić, przejdź do **narzędzia**&nbsp;>&nbsp;**opcje**>**Azure&nbsp;usługi&nbsp;uwierzytelniania**  i poszukaj **ponowne uwierzytelnienie** łącze w ramach wybranego konta.  Wybierz go do uwierzytelniania. 
 
 ### <a name="authenticating-with-azure-cli"></a>Uwierzytelnianie przy użyciu wiersza polecenia platformy Azure
 
@@ -122,7 +119,7 @@ az account list
 
 Aby użyć uwierzytelniania usługi Azure AD, upewnij się, że:
 
-- Usługi active directory w środowisku lokalnym [synchronizacje z usługą Azure AD](/azure/active-directory/connect/active-directory-aadconnect).
+- Usługi active directory w środowisku lokalnym [synchronizacje z usługą Azure AD](../active-directory/connect/active-directory-aadconnect.md).
 
 - Twój kod jest uruchomiony na komputerze przyłączonym do domeny.
 
@@ -162,7 +159,7 @@ Alternatywnie można uwierzytelnić przy użyciu tożsamości przypisanych przez
 
 Może być konieczne utworzenie poświadczeń usługi Azure AD klienta do uwierzytelniania. Typowe przykłady obejmują:
 
-1. Kod jest wykonywany na lokalne Środowisko deweloperskie, ale nie w ramach tożsamości dla deweloperów.  Usługa Service Fabric, na przykład używa [konto NetworkService](/azure/service-fabric/service-fabric-application-secret-management) dla wdrożenia lokalnego.
+1. Kod jest wykonywany na lokalne Środowisko deweloperskie, ale nie w ramach tożsamości dla deweloperów.  Usługa Service Fabric, na przykład używa [konto NetworkService](../service-fabric/service-fabric-application-secret-management.md) dla wdrożenia lokalnego.
  
 2. Kod jest wykonywany na lokalne Środowisko deweloperskie i uwierzytelniania użytkownika to usługa niestandardowa, więc nie możesz użyć swojej tożsamości dla deweloperów. 
  
@@ -170,7 +167,7 @@ Może być konieczne utworzenie poświadczeń usługi Azure AD klienta do uwierz
 
 Do korzystania z certyfikatu, aby zalogować się do usługi Azure AD:
 
-1. Tworzenie [certyfikatu nazwy głównej usługi](/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
+1. Tworzenie [certyfikatu nazwy głównej usługi](../azure-resource-manager/resource-group-authenticate-service-principal.md). 
 
 2. Wdrażanie certyfikatu do jednej *LocalMachine* lub *CurrentUser* przechowywania. 
 
@@ -187,7 +184,7 @@ Do korzystania z certyfikatu, aby zalogować się do usługi Azure AD:
 
 Aby zalogować się przy użyciu usługi Azure AD udostępnione wpisu tajnego poświadczeń:
 
-1. Tworzenie [jednostki usługi przy użyciu hasła](/azure/azure-resource-manager/resource-group-authenticate-service-principal) i przyznać jej dostęp do usługi Key Vault. 
+1. Tworzenie [jednostki usługi przy użyciu hasła](../azure-resource-manager/resource-group-authenticate-service-principal.md) i przyznać jej dostęp do usługi Key Vault. 
 
 2. Ustaw zmienną środowiskową o nazwie **AzureServicesAuthConnectionString** do:
 
@@ -224,5 +221,5 @@ Obsługiwane są następujące opcje:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [zarządzanych tożsamości dla zasobów platformy Azure](/azure/active-directory/managed-identities-azure-resources/).
-- Dowiedz się więcej o [scenariusze uwierzytelniania usługi Azure AD](/azure/active-directory/develop/active-directory-authentication-scenarios).
+- Dowiedz się więcej o [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml).
+- Dowiedz się więcej o [scenariusze uwierzytelniania usługi Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md).

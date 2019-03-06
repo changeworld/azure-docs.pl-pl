@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 549ef0d073a740edf700c54d02a0d9ef247db0b7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8197d091763709282c42379a7ca0ea802e5c6fdf
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245092"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886795"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>Przykład: Sposób wykrywania języka przy użyciu analizy tekstu
 
@@ -29,7 +29,7 @@ Ta możliwość jest przydatna w przypadku magazynów zawartości przechowujący
 
 Dokumenty JSON muszą mieć następujący format: identyfikator, tekst
 
-Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Oto przykład zawartości, dla której można wykrywać język.
+Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Oto przykład zawartości, dla której można wykrywać język.
 
    ```
     {

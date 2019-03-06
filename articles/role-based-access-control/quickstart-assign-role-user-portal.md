@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 41f1c6dc8904f167f34ea72aeb9b3866504b7087
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9352130eeeb68a87947450cb5616aa59e8e99ae9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341304"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807375"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal
 
@@ -38,9 +38,9 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-1. Na liście nawigacji wybierz pozycję **Grupy zasobów**.
+1. Na liście nawigacji kliknij pozycję **Grupy zasobów**.
 
-1. Wybierz pozycję **Dodaj**, aby otworzyć blok **Grupa zasobów**.
+1. Kliknij pozycję **Dodaj**, aby otworzyć blok **Grupa zasobów**.
 
    ![Dodawanie nowej grupy zasobów](./media/quickstart-assign-role-user-portal/resource-group.png)
 
@@ -48,9 +48,9 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 1. Wybierz subskrypcję i lokalizację.
 
-1. Wybierz pozycję **Utwórz**, aby utworzyć grupę zasobów.
+1. Kliknij pozycję **Utwórz**, aby utworzyć grupę zasobów.
 
-1. Wybierz pozycję **Odśwież**, aby odświeżyć listę grup zasobów.
+1. Kliknij pozycję **Odśwież**, aby odświeżyć listę grup zasobów.
 
    Nowa grupa zasobów zostanie wyświetlona na liście grup zasobów.
 
@@ -60,17 +60,19 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
 
-1. Na liście **Grupy zasobów** wybierz nową grupę zasobów **rbac-resource-group**.
+1. Na liście **Grupy zasobów** kliknij nową grupę zasobów **rbac-resource-group**.
 
-1. Wybierz pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
-1. Wybierz kartę **Przypisania ról**, aby wyświetlić bieżącą listę przypisań ról.
+1. Kliknij kartę **Przypisania ról**, aby wyświetlić bieżącą listę przypisań ról.
 
    ![Blok Kontrola dostępu (IAM) dla grupy zasobów](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Wybierz pozycję **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
+1. Kliknij pozycję **Dodaj** > **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
 
    Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
+
+   ![Menu Dodaj](./media/role-assignments-portal/add-menu.png)
 
    ![Okienko Dodawanie przypisania roli](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
@@ -78,7 +80,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
 1. Z listy **Wybierz** wybierz siebie lub innego użytkownika.
 
-1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+1. Kliknij pozycję **Zapisz**, aby utworzyć przypisanie roli.
 
    Po kilku chwilach użytkownik zostanie przypisany do roli Współautor maszyny wirtualnej w zakresie grupy zasobów rbac-resource-group.
 
@@ -90,25 +92,25 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. Na liście przypisań ról dodaj znacznik wyboru obok użytkownika z rolą Współautor maszyny wirtualnej.
 
-1. Wybierz pozycję **Usuń**.
+1. Kliknij pozycję **Usuń**.
 
    ![Komunikat dotyczący usuwania przypisania roli](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. W komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
+1. W wyświetlonym komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
 
 ## <a name="clean-up"></a>Czyszczenie
 
-1. Na liście nawigacji wybierz pozycję **Grupy zasobów**.
+1. Na liście nawigacji kliknij pozycję **Grupy zasobów**.
 
-1. Wybierz pozycję **rbac-resource-group**, aby otworzyć grupę zasobów.
+1. Kliknij pozycję **rbac-resource-group**, aby otworzyć grupę zasobów.
 
-1. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów.
+1. Kliknij pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów.
 
    ![Usuwanie grupy zasobów](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
 1. W bloku **Czy na pewno chcesz usunąć** wpisz nazwę grupy zasobów: **rbac-resource-group**.
 
-1. Wybierz pozycję **Usuń**, aby usunąć grupę zasobów.
+1. Kliknij pozycję **Usuń**, aby usunąć grupę zasobów.
 
 ## <a name="next-steps"></a>Następne kroki
 

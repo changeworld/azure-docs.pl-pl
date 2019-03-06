@@ -9,15 +9,15 @@ ms.author: johndeu
 ms.date: 02/09/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f07b2d128bd770854b7c240fd3c964d880029d3c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c5c5d90045e1697f698895e522ffda47d47565
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999015"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447725"
 ---
 # <a name="recommended-on-premises-encoders"></a>Zalecane kodery lokalne
-Gdy strumieniowo na żywo za pomocą usługi Azure Media Services, można określić, jak chcesz kanał w taki sposób, aby otrzymywać strumień wejściowy. Jeśli zdecydujesz się koder lokalnej za pomocą kanału kodowania na żywo, koder ma wypychać strumienia wysokiej jakości jedną szybkością transmisji bitów jako dane wyjściowe. Jeśli zdecydujesz się koder lokalnej za pomocą przebiegu za pośrednictwem kanału, koder ma wypychać strumień o wielokrotnej szybkości transmisji bitów jako dane wyjściowe z wszystkich klas żądaną produktu wyjściowego. Aby uzyskać więcej informacji, zobacz [przesyłania strumieniowego przy użyciu lokalnych koderów na żywo](media-services-live-streaming-with-onprem-encoders.md).
+Gdy strumieniowo na żywo za pomocą usługi Azure Media Services, można określić, jak chcesz kanał w taki sposób, aby otrzymywać strumień wejściowy. Jeśli zdecydujesz się na koder lokalnie za pomocą kanału kodowania na żywo, koder ma wypychać strumienia wysokiej jakości jedną szybkością transmisji bitów jako dane wyjściowe. Jeśli zdecydujesz się na koder lokalnie za pomocą przebiegu za pośrednictwem kanału, koder ma wypychać strumień o wielokrotnej szybkości transmisji bitów jako dane wyjściowe z wszystkich klas żądaną produktu wyjściowego. Aby uzyskać więcej informacji, zobacz [transmisja strumieniowa na żywo za pomocą na lokalne kodery](media-services-live-streaming-with-onprem-encoders.md).
 
 Usługa Azure Media Services zaleca się przy użyciu jednej z poniższych koderów na żywo, które mają RTMP jako dane wyjściowe:
 - Adobe Flash Media Live Encoder 3.2
@@ -44,8 +44,8 @@ Usługa Azure Media Services zaleca się przy użyciu jednej z następujących k
 > [!NOTE]
 > Koder na żywo może wysyłać strumień z jedną szybkością transmisji bitów do przebiegu za pośrednictwem kanału, ale ta konfiguracja nie jest zalecane, ponieważ nie zezwala na adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klienta.
 
-## <a name="how-to-become-an-on-prem-encoder-partner"></a>Jak zostać partnerem usługi Encoder w warstwie lokalnej
-Jako partner usługi Azure Media Services Encoder w warstwie lokalnej usługi Media Services wspiera produktu przez polecanie koder klientom korporacyjnym. Aby zostać partnerem encoder w warstwie Premium, należy sprawdzić zgodność koder w warstwie Premium z usługą Media Services. Aby to zrobić, wykonaj następujące weryfikacji:
+## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak partnerem w lokalnym kodera
+Jako usługi Azure Media Services w partner kodera lokalnie Media Services wspiera produktu przez polecanie koder klientom korporacyjnym. Aby zostać partnerem kodera na lokalne, należy sprawdzić zgodność na koder lokalnych z usługą Media Services. Aby to zrobić, wykonaj następujące weryfikacji:
 
 Przekaż za pośrednictwem weryfikacji kanału
 1. Tworzenie lub przejdź do konta usługi Azure Media Services

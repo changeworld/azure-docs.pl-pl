@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 8b8f7aa559fa8b9adc805636c377f31dd252687b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b6242475376a37abb1bce6994f7c31c7adfee859
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309608"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443066"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -46,7 +46,7 @@ Można włączyć i zarządzać metryki i Diagnostyka danych telemetrycznych rej
 - Interfejs API REST usługi Azure Monitor
 - Szablon usługi Azure Resource Manager
 
-Po włączeniu, metryki i Diagnostyka, rejestrowanie, należy określić obiekt docelowy zasobów platformy Azure zbieranie danych telemetrycznych diagnotics. Dostępne opcje to:
+Po włączeniu, metryki i Diagnostyka, rejestrowanie, należy określić obiekt docelowy zasobów platformy Azure zbieranie danych telemetrycznych diagnostyki. Dostępne opcje to:
 
 - Azure SQL Analytics
 - Azure Event Hubs

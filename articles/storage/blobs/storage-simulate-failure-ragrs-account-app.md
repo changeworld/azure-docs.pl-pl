@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2d86c0c4838fb2ae9d839e64a067824019133d8b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0cbb4d2bc6449dc1cf12a374085b429743224995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024437"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872883"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Samouczek: Symulowanie błędu podczas uzyskiwania dostępu do odczytu do magazynu nadmiarowego
 
@@ -75,7 +75,7 @@ Po zakończeniu wybierz pozycję **Plik** i **Zapisz**, aby zapisać swoje zmian
 
 ### <a name="interrupting-the-application"></a>Zakłócania pracy aplikacji
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7](#tab/dotnet-python-java-v7)
 
 Uruchom aplikację w swoim edytorze IDE lub powłoce.
 
@@ -83,7 +83,7 @@ Gdy aplikacja rozpocznie odczyt z podstawowego punktu końcowego, naciśnij **do
 
 ![Aplikacja scenariusza](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java w wersji 10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java w wersji 10](#tab/Java-v10)
 
 Uruchom aplikację w swoim edytorze IDE lub powłoce.
 
@@ -113,7 +113,7 @@ Usuń komentarz z poniższych wierszy i zastąp element `STORAGEACCOUNTNAME` naz
          }
 ```
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7](#tab/dotnet-python-java-v7)
 
 Aby wznowić działanie aplikacji, naciśnij **dowolny klawisz**.
 
@@ -123,7 +123,7 @@ Jest to wzorzec [wyłącznika](https://docs.microsoft.com/azure/architecture/pat
 
 ![Wklejanie dostosowanej reguły](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java w wersji 10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java w wersji 10](#tab/Java-v10)
 
 Teraz, gdy został wprowadzony błąd, wprowadź **G**, aby go przetestować.
 
@@ -133,7 +133,7 @@ Uzyskasz wtedy informacje, że korzysta on z dodatkowego potoku, w przeciwieńst
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Symulowanie przywracania podstawowego punktu końcowego
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7](#tab/dotnet-python-java-v7)
 
 Po ustawieniu niestandardowej reguły programu Fiddler w poprzednim kroku żądania kierowane do podstawowego punktu końcowego kończą się niepowodzeniem.
 
@@ -153,7 +153,7 @@ Po zakończeniu naciśnij **dowolny klawisz**, aby wznowić działanie aplikacji
 
 ![Wznawianie działania aplikacji](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java w wersji 10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java w wersji 10](#tab/Java-v10)
 
 Po ustawieniu niestandardowej reguły programu Fiddler w poprzednim kroku żądania kierowane do podstawowego punktu końcowego kończą się niepowodzeniem.
 
@@ -173,11 +173,11 @@ Możesz utworzyć nieprawidłową trasę statyczną dla wszystkich żądań kier
 
 ### <a name="start-and-pause-the-application"></a>Uruchamianie i zatrzymywanie aplikacji
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7](#tab/dotnet-python-java-v7)
 
 Uruchom aplikację w swoim edytorze IDE lub powłoce. Gdy aplikacja rozpocznie odczyt z podstawowego punktu końcowego, naciśnij **dowolny klawisz** w oknie konsoli, aby wstrzymać jej działanie.
 
-# <a name="java-v10-tabjava-v10"></a>[Java w wersji 10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java w wersji 10](#tab/Java-v10)
 
 Ponieważ możesz kontrolować aplikację przykładową, nie musisz jej przerywać, aby przetestować błąd.
 
@@ -210,13 +210,13 @@ Aby dodać trasę statyczną dla hosta docelowego, wpisz poniższe polecenie w w
 
 Zastąp element `<destination_ip>` adresem IP konta magazynu, a element `<gateway_ip>` adresem IP hosta lokalnego.
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7](#tab/dotnet-python-java-v7)
 
 Aby wznowić działanie aplikacji, naciśnij **dowolny klawisz**.
 
 Po ponownym uruchomieniu aplikacji zaczną występować błędy żądań kierowanych do podstawowego punktu końcowego. Aplikacja próbuje ponownie połączyć się z podstawowym punktem końcowym pięć razy. Po osiągnięciu progu błędów w pięciu próbach żąda ona obrazu od pomocniczego punktu końcowego tylko do odczytu. Po pomyślnym pobraniu obrazu 20 razy z pomocniczego punktu końcowego aplikacja próbuje połączyć się z podstawowym punktem końcowym. Jeśli podstawowy punkt końcowy jest nadal nieosiągalny, aplikacja wznawia odczyt z pomocniczego punktu końcowego. Jest to wzorzec [wyłącznika](/azure/architecture/patterns/circuit-breaker) opisany w poprzednim samouczku.
 
-# <a name="java-v10-tabjava-v10"></a>[Java w wersji 10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java w wersji 10](#tab/Java-v10)
 
 Teraz, gdy został wprowadzony błąd, wprowadź **G**, aby go przetestować. Uzyskasz wtedy informacje, że korzysta on z dodatkowego potoku, w przeciwieństwie do podstawowego potoku.
 
@@ -236,14 +236,14 @@ Aby usunąć trasę statyczną hosta docelowego, konto magazynu, wpisz poniższe
 
 `route delete <destination_ip>`
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python i Java w wersji 7](#tab/dotnet-python-java-v7)
 
 Naciśnij **dowolny klawisz**, aby wznowić działanie aplikacji. Aplikacja będzie kontynuować odczytywanie z podstawowego punktu końcowego do momentu osiągnięcia 999 trafień.
 
 ![Wznawianie działania aplikacji](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-# <a name="java-v10-tabjava-v10"></a>[Java w wersji 10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java w wersji 10](#tab/Java-v10)
 
 Wprowadź **G**, aby przetestować pobieranie. Aplikacja będzie zgłaszać, że teraz ponownie używa podstawowego potoku.
 

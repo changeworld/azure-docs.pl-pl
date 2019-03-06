@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5ade16bbd45203892cd9a3117dd52471884cf700
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098735"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455823"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
 
@@ -42,6 +42,8 @@ Można zainstalować składniki bezpłatnej i bez licencji i płatna lub licencj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
 -   [Subskrypcja platformy Azure](https://azure.microsoft.com/)
@@ -54,7 +56,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
 ## <a name="instructions"></a>Instrukcje
 
-1.  Pobierz i zainstaluj [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) (w wersji 5.4 lub nowszej).
+1.  Pobierz i zainstaluj [programu Azure PowerShell](/powershell/azure/install-az-ps).
 
 1.  Przygotuj skrypt instalacji niestandardowej i jego skojarzone pliki (na przykład, .bat, .cmd, .exe, .dll, msi lub ps1).
 
@@ -103,15 +105,15 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        ![Wprowadź sygnaturę dostępu współdzielonego](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-       W przypadku udostępniania lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu programu PowerShell, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, uruchomić `Set-AzureRmDataFactoryV2IntegrationRuntime` polecenia cmdlet z identyfikatora URI sygnatury dostępu Współdzielonego kontenera jako wartość dla nowych `SetupScriptContainerSasUri` parametru. Na przykład:
+       W przypadku udostępniania lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu programu PowerShell, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, uruchomić `Set-AzDataFactoryV2IntegrationRuntime` polecenia cmdlet z identyfikatora URI sygnatury dostępu Współdzielonego kontenera jako wartość dla nowych `SetupScriptContainerSasUri` parametru. Na przykład:
 
        ```powershell
-       Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
+       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
                                                   -Name $MyAzureSsisIrName `
                                                   -ResourceGroupName $MyResourceGroupName `
                                                   -SetupScriptContainerSasUri $MySetupScriptContainerSasUri
 
-       Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
+       Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
                                                     -Name $MyAzureSsisIrName `
                                                     -ResourceGroupName $MyResourceGroupName
        ```
@@ -160,7 +162,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
     ![Folderów w folderze scenariusze użytkownika](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-    e. Aby wypróbować te przykłady Instalacja niestandardowa, skopiuj i Wklej zawartość z wybrany folder do kontenera. Po aprowizacji lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu programu PowerShell, uruchom `Set-AzureRmDataFactoryV2IntegrationRuntime` polecenia cmdlet z identyfikatora URI sygnatury dostępu Współdzielonego kontenera jako wartość dla nowych `SetupScriptContainerSasUri` parametru.
+    e. Aby wypróbować te przykłady Instalacja niestandardowa, skopiuj i Wklej zawartość z wybrany folder do kontenera. Po aprowizacji lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu programu PowerShell, uruchom `Set-AzDataFactoryV2IntegrationRuntime` polecenia cmdlet z identyfikatora URI sygnatury dostępu Współdzielonego kontenera jako wartość dla nowych `SetupScriptContainerSasUri` parametru.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 8e4f9e76baf07e6ea2cb4cccb63ed0a9add5d767
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 12ccb4978a8cfbaa7dede8d0093c78da05295fec
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012049"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410013"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurowanie oświadczenia grupy dla aplikacji przy użyciu usługi Azure Active Directory (publiczna wersja zapoznawcza)
 
@@ -26,8 +26,8 @@ Usługa Azure Active Directory może zapewnić użytkownikom informacje dotyczą
 - Grupy identyfikowane przez ich usługi Azure Active Directory identyfikatora obiektu (OID) (dostępne ogólnie)
 - Grupy określone przez element SAMAccountName lub identyfikatora GroupSID, Active Directory (AD) zsynchronizowane, grup i użytkowników (publiczna wersja zapoznawcza)
 
->[!Note]
->Obsługa użycia nazwy i w środowisku lokalnym identyfikatory zabezpieczeń (SID) umożliwiających przenoszenie istniejących aplikacji z usług AD FS.    Grupy zarządzane w usłudze Azure AD nie zawierają atrybuty, które są niezbędne do emitowania te oświadczenia.
+> [!Note]
+> Obsługa użycia nazwy i w środowisku lokalnym identyfikatory zabezpieczeń (SID) umożliwiających przenoszenie istniejących aplikacji z usług AD FS.    Grupy zarządzane w usłudze Azure AD nie zawierają atrybuty, które są niezbędne do emitowania te oświadczenia.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-idps"></a>Oświadczenia grupy dla aplikacji, migrowanie z usług AD FS i innych dostawców tożsamości
 
@@ -42,8 +42,8 @@ Obsługiwane formaty oświadczenia grupy są:
 - **NetbiosDomain\samAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
 - **DNSDomainName\samAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
 
->[!NOTE]
->Atrybuty SAMAccountName i OnPremisesGroupSID są dostępne tylko w obiektach grupy synchronizowane z usługi Active Directory.   Nie są dostępne dla grup utworzonych w usłudze Azure Active Directory lub usługi Office 365.   Aplikacje, które są zależne od atrybutów grupy lokalnej pobranie tylko grupy zsynchronizowane.
+> [!NOTE]
+> Atrybuty SAMAccountName i OnPremisesGroupSID są dostępne tylko w obiektach grupy synchronizowane z usługi Active Directory.   Nie są dostępne dla grup utworzonych w usłudze Azure Active Directory lub usługi Office 365.   Aplikacje, które są zależne od atrybutów grupy lokalnej pobranie tylko grupy zsynchronizowane.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Opcje dla aplikacji korzystających ze informacje o grupie
 
@@ -57,7 +57,7 @@ Jednak jeśli już istniejąca aplikacja oczekuje na korzystanie z informacji o 
 - Jeśli aplikacja jest skonfigurowane do otrzymywania atrybuty grupy, które są synchronizowane z usługi Active Directory, a grupy nie zawierają te atrybuty nie będą uwzględniane w oświadczeniach.
 - Grupy oświadczenia w tokenach Dołącz grupy zagnieżdżone.   Jeśli użytkownik jest członkiem GroupB GroupB jest elementem członkowskim GroupA, oświadczenia grupy dla użytkownika będzie zawierać zarówno GroupA, jak i GroupB. Organizacje mające duże użycie zagnieżdżonych grup i użytkowników z dużą liczbą członkostwa w grupach liczby grup token na liście można powiększać rozmiar tokenu.   Usługa Azure Active Directory ogranicza liczbę grup, które będzie naliczana w tokenie do 150 dla asercji SAML i 200 dla tokenu JWT.
 
->Wymagania wstępne dotyczące korzystania z atrybuty grupy synchronizowane z usługą Active Directory:   Grupy musi być synchronizowane z usługi Active Directory za pomocą usługi Azure AD Connect.
+> Wymagania wstępne dotyczące korzystania z atrybuty grupy synchronizowane z usługą Active Directory:   Grupy musi być synchronizowane z usługi Active Directory za pomocą usługi Azure AD Connect.
 
 Istnieją dwie instrukcje konfigurowania usługi Azure Active Directory, aby emitować nazwy grupy dla grupy usługi Active Directory.
 
@@ -100,21 +100,21 @@ Aby emitować grup przy użyciu usługi Active Directory atrybutów zamiast iden
 
 ![oświadczenia interfejsu użytkownika](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-Niektóre aplikacje wymagają informacji o członkostwie grupy pojawią się w oświadczenie "roli". Grupy użytkowników może opcjonalnie emitować jako role, zaznaczając pole "Emitować grup, które oświadczenia roli".  
+Niektóre aplikacje wymagają informacji o członkostwie grupy pojawią się w oświadczenie "roli". Grupy użytkowników może opcjonalnie emitować jako role, zaznaczając pole "Emitować grup, które oświadczenia roli".
 
 ![oświadczenia interfejsu użytkownika](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
->[!NOTE]
->Jeśli jest używana opcja do emitowania danych grupy jako role, tylko grupy zostaną wyświetlone w oświadczenie roli.  Wszystkie role aplikacji, które są przypisane do użytkownika nie będą widoczne w oświadczenie roli.
+> [!NOTE]
+> Jeśli jest używana opcja do emitowania danych grupy jako role, tylko grupy zostaną wyświetlone w oświadczenie roli.  Wszystkie role aplikacji, które są przypisane do użytkownika nie będą widoczne w oświadczenie roli.
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Konfigurowanie platformy Azure rejestrowanie aplikacji usługi AD dla grupy atrybutów  
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Konfigurowanie platformy Azure rejestrowanie aplikacji usługi AD dla grupy atrybutów
 
 Można również skonfigurować oświadczenia grupy w [opcjonalnych oświadczeń](../../active-directory/develop/active-directory-optional-claims.md) części [Manifest aplikacji](../../active-directory/develop/reference-app-manifest.md).
 
  1. W portalu usługi -> Azure Active Directory -> Aplikacja rejestracje -> Wybierz aplikacji -> manifestu
 
  2. Włączyć oświadczenia członkostwo grupy, zmieniając groupMembershipClaim
- 
+
     Prawidłowe wartości to:
 
     - "Wszystkie"
@@ -124,10 +124,10 @@ Można również skonfigurować oświadczenia grupy w [opcjonalnych oświadczeń
 
     Na przykład:
 
-    ```
+    ```json
     "groupMembershipClaims": "SecurityGroup"
     ```
- 
+
     Domyślnie, których identyfikatory obiektów grupy będzie obliczanie w grupie wartości oświadczenia.  Aby zmodyfikować wartość oświadczenia, zawierają atrybuty grupy lokalnej lub zmienić typ oświadczenia roli, należy użyć OptionalClaims konfiguracji w następujący sposób:
 
  3. Ustaw oświadczenia opcjonalny konfiguracji nazwę grupy.
@@ -138,12 +138,12 @@ Można również skonfigurować oświadczenia grupy w [opcjonalnych oświadczeń
     - accessToken dla tokenu dostępu OAuth/OIDC
     - Saml2Token tokeny SAML.
 
-    >[!NOTE]
-    >Typ Saml2Token dotyczy zarówno SAML1.1 i SAML2.0 tokeny format  
+    > [!NOTE]
+    > Typ Saml2Token dotyczy zarówno SAML1.1 i SAML2.0 tokeny format
 
-    Dla każdego odpowiedniego typu tokenu, należy zmodyfikować grupy oświadczenia do użycia w sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest w następujący sposób:
+    Dla każdego odpowiedniego typu tokenu zmodyfikuj oświadczenia grupy do użycia w sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest w następujący sposób:
 
- ```
+ ```json
  {
     "name": "groups",
     "source": null,
@@ -163,14 +163,14 @@ Można również skonfigurować oświadczenia grupy w [opcjonalnych oświadczeń
 
  Niektóre aplikacje wymagają grupy informacje o użytkowniku w oświadczenie roli.  Aby zmienić typ oświadczenia z oświadczenia grupy oświadczenie roli, należy dodać "emit_as_roles" do właściwości dodatkowych.  Wartości grupy będzie emitowane w oświadczenie roli.
 
- >[!NOTE]
- >Jeśli jest używany "emit_as_roles" wszystkie role aplikacji skonfigurowane są przypisane do użytkownika zostanie pojawia się w oświadczenie roli
+ > [!NOTE]
+ > Jeśli jest używany "emit_as_roles" wszystkie role aplikacji skonfigurowane są przypisane do użytkownika zostanie pojawia się w oświadczenie roli
 
 ### <a name="examples"></a>Przykłady
 
 Emituj grup jako nazwy grup w tokenów dostępu protokołu OAuth w formacie dnsDomainName\SAMAccountName
 
-```
+```json
 "optionalClaims": {
     "accessToken": [{
         "name": "groups",
@@ -181,7 +181,7 @@ Emituj grup jako nazwy grup w tokenów dostępu protokołu OAuth w formacie dnsD
 
 Aby emitować nazw grup, które mają zostać zwrócone w formacie netbiosDomain\samAccountName, zgodnie z rolami oświadczenia języka SAML i tokeny Identyfikatora OIDC:
 
-```
+```json
 "optionalClaims": {
     "saml2Token": [{
         "name": "groups",

@@ -1,0 +1,103 @@
+---
+title: Szybki start — tworzenie aplikacji dla systemu Android przy użyciu usługi Azure Spatial Anchors | Microsoft Docs
+description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla systemu Android przy użyciu usługi Spatial Anchors.
+author: craigktreasure
+manager: aliemami
+services: azure-spatial-anchors
+ms.author: crtreasu
+ms.date: 02/24/2019
+ms.topic: quickstart
+ms.service: azure-spatial-anchors
+ms.openlocfilehash: 64e5e78f93488b2c375c617e8857c84ba2171f00
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822399"
+---
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji systemu Android przy użyciu usługi Azure Spatial Anchors
+
+W tym przewodniku Szybki start opisano, jak utworzyć aplikację dla systemu Android przy użyciu usługi [Azure Spatial Anchors](../overview.md) w języku Java lub C++/NDK. Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARCore dla systemu Android, która może zapisywać i przywoływać kotwicę przestrzenną.
+
+Omawiane tematy:
+
+> [!div class="checklist"]
+> * Tworzenie konta usługi Spatial Anchors
+> * Konfigurowanie identyfikatora i klucza konta usługi Spatial Anchors
+> * Wdrażanie i uruchamianie na urządzeniu z systemem Android
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
+
+- Maszyna z systemem Windows lub macOS i programem <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 lub nowszym</a>.
+  - Aby skompilować przykład zestawu NDK, musisz też zainstalować zestaw NDK i narzędzia CMake 3.6 SDK Tools w programie Android Studio.
+- Urządzenie z systemem Android <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">pracujące w trybie dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">zgodne z platformą ARCore</a>.
+- Aplikacja musi być przeznaczona dla platformy ARCore 1.5 (platforma ARCore 1.6 i nowsze będą obsługiwane wkrótce)
+
+[!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
+
+## <a name="open-the-sample-project"></a>Otwieranie przykładowego projektu
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Jeśli kompilujesz przykład zestawu Android NDK, musisz pobrać plik `arcore_c_api.h` z [tego miejsca](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.5.0/libraries/include/arcore_c_api.h) i umieścić go w katalogu `Android\NDK\libraries\include`.
+
+Otwórz program Android Studio.
+
+# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+
+Wybierz opcję **Open an existing Android Studio project (Otwórz istniejący projekt Android Studio)** i wybierz projekt znajdujący się w katalogu `Android/Java/`.
+
+# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+
+Wybierz opcję **Open an existing Android Studio project (Otwórz istniejący projekt Android Studio)** i wybierz projekt znajdujący się w katalogu `Android/NDK/`.
+
+***
+
+## <a name="configure-account-identifier-and-key"></a>Konfigurowanie identyfikatora i klucza konta
+
+Następnym krokiem jest użycie identyfikatora i klucza konta zarejestrowanych wcześniej podczas konfigurowania zasobu usługi Spatial Anchors do skonfigurowania aplikacji.
+
+# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+
+Otwórz plik `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`.
+
+Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
+
+Znajdź pole `SpatialAnchorsAccountId` i zastąp wartość `Set me` identyfikatorem konta.
+
+# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+
+Otwórz plik `Android/NDK/app/src/main/cpp/spatial_services_application.cc`.
+
+Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
+
+Znajdź pole `SpatialAnchorsAccountId` i zastąp wartość `Set me` identyfikatorem konta.
+
+***
+
+## <a name="deploy-the-app-to-your-android-device"></a>Wdrażanie aplikacji na urządzeniu z systemem Android
+
+Włącz urządzenie z systemem Android, zaloguj się i połącz to urządzenie z komputerem PC za pomocą kabla USB.
+
+Wybierz polecenie **Run (Uruchom)** na pasku narzędzi programu Android Studio.
+
+![Wdrażanie i uruchamianie w programie Android Studio](./media/get-started-android/android-studio-deploy-run.png)
+
+Wybierz urządzenie z systemem Android w oknie dialogowym **Select Deployment Target (Wybierz miejsce docelowe wdrożenia)**, a następnie wybierz przycisk **OK**, aby uruchomić aplikację na urządzeniu z systemem Android.
+
+Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
+
+Zatrzymaj aplikację, wybierając polecenie **Stop (Zatrzymaj)** na pasku narzędzi programu Android Studio.
+
+![Zatrzymywanie w programie Android Studio](./media/get-started-android/android-studio-stop.png)
+
+[!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
+
+[!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
+
+> [!div class="nextstepaction"]
+> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)

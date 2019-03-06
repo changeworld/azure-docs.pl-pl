@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d451b53868dcd3253aba2a1c3118ddcc140445c3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f4e87e5602b3c77178ab5bc842705cfedf64af2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882998"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448377"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Bezpieczeństwo komunikacji | Środki zaradcze 
 | Produkt/usługę | Artykuł |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[Zabezpieczanie komunikacji z Centrum zdarzeń za pomocą certyfikatu SSL/TLS](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Sprawdź uprawnienia konta usługi i sprawdź, czy niestandardowych usług lub stron ASP.NET przestrzegają zabezpieczeń firmy CRM](#priv-aspnet)</li></ul> |
-| **Azure Data Factory** | <ul><li>[Użyj bramy zarządzania danymi podczas nawiązywania połączenia w danych programu SQL Server do usługi Azure Data Factory](#sqlserver-factory)</li></ul> |
+| **Azure Data Factory** | <ul><li>[Użyj bramy zarządzania danymi podczas nawiązywania połączenia z lokalnego programu SQL Server w usłudze Azure Data Factory](#sqlserver-factory)</li></ul> |
 | **Tożsamość serwera** | <ul><li>[Upewnij się, że cały ruch do serwera tożsamości za pośrednictwem połączenia HTTPS](#identity-https)</li></ul> |
 | **Aplikacja sieci Web** | <ul><li>[Sprawdź X.509 certyfikaty używane do uwierzytelniania połączenia protokołu SSL, TLS i DTLS](#x509-ssltls)</li><li>[Konfigurowanie certyfikatu SSL dla domeny niestandardowej w usłudze Azure App Service](#ssl-appservice)</li><li>[Wymuszenie całego ruchu do usługi Azure App Service za pośrednictwem połączenia HTTPS](#appservice-https)</li><li>[Włącz zabezpieczenia Strict transportu HTTP (HSTS)](#http-hsts)</li></ul> |
 | **Baza danych** | <ul><li>[Upewnij się, program SQL server szyfrowania i certyfikat sprawdzania poprawności połączenia](#sqlserver-validation)</li><li>[Wymuszaj zaszyfrowane komunikacji z serwerem SQL](#encrypted-sqlserver)</li></ul> |
@@ -60,15 +60,15 @@ ms.locfileid: "56882998"
 | **Odwołania**              | ND  |
 | **Kroki** | Sprawdź uprawnienia konta usługi i sprawdź, czy niestandardowych usług lub stron ASP.NET przestrzegają zabezpieczeń firmy CRM |
 
-## <a id="sqlserver-factory"></a>Użyj bramy zarządzania danymi podczas nawiązywania połączenia w danych programu SQL Server do usługi Azure Data Factory
+## <a id="sqlserver-factory"></a>Użyj bramy zarządzania danymi podczas nawiązywania połączenia z lokalnego programu SQL Server w usłudze Azure Data Factory
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Data Factory | 
 | **Faza SDL**               | Wdrożenie |  
 | **Odpowiednich technologii** | Ogólny |
-| **Atrybuty**              | Połączona usługa Types — Azure i lokalnie |
-| **Odwołania**              |[Przenoszenie danych między lokalnego i Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [bramy zarządzania danymi](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Atrybuty**              | Typów połączonych usług — platforma Azure i w środowisku lokalnym |
+| **Odwołania**              |[Przenoszenie danych między magazynami lokalnymi i usługi Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [bramy zarządzania danymi](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Kroki** | <p>Narzędzia danych bramy zarządzania (DMG) jest wymagany do nawiązania połączenia ze źródłami danych, które są chronione w sieci firmowej lub zapory.</p><ol><li>Blokowanie maszynę izoluje narzędzie DMG i uniemożliwia nieprawidłowe działanie programów z naruszenia lub podsłuchiwanie na maszynie źródłowej danych. (Np. muszą być zainstalowane najnowsze aktualizacje, Włącz minimalne wymagane porty, kontrolowane kont Inicjowanie obsługi administracyjnej inspekcji włączona, szyfrowanie dysków włączone itp.)</li><li>Klucz brama danych jest obracana w krótkich odstępach czasu lub zawsze wtedy, gdy odnawia hasło do konta usługi DMG</li><li>Tranzytu danych za pośrednictwem usługi łączy muszą być szyfrowane.</li></ol> |
 
 ## <a id="identity-https"></a>Upewnij się, że cały ruch do serwera tożsamości za pośrednictwem połączenia HTTPS

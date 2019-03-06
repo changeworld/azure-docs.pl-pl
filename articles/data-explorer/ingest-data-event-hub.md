@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 5d9819d60e21c80b882db1d12b0318599fa54095
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/2/2018
+ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729748"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805819"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -103,11 +103,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
 
     ![Wybieranie testowej bazy danych](media/ingest-data-event-hub/select-test-database.png)
 
-1. Wybierz pozycję **Pozyskiwanie danych**, a następnie pozycję **Dodaj połączenie danych**.
-
-    ![Wprowadzanie danych](media/ingest-data-event-hub/data-ingestion-create.png)
-
-1. Wypełnij formularz, używając poniższych informacji, a następnie wybierz pozycję **Utwórz**.
+1. Wybierz kolejno pozycje **Pozyskiwanie danych** i **Dodaj połączenie danych**. Następnie wypełnij formularz, używając poniższych informacji. Po zakończeniu wybierz pozycję **Utwórz**.
 
     ![Połączenie centrum zdarzeń](media/ingest-data-event-hub/event-hub-connection.png)
 

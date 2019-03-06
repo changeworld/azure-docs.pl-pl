@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 36e0ca360cfbdfc77ce0a1768222f43f8864537c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd6ecb6cb45aef399a137c9eac2c8c6f845b610b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267272"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872492"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -32,7 +32,7 @@ Dzięki prognozom lub przewidywaniom uzyskiwanym za pomocą uczenia maszynowego 
 
 Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi.
 
-[ ![Przepływ pracy usługi Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Przepływ pracy usługi Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Usługa Azure Machine Learning w pełni obsługuje technologie typu open source. Dlatego można korzystać z dziesiątków tysięcy pakietów open source języka Python, wyposażonych w składniki uczenia maszynowego. Należą do nich na przykład PyTorch, TensorFlow i scikit-learn.
 Obsługa zaawansowanych narzędzi znacząco ułatwia interaktywne eksplorowanie i przygotowywanie danych, a następnie opracowywanie i testowanie modeli. Należą do nich [notesy programu Jupyter](http://jupyter.org) i rozszerzenie [Azure Machine Learning dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview).
@@ -70,7 +70,7 @@ Aby rozpocząć pracę przy użyciu usługi Azure Machine Learning, zobacz [Nast
 
 ## <a name="how-is-azure-machine-learning-service-different-from-machine-learning-studio"></a>Czym różni się usługa Azure Machine Learning od usługi Machine Learning Studio?
 
-Usługa Azure Machine Learning Studio jest wizualnym obszarem roboczym do współpracy typu przeciągnij i upuść, w którym można tworzyć, testować i wdrażać rozwiązania uczenia maszynowego bez potrzeby pisania kodu. Używa ona wstępnie utworzonych i wstępnie skonfigurowanych algorytmów uczenia maszynowego i modułów obsługi danych. 
+Usługa [Azure Machine Learning Studio](../studio/what-is-ml-studio.md) jest wizualnym obszarem roboczym do współpracy typu przeciągnij i upuść, w którym można tworzyć, testować i wdrażać rozwiązania uczenia maszynowego bez potrzeby pisania kodu. Używa ona wstępnie utworzonych i wstępnie skonfigurowanych algorytmów uczenia maszynowego i modułów obsługi danych.
 
 Używaj usługi Machine Learning Studio, gdy chcesz w szybki i prosty sposób poeksperymentować z modelami uczenia maszynowego, a wbudowane algorytmy uczenia maszynowego są wystarczające dla Twoich rozwiązań.
 

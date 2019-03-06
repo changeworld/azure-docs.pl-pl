@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62c9a8e6375f6ac7db86ae81cdd4e5c9eb445770
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016634"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432825"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Utwórz wyzwalacz, który uruchamia potok zgodnie z harmonogramem
 Ten artykuł zawiera informacje dotyczące wyzwalacza harmonogramu oraz instrukcje umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu. Dla innych typów wyzwalaczy, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
@@ -66,6 +66,9 @@ Możesz utworzyć **wyzwalacz harmonogramu** Aby zaplanować okresowe uruchamian
     ![Monitorowanie uruchomień wyzwalacza](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu za pomocą programu Azure PowerShell. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
 
 1. Utwórz plik JSON o nazwie **MyTrigger.json** w folderze C:\ADFv2QuickStartPSH\ o następującej zawartości:
@@ -108,34 +111,34 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
     - Wyzwalacz jest skojarzony z **Adfv2QuickStartPipeline** potoku. Aby skojarzyć wiele potoków z wyzwalacza, Dodaj więcej **pipelineReference** sekcje.
     - Potok w opcji szybkiego startu przyjmuje dwa **parametry** wartości: **inputPath** i **outputPath**. W związku z tym należy przekazać wartości tych parametrów z wyzwalacza.
 
-2. Tworzenie wyzwalacza za pomocą **Set-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+2. Tworzenie wyzwalacza za pomocą **AzDataFactoryV2Trigger zestaw** polecenia cmdlet:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Upewnij się, że jest w stanie wyzwalacz **zatrzymane** przy użyciu **Get-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+3. Upewnij się, że jest w stanie wyzwalacz **zatrzymane** przy użyciu **Get AzDataFactoryV2Trigger** polecenia cmdlet:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Uruchom wyzwalacz za pomocą **Start-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+4. Uruchom wyzwalacz za pomocą **Start AzDataFactoryV2Trigger** polecenia cmdlet:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Upewnij się, że jest w stanie wyzwalacz **uruchomiono** przy użyciu **Get-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
+5. Upewnij się, że jest w stanie wyzwalacz **uruchomiono** przy użyciu **Get AzDataFactoryV2Trigger** polecenia cmdlet:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  GET, o których uruchamiany jest wyzwalacz w programie Azure PowerShell przy użyciu **Get AzureRmDataFactoryV2TriggerRun** polecenia cmdlet. Aby uzyskać informacje na temat uruchomienia wyzwalacza, wykonaj następujące polecenie okresowo. Aktualizacja **TriggerRunStartedAfter** i **TriggerRunStartedBefore** wartości odpowiadają wartościom w definicji wyzwalacza:
+6.  GET, o których uruchamiany jest wyzwalacz w programie Azure PowerShell przy użyciu **Get AzDataFactoryV2TriggerRun** polecenia cmdlet. Aby uzyskać informacje na temat uruchomienia wyzwalacza, wykonaj następujące polecenie okresowo. Aktualizacja **TriggerRunStartedAfter** i **TriggerRunStartedBefore** wartości odpowiadają wartościom w definicji wyzwalacza:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
     Aby monitorować wyzwalacz jest uruchamiany i uruchomienia potoków w witrynie Azure portal, zobacz [monitorowanie uruchomień potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
@@ -322,12 +325,12 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 ### <a name="schema-defaults-limits-and-examples"></a>Wartości domyślne, limity i przykłady harmonogramów
 
-| Właściwość JSON | Typ | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
+| Właściwość JSON | Type | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Ciąg | Yes | Brak | Daty i godziny ISO-8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | Yes | Brak | Daty i godziny ISO-8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Obiekt | Yes | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Liczba | Nie | 1 | Od 1 do 1000 | `"interval":10` |
-| **endTime** | Ciąg | Yes | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | Yes | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Obiekt | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Właściwość startTime

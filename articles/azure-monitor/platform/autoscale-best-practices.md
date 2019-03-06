@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 85a326c97ecf8476bdd802a718e082d0e5c7a89c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467364"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454106"
 ---
 # <a name="best-practices-for-autoscale"></a>Najlepsze rozwiązania dotyczące automatycznego skalowania
 Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -38,7 +38,7 @@ W przypadku ustawienia, który ma co najmniej = 2, maksymalna = 2, a bieżąca l
 Jeśli liczba wystąpień jest ręcznie zaktualizować wartość powyżej lub poniżej wartości maksymalnej, aparat skalowania automatycznego jest automatycznie skalowany do minimalnej (Jeśli poniżej) lub maksymalną (jeśli powyżej). Na przykład możesz ustawić z zakresu od 3 do 6. W przypadku jedno uruchomione wystąpienie aparatu automatycznego skalowania można skalować do trzech wystąpień po jego następnym uruchomieniu. Podobnie jeśli ręcznie ustawisz skalowania do ośmiu wystąpień, na następnej uruchamiania automatycznego skalowania będzie przeskalujesz ją do sześć wystąpień po jego następnym uruchomieniu.  Skalowanie ręczne jest tymczasowy, o ile nie zostanie zresetowane przez reguły skalowania automatycznego.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Zawsze używaj kombinacji reguła skalowania w poziomie i skalowania na zewnątrz, którą wykonuje zwiększyć i zmniejszyć
-Jeśli używasz tylko jednej części zestawu, automatycznego skalowania zajmie tylko akcji w jednym kierunku (skala out ani in), dopóki nie osiągnie maksymalnej lub minimalnej wystąpienie elementu liczbę, zdefiniowaną w profilu. To nie jest optymalne, optymalnym rozwiązaniem jest zasób skalowanie w górę w czasie wysokiego użycia, aby zapewnić dostępność. Podobnie czasami z o niskim użyciu ma zasobu w taki sposób, aby skalować w dół tak, jakie możesz uzyskać oszczędności.
+Jeśli używasz tylko jednej części zestawu, automatycznego skalowania zajmie tylko akcji w jednym kierunku (skala out ani in), dopóki nie osiągnie maksymalnej lub wystąpienia minimalną liczbę, zdefiniowaną w profilu. To nie jest optymalne, optymalnym rozwiązaniem jest zasób skalowanie w górę w czasie wysokiego użycia, aby zapewnić dostępność. Podobnie czasami z o niskim użyciu ma zasobu w taki sposób, aby skalować w dół tak, jakie możesz uzyskać oszczędności.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wybierz odpowiednie statystyki dla swojej metryki diagnostyki
 Na metrykę diagnostyki można wybierać spośród *średni*, *co najmniej*, *maksymalna* i *łączna liczba* jako metrykę, aby skalować. Najbardziej typowe Statystyka jest *średni*.

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 135b684c67776da7d722074abe185b5ed2a860fa
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5e614d7fc1b45e5a1e1c11d04ed80fbb66bfbd28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889413"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441614"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ ms.locfileid: "56889413"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Łączenie podmiotów i rozpoznawanie jednostek znaku
 
-Text Analytics `entities` punktu końcowego supprts zarówno o nazwie rozpoznawania jednostek (NER) i łączenie podmiotów.
+Text Analytics `entities` obsługuje punktu końcowego o nazwie rozpoznawanie jednostek (NER) i usługi entity linking.
 
 ### <a name="entity-linking"></a>Łączenie jednostek
 Łączenie jednostek jest możliwość identyfikowania i odróżnić tożsamość jednostki w tekście (na przykład określenie, czy "Mars" jest używana jako planety lub Roman Boże z war). Ten proces wymaga obecności wiedzy, do którego został rozpoznany jednostki są połączone — Wikipedia jest używany jako knowledge base, aby `entities` punktu końcowego analizy tekstu.
@@ -74,7 +74,7 @@ Dokumenty JSON muszą mieć następujący format: identyfikator, tekst, język
 
 Dla aktualnie obsługiwanych języków, zobacz [tej listy](../text-analytics-supported-languages.md).
 
-Rozmiar dokumentu musi być w obszarze 5,120 znaków na dokument, a może mieć maksymalnie 1000 elementów (ID) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustrację zawartość, którą może przesłać w celu łączenia jednostek.
+Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustrację zawartość, którą może przesłać w celu łączenia jednostek.
 
 ```
 {"documents": [{"id": "1",

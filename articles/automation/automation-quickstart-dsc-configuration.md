@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f272f72a0bcae70a25bada266dc6b080f46526cd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431592"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817732"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurowanie maszyny wirtualnej systemu Linux za pomocą DSC
 
@@ -144,5 +144,5 @@ W tym przewodniku Szybki Start maszyna wirtualna systemu Linux została dołącz
 
 * Aby dowiedzieć się więcej na temat konfiguracji DSC programu PowerShell, zobacz [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/dsc/overview) (Omówienie środowiska PowerShell żądanego stanu konfiguracji).
 * Aby dowiedzieć się więcej o zarządzaniu Konfiguracją DSC usługi Automation z programem PowerShell, zobacz [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0) (Program Azure PowerShell)
-* Aby dowiedzieć się, jak przekazywać raporty DSC do usługi Log Analytics w celu raportowania i przekazywania alertów, zobacz [Forwarding DSC Reporting to Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) (Przekazywanie raportów DSC do usługi Log Analytics) 
+* Aby dowiedzieć się, jak przekazywać raporty DSC do dzienników usługi Azure Monitor w celu raportowania i przekazywania alertów, zobacz [Przekazywanie raportów DSC do dzienników usługi Azure Monitor](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

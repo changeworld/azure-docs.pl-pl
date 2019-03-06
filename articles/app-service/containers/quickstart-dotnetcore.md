@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji platformy .NET Core w systemie Linux — Azure App Service | Microsoft Docs
+title: Tworzenie aplikacji platformy ASP.NET Core w systemie Linux — Azure App Service | Microsoft Docs
 description: Wdróż swoją pierwszą aplikację Hello World na platformie .NET Core w usłudze App Service w systemie Linux w ciągu kilku minut.
 keywords: azure app service, aplikacja internetowa, dotnet, core, linux, oss
 services: app-service
@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633934"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889719"
 ---
-# <a name="create-a-net-core-app-in-app-service-on-linux"></a>Tworzenie aplikacji platformy .NET Core w usłudze App Service dla systemu Linux
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Tworzenie aplikacji platformy ASP.NET Core w usłudze App Service dla systemu Linux
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji ASP.NET Core na platformie Azure](../app-service-web-get-started-dotnet.md).

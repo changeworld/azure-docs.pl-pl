@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 8097ee9ccf8efe5f4bba00110578d29f4f92ac14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cb75e943416c227730589ab5e7feeb7b8ba5e245
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020898"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957933"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Przyrostowe ładowanie danych ze źródłowego do docelowego magazynu danych
 
 W rozwiązaniu integracji danych przyrostowe (lub różnicowe) ładowanie danych po początkowym pełnym ładowaniu danych to powszechnie używany scenariusz. W samouczkach w tej sekcji opisano różne sposoby przyrostowego ładowania danych przy użyciu usługi Azure Data Factory.
 
-## <a name="delta-data-loading-by-using-a-watermark"></a>Ładowanie danych różnicowych przy użyciu limitu
+## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>Ładowanie danych różnicowych z bazy danych przy użyciu limitu
 W takim przypadku należy zdefiniować limit w źródłowej bazie danych. Limit to kolumna, która zawiera znacznik czasu ostatniej aktualizacji lub klucz o zwiększającej się wartości. Rozwiązanie ładowania różnicowego służy do ładowania zmienionych danych między starą a nową wartością limitu. Na poniższym diagramie przedstawiono przepływ pracy dla tej metody: 
 
 ![Przepływ pracy dotyczący używania limitu](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
@@ -33,7 +33,7 @@ Aby uzyskać instrukcje krok po kroku, zobacz następujące samouczki:
 - [Przyrostowe kopiowanie danych z jednej tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage](tutorial-incremental-copy-powershell.md)
 - [Przyrostowe kopiowanie danych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
 
-## <a name="delta-data-loading-by-using-the-change-tracking-technology"></a>Ładowanie danych różnicowych przy użyciu technologii Change Tracking
+## <a name="delta-data-loading-from-sql-db-by-using-the-change-tracking-technology"></a>Ładowanie danych różnicowych z bazy danych SQL przy użyciu technologii Change Tracking
 Technologia Change Tracking to rozwiązanie o małych wymaganiach w programie SQL Server i bazie danych Azure SQL Database, które zapewnia wydajny mechanizm śledzenia zmian na potrzeby aplikacji. Dzięki temu w aplikacji można łatwo zidentyfikować dane, które zostały wstawione, zaktualizowane lub usunięte. 
 
 Na poniższym diagramie przedstawiono przepływ pracy dla tej metody:
@@ -42,6 +42,18 @@ Na poniższym diagramie przedstawiono przepływ pracy dla tej metody:
 
 Aby uzyskać instrukcje krok po kroku, zobacz następujące samouczki: <br/>
 [Przyrostowe kopiowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem technologii Change Tracking](tutorial-incremental-copy-change-tracking-feature-powershell.md)
+
+## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Ładowanie nowych i zmienionych plików tylko przy użyciu parametru LastModifiedDate
+Możesz najpierw pobrać metadane (LastModifiedDate) plików, a następnie skopiować nowe i zmienione pliki tylko do docelowego magazynu.
+
+Aby uzyskać instrukcje krok po kroku, zobacz następujące samouczki: <br/>
+[Przyrostowe kopiowanie nowych i zmienionych plików na podstawie parametru LastModifiedDate z usługi Azure Blob Storage do usługi Azure Blob Storage](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+
+## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Załaduj nowe pliki tylko za pomocą partycjonowanego na podstawie czasu folderu lub nazwy pliku.
+Możesz kopiować tylko nowe pliki, gdy pliki lub foldery zostały już poddane partycjonowaniu na podstawie czasu za pomocą informacji o kwancie czasu jako części nazwy pliku lub folderu (na przykład /rrrr/mm/dd/plik.csv). 
+
+Aby uzyskać instrukcje krok po kroku, zobacz następujące samouczki: <br/>
+[Przyrostowe kopiowanie nowych plików na podstawie partycjonowanego na podstawie czasu folderu lub nazwy pliku z usługi Azure Blob Storage do usługi Azure Blob Storage](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
 ## <a name="next-steps"></a>Następne kroki
 Przejdź do następującego samouczka: 

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4f6d49a60df09e78c3cbeee22d43827ecc9f9f64
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ac9abaaea7f33627332a9bc7563745b5efdf3d12
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118425"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436252"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka funkcje trwałe na platformie Azure
 
-Dostępnych jest kilka opcji dotyczących diagnozowania problemów z [funkcje trwałe](durable-functions-overview.md). Niektóre opcje są takie same w przypadku funkcji regularnych, a niektóre z nich są unikatowe dla funkcje trwałe.
+Dostępnych jest kilka opcji dotyczących diagnozowania problemów z [funkcje trwałe](durable-functions-overview.md). Niektóre opcje są takie same jak w przypadku funkcji regularnych, a niektóre z nich są unikatowe dla usługi Durable Functions.
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -36,7 +36,7 @@ Każde zdarzenie cyklu życia wystąpienia aranżacji wygenerowanie zdarzenia ś
 * **slotName**: [Miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) w bieżącej aplikacji funkcji, który działa. Jest to przydatne, gdy korzystanie z mechanizmów miejsc wdrożenia do wersji.
 * **functionName**: Nazwa funkcji programu orchestrator lub działania.
 * **functiontype —**: Typ funkcji, takich jak **Orchestrator** lub **działania**.
-* **Identyfikator instanceId**: Unikatowy identyfikator wystąpienia aranżacji.
+* **instanceId**: Unikatowy identyfikator wystąpienia aranżacji.
 * **Stan**: Stan wykonywania cyklu życia wystąpienia. Prawidłowe wartości to:
   * **Zaplanowane**: Funkcja została zaplanowana do wykonania, ale nie zostało rozpoczęte jeszcze uruchomiona.
   * **Pracę**: Funkcja rozpoczęło działanie, ale nie został jeszcze oczekiwane lub ukończone.
@@ -327,7 +327,7 @@ Usługi Azure Functions obsługuje debugowanie kodu funkcji bezpośrednio i któ
 
 Domyślnie funkcje trwałe przechowuje stan w usłudze Azure Storage. Oznacza to, że można sprawdzić stan usługi aranżacji przy użyciu narzędzi takich jak [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-![Zrzut ekranu Eksploratora usługi Storage platformy Azure](./media/durable-functions-diagnostics/storage-explorer.png)
+![Usługa Azure Storage Explorer zrzut ekranu](./media/durable-functions-diagnostics/storage-explorer.png)
 
 Jest to przydatne podczas debugowania, ponieważ widać dokładnie w jakim stanie aranżacji może znajdować się w. Aby dowiedzieć się więcej pracy jest w stanie oczekiwania również można zbadać komunikaty w kolejkach (lub zablokowane w niektórych przypadkach).
 

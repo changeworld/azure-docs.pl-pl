@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a41f038595524a9ffaa5134ca2fe53fc0ae83af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338380"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818667"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiowanie i przypisywanie usługi Azure Blueprint w portalu
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. W tym przykładzie utworzysz strategię o nazwie „MyBlueprint”, aby skonfigurować przypisania ról i zasad dla subskrypcji, dodasz grupę zasobów oraz utworzysz przypisanie roli i szablonu usługi Resource Manager w grupie zasobów.
 
-1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony i kliknij przycisk **+ Utwórz strategię** znajdujący się u góry strony.
 
@@ -42,7 +42,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Tworzenie strategii](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcji, w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
+1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
 
 1. Sprawdź, czy informacje są poprawne (wartości pól **Nazwa strategii** i **Lokalizacja definicji** nie można później zmienić), a następnie kliknij pozycję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
@@ -53,13 +53,13 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
    > [!NOTE]
    > Większość _artefaktów_ obsługuje parametry. Parametr z wartością przypisaną podczas tworzenia strategii to **parametr statyczny**. Parametr przypisywany podczas przypisywania strategii to **parametr dynamiczny**. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
 
-1. Dodaj przypisanie zasad w subskrypcji: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  bezpośrednio pod elementem **Subskrypcja**. W polu _Typ artefaktu_ wybierz wartość „Przypisanie zasad”. Zmień _Typ_ na „Wbudowane” i w polu _Wyszukiwanie_ wprowadź wartość „tag”. Kliknij poza polem _Wyszukiwanie_, aby zastosować filtrowanie. Wybierz opcję „Zastosuj tag i jego wartość domyślną do grup zasobów”, klikając ją. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
+1. Dodaj przypisanie zasad w subskrypcji: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** pod artefaktem przypisania roli. W polu _Typ artefaktu_ wybierz wartość „Przypisanie zasad”. Zmień _Typ_ na „Wbudowane” i w polu _Wyszukiwanie_ wprowadź wartość „tag”. Kliknij poza polem _Wyszukiwanie_, aby zastosować filtrowanie. Wybierz opcję „Zastosuj tag i jego wartość domyślną do grup zasobów”, klikając ją. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
 1. Kliknij wiersz przypisania zasad „Zastosuj tag i jego wartość domyślną do grup zasobów”. Zostanie otwarte okno, w którym można podać parametry do artefaktu jako część definicji strategii i ustawić parametry dla wszystkich przypisań (**parametry statyczne**) na podstawie tej strategii zamiast ustawiania ich podczas przypisywania (**parametry dynamiczne**). W tym przykładzie użyto **parametrów dynamicznych** podczas przypisywania strategii, więc pozostaw wartości domyślne i kliknij przycisk **Anuluj**.
 
-1. Dodaj grupę zasobów w subskrypcji: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  pod elementem **Subskrypcja**. W polu _Typ artefaktu_ wybierz opcję „Grupa zasobów”. Pozostaw pola _Nazwa grupy zasobów_ i _Lokalizacja_ puste, ale upewnij się, że dla każdej właściwości jest zaznaczone pole wyboru, aby były one **parametrami dynamicznymi**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
+1. Dodaj grupę zasobów w subskrypcji: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  pod elementem **Subskrypcja**. W polu _Typ artefaktu_ wybierz opcję „Grupa zasobów”. Pozostaw pola _Nazwa wyświetlana artefaktu_, _Nazwa grupy zasobów_ i _Lokalizacja_ puste, ale upewnij się, że dla każdej właściwości parametru jest zaznaczone pole wyboru, aby były one **parametrami dynamicznymi**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
-1. Dodaj szablon w grupie zasobów: Kliknij lewym przyciskiem myszy pozycję **+ Dodaj artefakt...** bezpośrednio pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Szablon usługi Resource Manager”, w polu _Nazwa wyświetlana artefaktu_ ustaw wartość „StorageAccount”, a pole _Opis_ pozostaw puste. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager. Po wklejeniu tego szablonu kliknij kartę **Parametry** i zwróć uwagę, że parametr szablonu **storageAccountType** i wartość domyślna **Standard_LRS** zostały automatycznie wykryte i wypełnione, ale skonfigurowane jako **parametr dynamiczny**. Usuń zaznaczenie pola wyboru i zwróć uwagę, że lista rozwijana zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić je powrotem jako **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
+1. Dodaj szablon w grupie zasobów: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Szablon usługi Resource Manager”, w polu _Nazwa wyświetlana artefaktu_ ustaw wartość „StorageAccount”, a pole _Opis_ pozostaw puste. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager. Po wklejeniu szablonu wybierz kartę **Parametry** i zwróć uwagę, że parametry szablonu **storageAccountType** i **location** zostały wykryte. Każdy parametr został automatycznie wykryty i wypełniony, ale skonfigurowany jako **parametr dynamiczny**. Usuń zaznaczenie pola wyboru **storageAccountType** i zwróć uwagę, że lista rozwijana zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić je powrotem jako **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
    > [!IMPORTANT]
    > W przypadku importowania szablonu upewnij się, że plik jest całkowicie w formacie JSON i nie zawiera kodu HTML. W przypadku wskazywania adresu URL w witrynie GitHub upewnij się, że została kliknięta opcja **RAW** (Plik nieprzetworzony), aby pobrać czysty plik JSON, a nie ten opakowany za pomocą kodu HTML do wyświetlania w witrynie GitHub. Jeśli zaimportowany szablon nie jest czystym plikiem JSON, wystąpi błąd.
@@ -81,20 +81,27 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
                "metadata": {
                    "description": "Storage Account type"
                }
+           },
+           "location": {
+               "type": "string",
+               "defaultValue": "[resourceGroup().location]",
+               "metadata": {
+                   "description": "Location for all resources."
+               }
            }
        },
        "variables": {
-           "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
+           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
        },
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "apiVersion": "2016-01-01",
-           "location": "[resourceGroup().location]",
+           "location": "[parameters('location')]",
+           "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
            },
-           "kind": "Storage",
+           "kind": "StorageV2",
            "properties": {}
        }],
        "outputs": {
@@ -155,9 +162,26 @@ Po opublikowaniu strategii można przypisać ją do subskrypcji. Przypisz utworz
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Na liście strategii kliknij prawym przyciskiem myszy tę, która została wcześniej utworzona (lub kliknij lewym przyciskiem myszy wielokropek), a następnie wybierz opcję **Przypisz strategię**.
+1. Na liście strategii kliknij prawym przyciskiem myszy tę, która została wcześniej utworzona (lub wybierz wielokropek), a następnie wybierz opcję **Przypisz strategię**.
 
-1. Na stronie **Przypisywanie strategii** wybierz z listy rozwijanej **Subskrypcje** subskrypcje, w których chcesz wdrożyć tę strategię.
+1. Na stronie **Przypisywanie strategii** wybierz z listy rozwijanej **Subskrypcja** subskrypcje, w których chcesz wdrożyć tę strategię.
+
+   - Jeśli w portalu [Azure Billing](../../billing/index.md) są dostępne obsługiwane oferty dotyczące wersji Enterprise, zostanie uaktywniony link **Utwórz nową** w obszarze **Subskrypcja**.
+
+     1. Wybierz link **Utwórz nową**, aby utworzyć nową subskrypcję, zamiast wybierać już istniejące.
+
+        ![Przypisanie strategii — tworzenie subskrypcji](./media/create-blueprint-portal/assignment-create-subscription.png)
+
+     1. W polu **Nazwa wyświetlana** podaj nazwę dla nowej subskrypcji.
+
+     1. Z listy rozwijanej **Oferta** wybierz dostępną pozycję.
+
+     1. Użyj wielokropka, aby wybrać [grupę zarządzania](../management-groups/index.md), której subskrypcja będzie elementem podrzędnym.
+
+     1. Wybierz pozycję **Utwórz** w dolnej części strony.
+
+     > [!IMPORTANT]
+     > Nowa subskrypcja jest tworzona od razu po wybraniu pozycji **Utwórz**.
 
    > [!NOTE]
    > Dla każdej wybranej subskrypcji jest tworzone przypisanie, co umożliwia późniejsze zmiany w przypisaniu pojedynczej subskrypcji bez wymuszania zmian w pozostałych wybranych subskrypcjach.
@@ -198,7 +222,7 @@ Teraz, gdy strategia została przypisana do subskrypcji, sprawdź postęp wdraż
 
    ![Wyświetlanie szczegółów przypisania](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. Na stronie **Szczegóły wdrożenia** sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone, i czy nie było żadnych błędów podczas wdrażania. Jeśli wystąpiły błędy, zobacz kroki [rozwiązywania problemów ze strategią](./troubleshoot/general.md), aby ustalić, co poszło źle.
+1. Na stronie **Przypisywanie strategii** sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone i czy nie było żadnych błędów podczas wdrażania. Jeśli wystąpiły błędy, zobacz kroki [rozwiązywania problemów ze strategią](./troubleshoot/general.md), aby ustalić, co poszło źle.
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 

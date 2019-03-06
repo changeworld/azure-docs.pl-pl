@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cb3a029795dd69c80cfa580aa1bd135c67e609e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477220"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451956"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Zespół danych dla celów naukowych w działaniu — przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie danych 1 TB
 
@@ -417,7 +417,7 @@ Tworzenia liczba tabel na dane dotyczące liczby, należy użyć danych w folder
 Nasz model tworzenia procesu w usłudze Azure Machine Learning obejmuje następujące kroki:
 
 1. [Pobieranie danych z tabel programu Hive w usłudze Azure Machine Learning](#step1)
-2. [Tworzenie eksperymentu: czyszczenie danych i cechowanie liczba tabel](#step2)
+2. [Tworzenie eksperymentu: czyszczenie danych, co funkcja liczba tabel](#step2)
 3. [Tworzenie, szkolenie i klasyfikacja modelu](#step3)
 4. [Ocena modelu](#step4)
 5. [Opublikuj go jako usługę sieci web](#step5)
@@ -451,7 +451,7 @@ Kliknij prawym przyciskiem myszy port wyjściowy **importu danych** modułu. Tak
 
 Aby wybrać zapisany zestaw danych do użycia w eksperyment machine learning, Znajdź zestawy danych, za pomocą **wyszukiwania** pole pokazano na poniższej ilustracji. Po prostu wpisz imię udostępniła zestawu danych częściowo można uzyskać do niego dostęp i przeciągnij zestaw danych na panelu głównego. Upuszczając go na główny panel zaznacza go do użytku w machine learning modelowania.
 
-![Dataset Drage na główny panel](./media/hive-criteo-walkthrough/cl5tpGw.png)
+![Przeciągnij zestaw danych na panelu głównego](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
 > W tym zarówno pociągu, jak i zestawy danych testowych. Pamiętaj również użyć nazwy bazy danych i nazwy tabel, które udostępniła w tym celu. Wartości używanych na rysunku są przeznaczone wyłącznie dla ilustracji purposes.* *

@@ -3,7 +3,7 @@ title: Monitorowanie i diagnostyka kontenerów systemu Windows w usłudze Servic
 description: W ramach tego scenariusza skonfigurujesz usługę Log Analytics pod kątem monitorowania i diagnostyki kontenerów systemu Windows w usłudze Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: twhitney, dekapur
+ms.author: aljo, dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9249c0bb559328c878d784b54af5117b785daffe
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: f6aa0dcfa4a4f9e2780c8fb886523da347eeaa31
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300629"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806457"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Samouczek: monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu usługi Log Analytics
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Samouczek: Monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu usługi Log Analytics
 
 Niniejszy samouczek jest trzecią częścią serii i umożliwia przeprowadzenie konfiguracji usługi Log Analytics na potrzeby monitorowania kontenerów systemu Windows zorganizowanych w usłudze Service Fabric.
 
@@ -225,7 +225,7 @@ Spowoduje to przejście do obszaru roboczego usługi Log Analytics, w którym mo
 
 Po kilku minutach **odśwież** rozwiązanie do monitorowania kontenerów, aby wyświetlić dane przychodzące dotyczące *wydajności komputera*. Pomoże to zrozumieć, w jaki sposób zasoby są używane. Tych metryk można również używać na potrzeby podejmowania odpowiednich decyzji dotyczących skalowania klastra lub potwierdzania, że klaster równoważy obciążenie zgodnie z oczekiwaniami.
 
-*Uwaga: upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.*
+*Uwaga: Upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.*
 
 ![Liczniki wydajności 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 

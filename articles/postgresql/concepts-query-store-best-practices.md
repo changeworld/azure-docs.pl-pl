@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 0c962dc6d8aff63a3b7dd34133a40c7ff9feec4c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c4fcdc43e8c88bf307e4de5727df0641616d7b78
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540745"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448139"
 ---
 # <a name="best-practices-for-query-store"></a>Najlepsze rozwiązania dotyczące Query Store
 
@@ -35,7 +35,7 @@ Umożliwiają Query Store przechwytywać dane, które są ważne.
 Query Store umożliwia także magazynu statystyki oczekiwania. Brak kwerendy trybu przechwytywania dodatkowe, które regulują statystyki oczekiwania: **pgms_wait_sampling.query_capture_mode** można ustawić _Brak_ lub _wszystkich_. 
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** zastępuje **pgms_wait_sampling.query_capture_mode**. Jeśli jest pg_qs.query_capture_mode _Brak_, ustawienie pgms_wait_sampling.query_capture_mode nie ma wpływu. 
+> **pg_qs.query_capture_mode** supersedes **pgms_wait_sampling.query_capture_mode**. Jeśli jest pg_qs.query_capture_mode _Brak_, ustawienie pgms_wait_sampling.query_capture_mode nie ma wpływu. 
 
 
 ## <a name="keep-the-data-you-need"></a>Zachowaj dane, których potrzebujesz

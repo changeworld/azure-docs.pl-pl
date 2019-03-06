@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cc6e4083ba952eb9799aa91f76cf6e5ab75c7f64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118024"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449584"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics (wersja zapoznawcza)
 
@@ -158,7 +158,7 @@ Nie dodatkowe [koszt jednostka przesyłania strumieniowego](https://azure.micros
 
 **Skąd mam wiedzieć, migawki danych odwołania jest pobierane z bazy danych SQL i używane w ramach zadania usługi Azure Stream Analytics?**
 
-Brak metryk podmiotowi zabezpieczeń przefiltrowane według nazwy logicznej (w ramach witryny Azure Portal metryki), które służy do monitorowania prawidłowości danych referencyjnych bazy danych SQL, dane wejściowe.
+Istnieją dwie metryki przefiltrowane według nazwy logicznej (w ramach witryny Azure Portal metryki), które służy do monitorowania prawidłowości danych referencyjnych bazy danych SQL, dane wejściowe.
 
    * Liczba: Ta metryka mierzy liczbę rekordów załadowane w z zestawu danych referencyjnych bazy danych SQL.
    * InputEventBytes: Ta metryka mierzy rozmiar migawek chronionych danych odwołania, które są ładowane w pamięci w procentach zadania usługi Stream Analytics. 

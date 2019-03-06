@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55dc0fa31398bcc04d9793c8cffc9258dc29e4c7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244457"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670897"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Konfigurowanie geofencingu przy użyciu usługi Azure Maps
 
@@ -165,7 +165,7 @@ Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane pr
 
   ![Tworzenie aplikacji Logic Apps](./media/tutorial-geofence/logic-app.png)
 
-2. Wybierz wyzwalacz żądania HTTP, a następnie wybierz pozycję „send and email” (Wyślij i wiadomość e-mail) jako akcję w łączniku programu Outlook
+2. Wybierz wyzwalacz żądania HTTP, a następnie wybierz pozycję „Wyślij wiadomość e-mail” jako akcję w łączniku programu Outlook
   
   ![Schemat usługi Logic Apps](./media/tutorial-geofence/logic-app-schema.png)
 

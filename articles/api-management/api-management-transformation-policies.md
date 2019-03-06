@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 4e7af92ed0ce04bb14bd49c24de4928baa4f00ec
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159795"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448071"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -116,7 +116,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|XML do formatu json|Element główny.|Yes|
+|xml-to-json|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -152,7 +152,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|Znajdź i Zamień|Element główny.|Yes|
+|find-and-replace|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -254,7 +254,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|Ustawianie usługi wewnętrznej bazy danych|Element główny.|Yes|
+|set-backend-service|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -262,11 +262,11 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 |----------|-----------------|--------------|-------------|
 |podstawowy adres url|Nowe zaplecze podstawowy adres URL usługi.|Nie|ND|
 |Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do.|Nie|ND|
-|klucza partycji SF|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Używana do rozpoznawania określonej partycji z usługi rozpoznawania nazw.|Nie|ND|
-|SF replica typu|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Kontroluje, czy żądanie należy przejść do podstawowej lub pomocniczej replice partycji. |Nie|ND|
-|SF resolve warunków|Dotyczy tylko w przypadku wewnętrznej bazy danych usługi Service Fabric. Warunek, identyfikowanie, jeśli wywołanie do zaplecza usługi Service Fabric musi być powtarzana z nowego rozwiązania.|Nie|ND|
+|sf-partition-key|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Używana do rozpoznawania określonej partycji z usługi rozpoznawania nazw.|Nie|ND|
+|sf-replica-type|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Kontroluje, czy żądanie należy przejść do podstawowej lub pomocniczej replice partycji. |Nie|ND|
+|sf-resolve-condition|Dotyczy tylko w przypadku wewnętrznej bazy danych usługi Service Fabric. Warunek, identyfikowanie, jeśli wywołanie do zaplecza usługi Service Fabric musi być powtarzana z nowego rozwiązania.|Nie|ND|
 |sf-service-instance-name|Dotyczy tylko w przypadku wewnętrznej bazy danych usługi Service Fabric. Pozwala zmienić wystąpień usługi w czasie wykonywania. |Nie|ND|
-|Nazwa SF odbiornika|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Usług Reliable Services usługi Service Fabric umożliwia tworzenie wiele odbiorników w usłudze. Ten atrybut jest używany do wybierz określony odbiornik, gdy wewnętrznej bazy danych usługi Reliable Service ma więcej niż jeden odbiornik. Jeśli ten atrybut nie jest określony, API Management spróbuje użyć odbiornika bez nazwy. Odbiornik bez nazwy jest typowy dla usług Reliable Services, który ma tylko jeden odbiornik. |Nie|ND|
+|sf-listener-name|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Usług Reliable Services usługi Service Fabric umożliwia tworzenie wiele odbiorników w usłudze. Ten atrybut jest używany do wybierz określony odbiornik, gdy wewnętrznej bazy danych usługi Reliable Service ma więcej niż jeden odbiornik. Jeśli ten atrybut nie jest określony, API Management spróbuje użyć odbiornika bez nazwy. Odbiornik bez nazwy jest typowy dla usług Reliable Services, który ma tylko jeden odbiornik. |Nie|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -376,7 +376,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 </set-body>
 ```
 
-#### <a name="tranform-json-using-a-liquid-template"></a>Tranform ciągu JSON przy użyciu szablonu Liquid
+#### <a name="transform-json-using-a-liquid-template"></a>Przekształcanie kodu JSON przy użyciu szablonu Liquid
 ```xml
 {
 "order": {
@@ -559,7 +559,7 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|parametr SET zapytania|Element główny.|Yes|
+|set-query-parameter|Element główny.|Yes|
 |wartość|Określa wartość parametru zapytania do ustawienia. Dla wielu parametrów zapytania o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Yes|
 
 ### <a name="properties"></a>Właściwości
@@ -638,7 +638,7 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|Identyfikator uri ponownego napisania|Element główny.|Yes|
+|rewrite-uri|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -707,9 +707,9 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|przekształcenia XSL|Element główny.|Yes|
+|xsl-transform|Element główny.|Yes|
 |parametr|Używane do definiowania zmiennych używanych w transformacji|Nie|
-|{1|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Yes|
+|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Yes|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

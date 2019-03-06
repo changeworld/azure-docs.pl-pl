@@ -1,41 +1,45 @@
 ---
-title: 'Szybki start: tworzenie i używanie udziału plików platformy Azure dla systemu Windows | Microsoft Docs'
-description: Ten przewodnik Szybki start umożliwia utworzenie i używanie udziału plików platformy Azure dla systemu Windows.
+title: Przewodnik Szybki start platformy Azure — tworzenie i używanie udziału usługi Azure Files na maszynach wirtualnych z systemem Windows | Microsoft Docs
+description: W ramach tego przewodnika Szybki start skonfigurujesz udział usługi Azure Files w witrynie Azure Portal i połączysz go z maszyną wirtualną z systemem Windows. Nawiążesz połączenie z udziałem usługi Files i przekażesz plik do udziału usługi Files. Następnie utworzysz migawkę udziału usługi Files, zmodyfikujesz plik w udziale usługi Files oraz przywrócisz poprzednią migawkę udziału usługi Files.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
-ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 141a8c9d63d3f0fd615ec0648b15c669f28f7118
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.author: rogarana
+ms.subservice: files
+ms.openlocfilehash: 12dea044dab2aafad1d7597214d159011b5ab536
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663999"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652471"
 ---
-# <a name="quickstart-create-and-use-an-azure-file-share-for-windows"></a>Szybki start: Tworzenie i używanie udziału plików platformy Azure dla systemu Windows
-W tym artykule przedstawiono podstawowe kroki tworzenia i używania udziału plików platformy Azure. W tym przewodniku Szybki start położono nacisk na szybkie konfigurowanie udziału plików platformy Azure, aby można było sprawdzić, jak działa ta usługa. Jeśli potrzebujesz bardziej szczegółowych instrukcji dotyczących tworzenia i używania udziałów plików platformy Azure we własnym środowisku, zobacz [Korzystanie z udziału plików platformy Azure w systemie Windows](storage-how-to-use-files-windows.md).
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Szybki start: tworzenie udziału usługi Azure Files przy użyciu maszyn wirtualnych z systemem Windows i zarządzanie tym udziałem
+
+W tym artykule przedstawiono podstawowe kroki tworzenia i używania udziału usługi Azure Files. W tym przewodniku Szybki start położono nacisk na szybkie konfigurowanie udziału usługi Azure Files, aby można było sprawdzić, jak działa ta usługa. Jeśli potrzebujesz bardziej szczegółowych instrukcji dotyczących tworzenia i używania udziałów plików platformy Azure we własnym środowisku, zobacz [Korzystanie z udziału plików platformy Azure w systemie Windows](storage-how-to-use-files-windows.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
-Przed utworzeniem udziału plików platformy Azure musisz skonfigurować następujące elementy na potrzeby tego przewodnika Szybki start:
+
+W tym przewodniku Szybki start skonfigurujesz następujące elementy:
 
 - Konto magazynu i udział plików platformy Azure
 - Maszyna wirtualna z systemem Windows Server 2016 Datacenter
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Przed rozpoczęciem pracy z udziałem plików platformy Azure musisz utworzyć konto magazynu platformy Azure. Konto magazynu to udostępniona pula magazynu, w której można wdrażać udziały plików platformy Azure lub inne zasoby magazynu, takie jak obiekty blob i kolejki. Konto magazynu może zawierać nieograniczoną liczbę udziałów. W udziale można przechowywać nieograniczoną liczbę plików, aż do osiągnięcia limitów pojemności konta magazynu.
+Przed rozpoczęciem pracy z udziałem plików platformy Azure musisz utworzyć konto magazynu platformy Azure. Konto magazynu ogólnego przeznaczenia w wersji 2 zapewnia dostęp do wszystkich usług magazynu Azure Storage: obiektów blob, plików, kolejek i tabel. W tym samouczku przedstawiono tworzenie konta magazynu ogólnego przeznaczenia w wersji 2, ale kroki tworzenia dowolnego typu konta magazynu są podobne. Konto magazynu może zawierać nieograniczoną liczbę udziałów. W udziale można przechowywać nieograniczoną liczbę plików, aż do osiągnięcia limitów pojemności konta magazynu.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ### <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
+
 Następnie utwórz udział plików.
 
 1. Po wdrożeniu konta magazynu platformy Azure wybierz pozycję **Przejdź do zasobu**.
@@ -58,6 +62,7 @@ Następnie utwórz udział plików.
 Na razie na platformie Azure utworzono konto magazynu i udział plików zawierający jeden plik. Następnie utworzysz maszynę wirtualną platformy Azure z systemem Windows Server 2016 Datacenter do reprezentowania serwera lokalnego w ramach tego przewodnika Szybki start.
 
 ### <a name="deploy-a-vm"></a>Wdrażanie maszyny wirtualnej
+
 1. Następnie rozwiń menu po lewej stronie portalu i wybierz pozycję **Utwórz zasób** w lewym górnym rogu witryny Azure Portal.
 1. W polu wyszukiwania nad listą zasobów **Azure Marketplace** wpisz **Windows Server 2016 Datacenter**, wybierz odpowiednią pozycję i kliknij pozycję **Utwórz**.
 1. Na karcie **Podstawy** w obszarze **Szczegóły projektu** wybierz grupę zasobów utworzoną w ramach tego przewodnika Szybki start.
@@ -112,6 +117,7 @@ Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. T
       ![Ścieżka UNC z okienka Połącz usługi Azure Files](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
 ## <a name="create-a-share-snapshot"></a>Tworzenie migawki udziału
+
 Teraz, gdy dysk został zamapowany, możesz utworzyć migawkę.
 
 1. W portalu przejdź do swojego udziału plików i wybierz pozycję **Utwórz migawkę**.
@@ -132,7 +138,7 @@ Teraz, gdy dysk został zamapowany, możesz utworzyć migawkę.
 
 ## <a name="restore-from-a-snapshot"></a>Przywracanie z migawki
 
-1. W portalu wybierz pozycję *qsTestFile* > przycisk **Przywróć**.
+1. W bloku migawki udziału plików kliknij prawym przyciskiem myszy pozycję *qsTestFile* i wybierz przycisk **Przywróć**.
 1. Wybierz pozycję **Zastąp oryginalny plik**.
 
    ![Przyciski Pobierz i Przywróć](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
@@ -147,6 +153,7 @@ Teraz, gdy dysk został zamapowany, możesz utworzyć migawkę.
    ![Przycisk Usuń](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Używanie migawki udziału w systemie Windows
+
 Podobnie jak w przypadku migawek usługi VSS w środowisku lokalnym, możesz wyświetlać migawki z zainstalowanego udziału plików platformy Azure za pomocą karty Poprzednie wersje.
 
 1. W Eksploratorze plików znajdź zainstalowany udział.

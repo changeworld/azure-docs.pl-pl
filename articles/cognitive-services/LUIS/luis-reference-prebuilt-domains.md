@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 964a0e0d4dd7ebae9f2881230fec921c3740ac39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e1e579233a5ad1af1ef8ee84019cd995959d3b2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340596"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433777"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Dokumentacja ze wstępnie utworzonych domen aplikacją usługi LUIS
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -62,7 +62,7 @@ Domeny kalendarza zapewnia intencje i podmioty, związane z wpisy kalendarza. In
 | Add | Dodaj nowy element jednorazowe do kalendarza.| Wprowadź termin Lisa o 14: 00, od niedzieli <br/><br/>Chcę zaplanować na spotkanie<br/><br/>Należy skonfigurować na spotkanie|
 | CheckAvailability | Znajdź dostępne dla terminu lub spotkania na kalendarz użytkownika lub inną osobę kalendarz.| Gdy jest dostępne w celu spełnienia Jim? <br/><br/>Pokaż przy Karolina jest dostępna jutro<br/><br/>Chris jest bezpłatne w sobotę?|
 | Usuwanie | Żądanie usunięcia wpisu kalendarza.| Anuluj mojej termin Karoliny. <br/><br/>Usuń Moje spotkania 9: 00<br/>|
-| Edytuj | Żądanie zmiany istniejących spotkań lub wpis w kalendarzu.| Przenieś Moje spotkania 9: 00 do 10: 00.<br/><br/>Chcę zaktualizować Moje harmonogramu.<br/><br/>Moje spotkania Reschdule z Ryanem.|
+| Edytuj | Żądanie zmiany istniejących spotkań lub wpis w kalendarzu.| Przenieś Moje spotkania 9: 00 do 10: 00.<br/><br/>Chcę zaktualizować Moje harmonogramu.<br/><br/>Ponowne planowanie spotkania za pomocą Ryan.|
 | Znajdowanie | Wyświetl Mój kalendarz co tydzień.| Znajdź stomatologowi Przejrzyj terminu. <br/><br/>Pokaż kalendarz<br/>|
 
 ### <a name="entities"></a>Jednostki
@@ -106,7 +106,7 @@ Domain komunikacja zapewnia intencje i podmioty, związane z poczty e-mail, wiad
 | Potwierdź| Potwierdź akcję.|Yes<br/>OK<br/>W porządku<br/>Potwierdzam, że chcę wysłać tę wiadomość e-mail.<br/>|
 | Wybierania| Rozpoczynanie rozmowy telefonicznej.|Jim wywołania<br/>Proszę wybrać 311<br/>|
 | FindContact| Znajdowanie informacji kontaktowych według nazwy.|Znajdź numer dla Karoliny<br/>Pokaż numer dla Karoliny<br/>|
-| FindSpeedDial| Znajdź numer szybkie, wybieranie numeru, numer telefonu jest ustawiony na i na odwrót.|Co to jest mój numer wybierania 5?<br/>Czy mają szybkość wybierania zestaw?<br/>Co to jest numer wybierania 941-5555-333?|
+| FindSpeedDial| Znajdź numer wybierania szybkość, numer telefonu jest ustawiony na i na odwrót.|Co to jest mój numer wybierania 5?<br/>Czy mają szybkość wybierania zestaw?<br/>Co to jest numer wybierania 941-5555-333?|
 | GetForwardingsStatus| Uzyskaj bieżący stan przekazywania połączeń.|Czy włączone jest Moja przesyłanie dalej wywołania?<br/>Informacje o tym, jeśli mój stan połączenia jest włączone czy wyłączone<br/>|
 | GoBack| Wróć do poprzedniego kroku.|Wróć do usługi twitter<br/>Przejść wstecz<br/>Przejdź wstecz|
 | Zignoruj| Ignoruj przychodzących połączeń.|Nie można znaleźć odpowiedzi<br/>Ignoruj wywołania|
@@ -252,7 +252,7 @@ Domeny MovieTickets zapewnia intencje i podmioty, związane z żądania rezerwac
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Book (Książka) | Zakup biletów filmu.|Zarezerwuj dwie bilety kapitana Omar i dwa muszkieterami<br/>Chcę, aby kupić biletu dla filmu w przyszłości<br/>Chcę bilet Captian Omar część 2 dalej środa|
+| Book (Książka) | Zakup biletów filmu.|Zarezerwuj dwie bilety kapitana Omar i dwa muszkieterami<br/>Chcę, aby kupić biletu dla filmu w przyszłości<br/>Chcę bilet kapitana Omar część 2 dalej środa|
 |GetShowTime| Uzyskaj showtime filmu.|Gdy Omar kapitana jest wyświetlane?|
 
 
@@ -412,7 +412,7 @@ Domena miejsc zapewnia intencji do obsługi zapytań dotyczących takich firm, i
 |GetMenu|Poproś o elementów menu dla restauracji.|Jest Zucca obsługi dowolnych elementów vegan?<br/>Co to jest w menu w Sizzler<br/>Pokaż menu Applebee firmy|
 |GetPhoneNumber| Poproś o numer telefonu w miejscu.|Co to jest numer telefonu w najbliższej kawę?<br/>Zapewniają numer domu Depot| 
 |GetPriceRange| Pyta, czy dla zakresu cena miejsca.|Jest Zucca tania?<br/>Jest Cineplex wysokości równej połowie ceny w środy?<br/>Jaki jest koszt obiad cała firma lobster na Sizzler?|
-|GetReviews|Poproś o przeglądach miejsce.|Pokaż mi przeglądy Cheesecase fabryki<br/>Przeczytaj recenzje Cineplex w Yelp|
+|GetReviews|Poproś o przeglądach miejsce.|Pokaż mi przeglądy Cheesecake fabryki<br/>Przeczytaj recenzje Cineplex w Yelp|
 |GetRoute|Poproś o kierunkach w miejscu.|Jak przeprowadzi do Bellevue kwadrat<br/>Pokaż mi to najkrótszy sposób 8 a 59th, w tym miejscu<br/>Poznać mnie drogę do widoku górski urzędu certyfikacji|
 |GetStarRating|Poproś o klasyfikacji w formie gwiazdek miejsce.|Jak jest Zucca sklasyfikowane zgodnie z Yelp<br/>Na ile gwiazdek ma prania francuski?<br/>Jest dobra akwarium w Monterrey?|
 |GetTransportationSchedule|Pobierz harmonogram magistrali dla miejsca.|Czas, jaki jest dalej magistrali do Centrum?<br/>Pokaż mi autobusów w King County|

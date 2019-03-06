@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b653ee16864f5076cdad9d1dbc33e63b175ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bf1dc33276c10a9b7fe7c7ebb6619b8c47d66bfb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167613"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447833"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory (Azure AD) Connect Health. Wśród często zadawanych pytań obejmują pytania dotyczące sposobu korzystania z usługi, który zawiera model rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -155,7 +155,7 @@ Azure AD Connect Health dla usług AD FS generuje ten alert, gdy Agent kondycji 
 
 W większości przypadków ten test zakończy się, ponieważ Agent kondycji nie jest w stanie rozpoznać nazwę farmy usług AD FS. Może to nastąpić, jeśli serwery usług AD FS znajdują się za usługą równoważenia obciążenia sieci, a żądanie pobiera inicjowany z węzła, który jest modułem równoważenia obciążenia (w przeciwieństwie do regularnych klienta, który znajduje się przed modułu równoważenia obciążenia). Może to być naprawiony przez zaktualizowanie pliku "hosts" znajdujący się w folderze "C:\Windows\System32\drivers\etc" uwzględnić adres IP serwera usług AD FS lub adresem IP sprzężenia zwrotnego (127.0.0.1) dla nazwy farmy usług AD FS (np. sts.contoso.com). Dodawanie pliku hosta będzie zwarcie wywołania sieci, dzięki czemu agenta programu Health można pobrać tokenu.
 
-**Pyt.: Wysłano do mnie wiadomość e-mail z informacją, że moich maszynach są nie zastosowano poprawkę luki ostatnich ataków ransomeware. Dlaczego otrzymuję tę wiadomość e-mail?**
+**Pyt.: Wysłano do mnie wiadomość e-mail z informacją, że moich maszynach są nie zastosowano poprawkę luki ostatnie wymuszającego okup. Dlaczego otrzymuję tę wiadomość e-mail?**
 
 Usługi Azure AD Connect Health skanowania wszystkich maszyn, które monitoruje ona zapewnienie wymagane poprawki zostały zainstalowane. Wiadomość e-mail została wysłana do administratorów dzierżawy, jeśli co najmniej jedna maszyna nie miał krytycznych poprawek. Poniższa logika był używany, aby określić to.
 1. Znajdź wszystkie poprawki, które są zainstalowane na komputerze.

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9910155b439b5ee6d0e5abd96d750943605098a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88839598b3ae11f0041b3451ba5481547c019c9d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211601"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449618"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
 
@@ -61,7 +61,7 @@ Usługa Azure Multi-Factor Authentication zapewnia dostęp do następujących tr
 * **Filtr użytkownika** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów użytkowników podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (&(objectClass=user)(objectCategory=person)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów (objectClass=inetOrgPerson) lub podobnych. <br>Uwaga:  Jeśli pole pozostanie puste, filtrowania (& (objectCategory=person)(objectClass=user)) jest używany domyślnie.
 
 ## <a name="attributes"></a>Atrybuty
-Atrybuty można w razie potrzeby dostosować pod kątem określonego katalogu.  Pozwala to na dodawanie atrybutów niestandardowych oraz dostosowanie synchronizacji wyłącznie pod kątem określonych atrybutów. Jako wartości każdego pola atrybutu użyj nazwy atrybutu zdefiniowanej w schemacie katalogu. Poniższa tabela zawiera dodatkowe informacje na temat każdej funkcji.
+Atrybuty można w razie potrzeby dostosować pod kątem określonego katalogu.  Pozwala to na dodawanie atrybutów niestandardowych oraz dostosowanie synchronizacji wyłącznie pod kątem określonych atrybutów. Użyj nazwy atrybutu, zgodnie z definicją w schemacie katalogu dla wartości każdego pola atrybutu. Poniższa tabela zawiera dodatkowe informacje na temat każdej funkcji.
 
 Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na liście.
 
@@ -71,7 +71,7 @@ Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na l
 | --- | --- |
 | Unikatowy identyfikator |Wprowadź nazwę atrybutu, która pełni rolę unikatowego identyfikatora rekordów kontenera, grupy zabezpieczeń i użytkowników.  W katalogu Active Directory jest to zazwyczaj wartość elementu objectGUID. Inne implementacje katalogu LDAP mogą używać wartości entryUUID lub podobnej.  Wartość domyślna to objectGUID. |
 | Typ unikatowego identyfikatora |Wybierz typ atrybutu unikatowego identyfikatora.  W katalogu Active Directory atrybut objectGUID ma typ GUID. Inne implementacje katalogu LDAP mogą używać typu tablicy bajtowej znaków ASCII lub ciągu.  Wartość domyślna to GUID. <br><br>Poprawne ustawienie tego typu jest istotne, ponieważ elementy synchronizacji są przywoływane przy użyciu ich unikatowych identyfikatorów. Typ unikatowego identyfikatora jest używany do bezpośredniego odnajdywania obiektu w katalogu.  Ustawienie typu ciągu w przypadku, gdy wartość jest przechowywana w katalogu jako tablica bajtowa znaków ASCII, uniemożliwia prawidłową synchronizację. |
-| Nazwa wyróżniająca |Wprowadź nazwę atrybutu, który zawiera nazwę wyróżniającą każdego z rekordów.  W katalogu Active Directory jest to zazwyczaj atrybut distinguishedName. Inne implementacje katalogu LDAP mogą używać atrybutu entryDN lub podobnego.  Wartość domyślna to distinguishedName. <br><br>Jeśli nie istnieje atrybut zawierający tylko nazwę wyróżniającą, może zostać użyty atrybut adspath.  Część „LDAP://\<serwer\>/” ścieżki jest automatycznie usuwana, co pozwala uzyskać samą nazwę wyróżniającą obiektu. |
+| Nazwa wyróżniająca |Wprowadź nazwę atrybutu, który zawiera nazwę wyróżniającą każdego z rekordów.  W katalogu Active Directory jest to zazwyczaj atrybut distinguishedName. Inne implementacje katalogu LDAP mogą używać atrybutu entryDN lub podobnego.  Wartość domyślna to distinguishedName. <br><br>Jeśli nie istnieje atrybut zawierający tylko nazwę wyróżniającą, może zostać użyty atrybut ścieżki reklam.  Część „LDAP://\<serwer\>/” ścieżki jest automatycznie usuwana, co pozwala uzyskać samą nazwę wyróżniającą obiektu. |
 | Nazwa kontenera |Wprowadź nazwę atrybutu, który zawiera nazwę w rekordzie kontenera.  Wartość tego atrybutu jest wyświetlana w hierarchii kontenera podczas importowania pozycji z katalogu Active Directory lub dodawania elementów do synchronizacji.  Wartość domyślna to name. <br><br>Jeśli różne kontenery używają różnych atrybutów dla swoich nazw, rozdziel poszczególne atrybuty nazw kontenera średnikami.  Pierwszy atrybut nazwy kontenera znaleziony w obiekcie kontenera pełni rolę jego nazwy wyświetlanej. |
 | Nazwa grupy zabezpieczeń |Wprowadź nazwę atrybutu, który zawiera nazwę w rekordzie grupy zabezpieczeń.  Wartość tego atrybutu jest wyświetlana na liście grupy zabezpieczeń podczas importowania pozycji z katalogu Active Directory lub dodawania elementów do synchronizacji.  Wartość domyślna to name. |
 | Nazwa użytkownika |Wprowadź nazwę atrybutu, który zawiera nazwę użytkownika w rekordzie użytkownika.  Wartość tego atrybutu jest używana jako nazwa użytkownika serwera usługi Multi-Factor Authentication.  Drugi atrybut może zostać określony jako atrybut zapasowy względem pierwszego.  Drugi atrybut jest używany tylko wtedy, gdy pierwszy atrybut nie zawiera wartości użytkownika.  Wartości domyślne to userPrincipalName i sAMAccountName. |

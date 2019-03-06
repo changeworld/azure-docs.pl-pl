@@ -7,17 +7,17 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.date: 02/21/2019
+ms.openlocfilehash: e87f9b4905abec2c00ed238445b3e36e41cfa2f6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408837"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674875"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Aby używać usługi Azure Data Explorer, najpierw utwórz *klaster*, a następnie utwórz w tym klastrze co najmniej jedną *bazę danych*. Następnie *pozyskaj* (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki start utworzysz klaster i bazę danych. W kolejnych artykułach pokażemy, jak pozyskiwać dane.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki start utworzysz klaster i bazę danych.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
@@ -27,7 +27,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
-Klaster usługi Azure Data Explorer tworzy się w grupie zasobów platformy Azure, korzystając ze zdefiniowanego zestawu zasobów obliczeniowych i magazynowych.
+W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, korzystając ze zdefiniowanego zestawu zasobów obliczeniowych i magazynowych.
 
 1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
 
@@ -37,28 +37,22 @@ Klaster usługi Azure Data Explorer tworzy się w grupie zasobów platformy Azur
 
 1. W obszarze **Azure Data Explorer** w dolnej części ekranu wybierz pozycję **Utwórz**.
 
-1. Wprowadź unikatową nazwę klastra, wybierz swoją subskrypcję i utwórz grupę zasobów o nazwie *test-resource-group*.
-
-    ![Tworzenie grupy zasobów](media/create-cluster-database-portal/create-resource-group.png)
-
-1. Wypełnij formularz, używając poniższych informacji.
+1. Wypełnij podstawowe szczegóły klastra, korzystając z poniższych informacji.
 
    ![Formularz tworzenia klastra](media/create-cluster-database-portal/create-cluster-form.png)
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Nazwa klastra | Unikatowa nazwa klastra | Wybierz unikatową nazwę, która identyfikuje Twój klaster. Na przykład *mytestcluster*. Do podanej nazwy klastra jest dołączana nazwa domeny *[region].kusto.windows.net*. Nazwa może zawierać tylko małe litery i cyfry. Musi zawierać od 3 do 22 znaków.
     | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla klastra.|
-    | Grupa zasobów | *test-resource-group* | Utwórz nową grupę zasobów. |
+    | Grupa zasobów | *test-resource-group* | Użyj istniejącej grupy zasobów lub utwórz nową. |
+    | Nazwa klastra | Unikatowa nazwa klastra | Wybierz unikatową nazwę, która identyfikuje Twój klaster. Na przykład *mydataexplorercluster*. Do podanej nazwy klastra jest dołączana nazwa domeny *[region].kusto.windows.net*. Nazwa może zawierać tylko małe litery i cyfry. Musi zawierać od 3 do 22 znaków.
     | Lokalizacja | *Zachodnie stany USA* | Na potrzeby tego przewodnika Szybki start wybierz wartość *Zachodnie stany USA*. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom.
     | Specyfikacja środowiska obliczeniowego | *D13_v2* | Na potrzeby tego przewodnika Szybki start wybierz najtańszą specyfikację. W przypadku systemu produkcyjnego wybierz specyfikację, która najlepiej odpowiada Twoim potrzebom.
     | | |
 
-1. Wybierz pozycję **Utwórz**, aby aprowizować klaster. Aprowizacja zwykle trwa około dziesięciu minut. Wybierz pozycję **Powiadomienia** na pasku narzędzi, aby monitorować proces aprowizacji.
+1. Wybierz pozycję **Przeglądanie + tworzenie**, aby przejrzeć szczegóły swojego klastra, a następnie wybierz pozycję **Utwórz**, aby aprowizować klaster. Aprowizacja zazwyczaj trwa około 10 minut.
 
-    ![Powiadomienia](media/create-cluster-database-portal/notifications.png)
-
-1. Po zakończeniu procesu wybierz pozycję **Powiadomienia**, a następnie **Przejdź do zasobu**.
+1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
     ![Przechodzenie do zasobu](media/create-cluster-database-portal/notification-resource.png)
 
@@ -68,7 +62,7 @@ Teraz możesz przystąpić do wykonania drugiego kroku w procesie — do utworze
 
 1. Na karcie **Przegląd** wybierz pozycję **Utwórz bazę danych**.
 
-    ![Krok drugi: tworzenie bazy danych](media/create-cluster-database-portal/database-creation.png)
+    ![Krok 2. Tworzenie bazy danych](media/create-cluster-database-portal/database-creation.png)
 
 1. Wypełnij formularz, używając poniższych informacji.
 
@@ -78,26 +72,22 @@ Teraz możesz przystąpić do wykonania drugiego kroku w procesie — do utworze
     |---|---|---|
     | Nazwa bazy danych | *TestDatabase* | Nazwa bazy danych musi być unikatowa w obrębie klastra.
     | Okres przechowywania | *3650* | Przedział czasu (w dniach), w którym gwarantowana jest dostępność danych dla zapytania. Przedział czasu jest mierzony od momentu pozyskania danych.
-    | Okres pamięci podręcznej | *31* | Przedział czasu (w dniach), w którym często używane w zapytaniach dane mają być dostępne na dysku SSD lub w pamięci RAM, zamiast w magazynie długoterminowym.
+    | Okres pamięci podręcznej | *31* | Przedział czasu (w dniach), w którym często używane w zapytaniach dane mają być dostępne na dysku SSD lub w pamięci RAM zamiast w magazynie długoterminowym.
     | | | |
 
-1. Wybierz pozycję **Zapisz**, aby utworzyć bazę danych. Tworzenie zazwyczaj zajmuje mniej niż minutę. Po zakończeniu procesu wrócisz na kartę **Przegląd** klastra.
+1. Wybierz pozycję **Utwórz**, aby utworzyć bazę danych. Tworzenie zazwyczaj zajmuje mniej niż minutę. Po zakończeniu procesu wrócisz na kartę **Przegląd** klastra.
 
 ## <a name="run-basic-commands-in-the-database"></a>Uruchamianie podstawowych poleceń w bazie danych
 
 Gdy masz już klaster i bazę danych, możesz uruchamiać zapytania i polecenia. W bazie danych nie ma jeszcze żadnych danych, ale mimo to możesz zobaczyć, jak działają narzędzia.
 
-1. W obszarze klastra wybierz pozycję **Zapytanie**.
-
-    ![Zapytanie bazy danych](media/create-cluster-database-portal/query-database.png)
-
-1. W oknie zapytania wklej następujące polecenie: `.show databases`, a następnie wybierz pozycję **Uruchom**.
+1. W obszarze klastra wybierz pozycję **Zapytanie**. W oknie zapytania wklej polecenie `.show databases`, a następnie wybierz pozycję **Uruchom**.
 
     ![Polecenie wyświetlenia baz danych](media/create-cluster-database-portal/show-databases.png)
 
     W zestawie wyników zostanie wyświetlona pozycja **TestDatabase** — jedyna baza danych w klastrze.
 
-1. W oknie zapytania wklej następujące polecenie: `.show tables`, a następnie wybierz to polecenie w oknie. Wybierz pozycję **Uruchom**.
+1. W oknie zapytania wklej polecenie `.show tables`, a następnie wybierz pozycję **Uruchom**.
 
     To polecenie zwraca pusty zestaw wyników, ponieważ nie masz jeszcze żadnych tabel. Tabelę dodasz w następnym artykule w tej serii.
 
@@ -111,21 +101,15 @@ W zależności od Twoich potrzeb biznesowych możesz zatrzymywać i ponownie uru
 
 1. Aby ponownie uruchomić klaster, w górnej części karty **Przegląd** wybierz pozycję **Uruchom**.
 
-    Po ponownym uruchomieniu klastra jego udostępnienie trwa około dziesięciu minut (podobnie jak podczas pierwotnej aprowizacji). Dodatkowy czas zajmuje załadowanie danych do pamięci podręcznej w warstwie magazynowania Gorąca.  
+    Po ponownym uruchomieniu klastra jego udostępnienie trwa około 10 minut (podobnie jak podczas pierwotnej aprowizacji). Dodatkowy czas zajmuje załadowanie danych do pamięci podręcznej w warstwie magazynowania Gorąca.  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zamierzasz skorzystać z naszych pozostałych przewodników Szybki start i samouczków, zachowaj utworzone zasoby. W przeciwnym razie wyczyść grupę **test-resource-group**, aby uniknąć ponoszenia kosztów.
+Jeśli zamierzasz skorzystać z pozostałych przewodników Szybki start i samouczków, zachowaj utworzone zasoby. W przeciwnym razie wyczyść swoją grupę zasobów, aby uniknąć ponoszenia kosztów.
 
-1. W witrynie Azure Portal wybierz **grupy zasobów** daleko po lewej stronie, a następnie wybierz utworzoną grupę zasobów.  
+1. W witrynie Azure Portal wybierz pozycję **Grupy zasobów** z lewej strony, a następnie grupę zasobów zawierającą Twój klaster usługi Data Explorer.  
 
-    Jeśli menu po lewej stronie jest zwinięte, wybierz ![przycisk Rozwiń,](media/create-cluster-database-portal/expand.png) aby je rozwinąć.
-
-   ![Wybieranie grupy zasobów do usunięcia](media/create-cluster-database-portal/delete-resources-select.png)
-
-1. W obszarze **test-resource-group** wybierz pozycję **Usuń grupę zasobów**.
-
-1. W nowym oknie wpisz nazwę grupy zasobów do usunięcia (*test-resource-group*), a następnie wybierz pozycję **Usuń**.
+1. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć całą grupę zasobów. Jeśli używasz istniejącej grupy zasobów, możesz usunąć tylko klaster usługi Data Explorer.
 
 ## <a name="next-steps"></a>Następne kroki
 

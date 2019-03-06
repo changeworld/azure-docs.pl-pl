@@ -1,24 +1,26 @@
 ---
-title: Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
-description: Dowiedz się, jak wysyłać dane wyjściowe kontenera (STDOUT i STDERR) do usługi Azure Log Analytics.
+title: Rejestrowanie wystąpienia kontenera za pomocą dzienników usługi Azure Monitor
+description: Dowiedz się, jak wysyłać dane wyjściowe kontenera (STDOUT i STDERR) do dzienników usługi Azure Monitor.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337890"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879717"
 ---
-# <a name="container-instance-logging-with-azure-log-analytics"></a>Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
+# <a name="container-instance-logging-with-azure-monitor-logs"></a>Rejestrowanie wystąpienia kontenera za pomocą dzienników usługi Azure Monitor
 
-Obszary robocze usługi Log Analytics zapewniają centralną lokalizację do przechowywania i badania danych dziennika nie tylko z zasobów platformy Azure, ale również z zasobów lokalnych i zasobów w innych chmurach. Usługa Azure Container Instances obejmuje wbudowaną obsługę wysyłania danych do usługi Log Analytics.
+Obszary robocze usługi Log Analytics zapewniają centralną lokalizację do przechowywania i badania danych dziennika nie tylko z zasobów platformy Azure, ale również z zasobów lokalnych i zasobów w innych chmurach. Usługa Azure Container Instances obejmuje wbudowaną obsługę wysyłania danych do dzienników usługi Azure Monitor.
 
-Aby wysłać dane wystąpienia kontenera do usługi Log Analytics, należy utworzyć grupę kontenerów przy użyciu interfejsu wiersza polecenia platformy Azure (lub usługi Cloud Shell) i pliku YAML. W poniższych sekcjach opisano tworzenie grupy kontenerów z włączonym rejestrowaniem oraz dzienników wykonujących zapytania.
+Aby wysłać dane wystąpienia kontenera do dzienników usługi Azure Monitor, należy utworzyć grupę kontenerów przy użyciu interfejsu wiersza polecenia platformy Azure (lub usługi Cloud Shell) i pliku YAML. W poniższych sekcjach opisano tworzenie grupy kontenerów z włączonym rejestrowaniem oraz dzienników wykonujących zapytania.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -96,7 +98,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 Zaraz po wykonaniu polecenia powinna pojawić się odpowiedź z usługi Azure zawierająca szczegóły wdrożenia.
 
-## <a name="view-logs-in-log-analytics"></a>Wyświetlanie dzienników w usłudze Log Analytics
+## <a name="view-logs-in-azure-monitor-logs"></a>Wyświetlanie dzienników w usłudze Azure Monitor
 
 Po wdrożeniu grupy kontenerów, może upłynąć kilka minut (do 10), zanim pierwsze wpisy dziennika będą widoczne w witrynie Azure Portal. Aby wyświetlić dzienniki grupy kontenerów, otwórz obszar roboczy usługi Log Analytics, następnie:
 
@@ -109,7 +111,7 @@ Powinno pojawić się kilka wyników dla każdego zapytania `search *`. Jeśli n
 
 ## <a name="query-container-logs"></a>Wykonywanie zapytań dla dzienników kontenerów
 
-Usługa Log Analytics obejmuje rozszerzony [język zapytań][query_lang] do ściągania informacji nawet z tysięcy wierszy danych wyjściowych dziennika.
+Dzienniki usługi Azure Monitor obejmują rozszerzony [język zapytań][query_lang] do ściągania informacji nawet z tysięcy wierszy danych wyjściowych dziennika.
 
 Agent rejestrowania usługi Azure Container Instances wysyła wpisy do tabeli `ContainerInstanceLog_CL` w obszarze roboczym usługi Log Analytics. Podstawową strukturę zapytania stanowi tabela źródłowa (`ContainerInstanceLog_CL`), po której następuje szereg operatorów oddzielonych znakiem potoku (`|`). Można połączyć kilka operatorów, aby dostosować wyniki i wykonać funkcje zaawansowane.
 
@@ -130,11 +132,11 @@ ContainerInstanceLog_CL
 
 ## <a name="next-steps"></a>Następne kroki
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-Aby uzyskać więcej informacji dotyczących wykonywania zapytań dla dzienników i konfigurowania alertów w usłudze Azure Log Analytics, zobacz:
+Aby uzyskać więcej informacji dotyczących wykonywania zapytań dla dzienników i konfigurowania alertów w dziennikach usługi Azure Monitor, zobacz:
 
-* [Understanding log searches in Log Analytics](../log-analytics/log-analytics-log-search.md) (Interpretacja przeszukiwania dzienników w usłudze Log Analytics)
+* [Understanding log searches in Azure Monitor logs (Informacje o przeszukiwaniu dzienników w usłudze Azure Monitor)](../log-analytics/log-analytics-log-search.md)
 * [Unified alerts in Azure Monitor](../azure-monitor/platform/alerts-overview.md) (Ujednolicone alerty na platformie Azure Monitor)
 
 

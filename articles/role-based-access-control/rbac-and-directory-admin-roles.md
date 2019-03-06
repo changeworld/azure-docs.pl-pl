@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 00b96b5bfa88a6c1c31d3415027ce1d4eda11e6b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: c53b9f13c365a5ace227f792f5b0c80ae8fac6ff
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339094"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807358"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD
 
@@ -48,11 +48,15 @@ Administrator konta, administrator usługi i współadministrator to trzy role k
 | Administrator usługi | 1 na subskrypcję platformy Azure | <ul><li>Zarządzanie usługami w [witrynie Azure Portal](https://portal.azure.com)</li><li>Przypisywanie użytkowników do roli współadministratora</li></ul> | W przypadku nowych subskrypcji administrator konta jest również domyślnie administratorem usługi.<br>Administrator usługi ma takie same uprawnienia dostępu co użytkownik, któremu przypisano rolę właściciela w zakresie subskrypcji.<br>Administrator usługi ma pełny dostęp do witryny Azure Portal. |
 | Współadministrator | 200 na subskrypcję | <ul><li>Takie same uprawnienia dostępu jak administrator usługi, ale bez możliwości zmiany skojarzenia subskrypcji do katalogów platformy Azure</li><li>Przypisywanie użytkowników do roli współadministratora, ale bez możliwości zmiany administratora usługi</li></ul> | Współadministrator ma takie same uprawnienia dostępu co użytkownik, któremu przypisano rolę właściciela w zakresie subskrypcji. |
 
-W witrynie Azure Portal można zobaczyć, kto jest administratorem konta i administratorem usługi. Aby to zrobić, należy wyświetlić właściwości subskrypcji.
+W witrynie Azure Portal można zarządzać współadministratorami lub wyświetlać administratora usługi za pomocą karty **Klasyczni administratorzy**.
 
-![Administrator konta i administrator usługi w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/account-admin-service-admin.png)
+![Klasyczni administratorzy subskrypcji platformy Azure w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/classic-administrators.png)
 
-Aby uzyskać informacje na temat sposobu dodawania i zmieniania klasycznych administratorów subskrypcji, zobacz artykuł [Add or change Azure subscription administrators](../billing/billing-add-change-azure-subscription-administrator.md) (Dodawanie i zmienianie administratorów subskrypcji platformy Azure) w dokumentacji rozliczeń platformy Azure.
+W witrynie Azure Portal możesz wyświetlić lub zmienić administratora usługi albo wyświetlić administratora konta w bloku właściwości Twojej subskrypcji.
+
+![Administrator konta i administrator usługi w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/account-admin.png)
+
+Aby uzyskać więcej informacji, zobacz [Klasyczni administratorzy subskrypcji platformy Azure](classic-administrators.md).
 
 ### <a name="azure-account-and-azure-subscriptions"></a>Konto platformy Azure i subskrypcje platformy Azure
 
@@ -81,9 +85,11 @@ W witrynie Azure Portal przypisania ról dokonane przy użyciu kontroli dostępu
 
 ![Blok zarządzania dostępem i tożsamościami (IAM) w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
-Po kliknięciu pozycji **Role** zostanie wyświetlona lista wbudowanych i niestandardowych ról.
+Po kliknięciu karty **Role** zostanie wyświetlona lista wbudowanych i niestandardowych ról.
 
 ![Wbudowane role w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
+
+Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md).
 
 ## <a name="azure-ad-administrator-roles"></a>Role administratora usługi Azure AD
 
@@ -95,9 +101,7 @@ Role administratora usługi Azure AD służą do zarządzania zasobami usługi A
 | [Administrator użytkowników](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) | <ul><li>Tworzenie i zarządzanie wszystkimi aspektami użytkowników i grup</li><li>Zarządzanie biletami pomocy technicznej</li><li>Monitorowanie kondycji usługi</li><li>Zmienianie haseł użytkowników, administratorów pomocy technicznej i innych administratorów użytkowników</li></ul> |  |
 | [Administrator rozliczeń](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Dokonywanie zakupów</li><li>Zarządzanie subskrypcjami</li><li>Zarządzanie biletami pomocy technicznej</li><li>Monitorowanie kondycji usługi</li></ul> |  |
 
-Aby uzyskać listę wszystkich ról administratora usługi Azure AD, zobacz [Uprawnienia ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-
-Listę ról administratora usługi Azure AD można wyświetlić w bloku **Role i administratorzy** witryny Azure Portal.
+Listę ról administratora usługi Azure AD można wyświetlić w bloku **Role i administratorzy** witryny Azure Portal. Aby uzyskać listę wszystkich ról administratora usługi Azure AD, zobacz [Uprawnienia ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ![Role administratora usługi Azure AD w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -124,4 +128,4 @@ Kilka ról administratora usługi Azure AD występuje zarówno w usłudze Azure 
 
 - [Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?](overview.md)
 - [Uprawnienia ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
-- [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md)
+- [Klasyczni administratorzy subskrypcji platformy Azure](classic-administrators.md)

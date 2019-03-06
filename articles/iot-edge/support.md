@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d8059ac4965ce5582b899ebc0d765e00ae9deb35
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7e97983e1316476848eb4a051cd636339b8caff7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892800"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440968"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Usługa Azure IoT Edge obsługiwanych systemów
 
@@ -40,7 +40,7 @@ Usługa Azure IoT Edge działa na większości systemów operacyjnych, które um
     * jest to system operacyjny w testach automatycznych
     * udostępnia pakiety instalacyjne dla nich
 * Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i może służyć stosunkowo łatwe. Oznacza to, że:
-    * Wystąpiło ad hoc testowania na platformach firmy Microsoft lub zna partnerem, który został pomyślnie uruchomiony usługi Azure IoT Edge jest
+    * Ma przeprowadzić doraźne testy na platformach firmy Microsoft lub zna partnerem, który został pomyślnie uruchomiony usługi Azure IoT Edge jest
     * Pakiety instalacyjne dla innych platform może działać na tych platformach
     
 Rodzina systemu operacyjnego hosta musi zawsze odpowiadać rodziny używane w kontenerze modułu systemu operacyjnego gościa. Innymi słowy tylko umożliwia kontenerów systemu Linux w systemie Linux i kontenerów Windows na Windows. Korzystając z Windows, proces izolowany kontenerów są obsługiwane, nie funkcji hyper-v kontenerach izolowanych.  

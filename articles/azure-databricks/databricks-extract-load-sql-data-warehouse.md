@@ -7,13 +7,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 01/24/2019
-ms.openlocfilehash: b48ac9cf8eff001e62f54e41b5f76a9d006bc5ba
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.workload: Active
+ms.date: 02/15/2019
+ms.openlocfilehash: 6ec32a40cea4f95d9225134cfb36d4930245d1c5
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328932"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750603"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -21,14 +22,19 @@ W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie
 
 W procedurach opisanych w tym samouczku do przesyłania danych do usługi Azure Databricks służy łącznik SQL Data Warehouse dla usługi Azure Databricks. Ten łącznik z kolei używa usługi Azure Blob Storage jako magazynu tymczasowego dla danych przesyłanych między klastrem usługi Azure Databricks a usługą Azure SQL Data Warehouse.
 
+Poniższa ilustracja przedstawia przepływ aplikacji:
+
+![Usługa Azure Databricks z usługami Data Lake Store i SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Usługa Azure Databricks z usługami Data Lake Store i SQL Data Warehouse")
+
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Tworzenie usługi Azure Databricks.
 > * Tworzenie klastra Spark w usłudze Azure Databricks.
-> * Tworzenie systemu plików i przekazywanie danych do usługi Azure Data Lake Storage Gen2.
+> * Tworzenie systemu plików na koncie usługi Data Lake Storage Gen2.
+> * Przekazywanie danych przykładowych na konto usługi Azure Data Lake Storage Gen2.
 > * Tworzenie jednostki usługi.
-> * Wyodrębnianie danych z usługi Data Lake Store.
+> * Wyodrębnianie danych z konta usługi Azure Data Lake Storage Gen2.
 > * Przekształcanie danych w usłudze Azure Databricks.
 > * Ładowanie danych do usługi Azure SQL Data Warehouse.
 
@@ -42,11 +48,40 @@ Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
 * Utwórz klucz główny bazy danych dla magazynu danych Azure SQL Data Warehouse. Zobacz [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Utwórz konto usługi Azure Data Lake Storage Gen2. Zobacz [Tworzenie konta usługi Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
-
 * Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Zobacz [Szybki start: tworzenie konta usługi Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
 
+* Utwórz konto usługi Azure Data Lake Storage Gen2. Zobacz [Tworzenie konta usługi Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+
+*  Tworzenie jednostki usługi. Zobacz [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+   Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
+
+   * Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano rolę **Współautor danych obiektu blob magazynu** do jednostki usługi.
+
+     > [!IMPORTANT]
+     > Upewnij się, że przypisano rolę w zakresie konta magazynu usługi Data Lake Storage Gen2. Możesz przypisać rolę do nadrzędnej grupy zasobów lub subskrypcji, ale będzie zgłaszany błąd dotyczący uprawnień do momentu rozpropagowania przypisań roli do konta magazynu.
+
+   * Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
+
 * Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+
+## <a name="gather-the-information-that-you-need"></a>Zbieranie potrzebnych informacji
+
+Upewnij się, że zostały spełnione wszystkie wymagania wstępne tego samouczka.
+
+   Przed rozpoczęciem należy zebrać następujące informacje:
+
+   :heavy_check_mark:  Nazwa bazy danych, nazwa serwera baz danych, nazwa użytkownika i hasło magazynu Azure SQL Data Warehouse.
+
+   :heavy_check_mark:  Klucz dostępu konta usługi Blob Storage.
+
+   :heavy_check_mark:  Nazwa konta magazynu usługi Data Lake Storage Gen2.
+
+   :heavy_check_mark:  Identyfikator dzierżawy subskrypcji.
+
+   :heavy_check_mark:  Identyfikator aplikacji, która została zarejestrowana w usłudze Azure Active Directory (Azure AD).
+
+   :heavy_check_mark:  Klucz uwierzytelniania aplikacji, która została zarejestrowana w usłudze Azure AD.
 
 ## <a name="create-an-azure-databricks-service"></a>Tworzenie usługi Azure Databricks
 
@@ -94,40 +129,9 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
     * Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączać do niego notesy i uruchamiać zadania Spark.
 
-## <a name="create-a-file-system-and-upload-sample-data"></a>Tworzenie systemu plików i przekazywanie danych przykładowych
+## <a name="create-a-file-system-in-the-azure-data-lake-storage-gen2-account"></a>Tworzenie systemu plików na koncie usługi Azure Data Lake Storage Gen2
 
-Najpierw należy utworzyć system plików na koncie usługi Data Lake Storage Gen2. Następnie można przekazać przykładowy plik danych do usługi Data Lake Store. Później użyjesz tego pliku w usłudze Azure Databricks do uruchomienia niektórych przekształceń.
-
-1. Pobierz przykładowy plik danych [small_radio_json.json](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) do lokalnego systemu plików.
-
-2. Z witryny [Azure Portal](https://portal.azure.com/) przejdź do konta usługi Data Lake Storage Gen2, które zostało utworzone w ramach spełniania warunków wstępnych do tego samouczka.
-
-3. Na stronie **Przegląd** konta magazynu wybierz pozycję **Otwórz w programie Explorer**.
-
-   ![Otwieranie Eksploratora usługi Storage](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer.png "Otwieranie Eksploratora usługi Storage")
-
-4. Wybierz pozycję **Otwórz Eksploratora usługi Azure Storage**, aby otworzyć Eksploratora usługi Storage.
-
-   ![Drugi monit o otworzenie Eksploratora usługi Storage](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer-2.png "Drugi monit o otworzenie Eksploratora usługi Storage")
-
-   Zostanie otwarty Eksplorator usługi Storage. Możesz utworzyć system plików i przekazać dane przykładowe, korzystając ze wskazówek zawartych w tym temacie: [Szybki start: zarządzanie danymi na koncie usługi Azure Data Lake Storage Gen2 przy użyciu Eksploratora usługi Azure Storage](../storage/blobs/data-lake-storage-explorer.md).
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
-
-Utwórz jednostkę usługi, wykonując czynności opisane w temacie: [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
-
-:heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano aplikację do **roli Współautor usługi Blob Storage**.
-
-:heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
-Najpierw utworzysz notes w obszarze roboczym usługi Azure Databricks, a następnie uruchomisz fragmenty kodu, aby utworzyć system plików w ramach konta magazynu.
-
-## <a name="extract-data-from-the-data-lake-store"></a>Wyodrębnianie danych z usługi Data Lake Store
-
-W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a następnie uruchomisz fragmenty kodu, aby wyodrębnić dane z usługi Data Lake Store do usługi Azure Databricks.
+W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a następnie uruchomisz fragmenty kodu, aby skonfigurować konto magazynu.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do utworzonej usługi Azure Databricks i wybierz pozycję **Uruchom obszar roboczy**.
 
@@ -149,13 +153,40 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
    spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. W tym bloku kodu zastąp symbole zastępcze `application-id`, `authentication-id` i `tenant-id` wartościami uzyskanymi podczas wykonywania kroków opisanych w sekcji Zapisywanie konfiguracji konta magazynu na później. Zastąp wartość symbolu zastępczego `storage-account-name` nazwą konta magazynu.
+6. W tym bloku kodu zamień symbole zastępcze `application-id`, `authentication-id`, `tenant-id` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
+
+   * Parametry `application-id` i `authentication-id` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
+
+   * Parametr `tenant-id` pochodzi z subskrypcji.
+
+   * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
 
 7. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
-8. Teraz możesz załadować przykładowy plik json jako ramkę danych w usłudze Azure Databricks. Wklej następujący kod w nowej komórce. Zastąp symbole zastępcze umieszczone w nawiasach ostrokątnych własnymi wartościami.
+## <a name="ingest-sample-data-into-the-azure-data-lake-storage-gen2-account"></a>Pozyskiwanie danych przykładowych na konto usługi Azure Data Lake Storage Gen2
+
+Przed przystąpieniem do pracy z tą sekcją musisz zapewnić spełnienie następujących wymagań wstępnych:
+
+Wprowadź następujący kod w komórce notesu:
+
+    %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+
+W tej komórce naciśnij klawisze **SHIFT + ENTER**, aby uruchomić kod.
+
+Teraz w nowej komórce pod tą komórką wprowadź następujący kod, zastępując wartości w nawiasach tymi samymi wartościami, których użyto wcześniej:
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+
+W tej komórce naciśnij klawisze **SHIFT + ENTER**, aby uruchomić kod.
+
+## <a name="extract-data-from-the-azure-data-lake-storage-gen2-account"></a>Wyodrębnianie danych z konta usługi Azure Data Lake Storage Gen2
+
+1. Teraz możesz załadować przykładowy plik json jako ramkę danych w usłudze Azure Databricks. Wklej następujący kod w nowej komórce. Zastąp symbole zastępcze umieszczone w nawiasach ostrokątnych własnymi wartościami.
 
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
@@ -165,9 +196,9 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
    * Zastąp symbol zastępczy `storage-account-name` nazwą konta magazynu.
 
-9. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
+2. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
-10. Uruchom poniższy kod, aby wyświetlić zawartość ramki danych:
+3. Uruchom poniższy kod, aby wyświetlić zawartość ramki danych:
 
     ```scala
     df.show()
@@ -300,8 +331,8 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    val dwPass = "<password>"
    val dwJdbcPort =  "1433"
    val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
-   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
-   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
+   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
+   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
 5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDF** jako tabelę w magazynie danych SQL Data Warehouse. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL.

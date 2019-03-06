@@ -1,5 +1,5 @@
 ---
-title: 'Pobierz ARP tabel — Rozwiązywanie problemów z usługi ExpressRoute: klasycznym: Azure | Dokumentacja firmy Microsoft'
+title: 'Pobierz ARP tabel — Rozwiązywanie problemów z usługi ExpressRoute: klasycznym: Azure| Microsoft Docs'
 description: Ta strona zawiera instrukcje dotyczące pobieranie tabel ARP dla obwodu usługi ExpressRoute — klasycznego modelu wdrażania.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272290"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439642"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Pobieranie tabel ARP w klasycznym modelu wdrażania
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Poniższa sekcja zawiera informacje o sposobie wyświetlania tabel ARP, które s
 Upewnij się, że masz następujące elementy, przed kontynuowaniem:
 
 * Nieprawidłowa obwód usługi ExpressRoute, który jest skonfigurowany z co najmniej jeden element równorzędny. Obwód musi być w pełni skonfigurowane przez dostawcę połączenia. Użytkownik (lub dostawca połączenia) należy skonfigurować co najmniej jeden z komunikacji równorzędnej (Azure prywatnej i publicznej Azure lub Microsoft) w tym obwodzie.
-* Zakresy adresów IP, które są używane do konfigurowania komunikacji równorzędnej (Azure prywatnej i publicznej Azure i Microsoft). Przejrzyj przykłady przypisania adresów IP w [na stronie wymagania dotyczące routingu usługi ExpressRoute](expressroute-routing.md) ułatwią zrozumienie sposobu adresy IP są mapowane do interfejsów użytkownika aise i po stronie usługi ExpressRoute. Informacje o konfiguracji komunikacji równorzędnej można uzyskać, przeglądając [strony konfiguracji z komunikacji równorzędnej usługi ExpressRoute](expressroute-howto-routing-classic.md).
+* Zakresy adresów IP, które są używane do konfigurowania komunikacji równorzędnej (Azure prywatnej i publicznej Azure i Microsoft). Przejrzyj przykłady przypisania adresów IP w [na stronie wymagania dotyczące routingu usługi ExpressRoute](expressroute-routing.md) ułatwią zrozumienie sposobu adresy IP są mapowane do interfejsów ze strony i po stronie usługi ExpressRoute. Informacje o konfiguracji komunikacji równorzędnej można uzyskać, przeglądając [strony konfiguracji z komunikacji równorzędnej usługi ExpressRoute](expressroute-howto-routing-classic.md).
 * Informacje od sieci dostawcy łączności lub zespołu o adresów MAC interfejsów, które są używane wraz z tych adresów IP.
 * Najnowszy moduł programu Windows PowerShell dla platformy Azure (wersja 1,50 lub nowszej).
 
