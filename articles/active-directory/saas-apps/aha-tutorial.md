@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a68deb2cb6de90c577f2d828e24a1747662c7e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b2cb0edf74a8d829c5d3dc9e634f66617c5d2ee9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162207"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Aha!
 
-W tym samouczku dowiesz się, jak zintegrować aplikację Aha!  z usługą Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować aplikację Aha! z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Aha!  z usługą Azure AD zapewnia następujące korzyści:
 
 * Możliwość kontrolowania dostępu do aplikacji Aha! za pomocą usługi Azure AD.
@@ -66,9 +66,9 @@ Aby skonfigurować integrację aplikacji Aha!  z usługą Azure AD, musisz doda�
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Aha!**, wybierz pozycję **Aha!**  na panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Aha!**, wybierz pozycję **Aha!** na panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Aplikacja Aha!  na liście wyników](common/search-new-app.png)
+     ![Aplikacja Aha! na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -127,9 +127,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD dla aplikacji Aha!, wy
 
     d. Adres URL wylogowywania
 
-### <a name="configure-aha-single-sign-on"></a>Konfigurowanie logowania jednokrotnego  aplikacji Aha!
+### <a name="configure-aha-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Aha!
 
-1. W innym oknie przeglądarki zaloguj się do witryny firmowej  aplikacji Aha! jako administrator.
+1. W innym oknie przeglądarki zaloguj się do witryny firmowej aplikacji Aha! jako administrator.
 
 2. W menu u góry kliknij pozycję **Settings** (Ustawienia).
 
@@ -194,7 +194,7 @@ W tej sekcji włączysz możliwość korzystania z logowania jednokrotnego platf
 
 2. Na liście aplikacji wybierz pozycję **Aha!**.
 
-    ![Link aplikacji Aha!  na liście aplikacji](common/all-applications.png)
+    ![Link aplikacji Aha! na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -210,20 +210,20 @@ W tej sekcji włączysz możliwość korzystania z logowania jednokrotnego platf
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-aha-test-user"></a>Tworzenie użytkownika testowego  aplikacji Aha!
+### <a name="create-aha-test-user"></a>Tworzenie użytkownika testowego aplikacji Aha!
 
-W tej sekcji w aplikacji Aha! jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Aha!  obsługuje aprowizację użytkowników typu just-in-time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Aha!, zostanie on utworzony po uwierzytelnieniu.
+W tej sekcji w aplikacji Aha! jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Aha! obsługuje aprowizację użytkowników typu just-in-time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Aha!, zostanie on utworzony po uwierzytelnieniu.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Aha! na panelu dostępu powinno nastąpić automatyczne  zalogowanie do aplikacji Aha!,  dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Aha! na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Aha!, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

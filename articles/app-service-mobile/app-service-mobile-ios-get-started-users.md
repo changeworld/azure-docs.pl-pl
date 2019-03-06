@@ -1,6 +1,6 @@
 ---
-title: Dodawanie uwierzytelniania w systemie iOS w usłudze Azure Mobile Apps
-description: Dowiedz się, jak używać usługi Azure Mobile Apps uwierzytelniać użytkowników aplikacji systemu iOS za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i firmy Microsoft.
+title: Dodawanie uwierzytelniania w systemie iOS z usługą Azure Mobile Apps
+description: Dowiedz się, jak używać usługi Azure Mobile Apps, uwierzytelniać użytkowników aplikacji systemu iOS za pomocą różnych dostawców tożsamości, obejmującej usługi AAD, Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: ios
 author: conceptdev
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: crdun
-ms.openlocfilehash: e0eeee05ebad2e8148752f988bbbc2f6a0d7c296
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592698"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445912"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Dodawanie uwierzytelniania do aplikacji systemu iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-W tym samouczku, dodać authentication [iOS szybki start] projektu przy użyciu dostawcy tożsamości obsługiwane. W tym samouczku jest oparta na [iOS szybki start] — samouczek, należy najpierw wykonać.
+W tym samouczku dodasz uwierzytelniania [Przewodnik Szybki start dla systemu iOS] projektu za pomocą dostawcy tożsamości obsługiwanych. Ten samouczek opiera się na [Przewodnik Szybki start dla systemu iOS] — samouczek, należy najpierw wykonać.
 
-## <a name="register"></a>Zarejestrować aplikację do uwierzytelniania i konfigurowanie usługi aplikacji
+## <a name="register"></a>Rejestrowanie aplikacji do uwierzytelniania i konfigurowanie usługi App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Dodaj aplikację do dozwolonych przekierowania zewnętrzne adresy URL
+## <a name="redirecturl"></a>Dodawanie aplikacji do adresów URL dozwolonych zewnętrznego przekierowania
 
-Bezpieczne uwierzytelnianie wymaga Zdefiniuj nowy schemat adresu URL dla aplikacji.  Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania.  W tym samouczku używamy schemat adresu URL _appname_ w ciągu.  Można jednak użyć dowolnego wybranego schematu URL.  Powinien być unikatowy w aplikacji mobilnej.  Aby włączyć przekierowywanie po stronie serwera th:
+Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplikacji.  Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania.  W tym samouczku używamy schemat adresu URL _appname_ w całym.  Można jednak użyć dowolnego wybranego schematu URL.  Powinien on być unikatowy dla twojej aplikacji mobilnej.  Aby włączyć przekierowywanie po stronie serwera th:
 
-1. W [portalu Azure], wybierz usługę aplikacji.
+1. W [Azure Portal], wybierz swoją usługę aplikacji.
 
 2. Kliknij przycisk **uwierzytelniania / autoryzacji** opcji menu.
 
@@ -41,16 +41,16 @@ Bezpieczne uwierzytelnianie wymaga Zdefiniuj nowy schemat adresu URL dla aplikac
 
 4. Ustaw **tryb zarządzania** do **zaawansowane**.
 
-5. W **dozwolone zewnętrznych adresów URL przekierowań**, wprowadź `appname://easyauth.callback`.  _Appname_ ten ciąg jest schemat adresu URL dla aplikacji mobilnej.  Musi on być zgodny normalne Specyfikacja adresu URL dla protokołu (Użyj litery i tylko cyfry i rozpoczyna się od litery).  Należy zanotuj ciąg, który wybrany jako trzeba będzie dostosować kodu aplikacji mobilnej przy użyciu schemat adresu URL w kilku miejscach.
+5. W **dozwolone zewnętrzne adresy URL przekierowania**, wprowadź `appname://easyauth.callback`.  _Appname_ w tym ciągu jest schemat adresu URL aplikacji mobilnej.  Powinien on być zgodny z normalnej Specyfikacja adresu URL dla protokołu (litery użytkowania i tylko cyfry oraz rozpoczynać się literą).  Należy zapamiętać, ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnych za pomocą schemat adresu URL w kilku miejscach.
 
 6. Kliknij przycisk **OK**.
 
 7. Kliknij pozycję **Zapisz**.
 
-## <a name="permissions"></a>Ogranicz uprawnienia dla uwierzytelnionych użytkowników
+## <a name="permissions"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgłoszony wyjątek, ponieważ aplikacja próbuje uzyskać dostęp do wewnętrznej bazy danych jako nieuwierzytelniony użytkownik, ale *TodoItem* tabeli teraz wymaga uwierzytelniania.
+W programie Xcode, naciśnij klawisz **Uruchom** Aby uruchomić aplikację. Zgłaszany jest wyjątek, ponieważ aplikacja próbuje uzyskać dostęp do wewnętrznej bazy danych jako użytkownik nieuwierzytelniony, ale *TodoItem* tabeli teraz wymaga uwierzytelnienia.
 
 ## <a name="add-authentication"></a>Dodawanie uwierzytelniania do aplikacji
 **Objective-C**:
@@ -77,9 +77,9 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     }
     ```
 
-    Zmień *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, należy najpierw [dozwolonych domen Facebook] [ 1] w aplikacji.
+    Zmiana *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, musisz najpierw [domen Facebook dozwolonych] [ 1] w swojej aplikacji.
 
-    Zastąp **urlScheme** z unikatową nazwę aplikacji.  UrlScheme powinna być taka sama jak protokół schemat adresu URL, który określono w **dozwolone zewnętrznych adresów URL przekierowań** w portalu Azure. UrlScheme jest używany przez wywołanie zwrotne uwierzytelniania, aby powrócić do aplikacji po zakończeniu żądania uwierzytelnienia.
+    Zastąp **urlScheme** unikatową nazwą aplikacji.  UrlScheme powinna być taka sama jak protokół schemat adresu URL, który określiłeś w **dozwolone zewnętrzne adresy URL przekierowania** pola w witrynie Azure portal. UrlScheme umożliwia przez wywołanie zwrotne uwierzytelniania przejdź z powrotem do aplikacji po zakończeniu żądania uwierzytelnienia.
 
 2. Zastąp `[self refresh]` w `viewDidLoad` w *QSTodoListViewController.m* następującym kodem:
 
@@ -110,9 +110,9 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     }
     ```
 
-   Dodaj ten kod bezpośrednio przed przeczytaniem wiersza `#pragma mark - Core Data stack`.  Zastąp _appname_ o wartości urlScheme, który został użyty w kroku 1.
+   Dodaj następujący kod bezpośrednio przed przeczytaniem wiersza `#pragma mark - Core Data stack`.  Zastąp _appname_ wartością urlScheme, która została użyta w kroku 1.
 
-5. Otwórz `AppName-Info.plist` pliku (zastępując AppName z nazwą aplikacji) i Dodaj następujący kod:
+5. Otwórz `AppName-Info.plist` pliku (zastępowanie AppName nazwą aplikacji) i Dodaj następujący kod:
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -128,11 +128,11 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     </array>
     ```
 
-    Ten kod powinien być umieszczony wewnątrz `<dict>` elementu.  Zastąp _appname_ ciągu (w tablicy dla **CFBundleURLSchemes**) o nazwie aplikacji wybranymi w kroku 1.  Można wprowadzić te zmiany w plist Edytor — kliknięcie `AppName-Info.plist` w środowisku XCode, aby otworzyć Edytor plist.
+    Ten kod będzie umieszczona wewnątrz `<dict>` elementu.  Zastąp _appname_ ciągu (w ramach macierzy **CFBundleURLSchemes**) nazwą aplikacji, które wybrano w kroku 1.  Można również wprowadzenie tych zmian w plist Edytor — kliknij pozycję `AppName-Info.plist` pliku w programie XCode, aby otworzyć Edytor plist.
 
-    Zastąp `com.microsoft.azure.zumo` ciągu dla **CFBundleURLName** z Twojej firmy Apple identyfikator pakietu.
+    Zastąp `com.microsoft.azure.zumo` ciągu dla **CFBundleURLName** za pomocą usługi Apple identyfikator pakietu.
 
-6. Naciśnij klawisz *Uruchom* Aby uruchomić aplikację, a następnie zaloguj. Gdy użytkownik jest zalogowany, należy umożliwić wyświetlanie listy zadań do wykonania i aktualizacje.
+6. Naciśnij klawisz *Uruchom* Aby uruchomić aplikację, a następnie zaloguj się. Po użytkownik jest zalogowany, można wyświetlić listę zadań do wykonania i aktualizacje.
 
 **Kod SWIFT**:
 
@@ -163,9 +163,9 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     }
     ```
 
-    Zmień *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, należy najpierw [dozwolonych domen Facebook] [ 1] w aplikacji.
+    Zmiana *google* do *microsoftaccount*, *twitter*, *facebook*, lub *windowsazureactivedirectory* Jeśli nie używasz Google jako dostawcy tożsamości. Jeśli korzystasz z usługi Facebook, musisz najpierw [domen Facebook dozwolonych] [ 1] w swojej aplikacji.
 
-    Zastąp **urlScheme** z unikatową nazwę aplikacji.  UrlScheme powinna być taka sama jak protokół schemat adresu URL, który określono w **dozwolone zewnętrznych adresów URL przekierowań** w portalu Azure. UrlScheme jest używany przez wywołanie zwrotne uwierzytelniania, aby powrócić do aplikacji po zakończeniu żądania uwierzytelnienia.
+    Zastąp **urlScheme** unikatową nazwą aplikacji.  UrlScheme powinna być taka sama jak protokół schemat adresu URL, który określiłeś w **dozwolone zewnętrzne adresy URL przekierowania** pola w witrynie Azure portal. UrlScheme umożliwia przez wywołanie zwrotne uwierzytelniania przejdź z powrotem do aplikacji po zakończeniu żądania uwierzytelnienia.
 
 2. Usuń wiersze `self.refreshControl?.beginRefreshing()` i `self.onRefresh(self.refreshControl)` na końcu `viewDidLoad()` w *ToDoTableViewController.swift*. Dodaj wywołanie do `loginAndGetData()` zamiast nich:
 
@@ -173,7 +173,7 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     loginAndGetData()
     ```
 
-3. Otwórz `AppDelegate.swift` i Dodaj następujący wiersz do `AppDelegate` klasy:
+3. Otwórz `AppDelegate.swift` pliku i Dodaj następujący wiersz do `AppDelegate` klasy:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -188,9 +188,9 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     }
     ```
 
-    Zastąp _appname_ o wartości urlScheme, który został użyty w kroku 1.
+    Zastąp _appname_ wartością urlScheme, która została użyta w kroku 1.
 
-4. Otwórz `AppName-Info.plist` pliku (zastępując AppName z nazwą aplikacji) i Dodaj następujący kod:
+4. Otwórz `AppName-Info.plist` pliku (zastępowanie AppName nazwą aplikacji) i Dodaj następujący kod:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -206,18 +206,18 @@ W programie Xcode, naciśnij klawisz **Uruchom** do uruchomienia aplikacji. Zgł
     </array>
     ```
 
-    Ten kod powinien być umieszczony wewnątrz `<dict>` elementu.  Zastąp _appname_ ciągu (w tablicy dla **CFBundleURLSchemes**) o nazwie aplikacji wybranymi w kroku 1.  Można wprowadzić te zmiany w plist Edytor — kliknięcie `AppName-Info.plist` w środowisku XCode, aby otworzyć Edytor plist.
+    Ten kod będzie umieszczona wewnątrz `<dict>` elementu.  Zastąp _appname_ ciągu (w ramach macierzy **CFBundleURLSchemes**) nazwą aplikacji, które wybrano w kroku 1.  Można również wprowadzenie tych zmian w plist Edytor — kliknij pozycję `AppName-Info.plist` pliku w programie XCode, aby otworzyć Edytor plist.
 
-    Zastąp `com.microsoft.azure.zumo` ciągu dla **CFBundleURLName** z Twojej firmy Apple identyfikator pakietu.
+    Zastąp `com.microsoft.azure.zumo` ciągu dla **CFBundleURLName** za pomocą usługi Apple identyfikator pakietu.
 
-5. Naciśnij klawisz *Uruchom* Aby uruchomić aplikację, a następnie zaloguj. Gdy użytkownik jest zalogowany, należy umożliwić wyświetlanie listy zadań do wykonania i aktualizacje.
+5. Naciśnij klawisz *Uruchom* Aby uruchomić aplikację, a następnie zaloguj się. Po użytkownik jest zalogowany, można wyświetlić listę zadań do wykonania i aktualizacje.
 
-Usługi aplikacji — uwierzytelnianie przy użyciu jabłek komunikacji między aplikacjami.  Aby uzyskać więcej informacji na ten temat, zapoznaj się [dokumentacji firmy Apple][2]
+Uwierzytelnianie usługi App Service przy użyciu komunikacji Inter-App jabłka.  Aby uzyskać więcej informacji na ten temat, zapoznaj się [dokumentacji firmy Apple][2]
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[portalu Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
-[iOS szybki start]: app-service-mobile-ios-get-started.md
+[Przewodnik Szybki start dla systemu iOS]: app-service-mobile-ios-get-started.md
 
