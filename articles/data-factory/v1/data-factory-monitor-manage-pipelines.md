@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015496"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445147"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie potoków i zarządzanie nimi usługi Azure Data Factory przy użyciu witryny Azure portal i programu PowerShell
 > [!div class="op_single_selector"]
@@ -35,6 +35,8 @@ W tym artykule opisano sposób monitorowania i debugowania potoków przy użyciu
 
 > [!IMPORTANT]
 > Azure Data Factory w wersji 1 teraz używa nowego [usługi Azure Monitor alertów infrastruktury](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Stare alerty infrastruktury jest przestarzały. W wyniku istniejące alerty skonfigurowany dla wersji 1 dane, które fabryki przestanie działać. Istniejące alerty dla fabryki danych w wersji 1 nie są migrowane automatycznie. Musisz odtworzyć te alerty dotyczące nowych alertów infrastruktury. Zaloguj się w witrynie Azure portal i wybierz **Monitor** do tworzenia nowych alertów dotyczących metryk (np. nieudane uruchomienia lub pomyślnych uruchomień) dla danej wersji fabryk danych 1.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="understand-pipelines-and-activity-states"></a>Zrozumienie potokach i Stanach aktywności
 Za pomocą witryny Azure portal, możesz wykonywać następujące czynności:
@@ -132,7 +134,7 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 <tr>
 <td>-</td><td>Wycinek nie powiodło się wygenerowany i/lub zweryfikować.</td>
 </tr>
-<td>Gotowe</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
+<td>Gotowy</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
 </tr>
 <tr>
 <td>Pominięte</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
@@ -173,26 +175,26 @@ Potoki można zarządzać za pomocą programu Azure PowerShell. Na przykład mo�
 > [!NOTE] 
 > Widok diagramu nie obsługuje wstrzymywanie i wznawianie potoków. Jeśli chcesz użyć interfejsu użytkownika, za pomocą aplikacji monitorowanie i zarządzanie nimi. Aby uzyskać szczegółowe informacje dotyczące korzystania z aplikacji, zobacz [monitorowanie i zarządzanie nimi potoków usługi Data Factory przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md) artykułu. 
 
-Można pause/zawiesić potoków przy użyciu **AzureRmDataFactoryPipeline Wstrzymaj** polecenia cmdlet programu PowerShell. To polecenie cmdlet jest przydatne, gdy nie chcesz uruchomienia potoków, dopóki problem nie zostanie rozwiązany. 
+Można pause/zawiesić potoków przy użyciu **AzDataFactoryPipeline Wstrzymaj** polecenia cmdlet programu PowerShell. To polecenie cmdlet jest przydatne, gdy nie chcesz uruchomienia potoków, dopóki problem nie zostanie rozwiązany. 
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 Na przykład:
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 Po usunięciu problemu z potokiem, możesz wznowić zawieszone potoku, uruchamiając następujące polecenie programu PowerShell:
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 Na przykład:
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 ## <a name="debug-pipelines"></a>Debugowanie potoków
@@ -217,29 +219,29 @@ W przypadku niepowodzenia uruchomienia działania w potoku zestawu danych, któr
 
 #### <a name="use-powershell-to-debug-an-error"></a>Błąd podczas debugowania przy użyciu programu PowerShell
 1. Uruchom program **PowerShell**.
-2. Uruchom **Get-AzureRmDataFactorySlice** polecenie, aby wyświetlić wycinki oraz ich stan. Powinny pojawić się wycinek ze statusem.        
+2. Uruchom **Get AzDataFactorySlice** polecenie, aby wyświetlić wycinki oraz ich stan. Powinny pojawić się wycinek ze statusem.        
 
     ```powershell   
-    Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+    Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
    Na przykład:
 
     ```powershell   
-    Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+    Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    Zastąp **StartDateTime** czas rozpoczęcia potoku. 
-3. Teraz uruchom **Get-AzureRmDataFactoryRun** polecenia cmdlet w celu uzyskania szczegółowych informacji o działaniu uruchomienia dla wycinka.
+3. Teraz uruchom **Get AzDataFactoryRun** polecenia cmdlet w celu uzyskania szczegółowych informacji o działaniu uruchomienia dla wycinka.
 
     ```powershell   
-    Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
+    Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
     Na przykład:
 
     ```powershell   
-    Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+    Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     Wartość StartDateTime oznacza czas rozpoczęcia dla wycinka błąd lub problem, który zauważyć w poprzednim kroku. Daty i godziny, powinna zostać ujęta w cudzysłów.
@@ -267,10 +269,10 @@ W przypadku niepowodzenia uruchomienia działania w potoku zestawu danych, któr
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. Możesz uruchomić **AzureRmDataFactoryLog Zapisz** polecenia cmdlet z wartością identyfikatora, zobacz z danych wyjściowych i pobrania plików dziennika przy użyciu **- DownloadLogsoption** polecenia cmdlet.
+5. Możesz uruchomić **AzDataFactoryLog Zapisz** polecenia cmdlet z wartością identyfikatora, zobacz z danych wyjściowych i pobrania plików dziennika przy użyciu **- DownloadLogsoption** polecenia cmdlet.
 
     ```powershell
-    Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+    Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>Błędów ponownego uruchomienia w potoku
@@ -288,7 +290,7 @@ W przypadku wycinek Weryfikacja nie powiodła się z powodu błędu zasad (na pr
 ![Napraw błędy i sprawdzanie poprawności](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-Błędy, można uruchomić program za pomocą **Set-AzureRmDataFactorySliceStatus** polecenia cmdlet. Zobacz [Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus) temacie Informacje o składni i inne szczegóły dotyczące polecenia cmdlet.
+Błędy, można uruchomić program za pomocą **AzDataFactorySliceStatus zestaw** polecenia cmdlet. Zobacz [AzDataFactorySliceStatus zestaw](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) temacie Informacje o składni i inne szczegóły dotyczące polecenia cmdlet.
 
 **Przykład:**
 
@@ -297,7 +299,7 @@ Poniższy przykład ustawia stan wszystkich wycinków dla tabeli "DAWikiAggregat
 Typ "aktualizacji" jest ustawiona na "Niego parametru UpstreamInPipeline", co oznacza, że stan każdego wycinka do tabeli i wszystkie tabele zależne (nadrzędnego) są ustawione na "Oczekiwanie". Możliwa wartość tego parametru jest "Indywidualny".
 
 ```powershell
-Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>Tworzenie alertów w witrynie Azure portal
 

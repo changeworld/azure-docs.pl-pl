@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d0f22360a36105e5bfb877d7478b58c37fcc4353
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4a1b1a32a488395c6a0b3f19de727802a329930a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213784"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439863"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopiowanie danych z systemu plików HDFS przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -138,6 +138,7 @@ Aby skopiować dane z systemu plików HDFS, należy ustawić właściwość typu
         },
         "typeProperties": {
             "folderPath": "folder/subfolder/",
+            "fileName": "*",
             "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
             "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
@@ -203,7 +204,7 @@ Dowiedz się więcej na temat korzystania z narzędzia DistCp do skopiowania dan
 
 Kopiuj działania pomocy technicznej za pomocą narzędzia DistCp do kopiowania plików jako — do obiektów Blob platformy Azure (w tym [kopiowania etapowego](copy-activity-performance.md) lub Azure Data Lake Store, w którym to przypadku w pełni mogą korzystać power klastra, zamiast uruchamiać na środowiskiem Integration Runtime . Będzie ona większa przepustowość kopiowania, zwłaszcza, jeśli klaster jest bardzo zaawansowany Na podstawie konfiguracji w usłudze Azure Data Factory, działanie kopiowania automatycznie konstruowania polecenia distcp, Prześlij do klastra usługi Hadoop i monitorować stan kopiowania.
 
-### <a name="prerequsites"></a>Prerequsites
+### <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skopiować za pomocą narzędzia DistCp pliki jako — jest z systemu plików HDFS do obiektów Blob platformy Azure (w tym kopiowania przejściowego) lub Azure Data Lake Store, upewnij się, klastra Hadoop spełnia poniższe wymagania:
 

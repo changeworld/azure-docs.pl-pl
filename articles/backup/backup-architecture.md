@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4be483994bd7bc5bd97b1e59df230f66e9b4e24e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 034f7f6d8636ced748987c9b0e584790205c0083
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430350"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435307"
 ---
 # <a name="azure-backup-architecture"></a>Architektura usługi Azure Backup
 
@@ -138,13 +138,13 @@ Należy pamiętać, że maszyny wirtualne platformy Azure wymagają dostępu do 
     - Agenta usług MARS używa tylko zapis systemu Windows do przechwycenia migawki.
     - Agent nie są używane wszystkie składniki zapisywania usługi VSS aplikacji i dlatego nie przechwytuje migawek spójności aplikacji.
 3. Po wykonaniu migawki za pomocą usługi VSS, agenta usług MARS tworzy wirtualny dysk twardy w folderze pamięci podręcznej określone podczas konfigurowania kopii zapasowej i przechowywanie sum kontrolnych dla poszczególnych bloków danych. 
-4. Zgodnie z harmonogramem, które określisz, uruchamiane przyrostowe kopie zapasowe, chyba że zostanie uruchomione kopii zapasowej usługi ad hoc.
+4. Zgodnie z harmonogramem, które określisz, uruchamiane przyrostowe kopie zapasowe, chyba że zostanie uruchomione kopii zapasowej usługi ad-hoc.
 5. W przyrostowych kopii zapasowych zmienionych plików są identyfikowane i utworzeniu nowego wirtualnego dysku twardego. Go ma kompresowane i szyfrowane i wysyłane do magazynu.
 6. Po zakończeniu przyrostowej kopii zapasowej, nowego wirtualnego dysku twardego jest scalany z dysku VHD utworzonego po replikacji początkowej, zapewniając najnowszy stan do użycia w porównaniu do bieżącej kopii zapasowej. 
 
 ![Kopia zapasowa serwera Windows w środowisku lokalnym za pomocą agenta usług MARS](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Architektura: Tworzenie kopii zapasowej programu DPM/serwera usługi Mab
+## <a name="architecture-back-up-to-dpmmabs"></a>Architektura: Tworzenie kopii zapasowych w programie DPM lub usłudze MABS
 
 1. Zainstaluj agenta ochrony programu DPM lub MABS na maszynach, które chcesz chronić, a następnie dodaj maszyny do grupy ochrony programu DPM.
     - Aby chronić maszyn lokalnych, serwer DPM lub MABS musi być w środowisku lokalnym.

@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956878"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435137"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Włączanie synchronizacji w trybie offline za pomocą aplikacji mobilnych systemu iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -101,7 +101,7 @@ Teraz możemy wykonania operacji synchronizacji rzeczywiste i pobierania danych 
 
           if error != nil {
               // A real application would handle various errors like network conditions,
-              // server conflicts, etc via the MSSyncContextDelegate
+              // server conflicts, etc. via the MSSyncContextDelegate
               print("Error: \(error!.description)")
 
               // We will discard our changes and keep the server's copy for simplicity
@@ -141,7 +141,7 @@ Ponieważ synchronizacje aplikacji zawsze wtedy, gdy dane zmodyfikowany (Objecti
 Korzystając z magazynu offline danych podstawowych, należy zdefiniować konkretne tabele i pola w modelu danych. Przykładowa aplikacja już zawiera model danych z odpowiednim formacie. W tej sekcji, w jaki sposób za pomocą tych tabel, aby pokazać, jak są one używane.
 
 Otwórz **QSDataModel.xcdatamodeld**. Cztery tabele są zdefiniowane — elementy na samych trzech, które są używane przez zestaw SDK i taki, który jest używany do zadania do wykonania:
-  * MS_TableOperations: Śledzi elementy, które muszą zostać zsynchronizowane z serwerem.
+  * MS_TableOperations: Śledzenie elementów, które muszą zostać zsynchronizowane z serwerem.
   * MS_TableOperationErrors: Śledzi wszystkie błędy, które występują podczas synchronizacji w trybie offline.
   * MS_TableConfig: Śledzi ostatniej aktualizacji podczas ostatniej operacji synchronizacji dla wszystkich operacji ściągania.
   * Czynność do wykonania: Przechowuje elementy zadań do wykonania. Kolumny systemowe **createdAt**, **updatedAt**, i **wersji** są właściwości opcjonalne systemu.
@@ -159,12 +159,12 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
 ![Atrybuty tabeli MS_TableOperations][defining-core-data-tableoperations-entity]
 
-| Atrybut | Typ |
+| Atrybut | Type |
 | --- | --- |
 | id | Liczba całkowita 64 |
-| Identyfikator elementu | Ciąg |
+| itemId | String |
 | properties | Dane binarne |
-| tabela | Ciąg |
+| tabela | String |
 | tableKind | Liczba całkowita 16 |
 
 
@@ -172,9 +172,9 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
  ![Atrybuty tabeli MS_TableOperationErrors][defining-core-data-tableoperationerrors-entity]
 
-| Atrybut | Typ |
+| Atrybut | Type |
 | --- | --- |
-| id |Ciąg |
+| id |String |
 | operationId |Liczba całkowita 64 |
 | properties |Dane binarne |
 | tableKind |Liczba całkowita 16 |
@@ -183,31 +183,31 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 
  ![][defining-core-data-tableconfig-entity]
 
-| Atrybut | Typ |
+| Atrybut | Type |
 | --- | --- |
-| id |Ciąg |
-| key |Ciąg |
-| Właściwość KeyType |Liczba całkowita 64 |
-| tabela |Ciąg |
-| wartość |Ciąg |
+| id |String |
+| key |String |
+| keyType |Liczba całkowita 64 |
+| tabela |String |
+| wartość |String |
 
 ### <a name="data-table"></a>Tabela danych
 
-**Czynność do wykonania**
+**TodoItem**
 
-| Atrybut | Typ | Uwaga |
+| Atrybut | Type | Uwaga |
 | --- | --- | --- |
 | id | Ciąg, oznaczone jako wymagane |klucz podstawowy w magazynie zdalnym |
 | Wykonaj | Wartość logiczna | Pole elementu do wykonania |
-| tekst |Ciąg |Pole elementu do wykonania |
+| tekst |String |Pole elementu do wykonania |
 | createdAt | Date | (opcjonalnie) Mapuje **createdAt** właściwości systemu |
 | updatedAt | Date | (opcjonalnie) Mapuje **updatedAt** właściwości systemu |
-| version | Ciąg | (opcjonalnie) Używane do wykrywania konfliktów, mapy do wersji |
+| version | String | (opcjonalnie) Używane do wykrywania konfliktów, mapy do wersji |
 
 ## <a name="setup-sync"></a>Zmienianie działania synchronizacji aplikacji
 W tej sekcji zmodyfikujesz aplikację tak, aby nie synchronizuje się na uruchomienie aplikacji lub podczas wstawiania i aktualizowania elementów. Synchronizuje tylko wtedy, gdy przycisk Odśwież gestu jest wykonywane.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 1. W **QSTodoListViewController.m**, zmień **viewDidLoad** metodę, aby usunąć wywołanie `[self refresh]` na końcu metody. Teraz dane nie jest synchronizowany z serwerem na uruchomienie aplikacji. Zamiast tego jest synchronizowany z zawartością magazynu lokalnego.
 2. W **QSTodoService.m**, zmodyfikować definicję `addItem` tak, aby nie synchronizować, po wstawieniu elementu. Usuń `self syncData` blokowania i zastąp go następującym kodem:
@@ -238,11 +238,11 @@ W tej sekcji możesz nawiązać nieprawidłowy adres URL, aby zasymulować scena
 
 1. Zmień adres URL aplikacji mobilnej w **QSTodoService.m** nieprawidłowy adres URL i ponownie uruchom aplikację:
 
-   **Języka Objective-C**. W QSTodoService.m:
+   **Języka Objective-C**. In QSTodoService.m:
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **Kod SWIFT**. W ToDoTableViewController.swift:
+   **Kod SWIFT**. In ToDoTableViewController.swift:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
@@ -270,9 +270,9 @@ Normalne tworzenie, odczytywanie, aktualizowanie i usuwanie operacji (CRUD) dla 
 
 Magazyn lokalny firma Microsoft synchronizowane z serwerem, użyliśmy **MSSyncTable.pullWithQuery** metody.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizacja danych offline w aplikacjach mobilnych]
-* [Cloud Cover: Synchronizowanie w trybie Offline w usługach Azure Mobile Services] \(wideo dotyczy usług Mobile Services, ale w trybie offline funkcji Mobile Apps synchronizowanie działa w podobny sposób.\)
+* [Cloud Cover: Synchronizacja offline w usługach Azure Mobile Services] \(wideo dotyczy usług Mobile Services, ale w trybie offline funkcji Mobile Apps synchronizowanie działa w podobny sposób.\)
 
 <!-- URLs. -->
 
@@ -285,5 +285,5 @@ Magazyn lokalny firma Microsoft synchronizowane z serwerem, użyliśmy **MSSyncT
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Cloud Cover: Synchronizowanie w trybie Offline w usługach Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover: Synchronizacja offline w usługach Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

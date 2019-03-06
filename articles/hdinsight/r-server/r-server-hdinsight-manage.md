@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0699686338a14ed6cc1ddcb076e14de86d0249d9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584398"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438614"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
 
-W tym artykule dowiesz się, jak zarządzać istniejącego klastra usługi ML w usłudze Azure HDInsight do wykonywania zadań, takich jak dodawanie wielokrotność nominału równoczesnych użytkowników, zdalne łączenie się z klastrem usługi ML, zmiana kontekstu obliczeniowego itp.
+W tym artykule dowiesz się, jak zarządzać istniejącego klastra usługi ML w usłudze Azure HDInsight do wykonywania zadań takich jak dodawanie wielu równoczesnych użytkowników, zdalnego łączenia się z klastrem usługi uczenie Maszynowe, zmiana kontekstu obliczeniowego itp.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 28b28dc15809aa5d37eb9347ff3bc7eecccc9a20
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217989"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452712"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -62,7 +62,7 @@ Obsługiwane są następujące obsługiwanych jądra systemu Ubuntu.
 
 Wykonaj następujące kroki, aby zainstalować 64-bitowym systemie operacyjnym Ubuntu 16.04.2.
 
-1.   Przejdź do [link pobierania](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), wybierz najbliższe anddownload dublowanego obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych.
+1.   Przejdź do [link pobierania](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), wybierz najbliższe dublowania i pobieranie obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych.
 Zachowaj obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych w stacji dysków DVD i uruchom system.
 
 1.  Wybierz **angielski** jako preferowany język, a następnie wybierz **Enter**.
@@ -287,7 +287,6 @@ Użyj następujących kroków, aby utworzyć dysk przechowywania:
 2. Zanotuj adres IP serwera konfiguracji. Uruchom następujące polecenie, aby zainstalować główny serwer docelowy i Zarejestruj serwer z serwerem konfiguracji.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

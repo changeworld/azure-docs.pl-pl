@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 45a391f45d11d968818bafc97a705411a133b273
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463399"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57430853"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Maj 2018 r. 
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w maju 2018 r. 
@@ -26,7 +26,7 @@ Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisan
 Zobacz [Turbocharge analizy chmur przy użyciu usługi Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) ogłoszenia na blogu z Rohana Kumara, wiceprezes, Azure Data.
 
 ## <a name="auto-statistics"></a>Statystyka automatyczna
-Statystyki są kluczowe do optymalizacji generowania planu zapytania w nowoczesnych optymalizatory opartych na kosztach, takich jak aparat w usłudze SQL Data Warehouse. Gdy wszystkie zapytania są znane z wyprzedzeniem, określanie, które muszą zostać utworzony statystyk obiektów jest osiągalna zadaniem. Jednak gdy system jest w obliczu ad hoc i losowe zapytań, co jest typowe dla obciążeń magazynowania danych, Administratorzy systemu mogą mieć trudności z przewidywanie, co statystyki muszą zostać utworzone, co doprowadzi do plany wykonywania zapytań potencjalnie nieoptymalne i dłuższy czas odpowiedzi na zapytania. Jednym ze sposobów, aby uniknąć tego problemu jest tworzenie statystyk obiektów dla wszystkich kolumn z tabeli z wyprzedzeniem. Jednak ten proces jest powiązana z kary zgodnie z statystyk obiektów muszą być przechowywane w tabeli proces ładowania, co powoduje dłuższe czasy ładowania.
+Statystyki są kluczowe do optymalizacji generowania planu zapytania w nowoczesnych optymalizatory opartych na kosztach, takich jak aparat w usłudze SQL Data Warehouse. Gdy wszystkie zapytania są znane z wyprzedzeniem, określanie, które muszą zostać utworzony statystyk obiektów jest osiągalna zadaniem. Jednak gdy system jest muszą stawiać ad hoc i losowe zapytań, co jest typowe dla obciążeń magazynowania danych, Administratorzy systemu mogą mieć trudności z przewidzieć statystyk, które muszą zostać utworzone początkowe do zapytania potencjalnie nieoptymalne wykonywanie planów i dłużej czas odpowiedzi na zapytania. Jednym ze sposobów, aby uniknąć tego problemu jest tworzenie statystyk obiektów dla wszystkich kolumn z tabeli z wyprzedzeniem. Jednak ten proces jest powiązana z kary zgodnie z statystyk obiektów muszą być przechowywane w tabeli proces ładowania, co powoduje dłuższe czasy ładowania.
 
 Usługa SQL Data Warehouse obsługuje teraz automatyczne tworzenie obiektów statystyki, zapewniając większą elastyczność, wydajność i łatwość użycia dla administratorów i deweloperów, przy jednoczesnym zapewnieniu, że system będzie nadal oferują plany wykonywania jakości i najlepsze czasy odpowiedzi.
 

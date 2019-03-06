@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e8af817c942a28cfd28d1b13303aebfcc10d31ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 45b3149c0d546be201412567041ab1c5a86036e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016058"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455976"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Przenoszenie danych z lokalnym systemem plików HDFS, za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,8 @@ Możesz skopiować dane z systemu plików HDFS, do dowolnego obsługiwanego maga
 
 > [!NOTE]
 > Działanie kopiowania nie powoduje usunięcia pliku źródłowego, po pomyślnym są kopiowane do lokalizacji docelowej. Jeśli zachodzi potrzeba usunięcia pliku źródłowego po kopiowania zakończonego powodzeniem, należy utworzyć niestandardowe działanie, aby usunąć plik i użyć działania w potoku. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Włączanie połączenia
 Usługa Data Factory obsługuje nawiązywania połączenia z lokalnym systemem plików HDFS, przy użyciu bramy zarządzania danymi. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby dowiedzieć się więcej na temat bramy zarządzania danymi i instrukcje krok po kroku dotyczące konfigurowania bramy. Za pomocą bramy, aby połączyć z systemu plików HDFS, nawet wtedy, gdy jest ona hostowana na maszynie Wirtualnej IaaS platformy Azure.
@@ -65,13 +67,13 @@ Połączona usługa łączy magazyn danych do usługi data factory. Tworzenie po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **System plików Hdfs** |Yes |
+| type |Właściwość type musi być równa: **Hdfs** |Yes |
 | Url |Adres URL do systemu plików HDFS |Yes |
 | Element authenticationType |Anonimowe lub Windows. <br><br> Aby użyć **uwierzytelnianie Kerberos** łącznika systemu plików HDFS można znaleźć w [w tej sekcji](#use-kerberos-authentication-for-hdfs-connector) odpowiednio skonfigurować swoje środowisko lokalne. |Yes |
 | userName |Uwierzytelnianie nazwy użytkownika dla Windows. Dla uwierzytelniania Kerberos, określ `<username>@<domain>.com`. |Tak (dla uwierzytelniania Windows) |
 | hasło |Hasło do uwierzytelniania Windows. |Tak (dla uwierzytelniania Windows) |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z systemu plików HDFS. |Yes |
-| encryptedCredential |[Nowe AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) poświadczeń dostępu do danych wyjściowych. |Nie |
+| encryptedCredential |[Nowe AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) poświadczeń dostępu do danych wyjściowych. |Nie |
 
 ### <a name="using-anonymous-authentication"></a>Przy użyciu uwierzytelniania anonimowego
 

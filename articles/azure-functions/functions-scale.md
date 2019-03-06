@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d385fd8c8388e3ce54b89ff2ac863cd5a1aa0df
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5cd3f7f1f1f17d6dedea0157760b03c7e55e3d8a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216139"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410098"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
@@ -43,10 +43,7 @@ W planie usługi App Service można skalować między warstwami można przydziel
 
 Podczas korzystania z planu zużycie wystąpień hosta usługi Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bez użycia serwera skaluje się automatycznie, a opłaty są naliczane za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchomione. W ramach planu zużycie wykonywania funkcji upłynie limit czasu po upływie czasu określonego można konfigurować.
 
-> [!NOTE]
-> Domyślna wartość limitu czasu dla funkcji w ramach planu zużycie wynosi 5 minut. Wartość może zostać zwiększone dla aplikacji funkcji, maksymalnie do 10 minut, zmieniając właściwość `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
-
-Rozliczanie jest na podstawie liczby wykonań, czas wykonywania i używanej pamięci. Opłaty są agregowane w obrębie wszystkich funkcji w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [usługi Azure Functions stronę z cennikiem].
+Rozliczanie jest na podstawie liczby wykonań, czas wykonywania i używanej pamięci. Opłaty są agregowane w obrębie wszystkich funkcji w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Usługa Azure Functions, cennik].
 
 Plan zużycie jest domyślny plan hostingu i zapewnia następujące korzyści:
 
@@ -62,7 +59,7 @@ Należy wziąć pod uwagę plan usługi App Service w następujących przypadkac
 * Masz istniejące niedostatecznie używanych maszyn wirtualnych, które zostały już uruchomione inne wystąpienia usługi App Service.
 * Twoje aplikacje funkcji Uruchom stale albo w praktycznie w sposób ciągły. W tym przypadku Plan usługi App Service może być bardziej ekonomiczne.
 * Potrzebujesz więcej opcji procesora CPU lub pamięci niż jest podana w planu zużycie.
-* Twój kod musi zostać uruchomiony dłużej niż maksymalny czas wykonywania dozwolone w planie zużycie, który jest maksymalnie 10 minut.
+* Twój kod musi zostać uruchomiony dłużej niż [maksymalny dozwolony czas wykonywania](#timeout) w planu zużycie.
 * Wymagane funkcje, które są dostępne tylko na plan usługi App Service, takie jak obsługa środowiska App Service Environment, łączność w sieci Wirtualnej/sieci VPN i większych rozmiarów maszyn wirtualnych.
 * Aby uruchomić aplikację funkcji w systemie Linux lub chcesz udostępnić obraz niestandardowy, na którym chcesz uruchamiać swoje funkcje.
 
@@ -77,6 +74,8 @@ Podczas uruchamiania funkcji JavaScript na plan usługi App Service, należy wyb
 ###<a name="always-on"></a> Zawsze włączone
 
 Jeśli zostanie uruchomione na plan usługi App Service, należy włączyć **zawsze na** ustawienie, aby aplikacja funkcji zostanie uruchomiona poprawnie. Plan usługi App Service środowisko uruchomieniowe usługi functions zacznie bezczynności, po kilku minutach braku aktywności, dzięki czemu tylko wyzwalaczy HTTP "wzbudzania" funkcji. Zawsze na jest dostępna tylko na plan usługi App Service. W ramach planu zużycie platformy aktywuje automatycznie aplikacji funkcji.
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="what-is-my-hosting-plan"></a>Co to jest Mój plan hostingu
 
@@ -138,9 +137,9 @@ Istnieje wiele aspektów aplikacji funkcji, które mają wpływ na sposób równ
 
 ### <a name="billing-model"></a>Model rozliczania
 
-Okres rozliczeniowy za plan zużycie został szczegółowo opisany na [usługi Azure Functions stronę z cennikiem]. Sposób użycia są agregowane na poziomie aplikacji funkcji i zlicza czas, który jest wykonywany kod funkcji. Jednostki do rozliczeń są następujące:
+Okres rozliczeniowy za plan zużycie został szczegółowo opisany na [Usługa Azure Functions, cennik]. Sposób użycia są agregowane na poziomie aplikacji funkcji i zlicza czas, który jest wykonywany kod funkcji. Jednostki do rozliczeń są następujące:
 
 * **Użycie zasobów w gigabajtosekundach (GB-s)**. Obliczona jako rozmiar pamięci i czas wykonywania dla wszystkich funkcji w ramach aplikacji funkcji. 
 * **Liczba wykonań**. Zliczane każdorazowo, gdy funkcja jest wykonywana w odpowiedzi na wyzwalacz zdarzenia.
 
-[usługi Azure Functions stronę z cennikiem]: https://azure.microsoft.com/pricing/details/functions
+[Usługa Azure Functions, cennik]: https://azure.microsoft.com/pricing/details/functions

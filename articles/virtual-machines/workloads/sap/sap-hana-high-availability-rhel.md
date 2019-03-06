@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0bed75090e82287e1239342884b5acea64e69bf0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338526"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444008"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux
 
@@ -60,7 +60,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
   * Wymagana wersja jądra SAP dla Windows i Linux w systemie Microsoft Azure.
 * Uwaga SAP [2015553] wymieniono wymagania wstępne dotyczące wdrażania oprogramowania SAP obsługiwane przez oprogramowanie SAP na platformie Azure.
 * Uwaga SAP [2002167] zawiera zalecane ustawienia systemu operacyjnego Red Hat Enterprise Linux
-* Uwaga SAP [2009879] zawiera wskazówki dotyczące programu SAP HANA dla Red Hat Enterprise Linux
+* SAP Note [2009879] has SAP HANA Guidelines for Red Hat Enterprise Linux
 * Uwaga SAP [2178632] zawiera szczegółowe informacje o metrykach wszystkie funkcje monitorowania zgłoszone dla rozwiązania SAP na platformie Azure.
 * Uwaga SAP [2191498] ma wymaganą wersję agenta hosta SAP dla systemu Linux na platformie Azure.
 * Uwaga SAP [2243692] zawiera informacje o licencjonowaniu SAP, w systemie Linux na platformie Azure.
@@ -90,7 +90,7 @@ Używa ustawień replikacji systemu SAP HANA dedykowanej wirtualnej nazwy hosta 
 * Konfiguracja frontonu: Adres IP 10.0.0.13 hn1-db
 * Konfiguracja zaplecza: Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią replikacji systemu HANA
 * Port sondy: Port 62503
-* Reguły równoważenia obciążenia: 30313 TCP 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
+* Reguły równoważenia obciążenia: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
 ## <a name="deploy-for-linux"></a>Wdrażanie w systemie Linux
 
@@ -187,9 +187,9 @@ Więcej informacji na temat wymagane porty dla oprogramowania SAP HANA na ten te
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]** : Ten krok dotyczy tylko węzeł 1.
-* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]**: Ten krok dotyczy tylko węzeł 1.
+* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[A]**  Konfigurowanie układ dysku: **Menedżer woluminów logicznych (LVM)**.
 
@@ -327,7 +327,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
    * Wprowadź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych.
    * Potwierdź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych ponownie, aby potwierdzić.
    * Uruchom ponownie system po ponownym uruchomieniu komputera? [n]: Wybierz opcję Wprowadź.
-   * Czy chcesz kontynuować? (t/n): Sprawdź poprawność podsumowania. Wprowadź **y** aby kontynuować.
+   * Czy chcesz kontynuować? (y/n): Sprawdź poprawność podsumowania. Wprowadź **y** aby kontynuować.
 
 1. **[A]**  Uaktualnienia tego agenta hosta SAP.
 
@@ -348,9 +348,9 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]** : Ten krok dotyczy tylko węzeł 1.
-* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]**: Ten krok dotyczy tylko węzeł 1.
+* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[A]**  Konfigurowanie zapory
 
@@ -439,9 +439,9 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]** : Ten krok dotyczy tylko węzeł 1.
-* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]**: Ten krok dotyczy tylko węzeł 1.
+* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[A]**  Konfigurowanie zapory
 
@@ -643,7 +643,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 Możesz przetestować instalację agenta programu Azure preferowane przez wyłączenie interfejsu sieciowego w węźle, w którym platformy SAP HANA jest uruchomiona jako wzorzec.
-Zobacz [artykuł bazy wiedzy systemu Red Hat 79523](https://access.redhat.com/solutions/79523) dla descricption na sposobie symulacji awarii sieci. W tym przykładzie używamy skryptu net_breaker do całkowite blokowanie dostępu do sieci.
+Zobacz [artykuł bazy wiedzy systemu Red Hat 79523](https://access.redhat.com/solutions/79523) opis o sposobie symulacji awarii sieci. W tym przykładzie używamy skryptu net_breaker do całkowite blokowanie dostępu do sieci.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
