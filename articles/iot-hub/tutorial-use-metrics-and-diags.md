@@ -143,11 +143,11 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 5. Zaznacz pozycję **Zarchiwizuj na koncie magazynu**. 
 
-   ![Zrzut ekranu przedstawiający ustawianie diagnostyki na potrzeby archiwizowania na koncie magazynu.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
+   ![Zrzut ekranu przedstawiający włączanie archiwizacji na koncie magazynu w ustawieniach diagnostyki.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
 
     Kliknij pozycję **Konfiguruj**, aby wyświetlić ekran **Wybieranie konta magazynu**, wybierz właściwe konto (*contosostoragemon*) i kliknij przycisk **OK**, aby wrócić do okienka Ustawienia diagnostyczne. 
 
-   ![Zrzut ekranu przedstawiający ustawianie dzienników diagnostycznych na potrzeby archiwizowania na koncie magazynu.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
+   ![Zrzut ekranu przedstawiający włączanie archiwizacji na koncie magazynu w ustawieniach dzienników diagnostycznych.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
 
 6. W obszarze **DZIENNIK** zaznacz pozycje **Połączenia** i **Dane telemetryczne z urządzenia**, a następnie dla każdej z nich ustaw **Okres przechowywania (w dniach)** wynoszący 7 dni. Ekran Ustawienia diagnostyczne powinien teraz wyglądać jak na poniższej ilustracji:
 
@@ -155,7 +155,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 7. Kliknij polecenie **Zapisz**, aby zapisać ustawienia. Zamknij okienko Ustawienia diagnostyczne.
 
-Później, podczas przeglądania dzienników diagnostycznych, będzie można sprawdzić łączenie i rozłączanie rejestrowania dla urządzenia. 
+Później, podczas przeglądania dzienników diagnostycznych, będzie można przejrzeć wpisy rejestrowania łączenia i rozłączania dla urządzenia. 
 
 ## <a name="set-up-metrics"></a>Konfigurowanie metryk 
 

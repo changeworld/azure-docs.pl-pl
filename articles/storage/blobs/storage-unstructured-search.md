@@ -151,7 +151,7 @@ Teraz, po utworzeniu usługi wyszukiwania, można ją dołączyć do usługi Blo
 
 4. Wybierz przycisk **OK**, aby otworzyć okno **Tworzenie indeksatora**.
 
-Parametry indeksu i atrybuty nadawane tym parametrom są istotne. Parametry określają *jakie* dane mają być przechowywane, a atrybuty określają *jak* mają one być przechowywane.
+Parametry indeksu i atrybuty nadawane tym parametrom są istotne. Parametry określają, *jakie* dane mają być przechowywane, a atrybuty określają, *jak* mają one być przechowywane.
 
 Parametry znajdują się w kolumnie **NAZWA POLA**. Poniższa tabela zawiera listę dostępnych atrybutów i ich opisy.
 
