@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f9d431fe0ee76edf5d41c1ce7831f335128402a8
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b346ac0ac456b7f6af078496e8dd1cb738caab67
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244744"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530198"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
 
@@ -65,7 +65,7 @@ Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochro
 
 ![Ochrona zawartości](./media/content-protection/content-protection.svg)
 
-&#42;* dynamicznego szyfrowania obsługuje klucza AES-128"Wyczyść", CBCS i CENC. 
+&#42;szyfrowanie dynamiczne obsługuje klucza AES-128"Wyczyść", CBCS i CENC. 
 
 Można użyć usługi Media Services **manifestów dynamicznych** do przesyłania strumieniowego tylko określonej wersji lub subclips filmu wideo. W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości można dynamicznie spakowane do żadnego z następujących protokołów: HLS, MPEG DASH i Smooth.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
 

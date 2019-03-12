@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 5a9684605de9af1cd9006810d595ae846db01661
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 141859d155383b01cfea998c6b7158848517eac2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975158"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531956"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Wizualizuj dane z Eksploratora danych platformy Azure w narzędzia Grafana
 
@@ -23,7 +23,7 @@ Grafana to platforma analityczna, która pozwala na zapytania i wizualizowanie d
 
 Potrzebne są następujące polecenie, aby ukończyć ten sposób:
 
-* [Grafana wersji 5.3.0 lub nowszej](http://docs.grafana.org/installation/) systemu operacyjnego
+* [Grafana wersji 5.3.0 lub nowszej](https://docs.grafana.org/installation/) systemu operacyjnego
 
 * [Wtyczki Eksploratora danych usługi Azure](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) dla narzędzia Grafana
 
@@ -51,7 +51,7 @@ Można utworzyć jednostki w usłudze [witryny Azure portal](#azure-portal) lub 
 
     1. W [przypisywanie aplikacji do roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) sekcji, należy przypisać rolę rodzaj **czytnika** do klastra, Eksplorator danych usługi Azure.
 
-    1. W [pobieranie wartości do logowania](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) sekcji, skopiuj wartości właściwości trzy omówione w krokach: **identyfikator katalogu** (identyfikator dzierżawy), **identyfikator aplikacji**, i  **Hasło**.
+    1. W [pobieranie wartości do logowania](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) sekcji, skopiuj wartości właściwości trzy omówione w krokach: **Identyfikator katalogu** (identyfikator dzierżawy), **identyfikator aplikacji**, i **hasło**.
 
 1. W witrynie Azure portal wybierz **subskrypcje** następnie skopiuj identyfikator subskrypcji, w którym utworzono nazwę główną usługi.
 
@@ -152,7 +152,7 @@ Przy użyciu jednostki usługi, przypisany do *osoby przeglądające* roli, moż
 
     ![Connection properties (Właściwości połączenia)](media/grafana/connection-properties.png)
 
-    | Interfejs użytkownika narzędzia Grafana | Azure Portal | Interfejs wiersza polecenia platformy Azure |
+    | Grafana UI | Azure Portal | Interfejs wiersza polecenia platformy Azure |
     | --- | --- | --- |
     | Identyfikator subskrypcji | IDENTYFIKATOR SUBSKRYPCJI | SubscriptionId |
     | Identyfikator dzierżawy | Identyfikator katalogu | dzierżawa |
@@ -205,10 +205,10 @@ Po zakończeniu konfigurowania Eksplorator danych platformy Azure jako źródło
 
     ![Zakończono wykresu](media/grafana/finished-graph.png)
 
-1. W górnym menu, wybierz opcję Zapisz ikony: ![Ikona zapisu](media/grafana/save-icon.png).
+1. W górnym menu, wybierz opcję Zapisz ikony: ![Ikona zapisywania](media/grafana/save-icon.png).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
 
-[Samouczek: Wizualizowanie danych w Eksploratorze danych platformy Azure w usłudze Power BI](visualize-power-bi.md)
+[Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI](visualize-power-bi.md)

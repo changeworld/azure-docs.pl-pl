@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: ed43a376dd5bb3279fd7e6aa6522980234db3c5f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441801"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544566"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -272,7 +272,7 @@ Korzystając z pokaz skryptu. . \\HealthcareDemo.ps1 z **BulkPatientadmission** 
 
 **2. Usługa Key Vault** żądane dla klucza tajnego, który jest skojarzony z żądanego tokenu.
 
-**3. Role usługi Azure weryfikacji żądania i autoryzować żądania dostępu do usługi Key Vault.
+**3. Role usługi Azure** weryfikacji żądania i autoryzować żądania dostępu do usługi Key Vault.
 
 **4. Usługa Key Vault** zwraca klucz tajny, w tym przypadku ciąg połączenia bazy danych SQL.
 

@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: fd7dd06692e20eb0e7cc02af8d2f36c4dad8b597
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251932"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766703"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki start: Tworzenie maszyny wirtualnej z systemem Linux server przy użyciu programu PowerShell w usłudze Azure Stack
 
@@ -390,7 +390,7 @@ Po wdrożeniu maszyny wirtualnej należy skonfigurować połączenie SSH dla mas
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-W systemie klienta przy użyciu protokołu SSH jest zainstalowany Użyj następującego polecenia, połączyć się z maszyną wirtualną. Jeśli pracujesz w Windows, możesz użyć [Putty](http://www.putty.org/) do utworzenia połączenia.
+W systemie klienta przy użyciu protokołu SSH jest zainstalowany Użyj następującego polecenia, połączyć się z maszyną wirtualną. Jeśli pracujesz w Windows, możesz użyć [Putty](https://www.putty.org/) do utworzenia połączenia.
 
 ```
 ssh <Public IP Address>

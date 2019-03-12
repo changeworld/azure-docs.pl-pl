@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 04707a747edb7cf26b4e7f4e3251b958f6f11f38
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: df1542d6d20120a9b1e087fadf3743479ecebf07
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962296"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533837"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Przyrostowe kopiowanie nowych plików, na podstawie czasu partycjonowane nazwy pliku przy użyciu narzędzia do kopiowania danych
 
@@ -43,14 +43,14 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 
 Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące kroki.
 
-1. Utwórz kontener o nazwie **źródła**.  Utwórz ścieżkę folderu jako **2019 r/02/26/14** w kontenerze. Utwórz pusty plik tekstowy i nadaj mu jako **więc Plik1.txt**. Przekaż więc Plik1.txt w ścieżce folderu **źródło/2019 r/02/26/14** na koncie magazynu.  Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+1. Utwórz kontener o nazwie **źródła**.  Utwórz ścieżkę folderu jako **2019 r/02/26/14** w kontenerze. Utwórz pusty plik tekstowy i nadaj mu jako **więc Plik1.txt**. Przekaż więc Plik1.txt w ścieżce folderu **źródło/2019 r/02/26/14** na koncie magazynu.  Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
     
     ![Przekazywanie plików](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
     > Dostosuj nazwy folderu przy użyciu czasu UTC.  Na przykład, jeśli bieżący czas UTC jest 14:03:00 w 26 lutego 2019 r możesz utworzyć jako ścieżkę do folderu **źródło/2019 r/02/26/14/** przez regułę z **źródło / {Year} / {Month} / {Day} / {godzina} /**.
 
-2. Utwórz kontener o nazwie **docelowy**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+2. Utwórz kontener o nazwie **docelowy**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -175,10 +175,10 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
 
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Można również sprawdzić takie same za pomocą Eksploratora usługi Azure Storage (http://storageexplorer.com/) skanowanie plików.
+    Można również sprawdzić takie same za pomocą Eksploratora usługi Azure Storage (https://storageexplorer.com/) skanowanie plików.
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Utwórz inny pusty plik tekstowy z nową nazwą, jako **Plik2.txt**. Przekaż plik Plik2.txt w ścieżce folderu **źródło/2019 r/02/26/15** na koncie magazynu.   Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).    
+12. Utwórz inny pusty plik tekstowy z nową nazwą, jako **Plik2.txt**. Przekaż plik Plik2.txt w ścieżce folderu **źródło/2019 r/02/26/15** na koncie magazynu.   Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).   
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
@@ -197,7 +197,7 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Można również sprawdzić takie same za pomocą Eksploratora usługi Azure Storage (http://storageexplorer.com/) skanuje pliki w **docelowy** kontenera
+    Można również sprawdzić takie same za pomocą Eksploratora usługi Azure Storage (https://storageexplorer.com/) skanuje pliki w **docelowy** kontenera
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

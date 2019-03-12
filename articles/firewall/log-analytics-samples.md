@@ -7,24 +7,26 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: f639f47997fc122efde2bc223bc24b5de7630710
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240154"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534007"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Przykłady programu Azure analizy dziennika zapory
 
-Poniższe przykłady log analytics może służyć do analizowania dzienników zapory usługi Azure. Przykładowy plik jest wbudowana w Projektant widoków programu Log Analytics, [Projektant widoków programu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artykuł zawiera więcej informacji na temat koncepcji Wyświetl projekt.
+Poniższe przykłady dzienników usługi Azure Monitor może służyć do analizowania dzienników zapory usługi Azure. Przykładowy plik jest wbudowana w Projektant widoków w usłudze Azure Monitor [Projektant widoków w usłudze Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artykuł zawiera więcej informacji na temat koncepcji Wyświetl projekt.
 
-## <a name="log-analytics-view"></a>Widoki usługi Log Analytics
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Oto, jak można skonfigurować przykład log analytics wizualizacji. Możesz pobrać przykład wizualizacji z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) repozytorium. Najprostszym sposobem jest kliknij prawym przyciskiem myszy hiperłącze na tej stronie, a następnie wybierz *Zapisz jako* i podaj nazwę, takich jak **AzureFirewall.omsview**. 
+## <a name="azure-monitor-logs-view"></a>Usługa Azure Monitor rejestruje widoku
 
-Wykonaj poniższe kroki, aby dodać widok do obszaru roboczego usługi log analytics:
+Oto, jak można skonfigurować przykład wizualizacji dzienników usługi Azure Monitor. Możesz pobrać przykład wizualizacji z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) repozytorium. Najprostszym sposobem jest kliknij prawym przyciskiem myszy hiperłącze na tej stronie, a następnie wybierz *Zapisz jako* i podaj nazwę, takich jak **AzureFirewall.omsview**. 
 
-1. Otwórz obszar roboczy usługi log analytics w witrynie Azure Portal.
+Wykonaj poniższe kroki, aby dodać widok do obszaru roboczego usługi Log Analytics:
+
+1. Otwórz obszar roboczy usługi Log Analytics w witrynie Azure Portal.
 2. Otwórz **wyświetlić projektanta** poniżej **ogólne**.
 3. Kliknij przycisk **Importuj**.
 4. Wyszukaj i wybierz **AzureFirewall.omsview** plik został pobrany przed.

@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46fc0a49ebae86a715685e1073b4eb7cc10e6032
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171302"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533412"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdowanie raportów aktywności w witrynie Azure portal
 
@@ -48,15 +48,46 @@ Raport dotyczący dzienników inspekcji konsoliduje następujące raporty:
 
 ### <a name="filtering-on-audit-logs"></a>Filtrowanie według dzienników inspekcji
 
-Umożliwia filtrowanie Zaawansowane w raporcie inspekcji dostępu do określonej kategorii danych inspekcji, określając ją w **kategorii działań** filtru. Na przykład, aby wyświetlić wszystkie działania związane z samoobsługowego resetowania hasła, wybierz **Samoobsługowe zarządzanie hasłami** kategorii. 
+Umożliwia filtrowanie Zaawansowane w raporcie inspekcji dostępu do określonej kategorii danych inspekcji, określając ją w **kategorii** filtru. Na przykład, aby wyświetlić wszystkie działania związane z użytkownikami, wybierz pozycję **UserManagement** kategorii. 
 
-Kategorie działań:
+Kategorie:
 
+- Wszyscy
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Autoryzacja
+- Kontakt
+- Urządzenie
+- Konfiguracja urządzenia
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Inne
+- Zasady
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+Można również filtrować w określonej usługi za pomocą **usługi** filtru listy rozwijanej. Na przykład, aby uzyskać wszystkie zdarzenia inspekcji dotyczące Samoobsługowe zarządzanie hasłami, wybierz **samoobsługowego zarządzania hasłami** filtru.
+
+Usługi to:
+
+- Wszyscy
+- Przeglądy dostępu
+- Aprowizacja kont 
+- Usługa rejestracji Jednokrotnej w aplikacji
+- Metody uwierzytelniania
+- B2C
+- Dostęp warunkowy
 - Katalog podstawowy
-- Samoobsługowe zarządzanie hasłami
+- Zarządzanie uprawnieniami
+- Identity Protection
+- Zaproszeni użytkownicy
+- PIM
 - Samoobsługowe zarządzanie grupami
-- Aprowizacja kont
-
+- Passord samoobsługowego zarządzania
+- Warunki użytkowania
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań 
 

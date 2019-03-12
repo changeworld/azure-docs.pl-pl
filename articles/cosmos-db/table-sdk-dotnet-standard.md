@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: ce7cc489b107ce4bd95270b9a7f8cb560a2d2398
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99371f0ae56046a328155aa2151ad8b89df93a04
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249650"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551929"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabel standardowego interfejsu API platformy .NET: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -30,6 +30,11 @@ ms.locfileid: "55249650"
 |**Bieżącej struktury obsługiwanej**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name0110-preview0110-preview"></a><a name="0.11.0-preview"/>0.11.0-Preview
+* Jak skonfigurować CloudTableClient zostały wprowadzone zmiany. Teraz przyjmuje obiekt TableClientConfiguration podczas konstruowania. TableClientConfiguration udostępnia różne właściwości do konfigurowania zachowania klienta w zależności od tego, czy docelowy punkt końcowy interfejsu API tabeli usługi Cosmos DB lub interfejsu API tabeli usługi Azure Storage.
+* Dodano obsługę TableQuery w celu zwracania wyników w kolejności posortowanej według kolumny niestandardowej. Ta funkcja jest obsługiwana tylko w punktach końcowych Cosmos DB Table.
+* Dodano obsługę do udostępnienia RequestCharges na różnych typach wyników. Ta funkcja jest obsługiwana tylko w punktach końcowych Cosmos DB Table.
 
 ### <a name="a-name0101-preview0101-preview"></a><a name="0.10.1-preview"/>0.10.1-Preview
 * Dodano obsługę tokenu sygnatury dostępu Współdzielonego, operacje TablePermissions, ServiceProperties i ServiceStats względem punktów końcowych usługi Azure Table Storage. 
@@ -51,6 +56,7 @@ Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej 
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [0.11.0-Preview](#0.11.0-preview) |5 marca 2019 r. |--- |
 | [0.10.1-Preview](#0.10.1-preview) |22 stycznia 2019 r. |--- |
 | [0.10.0-Preview](#0.10.0-preview) |18 grudnia 2018 r. |--- |
 | [0.9.1-Preview](#0.9.1-preview) |18 października 2018 r. |--- |

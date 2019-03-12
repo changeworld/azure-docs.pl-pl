@@ -10,17 +10,17 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f17bc3c0588476fdc4f8414fb020b16718bf1d90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bba257c61509d862bb3161625750f05a86af8770
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854799"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532171"
 ---
 # <a name="data-format"></a>Format danych
 
 Plik danych w tym artykule opisano listy obiektów do indeksowania.
-Każdy wiersz w pliku określa wartości atrybutów obiektu w [formatu JSON](http://json.org/) przy użyciu kodowania UTF-8.
+Każdy wiersz w pliku określa wartości atrybutów obiektu w [formatu JSON](https://json.org/) przy użyciu kodowania UTF-8.
 Oprócz atrybutów zdefiniowanych w [schematu](SchemaFormat.md), każdy obiekt ma atrybut opcjonalny "logprob", który określa prawdopodobieństwo, że względne dziennika między obiektami.
 Gdy usługa zwraca obiekty w kolejności malejących prawdopodobieństwa, możemy użyć "logprob" do wskazania kolejności zwracany zgodnych obiektów.
 Biorąc pod uwagę prawdopodobieństwo *p* od 0 do 1 odpowiedniego prawdopodobieństwo, że dziennik może zostać obliczony jako dziennik (*p*), gdzie log() jest funkcja logarytmu naturalnego.

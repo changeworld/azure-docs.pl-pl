@@ -3,17 +3,16 @@ title: Często zadawane pytania — usługa Azure Disk Encryption dla maszyn wir
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące programu Microsoft Azure dysku szyfrowanie dla Windows i maszyn wirtualnych IaaS z systemem Linux.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14804de1d8507a49cda2ce1dd8ee97dc56c0223b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c082de09cbe17bd31e50d14329cfb8f58b01d8fe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439557"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781327"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -44,12 +43,14 @@ Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera
 | --- | --- |--- |
 | Ubuntu | 16.04| Dysk systemu operacyjnego i danych |
 | Ubuntu | 14.04.5</br>[za pomocą platformy Azure dostosowanych jądra zaktualizowana w celu 4.15 lub nowszej](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Dysk systemu operacyjnego i danych |
+| RHEL | 7.6 | Systemu operacyjnego i danych dysku * |
 | RHEL | 7.5 | Systemu operacyjnego i danych dysku * |
 | RHEL | 7.4 | Systemu operacyjnego i danych dysku * |
 | RHEL | 7.3 | Systemu operacyjnego i danych dysku * |
 | RHEL | 7.2 | Systemu operacyjnego i danych dysku * |
 | RHEL | 6.8 | Dysk danych * |
 | RHEL | 6.7 | Dysk danych * |
+| CentOS | 7.5 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.4 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.3 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.2n | Dysk systemu operacyjnego i danych |

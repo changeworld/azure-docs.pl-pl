@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c49a6320b7ba37297a7c1c0775aef2c2d8c6c868
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 892e47d87fef482c6f655473278baeb5525ee09e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104420"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760031"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowych umiejętności, przy użyciu interfejsu API tłumaczenia tekstu
 
@@ -306,7 +306,7 @@ Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojeg
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Gratulacje! Utworzono Twojego pierwszego enricher niestandardowych. Teraz można wykonać tego samego wzorca, aby dodać własne niestandardowe funkcje. 
 
 + [Dodaj umiejętności niestandardowe do potoku wyszukiwania kognitywnego](cognitive-search-custom-skill-interface.md)

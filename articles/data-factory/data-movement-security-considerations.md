@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: a996703f3719c2be90851241c1fe23c89f24e606
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 03976d321a92f6049d06cea88604618d5a2dee67
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447952"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532274"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Fabryka danych jest certyfikowany dla:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własną infrastrukturę, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Aby uzyskać najnowszą listę wszystkich sprawdzanie oferty zgodności platformy Azure — http://aka.ms/AzureCompliance.
+Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własną infrastrukturę, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Aby uzyskać najnowszą listę wszystkich sprawdzanie oferty zgodności platformy Azure — https://aka.ms/AzureCompliance.
 
 W tym artykule omówimy zagadnienia dotyczące zabezpieczeń w następujących scenariuszach przenoszenia danych w dwóch: 
 
@@ -91,10 +91,10 @@ Azure Data Lake Store umożliwia także szyfrowanie danych przechowywanych na ko
 Usługa Azure Blob storage i Azure Table storage obsługuje szyfrowanie usługi Storage (SSE), który automatycznie szyfruje dane przed utrwaleniem ich w magazynie i odszyfrowuje przed pobierania. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 obsługuje klienta i serwera szyfrowanie danych magazynowanych. Aby uzyskać więcej informacji, zobacz [ochrony danych przy użyciu szyfrowania](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+Amazon S3 obsługuje klienta i serwera szyfrowanie danych magazynowanych. Aby uzyskać więcej informacji, zobacz [ochrony danych przy użyciu szyfrowania](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Usługi Amazon Redshift obsługuje klaster szyfrowanie danych magazynowanych. Aby uzyskać więcej informacji, zobacz [szyfrowania bazy danych usługi Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
+Usługi Amazon Redshift obsługuje klaster szyfrowanie danych magazynowanych. Aby uzyskać więcej informacji, zobacz [szyfrowania bazy danych usługi Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>SalesForce
 SalesForce obsługuje szyfrowanie platformy Shield, który umożliwia szyfrowanie wszystkich plików załączników i pola niestandardowe. Aby uzyskać więcej informacji, zobacz [zrozumienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
@@ -186,7 +186,7 @@ Następujące magazynami danych w chmurze wymagają, że możesz umieścić na l
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

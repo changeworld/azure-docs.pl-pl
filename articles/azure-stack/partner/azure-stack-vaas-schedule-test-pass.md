@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: How to
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 4cd94a0d5891c2d34e152dad87d21cbb45a2ec39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3fb5c3deeddb6f3ee381ca45df76feebf3405b21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336873"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766578"
 ---
 # <a name="scheduling-a-test"></a>Planowanie testów
 
@@ -53,7 +53,7 @@ Zaloguj się do portalu, wybierz opcję lub tworzenia rozwiązania, a następnie
 
 ![Tekst alternatywny](media/vaas_test_pass_parameters.png)
 
-Definiowanie przepływu pracy dla danego rozwiązania. Przepływ pracy ma kroki procesu, który umożliwia przetestowanie rozwiązania.
+Podaj parametry, które są stosowane do wszystkich testów w ramach przepływu pracy.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 2. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
@@ -63,22 +63,23 @@ Definiowanie przepływu pracy dla danego rozwiązania. Przepływ pracy ma kroki 
 
 ## <a name="select-tests-to-run"></a>Wybrać testy do uruchomienia
 
-Wybierz testy, które chcesz uruchomić w przepływie pracy.
+Testy, którą wybierzesz zostanie zaplanowana po utworzeniu przepływu pracy.
 
 1. Wybierz testy, które chcesz uruchomić w przepływie pracy.
 
     Jeśli chcesz zastąpić typowych parametrów (oznacza to, że parametry podane w poprzedniej sekcji) dla każdego testu, wybierz **Edytuj** łącze obok, aby określić nowe wartości.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
 1. Wybierz **dalej** Aby zapoznać się z przepływu pracy.
 
 ## <a name="review-and-submit"></a>Przejrzyj i zatwierdź
 
-Przejrzyj, Utwórz, a następnie zaplanować przepływu pracy.
+Zakończ tworzenie przepływu pracy.
 
 1. Przejrzyj wyświetlane informacje.
 
-    Usług tworzy przepływ pracy przy użyciu podanych informacji i wybrane testy zostaną zaplanowane.
+    Usługa tworzy przepływ pracy przy użyciu podanych informacji i wybrane testy zostaną zaplanowane.
 
     Jeśli niczego wydaje się nieprawidłowy, należy użyć **Wstecz** przycisków, aby przejść do wcześniejszej sekcji.
 

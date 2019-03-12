@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0f1eac5b8052d1b96576699d12fc2c6ccd5a5724
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960806"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536489"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 
@@ -52,10 +52,11 @@ Firma Microsoft planuje wersji pakietów aktualizacji oprogramowania w erze mies
 Znajdź dokumentację na temat planowania i zarządzania aktualizacjami i jak określić bieżącej wersji w [Zarządzaj aktualizuje Przegląd](azure-stack-updates.md).
 
 Informacje o konkretnej aktualizacji w tym jak ją pobrać, zobacz informacje o wersji dla tej aktualizacji:
-- [Aktualizacja usługi Azure Stack 1901](azure-stack-update-1901.md) (zobacz [kompilacji ważna uwaga tutaj](azure-stack-update-1901.md#build-reference).)
+
+- [Aktualizacja usługi Azure Stack 1902](azure-stack-update-1902.md)
+- [Aktualizacja usługi Azure Stack 1901](azure-stack-update-1901.md)
 - [Aktualizacja usługi Azure Stack 1811](azure-stack-update-1811.md)
 - [Aktualizacja usługi Azure Stack 1809](azure-stack-update-1809.md)
-- [Aktualizacja usługi Azure Stack 1808](azure-stack-update-1808.md)
 
 ## <a name="hotfixes"></a>Poprawki
 

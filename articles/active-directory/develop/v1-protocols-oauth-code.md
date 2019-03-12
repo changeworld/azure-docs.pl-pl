@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbde6eda2bd532b1a26a58e4ca82c9b5fab4e6c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188600"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531117"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływie przyznawania kodu OAuth 2.0
 
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 W tym momencie użytkownik jest proszony o wprowadzenie poświadczeń i wyrazić zgodę na uprawnienia wymagane przez aplikację w witrynie Azure Portal. Po użytkownik jest uwierzytelniany i przyznaje zgody, usługa Azure AD wysyła odpowiedź do aplikacji w `redirect_uri` adres w żądaniu z kodem.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 Odpowiedź oznaczająca Powodzenie może wyglądać następująco:
 
 ```
@@ -145,14 +145,14 @@ grant_type=authorization_code
 | client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure portal. Identyfikator aplikacji jest wyświetlany w ustawieniach rejestracji aplikacji. |
 | grant_type |wymagane |Musi być `authorization_code` dla przepływ kodu autoryzacji. |
 | kod |wymagane |`authorization_code` Uzyskany w poprzedniej sekcji |
-| redirect_uri |wymagane |Taki sam `redirect_uri` wartości, które zostało użyte do uzyskania `authorization_code`. |
+| redirect_uri |wymagane | A `redirect_uri`zarejestrowanych aplikacji klienta. |
 | client_secret |wymagane dla aplikacji sieci web, nie jest dozwolona dla klientów publicznych |Klucz tajny aplikacji, utworzony w witrynie Azure Portal na potrzeby aplikacji w środowisku **klucze**. Nie można użyć w aplikacji macierzystej (publicznych klienta), ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest to wymagane dla aplikacji internetowych i internetowych interfejsów API (wszystkich poufnych klientów), która ma możliwość przechowywania `client_secret` bezpiecznie po stronie serwera. Wartość client_secret powinna być zakodowane w adresie URL przed wysłaniem. |
 | zasób | Zalecane |Identyfikator URI Identyfikatora aplikacji docelowej internetowego interfejsu API (zabezpieczono zasób). Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takie jak `https://graph.microsoft.com`. Jest to wymagane w jedno autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieść go w żądaniu autoryzacji, aby upewnić się, że otrzymaniu zgody przez użytkownika. Jeśli w żądaniu autoryzacji i żądania tokenu zasobu "Parametry muszą być zgodne. | 
 | code_verifier | opcjonalne | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
 Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 Usługa Azure AD zwraca [token dostępu](access-tokens.md) po pomyślnej odpowiedzi. Aby zminimalizować wywołań sieci z aplikacji klienckiej i ich skojarzone opóźnienia, aplikacja kliencka powinna tokeny dostępu pamięci podręcznej na okres istnienia tokenu, który jest określony w odpowiedzi OAuth 2.0. Aby określić czas życia tokenu, należy użyć `expires_in` lub `expires_on` wartości parametrów.
 
 Jeśli zasobu internetowego interfejsu API zwraca `invalid_token` kodu błędu, może to oznaczać, że zasób stwierdził wygasł token. Jeśli czas zegara klienta i zasobów są różne (nazywane "niesymetryczność czasu"), zasób, warto rozważyć token wygasł, zanim token jest usuwane z pamięci podręcznej klienta. Jeśli ten problem wystąpi, wyczyść tokenu z pamięci podręcznej, nawet jeśli jest nadal w obliczeniowej okresie swojego istnienia.
@@ -297,7 +297,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
 ```
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 
 ```

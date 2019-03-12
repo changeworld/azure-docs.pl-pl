@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5a0d02768b0fbd23e33d13c5e5c3fe84a41cdc52
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4ae17249903f317e7a75a3e6bc7c03292021c96a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243658"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534637"
 ---
 # <a name="monitor-azure-file-sync"></a>Monitorowanie usługi Azure File Sync
 
@@ -21,7 +21,7 @@ Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej or
 
 W tym artykule opisano sposób monitorowania wdrożenia usługi Azure File Sync za pomocą witryny Azure portal i systemu Windows Server.
 
-Obecnie dostępne są następujące opcje monitorowania:
+Obecnie dostępne są następujące opcje monitorowania.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -29,20 +29,23 @@ W witrynie Azure portal można wyświetlić kondycji zarejestrowanego serwera, k
 
 ### <a name="storage-sync-service"></a>Usługa synchronizacji magazynu
 
-Aby wyświetlić kondycję zarejestrowanego serwera, kondycja punktu końcowego serwera i metryki, przejdź do usługi synchronizacji magazynu w witrynie Azure portal. Kondycja serwera zarejestrowane jest widoczne w bloku serwery zarejestrowane. Kondycja punktu końcowego serwera jest widoczne w bloku grupy synchronizacji.
+Aby wyświetlić kondycji zarejestrowanego serwera, kondycja punktu końcowego serwera i metryki, przejdź do usługi synchronizacji magazynu w witrynie Azure portal. Możesz wyświetlić kondycji zarejestrowanego serwera w **zarejestrowane serwery** bloku i serwera kondycji punktu końcowego w **synchronizacji grupy** bloku.
 
-Kondycji zarejestrowanego serwera
-- Stan serwera zarejestrowanej jest Online, serwer jest pomyślnie komunikowania się z usługą.
-- Jeśli stan serwera zarejestrowane pojawia się w trybie Offline, sprawdź, czy Proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) na serwerze jest uruchomiony. Jeśli serwer znajduje się za zaporą lub serwera proxy, należy skonfigurować zapory i serwera proxy na [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy).
+Kondycji zarejestrowanego serwera:
 
-Kondycja punktu końcowego serwera
-- Kondycja punktu końcowego serwera w portalu jest oparty na Synchronizuj zdarzenia, które są rejestrowane w dzienniku zdarzeń Telemetrii na serwerze (identyfikator 9102 i: 9302; lista). Jeśli sesję synchronizacji kończy się niepowodzeniem ze względu na błąd przejściowy (na przykład błąd anulowane), synchronizacja może nadal widoczne dobrej kondycji w witrynie portal tak długo, jak w bieżącej sesji synchronizacji jest postępy (identyfikator zdarzenia w: 9302; lista służy do określenia, jeśli pliki są stosowane). Zobacz następujące dokumentację, aby uzyskać więcej informacji: [Synchronizuj kondycji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [synchronizacji postępu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
-- Jeśli w portalu jest wyświetlany błąd synchronizacji zaplanowanej synchronizacji nie wprowadzania postępu, sprawdź [dokumentacja dotycząca rozwiązywania problemów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) wskazówki.
+- Jeśli **serwera zarejestrowane** stan **Online**, serwera pomyślnie komunikowania się z usługą.
+- Jeśli **serwera zarejestrowane** stan **pojawia się w trybie Offline**, sprawdź, czy Proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) na serwerze jest uruchomiony. Jeśli serwer znajduje się za zaporą lub serwera proxy, zobacz [w tym artykule](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) skonfigurować zapory i serwera proxy.
 
-Metryki
+Kondycja punktu końcowego serwera:
+
+- Kondycja punktu końcowego serwera w portalu jest oparty na Synchronizuj zdarzenia, które są rejestrowane w dzienniku zdarzeń Telemetrii na serwerze (identyfikator 9102 i: 9302; lista). Jeśli sesję synchronizacji kończy się niepowodzeniem ze względu na błąd przejściowy, takie jak błąd zostało anulowane, synchronizacji może nadal widoczna dobrej kondycji w witrynie portal tak długo, jak w bieżącej sesji synchronizacji jest postępy. Identyfikator zdarzenia: 9302; lista jest używana do określenia, jeśli pliki są stosowane. Aby uzyskać więcej informacji, zobacz [synchronizacji kondycji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) i [synchronizacji postępu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Jeśli w portalu jest wyświetlany błąd synchronizacji, ponieważ synchronizacja nie jest postępy, zobacz [dokumentacja dotycząca rozwiązywania problemów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) wskazówki.
+
+Metryki:
+
 - Następujące metryki są wyświetlane w portalu usługi synchronizacji magazynu:
 
-  | Nazwa metryki | Opis | Blade(s) portalu | 
+  | Nazwa metryki | Opis | Nazwa bloku |
   |-|-|-|
   | Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
   | Wycofanie obsługi warstw w chmurze | Rozmiar danych przypomnieć | Zarejestrowane serwery |
@@ -50,17 +53,16 @@ Metryki
   | Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
   | Stan online Server | Liczba pulsów otrzymany z serwera | Zarejestrowane serwery |
 
-- Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) sekcji. 
+- Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor).
 
   > [!Note]  
   > Wykresy w portalu usługi synchronizacji magazynu ma okresie 24 godzin. Aby wyświetlić zakresów w innym czasie lub wymiarów, należy użyć usługi Azure Monitor.
-
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 Użyj [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) synchronizacji monitora, obsługi warstw w chmurze i łączność z serwerem. Metryki dla usługi Azure File Sync są domyślnie włączone i są wysyłane do usługi Azure Monitor co 15 minut.
 
-Aby wyświetlić metryki usługi Azure File Sync w usłudze Azure Monitor, wybierz typ zasobu usługi synchronizacji magazynu.
+Zaznacz, aby wyświetlić metryki usługi Azure File Sync w usłudze Azure Monitor **usługi synchronizacji magazynu** typu zasobu.
 
 Następujące metryki dla usługi Azure File Sync są dostępne w usłudze Azure Monitor:
 
@@ -79,38 +81,41 @@ W systemie Windows Server można wyświetlić obsługi warstw, w chmurze zarejes
 
 ### <a name="event-logs"></a>Dzienniki zdarzeń
 
-Użyj dziennika zdarzeń Telemetrii na serwerze monitorowania zarejestrowanego serwera synchronizacji i obsługi warstw kondycji w chmurze. W dzienniku zdarzeń Telemetrii znajduje się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń.
+Użyj dziennika zdarzeń Telemetrii na serwerze monitorowania zarejestrowanego serwera synchronizacji i obsługi warstw kondycji w chmurze. W dzienniku zdarzeń Telemetrii znajduje się w Podglądzie zdarzeń w obszarze *aplikacji i Services\Microsoft\FileSync\Agent*.
 
-Kondycja synchronizacji
-- Identyfikator zdarzenia 9102 jest rejestrowane po zakończeniu sesji synchronizacji. To zdarzenie powinien być używany do określenia, jeśli sesji synchronizacji są uniemożliwiający pomyślne (HResult = 0) i czy-item błędy synchronizacji. Zobacz następujące dokumentację, aby uzyskać więcej informacji: [Synchronizuj kondycji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [błędy elementu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+Zdrowie synchronizacji:
+
+- Identyfikator zdarzenia 9102 jest rejestrowane po zakończeniu sesji synchronizacji. Użyj tego zdarzenia, aby ustalić, czy pomyślnie sesje synchronizacji (**HResult = 0**) i czy-item błędy synchronizacji. Aby uzyskać więcej informacji, zobacz [synchronizacji kondycji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) i [błędy elementu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentacji.
 
   > [!Note]  
-  > Czasami sesje synchronizacji ogólną się nie powieść lub mieć PerItemErrorCount różna od zera, ale nadal postęp do przodu, z niektórych plików, na synchronizowanie pomyślnie. Można to zaobserwować w polach zastosowane (AppliedFileCount AppliedDirCount, AppliedTombstoneCount i AppliedSizeBytes), które informujące o tym, ile sesji powodzeniem. Jeśli widzisz wiele sesji synchronizacji w wierszu, które kończą się niepowodzeniem, ale liczba zastosowanych rosnąca, powinien zapewnić synchronizację czasu, aby spróbować ponownie, przed otwarciem biletu pomocy technicznej.
+  > Czasami sesje synchronizacji ogólną się nie powieść lub masz PerItemErrorCount różna od zera. Jednak nadal wprowadzić postęp, a niektóre pliki synchronizację. Widać to w polach zastosowane, takich jak AppliedFileCount AppliedDirCount, AppliedTombstoneCount i AppliedSizeBytes. Te pola sprawdzić, ile sesji zakończyła się pomyślnie. Jeśli widzisz wiele sesji synchronizacji, które się nie powieść w wierszu i mają rosnąca liczba zastosowanych, należy podać czas synchronizacji, aby spróbować ponownie, zanim otworzysz zgłoszenie do pomocy technicznej.
 
-- Identyfikator zdarzenia: 9302; lista jest rejestrowane co 5 – 10 minut, jeśli występuje sesję synchronizacji usługi active. To zdarzenie powinien być używany do określenia, jeśli bieżącą sesję synchronizacji jest postępy (AppliedItemCount > 0). Jeśli synchronizacja nie jest postępy, sesję synchronizacji po pewnym czasie powinna zakończyć się niepowodzeniem i 9102 identyfikator zdarzenia będą rejestrowane z powodu błędu. Zobacz następujące dokumentację, aby uzyskać więcej informacji: [Postęp synchronizacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)
+- Identyfikator zdarzenia: 9302; lista jest rejestrowane co 5 – 10 minut, jeśli występuje sesję synchronizacji usługi active. To zdarzenie służy do określenia, jeśli bieżącą sesję synchronizacji jest postępy (**AppliedItemCount > 0**). Jeśli synchronizacja nie jest postępy, sesję synchronizacji po pewnym czasie powinna zakończyć się niepowodzeniem i 9102 identyfikator zdarzenia będą rejestrowane z powodu błędu. Aby uzyskać więcej informacji, zobacz [synchronizacji dokumentacji postępu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Kondycji zarejestrowanego serwera
-- Identyfikator zdarzenia 9301 jest rejestrowane co 30 sekund, gdy serwer kwerendę usługi dla zadania. Jeśli GetNextJob zakończy się ze stanem = 0, serwer jest w stanie komunikować się z usługą. Jeśli GetNextJob zakończy się z powodu błędu, sprawdź [dokumentacja dotycząca rozwiązywania problemów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) wskazówki.
+Kondycji zarejestrowanego serwera:
 
-Kondycja obsługi warstw w chmurze
-- Aby monitorować aktywność obsługi warstw na serwerze, należy użyć Event ID 9003 9016 i 9029 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń).
+- Identyfikator zdarzenia 9301 jest rejestrowane co 30 sekund, gdy serwer kwerendę usługi dla zadania. Jeśli kończy GetNextJob **stan = 0**, serwer jest w stanie komunikować się z usługą. Jeśli GetNextJob zakończy się z powodu błędu, sprawdź [dokumentacja dotycząca rozwiązywania problemów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) wskazówki.
 
-  - Identyfikator zdarzenia 9003 zapewnia rozkład błędów dla punktu końcowego serwera. Np. Łączna liczba błędów, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
-  - Identyfikator zdarzenia 9016 zapewnia duplikowania wyniki dla woluminu. Na przykład wolnego miejsca, które jest procent, liczba plików jest zduplikowany w sesji, liczba plików nie powiodło się z ghost itp.
-  - Identyfikator zdarzenia 9029 informacje duplikowania sesji dla punktu końcowego serwera. Na przykład warstwy liczbę plików, które podjęto w danej sesji, liczba plików w danej sesji, liczby plików już warstwowe, itp.
+Kondycja obsługi warstw w chmurze:
+
+- Aby monitorować aktywność obsługi warstw na serwerze, należy użyć Event ID 9003 9016 i 9029 w dzienniku zdarzeń Telemetrii, który znajduje się w Podglądzie zdarzeń *aplikacji i Services\Microsoft\FileSync\Agent*.
+
+  - Identyfikator zdarzenia 9003 zapewnia rozkład błędów dla punktu końcowego serwera. Na przykład: Łączna liczba błędów i kod błędu. Jedno zdarzenie jest rejestrowane na kod błędu.
+  - Identyfikator zdarzenia 9016 zapewnia duplikowania wyniki dla woluminu. Na przykład: Procent wolnego miejsca to liczba plików zduplikowany w sesji, a liczba plików nie powiodło się zduplikowanych.
+  - Identyfikator zdarzenia 9029 informacje duplikowania sesji dla punktu końcowego serwera. Na przykład: Liczba plików, które podjęto w danej sesji, liczby plików warstwowego w sesji i liczby plików już warstwy.
   
-- Aby monitorować aktywność odwołania na serwerze, należy użyć Event ID 9005 9006 i 9009 9059 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń).
+- Aby monitorować aktywność odwołania na serwerze, należy użyć Event ID 9005 9006 i 9009 9059 w dzienniku zdarzeń Telemetrii, który znajduje się w Podglądzie zdarzeń *aplikacji i Services\Microsoft\FileSync\Agent*.
 
-  - Identyfikator zdarzenia 9005 zapewnia niezawodność odwołania dla punktu końcowego serwera. Na przykład łączna liczba unikatowych plików uzyskiwać dostęp, a łączna liczba unikatowych plików nieudanych prób dostępu itd.
-  - Identyfikator zdarzenia 9006 zapewnia rozkład błędów odwołań dla punktu końcowego serwera. Np. Łączna liczba żądań nie powiodło się, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
-  - Identyfikator zdarzenia 9009 informacje wycofaniu sesji dla punktu końcowego serwera. Na przykład DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, itd.
-  - Identyfikator zdarzenia 9059 zapewnia dystrybucję wycofaniu aplikacji dla punktu końcowego serwera. Na przykład ShareId, nazwę aplikacji i TotalEgressNetworkBytes.
+  - Identyfikator zdarzenia 9005 zapewnia niezawodność odwołania dla punktu końcowego serwera. Na przykład: Całkowita liczba unikatowych plików używanych i łączna liczba unikatowych plików przy użyciu dostępu nie powiodło się.
+  - Identyfikator zdarzenia 9006 zapewnia rozkład błędów odwołań dla punktu końcowego serwera. Na przykład: Łączna liczba żądań zakończonych niepowodzeniem i kod błędu. Jedno zdarzenie jest rejestrowane na kod błędu.
+  - Identyfikator zdarzenia 9009 informacje wycofaniu sesji dla punktu końcowego serwera. Na przykład: DurationSeconds CountFilesRecallSucceeded i CountFilesRecallFailed.
+  - Identyfikator zdarzenia 9059 zapewnia dystrybucję wycofaniu aplikacji dla punktu końcowego serwera. Na przykład: ShareId, nazwę aplikacji i TotalEgressNetworkBytes.
 
 ### <a name="performance-counters"></a>Liczniki wydajności
 
 Używanie liczników wydajności usługi Azure File Sync na serwerze, na monitorowanie działania synchronizacji.
 
-Aby wyświetlić wydajność usługi Azure File Sync liczniki na serwerze, uruchom Monitor wydajności (Perfmon.exe) i liczniki można znaleźć w obiektach AFS Bajty przesłane i AFS operacji synchronizacji.
+Aby wyświetlić liczniki wydajności usługi Azure File Sync na serwerze, otwórz Monitor wydajności (Perfmon.exe). Możesz znaleźć liczniki w obszarze **AFS Bajty przesłane** i **operacji synchronizacji AFS** obiektów.
 
 Następujące liczniki wydajności dla usługi Azure File Sync są dostępne w Monitorze wydajności:
 

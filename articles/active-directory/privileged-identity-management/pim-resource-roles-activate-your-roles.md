@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b02b0d36c6d7f5ddabae7a0e1d27dcca811fe56
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6bf5ae22fe8bf06d29c8c812a18cffcef14865c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447782"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550808"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Uaktywnij Moje role zasobów platformy Azure w usłudze PIM
 
@@ -68,7 +68,7 @@ Gdy zachodzi potrzeba podjęcia roli zasobów platformy Azure, możesz poprosić
 
 1. Kliknij pozycję **Aktywuj**.
 
-    Jeśli rola wymaga zatwierdzenia, jest aktywowana i dodany do listy aktywnych ról. Jeśli chcesz użyć roli od razu, postępuj zgodnie z instrukcjami w następnej sekcji.
+    Jeśli rola wymaga zatwierdzenia, jest aktywowana i dodany do listy aktywnych ról. Jeśli chcesz korzystać z roli, wykonaj kroki opisane w następnej sekcji.
 
     Jeśli [rola wymaga zatwierdzenia](pim-resource-roles-approval-workflow.md) można aktywować, powiadomienie pojawi się w prawym górnym rogu przeglądarki informujące o tym, żądanie oczekuje na zatwierdzenie.
 
@@ -76,17 +76,19 @@ Gdy zachodzi potrzeba podjęcia roli zasobów platformy Azure, możesz poprosić
 
 ## <a name="use-a-role-immediately-after-activation"></a>Użyj roli od razu po aktywacji
 
-Po aktywacji roli w usłudze PIM trwa co najmniej 10 minut, zanim będzie można uzyskać dostęp do żądanego portalu administracyjnego lub wykonywania funkcji w ramach określonego obciążenia administracyjnego. Aby wymusić aktualizację swoje uprawnienia, użyj **dostęp do aplikacji** stronie zgodnie z opisem w poniższych krokach.
+W przypadku wszelkich opóźnień po wykonaniu aktywacji wykonaj następujące czynności, po aktywowaniu natychmiastowe korzystanie role zasobów platformy Azure.
 
 1. Otwórz program Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **dostęp do aplikacji** strony.
+1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról katalogu usługi Azure AD i role zasobów platformy Azure.
 
-    ![Dostęp do aplikacji PIM — zrzut ekranu](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+1. Kliknij przycisk **role zasobów platformy Azure**.
 
-1. Kliknij przycisk **zasobów platformy Azure** link, aby ponownie otworzyć portalu na **wszystkie zasoby** strony.
+1. Kliknij przycisk **aktywnych ról** kartę.
 
-    Po kliknięciu tego łącza, unieważnić bieżącej token i wymusić portalu Azure w celu uzyskania nowego tokenu, który powinien zawierać zaktualizowano uprawnienia.
+1. Po uaktywnieniu roli Wyloguj się z portalu i zaloguj się ponownie.
+
+    Roli powinno być teraz dostępne do użycia.
 
 ## <a name="view-the-status-of-your-requests"></a>Wyświetl stan swoich żądań
 
@@ -118,7 +120,7 @@ Jeśli nie jest wymagane uaktywnienie roli, która wymaga zatwierdzenia, możesz
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>Uprawnienia nie udzielone po aktywacji roli
 
-Po aktywacji roli w usłudze PIM trwa co najmniej 10 minut, zanim będzie można uzyskać dostęp do żądanego portalu administracyjnego lub wykonywania funkcji w ramach określonego obciążenia administracyjnego. Aby wymusić aktualizację swoje uprawnienia, użyj **dostęp do aplikacji** stronie zgodnie z wcześniejszym opisem w sekcji [użyć roli natychmiast po wykonaniu aktywacji](#use-a-role-immediately-after-activation).
+Po aktywacji roli w usłudze PIM trwa co najmniej 10 minut, zanim będzie można uzyskać dostęp do żądanego portalu administracyjnego lub wykonywania funkcji w ramach określonego obciążenia administracyjnego. Po zakończeniu aktywacji, wyloguj się z witryny Azure portal i zalogują się ponownie rozpocząć korzystanie z nowo aktywowanego roli.
 
 Aby uzyskać dodatkowe kroki rozwiązywania problemów, zobacz [Rozwiązywanie problemów z podwyższonym poziomem uprawnień](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
 

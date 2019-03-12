@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 98ca3478c3a8963c3bf57143354340d6ed14900e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.date: 03/06/2019
+ms.openlocfilehash: 2f615214fb7b77614054841af7972eb814525dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594342"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549922"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -26,6 +26,7 @@ Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparat
 ![Migracja](./media/sql-database-managed-instance/migration.png)
 
 Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice. <a name="Differences"></a>
+
 - [Dostępność](#availability) włącznie z różnicami w [zawsze włączonej](#always-on-availability) i [kopie zapasowe](#backup),
 - [Zabezpieczenia](#security) włącznie z różnicami w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credential), [dostawcy usług kryptograficznych](#cryptographic-providers), [Logowania / użytkownicy](#logins--users), [klucza oraz klucza głównego usługi](#service-key-and-service-master-key),
 - [Konfiguracja](#configuration) włącznie z różnicami w [buforu rozszerzenia puli](#buffer-pool-extension), [sortowania](#collation), [poziomy zgodności](#compatibility-levels),[bazy danych dublowanie](#database-mirroring), [opcje bazy danych](#database-options), [programu SQL Server Agent](#sql-server-agent), [Opcje tabeli](#tables),
@@ -61,10 +62,16 @@ Wystąpienia zarządzane automatycznych kopii zapasowych i Zezwól użytkownikom
 Ograniczenia:  
 
 - Za pomocą wystąpienia zarządzanego, kopii zapasowych wystąpienia bazy danych w kopii zapasowej z maksymalnie 32 rozkłada, który jest wystarczająca dla baz danych do 4 TB, jeśli kompresja kopii zapasowej jest używany.
-- Maksymalny rozmiar kopii zapasowej usługi stripe to 195 GB (rozmiar maksymalny obiektów blob). Zwiększ liczbę paski w kopii zapasowej polecenie, aby zmniejszyć rozmiar woluminu rozłożonego indywidualnych i w ramach tego limitu.
+- Przy użyciu rozmiaru kopii zapasowej usługi stripe Max `BACKUP` polecenie w wystąpienia zarządzanego jest 195 GB (rozmiar maksymalny obiektów blob). Zwiększ liczbę paski w kopii zapasowej polecenie, aby zmniejszyć rozmiar woluminu rozłożonego indywidualnych i w ramach tego limitu.
 
-> [!TIP]
-> Aby obejść to ograniczenie w środowisku lokalnym, wykonywanie kopii zapasowej na `DISK` zamiast wykonywania kopii zapasowej na `URL`, przekazywanie pliku kopii zapasowej do obiektów blob, a następnie przywrócić. Ponieważ typ inny obiektu blob jest używany, należy przywrócić pliki większe obsługuje.  
+    > [!TIP]
+    > Aby obejść to ograniczenie, podczas wykonywania kopii zapasowej bazy danych z dowolnego programu SQL Server w środowisku lokalnym lub na maszynie wirtualnej, należy wykonać następujące:
+    >
+    > - Tworzenie kopii zapasowych `DISK` zamiast kopii zapasowej `URL`
+    > - Przekaż pliki kopii zapasowej do magazynu obiektów Blob
+    > - Przywracanie do wystąpienia zarządzanego
+    >
+    > `Restore` Polecenia w wystąpieniach zarządzanych obsługuje większych rozmiarów obiektów blob w pliki kopii zapasowej, ponieważ typ inny obiektu blob jest używany do przechowywania przekazywanych plików kopii zapasowej.
 
 Aby uzyskać informacji na temat kopii zapasowych przy użyciu języka T-SQL, zobacz [kopii zapasowej](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
@@ -125,44 +132,51 @@ Wystąpienie zarządzane nie może uzyskać dostęp do plików, więc nie można
 
 - Utworzone nazw logowania SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, i `FROM SID` są obsługiwane. Zobacz [logowania Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Usługa Azure Active Directory (Azure AD) serwera podmiotów zabezpieczeń (logowania) utworzone za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [utworzyć z LOGOWANIEM użytkownika [Azure AD Login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej** ). Są to nazwy logowania jest tworzone na poziomie serwera.
-    - Wystąpienie zarządzane obsługuje podmiotów zabezpieczeń bazy danych usługi Azure AD przy użyciu składni `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. To jest również nazywany usługi Azure AD zawartych użytkowników bazy danych.
+
+    Wystąpienie zarządzane obsługuje podmiotów zabezpieczeń bazy danych usługi Azure AD przy użyciu składni `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. To jest również nazywany usługi Azure AD zawartych użytkowników bazy danych.
+
 - Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane. Za pomocą usługi Azure Active Directory, logowania i użytkowników.
 - Użytkownika usługi AD Azure, który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
 - Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](sql-database-manage-logins.md#non-administrator-users).
 - Jednostki serwera w usłudze Azure AD (logowania) obsługują funkcje SQL w ramach tylko wystąpienie jednego wystąpienia Zarządzanego. Funkcje, które wymagają interakcji między wystąpienia, niezależnie od tego, jeśli w tej samej usłudze Azure AD lub inną dzierżawą nie są obsługiwane dla użytkowników usługi Azure AD. Przykłady takich funkcji:
-    - Replikacja transakcyjna programu SQL i
-    - Link Server
+
+  - Replikacja transakcyjna programu SQL i
+  - Link Server
+
 - Ustawienia logowania usługi Azure AD mapowane na grupę usługi Azure AD, jako właściciel bazy danych nie jest obsługiwane.
 - Personifikacja podmiotów zabezpieczeń z poziomu serwera usługi Azure AD, przy użyciu innych podmiotów zabezpieczeń usługi Azure AD jest obsługiwany, takich jak [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) klauzuli. WYKONAJ jako ograniczenia:
-    - EXECUTE AS USER nie jest obsługiwane dla użytkowników usługi Azure AD, gdy nazwa różni się od nazwy logowania. Na przykład po utworzeniu użytkownika przy użyciu składni CREATE USER [myAadUser] z logowania [john@contoso.com], a próby personifikacji za pośrednictwem EXEC AS USER = _myAadUser_. Podczas tworzenia **użytkownika** z usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania), należy określić nazwa_użytkownika jako ten sam login_name z **logowania**.
-    - Tylko podmioty zabezpieczeń na poziomie programu SQL Server (identyfikatory logowania), które są częścią roli `sysadmin`, mogą wykonać następujące operacje, których celem są podmioty zabezpieczeń usługi Azure AD: 
-        - EXECUTE AS USER
-        - EXECUTE AS LOGIN
+
+  - EXECUTE AS USER nie jest obsługiwane dla użytkowników usługi Azure AD, gdy nazwa różni się od nazwy logowania. Na przykład po utworzeniu użytkownika przy użyciu składni CREATE USER [myAadUser] z logowania [john@contoso.com], a próby personifikacji za pośrednictwem EXEC AS USER = _myAadUser_. Podczas tworzenia elementu **USER** na podstawie jednostki usługi (identyfikatora logowania) serwera Azure AD parametr user_name powinien być taki sam jak parametr login_name elementu **LOGIN**.
+  - Tylko podmioty zabezpieczeń na poziomie programu SQL Server (identyfikatory logowania), które są częścią roli `sysadmin`, mogą wykonać następujące operacje, których celem są podmioty zabezpieczeń usługi Azure AD:
+
+    - EXECUTE AS USER
+    - EXECUTE AS LOGIN
+
 - **Publiczna wersja zapoznawcza** ograniczenia dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania):
-    - Ograniczenia aktywnego katalogu administratora dla wystąpienia zarządzanego:
-        - Administrator usługi Azure AD umożliwia skonfigurowanie wystąpienia zarządzanego nie może służyć do tworzenia usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) w ramach wystąpienia zarządzanego. Należy utworzyć pierwszy usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) za pomocą konta programu SQL Server, który jest `sysadmin`. Jest to tymczasowe ograniczenie, które zostaną usunięte po podmiotów zabezpieczeń serwera usługi Azure AD (logowania) stają się po ogólnym udostępnieniu produktu Jeśli spróbujesz utworzyć identyfikator logowania przy użyciu konta administratora usługi Azure AD zostanie wyświetlony następujący błąd: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-        - Obecnie należy utworzyć pierwszego logowania usługi Azure AD, utworzone w bazie danych master przez standardowe konta programu SQL Server (bez usługi Azure AD) będącego `sysadmin` przy użyciu [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) z zewnętrznego dostawcy. GA wpis to ograniczenie będą usuwane i moduł początkowego logowania usługi Azure AD mogą być tworzone przez administratora usługi Active Directory dla wystąpienia zarządzanego.
+
+  - Ograniczenia aktywnego katalogu administratora dla wystąpienia zarządzanego:
+
+    - Administrator usługi Azure AD umożliwia skonfigurowanie wystąpienia zarządzanego nie może służyć do tworzenia usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) w ramach wystąpienia zarządzanego. Pierwsza jednostka usługi (identyfikator logowania) serwera Azure AD musi zostać utworzona przy pomocy konta programu SQL Server z rolą `sysadmin`. Jest to tymczasowe ograniczenie, które zostanie usunięte w momencie, kiedy jednostki usługi (identyfikatory logowania) serwera Azure AD staną się ogólnie dostępne. Jeśli spróbujesz utworzyć identyfikator logowania przy użyciu konta administratora usługi Azure AD zostanie wyświetlony następujący błąd: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - Obecnie należy utworzyć pierwszego logowania usługi Azure AD, utworzone w bazie danych master przez standardowe konta programu SQL Server (bez usługi Azure AD) będącego `sysadmin` przy użyciu [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) z zewnętrznego dostawcy. GA wpis to ograniczenie będą usuwane i moduł początkowego logowania usługi Azure AD mogą być tworzone przez administratora usługi Active Directory dla wystąpienia zarządzanego.
     - DacFx (importu/eksportu), używany przy użyciu programu SQL Server Management Studio (SSMS) lub SqlPackage nie jest obsługiwane w przypadku logowania do usługi Azure AD. To ograniczenie zostanie usunięty po podmiotów zabezpieczeń serwera usługi Azure AD (logowania) stają się po ogólnym udostępnieniu produktu
     - Przy użyciu jednostek serwera usługi Azure AD (logowania) za pomocą programu SSMS
-        - Obsługa skryptów logowania do usługi Azure AD (przy użyciu dowolnego uwierzytelnionego logowania) nie jest obsługiwane.
-        - Funkcja IntelliSense nie rozpoznaje **utworzyć z zewnętrznego dostawcy logowania** instrukcji i pokażą, czerwoną linią.
+
+      - Obsługa skryptów logowania do usługi Azure AD (przy użyciu dowolnego uwierzytelnionego logowania) nie jest obsługiwane.
+      - Funkcja IntelliSense nie rozpoznaje **utworzyć z zewnętrznego dostawcy logowania** instrukcji i pokażą, czerwoną linią.
+
 - Tylko główna nazwa logowania na poziomie serwera (utworzonego przez proces tworzenia wystąpienia zarządzanego), członkowie ról serwera (`securityadmin` lub `sysadmin`), lub innych nazw logowania z uprawnieniami ALTER ANY LOGIN na poziomie serwera można utworzyć serwer usługi Azure AD podmioty (logowania) w bazie danych master dla wystąpienia zarządzanego.
 - Jeśli identyfikator logowania to podmiot zabezpieczeń SQL, tylko identyfikatory logowania, które są częścią roli `sysadmin` mogą użyć polecenia create do utworzenia identyfikatorów logowania dla konta usługi Azure AD.
 - Logowanie w usłudze Azure AD, musi należeć do usługi Azure AD, w tym samym katalogu, które są używane do wystąpienia zarządzanego Azure SQL.
 - Jednostki serwera w usłudze Azure AD (logowania) są widoczne w Eksploratorze obiektów rozpoczęcie przeczytania artykułu przy użyciu narzędzia SSMS w wersjach 18.0 w wersji zapoznawczej 5.
 - Nakładające się podmiotów serwera usługi Azure AD (logowania) przy użyciu konta administratora usługi Azure AD jest dozwolone. Jednostki serwera w usłudze Azure AD (logowania) mają pierwszeństwo przed administrator usługi Azure AD podczas rozpoznawania uprawnienia podmiotu zabezpieczeń i mające zastosowanie do wystąpienia zarządzanego.
 - Podczas uwierzytelniania sekwencji po zastosowaniu można rozpoznać jednostki uwierzytelniania:
+
     1. Jeśli istnieje konto usługi Azure AD jako mapowane bezpośrednio do usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) (istnieje w sys.server_principals jako typ "E"), należy udzielić dostępu i zastosuj uprawnienia podmiotu zabezpieczeń serwera usługi Azure AD (identyfikator logowania).
     2. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, który jest mapowany do usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) (istnieje w sys.server_principals jako typu "X"), przyznać dostęp i zastosuj uprawnienia logowania grupy usługi Azure AD.
     3. Jeśli konto usługi Azure AD jest specjalny skonfigurowane w portalu administratora usługi Azure AD dla wystąpienia zarządzanego (nie istnieje w widokach systemu wystąpienie zarządzane), mają zastosowanie specjalnych stałych uprawnień administratora usługi Azure AD dla wystąpienia zarządzanego (starsza wersja trybu).
     4. Jeśli istnieje konto usługi Azure AD jako bezpośrednio zmapowane do użytkownika usługi Azure AD w bazie danych (w sys.database_principals jako typ "E"), udzielanie dostępu i zastosuj uprawnienia użytkownika bazy danych usługi Azure AD.
     5. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, który jest mapowany do użytkownika usługi Azure AD w bazie danych (w sys.database_principals jako typ "X"), przyznać dostęp i zastosuj uprawnienia logowania grupy usługi Azure AD.
     6. W przypadku logowania usługi Azure AD zamapowanych na konto użytkownika usługi Azure AD lub konta grupy usługi Azure AD, rozpoznawania uwierzytelnia użytkownika, wszystkie uprawnienia z tymi danymi logowania usługi Azure AD zostaną zastosowane.
-
-
-
-
-
 
 ### <a name="service-key-and-service-master-key"></a>Usługa klucza głównego klucza i usługi
 
@@ -320,7 +334,6 @@ Wystąpienie zarządzane nie może uzyskać dostępu udziałów plików i folder
 - Tylko `CREATE ASSEMBLY FROM BINARY` jest obsługiwana. Zobacz [tworzenia zestawu z danych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` is't obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` Nie można odwoływać się do plików. Zobacz [zmiana zestawu](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
 
 ### <a name="dbcc"></a>DBCC
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017382"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540134"
 ---
 # <a name="use-case---product-recommendations"></a>Przypadek użycia — rekomendacje produktów
 Usługa Azure Data Factory jest jednym z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence z akceleratorami rozwiązań.  Zobacz [pakietu Cortana Intelligence](https://www.microsoft.com/cortanaanalytics) strony, aby uzyskać szczegółowe informacje na temat tego pakietu. W tym dokumencie opisano typowy przypadek użycia, w których użytkownicy platformy Azure już rozwiązanie zaimplementowane przy użyciu usługi Azure Data Factory i innych usług składników pakietu Cortana Intelligence.
@@ -50,7 +50,7 @@ Wszystkie dane są połączone i przekazywane do system rekomendacji produktów 
 
 Gigabajty web pierwotne pliki dziennika są generowane raz dziennie z witryny sieci Web w trybie online dla sprzedawców detalicznych jako pliki z częściową strukturą. Pliki dziennika raw sieci web i informacje katalogu klienta i produkt regularnie pobieranym do usługi Azure Blob storage za pomocą usługi Data Factory, przenoszenia globalnie wdrożonych danych jako usługa. Pierwotnych plików dziennika na ten dzień są podzielone na partycje (przez rok i miesiąc) w usłudze blob storage do przechowywania długoterminowego.  [Usługa Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) służy do partycjonowania pierwotnych plików dziennika w magazynie obiektów blob i przetwarzać odebrane dzienniki na dużą skalę za pomocą skryptów Hive i Pig. Partycjonowane sieci web rejestruje dane są następnie przetwarzane w celu wyodrębnienia wymagane dane wejściowe dla usługi machine learning zalecenie systemu do generowania spersonalizowanych rekomendacji produktu.
 
-System zalecenie, używane do uczenia maszynowego w tym przykładzie jest uczenia platforma zalecenie maszynowego typu open source [Apache Mahout](http://mahout.apache.org/).  Wszelkie [usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) lub utworzyć niestandardowy model może odnosić się do scenariusza.  Mahout model służy do prognozowania podobieństwa między elementami w witrynie sieci Web, na podstawie ogólnej wzorców użycia i generowanie spersonalizowanych zaleceń na podstawie poszczególnych użytkownika.
+System zalecenie, używane do uczenia maszynowego w tym przykładzie jest uczenia platforma zalecenie maszynowego typu open source [Apache Mahout](https://mahout.apache.org/).  Wszelkie [usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) lub utworzyć niestandardowy model może odnosić się do scenariusza.  Mahout model służy do prognozowania podobieństwa między elementami w witrynie sieci Web, na podstawie ogólnej wzorców użycia i generowanie spersonalizowanych zaleceń na podstawie poszczególnych użytkownika.
 
 Na koniec zestawu wyników spersonalizowanych rekomendacji produktu jest przenoszony do składnicy danych relacyjnych do użycia w witrynie sprzedaży detalicznej.  Zestaw wyników również może być dostępne bezpośrednio z usługi blob storage przez inną aplikację lub przeniesiona do dodatkowego magazynów dla innych użytkowników i przypadkami użycia.
 

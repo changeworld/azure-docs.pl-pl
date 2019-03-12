@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 864e93dcd94fd36b0e34495e0ea27f22d8b0dd0c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 65ea01047743c5894ac2ae8b38a197b57cb6971c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817681"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531323"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -70,7 +70,7 @@ Po zakończeniu operacji dołączania, rozwiązanie Update Management jest włą
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Włączanie rozwiązania Update Management dla maszyn wirtualnych poza platformą Azure i komputerów
 
-Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych innych niż Windows na platformie Azure i komputerów, zobacz [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](../log-analytics/log-analytics-windows-agent.md).
+Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych innych niż Windows na platformie Azure i komputerów, zobacz [Windows łączenie komputerów z usługą Azure Monitor na platformie Azure](../log-analytics/log-analytics-windows-agent.md).
 
 Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych Linux platformy Azure i komputerów, zobacz [łączenie komputerów z systemem Linux do usługi Azure Monitor dzienników](../log-analytics/log-analytics-agent-linux.md).
 
@@ -132,7 +132,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 - **Nazwa**: Wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
 - **Grupy do zaktualizowania (wersja zapoznawcza)**: Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
-- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub maszyn, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach w usłudze Azure Monitor, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md)
+- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub maszyn, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
 

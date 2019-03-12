@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341358"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546263"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testowanie wydajności usługi w chmurze lokalnie w emulatorze obliczeń platformy Azure przy użyciu programu Visual Studio Profiler
 Różne narzędzia i techniki są dostępne do testowania wydajności usługi w chmurze.
@@ -30,8 +30,8 @@ Możesz również chcieć Profiluj aplikację lokalnie w emulatorze obliczeń pr
 
 W tym artykule opisano profilowanie metodą próbkowania procesora, które można przeprowadzić lokalnie w emulatorze. Próbkowanie Procesora jest metodą profilowania, która nie jest bardzo bez wprowadzania niepożądanych. Interwałem próbkowania wyznaczonym program profilujący tworzy migawkę stosu wywołań. Dane są zbierane w przedziale czasu i wyświetlane w raporcie. Ta metoda profilowania zwykle wskazuje, gdzie w aplikacji wymaga dużej mocy obliczeniowej większość pracy procesora CPU jest wykonywana.  To umożliwia skoncentrowanie się na "ścieżki aktywnej" gdzie aplikacja jest wydatków najwięcej czasu.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurowanie programu Visual Studio do profilowania
-Po pierwsze istnieje kilka opcji konfiguracji programu Visual Studio, które mogą być pomocne w przypadku profilowania. Aby poznać raporty profilowania, konieczne będzie symboli (pliki .pdb) dla swojej aplikacji, a także symbole dla bibliotek systemowych. Należy się upewnić, że odwoływać się z serwerów symboli dostępne. Aby to zrobić, na **narzędzia** menu w programie Visual Studio, wybierz opcję **opcje**, następnie wybierz **debugowanie**, następnie **symbole**. Upewnij się, że serwery symboli firmy Microsoft znajduje się w obszarze **symboli (.pdb) lokalizacji**.  Możesz też przywołać http://referencesource.microsoft.com/symbols, które mogą mieć dodatkowe symboli plików.
+## <a name="1-configure-visual-studio-for-profiling"></a>1. Konfigurowanie programu Visual Studio do profilowania
+Po pierwsze istnieje kilka opcji konfiguracji programu Visual Studio, które mogą być pomocne w przypadku profilowania. Aby poznać raporty profilowania, konieczne będzie symboli (pliki .pdb) dla swojej aplikacji, a także symbole dla bibliotek systemowych. Należy się upewnić, że odwoływać się z serwerów symboli dostępne. Aby to zrobić, na **narzędzia** menu w programie Visual Studio, wybierz opcję **opcje**, następnie wybierz **debugowanie**, następnie **symbole**. Upewnij się, że serwery symboli firmy Microsoft znajduje się w obszarze **symboli (.pdb) lokalizacji**.  Możesz też przywołać https://referencesource.microsoft.com/symbols, które mogą mieć dodatkowe symboli plików.
 
 ![Opcje symboli][4]
 
@@ -77,7 +77,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 
 Skompilować i uruchomić usługi w chmurze lokalnie bez debugowania (klawisze Ctrl + F5), za pomocą konfiguracji rozwiązania, ustaw **wersji**. Zapewnia to, że wszystkie pliki i foldery są tworzone dla aplikacji uruchomionej na komputerze lokalnym i gwarantuje, że są uruchomione wszystkie emulatorów. Uruchom interfejs użytkownika emulatora obliczeń z paska zadań, aby sprawdzić, czy działa swojej roli procesu roboczego.
 
-## <a name="2-attach-to-a-process"></a>2: Dołącz do procesu
+## <a name="2-attach-to-a-process"></a>2. Dołącz do procesu
 Zamiast sprofilować aplikację, uruchamiając go za pomocą programu Visual Studio 2010 IDE, należy dołączyć profiler do uruchomionego procesu. 
 
 Aby dołączyć profiler do procesu, na **analizy** menu, wybierz **Profiler** i **Attach/Detach**.
@@ -113,7 +113,7 @@ Jeśli chcesz zatrzymać profilowanie, wybierz **Zatrzymaj profilowanie** łącz
 
 ![Zatrzymaj profilowanie opcji][10]
 
-## <a name="3-view-performance-reports"></a>3: wyświetlić raporty dotyczące wydajności
+## <a name="3-view-performance-reports"></a>3. Wyświetl raporty dotyczące wydajności
 Raport o wydajności dla aplikacji jest wyświetlany.
 
 W tym momencie program profilujący zatrzymuje wykonywanie, zapisuje dane w pliku Vsp i wyświetla raport zawiera analizę tych danych.
@@ -130,7 +130,7 @@ Jeśli dodano kod konkatenacji ciągów w tym artykule, powinny pojawić się os
 
 ![Ostrzeżeń dotyczących wydajności][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: wprowadź zmiany i porównanie wydajności
+## <a name="4-make-changes-and-compare-performance"></a>4. Wprowadź zmiany i porównanie wydajności
 Można również porównać wydajność przed i po zmianie kodu.  Zatrzymaj uruchomionego procesu, a następnie edytować kod i Zastąp ciąg operacji łączenia z użyciem klasy StringBuilder:
 
 ```csharp
@@ -162,14 +162,14 @@ Gratulacje! Rozpoczęciu pracy przy użyciu profilera.
 * Interfejs użytkownika emulatora obliczeń Umożliwia wyświetlenie stanu aplikacji. 
 * Jeśli masz problemy z uruchamianiem aplikacji w emulatorze lub dołączanie programu profiler zamykanie emulatora obliczeń w dół, a następnie uruchom go ponownie. Jeśli to nie rozwiąże problemu, spróbuj wykonać ponowny rozruch. Ten problem może wystąpić, jeśli używasz emulatora obliczeń do wstrzymania i Usuń uruchomionych wdrożeniach.
 * Jeśli używasz dowolnego polecenia profilowania z wiersza polecenia, a szczególnie globalne ustawienia, upewnij się, VSPerfClrEnv /globaloff została wywołana i że VsPerfMon.exe został zamknięty.
-* Jeśli podczas pobierania próbek, zostanie wyświetlony komunikat "PRF0025: nie zebrano żadnych danych," Sprawdź, czy Proces, który został dołączony do ma działanie procesora CPU. Aplikacje, które nie wykonują wszelkie prace obliczeniową może nie dawać dane z próbkowania.  Istnieje również możliwość, że proces zakończony przed wykonano wszystkie pobierania próbek. Sprawdź, czy metoda Run dla roli, który jest profilowany nie kończy.
+* Jeśli podczas pobierania próbek, zostanie wyświetlony komunikat "PRF0025: Zebrano żadnych danych,"Sprawdź, czy Proces, który został dołączony do ma działanie procesora CPU. Aplikacje, które nie wykonują wszelkie prace obliczeniową może nie dawać dane z próbkowania.  Istnieje również możliwość, że proces zakończony przed wykonano wszystkie pobierania próbek. Sprawdź, czy metoda Run dla roli, który jest profilowany nie kończy.
 
 ## <a name="next-steps"></a>Następne kroki
-Instrumentacja Azure plików binarnych w emulatorze nie jest obsługiwane w programie Visual Studio profiler, ale jeśli chcesz przetestować alokacji pamięci, możesz wybrać tę opcję podczas profilowania. Można również wybrać profilowania współbieżności, który pomaga ustalić, czy wątki są marnowania czasu rywalizując o blokady lub warstwy profilowanie interakcji między, co pomoże Ci w wyszukaniu problemy z wydajnością podczas interakcji między warstwami aplikacji, najbardziej często między warstwą danych i rolę procesu roboczego.  Można wyświetlić zapytania do bazy danych, które aplikacja generuje i używać danych profilowania w celu używania bazy danych. Aby uzyskać informacje o profilowaniu interakcji między warstwami, zobacz wpis w blogu [Instruktaż: przy użyciu warstwy Profiler interakcji w Visual Studio Team System 2010][3].
+Instrumentacja Azure plików binarnych w emulatorze nie jest obsługiwane w programie Visual Studio profiler, ale jeśli chcesz przetestować alokacji pamięci, możesz wybrać tę opcję podczas profilowania. Można również wybrać profilowania współbieżności, który pomaga ustalić, czy wątki są marnowania czasu rywalizując o blokady lub warstwy profilowanie interakcji między, co pomoże Ci w wyszukaniu problemy z wydajnością podczas interakcji między warstwami aplikacji, najbardziej często między warstwą danych i rolę procesu roboczego.  Można wyświetlić zapytania do bazy danych, które aplikacja generuje i używać danych profilowania w celu używania bazy danych. Aby uzyskać informacje o profilowaniu interakcji między warstwami, zobacz wpis w blogu [instruktażu: Przy użyciu warstwy Profiler interakcji w programie Visual Studio Team System 2010][3].
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
+[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

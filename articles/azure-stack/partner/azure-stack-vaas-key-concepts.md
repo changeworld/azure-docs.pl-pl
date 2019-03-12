@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a128be720675898a2512f43bf714b9ad6aca0450
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3830dc15cebe24a8fb910b641b7b986437aeec52
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338539"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768982"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Sprawdzanie poprawności jako kluczowe pojęcia dotyczące usługi
 
@@ -28,7 +28,7 @@ W tym artykule opisano podstawowe pojęcia dotyczące weryfikacji jako usługa (
 
 ## <a name="solutions"></a>Rozwiązania
 
-Rozwiązanie VaaS reprezentuje rozwiązanie usługi Azure Stack z konkretnego sprzętu zestawienie komponentów (BoM). Rozwiązanie VaaS działa jako kontener dla przepływów pracy, które uruchamiać rozwiązania usługi Azure Stack.
+Rozwiązanie VaaS reprezentuje rozwiązanie usługi Azure Stack przy użyciu konkretnego sprzętu zestawienie komponentów (BoM). Rozwiązanie VaaS działa jako kontener dla przepływów pracy, które uruchamiać rozwiązania usługi Azure Stack.
 
 ### <a name="create-a-solution-in-the-vaas-portal"></a>Tworzenie rozwiązania w portalu VaaS
 
@@ -52,7 +52,7 @@ Aby uzyskać więcej informacji na temat typów przepływu pracy, zobacz [co to 
 
 ### <a name="getting-started-with-vaas-workflows"></a>Wprowadzenie do przepływów pracy VaaS
 
-1. Na pulpicie nawigacyjnym rozwiązania Utwórz nowe rozwiązanie lub wybierz istniejącą. Odświeża i umożliwia Kafelki przepływu pracy.
+1. Na pulpicie nawigacyjnym rozwiązania Utwórz nowe rozwiązanie lub wybierz istniejącą. Odświeża i aktywuje Kafelki przepływu pracy.
 2. Aby utworzyć nowy przepływ pracy, wybierz **Start** w dowolnym kafelku. Aby uzyskać informacje specyficzne dla każdego przepływu pracy zobacz następujące artykuły:
     - Przebieg testu: [Szybki start: Użyj sprawdzania poprawności jako portal usługi, do zaplanowania Twojego pierwszego testu](azure-stack-vaas-schedule-test-pass.md)
     - Sprawdzanie poprawności rozwiązania: [Weryfikowanie nowych rozwiązań usługi Azure Stack](azure-stack-vaas-validate-solution-new.md)
@@ -76,7 +76,7 @@ Aby uzyskać więcej informacji na temat parametrów testu zobacz [wspólnych pa
 VaaS agent zależy od wykonania testu. Dwa rodzaje agentów VaaS testy:
 
 - **Agenta chmurowego**. Jest to dostępne w VaaS domyślnego agenta. Konfiguracja nie jest wymagana, ale wymaga połączenia przychodzącego do środowiska i punktów końcowych usługi Azure Stack jest rozpoznawana z Internetu. Niektóre testy nie są zgodne z agentem chmury.
-- A **agent lokalny**. Umożliwia uruchomienie sprawdzania poprawności w scenariuszach, w którym połączenia przychodzącego do środowiska nie jest możliwe. Niektóre testy wymagają wykonywania za pośrednictwem lokalnego agenta.
+- A **agent lokalny**. Dzięki temu można uruchomić sprawdzania poprawności w scenariuszach, gdzie połączenia przychodzącego do środowiska nie jest możliwe. Niektóre testy wymagają wykonywania za pośrednictwem lokalnego agenta.
 
 Lokalne agenty nie są powiązane żadne rozwiązanie do określonej usługi Azure Stack lub VaaS. Najlepszym rozwiązaniem powinno być ono uruchomione poza środowiskiem usługi Azure Stack.
 

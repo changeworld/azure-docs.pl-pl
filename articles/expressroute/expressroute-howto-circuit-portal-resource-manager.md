@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 45e87be071e09a19f1d8164eb9a002909a964201
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e8b4ba8cddb8298e69ad45016a8e3c335146d226
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960398"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540168"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Ten artykuł pomoże Ci utworzyć obwodu ExpressRoute za pomocą witryny Azure p
 
 ## <a name="create"></a>Tworzenie i aprowizowanie obwodu usługi ExpressRoute
 ### <a name="1-sign-in-to-the-azure-portal"></a>1. Logowanie się do witryny Azure Portal
-Przejdź w przeglądarce do witryny [Azure Portal](http://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
+Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
 ### <a name="2-create-a-new-expressroute-circuit"></a>2. Tworzenie nowego obwodu usługi ExpressRoute
 > [!IMPORTANT]

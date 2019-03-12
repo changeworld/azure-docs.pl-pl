@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265638"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535403"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Omówienie interfejsy API raportowania usługi dla klientów korporacyjnych
 Interfejsy API raportowania pozwala klientom usługi Azure Enterprise programowo ściągnięcia zużycia i danych dotyczących rozliczeń do narzędzia do analizy danych preferowany. Klienci korporacyjni utworzyli [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) za pomocą platformy Azure na wynegocjowanym zobowiązań pieniężnych i uzyskać dostęp do ceny niestandardowe dla zasobów platformy Azure.
@@ -34,7 +34,7 @@ Interfejsy API raportowania pozwala klientom usługi Azure Enterprise programowo
 |Autoryzacja| Określ wartość w następującym formacie: **bearer {API_KEY}** <br/> Przykład: eyr elementu nośnego... 09| 
 
 ## <a name="consumption-apis"></a>Użycie interfejsów API
-Punktu końcowego struktury Swagger jest dostępna [tutaj](https://consumption.azure.com/swagger/ui/index) dla interfejsów API opisanego poniżej której powinna umożliwiają łatwe introspekcji interfejsu API oraz do generowania zestawów SDK klienta przy użyciu [AutoRest](https://github.com/Azure/AutoRest) lub [programu Swagger Generowanie kodu](http://swagger.io/swagger-codegen/). Dane, począwszy od 1 maja 2014 roku. jest dostępna za pośrednictwem tego interfejsu API. 
+Punktu końcowego struktury Swagger jest dostępna [tutaj](https://consumption.azure.com/swagger/ui/index) dla interfejsów API opisanego poniżej której powinna umożliwiają łatwe introspekcji interfejsu API oraz do generowania zestawów SDK klienta przy użyciu [AutoRest](https://github.com/Azure/AutoRest) lub [programu Swagger Generowanie kodu](https://swagger.io/swagger-codegen/). Dane, począwszy od 1 maja 2014 roku. jest dostępna za pośrednictwem tego interfejsu API. 
 
 * **Informacji o saldach i Podsumowanie** — [informacji o saldach i podsumowanie interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) oferuje miesięczne podsumowanie informacji na temat salda, nowe zakupy, opłaty za usługę portalu Azure Marketplace, korekt i opłaty za użycie nadwyżkowe.
 

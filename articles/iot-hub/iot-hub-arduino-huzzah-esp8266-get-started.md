@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e49a3063d6314947c59c5ae863077748d997f2b5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: ae123638e26c9fb6c82666efddabf06874c7b7a8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515475"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539964"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Zestaw Adafruit Feather HUZZAH ESP8266 nawiązać połączenie z usługi Azure IoT Hub w chmurze
 
@@ -27,7 +27,7 @@ ms.locfileid: "51515475"
 Zestaw Adafruit Feather HUZZAH ESP8266 nawiązać połączenia usługi IoT hub, którą tworzysz. Następnie uruchom przykładową aplikację na ESP8266, aby zbierać dane temperatury i wilgotności z czujnika DHT22. Na koniec wysyłania danych czujnika do usługi IoT hub.
 
 > [!NOTE]
-> Jeśli używasz innych tablic ESP8266 można nadal wykonaj następujące kroki, aby połączyć go z Centrum IoT hub. W zależności od tablicy ESP8266, używasz, może być konieczne ponowne skonfigurowanie `LED_PIN`. Na przykład, jeśli używasz ESP8266 z Thinker sztucznej Inteligencji, można zmienić go z `0` do `2`. Nie masz jeszcze zestawu? Pobrać je z [witryny sieci Web Azure](http://azure.com/iotstarterkits).
+> Jeśli używasz innych tablic ESP8266 można nadal wykonaj następujące kroki, aby połączyć go z Centrum IoT hub. W zależności od tablicy ESP8266, używasz, może być konieczne ponowne skonfigurowanie `LED_PIN`. Na przykład, jeśli używasz ESP8266 z Thinker sztucznej Inteligencji, można zmienić go z `0` do `2`. Nie masz jeszcze zestawu? Pobrać je z [witryny sieci Web Azure](https://azure.com/iotstarterkits).
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
@@ -66,7 +66,7 @@ Następujące elementy są opcjonalne, w przypadku, gdy nie ma czujnika. Istniej
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -88,7 +88,7 @@ Czujnik numery PIN można użyć następujących połączeń:
 
 | Uruchom (czujnik)           | Końcowy (tablica)            | Kolor kabel   |
 | -----------------------  | ---------------------- | ------------  |
-| VDD (Pin 31F)            | 3V (przypinanie 58H)           | Czerwony kabel     |
+| VDD (Pin 31F)            | 3V (Pin 58H)           | Czerwony kabel     |
 | DANE (Pin 32F)           | Interfejs GPIO 2 (Pin 46A)       | Niebieski kabel    |
 | GND (Pin 34F)            | GND (PIn 56I)          | Czarnego przewodu   |
 
@@ -184,7 +184,7 @@ Przykładowa aplikacja jest hostowana w usłudze GitHub. Sklonuj repozytorium pr
 
    ![Pakiet esp8266 jest zainstalowany](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-13. Wprowadź `F1`, a następnie wpisz **Arduino** i wybierz **Arduino: Config tablicy**.
+13. Wprowadź `F1`, a następnie wpisz **Arduino** i wybierz **Arduino: Tablicy Config**.
 
 14. Kliknij pole **wybrane tablicy:** i typ **esp8266**, a następnie wybierz **Adafruit HUZZAH ESP8266 (esp8266)**.
 
@@ -222,7 +222,7 @@ Przykładowa aplikacja można symulować dane temperatury i wilgotności, w przy
 
 1. W programie Visual Studio Code kliknij **<Select Serial Port>** stanu paska, a następnie kliknij port szeregowy dla Feather HUZZAH ESP8266.
 
-2. Wprowadź `F1`, a następnie wpisz **Arduino** i wybierz **Arduino: przekazywanie** do tworzenia i wdrażania przykładowej aplikacji w celu Feather HUZZAH ESP8266.
+2. Wprowadź `F1`, a następnie wpisz **Arduino** i wybierz **Arduino: Przekaż** do tworzenia i wdrażania przykładowej aplikacji w celu Feather HUZZAH ESP8266.
 
 ### <a name="enter-your-credentials"></a>Wprowadź swoje poświadczenia
 

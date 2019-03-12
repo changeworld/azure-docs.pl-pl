@@ -4,36 +4,36 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 5ac7982d306125804fc5b7873e537f9381f717cb
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279831"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553937"
 ---
-**Niezarządzane dyski maszyny wirtualnej w warstwie Premium: limity poszczególnych kont**
+**Dyski Premium niezarządzanej maszyny wirtualnej: Limity dla konta**
 
 | Zasób | Limit domyślny |
 | --- | --- |
 | Całkowita pojemność dysku na konto |35 TB |
 | Całkowita pojemność migawki na konto |10 TB |
-| Maksymalna przepustowość na konto (ruch przychodzący i wychodzący<sup>1</sup>) |<= 50 Gb/s |
+| Maksymalna przepustowość na konto (ruch przychodzący i wychodzący)<sup>1</sup> |<= 50 Gb/s |
 
-<sup>1</sup>*Ruch przychodzący* odnosi się do wszystkich danych (żądań) wysyłanych na konto magazynu. *Ruch wychodzący* odnosi się do wszystkich danych (żądań) wysyłanych z konta magazynu.
+<sup>1</sup>*ruch przychodzący* odnosi się do wszystkich danych z żądań, które są wysyłane do konta magazynu. *Ruch wychodzący* odnosi się do wszystkich danych z odpowiedzi, które są odbierane z konta magazynu.
 
-**Niezarządzane dyski maszyny wirtualnej w warstwie Premium: limity poszczególnych dysków**
+**Dyski Premium niezarządzanej maszyny wirtualnej: Limity dysku**
 
 | Typ dysku magazynu Premium Storage | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- |
-| Rozmiar dysku |128 GiB |512 GiB |1024 GiB (1 TB) |2048 giB (2 TB)|4095 giB (4 TB)|
-| Maksymalna liczba operacji wejścia/wyjścia na sekundę na dysk |500 |2300 |5000 |7500 |7500 |
+| Rozmiar dysku |128 GiB |512 GiB |1,024 GiB (1 TB) |2,048 GiB (2 TB)|4,095 GiB (4 TB)|
+| Maksymalna liczba IOPS na dysk |500 |2300 |5000 |7500 |7500 |
 | Maksymalna przepływność na dysk |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
 | Maksymalna liczba dysków na konto magazynu |280 |70 |35 | 17 | 8 |
 
-**Niezarządzane dyski maszyny wirtualnej w warstwie Premium: limity poszczególnych maszyn wirtualnych**
+**Dyski Premium niezarządzanej maszyny wirtualnej: Limity poszczególnych maszyn wirtualnych**
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna liczba operacji wejścia/wyjścia na sekundę na maszynę wirtualną |80 000 operacji We/Wy z maszyn wirtualnych GS5 |
-| Maksymalna przepływność na maszynę wirtualną |2000 MB/s przy użyciu maszyn wirtualnych GS5 |
+| Maksymalna liczba IOPS na maszynę Wirtualną |80 000 operacji We/Wy z maszyn wirtualnych GS5 |
+| Maksymalna przepływność na maszynę Wirtualną |2000 MB na sekundę przy użyciu maszyn wirtualnych GS5 |
 

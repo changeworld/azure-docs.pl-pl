@@ -10,26 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: fe0783891bd5f571c06551e19c154d6f22768e84
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 474ebaad60328b011e91337c46040ae37c603e21
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821545"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731059"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z SAP Business Warehouse (BW) za pośrednictwem Centrum Otwórz. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
-
-## <a name="sap-bw-open-hub-integration"></a>Integracja programu SAP BW Open Centrum 
-
-[Otwórz usługę Centrum SAP BW](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) jest wydajny sposób wyodrębniania danych z systemu SAP BW. Na poniższym diagramie przedstawiono jedną z typowych przepływów, klienci mają w ich systemie SAP, w których przepływy danych przypadków z SAP ECC -> PSA -> DSO -> modułu.
-
-SAP BW Open koncentrator docelowy (OHD) definiowania miejsca docelowego, do którego jest przekazywane danych SAP. Wszystkie obiekty obsługiwane przez proces transferu danych SAP (DTP) może służyć jako źródeł danych otwórz Centrum, na przykład DSO InfoCube, źródła danych, itp. Otwórz Centrum docelowego — w którym są przechowywane dane z przekazywaniem — może być tabel bazy danych (lokalnym lub zdalnym) i plików prostych. Ten łącznik SAP BW Open Centrum Obsługa kopiowanie danych z lokalnej tabeli OHD w BW. W przypadku, gdy używane są inne typy, możesz połączyć bezpośrednio do bazy danych lub systemu plików przy użyciu innych łączników.
-
-![Oprogramowanie SAP BW Open Centrum](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -41,6 +33,37 @@ W szczególności ten łącznik SAP Business Warehouse Otwórz Centrum obsługuj
 - Kopiowanie danych za pomocą funkcji Otwórz docelowy Centrum lokalnej tabeli, która poniżej może być DSO InfoCube, MultiProvider, źródła danych, itp.
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego.
 - Łączenie z serwerem aplikacji.
+
+## <a name="sap-bw-open-hub-integration"></a>Integracja programu SAP BW Open Centrum 
+
+[Otwórz usługę Centrum SAP BW](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) jest wydajny sposób wyodrębniania danych z systemu SAP BW. Na poniższym diagramie przedstawiono jedną z typowych przepływów, klienci mają w ich systemie SAP, w których przepływy danych przypadków z SAP ECC -> PSA -> DSO -> modułu.
+
+SAP BW Open koncentrator docelowy (OHD) definiowania miejsca docelowego, do którego jest przekazywane danych SAP. Wszystkie obiekty obsługiwane przez proces transferu danych SAP (DTP) może służyć jako źródeł danych otwórz Centrum, na przykład DSO InfoCube, źródła danych, itp. Otwórz Centrum docelowego — w którym są przechowywane dane z przekazywaniem — może być tabel bazy danych (lokalnym lub zdalnym) i plików prostych. Ten łącznik SAP BW Open Centrum Obsługa kopiowanie danych z lokalnej tabeli OHD w BW. W przypadku, gdy używane są inne typy, możesz połączyć bezpośrednio do bazy danych lub systemu plików przy użyciu innych łączników.
+
+![Oprogramowanie SAP BW Open Centrum](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+
+## <a name="delta-extraction-flow"></a>Przepływ wyodrębniania delta
+
+ADF Otwórz Centrum łącznika systemu SAP BW oferuje dwie właściwości opcjonalne: `excludeLastRequest` i `baseRequestId` który może służyć do obsługi zmian obciążenia z Centrum Otwórz. 
+
+- **excludeLastRequestId**: Określa, czy wykluczyć rekordy ostatniego żądania. Wartość domyślna to true. 
+- **baseRequestId**: Identyfikator żądania dla ładowania różnicowych. Po ustawieniu, będą pobierane tylko dane z identyfikatorem requestId jest większa niż wartość tej właściwości. 
+
+Ogólne wyodrębnianie z SAP InfoProviders do platformy Azure Data Factory (ADF) składa się z 2 kroki: 
+
+1. **Oprogramowanie SAP BW dane transferu procesu (DTP)** tego kroku kopiuje dane z SAP BW InfoProvider do tabeli programu SAP BW Open Centrum 
+
+1. **Kopiowanie danych w usłudze ADF** w tym kroku tabeli Otwórz Centrum jest odczytywany przez łącznik usługi ADF 
+
+![Przepływ wyodrębniania delta](media\connector-sap-business-warehouse-open-hub\delta-extraction-flow.png)
+
+W pierwszym kroku DTP jest wykonywany. Każdego wykonania utworzy nowy identyfikator żądania SAP. Identyfikator żądania są przechowywane w tabeli Centrum Otwórz, a następnie jest używany do identyfikowania danych różnicowych przez łącznik usługi ADF. Dwa kroki uruchamiane asynchronicznie: DTP jest wyzwalany przez oprogramowanie SAP, a kopiowanie danych usługi ADF jest wyzwalane za pomocą usługi ADF. 
+
+Domyślnie usługi ADF nie odczytuje najnowszą różnicową z tabeli Otwórz Centrum (opcja "Wyklucz ostatnie żądanie" to true). Niniejszym użytkownik udziela firmie dane w usłudze ADF nie jest 100% aktualny z danymi w tabeli Centrum Otwórz (ostatnie delta Brak). W zamian tej procedury zapewnia żadnych wierszy giną spowodowane przez asynchroniczne wyodrębniania. Działa ona poprawnie, nawet wtedy, gdy ADF odczytuje tabeli Centrum Otwórz DTP jest nadal zapisu w tej samej tabeli. 
+
+Zazwyczaj identyfikator maksymalny skopiowany żądania są przechowywane w ostatnim uruchomieniu przez usługę ADF w przejściowy magazyn danych (np. usługi Azure Blob w powyżej diagram). W związku z tym tego samego żądania nie jest odczytywany po raz drugi przez usługi ADF w kolejnych przebiegu. Ponadto należy zauważyć, że dane nie są automatycznie usuwane z tabeli Otwórz Centrum.
+
+Dla odpowiednich zmian jej obsługa jest nie może mieć identyfikatory z różnych DTPs żądania w tej samej tabeli Otwórz Centrum. W związku z tym należy nie utworzyć więcej niż jeden DTP dla każdego otwartego koncentratora docelowy (OHD). Jeśli zachodzi pełne i różnicowe wyodrębniania z tego samego InfoProvider, należy utworzyć dwa OHDs dla tego samego InfoProvider. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -60,6 +83,10 @@ Aby użyć tego łącznika SAP Business Warehouse Otwórz Centrum, należy:
 - Tworzenie typu miejsca docelowego SAP Otwórz Centrum jako **tabeli bazy danych** z zaznaczoną opcją "Techniczne klucz".  Zalecane jest również pozostawiają dane usuwania z tabeli jako niesprawdzone, ale nie jest wymagana. Wykorzystaj DTP (bezpośrednio wykonania lub integrowanie istniejących łańcuch procesów) jako proponowany danych z obiektu źródłowego (na przykład moduł), aby użytkownik wybrał Centrum Otwórz tabelę docelową.
 
 ## <a name="getting-started"></a>Wprowadzenie
+
+> [!TIP]
+>
+> Przewodnik dotyczący użycia łącznika SAP BW Open Centrum, można zobaczyć [ładowanie danych z usługi SAP Business Warehouse (BW) przy użyciu usługi Azure Data Factory](load-sap-bw-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

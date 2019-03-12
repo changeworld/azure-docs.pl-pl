@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269114"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535046"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
 Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.
@@ -157,7 +157,7 @@ Podczas analizy (krok 4) Jeśli ten atrybut jest skonfigurowany na jeden lub wi�
 
 ![Włącz ConsistencyGuid dla istniejącego wdrożenia — błąd](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- Jeśli masz pewność, że atrybut nie jest używany przez inne istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearchcontact** określony. Aby to zrobić, uruchom następujące polecenie w wierszu polecenia:
+ Jeśli masz pewność, że atrybut nie jest używany przez inne istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearch** określony przełącznik. Aby to zrobić, uruchom następujące polecenie w wierszu polecenia:
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -171,7 +171,7 @@ Jeśli zarządzasz usług AD FS poza programem Azure AD Connect lub używasz ser
 ![Konfiguracja Federacji innej firmy](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Dodawanie nowych katalogów do istniejącego wdrożenia
-Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu ms-DS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearchcontact** określony w opisany powyżej lub musisz skontaktować się z Obsługa, aby uzyskać więcej informacji.
+Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu ms-DS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearch** przełącznika określony w opisany powyżej, lub skontaktuj się z działem Obsługa, aby uzyskać więcej informacji.
 
 ![Dodawanie nowych katalogów do istniejącego wdrożenia](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 801f6dddfb3aaea850d76c80d43de93181c3d41c
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3850623f5918ea9405131edb1821b941019ac34
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913482"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532333"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database for MySQL za pomocą wiersza polecenia platformy Azure
 
@@ -94,14 +94,14 @@ Aby utworzyć serwer przy użyciu kopii zapasowej nadmiarowej geograficznie, nal
 Przywracania geograficznego serwera, w wierszu polecenia wiersza polecenia platformy Azure wprowadź następujące polecenie:
 
 ```azurecli-interactive
-az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
+az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
 ```
-To polecenie tworzy nowy serwer o nazwie *mydemoserver georestored* we wschodnim regionie USA, który będzie należał do *myresourcegroup*. Jest ogólnego przeznaczenia, serwer Gen 4 z 8 rdzeniami wirtualnymi. Serwer jest tworzony z geograficznie nadmiarowej kopii zapasowej *mydemoserver*, która jest również w grupie zasobów *myresourcegroup*
+To polecenie tworzy nowy serwer o nazwie *mydemoserver georestored* we wschodnim regionie USA, który będzie należał do *myresourcegroup*. Jest ogólnego przeznaczenia 5 ogólnego serwera z 8 rdzeniami wirtualnymi. Serwer jest tworzony z geograficznie nadmiarowej kopii zapasowej *mydemoserver*, która jest również w grupie zasobów *myresourcegroup*
 
 Jeśli chcesz utworzyć nowy serwer w innej grupie zasobów z istniejącego serwera, następnie w `--source-server` parametru zakwalifikowanie nazwę serwera, jak w poniższym przykładzie:
 
 ```azurecli-interactive
-az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen4_8
+az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
@@ -113,7 +113,7 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 |name | mydemoserver-georestored | Nazwa nowego serwera. |
 |source-server | mydemoserver | Nazwa istniejącego serwera, którego geograficznie nadmiarowy tworzenia kopii zapasowych są używane. |
 |location | eastus | Lokalizacja nowego serwera. |
-|sku-name| GP_Gen4_8 | Ten parametr ustawia cen warstwy, Generowanie obliczeń i liczba rdzeni wirtualnych nowego serwera. GP_Gen4_8 mapuje do ogólnego przeznaczenia, serwer Gen 4 z 8 rdzeniami wirtualnymi.|
+|sku-name| GP_Gen5_8 | Ten parametr ustawia cen warstwy, Generowanie obliczeń i liczba rdzeni wirtualnych nowego serwera. GP_Gen5_8 mapuje do ogólnego przeznaczenia 5 ogólnego serwera z 8 rdzeniami wirtualnymi.|
 
 
 >[!Important]

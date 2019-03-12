@@ -11,27 +11,27 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: d663a63f82878163fa2db562906edad910498be5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008762"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767265"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>Zarządzanie woluminami za pomocą usługi Azure Files NetApp
 Wolumin można zarządzać przez przeglądanie, aktualizowanie i usuwanie woluminu. 
 
 Jeśli chcesz usunąć wolumin, należy najpierw usunąć wszystkie obiekty podrzędne woluminu. 
 
-1.  Kliknij przycisk **woluminów** bloku z bloku Zarządzaj pulami pojemności. 
+1.  Kliknij blok **Woluminy** w bloku Zarządzanie pulami pojemności. 
 2.  Użyj **Przeglądaj woluminów** widokami, aktualizować lub usuwać istniejące woluminy. 
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki 
 
-* [Zainstalowanie lub odinstalowanie woluminu dla maszyn wirtualnych](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Zarządzanie migawkami](azure-netapp-files-manage-snapshots.md)

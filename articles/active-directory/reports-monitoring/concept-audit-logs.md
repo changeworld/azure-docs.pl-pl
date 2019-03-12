@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5895ad1f1452b5a0c13765821c5b623472a0bb1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 65bc0c0ee1ccc1e1f3da5e364582534dfbc0d425
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447119"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530709"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -41,7 +41,7 @@ Ten artykuł zawiera omówienie raport z audytu.
  
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 
-* Użytkownicy w **Administrator zabezpieczeń**, **Czytelnik zabezpieczeń** lub **administratora globalnego** ról
+* Użytkownicy w **polu zabezpieczeń**, **Czytelnik zabezpieczeń**, **czytelnika raportów** lub **administratora globalnego** ról
 * Ponadto wszyscy użytkownicy (inni niż administratorzy) widoczne własnych działań inspekcji
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
@@ -53,38 +53,93 @@ Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat aktywnośc
 Dziennik inspekcji zawiera domyślny widok listy, który pokazuje:
 
 - datę i godzinę wystąpienia,
-- inicjatora/aktora (*kto*) działania, 
-- działanie (*co*), 
+- Usługa, która rejestrowane wystąpienie
+- Kategoria i nazwa działania (*co*) 
+- Stan działania (powodzenie lub niepowodzenie)
 - element docelowy.
+- Inicjatora / aktora (kto) działania
 
-![Dzienniki inspekcji](./media/concept-audit-logs/18.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/listview.png "Dzienniki inspekcji")
 
 Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzędzi.
 
-![Dzienniki inspekcji](./media/concept-audit-logs/19.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/columns.png "Dzienniki inspekcji")
 
 Dzięki temu możesz wyświetlić dodatkowe pola lub usunąć pola, które są już wyświetlane.
 
-![Dzienniki inspekcji](./media/concept-audit-logs/21.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/columnselect.png "Dzienniki inspekcji")
 
 Wybierz element w widoku listy, aby uzyskać więcej szczegółowych informacji.
 
-![Dzienniki inspekcji](./media/concept-audit-logs/22.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/details.png "Dzienniki inspekcji")
 
 
 ## <a name="filtering-audit-logs"></a>Dzienniki inspekcji filtrowania
 
 Można filtrować dane inspekcji na następujące pola:
 
-- Zakres dat
-- Zainicjowane przez (aktor)
+- Usługa
 - Kategoria
-- Typ zasobu działania
 - Działanie
+- Stan
+- Środowisko docelowe
+- Zainicjowane przez (aktor)
+- Zakres dat
 
-![Dzienniki inspekcji](./media/concept-audit-logs/23.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/filter.png "Dzienniki inspekcji")
 
-Filtr **Zakres dat** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
+**Usługi** filtr zezwala na wybranie z listy rozwijanej z następujących usług:
+
+- Wszyscy
+- Przeglądy dostępu
+- Aprowizacja kont 
+- Usługa rejestracji Jednokrotnej w aplikacji
+- Metody uwierzytelniania
+- B2C
+- Dostęp warunkowy
+- Katalog podstawowy
+- Zarządzanie uprawnieniami
+- Identity Protection
+- Zaproszeni użytkownicy
+- PIM
+- Samoobsługowe zarządzanie grupami
+- Passord samoobsługowego zarządzania
+- Warunki użytkowania
+
+**Kategorii** filtr umożliwia wybranie jednej z następujących filtrów:
+
+- Wszyscy
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Autoryzacja
+- Kontakt
+- Urządzenie
+- Konfiguracja urządzenia
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Inne
+- Zasady
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+**Działania** filtru jest oparty na kategorii i działań wybór typów zasobów wprowadzeniu. Możesz wybrać konkretne działanie, które chcesz zobaczyć, lub wybrać wszystkie działania. 
+
+Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejsu API programu Graph https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, gdzie $tenantdomain to nazwa Twojej domeny. Jest ona również przedstawiona w artykule [Zdarzenia raportów inspekcji](reference-audit-activities.md).
+
+**Stan** filtr umożliwia filtrowanie na podstawie stanu operacji inspekcji. Stan może być jednym z następujących czynności:
+
+- Wszyscy
+- Powodzenie
+- Niepowodzenie
+
+**Docelowej** filtr umożliwia wyszukiwanie według nazwy lub głównej nazwy użytkownika (UPN) do określonego celu. Nazwa obiektu docelowego i nazwy UPN jest rozróżniana wielkość liter. 
+
+**Inicjowane przez** Filtr pozwala na określenie nazwy aktora lub uniwersalnych głównej nazwy (UPN). Nazwy i nazwy UPN jest rozróżniana wielkość liter.
+
+**Zakres dat** filtr umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
 Możliwe wartości:
 
 - 1 miesiąc
@@ -94,41 +149,9 @@ Możliwe wartości:
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 
-**Inicjowane przez** Filtr pozwala na określenie nazwy aktora lub uniwersalnych głównej nazwy (UPN).
+Możesz również pobrać odfiltrowane dane, maksymalnie 250 000 rekordów, wybierając **Pobierz** przycisku. Użytkownik może pobrać dzienniki w formacie CSV lub JSON. Liczba rekordów, które można pobrać jest ograniczony przez [zasady przechowywania raportów usługi Azure Active Directory](reference-reports-data-retention.md).
 
-Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
-
-- Wszyscy
-- Kategoria podstawowa
-- Katalog podstawowy
-- Samoobsługowe zarządzanie hasłami
-- Samoobsługowe zarządzanie grupami
-- Aprowizacja kont — automatyczne przerzucanie haseł
-- Zaproszeni użytkownicy
-- Usługa MIM
-- Identity Protection
-- B2C
-
-Filtr **Typ zasobu działania** umożliwia wybranie jednego z następujących filtrów:
-
-- Wszyscy 
-- Grupa
-- Katalog
-- Użytkownik
-- Aplikacja
-- Zasady
-- Urządzenie
-- Inne
-
-Jeśli wybierzesz opcję **Grupa** w pozycji **Typ zasobu działania**, uzyskasz dostęp do dodatkowej kategorii filtru umożliwiającej podanie wartości **Źródło**:
-
-- Azure AD
-- O365
-
-
-**Działania** filtru jest oparty na kategorii i działań wybór typów zasobów wprowadzeniu. Możesz wybrać konkretne działanie, które chcesz zobaczyć, lub wybrać wszystkie działania. 
-
-Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejsu API programu Graph https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, gdzie $tenantdomain to nazwa Twojej domeny. Jest ona również przedstawiona w artykule [Zdarzenia raportów inspekcji](reference-audit-activities.md).
+![Dzienniki inspekcji](./media/concept-audit-logs/download.png "Dzienniki inspekcji")
 
 ## <a name="audit-logs-shortcuts"></a>Skróty dzienników inspekcji
 
@@ -157,9 +180,13 @@ Za pomocą raportów inspekcji opartych na użytkownikach i grupach można uzysk
 
 - Jakie licencje zostały przypisane do grupy lub użytkownika?
 
-Jeśli chcesz przeglądać dane inspekcji dotyczące użytkowników i grup, możesz skorzystać z widoku filtrowanego znajdującego się w obszarze **Dzienniki inspekcji** w sekcji **Aktywność** na stronie **Użytkownicy i grupy**. Ten punkt wejścia ma wartość **Użytkownicy i grupy** wstępnie wybraną dla opcji **Typ zasobu działania**.
+Jeśli chcesz przeglądać dane inspekcji dotyczące użytkowników, możesz znaleźć widoku filtrowanego znajdującego się w obszarze **dzienniki inspekcji** w **działania** części **użytkowników** kartę. Ten punkt wejścia ma **UserManagement** jako kategoria instalowane.
 
-![Dzienniki inspekcji](./media/concept-audit-logs/93.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/users.png "Dzienniki inspekcji")
+
+Jeśli chcesz przeglądać dane inspekcji, który jest powiązany z grup, możesz znaleźć widoku filtrowanego znajdującego się w obszarze **dzienniki inspekcji** w **działania** części **grup** kartę. Ten punkt wejścia ma **GroupManagement** jako kategoria instalowane.
+
+![Dzienniki inspekcji](./media/concept-audit-logs/groups.png "Dzienniki inspekcji")
 
 ### <a name="enterprise-applications-audit-logs"></a>Dzienniki inspekcji aplikacji dla przedsiębiorstw
 
@@ -171,13 +198,9 @@ Za pomocą raportów inspekcji opartych na aplikacjach można uzyskać odpowiedz
 * Czy nazwy aplikacji zostały zmienione?
 * Kto udzielił zezwolenia dla aplikacji?
 
-Jeśli chcesz przeglądać dane inspekcji dotyczące aplikacji, możesz znaleźć widoku filtrowanego znajdującego się w obszarze **dzienniki inspekcji** w **działania** części **aplikacje dla przedsiębiorstw** blok. Ten punkt wejścia ma **aplikacje dla przedsiębiorstw** instalowane jako **typ zasobu działania**.
+Jeśli chcesz przeglądać dane inspekcji dotyczące aplikacji, możesz znaleźć widoku filtrowanego znajdującego się w obszarze **dzienniki inspekcji** w **działania** części **aplikacje dla przedsiębiorstw** blok. Ten punkt wejścia ma **aplikacje dla przedsiębiorstw** instalowane jako **typ aplikacji**.
 
-![Dzienniki inspekcji](./media/concept-audit-logs/134.png "Dzienniki inspekcji")
-
-Możesz filtrować ten widok w dół do **grup** lub **użytkowników**.
-
-![Dzienniki inspekcji](./media/concept-audit-logs/25.png "Dzienniki inspekcji")
+![Dzienniki inspekcji](./media/concept-audit-logs/enterpriseapplications.png "Dzienniki inspekcji")
 
 ## <a name="office-365-activity-logs"></a>Dzienniki aktywności usługi Office 365
 

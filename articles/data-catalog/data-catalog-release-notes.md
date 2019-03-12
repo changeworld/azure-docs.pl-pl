@@ -8,12 +8,12 @@ ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 12b8161cc5845bca749c34188835cef1d92b299a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 60c5b7b55e417a5703010ea34cf75dcb20146c37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404555"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531683"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Usługa Azure Data Catalog — informacje o wersji
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>20 listopada 2015 r. informacje o wersji usługi Azure Data Catalog
@@ -29,7 +29,7 @@ W każdej sytuacji, ten problem można rozwiązać przez pobranie i zainstalowan
 ### <a name="registering-and-connecting-to-teradata"></a>Rejestrowanie i łączenie się programu Teradata
 Podczas łączenia się z użytkownikami źródeł danych Teradata musi być zainstalowany sterownik Teradata ODBC, który odpowiada liczbie bitów (32-bitowy lub 64-bitowy) oprogramowanie wykorzystywane w.
 
-Tej daty ADC wydania, najbardziej aktualną [Teradata sterownik dla systemu windows (wersja 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) jest zgodny z pakietem Office 2013, ale nie w pakiecie Office 2016.
+Tej daty ADC wydania, najbardziej aktualną [Teradata sterownik dla systemu windows (wersja 15.10)](https://downloads.teradata.com/download/connectivity/odbc-driver/windows) jest zgodny z pakietem Office 2013, ale nie w pakiecie Office 2016.
 
 ## <a name="notes-for-the-july-13-2015-release-of-azure-data-catalog"></a>Informacje o 13 lipca 2015 wersji usługi Azure Data Catalog
 ### <a name="registering-and-connecting-to-oracle-database"></a>Rejestrowanie i nawiązywania połączenia z bazą danych Oracle
@@ -53,7 +53,7 @@ Użytkownicy mogą napotkać sytuację, w których mogą oni się zalogować do 
 
 Istnieją dwa możliwych przyczyn tego problemu zachowania:
 
-**Przyczyny 1: Konfiguracja Active Directory Federation Services** narzędzia rejestracji źródła danych korzysta z uwierzytelniania formularzy do weryfikowania logowania użytkowników w usłudze Active Directory. Do pomyślnego logowania należy włączyć uwierzytelnianie formularzy w ramach globalnych zasad uwierzytelniania przez administratora usługi Active Directory.
+**Przyczyny 1: Konfiguracja usługi Active Directory Federation Services** narzędzia rejestracji źródła danych korzysta z uwierzytelniania formularzy do weryfikowania logowania użytkowników w usłudze Active Directory. Do pomyślnego logowania należy włączyć uwierzytelnianie formularzy w ramach globalnych zasad uwierzytelniania przez administratora usługi Active Directory.
 
 W niektórych sytuacjach zachowanie ten błąd może wystąpić tylko wtedy, gdy użytkownik jest w sieci firmowej lub tylko wtedy, gdy użytkownik nawiązuje połączenie z spoza sieci firmowej. Globalne zasady uwierzytelniania umożliwia metod uwierzytelniania, należy włączyć osobno dla połączeń intranetowych i ekstranetowych. Błędy logowania mogą wystąpić, jeśli nie włączono uwierzytelniania formularzy dla sieci, z którego użytkownik nawiązuje połączenie.
 

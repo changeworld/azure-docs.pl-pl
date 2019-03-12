@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cd2eb3ba1d3207f4f210aa259e938bb42b44d37a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002074"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535454"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(PRZESTARZAŁE) Mikrousługi wydania canary za pomocą systemu Vamp w klastrze usługi Azure Container Service DC/OS
 
@@ -31,7 +31,7 @@ W tym przewodniku skonfigurujemy pomocą systemu Vamp w usłudze Azure Container
 
 [Zwalnianie canary](https://martinfowler.com/bliki/CanaryRelease.html) jest przyjęte przez organizacje innowacyjne, takich jak Netflix, Facebook i Spotify strategią smart wdrożenia. To podejście, które ma sens, ponieważ zmniejsza problemy, wprowadza bezpieczeństwa sieci i zwiększa innowacji. Więc Dlaczego nie wszyscy producenci używana? Rozszerzanie potoku CI/CD, aby uwzględnić canary strategie zwiększa złożoność i wymaga rozbudowane devops wiedzy i doświadczenia. Jest wystarczająco dużo, aby zablokować mniejszych firmami i przedsiębiorstwami podobne przed ich nawet uruchomieniu. 
 
-[Vamp](http://vamp.io/) systemem typu open-source przeznaczony do jej obsługi ułatwiają realizację tego przejścia i przełączyć canary udostępnia funkcje do harmonogramu preferowanych kontenera. Funkcje canary pomocą systemu vamp firmy wykracza poza wdrożeniach opartych na procentach. Ruch można filtrować i podzielony na szereg warunków, na przykład do określonych użytkowników docelowych, zakresy adresów IP lub urządzeń. Pomocą systemu vamp śledzi i analizuje metryki wydajności, dzięki czemu w przypadku usługi automation, na podstawie rzeczywistych danych. Konfigurowanie automatycznego wycofania w razie wystąpienia błędów lub skalować wariantów poszczególnych usług, w zależności od obciążenia lub opóźnienia.
+[Vamp](https://vamp.io/) systemem typu open-source przeznaczony do jej obsługi ułatwiają realizację tego przejścia i przełączyć canary udostępnia funkcje do harmonogramu preferowanych kontenera. Funkcje canary pomocą systemu vamp firmy wykracza poza wdrożeniach opartych na procentach. Ruch można filtrować i podzielony na szereg warunków, na przykład do określonych użytkowników docelowych, zakresy adresów IP lub urządzeń. Pomocą systemu vamp śledzi i analizuje metryki wydajności, dzięki czemu w przypadku usługi automation, na podstawie rzeczywistych danych. Konfigurowanie automatycznego wycofania w razie wystąpienia błędów lub skalować wariantów poszczególnych usług, w zależności od obciążenia lub opóźnienia.
 
 ## <a name="set-up-azure-container-service-with-dcos"></a>Konfigurowanie usługi Azure Container Service za pomocą platformy DC/OS
 
@@ -93,7 +93,7 @@ Pomocą systemu vamp wymaga Elasticsearch zbieranie metryk i agregacji. Możesz 
   ```
   
 
-3. Kliknij przycisk **wdrażanie**.
+3. Kliknij przycisk **Deploy (Wdróż)**.
 
   DC/OS służy do wdrażania kontenerów programu Elasticsearch. Postęp można śledzić na **usług** strony.  
 
@@ -129,7 +129,7 @@ Po Elasticsearch zgłasza jako **systemem**, można dodać pakiet Vamp Uniwersum
 
 Po tym pomocą systemu Vamp jest uruchomiona, należy wdrożyć usługę z planu. 
 
-W najprostszej postaci [planu pomocą systemu Vamp](http://vamp.io/documentation/using-vamp/blueprints/) opisuje punktów końcowych (bramy), klastrów i usług do wdrożenia. Pomocą systemu vamp używa klastrów do grupowania różne odmiany tej samej usługi w logiczne grupy canary przy zwalnianiu lub A / B, testowanie.  
+W najprostszej postaci [planu pomocą systemu Vamp](https://vamp.io/documentation/using-vamp/blueprints/) opisuje punktów końcowych (bramy), klastrów i usług do wdrożenia. Pomocą systemu vamp używa klastrów do grupowania różne odmiany tej samej usługi w logiczne grupy canary przy zwalnianiu lub A / B, testowanie.  
 
 W tym scenariuszu przykładowej aplikacji monolitycznej, o nazwie [ **sava**](https://github.com/magneticio/sava), który jest w wersji 1.0. Monolityczna jest spakowane w kontenerze platformy Docker, który znajduje się w usłudze Docker Hub w ramach magneticio/sava:1.0.0. Aplikacja jest uruchamiana normalnie na porcie 8080, ale chcesz udostępnić ją w obszarze port 9050 w tym przypadku. Wdrażanie aplikacji za pośrednictwem pomocą systemu Vamp przy użyciu prostego planu.
 
@@ -200,7 +200,7 @@ Aby scalić Nowa usługa sava 1.1 z bieżącym wdrożeniu:
 
 1. W Interfejsie Vamp kliknij **plany**.
 
-2. Kliknij przycisk **Dodaj** i wklej następujący plan YAML: ten plan w tym artykule opisano nowy wariant usługi (sava: 1.1.0) do wdrożenia w istniejącym klastrze (sava_cluster).
+2. Kliknij przycisk **Dodaj** i wklej następujący plan YAML: Ten plan w tym artykule opisano nowy wariant usługi (sava: 1.1.0) do wdrożenia w istniejącym klastrze (sava_cluster).
 
   ```YAML
   name: sava:1.1.0      # blueprint name
@@ -291,9 +291,9 @@ Możemy również wspomnieliśmy niektóre zaawansowane funkcje pomocą systemu 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o zarządzaniu pomocą systemu Vamp akcji za pomocą [Vamp interfejsu API REST](http://vamp.io/documentation/api/api-reference/).
+* Dowiedz się więcej o zarządzaniu pomocą systemu Vamp akcji za pomocą [Vamp interfejsu API REST](https://vamp.io/documentation/api/api-reference/).
 
 * Tworzenie skryptów automatyzacji pomocą systemu Vamp w środowisku Node.js i uruchamiaj je jako [Vamp przepływy pracy](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
 
-* Zobacz dodatkowe [samouczki pomocą systemu VAMP](http://vamp.io/documentation/tutorials/).
+* Zobacz dodatkowe [samouczki pomocą systemu VAMP](https://vamp.io/documentation/tutorials/).
 

@@ -15,12 +15,12 @@ ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 0261dff10e553ecbd39d394eb19e7ad3dd76f0a2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1115e11d6bf830afad3746eb41d6368cb89bdbf3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340970"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534382"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
@@ -54,7 +54,7 @@ Pewne przygotowania jest wymagane do skompilowania tego rozwiązania:
 
 -   Subskrypcja platformy Azure. (Tworzenie [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 
--   Pobrać i zainstalować program [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+-   Pobrać i zainstalować program [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 -   Należy podać dane do przetworzenia przez funkcje. Dane muszą być generowane i dostępne do przekazania do kontenera obiektów blob magazynu Azure Stack.
 

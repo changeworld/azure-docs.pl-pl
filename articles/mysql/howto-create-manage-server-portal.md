@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537328"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528682"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla serwera MySQL przy użyciu witryny Azure portal
 W tym temacie opisano, jak szybko utworzyć nowego serwera Azure Database for MySQL. Zawiera także informacje o sposobie zarządzania serwerem za pomocą witryny Azure portal. Zarządzanie serwerem obejmuje wyświetlanie szczegółów dotyczących serwera i bazy danych, zresetowanie hasła, skalowanie zasobów i usunięcie serwera.
@@ -44,9 +44,9 @@ Wykonaj następujące kroki, aby utworzyć serwer Azure Database for MySQL o naz
     | *Lokalizacja* | Azja południowo-wschodnia (wybór między Europa Północna i zachodnie stany USA) |
     | *Wersja* | (Wybierz — Azure Database dla MySQL server w wersji) w wersji 5.7 |
 
-4. Kliknij przycisk **warstwa cenowa** do określenia usługi warstwy i poziomu wydajności dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
+4. Kliknij przycisk **warstwa cenowa** do określenia usługi warstwy i poziomu wydajności dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Generacja 5*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generacja obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
 
-   ![Tworzenie — serwer warstwy cenowej](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+   ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
 5. Kliknij przycisk **Utwórz**, aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
 
@@ -62,7 +62,7 @@ Po zainicjowaniu obsługi nowego serwera użytkownik ma kilka opcji dotyczących
 
 2. Wprowadź nowe hasło i Potwierdź hasło w oknie, jak pokazano:
 
-   ![Resetowanie hasła](./media/howto-create-manage-server-portal/reset-password.png)
+   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kliknij przycisk **OK** można zapisać nowego hasła.
 
@@ -82,7 +82,7 @@ Po zainicjowaniu obsługi nowego serwera użytkownik ma kilka opcji dotyczących
 
 2. Zmiana **magazynu** ustawienie przesuwając suwak na żądaną wartość.
 
-    ![Skalowanie magazynu](./media/howto-create-manage-server-portal/scale-storage.png)
+    ![scale-storage](./media/howto-create-manage-server-portal/scale-storage.png)
 
 3. Kliknij przycisk **OK**, aby zapisać zmiany.
 

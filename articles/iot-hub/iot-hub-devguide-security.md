@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 5d360e0959a61cde763f5aafe62de38f6c03e806
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011181"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534371"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -74,7 +74,7 @@ Każdego obsługiwanego protokołu MQTT, AMQP i protokołu HTTPS, służy do tra
 
 Korzystając z protokołu MQTT, pakiet CONNECT nie ma deviceId jako ClientId, `{iothubhostname}/{deviceId}` w pole nazwy użytkownika i token sygnatury dostępu Współdzielonego, w polu hasła. `{iothubhostname}` powinna być pełną CName usługi IoT hub (na przykład contoso.azure-devices.net).
 
-Korzystając z [AMQP](https://www.amqp.org/), Centrum IoT Hub obsługuje [zwykły SASL](http://tools.ietf.org/html/rfc4616) i [AMQP oświadczeń — zabezpieczenia na poziomie](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
+Korzystając z [AMQP](https://www.amqp.org/), Centrum IoT Hub obsługuje [zwykły SASL](https://tools.ietf.org/html/rfc4616) i [AMQP oświadczeń — zabezpieczenia na poziomie](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
 Użycie połączeń AMQP oświadczeń — zabezpieczenia na poziomie standardowa Określa, jak przesyłać tych tokenów.
 

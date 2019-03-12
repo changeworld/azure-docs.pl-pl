@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 3cd1bbf1852c440172913467c5c8523c520cac2f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 389a8ac729cf5f4f95aa37654434245d08ecc87e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337519"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533633"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Ustawianie konta rozliczeniowego dla umowy klienta firmy Microsoft
 
@@ -136,7 +136,7 @@ Poniższe sekcje zawierają dodatkowe informacje na temat konfigurowania konta r
 
 ### <a name="no-service-downtime"></a>Nie przestojów
 
-Usługi platformy Azure w ramach subskrypcji pozostanie uruchomione bez jakiejkolwiek przerwy. Możemy przejść relację rozliczeń dla subskrypcji platformy Azure. Nie wpłynie na istniejące zasoby, grupy zasobów lub grupach zarządzania.
+Usługi platformy Azure w ramach Twojej subskrypcji będą działały bez jakiejkolwiek przerwy. Przenosimy jedynie relacje rozliczeniowe dotyczące Twoich subskrypcji platformy Azure. Nie będzie to miało wpływu na istniejące zasoby, grupy zasobów czy grupy zarządzania.
 
 ### <a name="user-access-to-azure-resources"></a>Dostęp użytkowników do zasobów platformy Azure
 
@@ -144,7 +144,7 @@ Dostęp do zasobów platformy Azure, która została ustawiona przy użyciu funk
 
 ### <a name="azure-reservations"></a>Rezerwacje platformy Azure
 
-Wszystkie rezerwacje platformy Azure w Twojej rejestracji Enterprise Agreement jest przenoszona do nowego konta rozliczeniowego. Podczas przejścia nie będzie wszelkie zmiany rabaty w ramach rezerwacji, które są stosowane do Twojej subskrypcji.
+Wszystkie rezerwacje platformy Azure w Twojej rejestracji Enterprise Agreement jest przenoszona do nowego konta rozliczeniowego. Podczas przenoszenia nie nastąpią żadne zmiany rabatów dotyczących rezerwacji, które obowiązują dla Twoich subskrypcji.
 
 ### <a name="azure-marketplace-products"></a>Produkty platformy Azure Marketplace
 
@@ -203,7 +203,7 @@ Aby ukończyć instalację, należy dostęp do nowego konta rozliczeniowego oraz
 
 ### <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukiwanie **Cost Management + rozliczenia**.
 
@@ -219,7 +219,7 @@ Subskrypcje platformy Azure, które są przenoszone z rejestrację umowy Enterpr
 
 ### <a name="azure-reservations"></a>Rezerwacje platformy Azure
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukiwanie **Cost Management + rozliczenia**.
 
@@ -239,7 +239,7 @@ Rezerwacje platformy Azure, które są przenoszone z rejestrację umowy Enterpri
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Dostęp Administratorzy przedsiębiorstwa na profil rozliczeniowy
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukiwanie **Cost Management + rozliczenia**.
 
@@ -255,7 +255,7 @@ Administratorzy przedsiębiorstwa są wyświetlane jako rozliczeń właścicieli
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Dostęp Administratorzy przedsiębiorstwa, Administratorzy działów i właścicieli kont z odpowiednimi w sekcjach faktury
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukiwanie **Cost Management + rozliczenia**.
 

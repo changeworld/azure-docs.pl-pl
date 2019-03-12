@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d09abfbec7ace3112de35869ccc95c56e113e6fe
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: f9dec5b3aeb951316985c965de70a372f55b8225
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991839"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549191"
 ---
 # <a name="time-to-live-in-azure-cosmos-db"></a>Czas wygaśnięcia w usłudze Azure Cosmos DB 
 
@@ -48,6 +48,6 @@ Usuwanie elementów, w oparciu o czas wygaśnięcia jest bezpłatne. Nie ma żad
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak skonfigurować Kafelek, aby na żywo w następujących artykułach:
+Dowiedz się, jak skonfigurować czas wygaśnięcia w następujących artykułach:
 
 * [Jak skonfigurować czas wygaśnięcia](how-to-time-to-live.md)

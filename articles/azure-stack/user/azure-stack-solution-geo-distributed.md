@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 299ea79a7a344a57bf302aae049ba87234427343
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442787"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536950"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
 
@@ -507,9 +507,9 @@ Po zakończeniu przekazywania certyfikatu usługi App Service pojawia się w **u
 
 1.  W **Dodawanie powiązania SSL** strony, należy użyć listy rozwijane, aby wybrać nazwę domeny do zabezpieczenia i certyfikat do użycia.
 
-2.  W **typ SSL**, wybierz, czy chcesz użyć [ **oznaczaniem nazwy serwera (SNI)**](http://en.wikipedia.org/wiki/Server_Name_Indication)lub SSL opartego na protokole IP.
+2.  W **typ SSL**, wybierz, czy chcesz użyć [ **oznaczaniem nazwy serwera (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication)lub SSL opartego na protokole IP.
 
--   **Oparte na SNI SSL**-powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](http://wikipedia.org/wiki/Server_Name_Indication).
+-   **Oparte na SNI SSL**-powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).
 
 -   **Połączenie IP SSL**— mogą być dodawane tylko jednego powiązanie SSL oparte na adresie IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Aby zabezpieczyć wiele domen, je zabezpieczyć za pomocą tego samego certyfikatu SSL. Jest to tradycyjna opcja dla powiązania protokołu SSL.
 

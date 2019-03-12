@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806d060cd58322d745ea6ebdaa59eb85c6a35cbd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867154"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532783"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrowanie z Federacji na synchronizację skrótów haseł usługi Azure Active Directory
 
@@ -78,7 +78,7 @@ Aby sprawdzić bieżące logowania ustawień użytkownika:
 
 #### <a name="verify-the-azure-ad-connect-configuration"></a>Zweryfikuj konfigurację usługi Azure AD Connect
 
-1. Na serwerze usługi Azure AD Connect Otwórz program Azure AD Connect. Wybierz **skonfigurować**.
+1. Na serwerze usługi Azure AD Connect Otwórz program Azure AD Connect. Wybierz pozycję **Konfiguruj**.
 2. Na **dodatkowe zadania** wybierz opcję **wyświetlanie bieżącej konfiguracji**, a następnie wybierz pozycję **dalej**.<br />
 
    ![Zrzut ekranu przedstawiający widok bieżącego opcji konfiguracji wybranego na stronie dodatkowe zadania](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image2.png)<br />
@@ -139,9 +139,9 @@ Przed dokonaniem konwersji z tożsamości federacyjnej do tożsamości zarządza
 |-|-|
 | Zamierzasz nadal korzystać z usług AD FS z innymi aplikacjami (innych niż Usługa Azure AD i Office 365). | Po przekonwertowaniu domen, użyjesz usługi Azure AD i usług AD FS. Należy wziąć pod uwagę doświadczenia użytkownika. W niektórych przypadkach użytkownikom może wymagać dwukrotnego uwierzytelnienia: raz do usługi Azure AD (w którym użytkownik otrzyma rejestracji Jednokrotnej dostęp do innych aplikacji, takich jak Office 365) oraz ponownie wszystkie aplikacje, które są nadal powiązane z usług AD FS jako zaufanie jednostki uzależnionej. |
 | Wystąpienia usług AD FS jest w dużym stopniu dostosowany i zależy od ustawienia dostosowania określone w pliku onload.js (na przykład, jeśli zmienisz środowisko logowania, aby użytkownicy używana będzie tylko **SamAccountName** format swoją nazwę użytkownika zamiast użytkownika głównej nazwy (UPN) lub Twoja organizacja ma intensywnie marki środowisko logowania). Nie można zduplikować pliku onload.js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD można spełniają wymagań dostosowania użytkownika bieżącego. Aby uzyskać więcej informacji i wskazówki zobacz sekcje na marki usług AD FS i dostosowania usług AD FS.|
-| Aby zablokować wcześniejszych wersjach klientów uwierzytelniania jest używanie usług AD FS.| Rozważ zastąpienie kontrolek usług AD FS, które blokują wcześniejszych wersjach klientów uwierzytelniania przy użyciu kombinacji [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta Exchange Online](http://aka.ms/EXOCAR). |
+| Aby zablokować wcześniejszych wersjach klientów uwierzytelniania jest używanie usług AD FS.| Rozważ zastąpienie kontrolek usług AD FS, które blokują wcześniejszych wersjach klientów uwierzytelniania przy użyciu kombinacji [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta Exchange Online](https://aka.ms/EXOCAR). |
 | Możesz wymagać od użytkowników wykonywać uwierzytelnianie wieloskładnikowe, względem rozwiązania z serwerem usługi Multi-Factor authentication w środowisku lokalnym, gdy użytkownicy są uwierzytelniani do usług AD FS.| W domenie zarządzanej tożsamości nie można wstrzyknąć uwierzytelnienia Multi-Factor Authentication za pośrednictwem lokalnego rozwiązania usługi Multi-Factor authentication do przepływu uwierzytelniania. Jednak można użyć usługi Azure Multi-Factor Authentication do uwierzytelniania wieloskładnikowego, po przekonwertowaniu domeny.<br /><br /> Jeśli użytkownicy obecnie nie używasz usługi Azure Multi-Factor Authentication, etapu rejestracji jednorazowej użytkownika jest wymagana. Należy przygotować się do i komunikacji planowane rejestracji dla użytkowników. |
-| Obecnie używają zasad kontroli dostępu (reguł autoryzacji) w usługach AD FS do kontrolowania dostępu do usługi Office 365.| Należy wziąć pod uwagę, zastępując zasady równoważne usługi Azure AD [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) i [reguł dostępu klienta Exchange Online](http://aka.ms/EXOCAR).|
+| Obecnie używają zasad kontroli dostępu (reguł autoryzacji) w usługach AD FS do kontrolowania dostępu do usługi Office 365.| Należy wziąć pod uwagę, zastępując zasady równoważne usługi Azure AD [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) i [reguł dostępu klienta Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Typowe dostosowania usług AD FS
 
@@ -400,7 +400,7 @@ W przypadku dzierżawy tożsamości federacyjnych użytkowników zostały przeki
 Aby przetestować synchronizacji skrótów haseł:
 
 1. Otwórz program Internet Explorer w trybie InPrivate, umożliwiając bezproblemowe logowanie Jednokrotne nie automatyczne logowanie.
-2. Przejdź do strony logowania usługi Office 365 ([http://portal.office.com](http://portal.office.com/)).
+2. Przejdź do strony logowania usługi Office 365 ([https://portal.office.com](https://portal.office.com/)).
 3. Wprowadź nazwę UPN użytkownika, a następnie wybierz pozycję **dalej**. Upewnij się, że wprowadzasz nazwę UPN użytkownika hybrydowego, który zostało zsynchronizowane z wystąpienia usługi Active Directory w środowisku lokalnym, a, którzy wcześniej korzystali uwierzytelniania federacyjnego. Zostanie wyświetlona strona, na którym możesz wprowadzić nazwę użytkownika i hasło:
 
    ![Zrzut ekranu przedstawiający stronę logowania, w którym należy wprowadzić nazwę użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)

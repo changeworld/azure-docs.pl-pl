@@ -1,6 +1,6 @@
 ---
 title: Informacje na temat funkcji w wersjach usługi BizTalk Services | Microsoft Docs
-description: 'Porównanie funkcji wersji usługi BizTalk Services: bezpłatnej, dla deweloperów, podstawowej, standardowej i Premium. MABS, WABS.'
+description: 'Porównanie funkcji w różnych wersjach usługi BizTalk Services: Bezpłatne, Deweloper, podstawowa, standardowa i Premium MABS, WABS.'
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -11,17 +11,17 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d16bf73c1d9871e4de8940e4ab9bbd7ed0f39384
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240515"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765632"
 ---
-# <a name="biztalk-services-editions-chart"></a>Usługa BizTalk Services: wykres wersji
+# <a name="biztalk-services-editions-chart"></a>BizTalk Services: Wykres przedstawiający wersje
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -34,7 +34,7 @@ Można tworzyć połączenia hybrydowe i nimi zarządzać. Połączenie hybrydow
 
 **Developer**
 
-Obejmuje przetwarzanie komunikatów połączeń hybrydowych, EAI i EDI za pomocą prostego w obsłudze portalu zarządzania dla partnerów handlowych oraz obsługę typowych schematów EDI i dynamicznego przetwarzania EDI zgodnie z normami X12 i AS2. Umożliwia tworzenie typowych scenariuszy EAI, w ramach których odbywa się łączenie usług w chmurze za pośrednictwem protokołów HTTP/S, REST, FTP, WCF i SFTP w celu odczytywania i zapisywania komunikatów.  Nawiązuj łączność z lokalnymi systemami LOB, korzystając z gotowych do użycia adapterów SAP, Oracle eBusiness, Oracle DB, Siebel oraz serwera SQL Server. Użyj środowiska zorientowanego na dewelopera oraz narzędzi programu Visual Studio w celu łatwego programowania i wdrażania. Usługa ograniczona do celów programowania i testowania, bez umowy dotyczącej poziomu usług (SLA).
+Obejmuje przetwarzanie komunikatów połączeń hybrydowych, EAI i EDI za pomocą prostego w obsłudze portalu zarządzania dla partnerów handlowych oraz obsługę typowych schematów EDI i dynamicznego przetwarzania EDI zgodnie z normami X12 i AS2. Umożliwia tworzenie typowych scenariuszy EAI, w ramach których odbywa się łączenie usług w chmurze za pośrednictwem protokołów HTTP/S, REST, FTP, WCF i SFTP w celu odczytywania i zapisywania komunikatów.  Nawiązuj łączność z lokalnymi systemami LOB, korzystając z gotowych do użycia adapterów SAP, Oracle eBusiness, Oracle DB, Siebel oraz serwera SQL Server. Za pomocą środowiska skoncentrowany na deweloperach narzędzi programu Visual Studio umożliwiające łatwe projektowanie i wdrażanie. Usługa ograniczona do celów programowania i testowania, bez umowy dotyczącej poziomu usług (SLA).
 
 **Podstawowa**
 
@@ -239,20 +239,20 @@ Nie możesz wówczas wdrożyć żadnych nowych mostków ani utworzyć żadnych n
 #### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another"></a>Jak migrować z jednej warstwy usługi BizTalk Services do innej?
 Bezpłatnej wersji nie można migrować ani „skalować w górę” do innej warstwy i nie można utworzyć jej kopii zapasowej ani przywrócić do innej warstwy. Jeśli potrzebujesz innej warstwy, utwórz nową usługę BizTalk przy użyciu nowej warstwy. Wszelkie artefakty utworzone przy użyciu wersji bezpłatnej, w tym połączenia hybrydowe, należy odtworzyć w nowej usłudze BizTalk. 
 
-W przypadku pozostałych wersji użyj funkcji kopii zapasowej i przywracania do migracji artefaktów z jednej warstwy do innej. Na przykład utwórz kopię zapasową artefaktów w warstwie wersji standardowej, a następnie przywróć je do warstwy wersji Premium. W artykule [BizTalk Services: Backup and Restore](biztalk-backup-restore.md) (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie) opisano obsługiwane ścieżki migracji i podano artefakty, których kopia zapasowa jest tworzona. Pamiętaj, że nie tworzy się kopii zapasowej połączeń hybrydowych. Po utworzeniu kopii zapasowej i przywróceniu do nowej warstwy należy ponownie utworzyć połączenia hybrydowe.  
+W przypadku pozostałych wersji użyj funkcji kopii zapasowej i przywracania do migracji artefaktów z jednej warstwy do innej. Na przykład utwórz kopię zapasową artefaktów w warstwie wersji standardowej, a następnie przywróć je do warstwy wersji Premium. [BizTalk Services: Kopia zapasowa i przywracanie](biztalk-backup-restore.md) opisano obsługiwane ścieżki migracji i wyświetla, jakie artefakty kopie zapasowe są tworzone. Pamiętaj, że nie tworzy się kopii zapasowej połączeń hybrydowych. Po utworzeniu kopii zapasowej i przywróceniu do nowej warstwy należy ponownie utworzyć połączenia hybrydowe.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Czy usługa adaptera BizTalk jest dołączona do usługi? Jak otrzymać oprogramowanie?
 Tak, usługa adaptera BizTalk razem z usługą BizTalk Adapter Pack są dołączone do plików [do pobrania](https://www.microsoft.com/download/details.aspx?id=39087) zestawu SDK usługi Azure BizTalk Services.
 
-## <a name="next-steps"></a>Następne kroki
-Aby utworzyć usługę Azure BizTalk Services w portalu Azure, przejdź do artykułu [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (Usługa BizTalk Services: inicjowanie obsługi przy użyciu portalu Azure). Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
+## <a name="next-steps"></a>Kolejne kroki
+Aby utworzyć usługi Azure BizTalk Services w witrynie Azure portal, przejdź do [usługi BizTalk Services: Inicjowanie obsługi administracyjnej za pomocą witryny Azure portal](biztalk-provision-services.md). Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [BizTalk Services: Provisioning using the Azure portal (Usługa BizTalk Services: aprowizowanie przy użyciu witryny Azure Portal)](biztalk-provision-services.md)<br/>
-* [BizTalk Services: Provisioning Status Chart (Usługa BizTalk Services: aprowizowanie wykresu stanu)](biztalk-service-state-chart.md)<br/>
-* [BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](biztalk-dashboard-monitor-scale-tabs.md)<br/>
-* [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)](biztalk-issuer-name-issuer-key.md)<br/>
+* [BizTalk Services: Inicjowanie obsługi administracyjnej za pomocą witryny Azure portal](biztalk-provision-services.md)<br/>
+* [BizTalk Services: Wykres stanu aprowizacji](biztalk-service-state-chart.md)<br/>
+* [BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+* [BizTalk Services: Kopia zapasowa i przywracanie](biztalk-backup-restore.md)<br/>
+* [BizTalk Services: Ograniczanie przepustowości](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk Services: Nazwa wystawcy i klucz wydawcy](biztalk-issuer-name-issuer-key.md)<br/>
 * [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

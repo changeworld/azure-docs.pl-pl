@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9f818715895c2ff2c5d0e1758aaf17a2393287d2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050649"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534944"
 ---
 # <a name="traffic-manager-traffic-view"></a>Widok ruchu usługi Traffic Manager
 
@@ -35,6 +35,8 @@ Na przykład można użyć widok ruchu, aby zrozumieć, które regiony z dużą 
 
 Widok ruchu działa przez usługi Traffic Manager, spójrz na przychodzące zapytania odebrane w ciągu ostatnich siedmiu dni względem profilu, który ma włączenia tej funkcji. Z przychodzącego informacji zapytań widok ruchu wyodrębnia źródłowy adres IP programu rozpoznawania nazw DNS, używanego jako reprezentacja lokalizację użytkowników. Te są następnie grupowane na do rozpoznawania nazw poziomu szczegółowości DNS utworzyć podstawowy regionów użytkownika przy użyciu informacji geograficznych adresów IP, przechowywane przez usługę Traffic Manager. Usługa Traffic Manager sprawdza następnie regiony platformy Azure, do których zapytania został rozesłany i tworzy mapę przepływu ruchu sieciowego dla użytkowników z tych regionów.  
 W następnym kroku usługi Traffic Manager koreluje region podstawowy użytkownika do mapowania region platformy Azure z tabelami opóźnienia sieci analizy, które utrzymuje dla różnych użytkowników końcowych sieci w celu zrozumienia średnie opóźnienie napotykanych przez użytkowników z tych regionów po Łączenie z regionów platformy Azure. Te obliczenia są następnie łączone w poszczególnych lokalnego rozpoznawania nazw IP poziomie usługi DNS przed są prezentowane użytkownikowi. Mogą wykorzystywać dane na różne sposoby.
+
+Częstotliwość aktualizacji danych widoku ruchu zależy od wielu zmiennych wewnętrznego usługi. Jednak dane są zazwyczaj aktualizowane co 24 godziny.
 
 >[!NOTE]
 >Czas oczekiwania opisane w widoku ruchu jest występujące opóźnienie między użytkownika końcowego i regiony platformy Azure, do których uprzednio łączyli się i nie jest opóźnienie wyszukiwania DNS. Sprawia, że widok ruchu najlepsze możliwe oszacowanie nakład pracy opóźnienia między lokalnego rozpoznawania nazw DNS i regionu platformy Azure, które zapytania został rozesłany, jeśli dostępnych jest za mało danych, a następnie opóźnienie zwracana będzie mieć wartości null. 

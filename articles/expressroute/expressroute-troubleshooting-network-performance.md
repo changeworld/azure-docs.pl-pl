@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: dfd55ac12587cf99cc3fc3ff8eac4f4572229396
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 17f239dc3ba9714c01f55a88419df2d3416908fa
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753507"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539704"
 ---
 # <a name="troubleshooting-network-performance"></a>Rozwiązywanie problemów z wydajnością sieci
 ## <a name="overview"></a>Przegląd
@@ -198,7 +198,7 @@ Konfiguracja testu:
 \* Czas oczekiwania na Brazylii jest dobrym przykładem, gdy liniową odległość znacznie różni się od fiber Uruchom odległości. Czy mogę oczekiwać byłoby w klubie 160 ms opóźnienie, ale jest faktycznie 189 ms. Ta różnica względem Moje oczekiwania może wskazywać na problem z siecią gdzieś, ale najprawdopodobniej czy fiber uruchamianych nie przechodzi do Brazylii prostym i dodatkowe km 1000 lub to podróż do Seattle uzyskiwanie Brazylii.
 
 ## <a name="next-steps"></a>Kolejne kroki
-1. Pobierz zestaw narzędzi łączność platformy Azure z repozytorium GitHub w [http://aka.ms/AzCT][ACT]
+1. Pobierz zestaw narzędzi łączność platformy Azure z repozytorium GitHub w [https://aka.ms/AzCT][ACT]
 2. Postępuj zgodnie z instrukcjami dotyczącymi [link testowania wydajnościowego][Performance Doc]
 
 <!--Image References-->
@@ -212,7 +212,7 @@ Konfiguracja testu:
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
 [Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
-[ACT]: http://aka.ms/AzCT
+[ACT]: https://aka.ms/AzCT
 
 
 

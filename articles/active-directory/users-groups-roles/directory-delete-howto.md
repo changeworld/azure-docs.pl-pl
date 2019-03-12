@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/05/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59bfc13053a33b8f29f09a9ab93a108e746ea012
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3dffcfe7c4c892976a61272a2217226f512b70ed
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431159"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542560"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Usunąć dzierżawę usługi Azure Active Directory
-
 Po usunięciu dzierżawy również zostaną usunięte wszystkie zasoby, które są zawarte w dzierżawie. Należy przygotować, minimalizując skojarzone z nią zasoby przed usunięciem dzierżawy. Tylko administrator globalny usługi Azure Active Directory (Azure AD) można usunąć dzierżawę usługi Azure AD z poziomu portalu.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>Przygotowanie dzierżawy do usunięcia
@@ -52,7 +51,7 @@ Nie można usunąć dzierżawy w usłudze Azure AD, dopóki nie przekazuje kilka
 
 ## <a name="i-have-an-expired-subscription-but-i-cant-delete-the-tenant"></a>Mam wygasłej subskrypcji, ale nie mogę usunąć dzierżawy
 
-Podczas konfigurowania dzierżawy usługi Azure Active Directory mogą również aktywowano subskrypcji opartej na licencji dla Twojej organizacji, takich jak Azure Active Directory Premium P2, Office 365 Business Premium, lub pakietu Enterprise Mobility + Security E5. Te subskrypcje blokuje usunięcie katalogu, dopóki nie zostaną całkowicie usunięte, aby uniknąć przypadkowej utraty danych. Subskrypcje muszą znajdować się w **cofnięcia aprowizacji** stanu, aby zezwolić na usunięcie dzierżawy. **Wygasłe** lub **anulowane** subskrypcja jest przenoszona do **wyłączone** stanu, a ostatnim krokiem jest **Deprovisoned** stanu. 
+Podczas konfigurowania dzierżawy usługi Azure AD mogą również aktywowano subskrypcji opartej na licencji dla Twojej organizacji, takich jak Azure AD Premium P2, Office 365 Business Premium, lub pakietu Enterprise Mobility + Security E5. Te subskrypcje blokuje usunięcie katalogu, dopóki nie zostaną całkowicie usunięte, aby uniknąć przypadkowej utraty danych. Subskrypcje muszą znajdować się w **cofnięcia aprowizacji** stanu, aby zezwolić na usunięcie dzierżawy. **Wygasłe** lub **anulowane** subskrypcja jest przenoszona do **wyłączone** stanu, a ostatnim krokiem jest **Deprovisoned** stanu. 
 
 Do czego można oczekiwać po wygaśnięciu wersji próbnej subskrypcji usługi Office 365, (nie w tym płatnych partnera/programu CSP, umowy Enterprise Agreement lub licencjonowania zbiorowego) Zobacz poniższej tabeli. Aby uzyskać więcej informacji na temat cyklu przechowywania i subskrypcji danych usługi Office 365, zobacz [co się stanie z moimi danymi i dostępu, po zakończeniu mojej usługi Office 365 dla firm subskrypcji?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
@@ -61,17 +60,19 @@ Stan subskrypcji | Dane | Dostęp do danych
 Aktywne (30 dni w wersji próbnej)  | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Office 365 i zasobów 
 Wygasłe (30 dni)   | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Office 365 i zasobów
 Wyłączone (30 dni) | Dostęp do administratora tylko do danych  | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą dostęp do Centrum administracyjnego usługi Office 365, ale nie można przypisać licencje lub zaktualizować użytkowników
-Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie usuwane, jeśli brak innych usług, które są używane) | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą uzyskiwać dostęp do Centrum administracyjnego usługi Office 365, aby kupić i zarządzać innymi subskrypcjami
+Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie usuwane, jeśli brak innych usług, które są używane) | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą uzyskiwać dostęp do Centrum administracyjnego usługi Office 365, aby kupić i zarządzać innymi subskrypcjami 
 
-Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 3 dni, przy użyciu Microsoft Store dla firm Centrum administracyjnego. Ta funkcja będzie wkrótce dostępna do Centrum administracyjnego usługi Office 365.
+## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Usuń subskrypcję w Centrum administracyjnym usługi Microsoft 365
 
-1. Zaloguj się do [Microsoft Store dla firm Centrum administracyjnego](https://businessstore.microsoft.com/manage/) przy użyciu konta, które jest administratorem globalnym w dzierżawie. Jeśli próbujesz usunąć dzierżawę "Contoso", który ma contoso.onmicrosoft.com domeny początkowej domyślnej, zaloguj się przy użyciu nazwy UPN takich jak admin@contoso.onmicrosoft.com.
+Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 3 dni, za pomocą Centrum administracyjnego usługi Microsoft 365.
 
-2. Przejdź do **Zarządzaj** kartę, a następnie wybierz pozycję **produktów i usług**, następnie wybierz subskrypcję, którą chcesz anulować i wybierz **Usuń**.
+1. Zaloguj się do [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com) przy użyciu konta, które jest administratorem globalnym w dzierżawie. Jeśli próbujesz usunąć dzierżawę "Contoso", który ma contoso.onmicrosoft.com domeny początkowej domyślnej, zaloguj się przy użyciu nazwy UPN takich jak admin@contoso.onmicrosoft.com.
+
+2. Przejdź do **rozliczeń** kartę, a następnie wybierz pozycję **produktów i usług**, następnie wybierz subskrypcję, którą chcesz anulować. Po kliknięciu **anulować**, Odśwież stronę.
   
   ![Usuń łącze do usuwania subskrypcji](./media/directory-delete-howto/delete-command.png)
   
-3. Wybierz **Usuń subskrypcję** Zaakceptuj warunki i postanowienia i Usuń subskrypcję. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, może ponownie aktywować subskrypcję w ciągu następnych trzech dni.
+3. Wybierz **Usuń** do usunięcia subskrypcji i zaakceptuj warunki i postanowienia. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, można ponownie aktywować subskrypcję w ciągu trzech dni.
   
   ![warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
 

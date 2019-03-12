@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313364"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530760"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Uaktualnienie magazynu usługi Backup do magazynu usługi Recovery Services
 
@@ -80,7 +80,7 @@ Skrypt programu PowerShell wyświetli monit o podanie poświadczeń. Wprowadź s
 ### <a name="pre-requisites-checking"></a>Sprawdzanie wymagań wstępnych
 Po wprowadzeniu poświadczeń platformy Azure, Azure sprawdza, czy dane środowisko spełnia następujące wymagania wstępne:
 
-- **Minimalna wersja agenta** — uaktualnienie magazynów kopii zapasowych do magazynów usługi Recovery Services wymaga agenta usług MARS na co najmniej wersji 2.0.9083.0. W przypadku elementów zarejestrowanych w magazynie kopii zapasowych z agentem starszych niż 2.0.9083.0 sprawdzania wymagań wstępnych kończy się niepowodzeniem. Jeśli sprawdzanie wymagań wstępnych nie powiedzie się, zaktualizuj agenta, a następnie ponowić próbę uaktualnienia magazynu. Możesz pobrać najnowszą wersję agenta z [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Minimalna wersja agenta** — uaktualnienie magazynów kopii zapasowych do magazynów usługi Recovery Services wymaga agenta usług MARS na co najmniej wersji 2.0.9083.0. W przypadku elementów zarejestrowanych w magazynie kopii zapasowych z agentem starszych niż 2.0.9083.0 sprawdzania wymagań wstępnych kończy się niepowodzeniem. Jeśli sprawdzanie wymagań wstępnych nie powiedzie się, zaktualizuj agenta, a następnie ponowić próbę uaktualnienia magazynu. Możesz pobrać najnowszą wersję agenta z [ https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **Zadania konfiguracji i nieustanne**: Gdy osoba niepowołana jest równa Konfigurowanie zadania dla magazynu kopii zapasowych można uaktualnić, czy rejestrowanie elementu, niepowodzenia sprawdzania wymagań wstępnych. Zakończ konfigurację, lub Zakończ rejestrowanie elementu, a następnie uruchom proces uaktualniania magazynu.
 - **Model rozliczeń oparty na magazyn**: Magazyny usługi Recovery Services obsługują model rozliczeń oparty na wystąpienie. Jeśli uruchamiasz Uaktualnienie magazynu na magazyn kopii zapasowych, która wykorzystuje model rozliczeń oparty na magazyn, pojawia się monit o uaktualnienie modelu rozliczeń wraz z magazynem. W przeciwnym razie można zaktualizować modelu rozliczeń, a następnie uruchom Uaktualnianie magazynu.
 - Określ grupę zasobów dla magazynu usługi Recovery Services. Aby móc korzystać z funkcji wdrażania usługi Resource Manager, należy przełączyć magazyn usługi Recovery Services w grupie zasobów. Jeśli nie wiesz, które grupy zasobów, aby użyć, podaj nazwę i procesu uaktualniania zostanie utworzona grupa zasobów dla Ciebie. Proces uaktualniania powoduje również skojarzenie magazynie z nową grupę zasobów.

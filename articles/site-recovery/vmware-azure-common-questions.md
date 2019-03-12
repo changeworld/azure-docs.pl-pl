@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/03/2019
+ms.date: 03/07/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9e15f2e1b064ec2e64bfa8254075eac5bc801115
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9e192c736235fcf8b8b5374787ad94aaf87427bf
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442617"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727080"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -123,11 +123,15 @@ Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na 
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Jak mogę zmienić konta magazynu, po włączeniu ochrony maszyny?
 
-Trwającą replikację konta magazynu można tylko uaktualnić do wersji premium. Aby użyć standardowego cennika, należy wyłączyć replikację maszyny źródłowej i ponownie włącz ochronę w przypadku standardowych dysków zarządzanych. Niezależnie od tego, nie ma innych możliwości zmiany na koncie magazynu po włączeniu ochrony.
+Należy wyłączyć i włączyć replikację uaktualnić lub obniżyć typ konta magazynu.
 
 ### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Jak można zmienić typ dysku zarządzanego, po włączeniu ochrony maszyny?
 
-Tak, można łatwo zmienić typ dysku zarządzanego. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage).
+Tak, można łatwo zmienić typ dysku zarządzanego. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Jednak jeśli zmienisz typ dysku zarządzanego, upewnij się, poczekaj punktów odzyskiwania świeże wygenerowany, jeśli potrzebujesz do testowania trybu failover lub pracy awaryjnej Opublikuj to działanie.
+
+### <a name="can-i-switch-the-replication-from-managed-disks-to-unmanaged-disks"></a>Czy mogę przełączać replikacji z dysków zarządzanych do dysków niezarządzanych
+
+Nie, przełączanie z zarządzane do niezarządzanego jest nieobsługiwane.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 

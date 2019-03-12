@@ -1,6 +1,6 @@
 ---
-title: Akcje żądań i odpowiedzi | Dokumentacja firmy Microsoft
-description: Omówienie wyzwalacza żądań i odpowiedzi i akcji w aplikacji logiki platformy Azure
+title: Akcje żądania i odpowiedzi | Dokumentacja firmy Microsoft
+description: Przegląd żądania i odpowiedzi wyzwalacza i akcji w aplikacji logiki platformy Azure
 services: ''
 documentationcenter: ''
 author: jeffhollan
@@ -15,79 +15,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27960565"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552184"
 ---
-# <a name="get-started-with-the-request-and-response-components"></a>Rozpoczęcie pracy ze składnikami żądań i odpowiedzi
-Ze składnikami żądań i odpowiedzi w aplikacji logiki możesz odpowiedzieć w czasie rzeczywistym na zdarzenia.
+# <a name="get-started-with-the-request-and-response-components"></a>Wprowadzenie do składników żądań i odpowiedzi
+Dzięki składnikom żądań i odpowiedzi w aplikacji logiki może odpowiadać w czasie rzeczywistym na zdarzenia.
 
 Można na przykład:
 
-* Odpowiada na żądania HTTP z danymi z lokalną bazą danych za pośrednictwem aplikacji logiki.
-* Uruchomienie aplikacji logiki z zdarzenie zewnętrznego elementu webhook.
-* Wywołania z akcją żądań i odpowiedzi z poziomu innej aplikacji logiki aplikacji logiki.
+* Odpowiadanie na żądania HTTP przy użyciu danych z lokalnej bazy danych za pomocą aplikacji logiki.
+* Wyzwalacza aplikacji logiki ze zdarzenia zewnętrznego elementu webhook.
+* Wywoływanie aplikacji logiki przy użyciu akcji żądań i odpowiedzi z w ramach innej aplikacji logiki.
 
-Aby rozpocząć korzystanie z akcji żądań i odpowiedzi w aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Aby rozpocząć pracę, przy użyciu akcje żądania i odpowiedzi w aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-request-trigger"></a>Użyj wyzwalacza żądania HTTP
-Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej o wyzwalaczy](connectors-overview.md).
+Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej na temat wyzwalaczy](connectors-overview.md).
 
-Oto przykład sekwencji sposobu konfigurowania żądania HTTP w Projektancie aplikacji logiki.
+Oto przykładowa sekwencja sposób konfigurowania żądań HTTP w Projektancie aplikacji logiki.
 
-1. Dodaj wyzwalacza **żądania - zostanie odebrane żądanie HTTP podczas** w aplikacji logiki. Opcjonalnie można podać schematu JSON (przy użyciu narzędzia, takiego jak [JSONSchema.net](http://jsonschema.net)) dla treści żądania. Dzięki temu projektanta, aby generować tokeny dla właściwości w żądaniu HTTP.
-2. Dodaj inną akcję, aby zapisać aplikacji logiki.
-3. Po zapisaniu aplikację logiki, może uzyskać adres URL żądania HTTP z karty żądania.
-4. HTTP POST (można użyć narzędzia, takiego jak [Postman](https://www.getpostman.com/)) do adresu URL wyzwala aplikacji logiki.
+1. Dodaj wyzwalacz **żądania — zostanie odebrane żądanie HTTP podczas** w aplikacji logiki. Opcjonalnie możesz podać schematu JSON (przy użyciu narzędzia, takiego jak [JSONSchema.net](https://jsonschema.net)) do treści żądania. Dzięki temu projektanta aby generować tokeny dla właściwości w żądaniu HTTP.
+2. Dodaj kolejną akcję, dzięki czemu można zapisać aplikacji logiki.
+3. Po zapisaniu aplikacji logiki, możesz uzyskać adres URL żądania HTTP z karty żądania.
+4. Metodę POST protokołu HTTP (można użyć narzędzia, takiego jak [Postman](https://www.getpostman.com/)) do adresu URL wyzwalacze aplikacji logiki.
 
 > [!NOTE]
-> Jeśli nie zdefiniowano akcję odpowiedzi `202 ACCEPTED` natychmiast zwrócił odpowiedź do obiektu wywołującego. Akcja odpowiedzi służy do dostosowywania odpowiedzi.
+> Jeśli nie zdefiniowano akcję odpowiedzi `202 ACCEPTED` odpowiedzi są natychmiast zwracane do obiektu wywołującego. Aby dostosować odpowiedzi, można użyć akcji odpowiedzi.
 > 
 > 
 
-![Wyzwalacz odpowiedzi](./media/connectors-native-reqres/using-trigger.png)
+![Odpowiedź wyzwalacza](./media/connectors-native-reqres/using-trigger.png)
 
-## <a name="use-the-http-response-action"></a>Za pomocą akcji odpowiedzi HTTP
-Akcja odpowiedzi HTTP jest prawidłowa tylko w przypadku, gdy jest używany w przepływie pracy, który jest wyzwalana przez żądanie HTTP. Jeśli nie zdefiniowano akcję odpowiedzi `202 ACCEPTED` natychmiast zwrócił odpowiedź do obiektu wywołującego.  Można dodać akcję odpowiedzi na dowolnym etapie w przepływie pracy. Aplikację logiki przechowuje tylko przychodzące żądanie otwarte przez jedną minutę na odpowiedź.  Po minucie, jeśli odpowiedź nie został wysłany z przepływu pracy (i istnieje akcja odpowiedzi w definicji) `504 GATEWAY TIMEOUT` jest zwracany do obiektu wywołującego.
+## <a name="use-the-http-response-action"></a>Używanie akcji odpowiedzi HTTP
+Akcja odpowiedzi HTTP jest prawidłowa tylko w przypadku, gdy używasz w przepływie pracy, która jest wyzwalana przez żądanie HTTP. Jeśli nie zdefiniowano akcję odpowiedzi `202 ACCEPTED` odpowiedzi są natychmiast zwracane do obiektu wywołującego.  Możesz dodać akcję odpowiedzi na dowolnym etapie w przepływie pracy. Aplikacja logiki przechowuje tylko przychodzące żądanie otwarte przez jedną minutę na odpowiedź.  Po jednej minucie, jeśli odpowiedź nie została wysłana z przepływu pracy (i w definicji istnieje akcja odpowiedzi) `504 GATEWAY TIMEOUT` jest zwracany do obiektu wywołującego.
 
 Poniżej przedstawiono sposób dodawania akcji odpowiedzi HTTP:
 
 1. Wybierz **nowy krok** przycisku.
 2. Wybierz **Dodaj akcję**.
-3. W polu wyszukiwania akcji wpisz **odpowiedzi** Aby wyświetlić listę akcji odpowiedzi.
+3. Wpisz w polu wyszukiwania akcji **odpowiedzi** Aby wyświetlić listę akcji odpowiedzi.
    
-    ![Wybierz akcję odpowiedzi](./media/connectors-native-reqres/using-action-1.png)
-4. Dodaj w żadnych parametrów, które są wymagane dla komunikatu odpowiedzi HTTP.
+    ![Wybieranie akcji odpowiedzi](./media/connectors-native-reqres/using-action-1.png)
+4. Dodaj wszystkie parametry, które są wymagane dla komunikatu odpowiedzi HTTP.
    
-    ![Zakończenie akcji odpowiedzi](./media/connectors-native-reqres/using-action-2.png)
-5. Kliknij w lewym górnym rogu paska narzędzi, aby zapisać i aplikacji logiki będzie Zapisz i opublikuj (Aktywuj).
+    ![Wykonaj akcję odpowiedzi](./media/connectors-native-reqres/using-action-2.png)
+5. Kliknij w lewym górnym rogu narzędzi, aby zapisać, a Twoja aplikacja logiki będzie zapisywanie i publikowanie (Aktywuj).
 
-## <a name="request-trigger"></a>Wyzwalacz żądania
-Poniżej przedstawiono szczegóły wyzwalacz, który obsługuje ten łącznik. Brak wyzwalacz pojedyncze żądanie.
+## <a name="request-trigger"></a>Wyzwalacza żądania
+Poniżej przedstawiono szczegółowe informacje dotyczące wyzwalacza, który obsługuje ten łącznik. Brak wyzwalacza pojedynczego żądania.
 
 | Wyzwalacz | Opis |
 | --- | --- |
-| Żądanie |Występuje, gdy zostanie odebrane żądanie HTTP |
+| Żądanie |Występuje po odebraniu żądania HTTP |
 
 ## <a name="response-action"></a>Akcja odpowiedzi
-Poniżej przedstawiono szczegóły akcję, która obsługuje ten łącznik. Brak akcji pojedynczą odpowiedź, który można użyć tylko, gdy towarzyszy wyzwalacz żądania.
+Poniżej przedstawiono szczegółowe informacje dotyczące akcji, która obsługuje ten łącznik. Brak akcji pojedynczą odpowiedź, która może służyć tylko gdy towarzyszy wyzwalacza żądania.
 
 | Akcja | Opis |
 | --- | --- |
-| Odpowiedź |Zwraca odpowiedź skorelowane żądanie HTTP |
+| Odpowiedź |Zwraca odpowiedź do skorelowane żądanie HTTP |
 
-### <a name="trigger-and-action-details"></a>Szczegóły TRIGGER i action
-W poniższych tabelach opisano pole wejściowe dla wyzwalacza i akcji, a odpowiednie szczegóły danych wyjściowych.
+### <a name="trigger-and-action-details"></a>Szczegóły akcji i wyzwalaczy
+W poniższych tabelach opisano pól wejściowych dla wyzwalacza i akcji, a odpowiednie dane wyjściowe zawierają szczegóły.
 
-#### <a name="request-trigger"></a>Wyzwalacz żądania
+#### <a name="request-trigger"></a>Wyzwalacza żądania
 Poniżej znajduje się pole wejściowe dla wyzwalacza z przychodzącego żądania HTTP.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Schematu JSON |Schemat |Schematu JSON w treści żądania HTTP |
+| Schemat JSON |Schemat |Schemat JSON treści żądania HTTP |
 
 <br>
 
@@ -98,17 +98,17 @@ Poniżej przedstawiono szczegóły danych wyjściowych dla żądania.
 | Nazwa właściwości | Typ danych | Opis |
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki żądań |
-| Treść |obiekt |Obiekt żądania |
+| Treść |obiekt |Obiekt "Request" |
 
 #### <a name="response-action"></a>Akcja odpowiedzi
-Poniżej przedstawiono pól wejściowych dla akcji odpowiedzi HTTP. A * oznacza, że jest polem wymaganym.
+Dostępne są następujące pola wejściowe dla akcji odpowiedzi HTTP. A * oznacza, że jest polem wymaganym.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
 | Kod stanu * |statusCode |Kod stanu HTTP |
-| Nagłówki |nagłówki |Obiekt JSON nagłówków odpowiedzi do uwzględnienia |
+| Nagłówki |Nagłówki |Obiekt JSON nagłówków odpowiedzi do uwzględnienia |
 | Treść |treść |Treść odpowiedzi |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, wypróbuj platformy i [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Dostępne łączniki w aplikacjach logiki można eksplorować analizując naszych [listy interfejsów API](apis-list.md).
+Teraz wypróbuj platformę i [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Możesz zapoznać się z innych dostępnych łączników w usłudze logic apps, analizując naszych [listy interfejsów API](apis-list.md).
 

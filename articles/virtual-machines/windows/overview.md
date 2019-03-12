@@ -12,16 +12,16 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f4c9e256c3b3f2f5df8ef49f26c927250f376421
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 24914cc3ff673d04e8c181082e13c087aeabe709
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327055"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765752"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -101,7 +101,7 @@ Typowe zadania można realizować przy użyciu różnych rozszerzeń:
 ### <a name="related-resources"></a>Powiązane zasoby
 Zasoby wymienione w tej tabeli są używane przez maszynę wirtualną i muszą istnieć lub zostać utworzone podczas jej tworzenia.
 
-| Zasób | Wymagany | Opis |
+| Zasób | Wymagane | Opis |
 | --- | --- | --- |
 | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) |Yes |Maszyna wirtualna musi być zawarta w grupie zasobów. |
 | [Konto magazynu](../../storage/common/storage-create-storage-account.md) |Yes |Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych. |
@@ -151,6 +151,6 @@ Aby wdrożenie kwalifikowało się do naszej Umowy dotyczącej poziomu usług (S
 ### <a name="back-up-the-vm"></a>Tworzenie kopii zapasowych maszyn wirtualnych
 [Magazyn usługi Recovery Services](../../backup/backup-introduction-to-azure-backup.md) służy do ochrony danych i zasobów w usługach Azure Backup i Azure Site Recovery. Magazynu usługi Recovery Services można użyć do [wdrażania kopii zapasowych maszyn wirtualnych wdrożonych przy użyciu usługi Resource Manager oraz zarządzania nimi przy użyciu programu PowerShell](../../backup/backup-azure-vms-automation.md). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Użytkownicy korzystający z maszyn wirtualnych z systemem Linux powinni zapoznać się z tematem [Azure and Linux](../linux/overview.md) (Usługa Azure a system Linux).
 * Więcej informacji na temat wytycznych dotyczących konfigurowania infrastruktury można znaleźć w artykule [Example Azure infrastructure walkthrough](infrastructure-example.md) (Przewodnik po konfigurowaniu przykładowej infrastruktury na platformie Azure).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 22203a0e950a59cb255c8864218d4e03988e6634
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e5e184e6dadfa993e0b758ad32b54ea6ccfcb272
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647511"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546538"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Przyrostowe kopiowanie nowych i zmienionych plików, w oparciu o Data ostatniej modyfikacji przy użyciu narzędzia do kopiowania danych
 
@@ -43,9 +43,9 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 
 Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące kroki.
 
-1. Utwórz kontener o nazwie **źródła**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+1. Utwórz kontener o nazwie **źródła**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
 
-2. Utwórz kontener o nazwie **docelowy**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+2. Utwórz kontener o nazwie **docelowy**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -174,7 +174,7 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
     
-12. Utwórz pusty plik tekstowy i nadaj jej nazwę jako więc Plik1.txt. Przekaż plik więc Plik1.txt do **źródła** kontenera na koncie magazynu. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).    
+12. Utwórz pusty plik tekstowy i nadaj jej nazwę jako więc Plik1.txt. Przekaż plik więc Plik1.txt do **źródła** kontenera na koncie magazynu. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).   
 
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
@@ -190,13 +190,13 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
     
-15. Utwórz inny pusty plik tekstowy i nadaj jej nazwę jako Plik2.txt. Przekaż plik Plik2.txt do **źródła** kontenera na koncie magazynu. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).   
+15. Utwórz inny pusty plik tekstowy i nadaj jej nazwę jako Plik2.txt. Przekaż plik Plik2.txt do **źródła** kontenera na koncie magazynu. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).  
     
 16. Wykonaj takie same jak kroki 13 do 14, a zobaczysz tylko nowy plik (Plik2.txt) zostały skopiowane z **źródła** kontener **docelowy** kontenera konta magazynu w ramach następnego uruchomienia potoku.  
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    Można również sprawdzić takie same za pomocą Eksploratora usługi Azure Storage (http://storageexplorer.com/) skanowanie plików.
+    Można również sprawdzić takie same za pomocą Eksploratora usługi Azure Storage (https://storageexplorer.com/) skanowanie plików.
     
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 

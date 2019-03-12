@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e4fd8d226ebe1cb993e11fb5c9617df3eef08bdc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098565"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532580"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Tworzenie niestandardowych artefaktów dla swojej maszyny wirtualnej w usłudze DevTest Labs
 
@@ -56,7 +56,7 @@ Poniższy przykład przedstawia sekcje, które tworzą podstawowa struktura plik
 | Nazwa elementu | Wymagana? | Opis |
 | --- | --- | --- |
 | $schema |Nie |Lokalizacja pliku schematu JSON. Plik schematu JSON może pomóc można sprawdzić poprawność pliku definicji. |
-| tytuł |Yes |Nazwa artefaktu wyświetlane w środowisku laboratoryjnym. |
+| title |Yes |Nazwa artefaktu wyświetlane w środowisku laboratoryjnym. |
 | description |Yes |Opis artefaktu wyświetlane w środowisku laboratoryjnym. |
 | iconUri |Nie |Identyfikator URI ikona wyświetlana w środowisku laboratoryjnym. |
 | targetOsType |Yes |System operacyjny maszyny wirtualnej, w którym zainstalowano artefaktu. Obsługiwane opcje to Windows i Linux. |
@@ -126,7 +126,7 @@ Poniższy przykład pokazuje, jak używać wyrażeń i funkcji do tworzenia wart
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Jak diagnozowanie błędów artefaktów w usłudze DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Dołączanie maszyny Wirtualnej do istniejącej domeny usługi Active Directory przy użyciu szablonu usługi Resource Manager w usłudze DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Dołączanie maszyny Wirtualnej do istniejącej domeny usługi Active Directory przy użyciu szablonu usługi Resource Manager w usłudze DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [Dodawanie repozytorium artefaktów usługi Git do laboratorium](devtest-lab-add-artifact-repo.md).

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 292e2c53c298856b7420dde7e85e4f6636b56178
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 52f1316b8167d2e1c3e37dbbfc0059b68e832172
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008240"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538565"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Odczytywanie komunikatów przesyłanych z urządzeń do chmury z wbudowanego punktu końcowego
 
@@ -23,6 +23,8 @@ Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych d
 | ------------------- | ----------- |
 | **Liczba partycji** | Ustaw tę właściwość w momencie jego tworzenia, aby zdefiniować liczbę [partycje](../event-hubs/event-hubs-features.md#partitions) dla przyjmowanie zdarzeń urządzenia do chmury. |
 | **Czas przechowywania**  | Ta właściwość określa, jak długo w dniach, komunikaty są zachowywane przez usługę IoT Hub. Wartość domyślna to jeden dzień, ale może wzrosnąć do siedmiu dni. |
+
+Usługa IoT Hub umożliwia przechowywanie danych wbudowane usługi Event hubs przez maksymalnie 7 dni. Możesz ustawić czas przechowywania, podczas tworzenia Centrum IoT Hub. Rozmiar przechowywania danych w usłudze IoT Hub, zależy od warstwę Centrum IoT i typ jednostki. Pod względem rozmiaru wbudowane usługi Event Hubs można przechować wiadomości maksymalny rozmiar komunikatu do co najmniej 24 godziny limitu przydziału. Na przykład dla 1 jednostki S1 usługi IoT Hub zapewnia wystarczająco dużego magazynu, aby zachować co najmniej 400 K wiadomości 4 k rozmiar każdego. Urządzenia są wysyłane wiadomości mniejszych, mogą zostać zachowane przez dłużej (do 7 dni) w zależności od tego, jaka jest pojemność magazynu jest używane. Firma Microsoft gwarantuje, zachowując dane czas przechowywania określona co najmniej.
 
 Usługa IoT Hub umożliwia także zarządzanie grupy konsumentów na wbudowane urządzenia do chmury otrzymywać punktu końcowego.
 

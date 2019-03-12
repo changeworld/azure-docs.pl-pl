@@ -16,12 +16,12 @@ ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 09/28/2018
-ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c7a6330f8e0197092f4c581f46c3cc6e68dba247
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246368"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540267"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Java w usłudze Azure Stack
 
@@ -64,7 +64,7 @@ Aby zainstalować zestaw SDK języka Java, wykonaj następujące kroki:
 
 1.  Wykonaj instrukcje oficjalne, aby zainstalować program Git. Aby uzyskać instrukcje, zobacz [wprowadzenie — Instalowanie usługi Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  Postępuj zgodnie z instrukcjami oficjalne zainstalował [zestawu Java SDK](http://zulu.org/download/) i [Maven](https://maven.apache.org/). Poprawna wersja jest wersja 8 Java Developer Kit. Poprawne narzędzia Apache Maven jest w wersji 3.0 lub nowszej. Zmienna środowiskowa JAVA_HOME musi być równa lokalizacji instalacji zestawu Java Development Kit do ukończenia tego przewodnika Szybki Start. Aby uzyskać więcej informacji, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../../azure-functions/functions-create-first-java-maven.md).
+2.  Postępuj zgodnie z instrukcjami oficjalne zainstalował [zestawu Java SDK](https://zulu.org/download/) i [Maven](https://maven.apache.org/). Poprawna wersja jest wersja 8 Java Developer Kit. Poprawne narzędzia Apache Maven jest w wersji 3.0 lub nowszej. Zmienna środowiskowa JAVA_HOME musi być równa lokalizacji instalacji zestawu Java Development Kit do ukończenia tego przewodnika Szybki Start. Aby uzyskać więcej informacji, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../../azure-functions/functions-create-first-java-maven.md).
 
 3.  Aby zainstalować pakiety zależności poprawne, otwórz plik Pom.xml w aplikacji Java. Dodaj zależność, jak pokazano w poniższym kodzie:
 

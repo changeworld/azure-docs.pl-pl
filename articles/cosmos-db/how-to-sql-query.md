@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 5833ee3964958437b7834ff25f1bce7837370fb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455963"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550587"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -160,7 +160,7 @@ Poniżej przedstawiono kilka aspektów języka zapytań usługi Cosmos DB przy u
 
 * Język Structured Query Language współpracuje z danymi bez schematu. Dlatego system typów musi zostać powiązany dynamicznie. To samo wyrażenie może spowodować uzyskiwanie różnych typów w różnych elementach. Wynik zapytania jest prawidłową wartością JSON, ale nie ma gwarancji, że będzie to stały schemat.  
 
-* Usługa Azure Cosmos DB obsługuje tylko ścisłe elementy JSON. Oznacza to, że system typów i wyrażenia są ograniczone do obsługi tylko typów JSON. Zapoznaj się ze [specyfikacją notacji JSON](http://www.json.org/), aby uzyskać więcej informacji.  
+* Usługa Azure Cosmos DB obsługuje tylko ścisłe elementy JSON. Oznacza to, że system typów i wyrażenia są ograniczone do obsługi tylko typów JSON. Zapoznaj się ze [specyfikacją notacji JSON](https://www.json.org/), aby uzyskać więcej informacji.  
 
 * Kontener usługi Cosmos DB to kolekcja elementów JSON bez schematu. Relacje w jednostkach danych wewnątrz elementów kontenera i między nimi są przechwytywane niejawnie przez zawieranie, a nie przez relacje klucza podstawowego i klucza obcego. Jest to ważny aspekt warty wspomnienia ze względu na sprzężenia wewnątrz elementu omówione w dalszej części tego artykułu.
 

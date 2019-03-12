@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: defb351f0efa5264e21928ab90a0dca12454e074
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2d63c14c5eba1a9637cfd5544585e71d2bc86048
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404344"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535165"
 ---
 # <a name="authentication-requests-and-responses"></a>Uwierzytelnianie, żądania i odpowiedzi
 
@@ -92,7 +92,7 @@ Ten temat zawiera szczegółowe informacje o usłudze Azure Key Vault. Aby uzysk
 ```  
 
 ## <a name="authentication"></a>Authentication  
- Wszystkie żądania do usługi Azure Key Vault musi zostać uwierzytelnione. Usługa Azure Key Vault obsługuje tokenów dostępu usługi Azure Active Directory, które mogą zostać uzyskane za pomocą protokołu OAuth2 [[RFC6749](http://tools.ietf.org/html/rfc6749)]. 
+ Wszystkie żądania do usługi Azure Key Vault musi zostać uwierzytelnione. Usługa Azure Key Vault obsługuje tokenów dostępu usługi Azure Active Directory, które mogą zostać uzyskane za pomocą protokołu OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
  Aby uzyskać więcej informacji na temat rejestrowania aplikacji i uwierzytelniania do użycia usługi Azure Key Vault, zobacz [zarejestrować aplikację kliencką w usłudze Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
  

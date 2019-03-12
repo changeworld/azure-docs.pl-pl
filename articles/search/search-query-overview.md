@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d2f3eb25c2193ad94098acd714d934795d007e98
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300879"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543920"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
@@ -38,15 +38,15 @@ W poniższej tabeli wymieniono interfejsów API i oparte na narzędziu podejści
 Przykładami są przydatne w przypadku wprowadzenia nowych pojęć. Zgodnie z językiem zapytań skonstruowane w [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents), w tym przykładzie obiekty docelowe [nieruchomości pokaz indeksu](search-get-started-portal.md) oraz typowe parametry.
 
 ```
-{  
+{
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"", 
-    "searchFields": "description, city",  
-    "count": "true", 
+    "search": "seattle townhouse* +\"lake\"",
+    "searchFields": "description, city",
+    "count": "true",
     "select": "listingId, street, status, daysOnMarket, description",
     "top": "10",
     "orderby": "daysOnMarket"
- } 
+}
 ```
 
 + **`queryType`** Ustawia analizator, co w usłudze Azure Search może być [domyślny prosty analizator zapytań](search-query-simple-examples.md) (optymalne w celu wyszukiwania pełnotekstowego) lub [pełnego analizatora zapytań Lucene](search-query-lucene-examples.md) używane dla zapytań zaawansowanych konstrukcji, takich jak wyrażeń regularnych , wyszukiwanie w sąsiedztwie, rozmyte i wyszukiwanie symboli wieloznacznych, kilka.

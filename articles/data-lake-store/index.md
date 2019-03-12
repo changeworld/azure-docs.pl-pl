@@ -1,22 +1,16 @@
 ---
 title: Dokumentacja usługi Azure Data Lake Storage 1. generacji — samouczki i dokumentacja interfejsu API | Microsoft Docs
-description: Dowiedz się, jak skonfigurować zgodne z usługą Hadoop repozytorium usługi Data Lake o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
+description: 'Dowiedz się, jak skonfigurować zgodne z usługą Hadoop repozytorium usługi Data Lake o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania, oraz jak nim zarządzać i uzyskiwać do niego dostęp.'
 services: data-lake-store
 author: twooley
 manager: twooley
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869198"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentacja usługi Azure Data Lake Storage 1. generacji
 
@@ -198,7 +192,7 @@ Dowiedz się, jak przy użyciu usługi Azure Data Lake Storage 1. generacji (pop
                         <p><a href="/java/api/overview/azure/datalake">Java</a></p>
                         <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
                         <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python">Python (zarządzanie kontem)</a></p>
-                        <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (zarządzanie systemem plików)</a></p>
+                        <p><a href="https://azure-datalake-store.readthedocs.io/en/latest">Python (zarządzanie systemem plików)</a></p>
                     </div>
                 </div>
             </div>

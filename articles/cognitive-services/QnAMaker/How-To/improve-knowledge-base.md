@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7281fb15e91195e1dd20095d9fdf80d3d9894a26
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433063"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537902"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
@@ -154,7 +154,7 @@ Gdy aplikacja kliencka (takie jak czatbot) odbiera odpowiedź, zwracane są najc
 
 Aplikacja kliencka Wyświetla wszystkie pytania przy użyciu opcji użytkownikowi na wybranie pytanie najlepiej odpowiadającej reprezentuje zamiar. 
 
-Gdy użytkownik wybierze jeden z istniejących pytań. Opinie użytkowników są wysyłane do usługi QnA Maker [Train](http://www.aka.ms/activelearningsamplebot) interfejsu API, aby kontynuować opinii aktywne uczenie pętli. 
+Gdy użytkownik wybierze jeden z istniejących pytań. Opinie użytkowników są wysyłane do usługi QnA Maker [Train](https://www.aka.ms/activelearningsamplebot) interfejsu API, aby kontynuować opinii aktywne uczenie pętli. 
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train

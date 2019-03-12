@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 72604f84297ddc77b9732c19789d249ac4fa7774
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010841"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539551"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
@@ -53,7 +53,7 @@ Poniższa lista zawiera punkty końcowe:
 
   * *Odbierania żądań metody bezpośredniej*. Urządzenie korzysta z tego punktu końcowego do nasłuchiwania pod kątem [metoda bezpośrednia](iot-hub-devguide-direct-methods.md)tego żądania.
 
-    Te punkty końcowe są uwidaczniane za pomocą [MQTT 3.1.1](http://mqtt.org/), HTTPS 1.1 i [protokołu AMQP 1.0](https://www.amqp.org/) protokołów. Jest również dostępna za pośrednictwem protokołu AMQP [WebSockets](https://tools.ietf.org/html/rfc6455) na porcie 443.
+    Te punkty końcowe są uwidaczniane za pomocą [MQTT 3.1.1](https://mqtt.org/), HTTPS 1.1 i [protokołu AMQP 1.0](https://www.amqp.org/) protokołów. Jest również dostępna za pośrednictwem protokołu AMQP [WebSockets](https://tools.ietf.org/html/rfc6455) na porcie 443.
 
 * **Punkty końcowe usługi**. Każde Centrum IoT hub ujawnia zestaw punktów końcowych w zapleczu rozwiązania do komunikowania się z urządzeniami. Z jednym wyjątkiem te punkty końcowe są dostępne tylko przy użyciu [AMQP](https://www.amqp.org/) protokołu. Punkt końcowy z wywołania metody jest uwidaczniany za pośrednictwem protokołu HTTPS.
   
@@ -83,6 +83,15 @@ Usługa IoT Hub obsługuje obecnie następujących usług platformy Azure jako d
 * Tematy dotyczące usługi Service Bus
 
 Limity liczby punktów końcowych, możesz dodać, zobacz [przydziałów i dławienia](iot-hub-devguide-quotas-throttling.md).
+
+Można użyć interfejsu API REST [kondycji punktu końcowego uzyskać](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) można pobrać stanu kondycji punktów końcowych. Firma Microsoft zaleca używanie [metryki usługi IoT Hub](iot-hub-metrics.md) związane z routingu opóźnienie wiadomości, aby zidentyfikować i debugować błędy, gdy punkt końcowy kondycji jest nieużywany lub w złej kondycji.
+
+|Kondycja|Opis|
+|---|---|
+|w dobrej kondycji|Punkt końcowy akceptuje komunikaty, zgodnie z oczekiwaniami.|
+|Złej kondycji|Punkt końcowy nie akceptuje komunikaty, zgodnie z oczekiwaniami i ponawia próbę wysyłania danych do tego punktu końcowego usługi IoT Hub. Będzie można zaktualizować stan złej kondycji punktu końcowego do dobrej kondycji, gdy usługa IoT Hub ustanowiła ostatecznie spójny stan kondycji.|
+|nieznane|Usługa IoT Hub nie ma nawiązać połączenie z punktem końcowym. Brak komunikatów zostały dostarczone do lub odrzucone z tego punktu końcowego.|
+|Obsługa utraconych|Punkt końcowy nie akceptuje komunikaty, po usługi IoT Hub ponowiona wysyłanie wiadomości w okresie retrial.|
 
 ## <a name="field-gateways"></a>Bram działających w terenie
 

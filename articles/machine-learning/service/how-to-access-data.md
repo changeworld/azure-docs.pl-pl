@@ -11,21 +11,22 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f489abeab0e1374d2d40ade79c4eb55fd633b909
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7c29d1bfcc0737f76afc43cb8997d6a1d16c82b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443287"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731359"
 ---
 # <a name="access-data-from-your-datastores"></a>Dostęp do danych z usługi magazynów danych
-W tym artykule dowiesz się różne sposoby dostępu i interakcję z danymi w przepływach pracy usługi Azure Machine Learning, za pomocą magazynów danych.
 
-Niniejszy instruktaż zawiera przykłady dla następujących zadań: 
+Magazynów danych umożliwiają interakcję i uzyskiwać dostęp do danych, czy używasz kodu lokalnie, w klastrze obliczeniowym, lub na maszynie wirtualnej. W tym artykule, Dowiedz się, że przepływy pracy usługi Azure Machine Learning, upewnij się, Twoje magazynów danych, które są dostępne i udostępnione do kontekstu obliczeniowego.
+
+Niniejszy instruktaż zawiera przykłady dla następujących zadań:
 * [Wybierz magazyn danych](#access)
-* [Pobierz magazyn danych](#get)
-* [Przekazywanie i pobieranie danych do magazynów danych](#upload-and-download-data)
-* Dostęp do magazynu danych, podczas szkolenia
+* [Pobieranie danych](#get)
+* [Przekazywanie i pobieranie danych do magazynów danych](#up-and-down)
+* [Dostęp do magazynu danych, podczas szkolenia](#train)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -85,7 +86,7 @@ W poniższych przykładach pokazano można zarejestrować kontenera obiektów Bl
 
 <a name="get"></a>
 
-## <a name="get-data-in-your-datastore"></a>Pobieranie danych w usługi magazynu danych
+## <a name="find--define-datastores"></a>Znajdź & zdefiniować magazynów danych
 
 Aby uzyskać określonej zarejestrowana w bieżącym obszarze roboczym magazyn danych, użyj [ `get()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
 
@@ -110,7 +111,8 @@ Aby zdefiniować różne domyślne magazyn danych dla bieżącego obszaru robocz
 ws.set_default_datastore('your datastore name')
 ```
 
-## <a name="upload-and-download-data"></a>Przekazywanie i pobieranie danych
+<a name="up-and-down"></a>
+## <a name="upload--download-data"></a>Przekazywanie i pobieranie danych
 [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) i [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) metod opisanych w poniższych przykładach są specyficzne dla i działać tak samo dla [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) i [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) klasy.
 
 ### <a name="upload"></a>Upload
@@ -142,6 +144,7 @@ ds.download(target_path='your target path',
 ```
 `target_path` jest to lokalizacja katalogu lokalnego do pobierania danych. Aby określić ścieżkę do folderu w udziale plików (lub kontenera obiektów blob) do pobrania, należy podać tę ścieżkę, aby `prefix`. Jeśli `prefix` jest `None`, zostanie Pobierz pobrana zawartość udziału plików (lub kontenera obiektów blob).
 
+<a name="train"></a>
 ## <a name="access-datastores-during-training"></a>Dostęp do magazynów danych w trakcie szkolenia
 Magazyn danych można uzyskać dostęp podczas szkolenia z systemem (na przykład dla danych szkoleniowych lub sprawdzania poprawności) zdalnego obliczeniowego elementu docelowego za pomocą zestawu SDK języka Python, za pomocą [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) klasy.
 

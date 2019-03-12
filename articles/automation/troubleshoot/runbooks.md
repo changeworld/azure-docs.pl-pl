@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: cdcf7f466e65cffd36bdcc816a9808ecac2ae242
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77f6a48402aef5b493b115d2137ccb6a507050b7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991297"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760209"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -38,7 +38,7 @@ Ten błąd występuje, jeśli nazwa zasobu poświadczeń jest nieprawidłowy. Te
 
 Aby określić, na czym polega problem, wykonaj następujące czynności:  
 
-1. Upewnij się, że nie masz żadnych znaków specjalnych. Obejmuje znaki **@** znaków w nazwie zasobu poświadczeń usługi Automation za pomocą połączenia z platformą Azure.  
+1. Upewnij się, że nie masz żadnych znaków specjalnych. Obejmuje znaki **\@** znaków w nazwie zasobu poświadczeń usługi Automation za pomocą połączenia z platformą Azure.  
 2. Upewnij się, że można użyć nazwy użytkownika i hasło, które są przechowywane w poświadczeniach usługi Azure Automation w edytorze lokalnym środowisku PowerShell ISE. Możesz zrobić Sprawdź nazwę użytkownika i hasło są poprawne, uruchamiając następujące polecenia cmdlet w środowisku PowerShell ISE:  
 
    ```powershell

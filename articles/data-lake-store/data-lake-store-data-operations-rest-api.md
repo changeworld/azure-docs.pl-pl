@@ -1,5 +1,5 @@
 ---
-title: 'Interfejs API REST: Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
+title: 'INTERFEJS API REST: Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
 description: Użyj interfejsów API REST WebHDFS do wykonywania operacji systemu plików w usłudze Azure Data Lake magazynu Gen1
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 62ecf3b1983853629f6bc5fd594231188aa67bcd
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 4c61d68a948cbc5638dab30713871d1aaf822f03
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391610"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529257"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ W tym artykule dowiesz się, jak używać interfejsów API REST WebHDFS i interf
 
 * **Konto usługi Azure Data Lake Storage Gen1**. Postępuj zgodnie z instrukcjami w artykule [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal](data-lake-store-get-started-portal.md).
 
-* **[Adres cURL](http://curl.haxx.se/)**. W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem konta Data Lake Storage Gen1.
+* **[Adres cURL](https://curl.haxx.se/)**. W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem konta Data Lake Storage Gen1.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>W jaki sposób uwierzytelniać za pomocą usługi Azure Active Directory?
 Dostępne są dwa podejścia do uwierzytelniania za pomocą usługi Azure Active Directory.
@@ -44,7 +44,7 @@ Dostępne są dwa podejścia do uwierzytelniania za pomocą usługi Azure Active
 
 
 ## <a name="create-folders"></a>Tworzenie folderów
-Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory).
+Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory).
 
 Użyj następującego polecenia cURL. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
 
@@ -57,7 +57,7 @@ Jeśli operacja zakończy się pomyślnie, powinna pojawić się odpowiedź podo
     {"boolean":true}
 
 ## <a name="list-folders"></a>Wyświetlanie listy folderów
-Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory).
+Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory).
 
 Użyj następującego polecenia cURL. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
 
@@ -85,7 +85,7 @@ Jeśli operacja zakończy się pomyślnie, powinna pojawić się odpowiedź podo
     }
 
 ## <a name="upload-data"></a>Przekazywanie danych
-Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File).
+Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File).
 
 Użyj następującego polecenia cURL. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
 
@@ -107,7 +107,7 @@ Dane wyjściowe będą podobne do następującego fragmentu kodu:
     ...
 
 ## <a name="read-data"></a>Odczyt danych
-Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File).
+Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File).
 
 Odczytu danych z usługi Data Lake Storage Gen1 konto jest procesem dwuetapowym.
 
@@ -131,7 +131,7 @@ Powinny pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
     Hello, Data Lake Store user!
 
 ## <a name="rename-a-file"></a>Zmienianie nazwy pliku
-Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory).
+Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory).
 
 Użyj następującego polecenia cURL, aby zmienić nazwę pliku. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
 
@@ -145,7 +145,7 @@ Powinny pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
     {"boolean":true}
 
 ## <a name="delete-a-file"></a>Usuwanie pliku
-Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory).
+Ta operacja jest oparta na wywołaniu interfejsu API REST WebHDFS zdefiniowanym [tutaj](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory).
 
 Użyj następującego polecenia cURL, aby usunąć plik. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
 

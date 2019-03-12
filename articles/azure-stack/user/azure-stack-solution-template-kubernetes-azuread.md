@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a24ba9c0f19ce0a040671e4515dc2e7d2468fb5c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6e4402be7108f242e1d285ebe91dfece744f0805
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985584"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532154"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Azure Active Directory
 
@@ -53,7 +53,7 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 
 Skonfiguruj nazwę główną usługi na platformie Azure. Nazwa główna usługi daje aplikacji dostęp do zasobów usługi Azure Stack.
 
-1. Zaloguj się do globalnej [witryny Azure portal](http://portal.azure.com).
+1. Zaloguj się do globalnej [witryny Azure portal](https://portal.azure.com).
 
 1. Upewnij się, że możesz zalogować się przy użyciu dzierżawy usługi Azure AD skojarzonego z wystąpieniem usługi Azure Stack. Logowania można przełączać, klikając ikonę filtru na pasku narzędzi platformy Azure.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0a46a5707d1901c18d850ff9cfd8d4b09b72c646
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7accb8f2d97f5e4b4dc19ba93ab9edc1a4e6ce8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021275"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541337"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database przy użyciu usługi fabryka danych
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ Przed rozpoczęciem tego samouczka, musisz mieć następujące wymagania wstępn
 * **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) artykuł, aby uzyskać szczegółowe informacje.
 * **Konto usługi Azure Storage**. Możesz użyć magazynu obiektów blob jako **źródła** magazynu danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
 * **Usługa Azure SQL Database**. Użyj usługi Azure SQL database jako **docelowy** magazynu danych w ramach tego samouczka. Jeśli nie masz usługi Azure SQL database, używanego w tym samouczku, zobacz [sposób tworzenia i konfigurowania usługi Azure SQL Database](../../sql-database/sql-database-get-started.md) ją utworzyć.
-* **Program SQL Server 2012/2014 lub Visual Studio 2013**. Tworzenie przykładowej bazy danych i wyświetlić dane wynikowe w bazie danych za pomocą programu SQL Server Management Studio lub Visual Studio.  
+* **SQL Server 2012/2014 or Visual Studio 2013**. Tworzenie przykładowej bazy danych i wyświetlić dane wynikowe w bazie danych za pomocą programu SQL Server Management Studio lub Visual Studio.  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>Zbieraj klucza i nazwy konta magazynu obiektów blob
 Należy nazwę konta i klucza konta z konta usługi Azure storage, aby skorzystać z tego samouczka. Zanotuj **nazwa konta** i **klucz konta** dla konta usługi Azure storage.
@@ -93,7 +93,7 @@ Teraz Przygotuj swój usługi Azure blob storage i bazy danych Azure SQL dla teg
     John, Doe
     Jane, Doe
     ```
-2. Użyj narzędzi takich jak [Eksplorator magazynu Azure](http://storageexplorer.com/) do utworzenia kontenera **adftutorial** i przekazania pliku **emp.txt** do kontenera.
+2. Użyj narzędzi takich jak [Eksplorator magazynu Azure](https://storageexplorer.com/) do utworzenia kontenera **adftutorial** i przekazania pliku **emp.txt** do kontenera.
 
     ![Eksplorator usługi Azure Storage. Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. Poniższy skrypt SQL umożliwia utworzenie tabeli **emp** w bazie danych SQL Azure.  
@@ -126,6 +126,6 @@ Wymagań wstępnych została ukończona. Można utworzyć fabryki danych przy u�
 * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Nie przekształca on danych wejściowych w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych za pomocą usługi Azure Data Factory, zobacz [samouczka: Tworzenie pierwszego potoku do przekształcania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md).
+> Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Nie przekształca on danych wejściowych w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: tworzenie pierwszego potoku w celu przekształcania danych przy użyciu klastra Hadoop).
 > 
 > Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory). 

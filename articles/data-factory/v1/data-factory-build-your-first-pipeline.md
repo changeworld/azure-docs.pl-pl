@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015954"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544959"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Samouczek: Tworzenie pierwszego potoku do przekształcania danych przy użyciu klastra Hadoop
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "54015954"
 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [Szybki Start: Tworzenie fabryki danych przy użyciu usługi Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych w usłudze Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 W tym samouczku utworzysz pierwszej fabryki danych platformy Azure przy użyciu potoku danych. Potok przekształca dane wejściowe, uruchamiając skrypt Hive w klastrze usługi Azure HDInsight (Hadoop) w celu wygenerowania danych wyjściowych.  
 
@@ -88,7 +88,7 @@ Przed rozpoczęciem tego samouczka, musisz mieć następujące wymagania wstępn
 3. Pobierać i przeglądać plik zapytania programu Hive (**HQL**) znajdujący się w: [ https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql ](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). To zapytanie przekształca dane wejściowe w celu wygenerowania danych wyjściowych. 
 4. Pobrać i przejrzeć przykładowy plik danych wejściowych (**input.log**) znajdujący się na: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Utwórz kontener obiektów blob o nazwie **adfgetstarted** w usłudze Azure Blob Storage. 
-6. Przekaż **partitionweblogs.hql** plik **skryptu** folderu w **adfgetstarted** kontenera. Użyj narzędzi takich jak [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
+6. Przekaż **partitionweblogs.hql** plik **skryptu** folderu w **adfgetstarted** kontenera. Użyj narzędzi takich jak [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
 7. Przekaż **input.log** plik **inputdata** folderu w **adfgetstarted** kontenera. 
 
 Po wykonaniu wymagania wstępne, wybierz jedną z następujących narzędzi/zestawów SDK celu tego samouczka: 
@@ -102,7 +102,7 @@ Po wykonaniu wymagania wstępne, wybierz jedną z następujących narzędzi/zest
 Witryna Azure portal i programu Visual Studio umożliwiają graficznego interfejsu użytkownika tworzenia fabryk danych. Natomiast opcji programu PowerShell, szablon usługi Resource Manager i interfejsu API REST umożliwia wykonywanie skryptów programowania tworzenia fabryk danych.
 
 > [!NOTE]
-> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Nie kopiuje on danych ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [samouczka: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Nie kopiuje on danych ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database).
 > 
 > Dwa działania można połączyć w łańcuch (uruchomić jedno działanie po drugim), ustawiając wyjściowy zestaw danych jednego działania jako zestaw wejściowy drugiego. Szczegółowe informacje znajdują się w artykule [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md) (Planowanie i wykonywanie w usłudze Data Factory). 
 

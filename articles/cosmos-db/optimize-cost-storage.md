@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 34b151c14323e7ee22c31f22a63b07a0fb18671e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036124"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536219"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optymalizuj koszt usługi storage w usłudze Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Jeśli chcesz przechowywać zaawansowanych typów nośników, na przykład filmy
 
 ## <a name="check-storage-consumed"></a>Sprawdź wykorzystany Magazyn
 
-Aby sprawdzić użycie magazynu dla kontenera usługi Azure Cosmos, można uruchomić żądanie HEAD lub GET do kontenera i sprawdzić `x-ms-request-quota` i `x-ms-request-usage` nagłówków. Alternatywnie, pracując przy użyciu zestawu .net SDK, można użyć [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), i [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości, aby pobrać zajmowanego w magazynie.
+Aby sprawdzić użycie magazynu dla kontenera usługi Azure Cosmos, można uruchomić żądanie HEAD lub GET do kontenera i sprawdzić `x-ms-request-quota` i `x-ms-request-usage` nagłówków. Alternatywnie, pracując przy użyciu zestawu .net SDK, można użyć [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), i [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości, aby pobrać zajmowanego w magazynie.
 
 ## <a name="using-sdk"></a>Przy użyciu zestawu SDK
 

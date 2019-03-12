@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: a1f2b0e3095718caad7c35a20bf7e91c88568364
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 1417907bf9472137677a090906fa173c3d1ea571
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213470"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539296"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorowanie SQL Data Sync za pomocą dzienników usługi Azure Monitor 
 
@@ -32,7 +32,7 @@ Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud 
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Pulpit nawigacyjny monitorowania dla wszystkich grup synchronizacji 
 
-Nie potrzebujesz już szukać w dziennikach każdej grupy synchronizacji pojedynczo, aby wyszukać problemy. Wszystkie grupy synchronizacji można monitorować z poziomu dowolnej subskrypcji w jednym miejscu, przy użyciu widoku analizy dzienników niestandardowych. Ten widok udostępnia informacje, które są ważne klientom SQL Data Sync.
+Nie potrzebujesz już szukać w dziennikach każdej grupy synchronizacji pojedynczo, aby wyszukać problemy. Wszystkie grupy synchronizacji można monitorować z poziomu dowolnej subskrypcji w jednym miejscu, przy użyciu widoku niestandardowego usługi Azure Monitor. Ten widok udostępnia informacje, które są ważne klientom SQL Data Sync.
 
 ![Pulpit nawigacyjny monitorowania synchronizacji danych](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
@@ -50,9 +50,9 @@ Należy skonfigurować trzy składniki:
 
 -   Element runbook programu PowerShell do źródła danych dziennika SQL Data Sync dzienniki usługi Azure Monitor.
 
--   Alert usługi log analytics powiadomień e-mail.
+-   Alert usługi Azure Monitor powiadomień e-mail.
 
--   Usługi log analytics widoku monitorowania.
+-   Widok monitorowania platformy Azure do monitorowania.
 
 ### <a name="samples-to-download"></a>Pobierz przykłady
 
@@ -60,7 +60,7 @@ Pobierz poniższe dwa przykłady:
 
 -   [Dane synchronizacji dziennika elementu Runbook z programu PowerShell](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Widoki usługi Log Analytics Data Sync](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Widok usługi Azure Monitor synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -130,7 +130,7 @@ Aby zaplanować uruchamianie elementu runbook:
 
 Do monitorowania, czy automatyzacji działa zgodnie z oczekiwaniami, w obszarze **Przegląd** konta usługi automation można znaleźć **statystyki zadania** wyświetlona w obszarze **monitorowanie**. Przypnij ten widok do pulpitu nawigacyjnego w celu łatwego wyświetlania. Udane uruchomienia Pokaż element runbook jako "Ukończone" i niepowodzenie uruchomienia wyświetlane jako "Nieudane".
 
-## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Tworzenie alertu Czytelnik usługi Log Analytics dla powiadomień E-mail
+## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>Utwórz Alert czytnik usługi Azure Monitor powiadomień E-mail
 
 Aby utworzyć alert, który używa dzienników usługi Azure Monitor, wykonaj następujące czynności. Jako warunek wstępny musisz mieć dzienniki usługi Azure Monitor połączone z obszarem roboczym usługi Log Analytics.
 
@@ -152,9 +152,9 @@ Aby utworzyć alert, który używa dzienników usługi Azure Monitor, wykonaj na
 
 6.  Kliknij pozycję **Zapisz**. Określonych odbiorców teraz odbierać powiadomienia e-mail, jeśli wystąpią błędy.
 
-## <a name="create-a-log-analytics-view-for-monitoring"></a>Utwórz widoki usługi Log Analytics do monitorowania
+## <a name="create-an-azure-monitor-view-for-monitoring"></a>Utwórz widok usługi Azure Monitor do monitorowania
 
-Spowoduje to utworzenie widoki usługi log analytics wizualnego monitorowania wszystkich grup synchronizacji określonej. Widok zawiera kilka składników:
+W tym kroku tworzy widok usługi Azure Monitor wizualnego monitorowania wszystkich grup synchronizacji określonej. Widok zawiera kilka składników:
 
 -   Kafelek przeglądu, który pokazuje, jak wiele błędów, sukcesów i ostrzeżenia mają wszystkie grupy synchronizacji.
 
@@ -162,9 +162,9 @@ Spowoduje to utworzenie widoki usługi log analytics wizualnego monitorowania ws
 
 -   Kafelek dla każdej grupy synchronizacji, która pokazuje liczbę błędów, sukcesów i ostrzeżenia i ostatnie komunikaty o błędach.
 
-Aby skonfigurować widoki usługi log analytics, wykonaj następujące czynności:
+Aby skonfigurować widok monitora platformy Azure, wykonaj następujące czynności:
 
-1.  Na stronie głównej log analytics wybierz znak plus po lewej stronie, aby otworzyć **Projektant widoków**.
+1.  Na stronie głównej w obszarze roboczym usługi Log Analytics wybierz znak plus po lewej stronie, aby otworzyć **Projektant widoków**.
 
 2.  Wybierz **importu** na górnym pasku Projektant widoków. Następnie wybierz przykładowy plik "DataSyncLogOMSView".
 
@@ -196,7 +196,7 @@ Pobierz przykłady kodu, opisane w tym artykule w następujących lokalizacjach:
 
 -   [Dane synchronizacji dziennika elementu Runbook z programu PowerShell](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Widoki usługi Log Analytics Data Sync](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Widok usługi Azure Monitor synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:

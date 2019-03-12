@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c95fcd2e6369fae920481db2623124342c34a730
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447634"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544243"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -38,7 +38,7 @@ Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi A
 > [!NOTE]
 > Firma Microsoft zaleca używania konta magazynu ogólnego przeznaczenia w wersji 2 w przypadku większości scenariuszy. Ogólnego przeznaczenia w wersji 1 lub konta usługi Blob storage można łatwo uaktualnić do konta ogólnego przeznaczenia w wersji 2, bez przestojów i bez potrzeby kopiowania danych.
 >
-> Aby uzyskać więcej informacji na temat uaktualniania do konta ogólnego przeznaczenia w wersji 2, zobacz [uaktualnić do konta magazynu ogólnego przeznaczenia v2](storage-account-upgrade.md). 
+> Aby uzyskać więcej informacji na temat uaktualniania do konta ogólnego przeznaczenia w wersji 2, zobacz [uaktualnić do konta magazynu ogólnego przeznaczenia v2](storage-account-upgrade.md).
 
 Kont magazynu ogólnego przeznaczenia w wersji 2 oferuje wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
 
@@ -85,7 +85,7 @@ Usługa Azure Storage udostępnia różne opcje do uzyskiwania dostępu do danyc
 Są warstwy dostępu:
 
 > [!NOTE]
-> [Dostępu w warstwie Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) jest dostępna w ograniczonej wersji zapoznawczej jako konto magazyn lokalnie nadmiarowy (LRS) w regionach: Europa Północna, wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA. Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](https://aka.ms/premiumblob).
+> [Dostępu w warstwie premium (wersja zapoznawcza)](../blobs/storage-blob-storage-tiers.md#premium-access-tier), który jest zoptymalizowany pod kątem wydajności aplikacji poufnych, zapewnia niski i spójnych opóźnień w przypadku intensywne przepustowości i transakcji. Warstwa dostępu — wersja premium jest dostępna tylko z kontami magazynu blokowych obiektów Blob (wersja zapoznawcza). Aby uzyskać więcej informacji, zobacz [publicznej wersji zapoznawczej usługi Azure Storage Blob Premium](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
 
 * **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a nieco wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
 * **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.

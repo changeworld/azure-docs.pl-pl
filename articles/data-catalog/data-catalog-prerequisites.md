@@ -8,12 +8,12 @@ ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 5d05371d9b948dc2f7d6f834eb9431af80fc6365
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 788e7a453e9879d9c901448659ff1c8cfa7201ff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406876"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548320"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Wymagania wstępne usługi Azure Data Catalog
 
@@ -30,7 +30,7 @@ Aby skonfigurować Data Catalog, muszą być podpisane przy użyciu konta użytk
 Usługa Azure AD umożliwia firmom łatwe zarządzanie tożsamościami i dostępem, zarówno w chmurze, jak i lokalnie. Użytkownicy mogą używać jednego konta firmowego lub szkolnego do pojedynczego logowania w dowolnej chmurze i lokalnych aplikacji sieci web. Data Catalog używa usługi Azure AD do uwierzytelniania logowania. Aby dowiedzieć się więcej, zobacz [co to jest Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 > [!NOTE]
-> Za pomocą [witryny Azure portal](http://portal.azure.com/), możesz zalogować się przy użyciu osobistego konta Microsoft lub usługi Azure Active Directory konto służbowe. Aby skonfigurować wykazu danych przy użyciu witryny Azure portal lub [portalu Data Catalog](http://www.azuredatacatalog.com), należy zalogować się przy użyciu konta usługi Azure Active Directory, a nie konta osobistego.
+> Za pomocą [witryny Azure portal](https://portal.azure.com/), możesz zalogować się przy użyciu osobistego konta Microsoft lub usługi Azure Active Directory konto służbowe. Aby skonfigurować wykazu danych przy użyciu witryny Azure portal lub [portalu Data Catalog](https://www.azuredatacatalog.com), należy zalogować się przy użyciu konta usługi Azure Active Directory, a nie konta osobistego.
 >
 >
 

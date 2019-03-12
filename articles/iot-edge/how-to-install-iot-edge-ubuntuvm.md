@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: gregman
-ms.openlocfilehash: 7ff7671425e2a2a5dbebe2d09cadb8ef71bc7c97
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 456f7607786bd674cb6ede78d1164db033605799
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896710"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528834"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Uruchamianie usługi Azure IoT Edge na maszynach wirtualnych z systemem Ubuntu
 
@@ -22,7 +22,7 @@ ms.locfileid: "55896710"
 
 Aby dowiedzieć się więcej na temat sposobu działania środowiska uruchomieniowego usługi IoT Edge i jakie składniki wchodzą, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
 
-W tym artykule wymieniono kroki, aby uruchomić środowisko uruchomieniowe usługi Azure IoT Edge w systemie Ubuntu 16.04 maszyny wirtualnej przy użyciu wstępnie skonfigurowanych [usługi Azure IoT Edge w ramach oferty w portalu Azure Marketplace Ubuntu](http://aka.ms/azure-iot-edge-ubuntuvm). 
+W tym artykule wymieniono kroki, aby uruchomić środowisko uruchomieniowe usługi Azure IoT Edge w systemie Ubuntu 16.04 maszyny wirtualnej przy użyciu wstępnie skonfigurowanych [usługi Azure IoT Edge w ramach oferty w portalu Azure Marketplace Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm). 
 
 Przy pierwszym uruchomieniu usługi Azure IoT Edge na maszynie Wirtualnej z systemem Ubuntu preinstaluje najnowszą wersję środowiska uruchomieniowego usługi Azure IoT Edge. Zawiera również skrypt ustawimy parametry połączenia, a następnie ponownie uruchomić środowiska uruchomieniowego, które może być uruchamiane zdalnie za pośrednictwem portalu maszyny Wirtualnej platformy Azure lub wiersza polecenia platformy Azure, dzięki czemu możesz łatwo skonfigurować i połączyć urządzenia IoT Edge bez uruchamiania klienta SSH lub zdalnego Sesja pulpitu. Ten skrypt będzie czekać można ustawić parametrów połączenia, dopóki nie pełni zainstalowaniu klienta usługi IoT Edge, dzięki czemu nie trzeba do utworzenia do automatyzacji.
 
@@ -60,7 +60,7 @@ W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Ser
     1.  Wyświetlić listę swoich subskrypcji:
     
        ```azurecli-interactive
-       azure account list --output table
+       az account list --output table
        ```
     
     1.  Kopiuj pole SubscriptionID dla subskrypcji, którą chcesz użyć
@@ -79,7 +79,7 @@ W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Ser
 1.  Utwórz nową maszynę wirtualną:
 
     ```azurecli-interactive
-    az vm create --resource-group IoTEdgeResources --name EdgeVM –image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+    az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
     ```
 
 1.  Ustaw parametry połączenia urządzenia (możesz wykonać [zarejestrować nowe urządzenie usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure](how-to-register-device-cli.md) poradnik, jeśli nie znasz tego procesu):

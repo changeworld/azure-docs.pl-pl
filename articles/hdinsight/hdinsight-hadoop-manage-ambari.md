@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e2a9ae474aaacbf688103efce3cd5ae9b96acde
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216921"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576960"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari
 
@@ -85,48 +85,6 @@ Poniższa lista zawiera typowe stany alertów, używana przez narzędzia Ambari:
 * **UNKNOWN**
 
 Alerty innych niż **OK** spowodować **alerty (#)** wpis w górnej części strony, aby wyświetlić liczbę alertów. Wybranie tego wpisu wyświetla alerty wraz z ich stanami.
-
-Ambari udostępnia kilka wstępnie zdefiniowanych alertów. Następujące alerty pomocy, monitorowanie dostępności klastra:
-
-| Nazwa alertu                               | Opis                                                                                                                                                                                  |
-|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Monitoruj metryki stan                    | Ten alert wskazuje stan procesu monitora metryk zgodnie z ustaleniami skryptu stan monitora.                                                                                   |
-| Puls agenta systemu Ambari                   | Ten alert jest wyzwalany, jeśli serwer utracił kontaktu z agentem.                                                                                                                        |
-| Proces serwera dozorcy                 | Ten alert na poziomie hosta jest wyzwalany, jeśli proces serwera dozorcy nie może być określone rozpocząć i nasłuchuje w sieci.                                                               |
-| IOCache Metadata Server Status           | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer IOCache metadanych nie może być określone rozpocząć i odpowiadanie na żądania klientów                                                            |
-| JournalNode interfejsu użytkownika sieci Web                       | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web JournalNode jest nieosiągalny.                                                                                                                 |
-| Spark2 Thrift Server                     | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić Spark2 Thrift Server, aby rozpocząć.                                                                                                |
-| Proces serwera historii                   | Ten alert na poziomie hosta jest wyzwalany, jeśli proces serwera historii nie może zostać ustanowione, aby rozpocząć i nasłuchuje w sieci.                                                                |
-| Historia serwera internetowego interfejsu użytkownika                    | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web dla serwera historii jest nieosiągalny.                                                                                                              |
-| Menedżer zasobów interfejsu użytkownika sieci Web                   | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web Menedżera zasobów jest nieosiągalny.                                                                                                             |
-| Podsumowanie kondycji NodeManager               | Ten poziom usługi alert jest wyzwalany, jeśli istnieją NodeManagers złej kondycji                                                                                                                    |
-| Aplikacja interfejsu użytkownika sieci Web osi czasu                      | Ten alert na poziomie hosta jest wyzwalany, gdy aplikacja osi czasu w serwera internetowego interfejsu użytkownika jest nieosiągalny.                                                                                                         |
-| Podsumowanie kondycji DataNode                  | Ten poziom usługi alert jest wyzwalany, jeśli istnieją DataNodes złej kondycji                                                                                                                       |
-| NameNode interfejsu użytkownika sieci Web                          | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web NameNode jest nieosiągalny.                                                                                                                    |
-| Proces kontroler pracy awaryjnej dozorcy    | Ten alert na poziomie hosta jest wyzwalany, jeśli proces dozorcy trybu Failover kontrolera nie może zostać potwierdzony, aby rozpocząć i nasłuchuje w sieci.                                                   |
-| Oozie Server Web UI                      | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer programu Oozie interfejs użytkownika sieci Web jest nieosiągalny.                                                                                                                |
-| Stan serwera Oozie                      | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer programu Oozie nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                                      |
-| Proces magazynu metadanych hive                   | Ten alert na poziomie hosta jest wyzwalany, jeśli proces Hive magazynu metadanych nie może być określone rozpocząć i nasłuchuje w sieci.                                                                 |
-| HiveServer2 Process                      | Ten alert na poziomie hosta jest wyzwalany, jeśli HiveServer nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                                        |
-| Stan serwera usługi WebHCat                    | Ten alert na poziomie hosta jest wyzwalany, jeśli templeton stanu możliwości zarządzania serwerem nie jest w dobrej kondycji.                                                                                                            |
-| Dostępne serwery procent dozorcy      | Ten alert jest wyzwalany, jeśli liczba szczegółów dozorcy serwery w klastrze jest większy niż skonfigurowany próg krytyczny. Agreguje wyniki kontroli procesu ZooKeeper.     |
-| Spark2 Livy Server                       | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można określić serwera Livy2, aby rozpocząć.                                                                                                        |
-| Spark2 History Server                    | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można określić serwer historii Spark2, aby rozpocząć.                                                                                               |
-| Proces modułu zbierającego metryki                | Ten alert jest wyzwalany, jeśli moduł zbierający metryki nie może zostać potwierdzony, aby rozpocząć i nasłuchuje na skonfigurowanym porcie sekundach równa wartości progowej.                                 |
-| Moduł zbierający metryki - procesu głównego bazy danych HBase | Ten alert jest wyzwalany, jeśli procesy głównej bazy danych HBase metryk modułu zbierającego nie może zostać potwierdzony, aby rozpocząć i nasłuchuje w sieci dla skonfigurowanego progu krytycznego, podana w sekundach. |
-| Monitoruje procent metryk dostępnych       | Ten alert jest wyzwalany, jeśli procent Monitoruj metryki procesy nie są włączone i nasłuchuje w sieci skonfigurowanych ostrzeżenie i progów krytycznych.                             |
-| Procent NodeManagers dostępne           | Ten alert jest wyzwalany, jeśli liczba szczegółów NodeManagers w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki NodeManager proces kontroli.        |
-| NodeManager kondycji                       | Ten alert na poziomie hosta sprawdza dostępne ze składnika NodeManager właściwość kondycji węzła.                                                                                              |
-| NodeManager interfejsu użytkownika sieci Web                       | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web NodeManager jest nieosiągalny.                                                                                                                 |
-| NameNode o wysokiej dostępności kondycji        | Ten alert poziom usług jest wyzwalany, jeśli nie są wykonywane Active NameNode lub NameNode w stanie wstrzymania.                                                                                     |
-| Proces DataNode                         | Ten alert na poziomie hosta jest wyzwalany, jeśli poszczególnych procesów DataNode nie może zostać ustanowione, aby rozpocząć i nasłuchuje w sieci.                                                         |
-| DataNode interfejsu użytkownika sieci Web                          | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web DataNode jest nieosiągalny.                                                                                                                    |
-| Procent JournalNodes dostępne           | Ten alert jest wyzwalany, jeśli liczba szczegółów JournalNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki JournalNode proces kontroli.        |
-| Procent DataNodes dostępne              | Ten alert jest wyzwalany, jeśli liczba szczegółów DataNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki DataNode proces kontroli.              |
-| Stan serwera rozwiązania Zeppelin                   | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer Zeppelin nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                                   |
-| HiveServer2 Interactive Process          | Ten alert na poziomie hosta jest wyzwalany, jeśli HiveServerInteractive nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                             |
-| Aplikacja funkcji LLAP                         | Ten alert jest wyzwalany, jeśli aplikacja LLAP nie może być określone rozpocząć i odpowiadanie na żądania.                                                                                    |
-
 
 Alerty są podzielone na kilka domyślnych grup, które mogą być wyświetlane z **alerty** strony.
 

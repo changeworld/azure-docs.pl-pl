@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 530bb83d753d27db4869b5725bc6d4c4e020e179
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3be2ab8bd4be56de945303bec9969f531be77864
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446609"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535598"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -220,7 +220,7 @@ Dla maszyny Wirtualnej systemu Linux, jeśli rozszerzenie VMSnapshot nie są wy�
 Wykonanie tych kroków powoduje, że rozszerzenie, należy ponownie zainstalować podczas następnej kopii zapasowej.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do **opcja wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_`<number>`.
 3. W **ustawienia** zaznacz **blokad** do wyświetlenia blokad.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
@@ -241,7 +241,7 @@ Po usunięciu blokady, Wyzwól kopię zapasową ad hoc/ręczne. Pozwoli to zagwa
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Czyszczenie Przywracanie punktu kolekcji z witryny Azure portal <br>
 
 Ręcznie wyczyścić przywracania wskazuje kolekcji, które nie są usuwane z powodu blokady na grupę zasobów, spróbuj wykonać następujące kroki:
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Na **Centrum** menu, kliknij przycisk **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` gdzie znajduje się maszyna wirtualna.
 
     ![Usuń blokady](./media/backup-azure-arm-vms-prepare/resource-group.png)

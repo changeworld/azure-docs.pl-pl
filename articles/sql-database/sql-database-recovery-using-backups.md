@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 90f7ef32a54f257a64942b37938cff5703112d6c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 03/07/2019
+ms.openlocfilehash: f54e715f555f01a265ed89ac633f207546a73904
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409869"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576365"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -141,7 +141,7 @@ Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych możn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Aby przywrócić autonomiczny lub baza danych w puli, zobacz [AzSqlDatabase przywracania](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
+- Aby przywrócić autonomiczny lub baza danych w puli, zobacz [AzSqlDatabase przywracania](/powershell/module/az.sql/restore-azsqldatabase).
 
   | Polecenie cmdlet | Opis |
   | --- | --- |
@@ -153,7 +153,13 @@ Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych możn
   > [!TIP]
   > Aby uzyskać przykładowy skrypt programu PowerShell przedstawiający sposób wykonywania w momencie przywracania bazy danych, zobacz [przywrócić bazę danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 
-- Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [punktu w czasie przywracania bazy danych o wystąpienia zarządzanego Azure SQL przy użyciu programu PowerShell elementu AzureRm.Sql biblioteki](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/).
+- Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [AzSqlInstanceDatabase przywracania](/powershell/module/az.sql/restore-azsqlinstancedatabase).
+
+  | Polecenie cmdlet | Opis |
+  | --- | --- |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Pobiera co najmniej jednego wystąpienia zarządzanego. |
+  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Pobiera wystąpienie bazy danych. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Przywraca bazę danych wystąpienia. |
 
 ### <a name="rest-api"></a>Interfejs API REST
 
@@ -166,7 +172,8 @@ Aby przywrócić bazę pojedynczego lub w puli przy użyciu interfejsu API REST:
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby przywrócić bazę pojedynczego lub w puli przy użyciu wiersza polecenia platformy Azure, zobacz [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
+- Aby przywrócić bazę pojedynczego lub w puli przy użyciu wiersza polecenia platformy Azure, zobacz [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
+- Aby przywrócić wystąpienia zarządzanego przy użyciu wiersza polecenia platformy Azure, zobacz [az sql fragment przywracania](/cli/azure/sql/db#az-sql-midb-restore)
 
 ## <a name="summary"></a>Podsumowanie
 

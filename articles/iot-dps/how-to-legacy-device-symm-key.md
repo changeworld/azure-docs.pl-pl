@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 963d03db2db811b44b1d89df8254f751ec7d3136
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cf4ee8b1b9d96ad4d32a0ac8b1682968b90653f9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877404"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541494"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
 
@@ -114,7 +114,7 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>Utwórz grupę rejestracji klucza symetrycznego
 
-1. Zaloguj się do [witryny Azure portal](http://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
 
 2. Wybierz **Zarządzanie rejestracjami** kartę, a następnie kliknij przycisk **Dodaj grupę rejestracji** znajdujący się u góry strony. 
 

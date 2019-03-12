@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 43989ff9dac7cdad76117aaa6e3c862453b24813
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865114"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544447"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
 
@@ -86,7 +86,7 @@ W tej sekcji utworzysz nową grupę rejestracji dla urządzeń z dzierżawy.
 
 Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md) w przypadku rejestracji. Bardziej bezpieczne rozwiązanie, należy wziąć pod uwagę przy użyciu [zaświadczenia certyfikat X.509](concepts-security.md#x509-certificates) przy użyciu łańcucha zaufania.
 
-1. Zaloguj się do [witryny Azure portal](http://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
 
 2. Wybierz **Zarządzanie rejestracjami** kartę, a następnie kliknij przycisk **Dodaj grupę rejestracji** znajdujący się u góry strony. 
 

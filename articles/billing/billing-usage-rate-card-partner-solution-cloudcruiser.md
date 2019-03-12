@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: erikre
-ms.openlocfilehash: 79582e59d9ad9396acf29d6e35d640edcb20dca3
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: bae35f9e153227ddcca6e0d20ce862317b968eb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275959"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536015"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser i platformy Microsoft Azure Billing Integracja z interfejsem API
 W tym artykule opisano, jak informacje zebrane z nowego Microsoft rozliczeń interfejsów API usługi Azure może służyć w Cloud Cruiser do przepływu pracy koszt symulowania i analiz.
@@ -106,7 +106,7 @@ Po zebraniu użycie i opłaty są ładowane do bazy danych Cloud Cruiser, możem
 
 W celu przedstawienia w tym scenariuszu, utworzyliśmy następującego raportu:
 
-![Porównanie kosztów][9]
+![Cost Comparison][9]
 
 Górny wykres przedstawia porównania kosztów przez usługi, porównywanie cena obciążenie dla każdej określonej usługi między proxy aplikacji sieci Web (ciemnoniebieski) i na platformie Azure (jasnoniebieski).
 
@@ -137,7 +137,7 @@ Nowy sposób użycia interfejsu API usługi Azure Cloud Cruiser można ściągn�
 Na stronie pobierania Cloud Cruiser automatyzuje proces przewidywanych kosztów i obciążeń zwrotnych i użyć informacji dotyczących tagu powiązać użycie odpowiednich użytkownika (dział, dzielenie, projekt itp.). Ta Automatyzacja zapewnia olbrzymią poprawy jakości obsługi i zagwarantować spójne i inspekcji procesu pobierania.
 
 ### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>Tworzenie grupy zasobów za pomocą tagów w systemie Microsoft Azure
-Pierwszym krokiem w ramach tego samouczka jest utworzenie grupy zasobów w witrynie Azure portal, następnie utwórz nowe tagi do skojarzenia z zasobami. W tym przykładzie możemy utworzyć następujące tagi: dział, środowisko, właściciel projektu.
+Pierwszym krokiem w ramach tego samouczka jest utworzenie grupy zasobów w witrynie Azure portal, następnie utwórz nowe tagi do skojarzenia z zasobami. W tym przykładzie możemy utworzyć następujące tagi: Dział, środowisko, właściciela, a projekt.
 
 Poniższy zrzut ekranu przedstawia przykład grupy zasobów z skojarzonych tagów.
 
@@ -200,7 +200,7 @@ Teraz musimy dodać krok do publikowania danych użycia. W tym kroku odpowiednie
 Najlepsze jest to, wystarczy przejść przez ten proces raz. Po ukończeniu skoroszytu, wystarczy dodać go do harmonogramu i działa co godzinę lub codziennie o zaplanowanej godzinie. Jest to kwestia tworzenia nowych raportów lub dostosowywania istniejących, aby analizować dane w celu uzyskania istotnych informacji korzystania z usługi chmury.
 
 ### <a name="next-steps"></a>Następne kroki
-* Aby uzyskać szczegółowe instrukcje dotyczące tworzenia Cloud Cruiser skoroszyty i raporty dotyczą Cloud Cruiser online [dokumentacji](http://docs.cloudcruiser.com/) (wymagane zalogowanie prawidłowy).  Aby uzyskać więcej informacji na temat Cloud Cruiser, skontaktuj się z pomocą [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
+* Aby uzyskać szczegółowe instrukcje dotyczące tworzenia Cloud Cruiser skoroszyty i raporty dotyczą Cloud Cruiser online [dokumentacji](https://docs.cloudcruiser.com/) (wymagane zalogowanie prawidłowy).  Aby uzyskać więcej informacji na temat Cloud Cruiser, skontaktuj się z pomocą [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
 * Zobacz [wgląd w użycie zasobów usługi Microsoft Azure](billing-usage-rate-card-overview.md) omówienie API RateCard i użycie zasobów platformy Azure.
 * Zapoznaj się z [dokumentacja interfejsu API REST rozliczeń platformy Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) Aby uzyskać więcej informacji na temat obu interfejsów API, które są częścią zestawu interfejsów API dostarczonych przez usługę Azure Resource Manager.
 * Jeśli chcesz od razu rozpocząć korzystanie w prawo do przykładowego kodu, odwiedź nasze Microsoft Azure Billing przykłady kodu interfejsu API w witrynie [przykłady kodu platformy Azure](https://azure.microsoft.com/documentation/samples/?term=billing).

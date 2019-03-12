@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d3152eb4b2512e05cad60772f8c4c75dd929758a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051700"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535594"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Użyj wystąpień RDMA lub procesora GPU w pulach usługi Batch
 
@@ -45,18 +45,18 @@ Możliwości RDMA lub procesora GPU rozmiarów obliczeniowych w usłudze Batch s
 
 | Rozmiar | Możliwości | Systemy operacyjne | Wymagane oprogramowanie | Ustawienia puli |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, nc24rs_v3 w warstwie, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, lub<br/>HPC opartych na systemie centOS<br/>(Portal azure Marketplace) | Intel MPI 5<br/><br/>Sterowniki RDMA systemu Linux | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
-| [NC, NCv2, NCv3, NDv2 serii](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | Ubuntu 16.04 LTS, lub<br/>CentOS 7.3 lub wersji 7.4<br/>(Portal azure Marketplace) | Sterowniki NVIDIA CUDA lub CUDA Toolkit | ND | 
-| [NV, NVv2 serii](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla M60 procesora GPU | Ubuntu 16.04 LTS, lub<br/>CentOS 7.3<br/>(Portal azure Marketplace) | Sterowniki NVIDIA GRID | ND |
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, lub<br/>HPC opartych na systemie centOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Sterowniki RDMA systemu Linux | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
+| [NC, NCv2, NCv3, NDv2 serii](../virtual-machines/linux/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | Ubuntu 16.04 LTS, lub<br/>CentOS 7.3 lub wersji 7.4<br/>(Azure Marketplace) | Sterowniki NVIDIA CUDA lub CUDA Toolkit | ND | 
+| [NV, NVv2 serii](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS, lub<br/>CentOS 7.3<br/>(Azure Marketplace) | Sterowniki NVIDIA GRID | ND |
 <sup>*</sup>Procesory GPU NVIDIA Tesla także obsługą dostępu RDMA rozmiary serii N
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Pule Windows — konfiguracja maszyny wirtualnej
 
 | Rozmiar | Możliwości | Systemy operacyjne | Wymagane oprogramowanie | Ustawienia puli |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, nc24rs_v3 w warstwie, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 lub<br/>2012 (Portal azure Marketplace) | Microsoft MPI 2012 R2 lub nowszym, lub<br/> Intel MPI 5<br/><br/>Sterowniki Windows RDMA | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
-| [NC, NCv2, NCv3, ND, NDv2 serii](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | System Windows Server 2016 lub <br/>2012 R2 (Portal Azure Marketplace) | Sterowniki NVIDIA CUDA lub CUDA Toolkit| ND | 
-| [NV, NVv2 serii](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla M60 procesora GPU | System Windows Server 2016 lub<br/>2012 R2 (Portal Azure Marketplace) | Sterowniki NVIDIA GRID | ND |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 lub<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 lub nowszym, lub<br/> Intel MPI 5<br/><br/>Sterowniki Windows RDMA | Włączanie komunikacji między węzłami, wyłączanie wykonywanie zadań jednoczesnych |
+| [NC, NCv2, NCv3, ND, NDv2 serii](../virtual-machines/windows/n-series-driver-setup.md) | Procesory GPU NVIDIA Tesla GPU (różni się od serii) | System Windows Server 2016 lub <br/>2012 R2 (Azure Marketplace) | Sterowniki NVIDIA CUDA lub CUDA Toolkit| ND | 
+| [NV, NVv2 serii](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | System Windows Server 2016 lub<br/>2012 R2 (Azure Marketplace) | Sterowniki NVIDIA GRID | ND |
 <sup>*</sup>Procesory GPU NVIDIA Tesla także obsługą dostępu RDMA rozmiary serii N
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Pule Windows — Konfiguracja usług Cloud services
@@ -100,7 +100,7 @@ Aby skonfigurować wyspecjalizowane rozmiar maszyny Wirtualnej w puli usługi Ba
 
 Aby uruchamiać aplikacje CUDA w puli, węzłów kontrolera sieci Windows, musisz zainstalować sterowniki procesora GPU NVDIA. Następujące przykładowe Użyj pakietu aplikacji, aby zainstalować sterowniki procesora GPU firmy NVIDIA. Możesz wybrać tę opcję, jeśli obciążenie jest zależna od określonej wersji sterowników procesora GPU.
 
-1. Pobierz pakiet instalacyjny dla sterowników procesora GPU w systemie Windows Server 2016 z [witryny sieci Web firmy NVIDIA](https://www.nvidia.com/Download/index.aspx) — na przykład [wersji 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Zapisz plik lokalnie przy użyciu krótką nazwę, takich jak *GPUDriverSetup.exe*.
+1. Pobierz pakiet instalacyjny dla sterowników procesora GPU w systemie Windows Server 2016 z [witryny sieci Web firmy NVIDIA](https://www.nvidia.com/Download/index.aspx) — na przykład [wersji 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Zapisz plik lokalnie przy użyciu krótką nazwę, takich jak *GPUDriverSetup.exe*.
 2. Utwórz plik zip pakietu.
 3. Przekaż pakiet do konta usługi Batch. Aby uzyskać instrukcje, zobacz [pakiety aplikacji](batch-application-packages.md) wskazówki. Określ identyfikator aplikacji, takich jak *GPUDriver*i wersji, takich jak *411.82*.
 1. Korzystając z interfejsów API usługi Batch lub witryny Azure portal, Utwórz pulę w konfiguracji maszyny wirtualnej z żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia, aby zainstalować sterowniki procesora GPU NVIDIA dyskretnie za pomocą zadania uruchamiania:
@@ -111,7 +111,7 @@ Aby uruchamiać aplikacje CUDA w puli, węzłów kontrolera sieci Windows, musis
 | **Wydawca** | MicrosoftWindowsServer |
 | **Oferta** | WindowsServer |
 | **Jednostka SKU** | 2016-Datacenter |
-| **Rozmiar węzła** | Standardowa NC6 |
+| **Rozmiar węzła** | NC6 Standard |
 | **Odwołania do pakietu aplikacji** | GPUDriver, wersja 411.82 |
 | **Zadanie podrzędne uruchamiania włączone** | True<br>**Wiersz polecenia** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Tożsamość użytkownika** — użytkownik automatyczny: puli, administratora<br/>**Zaczekaj na powodzenie** — jest to wartość True
 
@@ -131,7 +131,7 @@ Do uruchamiania aplikacji CUDA na pulę węzłów systemu Linux przez kontroler 
 | **Typ obrazu** | Obraz niestandardowy |
 | **Obraz niestandardowy** | *Nazwa obrazu* |
 | **Jednostkę SKU węzła agenta** | batch.node.ubuntu 16.04 |
-| **Rozmiar węzła** | Standardowa NC6 |
+| **Rozmiar węzła** | NC6 Standard |
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Przykład: Microsoft MPI w puli maszyn wirtualnych H16r Windows
 
@@ -164,7 +164,7 @@ Za pomocą interfejsów API usługi Batch lub witrynie Azure portal utworzyć pu
 | ---- | ---- |
 | **Typ obrazu** | Witryna Marketplace (Linux/Windows) |
 | **Wydawca** | OpenLogic |
-| **Oferta** | CentOS HPC |
+| **Oferta** | CentOS-HPC |
 | **Jednostka SKU** | 7.4 |
 | **Rozmiar węzła** | Standardowa H16r |
 | **Włączono komunikację między węzłami** | True |

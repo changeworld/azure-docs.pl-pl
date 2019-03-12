@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467445"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762929"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -32,30 +32,57 @@ Mimo że wszystkich warstwach, w tym **bezpłatna** warstwie, zwykle oferują r�
 > Wyjątkiem od równoważności funkcji jest [indeksatory](search-indexer-overview.md), które nie są dostępne na S3HD.
 >
 
-W obrębie warstwy, możesz [Dopasowywanie zasobów replik i partycji](search-capacity-planning.md) dotyczące dostosowywania wydajności. Możesz zaczynać się dwa lub trzy każdego z nich i tymczasowo podnieść swoje moc obliczeniową dla duże obciążenia indeksowania. Możliwość dostrojenia poziomów zasobów w ramach warstwy zwiększa elastyczność, ale również lekko komplikuje analizy. Może być konieczne Sprawdź, czy niższej warstwy z wyższym zasobów/replikami oferuje lepszą wartość i wydajność niż wyższego poziomu z niższym zasoby. Aby dowiedzieć się, kiedy i dlaczego może dostosować pojemność, zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
+W obrębie warstwy, możesz [Dopasowywanie zasobów replik i partycji](search-capacity-planning.md) Aby zwiększyć lub zmniejszyć skalę. Możesz rozpocząć od jednego lub dwóch każdego i tymczasowo podnieść swoje moc obliczeniową dla duże obciążenia indeksowania. Możliwość dostrojenia poziomów zasobów w ramach warstwy zwiększa elastyczność, ale również lekko komplikuje analizy. Może być konieczne Sprawdź, czy niższej warstwy z wyższym zasobów/replikami oferuje lepszą wartość i wydajność niż wyższego poziomu z niższym zasoby. Aby dowiedzieć się, kiedy i dlaczego może dostosować pojemność, zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
 
-<!---
-The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
---->
+## <a name="tiers-for-azure-search"></a>Warstwy dla usługi Azure Search
+
+Poniższa tabela zawiera listę dostępnych warstw. Inne źródła informacji warstwy obejmują [stronę z cennikiem](https://azure.microsoft.com/pricing/details/search/), [limity usług i danych](search-limits-quotas-capacity.md)i na stronie portalu podczas aprowizowania usługi.
+
+|Warstwa | Pojemność |
+|-----|-------------|
+|Bezpłatna | Współużytkowana z innymi subskrybentami. Nieskalowalne, maksymalnie 3 indeksy i 50 MB miejsca. |
+|Podstawowa | Dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych na mniejszą skalę. Jedna partycja 2 GB i maksymalnie trzech replik. |
+|1 standardowa (S1) | Z S1 na górę dedykowanych maszynach o większej pojemności magazynowania i przetwarzania na każdym poziomie. Rozmiar partycji wynosi 25 GB na partycję (max 300 GB dokumentów na usługę) dla S1. |
+|Standardowy 2 (warstwa S2) | Podobny do S1, ale z 100 GB/partycji (max 1,2 TB dokumentów na usługę) |
+|Standardowa 3 (S3) | 200 GB na partycję (max 2,4 TB dokumentów na usługę). |
+|Standardowa 3 wysoka gęstość (warstwa S3 — HD) | O wysokiej gęstości jest *hostingu tryb* S3. Używany sprzęt jest zoptymalizowany pod kątem dużej liczby mniejsze indeksów, przeznaczone dla scenariuszy wielodostępności. Wysoka gęstość S3 ma tego samego opłat za jednostki S3, ale sprzęt jest zoptymalizowany pod kątem pliku szybkie odczyty na dużą liczbę mniejszych indeksów.|
+
 
 ## <a name="how-billing-works"></a>Sposób działania rozliczeń
 
-Istnieją cztery sposoby może pociągnąć za sobą koszty, podczas tworzenia zasobu wyszukiwania w portalu, w usłudze Azure Search:
+W usłudze Azure Search są naliczane opłaty w Azure Search na trzy sposoby, a istnieją składniki, stałe i zmienne. W tej sekcji omówiono z kolei w każdej części rozliczeń.
 
-* Dodawanie replik i partycji, używane do regularnego indeksowanie i wykonywanie zapytań zadania. Uruchom przy użyciu jednego wystąpienia każdej, ale może zwiększyć pojemność jeden lub oba, aby dodać, wybierając i płacić za dodatkowe poziomy zasoby. 
-* Opłaty za wyjście danych podczas indeksowania. Podczas ściągania danych ze źródła danych usługi Azure SQL Database i Cosmos DB, są naliczane opłaty za transakcję, na rachunku, dla tych zasobów.
-* Aby uzyskać [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) tylko wyodrębniania obrazu podczas łamania dokumentów jest rozliczana na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne.
-* Dla [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) tylko na podstawie wzbogaceń [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) są rozliczane przy użyciu zasobu usług Cognitive Services. Wzbogacenia są rozliczane przy użyciu stawki stosowanej tak, jakby były wykonywane zadania bezpośrednio za pomocą usług Cognitive Services.
+### <a name="1-core-service-costs-fixed-and-variable"></a>1. Koszty usługi podstawowej (stałe i zmienne)
+
+Za samą usługę Minimalna opłata za to pierwszy jednostka wyszukiwania (1 repliki x 1 partycji), a ta liczba jest stałe dla okresu istnienia usługi, ponieważ usługa nie może działać w każdej mniejszej niż ta konfiguracja. 
+
+Poniższy zrzut ekranu na cennikiem jednostek jest wskazywane bezpłatna, podstawowa i S1 (S2 i S3 nie są wyświetlane). Jeśli utworzono podstawowej usługi lub usług w warstwie standardowa, miesięczny koszt będzie średnia wartość, która pojawia się dla *cen 1* i *cena 2* odpowiednio. Dla każdej warstwy obniżyć koszty jednostki, ponieważ przekracza w poszczególnych warstwach kolejnych możliwości obliczeniowe, możliwości i magazynu.
+
+![Na cennikiem jednostek](./media/search-sku-tier/per-unit-pricing.png "na cennikiem jednostek")
+
+Dodatkowe replik i partycji to dodatek do początkowego opłat. Usługa wyszukiwania wymaga replik i partycji, dlatego minimalnej konfiguracji jednego wystąpienia każdej. Poza minimum należy dodać replik i partycji niezależnie. Na przykład można dodać tylko repliki lub tylko partycje. 
+
+Dodatkowe replik i partycji jest naliczana na podstawie [formuły](#search-units). Koszty są liniowa, (podwojenie pojemności, więcej niż wartości podwójnej precyzji kosztów). Na przykład jak działa formuły zobacz ["How to przydzielenie replik i partycji"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+
+### <a name="2-data-egress-charges-during-indexing"></a>2. Opłaty za wyjście danych podczas indeksowania
+
+Podczas ściągania danych ze źródła danych usługi Azure SQL Database i Cosmos DB, są naliczane opłaty za transakcję, na rachunku, dla tych zasobów. Te opłaty nie są liczniki usługi Azure Search, ale są wymienione w tym miejscu, ponieważ jeśli pobierają dane z bazy danych SQL Azure lub usługi Azure Cosmos DB przy użyciu indeksatorów zobaczysz tej opłaty, na rachunku.
+
+### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-wzbogacone indeksowanie przy użyciu usług Cognitive Services
+
+Aby uzyskać [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) tylko wyodrębniania obrazu podczas łamania dokumentów jest rozliczana na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne. Na podstawie innych wzbogacenia [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) są rozliczane przy użyciu zasobu usług Cognitive Services. Wzbogacenia są rozliczane przy użyciu stawki stosowanej tak, jakby były wykonywane zadania bezpośrednio za pomocą usług Cognitive Services.
 
 Jeśli nie używasz [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) lub [indeksatorów usługi Azure Search](search-indexer-overview.md), tylko koszty są powiązane z replik i partycji w aktywnym korzystaniu w regularnych obciążeń indeksowania i zapytania.
 
-### <a name="billing-for-general-purpose-indexing-and-queries"></a>Rozliczanie indeksowania ogólnego przeznaczenia i zapytań
+<a name="search-units"></a>
+
+### <a name="billing-based-on-search-units"></a>Rozliczanie na podstawie jednostek wyszukiwania
 
 W przypadku operacji usługi Azure Search najważniejszych rozliczeń pojęciem jest *jednostek wyszukiwania* (SU). Ponieważ usługa Azure Search jest zależna od replik i partycji w celu indeksowania i zapytania, nie ma sensu do rozliczania za tylko jednej z nich. Zamiast tego są naliczane złożonego obu tych elementów. 
 
 SU jest wynikiem *repliki* i *partycje* używanych przez usługę: **`(R X P = SU)`**
 
-Każda usługa rozpoczyna się od jednej operacji SU (jedna replika pomnożona przez jedną partycję) jako minimum. Maksymalna liczba dla dowolnej usługi to 36 jednostek wyszukiwania, które można osiągnąć na wiele sposobów: replik partycji 6 x 6 lub 3 partycji x 12 replik, kilka. Jest to często używa się mniej niż łączna pojemność. Na przykład repliki 3, 3 partycji usługi rozliczane jako 9 SUs. 
+Każda usługa rozpoczyna się od jednej operacji SU (jedna replika pomnożona przez jedną partycję) jako minimum. Maksymalna liczba dla dowolnej usługi to 36 jednostek wyszukiwania, które można osiągnąć na wiele sposobów: replik partycji 6 x 6 lub 3 partycji x 12 replik, kilka. Jest to często używa się mniej niż łączna pojemność. Na przykład repliki 3, 3 partycji usługi rozliczane jako 9 SUs. Możesz przejrzeć [ten wykres](search-capacity-planning.md#chart) się prawidłowe kombinacje rzut oka.
 
 Stawka rozliczeniowa jest **godzinowe za SU**, z każdą warstwą o coraz wyższego współczynnika. Wyższe warstwy pochodzą z partycjami większych i szybszej mające wpływ na ogólną wyższa stawka godzinowa dla tej warstwy. Według stawek dla poszczególnych warstw można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/). 
 

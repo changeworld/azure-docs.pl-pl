@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 47d06ce5a03fe51ba345f60e2feff958ed4a890b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ec147355d6f61a282a0e6b0950fe03ba0e2341f5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871166"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530386"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Tworzenie i przywracanie kopii zapasowych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -144,7 +144,7 @@ Poniższa tabela zawiera podsumowanie możliwości poszczególnych opcji tworzen
 | Tworzenie kopii zapasowej na dołączonych dysków na maszynie Wirtualnej |   |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Centralnej można dostosować raporty kopii zapasowych |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Skonsolidowane wiadomości e-mail dla alertów błędów |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Dostosowywanie monitorowania, w oparciu o usługi Log Analytics |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Dostosowywanie monitorowania, w oparciu o dzienniki usługi Azure Monitor |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Monitorowanie zadań tworzenia kopii zapasowej za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Przywracanie baz danych za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633865"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537248"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search
 
@@ -55,14 +55,14 @@ Poniższy przykład przedstawia żądanie wyszukiwania można wysłać do usług
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2017-11-11 
-{  
-    "search": "Spacious, air-condition* +\"Ocean view\"",  
-    "searchFields": "description, title",  
+{
+    "search": "Spacious, air-condition* +\"Ocean view\"",
+    "searchFields": "description, title",
     "searchMode": "any",
-    "filter": "price ge 60 and price lt 300",  
+    "filter": "price ge 60 and price lt 300",
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
- } 
+}
 ~~~~
 
 Dla tego żądania aparatu wyszukiwania wykonuje następujące czynności:
@@ -117,7 +117,7 @@ Domyślnie (`searchMode=any`), aparat wyszukiwania zakłada szersze interpretacj
 Załóżmy, że teraz ustawimy `searchMode=all`. W tym przypadku przestrzeń jest interpretowany jako operację "i". Każdego z pozostałych warunki muszą być obecne w dokumencie, aby zakwalifikować się jako zgodny. Wynikowe zapytanie przykładowe może być interpretowany w następujący sposób: 
 
 ~~~~
-+Spacious,+air-condition*+"Ocean view"  
++Spacious,+air-condition*+"Ocean view"
 ~~~~
 
 Drzewo zmodyfikowane zapytanie dla tego zapytania będą następująco, gdzie pasujących dokumentów jest część wspólną wszystkich trzech podzapytaniach: 
@@ -155,7 +155,7 @@ Kiedy analizatora domyślne przetwarza termin, zostanie małe litery "ocean view
 Zachowanie analizator mogą być testowane przy użyciu [analizowanie API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer). Podaj tekst, który chcesz analizować, aby zobaczyć, co spowoduje wygenerowanie pojęcia analizatora. Na przykład aby zobaczyć, jak standardowy analizator może przetwarzać tekst "air-condition", użytkownik może wydać następujące żądanie:
 
 ~~~~
-{ 
+{
     "text": "air-condition",
     "analyzer": "standard"
 }
@@ -164,7 +164,7 @@ Zachowanie analizator mogą być testowane przy użyciu [analizowanie API](https
 Standardowy analizator dzieli tekst wejściowy na następujące dwa tokeny, dodawanie adnotacji do nich za pomocą atrybutów, takich jak rozpoczęcia i zakończenia przesunięcia (używane w celu wyróżnienia trafień), a także ich pozycji (użyty do dopasowania frazy):
 
 ~~~~
-{  
+{
   "tokens": [
     {
       "token": "air",
@@ -195,11 +195,11 @@ Poddawać analizie leksykalnej dotyczy tylko typów zapytania, które wymagają 
 Pobieranie dokumentu odnosi się do znajdowania dokumentów za pomocą pasujące terminy w indeksie. Ten etap rozumie najlepiej przykładu. Zacznijmy od indeksu hotels, masz następujące prosty schemat: 
 
 ~~~~
-{   
-    "name": "hotels",     
-    "fields": [     
-        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },     
-        { "name": "title", "type": "Edm.String", "searchable": true },     
+{
+    "name": "hotels",
+    "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "title", "type": "Edm.String", "searchable": true },
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
@@ -208,28 +208,28 @@ Pobieranie dokumentu odnosi się do znajdowania dokumentów za pomocą pasujące
 Dodatkowo założono, że ten indeks zawiera cztery następujące dokumenty: 
 
 ~~~~
-{ 
+{
     "value": [
-        {         
-            "id": "1",         
-            "title": "Hotel Atman",         
-            "description": "Spacious rooms, ocean view, walking distance to the beach."   
-        },       
-        {         
-            "id": "2",         
-            "title": "Beach Resort",        
-            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."     
-        },       
-        {         
-            "id": "3",         
-            "title": "Playa Hotel",         
+        {
+            "id": "1",
+            "title": "Hotel Atman",
+            "description": "Spacious rooms, ocean view, walking distance to the beach."
+        },
+        {
+            "id": "2",
+            "title": "Beach Resort",
+            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."
+        },
+        {
+            "id": "3",
+            "title": "Playa Hotel",
             "description": "Comfortable, air-conditioned rooms with ocean view."
-        },       
-        {         
-            "id": "4",         
-            "title": "Ocean Retreat",         
+        },
+        {
+            "id": "4",
+            "title": "Ocean Retreat",
             "description": "Quiet and secluded"
-        }    
+        }
     ]
 }
 ~~~~
@@ -257,10 +257,10 @@ Zwracanie do naszego przykładu dla **tytuł** pola, indeksu odwróconą wygląd
 |------|---------------|
 | atman | 1 |
 | Beach | 2 |
-| hotelu | 1, 3 |
+| hotel | 1, 3 |
 | Ocean | 4  |
 | playa | 3 |
-| czynność | 3 |
+| resort | 3 |
 | Retreat | 4 |
 
 W polu tytułu tylko *hotelu* pojawia się w dwóch dokumentów: 1, 3.
@@ -282,7 +282,7 @@ Aby uzyskać **opis** pola, indeksu jest następująca:
 | Ocean | 1, 2, 3
 | z | 2
 | włączone |2
-| cichy | 4
+| quiet | 4
 | pokoje  | 1, 3
 | secluded | 4
 | lądzie | 2
@@ -291,7 +291,7 @@ Aby uzyskać **opis** pola, indeksu jest następująca:
 | na | 1
 | wyświetl | 1, 2, 3
 | zalet | 1
-| z  | 3
+| z | 3
 
 
 **Pasujące terminy zapytania względem indeksowanych warunki**
@@ -327,7 +327,7 @@ Odwołaj trzy dokumenty, pasujących do nasze przykładowe zapytanie:
 search=Spacious, air-condition* +"Ocean view"  
 ~~~~
 ~~~~
-{  
+{
   "value": [
     {
       "@search.score": 0.25610128,

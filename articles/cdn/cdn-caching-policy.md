@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: ac94370b1c6a8f48ad55f0e277d93cd2f8388cb1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242607"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540159"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Zarządzanie Azure zasady buforowania usługi CDN w usłudze Azure Media Services
-Usługa Azure Media Services udostępnia oparty na protokole HTTP adaptacyjnego przesyłania strumieniowego i pobierania progresywnego. Wysoka skalowalność dzięki korzyści z pamięci podręcznej serwera proxy i warstwy sieci CDN, a także buforowaniem po stronie klienta jest oparty na protokole HTTP, przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego zapewnia ogólne możliwości przesyłania strumieniowego, a także konfiguracji dla protokołu HTTP, nagłówków pamięci podręcznej. Punkty końcowe przesyłania strumieniowego ustawia HTTP Cache-Control: maksymalny wiek i nagłówków Expires. Można uzyskać więcej informacji na nagłówki cache HTTP od [adresem W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
+Usługa Azure Media Services udostępnia oparty na protokole HTTP adaptacyjnego przesyłania strumieniowego i pobierania progresywnego. Wysoka skalowalność dzięki korzyści z pamięci podręcznej serwera proxy i warstwy sieci CDN, a także buforowaniem po stronie klienta jest oparty na protokole HTTP, przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego zapewnia ogólne możliwości przesyłania strumieniowego, a także konfiguracji dla protokołu HTTP, nagłówków pamięci podręcznej. Punkty końcowe przesyłania strumieniowego ustawia HTTP Cache-Control: maksymalny wiek i nagłówków Expires. Można uzyskać więcej informacji na nagłówki cache HTTP od [adresem W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
 
 ## <a name="default-caching-headers"></a>Domyślne nagłówki pamięć podręczna
 Domyślnie — punkty końcowe przesyłania strumieniowego mają zastosowanie nagłówki pamięci podręcznej 3 dni dla danych przesyłania strumieniowego na żądanie (multimedialna fragmenty/fragmentów) i manifest(playlist). Transmisją strumieniową na żywo, punkty końcowe przesyłania strumieniowego Zastosuj nagłówki pamięci podręcznej 3 dni dla danych (multimedialna fragmenty/fragmentów), a nagłówek żądania manifest(playlist) 2 sekundy w pamięci podręcznej. Gdy program na żywo przechodzi na żądanie (dynamiczne archiwum), mają zastosowanie nagłówki pamięci podręcznej z przesyłania strumieniowego na żądanie.

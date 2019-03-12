@@ -1,5 +1,5 @@
 ---
-title: 'Uwierzytelnianie użytkowników końcowych: interfejs API REST przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Uwierzytelnianie użytkowników końcowych: Interfejs API REST przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak wykonać uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory przy użyciu interfejsu API REST
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea550c0959f5de13f013f135926251bf9f8b450f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1e952e32142672946fa987b763032dad66f564a9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124443"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537885"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
@@ -35,14 +35,14 @@ Ten artykuł zawiera informacje o sposobie używania interfejsu API REST w celu 
 
 * **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"**. Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[Adres cURL](http://curl.haxx.se/)**. W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem konta Data Lake Storage Gen1.
+* **[Adres cURL](https://curl.haxx.se/)**. W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem konta Data Lake Storage Gen1.
 
 ## <a name="end-user-authentication"></a>Uwierzytelnianie użytkowników końcowych
 Uwierzytelnianie użytkowników końcowych jest zalecaną metodą, jeśli chcesz, aby użytkownika do logowania do aplikacji za pomocą usługi Azure AD. Aplikacja jest w stanie uzyskać dostęp do zasobów platformy Azure na tym samym poziomie dostępu jako zalogowanego użytkownika. Użytkownik musi podawać swoich poświadczeń kolei okresowo dla swojej aplikacji zachować dostęp.
 
 Wynik o logowaniu użytkownika jest, że aplikacja otrzymuje token dostępu i token odświeżania. Token dostępu jest dołączany do każdego żądania wysłanego do programu Data Lake Storage Gen1 lub Data Lake Analytics i jest on prawidłowy dla jednej godziny domyślnie. Token odświeżania można uzyskać nowy token dostępu i jest on prawidłowy dla do dwóch tygodni, domyślnie, jeśli używane regularnie. Można użyć dwa różne podejścia dla nazwy logowania użytkownika końcowego.
 
-W tym scenariuszu aplikacja wyświetla monit o zalogowanie się i wówczas wszystkie operacje są wykonywane w kontekście zalogowanego użytkownika. Wykonaj następujące czynności:
+W tym scenariuszu aplikacja wyświetla monit o zalogowanie się i wówczas wszystkie operacje są wykonywane w kontekście zalogowanego użytkownika. Wykonaj poniższe czynności:
 
 1. Za pomocą aplikacji przekieruj użytkownika pod następujący adres URL:
    

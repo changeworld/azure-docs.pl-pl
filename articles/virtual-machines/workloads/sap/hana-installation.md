@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2019
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d81207195eb19a386d0d98fd4bfa6ba53ca972e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5bdf23d1a2142e5c83ceeb72a79ca4fbea65d09c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316646"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534280"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -28,7 +28,7 @@ Przed przeczytaniem tego artykułu, zapoznaj się z [dużych wystąpień HANA ty
 Instalacja oprogramowania SAP Hana jest odpowiedzialny za. Możesz rozpocząć instalowanie nowego oprogramowania SAP HANA na serwerze Azure (duże wystąpienia), po nawiązaniu połączenia między sieciami wirtualnymi platformy Azure i jednostek dużych wystąpień HANA. 
 
 > [!Note]
-> Zgodnie z zasadami SAP instalacji oprogramowania SAP HANA, muszą być wykonywane przez osobę, który został przekazany certyfikat skojarzyć technologii SAP egzaminu, instalacja programu SAP HANA egzaminu certyfikacyjnego lub kto to integrator systemów SAP (SI).
+> Zgodnie z zasadami SAP instalacji oprogramowania SAP HANA muszą być wykonywane przez osobę, który został przekazany certyfikat skojarzyć technologii SAP egzaminu, instalacja programu SAP HANA egzaminu certyfikacyjnego lub będącego integratora systemów SAP (SI).
 
 Jeśli planowane jest instalowanie oprogramowania HANA w wersji 2.0, zobacz [Uwaga SAP pomocy technicznej 2235581 # — SAP HANA: Obsługiwane systemy operacyjne](https://launchpad.support.sap.com/#/notes/2235581/E) aby upewnić się, że system operacyjny jest obsługiwany przy użyciu oprogramowania SAP HANA wersji, w przypadku instalacji. Obsługiwany system operacyjny na potrzeby oprogramowania HANA w wersji 2.0 jest bardziej restrykcyjny niż obsługiwany system operacyjny na potrzeby platformy HANA 1.0. 
 
@@ -202,14 +202,15 @@ W przypadku wersji SAP HANA 1.0 maksymalnie SPS12, te parametry można ustawić 
 
 Można również skonfigurować parametry po instalacji baza danych SAP HANA przy użyciu struktury hdbparam. 
 
-Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ograniczenie rozmiaru jest 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) każdego pliku. W przeciwieństwie do przypadków ograniczenia rozmiaru plików takich jak w systemach plików EXT3, HANA nie jest świadomość niejawnie ograniczenia pamięci masowej, wymuszane przez Magazyn dużych wystąpień HANA. w rezultacie HANA nie automatycznie utworzy nowy plik danych po osiągnięciu limitu rozmiaru pliku o rozmiarze 16TB. Jako HANA próby rośnie pliku ponad 16TB, platformy HANA będzie raportów błędów i serwerze indeksowania ulegnie awarii na końcu.
+Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ograniczenie rozmiaru jest 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) każdego pliku. W przeciwieństwie do ograniczenia rozmiaru plików w systemach plików EXT3 HANA nie jest świadomość niejawnie ograniczenia pamięci masowej, wymuszane przez Magazyn dużych wystąpień HANA. w rezultacie HANA nie automatycznie utworzy nowy plik danych po osiągnięciu limitu rozmiaru pliku o rozmiarze 16TB. Jako HANA próby rośnie pliku ponad 16 TB, platformy HANA będzie raportów błędów i serwerze indeksowania ulegnie awarii na końcu.
 
 > [!IMPORTANT]
-> Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini Hana
+> Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini platformy SAP HANA
 > 
 - datavolume_striping=true
 - datavolume_striping_size_gb = 15000
 - Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- Należy pamiętać o Uwaga SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 SAP HANA 2.0 z hdbparam framework jest przestarzała. W rezultacie należy ustawić parametry przy użyciu poleceń SQL. Aby uzyskać więcej informacji, zobacz [Uwaga SAP #2399079: Eliminacja hdbparam HANA 2](https://launchpad.support.sap.com/#/notes/2399079).

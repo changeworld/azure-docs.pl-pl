@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: addc1a0d7356cf1ba536c7ab47e376a48621e2d9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 1a07661d97561319b847323981dd2aa8522b0e84
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342494"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537596"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -57,76 +57,76 @@ Schematycznie indeksu usługi Azure Search składa się z następujących elemen
 [ *Kolekcję pól* ](#fields-collection) jest zazwyczaj największych częścią indeksu, gdzie nosi nazwę każdego pola, wpisane, a z dopuszczalny rozmiar zachowania, które określają, jak są używane. Inne elementy obejmują [sugestory](#suggesters), [profile oceniania](#scoring-profiles), [analizatory](#analyzers) z części składowe, które umożliwiają dostosowanie, a [CORS](#cors) Opcje.
 
 ```json
-{  
-  "name": (optional on PUT; required on POST) "name_of_index",  
-  "fields": [  
-    {  
-      "name": "name_of_field",  
-      "type": "Edm.String | Collection(Edm.String) | Edm.Int32 | Edm.Int64 | Edm.Double | Edm.Boolean | Edm.DateTimeOffset | Edm.GeographyPoint",  
-      "searchable": true (default where applicable) | false (only Edm.String and Collection(Edm.String) fields can be searchable),  
-      "filterable": true (default) | false,  
-      "sortable": true (default where applicable) | false (Collection(Edm.String) fields cannot be sortable),  
-      "facetable": true (default where applicable) | false (Edm.GeographyPoint fields cannot be facetable),  
-      "key": true | false (default, only Edm.String fields can be keys),  
-      "retrievable": true (default) | false,  
+{
+  "name": (optional on PUT; required on POST) "name_of_index",
+  "fields": [
+    {
+      "name": "name_of_field",
+      "type": "Edm.String | Collection(Edm.String) | Edm.Int32 | Edm.Int64 | Edm.Double | Edm.Boolean | Edm.DateTimeOffset | Edm.GeographyPoint",
+      "searchable": true (default where applicable) | false (only Edm.String and Collection(Edm.String) fields can be searchable),
+      "filterable": true (default) | false,
+      "sortable": true (default where applicable) | false (Collection(Edm.String) fields cannot be sortable),
+      "facetable": true (default where applicable) | false (Edm.GeographyPoint fields cannot be facetable),
+      "key": true | false (default, only Edm.String fields can be keys),
+      "retrievable": true (default) | false,
       "analyzer": "name_of_analyzer_for_search_and_indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
       "searchAnalyzer": "name_of_search_analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
       "indexAnalyzer": "name_of_indexing_analyzer", (only if 'searchAnalyzer' is set and 'analyzer' is not set)
       "synonymMaps": [ "name_of_synonym_map" ] (optional, only one synonym map per field is currently supported)
-    }  
-  ],  
-  "suggesters": [  
-    {  
-      "name": "name of suggester",  
-      "searchMode": "analyzingInfixMatching",  
-      "sourceFields": ["field1", "field2", ...]  
-    }  
-  ],  
-  "scoringProfiles": [  
-    {  
-      "name": "name of scoring profile",  
-      "text": (optional, only applies to searchable fields) {  
-        "weights": {  
-          "searchable_field_name": relative_weight_value (positive #'s),  
-          ...  
-        }  
-      },  
-      "functions": (optional) [  
-        {  
-          "type": "magnitude | freshness | distance | tag",  
-          "boost": # (positive number used as multiplier for raw score != 1),  
-          "fieldName": "...",  
-          "interpolation": "constant | linear (default) | quadratic | logarithmic",  
-          "magnitude": {  
-            "boostingRangeStart": #,  
-            "boostingRangeEnd": #,  
-            "constantBoostBeyondRange": true | false (default)  
-          },  
-          "freshness": {  
-            "boostingDuration": "..." (value representing timespan leading to now over which boosting occurs)  
-          },  
-          "distance": {  
-            "referencePointParameter": "...", (parameter to be passed in queries to use as reference location)  
-            "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)  
-          },  
-          "tag": {  
-            "tagsParameter": "..." (parameter to be passed in queries to specify a list of tags to compare against target fields)  
-          }  
-        }  
-      ],  
-      "functionAggregation": (optional, applies only when functions are specified)   
-        "sum (default) | average | minimum | maximum | firstMatching"  
-    }  
-  ],  
+    }
+  ],
+  "suggesters": [
+    {
+      "name": "name of suggester",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": ["field1", "field2", ...]
+    }
+  ],
+  "scoringProfiles": [
+    {
+      "name": "name of scoring profile",
+      "text": (optional, only applies to searchable fields) {
+        "weights": {
+          "searchable_field_name": relative_weight_value (positive #'s),
+          ...
+        }
+      },
+      "functions": (optional) [
+        {
+          "type": "magnitude | freshness | distance | tag",
+          "boost": # (positive number used as multiplier for raw score != 1),
+          "fieldName": "...",
+          "interpolation": "constant | linear (default) | quadratic | logarithmic",
+          "magnitude": {
+            "boostingRangeStart": #,
+            "boostingRangeEnd": #,
+            "constantBoostBeyondRange": true | false (default)
+          },
+          "freshness": {
+            "boostingDuration": "..." (value representing timespan leading to now over which boosting occurs)
+          },
+          "distance": {
+            "referencePointParameter": "...", (parameter to be passed in queries to use as reference location)
+            "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
+          },
+          "tag": {
+            "tagsParameter": "..." (parameter to be passed in queries to specify a list of tags to compare against target fields)
+          }
+        }
+      ],
+      "functionAggregation": (optional, applies only when functions are specified) 
+        "sum (default) | average | minimum | maximum | firstMatching"
+    }
+  ],
   "analyzers":(optional)[ ... ],
   "charFilters":(optional)[ ... ],
   "tokenizers":(optional)[ ... ],
   "tokenFilters":(optional)[ ... ],
-  "defaultScoringProfile": (optional) "...",  
-  "corsOptions": (optional) {  
-    "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],  
-    "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)  
-  }  
+  "defaultScoringProfile": (optional) "...",
+  "corsOptions": (optional) {
+    "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
+    "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
+  }
 }
 ```
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d881a5c0f994b627b4c7c3da362672b3b887cd5e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a094369d467b3b1f3d5fe93f870dccc9eae7519c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996158"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547215"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service DC/OS za pomocą usługi Datadog
 
@@ -23,7 +23,7 @@ ms.locfileid: "52996158"
 W tym artykule wdrożymy agentów pomocą usługi Datadog do wszystkich węzłów agenta w klastrze usługi Azure Container Service. Konieczne będzie konto za pomocą usługi Datadog dla tej konfiguracji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-[Wdróż](container-service-deployment.md) i [połącz](../container-service-connect.md) klaster skonfigurowany przez usługę Azure Container Service. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do [ http://datadoghq.com ](http://datadoghq.com) skonfigurować konto pomocą usługi Datadog. 
+[Wdróż](container-service-deployment.md) i [połącz](../container-service-connect.md) klaster skonfigurowany przez usługę Azure Container Service. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do [ https://datadoghq.com ](https://datadoghq.com) skonfigurować konto pomocą usługi Datadog. 
 
 ## <a name="datadog"></a>Pomocą usługi Datadog
 Pomocą usługi Datadog jest usługą monitorowania, która gromadzi dane monitorowania z kontenerów w klastrze usługi Azure Container Service. Pomocą usługi Datadog ma na pulpicie nawigacyjnym integracji platformy Docker, którym można zobaczyć określonych metryk w Twoich kontenerów. Metryki zebrane z kontenerów są uporządkowane według procesora CPU, pamięci, sieci i we/wy. Pomocą usługi Datadog dzieli metryki na kontenerach i obrazy. Przykładem takich jak wygląda interfejs użytkownika użycia procesora CPU jest niższa.

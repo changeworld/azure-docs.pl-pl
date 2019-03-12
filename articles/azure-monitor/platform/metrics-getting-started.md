@@ -8,25 +8,21 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9d23d4b30ca4d394fb4afd0bb6620be6df179600
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444943"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537341"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Wprowadzenie do Eksploratora metryk platformy Azure
 
 ## <a name="where-do-i-start"></a>Gdzie rozpocząć
+Eksplorator metryk usługi Azure Monitor to składnik systemu Microsoft Azure portal, która umożliwia wykreślania wykresy i wizualne korelowanie trendów i badanie wzrostów i spadki wartości metryk. Skorzystaj z Eksploratora metryk do badania kondycji i wykorzystania zasobów. Uruchom w następującej kolejności:
 
-> [!NOTE]
-> W tym artykule opisano kluczowe pojęcia, ułatwiający nowym użytkownikom rozpocząć pracę z Eksploratorem metryk usługi Azure Monitor. Aby uzyskać bardziej szczegółowe, dokumentacji i informacji o ustawieniach zaawansowanych wykresu i metryk, zobacz [zaawansowane funkcje Eksploratora metryk usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts).
+1. [Wybierz zasób i metryki](#create-your-first-metric-chart) zobaczyć podstawowego wykresu. Następnie [wybierz zakres czasu](#select-a-time-range) jest odpowiednie dla badania.
 
-Skorzystaj z Eksploratora metryk do badania kondycji i wykorzystania zasobów. Uruchom w następującej kolejności:
-
-1. Rozpocznij od [pobrania zasobu i metryki](#creating-your-first-metric-chart) zobaczyć podstawowego wykresu. Następnie [wybierz zakres czasu](#picking-time-range) jest odpowiednie dla badania.
-
-1. Spróbuj [stosowanie filtrów wymiaru i dzielenia](#applying-dimension-filters-and-splitting). Filtry i dzielenia pozwalają analizować, jakie segmenty metryki przyczyniają się do wartości ogólne metryki i zidentyfikować elementy odstające możliwe.
+1. Spróbuj [stosowanie filtrów wymiaru i dzielenia](#apply-dimension-filters-and-splitting). Filtry i dzielenia pozwalają analizować, jakie segmenty metryki przyczyniają się do wartości ogólne metryki i zidentyfikować elementy odstające możliwe.
 
 1. Użyj [Zaawansowane ustawienia](#advanced-chart-settings-and-next-steps) dostosować wykres przed przypięciem do pulpitów nawigacyjnych. [Konfigurowanie alertów](alerts-metric-overview.md) Aby otrzymywać powiadomienia, gdy wartość metryki przekracza lub spadnie poniżej wartości progowej.
 
@@ -49,7 +45,7 @@ Aby utworzyć wykres metryk z zasobu, grupy zasobów, subskrypcji lub widok usł
 > [!NOTE]
 > Użyj **Dodaj metrykę** przycisku i powtórz te kroki, jeśli chcesz wyświetlić wiele metryk, w tym samym wykresie. W przypadku wielu wykresów w jednym widoku, wybierz **Dodaj wykres** przycisk u góry.
 
-## <a name="pick-a-time-range"></a>Wybierz zakres czasu
+## <a name="select-a-time-range"></a>Wybierz zakres czasu
 
 Domyślnie wykres przedstawia w ostatnich 24 godzin dane metryk. Użyj **selektor czasu** panelu, aby zmienić zakres czasu, powiększyć lub pomniejszyć na wykresie. 
 
@@ -57,7 +53,7 @@ Domyślnie wykres przedstawia w ostatnich 24 godzin dane metryk. Użyj **selekto
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Zastosuj filtry wymiarów i dzielenia
 
-[Filtrowanie](metrics-charts.md#apply-filters-to-charts) i [podział](metrics-charts.md#apply-splitting-to-a-chart) są zaawansowane narzędzia diagnostyczne dla metryk, który ma wymiarów. Tych funkcji Pokaż różnych segmentów metryki ("wartości wymiaru") mieć wpływ na ogólną wartość metryki i pozwalają zidentyfikować elementy odstające możliwe.
+[Filtrowanie](metrics-charts.md#apply-filters-to-charts) i [podział](metrics-charts.md#apply-splitting-to-a-chart) są zaawansowane narzędzia diagnostyczne dla metryk, który ma wymiarów. Te funkcje Pokaż różnych wpływ metryki segmentów ("wartości wymiaru") całkowitej wartości metryki i pozwalają zidentyfikować elementy odstające możliwe.
 
 - **Filtrowanie** pozwala wybrać, wartości wymiarów, które znajdują się na wykresie. Na przykład możesz chcieć Pokaż liczba pomyślnych żądań, gdy wykresy *czas odpowiedzi serwera* metryki. Będziesz potrzebować zastosować filtr na *Powodzenie żądanie* wymiaru. 
 

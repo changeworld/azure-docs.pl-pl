@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: d692eb471c514015271a688e4660700788f1baaa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431466"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570372"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla systemu Windows Server umożliwia użycie licencji na system Windows Server w środowisku lokalnym i uruchamianie maszyn wirtualnych Windows na platformie Azure, przy niższych kosztach. Azure korzyści użycia hybrydowego dla systemu Windows Server służy do wdrażania nowych maszyn wirtualnych z systemem operacyjnym Windows. W tym artykule przechodzi przez instrukcje dotyczące sposobu wdrażania nowych maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oraz jak zaktualizować istniejące uruchamianie maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oszczędności licencjonowania i kosztów, zobacz [strony licencjonowania platformy Azure korzyści użycia hybrydowego dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -77,11 +77,11 @@ az vm create \
 ### <a name="template"></a>Szablon
 W szablonach usługi Resource Manager, dodatkowy parametr `licenseType` musi być określona. Przeczytaj więcej o [Tworzenie szablonów usługi Azure Resource Manager](../../resource-group-authoring-templates.md)
 ```json
-"properties": {  
-   "licenseType": "Windows_Server",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Server",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Konwertowanie istniejącej maszyny Wirtualnej przy użyciu usługi Azure korzyści użycia hybrydowego dla systemu Windows Server
@@ -161,7 +161,7 @@ Z maszyny wirtualnej lub maszyny wirtualnej scale sets bloku zasobów możesz wy
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
-$vms = Get-AzVM 
+$vms = Get-AzVM
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 
@@ -171,7 +171,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Wdrażanie zestawu skalowania maszyn wirtualnych z korzyścią użycia hybrydowego platformy Azure dla systemu Windows Server
-W ramach maszyny wirtualnej zestawu skalowania szablonów usługi Resource Manager, dodatkowy parametr `licenseType` muszą być określone w swojej właściwości VirtualMachineProfile. Można to zrobić podczas tworzenia lub aktualizacji dla skalowania jest ustawiana przy użyciu szablonu ARM, programu Powershell, interfejsu wiersza polecenia platformy Azure lub REST.
+W ramach maszyny wirtualnej zestawu skalowania szablonów usługi Resource Manager, dodatkowy parametr `licenseType` muszą być określone w swojej właściwości VirtualMachineProfile. Można to zrobić podczas tworzenia lub aktualizacji dla skalowania jest ustawiana przy użyciu szablonu ARM, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub REST.
 
 W poniższym przykładzie użyto szablonu ARM przy użyciu obrazu systemu Windows Server 2016 Datacenter:
 ```json

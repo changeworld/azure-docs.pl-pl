@@ -5,28 +5,53 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: arduppal
-ms.date: 01/04/2019
+ms.date: 03/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 556ed3553185445432f9f95731ccfec0578fab62
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6f82f50ebaa7ad4440078d1fd4658109cf0e19b6
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455670"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571290"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
 Usługa Azure Blob Storage w usłudze IoT Edge zapewnia [blokowych obiektów blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) rozwiązanie do magazynowania na urządzeniach brzegowych. Moduł magazynu obiektów blob na urządzeniu usługi IoT Edge, który zachowuje się jak usługi Azure block blob, ale blokowe obiekty BLOB są przechowywane lokalnie na urządzeniu usługi IoT Edge. Możesz uzyskać dostęp przy użyciu tych samych metod zestawu SDK usługi Azure storage blob lub blokować wywołań interfejsu API obiektu blob, które zostały już one użyte do. 
 
-Scenariusze, w którym danych, takich jak wideo, obrazów, dane finansowe, dane szpitali lub wszelkie dane, które muszą być przechowywane lokalnie, później, które mogą być przetwarzane lokalnie lub przeniesione do chmury to dobre przykłady, aby użyć tego modułu.
+Ten moduł jest dostarczany z **warstw automatycznie** i **automatyczne wygaśnięcie** funkcji.
+
+> [!NOTE]
+> Obecnie warstw automatycznie i automatyczne wygaśnięcie funkcje są dostępne tylko w AMD64 systemu Linux i ARM32 systemu Linux.
+
+**Obsługa warstw automatycznie** jest można skonfigurować funkcję, która pozwala na automatyczne przekazywanie danych z magazynu lokalnego obiektu blob na platformie Azure przy użyciu sporadyczne Obsługa połączenia internetowego. Umożliwia:
+- Włączanie/wyłączenie funkcji obsługi warstw
+- Wybierz kolejność, w którym dane zostaną skopiowane na platformę Azure, takich jak NewestFirst lub OldestFirst
+- Określ konto usługi Azure Storage, do którego mają zostać przekazane dane.
+- Określ kontenery, które chcesz przekazać na platformę Azure. Moduł ten umożliwia określenie nazwy kontenera elementy źródłowe i docelowe.
+- Pełne warstw obiektów blob (przy użyciu `Put Blob` operacji) i blokowanie obsługi warstw na poziomie (przy użyciu `Put Block` i `Put Block List` operacji).
+
+W tym module korzystamy blokowych poziomu warstw, gdy obiekt blob składa się z bloków. Poniżej przedstawiono niektóre typowe scenariusze:
+- Aplikacja aktualizuje niektóre bloki wcześniej przekazanego obiektu blob, w tym module przekazać tylko zaktualizowane bloki, a nie cały obiekt blob.
+- Moduł przekazywania obiektów blob i połączenie z Internetem znika, gdy połączenie jest ponownie ponownie przekaże pozostałe bloków i nie cały obiekt blob.
+
+Jeśli po zakończeniu procesu nieoczekiwany (np. awarii zasilania) będzie się działo podczas przekazywania obiektów blob, wszystkie bloki, które zostały do przekazywania będzie można przekazać ponownie, gdy moduł powróci do trybu online.
+
+**Automatyczne wygaśnięcie** jest można konfigurować funkcje, w którym ten moduł spowoduje automatyczne usunięcie obiektów blob z magazynu lokalnego po upływie czasu wygaśnięcia (TTL). Jest on mierzony w ciągu kilku minut. Umożliwia:
+- Włączanie/wyłączenie funkcji automatycznej wygaśnięcia
+- Określ czas wygaśnięcia w ciągu kilku minut
+
+Scenariusze, w którym danych, takich jak wideo, obrazów, dane finansowe, dane szpitali lub wszelkie dane, które muszą być przechowywane lokalnie, później, mogą być przetwarzane lokalnie lub przeniesione do chmury to dobre przykłady, aby użyć tego modułu.
 
 Ten artykuł zawiera instrukcje dotyczące wdrażania usługi Azure Blob Storage na kontenera usługi IoT Edge, w którym jest uruchomiona usługa blob na urządzeniu usługi IoT Edge. 
 
 >[!NOTE]
 >Usługa Azure Blob Storage w usłudze IoT Edge jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+
+Obejrzyj film dotyczący szybkie wprowadzenie
+> [!VIDEO https://www.youtube.com/embed/wkprcfVidyM]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -118,7 +143,9 @@ Portal Azure Marketplace udostępnia usługi IoT Edge, moduły, które można wd
 
       ![Aktualizacja modułu kontenera tworzenie opcji — portal](./media/how-to-store-data-blob/edit-module.png)
 
-   4. Wybierz pozycję **Zapisz**.
+   4. Ustaw [warstw automatycznie i automatyczne wygaśnięcie](#configure-auto-tiering-and-auto-expiration-via-azure-portal) w odpowiednich właściwości. Lista [warstw automatycznie](#auto-tiering-properties) i [automatyczne wygaśnięcie](#auto-expiration-properties) właściwości i ich możliwe wartości. 
+
+   5. Wybierz pozycję **Zapisz**. 
 
 4. Wybierz **Dalej**, aby przejść do następnego kroku w kreatorze.
 5. W **określanie tras** kroku kreatora wybierz pozycję **dalej**.
@@ -174,26 +201,148 @@ Wykonaj następujące kroki, aby utworzyć nowe rozwiązanie IoT Edge przy użyc
    > [!IMPORTANT]
    > Nie zmieniaj druga połowa katalog magazynu powiązać wartości, które wskazuje do określonej lokalizacji w module. Powiązania katalogu magazynu zawsze powinien kończyć się znakiem **: / blobroot** dla kontenerów systemu Linux i **: C: / BlobRoot** dla kontenerów Windows.
 
-5. Zapisz plik **deployment.template.json**.
+5. Konfigurowanie [warstw automatycznie i automatyczne wygaśnięcie](#configure-auto-tiering-and-auto-expiration-via-vscode). Lista [warstw automatycznie](#auto-tiering-properties) i [automatyczne wygaśnięcie](#auto-expiration-properties) właściwości
 
-6. Otwórz **ENV** plik rozwiązania obszaru roboczego. 
+6. Zapisz plik **deployment.template.json**.
 
-7. Plik ENV jest skonfigurowany do odbierania poświadczeń rejestru kontenerów, ale nie ma potrzeby, obrazu magazynu obiektów blob, ponieważ jest on dostępny publicznie. Zamiast tego należy zamienić plik na dwa nowe zmienne środowiskowe: 
+7. Otwórz **ENV** plik rozwiązania obszaru roboczego. 
+
+8. Plik ENV jest skonfigurowany do odbierania poświadczeń rejestru kontenerów, ale nie ma potrzeby, obrazu magazynu obiektów blob, ponieważ jest on dostępny publicznie. Zamiast tego należy zamienić plik na dwa nowe zmienne środowiskowe: 
 
    ```env
    STORAGE_ACCOUNT_NAME=
    STORAGE_ACCOUNT_KEY=
    ```
 
-8. Wprowadź wartość w polu `STORAGE_ACCOUNT_NAME`, nazwy konta powinny być 3 do 24 znaków, małe litery i cyfry. Podaj klucz 64 bajtów w formacie base64 dla `STORAGE_ACCOUNT_KEY`. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów. 
+9. Wprowadź wartość w polu `STORAGE_ACCOUNT_NAME`, nazwy konta powinny być 3 do 24 znaków, małe litery i cyfry. Podaj klucz 64 bajtów w formacie base64 dla `STORAGE_ACCOUNT_KEY`. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów. 
 
    Nie zawierają spacji ani znaków cudzysłowu wokół wartości, których udzielasz. 
 
-9. Zapisz plik **ENV**. 
+10. Zapisz plik **ENV**. 
 
-10. Kliknij prawym przyciskiem myszy **deployment.template.json** i wybierz **manifest wdrożenia usługi IoT Edge Generowanie**. 
+11. Kliknij prawym przyciskiem myszy **deployment.template.json** i wybierz **manifest wdrożenia usługi IoT Edge Generowanie**. 
 
-11. Visual Studio Code przyjmuje informacje podane w deployment.template.json i ENV, a następnie używa jej do utworzenia nowego pliku manifestu wdrożenia. Manifest wdrożenia jest tworzony w nowym **config** folder w obszarze roboczym Twojego rozwiązania. Po utworzeniu tego pliku, możesz wykonać kroki w [modułów wdrożenia usługi Azure IoT Edge z programu Visual Studio Code](how-to-deploy-modules-vscode.md) lub [modułów wdrożenia usługi Azure IoT Edge przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](how-to-deploy-modules-cli.md).
+12. Visual Studio Code przyjmuje informacje podane w deployment.template.json i ENV, a następnie używa jej do utworzenia nowego pliku manifestu wdrożenia. Manifest wdrożenia jest tworzony w nowym **config** folder w obszarze roboczym Twojego rozwiązania. Po utworzeniu tego pliku, możesz wykonać kroki w [modułów wdrożenia usługi Azure IoT Edge z programu Visual Studio Code](how-to-deploy-modules-vscode.md) lub [modułów wdrożenia usługi Azure IoT Edge przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](how-to-deploy-modules-cli.md).
+
+## <a name="auto-tiering-and-auto-expiration-properties-and-configuration"></a>Obsługa warstw automatycznie właściwości automatycznego wygaśnięcia i konfiguracji
+
+Użyj żądanych właściwości, aby ustawić właściwości automatycznego wygaśnięcia i warstw automatycznie. Można je ustawić podczas wdrażania lub zmienić później, edytując bliźniaczą reprezentację modułu bez konieczności ponownego wdrażania. Firma Microsoft zaleca sprawdzenie "Bliźniaczą reprezentację modułu" dla `reported configuration` i `configurationValidation` się upewnić, że wartości są poprawnie propagowane.
+
+### <a name="auto-tiering-properties"></a>Właściwości warstwy automatycznie 
+Nazwa tego ustawienia jest `tieringSettings`
+| Pole | Możliwe wartości | Wyjaśnienie |
+| ----- | ----- | ---- |
+| tieringOn | wartość true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`|
+| backlogPolicy | NewestFirst, OldestFirst | Pozwala wybrać kolejność, w którym dane zostaną skopiowane na platformę Azure. Domyślnie jest ustawiona `OldestFirst`. Kolejność jest określana przez godzinę ostatniej modyfikacji obiektu Blob |
+| remoteStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` Parametry połączenia, które można określić konto usługi Azure Storage, do której chcesz danych jest przekazywany. Określ `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Dodaj odpowiednie EndpointSuffix platformy Azure z którym dane zostaną przekazane, jego różni się w globalnej platformy Azure, Azure dla instytucji rządowych i Microsoft Azure Stack. |
+| tieredContainers | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umożliwia określenie nazwy kontenera, który chcesz przekazać na platformę Azure. Moduł ten umożliwia określenie nazwy kontenera elementy źródłowe i docelowe. Jeśli nie określisz nazwy kontenera docelowego, automatycznie przypisze nazwę kontenera jako `<IoTHubName>-<IotEdgeDeviceName>-<ModuleName>-<ContainerName>`. Możesz utworzyć parametry szablonu dla nazwy kontenera docelowego, wyewidencjonowania kolumny możliwych wartości. <br>* %h -> nazwą Centrum IoT (3 – 50 znaków). <br>* %d -> urządzenia IoT identyfikator (1-129 znaków). <br>* %m -> Nazwa modułu (od 1 do 64 znaków). <br>* %c -> Nazwa kontenera danych źródłowych (od 3 do 63 znaków). <br><br>Maksymalny rozmiar nazwa kontenera jest 63 znaków podczas automatycznego przypisywania nazwy kontenera docelowego jeśli rozmiar kontenera przekracza 63 znaków, który go będzie ograniczać każdej sekcji (IoTHubName IotEdgeDeviceName, ModuleName, ContainerName) do 15 znaków. |
+
+### <a name="auto-expiration-properties"></a>Właściwości automatyczne wygaśnięcia
+Nazwa tego ustawienia jest `ttlSettings`
+| Pole | Możliwe wartości | Wyjaśnienie |
+| ----- | ----- | ---- |
+| ttlOn | wartość true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`|
+| timeToLiveInMinutes | `<minutes>` | Określ czas wygaśnięcia w ciągu kilku minut. Moduł automatycznie spowoduje usunięcie obiektów blob z magazynu lokalnego po wygaśnięciu czasu wygaśnięcia |
+
+### <a name="configure-auto-tiering-and-auto-expiration-via-azure-portal"></a>Konfigurowanie obsługi warstw automatycznie i automatyczne wygaśnięcie za pośrednictwem witryny Azure portal
+
+Ustaw żądane właściwości, aby umożliwić obsługę warstw automatycznie i automatycznie wygaśnięcia można ustawić następujące wartości:
+
+- **Podczas początkowego wdrożenia**: Skopiuj kod JSON w **żądane właściwości zestawu modułu bliźniaczej reprezentacji** pole. Konfigurowanie każdej właściwości przy użyciu odpowiedniej wartości, zapisz go i kontynuować wdrożenia.
+
+   ```json
+   {
+     "properties.desired": {
+       "ttlSettings": {
+         "ttlOn": <true, false>, 
+         "timeToLiveInMinutes": <timeToLiveInMinutes> 
+       },
+       "tieringSettings": {
+         "tieringOn": <true, false>,
+         "backlogPolicy": "<NewestFirst, OldestFirst>",
+         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "tieredContainers": {
+           "<source container name1>": {
+             "target": "<target container name1>"
+           }
+         }
+       }
+     }
+   }
+
+   ```
+
+ ![Ustawianie właściwości warstw automatycznie i automatycznie wygaśnięcia](./media/how-to-store-data-blob/iotedge_custom_module.png)
+
+- **Po wdrożeniu modułu za pomocą funkcji "Bliźniaczą reprezentację modułu tożsamości"**: Przejdź do "Bliźniaczą reprezentację tożsamości modułu" tego modułu, skopiuj dane JSON w obszarze właściwości żądanego, skonfiguruj każdą właściwość z odpowiednią wartością i Zapisz. W formacie Json "Bliźniaczą reprezentację modułu tożsamości" Upewnij się, że za każdym razem, gdy Dodaj lub zaktualizuj dowolny żądaną właściwość, `reported configuration` sekcji odzwierciedla wprowadzone zmiany, a `configurationValidation` sekcji zgłosi powodzenie operacji dla każdej właściwości.
+
+   ```json 
+    "ttlSettings": {
+        "ttlOn": <true, false>, 
+        "timeToLiveInMinutes": <timeToLiveInMinutes> 
+    },
+    "tieringSettings": {
+        "tieringOn": <true, false>,
+        "backlogPolicy": "<NewestFirst, OldestFirst>",
+        "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+        "tieredContainers": {
+            "<source container name1>": {
+                "target": "<target container name1>"
+            }
+        }
+    }
+
+   ```
+
+![module_identity_twin ttl warstw +](./media/how-to-store-data-blob/module_identity_twin.png) 
+
+### <a name="configure-auto-tiering-and-auto-expiration-via-vscode"></a>Konfigurowanie obsługi warstw automatycznie i wygaśnięcia automatycznie za pomocą programu VSCode
+
+- **Podczas początkowego wdrożenia**: Dodaj poniższe JSON w swojej deployment.template.json do definiowania żądane właściwości dla tego modułu. Konfigurowanie każdej właściwości z odpowiednią wartością i zapisz go.
+
+   ```json
+   "<your azureblobstorageoniotedge module name>":{
+     "properties.desired": {
+       "ttlSettings": {
+         "ttlOn": <true, false>, 
+         "timeToLiveInMinutes": <timeToLiveInMinutes> 
+       },
+       "tieringSettings": {
+         "tieringOn": <true, false>,
+         "backlogPolicy": "<NewestFirst, OldestFirst>",
+         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "tieredContainers": {
+           "<source container name1>": {
+             "target": "<target container name1>"
+           }
+         }
+       }
+     }
+   }
+
+   ```
+
+Oto przykład żądane właściwości dla tego modułu: ![ustaw żądane właściwości azureblobstorageoniotedge — program VS Code](./media/how-to-store-data-blob/tiering_ttl.png)
+
+- **Po wdrożeniu modułu za pomocą "Bliźniaczą reprezentację modułu"**: [Edytuj bliźniaczą reprezentację modułu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) tego modułu, skopiuj kod JSON w obszarze właściwości żądanego, skonfiguruj każdą właściwość z odpowiednią wartością i Zapisz. W formacie Json "Bliźniaczą reprezentację modułu" Upewnij się, że za każdym razem, gdy Dodaj lub zaktualizuj dowolny żądaną właściwość, `reported configuration` sekcji odzwierciedla wprowadzone zmiany, a `configurationValidation` sekcji zgłosi powodzenie operacji dla każdej właściwości.
+
+   ```json 
+    "ttlSettings": {
+        "ttlOn": <true, false>, 
+        "timeToLiveInMinutes": <timeToLiveInMinutes> 
+    },
+    "tieringSettings": {
+        "tieringOn": <true, false>,
+        "backlogPolicy": "<NewestFirst, OldestFirst>",
+        "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+        "tieredContainers": {
+            "<source container name1>": {
+                "target": "<target container name1>"
+            }
+        }
+    }
+
+   ```
 
 ## <a name="connect-to-your-blob-storage-module"></a>Łączenie usługi modułu magazynu obiektów blob
 
@@ -201,17 +350,12 @@ Można użyć nazwy konta i klucz konta, które skonfigurowano dla modułu dost�
 
 Określ urządzenia usługi IoT Edge jako punkt końcowy obiektu blob do przechowywania dowolnego żądania, które można wprowadzać w nim. Możesz [utworzyć parametry połączenia dla punktu końcowego magazynu jawne](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) przy użyciu informacji o urządzeniu usługi IoT Edge i nazwę konta, które zostały skonfigurowane. 
 
-1. Dla modułów, które zostały wdrożone na tym samym urządzeniu krawędzi, gdzie jest uruchomione "Azure Blob Storage na usługi IoT Edge" punkt końcowy obiektu blob jest: `http://<module name>:11002/<account name>`. 
-2. Dla modułów, które zostały wdrożone na urządzenia edge innego, niż urządzenia edge, w których jest uruchomiony "Azure Blob Storage na usługi IoT Edge", a następnie w zależności od konfiguracji punktu końcowego obiektu blob jest: `http://<device IP >:11002/<account name>` lub `http://<IoT Edge device hostname>:11002/<account name>` lub `http://<FQDN>:11002/<account name>`
-
-## <a name="logs"></a>Dzienniki
-
-Dzienniki wewnątrz kontenera, można znaleźć w obszarze: 
-* Dla systemu Linux: /blobroot/logs/platformblob.log
+1. W przypadku modułów, które zostały wdrożone na tym samym urządzeniu krawędzi, gdzie jest uruchomione "Azure Blob Storage na usługi IoT Edge", jest punkt końcowy obiektu blob: `http://<module name>:11002/<account name>`. 
+2. Dla modułów, które zostały wdrożone na urządzeniu krawędzi innego niż urządzenia edge, w których jest uruchomiony "Azure Blob Storage na usługi IoT Edge", a następnie w zależności od konfiguracji punktu końcowego obiektu blob jest: `http://<device IP >:11002/<account name>` lub `http://<IoT Edge device hostname>:11002/<account name>` lub `http://<FQDN>:11002/<account name>`
 
 ## <a name="deploy-multiple-instances"></a>Wdrażanie wielu wystąpień
 
-Jeśli chcesz wdrożyć wiele wystąpień usługi Azure Blob Storage w usłudze IoT Edge, wystarczy zmienić HostPort, który powiąże modułu. Moduły magazynu obiektów blob jest zawsze udostępniania portów 11002 w kontenerze, ale można zadeklarować port, który jest powiązany z na hoście. 
+Wdrażanie wielu wystąpień usługi Azure Blob Storage w usłudze IoT Edge, należy podać ścieżkę do innego magazynu i zmień HostPort, który powiąże modułu. Moduły magazynu obiektów blob jest zawsze udostępniania portów 11002 w kontenerze, ale można zadeklarować port, który jest powiązany z na hoście. 
 
 Edytuj moduł utworzyć opcje, aby zmienić wartość HostPort:
 
@@ -221,22 +365,39 @@ Edytuj moduł utworzyć opcje, aby zmienić wartość HostPort:
 
 Po podłączeniu do modułów magazynu obiektów blob dodatkowe Zmiana punktu końcowego portu zaktualizowanego hosta. 
 
-## <a name="try-it-out"></a>Wypróbuj
+## <a name="try-it-out"></a>Testowanie
 
-Dokumentacja usługi Azure Blob Storage zawiera Przewodniki Szybki Start, zapewniające przykładowego kodu w kilku językach. Możesz uruchomić te przykłady do testowania usługi Azure Blob Storage w usłudze IoT Edge, zmieniając punktu końcowego obiektu blob, aby wskazywał modułu magazynu obiektów blob.
+### <a name="azure-blob-storage-quickstart-samples"></a>Przykłady usługi Azure Blob Storage Quickstart
+Dokumentacja usługi Azure Blob Storage zawiera Przewodniki Szybki Start, zapewniające przykładowego kodu w kilku językach. Możesz uruchomić te przykłady do testowania usługi Azure Blob Storage w usłudze IoT Edge, zmieniając punktu końcowego obiektu blob, aby wskazywał modułu magazynu obiektów blob. Postępuj zgodnie z instrukcjami, aby [nawiązać połączenie z modułu magazynu obiektów blob](#connect-to-your-blob-storage-module)
 
 Języki, które są również obsługiwane przez usługi IoT Edge, dzięki czemu można je wdrożyć jako moduły usługi IoT Edge wraz z modułu magazynu obiektów blob należy użyć następujących przewodników Szybki Start:
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Java](../storage/blobs/storage-quickstart-blobs-java.md)
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
+
+### <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
+Możesz też spróbować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nawiązać połączenia z kontem magazynu lokalnego. Próbowaliśmy z [poprzedniej wersji 1.5.0](https://go.microsoft.com/fwlink/?LinkId=809306&clcid=0x409) Eksploratora usługi Azure.
+> [!NOTE]
+> Może wystąpić błędy podczas wykonywania poniższych kroków, Ignoruj i Odśwież. 
+
+1. Pobieranie i instalowanie Eksploratora usługi Azure Storage
+2. Łączenie z usługą Azure Storage przy użyciu parametrów połączenia
+3. Podaj parametry połączenia: `DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`
+4. Wykonaj czynności, aby połączyć.
+5. Tworzenie kontenera w koncie magazynu lokalnego
+6. Rozpocznij przekazywanie plików jako blokowe obiekty BLOB.
+> [!NOTE]
+> Usuń zaznaczenie pola wyboru do przekazywania ich jako stronicowe obiekty BLOB. Ten moduł nie obsługuje stronicowych obiektów blob. Wystąpi tego monitu podczas przekazywania plików, takich jak ISO, VHD, vhdx lub wszelkie duże pliki.
+
+7. Można wybrać opcję połączenia konta magazynu platformy Azure, gdy przesyłasz dane. Zapewnia jeden widok dla konta magazynu lokalnego i konta magazynu platformy Azure
 
 ## <a name="supported-storage-operations"></a>Obsługiwane operacje
 
-Moduły magazynu obiektów blob na brzegowych urządzeniach IoT używać tych samych zestawów SDK usługi Azure Storage i są zgodne z interfejsu API usługi Azure Storage dla blokowych obiektów blob z punktów końcowych w wersji 2018-03-28. Nowszych są zależne od potrzeb klienta. 
+Moduły magazynu obiektów blob na brzegowych urządzeniach IoT używać tych samych zestawów SDK usługi Azure Storage i są zgodne z wersji 2017-04-17 interfejsu API usługi Azure Storage dla blokowych obiektów blob z punktów końcowych. Nowszych są zależne od potrzeb klienta.
 
-Nie wszystkie operacje usługi Azure Blob Storage są obsługiwane przez usługi Azure Blob Storage w usłudze IoT Edge. W poniższych sekcjach szczegółowo operacje, które nie są obsługiwane. 
+Nie wszystkie operacje usługi Azure Blob Storage są obsługiwane przez usługi Azure Blob Storage w usłudze IoT Edge. W poniższej sekcji przedstawiono obsługiwane i nieobsługiwane operacje.
 
 ### <a name="account"></a>Konto
 
@@ -255,11 +416,11 @@ Obsługiwane:
 * Tworzenie i usuwanie kontenera
 * Pobierz kontener właściwości i metadanych
 * Wyświetlanie listy obiektów blob
-
-Nieobsługiwane: 
 * Pobieranie i ustawianie ACL kontenera
-* Dzierżawa kontenera
 * Metadane kontenera zestawu
+
+Nieobsługiwane:
+* Dzierżawa kontenera
 
 ### <a name="blobs"></a>Obiekty blob
 
@@ -278,11 +439,16 @@ Nieobsługiwane:
 ### <a name="block-blobs"></a>Obiekty BLOB typu Block
 
 Obsługiwane: 
-* Umieść bloku:-bloku musi być mniejsza niż 4 MB rozmiar
+* Umieść bloku
 * Umieszczanie i Uzyskaj listę zablokowanych
 
 Nieobsługiwane:
 * Umieść blok z adresu URL
+
+##<a name="feedback"></a>Opinia:
+Twoja opinia jest bardzo ważne dla nas się tego modułu i jego funkcje przydatne i łatwych w użyciu. Podziel się swoją opinię i Daj nam znać, jak możemy ulepszyć.
+
+Może się skontaktowanie się z nami pod adresem absiotfeedback@microsoft.com 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

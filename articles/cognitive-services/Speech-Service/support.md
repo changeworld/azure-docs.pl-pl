@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 88efa6b16e33fe928ad9354b7283f7c651e6710c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b8e6c8b125e8eeaadac2e6864b06d55c42d3b173
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881304"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542006"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -61,11 +61,11 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 
 |Składnik/obszaru  |Tagi  |
 |---------|---------|
-|Rozpoznawanie mowy |[[microsoft-cognitive + zamiany mowy na tekst]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Synteza mowy |[[microsoft-cognitive + tekstu do mowy]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Tłumaczenie mowy |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Opcje rozpoznawania mowy |[[microsoft-luis cognitive +]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Zestaw SDK rozpoznawania mowy ogólne |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|Rozpoznawanie mowy |[[microsoft-cognitive + zamiany mowy na tekst]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|Synteza mowy |[[microsoft-cognitive + tekstu do mowy]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|Tłumaczenie mowy |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|Opcje rozpoznawania mowy |[[microsoft-luis cognitive +]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|Zestaw SDK rozpoznawania mowy ogólne |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > Następujące wpisy w witrynie Stack Overflow zawiera wskazówki dotyczące sposobu pytania formularza i dodać kod źródłowy. Następujące wskazówki mogą pomóc zwiększyć szanse, że członkowie społeczności ocenić i szybko reagować na Twoje pytanie:  
