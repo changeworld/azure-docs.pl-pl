@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3d4be0466f7f91c23666af4b155fe3b69c868d58
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 94c464733d731505cde0327ce9a295d3b4ab68de
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449550"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538701"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -362,7 +362,7 @@ W tym kroku opisano tworzenie **potoku** przy użyciu jednego **działania kopio
    * W **typeProperties** sekcji **SqlSource** jest określony jako **typ źródła** i ** BlobSink ** jest określony jako **typ ujścia**.
    * Zapytanie SQL `select * from emp` jest określona dla **sqlReaderQuery** właściwość **SqlSource**.
 
-   Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty.
+   Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty.
 
    Jeśli nie określisz wartości dla właściwości **end**, zostanie ona obliczona jako „**czas rozpoczęcia + 48 godzin**”. Aby uruchomić potok bezterminowo, określ **9/9/9999** jako wartość dla właściwości **end**.
 
@@ -407,7 +407,7 @@ W tym kroku opisano użycie witryny Azure Portal do monitorowania tego, co dziej
 6. Kliknij przycisk **X** zamknąć wszystkich stron, dopóki
 7. Wróć do strony głównej **ADFTutorialOnPremDF**.
 8. (opcjonalnie) Kliknij przycisk **potoki**, kliknij przycisk **ADFTutorialOnPremDF**i przechodzić do szczegółów tabele wejściowe (**zużyto**) lub wyjściowe zestawy danych (**utworzone**).
-9. Użyj narzędzi takich jak [Microsoft Storage Explorer](http://storageexplorer.com/) Aby sprawdzić, czy obiekt blob/plik został utworzony dla każdej godziny.
+9. Użyj narzędzi takich jak [Microsoft Storage Explorer](https://storageexplorer.com/) Aby sprawdzić, czy obiekt blob/plik został utworzony dla każdej godziny.
 
    ![Eksplorator usługi Azure Storage](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

@@ -12,23 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: a4a86576b8f9f842c54cfa195305a3e0d0ff4724
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527623"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766754"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkcje szablonu usługi Azure Resource Manager
-W tym artykule opisano wszystkie funkcje, których można użyć w szablonie usługi Azure Resource Manager.
-
-Dodaj funkcje w szablonach, umieszczając je w nawiasach: `[` i `]`, odpowiednio. Wyrażenie jest oceniane podczas wdrażania. Podczas zapisywania jako literał ciągu, wynikiem obliczenia wyrażenia może być innego typu JSON, takich jak tablica, obiekt lub liczbą całkowitą. Po prostu, tak jak w języku JavaScript, wywołania funkcji są sformatowane jako `functionName(arg1,arg2,arg3)`. Właściwości odwoływać się za pomocą operatorów [Indeks] i kropka.
-
-Wyrażenie szablonu nie może przekraczać 24 576 znaków.
-
-Szablon funkcji i ich parametrów jest rozróżniana wielkość liter. Na przykład usługi Resource Manager rozpoznaje **variables('var1')** i **VARIABLES('VAR1')** taka sama. Podczas oceny, chyba że funkcja modyfikuje wyraźnie przypadek (na przykład toUpper lub toLower), funkcja zachowuje wielkość liter. Niektóre typy zasobów może mieć wymagań dotyczących przypadków niezależnie od tego, jak są obliczane funkcje.
+W tym artykule opisano wszystkie funkcje, których można użyć w szablonie usługi Azure Resource Manager. Aby dowiedzieć się, jak za pomocą funkcji w szablonie, zobacz [składni szablonu](resource-group-authoring-templates.md#syntax).
 
 Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](resource-group-authoring-templates.md#functions).
 
@@ -54,20 +48,20 @@ Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](
 Resource Manager zapewnia kilka funkcji do pracy z tablicami i obiektami.
 
 * [Tablica](resource-group-template-functions-array.md#array)
-* [COALESCE](resource-group-template-functions-array.md#coalesce)
+* [coalesce](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [zawiera](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [pusty](resource-group-template-functions-array.md#empty)
 * [pierwszy](resource-group-template-functions-array.md#first)
 * [Część wspólna](resource-group-template-functions-array.md#intersection)
-* [JSON](resource-group-template-functions-array.md#json)
-* [ostatni](resource-group-template-functions-array.md#last)
+* [json](resource-group-template-functions-array.md#json)
+* [last](resource-group-template-functions-array.md#last)
 * [Długość](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
-* [Zakres](resource-group-template-functions-array.md#range)
-* [Pomiń](resource-group-template-functions-array.md#skip)
+* [range](resource-group-template-functions-array.md#range)
+* [skip](resource-group-template-functions-array.md#skip)
 * [Wypełnij](resource-group-template-functions-array.md#take)
 * [Unia](resource-group-template-functions-array.md#union)
 
@@ -192,7 +186,7 @@ Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartoś
 ## <a name="string-functions"></a>Funkcje ciągów
 Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 
-* [Base64](resource-group-template-functions-string.md#base64)
+* [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
 * [concat](resource-group-template-functions-string.md#concat)
@@ -204,12 +198,13 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [pierwszy](resource-group-template-functions-string.md#first)
 * [Identyfikator GUID](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [ostatni](resource-group-template-functions-string.md#last)
+* [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Długość](resource-group-template-functions-string.md#length)
+* [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [Zastąp](resource-group-template-functions-string.md#replace)
-* [Pomiń](resource-group-template-functions-string.md#skip)
+* [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
 * [ciąg](resource-group-template-functions-string.md#string)
@@ -217,11 +212,12 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [Wypełnij](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [TRIM](resource-group-template-functions-string.md#trim)
+* [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
 * [Identyfikator URI](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
+* [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md)

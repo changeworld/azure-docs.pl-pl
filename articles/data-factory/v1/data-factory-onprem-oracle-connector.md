@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 28227ce9ebc5680f68c05cb1296a8ba35eac2c74
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1dbac37e8b3bac5ee06ac3bdc3270c04efdcd408
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338352"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536695"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -69,7 +69,7 @@ Ten łącznik Oracle obsługuje dwie wersje sterowników:
     > Obecnie sterownik firmy Microsoft dla bazy danych Oracle obsługuje tylko kopiowanie danych z bazy danych Oracle. Sterownik nie obsługuje zapisywania do bazy danych Oracle. Możliwość połączenia testowego w ramach bramy zarządzania danymi **diagnostyki** karta nie obsługuje tego sterownika. Alternatywnie można użyć Kreatora kopiowania, aby zweryfikować połączenie.
     >
 
-- **Dostawca danych programu Oracle dla platformy .NET**: Dostawca danych programu Oracle można użyć do skopiowania danych z lub do bazy danych Oracle. Ten składnik jest objęta [Oracle Data Access składników dla Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Odpowiedniej wersji (32-bitowy lub 64-bitowych) należy zainstalować na komputerze, na którym zainstalowano bramę. [Dostawca danych programu Oracle .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mają dostęp do bazy danych Oracle Database 10 g w wersji 2 i nowsze wersje.
+- **Dostawca danych programu Oracle dla platformy .NET**: Dostawca danych programu Oracle można użyć do skopiowania danych z lub do bazy danych Oracle. Ten składnik jest objęta [Oracle Data Access składników dla Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Odpowiedniej wersji (32-bitowy lub 64-bitowych) należy zainstalować na komputerze, na którym zainstalowano bramę. [Dostawca danych programu Oracle .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mają dostęp do bazy danych Oracle Database 10 g w wersji 2 i nowsze wersje.
 
     Jeśli wybierzesz **instalacji XCopy**, wykonaj kroki, które są opisane w pliku readme.htm. Zalecane jest wybranie opcji Instalatora, która ma interfejs użytkownika (a nie Instalator XCopy).
 
@@ -566,7 +566,7 @@ Potoku zawierającego działanie kopiowania, który został skonfigurowany do ko
 
 **Rozdzielczość**
 
-* Jeśli nie zainstalowano dostawcy .NET dla Oracle, [go zainstalować](http://www.oracle.com/technetwork/topics/dotnet/downloads/), a następnie ponów próbę wykonania tego scenariusza.
+* Jeśli nie zainstalowano dostawcy .NET dla Oracle, [go zainstalować](https://www.oracle.com/technetwork/topics/dotnet/downloads/), a następnie ponów próbę wykonania tego scenariusza.
 * Jeśli widzisz komunikat o błędzie, nawet po zainstalowaniu dostawcy, wykonaj następujące czynności:
     1. Otwórz plik konfiguracji maszyny dla platformy .NET w wersji 2.0 z folderu < dysk systemowy\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Wyszukaj **dostawca danych programu Oracle dla platformy .NET**. Powinno być możliwe odnaleźć wpisu, jak pokazano w poniższym przykładzie w obszarze **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e2adae46e3124fcd407fa4d4677f02bdface0a6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f1fefb863770c4b71249e924162c543cc217c9d2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077644"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541472"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#capacity). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
@@ -73,13 +73,13 @@ Pliki tworzone przez przechwytywania usługi Event Hubs mają następujące sche
 
 Łatwe Eksplorowanie plików Avro polega na użyciu [narzędzia Avro] [ Avro Tools] jar z Apache. Można również użyć [Apache Drill] [ Apache Drill] dla lekkie środowisko oparte na SQL lub [platformy Apache Spark] [ Apache Spark] do wykonywania złożonych rozproszonych Przetwarzanie pozyskiwanych danych. 
 
-### <a name="use-apache-drill"></a>Użyj Apache testowania odzyskiwania po awarii
+### <a name="use-apache-drill"></a>Use Apache Drill
 
 [Apache Drill] [ Apache Drill] to "open source SQL zapytań aparat do eksploracji danych big data" który wykonywać zapytania na danych z częściową strukturą i ze strukturą, wszędzie tam, gdzie jest. Aparat można uruchomić jako węzeł autonomiczny lub jako klaster ogromna uzyskać wysoką wydajność.
 
 Macierzystą obsługę w usłudze Azure Blob storage jest dostępna, która ułatwia zapytania o dane w pliku Avro zgodnie z opisem w dokumentacji:
 
-[Apache Drill: Dodatek magazynu obiektów Blob platformy Azure][Apache Drill: Azure Blob Storage Plugin]
+[Apache Drill: Azure Blob Storage Plugin][Apache Drill: Azure Blob Storage Plugin]
 
 Łatwo kwerendy przechwyconych plików, można tworzyć i wykonać Maszynę wirtualną przy użyciu Apache Drill włączyć za pomocą kontenera dostępu do magazynu obiektów Blob platformy Azure:
 
@@ -89,7 +89,7 @@ Przykładowe pełnej end-to-end jest dostępna w przesyłania strumieniowego w r
 
 [Przesyłanie strumieniowe w dużej skali: Funkcja przechwytywania usługi Event Hubs]
 
-### <a name="use-apache-spark"></a>Korzystanie z platformy Apache Spark
+### <a name="use-apache-spark"></a>Use Apache Spark
 
 [Platforma Apache Spark] [ Apache Spark] "ujednolicone analytics to aparat obsługi jest do przetwarzania danych na dużą skalę." Ona obsługę innych języków, w tym SQL i mogą łatwo uzyskiwać dostęp do usługi Azure Blob storage. Dostępne są dwie opcje uruchamiania platformy Apache Spark na platformie Azure, a jednocześnie zapewnia łatwy dostęp do usługi Azure Blob storage:
 
@@ -146,15 +146,15 @@ Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event H
 * [Wprowadzenie do wysyłania oraz odbierania zdarzeń](event-hubs-dotnet-framework-getstarted-send.md)
 * [Przegląd usługi Event Hubs][Event Hubs overview]
 
-[Apache Avro]: http://avro.apache.org/
+[Apache Avro]: https://avro.apache.org/
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: http://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: http://www-us.apache.org/dist/avro/avro-1.8.2/java/avro-tools-1.8.2.jar
-[Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
-[Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
+[Avro Tools]: https://www-us.apache.org/dist/avro/avro-1.8.2/java/avro-tools-1.8.2.jar
+[Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
+[Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html

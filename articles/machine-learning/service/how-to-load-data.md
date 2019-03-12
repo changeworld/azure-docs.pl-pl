@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fe77a1093bec52c3786a9ae623a2d63e1ba82ce
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: a056f5df12deb50ad64f90c19201942204e774f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750943"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779372"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 
@@ -45,7 +45,7 @@ Aby załadować dane automatycznie bez określenia typu pliku, należy użyć `a
 ```python
 import azureml.dataprep as dprep
 
-dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+dflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
 Funkcja ta jest przydatna do automatycznego wykrywania typu pliku, kodowanie i inne argumenty analizy wszystko z jednego wpisu wygodny punkt. Funkcja automatycznie wykonuje następujące czynności, które są najczęściej wykonywane podczas ładowania danych podzielonej:
@@ -61,8 +61,8 @@ Alternatywnie Jeśli znasz pliku, wpisz wcześniej i chcesz jawnie kontrolować 
 Aby odczytać dane zwykłego tekstu do przepływu danych, należy użyć `read_lines()` bez określania parametrów opcjonalnych.
 
 ```python
-dataflow = dprep.read_lines(path='./data/text_lines.txt')
-dataflow.head(5)
+dflow = dprep.read_lines(path='./data/text_lines.txt')
+dflow.head(5)
 ```
 
 ||Kreska|
@@ -75,7 +75,7 @@ dataflow.head(5)
 Po dane są pozyskiwane, uruchom następujący kod, aby przekonwertować obiektu przepływu danych do elementów Pandas dataframe.
 
 ```python
-pandas_df = dataflow.to_pandas_dataframe()
+pandas_df = dflow.to_pandas_dataframe()
 ```
 
 ## <a name="load-csv-data"></a>Załaduj dane CSV
@@ -83,8 +83,8 @@ pandas_df = dataflow.to_pandas_dataframe()
 Podczas odczytywania plików, podstawowego środowiska uruchomieniowego można wywnioskować podczas analizowania parametrów (separator, kodowanie, czy ma być używany, nagłówków itp.). Uruchom następujący kod, aby podjąć próbę odczytania pliku CSV, określając tylko jego lokalizacji.
 
 ```python
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
-dataflow.head(5)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
+dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -97,9 +97,9 @@ dataflow.head(5)
 Aby wykluczyć wiersze podczas ładowania, należy zdefiniować `skip_rows` parametru. Ten parametr zostanie pominięta podczas ładowania wierszy malejącej w pliku CSV (przy użyciu indeksu liczonego od jednego).
 
 ```python
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1)
-dataflow.head(5)
+dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -110,7 +110,7 @@ dataflow.head(5)
 Uruchom poniższy kod, aby wyświetlić typy danych kolumn.
 
 ```python
-dataflow.head(1).dtypes
+dflow.dtypes
 ```
 Dane wyjściowe:
 
@@ -126,10 +126,10 @@ Dane wyjściowe:
 Domyślnie program Azure Machine Learning Prep zestawu SDK usługi Data nie zmienia typu danych. Źródła danych, które czytasz z jest plikiem tekstowym, aby zestaw SDK odczytuje wszystkie wartości jako ciągi. W tym przykładzie kolumny liczbowe ma być analizowana pod jako liczby. Ustaw `inference_arguments` parametr `InferenceArguments.current_culture()` automatycznie wywnioskować i przekonwertować typy kolumn podczas plik odczytany.
 
 ```
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
-dataflow.head(1).dtypes
+dflow.dtypes
 ```
 Dane wyjściowe:
 
@@ -150,8 +150,8 @@ Wykryto wiele kolumn poprawnie jako wartość numeric i ich typu jest ustawiona 
 Zestaw SDK zawiera `read_excel()` funkcję, aby załadować pliki programu Excel. Domyślnie funkcja zostanie załadowany pierwszy arkusz w skoroszycie. Aby zdefiniować określonego arkusza do ładowania, należy zdefiniować `sheet_name` parametru z wartością ciągu o nazwie arkusza.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
-dataflow.head(5)
+dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
+dflow.head(5)
 ```
 
 ||Kolumna1|Kolumna2|Kolumna3|Kolumna4|Column5|Kolumna6|Column7|Column8|
@@ -165,7 +165,7 @@ dataflow.head(5)
 Dane wyjściowe pokazują, że dane w arkuszu drugi miał trzy puste wiersze przed nagłówków. `read_excel()` Funkcja zawiera parametry opcjonalne dla pomijania wierszy i korzystanie z nagłówków. Uruchom poniższy kod, aby pominąć pierwsze trzy wiersze, a następnie użyć czwartego wiersza jako nagłówków.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
+dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||Ranga|Stanowisko|Studio|Cały świat|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
@@ -175,11 +175,11 @@ dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_c
 
 ## <a name="load-fixed-width-data-files"></a>Ładowanie plików danych o stałej szerokości
 
-Aby szerokość loadfixed plików należy określić listę znaków offsetowych. Pierwsza kolumna jest zawsze zakłada się, że rozpoczynają się od przesunięcia, zerowego.
+Aby załadować pliki o stałej szerokości, należy określić listę znaków offsetowych. Pierwsza kolumna jest zawsze zakłada się, że rozpoczynają się od przesunięcia, zerowego.
 
 ```python
-dataflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
-dataflow.head(5)
+dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
+dflow.head(5)
 ```
 
 ||010000|99999|SFAŁSZOWANY NORWEGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
@@ -191,7 +191,7 @@ dataflow.head(5)
 Aby uniknąć wykrywania nagłówka i analizy danych, należy przekazać `PromoteHeadersMode.NONE` do `header` parametru.
 
 ```python
-dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
+dflow = dprep.read_fwf('./data/fixed_width_file.txt',
                           offsets=[7, 13, 43, 46, 52, 58, 65, 73],
                           header=dprep.PromoteHeadersMode.NONE)
 ```
@@ -221,8 +221,8 @@ ds = dprep.MSSQLDataSource(server_name="[SERVER-NAME]",
 Po utworzeniu obiektu źródła danych, możesz przejść do odczytywania danych z wyników zapytania.
 
 ```python
-dataflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
-dataflow.head(5)
+dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
+dflow.head(5)
 ```
 
 ||Identyfikator produktu|Name (Nazwa)|ProductNumber|Kolor|StandardCost|ListPrice|Rozmiar|Waga|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto usługa|ThumbnailPhotoFileName|ROWGUID|Data modyfikacji|
@@ -246,7 +246,7 @@ Na komputerze lokalnym uruchom następujące polecenie.
 ```azurecli
 az login
 az account show --query tenantId
-dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
+dflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dflow.head(5) head
 ```
 
 > [!NOTE]
@@ -299,8 +299,8 @@ from azureml.dataprep.api.datasources import DataLakeDataSource
 
 ctx = adal.AuthenticationContext('https://login.microsoftonline.com/microsoft.onmicrosoft.com')
 token = ctx.acquire_token_with_client_certificate('https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
-dataflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
-dataflow.to_pandas_dataframe().head()
+dflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
+dflow.to_pandas_dataframe().head()
 ```
 
 ||FMID|MarketName|Witryna internetowa|Ulica|city|Powiat|

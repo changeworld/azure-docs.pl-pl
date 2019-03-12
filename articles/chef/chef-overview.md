@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: c0ec8b98ff711f8e5746d6d4731266ed4b09cc8f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658848"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545739"
 ---
 # <a name="using-chef-with-azure"></a>Przy użyciu programu Chef z platformą Azure
-[Program chef](http://www.chef.io) platforma zaawansowanej automatyzacji, która przekształca infrastruktury maszyny wirtualnej na platformie Azure w kodzie. Program chef automatyzuje jak infrastruktura jest skonfigurowany, wdrażane i zarządzane w sieci, niezależnie od jego rozmiaru.
+[Program chef](https://www.chef.io) platforma zaawansowanej automatyzacji, która przekształca infrastruktury maszyny wirtualnej na platformie Azure w kodzie. Program chef automatyzuje jak infrastruktura jest skonfigurowany, wdrażane i zarządzane w sieci, niezależnie od jego rozmiaru.
 
 W tym artykule opisano zalety Zarządzaj infrastrukturą platformy Azure przy użyciu programu Chef.
 

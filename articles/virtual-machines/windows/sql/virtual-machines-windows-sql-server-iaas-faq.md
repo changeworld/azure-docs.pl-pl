@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f308b814da06598b95337708f7a8c84d506eed78
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456660"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781803"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -50,7 +50,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
    Tak. Platforma Azure utrzymuje tylko jeden obraz na głównej wersji i wydania. Na przykład po udostępnieniu nowego dodatku service pack programu SQL Server, platforma Azure dodaje nowy obraz w galerii dla tego dodatku service pack. Obraz programu SQL Server dla poprzedniego dodatku service pack jest usuwane natychmiast w witrynie Azure portal. Jednak jest wciąż dostępna na potrzeby aprowizacji za pomocą programu PowerShell dla następnych trzech miesięcy. Po upływie trzech miesięcy na poprzedniej ilustracji pakiet usługi nie jest już dostępna. Te zasady usuwania czy mają zastosowanie również w wersji programu SQL Server staje się nieobsługiwany po osiągnięciu końca swojego cyklu życia.
 
 
-1. **Czy jest możliwe do wdrożenia obrazu starsze programu SQL Server, który nie jest widoczny w witrynie Azure Portal?**
+1. **Czy jest możliwe do wdrożenia obrazu starsze programu SQL Server, który nie jest widoczny w witrynie Azure portal?**
 
    Tak, przy użyciu programu PowerShell. Aby uzyskać więcej informacji o wdrażaniu maszyny wirtualne SQL Server przy użyciu programu PowerShell, zobacz [jak inicjować obsługę maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
 
@@ -82,7 +82,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy muszę płacić za licencję programu SQL Server na Maszynie wirtualnej platformy Azure, jeśli jest on używany tylko w stanie wstrzymania/tryb failover?**
 
-   Jeśli masz pakiet Software Assurance i w związku z tym używają opcji przenoszenia licencji zgodnie z opisem w maszynie wirtualnej Licencjonowanie — często zadawane pytania,] (https://azure.microsoft.com/pricing/licensing-faq/) nie trzeba płacić za licencję na jeden udział jako replika pomocnicza pasywnym we wdrożeniu o wysokiej dostępności programu SQL Server. W przeciwnym razie trzeba płacić za jej licencji.
+   Jeśli masz pakiet Software Assurance i używają opcji przenoszenia licencji zgodnie z opisem w [często zadawane pytania dotyczące licencjonowania maszyny wirtualnej](https://azure.microsoft.com/pricing/licensing-faq/), nie trzeba płacić za licencję na jeden udział jako replika pomocnicza pasywnym we wdrożeniu o wysokiej dostępności programu SQL Server. W przeciwnym razie trzeba płacić za jej licencji.
 
 1. **Czy mogę zmienić Maszynę wirtualną do używania licencję programu SQL Server, jeśli został utworzony z jednego z obrazów w galerii zgodnie z rzeczywistym użyciem**
 
@@ -121,21 +121,30 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy jest możliwość zarejestrowania własnym wdrożone maszyny wirtualne programu SQL Server za pomocą dostawcy zasobów maszyny Wirtualnej SQL**
 
-   Tak. Jeśli wdrożono programu SQL Server z własnych nośnika oraz zainstalowane rozszerzenie SQL IaaS można zarejestrować maszyny Wirtualnej programu SQL Server za pomocą dostawcy zasobów, aby uzyskać korzyści możliwości udostępniane przez rozszerzenie SQL IaaS. Jesteś nie można przekonwertować własnym wdrożonej maszyny Wirtualnej SQL płatność za rzeczywiste użycie.  
+   Tak. Jeśli wdrożono programu SQL Server z własnych nośnika oraz zainstalowane rozszerzenie SQL IaaS można zarejestrować maszyny Wirtualnej programu SQL Server za pomocą dostawcy zasobów, aby uzyskać korzyści możliwości udostępniane przez rozszerzenie SQL IaaS. Jesteś nie można przekonwertować własnym wdrożonej maszyny Wirtualnej SQL płatność za rzeczywiste użycie.
 
 ## <a name="administration"></a>Administracja
 
 1. **W tej samej maszyny Wirtualnej można zainstalować drugie wystąpienie programu SQL Server? Czy można zmienić zainstalowane funkcje domyślne wystąpienie?**
 
-   Tak. Nośnik instalacyjny programu SQL Server znajduje się w folderze na **C** dysku. Uruchom **Setup.exe** z lokalizacji, aby dodać nowe wystąpienia programu SQL Server lub do zmiany innych zainstalowane funkcje programu SQL Server na maszynie. Należy pamiętać, że niektóre funkcje, takie jak automatyczne kopie zapasowe, automatyczne stosowanie poprawek i integracji magazynu kluczy Azure, będą działać tylko względem wystąpienia domyślnego.
+   Tak. Nośnik instalacyjny programu SQL Server znajduje się w folderze na **C** dysku. Uruchom **Setup.exe** z lokalizacji, aby dodać nowe wystąpienia programu SQL Server lub do zmiany innych zainstalowane funkcje programu SQL Server na maszynie. Należy pamiętać, że niektóre funkcje, takie jak automatyczne kopie zapasowe, automatyczne stosowanie poprawek i integracji magazynu kluczy Azure, działać tylko względem wystąpienia domyślnego lub nazwane wystąpienie, które zostało poprawnie skonfigurowane (zobacz pytanie 3). 
 
 1. **Można odinstalować domyślnego wystąpienia programu SQL Server?**
 
-   Tak, ale są pewne zagadnienia. Jak wspomniano w poprzedniej odpowiedzi na pytanie, funkcje, które polegają na [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md) działać tylko w domyślnym wystąpieniu. Po odinstalowaniu wystąpienie domyślne rozszerzenie jej szukać w dalszym ciągu i może generować błędy dziennika zdarzeń. Te błędy są z dwóch następujących źródeł: **Zarządzanie poświadczeniami serwera Microsoft SQL** i **agenta IaaS programu Microsoft SQL Server**. Błędy mogą być podobne do następujących:
+   Tak, ale są pewne zagadnienia. Jak wspomniano w poprzedniej odpowiedzi na pytanie, są funkcje, które zależą od [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md).  Po odinstalowaniu domyślnego wystąpienia bez usuwania rozszerzenia IaaS również rozszerzenie jej szukać w dalszym ciągu i może generować błędy dziennika zdarzeń. Te błędy są z dwóch następujących źródeł: **Zarządzanie poświadczeniami serwera Microsoft SQL** i **agenta IaaS programu Microsoft SQL Server**. Błędy mogą być podobne do następujących:
 
       Wystąpił błąd związany z siecią lub wystąpieniem podczas nawiązywania połączenia z programem SQL Server. Serwer nie został znaleziony lub jest on niedostępny.
 
    Jeśli zdecydujesz się odinstalować domyślnego wystąpienia, również odinstalować [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md) także.
+
+1. **Do czego służy nazwane wystąpienie programu SQL Server z rozszerzeniem IaaS**?
+   
+   Tak, to nazwane wystąpienie jest tylko wystąpienie programu SQL Server, a oryginalne wystąpienie domyślne zostało prawidłowo odinstalowane. Aby użyć nazwanego wystąpienia, wykonaj następujące czynności:
+    1. Wdróż maszynę Wirtualną programu SQL Server z witryny marketplace. 
+    1. Odinstaluj rozszerzenie IaaS.
+    1. Całkowicie Odinstaluj program SQL Server.
+    1. Instalowanie programu SQL Server przy użyciu nazwanego wystąpienia. 
+    1. Zainstaluj rozszerzenie IaaS. 
 
 1. **Czy można usunąć programu SQL Server całkowicie z maszyny Wirtualnej SQL?**
 
@@ -143,9 +152,9 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
    
 ## <a name="updating-and-patching"></a>Stosowanie poprawek i aktualizacji
 
-1. **Jak uaktualnić do nowej wersji/wydania programu SQL Server w Maszynie wirtualnej platformy Azure?**
+1. **Jak zmienić do nowej wersji/wydania programu SQL Server w Maszynie wirtualnej platformy Azure?**
 
-   obecnie nie są dostępne żadne uaktualnienia w miejscu dla programu SQL Server uruchomionego na maszynie wirtualnej platformy Azure. Utwórz nową maszynę wirtualną platformy Azure przy użyciu wersji/wydania żądanego programu SQL Server, a następnie Migruj bazy danych na nowy serwer przy użyciu standardu [technik migracji danych](virtual-machines-windows-migrate-sql.md).
+   Klienci z pakietem Software Assurance mogą się do miejscowego uaktualnienia ich programu SQL Server uruchomiony na Maszynie wirtualnej platformy Azure przy użyciu nośnika instalacyjnego w portalu licencjonowania zbiorowego. Jednak obecnie, nie ma już zmienić wersję wystąpienia programu SQL Server. Utwórz nową maszynę wirtualną platformy Azure z odpowiednią wersją programu SQL Server, a następnie przeprowadzić migrację baz danych na nowy serwer przy użyciu standardu [technik migracji danych](virtual-machines-windows-migrate-sql.md).
 
 1. **Sposób aktualizacji i dodatków service pack stosowania na maszynę Wirtualną programu SQL Server?**
 

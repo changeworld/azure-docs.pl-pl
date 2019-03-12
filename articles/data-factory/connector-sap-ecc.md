@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d6a6d9b352db61d98e85c840a3ebc5cb6a832a3f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ba268806dccb7c2671825c794383396a2ff20299
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352465"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548817"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopiowanie danych z SAP ECC przy użyciu usługi Azure Data Factory
 
@@ -121,7 +121,7 @@ Aby skopiować dane z SAP ECC, należy ustawić typ źródła w działaniu kopio
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **SapEccSource** | Yes |
-| query | Opcje zapytania OData do filtrowania danych. Przykład: "$select = nazwa, opis i $top = 10".<br/><br/>Łącznik SAP ECC kopiuje dane z połączonych adresu URL: (adres url określony w połączonej usłudze) / (ścieżka określona w zestawie danych)? (zapytanie określone w źródle działanie kopiowania). Zapoznaj się [części adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
+| query | Opcje zapytania OData do filtrowania danych. Przykład: "$select = nazwa, opis i $top = 10".<br/><br/>Łącznik SAP ECC kopiuje dane z połączonych adresu URL: (adres url określony w połączonej usłudze) / (ścieżka określona w zestawie danych)? (zapytanie określone w źródle działanie kopiowania). Zapoznaj się [części adresu URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
 **Przykład:**
 
@@ -161,20 +161,20 @@ Podczas kopiowania danych z SAP ECC, następujące mapowania są używane z typ�
 
 | Typ danych OData | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |:--- |
-| Edm.Binary | Ciąg |
-| Edm.Boolean | wartość logiczna |
-| Edm.Byte | Ciąg |
+| Edm.Binary | String |
+| Edm.Boolean | Bool |
+| Edm.Byte | String |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Dziesiętny |
-| Edm.Double | Podwójne |
-| Edm.Single | Pojedyncze |
-| Edm.Guid | Ciąg |
+| Edm.Decimal | Decimal |
+| Edm.Double | Double |
+| Edm.Single | Single |
+| Edm.Guid | String |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Ciąg |
-| Edm.Time | Przedział czasu |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

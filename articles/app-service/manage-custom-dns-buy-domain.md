@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c2bee4d35fe857d5ad3bf26dc1145b8721c85df4
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 44252274cc3c0050ba138c3115deeceb2f06f8d8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594240"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782772"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
@@ -102,7 +102,7 @@ W **domen niestandardowych** kliknij **kupować domeny**.
 ### <a name="configure-the-domain-purchase"></a>Konfigurowanie zakupu domen
 
 W **domeny usługi App Service** stronie **wyszukiwanie domeny** wpisz nazwę domeny, aby kupić, a następnie wpisz `Enter`. Sugerowane dostępnych domen są wyświetlane poniżej pola tekstowego. Wybierz co najmniej jednej domeny, który chcesz kupić.
-   
+
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
@@ -111,15 +111,15 @@ W **domeny usługi App Service** stronie **wyszukiwanie domeny** wpisz nazwę do
 >
 
 Kliknij przycisk **informacje kontaktowe** i wypełnij formularz informacji kontaktowych w domenie. Po zakończeniu kliknij przycisk **OK** aby wrócić do strony domeny usługi App Service.
-   
-Jest ważne, wypełnij wszystkie wymagane pola, o tyle dokładności, jak to możliwe. Nie można kupować domeny może spowodować nieprawidłowe dane, aby uzyskać więcej informacji. 
+
+Jest ważne, wypełnij wszystkie wymagane pola, o tyle dokładności, jak to możliwe. Nie można kupować domeny może spowodować nieprawidłowe dane, aby uzyskać więcej informacji.
 
 Następnie wybierz odpowiednie opcje dla swojej domeny. Zobacz poniższą tabelę objaśnienia dotyczące:
 
 | Ustawienie | Sugerowana wartość | Opis |
 |-|-|-|
 |Ochrona prywatności | Włączanie | Zgódź się na "Ochrona prywatności", która jest ujęta w cenie zakupu _za darmo_. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratorów, które nie obsługują ochrony prywatności i są one wyświetlane na **ochrony prywatności** strony. |
-| Przypisz domyślne nazwy hostów | **www** i **@** | Wybierz żądaną nazwą hosta powiązania, w razie potrzeby. Po zakończeniu operacji zakupu domeny aplikacji są dostępne w wybranej nazwy hostów. Jeśli aplikacja znajduje się za zaporą [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), widzisz opcję, aby przypisać domeny katalogu głównego (@), ponieważ usługa Traffic Manager jest nie rekordów A pomocy technicznej. Można zmienić przypisania nazwy hosta, po zakończeniu zakupu domen. |
+| Przypisz domyślne nazwy hostów | **www** i **\@** | Wybierz żądaną nazwą hosta powiązania, w razie potrzeby. Po zakończeniu operacji zakupu domeny aplikacji są dostępne w wybranej nazwy hostów. Jeśli aplikacja znajduje się za zaporą [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), widzisz opcję, aby przypisać domeny katalogu głównego (@), ponieważ usługa Traffic Manager jest nie rekordów A pomocy technicznej. Można zmienić przypisania nazwy hosta, po zakończeniu zakupu domen. |
 
 ### <a name="accept-terms-and-purchase"></a>Zaakceptuj warunki i zakupu
 

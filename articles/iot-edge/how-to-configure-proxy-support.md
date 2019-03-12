@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d1ad1f34f51adbc177e5b4163d528dbe45ce03af
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 33f5cd6e1d2989a9ca5c26bbcf947bd6eade3831
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339151"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774204"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy
 
@@ -25,23 +25,23 @@ Konfigurowanie urządzenia usługi IoT Edge do pracy z serwerem proxy obejmuje n
 1. Zainstaluj środowisko uruchomieniowe usługi IoT Edge na urządzeniu. 
 2. Skonfiguruj demona platformy Docker i demona usługi IoT Edge na urządzeniu, aby używać serwera proxy.
 3. Konfigurowanie właściwości edgeAgent w pliku config.yaml na urządzeniu.
-4. Ustaw zmienne środowiskowe dla optymalizacji środowiska uruchomieniowego usługi IoT Edge i inne usługi IoT Edge modułów w pliku manifestu wdrożenia. 
+4. Ustaw zmienne środowiskowe dla optymalizacji środowiska uruchomieniowego usługi IoT Edge i inne usługi IoT Edge modułów w pliku manifestu wdrożenia.
 
 ## <a name="know-your-proxy-url"></a>Znasz adres URL serwera proxy
 
-Aby skonfigurować zarówno demona platformy Docker, jak i usługi IoT Edge na urządzeniu, musisz znać adres URL serwera proxy. 
+Aby skonfigurować zarówno demona platformy Docker, jak i usługi IoT Edge na urządzeniu, musisz znać adres URL serwera proxy.
 
-Adresy URL serwera proxy, wykonaj następujący format: **protokołu**://**proxy_host**:**proxy_port**. 
+Adresy URL serwera proxy, wykonaj następujący format: **protokołu**://**proxy_host**:**proxy_port**.
 
 * **Protokołu** protokół HTTP lub HTTPS. Demona platformy Docker można użyć dowolnego z tych protokołów, w zależności od ustawień rejestru kontenerów, ale kontenery demona i środowisko uruchomieniowe usługi IoT Edge należy zawsze używać protokołu HTTPS.
 
-* **Proxy_host** nie jest adresem serwera proxy. Jeśli Twój serwer proxy wymaga uwierzytelniania, należy podać swoje poświadczenia, jako część proxy_host w formacie **użytkownika**:**hasło**@**proxy_host**. 
+* **Proxy_host** nie jest adresem serwera proxy. Jeśli Twój serwer proxy wymaga uwierzytelniania, należy podać swoje poświadczenia, jako część proxy_host w formacie **użytkownika**:**hasło**\@**proxy_host**.
 
-* **Proxy_port** jest port sieci, w którym serwer proxy reaguje na ruch sieciowy. 
+* **Proxy_port** jest port sieci, w którym serwer proxy reaguje na ruch sieciowy.
 
 ## <a name="install-the-runtime"></a>Instalowanie środowiska uruchomieniowego
 
-Jeśli instalujesz środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem Linux, należy skonfigurować Menedżera pakietów przechodzić przez serwer proxy do dostępu do pakietu instalacyjnego. Na przykład [ustawiane polecenia apt-get, aby używać serwera proxy http](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po skonfigurowaniu usługi Menedżer pakietów, postępuj zgodnie z instrukcjami [runtime Instalowanie usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) lub [zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w systemie Linux (x64)](how-to-install-iot-edge-linux.md) w zwykły sposób. 
+Jeśli instalujesz środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem Linux, należy skonfigurować Menedżera pakietów przechodzić przez serwer proxy do dostępu do pakietu instalacyjnego. Na przykład [ustawiane polecenia apt-get, aby używać serwera proxy http](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po skonfigurowaniu usługi Menedżer pakietów, postępuj zgodnie z instrukcjami [runtime Instalowanie usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) lub [zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w systemie Linux (x64)](how-to-install-iot-edge-linux.md) w zwykły sposób.
 
 Jeśli instalujesz środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem Windows, musisz przejść przez serwer proxy, gdy można pobrać pliku skryptu Instalatora, następnie ponownie podczas instalacji, aby pobrać niezbędne składniki. Możesz skonfigurować informacje o serwerze proxy w ustawieniach Windows lub zawierają swoje informacje o serwerze proxy bezpośrednio w skrypcie instalacji. Poniższy skrypt programu powershell jest przykładem instalacji systemu windows za pomocą `-proxy` argumentu:
 

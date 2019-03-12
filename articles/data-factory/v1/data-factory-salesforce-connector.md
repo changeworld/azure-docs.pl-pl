@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2364715bfeaea473db292baff2eb1e1cce3203b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3689c93c392d910d6b3979291bc5a6c81080418c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233018"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551810"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenoszenie danych z usług Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Usługa SalesForce ma limity współbieżnych żądań interfejsu API i łączna
 - Jeśli liczbą jednoczesnych żądań przekracza limit, wystąpi ograniczanie przepustowości, a następnie zostanie wyświetlony losowo występować usterki.
 - Jeśli całkowita liczba żądań przekracza limit, konta usług Salesforce zostanie zablokowana przez 24 godziny.
 
-Błąd "REQUEST_LIMIT_EXCEEDED" może również występować w obu scenariuszach. Zobacz sekcję "Limity żądań interfejsu API" w [limity dla deweloperów usługi Salesforce](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) artykuł, aby uzyskać szczegółowe informacje.
+Błąd "REQUEST_LIMIT_EXCEEDED" może również występować w obu scenariuszach. Zobacz sekcję "Limity żądań interfejsu API" w [limity dla deweloperów usługi Salesforce](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) artykuł, aby uzyskać szczegółowe informacje.
 
 ## <a name="getting-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Salesforce za pomocą różnych narzędzi/interfejsów API.

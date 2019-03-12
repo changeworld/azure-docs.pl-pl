@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: d684493a3ede55c241c901bb0814630b1d204e0c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158928"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542883"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Potrząśnij, wstrząsnąć dla Tweet — pobieranie wiadomości z usługi Twitter za pomocą usługi Azure Functions
 
@@ -60,7 +60,7 @@ W oknie rozwiązania należy uruchomić zadanie przy użyciu `Ctrl+P` (z systeme
 
 W terminalu programu VS Code interaktywne wiersza polecenia poprowadzi Cię przez Inicjowanie obsługi administracyjnej wymaganych usług platformy Azure:
 
-![aprowizowanie chmury](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![cloud-provision](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
 > Jeśli strony stanu ładowania, zawiesza się podczas próby logowanie do platformy Azure, zapoznaj się ["zawiesza się strony logowania" krok z często zadawanymi Pytaniami IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
@@ -79,7 +79,7 @@ Zastąp ciąg `iot` w nawiasy klamrowe hasztaga preferowany. Mxchip pobiera pó�
 
 Użyj `Ctrl+P` (z systemem macOS: `Cmd+P`) do uruchamiania `task cloud-deploy` rozpocząć wdrażanie kodu funkcji platformy Azure:
 
-![Wdrażanie w chmurze](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![cloud-deploy](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > Od czasu do czasu funkcji platformy Azure może nie działać prawidłowo. Aby rozwiązać ten problem, jeśli występuje, sprawdź ["Błąd kompilacji" sekcji często zadawanych pytań IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
@@ -118,7 +118,7 @@ Po ustawieniu parametrów połączenia, weryfikuje i przekazuje ją następnie u
 
 2. Mxchip rozruchu i uruchamiania kodu.
 
-Możesz uzyskać "Błąd: AZ3166 USŁUGI: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeks pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się z ["Nieznany pakiet" Błąd w często zadawanych PYTAŃ IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+Możesz uzyskać "Błąd: AZ3166: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeks pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się z ["Nieznany pakiet" Błąd w często zadawanych PYTAŃ IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Projekt testowy
 
@@ -153,7 +153,7 @@ Po zainicjowaniu aplikacji kliknij release A przycisk, a następnie delikatnie w
 
 ## <a name="how-it-works"></a>Jak to działa
 
-![Diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 Szkic Arduino wysyła zdarzenie do usługi Azure IoT Hub. To zdarzenie jest wyzwalane aplikacji usługi Azure Functions. Aplikacja usługi Azure Functions zawiera logikę umożliwiającą połączenie interfejsu API w usłudze Twitter i pobranie tweet. Go następnie opakowywany tekst tweetu C2D komunikat (z chmury do urządzenia) i wysyła je z powrotem do urządzenia.
 
@@ -195,13 +195,13 @@ Lub uruchamiając kod, istnieją pewne blips, które powodują ponowne uruchomie
 
 2. W [witryny Azure portal](https://portal.azure.com/)Znajdź utworzoną aplikację usługi Azure Functions i uruchom go ponownie:
 
-   ![Azure — funkcja — ponowne uruchomienie](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 ### <a name="feedback"></a>Opinia
 
 Jeśli występują inne problemy, zapoznaj się [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub skontaktuj się z nami za pomocą następujących kanałów:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7b32a493dc7dc8aa3ac2bbf1f195a43621c7449a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ee09f8defc7a10b153e910cb7208b0ddb21120b2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447187"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543956"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Usługi Azure Data Factory — Dokumentacja skryptów JSON
 > [!NOTE]
@@ -52,7 +52,7 @@ Poniższa tabela zawiera opis właściwości w definicji JSON potok:
 | name | Nazwa potoku. Określ nazwę, która reprezentuje akcję działania lub potoku zostanie skonfigurowana w tym<br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description |Tekst opisujący działanie lub potoku do czego służy | Nie |
 | activities | Zawiera listę działań. | Yes |
-| rozpoczynanie |Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, które jest szacowane AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
+| rozpoczynanie |Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, które jest szacowane AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
 | end |Data / Godzina zakończenia dla potoku. Jeśli zostanie określony, musi być w formacie ISO. Na przykład: 2014-10-14T17:32:41 <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, które jest szacowane AM 6<br/><br/>Aby uruchomić potok bezterminowo, określ 9999-09-09 jako wartość właściwości end. |Nie <br/><br/>Jeśli określisz wartości dla właściwości uruchamiania, należy określić wartość dla właściwości end.<br/><br/>Zobacz informacje o **start** właściwości. |
 | isPaused |Jeśli ustawiono wartość true, potok nie jest uruchamiany. Wartość domyślna = false. Ta właściwość służy do włączania lub wyłączania. |Nie |
 | pipelineMode |Metoda Planowanie uruchomienia potoku. Dozwolone wartości to: (ustawienie domyślne), zaplanowane jednorazowa.<br/><br/>"Regularne" wskazuje, że potok jest uruchamiany w określonych odstępach czasu zgodnie z jego aktywny okres (czas rozpoczęcia i zakończenia). "Jednorazowe" wskazuje, że potok jest uruchamiany tylko raz. Jednorazowa potoki po utworzeniu nie może być zmodyfikowane/zaktualizowane obecnie. Zobacz [potoku Onetime](data-factory-create-pipelines.md#onetime-pipeline) Aby uzyskać szczegółowe informacje o ustawieniach jednorazowa. |Nie |
@@ -4283,7 +4283,7 @@ Aby zdefiniować ze źródłem danych OData połączoną usługę, należy ustaw
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
             "username": "username",
             "password": "password"
@@ -4300,7 +4300,7 @@ Aby zdefiniować ze źródłem danych OData połączoną usługę, należy ustaw
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }

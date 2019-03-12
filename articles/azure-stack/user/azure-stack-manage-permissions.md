@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 03/11/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: 03c1879c34a00bb09b5a4dee6af7da7b984045fc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.reviewer: fiseraci
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241189"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767213"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Zarządzanie dostępem do zasobów przy użyciu kontroli dostępu Azure Stack Role-Based
 
@@ -93,8 +93,8 @@ Poniżej opisano sposób konfigurowania uprawnień dla użytkownika.
 2. W lewym okienku nawigacji wybierz pozycję **Grupy zasobów**.
 3. Wybierz nazwę, którą chcesz ustawić uprawnienia dla grupy zasobów.
 4. W okienku nawigacji w grupy zasobów wybierz **kontrola dostępu (IAM)**. **Przypisań ról** widok zawiera elementy, które mają dostęp do grupy zasobów. Można filtrować i grupować wyniki.
-5. Na **kontroli dostępu** menu paska, wybierz polecenie **Dodaj przypisanie roli**.
-6. Na **Dodaj przypisanie roli** okienka:
+5. Na **kontroli dostępu** menu paska, wybierz polecenie **Dodaj**.
+6. Na **Dodaj uprawnienia** okienka:
 
    * Wybierz rolę, którą chcesz przypisać z **roli** listy rozwijanej.
    * Wybierz zasób, którego chcesz przypisać z **Przypisz dostęp do** listy rozwijanej.

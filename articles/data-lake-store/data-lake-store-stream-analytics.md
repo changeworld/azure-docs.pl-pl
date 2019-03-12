@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e52cf99e3bdd1960ca361ccde50d85dfaa2209c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294037"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544924"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream dane z rozszerzenia Azure Storage Blob do usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Stream Analytics
 W tym artykule dowiesz się, jak używać usługi Azure Data Lake Storage Gen1 jako dane wyjściowe dla zadania usługi Azure Stream Analytics. W tym artykule przedstawiono prosty scenariusz, który odczytuje dane z obiektu blob usługi Azure Storage (wejście) i zapisuje je w danych Data Lake Storage Gen1 (dane wyjściowe).
@@ -106,7 +106,7 @@ Możesz rozpocząć od utworzenia zadania usługi Stream Analytics, która zawie
 
     Kliknij przycisk **Start** Aby uruchomić zadanie. Może potrwać kilka minut. Aby uruchomić zadanie.
 
-3. Aby wyzwolić zadanie do pobrania danych z obiektu blob, skopiuj przykładowy plik danych do kontenera obiektów blob. Możesz pobrać przykładowy plik danych z [repozytorium Git usługi Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). W tym samouczku, skopiuj plik **vehicle1_09142014.csv**. Można użyć różnych klientów, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/), aby przekazać dane do kontenera obiektów blob.
+3. Aby wyzwolić zadanie do pobrania danych z obiektu blob, skopiuj przykładowy plik danych do kontenera obiektów blob. Możesz pobrać przykładowy plik danych z [repozytorium Git usługi Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). W tym samouczku, skopiuj plik **vehicle1_09142014.csv**. Można użyć różnych klientów, takie jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/), aby przekazać dane do kontenera obiektów blob.
 
 4. Z **Przegląd** , w obszarze **monitorowanie**, zobacz przetwarzaniu danych.
 

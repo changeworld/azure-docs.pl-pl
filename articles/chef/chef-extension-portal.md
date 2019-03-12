@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 02a2e9a6d513db5ac82b7bde5c8d3f0ca187ad15
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327552"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533956"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Zainstaluj klienta programu Chef w witrynie Azure portal
 Można dodać rozszerzenia klienta Chef bezpośrednio do komputera z systemem Linux lub Windows w witrynie Azure portal. W tym artykule przedstawiono proces, korzystając z nowej maszyny wirtualnej systemu Linux.
@@ -30,7 +30,7 @@ Można dodać rozszerzenia klienta Chef bezpośrednio do komputera z systemem Li
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Zainstaluj rozszerzenie programu Chef na nowej maszynie wirtualnej systemu Linux
 W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z systemem Linux. W trakcie również pokazano, jak można zainstalować rozszerzenia programu Chef na nowej maszynie wirtualnej.
 
-1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
 1. W menu po lewej stronie wybierz **maszyn wirtualnych** opcji. Jeśli **maszyn wirtualnych** opcja nie jest obecny, wybierz opcję **wszystkich usług** , a następnie wybierz **maszyn wirtualnych**.
 

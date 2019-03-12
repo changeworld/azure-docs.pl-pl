@@ -4,17 +4,17 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 01/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 24810e67610a0c0855d5efb1f141a3324b7c75ca
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6efcd46b174d34670a01bb7d5c440559bf0f116a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457065"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554188"
 ---
-| WARSTWA:              | BEZPŁATNA         | PODSTAWOWA      | STANDARDOWA   |
+| Warstwa              | Bezpłatna         | Podstawowa    | Standardowa (Standard)   |
 | ------------------ | ------------ | ---------- | ---------- |
-| Uwzględnione wypchnięcia    | 1 mln    | 10 mln | 10 mln |
+| Wliczone wypchnięcia    | 1 mln    | 10 mln | 10 mln |
 | Aktywne urządzenia     | 500          | 200,000    | 10 mln |
-| Limit przydziału tagów na instalację/rejestrację | 60  | 60 |  60 |
+| Limit przydziału tagów na instalację lub rejestracji | 60  | 60 |  60 |
 
-Aby uzyskać dodatkowe informacje o tych limitach i informacje o cenach, zobacz [Notification Hubs — cennik](https://azure.microsoft.com/pricing/details/notification-hubs/).
+Aby uzyskać więcej informacji na temat limitów i ceny, zobacz [cennik usługi Notification Hubs](https://azure.microsoft.com/pricing/details/notification-hubs/).

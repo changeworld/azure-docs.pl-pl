@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: a8b792ee7731a9994ded76ef1614fc3966d033d0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7e43af7d749719c2f69df9b53766c5452931884b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243809"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542917"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
@@ -228,7 +228,7 @@ Dziennik aktywności platformy Azure jest Dziennik subskrypcji, który zapewnia 
 
     ```Azlog.exe authorize subscriptionId``` Przykład:
 
-```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+   ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
 
 4.  Sprawdź następujące foldery, aby upewnić się, że pliki JSON dziennika inspekcji usługi Azure Active Directory są tworzone w nich:
     - C:\Users\azlog\AzureResourceManagerJson

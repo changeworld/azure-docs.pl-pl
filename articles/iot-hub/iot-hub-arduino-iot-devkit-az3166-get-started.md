@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 0e668c0b31defd5c945ddf2fec1b00f75d92f174
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e35e669c4abc4815b932e09d369af28e42617e8c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990157"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535700"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -175,9 +175,9 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
 
 ### <a name="install-st-link-drivers"></a>Zainstaluj sterowniki łącze ST
 
-[ST-łącze/V2](http://www.st.com/en/development-tools/st-link-v2.html) jest interfejsem USB, który mxchip IoT DevKit używa do komunikacji z komputera deweloperskiego. Należy go zainstalować na Windows, aby umożliwić flash kodu skompilowanego deivce do Mxchip. Wykonaj kroki specyficzne dla systemu operacyjnego, aby zezwolić na dostęp do komputera, na urządzeniu.
+[ST-łącze/V2](https://www.st.com/en/development-tools/st-link-v2.html) jest interfejsem USB, który mxchip IoT DevKit używa do komunikacji z komputera deweloperskiego. Należy go zainstalować na Windows, aby umożliwić flash kodu skompilowanego deivce do Mxchip. Wykonaj kroki specyficzne dla systemu operacyjnego, aby zezwolić na dostęp do komputera, na urządzeniu.
 
-* **Windows**: Pobierz i zainstaluj sterownik USB z [STMicroelectronics witryny sieci Web](http://www.st.com/en/development-tools/stsw-link009.html).
+* **Windows**: Pobierz i zainstaluj sterownik USB z [STMicroelectronics witryny sieci Web](https://www.st.com/en/development-tools/stsw-link009.html).
 * **macOS**: Sterownik nie jest wymagany dla systemu macOS.
 * **Ubuntu**: Uruchom następujące polecenie w terminalu i wyloguj się i zaloguj się, aby zaczęły obowiązywać zmiany grupy:
     ```bash

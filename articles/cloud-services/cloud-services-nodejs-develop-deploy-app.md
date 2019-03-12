@@ -11,15 +11,15 @@ ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: de78e70b30c4e0b03f87ad6b1bfe00356f897f43
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 270f400f78b971e022a59e5e9a04a76dfa929941
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698271"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761167"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Tworzenie i wdrażanie aplikacji Node.js do usługi w chmurze Azure
 
@@ -159,7 +159,7 @@ Po wdrożeniu aplikacji można ją wyłączyć, aby uniknąć dodatkowych koszt�
    > [!NOTE]
    > Usunięcie usługi nie powoduje usunięcia konta magazynu, które zostało utworzone po początkowym opublikowaniu usługi, a opłaty za użycie magazynu będą nadal naliczane. Jeśli nic innego nie korzysta z magazynu, możesz go usunąć.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowiska Node.js].
 
 <!-- URL List -->
@@ -167,9 +167,9 @@ Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowi
 [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines]: ../app-service/overview-compare.md
 [korzystanie z lekkiej aplikacji internetowej]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [Connect PowerShell]: /powershell/azureps-cmdlets-docs
-[nodejs.org]: http://nodejs.org/
+[nodejs.org]: https://nodejs.org/
 [Tworzenie hostowanej usługi platformy Azure — omówienie]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Centrum deweloperów środowiska Node.js]: https://azure.microsoft.com/develop/nodejs/
 

@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0d343ff5d7513500fa7803495dd42eb94b772935
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 15f5fe6e74cbe8cbffff31114e8aa588ec4a7ebb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546100"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538004"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opcje przenoszenia magazynu i danych renderowania plików zasobów i danych wyjściowych
 
@@ -25,7 +25,7 @@ Istnieje wiele opcji udostępniania plików scen i zasobów do aplikacji rendero
   * Ta opcja ma tę zaletę, że jest to bardzo ekonomiczna jako żadnych maszyn wirtualnych są wymagane przez system plików, a także blobfuse buforowanie na maszynach wirtualnych pozwala uniknąć wielokrotnego pliki do pobrania tych samych plików dla wielu zadań i zadań podrzędnych.  Przenoszenie danych również jest proste, jak pliki są po prostu obiektów blob i standardowych interfejsów API i narzędzi, takich jak narzędzia azcopy, może służyć do skopiowania plików między lokalnym systemem plików i magazynu platformy Azure.
 * System plików lub udział plików:
   * W zależności od systemu operacyjnego maszyny Wirtualnej i wydajność/skalowania wymagań, następnie opcje obejmują [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), za pomocą maszyny Wirtualnej z dyskami dołączonymi systemu plików NFS, przy użyciu wielu maszyn wirtualnych z dyskami dołączonymi systemu plików rozproszonych, takich jak GlusterFS, lub Korzystanie z oferty innej firmy.
-  * [Systemy Avere](http://www.averesystems.com/) jest teraz częścią firmy Microsoft i będzie miał w najbliższej przyszłości rozwiązania, które są idealne dla renderowanie na dużą skalę, wysokiej wydajności.  Spowoduje to włączenie rozwiązania Avere systemu plików NFS opartych na platformie Azure lub pamięć podręczną protokołu SMB, aby utworzyć, która działa w połączeniu z usługą blob storage lub urządzeniach NAS w środowisku lokalnym.
+  * [Systemy Avere](https://www.averesystems.com/) jest teraz częścią firmy Microsoft i będzie miał w najbliższej przyszłości rozwiązania, które są idealne dla renderowanie na dużą skalę, wysokiej wydajności.  Spowoduje to włączenie rozwiązania Avere systemu plików NFS opartych na platformie Azure lub pamięć podręczną protokołu SMB, aby utworzyć, która działa w połączeniu z usługą blob storage lub urządzeniach NAS w środowisku lokalnym.
   * W systemie plików, pliki można je odczytać lub zapisywane bezpośrednio w systemie plików lub można kopiować między systemem plików i puli maszyn wirtualnych.
   * Udostępniony system plików umożliwia dużą liczbę zasobów współużytkowanych przez projekty i zadania można używać z renderowania zadania tylko dostęp, co jest wymagane.
 

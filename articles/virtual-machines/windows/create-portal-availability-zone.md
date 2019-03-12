@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zoned maszyny Wirtualnej systemu Windows za pomocą portalu Azure | Dokumentacja firmy Microsoft
-description: Tworzenie maszyny Wirtualnej systemu Windows w strefie dostępności przy użyciu portalu Azure
+title: Utwórz Maszynę wirtualną Windows nieupakowaną w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Tworzenie maszyny Wirtualnej z systemem Windows w strefie dostępności przy użyciu witryny Azure portal
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
@@ -10,24 +10,24 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 3d3561cf1ad760930821fabeef9839c25d55f2a9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 23d1e53785ece50943d732db12b4cf460ba6752a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30321992"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767485"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Utwórz maszynę wirtualną systemu Windows w strefie dostępności przy użyciu portalu Azure
+# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Utwórz maszynę wirtualną Windows w strefie dostępności przy użyciu witryny Azure portal
 
-Ta procedura artykułu przy użyciu portalu Azure, aby utworzyć maszynę wirtualną w strefie dostępności Azure. [Strefa dostępności](../../availability-zones/az-overview.md) to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Strefy dostępności chronią aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych.
+Tym artykule omówiono tworzenie maszyny wirtualnej w strefie dostępności platformy Azure przy użyciu witryny Azure portal. [Strefa dostępności](../../availability-zones/az-overview.md) to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Strefy dostępności chronią aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych.
 
-Aby użyć strefy dostępność, należy utworzyć maszyny wirtualnej w [obsługiwany region platformy Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
+Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym regionie platformy Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure. 
 
@@ -39,40 +39,40 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
 
-3. Wprowadź informacje o maszynie wirtualnej. Nazwa użytkownika i hasło wprowadzone w tym miejscu są używane na potrzeby logowania się do maszyny wirtualnej. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](faq.md#what-are-the-password-requirements-when-creating-a-vm). Wybierz lokalizację, takich jak wschodnie stany USA 2 obsługującego stref dostępności. Po zakończeniu kliknij przycisk **OK**.
+3. Wprowadź informacje o maszynie wirtualnej. Nazwa użytkownika i hasło wprowadzone w tym miejscu są używane na potrzeby logowania się do maszyny wirtualnej. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](faq.md#what-are-the-password-requirements-when-creating-a-vm). Wybierz lokalizację, na przykład wschodnie stany USA 2, która obsługuje stref dostępności. Po zakończeniu kliknij przycisk **OK**.
 
     ![Wprowadzanie podstawowych informacji o maszynie wirtualnej w bloku portalu](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
-4. Wybierz rozmiar maszyny wirtualnej. Wybierz zalecany rozmiar lub filtrowanie w oparciu o funkcje. Upewnij się, że rozmiar jest dostępny w strefie, którego chcesz użyć.
+4. Wybierz rozmiar maszyny wirtualnej. Wybierz zalecany rozmiar lub filtru na podstawie funkcji. Upewnij się, że rozmiar jest dostępny w strefy, w której chcesz użyć.
 
     ![Wybierz rozmiar maszyny Wirtualnej](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. W obszarze **ustawienia** > **wysokiej dostępności**, wybierz jedną z numerem stref z **strefy dostępności** listy rozwijanej, Zachowaj pozostałe wartości domyślne, i Kliknij przycisk **OK**.
+5. W obszarze **ustawienia** > **wysokiej dostępności**, wybierz jedną z numerowane stref z **strefy dostępności** listy rozwijanej, Zachowaj pozostałe wartości domyślne i Kliknij przycisk **OK**.
 
     ![Wybierz strefę dostępności](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
-6. Na stronie Podsumowanie kliknij **Utwórz** rozpocząć wdrażanie maszyny wirtualnej.
+6. Na stronie podsumowania kliknij **Utwórz** rozpocząć wdrażanie maszyny wirtualnej.
 
 7. Maszyna wirtualna zostanie przypięta do pulpitu nawigacyjnego witryny Azure Portal. Po zakończeniu wdrażania zostanie automatycznie otwarte podsumowanie maszyny wirtualnej.
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Potwierdź strefę dla adresów IP i dysków zarządzanych
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Potwierdzanie strefy dla dysku zarządzanego i adresu IP
 
-Po wdrożeniu maszyny Wirtualnej w strefie dostępności zarządzanego dysku dla maszyny Wirtualnej jest tworzony w tej samej strefie dostępności. Domyślnie tworzona jest również publicznego adresu IP w tej strefie.
+Po wdrożeniu maszyny Wirtualnej w strefie dostępności dysku zarządzanego dla maszyny Wirtualnej jest tworzony w tej samej strefie dostępności. Domyślnie publiczny adres IP jest tworzona w tej strefie.
 
 Można potwierdzić ustawienia strefy dla tych zasobów w portalu.  
 
-1. Kliknij przycisk **grup zasobów** , a następnie nazwę zasobu grupy dla maszyny Wirtualnej, takie jak *myResourceGroup*.
+1. Kliknij przycisk **grup zasobów** , a następnie nazwę zasobu zgrupować dla maszyny Wirtualnej, takie jak *myResourceGroup*.
 
-2. Kliknij nazwę zasobu dyskowego. **Omówienie** strona zawiera szczegółowe informacje o strefie lokalizacji i dostępności zasobów.
+2. Kliknij nazwę zasobu dysku. **Przegląd** strona zawiera szczegółowe informacje o lokalizacji i strefie dostępności zasobu.
 
-    ![Dostępność strefę dla dysków zarządzanych](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
+    ![Strefy dostępności dla dysku zarządzanego](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
 
-3. Kliknij nazwę zasobu adresu publicznego adresu IP. **Omówienie** strona zawiera szczegółowe informacje o strefie lokalizacji i dostępności zasobów.
+3. Kliknij nazwę zasób publicznego adresu IP. **Przegląd** strona zawiera szczegółowe informacje o lokalizacji i strefie dostępności zasobu.
 
-    ![Dostępność strefie dla adresu IP](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
+    ![Strefa dostępności adresu IP](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób tworzenia maszyny Wirtualnej w strefie dostępności. Dowiedz się więcej o [regionach i dostępności](regions-and-availability.md) maszyn wirtualnych platformy Azure.
+W tym artykule przedstawiono sposób tworzenia maszyny wirtualnej w strefie dostępności. Dowiedz się więcej o [regionach i dostępności](regions-and-availability.md) maszyn wirtualnych platformy Azure.

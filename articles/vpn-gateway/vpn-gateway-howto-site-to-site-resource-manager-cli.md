@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: INTERFEJS WIERSZA POLECENIA | Dokumentacja firmy Microsoft'
+title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: INTERFEJS WIERSZA POLECENIA | Dokumentacja firmy Microsoft'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Ta procedura jest pomocna podczas tworzenia połączenia bramy sieci VPN typu lokacja-lokacja obejmującego wiele lokalizacji za pomocą interfejsu wiersza polecenia.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18834357651e5fb72dd849a8d8e2e7687f0a8141
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6cf427ee1dbd47d3b762035abc2236bda65db116
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730360"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773184"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Tworzenie sieci wirtualnej z wykorzystaniem połączenia sieci VPN typu lokacja-lokacja przy użyciu interfejsu wiersza polecenia
 
@@ -36,7 +36,7 @@ Połączenie bramy sieci VPN typu lokacja-lokacja umożliwia łączenie sieci lo
 Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
 * Upewnij się, że masz zgodne urządzenie sieci VPN i dostępna jest osoba, która umie je skonfigurować. Aby uzyskać więcej informacji o zgodnych urządzeniach sieci VPN i konfiguracji urządzeń, zobacz artykuł [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md).
-* Sprawdź, czy masz dostępny zewnętrznie publiczny adres IPv4 urządzenia sieci VPN. Ten adres IP nie może się znajdować za translatorem adresów sieciowych.
+* Sprawdź, czy masz dostępny zewnętrznie publiczny adres IPv4 urządzenia sieci VPN.
 * Jeśli nie znasz zakresów adresów IP w konfiguracji swojej sieci lokalnej, skontaktuj się z osobą, która może podać Ci te dane. Tworząc tę konfigurację, musisz określić prefiksy zakresu adresów IP, które platforma Azure będzie kierować do Twojej lokalizacji lokalnej. Żadna z podsieci sieci lokalnej nie może się nakładać na podsieci sieci wirtualnej, z którymi chcesz nawiązać połączenie.
 * Za pomocą usługi Azure Cloud Shell do uruchamiania poleceń interfejsu wiersza polecenia (instrukcje poniżej). Jednak jeśli wolisz polecenia lokalnie, sprawdź, że zainstalowano najnowszą wersję poleceń interfejsu wiersza polecenia (2.0 lub nowszą). Aby uzyskać informacje o instalowaniu poleceń interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli). 
  
@@ -115,7 +115,7 @@ Brama sieci lokalnej zazwyczaj odwołuje się do lokalizacji lokalnej. Nadaj lok
 
 Wprowadź następujące wartości:
 
-* *--gateway-ip-address* to adres IP lokalnego urządzenia sieci VPN. Urządzenie sieci VPN nie może znajdować się za translatorem adresów sieciowych.
+* *--gateway-ip-address* to adres IP lokalnego urządzenia sieci VPN.
 * *--local-address-prefixes* to Twoje lokalne przestrzenie adresowe.
 
 Użyj polecenia [az network local-gateway create](/cli/azure/network/local-gateway), aby dodać bramę sieci lokalnej z wieloma prefiksami adresów:

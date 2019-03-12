@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 4e7af92ed0ce04bb14bd49c24de4928baa4f00ec
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5962ec097c5cd72693530328b710af915054d0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448071"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768916"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -208,6 +208,15 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 <set-backend-service base-url="base URL of the backend service" />
 ```
 
+lub
+
+```xml
+<set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
+```
+
+> [!NOTE]
+> Jednostki zaplecza mogą być zarządzane za pośrednictwem funkcji zarządzania [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+
 ### <a name="example"></a>Przykład
 
 ```xml
@@ -260,8 +269,8 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|podstawowy adres url|Nowe zaplecze podstawowy adres URL usługi.|Nie|ND|
-|Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do.|Nie|ND|
+|podstawowy adres url|Nowe zaplecze podstawowy adres URL usługi.|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
+|Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
 |sf-partition-key|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Używana do rozpoznawania określonej partycji z usługi rozpoznawania nazw.|Nie|ND|
 |sf-replica-type|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Kontroluje, czy żądanie należy przejść do podstawowej lub pomocniczej replice partycji. |Nie|ND|
 |sf-resolve-condition|Dotyczy tylko w przypadku wewnętrznej bazy danych usługi Service Fabric. Warunek, identyfikowanie, jeśli wywołanie do zaplecza usługi Service Fabric musi być powtarzana z nowego rozwiązania.|Nie|ND|
@@ -482,17 +491,15 @@ OriginalUrl.
  Aby uzyskać więcej informacji, zobacz [wyrażenia zasad](api-management-policy-expressions.md) i [zmiennej kontekstowej](api-management-policy-expressions.md#ContextVariables).
 
 > [!NOTE]
-> Wiele wartości nagłówka są łączone na przykład z ciągiem CSV:  
-> `headerName: value1,value2,value3`
+> Wiele wartości nagłówka są łączone na przykład z ciągiem CSV: `headerName: value1,value2,value3`
 >
 > Wyjątki obejmują standardowe nagłówki, które wartości:
 > - może zawierać przecinków (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`),
 > - może zawierać datę (`Cookie`, `Set-Cookie`, `Warning`),
 > - zawiera daty (`Date`, `Expires`, `If-Modified-Since`, `If-Unmodified-Since`, `Last-Modified`, `Retry-After`).
 >
-> W przypadku tych wyjątków wielu wartości nagłówka nie będzie można połączyć w jeden ciąg i zostaną przekazane jako osobne nagłówków, na przykład:  
->`User-Agent: value1`  
->`User-Agent: value2`  
+> W przypadku tych wyjątków wielu wartości nagłówka nie będzie można połączyć w jeden ciąg i zostaną przekazane jako osobne nagłówków, na przykład: `User-Agent: value1`
+>`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>Elementy

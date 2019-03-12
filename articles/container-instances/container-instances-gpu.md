@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: adb893a9d37219409f81b2fb402f2d4afd36aa34
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: f35b2cd8d360bd46913eaa34b91e1fd19bc1ba9b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338862"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533599"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów, które używają zasobów procesora GPU
 
@@ -28,15 +28,7 @@ Jak pokazano w tym artykule, można dodać zasobów procesora GPU podczas wdraż
 
 W wersji zapoznawczej poniższe ograniczenia mają zastosowanie podczas korzystania z zasobów procesora GPU w grupy kontenerów. 
 
-**Obsługiwane regiony**:
-
-* Wschodnie stany USA (eastus)
-* Zachodnie stany USA 2 (westus2)
-* Południowo-środkowe stany USA (southcentralus)
-* Europa Zachodnia (westeurope)
-* Europa Północna (northeurope)
-* Azja Wschodnia (Azja Wschodnia)
-* Indie środkowe (centralindia)
+[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
 Obsługa zostanie dodana dla dodatkowych regionów wraz z upływem czasu.
 
@@ -59,21 +51,9 @@ Aby użyć procesorach GPU znajdujących się w wystąpieniu kontenera, określ 
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
-### <a name="cpu-and-memory"></a>Procesor i pamięć
+[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-Podczas wdrażania zasobów procesora GPU, zasobów Procesora i pamięci należy ustawić odpowiednie dla obciążeń, aż do maksymalnej wartości pokazane w poniższej tabeli. Te wartości są obecnie większe niż limity procesora CPU i pamięci w container instances bez zasobów procesora GPU.  
-
-| JEDNOSTKA SKU PROCESORA GPU | Liczba procesorów GPU | Procesor CPU |  Pamięć (GB) |
-| --- | --- | --- | --- |
-| K80 | 1 | 6 | 56 |
-| K80 | 2 | 12 | 112 |
-| K80 | 4 | 24 | 224 |
-| P100 | 1 | 6 | 112 |
-| P100 | 2 | 12 | 224 |
-| P100 | 4 | 24 | 448 |
-| V100 | 1 | 6 | 112 |
-| V100 | 2 | 12 | 224 |
-| V100 | 4 | 24 | 448 |
+Podczas wdrażania zasobów procesora GPU, ustaw odpowiednią dla obciążenia, do maksymalnej wartości podanych w powyższej tabeli zasobów Procesora i pamięci. Te wartości są obecnie większy niż zasoby Procesora i pamięci, które muszą być dostępne w grupy kontenerów bez zasobów procesora GPU.  
 
 ### <a name="things-to-know"></a>Należy znać
 

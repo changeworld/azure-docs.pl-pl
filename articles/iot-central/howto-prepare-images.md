@@ -3,17 +3,17 @@ title: Przekazywanie obrazów do aplikacji usługi Azure IoT Central | Dokumenta
 description: Jako Konstruktor Dowiedz się, jak przygotować i przekazać obrazy do aplikacji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/31/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4378ff4155cf0b2f9c4af8176f41fe35fc433792
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310713"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767332"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotuj i przekazywać obrazy do aplikacji usługi Azure IoT Central
 
@@ -30,7 +30,7 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 Możesz dodać niestandardowe obrazy w następujących lokalizacjach w aplikacji usługi Azure IoT Central:
 
-* **Menedżer aplikacji** strony
+* **Aplikacje** strony
 
     ![Obraz na stronie Menedżera aplikacji](media/howto-prepare-images/applicationmanager.png)
 
@@ -70,7 +70,7 @@ W poniższych sekcjach opisano sposób przekazywania obrazów w różnych miejsc
 
 ### <a name="application-manager"></a>Menedżer aplikacji
 
-Aby przekazać obraz na **Menedżer aplikacji**, przejdź do **ustawienia aplikacji** strony w **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
+Do przekazania obrazu do użycia na **aplikacje** stronie, przejść do **ustawienia aplikacji** strony w **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
 
 ![Przekaż obraz aplikacji](media/howto-prepare-images/uploadapplicationmanager.png)
 
@@ -78,9 +78,9 @@ Wybierz Kafelek obrazu aplikacji, aby przekazać przygotowany obraz (268 x 160 p
 
 ### <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
-Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit nawigacyjny** aplikacji i wybierz **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit nawigacyjny** strony aplikacji i wybierz **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
 
-![Przekazywanie obrazu do pulpitu nawigacyjnego aplikacji](media/howto-prepare-images/uploadhomepage.png)
+![Przekaż obraz pulpitu nawigacyjnego](media/howto-prepare-images/uploadhomepage.png)
 
 W obszarze skonfigurować obrazu wybierz Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
@@ -88,15 +88,15 @@ W obszarze skonfigurować obrazu wybierz Kafelek obrazu, aby przekazać przygoto
 
 ### <a name="device-template"></a>Szablon urządzenia
 
-Aby przekazać obraz na podstawie szablonu urządzenia, przejdź do **Device Explorer**, wybierz szablon urządzenia, a następnie urządzenia. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na podstawie szablonu urządzenia, przejdź do **szablonów urządzeń** i wybierz szablon urządzenia. Konstruktor, aby zakończyć to zadanie, musisz być:
 
 ![Przekazywanie obrazu szablonu urządzenia](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Wybierz Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego. 
+Wybierz Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego.
 
 ### <a name="device-dashboard"></a>Pulpit nawigacyjny urządzenia
 
-Aby przekazać obraz na pulpicie nawigacyjnym urządzenia, przejdź do **Device Explorer**, wybierz szablon urządzenia, a następnie urządzenia. Następnie wybierz **pulpit nawigacyjny** strony i wybierz **Edytuj szablon**. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na pulpicie nawigacyjnym urządzenia, przejdź do **szablonów urządzeń** i wybierz szablon urządzenia. Następnie wybierz **pulpit nawigacyjny** kartę. Konstruktor, aby zakończyć to zadanie, musisz być:
 
 ![Przekazywanie obrazu do pulpitu nawigacyjnego urządzeń](media/howto-prepare-images/uploaddevicedashboard.png)
 

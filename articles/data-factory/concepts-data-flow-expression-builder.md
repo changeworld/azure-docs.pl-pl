@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 7cf6b08655174ce6d9b851d635d5c8b9d9d358dd
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245543"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543733"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Konstruktor wyrażeń przepływu danych mapowania
 
@@ -51,7 +51,7 @@ Dodawanie komentarzy do wyrażenia przy użyciu pojedynczego wiersza i komentarz
 
 ## <a name="regular-expressions"></a>Wyrażenia regularne
 
-Język wyrażeń przepływ danych fabryki danych Azure [pełna dokumentacja tutaj](http://aka.ms/dataflowexpressions), włącza funkcje, które zawierają składni wyrażeń regularnych. Korzystając z funkcji wyrażenia regularnego, Konstruktor wyrażeń podejmie próbę interpretacji kreski ułamkowej odwróconej (\) jako sekwencja znaków ucieczki. Korzystając z ukośników odwrotnych w wyrażeniu regularnym, umieść je całego wyrażenia regularnego w impulsach ` ` lub użyj podwójny ukośnik odwrotny.
+Język wyrażeń przepływ danych fabryki danych Azure [pełna dokumentacja tutaj](https://aka.ms/dataflowexpressions), włącza funkcje, które zawierają składni wyrażeń regularnych. Korzystając z funkcji wyrażenia regularnego, Konstruktor wyrażeń podejmie próbę interpretacji kreski ułamkowej odwróconej (\) jako sekwencja znaków ucieczki. Korzystając z ukośników odwrotnych w wyrażeniu regularnym, umieść je całego wyrażenia regularnego w impulsach ` ` lub użyj podwójny ukośnik odwrotny.
 
 Przykład przy użyciu znaczników
 

@@ -10,16 +10,16 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860290"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544328"
 ---
 # <a name="grammar-format"></a>Format gramatyki
 
-Gramatyka jest plik XML, który określa zestaw ważona zapytań w języku naturalnym, których usługa może interpretować, a także jak tych zapytań w języku naturalnym są tłumaczone na wyrażeniach zapytań semantycznych.  Składnia gramatyki opiera się na [SRGS](http://www.w3.org/TR/speech-grammar/), to standard W3C gramatyki rozpoznawania mowy, za pomocą rozszerzeń do obsługi integracji indeksu danych i funkcji semantycznego.
+Gramatyka jest plik XML, który określa zestaw ważona zapytań w języku naturalnym, których usługa może interpretować, a także jak tych zapytań w języku naturalnym są tłumaczone na wyrażeniach zapytań semantycznych.  Składnia gramatyki opiera się na [SRGS](https://www.w3.org/TR/speech-grammar/), to standard W3C gramatyki rozpoznawania mowy, za pomocą rozszerzeń do obsługi integracji indeksu danych i funkcji semantycznego.
 
 Poniżej opisano poszczególne elementy składni, które mogą być używane w gramatyki.  Zobacz [w tym przykładzie](#example) dla pełną gramatyki, który demonstruje użycie tych elementów w kontekście.
 

@@ -7,12 +7,12 @@ ms.author: maghan
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9d80eddffaf376b6f6f0090dce74a4884b291531
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: de67ca0c209f9a61b00c5451a27a1198d0de3724
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405533"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532914"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Jak zabezpieczyć dostęp do wykazu danych i zasobów danych
 > [!IMPORTANT]
@@ -23,7 +23,7 @@ Usługa Azure Data Catalog pozwala określić, kto ma dostęp do wykazu danych i
 ## <a name="catalog-users-and-permissions"></a>Użytkownicy wykazu i uprawnienia
 Aby nadać użytkownik lub Grupa dostępu do wykazu danych i ustawić uprawnienia:
 
-1. Na [strony głównej usługi data Catalog](http://www.azuredatacatalog.com), kliknij przycisk **ustawienia** na pasku narzędzi.
+1. Na [strony głównej usługi data Catalog](https://www.azuredatacatalog.com), kliknij przycisk **ustawienia** na pasku narzędzi.
 
     ![wykaz danych — ustawienia](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. Na stronie ustawień, rozwiń węzeł **użytkowników wykazu** sekcji.

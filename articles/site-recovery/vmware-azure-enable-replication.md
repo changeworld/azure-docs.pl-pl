@@ -3,15 +3,15 @@ title: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odz
 description: W tym artykule opisano sposób włączania replikacji maszyn wirtualnych programu VMware do odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: mayurigupta13
 ms.service: site-recovery
-ms.date: 3/3/2019
+ms.date: 3/6/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 47cd1c8e7a8ea02175f1f35eaf8c1658e03a2a53
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 26b0370af900e1c29bf11606339487cf27f88039
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403315"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533429"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -39,6 +39,12 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
+>[!NOTE]
+>* Usługa Azure Site Recovery replikuje teraz bezpośrednio do usługi Managed Disks dla wszystkich nowych replikacji. Serwer przetwarzania zapisuje dzienników replikacji na konto magazynu pamięci podręcznej w regionie docelowym. Dzienniki te są używane do tworzenia punktów odzyskiwania w zarządzanych dyskach repliki. 
+>* W momencie przejścia w tryb failover wybierane przez klienta punktu odzyskiwania jest używany do utworzenia dysku zarządzanego w docelowym.
+>* Nie ma to wpływ na maszyny wirtualne, które wcześniej skonfigurowano replikację do docelowych kont magazynu. 
+>* Replikacja do kont magazynu do nowego komputera jest dostępna tylko za pośrednictwem interfejsu API REST i Powershell. Replikacja do konta magazynu, należy użyć interfejsu API w wersji 2016-08-10 lub 2018-01-10.
+
 1. Kliknij przycisk **krok 2: Replikowanie aplikacji** > **źródła**. Po włączeniu replikacji po raz pierwszy kliknij pozycję **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn.
 2. W **źródła** strony > **źródła**, wybierz serwer konfiguracji.
 3. W **typ maszyny**, wybierz opcję **maszyn wirtualnych** lub **maszyn fizycznych**.
@@ -50,14 +56,13 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 6. W **docelowej**, wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne w trybie failed-over. Wybierz model wdrażania, który chcesz użyć na platformie Azure dla maszyn wirtualnych w trybie failed-over.
 
 7. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne Azure, gdy zostaną uruchomione po przejściu do trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. Jeśli nie masz sieci, należy ją utworzyć. Aby utworzyć sieć przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie kliknij przycisk **OK**.
+   
+   ![Włącz ustawienie obiektu docelowego replikacji](./media/vmware-azure-enable-replication/enable-rep3.png)
 
->[!NOTE]
->Usługa Azure Site Recovery replikuje teraz bezpośrednio do usługi Managed Disks dla wszystkich nowych replikacji. Nie ma to wpływ na istniejące replikacji. Replikacja do kont magazynu do nowego komputera jest dostępna tylko za pośrednictwem interfejsu API REST i Powershell. 
-
-    ![Enable replication target setting](./media/vmware-azure-enable-replication/enable-rep3.png)
 8. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
 
     ![Włączanie replikacji wybierz maszyn wirtualnych](./media/vmware-azure-enable-replication/enable-replication5.png)
+
 9. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie. Ponadto należy wybrać typ docelowy dysk zarządzany, który chcesz replikować do na podstawie danych churn wzorców.
 10. Domyślnie wszystkie dyski na maszynie źródłowej są replikowane. Wykluczanie dysków z replikacji, usuń zaznaczenie pola wyboru **Include** pola wyboru dla wszystkich dysków, które nie mają być replikowane.  Następnie kliknij przycisk **OK**. Później możesz skonfigurować dodatkowe właściwości. [Dowiedz się więcej](vmware-azure-exclude-disk.md) informacji na temat wykluczania dysków.
 
@@ -72,9 +77,8 @@ Podczas replikowania maszyn wirtualnych programu VMware:
     >    * Grupowania maszyn wirtualnych i serwerów fizycznych, aby odzwierciedlały obciążeń. Włączenie spójności wielu maszyn wirtualnych może wpłynąć na wydajność obciążenia. Użyj tylko wtedy, gdy maszyn są to samo obciążenie i jest wymagana spójność.
 
     ![Włączanie replikacji](./media/vmware-azure-enable-replication/enable-replication7.png)
+    
 13. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
-
-
 
 ## <a name="view-and-manage-vm-properties"></a>Wyświetlanie właściwości maszyny wirtualnej i zarządzanie nimi
 

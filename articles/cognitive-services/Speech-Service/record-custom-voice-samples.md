@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0ca82da43ea53aed3fbcf858b34a3ad94d712661
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864948"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530743"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -150,7 +150,7 @@ Ustawić poziomy, tak że większość dostępne dynamicznym zakresie rejestracj
 
 W tym miejscu jest używany przez większość zakresu (wysokość), ale najwyższej wartości szczytowe sygnału nie skontaktować się z góry lub u dołu okna. Widać również że wyciszenia w nagraniu przybliża linii poziomej alokowania elastycznego wskazujący floor szumu niski. To nagranie ma akceptowalnym zakresem dynamiczne i sygnał / szum.
 
-Rekord bezpośrednio do komputera za pośrednictwem interfejsu audio wysokiej jakości lub port USB, w zależności od mikrofonu, z którego korzystasz. Dla analogowy, proste łańcucha audio: Sprawdzanie integralności komunikatu, preamp, interfejs audio, komputer. Możesz licencjonować zarówno [Avid narzędzi dla specjalistów](http://www.avid.com/en/pro-tools) i [Adobe Audition](https://www.adobe.com/products/audition.html) miesięcznych kosztów uzasadnione. W przypadku bardzo ścisłej swój budżet, wypróbuj bezpłatne [Audacity](https://www.audacityteam.org/).
+Rekord bezpośrednio do komputera za pośrednictwem interfejsu audio wysokiej jakości lub port USB, w zależności od mikrofonu, z którego korzystasz. Dla analogowy, proste łańcucha audio: Sprawdzanie integralności komunikatu, preamp, interfejs audio, komputer. Możesz licencjonować zarówno [Avid narzędzi dla specjalistów](https://www.avid.com/en/pro-tools) i [Adobe Audition](https://www.adobe.com/products/audition.html) miesięcznych kosztów uzasadnione. W przypadku bardzo ścisłej swój budżet, wypróbuj bezpłatne [Audacity](https://www.audacityteam.org/).
 
 Zarejestruj monophonic do 44,1 kHz 16-bitowego (jakością ciągłego wdrażania) lub Lepsza. Bieżący stan systemu — najnowocześniejsze to 48 kHz 24-bitowego, jeśli sprzęt obsługuje tę funkcję. Użytkownik będzie obniżenie częstotliwości próbkowania audio do 16 kHz 16-bitowych przed przesłaniem jej do portalu usługi Custom Voice. Jednak warto korzystać z wysokiej jakości oryginalne nagranie w przypadku zmiany są potrzebne.
 
@@ -204,7 +204,7 @@ Rejestrowanie nowoczesnych studios uruchamiane na komputerach. Na końcu sesji p
 
 Portal Custom Voice wymaga każdego wypowiedź podana w jej własnym pliku. Każdy plik dźwiękowy dostarczanych przez studio zawiera wiele wypowiedzi. Głównym zadaniem poprodukcyjnych więc podzielić nagrania i przygotować je do przesłania. Inżynier nagrywanie mógł zostać umieścić znaczniki w pliku (lub podany arkusz oddzielne sygnalizacji) aby wskazać, gdzie rozpoczyna się każdego wypowiedź.
 
-Notatki w taki sposób, aby znaleźć konkretny spowoduje przejście ma, a następnie użyć dźwięk, takich jak edytowanie, narzędzie [Avid narzędzi dla specjalistów](http://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), lub bezpłatnych [Audacity](https://www.audacityteam.org/), aby skopiować każdy Wypowiedź do nowego pliku.
+Notatki w taki sposób, aby znaleźć konkretny spowoduje przejście ma, a następnie użyć dźwięk, takich jak edytowanie, narzędzie [Avid narzędzi dla specjalistów](https://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), lub bezpłatnych [Audacity](https://www.audacityteam.org/), aby skopiować każdy Wypowiedź do nowego pliku.
 
 Pozostaw tylko przez około 0,2 sekund wyciszenia na początku i końcu każdego klipu, z wyjątkiem pierwszej. Ten plik powinien zaczynać pełne pięć sekund wyciszenia. Nie należy używać edytora audio do dyskretnej części pliku "zero out". W tym "tonu pokoju" pomoże głosu niestandardowe algorytmy kompensuje wszelkie hałas w tle pozostałych.
 

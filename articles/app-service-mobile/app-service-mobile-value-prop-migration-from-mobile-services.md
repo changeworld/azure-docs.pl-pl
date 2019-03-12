@@ -11,18 +11,18 @@ ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 365f00ced38a1ddc20df211121fba43efff8ea87
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
-ms.translationtype: HT
+ms.openlocfilehash: 8a0bf1c39977d1659d398fce7c4bb3ae0024c88a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29460416"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771144"
 ---
 # <a name="getting-started"> </a>Korzystam z usługi Mobile Services. Jak usługa App Service może mi pomóc?
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Istniejąca Usługa mobilna jest bezpieczna i pozostanie objęta pomocą techniczną. Platforma usługi *Azure App Service* oferuje jednak pewne korzyści związane z aplikacją mobilną, które nie są obecnie dostępne w usłudze Mobile Services:
 
 * Prostsze, łatwiejsze i bardziej ekonomiczne oferty aplikacji obejmujących klientów internetowych i mobilnych
@@ -61,6 +61,6 @@ Reaguj na problemy w czasie rzeczywistym dzięki możliwościom automatycznego p
 Automatycznie twórz kopię zapasową zaplecza i bazy danych. Kod i dane są chronione przed awariami. Można je też łatwo przywrócić, aby zapewnić firmie pewność działania.
 
 ## <a name="ready-stage-go"></a>Gotowe, przejściowe, już!
-Dzięki usłudze *Azure App Service* można teraz tworzyć wiele prywatnych środowisk testowania i przejściowych dla aplikacji mobilnych. Używaj ich do testowania aplikacji przed wdrożeniem. Przechodź do środowiska produkcyjnego bez przestojów. Aplikacje sieci Web są wstępnie załadowane, dzięki czemu można pracować w najlepszym środowisku klienta.
+Dzięki usłudze *Azure App Service* można teraz tworzyć wiele prywatnych środowisk testowania i przejściowych dla aplikacji mobilnych. Używaj ich do testowania aplikacji przed wdrożeniem. Przechodź do środowiska produkcyjnego bez przestojów. Aplikacje internetowe są wstępnie załadowane, dzięki czemu można pracować w najlepszym środowisku klienta.
 
 Aby rozpocząć korzystanie z zalet usługi *App Service* dla istniejącej usługi mobilnej, wykonaj czynności opisane w tym [samouczku](app-service-mobile-migrating-from-mobile-services.md).

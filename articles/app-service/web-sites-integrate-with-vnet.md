@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cddc6ccd8360ef88c95cd33c0bc8e141d721042d
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 951f8f887a7b29aac67b50ff8f92ddfd4a66e26b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010518"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766882"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
@@ -277,7 +277,8 @@ Nowa wersja jest dostępna w wersji zapoznawczej i ma następujące cechy.
 * Nowej funkcji integracji sieci wirtualnej nie działa dla aplikacji w środowisku usługi App Service.
 * Nie można usunąć sieci wirtualnej za pomocą zintegrowanych aplikacji.  
 * Tabele tras i globalnej komunikacji równorzędnej nie są jeszcze dostępne w nowej integracji sieci wirtualnej.  
-* Jeden adres jest używany dla poszczególnych wystąpień planu usługi App Service. Ponieważ rozmiar podsieci nie można zmienić po przypisaniu, należy użyć podsieci, które więcej niż może obejmować rozmiaru skali maksymalnej. / 27 przy użyciu 32 adresów jest zalecany rozmiar, jak który może pomieścić, plan usługi App Service, który jest skalowany do 20 wystąpień.  Będzie można korzystać przy użyciu nowej funkcji integracji sieci wirtualnej zasobów zabezpieczonych punktu końcowego usługi. Aby to zrobić, należy włączyć punkty końcowe usługi w podsieci użyć do integracji sieci wirtualnej.
+* Jeden adres jest używany dla poszczególnych wystąpień planu usługi App Service. Ponieważ rozmiar podsieci nie można zmienić po przypisaniu, należy użyć podsieci, które więcej niż może obejmować rozmiaru skali maksymalnej. / 27 przy użyciu 32 adresów jest zalecany rozmiar, jak który może pomieścić, plan usługi App Service, który jest skalowany do 20 wystąpień.
+* Będzie można korzystać przy użyciu nowej funkcji integracji sieci wirtualnej zasobów zabezpieczonych punktu końcowego usługi. Aby to zrobić, należy włączyć punkty końcowe usługi w podsieci użyć do integracji sieci wirtualnej.
 
 Aby korzystać z nowych funkcji:
 

@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 9300e60902b9234af01a64173eefcfb1bc033c61
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410200"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769383"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Sprawdzanie poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
 
@@ -75,7 +75,7 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
     ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     
     $destination = 'c:\certificates'
     
@@ -86,7 +86,7 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
     > Wykres i usług AD FS są wymagane, jeśli używasz usług AD FS w systemie tożsamości. Na przykład:
     >
     > ```PowerShell  
-    > $directories = 'ADFS','Graph','ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     > ```
     
      - Umieść swoje certyfikaty w katalogach odpowiedni, utworzony w poprzednim kroku. Na przykład:  
@@ -254,17 +254,17 @@ Powyższe kroki należy wykonać do przygotowania i zweryfikuj certyfikaty infra
 
 | Katalog | Certyfikat |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\< region >\< externalFQDN > |
-| ACSQueue  |  wildcard_queue\< region >\< externalFQDN > |
-| ACSTable  |  wildcard_table\< region >\< externalFQDN > |
-| Host rozszerzenia administratora  |  wildcard_adminhosting\< region >\< externalFQDN > |
-| Portal administracyjny  |  adminportal\< region >\< externalFQDN > |
-| Administrator ARM  |  adminmanagement\< region >\< externalFQDN > |
-| Publiczne ARM  |  Zarządzanie\< region >\< externalFQDN > |
-| KeyVault  |  wildcard_vault\< region >\< externalFQDN > |
-| KeyVaultInternal  |  wildcard_adminvault\< region >\< externalFQDN > |
-| Host rozszerzenia publiczne  |  wildcard_hosting\< region >\< externalFQDN > |
-| Publiczny  |  Portal\< region > _\< externalFQDN > |
+| acsBlob | wildcard_blob_\<region > _\<externalFQDN > |
+| ACSQueue  |  wildcard_queue_\<region>_\<externalFQDN> |
+| ACSTable  |  wildcard_table_\<region > _\<externalFQDN > |
+| Host rozszerzenia administratora  |  wildcard_adminhosting_\<region > _\<externalFQDN > |
+| Portal administracyjny  |  adminportal_\<region > _\<externalFQDN > |
+| Administrator ARM  |  adminmanagement_\<region > _\<externalFQDN > |
+| Publiczne ARM  |  management_\<region > _\<externalFQDN > |
+| KeyVault  |  wildcard_vault_\<region > _\<externalFQDN > |
+| KeyVaultInternal  |  wildcard_adminvault_\<region > _\<externalFQDN > |
+| Host rozszerzenia publiczne  |  wildcard_hosting_\<region>_\<externalFQDN> |
+| Publiczny  |  portal_\<region > _\<externalFQDN > |
 
 ## <a name="using-validated-certificates"></a>Przy użyciu zweryfikowanych certyfikatów
 

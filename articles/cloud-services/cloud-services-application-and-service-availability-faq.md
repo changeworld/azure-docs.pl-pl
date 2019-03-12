@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246365"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547643"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Aplikacja i problemów dotyczących dostępności usługi dla usług Azure Cloud Services: często zadawane pytania (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Aplikacja i problemów dotyczących dostępności usługi dla usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
 Ten artykuł zawiera często zadawane pytania dotyczące aplikacji i problemów dotyczących dostępności usługi dla [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Można także zapoznać się [strony rozmiar maszyny Wirtualnej usługi w chmurze](cloud-services-sizes-specs.md) Aby uzyskać informacje o rozmiarze.
 
@@ -41,8 +41,8 @@ Gdy serwer sieci Web otrzymuje pierwszego żądania, najpierw następuje rekompi
 Aplikacja Internet Information Services (IIS), pule mogą być okresowo odtwarzania, aby uniknąć niestabilne stanów, które mogą prowadzić do aplikacji ulegnie awarii, zawieszenia lub przecieki pamięci.
 
 Następujące dokumenty pomoże Ci zrozumieć i rozwiązać ten problem:
-* [Naprawianie wolnego ładowania początkowego dla usług IIS](http://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
-* [Pierwsze żądanie aplikacji sieci web usług IIS 7.5 po bardzo wolno odtwarzanie puli aplikacji](http://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
+* [Naprawianie wolnego ładowania początkowego dla usług IIS](https://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
+* [Pierwsze żądanie aplikacji sieci web usług IIS 7.5 po bardzo wolno odtwarzanie puli aplikacji](https://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
 
 Jeśli chcesz zmienić domyślne zachowanie usług IIS, należy użyć zadań uruchamiania, ponieważ ręcznie zastosować zmiany do wystąpień roli internetowej, zmiany po pewnym czasie zostaną utracone.
 

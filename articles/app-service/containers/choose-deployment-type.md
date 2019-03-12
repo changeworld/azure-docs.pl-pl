@@ -4,7 +4,7 @@ description: Decydowania między wdrożenia niestandardowego kontenera platformy
 keywords: Aplikacja sieci web, linux, oss w usłudze Azure app service
 services: app-service
 documentationCenter: ''
-authors: msangapu
+author: msangapu
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6ebcbc5b716f20cbc1d826899769e5629559675b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 079bfae19a4960ef5ab95c9d48d5603423407a9e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543108"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772878"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Niestandardowy obraz, wielokontenerowych lub obraz wbudowany platformy?
 

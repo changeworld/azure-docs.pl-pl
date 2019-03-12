@@ -9,18 +9,18 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7a90a0af8c6c7fd19b784d97e2ce30bea7910089
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728186"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550715"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
 W tym artykule rozpoczyna się seria artykułów, które pomagają organizacjom implementacji kompletnego rozwiązania tożsamości hybrydowej usługi Azure Active Directory (Azure AD). To rozwiązanie zostało opisane jako [platformy cyfrowej transformacji tożsamości hybrydowego](https://aka.ms/aadframework). Poruszono w nim wyników biznesowych i cele organizacji może skupić się na implementacji rozwiązania tożsamości hybrydowej niezawodne i bezpieczne. 
 
-Pierwszy wyników biznesowych Framework opisujemy wymagania organizacji w celu zabezpieczenia procesu uwierzytelniania, gdy użytkownicy uzyskują dostęp do aplikacji w chmurze. Pierwszym celem firm wyników biznesowych bezpiecznego uwierzytelniania jest użytkownikom logować się do aplikacji w chmurze przy użyciu ich nazw lokalnych użytkowników i haseł. Ten proces logowania, aby i jak użytkownicy są uwierzytelniani, umożliwiają wszystko w chmurze.
+Pierwszy wyników biznesowych Framework opisujemy wymagania organizacji w celu zabezpieczenia procesu uwierzytelniania, gdy użytkownicy uzyskują dostęp do aplikacji w chmurze. Pierwszym celem firm wyników biznesowych bezpiecznego uwierzytelniania jest użytkownikom logować się do aplikacji w chmurze przy użyciu ich nazw lokalnych użytkowników i haseł. Ten proces logowania i uwierzytelniania umożliwia wszystko w chmurze.
 
 Wybranie poprawnej metody uwierzytelniania jest pierwszą kwestią w przypadku organizacji chce przenieść swoje aplikacje do chmury. Nie dokonaniem tej decyzji, z następujących powodów:
 
@@ -161,7 +161,7 @@ Następujące diagramy przedstawiają składniki Architektura wysokiego poziomu 
 
     ![Usługi Azure AD identity hybrydowego za pomocą synchronizacji skrótów haseł](media/azure-ad/azure-ad-authn-image2.png)
 
-* Wymagania agenta uwierzytelniania przekazywanego:
+* Wymagania agenta uwierzytelniania przekazywanego, przy użyciu dwóch agentów w celu zapewnienia nadmiarowości:
 
     ![Usługi Azure AD identity hybrydowych przy użyciu uwierzytelniania przekazywanego](media/azure-ad/azure-ad-authn-image3.png)
 
@@ -204,7 +204,7 @@ Użyj lub włączanie synchronizacji skrótów haseł, niezależnie od metody uw
 
    * Organizacje, które wcześniej włączona synchronizacja skrótów haseł, zmienić ich metodę uwierzytelniania używaną synchronizacji skrótów haseł. Zostały one online w ciągu kilku godzin. Korzystając z dostępu do poczty e-mail za pośrednictwem usługi Office 365, jego pracownicy współpracowali do rozwiązywania problemów i dostępu do innych obciążeń opartych na chmurze.
 
-   * Organizacje, które nie zostały wcześniej Włączanie synchronizacji skrótów haseł było odwołać się do niezaufanych zewnętrzny adres e-mail systemy komunikacji i rozwiązywanie problemów. W takich przypadkach zajęło ich tygodniach lub więcej, aby zostać uruchomione ponownie.
+   * Organizacje, które nie zostały wcześniej Włączanie synchronizacji skrótów haseł było odwołać się do niezaufanych zewnętrznych e-mail systemy komunikacji rozwiązać problemy. W takich przypadkach zajęło tygodni je przywrócić ich lokalnej infrastrukturze do obsługi tożsamości, aby użytkownicy byli w stanie zalogować się do aplikacji w chmurze ponownie.
 
 3. **Ochrona tożsamości**. Jednym z najlepszych sposobów ochrony użytkowników w chmurze jest usługi Azure AD Identity Protection za pomocą usługi Azure AD Premium P2. Microsoft stale skanuje internetowego dla użytkownika i hasło zawiera listę, nieupoważnione osoby sprzedaży i udostępnić go w sieci web ciemny. Usługa Azure AD umożliwia Sprawdź nazwy użytkowników i haseł w organizacji naruszone te informacje. Dlatego bardzo ważne jest włączanie synchronizacji skrótów haseł, niezależnie od tego, jakie metody uwierzytelniania, możesz korzystać, które są Sfederowane lub uwierzytelniania przekazywanego. Ujawnione poświadczenia są prezentowane w postaci raportu. Te informacje służą do blokowania lub wymusić użytkownikom zmiany swoich haseł, gdy użytkownik próbuje zalogować się przy użyciu hasła ujawnione.
 

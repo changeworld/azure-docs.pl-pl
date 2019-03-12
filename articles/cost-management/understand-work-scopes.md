@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 3a1d363e08d4c7e9899f034b2260e764d07ed79d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c7eb490bdf484651613c5c7a72d2a31be5306634
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344851"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773796"
 ---
-# <a name="understand-and-work-with-scopes"></a>I Praca z zakresami
+# <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
 Ten artykuł ułatwia zapoznanie Pomoc dotycząca rozliczeń i zasobów zakresy zarządzania dostępne na platformie Azure i jak używać zakresów w Cost Management i interfejsów API.
 
@@ -145,6 +145,10 @@ Rozliczenia, użytkownicy nie mają dostępu do grup zarządzania, ponieważ jaw
 ## <a name="cloud-solution-provider-csp-scopes"></a>Cloud Solution Provider (CSP) zakresów
 
 Partnerzy programu cloud Solution Provider (CSP) nie są obecnie obsługiwane w Cost Management. Zamiast tego można użyć [Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+
+## <a name="how-to-switch-between-scopes-within-cost-management"></a>Jak przełączać się między zakresów w ramach zarządzania kosztami
+
+Wszystkie środowiska Cost Management w witrynie Azure portal obejmują **zakres** skażone po lewej górnej części bloku, który zapewnia dostęp do szybko zmienić zakres. Klikając **zakres** skażone Otwiera selektor zakresu, która konta rozliczeniowego, głównej grupy zarządzania i wszystkie subskrypcje, które nie są zagnieżdżone w grupie zarządzania głównym. Aby wybrać zakres, kliknij tło, aby go zaznaczyć, a następnie kliknij przycisk **wybierz** znajdujący się u dołu. Aby przejść do szczegółów zagnieżdżonych zakresów (np. grupy zasobów w ramach subskrypcji), kliknij łącze nazwa zakresu. Aby wybrać zakresu nadrzędnego na dowolnym poziomie zagnieżdżony, kliknij przycisk **wybierz tę opcję, <scope>**  znajdujący się u góry selektora zakresu.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Zidentyfikuj identyfikator zasobu dla zakresu
 

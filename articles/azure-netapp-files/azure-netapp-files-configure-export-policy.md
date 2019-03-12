@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 115c6726ed150b9a76685bd5a558d547d215958f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587739"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766652"
 ---
 # <a name="configure-export-policy-for-a-volume"></a>Konfigurowanie zasad eksportu dla woluminu
 
@@ -52,7 +52,7 @@ Masz możliwość opcjonalnego skonfigurowania zasad eksportu w celu kontrolowan
     ![Zasady eksportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 * [Zarządzanie woluminami](azure-netapp-files-manage-volumes.md)
 * [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Zarządzanie migawkami](azure-netapp-files-manage-snapshots.md)

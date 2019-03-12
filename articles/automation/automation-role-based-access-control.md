@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 963bc8f6602a33ed703344f5277bb427f11390bb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823522"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544992"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -180,11 +180,11 @@ Współautor monitorowania może odczytywać wszystkie dane monitorowania i aktu
 |Microsoft.Insights/Metrics/*|Odczytać metryki dla zasobu.|
 |Microsoft.Insights/Register/Action|Rejestrowanie dostawcy Microsoft.Insights.|
 |Microsoft.Insights/webtests/*|Zarządzaj testy sieci web usługi Application Insights.|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Zarządzaj pakietów rozwiązań usługi Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Zarządzaj zapisanego wyszukiwania analizy dzienników.|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Zarządzaj pakietów rozwiązań dzienniki usługi Azure Monitor.|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Zarządzaj wyszukiwaniami zapisane dzienniki usługi Azure Monitor.|
 |Microsoft.OperationalInsights/workspaces/search/action|Przeszukaj obszary robocze usługi Log Analytics.|
 |Microsoft.OperationalInsights/workspaces/sharedKeys/action|Wyświetl listę kluczy dla obszaru roboczego usługi Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Zarządzaj konfiguracje insight magazynu usługi Log Analytics.|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Zarządzaj konfiguracje insight magazynu dzienników usługi Azure Monitor.|
 |Microsoft.Support/*|Tworzenie i zarządzanie biletami pomocy technicznej.|
 |Microsoft.WorkloadMonitor/workloads/*|Zarządzanie obciążeniami.|
 

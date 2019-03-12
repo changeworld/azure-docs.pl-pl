@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 63de39fa97850c1df72bdcd964ed670e4e8b0608
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250652"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767196"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
@@ -301,7 +301,7 @@ W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymywać raport
 Określa nazwę region wdrożenia usługi Azure Stack.
 |  |  |
 |----------------------------|--------------|
-|Wpisz:                       |Ciąg        |
+|Wpisz:                       |String        |
 |Położenie:                   |o nazwie         |
 |Wartość domyślna:              |Brak          |
 |Akceptować wejście potokowe:      |False         |
@@ -312,7 +312,7 @@ Określa nazwę region wdrożenia usługi Azure Stack.
 Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana jako ExternalFQDN i ExternalDomainName.
 |  |  |
 |----------------------------|--------------|
-|Wpisz:                       |Ciąg        |
+|Wpisz:                       |String        |
 |Położenie:                   |o nazwie         |
 |Wartość domyślna:              |ExternalFQDN, ExternalDomainName |
 |Akceptować wejście potokowe:      |False         |
@@ -323,7 +323,7 @@ Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana 
 Określa odpowiednio wdrożenia usługi Azure Stack System obsługi tożsamości prawidłowe wartości, AAD lub ADFS, dla usługi Azure Active Directory i Active Directory Federation Services.
 |  |  |
 |----------------------------|--------------|
-|Wpisz:                       |Ciąg        |
+|Wpisz:                       |String        |
 |Położenie:                   |o nazwie         |
 |Wartość domyślna:              |Brak          |
 |Prawidłowe wartości:               |"AAD", "ADFS"  |
@@ -357,7 +357,7 @@ Określa hashtable zawierające ścieżki i hasła, certyfikaty PaaS.
 Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik został wygenerowany dla wdrożenia.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -368,7 +368,7 @@ Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik 
 Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/eksportu procedury, aby rozwiązać problem, wskazane przez weryfikację certyfikatu w tym narzędziu.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -379,7 +379,7 @@ Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/ekspo
 Określa ścieżkę docelową dla wynikowego pliku PFX z procedury importowania/eksportowania.  
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -405,7 +405,7 @@ Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCS
 
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Prawidłowe wartości:               |'MultipleCSR','SingleCSR' |
@@ -417,7 +417,7 @@ Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCS
 Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi istnieć.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -439,7 +439,7 @@ Określa administratora usługi usługi Azure Active Directory służący do wdr
 Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usługi Azure Stack.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -450,7 +450,7 @@ Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usł
 Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i subskrypcji służący do wdrażania usługi Azure Stack i rejestrowania.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Prawidłowe wartości:               |'AzureCloud','AzureChinaCloud','AzureUSGovernment' |
@@ -462,7 +462,7 @@ Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i 
 Określa konto rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -473,7 +473,7 @@ Określa konto rejestracji, który ma być używany do rejestracji w usłudze Az
 Określa identyfikator subskrypcji rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Identyfikator GUID     |
+|Wpisz:                       |Guid     |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Akceptować wejście potokowe:      |False    |
@@ -484,7 +484,7 @@ Określa identyfikator subskrypcji rejestracji, który ma być używany do rejes
 Określa ścieżkę do raportu gotowości, wartością domyślną jest bieżący katalog i domyślne nazwę raportu.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Wszyscy      |
 |Akceptować wejście potokowe:      |False    |
@@ -506,7 +506,7 @@ ACSBlob, ACSQueue, ACSTable, usług AD FS, portalu administracyjnym, ARM adminis
 
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |. \Certificates |
 |Akceptować wejście potokowe:      |False    |
@@ -529,7 +529,7 @@ Określa, jeśli usługi PaaS jako nazw hostów powinny zostać dodane do żąda
 Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegółów.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |Ciąg   |
+|Wpisz:                       |String   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Wszyscy      |
 |Prawidłowe wartości:               |'Certificate','AzureRegistration','AzureIdentity','Jobs','All' |
@@ -565,7 +565,7 @@ Określa ścieżkę niestandardową, aby zapisać raport gotowości JSON i pełn
 
 |  |  |
 |----------------------------|------------------|
-|Wpisz:                       |Ciąg            |
+|Wpisz:                       |String            |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |$ENV:TEMP\AzsReadinessChecker  |
 |Akceptować wejście potokowe:      |False             |

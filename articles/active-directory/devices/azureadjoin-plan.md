@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a299c5cf59a3c5b7a994303c9d85783ecfbb424
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b681915eb3ad9960f335d46508b857fa6ec2e20
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201894"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551776"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -40,7 +40,7 @@ W tym artykule założono, że czytelnik zna [wprowadzenie do zarządzania urzą
 
 ## <a name="plan-your-implementation"></a>Planowanie implementacji
 
-Aby zaplanować hybrydowego wdrożenia usługi Azure AD, należy się zapoznać z:
+Aby zaplanować wdrożenie usługi Azure AD join, należy się zapoznać z:
 
 |   |   |
 |---|---|

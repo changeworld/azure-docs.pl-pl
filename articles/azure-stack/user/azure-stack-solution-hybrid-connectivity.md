@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a05021255c6226329f1d7a3f0e7fa8c9be756646
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752666"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546725"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Samouczek: Konfigurowanie łączności chmury hybrydowej dzięki platformie Azure i usługi Azure Stack
 
@@ -87,7 +87,7 @@ W przykładach w tym samouczku Użyj następujących wartości. Te wartości mo�
 Specyfikacje połączenia:
 
  - **Typ sieci VPN**: Oparte na trasach
- - **Typ połączenia**: Lokacja lokacja (IPsec)
+ - **Typ połączenia**: Lokacja-lokacja (IPsec)
  - **Typ bramy**: Sieć VPN
  - **Nazwa połączenia platformy Azure**: Azure-Gateway-AzureStack-S2SGateway (portalu zostanie automatycznie wypełniona tej wartości)
  - **Nazwa połączenia w usłudze Azure Stack**: AzureStack-Gateway-Azure-S2SGateway (portalu zostanie automatycznie wypełniona tej wartości)
@@ -119,7 +119,7 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną przy użyciu portalu
 
 Tworzenie sieci wirtualnej na platformie Azure:
 
-1. Aby nawiązać połączenie za pomocą przeglądarki [witryny Azure portal](http://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
+1. Aby nawiązać połączenie za pomocą przeglądarki [witryny Azure portal](https://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
 2. Wybierz **Utwórz zasób**. W **Przeszukaj witrynę marketplace** wprowadź `virtual network`". Znajdź **sieć wirtualna** w na liście wyników, a następnie wybierz **sieci wirtualnej**.
 3. Z **wybierz model wdrożenia** , wybierz na liście **usługi Resource Manager**, a następnie wybierz pozycję **Utwórz**.
 4. Na **Utwórz sieć wirtualną**, skonfigurować ustawienia sieci wirtualnej. Wymagane pola nazwy są poprzedzone czerwoną gwiazdką.  Wprowadź prawidłową wartość gwiazdka zmienia się zielony znacznik wyboru.
@@ -132,7 +132,7 @@ Tworzenie sieci wirtualnej w usłudze Azure Stack:
 
 Przed połączeniem sieci wirtualnej z bramą, należy utworzyć podsieć bramy dla sieci wirtualnej, którą chcesz nawiązać połączenie. Usługi bramy korzystają adresów IP, które określisz w podsieci bramy.
 
-W [witryny Azure portal](http://portal.azure.com/), przejdź do sieci wirtualnej usługi Resource Manager, gdzie chcesz utworzyć bramę sieci wirtualnej.
+W [witryny Azure portal](https://portal.azure.com/), przejdź do sieci wirtualnej usługi Resource Manager, gdzie chcesz utworzyć bramę sieci wirtualnej.
 
 1. Wybierz sieć wirtualną, aby otworzyć **sieć wirtualna** strony.
 2. W **ustawienia**, wybierz opcję **podsieci**.

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
-ms.date: 03/04/2019
-ms.openlocfilehash: 05398f98bb92da8bf8436f2421beacdde3fd91c9
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/07/2019
+ms.openlocfilehash: 4e7f344dfa0b5cf38d36cec786169c5c7a51af3b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336568"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576518"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Obróć ochrony przezroczystego szyfrowania danych (TDE) przy użyciu programu PowerShell
 
@@ -43,7 +43,7 @@ Ten przewodnik w tym artykule omówiono dwa sposoby Obróć ochrony TDE na serwe
 
 ## <a name="manual-key-rotation"></a>Ręczna wymiana kluczy
 
-Ręczna wymiana kluczy używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/Add-AzKeyVaultKey), [AzSqlServerKeyVaultKey Dodaj](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), i [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/az.sql/set-azsqlservertransparentdataencryptionprotector) poleceń cmdlet, aby dodać zupełnie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. To podejście obsługuje dodawanie tego samego klucza do różnych magazynów kluczy w celu obsługi scenariuszy wysokiej dostępności i geo-dr.
+Ręczna wymiana kluczy używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/Add-AzKeyVaultKey), [AzSqlServerKeyVaultKey Dodaj](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), i [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) poleceń cmdlet, aby dodać zupełnie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. To podejście obsługuje dodawanie tego samego klucza do różnych magazynów kluczy w celu obsługi scenariuszy wysokiej dostępności i geo-dr.
 
 >[!NOTE]
 >Łączna długość nazwy magazynu kluczy i nazwę klucza nie może przekraczać 94 znaki.
@@ -71,7 +71,7 @@ Ręczna wymiana kluczy używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvau
 
 ## <a name="option-2-manual-rotation"></a>Opcja 2: Ręczne obrotu
 
-Ta opcja używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azurekeyvaultkey), [AzSqlServerKeyVaultKey Dodaj](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), i [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) poleceń cmdlet, aby dodać całkowicie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. 
+Ta opcja używa [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azkeyvaultkey), [AzSqlServerKeyVaultKey Dodaj](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), i [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) poleceń cmdlet, aby dodać całkowicie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. 
 
 >[!NOTE]
 >Łączna długość nazwy magazynu kluczy i nazwę klucza nie może przekraczać 94 znaki.

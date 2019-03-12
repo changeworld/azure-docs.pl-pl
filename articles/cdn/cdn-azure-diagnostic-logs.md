@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: edb2bbee8df24dc9f9747ff13f5e3526192d91b2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5b80dcfa5cef116bb2558f154a54d343e467ae83
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874022"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546657"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -45,11 +45,13 @@ Na poniższym diagramie przedstawiono typowy CDN core analytics widok danych.
 
 Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="enable-logging-with-the-azure-portal"></a>Włączanie rejestrowania przy użyciu witryny Azure portal
 
 Wykonaj te kroki Włącz, rejestrowanie za pomocą sieci CDN core analytics:
 
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com). Jeśli nie jest jeszcze mają włączone sieci CDN dla przepływu pracy [tworzenie wysokiej dostępności treści Azure profilu i punktu końcowego](cdn-create-new-endpoint.md) przed kontynuowaniem.
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie jest jeszcze mają włączone sieci CDN dla przepływu pracy [tworzenie wysokiej dostępności treści Azure profilu i punktu końcowego](cdn-create-new-endpoint.md) przed kontynuowaniem.
 
 1. W witrynie Azure portal przejdź do **profil CDN**.
 
@@ -168,7 +170,7 @@ Poniższy przykład pokazuje, jak włączyć dzienniki diagnostyczne za pośredn
 W tej sekcji opisano schemat CDN core analytics, jak jest zorganizowana w ramach konta usługi Azure storage i zawiera przykładowy kod, aby pobrać dzienniki w pliku CSV.
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Za pomocą Eksploratora usługi Storage platformy Microsoft Azure
-Aby korzystać z danych analizy podstawowych, z konta usługi Azure storage, musisz najpierw narzędzie dostępu do zawartości w ramach konta magazynu. Istnieją różne narzędzia dostępne na rynku, który firma Microsoft zaleca jest Microsoft Azure Storage Explorer. Aby pobrać to narzędzie, zobacz [Eksploratora usługi Azure Storage](http://storageexplorer.com/). Po pobraniu i zainstalowaniu oprogramowania, należy skonfigurować go do używania tego samego konta magazynu platformy Azure, który został skonfigurowany jako miejsce docelowe do dzienników diagnostycznych usługi CDN.
+Aby korzystać z danych analizy podstawowych, z konta usługi Azure storage, musisz najpierw narzędzie dostępu do zawartości w ramach konta magazynu. Istnieją różne narzędzia dostępne na rynku, który firma Microsoft zaleca jest Microsoft Azure Storage Explorer. Aby pobrać to narzędzie, zobacz [Eksploratora usługi Azure Storage](https://storageexplorer.com/). Po pobraniu i zainstalowaniu oprogramowania, należy skonfigurować go do używania tego samego konta magazynu platformy Azure, który został skonfigurowany jako miejsce docelowe do dzienników diagnostycznych usługi CDN.
 
 1.  Otwórz **Eksploratora usługi Storage platformy Microsoft Azure**
 2.  Znajdź konto magazynu
@@ -225,11 +227,11 @@ Aby korzystać z usługi Azure Monitor, należy najpierw [włączyć rejestrowan
 
 Aby wyświetlić dane na różne sposoby, za pomocą rozwiązania do zarządzania. Możesz uzyskać rozwiązania do zarządzania z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Rozwiązania do zarządzania można zainstalować z witryny Azure marketplace, wybierając **Pobierz teraz** łącze u dołu każde z tych rozwiązań.
+Rozwiązania do monitorowania można zainstalować z witryny Azure marketplace, wybierając **Pobierz teraz** łącze u dołu każde z tych rozwiązań.
 
-### <a name="add-a-azure-monitor-cdn-management-solution"></a>Dodaj rozwiązanie do zarządzania sieci CDN usługa Azure Monitor
+### <a name="add-a-azure-monitor-cdn-monitoring-solution"></a>Dodawanie usługi CDN Azure Monitor rozwiązanie do monitorowania
 
-Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania monitora platformy Azure:
+Wykonaj następujące kroki, aby dodać usługi Azure Monitor, rozwiązanie do monitorowania:
 
 1.   Zaloguj się do witryny Azure portal przy użyciu subskrypcji platformy Azure i przejdź do pulpitu nawigacyjnego.
     ![Pulpit nawigacyjny platformy Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)

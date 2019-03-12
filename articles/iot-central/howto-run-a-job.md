@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 09/15/2018
+ms.date: 02/04/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: f08167b4f37193c9a04da02fdd31e066a97aec66
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 142881e0a72ef9db7397276f092a4b7502b61fed
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317666"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781447"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Twórz i uruchamiaj zadanie w aplikacji centralnej IoT platformy Azure
 
@@ -40,8 +40,6 @@ W tej sekcji dowiesz się, jak utworzyć i uruchomić zadanie. Każdy krok przec
 1. Po prawej stronie wybranie tylko urządzenia, aby zadanie zostanie uruchomione. Zaznaczając pole wyboru w górnej, wszystkie urządzenia są wybierane w zestawie całego urządzenia. Zaznaczając pole wyboru obok nazwy, są wybierane wszystkie urządzenia na bieżącej stronie.
 
 1. Po wybraniu urządzenia żądaną wybierz **Uruchom**. Zadania będą wyświetlane na głównego **zadań** strony. W ramach tego widoku jesteś w stanie zobaczyć aktualnie uruchomione zadania i historii wszelkich uprzednio uruchamiania zadań. Uruchamianie zadania zawsze będzie wyświetlany w górnej części listy.
-
-    ![Uruchamianie zadania](./media/howto-run-a-job/runjob.png)
 
     ![Wyświetl zadanie](./media/howto-run-a-job/viewjob.png)
 

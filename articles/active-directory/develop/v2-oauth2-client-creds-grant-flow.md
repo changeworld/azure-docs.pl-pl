@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207674"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540572"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory w wersji 2.0 i przepływ poświadczeń klienta OAuth 2.0
 
@@ -117,7 +117,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 W tym momencie usługa Azure AD wymusza, czy administrator dzierżawy może zalogować się do ukończenia żądania. Administrator jest proszony o zatwierdzania wszystkie uprawnienia bezpośrednich zastosowań, które żądanej aplikacji w portalu rejestracji aplikacji.
 
-##### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+##### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Jeśli administrator zatwierdza uprawnienia dla aplikacji, odpowiedź oznaczająca Powodzenie wygląda następująco:
 
@@ -200,7 +200,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z tą różnicą, że parametr client_secret zostaje zastąpiona przez dwa parametry: client_assertion_type i client_assertion.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Odpowiedź oznaczająca powodzenie wygląda następująco:
 
@@ -264,7 +264,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## <a name="code-samples-and-other-documentation"></a>Przykłady kodu i inne dokumenty
 
-Odczyt [Przegląd dokumentacji poświadczeń klienta](http://aka.ms/msal-net-client-credentials) z biblioteki Microsoft Authentication Library
+Odczyt [Przegląd dokumentacji poświadczeń klienta](https://aka.ms/msal-net-client-credentials) z biblioteki Microsoft Authentication Library
 
 | Sample | Platforma |Opis |
 |--------|----------|------------|

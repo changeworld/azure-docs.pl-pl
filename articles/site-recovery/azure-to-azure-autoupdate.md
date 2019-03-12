@@ -1,6 +1,6 @@
 ---
 title: Automatyczna aktualizacja usługi mobilności, odzyskiwanie po awarii Azure – Azure | Dokumentacja firmy Microsoft
-description: Zawiera omówienie automatyczna aktualizacja usługi mobilności, podczas replikowania maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
+description: Omówienie automatyczna aktualizacja usługi mobilności podczas replikowania maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,61 +8,61 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 3f0f28ca22321b537ab7e8911c5cbb513a1ade81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f2467314a4f131b88fc1baf2233ca8ce74d488cb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818928"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548953"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
 
-Usługa Azure Site Recovery ma miesięcznego cyklu wersji, gdzie ulepszenia istniejących funkcji lub nowych pakietów są dodawane i znanych ewentualnych problemów. Oznacza to, może być aktualizowana z usługą, należy zaplanować wdrożenie tych poprawki, co miesiąc. Aby uniknąć head over skojarzone z uaktualnienia, użytkownicy zamiast tego można umożliwić odzyskiwanie lokacji do zarządzania aktualizacjami składników. Jak wyjaśniono w [odwołanie do architektury](azure-to-azure-architecture.md) odzyskiwania po awarii Azure – Azure, usługi mobilności są instalowane na wszystkich maszynach wirtualnych platformy Azure dla których replikacja jest włączona podczas replikowania maszyn wirtualnych z jednej platformy Azure regionu do innego. Po włączeniu automatycznej aktualizacji, rozszerzenie usługi mobilności jest aktualizowany za pomocą każdej nowej wersji. W tym dokumencie szczegóły poniżej:
+Usługa Azure Site Recovery używa miesięcznego cyklu wersji, rozwiąż wszelkie problemy i ulepszenia istniejących funkcji lub dodać nowe. Być aktualizowana z usługą, należy zaplanować wdrażania poprawek co miesiąc. Aby uniknąć obciążenia związanego z każdego uaktualnienia, możesz zamiast tego zezwolić Site Recovery w celu zarządzania aktualizacjami składnika.
 
-- Jak działa automatyczna aktualizacja
-- Włącz Aktualizacje automatyczne
-- Typowe problemy i rozwiązywanie problemów
+Jak wspomniano w [architektury odzyskiwania po awarii Azure – Azure](azure-to-azure-architecture.md), usługa mobilności jest zainstalowana na wszystkich maszynach wirtualnych Azure (maszyny wirtualne) dla których replikacja jest włączona, podczas replikowania maszyn wirtualnych między regionami platformy Azure do innego. Gdy używasz funkcji Aktualizacje automatyczne, każdą nową wersją aktualizacji rozszerzenia usługi mobilności.
  
-## <a name="how-does-automatic-update-work"></a>Jak działa automatyczna aktualizacja
+## <a name="how-automatic-updates-work"></a>Jak automatyczne aktualizacje pracy
 
-Gdy zezwalasz Site Recovery w celu zarządzania aktualizacjami, globalne elementu runbook (który jest używany przez usługi platformy Azure) jest wdrażany za pomocą konta usługi automation, który jest tworzony w tej samej subskrypcji co magazyn. Jedno konto usługi automation jest używany dla określonego magazynu. Element runbook sprawdza, czy dla każdej maszyny Wirtualnej w magazynie, dla których aktualizacje automatyczne są wyłączone w i inicjuje uaktualnienie rozszerzenia usługi mobilności, jeśli dostępna jest nowsza wersja. Domyślny harmonogram elementu runbook jest powtarzany codziennie o godzinie 12:00 AM zgodnie ze strefą czasową maszyny wirtualnej replikowane geograficznie. Harmonogram elementu runbook można także modyfikować za pomocą konta usługi automation przez użytkownika, jeśli to konieczne. 
+Gdy usługa Site Recovery umożliwia zarządzanie aktualizacjami, wdraża globalnego runbook (używane przez usługi platformy Azure) za pomocą konta usługi automation utworzone w tej samej subskrypcji co magazyn. Każdego magazynu korzysta z jednego konta usługi automation. Element runbook sprawdza, czy dla każdej maszyny Wirtualnej w magazynie active aktualizacje automatyczne i uaktualnia rozszerzenia usługi mobilności, jeśli dostępna jest nowsza wersja.
+
+Domyślny harmonogram elementu runbook jest powtarzany codziennie o godzinie 12:00 AM w strefie czasowej lokalizacja geograficzna zreplikowanej maszyny Wirtualnej. Można również zmienić harmonogram elementu runbook za pomocą konta usługi automation.
 
 > [!NOTE]
-> Włączenie funkcji Aktualizacje automatyczne nie wymagają ponownego uruchomienia maszyn wirtualnych platformy Azure i nie ma wpływu na replikacji w toku.
+> Włączone aktualizacje automatyczne nie jest konieczne ponowne uruchomienie maszyn wirtualnych platformy Azure i mają wpływ na trwającą replikację.
 
 > [!NOTE]
-> Rozliczenia dla zadań, które korzystają z konta usługi automation zależy od liczby zadań razem, gdy minut w miesiącu i domyślnie 500 minut są dołączone jako bezpłatny limit jednostek dla konta usługi automation. Wykonanie przydziałów dziennych zadania z **kilka sekund, aby około minuty** i będzie **omówione w ramach bezpłatnych środków**.
+> Zadanie rozliczenia na koncie usługi automation opiera się na liczbę minut czasu wykonywania zadania wykorzystanych w miesiącu. Domyślnie 500 minut są dołączone jako bezpłatny limit jednostek dla konta usługi automation. Wykonanie zadania trwa kilka sekund do około minutę dziennie, które zostały omówione jako bezpłatny limit jednostek.
 
-BEZPŁATNY limit jednostek UWZGLĘDNIONY (MIESIĘCZNIE) ** ₹0.14 500 minut czasu uruchomione zadanie cena / minutę
+| Bezpłatny limit jednostek (każdego miesiąca) | Cena |
+|---|---|
+| Czasu wykonywania zadania 500 minut | ₹0.14 / minutę
 
 ## <a name="enable-automatic-updates"></a>Włącz Aktualizacje automatyczne
 
-Można wybrać umożliwić odzyskiwanie lokacji do zarządzania aktualizacjami w następujący sposób:-
+Możesz zezwolić Site Recovery w celu zarządzania aktualizacjami w następujący sposób.
 
-- [W ramach kroku Włączanie replikacji](#as-part-of-the-enable-replication-step)
-- [Przełącz rozszerzenie aktualizowanie ustawień w magazynie](#toggle-the-extension-update-settings-inside-the-vault)
+### <a name="manage-as-part-of-the-enable-replication-step"></a>Zarządzanie w ramach kroku Włączanie replikacji
 
-### <a name="as-part-of-the-enable-replication-step"></a>W ramach kroku Włączanie replikacji:
+Po włączeniu replikacji dla maszyny Wirtualnej albo uruchamianie [z widoku maszyny Wirtualnej](azure-to-azure-quickstart.md) lub [z magazynu usługi recovery services](azure-to-azure-how-to-enable-replication.md), można umożliwić Site Recovery w celu zarządzania aktualizacjami rozszerzenie usługi Site Recovery lub zarządzać nią ręcznie.
 
-Po włączeniu replikacji dla maszyny wirtualnej, albo uruchamianie [z widoku maszyny wirtualnej](azure-to-azure-quickstart.md), lub [z magazynu usługi recovery services](azure-to-azure-how-to-enable-replication.md), otrzymasz możliwość albo zezwolić na odzyskiwanie lokacji Zarządzanie aktualizacjami dla rozszerzenie usługi Site Recovery lub ręcznie zarządzać takie same.
-
-![enable-replication-auto-update](./media/azure-to-azure-autoupdate/enable-rep.png)
+![Ustawienia rozszerzenia](./media/azure-to-azure-autoupdate/enable-rep.png)
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Przełącz rozszerzenie aktualizowanie ustawień w magazynie
 
-1. W magazynie, przejdź do **Zarządzaj**-> **infrastruktura usługi Site Recovery**
-2. W obszarze **dla usługi Azure virtual Machines**-> **ustawień aktualizacji rozszerzenia**, kliknij aby wybrać, czy zezwolić na *ASR do zarządzania aktualizacjami* lub *ręcznie zarządzać*. Kliknij pozycję **Zapisz**.
+1. W magazynie, przejdź do **Zarządzaj** > **infrastruktura usługi Site Recovery**.
+2. W obszarze **usługi Azure Virtual Machines** > **ustawień aktualizacji rozszerzenia**, Włącz **umożliwia usługa Site Recovery, aby zarządzać** przełącznika. Aby zarządzać ręcznie, wyłącz ją. 
+3. Wybierz pozycję **Zapisz**.
 
-![Magazyn — przełącznik automatycznej aktualizacji](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![Ustawienia aktualizacji rozszerzeń](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
-> [!Important] 
-> Po wybraniu *ASR umożliwia zarządzanie*, ustawienie ma zastosowanie do wszystkich maszyn wirtualnych w odpowiedni magazyn.
+> [!Important]
+> Po wybraniu **umożliwia usługa Site Recovery, aby zarządzać**, ustawienie ma zastosowanie do wszystkich maszyn wirtualnych w odpowiedni magazyn.
 
 
-> [!Note] 
-> Obie opcje powiadomi konta usługi automation, który służy do zarządzania aktualizacjami. Jeśli po raz pierwszy w magazynie są włączenie tej funkcji, zostaną utworzone nowe konto usługi automation. Wszystkie replikacje kolejnych Włącz w tym samym magazynie, użyje ono utworzone wcześniej.
+> [!Note]
+> Jedną z opcji powiadamia o używanych do zarządzania aktualizacjami konta usługi automation. Jeśli używasz tej funkcji w magazynie po raz pierwszy, jest tworzone nowe konto usługi automation. Wszystkie replikacje kolejnych Włącz w tym samym magazynie Użyj utworzonej wcześniej.
 
-**Jeśli chcesz użyć na koncie usługi automation w niestandardowych, użyj poniższego skryptu:-**
+Konto Automatyzacja niestandardowa Użyj następującego skryptu:
 
 ```azurepowershell
 param(
@@ -452,7 +452,7 @@ try
                 $JobsInProgressListInternal += $JobAsyncUrl
             }
 
-            # Rate controlling the get calls to maximum 120 calls per minute.
+            # Rate controlling the get calls to maximum 120 calls each minute.
             # ASR throttling for get calls is 10000 in 60 minutes.
             Start-Sleep -Milliseconds 500
         }
@@ -499,38 +499,35 @@ elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
 Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -DisplayMessageToUser
 ```
 
-### <a name="manage-manually"></a>Zarządzaj ręcznie
+### <a name="manage-updates-manually"></a>Ręczne zarządzanie aktualizacjami
 
-1. Jeśli nowe aktualizacje są dostępne dla usługi mobilności, zainstalowane na maszynach wirtualnych platformy Azure, zobaczysz powiadomienie o treści "dostępna jest nowa aktualizacja agenta replikacji lokacji odzyskiwania. Kliknij, aby zainstalować. "
+1. Jeśli istnieją nowe aktualizacje usługi mobilności, zainstalowane na maszynach wirtualnych, zostanie wyświetlone następujące powiadomienie: "Dostępna jest nowa aktualizacja agenta replikacji lokacji odzyskiwania. Kliknij, aby zainstalować"
 
      ![Okno replikowane elementy](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-3. Wybierz powiadomienie, aby otworzyć stronę wyboru maszyny wirtualnej.
-4. Wybierz maszyny wirtualne, które chcesz uaktualnić usługę mobilności na, a następnie wybierz pozycję **OK**.
+2. Wybierz powiadomienie, aby otworzyć stronę wyboru maszyny Wirtualnej.
+3. Wybierz maszyny wirtualne do uaktualnienia, a następnie wybierz **OK**. Usługa mobilności aktualizacji rozpocznie się dla każdej wybranej maszyny Wirtualnej.
 
      ![Zreplikowane elementy listy maszyn wirtualnych](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-Uruchamia zadanie Aktualizacja usługi mobilności dla każdego z wybranych maszyn wirtualnych.
 
+## <a name="common-issues-and-troubleshooting"></a>Typowe problemy i rozwiązywanie problemów
 
-## <a name="common-issues--troubleshooting"></a>Typowe problemy i rozwiązywanie problemów
+Jeśli występuje problem z aktualizacji automatycznych, zobaczysz powiadomienie o błędzie, w obszarze **problemy z konfiguracją** na pulpicie nawigacyjnym magazynu.
 
-Jeśli występuje problem z aktualizacji automatycznych, zostanie wyświetlone powiadomienie o tym samym, w obszarze "Problemy z konfiguracją" na pulpicie nawigacyjnym magazynu. 
+Jeśli aktualizacje automatyczne nie jest włączone, zobacz poniższe typowe błędy i zalecane akcje:
 
-W przypadku próby włączenia automatycznej aktualizacji i nie powiodło się, można znaleźć poniżej do rozwiązywania problemów.
+- **Błąd**: Nie masz uprawnień do utworzenia konta Uruchom jako platformy Azure (jednostki usługi) i udzielenia roli Współautor jednostce usługi.
 
-**Błąd**: Nie masz uprawnień do utworzenia konta Uruchom jako platformy Azure (jednostki usługi) i udzielenia roli Współautor jednostce usługi. 
-- Zalecana akcja: Upewnij się, że zalogowanym koncie jest przypisany "Współautor", a następnie spróbuj ponownie wykonać operację. Zapoznaj się [to](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) dokumentu, aby uzyskać więcej informacji na temat przypisywania odpowiednich uprawnień.
+   **Zalecana akcja**: Upewnij się, że konto logowania jest przypisany jako współautor i spróbuj ponownie. Zapoznaj się z sekcją wymaganych uprawnień w [korzystanie z portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) Aby uzyskać więcej informacji na temat przypisywania uprawnień.
  
-Gdy aktualizacje automatyczne są włączone, większość problemów naprawiona w usłudze Site Recovery i wymaga kliknij pozycję "**naprawy**" przycisk.
+   Aby rozwiązać większość problemów po włączeniu funkcji Aktualizacje automatyczne, wybierz **naprawy**. Jeśli przycisk naprawy jest niedostępna, zobacz komunikat o błędzie wyświetlany w okienku ustawienia aktualizacji rozszerzenia.
 
-![przycisk naprawy](./media/azure-to-azure-autoupdate/repair.png)
+   ![Przycisk Napraw usługę odzyskiwania lokacji w ustawieniach aktualizacji rozszerzenia](./media/azure-to-azure-autoupdate/repair.png)
 
-W przypadku, gdy przycisk naprawy nie jest dostępny, zapoznaj się z komunikatem o błędzie wyświetlany w obszarze okienka ustawień rozszerzenia.
+- **Błąd**: Konto Uruchom jako nie ma uprawnień do dostępu do zasobu usługi recovery services.
 
- - **Błąd**: Konto Uruchom jako nie ma uprawnień do dostępu do zasobu usługi recovery services.
-
-    **Zalecana akcja**: Usuń i następnie [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account) lub upewnij się, że aplikacja usługi Automation Uruchom jako dla konta usługi Azure Active Directory ma dostęp do zasobu usługi recovery services.
+    **Zalecana akcja**: Usuń i następnie [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Lub upewnij się, że usługi Automation Uruchom jako dla konta usługi Azure Active Directory aplikacji ma dostęp do zasobu usługi recovery services.
 
 - **Błąd**: Nie można odnaleźć konta Uruchom jako. Albo jeden z nich został usunięty lub nie został utworzony — aplikacja usługi Azure Active Directory, nazwa główna usługi, rola, zasób certyfikatu usługi Automation, zasób połączenia usługi Automation — lub odcisk palca nie jest taki sam dla certyfikatu i połączenia. 
 
-    **Zalecana akcja**: Usuń i [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+    **Zalecana akcja**: Usuń i następnie [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6c71956bf43a0147d5abff4b708be93f62fe34fa
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894109"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545058"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory
 
@@ -303,7 +303,7 @@ Zalecamy przeczytanie [Tworzenie pierwszego potoku za pomocą usługi Data Facto
     }
     ```
 
-      Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.**" Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
+      Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.**" Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
 
       > [!NOTE]
       > Określenie dane wejściowe na potrzeby AzureMLBatchExecution działania jest opcjonalne.
@@ -407,7 +407,7 @@ Korzystając z pomocy modułu czytnika w eksperymencie usługi Azure Machine Lea
 W powyższym przykładzie JSON:
 
 * Wdrożonej usługi Azure Machine Learning w sieci Web używa modułu zapisywania i odczytywania danych z usługi Azure SQL Database i do odczytu/zapisu. Ta usługa sieci Web udostępnia następujące cztery parametry:  Nazwa serwera bazy danych, nazwę bazy danych, nazwę konta użytkownika serwera i hasło konta użytkownika serwera.
-* Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](http://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.**" Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
+* Zarówno **start** i **zakończenia** Data/godzina musi należeć do [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. **Zakończenia** czasu jest opcjonalne. Jeśli nie określisz wartości dla **zakończenia** właściwości, zostanie ona obliczona jako "**rozpoczęcia + 48 godzin.**" Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**. Szczegółowe informacje dotyczące właściwości kodu JSON znajdują się w artykule [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Dokumentacja dotycząca skryptów JSON).
 
 ### <a name="other-scenarios"></a>Inne scenariusze
 #### <a name="web-service-requires-multiple-inputs"></a>Usługa sieci Web wymaga wielu danych wejściowych
@@ -555,9 +555,9 @@ Typowy scenariusz użycia parametrów usługi sieci Web jest korzystanie z usłu
 Szczegółowe informacje na temat usługi Azure Blob/Azure czytnika/moduł zapisujący programu SQL, zobacz [czytnika](https://msdn.microsoft.com/library/azure/dn905997.aspx) i [moduł zapisujący](https://msdn.microsoft.com/library/azure/dn905984.aspx) tematy w bibliotece MSDN. W przykładzie w poprzedniej sekcji używany składnik zapisywania obiektów Blob platformy Azure i odczytywania obiektów Blob platformy Azure. W tej sekcji omówiono, za pomocą usługi Azure SQL czytników i składników zapisywania usługi Azure SQL.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-**PYT.:** Masz wiele plików, które są generowane przez mój potoków danych big Data. Czy można użyć działania AzureMLBatchExecution w celu pracy we wszystkich plikach?
+**Pyt.:** Masz wiele plików, które są generowane przez mój potoków danych big Data. Czy można użyć działania AzureMLBatchExecution w celu pracy we wszystkich plikach?
 
-**ODP.:** Tak. Zobacz **można odczytać danych z wielu plików w usłudze Azure Blob przy użyciu modułu Reader** sekcji, aby uzyskać szczegółowe informacje.
+**Odp.:** Tak. Zobacz **można odczytać danych z wielu plików w usłudze Azure Blob przy użyciu modułu Reader** sekcji, aby uzyskać szczegółowe informacje.
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Usługa Azure Machine Learning studio działanie programu wsadowego oceniania
 Jeśli używasz **AzureMLBatchScoring** działania w celu integracji z usługą Azure Machine Learning, zaleca się, że używasz najnowszej **AzureMLBatchExecution** działania.
@@ -634,4 +634,4 @@ Można również użyć [funkcji usługi fabryka danych](data-factory-functions-
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 
-[azure-machine-learning]: http://azure.microsoft.com/services/machine-learning/
+[azure-machine-learning]: https://azure.microsoft.com/services/machine-learning/

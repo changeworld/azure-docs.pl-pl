@@ -6,17 +6,17 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.openlocfilehash: 91193cc328c02f5ba4f5eb18e0bf853f9d91313a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 03/05/2018
+ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732266"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543291"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Omówienie obsługi czasu w usłudze Azure Stream Analytics
 
-W tym artykule omówiono sposób zapewniania uzasadnienie wyboru tych elementów rozwiązania praktycznego czas obsługi problemów w usłudze Azure Stream Analytics. Czas projektowania obsługi decyzje są ściśle powiązane z czynniki kolejności zdarzeń. Aby uzyskać więcej informacji znajduje się w artykule pokrewne: [Zagadnienia dotyczące platformy Azure Stream Analytics zdarzeń kolejności](stream-analytics-out-of-order-and-late-events.md).
+W tym artykule omówiono sposób zapewniania uzasadnienie wyboru tych elementów rozwiązania praktycznego czas obsługi problemów w usłudze Azure Stream Analytics. Czas projektowania obsługi decyzje są ściśle powiązane z czynniki kolejności zdarzeń.
 
 ## <a name="background-time-concepts"></a>Pojęcia dotyczące czasu tła
 

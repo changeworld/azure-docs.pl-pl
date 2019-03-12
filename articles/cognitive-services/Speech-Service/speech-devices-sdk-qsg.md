@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 4c01cf93fe3bb66f9bce73acb3c2f100764d1f46
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b008293e06f476109abde5be519489b2e3d4c1e9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872547"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531389"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -37,7 +37,7 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
 * Pobierz najnowszą wersję zestawu Speech Devices SDK, który zawiera aplikację systemu Android próbki z [witryny pobierania zestawu Speech Devices SDK](https://shares.datatransfer.microsoft.com/). Wyodrębnij plik zip do folderu lokalnego, takich jak C:\SDSDK.
 
-* Zainstaluj [programu Android Studio](https://developer.android.com/studio/) i [Vysor](http://vysor.io/download/) na komputerze.
+* Zainstaluj [programu Android Studio](https://developer.android.com/studio/) i [Vysor](https://vysor.io/download/) na komputerze.
 
 * Pobierz [klucz subskrypcji usługi mowy](get-started.md). Można uzyskać bezpłatnej 30-dniowej wersji próbnej lub uzyskać klucz z pulpitu nawigacyjnego platformy Azure.
 

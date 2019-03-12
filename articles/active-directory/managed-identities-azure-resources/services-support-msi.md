@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b030794017f29b56b51b106ebd6be485620b50
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b72210d93903c5dc040998a04ae29bc3f80e6931
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671016"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537307"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -33,7 +33,7 @@ Następujących usług platformy Azure obsługują zarządzanych tożsamości dl
 |Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
-| Przypisana przez użytkownika | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza
+| Przypisana przez użytkownika | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
 
 Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzanej usługi Azure Virtual Machines (w regionach gdzie są dostępne):
 
@@ -48,7 +48,7 @@ Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzan
 |Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
-| Przypisana przez użytkownika | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza
+| Przypisana przez użytkownika | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
 
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Virtual Machine Scale Sets (w regionach gdzie są dostępne):
 
@@ -63,7 +63,7 @@ Można znaleźć na poniższej liście, można skonfigurować tożsamości zarz�
 |Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Dostępne | Dostępne | Dostępne |
-| Przypisana przez użytkownika | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne
+| Przypisana przez użytkownika | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne |
 
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure App Service (w regionach gdzie są dostępne):
 
@@ -72,12 +72,24 @@ Można znaleźć na poniższej liście, można skonfigurować tożsamości zarz�
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Szablon usługi Azure Resource Manager](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
+### <a name="azure-blueprints"></a>Azure Blueprints
+
+|Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
+| --- | --- | --- | --- | --- |
+| Przypisana przez system | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne |
+| Przypisana przez użytkownika | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne |
+
+Można znaleźć na poniższej liście do korzystania z tożsamości zarządzanej przy użyciu [schematy Azure](../../governance/blueprints/overview.md):
+
+- [Witryna Azure portal — przypisanie planu](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [Interfejs API REST — przypisanie planu](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+
 ### <a name="azure-functions"></a>Azure Functions
 
 Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Dostępne | Dostępne | Dostępne |
-| Przypisana przez użytkownika | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne
+| Przypisana przez użytkownika | Wersja zapoznawcza | Niedostępne | Niedostępne | Niedostępne |
 
 Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzanej dla usługi Azure Functions (w regionach gdzie są dostępne):
 
@@ -91,7 +103,7 @@ Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzan
 Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Dostępne | Dostępne | Dostępne |
-| Przypisana przez użytkownika | Niedostępne | Niedostępne | Niedostępne | Niedostępne
+| Przypisana przez użytkownika | Niedostępne | Niedostępne | Niedostępne | Niedostępne |
 
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Logic Apps (w regionach gdzie są dostępne):
 
@@ -103,7 +115,7 @@ Można znaleźć na poniższej liście, można skonfigurować tożsamości zarz�
 Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Niedostępne | Niedostępne | Niedostępne |
-| Przypisana przez użytkownika | Niedostępne | Niedostępne | Niedostępne | Niedostępne
+| Przypisana przez użytkownika | Niedostępne | Niedostępne | Niedostępne | Niedostępne |
 
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Data Factory V2 (w regionach gdzie są dostępne):
 
@@ -117,7 +129,7 @@ Można znaleźć na poniższej liście, można skonfigurować tożsamości zarz�
 Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Dostępne | Niedostępne | Niedostępne |
-| Przypisana przez użytkownika | Niedostępne | Niedostępne | Niedostępne | Niedostępne
+| Przypisana przez użytkownika | Niedostępne | Niedostępne | Niedostępne | Niedostępne |
 
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure API Management (w regionach gdzie są dostępne):
 
@@ -128,14 +140,13 @@ Można znaleźć na poniższej liście, można skonfigurować tożsamości zarz�
 Typ tożsamości zarządzanych |  Wszystkie ogólnie dostępne<br>Globalnych regionów platformy Azure | Azure Government|Azure (Niemcy)|Azure w Chinach — 21Vianet|
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | W systemie Linux: Wersja zapoznawcza<br>W systemie Windows: Niedostępne | Niedostępne | Niedostępne | Niedostępne |
-| Przypisana przez użytkownika | W systemie Linux: Wersja zapoznawcza<br>W systemie Windows: Niedostępne | Niedostępne | Niedostępne | Niedostępne
+| Przypisana przez użytkownika | W systemie Linux: Wersja zapoznawcza<br>W systemie Windows: Niedostępne | Niedostępne | Niedostępne | Niedostępne |
 
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Container Instances (w regionach gdzie są dostępne):
 
 - [Interfejs wiersza polecenia platformy Azure](~/articles/container-instances/container-instances-managed-identity.md)
 - [Szablon usługi Azure Resource Manager](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
-
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD
 

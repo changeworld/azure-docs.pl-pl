@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5e8aa310d518ff26d2d0224797b2feb0745896d1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5694f8eead2b0fd4be75ee858c3c124dd8c53e03
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864910"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540416"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Aby upewnić się, że przykładowe dane, które zostaną przesłane jest dostę
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Uruchamianie testów zadań w klastrze HDInsight, aby użyć Data Lake Storage Gen1
 Po skonfigurowaniu klastra usługi HDInsight, zadania testowe można uruchomić w klastrze, aby sprawdzić, czy klaster HDInsight mogą uzyskiwać dostęp do programu Data Lake Storage Gen1. Aby to zrobić, dokonamy przykładowe zadania Hive, która tworzy tabelę przy użyciu przykładowych danych, który został wcześniej przekazany do konta usługi Data Lake Storage Gen1.
 
-W tej sekcji zostanie SSH do klastra HDInsight w systemie Linux a następnie uruchom przykładowe zapytanie programu Hive. Jeśli używasz klienta Windows, zalecamy użycie **PuTTY**, który można pobrać z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+W tej sekcji zostanie SSH do klastra HDInsight w systemie Linux a następnie uruchom przykładowe zapytanie programu Hive. Jeśli używasz klienta Windows, zalecamy użycie **PuTTY**, który można pobrać z [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Aby uzyskać więcej informacji na temat korzystania z programu PuTTY, zobacz [używanie protokołu SSH z opartą na systemie Linux z platformą Hadoop w HDInsight z Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -124,7 +124,7 @@ Aby uzyskać więcej informacji na temat korzystania z programu PuTTY, zobacz [u
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Data Lake Storage Gen1 dostęp przy użyciu poleceń systemu plików HDFS
 Po skonfigurowaniu klastra HDInsight w Data Lake Storage Gen1 służy poleceń powłoki systemu plików HDFS dostępu do sklepu.
 
-W tej sekcji zostanie SSH w systemie HDInsight Linux klastra, a następnie uruchom polecenia systemu plików HDFS. Jeśli używasz klienta Windows, zalecamy użycie **PuTTY**, który można pobrać z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+W tej sekcji zostanie SSH w systemie HDInsight Linux klastra, a następnie uruchom polecenia systemu plików HDFS. Jeśli używasz klienta Windows, zalecamy użycie **PuTTY**, który można pobrać z [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Aby uzyskać więcej informacji na temat korzystania z programu PuTTY, zobacz [używanie protokołu SSH z opartą na systemie Linux z platformą Hadoop w HDInsight z Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 9130bf5c2708f7eecf6fc1b5db2ffbb3c2fffc30
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c9bd14128a6874f06983aa99ebb5a8a9a85843a2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201282"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550688"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Usługi Azure Metadata Service: Scheduled Events dla maszyn wirtualnych Windows
+# <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events dla maszyn wirtualnych Windows
 
 Scheduled Events to usługi Azure Metadata Service zapewniającej Twojej czas aplikacji, aby przygotować się do obsługi maszyn wirtualnych. Zawiera informacje o zbliżającej się konserwacji zdarzeń (np. ponownego uruchomienia), aplikacja może przygotować się do nich i ograniczyć przerw w działaniu. Jest ona dostępna dla wszystkich typów maszyn wirtualnych platformy Azure, łącznie z PaaS i IaaS w systemach Windows i Linux. 
 
@@ -105,7 +105,7 @@ W przypadku których zaplanowanych zdarzeń, odpowiedź zawiera szereg zdarzeń:
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},
         }
     ]
 }
@@ -127,7 +127,7 @@ Każde zdarzenie jest zaplanowane minimalną ilość czasu w przyszłości na po
 
 |EventType  | Minimalna powiadomienia |
 | - | - |
-| blokowanie| 15 minut |
+| Freeze| 15 minut |
 | Ponowne uruchamianie | 15 minut |
 | Ponowne wdrożenie | 10 minut |
 
@@ -179,7 +179,7 @@ function Get-ScheduledEvents($uri)
 
 # How to approve a scheduled event
 function Approve-ScheduledEvent($eventId, $uri)
-{    
+{
     # Create the Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
     $scheduledEventsApproval = @{"StartRequests" = $startRequests} 

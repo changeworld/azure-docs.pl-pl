@@ -9,26 +9,36 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: get-started-article
-ms.date: 01/31/2019
+ms.topic: conceptual
+ms.date: 03/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 059746d0e3a277016f5d6b98fe0d0f90c9ee2b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b5584e4ecc78a8805135cb3f36bd5f5cd7079129
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217993"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767077"
 ---
-# <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Konfigurowanie usługi Azure Active Directory do samoobsługowego zarządzania grupami
+# <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Konfigurowanie samoobsługowego zarządzania grupami w usłudze Azure Active Directory 
 
-W usłudze Azure Active Directory (Azure AD) użytkownicy mogą tworzyć swoje własne grupy zabezpieczeń lub grupy usługi Office 365 oraz zarządzać nimi. Użytkownicy mogą również żądać członkostwa w grupie zabezpieczeń lub grupie Office 365, a następnie właściciel grupy może zatwierdzić członkostwo lub odmówić jego przypisania. Codzienne zarządzanie członkostwem w grupach można przekazać osobom znającym kontekst biznesowy tego członkostwa. Funkcje samoobsługowego zarządzania grupami są dostępne wyłącznie w przypadku grup zabezpieczeń i grup Office 365, natomiast nie są dostępne w przypadku list dystrybucyjnych lub grup zabezpieczeń z włączoną obsługą poczty.
+Możesz umożliwić użytkownikom tworzenie i zarządzanie nimi w ich własnych grupach zabezpieczeń lub grup usługi Office 365 w usłudze Azure Active Directory (Azure AD). Właściciel grupy można zatwierdzać lub odrzucać żądania członkostwa lub można delegować kontrolę nad członkostwa w grupie. Funkcje zarządzania grupami samoobsługi nie są dostępne dla list dystrybucyjnych lub grup zabezpieczeń z włączoną obsługą poczty. 
 
-Samoobsługowe zarządzanie grupami obsługuje dwa scenariusze: 
+## <a name="self-service-group-membership-defaults"></a>Domyślne ustawienia członkostwa grup samoobsługi
 
-* **Delegowane zarządzanie grupami** Przykładem może być administrator zarządzający dostępem do aplikacji SaaS używanej w firmie. Zarządzanie prawami dostępu jest coraz większym obciążeniem, więc administrator zwraca się do właściciela firmy o utworzenie nowej grupy. Administrator przypisuje nowej grupie dostęp do aplikacji i dodaje do grupy wszystkie osoby, które już uzyskują dostęp do aplikacji. Właściciel firmy może dodawać kolejnych użytkowników, dla których aplikacja jest automatycznie aprowizowana. Właściciel firmy nie musi czekać na administratora w celu zarządzania dostępem dla użytkowników. Jeśli administrator nada to samo uprawnienie menedżerowi w innej grupie biznesowej, może on następnie zarządzać dostępem swoich użytkowników. Właściciel firmy nie może wyświetlać użytkowników menedżera ani zarządzać nimi, a menedżer nie może wyświetlać użytkowników właściciela ani zarządzać nimi. Administrator nadal może wyświetlać wszystkich użytkowników mających dostęp do aplikacji i w razie potrzeby blokować prawa dostępu.
+Jeśli grupy zabezpieczeń są tworzone w witrynie Azure portal lub przy użyciu programu PowerShell usługi Azure AD, tylko właściciele grupy można zaktualizować członkostwa. Grupy zabezpieczeń utworzonej w [panelu dostępu](https://account.activedirectory.windowsazure.com/r#/joinGroups) i wszystkie grupy usługi Office 365 są dostępne do dołączenia do dla wszystkich użytkowników, czy zatwierdzone przez właściciela zatwierdzane automatycznie. W panelu dostępu można zmienić opcji członkostwa, podczas tworzenia grupy.
+
+Grupy utworzone w | Zachowanie domyślne grupy zabezpieczeń | Zachowanie domyślne grupy usługi Office 365
+------------------ | ------------------------------- | ---------------------------------
+[Azure AD PowerShell](groups-settings-cmdlets.md) | Tylko właściciele mogą dodawać członków<br>Widoczny, ale nie jest dostępna do dołączenia do panelu dostępu | Otwórz w na wszystkich użytkowników
+[Azure Portal](https://portal.azure.com) | Tylko właściciele mogą dodawać członków<br>Widoczny, ale nie jest dostępna do dołączenia do panelu dostępu<br>Właściciel nie jest przypisany automatycznie podczas tworzenia grupy | Otwórz w na wszystkich użytkowników
+[Panel dostępu](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Otwórz w na wszystkich użytkowników<br>Opcje członkostwa można zmienić po utworzeniu grupy | Otwórz w na wszystkich użytkowników<br>Opcje członkostwa można zmienić po utworzeniu grupy
+
+## <a name="self-service-group-management-scenarios"></a>Scenariusze zarządzania grupami samoobsługi
+
+* **Delegowane zarządzanie grupami** Przykładem może być administrator zarządzający dostępem do aplikacji SaaS używanej w firmie. Zarządzanie prawami dostępu jest coraz większym obciążeniem, więc administrator zwraca się do właściciela firmy o utworzenie nowej grupy. Administrator przypisuje nowej grupie dostęp do aplikacji i dodaje do grupy wszystkie osoby, które już uzyskują dostęp do aplikacji. Właściciel firmy może dodawać kolejnych użytkowników, dla których aplikacja jest automatycznie aprowizowana. Właściciel firmy nie musi czekać na administratora w celu zarządzania dostępem dla użytkowników. Jeśli administrator nada to samo uprawnienie menedżerowi w innej grupie biznesowej, a następnie osoba zarządzać dostępem dla ich własnych członków grupy. Właściciel firmy ani Menedżera można wyświetlać lub Zarządzanie członkostwami grup siebie nawzajem. Administrator nadal może wyświetlać wszystkich użytkowników mających dostęp do aplikacji i w razie potrzeby blokować prawa dostępu.
 * **Samoobsługowe zarządzanie grupami** Przykładem tego scenariusza jest dwóch użytkowników mających niezależnie skonfigurowane witryny usługi SharePoint Online. Każdy z nich chce przydzielić dostęp do swojej witryny zespołowi drugiego użytkownika. W tym celu mogą utworzyć jedną grupę w usłudze Azure AD i wybrać tę grupę do przydzielenia dostępu do witryn w usłudze SharePoint Online. Gdy inna osoba będzie chciała uzyskać dostęp, wprowadzi żądanie w Panelu dostępu, a po zatwierdzeniu automatycznie uzyska dostęp do obu witryn usługi SharePoint Online. Jeden z użytkowników może stwierdzić później, że wszystkie osoby mające dostęp do witryny powinny również mieć dostęp do określonej aplikacji SaaS. Administrator aplikacji SaaS może dodać do witryny programu SharePoint Online prawa dostępu dla aplikacji. Od tego momentu zatwierdzenie żądania dostępu spowoduje przyznanie dostępu do obu witryn usługi SharePoint Online oraz do tej aplikacji SaaS.
 
 ## <a name="make-a-group-available-for-user-self-service"></a>Włączanie samoobsługi użytkowników w grupie
@@ -43,7 +53,7 @@ Dodatkowo możesz użyć opcji **Użytkownicy, którzy mogą zarządzać grupami
 
 Możesz również użyć ustawienia **Grupa, która może zarządzać grupami zabezpieczeń** lub **Grupa, która może zarządzać grupami usługi Office 365**, aby określić jedną grupę, której członkowie mogą używać samoobsługi.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](../fundamentals/active-directory-manage-groups.md)

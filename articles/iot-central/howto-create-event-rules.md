@@ -3,17 +3,17 @@ title: Tworzenie i zarządzanie nimi reguły zdarzenia w aplikacji usługi Azure
 description: Zasady zdarzeń w usłudze Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail po wyzwoleniu reguły.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 84610c94621e887e20bb903385e2d6ddbe67189d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2fd06a2164761489af6ee84d56806ef858e3b5d8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307857"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782687"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -27,29 +27,21 @@ Urządzenia mogą korzystać pomiaru zdarzenia do wysłania zdarzenia ważne lub
 
 Aby utworzyć regułę zdarzeń, szablon urządzenia musi mieć co najmniej jedno zdarzenie pomiarów zdefiniowane. W tym przykładzie użyto urządzenia mrożone Automat, która zgłasza zdarzenie błędu motor wentylator. Reguła monitoruje zdarzeń zgłoszonych przez urządzenia i wysyła wiadomość e-mail, gdy zdarzenie jest zgłaszane.
 
-1. Przy użyciu Device Explorer przejdź do szablonu urządzenia, dla którego dodajesz reguły dla.
-
-1. W obszarze wybranego szablonu wybierz istniejące urządzenie.
-
-    >[!TIP] 
-    >Jeśli szablon nie ma żadnych urządzeń, najpierw Dodaj nowe urządzenie.
+1. Za pomocą **szablonów urządzeń** stronie, przejść do szablonu urządzenia, dla którego dodajesz reguły dla.
 
 1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
 
     ![Jeszcze żadnych reguł](media/howto-create-event-rules/Rules_Landing_Page.png)
 
-
-1. Na **reguły** zaznacz **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
-
+1. Na **reguły** zaznacz **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
 1. Wybierz **zdarzeń** Kafelek, aby utworzyć zdarzenia reguła monitorowania.
 
     ![Typy zasad](media/howto-create-event-rules/Rule_Types.png)
 
-    
 1. Wprowadź nazwę, która pomaga w identyfikacji reguły, w tym szablonie urządzenia.
 
-1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone na podstawie tego szablonu, Przełącz **Włącz regułę dla wszystkich urządzeń dla tego szablonu**.
+1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone na podstawie tego szablonu, Przełącz **Włącz regułę dla wszystkich urządzeń z tego szablonu**.
 
     ![Szczegóły reguły](media/howto-create-event-rules/Rule_Detail.png)
 
@@ -63,26 +55,25 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 
 1. Wybierz zdarzenie, które chcesz monitorować, z listy rozwijanej miary. W tym przykładzie **błąd Motor wentylator** zdarzeń został wybrany.
 
-   ![Warunek](media/howto-create-event-rules/Condition_Filled_Out.png) 
-
+   ![Warunek](media/howto-create-event-rules/Condition_Filled_Out.png)
 
 1. Opcjonalnie możesz również ustawić **liczba** jako **agregacji** i podaj odpowiednie wartości progowej.
 
-    - Bez agregacji, wyzwolenie reguły dla każdego punktu danych zdarzeń, który spełnia warunek. Na przykład w przypadku skonfigurowania warunków reguł do wyzwalania, gdy wystąpi zdarzenie "Wentylator Motor Error" reguła spowoduje wyzwolenie niemal natychmiast, gdy urządzenie zgłosi tego zdarzenia.
-    - Jeśli liczba jest używana jako funkcji agregującej, a następnie trzeba podać **próg** i **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. W tym przypadku liczbę zdarzeń są agregowane i reguły spowoduje wyzwolenie tylko wtedy, gdy liczba zdarzeń zagregowane dopasowuje wartość progową.
- 
-    Na przykład jeśli chcesz alert, gdy istnieje więcej niż trzy zdarzenia urządzenia w ciągu 5 minut, następnie wybierz zdarzenie i zestawu funkcji agregującej jako "liczba", operator jako "większe niż" i "próg" jako 3. Ustaw "Agregacji przedziale czasu" na "5 minut". Reguła jest wyzwalana w przypadku więcej niż trzy zdarzenia są wysyłane przez urządzenie w ciągu 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut. 
+    - Bez agregacji, wyzwolenie reguły dla każdego punktu danych zdarzeń, który spełnia warunek. Na przykład, jeśli konfigurujesz reguły warunku Wyzwalaj, gdy **błąd Motor wentylator** wystąpi zdarzenie, a następnie wyzwoleniu reguły niemal natychmiast, gdy urządzenie zgłosi tego zdarzenia.
+    - Jeśli liczba jest używana jako funkcji agregującej, a następnie trzeba podać **próg** i **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. W tym przypadku wartość jest agregowana liczbę zdarzeń i wyzwolenie reguły tylko wtedy, gdy liczba zdarzeń zagregowane dopasowuje wartość progową.
+
+    Na przykład jeśli chcesz alert, gdy istnieje więcej niż trzy zdarzenia urządzenia w ciągu 5 minut, następnie wybierz zdarzenie i zestawu funkcji agregującej jako "liczba", operator jako "większe niż" i "próg" jako 3. Ustaw "Agregacji przedziale czasu" na "5 minut". Reguła jest wyzwalana w przypadku więcej niż trzy zdarzenia są wysyłane przez urządzenie w ciągu 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
 
     ![Dodaj warunek zdarzenia](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >Można dodać więcej niż jednej miary zdarzeń w obszarze **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
 
 ### <a name="configure-actions"></a>Konfigurowanie akcji
 
 W tej sekcji pokazano, jak skonfigurować akcje do wykonania po wyzwoleniu reguły. Akcje Pobierz wywoływane, gdy wszystkie warunki określone w regule zostaną obliczone na wartość true.
 
-1. Wybierz **+** obok **akcje**. W tym miejscu zobaczysz listę dostępnych akcji. 
+1. Wybierz **+** obok **akcje**. W tym miejscu zobaczysz listę dostępnych akcji.
 
     ![Dodawanie akcji](media/howto-create-event-rules/Add_Action.png)
 
@@ -94,8 +85,6 @@ W tej sekcji pokazano, jak skonfigurować akcje do wykonania po wyzwoleniu regu�
    ![Konfigurowanie akcji](media/howto-create-event-rules/Configure_Action.png)
 
 1. Aby zapisać regułę, wybierz **Zapisz**. Reguła przechodzi na żywo w ciągu kilku minut i rozpoczyna monitorowanie zdarzeń wysyłanych do aplikacji. Gdy spełnia warunek określony w regule, zasada wyzwala akcji dotyczącej wiadomości e-mail skonfigurowany.
-
-1. Wybierz przycisk **Gotowe**, aby wyjść z trybu **Edytuj szablon**.
 
 Możesz dodać inne akcje reguły, takie jak Microsoft Flow i elementów webhook. Możesz dodać maksymalnie 5 czynności dla każdej reguły.
 

@@ -1,22 +1,28 @@
 ---
 title: Wyświetl agenta kubelet dzienników w usłudze Azure Kubernetes Service (AKS)
-description: Jak wyświetlić informacje dotyczące rozwiązywania problemów w dzienników agenta kubelet z węzłów usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak wyświetlić informacje dotyczące rozwiązywania problemów w dzienników agenta kubelet z węzłów usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: aeab24685f3663ba2c50205344d33db3d34676c2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42441952"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534024"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników agenta kubelet z węzłów klastra Azure Kubernetes Service (AKS)
 
-Czasami konieczne może być pobieranie *agenta kubelet* dzienników z węzła usługi Azure Kubernetes Service (AKS) w celu rozwiązywania problemów. W tym artykule pokazano, jak można użyć `journalctl` do wyświetlania *agenta kubelet* dzienniki.
+W ramach systemu operacyjnego klastra AKS może być konieczne Sprawdź dzienniki, aby rozwiązać problem. Wbudowana w witrynie Azure portal jest możliwość wyświetlania dzienników dla [AKS główne składniki] [ aks-master-logs] lub [kontenerów w klastrze AKS][azure-container-logs]. Czasami konieczne może być pobieranie *agenta kubelet* dzienników z węzła usługi AKS na potrzeby rozwiązywania problemów.
+
+W tym artykule pokazano, jak można użyć `journalctl` do wyświetlania *agenta kubelet* loguje się do węzła usługi AKS.
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
 ## <a name="create-an-ssh-connection"></a>Utwórz połączenie SSH
 
@@ -63,3 +69,7 @@ Aby uzyskać dodatkowe informacje dotyczące rozwiązywania problemów z główn
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
 [aks-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[aks-master-logs]: view-master-logs.md
+[azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md

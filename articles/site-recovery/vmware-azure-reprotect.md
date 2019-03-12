@@ -1,18 +1,18 @@
 ---
 title: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych | Dokumentacja firmy Microsoft
 description: Po przejściu w tryb failover na platformie Azure podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych Dowiedz się, jak się nie powieść powrót po awarii z platformy Azure do lokacji lokalnej.
-author: rajani-janaki-ram
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: rajanaki
-ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 3/12/2019
+ms.author: mayg
+ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791884"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771821"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony i zakończyć się niepowodzeniem maszynami wstecz do lokacji lokalnej po włączeniu trybu failover na platformie Azure
 
@@ -114,7 +114,6 @@ Zanotuj następujące informacje:
 
 ## <a name="common-issues"></a>Typowe problemy
 
-- Obecnie usługa Site Recovery obsługuje powrotem tylko do VMFS lub sieć vSAN magazynu danych. Magazyn danych systemu plików NFS nie jest obsługiwane. Ze względu na to ograniczenie danych wejściowych wyboru magazynu danych na ekranie ponownej ochrony jest pusta dla magazynów danych systemu plików NFS lub pokazuje datastore sieci vSAN, ale kończy się niepowodzeniem podczas wykonywania zadania. Jeśli zamierzasz powrotu po awarii można Utwórz magazyn danych VMFS lokalną i powrót po awarii do. Ta powrotu po awarii powoduje, że pełne pobieranie VMDK.
 - Jeśli odnajdywanie vCenter użytkownika tylko do odczytu, a ochrona maszyn wirtualnych, ochrona zakończy się powodzeniem, a tryb failover działa prawidłowo. Podczas ponownego włączania ochrony trybu failover kończy się niepowodzeniem, ponieważ nie można odnaleźć magazynów danych. Objawem to, że podczas ponownego włączania ochrony nie ma na liście magazynów danych. Aby rozwiązać ten problem, należy zaktualizować poświadczenia vCenter przy użyciu odpowiedniego konta, które ma uprawnienia, a następnie ponów zadanie. 
 - Podczas powrotu po awarii maszyny wirtualnej systemu Linux i uruchomić go lokalnie, zobaczysz, że pakietu Menedżera sieci został odinstalowany z komputera. Ta dezinstalacja występuje, ponieważ pakiet Menedżer sieci jest usuwany, gdy maszyna wirtualna jest odzyskiwana na platformie Azure.
 - W przypadku maszyny wirtualnej systemu Linux jest skonfigurowana ze statycznym adresem IP i jest w trybie Failover na platformie Azure, adres IP jest uzyskiwany z serwera DHCP. Podczas przejścia w tryb failover do serwera lokalnego, maszyna wirtualna w dalszym ciągu używać protokołu DHCP w celu pobrania adresu IP. Ręcznie Zaloguj się do maszyny, a następnie ustaw adres statyczny adres, jeśli to konieczne. Maszynę wirtualną Windows można ponownie pobrać jego statyczny adres IP.

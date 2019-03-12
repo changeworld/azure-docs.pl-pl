@@ -3,17 +3,17 @@ title: Administrowanie aplikacją usługi Azure IoT Central | Dokumentacja firmy
 description: Jako administrator jak zarządzać aplikacją usługi Azure IoT Central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b79b6870766f9595e731206bae2d4251d294942
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431330"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778607"
 ---
 # <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
@@ -44,11 +44,11 @@ W **ustawienia aplikacji** strony, można zmienić nazwy i adresu URL aplikacji,
 Aby zmienić obraz aplikacji, zobacz [przygotowywania i przekazywania obrazów do usługi Azure IoT Central aplikacji](howto-prepare-images.md).
 
 ### <a name="copy-an-application"></a>Kopiuj aplikację
-Można utworzyć kopię dowolnej aplikacji, bez żadnych wystąpień urządzeń, Historia danych z urządzeń i danych użytkowników. Kopia zostanie umieszczona aplikacji płatność za rzeczywiste użycie, która zostanie naliczona opłata. Nie można utworzyć aplikacji wersji próbnej w ten sposób.
+Można utworzyć kopię dowolnej aplikacji, bez żadnych wystąpień urządzeń, Historia danych z urządzeń i danych użytkowników. Kopia jest aplikacją płatność za rzeczywiste użycie, która zostanie naliczona opłata. Nie można utworzyć aplikacji wersji próbnej w ten sposób.
 
 Wybierz **kopiowania**. W oknie dialogowym wprowadź szczegóły nowej aplikacji płatność za rzeczywiste użycie. Następnie wybierz pozycję **kopiowania** aby upewnić się, że chcesz kontynuować. Dowiedz się więcej na temat pól, w tym formularzu w [tworzenia aplikacji](quick-deploy-iot-central.md) Szybki Start.
 
-![Strona ustawień aplikacji](media/howto-administer/appCopy2.png)
+![Strona ustawień aplikacji](media/howto-administer/appcopy2.png)
 
 Po pomyślnym operacji kopiowania aplikacji, możesz przejść do nowej aplikacji, która została utworzona przez skopiowanie swoją aplikację przy użyciu linku, który pojawia się.
 
@@ -62,7 +62,7 @@ Po pomyślnym operacji kopiowania aplikacji, możesz przejść do nowej aplikacj
 > [!Note]
 > Aby usunąć aplikację, również musi mieć uprawnienia do usuwania zasobów w subskrypcji platformy Azure została wybrana opcja utworzenia aplikacji. Aby dowiedzieć się więcej, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-Użyj **Usuń** przycisk, aby trwale usunąć aplikację IoT Central. W ten sposób spowoduje trwałe usunięcie wszystkich danych, które jest skojarzone z tej aplikacji.
+Użyj **Usuń** przycisk, aby trwale usunąć aplikację IoT Central. Spowoduje to trwałe usunięcie wszystkich danych, które jest skojarzone z tej aplikacji.
 
 ## <a name="manage-users"></a>Zarządzanie użytkownikami
 
@@ -95,7 +95,7 @@ Aby usunąć użytkowników, wybierz jeden lub więcej pól wyboru na **użytkow
 
 ## <a name="manage-roles"></a>Zarządzanie rolami
 
-Role umożliwiają kontrolowanie, kto w organizacji można wykonywać różne zadania w IoT Central. Istnieją trzy role, które można przypisać do użytkowników aplikacji. 
+Role umożliwiają kontrolowanie, kto w organizacji można wykonywać różne zadania w IoT Central. Istnieją trzy role, które można przypisać do użytkowników aplikacji.
 
 ### <a name="administrator"></a>Administrator
 
@@ -111,7 +111,6 @@ Użytkownicy w **Konstruktor aplikacji** roli można zrobić wszystko, co w apli
 
 Użytkownicy w **operatora aplikacji** roli nie może wprowadzać zmian do szablonów urządzeń i nie można administrować aplikacji. Oznacza to, można operatorów dodawania i usuwania urządzeń, Zarządzaj zbiorami urządzeń i uruchamiać zadania i analizy. Operatory nie mają dostępu do **Konstruktor aplikacji** i **administracji** stron.
 
-
 ## <a name="view-your-bill"></a>Wyświetl rachunek
 
 Aby wyświetlić swój rachunek, przejdź do **rozliczeń** strony w **administracji** sekcji. Stronę rozliczeń platformy Azure zostanie otwarty na nowej karcie, w którym można zobaczyć rachunek dla każdej aplikacji w usłudze Azure IoT Central.
@@ -124,14 +123,14 @@ Możesz również przekonwertować Twoja wersja próbna aplikacji na aplikację 
 - Opłaty za aplikacje typu **Płatność za rzeczywiste użycie** są naliczane na urządzenie. 5 pierwszych urządzeń jest bezpłatnych.
 
 Więcej informacji o cenach znajdziesz na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
-    
+
 Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 
-1. Przejdź do **rozliczeń** strony w **administracji** sekcji. 
+1. Przejdź do **rozliczeń** strony w **administracji** sekcji.
 
     ![Stan wersji próbnej](media/howto-administer/freetrialbilling.png)
 
-1. Wybierz **przekonwertować płatność za rzeczywiste użycie**. 
+1. Wybierz **przekonwertować płatność za rzeczywiste użycie**.
 
     ![Konwertuj na wersję próbną](media/howto-administer/convert.png)
 
@@ -141,15 +140,15 @@ Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 
 ## <a name="export-data"></a>Eksportowanie danych
 
-Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej na temat eksportowania danych.
+Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej na temat [eksportowania danych](howto-export-data.md).
 
 ## <a name="manage-device-connection"></a>Zarządzanie połączenie z urządzeniem
 
-Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej na temat łączenia urządzeń.
+Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej o [podłączania urządzeń](concepts-connectivity.md).
 
 ## <a name="use-access-tokens"></a>Używanie tokenów dostępu
 
-Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany ustawień i właściwości. Dowiedz się więcej o Eksploratorze IoT Central. 
+Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany ustawień i właściwości. Dowiedz się więcej o [explorer IoT Central](howto-use-iotc-explorer.md).
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Zestawy SDK platformy Azure na użytek operacje warstwy kontroli
 

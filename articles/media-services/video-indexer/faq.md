@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8d70fca5820dbd2152ca378916bfbcdbad4a027f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002361"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776760"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -158,6 +158,10 @@ Tokeny dostępu wygasa co godzinę, więc należy wygenerować nowy token dostę
 
 Usługa Video Indexer używa prostego zgodnie z rzeczywistym użyciem model cenowy oparty na czasie trwania zawartości danych wejściowych, które można indeksować. Dodatkowe opłaty mogą mieć zastosowanie dla kodowanie, przesyłanie strumieniowe, magazynu, użycia sieci i media użytych jednostek zastrzeżonych. Aby uzyskać więcej informacji, zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) strony.
 
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Kiedy są rozliczane za pomocą indeksatora wideo?
+
+Podczas wysyłania wideo do indeksowania, użytkownik określi indeksowania za analiza wideo, audio, analizy i / lub. To spowoduje określenie jednostek SKU zostanie obciążona. W przypadku poziomu błąd krytyczny podczas przetwarzania, jako odpowiedź zostanie zwrócony kod błędu. W takim przypadku opłaty nie występuje.  Błąd krytyczny może wpływać na usterkę w naszym kodzie lub ma błąd krytyczny w wewnętrznej zależności usługi. Błędy, takie jak nieprawidłowe wyodrębniania identyfikacji lub szczegółowe informacje nie są traktowane jako krytyczne i odpowiedź jest zwracana. W każdym przypadku w przypadku, gdy zwracany jest odpowiedzi nieprawidłowy (kod bez błędu), występuje rozliczeń.
+ 
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Video Indexer oferuje bezpłatną wersję próbną?
 
 Tak, Video Indexer oferuje bezpłatną wersję próbną, który zapewnia pełną obsługę oraz funkcje interfejsów API. Obowiązuje przydział 600 minut warte filmów wideo dla użytkowników w interfejsie internetowym i 2400 minut dla użytkowników interfejsu API. 

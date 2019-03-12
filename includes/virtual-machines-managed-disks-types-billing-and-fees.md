@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d771f03f9f71151ef25140148d4dd4daf3d46ec
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443344"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783444"
 ---
 **Wychodzące transfery danych**: [Wychodzące transfery danych](https://azure.microsoft.com/pricing/details/bandwidth/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 
-**Transakcje**: Są naliczane dla liczby transakcji, które można wykonać na standardowa dysku zarządzanego. Na platformie Azure obowiązuje 0.0036 $ za 100 000 transakcji dla standardowych dysków twardych. Transakcje obejmują operacje odczytu i zapisu związane z magazynem.
+**Transakcje**: Są naliczane dla liczby transakcji, które można wykonać na standardowa dysku zarządzanego.
 
-Standardowe dyski SSD, użyj rozmiaru jednostki we/wy wynoszący 256 KB. Transferowanych danych jest mniejsza niż 256 KB, jest uznawana za jedną jednostkę operacji We/Wy. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KB. Na przykład KB 1100 operacji We/Wy jest traktowana jako pięć jednostki we/wy.
-
-Nie ma żadnych kosztów transakcji dla dysku zarządzanego w warstwie premium.
-
-Aby uzyskać szczegółowe informacje na temat cen dla dysków Managed Disks, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
+Szczegółowe informacje na temat cennika usługi Managed Disks, w tym koszty transakcji, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 ### <a name="ultra-ssd-vm-reservation-fee"></a>Największa opłata rezerwacji maszyny Wirtualnej z dysków SSD
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: f903f85dfafb61562698a437465f8421aaf3a3d8
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339491"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551623"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Tworzenie sekcji na fakturze w taki sposób, aby zorganizować koszty
 
@@ -28,7 +28,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** lub **rozliczeń Współautor profilu**. Aby uzyskać więcej informacji, zobacz [zarządzania sekcjami faktury dla rozliczeń profilu](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukiwanie **Cost Management + rozliczenia**.
 

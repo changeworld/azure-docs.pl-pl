@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432449"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767043"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Wprowadzenie do usługi Azure Automation stanu konfiguracji
 
@@ -157,7 +157,6 @@ Za pomocą usługi Azure Automation stanu konfiguracji do zarządzania maszynami
    ![Zrzut ekranu przedstawiający blok rejestracji](./media/automation-dsc-getting-started/RegisterVM.png)
 
    Konfiguracja węzła określone, są stosowane do maszyny Wirtualnej w odstępach czasu określonego przez **częstotliwość trybu konfiguracji**, i maszyna wirtualna sprawdza dostępność aktualizacji do konfiguracji węzła w odstępach czasu określonego przez **odświeżania Częstotliwość**. Aby uzyskać więcej informacji na temat używania tych wartości, zobacz [Konfigurowanie programu Local Configuration Manager](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
-1. W **Dodaj maszyny wirtualne platformy Azure** bloku kliknij **Utwórz**.
 
 Azure rozpoczyna się proces dołączania maszyny Wirtualnej. Po zakończeniu, maszyna wirtualna pojawia się w **węzłów** karcie **State configuration (DSC)** strony na koncie usługi Automation.
 

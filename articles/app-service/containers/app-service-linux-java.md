@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: b28316242f608fcfc2b368170190a771c4abbc8e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 698e6fb861ab891a84aa43ca94769099a5c76943
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456112"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766822"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -158,9 +158,6 @@ Postępuj zgodnie z instrukcjami w [wiązanie istniejącego niestandardowego cer
 ## <a name="data-sources"></a>Źródła danych
 
 ### <a name="tomcat"></a>Tomcat
-
->[!NOTE]
-> Jeśli aplikacja używa Spring Framework lub Spring Boot, można ustawić informacji połączenia bazy danych dla źródła danych z rozwiązaniami JPA jako zmienne środowiskowe [w pliku właściwości aplikacji]. Następnie użyj [ustawienia aplikacji](/azure/app-service/web-sites-configure#app-settings) do definiowania te wartości dla swojej aplikacji w witrynie Azure portal lub interfejsu wiersza polecenia.
 
 Te instrukcje mają zastosowanie do wszystkich połączeń z bazą danych. Należy wypełnić symbole zastępcze nazwą klasy sterownik wybranej bazy danych i pliku JAR. Podany jest tabelą z nazwy klas i sterowniki do pobrania dla wspólnej bazy danych.
 

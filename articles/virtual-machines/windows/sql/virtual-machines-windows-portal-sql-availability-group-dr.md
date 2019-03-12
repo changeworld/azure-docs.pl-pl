@@ -3,7 +3,7 @@ title: Odzyskiwanie po awarii — usługa Azure Virtual Machines — grup dostę
 description: W tym artykule opisano sposób konfigurowania grupy dostępności programu SQL Server na maszynach wirtualnych Azure z repliką w innym regionie.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5e4b63d4fc8b437bd4d476c72d23f9dbf5242d5b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972383"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780562"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach
 
@@ -169,7 +169,7 @@ Po zakończeniu testowania łączności przenieść podstawową replikę z powro
 | ----- | ----- | ----- | ----- | -----
 | Podstawowe centrum danych | SQL-1 | Podstawowy | Synchroniczne | Automatyczny
 | Podstawowe centrum danych | SQL-2 | Pomocniczy | Synchroniczne | Automatyczny
-| Centrum danych w dodatkowej lub zdalnym | SQL-3 | Pomocniczy | Asynchroniczne | Ręczne
+| Centrum danych w dodatkowej lub zdalnym | SQL-3 | Pomocniczy | Asynchroniczne | Ręcznie
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji na temat planowanych i wymuszonego ręcznego przełączania trybu failover

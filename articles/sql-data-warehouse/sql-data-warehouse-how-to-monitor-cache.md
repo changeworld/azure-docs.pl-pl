@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: performance
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 51c433248feed615684ab5a1273826135d3dea3d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7b9a4e7a37d1f09bc8ae44d75637aa4f5ad95590
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456582"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775105"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorować Gen2 pamięci podręcznej
 Architektura magazynu Gen2 automatycznie tworzy warstwy segmentów najczęściej poszukiwanych magazynu kolumn w pamięci podręcznej znajdującej się na NVMe oparte na dyskach SSD, przeznaczona dla magazynów danych Gen2. Większa wydajność jest wykonywane zapytania pobierają segmenty, które są znajdującej się w pamięci podręcznej. W tym artykule opisano sposób monitorowania i rozwiązywanie problemów z wydajnością wolnych zapytań, ustalając, czy obciążenie optymalnie korzystanie z pamięci podręcznej Gen2.  

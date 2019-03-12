@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 28796c753e32a3c3b18052190618152c7669c93d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6bb37008b6a8b37e575dcf83dffcf57ab08996fd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437075"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539998"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -439,7 +439,7 @@ Ta sekcja zawiera kroki klienta ruchomej bramy z jednego komputera na inny kompu
 ## <a name="encrypting-credentials"></a>Szyfrowania poświadczeń
 Aby zaszyfrować poświadczenia w edytorze fabryki danych, wykonaj następujące czynności:
 
-1. Uruchom przeglądarkę sieci web na **maszyny bramy**, przejdź do [witryny Azure portal](http://portal.azure.com). Wyszukiwanie fabryki danych, jeśli to konieczne, otwórz fabryki danych w **usługi DATA FACTORY** strony, a następnie kliknij przycisk **tworzenie i wdrażanie** można uruchomić edytora fabryki danych.
+1. Uruchom przeglądarkę sieci web na **maszyny bramy**, przejdź do [witryny Azure portal](https://portal.azure.com). Wyszukiwanie fabryki danych, jeśli to konieczne, otwórz fabryki danych w **usługi DATA FACTORY** strony, a następnie kliknij przycisk **tworzenie i wdrażanie** można uruchomić edytora fabryki danych.
 2. Kliknij istniejący **połączoną usługę** w widoku drzewa, aby wyświetlić jego definicja JSON lub tworzenie połączonej usługi, która wymaga bramy zarządzania danymi (na przykład: SQL Server lub Oracle).
 3. W edytorze kodu JSON dla **gatewayName** właściwość, wprowadź nazwę bramy.
 4. Wprowadź nazwę serwera dla **źródła danych** właściwość **connectionString**.

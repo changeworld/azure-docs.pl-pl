@@ -3,17 +3,16 @@ title: Dodatek — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS | D
 description: Ten artykuł stanowi dodatek dla programu Microsoft Azure dysku szyfrowanie dla Windows i maszyn wirtualnych IaaS z systemem Linux.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/14/2019
+ms.date: 03/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d23e6d00b77e69f7f3353938c52b450eebbfd142
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 6632647c7782411d0d124c325f9bf0afff7e699d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990684"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767793"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -164,14 +163,6 @@ W poniższej tabeli przedstawiono, w której parametry mogą być używane w skr
 
 - [Tworzenie nowej zaszyfrowanych Windows IaaS zarządzanych dysków maszyny Wirtualnej na podstawie obrazu z galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
     - Ten szablon umożliwia utworzenie nowej maszyny Wirtualnej Windows zaszyfrowanych za pomocą dysków zarządzanych przy użyciu obrazu z galerii systemu Windows Server 2012.
-
-- [Wdrożenie systemu RHEL 7.2 z pełne szyfrowanie dysków za pomocą dysków zarządzanych](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - Ten szablon tworzy w pełni zaszyfrowane RHEL 7.2 maszyny Wirtualnej z systemem na platformie Azure przy użyciu dysków zarządzanych. Obejmuje ona zaszyfrowanego dysku systemu operacyjnego 30 GB oraz zaszyfrowanych tablicy 200 GB (RAID-0) zainstalowany w lokalizacji /mnt/raidencrypted. Zobacz [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu dystrybucje systemu Linux obsługiwane w serwerze. 
-
-- [Wdrożenie systemu RHEL 7.2 z pełne szyfrowanie dysków z dyskami niezarządzanymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
-    - Ten szablon tworzy w pełni zaszyfrowane RHEL 7.2 maszyny Wirtualnej z systemem na platformie Azure z zaszyfrowanego dysku systemu operacyjnego 30 GB i zaszyfrowane tablicy 200 GB (RAID-0) zainstalowany w lokalizacji /mnt/raidencrypted. Zobacz [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu dystrybucje systemu Linux obsługiwane w serwerze. 
-
-- [Włączanie szyfrowania dysków na zaszyfrowane wstępnie wirtualnego dysku twardego dla Windows lub Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
 
 - [Tworzenie nowego zaszyfrowanego dysku zarządzanego na podstawie zaszyfrowane wstępnie wirtualnego dysku twardego/magazynu obiektów blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - Tworzy nowego dysku zarządzanego zaszyfrowanych zaszyfrowane wstępnie wirtualnego dysku twardego i jej odpowiednie ustawienia szyfrowania
@@ -555,7 +546,7 @@ W przypadku szyfrowania przy użyciu aplikacji usługi Azure AD (poprzedniej wer
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Wpis tajny szyfrowania dysku nie jest szyfrowana za pomocą klucza KEK
-Aby skonfigurować wpisu tajnego w magazynie kluczy, użyj [Set-AzureKeyVaultSecret](/powershell/module/az.keyvault/set-azurekeyvaultsecret). Jeśli masz maszynę wirtualną Windows, plik klucza szyfrowania bloków jest zakodowany jako ciąg w formacie base64 i następnie przekazywane do usługi key vault przy użyciu `Set-AzureKeyVaultSecret` polecenia cmdlet. Dla systemu Linux hasło jest zakodowany jako ciąg w formacie base64, a następnie przekazywane do magazynu kluczy. Ponadto upewnij się, że następujące znaczniki są ustawione podczas tworzenia klucza tajnego w magazynie kluczy.
+Aby skonfigurować wpisu tajnego w magazynie kluczy, użyj [AzKeyVaultSecret zestaw](/powershell/module/az.keyvault/set-azkeyvaultsecret). Jeśli masz maszynę wirtualną Windows, plik klucza szyfrowania bloków jest zakodowany jako ciąg w formacie base64 i następnie przekazywane do usługi key vault przy użyciu `Set-AzureKeyVaultSecret` polecenia cmdlet. Dla systemu Linux hasło jest zakodowany jako ciąg w formacie base64, a następnie przekazywane do magazynu kluczy. Ponadto upewnij się, że następujące znaczniki są ustawione podczas tworzenia klucza tajnego w magazynie kluczy.
 
 #### <a name="windows-bek-file"></a>Plik klucza szyfrowania bloków Windows
 ```powershell
@@ -604,7 +595,7 @@ $SecretUrl
 Użyj `$secretUrl` w następnym kroku zapoznać [dołączenie dysku systemu operacyjnego bez użycia klucza KEK](#bkmk_URLnoKEK).
 
 ### <a name="bkmk_SecretKEK"></a> Wpis tajny szyfrowania dysku zaszyfrowane przy użyciu klucza KEK
-Przed przekazaniem wpisu tajnego do magazynu kluczy, można opcjonalnie zaszyfrować przy użyciu klucza szyfrowania. Użyj zawijania [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) najpierw szyfrowania klucza tajnego przy użyciu klucza szyfrowania. Dane wyjściowe tej operacji zawijania to ciąg zakodowany w adresie URL base64, możesz następnie przekazać jako wpis tajny przy użyciu [ `Set-AzureKeyVaultSecret` ](/powershell/module/az.keyvault/set-azurekeyvaultsecret) polecenia cmdlet.
+Przed przekazaniem wpisu tajnego do magazynu kluczy, można opcjonalnie zaszyfrować przy użyciu klucza szyfrowania. Użyj zawijania [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) najpierw szyfrowania klucza tajnego przy użyciu klucza szyfrowania. Dane wyjściowe tej operacji zawijania to ciąg zakodowany w adresie URL base64, możesz następnie przekazać jako wpis tajny przy użyciu [ `Set-AzKeyVaultSecret` ](/powershell/module/az.keyvault/set-azkeyvaultsecret) polecenia cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

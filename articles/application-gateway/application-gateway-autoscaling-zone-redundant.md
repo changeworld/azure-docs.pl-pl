@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/1/2019
+ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: c3ad62dd5f8af52ae9aed1f9469d4b00c4795fa7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215858"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544045"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -50,7 +50,6 @@ W trakcie okresu zapoznawczego nie ma opłat. Opłaty naliczane są za zasobów 
 |Rozliczenia|Nie ma obecnie nie rozliczeń.|
 |Tryb FIPS, WebSocket|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
-|Skalowanie automatyczne zapory aplikacji sieci Web|Zapora aplikacji sieci Web nie obsługuje trybu skalowania automatycznego. Tryb stałych pojemności jest obsługiwany.|
 |Sieć, obserwator integracji|Nie są obsługiwane w publicznej wersji zapoznawczej.|
 
 ## <a name="next-steps"></a>Kolejne kroki

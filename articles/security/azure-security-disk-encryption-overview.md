@@ -3,17 +3,16 @@ title: Przegląd — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS |
 description: Ten artykuł zawiera omówienie programu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67f1488af330ac666aa3f9fe83e5b5ee42e6df2f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: e9b0653c8c42d207010b242d0d86985639560937
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410047"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777375"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS
 

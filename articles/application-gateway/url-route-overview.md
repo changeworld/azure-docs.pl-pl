@@ -7,17 +7,17 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: cf3e051e4833c6b654e5ff89cd084911521b3d67
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 759f5e8441ec62ef11d4be93921e3c4f2629145c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049245"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774166"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Omówienie routingu opartego na ścieżkach URL w usłudze Azure Application Gateway
 
@@ -25,7 +25,7 @@ Routing oparty na ścieżkach URL umożliwia kierowanie ruchu do pul serwerów z
 
 Jeden ze scenariuszy polega na kierowaniu żądań dla różnych typów zawartości do różnych pól serwerów zaplecza.
 
-W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domeny contoso.com z trzech pul serwerów zaplecza, na przykład: VideoServerPool, ImageServerPool i DefaultServerPool.
+W poniższym przykładzie Usługa Application Gateway obsługuje ruch dla domeny contoso.com z trzech pul serwerów zaplecza na przykład: Puli VideoServerPool, ImageServerPool i DefaultServerPool.
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
@@ -68,7 +68,7 @@ Element urlPathMap jest używany do określania wzorców ścieżki na potrzeby m
 ```
 
 > [!NOTE]
-> PathPattern: to ustawienie to lista wzorców ścieżek, które trzeba dopasować. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg przekazywany do narzędzia dopasowywania ścieżki nie zawiera żadnego tekstu po pierwszym znaku „?” lub „#” i te znaki nie są tu dozwolone.
+> PathPattern: To ustawienie znajduje się lista wzorców ścieżki do dopasowania. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg przekazywany do narzędzia dopasowywania ścieżki nie zawiera żadnego tekstu po pierwszym znaku „?” lub „#” i te znaki nie są tu dozwolone.
 
 Aby uzyskać więcej informacji, zobacz [Resource Manager template using URL-based routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) (Szablon usługi Resource Manager korzystający z routingu opartego na adresach URL).
 
@@ -97,6 +97,6 @@ Fragment reguły PathBasedRouting:
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zapoznaniu się z informacjami na temat routingu zawartości opartego na adresach URL skorzystaj z informacji dotyczących [tworzenia bramy aplikacji przy użyciu routingu opartego na adresach URL](tutorial-url-route-powershell.md), aby utworzyć bramę aplikacji za pomocą reguł routingu adresów URL.

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4ad607ad7ef1ee91ea9c886a76faabb0f304969d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752776"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538072"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Wymagania dotyczące magazynu Azure Blob pole danych
 
@@ -53,7 +53,7 @@ Publiczna wersja zapoznawcza (usługa Azure Data Box 1.8 lub nowszy)
 |     Biblioteka kliencka     |     Magazyn obiektów Blob pole danych jest obsługiwana wersja     |     Link             |     Specyfikacja punktu końcowego         |
 |------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
 |    .NET                |    Z 6.2.0 do 8.7.0.                         |    Pakiet Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/ <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-net/releases                                                                      |    pliku App.config                 |
-|    Java                |    Z 4.1.0 do 6.1.0                          |    Pakiet maven:   http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases                                                      |    Ustawienia parametrów połączenia         |
+|    Java                |    Z 4.1.0 do 6.1.0                          |    Pakiet maven:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases                                                      |    Ustawienia parametrów połączenia         |
 |    Node.js             |    Z 1.1.0 do 2.7.0                          |    NPM link:   https://www.npmjs.com/package/azure-storage   (Na przykład: Uruchom "npm zainstalować azure-storage@2.7.0")   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases                            |    Deklaracja wystąpienia usługi    |
 |    C++                 |    Z 2.4.0 do 3.1.0                          |    Pakiet Nuget:   https://www.nuget.org/packages/wastorage.v140/   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-cpp/releases                                                                            |    Ustawienia parametrów połączenia         |
 |    PHP                 |    Z 0.15.0 1.0.0                         |    Wersja usługi GitHub:   https://github.com/Azure/azure-storage-php/releases   <br>Instalowanie za pomocą Composer (Zobacz szczegóły poniżej)                                                                                                   |    Ustawienia parametrów połączenia         |
@@ -69,7 +69,7 @@ Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta
 | Biblioteka kliencka     |Magazyn obiektów Blob pole danych jest obsługiwana wersja     | Link   |     Specyfikacja punktu końcowego      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    8.7.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    pliku App.config                 |
-|    Java                |    6.1.0                                           |    Pakiet maven:   http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Ustawienia parametrów połączenia         |
+|    Java                |    6.1.0                                           |    Pakiet maven:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Ustawienia parametrów połączenia         |
 |    Node.js             |    2.7.0                                           |    NPM link:   https://www.npmjs.com/package/azure-storage   (Uruchom: zainstaluj Menedżera npm azure-storage@2.7.0)   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    Deklaracja wystąpienia usługi    |
 |    C++                 |    3.1.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    Ustawienia parametrów połączenia         |
 |    PHP                 |    1.0.0                                           |    Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Obiekt blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Instalowanie za pomocą Composer (Aby dowiedzieć się więcej, zobacz szczegóły poniżej).                                                                                                             |    Ustawienia parametrów połączenia         |

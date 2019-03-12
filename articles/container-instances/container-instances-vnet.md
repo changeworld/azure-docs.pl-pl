@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313487"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550774"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -40,19 +40,13 @@ Niektóre ograniczenia mają zastosowanie w przypadku wdrażania grup konteneró
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następującym ograniczeniom wdrażanie wystąpień kontenerów w sieci wirtualnej. 
+Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następującym ograniczeniom podczas wdrażania grup kontenerów z siecią wirtualną. 
 
-**Obsługiwane regiony i limity zasobów**
+[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
-| Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
-| -------- | :---: | :---: | :-----------: |
-| Europa Zachodnia | Linux | 4 | 14 |
-| Zachodnie stany USA, Wschodnie stany USA | Linux | 2 | 3,5 |
-| Australia Wschodnia, Europa Północna | Linux | 1 | 1.5 |
+Ograniczenia zasobów kontenera, może różnić się od limity wystąpień kontenerów obsługi sieci w tych regionach. Obecnie kontenery systemu Linux są obsługiwane dla tej funkcji. Planowane jest wprowadzenie obsługi w systemie Windows.
 
-Ograniczenia zasobów kontenera, może różnić się od limity wystąpień kontenerów obsługi sieci w tych regionach. Obecnie kontenery systemu Linux są obsługiwane dla tej funkcji. Planowana jest obsługa Windows.
-
-**Nieobsługiwane sieci zasobów i funkcji**
+### <a name="unsupported-network-resources-and-features"></a>Nieobsługiwane sieci zasobów i funkcji
 
 * Azure Load Balancer
 * Wirtualne sieci równorzędne

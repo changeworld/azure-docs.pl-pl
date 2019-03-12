@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 69a3032ee96accdbafb32c96f4e9f3c89a0b3458
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821188"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539500"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET
 
@@ -250,7 +250,7 @@ Biblioteki Konwencji plików usługi Batch dla platformy .NET jest dostępna w [
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
-[storage_explorer]: http://storageexplorer.com/
+[storage_explorer]: https://storageexplorer.com/
 
 [1]: ./media/batch-task-output/task-output-01.png "Zapisane pliki wyjściowe i zapisane dzienniki selektory w portalu"
 [2]: ./media/batch-task-output/task-output-02.png "Blok danych wyjściowych zadania w witrynie Azure portal"

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 5f89077980cc36bb2fd08b100da4625c39302c35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: eb16778e0e7050dfda92fcc1b92afffe5860268d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311939"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767587"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -43,7 +43,7 @@ Takie podejście jest przydatne podczas testowania urządzeń lub eksperymentowa
 
 Aby połączyć się z IoT Central, przy użyciu sygnatury dostępu Współdzielonego z jednego urządzenia, wykonaj następujące kroki:
 
-1. Aby dodać rzeczywistego urządzenia, przejdź do **Eksplorator urządzeń**, a następnie wybierz szablon, urządzenia i wybierz **+ nowy > rzeczywistych**:
+1. Aby dodać rzeczywistego urządzenia, przejdź do **Device Explorer**, a następnie wybierz szablon, urządzenia i wybierz **+ nowy > rzeczywistych**:
     - Wprowadź własne (małe litery) **identyfikator urządzenia** lub użyj sugerowanego identyfikatora.
     - Wprowadź **nazwy urządzenia** lub użyć sugerowanej nazwy.
 

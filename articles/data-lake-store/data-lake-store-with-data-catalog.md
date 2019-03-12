@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 35fc7b2c713f8d4b88f4a44d9ddef5d92ba4c402
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bc9d6f8f078860000d7a2a38bf4aa1ce00ff450e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294317"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533458"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zarejestruj dane z usługi Azure Data Lake Storage Gen1 w usłudze Azure Data Catalog
 W tym artykule dowiesz się, jak zintegrować usługi Azure Data Lake Storage Gen1 z usługą Azure Data Catalog w celu uzyskania danych stała się wykrywalna dla organizacji, integrując je z usługą Data Catalog. Aby uzyskać więcej informacji na temat katalogowanie danych, zobacz [usługi Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Aby zrozumieć scenariusze, w których możesz użyć wykazu danych, zobacz [typowych scenariuszy usługi Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
@@ -29,8 +29,8 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 * **Włączanie subskrypcji platformy Azure** for Data Lake Storage Gen1. Zobacz [instrukcje](data-lake-store-get-started-portal.md).
 * **Konta Data Lake Storage Gen1**. Postępuj zgodnie z instrukcjami w artykule [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-get-started-portal.md). W tym samouczku Tworzenie konta Data Lake Storage Gen1 o nazwie **datacatalogstore**.
 
-    Po utworzeniu konta, a następnie Przekaż przykładowy zestaw danych do niego. W tym samouczku, Daj nam przekazać wszystkie pliki CSV w **AmbulanceData** folderu w [repozytorium Git usługi Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Można użyć różnych klientów, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/), aby przekazać dane do kontenera obiektów blob.
-* **Usługa Azure Data Catalog**. Twoja organizacja musi już mieć utworzone dla Twojej organizacji usługi Azure Data Catalog. Tylko jeden wykaz jest dozwolony dla każdej organizacji.
+    Po utworzeniu konta, a następnie Przekaż przykładowy zestaw danych do niego. W tym samouczku, Daj nam przekazać wszystkie pliki CSV w **AmbulanceData** folderu w [repozytorium Git usługi Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Można użyć różnych klientów, takie jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/), aby przekazać dane do kontenera obiektów blob.
+* **Azure Data Catalog**. Twoja organizacja musi już mieć utworzone dla Twojej organizacji usługi Azure Data Catalog. Tylko jeden wykaz jest dozwolony dla każdej organizacji.
 
 ## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Zarejestruj Data Lake Storage Gen1 jako źródło dla usługi Data Catalog
 

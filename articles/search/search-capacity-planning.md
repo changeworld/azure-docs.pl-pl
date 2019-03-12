@@ -1,22 +1,22 @@
 ---
-title: Przydzielić partycje i repliki na potrzeby zapytań i indeksowania — usługa Azure Search
+title: Skalowanie partycji i replik dla zapytań i indeksowania — wyszukiwanie platformy Azure
 description: Dopasowywanie partycji i replik zasobów komputera w usłudze Azure Search, gdzie każdy zasób jest rozliczana w jednostkach płatnych wyszukiwania.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316118"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775326"
 ---
-# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Przydziel partycje i repliki dla zapytań i indeksowania obciążeń w usłudze Azure Search
+# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalowanie partycji i replik dla zapytań i indeksowania obciążeń w usłudze Azure Search
 Po zakończeniu [wybierz warstwę cenową](search-sku-tier.md) i [aprowizować usługę wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększyć liczbę repliki lub partycje używane przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak można przydzielić tych jednostek, aby osiągnąć optymalną konfigurację, która równoważy wymagań dotyczących wykonywania zapytania, indeksowania i magazynu.
 
 Konfiguracja zasobu jest dostępna podczas konfigurowania usługi po [warstwa podstawowa](https://aka.ms/azuresearchbasic) lub jednego z [warstwy standardowa](search-limits-quotas-capacity.md). W przypadku usług w tych warstwach zostanie kupiona pojemność, z przyrostem równym *wyszukiwanie jednostek* (SUs) gdzie każdej partycji i replik jest liczona jako jeden SU. 
@@ -26,7 +26,7 @@ Użycie mniejszej liczby wyników SUs w obniżenie proporcjonalnie. Rozliczenia 
 > [!Note]
 > Usunięcie usługi spowoduje usunięcie wszystkiego w nim. Nie ma możliwości w ramach usługi Azure Search do wykonywania kopii zapasowych i przywracanie utrwalone dane wyszukiwania. Aby przeprowadzić ponowne wdrożenie istniejącego indeksu na nową usługę, należy uruchomić program używany do tworzenia i załaduj go pierwotnie. 
 
-## <a name="terminology-partitions-and-replicas"></a>Terminologii: partycje i repliki
+## <a name="terminology-replicas-and-partitions"></a>Terminologia: replik i partycji
 Partycje i repliki są podstawowe zasoby obsługujące usługi wyszukiwania.
 
 | Zasób | Definicja |
@@ -38,22 +38,67 @@ Partycje i repliki są podstawowe zasoby obsługujące usługi wyszukiwania.
 > Nie ma możliwości do bezpośrednio obsługi i zarządzania, których indeksy Uruchom w replice. Po jednej kopii każdego indeksu dla każdej repliki jest częścią architektury usługi.
 >
 
-## <a name="how-to-allocate-partitions-and-replicas"></a>Jak przydzielić partycje i repliki
+
+## <a name="how-to-allocate-replicas-and-partitions"></a>Jak przydzielić replik i partycji
 W usłudze Azure Search to usługa początkowo jest przydzielany minimalny poziom zasoby składające się z jednej partycji i jednej z replik. W przypadku warstw, które go obsługują zasoby obliczeniowe można dostosować przyrostowe, zwiększając partycji, jeśli potrzebujesz więcej pamięci i operacji We/Wy, lub Dodaj więcej repliki dla większych woluminów zapytania lub lepszą wydajność. Pojedyncza usługa musi mieć wystarczające zasoby do obsługi wszystkich obciążeń (indeksowanie i zapytania). Nie można podzielić obciążenia między wiele usług.
 
-Aby zwiększyć lub zmień przydział replik i partycji, zaleca się przy użyciu witryny Azure portal. Portal wymusza limity dozwolone połączenia, które pozostają poniżej maksymalny limit:
-
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz usługę wyszukiwania.
-2. W **ustawienia**, otwórz **skalowania** bloku i użyj suwaków, aby zwiększyć lub zmniejszyć liczbę partycji i replik.
-
-Jeśli potrzebujesz opartych na skryptach lub oparte na kodzie metody inicjowania obsługi administracyjnej, [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/services) stanowi alternatywę dla portalu.
+Aby zwiększyć lub zmień przydział replik i partycji, zaleca się przy użyciu witryny Azure portal. Portal wymusza limity dozwolone połączenia, które pozostają poniżej maksymalny limit. Jeśli potrzebujesz opartych na skryptach lub oparte na kodzie metody inicjowania obsługi administracyjnej, [programu Azure PowerShell](search-manage-powershell.md) lub [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/services) są alternatywne rozwiązania.
 
 Ogólnie rzecz biorąc Wyszukaj aplikacje muszą większa liczba replik niż partycje, szczególnie w przypadku, gdy operacje usług są obciążona kierunku obciążeń związanych z zapytaniami. W sekcji na [wysokiej dostępności](#HA) wyjaśnia, dlaczego.
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz usługę wyszukiwania.
+2. W **ustawienia**, otwórz **skalowania** stronę, aby zmodyfikować replik i partycji. 
+
+   Poniższy zrzut ekranu przedstawia aprowizowana za pomocą jednego replik i partycji usług w warstwie standardowa. Formuły u dołu wskazuje, ile jednostek wyszukiwania są używane (1). Jeśli cena jednostkowa 100 USD (nie rzeczywistą cenę), miesięczny koszt tej usługi będzie średnio 100 USD.
+
+   ![Skala strona, wyświetlająca bieżące wartości](media/search-capacity-planning/1-initial-values.png "stronę Skala przedstawiająca bieżące wartości")
+
+3. Za pomocą suwaka Zwiększ lub Zmniejsz liczbę partycji. Formuły u dołu wskazuje, ile jednostek wyszukiwania są używane.
+
+   W tym przykładzie podwaja pojemności z dwiema replikami i każdej partycji. Zwróć uwagę, liczby jednostek wyszukiwania; ma teraz cztery ponieważ formuła rozliczeń replik pomnożona przez partycje (2 x 2). Więcej niż podwojenie pojemności podwaja się koszt uruchamiania usługi. Jeśli wyszukiwanie koszt jednostkowy 100 USD, nowe miesięczny rachunek będzie teraz 400 USD.
+
+   Dla bieżącego kosztu jednostkowego dla każdej warstwy, odwiedź stronę [stronę z cennikiem](https://azure.microsoft.com/pricing/details/search/).
+
+   ![Dodawanie replik i partycji](media/search-capacity-planning/2-add-2-each.png "Dodawanie replik i partycji")
+
+3. Kliknij przycisk **Zapisz** aby potwierdzić zmiany.
+
+   ![Potwierdzenie zmian w skali i rozliczenia](media/search-capacity-planning/3-save-confirm.png "potwierdzenie zmian w skali i rozliczenia")
+
+   Zmiany w charakterze potrwać kilka godzin. Nie można anulować po rozpoczęciu procesu i nie ma żadnych monitorowanie w czasie rzeczywistym dla replik i partycji. Jednak następujący komunikat pozostaje widoczna podczas zmiany są w toku.
+
+   ![Komunikat o stanie w portalu](media/search-capacity-planning/4-updating.png "komunikat o stanie w portalu")
+
 
 > [!NOTE]
 > Po aprowizacji usługi nie można uaktualnić do wyższej wersji jednostki SKU. Należy utworzyć usługę wyszukiwania w nowej warstwie i załaduj ponownie indeksów. Zobacz [Tworzenie usługi Azure Search w portalu](search-create-service-portal.md) Aby uzyskać pomoc dotyczącą usługi aprowizacji.
 >
 >
+
+<a id="chart"></a>
+
+## <a name="partition-and-replica-combinations"></a>Kombinacji partycji i replik
+
+Podstawowa usługa mogą mieć dokładnie jedną partycję i maksymalnie trzech replik dla maksymalnie ograniczyć trzech serwerów SUS. Tylko zmienianych zasób jest replik. Należy co najmniej dwóch replik wysokiej dostępności dla zapytań.
+
+Wszystkich usług w warstwie standardowa może przyjmować następujące kombinacje replik i partycji, z zastrzeżeniem limit 36 SU. 
+
+|   | **1 partycji** | **2 partycjach** | **3 partycji** | **4 partycje** | **partycje 6** | **12 partycjami** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1 repliki** |1 JEDNOSTKA WYSZUKIWANIA |2 SU |3 SU |4 SU |6 SU |12 SU |
+| **2 repliki** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
+| **3 repliki** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
+| **4 replik** |4 SU |8 SU |12 SU |16 SU |24 SU |ND |
+| **5 repliki** |5 SU |10 SU |15 SU |20 SU |30 SU |ND |
+| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |ND |
+| **12 repliki** |12 SU |24 SU |36 SU |ND |ND |ND |
+
+SUs, ceny i wydajności są szczegółowo opisane w witrynie sieci Web platformy Azure. Aby uzyskać więcej informacji, zobacz [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/).
+
+> [!NOTE]
+> Liczba replik i partycji dzieli bez reszty do 12 (w szczególności 1, 2, 3, 4, 6, 12). Jest to spowodowane usługi Azure Search wstępnie dzieli każdy indeks na 12 fragmentów, aby możliwe było ich rozmieszczenie w obszarach równy wszystkich partycji. Na przykład jeśli usługa ma trzy partycje i utworzyć indeks, każda partycja będzie zawierać cztery fragmenty indeksu. W jaki sposób usługi Azure Search fragmentów na indeks jest szczegółowo opisuje implementacja, mogą ulec zmianie w przyszłych wersjach. Mimo że liczba 12 już dziś, nie należy oczekiwać tę liczbę, aby zawsze mieć w przyszłości 12.
+>
+
 
 <a id="HA"></a>
 
@@ -93,32 +138,7 @@ Aplikacji wyszukiwania, które wymagają niemal odświeżanie danych w czasie rz
 
 Indeksy większe dłużej do wykonywania zapytań. Jako takie może się okazać, że każdy przyrostowych wzrostu partycje wymaga mniejszy, ale proporcjonalna wzrost replik. Złożoności zapytania i wolumin zapytań będzie wziąć pod uwagę na szybkość wykonywania zapytania włączono.
 
-## <a name="basic-tier-partition-and-replica-combinations"></a>Warstwa podstawowa: Kombinacji partycji i replik
-Podstawowa usługa mogą mieć dokładnie jedną partycję i maksymalnie trzech replik dla maksymalnie ograniczyć trzech serwerów SUS. Tylko zmienianych zasób jest replik. Należy co najmniej dwóch replik wysokiej dostępności dla zapytań.
 
-<a id="chart"></a>
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="standard-tiers-partition-and-replica-combinations"></a>Warstwy standardowa: Kombinacji partycji i replik
-W poniższej tabeli przedstawiono SUs wymagane do obsługi kombinacje replik i partycji, z zastrzeżeniem limit 36 SU dla wszystkich warstw standardowa.
-
-|   | **1 partycji** | **2 partycjach** | **3 partycji** | **4 partycje** | **partycje 6** | **12 partycjami** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **1 repliki** |1 JEDNOSTKA WYSZUKIWANIA |2 SU |3 SU |4 SU |6 SU |12 SU |
-| **2 repliki** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
-| **3 repliki** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replik** |4 SU |8 SU |12 SU |16 SU |24 SU |ND |
-| **5 repliki** |5 SU |10 SU |15 SU |20 SU |30 SU |ND |
-| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |ND |
-| **12 repliki** |12 SU |24 SU |36 SU |ND |ND |ND |
-
-SUs, ceny i wydajności są szczegółowo opisane w witrynie sieci Web platformy Azure. Aby uzyskać więcej informacji, zobacz [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/).
-
-> [!NOTE]
-> Liczba replik i partycji dzieli bez reszty do 12 (w szczególności 1, 2, 3, 4, 6, 12). Jest to spowodowane usługi Azure Search wstępnie dzieli każdy indeks na 12 fragmentów, aby możliwe było ich rozmieszczenie w obszarach równy wszystkich partycji. Na przykład jeśli usługa ma trzy partycje i utworzyć indeks, każda partycja będzie zawierać cztery fragmenty indeksu. W jaki sposób usługi Azure Search fragmentów na indeks jest szczegółowo opisuje implementacja, mogą ulec zmianie w przyszłych wersjach. Mimo że liczba 12 już dziś, nie należy oczekiwać tę liczbę, aby zawsze mieć w przyszłości 12.
->
->
-
-## <a name="billing-formula-for-replica-and-partition-resources"></a>Formuła rozliczeń dla replik i partycji zasobów
-Obliczanie ilości jednostek przesyłania strumieniowego są używane do konkretnej ich kombinacji jest produktem replik i partycji, lub (R X P = SU). Na przykład trzech replik pomnożona przez trzy partycje jest rozliczana jako dziewięć SUs.
-
-Koszt na SU jest określany przez warstwie wolniejszym tempie rozliczeń na jednostkę Basic niż dla warstwy standardowa. Według stawek dla poszczególnych warstw można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/).
+[Wybierz warstwę cenową dla usługi Azure Search](search-sku-tier.md)

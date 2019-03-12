@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5eb9740bdd0543556265f54a1a37b632f79ac861
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244495"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550126"
 ---
-# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Samouczek: Proces EDIFACT faktury za pomocą usługi Azure BizTalk Services
+# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Samouczek: Przetwarzanie faktur EDIFACT za pomocą usługi Azure BizTalk Services
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -55,11 +55,11 @@ Uzyskanie tego scenariusza biznesowego, firma Contoso używa funkcji oferowanych
 Aby ukończyć ten scenariusz, użyjemy kolejek usługi Service Bus Faktura z firmy Contoso do Northwind lub odebrać potwierdzenia z Northwind. Te kolejki mogą być tworzone za pomocą aplikacji klienckiej, który jest dostępny do pobrania i znajduje się w pakiecie przykładowych, który jest dostępny w ramach tego samouczka.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Konieczne jest posiadanie przestrzeni nazw usługi Service Bus. Aby uzyskać instrukcje dotyczące tworzenia przestrzeni nazw, zobacz [jak: utworzyć lub zmodyfikować Namespace usługi Service Bus Service](https://msdn.microsoft.com/library/azure/hh674478.aspx). Daj nam założono, że już zainicjowano obsługę administracyjną, przestrzeni nazw usługi Service Bus o nazwie **edifactbts**.
+* Konieczne jest posiadanie przestrzeni nazw usługi Service Bus. Aby uzyskać instrukcje dotyczące tworzenia przestrzeni nazw, zobacz [How to: Utwórz lub zmodyfikuj Namespace usługi Service Bus Service](https://msdn.microsoft.com/library/azure/hh674478.aspx). Daj nam założono, że już zainicjowano obsługę administracyjną, przestrzeni nazw usługi Service Bus o nazwie **edifactbts**.
 * Musisz mieć subskrypcję usługi BizTalk Services. Na potrzeby tego samouczka, Daj nam założono, że masz subskrypcję usługi BizTalk Services, o nazwie **contosowabs**.
 * Zarejestruj swoją subskrypcję usługi BizTalk Services w portalu usługi BizTalk Services. Aby uzyskać instrukcje, zobacz [rejestrowanie wdrożenia usługi BizTalk w portalu usługi BizTalk Services](https://msdn.microsoft.com/library/hh689837.aspx)
 * Musisz mieć zainstalowany program Visual Studio.
-* Musisz mieć zainstalowany zestaw SDK usługi BizTalk Services. Możesz pobrać zestaw SDK z [http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
+* Musisz mieć zainstalowany zestaw SDK usługi BizTalk Services. Możesz pobrać zestaw SDK z [https://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
 
 ## <a name="step-1-create-the-service-bus-queues"></a>Krok 1: Tworzenie kolejek usługi Service Bus
 To rozwiązanie używa kolejek usługi Service Bus do wymiany wiadomości między partnerami handlowymi. Contoso i Northwind wysyłają komunikaty do kolejki, z którym mostków integracji EAI i/lub EDI korzystania z nich. W tym rozwiązaniu potrzebne są trzy kolejek usługi Service Bus:
@@ -106,7 +106,7 @@ Umowy z partnerami handlowymi są tworzone profilom firm partnerów handlowych. 
    3. Na **protokołu** , w obszarze **schematów** sekcji, a następnie przekaż **EFACT_D93A_INVOIC.xsd** schematu. Ten schemat jest dostępny za pomocą przykładowego pakietu.
       
       ![][4]  
-   4. Na **transportu** karcie, określ szczegóły dla kolejek usługi Service Bus. Na stronie wysyłania umowy, używamy **northwindreceive** kolejkę do wysyłania faktur EDIFACT do Northwind i **zawieszone** kolejki do rozsyłania komunikatów, które się nie powieść podczas przetwarzania i są wstrzymywane. Utworzono te kolejki w **krok 1: tworzenie kolejek usługi Service Bus** (w tym temacie).
+   4. Na **transportu** karcie, określ szczegóły dla kolejek usługi Service Bus. Na stronie wysyłania umowy, używamy **northwindreceive** kolejkę do wysyłania faktur EDIFACT do Northwind i **zawieszone** kolejki do rozsyłania komunikatów, które się nie powieść podczas przetwarzania i są wstrzymywane. Utworzono te kolejki w **krok 1: Tworzenie kolejek usługi Service Bus** (w tym temacie).
       
       ![][5]  
       
@@ -246,7 +246,7 @@ W tym temacie przyjrzymy się jak przetestować rozwiązanie za pomocą **samouc
    
    ![][16]  
 
-## <a name="step-5-optional-send-edifact-invoice-in-batches"></a>Krok 5 (opcjonalnie): wysyłanie EDIFACT faktury w partiach
+## <a name="step-5-optional-send-edifact-invoice-in-batches"></a>Krok 5 (opcjonalnie): Wyślij fakturę EDIFACT w partiach
 Mostki integracji EDI usługi BizTalk obsługuje również przetwarzanie wsadowe wiadomości wychodzących. Ta funkcja jest przydatna do odbierania partnerów, którzy preferują partię komunikatów (spełniające określone kryterium) zamiast pojedynczych komunikatów.
 
 Najważniejszym aspektem podczas pracy z partii jest rzeczywista wersji usługi Batch, jest określana skrótem kryteriach zwalniania. Kryteria zwalniania może bazować na jak chce odbierać komunikaty odbierający partnera. Jeśli włączono dzielenia na partie Mostek EDI nie wysyła komunikatu wychodzącego do odbierania partnera kryteriach zwalniania jest realizowany. Na przykład kryteriów przetwarzania wsadowego na podstawie wysyłki rozmiar komunikatu partii tylko wtedy, gdy "n" komunikaty są przetwarzane wsadowo. Kryteria batch może być również oparte na czasie taki sposób, że usługi batch są wysyłane w stałym czasie każdego dnia. W tym rozwiązaniu spróbujemy kryteria na podstawie rozmiaru wiadomości.

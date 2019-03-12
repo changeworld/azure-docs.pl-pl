@@ -1,5 +1,5 @@
 ---
-title: 'Usuwanie bramy sieci wirtualnej: programu PowerShell: klasyczny Portal Azure | Dokumentacja firmy Microsoft'
+title: 'Usuwanie bramy sieci wirtualnej: Program PowerShell: Klasyczny Portal Azure | Dokumentacja firmy Microsoft'
 description: Usuwanie bramy sieci wirtualnej w klasycznym modelu wdrażania przy użyciu programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319850"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767774"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Usuwanie bramy sieci wirtualnej przy użyciu programu PowerShell (wersja klasyczna)
 
@@ -32,7 +32,7 @@ ms.locfileid: "49319850"
 
 Ten artykuł ułatwia usuwanie bramy sieci VPN w klasycznym modelu wdrażania przy użyciu programu PowerShell. Po usunięciu bramy sieci wirtualnej należy zmodyfikować plik konfiguracji sieci, aby usunąć elementy, które nie są już używane.
 
-## <a name="connect"></a>Krok 1: Łączenie z platformą Azure
+## <a name="connect"></a>Krok 1. Nawiązywanie połączenia z usługą Azure
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Zainstaluj najnowsze polecenia cmdlet programu PowerShell.
 
@@ -46,7 +46,7 @@ Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i poł�
 Add-AzureAccount
 ```
 
-## <a name="export"></a>Krok 2: Eksportowanie i wyświetlić plik konfiguracji sieci
+## <a name="export"></a>Krok 2. Eksportowanie i wyświetlić plik konfiguracji sieci
 
 Utwórz katalog na komputerze, a następnie wyeksportuj plik konfiguracji sieci do tego katalogu. Możesz użyć tego pliku do obu widoku informacje o bieżącej konfiguracji, a także modyfikowanie konfiguracji sieciowej.
 
@@ -56,9 +56,9 @@ W tym przykładzie plik konfiguracji sieci zostanie wyeksportowany do katalogu C
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Otwórz plik w edytorze tekstu i Wyświetl nazwę klasycznej sieci wirtualnej. Po utworzeniu sieci wirtualnej w witrynie Azure portal, pełna nazwa, która używa usługi Azure nie jest widoczna w portalu. Na przykład sieci wirtualnej, który wydaje się być o nazwie "ClassicVNet1" w witrynie Azure portal może mieć wiele dłuższej nazwy w pliku konfiguracji sieci. Nazwa może wyglądać mniej więcej tak: "Grupa ClassicRG1 ClassicVNet1". Nazwy sieci wirtualnej są wyświetlane jako **"VirtualNetworkSite name ="**. Użyj nazw w pliku konfiguracji sieci, podczas uruchamiania poleceń cmdlet programu PowerShell.
+Otwórz plik w edytorze tekstu i Wyświetl nazwę klasycznej sieci wirtualnej. Po utworzeniu sieci wirtualnej w witrynie Azure portal, pełna nazwa, która używa usługi Azure nie jest widoczna w portalu. Na przykład sieci wirtualnej, który wydaje się być o nazwie "ClassicVNet1" w witrynie Azure portal może mieć wiele dłuższej nazwy w pliku konfiguracji sieci. Nazwa może wyglądać mniej więcej tak: "Group ClassicRG1 ClassicVNet1". Nazwy sieci wirtualnej są wyświetlane jako **"VirtualNetworkSite name ="**. Użyj nazw w pliku konfiguracji sieci, podczas uruchamiania poleceń cmdlet programu PowerShell.
 
-## <a name="delete"></a>Krok 3: Usuwanie bramy sieci wirtualnej
+## <a name="delete"></a>Krok 3. Usuwanie bramy sieci wirtualnej
 
 Jeśli usuniesz bramy sieci wirtualnej, wszystkie połączenia z siecią wirtualną za pośrednictwem bramy są odłączone. W przypadku połączonych z siecią wirtualną klientów P2S zostaną rozłączone bez ostrzeżenia.
 
@@ -74,7 +74,7 @@ Jeśli to się powiedzie, pokazuje zwracany:
 Status : Successful
 ```
 
-## <a name="modify"></a>Krok 4: Modyfikowanie pliku konfiguracji sieci
+## <a name="modify"></a>Krok 4. Zmodyfikuj plik konfiguracji sieci
 
 Po usunięciu bramy sieci wirtualnej, polecenie cmdlet nie powoduje modyfikacji pliku konfiguracji sieci. Należy zmodyfikować plik, aby usunąć elementy, które są już używane. Poniższe sekcje ułatwiają modyfikowanie pliku konfiguracji sieci, który został pobrany.
 
@@ -181,7 +181,7 @@ Przykład:
  </Subnets>
 ```
 
-## <a name="upload"></a>Krok 5: Przekaż plik konfiguracji sieci
+## <a name="upload"></a>Krok 5. Przekaż plik konfiguracji sieci
 
 Zapisz zmiany i przekazać plik konfiguracji sieci na platformę Azure. Upewnij się, że zmiany ścieżki pliku jako wymaganych w danym środowisku.
 

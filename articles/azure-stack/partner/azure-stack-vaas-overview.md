@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 12/20/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6126bacf50d47029c29772b35f6dc1d552d47029
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: ca22f29597cb452d6d33338b8ba0367c9377f6fb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592642"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772521"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Co to jest weryfikacja jako usługa dla usługi Azure Stack?
 
@@ -65,7 +65,7 @@ Aby uzyskać więcej informacji, zobacz temat [Szybki start: Użyj weryfikacji j
 |----|------------|
 | [Nowe rozwiązanie sprawdzania poprawności.](azure-stack-vaas-validate-solution-new.md) | Aparat symulacji w chmurze<br>Obliczenia operacyjnej zestaw SDK<br>Test identyfikator dysku<br>Pakiet operacyjnej zestaw SDK rozszerzenia usługi KeyVault<br>Operacyjnej zestaw SDK magazynu kluczy<br>Network SDK Operational Suite<br>Pakiet operacyjnej zestaw SDK konta magazynu<br> |
 | [Sprawdzanie poprawności pakietu producenta OEM](azure-stack-vaas-validate-oem-package.md) | Weryfikacja pakietu rozszerzenia producenta OEM<br>Aparat symulacji w chmurze |
-| [Miesięczne weryfikacji operacji update.](azure-stack-vaas-validate-microsoft-updates.md) | Miesięczne Weryfikacja AzureStack aktualizacji<br>Aparat symulacji w chmurze<br> |
+| [Miesięczne weryfikacji operacji update.](azure-stack-vaas-validate-microsoft-updates.md) | Miesięczne Weryfikacja aktualizacji usługi Azure Stack<br>Aparat symulacji w chmurze<br> |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

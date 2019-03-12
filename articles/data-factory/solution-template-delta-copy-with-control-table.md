@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych różnicowych z bazy danych za pomocą kontrolki tabeli za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
+title: Kopiowanie danych różnicowych z bazy danych przy użyciu tabeli kontroli przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przyrostowo kopiować nowych lub zaktualizowanych wierszy tylko z bazy danych za pomocą usługi Azure Data Factory za pomocą szablonu rozwiązania.
 services: data-factory
 documentationcenter: ''
@@ -13,41 +13,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: 23e1255013cd5e52166fe0e59a8931dd9ecd81a0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967497"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771161"
 ---
-# <a name="delta-copy-from-database-with-control-table"></a>Kopiowanie danych różnicowych z bazy danych za pomocą kontrolki tabeli
+# <a name="delta-copy-from-a-database-with-a-control-table"></a>Kopiowanie zmian z bazy danych za pomocą kontrolki tabeli
 
-Kiedy chcesz przyrostowe ładowanie zmiany (nowych lub zaktualizowanych wierszy) tylko z tabeli w bazie danych na platformę Azure za pomocą tabeli zewnętrznej kontroli przechowywania wartości limitu wysoka.  Obecne szablon jest przeznaczony dla tej sprawy. 
+W tym artykule opisano szablon, który jest dostępny dla przyrostowe ładowanie nowych lub zaktualizowanych wierszy z tabeli bazy danych na platformie Azure przy użyciu tabeli zewnętrznej kontroli, który przechowuje wartości limitu wysokiej.
 
-Ten szablon wymaga schematu źródłowej bazy danych musi zawierający znacznik czasu: kolumny lub o wartości klucza do identyfikowania nowych lub zaktualizowanych wierszy.
+Ten szablon wymaga, że schematu źródłowej bazy danych zawiera znacznik czasu: kolumny lub inkrementacji klucz do identyfikowania nowych lub zaktualizowanych wierszy.
 
-Jeśli masz kolumnę sygnatur czasowych w źródłowej bazy danych do identyfikowania nowych lub zaktualizowanych wierszy, ale nie powinien być utworzenia tabeli zewnętrznej kontroli umożliwiające kopii delta, można pobrać potok, który używa wyzwalacz zaplanowany czas jako zmienną do odczytu, można użyć narzędzia do kopiowania danych nowe wiersze tylko ze źródłowej bazy danych.
+>[!NOTE]
+> Jeśli masz kolumnę sygnatur czasowych w źródłowej bazy danych do identyfikowania nowych lub zaktualizowanych wierszy, ale nie chcesz do utworzenia tabeli zewnętrznej kontroli do użycia dla kopii delta, należy użyć [narzędzia Azure Data Factory kopiowania danych](copy-data-tool.md) można pobrać potoku. Tego narzędzia używa wyzwalacz zaplanowany czas jako zmienną do odczytania nowe wiersze ze źródłowej bazy danych.
 
 ## <a name="about-this-solution-template"></a>Temat ten szablon rozwiązania
 
-Ten szablon jest zawsze najpierw pobiera starej wartości limitu i porównuje go z bieżącą wartością limitu. Po tym tylko kopiuje zmiany ze źródłowej bazy danych na podstawie porównania między 2 wartości limitu.  Po zakończeniu przechowuje nową wartość limitu wysokiej tabeli zewnętrznej kontroli następnym ładowanie danych różnicowych.
+Ten szablon najpierw pobiera starej wartości limitu i porównuje go z bieżącą wartością limitu. Następnie kopiuje tylko zmiany ze źródłowej bazy danych, na podstawie porównania między dwiema wartościami limitu. Na koniec przechowuje nową wartość limitu wysokiej tabeli zewnętrznej kontroli następnym ładowanie danych różnicowych.
 
 Szablon zawiera cztery czynności:
--   A **wyszukiwania** działania w celu pobrania starej wartości limitu wysokiej przechowywane w tabeli zewnętrznej kontroli.
--   A **wyszukiwania** działanie, aby pobrać bieżącą wartość w górnym limitem ze źródłowej bazy danych.
--   A **kopiowania** działanie w celu kopiowania zmiany tylko w bazie danych źródła do docelowego magazynu. Zapytania używane do identyfikowania zmian ze źródłowej bazy danych w działaniu kopiowania jest podobny jako "Wybierz * z Data_Source_Table gdzie TIMESTAMP_Column >"ostatni górnym limitem"i TIMESTAMP_Column < ="bieżący górnym limitem"".
--   A **SqlServerStoredProcedure** działanie, aby zapisać bieżącą wartość znaku wodnego wysokiej do tabeli zewnętrznej kontroli dla kopii delta następnym razem.
+- **Wyszukiwanie** pobiera starej wartości limitu wysoka, który jest przechowywany w tabeli zewnętrznej kontroli.
+- Inny **wyszukiwania** działanie pobiera bieżącą wartość wysokiej limitu ze źródłowej bazy danych.
+- **Kopiuj** kopiuje tylko zmiany ze źródłowej bazy danych do docelowego magazynu. Zapytanie, które identyfikuje zmiany w źródłowej bazie danych jest podobny do "Wybierz * z Data_Source_Table gdzie TIMESTAMP_Column >"ostatni górnym limitem"i TIMESTAMP_Column < ="bieżący górnym limitem"".
+- **SqlServerStoredProcedure** zapisuje bieżącą wartość znaku wodnego wysokiej do tabeli zewnętrznej kontroli dla kopii delta następnym razem.
 
 Szablon definiuje parametry pięć:
--   Parametr *Data_Source_Table_Name* jest nazwa tabeli ze źródłowej bazy danych, które chcesz załadować dane z.
--   Parametr *Data_Source_WaterMarkColumn* jest nazwą kolumny w tabeli źródłowej, która może służyć do identyfikowania nowych lub zaktualizowanych wierszy. Typ tej kolumny można zwykle daty/godziny lub INT itp.
--   Parametr *Data_Destination_Folder_Path* lub *Data_Destination_Table_Name* jest miejscem, gdzie dane są kopiowane do magazynu docelowego.
--   Parametr *Control_Table_Table_Name* jest nazwą tabeli zewnętrznej kontroli do przechowywania wartości limitu wysoka.
--   Parametr *Control_Table_Column_Name* jest nazwą kolumny w tabeli zewnętrznej kontroli do przechowywania wartości limitu wysoka.
+- *Data_Source_Table_Name* to tabela w źródłowej bazy danych, który chcesz załadować dane.
+- *Data_Source_WaterMarkColumn* jest nazwą kolumny w tabeli źródłowej, który jest używany do identyfikowania nowych lub zaktualizowano wierszy. Typ tej kolumny jest zazwyczaj *daty/godziny*, *INT*, lub podobne.
+- *Data_Destination_Folder_Path* lub *Data_Destination_Table_Name* jest miejscem, gdzie dane są kopiowane do w magazynie docelowym.
+- *Control_Table_Table_Name* jest tabeli zewnętrznej kontroli, która przechowuje wartość w górnym limitem.
+- *Control_Table_Column_Name* jest kolumną w tabeli zewnętrznej kontroli, która przechowuje wartość w górnym limitem.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
-1. Zapoznaj się z tabeli źródłowej, które chcesz załadować i Zdefiniuj kolumny limitu wysokiej, która może służyć do tworzenia wycinków nowych lub zaktualizowanych wierszy. Typ tej kolumny można zwykle daty/godziny lub INT itp., a jej dane, utrzymywanie zwiększenie przy dodawaniu nowych wierszy.  Z przykładowej tabeli źródłowej (nazwa tabeli: data_source_table) poniżej, można użyć kolumny *LastModifytime* jako kolumny limitu wysoka.
+1. Zapoznaj się z źródło tabeli możesz chcesz załadować i zdefiniować kolumnę wysoki limit, który może służyć do identyfikowania nowych lub zaktualizowanych wierszy. Typ tej kolumny mogą być *daty/godziny*, *INT*, lub podobne. Ta kolumna wartość zwiększa się po dodaniu nowych wierszy. Z poniższej przykładowej tabeli źródłowej (data_source_table), możemy użyć *LastModifytime* kolumny jako kolumny limitu wysoka.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -62,7 +63,7 @@ Szablon definiuje parametry pięć:
             9   iiiiiiiii   2017-09-09 09:01:00.000
     ```
     
-2. Utwórz tabelę kontroli programu SQL server lub SQL Azure do przechowywania wartości limitu wysokiej do ładowania danych różnicowych. W przykładzie poniżej widać, to nazwa tabeli kontroli *watermarktable*. To jest nazwa kolumny do przechowywania wartości limitu wysokiej *WatermarkValue* a jej typ jest *daty/godziny*.
+2. Utwórz tabelę kontroli programu SQL Server lub usługi Azure SQL Database do przechowywania wartości limitu wysokiej do ładowania danych różnicowych. W poniższym przykładzie nazwa tabeli kontroli jest *watermarktable*. W tej tabeli *WatermarkValue* to kolumna, która przechowuje wartość limitu o wysokiej i jej typ jest *daty/godziny*.
 
     ```sql
             create table watermarktable
@@ -73,7 +74,7 @@ Szablon definiuje parametry pięć:
             VALUES ('1/1/2010 12:00:00 AM')
     ```
     
-3. Utwórz procedurę składowaną w tym samym programie SQL server lub SQL Azure użyty do utworzenia tabeli kontroli. Procedura składowana używany do zapisywania nowej wartości limitu wysokiej do tabeli zewnętrznej kontroli dla następnego ładowanie danych różnicowych.
+3. Utwórz procedurę przechowywaną, w tym samym wystąpieniu programu SQL Server lub usługi Azure SQL Database, które zostało użyte do utworzenia tabeli kontroli. Procedura składowana używany do zapisywania nowej wartości limitu wysokiej tabeli zewnętrznej kontroli następnym ładowanie danych różnicowych.
 
     ```sql
             CREATE PROCEDURE update_watermark @LastModifiedtime datetime
@@ -87,43 +88,43 @@ Szablon definiuje parametry pięć:
             END
     ```
     
-4. Przejdź do szablonu **kopii Delta z bazy danych**i Utwórz **nowe połączenie** do której kopiowania danych ze źródłowej bazy danych.
+4. Przejdź do **kopii Delta z bazy danych** szablonu. Tworzenie **New** połączenie przewidzianą do kopiowania danych ze źródłowej bazy danych.
 
     ![Utwórz nowe połączenie do tabeli źródłowej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. Tworzenie **nowe połączenie** do Twojej gdzie kopiowania danych do docelowego magazynu danych.
+5. Tworzenie **New** połączenia do docelowego magazynu danych, który chcesz skopiować dane.
 
     ![Utwórz nowe połączenie do tabeli docelowej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. Tworzenie **nowe połączenie** do tabeli zewnętrznej kontroli i procedury składowanej.  Nawiązuje połączenie z bazą danych, gdzie został utworzona tabela kontroli i procedury składowanej w kroku #2 i #3.
+6. Tworzenie **New** połączenie tabeli zewnętrznej kontroli i procedury składowanej, który został utworzony w kroku 2 i 3.
 
     ![Tworzenie nowego połączenia z magazynem danych tabeli kontroli](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Kliknij przycisk **za pomocą tego szablonu**.
+7. Wybierz **za pomocą tego szablonu**.
 
      ![Użyj tego szablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
-8. Zostanie wyświetlony potok, które są dostępne w panelu, jak pokazano w poniższym przykładzie:
+8. Potok jest dostępna, jest wyświetlany, jak pokazano w poniższym przykładzie:
 
-     ![Przegląd potoku](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+     ![Przejrzyj potoku](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Kliknij działanie Stored Procedure, wybierz **Nazwa procedury składowanej**, kliknij przycisk **parametr importu** i kliknij przycisk **Dodaj zawartość dynamiczną**.  
+9. Wybierz **procedury składowanej**. Aby uzyskać **Nazwa procedury składowanej**, wybierz **[update_watermark]**. Wybierz **Importuj parametr**, a następnie wybierz pozycję **Dodaj zawartość dynamiczną**.  
 
-     ![Działanie procedura składowana zestawu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+     ![Ustaw działania procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. Zapisać zawartość **@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** i kliknij przycisk **Zakończ**.  
+10. Zapisać zawartość  **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}**, a następnie wybierz pozycję **Zakończ**.  
 
-     ![Pisanie zawartości parametru dla procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+     ![Zapisanie zawartości dla parametrów procedury składowanej](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      
-11. Kliknij przycisk **debugowania**, parametry wejściowe i kliknij przycisk **Zakończ**.
+11. Wybierz **debugowania**, wprowadź **parametry**, a następnie wybierz pozycję **Zakończ**.
 
-    ![Kliknij przycisk debugowania](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![Wybierz pozycję ** debugowania **](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-12. Zostanie wyświetlony wynik dostępne w panelu, jak pokazano w poniższym przykładzie:
+12. Wyświetlane są wyniki podobne do poniższego przykładu:
 
     ![Przejrzyj wynik](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
 
-13. Można utworzyć nowych wierszy w tabeli źródłowej.  Przykładowe sql do tworzenia nowych wierszy może być następujący:
+13. Można utworzyć nowych wierszy w tabeli źródłowej. Poniżej przedstawiono przykładowy języka SQL, aby utworzyć nowe wiersze:
 
     ```sql
             INSERT INTO data_source_table
@@ -132,16 +133,17 @@ Szablon definiuje parametry pięć:
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-13. Ponowne uruchamianie potoku, klikając **debugowania**, parametry wejściowe i kliknij przycisk **Zakończ**.
+14. Aby ponownie uruchomić potok, wybierz pozycję **debugowania**, wprowadź **parametry**, a następnie wybierz pozycję **Zakończ**.
 
-    ![Kliknij przycisk debugowania](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![Wybierz pozycję ** debugowania **](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-14. Zobaczysz, że tylko nowe wiersze zostały skopiowane do miejsca docelowego.
+    Zobaczysz, że tylko nowe wiersze zostały skopiowane do lokalizacji docelowej.
 
-15. (Opcjonalnie) Jeśli wybierzesz SQL Data Warehouse jako miejsca docelowego danych, trzeba będzie również dane wejściowe połączenia usługi Azure blob storage jako przejściowe, która jest wymagana przez program Polybase magazynu danych SQL.  Upewnij się, że kontenera w usłudze blob storage został już utworzony.  
+15. (Opcjonalne:) Zaznaczenie SQL Data Warehouse jako miejsca docelowego danych, możesz także podać połączenia z usługą Azure Blob storage potrzeby wdrażania przejściowego, która jest wymagana przez program Polybase magazynu danych SQL. Upewnij się, że kontener został już utworzony w usłudze Blob storage.
     
     ![Konfigurowanie funkcji Polybase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wprowadzenie do usługi Azure Data Factory](introduction.md)
+- [Zbiorcze kopiowanie danych z bazy danych przy użyciu tabeli kontroli przy użyciu usługi Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
+- [Kopiuj pliki z wielu kontenerów przy użyciu usługi Azure Data Factory](solution-template-copy-files-multiple-containers.md)

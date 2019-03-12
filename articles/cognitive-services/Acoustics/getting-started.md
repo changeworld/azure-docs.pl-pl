@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: a9cc8c7b4cdcc05d38bc0d68561fc9d86305b0cb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9569b161dd5c6c79c5333d585f9ab4fcdb55fa97
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879918"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533990"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Wprowadzenie do Akustyka projektu
 Ten przewodnik Szybki Start będzie pokazują, jak zintegrować wtyczkę w swoim projekcie aparatu Unity, tworzenie sceny i dotyczą Akustyka źródeł dźwięku. W tym przewodniku Szybki Start, musisz najpierw utworzyć [konta usługi Azure batch](create-azure-account.md). W tym przewodniku założono pewną znajomość środowiska Unity.
@@ -24,7 +24,7 @@ Ten przewodnik Szybki Start będzie pokazują, jak zintegrować wtyczkę w swoim
 Zarejestruj [tutaj](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) do dołączenia do projektanta w wersji zapoznawczej.
 
 ## <a name="supported-platforms-for-quickstart"></a>Obsługiwane platformy pod kątem szybkiego startu
-* [Unity 2018.2+](http://www.unity3d.com)
+* [Unity 2018.2+](https://www.unity3d.com)
   * Wymaga ustawienia projektu **.NET 4.x odpowiednik** skryptów wersji środowiska uruchomieniowego 
   * Wymaga edytora aparatu Unity z systemem Windows
 

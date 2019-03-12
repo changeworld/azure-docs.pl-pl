@@ -4,16 +4,16 @@ description: Dowiedz się, jak wybrać rozwiązanie na platformie Azure do trans
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: bc5668d826395fb71ee70907f095303a43f1ec7f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4a8a014b365974bb8c138c74197d3d89cc63e42e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214321"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771984"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Transfer danych dla dużych zestawów danych przy użyciu umiarkowany Wysoka przepustowość sieci
  
@@ -65,14 +65,14 @@ Jeśli przy użyciu transferu danych w trybie offline, należy użyć poniższej
 |                                     |    Dysku Data Box (wersja zapoznawcza)    |    Data Box                                      |    Duże pole danych (wersja zapoznawcza)              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Rozmiar danych                        |    Maksymalnie 35 TB                 |    Do 80 TB na każdym urządzeniu                       |    Maksymalnie 800 TB na każdym urządzeniu               |    Zmienna                            |
-|    Typ danych                        |    Obiekty BLOB platformy Azure                  |    Obiekty BLOB platformy Azure<br>Azure Files                    |    Obiekty BLOB platformy Azure<br>Azure Files            |    Obiekty BLOB platformy Azure<br>Azure Files          |
+|    Typ danych                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    Współczynnik postaci                      |    5 dysków SSD na zamówienie zlecenie             |    1 x 50-modułów równoważenia obciążenia. rozmiar pulpitu urządzenia na zamówienie zlecenie    |    Kg — 1 X ~ 500. duże urządzenia na zamówienie zlecenie    |    Do 10 dysków twardych/SSD na zamówienie zlecenie        |
 |    Czas początkowej konfiguracji               |    Małe <br>(15 min)            |    Działania niskiej lub średniej <br> (< 30 minut)               |    Średnia<br>(1 – 2 godziny)               |    Moderowanie trudne do<br>(zmienna) |
 |    Wysyłanie danych do platformy Azure               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
 |    Eksportowanie danych z platformy Azure           |    Nie                           |    Nie                                            |    Nie                                    |    Yes                                 |
 |    Szyfrowanie                       |    AES 128-bitowy                  |    AES 256-bitowy                                   |    AES 256-bitowy                           |    AES 128-bitowy                         |
 |    Sprzęt                         |     Podany firmy Microsoft          |    Podany firmy Microsoft                            |    Podany firmy Microsoft                    |    Dostarcza użytkownik                   |
-|    Interfejs sieciowy                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ-45, QSFP +                           |    SATA II/SATA III                    |
+|    Interfejs sieciowy                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
 |    Integracja z partnerami              |    Niektóre                         |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Niektóre                                |
 |    Wysyłka                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
 | Stosowane, gdy dane są przenoszone         |W granicach handlowych|W granicach handlowych|W granicach handlowych|W granicach geograficznych, np. nam UE|
@@ -83,12 +83,12 @@ Jeśli przy użyciu transferu danych w trybie online, na użytek tabeli w poniż
 
 ### <a name="high-network-bandwidth"></a>Wysoka przepustowość sieci
 
-|                                     |    Narzędzia AzCopy <br>Program Azure PowerShell <br>Interfejs wiersza polecenia platformy Azure             |    Interfejsy API REST, zestawy SDK usługi Azure Storage                   |    Brama pola danych lub krawędź pola danych (wersja zapoznawcza)           |    Azure Data Factory                                            |
+|                                     |    Narzędzia AzCopy <br>Azure PowerShell, <br>Interfejs wiersza polecenia platformy Azure             |    Interfejsy API REST, zestawy SDK usługi Azure Storage                   |    Brama pola danych lub krawędź pola danych (wersja zapoznawcza)           |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Typ danych                  |    Obiekty BLOB platformy Azure, usługa Azure Files, tabele platformy Azure    |    Obiekty BLOB platformy Azure, usługa Azure Files, tabele platformy Azure    |    Obiekty BLOB platformy Azure, usługa Azure Files                           |   Obsługuje 70 łączników danych dla magazynów danych i formatów    |
 |    Współczynnik postaci                |    Narzędzia wiersza polecenia                        |    Interfejs programistyczny                    |    Firma Microsoft dostarcza wirtualnej <br>lub urządzenia fizycznego     |    Usługi w witrynie Azure portal                                            |
 |    Początkowa jednorazowej konfiguracji     |    Łatwość               |    Średnia                       |    Proste (< 30 minut) na Średni (1 – 2 godziny)            |    Rozbudowane                                                          |
-|    Przetwarzanie wstępne danych              |    Nie                                        |    Nie                                        |    Tak (składnik obliczeniowy za pomocą przeglądarki Microsoft Edge)                               |    Yes                                                                |
+|    Przetwarzanie wstępne danych              |    Nie                                        |    Nie                                        |    Tak (składnik obliczeniowy za pomocą przeglądarki Edge)                               |    Yes                                                                |
 |    Transfer z innych chmur       |    Nie                                        |    Nie                                        |    Nie                                                    |    Yes                                                                |
 |    Typ użytkownika                        |    IT Pro lub deweloperów                                       |    Deweloperskie                                       |    Specjaliści IT                                                |    Specjaliści IT                                                             |
 |    Cennik                          |    Bezpłatne, danych opłaty za ruch wychodzący         |    Bezpłatne, danych opłaty za ruch wychodzący         |    [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Cennik](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |

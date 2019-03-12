@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 473dd307eac65856384e9d07dc307cf827d8140f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7cd90b987550dc60b30d3aa0cd1016b681eec85f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242194"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547036"
 ---
 # <a name="collect-data-from-office-365-logs"></a>Zbieranie danych z pakietu Office 365 dzienników
 
@@ -33,7 +33,7 @@ Można przesyłać strumieniowo dzienniki inspekcji z [usługi Office 365](https
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musi być administratorem globalnym lub administratorem zabezpieczeń, które znajdują się w dzierżawie
-
+- Aby dodać dzierżawy, należy otworzyć port 4433 na potrzeby ruchu sieciowego na komputerze, z którego można wykonywać połączenie.
 
 ## <a name="connect-to-office-365"></a>Łączenie z usługą Office 365
 

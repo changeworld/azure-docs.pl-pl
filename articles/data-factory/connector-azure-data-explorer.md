@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 94cf153d7d88e0589edfb3c126c18e04e25e2ef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431924"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531644"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 
@@ -68,9 +68,9 @@ Następujące właściwości są obsługiwane w przypadku Eksploratora danych pl
 | type | **Typu** właściwość musi być równa **AzureDataExplorer** | Yes |
 | endpoint | Adres URL punktu końcowego klastra Eksploratora danych usługi Azure, w tym formacie co `https://<clusterName>.<regionName>.kusto.windows.net `. | Yes |
 | baza danych | Nazwa bazy danych. | Yes |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz ją, umieszczając kursor myszy za pomocą myszy w prawym górnym rogu witryny Azure portal. | Yes |
-| servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |
-| servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to, co zwykle wiedzieć jako "**identyfikator urzędu**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją, umieszczając kursor myszy za pomocą myszy w prawym górnym rogu witryny Azure portal. | Yes |
+| servicePrincipalId | Określ identyfikator klienta aplikacji. Jest to, co zwykle wiedzieć jako "**Identyfikatora klienta aplikacji AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |
+| servicePrincipalKey | Określ klucz aplikacji. Jest to, co zwykle wiedzieć jako "**klucz aplikacji usługi AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Przykład właściwości połączonej usługi:**
 
@@ -139,7 +139,7 @@ Aby skopiować dane z Eksploratora danych usługi Azure, należy ustawić **typu
 | queryTimeout | Czas oczekiwania przed żądaniem zapytania upłynie limit czasu. Wartość domyślna to 10 minut (00: 10:00); dozwolona maksymalna wartość to 1 godzina (01: 00:00). | Nie |
 
 >[!NOTE]
->Usługa Azure źródło Eksploratora danych, domyślnie ma limit rozmiaru wynoszący 500 000 rekordów lub 64 MB. Aby pobrać wszystkie rekordy bez obcinania, można określić `set notruncation;` na początku zapytania. Zapoznaj się [zapytania limity](https://docs.microsoft.com/en-us/azure/kusto/concepts/querylimits) na więcej szczegółów.
+>Usługa Azure źródło Eksploratora danych, domyślnie ma limit rozmiaru wynoszący 500 000 rekordów lub 64 MB. Aby pobrać wszystkie rekordy bez obcinania, można określić `set notruncation;` na początku zapytania. Zapoznaj się [zapytania limity](https://docs.microsoft.com/azure/kusto/concepts/querylimits) na więcej szczegółów.
 
 **Przykład:**
 

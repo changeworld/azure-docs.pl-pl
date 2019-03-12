@@ -6,27 +6,27 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a160bc0247d2f80dda620b67c946805926d78006
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084506"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773966"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Szybki Start: Migrowanie lokalnego notesu programu Jupyter
+# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Szybki start: Migrowanie z lokalnego notesu Jupyter
 
 Notesy Jupyter notebook tworzące lokalnie na własnym komputerze są dostępne tylko dla Ciebie. Można udostępniać swoje pliki przy użyciu różnych oznacza, ale następnie adresaci mają własne lokalną kopię Notes i trudno uwzględniać wszelkie zmiany, których mogą wybierać. Można również przechowywać notesów w współdzielonego repozytorium online, takich jak GitHub, ale nadal wymaga czy każdy Współautor, który ma swoje własne lokalnej instalacji programu Jupyter, z taką samą konfigurację jak należy do Ciebie.
 
 Przy użyciu funkcji migracji notesy lokalnych lub opartych na repozytorium do notesów usługi Azure, przechowywane w chmurze, z którego można natychmiast udostępnisz je innym swoje współpracowników. Tylko przeglądarka do wyświetlania i uruchamiania notesu, niezbędna tych współpracowników i, jeśli ich [Zaloguj](quickstart-sign-in-azure-notebooks.md) do notesów usługi Azure może również wprowadzić zmiany.
 
-Ten przewodnik Szybki Start procesu migracji notesu z komputera lokalnego lub innego pliku dostępnego adresu URL. Aby przeprowadzić migrację notesów z repozytorium GitHub, zobacz [Szybki Start: klonowanie notesu](quickstart-clone-jupyter-notebook.md).
+Ten przewodnik Szybki Start procesu migracji notesu z komputera lokalnego lub innego pliku dostępnego adresu URL. Aby przeprowadzić migrację notesów z repozytorium GitHub, zobacz [Szybki Start: Klonowanie notesu](quickstart-clone-jupyter-notebook.md).
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Utwórz projekt w notesach platformy Azure
 
@@ -48,7 +48,7 @@ Ten przewodnik Szybki Start procesu migracji notesu z komputera lokalnego lub in
 
     ![Polecenie, aby przekazać Notes z adresem URL lub na komputerze lokalnym](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Ponownie, jeśli notesu znajduje się w repozytorium GitHub, postępuj zgodnie z instrukcjami [Szybki Start: klonowanie notesu](quickstart-clone-jupyter-notebook.md) zamiast.)
+   (Ponownie, jeśli notesu znajduje się w repozytorium GitHub, postępuj zgodnie z instrukcjami [Szybki Start: Klonowanie notesu](quickstart-clone-jupyter-notebook.md) zamiast.)
 
     - Jeśli przy użyciu **z komputera**, przeciągnij i upuść swoje *.ipynb* pliki do okna podręcznego, lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki, które chcesz zaimportować. Następnie wybierz pozycję **przekazywanie**. Przekazane pliki znajdują się taką samą nazwę jak pliki lokalne. (Nie trzeba przekazać zawartość dowolnego *.ipynb_checkpoints* folderów.)
 

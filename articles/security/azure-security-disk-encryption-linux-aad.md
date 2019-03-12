@@ -3,17 +3,16 @@ title: Usługa Azure Disk Encryption przy użyciu maszyn wirtualnych IaaS z syst
 description: Ten artykuł zawiera instrukcje na temat włączania systemu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS z systemem Linux.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 03/04/2019
+ms.date: 03/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 292dafb88362d7f7d0ec07a2a7961b98e6518204
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 659530d1dcea5593e86edf85cb6c2b15da57618e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339389"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775637"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych systemu Linux IaaS (poprzedniej wersji)
 
@@ -32,38 +31,8 @@ Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/l
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_NewLinux"></a> Wdrażanie nowych maszyn wirtualnych IaaS systemu Linux przy użyciu włączone szyfrowanie dysków 
-
-1. Użyj [szablonu usługi Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) do tworzenia nowego zaszyfrowanych maszyn wirtualnych IaaS z systemem Linux. Szablon spowoduje utworzenie nowej maszyny Wirtualnej programu firmę Red Hat Linux 7.2 z macierzy RAID-0 200 GB i pełne szyfrowanie dysków za pomocą dysków zarządzanych. Na [— często zadawane pytania](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) artykułu, możesz zauważyć, że niektórych dystrybucjach systemu Linux obsługuje tylko szyfrowanie dla dysków z danymi. Jednak ten szablon umożliwia zapoznanie się z wdrażania szablonów i zweryfikowanie stanu szyfrowania na wiele sposobów. 
- 
-1. Kliknij przycisk **Wdróż na platformie Azure** szablonu usługi Azure Resource Manager.
-
-2. Wybieranie subskrypcji, grupy zasobów, lokalizację grupy zasobów, parametry, postanowienia prawne i umowy. Kliknij przycisk **Utwórz** Aby włączyć szyfrowanie na istniejące lub uruchomionej maszyny Wirtualnej IaaS.
-
-3. Po wdrożeniu szablonu, sprawdź stan szyfrowania maszyny Wirtualnej przy użyciu preferowanej metody:
-     - Weryfikuj za pomocą wiersza polecenia platformy Azure przy użyciu [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) polecenia. 
-
-         ```azurecli-interactive 
-         az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
-         ```
-
-     - Weryfikuj za pomocą programu Azure PowerShell przy użyciu [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia cmdlet. 
-
-         ```azurepowershell-interactive
-         Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-         ```
-
-     - Wybierz maszynę Wirtualną, a następnie kliknij pozycję **dysków** w obszarze **ustawienia** nagłówek, aby zweryfikować stan szyfrowania w portalu. Wykres w obszarze **szyfrowania**, zobaczysz, czy jest włączony. 
-
-| Parametr | Opis |
-| --- | --- |
-| Identyfikator klienta usługi AAD | Identyfikator klienta aplikacji usługi Azure AD, które ma uprawnienia do zapisu kluczy tajnych w magazynie kluczy. |
-| Klucz tajny klienta usługi AAD | Klucz tajny klienta aplikacji usługi Azure AD, która ma uprawnienia do zapisu kluczy tajnych w magazynie kluczy. |
-| Nazwa usługi Key Vault | Nazwa magazynu kluczy, należy umieścić klucz. |
-| Grupa zasobów magazynu kluczy | Grupa zasobów magazynu kluczy. |
-
-
 ## <a name="bkmk_RunningLinux"> </a> Włącz szyfrowanie dla istniejących lub uruchamianie systemu Linux Maszynie wirtualnej IaaS
+
 W tym scenariuszu można włączyć szyfrowanie przy użyciu szablonu usługi Resource Manager, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia. 
 
 >[!IMPORTANT]

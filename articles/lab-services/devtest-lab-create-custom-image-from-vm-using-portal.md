@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 780799103708483fb0092c7a4c15bfaa3269c073
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636486"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550092"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Tworzenie niestandardowego obrazu maszyny wirtualnej
 
@@ -61,7 +61,7 @@ Po kilku minutach niestandardowego obrazu zostanie utworzony i jest przechowywan
 ## <a name="related-blog-posts"></a>Wpisy w blogu pokrewne
 
 - [Obrazy niestandardowe lub formuł?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopiowanie obrazów niestandardowych między usłudze Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Kopiowanie obrazów niestandardowych między usłudze Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

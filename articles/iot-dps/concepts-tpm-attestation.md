@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e4a86585fbf1e00512e9e8e111a9a259663f8a26
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055020"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536782"
 ---
 # <a name="tpm-attestation"></a>Poświadczanie za pomocą modułu TPM
 
 IoT Hub Device Provisioning Service to usługa pomocnika usługi IoT Hub, możesz użyć do skonfigurowania urządzenia i bezobsługowa aprowizacja w określonej usługi IoT hub. Przy użyciu usługi Device Provisioning można udostępnić z milionów urządzeń w bezpieczny sposób.
 
-W tym artykule opisano proces zaświadczania tożsamości, korzystając z [modułu TPM](./concepts-device.md). Moduł TPM to Trusted Platform Module i jest typem sprzętowego modułu zabezpieczeń (HSM). W tym artykule przyjęto założenie, korzystają z kolumną dyskretną, oprogramowania układowego lub zintegrowane modułu TPM. Oprogramowanie TPM emulowanych są odpowiednie dla tworzenia prototypów lub testowania, ale ich nie zapewnia ten sam poziom zabezpieczeń jak dyskretnych, oprogramowania układowego lub czy zintegrowane moduły TPM. Firma Microsoft nie zaleca się korzystanie z oprogramowania moduły TPM w środowisku produkcyjnym. Aby uzyskać więcej informacji na temat typów modułów TPM, zobacz [krótkie wprowadzenie do modułu TPM](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+W tym artykule opisano proces zaświadczania tożsamości, korzystając z [modułu TPM](./concepts-device.md). Moduł TPM to Trusted Platform Module i jest typem sprzętowego modułu zabezpieczeń (HSM). W tym artykule przyjęto założenie, korzystają z kolumną dyskretną, oprogramowania układowego lub zintegrowane modułu TPM. Oprogramowanie TPM emulowanych są odpowiednie dla tworzenia prototypów lub testowania, ale ich nie zapewnia ten sam poziom zabezpieczeń jak dyskretnych, oprogramowania układowego lub czy zintegrowane moduły TPM. Firma Microsoft nie zaleca się korzystanie z oprogramowania moduły TPM w środowisku produkcyjnym. Aby uzyskać więcej informacji na temat typów modułów TPM, zobacz [krótkie wprowadzenie do modułu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
 Ten artykuł ma zastosowanie tylko dla urządzeń z kluczem HMAC Obsługa kluczy i kluczy poręczenia przy użyciu modułu TPM w wersji 2.0. Nie jest w przypadku urządzeń za pomocą certyfikatów X.509 do uwierzytelniania. Moduł TPM jest całej branży, standard ISO z Trusted Computing Group i możesz dowiedzieć się więcej o modułu TPM na [pełną specyfikacji TPM 2.0](https://trustedcomputinggroup.org/tpm-library-specification/) lub [specyfikacji ISO/IEC 11889](https://www.iso.org/standard/66510.html). W tym artykule przyjęto założenie, że możesz zapoznać się z pary kluczy publicznych i prywatnych i jak są używane do szyfrowania.
 
@@ -35,7 +35,7 @@ Gdy urządzenie zostało skonfigurowane i gotowe do użycia, będzie miał klucz
 
 ![Przejmowanie na własność modułu TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-OneNote na przejmowanie na własność modułu TPM: przejmowanie na własność modułu TPM jest zależna od wiele rzeczy, w tym producenta modułu TPM, zestaw funkcji wspomagających modułu TPM używane i systemu operacyjnego urządzenia. Postępuj zgodnie z instrukcjami odpowiednimi do systemu, przejęcie na własność.
+OneNote na przejmowanie na własność modułu TPM: Przejmowanie na własność modułu TPM, zależy od wiele rzeczy, w tym producenta modułu TPM, zestaw funkcji wspomagających modułu TPM używane i systemu operacyjnego urządzenia. Postępuj zgodnie z instrukcjami odpowiednimi do systemu, przejęcie na własność.
 
 Usługi Device Provisioning Service używa publiczną część EK (EK_pub) do identyfikowania i rejestrowania urządzeń. Dostawca urządzenia może odczytywać EK_pub podczas produkcji lub finalnych testów i przesłanie EK_pub do usługi aprowizacji, które urządzenie zostanie rozpoznana podczas łączenia z aprowizacji. Usługi Device Provisioning Service nie sprawdza SRK ani właścicielem, dzięki czemu "wyczyszczenie" modułu TPM na partycje powoduje usunięcie danych klienta, ale klucz poręczenia (i inne dane dostawcy) są zachowywane i urządzenia nadal będzie zostanie rozpoznany przez usługę Device Provisioning, kiedy łączy do aprowizowania.
 

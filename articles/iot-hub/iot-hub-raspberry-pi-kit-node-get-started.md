@@ -10,25 +10,25 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a4e64259b941a4f2c2727afc8730c6cb0102a061
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054883"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529254"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi do usługi Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-W tym samouczku rozpoczniesz od podstawy pracy z urządzeniem Raspberry Pi, w którym działa Raspbian uczenia. Następnie dowiesz się, jak bezproblemowe łączenie urządzeń do chmury przy użyciu [usługi Azure IoT Hub](about-iot-hub.md). Aby uzyskać przykłady Windows 10 IoT Core, przejdź do [Centrum deweloperów Windows](http://www.windowsondevices.com/).
+W tym samouczku rozpoczniesz od podstawy pracy z urządzeniem Raspberry Pi, w którym działa Raspbian uczenia. Następnie dowiesz się, jak bezproblemowe łączenie urządzeń do chmury przy użyciu [usługi Azure IoT Hub](about-iot-hub.md). Aby uzyskać przykłady Windows 10 IoT Core, przejdź do [Centrum deweloperów Windows](https://www.windowsondevices.com/).
 
 Nie masz jeszcze zestawu? Spróbuj [symulatora w trybie online urządzenia Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Lub Kup nowy zestaw [tutaj](https://azure.microsoft.com/develop/iot/starter-kits).
 
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
-* Tworzenie Centrum IoT.
+* Utwórz centrum IoT.
 * Zarejestruj urządzenie Pi w usłudze IoT hub.
 * Konfigurowanie urządzenia Raspberry Pi.
 * Uruchom przykładową aplikację na Pi do wysyłania danych czujnika do usługi IoT hub.
@@ -83,7 +83,7 @@ Przygotuj karcie microSD instalacji obrazu Raspbian.
 
 1. Pobierz Raspbian.
 
-   a. [Pobierz Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (plik zip).
+   a. [Pobierz Raspbian Stretch](https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (plik zip).
 
    > [!WARNING]
    > Użyj powyższe łącze, aby pobrać `raspbian-2017-07-5` obraz pliku zip. Najnowszą wersję obrazów Raspbian ma znane problemy z węzłem Pi dwużyłowa, co może prowadzić do awarii w następnych krokach.
@@ -163,11 +163,11 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
    
    **Użytkownicy Windows**
   
-   a. Pobierz i zainstaluj [PuTTY](http://www.putty.org/) for Windows. 
+   a. Pobierz i zainstaluj [PuTTY](https://www.putty.org/) for Windows. 
 
    b. Skopiuj adres IP w sekcji Pi do nazwy hosta (lub adres IP), a następnie wybierz typ połączenia SSH.
    
-   ![Programu puTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac i użytkownicy systemu Ubuntu**
    
@@ -187,7 +187,7 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
    Jeśli wersja jest niższa niż 4.x, czy na Twoje Pi jest nie Node.js, zainstaluj najnowszą wersję.
 
    ```bash
-   curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 

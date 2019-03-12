@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dccd685c240d6e007486be6a4f73e0fce0129a82
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: cb18b9063599520ccc6caec44053dc9780969f74
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405236"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532339"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -39,7 +39,7 @@ Poniższe sekcje zapewniają ogólne informacje dotyczące różnych implementac
 
 JavaScript Object Notation (JSON) i specyfikacje JavaScript obiektu podpisywania i szyfrowania (blog JOSE) są ważne informacje.  
 
--   [Klucza internetowego JSON (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [Klucza internetowego JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [Szyfrowanie sieci Web JSON (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [Algorytmy sieci Web JSON (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [Sygnatura sieci Web JSON (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
@@ -166,7 +166,7 @@ Usługa Key Vault nie obsługuje operacji EKSPORTOWANIA. Gdy klucz zostanie zaap
 
 Użytkownicy mogą ograniczać dowolne operacje kryptograficzne, które obsługuje usługi Key Vault, na podstawie-key, przy użyciu właściwości key_ops obiektu JWK.  
 
-Aby uzyskać więcej informacji na temat JWK obiektów, zobacz [klucza sieci Web JSON (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+Aby uzyskać więcej informacji na temat JWK obiektów, zobacz [klucza sieci Web JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
 
 ###  <a name="key-attributes"></a>Kluczowych atrybutów
 
@@ -189,7 +189,7 @@ Nie zostały jeszcze prawidłowy i klucze, poza *nbf* / *exp* okna, będzie dzia
 
 Aby uzyskać więcej informacji na temat typów danych, zobacz [typy danych](#data-types).
 
-Aby uzyskać więcej informacji o innych atrybutach możliwych zobacz [klucza sieci Web JSON (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+Aby uzyskać więcej informacji o innych atrybutach możliwych zobacz [klucza sieci Web JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
 ### <a name="key-tags"></a>Klucz tagów
 

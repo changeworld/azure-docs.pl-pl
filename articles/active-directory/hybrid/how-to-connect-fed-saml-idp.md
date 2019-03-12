@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09151dee2d458e2ff4fae8a8a3bc93fa466e4efc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b82c2261e949c724b1310ee43c6f3fe29766945
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167800"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531015"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>W systemie dostawcy tożsamości SAML 2.0 (IdP) do rejestracji jednokrotnej
 
@@ -196,7 +196,7 @@ Aby uzyskać więcej informacji na temat "Set-MsolDomainAuthentication", zobacz:
 >[!NOTE]
 >Należy uruchomić, użyj "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" tylko wtedy, gdy Konfigurowanie rozszerzenia ECP dla dostawcy tożsamości. Klienci usługi Exchange Online, z wyjątkiem aplikacji sieci Web programu Outlook (OWA) polegają na ogłoszenie na podstawie aktywnego punktu końcowego. Jeśli z SAML 2.0 STS implementuje aktywny punkt końcowy podobne do wykonania ECP firmy Shibboleth aktywny punkt końcowy może być możliwe w przypadku tych zaawansowanych klientów do interakcji z usługą Exchange Online.
 
-Po skonfigurowaniu Federacji możesz przełączyć się ponownie do "inne niż federacyjne" (lub "zarządzany"), jednak ta zmiana ta zajmuje nawet do dwóch godzin, i wymaga, przypisywanie nowego losowych haseł oparte na chmurze logowania do poszczególnych użytkowników. Przełączanie do "zarządzany" może być konieczne w niektórych scenariuszach resetowania błąd w ustawieniach. Aby uzyskać więcej informacji o konwersji domeny Zobacz: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](httpss://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Po skonfigurowaniu Federacji możesz przełączyć się ponownie do "inne niż federacyjne" (lub "zarządzany"), jednak ta zmiana ta zajmuje nawet do dwóch godzin, i wymaga, przypisywanie nowego losowych haseł oparte na chmurze logowania do poszczególnych użytkowników. Przełączanie do "zarządzany" może być konieczne w niektórych scenariuszach resetowania błąd w ustawieniach. Aby uzyskać więcej informacji o konwersji domeny Zobacz: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Aprowizowanie podmiotami zabezpieczeń użytkownika do usługi Azure AD / usługi Office 365
 Zanim można uwierzytelniać użytkowników do usługi Office 365, możesz aprowizować usługi Azure AD z podmiotami zabezpieczeń użytkownika, które odpowiadają potwierdzenie oświadczenia języka SAML 2.0. Jeśli te podmiotami zabezpieczeń użytkownika nie są znane z usługą Azure AD z wyprzedzeniem, następnie nie można ich używać do logowania federacyjnego. Program Azure AD Connect lub środowiska Windows PowerShell może służyć do udostępniania podmiotami zabezpieczeń użytkownika.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 26865acbf635f07db4799ab197e110d37cbe69e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0d40bfa3a4215b671fcd01402a2cbceaea0cd75d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984343"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536287"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -33,7 +33,7 @@ Warstwy standardowa usługi IoT Hub umożliwia korzystanie z wszystkich funkcji 
 
 Tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
 
-| Możliwości | Warstwa Podstawowa | Warstwa standardowa |
+| Możliwości | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
 | ---------- | ---------- | ------------- |
 | [Dane telemetryczne urządzenia do chmury](iot-hub-devguide-messaging.md) | Yes | Yes |
 | [Tożsamość na urządzenie](iot-hub-devguide-identity-registry.md) | Yes | Yes |
@@ -67,7 +67,7 @@ Konfiguracja partycji zmienia się podczas migracji z warstwy podstawowa do wars
 
 Różnica w obsługiwanych możliwości między warstwami podstawowa i standardowa usługi IoT Hub oznacza, że niektóre wywołania interfejsu API nie będą działać z hubs w warstwie podstawowa. W poniższej tabeli przedstawiono, które interfejsy API są dostępne: 
 
-| Interfejs API | Warstwa Podstawowa | Warstwa standardowa |
+| Interfejs API | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
 | --- | ---------- | ------------- |
 | [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Yes | Yes |
 | [Pobieranie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Yes | Yes |

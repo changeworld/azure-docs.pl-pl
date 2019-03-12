@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f1fa78c9345d5bbe0120ad203c738c441b2e1917
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991552"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767553"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM
 
@@ -175,6 +175,6 @@ Zazwyczaj należy wyczyścić wszystko z wyjątkiem obiektów, których zamierza
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak [stosować ochronę przy użyciu algorytmu AES-128](protect-with-aes128.md)

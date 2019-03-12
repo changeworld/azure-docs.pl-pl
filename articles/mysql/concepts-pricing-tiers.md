@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: d84e3f834bd598bbd2cf84dfc46f6cd5507f6d8b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587127"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546677"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
@@ -50,30 +50,30 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 |:---|:----------:|:--------------------:|
 | Środkowe stany USA |  | X |
 | Wschodnie stany USA |  | X |
-| Wschodnie stany USA 2 | X | X |
-| Środkowo-północne stany USA | X | X |
+| Wschodnie stany USA 2 |  | X |
+| Środkowo-północne stany USA |  | X |
 | Środkowo-południowe stany USA | X | X |
-| Zachodnie stany USA | X | X |
+| Zachodnie stany USA |  | X |
 | Zachodnie stany USA 2 |  | X |
-| Brazylia Południowa | X | X |
-| Kanada Środkowa | X | X |
-| Kanada Wschodnia | X | X |
+| Brazylia Południowa |  | X |
+| Kanada Środkowa |  | X |
+| Kanada Wschodnia |  | X |
 | Europa Północna | X | X |
 | Europa Zachodnia |  | X |
 | Francja Środkowa |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
 | Zachodnie Zjednoczone Królestwo |  | X |
-| Azja Wschodnia | X | X |
+| Azja Wschodnia |  | X |
 | Azja Południowo-Wschodnia | X | X |
 | Australia Wschodnia |  | X |
 | Australia Środkowa |  | X |
 | Australia Środkowa 2 |  | X |
 | Australia Południowo-Wschodnia |  | X |
-| Indie Środkowe | X | X |
+| Indie Środkowe |  | X |
 | Indie Południowe |  | X |
-| Indie Zachodnie | X | X |
+| Indie Zachodnie |  | X |
 | Japonia Wschodnia | X | X |
-| Japonia Zachodnia | X | X |
+| Japonia Zachodnia |  | X |
 | Korea Środkowa |  | X |
 | Korea Południowa |  | X |
 | Chiny wschodnie 1 | X |  |
