@@ -7,39 +7,39 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: d7d23300936cd512466e5c4b18f1f0922c81ceff
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 81b45a25c8040916b835ab333c5ce80ab6c1a788
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408194"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772317"
 ---
-# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
+# <a name="secure-traffic-between-pods-by-using-network-policies-in-azure-kubernetes-service"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service
 
-Po uruchomieniu aplikacji nowoczesnych, opartych na mikrousługach w usłudze Kubernetes, często zachodzi potrzeba kontroli, które składniki mogą komunikować się ze sobą. Zasadę najmniejszych uprawnień powinny być stosowane do jak ruch może przepływać między zasobników w klastrze AKS. Na przykład prawdopodobnie chcesz zablokować ruch bezpośrednio do aplikacji zaplecza. W usłudze Kubernetes *zasad sieciowych* funkcja pozwala zdefiniować reguły dla ruchu przychodzącego i wychodzącego ruchu między zasobników w klastrze.
+Po uruchomieniu aplikacji nowoczesnych, opartych na mikrousługach w usłudze Kubernetes, często zachodzi potrzeba kontroli, które składniki mogą komunikować się ze sobą. Zasadę najmniejszych uprawnień powinny być stosowane do jak ruch może przepływać między zasobników w klastrze usługi Azure Kubernetes Service (AKS). Załóżmy, że prawdopodobnie chcesz blokować ruch bezpośrednio do aplikacji zaplecza. *Zasad sieciowych* funkcji w usłudze Kubernetes pozwala zdefiniować reguły dla ruchu przychodzącego i wychodzącego między zasobników w klastrze.
 
 Calico, typu open source, sieci i rozwiązań zabezpieczeń sieciowych przez Tigera, oferuje aparatu zasad sieci, które można zaimplementować reguły zasad sieciowych usługi Kubernetes. W tym artykule pokazano, jak zainstalować Calico aparat zasad sieciowych i Kubernetes sieci utworzone zasady służące do sterowania przepływem ruchu między zasobników w usłudze AKS.
 
 > [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie przed ogólnodostępnej (GA).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.56 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-Aby utworzyć AKS za pomocą zasad sieciowych, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *EnableNetworkPolicy* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+Aby utworzyć klaster usługi AKS, można użyć zasad sieciowych, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *EnableNetworkPolicy* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
 ```
 
-Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stanu rejestracji za pomocą [lista funkcji az] [ az-feature-list] polecenia:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableNetworkPolicy')].{Name:name,State:properties.state}"
 ```
 
-Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register] [ az-provider-register] polecenia:
+Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcy zasobów za pomocą [az provider register] [ az-provider-register] polecenia:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -47,11 +47,11 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="overview-of-network-policy"></a>Omówienie zasad sieciowych
 
-Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo, można zdefiniować reguł, które kontrolują przepływu ruchu. Na przykład aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
+Wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu, bez ograniczenia, domyślnie. Aby zwiększyć bezpieczeństwo, można zdefiniować reguł, które kontrolują przepływu ruchu. Aplikacji zaplecza są często dostępne tylko do wymaganych usług frontonu, na przykład. Lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
 
-Zasady sieciowe to zasoby platformy Kubernetes, które pozwalają sterować przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Zasady sieciowe są zdefiniowane zgodnie z manifesty YAML i może być dołączane jako część szersze manifest, który tworzy także wdrożenia lub usługi.
+Zasady sieciowe to zasoby platformy Kubernetes, które pozwalają sterować przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień takich jak przypisane etykiety, przestrzeń nazw lub ruchu sieciowego port. Zasady sieciowe są definiowane jako manifesty YAML. Te zasady mogą być dołączane jako część szersze manifest, który tworzy także wdrożenia lub usługi.
 
-Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasady, które definiują przepływ ruchu w następujący sposób:
+Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasady, które definiują przepływ ruchu:
 
 * Odmowa cały ruch do zasobników.
 * Zezwalać na ruch na podstawie etykiet zasobników.
@@ -61,16 +61,16 @@ Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasa
 
 Zasady sieci można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. 
 
-Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki wtyczki Azure CNI] [ azure-cni] i zdefiniować własne sieci wirtualnej i podsieci. Aby uzyskać szczegółowe informacje na temat sposobu zaplanować zakresy wymagane podsieci, zobacz [skonfigurować zaawansowane funkcje sieciowe][use-advanced-networking].
+Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki Azure CNI wtyczki] [ azure-cni] i zdefiniować własne sieci wirtualnej i podsieci. Aby uzyskać szczegółowe informacje na temat sposobu zaplanować zakresy wymagane podsieci, zobacz [skonfigurować zaawansowane funkcje sieciowe][use-advanced-networking].
 
 Poniższy przykładowy skrypt:
 
 * Tworzy sieć wirtualną i podsieć.
-* Tworzy jednostkę usługi do użycia usługi Azure Active Directory (AD), z klastrem usługi AKS.
+* Tworzy jednostkę usługi do użycia usługi Azure Active Directory (Azure AD), z klastrem usługi AKS.
 * Przypisuje *Współautor* uprawnienia dla usługi AKS klastra nazwy głównej usługi w sieci wirtualnej.
-* Tworzy klaster usługi AKS w zdefiniowanych sieci wirtualnej i umożliwia zasad sieciowych.
+* Tworzy klaster usługi AKS w zdefiniowanych sieci wirtualnej i włącza zasad sieciowych.
 
-Podaj własne bezpieczne *SP_PASSWORD*. Jeśli to konieczne, Zastąp *RESOURCE_GROUP_NAME* i *nazwa_klastra* zmiennych:
+Podaj własne bezpieczne *SP_PASSWORD*. Możesz zastąpić *RESOURCE_GROUP_NAME* i *nazwa_klastra* zmiennych:
 
 ```azurecli-interactive
 SP_PASSWORD=mySecurePassword
@@ -106,12 +106,12 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
 
 # Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy using the `--network-policy` parameter
+# Enable network policy by using the `--network-policy` parameter
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
-    --kubernetes-version 1.12.4 \
+    --kubernetes-version 1.12.6 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -123,7 +123,7 @@ az aks create \
     --network-policy calico
 ```
 
-Utworzenie klastra trwa kilka minut. Po zakończeniu konfigurowania `kubectl` nawiązywania połączenia z klastrem Kubernetes za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia. To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes, aby ich używać:
+Utworzenie klastra trwa kilka minut. Gdy klaster będzie gotowy, skonfiguruj `kubectl` nawiązać połączenia z klastrem Kubernetes za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia. To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes, aby ich używać:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -133,32 +133,32 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 Przed definiowania reguły, aby umożliwić określonego ruchu sieciowego, należy najpierw utworzyć zasady sieci w celu blokowania całego ruchu. Ta zasada zapewnia punkt początkowy, aby rozpocząć do listy dozwolonych tylko żądany ruch. Również wyraźnie widać, że ruch jest porzucany, po zastosowaniu zasad sieciowych.
 
-Dla naszych przykładowych aplikacji środowiska i reguły ruchu, najpierw utwórz przestrzeń nazwy wywołaną *rozwoju* do uruchomienia zasobników w naszym przykładzie:
+Dla przykładowej aplikacji środowiska i reguły ruchu, najpierw utwórz przestrzeń nazwy wywołaną *rozwoju* do uruchomienia zasobników przykładu:
 
 ```console
 kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-Teraz Utwórz zasobnika zaplecza przykład, z systemem serwera NGINX. Pod tym wewnętrznej bazy danych może służyć do symulacji przykładowej aplikacji sieci web zaplecza. Utwórz ten zasobnik w *rozwoju* przestrzeni nazw, a następnie otwórz port *80* do obsługi ruchu w sieci web. Etykiety zasobnik za pomocą *app = aplikacji sieci Web, rola = zaplecza* tak, aby firma Microsoft można wskazać za pomocą zasad sieciowych w następnej sekcji:
+Utwórz pod serwer zaplecza w przykładzie, z systemem serwera NGINX. Pod tym zaplecza może służyć do symulacji przykładowej aplikacji sieci web zaplecza. Utwórz ten zasobnik w *rozwoju* przestrzeni nazw, a następnie otwórz port *80* do obsługi ruchu w sieci web. Etykiety zasobnik za pomocą *app = aplikacji sieci Web, rola = zaplecza* tak, aby firma Microsoft można wskazać za pomocą zasad sieciowych w następnej sekcji:
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
 ```
 
-Aby sprawdzić, czy można pomyślnie dotrzeć do domyślnej strony internetowej serwera NGINX, Utwórz pod innym i dołączać sesji terminalowej:
+Utwórz pod innym i Dołącz sesji terminalowej, aby sprawdzić, czy pomyślnie dotrzeć do domyślnej strony serwera NGINX:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` aby upewnić się, można uzyskać dostęp domyślną stronę sieci web NGINX:
+W wierszu polecenia powłoki, użyj `wget` aby upewnić się, że użytkownik ma dostęp serwer NGINX domyślnej strony sieci Web:
 
 ```console
 wget -qO- http://backend
 ```
 
-Następujące przykładowe dane wyjściowe pokazuje, że domyślna strona sieci web NGINX zwrócone:
+Następujące przykładowe dane wyjściowe pokazuje, że zwracane NGINX domyślnej strony sieci Web:
 
 ```
 <!DOCTYPE html>
@@ -168,7 +168,7 @@ Następujące przykładowe dane wyjściowe pokazuje, że domyślna strona sieci 
 [...]
 ```
 
-Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane:
+Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane.
 
 ```console
 exit
@@ -176,7 +176,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Tworzenie i stosowanie zasad sieciowych
 
-Po potwierdzeniu, że mają dostęp podstawowa strona internetowa serwera NGINX w zasobniku wewnętrznej bazy danych przykładowych, utworzyć zasad sieciowych w celu blokowania ruchu wszystkich. Utwórz plik o nazwie `backend-policy.yaml` i wklej następujące manifest YAML. Używa tego manifestu *podSelector* Dołącz zasady do zasobników, które mają *app:webapp, rola: zaplecza* etykiety, takie jak tym zasobniku NGINX próbki. Nie zdefiniowano reguł w ramach *ruch przychodzący*, dzięki czemu cały ruch przychodzący do zasobnika ustawiany jest odmowa dostępu:
+Teraz, gdy zostało potwierdzone, których można użyć podstawowa strony sieci Web NGINX na zasobnik zaplecza próbki, należy utworzyć zasady sieci w celu blokowania całego ruchu. Utwórz plik o nazwie `backend-policy.yaml` i wklej następujące manifest YAML. Używa tego manifestu *podSelector* Dołącz zasady do zasobników, które mają *app:webapp, rola: zaplecza* etykiety, takie jak tym zasobniku NGINX próbki. Nie zdefiniowano reguł w ramach *ruch przychodzący*, dzięki czemu cały ruch przychodzący do zasobnika ustawiany jest odmowa dostępu:
 
 ```yaml
 kind: NetworkPolicy
@@ -192,7 +192,7 @@ spec:
   ingress: []
 ```
 
-Zastosuj przy użyciu zasad sieci [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
+Stosowanie zasad sieciowych przy użyciu [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -200,13 +200,14 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-network-policy"></a>Testowanie zasad sieciowych
 
-Zobaczmy, można przejść do strony sieci Web NGINX w zasobniku wewnętrznej bazy danych ponownie. Utwórz inny zasobnika testu i Dołącz sesji terminalowej:
+
+Zobaczmy, jeśli strona sieci Web NGINX w zasobniku zaplecza można użyć ponownie. Utwórz inny zasobnika testu i Dołącz sesji terminalowej:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` czy można uzyskać dostęp do domyślnej strony internetowej serwera NGINX. Tym razem ustawiono wartość limitu czasu *2* sekund. Zasady sieci teraz blokuje cały ruch przychodzący, więc nie można załadować strony, jak pokazano w poniższym przykładzie:
+W wierszu polecenia powłoki, użyj `wget` czy można uzyskać dostęp do domyślnej strony serwera NGINX. Tym razem ustawiono wartość limitu czasu *2* sekund. Zasady sieci teraz blokuje cały ruch przychodzący, więc nie można załadować strony, jak pokazano w poniższym przykładzie:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -214,7 +215,7 @@ $ wget -qO- --timeout=2 http://backend
 wget: download timed out
 ```
 
-Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane:
+Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane.
 
 ```console
 exit
@@ -222,7 +223,7 @@ exit
 
 ## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Zezwalaj na ruch przychodzący na podstawie etykiety zasobników
 
-W poprzedniej sekcji zasobnik NGINX wewnętrznej bazy danych zostało zaplanowane i zasad sieci został utworzony w celu blokowania ruchu wszystkich. Teraz możemy utworzyć zasobnik frontonu i aktualizacji zasad sieciowych, aby zezwolić na ruch z zasobników frontonu.
+W poprzedniej sekcji serwer zaplecza w zasobniku NGINX zostało zaplanowane i zasad sieci został utworzony w celu blokowania ruchu wszystkich. Umożliwia tworzenie frontonu zasobnik i aktualizowanie zasad sieciowych, aby zezwolić na ruch z zasobników frontonu.
 
 Aktualizowanie zasad sieciowych, aby zezwolić na ruch z zasobników z etykietami *app:webapp, rola: frontonu* i w dowolnym obszarze nazw. Edytuj poprzedniego *policy.yaml zaplecza* pliku i Dodaj *matchLabels* transferu danych przychodzących reguł, dzięki czemu manifeście wygląda podobnie jak w poniższym przykładzie:
 
@@ -247,27 +248,27 @@ spec:
 ```
 
 > [!NOTE]
-> Te zasady sieciowe używają *namespaceSelector* i *podSelector* elementu dla reguły ruchu przychodzącego. Składnia YAML jest ważne w przypadku reguł ruchu przychodzącego za dodatek lub nie. W tym przykładzie oba te elementy muszą być zgodne, reguły ruchu przychodzącego do zastosowania. Kubernetes wersji wcześniejszych niż *1.12* nie może zinterpretować tych elementów i ograniczanie ruchu sieciowego, zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [zachowanie do i z selektory][policy-rules].
+> Te zasady sieciowe używają *namespaceSelector* i *podSelector* elementu dla reguły ruchu przychodzącego. Składnia YAML jest ważne w przypadku reguł ruchu przychodzącego za dodatek. W tym przykładzie oba te elementy muszą być zgodne, reguły ruchu przychodzącego do zastosowania. Kubernetes wersji wcześniejszych niż *1.12* nie może zinterpretować tych elementów i ograniczanie ruchu sieciowego, zgodnie z oczekiwaniami. Aby uzyskać więcej informacji dotyczących tego zachowania, zobacz [zachowanie do i z selektory][policy-rules].
 
-Zastosuj przy użyciu zasad sieci zaktualizowane [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
+Stosowanie zasad sieciowych zaktualizowane przy użyciu [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
 ```
 
-Teraz zaplanować zasobników, która jest oznaczona jako *app = aplikacji sieci Web, rola = frontonu* i dołączyć do sesji terminalowej:
+Zaplanuj pod, która jest oznaczona jako *aplikacji = aplikacji sieci Web, rola = frontonu* i dołączyć do sesji terminalowej:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` czy można uzyskać dostęp do domyślnej strony internetowej serwera NGINX:
+W wierszu polecenia powłoki, użyj `wget` czy można uzyskać dostęp do serwera NGINX domyślnej strony sieci Web:
 
 ```console
 wget -qO- http://backend
 ```
 
-Podczas transferu danych przychodzących reguła zezwala na ruch z zasobników, które mają etykiety *aplikacji: aplikacja sieci Web, rola: frontonu*, ruch z zasobników frontend jest dozwolony. Następujące przykładowe dane wyjściowe przedstawia domyślna strona internetowa serwera NGINX, zwrócone:
+Ponieważ reguły ruchu przychodzącego zezwala na ruch z zasobników, które mają etykiety *aplikacji: aplikacji sieci Web, rola: frontonu*, ruch z zasobników frontonu jest dozwolony. Następujące przykładowe dane wyjściowe pokazuje domyślnej strony serwera NGINX, zwrócone:
 
 ```
 <!DOCTYPE html>
@@ -277,7 +278,7 @@ Podczas transferu danych przychodzących reguła zezwala na ruch z zasobników, 
 [...]
 ```
 
-Wyjście z dołączonym sesji terminalowej. Zasobnik zostaną automatycznie usunięte:
+Wyjście z dołączonym sesji terminalowej. Zasobnik jest automatycznie usuwany.
 
 ```console
 exit
@@ -285,13 +286,13 @@ exit
 
 ### <a name="test-a-pod-without-a-matching-label"></a>Testowanie pod bez odpowiadających im etykiet
 
-Zasady sieci zezwala na ruch z etykietą zasobników *aplikacji: aplikacji sieci Web, rola: frontonu*, ale należy odmówić cały pozostały ruch. Możemy przetestować, czy pod innym bez tych etykiet nie można uzyskać dostępu pod NGINX wewnętrznej bazy danych. Utwórz inny zasobnika testu i Dołącz sesji terminalowej:
+Zasady sieci zezwala na ruch z etykietą zasobników *aplikacji: aplikacji sieci Web, rola: frontonu*, ale należy odmówić cały pozostały ruch. Możemy sprawdzić, czy pod innym bez etykiety te mogą uzyskiwać dostęp pod NGINX zaplecza. Utwórz inny zasobnika testu i Dołącz sesji terminalowej:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` czy można uzyskać dostęp do domyślnej strony internetowej serwera NGINX. Zasady sieci blokuje ruch przychodzący, więc nie można załadować strony, jak pokazano w poniższym przykładzie:
+W wierszu polecenia powłoki, użyj `wget` czy można uzyskać dostęp do domyślnej strony serwera NGINX. Zasady sieci blokuje ruch przychodzący, więc nie można załadować strony, jak pokazano w poniższym przykładzie:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -299,7 +300,7 @@ $ wget -qO- --timeout=2 http://backend
 wget: download timed out
 ```
 
-Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane:
+Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane.
 
 ```console
 exit
@@ -307,7 +308,7 @@ exit
 
 ## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Zezwalaj na ruch tylko z w ramach określonych przestrzeni nazw
 
-W poprzednich przykładach utworzono zasady sieci, odmowa cały ruch, a następnie zaktualizowane zasady Aby zezwolić na ruch z zasobników z określoną etykietą. Co typowe potrzeby jest ograniczania ruchu do tylko w ramach danego obszaru nazw. Gdyby poprzednich przykładach dla ruchu w *rozwoju* przestrzeni nazw, możesz następnie utworzyć zasady sieci, która uniemożliwia ruch z innej przestrzeni nazw, takich jak *produkcji*, zanim zasobników.
+W poprzednich przykładach utworzono zasady sieci, odmowa cały ruch, a następnie zaktualizowane zasady Aby zezwolić na ruch z zasobników z określoną etykietą. Jest innym potrzebują do ograniczania ruchu do tylko w ramach danego obszaru nazw. Gdyby poprzednich przykładach dla ruchu w *rozwoju* przestrzeni nazw, tworzenie zasad sieciowych, który uniemożliwia ruch z innej przestrzeni nazw, takich jak *produkcji*, zanim zasobników.
 
 Najpierw utwórz nową przestrzeń nazw, aby zasymulować przestrzeni nazw w środowisku produkcyjnym:
 
@@ -322,13 +323,13 @@ Zaplanować zasobnik testu w *produkcji* przestrzeni nazw, która jest oznaczona
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` aby upewnić się, można uzyskać dostęp domyślną stronę sieci web NGINX:
+W wierszu polecenia powłoki, użyj `wget` aby upewnić się, że użytkownik ma dostęp serwer NGINX domyślnej strony sieci Web:
 
 ```console
 wget -qO- http://backend.development
 ```
 
-Jak etykiety dla zasobnika ustawiany jest zgodny, co jest obecnie dozwolona w zasadach sieci, ruch jest dozwolony. Zasady sieci wygląda w przestrzeni nazw, tylko etykiety zasobników. Następujące przykładowe dane wyjściowe przedstawia domyślna strona internetowa serwera NGINX, zwrócone:
+Ponieważ etykiety zasobnik zgodne, co jest obecnie dozwolona w zasadach sieci, ruch jest dozwolony. Zasady sieci wygląda w przestrzeni nazw, tylko etykiety zasobników. Następujące przykładowe dane wyjściowe pokazuje domyślnej strony serwera NGINX, zwrócone:
 
 ```
 <!DOCTYPE html>
@@ -338,7 +339,7 @@ Jak etykiety dla zasobnika ustawiany jest zgodny, co jest obecnie dozwolona w za
 [...]
 ```
 
-Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane:
+Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane.
 
 ```console
 exit
@@ -346,7 +347,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>Aktualizacja zasad sieciowych
 
-Teraz zaktualizujmy reguły ruchu przychodzącego *namespaceSelector* sekcji, aby zezwalać tylko na ruch z poziomu *rozwoju* przestrzeni nazw. Edytuj *policy.yaml zaplecza* plik manifestu, jak pokazano w poniższym przykładzie:
+Zaktualizujmy reguły ruchu przychodzącego *namespaceSelector* sekcji, aby zezwalać tylko na ruch z poziomu *rozwoju* przestrzeni nazw. Edytuj *policy.yaml zaplecza* plik manifestu, jak pokazano w poniższym przykładzie:
 
 ```yaml
 kind: NetworkPolicy
@@ -370,9 +371,9 @@ spec:
           role: frontend
 ```
 
-W przykładach bardziej złożone, można zdefiniować wiele reguł ruchu przychodzącego, takie jak używać *namespaceSelector* i następnie *podSelector*.
+W przykładach bardziej złożone, można zdefiniować wiele reguł ruchu przychodzącego, takie jak *namespaceSelector* i następnie *podSelector*.
 
-Zastosuj przy użyciu zasad sieci zaktualizowane [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
+Stosowanie zasad sieciowych zaktualizowane przy użyciu [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -380,13 +381,13 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-updated-network-policy"></a>Testowanie zasad sieciowych zaktualizowane
 
-Teraz zaplanować innej zasobnik w *produkcji* przestrzeni nazw i dołączyć sesję terminalu:
+Zaplanuj pod innym w *produkcji* przestrzeni nazw i dołączyć do sesji terminalowej:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` Aby wyświetlić zasady sieci, teraz zezwalają na ruch:
+W wierszu polecenia powłoki, użyj `wget` aby zobaczyć, że zasady sieci teraz nie zezwala na ruch:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development
@@ -400,19 +401,19 @@ Wyjście z zasobników testu:
 exit
 ```
 
-Z ruchem odmowa *produkcji* przestrzeni nazw, Zaplanuj teraz zasobnik testu z powrotem w *rozwoju* przestrzeni nazw i dołączyć do sesji terminalowej:
+Z ruchem odmowa *produkcji* przestrzeni nazw, harmonogram zasobnik testu z powrotem w *rozwoju* przestrzeni nazw i dołączyć do sesji terminalowej:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Jeden raz w wierszu polecenia powłoki, należy użyć `wget` wyświetlić sieci zasady zezwalają na ruch:
+W wierszu polecenia powłoki, użyj `wget` aby zobaczyć, że zasady sieci zezwala na ruch:
 
 ```console
 wget -qO- http://backend
 ```
 
-Jak zasobnika ustawiany jest planowana w przestrzeni nazw, który dopasowuje co to jest dozwolona w zasadach sieci, ruch jest dozwolony. Następujące przykładowe dane wyjściowe przedstawia domyślna strona internetowa serwera NGINX, zwrócone:
+Ruch jest dozwolony, ponieważ zasobnika ustawiany jest zaplanowane w przestrzeni nazw, dopasowuje co jest dozwolone w zasad sieci. Następujące przykładowe dane wyjściowe pokazuje domyślnej strony serwera NGINX, zwrócone:
 
 ```
 <!DOCTYPE html>
@@ -422,7 +423,7 @@ Jak zasobnika ustawiany jest planowana w przestrzeni nazw, który dopasowuje co 
 [...]
 ```
 
-Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane:
+Wyjście z dołączonym sesji terminalowej. Zasobnik testu są automatycznie usuwane.
 
 ```console
 exit
@@ -430,7 +431,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym artykule utworzymy dwie przestrzenie nazw i stosowane zasady sieci. Aby wyczyścić te zasoby, należy użyć [Usuń kubectl] [ kubectl-delete] polecenia i określić nazwy zasobu w następujący sposób:
+W tym artykule będziemy utworzone dwie przestrzenie nazw i stosowane zasady sieci. Aby wyczyścić te zasoby, należy użyć [Usuń kubectl] [ kubectl-delete] polecenia i określić nazwy zasobu:
 
 ```console
 kubectl delete namespace production
@@ -439,9 +440,9 @@ kubectl delete namespace development
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat zasobów sieciowych, zobacz [sieci pojęcia związane z aplikacjami w usłudze Azure Kubernetes Service (AKS)][concepts-network].
+Aby uzyskać więcej informacji o zasobach sieciowych, zobacz [sieci pojęcia związane z aplikacjami w usłudze Azure Kubernetes Service (AKS)][concepts-network].
 
-Aby dowiedzieć się więcej o korzystaniu z zasad, zobacz [zasad sieciowych Kubernetes][kubernetes-network-policies].
+Aby dowiedzieć się więcej na temat zasad, zobacz [zasad sieciowych Kubernetes][kubernetes-network-policies].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

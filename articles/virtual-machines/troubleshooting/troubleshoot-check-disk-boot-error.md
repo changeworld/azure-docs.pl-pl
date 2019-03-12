@@ -3,7 +3,7 @@ title: Sprawdzanie systemu plików, podczas rozruchu maszyny Wirtualnej platform
 description: Dowiedz się, jak rozwiązać ten problem, czy maszyna wirtualna Pokaż sprawdzanie systemu plików, podczas rozruchu | Dokumentacja firmy Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 91285fd3bf42158068040833146377cb6c48e4e8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 51a97443f6b9ba2a37fa2db708b8520a9c450000
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414045"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776448"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Pokazuje Windows "Sprawdzanie systemu plików" podczas rozruchu maszyny Wirtualnej platformy Azure
 
 W tym artykule opisano błędu "Sprawdzanie systemu plików", które można napotkać podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure.
 
 > [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 

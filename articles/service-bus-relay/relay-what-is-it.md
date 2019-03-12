@@ -10,15 +10,15 @@ ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818043"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776312"
 ---
 # <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
 Usługa Azure Relay umożliwia bezpieczne uwidacznianie usług uruchomionych w sieci firmowej do chmury publicznej. Możesz to zrobić bez otwierania portu na zaporze lub wprowadzania niepożądanych zmian w firmowej infrastrukturze sieci. 
@@ -82,10 +82,10 @@ Na poniższym diagramie przedstawiono sposób obsługiwania przychodzących żą
 5. Brama przekierowuje żądanie połączenia do odpowiedniej bramy wspomnianej w magazynie bramy. 
 6. Brama wysyła żądanie do klienta nasłuchującego tej bramy, aby utworzyć tymczasowy kanał do węzła bramy, który znajduje się najbliżej klienta wysyłającego. 
 7. Klient nasłuchujący tworzy tymczasowy kanał w bramie znajdującej się najbliżej klienta wysyłającego. Po nawiązaniu połączenia między klientami za pośrednictwem bramy klienci mogą wymieniać między sobą komunikaty. 
-8. Brama przesyła dalej komunikaty z klienta nasłuchującego do klienta wysyłającego. 
+8. Bramy przesyła wszystkie komunikaty z nasłuchującego klienta wysyłania klienta. 
 9. Brama przesyła dalej komunikaty z klienta wysyłającego do klienta nasłuchującego.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do obiektów WebSocket platformy .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Wprowadzenie do żądań HTTP platformy .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Wprowadzenie do obiektów WebSocket środowiska Node](relay-hybrid-connections-node-get-started.md)

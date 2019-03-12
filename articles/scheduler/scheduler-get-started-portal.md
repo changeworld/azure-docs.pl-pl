@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 7e5abf1100c09f8f28d268b3f2defe953c5f36f0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949591"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770139"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Tworzenie i planowanie swojego pierwszego zadania przy użyciu usługi Azure Scheduler — Azure Portal
 
@@ -144,7 +144,7 @@ Aby wyświetlić szczegóły historii dla każdego uruchomienia, np. pełną odp
 
 Możesz zarządzać dostępem do usługi Azure Scheduler dla każdego użytkownika na poziomie szczegółowym za pomocą kontroli dostępu na podstawie ról (RBAC) platformy Azure. Aby dowiedzieć się, jak skonfigurować dostęp oparty na rolach, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [pojęciach, terminologii i hierarchii jednostek](scheduler-concepts-terms.md)
 * [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](scheduler-advanced-complexity.md)

@@ -5,16 +5,16 @@ description: Równoległe dokumenty są pary dokumenty, gdy jest ona tłumaczeni
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 10f34a24668981da5629bd9d03652aa76081bd44
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: fa3abb9fc7b899fa5c74d6f1cd73ebbbb72b6047
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194116"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776635"
 ---
 # <a name="what-are-parallel-documents"></a>Co to są równoległe dokumenty?
 

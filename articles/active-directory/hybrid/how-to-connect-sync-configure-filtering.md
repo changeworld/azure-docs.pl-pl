@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc09756e30cec75a1a121c25f162aa0408fd7a9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173695"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774442"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: Konfigurowanie filtrowania
 Za pomocą filtrowania, możesz kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu obciążeń usługi Office 365, takich jak Exchange Online i Skype dla firm, korzystają z pełną globalnej listy adresowej, dzięki czemu mogą wysyłać wiadomości e-mail i wywołać wszystkich użytkowników. W przypadku domyślnej konfiguracji zostałyby taki sam sposób, że współpracujemy z implementacją lokalnego programu Exchange lub Lync.
@@ -261,7 +261,7 @@ W tym przykładzie zmienisz, filtrowania, aby tylko użytkowników, które mają
 4. W zależności od wersji programu Connect, możesz użyć albo znaleźć reguły o nazwie **Out do usługi AAD — użytkownik przyłączyć** lub **się do usługi AAD — użytkownik przyłączyć SOAInAD**i kliknij przycisk **Edytuj**.
 5. W oknie podręcznym odpowiedzi **tak** do utworzenia kopii reguły.
 6. Na **opis** strony, zmień **pierwszeństwo** nieużywanych wartości, takich jak 50.
-7. Kliknij przycisk **filtru Scoping** na nawigacji po lewej stronie, a następnie kliknij przycisk **Dodaj klauzulę**. W **atrybut**, wybierz opcję **poczty**. W **Operator**, wybierz opcję **ENDSWITH**. W **wartość**, typ **@contoso.com**, a następnie kliknij przycisk **Dodaj klauzulę**. W **atrybut**, wybierz opcję **userPrincipalName**. W **Operator**, wybierz opcję **ENDSWITH**. W **wartość**, typ **@contoso.com**.
+7. Kliknij przycisk **filtru Scoping** na nawigacji po lewej stronie, a następnie kliknij przycisk **Dodaj klauzulę**. W **atrybut**, wybierz opcję **poczty**. W **Operator**, wybierz opcję **ENDSWITH**. W **wartość**, typ  **\@contoso.com**, a następnie kliknij przycisk **Dodaj klauzulę**. W **atrybut**, wybierz opcję **userPrincipalName**. W **Operator**, wybierz opcję **ENDSWITH**. W **wartość**, typ  **\@contoso.com**.
 8. Kliknij pozycję **Zapisz**.
 9. Aby ukończyć konfigurację, musisz uruchomić **Full sync**. Kontynuuj czytanie sekcji [Zastosuj i Zweryfikuj zmiany](#apply-and-verify-changes).
 

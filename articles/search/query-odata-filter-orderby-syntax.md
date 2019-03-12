@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b709851a0b8b4a095b5b1bf5e0f1008359b1f426
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1f1fbc49a42ec9b72ebe74a96ee099630d7416b1
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317411"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570664"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Składnia wyrażenia OData, filtry i klauzule w klauzuli order by w usłudze Azure Search
 
@@ -36,21 +36,21 @@ A **$filter** wyrażenia można wykonać autonomiczny jako w pełni zaakceptowan
 
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11  
-    {  
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"  
-    }  
+POST /indexes/hotels/docs/search?api-version=2017-11-11
+    {
+      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
+    }
 ```
 
 Inny typowy przypadek użycia jest tworzenie aspektów filtrów w połączeniu, gdzie filtr zmniejsza prawdopodobieństwo kwerendy na podstawie wybranych nawigacji reguł opartych na użytkownika:
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11  
-    {  
-      "search": "test",  
-      "facets": [ "tags", "baseRate,values:80|150|220" ],  
-      "filter": "rating eq 3 and category eq 'Motel'"  
-    }  
+POST /indexes/hotels/docs/search?api-version=2017-11-11
+    {
+      "search": "test",
+      "facets": [ "tags", "baseRate,values:80|150|220" ],
+      "filter": "rating eq 3 and category eq 'Motel'"
+    }
 ```
 
 ### <a name="filter-operators"></a>Operatory filtru  
@@ -89,9 +89,9 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
     To trzeci parametr jest to ciąg, gdzie każdy znak w ciągu lub podzbiór ten ciąg jest traktowany jako separator podczas analizowania listy wartości w drugim parametrze.
 
     > [!NOTE]   
-    >  Niektóre scenariusze wymagają porównanie pola na dużej liczbie wartości stałych. Na przykład implementacji dostosowanie do zabezpieczeń przy użyciu filtrów może wymagać porównanie pola Identyfikator dokumentu z listą identyfikatorów, do których użytkownik zgłaszający żądanie ma uprawnienia odczytu. W scenariuszach, takich jak to zdecydowanie zaleca się przy użyciu `search.in` zamiast bardziej skomplikowanych rozłączenia wyrażeń równości. Na przykład użyć `search.in(Id, '123, 456, ...')` zamiast `Id eq 123 or Id eq 456 or ....`. 
-
->  Jeśli używasz `search.in`, można oczekiwać, że gdy drugi parametr zawiera listę setek lub tysięcy wartości czas odpowiedzi sekundy. Należy pamiętać, że nie ma limitu jawne na liczbę elementów, które można przekazać do `search.in`, chociaż można nadal obowiązują ograniczenia rozmiaru maksymalnego żądania. Jednak opóźnienie rośnie wraz ze wzrostem natężenia liczbę wartości.
+    > Niektóre scenariusze wymagają porównanie pola na dużej liczbie wartości stałych. Na przykład implementacji dostosowanie do zabezpieczeń przy użyciu filtrów może wymagać porównanie pola Identyfikator dokumentu z listą identyfikatorów, do których użytkownik zgłaszający żądanie ma uprawnienia odczytu. W scenariuszach, takich jak to zdecydowanie zaleca się przy użyciu `search.in` zamiast bardziej skomplikowanych rozłączenia wyrażeń równości. Na przykład użyć `search.in(Id, '123, 456, ...')` zamiast `Id eq 123 or Id eq 456 or ....`. 
+    >
+    > Jeśli używasz `search.in`, można oczekiwać, że gdy drugi parametr zawiera listę setek lub tysięcy wartości czas odpowiedzi sekundy. Należy pamiętać, że nie ma limitu jawne na liczbę elementów, które można przekazać do `search.in`, chociaż można nadal obowiązują ograniczenia rozmiaru maksymalnego żądania. Jednak opóźnienie rośnie wraz ze wzrostem natężenia liczbę wartości.
 
 -   `search.ismatch` Funkcja daje w wyniku zapytania wyszukiwania jako część wyrażenia filtru. Dokumenty, które odpowiada zapytaniu wyszukiwania zostaną zwrócone w zestawie wyników. Dostępne są następujące przeciążenia tej funkcji:
     - `search.ismatch(search)`
@@ -130,106 +130,106 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
  Znajdź wszystkie hotele ze stawką podstawową mniejsza niż 100 USD, które są oceniane co najmniej 4:  
 
-```  
-$filter=baseRate lt 100.0 and rating ge 4  
-```  
+```
+$filter=baseRate lt 100.0 and rating ge 4
+```
 
  Znajdź wszystkie hotele innych niż "Roach Motel", które zostały renovated od 2010:  
 
-```  
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z  
-```  
+```
+$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
  Znajdź wszystkie hotele z stawkę za podstawowy mniejsza niż 200 USD, które zostały renovated od 2012 ciągiem datetime literału, który zawiera informacje o strefie czasowej dla pacyficznego czasu standardowego:  
 
-```  
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00  
-```  
+```
+$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+```
 
  Znajdź wszystkie hotele, które parkowania uwzględniona i nie zezwalają na palenia:  
 
-```  
-$filter=parkingIncluded and not smokingAllowed  
-```  
+```
+$filter=parkingIncluded and not smokingAllowed
+```
 
  \- LUB —  
 
-```  
-$filter=parkingIncluded eq true and smokingAllowed eq false  
-```  
+```
+$filter=parkingIncluded eq true and smokingAllowed eq false
+```
 
  Znajdź wszystkie hotele, które mają luksusowe lub obejmują parkowania ocena, 5:  
 
-```  
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5  
-```  
+```
+$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
+```
 
  Znajdź wszystkie hotele z tagiem "Wi-Fi" (gdzie każdy hotelu tagami przechowywana w polu Collection(Edm.String)):  
 
-```  
-$filter=tags/any(t: t eq 'wifi')  
-```  
+```
+$filter=tags/any(t: t eq 'wifi')
+```
 
  Znajdź wszystkie hotele bez tagu "motel":  
 
-```  
-$filter=tags/all(t: t ne 'motel')  
-```  
+```
+$filter=tags/all(t: t ne 'motel')
+```
 
  Znajdź wszystkie hotele z żadnych znaczników:  
 
-```  
-$filter=tags/any()  
-```  
+```
+$filter=tags/any()
+```
 
 Znajdź wszystkie hotele, które nie mają tagi:  
 
-```  
-$filter=not tags/any()  
-```  
+```
+$filter=not tags/any()
+```
 
 
  Znajdź wszystkie hoteli w ciągu 10 km od danego odwołania punktu (gdzie lokalizacji jest polem typu Edm.GeographyPoint):  
 
-```  
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10  
-```  
+```
+$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
  Znajdź wszystkie hotele, w ramach danego okienka ekranu, określane jako wielokąta (gdzie lokalizacji jest polem typu Edm.GeographyPoint). Należy pamiętać, że Wielokąt jest zamknięty (zestawy pierwszy i ostatni punkt muszą być takie same) i [punkty muszą być wymienione w kolejności do ruchu wskazówek zegara](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-```  
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')  
-```  
+```
+$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
  Znajdź wszystkie hotele, które albo nie mają żadnej wartości w polu "description" lub wartość jest jawnie ustawiona na wartość null:  
 
-```  
-$filter=description eq null  
-```  
+```
+$filter=description eq null
+```
 
 Znajdź wszystkie hotele o nazwie równa albo Roach motel "lub"Budżetu hotel"):  
 
-```  
-$filter=search.in(name, 'Roach motel,Budget hotel', ',') 
+```
+$filter=search.in(name, 'Roach motel,Budget hotel', ',')
 ```
 
 Znajdź wszystkie hotele o nazwie równa albo Roach motel "lub"Budżetu hotel"oddzielone" | "):  
 
-```  
-$filter=search.in(name, 'Roach motel|Budget hotel', '|') 
+```
+$filter=search.in(name, 'Roach motel|Budget hotel', '|')
 ```
 
 Znajdź wszystkie hotele za pomocą znacznika "sieć Wi-Fi" lub "puli":  
 
-```  
-$filter=tags/any(t: search.in(t, 'wifi, pool'))  
+```
+$filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
 Znajdź wszystkie hotele bez tagu "motel" ani "podręcznego":  
 
-```  
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))  
-```  
+```
+$filter=tags/all(t: not search.in(t, 'motel, cabin'))
+```
 
 Znajdowanie dokumentów z wyrazem "waterfront". To zapytanie filtru jest taka sama jak [żądania wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) z `search=waterfront`.
 

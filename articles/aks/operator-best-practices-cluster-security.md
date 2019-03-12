@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: d9ce2661fbdca0a28f917e27e27a3e3f954a9999
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b0d6afbe2db4c95460aef96a9d918219bd4240e2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488390"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769884"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -188,7 +188,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 Następnie można uaktualnić usługi AKS klastra przy użyciu [uaktualnienia az aks] [ az-aks-upgrade] polecenia. Proces uaktualniania bezpiecznie cordons i opróżnia jednym węźle naraz, harmonogramy zasobników w pozostałych węzłach, a następnie wdraża nowy węzeł uruchomiony w najnowszych wersjach systemu operacyjnego i platformy Kubernetes.
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.3
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
 Aby uzyskać więcej informacji na temat uaktualnienia w usłudze AKS, zobacz [obsługiwane wersje rozwiązania Kubernetes w usłudze AKS] [ aks-supported-versions] i [Uaktualnianie klastra usługi AKS][aks-upgrade].

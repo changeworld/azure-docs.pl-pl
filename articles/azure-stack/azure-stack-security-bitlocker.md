@@ -6,17 +6,17 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 03/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 12/06/2018
+ms.lastreviewed: 03/11/2019
 keywords: ''
-ms.openlocfilehash: 563534424cad7f3e02be07ad582be0b3966950b4
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 018b8f6cf4fc5d3cd380535fca71a038b7fd4208
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237986"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769391"
 ---
 # <a name="data-at-rest-encryption-in-azure-stack"></a>Dane rest szyfrowanie w usłudze Azure Stack
 
@@ -43,7 +43,7 @@ Get-AzsRecoveryKeys
 
 Parametry opcjonalne dla *Get AzsRecoveryKeys* polecenia cmdlet:
 
-| Parametr | Opis | Type | Wymagany |
+| Parametr | Opis | Type | Wymagane |
 |---------|---------|---------|---------|
 |*nieprzetworzone* | Zwraca nieprzetworzone dane mapowania między klucza odzyskiwania, nazwę komputera i identyfikatory hasła wszystkich woluminów zaszyfrowanych  | — przełącznik | nie (zaprojektowane dla scenariuszy pomocy technicznej)|
 

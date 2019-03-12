@@ -3,22 +3,22 @@ title: Działanie procedury składowanej programu SQL Server
 description: Dowiedz się, jak działania dotyczącego procedury składowanej systemu SQL Server umożliwia wywoływanie procedury przechowywanej w usłudze Azure SQL Database lub Azure SQL Data Warehouse z potoku usługi fabryka danych.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5604767b49e6234bba5c16179bebe717938170cf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753269"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775361"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Działanie procedury składowanej programu SQL Server
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -85,7 +85,7 @@ Następujące Instruktaż używa działania dotyczącego procedury składowanej 
     ```
 
    > [!IMPORTANT]
-   > **Nazwa** i **wielkość liter w wyrazie** parametru (Data/Godzina w tym przykładzie) musi być zgodna z parametrów określonych w kodzie JSON potoku/działania. W definicji procedury składowanej, upewnij się, że **@** służy jako prefiks dla parametru.
+   > **Nazwa** i **wielkość liter w wyrazie** parametru (Data/Godzina w tym przykładzie) musi być zgodna z parametrów określonych w kodzie JSON potoku/działania. W definicji procedury składowanej, upewnij się, że **\@** służy jako prefiks dla parametru.
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).

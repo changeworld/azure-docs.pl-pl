@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: b-juche
-ms.openlocfilehash: e6792d994c01fb77739ad7a044bc7193e350e173
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 1cce1883295277f6c6c36d686d90370238265dbf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053793"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775853"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Omówienie hierarchii magazynu usługi Azure NetApp Files
 
@@ -57,7 +57,7 @@ Poniższy przykład przedstawia zależności między subskrypcją platformy Azur
 
 ![Diagram koncepcyjny hierarchii magazynu](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Limity zasobów dla usługi Azure NetApp Files](azure-netapp-files-resource-limits.md)
 - [Rejestrowanie w usłudze Azure NetApp Files](azure-netapp-files-register.md)

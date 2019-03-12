@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: af3738849382317eeddf8bce3d2f87e38e0fb583
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 7cb9cc6cc5ce98eb88e9b9cdf76f000c33f5509e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427798"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780715"
 ---
 # <a name="set-up-a-capacity-pool"></a>Konfigurowanie puli pojemności
 
@@ -57,7 +57,7 @@ Potrzebujesz utworzonego konta usługi NetApp.
 
 4. Kliknij przycisk **OK**.
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 
 - [Poziomy usług dla usługi Azure NetApp Files](azure-netapp-files-service-levels.md)
 - Informacje o różnych poziomach usługi można uzyskać na [stronie z cennikiem dla usługi Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)

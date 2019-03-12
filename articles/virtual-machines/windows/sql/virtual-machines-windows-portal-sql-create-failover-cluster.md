@@ -3,7 +3,7 @@ title: Program SQL Server infrastruktury klasyfikacji plików — usługa Azure 
 description: W tym artykule opisano sposób tworzenia wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 778984d4d34d3b63d92378781d377fee557c7148
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7e0dea82614363883bbfb4a34894a2248faeb176
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821921"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769663"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -163,7 +163,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 1. Jeśli używasz jednego z obrazów maszyn wirtualnych opartych na programie SQL Server, należy usunąć wystąpienia programu SQL Server.
 
    - W **programy i funkcje**, kliknij prawym przyciskiem myszy **Microsoft SQL Server 2016 (64-bitowy)** i kliknij przycisk **Odinstaluj/Zmień**.
-   - Kliknij przycisk **Usuń**.
+   - Kliknij pozycję **Usuń**.
    - Wybierz domyślne wystąpienie.
    - Usuń wszystkie funkcje w obszarze **usługi aparatu bazy danych**. Nie usuwaj **funkcje wspólne**. Zobacz poniższy obraz:
 

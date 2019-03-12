@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 83eea565a12ee5201c42b543cdbdad72ddc28ca9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 542db0200229b4fea4ac67ad19c468f2b9dc67d1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346449"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772783"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>Określić adres IP punktu końcowego zarządzania
 
@@ -29,7 +29,7 @@ Załóżmy, że to wystąpienie zarządzane usługi hosta `mi-demo.xxxxxx.databa
 
 ![Rozpoznawanie nazwy hosta wewnętrznego](./media/sql-database-managed-instance-management-endpoint/01_find_internal_host.png)
 
-Teraz zrobić innego `nslookup` usuwania nazwy wyróżnione `.vnet.` segmentu. Przedstawiamy publiczny adres IP w wyniku wykonania tego polecenia.
+Teraz zrobić innego `nslookup` usuwania nazwy wyróżnione `.vnet.` segmentu. Po wykonaniu tego polecenia, omijają publiczny adres IP.
 
 ![Rozpoznawanie publiczny adres IP](./media/sql-database-managed-instance-management-endpoint/02_find_public_ip.png)
 

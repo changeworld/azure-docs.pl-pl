@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 20b79b3c2581db94627746f52ed6837aa80b6be5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2c726675d799a8bb5f9ed1d1dd595aa7f4700036
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447749"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774603"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Planowanie pojemności dla ról serwera usługi Azure App Service w usłudze Azure Stack
 
@@ -52,7 +52,7 @@ Kontroler usługi Azure App Service jest zazwyczaj środowisk niskie użycie pro
 
 **Zalecana minimalna**: Dwa wystąpienia Standard A1
 
-Fronton kieruje żądania do internetowych procesów roboczych w zależności od dostępności procesów roboczych w sieci web. Wysoką dostępność powinny mieć więcej niż jeden serwer sieci Web i może mieć więcej niż dwóch. Dla celów planowania pojemności należy wziąć pod uwagę że każdego rdzenia może obsługiwać około 100 żądań na sekundę.
+Żądania frontonu trasy do internetowych procesów roboczych w zależności od dostępności procesów roboczych w sieci web. Wysoką dostępność powinny mieć więcej niż jeden serwer sieci Web i może mieć więcej niż dwóch. Dla celów planowania pojemności należy wziąć pod uwagę że każdego rdzenia może obsługiwać około 100 żądań na sekundę.
 
 ## <a name="management-role"></a>Rola zarządzania
 

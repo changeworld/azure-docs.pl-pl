@@ -8,17 +8,17 @@ manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 18f9dd5318c6aecff8819178168469d9334e5e29
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: c97793dc28b4ef097d8baa34678aeb92bf123809
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332408"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778097"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Omówienie programu SQL Server na maszynach wirtualnych platformy Azure (system Linux)
 
@@ -77,7 +77,7 @@ Po skonfigurowaniu programu SQL Server w systemie Linux zainstaluj pakiet aparat
 * [Dokumentacja programu SQL Server w systemie Linux](https://docs.microsoft.com/sql/linux)
 * [Porównanie usługi Azure SQL Database](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wprowadzenie do programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux:
 

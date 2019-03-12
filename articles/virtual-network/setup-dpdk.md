@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b50f7c9b76e9309a1ee08257dd8b13ec289397a5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268280"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775921"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurowanie DPDK na maszynie wirtualnej systemu Linux
 
@@ -33,7 +33,7 @@ DPDK można uruchamiać na maszynach wirtualnych platformy Azure, które obsług
 
 ## <a name="benefit"></a>Korzyść
 
-**Wyższe pakietów na sekundę (PPS)**: pomijanie jądra i kontroli pobieranie pakietów w obszarze użytkownika zmniejsza liczbę cyklu przez wyeliminowanie przełączeń kontekstu. Zwiększa to liczba pakietów, które są przetwarzane na sekundę na maszynach wirtualnych z systemem Linux platformy Azure.
+**Wyższe pakietów na sekundę (PPS)**: Pomijanie jądra i kontroli pobieranie pakietów w obszarze użytkownika zmniejsza liczbę cyklu przez wyeliminowanie przełączeń kontekstu. Zwiększa to liczba pakietów, które są przetwarzane na sekundę na maszynach wirtualnych z systemem Linux platformy Azure.
 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
@@ -42,9 +42,9 @@ Obsługiwane są poniższe dystrybucje w galerii platformy Azure:
 
 | System operacyjny Linux     | Wersja jądra        |
 |--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-Azure     |
-| Ubuntu 18.04 | 4.15.0-1015-Azure     |
-| SLES 15      | 4.12.14-5.5-Azure     |
+| Ubuntu 16.04 | 4.15.0-1015-azure     |
+| Ubuntu 18.04 | 4.15.0-1015-azure     |
+| SLES 15      | 4.12.14-5.5-azure     |
 | RHEL W WERSJI 7.5     | 3.10.0-862.9.1.el7    |
 | CentOS w wersji 7.5   | 3.10.0-862.3.3.el7    |
 
@@ -77,7 +77,7 @@ sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
 
-### <a name="rhel75centos-75"></a>RHEL7.5/CentOS w wersji 7.5
+### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
@@ -152,7 +152,7 @@ Po uruchomieniu aplikacji DPDK za pośrednictwem przed uszkodzeniami PMD gwarant
 
 Aby uruchomić testpmd w trybie głównym, użyj `sudo` przed *testpmd* polecenia.
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Podstawowe: Sprawdź poprawnością, przed uszkodzeniami Inicjalizacja adaptera
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Tryb podstawowy: Inicjalizacja adaptera przed uszkodzeniami poprawnością kontroli
 
 1. Uruchom następujące polecenia, aby uruchomić aplikację testpmd jednego portu:
 
@@ -180,7 +180,7 @@ Aby uruchomić testpmd w trybie głównym, użyj `sudo` przed *testpmd* poleceni
 
 Poprzednie polecenia start *testpmd* w trybie interaktywnym, który jest zalecane w przypadku wypróbowanie testpmd poleceń.
 
-### <a name="basic-single-sendersingle-receiver"></a>Basic: Jednego nadawcy/jednego odbiornika
+### <a name="basic-single-sendersingle-receiver"></a>Tryb podstawowy: Jednego nadawcy/jednego odbiornika
 
 Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
 
@@ -216,7 +216,7 @@ Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
 
 Po uruchomieniu powyższych poleceń na maszynie wirtualnej, należy zmienić *IP_SRC_ADDR* i *IP_DST_ADDR* w `app/test-pmd/txonly.c` dopasować rzeczywistego adresu IP maszyn wirtualnych, zanim kompilacja. W przeciwnym razie pakiety są porzucane przed osiągnięciem odbiornika.
 
-### <a name="advanced-single-sendersingle-forwarder"></a>Zaawansowane: Usługa przesyłania dalej jednego nadawcy/pojedynczego
+### <a name="advanced-single-sendersingle-forwarder"></a>Zaawansowane: Jednego nadawcy/pojedynczej usługi przesyłania dalej
 Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
 
 1. Na stronie TX uruchom następujące polecenie:
@@ -244,7 +244,7 @@ Następujące polecenia drukowania okresowo pakietów Statystyka na sekundę:
      -w <pci address NIC2> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      --vdev="net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>" (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
-     -- --nb-cores <number of cores to use for test pmd> \
+     -- --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
      --eth-peer=<recv port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>

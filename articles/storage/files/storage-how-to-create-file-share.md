@@ -4,16 +4,16 @@ description: Jak utworzyć udział plików na platformie Azure w usłudze Azure 
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 084a5c8113e73590e3e7b9603542a0d866606f96
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 1620683f4bc02d607afd8e0371e8d4a5461612b3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818961"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772334"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny  [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:
@@ -85,7 +85,7 @@ Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj
     az storage share create --name files --quota 2048 --connection-string $current_env_conn_string 1 > /dev/null
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Łączenie i instalowanie udziału plików — system Windows](storage-how-to-use-files-windows.md)
 * [Łączenie i instalowanie udziału plików — system Linux](../storage-how-to-use-files-linux.md)
 * [Łączenie i instalowanie udziału plików — system macOS](storage-how-to-use-files-mac.md)

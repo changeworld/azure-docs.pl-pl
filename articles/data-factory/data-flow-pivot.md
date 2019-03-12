@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: fd7308e7ecb6e086dffb4bae0cc99c57dd699861
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729826"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569896"
 ---
 # <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Mapowanie przekształceń obrotu przepływu danych w usłudze Azure Data Factory
 
@@ -42,7 +42,7 @@ Na koniec należy wybrać agregacji, które mają być używane dla wartości pr
 
 (Opcjonalnie) Możesz ustawić wzorca nazewnictwa z prefiksu, Środkowej i sufiksem ma zostać dodany do każdego Nazwa nowej kolumny z wartości wierszy.
 
-Na przykład przestawianie "Sprzedaż", "Region" w wyniku wartości w nowej kolumnie od każdej wartości sprzedaży, czyli "25", "50", "1000", etc. Jednak jeśli ustawisz wartość prefiksu "Sprzedaż" 
+Na przykład przestawianie "Sprzedaż", "Region" w wyniku wartości w nowej kolumnie od każdej wartości sprzedaży, czyli "25", "50", "1000", etc. Jednak jeśli ustawisz wartość prefiksu "Sprzedaż-", każda wartość kolumny zwiększałoby "Sprzedaż-" na początku wartości.
 
 ![Przestawianie opcje](media/data-flow/pivot5.png "przestawnego 5")
 
@@ -56,4 +56,8 @@ Użyj danych ADF przepływu język wyrażeń do opisywania przekształceń kolum
 
 ### <a name="how-to-rejoin-original-fields"></a>Jak ponownie dołączyć oryginalne pola
 > [!NOTE]
-> Przekształcenie Pivot będzie projektu tylko kolumn używanych w agregacji, grupowanie i akcja obrotu. Jeśli chcesz uwzględnić inne kolumny z poprzedniego kroku w przepływie, użyj nowej gałęzi z poprzedniego kroku i użyć wzorca samosprzężenie do połączenia przepływu z odpowiednich oryginalnych metadanych
+> Przekształcenie Pivot będzie projektu tylko kolumn używanych w agregacji, grupowanie i akcja obrotu. Jeśli chcesz uwzględnić inne kolumny z poprzedniego kroku w przepływie, używać nowej gałęzi z poprzedniego kroku i wzorzec samosprzężenie połączyć przepływ przy użyciu odpowiednich oryginalnych metadanych.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Spróbuj [Anuluj przestawienie przekształcania](data-flow-unpivot.md) umożliwiające przekształcenie wartości kolumn w wartości wiersza. 

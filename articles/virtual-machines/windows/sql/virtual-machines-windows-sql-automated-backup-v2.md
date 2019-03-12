@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e20599833d3073e4819dbc974d4b2afe962ba18a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984311"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780018"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatyczne v2 kopii zapasowych maszyn wirtualnych platformy Azure (Resource Manager)
 
@@ -52,7 +52,7 @@ Aby korzystać z automatycznych kopii zapasowych w wersji 2, sprawdź następuj�
 
 - Docelowa baza danych musi używać modelu odzyskiwania pełnego. Aby uzyskać więcej informacji dotyczących wpływu modelu odzyskiwania pełnego na tworzenie kopii zapasowych, zobacz [kopii zapasowych w ramach pełnego modelu odzyskiwania](https://technet.microsoft.com/library/ms190217.aspx).
 - Systemowe bazy danych nie trzeba używać modelu odzyskiwania pełnego. Jednak jeśli potrzebujesz kopii zapasowych dziennika mają być pobrane do modelu lub w bazie danych MSDB, należy użyć modelu odzyskiwania pełnego.
-- Docelowa baza danych musi być w domyślnym wystąpieniu programu SQL Server. Rozszerzenie IaaS programu SQL Server nie obsługuje wystąpień nazwanych.
+- Docelowa baza danych musi znajdować się na obu domyślne wystąpienie programu SQL Server, lub [prawidłowo zainstalowane](virtual-machines-windows-sql-server-iaas-faq.md#administration) nazwanego wystąpienia. 
 
 > [!NOTE]
 > Zautomatyzowane tworzenie kopii zapasowej opiera się na **rozszerzenie agenta IaaS programu SQL Server**. Bieżący obrazy galerii maszyn wirtualnych SQL dodać to rozszerzenie, domyślnie. Aby uzyskać więcej informacji, zobacz [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
@@ -107,7 +107,7 @@ Masz maszynę Wirtualną serwera SQL, która zawiera szereg dużych baz danych.
 
 W poniedziałek należy włączyć automatyczne kopie zapasowe w wersji 2 z następującymi ustawieniami:
 
-- Harmonogram tworzenia kopii zapasowych: Ręczne
+- Harmonogram tworzenia kopii zapasowych: Ręcznie
 - Częstotliwość tworzenia pełnych kopii zapasowych: Codziennie
 - Godzina rozpoczęcia tworzenia pełnych kopii zapasowych: 22:00
 - Okno czasowe tworzenia pełnych kopii zapasowych: 6 godzin

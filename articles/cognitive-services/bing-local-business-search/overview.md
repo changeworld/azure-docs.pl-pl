@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: fd57c344c640974e9c73156902848fb1685861f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163147"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780324"
 ---
 # <a name="what-is-bing-local-business-search"></a>Co to jest lokalne wyszukiwanie firm Bing?
 Lokalnych firm interfejsu API wyszukiwania Bing to usługi RESTful, który umożliwia aplikacji, aby znaleźć informacje o lokalnych firm w oparciu o zapytania wyszukiwania. Na przykład `q=<business-name> in Redmond, Washington`, lub `q=Italian restaurants near me`. 
@@ -31,7 +30,7 @@ Lokalnych firm interfejsu API wyszukiwania Bing to usługi RESTful, który umoż
 Wywoływanie lokalnych firm interfejsu API wyszukiwania Bing z dowolnego języka programowania, który może wysyłać żądania HTTP i przeanalizować odpowiedzi w formacie JSON. Ta usługa jest dostępna przy użyciu interfejsu API REST.
  
 1. Tworzenie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) dostęp do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
-2. Kodowanie adresu URL wyszukiwane terminy dla `q=""` parametr zapytania. Na przykład `q=nearby+restaurant` lub `q=nearby%20restaurant`. Jeśli to konieczne, należy ustawić dzielenia na strony, jak również. 
+2. Kodowanie adresu URL wyszukiwane terminy dla `q=""` parametr zapytania. Na przykład: `q=nearby+restaurant` lub `q=nearby%20restaurant`. Jeśli to konieczne, należy ustawić dzielenia na strony, jak również. 
 3. Wyślij [żądanie lokalnych firm interfejsu API wyszukiwania Bing](quickstarts/local-quickstart.md) 
 4. Analizowanie odpowiedzi w formacie JSON 
 

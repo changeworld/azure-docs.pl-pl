@@ -3,7 +3,6 @@ title: Podstawowe różnice dla SQL bazy danych usług Azure Machine Learning (w
 description: W tym temacie opisano podstawowe różnice między usługami Azure SQL Database Machine Learning (przy użyciu języka R) i SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
-ms.subservice: machine-learning-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: c750942f8f0f2727d1d11945a84bffb434a01193
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242126"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771854"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Podstawowe różnice między usługami Machine Learning w usłudze Azure SQL Database (wersja zapoznawcza) i programu SQL Server
 
@@ -59,10 +58,6 @@ Jeśli jest dostępny dla języka R za mało pamięci, zostanie wyświetlony kom
 - Wystąpił zewnętrzny błąd skryptu: Błąd: nie można przydzielić wektor rozmiar.
 
 Użycie zależy od ilości pamięci jest używany w Twoje skrypty języka R oraz liczby zapytania równolegle wykonywane. Jeśli zostanie wyświetlony powyższe błędy, możesz skalować bazy danych na wyższą warstwę usługi, aby rozwiązać ten problem.
-
-## <a name="security-isolation"></a>Izolacja na potrzeby zabezpieczeń
-
-W usłudze Azure SQL Database SQL platformy Abstraction Layer (SQLPAL) zapewnia izolację procesów zewnętrznych. Izolacja zapewnia dodatkową warstwę zabezpieczeń do uruchamiania skryptów języka R.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

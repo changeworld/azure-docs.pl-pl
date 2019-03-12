@@ -1,18 +1,18 @@
 ---
 title: Wdrażanie kontenerów przy użyciu narzędzia Helm w usłudze Kubernetes na platformie Azure
-description: Użyj narzędzia pakietu Narzędzia Helm do wdrażania kontenerów w klastrze usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak używać narzędzia do tworzenia pakietów narzędzia Helm do wdrażania kontenerów w klastrze usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/01/2018
+ms.date: 03/06/2019
 ms.author: iainfou
-ms.openlocfilehash: a3f5bad20ddd0968f2e76008799494adbb55bc31
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ccd98f5bf859673ae69b80dfcd0e5020ba289682
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092163"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768556"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalowanie aplikacji za pomocą narzędzia Helm w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ W tym artykule przedstawiono sposób konfigurowania i używania narzędzia Helm 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W krokach szczegółowo opisanych w tym dokumencie przyjęto założenie, został utworzony klaster usługi AKS i ustalonymi `kubectl` połączenia z klastrem. Jeśli potrzebujesz tych elementów znajduje się pozycja [szybkiego startu usługi AKS][aks-quickstart].
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
 Należy również narzędzia Helm zainstalować interfejs wiersza polecenia, klient, który działa w systemie deweloperskim i pozwala na uruchamianie, zatrzymywanie i zarządzać aplikacjami za pomocą narzędzia Helm. Jeśli używasz usługi Azure Cloud Shell, interfejs wiersza polecenia narzędzia Helm jest już zainstalowana. Aby, zobacz instrukcje dotyczące instalacji na lokalnym platformie [instalowanie narzędzia Helm][helm-install].
 
@@ -153,7 +153,7 @@ Następujące dane wyjściowe skróconego przykładu przedstawia stan wdrożenia
 $ helm install stable/wordpress
 
 NAME:   wishful-mastiff
-LAST DEPLOYED: Thu Jul 12 15:53:56 2018
+LAST DEPLOYED: Wed Mar  6 19:11:38 2019
 NAMESPACE: default
 STATUS: DEPLOYED
 
@@ -201,8 +201,8 @@ Aby wyświetlić listę wersji zainstalowany w klastrze, należy użyć [polecen
 ```console
 $ helm list
 
-NAME             REVISION    UPDATED                     STATUS      CHART              NAMESPACE
-wishful-mastiff  1           Thu Jul 12 15:53:56 2018    DEPLOYED    wordpress-2.1.3  default
+NAME                REVISION    UPDATED                     STATUS      CHART            APP VERSION    NAMESPACE
+wishful-mastiff   1         Wed Mar  6 19:11:38 2019    DEPLOYED    wordpress-2.1.3  4.9.7          default
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -236,4 +236,6 @@ Aby uzyskać więcej informacji o zarządzaniu wdrażaniem aplikacji platformy K
 [helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
 
 <!-- LINKS - internal -->
-[aks-quickstart]: ./kubernetes-walkthrough.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

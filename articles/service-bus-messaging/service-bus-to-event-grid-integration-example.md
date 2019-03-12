@@ -11,15 +11,15 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 7c38de9c1dbb5e8a286fa1b72d0461dd74ed6f25
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821825"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770531"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Przykłady integracji usług Azure Service Bus i Event Grid
 
@@ -217,7 +217,7 @@ Połącz aplikację logiki z usługami Azure Service Bus i Azure Event Grid w na
 
     ![18][]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej na temat usługi [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Dowiedz się więcej na temat usługi [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f955ed63af221a08313042fcc8373b179ecbc120
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276455"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569386"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Pobieranie i ustawianie harmonogramu chaos.
@@ -46,8 +46,8 @@ Pobiera wersję harmonogram Chaos w użyciu i Chaos harmonogram, który definiuj
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -61,19 +61,19 @@ Chaos automatycznie będą planować uruchomienia na podstawie harmonogramu Chao
 
 |Argument|Opis|
 | --- | --- |
-| --Parametry chaos — słownik | Lista reprezentujący mapowania nazw parametrów w elemencie ChaosParameters, który będzie używany przez zadania zakodowane JSON. |
-| --wygaśnięcia — data utc | Data i godzina, kiedy przestać korzystać z harmonogramu można zaplanować Chaos.  Domyślne\: 9999-12-31T23\:59\:59.999Z. |
+| --chaos-parameters-dictionary | Lista reprezentujący mapowania nazw parametrów w elemencie ChaosParameters, który będzie używany przez zadania zakodowane JSON. |
+| --expiry-date-utc | Data i godzina, kiedy przestać korzystać z harmonogramu można zaplanować Chaos.  Domyślne\: 9999-12-31T23\:59\:59.999Z. |
 | — zadania | Lista kodowany w formacie JSON ChaosScheduleJobs reprezentujący, kiedy uruchamiać chaosu, z jakich parametrów do uruchomienia Chaos przy użyciu. |
-| --Początek Data utc | Data i godzina, kiedy można uruchomić zgodnie z harmonogramem można zaplanować Chaos.  Domyślne\: 1601-01-01T00\:00\:00.000Z. |
+| --start-date-utc | Data i godzina, kiedy można uruchomić zgodnie z harmonogramem można zaplanować Chaos.  Domyślne\: 1601-01-01T00\:00\:00.000Z. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
-| --wersji | Numer wersji harmonogramu. |
+| --version | Numer wersji harmonogramu. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -83,15 +83,15 @@ Chaos automatycznie będą planować uruchomienia na podstawie harmonogramu Chao
 Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący harmonogram ma wersję 0), który rozpoczyna się od 2016-01-01 i wygaśnie w dniu 2038-01-01, uruchomionym Chaos 24 godziny, dnia, 7 dni w tygodniu. Chaos zostanie zaplanowana w klastrze tego czasu.
 
     sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
-    --chaos-parameters-dictionary 
-    [  
-    {  
+    --chaos-parameters-dictionary
+    [
+    {
         "Key":"adhoc",
-        "Value":{  
+        "Value":{
             "MaxConcurrentFaults":3,
             "EnableMoveReplicaFaults":true,
-            "ChaosTargetFilter":{  
-                "NodeTypeInclusionList":[  
+            "ChaosTargetFilter":{
+                "NodeTypeInclusionList":[
                 "N0010Ref",
                 "N0020Ref",
                 "N0030Ref",
@@ -103,12 +103,12 @@ Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący har
             "WaitTimeBetweenIterationsInSeconds":15,
             "WaitTimeBetweenFaultsInSeconds":30,
             "TimeToRunInSeconds":"600",
-            "Context":{  
-                "Map":{  
+            "Context":{
+                "Map":{
                 "test":"value"
                 }
             },
-            "ClusterHealthPolicy":{  
+            "ClusterHealthPolicy":{
                 "MaxPercentUnhealthyNodes":0,
                 "ConsiderWarningAsError":true,
                 "MaxPercentUnhealthyApplications":0
@@ -116,11 +116,11 @@ Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący har
         }
     }
     ]
-    --jobs 
-    [  
-    {  
+    --jobs
+    [
+    {
         "ChaosParameters":"adhoc",
-        "Days":{  
+        "Days":{
             "Sunday":true,
             "Monday":true,
             "Tuesday":true,
@@ -129,13 +129,13 @@ Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący har
             "Friday":true,
             "Saturday":true
         },
-        "Times":[  
-            {  
-                "StartTime":{  
+        "Times":[
+            {
+                "StartTime":{
                 "Hour":0,
                 "Minute":0
                 },
-                "EndTime":{  
+                "EndTime":{
                 "Hour":23,
                 "Minute":59
                 }

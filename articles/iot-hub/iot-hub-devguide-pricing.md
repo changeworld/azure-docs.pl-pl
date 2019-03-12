@@ -7,13 +7,13 @@ ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 54336de291d01f3741c288756095e40a43800a7f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.date: 03/11/2019
+ms.openlocfilehash: 23b53e852672c129ff148b0b493a44172f9baf9a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009991"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769748"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informacje o cenach usługi Azure IoT Hub
 
@@ -28,8 +28,8 @@ ms.locfileid: "57009991"
 | Operacje rejestru tożsamości <br/> (Tworzenie, pobieranie, listy, aktualizowanie i usuwanie) | Nie są naliczane. |
 | Komunikaty z urządzenia do chmury | Pomyślnie wysłane wiadomości są naliczane we fragmentach po 4 KB na ruch przychodzący do usługi IoT Hub. Na przykład komunikat 6-KB jest rozliczany według 2 komunikaty. |
 | Komunikaty z chmury do urządzenia | Pomyślnie wysłane wiadomości są rozliczane we fragmentach po 4 KB, na przykład komunikat 6-KB jest rozliczany według 2 komunikaty. |
-| Operacje przekazywania plików | Transfer plików do usługi Azure Storage nie jest mierzone przez usługę IoT Hub. Komunikaty rozpoczęcia i zakończenia transferu plików są naliczane zgodnie z messaged mierzone w przyrostach o rozmiarze 4 KB. Na przykład przesyłanie pliku 10 MB jest rozliczana dwa komunikaty oprócz kosztów usługi Azure Storage. |
-| Metody bezpośrednie | Metod pomyślnych żądań są rozliczane we fragmentach po 4 KB, odpowiedzi z organami niepuste są rozliczane we fragmentach po 4 KB jako dodatkowe komunikaty. Żądania odłączone urządzenia są rozliczane jako komunikaty we fragmentach po 4 KB. Na przykład metoda w jednostce 6 KB, powstałego w odpowiedzi z bez treści z urządzenia, jest rozliczane jako dwa komunikaty. Metody z treścią 6-KB, powstałego w odpowiedzi na 1 KB z urządzenia jest rozliczane jako dwa komunikaty żądania plus inny komunikat odpowiedzi. |
+| Operacje przekazywania plików | Transfer plików do usługi Azure Storage nie jest mierzone przez usługę IoT Hub. Komunikaty rozpoczęcia i zakończenia transferu plików są naliczane zgodnie z messaged mierzone w przyrostach o rozmiarze 4 KB. Na przykład przesyłanie pliku 10 MB jest rozliczane jako dwa komunikaty oprócz kosztów usługi Azure Storage. |
+| Metody bezpośrednie | Metoda pomyślne żądania są rozliczane we fragmentach po 4 KB, a odpowiedzi są rozliczane we fragmentach po 4 KB jako dodatkowe komunikaty. Żądania odłączone urządzenia są rozliczane jako komunikaty we fragmentach po 4 KB. Na przykład metody z treścią 4 KB, powstałego w odpowiedzi z bez treści z urządzenia jest rozliczane jako dwa komunikaty. Metody z treścią 6-KB, powstałego w odpowiedzi na 1 KB z urządzenia jest rozliczane jako dwa komunikaty żądania plus inny komunikat odpowiedzi. |
 | Bliźniacza reprezentacja urządzenia i moduł odczytuje | Bliźniacze odczyty z urządzenia lub moduł i z powrotem rozwiązania end są rozliczane jako wiadomości we fragmentach 512-bajtowego. Na przykład odczytywania bliźniaczego elementu 6-KB jest rozliczane jako wiadomości o 12. |
 | Bliźniacza reprezentacja urządzenia i moduł aktualizacji (tagów i właściwości) | Liczba aktualizacji bliźniaczej reprezentacji z urządzenia lub modułu i zapleczem rozwiązania są rozliczane jako komunikaty we fragmentach 512-bajtowego. Na przykład odczytywania bliźniaczego elementu 6-KB jest rozliczane jako wiadomości o 12. |
 | Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu | Zapytania są rozliczane jako komunikaty, w zależności od rozmiaru wynik we fragmentach 512-bajtowego. |

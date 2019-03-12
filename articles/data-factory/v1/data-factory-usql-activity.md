@@ -3,25 +3,25 @@ title: Przekształcanie danych przy użyciu skryptu U-SQL — Azure | Dokumentac
 description: Dowiedz się sposób przetwarzania lub przekształcać dane, uruchamiając skrypty U-SQL na usługi obliczeniowej Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020850"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777298"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL w usłudze Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-usql-activity.md)
 > * [Wersja 2 (bieżąca wersja)](../transform-data-using-data-lake-analytics.md)
 
@@ -41,7 +41,7 @@ Działanie U-SQL obsługuje poniższe typy uwierzytelniania względem usługi Da
 
 Zaleca się, że używasz uwierzytelniania jednostki usługi, szczególnie w przypadku zaplanowanego wykonania U-SQL. Zachowanie wygaśnięcia tokenu może wystąpić przy użyciu uwierzytelniania poświadczeń użytkownika. Szczegółowe informacje dotyczące konfiguracji, zobacz [właściwości usługi połączonej](#azure-data-lake-analytics-linked-service) sekcji.
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Usługę połączoną usługi Azure Data Lake Analytics
+## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics Linked Service
 Możesz utworzyć **Azure Data Lake Analytics** połączonej usługi, aby połączyć usługi Azure Data Lake Analytics obliczeń Usługa do usługi Azure data factory. Działanie U-SQL usługi Data Lake Analytics w potoku odnosi się do tej połączonej usługi. 
 
 Poniższa tabela zawiera opisy ogólne właściwości używane w definicji JSON. Dodatkowo można wybrać nazwy głównej usługi i uwierzytelnienia poświadczeń użytkownika.
@@ -50,8 +50,8 @@ Poniższa tabela zawiera opisy ogólne właściwości używane w definicji JSON.
 | --- | --- | --- |
 | **type** |Właściwość type powinna być równa: **AzureDataLakeAnalytics**. |Yes |
 | **accountName** |Nazwa konta usługi Azure Data Lake Analytics. |Yes |
-| **dataLakeAnalyticsUri** |Usługa Azure Data Lake Analytics z identyfikatora URI. |Nie |
-| **Identyfikator subskrypcji** |Identyfikator subskrypcji platformy Azure |Nie (Jeśli nie zostanie określony, używany subskrypcji usługi data factory). |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nie |
+| **subscriptionId** |Identyfikator subskrypcji platformy Azure |Nie (Jeśli nie zostanie określony, używany subskrypcji usługi data factory). |
 | **resourceGroupName** |Nazwa grupy zasobów platformy Azure |Nie (Jeśli nie zostanie określony, używany grupy zasobów usługi data factory). |
 
 ### <a name="service-principal-authentication-recommended"></a>Uwierzytelnianie jednostki usługi (zalecane)
@@ -148,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Zobacz [klasy AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [klasy AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), i [klasy AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) tematy, aby uzyskać szczegółowe informacje o klasach usługi Data Factory używane w kodzie. Dodaj odwołanie do: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll dla klasy WindowsFormsWebAuthenticationDialog. 
+Zobacz [klasy AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [klasy AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), i [klasy AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) tematy, aby uzyskać szczegółowe informacje o klasach usługi Data Factory używane w kodzie. Dodaj odwołanie do: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll for the WindowsFormsWebAuthenticationDialog class. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Działania języka U-SQL usługi Data Lake Analytics
 Poniższy fragment kodu JSON definiuje potok za pomocą działania języka U-SQL usługi Data Lake Analytics. Definicja aktywności zawiera odwołanie do usługi połączonej usługi Azure Data Lake Analytics, która została utworzona wcześniej.   
@@ -217,7 +217,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | priority            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie                                       |
 | parameters          | Parametry skryptu U-SQL          | Nie                                       |
 | runtimeVersion      | Wersja środowiska uruchomieniowego aparatu U-SQL do użycia | Nie                                       |
-| CompilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości:</p> <ul><li>**Semantyczne:** Należy wykonać tylko semantycznego testy i wykonuje niezbędne testów.</li><li>**Pełna:** Wykonywanie pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp.</li><li>**SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox.</li></ul><p>Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. </p> | Nie                                       |
+| compilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości:</p> <ul><li>**Semantyczne:** Należy wykonać tylko semantycznego testy i wykonuje niezbędne testów.</li><li>**Pełna:** Wykonywanie pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp.</li><li>**SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox.</li></ul><p>Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. </p> | Nie                                       |
 
 Zobacz [definicji skryptu SearchLogProcessing.txt](#sample-u-sql-script) definicji skryptu. 
 
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Wartości **@in** i **@out** parametry w skrypcie U-SQL są przekazywane dynamicznie przez usługę ADF zgodnie z sekcją "parameters". Zobacz sekcję "parameters" w definicji potoku.
+Wartości  **\@w** i  **\@się** parametry w skrypcie U-SQL są przekazywane dynamicznie przez usługę ADF zgodnie z sekcją "parameters". Zobacz sekcję "parameters" w definicji potoku.
 
 Również inne właściwości, takie jak degreeOfParallelism i priorytet można określić w definicji potoku dla zadań, które są uruchamiane w usłudze Azure Data Lake Analytics.
 

@@ -3,7 +3,7 @@ title: Grupy dostępności serwera SQL — usługa Azure Virtual Machines — sa
 description: W tym samouczku przedstawiono sposób tworzenia programu SQL Server zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 61a05f912e8b8e0b954dc43faeb7d6e35a08b657
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9242edb8ea08b858ae6ad092f4d855483e72d0bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820148"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777468"
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Samouczek: Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
 W tym samouczku przedstawiono sposób tworzenia programu SQL Server zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure. Kompletny samouczek tworzy grupy dostępności z repliki bazy danych na dwóch serwerach SQL.
 

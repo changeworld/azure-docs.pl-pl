@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 862cc4da99aed02b81b6fd12913736bf30866f72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 3c65d4360e3a20b7c2228e42fb4b4db1eecc75ff
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313603"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774800"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -215,7 +215,7 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
   > [!NOTE]
   > W przypadku niektórych warstw usług Azure SQL Database obsługuje [tylko do odczytu replik](sql-database-read-scale-out.md) załadować równoważenia obciążeń związanych z zapytaniami tylko do odczytu za pomocą pojemność jednej z replik tylko do odczytu i przy użyciu `ApplicationIntent=ReadOnly` parametru w połączeniu ciąg. Po skonfigurowaniu pomocniczej z replikacją geograficzną, można użyć tej funkcji można połączyć się z jednej repliki tylko do odczytu w lokalizacji głównej lub w lokalizacji zreplikowanych geograficznie.
   > - Aby połączyć się z repliką tylko do odczytu w lokalizacji podstawowej, użyj `failover-group-name.zone_id.database.windows.net`.
-  > - Aby połączyć się z repliką tylko do odczytu w lokalizacji podstawowej, użyj `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - Aby połączyć z repliki tylko do odczytu w lokalizacji dodatkowej, należy użyć `failover-group-name.secondary.zone_id.database.windows.net`.
 
 - **Przygotowanie do obniżenia wydajności**
 
@@ -282,7 +282,9 @@ Po skonfigurowaniu grupy trybu failover, od podstawowych i pomocniczych wystąpi
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawową bazą danych
 
-Można uaktualnić lub obniżyć podstawowej bazy danych do rozmiaru obliczeniowej (w ramach tej samej warstwy usługi, nie między ogólnego przeznaczenia i krytyczne dla działania firmy) bez odłączania wszystkie pomocnicze bazy danych. Podczas uaktualniania, zalecamy najpierw uaktualnić pomocnicze bazy danych, a następnie uaktualnić podstawowy. Przed obniżeniem, odwracanie kolejności: najpierw obniżenia poziomu podstawowego, a następnie obniżyć wersję usługi dodatkowej. Po uaktualnieniu lub starszą wersję bazy danych do warstwy usług różnych tego zalecenia zostanie wymuszona.
+Można uaktualnić lub obniżyć podstawowej bazy danych do rozmiaru obliczeniowej (w ramach tej samej warstwy usługi, nie między ogólnego przeznaczenia i krytyczne dla działania firmy) bez odłączania wszystkie pomocnicze bazy danych. Podczas uaktualniania, zalecamy najpierw uaktualnić wszystkie pomocnicze bazy danych, a następnie uaktualnić podstawowy. Przed obniżeniem, odwracanie kolejności: najpierw obniżenia poziomu podstawowego, a następnie obniżyć wszystkie pomocnicze bazy danych. Po uaktualnieniu lub starszą wersję bazy danych do warstwy usług różnych tego zalecenia zostanie wymuszona.
+
+Ta sekwencja jest zalecane specjalnie po to, aby uniknąć tego problemu, gdzie pomocniczego na niższym poziomem jednostki SKU pobiera przeciążona i musi być ponownie wprowadzonych podczas procesu uaktualniania lub starszą. Można także uniknąć problemu, dokonując podstawowego tylko do odczytu, kosztem wpływ na wszystkie obciążenia odczytu i zapisu względem podstawowego. 
 
 > [!NOTE]
 > Jeśli utworzono pomocniczej bazy danych jako część konfiguracji grupy trybu failover, który nie jest zalecane w przypadku obniżania pomocniczej bazy danych. To jest, aby upewnić się, że w warstwie danych ma dostatecznie dużą pojemność przetwarzanie regularne obciążenie, po aktywowaniu trybu failover.
@@ -303,8 +305,6 @@ Aby dowiedzieć się, jak przy użyciu punktu w czasie przywracania z grupy tryb
 Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacja geograficzna można również zarządzać programowo przy użyciu programu Azure PowerShell i interfejsu API REST. W poniższych tabelach opisano zestaw poleceń dostępnych. Aktywna replikacja geograficzna zawiera zestaw interfejsów API usługi Azure Resource Manager do zarządzania, w tym [interfejs API REST usługi Azure SQL Database](https://docs.microsoft.com/rest/api/sql/) i [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API korzystają z grup zasobów i obsługuje zabezpieczenia oparte na rolach (RBAC). Aby uzyskać więcej informacji o tym, jak można zaimplementować ról dostępu, zobacz [kontroli dostępu](../role-based-access-control/overview.md).
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Program PowerShell: Zarządzanie za pomocą pojedynczych baz danych i pul elastycznych, tryb failover bazy danych SQL
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 | Polecenie cmdlet | Opis |
 | --- | --- |

@@ -7,16 +7,16 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164623"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772178"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Wprowadzenie do zestawu SDK usługi Batch dla środowiska Node.js
 
@@ -260,7 +260,7 @@ Zadanie usługi Azure Batch jest logiczną grupą podobnych zadań podrzędnych.
 Dzięki usłudze Azure Batch zadania podrzędne będą wykonywane równolegle i wdrażane w wielu węzłach.
 
 > [!Tip]
-> Aby określić maksymalną liczbę zadań podrzędnych uruchamianych jednocześnie w jednym węźle, można użyć właściwości [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add).
+> Aby określić maksymalną liczbę zadań podrzędnych uruchamianych jednocześnie w jednym węźle, można użyć właściwości [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add).
 >
 >
 
@@ -273,7 +273,7 @@ Zazwyczaj w przypadku węzłów systemu Linux można korzystać ze skryptu powł
 W celu uzyskania dostępu do skryptu można go przekazać na konto usługi Azure Storage i wygenerować identyfikator URI sygnatury dostępu współdzielonego. Proces ten można też zautomatyzować przy użyciu zestawu SDK usługi Azure Storage dla środowiska Node.js.
 
 > [!Tip]
-> Zadanie podrzędne przygotowania w ramach zadania działa tylko na węzłach tej maszyny wirtualnej, na której konkretne zadanie podrzędne musi zostać uruchomione. Jeśli chcesz zainstalować wstępnie wymagane oprogramowanie we wszystkich węzłach (niezależnie od rodzaju zadania podrzędnego, które będzie w nich uruchamiane), podczas dodawania puli użyj właściwości [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Poniżej przedstawiono definicję zadania podrzędnego przygotowania.
+> Zadanie podrzędne przygotowania w ramach zadania działa tylko na węzłach tej maszyny wirtualnej, na której konkretne zadanie podrzędne musi zostać uruchomione. Jeśli chcesz zainstalować wstępnie wymagane oprogramowanie we wszystkich węzłach (niezależnie od rodzaju zadania podrzędnego, które będzie w nich uruchamiane), podczas dodawania puli użyj właściwości [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Poniżej przedstawiono definicję zadania podrzędnego przygotowania.
 >
 >
 
@@ -349,9 +349,9 @@ var container_list = ["con1","con2","con3","con4"]
 
 Kod dodaje wiele zadań podrzędnych do puli. Poszczególne zadania podrzędne są wykonywane w węźle utworzonej puli maszyn wirtualnych. Jeśli liczba zadań podrzędnych przekracza liczbę maszyn wirtualnych w puli lub wartość właściwości maxTasksPerNode, zadania podrzędne nie będą wykonywane do momentu udostępnienia węzła. Takie ograniczenia są zapewniane przez usługę Azure Batch automatycznie.
 
-W witrynie Azure Portal zamieszczono szczegółowe widoki stanów zadań i zadań podrzędnych. Można również skorzystać z listy, aby poznać funkcje w ramach zestawu Azure Node SDK. Szczegółowe informacje znajdują się w dokumentacji, do której prowadzi ten [link](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
+W witrynie Azure Portal zamieszczono szczegółowe widoki stanów zadań i zadań podrzędnych. Można również skorzystać z listy, aby poznać funkcje w ramach zestawu Azure Node SDK. Szczegółowe informacje znajdują się w dokumentacji, do której prowadzi ten [link](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj artykuł [Overview of Azure Batch features](batch-api-basics.md) (Omówienie funkcji w usłudze Azure Batch), który zalecamy użytkownikom rozpoczynającym korzystanie z tej usługi.
 - Zobacz [Batch Node.js reference](/javascript/api/overview/azure/batch) (Dokumentacja języka Node.js dla usługi Batch), aby poznać interfejs API usługi Batch.

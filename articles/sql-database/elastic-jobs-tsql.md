@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: de0227ac3e3d963b5ec196b58e467dbeaf0dff42
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453460"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769170"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -447,16 +447,16 @@ Dodaje nowe zadanie.
   
 #### <a name="arguments"></a>Argumenty  
 
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania. Nazwa musi być unikatowa i nie może zawierać procentu (%) znak. Parametr job_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@description =** ] "opis"  
+[  **\@opis =** ] "opis"  
 Opis zadania. Długość opisu jest nvarchar(512) z domyślną wartością NULL. W przypadku pominięcia opis pusty ciąg jest używany.
 
-[  **@enabled =** ] włączone  
+[  **\@włączone =** ] włączone  
 Czy jest włączony harmonogram zadań. Włączone jest bit z domyślną 0 (wyłączone). Jeśli jest to 0, zadanie nie jest włączona i nie jest uruchamiane zgodnie ze swoim harmonogramem; jednak go mogą być uruchamiane ręcznie. Jeśli jest to 1, zadanie będzie uruchamiany zgodnie ze swoim harmonogramem i może być także uruchamiane ręcznie.
 
-[  **@schedule_interval_type =**] schedule_interval_type  
+[  **\@schedule_interval_type =**] schedule_interval_type  
 Wartość wskazuje, kiedy zadanie jest wykonywana. schedule_interval_type jest nvarchar(50) z domyślną jeden raz i może być jedną z następujących wartości:
 - Raz,
 - "Minutes"
@@ -465,16 +465,16 @@ Wartość wskazuje, kiedy zadanie jest wykonywana. schedule_interval_type jest n
 - "Weeks",
 - "Liczba miesięcy:"
 
-[  **@schedule_interval_count =** ] schedule_interval_count  
+[  **\@schedule_interval_count =** ] schedule_interval_count  
 Liczba okresów schedule_interval_count się komunikować między każdego wykonania zadania. schedule_interval_count to typ int, z domyślną 1. Wartość musi być większa lub równa 1.
 
-[  **@schedule_start_time =** ] schedule_start_time  
+[  **\@schedule_start_time =** ] schedule_start_time  
 Data zadania, które można rozpocząć wykonywania. schedule_start_time jest DATETIME2, przy użyciu domyślnego 00:00:00.0000000 0001-01-01.
 
-[  **@schedule_end_time =** ] schedule_end_time  
+[  **\@schedule_end_time =** ] schedule_end_time  
 Data zadania, które można zatrzymać wykonywanie. schedule_end_time jest DATETIME2, przy użyciu domyślnego 9999-12-31 11:59:59.0000000. 
 
-[  **@job_id =** ] wartość job_id danych wyjściowych  
+[  **\@wartość job_id =** ] wartość job_id danych wyjściowych  
 Numer identyfikacyjny zadań przypisanych do zadania, jeśli utworzono pomyślnie. wartość job_id jest zmienną danych wyjściowych typu uniqueidentifier.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -510,19 +510,19 @@ Aktualizuje istniejące zadanie.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania do zaktualizowania. Parametr job_name jest nvarchar(128).
 
-[  **@new_name =** ] "nowa_nazwa"  
+[  **\@nowa_nazwa =** ] "nowa_nazwa"  
 Nowa nazwa zadania. nowa_nazwa jest nvarchar(128).
 
-[  **@description =** ] "opis"  
+[  **\@opis =** ] "opis"  
 Opis zadania. Długość opisu jest nvarchar(512).
 
-[  **@enabled =** ] włączone  
+[  **\@włączone =** ] włączone  
 Określa, czy harmonogram zadań jest włączony (1) lub nie włączono (0). Włączone jest bit.
 
-[  **@schedule_interval_type=** ] schedule_interval_type  
+[  **\@schedule_interval_type =** ] schedule_interval_type  
 Wartość wskazuje, kiedy zadanie jest wykonywana. schedule_interval_type jest nvarchar(50) i może być jedną z następujących wartości:
 
 - Raz,
@@ -532,13 +532,13 @@ Wartość wskazuje, kiedy zadanie jest wykonywana. schedule_interval_type jest n
 - "Weeks",
 - "Liczba miesięcy:"
 
-[  **@schedule_interval_count=** ] schedule_interval_count  
+[  **\@schedule_interval_count =** ] schedule_interval_count  
 Liczba okresów schedule_interval_count się komunikować między każdego wykonania zadania. schedule_interval_count to typ int, z domyślną 1. Wartość musi być większa lub równa 1.
 
-[  **@schedule_start_time=** ] schedule_start_time  
+[  **\@schedule_start_time =** ] schedule_start_time  
 Data zadania, które można rozpocząć wykonywania. schedule_start_time jest DATETIME2, przy użyciu domyślnego 00:00:00.0000000 0001-01-01.
 
-[  **@schedule_end_time=** ] schedule_end_time  
+[  **\@schedule_end_time =** ] schedule_end_time  
 Data zadania, które można zatrzymać wykonywanie. schedule_end_time jest DATETIME2, przy użyciu domyślnego 9999-12-31 11:59:59.0000000. 
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -567,10 +567,10 @@ Usuwa istniejące zadanie.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania do usunięcia. Parametr job_name jest nvarchar(128).
 
-[  **@force =** ] Wymuszaj  
+[  **\@wymusić =** ] Wymuszaj  
 Określa, czy chcesz usunąć, jeśli zadanie ma żadnych wykonań w toku i anulowanie wszystkich operacji w trakcie wykonywania (1) lub zakończone niepowodzeniem, jeśli wszystkie Liczba wykonań zadań są w toku (0). bit jest wymuszone.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -622,79 +622,79 @@ Do dodawania kroku do zadania.
 
 #### <a name="arguments"></a>Argumenty
 
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania, do którego należy dodać krok. Parametr job_name jest nvarchar(128).
 
-[  **@step_id =** ] step_id  
+[  **\@step_id =** ] step_id  
 Numer identyfikacyjny kolejny krok zadania. Numery identyfikacyjne kroku są liczone od 1 i zwiększ bez przerw. Jeśli etap istniejących już ten identyfikator, krok i wszystkie następne czynności że swój identyfikator użytkownika zwiększana tak, aby ten nowy krok mogą być wstawiane do sekwencji. Jeśli nie zostanie określony, step_id zostanie automatycznie przypisany do ostatniej sekwencji kroków. step_id to int.
 
-[  **@step_name =** ] step_name  
+[  **\@step_name =** ] step_name  
 Nazwa kroku. Należy określić, z wyjątkiem pierwszym krokiem zadania, który ma domyślną nazwę "JobStep" (dla wygody). step_name jest nvarchar(128).
 
-[  **@command_type =** ] "command_type"  
+[  **\@command_type =** ] "command_type"  
 Typ polecenia, która jest wykonywana przez ten jobstep. command_type jest nvarchar(50) o wartości domyślne języka TSql, co oznacza, że wartość @command_type parametru jest skryptem T-SQL.
 
 Jeśli zostanie określony, wartość musi być TSql.
 
-[  **@command_source =** ] "command_source"  
+[  **\@command_source =** ] "command_source"  
 Typ lokalizacji przechowywania polecenia. command_source jest nvarchar(50) z wartością domyślną w tekście, co oznacza, że wartość @command_source parametr jest tekst dosłowny polecenia.
 
 Jeśli zostanie określony, wartość musi być wbudowany.
 
-[  **@command =** ] 'command'  
+[  **\@polecenia =** ] 'command'  
 Polecenie musi być prawidłową skryptu T-SQL, a następnie jest wykonywany przez ten etap zadania. polecenie jest nvarchar(max) z domyślną wartością NULL.
 
-[  **@credential_name =** ] "credential_name"  
+[  **\@credential_name =** ] "credential_name"  
 Nazwa bazy danych o określonym zakresie poświadczeń przechowywanych w tej bazie danych kontroli zadania, który jest używany do łączenia do każdego z docelowymi bazami danych w grupie docelowej po wykonaniu tego kroku. credential_name jest nvarchar(128).
 
-[  **@target_group_name =** ] "target nazwa_grupy"  
+[  **\@target_group_name =** ] "target nazwa_grupy"  
 Nazwa grupy docelowej, która zawiera docelowych baz danych, które krok zadania zostaną wykonane na. target_group_name jest nvarchar(128).
 
-[  **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[  **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 Opóźnienie przed pierwszym ponowieniem próby próby, jeśli krok zadania zakończy się niepowodzeniem przy próbie wykonania początkowej. initial_retry_interval_seconds to typ int, za pomocą wartość domyślną 1.
 
-[  **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Maksymalne opóźnienie między ponownymi próbami. Jeśli opóźnienie między kolejnymi próbami będzie powiększać większa niż ta wartość, jej wynosi tej wartości zamiast tego. maximum_retry_interval_seconds to typ int, przy użyciu wartości domyślnej 120.
 
-[  **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Mnożnik do zastosowania do opóźnienia ponawiania, jeśli wiele zadań krok wykonywania próbuje zakończyć się niepowodzeniem. Na przykład jeśli pierwsze ponowienie miał opóźnienie 5-sekundowego mnożnik wycofywania jest w wersji 2.0, następnie drugi ponawiania prób będzie mieć opóźnienie 10 sekund i trzeci ponawiania prób będzie mieć opóźnienie wynoszącego 20 sekund. retry_interval_backoff_multiplier jest prawdziwe, wartością domyślną w wersji 2.0.
 
-[  **@retry_attempts =** ] retry_attempts  
+[  **\@retry_attempts =** ] retry_attempts  
 Liczba ponownych prób wykonania, jeśli początkowa próba nie powiedzie się. Na przykład jeśli wartość retry_attempts jest 10, nastąpi 1 początkowa próba i 10 ponownymi próbami, co daje w sumie 11 prób. W przypadku niepowodzenia końcowego ponowienia próby wykonania zadania zostanie zakończona z cyklem życia nie powiodło się. retry_attempts to typ int, za pomocą wartość domyślną równą 10.
 
-[  **@step_timeout_seconds =** ] step_timeout_seconds  
+[  **\@step_timeout_seconds =** ] step_timeout_seconds  
 Maksymalna ilość czasu dozwolony krok do wykonania. Tym razem po przekroczeniu, wykonanie zadania zostanie zakończona z cyklem życia przekroczenie limitu czasu. step_timeout_seconds to typ int, wartością domyślną 43,200 sekund (12 godzin).
 
-[  **@output_type =** ] "output_type"  
+[  **\@output_type =** ] "output_type"  
 W przeciwnym razie wartość null, typu miejsca docelowego, który ustawiony wynik pierwszego polecenia są zapisywane. output_type jest nvarchar(50) z domyślną wartością NULL.
 
 Jeśli zostanie określony, wartość musi być baza danych SQL.
 
-[  **@output_credential_name =** ] "output_credential_name"  
+[  **\@output_credential_name =** ] "output_credential_name"  
 Jeśli nie ma wartość null, nazwa bazy danych obejmuje poświadczenie, które służy do nawiązania połączenia z bazą danych wyjściowych docelowego. Należy określić w przypadku output_type jest równe baza danych SQL. output_credential_name jest nvarchar(128) z wartością domyślną wartością null.
 
-[  **@output_subscription_id =** ] "output_subscription_id"  
+[  **\@output_subscription_id =** ] "output_subscription_id"  
 Musi mieć opis.
 
-[  **@output_resource_group_name =** ] "output_resource_group_name"  
+[  **\@output_resource_group_name =** ] "output_resource_group_name"  
 Musi mieć opis.
 
-[  **@output_server_name =** ] "output_server_name"  
+[  **\@output_server_name =** ] "output_server_name"  
 W przeciwnym razie wartość null, w pełni kwalifikowana nazwa DNS serwera, który zawiera dane wyjściowe docelowej bazy danych. Należy określić w przypadku output_type jest równe baza danych SQL. output_server_name jest nvarchar(256) z domyślną wartością NULL.
 
-[  **@output_database_name =** ] "output_database_name"  
+[  **\@output_database_name =** ] "output_database_name"  
 W przeciwnym razie wartość null, nazwa bazy danych, który zawiera dane wyjściowe tabeli docelowej. Należy określić w przypadku output_type jest równe baza danych SQL. output_database_name jest nvarchar(128) z domyślną wartością NULL.
 
-[  **@output_schema_name =** ] "output_schema_name"  
+[  **\@output_schema_name =** ] "output_schema_name"  
 W przeciwnym razie wartość null, nazwa schematu SQL, który zawiera dane wyjściowe tabeli docelowej. Jeśli output_type równa baza danych SQL, wartość domyślna to dbo. output_schema_name jest nvarchar(128).
 
-[  **@output_table_name =** ] "output_table_name"  
+[  **\@output_table_name =** ] "output_table_name"  
 W przeciwnym razie wartość null, nazwa tabeli, który ustawiony wynik pierwszego polecenia zostaną zapisane. Jeśli tabela już nie istnieje, zostanie on utworzony zależności od schematu zwraca zestaw wyników. Należy określić w przypadku output_type jest równe baza danych SQL. output_table_name jest nvarchar(128) z wartością domyślną wartością null.
 
-[  **@job_version =** ] job_version danych wyjściowych  
+[  **\@job_version =** ] job_version danych wyjściowych  
 Parametr wyjściowy, który zostanie przypisany numer wersji zadania. job_version to int.
 
-[  **@max_parallelism =** ] max_parallelism danych wyjściowych  
+[  **\@max_parallelism =** ] max_parallelism danych wyjściowych  
 Maksymalny poziom równoległości dla puli elastycznej. Zestaw, a następnie etap zadania zostaną ograniczone do uruchomienia tylko na maksymalnego wiele baz danych w jednej puli elastycznej. Dotyczy to każdej puli elastycznej, albo bezpośrednio znajduje się w grupie docelowej lub znajduje się wewnątrz serwera, który znajduje się w grupie docelowej. max_parallelism to int.
 
 
@@ -746,79 +746,79 @@ Aktualizuje krok zadania.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania, do której należy ten krok. Parametr job_name jest nvarchar(128).
 
-[  **@step_id =** ] step_id  
+[  **\@step_id =** ] step_id  
 Numer identyfikacyjny dla etapu zadania do zmodyfikowania. Należy określić step_id albo step_name. step_id to int.
 
-[  **@step_name =** ] "step_name"  
+[  **\@step_name =** ] "step_name"  
 Nazwa kroku do zmodyfikowania. Należy określić step_id albo step_name. step_name jest nvarchar(128).
 
-[  **@new_id =** ] new_id  
+[  **\@new_id =** ] new_id  
 Nowy numer identyfikacyjny sekwencji dla etapu zadania. Numery identyfikacyjne kroku są liczone od 1 i zwiększ bez przerw. Jeśli krok kolejność została zmieniona, następnie pozostałe kroki zostaną automatycznie oznaczenia.
 
-[  **@new_name =** ] "nowa_nazwa"  
+[  **\@nowa_nazwa =** ] "nowa_nazwa"  
 Nowa nazwa kroku. nowa_nazwa jest nvarchar(128).
 
-[  **@command_type =** ] "command_type"  
+[  **\@command_type =** ] "command_type"  
 Typ polecenia, która jest wykonywana przez ten jobstep. command_type jest nvarchar(50) o wartości domyślne języka TSql, co oznacza, że wartość @command_type parametru jest skryptem T-SQL.
 
 Jeśli zostanie określony, wartość musi być TSql.
 
-[  **@command_source =** ] "command_source"  
+[  **\@command_source =** ] "command_source"  
 Typ lokalizacji przechowywania polecenia. command_source jest nvarchar(50) z wartością domyślną w tekście, co oznacza, że wartość @command_source parametr jest tekst dosłowny polecenia.
 
 Jeśli zostanie określony, wartość musi być wbudowany.
 
-[  **@command =** ] 'command'  
+[  **\@polecenia =** ] 'command'  
 Polecenia musi być prawidłową skryptu T-SQL, a następnie jest wykonywany przez ten etap zadania. polecenie jest nvarchar(max) z domyślną wartością NULL.
 
-[  **@credential_name =** ] "credential_name"  
+[  **\@credential_name =** ] "credential_name"  
 Nazwa bazy danych o określonym zakresie poświadczeń przechowywanych w tej bazie danych kontroli zadania, który jest używany do łączenia do każdego z docelowymi bazami danych w grupie docelowej po wykonaniu tego kroku. credential_name jest nvarchar(128).
 
-[  **@target_group_name =** ] "target nazwa_grupy"  
+[  **\@target_group_name =** ] "target nazwa_grupy"  
 Nazwa grupy docelowej, która zawiera docelowych baz danych, które krok zadania zostaną wykonane na. target_group_name jest nvarchar(128).
 
-[  **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[  **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 Opóźnienie przed pierwszym ponowieniem próby próby, jeśli krok zadania zakończy się niepowodzeniem przy próbie wykonania początkowej. initial_retry_interval_seconds to typ int, za pomocą wartość domyślną 1.
 
-[  **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Maksymalne opóźnienie między ponownymi próbami. Jeśli opóźnienie między kolejnymi próbami będzie powiększać większa niż ta wartość, jej wynosi tej wartości zamiast tego. maximum_retry_interval_seconds to typ int, przy użyciu wartości domyślnej 120.
 
-[  **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Mnożnik do zastosowania do opóźnienia ponawiania, jeśli wiele zadań krok wykonywania próbuje zakończyć się niepowodzeniem. Na przykład jeśli pierwsze ponowienie miał opóźnienie 5-sekundowego mnożnik wycofywania jest w wersji 2.0, następnie drugi ponawiania prób będzie mieć opóźnienie 10 sekund i trzeci ponawiania prób będzie mieć opóźnienie wynoszącego 20 sekund. retry_interval_backoff_multiplier jest prawdziwe, wartością domyślną w wersji 2.0.
 
-[  **@retry_attempts =** ] retry_attempts  
+[  **\@retry_attempts =** ] retry_attempts  
 Liczba ponownych prób wykonania, jeśli początkowa próba nie powiedzie się. Na przykład jeśli wartość retry_attempts jest 10, nastąpi 1 początkowa próba i 10 ponownymi próbami, co daje w sumie 11 prób. W przypadku niepowodzenia końcowego ponowienia próby wykonania zadania zostanie zakończona z cyklem życia nie powiodło się. retry_attempts to typ int, za pomocą wartość domyślną równą 10.
 
-[  **@step_timeout_seconds =** ] step_timeout_seconds  
+[  **\@step_timeout_seconds =** ] step_timeout_seconds  
 Maksymalna ilość czasu dozwolony krok do wykonania. Tym razem po przekroczeniu, wykonanie zadania zostanie zakończona z cyklem życia przekroczenie limitu czasu. step_timeout_seconds to typ int, wartością domyślną 43,200 sekund (12 godzin).
 
-[  **@output_type =** ] "output_type"  
+[  **\@output_type =** ] "output_type"  
 W przeciwnym razie wartość null, typu miejsca docelowego, który ustawiony wynik pierwszego polecenia są zapisywane. Aby przywrócić wartość output_type o wartości NULL, ustaw wartość tego parametru na "(pusty ciąg znaków). output_type jest nvarchar(50) z domyślną wartością NULL.
 
 Jeśli zostanie określony, wartość musi być baza danych SQL.
 
-[  **@output_credential_name =** ] "output_credential_name"  
+[  **\@output_credential_name =** ] "output_credential_name"  
 Jeśli nie ma wartość null, nazwa bazy danych obejmuje poświadczenie, które służy do nawiązania połączenia z bazą danych wyjściowych docelowego. Należy określić w przypadku output_type jest równe baza danych SQL. Aby przywrócić wartość output_credential_name o wartości NULL, ustaw wartość tego parametru na "(pusty ciąg znaków). output_credential_name jest nvarchar(128) z wartością domyślną wartością null.
 
-[  **@output_server_name =** ] "output_server_name"  
+[  **\@output_server_name =** ] "output_server_name"  
 W przeciwnym razie wartość null, w pełni kwalifikowana nazwa DNS serwera, który zawiera dane wyjściowe docelowej bazy danych. Należy określić w przypadku output_type jest równe baza danych SQL. Aby przywrócić wartość output_server_name o wartości NULL, ustaw wartość tego parametru na "(pusty ciąg znaków). output_server_name jest nvarchar(256) z domyślną wartością NULL.
 
-[  **@output_database_name =** ] "output_database_name"  
+[  **\@output_database_name =** ] "output_database_name"  
 W przeciwnym razie wartość null, nazwa bazy danych, który zawiera dane wyjściowe tabeli docelowej. Należy określić w przypadku output_type jest równe baza danych SQL. Aby przywrócić wartość output_database_name o wartości NULL, ustaw wartość tego parametru na "(pusty ciąg znaków). output_database_name jest nvarchar(128) z domyślną wartością NULL.
 
-[  **@output_schema_name =** ] "output_schema_name"  
+[  **\@output_schema_name =** ] "output_schema_name"  
 W przeciwnym razie wartość null, nazwa schematu SQL, który zawiera dane wyjściowe tabeli docelowej. Jeśli output_type równa baza danych SQL, wartość domyślna to dbo. Aby przywrócić wartość output_schema_name o wartości NULL, ustaw wartość tego parametru na "(pusty ciąg znaków). output_schema_name jest nvarchar(128).
 
-[  **@output_table_name =** ] "output_table_name"  
+[  **\@output_table_name =** ] "output_table_name"  
 W przeciwnym razie wartość null, nazwa tabeli, który ustawiony wynik pierwszego polecenia zostaną zapisane. Jeśli tabela już nie istnieje, zostanie on utworzony zależności od schematu zwraca zestaw wyników. Należy określić w przypadku output_type jest równe baza danych SQL. Aby przywrócić wartość output_server_name o wartości NULL, ustaw wartość tego parametru na "(pusty ciąg znaków). output_table_name jest nvarchar(128) z wartością domyślną wartością null.
 
-[  **@job_version =** ] job_version danych wyjściowych  
+[  **\@job_version =** ] job_version danych wyjściowych  
 Parametr wyjściowy, który zostanie przypisany numer wersji zadania. job_version to int.
 
-[  **@max_parallelism =** ] max_parallelism danych wyjściowych  
+[  **\@max_parallelism =** ] max_parallelism danych wyjściowych  
 Maksymalny poziom równoległości dla puli elastycznej. Zestaw, a następnie etap zadania zostaną ograniczone do uruchomienia tylko na maksymalnego wiele baz danych w jednej puli elastycznej. Dotyczy to każdej puli elastycznej, albo bezpośrednio znajduje się w grupie docelowej lub znajduje się wewnątrz serwera, który znajduje się w grupie docelowej. Aby zresetować wartość max_parallelism na wartość null, wartość tego parametru na wartość -1. max_parallelism to int.
 
 
@@ -853,16 +853,16 @@ Usuwa krok zadania z zadania.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania, z którego ten krok zostanie usunięty. Parametr job_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@step_id =** ] step_id  
+[  **\@step_id =** ] step_id  
 Numer identyfikacyjny dla etapu zadania do usunięcia. Należy określić step_id albo step_name. step_id to int.
 
-[  **@step_name =** ] "step_name"  
+[  **\@step_name =** ] "step_name"  
 Nazwa kroku do usunięcia. Należy określić step_id albo step_name. step_name jest nvarchar(128).
 
-[  **@job_version =** ] job_version danych wyjściowych  
+[  **\@job_version =** ] job_version danych wyjściowych  
 Parametr wyjściowy, który zostanie przypisany numer wersji zadania. job_version to int.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -897,10 +897,10 @@ Rozpoczyna się wykonywanie zadania.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania, z którego ten krok zostanie usunięty. Parametr job_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@job_execution_id =** ] job_execution_id danych wyjściowych  
+[  **\@job_execution_id =** ] job_execution_id danych wyjściowych  
 Dane wyjściowe parametru, który zostanie przypisany identyfikator wykonywania zadania. job_version jest uniqueidentifier.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -928,7 +928,7 @@ Zatrzymuje wykonywanie zadania.
 
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_execution_id =** ] job_execution_id  
+[  **\@job_execution_id =** ] job_execution_id  
 Numer identyfikacyjny wykonywania zadań, aby zatrzymać. job_execution_id jest uniqueidentifier z domyślną wartością NULL.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -958,10 +958,10 @@ Dodaje grupy docelowej.
 
 
 #### <a name="arguments"></a>Argumenty
-[  **@target_group_name =** ] "target_group_name"  
+[  **\@target_group_name =** ] "target_group_name"  
 Nazwa grupy docelowej do utworzenia. target_group_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@target_group_id =** ] target_group_id dane wyjściowe w docelowej grupie numeru identyfikacyjnego przypisanych do zadania, jeśli pomyślnie utworzono. target_group_id jest zmienną typu uniqueidentifier. dane wyjściowe z domyślną wartością NULL.
+[  **\@target_group_id =** ] target_group_id dane wyjściowe w docelowej grupie numeru identyfikacyjnego przypisanych do zadania, jeśli pomyślnie utworzono. target_group_id jest zmienną typu uniqueidentifier. dane wyjściowe z domyślną wartością NULL.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
 0 (Powodzenie) lub 1 (niepowodzenie)
@@ -988,7 +988,7 @@ Usuwa grupy docelowej.
 
 
 #### <a name="arguments"></a>Argumenty
-[  **@target_group_name =** ] "target_group_name"  
+[  **\@target_group_name =** ] "target_group_name"  
 Nazwa grupy docelowej, można usunąć. target_group_name jest nvarchar(128) bez wartości domyślnej.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu
@@ -1022,31 +1022,31 @@ Dodaje do grupy docelowej bazy danych lub grupy baz danych.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@target_group_name =** ] "target_group_name"  
+[  **\@target_group_name =** ] "target_group_name"  
 Nazwa grupy docelowej, do którego zostanie dodany element członkowski. target_group_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@membership_type =** ] "membership_type"  
+[  **\@membership_type =** ] "membership_type"  
 Określa, jeśli docelowy element członkowski grupy zostaną dołączone lub wykluczone. target_group_name jest nvarchar(128) z domyślną "Include". Prawidłowe wartości dla target_group_name to "Include" lub "Exclude".
 
-[  **@target_type =** ] "target_type —"  
+[  **\@target_type — =** ] "target_type —"  
 Typ docelowej bazy danych lub kolekcji baz danych w tym wszystkich baz danych na serwerze, wszystkie bazy danych w puli elastycznej, wszystkie bazy danych w mapowania fragmentów w postaci lub poszczególnych baz danych. target_type — jest nvarchar(128) bez wartości domyślnej. Prawidłowe wartości dla target_type — są 'SqlServer', "SqlElasticPool", "Baza danych SQL" lub "SqlShardMap". 
 
-[  **@refresh_credential_name =** ] "refresh_credential_name"  
+[  **\@refresh_credential_name =** ] "refresh_credential_name"  
 Nazwa serwera bazy danych SQL. refresh_credential_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@server_name =** ] "nazwa_serwera"  
+[  **\@nazwa_serwera =** ] "nazwa_serwera"  
 Nazwa serwera bazy danych SQL, która powinna być dodana do określoną grupę docelową. nazwa_serwera powinna być określona, gdy target_type — jest "SqlServer". nazwa_serwera jest nvarchar(128) bez wartości domyślnej.
 
-[  **@database_name =** ] "database_name"  
+[  **\@database_name =** ] "database_name"  
 Nazwa bazy danych, która powinna być dodana do określoną grupę docelową. należy określić database_name po target_type — "Baza danych SQL". database_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@elastic_pool_name =** ] "elastic_pool_name"  
+[  **\@elastic_pool_name =** ] "elastic_pool_name"  
 Nazwa puli elastycznej, która powinna być dodana do określoną grupę docelową. należy określić elastic_pool_name po target_type — "SqlElasticPool". elastic_pool_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@shard_map_name =** ] "shard_map_name"  
+[  **\@shard_map_name =** ] "shard_map_name"  
 Nazwa puli mapy fragmentów, które powinny zostać dodane do określoną grupę docelową. należy określić elastic_pool_name po target_type — "SqlSqlShardMap". shard_map_name jest nvarchar(128) bez wartości domyślnej.
 
-[  **@target_id =** ] target_group_id danych wyjściowych  
+[  **\@target_id =** ] target_group_id danych wyjściowych  
 Numer identyfikacyjny docelowego, które są przypisane do członka grupy docelowej, jeśli utworzono dodane do grupy docelowej. target_id jest zmienną typu uniqueidentifier. dane wyjściowe z domyślną wartością NULL.
 Wartości zwracane kod 0 (Powodzenie) lub 1 (niepowodzenie)
 
@@ -1157,13 +1157,13 @@ Usuwa rekordy historii zadania.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **@job_name =** ] "parametr job_name"  
+[  **\@parametr job_name =** ] "parametr job_name"  
 Nazwa zadania, dla której chcesz usunąć rekordy historii. Parametr job_name jest nvarchar(128) z domyślną wartością NULL. Należy określić wartość job_id lub parametr job_name, ale nie może być jednocześnie określone.
 
-[  **@job_id =** ] wartość job_id  
+[  **\@wartość job_id =** ] wartość job_id  
  Numer identyfikacyjny zadania zadania dla rekordów do usunięcia. wartość job_id jest uniqueidentifier z domyślną wartością NULL. Należy określić wartość job_id lub parametr job_name, ale nie może być jednocześnie określone.
 
-[  **@oldest_date =** ] oldest_date  
+[  **\@oldest_date =** ] oldest_date  
  Najstarszy rekord do przechowania w historii. oldest_date jest DATETIME2, domyślną wartością NULL. W przypadku oldest_date sp_purge_jobhistory powoduje usunięcie tylko rekordy, które są starsze niż określona wartość.
 
 #### <a name="return-code-values"></a>Zwracane wartości kodu

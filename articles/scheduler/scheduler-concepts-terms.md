@@ -1,6 +1,6 @@
 ---
 title: Pojęcia, terminologia oraz jednostki — Azure Scheduler | Microsoft Docs
-description: Poznaj pojęcia, terminologię oraz hierarchię jednostek w usłudze Azure Scheduler, w tym zadania i kolekcje zadań.
+description: Poznaj pojęcia, terminologię oraz hierarchię jednostek, łącznie z zadaniami i kolekcjami zadań, w usłudze Azure Scheduler.
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: HT
+ms.openlocfilehash: a58b247732125574a067deff1d5b03859cd036fc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334231"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782296"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Pojęcia, terminologia i jednostki w usłudze Azure Scheduler
 
@@ -24,7 +24,7 @@ ms.locfileid: "52334231"
 
 ## <a name="entity-hierarchy"></a>Hierarchia jednostek
 
-Interfejs API REST usługi Azure Scheduler uwidacznia następujące jednostki główne, czyli zasoby, i korzysta z nich:
+Interfejs API REST usługi Azure Scheduler zawiera następujące jednostki główne, czyli zasoby, i korzysta z nich:
 
 | Jednostka | Opis |
 |--------|-------------|
@@ -35,17 +35,17 @@ Interfejs API REST usługi Azure Scheduler uwidacznia następujące jednostki g�
 
 ## <a name="entity-management"></a>Zarządzanie jednostkami
 
-Na wysokim poziomie interfejs API REST usługi Scheduler uwidacznia te operacje na potrzeby zarządzania jednostkami.
+Na wysokim poziomie interfejs API REST usługi Scheduler zawiera następujące operacje z zakresu zarządzania jednostkami.
 
 ### <a name="job-management"></a>Zarządzanie zadaniami
 
-Obsługuje operacje tworzenia i edytowania zadań. Wszystkie zadania muszą należeć do istniejącej kolekcji zadań, w związku z czym nie mają miejsca żadne operacje niejawnego tworzenia. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — zadania](https://docs.microsoft.com/rest/api/scheduler/jobs). Oto adres URI dla tych operacji:
+Obsługuje operacje tworzenia i edytowania zadań. Wszystkie zadania muszą należeć do istniejącej kolekcji zadań, w związku z czym nie ma możliwości niejawnego tworzenia. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — zadania](https://docs.microsoft.com/rest/api/scheduler/jobs). Oto adres URI dla tych operacji:
 
 `https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
 
 ### <a name="job-collection-management"></a>Zarządzanie kolekcją zadań
 
-Obsługuje operacje tworzenia i edytowania zadań i kolekcji zadań, które są mapowane na przydziały i wspólne ustawienia. Przydziały dotyczą na przykład maksymalnej liczby zadań oraz najmniejszego interwału cyklu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — kolekcje zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Oto adres URI dla tych operacji:
+Obsługuje operacje tworzenia oraz edytowania zadań i kolekcji zadań, które są mapowane na przydziały i wspólne ustawienia. Przydziały dotyczą na przykład maksymalnej liczby zadań oraz najmniejszego interwału cyklu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — kolekcje zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Oto adres URI dla tych operacji:
 
 `https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
 
@@ -69,11 +69,11 @@ Usługa Azure Scheduler obsługuje wiele typów zadań:
 Na wysokim poziomie zadanie usługi Scheduler składa się z następujących elementów podstawowych:
 
 * Akcja uruchamiana po wyzwoleniu czasomierza zadania
-* Opcjonalnie: czas uruchomienia zadania
-* Opcjonalnie: termin i częstotliwość powtarzania zadania
-* Opcjonalnie: akcja błędu uruchamiana, jeśli akcja podstawowa zakończy się niepowodzeniem
+* Opcjonalnie: Czas wykonywania zadania
+* Opcjonalnie: Kiedy i częstotliwość powtarzania zadania
+* Opcjonalnie: Akcja błędu, który jest wykonywany, gdy akcja podstawowa zakończy się niepowodzeniem.
 
-Zadanie zawiera również dane dostarczane przez system, takie jak czas następnego zaplanowanego uruchomienia zadania. Definicja kodu zadania jest następująca: obiekt w formacie JavaScript Object Notation (JSON), który zawiera następujące elementy:
+Zadanie zawiera również dane dostarczane przez system, takie jak czas następnego zaplanowanego uruchomienia zadania. Definicją kodu zadania jest obiekt w formacie JavaScript Object Notation (JSON), który zawiera następujące elementy:
 
 | Element | Wymagany | Opis | 
 |---------|----------|-------------| 
@@ -86,7 +86,7 @@ Zadanie zawiera również dane dostarczane przez system, takie jak czas następn
 | [**status**](#status) | Yes | Szczegóły dotyczące bieżącego stanu zadania, który jest kontrolowany przez usługę |
 ||||
 
-Oto przykład pokazujący kompleksową definicję zadania dla akcji HTTP z pełniejszymi szczegółami elementu opisanymi w kolejnych sekcjach: 
+Oto przykład pokazujący kompleksową definicję zadania dla akcji HTTP z pełniejszymi szczegółami elementów opisanymi w kolejnych sekcjach: 
 
 ```json
 "properties": {
@@ -147,7 +147,7 @@ Twoje zadanie usługi Scheduler uruchamia **akcję** podstawową na podstawie ok
 
 * Typ usługi akcji
 * Szczegóły akcji
-* Alternatywną akcję **errorAction**
+* Alternatywna akcja **errorAction**
 
 Poprzedni przykład opisuje akcję HTTP. Oto przykład akcji kolejki usługi Storage:
 
@@ -239,7 +239,7 @@ Zadanie jest uruchamiane cyklicznie, jeśli definicja JSON zadania zawiera obiek
 },
 ```
 
-| Właściwość | Wymagany | Wartość | Opis | 
+| Właściwość | Wymagany | Value | Opis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Tak, gdy jest używany obiekt **recurrence** | „Minute”, „Hour”, „Day”, „Week”, „Month”, „Year” | Jednostka czasu między wystąpieniami | 
 | **interval** | Nie | od 1 do 1000 (włącznie) | Dodatnia liczba całkowita określająca liczbę jednostek czasu między każdym wystąpieniem na podstawie właściwości **frequency** (częstotliwość) | 
@@ -269,7 +269,7 @@ Dla przypadków, w których zadanie usługi Scheduler może zakończyć się nie
 },
 ```
 
-| Właściwość | Wymagany | Wartość | Opis | 
+| Właściwość | Wymagany | Value | Opis | 
 |----------|----------|-------|-------------| 
 | **retryType** | Yes | **Fixed**, **None** | Określa, czy zasada ponawiania jest zdefiniowana (**fixed**), czy nie (**none**). | 
 | **retryInterval** | Nie | PT30S | Określa interwał i częstotliwość między ponownymi próbami w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Wartość minimalna wynosi 15 sekund, natomiast wartość maksymalna to 18 miesięcy. | 

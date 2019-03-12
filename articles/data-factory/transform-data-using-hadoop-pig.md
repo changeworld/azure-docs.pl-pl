@@ -3,23 +3,23 @@ title: Przekształcanie danych przy użyciu działania technologii Pig w usłudz
 description: Dowiedz się, jak użyć działania technologii Pig w usłudze Azure data factory w celu uruchomienia skryptów usługi Pig na na — żądanie/swój własny klaster HDInsight.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: a29bd64c6b18d41028c8952f531698bbfa9e01e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014713"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574920"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania technologii Pig w usłudze Hadoop w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-pig-activity.md)
 > * [Bieżąca wersja](transform-data-using-hadoop-pig.md)
 

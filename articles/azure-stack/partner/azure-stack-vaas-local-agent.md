@@ -10,36 +10,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7bf766dc0f73b37fc7de537537c7a885a50c30a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339576"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769220"
 ---
 # <a name="deploy-the-local-agent"></a>Wdrażanie lokalnego agenta
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Dowiedz się, jak za pomocą weryfikacji jako lokalny agent usługi (VaaS) sprawdź, czy sprzęt. Agent lokalny należy wdrożyć rozwiązania usługi Azure Stack, weryfikowany przed uruchomieniem testów sprawdzania poprawności.
+Dowiedz się, jak używać weryfikacji jako lokalny agent usługi (VaaS) do uruchomienia testów walidacyjnych. Agent lokalny należy wdrożyć przed uruchomieniem testów sprawdzania poprawności.
 
 > [!Note]  
-> Upewnij się, czy maszyny, na którym jest uruchomiony agent lokalny nie utracą dostęp wyewidencjonowanie i powiązanych z Internetem. Ta maszyna musi być dostępny tylko dla użytkowników, które mają uprawnienia do użycia VaaS w imieniu swojej dzierżawy.
+> Upewnij się, komputera, na którym jest uruchomiony agent lokalny nie utracić dostęp ruchu wychodzącego z Internetem. Ta maszyna powinny być dostępne tylko dla użytkowników, którzy są autoryzowane do używania VaaS w imieniu swojej dzierżawy.
 
 Wdrażanie lokalnego agenta:
 
-1. Zainstaluj lokalnego agenta
-2. Kontrole poprawnością
-3. Uruchom agenta lokalnego
+1. Zainstaluj lokalnego agenta.
+2. Wykonaj testy z poprawnością.
+3. Uruchom agenta lokalnego.
 
 ## <a name="download-and-start-the-local-agent"></a>Pobierz i zacznij agent lokalny
 
-Pobierz agenta na komputerze, który spełnia wymagania wstępne w Twoim centrum danych, który nie jest częścią systemu Azure Stack, ale taki, który ma dostęp do wszystkich punktów końcowych usługi Azure Stack.
+Pobierz agenta na komputerze, który spełnia wymagania wstępne w centrum danych i ma dostęp do wszystkich punktów końcowych usługi Azure Stack. Ta maszyna nie powinna być częścią systemu Azure Stack lub hostowanych w chmurze Azure Stack.
 
 ### <a name="machine-prerequisites"></a>Wymagania wstępne dotyczące maszyny
 
@@ -51,8 +51,6 @@ Sprawdź, że Twoja maszyna spełnia następujące kryteria:
 - Co najmniej 8 rdzeniami
 - Minimalne 200 GB miejsce na dysku
 - Czasu trwania stanu stabilnego łączności sieciowej z Internetem
-
-Usługa Azure Stack jest systemie poddawanym testowi. Komputer nie powinien być częścią usługi Azure Stack lub hostowanych w chmurze Azure Stack.
 
 ### <a name="download-and-install-the-agent"></a>Pobierz i zainstaluj agenta
 
@@ -95,7 +93,7 @@ Polecenie spowoduje pobranie obrazu publicznego repozytorium (PIR) obrazu (syste
 
 ## <a name="checks-before-starting-the-tests"></a>Sprawdzanie przed uruchomieniem testów
 
-Testy akcji zdalnych. Komputer który uruchamia testy muszą mieć dostęp do punktów końcowych usługi Azure Stack, w przeciwnym razie testy nie będą działać. Jeśli używasz lokalnego agenta VaaS korzystać z maszyn, których będzie uruchamiany agent. Aby sprawdzić, czy komputer ma dostęp do punktów końcowych usługi Azure Stack, uruchamiając następujące testy:
+Testy uruchamiania operacji zdalnych. Komputer który uruchamia testy muszą mieć dostęp do punktów końcowych usługi Azure Stack, w przeciwnym razie testy nie będą działać. Jeśli używasz lokalnego agenta VaaS korzystać z maszyn, których będzie uruchamiany agent. Aby sprawdzić, czy komputer ma dostęp do punktów końcowych usługi Azure Stack, uruchamiając następujące testy:
 
 1. Sprawdź, czy można połączyć podstawowy identyfikator URI. Otwórz wiersz polecenia lub powłokę bash, i uruchom następujące polecenie, zastępując `<EXTERNALFQDN>` nazwą FQDN zewnętrznego środowiska:
 
