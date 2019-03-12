@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: d79485fa7587a6cf8783f2e5779fa0a1d593aea7
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ac7043d2967fcf3f083c09622c39f4649f04f6e7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011436"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551674"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -191,7 +191,7 @@ Tożsamość modułu jest unikatowy identyfikator przypisany do każdego modułu
 Podobnie jak w bliźniaczej reprezentacji urządzenia, bliźniacza reprezentacja modułu to dokument JSON, która przechowuje informacje o stanie modułu, takie jak metadane, konfiguracje i warunki. Usługa IoT Hub utrzymuje bliźniaczą reprezentację modułu tożsamości każdego modułu, która obsługi administracyjnej w obszarze tożsamość urządzenia w usłudze IoT hub. Bliźniaczych reprezentacjach modułów umożliwia synchronizowanie modułu warunków i konfiguracje między modułem i zapleczem rozwiązania. Można tworzyć zapytania bliźniaczych reprezentacjach modułów, aby znaleźć określone moduły i wykonać zapytanie o stan długotrwałych operacji.
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](http://mqtt.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
+[MQTT](https://mqtt.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="operations-monitoring"></a>Monitorowanie operacji
 Usługa IoT Hub [monitorowanie operacji](iot-hub-operations-monitoring.md) umożliwia monitorowanie stanu operacji w Centrum IoT w czasie rzeczywistym. [Usługa IoT Hub](#iot-hub) śledzi zdarzenia w ramach kilku kategorii operacji. Możesz zdecydować się na wysyłanie zdarzeń z jedną lub więcej kategorii do punktu końcowego usługi IoT Hub na potrzeby przetwarzania. Można monitorować dane dotyczące błędów lub skonfigurować bardziej złożone przetwarzanie na podstawie wzorców danych.

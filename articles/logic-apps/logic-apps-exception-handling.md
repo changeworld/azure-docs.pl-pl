@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308727"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779151"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w usłudze Azure Logic Apps
 
@@ -23,7 +23,7 @@ Sposób, w jaki dowolnej architekturze integracji prawidłowo obsługuje przesto
 
 <a name="retry-policies"></a>
 
-## <a name="retry-policies"></a>Zasady ponawiania
+## <a name="retry-policies"></a>Zasady ponawiania prób
 
 Najbardziej podstawowa wyjątku oraz obsługi błędów, można użyć *zasady ponawiania* w dowolnej akcji lub wyzwalacza, jeśli są obsługiwane. Zasady ponawiania Określa, czy i jak akcję lub wyzwalacz ponawiać próbę żądania, gdy upłynie limit czasu żądania oryginalny lub kończy się niepowodzeniem, czyli każde żądanie, które powoduje 408, 429 lub 5xx odpowiedzi. Jeśli nie zasady ponawiania jest używany, domyślna zasada jest używany. 
 
@@ -164,7 +164,7 @@ W poniższej tabeli przedstawiono, jak Logic Apps generuje zmienną losową rozk
 
 Każda akcja aplikacji logiki deklaruje akcje, które musi zostać zakończone przed uruchomieniem tej akcji, podobne do określania kolejności kroków w przepływie pracy. W definicji działania **runAfter** właściwość definiuje ta kolejność i jest obiektem, który opisuje, w których akcje i stany akcji wykonuj akcję.
 
-Domyślnie wszystkie akcje, które dodajesz w Projektancie aplikacji logiki są ustawione na uruchamianie po poprzednim kroku, gdy jest wynik poprzedniego kroku **Powodzenie**. Można jednak dostosować **runAfter** tak, aby akcje zostać wywołane podczas poprzedniej akcji powoduje jako, **pomijane**, lub kombinacji tych wartości. Na przykład, aby dodać element do określonego tematu usługi Service Bus po określonym **Insert_Row** akcji kończy się niepowodzeniem, można użyć w tym przykładzie **runAfter** definicji:
+Domyślnie wszystkie akcje, które dodajesz w Projektancie aplikacji logiki są ustawione na uruchamianie po poprzednim kroku, gdy jest wynik poprzedniego kroku **Powodzenie**. Można jednak dostosować **runAfter** tak, aby akcje zostać wywołane podczas poprzedniej akcji powoduje jako **,** **pomijane**, lub kombinacji tych wartości. Na przykład, aby dodać element do określonego tematu usługi Service Bus po określonym **Insert_Row** akcji kończy się niepowodzeniem, można użyć w tym przykładzie **runAfter** definicji:
 
 ```json
 "Send_message": {
@@ -223,9 +223,9 @@ Limity zakresów, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits
 
 Mimo że wychwytywanie błędów z zakresu jest przydatne, również można kontekstu, które pomagają zrozumieć, dokładnie akcje, które nie powiodło się oraz wszelkie błędy lub kodów stanu, które zostały zwrócone. `@result()` Wyrażenie dostarcza kontekst dotyczący wyniku wszystkie akcje w zakresie.
 
-`@result()` Wyrażenie akceptuje pojedynczy parametr (nazwa zakresu) i zwraca tablicę wszystkich wyników akcji z tego zakresu. Te obiekty działania obejmują takie same atrybuty jak  **@actions()** obiektu, takiego jak akcja ma czas rozpoczęcia, czas zakończenia, stanu, danych wejściowych, identyfikatory korelacji i danych wyjściowych. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, może łatwo łączyć  **@result()** funkcją **runAfter** właściwości.
+`@result()` Wyrażenie akceptuje pojedynczy parametr (nazwa zakresu) i zwraca tablicę wszystkich wyników akcji z tego zakresu. Te obiekty działania obejmują takie same atrybuty jak  **\@actions()** obiektu, takiego jak akcja ma czas rozpoczęcia, czas zakończenia, stanu, danych wejściowych, identyfikatory korelacji i danych wyjściowych. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, może łatwo łączyć  **\@result()** funkcją **runAfter** właściwości.
 
-Aby uruchomić akcję dla każdej akcji w zakresie, który ma **nie powiodło się** wyniku i filtrowania tablicy wyników w dół, aby akcje zakończone niepowodzeniem, Sparuj  **@result()** z **[Filtruj tablicę](../connectors/connectors-native-query.md)** akcji i [ **dla każdego** ](../logic-apps/logic-apps-control-flow-loops.md) pętli. Możesz pobrać tablicy przefiltrowanych wyników i wykonaj akcję dla każdej awarii za pomocą **dla każdego** pętli. 
+Aby uruchomić akcję dla każdej akcji w zakresie, który ma **nie powiodło się** wyniku i filtrowania tablicy wyników w dół, aby akcje zakończone niepowodzeniem, Sparuj  **\@result()** z **[ Filtrowanie tablicy](../connectors/connectors-native-query.md)** akcji i [ **dla każdego** ](../logic-apps/logic-apps-control-flow-loops.md) pętli. Możesz pobrać tablicy przefiltrowanych wyników i wykonaj akcję dla każdej awarii za pomocą **dla każdego** pętli. 
 
 Oto przykład, a następnie szczegółowy opis, który wysyła żądanie HTTP POST z treści odpowiedzi dla wszystkich działań, które nie powiodły się w zakresie "My_Scope":
 
@@ -317,7 +317,7 @@ Odwołanie, Oto przykład pojedynczej `@result()` elementu, przedstawiający **n
 }
 ```
 
-Aby wykonać różne obsługi wzorców wyjątków, można użyć wyrażenia opisany wcześniej w tym artykule. Może wybrać opcję wykonania jednego wyjątków, Obsługa akcji poza zakres, który akceptuje całej tablicy filtrowane błędów ale Usuń **dla każdego** akcji. Możesz również uwzględnić inne właściwości przydatne z  **@result()** odpowiedzi, jak opisano wcześniej.
+Aby wykonać różne obsługi wzorców wyjątków, można użyć wyrażenia opisany wcześniej w tym artykule. Może wybrać opcję wykonania jednego wyjątków, Obsługa akcji poza zakres, który akceptuje całej tablicy filtrowane błędów ale Usuń **dla każdego** akcji. Możesz również uwzględnić inne właściwości przydatne z  **\@result()** odpowiedzi, jak opisano wcześniej.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Narzędzie diagnostyczne systemu Azure i metryk
 

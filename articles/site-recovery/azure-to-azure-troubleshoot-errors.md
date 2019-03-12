@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: fdeef8be1cfaabde326f68a1207f7c38d037a502
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4359a90bb511b538499848effea7be22a23fac0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313300"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570627"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -173,7 +173,9 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
   - Usługa Azure Site Recovery zakresy adresów IP usługi Office 365 są wymagane do uwierzytelniania.
     Jeśli używasz proxy reguły i zapory Sieciowej grupy zabezpieczeń sieci platformy Azure do kontrolowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że zezwalają na komunikację zakresy adresów IP usługi Office 365. Tworzenie [tag usługi Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń do zezwalania na dostęp do wszystkich adresów IP odpowiadającej usługi AAD
         - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
-
+>[!NOTE]
+> W przypadku maszyn wirtualnych za modułem **standardowa** wewnętrznego modułu równoważenia obciążenia, a następnie go może nie mieć dostępu do adresów IP usługi Office 365, tj Login.micorsoftonline.com domyślnie. Albo zmień ją na **podstawowe** wewnętrzny typ modułu równoważenia obciążenia lub utworzyć na zewnątrz dostępu, zgodnie z opisem w [artykuł] (https://aka.ms/lboutboundrulescli).
+>
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Konfiguracja usługi Site Recovery nie powiodła się (151197)
 - **Możliwa przyczyna** </br>
@@ -259,7 +261,7 @@ Aby włączyć replikację na maszynie Wirtualnej, powinna być w stanie inicjow
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
-- Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać.
+- Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać **.**
 - Jeśli **provisioningState** jest **aktualizowanie**, innego rozszerzenia mogą być wprowadzenie wdrożone. Sprawdź, czy wszystkie trwające operacje na maszynie Wirtualnej, poczekaj na ukończenie i ponów próbę wykonania nie powiodło się, Usługa Site Recovery ich **włączyć replikację** zadania.
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Nie można wybrać docelowej sieci wirtualnej — karta wybór sieciowych jest wyszarzona.

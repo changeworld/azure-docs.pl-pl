@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 1775eb4659ccc71d962d0beab9b605e01eb12f72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: df836d46f244822c8c3dd35be6de08b0c4f34038
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253622"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760518"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu zabezpieczeń Windows
 Aby zapobiec nieautoryzowanemu dostępowi do klastra usługi Service Fabric, należy zabezpieczyć klaster. Bezpieczeństwo jest szczególnie ważne, gdy klaster działa obciążeń produkcyjnych. W tym artykule opisano sposób konfigurowania zabezpieczeń między węzłami i węzeł klienta przy użyciu zabezpieczeń Windows w *ClusterConfig.JSON* pliku.  Proces odnosi się do kroku zabezpieczeń Konfiguruj [Tworzenie klastra autonomicznego w systemie Windows](service-fabric-cluster-creation-for-windows-server.md). Aby uzyskać więcej informacji o używaniu Windows zabezpieczeń w usłudze Service Fabric, zobacz [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md).
@@ -32,22 +32,22 @@ Aby zapobiec nieautoryzowanemu dostępowi do klastra usługi Service Fabric, nal
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurowanie zabezpieczeń Windows przy użyciu gMSA  
 Przykład *ClusterConfig.gMSA.Windows.MultiMachine.JSON* pliku konfiguracji pobranej z [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](https://go.microsoft.com/fwlink/?LinkId=730690) autonomicznego klastra pakiet zawiera szablon służący do konfigurowania zabezpieczeń Windows przy użyciu [konta usługi zarządzanego przez grupę (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
-```  
+```
 "security": {
-            "ClusterCredentialType": "Windows",
-            "ServerCredentialType": "Windows",
-            "WindowsIdentities": {  
-                "ClustergMSAIdentity": "[gMSA Identity]", 
-                "ClusterSPN": "[Registered SPN for the gMSA account]",
-                "ClientIdentities": [  
-                    {  
-                        "Identity": "domain\\username",  
-                        "IsAdmin": true  
-                    }  
-                ]  
-            }  
-        }  
-```  
+    "ClusterCredentialType": "Windows",
+    "ServerCredentialType": "Windows",
+    "WindowsIdentities": {  
+        "ClustergMSAIdentity": "[gMSA Identity]",
+        "ClusterSPN": "[Registered SPN for the gMSA account]",
+        "ClientIdentities": [
+            {
+                "Identity": "domain\\username",
+                "IsAdmin": true
+            }
+        ]
+    }
+}
+```
 
 | **Ustawienia konfiguracji** | **Opis** |
 | --- | --- |
@@ -60,43 +60,46 @@ Przykład *ClusterConfig.gMSA.Windows.MultiMachine.JSON* pliku konfiguracji pobr
 | Tożsamość |Dodaj użytkownika domeny, domena\nazwa_użytkownika, tożsamość klienta. |  
 | IsAdmin |Ustaw wartość true, aby określić, czy użytkownik domeny ma administrator dostępu klienta lub wartość false dla dostępu klientów użytkownika. |  
 
-[Węzeł, aby węzeł zabezpieczeń](service-fabric-cluster-security.md#node-to-node-security) jest skonfigurowany, ustawiając **ClustergMSAIdentity** po usługi Service fabric musi zostać uruchomiony w ramach gMSA. Aby można było utworzyć relacje zaufania między węzłami, muszą być umieszczane pamiętać od siebie. Można to zrobić na dwa sposoby: można określić grupy zarządzane konta usługi, która zawiera wszystkie węzły w klastrze lub grupy maszyn domeny, która zawiera wszystkie węzły w klastrze. Zdecydowanie zalecamy używanie [konta usługi zarządzanego przez grupę (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) podejście, szczególnie w przypadku większych klastrów (ponad 10 węzłów) lub w przypadku klastrów, które mogą mieć możliwość zwiększania i zmniejszania.  
+> [!NOTE]
+> Wartość ClustergMSAIdentity nie może zawierać nazwy domeny i może być tylko nazwa konta grupy usługi zarządzanej. I.E. "mysfgmsa" jest poprawny, a oba "moja_domena / / mysfgmsa" lub "mysfgmsa@mydomain" są nieprawidłowe; ponieważ domena jest implikowany przez komputer hosta.
+
+[Węzeł, aby węzeł zabezpieczeń](service-fabric-cluster-security.md#node-to-node-security) jest skonfigurowany, ustawiając **ClustergMSAIdentity** po usługi Service fabric musi zostać uruchomiony w ramach gMSA. Aby można było utworzyć relacje zaufania między węzłami, muszą być umieszczane pamiętać od siebie. Można to zrobić na dwa sposoby: Określ grupy zarządzane konta usługi, która zawiera wszystkie węzły w klastrze lub określ grupy maszyn domeny, która zawiera wszystkie węzły w klastrze. Zdecydowanie zalecamy używanie [konta usługi zarządzanego przez grupę (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) podejście, szczególnie w przypadku większych klastrów (ponad 10 węzłów) lub w przypadku klastrów, które mogą mieć możliwość zwiększania i zmniejszania.  
 To podejście nie jest wymagane tworzenie grupy domeny, dla którego administratorzy klastra przyznano prawa dostępu do dodawania i usuwania elementów członkowskich. Te konta są również przydatne w przypadku automatyczne zarządzanie hasłami. Aby uzyskać więcej informacji, zobacz [rozpoczęcie korzystania z kont usług zarządzanych przez grupę](https://technet.microsoft.com/library/jj128431.aspx).  
  
 [Klienta zabezpieczeń węzła](service-fabric-cluster-security.md#client-to-node-security) została skonfigurowana przy użyciu **ClientIdentities**. Aby ustanowić zaufanie między klientem a klastrem, należy skonfigurować klaster, aby wiedzieć, którego komputera klienckiego tożsamości, w którym można zaufać. Można to zrobić na dwa sposoby: Określ użytkowników grupy domeny, które mogą łączyć i określ użytkowników węzeł domeny, którymi mogą nawiązywać połączenie. Usługa Service Fabric obsługuje dwa typy kontroli dostępu w różnych klientów, które są podłączone do klastra usługi Service Fabric: administratora i użytkownika. Kontrola dostępu umożliwia administrator klastra ograniczyć dostęp do niektórych typów operacji klastra dla różnych grup użytkowników, dzięki czemu klaster jest bardziej bezpieczne.  Administratorzy mają pełny dostęp do możliwości zarządzania (w tym możliwości odczytu/zapisu). Użytkownicy, domyślnie mają tylko dostęp do odczytu do możliwości zarządzania (na przykład, zapytanie możliwości) i możliwość usuwania aplikacji i usług. Aby uzyskać więcej informacji na temat kontroli dostępu, zobacz [kontrola dostępu oparta na rolach dla klientów usługi Service Fabric](service-fabric-cluster-security-roles.md).  
  
 Poniższy przykład **zabezpieczeń** sekcji konfiguruje zabezpieczeń Windows przy użyciu gMSA i określa, że na komputerach należących do *ServiceFabric.clusterA.contoso.com* gMSA są częścią klastra i że  *CONTOSO\usera* ma dostęp klient administratora:  
   
-```  
+```
 "security": {
-    "ClusterCredentialType": "Windows",            
+    "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
-    "WindowsIdentities": {  
-        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",  
-        "ClusterSPN" : "http/servicefabric/clusterA.contoso.com",  
-        "ClientIdentities": [{  
-            "Identity": "CONTOSO\\usera",  
-            "IsAdmin": true  
-        }]  
-    }  
-}  
-```  
+    "WindowsIdentities": {
+        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",
+        "ClusterSPN" : "http/servicefabric/clusterA.contoso.com",
+        "ClientIdentities": [{
+            "Identity": "CONTOSO\\usera",
+            "IsAdmin": true
+        }]
+    }
+}
+```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurowanie zabezpieczeń Windows przy użyciu grupy maszyn  
 Ten model jest wycofywany. Zaleca się używania konta usługi zarządzanego zgodnie z powyższym opisem. Przykład *ClusterConfig.Windows.MultiMachine.JSON* pliku konfiguracji pobranej z [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](https://go.microsoft.com/fwlink/?LinkId=730690) autonomicznego klastra pakiet zawiera szablon służący do konfigurowania zabezpieczeń Windows.  Zabezpieczenia Windows jest skonfigurowany w **właściwości** sekcji: 
 
 ```
 "security": {
-            "ClusterCredentialType": "Windows",
-            "ServerCredentialType": "Windows",
-            "WindowsIdentities": {
-                "ClusterIdentity" : "[domain\machinegroup]",
-                "ClientIdentities": [{
-                    "Identity": "[domain\username]",
-                    "IsAdmin": true
-                }]
-            }
-        }
+    "ClusterCredentialType": "Windows",
+    "ServerCredentialType": "Windows",
+    "WindowsIdentities": {
+        "ClusterIdentity" : "[domain\machinegroup]",
+        "ClientIdentities": [{
+            "Identity": "[domain\username]",
+            "IsAdmin": true
+        }]
+    }
+}
 ```
 
 | **Ustawienia konfiguracji** | **Opis** |

@@ -11,15 +11,15 @@ ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 2972d04d1617b755bb6c2ff60d9922accdd09f2a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: 0dc50da5eb302e2f1b24c265b4675d93f0a2e849
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614841"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768369"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Uwidacznianie lokalnej usługi WCF dla aplikacji internetowej w chmurze za pomocą usługi Azure Relay 
 Ten artykuł przedstawia sposób tworzenia hybrydowej aplikacji w chmurze przy użyciu platformy Microsoft Azure i programu Visual Studio. Utworzysz aplikację korzystającą z wielu zasobów platformy Azure i działającą w chmurze.
@@ -185,7 +185,7 @@ Najpierw utworzysz symulowany system katalogu produktów w środowisku lokalnym.
         }
     }
     ```
-12. W Eksploratorze rozwiązań kliknij dwukrotnie plik **App.config**, aby otworzyć go w edytorze programu Visual Studio. W dolnej części elementu `<system.ServiceModel>` (ale wciąż w obrębie elementu `<system.ServiceModel>`) dodaj poniższy kod XML. Koniecznie zastąp ciąg *yourServiceNamespace* nazwą Twojej przestrzeni nazw, a ciąg *yourKey* kluczem SAS, który został wcześniej pobrany z portalu:
+12. W Eksploratorze rozwiązań kliknij dwukrotnie plik **App.config**, aby otworzyć go w edytorze programu Visual Studio. W dolnej części `<system.ServiceModel>` — element (ale nadal w elemencie `<system.ServiceModel>`), Dodaj następujący kod XML: Koniecznie zastąp ciąg *yourServiceNamespace* nazwą Twojej przestrzeni nazw, a ciąg *yourKey* kluczem SAS, który został wcześniej pobrany z portalu:
 
     ```xml
     <system.serviceModel>
@@ -350,7 +350,7 @@ Następny krok polega na połączeniu lokalnego serwera produktów z aplikacją 
 
    ![Dodaj jako link][24]
 
-6. Teraz otwórz plik **HomeController.cs** w edytorze programu Visual Studio i zastąp definicję przestrzeni nazw poniższym kodem. Koniecznie zastąp ciąg *yourServiceNamespace* nazwą Twojej przestrzeni nazw, a ciąg *yourKey* Twoim kluczem SAS. Dzięki temu klient będzie miał możliwość wywołania usługi lokalnej i zwrócenia wyniku wywołania.
+6. Teraz Otwórz **HomeController.cs** plik w edytorze programu Visual Studio i Zastąp definicję przestrzeni nazw następującym kodem: Koniecznie zastąp ciąg *yourServiceNamespace* nazwą Twojej przestrzeni nazw, a ciąg *yourKey* kluczem SAS. Dzięki temu klient będzie miał możliwość wywołania usługi lokalnej i zwrócenia wyniku wywołania.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -448,7 +448,7 @@ Przed uruchomieniem aplikacji w chmurze musisz się upewnić, że aplikacja **Pr
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-1. Naciśnij klawisz F5, aby skompilować i uruchomić aplikację. Najpierw powinien zostać uruchomiony serwer lokalny (aplikacja konsoli **ProductsServer**), a następnie aplikacja **ProductsPortal** w oknie przeglądarki, jak pokazano na poniższym zrzucie ekranu. Ponownie zwróć uwagę, że pojawi się spis produktów zawierający dane pobrane z lokalnego systemu usługi produktów, a dane zostanę wyświetlone w aplikacji internetowej. Sprawdź adres URL, aby upewnić się, że aplikacja **ProductsPortal** działa w chmurze jako aplikacja internetowa platformy Azure.
+1. Naciśnij klawisz F5, aby skompilować i uruchomić aplikację. Lokalny serwer ( **ProductsServer** konsoli aplikacji) powinien uruchomić się jako pierwszy, a następnie **ProductsPortal** aplikacja powinna uruchomić się w oknie przeglądarki, jak pokazano na poniższym zrzucie ekranu: Ponownie pojawi się spis produktów zawierający dane pobrane z lokalnego systemu usługi produktów, a dane zostaną wyświetlone w aplikacji internetowej. Sprawdź adres URL, aby upewnić się, że aplikacja **ProductsPortal** działa w chmurze jako aplikacja internetowa platformy Azure.
 
    ![Uruchamianie aplikacji internetowej na platformie Azure][1]
 
@@ -462,7 +462,7 @@ Przed uruchomieniem aplikacji w chmurze musisz się upewnić, że aplikacja **Pr
 
     ![Zaktualizowane dane wyjściowe][38]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przejdź do następującego samouczka: 
 
 > [!div class="nextstepaction"]
