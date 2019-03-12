@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 61b3c01683318ff1c686ad9e96a420f8ae5e245e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d7513c4b8ea52b28d138032879f16e5a331853d2
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306667"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574451"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL
 
@@ -70,7 +70,7 @@ Skrypt rozpoczyna się od poleceń czyszczenie po poprzedniej możliwe uruchamia
 
 ### <a name="powershell-code"></a>Kod programu PowerShell
 
-Ten skrypt programu PowerShell przyjęto założenie, że uruchomiono polecenie cmdlet Import-Module dla modułu AzureRm. Aby uzyskać dokumentację referencyjną, zobacz [przeglądarka modułów programu PowerShell](https://docs.microsoft.com/powershell/module/).
+Ten skrypt programu PowerShell przyjęto założenie, że już zainstalowano moduł Az. Aby uzyskać informacje, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!

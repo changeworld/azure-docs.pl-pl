@@ -7,19 +7,19 @@ documentationcenter: ''
 author: ggailey777
 manager: erikre
 ms.assetid: ''
-ms.service: na
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 7c4eefa09f0a70d42601a5b1fe8694500b5c6be2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d78998c3eab79c3c9d5511335c5d27be5803cc3e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118255"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762507"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -111,13 +111,13 @@ Większość aplikacji muszą przechowywać dane, więc niezależnie od tego, ja
 
     >**Rozpoczynanie pracy**: [Tworzenie aplikacji sieci web usługi Azure Cosmos DB](../../cosmos-db/create-sql-api-dotnet.md). Jeśli jesteś deweloperem bazy danych MongoDB, zobacz [tworzenie aplikacji internetowej bazy danych MongoDB w usłudze Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
 
--   **Usługa Azure Storage**: Udostępnia magazyn odporne i o wysokiej dostępności dla obiektów blob, kolejek, plików i innych rodzajów danych nierelacyjnych. Storage stanowi podstawę magazynu dla maszyn wirtualnych.
+-   **Azure Storage**: Udostępnia magazyn odporne i o wysokiej dostępności dla obiektów blob, kolejek, plików i innych rodzajów danych nierelacyjnych. Storage stanowi podstawę magazynu dla maszyn wirtualnych.
 
     >**Kiedy należy używać**: Kiedy aplikacja przechowuje danych nierelacyjnych, takich jak pary klucz wartość (tabele), blob, udziałów plików lub komunikatów (kolejki).
 
     >**Rozpoczynanie pracy**: Wybierz jedną z tych typów pamięci masowej: [obiektów blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [tabel](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejek](../../storage/queues/storage-dotnet-how-to-use-queues.md), lub [pliki](../../storage/files/storage-dotnet-how-to-use-files.md).
 
--   **Usługa Azure SQL Database**: Oparte na platformie Azure w wersji aparatu Microsoft SQL Server do przechowywania danych relacyjnych tabelarycznych w chmurze. SQL Database oferuje przewidywalną wydajność, skalowalność bez przestojów, ciągłość prowadzenia działalności biznesowej i ochrony danych.
+-   **Azure SQL Database**: Oparte na platformie Azure w wersji aparatu Microsoft SQL Server do przechowywania danych relacyjnych tabelarycznych w chmurze. SQL Database oferuje przewidywalną wydajność, skalowalność bez przestojów, ciągłość prowadzenia działalności biznesowej i ochrony danych.
 
     >**Kiedy należy używać**: Jeśli aplikacja wymaga magazyn danych przy użyciu więzów integralności transakcyjnej pomocy technicznej i Obsługa zapytania TSQL.
 
@@ -180,7 +180,7 @@ Swoją aplikację wzwyż i działających na platformie Azure muszą mieć możl
 
     >**Rozpoczynanie pracy**: Postępuj zgodnie z [samouczka usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
--   **Usługa Azure Monitor**: Usługa, która pomaga w wizualizacji, zapytania, trasy, archiwizować i działania dotyczące metryk i dzienników generowanych przez usługi infrastruktury platformy Azure i zasobów. Monitor zapewnia widoki danych, zobacz temat w witrynie Azure portal, a następnie jest jedno źródło monitorowania zasobów platformy Azure.
+-   **Azure Monitor**: Usługa, która pomaga w wizualizacji, zapytania, trasy, archiwizować i działania dotyczące metryk i dzienników generowanych przez usługi infrastruktury platformy Azure i zasobów. Monitor zapewnia widoki danych, zobacz temat w witrynie Azure portal, a następnie jest jedno źródło monitorowania zasobów platformy Azure.
  
     >**Rozpoczynanie pracy**: [Rozpoczynanie pracy z usługą Azure Monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
@@ -219,7 +219,7 @@ Platforma Azure udostępnia dwa sposoby zarządzania swoje aplikacje i usługi z
 
 -   [Interfejs wiersza polecenia platformy Azure (CLI)](../../xplat-cli-install.md): Umożliwia łączenie się z subskrypcją platformy Azure i program w różnych zadań w odniesieniu do zasobów platformy Azure z poziomu wiersza polecenia.
 
--   [Program Azure PowerShell](../../powershell-install-configure.md): Zawiera zestaw modułów z poleceniami cmdlet, które umożliwiają zarządzanie zasobami platformy Azure przy użyciu programu Windows PowerShell.
+-   [Azure PowerShell](../../powershell-install-configure.md): Zawiera zestaw modułów z poleceniami cmdlet, które umożliwiają zarządzanie zasobami platformy Azure przy użyciu programu Windows PowerShell.
 
 ### <a name="azure-portal"></a>Azure Portal
 

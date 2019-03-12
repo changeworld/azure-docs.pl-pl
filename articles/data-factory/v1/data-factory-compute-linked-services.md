@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fea90d273d156eec3bf29f376e4cf6668c68170f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697523"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545167"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia środowisk obsługiwanych przez usługę Azure Data Factory
 > [!NOTE]
@@ -116,7 +116,7 @@ Następujący kod JSON definiuje opartych na systemie Linux usługi połączonej
 > [!IMPORTANT]
 > Klaster HDInsight tworzy *domyślny kontener* w usłudze Azure Blob storage, który określisz w kodzie JSON **linkedServiceName** właściwości. Zgodnie z projektem HDInsight nie powoduje usunięcia tego kontenera, gdy klaster jest usuwany. W usługi połączonej HDInsight na żądanie klaster usługi HDInsight jest tworzony przy każdym przetwarzaniu wycinka wymaga przetworzenia, chyba że istnieje istniejącego klastra na żywo (**timeToLive**). Klaster jest usuwany po zakończeniu przetwarzania. 
 >
-> Przetworzeniu większej liczby wycinków w usłudze Blob storage będzie widocznych wiele kontenerów. Kontenery nie są potrzebne do rozwiązywania problemów z zadaniami, można usunąć kontener, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne z następującym wzorcem: `adf<your Data Factory name>-<linked service name>-<date and time>`. Można użyć narzędzia, takiego jak [Microsoft Storage Explorer](http://storageexplorer.com/) Aby usunąć kontenery z magazynu obiektów Blob.
+> Przetworzeniu większej liczby wycinków w usłudze Blob storage będzie widocznych wiele kontenerów. Kontenery nie są potrzebne do rozwiązywania problemów z zadaniami, można usunąć kontener, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne z następującym wzorcem: `adf<your Data Factory name>-<linked service name>-<date and time>`. Można użyć narzędzia, takiego jak [Microsoft Storage Explorer](https://storageexplorer.com/) Aby usunąć kontenery z magazynu obiektów Blob.
 >
 > 
 
@@ -271,7 +271,7 @@ Utworzysz usługi połączone usługi Batch do rejestrowania maszyn wirtualnych 
 Jeśli jesteś nowym użytkownikiem korzystania z usługi Batch:
 
 * Dowiedz się więcej o [podstawy usługi Azure Batch](../../batch/batch-technical-overview.md).
-* Dowiedz się więcej o [New AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) polecenia cmdlet. Użyj tego polecenia cmdlet, aby utworzyć konto usługi Batch. Możesz utworzyć konto usługi Batch za pomocą [witryny Azure portal](../../batch/batch-account-create-portal.md). Aby uzyskać szczegółowe informacje o użyciu polecenia cmdlet, zobacz [przy użyciu programu PowerShell do zarządzania kontem usługi Batch](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
+* Dowiedz się więcej o [New AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) polecenia cmdlet. Użyj tego polecenia cmdlet, aby utworzyć konto usługi Batch. Możesz utworzyć konto usługi Batch za pomocą [witryny Azure portal](../../batch/batch-account-create-portal.md). Aby uzyskać szczegółowe informacje o użyciu polecenia cmdlet, zobacz [przy użyciu programu PowerShell do zarządzania kontem usługi Batch](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
 * Dowiedz się więcej o [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) polecenia cmdlet. Użyj tego polecenia cmdlet, aby utworzyć pulę usługi Batch.
 
 ### <a name="example"></a>Przykład

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7fcf08c36d8babd0a318ed5b912823c344f4ce64
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024369"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549956"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon Redshift, za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Bieżąca wersja](connector-amazon-redshift.md)
 
@@ -38,7 +38,7 @@ W szczególności ten łącznik Amazon Redshift obsługuje pobieranie danych z u
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli kopiujesz magazynu danych, do danych lokalnych przy użyciu [własne środowisko IR](create-self-hosted-integration-runtime.md), przyznać dostęp do klastra usługi Amazon Redshift środowiska Integration Runtime (Użyj adres IP komputera). Zobacz [Autoryzowanie dostępu do klastra](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) instrukcje.
+* Jeśli kopiujesz magazynu danych, do danych lokalnych przy użyciu [własne środowisko IR](create-self-hosted-integration-runtime.md), przyznać dostęp do klastra usługi Amazon Redshift środowiska Integration Runtime (Użyj adres IP komputera). Zobacz [Autoryzowanie dostępu do klastra](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) instrukcje.
 * Jeśli dane są kopiowane do magazynu danych na platformie Azure, zobacz [zakresów IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653) dla adresu IP zasobów obliczeniowych i zakresy SQL używane przez usługi Azure data centers.
 
 ## <a name="getting-started"></a>Wprowadzenie
@@ -125,9 +125,9 @@ Aby skopiować dane z usługi Amazon Redshift, należy ustawić typ źródłoweg
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **Obiektu AmazonRedshiftSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AmazonRedshiftSource** | Yes |
 | query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
-| elemencie redshiftUnloadSettings | Grupa właściwości przy użyciu zwolnienie usługi Redshift Amazon. | Nie |
+| redshiftUnloadSettings | Grupa właściwości przy użyciu zwolnienie usługi Redshift Amazon. | Nie |
 | s3LinkedServiceName | Odnosi się do Amazon S3 to-być używane jako przejściowy magazyn, określając nazwę połączonej usługi typu "AmazonS3". | Tak, jeśli za pomocą zwolnienia |
 | bucketName | Wskazuje przedział S3 do przechowywania danych tymczasowych. Jeśli nie zostanie podana, usługa Data Factory wygeneruje ją automatycznie.  | Tak, jeśli za pomocą zwolnienia |
 
@@ -151,7 +151,7 @@ Dowiedz się więcej na temat korzystania z zwolnienia do skopiowania danych z u
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Umożliwia kopiowanie danych z usługi Amazon Redshift przez zwolnienie
 
-[ZWOLNIJ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) jest mechanizmem udostępniane przez usługi Amazon Redshift, który można zwolnić wyników zapytania do jednej lub więcej plików na Amazon Simple Storage Service (Amazon S3). Jest to sposób zalecane przez Amazon do kopiowania dużych zestawów danych z usługi Redshift.
+[ZWOLNIJ](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) jest mechanizmem udostępniane przez usługi Amazon Redshift, który można zwolnić wyników zapytania do jednej lub więcej plików na Amazon Simple Storage Service (Amazon S3). Jest to sposób zalecane przez Amazon do kopiowania dużych zestawów danych z usługi Redshift.
 
 **Przykład: kopiowanie danych z usługi Amazon Redshift do usługi Azure SQL Data Warehouse przy użyciu UNLOAD, kopiowania przejściowego i programu PolyBase**
 
@@ -210,17 +210,17 @@ Podczas kopiowania danych z usługi Amazon Redshift, następujące mapowania są
 | Typ danych Amazon Redshift | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BIGINT |Int64 |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA |Ciąg |
-| CHAR |Ciąg |
+| ATRYBUT TYPU WARTOŚĆ LOGICZNA |String |
+| CHAR |String |
 | DATE |DateTime |
-| DECIMAL |Dziesiętny |
-| PODWÓJNEJ PRECYZJI |Podwójne |
-| LICZBA CAŁKOWITA |Int32 |
-| RZECZYWISTE |Pojedyncze |
+| DECIMAL |Decimal |
+| PODWÓJNEJ PRECYZJI |Double |
+| INTEGER |Int32 |
+| RZECZYWISTE |Single |
 | SMALLINT |Int16 |
-| TEKST |Ciąg |
+| TEKST |String |
 | ZNACZNIK CZASU: |DateTime |
-| VARCHAR |Ciąg |
+| VARCHAR |String |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

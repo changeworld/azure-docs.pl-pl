@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 5e614d7fc1b45e5a1e1c11d04ed80fbb66bfbd28
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bb315ff19aedd839c2b0638726be84343dcf4ec3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441614"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545366"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -62,7 +62,7 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
 | DateTime      | Set           | "każdy wtorek"     | 
 | DateTime      | Strefa czasowa      |    | 
-| Adres URL           | N/D\*         | „http://www.bing.com”    |
+| Adres URL           | N/D\*         | „https://www.bing.com”    |
 | Email         | N/D\*         | „support@contoso.com” |
 \* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/16/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b8240f69649e9bcb9a705f2c9fcbb819cf119356
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511976"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761416"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -239,7 +239,7 @@ Tak. Aby odłączyć ze strefą prywatną sieć wirtualną rejestracji, należy 
 
 Tak. Po usunięciu sieć wirtualną rejestracji lub rozpoznawania bez najpierw odłączanie ze strefą prywatną operacja usuwania powiedzie się. Jednak sieci wirtualnej nie jest automatycznie odłączone z prywatnej strefy, jeśli istnieje. Należy ręcznie Odłącz sieć wirtualną z prywatnej strefy. Z tego powodu Odłącz sieć wirtualną z prywatnej strefy, zanim usuniesz je.
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Rozpoznawanie nazw DNS przy użyciu domyślnej nazwy FQDN (internal.cloudapp.net) wciąż działają nawet wtedy, gdy strefę prywatną (np. contoso.local) jest połączona z siecią wirtualną?
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Rozpoznawanie nazw DNS przy użyciu domyślnej nazwy FQDN (internal.cloudapp.net) wciąż działają nawet wtedy, gdy strefę prywatną (na przykład private.contoso.com) jest połączona z siecią wirtualną?
 
 Tak. Strefy prywatne w usłudze nie zastępuje domyślne rozwiązania DNS przy użyciu strefy internal.cloudapp.net platformy Azure. Jest dostępna jako dodatkową funkcję lub ulepszenie. Czy możesz polegać na internal.cloudapp.net platformy Azure lub w prywatnej strefy, użyj nazwy FQDN strefy, którą chcesz usunąć względem. 
 
@@ -262,7 +262,7 @@ Tak. W publicznej wersji zapoznawczej istnieją następujące ograniczenia.
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Czy istnieją wszystkie przydziały i limity strefy lub rekordów w przypadku stref prywatnych?
 
-Nie ma ograniczeń liczby stref dozwolone na subskrypcję w przypadku stref prywatnych. Nie ma ograniczeń liczby zestawów rekordów dla strefy dla stref prywatnych. Stref prywatnych i publicznych wliczają się do ogólnej limity DNS. Aby uzyskać więcej informacji, zobacz [limity usług i subskrypcji platformy Azure](../azure-subscription-service-limits.md#dns-limits)
+Nie ma ograniczeń liczby stref dozwolone na subskrypcję w przypadku stref prywatnych. Nie ma ograniczeń liczby zestawów rekordów dla strefy dla stref prywatnych. Stref prywatnych i publicznych wliczają się do ogólnej limity DNS. Aby uzyskać więcej informacji, zobacz [limity usług i subskrypcji platformy Azure](../azure-subscription-service-limits.md#azure-dns-limits)
 
 ### <a name="is-there-portal-support-for-private-zones"></a>Czy istnieje portalu pomocy technicznej w przypadku stref prywatnych?
 

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436929"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542951"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Modele obiektów cyfrowego bliźniaczych reprezentacji i analizy przestrzennej wykresu
 
@@ -99,7 +99,7 @@ Aby uzyskać więcej informacji na temat korzystania z analizy przestrzennej wyk
 
 Dowiedz się więcej o [sposób używania struktury Swagger](how-to-use-swagger.md).
 
-Wszystkie wywołania interfejsu API musi zostać uwierzytelniony przy użyciu [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Postępuj zgodnie z interfejsami API [konwencje wytycznych interfejsu API REST firmy Microsoft](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Większość interfejsów API, które zwracają kolekcje obsługuje [OData](http://www.odata.org/getting-started/basic-tutorial/#queryData) Opcje zapytań systemu.
+Wszystkie wywołania interfejsu API musi zostać uwierzytelniony przy użyciu [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Postępuj zgodnie z interfejsami API [konwencje wytycznych interfejsu API REST firmy Microsoft](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Większość interfejsów API, które zwracają kolekcje obsługuje [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) Opcje zapytań systemu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

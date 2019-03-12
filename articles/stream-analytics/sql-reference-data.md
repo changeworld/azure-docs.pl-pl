@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc6e4083ba952eb9799aa91f76cf6e5ab75c7f64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: efd450edb87316e75fc240cac80eda93151a22b3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449584"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765088"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics (wersja zapoznawcza)
 
@@ -134,19 +134,44 @@ Przed wdrożeniem zadania na platformie Azure, możesz przetestować logiki zapy
 
 Gdy użycie zapytania różnicowego [tabele danych czasowych w usłudze Azure SQL Database](../sql-database/sql-database-temporal-tables.md) są zalecane.
 
-1. Tworzenie zapytań migawki. 
+1. Tworzenie tabeli danych czasowych w usłudze Azure SQL Database.
+   
+   ```SQL 
+      CREATE TABLE DeviceTemporal 
+      (  
+         [DeviceId] int NOT NULL PRIMARY KEY CLUSTERED 
+         , [GroupDeviceId] nvarchar(100) NOT NULL
+         , [Description] nvarchar(100) NOT NULL 
+         , [ValidFrom] datetime2 (0) GENERATED ALWAYS AS ROW START
+         , [ValidTo] datetime2 (0) GENERATED ALWAYS AS ROW END
+         , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+      )  
+      WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
+   ```
+2. Tworzenie zapytań migawki. 
 
-   Użyj **@snapshotTime** parametru, aby nakazać środowiska uruchomieniowego usługi Stream Analytics można uzyskać zestawu danych referencyjnych z tabeli bazy danych SQL danych czasowych prawidłowy w czasie systemu. Jeśli nie podano tego parametru, istnieje ryzyko uzyskania niedokładne podstawowego odwołania zestawu danych z powodu wynikających z przesunięcia czasowego zegara. Poniżej przedstawiono przykład Pełna migawka kwerendy:
-
-   ![Zapytania migawki usługi Stream Analytics](./media/sql-reference-data/snapshot-query.png)
+   Użyj  **\@snapshotTime** parametru, aby nakazać środowiska uruchomieniowego usługi Stream Analytics można uzyskać zestawu danych referencyjnych z tabeli bazy danych SQL danych czasowych prawidłowy w czasie systemu. Jeśli nie podano tego parametru, istnieje ryzyko uzyskania niedokładne podstawowego odwołania zestawu danych z powodu wynikających z przesunięcia czasowego zegara. Poniżej przedstawiono przykład Pełna migawka kwerendy:
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, [Description]
+      FROM dbo.DeviceTemporal
+      FOR SYSTEM_TIME AS OF @snapshotTime
+   ```
  
 2. Możesz tworzyć zapytania różnicowego. 
    
-   To zapytanie pobiera wszystkie wiersze w usłudze SQL database, które zostały wstawione lub usuwane w ciągu godziny rozpoczęcia **@deltaStartTime**i czas zakończenia **@deltaEndTime**. Zapytania różnicowego musi zwracać te same kolumny jako zapytanie migawki, a także kolumny  **_operacji_**. Ta kolumna określa Jeśli wiersz jest wstawionych lub usuniętych między **@deltaStartTime** i **@deltaEndTime**. Wiersze wynikowe są oznaczane jako **1** rekordy zostały wstawione, lub **2** usunięcie. 
+   To zapytanie pobiera wszystkie wiersze w usłudze SQL database, które zostały wstawione lub usuwane w ciągu godziny rozpoczęcia  **\@deltaStartTime**i czas zakończenia  **\@deltaEndTime**. Zapytania różnicowego musi zwracać te same kolumny jako zapytanie migawki, a także kolumny  **_operacji_**. Ta kolumna określa Jeśli wiersz jest wstawionych lub usuniętych między  **\@deltaStartTime** i  **\@deltaEndTime**. Wiersze wynikowe są oznaczane jako **1** rekordy zostały wstawione, lub **2** usunięcie. 
 
    W przypadku rekordów, które zostały zaktualizowane tabeli danych czasowych wykonuje księgowych, przechwytując operacji wstawiania i usuwania. Środowisko uruchomieniowe usługi Stream Analytics zastosuje następnie wyniki zapytania różnicowego do poprzedniej migawki, aby zapewnić aktualność danych referencyjnych. Przykładem zapytania różnicowego jest wyświetlane poniżej:
 
-   ![Zapytania różnicowego usługi Stream Analytics](./media/sql-reference-data/delta-query.png)
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      FROM dbo.DeviceTemporal
+      WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
+      UNION
+      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      FROM dbo.DeviceHistory   -- table we created in step 1
+      WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
+   ```
  
   Należy pamiętać, że środowisko uruchomieniowe usługi Stream Analytics może okresowo zapytania snapshot oprócz zapytania różnicowego do przechowywania punktów kontrolnych.
 

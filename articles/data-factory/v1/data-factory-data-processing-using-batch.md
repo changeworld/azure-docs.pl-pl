@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a0d5f42fa6725ba23a89904779040f379f31e59e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6ffed81390419898847ce1b1b9e6b2b48a749cdf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454157"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548476"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -96,7 +96,7 @@ Jeśli nie masz subskrypcji platformy Azure, można szybko utworzyć bezpłatne 
 Konto usługi storage umożliwia przechowywanie danych w ramach tego samouczka. Jeśli nie masz konta magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md). Przykładowe rozwiązanie korzysta z magazynu obiektów blob.
 
 #### <a name="azure-batch-account"></a>Konto usługi Azure Batch
-Utwórz konto usługi Batch za pomocą [witryny Azure portal](http://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie nim](../../batch/batch-account-create-portal.md). Należy pamiętać, partii konta nazwy i klucza konta. Możesz również użyć [New AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) polecenia cmdlet, aby utworzyć konto usługi Batch. Aby uzyskać instrukcje dotyczące sposobu używania tego polecenia cmdlet, zobacz [wprowadzenie do poleceń cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
+Utwórz konto usługi Batch za pomocą [witryny Azure portal](https://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie nim](../../batch/batch-account-create-portal.md). Należy pamiętać, partii konta nazwy i klucza konta. Możesz również użyć [New AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) polecenia cmdlet, aby utworzyć konto usługi Batch. Aby uzyskać instrukcje dotyczące sposobu używania tego polecenia cmdlet, zobacz [wprowadzenie do poleceń cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
 Przykładowe rozwiązanie używa usługi Batch (pośrednio za pośrednictwem potoku fabryki danych) do przetwarzania danych w sposób równoległy, w ramach puli węzłów obliczeniowych (zarządzanej kolekcji maszyn wirtualnych).
 
@@ -980,4 +980,4 @@ Po użytkownik przetwarzania danych, będzie można korzystać z narzędziami on
   * [Rozpoczynanie pracy z biblioteki klienta usługi Batch dla platformy .NET](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

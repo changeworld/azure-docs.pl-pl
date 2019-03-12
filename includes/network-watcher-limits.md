@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: ebe40665b6147087c8c72f75ed0ac3b3efe80535
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 3116ddd6c42c29fa45f1f5e2fa9926f6f16a77b9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279810"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553921"
 ---
 | Zasób | Limit domyślny | Limit maksymalny | Uwaga |
 | --- | --- | --- | --- |
-| Network Watcher | 1 na region  | 1 na region |  Aby włączyć dostęp do usługi jest utworzony zasób obserwatora sieci. Tylko 1 zasób usługi Network Watcher jest wymagany na subskrypcję na region |
-| Sesji przechwytywania pakietów |100 na region | 10 000 |Przechwytuje # sesje, nie zapisano |
+| Azure Network Watcher | 1 na region | 1 na region | Usługi Network Watcher jest tworzony w celu umożliwienia dostępu do usługi. Tylko jedno wystąpienie usługi Network Watcher jest wymagany na subskrypcję na region. |
+| Sesji przechwytywania pakietów |100 na region | 10 000 |Liczba sesji tylko uwzględnione są zapisywane. |

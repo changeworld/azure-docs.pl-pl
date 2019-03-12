@@ -5,15 +5,15 @@ services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 313d26e354589611b36ed7c273858de2f919566f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 02d72ed5fcfb84796dfd4b967819c331bb384610
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889515"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759972"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -36,7 +36,7 @@ Aby utworzyć klaster usługi HDInsight, które przechowują Data Lake Storage G
 
     ![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./media/hdinsight-hadoop-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
-1. Utwórz konto magazynu Azure Data Lake Storage Gen2. Upewnij się, że **hierarchicznej przestrzeni nazw** opcja jest włączona. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie konta magazynu Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+1. Utwórz konto usługi Azure Data Lake Storage Gen2. Upewnij się, że **hierarchicznej przestrzeni nazw** opcja jest włączona. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie konta magazynu Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
     ![Zrzut ekranu przedstawiający tworzenie konta magazynu w witrynie Azure portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
  

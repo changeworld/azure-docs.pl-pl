@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b236cc799a4ff84c3833f181ebec6305f1ec6942
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2690cb4243597c942b6679b5864016bf14fcbad1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171321"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732440"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Zaawansowane opcje konfiguracji dla rozszerzenia serwera NPS do uwierzytelniania wieloskładnikowego
 
@@ -32,9 +32,9 @@ Aby skonfigurować alternatywnych identyfikatorów logowania, przejdź do `HKLM\
 
 | Name (Nazwa) | Type | Wartość domyślna | Opis |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | ciąg | Pusty | Należy określić nazwę atrybut usługi Active Directory, który chcesz użyć zamiast nazwy UPN. Ten atrybut jest używany jako atrybut AlternateLoginId. Jeśli ta wartość rejestru jest równa [nieprawidłowy atrybut usługi Active Directory](https://msdn.microsoft.com/library/ms675090.aspx) (na przykład wiadomości e-mail lub nazwa wyświetlana), następnie wartość atrybutu jest używany zamiast nazwy UPN użytkownika dla uwierzytelniania. Jeśli ta wartość rejestru jest pusty lub nie skonfigurowano, następnie AlternateLoginId jest wyłączona i nazwa UPN użytkownika jest używany do uwierzytelniania. |
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Pusty | Należy określić nazwę atrybut usługi Active Directory, który chcesz użyć zamiast nazwy UPN. Ten atrybut jest używany jako atrybut AlternateLoginId. Jeśli ta wartość rejestru jest równa [nieprawidłowy atrybut usługi Active Directory](https://msdn.microsoft.com/library/ms675090.aspx) (na przykład wiadomości e-mail lub nazwa wyświetlana), następnie wartość atrybutu jest używany zamiast nazwy UPN użytkownika dla uwierzytelniania. Jeśli ta wartość rejestru jest pusty lub nie skonfigurowano, następnie AlternateLoginId jest wyłączona i nazwa UPN użytkownika jest używany do uwierzytelniania. |
 | LDAP_FORCE_GLOBAL_CATALOG | wartość logiczna | False | Aby wymusić użytek wyszukiwania LDAP wykazu globalnego, podczas wyszukiwania AlternateLoginId, należy użyć tej flagi. Konfigurowanie kontrolera domeny jako wykazu globalnego, Dodaj atrybut AlternateLoginId do wykazu globalnego i włączysz tę flagę. <br><br> Jeśli LDAP_LOOKUP_FORESTS skonfigurowano (Niepuste), **ta flaga jest wymuszana jako PRAWDA**, niezależnie od wartości tego ustawienia rejestru. W tym przypadku rozszerzenia serwera NPS wymaga wykazu globalnego, należy skonfigurować za pomocą atrybutu AlternateLoginId dla każdego lasu. |
-| LDAP_LOOKUP_FORESTS | ciąg | Pusty | Podaj Rozdzielana średnikami lista lasów do wyszukania. Na przykład *contoso.com;foobar.com*. Jeśli ta wartość rejestru jest skonfigurowany, rozszerzenia serwera NPS iteracyjne wyszukuje wszystkie lasy w kolejności, w jakiej zostały wymienione, a zwraca pierwszą wartość AlternateLoginId się pomyślnie. Jeśli ta wartość rejestru nie jest skonfigurowane, wyszukiwanie AlternateLoginId jest ograniczona do bieżącej domeny.|
+| LDAP_LOOKUP_FORESTS | string | Pusty | Podaj Rozdzielana średnikami lista lasów do wyszukania. Na przykład *contoso.com;foobar.com*. Jeśli ta wartość rejestru jest skonfigurowany, rozszerzenia serwera NPS iteracyjne wyszukuje wszystkie lasy w kolejności, w jakiej zostały wymienione, a zwraca pierwszą wartość AlternateLoginId się pomyślnie. Jeśli ta wartość rejestru nie jest skonfigurowane, wyszukiwanie AlternateLoginId jest ograniczona do bieżącej domeny.|
 
 Informacje dotyczące rozwiązywania problemów z alternatywne identyfikatory należy używać zalecane czynności [błędy Identyfikatora logowania alternatywny](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
 
@@ -46,7 +46,7 @@ Aby skonfigurować listę dozwolonych adresów IP, przejdź do `HKLM\SOFTWARE\Mi
 
 | Name (Nazwa) | Type | Wartość domyślna | Opis |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | ciąg | Pusty | Podaj Rozdzielana średnikami lista adresów IP. Zawierać adresy IP maszyn, których pochodzą żądania usług, takich jak serwer NAS/sieci VPN. Zakresy adresów IP są podsieci nie są obsługiwane. <br><br> Na przykład *10.0.0.1;10.0.0.2;10.0.0.3*.
+| IP_WHITELIST | string | Pusty | Podaj Rozdzielana średnikami lista adresów IP. Zawierać adresy IP maszyn, których pochodzą żądania usług, takich jak serwer NAS/sieci VPN. Zakresy adresów IP i podsieci nie są obsługiwane. <br><br> Na przykład *10.0.0.1;10.0.0.2;10.0.0.3*.
 
 Podczas żądania pochodzą z adresu IP, który znajduje się w dozwolonych, weryfikacji dwuetapowej jest pomijany. Lista dozwolonych adresów IP jest porównywany z adresu IP, który znajduje się w *ratNASIPAddress* atrybut żądanie usługi RADIUS. Jeśli żądanie usługi RADIUS jest oferowana w bez atrybutu ratNASIPAddress, są rejestrowane następujące ostrzeżenie: "P_WHITE_LIST_WARNING::IP listy dozwolonych jest ignorowany, ponieważ źródłowy adres IP nie ma żądania usługi RADIUS w atrybucie NasIpAddress."
 

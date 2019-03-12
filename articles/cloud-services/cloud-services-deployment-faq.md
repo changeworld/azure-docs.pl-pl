@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d44cfc0164892c34bcbe16ca07e9ec67190ada24
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c961238d1fbce1ff590e0b0843ae1390aa7f1cd9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415308"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534824"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem usług Azure Cloud Services: często zadawane pytania (FAQ)
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
 Ten artykuł zawiera często zadawane pytania dotyczące problemów z wdrażaniem dla [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Można także zapoznać się [strony rozmiar maszyny Wirtualnej usługi w chmurze](cloud-services-sizes-specs.md) Aby uzyskać informacje o rozmiarze.
 
@@ -33,29 +33,29 @@ Jeśli usługa w chmurze ma wdrożenia w dowolnym miejscu, usługi w chmurze ca�
 
 Błędy alokacji wystąpić, gdy klaster, w którym znajduje się usługa w chmurze nie ma wystarczającej ilości zasobów obliczeniowych fizyczne, do spełnienia żądania wdrożenia.
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Dlaczego skalowanie w lub poza wdrażania usługi w chmurze czasami powodować niepowodzenie alokacji?
 Po wdrożeniu usługi w chmurze on zazwyczaj pobiera przypięte do określonego klastra. Oznacza to, że skalowanie w górę/out istniejącej usługi w chmurze należy przydzielić nowe wystąpienia w tym samym klastrze. Jeśli zbliża się klastra lub żądanego rozmiaru maszyny Wirtualnej i typu nie jest dostępna, żądanie może zakończyć się niepowodzeniem.
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Dlaczego czasem wdrażania usługi w chmurze do grupy koligacji powoduje niepowodzenie alokacji?
 Nowe wdrożenie usługi w chmurze pusty mogą zostać przydzieleni przez sieci szkieletowej w programie dowolnego klastra w danym regionie, chyba że usługi w chmurze jest przypięte do grupy koligacji. Zostanie podjęta próba wdrożenia w tej samej grupie koligacji, w tym samym klastrze. Jeśli klaster zbliża się, żądanie może zakończyć się niepowodzeniem.
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Dlaczego zmieniając rozmiar maszyny Wirtualnej lub dodawania nowej maszyny Wirtualnej do istniejącej usługi w chmurze, czasami powoduje niepowodzenie alokacji?
 Klastry w centrum danych mogą mieć różne konfiguracje typów maszyny (np. serii serii Av2, seria D, seria Dv2, seria G, seria H, itp.). Jednak nie wszystkie klastry musi się wszystkie rodzaje maszyn wirtualnych. Na przykład Jeśli spróbujesz dodać serii D maszyn wirtualnych do usługi w chmurze, która została już wdrożona w klastrze tylko do serii A, wystąpią wystąpił błąd alokacji. Dzieje się tak również Jeśli spróbujesz zmienić że jednostki SKU maszyny Wirtualnej o rozmiarach (np. przełączanie z serii A z serii D).
 
-Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc, łagodzenia takie błędy alokacji, zobacz [niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
-Aby sprawdzić dostępne rozmiary w Twoim regionie, zobacz [Microsoft Azure: dostępność produktów według regionów](https://azure.microsoft.com/regions/services).
+Aby sprawdzić dostępne rozmiary w Twoim regionie, zobacz [Microsoft Azure: Dostępność produktów według regionów](https://azure.microsoft.com/regions/services).
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Dlaczego jakiś czas wdrażania usługi w chmurze kończy się niepowodzeniem ze względu na ograniczenia/przydziały/ograniczenia na mojej subskrypcji lub usług?
-Wdrożenie usługi w chmurze może zakończyć się niepowodzeniem, jeśli zasoby, które są wymagane do przydzielenia, która przekracza domyślnych lub maksymalny limit przydziału, o których usługi na poziomie region/centrum danych. Aby uzyskać więcej informacji, zobacz [usług Cloud Services ogranicza](../azure-subscription-service-limits.md#cloud-services-limits).
+Wdrożenie usługi w chmurze może zakończyć się niepowodzeniem, jeśli zasoby, które są wymagane do przydzielenia, która przekracza domyślnych lub maksymalny limit przydziału, o których usługi na poziomie region/centrum danych. Aby uzyskać więcej informacji, zobacz [usług Cloud Services ogranicza](../azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Można także śledzić bieżącego użycia/limit przydziału dla Twojej subskrypcji w portalu: witryna Azure portal = > Subskrypcje = > \<odpowiednią subskrypcję > = > "Użycie + limitu przydziału".
+Można także śledzić bieżącego użycia/limit przydziału dla Twojej subskrypcji w portalu: Witryna Azure portal = > Subskrypcje = > \<odpowiednich subskrypcji > = > "Użycie + limitu przydziału".
 
 Informacje o zasobach związanych z użyciem/użycie można również pobrać za pośrednictwem interfejsów API rozliczeń platformy Azure. Zobacz [użycia zasobów platformy Azure, interfejsu API (wersja zapoznawcza)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

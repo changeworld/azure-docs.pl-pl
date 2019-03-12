@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bfa616fb16470a3543f8c981a0104f6bda24cf4d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: eb7a98d22e9005bb1d5db2f1fbd35a1279d84703
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823482"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537234"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
@@ -197,7 +197,7 @@ Z powodu różnych regionalnych zasobów obciążenia na platformie Azure, może
 
 Ten błąd wskazuje, że z powodu dużego obciążenia w regionie, w którym próbujesz wdrożyć, nie można przydzielić zasoby określone dla kontenera usługi w tym czasie. Aby pomóc rozwiązać problem, należy użyć co najmniej jeden z następujących czynności zaradcze.
 
-* Sprawdź ustawienia wdrożenia kontenera mieszczą się w parametrów zdefiniowanych w [limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md#region-availability)
+* Sprawdź ustawienia wdrożenia kontenera mieszczą się w parametrów zdefiniowanych w [dostępność regionów dla usługi Azure Container Instances](container-instances-region-availability.md)
 * Określ niższe ustawienia Procesora i pamięci dla kontenera
 * Wdrażanie w innym regionie platformy Azure
 * Wdrażanie w późniejszym czasie

@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558978"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760771"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -50,13 +50,13 @@ Zobacz przykład specyficzny dla języka:
 
 ### <a name="c-example"></a>Przykład w języku C#
 
-W poniższym przykładzie przedstawiono [ C# funkcja](functions-dotnet-class-library.md) , jest wykonywane za każdym razem, minuty mają wartość podzielna przez pięć (na przykład jeśli funkcja rozpoczyna się od 18:57:00, następna wydajności będzie 19:00:00):
+W poniższym przykładzie przedstawiono [ C# funkcja](functions-dotnet-class-library.md) , jest wykonywane za każdym razem, minuty mają wartość podzielna przez pięć (na przykład jeśli funkcja rozpoczyna się od 18:57:00, następna wydajności będzie 19:00:00). [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Obiekt jest przekazywany do funkcji.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>Przykładowy skrypt w języku C#
 
-W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących.
+W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących. [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Obiekt jest przekazywany do funkcji.
 
 Oto powiązanie danych w *function.json* pliku:
 
@@ -84,7 +84,7 @@ Poniżej przedstawiono kod skryptu języka C#:
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F#przykład
 
-W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [ F# skryptu funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących.
+W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [ F# skryptu funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących. [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Obiekt jest przekazywany do funkcji.
 
 Oto powiązanie danych w *function.json* pliku:
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="javascript-example"></a>Przykład JavaScript
 
-W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących.
+W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących. A [obiektu timer](#usage) jest przekazywany do funkcji.
 
 Oto powiązanie danych w *function.json* pliku:
 
@@ -138,7 +138,7 @@ Poniżej przedstawiono kod JavaScript:
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if(myTimer.isPastDue)
+    if (myTimer.IsPastDue)
     {
         context.log('Node is running late!');
     }
@@ -201,7 +201,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="usage"></a>Sposób użycia
 
-Po wywołaniu funkcji wyzwalacza czasomierza [obiektu timer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazywany do funkcji. Następujący kod JSON jest przykład reprezentację obiektu czasomierza. 
+Po wywołaniu funkcji wyzwalacza czasomierza obiektu czasomierza jest przekazywany do funkcji. Następujący kod JSON jest przykład reprezentację obiektu czasomierza.
 
 ```json
 {
@@ -226,13 +226,13 @@ Usługa Azure Functions korzysta [NCronTab](https://github.com/atifaziz/NCrontab
 
 Każde pole może mieć jedną z następujących typów wartości:
 
-|Typ  |Przykład  |Po wyzwoleniu  |
+|Type  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
-|Określona wartość |<nobr>"0 5 *** *"</nobr>|w hh:05:00, gdzie hh oznacza co godzinę (co godzinę)|
-|Wszystkie wartości (`*`)|<nobr>"0 * 5 ** *"</nobr>|w 5:mm: 00 każdego dnia, gdzie jest mm co minutę godziny (60 razy dziennie)|
-|Zakres (`-` operatora)|<nobr>"5 – 7 **** *"</nobr>|hh:mm:05, hh:mm:06 i hh:mm:07, gdzie hh: mm to co minutę na godzinę (3 razy minuty)|  
-|Zestaw wartości (`,` operatora)|<nobr>"5,8,10 **** *"</nobr>|hh:mm:05, hh:mm:08 i hh:mm:10, gdzie hh: mm to co minutę na godzinę (3 razy minuty)|
-|Wartość interwału (`/` operatora)|<nobr>"0 * / 5 *** *"</nobr>|co hh:05:00 hh:10:00 hh:15:00 i tak dalej za pośrednictwem hh:55:00 gdzie hh oznacza co godzinę (12-krotnie godzina)|
+|Określona wartość |<nobr>"0 5 * * * *"</nobr>|w hh:05:00, gdzie hh oznacza co godzinę (co godzinę)|
+|Wszystkie wartości (`*`)|<nobr>"0 * 5 * * *"</nobr>|w 5:mm: 00 każdego dnia, gdzie jest mm co minutę godziny (60 razy dziennie)|
+|Zakres (`-` operatora)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05, hh:mm:06 i hh:mm:07, gdzie hh: mm to co minutę na godzinę (3 razy minuty)|  
+|Zestaw wartości (`,` operatora)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, hh:mm:08 i hh:mm:10, gdzie hh: mm to co minutę na godzinę (3 razy minuty)|
+|Wartość interwału (`/` operatora)|<nobr>"0 */5 * * * *"</nobr>|co hh:05:00 hh:10:00 hh:15:00 i tak dalej za pośrednictwem hh:55:00 gdzie hh oznacza co godzinę (12-krotnie godzina)|
 
 Aby określić, miesięcy i dni można użyć wartości liczbowych, nazwy lub skróty nazw:
 
@@ -277,7 +277,7 @@ Lub Utwórz ustawienia aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZO
 
 Kiedy używasz `WEBSITE_TIME_ZONE`, czas jest uwzględniany czas zmiany w określonej strefie czasowej, takie jak czas letni. 
 
-## <a name="timespan"></a>Przedział czasu
+## <a name="timespan"></a>TimeSpan
 
  A `TimeSpan` mogą służyć tylko do aplikacji funkcji, które jest uruchamiane na Plan usługi App Service.
 
@@ -289,7 +289,7 @@ Wyrażonej w postaci ciągu, `TimeSpan` format `hh:mm:ss` podczas `hh` wynosi mn
 |---------|---------|
 |"01:00:00" | co godzinę        |
 |"00:01:00"|co minutę         |
-|"24: 00:00" | codziennie        |
+|"24:00:00" | codziennie        |
 
 ## <a name="scale-out"></a>Skalowanie w poziomie
 

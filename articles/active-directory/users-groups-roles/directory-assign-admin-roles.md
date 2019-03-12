@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31b65dc7a73d24066bee8088b3177a1300186eba
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 98330152d8d88d538424c52b1bc5f49462010302
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316663"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727250"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -155,6 +155,10 @@ Dostępne są następujące role administratora:
 * **[Power BI Administrator](#power-bi-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Power BI, jeśli ta usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [opis roli administratora usługi Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Power BI". Jest on "Administrator usługi Power BI" [witryny Azure portal](https://portal.azure.com).
+
+* **[Uprzywilejowany uwierzytelniania administratora](#privileged-authentication-administrator)**: Użytkownicy posiadający tę rolę można ustawić lub zresetować hasła innych poświadczeń dla wszystkich użytkowników, w tym administratorzy globalni. Uprzywilejowani Administratorzy uwierzytelniania umożliwia wymuszenie użytkowników ponownej rejestracji dla istniejących poświadczeń-password (np. uwierzytelnianie wieloskładnikowe, FIDO) i odwołać "uwierzytelnianie wieloskładnikowe na urządzeniu" należy pamiętać, że monitowania o MFA podczas następnego logowania wszystkich użytkowników. Uprzywilejowanych administratorów Authentication wykonywać następujące czynności:
+  * Wymuszenie użytkowników, aby ponownie zarejestrować względem istniejących poświadczeń-password (np. uwierzytelnianie wieloskładnikowe, FIDO)
+  * Odwołanie "uwierzytelnianie wieloskładnikowe na urządzeniu" należy pamiętać, że monitowania o uwierzytelnianie wieloskładnikowe przy następnym logowaniu
 
 * **[Administrator ról uprzywilejowanych](#privileged-role-administrator)**: Użytkownicy z tą rolą mogą zarządzać przypisaniami ról, w usłudze Azure Active Directory, a także w ramach usługi Azure AD Privileged Identity Management. Ponadto ta rola umożliwia zarządzanie wszystkimi aspektami Privileged Identity Management.
 
@@ -322,7 +326,6 @@ Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowa
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft.AAD.Directory/Organization/Basic/Update | Aktualizowanie właściwości podstawowych w organizacji w usłudze Active Directory Azure. |
-| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Aktualizowanie właściwości organization.trustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie usługi Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
 | microsoft.commerce.billing/allEntities/allTasks | Zarządzaj wszystkimi aspektami rozliczenia usługi Office 365. |
@@ -451,14 +454,12 @@ Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystający
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
 | microsoft.commerce.billing/allEntities/allTasks | Zarządzaj wszystkimi aspektami rozliczenia usługi Office 365. |
 | microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
-| microsoft.office365.webPortal/allEntities/basic/read | Odczytywanie podstawowych właściwości we wszystkich zasobach w elemencie microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Zarządzanie wszystkimi aspektami Menedżera zgodności usługi Office 365 |
 | microsoft.office365.desktopAnalytics/allEntities/allTasks | Zarządzanie wszystkimi aspektami analizy komputera. |
 | microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
 | microsoft.office365.lockbox/allEntities/allTasks | Zarządzanie wszystkimi aspektami Skrytki klienta usługi Office 365 |
 | microsoft.office365.messageCenter/messages/read | Odczytywanie wiadomości w elemencie microsoft.office365.messageCenter. |
 | microsoft.office365.messageCenter/securityMessages/read | Odczytywanie elementu securityMessages w elemencie microsoft.office365.messageCenter. |
-| microsoft.powerApps.powerBI/allEntities/allTasks | Zarządzanie wszystkimi aspektami usługi Power BI. |
 | microsoft.office365.protectionCenter/allEntities/allTasks | Zarządzanie wszystkimi aspektami Centrum ochrony usługi Office 365. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie właściwości standardowych w elemencie microsoft.office365.securityComplianceCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
@@ -466,7 +467,9 @@ Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystający
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzanie wszystkimi aspektami usługi Skype dla firm Online. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 | microsoft.office365.usageReports/allEntities/read | Odczytywanie raportów dotyczących użycia usługi Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Odczytywanie podstawowych właściwości we wszystkich zasobach w elemencie microsoft.office365.webPortal. |
 | microsoft.powerApps.dynamics365/allEntities/allTasks | Zarządzanie wszystkimi aspektami usługi Dynamics 365. |
+| microsoft.powerApps.powerBI/allEntities/allTasks | Zarządzanie wszystkimi aspektami usługi Power BI. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Odczytywanie wszystkich zasobów w elemencie microsoft.windows.defenderAdvancedThreatProtection. |
 
 ### <a name="compliance-administrator"></a>Administrator zgodności
@@ -521,7 +524,7 @@ Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 
 ### <a name="customer-lockbox-access-approver"></a>Osoba zatwierdzająca dostęp do skrytki klienta
-Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzyskania dostępu do danych organizacyjnych klienta. Ta rola nie ma dostępu do wyświetlania, tworzenia lub zarządzania biletami pomocy technicznej.
+Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzyskania dostępu do danych organizacyjnych klienta.
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -785,7 +788,7 @@ Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 
 ### <a name="message-center-reader"></a>Czytelnik Centrum wiadomości
-Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum wiadomości usługi Office 365. Ta rola nie ma dostępu do wyświetlania, tworzenia lub zarządzania biletami pomocy technicznej.
+Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum wiadomości usługi Office 365. 
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -848,7 +851,6 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 | microsoft.aad.directory/groups/members/update | Aktualizowanie właściwości groups.members w usłudze Azure Active Directory. |
 | microsoft.aad.directory/groups/restore | Przywracanie grup w usłudze Azure Active Directory. |
 | Microsoft.AAD.Directory/Organization/Basic/Update | Aktualizowanie właściwości podstawowych w organizacji w usłudze Active Directory Azure. |
-| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Aktualizowanie właściwości organization.trustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Aktualizowanie właściwości users.appRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/users/basic/update | Aktualizowanie właściwości podstawowych użytkowników w usłudze Active Directory Azure. |
@@ -877,6 +879,19 @@ Może zarządzać wszystkimi aspektami produktu Power BI.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie usługi Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Zarządzanie wszystkimi aspektami usługi Power BI. |
+| microsoft.office365.webPortal/allEntities/basic/read | Odczytywanie podstawowych właściwości we wszystkich zasobach w elemencie microsoft.office365.webPortal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+
+### <a name="privileged-authentication-administrator"></a>Administrator uprzywilejowanych uwierzytelniania
+Może wyświetlać, ustawiać i resetować informacje o metodzie uwierzytelniania dla dowolnego użytkownika (będącego lub niebędącego administratorem).
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/strongAuthentication/update | Aktualizowanie właściwości silnego uwierzytelniania, takich jak informacje o poświadczeniach MFA. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie usługi Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
 | microsoft.office365.webPortal/allEntities/basic/read | Odczytywanie podstawowych właściwości we wszystkich zasobach w elemencie microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
@@ -1044,7 +1059,7 @@ Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu podsta
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 
 ### <a name="teams-service-administrator"></a>Administrator usługi Teams
-Może zarządzać usługą Microsoft Teams. 
+Może zarządzać usługą Microsoft Teams.
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.

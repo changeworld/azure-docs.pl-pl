@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 25438a1d7449e5e77a68948fd79ea09acc58cdf2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: e54c7e3260b2d296710a8563d3716f9c07fe8951
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307186"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57758815"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Zarządzanie usługą Log Analytics przy użyciu programu PowerShell
 
@@ -27,7 +27,7 @@ Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](http
 * Utwórz grupę komputerów
 * Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
 * Liczniki wydajności są zbierane z komputerów z systemami Linux i Windows
-* Zbieraj zdarzenia z dziennika systemu na komputerach z systemem Linux 
+* Zbieraj zdarzenia z dziennika systemu na komputerach z systemem Linux
 * Zbieranie zdarzeń z dzienników zdarzeń Windows
 * Zbieranie dzienników zdarzeń niestandardowych
 * Dodaj agenta usługi log analytics na maszynie wirtualnej platformy Azure
@@ -56,7 +56,7 @@ Pokazano w następującym przykładowym skrypcie jak:
 9. Zbieranie zdarzeń dziennika systemu z komputerów z systemem Linux
 10. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów Windows
 11. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów Windows
-12. Zbieranie dzienników niestandardowych 
+12. Zbieranie dzienników niestandardowych
 
 ```PowerShell
 
@@ -76,7 +76,7 @@ $ExportedSearches = @"
         "Query":  "Type=Event SourceSystem:AzureStorage ",
         "Version":  1
     },
-    {        
+    {
         "Category":  "My Saved Searches",
         "DisplayName":  "Current Disk Queue Length",
         "Query":  "Type=Perf ObjectName=LogicalDisk InstanceName=\"C:\" CounterName=\"Current Disk Queue Length\"",
@@ -88,38 +88,38 @@ $ExportedSearches = @"
 # Custom Log to collect
 $CustomLog = @"
 {
-    "customLogName": "sampleCustomLog1", 
-    "description": "Example custom log datasource", 
+    "customLogName": "sampleCustomLog1",
+    "description": "Example custom log datasource",
     "inputs": [
-        { 
-            "location": { 
-            "fileSystemLocations": { 
-                "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ], 
-                "linuxFileTypeLogPaths": [ "/var/logs" ] 
-                } 
-            }, 
-        "recordDelimiter": { 
-            "regexDelimiter": { 
-                "pattern": "\\n", 
-                "matchIndex": 0, 
-                "matchIndexSpecified": true, 
-                "numberedGroup": null 
-                } 
-            } 
-        }
-    ], 
-    "extractions": [
-        { 
-            "extractionName": "TimeGenerated", 
-            "extractionType": "DateTime", 
-            "extractionProperties": { 
-                "dateTimeExtraction": { 
-                    "regex": null, 
-                    "joinStringRegex": null 
-                    } 
-                } 
+        {
+            "location": {
+            "fileSystemLocations": {
+                "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ],
+                "linuxFileTypeLogPaths": [ "/var/logs" ]
+                }
+            },
+        "recordDelimiter": {
+            "regexDelimiter": {
+                "pattern": "\\n",
+                "matchIndex": 0,
+                "matchIndexSpecified": true,
+                "numberedGroup": null
+                }
             }
-        ] 
+        }
+    ],
+    "extractions": [
+        {
+            "extractionName": "TimeGenerated",
+            "extractionType": "DateTime",
+            "extractionProperties": {
+                "dateTimeExtraction": {
+                    "regex": null,
+                    "joinStringRegex": null
+                    }
+                }
+            }
+        ]
     }
 "@
 
@@ -151,7 +151,7 @@ foreach ($search in $ExportedSearches) {
 }
 
 # Export Saved Searches
-(Get-AzOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Value.Properties | ConvertTo-Json 
+(Get-AzOperationalInsightsSavedSearch -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Value.Properties | ConvertTo-Json
 
 # Create Computer Group based on a query
 New-AzOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
@@ -202,7 +202,7 @@ Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą
 | Bramy aplikacji    | Yes | Yes |
 | Konta usługi Automation     | Yes | |
 | Konta usługi Batch          | Yes | Yes |
-| Data Lake analytics     | Yes | | 
+| Data Lake analytics     | Yes | |
 | Usługa Data Lake store         | Yes | |
 | Pula elastyczna SQL        |     | Yes |
 | Przestrzeń nazw centrum zdarzeń     |     | Yes |
@@ -225,7 +225,7 @@ Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schema
 ```PowerShell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
+$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
 
 Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
@@ -247,7 +247,7 @@ W poniższym przykładzie przedstawiono sposób:
 4. Usuń konfigurację nowo utworzony
 
 ```PowerShell
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
+# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
 # Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to index
@@ -264,7 +264,7 @@ New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGr
 Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
 
 # Remove the insight
-Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" 
+Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
 
 ```
 

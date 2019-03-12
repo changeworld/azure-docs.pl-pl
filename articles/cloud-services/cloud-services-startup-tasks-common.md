@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c9f0707f6d24ba899c89bf19066994ae860a69d5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2aa32d75edbacdfff6428a6526d9898cb6732d6b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620991"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534739"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Popularne zadania uruchamiania usługi w chmurze
 W tym artykule przedstawiono kilka przykładów typowych zadań uruchamiania, które można wykonywać w usłudze w chmurze. Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. Operacje, które można wykonać obejmują instalowanie składnika, rejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchamiania długotrwałych procesu. 
@@ -186,7 +186,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 To zadanie sprawia, że **startup.cmd** plik wsadowy uruchamiana za każdym razem, gdy rola sieci web jest inicjowany, upewniając się, że wymagane **ipSecurity** sekcja jest odblokowane.
 
-Na koniec zmodyfikuj [sekcja system.webServer](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) roli sieci web **web.config** plik, aby dodać listę adresów IP, które mają dostęp, jak pokazano w poniższym przykładzie:
+Na koniec zmodyfikuj [sekcja system.webServer](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) roli sieci web **web.config** plik, aby dodać listę adresów IP, które mają dostęp, jak pokazano w poniższym przykładzie:
 
 Ta konfiguracja przykładowe **umożliwia** wszystkie adresy IP na potrzeby uzyskiwania dostępu do serwera, z wyjątkiem dwóch zdefiniowane
 

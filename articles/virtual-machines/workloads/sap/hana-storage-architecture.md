@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2019
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 364b0bf611581f88fc87f163acbbb7529862d096
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5c5f1d8d7a9c84d807db53933f0cbb176f9fb7f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309574"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551971"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura magazynu oprogramowania SAP HANA (duże wystąpienia)
 
@@ -95,7 +95,7 @@ Magazyn używany dla dużych wystąpień HANA umożliwia przezroczyste szyfrowan
 O typie I klasy jednostek SKU, woluminu rozruchowego jednostki LUN są przechowywane, są szyfrowane. Dla klasy typu II jednostki SKU z duże wystąpienie HANA należy zaszyfrować rozruchu jednostki LUN z metodami systemu operacyjnego. Aby uzyskać więcej informacji skontaktuj się z zespołu zarządzania usługami firmy Microsoft.
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Wymagane ustawienia dla większych wystąpień HANA w dużych wystąpieniach HANA
-Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ograniczenie rozmiaru jest 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) każdego pliku. W przeciwieństwie do przypadków ograniczenia rozmiaru plików takich jak w systemach plików EXT3, HANA nie jest świadomość niejawnie ograniczenia pamięci masowej, wymuszane przez Magazyn dużych wystąpień HANA. w rezultacie HANA nie automatycznie utworzy nowy plik danych po osiągnięciu limitu rozmiaru pliku o rozmiarze 16TB. Jako HANA próby rośnie pliku ponad 16TB, platformy HANA będzie raportów błędów i serwerze indeksowania ulegnie awarii na końcu.
+Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ograniczenie rozmiaru jest 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) każdego pliku. W przeciwieństwie do ograniczenia rozmiaru plików w systemach plików EXT3 HANA nie jest świadomość niejawnie ograniczenia pamięci masowej, wymuszane przez Magazyn dużych wystąpień HANA. w rezultacie HANA nie automatycznie utworzy nowy plik danych po osiągnięciu limitu rozmiaru pliku o rozmiarze 16TB. Jako HANA próby rośnie pliku ponad 16 TB, platformy HANA będzie raportów błędów i serwerze indeksowania ulegnie awarii na końcu.
 
 > [!IMPORTANT]
 > Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini Hana
@@ -103,6 +103,7 @@ Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ogr
 - datavolume_striping=true
 - datavolume_striping_size_gb = 15000
 - Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- Należy pamiętać o Uwaga SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

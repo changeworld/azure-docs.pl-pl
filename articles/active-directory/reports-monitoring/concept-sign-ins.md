@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190368"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549021"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -149,23 +149,13 @@ Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie do
 
 ## <a name="download-sign-in-activities"></a>Pobieranie działań związanych z logowaniem
 
-Możesz [Pobierz dane logowania](quickstart-download-sign-in-report.md) Jeśli chcesz pracować z nim poza witryny Azure portal. Kliknięcie przycisku **Pobierz** spowoduje utworzenie pliku CSV zawierającego 5000 najnowszych rekordów.  Oprócz przycisk pobierania, witryny Azure portal zapewnia także możliwość [generowania skryptu w celu pobrania danych](tutorial-signin-logs-download-script.md).  
+Możesz [Pobierz dane logowania](quickstart-download-sign-in-report.md) Jeśli chcesz pracować z nim poza witryny Azure portal. Klikając **Pobierz** udostępnia opcję, aby utworzyć plik CSV lub JSCON ostatnich 250 000 rekordów.  
 
 ![Pobierz](./media/concept-sign-ins/71.png "Pobierz")
-
-Jeśli potrzebujesz bardziej elastycznych opcji, możesz użyć rozwiązania do tworzenia skryptu. Klikając **skryptu** tworzy skrypt środowiska PowerShell, który zawiera wszystkie filtry, które zostały ustawione. Pobierz i uruchom ten skrypt **z trybu administratora** można wygenerować pliku CSV. 
 
 > [!IMPORTANT]
 > Liczba rekordów, które można pobrać jest ograniczony przez [zasady przechowywania raportów usługi Azure Active Directory](reference-reports-data-retention.md).  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>Uruchomienie skryptu na komputerze z systemem Windows 10
-
-Jeśli chcesz uruchomić skrypt **systemu Windows 10** maszyny, musisz najpierw wykonać kilka dodatkowych kroków. 
-
-1. Zainstaluj [modułu Az](/powershell/azure/install-az-ps).
-2. Zaimportuj moduł, otwierając wiersz polecenia programu PowerShell i uruchamiając polecenie **Az Import-Module**.
-3. Uruchom **Set-ExecutionPolicy unrestricted** i wybierz polecenie **tak na wszystko**. 
-4. Teraz możesz uruchamiać pobranego skryptu programu PowerShell w trybie administratora, aby wygenerować plik CSV.
 
 ## <a name="sign-ins-data-shortcuts"></a>Skróty danych logowania
 

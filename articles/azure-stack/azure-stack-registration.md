@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405202"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764731"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -483,11 +483,18 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 ## <a name="registration-failures"></a>Błędy rejestracji
 
-Może zostać wyświetlony jeden z błędów poniżej podczas próby rejestracji usługi Azure Stack:
+Podczas próby rejestracji usługi Azure Stack, może zostać wyświetlony jeden z błędów poniżej:
 1. Nie można pobrać informacji obowiązkowe sprzętu $hostName. Sprawdź fizycznego hosta bramy i łączność, a następnie spróbuj ponownie przeprowadzić rejestrację.
+
 2. Nie można nawiązać połączenia z $hostName Pobierz informacje dotyczące sprzętu — należy sprawdzić fizycznego hosta bramy i łączność a następnie spróbuj ponownie przeprowadzić rejestrację.
 
-Przyczyna: Jest to zazwyczaj spowodowane możemy spróbować uzyskać szczegóły sprzętu, takich jak identyfikator UUID systemu Bios i procesora CPU z hostów w celu podjęcia próby aktywacji i nie udało się ze względu na brak możliwości połączenia hosta fizycznego.
+> Przyczyna: jest to zazwyczaj spowodowane możemy spróbować uzyskać szczegóły sprzętu, takich jak identyfikator UUID systemu Bios i procesora CPU z hostów w celu podjęcia próby aktywacji i nie udało się ze względu na brak możliwości połączenia hosta fizycznego.
+
+Podczas próby dostępu do zarządzania w portalu Marketplace, wystąpi błąd podczas próby zespól produktów. 
+> Przyczyna: zwykle dzieje się tak w przypadku usługi Azure Stack nie może uzyskać dostępu do rejestracji zasobu. Jedną typową przyczyną tego jest, że po zmianie subskrypcji platformy Azure directory dzierżawy resetuje rejestracji. Nie masz dostępu do użycia usługi Azure Stack witryny marketplace lub w raporcie po zmianie dzierżawy katalogu dla subskrypcji. Należy ponownie zarejestrować, aby rozwiązać ten problem.
+
+Zarządzanie w portalu Marketplace nadal wymaga rejestrowania i aktywowania usługi Azure Stack, nawet wtedy, gdy użytkownik jest już zarejestrowany z sygnatury rozłączona podczas procesu. 
+> Przyczyna: jest to znany problem w środowiskach rozłączonych. Możesz zweryfikować swój status rejestracji, postępując zgodnie z [te kroki](azure-stack-registration.md#verify-azure-stack-registration). Aby można było korzystać z portalu Marketplace management, należy użyć [narzędzie offline](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

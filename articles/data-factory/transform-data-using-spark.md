@@ -3,23 +3,23 @@ title: Przekształcanie danych za pomocą działania platformy Spark w usłudze 
 description: Dowiedz się, jak przekształcać dane, uruchamiając programy platformy Spark w potoku usługi fabryka danych Azure przy użyciu działania platformy Spark.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2018
-ms.author: douglasl
-ms.openlocfilehash: a25505a976be9d9ae38f562591d86ca9b56b8859
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025616"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576204"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania platformy Spark w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-spark.md)
 > * [Bieżąca wersja](transform-data-using-spark.md)
 
@@ -80,7 +80,7 @@ Zadania Spark są bardziej extensible niż zadania programów Pig/Hive. W przypa
 
 Utwórz następującą strukturę folderów w usłudze Azure Blob storage przywoływany przez usługę HDInsight połączone. Następnie przekaż pliki zależne do odpowiednich podfolderach w folderze głównym, reprezentowane przez **właściwość entryFilePath**. Na przykład Przekaż pliki języka python do podfolderu pyFiles i pliki jar do podfolderu plikach JAR w folderze głównym. W czasie wykonywania usługa Data Factory oczekuje następującą strukturę folderów w usłudze Azure Blob storage:     
 
-| Ścieżka                  | Opis                              | Wymagane | Typ   |
+| Ścieżka                  | Opis                              | Wymagane | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (root)            | Ścieżka katalogu głównego zadania Spark w połączonej usługi storage | Yes      | Folder |
 | &lt;zdefiniowane przez użytkownika &gt; | Ścieżka do pliku wejściowego zadania Spark | Yes      | Plik   |

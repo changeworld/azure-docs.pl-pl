@@ -14,13 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.subservice: files
-ms.openlocfilehash: 0aa291c3334af35ec90648cfbcbb7de7015deb99
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bc4de2d406ea2c1814825daf89d5e6a576c94036
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731448"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764816"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB
 

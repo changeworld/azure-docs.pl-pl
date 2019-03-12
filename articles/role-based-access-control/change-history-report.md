@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a06b7f66742ad7e97e4ae2ab57aabf15f21faf3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957742"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535552"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Wyświetlanie dzienników aktywności dla zmian RBAC do zasobów platformy Azure
 
@@ -123,9 +123,9 @@ Poniżej przedstawiono podstawowe kroki, aby rozpocząć pracę:
 
 1. [Skonfiguruj rozwiązanie Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md#configuration) dla obszaru roboczego.
 
-1. [Wyświetlanie dzienników aktywności](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Szybko przejść do strony przegląd działań usługi Log Analytics jest kliknięcie **usługi Log Analytics** opcji.
+1. [Wyświetlanie dzienników aktywności](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Szybko przejdź do strony Przegląd rozwiązanie Activity Log Analytics jest kliknięcie **usługi Log Analytics** opcji.
 
-   ![Log Analytics opcji w portalu](./media/change-history-report/azure-log-analytics-option.png)
+   ![Usługa Azure Monitor dzienniki opcji w portalu](./media/change-history-report/azure-log-analytics-option.png)
 
 1. Opcjonalnie użyć [wyszukiwanie w dzienniku](../log-analytics/log-analytics-log-search.md) strony lub [portalu analizy zaawansowanej](../azure-monitor/log-query/get-started-portal.md) zapytania i wyświetlić dzienniki. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [strony wyszukiwanie w dziennikach lub portalu analizy zaawansowanej](../azure-monitor/log-query/portals.md).
 

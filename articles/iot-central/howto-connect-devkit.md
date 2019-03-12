@@ -3,17 +3,17 @@ title: Podłącz urządzenie Mxchip z aplikacją usługi Azure IoT Central | Dok
 description: Jako deweloper urządzenia Dowiedz się, jak połączyć urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/16/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6c9f128a046904eb8df90625ce1043b3d42e8be4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 150f2b9155d5e920a7394e2fa55ce28701497868
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448547"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763014"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -26,19 +26,17 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 1. Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 1. Urządzenie Mxchip. Aby zakupić urządzenia Mxchip, odwiedź stronę [zestawu deweloperskiego IoT Mxchip](http://mxchip.com/az3166).
 
+## <a name="sample-devkits-application"></a>Przykładowa aplikacja Devkits
 
-## <a name="sample-devkits-application"></a>**Przykładowy Devkits** aplikacji
+Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **zestawu deweloperskiego** szablon urządzenia o następującej charakterystyce:
 
-Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **zestawu deweloperskiego** szablon urządzenia o następującej charakterystyce: 
-
-- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **Magnometer** (mierzoną wzdłuż X Y, osi Z), **przyspieszeniomierza** (mierzoną wzdłuż X, Y osi Z) i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
+- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **magnetometrów** (mierzoną wzdłuż X, Y osi Z), **przyspieszeniomierza** (mierzoną wzdłuż X, Y osi Z) i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
 - Stan, który zawiera przykład miary **stan urządzenia**.
 - Miara zdarzeń z **użycia B przycisku** zdarzeń. 
 - Ustawień przedstawiający **napięcia**, **bieżącego**, **szybkość wentylator**i **IR** przełącznika.
 - Właściwości zawierający właściwości urządzenia **zdechną numer** i **lokalizacji urządzenia** czyli lokalizacji właściwość również jako **wyprodukowany w** właściwości w chmurze. 
 
-
-Można znaleźć szczegółowe informacje o konfiguracji [Szczegóły szablonu zestawu deweloperskiego urządzenia](howto-connect-devkit.md#mxchip-device-template-details)
+Można znaleźć szczegółowe informacje o konfiguracji [Szczegóły szablonu zestawu deweloperskiego urządzenia](#mxchip-device-template-details)
 
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
@@ -46,28 +44,24 @@ Można znaleźć szczegółowe informacje o konfiguracji [Szczegóły szablonu z
 W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**identyfikator zakresu, identyfikator urządzenia i podstawowego klucza**).
 
 1. Dodaj **rzeczywistego urządzenia** Device Explorer, zaznacz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
+
     * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
     * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
-    
-    ![Dodaj urządzenie](media/concepts-connectivity/add-device.png)
 
+    ![Dodaj urządzenie](media/howto-connect-devkit/add-device.png)
 
 1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodane urządzenie, wybierając **Connect** na stronie urządzenia.
- 
-    ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 
-3. Upewnij się zapisać te informacje, jak będzie tymczasowo rozłączenia połączenia z Internetem podczas przygotowywania urządzenia Mxchip. 
+    ![Szczegóły połączenia](media/howto-connect-devkit/device-connect.png)
 
+1. Upewnij się zapisać te informacje, jak będzie tymczasowo rozłączenia połączenia z Internetem podczas przygotowywania urządzenia Mxchip.
 
 ### <a name="prepare-the-devkit-device"></a>Przygotuj urządzenie Mxchip
 
 > [!NOTE]
 > Jeśli poprzednio korzystano z urządzenia lub sieci Wi-Fi poświadczenia przechowywane i chcesz ponownie skonfigurować urządzeniu na korzystanie z innej sieci Wi-Fi, parametry połączenia lub pomiaru danych telemetrycznych, naciśnij jednocześnie **A** i **B** przyciski na tablicy jednocześnie. Jeśli to nie zadziała, naciśnij klawisz **resetowania** przycisk, a następnie spróbuj ponownie.
 
-
-
-#### <a name="to-prepare-the-devkit-device"></a>Aby przygotować urządzenie Mxchip:
-
+#### <a name="to-prepare-the-devkit-device"></a>Aby przygotować urządzenie Mxchip
 
 1. Pobierz najnowszy wstępnie skompilowanych usługi Azure IoT Central oprogramowania układowego dla zestawu deweloperskiego z [zwalnia](https://aka.ms/iotcentral-docs-MXChip-releases) strony w witrynie GitHub.
 1. Podłącz urządzenie Mxchip do komputera deweloperskiego za pomocą kabla USB. W Windows na dysku mapowane na pamięć na urządzeniu Mxchip zostanie otwarte okno Eksploratora plików. Na przykład dysk może być wywoływana **az3166 usługi (D:)**.
@@ -78,12 +72,12 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
     ```
     Connect HotSpot:
     AZ3166_??????
-    go-> 192.168.0.1 
+    go-> 192.168.0.1
     PIN CODE xxxxx
     ```
 
     > [!NOTE]
-    > Jeśli na ekranie są wyświetlane inaczej, zresetować urządzenie i naciśnij klawisz **A** i **B** przyciski na urządzeniu, w tym samym czasie, aby ponownie uruchomić urządzenie. 
+    > Jeśli na ekranie są wyświetlane inaczej, zresetować urządzenie i naciśnij klawisz **A** i **B** przyciski na urządzeniu, w tym samym czasie, aby ponownie uruchomić urządzenie.
 
 1. Urządzenie jest teraz w trybie punktu dostępu. Można połączyć z tym punktem dostępu do sieci Wi-Fi, z komputera lub urządzenia przenośnego.
 
@@ -178,7 +172,7 @@ Kod w **iotHubClient.cpp** plik źródłowy używa funkcji z [ Microsoft Azure I
 
 Aby uzyskać informacje o tym, jak można zmodyfikować, kompilacji i Przekaż przykładowy kod do Twojego urządzenia, zobacz **readme.md** w pliku `AZ3166` folderu.
 
-## <a name="mxchip-device-template-details"></a>Szczegóły szablonu zestawu deweloperskiego urządzenia 
+## <a name="mxchip-device-template-details"></a>Szczegóły szablonu zestawu deweloperskiego urządzenia
 
 Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawiera szablon zestawu deweloperskiego urządzenia o następującej charakterystyce:
 

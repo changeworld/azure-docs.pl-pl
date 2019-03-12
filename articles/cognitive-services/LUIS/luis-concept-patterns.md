@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: af73d78b911d59f68c5e824931b5634d8c69f309
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449006"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547422"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
@@ -41,8 +41,11 @@ Wzorce rozwiązać w następujących sytuacjach:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Wzorce nie są gwarancji intencji
 Wzorce używać różnych technologii prognozy. Ustawienie przeznaczenie wypowiedź szablonu we wzorcu nie jest gwarancja intencji prognozowania, ale jest silny sygnał. 
 
-## <a name="patterns-do-not-improve-entity-detection"></a>Wzorce poprawienia wykrywania jednostki
-Podczas gdy wzorce wymagają jednostek, wzorzec nie wykrywania jednostki. Wzorzec jest przeznaczone wyłącznie do pomocy prognozowania intencje i ról.  
+<a name="patterns-do-not-improve-entity-detection"/>
+
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Wzorce poprawienia wykrywania maszyny do opanowania jednostki
+
+Wzorzec jest przeznaczony głównie ułatwiające prognozowanie intencje i ról. Jednostka pattern.any jest używana do wyodrębnienia z dowolnych obiektów. Gdy wzorce użycia jednostek, wzorzec nie wykrywania jednostka maszyny do opanowania.  
 
 Nie spodziewa się zobaczyć prognozowania ulepszone jednostki, czy zwijane wypowiedzi wiele do jednego wzorca. W przypadku prostych jednostek na uruchomienie należy dodawanie wypowiedzi lub korzystanie z listy jednostek else deseń nie zostanie wyzwolony.
 

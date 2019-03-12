@@ -1,24 +1,24 @@
 ---
 title: Konfigurowanie rozwiązania Service Map na platformie Azure | Dokumentacja firmy Microsoft
 description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania rozwiązania Service Map w danym środowisku i korzystania z niego w różnych scenariuszach.
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
-ms.author: bwren
-ms.openlocfilehash: b4eb3fe8132aafc3d673234dc1b4123f20f9e569
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/11/2019
+ms.author: magoedte
+ms.openlocfilehash: 65aa561b01fc4950eb007077ba3613e96ccdcacc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312736"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763870"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -28,8 +28,10 @@ W tym artykule opisano konfigurowanie agentów rozwiązania Service Map i dołą
 ## <a name="supported-azure-regions"></a>Obsługiwane regiony platformy Azure
 Mapa usługi jest obecnie dostępna w następujących regionach platformy Azure:
 - Wschodnie stany USA
-- Europa Zachodnia
 - Środkowo-zachodnie stany USA
+- Kanada Środkowa
+- Południowe Zjednoczone Królestwo
+- Europa Zachodnia
 - Azja Południowo-Wschodnia
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
@@ -59,17 +61,13 @@ Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależno
 - Obsługiwane są tylko wersje domyślne i wersje SMP jądra systemu Linux.
 - Niestandardowe wydania jądra, takie jak PAE i Xen, nie są obsługiwane dla żadnej dystrybucji systemu Linux. Na przykład systemu z wersji ciąg "2.6.16.21-0.8-xen" nie jest obsługiwane.
 - Niestandardowe jądra, łącznie z ponownymi kompilacjami standardowych jąder, nie są obsługiwane.
-- Jądro CentOSPlus nie jest obsługiwane.
+- CentOSPlus jądra jest obsługiwana.
 - Jądro Oracle Unbreakable Enterprise Kernel (UEK) zostało opisane w dalszej części tego artykułu.
 
 ### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
@@ -78,17 +76,14 @@ Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależno
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4 | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+
+### <a name="centosplus"></a>CentOSPlus
+| Wersja systemu operacyjnego | Wersja jądra |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 ### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -99,28 +94,18 @@ Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależno
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 6 z podzielenie Enterprise jądra
-| Wersja systemu operacyjnego | Wersja jądra
-|:--|:--|
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4 | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
-
-### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 5 za pomocą podzielenie Enterprise jądra
+### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
 | Wersja systemu operacyjnego | Wersja jądra
 |:--|:--|
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+| 11 SP4 | 3.0.* |
 
-## <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
+### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Wersja systemu operacyjnego | Wersja jądra
 |:--|:--|
-|12 Z DODATKIEM SP2 | 4.4. * |
-|12 Z DODATKIEM SP3 | 4.4. * |
+| 12 Z DODATKIEM SP2 | 4.4. * |
+| 12 Z DODATKIEM SP3 | 4.4. * |
 
 ## <a name="dependency-agent-downloads"></a>Pobieranie agenta zależności
 

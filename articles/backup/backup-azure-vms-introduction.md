@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: f4a2fe4c9307f7e59ca94e47683356143546d090
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 077b3e8b9aac47818b82384584d9b3cb410f9422
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310747"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541387"
 ---
 # <a name="about-azure-vm-backup"></a>Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -61,7 +61,7 @@ Podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usług
 Migawki kopii zapasowej platformy Azure zgodnie z harmonogramem tworzenia kopii zapasowej.
 
 - **Maszyny wirtualne z systemem Windows**: W przypadku maszyn wirtualnych Windows usługa Backup służy do koordynowania z woluminów w tle kopii Service (VSS) do spójnego na poziomie aplikacji migawki dysków maszyny Wirtualnej.
-    - Domyślnie program Azure kopie zapasowe pełnych kopii zapasowych usługi VSS. [Dowiedz się więcej](http://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
+    - Domyślnie program Azure kopie zapasowe pełnych kopii zapasowych usługi VSS. [Dowiedz się więcej](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
     - Jeśli chcesz zmienić ustawienie kopii zapasowych Azure przyjmuje kopie kopii zapasowych usługi VSS, należy ustawić następujący klucz rejestru w wierszu polecenia: **Polecenie REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**.
 - **Maszyny wirtualne z systemem Linux**: Jeśli chcesz móc spójne migawki maszyny Wirtualnej systemu Linux, użyj skryptu poprzedzającego systemu Linux i po utworzeniu skryptu platformę, by pisania własnych skryptów niestandardowych w celu zapewnienia spójności.
     -  Usługa Azure Backup wywołuje tylko skrypty pre lub używanego po nim zapisane przez użytkownika.

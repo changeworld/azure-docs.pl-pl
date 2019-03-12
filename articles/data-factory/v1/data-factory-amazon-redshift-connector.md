@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817346"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541931"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon Redshift przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Usługa Data Factory obsługuje obecnie tylko przenosi dane z usługi Amazon Red
 > Aby uzyskać najlepszą wydajność podczas kopiowania dużych ilości danych z usługi Amazon Redshift, należy wziąć pod uwagę przy użyciu wbudowanych Redshift **zwolnienie** polecenia za pomocą Amazon Simple Storage Service (Amazon S3). Aby uzyskać więcej informacji, zobacz [zwolnienie Użyj, aby skopiować dane z usługi Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Jeśli dane są przenoszone do magazynu danych w środowisku lokalnym, należy zainstalować [bramy zarządzania danymi](data-factory-data-management-gateway.md) na maszynie lokalnej. Przy użyciu adresu IP komputera lokalnego, należy udzielić dostępu dla bramy do klastra usługi Amazon Redshift. Aby uzyskać instrukcje, zobacz [Autoryzowanie dostępu do klastra](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
+* Jeśli dane są przenoszone do magazynu danych w środowisku lokalnym, należy zainstalować [bramy zarządzania danymi](data-factory-data-management-gateway.md) na maszynie lokalnej. Przy użyciu adresu IP komputera lokalnego, należy udzielić dostępu dla bramy do klastra usługi Amazon Redshift. Aby uzyskać instrukcje, zobacz [Autoryzowanie dostępu do klastra](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Aby przenieść dane do magazynu danych na platformie Azure, zobacz [adres IP zasobów obliczeniowych i zakresy SQL, które są używane w centrach danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="getting-started"></a>Wprowadzenie
@@ -100,7 +100,7 @@ Alternatywnie, można użyć **RelationalSource** typu, który obejmuje Amazon R
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Umożliwia kopiowanie danych z usługi Amazon Redshift przez zwolnienie
 
-Usługi Amazon Redshift [ **zwolnienie** ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) polecenia zwalnia wyników zapytania do jednej lub więcej plików na Amazon S3. To polecenie jest zalecane, Amazon do kopiowania dużych zestawów danych z usługi Redshift.
+Usługi Amazon Redshift [ **zwolnienie** ](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) polecenia zwalnia wyników zapytania do jednej lub więcej plików na Amazon S3. To polecenie jest zalecane, Amazon do kopiowania dużych zestawów danych z usługi Redshift.
 
 **Przykład: Kopiowanie danych z usługi Amazon Redshift do usługi Azure SQL Data Warehouse**
 

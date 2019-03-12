@@ -11,15 +11,15 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d47aab9e3d083cd7f51b1c3ba613f421fc1777a6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261965"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764102"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Tworzenie usługi BizTalk Services przy użyciu portalu Azure
 
@@ -143,8 +143,8 @@ Po utworzeniu usługi Azure BizTalk Services zostaje również utworzony adres U
 <br/>
 
 <ul>
-<li><strong>Ulepszone użycie klucza</strong>: usługa Azure BizTalk Services wymaga przynajmniej uwierzytelniania przez serwer.</li>
-<li><strong>Nazwa pospolita</strong>: wprowadź w pełni kwalifikowaną nazwę domeny (FQDN) adresu URL usługi Azure BizTalk Services. Zobacz temat <a HREF="#CreateService">Create a BizTalk Service</a> (Tworzenie usługi BizTalk) w tym artykule.</li>
+<li><strong>Ulepszone użycie klucza</strong>: Jako minimum usługa Azure BizTalk Services wymaga uwierzytelniania serwera.</li>
+<li><strong>Nazwa pospolita</strong>: Wprowadź w pełni kwalifikowana nazwa domeny (FQDN) adresu URL usługi Azure BizTalk. Zobacz temat <a HREF="#CreateService">Create a BizTalk Service</a> (Tworzenie usługi BizTalk) w tym artykule.</li>
 </ul>
 <br/>
 Po utworzeniu usługi BizTalk można dodać nowy lub inny certyfikat.
@@ -164,15 +164,15 @@ Połączenia hybrydowe są używane do łączenia witryny sieci Web Azure lub us
 
  Więcej informacji, m.in. na temat tworzenia połączeń hybrydowych i zarządzania nimi, znajduje się w artykule [Hybrid Connections](integration-hybrid-connection-overview.md) (Połączenia hybrydowe).
 
-## <a name="next-steps"></a>Następne kroki
-Po utworzeniu usługi BizTalk zapoznaj się z różnymi [usługami BizTalk Services: kartami Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md). Usługa BizTalk jest gotowa dla aplikacji. Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
+## <a name="next-steps"></a>Kolejne kroki
+Teraz, gdy usługa BizTalk zostanie utworzona, zapoznaj się z różnymi [usługi BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md). Usługa BizTalk jest gotowa dla aplikacji. Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
 
-## <a name="see-also"></a>Zobacz też
-* [BizTalk Services: Editions Chart (Usługa BizTalk Services: zestawienie wersji)](biztalk-editions-feature-chart.md)<br/>
-* [BizTalk Services: State Chart (Usługa BizTalk Services: tabela stanów)](biztalk-service-state-chart.md)<br/>
-* [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)](biztalk-issuer-name-issuer-key.md)<br/>
+## <a name="see-also"></a>Zobacz także
+* [BizTalk Services: Wykres przedstawiający wersje](biztalk-editions-feature-chart.md)<br/>
+* [BizTalk Services: Wykres stanu](biztalk-service-state-chart.md)<br/>
+* [BizTalk Services: Kopia zapasowa i przywracanie](biztalk-backup-restore.md)<br/>
+* [BizTalk Services: Ograniczanie przepustowości](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk Services: Nazwa wystawcy i klucz wydawcy](biztalk-issuer-name-issuer-key.md)<br/>
 * [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Połączenia hybrydowe](integration-hybrid-connection-overview.md)
 

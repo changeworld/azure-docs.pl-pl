@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594308"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766006"
 ---
 # <a name="interactive-feature-verification-testing"></a>Testowanie weryfikacyjne interaktywnych funkcji  
 
@@ -35,13 +35,13 @@ W tym artykule opisano prosty scenariusz ręczne. Test sprawdza, czy zamiana dys
 
 ## <a name="overview-of-interactive-testing"></a>Omówienie interaktywne testowania
 
-Test wymiana dysku jest typowym scenariuszem. W tym przykładzie testu składa się z siedmiu kroków:
+Test wymiana dysku jest typowym scenariuszem. W tym przykładzie testu ma pięć kroków:
 
-1. Utwórz nową **przebiegu testu** przepływu pracy
-1. Wybierz **dysku Identyfikator testu**
-1. Wykonaj krok wykonywany ręcznie po wyświetleniu monitu
-1. Sprawdź wynik scenariusza
-1. Wyślij do wyniku testu do firmy Microsoft
+1. Utwórz nową **przebiegu testu** przepływu pracy.
+2. Wybierz **dysku Test identyfikacyjny**.
+3. Wykonaj krok wykonywany ręcznie po wyświetleniu monitu.
+4. Sprawdź wynik tego scenariusza.
+5. Wynik testu można wysyłać do firmy Microsoft.
 
 ## <a name="create-a-new-test-pass"></a>Utwórz nowy przebieg testu
 

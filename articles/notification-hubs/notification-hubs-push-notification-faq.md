@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: f2f11abcb3290e1d9459c26167706abc79c1b7fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 863b380d4f36e24119e64fbd4a59e8cd66c911e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670336"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779423"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -205,6 +205,13 @@ Usługa Azure Notification Hubs udostępnia kilka funkcji do rozwiązywania prob
 ### <a name="what-telemetry-features-are-available"></a>Jakie funkcje telemetrii są dostępne?
 
 Usługa Azure Notification Hubs umożliwia, wyświetlanie danych telemetrycznych w [Azure Portal]. Szczegóły metryki są dostępne na [Notification Hubs metryki] strony.
+
+Można także programowo uzyskać dostęp do metryk. Aby uzyskać więcej informacji zobacz następujące artykuły:
+
+- [Pobieranie metryk usługi Azure Monitor przy użyciu platformy .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Ta próbka używa nazwy użytkownika i hasła. Do korzystania z certyfikatu, przeciążenia metody FromServicePrincipal, aby zapewnić certyfikat, jak pokazano w [w tym przykładzie](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
+- [Pobieranie zasobu metryki i Dzienniki aktywności](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
+- [Monitorowanie interfejsu API REST Azure — przewodnik](../azure-monitor/platform/rest-api-walkthrough.md)
+
 
 > [!NOTE]
 > Powiadomienia zakończone powodzeniem po prostu oznacza, że powiadomienia wypychane zostaną dostarczone do zewnętrznego systemu powiadomień platformy (na przykład APNS dla firmy Apple) lub usługi FCM dla usług Google. Jest odpowiedzialny za system powiadomień platformy w celu dostarczania powiadomień na urządzenia docelowe. Zazwyczaj system powiadomień platformy nie ujawnia dostarczanie metryk do podmiotów trzecich.  

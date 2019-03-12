@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09914de48df09dabd4069cd33e7acbea328fa89d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193156"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546861"
 ---
 # <a name="start-using-pim"></a>Rozpoczynanie korzystania z usługi PIM
 
@@ -106,7 +106,6 @@ Po skonfigurowaniu usługi PIM można wykonywać zadania związane z zarządzani
 | --- | --- |
 | **Moje role**  | Wyświetla listę kwalifikujących się i aktywnych ról przypisanych do Ciebie. Możesz tu aktywować dowolne przypisane, kwalifikujące się role. |
 | **Moje żądania** | Wyświetla oczekujące żądania aktywowania kwalifikujących się przypisań ról. |
-| **Dostęp do aplikacji** | Można zmniejszyć opóźnienia potencjalnych i od razu po aktywacji za pomocą roli. |
 | **Zatwierdzanie żądań** | Przedstawia listę żądań aktywowania kwalifikujących się ról użytkowników w katalogu, które zostały oznaczone do zatwierdzenia. |
 | **Przegląd dostępu wszystkich użytkowników** | Wyświetla listę aktywnych przeglądów dostępu, które są przypisane do ukończenia, czy przeglądasz dostęp dla siebie lub kogoś innego. |
 | **Role usługi Azure AD** | Przedstawia pulpit nawigacyjny i ustawienia dla ról uprzywilejowanych administratorów do zarządzania przypisaniami ról katalogu usługi Azure AD. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |

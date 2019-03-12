@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
-ms.openlocfilehash: ba3c6a6bd4fb330eb64b5408eb72095f4de46a7b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856653"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551028"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Przechowywanie obrazów kontenerów w usłudze Azure Container Registry
 
 Każdy [Basic, Standard i Premium](container-registry-skus.md) korzyści związane z rejestru kontenerów platformy Azure z systemem funkcje zaawansowane usługi Azure storage, takie jak szyfrowanie w spoczynku, obraz danych zabezpieczeń i geograficznej nadmiarowości ochronę danych obrazu. W następujących sekcjach opisano funkcje i limity magazyn obrazów w usłudze Azure Container Registry (ACR).
 
-## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
+## <a name="encryption-at-rest"></a>Encryption-at-rest
 
 Wszystkie obrazy kontenerów w rejestrze są szyfrowane, gdy. Azure automatycznie szyfruje obraz przed przekazaniem jej i odszyfrowuje je na bieżąco, gdy użytkownik lub aplikacji i usług Ściągnij obraz.
 
@@ -56,6 +56,6 @@ Aby uzyskać więcej informacji na temat różnych Azure kontenera rejestru jedn
 
 <!-- LINKS - External -->
 [portal]: https://portal.azure.com
-[pricing]: http://aka.ms/acr/pricing
+[pricing]: https://aka.ms/acr/pricing
 
 <!-- LINKS - Internal -->

@@ -4,16 +4,16 @@ description: Jak wykonywać operacje na Azure Queue storage przy użyciu program
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.subservice: queues
-ms.openlocfilehash: dddd82cd80d853607b28db906d298d5c301ab9df
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 64e8f9d1fb29718b0a3d4655c739abc93ecb088c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770707"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763844"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 
@@ -22,7 +22,7 @@ Usługa Azure Queue storage jest usługą służącą do przechowywania dużej l
 > [!div class="checklist"]
 > * Tworzenie kolejki
 > * Pobieranie kolejki
-> * Dodaj komunikat
+> * Dodawanie komunikatu
 > * Przeczytaj komunikat
 > * Usuwanie wiadomości e-mail 
 > * Usuwanie kolejki
@@ -52,7 +52,7 @@ $location = "eastus"
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) polecenia. 
+Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Store nazwę grupy zasobów w zmiennej, do użytku w przyszłości. W tym przykładzie grupa zasobów o nazwie *howtoqueuesrg* jest tworzony w *eastus* regionu.
 
@@ -185,7 +185,7 @@ W tym artykule omówiono podstawowe zarządzanie magazynem kolejki przy użyciu 
 > [!div class="checklist"]
 > * Tworzenie kolejki
 > * Pobieranie kolejki
-> * Dodaj komunikat
+> * Dodawanie komunikatu
 > * Przeczytaj następny komunikat
 > * Usuwanie wiadomości e-mail 
 > * Usuwanie kolejki

@@ -11,15 +11,15 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.topic: conceptual
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 9e9c8918556b7ff003bcfed062ea1e15233b2845
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855299"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761960"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Warstwy Premium i Standardowa komunikatów usługi Service Bus
 
@@ -34,7 +34,7 @@ W poniższej tabeli wyróżniono pewne ogólne różnice.
 | Wysoka przepływność |Zmienna przepływność |
 | Przewidywalna wydajność |Zmienne opóźnienie |
 | Stałe ceny |Zmienne ceny i płatność zgodnie z rzeczywistym użyciem |
-| Możliwość skalowania obciążenia |Nie dotyczy |
+| Możliwość skalowania obciążenia |ND |
 | Rozmiar komunikatu do 1 MB |Rozmiar komunikatu do 256 KB |
 
 **Warstwa Premium komunikatów usługi Service Bus** zapewnia izolację zasobów na poziomie procesora CPU i pamięci, dlatego obciążenia poszczególnych klientów są od siebie odizolowane. Ten kontener zasobów jest nazywany *jednostką obsługi komunikatów*. Każda przestrzeń nazw w warstwie Premium ma przydzieloną co najmniej jedną jednostkę obsługi komunikatów. Możesz kupić 1, 2 lub 4 jednostki obsługi komunikatów dla każdej przestrzeni nazw usługi Service Bus w warstwie Premium. Pojedyncze obciążenie lub jednostka może obejmować wiele jednostek obsługi komunikatów, a ich liczbę można dowolnie zmieniać, chociaż opłaty są naliczane w cyklu 24-godzinnym lub codziennie. Pozwala to uzyskać przewidywalną i powtarzalną wydajność dla rozwiązania opartego na usłudze Service Bus.
@@ -55,6 +55,21 @@ Ze względu na fakt, że obsługa komunikatów Premium działa w całkowicie odi
 
 Jeśli masz kod uruchomiony w ramach obsługi komunikatów w warstwie Standardowa i chcesz przenieść go do warstwy Premium, upewnij się, że właściwość [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) jest ustawiona na wartość **false** (wartość domyślna).
 
+## <a name="premium-messaging-resource-usage"></a>Użycie zasobów Obsługa komunikatów Premium
+Ogólnie rzecz biorąc żadnych operacji na jednostce może spowodować wykorzystanie Procesora i pamięci. Oto niektóre z tych operacji: 
+
+- Zarządzanie operacjami CRUD (tworzenia, pobierania, aktualizacji i usuwania) operacje na kolejki, tematy i subskrypcje.
+- Operacje w czasie wykonywania (wysyłania i odbierania komunikatów)
+- Operacje monitorowania i alertów
+
+Dodatkowe użycie procesora CPU i pamięci nie jest rozliczana Ponadto mimo że. W przypadku warstwy Premium Messaging istnieje pojedynczy cena za jednostkę wiadomości.
+
+Użycie procesora CPU i pamięci są śledzone i wyświetlane użytkownikowi w następujących sytuacjach: 
+
+- Zapewnia przejrzyste elementy wewnętrzne systemu
+- Informacje o wydajności zakupu zasobów.
+- Planowanie pojemności pomaga określić skalowania w górę/w dół.
+
 ## <a name="get-started-with-premium-messaging"></a>Wprowadzenie do obsługi komunikatów Premium
 
 Rozpoczęcie pracy z obsługą komunikatów Premium jest proste, a proces jest podobny, jak w przypadku standardowej obsługi komunikatów. Rozpocznij od [utworzenia przestrzeni nazw](service-bus-create-namespace-portal.md) w witrynie [Azure Portal](https://portal.azure.com). W obszarze **Warstwa cenowa** wybierz pozycję **Premium**. Kliknij przycisk **Wyświetl pełne szczegóły ceny**, aby uzyskać więcej informacji o poszczególnych warstwach.
@@ -63,7 +78,7 @@ Rozpoczęcie pracy z obsługą komunikatów Premium jest proste, a proces jest p
 
 Możesz również tworzyć [przestrzenie nazw Premium za pomocą szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz poniższe linki:
 

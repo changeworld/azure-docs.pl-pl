@@ -3,17 +3,17 @@ title: Użyj urządzenia ustawia w aplikacji usługi Azure IoT Central | Dokumen
 description: Uprawnienia operatora sposób używania urządzenia ustawia się w aplikacji usługi Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: b24c7c6d08b7d7914c7bdef6d2a55eb88689b6ad
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315201"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759819"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Za pomocą zestawów urządzeń w aplikacji usługi Azure IoT Central
 
@@ -48,9 +48,11 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
 1. Wybierz **zestawy urządzeń** w menu nawigacji po lewej stronie.
 
-1. Wybierz **pulpit nawigacyjny** kartę.
+1. Wybierz zestaw Twojego urządzenia.
 
-1. Wybierz **Edytuj szablon**.
+1. Wybierz kartę **Pulpit nawigacyjny**.
+
+1. Wybierz pozycję **Edit** (Edytuj).
 
     ![Tryb projektowania na](media/howto-use-device-sets/image3.png)
 
@@ -69,9 +71,6 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
 1. Dodać siatkę. Siatka jest spis urządzeń na urządzeniu, ustawić za pomocą wybrane kolumny.
     1. Wybierz **siatki** w okienku po prawej stronie.
-
-        ![Wybierz siatki](media/howto-use-device-sets/image8.png)
-
     1. Nadaj swojej siatce **tytuł**.
     1. Wybierz kolumny do wyświetlenia, wybierając **Dodaj/Usuń**. W panelu, które się pojawi wybierz kolumny, które mają być pokazywane i kliknij strzałkę w prawo, aby go zaznaczyć.
     1. Wybierz pozycję **OK**.
@@ -81,31 +80,24 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
     1. Przeciągnij i upuść na siatkę, aby umieścić na **pulpit nawigacyjny**.
 
-    > [!NOTE]
-    > Można dodać wiele obrazów, łączy i siatki.
+        > [!NOTE]
+        > Można dodać wiele obrazów, łączy i siatki.
   
     1. Wybierz pozycję **Done** (Gotowe).
 
-    ![Trybu projektowania wyłączone](media/howto-use-device-sets/image10.png)
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurowanie Mapa lokalizacji w urządzeniu ustawia pulpitu nawigacyjnego
 
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurowanie Mapa lokalizacji w urządzeniu ustawia pulpitu nawigacyjnego 
 Możesz dodać mapę lokalizacji, aby wizualizować lokalizacji urządzenia zestawy w mapie.
 
 Aby dodać mapę lokalizacji na urządzeniu ustawia pulpit nawigacyjny, musi mieć właściwość skonfigurowanej lokalizacji w szablonie urządzenia, zobacz [utworzyć właściwość lokalizacji obsługiwane przez usługi Azure Maps](howto-set-up-template.md).
 
-
 1. Na pulpicie nawigacyjnym z zestawu urządzeń wybierz mapę z biblioteki.
-
-    ![Urządzenia, ustawia mapy pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps1.png)
-
 2. Nadaj tytuł, a następnie wybierz właściwość location, wcześniej skonfigurowane w ramach właściwości urządzenia.
 3. Zapisz, aby zobaczyć mapę kafelka, wyświetlanie lokalizacji urządzenia w zestawie urządzeń.
-4. Teraz gdy operator widoki urządzenie ustawia pulpitu nawigacyjnego, operator zobaczyć wszystkie Kafelki, które zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia w skrócie! 
-    
-> [!NOTE] 
-> Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Wybieranie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz wybrać okno podręczne, aby przejść do strony właściwości urządzenia.  
+4. Teraz gdy operator widoki urządzenie ustawia pulpitu nawigacyjnego, operator zobaczyć wszystkie Kafelki, które zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia w skrócie!
 
+> [!NOTE]
+> Można zmienić rozmiar mapy rozmiarowi żądaną. Wybieranie numeru pin na mapie Wyświetla informacje o urządzeniu, nazwę i lokalizację. Możesz wybrać okno podręczne, aby przejść do strony właściwości urządzenia.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfiguruj listę zestawu urządzeń
 
@@ -127,7 +119,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować **listy**. **Listy** pok
 
 ## <a name="analytics"></a>Analiza
 
-Analiza w zestawy urządzeń jest taka sama jak na karcie analiza główne menu nawigacji po lewej stronie. Temat można znaleźć więcej informacji na temat analizy w artykule na [sposób tworzenia analizy](howto-create-analytics.md).
+Analiza w zestawy urządzeń jest taka sama jak na karcie analiza główne menu nawigacji po lewej stronie. Temat można znaleźć więcej informacji na temat analizy w artykule na [sposób tworzenia analizy](howto-use-device-sets.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,15 +11,15 @@ ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 194b13e889de4bc1c5938a6ce9cfded6fe2c88c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 391c5cc3b25d58faeb2615c29a76164d4e5292f2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768283"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759143"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Używanie programu Storage Explorer z usługą Azure File Storage
 
@@ -207,7 +207,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         ![Dodawanie plików](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        d. Wybierz pozycję **Przekaż**.
+        c. Wybierz pozycję **Przekaż**.
 
     - **Przekazywanie folderu do udziału plików**
         
@@ -217,7 +217,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
 
-        d. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
+        c. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
 
         d. Wybierz pozycję **Przekaż**.
 
@@ -227,7 +227,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
         
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Pobierz**.
         
-        d. W oknie dialogowym **Określanie lokalizacji, w której zapisać pobrany plik** określ lokalizację, w której ma zostać zapisany pobrany plik, oraz nazwę tego pliku.
+        c. W oknie dialogowym **Określanie lokalizacji, w której zapisać pobrany plik** określ lokalizację, w której ma zostać zapisany pobrany plik, oraz nazwę tego pliku.
 
         d. Wybierz pozycję **Zapisz**.
 
@@ -237,7 +237,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
         
         b.  Na pasku narzędzi okienka głównego wybierz pozycję **Otwórz**.
         
-        d.  Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku źródłowego.
+        c.  Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku źródłowego.
 
     - **Kopiowanie pliku do Schowka**
 
@@ -245,7 +245,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Kopiuj**.
 
-        d. W lewym okienku przejdź do innego udziału plików i kliknij go dwukrotnie, aby wyświetlić go w okienku głównym.
+        c. W lewym okienku przejdź do innego udziału plików i kliknij go dwukrotnie, aby wyświetlić go w okienku głównym.
 
         d. Na pasku narzędzi okienka głównego wybierz pozycję **Wklej**, aby utworzyć kopię pliku.
 
@@ -255,9 +255,9 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Usuń**.
 
-        d. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
+        c. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](https://www.storageexplorer.com/).
 

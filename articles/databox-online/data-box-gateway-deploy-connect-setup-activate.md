@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 887c1d554cd5bd2b935178a77a2de19e687ca3f2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 84eb458c68c7accf1b638b8e21907516328cb892
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450408"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545094"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Samouczek: Łączenie, konfigurowanie, Aktywuj bramy pola danych platformy Azure (wersja zapoznawcza) 
 
@@ -43,7 +43,6 @@ Przed skonfigurowaniem i skonfigurować bramę pole danych, upewnij się, że:
 * Masz przeprowadzono aprowizację urządzenia wirtualnego, a uzyskane połączonych adres URL, aby go zgodnie z opisem w [Aprowizowanie bramy pola danych w funkcji Hyper-V](data-box-gateway-deploy-provision-hyperv.md) lub [Aprowizowanie bramy pola danych w środowisku VMware](data-box-gateway-deploy-provision-vmware.md).
 * Masz klucz aktywacji usługi bramy pola danych, utworzony w celu zarządzania urządzeniami bramy pola danych. Aby uzyskać więcej informacji, przejdź do [przygotowanie do wdrożenia usługi Azure Gateway pole danych](data-box-gateway-deploy-prep.md).
 
-<!--* If this is the second or subsequent virtual device that you are registering with an existing StorSimple Device Manager service, you should have the service data encryption key. This key was generated when the first device was successfully registered with this service. If you have lost this key, see [Get the service data encryption key](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) for your Data Box Gateway.-->
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Łączenie do lokalnego internetowego interfejsu użytkownika konfiguracji 
 
@@ -53,15 +52,15 @@ Przed skonfigurowaniem i skonfigurować bramę pole danych, upewnij się, że:
    
    Użyj adresu URL połączenia zanotowanego w poprzednim samouczku. Zostanie wyświetlony komunikat o błędzie informujący, że występuje problem z certyfikatem zabezpieczeń witryny sieci Web. Kliknij przycisk **Kontynuuj, aby ta strona sieci Web**. (Te kroki mogą być różne opartych na przeglądarce używana.)
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+    ![Wystąpił błąd podczas połączenia](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
 2. Zaloguj się do internetowego interfejsu użytkownika urządzenia wirtualnego. Domyślne hasło jest *Password1*. 
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
+    ![Zaloguj się do lokalnego internetowego interfejsu użytkownika](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
 3. Monit o zmianę hasła administratora urządzenia. Wpisz nowe hasło, który zawiera od 8 do 16 znaków. Hasło musi zawierać 3 z następujących elementów: wielkie litery, małe litery, cyfry i znaki specjalne.
 
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
+    ![Zmienianie hasła administratora urządzenia](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
 Jesteś teraz w **pulpit nawigacyjny** urządzenia.
 
@@ -69,15 +68,15 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
  
 1. Na pulpicie nawigacyjnym możesz przejść do różne ustawienia wymagane do skonfigurowania, a następnie zarejestrować urządzenie wirtualne przy użyciu usługi bramy pola danych. **Ustawienia sieciowe**, **ustawień serwera proxy sieci Web**, i **ustawienia czasu** są opcjonalne. Tylko ustawienia wymagane są **nazwy urządzenia** i **ustawienia chmury**.
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+    ![Lokalnego internetowego interfejsu użytkownika "Pulpit nawigacyjny" strony](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
 2. W **nazwy urządzenia** strony, skonfigurować przyjazną nazwę dla danego urządzenia. Przyjazna nazwa może zawierać 1 do 15 znaków i może zawierać litery, cyfry i łączniki.
 
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
+    ![Lokalnego internetowego interfejsu użytkownika "Nazwa urządzenia" strony](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
 3. (Opcjonalnie) skonfiguruj swoje **ustawienia sieciowe**. Zostanie wyświetlony interfejs sieciowy co najmniej 1 i inne w zależności od tego, ile skonfigurowanych na podstawowej maszynie wirtualnej. **Ustawienia sieciowe** strony dla urządzenia wirtualnego z interfejsami sieciowymi włączone jest pokazany poniżej.
     
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
+    ![Strona "Ustawienia sieci" systemu lokalnego internetowego interfejsu użytkownika](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
     Podczas konfigurowania ustawień sieciowych należy pamiętać o następujących czynności:
 
@@ -90,7 +89,7 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
 
 4. (Opcjonalnie) skonfiguruj serwer proxy sieci web. Mimo że konfiguracja serwera proxy sieci web jest opcjonalny, należy pamiętać, że jeśli używasz serwera proxy sieci web, można skonfigurować tylko go tutaj.
    
-   ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
+   ![Strona "Ustawienia serwera proxy sieci Web" interfejsu użytkownika lokalnego sieci web](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
    W **serwera proxy sieci Web** strony:
    
@@ -101,7 +100,7 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
 
 5. (Opcjonalnie) skonfiguruj ustawienia czasu dla danego urządzenia, takie jak strefę czasową i podstawowych i pomocniczych serwerów NTP. Serwery NTP są wymagane, ponieważ urządzenie musi synchronizować czas, aby zapewnić możliwość uwierzytelnienia przy użyciu dostawców usług w chmurze.
     
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
+    ![Strona "Ustawienia czasu" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
     W **ustawienia czasu** strony:
     
@@ -116,10 +115,17 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
 
     2. Kliknij pozycję **Aktywuj**. 
        
-         ![](./media/data-box-gateway-deploy-connect-setup-activate/image10.png)
+         ![Strona "Ustawienia chmury" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Może być konieczne Poczekaj chwilę, zanim urządzenia została pomyślnie aktywowana. Po wykonaniu aktywacji strona zostanie zaktualizowana do wskazania, że urządzenia została pomyślnie aktywowana.
+    3. Najpierw zostanie aktywowane urządzenia. Urządzenie jest następnie skanowane pod kątem wszystkie aktualizacje krytyczne i jeśli to możliwe, są automatycznie stosowane aktualizacje. Zostanie wyświetlone powiadomienie w tym celu. 
 
+        Okno dialogowe ma także klucz odzyskiwania, należy skopiować i zapisać go w bezpiecznym miejscu. Ten klucz jest używany, można odzyskać dane, w przypadku, gdy urządzenie nie może uruchomić się.
+
+        ![Strona "Ustawienia chmury" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)    
+
+    4. Może być konieczne Poczekaj kilka minut, po pomyślnym zakończeniu aktualizacji. Strona zostanie zaktualizowana, aby wskazać, że urządzenia została pomyślnie aktywowana.
+
+        ![Strona "Ustawienia chmury" lokalnego internetowego interfejsu użytkownika z aktualizacji](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

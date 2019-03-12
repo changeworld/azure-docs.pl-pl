@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 20e7f8f5d2c0eb9fbfb231adfd20ff54d9eda20a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404199"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576348"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów usługi IoT Hub wysyłanie komunikatów z urządzenia do chmury do różnych punktów końcowych
 
@@ -39,7 +39,7 @@ Można użyć standardowego [integracji usługi Event Hubs i zestawy SDK](iot-hu
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Centrum IoT Hub obsługuje zapisywanie danych w usłudze Azure Blob Storage w [Apache Avro](http://avro.apache.org/) oraz JSON format. Funkcja do zakodowania w formacie JSON jest w wersji zapoznawczej we wszystkich regionach, w których IoT Hub jest dostępna, z wyjątkiem wschodnie stany USA, zachodnie stany USA i Europa Zachodnia. Wartość domyślna to AVRO. Można wybrać format kodowania za pomocą Tworzenie Centrum IoT lub aktualizacji interfejsu API REST, w szczególności [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), witryny Azure Portal [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#optional-parameters) lub [platformy Azure Program PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0#optional-parameters). Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów blob. Nie można edytować format dla istniejącego punktu końcowego. Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w witrynie Azure Portal.
+Centrum IoT Hub obsługuje zapisywanie danych w usłudze Azure Blob Storage w [Apache Avro](https://avro.apache.org/) oraz JSON format. Funkcja do zakodowania w formacie JSON jest w wersji zapoznawczej we wszystkich regionach, w których IoT Hub jest dostępna, z wyjątkiem wschodnie stany USA, zachodnie stany USA i Europa Zachodnia. Wartość domyślna to AVRO. Format kodowania można ustawić tylko w przypadku skonfigurowania punktu końcowego magazynu obiektów blob. Nie można edytować format dla istniejącego punktu końcowego. Korzystając z formatu JSON, kodowanie, należy ustawić obiekt contentType na format JSON i contentEncoding na UTF-8 w komunikacie [właściwości systemu](iot-hub-devguide-routing-query-syntax.md#system-properties). Można wybrać format kodowania za pomocą Tworzenie Centrum IoT lub aktualizacji interfejsu API REST, w szczególności [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), witryny Azure Portal [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) lub [platformy Azure Program PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Na poniższym diagramie przedstawiono sposób wybierania formatu kodowania w witrynie Azure Portal.
 
 ![Obiekt blob magazynu punktu końcowego kodowania](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -118,6 +118,8 @@ W większości przypadków Średni czas oczekiwania jest mniej niż 500 ms. Moż
 ## <a name="monitoring-and-troubleshooting"></a>Monitorowanie i rozwiązywanie problemów
 
 IoT Hub udostępnia kilka routingu i punktu końcowego powiązane metryki, aby Przegląd kondycji Centrum i wysłane wiadomości. Możesz połączyć informacje z wielu metryk, aby odkryć ich główną przyczynę problemów. Na przykład użyć metryki **routingu: porzucone komunikaty telemetryczne** lub **d2c.telemetry.egress.dropped** do identyfikowania liczbę wiadomości, które zostały usunięte, gdy nie odpowiadają one zapytań na żadnej trasy a trasy rezerwowego zostało wyłączone. [Metryki usługi IoT Hub](iot-hub-metrics.md) Wyświetla listę wszystkich metryk, które są domyślnie włączone dla usługi IoT Hub.
+
+Można użyć interfejsu API REST [kondycji punktu końcowego uzyskać](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) można pobrać [stan kondycji](iot-hub-devguide-endpoints.md#custom-endpoints) punktów końcowych. Firma Microsoft zaleca używanie [metryki usługi IoT Hub](iot-hub-metrics.md) związane z routingu opóźnienie wiadomości, aby zidentyfikować i debugować błędy, gdy punkt końcowy kondycji jest nieużywany lub w złej kondycji. Na przykład w przypadku typu punktu końcowego usługi Event Hubs można monitorować **d2c.endpoints.latency.eventHubs**. Będzie można zaktualizować stan złej kondycji punktu końcowego do dobrej kondycji, gdy usługa IoT Hub ustanowiła ostatecznie spójny stan kondycji.
 
 Za pomocą **trasy** dzienników diagnostycznych w usłudze Azure Monitor [ustawień diagnostycznych](../iot-hub/iot-hub-monitor-resource-health.md), możesz śledzi błędy podczas oceny routingu zapytania i punktu końcowego kondycji wyobrażenia Centrum IoT, na przykład gdy punkt końcowy nie istnieje. Te dzienniki diagnostyczne mogą być wysyłane do dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania.
 
