@@ -5,16 +5,16 @@ description: Uczenia modelu jest ważnym krokiem podczas tworzenia modelu tłuma
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: eeecb3e21a8a725932884f13919e58247f85dffb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8fee19b4d7a1ae05ca9a38c5a9ba374c0674a867
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729138"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776261"
 ---
 # <a name="train-a-model"></a>Szkolenie modelu
 

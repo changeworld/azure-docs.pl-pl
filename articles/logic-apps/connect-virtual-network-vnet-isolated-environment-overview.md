@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/24/2019
-ms.openlocfilehash: ff43a55429eb69a7f98fd4da7fdbeb5d4e51513c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/11/2019
+ms.openlocfilehash: b53cd54afdf6243769602971ab77145cfa9ba9cc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991261"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57758781"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów sieci wirtualnej platformy Azure z usługi Azure Logic Apps za pomocą środowiska usług integracji (ISEs)
 
@@ -64,13 +64,6 @@ Różnica między ISE i innych ISE łączników jest w lokalizacjach, w którym 
   ![Wybieranie łączników środowiska ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
 * Łączniki, które są uruchamiane w środowisku ISE są również dostępne w globalną usługę Logic Apps.
-
-<a name="vnet-access"></a>
-
-## <a name="permissions-for-virtual-network-access"></a>Uprawnienia dostępu do sieci wirtualnej
-
-Aby można było wybrać sieci wirtualnej platformy Azure wstrzykiwania środowiska, należy skonfigurować uprawnień kontroli dostępu opartej na rolach (RBAC) w sieci wirtualnej dla usługi Azure Logic Apps. To zadanie wymaga, aby przypisać **Współautor sieci** i **współautora klasycznej** ról w usłudze Azure Logic Apps.
-Aby ustawić te uprawnienia, zobacz [Połącz z sieciami wirtualnymi platformy Azure z aplikacji logiki](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access).
 
 <a name="create-integration-account-environment"></a>
 

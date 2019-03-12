@@ -3,17 +3,17 @@ title: Format danych GeoJSON wirtualnego ogrodzenia w usługi Azure Maps | Dokum
 description: Dowiedz się więcej o GeoJSON wirtualnego ogrodzenia format danych w usługi Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/15/2018
+ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5a654b7fdae341da62d94499830a5e1202dff921
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339638"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568995"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing GeoJSON danych
 
@@ -34,7 +34,7 @@ Dane dla wirtualnego ogrodzenia lub zestawu wirtualne ogrodzenia są reprezentow
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Data/godzina  | true | Data i godzina ważności przedziale czasu rozpoczęcia. |
 | endTime   | Data/godzina  | true |  Data i godzina zakończenia ważności przedziale czasu. |
-| recurrenceType | ciąg | false |   Typ cyklu okresu. Wartość może być `Daily`, `Weekly`, `Monthly`, lub `Yearly`. Wartość domyślna to `Daily`.|
+| recurrenceType | string | false |   Typ cyklu okresu. Wartość może być `Daily`, `Weekly`, `Monthly`, lub `Yearly`. Wartość domyślna to `Daily`.|
 | businessDayOnly | Wartość logiczna | false |  Wskazuje, czy dane jest prawidłowy tylko w dni robocze. Wartość domyślna to `false`.|
 
 

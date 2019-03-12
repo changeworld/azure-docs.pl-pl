@@ -3,23 +3,23 @@ title: Przekształcanie danych za pomocą działania przesyłania strumieniowego
 description: Opis sposobu używania działania przesyłania strumieniowego usługi Hadoop w usłudze Azure Data Factory do przekształcania danych, uruchamiając programy przesyłania strumieniowego usługi Hadoop w klastrze platformy Hadoop.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: b498e09e53f8b0844470bf3948a664d8ad4337b7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 0d8267f1cd65f78d5e98ae9d288d5fa5c4214420
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022228"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576433"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania przesyłania strumieniowego usługi Hadoop w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-hadoop-streaming-activity.md)
 > * [Bieżąca wersja](transform-data-using-hadoop-streaming.md)
 
@@ -78,7 +78,7 @@ Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z 
 | Reduktor           | Określa nazwę pliku wykonywalnego reduktor | Yes      |
 | funkcja łączenia          | Określa nazwę pliku wykonywalnego łączenia | Nie       |
 | fileLinkedService | Odwołanie do połączonej usługi magazynu platformy Azure używane do przechowywania mapowania, łączenia i reduktor programy do wykonania. Jeśli nie określisz ta połączona usługa połączona usługa Azure Storage zdefiniowane w połączonej usługi HDInsight jest używany. | Nie       |
-| Ścieżka pliku          | Podaj tablicę ścieżka do mapowania, łączenia, i fileLinkedService odwołuje się programy reduktor przechowywanych w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. | Yes      |
+| filePath          | Podaj tablicę ścieżka do mapowania, łączenia, i fileLinkedService odwołuje się programy reduktor przechowywanych w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. | Yes      |
 | wejście             | Ścieżka WASB do pliku wejściowego do mapowania. | Yes      |
 | output            | Ścieżka WASB do pliku wyjściowego dla reduktor. | Yes      |
 | getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanego przez klaster HDInsight (lub) określonej za pomocą elementu scriptLinkedService. Dozwolone wartości: Brak zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 5d44904d6210dbc9520ae735605699b197f38bef
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f92c8a7cca70dd9de6389c201d9589c7a31ce25f
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804134"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726995"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
 
 > [!NOTE]
-> Wersja 6.4.571.9494 wtyczki woluminu plików platformy Azure jest wersja zapoznawcza, która jest dostępna z tego dokumentu. Jako wersji zapoznawczej, jest **nie** przeznaczony do użytku w środowiskach produkcyjnych.
+> Wersja 6.4.571.9590 wtyczki woluminu plików platformy Azure jest wersja zapoznawcza, która jest dostępna z tego dokumentu. Jako wersji zapoznawczej, jest **nie** przeznaczony do użytku w środowiskach produkcyjnych.
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -39,11 +39,11 @@ Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://
 
 * Jeśli używasz funkcji Hyper-v kontenery poniższe fragmenty kodu należy dodać w ClusterManifest (klaster lokalny) lub element fabricSettings sekcji szablonu ARM (klastrze platformy Azure) lub ClusterConfig.json (autonomiczny klaster). Konieczne będzie nazwa woluminu i numer portu, którego nasłuchuje woluminu w klastrze. 
 
-W ClusterManifest następujące wymagania do dodania w sekcji hostingu. W tym przykładzie nazwa woluminu jest **sfazurefile** i port nasłuchuje na klastrze jest **19300**.  
+W ClusterManifest następujące wymagania do dodania w sekcji hostingu. W tym przykładzie nazwa woluminu jest **sfazurefile** i port nasłuchuje na klastrze jest **19100**.  
 
 ``` xml 
 <Section Name="Hosting">
-  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19100" />
 </Section>
 ```
 
@@ -56,7 +56,7 @@ W sekcji element fabricSettings szablonu ARM (w przypadku wdrożeń na platformi
     "parameters": [
       {
           "name": "VolumePluginPorts",
-          "value": "sfazurefile:19300"
+          "value": "sfazurefile:19100"
       }
     ]
   }
@@ -66,7 +66,7 @@ W sekcji element fabricSettings szablonu ARM (w przypadku wdrożeń na platformi
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Wdrażanie aplikacji usługi Service Fabric usługi Azure Files
 
-Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontenerów, można pobrać z następujących [łącze](https://aka.ms/sfvolume6.4). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsy API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
+Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontenerów, można pobrać z następujących [łącze](http://download.microsoft.com/download/C/0/3/C0373AA9-DEFA-48CF-9EBE-994CA2A5FA2F/AzureFilesVolumePlugin.6.4.571.9590.zip). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsy API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
 
 1. Przy użyciu wiersza polecenia, zmień katalog na katalog główny pobrany pakiet aplikacji.
 
@@ -99,14 +99,14 @@ Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontener
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. Tworzenie aplikacji w poleceniu do tworzenia aplikacji poniżej, należy pamiętać, **ListenPort** parametr aplikacji. Ta wartość określona dla parametru tej aplikacji jest port, na którym wtyczki usługi Azure Files woluminu nasłuchuje żądań z demona platformy Docker. Należy upewnić się, że porcie podanym do aplikacji nie powoduje konfliktu z innego portu używanego przez klaster lub aplikacji.
+4. Tworzenie aplikacji w poleceniu do tworzenia aplikacji poniżej, należy pamiętać, **ListenPort** parametr aplikacji. Ta wartość określona dla parametru tej aplikacji jest port, na którym wtyczki usługi Azure Files woluminu nasłuchuje żądań z demona platformy Docker. Koniecznie upewnij się, że port pod warunkiem zgodności aplikacji VolumePluginPorts w ClusterManifest nie powoduje konfliktu z innego portu używanego przez klaster lub aplikacji.
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9494 -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9590 -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9590 --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -118,11 +118,11 @@ Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontener
 Domyślna liczba wystąpień usługi dla aplikacji usługi Azure Files wtyczki woluminu jest wartość -1, co oznacza, że to wystąpienie usługi, który został wdrożony w każdym węźle w klastrze. Jednak podczas wdrażania aplikacji usługi Azure Files woluminu wtyczki na lokalny klaster projektowy, liczba wystąpień usługi powinien być określony jako 1. Można to zrobić za pomocą **InstanceCount** parametr aplikacji. W związku z tym polecenia do wdrożenia aplikacji usługi Azure Files woluminu wtyczki na lokalny klaster projektowy jest:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9590 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9590 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 ## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurowanie aplikacji w taki sposób, aby korzystać z woluminu
 Poniższy fragment kodu pokazuje, jak usługi Azure Files na podstawie woluminu można określić w manifeście aplikacji w aplikacji. Element określonych zainteresowań jest **woluminu** tag:

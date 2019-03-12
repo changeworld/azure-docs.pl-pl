@@ -2,16 +2,16 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e483ecfcbddfcf5aa7f8a41c1ee75136c86b656
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 104bd13a0cf97a8605670adde479c2a2eeb29c15
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440329"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57786332"
 ---
-Aby oznaczyć zasób podczas wdrażania, do wdrażanego zasobu dodaj element `tags`. Podaj nazwę i wartość tagu.
+Aby oznaczyć zasób podczas wdrażania, należy dodać `tags` element do zasobu jest wdrażany. Podaj nazwę i wartość tagu.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Stosowanie wartości literału do nazwy tagu
 W poniższym przykładzie przedstawiono konto magazynu z dwoma tagami (`Dept` i `Environment`), dla których ustawiono wartości literału:
@@ -39,6 +39,8 @@ W poniższym przykładzie przedstawiono konto magazynu z dwoma tagami (`Dept` i 
     ]
 }
 ```
+
+Aby ustawić znacznik na wartość daty/godziny, użyj [funkcja utcNow](../articles/azure-resource-manager/resource-group-template-functions-string.md#utcnow).
 
 ### <a name="apply-an-object-to-the-tag-element"></a>Stosowanie obiektu do elementu tagu
 Możesz zdefiniować parametr obiektu przechowującego kilka tagów i zastosować ten obiekt do elementu tagu. Każda właściwość obiektu będzie osobnym tagiem dla zasobu. Poniższy przykład zawiera parametr o nazwie `tagValues`, który został zastosowany do elementu tagu.

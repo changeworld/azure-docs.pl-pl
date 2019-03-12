@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/2/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 38b60536a05fc726ddcd06b631078c0a5f3d89ce
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249154"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730536"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Filtrowanie Azure zagrożeń zapory na podstawie analizy — publiczna wersja zapoznawcza
 
@@ -22,8 +22,6 @@ Filtrowanie na podstawie analizy zagrożeń można włączyć dla zapory dla ale
 
 > [!IMPORTANT]
 > Filtrowaniu na podstawie analizy zagrożeń jest obecnie dostępna w publicznej wersji zapoznawczej i jest dostarczana z wersji zapoznawczej Umowa dotycząca poziomu usług. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->Filtrowanie analizy zagrożeń jest dostępna we wszystkich publicznych regionach. Interfejs użytkownika konfiguracji portalu skojarzone jest dodawany do regionów stopniowo i będą dostępne we wszystkich regionach w niedalekiej przyszłości.
 
 Jeśli włączono filtrowanie na podstawie analizy zagrożeń skojarzone reguły są przetwarzane przed zastosowaniem reguł NAT, reguł sieci lub reguł aplikacji. W trakcie okresu zapoznawczego uwzględniane są tylko najwyższy rekordy zaufania.
 

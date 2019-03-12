@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: raynew
-ms.openlocfilehash: c869a341ac098ab2250bb8d9452b465a54ebeda3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 637a8e91ba03240cd4c2c530ae2c982d2115c81d
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448598"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569828"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -211,6 +211,7 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorące i chłodne w
 **Funkcja** | **Obsługiwane**
 --- | ---
 Zestawy dostępności | Yes
+Strefy dostępności | Nie
 HUB | Yes
 Dyski zarządzane | Yes
 

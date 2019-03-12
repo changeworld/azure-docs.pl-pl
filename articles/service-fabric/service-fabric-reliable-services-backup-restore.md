@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d01d2f18ed35d1752f97f405ae7f7bfb4708ca0d
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095774"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570049"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Kopia zapasowa i przywracanie usług Reliable Services i Reliable Actors
 Usługa Azure Service Fabric to platforma wysokiej dostępności, która replikuje stanu w wielu węzłach, aby zachować ten wysokiej dostępności.  W związku z tym nawet w przypadku awarii jednego węzła w klastrze, usługi nadal dostępne. Tę nadmiarowość wbudowane dostarczonego przez platformę, może być wystarczające dla niektórych, w niektórych przypadkach pożądane jest usługi do tworzenia kopii zapasowych (do magazynu zewnętrznego).
@@ -188,13 +188,13 @@ Reliable Actors Framework jest oparty na usług Reliable Services. ActorService,
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo)
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo)
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -203,7 +203,7 @@ Podczas tworzenia klasy usługi aktora niestandardowe, należy zarejestrować, t
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
-   (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
+    (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
 Domyślny dostawca stanu struktury Reliable actors jest `KvsActorStateProvider`. Przyrostowa kopia zapasowa nie jest włączona domyślnie `KvsActorStateProvider`. Przyrostowe kopie zapasowe można włączyć poprzez utworzenie `KvsActorStateProvider` odpowiednie ustawienie w jego konstruktorze i przekazanie jej do konstruktora ActorService, jak pokazano w poniższym fragmencie kodu:
@@ -211,13 +211,13 @@ Domyślny dostawca stanu struktury Reliable actors jest `KvsActorStateProvider`.
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```

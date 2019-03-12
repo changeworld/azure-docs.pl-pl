@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 35b4b06a09b8ef7b27e8d105d7f2336668c49f8f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138416"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570865"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Traffic Manager za pomocą programu Visual Studio Mobile Center
 
@@ -28,7 +28,7 @@ Można skonfigurować aplikację mobilną opracowanych za pomocą programu Visua
 
 Aby skonfigurować pomiarów rzeczywistego użytkownika, należy uzyskać klucz i instrumentacji aplikacji za pomocą pakietu uruchamianie.
 
-## <a name="step-1-obtain-a-key"></a>Krok 1: Uzyskanie klucza
+## <a name="step-1-obtain-a-key"></a>Krok 1: Uzyskiwanie klucza
     
 Pomiary, pobrać i wysyłane do usługi Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę za pomocą unikatowy ciąg, nazywany kluczem rzeczywistego użytkownika pomiarów (RUM). Możesz uzyskać klucz uruchamianie przy użyciu witryny Azure portal, interfejsu API REST lub przy użyciu programu PowerShell / interfejsu wiersza polecenia, interfejsy.
 
@@ -40,7 +40,7 @@ Aby uzyskać klucz RUM przy użyciu witryny Azure portal, korzystając z następ
         
    ![Wygeneruj klucz pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Rysunek 1: Generowanie klucza pomiarów rzeczywistego użytkownika**
+   **Rysunek 1: Rzeczywiste pomiary dotyczące prawdziwych użytkowników generowania kluczy**
 
    5.   Zostanie wyświetlona strona klucza (rum), który jest generowany i wstawki kodu JavaScript, który ma być osadzone w kodzie strony HTML.
  
@@ -50,7 +50,7 @@ Aby uzyskać klucz RUM przy użyciu witryny Azure portal, korzystając z następ
  
    6. Kliknij przycisk **kopiowania** przycisk, aby skopiować klucz (rum). 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Przygotuj Instrumentację aplikacji przy użyciu uruchamianie pakiet zestawu SDK usługi Mobile Center
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Instrumentacja aplikacji przy użyciu uruchamianie pakiet zestawu SDK usługi Mobile Center
 
 Jeśli jesteś nowym użytkownikiem programu Visual Studio Mobile Center, odwiedź stronę jego [witryny sieci Web](https://mobile.azure.com). Aby uzyskać szczegółowe instrukcje dotyczące integracji zestawu SDK, zobacz [wprowadzenie do zestawu SDK systemu Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
 
@@ -72,7 +72,7 @@ Aby użyć pomiarów rzeczywistego użytkownika, należy wykonać poniższą pro
     W swojej **app/build.gradle** pliku Dodaj następujące wiersze:
 
     ```groovy
-    dependencies {   
+    dependencies {
      
         def mobileCenterSdkVersion = '0.12.1-16+3fe5b08'
         compile "com.microsoft.azure.mobile:mobile-center-rum:${mobileCenterSdkVersion}"

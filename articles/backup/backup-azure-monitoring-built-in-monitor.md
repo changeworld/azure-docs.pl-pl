@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 72a23617440e26c9dca69cab2a06370427c49768
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 50d766eed5800c58d0b0258b2be6637f139c542a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404726"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730969"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorowanie obciążeń usługi Azure Backup
 
@@ -94,7 +94,7 @@ Jeśli ustawiono częstotliwość podsumowanie godzinowe oraz alert był wyświe
 > [!NOTE]
 >
 * Jeśli operacją destrukcyjną, takie jak **Zatrzymaj ochronę za pomocą usuwania danych** jest wykonywane, zostanie zgłoszony alert oraz zostanie wysłana wiadomość e-mail do właścicieli subskrypcji, Administratorzy i współadministratorzy, nawet jeśli nie skonfigurowano powiadomienia usługi odzyskiwania Magazyn.
-* Alerty nie są generowane dla pomyślne tworzenie kopii zapasowych w związku z tym powiadomienia nie zostaną wyzwolone. Aby skonfigurować powiadomienia dla zadań zakończonych pomyślnie użyć [dziennika aktywności](backup-azure-monitoring-use-azuremonitor.md#using-rs-vaults-activity-logs) lub [usługi Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+* Aby skonfigurować powiadomienia dla zadań zakończonych pomyślnie użyć [usługi Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

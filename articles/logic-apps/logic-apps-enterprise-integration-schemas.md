@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
-ms.openlocfilehash: 03ac2e0f42ff05165aa2313d823710a71c7dffec
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768328"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727318"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Walidacja danych XML przy użyciu schematów w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
@@ -89,7 +89,7 @@ Na podstawie pliku schematu (XSD) rozmiaru, postępuj zgodnie z instrukcjami prz
 
 ### <a name="add-schemas-more-than-2-mb"></a>Dodawanie schematów, więcej niż 2 MB
 
-Aby dodać większej schematów, możesz przekazać schematu do kontenera obiektów blob platformy Azure w ramach konta magazynu platformy Azure. Twoje kroki, aby dodać mapy różnią się w zależności czy kontenera obiektów blob jest publiczny dostęp do odczytu. Dlatego najpierw należy sprawdzić, czy kontenera obiektów blob ma publiczny dostęp do odczytu, wykonaj następujące czynności: [Ustaw poziom dostępu publicznego do kontenera obiektów blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Aby dodać większej schematów, możesz przekazać schematu do kontenera obiektów blob platformy Azure w ramach konta magazynu platformy Azure. Twoje kroki, aby dodać schematów się różnić w zależności czy kontenera obiektów blob jest publiczny dostęp do odczytu. Dlatego najpierw należy sprawdzić, czy kontenera obiektów blob ma publiczny dostęp do odczytu, wykonaj następujące czynności: [Ustaw poziom dostępu publicznego do kontenera obiektów blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>Sprawdź poziom dostępu do kontenera
 

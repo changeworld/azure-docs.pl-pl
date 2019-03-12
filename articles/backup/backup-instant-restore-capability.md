@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 3b367619e2d22754b45e8178a25021a677cab6da
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7d54e137cbfb35c84173c79e65a1070eabb52e78
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405764"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731628"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -78,7 +78,7 @@ Alternatywnie, możesz przejść do **właściwości** strona magazynu można po
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurowanie przechowywania migawki za pomocą witryny Azure portal
-Ta opcja jest obecnie dostępna w **zachodnio-środkowe stany USA**, **Indie Południowe**, **Australia Wschodnia**, **Europa Północna**,  **Kanada Środkowa**, **Kanada Wschodnia**, **Francja środkowa**, **Francja Południowa**, **Korea środkowa**,  **Korea Południowa**, **Południowe Zjednoczone Królestwo 2**, **Północne Zjednoczone Królestwo**, **Południowe Zjednoczone Królestwo**, **zachodnie Zjednoczone Królestwo**, **Indie środkowe** , **Australia południowo-wschodnia**, **Azja Wschodnia**, **środkowe stany USA**, **Azja południowo-wschodnia**,  **Północnośrodkowa**, **zachodnie stany USA 2**, **południowo-środkowe stany USA**, **Japonia, część wschodnia**, **Japonia, część zachodnia**i **Wschodnie stany USA 2**.
+Wszyscy użytkownicy we wszystkich **publicznych obszarów geograficznych** zostali uaktualnieni do wersji natychmiastowe przywracanie.
 
 Dla uaktualnionego użytkowników w witrynie Azure portal można wyświetlić pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
 
