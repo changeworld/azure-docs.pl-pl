@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: Tworzenie i przywracanie kopii zapasowych
     href: backup-recovery.md
-  - name: Obliczenia o wysokiej wydajności
-    href: high-performance-computing.md
   - name: Zagadnienia dotyczące wdrażania
     items:
     - name: Wytyczne dotyczące infrastruktury
@@ -398,7 +396,7 @@ items:
       - name: Baza danych MS SQL w systemie Linux
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Obliczenia o wysokiej wydajności (HPC)
-      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
+      href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
       - name: Architektura
@@ -407,49 +405,52 @@ items:
         href: deploy-ibm-db2-purescale-azure.md
   - name: Zarządzanie magazynem
     items:
-    - name: Często zadawane pytania dotyczące dysków
-      href: faq-for-disks.md
     - name: Dodawanie dysku
       items:
       - name: Interfejs wiersza polecenia platformy Azure
         href: add-disk.md
       - name: Azure Portal
         href: attach-disk-portal.md
-    - name: Test porównawczy dysku
-      href: disks-benchmarks.md
     - name: Odłączanie dysku
       href: detach-disk.md
+    - name: Wdrażanie dysków za pomocą szablonu
+      href: using-managed-disks-template-deployments.md
     - name: Zmienianie rozmiaru dysku
       href: expand-disks.md
     - name: Tworzenie migawki dysku
       href: snapshot-copy-managed-disk.md
     - name: Tworzenie kopii zapasowych dysków niezarządzanych
       href: incremental-snapshots.md
-    - name: Konwertowanie do usługi Managed Disks
-      href: convert-unmanaged-to-managed-disks.md
-    - name: Konwertowanie dysku między warstwami Standardowa i Premium
-      href: convert-disk-storage.md
+    - name: Migracja i konwersja
+      items:
+      - name: Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: Konwertowanie do usługi Managed Disks
+        href: convert-unmanaged-to-managed-disks.md
+      - name: Konwertowanie dysku między warstwami Standardowa i Premium
+        href: convert-disk-storage.md
     - name: Kopiowanie plików do maszyny wirtualnej
       href: copy-files-to-linux-vm-using-scp.md
-    - name: Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: Znajdowanie niedołączonych dysków
-      href: find-unattached-disks.md
-    - name: Korzystanie z usługi File Storage
-      href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: Wdrażanie dysków za pomocą szablonu
-      href: using-managed-disks-template-deployments.md
-    - name: Używanie akceleratora zapisu
-      href: how-to-enable-write-accelerator.md
-    - name: Włączanie dysków ultra SSD
-      href: disks-enable-ultra-ssd.md
-    - name: Optymalizowanie wydajności
-      href: optimization.md
+    - name: Wydajność
       items:
+      - name: Używanie akceleratora zapisu
+        href: how-to-enable-write-accelerator.md
+      - name: Włączanie dysków ultra SSD
+        href: disks-enable-ultra-ssd.md
+      - name: Test porównawczy dysku
+        href: disks-benchmarks.md
+      - name: Optymalizacja wydajności
+        href: optimization.md
       - name: Konfigurowanie programowej macierzy RAID
         href: configure-raid.md
       - name: Konfigurowanie maszyny wirtualnej z systemem Linux
         href: configure-lvm.md
+    - name: Znajdowanie niedołączonych dysków
+      href: find-unattached-disks.md
+    - name: Korzystanie z usługi File Storage
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: Często zadawane pytania dotyczące dysków
+      href: faq-for-disks.md
   - name: Zarządzanie siecią
     items:
     - name: Tworzenie sieci wirtualnej
@@ -559,9 +560,9 @@ items:
     href: faq.md
 - name: Rozwiązywanie problemów
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 776adc5310db7c4a7762409a53c57e896cc95360
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ade43488288949aa22942c8df2d6900e4522615a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438293"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732026"

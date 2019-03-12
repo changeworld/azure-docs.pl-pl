@@ -7,11 +7,11 @@ items:
     href: container-instances-overview.md
 - name: Przewodniki Szybki start
   items:
-  - name: Tworzenie kontenera — interfejs wiersza polecenia
+  - name: Wdrażanie wystąpienia kontenera — interfejs wiersza polecenia
     href: container-instances-quickstart.md
-  - name: Tworzenie kontenera — portal
+  - name: Wdrażanie wystąpienia kontenera — portal
     href: container-instances-quickstart-portal.md
-  - name: Tworzenie kontenera — program PowerShell
+  - name: Wdrażanie wystąpienia kontenera — PowerShell
     href: container-instances-quickstart-powershell.md
   expanded: true
 - name: Samouczki
@@ -30,12 +30,14 @@ items:
     href: container-instances-samples-rm.md
 - name: Pojęcia
   items:
-  - name: Limity przydziału i limity regionalne
-    href: container-instances-quotas.md
-  - name: Relacja z koordynatorami
-    href: container-instances-orchestrator-relationship.md
   - name: Grupy kontenerów
     href: container-instances-container-groups.md
+  - name: Limity przydziału i ograniczenia
+    href: container-instances-quotas.md
+  - name: Dostępność w danym regionie
+    href: container-instances-region-availability.md
+  - name: Relacja z koordynatorami
+    href: container-instances-orchestrator-relationship.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Wdrażanie
@@ -44,48 +46,50 @@ items:
       href: container-instances-multi-container-yaml.md
     - name: Grupa z wieloma kontenerami — Resource Manager
       href: container-instances-multi-container-group.md
-    - name: Wdrażanie sieci wirtualnej (wersja zapoznawcza)
+    - name: Wdrażanie w sieci wirtualnej (wersja zapoznawcza)
       href: container-instances-vnet.md
-    - name: Wdrażanie przy użyciu zasobów procesora GPU (wersja zapoznawcza)
-      href: container-instances-gpu.md
     - name: Wdrażanie z usługi Azure Container Registry
       href: container-instances-using-azure-container-registry.md
+  - name: Scenariusze związane z kontenerami
+    items:
+    - name: Ustawianie zasad ponownego uruchamiania dla zadań uruchamianych jednokrotnie
+      href: container-instances-restart-policy.md
     - name: Ustawianie zmiennych środowiskowych (env)
       href: container-instances-environment-variables.md
-    - name: Konfigurowanie sond żywotności
-      href: container-instances-liveness-probe.md
-  - name: Zarządzanie
-    items:
-    - name: Aktualizowanie uruchomionych kontenerów
-      href: container-instances-update.md
     - name: Wykonywanie polecenia (exec)
       href: container-instances-exec.md
-    - name: Monitorowanie użycia procesora i pamięci
-      href: container-instances-monitor.md
-    - name: Korzystanie z zapytań w usłudze Azure Monitor
-      href: container-instances-log-analytics.md
-  - name: Uruchamianie obciążeń
-    items:
-    - name: Uruchamianie zadań przy użyciu zasad ponownego uruchamiania
-      href: container-instances-restart-policy.md
-    - name: Agenci kompilacji usługi Jenkins w usłudze ACI
+    - name: Uruchamianie zadania kompilacji usługi Jenkins
       href: container-instances-jenkins.md
     - name: Korzystanie z tożsamości zarządzanej (wersja zapoznawcza)
       href: container-instances-managed-identity.md
-  - name: Konfigurowanie woluminów danych
+    - name: Korzystanie z zasobów procesora GPU (wersja zapoznawcza)
+      href: container-instances-gpu.md
+  - name: Instalowanie woluminów danych
     items:
-    - name: Azure Files
+    - name: Udział plików platformy Azure
       href: container-instances-volume-azure-files.md
-    - name: emptyDir
-      href: container-instances-volume-emptydir.md
-    - name: gitRepo
-      href: container-instances-volume-gitrepo.md
-    - name: wpis tajny
+    - name: Wpis tajny
       href: container-instances-volume-secret.md
+    - name: Pusty katalog
+      href: container-instances-volume-emptydir.md
+    - name: Sklonowane repozytorium Git
+      href: container-instances-volume-gitrepo.md
+  - name: Zarządzanie uruchomionymi kontenerami
+    items:
+    - name: Konfigurowanie sond żywotności
+      href: container-instances-liveness-probe.md
+    - name: Aktualizowanie uruchomionych kontenerów
+      href: container-instances-update.md
+  - name: Monitorowanie i rejestrowanie
+    items:
+    - name: Monitorowanie użycia procesora i pamięci
+      href: container-instances-monitor.md
+    - name: Pobieranie dzienników i zdarzeń kontenerów
+      href: container-instances-get-logs.md
+    - name: Rejestrowanie za pomocą usługi Azure Log Analytics
+      href: container-instances-log-analytics.md
   - name: Rozwiązywanie problemów
     items:
-    - name: Pobierz dzienniki i zdarzenia kontenerów
-      href: container-instances-get-logs.md
     - name: Rozwiązywanie typowych problemów
       href: container-instances-troubleshooting.md
 - name: Dokumentacja
@@ -119,12 +123,12 @@ items:
   - name: Przekazywanie opinii dotyczących produktów
     href: https://feedback.azure.com/forums/602224-azure-container-instances
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-container-instances
+    href: https://stackoverflow.com/questions/tagged/azure-container-instances
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 062c4f2b196ab587577ef4703f79af2f7259c776
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: fcee083f7d98aba1856cf204f5c2d559d1b5925b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871710"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731198"

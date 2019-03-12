@@ -116,8 +116,8 @@ items:
       href: runbook-input-parameters.md
     - name: Obsługa błędów w graficznych elementach runbook
       href: automation-runbook-graphical-error-handling.md
-    - name: Śledzenie zadania elementu Runbook
-      displayName: fair share, activity log
+    - name: Wykonywanie elementu runbook
+      displayName: fair share, activity log, job
       href: automation-runbook-execution.md
     - name: Zarządzanie danymi usługi Azure Automation
       displayName: backup
@@ -208,6 +208,8 @@ items:
       href: automation-deploy-template-runbook.md
     - name: Integracja usługi Azure Automation z usługami Event Grid i Microsoft Teams
       href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+    - name: Przenoszenie konta usługi Automation do innej subskrypcji
+      href: how-to/move-account.md
   - name: Monitorowanie
     items:
     - name: Przekazywanie danych zadania usługi Azure Automation do dzienników usługi Azure Monitor
@@ -285,9 +287,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 01c80ffb961cf868d02b067402b7a168801ce88f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b4499b2a09dc8ac330582e2f42f5d683a89790c5
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819194"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730724"

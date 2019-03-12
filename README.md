@@ -1,6 +1,14 @@
+---
+ms.openlocfilehash: 2690a01535365ba097e0c058858f24e8c9d80aac
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588741"
+---
 # <a name="microsoft-azure-documentation"></a>Dokumentacja platformy Microsoft Azure
 
-> W dniach 5–9 marca 2019 r. repozytorium MicrosoftDocs/azure-docs zostanie poddane migracji z bieżącego aparatu Markdown do aparatu Markdown o nazwie [Markdig](https://github.com/lunet-io/markdig). W tym czasie będziemy wyłączać możliwość zawieszania scalania publicznych żądań ściągnięcia w celu przeprowadzenia migracji.
+> W dniach 5–9 marca 2019 r. repozytorium MicrosoftDocs/azure-docs zostanie poddane migracji z bieżącego aparatu Markdown do aparatu Markdown o nazwie [Markdig](https://github.com/lunet-io/markdig). W tym czasie będziemy wstrzymywać możliwość scalania publicznych żądań ściągnięcia w celu przeprowadzenia migracji.
 
 Witamy w [dokumentacji](https://docs.microsoft.com/azure) typu open source platformy [Microsoft Azure](https://azure.microsoft.com). Przejrzyj ten plik README, aby dowiedzieć się, jak wziąć udział we współtworzeniu dokumentacji platformy Microsoft Azure.
 

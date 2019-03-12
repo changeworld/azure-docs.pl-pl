@@ -63,33 +63,41 @@ items:
       href: how-to-search-for-address.md
     - name: Renderowanie danych niestandardowych na mapie statycznej
       href: how-to-render-custom-data.md
-  - name: Tworzenie map JavaScript
+  - name: Tworzenie aplikacji przy użyciu internetowego zestawu SDK
     items:
-    - name: Korzystanie z kontrolki mapy
-      href: how-to-use-map-control.md
-    - name: Tworzenie mapy
-      href: map-create.md
-    - name: Wybieranie stylu mapy
-      href: choose-map-style.md
-    - name: Dodawanie kontrolek mapy
-      href: map-add-controls.md
-    - name: Dodawanie warstwy symboli
-      href: map-add-pin.md
-    - name: Dodawanie menu podręcznego
-      href: map-add-popup.md
-    - name: Dodawanie warstwy bąbelkowej
-      href: map-add-bubble-layer.md
-    - name: Dodawanie kształtu
-      href: map-add-shape.md
-    - name: Dodawanie warstwy mapy cieplnej
-      href: map-add-heat-map-layer.md
-    - name: Dodawanie warstwy obrazów
-      href: map-add-image-layer.md
-    - name: Dodawanie warstwy kafelków
-      href: map-add-tile-layer.md
-    - name: Dodawanie znaczników HTML
-      href: map-add-custom-html.md
-    - name: Usługi
+    - name: Kontrolka mapy
+      items:
+      - name: Korzystanie z kontrolki mapy
+        href: how-to-use-map-control.md
+      - name: Tworzenie mapy
+        href: map-create.md
+      - name: Wybieranie stylu mapy
+        href: choose-map-style.md
+      - name: Dodawanie kontrolek do mapy
+        href: map-add-controls.md
+      - name: Dodawanie warstwy symboli
+        href: map-add-pin.md
+      - name: Dodawanie menu podręcznego
+        href: map-add-popup.md
+      - name: Dodawanie warstwy bąbelkowej
+        href: map-add-bubble-layer.md
+      - name: Dodawanie kształtów
+        href: map-add-shape.md
+      - name: Dodawanie warstwy mapy cieplnej
+        href: map-add-heat-map-layer.md
+      - name: Nakładka obrazu
+        href: map-add-image-layer.md
+      - name: Dodawanie warstw kafelków
+        href: map-add-tile-layer.md
+      - name: Znaczniki HTML
+        href: map-add-custom-html.md
+      - name: Wyświetlanie ruchu
+        href: map-show-traffic.md
+      - name: Interakcja ze zdarzeniami myszy
+        href: map-events.md
+      - name: Udostępnianie aplikacji
+        href: map-accessibility.md
+    - name: Moduł usług
       items:
       - name: Wyświetlanie wyników wyszukiwania
         href: map-search-location.md
@@ -97,13 +105,7 @@ items:
         href: map-get-information-from-coordinate.md
       - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
         href: map-route.md
-    - name: Wyświetlanie ruchu
-      href: map-show-traffic.md
-    - name: Interakcja ze zdarzeniami myszy
-      href: map-events.md
-    - name: Dostępne aplikacje map
-      href: map-accessibility.md
-  - name: Tworzenie map w systemie Android
+  - name: Tworzenie aplikacji przy użyciu zestawu Android SDK
     items:
     - name: Jak używać kontrolki map w systemie Android
       href: how-to-use-android-map-control-library.md
@@ -150,7 +152,7 @@ items:
 - name: Zasoby
   items:
   - name: Warunki użytkowania usługi Azure Maps
-    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
   - name: Cennik
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: Kalkulator cen
@@ -197,9 +199,9 @@ items:
       href: /azure/iot-edge
     - name: Zestawy SDK urządzeń IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2d974c96dd953c7a2727bcd5b1bcc3b60ad807a0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336737"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569233"

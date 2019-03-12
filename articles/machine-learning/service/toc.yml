@@ -53,8 +53,16 @@ items:
     href: concept-accelerate-with-fpgas.md
   - name: Potoki uczenia maszynowego
     href: concept-ml-pipelines.md
-  - name: Zabezpieczenia przedsiębiorstwa
-    href: concept-enterprise-security.md
+  - name: Bezpieczeństwo
+    items:
+    - name: Przegląd zabezpieczeń przedsiębiorstwa
+      displayName: authorization authentication encryption
+      href: concept-enterprise-security.md
+    - name: Używanie sieci wirtualnych
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
+      href: how-to-secure-web-service.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Zarządzanie obszarami roboczymi
@@ -113,6 +121,8 @@ items:
     - name: Używanie miejsc docelowych obliczania zdalnego
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
+    - name: Automatyczne trenowanie modeli prognozy
+      href: how-to-auto-train-forecast.md
   - name: Modele ONNX
     href: how-to-build-deploy-onnx.md
   - name: Wdrażanie modeli
@@ -139,13 +149,6 @@ items:
       href: how-to-enable-data-collection.md
     - name: Monitorowanie za pomocą usługi Application Insights
       href: how-to-enable-app-insights.md
-  - name: Bezpieczeństwo
-    items:
-    - name: Używanie sieci wirtualnych
-      displayName: vnet
-      href: how-to-enable-virtual-network.md
-    - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
-      href: how-to-secure-web-service.md
   - name: Tworzenie pierwszego potoku
     href: how-to-create-your-first-pipeline.md
   - name: Włącz rejestrowanie
@@ -189,9 +192,9 @@ items:
     href: support-for-aml-services.md
   - name: Porównanie naszych produktów do uczenia maszynowego
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 5d7cdcec4e0b855f509539a1fc79015793efc404
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 19a26ea88ba8c8e820e838a7c96a802180129dd7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192135"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766270"
