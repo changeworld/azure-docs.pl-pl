@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542535"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571222"
 ---
 # <a name="using-openfaas-on-aks"></a>Używanie usługi OpenFaaS w usłudze AKS
 
-[Usługi OpenFaaS] [ open-faas] to architektura służąca do tworzenia funkcje niewymagające użycia serwera na podstawie kontenerów. Jako projekt typu open source zdobyła wdrożenia na dużą skalę w społeczności. W tym dokumencie przedstawiono Instalowanie i używanie usługi OpenFaas w klastrze usługi Azure Kubernetes Service (AKS).
+[Usługi OpenFaaS] [ open-faas] to architektura służąca do tworzenia funkcje niewymagające użycia serwera za pomocą kontenerów. Jako projekt typu open source zdobyła wdrożenia na dużą skalę w społeczności. W tym dokumencie przedstawiono Instalowanie i używanie usługi OpenFaas w klastrze usługi Azure Kubernetes Service (AKS).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,43 +29,48 @@ Aby wykonać kroki opisane w tym artykule, potrzebne są następujące elementy.
 * Wiersza polecenia platformy Azure zainstalowany w systemie deweloperskim.
 * Narzędzia wiersza polecenia Git zainstalowana w systemie.
 
-## <a name="get-openfaas"></a>Uzyskaj usługi OpenFaaS
+## <a name="add-the-openfaas-helm-chart-repo"></a>Dodaj repozytorium usługi OpenFaaS wykresu helm
 
-Klonowanie repozytorium projektu usługi OpenFaaS z systemem rozwoju.
-
-```azurecli-interactive
-git clone https://github.com/openfaas/faas-netes
-```
-
-Przejdź do katalogu sklonowanego repozytorium.
+Usługi OpenFaaS przechowuje własnego wykresów rozwiązania helm, aby na bieżąco z najnowszymi zmianami.
 
 ```azurecli-interactive
-cd faas-netes
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm repo update
 ```
 
-## <a name="deploy-openfaas"></a>Wdrażanie usługi OpenFaaS
+## <a name="deploy-openfaas"></a>Deploy OpenFaaS
 
 Dobrym rozwiązaniem jest usługi OpenFaaS i usługi OpenFaaS funkcji powinny znajdować się w ich przestrzeniach nazw usługi Kubernetes.
 
-Tworzenie przestrzeni nazw usługi OpenFaaS systemu.
+Tworzenie przestrzeni nazw usługi OpenFaaS systemu i funkcje:
 
 ```azurecli-interactive
-kubectl create namespace openfaas
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Tworzenie drugiej przestrzeni nazw usługi OpenFaaS funkcji.
+Generowanie hasła dla usługi OpenFaaS interfejsu użytkownika portalu i interfejsu API REST:
 
 ```azurecli-interactive
-kubectl create namespace openfaas-fn
+# generate a random password
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+
+kubectl -n openfaas create secret generic basic-auth \
+--from-literal=basic-auth-user=admin \
+--from-literal=basic-auth-password="$PASSWORD"
 ```
+
+Można uzyskać wartość wpisu tajnego z `echo $PASSWORD`.
+
+Hasło, które w tym miejscu utworzymy będzie służyć przez wykresu helm, aby włączyć uwierzytelnianie podstawowe w bramie usługi OpenFaaS jest uwidaczniany w Internecie za pośrednictwem chmury usługi równoważenia obciążenia.
 
 Wykres narzędzia Helm dla usługi OpenFaaS znajduje się w sklonowanego repozytorium. Skorzystaj z tej tabeli, aby wdrażać usługi OpenFaaS do klastra usługi AKS.
 
 ```azurecli-interactive
-helm install --namespace openfaas -n openfaas \
-  --set functionNamespace=openfaas-fn, \
-  --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/
+helm upgrade openfaas --install openfaas/openfaas \
+    --namespace openfaas  \
+    --set basic_auth=true \
+    --set functionNamespace=openfaas-fn \
+    --set serviceType=LoadBalancer
 ```
 
 Dane wyjściowe:
@@ -104,14 +109,23 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Aby przetestować systemu usługi OpenFaaS, przejdź do zewnętrznego adresu IP na porcie 8080, `http://52.186.64.52:8080` w tym przykładzie.
+Aby przetestować systemu usługi OpenFaaS, przejdź do zewnętrznego adresu IP na porcie 8080, `http://52.186.64.52:8080` w tym przykładzie. Zostanie wyświetlony monit logowania. Aby pobrać hasło, wprowadź `echo $PASSWORD`.
 
-![Interfejs użytkownika usługi OpenFaaS](media/container-service-serverless/openfaas.png)
+![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
 Na koniec zainstaluj interfejs wiersza polecenia usługi OpenFaaS. W tym przykładzie użyto brew, zobacz [dokumentacji interfejsu wiersza polecenia usługi OpenFaaS] [ open-faas-cli] więcej opcji.
 
 ```console
 brew install faas-cli
+```
+
+Ustaw `$OPENFAAS_URL` do publicznego adresu IP znaleziony powyżej.
+
+Zaloguj się przy użyciu wiersza polecenia platformy Azure:
+
+```azurecli-interactive
+export OPENFAAS_URL=http://52.186.64.52:8080
+echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>Tworzenie pierwszej funkcji
@@ -233,10 +247,11 @@ Możesz również przetestować funkcję w Interfejsie użytkownika usługi Open
 
 ## <a name="next-steps"></a>Następne kroki
 
-Domyślnym wdrożeniu usługi OpenFaas musi być zablokowany dla bramy usługi OpenFaaS i funkcje. [Wpis w blogu Alex Ellis](https://blog.alexellis.io/lock-down-openfaas/) ma więcej szczegółów na temat opcji konfigurację zabezpieczeń.
+Aby dowiedzieć się więcej o workshop usługi OpenFaaS za pomocą zestawu z warsztatów stanowiących obejmować tematy takie jak tworzenie własnych bot usługi GitHub można kontynuować korzystanie z wpisów tajnych oraz ich wyświetlanie metryk i skalowanie automatyczne.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
+[openfaas-workshop]: https://github.com/openfaas/workshop

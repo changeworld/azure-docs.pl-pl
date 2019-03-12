@@ -9,12 +9,12 @@ author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: dcecb98d5e254e3fadd114c227e783a60fc6fa4e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316153"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759395"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Przeszukiwanie magazynu obiektów blob za pomocą usługi Azure Search
 
@@ -52,5 +52,5 @@ Usługa Azure Search można dodać do obiektów blob bezpośrednio na stronie po
 
 Kliknij przycisk **Dodaj usługę Azure Search** można uruchomić przepływu, w którym możesz wybrać istniejącą usługę Azure Search lub Utwórz nową usługę. Jeśli tworzysz nową usługę, są przejście poza środowisko portalu konta usługi Storage. Możesz przejść z powrotem do strony portalu magazynu i wybierz ponownie **Dodaj usługę Azure Search** opcji, w którym można wybrać istniejącą usługę.
 
-### <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o indeksatora obiektów Blob usługi Azure Search, w pełni [dokumentacji](https://aka.ms/azsblobindexer).

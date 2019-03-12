@@ -3,21 +3,20 @@ title: Ustaw zmienną działania w usłudze Azure Data Factory | Dokumentacja fi
 description: Dowiedz się, jak użyć działania Ustaw zmienną można ustawić wartość istniejącej zmiennej zdefiniowanych w potoku usługi fabryka danych
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/10/2018
-ms.author: douglasl
-ms.openlocfilehash: cc573028779bcd6b77394bbeefbea58f714b835c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017348"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575294"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Ustaw zmienną działania w usłudze Azure Data Factory
 

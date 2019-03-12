@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 44e13a301117ffe11e978666a38897ffd878c223
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856900"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551278"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migracja z Custom Speech Service do usługi rozpoznawania mowy
 
@@ -48,7 +48,7 @@ Migruj istniejące klucze zasobu z usługą mowy w portalu usługi mowy. Wykonaj
 > [!NOTE]
 > Klucze zasobów można migrować tylko w obrębie tego samego regionu.
 
-1. Zaloguj się do [cris.ai](http://www.cris.ai) portalu, a następnie wybierz subskrypcję, w prawym górnym menu.
+1. Zaloguj się do [cris.ai](https://www.cris.ai) portalu, a następnie wybierz subskrypcję, w prawym górnym menu.
 
 2. Wybierz **migracji wybranych subskrypcji**.
 

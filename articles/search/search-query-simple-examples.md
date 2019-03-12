@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6037d6a1b418a4241f1133b8ca7d89764da22f61
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316271"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571375"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Prosta składnia zapytań przykłady do tworzenia zapytań w usłudze Azure Search
 
@@ -55,7 +55,7 @@ Kompozycja adresu URL zawiera następujące elementy:
 
 ## <a name="send-your-first-query"></a>Wyślij pierwszego zapytania
 
-Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane jako pełne dokumenty JSON. Użytkownik może kopiowanie i wklejanie tego adresu URL w pierwszym przykładzie poniżej.
+Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Użytkownik może kopiowanie i wklejanie tego adresu URL w pierwszym przykładzie poniżej.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -93,21 +93,21 @@ Wszystkie dokumenty ma unikatowy identyfikator. Aby wypróbować składnia zapyt
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
- ```
+```
 
 Następny przykład jest zapytaniem wyszukiwania zwraca określony dokument na podstawie `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", która znajdowała się pierwszy w poprzedniej odpowiedzi. Następujące zapytanie zwraca całego dokumentu, nie tylko wybranych pól. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
- ```
+```
 
 ## <a name="example-3-filter-queries"></a>Przykład 3: Zapytania filtru
 
 [Składnia filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) to wyrażenie OData, które można używać z **wyszukiwania** lub samodzielnie. Filtr autonomiczny bez parametru wyszukiwania jest przydatna, podczas wyrażenie filtru jest w stanie do pełnej kwalifikacji dokumentów zainteresowania. Bez ciąg zapytania nie ma żadnej analizy leksykalne lub językową nie oceniania (wszystkie wyniki są 1) i nie klasyfikacji. Należy zauważyć, że ciąg wyszukiwania jest pusty.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
       "select": "select=job_id, business_title, agency, salary_range_from",
@@ -123,13 +123,13 @@ Jeśli chcesz wypróbować w narzędziu Postman przy użyciu GET można wkleić 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
- ```
+```
 
 Jest innym wydajnym sposobem łączenia filtru i wyszukiwania **`search.ismatch*()`** w wyrażeniu filtru, w którym można korzystać z zapytania wyszukiwania w filtrze. To wyrażenie filtru używa symbolu wieloznacznego w *plan* wybrać business_title, w tym planie termin, planner, planowania i tak dalej.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
- ```
+```
 
 Aby uzyskać więcej informacji na temat funkcji, zobacz [search.ismatch w "Przykładach filtrów"](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
 
@@ -142,8 +142,8 @@ Typy danych są ważne w filtry zakresów i działają najlepiej, jeśli dane li
 Poniższe przykłady są w formacie WPIS, aby zwiększyć czytelność (zakresu liczbowego, a następnie zakres tekstu):
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
       "select": "job_id, business_title, num_of_positions, agency",
@@ -155,8 +155,8 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
       "select": "job_id, business_title, agency",
@@ -175,7 +175,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
- ```
+```
 
 > [!NOTE]
 > Wielopoziomowe za pośrednictwem zakresów wartości jest typowym wymogiem aplikacji wyszukiwania. Aby uzyskać więcej informacji i przykładów dotyczących tworzenia filtrów dla aspektów struktury nawigacji, zobacz ["Filtrowania na podstawie zakresu" w *jak wdrożyć nawigację aspektową*](search-faceted-navigation.md#filter-based-on-a-range).
@@ -187,8 +187,8 @@ Indeks przykładów zawiera pole geo_location o współrzędne geograficzne. W t
 Poniższy przykład jest w formacie WPIS, aby zwiększyć czytelność:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
       "select": "job_id, business_title, work_location",

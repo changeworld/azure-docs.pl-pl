@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ea5084128848db7d799b1791aef528305b4f6df4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192371"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588979"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
@@ -26,7 +26,7 @@ Przetwarzania obrazów udostępnia szereg usług, które wykrywanie i wyodrębni
 
 Interfejs API odczytu wykrywa zawartość tekstową na obrazie za pomocą naszych najnowszych modeli rozpoznawania i konwertuje zidentyfikowany tekst do strumienia znaków czytelnych. Jest zoptymalizowany dla obrazów zawierające dużo tekstu (takich jak dokumenty, które zostały przeskanowane cyfrowo) i obrazów przy użyciu wiele szumu visual. Asynchronicznie wykonuje ponieważ większe dokumenty może potrwać kilka minut, aby zwrócić wynik.
 
-Operacja odczytu zachowuje oryginalne grupowanie wiersza rozpoznane słowa w danych wyjściowych. Każdy wiersz zawiera współrzędne pola ograniczenia, a każdy wyraz w wierszu ma również swój własny współrzędnych. Jeśli wyraz został rozpoznany bez obaw niski, te informacje zamieszczono również. Zobacz [dokumentację referencyjną interfejsu API odczytu](https://westus.api.cognitive.microosft.com/vision/v2.0/read/core/asyncBatchAnalyze) Aby dowiedzieć się więcej.
+Operacja odczytu zachowuje oryginalne grupowanie wiersza rozpoznane słowa w danych wyjściowych. Każdy wiersz zawiera współrzędne pola ograniczenia, a każdy wyraz w wierszu ma również swój własny współrzędnych. Jeśli wyraz został rozpoznany bez obaw niski, te informacje zamieszczono również. Zobacz [dokumentację referencyjną interfejsu API odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) Aby dowiedzieć się więcej.
 
 > [!NOTE]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko dla tekstu w języku angielskim.

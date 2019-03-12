@@ -7,25 +7,25 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: e33606e0b5be0db5306cfd42f87baf59671eb2a8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451733"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569029"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapowanie przekształceń źródła przepływu danych
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Przekształcenie źródła umożliwia skonfigurowanie źródła danych, które mają być używane do przenoszenia danych do przepływu danych. Masz więcej niż jednego źródła przekształcenia w jednym przepływ danych. Zawsze zaczynają się projektowania przepływu danych ze źródłem.
+Przekształcenie źródła umożliwia skonfigurowanie źródła danych, które mają być używane do przenoszenia danych do przepływu danych. Masz więcej niż jednego źródła przekształcenia w jednym przepływ danych. Zawsze zaczynają się projektowania przepływu danych przy użyciu transformacji źródła.
 
 > [!NOTE]
-> Każdy przepływ danych wymaga co najmniej jeden Przekształcenie źródła. Dodaj dowolną liczbę dodatkowych źródeł, ile jest potrzebne do ukończenia przekształceń danych. Możesz dołączyć do tych źródeł, wraz z Join lub przekształcania Unii.
+> Każdy przepływ danych wymaga co najmniej jeden Przekształcenie źródła. Dodaj dowolną liczbę dodatkowych źródeł, ile jest potrzebne do ukończenia przekształceń danych. Możesz dołączyć do tych źródeł, wraz z Join lub przekształcania Unii. Podczas debugowania przepływu danych w sesji debugowania, ze źródła przy użyciu ustawienia próbkowania lub debugowania źródła limity będą odczytywane dane. Jednak żadne dane nie będą zapisywane do ujścia, do momentu wykonania przepływu danych z działania przepływu danych w potoku. 
 
 ![Opcje przekształcania źródła](media/data-flow/source.png "źródła")
 
-Każde przekształcenie źródła przepływ danych musi być skojarzony z dokładnie jeden zestaw danych fabryki danych, który definiuje kształt i lokalizację danych do zapisu lub odczytu. Można używać symboli wieloznacznych i plik listy w źródle pracować z więcej niż jeden plik jednocześnie.
+Każde przekształcenie źródła przepływ danych musi być skojarzony z dokładnie jeden zestaw danych fabryki danych. Zestaw danych określa kształt i lokalizację danych do zapisu lub odczytu. Może używać symboli wieloznacznych i pliku listy w źródle, pracować z więcej niż jeden plik w czasie gdy przy użyciu plikowych źródeł.
 
 ## <a name="data-flow-staging-areas"></a>Przepływ danych — obszarów tymczasowych
 
@@ -43,7 +43,7 @@ Wybierz Zezwalaj dryfu schematu, jeśli kolumny źródłowe zmieni się często.
 Przychodzące wersji źródła danych nie jest zgodny ze schematem zdefiniowane, następnie wykonanie przepływu danych zakończy się niepowodzeniem.
 
 ### <a name="sampling"></a>Próbkowanie
-Użyj próbkowania, aby ograniczyć liczbę wierszy ze źródła.  Jest to przydatne, gdy będziesz potrzebować tylko próbkę danych źródłowych do testowania i debugowania.
+Użyj próbkowania, aby ograniczyć liczbę wierszy ze źródła.  Jest to przydatne podczas testowania lub próbkowanie danych ze źródła do debugowania.
 
 ## <a name="define-schema"></a>Definiowanie schematu
 

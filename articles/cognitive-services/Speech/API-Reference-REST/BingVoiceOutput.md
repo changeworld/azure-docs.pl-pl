@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f7620c29e7d00a06be6d14740f05cc7543e49837
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8f7de542610731f88104591dc27baac1406a9514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674569"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548408"
 ---
 # <a name="bing-text-to-speech-api"></a>Tekst do API rozpoznawania mowy Bing
 
@@ -71,7 +71,7 @@ Autoryzacja | Token autoryzacji |  Zobacz <a href="#Subscription">token autoryza
 
 ### <a name="InputParam"></a>Parametry wejściowe
 
-Żądania do usługi Bing tekst na mowę interfejsu API są wykonywane, przy użyciu wywołania HTTP POST. Nagłówki są określone w poprzedniej sekcji. Treść zawiera dane wejściowe mowy syntezy Markup Language (SSML), który reprezentuje tekst, który ma zostać przekształcony. Opis znaczniki używane do sterowania aspektami mowy, takie jak język i płeć osoby mówiącej, zobacz [specyfikacji W3C SSML](http://www.w3.org/TR/speech-synthesis/).
+Żądania do usługi Bing tekst na mowę interfejsu API są wykonywane, przy użyciu wywołania HTTP POST. Nagłówki są określone w poprzedniej sekcji. Treść zawiera dane wejściowe mowy syntezy Markup Language (SSML), który reprezentuje tekst, który ma zostać przekształcony. Opis znaczniki używane do sterowania aspektami mowy, takie jak język i płeć osoby mówiącej, zobacz [specyfikacji W3C SSML](https://www.w3.org/TR/speech-synthesis/).
 
 >[!NOTE]
 >Maksymalny rozmiar danych wejściowych SSML, która jest obsługiwana jest 1024 znaków, łącznie ze wszystkimi tagami.
@@ -141,42 +141,42 @@ Voice name not supported
 
 ## <a name="ChangeSSML"></a>Zmiana wyjściowego głosowych za pośrednictwem SSML
 
-Interfejs API zamiany tekstu na mowę firmy Microsoft obsługuje SSML 1.0, zgodnie z definicją w formacie W3C [mowy syntezy Markup Language (SSML) w wersji 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). W tej sekcji przedstawiono przykłady zmianę niektórych właściwości głosu wygenerowane dane wyjściowe, takie jak wypowiedzi szybkości Wymowa itp. przy użyciu tagów SSML.
+Interfejs API zamiany tekstu na mowę firmy Microsoft obsługuje SSML 1.0, zgodnie z definicją w formacie W3C [mowy syntezy Markup Language (SSML) w wersji 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). W tej sekcji przedstawiono przykłady zmianę niektórych właściwości głosu wygenerowane dane wyjściowe, takie jak wypowiedzi szybkości Wymowa itp. przy użyciu tagów SSML.
 
 1. Dodawanie podziału
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
   ```
 
 2. Zmień częstotliwość wypowiedzi
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 3. Wymowa
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
   ```
 
 4. Zmiany woluminu
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 5. Zmień wysokość
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 6. Rozkład prosody zmiany
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
   ```
 
 > [!NOTE]

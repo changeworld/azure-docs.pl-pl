@@ -3,30 +3,31 @@ title: Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska A
 description: W tym artykule opisano sposób włączania uwierzytelniania usługi Azure Active Directory za pomocą tożsamości zarządzanej usługi Azure Data Factory utworzyć środowisko Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 2/19/2019
-ms.author: douglasl
-ms.openlocfilehash: 159aaf017265c09c2afc4b603ed5172fead9b29d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 3/11/2019
+author: swinarko
+ms.author: sawinark
+manager: craigg
+ms.openlocfilehash: 787c436261635376ff82e8762cbc1469f4375e6b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438656"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729947"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
-W tym artykule pokazano, jak włączyć uwierzytelnianie usługi Azure Active Directory (Azure AD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory (ADF) i użyj go zamiast uwierzytelniania SQL do tworzenia środowiska Azure-SSIS Integration Runtime (IR) to z kolei spowoduje utworzenie SSIS katalog bazy danych (SSISDB) w usłudze Azure SQL Database server/zarządzanego wystąpienia w Twoim imieniu.
+W tym artykule pokazano, jak włączyć uwierzytelnianie usługi Azure Active Directory (Azure AD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory (ADF) i użyj go zamiast uwierzytelniania SQL do tworzenia środowiska Azure-SSIS Integration Runtime (IR), który z kolei przydzieli SSIS catalog bazy danych (SSISDB) w usłudze Azure SQL Database server/zarządzanego wystąpienia w Twoim imieniu.
 
 Aby uzyskać więcej informacji na temat tożsamości zarządzanej dla usługi ADF, zobacz [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
-> Jeśli utworzono już środowisko IR Azure-SSIS przy użyciu uwierzytelniania SQL nie można ponownie skonfigurować środowiska IR do użycia uwierzytelnianie usługi Azure AD przy użyciu programu PowerShell, w tym momencie, ale możesz to zrobić w aplikacji portal/ADF platformy Azure. 
+>-  W tym scenariuszu uwierzytelnianie usługi Azure AD za pomocą tożsamości zarządzanej dla usługi ADF służy tylko do tworzenia, a kolejne operacje począwszy od środowiska IR SSIS, który będzie w należy wyłączyć i ponownie nawiąż SSISDB. Dla operacji wykonywania pakietów SSIS Twoje środowisko SSIS IR, nadal połączy się SSISDB przy użyciu uwierzytelniania SQL przy użyciu w pełni zarządzane kont, które zostały utworzone podczas inicjowania obsługi bazy danych SSISDB.
+>-  Jeśli utworzono już środowiska SSIS IR przy użyciu uwierzytelniania SQL nie można skonfigurować go do korzystania z uwierzytelniania usługi Azure AD za pomocą programu PowerShell w tej chwili, ale możesz to zrobić za pomocą aplikacji portal/ADF platformy Azure. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

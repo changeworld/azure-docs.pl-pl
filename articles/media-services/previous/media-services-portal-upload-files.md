@@ -11,17 +11,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: f0f9e0bd3e80bc0cac5a77d2b641badee44642e2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976796"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761535"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>Przekazywanie plików na konto usługi Media Services w witrynie Azure Portal (starsza wersja)
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Przekazywanie plików na konto usługi Media Services w witrynie Azure Portal 
 
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-upload-files.md)
@@ -61,7 +61,7 @@ Po zakończeniu przekazywania nowy element zawartości będzie widoczny w okienk
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [zakodować przekazane elementy zawartości](media-services-portal-encode.md).
 
 * Możesz także używać usługi Azure Functions do wyzwalania zadania kodowania, gdy plik trafi do skonfigurowanego kontenera. Aby uzyskać więcej informacji, zobacz przykład w temacie [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps (Media Services: Integrowanie usługi Azure Media Services z usługami Azure Functions i Logic Apps)](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).

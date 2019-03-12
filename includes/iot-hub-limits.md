@@ -4,14 +4,14 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 2542400da7fbab5da5d98452a76e62d6995bd301
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ea4931bee17b57260660cc5ba80807a8ae25ca3d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57016420"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554012"
 ---
-W poniższej tabeli przedstawiono limity skojarzone z różnymi warstwami usług (S1, S2, S3, F1). Aby uzyskać informacje o koszcie każdej *jednostki* w każdej z warstw, zobacz [Cennik usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+W poniższej tabeli wymieniono limity skojarzone z różnymi warstwami usług S1, S2, S3 i F1. Aby uzyskać informacje o koszcie każdej *jednostki* w poszczególnych warstwach, zobacz [cennika usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Zasób | Standardowa S1 | Standardowa S2 | Standardowa S3 | Bezpłatna F1 |
 | --- | --- | --- | --- | --- |
@@ -19,11 +19,11 @@ W poniższej tabeli przedstawiono limity skojarzone z różnymi warstwami usług
 | Maksymalna liczba jednostek |200 |200 |10 |1 |
 
 > [!NOTE]
-> Jeśli przewidujesz używanie ponad 200 jednostek z centrum w warstwie S1 lub S2 albo 10 jednostek z centrum w warstwie S3, skontaktuj się z pomocą techniczną firmy Microsoft.
+> Jeśli przewidujesz używanie ponad 200 jednostek z Centrum w warstwie S1 lub S2 albo 10 jednostek z Centrum w warstwie S3, skontaktuj się z Microsoft Support.
 > 
 > 
 
-W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
+W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów usługi IoT Hub.
 
 | Zasób | Limit |
 | --- | --- |
@@ -53,25 +53,25 @@ W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
 
 
 > [!NOTE]
-> Jeśli potrzebujesz więcej niż 50 płatnych centrów IoT w subskrypcji platformy Azure, skontaktuj się z pomocą techniczną firmy Microsoft.
+> Jeśli potrzebujesz więcej niż 50 płatnych centrów IoT w subskrypcji platformy Azure, skontaktuj się z Microsoft Support.
 
 
 > [!NOTE]
 > Obecnie maksymalna liczba urządzeń, którymi można nawiązać połączenie w jednym centrum IoT jest 1 000 000. Jeśli chcesz zwiększyć ten limit, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
 
-Usługa IoT Hub ogranicza żądania po przekroczeniu następujących limitów przydziału:
+Usługa IoT Hub ogranicza żądania po przekroczeniu następujących limitów przydziału.
 
 | Ograniczenie | Wartość na centrum |
 | --- | --- |
-| Operacje rejestru tożsamości <br/> (tworzenie, przywracanie, wyświetlanie, usuwanie), <br/> import/eksport zbiorczy lub pojedynczy |83.33/sec/Unit (5000/min/jednostkę) (w przypadku S3) <br/> 1.67/sec/Unit (100/min/jednostkę) (dla warstwy S1 i S2). |
+| Operacje rejestru tożsamości <br/> (Tworzenie, pobieranie, listy, aktualizacji i usuwania), <br/> import/eksport zbiorczy lub pojedynczy |83.33/sec/Unit (5000/min/jednostkę) (w przypadku S3). <br/> 1.67/sec/Unit (100/min/jednostkę) (dla warstwy S1 i S2). |
 | Połączenia urządzenia |6000/sek/jednostkę (warstwa S3), 120/sek/jednostkę (warstwa S2), 12/sek/jednostkę (warstwa S1). <br/>Minimum 100/sek. |
 | Liczba elementów wysłanych z urządzenia do chmury |6000/sek/jednostkę (warstwa S3), 120/sek/jednostkę (warstwa S2), 12/sek/jednostkę (warstwa S1). <br/>Minimum 100/sek. |
 | Liczba elementów wysłanych z chmury do urządzenia | 83.33/sec/Unit (5000/min/jednostkę) (warstwa S3), 1.67/sec/unit (100/min/jednostkę) (dla warstwy S1 i S2). |
-| Liczba odebranych elementów wysłanych z chmury do urządzenia |16.67/sec/unit (50000/min/jednostkę) (warstwa S3), 833.33/sec/Unit (1000/min/jednostkę) (warstwy S1 i S2). |
-| Operacje przekazywania plików |83.33 pliku przekazywania powiadomień/sek/jednostkę (5000/min/jednostkę) (warstwa S3), 1.67 pliku przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) (warstwy S1 i S2). <br/> Jednocześnie może istnieć 10 000 identyfikatorów URI sygnatury dostępu współdzielonego dla konta usługi Azure Storage.<br/> Jednocześnie może istnieć 10 identyfikatorów URI sygnatury dostępu współdzielonego. |
-| Metody bezpośrednie | 24MB/sek/jednostkę (warstwa S3), 480KB/sek/jednostkę (warstwa S2), 160KB/s/jednostkę (warstwa S1)<br/> Oparta na rozmiarze 8KB ograniczenie rozmiaru miernika. |
-| Liczba odczytów bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
-| Liczba aktualizacji bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
-| Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 83.33/sec/Unit (5000/min/jednostkę) (warstwa S3), 1.67/sec/unit (100/min/jednostkę) (dla S2), 1.67/sec/unit (100/min/jednostkę) (dla S1) |
-| Przepływność operacji zadań poszczególnych urządzeń | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
-| Szybkość inicjowania strumienia urządzenia | 5 nowych strumieni/sek (S1, S2, S3 i tylko F1) |
+| Liczba odebranych elementów wysłanych z chmury do urządzenia |833.33/sec/Unit (50 000/min/jednostkę) (warstwa S3), 16.67/sec/unit (1000/min/jednostkę) (dla warstwy S1 i S2). |
+| Operacje przekazywania plików |83.33 pliku przekazywania powiadomień/sek/jednostkę (5000/min/jednostkę) (warstwa S3), 1.67 pliku przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) (warstwy S1 i S2). <br/> 10 000 identyfikatorów URI może istnieć dla konta usługi Azure Storage w tym samym czasie.<br/> Jednocześnie może istnieć 10 identyfikatorów URI sygnatury dostępu współdzielonego. |
+| Metody bezpośrednie | 24 MB/s/jednostkę (warstwa S3), 480 KB/s/jednostkę (warstwa S2), 160 KB/s/jednostkę (warstwa S1).<br/> Na podstawie ograniczania rozmiaru miernika 8 KB. |
+| Liczba odczytów bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1). |
+| Liczba aktualizacji bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1). |
+| Operacje zadań <br/> (Tworzenie, aktualizowanie, listy i Usuń) | 83.33/sec/Unit (5000/min/jednostkę) (warstwa S3), 1.67/sec/unit (100/min/jednostkę) (dla S2), 1.67/sec/unit (100/min/jednostkę) (dla S1). |
+| Przepływność operacji zadań poszczególnych urządzeń | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1). |
+| Szybkość inicjowania strumienia urządzenia | 5 nowych strumieni/sek (S1, S2, S3 i tylko F1). |

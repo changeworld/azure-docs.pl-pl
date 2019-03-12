@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 096bc96558f0fe33f8046622dc2443728674e405
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a9f6dfb0de2cf09b27d08eb6b7dc425c8cd1f17d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876881"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549225"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Umowa licencyjna Speech Devices SDK
 
@@ -52,7 +52,7 @@ d) używać oprogramowania w jakikolwiek sposób, który jest prawem, ani do two
 
 f) należy użyć oprogramowania tylko w połączeniu z usług Microsoft Azure Cognitive Services, usługa rozpoznawania mowy
 
-**3\. ZBIERANIA DANYCH.** To oprogramowanie może współpracować z innymi produktami firmy Microsoft, które zbierają dane przesyłane do firmy Microsoft. Aby dowiedzieć się więcej na temat sposobu Microsoft procesów dane osobowe zbierane, można znaleźć poufności informacji firmy Microsoft w http://go.microsoft.com/fwlink/?LinkId=248681.
+**3\. ZBIERANIA DANYCH.** To oprogramowanie może współpracować z innymi produktami firmy Microsoft, które zbierają dane przesyłane do firmy Microsoft. Aby dowiedzieć się więcej na temat sposobu Microsoft procesów dane osobowe zbierane, można znaleźć poufności informacji firmy Microsoft w https://go.microsoft.com/fwlink/?LinkId=248681.
 
 **4\. WSTĘPNEJ WERSJI OPROGRAMOWANIA.** Oprogramowanie jest to wersja wstępna. Może nie działać poprawnie. Może być inna niż wersja w wydaniu dostępnym w sprzedaży.
 

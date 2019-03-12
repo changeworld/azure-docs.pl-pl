@@ -3,20 +3,20 @@ title: Tworzenie środowiska Azure integration runtime w usłudze Azure Data Fac
 description: Dowiedz się, jak utworzyć środowisko IR platformy Azure w usłudze Azure Data Factory, która służy do kopiowania danych i wysyłanie działań przekształcania.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 93777a3d9ecbb6c2749594985494975f61cc1948
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 4b166ded3dcef4a89951eb81f7f1b321f89a0e67
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455704"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576043"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak utworzyć i skonfigurować środowisko IR platformy Azure
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać więcej informacji na temat środowiska IR, zobacz [środowiska Integration runtime](concepts-integration-runtime.md).

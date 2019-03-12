@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2329a2a67e2e54084d2289cb8cb1a18663b329
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 02183abb60fe24b9ee9c769f7af696355966ab24
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593679"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551062"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -83,7 +83,7 @@ W tym momencie użytkownik będzie monitowany wprowadzić swoje poświadczenia i
 
 Po użytkownik jest uwierzytelniany i przyznaje zgody, punktu końcowego v2.0 zwróci odpowiedź do aplikacji, na wskazany `redirect_uri`, przy użyciu metody podanej w `response_mode` parametru.
 
-#### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+#### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Odpowiedź oznaczająca Powodzenie przy użyciu `response_mode=query` wyglądają następująco:
 
@@ -162,7 +162,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.  Klucz tajny klienta musi być zakodowane w adresie URL przed wysłaniem.  |
 | `code_verifier` | opcjonalne  | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 
@@ -271,10 +271,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | wymagane    | Musi być `refresh_token` dla tej gałęzi przepływ kodu autoryzacji. |
 | `scope`         | wymagane    | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w oryginalnym gałęzi żądania authorization_code wymagane. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, punktu końcowego v2.0 zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `refresh_token` | wymagane    | Refresh_token, uzyskanego w drugim nogi przepływ. |
-| `redirect_uri`  | wymagane    | Taką samą wartość redirect_uri, który został użyty do uzyskania authorization_code. |
+| `redirect_uri`  | wymagane    |  A `redirect_uri`zarejestrowanych aplikacji klienta. |
 | `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.                                                                                                                                                    |
 
-#### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+#### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 

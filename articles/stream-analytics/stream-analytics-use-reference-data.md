@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329817"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546486"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. 
@@ -78,7 +78,7 @@ Danych odwołania w usłudze Azure SQL Database są pobierane przez zadanie usł
 
 Dane odwołanie jest wolno zmieniający zestawu danych, należy okresowo odświeżane migawkę, która jest używana w ramach zadania. Stream Analytics umożliwia ustawić częstotliwość odświeżania, podczas konfigurowania połączenia danych wejściowych usługi Azure SQL Database. Środowisko uruchomieniowe usługi Stream Analytics będzie zapytania usługi Azure SQL Database z interwałem określonym przez częstotliwość odświeżania. To najszybszy obsługiwana częstotliwość odświeżania raz na minutę. W przypadku każdego odświeżania usługi Stream Analytics zapisuje nową migawkę w podane konto magazynu.
 
-Stream Analytics oferuje dwie opcje zapytań usługi Azure SQL Database. Zapytanie migawki jest wymagane i muszą być zawarte w poszczególnych zadaniach. Usługi Stream Analytics wykonuje zapytanie migawki okresowo oparte na Twoje interwał odświeżania i używa wynik kwerendy (Migawka) jako zestawu danych referencyjnych. Zapytanie migawki powinien się zmieścić większości scenariuszy, ale Jeśli napotkasz problemy z wydajnością z dużych zestawów danych i częstotliwości odświeżania szybkie, można użyć opcji zapytania delta.
+Stream Analytics oferuje dwie opcje zapytań usługi Azure SQL Database. Zapytanie migawki jest wymagane i muszą być zawarte w poszczególnych zadaniach. Usługi Stream Analytics wykonuje zapytanie migawki okresowo oparte na Twoje interwał odświeżania i używa wynik kwerendy (Migawka) jako zestawu danych referencyjnych. Zapytanie migawki powinien się zmieścić większości scenariuszy, ale Jeśli napotkasz problemy z wydajnością z dużych zestawów danych i częstotliwości odświeżania szybkie, można użyć opcji zapytania delta. Zapytania, które zajmują więcej niż 60 sekund, aby zwrócić odwołanie do zestawu danych spowoduje przekroczenie limitu czasu.
 
 Z opcją delta zapytania usługi Stream Analytics wykonuje kwerendę migawki początkowo, aby uzyskać bazowego zestawu danych referencyjnych. Po wykonaniu Stream Analytics będzie zapytania różnicowego okresowo oparte na Twoje interwał odświeżania można pobrać zmiany przyrostowe. Te zmiany przyrostowe ciągle są stosowane do zestawu danych referencyjnych, aby zachować aktualność. Użycie zapytania różnicowego może pomóc zmniejszyć koszt magazynu i sieci operacji We/Wy.
 

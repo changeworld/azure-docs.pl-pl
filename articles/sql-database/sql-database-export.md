@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: ce5635c97d91514f3fca63162f5356cdf89a7ca6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/11/2019
+ms.openlocfilehash: 27a65a871264fa13a42acfb5be2d4b5f99d31adc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307483"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57758696"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportuj bazę danych Azure SQL database do pliku BACPAC
 
@@ -28,6 +28,7 @@ Gdy trzeba wyeksportować bazę danych do archiwizacji lub przenoszenia do innej
 - Eksportu był spójny transakcyjnie, należy upewnić się, że nie zapis działanie odbywa się podczas eksportowania lub które są eksportowane [spójnej transakcyjnie kopii](sql-database-copy.md) bazy danych Azure SQL.
 - Jeśli są eksportowane do magazynu obiektów blob, maksymalny rozmiar pliku BACPAC wynosi 200 GB. Do archiwizacji większy plik BACPAC, należy wyeksportować w magazynie lokalnym.
 - Eksportowanie pliku BACPAC do usługi Azure premium storage przy użyciu metod omówionych w tym artykule nie jest obsługiwane.
+- Magazyn za zaporą nie jest obecnie obsługiwane.
 - Jeśli operacja eksportowania z usługi Azure SQL Database przekracza 20 godzin, mogą zostać anulowane. Aby zwiększyć wydajność podczas eksportu, możesz wykonywać następujące czynności:
 
   - Tymczasowo zwiększyć rozmiar obliczeń.

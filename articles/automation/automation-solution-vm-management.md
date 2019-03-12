@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 991a50828059d850627e1f8f3f34f65a55fdf3f6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 22347ce7296dc55d98f1ee6d4458fa6d7c5a21e6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890236"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551292"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -62,8 +62,8 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
 
    ![Strona Dodaj rozwiązanie zarządzania maszyny Wirtualnej](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-4. Na **Dodaj rozwiązanie** wybierz opcję **obszaru roboczego**. Wybierz obszar roboczy usługi Log Analytics, która jest połączona z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszar roboczy usługi Log Analytics** strony, wykonaj następujące czynności:
-   - Określ nazwę dla nowego **obszar roboczy usługi Log Analytics**, takie jak "ContosoLAWorkspace".
+4. Na **Dodaj rozwiązanie** wybierz opcję **obszaru roboczego**. Wybierz obszar roboczy usługi Log Analytics, która jest połączona z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszaru roboczego usługi Log Analytics** strony, wykonaj następujące czynności:
+   - Określ nazwę dla nowego **obszaru roboczego usługi Log Analytics**, takie jak "ContosoLAWorkspace".
    - Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli nie jest domyślnie wybrana.
    - Aby uzyskać **grupy zasobów**, można utworzyć nową grupę zasobów lub wybrać istniejącą grupę.
    - Wybierz **lokalizację**. Obecnie jedynymi dostępnymi lokalizacjami są **Australia południowo-wschodnia**, **Kanada Środkowa**, **Indie środkowe**, **wschodnie stany USA**, **Japonia, część wschodnia**, **Azja południowo-wschodnia**, **Południowe Zjednoczone Królestwo**, **Europa Zachodnia**, i **zachodnie stany USA 2**.
@@ -289,8 +289,8 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 
 |Zapytanie | Opis|
 |----------|----------|
-|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
-|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | gdzie (RunbookName_s == "ScheduledStartStop_Parent") | gdzie (typ ResultType == "Ukończone")  | Podsumowanie |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | gdzie (RunbookName_s == "SequencedStartStop_Parent") | gdzie (typ ResultType == "Ukończone") | Podsumowanie |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 
@@ -300,7 +300,7 @@ Wybranie rozwiązania Wyświetla **Start-Stop-VM [obszar roboczy]** stronie rozw
 
 ![Strona rozwiązania Update Management Automation](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-W tym miejscu możesz można wykonać dalszą analizę rekordów zadania, klikając kafelka pierścieniowej. Pulpit nawigacyjny rozwiązania przedstawia historię zadania i wstępnie zdefiniowane zapytania wyszukiwania w dzienniku. Przełącz się do portalu Advanced Analytics dziennik wyszukiwania na podstawie zapytań wyszukiwania.
+W tym miejscu możesz można wykonać dalszą analizę rekordów zadania, klikając kafelka pierścieniowej. Pulpit nawigacyjny rozwiązania przedstawia historię zadania i wstępnie zdefiniowane zapytania wyszukiwania w dzienniku. Przełącz się do portalu zaawansowane log analytics do wyszukiwania na podstawie zapytań wyszukiwania.
 
 ## <a name="configure-email-notifications"></a>Konfigurowanie powiadomień e-mail
 

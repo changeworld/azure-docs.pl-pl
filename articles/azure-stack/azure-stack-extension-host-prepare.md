@@ -1,26 +1,26 @@
 ---
 title: Przygotowanie do hosta rozszerzenia dla usługi Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się przygotować się do hosta rozszerzenia, który jest włączany automatycznie za pomocą przyszłych pakiet aktualizacji usługi Azure Stack.
+description: Dowiedz się przygotować się do hosta rozszerzenia, automatycznie włączona w przyszłości pakiet aktualizacji usługi Azure Stack.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 02/07/2019
+ms.date: 03/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: b0d3b3e4901fbcece13c201938be8bccb1bb9c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962370"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731925"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Przygotowanie do hosta rozszerzenia dla usługi Azure Stack
 
-Host rozszerzenia zabezpiecza usługi Azure Stack, zmniejszając liczbę wymaganych portów TCP/IP. W tym artykule patrzy na hosta rozszerzenia, który jest włączany automatycznie za pomocą pakietu aktualizacji usługi Azure Stack po aktualizacji 1808 przygotowywanie usługi Azure Stack. Ten artykuł dotyczy usługi Azure Stack aktualizacje 1808 1809 i 1811.
+Host rozszerzenia zabezpiecza usługi Azure Stack, zmniejszając liczbę wymaganych portów TCP/IP. W tym artykule analizuje przygotowywanie usługi Azure Stack dla hosta rozszerzenia, który jest włączany automatycznie za pomocą pakietu aktualizacji usługi Azure Stack po 1808 aktualizacji. Ten artykuł dotyczy usługi Azure Stack aktualizacje 1808 1809 i 1811.
 
 ## <a name="certificate-requirements"></a>Wymagania dotyczące certyfikatów
 
@@ -66,15 +66,14 @@ Narzędzie sprawdzania gotowości stosu Azure zapewnia możliwość tworzenia ce
     > [!Note]  
     > W przypadku wdrożenia przy użyciu usługi Azure Active Directory Sfederowana Services (AD FS) następujące katalogi muszą zostać dodane do **$directories** w skrypcie: `ADFS`, `Graph`.
 
-4. Uruchom następujące polecenia cmdlet, aby rozpocząć sprawdzanie certyfikatu:
+4. Umieść istniejące certyfikaty, które obecnie używasz usługi Azure Stack w odpowiednich katalogów. Na przykład umieścić **ARM administratora** certyfikatem `Arm Admin` folderu. A następnie Przekaż nowo utworzone certyfikaty hostingu `Admin extension host` i `Public extension host` katalogów.
+5. Uruchom następujące polecenie cmdlet, aby rozpocząć sprawdzanie certyfikatu:
 
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
-
-5. Umieść swoje certyfikaty w odpowiednich katalogów.
 
 6. Sprawdź dane wyjściowe i wszystkich certyfikatów pomyślnie przejść wszystkie testy.
 
@@ -141,7 +140,7 @@ Artykuł [Integracja z centrum danych usługi Azure Stack — publikowanie punkt
 
 ### <a name="publish-new-endpoints"></a>Publikowanie nowych punktów końcowych
 
-Istnieją dwa nowe punkty końcowe wymagane do opublikowania przez zaporę. Przydzielone adresy IP z puli publicznych adresów VIP można pobrać przy użyciu następującego kodu, które muszą być uruchamiane za pomocą usługi Azure Stack [środowiska użytkownika uprzywilejowanego punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+Istnieją dwa nowe punkty końcowe wymagane do opublikowania przez zaporę. Przydzielone adresy IP z puli publicznych adresów VIP mogą być pobierane, używając następującego kodu, który musi być uruchamiany z usługi Azure Stack [środowiska użytkownika uprzywilejowanego punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
 ```PowerShell
 # Create a PEP Session

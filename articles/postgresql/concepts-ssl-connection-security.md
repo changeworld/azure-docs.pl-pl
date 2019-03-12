@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 13a1ed626e7741c90cf902c9ed01911985ca8424
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/12/2019
+ms.openlocfilehash: 5a0fc99052b18dc1fa837147aa914a473d27d832
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453447"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730012"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfigurowanie łączności SSL w usłudze Azure Database for PostgreSQL
 Usługa Azure Database for postgresql w warstwie preferuje łączenia aplikacji klienta do usługi PostgreSQL, przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
@@ -50,65 +50,21 @@ W niektórych przypadkach aplikacje wymagają lokalnego pliku certyfikatu wygene
 ### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>Pobierz plik certyfikatu z urząd certyfikacji (CA) 
 Certyfikat umożliwia komunikację za pośrednictwem protokołu SSL za pomocą usługi Azure Database dla serwera PostgreSQL [tutaj](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt). Pobierz plik certyfikatu lokalnie.
 
-### <a name="download-and-install-openssl-on-your-machine"></a>Pobrać i zainstalować protokół OpenSSL na komputerze 
-Do zdekodowania pliku certyfikatu, potrzebne dla aplikacji w taki sposób bezpiecznie połączyć się z serwerem bazy danych, należy zainstalować protokół OpenSSL na komputerze lokalnym.
+### <a name="install-a-cert-decoder-on-your-machine"></a>Zainstaluj dekodera certyfikatu na komputerze 
+Możesz użyć [OpenSSL](https://github.com/openssl/openssl) zdekodować pliku certyfikatu, potrzebne dla aplikacji w taki sposób bezpiecznie połączyć się z serwerem bazy danych. Aby dowiedzieć się, jak zainstalować protokół OpenSSL, zobacz [instrukcje dotyczące instalacji OpenSSL](https://github.com/openssl/openssl/blob/master/INSTALL). 
 
-#### <a name="for-linux-os-x-or-unix"></a>Dla systemu Linux, Unix lub OS X
-Biblioteki OpenSSL znajdują się w kodzie źródłowym bezpośrednio z [OpenSSL Software Foundation](https://www.openssl.org). Poniższe instrukcje pomagają przez kroki niezbędne do zainstalowania OpenSSL na komputerze z systemem Linux. W tym artykule użyto poleceń znanych do pracy na Ubuntu 12.04 lub nowszy.
-
-Otwórz sesję terminala i Pobierz OpenSSL.
-```bash
-wget http://www.openssl.org/source/openssl-1.1.0e.tar.gz
-``` 
-Wyodrębnij pliki z pobranego pakietu.
-```bash
-tar -xvzf openssl-1.1.0e.tar.gz
-```
-Wprowadź katalog, w którym zostały wyodrębnione pliki. Domyślnie należy go w następujący sposób.
-
-```bash
-cd openssl-1.1.0e
-```
-Konfigurowanie biblioteki OpenSSL, wykonując następujące polecenie. Jeśli pliki w folderze ma inny niż /usr/local/openssl, upewnij się zmienić jedną z następujących czynności.
-
-```bash
-./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
-```
-Teraz, gdy OpenSSL jest skonfigurowana poprawnie, należy skompilować go przekonwertować certyfikatu. Aby skompilować, uruchom następujące polecenie:
-
-```bash
-make
-```
-Po zakończeniu kompilacji możesz zainstalować protokół OpenSSL, jako plik wykonywalny, uruchamiając następujące polecenie:
-```bash
-make install
-```
-Aby sprawdzić, czy został pomyślnie zainstalowany biblioteki OpenSSL, w systemie, uruchom następujące polecenie i sprawdź, upewnij się, że uzyskujesz ten sam wynik.
-
-```bash
-/usr/local/openssl/bin/openssl version
-```
-W przypadku powodzenia powinien zostać wyświetlony następujący komunikat.
-```bash
-OpenSSL 1.1.0e 7 Apr 2014
-```
-
-#### <a name="for-windows"></a>W przypadku systemu Windows
-Instalowanie OpenSSL na komputerze Windows może odbywać się w następujący sposób:
-1. **(Zalecane)**  Za pomocą wbudowanych funkcji Bash Windows w Windows 10 i nowszych, OpenSSL jest instalowany domyślnie. Instrukcje dotyczące włączania funkcji Bash Windows w systemie Windows 10 można znaleźć [tutaj](https://msdn.microsoft.com/commandline/wsl/install_guide).
-2. Instrukcje pobierania aplikacji Win32/64, dostarczone przez społeczność. OpenSSL Software Foundation nie zapewniają ani nie popiera żadnych szczególnych instalatory Windows, ale oferują, gdy lista dostępnych instalatory [tutaj](https://wiki.openssl.org/index.php/Binaries).
 
 ### <a name="decode-your-certificate-file"></a>Dekoduj plik certyfikatu
 Pobrany plik certyfikatu głównego urzędu certyfikacji jest w zaszyfrowanym formacie. Odszyfrować plik certyfikatu za pomocą biblioteki OpenSSL. Aby to zrobić, uruchom następujące polecenie OpenSSL:
 
-```dos
+```
 openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
 ```
 
 ### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>Łączenia z bazą danych Azure database for PostgreSQL przy użyciu uwierzytelniania certyfikatów SSL
-Teraz, gdy zostały pomyślnie zdekodowany certyfikat, teraz można podłączyć do serwera bazy danych bezpiecznie za pośrednictwem protokołu SSL. Aby umożliwić weryfikację certyfikatu serwera, certyfikat musi być uporządkowana ~/.postgresql/root.crt pliku w katalogu macierzystym użytkownika. (W programie Microsoft Windows plik jest o nazwie % APPDATA%\postgresql\root.crt.). Następujące instrukcje na temat łączenia z bazą danych Azure database for PostgreSQL.
+Teraz, gdy zostały pomyślnie zdekodowany certyfikat, teraz można podłączyć do serwera bazy danych bezpiecznie za pośrednictwem protokołu SSL. Aby umożliwić weryfikację certyfikatu serwera, certyfikat musi być uporządkowana ~/.postgresql/root.crt pliku w katalogu macierzystym użytkownika. (W programie Microsoft Windows plik jest o nazwie % APPDATA%\postgresql\root.crt.). 
 
-#### <a name="using-psql-command-line-utility"></a>Przy użyciu wiersza polecenia psql
+#### <a name="connect-using-psql"></a>Połącz za pomocą narzędzia psql
 Poniższy przykład pokazuje, jak można pomyślnie nawiązać połączenie z serwerem PostgreSQL, korzystając z wiersza polecenia psql. Użyj `root.crt` pliku utworzonego i `sslmode=verify-ca` lub `sslmode=verify-full` opcji.
 
 Przy użyciu interfejsu wiersza polecenia PostgreSQL, wykonaj następujące polecenie:
@@ -127,11 +83,6 @@ Type "help" for help.
 
 postgres=>
 ```
-
-#### <a name="using-pgadmin-gui-tool"></a>Za pomocą narzędzia z graficznym interfejsem użytkownika pgAdmin
-Konfigurowanie narzędzia pgAdmin, 4, aby bezpiecznie połączyć się przez protokół SSL wymaga ustawienia `SSL mode = Verify-CA` lub `SSL mode = Verify-Full` w następujący sposób:
-
-![Zrzut ekranu przedstawiający tryb SSL narzędzia pgAdmin - connection - wymagają](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Przejrzyj różne opcje łączności aplikacji, zgodnie z [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).

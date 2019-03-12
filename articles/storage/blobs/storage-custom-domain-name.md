@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 7f3b6de64343137278895d92835f080f8844dda1
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310554"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588928"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage
 
@@ -26,7 +26,10 @@ Można skonfigurować niestandardową domenę umożliwiającą uzyskiwanie dost�
 > [!NOTE]  
 > Konta magazynu obsługują obecnie tylko jedna nazwa domeny niestandardowej na jednym koncie. Nie można zamapować niestandardową nazwę domeny do punktów końcowych usługi sieci web i obiektów blob.
 
-W poniższej tabeli przedstawiono kilka przykładowych adresy URL danych obiektów blob, który znajduje się na koncie magazynu o nazwie *mystorageaccount*. Domeny niestandardowej, która jest zarejestrowana dla konta magazynu jest *www.contoso.com*:
+> [!NOTE]  
+> Mapowanie działają tylko dla poddomen (np. www.contoso.com). Jeśli chcesz mieć dostępny punkt końcowy usługi sieci web w domenie katalogu głównego (np. contoso.com), a następnie trzeba [używanie usługi Azure CDN z zastosowaniem domen niestandardowych](storage-https-custom-domain-cdn.md)
+
+W poniższej tabeli przedstawiono kilka przykładowych adresy URL danych obiektów blob, który znajduje się na koncie magazynu o nazwie *mystorageaccount*. Niestandardowe domeny podrzędnej, który jest zarejestrowany dla konta magazynu jest *www.contoso.com*:
 
 | Typ zasobu | Domyślny adres URL | Adres URL domeny niestandardowej |
 | --- | --- | --- | --- |
@@ -38,9 +41,9 @@ W poniższej tabeli przedstawiono kilka przykładowych adresy URL danych obiekt�
 > [!NOTE]  
 > Jak pokazano w poniższych sekcjach, wszystkie przykłady dla punktu końcowego usługi blob dotyczą również punkt końcowy usługi sieci web.
 
-## <a name="direct-vs-intermediary-domain-mapping"></a>Bezpośrednie a mapowanie domeny pośrednie
+## <a name="direct-vs-intermediary-cname-mapping"></a>Bezpośrednie i pośrednie mapowanie rekordu CNAME
 
-Można wskazać domenę niestandardową do punktu końcowego obiektu blob dla konta magazynu w jednym z dwóch sposobów: 
+Można wskazać domenę niestandardową z prefiksem poddomeny (np. www.contoso.com) do punktu końcowego obiektu blob dla konta magazynu w jednym z dwóch sposobów: 
 * Użyj bezpośrednie mapowanie rekordu CNAME.
 * Użyj *asverify* pośrednie poddomeny.
 
@@ -82,8 +85,8 @@ Zazwyczaj można zarządzać ustawień DNS domeny w witrynie sieci Web swojego r
 1. Znajdź sekcję zarządzania rekordami CNAME.  
    Może być konieczne przejście do strony ustawień zaawansowanych i poszukaj **CNAME**, **Alias**, lub **poddomen**.
 
-1. Utwórz nowy rekord CNAME, wprowadź alias poddomeny, takie jak **www** lub **zdjęcia**, a następnie podaj nazwę hosta.  
-   Nazwa hosta jest punkt końcowy usługi blob service. Jego format jest  *\<mystorageaccount >. blob.core.windows.net*, gdzie *mystorageaccount* jest nazwą konta magazynu. Nazwa hosta do użycia, który pojawia się w elemencie #1 **domena niestandardowa** okienka [witryny Azure portal](https://portal.azure.com).
+1. Utwórz nowy rekord CNAME, wprowadź alias poddomeny, takie jak **www** lub **zdjęcia** (poddomeny jest wymagany, domeny katalogu głównego nie są obsługiwane), a następnie podaj nazwę hosta.  
+   Nazwa hosta jest punkt końcowy usługi blob service. Jego format jest  *\<mystorageaccount >. blob.core.windows.net*, gdzie *mystorageaccount* jest nazwą konta magazynu. Nazwa hosta do użycia, który pojawia się w elemencie #1 **domena niestandardowa** okienka [witryny Azure portal](https://portal.azure.com). 
 
 1. W **domena niestandardowa** okienko, w polu tekstowym wprowadź nazwę domeny niestandardowej, w tym poddomenę.  
    Na przykład, jeśli Twoja domena to *contoso.com* i jest Twój alias poddomeny *www*, wprowadź **www.contoso.com**. Jeśli Twoje domeny podrzędnej jest *zdjęcia*, wprowadź **photos.contoso.com**.

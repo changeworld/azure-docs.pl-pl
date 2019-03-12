@@ -14,25 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: bfe289e29a6a2bb048d9fd42323f32ce8c12792c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8835c4534b6dab1e8dbfb3546257ae4bc3b9d7af
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110612"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588656"
 ---
-# <a name="pen-testing"></a>Testowanie penetracyjne
-Jest jedną z korzyści z używania platformy Azure do testowania aplikacji i wdrażania, można szybko uzyskać środowisk utworzonych.  Nie trzeba martwić się o tworzenia zapotrzebowania, pobieranie i "pracy i zestawianie" sprzętu w środowisku lokalnym.
+# <a name="penetration-testing"></a>Testy penetracyjne
+Jest jedną z korzyści z używania platformy Azure do testowania aplikacji i wdrażania, można szybko uzyskać środowisk utworzonych. Nie trzeba martwić się o tworzenia zapotrzebowania, pobieranie i "pracy i zestawianie" sprzętu w środowisku lokalnym.
 
-Jest to doskonałe rozwiązanie —, ale nadal musisz upewnić się, wykonaj bezpieczeństwa normalne należytą starannością. Jedną z rzeczy, konieczne jest penetracji testowanie aplikacji można wdrożyć na platformie Azure.
+Jest to doskonałe rozwiązanie —, ale nadal musisz upewnić się, wykonaj bezpieczeństwa normalne należytą starannością. Jedną z rzeczy, prawdopodobnie chcesz zrobić to penetracji testowanie aplikacji można wdrożyć na platformie Azure.
 
 Może już wiesz, że firma Microsoft wykona [testów penetracyjnych naszego środowiska Azure](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). Dzięki temu Dbaj o ulepszenia systemu Azure.
 
-Firma Microsoft nie piórem testować swoją aplikację dla Ciebie, ale wiemy, będzie ma i trzeba będzie wykonać pióra testowania na potrzeby własnych aplikacji. Który jest to przydatne, ponieważ gdy można zwiększyć bezpieczeństwo aplikacji, Pomożesz zapewnić większe bezpieczeństwo całego ekosystemu platformy Azure.
+Firma Microsoft nie testów penetracyjnych aplikacji za Ciebie, ale wiemy, że będzie ciekawe i potrzebne do przeprowadzenia testów na potrzeby własnych aplikacji. Który jest to przydatne, ponieważ gdy zwiększyć bezpieczeństwo aplikacji Pomożesz zapewnić większe bezpieczeństwo całego ekosystemu platformy Azure.
 
-Co można zrobić w takiej sytuacji?
-
-Od 15 czerwca 2017 r. firmy Microsoft nie wymaga już wstępnej akceptacji do prowadzenia penetracji testy względem zasobów platformy Azure. Zachęcamy klientów, którzy chcą formalnie dokumentu przyszłych testów penetracyjnych engagements względem Microsoft Azure, aby wypełnić [formularza testowania powiadomienia usługi Azure Service penetracji](https://portal.msrc.microsoft.com/en-us/engage/pentest). Ten proces dotyczy tylko Microsoft Azure i nie dotyczy innych usługi w chmurze firmy Microsoft.
+Od 15 czerwca 2017 r. firmy Microsoft nie wymaga już wstępnej akceptacji do przeprowadzenia testów penetracyjnych, względem zasobów platformy Azure. Zachęcamy klientów, którzy chcą formalnie dokumentu przyszłych testów penetracyjnych engagements względem Microsoft Azure, aby wypełnić [formularza testowania powiadomienia usługi Azure Service penetracji](https://portal.msrc.microsoft.com/en-us/engage/pentest). Ten proces dotyczy tylko Microsoft Azure i nie dotyczy innych usługi w chmurze firmy Microsoft.
 
 >[!IMPORTANT]
 >Podczas powiadamiania Microsoft pióra testowania działania nie jest już wymagany klienci nadal muszą być zgodne z [Microsoft Cloud Unified penetracji testowania zasad zaangażowania](https://technet.microsoft.com/mt784683).
@@ -47,4 +45,4 @@ Jeden typ testu, który nie może wykonać jest dowolnym rodzaju [przeprowadzeni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby rozpocząć pracę przy użyciu pióra testujesz aplikacji hostowanych na platformie Microsoft Azure? Jeśli tak, a następnie przejdź na do [penetracji testowania zasad zaangażowania](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) i wypełnij formularz zgłoszenia, testowania.
+- Jeśli chcesz formalnie dokumentu przyszłych testów penetracyjnych względem aplikacji hostowanych na platformie Microsoft Azure, przejdź na do [penetracji testowania zasad zaangażowania](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) i wypełnij formularz zgłoszenia, testowania.

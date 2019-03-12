@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: f64f2cafb15a6cae71c304282e1fe6bd9231ef71
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 978667dcd3f7bd10192a396ec3e8d097bdb73509
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432927"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57577147"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -415,11 +415,7 @@ Nie każda rola lub aplikacji, która jest zainstalowana na komputerze z systeme
 ## <a name="complete-recommended-configurations"></a>Dokończ konfigurację zalecane
 Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku twardego. Jednak zdecydowanie zaleca się je skonfigurować.
 
-* Zainstaluj [agenta na maszynach wirtualnych platformy Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Następnie można włączyć rozszerzenia maszyn wirtualnych. Rozszerzenia maszyn wirtualnych wdrożyć najbardziej krytycznych funkcje, które być może chcesz używać z maszynami wirtualnymi takie jak resetowanie haseł, konfigurowania protokołu RDP i tak dalej. Aby uzyskać więcej informacji, zobacz:
-
-    - [Agent maszyny Wirtualnej i rozszerzenia — część 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
-    - [Agent maszyny Wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-
+* Zainstaluj [agenta na maszynach wirtualnych platformy Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Następnie można włączyć rozszerzenia maszyn wirtualnych. Rozszerzenia maszyn wirtualnych wdrożyć najbardziej krytycznych funkcje, które być może chcesz używać z maszynami wirtualnymi takie jak resetowanie haseł, konfigurowania protokołu RDP i tak dalej. Aby uzyskać więcej informacji, zobacz [agenta maszyny wirtualnej platformy Azure — omówienie](../extensions/agent-windows.md).
 *  Po utworzeniu maszyny Wirtualnej na platformie Azure, zaleca się umieszczenie pliku stronicowania w woluminie "Stacja danych czasowych", aby zwiększyć wydajność. Możesz skonfigurować to w następujący sposób:
 
     ```PowerShell

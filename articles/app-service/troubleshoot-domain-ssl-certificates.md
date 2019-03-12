@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653666"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730100"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
@@ -88,13 +88,84 @@ Ten problem może wystąpić z następujących powodów:
 - Subskrypcja osiągnęła limit zakupów, które są dozwolone w ramach subskrypcji.
 
     **Rozwiązanie**: Certyfikaty usługi App Service mają limit 10 zakupów certyfikatu dla typów subskrypcji rozliczana według bieżącego użycia i umowy EA. Dla innych typów subskrypcji limit wynosi 3. Aby zwiększyć limit, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Certyfikat usługi App Service zostało oznaczone jako oszustwa. Otrzymasz następujący komunikat o błędzie: "Twój certyfikat oznaczono jako ewentualnym oszustwem. Żądanie jest obecnie w trakcie przeglądu. Jeśli certyfikat nie zostanie można używać w ciągu 24 godzin, skontaktuj się z pomocą techniczną platformy Azure."
+- Certyfikat usługi App Service zostało oznaczone jako oszustwa. Otrzymasz następujący komunikat o błędzie: "Twój certyfikat oznaczono jako ewentualnym oszustwem. Żądanie jest obecnie w trakcie przeglądu. Jeśli certyfikat nie zostanie można używać w ciągu 24 godzin, skontaktuj się z działem pomocy technicznej systemu Azure."
 
     **Rozwiązanie**: Jeśli certyfikat jest oznaczone jako oszustwa i nie zostanie rozwiązany po 24 godzinach, wykonaj następujące kroki:
 
     1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. Przejdź do **certyfikaty usługi App Service**, a następnie wybierz certyfikat.
     3. Wybierz **ukończenie konfiguracji certyfikatu** > **krok 2: Sprawdź** > **weryfikacji domeny**. W tym kroku wysyła powiadomienie e-mail do dostawcy programu certyfikatu platformy Azure, aby rozwiązać ten problem.
+
+## <a name="custom-domain-problems"></a>Problemy z domeny niestandardowej
+
+### <a name="a-custom-domain-returns-a-404-error"></a>Domenę niestandardową zwróci błąd 404 
+
+#### <a name="symptom"></a>Objaw
+
+Przejdź do witryny przy użyciu nazwy domeny niestandardowej, pojawi się następujący komunikat o błędzie:
+
+"Nie znaleziono aplikacji sieci Web 404 błędu."
+
+#### <a name="cause-and-solution"></a>Przyczyna i rozwiązanie
+
+**Przyczyny 1** 
+
+Brak rekordu CNAME i A domeny niestandardowej, który został skonfigurowany. 
+
+**Rozwiązanie przyczyny 1**
+
+- Jeśli został dodany rekord A, upewnij się, również zostanie dodany rekord TXT. Aby uzyskać więcej informacji, zobacz [Utwórz rekord a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Jeśli nie masz do korzystania z domeny katalogu głównego aplikacji, zaleca się używania rekordu CNAME zamiast rekordu.
+- Nie używaj zarówno rekord CNAME, jak i rekord A dla tej samej domenie. Ten problem może spowodować konflikt i uniemożliwić rozwiązywany w domenie. 
+
+**Przyczyny 2** 
+
+Stary adres IP dla swojej domeny nadal może być buforowanie przeglądarki internetowej. 
+
+**Rozwiązanie przyczyny 2**
+
+Wyczyść przeglądarki. W przypadku urządzeń Windows, można uruchomić polecenie `ipconfig /flushdns`. Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adresu IP aplikacji. 
+
+### <a name="you-cant-add-a-subdomain"></a>Nie można dodać poddomeny 
+
+#### <a name="symptom"></a>Objaw
+
+Nie można dodać nową nazwę hosta, na aplikację, aby przypisać poddomeny.
+
+#### <a name="solution"></a>Rozwiązanie
+
+- Skontaktuj się z administratorem subskrypcji, aby upewnić się, że masz uprawnienia do dodawania nazwy hosta do aplikacji.
+- Jeśli potrzebujesz więcej poddomeny, zaleca się zmiany do usługi nazw domen (DNS) platformy Azure hostowanie domen. Za pomocą usługi Azure DNS, można dodać 500 nazw hostów do aplikacji. Aby uzyskać więcej informacji, zobacz [Dodawanie poddomeny](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+
+### <a name="dns-cant-be-resolved"></a>DNS nie można go rozpoznać
+
+#### <a name="symptom"></a>Objaw
+
+Otrzymasz następujący komunikat o błędzie:
+
+"Rekord DNS nie można zlokalizować."
+
+#### <a name="cause"></a>Przyczyna
+Ten problem występuje jeden z następujących powodów:
+
+- Nie upłynął czas na żywo okres (czasu wygaśnięcia TTL). Sprawdź konfigurację usług DNS dla swojej domeny ustalić wartość TTL, a następnie poczekaj na okres wygaśnięcia.
+- Konfiguracja DNS jest nieprawidłowa.
+
+#### <a name="solution"></a>Rozwiązanie
+- Poczekaj, aż ten problem rozwiąże się samoistnie w ciągu 48 godzin.
+- Jeśli ustawienie czasu wygaśnięcia można zmienić w konfiguracji DNS, zmień wartość na 5 minut, aby zobaczyć, czy ten problem zostanie rozwiązany.
+- Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adresu IP aplikacji. Jeśli nie, należy skonfigurować rekord A poprawny adres IP aplikacji.
+
+### <a name="you-need-to-restore-a-deleted-domain"></a>Należy przywrócić usunięto domenę 
+
+#### <a name="symptom"></a>Objaw
+Domeny nie jest już widoczna w witrynie Azure portal.
+
+#### <a name="cause"></a>Przyczyna 
+Właściciel subskrypcji może przypadkowo usunięta domeny.
+
+#### <a name="solution"></a>Rozwiązanie
+Jeśli domena została usunięta mniej niż 7 dni temu, domena nie zostało jeszcze uruchomione proces usuwania. W takim przypadku można kupić tej samej domenie, ponownie w witrynie Azure portal, w ramach tej samej subskrypcji. (Należy wpisać nazwę domeny dokładnie w polu wyszukiwania.) Opłata zostanie naliczona ponownie dla tej domeny. Jeśli domena została usunięta ponad siedem dni temu, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby uzyskać pomoc dotyczącą przywracania domeny.
 
 ## <a name="domain-problems"></a>Problemy z domeny
 
@@ -196,105 +267,62 @@ Ten problem występuje jeden z następujących powodów:
     |Typ rekordu|Host|Wskaż|
     |------|------|-----|
     |A|@|Adres IP dla aplikacji|
-    |TXT|@|< nazwa aplikacji >. azurewebsites.net|
-    |CNAME|www|< nazwa aplikacji >. azurewebsites.net|
+    |TXT|@|<app-name>.azurewebsites.net|
+    |CNAME|www|<app-name>.azurewebsites.net|
 
-### <a name="dns-cant-be-resolved"></a>DNS nie można go rozpoznać
+## <a name="faq"></a>Często zadawane pytania
 
-#### <a name="symptom"></a>Objaw
+**Czy muszę Moje niestandardowe skonfiguruj domenę pod kątem Moja witryna sieci Web po mogę kupić?**
 
-Otrzymasz następujący komunikat o błędzie:
+Przy zakupie domeny w witrynie Azure portal, aplikacji usługi App Service automatycznie jest skonfigurowany do korzystania z tej domeny niestandardowej. Nie trzeba wykonać dodatkowe czynności. Aby uzyskać więcej informacji, obejrzyj [usługi Azure App Service samoobsługowy może mi pomóc: Dodawanie niestandardowej nazwy domeny](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) w witrynie Channel9.
 
-"Rekord DNS nie można zlokalizować."
+**Aby wskazywały na Maszynie wirtualnej platformy Azure zamiast tego można używać domenę, kupić w witrynie Azure portal?**
 
-#### <a name="cause"></a>Przyczyna
-Ten problem występuje jeden z następujących powodów:
+Tak, może wskazywać domeny maszyny Wirtualnej, Magazyn itp. Aby uzyskać więcej informacji, zobacz [tworzenie niestandardowe nazwy FQDN w witrynie Azure portal dla maszyny Wirtualnej z systemem Windows](../virtual-machines/windows/portal-create-fqdn.md).
 
-- Nie upłynął czas na żywo okres (czasu wygaśnięcia TTL). Sprawdź konfigurację usług DNS dla swojej domeny ustalić wartość TTL, a następnie poczekaj na okres wygaśnięcia.
-- Konfiguracja DNS jest nieprawidłowa.
+**Czy moja domena jest obsługiwana przez GoDaddy lub system DNS Azure?**
 
-#### <a name="solution"></a>Rozwiązanie
-- Poczekaj, aż ten problem rozwiąże się samoistnie w ciągu 48 godzin.
-- Jeśli ustawienie czasu wygaśnięcia można zmienić w konfiguracji DNS, zmień wartość na 5 minut, aby zobaczyć, czy ten problem zostanie rozwiązany.
-- Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adresu IP aplikacji. Jeśli nie, należy skonfigurować rekord A poprawny adres IP aplikacji.
+Domeny usługi App Service umożliwia GoDaddy dla domeny rejestracji i system DNS Azure hostowanie domen. 
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Należy przywrócić usunięto domenę 
+**Mam automatyczne odnawianie włączone, ale nadal otrzymał powiadomienie odnawiania dla mojej domeny za pośrednictwem poczty e-mail. Co zrobić?**
 
-#### <a name="symptom"></a>Objaw
-Domeny nie jest już widoczna w witrynie Azure portal.
+Jeśli masz automatyczne odnawianie włączone, nie trzeba podejmować żadnych działań. Powiadomienie e-mail jest dostarczany, aby poinformować, że domena jest bliski wygaśnięcia i odnowić ręcznie, jeśli automatycznego odnawiania nie jest włączona.
 
-#### <a name="cause"></a>Przyczyna 
-Właściciel subskrypcji może przypadkowo usunięta domeny.
+**Zostanie naliczona dla usługi Azure DNS hostowania mojej domeny?**
 
-#### <a name="solution"></a>Rozwiązanie
-Jeśli domena została usunięta mniej niż 7 dni temu, domena nie zostało jeszcze uruchomione proces usuwania. W takim przypadku można kupić tej samej domenie, ponownie w witrynie Azure portal, w ramach tej samej subskrypcji. (Należy wpisać nazwę domeny dokładnie w polu wyszukiwania.) Opłata zostanie naliczona ponownie dla tej domeny. Jeśli domena została usunięta ponad siedem dni temu, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby uzyskać pomoc przywrócić domeny.
+Początkowy koszt zakupu domen dotyczy tylko rejestracja domeny. Oprócz kosztów rejestracji istnieją ponoszenia opłat za usługę Azure DNS, na podstawie użycia. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure DNS](https://azure.microsoft.com/pricing/details/dns/) Aby uzyskać więcej informacji.
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Domenę niestandardową zwróci błąd 404 
+**Czy mogę nabyć w mojej domeny wcześniej w witrynie Azure portal i chcesz przenieść od firmy GoDaddy hostowania hostingu usługi Azure DNS. Jak można to zrobić?**
 
-#### <a name="symptom"></a>Objaw
+Nie jest to konieczne, aby przeprowadzić migrację do usługi Azure DNS obsługujący. Jeśli chcesz przeprowadzić migrację do usługi Azure DNS, możliwości zarządzania domeny w witrynie Azure portal, temat zawiera informacje dotyczące kroków, które są niezbędne do przejścia do usługi Azure DNS. Jeśli domena zostało zakupione w ramach usługi App Service, migracja z GoDaddy hostingu do usługi Azure DNS jest stosunkowo bezproblemowe procedury.
 
-Przejdź do witryny przy użyciu nazwy domeny niestandardowej, pojawi się następujący komunikat o błędzie:
+**Chcę kupić mojej domeny z domeny usługi App Service, ale może obsługiwać mojej domeny na GoDaddy, a nie usługi Azure DNS?**
 
-"Nie znaleziono aplikacji sieci Web 404 błędu."
+Począwszy od 24 lipca 2017 r. domeny usługi App Service zakupionych w portalu znajdują się w usłudze Azure DNS. Jeśli chcesz użyć innego dostawcy hostingu, należy przejść do swojej witryny sieci Web można uzyskać domeny hosting rozwiązań.
 
+**Czy muszę płacić za ochronę prywatności dla mojej domeny?**
 
-#### <a name="cause-and-solution"></a>Przyczyna i rozwiązanie
+Przy zakupie domeny za pośrednictwem witryny Azure portal, można dodać zachowania bez ponoszenia dodatkowych kosztów. Jest to jedna z korzyści związanych z zakupem swojej domeny dzięki użyciu usługi Azure App Service.
 
-**Przyczyny 1** 
+**Jeśli zdecyduję się, że mojej domeny nie są już potrzebne, można uzyskać moich pieniędzy ponownie?**
 
-Brak rekordu CNAME i A domeny niestandardowej, który został skonfigurowany. 
+Przy zakupie domeny, nie są naliczane przez okres pięciu dni, w tym czasie możesz zrezygnować domeny. Jeśli zdecydujesz, że nie chcesz, aby w tym okresie pięciu dni domeny, nie są naliczane. (.pl domeny są wyjątkiem od tej. Jeśli kupisz domeny .pl, opłaty są naliczane od razu i nie zostanie zwrócone.)
 
-**Rozwiązanie przyczyny 1**
+**Czy można używać domeny w innej aplikacji w usłudze Azure App Service, w mojej subskrypcji?**
 
-- Jeśli został dodany rekord A, upewnij się, również zostanie dodany rekord TXT. Aby uzyskać więcej informacji, zobacz [Utwórz rekord a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- Jeśli nie masz do korzystania z domeny katalogu głównego aplikacji, zaleca się używania rekordu CNAME zamiast rekordu.
-- Nie używaj zarówno rekord CNAME, jak i rekord A dla tej samej domenie. Może to powodować konflikt i uniemożliwić rozwiązywany w domenie. 
+Tak. Gdy uzyskujesz dostęp do bloku domeny niestandardowe i protokół SSL w witrynie Azure portal, zostanie wyświetlony domen, które zostały nabyte. Można skonfigurować aplikację tak, aby użyć dowolnego z tych domen.
 
-**Przyczyny 2** 
+**Czy mogę przenieść domenę z jednej subskrypcji do innej subskrypcji?**
 
-Stary adres IP dla swojej domeny nadal może być buforowanie przeglądarki internetowej. 
+Domeny można przenieść do innej grupy zasobów/subskrypcji przy użyciu [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) polecenia cmdlet programu PowerShell.
 
-**Rozwiązanie przyczyny 2**
+**Jak można zarządzać Mój domeny niestandardowej, jeśli obecnie nie mam aplikację usługi Azure App Service?**
 
-Wyczyść przeglądarki. W przypadku urządzeń Windows, można uruchomić polecenie `ipconfig /flushdns`. Użyj [WhatsmyDNS.net](https://www.whatsmydns.net/) Aby zweryfikować, że domeny wskazuje adresu IP aplikacji. 
+Domenę można zarządzać, nawet jeśli nie masz aplikacji internetowej usługi App Service. Domeny może służyć do usług platformy Azure, takich jak maszyny wirtualne, Magazyn itp. Jeśli zamierzasz używać domeny dla aplikacji sieci Web usługi App Service, musisz Uwzględnij aplikację sieci Web, który nie znajduje się na bezpłatny plan usługi App Service do powiązania domeny na aplikację internetową.
 
-### <a name="you-cant-add-a-subdomain"></a>Nie można dodać poddomeny 
+**Czy mogę przenieść aplikację sieci web przy użyciu domeny niestandardowej do innej subskrypcji lub ze środowiska App Service Environment v1 na V2?**
 
-#### <a name="symptom"></a>Objaw
+Tak, można przenieść aplikację sieci web w subskrypcjach. Postępuj zgodnie ze wskazówkami w [sposób przenoszenia zasobów na platformie Azure](../azure-resource-manager/resource-group-move-resources.md). Istnieją pewne ograniczenia podczas przenoszenia aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [ograniczenia dotyczące przenoszenia zasobów usługi App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+).
 
-Nie można dodać nową nazwę hosta, na aplikację, aby przypisać poddomeny.
-
-#### <a name="solution"></a>Rozwiązanie
-
-- Skontaktuj się z administratorem subskrypcji, aby upewnić się, że masz uprawnienia do dodawania nazwy hosta do aplikacji.
-- Jeśli potrzebujesz więcej poddomeny, zaleca się zmiany hosting domeny do usługi Azure DNS. Za pomocą usługi Azure DNS, można dodać 500 nazw hostów do aplikacji. Aby uzyskać więcej informacji, zobacz [Dodawanie poddomeny](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Po przeniesieniu aplikacji sieci web, hosta powiązania nazwy domen w obrębie domen niestandardowych, ustawienia należy pozostają takie same. Żadne dodatkowe kroki są wymagane do skonfigurowania powiązania nazwy hosta.

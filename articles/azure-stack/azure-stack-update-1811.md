@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 14e587276deab9656c3be04c96182942767ae0f2
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986026"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731657"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -87,7 +87,7 @@ Usługa Azure Stack wydaje poprawki na bieżąco. Pamiętaj zainstalować [najno
 
     Podczas instalacji tej aktualizacji portal użytkowników usługi Azure Stack jest niedostępna, gdy host rozszerzenia jest konfigurowane. Konfiguracja hosta rozszerzenia może potrwać do 5 godzin. W tym czasie można sprawdzić stan aktualizacji lub wznowić niepomyślną instalację aktualizacji przy użyciu [programu PowerShell administratora usługi Azure Stack lub punktu końcowego z uprzywilejowanym dostępem](azure-stack-monitor-update.md).
 
-- Gdy usługi Azure Stack jest zarządzane przez System Center Operations Manager (SCOM), pamiętaj, że aktualizacji pakietu administracyjnego dla usługi Microsoft Azure Stack do wersji 10.0.3.11 przed zastosowaniem 1811.
+- Gdy usługi Azure Stack jest zarządzane przez System Center Operations Manager (SCOM), pamiętaj, że aktualizacji pakietu administracyjnego dla usługi Microsoft Azure Stack do wersji 1.0.3.11 przed zastosowaniem 1811.
 
 ## <a name="new-features"></a>Nowe funkcje
 

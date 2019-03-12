@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/25/2019
+ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cf82a80d0b812ab5540796c8e7758e6ff85952c5
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: fad3d77d15d78ffdaf1afca3675a82242b844778
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804794"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730387"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
@@ -41,7 +41,7 @@ Poniżej przedstawiono niektóre zagadnienia, weź pod uwagę podczas korzystani
 
 * W przypadku zaimportowania tego elementu runbook pod oryginalną nazwą `Update-AutomationAzureModulesForAccount`, zastąpi on wewnętrzny elementu runbook o tej nazwie. W rezultacie zaimportowany element runbook zostanie uruchomiony, jeśli **aktualizowania modułów platformy Azure** wypchnięciach przycisku, lub gdy ten element runbook jest wywoływany bezpośrednio za pośrednictwem interfejsu API usługi Azure Resource Manager dla tego konta usługi Automation.
 
-* Tylko `Azure` i `AzureRM.*` moduły są obecnie obsługiwane. Nowy [modułów programu Azure PowerShell Az](/powershell/azure/new-azureps-module-az) nie są jeszcze obsługiwane.
+* Ten element runbook obsługuje aktualizowanie tylko **Azure** i **AzureRm** obecnie modułów. [Moduły platformy Azure PowerShell Az](/powershell/azure/new-azureps-module-az) są obsługiwane na kontach usługi Automation, ale nie można zaktualizować tego elementu runbook.
 
 * Należy unikać, uruchomienie tego elementu runbook konta usługi Automation, które zawierają moduły Az.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bea9a987078799436c9dcad650ee56d5d6d81512
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341345"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729101"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Zarządzanie połączonych urządzeń z poziomu portalu Mój profil (wersja zapoznawcza)
 Możesz zarządzać urządzeniami, w którym nawiązano połączenie przy użyciu konta służbowego lub szkolnego, wyłączenie tych, które nie jest już właścicielem, z **urządzeń** strony **Mój profil** portalu.
@@ -36,7 +36,7 @@ Możesz zarządzać urządzeniami, w którym nawiązano połączenie przy użyci
     ![Urządzenia, przedstawiający stronę połączone urządzenia](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Wyłącz urządzenie
-W dowolnym momencie można wyłączyć żadnego z połączonych urządzeń. Jest to szczególnie ważne, jeśli urządzenie nie jest znanym lub utraty lub kradzieży urządzenia.
+W dowolnym momencie można wyłączyć żadnego z połączonych urządzeń. Jest to szczególnie ważne, jeśli urządzenie nie jest znanym lub utraty lub kradzieży urządzenia. Po wyłączeniu urządzenia nie może zostać uwierzytelniony przez Twoją organizację, a nie będzie można uzyskać dostępu do żadnych zasobów organizacji.
 
 >[!Important]
 >Jeśli urządzenie jest wyłączone przez pomyłkę, nie ma możliwości jej cofnąć. Musisz skontaktować się z administratorem Twojej organizacji, aby dodać urządzenie ponownie.

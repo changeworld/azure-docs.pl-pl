@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: ddf090664b1e5197603dadc26da92a0a1da1a63d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c11a206316cfb7b2d9e96b631fce01701da93565
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404947"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550486"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -36,6 +36,7 @@ Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo (omów
 - Rozmiar przekazywanych z opcją tablicy bajtów jest ograniczona do 2GB
 - Opcja tablicy bajtów upłynie limit czasu po 30 min
 - Adres URL podany w parametrze `videoURL` musi być zakodowany
+- Indeksowanie zasobów usługi Media Services ma takie samo ograniczenie występuje jako indeksowania z adresu URL
 
 > [!Tip]
 > Zalecane jest korzystanie z platformy .NET w wersji 4.6.2. lub nowszej, ponieważ starsze wersje platformy .NET nie obsługują domyślnie protokołu TLS 1.2.

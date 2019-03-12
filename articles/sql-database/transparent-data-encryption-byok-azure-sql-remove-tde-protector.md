@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/12/2018
-ms.openlocfilehash: 4a3677dc5402948fc0105190d1891d709291d0f7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: a5b544db713f671230e4a226b1e0bdcfa77fbb2b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317734"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575243"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Usuwanie ochrony przezroczystego szyfrowania danych (TDE), przy użyciu programu PowerShell
 
@@ -46,7 +46,7 @@ Ten poradnik przechodzi przez dwie metody w zależności od żądanego wyniku po
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Aby zachować dostępne zaszyfrowanych zasobów
 
-1. Tworzenie [nowy klucz w usłudze Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Upewnij się, że ten nowy klucz jest tworzony w osobnym magazynie kluczy z mogą mieć złamane zabezpieczenia ochrony TDE, ponieważ Kontrola dostępu jest inicjowana na poziomie magazynu. 
+1. Tworzenie [nowy klucz w usłudze Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Upewnij się, że ten nowy klucz jest tworzony w osobnym magazynie kluczy z mogą mieć złamane zabezpieczenia ochrony TDE, ponieważ Kontrola dostępu jest inicjowana na poziomie magazynu.
 2. Dodaj nowy klucz na serwer za pomocą [AzSqlServerKeyVaultKey Dodaj](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) i [AzSqlServerTransparentDataEncryptionProtector zestaw](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) poleceń cmdlet i zaktualizować go jako funkcja ochrony TDE nowego serwera.
 
    ```powershell
@@ -74,12 +74,12 @@ Ten poradnik przechodzi przez dwie metody w zależności od żądanego wyniku po
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Wykonaj [kopii zapasowej z nowego klucza](/powershell/module/az.keyvault/backup-azurekeyvaultkey) w usłudze Key Vault.
+4. Wykonaj [kopii zapasowej z nowego klucza](/powershell/module/az.keyvault/backup-azkeyvaultkey) w usłudze Key Vault.
 
    ```powershell
    <# -OutputFile parameter is optional; 
    if removed, a file name is automatically generated. #>
-   Backup-AzureKeyVaultKey `
+   Backup-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
@@ -93,7 +93,7 @@ Ten poradnik przechodzi przez dwie metody w zależności od żądanego wyniku po
    -Name <KeyVaultKeyName>
    ```
  
-6. Aby przywrócić klucz usługi Key Vault w przyszłości za pomocą [AzKeyVaultKey przywracania](/powershell/module/az.keyvault/restore-azurekeyvaultkey) polecenia cmdlet:
+6. Aby przywrócić klucz usługi Key Vault w przyszłości za pomocą [AzKeyVaultKey przywracania](/powershell/module/az.keyvault/restore-azkeyvaultkey) polecenia cmdlet:
    ```powershell
    Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `

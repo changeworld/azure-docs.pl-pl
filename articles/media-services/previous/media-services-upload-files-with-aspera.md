@@ -11,19 +11,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 179be5df8013d4e79eca473036d1a09875cbcc61
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: ca7f5d47d75e80a583b6613eb36fd3da9c61d707
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865913"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761484"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi Aspera Server On Demand na platformie Azure 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 **Aspera** to oprogramowanie do szybkiego transferowania plików. Usługa **Aspera Server On Demand** dla platformy Azure umożliwia szybkie przekazywanie i pobieranie dużych plików bezpośrednio do i z magazynu obiektów blob platformy Azure. Aby uzyskać informacje na temat usługi **Aspera On Demand**, zobacz witrynę [Aspera Cloud](http://cloud.asperasoft.com/). 
   
@@ -128,7 +128,7 @@ W niniejszym artykule zostały wymienione poniższe zasoby.
 * [Klient usługi Aspera](http://downloads.asperasoft.com/en/downloads/2)
 * [Podręcznik klienta](http://downloads.asperasoft.com/en/documentation/2)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Możesz teraz [kopiować obiekty blob z konta magazynu na konto usługi AMS](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account).
 

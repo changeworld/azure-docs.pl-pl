@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295362"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551759"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Rozpoczynanie pracy z łącznikiem usługi bazy danych Oracle
 
@@ -40,7 +40,7 @@ W tym artykule przedstawiono sposób korzystania z łącznika bazy danych Oracle
 
 * Instalowanie klienta Oracle na maszynie zainstalowano lokalnej bramy danych. Pamiętaj zainstalować 64-bitowego dostawcę danych programu Oracle dla platformy .NET od firmy Oracle:  
 
-  [64-bitowy program ODAC 12c w wersji 4 (12.1.0.2.4) dla Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [64-bitowy program ODAC 12c w wersji 4 (12.1.0.2.4) dla Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
     > Jeśli klient Oracle nie jest zainstalowany, wystąpi błąd podczas próby utworzenia lub używania połączenia. Zobacz typowych błędów, w tym artykule.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7c76f7c5810370fa396b81bcc16e7e2204393bc1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 934046ac4be6c0e85ee687cefb46b61ec8affca6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247549"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543370"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -287,7 +287,7 @@ Można zarządzać listą serwerami DNS używanymi w sieci wirtualnej w portalu 
 
 ### <a name="azure-dns"></a>System DNS platformy Azure
 [Systemu nazw domen](https://technet.microsoft.com/library/bb629410.aspx), lub w systemie DNS jest odpowiedzialny za tłumaczenia (lub rozpoznawanie) nazwę witryny sieci Web lub usługi na jej adres IP. [Usługa Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) to usługa hostingowa przeznaczona dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure. Usługa DNS obsługuje aspektów dostępności Triada zabezpieczeń "CIA".
-### <a name="log-analytics-nsgs"></a>Log Analytics NSGs
+### <a name="azure-monitor-logs-nsgs"></a>Usługa Azure Monitor dzienniki sieciowych grup zabezpieczeń
 Należy włączyć następujące kategorie dzienniki diagnostyczne dla sieciowych grup zabezpieczeń:
 -   Zdarzenie: Zawiera wpisy, dla których sieciowej grupy zabezpieczeń reguły są stosowane do maszyn wirtualnych i ról wystąpień na podstawie adresu MAC. Stan reguły te są gromadzone co 60 sekund.
 

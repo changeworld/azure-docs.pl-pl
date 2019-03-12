@@ -1,0 +1,237 @@
+---
+title: Aktualizacja usługi Azure Stack 1902 | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o aktualizacji 1902 systemy zintegrowane w usłudze Azure Stack, w tym, co nowego, znanych problemów i umożliwiające pobranie aktualizacji.
+services: azure-stack
+documentationcenter: ''
+author: sethmanheim
+manager: femila
+editor: ''
+ms.assetid: ''
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/07/2019
+ms.author: sethm
+ms.reviewer: adepue
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 9bad9b6fb285c27264c8c0567aebd4d4f2850582
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731346"
+---
+# <a name="azure-stack-1902-update"></a>Aktualizacja usługi Azure Stack 1902
+
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
+
+W tym artykule opisano zawartość pakietu 1902 aktualizacji. Aktualizacja zawiera ulepszenia, poprawki i nowe funkcje dla tej wersji usługi Azure Stack. Również w tym artykule opisano znane problemy w tej wersji i zawiera link do pobierania aktualizacji. Znane problemy są podzielone na problemy bezpośrednio związane z procesem aktualizacji i kompilacji (po instalacji).
+
+> [!IMPORTANT]  
+> Ten pakiet aktualizacji jest tylko dla usługi Azure Stack, zintegrowanych systemów. Nie dotyczą tego pakietu aktualizacji usługi Azure Stack Development Kit.
+
+## <a name="build-reference"></a>Dokumentacja kompilowania
+
+Numerem kompilacji aktualizacji usługi Azure Stack 1902 **1.1902.0.69**.
+
+## <a name="hotfixes"></a>Poprawki
+
+Usługa Azure Stack wydaje poprawki na bieżąco. Pamiętaj zainstalować [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1901 przed zaktualizowaniem usługi Azure Stack do 1902.
+
+Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych systemów. nie należy próbować zainstalować poprawki na ASDK.
+
+> [!TIP]  
+> Subskrybowania następujących *RSS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
+
+### <a name="azure-stack-hotfixes"></a>Usługa Azure Stack poprawki
+
+- **1809**: [KB 4481548 — usługa Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/)
+- **1811**: Nie dostępnych poprawki bieżącego.
+- **1901**: Nie dostępnych poprawki bieżącego.
+- **1902**: Nie dostępnych poprawki bieżącego.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+> [!IMPORTANT]
+- Zainstaluj [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1901 (jeśli istnieje), przed zaktualizowaniem do 1902.
+
+- Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) z następującymi parametrami, aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono, w tym wszystkie ostrzeżenia i błędy. Również sprawdź aktywne alerty i rozwiązywanie tych, które wymagają działań:
+
+    ```PowerShell
+    Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
+    ```
+
+- Gdy usługi Azure Stack jest zarządzane przez System Center Operations Manager (SCOM), upewnij się, że aktualizacja [pakiet administracyjny dla programu Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) do wersji 1.0.3.11 przed zastosowaniem 1902.
+
+- Format pakietu aktualizacji usługi Azure Stack został zmieniony z **.bin/.exe/.xml** do **.zip/.xml** począwszy od wersji 1902. Klienci z połączonej jednostki skalowania usługi Azure Stack będą widzieć **dostępna aktualizacja** wiadomości w portalu. Klienci, którzy nie są połączone teraz po prostu pobrać i zaimportować plik zip z odpowiedni plik XML.
+
+<!-- ## New features -->
+
+<!-- ## Fixed issues -->
+
+## <a name="changes"></a>Zmiany
+
+- Kompilacja 1902 wprowadza nowy interfejs użytkownika w portalu administratora usługi Azure Stack do tworzenia plany, oferty, przydziały i planów dodatków. Aby uzyskać więcej informacji, w tym ze zrzutami ekranu, zobacz [Tworzenie planów, ofert i przydziałów](azure-stack-create-plan.md).
+
+## <a name="common-vulnerabilities-and-exposures"></a>Typowe luki w zabezpieczeniach i zagrożeń
+
+Ta aktualizacja instaluje następujące aktualizacje zabezpieczeń:  
+- [ADV190005](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190006)
+- [CVE-2019-0595](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0595)
+- [CVE-2019-0596](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0596)
+- [CVE-2019-0597](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0597)
+- [CVE-2019-0598](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0598)
+- [CVE-2019-0599](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0599)
+- [CVE-2019-0600](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0600)
+- [CVE-2019-0601](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0601)
+- [CVE-2019-0602](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0602)
+- [CVE-2019-0615](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0615)
+- [CVE-2019-0616](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0616)
+- [CVE-2019-0618](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0618)
+- [CVE-2019-0619](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0619)
+- [CVE-2019-0621](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0621)
+- [CVE-2019-0623](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0623)
+- [CVE-2019-0625](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0625)
+- [CVE-2019-0626](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0626)
+- [CVE-2019-0627](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0627)
+- [CVE-2019-0628](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0628)
+- [CVE-2019-0630](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0630)
+- [CVE-2019-0631](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0631)
+- [CVE-2019-0632](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0632)
+- [CVE-2019-0633](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0633)
+- [CVE-2019-0635](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0635)
+- [CVE-2019-0636](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0636)
+- [CVE-2019-0656](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0656)
+- [CVE-2019-0659](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0659)
+- [CVE-2019-0660](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0660)
+- [CVE-2019-0662](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0662)
+- [CVE-2019-0663](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0663)
+
+
+Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij poprzednie linki, lub zobacz artykuły bazy wiedzy Microsoft Knowledge Base [4487006](https://support.microsoft.com/en-us/help/4487006).
+
+## <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
+
+- Po uruchomieniu [AzureStack testu](azure-stack-diagnostic-test.md), zostanie wyświetlony komunikat ostrzegawczy z kontrolera zarządzania płytą główną (BMC). Można bezpiecznie zignorować to ostrzeżenie.
+
+- <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem `Error – Template for FaultType UserAccounts.New is missing.` te alerty można bezpiecznie zignorować. Alerty zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
+
+## <a name="post-update-steps"></a>Kroki po aktualizacji
+
+- Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Aby uzyskać więcej informacji, zobacz [poprawki](#hotfixes), a także naszego [obsługi zasad](azure-stack-servicing-policy.md).  
+
+- Pobieranie danych o rest kluczy szyfrowania i bezpiecznego przechowywania ich poza wdrożenia usługi Azure Stack. Postępuj zgodnie z [instrukcje dotyczące sposobu pobierania kluczy](azure-stack-security-bitlocker.md).
+
+## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
+
+Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
+
+### <a name="portal"></a>Portal
+
+<!-- 2930820 - IS ASDK --> 
+- W portalach administratora i użytkownika jeśli wyszukasz "Docker" jest niepoprawnie zwrócony element. Nie jest dostępna w usłudze Azure Stack. Jeśli spróbujesz go utworzyć, zostanie wyświetlony blok ze wskazaniem błędu. 
+
+<!-- 2931230 – IS  ASDK --> 
+- Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
+
+<!-- TBD - IS ASDK --> 
+- Nie można używać dwa typy subskrypcji administracyjne, które zostały wprowadzone w wersji 1804. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
+
+<!-- 3557860 - IS ASDK --> 
+- Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
+
+<!-- 1663805 - IS ASDK --> 
+- Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu, należy użyć [programu PowerShell w celu sprawdzenia uprawnień](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan).
+
+<!-- ### Health and monitoring -->
+
+### <a name="compute"></a>Wystąpienia obliczeniowe
+
+- Podczas tworzenia nowej maszyny wirtualnej Windows (VM), może zostać wyświetlony następujący błąd:
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   Ten błąd występuje, jeśli Włącz diagnostykę rozruchu na maszynie Wirtualnej, ale usunięcia konta magazynu diagnostyki rozruchu. Aby obejść ten problem, należy ponownie utworzyć konto magazynu o takiej samej nazwie jak użyte wcześniej.
+
+<!-- 2967447 - IS, ASDK, to be fixed in 1902 -->
+- Środowisko tworzenia maszyny wirtualnej scale set (VMSS) zapewnia opartych na systemie CentOS 7.2 jako opcję wdrażania. Ponieważ ten obraz nie jest dostępna w usłudze Azure Stack, wybierz innego systemu operacyjnego dla danego wdrożenia lub użyj innego obrazu systemu CentOS, który został pobrany przed ich wdrożeniem w portalu Marketplace przez określenie szablonu usługi Azure Resource Manager operator.  
+
+<!-- TBD - IS ASDK --> 
+- Po zastosowaniu 1902 aktualizacji, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
+
+   - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
+      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Wybierz **dostawców zasobów**, a następnie wybierz **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
+      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
+   - Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
+
+- Maszyny Wirtualnej systemu Ubuntu 18.04 utworzone za pomocą autoryzacji SSH włączone uniemożliwi używanie kluczy SSH do logowania. Jako obejście użycie dostępu do maszyny Wirtualnej dla rozszerzenia systemu Linux w celu wdrożenia kluczy SSH po zainicjowaniu obsługi administracyjnej lub korzystanie z uwierzytelniania opartego na hasłach.
+
+- W kompilacji 1902 i pamięci wymaganej przez infrastrukturę ERCS, że maszyna wirtualna została zwiększona z 8 GB do 12 GB. Na ASDK powoduje to zwiększenie 4 GB. W instalacji systemów usługi Azure Stack zintegrowane jest zwiększenie 12 GB.
+
+   Aby upewnić się, proces poprawek i aktualizacji powoduje najmniejszą ilością przestój dzierżawy, upewnij się, sygnatury usługi Azure Stack ma więcej niż 12 GB dostępnego miejsca w **pojemności** bloku. Widać to zwiększyć znajduje odzwierciedlenie w pamięci **pojemności** blok po pomyślnej instalacji aktualizacji.
+
+### <a name="networking"></a>Networking  
+
+<!-- 3239127 - IS, ASDK -->
+- W portalu usługi Azure Stack po zmianie statyczny adres IP dla konfiguracji adresu IP, który jest powiązany z kartą sieciową, dołączony do wystąpienia maszyny Wirtualnej, zobaczysz komunikat ostrzegawczy z informacją, że 
+
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
+
+    Możesz bezpiecznie zignorować ten komunikat; adres IP zostanie zmieniony, nawet wtedy, gdy wystąpienie maszyny Wirtualnej nie jest ponownie uruchamiany.
+
+<!-- 3632798 - IS, ASDK -->
+- W portalu, jeśli Dodawanie reguły zabezpieczeń dla ruchu przychodzącego i wybierz pozycję **Tag usługi** jako źródło, kilka opcji są wyświetlane w **znacznik źródłowy** listy, które nie są dostępne dla usługi Azure Stack. Tylko opcje, które są prawidłowe w usłudze Azure Stack, są następujące:
+
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
+  
+  Inne opcje nie są obsługiwane jako źródło tagi w usłudze Azure Stack. Podobnie jeśli Dodawanie reguły zabezpieczeń dla ruchu wychodzącego i wybierz pozycję **Tag usługi** jako miejsce docelowe, ta sama lista opcji **znacznik źródłowy** jest wyświetlana. Jedyne prawidłowe opcje są takie same jak w przypadku **znacznik źródłowy**, zgodnie z opisem w poprzedniej liście.
+
+- Sieciowe grupy zabezpieczeń (NSG) nie działają w usłudze Azure Stack w ten sam sposób jak globalnego platformy Azure. Na platformie Azure, możesz ustawić wiele portów na jedną regułę sieciowej grupy zabezpieczeń (przy użyciu portalu, programu PowerShell i szablonów usługi Resource Manager). W usłudze Azure Stack, nie możesz ustawić wiele portów na jedną regułę sieciowej grupy zabezpieczeń za pośrednictwem portalu. Aby obejść ten problem, należy użyć szablonu usługi Resource Manager lub programu PowerShell można ustawić te dodatkowe reguły.
+
+<!-- 3203799 - IS, ASDK -->
+- Usługa Azure Stack nie obsługuje obecnie dołączania więcej niż 4 interfejsy sieciowe (NIC) do wystąpień maszyn wirtualnych, niezależnie od rozmiaru wystąpienia.
+
+- Wykryto problem dotyczący porzucenia pakietów ponad 1450 bajtów do wewnętrznego obciążenia Balancer (ILB). Problem jest następstwem ustawienia MTU na hoście jest za mała, aby pomieścić VXLAN hermetyzowanych pakietów, przechodzących przez rolą, która od 1901 została przeniesiona do hosta. Istnieją co najmniej dwa scenariusze, które mogą wystąpić w przypadku których Zaobserwowaliśmy ten problem, objawiać:
+
+  - Zapytania SQL do bazy danych SQL na zawsze za wewnętrznego obciążenia Balancer (ILB), a ponad 660 bajtów.
+  - Wdrożenia rozwiązania Kubernetes się nie powieść, jeśli próba włączenia wielu wzorców.  
+
+  Ten problem występuje, gdy masz komunikacji między wewnętrznym modułem równoważenia obciążenia i maszyny Wirtualnej w tej samej sieci wirtualnej, ale w różnych podsieciach. Ten problem można obejść, uruchamiając następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień na hoście ASDK:
+
+  ```shell
+  netsh interface ipv4 set sub "hostnic" mtu=1660
+  netsh interface ipv4 set sub "management" mtu=1660
+  ```
+
+<!-- ### SQL and MySQL-->
+
+### <a name="app-service"></a>App Service
+
+<!-- 2352906 - IS ASDK --> 
+- Należy zarejestrować dostawcę zasobów magazynu, przed utworzeniem pierwszej funkcji platformy Azure w ramach subskrypcji.
+
+
+<!-- ### Usage -->
+
+ 
+<!-- #### Identity -->
+<!-- #### Marketplace -->
+
+## <a name="download-the-update"></a>Pobierz aktualizację
+
+Możesz pobrać pakiet aktualizacji usługi Azure Stack 1902 z [tutaj](https://aka.ms/azurestackupdatedownload). 
+
+W scenariuszach na połączonych wdrożenia usługi Azure Stack okresowo sprawdzać bezpiecznego punktu końcowego i automatycznie powiadomienie, jeśli aktualizacja jest dostępna dla chmury. Aby uzyskać więcej informacji, zobacz [zarządzanie aktualizacjami dla usługi Azure Stack](azure-stack-updates.md#using-the-update-tile-to-manage-updates).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Aby uzyskać omówienie zarządzania aktualizacjami w usłudze Azure Stack, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md).  
+- Aby uzyskać więcej informacji na temat sposobu stosowania aktualizacji za pomocą usługi Azure Stack, zobacz [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md).
+- Aby przejrzeć zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym, zobacz [obsługi zasad w usłudze Azure Stack](azure-stack-servicing-policy.md).  
+- Aby użyć uprzywilejowanych punktu końcowego (program ten) do monitorowania i Wznów aktualizacje, zobacz [monitorowanie aktualizacji w usłudze Azure Stack przy użyciu uprzywilejowanych punktu końcowego](azure-stack-monitor-update.md).  

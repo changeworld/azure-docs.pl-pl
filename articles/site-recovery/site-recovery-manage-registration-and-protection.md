@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 20d5c4628d729b8dff8b1d72f80beac0ec2e8f67
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810324"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569752"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -55,18 +55,18 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
         pushd .
         try
         {
-             $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-             $principal=new-object System.Security.Principal.WindowsPrincipal($windowsIdentity)
-             $administrators=[System.Security.Principal.WindowsBuiltInRole]::Administrator
-             $isAdmin=$principal.IsInRole($administrators)
-             if (!$isAdmin)
-             {
+            $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+            $principal=new-object System.Security.Principal.WindowsPrincipal($windowsIdentity)
+            $administrators=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+            $isAdmin=$principal.IsInRole($administrators)
+            if (!$isAdmin)
+            {
                 "Please run the script as an administrator in elevated mode."
                 $choice = Read-Host
-                return;       
-             }
+                return;
+            }
 
-            $error.Clear()    
+            $error.Clear()
             "This script will remove the old Azure Site Recovery Provider related properties. Do you want to continue (Y/N) ?"
             $choice =  Read-Host
 
@@ -95,24 +95,24 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
             {
                 if (Test-Path $registrationPath)
                 {
-                    "Removing registration related registry keys."    
+                    "Removing registration related registry keys."
                     Remove-Item -Recurse -Path $registrationPath
                 }
 
                 if (Test-Path $proxySettingsPath)
-            {
+                {
                     "Removing proxy settings"
                     Remove-Item -Recurse -Path $proxySettingsPath
                 }
 
                 $regNode = Get-ItemProperty -Path $asrHivePath
                 if($regNode.DraID -ne $null)
-                {            
+                {
                     "Removing DraId"
                     Remove-ItemProperty -Path $asrHivePath -Name $draIdValue
                 }
                 if($regNode.IdMgmtCloudContainerId -ne $null)
-                {            
+                {
                     "Removing IdMgmtCloudContainerId"
                     Remove-ItemProperty -Path $asrHivePath -Name $idMgmtCloudContainerId
                 }
@@ -131,7 +131,7 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
                 $store.Remove($cert)
             }
         }catch
-        {    
+        {
             [system.exception]
             Write-Host "Error occurred" -ForegroundColor "Red"
             $error[0]
@@ -158,7 +158,7 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 
 1. W **chronione elementy** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy maszyny > **Wyłącz replikację**.
 2. W **Wyłącz replikację**, można wybrać następujące opcje:
-     - **Wyłącz replikację i Usuń (zalecane)** — ta opcja to usunięcie replikowanego elementu z usługi Azure Site Recovery i replikacji dla maszyny została zatrzymana. Konfiguracja replikacji na maszynie wirtualnej w środowisku lokalnym zostaną wyczyszczone i rozliczeń Site Recovery dla tego serwera chronionego została zatrzymana.
+    - **Wyłącz replikację i Usuń (zalecane)** — ta opcja to usunięcie replikowanego elementu z usługi Azure Site Recovery i replikacji dla maszyny została zatrzymana. Konfiguracja replikacji na maszynie wirtualnej w środowisku lokalnym zostaną wyczyszczone i rozliczeń Site Recovery dla tego serwera chronionego została zatrzymana.
     - **Usuń** — tę opcję, powinien być używane tylko wtedy, gdy środowisko źródłowe został usunięty lub jest niedostępny (nie połączono). Spowoduje to usunięcie replikowanego elementu z usługi Azure Site Recovery (rozliczanie kończy się). Konfiguracja replikacji na maszynie wirtualnej w środowisku lokalnym **nie będzie** wyczyszczone. 
 
     > [!NOTE]
@@ -208,8 +208,8 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 
 3. Uruchom ten skrypt na źródłowym serwerze programu VMM przy użyciu programu PowerShell (wymagane są uprawnienia administratora) z konsoli programu VMM. Zastąp symbol zastępczy **SQLVM1** o nazwie maszyny wirtualnej.
 
-         $vm = get-scvirtualmachine -Name "SQLVM1"
-         Set-SCVirtualMachine -VM $vm -ClearDRProtection
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Set-SCVirtualMachine -VM $vm -ClearDRProtection
 4. Na pomocniczym serwerze programu VMM Uruchom ten skrypt, aby wyczyścić ustawienia dla pomocniczej maszyny wirtualnej:
 
         $vm = get-scvirtualmachine -Name "SQLVM1"

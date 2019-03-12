@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 675933b46a228f636c4907e84d66263dde52f274
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5390885ccb4bbc3e1552d3f5e80c1b451b7bee38
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823335"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570168"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu szablonów szybkiego startu platformy Azure
 W tym artykule opisano, jak częściowo zautomatyzować wdrożenia zawsze włączonej konfiguracji grupy dostępności dla maszyn wirtualnych serwera SQL na platformie Azure za pomocą szablonów szybkiego startu platformy Azure. Istnieją dwa szablony szybkiego startu platformy Azure, które są używane w ramach tego procesu. 
@@ -39,6 +39,13 @@ Aby zautomatyzować konfiguracji zawsze włączonej grupy dostępności przy uż
 - [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
 - Grupa zasobów z kontrolerem domeny. 
 - Co najmniej jeden przyłączonych do domeny [maszyn wirtualnych na platformie Azure działającej wersji programu SQL Server 2016 (lub nowszego) przedsiębiorstwa](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) w ten sam zestaw lub dostępności strefę dostępności, które zostały [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Dwie dostępne (nie używane dla dowolnej jednostki) adresy IP, jeden dla wewnętrznego modułu równoważenia obciążenia i jeden dla odbiornika grupy dostępności w ramach tej samej podsieci co grupy dostępności. Jeśli istniejącego modułu równoważenia obciążenia jest używany, tylko jeden dostępny adres IP jest potrzebny.  
+
+## <a name="permissions"></a>Uprawnienia
+Następujące uprawnienia są niezbędne do skonfigurowania zawsze włączonej grupy dostępności przy użyciu szablonów szybkiego startu platformy Azure: 
+
+- Istniejące konto użytkownika domeny z uprawnieniami "Tworzenie obiektu komputera" w domenie.  Na przykład konto administratora domeny zazwyczaj ma wystarczające uprawnienia (np: account@domain.com). _To konto powinno być także częścią grupy administratorów lokalnych na każdej maszynie Wirtualnej, aby utworzyć klaster._
+- Konto użytkownika domeny, który kontroluje usługi SQL Server. 
 
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>Krok 1 — Tworzenie usługi WSFC i dołączyć maszyny wirtualne SQL Server w klastrze za pomocą szablonu szybkiego startu 

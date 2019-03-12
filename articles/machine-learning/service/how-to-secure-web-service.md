@@ -1,7 +1,7 @@
 ---
-title: Zabezpieczania usług sieci web przy użyciu protokołu SSL
+title: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak zabezpieczyć usługę sieci web wdrażane za pomocą usługi Azure Machine Learning. Można ograniczyć dostęp do usług sieci web i zabezpieczanie danych przesyłanych przez klientów przy użyciu warstwy SSL (SSL) i uwierzytelniania opartego na kluczu.
+description: Dowiedz się, jak zabezpieczyć usługę sieci web wdrażane za pomocą usługi Azure Machine Learning przez włączenie protokołu HTTPS. Protokół HTTPS zabezpiecza dane wysyłane przez klientów za pomocą zabezpieczeń warstwy transportu (TLS), mogą zastąpić warstwy SSL (SSL). Również służy przez klientów do zweryfikowania tożsamości usługi sieci web.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,27 +11,34 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 91958a76ffb3cafd818949c1475fd13bb978a928
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098106"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731894"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Użyj protokołu SSL do zabezpieczania usług sieci web za pomocą usługi Azure Machine Learning
 
-W tym artykule dowiesz się, jak zabezpieczyć usługę sieci web wdrażane za pomocą usługi Azure Machine Learning. Można ograniczyć dostęp do usług sieci web i zabezpieczanie danych przesyłanych przez klientów przy użyciu warstwy SSL (SSL) i uwierzytelniania opartego na kluczu.
+W tym artykule dowiesz się, jak zabezpieczyć usługę sieci web wdrażane za pomocą usługi Azure Machine Learning. Można ograniczyć dostęp do usług sieci web i zabezpieczanie danych przesyłanych przez klientów przy użyciu [Hypertext Transfer Protocol bezpieczne (HTTPS)](https://en.wikipedia.org/wiki/HTTPS).
+
+Protokół HTTPS jest używany do zabezpieczania komunikacji między klientem a usługi sieci web dzięki szyfrowaniu komunikacji między nimi. Szyfrowanie jest obsługiwane za pomocą [zabezpieczeń TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Czasami jest to nadal określane jako Secure Sockets Layer (SSL), która poprzednika protokołu TLS była.
+
+> [!TIP]
+> Zestaw SDK usługi Azure Machine Learning używany jest termin "SSL" dla właściwości powiązany z włączaniem bezpieczną komunikację. Nie oznacza to, że protokół TLS, nie jest używany przez usługi sieci web, po prostu ten protokół SSL jest bardziej rozpoznawalnych terminem dla wielu czytników.
+
+Protokoły TLS i SSL obie opierają się na __certyfikaty cyfrowe__, które są używane do przeprowadzenia weryfikacji szyfrowania i tożsamości. Aby uzyskać więcej informacji na pracy, certyfikatów cyfrowych, zobacz wpis Wikipedia na [infrastruktury kluczy publicznych (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure).
 
 > [!Warning]
-> Jeśli protokół SSL nie jest włączona, każdy użytkownik w Internecie będzie do nawiązywania połączeń z usługą sieci web.
+> Jeśli nie zostanie włączone i używać protokołu HTTPS dla usługi sieci web, dane wysyłane do i z usługi może być widoczny na innych użytkowników w Internecie.
+>
+> Protokół HTTPS umożliwia także klienta w celu sprawdzenia autentyczności serwera, który nawiązuje połączenie z. To chroni klientów przed [ataków typu man-in--middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) ataków.
 
-Protokół SSL są szyfrowane dane przesyłane między klientem a usługą sieci web. On również używany przez klienta, aby zweryfikować tożsamość serwera. Uwierzytelnianie jest włączona tylko dla usług, które zostały podane certyfikat i klucz.  Po włączeniu protokołu SSL, klucz uwierzytelniania jest wymagane podczas uzyskiwania dostępu do usługi sieci web.
-
-Wdrażanie usługi sieci web włączone przy użyciu protokołu SSL lub włączyć protokół SSL dla istniejących wdrożonej usługi sieci web, kroki są takie same:
+Proces zabezpieczania nowej usługi sieci web lub istniejąca jest następująca:
 
 1. Pobierz nazwę domeny.
 
-2. Uzyskaj certyfikat protokołu SSL.
+2. Uzyskiwanie certyfikatu cyfrowego.
 
 3. Wdrażanie lub zaktualizować usługę sieci web przy użyciu ustawienia protokołu SSL, włączona.
 
@@ -45,7 +52,7 @@ Jeśli nie jesteś już właścicielem nazwy domeny, możesz kupić jeden z __re
 
 ## <a name="get-an-ssl-certificate"></a>Uzyskaj certyfikat protokołu SSL
 
-Istnieje wiele sposobów, aby uzyskać certyfikat SSL. Najczęściej jest nabyć jeden z __urzędu certyfikacji__ (CA). Niezależnie od tego, gdzie można uzyskać certyfikat potrzebne są następujące pliki:
+Istnieje wiele sposobów, aby uzyskać certyfikat SSL (certyfikat cyfrowy). Najczęściej jest nabyć jeden z __urzędu certyfikacji__ (CA). Niezależnie od tego, gdzie można uzyskać certyfikat potrzebne są następujące pliki:
 
 * A __certyfikatu__. Certyfikat musi zawierać łańcucha certyfikatów pełnego i musi być zakodowany w formacie PEM.
 * A __klucz__. Klucz musi być zakodowany w formacie PEM.

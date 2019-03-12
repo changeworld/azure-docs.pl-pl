@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 7d845b0e434f21c6db46cddb26b7f55aeb33d080
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733779"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551827"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -99,8 +99,8 @@ Jeśli używasz DevOps platformy Azure, możesz użyć [rozszerzenie usługi Dev
 Wpisy na blogu następujące wskazówki oferty i informacje na temat przy użyciu rozszerzenia usługom DevOps platformy Azure:
 
 * [Rozszerzenie DevOps platformy Azure i usłudze DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Wdrożenie nowej maszyny Wirtualnej w istniejącej laboratorium DevTest Labs z usługom DevOps platformy Azure](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Za pomocą usługi DevOps platformy Azure release management dla ciągłych wdrożeń użytkownik usługi DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [Wdrożenie nowej maszyny Wirtualnej w istniejącej laboratorium DevTest Labs z usługom DevOps platformy Azure](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Za pomocą usługi DevOps platformy Azure release management dla ciągłych wdrożeń użytkownik usługi DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 Dla innych ciągłej integracji (CI) / kompilatorach ciągłe dostarczanie (CD) możesz uzyskać te same scenariusze przez wdrażanie [szablonów usługi Azure Resource Manager](https://aka.ms/dtlquickstarttemplate) przy użyciu [poleceń cmdlet programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) i [Zestawy SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Możesz również użyć [interfejsy API REST dla usługi DevTest Labs](https://aka.ms/dtlrestapis) do integracji z łańcucha narzędzi.  
 

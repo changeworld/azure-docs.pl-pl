@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6bde6e74279fc16237c0c0436296e2d21c3a57c7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 82559c89094649b377dc2a898798ce6aad5fbcc7
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736621"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570491"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Tryb debugowania przepływu danych mapowania
 
@@ -36,7 +36,7 @@ Po przełączeniu w tryb debugowania, zostanie wyświetlony monit z formularzem 
 >Podczas pracy w trybie debugowania w przepływ danych ujścia nie będą zapisywane dane przekształcania. Sesja debugowania jest przeznaczony do służyć jako test > potrzeby przekształceń. Ujścia nie są wymagane podczas debugowania i są ignorowane w przepływie danych. Jeśli chcesz przetestować, zapisanie danych > w ujściem Twojej wykonania przepływu danych z potoku usługi Azure Data Factory i użyj wykonywania debugowania z potoku.
 
 ## <a name="debug-settings"></a>Ustawienia debugowania
-Ustawienia debugowania mogą być każde źródło, z przepływu danych będą wyświetlane w panelu po stronie i można również edytować, wybierając pozycję "Ustawienia źródła" na pasku narzędzi projektowania na przepływ danych. Można wybrać, limity i/lub źródła pliku do użytku dla każdego swoją transformację źródła. Możesz również wybrać klastra usługi Databricks, które chcesz użyć do debugowania.
+Ustawienia debugowania mogą być każde źródło, z przepływu danych będą wyświetlane w panelu po stronie i można również edytować, wybierając pozycję "Ustawienia źródła" na pasku narzędzi Projektanta przepływu danych. Można wybrać, limity i/lub źródła pliku do użytku dla każdego swoją transformację źródła. Limity wierszy, w tym ustawieniu są przeznaczone tylko dla bieżącej sesji debugowania. Umożliwia także ustawienia próbkowania w źródle ograniczania wierszy do transforamtion źródła.
 
 ## <a name="cluster-status"></a>Stan klastra
 Istnieje klastra wskaźnika stanu, w górnej części powierzchni projektu, który będzie zielony, gdy klaster jest gotowy do debugowania. Jeśli klaster jest już bez wyłączania zasilania, zielony wskaźnik będą wyświetlane niemal natychmiast. Jeśli klaster nie został jeszcze uruchomiony, po wprowadzeniu tryb debugowania, następnie trzeba będzie poczekać 5 – 7 minut dla klastra nad ułatwieniem wdrażania. Będzie żółty światła wskaźnika, aż wszystko będzie gotowe. Gdy klaster jest gotowy do debugowania przepływu danych, będzie zielony światła wskaźnika.

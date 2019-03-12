@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 03/12/2019
+ms.openlocfilehash: 8cd4cf12390ff29754b55d2827ea4750e7123a27
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660735"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730509"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
@@ -32,12 +32,18 @@ Query Store jest funkcji opcjonalnych, więc nie jest aktywne, domyślnie na ser
 ### <a name="enable-query-store-using-the-azure-portal"></a>Włączanie kwerenda Store przy użyciu witryny Azure portal
 1. Zaloguj się do witryny Azure portal i wybierz usługi Azure Database for postgresql w warstwie serwera.
 2. Wybierz **parametrów serwera** w **ustawienia** części menu.
-3. Wyszukaj **pg_qs.query_capture_mode** parametru.
-4. Zaktualizuj wartość NONE do góry i Zapisz.
+3. Wyszukaj `pg_qs.query_capture_mode` parametru.
+4. Ustaw wartość `TOP` i **Zapisz**.
 
-Alternatywnie można ustawić ten parametr przy użyciu wiersza polecenia platformy Azure.
+Aby włączyć statystyki oczekiwania w swojej Query Store: 
+5. Wyszukaj `pgms_wait_sampling.query_capture_mode` parametru.
+6. Ustaw wartość `ALL` i **Zapisz**.
+
+
+Alternatywnie można ustawić te parametry przy użyciu wiersza polecenia platformy Azure.
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
+az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
 Zezwalaj na pierwszej partii danych do utrwalenia w bazie danych azure_sys do 20 minut.

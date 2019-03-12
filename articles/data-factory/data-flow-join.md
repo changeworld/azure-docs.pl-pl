@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: f95edc881e26576df216c92ff0b94c5c19bf7fa8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727931"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726876"
 ---
-# <a name="azure-data-factory-data-flow-join-transformation"></a>Usługi Azure Data Factory danych przepływ sprzężenia transformacji
+# <a name="mapping-data-flow-join-transformation"></a>Przekształcenie sprzężenie przepływu danych mapowania
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -24,11 +24,11 @@ Sprzężenia umożliwia łączenie danych z dwiema tabelami w przepływ danych. 
 
 ## <a name="join-types"></a>Dołącz do typów
 
-Wybierając typ sprzężenia jest wymagana dla transformacji sprzężenia
+Wybierając typ sprzężenia jest wymagana dla transformacji sprzężenia.
 
 ### <a name="inner-join"></a>Sprzężenie wewnętrzne
 
-Sprzężenie wewnętrzne będzie przekazywał tylko wiersze spełniające warunki kolumny z obu tabel
+Sprzężenie wewnętrzne będzie przekazywał tylko wiersze spełniające warunki kolumny z obu tabel.
 
 ### <a name="left-outer"></a>Lewe zewnętrzne
 
@@ -40,11 +40,11 @@ Wszystkie wiersze z prawego strumienia, które nie spełniają warunek sprzęże
 
 ### <a name="full-outer"></a>Klauzule Full Outer
 
-Pełne zewnętrzne tworzy wszystkie kolumny i wiersze z obu stron o wartości NULL dla kolumny, które są nieobecne w drugiej tabeli
+Pełne zewnętrzne tworzy wszystkie kolumny i wiersze z obu stron o wartości NULL dla kolumny, które są nieobecne w drugiej tabeli.
 
 ### <a name="cross-join"></a>Sprzężenie krzyżowe
 
-Określonych iloczyn wektorowy dwóch strumieni z wyrażeniem
+Określ iloczyn wektorowy dwóch strumieni z wyrażeniem. Możesz użyć tego, aby utworzyć niestandardowe sprzężenia.
 
 ## <a name="specify-join-conditions"></a>Określ warunki sprzężenia
 
@@ -67,3 +67,7 @@ Samosprzężenie warunków w przepływ danych ADF można osiągnąć za pomocą 
 ![Samosprzężenie](media/data-flow/selfjoin.png "samosprzężenie")
 
 Na powyższym diagramie Wybierz przekształcenie znajduje się na górze. Wszystkie wykonywanie operacji jest aliasowanie oryginalnego strumienia do "OrigSourceBatting". W wyróżnionych transformacji sprzężenia poniżej widać, że używamy tego strumienia wybierz aliasu jako sprzężenia po prawej stronie, może odwoływać się do tego samego klucza w lewej i prawej strony sprzężenia wewnętrznego.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Po dołączeniu danych, możesz następnie [tworzenie nowych kolumn](data-flow-derived-column.md) i [ujście danych do docelowego magazynu danych](data-flow-sink.md).

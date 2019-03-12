@@ -9,18 +9,20 @@ ms.author: gwallace
 ms.date: 03/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33a01c7bfeacd57d2bea13318d054514daba008c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c8b25c0caf71835ccb5a055956d73a713efa5da0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410251"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541217"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
 Rozwiązanie do zarządzania aktualizacjami w usłudze Azure Automation służy do zarządzania aktualizacjami systemu operacyjnego, komputerów Windows i Linux, które zostały wdrożone na platformie Azure, w środowiskach lokalnych lub w chmurze innych dostawców. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
 
 Zarządzanie aktualizacjami dla maszyn wirtualnych można włączyć bezpośrednio z konta usługi Azure Automation. Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych na koncie usługi Automation, zobacz [zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Można również włączyć rozwiązanie Update Management dla maszyny wirtualnej na stronie maszyny wirtualnej w witrynie Azure portal. Ten scenariusz jest dostępny dla [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) maszyn wirtualnych.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="solution-overview"></a>Omówienie rozwiązania
 
@@ -155,12 +157,12 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Na komputerze Windows możesz przejrzeć następujące informacje, aby sprawdzić połączenie agenta z usługą Log Analytics:
+Na komputerze Windows możesz przejrzeć następujące informacje, aby sprawdzić połączenie agenta przy użyciu dzienników usługi Azure Monitor:
 
 1. W Panelu sterowania otwórz **Microsoft Monitoring Agent**. Na **usługi Azure Log Analytics** karcie agent wyświetla następujący komunikat: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Log Analytics**.
 2. Otwórz dziennik zdarzeń Windows. Przejdź do **Application and Services log\operations Manager** i wyszukaj Identyfikatory zdarzeń 3000 i 5002 identyfikator zdarzenia ze źródła **łącznika usługi**. Te zdarzenia wskazują, że komputer został zarejestrowany za pomocą obszaru roboczego usługi Log Analytics i odbiera konfigurację.
 
-Jeśli agent nie może komunikować się z usługą Log Analytics, a agent jest skonfigurowany do komunikowania się z Internetem przez zaporę lub serwer proxy, upewnij się, że zapora lub serwer proxy jest prawidłowo skonfigurowany. Aby dowiedzieć się, jak sprawdzić, serwer zapory lub serwera proxy jest prawidłowo skonfigurowany, zobacz [konfiguracji sieci dla agenta Windows](../azure-monitor/platform/agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
+Jeśli agent nie może komunikować się z dzienników usługi Azure Monitor i agent jest skonfigurowany do komunikowania się z Internetem przez zaporę lub serwer proxy, upewnij się, Zapora lub serwer proxy ma prawidłową konfigurację. Aby dowiedzieć się, jak sprawdzić, serwer zapory lub serwera proxy jest prawidłowo skonfigurowany, zobacz [konfiguracji sieci dla agenta Windows](../azure-monitor/platform/agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Jeśli Twoje systemy Linux są skonfigurowane do komunikowania się z serwerem proxy lub brama usługi Log Analytics i dodajesz tego rozwiązania, aktualizacja *proxy.conf* uprawnień, aby przyznać grupie omiuser uprawnienie do odczytu w pliku przy użyciu następujące polecenia:
@@ -170,7 +172,7 @@ Jeśli agent nie może komunikować się z usługą Log Analytics, a agent jest 
 
 Nowo dodani agenci systemu Linux jest wyświetlany stan **zaktualizowano** po przeprowadzeniu oceny. Ten proces może potrwać do 6 godzin.
 
-Aby upewnić się, że grupy zarządzania programu Operations Manager komunikuje się z usługą Log Analytics, zobacz [integracji sprawdzania poprawności z programu Operations Manager z usługą Log Analytics](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
+Aby upewnić się, że grupy zarządzania programu Operations Manager komunikuje się przy użyciu dzienników usługi Azure Monitor, zobacz [integracji sprawdzania poprawności z programu Operations Manager przy użyciu dzienników usługi Azure Monitor](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
 
 ## <a name="data-collection"></a>Zbieranie danych
 
@@ -182,7 +184,7 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 | --- | --- | --- |
 | Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -192,7 +194,7 @@ Skanowanie jest przeprowadzane co 3 godziny, do każdego zarządzanego komputera
 
 Może upłynąć od 30 minut do 6 godzin dla pulpitu nawigacyjnego wyświetlić zaktualizowane dane z zarządzanych komputerów.
 
-Średnia użycie danych usługi Log Analytics dla maszyny, przy użyciu rozwiązania Update Management jest około 25MB miesięcznie. Ta wartość jest tylko przybliżeniem i może ulec zmianie w zależności od używanego środowiska. Zaleca się, że monitorować swoje środowisko, aby sprawdzić użycie dokładnie, czy masz.
+Średnia użycie danych dzienników usługi Azure Monitor na maszynie za pomocą rozwiązania Update Management jest około 25MB miesięcznie. Ta wartość jest tylko przybliżeniem i może ulec zmianie w zależności od używanego środowiska. Zaleca się, że monitorować swoje środowisko, aby sprawdzić użycie dokładnie, czy masz.
 
 ## <a name="viewing-update-assessments"></a>Wyświetlanie ocen aktualizacji
 
@@ -206,7 +208,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ## <a name="install-updates"></a>Zainstaluj aktualizacje
 
-Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../azure-monitor/platform/computer-groups.md) (Grupy komputerów w usłudze Log Analytics).
+Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md).
 
  Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść to wykorzystania [grup dynamicznych](#using-dynamic-groups), te grupy są rozwiązywane w czasie wdrażania i są definiowane przez zapytanie.
 
@@ -224,7 +226,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
 | Grupy można zaktualizować (wersja zapoznawcza)|Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
-| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
+| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
@@ -353,7 +355,7 @@ Poniższe sekcje zawierają przykładowe dziennika zapytania dotyczące rekordó
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Pojedynczego zapytania oceny maszyn wirtualnych platformy Azure (Windows)
 
-Zastąp wartość symbolu VMUUID o identyfikatorze GUID maszyny Wirtualnej z maszyny wirtualnej, której dotyczy kwerenda. Można znaleźć VMUUID, które mają być używane, uruchamiając następujące zapytanie w usłudze Log Analytics: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Zastąp wartość symbolu VMUUID o identyfikatorze GUID maszyny Wirtualnej z maszyny wirtualnej, której dotyczy kwerenda. Można znaleźć VMUUID, które mają być używane, uruchamiając następujące zapytanie w dziennikach w usłudze Azure Monitor: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Brakujące aktualizacje podsumowania
 
@@ -382,7 +384,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Pojedynczego zapytania oceny maszyny Wirtualnej platformy Azure (Linux)
 
-Dla niektórych dystrybucje systemu Linux jest [kolejność bajtów](https://en.wikipedia.org/wiki/Endianness) niezgodność z wartością VMUUID, który pochodzi z usługi Azure Resource Manager i co to jest przechowywany w usłudze Log Analytics. Następujące zapytanie wyszukuje dopasowania w obu kolejność bajtów. Zastąp wartości VMUUID big-endian i little-endian format identyfikatora GUID prawidłowo zwracania wyników. Można znaleźć VMUUID, które mają być używane, uruchamiając następujące zapytanie w usłudze Log Analytics: `Update | where Computer == "<machine name>"
+Dla niektórych dystrybucje systemu Linux jest [kolejność bajtów](https://en.wikipedia.org/wiki/Endianness) niezgodność z wartością VMUUID, który pochodzi z usługi Azure Resource Manager i co to jest przechowywany w dziennikach w usłudze Azure Monitor. Następujące zapytanie wyszukuje dopasowania w obu kolejność bajtów. Zastąp wartości VMUUID big-endian i little-endian format identyfikatora GUID prawidłowo zwracania wyników. Można znaleźć VMUUID, które mają być używane, uruchamiając następujące zapytanie w dziennikach w usłudze Azure Monitor: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Brakujące aktualizacje podsumowania
@@ -623,7 +625,7 @@ Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wi
 > [!div class="nextstepaction"]
 > [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
 
-* Użyj wyszukiwania w dzienniku [usługi Log Analytics](../log-analytics/log-analytics-log-searches.md) do wyświetlania szczegółowych danych aktualizacji.
+* Użyj wyszukiwania w dzienniku [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie alertów](automation-tutorial-update-management.md#configure-alerts) aktualizacji stanu wdrożenia.
 
 * Aby dowiedzieć się, jak korzystać z rozwiązania Update Management za pośrednictwem interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurations)
