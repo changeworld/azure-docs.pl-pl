@@ -1,6 +1,6 @@
 ---
-title: Włącz pulpit nawigacyjny platformy Kubernetes w usłudze Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć Pulpit nawigacyjny platformy Kubernetes w usłudze Azure Stack
+title: Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242415"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729851"
 ---
-# <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>Włącz pulpit nawigacyjny platformy Kubernetes w usłudze Azure Stack 
+# <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes w usłudze Azure Stack 
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit* 
 > [!Note]   
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą. 
 
-Kubernetes obejmuje pulpit nawigacyjny sieci web, używanego do podstawowych operacji zarządzania. Ten pulpit nawigacyjny pozwala wyświetlić stan kondycji podstawowych i metryk dla aplikacji, tworzenia i wdrażania usług i edytować istniejące aplikacje. W tym artykule pokazano, jak włączyć Pulpit nawigacyjny platformy Kubernetes w usłudze Azure Stack.
+Kubernetes obejmuje pulpit nawigacyjny sieci web, używanego do podstawowych operacji zarządzania. Ten pulpit nawigacyjny pozwala wyświetlić stan kondycji podstawowych i metryk dla aplikacji, tworzenia i wdrażania usług i edytować istniejące aplikacje. W tym artykule pokazano, jak skonfigurować pulpit nawigacyjny platformy Kubernetes w usłudze Azure Stack.
 
 ## <a name="prerequisites-for-kubernetes-dashboard"></a>Wymagania wstępne dotyczące pulpitu nawigacyjnego rozwiązania Kubernetes
 

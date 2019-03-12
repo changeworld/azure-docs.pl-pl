@@ -4,16 +4,16 @@ description: Dowiedz się, jak wybrać rozwiązanie na platformie Azure do trans
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 54a51f5f124857419727ed7ca574f717e17b125a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263804"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776669"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Transfer danych w przypadku dużych zestawów danych za pomocą niski lub nie przepustowość sieci
  
@@ -48,14 +48,14 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 |                                     |    Dysku Data Box (wersja zapoznawcza)    |    Data Box                                      |    Duże pole danych (wersja zapoznawcza)              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Rozmiar danych                        |    Maksymalnie 35 TB                 |    Do 80 TB na każdym urządzeniu                       |    Maksymalnie 800 TB na każdym urządzeniu               |    Zmienna                            |
-|    Typ danych                        |    Obiekty BLOB platformy Azure                  |    Obiekty BLOB platformy Azure<br>Azure Files                    |    Obiekty BLOB platformy Azure<br>Azure Files            |    Obiekty BLOB platformy Azure<br>Azure Files          |
+|    Typ danych                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    Współczynnik postaci                      |    5 dysków SSD na zamówienie zlecenie             |    1 x 50-modułów równoważenia obciążenia. rozmiar pulpitu urządzenia na zamówienie zlecenie    |    Kg — 1 X ~ 500. duże urządzenia na zamówienie zlecenie    |    Do 10 dysków twardych/SSD na zamówienie zlecenie        |
 |    Czas początkowej konfiguracji               |    Małe <br>(15 min)            |    Działania niskiej lub średniej <br> (< 30 minut)               |    Średnia<br>(1 – 2 godziny)               |    Moderowanie trudne do<br>(zmienna) |
 |    Wysyłanie danych do platformy Azure               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
 |    Eksportowanie danych z platformy Azure           |    Nie                           |    Nie                                            |    Nie                                    |    Yes                                 |
 |    Szyfrowanie                       |    AES 128-bitowy                  |    AES 256-bitowy                                   |    AES 256-bitowy                           |    AES 128-bitowy                         |
 |    Sprzęt                         |     Podany firmy Microsoft          |    Podany firmy Microsoft                            |    Podany firmy Microsoft                    |    Dostarcza użytkownik                   |
-|    Interfejs sieciowy                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ-45, QSFP +                           |    SATA II/SATA III                    |
+|    Interfejs sieciowy                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
 |    Integracja z partnerami              |    Niektóre                         |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Niektóre                                |
 |    Wysyłka                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
 | Stosowane, gdy dane są przenoszone         |W granicach handlowych|W granicach handlowych|W granicach handlowych|W granicach geograficznych, np. nam UE|

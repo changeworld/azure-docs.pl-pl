@@ -5,16 +5,16 @@ description: Jak utworzyć projekt w niestandardowych w usłudze Translator?
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: dde1bfbaf810d07a2b992258dd8674efec302dc6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737165"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762708"
 ---
 # <a name="create-a-project"></a>Tworzenie projektu
 

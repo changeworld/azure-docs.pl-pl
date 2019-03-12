@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d37114fda7f442a5fa077c8dde9fd8aec3ac4378
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 41f69d2017d9fc04acda47d09c718d3585f6335c
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317105"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726281"
 ---
 # <a name="how-application-gateway-works"></a>Jak działa usługa Application Gateway
 
@@ -20,13 +20,13 @@ W tym artykule wyjaśniono, jak bramy application gateway akceptuje przychodząc
 
 ![how-application-gateway-works](.\media\how-application-gateway-works\how-application-gateway-works.png)
 
-## <a name="how-request-is-accepted"></a>Jak żądanie zostało zaakceptowane
+## <a name="how-a-request-is-accepted"></a>Jak żądanie zostało zaakceptowane
 
 Zanim klient wysyła żądanie do Twojej bramy application gateway, jest rozpoznawany jako nazwy domeny bramy aplikacji przy użyciu serwera systemu nazw domen (DNS, Domain Name System). Wpis DNS jest kontrolowana przez platformę Azure, ponieważ bram aplikacji znajdują się w domenie azure.com. Usługi Azure DNS do klienta, który jest zwracany jest adres IP *adresu IP frontonu* usługi Application Gateway. Application gateway akceptuje ruch przychodzący na jednym lub kilku *odbiorników*. Odbiornik jest logicznej jednostki, która sprawdza, czy żądania połączenia. Jest ona skonfigurowana z fronted adresu IP, protokół i numer portu dla połączenia od klientów do usługi application gateway. Włączenie zapory aplikacji sieci Web (WAF) Application Gateway sprawdza nagłówki żądania i treści (jeśli istnieje) względem *reguł zapory aplikacji sieci Web* do określenia, czy żądanie jest prawidłowym żądaniem — w takim przypadku będą kierowane do backend — lub zagrożenie bezpieczeństwa, w którym zostanie zablokowane w przypadku żądania.  
 
 Usługa Application gateway może służyć jako modułu równoważenia obciążenia wewnętrznego aplikacji lub z Internetu modułu równoważenia obciążenia aplikacji. Bramy aplikacji z Internetu ma publicznych adresów IP. Nazwy DNS bramy aplikacji z Internetu jest publicznie rozpoznawalnej do publicznego adresu IP. W związku z tym bramy aplikacji z Internetu może kierować żądania klientów przez Internet. Aplikacja wewnętrzna bramy mają tylko prywatny adres IP. Nazwy DNS bramy aplikacji wewnętrznej jest rozpoznania publicznie na jego prywatny adres IP. W związku z tym wewnętrzne usługi równoważenia obciążenia, tylko może kierować żądania klientów z dostępem do sieci Wirtualnej dla usługi application gateway. Bramy aplikacji zarówno z Internetu i wewnętrzne kierowania żądań do serwerów wewnętrznej bazy danych za pomocą prywatnych adresów IP. W związku z tym usługi serwerów wewnętrznej bazy danych nie są publiczne adresy IP do odbierania żądań od wewnętrznego lub bramy aplikacji z Internetu.
 
-## <a name="how-request-is-routed"></a>Jak żądanie jest kierowane
+## <a name="how-a-request-is-routed"></a>Jak żądanie jest kierowane
 
 Jeśli żądanie zostanie znaleziony ważność (lub nie włączono zapory aplikacji sieci Web), *reguła routingu żądania* skojarzone z *odbiornika* jest oceniany w celu określenia *puli zaplecza* do którego żądanie zostanie przesłana. Reguły są przetwarzane w kolejności, w jakiej znajdują się na liście w portalu. Na podstawie *reguła routingu żądania* konfiguracji bramy aplikacji określa, czy przekierowaniu wszystkich żądań odbiornik z pulą zaplecza określonych lub kierowania ich do pul różnych wewnętrznych baz danych, w zależności do ścieżki adresu URL lub do *Przekierowywanie żądań* inny numer portu lub zewnętrznej witryny
 
@@ -37,6 +37,12 @@ Po określeniu serwera wewnętrznej bazy danych usługa application gateway otwi
 Bramy aplikacji wewnętrznych ma tylko prywatny adres IP. Nazwy DNS bramy aplikacji wewnętrznej jest wewnętrznie możliwej do rozpoznania na jego prywatny adres IP. W związku z tym wewnętrzne usługi równoważenia obciążenia może kierować żądania klientów z dostępem do sieci Wirtualnej dla usługi Application Gateway.
 
 Należy pamiętać, że zarówno z Internetu i wewnętrzne bramy Application Gateway kierowania żądań do serwerów wewnętrznej bazy danych za pomocą prywatnych adresów IP. Jeśli zasób puli wewnętrznej bazy danych zawiera prywatny adres IP, konfiguracja karty Sieciowej maszyny Wirtualnej lub wewnętrznie możliwej do rozpoznania adresu i puli zaplecza jest publiczny punkt końcowy, usługa Application Gateway używa publiczny adres IP jego frontonu do serwera. Jeśli jeszcze nie przeprowadzono aprowizacji publicznego adresu IP frontonu, jeden jest przypisany dla ruchu wychodzącego łączność zewnętrzną.
+
+### <a name="modifications-to-the-request"></a>Modyfikacje na żądanie
+
+Usługa Application gateway wstawia 4 dodatkowe nagłówki do wszystkich żądań, zanim przekazuje żądania do zaplecza. Te nagłówki są X-forwarded dla X-forwarded-proto, X-forwarded-port i X-oryginalny host. Format dla nagłówka x-forwarded dla jest IP:port listę rozdzielonych przecinkami. Prawidłowe wartości dla x-forwarded-proto są HTTP lub HTTPS. X-forwarded-port Określa port, w którym żądanie osiągnięty w usłudze application gateway. Nagłówek X-oryginalny host zawiera oryginalnego nagłówka hosta, z którym odebrano żądanie. Tego pliku nagłówkowego jest przydatne w scenariuszach, takich jak integracja z witryny internetowej platformy Azure, gdzie przychodzącego nagłówka hosta jest modyfikowany, zanim ruch jest kierowany do wewnętrznej bazy danych. Opcjonalnie Jeśli włączona jest koligacja sesji, następnie plik cookie koligacji zarządzanych brama zostanie wstawiony. 
+
+Może dodatkowo skonfigurować bramę aplikacji do modyfikowania przy użyciu nagłówków [nagłówków HTTP Nadpisz](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) lub zmodyfikować ścieżka identyfikatora URI za pomocą zastąpienia ścieżki ustawienie. Ale, o ile nie jest skonfigurowany, aby to zrobić, wszystkie żądania przychodzące są przekierowywane, ponieważ jest z zapleczem usługi.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

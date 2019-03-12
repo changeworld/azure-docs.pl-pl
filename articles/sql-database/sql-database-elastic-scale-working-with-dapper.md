@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6cc5e3f8f188c60a129f6ad6575b348616bdad9b
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565585"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569760"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Za pomocą biblioteki klienckiej elastycznej bazy danych z programem Dapper
 Ten dokument stanowi dla deweloperów, które zależą od programem Dapper do tworzenia aplikacji, ale także wykorzystywać [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md) do tworzenia aplikacji fragmentowania tej implementacji, aby skalować warstwę danych.  Ten dokument przedstawia zmiany w aplikacji opartych na programem Dapper, które są niezbędne w celu integracji z narzędziami elastycznej bazy danych. Naszym głównym celem jest tworzenie zarządzania fragmentami elastycznych baz danych i routingu zależnego od danych z programem Dapper. 
@@ -64,8 +64,8 @@ Uwagi te stają się proste do korzystania z połączeń obsługiwanych przez br
 Ten przykładowy kod (z towarzyszącym próbki) przedstawia podejście, w którym klucz fragmentowania jest udostępniany przez aplikację do biblioteki brokera połączeń do prawego fragmentu.   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                     key: tenantId1, 
-                     connectionString: connStrBldr.ConnectionString, 
+                     key: tenantId1,
+                     connectionString: connStrBldr.ConnectionString,
                      options: ConnectionOptions.Validate))
     {
         var blog = new Blog { Name = name };
@@ -87,13 +87,13 @@ Obiektu mapy fragmentów tworzy połączenie do przechowujący podfragmentu kluc
 Zapytania działają bardzo podobnie jak — Otwórz połączenie za pomocą [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z klienta interfejsu API. Następnie przy użyciu metody regularnego programem Dapper rozszerzenia mapowania wyniki zapytania SQL do obiektów platformy .NET:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId1, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId1,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate ))
-    {    
+    {
            // Display all Blogs for tenant 1
            IEnumerable<Blog> result = sqlconn.Query<Blog>(@"
-                                SELECT * 
+                                SELECT *
                                 FROM Blog
                                 ORDER BY Name");
 
@@ -112,8 +112,8 @@ Programem Dapper jest powiązana z ekosystemu dodatkowe rozszerzenia, które mo�
 W aplikacji przy użyciu DapperExtensions nie zmienia sposobu połączenia z bazą danych są tworzone i zarządzane. Nadal jest odpowiedzialność aplikacji, aby otworzyć aplet połączenia i regularnego obiekty połączenia klienta SQL są oczekiwane przez metody rozszerzenia. Firma Microsoft może polegać na [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) zgodnie z powyższymi informacjami. Co zostało przedstawione w następujących przykładach kodu, jedyna różnica polega, że nie trzeba pisać instrukcje języka T-SQL:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            var blog = new Blog { Name = name2 };
@@ -123,8 +123,8 @@ W aplikacji przy użyciu DapperExtensions nie zmienia sposobu połączenia z baz
 A Oto przykład kodu służącego do kwerendy: 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            // Display all Blogs for tenant 2
@@ -143,7 +143,7 @@ Przykładowy kod zależy od biblioteki błędów przejściowych, aby zapewnić o
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
-       using (SqlConnection sqlconn = 
+       using (SqlConnection sqlconn =
           shardingLayer.ShardMap.OpenConnectionForKey(tenantId2, connStrBldr.ConnectionString, ConnectionOptions.Validate))
           {
               var blog = new Blog { Name = name2 };

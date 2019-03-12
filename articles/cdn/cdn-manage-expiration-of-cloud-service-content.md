@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b070b302917d69e0145c1a10c90685b55aa4dcc2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253129"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540275"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Zarządzanie wygasaniem zawartości sieci web w usłudze Azure CDN
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ W poniższym przykładzie plik konfiguracji XML pokazuje, jak ustawić `<clientC
 </configuration>
 ```
 
-Aby użyć **cacheControlMaxAge** atrybutu, należy ustawić wartość **cacheControlMode** atrybutu `UseMaxAge`. To ustawienie spowodowane nagłówka HTTP i dyrektywy, `Cache-Control: max-age=<nnn>`, mają zostać dodane do odpowiedzi. Format wartość timespan odpowiadającą **cacheControlMaxAge** atrybut jest `<days>.<hours>:<min>:<sec>`. Jego wartość jest konwertowana na sekund i jest używana jako wartość `Cache-Control` `max-age` dyrektywy. Aby uzyskać więcej informacji na temat `<clientCache>` elementu, zobacz [pamięci podręcznej klienta <clientCache> ](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Aby użyć **cacheControlMaxAge** atrybutu, należy ustawić wartość **cacheControlMode** atrybutu `UseMaxAge`. To ustawienie spowodowane nagłówka HTTP i dyrektywy, `Cache-Control: max-age=<nnn>`, mają zostać dodane do odpowiedzi. Format wartość timespan odpowiadającą **cacheControlMaxAge** atrybut jest `<days>.<hours>:<min>:<sec>`. Jego wartość jest konwertowana na sekund i jest używana jako wartość `Cache-Control` `max-age` dyrektywy. Aby uzyskać więcej informacji na temat `<clientCache>` elementu, zobacz [pamięci podręcznej klienta <clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programowe Ustawianie nagłówki Cache-Control
 Dla aplikacji ASP.NET, możesz kontrolować zachowanie buforowania programowo przez ustawienie sieci CDN **HttpResponse.Cache** właściwości interfejsu API platformy .NET. Aby uzyskać informacje o **HttpResponse.Cache** właściwości, zobacz [właściwość HttpResponse.Cache](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) i [klasy HttpCachePolicy](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
@@ -128,10 +128,10 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>Testowanie nagłówek Cache-Control
-Możesz łatwo sprawdzić ustawienia wygaśnięcia zawartości sieci web. Przy użyciu przeglądarki [narzędzi deweloperskich](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, który obejmuje zawartość sieci web `Cache-Control` nagłówka odpowiedzi. Można również użyć narzędzia takie jak **wget**, [Postman](https://www.getpostman.com/), lub [Fiddler](http://www.telerik.com/fiddler) Aby sprawdzić nagłówki odpowiedzi.
+Możesz łatwo sprawdzić ustawienia wygaśnięcia zawartości sieci web. Przy użyciu przeglądarki [narzędzi deweloperskich](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, który obejmuje zawartość sieci web `Cache-Control` nagłówka odpowiedzi. Można również użyć narzędzia takie jak **wget**, [Postman](https://www.getpostman.com/), lub [Fiddler](https://www.telerik.com/fiddler) Aby sprawdzić nagłówki odpowiedzi.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Przeczytaj szczegółowe informacje na temat **clientCache** — element](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
+* [Przeczytaj szczegółowe informacje na temat **clientCache** — element](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [Przeczytaj dokumentację dotyczącą **HttpResponse.Cache** właściwości](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
 * [Przeczytaj dokumentację dotyczącą **HttpCachePolicy, klasa**](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
 * [Dowiedz się więcej na temat buforowania pojęcia](cdn-how-caching-works.md)

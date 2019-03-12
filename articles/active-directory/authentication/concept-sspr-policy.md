@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fed31d07f4bbe9fc47ce0d2c31f45fed288c4c4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5639984c6eef7d1c081fd52061988d3535c00fa
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218027"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576994"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -50,6 +50,8 @@ Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak *
   * Administrator usługi serwera proxy aplikacji
   * Administrator usługi CRM
   * Administrator usługi Power BI
+  * Administrator uwierzytelniania
+  * Administrator uprzywilejowanych uwierzytelniania
 
 * Po upływie 30 dni w ramach wersji próbnej subskrypcji; lub
 * Domena jest obecny, np. contoso.com; lub
@@ -75,13 +77,13 @@ Każdego konta użytkownika, który musi się zalogować do usługi Azure AD mus
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zasady haseł, które mają zastosowanie tylko do kont użytkowników w chmurze
 
-W poniższej tabeli opisano ustawienia zasad haseł dostępne, które mogą być stosowane do kont użytkowników, które są tworzone i zarządzane w usłudze Azure AD:
+W poniższej tabeli opisano ustawienia zasad haseł, które są stosowane do kont użytkowników, które są tworzone i zarządzane w usłudze Azure AD:
 
 | Właściwość | Wymagania |
 | --- | --- |
 | Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li>Miejsca do magazynowania.</li><li> Tylko silne hasła: Nie może zawierać znaku kropki "." Bezpośrednio przed "\@ \" symbol".</li></ul> |
-| Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 16 znaków.</li><li>Tylko silne hasła: Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
+| Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li>Miejsca do magazynowania.</li><li> Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symbol".</li></ul> |
+| Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 16 znaków.</li><li>Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
 | Okres wygasania haseł |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet usługi Azure Active Directory modułu dla Windows PowerShell.</li></ul> |
 | Powiadomienie o wygaśnięciu hasła |<ul><li>Wartość domyślna: **14** dni (po których wygasa hasło).</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet.</li></ul> |
 | Wygaśnięcia hasła |<ul><li>Wartość domyślna: **false** dni (wskazuje, że wygaśnięcie hasła jest włączona).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu `Set-MsolUser` polecenia cmdlet.</li></ul> |

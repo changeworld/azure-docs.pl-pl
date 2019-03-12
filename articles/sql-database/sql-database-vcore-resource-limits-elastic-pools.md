@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: a372a955578f3621c1b8a9226809671927c9bfd3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.openlocfilehash: a1e76aafa271ff021517c3d06c3c6e02103413d3
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342755"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571477"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity zasobów dla pul elastycznych za pomocą ograniczeń oparty na rdzeniach wirtualnych model zakupu
 
@@ -30,6 +30,8 @@ Oparte na jednostkach DTU limitów zakupu modelu zobacz [limity zasobów na pods
 
 Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwota [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
+> [!IMPORTANT]
+> Skalowanie, wskazówki i uwagi, zobacz [skalowanie elastycznej puli](sql-database-elastic-pool-scale.md)
 > [!NOTE]
 > Limity zasobów pojedynczych baz danych w pulach elastycznych są ogólnie takie same jak dla pojedynczych baz danych poza pule, które ma taką samą obliczenia rozmiaru. Na przykład maksymalna współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 pracowników. Dlatego maksymalny współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 jest również 200 pracowników. Uwaga: łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 to 210.
 

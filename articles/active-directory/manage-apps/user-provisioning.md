@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 198f32b5f3d7572807b6af3e41ccf8085d9cbc0b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186356"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576943"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -108,11 +108,11 @@ Na ekranie zarządzania aplikacji aprowizacji jest skonfigurowana w **aprowizacj
 
 ![Ustawienia](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Filtrami zakresu** poinformować usługę aprowizacji użytkowników i grup w systemie źródłowym powinny zostać aprowizowane i/lub anulowanie aprowizacji do systemu docelowego. Istnieją dwa aspekty filtrami, które są oceniane razem zakresu określające, który znajduje się w zakresie do inicjowania obsługi:
+* **Filtry zakresu** informują usługę aprowizacji, którzy użytkownicy i które grupy z systemu źródłowego wymagają aprowizacji lub anulowania aprowizacji w systemie docelowym. Filtry zakresu mają dwa aspekty, które są oceniane łącznie w celu określenia, kto należy do zakresu aprowizacji:
 
-    * **Filtrować dane według wartości atrybutów** — menu "Zakres obiektów źródłowych" w mapowania atrybutów umożliwia filtrowanie według wartości określonych atrybutów. Na przykład można określić, że tylko użytkownicy z atrybutem "Dział" w "Sprzedaż" musi należeć do zakresu do inicjowania obsługi. Aby uzyskać więcej informacji, zobacz [przy użyciu filtrów określania zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
+    * **Filtrowanie według wartości atrybutów** — menu „Zakres obiektów źródłowych” w konfiguracji mapowań atrybutów umożliwia filtrowanie według wartości określonych atrybutów. Można na przykład określić, że w zakres aprowizacji mają wchodzić tylko użytkownicy, u których atrybut „Dział” ma wartość „Sprzedaż”. Aby uzyskać więcej informacji, zobacz [Używanie filtrów zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 
-    * **Filtr przypisania** — menu aprowizacji na "Scope" > sekcji ustawień portalu pozwala określić, czy tylko "przypisanych" użytkowników i grup powinny być w zakresie udostępniania, lub jeśli wszyscy użytkownicy w katalogu usługi Azure AD powinien Zainicjowano obsługę administracyjną. Aby uzyskać informacji na temat "przypisywanie" użytkowników i grup, zobacz [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](assign-user-or-group-access-portal.md).
+    * **Filtr przypisania** — menu aprowizacji na "Scope" > sekcji ustawień portalu pozwala określić, czy tylko "przypisanych" użytkowników i grup powinny być w zakresie udostępniania, lub jeśli wszyscy użytkownicy w katalogu usługi Azure AD powinien Zainicjowano obsługę administracyjną. Aby uzyskać informacje na temat „przypisywania” użytkowników i grup, zobacz [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](assign-user-or-group-access-portal.md).
     
 * **Ustawienia** sterowania działaniem usługi aprowizacji dla aplikacji, w tym, czy jest ono aktualnie uruchomione, czy nie.
 
@@ -260,7 +260,7 @@ Tak. Gdy skonfigurowany do "Synchronizuj tylko przypisanych użytkowników i gru
 
 Jednak użycie grup dynamicznych może mieć wpływ na ogólną wydajność end-to-end Inicjowanie obsługi użytkowników z usługi Azure AD z aplikacjami SaaS. Podczas korzystania z grup dynamicznych, należy pamiętać te zastrzeżenia i zalecenia:
 
-* Jak zainicjowano obsługę administracyjną lub anulowanie aprowizacji w aplikacji SaaS fast użytkownika w grupie dynamicznej są zależy od tego, jak szybko ocenić zmiany członkostwa grupy dynamicznej. Aby uzyskać informacje na temat sprawdzić stan przetwarzania grupy dynamicznej, zobacz [sprawdzić stan przetwarzania reguły członkostwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
+* Jak zainicjowano obsługę administracyjną lub anulowanie aprowizacji w aplikacji SaaS fast użytkownika w grupie dynamicznej są zależy od tego, jak szybko ocenić zmiany członkostwa grupy dynamicznej. Aby uzyskać informacje na temat sprawdzić stan przetwarzania grupy dynamicznej, zobacz [sprawdzić stan przetwarzania reguły członkostwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
 
 * Podczas korzystania z grup dynamicznych, zasad musi być starannie przemyślane użytkownikowi aprowizację i cofanie aprowizacji, pamiętając, ponieważ spowoduje utratę członkostwa anulowania obsługi zdarzeń.
 

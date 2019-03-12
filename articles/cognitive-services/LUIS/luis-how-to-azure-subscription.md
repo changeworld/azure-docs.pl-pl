@@ -9,43 +9,29 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7c9f3c72d94955286d05cf68dbe698a46df3cdf3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867035"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781701"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
 
-Jest konieczne tworzenie kluczy subskrypcji do użycia zapytania bezpłatne pierwszego 1000 punkt końcowy. Gdy używane są te zapytania punktu końcowego, tworzenie zasobu platformy Azure w [witryny Azure portal](http://portal.azure.com), następnie przypisz tego zasobu z aplikacją usługi LUIS w [portal usługi LUIS](https://www.luis.ai).
+Jest konieczne tworzenie kluczy subskrypcji do użycia zapytania bezpłatne pierwszego 1000 punkt końcowy. Gdy używane są te zapytania punktu końcowego, tworzenie zasobu platformy Azure w [witryny Azure portal](https://portal.azure.com), następnie przypisz tego zasobu z aplikacją usługi LUIS w [portal usługi LUIS](https://www.luis.ai).
 
 Jeśli zostanie wyświetlony _poza limit przydziału_ błąd w formie HTTP 403 i 429, należy utworzyć klucz i przypisać ją do swojej aplikacji. 
 
 Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku systemów produkcyjnych, użyj [płatnych](https://aka.ms/luis-price-tier) warstwy. Nie używaj [tworzenia klucza](luis-concept-keys.md#authoring-key) dla punktu końcowego kwerend w środowisku produkcyjnym.
 
 <a name="create-luis-service"></a>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>Tworzenie klucza punktu końcowego interpretacji języka w witrynie Azure portal
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Tworzenie zasobu środowiska uruchomieniowego endpoint prognoz w witrynie Azure portal
 
-Ta procedura powoduje utworzenie **Language Understanding** zasobów. Jeśli chcesz, aby zasób, który można stosować w przypadku usług Cognitive Services, Utwórz klucz w jednym **[usługi cognitive Services](../cognitive-services-apis-create-account.md)** zamiast zasobów Language Understanding. 
-
-Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie należy używać tego klucza dla zmian do modelu lub aplikacji. 
-
-1. Zaloguj się do  **[witryny Azure portal](https://ms.portal.azure.com/)**. 
-1. Zaznacz zielony **+** Zaloguj się w prawym górnym panelu po lewej stronie i wyszukaj `Language Understanding` w witrynie marketplace, a następnie zaznacz na **Language Understanding** i postępuj zgodnie z  **Utwórz środowisko** utworzyć konto subskrypcji usługi LUIS. 
-
-    ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
-
-1. Konfigurowanie subskrypcji przy użyciu ustawień, łącznie z nazwą konta ceny warstw itp. 
-
-    ![Usługa Azure wybranego interfejsu API](./media/luis-azure-subscription/azure-api-choice.png) 
-
-1. Po utworzeniu zasobu interpretacji języka, możesz wyświetlić klucze dostępu wygenerowanych w **zarządzania zasobami -> klucze**. Następnej sekcji opisano, jak połączyć tego nowego zasobu z aplikacją usługi LUIS w portalu usługi LUIS. Potrzebna jest nazwa zasobu usługi LUIS z kroku 3.
-
-    ![Klucze Azure](./media/luis-azure-subscription/azure-keys.png)
+Dowiedz się więcej o [tworzenia aplikacji](get-started-portal-build-app.md) Szybki Start.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -63,23 +49,7 @@ Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie należy używać
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Przypisz klucz zasobu do aplikacji usługi LUIS w portalu usługi LUIS
 
-1. Zaloguj się do portalu usługi LUIS, wybierz aplikację, aby dodać nowy klucz do, a następnie wybierz pozycję **Zarządzaj** w menu w prawym górnym rogu, a następnie zaznacz **kluczy i punktów końcowych**.
-
-    [![Strona klucze i punktów końcowych](./media/luis-manage-keys/keys-and-endpoints.png)](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
-
-1. Aby dodać usługi LUIS, wybrać **przydzielania zasobów +**.
-
-    ![Przydziel zasób do aplikacji](./media/luis-manage-keys/assign-key.png)
-
-1. Wybierz dzierżawę w oknie dialogowym skojarzonych z wiadomością e-mail adres usługi, które są używane do logowania do witryny sieci Web usługi LUIS.  
-
-1. Wybierz **Nazwa subskrypcji** skojarzone z zasobów platformy Azure, które chcesz dodać.
-
-1. Wybierz **Nazwa zasobu usługi LUIS**. 
-
-1. Wybierz **przypisany zasób**. 
-
-1. Znajdź nowy wiersz w tabeli i skopiuj adres URL punktu końcowego. Jest poprawnie zbudowane się żądanie HTTP GET do punktu końcowego usługi LUIS do przewidywania. 
+Dowiedz się więcej o [wdrożenia](get-started-portal-deploy-app.md) Szybki Start.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>

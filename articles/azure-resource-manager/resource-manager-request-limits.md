@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0a4be349bfd8ce546ee2a27c206a7bd86306c27a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493569"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550647"
 ---
 # <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań usługi Resource Manager
 
@@ -28,14 +28,14 @@ Dla każdej subskrypcji platformy Azure i dzierżawy usługi Resource Manager po
 
 Te limity mają zastosowanie do każdego wystąpienia usługi Azure Resource Manager. Istnieje wiele wystąpień w każdym regionie platformy Azure i usługi Azure Resource Manager jest wdrażana we wszystkich regionach platformy Azure.  Zatem w praktyce skutecznie znacznie wyższa niż te limity są limity, jako użytkownik żądania są zazwyczaj obsługiwane przez wiele różnych wystąpień.
 
-Jeśli aplikacji lub skryptu osiągnie te limity, należy ograniczania żądań. W tym artykule przedstawiono sposób określenia pozostałych żądań, które mają przed przekroczeniem limitu oraz reagowanie po osiągnięciu limitu.
+Jeśli aplikacji lub skryptu osiągnie te limity, należy ograniczania żądań. W tym artykule przedstawiono sposób określenia pozostałych żądań, które mają przed przekroczeniem limitu oraz reagować, gdy został osiągnięty limit.
 
 W przypadku osiągnięcia limitu otrzymasz kod stanu HTTP **429 zbyt wiele żądań**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="remaining-requests"></a>Pozostałych żądań
-Liczba pozostałych żądań, które można określić, sprawdzając nagłówki odpowiedzi. Każde żądanie zawiera wartości liczbę żądań zapisu i odczytu pozostałych. W poniższej tabeli opisano nagłówki odpowiedzi, które można sprawdzić w przypadku tych wartości:
+Liczba pozostałych żądań, które można określić, sprawdzając nagłówki odpowiedzi. Żądania odczytu zwracają wartość w nagłówku liczbę pozostałych żądań odczytu. Zapisu żądania zawierać wartość dla liczby pozostałych żądań zapisu. W poniższej tabeli opisano nagłówki odpowiedzi, które można sprawdzić w przypadku tych wartości:
 
 | Nagłówek odpowiedzi | Opis |
 | --- | --- |
@@ -82,7 +82,7 @@ OK
 
 Headers:
 Pragma                        : no-cache
-x-ms-ratelimit-remaining-subscription-reads: 14999
+x-ms-ratelimit-remaining-subscription-reads: 11999
 ```
 
 Aby uzyskać limity zapisu, użyj operacji zapisu: 
@@ -121,7 +121,7 @@ msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
 msrest.http_logger :     'Content-Encoding': 'gzip'
 msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'Vary': 'Accept-Encoding'
-msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '14998'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '11998'
 ```
 
 Aby uzyskać limity zapisu, użyj operacji zapisu: 

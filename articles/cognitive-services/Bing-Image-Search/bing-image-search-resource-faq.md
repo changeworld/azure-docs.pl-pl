@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: dea09c60fddcec83662d2f5bafa529f115530c7e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341667"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539024"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Często zadawane pytania (FAQ) dotyczące interfejsu API wyszukiwania obrazów Bing
 
@@ -37,7 +37,7 @@ Jednak po wywołaniu interfejsu API wyszukiwania obrazów Bing poziomu języka J
 
 Aby uzyskać dostęp do nagłówków, może wykonać żądania interfejsu API wyszukiwania obrazów Bing za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-image-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wprowadź następujące polecenie w wierszu polecenia.
+To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-image-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Potem wprowadź poniższe polecenie w wierszu polecenia.
 
     npm install -g cors-proxy-server
 
@@ -65,4 +65,4 @@ To pytanie dotyczące brakujących funkcji lub funkcje? Należy wziąć pod uwag
 
 ## <a name="see-also"></a>Zobacz także
 
- [Stack Overflow: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

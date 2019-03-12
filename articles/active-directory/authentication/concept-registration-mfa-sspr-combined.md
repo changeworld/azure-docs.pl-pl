@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d28eb63ffb700dc0f20020ac4007c5485b0edb
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589048"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550194"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -33,6 +33,8 @@ Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane n
 
 > [!IMPORTANT]
 > Jeśli użytkownik jest włączony dla oryginalnej wersji zapoznawczej oraz na podstawie doświadczeń rozszerzone połączone rejestracji, zobaczy nowe środowisko. Użytkownicy, którzy są włączone dla obu środowiska będą widzieć tylko nowe środowisko Mój profil. Nowy profil Moje wyrównane wyglądu i działania połączone rejestracji i zapewnia bezproblemowe środowisko dla użytkowników. Użytkownicy widzą mój profil, przechodząc do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
+
+Strony Mój profil są zlokalizowane w oparciu o bieżące ustawienia języka na komputerze uzyskiwanie dostępu do strony. Firma Microsoft przechowuje najnowszych języka, wykorzystywane w pamięci podręcznej przeglądarki, więc kolejnych prób dostępu będzie w dalszym ciągu renderowane w ostatnim język używany. Wyczyszczenie pamięci podręcznej spowoduje, że strony w celu ponownego renderowania. Jeśli chcesz wymusić, dodając określonego języka `?lng=de-DE` na końcu adresu URL gdzie `de-DE` jest ustawiony na odpowiedni język kodu wymusi strony do renderowania, w tym języku.
 
 ![Interfejs Mój profil przedstawiający informacje o zabezpieczeniach i możliwości dla użytkownika, które można skonfigurować funkcji samoobsługowego resetowania HASEŁ lub innych metod weryfikacji zabezpieczeń.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 

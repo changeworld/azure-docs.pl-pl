@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 542fe0064de84e6266d2d0274809d7b2046b855c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c07f01acb95523171f0297f7e2fd531713f1facf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874413"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550160"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia maszyn wirtualnych i funkcji dla Windows
 
@@ -34,7 +34,7 @@ Ten artykuł zawiera przegląd rozszerzeń maszyn wirtualnych, wymagania wstępn
 Kilka różnych rozszerzenia maszyny Wirtualnej platformy Azure są dostępne, każdy z określonym przypadek użycia. Oto niektóre przykłady:
 
 - Dotyczy konfiguracji środowiska PowerShell żądanego stanu maszyny Wirtualnej za pomocą rozszerzenia DSC dla Windows. Aby uzyskać więcej informacji, zobacz [rozszerzenia konfiguracji żądanego stanu platformy Azure](dsc-overview.md).
-- Konfigurowanie, monitorowanie maszyny wirtualnej za pomocą rozszerzenia maszyny Wirtualnej agenta monitorowania Microsoft. Aby uzyskać więcej informacji, zobacz [łączenie maszyn wirtualnych platformy Azure do usługi Log Analytics](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Konfigurowanie, monitorowanie maszyny wirtualnej za pomocą rozszerzenia maszyny Wirtualnej agenta monitorowania Microsoft. Aby uzyskać więcej informacji, zobacz [łączenie maszyn wirtualnych platformy Azure do dzienników usługi Azure Monitor](../../log-analytics/log-analytics-azure-vm-extension.md).
 - Skonfiguruj Maszynę wirtualną platformy Azure przy użyciu programu Chef. Aby uzyskać więcej informacji, zobacz [wdrożenia Automatyzowanie maszyn wirtualnych platformy Azure przy użyciu programu Chef](../windows/chef-automation.md).
 - Konfigurowanie, monitorowanie infrastruktury platformy Azure z rozszerzeniem pomocą usługi Datadog. Aby uzyskać więcej informacji, zobacz [blogu pomocą usługi Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 

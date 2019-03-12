@@ -8,61 +8,61 @@ ms.topic: include
 ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 2e9e4fe06f4d3802f6c0b3ff13e6cf6cdc218050
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 42c1856f30484532e1ace2e84187bcaaacdf4c72
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211882"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553836"
 ---
-Data factory to usługa dla wielu dzierżawców, który ma następujące domyślne limity w miejscu, aby upewnić się, że subskrypcjami klientów są chronione przed jego obciążeń. Wiele limity można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu, kontaktując się z pomocą techniczną.
+Usługa Azure Data Factory to wielodostępna usługa, która ma następujące domyślne limity w miejscu, aby upewnić się, że subskrypcjami klientów są chronione przed jego obciążeń. Aby zwiększyć limity do maksimum dla Twojej subskrypcji, skontaktuj się z działem pomocy technicznej.
 
 ### <a name="version-2"></a>Wersja 2
 
 | Zasób | Limit domyślny | Limit maksymalny |
 | -------- | ------------- | ------------- |
-| Fabryki danych w subskrypcji platformy Azure | 50 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Całkowita liczba jednostek (potok, zestawy danych, wyzwalacze, połączonych usług, środowisk Integration Runtime) w ramach usługi data factory | 5000 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Łączna liczba rdzeni procesora CPU dla środowiska Azure-SSIS Integration Runtime(s) w ramach jednej subskrypcji | 256 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Potok równoczesny przebiegów na fabryki danych (współużytkowane przez wszystkie potoki w fabryce) | 10 000  | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Maksymalna liczba działań na potok (w tym wewnętrznego działania dla kontenerów) | 40 | 40 |
-| Maksymalna liczba połączonych środowiska Integration Runtime, które mogą być tworzone z jednym środowiskiem Integration Runtime | 20 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Maksymalna liczba parametrów dla potoku | 50 | 50 |
+| Fabryki danych w subskrypcji platformy Azure | 50 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Całkowita liczba jednostek, takich jak potoki, zestawy danych, wyzwalacze, połączonych usług i środowisk integration Runtime w fabryce danych | 5000 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Łączna liczba rdzeni procesora CPU dla środowiska Azure-SSIS Integration Runtime w ramach jednej subskrypcji | 256 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Potok równoczesny przebiegów na usługi data factory, która jest współużytkowana przez wszystkie potoki w fabryce | 10 000  | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Maksymalna działań na potok, który zawiera wewnętrzny działania dla kontenerów | 40 | 40 |
+| Maksymalna liczba środowisk połączonych integration Runtime, utworzony względem pojedynczej własnego środowiska integration runtime | 20 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Maksymalna parametry dla potoku | 50 | 50 |
 | Elementy ForEach | 100 000 | 100 000 |
 | Równoległość ForEach | 20 | 50 |
 | Liczba znaków w wyrażeniu | 8192 | 8192 |
-| Minimalny interwał zarówno wyzwalacz okna wirowania | 15 min | 15 min |
-| Maksymalny limit czasu uruchomienia działania potoku | 7 dni | 7 dni |
-| Liczba bajtów na obiekt w potoku <sup>1</sup> | 200 KB | 200 KB |
-| Liczba bajtów na obiekt dla zestawu danych i obiekty usługi połączonej <sup>1</sup> | 100 KB | 2000 KB |
-| Jednostki integracji danych według uruchomienia działania kopiowania <sup>3</sup> | 256 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Interwał wyzwalacza okna wirowania minimalne | 15 min | 15 min |
+| Uruchamia maksymalnego limitu czasu dla działania potoku | 7 dni | 7 dni |
+| Liczba bajtów na obiekt w potoku<sup>1</sup> | 200 KB | 200 KB |
+| Liczba bajtów na obiekt dla zestawu danych i obiekty usługi połączonej<sup>1</sup> | 100 KB | 2000 KB |
+| Jednostki integracji danych według uruchomienia działania kopiowania<sup>3</sup> | 256 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Zapis wywołań interfejsu API | 2500/godz.<br/><br/> Ten limit są nakładane przez usługi Azure Resource Manager, nie usługi Azure Data Factory. | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Odczyt interfejsu API | 12 500/godz.<br/><br/> Ten limit są nakładane przez usługi Azure Resource Manager, nie usługi Azure Data Factory. | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Monitorowanie zapytania na minutę: | 1000 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Jednostki operacji CRUD na minutę | 50 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Odczyt interfejsu API | 12 500/godz.<br/><br/> Ten limit są nakładane przez usługi Azure Resource Manager, nie usługi Azure Data Factory. | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Monitorowanie zapytania na minutę: | 1000 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Jednostki operacji CRUD na minutę | 50 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 
 
 ### <a name="version-1"></a>Wersja 1
 
-| **Zasób** | **Limit domyślny** | **Limit maksymalny** |
+| **Zasób** | **Limit domyślny** | **Maksymalny limit** |
 | --- | --- | --- |
-| Fabryki danych w subskrypcji platformy Azure |50 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Potoki w fabryce danych |2500 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Zestawy danych w ramach usługi data factory |5000 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Fabryki danych w subskrypcji platformy Azure |50 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Potoki w fabryce danych |2,500 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Zestawy danych w ramach usługi data factory |5000 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Współbieżne wycinki dla zestawu danych |10 |10 |
-| Liczba bajtów na obiekt w potoku <sup>1</sup> |200 KB |200 KB |
-| Liczba bajtów na obiekt dla zestawu danych i obiekty usługi połączonej <sup>1</sup> |100 KB |2000 KB |
-| W ramach subskrypcji, liczba rdzeni na żądanie klaster HDInsight <sup>2</sup> |60 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Jednostek przenoszenia danych na uruchomienia działania kopiowania w chmurze <sup>3</sup> |32 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Liczba bajtów na obiekt w potoku<sup>1</sup> |200 KB |200 KB |
+| Liczba bajtów na obiekt danych zestawu i połączone obiekty usługi<sup>1</sup> |100 KB |2000 KB |
+| Azure HDInsight na żądanie klaster rdzeni w ramach subskrypcji<sup>2</sup> |60 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Jednostek przenoszenia danych na uruchomienia działania kopiowania w chmurze<sup>3</sup> |32 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Liczba uruchomień działania potoku ponownych prób |1000 |MaxInt (32-bitowa) |
 
-<sup>1</sup> potok, zestaw danych i połączonej usługi obiektów reprezentują powodują ustawienie logicznego grupowania obciążenia. Limity dla tych obiektów nie odnoszą się do ilości danych, możesz przenosić i przetwarzać za pomocą usługi Azure Data Factory. Fabryka danych została zaprojektowana do skalowania, umożliwiając obsługę petabajtów danych.
+<sup>1</sup>potok, zestaw danych i połączonej usługi obiektów reprezentują powodują ustawienie logicznego grupowania obciążenia. Limity dla tych obiektów nie odnoszą się do ilości danych można przenosić i przetwarzać za pomocą usługi Azure Data Factory. Fabryka danych została zaprojektowana do skalowania, umożliwiając obsługę petabajtów danych.
 
-<sup>2</sup> rdzeni HDInsight na żądanie są przydzielane poza subskrypcją, który zawiera usługi data factory. W wyniku powyżej limitu jest Data Factory wymuszone limit podstawowych rdzeni HDInsight na żądanie i różni się od limit liczby rdzeni, skojarzone z subskrypcją platformy Azure.
+<sup>2</sup>rdzeni HDInsight na żądanie są przydzielane poza subskrypcją, który zawiera usługi data factory. W wyniku poprzedniego limit wynosi limit liczby rdzeni wymuszane fabryki danych, liczby rdzeni HDInsight na żądanie. Jest inny niż limit liczby rdzeni, która jest skojarzona z subskrypcją platformy Azure.
 
-<sup>3</sup> jednostki integracji danych (DIU) w wersji 2 lub chmurze danych przemieszczania jednostki (DMU) dla v1 jest używana w operacji kopiowania w chmurze do chmury. To miary, która reprezentuje możliwości (kombinację procesora CPU, pamięci i alokacji zasobów sieciowych) w pojedynczą jednostkę w usłudze Data Factory. Można osiągnąć większą przepływność kopiowania przy użyciu więcej DMUs w niektórych scenariuszach. Zapoznaj się [jednostek integracji danych (wersja 2)](../articles/data-factory/copy-activity-performance.md#data-integration-units) i [jednostek przenoszenia danych (wersja 1) w chmurze](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) sekcji Szczegóły, i [stronę z cennikiem usługi Azure Data Factory](https://azure.microsoft.com/pricing/details/data-factory/) dla domniemanie rozliczeniami.
+<sup>3</sup>jednostka integracji danych (DIU) w wersji 2 lub chmurze jednostek przenoszenia danych (DMU) w wersji 1 jest używana w operacji kopiowania w chmurze do chmury. Jest miarą, który reprezentuje pojedynczą jednostkę w usłudze Data Factory. Łączy ona procesora CPU, pamięci i alokacji zasobów sieciowych. Można osiągnąć większą przepływność kopiowania przy użyciu więcej DMUs w niektórych scenariuszach. Aby uzyskać więcej informacji, zobacz [jednostek integracji danych (wersja 2)](../articles/data-factory/copy-activity-performance.md#data-integration-units) i [jednostek przenoszenia danych (wersja 1) w chmurze](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units). Aby uzyskać informacje dotyczące rozliczeń, zobacz [cennika usługi Azure Data Factory](https://azure.microsoft.com/pricing/details/data-factory/).
 
-<sup>4</sup> Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych: przenoszenie danych, wysyłanie działania do obliczeń usługi, wykonywanie pakietów usług SSIS. Aby uzyskać więcej informacji, zobacz [Omówienie środowiska Integration Runtime](../articles/data-factory/concepts-integration-runtime.md).
+<sup>4</sup>środowiska integration runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia możliwości integracji danych w różnych środowiskach sieciowych, takich jak przenoszenia danych, wysyłanie działania do obliczeń usługi, i wykonywanie pakietów usług SSIS. Aby uzyskać więcej informacji, zobacz [Omówienie środowiska Integration runtime](../articles/data-factory/concepts-integration-runtime.md).
 
 | **Zasób** | **Niższy limit domyślny** | **Minimalny limit** |
 | --- | --- | --- |

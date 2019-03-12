@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c9c0fd8bf7dc893ce07a6e3ce9cb392fc652a560
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079872"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535856"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
 
-W uzupełnieniu do jego [domyślny schemat zdarzeń](event-schema.md), Azure Event Grid zapewnia natywną obsługę zdarzeń w [schematu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) jest [Otwórz specyfikacji](https://github.com/cloudevents/spec/blob/master/spec.md) opisu danych zdarzenia.
+W uzupełnieniu do jego [domyślny schemat zdarzeń](event-schema.md), Azure Event Grid zapewnia natywną obsługę zdarzeń w [schematu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](https://cloudevents.io/) jest [Otwórz specyfikacji](https://github.com/cloudevents/spec/blob/master/spec.md) opisu danych zdarzenia.
 
 CloudEvents ułatwia współdziałanie, zapewniając wspólny schemat zdarzeń do publikowania i korzystających z chmury na podstawie zdarzeń. Ten schemat umożliwia jednolitego narzędzi, sposób standardowy routing i obsługa zdarzeń i uniwersalnej sposoby deserializacji schematu zdarzeń zewnętrzne. Za pomocą wspólnego schematu można łatwiej zintegrować pracy między platformami.
 
@@ -60,16 +60,16 @@ Oto przykład zdarzenia usługi Azure Blob Storage w formacie CloudEvents:
 
 CloudEvents v0.1 ma następujące właściwości dostępne:
 
-| CloudEvents        | Typ     | Przykład wartości JSON             | Opis                                                        | Mapowanie siatki zdarzeń
+| CloudEvents        | Type     | Przykład wartości JSON             | Opis                                                        | Mapowanie siatki zdarzeń
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | Ciąg   | "com.example.someevent"          | Typ wystąpienia, które wystąpiły w                                   | eventType
-| eventTypeVersion   | Ciąg   | "1.0"                            | Wersja typu zdarzenia (opcjonalnie)                            | dataVersion
-| cloudEventsVersion | Ciąg   | "0.1"                            | Wersja specyfikacji CloudEvents, który używa zdarzenia        | *przekazany przez*
+| eventType          | String   | "com.example.someevent"          | Typ wystąpienia, które wystąpiły w                                   | eventType
+| eventTypeVersion   | String   | "1.0"                            | Wersja typu zdarzenia (opcjonalnie)                            | dataVersion
+| cloudEventsVersion | String   | "0.1"                            | Wersja specyfikacji CloudEvents, który używa zdarzenia        | *przekazany przez*
 | source             | URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
-| Identyfikator zdarzenia            | Ciąg   | "1234-1234-1234"                 | Identyfikator zdarzenia                                                    | id
+| Identyfikator zdarzenia            | String   | "1234-1234-1234"                 | Identyfikator zdarzenia                                                    | id
 | eventTime          | Znacznik czasu| "2018-04-05T17:31:00Z"           | Sygnatura czasowa gdy zdarzenie wystąpiło (opcjonalnie)                    | eventTime
 | schemaURL          | URI      | „https://myschema.com”           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
-| contentType        | Ciąg   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
+| contentType        | String   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
 | Rozszerzenia         | Mapa      | { "extA": "vA", "extB", "vB" }  | Wszelkie dodatkowe metadane (opcjonalnie)                                 | *nie jest używany*
 | dane               | Obiekt   | {"objA": "oceny luk w zabezpieczeniach", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | dane
 

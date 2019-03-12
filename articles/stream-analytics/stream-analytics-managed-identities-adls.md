@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b8d56befa49b74ba123ff250720ac581604bbd6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452330"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570117"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
 
@@ -93,62 +93,61 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
 
 1. Możesz utworzyć *Microsoft.StreamAnalytics/streamingjobs* zasobów za pomocą tożsamości zarządzanej, umieszczając następujące właściwości w sekcji zasobów w szablonie usługi Resource Manager:
 
-   ```json
-   "Identity": {
-   "Type": "SystemAssigned",
-   },
-   ```
+    ```json
+    "Identity": {
+      "Type": "SystemAssigned",
+    },
+    ```
 
    Ta właściwość zawiera informacje dla usługi Azure Resource Manager do tworzenia i zarządzania tożsamościami dla zadania usługi Azure Stream Analytics.
 
    **Przykładowe zadania**
 
-   ```json
-   { 
-   "Name": "AsaJobWithIdentity", 
-   "Type": "Microsoft.StreamAnalytics/streamingjobs", 
-   "Location": "West US",
-   "Identity": {
-     "Type": "SystemAssigned", 
-     }, 
-   "properties": {
-      "sku": {
-       "name": "standard"
-       },
-   "outputs": [
-         {
-           "name": "string",
-           "properties":{
-             "datasource": {        
-               "type": "Microsoft.DataLake/Accounts",
-               "properties": {
-                 "accountName": “myDataLakeAccountName",
-                 "filePathPrefix": “cluster1/logs/{date}/{time}",
-                 "dateFormat": "YYYY/MM/DD",
-                 "timeFormat": "HH",
-                 "authenticationMode": "Msi"
-                 }
-                 
-   }
+    ```json
+    {
+      "Name": "AsaJobWithIdentity",
+      "Type": "Microsoft.StreamAnalytics/streamingjobs",
+      "Location": "West US",
+      "Identity": {
+        "Type": "SystemAssigned",
+      },
+      "properties": {
+        "sku": {
+          "name": "standard"
+        },
+        "outputs": [
+          {
+            "name": "string",
+            "properties":{
+              "datasource": {
+                "type": "Microsoft.DataLake/Accounts",
+                "properties": {
+                  "accountName": "myDataLakeAccountName",
+                  "filePathPrefix": "cluster1/logs/{date}/{time}",
+                  "dateFormat": "YYYY/MM/DD",
+                  "timeFormat": "HH",
+                  "authenticationMode": "Msi"
+                }
+              }
    ```
   
    **Przykładowa odpowiedź zadania**
 
    ```json
-   { 
-   "Name": "mySAJob", 
-   "Type": "Microsoft.StreamAnalytics/streamingjobs", 
-   "Location": "West US",
-   "Identity": {
-   "Type": "SystemAssigned",
-    "principalId": "GUID", 
-    "tenantId": "GUID", 
-   }, 
-   "properties": {
-           "sku": {
-             "name": "standard"
-           },
-   }
+   {
+    "Name": "mySAJob",
+    "Type": "Microsoft.StreamAnalytics/streamingjobs",
+    "Location": "West US",
+    "Identity": {
+      "Type": "SystemAssigned",
+        "principalId": "GUID",
+        "tenantId": "GUID",
+      },
+      "properties": {
+        "sku": {
+          "name": "standard"
+        },
+      }
    ```
 
    Zanotuj identyfikator podmiotu zabezpieczeń z odpowiedzi zadania, aby udzielić dostępu do wymaganych zasobów usługi ADLS.

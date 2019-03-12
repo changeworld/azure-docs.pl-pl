@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822837"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763371"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Łączenie Eksploratora usługi storage do subskrypcji usługi Azure Stack lub na koncie magazynu
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak połączyć się do subskrypcji usługi Azure S
 > [!NOTE]  
 > Istnieje kilka dostępne narzędzia do przenoszenia danych do i z magazynu usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [transferu danych, narzędzia do magazynu usługi Azure Stack](azure-stack-storage-transfer.md).
 
-Jeśli nie zainstalowano jeszcze programu storage explorer [Pobierz bezpłatnie Eksplorator magazynu](http://www.storageexplorer.com/) i zainstaluj go.
+Jeśli nie zainstalowano jeszcze programu storage explorer [Pobierz bezpłatnie Eksplorator magazynu](https://www.storageexplorer.com/) i zainstaluj go.
 
 Po połączeniu z subskrypcją usługi Azure Stack lub na koncie magazynu, można użyć [usługi Azure storage explorer artykuły](../../vs-azure-tools-storage-manage-with-storage-explorer.md) do pracy z danymi usługi Azure Stack. 
 

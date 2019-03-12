@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
 ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 63961e978056a20e697872c0c1d892efaadcc627
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: 16b1ad580ce9d2a6c34da7c243ab6dd9ab810078
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612078"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763980"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Wprowadzenie do obiektów WebSocket połączeń hybrydowych usługi Relay na platformie .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -66,7 +66,7 @@ W programie Visual Studio napisz aplikację konsoli w języku C#, aby wysyłać 
 
 Gratulacje, aplikacja end-to-end do obsługi połączeń hybrydowych jest gotowa.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start utworzono aplikacje klienta i serwera w środowisku .NET służące do wysyłania i odbierania komunikatów za pomocą obiektów WebSocket. Funkcja połączeń hybrydowych usługi Azure Relay obsługuje również wysyłanie i odbieranie komunikatów przy użyciu protokołu HTTP. Aby dowiedzieć się, jak używać protokołu HTTP z funkcją połączeń hybrydowych usługi Azure Relay, zobacz [Przewodnik Szybki start dotyczący protokołu HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md).
 
 W tym przewodniku Szybki start za pomocą programu .NET Framework utworzono aplikacje klienta i serwera. Aby dowiedzieć się, jak pisać aplikacje klienta i serwera w środowisku Node.js, zapoznaj się z [przewodnikiem Szybki start dotyczącym obiektów WebSocket w środowisku Node.js](relay-hybrid-connections-node-get-started.md) lub [przewodnikiem Szybki start dotyczącym protokołu HTTP w środowisku Node.js](relay-hybrid-connections-http-requests-dotnet-get-started.md).

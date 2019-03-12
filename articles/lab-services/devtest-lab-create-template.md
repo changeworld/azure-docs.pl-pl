@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248065"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550109"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Tworzenie niestandardowego obrazu z pliku wirtualnego dysku twardego
 
@@ -60,9 +60,9 @@ W poniższych krokach objaśniono proces tworzenia obrazu niestandardowego z pli
 
 1. Jeśli obraz użyty do utworzenia niestandardowego obrazu nie jest licencjonowanego obrazu (opublikowane przez firmę Microsoft), można wprowadzić nazwę planu, oferty planu i wydawcy planu.
 
-   - **Nazwa planu:** wprowadź nazwę obrazu z witryny Marketplace (SKU), z którym zostanie utworzony niestandardowy obraz 
-   - **Plan oferty:** wprowadź produkt (oferty) obrazu portalu Marketplace, z którego jest utworzony niestandardowy obraz 
-   - **Planowanie wydawcy:** wprowadź wydawcę obrazu portalu Marketplace, z którego jest utworzony niestandardowy obraz
+   - **Nazwa planu:** Wprowadź nazwę obrazu z witryny Marketplace (SKU), z którym zostanie utworzony niestandardowy obraz 
+   - **Oferta planu:** Wprowadź produkt (oferty) obrazu portalu Marketplace, z którego jest utworzony niestandardowy obraz 
+   - **Zaplanuj wydawcy:** Wprowadź wydawcę obrazu portalu Marketplace, z którego jest utworzony niestandardowy obraz
 
    > [!NOTE]
    > Jeśli obraz używasz, aby utworzyć niestandardowy obraz jest **nie** licencjonowanego obrazu, a następnie te pola są puste, może być wypełnione, jeśli wybierzesz. Jeśli obraz **jest** licencjonowanego obrazu, a następnie pola są automatycznie wypełniane przy użyciu informacji o planie. Jeśli spróbujesz zmienić je w tym przypadku zostanie wyświetlony komunikat ostrzegawczy.
@@ -81,7 +81,7 @@ Po kilku minutach niestandardowego obrazu zostanie utworzony i jest przechowywan
 ## <a name="related-blog-posts"></a>Wpisy w blogu pokrewne
 
 - [Obrazy niestandardowe lub formuł?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopiowanie obrazów niestandardowych między usłudze Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Kopiowanie obrazów niestandardowych między usłudze Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

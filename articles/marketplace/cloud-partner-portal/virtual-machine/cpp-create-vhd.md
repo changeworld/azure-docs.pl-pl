@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd085804f532811e71d421e3f683c50c1c3416cb
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233188"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575485"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Utwórz wirtualny dysk twardy zgodnych z platformą Azure
 
@@ -48,7 +48,7 @@ Alternatywnie platforma Azure oferuje szeroką gamę zatwierdzone dystrybucje sy
 W programie Microsoft [witryny Azure portal](https://ms.portal.azure.com/), utworzyć obraz podstawowy wykonując następujące kroki.
 
 1. Zaloguj się do portalu przy użyciu konta Microsoft subskrypcji platformy Azure, czy chcesz opublikować ofertę maszyny Wirtualnej.
-2. Utwórz nową grupę zasobów i podaj swoje **nazwy grupy zasobów**, **subskrypcji**, i **lokalizację grupy zasobów**.  Aby uzyskać więcej wskazówek, zobacz [Zarządzanie grupami zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups).
+2. Utwórz nową grupę zasobów i podaj swoje **nazwy grupy zasobów**, **subskrypcji**, i **lokalizację grupy zasobów**.  Aby uzyskać więcej wskazówek, zobacz [Zarządzanie grupami zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 3. Kliknij pozycję **maszyn wirtualnych** na pasku menu po lewej stronie, aby wyświetlić stronę szczegółów maszyn wirtualnych. 
 4. W tej nowej strony kliknij **+ Dodaj** do wyświetlenia **obliczenia** bloku.  Jeśli nie ma typu maszyny Wirtualnej na ekranie początkowa, nazwa podstawowej maszyny Wirtualnej, można wyszukać na przykład:
 

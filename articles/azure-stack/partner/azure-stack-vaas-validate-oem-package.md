@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 02/19/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f5b884ddda292b1c523a5364d34753ccb3a5bbdf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c2b0343ff472fe380750152712ca88d9ebb404e2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194446"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782789"
 ---
 # <a name="validate-oem-packages"></a>Sprawdzanie poprawności pakietów producenta OEM
 
@@ -41,59 +41,98 @@ Korzystając z **sprawdzanie poprawności pakietu** przepływu pracy można zwer
 
 Tworzenie kontenerów w ramach konta magazynu obiektów blob pakietu. Ten kontener może służyć do wszystko, co działa Twoje pakietu sprawdzania poprawności.
 
-1. W [witryny Azure Portal](https://portal.azure.com), przejdź do konta magazynu utworzonego w [Konfigurowanie walidacji jako zasoby usługi](azure-stack-vaas-set-up-resources.md).
-2. W bloku po lewej stronie w obszarze **usługę Blob Service**, wybierz **kontenery**.
-3. Wybierz **+ kontener** w menu paska, a następnie podaj nazwę kontenera, np. `vaaspackages`.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do konta magazynu utworzonego w [Konfigurowanie walidacji jako zasoby usługi](azure-stack-vaas-set-up-resources.md).
+
+2. W bloku po lewej stronie w obszarze **usługę Blob Service**, wybierz opcję **kontenery**.
+
+3. Wybierz **+ kontener** z paska menu.
+    1. Podaj nazwę kontenera, na przykład `vaaspackages`.
+    1. Wybierz poziom dostępu odpowiednią dla nieuwierzytelnionych klientów, takie jak VaaS. Aby uzyskać więcej informacji na temat sposobu udostępnienia VaaS pakietów w każdym scenariuszu, zobacz [obsługi poziom dostępu do kontenera](#handling-container-access-level).
 
 ### <a name="upload-package-to-storage-account"></a>Przekaż pakiet do konta magazynu
 
-1. Przygotowanie pakietu, który chcesz zweryfikować. Jeśli pakiet zawiera wiele plików, Kompresuj do `.zip` pliku.
-2. W [witryny Azure Portal](https://portal.azure.com), wybierz kontener pakietu i przekaż pakiet, wybierając na **przekazywanie** na pasku menu.
-3. Wybierz pakiet `.zip` plik do przekazania. Zachowaj wartości domyślne dla **typu Blob** (czyli **blokowych obiektów Blob**) i **rozmiaru bloku**.
+1. Przygotowanie pakietu, który chcesz zweryfikować. Jest to `.zip` pliku, w których zawartość musi być zgodna ze strukturą opisaną w [Utwórz pakiet OEM](azure-stack-vaas-create-oem-package.md).
 
-> [!NOTE]
-> Upewnij się, że `.zip` zawartości są umieszczane w katalogu głównym `.zip` pliku. Powinna istnieć nie podfolderów w pakiecie.
+    > [!NOTE]
+    > Upewnij się, że `.zip` zawartości są umieszczane w katalogu głównym `.zip` pliku. Powinna istnieć nie podfolderów w pakiecie.
+
+1. W [witryny Azure portal](https://portal.azure.com), wybierz kontener pakietu i przekaż pakiet, wybierając na **przekazywanie** na pasku menu.
+
+1. Wybierz pakiet `.zip` plik do przekazania. Zachowaj wartości domyślne dla **Blob typu** (czyli **blokowych obiektów Blob**) i **rozmiaru bloku**.
 
 ### <a name="generate-package-blob-url-for-vaas"></a>Generowanie adresu URL obiektu blob pakietu dla VaaS
 
-Podczas tworzenia **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS, musisz podać adres URL obiektu blob usługi Azure Storage, zawierającego pakiet.
+Podczas tworzenia **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS, musisz podać adres URL obiektu blob usługi Azure Storage, zawierającego pakiet. Niektóre *interaktywne* testy, w tym **miesięczne Weryfikacja aktualizacji AzureStack** i **weryfikacji pakietu rozszerzenia OEM**, również wymagają adresu URL do pakietu obiektów blob.
 
-#### <a name="option-1-generating-a-blob-sas-url"></a>Opcja 1: Trwa generowanie adresu URL SAS obiektu blob
+#### <a name="handling-container-access-level"></a>Obsługa kontenerów poziom dostępu
 
-Użyj tej opcji, jeśli nie chcesz włączyć publiczny dostęp do odczytu do obiektów blob lub kontenera magazynu.
+Minimalny poziom dostępu wymaganych przez VaaS zależy od tego, czy tworzysz przepływ pracy weryfikacji pakietu lub planowania *interaktywne* testu.
 
-1. W [witryny Azure portal](https://portal.azure.com/), przejdź do swojego konta magazynu i przejdź do .zip zawierający pakiet
+W przypadku właściwości **prywatnej** i **Blob** poziomy dostępu musi tymczasowo udzielić dostępu do obiektów blob pakietu, zapewniając VaaS [sygnatury dostępu współdzielonego](https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1?) (SAS). **Kontenera** poziom dostępu, który nie wymaga do generowania adresów URL sygnatury dostępu Współdzielonego, ale pozwala na nieuwierzytelniony dostęp do kontenera i jego obiektów blob.
 
-2. Wybierz **Generowanie sygnatury dostępu Współdzielonego** z menu kontekstowego
+|Poziom dostępu | Wymaganie przepływu pracy | Wymaganie testu |
+|---|---------|---------|
+|Private | Generuj adres URL sygnatury dostępu Współdzielonego poszczególnych obiektów blob pakietu ([opcja 1](#option-1-generate-a-blob-sas-url)). | Generowanie adresu URL sygnatury dostępu Współdzielonego na poziomie konta i ręcznie dodać nazwy obiektu blob pakietu ([opcja 2](#option-2-construct-a-container-sas-url)). |
+|Obiekt blob | Podaj właściwość adres URL obiektu blob ([opcja 3](#option-3-grant-public-read-access)). | Generowanie adresu URL sygnatury dostępu Współdzielonego na poziomie konta i ręcznie dodać nazwy obiektu blob pakietu ([opcja 2](#option-2-construct-a-container-sas-url)). |
+|Kontener | Podaj właściwość adres URL obiektu blob ([opcja 3](#option-3-grant-public-read-access)). | Podaj właściwość adres URL obiektu blob ([opcja 3](#option-3-grant-public-read-access)).
 
-3. Wybierz **odczytu** z **uprawnień**
+Opcje przyznawania dostępu do pakietów są uporządkowane z co najmniej dostęp do największej dostępu.
 
-4. Ustaw **czas rozpoczęcia** do bieżącego czasu i **czas zakończenia** do co najmniej 48 godzin od **czas rozpoczęcia**. Jeśli inne testy zostaną uruchomione przy użyciu tego samego pakietu, należy rozważyć zwiększenie **czas zakończenia** długości testowania. Wszystkie testy zaplanowane za pośrednictwem VaaS po **czas zakończenia** zakończy się niepowodzeniem i nowych sygnatur dostępu Współdzielonego będzie należy do wygenerowania.
+#### <a name="option-1-generate-a-blob-sas-url"></a>Opcja 1: Generowanie adresu URL SAS obiektu blob
+
+Użyj tej opcji, jeśli ustawiono poziom dostępu do kontenera magazynu **prywatnej**, gdzie kontenera nie włączać publicznego dostępu do odczytu do kontenera lub jego obiektów blob.
+
+> [!NOTE]
+> Ta metoda nie będzie działać dla *interaktywne* testów. Zobacz [opcja 2: Skonstruować adres URL sygnatury dostępu Współdzielonego kontenera](#option-2-construct-a-container-sas-url).
+
+1. W [witryny Azure portal](https://portal.azure.com/), przejdź do swojego konta magazynu i przejdź do .zip zawierający pakiet.
+
+2. Wybierz **Generowanie sygnatury dostępu Współdzielonego** z menu kontekstowego.
+
+3. Wybierz **odczytu** z **uprawnienia**.
+
+4. Ustaw **czas rozpoczęcia** do bieżącego czasu i **czas zakończenia** do co najmniej 48 godzin od **czas rozpoczęcia**. Jeżeli zostanie tworzenia innych przepływów pracy za pomocą tego samego pakietu, należy rozważyć zwiększenie **czas zakończenia** długości testowania.
 
 5. Wybierz pozycję **Generuj token i adres URL sygnatury dostępu współdzielonego obiektu blob**.
 
 Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** po zapewnieniu pakietu obiektu blob adresy URL do portalu.
 
-#### <a name="option-2-grant-public-read-access"></a>Opcja 2: Dostęp publiczny
+#### <a name="option-2-construct-a-container-sas-url"></a>Opcja 2: Konstrukcja adresu URL sygnatury dostępu Współdzielonego kontenera
+
+Użyj tej opcji, jeśli ustawiono poziom dostępu do kontenera magazynu **prywatnej** i musisz podać adres URL obiektu blob pakietu do *interaktywne* testu. Ten adres URL można również na poziomie przepływu pracy.
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+
+1. Wybierz **Blob** z **opcji dozwolone usług**. Usuń zaznaczenie pozostałych opcji.
+
+1. Wybierz **kontenera** i **obiektu** z **dozwolone typy zasobów**.
+
+1. Wybierz **odczytu** i **listy** z **dozwolone uprawnienia**. Usuń zaznaczenie pozostałych opcji.
+
+1. Wybierz **czas rozpoczęcia** jako bieżący czas i **czas zakończenia** do co najmniej 14 dni od **czas rozpoczęcia**. Jeśli inne testy zostaną uruchomione przy użyciu tego samego pakietu, należy rozważyć zwiększenie **czas zakończenia** długości testowania. Wszystkie testy zaplanowane za pośrednictwem VaaS po **czas zakończenia** zakończy się niepowodzeniem i nowych sygnatur dostępu Współdzielonego będzie należy do wygenerowania.
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
+    Format powinien wyglądać w następujący sposób: `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
+
+1. Modyfikowanie wygenerowany adres URL sygnatury dostępu Współdzielonego do uwzględnienia kontenera pakietu `{containername}`i nazwę obiektu blob pakietu, `{mypackage.zip}`, wykonując następujące czynności:  `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
+
+    Użyj tej wartości, jeśli dostarczanie pakietu blob adresy URL do portalu.
+
+#### <a name="option-3-grant-public-read-access"></a>Opcja 3: Dostęp publiczny
+
+Użyj tej opcji, jeśli jest dopuszczalne, aby umożliwić klientom nieuwierzytelniony dostęp do poszczególnych obiektów blob lub w przypadku programu *interaktywne* testy kontenera.
 
 > [!CAUTION]
 > Ta opcja zostanie otwarty z obiektów blob do anonimowego dostępu tylko do odczytu.
 
-1. Udziel **publiczne odczytu dostępu tylko dla obiektów blob** do kontenera pakietu, postępując zgodnie z instrukcjami w sekcji [przyznawanie uprawnień użytkownikom anonimowym do kontenerów i obiektów blob](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
+1. Ustaw poziom dostępu do kontenera pakietu **Blob** lub **kontenera** zgodnie z instrukcjami w sekcji [przyznawanie uprawnień użytkownikom anonimowym do kontenerów i obiektów blob](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
 
-> [!NOTE]
-> Jeśli podajesz adres URL pakietu *interaktywne testu* (na przykład miesięczne AzureStack aktualizacji weryfikacji lub Weryfikacja pakietu rozszerzenia OEM), należy udzielić **pełny publiczny dostęp do odczytu** do Przejdź do testowania.
+    > [!NOTE]
+    > Jeśli podajesz adres URL pakietu *interaktywne* test, musi przyznawać **pełny publiczny dostęp do odczytu** do kontenera, aby kontynuować testowanie.
 
-2. W kontenerze pakietu wybierz obiekt blob pakietu, aby otworzyć okienko właściwości.
+1. W kontenerze pakietu wybierz obiekt blob pakietu, aby otworzyć okienko właściwości.
 
-3. Kopiuj **adresu URL**. Użyj tej wartości, jeśli dostarczanie pakietu blob adresy URL do portalu.
-
-## <a name="apply-monthly-update"></a>Zastosuj comiesięcznej aktualizacji
-
-[!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
-
-> [!NOTE]
-> Po zastosowaniu comiesięcznej aktualizacji zaleca się, że uruchomieniu AzureStack Test, aby sprawdzić, czy aktualizacja został pomyślnie zastosowany i są w dobrej kondycji. W przypadku niepowodzenia testu AzureStack zgłosić problem do firmy Microsoft. Nie Kontynuuj przebieg testu do czasu rozwiązania problemu. Informacje o sposobach uruchamiania polecenia testowanie na platformie Azure Stack można znaleźć w tym [artykułu](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
+1. Kopiuj **adresu URL**. Użyj tej wartości, jeśli dostarczanie pakietu blob adresy URL do portalu.
 
 ## <a name="create-a-package-validation-workflow"></a>Tworzenie przepływu pracy weryfikacji pakietu
 
@@ -136,17 +175,44 @@ Następujące testy są wymagane do weryfikacji pakietu OEM:
 
     > [!NOTE]
     > Planowanie testów sprawdzania poprawności w istniejącym wystąpieniu utworzy nowe wystąpienie zamiast w starym wystąpieniu w portalu. Dzienniki starej instalacji zostaną zachowane, ale nie są dostępne z poziomu portalu.  
-    Po pomyślnym zakończeniu testu **harmonogram** akcja zostanie wyłączona.
+    > Po pomyślnym zakończeniu testu **harmonogram** akcja zostanie wyłączona.
 
 2. Wybierz odpowiedniego agenta, uruchom test. Informacje o dodawaniu lokalne wykonanie agentów testowych, zobacz [wdrożenia lokalnego agenta](azure-stack-vaas-local-agent.md).
 
-3. Pełna Weryfikacja pakietu rozszerzenia OEM opcję **harmonogram** z menu kontekstowego, aby otworzyć wiersz do planowania wystąpieniem testu.
+3. Aby ukończyć weryfikacji pakietu rozszerzenia OEM, wybrać **harmonogram** z menu kontekstowego, aby otworzyć wiersz do planowania wystąpieniem testu.
 
 4. Przejrzyj parametry testu, a następnie wybierz pozycję **przesyłania** Aby zaplanować wykonywanie weryfikacji pakietu rozszerzenia OEM.
 
+    Weryfikacja pakietu rozszerzenia OEM jest podzielony na dwie ręczne wykonanie czynności: Aktualizacja usługi Azure Stack, a aktualizacja OEM.
+
+    1. **Wybierz** "Uruchom" w Interfejsie użytkownika do uruchomienia skryptu precheck. Jest to testów automatycznych, który trwa około 5 minut i nie wymaga żadnej czynności.
+
+    1. Po zakończeniu precheck skryptu, wykonaj krok wykonywany ręcznie: **zainstalować** najnowszej dostępnej usługi Azure Stack aktualizacji za pomocą portalu usługi Azure Stack.
+
+    1. **Uruchom** Test-AzureStack dla sygnatury. Jeśli wystąpią jakiekolwiek błędy, nie Kontynuuj badanie i skontaktuj się z pomocą [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
+
+        Aby uzyskać informacje na temat uruchamiania polecenia Test-AzureStack, zobacz [stanu systemu weryfikowanie usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
+
+    1. **Wybierz** "Dalej", aby wykonać postcheck skrypt. Jest zautomatyzowany test, który oznacza zakończenie procesu aktualizacji usługi Azure Stack.
+
+    1. **Wybierz** "Uruchom", można wykonać skryptu precheck aktualizacji OEM.
+
+    1. Po zakończeniu wstępne sprawdzenie wykonać czynność ręczna: **zainstalować** pakiet rozszerzenia OEM za pośrednictwem portalu.
+
+    1. **Uruchom** Test-AzureStack dla sygnatury.
+
+        > [!NOTE]
+        > Tak jak poprzednio, nie Kontynuuj badanie i skontaktuj się z pomocą [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Jeśli zakończy się niepowodzeniem. Ten krok jest krytyczna, ponieważ zostanie ono zapisane możesz ponownego wdrażania.
+
+    1. **Wybierz** "Dalej", aby wykonać postcheck skrypt. Oznacza koniec kroku aktualizacji OEM.
+
+    1. Na wszelkie pytania pozostałe na końcu testu i **wybierz** "Prześlij".
+
+    1. Oznacza koniec interaktywne testu.
+
 5. Przejrzyj wynik weryfikacji pakietu rozszerzenia OEM. Gdy test zakończyła się pomyślnie, należy zaplanować aparatu symulacji chmury w celu wykonania.
 
-Gdy wszystkie testy zostały pomyślnie ukończone, Wyślij nazwę rozwiązania VaaS i sprawdzanie poprawności pakietu do [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) na żądanie, podpisywanie pakietów.
+Aby przesłać żądanie podpisania pakietu, należy wysłać [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) nazwę rozwiązania i sprawdzanie poprawności pakietu nazwę skojarzone z tego działania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

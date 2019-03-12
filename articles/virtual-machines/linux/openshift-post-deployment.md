@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: b2a2e0ed48004a731ca15b3fb1d985bbee7e0c29
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b99490102dd4f2c08a11be066b2ddc5fd6b7ea7b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440663"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535839"
 ---
 # <a name="post-deployment-tasks"></a>Po wdrożeniu zadania
 
 Po wdrożeniu klastra usługi OpenShift, można skonfigurować dodatkowe elementy. W tym artykule omówiono:
 
 - Jak skonfigurować logowanie jednokrotne za pomocą usługi Azure Active Directory (Azure AD)
-- Jak skonfigurować usługi Log Analytics do monitorowania platformy OpenShift
+- Jak skonfigurować dzienniki usługi Azure Monitor do monitorowania platformy OpenShift
 - Jak skonfigurować rejestrowanie i metryki
 - Jak zainstalować usługi Open Service Broker for Azure (OSBA)
 
@@ -179,11 +179,11 @@ sudo systemctl restart origin-master
 
 W konsoli platformy OpenShift będą teraz widoczne dwie opcje dla uwierzytelniania: htpasswd_auth i [rejestracji aplikacji].
 
-## <a name="monitor-openshift-with-log-analytics"></a>OpenShift monitora z usługą Log Analytics
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>Monitorowanie platformy OpenShift przy użyciu dzienników usługi Azure Monitor
 
 Istnieją trzy sposoby, aby dodać agenta usługi Log Analytics do OpenShift.
 - Zainstaluj agenta usługi Log Analytics dla systemu Linux bezpośrednio w każdym węźle platformy OpenShift
-- Włączanie rozszerzenia Log Analytics VM Extension w każdym węźle platformy OpenShift
+- Włącz rozszerzenie maszyny Wirtualnej usługi Azure Monitor w każdym węźle platformy OpenShift
 - Zainstaluj agenta usługi Log Analytics jako zestaw demona platformy OpenShift
 
 Pełne instrukcje znajdują się w folderze: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift.

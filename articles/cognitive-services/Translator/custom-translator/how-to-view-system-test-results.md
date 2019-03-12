@@ -5,16 +5,16 @@ description: Po pomyślnym szkolenia, przejrzyj testy systemu, aby analizować w
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 912d62796074c6841d8fb99801bd6ce1f54c7fcf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d06b4a0a9823871ffc14d7cfa7148f6e335835d6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726588"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762674"
 ---
 # <a name="view-system-test-results"></a>Wyświetlanie wyników testu systemu
 
@@ -89,7 +89,7 @@ Aby zaktualizować ustawienia wdrażania:
 
     ![Wdrażanie modelu](media/how-to/how-to-update-undeploy-model.png)
 
-3.  Wybierz **aktualizacji**.
+3.  Wybierz pozycję **Update** (Aktualizuj).
 4.  Wybierz **wdrożono** lub **Undeployed** regiony, w którym ma być wdrożony lub cofnięto jego wdrożenie modelu, następnie kliknij **Zapisz**.
 
     ![Wdrażanie modelu](media/how-to/how-to-undeploy-model.png)

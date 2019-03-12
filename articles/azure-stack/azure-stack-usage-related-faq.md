@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 00fb888f201f4bb8d211050b288516021d837dc5
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9f835382cbfe56c1601267ae994a94b56c0c3692
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888775"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727046"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Często zadawane pytania dotyczące usługi Azure Stack użycia interfejsu API
 
@@ -197,15 +197,15 @@ Użycie jest zgłaszany w przypadku następujących dostawców zasobów:
 **Jednostka**: GB\*miesiąca      
 **Informacje o**: Rzeczywisty rozmiar na dysku premium dysku zarządzanego 
 
-**Identyfikator licznika**: 75d4b707-1027-4403-9986-6ec7c05579c8  
+**Identyfikator licznika**: 108fa95b-be0d-4cd9-96e8-5b0d59505df1  
 **Nazwa miernika**: ActualStandardSnapshotSize   
 **Jednostka**: GB\*miesiąca   
 **Informacje o**: Rzeczywisty rozmiar na dysku zarządzanego standardową migawkę.  
 
-**Identyfikator licznika**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**Identyfikator licznika**: 578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
 **Nazwa miernika**: ActualPremiumSnapshotSize   
 **Jednostka**: GB\*miesiąca   
-**Informacje o**: Rzeczywisty rozmiar na dysku zarządzanego w warstwie premium.   
+**Informacje o**: Rzeczywisty rozmiar na dysku zarządzanego w warstwie premium migawki.   
 
 **Identyfikator licznika**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Nazwa miernika**: S4   
@@ -285,7 +285,11 @@ Użycie jest zgłaszany w przypadku następujących dostawców zasobów:
 **Identyfikator licznika**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Nazwa miernika**: ActualPremiumSnapshotSize   
 **Jednostka**: Bajt\*godzin   
-**Informacje o**: Rzeczywisty rozmiar na dysku zarządzanego w warstwie premium (przestarzałe) 
+**Informacje o**: Rzeczywisty rozmiar na dysku premium zarządzanych migawek (przestarzałe) 
+
+**Identyfikator licznika**: 75d4b707-1027-4403-9986-6ec7c05579c8 **Nazwa licznika**: ActualStandardSnapshotSize **jednostki**: GB\*miesiąca **uwagi**: Rzeczywisty rozmiar na dysku zarządzanego standardową migawkę (przestarzałe)  
+
+**Identyfikator licznika**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e **Nazwa licznika**: ActualPremiumSnapshotSize **Unit**: GB\*miesiąca **uwagi**: Rzeczywisty rozmiar na dysku premium zarządzanych migawek (przestarzałe)  
 
 ### <a name="sql-rp"></a>SQL RP
   

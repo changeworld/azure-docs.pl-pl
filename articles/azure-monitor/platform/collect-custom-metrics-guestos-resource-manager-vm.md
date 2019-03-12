@@ -4,16 +4,16 @@ description: Wyślij metryki systemu operacyjnego gościa, aby metryki usługi A
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 6e79aba5ae6d06c207b0070fd7741471db7d820c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316918"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782024"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Wyślij metryki systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywania, przy użyciu szablonu usługi Resource Manager dla maszyny wirtualnej Windows
 

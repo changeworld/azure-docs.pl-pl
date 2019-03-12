@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 08/30/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: fe1227d91c0d039a94e5b9a3046b879f4f17355a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4ca9ed2f2cb6f111e15093f0f3a90e2f37ab3521
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56247043"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554124"
 ---
 | Zasób | Podstawowa | Standardowa (Standard) | Premium |
 |---|---|---|---|---|
 | Storage<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maksymalny rozmiar warstwy obrazu | 20 GiB | 20 GiB | 50 giB |
+| Maksymalny rozmiar warstwy | 20 GiB | 20 GiB | 50 giB |
 | ReadOps minutę<sup>2, 3</sup> | 1000 | 3,000 | 10 000 |
 | WriteOps minutę<sup>2, 4</sup> | 100 | 500 | 2000 |
 | Pobierz przepustowości w MB/s<sup>2</sup> | 30 | 60 | 100 |
@@ -27,13 +27,13 @@ ms.locfileid: "56247043"
 | Replikacja geograficzna | ND | ND | [Obsługiwane][geo-replication] |
 | Zaufanie do zawartości (wersja zapoznawcza) | ND | ND | [Obsługiwane][content-trust] |
 
-<sup>1</sup> limity określonego magazynu są ilość *uwzględnione* magazynu dla każdej warstwy. Opłaty są naliczane dodatkowe stawka dzienna za GiB do przechowywania obrazu powyżej tych limitów. Szybkość informacji, zobacz [ceny Container Registry][pricing].
+<sup>1</sup>limity określonego magazynu są ilość *uwzględnione* magazynu dla każdej warstwy. Opłaty są naliczane dodatkowe stawka dzienna za GiB do przechowywania obrazu powyżej tych limitów. Szybkość informacji, zobacz [cennika usługi Azure Container Registry][pricing].
 
-<sup>2</sup> *ReadOps*, *WriteOps*, i *przepustowości* szacunkowe minimalnej. Rejestru Azure container Registry dokłada wszelkich starań zwiększyć wydajność, ponieważ wymaga użycia.
+<sup>2</sup>*ReadOps*, *WriteOps*, i *przepustowości* szacunkowe minimalnej. Usługa Azure Container Registry dokłada wszelkich starań zwiększyć wydajność, ponieważ wymaga użycia.
 
-<sup>3</sup> [polecenie docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) przekłada się na wiele operacji odczytu, w oparciu o liczbę warstw obrazu, a także pobierania manifestu.
+<sup>3</sup>A [polecenie docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) przekłada się na wiele operacji odczytu, w oparciu o liczbę warstw obrazu, a także pobierania manifestu.
 
-<sup>4</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) przekłada się na wiele operacji zapisu, na podstawie liczby warstw, które muszą zostać przeniesiony. A `docker push` obejmuje *ReadOps* można pobrać manifestu istniejącego obrazu.
+<sup>4</sup>A [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) przekłada się na wiele operacji zapisu, na podstawie liczby warstw, które muszą zostać przeniesiony. A `docker push` obejmuje *ReadOps* można pobrać manifestu istniejącego obrazu.
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

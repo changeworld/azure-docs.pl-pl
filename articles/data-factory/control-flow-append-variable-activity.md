@@ -3,21 +3,20 @@ title: Dołącz działania zmiennej w usłudze Azure Data Factory | Dokumentacja
 description: Dowiedz się, jak skonfigurować działanie Dołącz do zmiennej, aby dodać wartość do istniejącej zmiennej tablicy zdefiniowanych w potoku usługi fabryka danych
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: douglasl
-ms.openlocfilehash: e904075908fe7108c0566856b25fe03be0b7fd86
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023811"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575158"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Dołącz działania zmiennej w usłudze Azure Data Factory
 

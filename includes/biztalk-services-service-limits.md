@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
-ms.openlocfilehash: 7fa6930acf4d19b3939bb8a5b0306d216346c2b3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755986"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553900"
 ---
-| ZASÓB | BEZPŁATNA (WERSJA ZAPOZNAWCZA) | DEWELOPER | PODSTAWOWA | STANDARDOWA | PREMIUM |
+| Zasób | Bezpłatna (wersja zapoznawcza) | Developer | Podstawowa | Standardowa (Standard) | Premium |
 | --- | --- | --- | --- | --- | --- |
-| Skalowanie w poziomie |ND |ND |Tak, z przyrostem równym 1 jednostka Basic |Tak, z przyrostem równym 1 jednostka Standard |Tak, z przyrostem równym 1 jednostka Premium |
+| Skalowanie w poziomie |ND |ND |Tak, w przyrostach co 1 jednostkę podstawową |Tak, w przyrostach co 1 jednostkę standardową |Tak, w przyrostach co 1 jednostkę Premium |
 | Limit skalowania |ND |ND |Maksymalnie 8 jednostek |Maksymalnie 8 jednostek |Maksymalnie 8 jednostek |
-| Mostki integracji EAI na jednostkę |ND |25 |25 |125 |500 |
+| Mostki EAI na jednostkę |ND |25 |25 |125 |500 |
 | Umowy integracji EDI na jednostkę |ND |10 |50 |250 |1000 |
 | Połączenia hybrydowe na jednostkę |5 |5 |10 |50 |100 |
-| Transfer danych poprzez połączenie hybrydowe (GB) na jednostkę |5 |5 |50 |250 |500 |
-| Liczba połączeń z użyciem usługi BizTalk Adapter na jednostkę |ND |1 |2 |5 |25 |
+| Transfer danych połączenia hybrydowego (GB) na jednostkę |5 |5 |50 |250 |500 |
+| Liczba połączeń, korzystających z usługi BizTalk Adapter na jednostkę |ND |1 |2 |5 |25 |
 | Archiwizacja |ND |Dostępne |ND |ND |Dostępne |
 | Wysoka dostępność |ND |ND |Dostępne |Dostępne |Dostępne |
 

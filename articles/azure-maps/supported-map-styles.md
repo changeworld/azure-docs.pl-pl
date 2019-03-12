@@ -3,17 +3,17 @@ title: Obsługiwane style mapy w usługi Azure Maps | Dokumentacja firmy Microso
 description: Obsługiwane przez usługi Azure Maps style mapy
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 923b9fef75fa610ee817a86ce0b4d6b322153f01
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113435"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570542"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Usługi Azure Maps obsługiwane style mapy
 Usługi Azure Maps obsługuje kilka różnych mapy wbudowane style, zgodnie z poniższym opisem.
@@ -27,6 +27,7 @@ A **drogowej** mapa jest standardowa mapę, która wyświetla drogach naturalnyc
 * [Obraz mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Kontrolki mapy Javascript
+* Kontrolki mapy dla systemu android
 
 ## <a name="satellite"></a>Satelity 
 **Satelitarnej** stylu jest kombinacją satelitarne i zdjęcia lotnicze.
@@ -36,6 +37,7 @@ A **drogowej** mapa jest standardowa mapę, która wyświetla drogach naturalnyc
 **Odpowiednie interfejsy API:**
 * [Kafelek satelity](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Kontrolki mapy Javascript
+* Kontrolki mapy dla systemu android
 
 ## <a name="satelliteroadlabels"></a>satellite_road_labels
 Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdjęcia lotnicze etykiety.
@@ -44,6 +46,7 @@ Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdję
 
 **Odpowiednie interfejsy API:**
 * Kontrolki mapy Javascript
+* Kontrolki mapy dla systemu android
 
 ## <a name="grayscaledark"></a>grayscale_dark
 **Ciemny skali szarości** ciemny wersja style mapy drogowej.
@@ -52,6 +55,7 @@ Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdję
 
 **Odpowiednie interfejsy API:**
 * Kontrolki mapy Javascript 
+* Kontrolki mapy dla systemu android
 
 ## <a name="night"></a>nocne
 **nocne** ciemny wersja style mapy drogowej z kolorowym drogach i symbole.
@@ -60,6 +64,7 @@ Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdję
 
 **Odpowiednie interfejsy API:**
 * Kontrolki mapy Javascript
+* Kontrolki mapy dla systemu android
 
 ## <a name="roadshadedrelief"></a>road_shaded_relief
 **drogowa cieniowanie zwolnienia** jest styl głównego usługi Azure Maps zostało ukończone z konturów ziemi.
@@ -67,5 +72,6 @@ Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdję
 ![zacieniony zwolnienia](./media/supported-map-styles/shaded-relief.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolki mapy Javascript
 * [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Kontrolki mapy Javascript
+* Kontrolki mapy dla systemu android

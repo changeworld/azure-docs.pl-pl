@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 70a109b9aee46e6b6b65a9a5c139abdf1aa9bab9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330600"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763167"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Urządzenie z serii StorSimple 8000 w chmurze oferuje dodatkową funkcję dołączoną do rozwiązania Microsoft Azure StorSimple. Urządzenie StorSimple w chmurze działa na maszynie wirtualnej w sieci wirtualnej platformy Microsoft Azure i służy do tworzenia kopii zapasowych oraz klonowania danych z hostów.
 
@@ -274,6 +274,6 @@ Jeśli podczas tworzenia urządzenia w chmurze nie ma łączności z Internetem,
 5. Jeśli narzędzie `nslookup` ulegnie awarii, oznacza to, że błąd łączności z Internetem uniemożliwia zarejestrowanie urządzenia w chmurze w usłudze Menedżer urządzeń StorSimple.
 6. Wprowadź wymagane zmiany w sieci wirtualnej, aby zapewnić, że urządzenie w chmurze może uzyskać dostęp do witryn platformy Azure, na przykład _windows.net_.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Informacje na temat [używania usługi Menedżer urządzeń StorSimple do zarządzania urządzeniem w chmurze](storsimple-8000-manager-service-administration.md).
 * Zapoznanie się ze sposobem [przywracania woluminu StorSimple z zestawu kopii zapasowych](storsimple-8000-restore-from-backup-set-u2.md).

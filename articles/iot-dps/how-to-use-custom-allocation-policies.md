@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 4c02df5684036aef078b0f79c70d3b66d60e013b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 739780bedc701cc63747db6100242d0d6cad6085
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881519"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542679"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
 
@@ -90,7 +90,7 @@ W tej sekcji użyjesz usługi Azure Cloud Shell, aby utworzyć dwa nowe centra I
 
 W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandardowe alokacji. Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md) w przypadku rejestracji. Bardziej bezpieczne rozwiązanie, należy wziąć pod uwagę przy użyciu [zaświadczenia certyfikat X.509](concepts-security.md#x509-certificates) przy użyciu łańcucha zaufania.
 
-1. Zaloguj się do [witryny Azure portal](http://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
 
 2. Wybierz **Zarządzanie rejestracjami** kartę, a następnie kliknij przycisk **Dodaj grupę rejestracji** znajdujący się u góry strony. 
 

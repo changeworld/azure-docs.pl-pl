@@ -10,23 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9b64631b274423edda35189a942e2f142ae591f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432247"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761178"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorowanie i zarządzanie testami w portalu VaaS
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Po zaplanowaniu testy z rozwiązania do usługi Azure Stack, weryfikacji jako usługa (VaaS) rozpocznie raportowanie stanu wykonywania testu. Te informacje są dostępne w portalu VaaS wraz z akcji, takich jak korzystanie z odpraw i anulowaniu testów.
+Po zaplanowaniu testy z rozwiązania do usługi Azure Stack, weryfikacji jako usługa (VaaS) rozpocznie raportowanie stanu wykonywania testu. Te informacje są dostępne w portalu VaaS wraz z akcji, takich jak korzystanie z odpraw i anulowania testów.
 
 ## <a name="navigate-to-the-workflow-tests-summary-page"></a>Przejdź do strony Podsumowanie testów przepływu pracy
 
@@ -40,7 +40,7 @@ Po zaplanowaniu testy z rozwiązania do usługi Azure Stack, weryfikacji jako us
 
 ## <a name="change-workflow-parameters"></a>Zmień parametry przepływu pracy
 
-Każdy typ przepływu pracy pozwala edytować [parametry testu](azure-stack-vaas-parameters.md#test-parameters) określone podczas tworzenia przepływu pracy.
+Możesz edytować [parametry testu](azure-stack-vaas-parameters.md#test-parameters) określone podczas tworzenia przepływu pracy dla dowolnego typu przepływu pracy.
 
 1. Na stronie podsumowania testów, wybierz **Edytuj** przycisku.
 
@@ -60,9 +60,9 @@ W **przebiegu testu** przepływów pracy, zarówno **Dodaj testy** i **Edytuj** 
 
 ## <a name="managing-test-instances"></a>Zarządzanie wystąpieniami testu
 
-Dla uruchomień nieoficjalny (czyli **przebiegu testu** przepływu pracy), na stronie podsumowania testów zawiera testy, w zaplanowane przed rozwiązania usługi Azure Stack.
+Dla przebiegów nieoficjalny (czyli **przebiegu testu** przepływu pracy), testy strony Podsumowanie listy testów zaplanowanych względem rozwiązania usługi Azure Stack.
 
-Oficjalna uruchomień (czyli **weryfikacji** przepływów pracy), na stronie podsumowania testów Wyświetla listę testów, wymagane do zakończenia weryfikacji rozwiązania usługi Azure Stack. Testy weryfikacyjne są planowane na tej stronie.
+Oficjalna uruchomień (oznacza to, **weryfikacji** przepływów pracy), na stronie podsumowania testów Wyświetla listę testów, wymagane do zakończenia weryfikacji rozwiązania usługi Azure Stack. Testy weryfikacyjne są planowane na tej stronie.
 
 Każde wystąpienie zaplanowane testy zostaną wyświetlone następujące informacje:
 
@@ -81,7 +81,7 @@ Każde wystąpienie zaplanowane testy zostaną wyświetlone następujące inform
 
 ### <a name="actions"></a>Akcje
 
-Każde wystąpienie testu Wyświetla listę dostępnych akcji może zająć się po kliknięciu w jego menu kontekstowe **[...]**  w tabeli wystąpień testu.
+Każde wystąpienie testu Wyświetla listę dostępnych akcji, które można wykonać po wybraniu jego menu kontekstowe **[...]**  w tabeli wystąpień testu.
 
 #### <a name="view-information-about-the-test-definition"></a>Wyświetl informacje o definicji testu
 
@@ -142,7 +142,7 @@ W przepływie pracy przebiegu testu **korzystanie z odpraw** wystąpieniem testu
 
 Zaplanowane testy mogą zostać anulowane, jeśli jego stan to `Pending` lub `Running`.  
 
-1. Wybierz **anulować** z menu kontekstowego, aby otworzyć wiersz anulowania wystąpieniem testu.
+1. Wybierz **anulować** z menu kontekstowego, aby otworzyć wiersz anuluje wystąpieniem testu.
 
 1. Wybierz **przesyłania** anulować wystąpieniem testu.
 

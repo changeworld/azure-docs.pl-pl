@@ -10,12 +10,12 @@ ms.date: 04/20/2018
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: cea95756f115e9efd6dc184fc85a0485ab49d1b9
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 4383cc327d8058ca44acd892f41a7a256e3b1727
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634664"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570440"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonimy w usłudze Azure Search
 
@@ -52,7 +52,7 @@ Można utworzyć nowej mapy synonimów używanie żądania POST protokołu HTTP,
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
-    {  
+    {
        "name":"mysynonymmap",
        "format":"solr",
        "synonyms": "
@@ -65,7 +65,7 @@ Alternatywnie można użyć PUT i określ nazwę mapy synonimów w identyfikator
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
-    {  
+    {
        "format":"solr",
        "synonyms": "
           USA, United States, United States of America\n

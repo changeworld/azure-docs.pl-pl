@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: 7479f651a9fce5d65b1faf4113febb6e79c426b2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0eede0ae4623d68adf749dc528ac5cc1ce81e024
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439082"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730418"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -80,11 +80,9 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
 4. Po pobraniu raportu, należy użyć programu Excel, przejdź do folderu pobrane i Otwórz plik w programie Excel, aby go wyświetlić.
 
-### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Dane wydajności dla dysków i sieci kart sieciowych jest wyświetlany jako zera
+### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Dane wydajności dotyczące procesora CPU, pamięci i dysków są wyświetlane jako wartości zerowe
 
-Może to wystąpić, jeśli poziom ustawień statystyk na serwerze vCenter jest ustawiony do poniżej trzech. Na poziomie 3 lub nowszej vCenter przechowuje historię wydajności maszyn wirtualnych dla obliczeń, magazynu i sieci. Dla mniej niż poziom 3 vCenter nie przechowuje magazyn i dane sieci, ale tylko dane procesora CPU i pamięci. W tym scenariuszu wydajności pokazuje dane jako zero w usłudze Azure Migrate, a usługa Azure Migrate oferuje zalecenie dotyczące rozmiaru dysków i sieci na podstawie metadanych zebranych z maszyn lokalnych.
-
-Aby włączyć zbieranie danych wydajności dysku i sieci, należy zmienić ustawienia poziomu statystyk do trzech. Następnie należy poczekać co najmniej dzień, aby odnaleźć środowiska i ocenić jej.
+Usługa Azure Migrate profile ciągle środowisku lokalnym, aby zbierać dane dotyczące wydajności lokalnych maszyn wirtualnych. Odnajdywanie środowiska właśnie zostało uruchomione, musisz poczekać co najmniej jeden dzień do zbierania danych wydajności do wykonania. Jeśli ocena została utworzona bez oczekiwania na jeden dzień, metryki wydajności będzie wyświetlany jako zera. Po odczekaniu dnia, możesz utworzyć nowego rozwiązania do oceny lub zaktualizować oceny istniejących przy użyciu opcji "Oblicz ponownie" w raporcie oceny.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Lokalizacja geograficzna platformy Azure, czy określone podczas tworzenia projektu migracji, jak znaleźć się dokładnie region platformy Azure, czy przechowywania metadanych wykrytych?
 

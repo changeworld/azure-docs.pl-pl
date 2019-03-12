@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c7fdbfcc34cdb6e10177d50bea707f1fa5f223e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6714d8d2a086980fce37cd2912f8ff6360558d15
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534773"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542774"
 ---
 # <a name="rendering-applications"></a>Renderowanie aplikacji
 
@@ -58,7 +58,7 @@ Oprócz wbudowanych w programie Maya programy renderujące następujące program
 
 ### <a name="task-command-line"></a>Wiersz polecenia zadania
 
-`renderer.exe` Renderowania wiersza polecenia jest używany w wierszu polecenia zadania. Renderowanie wiersza polecenia jest udokumentowany w [Pomoc programu Maya](http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
+`renderer.exe` Renderowania wiersza polecenia jest używany w wierszu polecenia zadania. Renderowanie wiersza polecenia jest udokumentowany w [Pomoc programu Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
 
 W poniższym przykładzie zadanie podrzędne przygotowania zadania jest używana do kopiowania plików scen i zasoby do katalogu roboczego zadania przygotowania folder wyjściowy jest używany do przechowywania obrazu renderowania i ramki 10 jest renderowany.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666878"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534263"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Prognozowanie pogody przy użyciu danych czujników z Centrum IoT hub w usłudze Azure Machine Learning
 
@@ -79,17 +79,17 @@ Dowiesz się, jak używać usługi Azure Machine Learning na warunki pogodowe pr
 1. W witrynie [Azure Portal](https://portal.azure.com/) kliknij kolejno pozycje **Utwórz zasób** > **Internet rzeczy** > **Zadanie usługi Stream Analytics**.
 1. Wprowadź poniższe informacje dotyczące zadania.
 
-   **Nazwa zadania**: nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
+   **Nazwa zadania**: Nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
 
    **Grupa zasobów**: Użyj tej samej grupie zasobów, która korzysta z usługi IoT hub.
 
    **Lokalizacja**: Użyj tej samej lokalizacji co grupa zasobów.
 
-   **Przypnij do pulpitu nawigacyjnego**: zaznacz tę opcję, aby mieć łatwy dostęp do centrum IoT Hub z pulpitu nawigacyjnego.
+   **Przypnij do pulpitu nawigacyjnego**: Sprawdź tę opcję, aby łatwo uzyskiwać dostęp do usługi IoT hub z pulpitu nawigacyjnego.
 
    ![Tworzenie zadania usługi Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
@@ -97,53 +97,53 @@ Dowiesz się, jak używać usługi Azure Machine Learning na warunki pogodowe pr
 1. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
 1. W **dane wejściowe** okienku kliknij **Dodaj**, a następnie wprowadź następujące informacje:
 
-   **Alias wejściowy**: unikatowego aliasu dla danych wejściowych.
+   **Alias danych wejściowych**: Unikatowego aliasu dla danych wejściowych.
 
    **Źródło**: Wybierz **usługi IoT hub**.
 
-   **Grupy konsumentów**: wybierz utworzoną grupę odbiorców.
+   **Grupy użytkowników**: Wybierz utworzoną grupę odbiorców.
 
    ![Dodaj dane wejściowe do zadania usługi Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Dane wyjściowe**.
 1. W **dane wyjściowe** okienku kliknij **Dodaj**, a następnie wprowadź następujące informacje:
 
-   **Alias wyjściowy**: unikatowy alias danych wyjściowych.
+   **Alias danych wyjściowych**: Unikatowy alias danych wyjściowych.
 
    **Obiekt sink**: Wybierz **magazynu obiektów Blob**.
 
    **Konto magazynu**: Konto magazynu usługi blob Storage. Można utworzyć konto magazynu lub użyj istniejącej.
 
-   **Kontener**: kontener, w którym jest zapisany obiekt blob. Można utworzyć kontenera lub użyj istniejącej.
+   **kontener**: Kontener, w którym jest zapisany obiekt blob. Można utworzyć kontenera lub użyj istniejącej.
 
    **Format serializacji zdarzeń**: Wybierz **CSV**.
 
    ![Dodaj dane wyjściowe zadania usługi Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Dodawanie funkcji do wywoływania usługi sieci web, wdrożone zadania usługi Stream Analytics
 
 1. W obszarze **topologia zadań**, kliknij przycisk **funkcje** > **Dodaj**.
 1. Wprowadź następujące informacje:
 
-   **Alias funkcji**: wprowadź `machinelearning`.
+   **Alias funkcji**: Wprowadź polecenie `machinelearning`.
 
    **Typ funkcji**: Wybierz **uczenie Maszynowe systemu Azure**.
 
    **Opcja importu**: Wybierz **Importuj z innej subskrypcji**.
 
-   **Adres URL**: Wprowadź adres URL usługi sieci WEB zanotowanym w dół ze skoroszytu programu Excel.
+   **ADRES URL**: Wprowadź adres URL usługi sieci WEB zanotowanym w dół ze skoroszytu programu Excel.
 
-   **Klucz**: Podaj klucz dostępu, który można zauważyć, że w dół ze skoroszytu programu Excel.
+   **Klucz**: Wprowadź klucz dostępu, zanotowaną w dół ze skoroszytu programu Excel.
 
    ![Dodawanie funkcji do zadania usługi Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurowanie zapytania zadania usługi Stream Analytics
 
@@ -175,9 +175,9 @@ W zadaniu usługi Stream Analytics kliknij kolejno pozycje **Uruchom** > **Teraz
 
 Uruchom aplikację klienta, aby rozpocząć zbieranie i wysyłanie temperatury i wilgotności danych do usługi IoT hub. Dla każdego komunikatu usługi IoT hub odbierze zadanie usługi Stream Analytics wywołuje usługę sieci web prognozę pogody, aby wygenerować prawdopodobieństwo deszczu. Wynik są następnie zapisywane do magazynu obiektów blob platformy Azure. Eksplorator usługi Azure Storage jest narzędziem, które można użyć w celu wyświetlenia wyniku.
 
-1. [Pobieranie i instalowanie Eksploratora usługi Microsoft Azure Storage](http://storageexplorer.com/).
+1. [Pobieranie i instalowanie Eksploratora usługi Microsoft Azure Storage](https://storageexplorer.com/).
 1. Otwórz Eksplorator usługi Azure Storage.
-1. Zaloguj się do konta platformy Azure.
+1. Zaloguj się do swojego konta platformy Azure.
 1. Wybierz subskrypcję.
 1. Kliknij subskrypcję > **kont magazynu** > konta magazynu > **kontenery obiektów Blob** > kontenera.
 1. Otwórz plik CSV, aby wyświetlić wynik. Ostatnia kolumna rejestruje prawdopodobieństwo deszczu.

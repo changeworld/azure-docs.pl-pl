@@ -14,16 +14,16 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 194898f658c08a3a5a9d8c1d601ea53c817e7649
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 605669a740663040ab7a167bf266fe1940123afc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076819"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551878"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrowanie platformy Apache Spark z usługą Azure Event Hubs
 
-Usługa Azure Event Hubs bezproblemowo integrują się ze [platformy Apache Spark](https://spark.apache.org/) umożliwiające tworzenie przesyłania strumieniowego aplikacji rozproszonych. Integracja [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html), i [przesyłanie strumieniowe ze strukturą](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Łącznika usługi Event Hubs dla platformy Apache Spark jest dostępna w [GitHub](https://github.com/Azure/azure-event-hubs-spark). Ta biblioteka jest również dostępny do użytku w projektach narzędzia Maven z [Maven Central Repository](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
+Usługa Azure Event Hubs bezproblemowo integrują się ze [platformy Apache Spark](https://spark.apache.org/) umożliwiające tworzenie przesyłania strumieniowego aplikacji rozproszonych. Integracja [Spark Core](https://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html), i [przesyłanie strumieniowe ze strukturą](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Łącznika usługi Event Hubs dla platformy Apache Spark jest dostępna w [GitHub](https://github.com/Azure/azure-event-hubs-spark). Ta biblioteka jest również dostępny do użytku w projektach narzędzia Maven z [Maven Central Repository](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
 
 W tym artykule opisano, jak utworzyć aplikację w języku ciągłe [usługi Azure Databricks](https://azure.microsoft.com/services/databricks/). W tym artykule jest używana usługa Azure Databricks, klastry Spark jest również dostępna za [HDInsight](../hdinsight/spark/apache-spark-overview.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z wdrożenia Azure Stackk Kubernetes | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozwiązywać problemy z wdrożenia rozwiązania Kubernetes do usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -11,16 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: mabrigg
+ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752300"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729649"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
 
@@ -87,7 +86,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 Możesz zbierać dzienniki na maszynach wirtualnych, które obsługują klastra Kubernetes. Możesz również przejrzeć dziennik wdrażania. Konieczne może komunikować się z administratorem usługi Azure Stack, aby sprawdzić wersję programu Azure Stack, które są potrzebne do użycia i pobieranie dzienników z usługi Azure Stack, które są powiązane z danym wdrożeniem.
 
 1. Przegląd [stan wdrożenia](#review-deployment-status) i [Pobierz dzienniki](#get-logs-from-a-vm) z węzła głównego w klastrze Kubernetes.
-2. Pamiętaj, że używasz najnowszej wersji usługi Azure Stack. Jeśli wiesz, której wersji używasz, skontaktuj się z administratorem usługi Azure Stack. Czas marketplace klastra Kubernetes 0.3.0 wymaga usługi Azure Stack w wersji 1808 lub nowszej.
+2. Pamiętaj, że używasz najnowszej wersji usługi Azure Stack. Jeśli wiesz, której wersji używasz, skontaktuj się z administratorem usługi Azure Stack.
 3.  Przejrzyj pliki tworzenia maszyny Wirtualnej. Mogli mieć następujące problemy:  
     - Klucz publiczny może być nieprawidłowy. Przejrzyj klucza, który został utworzony.  
     - Tworzenie maszyny Wirtualnej może być wyzwalane wystąpił błąd wewnętrzny lub wyzwalane błąd tworzenia. Wiele czynników może powodować błędy, łącznie z ograniczenia wydajności dla Twojej subskrypcji usługi Azure Stack.
@@ -148,21 +147,26 @@ Aby uzyskać dzienniki, wykonaj następujące czynności:
 3. W tej samej sesji, uruchom następujące polecenie z parametrami zaktualizowane pod kątem danego środowiska:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
     ```
 
 4. Przejrzyj parametry i ustaw wartości, w zależności od używanego środowiska.
     | Parametr           | Opis                                                                                                      | Przykład                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i, — plik tożsamości | RSA pliku klucza prywatnego do łączenia z głównej maszynie Wirtualnej platformy Kubernetes. Klucz musi rozpoczynać się `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.pem                                                        |
-    | -h,--hosta          | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra Kubernetes maszyny Wirtualnej. Nazwa maszyny Wirtualnej, który rozpoczyna się od `k8s-master-`.                       | Adres IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -d, --vmd-host       | Publiczny adres IP lub nazwa FQDN Menedżer DVM. Nazwa maszyny Wirtualnej, który rozpoczyna się od `vmd-`.                                                       | Adres IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -f,--force | Nie Monituj przed przekazaniem klucza prywatnego. | |
+    | -i, — plik tożsamości | RSA pliku klucza prywatnego do łączenia z głównej maszynie Wirtualnej platformy Kubernetes. Klucz musi rozpoczynać się: <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
+    | -h, — pomoc  | Drukowanie użycia polecenia `getkuberneteslogs.sh` skryptu. | |
+    | -m,--host główny          | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra Kubernetes maszyny Wirtualnej. Nazwa maszyny Wirtualnej, który rozpoczyna się od `k8s-master-`.                       | Adres IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, — użytkownik          | Nazwa użytkownika maszyny Wirtualnej węzła głównego klastra Kubernetes. Ta nazwa jest ustawiona, podczas konfigurowania elementu portalu marketplace.                                                                    | użytkownik_azure                                                                     |
-    | -d, --vmdhost       | Publiczny adres IP lub nazwa FQDN Menedżer DVM. Nazwa maszyny Wirtualnej, który rozpoczyna się od `vmd-`.                                                       | Adres IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+
+
+
 
    Po dodaniu wartości parametrów, on może wyglądać podobnie do poniższego kodu:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\secretsecret.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
      ```
 
     Pomyślny przebieg tworzy dzienniki.

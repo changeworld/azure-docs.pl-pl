@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie grup wielu kontenerów w usłudze Azure Container Instances
-description: Dowiedz się, jak wdrożyć grupę kontenerów za pomocą wielu kontenerów w usłudze Azure Container Instances.
+description: Dowiedz się, jak wdrożyć grupę kontenerów za pomocą wielu kontenerów w usłudze Azure Container Instances za pomocą szablonu usługi Azure Resource Manager.
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adb284772291dc901dd5302124982948c1f37eea
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2dfe1bbf01b7e1fae8c07602ac4faa40ae74ecc9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856483"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729500"
 ---
-# <a name="deploy-a-container-group"></a>Wdrażanie grupy kontenerów
+# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Wdrażanie grupy wielu kontenerów przy użyciu szablonu usługi Resource Manager
 
 Usługa Azure Container Instances obsługuje wdrażanie wielu kontenerów na jednym hoście za pomocą [grupy kontenerów](container-instances-container-groups.md). Jest to przydatne podczas tworzenia przyczepki aplikacji, rejestrowanie, monitorowanie lub dowolnej innej konfiguracji których usługa wymaga drugiego dołączony proces.
 
@@ -28,6 +28,8 @@ Wdrażanie za pomocą szablonu usługi Resource Manager zaleca się, gdy należy
 
 > [!NOTE]
 > Grup wielu kontenerów są obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+
+Aby uzyskać przykłady dodatkowe szablony, zobacz [szablonów usługi Azure Resource Manager dla usługi Azure Container Instances](container-instances-samples-rm.md). 
 
 ## <a name="configure-the-template"></a>Konfigurowanie szablonu
 

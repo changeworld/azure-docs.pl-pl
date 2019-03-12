@@ -7,16 +7,16 @@ services: microsoft-genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
-ms.service: microsoft-genomics
+ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 2c10259e4b9fa180d09ceef0359e7ec99e8200b1
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 01f4cca8e177d8f9c9325a7920eb7e72c005bbd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239903"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760946"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -93,14 +93,14 @@ Znajdź kontenera danych wyjściowych dla danego przepływu pracy. Tworzy moduł
 Na potrzeby rozwiązywania problemów Sprawdź zawartość standardoutput.txt i zanotuj wszystkie komunikaty o błędach są wyświetlane.
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>Krok 2: Spróbuj zalecane kroki dla typowych błędów
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>Krok 2: Wypróbuj zalecane czynności dla typowych błędów
 
 W tej sekcji przedstawiono pokrótce typowych błędów danych wyjściowych przez usługę Microsoft Genomics (modułu msgen) i strategie, których można użyć, aby je rozwiązać. 
 
 Usługa Microsoft Genomics (modułu msgen) może zgłosić następujących dwóch rodzajów błędów:
 
-1. Wewnętrzne błędy usługi: Błędy wewnętrzne w usłudze, które mogą nie zostać rozpoznane przez ustalenie parametrów ani plików wejściowych. Czasami Trwa ponowne przesyłanie przepływu pracy może rozwiązać te błędy.
-2. Błędy wejścia: Błędy, które można rozwiązać za pomocą poprawne argumenty lub ustalania formaty plików.
+1. Błędy usługi wewnętrznej: Błędy, które są wewnętrzne w usłudze, które mogą nie zostać rozpoznane przez ustalenie parametrów ani plików wejściowych. Czasami Trwa ponowne przesyłanie przepływu pracy może rozwiązać te błędy.
+2. Błędy wejścia: Błędy, które można rozwiązać za pomocą poprawne argumenty lub ustalania formatów plików.
 
 ### <a name="1-internal-service-errors"></a>1. Błędy usługi wewnętrznej
 
@@ -126,18 +126,18 @@ Te błędy są informacje z możliwością działania użytkownika. Na podstawie
 | BAM          | 206        |   Nie można odczytać plik BAM [nazwa_pliku]. Nagłówek pliku został uszkodzony.                                                                                      | Sprawdź format plik BAM.  Przesyłanie przepływu pracy przy użyciu poprawnie sformatowanym plikiem.                                                                            |
 | BAM          | 207        |  Nie można odczytać plik BAM [nazwa_pliku]. Plik obcięte w pobliżu przesunięcia [przesunięcie].                                                                                       | Sprawdź format plik BAM.  Przesyłanie przepływu pracy przy użyciu poprawnie sformatowanym plikiem.                                                                            |
 | BAM          | 208        |   Nieprawidłowy plik BAM. ReadID [Read_Id] nie ma żadnych sekwencji w pliku [nazwa_pliku].                                                                                      | Sprawdź format plik BAM.  Przesyłanie przepływu pracy przy użyciu poprawnie sformatowanym plikiem.                                                                             |
-| PLIKI FASTQ        | 300        |  Nie można odczytać plików FASTQ. [Nazwa_pliku] nie kończy się znakiem nowego wiersza.                                                                                     | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                           |
-| PLIKI FASTQ        | 301        |   Nie można odczytać plików FASTQ [nazwa_pliku]. Rekord plików FASTQ jest większy niż rozmiar buforu w przesunięciu: [_offset]                                                                                      | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
-| PLIKI FASTQ        | 302        |     Błąd składniowy plików FASTQ. Plik [nazwa_pliku] ma pusty wiersz.                                                                                    | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
-| PLIKI FASTQ        | 303        |       Błąd składniowy plików FASTQ. Plik [nazwa_pliku] zawiera nieprawidłowy znak początkowy przesunięciem: typ wiersza [_offset]: [line_type] znaków: [_char]                                                                                  | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
-| PLIKI FASTQ        | 304      |  Błąd składniowy FASTQ readID [_ReadID].  Odczyt pierwszej partii nie ma readID końcówce /1 w pliku [nazwa_pliku]                                                                                       | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
-| PLIKI FASTQ        | 305        |  Błąd składniowy FASTQ readID [_readID]. Odczyt drugiej partii nie ma readID końcówce /2 w pliku [nazwa_pliku]                                                                                      | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                          |
-| PLIKI FASTQ        | 306        |  Błąd składniowy FASTQ readID [_ReadID]. Przeczytaj pierwszą pary nie ma Identyfikatora, który kończy się /1 w pliku [nazwa_pliku]                                                                                       | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                          |
-| PLIKI FASTQ        | 307        |   Błąd składniowy FASTQ readID [_ReadID]. ReadID nie kończy się znakiem /1 lub / 2. Plik [nazwa_pliku] nie może być używany jako sparowanych plików FASTQ.                                                                                      |Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                          |
-| PLIKI FASTQ        | 308        |  Błąd odczytu plików FASTQ. Odczyty obu końcach odpowiedziała inaczej. Został wybrany poprawny plików FASTQ?                                                                                       | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
+| FASTQ        | 300        |  Nie można odczytać plików FASTQ. [Nazwa_pliku] nie kończy się znakiem nowego wiersza.                                                                                     | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                           |
+| FASTQ        | 301        |   Nie można odczytać plików FASTQ [nazwa_pliku]. Rekord plików FASTQ jest większy niż rozmiar buforu w przesunięciu: [_offset]                                                                                      | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
+| FASTQ        | 302        |     Błąd składniowy plików FASTQ. Plik [nazwa_pliku] ma pusty wiersz.                                                                                    | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
+| FASTQ        | 303        |       Błąd składniowy plików FASTQ. Plik [nazwa_pliku] zawiera nieprawidłowy znak początkowy przesunięciem: typ wiersza [_offset]: [line_type] znaków: [_char]                                                                                  | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
+| FASTQ        | 304      |  Błąd składniowy FASTQ readID [_ReadID].  Odczyt pierwszej partii nie ma readID końcówce /1 w pliku [nazwa_pliku]                                                                                       | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
+| FASTQ        | 305        |  Błąd składniowy FASTQ readID [_readID]. Odczyt drugiej partii nie ma readID końcówce /2 w pliku [nazwa_pliku]                                                                                      | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                          |
+| FASTQ        | 306        |  Błąd składniowy FASTQ readID [_ReadID]. Przeczytaj pierwszą pary nie ma Identyfikatora, który kończy się /1 w pliku [nazwa_pliku]                                                                                       | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                          |
+| FASTQ        | 307        |   Błąd składniowy FASTQ readID [_ReadID]. ReadID nie kończy się znakiem /1 lub / 2. Plik [nazwa_pliku] nie może być używany jako sparowanych plików FASTQ.                                                                                      |Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                          |
+| FASTQ        | 308        |  Błąd odczytu plików FASTQ. Odczyty obu końcach odpowiedziała inaczej. Został wybrany poprawny plików FASTQ?                                                                                       | Popraw format plików FASTQ i ponownie Prześlij przepływ pracy.                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>Krok 3: Skontaktuj się z Microsoft Genomics w pomocy technicznej
+## <a name="step-3-contact-microsoft-genomics-support"></a>Krok 3: Skontaktuj się z działem pomocy technicznej usługi Microsoft Genomics
 
 Jeśli nadal występują błędy zadań lub jeśli masz inne pytania, skontaktuj się z pomocą techniczną usługi Microsoft Genomics w witrynie Azure portal. Dodatkowe informacje na temat przesłać żądanie pomocy technicznej można znaleźć [tutaj](file-support-ticket-genomics.md).
 

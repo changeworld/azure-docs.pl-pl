@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817754"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551980"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Wywołaj punkty końcowe REST przy użyciu protokołu HTTP + Swagger łącznika w usłudze Azure Logic Apps
 
@@ -60,7 +60,7 @@ Poniżej przedstawiono kroki do tworzenia, konfigurowania i przechowywanie dokum
 
 3. Przekaż plik struktury Swagger do obiektu blob. 
 
-   Można wykonać ten krok z [witryny Azure portal](https://portal.azure.com) lub z narzędzia, takiego jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
+   Można wykonać ten krok z [witryny Azure portal](https://portal.azure.com) lub z narzędzia, takiego jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/).
 
 4. Odwołanie łącza HTTPS do dokumentu w usłudze Azure Blob storage. 
 

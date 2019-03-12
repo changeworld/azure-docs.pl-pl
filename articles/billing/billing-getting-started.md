@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 0d1d4358789cce4d393143e8a243ee9a3e06bf36
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 56d392a7df2a659cf457631ec5693766fd674f91
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652403"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727199"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -140,7 +140,7 @@ Aby uzyskać więcej informacji, zobacz [rekomendacji dotyczących kosztu Adviso
 
 ## <a name="reviewing-costs-at-the-end-of-your-billing-cycle"></a>Przeglądanie koszty pod koniec cyklu rozliczeniowym
 
-Po zakończeniu cyklu rozliczeniowym fakturze staną się dostępne. Możesz również [pobrać przeszłe faktury i pliki użycia szczegółów](billing-download-azure-invoice-daily-usage-date.md) się upewnić, że naliczono poprawnie. Aby uzyskać więcej informacji na temat porównanie z dziennym użyciem za pomocą faktury, zobacz [opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md).
+Po zakończeniu cyklu rozliczeniowego Twoja faktura stanie się dostępna. Możesz również [pobrać przeszłe faktury i pliki użycia szczegółów](billing-download-azure-invoice-daily-usage-date.md) się upewnić, że naliczono poprawnie. Aby uzyskać więcej informacji na temat porównanie z dziennym użyciem za pomocą faktury, zobacz [opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md).
 
 ### <a name="billing-api"></a>Interfejs API rozliczeń
 
@@ -184,6 +184,26 @@ Aby zobaczyć, jeśli jesteś administratorem konta, przejdź do [subskrypcje w 
 Jeśli nie jesteś administratorem konta, a następnie ktoś prawdopodobnie udostępniła Ci częściowy dostęp za pomocą [kontroli dostępu opartej na roli Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Do zarządzania subskrypcjami i zmiany rozliczeń info, [znaleźć administrator konta](billing-subscription-transfer.md#whoisaa). Poproś administratora konta, aby wykonać zadania lub [przenieść subskrypcję do Ciebie](billing-subscription-transfer.md).
 
 Jeśli administrator konta nie jest już w organizacji, należy do zarządzania rozliczeniami, [skontaktuj się z nami](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Jak utworzyć żądanie umowy dotyczącej poziomu usług środki na korzystanie z zdarzenie w usłudze
+
+W umowie dotyczącej poziomu usług (SLA) opisano zobowiązania firmy Microsoft dotyczące czasu dostępności i połączeń. Zdarzenie w usłudze jest zgłaszany w przypadku usług platformy Azure napotkania problemu tego czasu wpływa na działania lub łączności, często nazywane "awarii." Jeśli nie możemy osiągnąć i Obsługa poziomów usług dla każdej usługi, zgodnie z opisem w umowie SLA, może być kwalifikuje się środki w wysokości część miesięcznych opłat za usługę.
+
+Aby zażądać środki:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, użyj jednego, który miała wpływ przestojów platformy Azure. Ułatwia to obsługę automatycznego zbierania niezbędne informacje i szybciej rozwiązać sprawę.
+2. Utwórz nowe żądanie pomocy technicznej.
+3. W obszarze **typ problemu**, wybierz opcję **rozliczeń**.
+4. W obszarze **typ problemu**, wybierz opcję **żądanie zwrotu pieniędzy**.
+5. Dodaj szczegóły, aby określić, że jest wysyłane żądanie kredytu SLA, wspominanie daty/godziny/strefy czasowej, a także objęte usługi, (maszyny wirtualne, witryny sieci Web itp.)
+6. Sprawdź swoje szczegóły dotyczące kontaktu i wybrać **Utwórz** przycisk, aby przesłać żądanie.
+
+Umowa SLA progi różnią się usługi. Na przykład warstwa sieci Web SQL zgodnie z umową SLA na poziomie 99,9%, maszyny wirtualne mają umową SLA gwarantującą dostępność przez 99,95%, a SQL w warstwie standardowa ma umową SLA gwarantującą dostępność przez 99,99%.
+
+W przypadku niektórych usług istnieją wymagania wstępne dotyczące umowy SLA do zastosowania. Na przykład maszyny wirtualne, musi mieć co najmniej dwóch wystąpieniach wdrożonych w tym samym zestawie dostępności.
+
+Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/en-us/support/legal/sla/) dokumentacji i [podsumowanie umów SLA dla usług platformy Azure](https://azure.microsoft.com/en-us/support/legal/sla/summary/) dokumentacji.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

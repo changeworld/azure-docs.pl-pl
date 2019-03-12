@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 33abaf7488579a501dc7e2d0b63645726b86c28b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ed28c502bb407c65b388704c177fca13cecc38d6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390726"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548630"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Aby pracować z Data Lake Storage Gen1 przy użyciu języka Python, musisz zains
 
 * Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla usługi Active Directory itp.
 * `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [odwołania do modułu azure-mgmt-datalake-store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [odwołania do modułu systemu plików azure-datalake-store](http://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [odwołania do modułu systemu plików azure-datalake-store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Użyj następujących poleceń, aby zainstalować moduły.
 
@@ -131,5 +131,5 @@ Poniższy fragment kodu najpierw tworzy klienta konta Data Lake Storage Gen1. Tw
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Odwołanie do usługi Azure Data Lake Storage Gen1 Python (Filesystem)](http://azure-datalake-store.readthedocs.io/en/latest)
+* [Odwołanie do usługi Azure Data Lake Storage Gen1 Python (Filesystem)](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Otwórz źródło danych big Data aplikacji zgodnych z usługi Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 38a5434d4b6f27aacdf1861fa0b005501ad1e28b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7069114a8cb63b8b166bc29e92d8f355c49824bb
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308894"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727148"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -230,28 +230,28 @@ W środowisku produkcyjnym prawdopodobnie okresowo odświeżyć klucze magazynu.
 
 **Polecenia cmdlet programu PowerShell (w tym obsługa klauzuli WHERE filtrowania dodatkowych)**:
 
-- [Utwórz lub zaktualizuj Blob bazy danych inspekcji zasad (zestaw AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Utwórz lub zaktualizuj serwer Blob inspekcji zasad (zestaw AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Tworzenie lub aktualizowanie bazy danych inspekcji zasad (zestaw AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Utwórz lub zaktualizuj zasady inspekcji serwera (zestaw AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
 - [Pobierz zasady inspekcji bazy danych (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Pobieranie obiektów Blob serwera zasady inspekcji (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [Pobieranie serwera zasad dotyczących inspekcji (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie zagrożeń za pomocą programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
 ## <a id="subheading-9"></a>Zarządzanie inspekcji usługi SQL database przy użyciu interfejsu API REST
 
-**Interfejs API REST — Inspekcja obiektów Blob**:
+**REST API**:
 
-- [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Utwórz lub zaktualizuj zasady inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Utwórz lub zaktualizuj zasady inspekcji serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz zasady inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Pobieranie serwera zasad inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dodatkowych:
 
-- [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Utwórz lub zaktualizuj bazę danych *rozszerzone* zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Utwórz lub zaktualizuj serwer *rozszerzone* zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz bazę danych *rozszerzone* zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Pobierz serwer *rozszerzone* zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>Zarządzanie inspekcji usługi SQL database przy użyciu szablonów ARM
 

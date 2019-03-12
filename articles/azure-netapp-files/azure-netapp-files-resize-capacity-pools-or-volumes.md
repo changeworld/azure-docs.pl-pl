@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: b-juche
-ms.openlocfilehash: 72da85fb7296d02bc6d5f7fcd3279953c312c920
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f08eaee038ad18c600826dea6fe0fd85935de59a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009217"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761977"
 ---
-# <a name="resize-a-capacity-pool-or-a-volume"></a>Zmień rozmiar pojemności puli lub woluminu
+# <a name="resize-a-capacity-pool-or-a-volume"></a>Zmienianie rozmiaru puli pojemności lub woluminu
 Można zmienić rozmiar puli pojemności lub woluminie zgodnie z potrzebami. 
 
 ## <a name="resize-the-capacity-pool"></a>Zmień rozmiar pojemności puli 
@@ -34,7 +34,7 @@ Można zmienić rozmiar puli pojemności w 4 TiB zwiększa lub zmniejsza. Zmiana
 
 ## <a name="resize-a-volume"></a>Zmień rozmiar woluminu
 
-Można zmienić rozmiar woluminu zgodnie z potrzebami. Poziom zużycia pojemności woluminu zmniejsza jej puli zaprowizowaną pojemnością.
+Można zmienić rozmiar woluminu zgodnie z potrzebami. Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli.
 
 1. W bloku Zarządzanie NetApp konta kliknij **woluminów**. 
 2. Kliknij prawym przyciskiem myszy nazwę woluminu, który chcesz zmienić rozmiar lub kliknij ikonę "..." na końcu wiersza dla woluminu, aby wyświetlić menu kontekstowe.

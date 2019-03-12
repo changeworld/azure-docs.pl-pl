@@ -7,19 +7,19 @@ author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
-ms.service: na
+ms.service: api-management
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 62bc6507e4b56c9df31a561f7677907486b0d562
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421593"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765802"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Prześlij certyfikat usługi Azure Service Management
 Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania udostępnianych przez platformę Azure. Wiele programów i narzędzi (takich jak Visual Studio lub zestawu SDK platformy Azure) Automatyzuj Konfigurowanie i wdrażanie różnych usług platformy Azure przy użyciu funkcji tych certyfikatów. 
@@ -33,7 +33,7 @@ Jeśli chcesz dowiedzieć się więcej o certyfikatach platformy Azure (takie ja
 
 Można również użyć [usługi Azure Active Directory](https://azure.microsoft.com/services/active-directory/) do uwierzytelniania kod klienta do celów usługi automation.
 
-**Uwaga:** musi być administrator współpracujący dla subskrypcji można wykonywać dowolne operacje w obszarze certyfikaty zarządzania. [Dowiedz się więcej](https://go.microsoft.com/fwlink/?linkid=849300) na temat sposobu apletu Dodaj lub usuń Współadministratorzy w nowej witrynie Azure Portal 
+**Uwaga:** Musi być administrator współpracujący dla subskrypcji można wykonywać dowolne operacje w obszarze certyfikaty zarządzania. [Dowiedz się więcej](https://go.microsoft.com/fwlink/?linkid=849300) na temat sposobu apletu Dodaj lub usuń Współadministratorzy w nowej witrynie Azure Portal 
 
 ## <a name="upload-a-management-certificate"></a>Przekazywanie certyfikatu zarządzania
 Po utworzeniu utworzono certyfikat zarządzania, (plik cer z kluczem publicznym) można przesłać go do portalu. Jeśli certyfikat jest dostępny w portalu, każda osoba mająca zgodnego certyfikatu (klucz prywatny) łączenie się za pośrednictwem interfejsu API zarządzania i dostępu do zasobów dla skojarzonej subskrypcji.

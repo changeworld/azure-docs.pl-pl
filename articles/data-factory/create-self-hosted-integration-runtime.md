@@ -3,20 +3,20 @@ title: Tworzenie własnego środowiska integration runtime w usłudze Azure Data
 description: Dowiedz się, jak utworzyć własne środowisko integration runtime w usłudze Azure Data Factory, która umożliwia fabryki danych mieć dostęp do magazynów danych w sieci prywatnej.
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
+author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: dc9f24f948e32d1b87745016852a875d440323de
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+manager: craigg
+ms.openlocfilehash: d1e43924634e3c4543c244043cb06d965a4d14e0
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443702"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576841"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).

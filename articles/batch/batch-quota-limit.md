@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: f8941f84e85f330713cb4b263f2154acb80b520c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753203"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532407"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -67,7 +67,7 @@ Jeśli zostało utworzone konto usługi Batch z trybem alokacji puli równa **su
 | Pakiety aplikacji na aplikację | 40 |
 | Okres istnienia zadania maksymalna | 180 dni<sup>1</sup> |
 
-<sup>1</sup> maksymalny okres istnienia zadania, od momentu dodania go do zadania do jego ukończenia wynosi 180 dni. Ukończone zadania trwały przez 7 dni; dane dla zadań nieukończonych w ciągu maksymalnego okresu istnienia nie jest dostępny.
+<sup>1</sup> maksymalny okres istnienia zadania, od momentu dodania go do zadania do jego ukończenia wynosi 180 dni. Ukończone zadania podrzędne są utrwalone przez 7 dni. Dane dla zadań podrzędnych nieukończonych w ciągu maksymalnego okresu istnienia nie są dostępne.
 
 ## <a name="view-batch-quotas"></a>Wyświetl przydziały usługi Batch
 
@@ -135,6 +135,6 @@ Te zasoby są przydzielane w subskrypcji, która zawiera sieć wirtualną, podan
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png

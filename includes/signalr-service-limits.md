@@ -1,6 +1,6 @@
 ---
-title: Limity usługi SignalR tabeli
-description: Zawiera opis ograniczeń systemowych dla usług SignalR.
+title: Usługi Azure SignalR Service ogranicza tabeli
+description: Opis ograniczeń systemowych dla usługi Azure SignalR Service.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
-ms.openlocfilehash: 9283c106aa41bd5061dfd1761c840382a0bb3337
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 236bb39125ec03a9652a57f9cd4aaa5da2695452
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045258"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554225"
 ---
 | Zasób | Limit domyślny | Limit maksymalny | 
 | --- | --- | --- |
-| Jednostki usług SignalR dla każdego wystąpienia bezpłatnie warstwy. |1 |1 |
-| Jednostki usług SignalR na każde wystąpienie w warstwie standardowa |100 |100 |
-| Jednostki usług SignalR na subskrypcję na region za darmo warstwy.|5 |5 |
-| Całkowita liczba jednostek usługi SignalR Zlicza na subskrypcję na region |50 |Nieograniczona liczba |
+| Jednostki usługi Azure SignalR Service dla każdego wystąpienia bezpłatnie warstwy. |1 |1 |
+| Jednostki usługi Azure SignalR Service każde wystąpienie w warstwie standardowa |100 |100 |
+| Jednostki usługi Azure SignalR Service na subskrypcję na region za darmo warstwy.|5 |5 |
+| Całkowita liczba jednostek usługi Azure SignalR Service Zlicza na subskrypcję na region |50 |Nieograniczona liczba |
 | Połączenia na jednostkę dziennie dla bezpłatnej warstwy |20 |20 |
 | Połączenia na jednostkę dziennie w przypadku warstwy standardowa |1000 |1000|
 | Uwzględnione wiadomości na jednostkę dziennie za darmo warstwy.|20,000 |20,000 |

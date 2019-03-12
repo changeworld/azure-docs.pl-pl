@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2f68156e593281acb46dbeb132f0f45db4b3dfb9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a407db97803d3c3be898893b7da6c1cb4aa94bb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244778"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537001"
 ---
 # <a name="azure-operational-security"></a>Bezpieczeństwo działania platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -135,7 +135,7 @@ Usługa Security Center zbiera dane z maszyn wirtualnych w celu oceny ich stanu 
 
 - Usługa Azure Security Center analizuje dane z następujących źródeł, aby zapewnić wgląd w stan zabezpieczeń, zidentyfikować luki w zabezpieczeniach i polecić rozwiązania oraz wykryć aktywne zagrożenia:
 
--   Azure Services: Używa informacji o konfiguracji usługi platformy Azure została wdrożona, komunikując się z dostawcą zasobów tej usługi.
+-   Usługi platformy Azure: Używa informacji o konfiguracji usługi platformy Azure została wdrożona, komunikując się z dostawcą zasobów tej usługi.
 
 - Ruch sieciowy: Używa próbkowanych metadanych ruchu sieciowego z infrastruktury firmy Microsoft, takich jak lokalizacja źródłowa/docelowa IP i port, rozmiar pakietu i protokół sieciowy.
 
@@ -164,7 +164,7 @@ Usługa Azure Security Center zbiera efemeryczne kopie plików zrzutu awaryjnego
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Log Analytics zabezpieczeń](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) i przeprowadzanie inspekcji umożliwiają rozwiązania IT, aktywne monitorowanie wszystkich zasobów, które mogą pomóc zminimalizować wpływ incydentów zabezpieczeń. Log Analytics zabezpieczenia i inspekcja mają domeny zabezpieczeń, które mogą służyć do monitorowania zasobów. Domeny zabezpieczeń zapewnia szybki dostęp do opcji, dotyczące monitorowania zabezpieczeń następujących domen zostały omówione bardziej szczegółowo:
+[Usługi Azure Monitor dzienniki zabezpieczeń](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) i przeprowadzanie inspekcji umożliwiają rozwiązania IT, aktywne monitorowanie wszystkich zasobów, które mogą pomóc zminimalizować wpływ incydentów zabezpieczeń. Dzienniki platformy Azure Monitor, zabezpieczenia i inspekcja mają domeny zabezpieczeń, które mogą służyć do monitorowania zasobów. Domeny zabezpieczeń zapewnia szybki dostęp do opcji, dotyczące monitorowania zabezpieczeń następujących domen zostały omówione bardziej szczegółowo:
 
 -   Ocena złośliwego oprogramowania
 -   Ocena aktualizacji

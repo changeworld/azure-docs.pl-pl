@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6a66dfaee4c0492523239888b91333256cc66c3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670719"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547033"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API w języku Java w systemie Android
 
@@ -30,7 +30,7 @@ Tym artykule użyto przykładowej aplikacji do pokazują, jak tworzyć aplikacje
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Próbka jest opracowany przez [Android Studio](http://developer.android.com/sdk/index.html) for Windows w języku Java.
+Próbka jest opracowany przez [Android Studio](https://developer.android.com/sdk/index.html) for Windows w języku Java.
 
 ### <a name="get-the-client-library-and-sample-application"></a>Pobieranie klienta biblioteki i przykładowej aplikacji
 

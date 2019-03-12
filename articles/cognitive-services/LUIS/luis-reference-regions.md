@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/07/2019
 ms.author: diberry
-ms.openlocfilehash: 093c60287b16073a6c04e824dc439f5dc069ec96
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863673"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765174"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Tworzenie i publikowanie regionów i skojarzonych kluczy
 
@@ -95,6 +95,9 @@ W poniższej tabeli opisano parametry, oznaczony za pomocą nawiasów klamrowych
 |appID|Identyfikator aplikacji usługi LUIS używane w trasy adresu URL i znalezione na pulpit nawigacyjny aplikacji|
 |q|tekstowe wypowiedź wysyłane z aplikacji klienckiej, takich jak czatbot|
 
+## <a name="failover-regions"></a>Regiony trybu failover
+
+W każdym regionie istnieje do trybu failover do regionu pomocniczego. Europa kończy się niepowodzeniem, tryb failover w Europie i Australii w trybie Failover w Australii.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

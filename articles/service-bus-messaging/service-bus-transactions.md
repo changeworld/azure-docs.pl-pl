@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: aschhab
-ms.openlocfilehash: 69dc9c974c259f51ac0c6c9d64bfcda7ee65e181
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844589"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588758"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Omówienie usługi Service Bus przetwarzanie transakcji
 
-W tym artykule omówiono możliwości transakcji usługi Microsoft Azure Service Bus. Większość dyskusji zilustrowane [transakcje niepodzielne za pomocą usługi Service Bus przykładowe](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions). W tym artykule jest ograniczona do przeglądu przetwarzania transakcji i *wyśle* funkcji w usłudze Service Bus, przykładowe transakcje niepodzielne szersze i bardziej złożone w trakcie zakresu.
+W tym artykule omówiono możliwości transakcji usługi Microsoft Azure Service Bus. Większość dyskusji zilustrowane [AMQP transakcji za pomocą usługi Service Bus przykładowe](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). W tym artykule jest ograniczona do przeglądu przetwarzania transakcji i *wyśle* funkcji w usłudze Service Bus, przykładowe transakcje niepodzielne szersze i bardziej złożone w trakcie zakresu.
 
 ## <a name="transactions-in-service-bus"></a>Transakcje w usłudze Service Bus
 
-A [ *transakcji* ](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions) grupowanie dwóch lub więcej operacji w *zakresu wykonywania*. Ze względu na charakter takich transakcji musi zapewnić, że wszystkie operacje należących do danej grupy operacji powodzenie lub niepowodzenie wspólnie. W związku z tym transakcji pełnić jedną jednostkę, która jest często nazywany *niepodzielność*. 
+A *transakcji* grupowanie dwóch lub więcej operacji w *zakresu wykonywania*. Ze względu na charakter takich transakcji musi zapewnić, że wszystkie operacje należących do danej grupy operacji powodzenie lub niepowodzenie wspólnie. W związku z tym transakcji pełnić jedną jednostkę, która jest często nazywany *niepodzielność*.
 
 Usługa Service Bus jest broker wiadomości transakcyjnych i zapewnia integralność transakcji dla wszystkich operacji wewnętrznej względem jego magazynami komunikatów. Wszystkie operacje transferu wiadomości wewnątrz usługi Service Bus, takiego jak przenoszenie wiadomości do [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) lub [automatyczne przekazywanie](service-bus-auto-forwarding.md) komunikatów między jednostkami, są transakcyjne. Jako takie Jeśli Usługa Service Bus zaakceptuje wiadomość, już został przechowywane i etykietą numer sekwencyjny. Od tego momentu wszelkich transferów komunikatów w ramach usługi Service Bus to operacje skoordynowanego między jednostkami i nie doprowadzi do utraty (źródło zakończy się pomyślnie i docelowym nie powiedzie się) lub dublowania (niepowodzenie dotyczące źródła i docelowych zakończy się powodzeniem) wiadomości.
 
@@ -55,26 +55,47 @@ Możliwości tej transakcji funkcji staje się jasne po kolejce transferu, sama 
 Aby skonfigurować takie przeniesienia, należy utworzyć nadawcy wiadomości, który jest przeznaczony dla kolejki docelowej, za pośrednictwem kolejki transferu. Masz również odbiornik, który pobiera komunikaty z tej samej kolejki. Na przykład:
 
 ```csharp
-var sender = this.messagingFactory.CreateMessageSender(destinationQueue, myQueueName);
-var receiver = this.messagingFactory.CreateMessageReceiver(myQueueName);
+var connection = new ServiceBusConnection(connectionString);
+
+var sender = new MessageSender(connection, QueueName);
+var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-Następnie proste transakcji korzysta z tych elementów, jak w poniższym przykładzie:
+Następnie proste transakcji korzysta z tych elementów, jak w poniższym przykładzie. Aby odwołać się pełny przykład, można znaleźć [źródła kodu w serwisie GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
 
 ```csharp
-var msg = receiver.Receive();
+var receivedMessage = await receiver.ReceiveAsync();
 
-using (scope = new TransactionScope())
+using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 {
-    // Do whatever work is required 
+    try
+    {
+        // do some processing
+        if (receivedMessage != null)
+            await receiver.CompleteAsync(receivedMessage.SystemProperties.LockToken);
 
-    var newmsg = ... // package the result 
+        var myMsgBody = new MyMessage
+        {
+            Name = "Some name",
+            Address = "Some street address",
+            ZipCode = "Some zip code"
+        };
 
-    msg.Complete(); // mark the message as done
-    sender.Send(newmsg); // forward the result
+        // send message
+        var message = myMsgBody.AsMessage();
+        await sender.SendAsync(message).ConfigureAwait(false);
+        Console.WriteLine("Message has been sent");
 
-    scope.Complete(); // declare the transaction done
-} 
+        // complete the transaction
+        ts.Complete();
+    }
+    catch (Exception ex)
+    {
+        // This rolls back send and complete in case an exception happens
+        ts.Dispose();
+        Console.WriteLine(ex.ToString());
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

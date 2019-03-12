@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: a0f909dcb78a782945517b6691805ea66f2d0cfd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 03/07/2019
+ms.openlocfilehash: 13642827a6a0f6524a1f9222b72e75f51a5442a3
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456384"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576909"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault: Bring Your Own Key pomocy technicznej
 
@@ -88,11 +88,11 @@ Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi 
 
 - Użyj klucza bez daty wygaśnięcia — i nie Ustaw datę wygaśnięcia na kluczu już w użyciu: **po wygaśnięciu klucza szyfrowanymi bazami danych utracą dostęp do swoich funkcji ochrony TDE i są niedostępne w ciągu 24 godzin**.
 - Upewnij się, klucz jest włączone i ma uprawnienia do wykonywania *uzyskać*, *opakuj klucz*, i *odpakuj klucz* operacji.
-- Przed użyciem klucza w usłudze Azure Key Vault po raz pierwszy, należy utworzyć kopię zapasową klucza usługi Azure Key Vault. Dowiedz się więcej o [AzKeyVaultKey kopii zapasowej](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) polecenia.
+- Przed użyciem klucza w usłudze Azure Key Vault po raz pierwszy, należy utworzyć kopię zapasową klucza usługi Azure Key Vault. Dowiedz się więcej o [AzKeyVaultKey kopii zapasowej](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) polecenia.
 - Utwórz nową kopię zapasową, zawsze wtedy, gdy wszystkie zmiany zostały wprowadzone do klucza (na przykład dodać listy ACL, dodawanie tagów, Dodaj kluczowych atrybutów).
 - **Zachowaj poprzednie wersje** klucza w magazynie kluczy, w przypadku rotacji kluczy, więc starsze kopie zapasowe bazy danych mogą zostać przywrócone. Po zmianie ochrony TDE dla bazy danych, a stare kopie zapasowe bazy danych **nie są aktualizowane** używać najnowszych funkcji ochrony TDE.  Każda kopia zapasowa wymaga ochrony TDE, został utworzony w czasie przywracania. Wymiany kluczy mogą być wykonywane zgodnie z instrukcjami w artykule [Obróć przezroczyste funkcja ochrony szyfrowania danych przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - Zachowaj wszystkie klucze wcześniej używanych w usłudze Azure Key Vault, po zmianie kluczy zarządzanych przez usługę.  Dzięki temu kopie zapasowe bazy danych można przywrócić przy użyciu funkcji ochrony TDE, przechowywane w usłudze Azure Key Vault.  Funkcji ochrony TDE utworzonych za pomocą usługi Azure Key Vault musi zachować, dopóki wszystkie przechowywane kopie zapasowe utworzono przy użyciu kluczy zarządzanych przez usługę.  
-- Tworzenia kopii zapasowych do odzyskania tych kluczy przy użyciu [AzKeyVaultKey kopii zapasowej](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
+- Tworzenia kopii zapasowych do odzyskania tych kluczy przy użyciu [AzKeyVaultKey kopii zapasowej](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey).
 - Aby usunąć mogą mieć złamane zabezpieczenia klucza podczas zdarzenia zabezpieczeń, bez ryzyka utraty danych, wykonaj kroki opisane w temacie [Usuń klucz mogą mieć złamane zabezpieczenia](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
 
 ## <a name="high-availability-geo-replication-and-backup--restore"></a>Wysoką dostępność, replikacja geograficzna i Backup / Restore
@@ -126,7 +126,7 @@ Poniższa sekcja zaczną się za pośrednictwem kroków instalacji i konfiguracj
   - RSA/RSA-HSA 2048 key
   - Nie daty wygaśnięcia
   - Klucz jest włączone i ma uprawnienia do wykonania get, opakuj klucz i odpakuj kluczowych operacji
-- Tworzenie kopii zapasowej klucz podstawowy i przywróć klucz do drugiego magazynu kluczy.  Zobacz [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) i [AzKeyVaultKey przywracania](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
+- Tworzenie kopii zapasowej klucz podstawowy i przywróć klucz do drugiego magazynu kluczy.  Zobacz [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) i [AzKeyVaultKey przywracania](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).
 
 ### <a name="azure-sql-database-configuration-steps"></a>Kroki konfiguracji bazy danych Azure SQL
 

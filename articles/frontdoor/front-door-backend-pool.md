@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 64d96d54b323d634703301e48cdaa28fa875fbbc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 14cc87e8691c859274495a13cc0b73fa29ad22df
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958802"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726893"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service drzwi
-W tym artykule opisano różne koncepcje dotyczące jak mapować wdrażania aplikacji za pomocą drzwiami frontowymi. Również Wyjaśnijmy, możesz z przodu różne warunki drzwi biblioteki konfiguracją na całym zaplecza aplikacji znaczenie.
+W tym artykule opisano różne koncepcje dotyczące jak mapować wdrażania aplikacji za pomocą drzwiami frontowymi. Wyjaśnimy również różne warunki na wierzchu drzwi biblioteki konfiguracją na całym zaplecza aplikacji znaczenie.
 
 ## <a name="backend-pool"></a>Pula zaplecza
-Puli zaplecza z przodu drzwi odnosi się do zestawu równoważnych serwerach zaplecza, które mogą odbierać ruch dla aplikacji tego samego typu. Innymi słowy jest logiczną grupą wystąpień aplikacji w całym świecie mogą odbierać ruch tego samego, która może odpowiadać na nie dzięki oczekiwane zachowanie. Te zaplecza zwykle są wdrażane w różnych regionach lub w ramach tego samego regionu. Ponadto te zaplecza są całkowicie w trybie wdrożenia aktywne-aktywne, lub można zdefiniować jako konfiguracja aktywny/pasywny.
+Pula zaplecza w usłudze Front Door odnosi się do zestawu równoważnych zapleczy, które mogą odbierać ruch tego samego typu dla swoich aplikacji. Inaczej mówiąc, jest to logiczna grupa wystąpień aplikacji na całym świecie, które mogą odbierać taki sam ruch i odpowiadać, wykazując oczekiwane zachowanie. Te zaplecza zwykle są wdrażane w różnych regionach lub w ramach tego samego regionu. Ponadto te zaplecza są całkowicie w trybie wdrożenia aktywne-aktywne, lub można zdefiniować jako konfiguracja aktywny/pasywny.
 
 Puli zaplecza definiuje również, jak różne zaplecza powinien wszystkie oceniane pod kątem ich kondycji za pomocą sondy kondycji, i odpowiednio jak Równoważenie obciążenia między zapleczem powinno mieć miejsce.
 
@@ -31,7 +31,7 @@ Drzwiami frontowymi wysyła okresowe żądania sondowania HTTP/HTTPS do każdego
 
 1. **Ścieżka**: Ścieżka adresu URL, w których będą wysyłane żądania sondowania do dla wszystkich zaplecza w puli zaplecza. Na przykład, jeśli jeden z zaplecza jest `contoso-westus.azurewebsites.net` i ścieżka jest równa `/probe/test.aspx`, wówczas środowisk drzwiami frontowymi, zakładając, że ustawiono protokołu HTTP, wyśle żądanie sondy kondycji do http://contoso-westus.azurewebsites.net/probe/test.aspx. 
 2. **Protokół**: Określa, czy będą wysyłane żądania sondy kondycji z wejściu do zaplecza za pośrednictwem protokołu HTTP lub HTTPS.
-3. **Interwał (w sekundach)**: to pole określa częstotliwość sondy kondycji do zaplecza, czyli odstępach czasu, w którym środowisk drzwiami frontowymi wyśle sondę. Uwaga — Jeśli potrzebujesz szybszych przejścia w tryb failover, wartość tego pola niższą wartość. Jednak im niższa wartość bardziej sondę kondycji woluminu, który otrzyma zaplecza. Aby poznać ilość sondy, ile drzwi spowoduje wygenerowanie na zaplecza, Przyjrzyjmy się przykładowi. Teraz załóżmy, że, interwał jest ustawiany na 30 sekund wiąże się z około 90 drzwi wejściowe lub w środowiskach POP globalnie. Tak, każdy z zaplecza otrzyma około o 3 – 5 sondowania żądań na sekundę.
+3. **Interwał (w sekundach)**: To pole określa częstotliwość sondy kondycji do zaplecza, oznacza to, że odstępach czasu, w których wyśle każdego z tych środowisk drzwiami frontowymi sondę. Uwaga — Jeśli potrzebujesz szybszych przejścia w tryb failover, wartość tego pola niższą wartość. Jednak im niższa wartość bardziej sondę kondycji woluminu, który otrzyma zaplecza. Aby poznać ilość sondy, ile drzwi spowoduje wygenerowanie na zaplecza, Przyjrzyjmy się przykładowi. Teraz załóżmy, że, interwał jest ustawiany na 30 sekund wiąże się z około 90 drzwi wejściowe lub w środowiskach POP globalnie. Tak, każdy z zaplecza otrzyma około o 3 – 5 sondowania żądań na sekundę.
 
 Odczyt [sond kondycji](front-door-health-probes.md) Aby uzyskać szczegółowe informacje.
 
@@ -41,7 +41,7 @@ Ustawienia równoważenia obciążenia dla puli zaplecza, zdefiniuj sposób moż
 1. **Przykładowy rozmiar**: Ta właściwość określa, jak wiele przykładów sond kondycji należy wziąć pod uwagę oceny kondycji wewnętrznej bazy danych.
 2. **Rozmiar próbki pomyślne**: Ta właściwość określa, czy wielkość próby jak wyjaśniono powyżej, jak wiele przykładów potrzebujemy pod kątem powodzenia do wywoływania zaplecza jako w dobrej kondycji. 
 </br>Na przykład, załóżmy, że dla Twojego drzwiami frontowymi ustawiono sondy kondycji *interwał* 30 sekund, *przykładowy rozmiar* jest ustawiona na "5" i *rozmiar próbki pomyślne* jest ustawiona na "3". A następnie co ta konfiguracja oznacza, że to, że za każdym razem, gdy Oceniamy sondy kondycji do zaplecza, przyjrzymy się pięć ostatnich przykłady, które będzie obejmujące ostatnich 150 sekund (5 * 30 s) i chyba że istnieją 3 lub więcej z tych sond pomyślne firma Microsoft uzna tylnej koniec złej kondycji. Załóżmy, że wystąpiły tylko dwa sondy pomyślne, dlatego firma Microsoft oznaczy wewnętrznej bazy danych o złej kondycji. Przy następnym Uruchamiamy oceny 3 okaże się pomyślnie WE pięć ostatnich sond, następnie możemy oznaczyć wewnętrznej bazy danych jako w dobrej kondycji ponownie.
-3. **Czułość opóźnienia (dodatkowe opóźnienie)**: pole czułości opóźnienie definiuje, czy chcesz drzwiami frontowymi wysyłać żądania do zaplecza, które są w zakresie poufności pod względem pomiaru opóźnienia lub na żądania najbliższy wewnętrznej bazy danych. Odczyt [najmniejszego opóźnienia na podstawie metody routingu opartego na](front-door-routing-methods.md#latency) na wejściu dowiedzieć się więcej.
+3. **Czułość opóźnienia (dodatkowe opóźnienie)**: Pole czułości opóźnienie definiuje chęci drzwiami frontowymi wysyłać żądania do zaplecza, które są w zakresie poufności pod kątem pomiaru opóźnienia lub przekazywania żądania do najbliższego wewnętrznej bazy danych. Odczyt [najmniejszego opóźnienia na podstawie metody routingu opartego na](front-door-routing-methods.md#latency) na wejściu dowiedzieć się więcej.
 
 ## <a name="backend"></a>Zaplecze
 Zapleczem jest równoznaczne z wystąpienia wdrożenia aplikacji w regionie. Drzwiami frontowymi obsługuje zarówno platformy Azure, jak i zaplecza spoza platformy Azure, a więc region, w tym miejscu tylko nie jest ograniczona do regionów platformy Azure, ale można też lokalnego centrum danych lub wystąpienie aplikacji, w niektórych innych chmur.
@@ -50,10 +50,10 @@ Zaplecza aplikacji, w kontekście drzwi do przodu, odnosi się do nazwy hosta lu
 
 Po dodaniu zaplecza w puli zaplecza usługi drzwiami frontowymi należy wypełnić następujące informacje:
 
-1. **Typ hosta zaplecza**: typ zasobu, które chcesz dodać. Drzwiami frontowymi obsługuje automatyczne odnajdowanie zaplecza aplikacji z usługi app service, usługi w chmurze lub magazynu. Inny zasób na platformie Azure lub nawet zaplecza spoza platformy Azure, wybierz opcję "Niestandardowy host". Uwaga — Podczas konfigurowania interfejsów API nie weryfikuje, czy wewnętrznej bazy danych jest dostępny ze środowisk drzwiami frontowymi zamiast tego należy się upewnić, że zaplecza jest osiągalna drzwiami frontowymi. 
-2. **Nazwa hosta subskrypcji i zaplecze oparte na**: Jeśli nie wybrano "Niestandardowy host" dla typu hosta wewnętrznej bazy danych, a następnie należy określić zakres szczegółów i wybrać wewnętrzną bazą danych, wybierając odpowiednią subskrypcję i odpowiednią nazwę hosta wewnętrznej bazy danych przez użytkownika interfejs.
-3. **Nagłówek hosta zaplecza**: wartość nagłówka hosta wysyłana do wewnętrznej bazy danych dla każdego żądania. Odczyt [nagłówek hosta zaplecza](#hostheader) Aby uzyskać szczegółowe informacje.
-4. **Priorytet**: priorytetów można przypisać do różnych zaplecza, gdy chcesz użyć podstawowa usługa zaplecza dla całego ruchu, a wykonywanie kopii zapasowych w przypadku podstawowej lub kopii zapasowej zaplecza są niedostępne. Przeczytaj więcej na temat [priorytet](front-door-routing-methods.md#priority).
+1. **Typ hosta zaplecza**: Typ zasobu, który chcesz dodać. Drzwiami frontowymi obsługuje automatyczne odnajdowanie zaplecza aplikacji z usługi app service, usługi w chmurze lub magazynu. Inny zasób na platformie Azure lub nawet zaplecza spoza platformy Azure, wybierz opcję "Niestandardowy host". Uwaga — Podczas konfigurowania interfejsów API nie weryfikuje, czy wewnętrznej bazy danych jest dostępny ze środowisk drzwiami frontowymi zamiast tego należy się upewnić, że zaplecza jest osiągalna drzwiami frontowymi. 
+2. **Nazwa hosta subskrypcji i zaplecze oparte na**: Jeśli nie wybrano typu "Niestandardowy host" dla hosta wewnętrznej bazy danych, a następnie należy określić zakres szczegółów i wybrać wewnętrzną bazą danych, wybierając odpowiednią subskrypcję i odpowiednią nazwę hosta wewnętrznej bazy danych z poziomu interfejsu użytkownika.
+3. **Nagłówek hosta zaplecza**: Wartość nagłówka hosta wysyłana do wewnętrznej bazy danych dla każdego żądania. Odczyt [nagłówek hosta zaplecza](#hostheader) Aby uzyskać szczegółowe informacje.
+4. **Priorytet**: Jeśli chcesz użyć podstawowa usługa zaplecza dla całego ruchu, a wykonywanie kopii zapasowych w przypadku, gdy główna osoba kontaktowa lub kopii zapasowej zaplecza są niedostępne, można przypisać priorytety do różnych zaplecza. Przeczytaj więcej na temat [priorytet](front-door-routing-methods.md#priority).
 5. **Waga**: Jeśli chcesz dystrybuować ruch w zestawie zaplecza, równomiernie lub według wagi współczynniki można przypisać wagi do różnych zaplecza. Przeczytaj więcej na temat [wagi](front-door-routing-methods.md#weighted).
 
 
@@ -75,5 +75,5 @@ Pole "Nagłówek hosta dla wewnętrznej bazy danych" można skonfigurować dla z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

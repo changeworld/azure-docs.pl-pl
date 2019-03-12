@@ -6,21 +6,21 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 6f36879828f5927cbb5477b32cdb6b4832010d4c
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: ced279575c0dd6ca2509911a53a23c2ebf9eb77e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413136"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762046"
 ---
-# <a name="quickstart-clone-a-notebook"></a>Szybki Start: Klonowanie notesu
+# <a name="quickstart-clone-a-notebook"></a>Szybki start: Klonowanie notesu
 
 Wielu programistów i analityków danych przechowywania notesy w [repozytoriów GitHub](https://github.com), bezpłatna usługa, która oferuje magazyn i kontroli wersji dla wielu różnych typach projektów. GitHub jest często używana jako sposób nad notesów programu Jupyter, które są uruchamiane lokalnie. W takich przypadkach każdy Współautor, który przechowuje kopię lokalną repozytorium i uruchamia notesów z tej kopii.
 

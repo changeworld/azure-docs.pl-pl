@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 04a82d1ed8735954072f9549f3b2676df0935449
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269301"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762844"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -40,11 +40,12 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Długość](#length)
+* [newGuid](#newguid)
 * [padLeft](#padleft)
 * [Zastąp](#replace)
 * [skip](#skip)
 * [split](#split)
-* [startsWith](resource-group-template-functions-string.md#startswith)
+* [startsWith](#startswith)
 * [ciąg](#string)
 * [podciąg](#substring)
 * [Wypełnij](#take)
@@ -53,14 +54,12 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [trim](#trim)
 * [uniqueString](#uniquestring)
 * [Identyfikator URI](#uri)
-* [uriComponent](resource-group-template-functions-string.md#uricomponent)
-* [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
-
-<a id="base64" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* [uriComponent](#uricomponent)
+* [uriComponentToString](#uricomponenttostring)
+* [utcNow](#utcnow)
 
 ## <a name="base64"></a>base64
+
 `base64(inputString)`
 
 Zwraca reprezentację base64 ciągu wejściowego.
@@ -69,7 +68,7 @@ Zwraca reprezentację base64 ciągu wejściowego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |ciąg |Wartość do zwrócenia reprezentacji base64. |
+| inputString |Yes |string |Wartość do zwrócenia reprezentacji base64. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -124,21 +123,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | toStringOutput | String | Raz dwa trzy |
 | toJsonOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-<a id="base64tojson" />
-
 ## <a name="base64tojson"></a>base64ToJson
+
 `base64tojson`
 
 Konwertuje obiekt JSON reprezentacji base64.
@@ -147,7 +133,7 @@ Konwertuje obiekt JSON reprezentacji base64.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |ciąg |Reprezentacji base64, który można przekonwertować na obiekt JSON. |
+| base64Value |Yes |string |Reprezentacji base64, który można przekonwertować na obiekt JSON. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -202,21 +188,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | toStringOutput | String | Raz dwa trzy |
 | toJsonOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-<a id="base64tostring" />
-
 ## <a name="base64tostring"></a>base64ToString
+
 `base64ToString(base64Value)`
 
 Konwertuje ciąg reprezentacji base64.
@@ -225,7 +198,7 @@ Konwertuje ciąg reprezentacji base64.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |ciąg |Reprezentacji base64 do przekonwertowania na ciąg. |
+| base64Value |Yes |string |Reprezentacji base64 do przekonwertowania na ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -280,21 +253,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | toStringOutput | String | Raz dwa trzy |
 | toJsonOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-<a id="concat" />
-
 ## <a name="concat"></a>concat
+
 `concat (arg1, arg2, arg3, ...)`
 
 Łączy wiele wartości parametrów i zwraca połączony ciąg lub łączy wiele tablic i zwraca tablicę połączonych.
@@ -304,7 +264,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |tablica lub ciąg |Pierwsza wartość łączenia. |
-| dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia. |
+| dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Ciąg lub tablicę wartości łączonych.
@@ -338,18 +298,6 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
-
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
 
 Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) pokazuje, jak połączyć dwie tablice.
 
@@ -392,21 +340,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | Wróć | Tablica | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-<a id="contains" />
-
 ## <a name="contains"></a>zawiera
+
 `contains (container, itemToFind)`
 
 Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz lub ciąg zawiera podciąg. Porównanie ciągów jest rozróżniana wielkość liter. Jednak podczas testowania, jeśli obiekt zawiera klucz, wynikiem porównania jest rozróżniana wielkość liter.
@@ -486,21 +421,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-<a id="datauri" />
-
 ## <a name="datauri"></a>dataUri
+
 `dataUri(stringToConvert)`
 
 Konwertuje wartość identyfikatora URI danych.
@@ -509,7 +431,7 @@ Konwertuje wartość identyfikatora URI danych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Yes |ciąg |Wartość do przekonwertowania na dane identyfikatora URI. |
+| stringToConvert |Yes |string |Wartość do przekonwertowania na dane identyfikatora URI. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -554,21 +476,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Cześć ludzie! |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-<a id="datauritostring" />
-
 ## <a name="datauritostring"></a>dataUriToString
+
 `dataUriToString(dataUriToConvert)`
 
 Konwertuje danych URI sformatowana wartość na ciąg.
@@ -577,7 +486,7 @@ Konwertuje danych URI sformatowana wartość na ciąg.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Yes |ciąg |Dane wartości identyfikatora URI do przekonwertowania. |
+| dataUriToConvert |Yes |string |Dane wartości identyfikatora URI do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -622,21 +531,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Cześć ludzie! |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-<a id="empty" /> 
-
 ## <a name="empty"></a>pusty
+
 `empty(itemToTest)`
 
 Określa, czy tablica, obiekt lub ciąg jest pusty.
@@ -700,21 +596,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | objectEmpty | Bool | True |
 | stringEmpty | Bool | True |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-<a id="endswith" />
-
 ## <a name="endswith"></a>endsWith
+
 `endsWith(stringToSearch, stringToFind)`
 
 Określa, czy ciąg kończy się wartością. W porównaniu jest rozróżniana wielkość liter.
@@ -723,8 +606,8 @@ Określa, czy ciąg kończy się wartością. W porównaniu jest rozróżniana w
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element, aby znaleźć. |
-| stringToFind |Yes |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToFind |Yes |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -779,21 +662,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-<a id="first" />
-
 ## <a name="first"></a>pierwszy
+
 `first(arg1)`
 
 Zwraca pierwszy znak ciągu lub pierwszy element tablicy.
@@ -844,18 +714,6 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | String | jeden |
 | stringOutput | String | O |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
 ## <a name="guid"></a>Identyfikator GUID
 
 `guid (baseString, ...)`
@@ -866,14 +724,14 @@ Tworzy wartość w formacie Unikatowy identyfikator globalny na podstawie warto�
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |ciąg |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć identyfikator GUID. |
-| dodatkowe parametry zgodnie z potrzebami |Nie |ciąg |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
+| baseString |Yes |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć identyfikator GUID. |
+| dodatkowe parametry zgodnie z potrzebami |Nie |string |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
 
 Ta funkcja jest przydatne, gdy trzeba utworzyć wartość w formacie globalnie unikatowy identyfikator. Możesz podać wartości parametrów, które ograniczają zakres unikatowości dla wyniku. Można określić, czy nazwa jest unikatowa w dół do subskrypcji, grupy zasobów lub wdrażania.
 
-Zwracana wartość nie jest losowy ciąg, ale raczej wynik funkcji skrótu. Zwrócona wartość jest 36 znaków. Nie jest unikatowa w skali globalnej.
+Zwracana wartość nie jest losowy ciąg, ale raczej wynik funkcji skrótu o parametrach. Zwrócona wartość jest 36 znaków. Nie jest unikatowa w skali globalnej. Aby utworzyć nowy identyfikator GUID, który nie jest oparty na wartość tego skrótu parametrów, należy użyć [newGuid](#newguid) funkcji.
 
 Poniższe przykłady pokazują, jak utworzyć unikatową wartość dla często używanych poziomy za pomocą identyfikatora guid.
 
@@ -927,21 +785,8 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
-```
-
-<a id="indexof" />
-
 ## <a name="indexof"></a>indexOf
+
 `indexOf(stringToSearch, stringToFind)`
 
 Zwraca pierwszą pozycję wartości w ciągu. W porównaniu jest rozróżniana wielkość liter.
@@ -950,8 +795,8 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu jest rozróżniana w
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element, aby znaleźć. |
-| stringToFind |Yes |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToFind |Yes |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1001,21 +846,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-<a id="last" />
-
 ## <a name="last"></a>ostatni
+
 `last (arg1)`
 
 Zwraca ostatni znak w ciągu lub ostatniego elementu w tablicy.
@@ -1066,21 +898,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | String | trzy |
 | stringOutput | String | e |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
-
-<a id="lastindexof" />
-
 ## <a name="lastindexof"></a>lastIndexOf
+
 `lastIndexOf(stringToSearch, stringToFind)`
 
 Zwraca pozycję ostatniego wartości w ciągu. W porównaniu jest rozróżniana wielkość liter.
@@ -1089,8 +908,8 @@ Zwraca pozycję ostatniego wartości w ciągu. W porównaniu jest rozróżniana 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element, aby znaleźć. |
-| stringToFind |Yes |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToFind |Yes |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1140,21 +959,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-<a id="length" />
-
 ## <a name="length"></a>Długość
+
 `length(string)`
 
 Zwraca liczbę znaków w ciągu lub elementów w tablicy.
@@ -1212,21 +1018,105 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+## <a name="newguid"></a>newGuid
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+`newGuid()`
+
+Zwraca wartość w formacie globalnie unikatowy identyfikator. **Tej funkcji można używać tylko wartości domyślnej dla parametru.**
+
+### <a name="remarks"></a>Uwagi
+
+Tej funkcji w wyrażeniu można używać tylko dla wartości domyślnej parametru. Użycie tej funkcji w jakimkolwiek innym miejscu w szablonie zwraca błąd. Funkcja nie jest dozwolona w innych części szablonu, ponieważ zwraca inną wartość w każdym razem, gdy jest wywoływana. Wdrażanie tego samego szablonu z tymi samymi parametrami w takich sytuacjach przydałaby generowane niezawodnie takie same wyniki.
+
+Funkcja newGuid różni się od [guid](#guid) działać, ponieważ on nie przyjmuje żadnych parametrów. Po wywołaniu guid za pomocą tego samego parametru, zwraca ten sam identyfikator każdorazowo. Za pomocą identyfikatora guid musi być niezawodne wygenerowany tego samego identyfikatora GUID dla określonego środowiska. NewGuid należy używać wtedy, gdy konieczne jest inny identyfikator za każdym razem takich jak wdrażanie zasobów w środowisku testowym.
+
+Jeśli używasz [opcji, aby przeprowadzić ponowne wdrożenie wcześniej pomyślnego wdrożenia](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)i wcześniejsze wdrożenie zawiera parametr, który używa newGuid, parametr nie jest ponownie oceniane. Zamiast tego wartość tego parametru z wcześniejszych wdrożenia jest automatycznie ponownie we wdrożeniu wycofywania.
+
+W środowisku testowym konieczne może być wielokrotnie wdrażać zasoby znajdujące się tylko przez krótki czas. Zamiast tworzenia unikatowych nazw, można użyć newGuid z [uniqueString](#uniquestring) utworzyć unikatowe nazwy.
+
+Należy zachować ostrożność, ponownego wdrażania szablonu, która korzysta z funkcji newGuid dla wartości domyślnej. Podczas ponownego wdrażania i niepodania wartości dla parametru funkcji są ponownie oceniane. Jeśli chcesz zaktualizowanie istniejącego zasobu, zamiast tworzyć nowy są przekazywane w wartości parametru z wcześniejsze wdrożenie.
+
+### <a name="return-value"></a>Wartość zwracana
+
+Ciąg zawierający 36 znaków w formacie globalnie unikatowy identyfikator.
+
+### <a name="examples"></a>Przykłady
+
+Następującego przykładowego szablonu zawiera parametr o nowy identyfikator.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "guidValue": {
+            "type": "string",
+            "defaultValue": "[newGuid()]"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "guidOutput": {
+            "type": "string",
+            "value": "[parameters('guidValue')]"
+        }
+    }
+}
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Dane wyjściowe z poprzedniego przykładu różni się dla każdego wdrożenia, ale będzie wyglądać podobnie do:
 
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+| Name (Nazwa) | Typ | Wartość |
+| ---- | ---- | ----- |
+| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+
+W poniższym przykładzie użyto funkcji newGuid do utworzenia unikatowej nazwy dla konta magazynu. Ten szablon może działać dla środowiska testowego, gdy konto magazynu istnieje przez krótki czas i nie jest ponownie wdrażana.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "guidValue": {
+            "type": "string",
+            "defaultValue": "[newGuid()]"
+        }
+    },
+    "variables": {
+        "storageName": "[concat('storage', uniqueString(parameters('guidValue')))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "location": "West US",
+            "apiVersion": "2018-07-01",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2",
+            "properties": {}
+        }
+    ],
+    "outputs": {
+        "nameOutput": {
+            "type": "string",
+            "value": "[variables('storageName')]"
+        }
+    }
+}
 ```
 
-<a id="padleft" />
+Dane wyjściowe z poprzedniego przykładu różni się dla każdego wdrożenia, ale będzie wyglądać podobnie do:
+
+| Name (Nazwa) | Typ | Wartość |
+| ---- | ---- | ----- |
+| nameOutput | string | storagenziwvyru7uxie |
+
 
 ## <a name="padleft"></a>padLeft
+
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
 Zwraca ciąg wyrównany do prawej, dodając znaków z lewej strony aż do osiągnięcia określonej całkowitej długości.
@@ -1275,21 +1165,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
-```
-
-<a id="replace" />
-
 ## <a name="replace"></a>Zastąp
+
 `replace(originalString, oldString, newString)`
 
 Zwraca nowy ciąg ze wszystkimi wystąpieniami jednego ciągu, zastąpiona przez innego ciągu.
@@ -1298,9 +1175,9 @@ Zwraca nowy ciąg ze wszystkimi wystąpieniami jednego ciągu, zastąpiona przez
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalString |Yes |ciąg |Wartość, która zawiera wszystkie wystąpienia jednego ciągu, zastąpiona przez innego ciągu. |
-| Staryciąg |Yes |ciąg |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
-| newString |Yes |ciąg |Ciąg, który można dodać zamiast usunięto ciąg. |
+| originalString |Yes |string |Wartość, która zawiera wszystkie wystąpienia jednego ciągu, zastąpiona przez innego ciągu. |
+| Staryciąg |Yes |string |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
+| newString |Yes |string |Ciąg, który można dodać zamiast usunięto ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1341,21 +1218,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
-```
-
-<a id="skip" />
-
 ## <a name="skip"></a>pomiń
+
 `skip(originalValue, numberToSkip)`
 
 Zwraca ciąg zawierający wszystkie znaki po określonej liczbie znaków lub tablicy o liczbie wszystkich elementów po określonej liczbie elementów.
@@ -1422,21 +1286,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | Tablica | ["trzy"] |
 | stringOutput | String | dwa trzy |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-<a id="split" />
-
 ## <a name="split"></a>split
+
 `split(inputString, delimiter)`
 
 Zwraca tablicę ciągów, zawierającą podciągi ciągu wejściowym są rozdzielane znakami określonych ograniczników.
@@ -1445,7 +1296,7 @@ Zwraca tablicę ciągów, zawierającą podciągi ciągu wejściowym są rozdzie
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |ciąg |Ciągu do podzielenia. |
+| inputString |Yes |string |Ciągu do podzielenia. |
 | Ogranicznik |Yes |ciąg lub tablicę ciągów |Ogranicznik służące do dzielenia ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -1494,21 +1345,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | firstOutput | Tablica | ["jednego", "2", "3"] |
 | secondOutput | Tablica | ["jednego", "2", "3"] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
-```
-
-<a id="startswith" />
-
 ## <a name="startswith"></a>startsWith
+
 `startsWith(stringToSearch, stringToFind)`
 
 Określa, czy ciąg zaczyna się od wartości. W porównaniu jest rozróżniana wielkość liter.
@@ -1517,8 +1355,8 @@ Określa, czy ciąg zaczyna się od wartości. W porównaniu jest rozróżniana 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element, aby znaleźć. |
-| stringToFind |Yes |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToFind |Yes |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1573,21 +1411,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+## <a name="string"></a>string
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-<a id="string" />
-
-## <a name="string"></a>ciąg
 `string(valueToConvert)`
 
 Konwertuje określoną wartość na ciąg.
@@ -1657,21 +1482,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | String | ["a","b","c"] |
 | intOutput | String | 5 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
-```
-
-<a id="substring" />
-
 ## <a name="substring"></a>podciąg
+
 `substring(stringToParse, startIndex, length)`
 
 Zwraca podciąg, który rozpoczyna się od określonej pozycji znaku i zawiera określoną liczbę znaków.
@@ -1680,7 +1492,7 @@ Zwraca podciąg, który rozpoczyna się od określonej pozycji znaku i zawiera o
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Yes |ciąg |Oryginalny ciąg znaków, z której jest wyodrębniany podciąg. |
+| stringToParse |Yes |string |Oryginalny ciąg znaków, z której jest wyodrębniany podciąg. |
 | startIndex |Nie |int |Liczony od zera znaku pozycja początkowa podciąg. |
 | Długość |Nie |int |Liczba znaków podciąg. Musi odwoływać się do lokalizacji w ciągu. Musi mieć wartość zero lub większą. |
 
@@ -1731,21 +1543,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | substringOutput | String | dwa |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
-```
-
-<a id="take" />
-
 ## <a name="take"></a>Wypełnij
+
 `take(originalValue, numberToTake)`
 
 Zwraca ciąg zawierający określoną liczbę znaków od początku ciągu lub tablicy o określoną liczbę elementów od początku tablicy.
@@ -1812,21 +1611,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | Tablica | ["one", "two"] |
 | stringOutput | String | włączone |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-<a id="tolower" />
-
 ## <a name="tolower"></a>toLower
+
 `toLower(stringToChange)`
 
 Konwertuje określony ciąg na małe litery.
@@ -1835,7 +1621,7 @@ Konwertuje określony ciąg na małe litery.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |ciąg |Wartość do przekonwertowania na małe litery. |
+| stringToChange |Yes |string |Wartość do przekonwertowania na małe litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1876,21 +1662,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | toLowerOutput | String | Raz dwa trzy |
 | toUpperOutput | String | RAZ DWA TRZY |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-<a id="toupper" />
-
 ## <a name="toupper"></a>toUpper
+
 `toUpper(stringToChange)`
 
 Konwertuje określony ciąg na wielkie litery.
@@ -1899,7 +1672,7 @@ Konwertuje określony ciąg na wielkie litery.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |ciąg |Wartość do przekonwertowania na wielkie litery. |
+| stringToChange |Yes |string |Wartość do przekonwertowania na wielkie litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1940,21 +1713,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | toLowerOutput | String | Raz dwa trzy |
 | toUpperOutput | String | RAZ DWA TRZY |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-<a id="trim" />
-
 ## <a name="trim"></a>TRIM
+
 `trim (stringToTrim)`
 
 Usuwa wszystkie wiodące i końcowe białe znaki z określonego ciągu.
@@ -1963,7 +1723,7 @@ Usuwa wszystkie wiodące i końcowe białe znaki z określonego ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Yes |ciąg |Wartość można przycięcia. |
+| stringToTrim |Yes |string |Wartość można przycięcia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1999,21 +1759,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | Wróć | String | Raz dwa trzy |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
-```
-
-<a id="uniquestring" />
-
 ## <a name="uniquestring"></a>uniqueString
+
 `uniqueString (baseString, ...)`
 
 Tworzy ciąg deterministyczne wyznaczania wartości skrótu na podstawie wartości, podane jako parametry. 
@@ -2022,8 +1769,8 @@ Tworzy ciąg deterministyczne wyznaczania wartości skrótu na podstawie wartoś
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |ciąg |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć unikatowy ciąg. |
-| dodatkowe parametry zgodnie z potrzebami |Nie |ciąg |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
+| baseString |Yes |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć unikatowy ciąg. |
+| dodatkowe parametry zgodnie z potrzebami |Nie |string |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
 
@@ -2062,6 +1809,8 @@ Poniższy przykład przedstawia sposób tworzenia unikatowej nazwy dla konta mag
     ...
 ```
 
+Jeśli musisz utworzyć nową nazwę unikatową za każdym razem wdrożyć szablon, a nie intencji na aktualizację zasobu, można użyć [utcNow](#utcnow) funkcji z uniqueString. Tej metody można użyć w środowisku testowym. Aby uzyskać przykład, zobacz [utcNow](#utcNow).
+
 ### <a name="return-value"></a>Wartość zwracana
 
 Ciąg zawierający 13 znaków.
@@ -2088,21 +1837,8 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
-```
-
-<a id="uri" />
-
 ## <a name="uri"></a>identyfikator URI
+
 `uri (baseUri, relativeUri)`
 
 Tworzy bezwzględny identyfikator URI, łącząc baseUri i ciąg relativeUri.
@@ -2111,8 +1847,8 @@ Tworzy bezwzględny identyfikator URI, łącząc baseUri i ciąg relativeUri.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Yes |ciąg |Ciąg podstawowy identyfikator uri. |
-| relativeUri |Yes |ciąg |Względny identyfikator uri ciąg do dodania do ciągu podstawowy identyfikator uri. |
+| baseUri |Yes |string |Ciąg podstawowy identyfikator uri. |
+| relativeUri |Yes |string |Względny identyfikator uri ciąg do dodania do ciągu podstawowy identyfikator uri. |
 
 Wartość **baseUri** parametr może zawierać określonego pliku, ale tylko ścieżki podstawowej stosowane jest przy konstruowaniu identyfikatora URI. Na przykład przekazanie `http://contoso.com/resources/azuredeploy.json` jako parametr baseUri skutkuje podstawowy identyfikator URI `http://contoso.com/resources/`.
 
@@ -2165,21 +1901,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-<a id="uricomponent" />
-
 ## <a name="uricomponent"></a>uriComponent
+
 `uricomponent(stringToEncode)`
 
 Koduje identyfikatora URI.
@@ -2188,7 +1911,7 @@ Koduje identyfikatora URI.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Yes |ciąg |Wartość do zakodowania. |
+| stringToEncode |Yes |string |Wartość do zakodowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2233,21 +1956,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-<a id="uricomponenttostring" />
-
 ## <a name="uricomponenttostring"></a>uriComponentToString
+
 `uriComponentToString(uriEncodedString)`
 
 Zwraca ciąg identyfikatora URI zakodowana wartość.
@@ -2256,7 +1966,7 @@ Zwraca ciąg identyfikatora URI zakodowana wartość.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Yes |ciąg |Wartość do przekonwertowania na ciąg kodowany w identyfikator URI. |
+| uriEncodedString |Yes |string |Wartość do przekonwertowania na ciąg kodowany w identyfikator URI. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2301,16 +2011,113 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+## <a name="utcnow"></a>utcNow
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+`utcNow(format)`
+
+Zwraca bieżącą wartość daty/godziny (UTC) w określonym formacie. Jeśli format nie zostanie podany, jest używany format ISO 8601 (yyyyMMddTHHmmssZ). **Tej funkcji można używać tylko wartości domyślnej dla parametru.**
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Wymagane | Typ | Opis |
+|:--- |:--- |:--- |:--- |
+| format |Nie |string |Wartość do przekonwertowania na ciąg kodowany w identyfikator URI. Użyj jednej [ciągi w standardowym formacie](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowe ciągi formatujące](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+
+### <a name="remarks"></a>Uwagi
+
+Tej funkcji w wyrażeniu można używać tylko dla wartości domyślnej parametru. Użycie tej funkcji w jakimkolwiek innym miejscu w szablonie zwraca błąd. Funkcja nie jest dozwolona w innych części szablonu, ponieważ zwraca inną wartość w każdym razem, gdy jest wywoływana. Wdrażanie tego samego szablonu z tymi samymi parametrami w takich sytuacjach przydałaby generowane niezawodnie takie same wyniki.
+
+Jeśli używasz [opcji, aby przeprowadzić ponowne wdrożenie wcześniej pomyślnego wdrożenia](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)i wcześniejsze wdrożenie zawiera parametr, który używa utcNow, parametr nie jest ponownie oceniane. Zamiast tego wartość tego parametru z wcześniejszych wdrożenia jest automatycznie ponownie we wdrożeniu wycofywania.
+
+Należy zachować ostrożność, ponownego wdrażania szablonu, która korzysta z funkcji utcNow dla wartości domyślnej. Podczas ponownego wdrażania i niepodania wartości dla parametru funkcji są ponownie oceniane. Jeśli chcesz zaktualizowanie istniejącego zasobu, zamiast tworzyć nowy są przekazywane w wartości parametru z wcześniejsze wdrożenie.
+
+### <a name="return-value"></a>Wartość zwracana
+
+Bieżąca wartość daty/godziny UTC.
+
+### <a name="examples"></a>Przykłady
+
+Następującego przykładowego szablonu zawiera różne formaty dla wartości daty/godziny.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "utcValue": {
+            "type": "string",
+            "defaultValue": "[utcNow()]"
+        },
+        "utcShortValue": {
+            "type": "string",
+            "defaultValue": "[utcNow('d')]"
+        },
+        "utcCustomValue": {
+            "type": "string",
+            "defaultValue": "[utcNow('M d')]"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "utcOutput": {
+            "type": "string",
+            "value": "[parameters('utcValue')]"
+        },
+        "utcShortOutput": {
+            "type": "string",
+            "value": "[parameters('utcShortValue')]"
+        },
+        "utcCustomOutput": {
+            "type": "string",
+            "value": "[parameters('utcCustomValue')]"
+        }
+    }
+}
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Dane wyjściowe z poprzedniego przykładu różni się dla każdego wdrożenia, ale będzie wyglądać podobnie do:
 
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+| Name (Nazwa) | Typ | Wartość |
+| ---- | ---- | ----- |
+| utcOutput | string | 20190305T175318Z |
+| utcShortOutput | string | 03/05/2019 |
+| utcCustomOutput | string | 3 5 |
+
+Następny przykład pokazuje, jak użyć wartości z funkcji, ustawiając wartość tagu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "utcShort": {
+            "type": "string",
+            "defaultValue": "[utcNow('d')]"
+        },
+        "rgName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "name": "[parameters('rgName')]",
+            "location": "westeurope",
+            "tags":{
+                "createdDate": "[parameters('utcShort')]"
+            },
+            "properties":{}
+        }
+    ],
+    "outputs": {
+        "utcShort": {
+            "type": "string",
+            "value": "[parameters('utcShort')]"
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

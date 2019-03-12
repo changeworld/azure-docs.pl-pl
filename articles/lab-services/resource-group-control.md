@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: e4e2a01bbac7aebb70852b93c51c32933cc75eec
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f6e604940c9e2e84f119fdd1859ad4b2cda23aef
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652182"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588707"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Określ grupę zasobów dla maszyn wirtualnych laboratorium Azure DevTest Labs
 
@@ -30,20 +30,19 @@ Jako właściciel laboratorium możesz skonfigurować maszyny wirtualne laborato
 
 Dzięki tej funkcji można użyć skryptu do określenia nowej lub istniejącej grupy zasobów w ramach subskrypcji platformy Azure dla wszystkich laboratorium, maszyny wirtualne. Obecnie usługa Azure DevTest Labs obsługuje tę funkcję za pomocą interfejsu API.
 
-## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>Interfejs API, aby skonfigurować grupę zasobów dla maszyn wirtualnych laboratorium
-Masz następujące opcje jako właściciel laboratorium, korzystając z tego interfejsu API:
+## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
+Wykonaj następujące kroki, aby określić grupę zasobów dla wszystkich maszyn wirtualnych tworzonych w środowisku laboratoryjnym. 
 
-- Wybierz **grupy zasobów laboratorium** dla wszystkich maszyn wirtualnych.
-- Wybierz **istniejącą grupę zasobów** innej niż grupa zasobów laboratorium dla wszystkich maszyn wirtualnych.
-- Wprowadź **nową grupę zasobów** nazwy wszystkich maszyn wirtualnych.
-- Kontynuuj korzystanie z istniejącego zachowania, w której grupa zasobów jest tworzona dla każdej maszyny Wirtualnej w środowisku laboratoryjnym.
- 
-To ustawienie dotyczy nowe maszyny wirtualne utworzone w środowisku laboratoryjnym. Starsze maszyny wirtualne w laboratorium, które zostały utworzone w ich własnych grupach zasobów pozostaną niezmienione. Środowisk, które są tworzone w środowisku laboratoryjnym nadal pozostać w ich własnych grupach zasobów.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz **wszystkich usług** w menu nawigacji po lewej stronie. 
+3. Wybierz z listy pozycję **DevTest Labs**.
+4. Wybierz z listy labs, Twoje **laboratorium**.  
+5. Wybierz **konfiguracji i zasad** w **ustawienia** sekcji, w menu po lewej stronie. 
+6. Wybierz **ustawienia Lab** w menu po lewej stronie. 
+7. Wybierz **wszystkie maszyny wirtualne w jednej grupie zasobów**. 
+8. Wybierz istniejącą grupę zasobów na rozwijanej liście (lub) wybierz **Utwórz nową**, wprowadź **nazwa** dla grupy zasobów, a następnie wybierz **OK**. 
 
-Jak używać tego interfejsu API:
-- Użyj interfejsu API w wersji **2018_10_15_preview**.
-- Jeśli określisz nową grupę zasobów, upewnij się, że **uprawnień do zapisu na temat grup zasobów** w ramach subskrypcji. Jeśli nie masz uprawnień do zapisu, tworzenie nowych maszyn wirtualnych w określonej grupie zasobów zakończy się niepowodzeniem.
-- Podczas korzystania z interfejsu API, przekazywanie **pełny identyfikator grupy zasobów**. Na przykład: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Upewnij się, że grupa zasobów znajduje się w tej samej subskrypcji co laboratorium. 
+    ![Wybierz grupę zasobów dla wszystkich maszyn wirtualnych w laboratorium](./media/resource-group-control/select-resource-group.png)
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell 
 Poniższy przykład pokazuje, jak używać skryptu programu PowerShell do tworzenia wszystkich maszyn wirtualnych laboratorium w nowej grupie zasobów.
@@ -97,6 +96,22 @@ Jeśli używasz szablonu usługi Azure Resource Manager, aby utworzyć laborator
             "dependsOn": []
         },
 ```
+
+
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>Interfejs API, aby skonfigurować grupę zasobów dla maszyn wirtualnych laboratorium
+Masz następujące opcje jako właściciel laboratorium, korzystając z tego interfejsu API:
+
+- Wybierz **grupy zasobów laboratorium** dla wszystkich maszyn wirtualnych.
+- Wybierz **istniejącą grupę zasobów** innej niż grupa zasobów laboratorium dla wszystkich maszyn wirtualnych.
+- Wprowadź **nową grupę zasobów** nazwy wszystkich maszyn wirtualnych.
+- Kontynuuj korzystanie z istniejącego zachowania, w której grupa zasobów jest tworzona dla każdej maszyny Wirtualnej w środowisku laboratoryjnym.
+ 
+To ustawienie dotyczy nowe maszyny wirtualne utworzone w środowisku laboratoryjnym. Starsze maszyny wirtualne w laboratorium, które zostały utworzone w ich własnych grupach zasobów pozostaną niezmienione. Środowisk, które są tworzone w środowisku laboratoryjnym nadal pozostać w ich własnych grupach zasobów.
+
+Jak używać tego interfejsu API:
+- Użyj interfejsu API w wersji **2018_10_15_preview**.
+- Jeśli określisz nową grupę zasobów, upewnij się, że **uprawnień do zapisu na temat grup zasobów** w ramach subskrypcji. Jeśli nie masz uprawnień do zapisu, tworzenie nowych maszyn wirtualnych w określonej grupie zasobów zakończy się niepowodzeniem.
+- Podczas korzystania z interfejsu API, przekazywanie **pełny identyfikator grupy zasobów**. Na przykład: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Upewnij się, że grupa zasobów znajduje się w tej samej subskrypcji co laboratorium. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

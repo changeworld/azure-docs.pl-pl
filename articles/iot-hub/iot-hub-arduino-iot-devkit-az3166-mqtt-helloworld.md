@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 8959c1d773a7e4ea79c7a7531c2bba578f2801e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158486"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552014"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Wysyłanie komunikatów do serwera MQTT
 
 Często systemów Internetu rzeczy (IoT) dotyczy sporadycznie, niska jakość lub wolne połączenia przez internet. MQTT jest machine-to-machine (M2M) łączności protokołu, który został utworzony przy użyciu tych wyzwań, należy pamiętać. 
 
-MQTT biblioteki klienckiej używana w tym miejscu jest częścią [Eclipse Paho](http://www.eclipse.org/paho/) projektu, który udostępnia interfejsy API dotyczące korzystania z protokołu MQTT za pośrednictwem wielu środków transportu.
+MQTT biblioteki klienckiej używana w tym miejscu jest częścią [Eclipse Paho](https://www.eclipse.org/paho/) projektu, który udostępnia interfejsy API dotyczące korzystania z protokołu MQTT za pośrednictwem wielu środków transportu.
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
@@ -57,7 +57,7 @@ Typ `Ctrl+P` (z systemem macOS: `Cmd+P`) do uruchamiania `task device-upload`. P
 ![przekazywanie urządzeń](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> Może pojawić się "Błąd: AZ3166 USŁUGI: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeksu pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się [sekcji Projektowanie Mxchip IoT często zadawanych pytań](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Może pojawić się "Błąd: AZ3166: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeksu pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się [sekcji Projektowanie Mxchip IoT często zadawanych pytań](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Projekt testowy
 
@@ -77,7 +77,7 @@ Serial Monitor Wyświetla wszystkie komunikaty wysyłane przez szkic próbki. Sz
 
 Jeśli napotkasz problemy, zapoznaj się [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub połączyć się przy użyciu następujących kanałów:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Zobacz także

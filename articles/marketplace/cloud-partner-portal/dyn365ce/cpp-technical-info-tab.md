@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 214abd64232130dd3fd5fdde510f7545732ac82e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082943"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731480"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 dla karty informacje techniczne zaangażowania klientów
 
@@ -58,7 +58,7 @@ W poniższej tabeli opisano te pola.
 |  Nazwa pliku pakietu     |  Nazwa pliku pakietu (zip).  Ta nazwa jest *nie* publicznych i będą używane wewnętrznie przez zespół certyfikacji Dynamics 365.  |
 |  Url                          |  Adres URL konta usługi Azure Storage, który zawiera plik przesłanym pakiecie. Ten adres URL powinien zawierać tylko do odczytu klucza sygnatury dostępu Współdzielonego umożliwia nasz zespół pobrać pakiet do weryfikacji.  |
 | Więcej niż jeden pakiet aplikacji crm     | Wybierz tak tylko, jeśli są obsługiwanie wielu wersji programu crm przy użyciu różnych pakietach.  Każda wersja ma odpowiedni umożliwiający pliku pakietu, które należy utworzyć osobno.  |
-| Scenariusz i użycie zasobów wielkości liter   | Umożliwia przekazywanie dokumentu specyfikacji funkcjonalności aplikacji, do użytku przez zespół weryfikacyjny Dynamics 365.  Jest w formacie ten spec [szablon scenariusza użytkownika E2E](http://download.microsoft.com/download/5/1/8/51812AC9-BCD8-489F-937C-5D439C494EC1/E2E%20User%20Scenario%20Template.docx).  |
+| Scenariusz i użycie zasobów wielkości liter   | Umożliwia przekazywanie dokumentu specyfikacji funkcjonalności aplikacji, do użytku przez zespół weryfikacyjny Dynamics 365.  Jest w formacie ten spec [szablon scenariusza użytkownika E2E](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
 |  |  |
 
 

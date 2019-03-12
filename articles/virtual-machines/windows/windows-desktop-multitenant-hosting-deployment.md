@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: dc798dc78ed0cdbf11bbe3bc2dd805433b127a4d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976926"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569981"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak wdrożyć system Windows 10 na platformie Azure dzięki wielodostępnej praw hostingu 
 W przypadku klientów Windows 10 Enterprise E3/E5 dla poszczególnych użytkowników lub dostęp do usług pulpitu wirtualnego Windows na użytkownika (licencje subskrypcji użytkownika lub licencji subskrypcji użytkownika dodatku) wielodostępnej hostingu praw dla systemu Windows 10 umożliwia Przenieś licencje systemu Windows 10 do chmury i uruchamianie maszyn wirtualnych z systemem Windows 10 na platformie Azure bez konieczności płacenia za innej licencji. Aby uzyskać więcej informacji, zobacz [wielodostępnej Hosting w systemie Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -72,11 +72,11 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 
 **Wdrażanie przy użyciu wdrażania usługi Azure Resource Manager szablon** w szablonach usługi Resource Manager, dodatkowy parametr dla `licenseType` może być określony. Przeczytaj więcej o [Tworzenie szablonów usługi Azure Resource Manager](../../resource-group-authoring-templates.md). Po utworzeniu wirtualnego dysku twardego przekazany na platformę Azure, Edytuj szablon usługi Resource Manager obejmują typ licencji w ramach dostawcy obliczeń i wdróż szablon, jak zwykle:
 ```json
-"properties": {  
-   "licenseType": "Windows_Client",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Client",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 **Wdrażanie przy użyciu programu PowerShell** podczas wdrażania maszyny Wirtualnej systemu Windows Server za pomocą programu PowerShell, ma dodatkowy parametr dla `-LicenseType`. Po utworzeniu wirtualnego dysku twardego przekazany na platformę Azure, możesz utworzyć maszynę Wirtualną przy użyciu `New-AzVM` i określić typ licencjonowania w następujący sposób:

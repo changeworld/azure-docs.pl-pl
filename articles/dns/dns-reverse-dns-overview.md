@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: fa3798a35804998936e0ac166fceff02b01231a0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171514"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534399"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Omówienie odwrotnego DNS i pomocy technicznej na platformie Azure
 
@@ -48,9 +48,9 @@ Na przykład podczas tworzenia strefy wyszukiwania wstecznego rekordów hosta dl
 
 |Klasa podsieci|Prefiks sieci  |Prefiksu odwróconej sieci  |Standardowa sufiks  |Nazwa strefy wyszukiwania wstecznego |
 |-------|----------------|------------|-----------------|---------------------------|
-|Klasa A|203.0.0.0/8     | 203        | .w addr.arpa   | `203.in-addr.arpa`        |
-|Klasa B|198.51.0.0/16   | 51.198     | .w addr.arpa   | `51.198.in-addr.arpa`     |
-|Klasa C|192.0.2.0/24    | 2.0.192    | .w addr.arpa   | `2.0.192.in-addr.arpa`    |
+|Klasa A|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
+|Klasa B|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
+|Klasa C|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
 
 ### <a name="classless-ipv4-delegation"></a>Classless delegowania IPv4
 
@@ -94,8 +94,8 @@ Na przykład. Podczas tworzenia strefy wyszukiwania wstecznego rekordów hosta d
 
 |Prefiks sieci  |Prefiks rozwinięte i odwróconej sieci |Standardowa sufiks |Nazwa strefy wyszukiwania wstecznego  |
 |---------|---------|---------|---------|
-|2001:db8:abdc:: / 64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | . ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
-|2001:db8:1000:9102:: / 64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | . ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
+|2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
+|2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
 ## <a name="azure-support-for-reverse-dns"></a>Pomoc techniczna platformy Azure dla odwrotnego systemu DNS
@@ -109,7 +109,7 @@ Usługa DNS platformy Azure można używać do [hostowanie stref wyszukiwania ws
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat odwrotnym systemem DNS, zobacz [wyszukiwania wstecznego DNS w witrynie Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Aby uzyskać więcej informacji na temat odwrotnym systemem DNS, zobacz [wyszukiwania wstecznego DNS w witrynie Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 Dowiedz się, jak [hostowanie strefy wyszukiwania wstecznego dla usługodawcy internetowego, przypisany zakresowi adresów IP w usłudze Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>

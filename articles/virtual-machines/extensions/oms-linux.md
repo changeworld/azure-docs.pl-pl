@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenie maszyny wirtualnej platformy Azure Log Analytics dla systemu Linux | Dokumentacja firmy Microsoft
+title: Rozszerzenie maszyny wirtualnej platformy Azure Monitor dla systemu Linux | Dokumentacja firmy Microsoft
 description: Wdróż agenta usługi Log Analytics na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,21 +15,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 3bb6bdfa849894547175c5ccf79ee476b4987a97
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a004182371299e98933d0469e9c85313b29ede3e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408823"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550740"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się rozszerzenie maszyny wirtualnej Analytics dla systemu Linux
+# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej platformy Azure Monitor dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
-Usługa log Analytics oferuje możliwości korygowania monitorowania, alertów i alert w chmurze i zasobów lokalnych. Rozszerzenie maszyny wirtualnej Log Analytics Agent dla systemu Linux jest opublikowany i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej usługi Log Analytics dla systemu Linux.
+Dzienniki platformy Azure Monitor zapewnia możliwości korygowania monitorowania, alertów i alertów w zasoby w chmurze i lokalnych. Rozszerzenie maszyny wirtualnej Log Analytics Agent dla systemu Linux jest opublikowany i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania usługi Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Linux.
 
 >[!NOTE]
 >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor OMS Agent for Windows lub Linux zostanie określone jako funkcja agentów usługi Log Analytics dla Windows i usługi Log Analytics agent dla systemu Linux.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,9 +54,9 @@ Rozszerzenia Log Analytics Agent mogą być uruchamiane względem tych dystrybuc
 >
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
-Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej programu Log Analytics i pakietu agenta usługi Log Analytics dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
+Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej platformy Azure Monitor i pakietu agenta usługi Log Analytics dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
 
-| Wersja rozszerzenia maszyny Wirtualnej systemu Linux analizy dzienników | Wersja pakietu agenta analizy dziennika | 
+| Wersja rozszerzenia usługi Azure Monitor maszyny Wirtualnej z systemem Linux | Wersja pakietu agenta analizy dziennika | 
 |--------------------------------|--------------------------|
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
@@ -125,7 +127,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu, takich jak dołączanie do usługi Log Analytics. Przykładowy szablon usługi Resource Manager, który uwzględnia również rozszerzenie Log Analytics Agent VM znajduje się na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu, takich jak dołączanie do usługi Azure Monitor dzienniki. Przykładowy szablon usługi Resource Manager, który uwzględnia również rozszerzenie Log Analytics Agent VM znajduje się na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
 
@@ -220,7 +222,7 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 | 19 | Niepowodzenia instalacji pakietu OMI | 
 | 20 | Niepowodzenia instalacji pakietu SCX |
 | 51 | To rozszerzenie nie jest obsługiwane na system operacyjny maszyny Wirtualnej | |
-| 55 | Nie można nawiązać połączenia z usługą Log Analytics lub wymagane pakiety serwerach lub brakuje Menedżera pakietów jest zablokowany| Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego i sprawdź, czy są zainstalowane narzędzia programu curl i tar. |
+| 55 | Nie można nawiązać połączenia z usługą Azure Monitor lub wymagane pakiety serwerach lub brakuje Menedżera pakietów jest zablokowany| Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego i sprawdź, czy są zainstalowane narzędzia programu curl i tar. |
 
 Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć na [przewodnik rozwiązywania problemów programu Log Analytics Agent for Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
 

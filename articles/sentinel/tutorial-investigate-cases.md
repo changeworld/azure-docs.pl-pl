@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d44c1448296df16e9dd58a486d4cfb21bb053de
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7c4994863f3c145c7095bcc12dd69ff02fab8455
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244202"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540280"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Samouczek: Badanie przypadków z platformy Azure przez wartownika w wersji zapoznawczej
 
@@ -42,7 +42,7 @@ Przypadek może obejmować wiele alertów. To Agregacja wszystkich odpowiednich 
 
 1. Wybierz **przypadków**. **Przypadków** strony informuje o tym, jak wiele przypadków, masz, ile jest otworzyć, ile ustawiono **w toku**, a ilu są zamknięte. W każdym przypadku widać, czas, w którym wystąpił, a stan sprawy. Przyjrzyj się ważność do podejmowania decyzji o obsługę pierwszy. W **przypadków** kliknij **alerty** kartę, aby wyświetlić wszystkie alerty, które są powiązane z przypadkiem. Jednostki, które są mapowane w wcześniej części mogą być wyświetlane w **jednostek** kartę.  Można filtrować przypadki, zgodnie z potrzebami, na przykład według stanu lub ważności. Podczas przeglądania **przypadków** kartę, zobaczysz otwartych spraw, które zawierają alertów wyzwalanych przez reguł wykrywania zdefiniowane w **analizy**. W górnej części zobaczysz swoje aktywnych spraw, nowe sprawy w przypadkach postępu. Widać również omówienie swoje przypadki według ważności.
 
-  ![Pulpit nawigacyjny alertów](./media/tutorial-detect-threats/alert-dashboard.png)
+  ![Pulpit nawigacyjny alertów](./media/tutorial-investigate-cases/cases.png)
 
 2. Aby rozpocząć badanie, kliknij na konkretnym przypadku. Po prawej stronie można wyświetlić szczegółowe informacje, w przypadku, w tym o jego ważność, podsumowanie liczby jednostek (oparte na mapowanie). Każdy przypadek ma unikatowy identyfikator. Ważność przypadku jest określana zgodnie z najpoważniejsze alert zawarte w tym przypadku.  
 
