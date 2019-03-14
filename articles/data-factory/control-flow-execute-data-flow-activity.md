@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 4e661f838cc0b8e52ff72e4e44a43d611fa3355f
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 856f4bd9c2b04ff10ed598c5e641955e1de99398
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727386"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792416"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Wykonywanie działań przepływu danych w usłudze Azure Data Factory
 Działanie przepływu danych wykonaj służy do uruchamiania przepływu danych ADF uruchomienia debugowania (piaskownicy) potoku i uruchomień potoków wyzwolone.
@@ -54,6 +54,12 @@ Działanie przepływu danych wykonaj służy do uruchamiania przepływu danych A
 ### <a name="run-on"></a>Uruchom na
 
 Wybierz środowisko obliczeniowe dla wykonania przepływu danych. Wartość domyślna to Azure automatyczne rozwiązanie domyślne środowisko Integration Runtime. Ten wybór spowoduje to wykonanie przepływu danych w środowisku platformy Spark w tym samym regionie, co fabryką danych. Typ obliczenia będą klastra zadań, co oznacza, że środowisko obliczeniowe może potrwać kilka minut do uruchamiania.
+
+### <a name="debugging-pipelines-with-data-flows"></a>Debugowanie potoków przy użyciu przepływów danych
+
+![Debugowanie przycisk](media/data-flow/debugbutton.png "przycisk debugowania")
+
+Korzystanie z warmed klastra do badania przepływów danych interaktywnie podczas debugowania procesu, uruchom, użyj danych przepływu Debug. Opcja Pipleine debugowania do testowania przepływów danych w potoku.
 
 ### <a name="compute-type"></a>Typ obliczeń
 

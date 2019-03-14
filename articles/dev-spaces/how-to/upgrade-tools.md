@@ -7,15 +7,14 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.technology: azds-kubernetes
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 5bf85fe36b5c59574a8e12f76aaa44ebe2d85711
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e0a3c5aa849799872371ef1c5ac0867babffebb
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781616"
+ms.locfileid: "57791906"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Uaktualnianie narzędzia Azure Dev miejsca do magazynowania
 

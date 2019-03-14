@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: 43256e13dc1dd3263b213cc1e4a1e1c07af3b5c8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 03/12/2019
+ms.openlocfilehash: 23cce4d846cdf183f41b25663ba21d3bf1d27013
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2019
-ms.locfileid: "57786584"
+ms.locfileid: "57791004"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testowanie aplikacji logiki za pomocą danych testowych, konfigurując wyniki statycznej
 
@@ -67,6 +67,10 @@ Na przykład jeśli skonfigurowano statyczne wyniki dla usługi Outlook 365 wys�
 
    ![Ikona przedstawiająca włączone wyniki statycznej](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
+   Po uruchomieniu aplikacji logiki w historii uruchamiania aplikacji logiki, **wyniki statycznej** kolumna pokazuje, czy uruchomienie określonego zawiera akcje, które mają statyczny wyniki włączone, na przykład:
+
+   ![Historia - uruchamiania kolumnie wyników statyczne](./media/test-logic-apps-mock-data-static-results/run-history.png)
+
 <a name="reuse-sample-outputs"></a>
 
 ## <a name="reuse-previous-outputs"></a>Ponowne użycie poprzednich danych wyjściowych
@@ -101,7 +105,7 @@ Jeśli Twoja aplikacja logiki ma poprzedniej Uruchom z danych wyjściowych, któ
 
    ![Tryb JSON](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Gdy skończysz, wybierz **gotowe**. Lub, aby powrócić do projektanta, wybierz **tryb przełącznika edytora** (![wybierz pozycję "Tryb edytora przełącznika"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+1. Po zakończeniu wybierz pozycję **Gotowe**. Lub, aby powrócić do projektanta, wybierz **tryb przełącznika edytora** (![wybierz pozycję "Tryb edytora przełącznika"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
 
 ## <a name="disable-static-results"></a>Wyłącz wyniki statycznej
 

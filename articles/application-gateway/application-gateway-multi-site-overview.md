@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 04aca43e7220b0d5f644ca4f03db3a7442972728
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.topic: conceptual
+ms.openlocfilehash: d01ff17966d2e6b9aeaaf3c1f69817dbc84c3a6f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358472"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792637"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostowanie wielu witryn usługi Application Gateway
 
@@ -119,6 +120,6 @@ Reguła routingu nie wymaga żadnej zmiany. Nadal należy wybierać podstawową 
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zapoznaniu się z informacjami o hostowaniu wielu witryn przejdź do [tworzenia bramy aplikacji przy użyciu hostowania wielu witryn](application-gateway-create-multisite-azureresourcemanager-powershell.md), aby utworzyć bramę aplikacji z możliwością obsługi więcej niż jednej aplikacji internetowej.

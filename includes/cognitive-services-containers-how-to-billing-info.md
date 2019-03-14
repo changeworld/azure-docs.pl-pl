@@ -3,14 +3,16 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 002/08/2019
-ms.openlocfilehash: 12c86ca71b7421678b68684cccca86411d604d61
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 03/06/2019
+ms.openlocfilehash: b20ee2df1f468323c3298854371c97950c017e49
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741206"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57788898"
 ---
+Zapytania do kontenera są rozliczane według warstwa cenowa zasobu platformy Azure używane do `<ApiKey>`.
+
 Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
 `docker run` Używa następujących argumentów na potrzeby rozliczeń:

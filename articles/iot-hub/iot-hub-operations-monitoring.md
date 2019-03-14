@@ -1,26 +1,26 @@
 ---
-title: Monitorowanie operacji usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+title: Operacji na platformie Azure IoT Hub monitorowania (przestarzałe) | Dokumentacja firmy Microsoft
 description: Jak używać usługi Azure IoT Hub operacji monitoring do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym.
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160052"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791583"
 ---
-# <a name="iot-hub-operations-monitoring"></a>Monitorowanie operacji usługi IoT Hub
+# <a name="iot-hub-operations-monitoring-deprecated"></a>Operacje usługi IoT Hub monitorowania (przestarzałe)
 
 Monitorowanie operacji usługi IoT Hub umożliwia monitorowanie stanu operacji w Centrum IoT w czasie rzeczywistym. Usługa IoT Hub śledzi zdarzenia w ramach kilku kategorii operacji. Możesz zdecydować się na wysyłanie zdarzeń z jedną lub więcej kategorii do punktu końcowego Centrum IoT Hub do przetworzenia. Można monitorować dane dotyczące błędów lub skonfigurować bardziej złożone przetwarzanie na podstawie wzorców danych.
 
 >[!NOTE]
->Monitorowanie operacji usługi IoT Hub jest przestarzały i zostanie usunięty z usługi IoT Hub przy 10 marca 2019 r. Do monitorowania operacji i kondycji Centrum IoT Hub, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów][lnk-monitor]. Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health][lnk-blog-announcement].
+>Usługa IoT Hub **monitorowanie operacji jest przestarzały i został usunięty z usługi IoT Hub na 10 marca 2019**. Do monitorowania operacji i kondycji Centrum IoT Hub, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów][lnk-monitor]. Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health][lnk-blog-announcement].
 
 Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
 
@@ -29,14 +29,14 @@ Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
 * Komunikaty z chmury do urządzenia
 * Połączenia
 * Operacje przekazywania plików
-* Routing wiadomości
+* Kierowanie komunikatów
 
 > [!IMPORTANT]
 > Monitorowanie operacji usługi IoT Hub nie gwarantuje niezawodne lub są uporządkowane dostarczenia zdarzeń. W zależności od podstawowej infrastruktury usługi IoT Hub niektóre zdarzenia mogą utracone lub dostarczony poza kolejnością. Użyj operacji na monitorowanie w celu generowania alertów w oparciu o sygnały błędu, takie jak próby nawiązania połączenia nie powiodło się lub odłączenia o wysokiej częstotliwości dla określonych urządzeń. Nie należy polegać na operacje monitorowania zdarzeń, aby utworzyć magazyn spójnego stanu urządzenia, np. store, śledzenie połączone lub odłączona stan urządzenia. 
 
 ## <a name="how-to-enable-operations-monitoring"></a>Jak włączyć monitorowanie operacji
 
-1. Tworzenie Centrum IoT. Instrukcje można znaleźć na temat tworzenia Centrum IoT hub w [wprowadzenie] [ lnk-get-started] przewodnik.
+1. Utwórz centrum IoT. Instrukcje można znaleźć na temat tworzenia Centrum IoT hub w [wprowadzenie] [ lnk-get-started] przewodnik.
 
 1. Otwórz blok Centrum IoT hub. W tym miejscu, kliknij przycisk **monitorowanie operacji**.
 
@@ -96,7 +96,7 @@ Kategorię danych telemetrycznych urządzenia do śledzenia błędów, które wy
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Poleceń z chmury do urządzenia
+### <a name="cloud-to-device-commands"></a>Polecenia chmura-urządzenie
 
 Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria obejmuje błędów występujących podczas wysyłania komunikatów z chmury do urządzeń (na przykład nieautoryzowanego nadawcę), odbieranie komunikatów z chmury do urządzeń (np. Przekroczono licznik dostaw) i odbieranie opinii komunikatów z chmury do urządzenia (takie jak opinii wygasła). Ta kategoria nie może przechwytywać błędy z urządzenia, obsługujący nieprawidłowo komunikatu chmura urządzenie, jeśli komunikatu chmura urządzenie zostało pomyślnie dostarczone.
 
@@ -167,7 +167,7 @@ Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośred
 }
 ```
 
-### <a name="message-routing"></a>Routing wiadomości
+### <a name="message-routing"></a>Kierowanie komunikatów
 
 Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria zawiera zdarzenia, np. gdy reguła zwraca "undefined", gdy usługi IoT Hub oznacza punktu końcowego jako martwe i inne błędy otrzymane od punktu końcowego. Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
 

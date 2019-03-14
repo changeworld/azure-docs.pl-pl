@@ -16,12 +16,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 9bad9b6fb285c27264c8c0567aebd4d4f2850582
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 66dfdf3a88a4bacdc118fed00d79f02b22da7869
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731346"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792467"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizacja usługi Azure Stack 1902
 
@@ -73,9 +73,34 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 
 <!-- ## Fixed issues -->
 
-## <a name="changes"></a>Zmiany
+## <a name="improvements"></a>Ulepszenia
 
 - Kompilacja 1902 wprowadza nowy interfejs użytkownika w portalu administratora usługi Azure Stack do tworzenia plany, oferty, przydziały i planów dodatków. Aby uzyskać więcej informacji, w tym ze zrzutami ekranu, zobacz [Tworzenie planów, ofert i przydziałów](azure-stack-create-plan.md).
+
+<!--
+1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
+1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
+1398846 Bug 3751038: ECEClient.psm1 should provide cmdlet to resume action plan instance    PNU
+1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
+1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
+-->
+- Aby poprawić integralność pakietu i zabezpieczeń, a także łatwiejsze zarządzanie w celu pozyskiwania w trybie offline, Microsoft zmienił się format pakietu aktualizacji z pliki .exe i bin do pliku zip. Nowy format dodaje dodatkowe niezawodność Rozpakowywanie procesu, który może spowodować w czasie przygotowywania aktualizacji zostanie zatrzymane. Z tego samego formatu pakietu dotyczy także aktualizację pakietów z producent OEM.
+- Aby poprawić środowisko operatora usługi Azure Stack, podczas uruchamiania testu AzureStack, Operatorzy mogą teraz po prostu korzystać, "Test AzureStack-UpdateReadiness grupy" w przeciwieństwie do przekazywania dziesięć dodatkowe parametry po instrukcji dołączania.
+
+  ```powershell
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- W celu zwiększenia ogólnej niezawodności i dostępności podstawowe usługi infrastruktury, podczas procesu aktualizacji firma natywnego dostawcy zasobów aktualizacji w ramach planu akcji update wykryje i automatyczne globalnego korygowania funkcję w miarę potrzeb Wywołaj. Przepływy pracy korygowania globalne "Napraw" obejmują:
+    - Sprawdzanie, czy maszyny wirtualne infrastruktury, które są w stanie optymalnej i spróbować rozwiązać je w miarę potrzeb 
+    - Sprawdź, czy są problemy z usługą SQL, w ramach planu kontroli i spróbować rozwiązać je w miarę potrzeb
+    - Sprawdź stan usługi programowego modułu równoważenia obciążenia (SLB) w ramach kontrolera sieci (NC) i spróbować rozwiązać je w miarę potrzeb
+    - Sprawdź stan usługi kontrolera sieci (NC) i spróbować go naprawić, zgodnie z potrzebami
+    - Sprawdź stan węzłów sieci szkieletowej usługi awaryjnego odzyskiwania konsoli usługi (ERCS) i je naprawić, zgodnie z potrzebami
+    - Stan węzłów sieci szkieletowej usługi XRP ich sprawdzenia i naprawienia zgodnie z potrzebami
+    - Sprawdź stan węzłów spójnego magazynu Azure (ACS) usługi Service fabric i je naprawić, zgodnie z potrzebami
+
+
 
 ## <a name="common-vulnerabilities-and-exposures"></a>Typowe luki w zabezpieczeniach i zagrożeń
 

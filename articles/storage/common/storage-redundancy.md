@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cbe8970e3e7b924025a93b50f9b8c9e46643b349
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872050"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791243"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
@@ -51,7 +51,7 @@ Aby uzyskać informacje o usłudze Azure Storage gwarantuje potrzeby trwałości
 > Usługa Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS).
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategię replikacji
-Firma Microsoft zezwala na zmianę strategii replikacji konta magazynu przy użyciu [witryny Azure portal](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z wielu [ Biblioteki klienckie systemu Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie skutkuje czas przestoju.
+Strategia replikacji konta magazynu można zmienić za pomocą [witryny Azure portal](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z [klient usługi Azure biblioteki](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie skutkuje czas przestoju.
 
    > [!NOTE]
    > Aby przekonwertować konta magazynu ZRS nie można obecnie używać interfejsu API lub portalu. Jeśli chcesz przekonwertować replikacji konta magazynu ZRS, zobacz [magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md) Aby uzyskać szczegółowe informacje.
@@ -59,7 +59,9 @@ Firma Microsoft zezwala na zmianę strategii replikacji konta magazynu przy uży
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Czy istnieją żadnych kosztów na zmieniające się strategię replikacji mojego konta?
 To zależy od ścieżki konwersji. Kolejność z najtańszej najbardziej kosztowne oferty nadmiarowości mamy LRS, ZRS, GRS i RA-GRS. Na przykład, przechodząc *z* LRS miejscem spowodują Naliczanie dodatkowych opłat, ponieważ ma być bardziej zaawansowanych poziom nadmiarowości. Przechodząc *do* GRS lub RA-GRS zostaną naliczone opłaty przepustowość ruchu wychodzącego, ponieważ danych (w Twoim regionie podstawowym) jest replikowana do zdalnego regionu pomocniczego. Jest to jednorazowa opłata podczas początkowej instalacji. Po skopiowaniu danych nie będą naliczane dodatkowe opłaty konwersji. Możesz tylko naliczana opłata replikowanie dowolnego nowego lub aktualizacje istniejących danych. Szczegółowe informacje na temat opłatami za przepustowość, [stronę cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Jeśli zmienisz z GRS LRS, nie ma żadnych dodatkowych kosztów, ale replikowane dane są usuwane z lokalizacji pomocniczej.
+Jeśli można przekonwertować konta magazynu z GRS LRS, nie ma żadnych dodatkowych kosztów, ale replikowane dane są usuwane z lokalizacji pomocniczej.
+
+Przekształć swoje konto magazynu z RA-GRS odbywa się na GRS lub LRS, to konto jest rozliczana jako RA-GRS dodatkowe 30 dni po dacie, które zostały przekonwertowane.
 
 ## <a name="see-also"></a>Zobacz także
 

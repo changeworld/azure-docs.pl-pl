@@ -2,7 +2,7 @@
 title: Zmigrowanie pakietów usług SQL Server Integration Services na platformie Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przeprowadzić migrację pakietów usług SQL Server Integration Services na platformie Azure.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/15/2018
-ms.openlocfilehash: 2fa37d31e984399c1b676cf6c6112617fac43fd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 1113e203f92c2362d0a7a5da002179a8c3ebb793
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721941"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791838"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>Zmigrowanie pakietów usług SQL Server Integration Services na platformie Azure
 Jeśli używasz programu SQL Server Integration Services (SSIS) i chcesz przeprowadzić migrację projektów SSIS/pakietów ze źródła danych SSISDB hostowaną przez program SQL Server do miejsca docelowego danych SSISDB hostowaną przez serwer usługi Azure SQL Database lub wystąpienia zarządzanego Azure SQL Database, możesz ponownie wdrożyć je przy użyciu Kreatora wdrażania usługi integracyjnego. Można uruchomić kreatora z w ramach programu SQL Server Management Studio (SSMS).

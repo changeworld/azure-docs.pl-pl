@@ -2,16 +2,17 @@
 title: Przenoszenie magazynu i danych do renderowania — Azure Batch
 description: Opcje przenoszenia magazynu i danych dla obciążenia renderowania
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 15f5fe6e74cbe8cbffff31114e8aa588ec4a7ebb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a0d4dc82995e63697cc673bc54695c9c6d586df
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538004"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790250"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opcje przenoszenia magazynu i danych renderowania plików zasobów i danych wyjściowych
 

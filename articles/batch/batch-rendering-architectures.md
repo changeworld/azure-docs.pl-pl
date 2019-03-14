@@ -2,18 +2,19 @@
 title: Architektury referencyjne renderowania platformy Azure — usłudze Azure Batch
 description: Architektury przy użyciu usługi Azure Batch i innymi usługami platformy Azure, rozszerzenie lokalnego renderować farmy za przenoszenie obsługi dużego ruchu do chmury
 services: batch
+ms.service: batch
 author: davefellows
 manager: jeconnoc
 ms.author: lahugh
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: b8813466b9c0f74a608c0150c037dfec3db08dbc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893820"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791209"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Architektury referencyjne platformy Azure renderowanie
 

@@ -6,16 +6,17 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/17/2019
 ms.author: amsriva
-ms.openlocfilehash: 5c3fd92b3aa21b749a0c8ff435a1e5c12da4f57d
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.topic: conceptual
+ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381982"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790616"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostowanie wielu witryn usługi Application Gateway
 
-Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej aplikacji internetowej na tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia konfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domen contoso.com i fabrikam.com z dwóch pul serwerów zaplecza o nazwach ContosoServerPool i FabrikamServerPool.
+Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej aplikacji internetowej na tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn internetowych do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domen contoso.com i fabrikam.com z dwóch pul serwerów zaplecza o nazwach ContosoServerPool i FabrikamServerPool.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 

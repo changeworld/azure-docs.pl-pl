@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 1eebc879ad56ba4f35e6a8a1b857ae877a6a2f01
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: af2225d749283c7124f89d5a7cd735b2f6bfd121
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726264"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792620"
 ---
 # <a name="mapping-data-flow-union-transformation"></a>Złożenia Przekształcanie przepływu danych mapowania
 
@@ -20,7 +20,7 @@ ms.locfileid: "57726264"
 
 Unii łączy wiele strumieni danych w jednym z SQL Unii tych strumieni jako nowe dane wyjściowe z transformacji Unii. Wszystkie schematu z każdego strumienia wejściowego zostanie połączona wewnątrz przepływu danych, bez konieczności klucz sprzężenia.
 
-N liczbę strumieni w tabeli ustawień można łączyć, wybierając ikonę "+" obok każdego skonfigurowanego wiersza.
+N liczbę strumieni w tabeli ustawień można łączyć, wybierając ikonę "+" obok każdego wiersza skonfigurowane, w tym zarówno dane źródłowe, jak i strumieni z istniejących przekształcenia przepływu danych.
 
 ![Przekształcenie złożenia](media/data-flow/union.png "Unii")
 
@@ -35,3 +35,15 @@ Aby to osiągnąć, należy dodać dodatkowe wiersze w ustawieniach Unii, umiesz
 Jeśli ustawisz wybierz przekształcania po swojej Unii, będzie można zmienić nakładających się pola lub pola, które nie zostały nazwane ze źródeł headerless. Kliknij przycisk "Sprawdź", aby wyświetlić metadane łączenia z 132 wszystkie kolumny w tym przykładzie z trzech różnych źródeł:
 
 ![Złożenia przekształcania końcowego](media/data-flow/union333.png "złożenia 3")
+
+## <a name="name-and-position"></a>Nazwa i położenia
+
+Po wybraniu przycisku "union według nazwy" każdej wartości w kolumnie będzie się zmniejszać do odpowiadającej jej kolumny z każdego źródła, przy użyciu nowego schematu metadanych połączonych.
+
+Jeśli wybierzesz opcję "union według pozycji", każda wartość kolumny będzie się zmniejszać do oryginalnego położenia z każdego odpowiedniego źródła skutkuje nowy strumień połączone danych, gdzie dane z każdego źródła są dodawane do tego samego strumienia:
+
+![Dane wyjściowe złożenia](media/data-flow/unionoutput.png "złożenia danych wyjściowych")
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Zapoznaj się z podobnych przekształceń, w tym [Dołącz](data-flow-join.md) i [Exists](data-flow-exists.md).

@@ -2,7 +2,7 @@
 title: Topologii na potrzeby migracji wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Database Migration Service sieci | Dokumentacja firmy Microsoft
 description: Dowiedz się, źródłowe i docelowe konfiguracje dla usługi Database Migration Service.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: bc54b3dbcdb304b18f916e5fbd4866ff54d1bfa2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 82c91515ac3fae65623e3750471fec46b5d4bf5b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713200"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790683"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Topologie sieci na potrzeby migracji wystąpienia zarządzanego Azure SQL DB przy użyciu usługi Azure Database Migration Service
 W tym artykule omówiono różne topologie sieci, które Azure Database Migration Service można pracować zapewniając migracji kompleksowe środowisko z lokalnymi serwerami SQL do wystąpienia zarządzanego Azure SQL Database.
@@ -66,13 +66,13 @@ Użyj tej topologii sieci, jeśli dane środowisko wymaga co najmniej jedną z n
 
 ## <a name="inbound-security-rules"></a>Reguły zabezpieczeń dla ruchu przychodzącego
 
-| **NAZWA**   | **PORT** | **PROTOKÓŁ** | **ŹRÓDŁO** | **MIEJSCE DOCELOWE** | **AKCJA** |
+| **NAZWA**   | **PORT** | **PROTOCOL** | **ŹRÓDŁO** | **MIEJSCE DOCELOWE** | **AKCJA** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | Dowolne      | Dowolne          | USŁUGA DMS PODSIECI | Dowolne             | Zezwalaj      |
+| DMS_subnet | Dowolne      | Dowolne          | DMS SUBNET | Dowolne             | Zezwalaj      |
 
 ## <a name="outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego
 
-| **NAZWA**                  | **PORT**                                              | **PROTOKÓŁ** | **ŹRÓDŁO** | **MIEJSCE DOCELOWE**           | **AKCJA** | **Przyczyna reguły**                                                                                                                                                                              |
+| **NAZWA**                  | **PORT**                                              | **PROTOCOL** | **ŹRÓDŁO** | **MIEJSCE DOCELOWE**           | **AKCJA** | **Przyczyna reguły**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | zarządzanie                | 443,9354                                              | TCP          | Dowolne        | Dowolne                       | Zezwalaj      | Komunikacja płaszczyzny zarządzania za pośrednictwem usługi service bus i usługi Azure blob storage. <br/>(Włączenie komunikacji równorzędnej firmy Microsoft, nie trzeba tej reguły.)                                                             |
 | Diagnostyka               | 12000                                                 | TCP          | Dowolne        | Dowolne                       | Zezwalaj      | Usługa DMS używa tej reguły do zbierania informacji diagnostycznych w celu rozwiązywania problemów.                                                                                                                      |

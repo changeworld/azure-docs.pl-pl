@@ -1,44 +1,44 @@
 ---
-title: Azure opartej na rolach kontroli dostępu (RBAC) na kontrolowanie uprawnień dostępu do tworzenia i obsługi żądań pomocy technicznej | Dokumentacja firmy Microsoft
-description: Azure opartej na rolach kontroli dostępu (RBAC) na kontrolowanie uprawnień dostępu do tworzenia i obsługi żądań pomocy technicznej
+title: Azure opartej na rolach kontrola dostępu (RBAC) na kontrolowanie praw dostępu do tworzenia i zarządzają żądaniami pomocy technicznej | Dokumentacja firmy Microsoft
+description: Azure opartej na rolach kontrola dostępu (RBAC) na kontrolowanie praw dostępu do tworzenia i zarządzają żądaniami pomocy technicznej
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: microsoft-docs
+ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392905"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792484"
 ---
-# <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure opartej na rolach kontroli dostępu (RBAC) na kontrolowanie uprawnień dostępu do tworzenia i obsługi żądań pomocy technicznej
+# <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure opartej na rolach kontrola dostępu (RBAC) na kontrolowanie praw dostępu do tworzenia i zarządzają żądaniami pomocy technicznej
 
 [Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure.
-Obsługuje tworzenia żądania w portalu Azure [portal.azure.com](https://portal.azure.com), używa modelu RBAC platformy Azure, aby zdefiniować, kto może tworzyć i zarządzanie żądaniami obsługi.
-Dostęp przez przypisanie odpowiednie role RBAC dla użytkowników, grup i aplikacji na niektórych zakresu, który może być subskrypcji, grupy zasobów lub zasobu.
+Obsługuje żądania tworzenia w witrynie Azure portal [portal.azure.com](https://portal.azure.com), używa modelu RBAC platformy Azure w celu zdefiniowania, kto może tworzyć i zarządzać żądaniami pomocy technicznej.
+Dostęp jest udzielany przez przypisywanie odpowiednią rolę RBAC użytkownikom, grupom i aplikacjom, które w określonym zakresie, który może być subskrypcji, grupy zasobów lub zasobu.
 
-Spójrzmy na przykład: jako właściciel grupy zasobów z uprawnienia do odczytu w zakresie subskrypcji, możesz zarządzać wszystkie zasoby w grupie zasobów, takich jak witryny sieci Web, maszyn wirtualnych i podsieci.
+Spójrzmy na przykład: Jako właściciel grupy zasobów z uprawnieniami do odczytu w zakresie subskrypcji możesz zarządzać wszystkie zasoby w grupie zasobów, takich jak witryny sieci Web, maszyn wirtualnych i podsieci.
 Jednak podczas próby utworzenia żądania obsługi względem zasobu maszyny wirtualnej, wystąpi następujący błąd
 
 ![Błąd subskrypcji](./media/create-manage-support-requests-using-access-control/subscription-error.png)
 
-W przystawce Zarządzanie żądania pomocy technicznej należy zapisać uprawnienia lub roli, która ma Microsoft.Support/* akcji pomocy technicznej w zakresie subskrypcji, aby można było utworzyć i zarządzanie żądaniami obsługi.
+W przystawce Zarządzanie żądania pomocy technicznej należy napisać uprawnienia lub rola przypisana Microsoft.Support/* akcji pomocy technicznej w zakresie subskrypcji, aby móc tworzyć i zarządzać nimi żądania pomocy technicznej.
 
-Artykule wyjaśniono, jak Azure niestandardowej opartej na rolach kontroli dostępu (RBAC) można użyć do tworzenia i obsługi żądań pomocy technicznej w portalu Azure.
+Następujący artykuł wyjaśnia, jak można użyć platformy Azure niestandardowej opartej na rolach kontrola dostępu (RBAC) do tworzenia i Zarządzaj żądaniami obsługi w witrynie Azure portal.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-W powyższym przykładzie będzie mieć możliwość utworzenia żądania obsługi dla zasobu, jeśli rola niestandardowa RBAC subskrypcji zostały przypisane przez właściciela subskrypcji.
-[Niestandardowe role RBAC](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure (CLI) i interfejsu API REST.
+Korzystając z powyższego przykładu, będzie można utworzyć żądanie pomocy technicznej dla zasobu, jeśli niestandardową rolę RBAC w ramach subskrypcji zostały przypisane przez właściciela subskrypcji.
+[Niestandardowe role RBAC](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) można utworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure (CLI) i interfejsu API REST.
 
-Właściwość akcji niestandardowej roli zabezpieczeń określa operacje platformy Azure, do których rola przyznaje dostęp.
-Aby utworzyć niestandardową rolę zarządzania żądania pomocy technicznej, rola musi mieć akcji Microsoft.Support/*
+Właściwość akcji niestandardowej roli określa operacji platformy Azure, do których rola przyznaje dostęp.
+Aby utworzyć niestandardową rolę zarządzania żądanie pomocy technicznej, do roli musi być akcji Microsoft.Support/*
 
-Oto przykład niestandardową rolę, który umożliwia tworzenie i zarządzanie żądaniami obsługi.
-Firma Microsoft nazwanego tej roli "Współautor żądania pomocy technicznej" i to, jak firma Microsoft można znaleźć tworzona rola niestandardowa w tym artykule.
+Oto przykład rolę niestandardową, używanej do tworzenia i zarządzania nimi żądania pomocy technicznej.
+Firma Microsoft nazwanego tę rolę "Współautor żądania pomocy technicznej" i dlatego sposób nazywamy rolę niestandardową, w tym artykule.
 
 ``` Json
 {
@@ -57,23 +57,23 @@ Firma Microsoft nazwanego tej roli "Współautor żądania pomocy technicznej" i
 }
 ```
 
-Wykonaj kroki opisane w temacie [ten film](https://www.youtube.com/watch?v=-PaBaDmfwKI) Aby dowiedzieć się, jak utworzyć niestandardową rolę dla Twojej subskrypcji.
+Wykonaj kroki opisane w temacie [ten film wideo](https://www.youtube.com/watch?v=-PaBaDmfwKI) dowiesz się, jak utworzyć rolę niestandardową dla Twojej subskrypcji.
 
-## <a name="create-and-manage-support-requests-in-the-azure-portal"></a>Tworzenie i zarządzanie żądaniami obsługi w portalu Azure
+## <a name="create-and-manage-support-requests-in-the-azure-portal"></a>Utwórz i Zarządzaj żądaniami obsługi w witrynie Azure portal
 
-Spójrzmy na przykład — jesteś właścicielem subskrypcji "Programu Visual Studio subskrypcji MSDN."
-Jan jest sieci równorzędnej, kto jest właścicielem zasobu do niektórych grup zasobów w ramach tej subskrypcji oraz ma uprawnienia do subskrypcji do odczytu.
-Chcesz udzielić dostępu do sieci równorzędnej, Jan, tworzenie i zarządzanie biletami pomocy technicznej dla zasobów w ramach tej subskrypcji.
+Spójrzmy na przykład — jesteś właścicielem subskrypcji "MSDN subskrypcji programu Visual Studio."
+Jan podlega sieci równorzędnej, który jest właścicielem zasobu, do niektórych grup zasobów w ramach tej subskrypcji i mają uprawnienia do subskrypcji do odczytu.
+Chcesz udzielić dostępu do sieci równorzędnej, Jan, możliwość tworzenia i zarządzania biletami pomocy technicznej dla zasobów w ramach tej subskrypcji.
 
-1. Pierwszym krokiem jest, aby przejść do subskrypcji, a następnie w obszarze "Ustawienia" można wyświetlić listę użytkowników. Kliknij nazwę użytkownika Jan, kto ma dostęp do czytnika w subskrypcji i umożliwia przypisanie mu nowej niestandardowej roli zabezpieczeń.
+1. Pierwszym krokiem jest, aby przejść do subskrypcji, a następnie w obszarze "Settings" zobaczysz listę użytkowników. Kliknij użytkownika, Jan, kto ma dostęp czytnika w ramach subskrypcji i umożliwia przypisanie nowej roli niestandardowej mu.
 
     ![Dodaj rolę](./media/create-manage-support-requests-using-access-control/add-role.png)
 
-2. Kliknij przycisk "Dodaj" w bloku "Użytkownicy". Wybierz z listy ról niestandardowych roli "Współautor żądania pomocy technicznej"
+2. Kliknij przycisk "Dodaj", w ramach bloku "Użytkownicy". Wybierz rolę niestandardową "Współautor żądania pomocy technicznej" z listy ról
 
-    ![Dodaj rolę współautora pomocy technicznej](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
+    ![Dodawanie roli "Współautor" pomocy technicznej](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
 
-3. Po wybraniu nazwy roli, kliknij przycisk "Dodaj użytkowników", a następnie wprowadź poświadczenia e-mail Jan. Kliknij przycisk "Wybierz"
+3. Po wybraniu nazwy roli, kliknij pozycję "Dodaj użytkowników" i wprowadź poświadczenia poczty e-mail przez Jana. Kliknij pozycję „Wybierz”
 
     ![Dodawanie użytkowników](./media/create-manage-support-requests-using-access-control/add-users.png)
 
@@ -81,30 +81,30 @@ Chcesz udzielić dostępu do sieci równorzędnej, Jan, tworzenie i zarządzanie
 
     ![Dodawanie uprawnień dostępu](./media/create-manage-support-requests-using-access-control/add-access.png)
 
-5. Teraz zostanie wyświetlony użytkownik z nowo dodanego rola niestandardowa "Obsługa współautora żądanie" w ramach subskrypcji, dla którego jesteś właścicielem
+5. Spowoduje to wyświetlenie użytkownikowi nowo dodanych rola niestandardowa "Obsługa Współautor żądania" w ramach subskrypcji, dla którego jesteś właścicielem
 
-    ![Użytkownik dodany](./media/create-manage-support-requests-using-access-control/user-added.png)
+    ![Dodano użytkownika](./media/create-manage-support-requests-using-access-control/user-added.png)
 
-    Jan rejestruje się w portalu, widzi on subskrypcji, do którego został dodany.
+    Po zalogowaniu Jan w portalu, widzi subskrypcji, do którego został dodany.
 
-7. Jan klika pozycję "Nowe żądanie pomocy technicznej" w bloku "Pomoc i obsługa" i może utworzyć żądania pomocy technicznej dla "Programu Visual Studio Ultimate z subskrypcją MSDN"
+7. Jan klika pozycję "Nowe żądanie pomocy technicznej" w bloku "Pomocy i pomocy technicznej" i można tworzyć żądania pomocy technicznej dla "Visual Studio Ultimate z subskrypcją MSDN"
 
     ![Nowe żądanie pomocy technicznej](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Klikając przycisk "Obsługuje wszystkie żądania" Jan wyświetlana lista żądań pomocy technicznej utworzonych dla tej subskrypcji ![przypadku widoku szczegółów](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Klikając pozycję "Wszystkie żądania obsługi" Jan wyświetlana lista żądań pomocy technicznej utworzonych dla tej subskrypcji ![przypadek widoku szczegółów](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
-## <a name="remove-support-request-access-in-the-azure-portal"></a>Usuń obsługę żądania dostępu w portalu Azure
+## <a name="remove-support-request-access-in-the-azure-portal"></a>Usuń dostęp do żądania pomocy technicznej w witrynie Azure portal
 
-Tak samo, jak jest możliwość przyznania dostępu użytkownika do tworzenia i obsługi żądań pomocy technicznej, istnieje możliwość dostępu dla użytkownika, jak również usunąć.
-Aby usunąć możliwość tworzenia i zarządzania żądania pomocy technicznej, przejdź do subskrypcji, kliknij pozycję "Ustawienia", a następnie kliknij przycisk użytkownika (w tym przypadku Jan).
-Kliknij prawym przyciskiem myszy nazwę roli "Współautor żądania pomocy technicznej" i kliknij przycisk Usuń,
+Tak, jak jest możliwe udzielić dostępu do użytkownika, aby tworzyć i zarządzać nimi żądania pomocy technicznej, jest możliwe usunięcie dostępu dla użytkownika, jak również.
+Aby usunąć możliwość tworzenia i zarządzają żądaniami pomocy technicznej, przejdź do subskrypcji, kliknij przycisk "Ustawienia", a następnie kliknij przycisk użytkownika (w tym przypadku Jan).
+Kliknij prawym przyciskiem myszy nazwę roli "Współautor żądania pomocy technicznej" i kliknij przycisk "Usuń"
 
-![Usuń obsługę żądania dostępu](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
+![Usuń dostęp do żądania pomocy technicznej](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
 
-Gdy Jan loguje się do portalu i podejmie próbę utworzenia żądania obsługi, wykryje on następujący błąd
+Jeśli Jan loguje się do portalu i próbuje utworzyć żądanie pomocy technicznej, wykryje on następujący błąd
 
 ![Subskrypcja błąd-2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
 
-Jan nie widzą żadnych obsługuje żądania, po kliknięciu przycisku "Obsługuje wszystkie żądania"
+Jan nie widać żadnych żądania obsługi, po kliknięciu przycisku "Wszystkie żądania obsługi"
 
-![Wyświetl szczegóły sprawy-2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)
+![Wyświetl szczegóły przypadku-2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)

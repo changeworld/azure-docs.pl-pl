@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: e39904378edd9583cd7802d0a75f2f365a35d2b6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990539"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791957"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -147,11 +147,11 @@ Certyfikat tożsamości musi zawierać podmiotem, który odpowiada następujący
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-
 ### <a name="validate-certificates"></a>Sprawdzanie poprawności certyfikatów
-Przed wdrożeniem dostawcy zasobów usługi app service, wykonaj następujące czynności [weryfikują certyfikaty, które ma być używany](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) za pomocą narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack dostępnym [galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Narzędzie sprawdzania gotowości stosu Azure sprawdza, czy wygenerowane certyfikaty PKI są odpowiednie na potrzeby wdrożenia usług aplikacji. 
 
-Najlepszym rozwiązaniem, pracując ze wszystkimi niezbędne [certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](azure-stack-pki-certs.md), należy zaplanować zostawić czas do testowania i ponownego wystawienia certyfikatów, jeśli to konieczne. 
+Przed wdrożeniem dostawcy zasobów usługi app service, wykonaj następujące czynności [weryfikują certyfikaty, które ma być używany](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) za pomocą narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack dostępnym [galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Narzędzie sprawdzania gotowości stosu Azure sprawdza, czy wygenerowane certyfikaty PKI są odpowiednie na potrzeby wdrożenia usług aplikacji.
+
+Najlepszym rozwiązaniem, pracując ze wszystkimi niezbędne [certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](azure-stack-pki-certs.md), należy zaplanować zostawić czas do testowania i ponownego wystawienia certyfikatów, jeśli to konieczne.
 
 ## <a name="virtual-network"></a>Sieć wirtualna
 
@@ -170,6 +170,15 @@ Podsieci
 - PublishersSubnet /24
 - WorkersSubnet /21
 
+## <a name="licensing-concerns-for-required-file-server-and-sql-server"></a>Licencjonowanie uwagi dotyczące wymaganego pliku server i SQL Server
+
+Usługa Azure App Service w usłudze Azure Stack wymaga serwera plików i programu SQL Server do działania.  Mogą korzystać z istniejących zasobów znajdujących się poza wdrożenia usługi Azure Stack lub wdrożenie zasobów w ramach ich domyślne dostawcy subskrypcji usługi Azure Stack.
+
+Jeśli zdecydujesz się do wdrażania zasobów w ramach usługi Azure Stack domyślne dostawcy subskrypcji licencji dla tych zasobów (licencjom systemu Windows Server i licencji programu SQL Server) są wliczane w koszt usługi Azure App Service w usłudze Azure Stack zgodnie z następującymi ograniczenia:
+
+- infrastruktura jest wdrażana w **domyślne subskrypcję dostawcy**;
+- Infrastruktura wyłącznie jest używany przez usługę Azure App Service dla dostawcy zasobów usługi Azure Stack.  Nie ma innych obciążeń administracyjne (innych dostawców zasobów, na przykład SQL-RP) lub dzierżawy (na przykład dzierżawy aplikacji, które wymagają bazy danych), zezwala korzystanie z tej infrastruktury.
+
 ## <a name="prepare-the-file-server"></a>Przygotowanie serwera plików
 
 Usługa Azure App Service wymaga użycia serwera plików. W przypadku wdrożeń produkcyjnych serwera plików musi być skonfigurowane wysoko dostępne i zdolne do obsługi błędów.
@@ -180,7 +189,7 @@ W przypadku usługi Azure Stack Development Kit tylko w przypadku wdrożeń, mo�
 
 ### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Szablon szybkiego startu dla serwera o wysokiej dostępności plików i programu SQL Server
 
-A [szablon szybkiego startu architektury odwołanie](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) jest teraz dostępna, który będzie wdrożyć serwer plików, programu SQL Server, usługi Active Directory do obsługi infrastruktury w sieci wirtualnej jest skonfigurowany do obsługi wysoko dostępne wdrożenie programu Usługa Azure App Service w usłudze Azure Stack.  
+A [szablon szybkiego startu architektury odwołanie](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) jest teraz dostępna, który będzie wdrożyć serwer plików, programu SQL Server, usługi Active Directory do obsługi infrastruktury w sieci wirtualnej jest skonfigurowany do obsługi wysoko dostępne wdrożenie programu Usługa Azure App Service w usłudze Azure Stack.
 
 ### <a name="steps-to-deploy-a-custom-file-server"></a>Kroki, aby wdrożyć serwer plików niestandardowe
 
@@ -303,12 +312,11 @@ Dla każdej z ról programu SQL Server można użyć wystąpienia domyślnego lu
 Instalator usługi App Service sprawdzi, upewnij się, że program SQL Server ma zawierania bazy danych, włączone. Aby włączyć zawierania bazy danych w programie SQL Server, który będzie hostem bazy danych usługi App Service, uruchom następujące polecenia SQL:
 
 ```sql
-sp_configure 'contained database authentication', 1;  
-GO  
-RECONFIGURE;  
+sp_configure 'contained database authentication', 1;
+GO
+RECONFIGURE;
 GO
 ```
-
 
 >[!IMPORTANT]
 > Jeśli wybierzesz do wdrożenia usługi App Service w istniejącej sieci wirtualnej programu SQL Server powinny być wdrażane w osobnej podsieci z usługi App Service i serwera plików.

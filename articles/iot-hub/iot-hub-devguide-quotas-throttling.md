@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 31d3c404d22c9b8ad66c2d5d1adf34c38cc4a682
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 20e92317e748ebe19661a7c35d68829229b62378
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010858"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791379"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -42,8 +42,8 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | Chmura urządzenie odbiera<sup>1</sup> <br/> (tylko gdy urządzenie korzysta z protokołu HTTPS)| 16.67/sec/Unit (1000/min/jednostkę) | 16.67/sec/Unit (1000/min/jednostkę) | 833.33/sec/Unit (50000/min/jednostkę) |
 | Przekazywanie pliku | Plik 1.67 przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) | Plik 1.67 przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) | Plik 83.33 przekazywania powiadomień/sek/jednostkę (5000/min/jednostkę) |
 | Metody bezpośrednie<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
-| (Urządzenia i moduł) odczytów bliźniaczej reprezentacji<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
-| Bliźniacza reprezentacja aktualizacji (urządzenia i moduł)<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
+| (Urządzenia i moduł) odczytów bliźniaczej reprezentacji<sup>1</sup> | 100/sek | Wyższe 100/sek lub 10/sek/jednostkę | 500/sec/unit |
+| Bliźniacza reprezentacja aktualizacji (urządzenia i moduł)<sup>1</sup> | 50/s | Wyższa z 50/sek lub 5/sek/jednostkę | 250/sek/jednostkę |
 | Operacje zadania<sup>1,3</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
 | Operacje dotyczące urządzenia zadania<sup>1</sup> <br/> (aktualizacji bliźniaczej reprezentacji, wywoływanie metody bezpośredniej) | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Konfiguracje i wdrożenia krawędzi<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) |
@@ -52,7 +52,7 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | Transfer danych strumienia maksymalna urządzenia<sup>4</sup> (agregacji woluminu na dzień) | 300 MB | 300 MB | 300 MB |
 
 
-<sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika wynosząca 8 KB. <br/><sup>3</sup>w danym momencie może mieć tylko jedno zadanie importu/eksportu aktywnych urządzeń. <br/><sup>4</sup>strumieni urządzenia usługi IoT Hub są dostępne tylko dla S1, S2, S3 i F1 SKU.
+<sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika to 4 KB. <br/><sup>3</sup>w danym momencie może mieć tylko jedno zadanie importu/eksportu aktywnych urządzeń. <br/><sup>4</sup>strumieni urządzenia usługi IoT Hub są dostępne tylko dla S1, S2, S3 i F1 SKU.
 
 *Połączenia urządzenia* ograniczania decyduje szybkość, w którym można nawiązać nowego połączenia urządzenia z usługą IoT hub. *Połączenia urządzenia* ograniczania nie kontroluje maksymalna liczba równocześnie połączonych urządzeń. *Połączenia urządzenia* współczynnik przepustowości jest zależna od liczby jednostek, które są udostępniane dla Centrum IoT hub.
 

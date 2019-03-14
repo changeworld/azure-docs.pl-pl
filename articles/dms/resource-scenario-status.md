@@ -2,7 +2,7 @@
 title: Stan scenariusza migracji bazy danych | Dokumentacja firmy Microsoft
 description: Informacje dotyczące stanu scenariuszy migracji, obsługiwane przez usługi Azure Database Migration Service.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 02/11/2019
-ms.openlocfilehash: 39a7f7ce6660016f00e36c5f6619eba2fa461023
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: fea50b896c769587b21b8a4e2ce8c585d7aee8c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993167"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791566"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Stan scenariuszy migracji obsługiwanych przez usługi Azure Database Migration Service
 Azure Database Migration Service jest przeznaczona do obsługi różnych scenariuszy migracji (źródło i cel pary) zarówno w trybie offline (jednorazowy) i migracji online (ciągłej synchronizacji). Pokrycie scenariusza dostarczane przez usługi Azure Database Migration Service jest rozszerzany wraz z upływem czasu. Udostępnione nowe scenariusze są dodawane na bieżąco. W tym artykule identyfikuje scenariusze migracji, są obecnie obsługiwane przez usługi Azure Database Migration Service i stan (prywatnej [lub ograniczone] (wersja zapoznawcza), publiczną wersję zapoznawczą lub jest ogólnie dostępna) lub każdego scenariusza.

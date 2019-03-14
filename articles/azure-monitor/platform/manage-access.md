@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: d09ce810605055b5be53219f254beb6660addbee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 07e3552b58b702cb94c879dd34397010c07522db
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445708"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791940"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
 Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
@@ -85,6 +85,7 @@ Dane, których użytkownik ma dostęp, są określane przez wiele czynników, kt
 | [Tryb dostępu](#access-modes) | Metody, których użytkownik używa do uzyskuje dostęp do obszaru roboczego.  Definiuje zakres dostępnych danych i tryb kontroli dostępu, który jest stosowany. |
 | [Tryb kontroli dostępu](#access-control-mode) | Ustawienie w obszarze roboczym, który definiuje, czy uprawnienia są stosowane na poziomie obszaru roboczego lub zasobu. |
 | [Uprawnienia](#manage-accounts-and-users) | Uprawnienia zastosowane do osoby lub grupy użytkowników dla obszaru roboczego lub zasobu. Definiuje, jakie dane użytkownik będzie miał dostęp do. |
+| [Na poziomie tabeli RBAC](#table-level-rbac) | Opcjonalne szczegółowe uprawnienia, które ma zastosowanie do wszystkich użytkowników niezależnie od ich trybu dostępu lub kontroli dostępu. Definiuje typy danych, które użytkownik może uzyskać dostęp. |
 
 
 
@@ -93,7 +94,7 @@ _Tryb dostępu_ odnosi się do sposobu użytkownik uzyskuje dostęp do obszaru r
 
 **Skoncentrowane na obszar roboczy**: W tym trybie użytkownik może wyświetlić wszystkie dzienniki w obszarze roboczym, które mają uprawnienia do. Zapytania w tym trybie są ograniczone do wszystkich danych we wszystkich tabelach w obszarze roboczym. Jest to tryb dostępu używany podczas dzienniki są dostępne przy użyciu obszaru roboczego jako zasięg, na przykład po wybraniu **dzienniki** z **usługi Azure Monitor** menu w witrynie Azure portal.
 
-**Skoncentrowane na zasób**: Jeśli uzyskujesz dostęp do obszaru roboczego dla określonego zasobu, na przykład po wybraniu **dzienniki** z menu zasobów w witrynie Azure portal, można przeglądać dzienniki dla tylko tego zasobu. Zapytania w tym trybie ograniczone tylko do danych skojarzonych z tym zasobem. Ten tryb umożliwia także kontroli szczegółową dostępu opartej na rolach (RBAC). 
+**Skoncentrowane na zasób**: Jeśli uzyskujesz dostęp do obszaru roboczego dla określonego zasobu, na przykład po wybraniu **dzienniki** z menu zasobów w witrynie Azure portal, można przeglądać dzienniki dla tylko tego zasobu, we wszystkich tabelach, które mają dostęp do. Zapytania w tym trybie ograniczone tylko do danych skojarzonych z tym zasobem. Ten tryb umożliwia także kontroli szczegółową dostępu opartej na rolach (RBAC). 
 
 > [!NOTE]
 > Dzienniki są dostępne dla zapytań skoncentrowane na zasób, tylko wtedy, gdy zostały prawidłowo skojarzone z wybranego zasobu. Obecnie następujących zasobów podlegają ograniczeniom: 
@@ -113,16 +114,16 @@ W poniższej tabeli podsumowano tryby dostępu:
 |:---|:---|:---|
 | Kogo jest przeznaczony każdego modelu? | Administracja centralna. Administratorzy, którzy należy skonfigurować zbieranie danych i użytkowników, którzy muszą mieć dostęp do szerokiej gamy zasobów. Obecnie wymagane również dla użytkowników, którzy mają dostęp do dzienników dla zasobów spoza platformy Azure. | Zespoły aplikacji. Administratorzy zasobów platformy Azure, które są monitorowane. |
 | Aby wyświetlić dzienniki co wymaga użytkownika? | Uprawnienia do obszaru roboczego. Zobacz **uprawnień obszaru roboczego** w [Zarządzanie kontami i użytkownikami](#manage-accounts-and-users). | Dostęp do odczytu do tego zasobu. Zobacz **uprawnień dotyczących zasobów** w [Zarządzanie kontami i użytkownikami](#manage-accounts-and-users). Uprawnienia mogą być dziedziczone (np. od 1.02.2016 do grupy zasobów zawierającej) lub bezpośrednio przypisanego do zasobu. Uprawnienie do dzienników dla zasobu zostanie automatycznie przypisana. |
-| Co to jest zakres uprawnień? | Obszar roboczy. Użytkownicy z dostępem do obszaru roboczego można badać wszystkie dzienniki w tym obszarze roboczym. | Zasób platformy Azure. Użytkownik może zbadać dzienników dla zasobów mają dostęp do w dowolnym obszarze roboczym, ale nie można wykonać zapytania dzienników dla innych zasobów. |
+| Co to jest zakres uprawnień? | Obszar roboczy. Użytkownicy z dostępem do obszaru roboczego można badać wszystkie dzienniki w tym obszarze roboczym z tabel, które mają uprawnienia do. Zobacz [tabeli kontroli dostępu](#table-access-control) | Zasób platformy Azure. Użytkownik może zbadać dzienników dla zasobów mają dostęp do w dowolnym obszarze roboczym, ale nie można wykonać zapytania dzienników dla innych zasobów. |
 | Jak można Dzienniki dostępu użytkownika? | Rozpocznij **dzienniki** z **usługi Azure Monitor** menu lub **obszarów roboczych usługi Log Analytics**. | Rozpocznij **dzienniki** menu dla zasobów platformy Azure. |
 
 
 ## <a name="access-control-mode"></a>Tryb kontroli dostępu
 _Tryb kontroli dostępu_ jest ustawienie na poszczególnych obszarach roboczych, który definiuje, jak uprawnienia są określane dla danego obszaru roboczego.
 
-**Wymaga uprawnień obszaru roboczego**:  W tym trybie formantu nie zezwala na szczegółową RBAC. Użytkownikowi dostępu do obszaru roboczego są musi mieć uprawnienia do obszaru roboczego. 
+**Wymaga uprawnień obszaru roboczego**:  W tym trybie formantu nie zezwala na szczegółową RBAC. Użytkownikowi dostępu do obszaru roboczego muszą otrzymać uprawnienia do obszaru roboczego lub określonych tabel. 
 
-Jeśli użytkownik uzyskuje dostęp do obszaru roboczego w trybie skoncentrowane na obszar roboczy, będzie miał dostęp do wszystkich danych w obszarze roboczym. Jeśli użytkownik uzyskuje dostęp do obszaru roboczego w trybie skoncentrowane na zasób, będzie miał dostęp do danych tylko dla tego zasobu.
+Jeśli użytkownik uzyskuje dostęp do obszaru roboczego w trybie skoncentrowane na obszar roboczy, będzie miał dostęp do wszystkich danych wszystkie tabele, które już zostać przyznany dostęp do. Jeśli użytkownik uzyskuje dostęp do obszaru roboczego w trybie skoncentrowane na zasób, będzie miał dostęp do danych tylko dla tego zasobu w żadnych tabel, które już zostać przyznany dostęp do.
 
 Jest to domyślne ustawienie dla wszystkich obszarów roboczych utworzonych przed marca 2019 r.
 
@@ -144,6 +145,46 @@ Bieżący tryb kontroli dostępu do obszaru roboczego można wyświetlić na **P
 To ustawienie można zmienić na **właściwości** strony dla obszaru roboczego. Zmienianie ustawień zostanie wyłączona, jeśli nie masz uprawnienia do konfigurowania obszaru roboczego.
 
 ![Zmień tryb dostępu do obszaru roboczego](media/manage-access/change-access-control-mode.png)
+
+### <a name="define-access-control-mode-in-azure-portal"></a>Zdefiniuj tryb kontroli dostępu w witrynie Azure portal
+Bieżący tryb kontroli dostępu do obszaru roboczego można wyświetlić na **Przegląd** strony dla obszaru roboczego w **obszaru roboczego usługi Log Analytics** menu.
+
+![Tryb kontroli dostępu do obszaru roboczego widoku](media/manage-access/view-access-control-mode.png)
+
+To ustawienie można zmienić na **właściwości** strony dla obszaru roboczego. Zmienianie ustawień zostanie wyłączona, jeśli nie masz uprawnienia do konfigurowania obszaru roboczego.
+
+![Zmień tryb dostępu do obszaru roboczego](media/manage-access/change-access-control-mode.png)
+
+### <a name="define-access-control-mode-in-powershell"></a>Zdefiniuj tryb kontroli dostępu w programie PowerShell
+
+Aby sprawdzić tryb kontroli dostępu dla wszystkich obszarów roboczych w ramach subskrypcji, użyj następującego polecenia:
+
+```PowerShell
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+```
+
+Aby ustawić tryb kontroli dostępu dla określonego obszaru roboczego, użyj następującego skryptu:
+
+```PowerShell
+$WSName = "my-workspace"
+$Workspace = Get-AzResource -Name $WSName -ExpandProperties
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+    { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
+else 
+    { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
+Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
+```
+
+Użyj następującego skryptu, aby ustawić tryb kontroli dostępu dla wszystkich obszarów roboczych w ramach subskrypcji
+
+```PowerShell
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+    { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
+else 
+    { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
+Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+```
 
 ### <a name="define-access-mode-in-resource-manager-template"></a>Zdefiniuj tryb dostępu w szablonie usługi Resource Manager
 Aby skonfigurować tryb dostępu w szablonie usługi Azure Resource Manager, należy ustawić **enableLogAccessUsingOnlyResourcePermissions** funkcji flagi w obszarze roboczym do jednej z następujących wartości.
@@ -241,6 +282,58 @@ Po zalogowaniu użytkownicy zapytania z obszaru roboczego przy użyciu dostępu 
 
 To zazwyczaj uprawnienia z roli, która obejmuje  _\*/Odczyt lub_ _\*_ uprawnienia, takie jak wbudowane [czytnika](../../role-based-access-control/built-in-roles.md#reader) i [ Współautor](../../role-based-access-control/built-in-roles.md#contributor) ról. Należy pamiętać, że role niestandardowe, które obejmują konkretne akcje lub dedykowane wbudowane role mogą nie obejmować to uprawnienie.
 
+Zobacz [Definiowanie kontroli dostępu na tabelę](#defining-per-table-access-control) poniżej if, do której chcesz utworzyć kontroli dostępu różne dla różnych tabel.
+
+
+## <a name="table-level-rbac"></a>Na poziomie tabeli RBAC
+**Tabela poziom RBAC** umożliwia zapewniają bardziej szczegółową kontrolę do danych w obszarze roboczym usługi Log Analytics, oprócz innych uprawnień. Dzięki temu można zdefiniować konkretnych typów danych, które są dostępne tylko dla określonych użytkowników.
+
+Implementowanie kontroli dostępu tabeli za pomocą [Azure role niestandardowe](../../role-based-access-control/custom-roles.md) udzielić lub odmówić dostępu do określonych [tabel](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) w obszarze roboczym. Te role są stosowane do obszarów roboczych skoncentrowane na obszar roboczy lub skoncentrowane na zasób [tryby kontroli dostępu](#access-control-modes) niezależnie od użytkownika [tryb dostępu](#access-mode).
+
+Tworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md) z następujących akcji, aby definiują dostęp użytkownika do kontroli dostępu w tabeli.
+
+- Aby udzielić dostępu do tabeli, należy dołączyć go w **akcje** części definicji roli.
+- Aby odmówić dostępu do tabeli, należy dołączyć go w **NotActions** części definicji roli.
+- Użyj * Aby określić wszystkie tabele.
+
+Na przykład, aby utworzyć rolę z uprawnieniami do _pulsu_ i _AzureActivity_ tabel, utworzyć rolę niestandardową przy użyciu następujących czynności:
+
+```
+"Actions":  [
+              "Microsoft.OperationalInsights/workspaces/query/Heartbeat/read",
+              "Microsoft.OperationalInsights/workspaces/query/AzureActivity/read"
+  ],
+```
+
+Aby utworzyć rolę z uprawnieniami do tylko _SecurityBaseline_ i żadne inne tabele, utworzyć rolę niestandardową przy użyciu następujących czynności:
+
+```
+    "Actions":  [
+        "Microsoft.OperationalInsights/workspaces/query/*/read"
+    ],
+    "NotActions":  [
+        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+    ],
+```
+
+### <a name="custom-logs"></a>Niestandardowe dzienniki
+ Niestandardowe dzienniki są tworzone przez źródeł danych, takich jak niestandardowe dzienniki i interfejsu API modułu zbierającego dane HTTP. Najprostszym sposobem określenia typu dziennika jest, sprawdzając tabele na liście [niestandardowe dzienniki w schemacie dziennika](../log-query/get-started-portal.md#understand-the-schema).
+
+ Obecnie nie można udzielić lub odmówić dostępu do poszczególnych dzienników niestandardowych, ale można udzielić lub odmówić dostępu do wszystkich dzienników niestandardowych. Aby utworzyć rolę z uprawnieniami do wszystkich dzienników niestandardowych, należy utworzyć rolę niestandardową przy użyciu następujących czynności:
+
+```
+    "Actions":  [
+        "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
+    ],
+```
+
+### <a name="considerations"></a>Zagadnienia do rozważenia
+
+- Jeśli użytkownikowi udzielono globalnego Odczyt uprawnień przy użyciu standardowych ról czytelnika lub współautora, obejmujących  _\*/odczyt_ akcji, zastąpi on kontroli dostępu na tabelę i przyznać im dostęp do wszystkich danych dziennika.
+- Jeśli użytkownikowi udzielono dostępu do poszczególnych tabel, ale żadne inne uprawnienia, będzie mogła uzyskiwać dostęp do danych dziennika, z interfejsu API, ale nie w witrynie Azure portal. Aby zapewnić dostęp do witryny Azure portal, należy użyć jako jego podstawowy rola Czytelnik usługi Log Analytics.
+- Administratorzy subskrypcji mają dostęp do wszystkich typów danych, niezależnie od innych ustawień uprawnień.
+- Właściciele obszaru roboczego są traktowane jak każdy inny użytkownik, do kontroli dostępu na tabelę.
+- Należy przypisać role do grup zabezpieczeń, zamiast poszczególnych użytkowników w celu zmniejszenia liczby przydziałów. Ułatwi to również możesz użyć istniejących narzędzi do zarządzania grupy do skonfigurowania i zweryfikować dostęp.
 
 
 

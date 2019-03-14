@@ -2,22 +2,23 @@
 title: Renderowanie możliwości — w usłudze Azure Batch
 description: Jak używać usługi Azure Batch możliwości renderowania
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2f423de63b7cec24d9d9c4541ddab0ac38b1076a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542315"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789640"
 ---
 # <a name="using-azure-batch-rendering"></a>Za pomocą usługi Azure Batch rendering
 
 Istnieje kilka sposobów, aby używać usługi Azure Batch rendering:
 
-* Interfejsy API:
+* APIs:
   * Napisz kod przy użyciu dowolnej z interfejsów API usługi Batch.  Deweloperzy mogą integrować możliwości usługi Azure Batch istniejącej aplikacji lub przepływu pracy, czy chmura lub oparte na środowisku lokalnym.
 * Narzędzia wiersza polecenia:
   * [Wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/) lub [PowerShell](https://docs.microsoft.com/powershell/azure/overview) może służyć do skryptu Użyj usługi Batch.
@@ -57,7 +58,7 @@ W sekcji "Dane" w Eksploratorze usługi Batch pozwala pliki będą kopiowane mi�
 
 Dodatki plug-in są dostępne dla niektórych aplikacji klienckich.  Dodatki plug-in umożliwiają pul i zadań, które można utworzyć bezpośrednio z aplikacji lub wywołanie programu Batch Explorer.
 
-* [Mikser](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Programy Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
