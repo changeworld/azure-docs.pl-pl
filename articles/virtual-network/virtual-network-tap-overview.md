@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
+ms.date: 03/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 5532174b6fc72f51e7ba7a946e601e7d97c7808e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: dd99e1376eb0589fc8cb8404d557c9ebddd45fd6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408449"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992056"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
@@ -40,9 +40,11 @@ Usługa Azure virtual network TAP (Terminal punktem dostępu) umożliwia ciągł
 ### <a name="security-analytics-networkapplication-performance-management"></a>Narzędzia analizy zabezpieczeń, zarządzanie wydajnością aplikacji/Sieć
 
 - [Aktywne zabezpieczeń](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch chmury](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cyberbezpieczeństwa](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
+- [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [Platforma NetWitness® RSA](https://www.rsa.com/azure)

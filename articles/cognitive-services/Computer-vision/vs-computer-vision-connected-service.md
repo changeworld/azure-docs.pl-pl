@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 4911a872a4b5479abe84c2e06573256092185cf2
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669705"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450950"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Nawiązywanie połączenia z interfejsem API przetwarzania obrazów za pomocą usług połączonych w programie Visual Studio
 
@@ -92,7 +92,7 @@ W tym artykule i artykułach powiązanych podano szczegółowe informacje na tem
       }
    ```
 
-1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API przetwarzana obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kliknij prawym przyciskiem myszy jeden z obrazów, zapisz go na lokalnym dysku twardym, a następnie w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder images i wybierz polecenie **Dodaj** > **Istniejący element**, aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego: 
+1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API przetwarzana obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kliknij prawym przyciskiem myszy na jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w oknie Eksploratora rozwiązań, kliknij prawym przyciskiem myszy na folder Obrazy i wybierz **Dodaj** > **istniejący element** Aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego: 
   
    ![Zrzut ekranu przedstawiający widok eksploratora rozwiązań z zaznaczonym plikiem obrazu](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
@@ -260,6 +260,6 @@ Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie u
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu API przetwarzania obrazów, zapoznaj się z [dokumentacją interfejsu API przetwarzania obrazów](Home.md).

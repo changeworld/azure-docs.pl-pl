@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f66101d9847c57c5e078c3484a243e7b38823f53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094430"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001790"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Przenoszenie maszyny Wirtualnej z systemem Windows z usługi Amazon Web Services (AWS) na maszynie wirtualnej platformy Azure
 
@@ -46,7 +46,7 @@ Możesz przekazać zarówno uogólniony, wyspecjalizowana wirtualnych dysków tw
 
 ## <a name="export-and-download-the-vhd"></a>Eksportowanie i Pobierz dysk VHD 
 
-Eksportuj wystąpienia usługi EC2 do wirtualnego dysku twardego w zasobniku Amazon S3. Postępuj zgodnie z instrukcjami w artykule dokumentacji Amazon [eksportowanie wystąpienia jako maszyny Wirtualnej przy użyciu maszyn wirtualnych Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) i uruchom [Tworzenie wystąpienia — export zadań](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) polecenie, aby wyeksportować wystąpienia usługi EC2 z plikiem wirtualnego dysku twardego. 
+Eksportuj wystąpienia usługi EC2 do wirtualnego dysku twardego w zasobniku Amazon S3. Postępuj zgodnie z instrukcjami w artykule dokumentacji Amazon [eksportowanie wystąpienia jako maszyny Wirtualnej przy użyciu maszyn wirtualnych Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) i uruchom [Tworzenie wystąpienia — export zadań](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) polecenie, aby wyeksportować wystąpienia usługi EC2 z plikiem wirtualnego dysku twardego. 
 
 Wyeksportowany plik wirtualnego dysku twardego jest zapisywany w zasobniku Amazon S3, które określisz. Podstawowa składnia dla eksportowanie wirtualny dysk twardy znajduje się poniżej, wystarczy zastąpić tekst symbolu zastępczego w <brackets> z informacjami.
 
@@ -55,7 +55,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Po wyeksportowaniu wirtualny dysk twardy, postępuj zgodnie z instrukcjami [jak pobrać obiekt z przedział S3?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) można pobrać pliku wirtualnego dysku twardego z przedział S3. 
+Po wyeksportowaniu wirtualny dysk twardy, postępuj zgodnie z instrukcjami [jak pobrać obiekt z przedział S3?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) można pobrać pliku wirtualnego dysku twardego z przedział S3. 
 
 > [!IMPORTANT]
 > Dane opłat za usługi AWS transferu opłatom za pobieranie wirtualnego dysku twardego. Zobacz [Amazon S3 ceny](https://aws.amazon.com/s3/pricing/) Aby uzyskać więcej informacji.

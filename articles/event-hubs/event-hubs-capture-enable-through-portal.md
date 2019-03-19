@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 6d307111d8c19324cb6daf82a234ff9128103fd2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763439"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850755"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Włączanie przechwytywania zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs
 
@@ -47,8 +47,12 @@ Aby przechwycić dane do usługi Azure Data Lake Store, należy utworzyć konto 
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Tworzenie konta i folderów usługi Azure Data Lake Store
 
-1. Utwórz konto usługi Data Lake Store, postępując zgodnie z instrukcjami w temacie [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md).
+> [!NOTE]
+> Obecnie funkcja przechwytywania usługi Event Hubs obsługuje tylko Gen 1 z usługi Azure Data Lake Store, nie Gen 2. 
+
+1. Tworzenie konta Data Lake Store Gen 1, postępując zgodnie z instrukcjami w [Rozpoczynanie pracy z usługą Azure Data Lake Store, przy użyciu witryny Azure portal](../data-lake-store/data-lake-store-get-started-portal.md).
 2. Wykonaj instrukcje opisane w sekcji [Przydzielanie uprawnień usłudze Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs), aby utworzyć folder na koncie usługi Data Lake Store, na którym chcesz przechwytywać dane z usługi Event Hubs, i przydzielić uprawnienia usłudze Event Hubs, aby mogła ona zapisywać dane na Twoim koncie usługi Data Lake Store.  
+
 
 ### <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 

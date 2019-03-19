@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7e97983e1316476848eb4a051cd636339b8caff7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c215c125237d72875155f15002fca6c4bee53b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440968"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077738"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Usługa Azure IoT Edge obsługiwanych systemów
 
@@ -31,6 +31,7 @@ Usługa Azure IoT Edge wymaga aparatu kontenera, aby uruchomić modułów, ponie
 
 <br>
 <center>
+
 ![Moby jako kontener środowiska uruchomieniowego](./media/support/only-moby-for-production.png)
 </center>
 
@@ -47,11 +48,13 @@ Rodzina systemu operacyjnego hosta musi zawsze odpowiadać rodziny używane w ko
 
 <br>
 <center>
+
 ![Pasuje do systemu operacyjnego hosta systemu operacyjnego gościa](./media/support/edge-on-device.png)
 </center>
 
 ### <a name="tier-1"></a>Warstwa 1
 Ogólnie dostępna
+
 | System operacyjny | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
 | Raspbian stretch | Nie | Yes|
@@ -59,6 +62,7 @@ Ogólnie dostępna
 | Serwer Ubuntu 18.04 | Yes | Nie |
 
 Publiczna wersja zapoznawcza
+
 | System operacyjny | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
 | Windows 10 IoT Core build 17763 | Yes | Nie |
@@ -86,6 +90,7 @@ Usługa Azure IoT Edge można uruchomić na maszynach wirtualnych. Jest to typow
 
 <br>
 <center>
+
 ![Usługa Azure IoT Edge na maszynie wirtualnej](./media/support/edge-on-vm.png)
 </center>
 

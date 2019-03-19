@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: fa0ba7aabcd03297b076ccbc1fcc3d2453676cc1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782670"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869816"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: Tworzenie podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
 
@@ -28,7 +28,7 @@ Równoważenie obciążenia zapewnia większą dostępność i możliwości skal
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-Aby wykonać zadania z tego przewodnika Szybki start, zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+Aby wykonać zadania z tego przewodnika Szybki start, zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
 
@@ -207,7 +207,7 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    
 1. Kliknij przycisk **OK**.
    
-  ![Dodawanie reguły modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+   ![Dodawanie reguły modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 
@@ -259,6 +259,7 @@ Otwórz przeglądarkę i wklej publiczny adres IP modułu równoważenia obcią�
 
 ![Internetowy serwer usług IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
+Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między trzy maszyny wirtualne używane przez aplikację, możesz wymusić odświeżenie w przeglądarce internetowej.
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Aby usunąć moduł równoważenia obciążenia i wszystkie powiązane z nim zasoby, kiedy nie będą już potrzebne, otwórz grupę zasobów **MyResourceGroupLB** i wybierz pozycję **Usuń grupę zasobów**.

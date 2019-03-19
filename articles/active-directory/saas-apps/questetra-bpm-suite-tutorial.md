@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8438bfa567c207e543ed716a2940bce991cc19
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78b069e6534d8394de1f9a9fcdf51b871441c386
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196046"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Samouczek: Integracja usługi Azure Active Directory z pakietem BPM Questetra
 
@@ -210,9 +210,9 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon Questetra BPM
    
     ![Tworzenie użytkownika testowego][300] 
    
-    a. W **nazwa** polu tekstowym wpisz **nazwa** użytkownika **britta.simon@contoso.com**.
+    a. W **nazwa** polu tekstowym wpisz **nazwa** użytkownika **britta.simon\@contoso.com**.
    
-    b. W **E-mail** polu tekstowym wpisz **e-mail** użytkownika **britta.simon@contoso.com**
+    b. W **E-mail** polu tekstowym wpisz **e-mail** użytkownika **britta.simon\@contoso.com**
    
     c. W **hasło** polu tekstowym wpisz **hasło** użytkownika.
     
@@ -257,7 +257,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

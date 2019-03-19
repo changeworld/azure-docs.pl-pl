@@ -15,12 +15,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443aef1a7396dc637b656a805b758a62bcfac41d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176002"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Zrozumieć interakcję wielu dzierżaw usługi Azure Active Directory
 
@@ -47,7 +47,7 @@ Każda dzierżawa usługi Azure AD niezależnie w celu synchronizowania danych z
 Aby dodać dzierżawę usługi Azure AD w witrynie Azure portal, zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego usługi Azure AD, a po lewej stronie, wybierz **New**.
 
 > [!NOTE]
-> W przeciwieństwie do innych zasobów platformy Azure dzierżawcy nie są zasobami podrzędnymi subskrypcji platformy Azure. Jeśli Twoja subskrypcja platformy Azure jest anulowane lub wygasła, mogą nadal uzyskiwać dostęp do danych dzierżawy przy użyciu programu Azure PowerShell, interfejsu API programu Graph usługi Azure lub Centrum administracyjnego usługi Office 365. Możesz również [skojarzyć inną subskrypcję z dzierżawą](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> W przeciwieństwie do innych zasobów platformy Azure dzierżawcy nie są zasobami podrzędnymi subskrypcji platformy Azure. Jeśli Twoja subskrypcja platformy Azure jest anulowane lub wygasła, mogą nadal uzyskiwać dostęp do danych dzierżawy przy użyciu programu Azure PowerShell, interfejsu API programu Graph usługi Azure lub w Centrum administracyjnym usługi Microsoft 365. Możesz również [skojarzyć inną subskrypcję z dzierżawą](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Kolejne kroki

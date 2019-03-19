@@ -13,15 +13,15 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68655efaf9d6020489b7bc05ed1855ac181cd22f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ee05c117fb45cbd96a82ede524db7a6b098830f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211941"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854759"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
-Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain@contoso.com*.
+Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain\@contoso.com*.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed dodaniem niestandardowej nazwy domeny, należy utworzyć nazwy domeny za pomocą rejestratora domen. Aby rejestratora domen akredytowanych, zobacz [rejestratorów ICANN-Accredited](https://www.icann.org/registrar-reports/accredited-list.html).
@@ -87,9 +87,9 @@ Po zarejestrowaniu niestandardową nazwę domeny, należy upewnić się, że jes
 
 ## <a name="common-verification-issues"></a>Typowe problemy weryfikacji
 - Jeśli usługa Azure AD nie można zweryfikować niestandardowej nazwy domeny, należy spróbować wykonać następujące czynności:
-    - **Poczekaj co najmniej godzinę i spróbuj ponownie**. Rekordy DNS należy poddane propagacji, aby usługa Azure AD sprawdzić, czy domena i ten proces może potrwać godzinę lub dłużej.
+  - **Poczekaj co najmniej godzinę i spróbuj ponownie**. Rekordy DNS należy poddane propagacji, aby usługa Azure AD sprawdzić, czy domena i ten proces może potrwać godzinę lub dłużej.
 
-    - **Upewnij się, że rekord DNS jest poprawna.** Wróć do witryny rejestratora nazwy domeny i upewnij się, zapis, czy istnieje i czy jest on zgodny informacje wpisu DNS, które są dostarczane przez usługę Azure AD.
+  - **Upewnij się, że rekord DNS jest poprawna.** Wróć do witryny rejestratora nazwy domeny i upewnij się, zapis, czy istnieje i czy jest on zgodny informacje wpisu DNS, które są dostarczane przez usługę Azure AD.
 
     Jeśli nie można zaktualizować rekord w witrynie rejestratora, możesz udostępniać wpis z osobą, która ma odpowiednich uprawnień, aby dodać wpis i sprawdź, czy są dokładne.
 

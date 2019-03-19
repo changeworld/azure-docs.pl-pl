@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 3c4f1be97308062adc28a0b49ee36c3492906d63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990220"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010495"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie program Pacemaker w systemie Red Hat Enterprise Linux na platformie Azure
 
@@ -183,7 +183,7 @@ Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacj
    Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
 1. Kliknij przycisk rejestracje aplikacji
 1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http://localhost) i kliknij przycisk Utwórz
+1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład `http://localhost`) i kliknij przycisk Utwórz
 1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
 1. Wybierz nową aplikację, a następnie kliknij przycisk kluczy na karcie Ustawienia
 1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk Zapisz

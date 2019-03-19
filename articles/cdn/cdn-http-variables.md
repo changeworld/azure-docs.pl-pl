@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 70154a50086fabc84671e7e540d8496490ab5b2d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013547"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Zmienne HTTP dla usługi Azure CDN aparatu reguł
 Zmienne HTTP udostępniają oznacza, że za pomocą którego można pobrać metadanych żądań i odpowiedzi HTTP. Następnie można te metadane dynamicznie zmieniać żądania lub odpowiedzi. Używanie zmiennych HTTP jest ograniczone do następujących funkcje aparatu reguł:
@@ -54,10 +54,10 @@ W poniższej tabeli opisano obsługiwane zmienne HTTP. Po geograficznie metadany
 | Znaleziono parametr ciągu zapytania | % {is_amp} | Wartość tej zmiennej, zależy od tego, czy żądanie zawiera co najmniej jeden parametr ciągu zapytania.<br /><br />-Znaleziono parametru: &<br />-Brak parametry: NULL | & |
 | Wartość parametru ciągu zapytania | %{arg_&lt;parameter&gt;} | Zwraca wartość, odpowiadającą parametr ciągu zapytania, które są identyfikowane za pomocą &lt;parametru&gt; termin. | Przykładowe zastosowanie: <br />% {arg_language}<br /><br />Przykładowy parametr ciągu zapytania: <br />? języka = pl<br /><br />Przykładowe wartości: pl |
 | Wartość ciągu zapytania | % {query_string} | Wskazuje wartość ciągu całe zapytanie, które są zdefiniowane w adresie URL żądania. |key1=val1&key2=val2&key3=val3 |
-| Domeny odwołania | % {referring_domain} | Wskazuje domenę zdefiniowane w nagłówku żądania odwołania. | www.google.com |
+| Domeny odwołania | % {referring_domain} | Wskazuje domenę zdefiniowane w nagłówku żądania odwołania. | <www.google.com> |
 | Region (żądającego) | %{geo_region} | Wskazuje region żądającego (na przykład wtedy, Województwo) za pośrednictwem jej skrót alfanumeryczne. | CA |
 | Wartość nagłówka żądania | %{http_RequestHeader} | Zwraca wartość odpowiadającą identyfikowane przez określenie RequestHeader nagłówka żądania. <br /><br />Jeśli nazwa nagłówka żądania zawiera znak łącznika (na przykład agenta użytkownika), zastąp go znakiem podkreślenia (na przykład User_Agent).| Przykładowe zastosowanie: % {http_Connection}<br /><br />Wartość próbek: Keep-Alive | 
-| Host żądania | %{host} | Wskazuje hosta zdefiniowane w adresie URL żądania. | www.myDomain.com |
+| Host żądania | %{host} | Wskazuje hosta zdefiniowane w adresie URL żądania. | <www.mydomain.com> |
 | Żądanie protokołu | %{request_protocol} | Określa protokół żądania. | HTTP/1.1 |
 | Schemat żądania | %{scheme} | Wskazuje schemat żądania. |http |
 | Identyfikator URI (względny) żądania | %{request_uri} | Wskazuje względną ścieżkę, łącznie z ciągu zapytania, zdefiniowane w identyfikatorze URI żądania. | /Marketing/foo.js?loggedin=true |
@@ -187,8 +187,8 @@ W tym przykładowym scenariuszu *request_uri* zmienna jest ustawiona na:
 
 Poniższa tabela przedstawia, jak działa ta składnia.
 
-| Przykład składni | Wyniki |
-| ------------- | ------- |
+| Przykład składni | Wyniki | |
+| ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | Ponieważ zmienna rozpoczyna się od wzorca, został zastąpiony. |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | Ponieważ zmienna nie kończy się za pomocą wzorca, nie było zmiany.|
 

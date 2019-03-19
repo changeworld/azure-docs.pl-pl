@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a07ca553aee2a6267af5a33836e85b2a12d8ae3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c53675c27276fdcf403ca5a6add5d86fc38e410a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182293"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842470"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Problem podczas dodawania aplikacji spoza galerii
 
@@ -46,20 +46,20 @@ Jeśli potrzebujesz pomocy, informacje o niestandardowych aplikacji [biblioteki 
 
 Możesz zobaczyć szczegółowe informacje o wszystkich powiadomień portalu, wykonując poniższe kroki:
 
-1.  Kliknij przycisk **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal
+1. Kliknij przycisk **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal
 
-2.  Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
+2. Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
 
    >[!NOTE]
    >Nie można kliknąć powiadomienia w **pomyślnie** lub **w toku** stanu.
    >
    >
 
-4.  Skorzystaj z informacji w ramach **szczegóły powiadomienia** Aby poznać więcej szczegółów o problemie.
+4. Skorzystaj z informacji w ramach **szczegóły powiadomienia** Aby poznać więcej szczegółów o problemie.
 
-5.  Jeśli nadal potrzebujesz pomocy, możesz również udostępniać tych informacji, inżynier pomocy technicznej lub grupę produktu, aby uzyskać pomoc dotyczącą danego problemu.
+5. Jeśli nadal potrzebujesz pomocy, możesz również udostępniać tych informacji, inżynier pomocy technicznej lub grupę produktu, aby uzyskać pomoc dotyczącą danego problemu.
 
-6.  Kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym.
+6. Kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak uzyskać pomoc, wysyłając powiadomienia, szczegółowe informacje ze specjalistą pomocy technicznej
 
@@ -71,63 +71,63 @@ Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomie�
 
 ### <a name="essential-notification-items"></a>Essential Notification Items
 
--   **Tytuł** — opisowy tytuł powiadomienia
-   *  Przykład — **ustawienia serwera proxy aplikacji**
+- **Tytuł** — opisowy tytuł powiadomienia
+  *  Przykład — **ustawienia serwera proxy aplikacji**
 
--   **Opis** — opisu co nastąpiło w wyniku operacji
+- **Opis** — opisu co nastąpiło w wyniku operacji
 
-   *  Przykład — **wprowadzony wewnętrzny adres url jest już używana przez inną aplikację**
+  *  Przykład — **wprowadzony wewnętrzny adres url jest już używana przez inną aplikację**
 
--   **Identyfikator powiadomienia** — Unikatowy identyfikator powiadomienia
+- **Identyfikator powiadomienia** — Unikatowy identyfikator powiadomienia
 
-   *  Przykład — **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  *  Przykład — **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Identyfikator żądania klienta** — identyfikator określonego żądania przez przeglądarkę
+- **Identyfikator żądania klienta** — identyfikator określonego żądania przez przeglądarkę
 
-   *  Przykład — **302fd775-3329-4670-a9f3-bea37004f0bc**
+  *  Przykład — **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Czas UTC sygnatury** — sygnatura czasowa, w którym wystąpił powiadomienia, w formacie UTC
+- **Czas UTC sygnatury** — sygnatura czasowa, w którym wystąpił powiadomienia, w formacie UTC
 
-   *  Przykład — **2017-03-23T19:50:43.7583681Z**
+  *  Przykład — **2017-03-23T19:50:43.7583681Z**
 
--   **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator możemy użyć, aby wyszukać błąd w naszych systemach
+- **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator możemy użyć, aby wyszukać błąd w naszych systemach
 
-   *  Przykład — **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  *  Przykład — **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Nazwa UPN** — użytkownik, który wykonał operację
+- **Nazwa UPN** — użytkownik, który wykonał operację
 
-   *  Przykład — **tperkins@f128.info**
+  *  Przykład — **tperkins\@f128.info**
 
--   **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który był użytkownika, który wykonał operację
+- **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który był użytkownika, który wykonał operację
 
-   *  Przykład — **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  *  Przykład — **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Identyfikator obiektu użytkownika** — Unikatowy identyfikator użytkownika, który wykonał operację
+- **Identyfikator obiektu użytkownika** — Unikatowy identyfikator użytkownika, który wykonał operację
 
- *  Przykład — **17f84be4-51f8-483a-b533-383791227a99**
+  *  Przykład — **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Elementy szczegółowe powiadomienia
 
--   **Nazwa wyświetlana** — **(może być pusta)** bardziej szczegółowe nazwy wyświetlane dla błędu
+- **Nazwa wyświetlana** — **(może być pusta)** bardziej szczegółowe nazwy wyświetlane dla błędu
 
   *  Przykład — **ustawienia serwera proxy aplikacji**
 
--   **Stan** — określonych stan powiadomienia
+- **Stan** — określonych stan powiadomienia
 
-   *  Przykład — **nie powiodło się**
+  *  Przykład — **nie powiodło się**
 
--   **Obiekt o identyfikatorze** — **(może być pusta)** identyfikator obiektu, dla której wykonano operację
+- **Obiekt o identyfikatorze** — **(może być pusta)** identyfikator obiektu, dla której wykonano operację
 
-   *  Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+  *  Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Szczegóły** — szczegółowy opis co nastąpiło w wyniku operacji
+- **Szczegóły** — szczegółowy opis co nastąpiło w wyniku operacji
 
-   *  Przykład — **wewnętrznego adresu url "https://bing.com/" jest nieprawidłowa, ponieważ jest już używana**
+  *  Przykład — **wewnętrzny adres url `https://bing.com/` jest nieprawidłowy, ponieważ jest już używana**
 
--   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie z grupą pomocy technicznej lub produktów w polu tekstowym 
--   inżynier ds
+- **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie z grupą pomocy technicznej lub produktów w polu tekstowym 
+- inżynier ds
 
-   *  Przykład ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+  *  Przykład ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
 

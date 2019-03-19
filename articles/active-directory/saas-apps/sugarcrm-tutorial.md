@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a00c9cb0ce1bd8a6f36070e81df1185ef23a307
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 450fcbcdfab8e90728fbbbd0068123768f3cef4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>Samouczek: Integracja usługi Azure Active Directory z Sugar CRM
 
@@ -114,6 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Konfigurowanie logowania jednokrotnego](./media/sugarcrm-tutorial/tutorial_sugarcrm_url.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://<companyname>.sugarondemand.com` |
@@ -148,7 +149,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     ![Administracja](./media/sugarcrm-tutorial/ic795890.png "Administracja")
 
-1. W **uwierzytelnianie SAML** sekcji, wykonaj następujące czynności:
+1. W sekcji **SAML Authentication** (Uwierzytelnianie SAML) wykonaj następujące kroki:
    
     ![Uwierzytelnianie SAML](./media/sugarcrm-tutorial/ic795891.png "Uwierzytelnianie SAML")  
  
@@ -275,7 +276,7 @@ Po kliknięciu kafelka Sugar CRM w panelu dostępu, użytkownik powinien uzyska�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

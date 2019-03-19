@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f3764e5f4a5d6bbc3d6988321a2d7648012825ae
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f4558c6fdb1e5e4f0ffb7a4b4fdb1ab62eb4cfa9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121285"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Skoryguj konfiguracje zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center analizuje codziennie systemu operacyjnego (OS) maszyn wirtualnych (VM) i konfigurację, która może spowodować, że maszyny wirtualne na komputerach i bardziej narażone na ataki. Usługa Security Center zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń zaleca się zmiany tych luk w konfiguracji.
@@ -31,34 +31,34 @@ Aby uzyskać więcej informacji o konkretnych konfiguracji, które są monitorow
 
 W tym przykładzie opisano zalecenie "Skoryguj konfiguracje zabezpieczeń" w obszarze **obliczenia i aplikacje**.
 1. W usłudze Security Center w okienku po lewej stronie wybierz **obliczenia i aplikacje**.  
-  **Obliczenia i aplikacje** zostanie otwarte okno.
+   **Obliczenia i aplikacje** zostanie otwarte okno.
 
    ![Korygowanie konfiguracji zabezpieczeń][1]
 
 2. Wybierz **skoryguj konfiguracje zabezpieczeń**.  
-  **Konfiguracje zabezpieczeń** zostanie otwarte okno.
+   **Konfiguracje zabezpieczeń** zostanie otwarte okno.
 
    ![W oknie "Konfiguracje zabezpieczeń"][2]
 
-  Górna sekcja przedstawia pulpit nawigacyjny:
+   Górna sekcja przedstawia pulpit nawigacyjny:
 
-  - **Niespełnione reguły według ważności**: Całkowita liczba reguł, że konfiguracja systemu operacyjnego nie powiodło się dla maszyn wirtualnych i komputerów, podzielone według ważności.
-  - **Niespełnione reguły według typu**: Całkowita liczba reguł, że konfiguracja systemu operacyjnego nie powiodło się dla maszyn wirtualnych i komputerów, podzielone według typu.
-  - **Niespełnione reguły Windows**: Łączna liczba reguł, nie na podstawie konfiguracji systemu operacyjnego Windows.
-  - **Niespełnione reguły Linux**: Łączna liczba reguł, nie na podstawie konfiguracji systemu operacyjnego Linux.
+   - **Niespełnione reguły według ważności**: Całkowita liczba reguł, że konfiguracja systemu operacyjnego nie powiodło się dla maszyn wirtualnych i komputerów, podzielone według ważności.
+   - **Niespełnione reguły według typu**: Całkowita liczba reguł, że konfiguracja systemu operacyjnego nie powiodło się dla maszyn wirtualnych i komputerów, podzielone według typu.
+   - **Niespełnione reguły Windows**: Łączna liczba reguł, nie na podstawie konfiguracji systemu operacyjnego Windows.
+   - **Niespełnione reguły Linux**: Łączna liczba reguł, nie na podstawie konfiguracji systemu operacyjnego Linux.
 
-  W dolnej części pulpitu nawigacyjnego Wyświetla listę wszystkich reguł nie powiodło się dla maszyn wirtualnych i komputerów oraz ważność brakujących aktualizacji. Lista zawiera następujące elementy:
+   W dolnej części pulpitu nawigacyjnego Wyświetla listę wszystkich reguł nie powiodło się dla maszyn wirtualnych i komputerów oraz ważność brakujących aktualizacji. Lista zawiera następujące elementy:
 
-  - **CCEID**: CCE Unikatowy identyfikator dla tej reguły. Usługa Security Center używa Common Configuration Enumeration (CCE) do przypisywania unikatowych identyfikatorów dla reguły konfiguracji.
-  - **Nazwa**: Nazwa reguły nie powiodło się.
-  - **Typ reguły**: *Klucza rejestru*, *zasady zabezpieczeń*, *zasady inspekcji*, lub *IIS* typ reguły.
-  - **Nie. maszyn wirtualnych i komputerów**: Całkowita liczba maszyn wirtualnych i komputerów, których dotyczy reguła z błędem.
-  - **Ważność reguły**: Wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
-  - **Stan**: Bieżący stan zalecenia:
+   - **CCEID**: CCE Unikatowy identyfikator dla tej reguły. Usługa Security Center używa Common Configuration Enumeration (CCE) do przypisywania unikatowych identyfikatorów dla reguły konfiguracji.
+   - **Nazwa**: Nazwa reguły nie powiodło się.
+   - **Typ reguły**: *Klucza rejestru*, *zasady zabezpieczeń*, *zasady inspekcji*, lub *IIS* typ reguły.
+   - **Nie. maszyn wirtualnych i komputerów**: Całkowita liczba maszyn wirtualnych i komputerów, których dotyczy reguła z błędem.
+   - **Ważność reguły**: Wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
+   - **Stan**: Bieżący stan zalecenia:
 
-    - **Otwórz**: Zalecenie nie rozpoczęto jeszcze wykonywania.
-    - **Trwającą**: Zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
-    - **Rozwiązane**: Zalecenia zostały zastosowane. Gdy problem zostanie rozwiązany, wpis jest wyszarzony.
+     - **Otwórz**: Zalecenie nie rozpoczęto jeszcze wykonywania.
+     - **Trwającą**: Zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
+     - **Rozwiązane**: Zalecenia zostały zastosowane. Gdy problem zostanie rozwiązany, wpis jest wyszarzony.
 
 3. Aby wyświetlić szczegóły reguły nie powiodło się, wybierz go z listy.
 
@@ -79,17 +79,17 @@ W tym przykładzie opisano zalecenie "Skoryguj konfiguracje zabezpieczeń" w obs
    - **Reguły operacji**: Operacja reguły, która jest używana przez usługę Security Center podczas analizy konfiguracji systemu operacyjnego maszyny Wirtualnej względem reguły.
 
 4. W górnej części okna w widoku szczegółowym wybierz **wyszukiwania**.  
-  Wyszukiwanie Otwiera listę obszarów roboczych, które mają maszyny wirtualne i komputery z niezgodności konfiguracji zabezpieczeń wybrane. Wybór obszaru roboczego jest wyświetlany tylko jeśli wybrana reguła ma zastosowanie do wielu maszyn wirtualnych, które są podłączone do różnych obszarów roboczych.
+   Wyszukiwanie Otwiera listę obszarów roboczych, które mają maszyny wirtualne i komputery z niezgodności konfiguracji zabezpieczeń wybrane. Wybór obszaru roboczego jest wyświetlany tylko jeśli wybrana reguła ma zastosowanie do wielu maszyn wirtualnych, które są podłączone do różnych obszarów roboczych.
 
    ![Uwzględnione na liście obszarów roboczych][4]
 
 5. Wybierz obszar roboczy.  
-  Zapytanie wyszukiwania dzienników usługi Azure Monitor otwiera filtrowane do obszaru roboczego z niezgodności konfiguracji zabezpieczeń.
+   Zapytanie wyszukiwania dzienników usługi Azure Monitor otwiera filtrowane do obszaru roboczego z niezgodności konfiguracji zabezpieczeń.
 
    ![Obszar roboczy z luk w zabezpieczeniach systemu operacyjnego][5]
 
 6. Wybierz komputer, na liście.  
-  Zostanie otwarty nowy wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
+   Zostanie otwarty nowy wynik wyszukiwania informacji filtrowane tylko dla tego komputera.
 
    ![Szczegółowe informacje o wybranym komputerze][6]
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023349"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852858"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-azure-search-connector.md)
 > * [Bieżąca wersja](connector-azure-search.md)
 
@@ -169,10 +169,10 @@ W poniższej tabeli określono, czy typ danych usługi Azure Search jest obsług
 
 | Typ danych w usłudze Azure Search | Obsługiwane w ujściu usługi Azure Search |
 | ---------------------- | ------------------------------ |
-| Ciąg | Tak |
+| String | Tak |
 | Int32 | Tak |
 | Int64 | Tak |
-| Podwójne | Tak |
+| Double | Tak |
 | Wartość logiczna | Tak |
 | DataTimeOffset | Tak |
 | Tablica ciągów | Nie |

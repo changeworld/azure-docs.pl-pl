@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 4d47192ea69047b0b12deffc41776a87c16ca6ab
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009932"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -340,6 +340,7 @@ Nie, usługi Traffic Manager umożliwia mieszanie adresowania typy punktów koń
 Po odebraniu zapytania względem profilu usługi Traffic Manager umożliwia znalezienie najpierw, punkt końcowy, który musi być zwracane zgodnie z określonej metody routingu i stan kondycji punktów końcowych. Następnie przeszukuje na żądany w zapytaniu przychodzących typ rekordu i typ rekordu, skojarzone z punktem końcowym przed zwróceniem odpowiedzi na podstawie poniższej tabeli.
 
 Dla profilów przy użyciu dowolnej metody routingu w innych niż atrybut wielowartościowy elementu:
+
 |Przychodzące żądania zapytania|    Typ punktu końcowego|  Podany odpowiedź|
 |--|--|--|
 |ANY |  A / AAAA / CNAME |  Docelowy punkt końcowy| 
@@ -350,6 +351,7 @@ Dla profilów przy użyciu dowolnej metody routingu w innych niż atrybut wielow
 |CNAME |    CNAME | Docelowy punkt końcowy|
 |CNAME  |A / AAAA | NODATA |
 |
+
 Dla profilów za pomocą metody routingu opartego na ustawić atrybut wielowartościowy elementu:
 
 |Przychodzące żądania zapytania|    Typ punktu końcowego | Podany odpowiedź|

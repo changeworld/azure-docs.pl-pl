@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 555d68198329353b47641e8a22abfcb33ae5b61c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0d7ca397cf45c4a67a914a8105deb9043adf46e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835285"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Przekazywanie plików na konto usługi Azure Media Services z rozwiązania Azure StorSimple  
 
@@ -47,7 +47,7 @@ Usługa [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) używa 
 
 ## <a name="see-also"></a>Zobacz także
 
-[Wyzwalanie zadań usługi Data Manager przy użyciu zestawu .Net SDK](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[Za pomocą zestawu .NET SDK wyzwalanie zadań menedżera danych](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

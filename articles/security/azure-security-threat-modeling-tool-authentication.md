@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fa07ebf3dbf3e5d3e5f4e96cdf4b77a3710c1d1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888591"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Ramka zabezpieczeń: Uwierzytelnianie | Środki zaradcze 
+
 | Produkt/usługę | Artykuł |
 | --------------- | ------- |
 | **Aplikacja sieci Web**    | <ul><li>[Należy wziąć pod uwagę przy użyciu mechanizmu uwierzytelniania standardowego uwierzytelniania do aplikacji sieci Web](#standard-authn-web-app)</li><li>[Aplikacje musi bezpiecznie obsługiwać scenariusze uwierzytelniania nie powiodło się](#handle-failed-authn)</li><li>[Włącz krok w górę lub adaptacyjne uwierzytelniania](#step-up-adaptive-authn)</li><li>[Upewnij się, że interfejsów administracyjnych są odpowiednio zablokowana](#admin-interface-lockdown)</li><li>[Implementowanie bezpiecznego nie pamiętam hasła funkcje](#forgot-pword-fxn)</li><li>[Upewnij się, że są implementowane zasady haseł i kont](#pword-account-policy)</li><li>[Wdrożenie kontroli w celu zapobiegania wyliczenia nazwy użytkownika](#controls-username-enum)</li></ul> |
@@ -338,7 +339,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Uwierzytelnianie i autoryzacja w składniku ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [zewnętrznych usług uwierzytelniania przy użyciu interfejsu API sieci Web platformy ASP.NET (C#)](http://www.asp.net/web-api/overview/security/external-authentication-services) |
+| **Odwołania**              | [Uwierzytelnianie i autoryzacja w składniku ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [zewnętrznych usług uwierzytelniania przy użyciu interfejsu API sieci Web platformy ASP.NET (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **Kroki** | <p>Uwierzytelnianie jest proces jednostki, w przypadku gdy okaże się swoją tożsamość, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło. Brak dostępnych wiele protokołów uwierzytelniania, które mogą być uważane za. Poniżej wymieniono niektóre z nich:</p><ul><li>Certyfikaty klienta</li><li>Na bazie systemu Windows</li><li>Oparte na formularzach</li><li>Federacyjna - usług AD FS</li><li>Federacyjna — usługa Azure AD</li><li>Federacyjna - tożsamości serwera</li></ul><p>Linków w sekcji odwołań zawierają szczegóły niskiego poziomu dotyczące jak wszystkich schematów uwierzytelniania zaimplementowane do zabezpieczania internetowego interfejsu API.</p>|
 
 ## <a id="authn-aad"></a>Użyj uwierzytelniania standardowego scenariusze obsługiwane przez usługę Azure Active Directory
@@ -489,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-#### <a name="sas-token"></a>Token SAS
+  #### <a name="sas-token"></a>Token SAS
 * Pobiera wewnętrznie generowane, gdy przy użyciu klucza symetrycznego, ale możemy wygenerować i używać go także jawnie
 * Zdefiniuj protokół: `var Http = require('azure-iot-device-http').Http;`
 * Utwórz token sygnatury dostępu współdzielonego:
@@ -506,7 +507,7 @@ await deviceClient.SendEventAsync(message);
     var base64UriEncoded = encodeURIComponent(base64signature);
     // construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "%2fdevices%2f"+deviceName+"&sig="
-    + base64UriEncoded + "&se=" + expires;
+  + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
@@ -514,7 +515,7 @@ await deviceClient.SendEventAsync(message);
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
-#### <a name="certificates"></a>Certyfikaty
+  #### <a name="certificates"></a>Certyfikaty
 * Wygenerować własny X509 podpisanego certyfikatu, przy użyciu dowolnego narzędzia, takie jak biblioteki OpenSSL do generowania .cert i Key plików do przechowywania certyfikatu i klucza odpowiednio
 * Aprowizacja urządzenia, który akceptuje połączenia zabezpieczonego przy użyciu certyfikatów.
     ```javascript

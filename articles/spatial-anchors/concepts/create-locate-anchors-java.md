@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d1f2e2319b662b7ff1661de9d9c3c8c007995d37
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 88a685d2999de1582c44c5aa84c49e8266ebb2db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753145"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880147"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Tworzenie i Znajdź kotwic przy użyciu Azure kotwic przestrzennego w języku Java
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753145"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między różnymi urządzeniami. Ma zostały dopasowane do sprawnej współpracy z preferowanego środowiska deweloperskiego. W tym artykule przejdziemy dowiesz się, jak to zrobić w języku Java.
+Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona wiele środowisk deweloperskich. W tym artykule przejdziemy dowiesz się, jak to zrobić w języku Java.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Dowiedz się więcej o [CloudSpatialAnchorSession](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession) klasy.
 
 ```java
     private CloudSpatialAnchorSession mCloudSession;
@@ -36,6 +38,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Dowiedz się więcej o [SessionConfiguration](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.sessionconfiguration) klasy.
 
 ```java
     mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
@@ -48,6 +52,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Dowiedz się więcej o [TokenRequiredListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.tokenrequiredlistener) interfejsu.
 
 ```java
     mCloudSession.addTokenRequiredListener(args -> {
@@ -95,6 +101,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
+Dowiedz się więcej o [start](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.start) metody.
+
 ```java
     mCloudSession.setSession(mSession);
     mCloudSession.start();
@@ -102,11 +110,15 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
+Dowiedz się więcej o [processFrame](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) metody.
+
 ```java
     mCloudSession.processFrame(mSession.update());
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Dowiedz się więcej o [SessionUpdatedListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.sessionupdatedlistener) interfejsu.
 
 ```java
     mCloudSession.addSessionUpdatedListener(args -> {
@@ -121,6 +133,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Dowiedz się więcej o [CloudSpatialAnchor](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor) klasy.
 
 ```java
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -169,6 +183,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Dowiedz się więcej o [getSessionStatusAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) metody.
+
 ```java
     Future<SessionStatus> sessionStatusFuture = mCloudSession.getSessionStatusAsync();
     CheckForCompletion(sessionStatusFuture);
@@ -199,6 +215,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
+Dowiedz się więcej o [getAppProperties](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.getappproperties) metody.
+
 ```java
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor();
     cloudAnchor.setLocalAnchor(localAnchor);
@@ -210,6 +228,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
+
+Dowiedz się więcej o [updateAnchorPropertiesAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metody.
 
 ```java
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -241,6 +261,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
+Dowiedz się więcej o [getAnchorPropertiesAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) metody.
+
 ```java
     Future<CloudSpatialAnchor> getAnchorPropertiesFuture = mCloudSession.getAnchorPropertiesAsync("anchorId");
     CheckForCompletion(getAnchorPropertiesFuture);
@@ -271,6 +293,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Dowiedz się więcej o [setExpiration](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.setexpiration) metody.
+
 ```java
     Date now = new Date();
     Calendar cal = Calendar.getInstance();
@@ -282,6 +306,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Dowiedz się więcej o [createWatcher](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) metody.
+
 ```java
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
     criteria.setIdentifiers(new String[] { "id1", "id2", "id3" });
@@ -289,6 +315,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Dowiedz się więcej o [AnchorLocatedListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.anchorlocatedlistener) interfejsu.
 
 ```java
     mCloudSession.addAnchorLocatedListener(args -> {
@@ -315,6 +343,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Dowiedz się więcej o [deleteAnchorAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metody.
+
 ```java
     Future deleteAnchorFuture = mCloudSession.deleteAnchorAsync(cloudAnchor);
     // Perform any processing you may want when delete finishes (deleteAnchorFuture is done)
@@ -322,17 +352,23 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Dowiedz się więcej o [zatrzymać](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) metody.
+
 ```java
     mCloudSession.stop();
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
+Dowiedz się więcej o [resetowania](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) metody.
+
 ```java
     mCloudSession.reset();
 ```
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-java.md)]
+
+Dowiedz się więcej o [Zamknij](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.close) metody.
 
 ```java
     mCloudSession.close();

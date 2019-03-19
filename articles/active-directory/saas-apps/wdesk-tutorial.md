@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75d0e962169529ab8d17aeeeed8aab26e7b7e994
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176581"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Wdesk
 
@@ -164,7 +164,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     ![Konfigurowanie logowania jednokrotnego](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-1. Kliknij przycisk **Zapisz zmiany**.
+1. Kliknij pozycję **Save changes** (Zapisz zmiany).
 
     ![Konfigurowanie logowania jednokrotnego](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
@@ -219,7 +219,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Wdesk, musi być
    
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/wdesk-tutorial/createuser1.png)  
 
-1. W **użytkownika** tekstu wprowadź nazwę użytkownika, użytkownika, takich jak **brittasimon@contoso.com** i kliknij przycisk **Kontynuuj** przycisku.
+1. W **użytkownika** tekstu wprowadź nazwę użytkownika, użytkownika, takich jak **brittasimon\@contoso.com** i kliknij przycisk **Kontynuuj** przycisku.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/wdesk-tutorial/createuser3.png)
 
@@ -227,11 +227,11 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Wdesk, musi być
   
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/wdesk-tutorial/createuser4.png)
  
-    a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     b. W polu tekstowym **First Name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
 
-    c. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak **Simon**.
+    c. W polu tekstowym **Last name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
 
 1. Kliknij przycisk **zapisać element członkowski** przycisku.  
 
@@ -277,7 +277,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225945c3accb9a92cc4a04faa9ba029092feae57
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868701"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Adobe Creative Cloud
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację rozwiązania Adobe Creative Cloud z usługą Azur
 
 **Aby dodać rozwiązanie Adobe Creative Cloud z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -171,7 +171,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
     b. W polu tekstowym **IDP issuer** (Wystawca IDP) wprowadź wartość **identyfikatora tożsamości SAML** skopiowaną z sekcji **Konfigurowanie logowania jednokrotnego** w witrynie Azure Portal.
 
-    d. W polu tekstowym **IDP Login URL** (Adres URL logowania IDP) wprowadź wartość **adresu URL usługi logowania jednokrotnego SAML** skopiowaną z sekcji **Konfigurowanie logowania jednokrotnego** w witrynie Azure Portal.
+    c. W polu tekstowym **IDP Login URL** (Adres URL logowania IDP) wprowadź wartość **adresu URL usługi logowania jednokrotnego SAML** skopiowaną z sekcji **Konfigurowanie logowania jednokrotnego** w witrynie Azure Portal.
 
     d. Wybierz wartość **HTTP — Redirect** w polu **IDP Binding** (Powiązanie IDP).
 
@@ -205,7 +205,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -249,13 +249,13 @@ Aby użytkownicy usługi Azure AD mogli logować się do rozwiązania Adobe Crea
 2. W konsoli firmy Adobe dodaj użytkownika z identyfikatorem Federated ID i przypisz go do profilu produktu. Aby uzyskać szczegółowe informacje na temat dodawania użytkowników, zobacz [Add users in Adobe Admin Console](https://helpx.adobe.com/enterprise/using/users.html#Addusers) (Dodawanie użytkowników w konsoli administracyjnej firmy Adobe). 
 
 3. Na tym etapie wpisz swój adres e-mail/nazwę upn w formularzu logowania Adobe i naciśnij klawisz Tab. Powinien nastąpić sfederowany powrót do usługi Azure AD:
-    * Dostęp internetowy: www.adobe.com > logowanie
-    * W narzędziu aplikacji klasycznej > logowanie
-    * W aplikacji > pomoc > logowanie
+   * Program Web access: www\.adobe.com > Zaloguj się
+   * W narzędziu aplikacji klasycznej > logowanie
+   * W aplikacji > pomoc > logowanie
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Adobe Creative Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Adobe Creative Cloud, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

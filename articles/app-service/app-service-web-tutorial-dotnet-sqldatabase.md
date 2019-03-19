@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ffa6e44a4be8813b74dc707f161bd5c17f72f350
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: b472927f435cb86787c4580920250cb33438a07b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992258"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku pokazano, jak wdrożyć opartą na danych aplikację ASP.NET w usłudze App Service i połączyć ją z usługą [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po zakończeniu aplikacja ASP.NET będzie działała na platformie Azure i będzie połączona z usługą SQL Database.
+Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku pokazano, jak wdrożyć opartą na danych aplikację ASP.NET w usłudze App Service i połączyć ją z usługą [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po zakończeniu aplikacja platformy ASP.NET działających na platformie Azure i połączone z bazą danych SQL.
 
 ![Opublikowana aplikacja ASP.NET w aplikacji usługi App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 

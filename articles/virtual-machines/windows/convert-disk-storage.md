@@ -1,6 +1,6 @@
 ---
-title: Konwertuj Azure zarządzane dyski magazynu od planu standard do warstwy premium i odwrotnie | Dokumentacja firmy Microsoft
-description: Sposób konwertowania Azure zarządzane dyski od planu standard do premium i odwrotnie, przy użyciu programu Azure PowerShell.
+title: Konwertuj Azure zarządzane dyski magazynu od planu Standard do Premium lub Premium na standardową | Dokumentacja firmy Microsoft
+description: Sposób konwertowania Azure dysków zarządzanych warstwy standardowej na Premium lub Premium na standardową przy użyciu programu Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankumarlive
@@ -16,27 +16,27 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 8f04f566d6d403d15a08a8900223061cdff1938c
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: f97140ffeed9115a0308215ea082baee611501fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009873"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizuj typ magazynu dysków zarządzanych
 
-Usługi Azure managed dysków oferuje cztery opcje typu magazynu: Największa dyski półprzewodnikowe (SSD), dysk SSD w warstwie Premium, SSD w warstwie standardowa i standardowych dysków twardych (HDD). Można przełączać się między typami magazynu z minimalnym czasem przestojów, w oparciu o potrzeby związane z wydajnością dysku zarządzanego. Przełączanie między typami magazynu nie jest obsługiwane dla dysku niezarządzanego; można jednak łatwo [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md).
+Istnieją cztery opcje dla usługi Azure managed disks: Magazyn dyskowy Ultra platformy Azure, dysk SSD w warstwie Premium, SSD w warstwie standardowa i Standard dysk twardy. Możesz przełączać się między te typy magazynu, zgodnie z potrzebami wydajności przy niewielkim przestoju. Ta funkcja nie jest obsługiwana w przypadku dysków niezarządzanych. Ale możesz z łatwością [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md) mieć możliwość przełączania się między typy dysków.
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ponieważ konwersja wymaga ponownego uruchomienia maszyny wirtualnej (VM), należy zaplanować migrację magazynu dysków podczas istniejącego okna obsługi.
-* Jeśli używasz dysku niezarządzanego, najpierw [przekonwertować go na dysk zarządzany](convert-unmanaged-to-managed-disks.md) aby możliwe było przełączać typów magazynów.
+* Ponieważ konwersja wymaga ponownego uruchomienia maszyny wirtualnej (VM), należy zaplanować migrację magazynu na dysku podczas istniejącego okna obsługi.
+* Jeśli dysk jest niezarządzany, najpierw [przekonwertować go na dysk zarządzany](convert-unmanaged-to-managed-disks.md) , dzięki czemu można przełączać się między opcjami magazynu.
 
-## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>Konwertuj dyski zarządzane maszyny wirtualnej z warstwy standardowa do warstwy premium
+## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Przełącz wszystkie zarządzane dyski maszyny Wirtualnej między Premium i standardowa
 
-Poniższy przykład pokazuje, jak przełączyć wszystkie dyski maszyny wirtualnej z warstwy standardowa do usługi premium storage. Aby korzystać z dysków zarządzanych w warstwie premium, musisz użyć maszyny Wirtualnej [rozmiar maszyny Wirtualnej](sizes.md) , która obsługuje usługę premium storage. W tym przykładzie zmienia także rozmiar, który obsługuje usługę premium storage:
+W tym przykładzie pokazano, jak można przekonwertować wszystkie dyski maszyny Wirtualnej z warstwy standardowa do magazynu w warstwie Premium lub wersji Premium do magazynu w warstwie standardowa. Aby korzystać z dysków zarządzanych w warstwie Premium, musisz użyć maszyny Wirtualnej [rozmiar maszyny Wirtualnej](sizes.md) , która obsługuje usługę Premium storage. W tym przykładzie zmienia także rozmiar, który obsługuje usługę premium storage:
 
 ```azurepowershell-interactive
 # Name of the resource group that contains the VM
@@ -49,7 +49,7 @@ $vmName = 'yourVM'
 $storageType = 'Premium_LRS'
 
 # Premium capable size
-# Required only if converting storage from standard to premium
+# Required only if converting storage from Standard to Premium
 $size = 'Standard_DS2_v2'
 
 # Stop and deallocate the VM before changing the size
@@ -57,15 +57,15 @@ Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
 
 $vm = Get-AzVM -Name $vmName -resourceGroupName $rgName
 
-# Change the VM size to a size that supports premium storage
-# Skip this step if converting storage from premium to standard
+# Change the VM size to a size that supports Premium storage
+# Skip this step if converting storage from Premium to Standard
 $vm.HardwareProfile.VmSize = $size
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 # Get all disks in the resource group of the VM
 $vmDisks = Get-AzDisk -ResourceGroupName $rgName 
 
-# For disks that belong to the selected VM, convert to premium storage
+# For disks that belong to the selected VM, convert to Premium storage
 foreach ($disk in $vmDisks)
 {
     if ($disk.ManagedBy -eq $vm.Id)
@@ -79,9 +79,9 @@ foreach ($disk in $vmDisks)
 Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="convert-a-managed-disk-from-standard-to-premium"></a>Konwertuj dysk zarządzany od planu standard do premium
+## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Przełącz poszczególne dysków zarządzanych warstw standardowa i Premium
 
-Do tworzenia i testowania obciążenia możesz chcieć kombinację dysków standardowa i premium, aby zmniejszyć koszt. Aby to zrobić, uaktualnienie do usługi premium storage tylko dyski, które wymagają lepszą wydajność. Poniższy przykład pokazuje, jak przełączyć jednego dysku maszyny wirtualnej od planu standard do premium storage i na odwrót. Aby korzystać z dysków zarządzanych w warstwie premium, musisz użyć maszyny Wirtualnej [rozmiar maszyny Wirtualnej](sizes.md) , która obsługuje usługę premium storage. W tym przykładzie przedstawiono również jak przełączyć się do rozmiaru, który obsługuje usługę premium storage:
+Do tworzenia i testowania obciążenia możesz zechcieć kombinację dysków Standard i Premium, aby zmniejszyć koszty. Można uaktualnić tylko te dyski, wymagających lepszą wydajność. Ten przykład przedstawia sposób konwertowania z jednego dysku maszyny Wirtualnej z warstwy standardowa do magazynu w warstwie Premium lub wersji Premium do magazynu w warstwie standardowa. Aby korzystać z dysków zarządzanych w warstwie Premium, musisz użyć maszyny Wirtualnej [rozmiar maszyny Wirtualnej](sizes.md) , która obsługuje usługę Premium storage. W tym przykładzie przedstawiono również jak przełączyć się do rozmiaru, który obsługuje usługę Premium storage:
 
 ```azurepowershell-interactive
 
@@ -103,8 +103,8 @@ Stop-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Nam
 
 $vm = Get-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Name 
 
-# Change the VM size to a size that supports premium storage
-# Skip this step if converting storage from premium to standard
+# Change the VM size to a size that supports Premium storage
+# Skip this step if converting storage from Premium to Standard
 $vm.HardwareProfile.VmSize = $size
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 
@@ -116,24 +116,24 @@ Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
-## <a name="convert-managed-disks-from-standard-to-premium-in-azure-portal"></a>Konwertuj dysków zarządzanych warstwy standardowej na premium w witrynie Azure portal
+## <a name="convert-managed-disks-from-standard-to-premium-in-the-azure-portal"></a>Konwertuj dysków zarządzanych warstwy standardowej na Premium w witrynie Azure portal
 
-Dysku zarządzanego można przekonwertować z warstwy standardowa do warstwy premium w witrynie Azure portal.
+Wykonaj następujące kroki:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz maszynę Wirtualną z listy **maszyn wirtualnych** w portalu.
-3. Jeśli maszyna wirtualna nie zostanie zatrzymana, kliknij przycisk **zatrzymać** górnej części bloku omówienia maszyn wirtualnych i zaczekaj, aż maszyny Wirtualnej zatrzymać.
-3. W bloku maszyny wirtualnej, wybierz **dysków** z menu.
+3. Jeśli maszyna wirtualna nie jest zatrzymana, wybierz opcję **zatrzymać** w górnej części maszyn wirtualnych **Przegląd** okienko i zaczekaj, aż maszyny Wirtualnej zatrzymać.
+3. W okienku dla maszyny Wirtualnej wybierz **dysków** z menu.
 4. Wybierz dysk, który ma zostać przekonwertowany.
 5. Wybierz **konfiguracji** z menu.
 6. Zmiana **typ konta** z **standardowych dysków Twardych** do **dysku Premium SSD**.
-7. Kliknij przycisk **Zapisz** i zamknąć blok dysku.
+7. Kliknij przycisk **Zapisz**i zamknąć okienko dysku.
 
-Aktualizacja typu dysku jest efektywne natychmiastowe. Możesz ponownie uruchomić maszynę Wirtualną po konwersji.
+Konwersja typu dysku jest natychmiastowe. Możesz ponownie uruchomić maszynę Wirtualną po konwersji.
 
-## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd"></a>Konwertuj dysk zarządzany ze standardowych dysków Twardych na SSD w warstwie standardowa
+## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Przełącz dysków zarządzanych między standardowych dysków Twardych i SSD w warstwie standardowa 
 
-Poniższy przykład pokazuje, jak przełączyć jednego dysku maszyny wirtualnej ze standardowych dysków Twardych na SSD w warstwie standardowa i na odwrót:
+Ten przykład pokazuje sposób konwertowania pojedynczego dysku maszyny Wirtualnej, z standardowych dysków Twardych do SSD w warstwie standardowa lub SSD w warstwie standardowa do standardowych dysków Twardych:
 
 ```azurepowershell-interactive
 
@@ -164,4 +164,3 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ## <a name="next-steps"></a>Kolejne kroki
 
 Utwórz kopię tylko do odczytu, maszyny wirtualnej przy użyciu [migawki](snapshot-copy-managed-disk.md).
-

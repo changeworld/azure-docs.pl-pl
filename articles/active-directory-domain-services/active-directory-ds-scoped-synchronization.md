@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3d13082e3c076061b8d343827266ec04ae80646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ac11244b87c87285722b4922da69530fab98c299
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180691"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117612"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurowanie zakresu synchronizacji z usługi Azure AD do domeny zarządzanej
 W tym artykule pokazano, jak skonfigurować tylko określone konta użytkowników mają być synchronizowane z katalogiem usługi Azure AD do domeny zarządzanej usług domenowych Azure AD.
@@ -39,12 +39,10 @@ Poniższa tabela pozwala określić, jak używać synchronizacji o określonym z
 
 > [!WARNING]
 > **Zmiana zakresu synchronizacji powoduje, że Twojej domeny zarządzanej za pośrednictwem ponownej synchronizacji.**
->
- * Zmiana zakresu synchronizacji dla domeny zarządzanej, występuje pełnej ponownej synchronizacji.
- * Obiekty, które nie są już wymagane w domenie zarządzanej zostaną usunięte. Nowe obiekty są tworzone w domenie zarządzanej.
- * Ponownej synchronizacji może zająć dużo czasu, w zależności od liczby obiektów (użytkowników, grup i członkostw w grupie) w domenie zarządzanej i w katalogu usługi Azure AD. W przypadku dużych katalogów przy użyciu wielu setek tysięcy obiektów podczas ponownej synchronizacji może potrwać kilka dni.
->
->
+> 
+>  * Zmiana zakresu synchronizacji dla domeny zarządzanej, występuje pełnej ponownej synchronizacji.
+>  * Obiekty, które nie są już wymagane w domenie zarządzanej zostaną usunięte. Nowe obiekty są tworzone w domenie zarządzanej.
+>  * Ponownej synchronizacji może zająć dużo czasu, w zależności od liczby obiektów (użytkowników, grup i członkostw w grupie) w domenie zarządzanej i w katalogu usługi Azure AD. W przypadku dużych katalogów przy użyciu wielu setek tysięcy obiektów podczas ponownej synchronizacji może potrwać kilka dni.
 
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Tworzenie nowej domeny zarządzanej i włączanie grupy synchronizacji opartej na zakresie przy użyciu witryny Azure portal
@@ -58,46 +56,46 @@ Aby ukończyć ten zestaw kroków za pomocą programu PowerShell. Zapoznaj się 
 Wykonaj poniższe kroki, aby skonfigurować synchronizację o określonym zakresie oparte na grupach, do domeny zarządzanej:
 
 1. Wykonaj następujące czynności:
-  * [Zadanie 1: Zainstaluj wymagane moduły programu PowerShell](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules).
-  * [Zadanie 2. Tworzenie jednostki usługi wymagane w katalogu usługi Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-  * [Zadanie 3. Tworzenie i Konfigurowanie grupy "Administratorzy usługi AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
-  * [Zadanie 4. Zarejestruj dostawcę zasobów usługi Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
-  * [Zadanie 5. Utwórz grupę zasobów](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
-  * [Zadanie 6. Tworzenie i konfigurowanie sieci wirtualnej](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
+   * [Zadanie 1: Zainstaluj wymagane moduły programu PowerShell](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules).
+   * [Zadanie 2. Tworzenie jednostki usługi wymagane w katalogu usługi Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
+   * [Zadanie 3. Tworzenie i Konfigurowanie grupy "Administratorzy usługi AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
+   * [Zadanie 4. Zarejestruj dostawcę zasobów usługi Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
+   * [Zadanie 5. Utwórz grupę zasobów](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
+   * [Zadanie 6. Tworzenie i konfigurowanie sieci wirtualnej](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
 
 2. Wybierz grupy, które chcesz synchronizować, a następnie podaj nazwę wyświetlaną grup, które chcesz zsynchronizować z domeną zarządzaną.
 
 3. Zapisz [skryptu w poniższej sekcji](active-directory-ds-scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) w pliku o nazwie ```Select-GroupsToSync.ps1```. Uruchom skrypt, takich jak poniżej:
 
-  ```powershell
-  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-  ```
+   ```powershell
+   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
+   ```
 
-  > [!WARNING]
-  > **Pamiętaj uwzględnić grupy "Administratorzy usługi AAD DC".**
-  >
-  > Na liście skonfigurowane do synchronizacji zakresu grupy, musi zawierać grupy "Administratorzy usługi AAD DC". Jeśli ta grupa nie zostanie uwzględniony, domeny zarządzanej, będzie można jej używać.
-  >
+   > [!WARNING]
+   > **Pamiętaj uwzględnić grupy "Administratorzy usługi AAD DC".**
+   >
+   > Na liście skonfigurowane do synchronizacji zakresu grupy, musi zawierać grupy "Administratorzy usługi AAD DC". Jeśli ta grupa nie zostanie uwzględniony, domeny zarządzanej, będzie można jej używać.
+   >
 
 4. Teraz Tworzenie domeny zarządzanej i włączanie na podstawie grupy synchronizacji o określonym zakresie dla domeny zarządzanej. Zawiera właściwości ```"filteredSync" = "Enabled"``` w ```Properties``` parametru. Zobacz na przykład poniższy fragment skryptu skopiowane z [zadanie 7: Aprowizowanie domeny zarządzanej usług domenowych Azure AD](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
 
-  ```powershell
-  $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-  $ManagedDomainName = "contoso100.com"
-  $ResourceGroupName = "ContosoAaddsRg"
-  $VnetName = "DomainServicesVNet_WUS"
-  $AzureLocation = "westus"
+   ```powershell
+   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+   $ManagedDomainName = "contoso100.com"
+   $ResourceGroupName = "ContosoAaddsRg"
+   $VnetName = "DomainServicesVNet_WUS"
+   $AzureLocation = "westus"
 
-  # Enable Azure AD Domain Services for the directory.
-  New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
+   # Enable Azure AD Domain Services for the directory.
+   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+   -Location $AzureLocation `
+   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
-  ```
+   -ApiVersion 2017-06-01 -Force -Verbose
+   ```
 
-  > [!TIP]
-  > Nie zapomnij dołączyć ```"filteredSync" = "Enabled"``` w ```-Properties``` parametru, więc o określonym zakresie synchronizacja jest włączona dla domeny zarządzanej.
+   > [!TIP]
+   > Nie zapomnij dołączyć ```"filteredSync" = "Enabled"``` w ```-Properties``` parametru, więc o określonym zakresie synchronizacja jest włączona dla domeny zarządzanej.
 
 
 ## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skrypt, aby wybrać grupy, które mają być synchronizowane domena zarządzana (Wybierz GroupsToSync.ps1)

@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: c020d3c7513efda93d7ac5d3bdd79f21f8bc77dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818481"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843627"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
@@ -41,14 +41,19 @@ W poniższej tabeli przedstawiono obsługiwane mapowania:
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP i EastUS mapowania obszarów roboczych usługi Log Analytics do kont usługi Automation nie są dokładnie mapowania regionu, ale poprawna mapowania.
+
+> [!NOTE]
+> Ze względu na żądanie region może nie być dostępne podczas tworzenia obszaru roboczego konto usługi Automation i Log Analytics.  Jeśli tak jest rzeczywiście, upewnij się, że używasz regionu w powyższej tabeli, który można utworzyć zasobów.
 
 Rozwiązanie Change Tracking and Inventory umożliwia [śledzenie zmian](automation-vm-change-tracking.md) i tworzenie [spisu](automation-vm-inventory.md) na maszynach wirtualnych. W tym kroku włączysz rozwiązanie na maszynie wirtualnej.
 
@@ -91,7 +96,7 @@ Wybierz albo zapisanego wyszukiwania, aby wyświetlić kwerendę używaną do wy
 
 Z automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **rozwiązania UPDATE MANAGEMENT**.
 
-Kliknij przycisk **+ Dodaj maszyny wirtualne platformy Azure**, wybierz co najmniej jedną maszynę wirtualną z listy. Maszyny wirtualne, których nie można włączyć jest wyszarzona, poza i nie można wybrać. Na **Włączanie rozwiązania Update Management** kliknij **Włącz**. Spowoduje to dodanie wybranych maszyn wirtualnych do grupy komputerów zapisanego wyszukiwania dla rozwiązania.
+Kliknij przycisk **+ Dodaj maszyny wirtualne platformy Azure**, wybierz co najmniej jedną maszynę wirtualną z listy. Maszyny wirtualne, których nie można włączyć jest wyszarzona, poza i nie można wybrać. Maszyny wirtualne platformy Azure może znajdować się w dowolnym regionie, bez względu na to lokalizacja konta usługi Automation. Na **Włączanie rozwiązania Update Management** kliknij **Włącz**. Spowoduje to dodanie wybranych maszyn wirtualnych do grupy komputerów zapisanego wyszukiwania dla rozwiązania.
 
 ![Włączanie maszyn wirtualnych platformy Azure](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
