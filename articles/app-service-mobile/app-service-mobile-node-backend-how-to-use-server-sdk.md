@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725035"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997527"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK środowiska Node.js w aplikacji mobilnej
 
@@ -91,9 +91,9 @@ Ta aplikacja tworzy mobile są zoptymalizowane pod kątem interfejsu API sieci W
 
 * [Przewodnik Szybki Start kliencką dla systemu android]
 * [Przewodnik Szybki Start klienta Apache Cordova]
-* [Przewodnik Szybki Start klienta systemu iOS]
+* [iOS Client quickstart]
 * [Przewodnik Szybki Start Windows Store klienta]
-* [Przewodnik Szybki Start klienta platformy Xamarin.iOS]
+* [Xamarin.iOS Client quickstart]
 * [Przewodnik Szybki Start klienta platformy Xamarin.Android]
 * [Przewodnik Szybki Start klienta interfejsu Xamarin.Forms]
 
@@ -104,7 +104,7 @@ Możesz znaleźć kod dla tej aplikacji podstawowe w [przykład basicapp w witry
 Program Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji Node.js w środowisku IDE. Aby rozpocząć, należy zainstalować [Node.js Tools 1.1 dla programu Visual Studio]. Po zakończeniu instalacji, należy utworzyć aplikację 4.x Express:
 
 1. Otwórz **nowy projekt** okno dialogowe (z **pliku** > **New** > **projektu**).
-1. Rozwiń **szablony** > **JavaScript** > **Node.js**.
+1. Expand **Templates** > **JavaScript** > **Node.js**.
 1. Wybierz **aplikacji podstawowe Azure node.js w środowisku Express 4**.
 1. Wprowadź nazwę projektu. Kliknij przycisk **OK**.
 
@@ -114,7 +114,7 @@ Program Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji Node.js w 
 1. Wprowadź **azure-mobile-apps** w polu wyszukiwania. Wybierz **usługi azure mobile apps 2.0.0** pakietu, a następnie wybierz **zainstaluj pakiet**.
 
    ![Instaluj nowe pakiety npm][2]
-1. Wybierz **Zamknij**.
+1. Wybierz polecenie **Zamknij**.
 1. Otwórz plik app.js, aby dodać obsługę zestaw SDK usługi Mobile Apps. W wierszu 6 at dolnej części biblioteki `require` instrukcji, Dodaj następujący kod:
 
     ```javascript
@@ -135,7 +135,7 @@ Program Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji Node.js w 
 
     Zapisz plik.
 
-1. Albo uruchamianie aplikacji lokalnie (interfejs API jest obsługiwany na http://localhost:3000) lub opublikuj na platformie Azure.
+1. Albo uruchamianie aplikacji lokalnie (interfejs API jest obsługiwany na `http://localhost:3000`) lub opublikuj na platformie Azure.
 
 ### <a name="create-node-backend-portal"></a>Tworzenie zaplecza Node.js przy użyciu witryny Azure portal
 
@@ -281,7 +281,7 @@ Zestaw SDK usługi Mobile Apps Node.js używa [pakiet Node.js mssql] i użyć po
 > [!TIP]
 > Sterownik pamięci nie zapewniają kompletny zestaw urządzeń do testowania. Jeśli chcesz przetestować zaplecza lokalnie, firma Microsoft zaleca korzystanie z magazynu danych programu SQL Server Express i sterownik mssql.
 
-1. Pobierz i zainstaluj [Program Microsoft SQL Server 2014 Express]. Upewnij się, zainstalowanie programu SQL Server 2014 Express przy użyciu wersji narzędzia. Chyba że jawnie wymagana jest Obsługa 64-bitowych, 32-bitowej wersji zużywa mniej pamięci podczas uruchamiania.
+1. Pobierz i zainstaluj [Microsoft SQL Server 2014 Express]. Upewnij się, zainstalowanie programu SQL Server 2014 Express przy użyciu wersji narzędzia. Chyba że jawnie wymagana jest Obsługa 64-bitowych, 32-bitowej wersji zużywa mniej pamięci podczas uruchamiania.
 1. Uruchom Menedżera konfiguracji programu SQL Server 2014:
 
    a. Rozwiń **konfiguracja sieci programu SQL Server** węzła w menu drzewa.
@@ -370,11 +370,11 @@ Firma Microsoft zaleca, aby dodać **azureMobile.js** do Twojej **.gitignore** p
 
 Większość ustawień w pliku azureMobile.js ma ustawienia aplikacji równoważne [Azure Portal]. Aby skonfigurować aplikację, używając następującej listy **ustawienia aplikacji**:
 
-| Ustawienia aplikacji | Ustawienie azureMobile.js | Opis | Prawidłowe wartości |
+| Ustawienia aplikacji | azureMobile.js setting | Opis | Prawidłowe wartości |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Nazwa aplikacji |ciąg |
+| **MS_MobileAppName** |name |Nazwa aplikacji |string |
 | **MS_MobileLoggingLevel** |logging.level |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje o verbose, debug, niemądre |
-| **MS_DebugMode** |debuguj |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_DebugMode** |Debugowanie |Włącza lub wyłącza tryb debugowania |wartość true, false |
 | **MS_TableSchema** |data.schema |Domyślna nazwa schematu dla tabel programu SQL |ciąg (domyślne: dbo) |
 | **MS_DynamicSchema** |data.dynamicSchema |Włącza lub wyłącza tryb debugowania |wartość true, false |
 | **MS_DisableVersionHeader** |Wersja (ustawione do niezdefiniowanego) |Wyłącza nagłówka X-ZUMO-Server-Version |wartość true, false |
@@ -794,7 +794,7 @@ var api = {
 module.exports = api;
 ```
 
-Każdy parametr jest jednym z standardowych czasowników RESTful: Pobierz, POST, PATCH lub usuwanie. Metoda jest standardem [Oprogramowanie pośredniczące ExpressJS] funkcja, która wysyła wymagane dane wyjściowe.
+Każdy parametr jest jednym z standardowych czasowników RESTful: Pobierz, POST, PATCH lub usuwanie. Metoda jest standardem [ExpressJS middleware] funkcja, która wysyła wymagane dane wyjściowe.
 
 ### <a name="howto-customapi-auth"></a>Wymaganie uwierzytelniania na potrzeby dostępu do niestandardowego interfejsu API
 
@@ -942,7 +942,7 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 
 1. W okienku wybierz opcję dla zaplecza usługi Mobile Apps **wszystkie ustawienia** > albo **łatwych tabel** lub **łatwe interfejsy API**. Wybierz tabelę lub interfejsu API, a następnie wybierz **Przeprowadź edycję skryptu**. Plik skryptu zostanie otwarty w edytorze usługi aplikacji.
 
-   ![Edytor usługi App Service](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 1. Wprowadź zmiany do pliku kodu w edytorze online. Zmiany są zapisywane automatycznie podczas pisania.
 
 <!-- Images -->
@@ -957,8 +957,8 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 <!-- URLs -->
 [Przewodnik Szybki Start kliencką dla systemu android]: app-service-mobile-android-get-started.md
 [Przewodnik Szybki Start klienta Apache Cordova]: app-service-mobile-cordova-get-started.md
-[Przewodnik Szybki Start klienta systemu iOS]: app-service-mobile-ios-get-started.md
-[Przewodnik Szybki Start klienta platformy Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
+[iOS Client quickstart]: app-service-mobile-ios-get-started.md
+[Xamarin.iOS Client quickstart]: app-service-mobile-xamarin-ios-get-started.md
 [Przewodnik Szybki Start klienta platformy Xamarin.Android]: app-service-mobile-xamarin-android-get-started.md
 [Przewodnik Szybki Start klienta interfejsu Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Przewodnik Szybki Start Windows Store klienta]: app-service-mobile-windows-store-dotnet-get-started.md
@@ -989,6 +989,6 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js Tools 1.1 dla programu Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [Pakiet Node.js MSSQL]: https://www.npmjs.com/package/mssql
-[Program Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[Oprogramowanie pośredniczące ExpressJS]: https://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS middleware]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

@@ -10,15 +10,15 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: cede105f0bff9a65f88e06467e4d13419d389f04
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 795facc6148d33592ff8eac5083a273dc3d5cb26
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461563"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314912"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Ściągawka dotycząca usługi Azure SQL Data Warehouse
-Ta ściągawka zawiera przydatne porady i wskazówki dotyczące kompilowania rozwiązań usługi Azure SQL Data Warehouse. Przed rozpoczęciem pracy zapoznaj się ze szczegółowymi informacjami na temat poszczególnych kroków w artykule [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns (Wzorce i antywzorce obciążeń usługi Azure SQL Data Warehouse)](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns). Opisano w nim elementy wchodzące i niewchodzące w skład usługi SQL Data Warehouse.
+Ta ściągawka zawiera przydatne porady i wskazówki dotyczące kompilowania rozwiązań usługi Azure SQL Data Warehouse. Przed rozpoczęciem pracy zapoznaj się ze szczegółowymi informacjami na temat poszczególnych kroków w artykule [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns (Wzorce i antywzorce obciążeń usługi Azure SQL Data Warehouse)](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns). Opisano w nim elementy wchodzące i niewchodzące w skład usługi SQL Data Warehouse.
 
 Na poniższym rysunku przedstawiono proces projektowania magazynu danych:
 
@@ -50,7 +50,7 @@ Dowiedz się więcej o [migracji danych], [ładowaniu danych] i [proces wyodręb
 
 Użyj następujących strategii, w zależności od właściwości tabeli:
 
-| Typ | Doskonałe rozwiązanie dla...| Należy uważać, jeśli...|
+| Type | Doskonałe rozwiązanie dla...| Należy uważać, jeśli...|
 |:--- |:--- |:--- |
 | Replikowane | • Tabele małych wymiarów w schemacie gwiazdy z mniej niż 2 GB magazynu po kompresji (kompresja ok. 5x) |• Tabela zawiera wiele transakcji zapisu (takich jak wstawianie, operacja upsert, usuwanie, aktualizacja)<br></br>• Często zmieniasz aprowizację jednostek magazynu danych (DWU, Data Warehouse Unit)<br></br>• Używasz tylko 2–3 kolumn, ale tabela zawiera wiele kolumn<br></br>• Indeksujesz tabelę replikowaną |
 | Działanie okrężne (ustawienie domyślne) | • Tabela tymczasowa/przejściowa<br></br> • Brak oczywistego klucza dołączania lub właściwej kolumny kandydata |• Wydajność jest niska z powodu przenoszenia danych |
@@ -70,7 +70,7 @@ Dowiedz się więcej o [tabelach replikowanych] i [tabelach rozproszonych].
 
 Indeksowanie ułatwia szybkie odczytywanie tabel. W zależności od potrzeb można używać unikatowego zestawu technologii:
 
-| Typ | Doskonałe rozwiązanie dla... | Należy uważać, jeśli...|
+| Type | Doskonałe rozwiązanie dla... | Należy uważać, jeśli...|
 |:--- |:--- |:--- |
 | Sterta | • Tabela przejściowa/tymczasowa<br></br>• Małe tabele z małymi wyszukiwaniami |• Każde wyszukiwanie skanuje pełną tabelę |
 | Indeks klastrowany | • Tabele zawierające maksymalnie 100 milionów wierszy<br></br>• Duże tabele (ponad 100 milionów wierszy), w których często są używane tylko 1–2 kolumny |• Użycie w replikowanej tabeli<br></br>• Masz złożone zapytania obejmujące wiele operacje łączenia i grupowania<br></br>• Wprowadzasz aktualizacje indeksowanych kolumn: zajmuje to pamięć |
@@ -129,7 +129,7 @@ Teraz możesz używać automatycznego skalowania w dowolnym momencie dzięki fun
 
 Zalecamy rozważenie użycia bazy danych SQL Database i usługi Azure Analysis Services w architekturze gwiazdy. To rozwiązanie może spowodować rozdzielenie obciążenia między różnymi grupami użytkowników przy równoczesnym korzystaniu z zaawansowanych funkcji zabezpieczeń bazy danych SQL Database i usługi Azure Analysis Services. Jest to również sposób na zapewnienie użytkownikom nieograniczonej współbieżności.
 
-Dowiedz się więcej o [typowych architekturach korzystających z usługi SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Dowiedz się więcej o [typowych architekturach korzystających z usługi SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
 Wdrażaj szprychy za pomocą jednego kliknięcia w bazach danych SQL Database z poziomu magazynu SQL Data Warehouse:
 
@@ -155,9 +155,9 @@ Wdrażaj szprychy za pomocą jednego kliknięcia w bazach danych SQL Database z 
 
 
 <!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[migracji danych]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
+[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
+[migracji danych]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

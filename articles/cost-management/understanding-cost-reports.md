@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109818"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn Understanding management raportów kosztów
 
@@ -41,7 +41,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
       - Zarządzanie zasobami
       - Optymalizacja
 
-  Wpisz nazwę filtru, a następnie kliknij **Zapisz**.
+   Wpisz nazwę filtru, a następnie kliknij **Zapisz**.
 
 3. **Tagi**
 
@@ -71,55 +71,55 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
       - Koszt tagi jednostek Cloudyn
       - Kategorie tag subskrypcji na potrzeby przydzielania kosztów
 
-  Przykładami mogą być następujące:
-     - Centrum kosztu
-     - Dział
-     - Aplikacja
-     - Środowisko
-     - Kod kosztów
+   Przykładami mogą być następujące:
+   - Centrum kosztu
+   - Dział
+   - Aplikacja
+   - Środowisko
+   - Kod kosztów
 
-    Oto lista wbudowanej grupy dostępne w raportach:
+     Oto lista wbudowanej grupy dostępne w raportach:
 
-    - **Typ kosztu**
-      - Wybierz typ kosztu lub wiele typów kosztów, albo wybierz wszystko. Typy kosztów:
-        - Jednorazowa opłata
-        - Pomoc techniczna
-        - Koszt użycia
-    - **Odbiorcy**
-        - Wybierz określonego odbiorcy, wielu klientów lub wszystkich klientów.
-    - **Nazwa konta**
-        - Nazwa konta lub subskrypcji. Na platformie Azure jest nazwa subskrypcji platformy Azure.
-    - **Brak konta**
-        - Wybierz konto, wiele kont lub wszystkich kont. Na platformie Azure jest identyfikator GUID subskrypcji platformy Azure.
-    - **Konta nadrzędne**
-        - Wybierz konto nadrzędne, wiele kont lub wybierz opcję.
-    - **Usługa**
-        - Wybierz usługę, wiele usług lub wszystkich usług.
-    - **Dostawca**
-        - Dostawca chmury, gdzie są skojarzone zasoby i wydatki związane z.
-    - **Region**
-        - Region, w którym znajduje się zasób.
-    - **Strefa dostępności**
-        - Usługi AWS samodzielnie lokalizacje w regionie.
-    - **Typ zasobu**
-        - Typ zasobu w użyciu.
-    - **Sub-Type**
-        - Wybierz typ podrzędnych.
-    - **Operacja**
-        - Wybierz operację lub **Pokaż wszystko**.
-    - **Model cen**
-        - Wszystkie z wyprzedzeniem
-        - Brak ponoszonych z góry kosztów
-        - Partial ponoszonych z góry kosztów
-        - Na żądanie
-        - Rezerwacja
-        - Miejsce
-    - **Typ opłaty**
-        - Wybierz typ opłaty ujemne lub dodatni, lub obu.
-    - **Tenancy**
-        - Czy maszyna jest uruchomiona jako dedykowane maszyny.
-    -   **Typ użycia**
-          - Typ użycia może być opłat jednorazowych lub opłat cyklicznych.
+     - **Typ kosztu**
+     - Wybierz typ kosztu lub wiele typów kosztów, albo wybierz wszystko. Typy kosztów:
+       - Jednorazowa opłata
+       - Pomoc techniczna
+       - Koszt użycia
+     - **Odbiorcy**
+       - Wybierz określonego odbiorcy, wielu klientów lub wszystkich klientów.
+     - **Nazwa konta**
+       - Nazwa konta lub subskrypcji. Na platformie Azure jest nazwa subskrypcji platformy Azure.
+     - **Brak konta**
+       - Wybierz konto, wiele kont lub wszystkich kont. Na platformie Azure jest identyfikator GUID subskrypcji platformy Azure.
+     - **Konta nadrzędne**
+       - Wybierz konto nadrzędne, wiele kont lub wybierz opcję.
+     - **Usługa**
+       - Wybierz usługę, wiele usług lub wszystkich usług.
+     - **Dostawca**
+       - Dostawca chmury, gdzie są skojarzone zasoby i wydatki związane z.
+     - **Region**
+       - Region, w którym znajduje się zasób.
+     - **Strefa dostępności**
+       - Usługi AWS samodzielnie lokalizacje w regionie.
+     - **Typ zasobu**
+       - Typ zasobu w użyciu.
+     - **Sub-Type**
+       - Wybierz typ podrzędnych.
+     - **Operacja**
+       - Wybierz operację lub **Pokaż wszystko**.
+     - **Model cen**
+       - Wszystkie z wyprzedzeniem
+       - Brak ponoszonych z góry kosztów
+       - Partial ponoszonych z góry kosztów
+       - Na żądanie
+       - Rezerwacja
+       - Miejsce
+     - **Typ opłaty**
+       - Wybierz typ opłaty ujemne lub dodatni, lub obu.
+     - **Tenancy**
+       - Czy maszyna jest uruchomiona jako dedykowane maszyny.
+     - **Typ użycia**
+       - Typ użycia może być opłat jednorazowych lub opłat cyklicznych.
 
 5. **Filtry**
 
@@ -139,7 +139,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
     - Opłaty za zakupu wystąpień zarezerwowanych
     - Niektóre elementy w portalu Azure Marketplace.
 
-  W obszarze amortyzacji wybierz **amortyzowanego kosztu** lub **rzeczywistego kosztu**.
+   W obszarze amortyzacji wybierz **amortyzowanego kosztu** lub **rzeczywistego kosztu**.
 
 8. **Rozdzielczość**
 
@@ -162,7 +162,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
 
     Opcja Pokaż/Ukryj nie ma żadnego efektu w raportach.
 
-12.   **Formaty wyświetlania**
+12. **Formaty wyświetlania**
 
     Użyj formatów wyświetlania, aby wybrać różne widoki wykres lub tabelę.
 
