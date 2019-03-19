@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: ba66c96f9129b253fc5897c3a2eaaefb53056cea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223344"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548732"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>Samouczek: Wykrywanie anomalii przy użyciu aplikacji Java
 
@@ -28,7 +28,7 @@ Przykład przesyła dane szeregów czasowych do interfejsu API wykrywania anomal
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Ten samouczek opracowano przy użyciu programu [IntelliJ IDEA](https://www.jetbrains.com/idea). Należy też zainstalować zestaw [Java Development Kit (JDK)](https://aka.ms/azure-jdks) w wersji 1.8 lub nowszej oraz aktualne narzędzie do kompilacji [Apache Maven](http://maven.apache.org/).
+Ten samouczek opracowano przy użyciu programu [IntelliJ IDEA](https://www.jetbrains.com/idea). Należy też zainstalować zestaw [Java Development Kit (JDK)](https://aka.ms/azure-jdks) w wersji 1.8 lub nowszej oraz aktualne narzędzie do kompilacji [Apache Maven](https://maven.apache.org/).
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Subskrybowanie wykrywania anomalii i uzyskiwanie klucza subskrypcji 
 
@@ -76,7 +76,7 @@ public static final String uriBase = "https://api.labs.cognitive.microsoft.com/a
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

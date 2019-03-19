@@ -2,24 +2,24 @@
 title: Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
 description: Dowiedz się, jak utworzyć szablon podstawowy Terraform na platformie Azure przy użyciu narzędzia Yeoman.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtual machine, azure, yeoman
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 1133e6b35d200ec7f855b41f3ae5d6f37949fc97
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568502"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001277"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
 
 Narzędzie [Terraform](https://docs.microsoft.com/azure/terraform/
-) umożliwia łatwe tworzenie infrastruktury na platformie Azure. Narzędzie [Yeoman](http://yeoman.io/) znacznie upraszcza zadanie dewelopera modułu podczas tworzenia modułów Terraform, zapewniając doskonałą platformę *najlepszych rozwiązań*.
+) umożliwia łatwe tworzenie infrastruktury na platformie Azure. Narzędzie [Yeoman](https://yeoman.io/) znacznie upraszcza zadanie dewelopera modułu podczas tworzenia modułów Terraform, zapewniając doskonałą platformę *najlepszych rozwiązań*.
 
 W tym artykule dowiesz się, jak używać generatora modułu narzędzia Yeoman do tworzenia podstawowego szablonu Terraform. Dowiesz się, jak przetestować nowy szablon Terraform przy użyciu dwóch różnych metod:
 
@@ -280,7 +280,7 @@ Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
 
     ![PASS (POWODZENIE)](media/terraform-vscode-module-generator/ymg-pass.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)

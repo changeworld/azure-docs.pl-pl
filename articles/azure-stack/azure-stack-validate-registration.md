@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 9dc2facbcae5ced1328d5488e533239a6a5627cf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a4f41f5cf4e2775e3c300a2e83794e35d7328965
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104237"
 ---
 # <a name="validate-azure-registration"></a>Sprawdź poprawność rejestracji platformy Azure
  
@@ -67,8 +67,8 @@ Należy spełnić następujące wymagania wstępne:
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
-> [!NOTE]
-  > Jako dostawca CSP, korzystając z usług udostępnionych lub IUR subskrypcji należy podać poświadczenia użytkownika z tym odpowiedniej usługi AAD. Zazwyczaj jest to podobne do `subscriptionowner@iurcontoso.onmicrosoft.com`. Ten użytkownik musi być odpowiednie poświadczenia, zgodnie z powyższym opisem.
+   > [!NOTE]
+   > Jako dostawca CSP, korzystając z usług udostępnionych lub IUR subskrypcji należy podać poświadczenia użytkownika z tym odpowiedniej usługi AAD. Zazwyczaj jest to podobne do `subscriptionowner@iurcontoso.onmicrosoft.com`. Ten użytkownik musi być odpowiednie poświadczenia, zgodnie z powyższym opisem.
 
 3. W wierszu polecenia programu PowerShell, uruchom następujące polecenie, aby ustawić `$subscriptionID` jako subskrypcji platformy Azure będą używane. Zastąp `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` za pomocą Identyfikatora subskrypcji:
    ```powershell

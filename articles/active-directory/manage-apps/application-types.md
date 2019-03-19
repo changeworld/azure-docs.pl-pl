@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7475969f3b1437a8d42345f00a974957c15d00fa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 075a50802a05a9b8254ff6ab1e0a38f43baca970
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105628"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nieoczekiwaną aplikację na liście aplikacji
 
@@ -48,7 +48,7 @@ Aby wyświetlić wszystkie aplikacje w Twojej dzierżawie, należy użyć **filt
 
 Gdy filtrowana w celu **wszystkie aplikacje**, **wszystkie aplikacje** **listy** pokazuje każdego obiektu nazwy głównej usługi w dzierżawie. Obiekty nazwy głównej usługi mogą być wyświetlane na tej liście na różne sposoby:
 
-1.  Po dodaniu aplikacji z galerii aplikacji, w tym:
+1. Po dodaniu aplikacji z galerii aplikacji, w tym:
 
    1. **Aplikacje galerii usługi Azure AD** — aplikacji, który został wstępnie zintegrowanych, aby uzyskać logowanie jednokrotne z usługą Azure AD
 
@@ -58,21 +58,21 @@ Gdy filtrowana w celu **wszystkie aplikacje**, **wszystkie aplikacje** **listy**
 
    4. **Aplikacje spoza galerii** — Przenoszenie własnych aplikacji! Dowolny link sieci web, który ma, każda aplikacja, która renderuje pole nazwy użytkownika i hasła, obsługuje protokoły SAML lub OpenID Connect lub obsługuje standard SCIM, którą chcesz zintegrować, aby logowanie jednokrotne z usługą Azure AD.
 
-2.  Podczas rejestracji w usłudze lub logowania się do 3<sup>usług pulpitu zdalnego</sup> aplikacji innej firmy zintegrowana z usługą Azure Active Directory. Przykładem jest [Smartsheet](https://app.smartsheet.com/b/home) lub [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Podczas rejestracji w usłudze lub logowania się do 3<sup>usług pulpitu zdalnego</sup> aplikacji innej firmy zintegrowana z usługą Azure Active Directory. Przykładem jest [Smartsheet](https://app.smartsheet.com/b/home) lub [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Podczas rejestracji w usłudze lub dodanie licencji do użytkownika lub grupy do pierwszej aplikacji innych firm, takich jak [Microsoft Office 365](https://products.office.com/)
+3. Podczas rejestracji w usłudze lub dodanie licencji do użytkownika lub grupy do pierwszej aplikacji innych firm, takich jak [Microsoft Office 365](https://products.office.com/)
 
-4.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [rejest aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
+4. Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [rejest aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [portalu rejestracji aplikacji w wersji 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
+5. Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [portalu rejestracji aplikacji w wersji 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6.  Po dodaniu aplikacji opracowujesz przy użyciu programu Visual Studio [metod uwierzytelniania ASP.net](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) lub [podłączone usługi](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6. Po dodaniu aplikacji opracowujesz przy użyciu programu Visual Studio [metod uwierzytelniania ASP.net](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) lub [podłączone usługi](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
-7.  Podczas tworzenia obiektu jednostki usługi przy użyciu [modułu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Podczas tworzenia obiektu jednostki usługi przy użyciu [modułu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8.  Gdy użytkownik [zgoda na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako administrator na korzystanie z danych w Twojej dzierżawie
+8. Gdy użytkownik [zgoda na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako administrator na korzystanie z danych w Twojej dzierżawie
 
-9.  Gdy [użytkownik wyraża zgodę na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) na korzystanie z danych w Twojej dzierżawie
+9. Gdy [użytkownik wyraża zgodę na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) na korzystanie z danych w Twojej dzierżawie
 
 10. Po włączeniu pewnych usług, które przechowują dane w dzierżawie. Przykładem jest resetowania hasła, który jest modelowane zgodnie z jednostki usługi do przechowywania hasła zasad resetowania bezpieczne.
 
@@ -90,21 +90,21 @@ Aby wyłączyć wszystkie logowania użytkowników do aplikacji, wykonaj czynno�
 
 Aby **usunąć aplikację**, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+4. Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, którą chcesz usunąć.
+6. Wybierz aplikację, którą chcesz usunąć.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **Usuń** ikonę z najważniejszych aplikacji **Przegląd** okienka.
+7. Po załadowaniu aplikacji, kliknij przycisk **Usuń** ikonę z najważniejszych aplikacji **Przegląd** okienka.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chcę wyłączyć wszystkie operacje zgody użytkownika przyszłych do dowolnej aplikacji
 

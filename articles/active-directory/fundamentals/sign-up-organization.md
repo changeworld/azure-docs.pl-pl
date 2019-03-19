@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937f53ecd60d6bbcc8fbd02f978974ac34f77c00
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442018"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101367"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Utwórz konto organizacji, aby usługa Azure Active Directory
 Załóż konto usługi Azure Active Directory (Azure AD) lub nowej subskrypcji Microsoft Azure za pomocą:
@@ -27,8 +27,8 @@ Załóż konto usługi Azure Active Directory (Azure AD) lub nowej subskrypcji M
 
 - **Konta służbowego lub szkolnego.** Aby uzyskać dostęp do wszystkich małych, średnich i usługi enterprise cloud services firmy Microsoft, takich jak Azure, Microsoft Intune i Office 365, należy użyć z miejsca pracy lub szkoły związane z kontem. Po zarejestrowaniu się do jednej z tych usług jako organizacja, usługi Azure AD automatycznie aprowizuje katalogu oparte na chmurze, reprezentujący Twojej organizacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie swoim katalogiem usługi Azure AD](active-directory-administer.md).
 
-    >[!Note]
-    Zaleca się, że służbowy lub konta służbowego, jeśli masz już dostęp do usługi Azure AD. Jednakże należy używać, niezależnie od typu konta jest skojarzony z subskrypcją platformy Azure.
+  > [!Note]
+  >   Zaleca się, że służbowy lub konta służbowego, jeśli masz już dostęp do usługi Azure AD. Jednakże należy używać, niezależnie od typu konta jest skojarzony z subskrypcją platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

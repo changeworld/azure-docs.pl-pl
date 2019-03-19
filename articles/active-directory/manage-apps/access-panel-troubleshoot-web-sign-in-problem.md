@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10a1f38b2c793bffb6061c6eefdccef7ac5c57b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204529"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090461"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Problem z logowaniem do panelu dostępu do witryny sieci Web
 
@@ -168,23 +168,23 @@ Aby włączyć samoobsługowe Resetowanie hasła, wykonaj następujące kroki wd
 
 Aby sprawdzić stan uwierzytelniania wieloskładnikowego dla użytkownika, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
 
-5.  Kliknij przycisk **wszyscy użytkownicy**.
+5. Kliknij przycisk **wszyscy użytkownicy**.
 
-6.  Kliknij przycisk **uwierzytelnianie wieloskładnikowe** znajdujący się u góry okienka.
+6. Kliknij przycisk **uwierzytelnianie wieloskładnikowe** znajdujący się u góry okienka.
 
-7.  Raz **portalu administratora usługi Multi-Factor Authentication** obciążeniami, upewnij się, znajdują się na **użytkowników** kartę.
+7. Raz **portalu administratora usługi Multi-Factor Authentication** obciążeniami, upewnij się, znajdują się na **użytkowników** kartę.
 
-8.  Znajdź użytkownika, na liście użytkowników przez wyszukiwanie, filtrowanie i sortowanie.
+8. Znajdź użytkownika, na liście użytkowników przez wyszukiwanie, filtrowanie i sortowanie.
 
-9.  Wybierz użytkownika z listy użytkowników i **Włącz**, **wyłączyć**, lub **Wymuś** uwierzytelnianie wieloskładnikowe zgodnie z potrzebami.
+9. Wybierz użytkownika z listy użytkowników i **Włącz**, **wyłączyć**, lub **Wymuś** uwierzytelnianie wieloskładnikowe zgodnie z potrzebami.
 
    >[!NOTE]
    >Jeśli użytkownik znajduje się w **wymuszone** stanu, możesz je ustawić **wyłączone** tymczasowo w celu umożliwienia im do swojego konta. Gdy są one ponownie, można zmienić ich stan, aby **włączone** ponownie, aby wymagać od nich, aby ponownie zarejestrować informacje kontaktowe podczas jego następnego logowania. Alternatywnie, możesz wykonać kroki opisane w [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info) Sprawdź lub ustaw te dane dla nich.

@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible
 description: Dowiedz się, jak zarządzać spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, cloudshell, dynamic inventory
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: tutorial
-ms.openlocfilehash: cf404b84377a37f9a97f7e7c9c9f86402fe999e0
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: 0ef754b792654281f2a12b8eee613434896d5476
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359667"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092212"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Zarządzanie spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible
 Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnych źródeł (w tym ze źródeł w chmurze, takich jak platforma Azure) do *spisu dynamicznego*. W tym artykule skonfigurujesz spis dynamiczny platformy Azure rozwiązania Ansible przy użyciu usługi [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), następnie utworzysz w nim dwie maszyny wirtualne, jedną z tych maszyn wirtualnych oznaczysz tagiem i zainstalujesz na niej serwer Nginx.
@@ -130,9 +130,9 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
 
 1. Utwórz plik (który będzie zawierał element playbook) o nazwie `nginx.yml` w następujący sposób:
 
-  ```azurecli-interactive
-  vi nginx.yml
-  ```
+   ```azurecli-interactive
+   vi nginx.yml
+   ```
 
 1. Wstaw następujący kod do nowo utworzonego pliku `nginx.yml`:
 
@@ -217,6 +217,6 @@ W tej sekcji przedstawiono jedną technikę, za pomocą której można sprawdzi�
     tom@ansible-inventory-test-vm2:~$
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Tworzenie podstawowej maszyny wirtualnej na platformie Azure za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm)

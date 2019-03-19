@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4a6ed900753747c1d5bf394aced54da11177320f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118395"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migracja Contoso: ponowne hostowanie aplikacji lokalnej na maszynach wirtualnych platformy Azure
 
@@ -168,10 +168,10 @@ Mogą skonfigurować je w następujący sposób:
     - Baza danych aplikacji maszyny Wirtualnej (SQLVM) zostaną zmigrowane do podsieci (PROD-DB-EUS2), bazy danych w sieci produkcyjnej.
 
 2. Konfigurowanie firmy Contoso konta magazynu tworzy konto usługi Azure storage (contosovmsacc20180528) w regionie podstawowym.
-    - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
-    - Używają konto ogólnego przeznaczenia z magazynu w warstwie standardowa i replikacją LRS.
+   - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
+   - Używają konto ogólnego przeznaczenia z magazynu w warstwie standardowa i replikacją LRS.
 
-    ![Site Recovery magazynu](./media/contoso-migration-rehost-vm/asr-storage.png)
+     ![Site Recovery magazynu](./media/contoso-migration-rehost-vm/asr-storage.png)
 
 3. Tworzenie magazynu z konta magazynu i sieci w miejscu, Contoso teraz tworzy magazyn usługi Recovery Services (ContosoMigrationVault) i umieszcza je w grupie zasobów ContosoFailoverRG w regionie wschodnie stany USA 2 podstawowym.
 
@@ -221,15 +221,15 @@ Po włączeniu trybu failover firma Contoso chce nawiązać połączenie z maszy
 
 1. Aby uzyskać dostęp za pośrednictwem Internetu one:
 
- - Włącz protokół RDP na maszynie Wirtualnej w środowisku lokalnym przed włączeniem trybu failover.
- - Upewnij się, że reguły TCP i UDP zostały dodane do **publicznych** profilu.
- - Sprawdź, czy RDP jest dozwolona w **zapory Windows** > **dozwolone aplikacje** we wszystkich profilach.
+   - Włącz protokół RDP na maszynie Wirtualnej w środowisku lokalnym przed włączeniem trybu failover.
+   - Upewnij się, że reguły TCP i UDP zostały dodane do **publicznych** profilu.
+   - Sprawdź, czy RDP jest dozwolona w **zapory Windows** > **dozwolone aplikacje** we wszystkich profilach.
 
 2. Aby uzyskać dostęp za pośrednictwem sieci VPN typu lokacja lokacja są:
 
- - Włącz protokół RDP na maszynie lokalnej.
- - Zezwalaj na RDP w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **domena i prywatne** sieci.
- - Ustaw zasady sieci SAN systemu operacyjnego na maszynie Wirtualnej w środowisku lokalnym **OnlineAll**.
+   - Włącz protokół RDP na maszynie lokalnej.
+   - Zezwalaj na RDP w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **domena i prywatne** sieci.
+   - Ustaw zasady sieci SAN systemu operacyjnego na maszynie Wirtualnej w środowisku lokalnym **OnlineAll**.
 
 Ponadto po uruchomieniu trybu failover muszą sprawdzenie następujących kwestii:
 
@@ -341,10 +341,10 @@ Wszystko w miejscu Administratorzy firmy Contoso można teraz włączyć replika
 
 4. Wybierają **WebVM** w przypadku replikacji Sprawdź zasady replikacji, a następnie Włącz replikację.
 
-    - Na tym etapie ich tylko zaznacza WEBVM, ponieważ należy wybrać sieć wirtualną i podsieć, a maszyny wirtualne aplikacji zostaną umieszczone w różnych podsieciach.
-    - Po włączeniu replikacji usługa Site Recovery automatycznie instaluje usługę mobilności na maszynie Wirtualnej.
+   - Na tym etapie ich tylko zaznacza WEBVM, ponieważ należy wybrać sieć wirtualną i podsieć, a maszyny wirtualne aplikacji zostaną umieszczone w różnych podsieciach.
+   - Po włączeniu replikacji usługa Site Recovery automatycznie instaluje usługę mobilności na maszynie Wirtualnej.
 
-    ![Włączanie replikacji](./media/contoso-migration-rehost-vm/enable-replication3.png)
+     ![Włączanie replikacji](./media/contoso-migration-rehost-vm/enable-replication3.png)
 
 5. Śledzą postęp replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 6. W **Essentials** w witrynie Azure portal można zobaczyć strukturę dla maszyn wirtualnych replikowanych do platformy Azure.

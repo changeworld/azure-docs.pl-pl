@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 76cccaa8-859c-4c16-9d1d-8a6496fc7520
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a48bb1b50c73ef51b4a3cb744a80c3fc69f4a5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 46fa85581829f82da9a137315e1f890aa481408d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876351"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją etouches
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji etouches w usłudze Azure AD, należy d
 
 **Aby dodać aplikację etouches z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -165,7 +165,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji etouches, 
    
     b. Przejdź do konfiguracji **SAML**.
 
-    d. W sekcji **General Settings** (Ustawienie ogólne) otwórz w Notatniku certyfikat pobrany z witryny Azure Portal, skopiuj zawartość, a następnie wklej ją w polu tekstowym metadanych IDP. 
+    c. W sekcji **General Settings** (Ustawienie ogólne) otwórz w Notatniku certyfikat pobrany z witryny Azure Portal, skopiuj zawartość, a następnie wklej ją w polu tekstowym metadanych IDP. 
 
     d. Kliknij przycisk **Save & Stay** (Zapisz i pozostań).
   
@@ -197,7 +197,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -236,7 +236,7 @@ W tej sekcji utworzysz użytkownika Britta Simon w aplikacji etouches. Skontaktu
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka etouches w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji etouches, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

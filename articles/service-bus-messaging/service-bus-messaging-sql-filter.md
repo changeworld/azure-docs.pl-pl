@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118139"
 ---
 # <a name="sqlfilter-syntax"></a>Składnia elementu SQLFilter
 
@@ -119,7 +119,7 @@ Element `<regular_identifier>` nie może być zastrzeżonym słowem kluczowym.
   
 `<pattern>` musi być wyrażeniem, które jest oceniane jako ciąg. Jest używana jako wzorzec dla LIKE operator.      Może zawierać następujące znaki symboli wieloznacznych:  
   
--   `%`: Dowolny ciąg zawierający zero lub więcej znaków.  
+-   `%`:  Dowolny ciąg zawierający zero lub więcej znaków.  
   
 -   `_`: Dowolny pojedynczy znak.  
   
@@ -223,29 +223,29 @@ Należy wziąć pod uwagę następujące [SqlFilter](/dotnet/api/microsoft.servi
   
 ### <a name="property-evaluation-semantics"></a>Semantyka oceny właściwości  
   
--   Próba oceny właściwości systemu nieistniejącej zgłasza [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) wyjątku.  
+- Próba oceny właściwości systemu nieistniejącej zgłasza [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) wyjątku.  
   
--   Właściwość, która nie istnieje wewnętrznie jest oceniane jako **nieznany**.  
+- Właściwość, która nie istnieje wewnętrznie jest oceniane jako **nieznany**.  
   
- Nieznane obliczanie w operatory arytmetyczne:  
+  Nieznane obliczanie w operatory arytmetyczne:  
   
--   Dla operatorów binarnych, jeśli lewej lub prawej operandów zostało ocenione jako **nieznany**, a następnie wynik jest **nieznany**.  
+- Dla operatorów binarnych, jeśli lewej lub prawej operandów zostało ocenione jako **nieznany**, a następnie wynik jest **nieznany**.  
   
--   Operatorów jednoargumentowych, jeśli argument jest oceniane jako **nieznany**, a następnie w wyniku **nieznany**.  
+- Operatorów jednoargumentowych, jeśli argument jest oceniane jako **nieznany**, a następnie w wyniku **nieznany**.  
   
- Nieznane obliczanie w operatory binarne porównania:  
+  Nieznane obliczanie w operatory binarne porównania:  
   
--   Jeśli po lewej stronie lub po prawej stronie operandów zostało ocenione jako **nieznany**, wynik jest **nieznany**.  
+- Jeśli po lewej stronie lub po prawej stronie operandów zostało ocenione jako **nieznany**, wynik jest **nieznany**.  
   
- Nieznane obliczanie w `[NOT] LIKE`:  
+  Nieznane obliczanie w `[NOT] LIKE`:  
   
--   Jeśli wszystkie operand jest oceniany jako **nieznany**, wynik jest **nieznany**.  
+- Jeśli wszystkie operand jest oceniany jako **nieznany**, wynik jest **nieznany**.  
   
- Nieznane obliczanie w `[NOT] IN`:  
+  Nieznane obliczanie w `[NOT] IN`:  
   
--   Jeśli lewy operand jest obliczany jako **nieznany**, a następnie wynik jest **nieznany**.  
+- Jeśli lewy operand jest obliczany jako **nieznany**, a następnie wynik jest **nieznany**.  
   
- Nieznane obliczanie w **i** operator:  
+  Nieznane obliczanie w **i** operator:  
   
 ```  
 +---+---+---+---+  
@@ -281,6 +281,6 @@ Należy wziąć pod uwagę następujące [SqlFilter](/dotnet/api/microsoft.servi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Klasa SQLFilter (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter class (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [Klasa SQLFilter (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [Klasa elementu SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

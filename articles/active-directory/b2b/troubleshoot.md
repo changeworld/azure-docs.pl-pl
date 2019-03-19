@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec05c513d89dc8a590cbd0f586f382d699edc5e3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454125"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122524"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory
 
@@ -29,7 +29,7 @@ Poniżej przedstawiono niektóre środki zaradcze dla typowych problemów przy u
 W przypadkach, w którym użytkownicy zewnętrzni nie zostaną wypełnione na liście obiekt może potrwać kilka minut, aby replikować.
 
 ## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Użytkownik-Gość B2B nie są wyświetlane w Selektor osób programu SharePoint Online/OneDrive 
- 
+ 
 Możliwość wyszukiwania dla istniejących użytkowników-gości w Selektor osób programu SharePoint Online (SPO) został WYŁĄCZONY, aby dopasować starsze zachowanie domyślnie.
 
 Aby włączyć tę funkcję, należy za pomocą ustawienia "ShowPeoplePickerSuggestionsForGuestUsers" na poziomie kolekcji dzierżawy i witryny. Można ustawić funkcję przy użyciu Set-SPOTenant i SPOSite zestaw poleceń cmdlet, które pozwalają członkom wyszukiwanie wszystkich istniejących użytkowników-gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na już aprowizowanych witryn SPO.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: ecdb6d7a225d3a2f2c5bbf90a36b91367faf04b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b65a5d0f9b0eb5eac5738169ebfeba5503471ebc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003350"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856162"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -31,7 +31,7 @@ W konsoli usługi Azure Media Services (AMS) **kanału** reprezentuje potok prze
 
 * Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 * Lokalny koder na żywo wysyła różnych szybkościach transmisji bitów **RTMP** lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który nie jest skonfigurowany do przeprowadzania kodowania na żywo przy użyciu usługi AMS. Pozyskiwane strumienie są przekazywane za pośrednictwem **kanału**bez dalszego przetwarzania. Ta metoda jest wywoływana **przekazywanego**. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo danych wyjściowych RTMP: Kodery Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek i Tricaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
-  
+
   > [!NOTE]
   > Metoda przekazywania to najbardziej ekonomiczny sposób transmisja strumieniowa na żywo.
   > 
@@ -50,7 +50,7 @@ Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, mo
 > 
 
 ## <a name="billing-implications"></a>Opłaty wpływ
-Rozpoczyna się kodowania kanału na żywo, rozliczeń, zaraz po zmianie stanu na "Uruchomione" jest za pośrednictwem interfejsu API.   Można również wyświetlić stan, w witrynie Azure portal lub za pomocą narzędzia Azure Media Services Explorer (http://aka.ms/amse).
+Rozpoczyna się kodowania kanału na żywo, rozliczeń, zaraz po zmianie stanu na "Uruchomione" jest za pośrednictwem interfejsu API.   Można również wyświetlić stan, w witrynie Azure portal lub za pomocą narzędzia Azure Media Services Explorer (https://aka.ms/amse).
 
 W poniższej tabeli przedstawiono, jak Stany kanału mapują stanom rozliczeń w portalu usługi interfejsu API i platformy Azure. Stany różnią się nieco między komputerowy Portal i interfejsu API Jak najszybciej kanał jest w stanie "Uruchomiona", za pośrednictwem interfejsu API lub w stanie "Gotowy" lub "Przesyłanie strumieniowe" w witrynie Azure portal rozliczeń będzie aktywny.
 Zatrzymanie kanału z rozliczeń można dalej, musisz zatrzymać kanał za pomocą interfejsu API lub w witrynie Azure portal.
@@ -89,29 +89,27 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 
 > [!NOTE]
 > Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas. Ma to wpływu rozliczeń kodowanie na żywo i należy pamiętać, że pozostawienie kodowania kanału na żywo w stanie "Uruchomiona" zostaną naliczone stawki godzinowe rozliczeń.  Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe. 
-> 
-> 
 
 1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj lokalny koder na żywo, którego dane wyjściowe **pojedynczego** strumienia szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming. 
-   
+
     Ten krok można również wykonać po utworzeniu kanału.
 2. Utwórz i uruchom kanał. 
 3. Pobierz adres URL pozyskiwania kanału. 
-   
+
     Koder na żywo używa adresu URL pozyskiwania do wysyłania strumienia do kanału.
 4. Pobierz adres URL podglądu kanału. 
-   
+
     Użyj tego adresu URL, aby sprawdzić, czy kanał prawidłowo odbiera strumień na żywo.
 5. Utwórz program. 
-   
+
     Korzystając z witryny Azure portal, tworzenie programu tworzy również element zawartości. 
-   
+
     Podczas korzystania z zestawu SDK platformy .NET lub REST, należy utworzyć element zawartości i określić, czy używać tego zasobu, podczas tworzenia programu. 
 6. Opublikuj zasób skojarzony z danym programem.   
-   
+
     >[!NOTE]
     >Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
-    
+
 7. Uruchom program, gdy wszystko będzie gotowe do rozpoczęcia przesyłania strumieniowego i archiwizacji.
 8. Opcjonalnie można przesłać do kodera na żywo sygnał o rozpoczęciu reklamy. Reklama jest wstawiana do strumienia wyjściowego.
 9. Zatrzymaj program w dowolnym momencie, w którym chcesz zatrzymać przesyłanie strumieniowe i archiwizowanie wydarzenia.
@@ -217,6 +215,7 @@ Należy pamiętać, że jeśli potrzebujesz niestandardowych ustawień wstępnyc
 **Default720p** będzie kodowania wideo na następujące warstwy 6.
 
 #### <a name="output-video-stream"></a>Dane wyjściowe Stream wideo
+
 | Szybkość transmisji bitów | Szerokość | Wysokość | MaxFPS | Profil | Nazwa Stream wyjściowego |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Wysoka |Video_1280x720_3500kbps |
@@ -357,7 +356,7 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 [Tworzenie kanałów wykonujących kodowanie na żywo z wystąpieniu szybkości transmisji bitów do strumienia o adaptacyjnej szybkości transmisji bitów przy użyciu zestawu .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 [Zarządzanie kanałami przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/channel)
- 
+
 [Pojęcia dotyczące usługi Media Services](media-services-concepts.md)
 
 [Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze Azure Media Services](media-services-fmp4-live-ingest-overview.md)

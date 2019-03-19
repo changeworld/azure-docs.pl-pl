@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 650696d1eb3979447bffa7312e91b4fe1a57652c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865016"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448003"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
 
@@ -48,7 +48,7 @@ Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure
 
 1. W oknie dialogowym wprowadź ciąg „vision-api-key” w polu **Nazwa** i wybierz opcję **F0** w polu **Warstwa cenowa**. W obszarze **Lokalizacja** wybierz taką samą opcję, jak podczas konfigurowania konta usługi Azure Storage. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej** i także wybierz tę samą grupę zasobów. Zaznacz pole wyboru **Potwierdzam**, a następnie kliknij przycisk **Utwórz**.
 
-    ![Subskrybowanie interfejsu API przetwarzania obrazów](../Images/create-vision-api.png)
+    ![Subskrybowanie interfejs API przetwarzania obrazów](../Images/create-vision-api.png)
 
 1. Wróć do menu grupy zasobów i kliknij przycisk subskrypcji interfejsu API przetwarzania obrazów, która została właśnie utworzona. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
 
@@ -144,7 +144,7 @@ Jeśli chcesz kontynuować pracę nad swoją aplikacją internetową, zobacz sek
 
 Aby usunąć grupę zasobów, otwórz blok **Grupy zasobów** w portalu, przejdź do grupy zasobów używanej na potrzeby tego projektu, a następnie kliknij pozycję **Usuń grupę zasobów** u góry widoku. Zostanie wyświetlony monit o podanie nazwy grupy zasobów w celu potwierdzenia, że chcesz ją usunąć, ponieważ po usunięciu grupy zasobów nie można jej odzyskać.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku usługa przetwarzania obrazów platformy Azure została zintegrowana z istniejącą aplikacją internetową w celu automatycznego generowania podpisów i słów kluczowych dla obrazów obiektów blob podczas ich przekazywania. Następnie zapoznaj się z ćwiczeniem 6 w laboratorium usługi Azure Storage, aby dowiedzieć się, jak dodać funkcję wyszukiwania do aplikacji internetowej. Ta funkcja wykorzystuje słowa kluczowe, które generuje usługa przetwarzania obrazów.
 

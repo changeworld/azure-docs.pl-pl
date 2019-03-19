@@ -6,20 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 53104aeaa88464a666a6ece495e51bf58bd1f002
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885423"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Udostępniaj i odnajduj zasoby w galerii Azure AI
 
-**[Galeria sztucznej Inteligencji platformy Azure](http://gallery.azure.ai)**  jest witryną tworzonych metodą społecznościową do odnajdywania i udostępnianie rozwiązań utworzonych za pomocą sztucznej Inteligencji platformy Azure.
+**[Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai)**  jest witryną tworzonych metodą społecznościową do odnajdywania i udostępnianie rozwiązań utworzonych za pomocą sztucznej Inteligencji platformy Azure.
 Galeria ma wiele zasobów, które można użyć do tworzenia własnych rozwiązań do analizy.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co można znaleźć w galerii?
@@ -201,4 +201,4 @@ Chcemy, aby Galeria napędzane przez naszych użytkowników, jak i dla naszych u
 
 ![Opinia](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PRZEJDŹ DO GALERII &GT;&GT;](http://gallery.azure.ai)**
+**[PRZEJDŹ DO GALERII &GT;&GT;](https://gallery.azure.ai)**

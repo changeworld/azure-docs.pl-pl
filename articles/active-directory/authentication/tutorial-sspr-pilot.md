@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe472a45d99f966c851934ea44a346326cb4201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175153"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215595"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Samouczek: przeprowadzanie pilotażowego wdrożenia samoobsługowego resetowania hasła usługi Azure AD
 
@@ -42,8 +42,8 @@ Należy pamiętać, że testowanie samoobsługowego resetowania hasła trzeba pr
       * Upewnij się, że użytkownicy w wybranej grupie posiadają prawidłowe licencje.
    * Kliknij pozycję **Zapisz**
 1. Na stronie **Metody uwierzytelniania**
-   * Dla opcji **Liczba metod wymaganych do zresetowania** ustaw wartość **2**
-   * W obszarze **Metody dostępne dla użytkowników** wybierz metody, które będą dozwolone przez organizację. Na potrzeby tego samouczka zaznacz pola **Wiadomość e-mail**, **Telefon komórkowy** i **Telefon biurowy**.
+   * Ustaw **liczba metod wymaganych do zresetowania** do **1**
+   * W obszarze **Metody dostępne dla użytkowników** wybierz metody, które będą dozwolone przez organizację. W tym samouczku należy zaznaczyć pola Aby włączyć **E-mail** i **kod aplikacji mobilnej (wersja zapoznawcza)**.
    * Kliknij pozycję **Zapisz**
 1. Na stronie **Rejestracja**
    * Wybierz wartość **Tak** dla opcji **Czy wymagać od użytkowników rejestrowania się podczas logowania?**.
@@ -76,7 +76,7 @@ Jeśli zdecydujesz, że nie chcesz już korzystać z funkcji skonfigurowanych w 
 1. Na stronie **Właściwości** w ramach opcji **Funkcja samoobsługowego resetowania hasła jest włączona** wybierz pozycję **Brak**.
 1. Kliknij pozycję **Zapisz**
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku włączono samoobsługowe resetowanie hasła usługi Azure AD. Przejdź do następnego samouczka, aby zobaczyć, jak można zintegrować lokalną infrastrukturę usług Active Directory Domain Services ze środowiskiem samoobsługowego resetowania hasła.
 

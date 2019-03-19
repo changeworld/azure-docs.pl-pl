@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: a0a6c2d6171b4b383c97cc80d8a64efef9d193f5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086143"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Utwórz i Udostępnij obszar roboczy usługi Azure Machine Learning Studio
 
@@ -36,10 +36,10 @@ Aby korzystać z usługi Azure Machine Learning Studio, musisz mieć obszar robo
 
 4. Wprowadź swoje informacje o obszarze roboczym:
 
-    - *Nazwa obszaru roboczego* może być maksymalnie 260 znaków, nie kończy się spacją. Nazwa nie może zawierać następujących znaków: `< > * % & : \ ? + /`
-    - *Planu usługi sieci web* możesz wybrać (lub Utwórz), wraz ze skojarzonego *warstwy cenowej* wybrać, jest używany w przypadku wdrożenia usługi sieci web z obszaru roboczego.
+   - *Nazwa obszaru roboczego* może być maksymalnie 260 znaków, nie kończy się spacją. Nazwa nie może zawierać następujących znaków: `< > * % & : \ ? + /`
+   - *Planu usługi sieci web* możesz wybrać (lub Utwórz), wraz ze skojarzonego *warstwy cenowej* wybrać, jest używany w przypadku wdrożenia usługi sieci web z obszaru roboczego.
 
-    ![Utwórz nowy obszar roboczy Studio](./media/create-workspace/create-new-workspace.png)
+     ![Utwórz nowy obszar roboczy Studio](./media/create-workspace/create-new-workspace.png)
 
 5. Kliknij pozycję **Utwórz**.
 

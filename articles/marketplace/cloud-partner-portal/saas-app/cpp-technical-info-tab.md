@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 383f65ea925a3575afd988e07784be643201c6b8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214507"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120758"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta informacje techniczne aplikacji SaaS
 
@@ -44,7 +44,7 @@ Do tworzenia tego środowiska, należy skonfigurować następujące elementy:
 - Połącz swoje witryny sieci Web usługi SaaS z interfejsami API usług SaaS firmy Microsoft. [Sprzedaży SaaS za pośrednictwem platformy Azure — interfejsy API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) artykule wyjaśniono, jak utworzyć to połączenie.
 - Włącz sprzedaży za pośrednictwem platformy Azure w portalu Cloud Partner w formularzu konfiguracji technicznej i podaj wymagane informacje. Aby uzyskać więcej informacji o ten model rozliczeń i sposób implementacji, zobacz [SaaS — sprzedawać za pośrednictwem platformy Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
- ![Sprzedaż dzięki formularza firmy Microsoft](./media/saas-techinfo-sellthrough-ms.png)
+  ![Sprzedaż dzięki formularza firmy Microsoft](./media/saas-techinfo-sellthrough-ms.png)
 
 W poniższej tabeli opisano wymagane pola, na którym można nabywać oprogramowanie firmy Microsoft.
 

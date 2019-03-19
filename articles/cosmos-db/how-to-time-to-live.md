@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: a9f6676f1b2fdf812ec87595083ba6317a11873c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: bb5997c2ae8f93068b0ad2a77b5109f6c79b9b30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462158"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003517"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurowanie czasu wygaśnięcia w usłudze Azure Cosmos DB
 
@@ -72,6 +72,20 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
+### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+
+```javascript
+const containerDefinition = {
+          id: "sample container1",
+        };
+
+async function createcontainerWithTTL(db: Database, containerDefinition: ContainerDefinition, collId: any, defaultTtl: number) {
+      containerDefinition.id = collId;
+      containerDefinition.defaultTtl = defaultTtl;
+      await db.containers.create(containerDefinition);
+}
+```
+
 ## <a name="set-time-to-live-on-an-item"></a>Ustawianie czasu wygaśnięcia elementu
 
 Oprócz skonfigurowania domyślnego czasu wygaśnięcia dla kontenera możesz ustawić czas wygaśnięcia konkretnego elementu. Ustawienie czasu wygaśnięcia na poziomie elementu spowoduje zastąpienie domyślnego czasu wygaśnięcia elementu w kontenerze.
@@ -81,6 +95,37 @@ Oprócz skonfigurowania domyślnego czasu wygaśnięcia dla kontenera możesz us
 * Jeśli element nie ma pola TTL, będzie obowiązywał domyślny czas wygaśnięcia ustawiony dla kontenera.
 
 * Jeśli czas wygaśnięcia zostanie wyłączony na poziomie kontenera, pole TTL elementu będzie ignorowane do momentu ponownego włączenia czasu wygaśnięcia dla kontenera.
+
+### <a id="portal-set-ttl-item"></a>Azure Portal
+
+Aby włączyć czas wygaśnięcia elementu, użyj następujących kroków:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+
+2. Utwórz nowe konto usługi Azure Cosmos lub wybierz istniejące.
+
+3. Otwórz okienko **Eksplorator danych**.
+
+4. Wybierz istniejący kontener, rozwiń go, a następnie zmodyfikuj następujące wartości:
+
+   * Otwórz okno **Skalowanie i ustawienia**.
+   * W obszarze **Ustawienia** znajdź pozycję **Czas wygaśnięcia**.
+   * Wybierz **na (Brak wartości domyślnej)** lub wybierz **na** i ustaw wartość czasu wygaśnięcia. 
+   * Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+
+5. Następnie przejdź do elementu, dla którego chcesz ustawić czas na żywo, dodawanie `ttl` właściwości i wybierz pozycję **aktualizacji**. 
+
+   ```json
+   {
+    "id": "1",
+    "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
+    "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
+    "_etag": "\"0d00b23f-0000-0000-0000-5c7712e80000\"",
+    "_attachments": "attachments/",
+    "ttl": 10,
+    "_ts": 1551307496
+   }
+   ```
 
 ### <a id="dotnet-set-ttl-item"></a>.NET SDK
 
@@ -94,7 +139,7 @@ public class SalesOrder
     public string CustomerId { get; set; }
     // used to set expiration policy
     [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
-    public int? TimeToLive { get; set; }
+    public int? ttl { get; set; }
 
     //...
 }
@@ -103,9 +148,21 @@ SalesOrder salesOrder = new SalesOrder
 {
     Id = "SO05",
     CustomerId = "CO18009186470",
-    TimeToLive = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
+    ttl = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
 };
 ```
+
+### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+
+```javascript
+const itemDefinition = {
+          id: "doc",
+          name: "sample Item",
+          key: "value", 
+          ttl: 2
+        };
+```
+
 
 ## <a name="reset-time-to-live"></a>Resetowanie czasu wygaśnięcia
 
@@ -121,7 +178,7 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = 60 * 30 * 30; // update time to live
+readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
@@ -139,14 +196,14 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = null; // inherit the default TTL of the collection
+readDocument.ttl = null; // inherit the default TTL of the collection
 
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
 ## <a name="disable-time-to-live"></a>Wyłączanie czasu wygaśnięcia
 
-Aby wyłączyć czas wygaśnięcia dla kontenera i zatrzymać proces w tle sprawdzający, czy elementy wygasły, należy usunąć właściwość `DefaultTimeToLive` z kontenera. Usunięcie tej właściwości ma inne skutki niż ustawienie jej na –1. Jeśli wartość właściwości zostanie ustawiona na –1, nowe elementy dodawane do kontenera nie będą wygasały, ale można będzie zastąpić tę wartość w przypadku wybranych elementów w kontenerze. Jeśli właściwość TTL zostanie usunięta z kontenera, elementy nie będą wygasały nawet w przypadku jawnego zastąpienia poprzedniej domyślnej wartości czasu wygaśnięcia.
+Aby wyłączyć czas wygaśnięcia dla kontenera i zatrzymać proces w tle sprawdzający, czy elementy wygasły, należy usunąć właściwość `DefaultTimeToLive` z kontenera. Usunięcie tej właściwości ma inne skutki niż ustawienie jej na –1. Jeśli wartość właściwości zostanie ustawiona na –1, nowe elementy dodawane do kontenera nie będą wygasały, ale można będzie zastąpić tę wartość w przypadku wybranych elementów w kontenerze. Po usunięciu właściwości TTL z kontenera elementy nigdy nie wygasa, nawet jeśli są jawnie przesłaniane poprzedniego wartość domyślna czasu wygaśnięcia.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 
@@ -158,7 +215,7 @@ collection.DefaultTimeToLive = null;
 await client.ReplaceDocumentCollectionAsync(collection);
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat czasu wygaśnięcia, zobacz artykuł:
 

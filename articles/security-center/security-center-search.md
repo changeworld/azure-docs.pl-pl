@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 7fae267b74677e93527b4e185c5b52d421ef149e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074509"
 ---
 # <a name="azure-security-center-search"></a>Wyszukiwanie w usłudze Azure Security Center
 Usługa Azure Security Center używa [usługi Azure Monitor dzienniki wyszukiwania](../log-analytics/log-analytics-log-searches.md) pobieranie i analizowanie danych zabezpieczeń. Dzienniki platformy Azure Monitor obejmuje język zapytań, można szybko pobierać i konsolidować dane. W usłudze Security Center możesz korzystać z wyszukiwania dzienników usługi Azure Monitor do tworzenia zapytań i analizowania zebranych danych.
@@ -35,19 +35,19 @@ Wyszukiwanie jest dostępne w warstwie bezpłatnej i warstwie standardowa usług
 ## <a name="access-search"></a>Dostęp do wyszukiwania
 1. W menu głównym usługi Security Center wybierz **wyszukiwania**.
 
-  ![Wybierz wyszukiwanie w Dzienniku][1]
+   ![Wybierz wyszukiwanie w Dzienniku][1]
 
 2. Usługa Security Center wyświetla listę wszystkich obszarów roboczych w ramach subskrypcji platformy Azure. Wybierz obszar roboczy. (Jeśli masz tylko jeden obszar roboczy, nie ma tego selektora obszaru roboczego.)
 
-  ![Wybierz obszar roboczy][2]
+   ![Wybierz obszar roboczy][2]
 
 3. **Wyszukiwania w dzienniku** zostanie otwarty. Aby wysłać zapytanie do większej ilości danych w ramach wybranego obszaru roboczego, należy wprowadzić to przykładowe zapytanie:
 
-  SecurityEvent | gdzie EventID == 4625 | Podsumowanie count() by TargetAccount
+   SecurityEvent | gdzie EventID == 4625 | Podsumowanie count() by TargetAccount
 
-  Wynik zawiera wszystkie konta, które nie powiodło się zalogowanie (zdarzenie 4625).
+   Wynik zawiera wszystkie konta, które nie powiodło się zalogowanie (zdarzenie 4625).
 
-  ![Wyniki wyszukiwania][3]
+   ![Wyniki wyszukiwania][3]
 
 Zobacz [język zapytania Kusto](../log-analytics/log-analytics-search-reference.md) Aby uzyskać więcej informacji na temat wykonywania zapytań dla danych w ramach wybranego obszaru roboczego.
 

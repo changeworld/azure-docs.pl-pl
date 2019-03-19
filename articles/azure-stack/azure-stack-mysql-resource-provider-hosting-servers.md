@@ -15,12 +15,12 @@ ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101877"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych MySQL
 
@@ -44,9 +44,9 @@ Upewnij się, że masz poświadczenia dla konta z uprawnieniami administratora s
 4. Podaj szczegóły połączenia wystąpienia serwera MySQL.
 
    * Aby uzyskać **nazwę serwera obsługującego MySQL**, podaj w pełni kwalifikowana nazwa domeny (FQDN) lub prawidłowym adresem IPv4. Nie używaj krótką nazwę maszyny Wirtualnej.
-   - Domyślny administrator **Username** Bitnami MySQL obrazów dostępnych w witrynie marketplace usługi Azure Stack jest *głównego*. 
-   - Jeśli nie znasz głównego **hasło**, zobacz [dokumentacji Bitnami](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) dowiesz się, jak można go pobrać. 
-   - Domyślne wystąpienie MySQL nie podano, więc należy określić **rozmiar hostingu serwera w GB**. Wprowadź rozmiar, który znajduje się w pobliżu pojemności serwera bazy danych.
+   * Domyślny administrator **Username** Bitnami MySQL obrazów dostępnych w witrynie marketplace usługi Azure Stack jest *głównego*. 
+   * Jeśli nie znasz głównego **hasło**, zobacz [dokumentacji Bitnami](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) dowiesz się, jak można go pobrać. 
+   * Domyślne wystąpienie MySQL nie podano, więc należy określić **rozmiar hostingu serwera w GB**. Wprowadź rozmiar, który znajduje się w pobliżu pojemności serwera bazy danych.
    * Zachowaj domyślne ustawienie dla **subskrypcji**.
    * Aby uzyskać **grupy zasobów**, Utwórz nową lub użyj istniejącej grupy.
 
@@ -60,8 +60,8 @@ Upewnij się, że masz poświadczenia dla konta z uprawnieniami administratora s
    Jednostka SKU **nazwa** powinny odzwierciedlać właściwości jednostki SKU, dzięki czemu użytkownicy mogą wdrażać swoje bazy danych do odpowiedniej jednostki SKU.
 
 6. Wybierz **OK** do utworzenia jednostki SKU.
-> [!NOTE]
-> Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Nie można utworzyć bazę danych, do momentu jednostka SKU jest wdrożona i uruchomiona.
+   > [!NOTE]
+   > Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Nie można utworzyć bazę danych, do momentu jednostka SKU jest wdrożona i uruchomiona.
 
 7. W obszarze **dodawania serwera hostingu MySQL**, wybierz opcję **Utwórz**.
 

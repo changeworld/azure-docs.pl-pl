@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: df0dc1a8f574f8df23100528d822891178418b6c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895630"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder FMLE 
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.locfileid: "57241361"
 >
 >
 
-W tym artykule przedstawiono sposób konfigurowania [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) do wysyłania strumień o pojedynczej szybkości transmisji bitów do usługi AMS kanały, które są włączone dla kodowania na żywo. Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+W tym artykule przedstawiono sposób konfigurowania [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) do wysyłania strumień o pojedynczej szybkości transmisji bitów do usługi AMS kanały, które są włączone dla kodowania na żywo. Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 W tym samouczku przedstawiono sposób zarządzania usługi Azure Media Services (AMS) przy użyciu narzędzia Azure Media Services Explorer (AMSE). To narzędzie jest uruchamiane tylko na komputerze Windows. Jeśli na komputerze Mac lub Linux, użyj witryny Azure portal do utworzenia [kanały](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) i [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jednak domyślnie adaptacyjnych kontrolek aplikacji nie obsługuje FMLE. Należy zakupić wtyczkę AAC kodowania takich jak przez firmę MainConcept: [Wtyczkę AAC](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jednak domyślnie adaptacyjnych kontrolek aplikacji nie obsługuje FMLE. Należy zakupić wtyczkę AAC kodowania takich jak przez firmę MainConcept: [Wtyczkę AAC](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * [Tworzenie konta usługi Azure Media Services](media-services-portal-create-account.md)

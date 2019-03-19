@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako;
-ms.openlocfilehash: eee0d5365c515f8a7764b9d5636ae3d1b34cb934
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a0d6eb67c255a40856683c8a5c47c1e1e9f6753e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240851"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837801"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redagowanie twarze za pomocą usługi Azure Media Analytics 
 ## <a name="overview"></a>Przegląd
@@ -41,10 +41,10 @@ To daje zostały zredagowane mp4 automatycznie bez wszelkich ręcznych danych we
 | Elementu zawartości wyjściowej |foo_redacted.mp4 |Wideo z Rozmycie stosowane |
 
 #### <a name="input-example"></a>Przykład danych wejściowych:
-[Wyświetlanie tego wideo](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
+[Wyświetlanie tego wideo](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
 #### <a name="output-example"></a>Przykład danych wyjściowych:
-[Wyświetlanie tego wideo](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
+[Wyświetlanie tego wideo](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>Tryb analizy
 **Analizowanie** przebiegu przepływu pracy dwuprzebiegową przyjmuje wideo zestaw danych wejściowych i tworzy plik JSON zawierający lokalizacjach twarzy i obrazów jpg wszystkich wykryty twarzy.
@@ -125,7 +125,7 @@ Dane wyjściowe z analizy — dostęp próbny nie obejmuje oryginalnego filmu wi
 #### <a name="example-output"></a>Przykładowe dane wyjściowe
 To wynika z IDList identyfikatorem jeden wybrany.
 
-[Wyświetlanie tego wideo](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
+[Wyświetlanie tego wideo](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
 Przykład foo_IDList.txt
  
@@ -373,5 +373,5 @@ namespace FaceRedaction
 ## <a name="related-links"></a>Powiązane linki
 [Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

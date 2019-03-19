@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: ff202c85f20adce173a375987a5f2250fda565b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123780"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Bezserwerowa baza danych obliczeń z użyciem usługi Azure Cosmos DB i Azure Functions
 
@@ -97,11 +97,11 @@ W implementacji sprzedaży detalicznej gdy użytkownik dodaje element do koszyka
 
 1. Wiele funkcji platformy Azure można utworzyć przez dodanie Wyzwalacze usługi Azure Cosmos DB do każdego — które nasłuchują do tej samej zmienić źródło danych koszyka zakupów. Należy pamiętać, że gdy wiele funkcji słuchać takie same zestawienia zmian Nowa kolekcja dzierżawy jest wymagana dla każdej funkcji. Aby uzyskać więcej informacji o kolekcjach dzierżawy, zobacz [informacje o bibliotece procesora zestawienia zmian](change-feed-processor.md).
 2. Zawsze, gdy nowy element zostanie dodany do użytkowników, koszyk, każda funkcja niezależnie zostanie wywołany przez źródło z kontenera koszyka zakupów zmian.
-    * Jedna funkcja może używać zawartość koszyka bieżącej, aby zmienić sposób wyświetlania innych elementów, które użytkownik może być zainteresowany.
-    * Inna funkcja może być aktualizowana sumy spisu.
-    * Inną funkcję może wysłać informacje o kliencie w przypadku niektórych produktów do działu marketingu, który wysyła je masowo promocyjne wiadomości e-mail. 
+   * Jedna funkcja może używać zawartość koszyka bieżącej, aby zmienić sposób wyświetlania innych elementów, które użytkownik może być zainteresowany.
+   * Inna funkcja może być aktualizowana sumy spisu.
+   * Inną funkcję może wysłać informacje o kliencie w przypadku niektórych produktów do działu marketingu, który wysyła je masowo promocyjne wiadomości e-mail. 
 
-    Dział można utworzyć wyzwalacza usługi Azure Cosmos DB, nasłuchuje zestawienia zmian i upewnij się, że nie będą one opóźnienie krytyczne kolejność przetwarzania zdarzeń w procesie.
+     Dział można utworzyć wyzwalacza usługi Azure Cosmos DB, nasłuchuje zestawienia zmian i upewnij się, że nie będą one opóźnienie krytyczne kolejność przetwarzania zdarzeń w procesie.
 
 We wszystkich tych zastosowań, ponieważ funkcja ma odłączone samej aplikacji, nie trzeba uruchamiaj nowe wystąpienia aplikacji przez cały czas. Zamiast tego usługa Azure Functions uruchamia poszczególnych funkcji, aby zakończyć procesów dyskretnych zgodnie z potrzebami.
 

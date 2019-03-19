@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 22d4a18ad1c6e80baa6e798be399ab2cd4836fbc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094664"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek dotyczący usługi Azure Log Integration: Przetwarzanie zdarzeń usługi Azure Key Vault przy użyciu usługi Event Hubs
 
@@ -30,8 +30,8 @@ Preferowaną metodą integracji dzienników platformy Azure jest za pomocą łą
  
 Użyj tego samouczka, zapoznaniu się z jak Azure Log Integration i centrów zdarzeń współpracują ze sobą, zgodnie z krokami przykład i zrozumienie, jak każdy krok obsługuje rozwiązania. Następnie można podjąć, co wykorzystasz zdobyte umiejętności w tym miejscu utworzyć własne instrukcje obsługuje unikatowe wymagania Twojej firmy.
 
->[!WARNING]
-Kroki i polecenia w tym samouczku nie są przeznaczone do można kopiować i wklejać. Są one jedynie przykładowe. Nie należy używać poleceń programu PowerShell "w jakim jest" w środowisku na żywo. Należy dostosować je w zależności od używanego środowiska unikatowy.
+> [!WARNING]
+> Kroki i polecenia w tym samouczku nie są przeznaczone do można kopiować i wklejać. Są one jedynie przykładowe. Nie należy używać poleceń programu PowerShell "w jakim jest" w środowisku na żywo. Należy dostosować je w zależności od używanego środowiska unikatowy.
 
 
 Ten samouczek przeprowadzi Cię przez proces podejmowania działań usługi Azure Key Vault zalogowany do Centrum zdarzeń i udostępniając je jako pliki w formacie JSON do systemu SIEM. Następnie należy skonfigurować systemu SIEM do przetwarzania plików JSON.

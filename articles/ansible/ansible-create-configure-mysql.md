@@ -1,19 +1,19 @@
 ---
 title: Tworzenie i konfigurowanie serwera usługi Azure Database for MySQL za pomocą rozwiązania Ansible
 description: Dowiedz się, jak można użyć rozwiązania Ansible do utworzenia i skonfigurowania serwera usługi Azure Database for MySQL
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, element playbook, mysql, baza danych
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 85f3957af599c80c46871a126681d29dfa513431
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 63472cf9c4b6b16f74ececfb6c6e61cf5f89ff9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095402"
 ---
 # <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Tworzenie i konfigurowanie serwera usługi Azure Database for MySQL za pomocą rozwiązania Ansible
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych MySQL o wysokiej dostępności, a także zarządzanie nimi. Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. 
@@ -134,14 +134,14 @@ Program MySQL możesz [pobrać](https://dev.mysql.com/downloads/) i zainstalowa�
 Wprowadź następujące polecenia: 
 
 1. Nawiąż połączenie z serwerem przy użyciu narzędzia wiersza polecenia **mysql**:
-```azurecli-interactive
- mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
-```
+   ```azurecli-interactive
+   mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
+   ```
 
 2. Wyświetl stan serwera:
-```sql
- mysql> status
-```
+   ```sql
+   mysql> status
+   ```
 
 Jeśli wszystko pójdzie dobrze, narzędzie wiersza polecenia powinno zwrócić następujący tekst:
 
@@ -318,6 +318,6 @@ Zapisz powyższy element playbook jako plik **mysql_delete.yml**. Aby uruchomić
 ansible-playbook mysql_delete.yml
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Rozwiązanie Ansible na platformie Azure](https://docs.microsoft.com/azure/ansible/)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 40b266c92a86006746ab5341ac5fa1d785ee6032
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094807"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu dla wielu wartości w usłudze Traffic Manager
 
@@ -49,7 +49,7 @@ Tworzenie profilu usługi Traffic Manager, który kieruje ruch użytkowników ta
     | Lokalizacja                | To ustawienie dotyczy lokalizacji grupy zasobów i nie ma wpływu na profil usługi Traffic Manager, który będzie wdrażany globalnie.                              |
    |        |           | 
   
-  ![Tworzenie profilu usługi Traffic Manager](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
+   ![Tworzenie profilu usługi Traffic Manager](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
@@ -61,13 +61,13 @@ Dodaj dwa adresy IP jako zewnętrzne punkty końcowe, do profilu usługi Traffic
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Typ                    | Jest zewnętrzny punkt końcowy                                   |
+    | Type                    | Zewnętrzny punkt końcowy                                   |
     | Name (Nazwa)           | myEndpoint1                                        |
     | W pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP           | Wpisz publiczny adres IP punktu końcowego, który chcesz dodać do tego profilu usługi Traffic Manager                         |
     |        |           |
 
 4. Powtórz kroki 2 i 3, aby dodać innego punktu końcowego o nazwie *myEndpoint2*, aby uzyskać **w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP**, wprowadź publiczny adres IP drugiego punktu końcowego.
-5.  Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
+5. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
    ![Dodawanie punktu końcowego usługi Traffic Manager](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  

@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 96766a12d7e78dacd93432e30d12f313d52ad4c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176178"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -56,7 +56,7 @@ Wyświetlanie stanu kondycji usługi Azure Active Directory Domain Services, wyb
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Tworzenie i autoryzować tożsamości zarządzanej
 
-A **przypisanych przez użytkownika z tożsamości zarządzanej** umożliwia prosty i bezpieczny operacji usługi domeny. Po przypisaniu roli współautora usługi domeny HDInsight do tożsamości zarządzanej ją odczytać, tworzenia, modyfikacji i Usuń operacje usługi domeny. Niektóre operacje, takie jak tworzenie jednostek organizacyjnych usług domain services i zasad usługi są wymagane przez pakiet HDInsight Enterprise Security. W każdej subskrypcji można utworzyć zarządzanych tożsamości. Aby uzyskać więcej informacji, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+A **przypisanych przez użytkownika z tożsamości zarządzanej** umożliwia prosty i bezpieczny operacji usługi domeny. Po przypisaniu roli współautora usługi domeny HDInsight do tożsamości zarządzanej ją odczytać, tworzenia, modyfikacji i Usuń operacje usługi domeny. Niektóre operacje, takie jak tworzenie jednostek organizacyjnych usług domain services i zasad usługi są wymagane przez pakiet HDInsight Enterprise Security. W każdej subskrypcji można utworzyć zarządzanych tożsamości. Aby uzyskać więcej informacji o zarządzanych tożsamości ogólnie rzecz biorąc, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Aby uzyskać więcej informacji na temat zarządzanych pracy tożsamości w usłudze Azure HDInsight, zobacz [zarządzanych tożsamości w usłudze Azure HDInsight](../hdinsight-managed-identities.md).
 
 Aby skonfigurować klastry ESP, Utwórz tożsamości zarządzanej przypisanych przez użytkownika, jeśli nie masz jeszcze takiego. Zobacz [Utwórz, listy, usuwania lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) instrukcje. Następnie przypisz **Współautor usługi domeny HDInsight** roli tożsamość zarządzaną w kontroli dostępu do usługi Azure AD DS (wymagane dokonanie tego przypisania roli są uprawnienia administratora DS usługi AAD).
 

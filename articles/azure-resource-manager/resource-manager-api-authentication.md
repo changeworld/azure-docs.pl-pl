@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 138367eb7eb0d4be2e0a7bec57d1bce551a5e829
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107056"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 
@@ -234,7 +234,8 @@ Masz tylko token dostępu usługi Azure Resource Manager — należy nowy token 
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Uzyskaj token dostępu tylko do aplikacji interfejsu API programu Graph usługi Azure AD
-Do uwierzytelniania aplikacji i pobrać tokenu do interfejsu API programu Graph usługi Azure AD, należy wysłać żądanie tokenu przepływu OAuth 2.0 przydział poświadczeń klienta do punktu końcowego tokenu usługi Azure AD (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
+
+Do uwierzytelniania aplikacji i pobrać tokenu do interfejsu API programu Graph usługi Azure AD, należy wysłać żądanie tokenu przepływu OAuth 2.0 przydział poświadczeń klienta do punktu końcowego tokenu usługi Azure AD (**https:\//login.microsoftonline.com/{directory_domain_name}/OAuth2/Token** ).
 
 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metoda przykładowej aplikacji platformy ASP.net MVC pobiera tylko do aplikacji token dostępu dla interfejsu API programu Graph przy użyciu biblioteki uwierzytelniania usługi Active Directory dla środowiska .NET.
 

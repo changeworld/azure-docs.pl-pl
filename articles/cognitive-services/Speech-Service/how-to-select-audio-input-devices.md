@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594087"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550686"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Wybieranie urządzenia wejściowego audio za pomocą zestawu SDK usługi Mowa
 
@@ -223,7 +223,7 @@ Przykładowy identyfikator urządzenia to `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.
 
 Identyfikatory urządzeń wybiera się za pomocą standardowych identyfikatorów urządzeń struktury ALSA.
 Identyfikatory urządzeń wejściowych podłączonych do systemu są zawarte w danych wyjściowych polecenia `arecord -L`.
-Alternatywnie można je uzyskać za pomocą [biblioteki ALSA dla języka C](http://www.alsa-project.org/alsa-doc/alsa-lib/).
+Alternatywnie można je uzyskać za pomocą [biblioteki ALSA dla języka C](https://www.alsa-project.org/alsa-doc/alsa-lib/).
 Przykładowe identyfikatory to `hw:1,0` i `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>Identyfikatory urządzeń audio w systemie macOS
@@ -368,12 +368,12 @@ Na przykład instrukcja
 
 umożliwia użycie zestawu słuchawkowego Bluetooth przez aplikację z obsługą mowy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

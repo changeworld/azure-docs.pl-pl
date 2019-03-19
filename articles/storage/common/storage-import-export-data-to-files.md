@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452698"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088659"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
@@ -50,60 +50,60 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 2. Utwórz pojedynczy wolumin NTFS na każdym dysku. Przypisz literę dysku do woluminu. Nie należy używać punkty instalacji.
 3. Modyfikowanie *dataset.csv* pliku w folderze głównym, w którym znajduje się narzędzie. W zależności od tego, czy chcesz importować pliku lub folderu, należy dodać wpisy w *dataset.csv* pliku podobne do poniższych przykładach.  
 
-    - **Aby zaimportować plik**: W poniższym przykładzie dane do skopiowania znajduje się na dysku C:. Plik *MyFile1.txt* jest kopiowany do katalogu głównego *MyAzureFileshare1*. Jeśli *MyAzureFileshare1* nie istnieje, jest tworzony w ramach konta usługi Azure Storage. Struktura folderów jest zachowywana.
+   - **Aby zaimportować plik**: W poniższym przykładzie dane do skopiowania znajduje się na dysku C:. Plik *MyFile1.txt* jest kopiowany do katalogu głównego *MyAzureFileshare1*. Jeśli *MyAzureFileshare1* nie istnieje, jest tworzony w ramach konta usługi Azure Storage. Struktura folderów jest zachowywana.
 
-        ```
-            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+       ```
+           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
-        ```
-    - **Aby zaimportować folder**: Wszystkie pliki i foldery w obszarze *MyFolder2* są rekursywnie skopiowane do udziału plików. Struktura folderów jest zachowywana.
+       ```
+   - **Aby zaimportować folder**: Wszystkie pliki i foldery w obszarze *MyFolder2* są rekursywnie skopiowane do udziału plików. Struktura folderów jest zachowywana.
 
-        ```
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
-        ```
-    Wiele wpisów mogą być wprowadzane w tym samym pliku odpowiadający foldery lub pliki, które są importowane. 
+       ```
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+            
+       ```
+     Wiele wpisów mogą być wprowadzane w tym samym pliku odpowiadający foldery lub pliki, które są importowane. 
 
-        ```
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
-        ```
-    Dowiedz się więcej o [przygotowania pliku CSV zestawu danych](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
+       ```
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+                        
+       ```
+     Dowiedz się więcej o [przygotowania pliku CSV zestawu danych](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
 
 4. Modyfikowanie *driveset.csv* pliku w folderze głównym, w którym znajduje się narzędzie. Dodawanie wpisów w *driveset.csv* pliku podobne do poniższych przykładach. Plik driveset ma listę dysków i odpowiednie litery dysku, więc narzędzie poprawnie można pobrać listy dysków, które mają zostać przygotowane.
 
     W tym przykładzie założono, że są dołączane dwa dyski i woluminy NTFS podstawowe G:\ i H:\ są tworzone. H:\is nie szyfrowane, gdy G: jest już zaszyfrowany. Narzędzie formatuje i szyfruje dysku, który obsługuje tylko H:\ (a nie G:\).
 
-    - **Na dysku, które nie są szyfrowane**: Określ *Szyfruj* włączyć szyfrowanie funkcji BitLocker na dysku.
+   - **Na dysku, które nie są szyfrowane**: Określ *Szyfruj* włączyć szyfrowanie funkcji BitLocker na dysku.
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        H,Format,SilentMode,Encrypt,
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       H,Format,SilentMode,Encrypt,
+       ```
     
-    - **Dla dysku, który jest już zaszyfrowany**: Określ *AlreadyEncrypted* i podaj klucz funkcji BitLocker.
+   - **Dla dysku, który jest już zaszyfrowany**: Określ *AlreadyEncrypted* i podaj klucz funkcji BitLocker.
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
+       ```
 
-    Wiele wpisów, może się w tym samym pliku, odpowiadające na wielu dyskach. Dowiedz się więcej o [przygotowania pliku CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
+     Wiele wpisów, może się w tym samym pliku, odpowiadające na wielu dyskach. Dowiedz się więcej o [przygotowania pliku CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
 
-5.  Użyj `PrepImport` opcję Kopiuj i przygotowywuj danych na dysku. Dla sesji kopiowania do skopiowania katalogów i/lub plików w nowej sesji kopiowania uruchom następujące polecenie:
+5. Użyj `PrepImport` opcję Kopiuj i przygotowywuj danych na dysku. Dla sesji kopiowania do skopiowania katalogów i/lub plików w nowej sesji kopiowania uruchom następujące polecenie:
 
-        ```
-        .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+       ```
 
-    Poniżej przedstawiono przykład importu.
+   Poniżej przedstawiono przykład importu.
   
-        ```
-        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+       ```
  
 6. Plik dziennika o nazwie dostarczona z `/j:` parametru jest tworzony dla każdego uruchomienia wiersza polecenia. Każdy dysk, który należy przygotować ma w pliku dziennika, które muszą być przesłane, podczas tworzenia zadania importu. Dyski bez arkusza, w których pliki nie zostały przetworzone.
 

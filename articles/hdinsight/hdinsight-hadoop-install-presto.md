@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 60ff63a049f225886d69c1a89a2930671e533d78
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 6fdeab56523d05232dd4e6a720de0be9866a4801
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910917"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084831"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Instalowanie i używanie Presto w klastrach HDInsight opartych na usłudze Hadoop
 
@@ -42,11 +42,11 @@ W tej sekcji wyjaśniono, jak użyć przykładowego skryptu podczas tworzenia no
 
 1. Rozpocznij aprowizowanie klastra, wykonując kroki opisane [Tworzenie klastrów z systemem Linux w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md). Upewnij się, Utwórz klaster przy użyciu **niestandardowe** klastra tworzenia przepływu. Klaster musi spełniać następujące wymagania:
 
-    * Musi to być klastra Hadoop z HDInsight w wersji 3.6.
+   * Musi to być klastra Hadoop z HDInsight w wersji 3.6.
 
-    * Musi ona używać usługi Azure Storage jako magazynu danych. Za pomocą Presto w klastrze, który używa usługi Azure Data Lake Storage jako opcji magazynu nie jest jeszcze opcję.
+   * Musi ona używać usługi Azure Storage jako magazynu danych. Za pomocą Presto w klastrze, który używa usługi Azure Data Lake Storage jako opcji magazynu nie jest jeszcze opcję.
 
-    ![HDInsight, niestandardowe (rozmiar, ustawienia, aplikacje)](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
+     ![HDInsight, niestandardowe (rozmiar, ustawienia, aplikacje)](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
 2. W **Zaawansowane ustawienia** wybierz opcję **akcji skryptu**. Podaj następujące informacje. Można również wybrać **zainstalować Presto** opcję Typ skryptu:
    
@@ -162,7 +162,6 @@ Aby dostosować instalację, wykonaj następujące czynności:
     `sudo slider create presto1 --template /var/lib/presto/presto-hdinsight-master/appConfig-default.json --resources /var/lib/presto/presto-hdinsight-master/resources-default.json`
 
 5. Poczekaj, aż nowe wystąpienie będzie gotowa. Zanotuj adres Presto koordynator:
-
 
     `sudo slider registry --name presto1 --getexp presto`
 

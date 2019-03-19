@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 39ff70670d628ca672022b84e59ed3cc8a17d925
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096031"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Raportowanie przy użyciu międzydzierżawowe rozproszonych zapytań
 
@@ -27,7 +27,7 @@ W tym samouczku możesz uruchamiania rozproszonych zapytań dla całego zestawu 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Jak wdrożyć bazę danych raportowania
 > * Sposób uruchamiania rozproszonych zapytań dla wszystkich baz danych dzierżaw
 > * Jak włączyć widoki globalne w każdej bazie danych efektywnego wykonywania zapytań dla dzierżaw
@@ -181,7 +181,7 @@ Ważne, aby pamiętać, jest to ustawienie **dystrybucji = SHARDED(VenueId)** Je
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Uruchamiania rozproszonych zapytań dla wszystkich baz danych dzierżawy
 > * Wdróż bazę danych raportowania i zdefiniować schemat wymagane do uruchamiania rozproszonych zapytań.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d91366ee0fec2930484f7aaa7468e6d1d62f233
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701827"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002188"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -143,7 +143,7 @@ Zestaw poniższych pytań i odpowiedzi dotyczą **wtyczki Azure CNI** konfigurac
 
 * *Można skonfigurować zasad sieciowych na zasobnik?*
 
-  Nie. Zasady sieciowe na zasobnik są obecnie obsługiwane.
+  Zasady sieci Kubernetes jest obecnie dostępna jako funkcja w wersji zapoznawczej w usłudze AKS. Aby rozpocząć pracę, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze AKS][network-policy].
 
 * *Maksymalna liczba zasobników jest możliwy do wdrożenia na węzeł można skonfigurować?*
 
@@ -201,3 +201,4 @@ Klastry Kubernetes utworzonych za pomocą aparatu AKS obsługiwać zarówno [wty
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
+[network-policy]: use-network-policies.md

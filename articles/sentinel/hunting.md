@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 24792a0099d4e45e100fa6cf0b211c62fc8630de
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: adedc8bc1f574ae089f2a11033fab4f390c57a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087028"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Hunt pod kątem zagrożeń przy użyciu w wersji zapoznawczej Azure przez wartownika
 
@@ -128,19 +128,19 @@ Utwórz nowe zapytanie myślistwo:
 1. Kliknij przycisk **nowe zapytanie** i wybierz **Zapisz**.
 2. Wypełnij puste pola i wybierz **Zapisz**.
 
- ![Nowe zapytanie](./media/tutorial-hunting/new-query.png)
+   ![Nowe zapytanie](./media/tutorial-hunting/new-query.png)
 
 Klonowanie i zmodyfikować istniejące zapytanie myślistwo:
 
 1. Wybierz zapytanie myślistwo w tabeli, którą chcesz zmodyfikować.
 2. Wybierz przycisk wielokropka (...) w wierszu kwerendę, o których chcesz zmodyfikować, a następnie wybierz pozycję **Klonuj zapytanie**.
 
- ![Klonuj zapytanie](./media/tutorial-hunting/clone-query.png)
+   ![Klonuj zapytanie](./media/tutorial-hunting/clone-query.png)
  
 
-3.  Zmodyfikuj zapytanie i wybierz **Utwórz**.
+3. Zmodyfikuj zapytanie i wybierz **Utwórz**.
 
- ![Zapytanie niestandardowe](./media/tutorial-hunting/custom-query.png)
+   ![Zapytanie niestandardowe](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób uruchamiania badania myślistwo za pomocą platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:

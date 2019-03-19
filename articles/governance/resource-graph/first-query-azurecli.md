@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8f5d98ff591cb456cbbcb3d28a63f39ab3729152
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 47f3c4bdf21d751cd3804c6a854e7f8706b0815a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308519"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767961"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu wiersza polecenia platformy Azure
 
@@ -70,8 +70,8 @@ Teraz, gdy rozszerzenie interfejsu wiersza polecenia platformy Azure zostało do
    az graph query -q 'project name, type | limit 5 | order by name asc'
    ```
 
-  > [!NOTE]
-  > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
+   > [!NOTE]
+   > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
 1. Zaktualizuj zapytanie, aby najpierw wykonywało polecenie `order by` w celu sortowania według właściwości **Name**, a następnie polecenie `limit` w celu ograniczenia do pięciu pierwszych wyników:
 
@@ -94,7 +94,7 @@ az extension remove -n resource-graph
 > [!NOTE]
 > Nie powoduje to usunięcia pobranego wcześniej pliku rozszerzenia. Powoduje tylko usunięcie go z uruchomionego środowiska interfejsu wiersza polecenia platformy Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
 - Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)

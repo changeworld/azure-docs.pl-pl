@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: ac4366a2e90ea239c650e611b7c4e8dddf5d5106
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 81f06e0f5d5201b902504d8275f356f9a1731065
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098903"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Tworzenie i publikowanie elementu portalu Marketplace
 
@@ -69,19 +69,19 @@ ms.locfileid: "56649666"
 
 10. Zastąp **Moje elementy portalu Marketplace** listę kategorii, w którym powinna zostać wyświetlona Twoja elementu portalu Marketplace:
 
-   ```json
-   "categories":[
-   "My Marketplace Items"
-   ],
-   ```
+    ```json
+    "categories":[
+    "My Marketplace Items"
+    ],
+    ```
 
 11. Wszelkie dalsze zmiany do pliku Manifest.json się [odwołania: Manifest.json elementu portalu Marketplace](#reference-marketplace-item-manifestjson).
 
 12. Aby spakować foldery do pliku .azpkg, otwórz wiersz polecenia i uruchom następujące polecenie:
 
-   ```shell
-   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
-   ```
+    ```shell
+    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    ```
 
     > [!NOTE]
     > Pełna ścieżka do pakietu danych wyjściowych musi istnieć. Na przykład jeśli ścieżka wyjściowa ma C:\MarketPlaceItem\yourpackage.azpkg, musi istnieć folder C:\MarketPlaceItem.

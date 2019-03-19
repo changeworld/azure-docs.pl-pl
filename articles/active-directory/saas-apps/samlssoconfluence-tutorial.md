@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 6b47d483-d3a3-442d-b123-171e3f0f7486
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6cb9de466410ee2f8bf311183f389c5c86148a8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: b6d948542cfac8624d70dd37d37fa967f72f22bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873206"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją SAML SSO for Confluence by resolution GmbH
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji SAML SSO for Confluence by resolution G
 
 **Aby dodać aplikację SAML SSO for Confluence by resolution GmbH z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -109,7 +109,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją SAML SSO 
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    d. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez dostawcę usług:
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez dostawcę usług:
 
     ![Informacje o domenie i adresach URL aplikacji SAML SSO for Confluence by resolution GmbH na potrzeby logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
@@ -172,7 +172,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją SAML SSO 
     
     b. W polu **Name** (Nazwa) wprowadź nazwę dostawcy tożsamości, np. Azure AD.
     
-    d. W polu **Description** (Opis) wprowadź opis dostawcy tożsamości, np. Azure AD.
+    c. W polu **Description** (Opis) wprowadź opis dostawcy tożsamości, np. Azure AD.
     
     d. Kliknij przycisk **Dalej**.
     
@@ -188,7 +188,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją SAML SSO 
 
     b. Kliknij przycisk **Import** (Importuj).
     
-    d. Zaczekaj chwilę na pomyślne zakończenie importowania.
+    c. Zaczekaj chwilę na pomyślne zakończenie importowania.
     
     d. Kliknij przycisk **Next** (Dalej).
     
@@ -204,7 +204,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją SAML SSO 
     
     ![Konfigurowanie logowania jednokrotnego](./media/samlssoconfluence-tutorial/addon6b.png)
     
-17. W wyświetlonym oknie dialogowym o treści **Skipping the test means...** (Pominięcie testu oznacza...) kliknij przycisk **OK**.
+17. Umieszczone odczytu okna dialogowego **pomijanie testów oznacza, że...** , kliknij przycisk **OK**.
     
     ![Konfigurowanie logowania jednokrotnego](./media/samlssoconfluence-tutorial/addon6c.png)
 
@@ -226,7 +226,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -280,7 +280,7 @@ W przypadku aplikacji SAML SSO for Confluence by resolution GmbH aprowizację wy
 
     b. W polu tekstowym **Full Name** (Imię i nazwisko) wpisz imię i nazwisko użytkownika, np. Britta Simon.
 
-    d. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. Brittasimon@contoso.com.
+    c. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. Brittasimon@contoso.com.
 
     d. W polu tekstowym **Password** (Hasło) wpisz hasło użytkownika Britta Simon.
 
@@ -290,7 +290,7 @@ W przypadku aplikacji SAML SSO for Confluence by resolution GmbH aprowizację wy
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka SAML SSO for Confluence by resolution GmbH w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji SAML SSO for Confluence by resolution GmbH, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

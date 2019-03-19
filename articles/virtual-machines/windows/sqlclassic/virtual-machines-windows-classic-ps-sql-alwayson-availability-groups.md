@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 584fca3df4fee24a4f1c7b93d5371c48be059f7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6d8326afa3bcf13234ab072a2cd2909a864738b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002851"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurowanie zawsze włączonej grupy dostępności na Maszynie wirtualnej platformy Azure przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
-> * [Klasyczne: interfejsu użytkownika](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klasyczne: INTERFEJS UŻYTKOWNIKA](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Klasyczne: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Przed rozpoczęciem należy wziąć pod uwagę, możesz teraz wykonać to zadanie w modelu usługi Azure resource manager. Firma Microsoft zaleca modelu usługi Azure resource manager dla nowych wdrożeń. Zobacz [programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Zaleca się, że większości nowych wdrożeń korzystać z modelu usługi Resource Manager. Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia.
+> Zaleca się, że większości nowych wdrożeń korzystać z modelu usługi Resource Manager. Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia.
 
 Maszyn wirtualnych (VM) platformy Azure może pomóc administratorom bazy danych zmniejszyć koszt systemu programu SQL Server o wysokiej dostępności. Ten samouczek pokazuje, jak wdrożyć do grupy dostępności przy użyciu programu SQL Server Always On end-to-end w środowisku platformy Azure. Na końcu tego samouczka rozwiązania SQL Server Always On na platformie Azure będzie składać się z następujących elementów:
 
@@ -103,7 +103,7 @@ Ten samouczek jest przeznaczony Wam czynności, które są wymagane do skonfigur
 
     Plik konfiguracji zawiera następujące dokumentu XML. Krótko mówiąc, określa on sieci wirtualnej o nazwie **ContosoNET** w grupie koligacji o nazwie **ContosoAG**. Ma ona przestrzeń adresową **10.10.0.0/16** i ma dwie podsieci, **10.10.1.0/24** i **10.10.2.0/24**, służą do pierwszej podsieci i podsieć Wstecz, odpowiednio. Podsieci frontonu jest umieszczane aplikacji klienckich, takich jak Microsoft SharePoint. Wstecz podsieci jest, gdzie będzie umieszczać maszyny wirtualne programu SQL Server. Jeśli zmienisz **$affinityGroupName** i **$virtualNetworkName** zmienne wcześniej, należy także zmienić odpowiadających im nazw poniżej.
 
-        <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+        <NetworkConfiguration xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
             <Dns />
             <VirtualNetworkSites>
@@ -239,7 +239,7 @@ Serwer kontrolera domeny teraz zostanie pomyślnie aprowizowane. Następnie nale
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    Wymienione powyżej identyfikator GUID jest identyfikator GUID dla typu obiektu komputera. **CORP\Install** konta potrzeb **Odczyt wszystkich właściwości** i **tworzenia obiektów komputerów** uprawnienia do tworzenia obiektów Active bezpośrednie dla klastra trybu failover. **Odczyt wszystkich właściwości** uprawnienie jest już używana CORP\Install domyślnie, dzięki czemu nie trzeba jawnie przyznać. Aby uzyskać więcej informacji na temat uprawnień, które są niezbędne do utworzenia klastra trybu failover, zobacz [przewodnik krok po kroku klastra trybu Failover: Konfigurowanie konta w usłudze Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    Wymienione powyżej identyfikator GUID jest identyfikator GUID dla typu obiektu komputera. **CORP\Install** konta potrzeb **Odczyt wszystkich właściwości** i **tworzenia obiektów komputerów** uprawnienia do tworzenia obiektów Active bezpośrednie dla klastra trybu failover. **Odczyt wszystkich właściwości** uprawnienie jest już używana CORP\Install domyślnie, dzięki czemu nie trzeba jawnie przyznać. Aby uzyskać więcej informacji na temat uprawnień, które są niezbędne do utworzenia klastra trybu failover, zobacz [przewodnik krok po kroku klastra trybu Failover: Konfigurowanie kont w usłudze Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
     Teraz, gdy zakończysz, skonfigurowanie usługi Active Directory i obiektów użytkowników, utworzysz dwie maszyny wirtualne programu SQL Server i dołącz je do tej domeny.
 
@@ -380,15 +380,15 @@ Serwer kontrolera domeny teraz zostanie pomyślnie aprowizowane. Następnie nale
 ## <a name="initialize-the-failover-cluster-vms"></a>Inicjowanie maszyn wirtualnych z klastra trybu failover
 W tej sekcji należy zmodyfikować trzy serwery, których można używać w klastrze trybu failover i instalacji programu SQL Server. W szczególności:
 
-* Wszystkie serwery: musisz zainstalować **klastra trybu Failover** funkcji.
-* Wszystkie serwery: należy dodać **CORP\Install** maszyny **administratora**.
-* ContosoSQL1 i tylko ContosoSQL2: należy dodać **CORP\Install** jako **sysadmin** rolę w domyślnej bazy danych.
-* ContosoSQL1 i tylko ContosoSQL2: należy dodać **NT AUTHORITY\System** jako logowania z następującymi uprawnieniami:
+* Wszystkie serwery: Musisz zainstalować **klastra trybu Failover** funkcji.
+* Wszystkie serwery: Należy dodać **CORP\Install** maszyny **administratora**.
+* ContosoSQL1 i ContosoSQL2 tylko: Należy dodać **CORP\Install** jako **sysadmin** rolę w domyślnej bazy danych.
+* ContosoSQL1 i ContosoSQL2 tylko: Należy dodać **NT AUTHORITY\System** jako logowania z następującymi uprawnieniami:
 
   * Instrukcja ALTER żadnej grupy dostępności
   * Połączenia SQL
   * Wyświetl stan serwera
-* ContosoSQL1 i tylko ContosoSQL2: **TCP** na maszynę Wirtualną programu SQL Server jest już włączony protokół. Jednak nadal musisz otworzyć zaporę dla dostępu zdalnego programu SQL Server.
+* ContosoSQL1 i ContosoSQL2 tylko: **TCP** na maszynę Wirtualną programu SQL Server jest już włączony protokół. Jednak nadal musisz otworzyć zaporę dla dostępu zdalnego programu SQL Server.
 
 Teraz jesteś gotowy do uruchomienia. Począwszy od **ContosoQuorum**, wykonaj następujące czynności:
 

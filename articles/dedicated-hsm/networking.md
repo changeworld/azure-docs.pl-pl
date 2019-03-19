@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: d872c4eff3d55ddf5d98243055e831a7a223a8ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aed0eb6ba4cdaa57d282ac4484e0c27c0697afb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083134"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Sieci platformy Azure w wersji dedykowanej przez moduł HSM
 
@@ -51,8 +51,8 @@ Wymaganie bieżącej architektury jest konfiguracji bramy usługi ER w podsieci 
 Podczas tworzenia zasobów w chmurze, jest typowy potrzebę prywatne połączenie lokalne zasoby IT. W przypadku dedykowanego sprzętowego modułu zabezpieczeń są głównie to oprogramowanie klienckie przez moduł HSM skonfigurować urządzenia sprzętowego modułu zabezpieczeń oraz działań, takich jak tworzenie kopii zapasowych i ściąganie dzienników z sprzętowych modułów zabezpieczeń dla analizy. Punkt kluczowe decyzje, w tym miejscu to rodzaj połączenia, jako dostępne są opcje.  Najbardziej elastyczna opcja to sieci VPN typu lokacja-lokacja, ponieważ prawdopodobnie będą wielu zasobów w środowisku lokalnym, które wymagają bezpiecznej komunikacji z zasobami (w tym sprzętowych modułów zabezpieczeń) w chmurze platformy Azure. Będzie to wymagało organizacji klienta, aby urządzenie sieci VPN, aby ułatwić połączenia. Połączenie sieci VPN typu punkt-lokacja może służyć w przypadku tylko pojedynczy punkt końcowy w środowisku lokalnym takich jak pojedynczy administracyjnej stacji roboczej.
 Aby uzyskać więcej informacji na temat opcji łączności, zobacz [bramy sieci VPN, opcje planowania](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
 
->[!NOTE]
-W tej chwili usługi ExpressRoute nie jest opcją dla połączenia z zasobami lokalnymi. Należy również zauważyć, że brama usługi ExpressRoute używane zgodnie z powyższym opisem, nie dla połączeń z infrastrukturą lokalną.
+> [!NOTE]
+> W tej chwili usługi ExpressRoute nie jest opcją dla połączenia z zasobami lokalnymi. Należy również zauważyć, że brama usługi ExpressRoute używane zgodnie z powyższym opisem, nie dla połączeń z infrastrukturą lokalną.
 
 ### <a name="point-to-site-vpn"></a>Sieci VPN typu punkt lokacja
 
@@ -80,8 +80,8 @@ Urządzenia sprzętowego modułu zabezpieczeń mają możliwość, za pomocą bi
 
 Dla aplikacji dystrybuowanych globalnie lub scenariuszy rozwiązania regionalnej pracy awaryjnej wysokiej dostępności jest wymagany do łączenia sieci wirtualnych między regionami. Za pomocą platformy Azure w wersji dedykowanej przez moduł HSM wysoką dostępność można osiągnąć za pomocą bramy sieci VPN, która udostępnia bezpieczny tunel między dwiema sieciami wirtualnymi. Aby uzyskać więcej informacji na temat połączeń sieci wirtualnej między sieciami wirtualnymi przy użyciu bramy sieci VPN, zobacz artykuł [co to jest usługa VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
 
->[!NOTE]
-Globalne wirtualne sieci równorzędne jest niedostępna w łączności między regionami, które scenariusze za pomocą dedykowanych sprzętowych modułów zabezpieczeń, w tym czasie i bramy sieci VPN należy użyć. 
+> [!NOTE]
+> Globalne wirtualne sieci równorzędne jest niedostępna w łączności między regionami, które scenariusze za pomocą dedykowanych sprzętowych modułów zabezpieczeń, w tym czasie i bramy sieci VPN należy użyć. 
 
 ![globalne wirtualne sieci](media/networking/global-vnet.png)
 

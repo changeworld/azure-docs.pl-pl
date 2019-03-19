@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 502ccf15fe3e2f803febb711d4ea8850abbaea85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106342"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Przewodnik: Eksportowanie do bazy danych SQL z usługi Application Insights przy użyciu usługi Stream Analytics
 W tym artykule pokazano, jak przenieść dane telemetryczne z [usługi Azure Application Insights] [ start] do usługi Azure SQL database przy użyciu [eksportu ciągłego] [ export] i [usługi Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -84,7 +84,7 @@ Zdarzenia są zapisywane do obiektu blob, pliki w formacie JSON. Każdy plik mo�
 ## <a name="create-an-azure-sql-database"></a>Utwórz bazę danych Azure SQL Database
 Jeszcze raz od Twojej subskrypcji w [witryny Azure portal][portal], utworzyć bazę danych (i nowego serwera, chyba, że już masz jedną), do której będziesz zapisywać dane.
 
-![Nowe danych, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
+![New, Data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
 Upewnij się, że serwer bazy danych umożliwia dostęp do usług platformy Azure:
 
@@ -181,8 +181,8 @@ Aby uzyskać nazwę i klucz Instrumentacji zasobu usługi Application Insights, 
 > Użyj wyświetlany kod przykładowej funkcji, aby sprawdzić, poprawnie ustawiona ścieżka wejściowa. Jeśli nie powiedzie się: Sprawdź, czy dane w magazynie dla wybranego zakresu czasu próbki. Edytuj definicję danych wejściowych i sprawdź Ustaw konto magazynu, prefiks ścieżki i Data formacie poprawnie.
 > 
 > 
-## <a name="set-query"></a>Ustaw zapytanie
-Otwórz sekcję zapytania:
+> ## <a name="set-query"></a>Ustaw zapytanie
+> Otwórz sekcję zapytania:
 
 Zastąp domyślne zapytanie za pomocą:
 

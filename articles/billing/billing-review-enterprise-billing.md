@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 5cb26b98f5969032bcff95e4408fcf685399d6da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114505"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898707"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Przegląd rozliczeń rejestracji enterprise za pomocą interfejsów API REST
 
@@ -78,7 +78,7 @@ Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi, która zawiera listę szcze
 }
 ```  
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia dla konta rozliczeniowego](/rest/api/consumption/usagedetails/listbybillingaccount) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
+W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia dla konta rozliczeniowego](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
 
 ## <a name="department-billing"></a>Dział rozliczeń 
 
@@ -134,7 +134,7 @@ Poniższy przykład przedstawia dane wyjściowe interfejsu API REST dla działu 
 }
 ```  
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia dla działu](/rest/api/consumption/usagedetails/listbydepartment) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
+W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia dla działu](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
 
 ## <a name="enrollment-account-billing"></a>Rozliczanie konta rejestracji
 
@@ -187,7 +187,7 @@ Poniższy przykład przedstawia dane wyjściowe interfejs API REST rejestracji e
 }
 ``` 
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia konta rejestracji](/rest/api/consumption/usagedetails/listbyenrollmentaccount) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
+W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia konta rejestracji](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
 
 ## <a name="next-steps"></a>Kolejne kroki 
 - Przegląd [Przegląd raportowania dla przedsiębiorstw.](https://docs.microsoft.com/azure/billing/billing-enterprise-api)

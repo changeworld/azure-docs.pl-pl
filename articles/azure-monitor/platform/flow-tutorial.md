@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: f38d9b40143391be34ce5f72627720e2f5119dc6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993779"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123151"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy dzienników usługi Azure Monitor z łącznikiem usługi Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez dziennika zapytań z obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
@@ -48,13 +48,13 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 1. Określ szczegóły dla Twojego obszaru roboczego, w tym subskrypcji identyfikator, grupy zasobów i nazwę obszaru roboczego.
 2. Następujące zapytanie dziennika, aby dodać **zapytania** okna.  Jest to tylko przykładowe zapytanie, i możesz zastąpić dowolne inne zwracającej dane.
-```
+   ```
     Event
     | where EventLevelName == "Error" 
     | where TimeGenerated > ago(1day)
     | summarize count() by Computer
     | sort by Computer
-```
+   ```
 
 2. Wybierz **tabeli HTML** dla **typ wykresu**.<br><br>![Akcja analizy dzienników](media/flow-tutorial/flow03.png)
 

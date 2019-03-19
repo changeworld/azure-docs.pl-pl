@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 61bec775fc8be963ee6fd0768a297420e6eb7ab2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095215"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Samouczek: Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service w wersji 3
 
@@ -90,12 +90,12 @@ Bot odpowiada za pomocą "Ustaw QnAKnowledgebaseId i QnASubscriptionKey w ustawi
 
 1. Pobierz swój identyfikator bazy wiedzy knowledge base, adres url hosta i klucza punktu końcowego z karty Ustawienia w portalu narzędzia QnA Maker bazy wiedzy.
 
-    - Zaloguj się do [usługi QnA Maker](https://qnamaker.ai)
-    - Przejdź do bazy wiedzy
-    - Wybierz **ustawienia** kartę
-    - **Publikowanie** wiedzy, jeśli nie zrobiono
+   - Zaloguj się do [usługi QnA Maker](https://qnamaker.ai)
+   - Przejdź do bazy wiedzy
+   - Wybierz **ustawienia** kartę
+   - **Publikowanie** wiedzy, jeśli nie zrobiono
 
-    ![Usługa QnA Maker wartości](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+     ![Usługa QnA Maker wartości](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 ## <a name="test-the-bot"></a>Testowanie robota
 

@@ -1,6 +1,6 @@
 ---
 title: Nazw produktów i planowanie identyfikatory Licencjonowanie — usługa Azure AD | Dokumentacja firmy Microsoft
-description: Identyfikator mapę, aby zarządzać licencjonowaniem usługi Azure Active Directory, w witrynie Azure portal, portalu usługi Office 365, programu PowerShell lub programu Microsoft Graph
+description: Identyfikator mapę, aby zarządzać licencjonowaniem usługi Azure Active Directory, w witrynie Azure portal, Centrum administracyjnego usługi Microsoft 365, programu PowerShell lub programu Microsoft Graph
 services: active-directory
 keywords: Usługa Azure Active Directory, planów usług licencjonowania
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: curtand
 ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f0308905ab33cd18160389dfe50a0ed8bb5152
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fc4580b4f600b06fc89e3fc8760679028765e03e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247532"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176432"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Nazw produktów i usługa identyfikuje planu licencjonowania
 
-Gdy zarządzanie licencjami w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) lub portalu usługi Office 365, zostanie wyświetlony nazwy produktów, które wyglądać mniej więcej tak *Office 365 Enterprise E3*. Korzystając z polecenia cmdlet programu PowerShell w wersji 1.0, tego samego produktu jest identyfikowane za pomocą określonych, ale mniej przyjazne nazwy: *ENTERPRISEPACK*. Korzystając z polecenia cmdlet programu PowerShell w wersji 2.0 lub programu Microsoft Graph, ten sam produkt jest identyfikowany przy użyciu wartości identyfikatora GUID: *6fd2c87f-b296-42f0-b197-1e91e994b900*. Poniższa tabela zawiera listę najczęściej używanych produktów usługi online firmy Microsoft oraz zapewnia ich różnych wartości Identyfikatora. Te tabele są do celów informacyjnych i są prawidłowe tylko od datę ostatniej aktualizacji w tym artykule. Microsoft nie planuje je dla nowo dodanych usług jest okresowo aktualizowany.
+Gdy zarządzanie licencjami w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) lub [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com), zobaczysz nazwy produktów, które wyglądać mniej więcej tak *Office 365 Enterprise E3*. Korzystając z polecenia cmdlet programu PowerShell w wersji 1.0, tego samego produktu jest identyfikowane za pomocą określonych, ale mniej przyjazne nazwy: *ENTERPRISEPACK*. Korzystając z polecenia cmdlet programu PowerShell w wersji 2.0 lub programu Microsoft Graph, ten sam produkt jest identyfikowany przy użyciu wartości identyfikatora GUID: *6fd2c87f-b296-42f0-b197-1e91e994b900*. Poniższa tabela zawiera listę najczęściej używanych produktów usługi online firmy Microsoft oraz zapewnia ich różnych wartości Identyfikatora. Te tabele są do celów informacyjnych i są prawidłowe tylko od datę ostatniej aktualizacji w tym artykule. Microsoft nie planuje je dla nowo dodanych usług jest okresowo aktualizowany.
 
 - **Nazwa produktu**: Używanych w portalach zarządzania
 - **Identyfikator ciągu**: Używany przez polecenia cmdlet programu PowerShell w wersji 1.0, podczas wykonywania operacji na licencji

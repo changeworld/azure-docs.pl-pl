@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: mayg
-ms.openlocfilehash: 05a60ff2b2995642f797897d0e1f4db46c5b6741
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215847"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082096"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>W tryb failover maszyn wirtualnych i serwerów fizycznych 
 
@@ -39,17 +39,17 @@ Ta procedura opisuje sposób uruchomić tryb failover dla [planu odzyskiwania](s
 
 1. Wybierz **plany odzyskiwania** > *recoveryplan_name*. Kliknij przycisk **trybu Failover**
 2. Na **trybu Failover** ekranu, wybierz opcję **punkt odzyskiwania** przejścia w tryb failover. Możesz użyć jednej z następujących opcji:
-    1.  **Najnowszy**: Ta opcja uruchamia zadanie przy pierwszym przetwarzanie wszystkich danych wysłanych do usługi Site Recovery. Przetwarzanie danych tworzy punkt odzyskiwania dla każdej maszyny wirtualnej. Ten punkt odzyskiwania jest używany przez maszynę wirtualną w tryb failover. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania) jako maszyna wirtualna utworzone po trybu failover zawiera wszystkie dane, które zostały zreplikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
-    1.  **Najnowszy przetworzony**: Ta opcja wprowadza się przez wszystkie maszyny wirtualne w planie odzyskiwania do ostatniego punktu odzyskiwania, który został już przetworzony przez usługę Site Recovery. Podczas wykonywania testu trybu failover maszyny wirtualnej, to również wyświetlana jest sygnatura czasowa ostatniego punktu odzyskiwania przetworzonego. Jeśli przeprowadzasz trybu failover planu odzyskiwania, można przejść do poszczególnych maszyn wirtualnych i przyjrzyj się **najnowsze punkty odzyskiwania** Kafelek, aby uzyskać te informacje. Ponieważ nie jest zużywany czas przetwarzania nieprzetworzonych danych, ta opcja zapewnia niski opcji pracy awaryjnej cel czasu odzyskiwania (Recovery Time Objective).
-    1.  **Najnowszy spójny na poziomie aplikacji**: Ta opcja wprowadza się przez wszystkie maszyny wirtualne w planie odzyskiwania do ostatniego punktu odzyskiwania spójnego na poziomie aplikacji, która została już przetworzona przez usługę Site Recovery. Podczas wykonywania testu trybu failover maszyny wirtualnej, wyświetlane są również sygnaturę czasową najnowszy spójny na poziomie aplikacji punkt przywracania. Jeśli przeprowadzasz trybu failover planu odzyskiwania, można przejść do poszczególnych maszyn wirtualnych i przyjrzyj się **najnowsze punkty odzyskiwania** Kafelek, aby uzyskać te informacje.
-    1.  **Najnowsze wieloma Maszynami wirtualnymi przetwarzane**: Ta opcja jest dostępna tylko w przypadku planów odzyskiwania, które mają co najmniej jedną maszynę wirtualną z ON spójności wielu maszyn wirtualnych. Punkt maszyn wirtualnych, które są dostępne w ramach trybu failover grupy replikacji do najnowszej wspólnej odzyskiwania zapewniających spójność wielu maszyn wirtualnych. Inne maszyny wirtualne trybu failover, aby ich najnowszy przetworzony punkt przywracania.  
-    1.  **Najnowsze wieloma Maszynami wirtualnymi spójny na poziomie aplikacji**: Ta opcja jest dostępna tylko w przypadku planów odzyskiwania, które mają co najmniej jedną maszynę wirtualną z ON spójności wielu maszyn wirtualnych. Punkt maszyn wirtualnych, które są dostępne w ramach trybu failover grupy replikacji do najnowszej wspólnej odzyskiwania spójnego z aplikacją wielu maszyn wirtualnych. Inne maszyny wirtualne trybu failover, aby ich najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
-    1.  **Niestandardowy**: Jeśli przeprowadzasz test trybu failover maszyny wirtualnej, można użyć tej opcji w tryb failover do określonego punktu odzyskiwania.
+   1. **Najnowszy**: Ta opcja uruchamia zadanie przy pierwszym przetwarzanie wszystkich danych wysłanych do usługi Site Recovery. Przetwarzanie danych tworzy punkt odzyskiwania dla każdej maszyny wirtualnej. Ten punkt odzyskiwania jest używany przez maszynę wirtualną w tryb failover. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania) jako maszyna wirtualna utworzone po trybu failover zawiera wszystkie dane, które zostały zreplikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
+   1. **Najnowszy przetworzony**: Ta opcja wprowadza się przez wszystkie maszyny wirtualne w planie odzyskiwania do ostatniego punktu odzyskiwania, który został już przetworzony przez usługę Site Recovery. Podczas wykonywania testu trybu failover maszyny wirtualnej, to również wyświetlana jest sygnatura czasowa ostatniego punktu odzyskiwania przetworzonego. Jeśli przeprowadzasz trybu failover planu odzyskiwania, można przejść do poszczególnych maszyn wirtualnych i przyjrzyj się **najnowsze punkty odzyskiwania** Kafelek, aby uzyskać te informacje. Ponieważ nie jest zużywany czas przetwarzania nieprzetworzonych danych, ta opcja zapewnia niski opcji pracy awaryjnej cel czasu odzyskiwania (Recovery Time Objective).
+   1. **Najnowszy spójny na poziomie aplikacji**: Ta opcja wprowadza się przez wszystkie maszyny wirtualne w planie odzyskiwania do ostatniego punktu odzyskiwania spójnego na poziomie aplikacji, która została już przetworzona przez usługę Site Recovery. Podczas wykonywania testu trybu failover maszyny wirtualnej, wyświetlane są również sygnaturę czasową najnowszy spójny na poziomie aplikacji punkt przywracania. Jeśli przeprowadzasz trybu failover planu odzyskiwania, można przejść do poszczególnych maszyn wirtualnych i przyjrzyj się **najnowsze punkty odzyskiwania** Kafelek, aby uzyskać te informacje.
+   1. **Najnowsze wieloma Maszynami wirtualnymi przetwarzane**: Ta opcja jest dostępna tylko w przypadku planów odzyskiwania, które mają co najmniej jedną maszynę wirtualną z ON spójności wielu maszyn wirtualnych. Punkt maszyn wirtualnych, które są dostępne w ramach trybu failover grupy replikacji do najnowszej wspólnej odzyskiwania zapewniających spójność wielu maszyn wirtualnych. Inne maszyny wirtualne trybu failover, aby ich najnowszy przetworzony punkt przywracania.  
+   1. **Najnowsze wieloma Maszynami wirtualnymi spójny na poziomie aplikacji**: Ta opcja jest dostępna tylko w przypadku planów odzyskiwania, które mają co najmniej jedną maszynę wirtualną z ON spójności wielu maszyn wirtualnych. Punkt maszyn wirtualnych, które są dostępne w ramach trybu failover grupy replikacji do najnowszej wspólnej odzyskiwania spójnego z aplikacją wielu maszyn wirtualnych. Inne maszyny wirtualne trybu failover, aby ich najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
+   1. **Niestandardowy**: Jeśli przeprowadzasz test trybu failover maszyny wirtualnej, można użyć tej opcji w tryb failover do określonego punktu odzyskiwania.
 
-    > [!NOTE]
-    > Opcja wyboru punktu odzyskiwania jest dostępna tylko w przypadku, gdy są możesz przejść w tryb failover na platformie Azure.
-    >
-    >
+      > [!NOTE]
+      > Opcja wyboru punktu odzyskiwania jest dostępna tylko w przypadku, gdy są możesz przejść w tryb failover na platformie Azure.
+      >
+      >
 
 
 1. Jeśli część maszyn wirtualnych w planie odzyskiwania zostały przełączone w tryb failover podczas poprzedniego uruchomienia, a teraz maszyny wirtualne są aktywne w miejscu źródłowym i docelowym, możesz użyć **zmianę kierunku** opcję, aby określić kierunek, w którym tryb failover powinno mieć miejsce.
@@ -70,9 +70,9 @@ Maszyny wirtualne/serwery fizyczne chronione za pomocą Site Recovery również 
 
 > [!NOTE]
 > Podczas pracy w trybie failover maszyn wirtualnych funkcji Hyper-v z jednej lokacji lokalnej do innej lokacji lokalnej powrót do lokacji podstawowej w środowisku lokalnym masz uprzedniego **replikacji odwrotnej** maszyny wirtualnej z powrotem do lokacji głównej i następnie Wyzwól tryb failover. Jeśli podstawowa maszyna wirtualna jest niedostępna, przed uruchomieniem do **replikacji odwrotnej** niezbędnych do przywrócenia maszyny wirtualnej z kopii zapasowej.   
->
->
-## <a name="failover-job"></a>Zadanie trybu failover
+> 
+> 
+> ## <a name="failover-job"></a>Zadanie trybu failover
 
 ![Tryb failover](./media/site-recovery-failover/FailoverJob.png)
 

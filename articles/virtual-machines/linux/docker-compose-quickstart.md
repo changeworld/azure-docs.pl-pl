@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 3aa3b29ef44d3efb21237dc0d82a1ee6e99e729b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 03501ea774cf58a4be88ed9155e5cfdfb99f0379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328949"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007195"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Wprowadzenie do platformy Docker i Compose, aby zdefiniować i uruchomić aplikację obsługującą wiele kontenerów na platformie Azure
-Za pomocą [Compose](http://github.com/docker/compose), użyj prostego pliku tekstowego do definiowania aplikacja składająca się z wielu kontenerów platformy Docker. Następnie uruchom aplikację w pojedynczym poleceniu, tak, wszystko, co do wdrożenia środowiska zdefiniowane. Na przykład w tym artykule pokazano, jak szybko skonfigurować bloga WordPress z zapleczem bazy danych MariaDB SQL na maszynie Wirtualnej systemu Ubuntu. Redaguj umożliwia również konfigurowanie bardziej złożonych aplikacji.
+Za pomocą [Compose](https://github.com/docker/compose), użyj prostego pliku tekstowego do definiowania aplikacja składająca się z wielu kontenerów platformy Docker. Następnie uruchom aplikację w pojedynczym poleceniu, tak, wszystko, co do wdrożenia środowiska zdefiniowane. Na przykład w tym artykule pokazano, jak szybko skonfigurować bloga WordPress z zapleczem bazy danych MariaDB SQL na maszynie Wirtualnej systemu Ubuntu. Redaguj umożliwia również konfigurowanie bardziej złożonych aplikacji.
 
 W tym artykule ostatniego testowania przy użyciu 2/14/2019 [usługi Azure Cloud Shell](https://shell.azure.com/bash) i [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) wersji 2.0.58.
 
@@ -132,7 +132,7 @@ Teraz można połączyć się WordPress bezpośrednio na maszynie Wirtualnej na 
 ![Ekran startowy WordPress](./media/docker-compose-quickstart/wordpressstart.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zapoznaj się z [Compose wiersza polecenia](http://docs.docker.com/compose/reference/) i [Podręcznik użytkownika](http://docs.docker.com/compose/) więcej przykładów dotyczących tworzenia i wdrażania aplikacji obsługującej wiele kontenerów.
+* Zapoznaj się z [Compose wiersza polecenia](https://docs.docker.com/compose/reference/) i [Podręcznik użytkownika](https://docs.docker.com/compose/) więcej przykładów dotyczących tworzenia i wdrażania aplikacji obsługującej wiele kontenerów.
 * Albo użyj szablonu usługi Azure Resource Manager, usługi posiada lub w jednym przyczyniły się z [społeczności](https://azure.microsoft.com/documentation/templates/), aby wdrożyć Maszynę wirtualną platformy Azure z platformami Docker i skonfigurować za pomocą tworzenia aplikacji. Na przykład [wdrożyć blog WordPress przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) szablon używa platformy Docker i Compose, szybko wdrożyć WordPress z zapleczem MySQL na maszynie Wirtualnej systemu Ubuntu.
 * Spróbuj integracji narzędzia Docker Compose za pomocą klastra Docker Swarm. Zobacz [przy użyciu narzędzia Compose przy użyciu koordynatora Swarm](https://docs.docker.com/compose/swarm/) do scenariuszy.
 

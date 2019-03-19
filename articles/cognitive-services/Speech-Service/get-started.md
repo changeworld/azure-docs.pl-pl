@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342681"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103727"
 ---
 # <a name="try-speech-services-for-free"></a>Wypróbuj bezpłatnie usługi mowy
 
@@ -87,19 +87,19 @@ Można dodać zasobu usługi mowy (w warstwie bezpłatna lub płatna) do konta p
 
 1. W obszarze **Utwórz**, wpisz:
 
-    * Nazwa dla nowego zasobu. Nazwa służy do rozróżnienia wielu subskrypcji tej samej usługi.
-    * Wybierz subskrypcję platformy Azure, nowy zasób z którym skojarzony jest ustalenie, jak są naliczane opłaty.
-    * Wybierz region, w którym zasób będzie używany. Obecnie usług przetwarzania mowy jest dostępna w regionach zachodnie stany USA, Azja Wschodnia i Europa Północna.
-    * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Kliknij przycisk **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
-    * Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
-    * Wygodny dostęp do Twojej subskrypcji w przyszłości, wybierz **Przypnij do pulpitu nawigacyjnego** pole wyboru.
-    * Wybierz **utworzyć.**
+   * Nazwa dla nowego zasobu. Nazwa służy do rozróżnienia wielu subskrypcji tej samej usługi.
+   * Wybierz subskrypcję platformy Azure, nowy zasób z którym skojarzony jest ustalenie, jak są naliczane opłaty.
+   * Wybierz region, w którym zasób będzie używany. Obecnie usług przetwarzania mowy jest dostępna w regionach zachodnie stany USA, Azja Wschodnia i Europa Północna.
+   * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Kliknij przycisk **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
+   * Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
+   * Wygodny dostęp do Twojej subskrypcji w przyszłości, wybierz **Przypnij do pulpitu nawigacyjnego** pole wyboru.
+   * Wybierz **utworzyć.**
 
-    ![Kliknij przycisk Utwórz](media/index/try-speech-api-create-speech4.png)
+     ![Kliknij przycisk Utwórz](media/index/try-speech-api-create-speech4.png)
 
-    Może potrwać kilka minut, aby utworzyć i wdrożyć nowy zasób mowy. Wybierz **Szybki Start** Aby wyświetlić informacje dotyczące nowego zasobu.
+     Może potrwać kilka minut, aby utworzyć i wdrożyć nowy zasób mowy. Wybierz **Szybki Start** Aby wyświetlić informacje dotyczące nowego zasobu.
 
-    ![Panel szybkiego startu](media/index/try-speech-api-create-speech5.png)
+     ![Panel szybkiego startu](media/index/try-speech-api-create-speech5.png)
 
 1. W obszarze **Szybki Start**, kliknij przycisk **klucze** łącze w kroku 1, aby wyświetlić klucze subskrypcji. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Wybierz przycisk obok każdego klucza, aby skopiować go do Schowka wklejania w kodzie.
 

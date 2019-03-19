@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4c50ba76cf1e9b8103bd006c9f97c18a3e92d0c2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d9d26ced30f718f06d6d0ba9eb7c2a78682305ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550283"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102370"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Fabryki danych platformy Azure — często zadawane pytania
 > [!NOTE]
@@ -178,7 +178,7 @@ Możesz ponownie uruchomić wycinek w jednym z następujących sposobów:
     ```PowerShell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-Zobacz [AzDataFactorySliceStatus zestaw] [ set-azure-datafactory-slice-status] szczegółowe informacje na temat polecenia cmdlet.
+  Zobacz [AzDataFactorySliceStatus zestaw] [ set-azure-datafactory-slice-status] szczegółowe informacje na temat polecenia cmdlet.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak długo trwało przetworzyć wycinek?
 Aby dowiedzieć się, jak długo można przetworzyć wycinek danych, należy użyć Eksploratorze okien działania w aplikacji monitorowanie i zarządzanie. Zobacz [Eksploratorze okien działania](data-factory-monitor-manage-app.md#activity-window-explorer) Aby uzyskać szczegółowe informacje.

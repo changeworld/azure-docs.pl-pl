@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731398"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092229"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Tworzenie zadania eksportu dla usługi Azure Import/Export
 Tworzenie zadania eksportu dla usługi Microsoft Azure Import/Export, za pomocą interfejsu API REST obejmuje następujące czynności:
 
--   Wybieranie obiektów blob do wyeksportowania.
+- Wybieranie obiektów blob do wyeksportowania.
 
--   Uzyskiwanie lokalizacji wysyłki.
+- Uzyskiwanie lokalizacji wysyłki.
 
--   Tworzenie zadania eksportu.
+- Tworzenie zadania eksportu.
 
--   Wysyłka pustych dysków do firmy Microsoft za pośrednictwem usługi obsługiwane operatora.
+- Wysyłka pustych dysków do firmy Microsoft za pośrednictwem usługi obsługiwane operatora.
 
--   Aktualizowanie zadania eksportu informacje o pakiecie.
+- Aktualizowanie zadania eksportu informacje o pakiecie.
 
--   Odbieranie dyski powrót po awarii z firmy Microsoft.
+- Odbieranie dyski powrót po awarii z firmy Microsoft.
 
- Zobacz [przy użyciu usługi Windows Azure Import/Export przesyłanie danych do magazynu obiektów Blob](storage-import-export-service.md) z omówieniem usługi Import/Export a samouczek, w którym pokazano, jak używać [witryny Azure portal](https://portal.azure.com/) do tworzenia i Zarządzaj Importuj i Eksportuj zadania.
+  Zobacz [przy użyciu usługi Windows Azure Import/Export przesyłanie danych do magazynu obiektów Blob](storage-import-export-service.md) z omówieniem usługi Import/Export a samouczek, w którym pokazano, jak używać [witryny Azure portal](https://portal.azure.com/) do tworzenia i Zarządzaj Importuj i Eksportuj zadania.
 
 ## <a name="selecting-blobs-to-export"></a>Wybieranie obiektów blob do wyeksportowania
  Aby utworzyć zadanie eksportu, musisz podać listę obiektów blob, które mają zostać wyeksportowane z konta magazynu. Istnieje kilka sposobów, aby wybrać obiekty BLOB do wyeksportowania:
 
--   Ścieżka względna obiektów blob umożliwia wybierz pojedynczy obiekt blob i wszystkie jego migawek.
+- Ścieżka względna obiektów blob umożliwia wybierz pojedynczy obiekt blob i wszystkie jego migawek.
 
--   Ścieżka względna obiektów blob umożliwia wybierz pojedynczy obiekt blob, z wyłączeniem jego migawek.
+- Ścieżka względna obiektów blob umożliwia wybierz pojedynczy obiekt blob, z wyłączeniem jego migawek.
 
--   Ścieżka względna obiektów blob i godzina migawki służy do wybierz pojedynczej migawki.
+- Ścieżka względna obiektów blob i godzina migawki służy do wybierz pojedynczej migawki.
 
--   Prefiks obiektu blob można użyć, aby zaznaczyć wszystkie obiekty BLOB i migawki za pomocą danego prefiksu.
+- Prefiks obiektu blob można użyć, aby zaznaczyć wszystkie obiekty BLOB i migawki za pomocą danego prefiksu.
 
--   Możesz wyeksportować wszystkie obiekty BLOB i migawki na koncie magazynu.
+- Możesz wyeksportować wszystkie obiekty BLOB i migawki na koncie magazynu.
 
- Aby uzyskać więcej informacji na temat określania obiekty BLOB do wyeksportowania, zobacz [umieścić zadania](/rest/api/storageimportexport/jobs) operacji.
+  Aby uzyskać więcej informacji na temat określania obiekty BLOB do wyeksportowania, zobacz [umieścić zadania](/rest/api/storageimportexport/jobs) operacji.
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
 Przed utworzeniem przez zadanie eksportu, należy uzyskać nazwę lokalizacji wysyłki i adres, wywołując [Pobieranie lokalizacji](https://portal.azure.com) lub [listy lokalizacji](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operacji. `List Locations` Spowoduje to zwrócenie listy lokalizacje i swoje adresy pocztowe. Można wybrać lokalizację z listy zwracane i wysłania dysków twardych do tego adresu. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.

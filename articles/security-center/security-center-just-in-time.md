@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: monhaber
-ms.openlocfilehash: 9cdcfbc6074f8e343e2571063cc5dafe54072753
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314776"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110957"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -82,20 +82,20 @@ Aby wybrać maszyny wirtualne, które chcesz włączyć:
 
 1. W obszarze **Just-in-time dostęp do maszyny Wirtualnej**, wybierz opcję **zalecane** kartę.
 
-  ![Włącz dostęp just in time](./media/security-center-just-in-time/enable-just-in-time-access.png)
+   ![Włącz dostęp just in time](./media/security-center-just-in-time/enable-just-in-time-access.png)
 
 2. W obszarze **maszyny WIRTUALNEJ**, wybierz maszyny wirtualne, które chcesz włączyć. Spowoduje to umieszczenie znacznik wyboru obok maszyny Wirtualnej.
 3. Wybierz **Włącz dostęp JIT na maszynach wirtualnych**.
-  1. Ten blok zawiera porty domyślne zalecane przez usługę Azure Security Center:
-     - 22 - PROTOKOŁU SSH
-     - 3389 - RDP
-     - 5985 - Usługa WinRM 
-     - 5986 - Usługa WinRM
-  2. Można również skonfigurować porty niestandardowe. Aby to zrobić, wybierz **Dodaj**. 
-  3. W **Dodawanie konfiguracji portu**, dla każdego portu, należy wybrać opcję skonfigurowania zarówno domyślne i niestandardowe, możesz dostosować następujące ustawienia:
-    - **Typ protokołu**— protokół, który jest dozwolone na tym porcie, gdy żądanie zostanie zatwierdzone.
-    - **Dozwolone źródłowe adresy IP**-zakresów IP, które są dozwolone dla tego portu, gdy żądanie zostanie zatwierdzone.
-    - **Maksymalny czas żądania**— okno maksymalny czas, w którym można otworzyć określonego portu.
+   1. Ten blok zawiera porty domyślne zalecane przez usługę Azure Security Center:
+      - 22 - PROTOKOŁU SSH
+      - 3389 - RDP
+      - 5985 - Usługa WinRM 
+      - 5986 - Usługa WinRM
+   2. Można również skonfigurować porty niestandardowe. Aby to zrobić, wybierz **Dodaj**. 
+   3. W **Dodawanie konfiguracji portu**, dla każdego portu, należy wybrać opcję skonfigurowania zarówno domyślne i niestandardowe, możesz dostosować następujące ustawienia:
+      - **Typ protokołu**— protokół, który jest dozwolone na tym porcie, gdy żądanie zostanie zatwierdzone.
+      - **Dozwolone źródłowe adresy IP**-zakresów IP, które są dozwolone dla tego portu, gdy żądanie zostanie zatwierdzone.
+      - **Maksymalny czas żądania**— okno maksymalny czas, w którym można otworzyć określonego portu.
 
 4. Wybierz pozycję **Zapisz**.
 
@@ -174,9 +174,9 @@ Możesz uzyskać wgląd w działania maszyny Wirtualnej przy użyciu przeszukiwa
 2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną, aby wyświetlić informacje o, klikając trzy kropki znajdujące się w wierszu dla tej maszyny Wirtualnej. Spowoduje to otwarcie menu.
 3. Wybierz **dziennika aktywności** w menu. Spowoduje to otwarcie **dziennika aktywności**.
 
-  ![Wybierz dziennik aktywności](./media/security-center-just-in-time/select-activity-log.png)
+   ![Wybierz dziennik aktywności](./media/security-center-just-in-time/select-activity-log.png)
 
-  **Dziennik aktywności** udostępnia widok filtrowany poprzednich operacji dla tej maszyny Wirtualnej wraz z godzina, Data i subskrypcji.
+   **Dziennik aktywności** udostępnia widok filtrowany poprzednich operacji dla tej maszyny Wirtualnej wraz z godzina, Data i subskrypcji.
 
 Informacje dziennika można pobrać, wybierając **kliknij tutaj, aby pobrać wszystkie elementy w formacie CSV**.
 
@@ -188,16 +188,16 @@ Modyfikowanie filtrów i wybierz **Zastosuj** do tworzenia wyszukiwania i dzienn
 Ustaw te wymaganych uprawnień, aby umożliwić użytkownikowi konfigurowanie lub edytowanie zasad JIT dla maszyny Wirtualnej.
 
 Przypisać te *akcje* dla roli: 
--   W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
-   - Microsoft.Security/locations/jitNetworkAccessPolicies/write
--    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
-   - Microsoft.Compute/virtualMachines/write 
+- W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
+  - Microsoft.Security/locations/jitNetworkAccessPolicies/write
+- W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
+  - Microsoft.Compute/virtualMachines/write 
 
 Należy ustawić te uprawnienia, aby użytkownik mógł pomyślnie żądanie dostępu JIT do maszyny Wirtualnej: Przypisać te *akcje* dla użytkownika:
--   W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
-   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
--    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
-   - Microsoft.Compute/virtualMachines/read
+- W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
+  - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
+- W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
+  - Microsoft.Compute/virtualMachines/read
 
 
 

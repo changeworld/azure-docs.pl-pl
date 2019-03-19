@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b749a85295e85ecde8d283ca02066a31be33666
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673073"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838820"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Samouczek: rozpoznawanie logo usług platformy Azure na obrazach z kamery
 
@@ -101,7 +101,6 @@ Następnie otwórz plik *Source\VisualProvision\AppSettings.cs* i wpisz poprawne
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
-
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 Aplikacja wymaga konta nazwy głównej usługi platformy Azure do wdrażania usług w Twojej subskrypcji platformy Azure. Nazwa główna usługi służy do delegowania określonych uprawnień do aplikacji za pomocą kontroli dostępu opartej na rolach. Aby dowiedzieć się więcej, zobacz [przewodnik po jednostkach usług](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
@@ -131,6 +130,7 @@ Po pomyślnym zakończeniu powinny pojawić się następujące dane wyjściowe J
   ...
 }
 ```
+
 Zanotuj wartości `clientId` i `tenantId`. Dodaj je do odpowiednich pól w pliku *Source\VisualProvision\AppSettings.cs*.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
@@ -138,9 +138,10 @@ Zanotuj wartości `clientId` i `tenantId`. Dodaj je do odpowiednich pól w pliku
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 W tym momencie został przez Ciebie udzielony aplikacji dostęp do:
-* wytrenowanego modelu usługi Custom Vision
-* usługi Computer Vision
-* konta jednostki usługi 
+
+- wytrenowanego modelu usługi Custom Vision
+- usługi Computer Vision
+- konta jednostki usługi
 
 Wykonaj następujące kroki, aby uruchomić aplikację:
 
@@ -163,7 +164,6 @@ Wykonaj następujące kroki, aby uruchomić aplikację:
 
     ![Ekran aplikacji przedstawiający pole listy rozwijanej dla docelowej subskrypcji platformy Azure](media/azure-logo-tutorial/app-az-subscription.png)
 
-    
 
 1. Aparat w Twoim urządzeniu zostanie uaktywniony. Zrób zdjęcie jednego z logo usługi platformy Azure, które było uwzględnione podczas trenowania. W oknie wdrożenia powinien pojawić się monit o wybór regionu i grupy zasobów dla nowych usług (tak jak w przypadku ich wdrożenia z witryny Azure Portal). 
 
@@ -171,13 +171,13 @@ Wykonaj następujące kroki, aby uruchomić aplikację:
 
     ![Ekran aplikacji przedstawiający pola dla regionu wdrożenia i grupy zasobów](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli wykonasz już wszystkie kroki w tym scenariuszu i użyjesz aplikacji do wdrażania usług platformy Azure na swoim koncie, przejdź do witryny [Azure Portal](https://ms.portal.azure.com/). Anuluj tam usługi, których nie chcesz używać.
 
 Jeśli planujesz utworzenie własnego projektu wykrywania obiektu za pomocą usługi Custom Vision, możesz chcieć usunąć projekt wykrywania logo utworzony w ramach tego samouczka. Bezpłatna wersja próbna usługi Custom Vision dopuszcza tylko dwa projekty. Aby usunąć projekt wykrywania logo w [witrynie internetowej usługi Custom Vision](https://customvision.ai), otwórz pozycję **Projects (Projekty)**, a następnie wybierz ikonę kosza na śmieci w obszarze **My New Project (Mój nowy projekt)**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku została skonfigurowana i przebadana w pełni funkcjonalna aplikacja platformy Xamarin.Forms, która używa usługi Custom Vision do wykrywania logo na zdjęciach z aparatu urządzenia przenośnego. Następnie poznaj najlepsze rozwiązania dotyczące budowania modelu usługi Custom Vision, dzięki czemu podczas tworzenia własnych aplikacji możesz zapewnić ich wydajność i dokładność.
 

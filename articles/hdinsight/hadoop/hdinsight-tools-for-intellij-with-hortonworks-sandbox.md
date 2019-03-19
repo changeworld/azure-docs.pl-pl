@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635667"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118327"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks
 
@@ -53,20 +53,20 @@ W tej sekcji utworzysz przykładowy projekt Scala przy użyciu rozwiązania Inte
    1. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)**.
    2. W **narzędzia do kompilowania** listy, wybierz jedną z poniższych pozycji w oparciu o Twojego scenariusza:
 
-    * **Narzędzie maven**: Kreator tworzenia projektu Scala pomocy technicznej.
-    * **SBT**: Zarządzanie zależnościami oraz kompilowanie projektu Scala.
+      * **Narzędzie maven**: Kreator tworzenia projektu Scala pomocy technicznej.
+      * **SBT**: Zarządzanie zależnościami oraz kompilowanie projektu Scala.
 
    ![Okno dialogowe Nowy projekt](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. Wybierz opcję **Dalej**.
 3. W ciągu następnych **nowy projekt** okna dialogowego pole, wykonaj następujące czynności:
 
-    1. W **Nazwa projektu** wprowadź nazwę projektu.
-    2. W **lokalizacja projektu** wprowadź lokalizację projektu.
-    3. Obok pozycji **SDK projektu** listy rozwijanej wybierz **nowy**, wybierz opcję **JDK**, a następnie określ folder dla języka Java JDK w wersji 1.7 lub nowszej. Wybierz **Java 1.8** klastra Spark 2.x. Wybierz **środowiska Java 1.7** 1.x klastra Spark. Domyślna lokalizacja to C:\Program Files\Java\jdk1.8.x_xxx.
-    4. W **wersji platformy Spark** listy rozwijanej, Kreator tworzenia projektu w języku Scala integruje się poprawna wersja zestawu SDK platformy Spark i Scala zestawu SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie użyto platformy Spark 1.6.2 (Scala 2.10.5). Upewnij się, że korzystają repozytorium oznaczone **Scala 2.10.x**. Nie należy używać repozytorium oznaczone Scala 2.11.x.
+   1. W **Nazwa projektu** wprowadź nazwę projektu.
+   2. W **lokalizacja projektu** wprowadź lokalizację projektu.
+   3. Obok pozycji **SDK projektu** listy rozwijanej wybierz **nowy**, wybierz opcję **JDK**, a następnie określ folder dla języka Java JDK w wersji 1.7 lub nowszej. Wybierz **Java 1.8** klastra Spark 2.x. Wybierz **środowiska Java 1.7** 1.x klastra Spark. Domyślna lokalizacja to C:\Program Files\Java\jdk1.8.x_xxx.
+   4. W **wersji platformy Spark** listy rozwijanej, Kreator tworzenia projektu w języku Scala integruje się poprawna wersja zestawu SDK platformy Spark i Scala zestawu SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie użyto platformy Spark 1.6.2 (Scala 2.10.5). Upewnij się, że korzystają repozytorium oznaczone **Scala 2.10.x**. Nie należy używać repozytorium oznaczone Scala 2.11.x.
     
-    ![Tworzenie środowiska IntelliJ Scala właściwości projektu](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![Tworzenie środowiska IntelliJ Scala właściwości projektu](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. Wybierz pozycję **Finish** (Zakończ).
@@ -145,7 +145,7 @@ Aby przesłać projekt w emulatorze:
     1. W **klastra Spark (tylko system Linux)** listy rozwijanej wybierz swoje lokalne Piaskownicą Hortonworks.
     2. W **Nazwa klasy Main** wybierz lub wprowadź nazwę klasy głównego. W tym samouczku nazwa jest **GroupByTest**.
 
-3. Wybierz **przesłać**. Dzienniki przesyłania zadań są wyświetlane w oknie narzędzia przesyłania platformy Spark.
+3. Wybierz pozycję **Prześlij**. Dzienniki przesyłania zadań są wyświetlane w oknie narzędzia przesyłania platformy Spark.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

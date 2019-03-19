@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00cde6f9d17eb44fefae10d8694a89abf51540a5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182066"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098682"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Obsługa wielu domen do federowania w usłudze Azure AD
 Poniższa dokumentacja zawiera wskazówki dotyczące sposobu używania wiele domen najwyższego poziomu i poddomeny, gdy federowania w usłudze Office 365 lub domeny usługi Azure AD.
@@ -69,7 +69,7 @@ Inną rzeczą, `-SupportMultipleDomain` jest jest ona sprawdza, czy system usłu
 
 Dlatego podczas uwierzytelniania w usłudze Azure AD lub Office 365, element IssuerUri token użytkownika jest używana do lokalizowania domeny w usłudze Azure AD.  Jeśli nie zostanie znalezione dopasowanie, uwierzytelnianie nie powiedzie się.
 
-Na przykład, jeśli nazwy UPN użytkownika jest bsimon@bmcontoso.com, elementu IssuerUri w tokenie, problemy z usług AD FS, zostanie ustawiony na http://bmcontoso.com/adfs/services/trust. Ten element będzie zgodna z konfiguracją usługi Azure AD i uwierzytelnienie zakończy się powodzeniem.
+Na przykład, jeśli nazwy UPN użytkownika jest bsimon@bmcontoso.com, elementu IssuerUri w tokenie, problemy z usług AD FS, zostanie ustawiony na <http://bmcontoso.com/adfs/services/trust>. Ten element będzie zgodna z konfiguracją usługi Azure AD i uwierzytelnienie zakończy się powodzeniem.
 
 Reguła oświadczenia niestandardowe, który implementuje tę logikę jest następująca:
 
