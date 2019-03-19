@@ -32,7 +32,7 @@
 ## [Harmonogram działania usługi Azure Scheduler](https://azure.microsoft.com/updates/?product=scheduler)
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/updates/)
 ## [Forum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Cennik](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizacje usług](https://azure.microsoft.com/updates/?product=scheduler)
