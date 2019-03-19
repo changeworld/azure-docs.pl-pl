@@ -4326,6 +4326,49 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
+                        <a href="#mixed">Rzeczywistość mieszana</a>
+                        <ul id="mixed" class="cardsA">
+                            <li>
+                                <a href="/azure/digital-twins/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/digital_twin.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Digital Twins</h3>
+                                                    <p>Tworzenie rozwiązań IoT do analizy przestrzennej następnej generacji</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/spatial-anchors/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/spatial_anchors.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Spatial Anchors</h3>
+                                                    <p>Tworzenie środowisk rzeczywistości mieszanej z orientacją przestrzenną dla wielu użytkowników</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#integration">Integracja</a>
                         <ul id="integration" class="cardsA">
                             <li>
@@ -5828,49 +5871,6 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 <div class="cardText">
                                                     <h3>21Vianet: Microsoft Azure — Chiny</h3>
                                                     <p>Kompilowanie i hostowanie aplikacji zgodnie z zasadami i przepisami dotyczącymi obsługi danych określonymi przez rząd w Chinach</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#mixed">Rzeczywistość mieszana</a>
-                        <ul id="mixed" class="cardsA">
-                            <li>
-                                <a href="/azure/digital-twins/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/digital_twin.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Digital Twins</h3>
-                                                    <p>Tworzenie rozwiązań IoT do analizy przestrzennej następnej generacji</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/spatial-anchors/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/spatial_anchors.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Spatial Anchors</h3>
-                                                    <p>Tworzenie środowisk rzeczywistości mieszanej z orientacją przestrzenną dla wielu użytkowników</p>
                                                 </div>
                                             </div>
                                         </div>
