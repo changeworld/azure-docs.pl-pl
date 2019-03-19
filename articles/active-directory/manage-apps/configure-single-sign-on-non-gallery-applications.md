@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e33ea311a064058e739bfcf6d63dc2d5462110
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7dfef0e27dd3e38e5a965f47a47619671a3127b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117663"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w usłudze Azure Active Directory
 
@@ -29,8 +29,8 @@ Te funkcje są również dostępne, zgodnie z umowy licencyjnej. Aby uzyskać wi
 
 - Samoobsługowa integracja dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjowanego przez dostawcę usług lub inicjowane przez dostawcę tożsamości)
 - Samoobsługowa integracja dowolnej aplikacji sieci web, który jest oparty na języku HTML strony logowania za pomocą [SSO oparte na hasłach](what-is-single-sign-on.md#password-based-sso)
-* Samoobsługowe połączenia aplikacji, które używają protokołu Standard SCIM do inicjowania obsługi użytkowników ([opisane w tym miejscu](use-scim-to-provision-users-and-groups.md))
-* Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sso)
+- Samoobsługowe połączenia aplikacji, które używają protokołu Standard SCIM do inicjowania obsługi użytkowników ([opisane w tym miejscu](use-scim-to-provision-users-and-groups.md))
+- Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sso)
 
 Może to obejmować nie tylko aplikacje SaaS, które używają, ale ma nie jeszcze została uruchomiona w galerii aplikacji usługi Azure AD, ale aplikacje sieci web innych firm, które Twoja organizacja została wdrożona do serwerów, które możesz kontrolować, zarówno w chmurze lub lokalnie.
 

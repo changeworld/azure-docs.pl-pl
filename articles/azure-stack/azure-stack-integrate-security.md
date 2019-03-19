@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247106"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009480"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integracja centrum danych usługi Azure Stack — przekazywania usługi syslog
 
@@ -61,10 +61,10 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 Parametry *SyslogServer zestaw* polecenia cmdlet:
 
-| Parametr | Opis | Type | Wymagany |
+| Parametr | Opis | Type | Wymagane |
 |---------|---------|---------|---------|
-|*ServerName* | Nazwa FQDN lub adres IP serwera syslog | Ciąg | tak|
-|*ServerPort* | Nasłuchuje numer portu serwera syslog | Ciąg | tak|
+|*ServerName* | Nazwa FQDN lub adres IP serwera syslog | String | tak|
+|*ServerPort* | Nasłuchuje numer portu serwera syslog | String | tak|
 |*Bez szyfrowania*| Wymuszaj na kliencie i wysłać komunikaty dziennika systemu w postaci zwykłego tekstu | Flaga | nie|
 |*SkipCertificateCheck*| Pomiń sprawdzanie poprawności certyfikatu oferowane przez serwer usługi syslog w trakcie początkowego uzgadniania TLS | Flaga | nie|
 |*SkipCNCheck*| Pomiń sprawdzanie poprawności wartości nazwy pospolitej certyfikatu oferowane przez serwer usługi syslog w trakcie początkowego uzgadniania TLS | Flaga | nie|
@@ -72,6 +72,7 @@ Parametry *SyslogServer zestaw* polecenia cmdlet:
 |*Usuń*| Usuń konfigurację serwera z klienta, a następnie Zatrzymaj przekazywania usługi syslog| Flaga | nie|
 
 Parametry *SyslogClient zestaw* polecenia cmdlet:
+
 | Parametr | Opis | Type |
 |---------|---------| ---------|
 | *pfxBinary* | plik PFX zawierający certyfikat, który ma być używany przez klienta jako tożsamości do uwierzytelniania względem serwera syslog  | Byte[] |
@@ -287,6 +288,7 @@ Tabela zdarzeń dla punktu końcowego odzyskiwania:
 |RecoveryEndpointClosed |1016|RecoveryEndpointClosedEvent|5|
 
 Tabela przedstawiciela ważności:
+
 | Ważność | Poziom | Wartość numeryczna |
 |----------|-------| ----------------|
 |0|Niezdefiniowane|Wartość: 0. Wskazuje, dzienniki na wszystkich poziomach|
@@ -306,6 +308,7 @@ Tabela przedstawiciela ważności:
 ```
 
 Tabela ważności dla zdarzeń Windows:
+
 | Wartości ważności CEF | Poziom zdarzenia Windows | Wartość numeryczna |
 |--------------------|---------------------| ----------------|
 |0|Niezdefiniowane|Wartość: 0. Wskazuje, dzienniki na wszystkich poziomach|
@@ -316,6 +319,7 @@ Tabela ważności dla zdarzeń Windows:
 |0|Pełne|Wartość: 5. Wskazuje, dzienniki na wszystkich poziomach|
 
 Niestandardowe rozszerzenia tabeli zdarzeń Windows w usłudze Azure Stack:
+
 | Nazwa rozszerzenia niestandardowe | Przykład zdarzenia Windows | 
 |-----------------------|---------|
 |MasChannel | System|
@@ -352,6 +356,7 @@ Niestandardowe rozszerzenia tabeli zdarzeń Windows w usłudze Azure Stack:
 ```
 
 Tabela ważność alertów:
+
 | Ważność | Poziom |
 |----------|-------|
 |0|Niezdefiniowane|
@@ -359,6 +364,7 @@ Tabela ważność alertów:
 |5|Ostrzeżenie|
 
 Niestandardowe rozszerzenia tabeli alerty utworzone w usłudze Azure Stack:
+
 | Nazwa rozszerzenia niestandardowe | Przykład | 
 |-----------------------|---------|
 |MasEventDescription|OPIS: Konto użytkownika \<TestUser\> została utworzona dla \<TestDomain\>. To potencjalne zagrożenie bezpieczeństwa. --KORYGOWANIA: Skontaktuj się z pomocą techniczną. Obsługa klienta jest wymagany, aby rozwiązać ten problem. Nie należy próbować rozwiązać ten problem, bez ich pomocy. Zanim utworzysz żądanie obsługi, należy uruchomić proces zbierania plików dziennika przy użyciu wskazówek z https://aka.ms/azurestacklogfiles |

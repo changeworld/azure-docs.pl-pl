@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1020e18894f4bb307ad14f780e76eab1df1314bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 810388a85e4ad339ff1444d21ac231fe4c00aeac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875977"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120537"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klaster usługi Service fabric
 Menedżer zasobów klastra usługi Service Fabric udostępnia kilka mechanizmów do opisywania klastra. Podczas wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usług uruchomionych w klastrze. Wymuszając te reguły istotne, również próbuje zoptymalizować zużycie zasobów w klastrze.
@@ -47,6 +47,7 @@ Należy pamiętać, że domen błędów są prawidłowo skonfigurowane, poniewa�
 Na poniższym rysunku, firma Microsoft kolor wszystkich jednostek, które przyczyniają się do domen błędów i wyświetlanie listy wszystkich różnych domen błędów, które powodują. W tym przykładzie mamy centrów danych ("DC"), stojakami ("R") i bloków ("B"). Wielkiego Jeśli każdy blok zawiera więcej niż jednej maszyny wirtualnej, mogą występować innej warstwy w hierarchii domeny błędów.
 
 <center>
+
 ![Węzły zorganizowane za pośrednictwem domeny błędów][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Najlepiej jest tą samą liczbą węzłów na każdym poziomie głębokość hie
 Jak wyglądają imbalanced domen? Na poniższym diagramie przedstawiono dwa układy innego klastra. W pierwszym przykładzie węzły są dystrybuowane równomiernie w domenach błędów. W drugim przykładzie jedną domenę błędów ma wiele więcej węzłów niż inne domeny błędów. 
 
 <center>
+
 ![Dwa układy innego klastra][Image2]
 </center>
 
@@ -72,6 +74,7 @@ Domeny uaktualnień są bardzo podobnie jak domen błędów, ale z kilka podstaw
 Na poniższym diagramie przedstawiono, że trzy domeny uaktualnienia są rozkładane na trzy domeny błędów. Zawiera także jedną możliwe umieszczanie dla trzech różnych replik usługi stanowej, gdzie każdy kończy się w różnych domenach błędów i domenach uaktualniania. Ta umieszczania umożliwia utraty domeny błędów w trakcie wykonywania uaktualnienia usługi i jeszcze jedną kopię kodu i danych.  
 
 <center>
+
 ![Umieszczanie o domenach błędów i uaktualnień][Image3]
 </center>
 
@@ -88,6 +91,7 @@ Nie ma żadnych rzeczywistych limitu całkowitą liczbę błędów i domenach ua
 - Model "rozłożone" lub "macierzy", gdzie domenach błędów i domenach uaktualniania tworzą macierz zwykle uruchomieniu dół ukośne podziały maszyn
 
 <center>
+
 ![Błędów i domeny uaktualnień układów][Image4]
 </center>
 
@@ -190,9 +194,9 @@ Podejście "kworum bezpieczne" zapewnia większą elastyczność niż podejście
 Ponieważ oba podejścia mają zalety i słabe strony, wprowadziliśmy adaptacyjne metody, która łączy tych dwóch strategii.
 
 > [!NOTE]
->Są to domyślne zachowanie, począwszy od usługi Service Fabric w wersji 6.2. 
->
-Funkcje adaptacyjnego sterowania podejście domyślnie używa logiki "maksymalną różnicę" i przełączniki logiki "kworum bezpieczne" tylko wtedy, gdy jest to konieczne. Menedżer zasobów klastra automatycznie wpadł na strategię, jakiej jest to konieczne, analizując konfiguracji klastra i usług. Dla danej usługi: *W przypadku TargetReplicaSetSize podzielny przez liczbę domen błędów i liczba domen uaktualnienia **i** liczba węzłów jest mniejsza niż lub równe (liczba domen błędów) * (liczba domen uaktualnienia), klastra Menedżer zasobów należy wykorzystać logiki "na podstawie kworum" dla tej usługi.* Mieć na uwadze, że Menedżer zasobów klastra będzie używać tej metody dla usług stanowych i bezstanowych, pomimo utraciła kworum, które nie są istotne w przypadku usług bezstanowych.
+> Są to domyślne zachowanie, począwszy od usługi Service Fabric w wersji 6.2. 
+> 
+> Funkcje adaptacyjnego sterowania podejście domyślnie używa logiki "maksymalną różnicę" i przełączniki logiki "kworum bezpieczne" tylko wtedy, gdy jest to konieczne. Menedżer zasobów klastra automatycznie wpadł na strategię, jakiej jest to konieczne, analizując konfiguracji klastra i usług. Dla danej usługi: *W przypadku TargetReplicaSetSize podzielny przez liczbę domen błędów i liczba domen uaktualnienia **i** liczba węzłów jest mniejsza niż lub równe (liczba domen błędów) * (liczba domen uaktualnienia), klastra Menedżer zasobów należy wykorzystać logiki "na podstawie kworum" dla tej usługi.* Mieć na uwadze, że Menedżer zasobów klastra będzie używać tej metody dla usług stanowych i bezstanowych, pomimo utraciła kworum, które nie są istotne w przypadku usług bezstanowych.
 
 Wróć do poprzedniego przykładu i przyjęto założenie, że klaster ma teraz 8 węzłów (klaster nadal jest skonfigurowany z pięcioma domenami błędów i 5 domenami uaktualnienia TargetReplicaSetSize usług hostowanych na będą nadal tego klastra, 5). 
 
@@ -344,6 +348,7 @@ Czasami (w rzeczywistości w większości przypadków) użytkownik chce, aby upe
 Aby obsługiwać te różne konfiguracje, Usługa Service Fabric ma najwyższej klasy pojęcie tagi, które mogą być stosowane do węzłów. Tagi te są nazywane **— właściwości węzła**. **Ograniczeniami dotyczącymi umieszczania** są instrukcje dołączone do poszczególnych usług, które wybierz co najmniej jedną właściwość węzła. Ograniczeniami dotyczącymi umieszczania definiują, gdzie należy uruchamiać usług. Zestaw ograniczeń jest otwarty — wszystkie pary klucz/wartość może pracować. 
 
 <center>
+
 ![Układ różnych obciążeń klastra][Image5]
 </center>
 
@@ -351,6 +356,7 @@ Aby obsługiwać te różne konfiguracje, Usługa Service Fabric ma najwyższej 
 Usługa Service Fabric definiuje niektóre domyślne właściwości węzła, które mogą być używane automatycznie bez użytkownika konieczności wcześniejszego definiowania ich. Domyślne właściwości zdefiniowane w każdym węźle to **NodeType** i **NodeName**. Dlatego na przykład można napisać jako ograniczenie umieszczania `"(NodeType == NodeType03)"`. Ogólnie wykryto NodeType, aby być jednym z najbardziej często używanych właściwości. Jest to przydatne, ponieważ odpowiada ona 1:1 z typem maszyny. Każdy typ maszyny odnosi się do typu obciążenia w tradycyjnych aplikacji n warstwowej.
 
 <center>
+
 ![Ograniczeniami dotyczącymi umieszczania i — właściwości węzła][Image6]
 </center>
 
@@ -474,6 +480,7 @@ Jeśli wyłączysz wszystkich zasobów *równoważenia*, Menedżer zasobów klas
 Podczas wykonywania Menedżer zasobów klastra śledzi pozostałe pojemności w klastrze, a w węzłach. Aby móc śledzić zmiany pojemności Menedżer zasobów klastra odejmuje użycia każdej z tych usług z pojemności węzła, gdzie usługa jest uruchamiana. Dzięki tym informacjom Menedżer zasobów klastra usługi Service Fabric można ustalić gdzie umieścić lub Przenieś repliki tak, aby węzły nie są kierowane przez pojemność.
 
 <center>
+
 ![Węzły klastra i pojemność][Image7]
 </center>
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 357cf832f8878364965c8d8a85d7af8c5a2bc21c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a0ec87f2afb8e2a18727fe6dd62547e6ad6ecfac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992091"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841059"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Pobierz token testowy, uwzględniając ograniczenia tokenu wybrane w zasadach au
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-Możesz przetestować strumień za pomocą usługi [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+Możesz przetestować strumień za pomocą usługi [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ## <a id="client_request"></a>Jak klient poprosić o klucz usługi dostarczania kluczy
 W poprzednim kroku tworzony jest adres URL, który wskazuje plik manifestu. Twój klient musi wyodrębnić wymaganych informacji z przesyłania strumieniowego plików manifestu, aby wysyłać żądania do usługi dostarczania kluczy.

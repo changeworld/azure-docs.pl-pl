@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002157"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Tworzenie zadania do śledzenia zmian w plikach na komputerze lokalnym obserwatora usługi Azure Automation
 
@@ -89,8 +89,8 @@ Zadanie obserwatora zawiera dwie części. Obserwator i akcji. Obserwator jest u
 1. Wybierz **Skonfiguruj akcję** i wybierz element runbook "Proces NewFile".
 1. Wprowadź następujące wartości parametrów:
 
-   ***EVENTDATA** — pozostaw to pole puste. Dane są przekazywane w z elementu runbook obserwatora.  
-   ***Parametry uruchomieniowe** — pozostaw Azure zgodnie z tego elementu runbook jest uruchamiany w usłudze Automation.
+   * **EVENTDATA** — pozostaw to pole puste. Dane są przekazywane w z elementu runbook obserwatora.  
+   * **Parametry uruchomieniowe** — pozostaw Azure zgodnie z tego elementu runbook jest uruchamiany w usłudze Automation.
 
 1. Kliknij przycisk **OK**, a następnie wybierz pozycję Tak, aby wrócić do strony obserwatora.
 1. Kliknij przycisk **OK** do tworzenia zadania obserwatora.

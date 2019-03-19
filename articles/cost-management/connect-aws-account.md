@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 411a3d606ac8ec2f262ec9a1aabac7b74ccd110a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098481"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010936"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Nawiązać połączenie z kontem usług Amazon Web Services
 
@@ -45,9 +45,9 @@ Pierwszym krokiem jest uzyskanie hasła unikatowego połączenia w portalu Cloud
 1. Zaloguj się do konsoli usług AWS na https://console.aws.amazon.com/iam/home i wybierz **role**.
 2. Kliknij przycisk **Utwórz rolę** , a następnie wybierz **konta usług AWS innego**.
 3. W **Accountid** pole, Wklej `432263259397`. Ten identyfikator konta jest konto modułu zbierającego dane Cloudyn przypisane w usługach AWS z usługą Cloudyn. Użyj dokładnie pokazany identyfikator konta.
-4. Obok pozycji **opcje**, wybierz opcję **wymagają Identyfikatora zewnętrznego**. Wklej Twoja unikatowa wartość, która wcześniej skopiowany z **Identyfikatora zewnętrznego** pola w rozwiązaniu Cloudyn. Następnie kliknij przycisk **dalej: uprawnienia**.  
+4. Obok pozycji **opcje**, wybierz opcję **wymagają Identyfikatora zewnętrznego**. Wklej Twoja unikatowa wartość, która wcześniej skopiowany z **Identyfikatora zewnętrznego** pola w rozwiązaniu Cloudyn. Następnie kliknij przycisk **dalej: Permissions** (Dalej: uprawnienia).  
     ![Wklej Identyfikator zewnętrzny z platformy Cloudyn, na stronie Tworzenie roli](./media/connect-aws-account/create-role01.png)
-5. W obszarze **Dołącz zasady uprawnień**w **typ zasad** filtru pole wyszukiwania, typ `ReadOnlyAccess`, wybierz opcję **ReadOnlyAccess**, następnie kliknij przycisk **dalej: Przegląd**.  
+5. W obszarze **Dołącz zasady uprawnień**w **typ zasad** filtru pole wyszukiwania, typ `ReadOnlyAccess`, wybierz opcję **ReadOnlyAccess**, następnie kliknij przycisk **dalej: Review** (Dalej: przegląd).  
     ![Wybierz tylko do odczytu na liście nazwy zasad](./media/connect-aws-account/readonlyaccess.png)
 6. Na stronie Przegląd upewnij się, wybrane opcje są poprawne i wpisz **nazwy roli**. Na przykład *Azure-Cost-Mgt*. Wprowadź **opis roli**. Na przykład _przypisania roli na platformie Cloudyn_, następnie kliknij przycisk **tworzenia ról**.
 7. W **role** listy, kliknij rolę został utworzony i skopiuj **ARN roli** wartości na stronie podsumowania. Użyj wartości ARN roli (nazwa zasobu Amazon) później, po zarejestrowaniu konfigurację w rozwiązaniu Cloudyn.  
@@ -80,10 +80,10 @@ Poniższe sekcje prowadzą użytkownika przez proces tworzenia użytkownika tylk
 1. Zaloguj się do konsoli usług AWS na https://console.aws.amazon.com/iam/home i wybierz **użytkowników**.
 2. Kliknij przycisk **Dodaj użytkownika**.
 3. W **nazwa_użytkownika** wpisz nazwę użytkownika.
-4. Dla **dostęp typu**, wybierz opcję **dostęp programowy** i kliknij przycisk **dalej: uprawnienia**.  
+4. Dla **dostęp typu**, wybierz opcję **dostęp programowy** i kliknij przycisk **dalej: Uprawnienia**.  
     ![Wprowadź nazwę użytkownika na stronie Dodawanie użytkownika](./media/connect-aws-account/add-user01.png)
 5. Uprawnienia, można wybrać **Dołącz istniejące zasady bezpośrednio**.
-6. W obszarze **Dołącz zasady uprawnień**w **typ zasad** filtru pole wyszukiwania, typ `ReadOnlyAccess`, wybierz opcję **ReadOnlyAccess**, a następnie kliknij przycisk **dalej : Przejrzyj**.  
+6. W obszarze **Dołącz zasady uprawnień**w **typ zasad** filtru pole wyszukiwania, typ `ReadOnlyAccess`, wybierz opcję **ReadOnlyAccess**, a następnie kliknij przycisk **dalej : Review** (Dalej: przegląd).  
     ![Wybierz ReadOnlyAccess, aby ustawić uprawnienia dla użytkownika](./media/connect-aws-account/set-permission-for-user.png)
 7. Na stronie Przegląd upewnij się, wybrane opcje są poprawne, a następnie kliknij przycisk **Utwórz użytkownika**.
 8. Na stronie pełny dostęp do kluczowych identyfikator i klucz tajny klucz dostępu są wyświetlane. Te informacje umożliwiają konfigurowanie rejestracji w rozwiązaniu Cloudyn.
@@ -127,11 +127,11 @@ Możesz utworzyć przedział S3 do przechowywania szczegółowych informacji dot
 6. Na stronie Przegląd kliknij **zasobnika Utwórz**. Jest wyświetlana na liście przedziału.
 7. Kliknij przedział, który został utworzony, a następnie wybierz pozycję **uprawnienia** , a następnie wybierz pozycję **zasad zasobnika**. Zostanie otwarty Edytor zasad przedziału.
 8. Skopiuj poniższy przykład kodu JSON i wklej go w edytorze zasad przedziału.
-  - Zastąp `<BillingBucketName>` nazwą Twojego przedział S3.
-  - Zastąp `<ReadOnlyUserOrRole>` z rolą lub ARN użytkownika, który skopiowany wcześniej.
+   - Zastąp `<BillingBucketName>` nazwą Twojego przedział S3.
+   - Zastąp `<ReadOnlyUserOrRole>` z rolą lub ARN użytkownika, który skopiowany wcześniej.
 
-  ```json
-  {
+   ```json
+   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
     "Statement": [
@@ -169,8 +169,8 @@ Możesz utworzyć przedział S3 do przechowywania szczegółowych informacji dot
             "Resource": "arn:aws:s3:::<BillingBucketName>/*"
         }
     ]
-  }
-  ```
+   }
+   ```
 
 9. Kliknij pozycję **Zapisz**.  
     ![Kliknij przycisk Zapisz w edytorze zasad zasobnika](./media/connect-aws-account/bucket-policy-editor.png)

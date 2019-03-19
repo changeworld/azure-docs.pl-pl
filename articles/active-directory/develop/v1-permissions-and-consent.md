@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7b2de1ae56e554013d9a5c574bb231164b80f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207300"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103166"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 1.0
 
@@ -102,11 +102,11 @@ Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacj
 - Zasoby powinny w sposób jawny osobno definiować uprawnienia `Read` i `ReadWrite`.
 - Zasoby powinny oznaczyć wszystkie uprawnienia umożliwiające dostęp do danych przekraczający granice użytkownika jako uprawnienia `Admin`.
 - Nazwy zasobów powinny być zgodne ze wzorcem `Subject.Permission[.Modifier]`, gdzie:
-    - `Subject` odpowiada za pomocą typu danych, który jest dostępny
-    - `Permission` odnosi się do akcji, którą użytkownik może potrwać od danych
-    - `Modifier` Opcjonalnie służy do opisywania uprawnienia innym specjalizacje
+  - `Subject` odpowiada za pomocą typu danych, który jest dostępny
+  - `Permission` odnosi się do akcji, którą użytkownik może potrwać od danych
+  - `Modifier` Opcjonalnie służy do opisywania uprawnienia innym specjalizacje
     
     Na przykład:
-    * Mail.Read — umożliwia użytkownikom odczytywanie wiadomości e-mail.
-    * Mail.ReadWrite — umożliwia użytkownikom odczytywanie i pisanie wiadomości e-mail.
-    * Mail.ReadWrite.All — umożliwia administratorowi lub użytkownikom dostęp do wszystkich wiadomości w organizacji.
+  - Mail.Read — umożliwia użytkownikom odczytywanie wiadomości e-mail.
+  - Mail.ReadWrite — umożliwia użytkownikom odczytywanie i pisanie wiadomości e-mail.
+  - Mail.ReadWrite.All — umożliwia administratorowi lub użytkownikom dostęp do wszystkich wiadomości w organizacji.

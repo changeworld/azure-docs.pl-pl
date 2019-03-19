@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 961103b787cf42170fc3022fc33d8eb218b7a4bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984260"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998337"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy w HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -126,7 +126,7 @@ RunHiveScript ma kilka zmiennych. Możesz przekazać wartości, gdy prześlesz z
 |Zmienne przepływu pracy|Opis|
 |---|---|
 |${jobTracker}|Określa adres URL śledzenia zadań usługi Hadoop. Użyj **jobtrackerhost:9010** w HDInsight w wersji 3.0 i 2.1.|
-|${nameNode}|Określa adres URL węzła nazwa usługi Hadoop. Użyj domyślnego adresu systemu plików, na przykład *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+|${nameNode}|Określa adres URL węzła nazwa usługi Hadoop. Użyj domyślnego adresu systemu plików, na przykład *wasb: / /&lt;containerName&gt;\@&lt;storageAccountName&gt;. blob.core.windows.net*.|
 |${queueName}|Określa nazwę kolejki, który zadanie jest przesyłany do usługi. Użyj **domyślne**.|
 
 |Hive zmiennej akcji|Opis|

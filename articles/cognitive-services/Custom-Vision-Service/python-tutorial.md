@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 11/2/2018
 ms.author: areddish
-ms.openlocfilehash: 551d713d6cc5c6ae8024d4784dbc3a8cca79b401
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 66fc773dd354f80428d6fd65906610b901260a59
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854833"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407038"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Szybki start: Tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK języka Python
 
@@ -49,7 +49,7 @@ Dodaj następujący kod do skryptu, aby utworzyć nowy projekt Custom Vision Ser
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageUrlCreateEntry
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
 
 ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 
@@ -84,14 +84,28 @@ Aby dodać przykładowe obrazy do projektu, po utworzeniu tagów wstaw następuj
 ```Python
 base_image_url = "<path to project>"
 
-print ("Adding images...")
-for image_num in range(1,10):
-    image_url = base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ hemlock_tag.id ] ) ])
+print("Adding images...")
 
-for image_num in range(1,10):
-    image_url = base_image_url + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ cherry_tag.id ] ) ])
+image_entry = lambda image_path, tag_id: ImageFileCreateEntry(
+    name=image_path.split("/")[-1], contents=image_path, tag_ids=[tag_id]
+)
+
+image_list = [
+    image_entry(
+        base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num),
+        hemlock_tag.id,
+    )
+    for image_num in range(1, 10)
+] + [
+    image_entry(
+        base_image_url
+        + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num),
+        cherry_tag.id,
+    )
+    for image_num in range(1, 10)
+]
+
+trainer.create_images_from_files(project.id, images=image_list)
 ```
 
 ### <a name="train-the-classifier"></a>Szkolenie klasyfikatora
@@ -157,7 +171,7 @@ Możesz następnie sprawdzić, czy obraz testowy (znajdujący się w folderze **
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz wiesz już, jak wykonać każdy krok procesu klasyfikacji obrazów przy użyciu kodu. W tym przykładzie jest wykonywana jedna iteracja szkolenia, ale często trzeba szkolić i testować model wiele razy, aby zwiększyć jego dokładność.
 

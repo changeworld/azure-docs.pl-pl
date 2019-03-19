@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3cd6a299cdad93cf9e403cb04a4b7dfda85cbb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 19e46c77d3204cc6cd037e5ef8252aa7598d624d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją BitaBIZ
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji BitaBIZ z usługą Azure AD, musisz dod
 
 **Aby dodać aplikację BitaBIZ z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -150,7 +150,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją BitaBIZ, 
 
     b. W polu tekstowym **Azure AD Sign On URL** (Adres URL logowania usługi Azure AD) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. W polu tekstowym **Azure AD SAML Entity ID** (Identyfikator jednostki SAML usługi Azure AD) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Azure AD SAML Entity ID** (Identyfikator jednostki SAML usługi Azure AD) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
 
     d. Otwórz pobrany plik **Certificate(Base64)** w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Azure AD Signing Certificate (Base64 encoded)** (Certyfikat podpisywania usługi Azure AD (zakodowany algorytmem Base64)).
 
@@ -178,7 +178,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -240,7 +240,7 @@ W przypadku aplikacji BitaBIZ aprowizowanie jest zadaniem ręcznym.
 
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak Simon.
 
-    d. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. Brittasimon@contoso.com.
+    c. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. Brittasimon@contoso.com.
 
     d. Wybierz datę w polu **Date of employment** (Data zatrudnienia).
 
@@ -253,7 +253,7 @@ W przypadku aplikacji BitaBIZ aprowizowanie jest zadaniem ręcznym.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka BitaBIZ w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji BitaBIZ, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

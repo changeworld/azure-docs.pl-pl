@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2019
 ms.author: monhaber
-ms.openlocfilehash: d92d9c444985989cdec3e94840ff21f4a79fe3ad
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cbda94b8ceeaf7a225117e1ca73445135a32a243
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104928"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088999"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.
@@ -60,33 +60,33 @@ Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 ### <a name="configure-a-new-application-control-policy"></a>Konfigurowanie nowych zasad sterowania aplikacjami
 1. Kliknij kartę **Zalecane**, aby uzyskać listę grup z zaleceniami dotyczącymi sterowania aplikacjami:
 
-  ![Zalecane](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
+   ![Zalecane](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-  Lista zawiera:
+   Lista zawiera:
 
-  - **NAZWA**: nazwa subskrypcji i grupy
-  - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
-  - **Stan**: stan zaleceń
-  - **WAŻNOŚĆ**: poziom ważności zaleceń
+   - **NAZWA**: nazwa subskrypcji i grupy
+   - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
+   - **Stan**: stan zaleceń
+   - **WAŻNOŚĆ**: poziom ważności zaleceń
 
 2. Kliknij grupę, aby otworzyć **Utwórz reguły sterowania aplikacjami** opcji.
 
-  ![Reguły sterowania aplikacjami](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   ![Reguły sterowania aplikacjami](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
 3. W **wybierz maszyny wirtualne**zapoznaj się z listą zalecanych maszyn wirtualnych i usuń zaznaczenie pola wyboru dowolne czy chcesz zastosować zasady listy dozwolonych aplikacji. Następnie zostaną wyświetlone dwie listy:
 
-  - **Zalecane aplikacje**: listę aplikacji, które są często na maszynach wirtualnych w ramach tej grupy, a następnie zaleca się, aby mogła działać.
-  - **Więcej aplikacji**: Lista aplikacji, które są rzadko na maszynach wirtualnych w ramach tej grupy lub które są znane jako wykorzystania (zobacz informacje poniżej) i zalecane do przeglądu.
+   - **Zalecane aplikacje**: listę aplikacji, które są często na maszynach wirtualnych w ramach tej grupy, a następnie zaleca się, aby mogła działać.
+   - **Więcej aplikacji**: Lista aplikacji, które są rzadko na maszynach wirtualnych w ramach tej grupy lub które są znane jako wykorzystania (zobacz informacje poniżej) i zalecane do przeglądu.
 
 4. Dokonaj przeglądu aplikacji na każdej liście i wyczyść zaznaczenie pól wyboru tych, które nie mają być stosowane. Każda lista zawiera takie elementy, jak:
 
-  - **Nazwa**: informacje o certyfikacie lub Pełna ścieżka aplikacji
-  - **TYPY PLIKÓW**: typ pliku aplikacji. Może to być plik EXE, skrypt, MSI lub permutacji dowolnego z tych typów.
-  - **Możliwe do wykorzystania**: ikona ostrzeżenia wskazuje, czy określona aplikacja może wykorzystać przez osobę atakującą do pominięcia rozwiązanie do listy dozwolonych aplikacji. Zaleca się dokonanie przeglądu tych aplikacji przed ich zatwierdzeniem.
-  - **UŻYTKOWNICY**: lista użytkowników, którym zezwala się na uruchomienie aplikacji
+   - **Nazwa**: informacje o certyfikacie lub Pełna ścieżka aplikacji
+   - **TYPY PLIKÓW**: typ pliku aplikacji. Może to być plik EXE, skrypt, MSI lub permutacji dowolnego z tych typów.
+   - **Możliwe do wykorzystania**: ikona ostrzeżenia wskazuje, czy określona aplikacja może wykorzystać przez osobę atakującą do pominięcia rozwiązanie do listy dozwolonych aplikacji. Zaleca się dokonanie przeglądu tych aplikacji przed ich zatwierdzeniem.
+   - **UŻYTKOWNICY**: lista użytkowników, którym zezwala się na uruchomienie aplikacji
 
 5. Po wybraniu opcji wybierz przycisk **Utwórz**. <br>
-Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworzy odpowiednie zasady na podstawie rozwiązania umieszczania na białej liście wbudowanej aplikacji dostępnego na serwerach Windows (funkcji AppLocker).
+   Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworzy odpowiednie zasady na podstawie rozwiązania umieszczania na białej liście wbudowanej aplikacji dostępnego na serwerach Windows (funkcji AppLocker).
 
 > [!NOTE]
 > - Usługa Security Center używa danych z co najmniej dwóch tygodni w celu utworzenia planu bazowego i przygotowania unikatowych zaleceń dla grup maszyn wirtualnych. Nowi klienci usługi Security Center w warstwie Standardowa powinni spodziewać się, że najpierw ich grupy maszyn wirtualnych pojawią się na karcie *Brak zaleceń*.
@@ -98,23 +98,23 @@ Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworz
 
 1. Aby edytować i monitorować grupę, skonfigurowano zasady listy dozwolonych aplikacji, wróć do **funkcje adaptacyjnego sterowania aplikacjami** strony i wybierz **SKONFIGUROWANE** w obszarze **grupy maszyn wirtualnych**:
 
-  ![Grupy](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+   ![Grupy](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
 
-  Lista zawiera:
+   Lista zawiera:
 
-  - **Nazwa**: Nazwa subskrypcji i grupy
-  - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
-  - **Tryb**: Tryb inspekcji będą rejestrowane próby uruchomienia aplikacji spoza; Wymuszanie będą nie Pozwól na uruchamianie aplikacji — na liście dozwolonych
-  - **Alerty**: wszelkie bieżące naruszenia
+   - **Nazwa**: Nazwa subskrypcji i grupy
+   - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
+   - **Tryb**: Tryb inspekcji będą rejestrowane próby uruchomienia aplikacji spoza; Wymuszanie będą nie Pozwól na uruchamianie aplikacji — na liście dozwolonych
+   - **Alerty**: wszelkie bieżące naruszenia
 
 2. Kliknij grupę, aby wprowadzić zmiany w **edytowanie zasad kontroli aplikacji** strony.
 
-  ![Ochrona](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+   ![Ochrona](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
 
 3. W obszarze **Tryb ochrony** do wyboru są następujące opcje:
 
-  - **Inspekcja**: w tym trybie rozwiązanie sterowania aplikacjami nie będzie wymuszać reguł, a jedynie prowadzić inspekcję działań na chronionych maszynach wirtualnych. Jest to zalecane w scenariuszach, w których trzeba najpierw przyjrzeć się ogólnym zachowaniom, zanim zablokuje się uruchamianie aplikacji na docelowej maszynie wirtualnej.
-  - **Wymuszanie**: w tym trybie rozwiązanie sterowania aplikacjami będzie wymuszać reguły, a aplikacje, które nie powinny być uruchamiane, będą blokowane.
+   - **Inspekcja**: w tym trybie rozwiązanie sterowania aplikacjami nie będzie wymuszać reguł, a jedynie prowadzić inspekcję działań na chronionych maszynach wirtualnych. Jest to zalecane w scenariuszach, w których trzeba najpierw przyjrzeć się ogólnym zachowaniom, zanim zablokuje się uruchamianie aplikacji na docelowej maszynie wirtualnej.
+   - **Wymuszanie**: w tym trybie rozwiązanie sterowania aplikacjami będzie wymuszać reguły, a aplikacje, które nie powinny być uruchamiane, będą blokowane.
 
    > [!NOTE]
    > -  **Wymuszanie** tryb ochrony jest wyłączona do odwołania.
@@ -124,14 +124,14 @@ Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworz
 4. W obszarze **rozszerzenia zasad**, Dodaj dowolną ścieżkę aplikacji, który chcesz zezwolić. Po dodaniu tych ścieżek, usługa Security Center zaktualizuje zasady umieszczania na białej liście aplikacji na maszynach wirtualnych w ramach wybranej grupy maszyn wirtualnych i tworzy odpowiednie zasady dla tych aplikacji, oprócz reguł, które znajdują się już w miejscu.
 
 5. Przejrzyj bieżące naruszenia na liście **ostatnie alerty** sekcji. Kliknij pozycję w każdym wierszu, aby przejść do **alerty** strony w usłudze Azure Security Center, a następnie Wyświetl wszystkie alerty, które zostały wykryte przez usługę Azure Security Center na skojarzonych maszynach wirtualnych.
-  - **Alerty**: naruszenie, które zostały zarejestrowane.
-  - **Nie. maszyn wirtualnych**: liczba maszyn wirtualnych przy użyciu tego typu alertu.
+   - **Alerty**: naruszenie, które zostały zarejestrowane.
+   - **Nie. maszyn wirtualnych**: liczba maszyn wirtualnych przy użyciu tego typu alertu.
 
 6. W obszarze **reguł umieszczania na białej liście wydawców**, **reguły umieszczania na białej liście ścieżek**, i **wyznaczania wartości skrótu listy reguł elementów dozwolonych** widać, które są obecnie dostępne reguły listy dozwolonych aplikacji skonfigurowane na maszynach wirtualnych w obrębie grupy, zgodnie z typów kolekcji reguł. Dla każdej reguły widoczne:
 
-  - **Reguła**: Określone parametry zgodnie z którymi aplikacja jest badany przez funkcję AppLocker w celu ustalenia, jeśli aplikacja może być uruchomiona.
-  - **Typ pliku**: Typy plików, które są objęte daną regułę. Może to być dowolny z następujących czynności: Plik EXE, skrypt, MSI lub permutacji dowolnego z tych typów plików.
-  - **Użytkownicy**: Nazwa lub liczba użytkowników, którzy mogą uruchamiać aplikację, która jest objęta reguły umieszczania na białej liście aplikacji.
+   - **Reguła**: Określone parametry zgodnie z którymi aplikacja jest badany przez funkcję AppLocker w celu ustalenia, jeśli aplikacja może być uruchomiona.
+   - **Typ pliku**: Typy plików, które są objęte daną regułę. Może to być dowolny z następujących czynności: Plik EXE, skrypt, MSI lub permutacji dowolnego z tych typów plików.
+   - **Użytkownicy**: Nazwa lub liczba użytkowników, którzy mogą uruchamiać aplikację, która jest objęta reguły umieszczania na białej liście aplikacji.
 
    ![Reguły umieszczania na liście dozwolonych](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 

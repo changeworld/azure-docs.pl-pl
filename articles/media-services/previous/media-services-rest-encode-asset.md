@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 608abd09227014513a0ad358d7a2c225b5ab2b97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863376"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Jak kodować zasoby przy użyciu usługi Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AM
 >
 > Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora do tworzenia aplikacji interfejsu API REST usługi Media Services](media-services-rest-how-to-use.md).
 >
-> Gdy przy użyciu formatu JSON i określając do użycia **__metadata** — słowo kluczowe w żądaniu (na przykład, aby odwołanie obiektu połączonego), należy ustawić **Akceptuj** nagłówka do [format JSON trybu informacji pełnej](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
+> Gdy przy użyciu formatu JSON i określając do użycia **__metadata** — słowo kluczowe w żądaniu (na przykład, aby odwołanie obiektu połączonego), należy ustawić **Akceptuj** nagłówka do [format JSON trybu informacji pełnej](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
 >
 >
 
@@ -151,7 +151,7 @@ Aby włączyć tworzenie łańcuchów zadań:
 * Musi istnieć co najmniej jedno zadanie, których dane wejściowe znajdują się dane wyjściowe innego zadania w ramach zadania.
 
 ## <a name="use-odata-batch-processing"></a>Przetwarzanie wsadowe OData
-Poniższy przykład pokazuje, jak używać przetwarzaniem wsadowym OData do tworzenia zadań i podzadań. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Poniższy przykład pokazuje, jak używać przetwarzaniem wsadowym OData do tworzenia zadań i podzadań. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx

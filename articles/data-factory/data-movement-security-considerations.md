@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 03976d321a92f6049d06cea88604618d5a2dee67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532274"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099988"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,7 @@ Mimo, że usługi Data Factory jest dostępna tylko w kilku regionach, usługi d
 Usługa Azure Data Factory nie przechowuje żadnych danych, z wyjątkiem poświadczeń połączonej usługi dla magazynami danych w chmurze, które są szyfrowane przy użyciu certyfikatów. Dzięki usłudze Data Factory, można tworzyć oparte na danych przepływy pracy do aranżowania przenoszenia danych między [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats)i przetwarzania danych przy użyciu [usług obliczeniowych](compute-linked-services.md) w innych regionach lub w w środowisku lokalnym. Można również monitorować i zarządzać przepływów pracy za pomocą zestawów SDK i usługi Azure Monitor.
 
 Fabryka danych jest certyfikowany dla:
+
 | **[Certyfikacja STAR CSA](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |

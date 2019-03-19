@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 703bf7425962ddcb5e7566f99c461ca37d237b68
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 14d763126cccadf8042da79b20d15e5c93a8ce62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868429"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094181"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -28,9 +28,9 @@ Jeśli występują problemy podczas włączania ochrony dla maszyn wirtualnych f
 3. Sprawdź, czy usługa zarządzania maszynami wirtualnymi funkcji Hyper-V jest uruchomiony na hostach funkcji Hyper-V.
 4. Sprawdź, czy problemy, które pojawiają się w funkcji Hyper-V-VMMS\Admin logowanie do maszyny Wirtualnej. Ten dziennik znajduje się w **Dzienniki aplikacji i usług** > **Microsoft** > **Windows**.
 5. Na maszynie Wirtualnej gościa Sprawdź, czy usługa WMI jest włączony i jest dostępny.
-  - [Dowiedz się więcej o](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) podstawowe testy usługi WMI.
-  - [Rozwiązywanie problemów z](https://aka.ms/WMiTshooting) WMI.
-  - [Rozwiązywanie problemów z](https://technet.microsoft.com/library/ff406382.aspx#H22) problemów za pomocą skryptów usługi WMI i usługi.
+   - [Dowiedz się więcej o](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) podstawowe testy usługi WMI.
+   - [Rozwiązywanie problemów z](https://aka.ms/WMiTshooting) WMI.
+   - [Rozwiązywanie problemów z](https://technet.microsoft.com/library/ff406382.aspx#H22) problemów za pomocą skryptów usługi WMI i usługi.
 6. Na maszynie Wirtualnej gościa upewnij się, że działa najnowszą wersję usług integracji.
     - [Sprawdź](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) czy masz najnowszą wersję.
     - [Zachowaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) usługi integracji są aktualne.
@@ -41,9 +41,9 @@ Rozwiązywanie problemów z replikacją wstępnych i bieżących w następujący
 
 1. Upewnij się, że używasz [najnowszej wersji](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) usługi Site Recovery.
 2. Sprawdź, czy replikacja została wstrzymana:
-  - Sprawdź stan kondycji maszyny Wirtualnej w konsoli Menedżera funkcji Hyper-V.
-  - Ważne jest, kliknij prawym przyciskiem myszy maszynę Wirtualną > **replikacji** > **Wyświetl kondycję replikacji**.
-  - Jeżeli replikacja została wstrzymana, kliknij przycisk **Wznów replikację**.
+   - Sprawdź stan kondycji maszyny Wirtualnej w konsoli Menedżera funkcji Hyper-V.
+   - Ważne jest, kliknij prawym przyciskiem myszy maszynę Wirtualną > **replikacji** > **Wyświetl kondycję replikacji**.
+   - Jeżeli replikacja została wstrzymana, kliknij przycisk **Wznów replikację**.
 3. Sprawdź, czy wymagane usługi są uruchomione. Jeśli nie, uruchom je ponownie.
     - Jeśli przeprowadzasz replikację funkcji Hyper-V bez programu VMM, upewnij się, że te usługi są uruchomione na hoście funkcji Hyper-V:
         - Usługa zarządzania maszynami wirtualnymi
@@ -65,10 +65,10 @@ Ograniczenia przepustowości sieci, mogą mieć wpływ na replikację. Rozwiązy
 2. Uruchom [planista wdrażania usługi program profilujący](hyper-v-deployment-planner-run.md).
 3. Po uruchomieniu profilera, postępuj zgodnie z [przepustowości](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) i [magazynu](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) zalecenia.
 4. Sprawdź [ograniczenia współczynnika zmian danych](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits). Jeśli widzisz wysokim współczynniku zmian na maszynie Wirtualnej danych, wykonaj następujące czynności:
-  - Sprawdź, jeśli Twoja maszyna wirtualna jest oznaczana do ponownej synchronizacji.
-  - Postępuj zgodnie z [te kroki](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) do badania źródła danych churn.
-  - Postęp dokonany w może wystąpić, gdy pliki dziennika HRL przekracza 50% wolnego miejsca. Jeśli jest to problem, należy udostępnić więcej miejsca w magazynie dla wszystkich maszyn wirtualnych, na których występuje problem.
-  - Sprawdź, czy replikacja nie jest wstrzymane. Jeśli tak jest, kontynuuje zapisywanie zmian w pliku hrl, który może przyczynić się do zwiększenia rozmiaru.
+   - Sprawdź, jeśli Twoja maszyna wirtualna jest oznaczana do ponownej synchronizacji.
+   - Postępuj zgodnie z [te kroki](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) do badania źródła danych churn.
+   - Postęp dokonany w może wystąpić, gdy pliki dziennika HRL przekracza 50% wolnego miejsca. Jeśli jest to problem, należy udostępnić więcej miejsca w magazynie dla wszystkich maszyn wirtualnych, na których występuje problem.
+   - Sprawdź, czy replikacja nie jest wstrzymane. Jeśli tak jest, kontynuuje zapisywanie zmian w pliku hrl, który może przyczynić się do zwiększenia rozmiaru.
  
 
 ## <a name="critical-replication-state-issues"></a>Problemy dotyczące stanu replikacji krytycznej
@@ -91,17 +91,17 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 
 1. Sprawdź, czy najnowszej wersji usług Integration services jest zainstalowana i uruchomiona.  Sprawdź, czy aktualizacja jest dostępna, uruchamiając następujące polecenie w wierszu programu PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V: **get-vm | wybierz nazwę, stan, IntegrationServicesState**.
 2. Sprawdź, czy usługi VSS są uruchomione i dobrej kondycji:
-    - Aby sprawdzić, usługi, zaloguj się do maszyny Wirtualnej gościa. Następnie otwórz wiersz polecenia administratora i uruchom następujące polecenia, aby sprawdzić, czy wszystkie składniki zapisywania usługi VSS są w dobrej kondycji.
-        - **Vssadmin list writers**
-        - **Vssadmin list shadows**
-        - **Vssadmin lista dostawców**
-    - Sprawdź dane wyjściowe. Jeśli moduły zapisujące są w stanie niepowodzenia, wykonaj następujące czynności:
-        - Sprawdź dziennik zdarzeń aplikacji na maszynie Wirtualnej, błędy operację usługi VSS.
-    - Ponowne uruchomienie tych usług, skojarzone ze składnikiem zapisywania nie powiodło się:
-        - Kopiowanie woluminów w tle
-         - Dostawcy usługi VSS programu usługi Azure Site Recovery
-    - Po wykonaniu tej czynności, poczekaj kilka godzin, jeśli migawki spójne z aplikacji są generowane pomyślnie.
-    - W ostateczności spróbuj wykonać ponowny rozruch maszyny Wirtualnej. To może rozwiązać usług, które są w stanie odpowiadać.
+   - Aby sprawdzić, usługi, zaloguj się do maszyny Wirtualnej gościa. Następnie otwórz wiersz polecenia administratora i uruchom następujące polecenia, aby sprawdzić, czy wszystkie składniki zapisywania usługi VSS są w dobrej kondycji.
+       - **Vssadmin list writers**
+       - **Vssadmin list shadows**
+       - **Vssadmin lista dostawców**
+   - Sprawdź dane wyjściowe. Jeśli moduły zapisujące są w stanie niepowodzenia, wykonaj następujące czynności:
+       - Sprawdź dziennik zdarzeń aplikacji na maszynie Wirtualnej, błędy operację usługi VSS.
+   - Ponowne uruchomienie tych usług, skojarzone ze składnikiem zapisywania nie powiodło się:
+     - Kopiowanie woluminów w tle
+       - Dostawcy usługi VSS programu usługi Azure Site Recovery
+   - Po wykonaniu tej czynności, poczekaj kilka godzin, jeśli migawki spójne z aplikacji są generowane pomyślnie.
+   - W ostateczności spróbuj wykonać ponowny rozruch maszyny Wirtualnej. To może rozwiązać usług, które są w stanie odpowiadać.
 3. Sprawdź, czy nie ma dynamicznych dysków na maszynie wirtualnej. To nie jest obsługiwane dla migawek spójności aplikacji. Można sprawdzić w przystawce Zarządzanie dyskami (diskmgmt.msc).
 
     ![Dysk dynamiczny](media/hyper-v-azure-troubleshoot/dynamic-disk.png)

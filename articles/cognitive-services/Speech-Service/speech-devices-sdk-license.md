@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a9f6dfb0de2cf09b27d08eb6b7dc425c8cd1f17d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 825a6035a997eb27a3e8e5833a792bdd985997c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549225"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084627"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Umowa licencyjna Speech Devices SDK
 
@@ -83,9 +83,9 @@ f) należy użyć oprogramowania tylko w połączeniu z usług Microsoft Azure C
 (c) Niemcy i Austria.
 
 > (i) gwarancji. Poprawnie licencjonowane oprogramowanie będzie wykonywać zasadniczo zgodnie z opisem w wszelkich materiałach firmy Microsoft dołączonych do tego oprogramowania. Jednak nie daje żadnej gwarancji w odniesieniu do licencjonowanego oprogramowania firmy Microsoft.
-
+> 
 > (ii) ograniczenie odpowiedzialności. W przypadku czynów, rażącego zaniedbania, roszczeń Act odpowiedzialności za produkt, także w przypadku śmierci lub szkody osobistych lub fizycznych, w oparciu firma Microsoft jest rażącego przez prawo ustawowe.
-
+> 
 > Z zastrzeżeniem powyższej klauzuli (ii) firma Microsoft tylko będzie odpowiadać za nieznaczne zaniedbanie Jeśli firma Microsoft naruszy takie istotne obowiązki umowne realizację którego ułatwienie termin niniejszej Umowy, których naruszenie może zagrozić cel niniejszej Umowy oraz zgodność, z którą strona może stale polegać (tak zwane "zobowiązania kardynalne"). W innych przypadkach firma Microsoft nie będzie odpowiadać za nieznaczne zaniedbanie.
 
 **15\. WYKLUCZENIE GWARANCJI. OPROGRAMOWANIE JEST LICENCJONOWANE "W POSTACI""TO. UŻYTKOWNIK JEST ODPOWIEDZIALNY ZA JEJ POMOCĄ. FIRMA MICROSOFT UDOSTĘPNIA NIE ŻADNYCH WYRAŹNYCH RĘKOJMI, GWARANCJI ANI WARUNKÓW. W ZAKRESIE DOZWOLONYM PRAWEM FIRMA MICROSOFT WYŁĄCZA WSZELKIE DOROZUMIANE RĘKOJMIE, W TYM GWARANCJI WARTOŚCI HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU ORAZ BRAKU NARUSZEŃ PRAWA.**

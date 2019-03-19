@@ -10,16 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2e51bdd24f33789a95017c9fe5df88b0bb55de26
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005504"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji programu Cognitive Services zestawu Speech Devices SDK
 
 Następujące sekcje Lista zmian w najnowszych wersjach.
+
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Usługi cognitive Services Speech Devices SDK 1.3.1: Wydanie z marca 2019 r 
+
+* Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.3.1. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew). 
+*   Zaktualizowano słowo aktywujące obsługi, zobacz fundamentalne zmiany.
+*   Przykładowa aplikacja dodaje wybór języka, zarówno usługa rozpoznawania mowy, jak i tłumaczenia.
+
+**Fundamentalne zmiany** 
+
+*   [Instalowanie słowo aktywujące](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application) został uproszczony, jest teraz część aplikacji i nie wymaga oddzielnej instalacji na urządzeniu.
+*   Rozpoznawanie word wznawiania została zmieniona, a obsługiwane są dwa zdarzenia.
+    - RecognizingKeyword, wskazuje, że wynik mowy zawiera tekst (niezweryfikowanych) — słowo kluczowe.
+    - RecognizedKeyword, wskazuje, że — słowo kluczowe rozpoznawania ukończone rozpoznawaniu dane słowo kluczowe.
+
 
 ## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Usługi cognitive Services Speech Devices SDK 1.1.0: Wersja listopada 2018 r. 
 

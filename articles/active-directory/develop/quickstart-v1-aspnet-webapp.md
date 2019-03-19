@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185320"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007610"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -146,7 +146,8 @@ W programie Visual Studio utwórz nowy widok, aby dodać przycisk logowania i wy
 
     [!code-html[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Views/Home/Index.cshtml "Index.cshtml")]
 
-<!--start-collapse--> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tłem:<br/>![Zaloguj się przy użyciu konta Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> Aby znaleźć więcej przycisków logowania, przejdź do tematu [Wytyczne dotyczące oznaczania aplikacji marką](howto-add-branding-in-azure-ad-apps.md).
+<!--start-collapse-->
+Ta strona dodaje przycisk logowania w formacie SVG z czarnym tle:<br/>![Zaloguj się przy użyciu konta Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> Aby znaleźć więcej przycisków logowania, przejdź do tematu [Wytyczne dotyczące oznaczania aplikacji marką](howto-add-branding-in-azure-ad-apps.md).
 <!--end-collapse-->
 
 ## <a name="step-7-display-users-claims-by-adding-a-controller"></a>Krok 7: wyświetlenie oświadczeń użytkownika przez dodanie kontrolera
@@ -300,7 +301,7 @@ Ponadto zobaczysz tabelę zawierającą wszystkie oświadczenia użytkownika do�
 
 W tym kroku przetestujesz uzyskiwanie dostępu do kontrolera oświadczeń jako użytkownik anonimowy:<br/>
 Wybierz link umożliwiający wylogowanie użytkownika i ukończ proces wylogowywania.<br/>
-Następnie wpisz w przeglądarce adres http://localhost:{port}/claims, aby uzyskać dostęp do kontrolera, który jest chroniony za pomocą atrybutu `[Authorize]`
+Następnie wpisz w przeglądarce adres `http://localhost:{port}/claims`, aby uzyskać dostęp do kontrolera, który jest chroniony za pomocą atrybutu `[Authorize]`
 
 #### <a name="expected-results"></a>Oczekiwane wyniki
 
@@ -323,7 +324,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 <!--end-test-->
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Możesz teraz przejść do dodatkowych scenariuszy.
 

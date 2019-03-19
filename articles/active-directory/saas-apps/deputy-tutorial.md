@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b317ddf98e7b13fc8b5e335fb8d07fc6a9e1cacc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 2b0b3921640ebf6ed21860cfac75ffca195096db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875382"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Deputy
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Deputy z usługą Azure AD, należy dod
 
 **Aby dodać aplikację Deputy z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -106,6 +106,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Deputy, w
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Deputy](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
     |  |
     | ----|
     | `https://<subdomain>.<region>.au.deputy.com` |
@@ -125,6 +126,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Deputy, w
     | `https://<subdomain>.<region>.deputy.com` |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |----|
     | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
@@ -183,7 +185,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Deputy, w
    
     b. Otwórz w Notatniku certyfikat zakodowany w formacie Base64 pobrany z witryny Azure Portal, skopiuj zawartość do Schowka, a następnie wklej ją w polu tekstowym **OpenSSL Certificate** (Certyfikat OpenSSL).
    
-    d. W polu tekstowym adresu URL logowania jednokrotnego SAML wpisz `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
+    c. W polu tekstowym adresu URL logowania jednokrotnego SAML wpisz `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
     d. W polu tekstowym adresu URL logowania jednokrotnego SAML zastąp `<your subdomain>` swoją poddomeną.
    
@@ -209,7 +211,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -266,7 +268,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Deput
    
     b. W polu tekstowym **Email (Adres e-mail)** wpisz adres e-mail konta usługi Azure AD, które chcesz aprowizować.
    
-    d. W polu tekstowym **Work at (Pracuje w)** wpisz nazwę firmy.
+    c. W polu tekstowym **Work at (Pracuje w)** wpisz nazwę firmy.
    
     d. Kliknij przycisk **Save & Invite (Zapisz i zaproś)**.
 
@@ -274,7 +276,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Deput
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Deputy w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Deputy, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

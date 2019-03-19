@@ -14,12 +14,12 @@ ms.topic: article
 ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729649"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002061"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
 
@@ -151,6 +151,7 @@ Aby uzyskać dzienniki, wykonaj następujące czynności:
     ```
 
 4. Przejrzyj parametry i ustaw wartości, w zależności od używanego środowiska.
+
     | Parametr           | Opis                                                                                                      | Przykład                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
     | -d, --vmd-host       | Publiczny adres IP lub nazwa FQDN Menedżer DVM. Nazwa maszyny Wirtualnej, który rozpoczyna się od `vmd-`.                                                       | Adres IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
@@ -174,7 +175,7 @@ Aby uzyskać dzienniki, wykonaj następujące czynności:
     ![Wygenerowanych dzienników](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
 
 
-4. Pobierz dzienniki w folderach, które zostały utworzone przy użyciu polecenia. Polecenie spowoduje utworzenie nowych folderów i ich sygnatury czasowe.
+1. Pobierz dzienniki w folderach, które zostały utworzone przy użyciu polecenia. Polecenie spowoduje utworzenie nowych folderów i ich sygnatury czasowe.
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
         - Acsengine-kubernetes-dvm.log

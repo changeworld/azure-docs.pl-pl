@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea80824588980fdd6c580b6d77c2a5566159547
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 99c6999e437abbef1920f6de771173e4e6e007f2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211091"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116915"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników
 
@@ -53,7 +53,7 @@ Przed skonfigurowaniem i włączyć usługę aprowizacji, musisz zdecydować, kt
 
 > [!IMPORTANT]
 > Zaleca się pojedynczego użytkownika usługi Azure AD można przypisać do usługi G Suite, aby przetestować konfigurację aprowizacji. Później można przypisać dodatkowych użytkowników i grup.
-
+> 
 > Gdy użytkownik jest przypisany do usługi G Suite, wybierz pozycję **użytkownika** lub **grupy** roli w oknie dialogowym przydział. **Domyślnego dostępu** roli nie działa dla inicjowania obsługi administracyjnej.
 
 ## <a name="enable-automated-user-provisioning"></a>Włączanie użytkownika automatyczne Inicjowanie obsługi administracyjnej.
@@ -80,8 +80,8 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
    
     ![Wybierz odwołanie do interfejsu API.][16]
 
-    > [!IMPORTANT]
-    > Dla każdego użytkownika, który ma zostać aprowizować do usługi G Suite, nazwa ich użytkownika w usłudze Azure Active Directory *musi* ograniczeni do domeny niestandardowej. Na przykład użytkownik nazwy tego wyglądały bob@contoso.onmicrosoft.com nie są akceptowane przez usługi G Suite. Z drugiej strony bob@contoso.com jest akceptowane. Możesz zmienić istniejącego użytkownika domeny, edytując ich właściwości w usłudze Azure AD. Dołączyliśmy instrukcje dotyczące sposobu ustawiania domeny niestandardowej dla usługi Azure Active Directory i usługi G Suite w poniższych krokach.
+   > [!IMPORTANT]
+   > Dla każdego użytkownika, który ma zostać aprowizować do usługi G Suite, nazwa ich użytkownika w usłudze Azure Active Directory *musi* ograniczeni do domeny niestandardowej. Na przykład użytkownik nazwy tego wyglądały bob@contoso.onmicrosoft.com nie są akceptowane przez usługi G Suite. Z drugiej strony bob@contoso.com jest akceptowane. Możesz zmienić istniejącego użytkownika domeny, edytując ich właściwości w usłudze Azure AD. Dołączyliśmy instrukcje dotyczące sposobu ustawiania domeny niestandardowej dla usługi Azure Active Directory i usługi G Suite w poniższych krokach.
       
 1. Jeśli nie dodano jeszcze niestandardowej nazwy domeny do usługi Azure Active Directory, następnie wykonaj następujące czynności:
   
@@ -105,8 +105,8 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 
     e. Powtórz te czynności dla wszystkich domen, które mają zostać dodane do katalogu.
 
-    > [!NOTE]
-    Inicjowanie obsługi użytkowników, domena niestandardowa musi odpowiadać nazwa domeny źródła usługi Azure AD. Jeśli nie są zgodne, można rozwiązać problem, implementowanie dostosowywania mapowanie atrybutu.
+   > [!NOTE]
+   >  Inicjowanie obsługi użytkowników, domena niestandardowa musi odpowiadać nazwa domeny źródła usługi Azure AD. Jeśli nie są zgodne, można rozwiązać problem, implementowanie dostosowywania mapowanie atrybutu.
 
 
 1. Teraz, gdy sprawdzeniu wszystkich domen w usłudze Azure AD, należy sprawdzić je ponownie przy użyciu usługi Google Apps. Dla każdej domeny, który nie jest już zarejestrowany za pomocą usługi Google wykonaj następujące czynności:
@@ -149,13 +149,13 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 
 1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
 
-     ![Inicjowanie obsługi](./media/google-apps-provisioning-tutorial/provisioning.png)
+      ![Inicjowanie obsługi](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. W obszarze **poświadczeń administratora** zaznacz **Autoryzuj**. Otwiera okno dialogowe autoryzacji Google w nowym oknie przeglądarki.
 
 1. Upewnij się, że chcesz przyznać uprawnienia usługi Azure Active Directory, aby wprowadzić zmiany do dzierżawy usługi G Suite. Wybierz pozycję **Zaakceptuj**.
     
-     ![Upewnij się, uprawnienia.][28]
+      ![Upewnij się, uprawnienia.][28]
 
 1. W witrynie Azure portal wybierz **Testuj połączenie** do upewnij się, że połączenie usługi Azure AD do swojej aplikacji. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto usługi G Suite, ma uprawnienia administratora zespołu. Spróbuj **Autoryzuj** krok ponownie.
 

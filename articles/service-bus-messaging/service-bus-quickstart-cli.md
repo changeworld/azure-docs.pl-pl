@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 338907585ade0a33f74ca3e6337f1dd5cf8cc211
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076891"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Szybki start: używanie interfejsu wiersza polecenia do tworzenia kolejki usługi Service Bus
 
@@ -61,31 +61,31 @@ Po uruchomieniu ostatniego polecenia skopiuj i wklej parametry połączenia oraz
 
 Po utworzeniu przestrzeni nazw i kolejki (i jeśli użytkownik ma wszystkie niezbędne poświadczenia) można wysyłać i odbierać komunikaty. Kod można analizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
-2. Sklonuj [repozytorium GitHub usługi Service Bus](https://github.com/Azure/azure-service-bus/) na swój komputer, wydając następujące polecenie:
+1. Sklonuj [repozytorium GitHub usługi Service Bus](https://github.com/Azure/azure-service-bus/) na swój komputer, wydając następujące polecenie:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Zmień bieżący katalog na przykładowy folder przy użyciu ukośników jako separatorów ścieżek:
+1. Zmień bieżący katalog na przykładowy folder przy użyciu ukośników jako separatorów ścieżek:
 
    ```bash
    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
    ```
 
-3. Wydaj następujące polecenie, aby skompilować aplikację:
+1. Wydaj następujące polecenie, aby skompilować aplikację:
    
    ```bash
    mvn clean package -DskipTests
    ```
 
-4. Aby uruchomić program, należy wydać następujące polecenie po zastąpieniu parametrów połączenia wcześniej skopiowaną wartością:
+1. Aby uruchomić program, należy wydać następujące polecenie po zastąpieniu parametrów połączenia wcześniej skopiowaną wartością:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-6. Zobacz, że do kolejki jest wysyłanych 10 komunikatów. Kolejność komunikatów nie jest gwarantowana, ale widać wysłane komunikaty, które następnie są potwierdzane i odbierane razem z danymi ładunku:
+1. Zobacz, że do kolejki jest wysyłanych 10 komunikatów. Kolejność komunikatów nie jest gwarantowana, ale widać wysłane komunikaty, które następnie są potwierdzane i odbierane razem z danymi ładunku:
 
     ```
     Message sending: Id = 0
@@ -371,7 +371,7 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu w celu wysyłania i odbierania komunikatów, kontynuuj pracę z następującym samouczkiem dotyczącym usługi Service Bus:
 

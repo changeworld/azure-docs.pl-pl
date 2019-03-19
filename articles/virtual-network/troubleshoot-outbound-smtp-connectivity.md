@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 34d42f9987303c1381584ae4b2991a8f30a67ed5
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 385163d791bff0c02a05ee1b27afd82c3afd0ac3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618963"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997168"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Wychodzący SMTP Rozwiązywanie problemów z łącznością na platformie Azure
 
@@ -26,17 +26,17 @@ Począwszy od 15 listopada 2017 r. wiadomości wychodzących wiadomości e-mail,
 Ta zmiana w zachowaniu dotyczy tylko nowe subskrypcje i nowych wdrożeń od 15 listopada 2017 r.
 
 ## <a name="recommended-method-of-sending-email"></a>Zalecaną metodą wysyłania wiadomości e-mail
-Zaleca się, że używasz usług uwierzytelnionego przekazywania SMTP, (które zwykle nawiązać połączenie za pośrednictwem portu TCP 587 i 443, ale zbyt obsługi innych portów) do wysyłania wiadomości e-mail z maszyn wirtualnych platformy Azure lub usługi Azure App Services. Te usługi są używane do obsługi reputacji adresu IP lub domeny, aby zminimalizować prawdopodobieństwo, że dostawcy poczty e-mail innych firm spowoduje odrzucenie wiadomości. Takie usługi przekazywania SMTP obejmują, ale nie są ograniczone do [SendGrid](http://sendgrid.com/partners/azure/). Użytkownik może również mieć bezpieczny usługi przekazywania SMTP, który jest uruchomiony lokalnie, można użyć.
+Zaleca się, że używasz usług uwierzytelnionego przekazywania SMTP, (które zwykle nawiązać połączenie za pośrednictwem portu TCP 587 i 443, ale zbyt obsługi innych portów) do wysyłania wiadomości e-mail z maszyn wirtualnych platformy Azure lub usługi Azure App Services. Te usługi są używane do obsługi reputacji adresu IP lub domeny, aby zminimalizować prawdopodobieństwo, że dostawcy poczty e-mail innych firm spowoduje odrzucenie wiadomości. Takie usługi przekazywania SMTP obejmują, ale nie są ograniczone do [SendGrid](https://sendgrid.com/partners/azure/). Użytkownik może również mieć bezpieczny usługi przekazywania SMTP, który jest uruchomiony lokalnie, można użyć.
 
 Za pomocą tych usług dostarczania poczty e-mail nie jest ograniczone na platformie Azure, niezależnie od typu subskrypcji.
 
-## <a name="enterprise-agreement"></a>Umowa Enterprise
+## <a name="enterprise-agreement"></a>Enterprise Agreement
 Dla użytkowników Enterprise Agreement platformy Azure nie ma zmian w technicznej możliwość wysyłania wiadomości e-mail bez użycia uwierzytelnionego przekazywania. Istniejących i nowych użytkowników umowy Enterprise Agreement, można spróbować dostarczania wychodzących wiadomości e-mail z maszyn wirtualnych platformy Azure bezpośrednio do zewnętrznych dostawców poczty e-mail bez żadnych ograniczeń z platformą Azure. Mimo że nie gwarantuje, że dostawcy poczty e-mail będą akceptować przychodzących wiadomości e-mail od określonego użytkownika, kolejnymi próbami dostarczenia nie będą blokowane przez platformę Azure dla maszyn wirtualnych w ramach subskrypcji umowy Enterprise Agreement. Musisz pracować bezpośrednio z dostawców poczty e-mail, aby naprawić wszelkie dostarczanie komunikatów lub SPAMU filtrowania problemy, które obejmują określonych dostawców.
 
 ## <a name="pay-as-you-go"></a>Płatność zgodnie z rzeczywistym użyciem
 Jeśli rejestracji w usłudze 15 listopada 2017 r. płatności lub oferty subskrypcji sieci Microsoft Partner Network, będzie istniało żadne zmiany techniczne możliwości do wypróbowania dostarczania wychodzących wiadomości e-mail. Nadal będzie można spróbować dostarczania wychodzących wiadomości e-mail z maszyn wirtualnych platformy Azure w ramach tych subskrypcji bezpośrednio do zewnętrznych dostawców poczty e-mail bez żadnych ograniczeń z platformą Azure. Ponownie nie ma żadnej gwarancji że dostawcy poczty e-mail będą akceptować przychodzących wiadomości e-mail od określonego użytkownika, a użytkownicy będą musieli współpracować bezpośrednio z dostawców poczty e-mail, aby naprawić wszelkie dostarczanie komunikatów lub SPAMU filtrowania problemy, które obejmują określonych dostawców.
 
-W przypadku subskrypcji płatności lub Microsoft Partner Network, utworzonych po 15 listopada 2017 r. będą ograniczenia techniczne blokujące wiadomości e-mail, który jest wysyłany bezpośrednio z maszyn wirtualnych w ramach tych subskrypcji. Jeśli ma możliwość wysyłania wiadomości e-mail z maszyn wirtualnych platformy Azure bezpośrednio do zewnętrznych dostawców poczty e-mail (bez użycia uwierzytelnionego przekazywania SMTP), możesz zgłosić wniosek o usunięcie ograniczenia. Żądania będą przeglądane i zatwierdzane według uznania firmy Microsoft, a ich zostanie przyznana tylko wtedy, gdy są wprowadzane dodatkowe kontrole na celu zapobieganie oszustwom. Aby przesłać wniosek, otwórz zgłoszenie do pomocy technicznej przy użyciu następującego typu problemu: **techniczne** > **sieci wirtualnej** > **łączności**  >  **Nie mogą wysyłać wiadomości e-mail (SMTP/Port 25)**. Upewnij się, że dodano szczegółowe informacje o tym, dlaczego ma wdrożenia do wysyłania wiadomości e-mail bezpośrednio do dostawców poczty, zamiast korzystać z uwierzytelnionego przekazywania.
+W przypadku subskrypcji płatności lub Microsoft Partner Network, utworzonych po 15 listopada 2017 r. będą ograniczenia techniczne blokujące wiadomości e-mail, który jest wysyłany bezpośrednio z maszyn wirtualnych w ramach tych subskrypcji. Jeśli ma możliwość wysyłania wiadomości e-mail z maszyn wirtualnych platformy Azure bezpośrednio do zewnętrznych dostawców poczty e-mail (bez użycia uwierzytelnionego przekazywania SMTP), możesz zgłosić wniosek o usunięcie ograniczenia. Żądania będą przeglądane i zatwierdzane według uznania firmy Microsoft, a ich zostanie przyznana tylko wtedy, gdy są wprowadzane dodatkowe kontrole na celu zapobieganie oszustwom. Aby utworzyć żądanie, należy otworzyć zgłoszenie do pomocy technicznej przy użyciu następującego typu problemu: **Techniczne** > **sieci wirtualnej** > **łączności** > **nie mogą wysyłać wiadomości e-mail (SMTP/Port 25)**. Upewnij się, że dodano szczegółowe informacje o tym, dlaczego ma wdrożenia do wysyłania wiadomości e-mail bezpośrednio do dostawców poczty, zamiast korzystać z uwierzytelnionego przekazywania.
 
 Gdy subskrypcja płatności lub Microsoft Partner Network czy jest wyłączone, maszyn wirtualnych w ramach tej subskrypcji tylko będą zwolnione przyszłości.
 

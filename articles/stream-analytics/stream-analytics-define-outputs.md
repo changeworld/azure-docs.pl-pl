@@ -9,19 +9,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 01aa3d45d3b168c67603861a0a947026d4f2e08c
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650890"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898877"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych.
 
 Podczas projektowania zapytania usługi Stream Analytics można znaleźć nazwy wyjściowego przy użyciu [Klauzula INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Można użyć pojedynczego wyjścia poszczególne zadania lub wielu wyjść na zadanie przesyłania strumieniowego, jeśli potrzebujesz, zapewniając wiele klauzul INTO w zapytaniu.
 
-Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych wyjściowych, możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [programu Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), i [programu Visual Studio](stream-analytics-quick-create-vs.md).
+Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych wyjściowych, możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [programu Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), i [programu Visual Studio](stream-analytics-quick-create-vs.md).
 
 Obsługa typów niektóre dane wyjściowe [partycjonowanie](#partitioning), i [danych wyjściowych rozmiary partii](#output-batch-size) różnią się w celu zoptymalizowania przepływności.
 
@@ -169,7 +169,7 @@ Usługa Azure Stream Analytics aktualizacji modelu danych dynamicznie w czasie w
 W tej tabeli opisano konwersje typów danych z [typów danych usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn835065.aspx) do zasilania BIs [typy Entity Data Model (EDM) struktury](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/) zestawu danych usługi POWER BI i tabeli nie istnieją.
 
 Z usługi Stream Analytics | To Power BI
------|-----|------------
+-----|-----
 bigint | Int64
 nvarchar(max) | Ciąg
 datetime | Data/godzina
@@ -186,7 +186,7 @@ Poprzednie/bieżąca | Int64 | Ciąg | Data/godzina | Podwójne
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Ciąg | Ciąg | Podwójne
 Podwójne | Podwójne | Ciąg | Ciąg | Podwójne
-Ciąg | Ciąg | Ciąg | Ciąg |  | Ciąg |
+Ciąg | Ciąg | Ciąg | Ciąg | Ciąg 
 Data/godzina | Ciąg | Ciąg |  Data/godzina | Ciąg
 
 
@@ -261,6 +261,7 @@ Usługa Azure Cosmos DB dane wyjściowe z usługi Stream Analytics nie jest obec
 > Innych interfejsów API usługi Azure Cosmos DB nie są jeszcze obsługiwane. Jeśli punkt Azure Stream Analytics do kont usługi Azure Cosmos DB utworzone z innymi interfejsami API, dane mogą nie być prawidłowo przechowywane.
 
 W poniższej tabeli opisano właściwości do utworzenia dane wyjściowe usługi Azure Cosmos DB.
+
 | Nazwa właściwości | description |
 | --- | --- |
 | Alias danych wyjściowych | Odwoływanie się aliasu to dane wyjściowe w zapytaniu usługi Stream Analytics. |
@@ -331,7 +332,7 @@ W poniższej tabeli opisano niektóre zagadnienia, dane wyjściowe przetwarzania
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
-
+> 
 > [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

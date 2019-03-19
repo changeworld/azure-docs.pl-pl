@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba79bfc1-992e-4924-b76a-8eb0dfb97724
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a98a41984692e9a20b3606c30e387b7674cf7bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: feb34ab8d811d813e751b25c2a6b6d4bf0397f9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Samouczek: integracja usługi Azure Active Directory z platformą Coralogix
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację platformy Coralogix z usługą Azure AD, musisz d
 
 **Aby dodać platformę Coralogix z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -108,6 +108,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie Coralogi
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.coralogix.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL:
+
     | |
     |--|
     | `https://api.coralogix.com/saml/metadata.xml` |
@@ -130,7 +131,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie Coralogi
 
     b. Z listy **Format identyfikatora** wybierz pozycję **Adres e-mail**.
 
-    d. Z listy **Atrybut źródłowy** wybierz pozycję **user.mail**.
+    c. Z listy **Atrybut źródłowy** wybierz pozycję **user.mail**.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -170,7 +171,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -209,7 +210,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon na platformie Coralogi
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Coralogix w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Coralogix, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

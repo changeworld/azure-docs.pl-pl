@@ -9,15 +9,15 @@ ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f701642c76446049ad2868ae59a03370e798b6a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 43fa8148fff1389982d967b2e69f4a9425841c91
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453698"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014919"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy e-mail z zaproszeniem współpracy B2B — usługi Azure Active Directory
 
@@ -32,7 +32,7 @@ Spójrzmy na kilka elementów w wiadomości e-mail, aby było wiadomo, jak najle
 Temat wiadomości e-mail jest zgodny ze wzorcem następujące: Zaproszono Cię do &lt;tenantname&gt; organizacji
 
 ### <a name="from-address"></a>Adres nadawcy
-Firma Microsoft na użytek wzorzec LinkedIn przypominającej adres nadawcy.  Powinien być niejasne, zapraszającej będącego i adres e-mail od firmy oraz wyjaśnienie, że wiadomość e-mail pochodzi od firmy Microsoft. Format jest następujący: &lt;Nazwa wyświetlana osoby zapraszającej&gt; z &lt;tenantname&gt; (za pośrednictwem firmy Microsoft) <invites@microsoft.com>
+Firma Microsoft na użytek wzorzec LinkedIn przypominającej adres nadawcy.  Powinien być niejasne, zapraszającej będącego i adres e-mail od firmy oraz wyjaśnienie, że wiadomość e-mail pochodzi od firmy Microsoft. Format jest następujący: Microsoft Invitations <invites@microsoft.com> lub &lt;Nazwa wyświetlana osoby zapraszającej&gt; z &lt;tenantname&gt; (za pośrednictwem firmy Microsoft) <invites@microsoft.com>.
 
 ### <a name="reply-to"></a>Odpowiedz
 Odpowiedz do wiadomości e-mail jest równa zapraszającej poczty e-mail, jeśli są dostępne, tak, aby odpowiadanie na wiadomości e-mail wysyła wiadomość e-mail do osoby zapraszającej.
@@ -56,8 +56,12 @@ W przypadku swoje zdjęcie profilowe nie został jeszcze skonfigurowany, jest wy
 ### <a name="body"></a>Treść
 Treść zawiera komunikat zapraszającej Redaguj, kiedy [zaproszeniem użytkownika gościa do katalogu, grupa lub aplikacja](add-users-administrator.md) lub [przy użyciu interfejsu API zaproszenia](customize-invitation-api.md). Jest obszar tekstu, więc nie przetwarza tagów HTML ze względów bezpieczeństwa.
 
+  ![Obraz treść wiadomości e-mail](media/invitation-email-elements/invitation-email-body.png)
+
 ### <a name="footer-section"></a>Sekcji stopki
-Stopka zawiera marki firmy Microsoft i umożliwia odbiorcy znać, jeśli wiadomość e-mail została wysłana z niemonitorowanego aliasu. Specjalne przypadki:
+Stopka zawiera marki firmy Microsoft i umożliwia odbiorcy znać, jeśli wiadomość e-mail została wysłana z niemonitorowanego aliasu. 
+
+Specjalne przypadki:
 
 - Osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawy
 

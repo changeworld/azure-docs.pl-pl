@@ -1,7 +1,7 @@
 ---
 title: Aby migracja interfejsu API w wersji 2 w wersji 1
 titleSuffix: Azure Cognitive Services
-description: Punkt końcowy w wersji 1 i tworzenia pakietów administracyjnych interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 2 i Tworzenie interfejsów API.
+description: Punkt końcowy w wersji 1 i Tworzenie interfejsów API interpretacji języka są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 2 i Tworzenie interfejsów API.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859885"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087928"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Interfejsu API v1 na v2 Przewodnik migracji dla aplikacji usługi LUIS
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
 
 ## <a name="new-azure-regions"></a>Nowe regiony platformy Azure
-Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API usługi LUIS. LUIS zawiera inną witrynę sieci Web dla regionu grup. Aplikacja musi zostać utworzona w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację z jednego regionu, a następnie importowania do innej, aby była dostępna w nowym regionie.
+Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API usługi LUIS. Usługa LUIS zapewnia innego portalu dla regionu grup. Aplikacja musi zostać utworzona w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację z jednego regionu, a następnie importowania do innej, aby była dostępna w nowym regionie.
 
 ## <a name="authoring-route-changes"></a>Tworzenie zmiany trasy
 Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pomocą **interfejsu api** trasy.
@@ -35,7 +35,7 @@ Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pom
 
 
 ## <a name="endpoint-route-changes"></a>Zmiany trasy punktu końcowego
-Punkt końcowy interfejsu API ma nowe parametry querystring, a także różnych odpowiedzi. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencji oprócz topScoringIntent.
+Punkt końcowy interfejsu API ma nowe parametry ciągu zapytania, a także różnych odpowiedzi. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencji oprócz topScoringIntent.
 
 | version | Pobierz trasę |
 |--|--|

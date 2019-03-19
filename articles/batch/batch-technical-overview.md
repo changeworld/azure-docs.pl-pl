@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: HT
+ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35621283"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730948"
 ---
 # <a name="what-is-azure-batch"></a>Co to jest Azure Batch?
 
@@ -30,7 +30,7 @@ Deweloperzy mogą używać usługi Batch jako usługi platformy do tworzenia apl
 
 Za korzystanie z usługi Batch nie są naliczane dodatkowe opłaty. Płaci się wyłącznie za wykorzystane zasoby bazowe, takie jak maszyny wirtualne, magazyn i zasoby sieciowe.
 
-Aby porównać usługę Batch oraz inne opcje rozwiązań HPC na platformie Azure, zobacz [Rozwiązania usługi Batch i HPC oraz dużych wystąpień obliczeniowych](../virtual-machines/linux/high-performance-computing.md).
+Aby porównać usługę Batch oraz inne opcje rozwiązań HPC na platformie Azure, zobacz [o wysokiej wydajności (HPC) na platformie Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Uruchamianie równoległych obciążeń
 Z usługą Batch działają dobrze obciążenia wewnętrznie równoległe (zwane również „zaskakująco równoległymi”). Obciążenia wewnętrznie równoległe to te, w przypadku których aplikacje mogą być uruchamiane równolegle i każde wystąpienie wykonuje część pracy. Aplikacje w trakcie wykonywania mogą uzyskiwać dostęp do niektórych wspólnych danych, ale nie komunikują się z innymi wystąpieniami aplikacji. Z tego względu obciążenia wewnętrznie równoległe mogą być uruchamiane na dużą skalę, zależną od ilości zasobów obliczeniowych dostępnych do jednoczesnego uruchamiania aplikacji.
@@ -88,7 +88,7 @@ Pamiętaj, że jest to tylko jeden sposób korzystania z usługi Batch, a w tym 
 
 Zobacz [Omówienie usługi Batch dla deweloperów](batch-api-basics.md), aby zapoznać się z bardziej szczegółowymi informacjami o pulach, węzłach, zadaniach i zadaniach podrzędnych oraz wielu funkcjach API, których można używać podczas tworzenia aplikacji usługi Batch. Zobacz też najnowsze [aktualizacje usługi Batch](https://azure.microsoft.com/updates/?product=batch).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Rozpocznij pracę z usługą Azure Batch, korzystając z jednego z tych przewodników Szybki start:
 * [Uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)

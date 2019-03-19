@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211359"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108852"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Konfigurowanie adresów IP, odnoszący się nawiązać połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover
 
@@ -49,8 +49,8 @@ Spójrzmy na przykład dla trybu failover na platformie Azure przy użyciu fikcy
 - Banku Woodgrove Bank hostuje swoje aplikacje biznesowe w lokacji lokalnej. Mogą hostować swoje aplikacje mobilne na platformie Azure.
 - Istnieje łączność lokacja lokacja sieci VPN między siecią krawędzi ich w środowisku lokalnym i sieci wirtualnej platformy Azure. Ze względu na połączenie sieci VPN sieci wirtualnej na platformie Azure zostanie wyświetlony jako rozszerzenia sieci lokalnej.
 - Woodgrove chce, aby replikowania obciążeń lokalnych do platformy Azure z usługą Site Recovery.
- - Woodgrove ma aplikacje, które zależą od ustalonych adresy IP, w związku z czym muszą zachować adresy IP dla aplikacji, po włączeniu trybu failover na platformie Azure.
- - Zasoby działające na platformie Azure Użyj 172.16.1.0/24 zakres adresów IP, 172.16.2.0/24.
+  - Woodgrove ma aplikacje, które zależą od ustalonych adresy IP, w związku z czym muszą zachować adresy IP dla aplikacji, po włączeniu trybu failover na platformie Azure.
+  - Zasoby działające na platformie Azure Użyj 172.16.1.0/24 zakres adresów IP, 172.16.2.0/24.
 
 ![Przed włączeniem trybu failover podsieć](./media/site-recovery-network-design/network-design7.png)
 

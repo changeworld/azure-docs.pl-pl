@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 71d97481b4d3bff1ef93839f57939875ac9268ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450066"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189907"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -2511,7 +2511,7 @@ I zwracają wynik: `4`
 
 <a name="less"></a>
 
-### <a name="less"></a>less
+### <a name="less"></a>mniej
 
 Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości.
 Zwraca wartość true, jeśli pierwsza wartość jest mniejsza lub zwraca wartość false, jeśli pierwsza wartość jest większa.
@@ -3333,7 +3333,7 @@ substring('<text>', <startIndex>, <length>)
 | Parametr | Wymagane | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Yes | String | Ciąg znaków, którego chcesz |
-| <*startIndex*> | Yes | Liczba całkowita | Liczba dodatnia, pozycja początkowa lub wartość indeksu |
+| <*startIndex*> | Yes | Liczba całkowita | Liczba dodatnia, równa lub większa niż 0, którego chcesz użyć jako wartości początkowej, pozycja lub indeks |
 | <*Długość*> | Yes | Liczba całkowita | Wartość dodatnią znaków, które mają wejść w podciąg |
 |||||
 

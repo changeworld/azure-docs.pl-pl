@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d9a911dccf3d59bf1159cf8576b95d86ef26657b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 85693ec6aa67dc69cd65aae8e66e66e2118672ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314249"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898486"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -135,7 +135,7 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 * Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
-* Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
+* Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/).
     * Po pobraniu pliku dziennika, który jest lokalnie, można kliknąć dwukrotnie plik, Otwórz, wyświetlać i analizować dzienniki w programie SSMS.
     * Można również pobrać wielu plików jednocześnie, za pomocą Eksploratora usługi Azure Storage. Kliknij prawym przyciskiem myszy określony podfolder, a następnie wybierz pozycję **Zapisz jako** można zapisać w folderze lokalnym.
 
@@ -150,8 +150,9 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 
 <br>
+
 ### <a name="database-level-policy-audit-logs"></a>Dzienniki inspekcji zasad na poziomie bazy danych
-Dzienniki inspekcji na poziomie bazy danych są agregowane w kolekcji Store tabel z **SQLDBAuditLogs** prefiksu w ramach konta usługi Azure storage, wybrana w Instalatorze. Możesz wyświetlić pliki dziennika przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://azurestorageexplorer.codeplex.com).
+Dzienniki inspekcji na poziomie bazy danych są agregowane w kolekcji Store tabel z **SQLDBAuditLogs** prefiksu w ramach konta usługi Azure storage, wybrana w Instalatorze. Możesz wyświetlić pliki dziennika przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](https://azurestorageexplorer.codeplex.com).
 
 Szablon raportu wstępnie skonfigurowany pulpit nawigacyjny jest dostępny jako [arkusz kalkulacyjny programu Excel do pobrania](https://go.microsoft.com/fwlink/?LinkId=403540) ułatwiające szybsze analizowanie danych dzienników. Aby użyć szablonu w dziennikach inspekcji, potrzebujesz programu Excel 2013 lub nowszy i dodatku Power Query, który można [pobrać tutaj](https://www.microsoft.com/download/details.aspx?id=39379).
 
@@ -176,14 +177,19 @@ Można również skonfigurować inspekcji w usłudze Azure SQL Data Warehouse pr
 
 * **Polecenia cmdlet programu PowerShell**:
 
+<!-- None of the following links exist anymore 3-12-2019
    * [Get-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/get-azsqldatabaseauditingpolicy)
    * [Get-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Get-azSqlServerAuditingPolicy)
    * [Remove-AzSqlDatabaseAuditing](/powershell/module/az.sql/Remove-azSqlDatabaseAuditing)
    * [Remove-AzSqlServerAuditing](/powershell/module/az.sql/Remove-azSqlServerAuditing)
    * [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/Set-azSqlDatabaseAuditingPolicy)
    * [Set-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Set-azSqlServerAuditingPolicy)
-   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy)
+   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy) -->
 
+   * [Get-AzSqlDatabaseAuditing](/powershell/module/az.sql/get-azsqldatabaseauditing)
+   * [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing)
+   * [Get-AzSqlServerAuditing](/powershell/module/az.sql/get-azsqlserverauditing)
+   * [Set-AzSqlServerAuditing](/powershell/module/az.sql/set-azsqlserverauditing)
 
 ## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Klienci z obniżonym poziomem Obsługa inspekcji i dynamicznego maskowania danych
 Inspekcja współpracuje z klientami programu SQL, które obsługują przekierowanie TDS.

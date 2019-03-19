@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 8fc3246c76d7d09ea4518b5c548d5dbe05cc7a84
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ff1b137fb6461c4ebd17451b89a180364d833d4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116796"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Samouczek: Oferty baz danych MySQL o wysokiej dostępności
 
@@ -67,7 +67,7 @@ Użyj kroków w tej sekcji, aby wdrożyć serwer MySQL klastrem za pomocą [MySQ
 - Trzech maszyn wirtualnych systemu Linux do hostowania klaster programu MySQL
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **obliczenia**, a następnie **MySQL przy użyciu replikacji**.
 
@@ -168,7 +168,7 @@ Po klaster programu MySQL utworzono, skonfigurować i dodany jako usługi Azure 
 > Uruchom następujące kroki, za pomocą portalu użytkownika usługi Azure Stack jako użytkownik dzierżawy z subskrypcją, dostarczając funkcje serwera MySQL (Microsoft.MySQLAdapter service).
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **danych \+ magazynu**, a następnie **bazy danych MySQL** .<br><br>Podaj informacje właściwości wymaganej bazy danych, w tym nazwę, sortowania, subskrypcję i lokalizację do użycia dla wdrożenia. 
 

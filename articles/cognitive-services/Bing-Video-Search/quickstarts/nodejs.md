@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5c2df6859a0020160ae0de9b6e498f63dc253b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871986"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077313"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Szybki start: Wyszukiwanie wideo za pomocą interfejsu API REST wyszukiwania wideo Bing i języka Node.js
 
@@ -61,19 +61,19 @@ Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejs
     };
     ```
     
-    2. Gdy zostanie zasygnalizowany stan `end`, użyj funkcji `response.on()` do zapisania nagłówków związanych z usługą Bing (począwszy od elementu `bingapis` lub `x-msedge-`). Następnie przeanalizuj kod JSON za pomocą funkcji `JSON.parse()`, skonwertuj go na ciąg przy użyciu funkcji `JSON.stringify()` i wydrukuj go.
+   1. Gdy zostanie zasygnalizowany stan `end`, użyj funkcji `response.on()` do zapisania nagłówków związanych z usługą Bing (począwszy od elementu `bingapis` lub `x-msedge-`). Następnie przeanalizuj kod JSON za pomocą funkcji `JSON.parse()`, skonwertuj go na ciąg przy użyciu funkcji `JSON.stringify()` i wydrukuj go.
 
-        ```javascript
-        response.on('end', function () {
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            //JSON Response body
-            console.log(body);
-        });
-        ```
+       ```javascript
+       response.on('end', function () {
+           for (var header in response.headers)
+               // header keys are lower-cased by Node.js
+               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                    console.log(header + ": " + response.headers[header]);
+           body = JSON.stringify(JSON.parse(body), null, '  ');
+           //JSON Response body
+           console.log(body);
+       });
+       ```
 
 # <a name="create-and-send-the-search-request"></a>Tworzenie i wysyłanie żądania wyszukiwania
 
@@ -205,11 +205,11 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

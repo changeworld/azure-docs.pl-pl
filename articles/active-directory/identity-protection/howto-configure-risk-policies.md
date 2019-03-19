@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd988004112fa4f420af7d0149bde19fdc06bfc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1b578c0187f7b804b6261fec9d299f83d7dc1832
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958352"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015144"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Instrukcje: Konfigurowanie zasad usługi o podwyższonym ryzyku ochronę tożsamości usługi Azure Active Directory (odświeżyć)
 
@@ -32,7 +32,9 @@ Usługa Azure AD wykrywa zdarzenia o podwyższonym ryzyku, które z nich są wsk
 - Za pomocą zasad ryzyka logowania można skonfigurować odpowiedzi na zdarzenia ryzyka w czasie rzeczywistym, które zostały wykryte podczas logowania użytkownika. 
 - Zasady użytkownika o podwyższonym ryzyku można skonfigurować odpowiedzi na wszystkie ryzyka aktywnego użytkownika, które zostały wykryte dla użytkownika wraz z upływem czasu.  
 
-> [!VIDEO https://youtu.be/zEsbbik-BTE]
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+
 ## <a name="what-is-the-sign-in-risk-policy"></a>Co to są zasady ryzyka logowania?
 
 Usługa Azure AD analizuje każdego logowania użytkownika. Cel analizy jest wykrywa podejrzane akcje, które pochodzą wraz z logowania. Na przykład jest logowanie wykonywane przy użyciu anonimowego adresu IP lub jest logowanie inicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania, które system może wykrywać znane są również jako zdarzeń o podwyższonym ryzyku. Oparte na zdarzenia o podwyższonym ryzyku, które zostały wykryte podczas logowania, usługi Azure AD pozwala obliczyć wartości. Wartość reprezentuje prawdopodobieństwo (niskiej, średniej, wysokiej), czy identyfikator logowania nie jest wykonywane przez wiarygodnego użytkownika. Prawdopodobieństwo, że jest wywoływana **poziom ryzyka logowania**.

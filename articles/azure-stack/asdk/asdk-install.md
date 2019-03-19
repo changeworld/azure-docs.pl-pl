@@ -16,12 +16,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: a58f5a3794d352fa8671321f5a30d74d2598df75
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 509dafb02d456e3f612e1de8a5bc1cf4b010a05a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977732"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113860"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Zainstaluj zestaw Azure Stack Development Kit (ASDK)
 Po [Przygotowywanie komputera hosta ASDK](asdk-prepare-host.md), ASDK można wdrożyć w obrazie CloudBuilder.vhdx wykonując następujące kroki w tym artykule.
@@ -44,8 +44,8 @@ Kroki opisane w tym artykule pokazano, jak wdrożyć ASDK przy użyciu graficzne
   
    Jeśli dostawca tożsamości subskrypcji platformy Azure, konieczne jest połączenie internetowe, pełna nazwa usługi Azure AD directory dzierżawy w formie *nazwa_domeny*. onmicrosoft.com lub usługi Azure AD należy zweryfikować domenę niestandardową nazwę i globalne poświadczenia administratora dla określonego katalogu.<br><br>Po wdrożeniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo ponownie przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.<br><br>Korzystając z usług AD FS jako dostawcy tożsamości, usługa katalogowa sygnatury domyślny jest używany. Domyślne konto do zalogowania to azurestackadmin@azurestack.local, a hasło do użycia jest dostarczana jako część instalacji.
 
-  > [!NOTE]
-  > Aby uzyskać najlepsze wyniki nawet, jeśli chcesz użyć środowiska bez połączenia usługi Azure Stack jako dostawcy tożsamości za pomocą usług AD FS jest najlepiej zainstalować ASDK po nawiązaniu połączenia z Internetem. W ten sposób można aktywować wersję ewaluacyjną systemu Windows Server 2016, które są dołączone do rozwoju Instalacja zestawu w czasie wdrażania.
+   > [!NOTE]
+   > Aby uzyskać najlepsze wyniki nawet, jeśli chcesz użyć środowiska bez połączenia usługi Azure Stack jako dostawcy tożsamości za pomocą usług AD FS jest najlepiej zainstalować ASDK po nawiązaniu połączenia z Internetem. W ten sposób można aktywować wersję ewaluacyjną systemu Windows Server 2016, które są dołączone do rozwoju Instalacja zestawu w czasie wdrażania.
 
 4. Wybierz kartę sieciową do użycia dla zestawu SDK, a następnie kliknij przycisk **dalej**.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189557"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168021"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
 
@@ -98,13 +98,13 @@ Treść może wyglądać w następujący sposób:
 
 Określanie parametrów nie jest wymagana. Wartość domyślna jest stosowana.
 
-|Name (Nazwa)  |Typ  |Opis  |Domyślne  |
-|---------|---------|---------|---------|
-|Typ     |  Wyliczenia       |  Typ przetwarzania do wykonania. Typy są wyrównane z TMSL [polecenia odświeżenia](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typów: pełne, clearValues, Oblicz dataOnly, automatyczne i defragmentacji. Dodaj typ nie jest obsługiwany.      |   Automatyczne      |
-|CommitMode     |  Wyliczenia       |  Określa, jeśli obiekty zostaną zatwierdzone, w plikach wsadowych lub tylko wtedy, gdy jest to pełny. Tryby obejmują: domyślnie partialBatch transakcyjnych.  |  transakcyjne       |
-|MaxParallelism     |   Int      |  Ta wartość określa maksymalną liczbę wątków, w którym można uruchomić polecenia przetwarzania równoległego. Ta wartość jest powiązana z właściwości MaxParallelism, które można ustawić w TMSL [sekwencji poleceń](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
-|RetryCount    |    Int     |   Wskazuje liczbę przypadków, gdy operacja zostanie ponowiona zakończy się niepowodzeniem.      |     0    |
-|Obiekty     |   Tablica      |   Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "table" podczas przetwarzania całą tabelę lub "table" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Proces cały model      |
+| Name (Nazwa)             | Typ  | Opis  |Domyślne  |
+|------------------|-------|--------------|---------|
+| `Type`           | Wyliczenia  | Typ przetwarzania do wykonania. Typy są wyrównane z TMSL [polecenia odświeżenia](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typów: pełne, clearValues, Oblicz dataOnly, automatyczne i defragmentacji. Dodaj typ nie jest obsługiwany.      |   Automatyczne      |
+| `CommitMode`     | Wyliczenia  | Określa, jeśli obiekty zostaną zatwierdzone, w plikach wsadowych lub tylko wtedy, gdy jest to pełny. Tryby obejmują: domyślnie partialBatch transakcyjnych.  |  transakcyjne       |
+| `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w którym można uruchomić polecenia przetwarzania równoległego. Ta wartość jest powiązana z właściwości MaxParallelism, które można ustawić w TMSL [sekwencji poleceń](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
+| `RetryCount`     | Int   | Wskazuje liczbę przypadków, gdy operacja zostanie ponowiona zakończy się niepowodzeniem.      |     0    |
+| `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "table" podczas przetwarzania całą tabelę lub "table" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Proces cały model      |
 
 CommitMode jest równy partialBatch. Jest używany podczas wykonywania ładowania początkowego dużych zestawów danych, który może potrwać do godziny. W przypadku niepowodzenia operacji odświeżania po zatwierdzeniu pomyślnie co najmniej jedna partia pomyślnie zatwierdzić partii pozostaną zatwierdzone (go nie wycofa pomyślnie zatwierdzona partie).
 

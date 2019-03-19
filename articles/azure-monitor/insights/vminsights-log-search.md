@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/06/2019
+ms.date: 03/15/2019
 ms.author: magoedte
-ms.openlocfilehash: f33b87fa2c90eda7e4fa135e55565781e8491418
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983782"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188972"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych umożliwia zbieranie informacji o wydajności i metryki połączeń, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -33,10 +33,20 @@ Istnieją wewnętrznie generowane właściwości, które służy do identyfikacj
 
 Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym okresie, zapytania może zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowsze rekord, należy dodać "| Funkcja deduplikacji ResourceId"zapytania.
 
-### <a name="connections"></a>Połączenia
-Metryki połączeń są zapisywane w dziennikach w usłudze Azure Monitor — VMConnection nową tabelę. Ta tabela zawiera informacje o połączeniach dla maszyny (przychodzące i wychodzące). Metryki połączeń są również udostępniane za pomocą interfejsów API, które zapewniają środki do uzyskania określona Metryka przedziale czasu.  Połączenia protokołu TCP, wynikające z "*zaakceptować*- ing nasłuchiwania gniazda są dla ruchu przychodzącego, a te utworzone przez *połączyć*- ing do danego adresu IP i portu są ruchu wychodzącego. Kierunek połączenie jest reprezentowane przez właściwość "Direction", który może być ustawiony na **dla ruchu przychodzącego** lub **wychodzących**. 
+### <a name="connections-and-ports"></a>Połączenia i porty
+Funkcja metryki połączeń wprowadza dwa nowe tabele w dzienniki usługi Azure Monitor — VMConnection i VMBoundPort. Te tabele zawierają informacje dotyczące połączenia dla komputera (przychodzące i wychodzące), a także serwer portów, które są otwarte/aktywny na nich. ConnectionMetrics również są udostępniane za pośrednictwem interfejsów API, które zapewniają środki do uzyskania określona Metryka przedziale czasu. Połączenia protokołu TCP, wynikające z *akceptowanie* na gniazdo nasłuchiwania są dla ruchu przychodzącego, a te utworzone przez *łączenie* danego adresu IP i portu są ruchu wychodzącego. Kierunek połączenie jest reprezentowane przez właściwość "Direction", który może być ustawiony na **dla ruchu przychodzącego** lub **wychodzących**. 
 
-Rekordów w tych tabelach są generowane na podstawie danych przekazywanych przez agenta zależności. Każdy rekord reprezentuje obserwacji w przedziałach czasu jednej minuty. Właściwość TimeGenerated wskazuje początek przedziału czasu. Każdy rekord zawiera informacje w celu zidentyfikowania odpowiednich jednostek, to znaczy, połączenia lub portu, a także metryki skojarzone z tej jednostki. Obecnie jest zgłaszany tylko aktywność sieciową występujący za pomocą protokołu TCP za pośrednictwem protokołu IPv4.
+Rekordów w tych tabelach są generowane na podstawie danych przekazywanych przez agenta zależności. Każdy rekord reprezentuje obserwacji w przedziałach czasu 1 minuty. Właściwość TimeGenerated wskazuje początek przedziału czasu. Każdy rekord zawiera informacje w celu zidentyfikowania odpowiednich jednostek, to znaczy, połączenia lub portu, a także metryki skojarzone z tej jednostki. Obecnie jest zgłaszany tylko aktywność sieciową występujący za pomocą protokołu TCP za pośrednictwem protokołu IPv4. 
+
+#### <a name="common-fields-and-conventions"></a>Typowe pola i konwencje 
+Poniższe pola i konwencje dotyczą zarówno VMConnection, jak i VMBoundPort: 
+
+- Komputer: W pełni kwalifikowaną nazwę domeny z raportowaniem daje używanie maszyny 
+- AgentID: Unikatowy identyfikator dla komputera z agentem usługi Log Analytics  
+- Komputer: Nazwa zasobu usługi Azure Resource Manager dla maszyny, udostępnianych przez ServiceMap. Ma on postać *m-{GUID}*, gdzie *GUID* jest tego samego identyfikatora GUID jako identyfikator agenta  
+- Proces: Nazwa zasobu usługi Azure Resource Manager dla procesu udostępnianych przez ServiceMap. Ma on postać *p-{ciąg szesnastkowy}*. Proces jest unikatowa w zakresie maszyny i można wygenerować unikatowy identyfikator procesu na komputerach, należy połączyć maszyny i proces pól. 
+- ProcessName: Nazwa pliku wykonywalnego procesu raportowania.
+- Wszystkie adresy IP są ciągami w formacie kanonicznym IPv4, na przykład *13.107.3.160* 
 
 Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają poszczególnych fizycznych połączeń sieciowych. Wiele połączeń sieci fizycznej są grupowane w logicznej połączenia, które następnie są odzwierciedlane w odpowiedniej tabeli.  Znaczenie, rejestruje w *VMConnection* tabeli reprezentują logiczne grupowanie, a nie poszczególnych fizycznego połączenia, które są przestrzegane. Połączenie z siecią fizyczną współużytkujące taką samą wartość, w przypadku następujących atrybutów dla danego interwału jednej minuty są agregowane w jednym rekordzie logicznych w *VMConnection*. 
 
@@ -81,7 +91,7 @@ Oto niektóre ważne punkty, które należy wziąć pod uwagę:
 1. Jeśli proces akceptuje połączenia na ten sam adres IP, ale w wielu interfejsów sieciowych, zostanie zgłoszony oddzielny rekord dla każdego interfejsu. 
 2. Rekordy z symbolami wieloznacznymi IP będzie zawierać żadnych działań. Zostaną one dołączone do reprezentowania fakt, że port na maszynie jest otwarty dla ruchu przychodzącego ruchu sieciowego.
 3. Aby zmniejszyć poziom szczegółowości i ilość danych, rekordów za pomocą adresu IP z symbolami wieloznacznymi zostaną pominięte po pasującego rekordu (w przypadku tego samego procesu, portów i protokołów) przy użyciu określonego adresu IP. Gdy rekord IP symbol wieloznaczny zostanie pominięty, IsWildcardBind właściwości rekordu z określonego adresu IP ustawi na wartość "True" do wskazania, że port jest uwidaczniany przez każdy interfejs raportowania maszyny.
-4. Porty, które są powiązane tylko dla określonego interfejsu mają IsWildcardBind ustawiony na wartość "False".
+4. Porty, które są powiązane tylko dla określonego interfejsu mają IsWildcardBind równa *False*.
 
 #### <a name="naming-and-classification"></a>Nazewnictwo i klasyfikacji
 Dla wygody adres IP zdalnego punktu końcowego połączenia znajduje się we właściwości RemoteIp. Dla połączeń przychodzących RemoteIp jest taka sama jak SourceIp, natomiast w przypadku połączeń wychodzących, jest taka sama jak DestinationIp. Właściwość RemoteDnsCanonicalNames reprezentuje zgłoszone przez maszynę dla RemoteIp nazwy kanonicznej DNS. Właściwości RemoteDnsQuestions i RemoteClassification są zarezerwowane do użytku w przyszłości. 
@@ -111,6 +121,36 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 |IsActive |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
 |ReportReferenceLink |Zawiera łącza do raportów związanych z danym możliwość obserwowania. |
 |AdditionalInformation |Udostępnia dodatkowe informacje, jeśli ma to zastosowanie, temat obserwowanych zagrożenia. |
+
+### <a name="ports"></a>Porty 
+Porty na maszynie, które aktywnie akceptuje ruch przychodzący lub potencjalnie może akceptować ruch, ale są w stanie bezczynności raportowania przedziale czasu, są zapisywane w tabeli VMBoundPort.  
+
+Domyślnie dane nie są zapisywane w tej tabeli. Aby uzyskać dane zapisywane w tej tabeli, Wyślij wiadomość e-mail do vminsights@microsoft.com wraz z regionu obszaru roboczego i identyfikator obszaru roboczego, na których.   
+
+Każdy rekord w VMBoundPort jest identyfikowane za pomocą następujących pól: 
+
+| Właściwość | Opis |
+|:--|:--|
+|Przetwórz | Tożsamość procesu (lub grupy procesów), z którymi jest skojarzony z portu.|
+|Adres IP | Port adresu IP (mogą być symbolami wieloznacznymi adres IP, *0.0.0.0*) |
+|Port |Numer portu |
+|Protokół | Protokół.  Przykład *tcp* lub *udp* (tylko *tcp* jest obecnie obsługiwane).|
+ 
+Tożsamość portu jest tworzony na podstawie powyższych pięć pól i jest przechowywany we właściwości identyfikator portu. Ta właściwość umożliwia szybkie znajdowanie rekordy na określonym porcie w czasie. 
+
+#### <a name="metrics"></a>Metryki 
+Port rekordy obejmują reprezentujące połączenia skojarzone z nimi metryk. Obecnie następujące metryki są zgłaszane (szczegółowe informacje dotyczące każdego metryki są opisane w poprzedniej sekcji): 
+
+- Żądania i BytesReceived 
+- LinksEstablished, LinksTerminated, LinksLive 
+- ResposeTime, ResponseTimeMin, ResponseTimeMax, ResponseTimeSum 
+
+Oto niektóre ważne punkty, które należy wziąć pod uwagę:
+
+- Jeśli proces akceptuje połączenia na ten sam adres IP, ale w wielu interfejsów sieciowych, zostanie zgłoszony oddzielny rekord dla każdego interfejsu.  
+- Rekordy z symbolami wieloznacznymi IP będzie zawierać żadnych działań. Zostaną one dołączone do reprezentowania fakt, że port na maszynie jest otwarty dla ruchu przychodzącego ruchu sieciowego. 
+- Aby zmniejszyć poziom szczegółowości i ilość danych, rekordów za pomocą adresu IP z symbolami wieloznacznymi zostaną pominięte po pasującego rekordu (w przypadku tego samego procesu, portów i protokołów) przy użyciu określonego adresu IP. Gdy rekord IP symbol wieloznaczny zostanie pominięty, *IsWildcardBind* właściwość dla rekordu z określonego adresu IP zostanie ustawiona *True*.  Oznacza to, że port jest uwidaczniany przez każdy interfejs raportowania maszyny. 
+- Porty, które są powiązane tylko dla określonego interfejsu mają IsWildcardBind równa *False*. 
 
 ### <a name="servicemapcomputercl-records"></a>Rekordy ServiceMapComputer_CL
 Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z agenta zależności. Te rekordy mają właściwości podane w poniższej tabeli:
@@ -165,55 +205,124 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 
 ### <a name="list-all-known-machines"></a>Listę wszystkich znanych maszyn
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Kiedy został maszyny Wirtualnej ostatniego ponownego rozruchu
-`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```kusto
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Podsumowanie dotyczące maszyn wirtualnych platformy Azure według obrazu, lokalizacji i jednostki SKU
-`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```kusto
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Wyświetl listę wszystkich zarządzanych komputerów pojemność pamięci fizycznej.
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Nazwa komputera listy, DNS, adresu IP i systemu operacyjnego.
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Znajdź wszystkie procesy za pomocą "sql" w wierszu polecenia
-`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Znajdź maszyny (najnowsze rekordu) według nazwy zasobu
-`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Znajdź maszyny (najnowsze rekordu) przy użyciu adresu IP
-`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Listę wszystkich znanych procesów na określonym komputerze
-`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-computers-running-sql-server"></a>Lista wszystkich komputerów z uruchomionym programem SQL Server
-`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Wyświetla listę wszystkich wersji produktu unikatowy programu curl w mojego centrum danych
-`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```kusto
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Utwórz grupę komputerów wszystkich komputerów z systemem CentOS
-`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```
 
 ### <a name="bytes-sent-and-received-trends"></a>Liczba bajtów wysłanych i odebranych trendów
-`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```kusto
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Które maszyny wirtualne platformy Azure są przesyłania najbardziej bajtów
-`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```kusto
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```
 
 ### <a name="link-status-trends"></a>Trendy stan łącza
-`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```kusto
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```
 
 ### <a name="connection-failures-trend"></a>Trend błędów połączenia
-`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```kusto
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```
+
+### <a name="bound-ports"></a>Powiązane z portami
+```kusto
+VMBoundPort
+| where TimeGenerated >= ago(24hr)
+| where Computer == 'admdemo-appsvr'
+| distinct Port, ProcessName
+```
+
+### <a name="number-of-open-ports-across-machines"></a>Liczba otwartych portów na komputerach
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by Computer, Machine, Port, Protocol
+| summarize OpenPorts=count() by Computer, Machine
+| order by OpenPorts desc
+```
+
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Ocena procesów w obszarze roboczym przez liczbę portów, które mają otwarte
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by ProcessName, Port, Protocol
+| summarize OpenPorts=count() by ProcessName
+| order by OpenPorts desc
+```
+
+### <a name="aggregate-behavior-for-each-port"></a>Zachowanie agregacji dla poszczególnych portów
+To zapytanie następnie służy do oceniania portów przez działanie, np. porty większość ruchu przychodzącego/wychodzącego, portów przy użyciu większość połączeń
+```kusto
+// 
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize BytesSent=sum(BytesSent), BytesReceived=sum(BytesReceived), LinksEstablished=sum(LinksEstablished), LinksTerminated=sum(LinksTerminated), arg_max(TimeGenerated, LinksLive) by Machine, Computer, ProcessName, Ip, Port, IsWildcardBind
+| project-away TimeGenerated
+| order by Machine, Computer, Port, Ip, ProcessName
+```
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Podsumowanie połączenia wychodzące z grupy maszyn
-```
+```kusto
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
 // map of ip to monitored machine in the environment

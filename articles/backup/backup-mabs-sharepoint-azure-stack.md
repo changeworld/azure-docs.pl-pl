@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
-ms.openlocfilehash: b617ccee1826dfcc05ca7131d1eb04fd98b6b627
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811158"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895876"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Tworzenie kopii zapasowych farmy programu SharePoint w usłudze Azure Stack
 Wykonywania kopii zapasowych farmy programu SharePoint w usłudze Azure Stack w systemie Microsoft Azure za pomocą Microsoft Azure Backup Server (MABS) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Umożliwia także przechowywać kopie dysk lokalny dla szybkiego cele czasu odzyskiwania (RTO), a następnie do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.
@@ -23,7 +23,7 @@ Usługa Azure Backup dla serwera usługi Mab obsługuje następujące scenariusz
 
 | Obciążenie | Wersja | Wdrażanie programu SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- |
-| Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Program SharePoint jest wdrożony jako maszyna wirtualna usługi Azure Stack <br> -------------- <br> Funkcji SQL AlwaysOn | Ochrona farmy programu SharePoint do odzyskania: Farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
+| Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |SharePoint wdrożony jako maszyna wirtualna usługi Azure Stack <br> -------------- <br> Funkcji SQL AlwaysOn | Ochrona farmy programu SharePoint do odzyskania: Farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 Istnieje kilka kwestii, czego potrzebujesz, aby upewnić się, zanim wykona kopii zapasowej farmy programu SharePoint na platformie Azure.

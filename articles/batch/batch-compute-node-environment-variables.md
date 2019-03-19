@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 02/07/2019
 ms.author: lahugh
-ms.openlocfilehash: 734c16111ab859b55d87525cdc8a644c8114f6d2
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429047"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874765"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Zmienne środowiskowe węzła obliczeniowego usługi Azure Batch
 
@@ -62,7 +62,6 @@ Wiersze polecenia wykonywane przez zadania obliczeniowe węzłów nie uruchamiaj
 | AZ_BATCH_TASK_DIR               | Pełna ścieżka [katalogu zadań] [ files_dirs] w węźle. Ten katalog zawiera `stdout.txt` i `stderr.txt` zadania oraz AZ_BATCH_TASK_WORKING_DIR. | Wszystkie zadania. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Identyfikator bieżącego zadania. | Wszystkie zadania, z wyjątkiem zadanie podrzędne uruchamiania. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Ścieżka katalogu, która jest taka sama dla podstawowego zadania i podzadania, każdy z [zadanie podrzędne obejmujące wiele wystąpień][multi_instance]. Ścieżka istnieje w każdym węźle, na którym zadanie działa wiele wystąpień, a jest dostępna dla polecenia zadania uruchomione w tym węźle odczytu/zapisu (zarówno [polecenia koordynacji] [ coord_cmd] i [ polecenie aplikacji][app_cmd]). Podzadania lub podstawowe zadania, które wykonywania na innych węzłach ma zdalny dostęp do tego katalogu (nie jest katalogiem "udostępniona" w sieci). | Podstawowym obejmujące wiele wystąpień i podzadań. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
-| AZ_BATCH_TASK_SHARED_DIR        | Wspólnego katalogu do przechowywania danych, które mają być współużytkowane przez zadania w węźle. | Wszystkie zadania. | C:\user\tasks\shared |
 | AZ_BATCH_TASK_WORKING_DIR       | Pełna ścieżka [katalogu roboczego zadań] [ files_dirs] w węźle. Aktualnie uruchomione zadanie dostępem odczytu/zapisu do tego katalogu. | Wszystkie zadania. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | Lista węzłów i liczbę rdzeni na węzeł, który jest przydzielony do [zadanie podrzędne obejmujące wiele wystąpień][multi_instance]. Węzłów i rdzeni, które są wymienione w formacie `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, gdzie liczba węzłów następuje co najmniej jeden adres IP węzła i liczby rdzeni dla każdego. |  Podstawowym obejmujące wiele wystąpień i podzadań. |`2 10.0.0.4 1 10.0.0.5 1` |
 

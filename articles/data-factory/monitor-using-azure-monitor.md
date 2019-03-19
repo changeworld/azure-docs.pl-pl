@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: f56b4f07b7155d9f465a6ce492b4718d4a66e76e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013316"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -277,7 +277,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- | --- |
 | Poziom |String | Poziom dzienniki diagnostyczne. Poziom 4 jest zawsze w przypadku uruchomienia dzienniki działania. | `4`  |
 | correlationId |String | Unikatowy identyfikator w celu śledzenia poszczególnych żądań end-to-end | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Czas zdarzenia w czasu w formacie UTC | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | Czas zdarzenia w czasu w formacie UTC `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| Identyfikator uruchomienia działania | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| Identyfikator uruchomienia potoku | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | Identyfikator skojarzonego zasobu dla zasobu fabryki danych | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
@@ -288,7 +288,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |activityName| String | Nazwa działania | `MyActivity` |
 |rozpoczynanie| String | Początek działania uruchamiane w czasu w formacie UTC | `2017-06-26T20:55:29.5007959Z`|
 |end| String | Koniec działań są uruchamiane w czasu w formacie UTC. Jeśli działanie nie zakończyła jeszcze (dziennik diagnostyczny dla działania uruchamiania), wartość domyślna `1601-01-01T00:00:00Z` jest ustawiona.  | `2017-06-26T20:55:29.5007959Z` |
-
 
 ### <a name="pipeline-run-logs-attributes"></a>Uruchomienie potoku rejestruje atrybutów
 
@@ -324,7 +323,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- | --- |
 | Poziom |String | Poziom dzienniki diagnostyczne. Poziom 4 jest tak w przypadku uruchomienia dzienniki działania. | `4`  |
 | correlationId |String | Unikatowy identyfikator w celu śledzenia poszczególnych żądań end-to-end | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Czas zdarzenia w czasu w formacie UTC | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | Czas zdarzenia w czasu w formacie UTC `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| Identyfikator uruchomienia potoku | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | Identyfikator skojarzonego zasobu dla zasobu fabryki danych | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "PipelineRuns" | `PipelineRuns` |
@@ -334,7 +333,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |rozpoczynanie| String | Początek działania uruchamiane w czasu w formacie UTC | `2017-06-26T20:55:29.5007959Z`|
 |end| String | Koniec działania jest uruchamiany w czasu w formacie UTC. Jeśli działanie nie zakończyła jeszcze (dziennik diagnostyczny dla działania uruchamiania), wartość domyślna `1601-01-01T00:00:00Z` jest ustawiona.  | `2017-06-26T20:55:29.5007959Z` |
 |status| String | Końcowy stan potoku, uruchom (powodzenie lub niepowodzenie) | `Succeeded`|
-
 
 ### <a name="trigger-run-logs-attributes"></a>Przebieg wyzwalacza rejestruje atrybutów
 
@@ -369,7 +367,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- | --- |
 | Poziom |String | Poziom dzienniki diagnostyczne. Ustaw poziom 4 dla działania uruchamiania dzienniki. | `4`  |
 | correlationId |String | Unikatowy identyfikator w celu śledzenia poszczególnych żądań end-to-end | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Czas zdarzenia w czasu w formacie UTC | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | Czas zdarzenia w czasu w formacie UTC `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| String| Identyfikator uruchomienie wyzwalacza | `08587023010602533858661257311` |
 |resourceId| String | Identyfikator skojarzonego zasobu dla zasobu fabryki danych | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "PipelineRuns" | `PipelineRuns` |

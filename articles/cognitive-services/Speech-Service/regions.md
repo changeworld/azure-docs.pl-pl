@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.author: mahilleb
+ms.date: 03/12/2019
+ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: c9e72ea2762af0d9a4c47ca5b23fe4bdbe53b968
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447552"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900917"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -38,11 +38,19 @@ Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania 
  Zachodnie stany USA 2 | `westus2` | https://westus2.cris.ai
  Wschodnie stany USA | `eastus` | https://eastus.cris.ai
  Wschodnie stany USA 2 | `eastus2` | https://eastus2.cris.ai
+ Środkowe stany USA | 'centralus' | https://centralus.cris.ai
+ Środkowo-północne stany USA | 'northcentralus' | https://northcentralus.cris.ai
+ Środkowo-południowe stany USA | 'southcentralus' | https://southcentralus.cris.ai
  Azja Wschodnia | `eastasia` | https://eastasia.cris.ai
  Azja Południowo-Wschodnia | `southeastasia` | https://southeastasia.cris.ai
+ Japonia Wschodnia | `japaneast` | https://japaneast.cris.ai
+ Korea Środkowa | `koreacentral` | https://koreacentral.cris.ai
+ Australia Wschodnia | `australiaeast` | https://australiaeast.cris.ai
+ Kanada Środkowa | `canadacentral` | https://canadacentral.cris.ai
  Europa Północna | `northeurope` | https://northeurope.cris.ai
  Europa Zachodnia | `westeurope` | https://westeurope.cris.ai
-
+ Południowe Zjednoczone Królestwo | `uksouth` | https://uksouth.cris.ai
+ Francja Środkowa | `francecentral` | https://francecentral.cris.ai
 
 ### <a name="intent-recognition"></a>Rozpoznawanie intencji
 

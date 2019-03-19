@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 37a7610cf2458906729432b1cf53043f1badd64b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855201"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Korzystanie z usługi sieci Web Azure Machine Learning Studio z poziomu programu Excel
 
@@ -33,8 +33,8 @@ Po utworzeniu usługi sieci web, kliknij pozycję **usług sieci WEB** sekcji po
 **Klasyczna usługa sieci Web**
 
 1. Na **pulpit NAWIGACYJNY** kartę dla usługi sieci web jest wiersz **ŻĄDAŃ/odpowiedzi** usługi. Jeśli ta usługa pojedynczego wyjścia, powinien zostać wyświetlony **pobrać skoroszyt programu Excel** łącza w tym wierszu.
-   
-    ![](./media/consuming-from-excel/excellink.png)
+
+    ![Pobieranie skoroszytu programu Excel przy użyciu portalu usług sieci Web Studio](./media/consuming-from-excel/excellink.png)
 2. Kliknij pozycję **pobrać skoroszyt programu Excel**.
 
 **Nowa usługa sieci Web**
@@ -46,17 +46,17 @@ Po utworzeniu usługi sieci web, kliknij pozycję **usług sieci WEB** sekcji po
 
 1. Otwórz skoroszyt.
 2. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach; Kliknij pozycję **Włącz edytowanie** przycisku.
-   
-    ![](./media/consuming-from-excel/enableeditting.png)
+
+    ![Włącz edytowanie usunąć ostrzeżenie o zabezpieczeniach widok chroniony](./media/consuming-from-excel/enableeditting.png)
 3. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach. Kliknij pozycję **Włącz zawartość** przycisk, aby uruchomić makra w arkuszu kalkulacyjnym.
-   
-    ![](./media/consuming-from-excel/enablecontent.png)
+
+    ![Włącz zawartość zamknąć ostrzeżenie o zabezpieczeniach wyłączenie makr](./media/consuming-from-excel/enablecontent.png)
 4. Po włączeniu makra, generowany jest tabelą. Kolumny w niebieskim są wymagane jako dane wejściowe do usługi sieci web RRS, lub **parametry**. Należy pamiętać, danych wyjściowych usługi RRS **przewidywane wartości** w kolorze zielonym. Gdy wszystkie kolumny dla danego wiersza są wypełnione, skoroszyt automatycznie wywołuje interfejs API oceniania i wyświetla wyniki ocenami.
-   
-    ![](./media/consuming-from-excel/sampletable.png)
+
+    ![Tabeli dla parametru w danych wejściowych i wynikowy przewidywane wartości](./media/consuming-from-excel/sampletable.png)
 5. Zdobycie więcej niż jeden wiersz, wypełnienie drugi wiersz z danymi i przewidywane wartości są tworzone. Jednocześnie można wkleić nawet kilka wierszy.
 
-Umożliwia dowolnej funkcji programu Excel (wykresy, power map, formatowanie warunkowe itp.) z przewidywane wartości pomagają wizualizować dane.    
+Umożliwia dowolnej funkcji programu Excel (wykresy, power map, formatowanie warunkowe itp.) z przewidywane wartości pomagają wizualizować dane.
 
 ## <a name="sharing-your-workbook"></a>Udostępnianie skoroszytu
 Makr do pracy klucz interfejsu API musi być częścią arkusza kalkulacyjnego. Oznacza to, że należy udostępnić skoroszyt tylko w przypadku jednostek/osób, którym ufasz.

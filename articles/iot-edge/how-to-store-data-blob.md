@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6f82f50ebaa7ad4440078d1fd4658109cf0e19b6
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881388"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -230,6 +230,7 @@ Użyj żądanych właściwości, aby ustawić właściwości automatycznego wyga
 
 ### <a name="auto-tiering-properties"></a>Właściwości warstwy automatycznie 
 Nazwa tego ustawienia jest `tieringSettings`
+
 | Pole | Możliwe wartości | Wyjaśnienie |
 | ----- | ----- | ---- |
 | tieringOn | wartość true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`|
@@ -239,6 +240,7 @@ Nazwa tego ustawienia jest `tieringSettings`
 
 ### <a name="auto-expiration-properties"></a>Właściwości automatyczne wygaśnięcia
 Nazwa tego ustawienia jest `ttlSettings`
+
 | Pole | Możliwe wartości | Wyjaśnienie |
 | ----- | ----- | ---- |
 | ttlOn | wartość true, false | Domyślnie jest ustawiona `false`, jeśli chcesz włączyć ją na wartość `true`|
@@ -272,7 +274,7 @@ Ustaw żądane właściwości, aby umożliwić obsługę warstw automatycznie i 
 
    ```
 
- ![Ustawianie właściwości warstw automatycznie i automatycznie wygaśnięcia](./media/how-to-store-data-blob/iotedge_custom_module.png)
+  ![Ustawianie właściwości warstw automatycznie i automatycznie wygaśnięcia](./media/how-to-store-data-blob/iotedge_custom_module.png)
 
 - **Po wdrożeniu modułu za pomocą funkcji "Bliźniaczą reprezentację modułu tożsamości"**: Przejdź do "Bliźniaczą reprezentację tożsamości modułu" tego modułu, skopiuj dane JSON w obszarze właściwości żądanego, skonfiguruj każdą właściwość z odpowiednią wartością i Zapisz. W formacie Json "Bliźniaczą reprezentację modułu tożsamości" Upewnij się, że za każdym razem, gdy Dodaj lub zaktualizuj dowolny żądaną właściwość, `reported configuration` sekcji odzwierciedla wprowadzone zmiany, a `configurationValidation` sekcji zgłosi powodzenie operacji dla każdej właściwości.
 
@@ -343,6 +345,9 @@ Oto przykład żądane właściwości dla tego modułu: ![ustaw żądane właśc
     }
 
    ```
+  ## <a name="logs"></a>Dzienniki
+
+Wykonaj poniższe instrukcje [skonfigurować dzienniki platformy docker dla modułów usługi IoT Edge](production-checklist.md#set-up-logs-and-diagnostics)
 
 ## <a name="connect-to-your-blob-storage-module"></a>Łączenie usługi modułu magazynu obiektów blob
 
@@ -378,7 +383,7 @@ Języki, które są również obsługiwane przez usługi IoT Edge, dzięki czemu
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
-Możesz też spróbować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nawiązać połączenia z kontem magazynu lokalnego. Próbowaliśmy z [poprzedniej wersji 1.5.0](https://go.microsoft.com/fwlink/?LinkId=809306&clcid=0x409) Eksploratora usługi Azure.
+Możesz też spróbować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nawiązać połączenia z kontem magazynu lokalnego. Próbowaliśmy z [poprzedniej wersji 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) Eksploratora usługi Azure.
 > [!NOTE]
 > Może wystąpić błędy podczas wykonywania poniższych kroków, Ignoruj i Odśwież. 
 
@@ -388,8 +393,8 @@ Możesz też spróbować [Eksploratora usługi Azure Storage](https://azure.micr
 4. Wykonaj czynności, aby połączyć.
 5. Tworzenie kontenera w koncie magazynu lokalnego
 6. Rozpocznij przekazywanie plików jako blokowe obiekty BLOB.
-> [!NOTE]
-> Usuń zaznaczenie pola wyboru do przekazywania ich jako stronicowe obiekty BLOB. Ten moduł nie obsługuje stronicowych obiektów blob. Wystąpi tego monitu podczas przekazywania plików, takich jak ISO, VHD, vhdx lub wszelkie duże pliki.
+   > [!NOTE]
+   > Usuń zaznaczenie pola wyboru do przekazywania ich jako stronicowe obiekty BLOB. Ten moduł nie obsługuje stronicowych obiektów blob. Wystąpi tego monitu podczas przekazywania plików, takich jak ISO, VHD, vhdx lub wszelkie duże pliki.
 
 7. Można wybrać opcję połączenia konta magazynu platformy Azure, gdy przesyłasz dane. Zapewnia jeden widok dla konta magazynu lokalnego i konta magazynu platformy Azure
 
@@ -445,7 +450,7 @@ Obsługiwane:
 Nieobsługiwane:
 * Umieść blok z adresu URL
 
-##<a name="feedback"></a>Opinia:
+## <a name="feedback"></a>Opinia:
 Twoja opinia jest bardzo ważne dla nas się tego modułu i jego funkcje przydatne i łatwych w użyciu. Podziel się swoją opinię i Daj nam znać, jak możemy ulepszyć.
 
 Może się skontaktowanie się z nami pod adresem absiotfeedback@microsoft.com 

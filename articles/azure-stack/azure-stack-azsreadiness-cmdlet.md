@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 63de39fa97850c1df72bdcd964ed670e4e8b0608
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0b75085754a66fabf07076282c977acd7f10a556
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767196"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992314"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
@@ -299,6 +299,7 @@ W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymywać raport
 > -RegionName
 
 Określa nazwę region wdrożenia usługi Azure Stack.
+
 |  |  |
 |----------------------------|--------------|
 |Wpisz:                       |String        |
@@ -310,6 +311,7 @@ Określa nazwę region wdrożenia usługi Azure Stack.
 > -FQDN
 
 Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana jako ExternalFQDN i ExternalDomainName.
+
 |  |  |
 |----------------------------|--------------|
 |Wpisz:                       |String        |
@@ -321,6 +323,7 @@ Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana 
 > -IdentitySystem
 
 Określa odpowiednio wdrożenia usługi Azure Stack System obsługi tożsamości prawidłowe wartości, AAD lub ADFS, dla usługi Azure Active Directory i Active Directory Federation Services.
+
 |  |  |
 |----------------------------|--------------|
 |Wpisz:                       |String        |
@@ -333,6 +336,7 @@ Określa odpowiednio wdrożenia usługi Azure Stack System obsługi tożsamości
 > -PfxPassword
 
 Określa hasło skojarzone z plików certyfikatów PFX.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |SecureString |
@@ -344,6 +348,7 @@ Określa hasło skojarzone z plików certyfikatów PFX.
 > -PaaSCertificates
 
 Określa hashtable zawierające ścieżki i hasła, certyfikaty PaaS.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Tablica skrótów |
@@ -355,6 +360,7 @@ Określa hashtable zawierające ścieżki i hasła, certyfikaty PaaS.
 > -DeploymentDataJSONPath
 
 Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik został wygenerowany dla wdrożenia.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -366,6 +372,7 @@ Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik 
 > -PfxPath
 
 Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/eksportu procedury, aby rozwiązać problem, wskazane przez weryfikację certyfikatu w tym narzędziu.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -377,6 +384,7 @@ Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/ekspo
 > -ExportPFXPath  
 
 Określa ścieżkę docelową dla wynikowego pliku PFX z procedury importowania/eksportowania.  
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -388,6 +396,7 @@ Określa ścieżkę docelową dla wynikowego pliku PFX z procedury importowania/
 > -Podmiotu
 
 Określa słownika uporządkowane podmiotu do generowania żądania certyfikatu.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Element OrderedDictionary   |
@@ -415,6 +424,7 @@ Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCS
 > -OutputRequestPath
 
 Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi istnieć.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -426,6 +436,7 @@ Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi is
 > -AADServiceAdministrator
 
 Określa administratora usługi usługi Azure Active Directory służący do wdrażania usługi Azure Stack.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |PSCredential   |
@@ -437,6 +448,7 @@ Określa administratora usługi usługi Azure Active Directory służący do wdr
 > -AADDirectoryTenantName
 
 Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usługi Azure Stack.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -448,6 +460,7 @@ Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usł
 > -AzureEnvironment
 
 Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i subskrypcji służący do wdrażania usługi Azure Stack i rejestrowania.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -460,6 +473,7 @@ Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i 
 > -RegistrationAccount
 
 Określa konto rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -471,6 +485,7 @@ Określa konto rejestracji, który ma być używany do rejestracji w usłudze Az
 > -RegistrationSubscriptionID
 
 Określa identyfikator subskrypcji rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Guid     |
@@ -482,6 +497,7 @@ Określa identyfikator subskrypcji rejestracji, który ma być używany do rejes
 > -ReportPath
 
 Określa ścieżkę do raportu gotowości, wartością domyślną jest bieżący katalog i domyślne nazwę raportu.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -527,6 +543,7 @@ Określa, jeśli usługi PaaS jako nazw hostów powinny zostać dodane do żąda
 > -ReportSections
 
 Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegółów.
+
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |String   |
@@ -539,6 +556,7 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 > — Podsumowanie
 
 Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegółów.
+
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
@@ -550,6 +568,7 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 > -CleanReport
 
 Usuwa historię wykonywania i sprawdzania poprawności i zapisuje operacji sprawdzania poprawności nowego raportu.
+
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
@@ -574,6 +593,7 @@ Określa ścieżkę niestandardową, aby zapisać raport gotowości JSON i pełn
 > -Upewnij się
 
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
+
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
@@ -586,6 +606,7 @@ Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 > -WhatIf
 
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie jest uruchomione.
+
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
@@ -594,3 +615,4 @@ Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie 
 |Wartość domyślna:              |False             |
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
+

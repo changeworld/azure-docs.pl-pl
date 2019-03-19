@@ -5,18 +5,26 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093841"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Przejrzyj raport szacowania kosztów w planista wdrażania usługi Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 
 Raport planisty wdrożenia zawiera podsumowanie szacowania kosztów w arkuszach [Zalecenia](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) i szczegółową analizę kosztów w arkuszu szacowania kosztów. Szczegółowa analiza kosztów jest przygotowywana dla poszczególnych maszyn wirtualnych. 
+
+>[!Note]
+>Bieżącą wersję narzędzia planisty wdrażania nie udostępnia Szacowanie kosztów dla maszyn wirtualnych replikowanych do usługi Managed Disks.
+>* Szacowane koszty odzyskiwania po awarii są takie same dla konta magazynu i dyski zarządzane, gdy parametr "Użyj dysków zarządzanych" ma wartość "Yes" w bloku "Obliczenia i sieć".
+>* Aby uzyskać przybliżoną roczne szacowania kosztów dla replikacji, wprowadź następujące ustawienia tymczasowego na **szacowania kosztów** arkusza:
+>    * Ustaw dla parametru "Czas trwania dla kosztu" **ustawienia** tabeli, aby "Year"
+>    * W **szczegółowe analiza kosztów** tabeli, do 12 należy ustawić kolumny, "Liczba awarii w roku" i "czas trwania każdej operacji testowania odzyskiwania po awarii (dni)"-30 
+>    * Koszt replikacji będą wyglądać mniej więcej kosztów, w kolumnie Koszt usługi storage "R", czyli testowania odzyskiwania po awarii w danym roku **roczny koszt rocznie** podsekcji.
 
 ### <a name="cost-estimation-summary"></a>Podsumowanie szacowania kosztów 
 Na wykresie przedstawiono podsumowanie szacowanych łącznych kosztów odzyskiwania po awarii (DR) na platformie Azure w wybranym regionie docelowym w walucie określonej na potrzeby generowania raportu.
@@ -106,9 +114,9 @@ Aby ręcznie dodać maszyny wirtualne:
 * Nadmiarowość danych 
 * Korzyść użycia hybrydowego platformy Azure
 
-3.  Tę samą wartość można zastosować do wszystkich maszyn wirtualnych w tabeli, klikając przycisk „Zastosuj do wszystkich” dla kolumn Liczba operacji testowania odzyskiwania po awarii w roku, Czas trwania każdej operacji testowania odzyskiwania po awarii (dni), Nadmiarowość danych i Korzyść użycia hybrydowego platformy Azure.
+1. Tę samą wartość można zastosować do wszystkich maszyn wirtualnych w tabeli, klikając przycisk „Zastosuj do wszystkich” dla kolumn Liczba operacji testowania odzyskiwania po awarii w roku, Czas trwania każdej operacji testowania odzyskiwania po awarii (dni), Nadmiarowość danych i Korzyść użycia hybrydowego platformy Azure.
 
-4.  Kliknij pozycję „Oblicz ponownie koszt”, aby zaktualizować koszt.
+1. Kliknij pozycję „Oblicz ponownie koszt”, aby zaktualizować koszt.
 
 **Nazwa maszyny Wirtualnej**: Nazwa maszyny Wirtualnej.
 

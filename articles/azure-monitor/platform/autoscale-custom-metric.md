@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: c30ec060eca2bc0c2f5a85565ec6ed23bce6be4e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e6423f2ce3659fd3dd738dcc8a990261bc7bf60c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088387"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Rozpoczynanie pracy z usługą automatyczne skalowanie według metryki niestandardowe na platformie Azure
 W tym artykule opisano sposób skalowania zasobu przez Metryka niestandardowa w witrynie Azure portal.
@@ -28,7 +28,7 @@ W tym artykule założono, że aplikacja sieci web za pomocą usługi applicatio
   ![Uruchamianie usługi Azure Monitor][3]
 - Kliknij pozycję Ustawienia skalowania automatycznego, aby wyświetlić wszystkie zasoby, dla których automatycznego skalowania jest stosowana, wraz z ich bieżący stan skalowania automatycznego ![odnajdywanie automatyczne skalowanie w usłudze Azure monitor][4]
 - Otwórz blok "Automatyczne skalowanie" w usłudze Azure Monitor, a następnie wybierz zasób, który chcesz skalować
-> Uwaga: Poniższe kroki, użyj planu usługi app service skojarzone z aplikacji sieci web usługi app insights skonfigurowane.
+  > Uwaga: Poniższe kroki, użyj planu usługi app service skojarzone z aplikacji sieci web usługi app insights skonfigurowane.
 - W bloku Ustawienia skalowania dla zasobu należy zauważyć, że bieżąca liczba wystąpień jest 1. Kliknij pozycję "Włączanie automatycznego skalowania".
   ![Ustawienie Skala dla nowej aplikacji sieci web][5]
 - Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk "Dodaj regułę". Zapoznaj się z opcjami reguły skalowania, które otwiera się jako okienku kontekstowym po prawej stronie. Domyślnie ustawia opcję Skalowanie usługi liczby wystąpień o 1, jeśli procent użycia procesora CPU zasobu przekracza 70%. Zmień źródło metryki u góry na "Application Insights", wybierz zasób usługi app insights na liście rozwijanej "Zasób", a następnie wybierz Metryka niestandardowa oparta na który chcesz skalować.
@@ -36,7 +36,7 @@ W tym artykule założono, że aplikacja sieci web za pomocą usługi applicatio
 - Podobnie jak powyżej, Dodaj reguły skalowania, który będzie skalowanie w pionie i zmniejszyć wartość licznika skali przez 1, jeśli Metryka niestandardowa jest poniżej wartości progowej.
   ![Skalowanie procesora cpu][7]
 - Możesz ustawić limity wystąpień. Na przykład jeśli chcesz skalować między wystąpieniami 2 do 5 w zależności od tego, niestandardowe metryki wahania Ustaw minimalną, aby "2", maksymalna, "5" i "default" do "2"
-> Uwaga: W przypadku, gdy występuje problem z odczytaniem metryk zasobów i bieżąca pojemność to pojemność domyślna, następnie aby zapewnić dostępność zasobów, skalowania automatycznego przeprowadzi skalowanie w poziomie do wartości domyślnej. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie będą skalowane w.
+  > Uwaga: W przypadku, gdy występuje problem z odczytaniem metryk zasobów i bieżąca pojemność to pojemność domyślna, następnie aby zapewnić dostępność zasobów, skalowania automatycznego przeprowadzi skalowanie w poziomie do wartości domyślnej. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie będą skalowane w.
 - Kliknij przycisk "Zapisz"
 
 Gratulacje. Teraz pomyślnie utworzono skalowania ustawienie automatycznego skalowania aplikacji sieci web na podstawie metryki niestandardowe.

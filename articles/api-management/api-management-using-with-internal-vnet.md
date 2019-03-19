@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 04712b1ba1eccd71dcfcc9012ebcbdfcbdcd2404
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d8cea95fbfb76f1dd1891045309a35aa1d0a8ab0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773687"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099488"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
@@ -108,11 +108,11 @@ Jeśli używasz niestandardowego serwera DNS w sieci wirtualnej, możesz równie
 
 ### <a name="access-on-custom-domain-names"></a>Dostęp do niestandardowych nazw domen
 
-   1. Jeśli nie chcesz uzyskać dostęp do usługi API Management z domyślnymi nazwami hostów, możesz skonfigurować niestandardowe nazwy domen dla wszystkich punktów końcowych usługi jak pokazano na poniższej ilustracji:
+1. Jeśli nie chcesz uzyskać dostęp do usługi API Management z domyślnymi nazwami hostów, możesz skonfigurować niestandardowe nazwy domen dla wszystkich punktów końcowych usługi jak pokazano na poniższej ilustracji:
 
    ![Konfigurowanie domeny niestandardowej dla usługi API Management][api-management-custom-domain-name]
 
-   2. Następnie możesz utworzyć rekordy na serwerze DNS w celu dostępu do punktów końcowych, które są dostępne jedynie z w ramach sieci wirtualnej.
+2. Następnie możesz utworzyć rekordy na serwerze DNS w celu dostępu do punktów końcowych, które są dostępne jedynie z w ramach sieci wirtualnej.
 
 ## <a name="routing"> </a> Routing
 + Równoważenia obciążenia prywatny wirtualny adres IP z zakresu podsieci zostanie zarezerwowane i umożliwiają dostęp do punktów końcowych usługi API Management z w obrębie sieci wirtualnej.

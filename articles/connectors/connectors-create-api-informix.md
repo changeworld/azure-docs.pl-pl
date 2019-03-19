@@ -1,6 +1,6 @@
 ---
-title: Nawiązać połączenia z bazą danych IBM Informix - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zarządzanie zasobami za pomocą interfejsów API REST programu IBM Informix i usługi Azure Logic Apps
+title: Nawiązać połączenie z bazą danych IBM Informix — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Zarządzanie zasobami za pomocą interfejsów API REST programu IBM Informix i Azure Logic Apps
 author: gplarsen
 manager: jeconnoc
 ms.author: plarsen
@@ -11,267 +11,267 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165904"
 ---
-# <a name="get-started-with-the-informix-connector"></a>Rozpoczynanie pracy z łącznikiem programu Informix
-Łącznik usługi Microsoft dla programu Informix łączy Logic Apps zasobów przechowywanych w bazie danych programu IBM Informix. Łącznik programu Informix obejmuje klienta Microsoft do komunikowania się z komputerami zdalnymi serwerem Informix w sieci TCP/IP. Obejmuje chmury baz danych, takich jak IBM Informix dla systemu Windows Azure wirtualizacji i lokalnych baz danych za pomocą bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platform i wersji (w tym temacie).
+# <a name="get-started-with-the-informix-connector"></a>Rozpoczynanie pracy z łącznikiem usługi Informix
+Łącznik usługi Microsoft dla programu Informix łączy Logic Apps do zasobów przechowywanych w bazie danych programu IBM Informix. Łącznik programu Informix obejmuje klienta Microsoft do komunikowania się z komputerami zdalnymi serwerem Informix w sieci TCP/IP. Obejmuje baz danych w chmurze, takich jak IBM Informix for Windows z systemem Azure wirtualizacji i baz danych przy użyciu lokalnej bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platform i wersji (w tym temacie).
 
 Łącznik obsługuje następujące operacje bazy danych:
 
-* Listy tabel bazy danych
+* Lista tabel bazy danych
 * Odczyt przy użyciu wybierz jeden wiersz.
-* Wszystkie wiersze, używając wybierz do odczytu
-* Dodaj jeden wiersz za pomocą polecenia Wstaw
-* Instrukcja ALTER jeden wiersz za pomocą aktualizacji
-* Usuń jeden wiersz używanie opcji usuwania
+* Odczyt wszystkich wierszy przy użyciu SELECT
+* Dodaj jeden wiersz, za pomocą INSERT
+* Instrukcja ALTER jeden wiersz, za pomocą aktualizacji
+* Usuń jeden wiersz, przy użyciu DELETE
 
-W tym temacie przedstawiono sposób korzystania z łącznika w aplikacji logiki, aby operacje bazy danych procesu.
+W tym temacie przedstawiono sposób korzystania z łącznika w aplikacji logiki do obsługi operacji bazy danych procesu.
 
-Aby dowiedzieć się więcej na temat aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Aby dowiedzieć się więcej o usłudze Logic Apps, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="available-actions"></a>Dostępne akcje
-Ten łącznik obsługuje następujące akcje logikę w aplikacji:
+Ten łącznik obsługuje następujące akcje aplikacji Logic Apps:
 
 * Getables
-* GetRow
-* Funkcja GetRows
-* InsertRow
+* Getrow —
+* GetRows
+* InsertRow —
 * UpdateRow
 * DeleteRow
 
 ## <a name="list-tables"></a>Wyświetl tabele
-Tworzenie aplikacji logiki do żadnej operacji składa się z wielu czynności wykonywanych za pośrednictwem portalu Microsoft Azure.
+Tworzenie aplikacji logiki dla każdej operacji składa się z wielu kroków wykonywanych za pośrednictwem portalu Microsoft Azure.
 
-W aplikacji logiki akcja zostanie dodana do listy tabel w bazie danych programu Informix. Ta akcja powoduje, że łącznik do przetwarzania zestawienie schematu Informix, takich jak `CALL SYSIBM.SQLTABLES`.
+W aplikacji logiki możesz dodać do listy tabel w bazie danych programu Informix akcję. Ta akcja powoduje, że łącznik do przetwarzania instrukcji schematu Informix, takich jak `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `InformixgetTables`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+1. W **Azure start tablicy**, wybierz opcję **+** (znak plus), **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+2. Wprowadź **nazwa**, takich jak `InformixgetTables`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **usługi App Service Planowanie**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**.  
+### <a name="add-a-trigger-and-action"></a>Dodaj wyzwalacz i Akcja
+1. W **Projektant aplikacji logiki**, wybierz opcję **pustą aplikację LogicApp** w **szablony** listy.
+2. W **wyzwalaczy** listy wybierz **cyklu**. 
+3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**.  
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Get tabele (wersja zapoznawcza)**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Get tabel (wersja zapoznawcza)**.
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. W **Informix - Get tabel** okienko konfiguracji, wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem bramy danych lokalnych**. Należy zauważyć, że zmianie ustawienia z chmury do środowiska lokalnego.
+6. W **Informix - Get tabel** konfiguracji wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem lokalnej bramy danych**. Zwróć uwagę, zmianie ustawienia z chmury do środowiska lokalnego.
    
-   * Wpisz wartość **serwera**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `ibmserver01:9089`.
-   * Wpisz wartość **bazy danych**. Na przykład wpisz `nwind`.
+   * Wpisz wartość dla **serwera**, w postaci adres lub alias numeru portu średnikami. Na przykład wpisz `ibmserver01:9089`.
+   * Wpisz wartość dla **bazy danych**. Na przykład wpisz `nwind`.
    * Wybierz wartość dla **uwierzytelniania**. Na przykład wybierz **podstawowe**.
-   * Wpisz wartość **Username**. Na przykład wpisz `informix`.
-   * Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
+   * Wpisz wartość dla **Username**. Na przykład wpisz `informix`.
+   * Wpisz wartość dla **hasło**. Na przykład wpisz `Password1`.
    * Wybierz wartość dla **bramy**. Na przykład wybierz **datagateway01**.
-7. Wybierz **Utwórz**, a następnie wybierz **zapisać**. 
+7. Wybierz **Utwórz**, a następnie wybierz pozycję **Zapisz**. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. W **InformixgetTables** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-9. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_tables**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe, które powinna zawierać listę tabel.
+8. W **InformixgetTables** bloku, w ramach **wszystkie przebiegi** w obszarze **Podsumowanie**, wybierz element, który w pierwszej z listy (ostatniego uruchomienia).
+9. W **przebiegu aplikacji logiki** bloku wybierz **szczegóły przebiegu**. W ramach **akcji** listy wybierz **Get_tables**. Zobacz wartość **stan**, powinien być **Powodzenie**. Wybierz **link danych wejściowych** Aby wyświetlić dane wejściowe. Wybierz **link danych wyjściowych**i wyświetlić dane wyjściowe, który powinien zawierać listę tabel.
    
    ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 
 ## <a name="create-the-connections"></a>Tworzenie połączeń
-Ten łącznik obsługuje połączenia z bazą danych na lokalnym i w chmurze przy użyciu następujących właściwości połączenia. 
+Ten łącznik obsługuje połączenia do bazy danych w środowisku lokalnym i w chmurze przy użyciu następujących właściwości połączenia. 
 
 | Właściwość | Opis |
 | --- | --- |
-| serwer |Wymagany. Akceptuje wartości ciągu reprezentujący adres TCP/IP lub alias w formacie IPv4 lub IPv6, a następnie (-średnikami) przez numer portu TCP/IP. |
-| baza danych |Wymagany. Akceptuje wartości ciągu reprezentujący DRDA relacyjne nazwę bazy danych (RDBNAM). Informix akceptuje ciąg 128-bajtowych (baza danych jest znany jako nazwa bazy danych programu IBM Informix (dbname)). |
-| uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, Basic lub systemu Windows (kerberos). |
-| nazwa użytkownika |Wymagany. Akceptuje wartości ciągu. |
-| hasło |Wymagany. Akceptuje wartości ciągu. |
-| brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący bramy danych lokalnych zdefiniowany do aplikacji logiki w ramach grupy magazynów. |
+| serwer |Wymagany. Akceptuje wartości ciągu reprezentujący adresu TCP/IP lub alias w formacie IPv4 lub IPv6, a następnie (-średnikami) przez numer portu TCP/IP. |
+| baza danych |Wymagany. Akceptuje wartości ciągu reprezentujący DRDA relacyjnej bazy danych nazwa (RDBNAM). Informix akceptuje ciąg 128 bajtów (baza danych jest znany jako nazwa bazy danych programu IBM Informix (dbname)). |
+| uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, podstawowe lub Windows (kerberos). |
+| nazwa użytkownika |Wymagany. Przyjmuje wartość ciągu. |
+| hasło |Wymagany. Przyjmuje wartość ciągu. |
+| brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący lokalnej bramy danych zdefiniowana z usługi Logic Apps w ramach grupy magazynów. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Utwórz połączenie bramy lokalnej
-Tego łącznika można uzyskać dostępu do bazy danych programu Informix lokalnej za pomocą bramy danych lokalnych. Zobacz Tematy bramy, aby uzyskać więcej informacji. 
+Ten łącznik może uzyskać dostęp do bazy danych programu Informix lokalnie przy użyciu lokalnej bramy danych. Zobacz Tematy bramy, aby uzyskać więcej informacji. 
 
-1. W **bram** okienko konfiguracji, wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem bramy**. Informacje o ustawieniach zmiany z chmury do środowiska lokalnego.
-2. Wpisz wartość **serwera**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `ibmserver01:9089`.
-3. Wpisz wartość **bazy danych**. Na przykład wpisz `nwind`.
+1. W **bram** konfiguracji wybierz opcję **wyboru** umożliwiające **Połącz za pośrednictwem bramy**. Informacje o ustawieniach zmiany z chmury do środowiska lokalnego.
+2. Wpisz wartość dla **serwera**, w postaci adres lub alias numeru portu średnikami. Na przykład wpisz `ibmserver01:9089`.
+3. Wpisz wartość dla **bazy danych**. Na przykład wpisz `nwind`.
 4. Wybierz wartość dla **uwierzytelniania**. Na przykład wybierz **podstawowe**.
-5. Wpisz wartość **Username**. Na przykład wpisz `informix`.
-6. Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
+5. Wpisz wartość dla **Username**. Na przykład wpisz `informix`.
+6. Wpisz wartość dla **hasło**. Na przykład wpisz `Password1`.
 7. Wybierz wartość dla **bramy**. Na przykład wybierz **datagateway01**.
 8. Wybierz **Utwórz** aby kontynuować. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
 
-## <a name="create-the-cloud-connection"></a>Utwórz połączenie z chmury
-Ten łącznik mogą uzyskiwać dostęp do bazy danych programu Informix chmurę. 
+## <a name="create-the-cloud-connection"></a>Utwórz połączenie chmury
+Ten łącznik mają dostęp do chmury bazy danych programu Informix. 
 
 1. W **bram** okienko konfiguracji, pozostaw **wyboru** wyłączone (które nie były kliknięte) **Połącz za pośrednictwem bramy**. 
-2. Wpisz wartość **nazwa połączenia**. Na przykład wpisz `hisdemo2`.
-3. Wpisz wartość **nazwa serwera programu Informix**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `hisdemo2.cloudapp.net:9089`.
-4. Wpisz wartość **Nazwa bazy danych programu Informix**. Na przykład wpisz `nwind`.
-5. Wpisz wartość **Username**. Na przykład wpisz `informix`.
-6. Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
+2. Wpisz wartość dla **nazwa połączenia**. Na przykład wpisz `hisdemo2`.
+3. Wpisz wartość dla **nazwa serwera programu Informix**, w postaci adres lub alias numeru portu średnikami. Na przykład wpisz `hisdemo2.cloudapp.net:9089`.
+4. Wpisz wartość dla **Nazwa bazy danych programu Informix**. Na przykład wpisz `nwind`.
+5. Wpisz wartość dla **Username**. Na przykład wpisz `informix`.
+6. Wpisz wartość dla **hasło**. Na przykład wpisz `Password1`.
 7. Wybierz **Utwórz** aby kontynuować. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
 
-## <a name="fetch-all-rows-using-select"></a>Pobierz wszystkie wiersze, używając wybierz
-Można utworzyć działania aplikacji logiki, aby pobrać wszystkie wiersze w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcję Informix SELECT, takich jak `SELECT * FROM AREA`.
+## <a name="fetch-all-rows-using-select"></a>Pobierz wszystkie wiersze, używając SELECT
+Można utworzyć akcji aplikacji logiki, aby pobrać wszystkie wiersze w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix SELECT, takich jak `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa** (np. "**InformixgetRows**"), **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+1. W **Azure start tablicy**, wybierz opcję **+** (znak plus), **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+2. Wprowadź **nazwa** (np. "**InformixgetRows**"), **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
+### <a name="add-a-trigger-and-action"></a>Dodaj wyzwalacz i Akcja
+1. W **Projektant aplikacji logiki**, wybierz opcję **pustą aplikację LogicApp** w **szablony** listy.
+2. W **wyzwalaczy** listy wybierz **cyklu**. 
+3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Get wierszy (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**.
-7. W **połączeń** okienko konfiguracji, wybierz opcję **Utwórz nowy**. 
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Pobierz wiersze (wersja zapoznawcza)**.
+6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**.
+7. W **połączeń** konfiguracji wybierz opcję **Utwórz nową**. 
    
     ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
 8. W **bram** okienko konfiguracji, pozostaw **wyboru** wyłączone (które nie były kliknięte) **Połącz za pośrednictwem bramy**.
    
-   * Wpisz wartość **nazwa połączenia**. Na przykład wpisz `HISDEMO2`.
-   * Wpisz wartość **nazwa serwera programu Informix**, w postaci adresu lub alias numer portu dwukropkiem. Na przykład wpisz `HISDEMO2.cloudapp.net:9089`.
-   * Wpisz wartość **Nazwa bazy danych programu Informix**. Na przykład wpisz `NWIND`.
-   * Wpisz wartość **Username**. Na przykład wpisz `informix`.
-   * Wpisz wartość **hasło**. Na przykład wpisz `Password1`.
+   * Wpisz wartość dla **nazwa połączenia**. Na przykład wpisz `HISDEMO2`.
+   * Wpisz wartość dla **nazwa serwera programu Informix**, w postaci adres lub alias numeru portu średnikami. Na przykład wpisz `HISDEMO2.cloudapp.net:9089`.
+   * Wpisz wartość dla **Nazwa bazy danych programu Informix**. Na przykład wpisz `NWIND`.
+   * Wpisz wartość dla **Username**. Na przykład wpisz `informix`.
+   * Wpisz wartość dla **hasło**. Na przykład wpisz `Password1`.
 9. Wybierz **Utwórz** aby kontynuować.
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-11. Opcjonalnie wybierz **Pokaż zaawansowane opcje** umożliwia określenie opcji zapytania.
+10. W **nazwy tabeli** listy wybierz **Strzałka w dół**, a następnie wybierz pozycję **obszaru**.
+11. Opcjonalnie można zaznaczyć **Pokaż opcje zaawansowane** umożliwia określenie opcji zapytania.
 12. Wybierz pozycję **Zapisz**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. W **InformixgetRows** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-14. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe, który powinien zawierać listę wierszy.
+13. W **InformixgetRows** bloku, w ramach **wszystkie przebiegi** w obszarze **Podsumowanie**, wybierz element, który w pierwszej z listy (ostatniego uruchomienia).
+14. W **przebiegu aplikacji logiki** bloku wybierz **szczegóły przebiegu**. W ramach **akcji** listy wybierz **Get_rows**. Zobacz wartość **stan**, powinien być **Powodzenie**. Wybierz **link danych wejściowych** Aby wyświetlić dane wejściowe. Wybierz **link danych wyjściowych**i wyświetlić dane wyjściowe, który powinien zawierać listę wierszy.
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
-## <a name="add-one-row-using-insert"></a>Dodaj jeden wiersz za pomocą polecenia Wstaw
+## <a name="add-one-row-using-insert"></a>Dodaj jeden wiersz, za pomocą INSERT
 Można utworzyć akcji aplikacji logiki, aby dodać jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix INSERT, takich jak `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `InformixinsertRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+1. W **Azure start tablicy**, wybierz opcję **+** (znak plus), **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+2. Wprowadź **nazwa**, takich jak `InformixinsertRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **usługi App Service Planowanie**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
+### <a name="add-a-trigger-and-action"></a>Dodaj wyzwalacz i Akcja
+1. W **Projektant aplikacji logiki**, wybierz opcję **pustą aplikację LogicApp** w **szablony** listy.
+2. W **wyzwalaczy** listy wybierz **cyklu**. 
+3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Wstaw wiersz (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** okienko konfiguracji, wybierz połączenie. Na przykład wybierz **hisdemo2**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Wstaw wiersz (wersja zapoznawcza)**.
+6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
+7. W **połączeń** konfiguracji wybierz, aby wybrać połączenie. Na przykład wybierz **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**, typ `Area 99999`i wpisz `102` dla **REGIONID**. 
+8. W **nazwy tabeli** listy wybierz **Strzałka w dół**, a następnie wybierz pozycję **obszaru**.
+9. Wprowadź wartości dla wszystkich wymaganych kolumn (patrz czerwona gwiazdka). Na przykład wpisz `99999` dla **AREAID**, typ `Area 99999`i wpisz `102` dla **REGIONID**. 
 10. Wybierz pozycję **Zapisz**.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. W **InformixinsertRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-12. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą nowego wiersza.
+11. W **InformixinsertRow** bloku, w ramach **wszystkie przebiegi** w obszarze **Podsumowanie**, wybierz element, który w pierwszej z listy (ostatniego uruchomienia).
+12. W **przebiegu aplikacji logiki** bloku wybierz **szczegóły przebiegu**. W ramach **akcji** listy wybierz **Get_rows**. Zobacz wartość **stan**, powinien być **Powodzenie**. Wybierz **link danych wejściowych** Aby wyświetlić dane wejściowe. Wybierz **link danych wyjściowych**i wyświetlić dane wyjściowe, które należy uwzględnić nowy wiersz.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
 ## <a name="fetch-one-row-using-select"></a>Pobieranie przy użyciu wybierz jeden wiersz.
-Można utworzyć działania aplikacji logiki w celu pobrania jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix wybierz gdzie, takich jak `SELECT FROM AREA WHERE AREAID = '99999'`.
+Można utworzyć akcji aplikacji logiki, aby pobrać jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik aby przetworzyć wybierz Informix gdzie instrukcji, takich jak `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `InformixgetRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+1. W **Azure start tablicy**, wybierz opcję **+** (znak plus), **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+2. Wprowadź **nazwa**, takich jak `InformixgetRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **usługi App Service Planowanie**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
+### <a name="add-a-trigger-and-action"></a>Dodaj wyzwalacz i Akcja
+1. W **Projektant aplikacji logiki**, wybierz opcję **pustą aplikację LogicApp** w **szablony** listy.
+2. W **wyzwalaczy** listy wybierz **cyklu**. 
+3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Get wierszy (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** konfiguracje okienku zaznacz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Pobierz wiersze (wersja zapoznawcza)**.
+6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
+7. W **połączeń** konfiguracji wybierz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**. 
-10. Opcjonalnie wybierz **Pokaż zaawansowane opcje** umożliwia określenie opcji zapytania.
+8. W **nazwy tabeli** listy wybierz **Strzałka w dół**, a następnie wybierz pozycję **obszaru**.
+9. Wprowadź wartości dla wszystkich wymaganych kolumn (patrz czerwona gwiazdka). Na przykład wpisz `99999` dla **AREAID**. 
+10. Opcjonalnie można zaznaczyć **Pokaż opcje zaawansowane** umożliwia określenie opcji zapytania.
 11. Wybierz pozycję **Zapisz**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. W **InformixgetRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-13. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą wiersza.
+12. W **InformixgetRow** bloku, w ramach **wszystkie przebiegi** w obszarze **Podsumowanie**, wybierz element, który w pierwszej z listy (ostatniego uruchomienia).
+13. W **przebiegu aplikacji logiki** bloku wybierz **szczegóły przebiegu**. W ramach **akcji** listy wybierz **Get_rows**. Zobacz wartość **stan**, powinien być **Powodzenie**. Wybierz **link danych wejściowych** Aby wyświetlić dane wejściowe. Wybierz **link danych wyjściowych**i wyświetlić dane wyjściowe, który powinien zawierać wiersz.
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
-## <a name="change-one-row-using-update"></a>Zmień jeden wiersz za pomocą aktualizacji
-Można utworzyć działania aplikacji logiki, aby zmienić jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix UPDATE, takich jak `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
+## <a name="change-one-row-using-update"></a>Jeden wiersz zmiany za pomocą aktualizacji
+Można utworzyć akcji aplikacji logiki, aby zmienić jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix UPDATE, takich jak `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `InformixupdateRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+1. W **Azure start tablicy**, wybierz opcję **+** (znak plus), **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+2. Wprowadź **nazwa**, takich jak `InformixupdateRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **usługi App Service Planowanie**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
+### <a name="add-a-trigger-and-action"></a>Dodaj wyzwalacz i Akcja
+1. W **Projektant aplikacji logiki**, wybierz opcję **pustą aplikację LogicApp** w **szablony** listy.
+2. W **wyzwalaczy** listy wybierz **cyklu**. 
+3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — aktualizacja wiersza (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** konfiguracje okienku zaznacz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Aktualizuj wiersz (wersja zapoznawcza)**.
+6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
+7. W **połączeń** konfiguracji wybierz, aby wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**, typ `Updated 99999`i wpisz `102` dla **REGIONID**. 
+8. W **nazwy tabeli** listy wybierz **Strzałka w dół**, a następnie wybierz pozycję **obszaru**.
+9. Wprowadź wartości dla wszystkich wymaganych kolumn (patrz czerwona gwiazdka). Na przykład wpisz `99999` dla **AREAID**, typ `Updated 99999`i wpisz `102` dla **REGIONID**. 
 10. Wybierz pozycję **Zapisz**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. W **InformixupdateRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-12. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą nowego wiersza.
+11. W **InformixupdateRow** bloku, w ramach **wszystkie przebiegi** w obszarze **Podsumowanie**, wybierz element, który w pierwszej z listy (ostatniego uruchomienia).
+12. W **przebiegu aplikacji logiki** bloku wybierz **szczegóły przebiegu**. W ramach **akcji** listy wybierz **Get_rows**. Zobacz wartość **stan**, powinien być **Powodzenie**. Wybierz **link danych wejściowych** Aby wyświetlić dane wejściowe. Wybierz **link danych wyjściowych**i wyświetlić dane wyjściowe, które należy uwzględnić nowy wiersz.
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
-## <a name="remove-one-row-using-delete"></a>Usuń jeden wiersz używanie opcji usuwania
-Można utworzyć działania aplikacji logiki, aby usunąć jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania zestawienie Informix usunąć, takich jak `DELETE FROM AREA WHERE AREAID = '99999'`.
+## <a name="remove-one-row-using-delete"></a>Usuń jeden wiersz, przy użyciu DELETE
+Można utworzyć akcji aplikacji logiki, aby usunąć jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji usuwania Informix, takich jak `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
-2. Wprowadź **nazwa**, takich jak `InformixdeleteRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
+1. W **Azure start tablicy**, wybierz opcję **+** (znak plus), **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+2. Wprowadź **nazwa**, takich jak `InformixdeleteRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **usługi App Service Planowanie**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**.
 
-### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
-1. W **projektanta aplikacji logiki**, wybierz pozycję **puste LogicApp** w **szablony** listy.
-2. W **wyzwalaczy** listy, wybierz **cyklu**. 
-3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz pozycję **częstotliwość** listy rozwijanej wybierz **dzień**, a następnie wybierz **interwał** na typ **7**. 
+### <a name="add-a-trigger-and-action"></a>Dodaj wyzwalacz i Akcja
+1. W **Projektant aplikacji logiki**, wybierz opcję **pustą aplikację LogicApp** w **szablony** listy.
+2. W **wyzwalaczy** listy wybierz **cyklu**. 
+3. W **cyklu** wyzwalacza, wybierz opcję **Edytuj**, wybierz opcję **częstotliwość** listy rozwijanej do wybierz **dzień**, a następnie wybierz  **Interwał** na typ **7**. 
 4. Wybierz **+ nowy krok** , a następnie wybierz **Dodaj akcję**.
-5. W **akcje** listy, wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix - Usuń wiersz (wersja zapoznawcza)**.
-6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **zmienić połączenie**. 
-7. W **połączeń** okienko konfiguracje, wybrać istniejące połączenie. Na przykład wybierz **hisdemo2**.
+5. W **akcje** wpisz **informix** w **Wyszukaj więcej akcji** pole edycji, a następnie wybierz **Informix — Usuń wiersz (wersja zapoznawcza)**.
+6. W **Pobierz wiersze (wersja zapoznawcza)** akcji wybierz **Zmień połączenie**. 
+7. W **połączeń** okienko konfiguracji, wybierz istniejące połączenie. Na przykład wybierz **hisdemo2**.
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. W **nazwy tabeli** listy, wybierz **Strzałka w dół**, a następnie wybierz **obszaru**.
-9. Wprowadź wartości dla wszystkich wymaganych kolumn (zobacz czerwoną gwiazdką). Na przykład wpisz `99999` dla **AREAID**. 
+8. W **nazwy tabeli** listy wybierz **Strzałka w dół**, a następnie wybierz pozycję **obszaru**.
+9. Wprowadź wartości dla wszystkich wymaganych kolumn (patrz czerwona gwiazdka). Na przykład wpisz `99999` dla **AREAID**. 
 10. Wybierz pozycję **Zapisz**. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. W **InformixdeleteRow** bloku, w **wszystkie elementy** w obszarze **Podsumowanie**, wybierz element w pierwszej listy (Uruchom ostatniego).
-12. W **Uruchom aplikację logiki** bloku, wybierz opcję **Uruchom szczegóły**. W ramach **akcji** listy, wybierz **Get_rows**. Zobacz wartość **stan**, które powinny być **zakończyło się pomyślnie**. Wybierz **dane wejściowe, łącza** do wyświetlania danych wejściowych. Wybierz **dane wyjściowe link**i wyświetlić dane wyjściowe; obejmującą usuniętych wierszy.
+11. W **InformixdeleteRow** bloku, w ramach **wszystkie przebiegi** w obszarze **Podsumowanie**, wybierz element, który w pierwszej z listy (ostatniego uruchomienia).
+12. W **przebiegu aplikacji logiki** bloku wybierz **szczegóły przebiegu**. W ramach **akcji** listy wybierz **Get_rows**. Zobacz wartość **stan**, powinien być **Powodzenie**. Wybierz **link danych wejściowych** Aby wyświetlić dane wejściowe. Wybierz **link danych wyjściowych**i wyświetlić dane wyjściowe, który powinien zawierać wiersz usunięty.
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
-## <a name="supported-informix-platforms-and-versions"></a>Obsługiwane platformy Informix i wersje
-Ten łącznik obsługuje następujące wersje programu IBM Informix skonfigurowany do obsługi połączeń klienckich rozproszonych relacyjnej bazy danych architektury DRDA ().
+## <a name="supported-informix-platforms-and-versions"></a>Obsługiwane Informix platformy i wersje
+Ten łącznik obsługuje następujące wersje programu IBM Informix, gdy skonfigurowane do obsługi połączeń klienckich rozproszonej architektury bazy danych relacyjnych (DRDA).
 
 * IBM Informix 12.1
 * IBM Informix 11,7
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/informix/). 
+Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/informix/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Eksploruj dostępnych łączników w aplikacjach logiki w naszym [listy interfejsów API](apis-list.md).
+[Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zapoznaj się z innych dostępnych łączników w usłudze Logic Apps w naszym [listy interfejsów API](apis-list.md).
 

@@ -2,19 +2,19 @@
 title: Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanej
 description: Użyj obrazu z witryny Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanej i zarządzania stanem zdalnym, aby łatwo wdrażać zasoby na platformie Azure.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, tożsamość usługi zarządzanej, maszyna wirtualna, stan zdalny, azure
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007968"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
 
@@ -77,7 +77,7 @@ Obraz maszyny wirtualnej programu Terraform wykonuje następujące kroki:
 
 ## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Konfigurowanie maszyny wirtualnej programu Terraform z systemem Linux i dostęp do niej
 
-Po utworzeniu maszyny wirtualnej możesz zalogować się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta utworzonych w sekcji podstaw kroku 3 dla interfejsu powłoki tekstowej. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](http://www.putty.org/).
+Po utworzeniu maszyny wirtualnej możesz zalogować się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta utworzonych w sekcji podstaw kroku 3 dla interfejsu powłoki tekstowej. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](https://www.putty.org/).
 
 Po połączeniu z maszyną wirtualną przy użyciu protokołu SSH należy nadać uprawnienia współautora do tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej dla całej subskrypcji. 
 
@@ -93,7 +93,7 @@ Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0
 
  Aby uzyskać więcej informacji na temat zarządzania stanem zdalnym, zobacz [tę stronę o stanie zdalnym programu Terraform](https://www.terraform.io/docs/state/remote.html). W tym pliku jest uwidoczniony klucz dostępu magazynu. Należy go wykluczyć przed zaewidencjonowaniem plików konfiguracji programu Terraform w kontroli źródła.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób konfigurowania maszyny wirtualnej programu Terraform z systemem Linux na platformie Azure. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure: 
 
  [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  

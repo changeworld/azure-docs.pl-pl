@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: fb976842f3ea6f5df81c795b3be775ed57798b90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: dd60897d19ef4de7369b2b127c88e778363a387f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852280"
 ---
 # <a name="quickstart-change-model-using-c"></a>Szybki start: zmiana modelu przy użyciu języka C#
 
@@ -37,7 +37,7 @@ ms.locfileid: "55870949"
 
 ## <a name="create-quickstart-code"></a>Tworzenie kodu przewodnika Szybki start 
 
-W programie Visual Studio utwórz nową **klasyczną aplikację konsolową systemu Windows** za pomocą programu .NET Framework. 
+W programie Visual Studio Utwórz nowy **Windows Classic Desktop konsoli** aplikacji przy użyciu programu .NET Framework. 
 
 ![Typ projektu programu Visual Studio](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
@@ -138,6 +138,6 @@ W tym wierszu polecenia wyświetlane są wyniki wywołania interfejsu API dodawa
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md) 

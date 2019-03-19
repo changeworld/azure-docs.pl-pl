@@ -1,21 +1,21 @@
 ---
-title: Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Machine Learning Studio
+title: Zarządzanie usługami sieci web za pomocą usługi API Management
 titleSuffix: Azure Machine Learning Studio
 description: Przewodnik, w którym pokazano, jak zarządzać usługami sieci web Azure ml za pomocą usługi API Management. Zarządzanie punktami końcowymi usługi interfejsu API REST, definiując dostępu użytkownika, ograniczenie przepustowości i pulpit nawigacyjny monitorowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d4029d7f15918ea75ebcb10bfa8f8f7657eb11ca
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852896"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -182,11 +182,11 @@ Zmień jej nazwę na **SimpleFeatureHashingExperiment**. Rozwiń **zapisane zest
 
 Rozwiń **przekształcania danych** i **manipulowania** i przeciągnij **Select Columns in Dataset** obszarze eksperymentu. Połącz **Zarezerwuj przeglądy ze środowiska Amazon** do **Wybieranie kolumn w zestawie danych**.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Łączenie modułu zestawu danych przeglądy książki modułu kolumny projektu](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Kliknij przycisk **Select Columns in Dataset** a następnie kliknij przycisk **uruchamianie selektora kolumn** i wybierz **Col2**. Kliknij znacznik wyboru, aby zastosować te zmiany.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Wybierz kolumny przy użyciu nazwy kolumn](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Rozwiń **analizy tekstu** i przeciągnij **Tworzenie skrótu funkcji** na eksperyment. Połącz **Wybieranie kolumn w zestawie danych** do **Tworzenie skrótu funkcji**.
 

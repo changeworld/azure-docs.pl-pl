@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roiyz
-ms.openlocfilehash: 455ca0ed1de5df3a184d900aeae286dfd5233a60
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716512"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014426"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszynie wirtualnej systemu Windows
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Ten artykuł pokazuje, jak zainstalować i skonfigurować klienta programu Symantec Endpoint Protection na istniejącej maszyny wirtualnej (VM) systemem Windows Server. Ta pełnego klienta obejmuje usługi, takie jak przed wirusami i ochrony przed programami szpiegującymi, zapory i zapobiegania nieautoryzowanego dostępu. Klient jest zainstalowany jako rozszerzenie zabezpieczeń przy użyciu agenta maszyny Wirtualnej.
 
@@ -65,20 +65,20 @@ Aby sprawdzić, czy rozszerzenie zabezpieczeń firmy Symantec został zainstalow
 2. Dla systemu Windows Server 2008 R2, kliknij przycisk **Start > rozwiązanie Symantec Endpoint Protection**. Dla systemu Windows Server 2012 lub Windows Server 2012 R2, na ekranie startowym wpisz **Symantec**, a następnie kliknij przycisk **rozwiązanie Symantec Endpoint Protection**.
 3. Z **stan** karcie **stan Symantec Endpoint Protection** okna, zastosować aktualizacje lub ponowne uruchomienie w razie potrzeby.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 [Jak logować się do maszyny wirtualnej z systemem Windows Server][Logon]
 
 [Rozszerzenia maszyny Wirtualnej platformy Azure i funkcji][Ext]
 
 <!--Link references-->
-[Symantec]: http://www.symantec.com/connect/blogs/symantec-endpoint-protection-now-microsoft-azure
+[Symantec]: https://www.symantec.com/connect/blogs/symantec-endpoint-protection-now-microsoft-azure
 
 [Create]:../windows/classic/tutorial.md
 
 [PS]: /powershell/azureps-cmdlets-docs
 
-[Agent]: http://go.microsoft.com/fwlink/p/?LinkId=403947
+[Agent]: https://go.microsoft.com/fwlink/p/?LinkId=403947
 
 [Logon]:../windows/classic/connect-logon.md
 
-[Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
+[Ext]: https://go.microsoft.com/fwlink/p/?linkid=390493

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: eb16778e0e7050dfda92fcc1b92afffe5860268d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767587"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835836"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -33,9 +33,9 @@ Korzystanie z punktu dystrybucji umożliwia:
 W tym artykule opisano następujące cztery zastosowań:
 
 1. [Szybkie łączenie pojedynczego urządzenia przy użyciu sygnatury dostępu Współdzielonego](#connect-a-single-device)
-1. [Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego](#connect-devices-at-scale-using-shared-access-signatures)
+1. Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego
 1. [Łączenie urządzeń na dużą skalę za pomocą certyfikatów X.509](#connect-devices-using-x509-certificates) jest to zalecane podejście do środowisk produkcyjnych.
-1. [Połączenia bez pierwszej rejestracji urządzenia](#connect-without-first-registering-devices) 
+1. Połączenia bez pierwszej rejestracji urządzenia 
 
 ## <a name="connect-a-single-device"></a>Łączenie pojedynczego urządzenia
 
@@ -69,7 +69,7 @@ Aby zarejestrować dużą liczbę urządzeń z aplikacją IoT Central, przy uży
 Aby pobrać informacje o połączeniu dla zaimportowanych urządzeń [wyeksportować plik CSV z aplikacji IoT Central](howto-manage-devices.md#export-devices).
 
 > [!NOTE]
-> Aby dowiedzieć się, jak można podłączyć urządzenia bez rejestrowania ich pierwszym w IoT Central, zobacz [Połącz bez pierwszej rejestracji urządzenia](#connect-without-first-registering-devices).
+> Aby dowiedzieć się, jak można podłączyć urządzenia bez rejestrowania ich pierwszym w IoT Central, zobacz łączenie bez pierwszej rejestracji urządzenia.
 
 ### <a name="set-up-your-devices"></a>Konfigurowanie urządzeń
 

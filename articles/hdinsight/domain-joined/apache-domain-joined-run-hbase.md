@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: e1a0dda4c13baf7fc2e5ba65d599db8c74591adb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893242"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117289"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: Konfigurowanie zasad platformy Apache HBase w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
@@ -102,7 +102,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
     ![Interfejs użytkownika administratora platformy Apache Ranger — tworzenie zasad](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3.  Na ekranie **Tworzenie zasad** wprowadź następujące wartości:
+3. Na ekranie **Tworzenie zasad** wprowadź następujące wartości:
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
@@ -240,7 +240,7 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster 
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
 1. Kliknij polecenie **Usuń**. Kliknij przycisk **Yes** (Tak).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Rozpocznij pracę z bazą danych Apache HBase](../hbase/apache-hbase-tutorial-get-started-linux.md)

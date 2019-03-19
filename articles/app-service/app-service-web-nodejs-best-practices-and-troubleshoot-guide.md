@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 6a22600f7d6653da64256d7ec63ba26f272b2184
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888274"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898860"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure App Service Windows
 
@@ -118,7 +118,7 @@ Wartość domyślna to false. Gdy ustawiona na wartość true, program iisnode W
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (nie należy włączać na witrynę produkcyjną)
 
-To ustawienie steruje funkcja debugowania typu. Program Iisnode jest zintegrowany z narzędzia node-inspector. Po włączeniu tego ustawienia, należy włączyć debugowanie aplikację node. Po włączeniu tego ustawienia program iisnode tworzy pliki narzędzia node-inspector, w katalogu "debuggerVirtualDir" na pierwsze żądanie debugowania aplikację node. Możesz załadować narzędzia node-inspector, wysyłając żądanie do http://yoursite/server.js/debug. Segment adresu URL debugowania można kontrolować za pomocą ustawień "debuggerPathSegment". Domyślnie debuggerPathSegment = "debug". Możesz ustawić `debuggerPathSegment` na identyfikator GUID, na przykład, tak że trudniej jest być odnajdowane przez inne osoby.
+To ustawienie steruje funkcja debugowania typu. Program Iisnode jest zintegrowany z narzędzia node-inspector. Po włączeniu tego ustawienia, należy włączyć debugowanie aplikację node. Po włączeniu tego ustawienia program iisnode tworzy pliki narzędzia node-inspector, w katalogu "debuggerVirtualDir" na pierwsze żądanie debugowania aplikację node. Możesz załadować narzędzia node-inspector, wysyłając żądanie do `http://yoursite/server.js/debug`. Segment adresu URL debugowania można kontrolować za pomocą ustawień "debuggerPathSegment". Domyślnie debuggerPathSegment = "debug". Możesz ustawić `debuggerPathSegment` na identyfikator GUID, na przykład, tak że trudniej jest być odnajdowane przez inne osoby.
 
 Odczyt [debugowanie aplikacji node.js na Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) Aby uzyskać więcej informacji na temat debugowania.
 
@@ -133,7 +133,7 @@ Moduł agentkeepalive gwarantuje, że gniazda są ponownie na usługi platformy 
 Przykład [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) konfiguracji:
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -155,9 +155,9 @@ Jeśli uważasz, Twoja aplikacja zużywa zbyt dużo procesora CPU i nie może wy
 Załóżmy na przykład, że aplikacja hello world, którego chcesz przeprowadzić profilowanie w następujący sposób:
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Przejdź do witryny konsoli debugowania https://yoursite.scm.azurewebsites.net/DebugConsole
+Przejdź do witryny konsoli debugowania `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Przejdź do katalogu site/wwwroot. Zostanie wyświetlony wiersz polecenia, jak pokazano w poniższym przykładzie:
 
@@ -185,12 +185,12 @@ To polecenie powoduje zainstalowanie v8 profilera w węźle\_modułów katalogu 
 Teraz można edytować swoje server.js do profilu aplikacji.
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }

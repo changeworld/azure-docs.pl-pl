@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3db13ed4-35c2-4b1e-bed8-9b5977061f93
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874950e733df1cf14fba2f53fdb49d478cb6f8a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 7914bc3775631f3cc5d6ae68fed10c6d5fecb853
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją AlertOps
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji AlertOps z usługą Azure AD, należy z
 
 **Aby dodać aplikację AlertOps z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -148,7 +148,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji AlertOps, 
 
     b. Z listy rozwijanej **SSO Provider** (Dostawca logowania jednokrotnego) wybierz pozycję **Azure Active Directory**.
 
-    d. W polu tekstowym **Issuer URL** (Adres URL wystawcy) użyj wartości identyfikatora wybranego w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    c. W polu tekstowym **Issuer URL** (Adres URL wystawcy) użyj wartości identyfikatora wybranego w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
     d. W polu tekstowym **SAML endpoint URL** (Adres URL logowania) wklej wartość pola **Adres URL logowania** skopiowaną z witryny Azure Portal.
 
@@ -176,7 +176,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -227,9 +227,9 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
     a. W polu tekstowym **Login User Name** (Nazwa użytkownika logowania) wprowadź nazwę użytkownika, na przykład **Brittasimon**.
 
-    b. W polu tekstowym **Official Email** (Oficjalny adres e-mail) wprowadź adres e-mail użytkownika, na przykład **Brittasimon@contoso.com**.
+    b. W **oficjalne wiadomości E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **Brittasimon\@contoso.com**.
 
-    d. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, na przykład **Britta**.
+    c. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, na przykład **Britta**.
 
     d. W polu tekstowym **Last Name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
 
@@ -241,7 +241,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka AlertOps w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji AlertOps, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

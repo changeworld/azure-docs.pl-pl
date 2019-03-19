@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888964"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002689"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład Przegląd infrastruktury platformy Azure dla maszyn wirtualnych systemu Linux
 W tym artykule przedstawiono tworzenie infrastruktury aplikacji na przykładzie. Firma Microsoft szczegółowo projektowania infrastruktury dla prostych sklepie internetowym łączącym w sobie wszystkie wskazówki i decyzji związanych z konwencji nazewnictwa, zestawy dostępności, sieci wirtualne i usługi równoważenia obciążenia i faktycznego wdrażania maszyn wirtualnych (VM).
@@ -54,7 +54,7 @@ Wszystkie powyższe postępuj zgodnie z tymi konwencji nazewnictwa:
 
 * Adventure Works Cycles używa **[IT obciążenia]-[lokalizacja]-[zasobów platformy Azure]** jako prefiksu
   * Na przykład "**azos**" (Azure Store On-line) jest nazwą obciążenia IT i "**użyj**" (wschodnie stany USA 2) to lokalizacja
-* Sieci wirtualne używać AZOS — UŻYJ-VN **[liczba]**
+* Sieci wirtualne używać AZOS — UŻYJ-VN<strong>[liczba]</strong>
 * Zestawy dostępności Użyj azos — Użyj-jako-**[rola]**
 * Nazwy maszyn wirtualnych Użyj azos — Użyj-vm -**[vmname]**
 

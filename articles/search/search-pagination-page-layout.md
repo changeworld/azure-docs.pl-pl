@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8cf65f0ed3ecd5c9a86d6adcdd5defd930522f85
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: ef29dafe32c3c5988cd33f59c8436eeef4b45886
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849282"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracować z usługą wyszukiwania wyników w usłudze Azure Search
 Ten artykuł zawiera wskazówki dotyczące implementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, porządek sortowania i nawigacji. Określono opcje związanych ze stronami, które przyczyniają się do danych lub informacji do wyników wyszukiwania za pomocą [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) żądań wysyłanych do usługi Azure Search. 
 
 W interfejsie API REST żądania obejmują polecenie GET, parametry zapytania, które informują usługę, co jest wymagana i ścieżki oraz jak sformułować odpowiedzi. W zestawie SDK platformy .NET jest równoważnego API [klasy DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet).
 
-Kilka przykładów kodu obejmują interfejs frontonu sieci web, który można znaleźć tutaj: [Aplikacja demonstracyjna, z nowego Jorku zadania](http://azjobsdemo.azurewebsites.net/) i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Kilka przykładów kodu obejmują interfejs frontonu sieci web, który można znaleźć tutaj: [Aplikacja demonstracyjna, z nowego Jorku zadania](https://azjobsdemo.azurewebsites.net/) i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Prawidłowemu żądaniu obejmuje pewną liczbę elementów, takich jak adres URL usługi i ścieżkę, czasownik HTTP `api-version`i tak dalej. Celu skrócenia programu firma Microsoft spacje przykłady, aby wyróżnić składnię która jest odpowiednia do dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania, zobacz [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice). > 
+> Prawidłowemu żądaniu obejmuje pewną liczbę elementów, takich jak adres URL usługi i ścieżkę, czasownik HTTP `api-version`i tak dalej. Celu skrócenia programu firma Microsoft spacje przykłady, aby wyróżnić składnię która jest odpowiednia do dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania zobacz [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice). > 
 > 
 
 ## <a name="total-hits-and-page-counts"></a>Łączna liczba trafień i liczby stron

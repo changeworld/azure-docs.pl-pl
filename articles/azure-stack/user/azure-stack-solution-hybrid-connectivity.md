@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a05021255c6226329f1d7a3f0e7fa8c9be756646
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c9be377dc74ac936aa3139d395b6a02f3b3192eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546725"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084365"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Samouczek: Konfigurowanie łączności chmury hybrydowej dzięki platformie Azure i usługi Azure Stack
 
@@ -152,12 +152,12 @@ Wykonaj następujące kroki, aby Tworzenie bramy sieci wirtualnej na platformie 
 3. W **bramy sieci wirtualnej**, wybierz opcję **Utwórz** otworzyć **Tworzenie bramy sieci wirtualnej** strony.
 4. Na **Tworzenie bramy sieci wirtualnej**, określ wartości dla bramy Twojej sieci, jak pokazano na **samouczek przykładowe wartości**oraz następujące wartości dodatkowe:
 
-    - **Jednostka SKU**: podstawowe
-    - **Virtual Network**: Wybierz sieć wirtualną utworzoną wcześniej. Utworzoną podsieć bramy jest wybierana automatycznie.
-    - **Konfiguracja pierwszego adresu IP**:  Jest to publiczny adres IP bramy.
-        - Wybierz **Utwórz konfigurację protokołu IP bramy**, która spowoduje przejście do **wybierz publiczny adres IP** strony.
-        - Wybierz **+ Utwórz nowe** otworzyć **tworzenie publicznego adresu IP** strony.
-        - Wprowadź **nazwa** dla publicznego adresu IP. Pozostaw jednostkę SKU jako **podstawowe**, a następnie wybierz pozycję **OK** Aby zapisać zmiany.
+   - **Jednostka SKU**: podstawowe
+   - **Virtual Network**: Wybierz sieć wirtualną utworzoną wcześniej. Utworzoną podsieć bramy jest wybierana automatycznie.
+   - **Konfiguracja pierwszego adresu IP**:  Jest to publiczny adres IP bramy.
+     - Wybierz **Utwórz konfigurację protokołu IP bramy**, która spowoduje przejście do **wybierz publiczny adres IP** strony.
+     - Wybierz **+ Utwórz nowe** otworzyć **tworzenie publicznego adresu IP** strony.
+     - Wprowadź **nazwa** dla publicznego adresu IP. Pozostaw jednostkę SKU jako **podstawowe**, a następnie wybierz pozycję **OK** Aby zapisać zmiany.
 
        > [!Note]
        > Obecnie Usługa bramy sieci VPN obsługuje tylko dynamiczne przypisywanie publicznych adresów IP. Jednakże nie oznacza to, że adres IP zmienia się po przypisaniu do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Zmiana rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień, do bramy sieci VPN nie zmieniaj adresu IP.

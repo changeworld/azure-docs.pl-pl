@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: b8bd57953845278aa75e8cbdf41ae28300edad58
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3d825a0f8a23380b4d9cf453076ab4b18ee67831
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184911"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095521"
 ---
 # <a name="azure-stack-capacity-planning"></a>Planowanie pojemności platformy Azure w stos
 Podczas obliczania rozwiązanie usługi Azure Stack, istnieją opcje konfiguracji sprzętu, które mają bezpośredni wpływ na ogólną pojemność chmury Azure Stack. Są to klasyczne możliwości procesora CPU, pamięci gęstości, konfiguracji magazynu i ogólną skalowania rozwiązania lub liczby serwerów. W przeciwieństwie do rozwiązania tradycyjną wirtualizację proste operacje arytmetyczne na tych składników w celu ustalenia pojemności do wykorzystania nie ma zastosowania. Pierwszym powodem tego jest, że usługi Azure Stack została zaprojektowana do obsługi składników infrastruktury ani zarządzania w obrębie samego rozwiązania. Drugi przyczyna jest część pojemności tego rozwiązania jest zarezerwowana w odniesieniu do odporności; Aktualizowanie oprogramowania rozwiązania w sposób, aby zminimalizować zakłócenia obciążenia dzierżaw.
@@ -49,7 +49,7 @@ Dalszy opis komplikacje związane z obliczaniem pojemności jest opisano w dalsz
 |     |     |     |     |     |     |     |     |
 
 > <sup>1</sup> standardowa D2 maszyn wirtualnych.
-
+> 
 > <sup>2</sup> rdzeni wirtualnych na rdzeń fizyczny.
 
 Jak wspomniano powyżej, pojemności maszyn wirtualnych jest określany przez ilość dostępnej pamięci. Wirtualne rdzeni do współczynniki fizyczna core spróbujemy, jak gęstość maszyn wirtualnych ulegnie zmianie dostępnej pojemności procesora CPU, chyba że rozwiązanie składa się z większej liczby rdzeni fizycznych (wybrano innego Procesora). Dotyczy to pojemność magazynu i pojemności pamięci podręcznej.

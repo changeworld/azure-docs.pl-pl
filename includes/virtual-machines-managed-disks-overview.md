@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10afad7f782d1a98dfde5f7d708477375af54597
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190672"
 ---
 ## <a name="benefits-of-managed-disks"></a>Korzyści z dyskami zarządzanymi
 
@@ -53,7 +53,7 @@ Ten dysk ma maksymalną pojemność wynoszącą 2048 GiB.
 
 ### <a name="temporary-disk"></a>Dysk tymczasowy
 
-Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub podczas ponownego wdrażania maszyny Wirtualnej. Podczas standardowych ponowny rozruch maszyny wirtualnej ma utrwalić dane na dysku tymczasowego. Jednakże istnieją przypadki, w którym dane mogą nie będzie się powtarzać, takie jak przeniesienie do nowego hosta. W związku z tym wszystkie dane na dysku tymczasowego nie powinien być dane, które mają kluczowe znaczenie dla systemu.
+Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) zdarzenia lub gdy użytkownik [ponowne wdrożenie maszyny Wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowego. 
 
 ## <a name="managed-disk-snapshots"></a>Migawki dysków zarządzanych
 

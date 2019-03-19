@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 420a0769af85d050f2786b65eb929a24d8b9da5d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863784"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java
 
@@ -28,15 +28,16 @@ Chcesz zobaczyć kod teraz? [Przykłady zastosowania zestawu SDK wyszukiwania w 
 Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
 * [Zestaw JDK 7 lub 8](https://aka.ms/azure-jdks)
 * [Narzędzie Apache Maven](https://maven.apache.org/download.cgi) lub inne narzędzie do automatyzacji kompilacji
 * Klucz subskrypcji
 
-## <a name="create-a-project-and-configure-your-pom-file"></a>Tworzenie projektu i konfigurowanie pliku POM
+## <a name="create-a-project-and-set-up-your-pom-file"></a>Tworzenie projektu i konfigurowanie pliku POM
 
-Utwórz nowy projekt w języku Java przy użyciu narzędzia Maven lub innego narzędzia do automatyzacji kompilacji. Zakładając, że używasz narzędzia Maven, dodaj następujące wiersze do pliku POM. Zamień wszystkie wystąpienia elementu `mainClass` swoją aplikacją.
+Utwórz nowy projekt w języku Java przy użyciu narzędzia Maven lub innego narzędzia do automatyzacji kompilacji. Przy założeniu, że używasz narzędzia Maven, Dodaj następujące wiersze do Twojej [modelu obiektu projektu (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) pliku. Zamień wszystkie wystąpienia elementu `mainClass` swoją aplikacją.
 
 ```xml
 <build>
@@ -180,7 +181,7 @@ Następnie dodajmy kod do analizy odpowiedzi i wyświetlania wyników. Wartości
 ```java
 /*
 * WebPages
-* If the search response contains web pages, the first result's name
+* If the search response has web pages, the first result's name
 * and url are printed.
 */
 if (webData != null && webData.webPages() != null && webData.webPages().value() != null &&
@@ -200,7 +201,7 @@ if (webData != null && webData.webPages() != null && webData.webPages().value() 
 }
 /*
  * Images
- * If the search response contains images, the first result's name
+ * If the search response has images, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.images() != null && webData.images().value() != null &&
@@ -220,7 +221,7 @@ if (webData != null && webData.images() != null && webData.images().value() != n
 }
 /*
  * News
- * If the search response contains news articles, the first result's name
+ * If the search response has news articles, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.news() != null && webData.news().value() != null &&
@@ -240,7 +241,7 @@ if (webData != null && webData.news() != null && webData.news().value() != null 
 
 /*
  * Videos
- * If the search response contains videos, the first result's name
+ * If the search response has videos, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.videos() != null && webData.videos().value() != null &&
@@ -292,11 +293,11 @@ mvn compile exec:java
 
 Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu programu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Przykłady dotyczące zestawu Java SDK dla usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Dokumentacja zestawu Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d86d4c03a41834322c98438958c0b9e87e6025c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213529"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076024"
 ---
 # <a name="azure-application-offer"></a>Oferty aplikacji platformy Azure
 
@@ -58,15 +58,15 @@ Na poniższym diagramie przedstawiono ogólny proces programu stawiane ofertom a
 
 Dostępne są następujące ogólne kroki programu stawiane ofertom aplikacji platformy Azure:
 
-0. Spełnia [wymagania wstępne](./cpp-prerequisites.md) — (nie pokazano) sprawdź, czy są spełnione wymagania biznesowe i techniczne dotyczące publikowania aplikacji platformy Azure w portalu Azure Marketplace. 
+1. Spełnia [wymagania wstępne](./cpp-prerequisites.md) — (nie pokazano) sprawdź, czy są spełnione wymagania biznesowe i techniczne dotyczące publikowania aplikacji platformy Azure w portalu Azure Marketplace. 
 
 1. [Utwórz ofertę](./cpp-create-offer.md) — zawiera szczegółowe informacje o ofercie. Informacje te obejmują: opis oferty, materiały marketingowe, informacje o pomocy technicznej i specyfikacje zasobów.
 
-2. [Tworzenie lub zebrać istniejących biznesowe i techniczne zasoby](./cpp-create-technical-assets.md) — Tworzenie trwałych biznesowe (dokumenty prawne i materiały marketingowe) i zasoby techniczne dla skojarzonego rozwiązania.
+1. [Tworzenie lub zebrać istniejących biznesowe i techniczne zasoby](./cpp-create-technical-assets.md) — Tworzenie trwałych biznesowe (dokumenty prawne i materiały marketingowe) i zasoby techniczne dla skojarzonego rozwiązania.
 
-3. [Tworzenie jednostki SKU](./cpp-skus-tab.md) -tworzenie dla jednostek SKU, skojarzone z ofertą. Unikatowe jednostki SKU jest wymagana dla każdego obrazu, w którym planujesz opublikować.
+1. [Tworzenie jednostki SKU](./cpp-skus-tab.md) -tworzenie dla jednostek SKU, skojarzone z ofertą. Unikatowe jednostki SKU jest wymagana dla każdego obrazu, w którym planujesz opublikować.
 
-4. Certyfikowanie i [opublikować ofertę](./cpp-publish-offer.md) — po ukończeniu oferta i zasoby techniczne, możesz przesłać ofertę. Ten przesłany rozpoczyna się proces publikowania. W trakcie tego procesu rozwiązanie jest testowany, zweryfikowany, certyfikowane, następnie "miejsce na żywo" w witrynie Azure Marketplace.
+1. Certyfikowanie i [opublikować ofertę](./cpp-publish-offer.md) — po ukończeniu oferta i zasoby techniczne, możesz przesłać ofertę. Ten przesłany rozpoczyna się proces publikowania. W trakcie tego procesu rozwiązanie jest testowany, zweryfikowany, certyfikowane, następnie "miejsce na żywo" w witrynie Azure Marketplace.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 16741461df2431cbf4433899dd375741e944ce0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112572"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
@@ -87,24 +87,24 @@ Zarówno dla bazy SQL Database, jak i dla magazynu SQL Data Warehouse, zezwól u
 1. Wybierz **subskrypcję** Azure, w której chcesz utworzyć fabrykę danych. 
 1. Dla opcji **Grupa zasobów** wykonaj jedną z następujących czynności:
      
-      - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
-      - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
+   - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
+   - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
-      Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
+     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 1. Wybierz opcję **V2** w obszarze **Wersja**.
 1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 1. Kliknij pozycję **Utwórz**.
 1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
-    ![kafelek Wdrażanie fabryki danych](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
+     ![kafelek Wdrażanie fabryki danych](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
    
-    ![Strona główna fabryki danych](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
+     ![Strona główna fabryki danych](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 1. Kliknij kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
 1. Na stronie **Wprowadzenie** przejdź do karty **Edycja** w lewym panelu, jak pokazano na poniższej ilustracji:  
 
-    ![Strona Wprowadzenie](./media/tutorial-bulk-copy-portal/get-started-page.png)
+     ![Strona Wprowadzenie](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 Połączone usługi są tworzone w celu połączenia magazynów danych i obliczeń z fabryką danych. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa do nawiązywania połączenia z magazynem danych w środowisku uruchomieniowym. 
@@ -179,10 +179,10 @@ W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach
 
 1. Przejdź do karty **Połączenie** i wykonaj następujące czynności: 
 
-    1. Wybierz wartość **AzureSqlDatabaseLinkedService** w polu **Połączona usługa**.
-    1. Wybierz dowolną tabelę w polu **Tabela**. Jest to tabela fikcyjna. Zapytanie dotyczące źródłowego zestawu danych jest określane podczas tworzenia potoku. Zapytanie służy do wyodrębniania danych z bazy danych Azure SQL Database. Możesz również kliknąć pole wyboru **Edytuj**, a następnie wprowadzić wartość **dummyName** jako nazwę tabeli. 
+   1. Wybierz wartość **AzureSqlDatabaseLinkedService** w polu **Połączona usługa**.
+   1. Wybierz dowolną tabelę w polu **Tabela**. Jest to tabela fikcyjna. Zapytanie dotyczące źródłowego zestawu danych jest określane podczas tworzenia potoku. Zapytanie służy do wyodrębniania danych z bazy danych Azure SQL Database. Możesz również kliknąć pole wyboru **Edytuj**, a następnie wprowadzić wartość **dummyName** jako nazwę tabeli. 
 
-    ![Strona połączenia źródłowego zestawu danych](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
+      ![Strona połączenia źródłowego zestawu danych](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Tworzenie zestawu danych ujścia magazynu SQL Data Warehouse
@@ -238,7 +238,7 @@ Potok **GetTableListAndTriggerCopyData** przyjmuje listę tabel jako parametr. D
 
     ![Ustawienia działania ForEach](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
 
-    d. Na stronie **Dodawanie zawartości dynamicznej** zwiń sekcje Zmienne systemowe oraz Funkcje, kliknij pozycję **tableList** w obszarze **Parametry**. Spowoduje to automatyczne wypełnienie pola tekstowego wyrażenia u góry: `@pipeline().parameter.tableList`. Następnie Kliknij przycisk **Zakończ**. 
+    c. Na stronie **Dodawanie zawartości dynamicznej** zwiń sekcje Zmienne systemowe oraz Funkcje, kliknij pozycję **tableList** w obszarze **Parametry**. Spowoduje to automatyczne wypełnienie pola tekstowego wyrażenia u góry: `@pipeline().parameter.tableList`. Następnie Kliknij przycisk **Zakończ**. 
 
     ![Konstruktor parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     

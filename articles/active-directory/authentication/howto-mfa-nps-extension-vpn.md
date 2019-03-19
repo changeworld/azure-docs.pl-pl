@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe77602d138224c848cc915bbba5a7084c29650
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117884"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
@@ -30,20 +30,20 @@ Usług zasad sieciowych i dostępu zapewnia organizacjom możliwość:
 
 * Przypisz centralnej lokalizacji, zarządzanie i kontrolę nad żądania sieci, aby określić:
 
-    * Kto może się połączyć 
+  * Kto może się połączyć 
     
-    * Jakie razy dziennie połączenia są dozwolone. 
+  * Jakie razy dziennie połączenia są dozwolone. 
     
-    * Czas trwania połączeń
+  * Czas trwania połączeń
     
-    * Poziom zabezpieczeń, które klienci muszą używać do łączenia z
+  * Poziom zabezpieczeń, które klienci muszą używać do łączenia z
 
     Zamiast określać zasady na każdym serwerze sieci VPN lub bramy usług pulpitu zdalnego, to zrobić po znajdują się w centralnej lokalizacji. Protokołu RADIUS jest używany do zapewnienia scentralizowanego uwierzytelniania, autoryzacji i Ewidencjonowanie. 
 
 * Ustal i Wymuś zasady dotyczące kondycji klienta ochrony dostępu do sieci (NAP), które określają, czy urządzenia są przyznawane nieograniczony lub ograniczony dostęp do zasobów sieciowych.
 
 * Umożliwiają wymuszające uwierzytelnianie i autoryzację do uzyskiwania dostępu do 802.1 punkty dostępu bezprzewodowego możliwością x i przełączników Ethernet.   
-Aby uzyskać więcej informacji, zobacz [serwer zasad sieciowych](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
+  Aby uzyskać więcej informacji, zobacz [serwer zasad sieciowych](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
 
 Aby zwiększyć bezpieczeństwo i zapewnia wysoki poziom zgodności, organizacje mogą stosować NPS przy użyciu usługi Azure Multi-Factor Authentication, aby upewnić się, że użytkowników za pomocą weryfikacji dwuetapowej połączyć z portu wirtualnego na serwerze sieci VPN. Użytkownikom można udzielić dostępu należy podać swoją nazwę użytkownika i kombinacja hasła i inne informacje, które kontrolują one. Te informacje musi być zaufany i nie jest łatwo zduplikować. Może to obejmować numer telefonu komórkowego, numer telefonu stacjonarnego lub aplikacji na urządzeniu przenośnym.
 

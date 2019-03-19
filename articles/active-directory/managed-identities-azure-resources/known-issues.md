@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7829627352815bc96a7a81bcbbc7e51240c858e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9cfff565dec0d6f9d2bbea8edf39f180d4b63fd9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993171"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -55,17 +55,17 @@ Granicy zabezpieczeń tożsamości jest zasób, do której jest dołączony do. 
 Korzystając z zarządzanych tożsamości dla zasobów platformy Azure z maszynami wirtualnymi, zaleca się przy użyciu punktu końcowego IMDS. Azure Instance Metadata Service jest punkt końcowy REST dostępne dla wszystkich maszyn wirtualnych IaaS utworzone za pomocą usługi Azure Resource Manager. 
 
 Korzyści z używania zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS, należą:
-    - Wszystkie systemy operacyjne obsługiwane modelu IaaS platformy Azure mogą używać zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS.
-    - Nie musisz zainstalować rozszerzenie na maszynie Wirtualnej, aby umożliwić zarządzanych tożsamości dla zasobów platformy Azure. 
-    - Certyfikaty używane przez zarządzanych tożsamości dla zasobów platformy Azure nie są już dostępne na maszynie wirtualnej.
-    - Punkt końcowy IMDS jest dobrze znanego nierutowalny adresu IP, dostępne tylko z poziomu maszyny Wirtualnej.
-    - 1000 przypisanych do użytkowników zarządzanych tożsamości można przypisać do jednej maszyny Wirtualnej. 
+- Wszystkie systemy operacyjne obsługiwane modelu IaaS platformy Azure mogą używać zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS.
+- Nie musisz zainstalować rozszerzenie na maszynie Wirtualnej, aby umożliwić zarządzanych tożsamości dla zasobów platformy Azure. 
+- Certyfikaty używane przez zarządzanych tożsamości dla zasobów platformy Azure nie są już dostępne na maszynie wirtualnej.
+- Punkt końcowy IMDS jest dobrze znanego nierutowalny adresu IP, dostępne tylko z poziomu maszyny Wirtualnej.
+- 1000 przypisanych do użytkowników zarządzanych tożsamości można przypisać do jednej maszyny Wirtualnej. 
 
 Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure jest nadal dostępna; Jednak firma Microsoft nie jest już opracowujesz nową funkcję na nim. Zaleca się przejście na użycie punktu końcowego IMDS. 
 
 Niektóre ograniczenia przy użyciu punktu końcowego z rozszerzenia maszyny Wirtualnej to:
-    - Ograniczona obsługa dystrybucje systemu Linux: Stabilny systemu CoreOS, CentOS 7.1, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
-    - Do maszyny Wirtualnej można przypisać maksymalnie 32 przypisanych do użytkowników zarządzanych tożsamości.
+- Ograniczona obsługa dystrybucje systemu Linux: Stabilny systemu CoreOS, CentOS 7.1, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
+- Do maszyny Wirtualnej można przypisać maksymalnie 32 przypisanych do użytkowników zarządzanych tożsamości.
 
 
 Uwaga: Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure będzie obsługiwany w styczniu 2019 r. 
@@ -75,8 +75,8 @@ Aby uzyskać więcej informacji na temat usługi Azure Instance Metadata Service
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Zostaną zarządzanych tożsamości odtworzone automatycznie Jeśli przenieść subskrypcję do innego katalogu?
 
 Nie. Jeśli przeniesiesz subskrypcję do innego katalogu, trzeba będzie ponownie je utworzyć ręcznie i ponownie przyznawanie przypisania ról RBAC platformy Azure.
-    - Dla zarządzanych tożsamości przypisanych przez system: Wyłącz i ponownie włączyć. 
-    - Dla zarządzanych tożsamości przypisanych przez użytkownika: Usuń i ponownie utwórz ponownie podłączyć do wymaganych zasobów (np. maszyn wirtualnych)
+- Dla zarządzanych tożsamości przypisanych przez system: Wyłącz i ponownie włączyć. 
+- Dla zarządzanych tożsamości przypisanych przez użytkownika: Usuń i ponownie utwórz ponownie podłączyć do wymaganych zasobów (np. maszyn wirtualnych)
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Dostęp do zasobów w innej katalogu/dzierżawy mogą używać tożsamości zarządzanej?
 

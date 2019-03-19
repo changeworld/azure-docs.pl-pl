@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470199"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870934"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Użyj usługi Azure Functions do zarządzania compute zasobów w usłudze Azure SQL Data Warehouse
 
@@ -57,14 +57,14 @@ Po wdrożeniu szablonu powinny dostępne trzy nowe zasoby: bezpłatny Plan usłu
 
 4. W obszarze harmonogramu dodaj godzinę, o której wyrażenie CRON ma odzwierciedlać, jak często usługa SQL Data Warehouse ma być skalowana w górę. 
 
-  ![Zmienianie harmonogramu funkcji](media/manage-compute-with-azure-functions/change-schedule.png)
+   ![Zmienianie harmonogramu funkcji](media/manage-compute-with-azure-functions/change-schedule.png)
 
-  Wartość `schedule` jest [wyrażeniem CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) obejmującym sześć pól: 
-  ```json
-  {second} {minute} {hour} {day} {month} {day-of-week}
-  ```
+   Wartość `schedule` jest [wyrażeniem CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression) obejmującym sześć pól: 
+   ```json
+   {second} {minute} {hour} {day} {month} {day-of-week}
+   ```
 
-  Na przykład *"0 30 9 ** 1-5"* spowoduje odzwierciedlanie wyzwalacza w każdy dzień roboczy o godzinie 9:30:00. Aby uzyskać więcej informacji, zapoznaj się z [przykładami harmonogramów][schedule examples] usługi Azure Functions.
+   Na przykład *"0 30 9 ** 1-5"* spowoduje odzwierciedlanie wyzwalacza w każdy dzień roboczy o godzinie 9:30:00. Aby uzyskać więcej informacji, zapoznaj się z [przykładami harmonogramów][schedule examples] usługi Azure Functions.
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>Zmień czas operacji skalowania

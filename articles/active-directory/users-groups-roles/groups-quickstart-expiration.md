@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e799c1728175431f94f720ec57b6332147741b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ab72c78f66a324159d802369aa1dea545b77549c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904120"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Szybki start: Konfigurowanie wygasania grup usługi Office 365 w usłudze Azure Active Directory
 
@@ -35,15 +35,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Musisz być administratorem globalnym lub administratorem kont użytkowników w dzierżawie, aby skonfigurować wygasanie grup.
+Musi być administrator globalny lub administrator użytkowników w organizacji, aby skonfigurować wygaśnięcie grupy.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Włączanie tworzenia grup przez użytkowników
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego lub administratora kont użytkowników katalogu.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego lub administratora użytkowników w organizacji.
 
 2. Wybierz pozycję **Grupy**, a następnie wybierz pozycję **Ogólne**.
   
-  ![Samoobsługowe ustawienia grup](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![Samoobsługowe ustawienia grup](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Zmień wartość ustawienia **Użytkownicy mogą tworzyć grupy usługi Office 365** na **Tak**.
 
@@ -53,7 +53,7 @@ Musisz być administratorem globalnym lub administratorem kont użytkowników w 
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Azure Active Directory** > **Grupy** > **Wygasanie**, aby otworzyć ustawienia wygasania.
   
-  ![Ustawienia wygasania](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![Ustawienia wygasania](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. Ustaw interwał wygasania. Wybierz wstępnie zdefiniowaną wartość lub wprowadź niestandardową wartość większą niż 31 dni. 
 
@@ -78,7 +78,7 @@ Gotowe. W tym przewodniku Szybki start pomyślnie ustawiono zasady wygasania dla
 1. Wybierz pozycję **Azure Active Directory** > **Grupy** > **Ogólne**. 
 2. Ustaw opcję **Użytkownicy mogą tworzyć grupy usługi Office 365 w portalach platformy Azure** na wartość **Nie**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat wygasania, w tym na temat ograniczeń technicznych, dodawania listy niestandardowych słów zablokowanych oraz środowiska użytkownika końcowego w aplikacjach usługi Office 365, zapoznaj się z następującym artykułem zawierającym szczegółowe informacje na temat zasad wygasania:
 

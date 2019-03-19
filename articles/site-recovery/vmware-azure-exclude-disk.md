@@ -8,12 +8,12 @@ ms.workload: storage-backup-recovery
 ms.date: 3/3/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cf5b994146d84d92cae4591c042ed1cfbb042dee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002885"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Wykluczanie dysków z replikacji maszyn wirtualnych programu VMware do platformy Azure
 
@@ -80,7 +80,7 @@ Na źródłowej maszynie wirtualnej są następujące dyski:
 DB-Disk0-OS | DYSK0 | C:\ | Dysk systemu operacyjnego
 DB-Disk1| Dysk1 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 DB-Disk2 (wykluczono dysk z ochrony) | Dysk2 | E:\ | Pliki tymczasowe
-DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) </br /> </br />Zanotuj ścieżkę folderu przed przełączeniem w tryb failover.
+DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) <br /> <br />Zanotuj ścieżkę folderu przed włączeniem trybu failover.
 DB-Disk4 | Dysk4 |G:\ |Baza danych użytkownika 2
 
 Ponieważ zmiany danych na dwóch dyskach maszyny wirtualnej dotyczą danych tymczasowych, podczas włączania ochrony maszyny wirtualnej bazy danych SalesDB, wyklucz dyski Dysk2 i Dysk3 z replikacji. Usługa Azure Site Recovery nie będzie replikować tych dysków. Po przełączeniu w tryb failover te dyski nie będą istnieć na maszynie wirtualnej w trybie failover na platformie Azure.
@@ -90,7 +90,7 @@ Dyski na maszynie wirtualnej platformy Azure po przełączeniu w tryb failover b
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy</br /> </br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -154,7 +154,7 @@ W poprzednim przykładzie konfiguracja dysków maszyny wirtualnej platformy Azur
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy</br /> </br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -193,7 +193,7 @@ Po przełączeniu maszyny wirtualnej w tryb failover z programu VMware do platfo
 **Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | --- | ---
 DB-Disk0-OS | DYSK0 | C:\ | Dysk systemu operacyjnego
-DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy</br /> </br />pagefile.sys
+DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy<br /> <br />pagefile.sys
 DB-Disk2 | Dysk2 | E:\ | Dane użytkowników 1
 DB-Disk3 | Dysk3 | F:\ | Dane użytkowników 2
 
@@ -220,10 +220,10 @@ Poniżej przedstawiono ustawienia pliku stronicowania na lokalnej maszynie wirtu
 
 Po przełączeniu maszyny wirtualnej w tryb failover z programu VMware do platformy Azure maszyna wirtualna platformy Azure będzie mieć następujące dyski:
 
-**Nazwa dysku**| **Nr dysku systemu operacyjnego gościa**| **Litera dysku** | **Typ danych na dysku**
+**Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | --- | ---
 DB-Disk0-OS | DYSK0  |C:\ |Dysk systemu operacyjnego
-DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy</br /> </br />pagefile.sys
+DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy<br /> <br />pagefile.sys
 DB-Disk2 | Dysk2 | E:\ | Dane użytkowników 1
 DB-Disk3 | Dysk3 | F:\ | Dane użytkowników 2
 

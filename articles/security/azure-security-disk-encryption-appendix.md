@@ -1,18 +1,18 @@
 ---
 title: Dodatek — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS | Dokumentacja firmy Microsoft
 description: Ten artykuł stanowi dodatek dla programu Microsoft Azure dysku szyfrowanie dla Windows i maszyn wirtualnych IaaS z systemem Linux.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/06/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6632647c7782411d0d124c325f9bf0afff7e699d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5152058643b97e11c7487d470d4f7d3fc9d96b6e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878129"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -130,7 +130,7 @@ W poniższej tabeli przedstawiono, w której parametry mogą być używane w skr
 - [Włącz szyfrowanie dysku dla istniejących lub działających maszyn wirtualnych Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)
 - [Wyłącz szyfrowanie dysków dla istniejących lub działających maszyn wirtualnych Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
 - [Włącz szyfrowanie dysku dla istniejących lub uruchamianie systemu Linux Maszynie wirtualnej IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
- -  [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+  - [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux.  
 
 ### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Szyfrowania lub odszyfrowywania usługi VM scale sets
@@ -139,9 +139,9 @@ W poniższej tabeli przedstawiono, w której parametry mogą być używane w skr
 
 - [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
- - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Linux maszyn wirtualnych z serwera przesiadkowego i włącza szyfrowanie na zestawu skalowania maszyn wirtualnych w systemie Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Linux maszyn wirtualnych z serwera przesiadkowego i włącza szyfrowanie na zestawu skalowania maszyn wirtualnych w systemie Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
- - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Windows maszyn wirtualnych z serwera przesiadkowego i umożliwia szyfrowanie w usłudze Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Wdrażanie maszyny Wirtualnej zestawu skalowania systemu Windows maszyn wirtualnych z serwera przesiadkowego i umożliwia szyfrowanie w usłudze Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Wyłączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -215,22 +215,22 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 ### <a name="steps"></a>Kroki
 1. Tworzenie maszyny Wirtualnej przy użyciu jednej z dystrybucji określonej wcześniej.
 
- CentOS 7.2 szyfrowania dysku systemu operacyjnego jest obsługiwane za pośrednictwem niestandardowy obraz. Aby użyć tego obrazu, "7.2n" jako jednostkę SKU można określić podczas tworzenia maszyny Wirtualnej:
+   CentOS 7.2 szyfrowania dysku systemu operacyjnego jest obsługiwane za pośrednictwem niestandardowy obraz. Aby użyć tego obrazu, "7.2n" jako jednostkę SKU można określić podczas tworzenia maszyny Wirtualnej:
 
- ```powershell
+   ```powershell
     Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
- ```
+   ```
 2. Konfigurowanie maszyny Wirtualnej, zgodnie z potrzebami. Jeśli zamierzasz do szyfrowania wszystkich (systemu operacyjnego i danych) dysków, dyski z danymi musi być określona i instalacja z/etc/fstab.
 
- > [!NOTE]
- > Użyj identyfikatora UUID =... do określenia danych dysków w/etc/fstab zamiast określania nazwy urządzenia bloku (na przykład/dev/sdb1). Podczas szyfrowania, kolejność zmiany dyski na maszynie Wirtualnej. Jeśli maszyna wirtualna opiera się na określonej kolejności zablokować urządzenia, nie będzie można go zainstalować je po zaszyfrowaniu.
+   > [!NOTE]
+   > Użyj identyfikatora UUID =... do określenia danych dysków w/etc/fstab zamiast określania nazwy urządzenia bloku (na przykład/dev/sdb1). Podczas szyfrowania, kolejność zmiany dyski na maszynie Wirtualnej. Jeśli maszyna wirtualna opiera się na określonej kolejności zablokować urządzenia, nie będzie można go zainstalować je po zaszyfrowaniu.
 
 3. Wyloguj się z sesji SSH.
 
 4. Aby zaszyfrować systemu operacyjnego, należy określić volumeType jako **wszystkich** lub **OS** po włączeniu szyfrowania.
 
- > [!NOTE]
- > Wszystkie procesy przestrzeń użytkownika, które nie są uruchomione jako `systemd` usług powinny skasowane z `SIGKILL`. Uruchom ponownie maszynę Wirtualną. Po włączeniu szyfrowania dysku systemu operacyjnego na uruchomionej maszyny Wirtualnej, należy zaplanować przestój maszyny Wirtualnej.
+   > [!NOTE]
+   > Wszystkie procesy przestrzeń użytkownika, które nie są uruchomione jako `systemd` usług powinny skasowane z `SIGKILL`. Uruchom ponownie maszynę Wirtualną. Po włączeniu szyfrowania dysku systemu operacyjnego na uruchomionej maszyny Wirtualnej, należy zaplanować przestój maszyny Wirtualnej.
 
 5. Okresowo monitorować postęp szyfrowania zgodnie z instrukcjami podanymi w [następnej sekcji](#monitoring-os-encryption-progress).
 
@@ -244,7 +244,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, reboot the VM
     ```
-Przed ponownym uruchomieniu, zaleca się zapisanie [diagnostykę rozruchu](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) maszyny wirtualnej.
+   Przed ponownym uruchomieniu, zaleca się zapisanie [diagnostykę rozruchu](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) maszyny wirtualnej.
 
 ## <a name="monitoring-os-encryption-progress"></a>Monitorowanie postępu szyfrowania systemu operacyjnego
 Możesz monitorować postęp szyfrowania systemu operacyjnego na trzy sposoby:
@@ -256,14 +256,14 @@ Możesz monitorować postęp szyfrowania systemu operacyjnego na trzy sposoby:
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk encryption started
     ```
- Po maszyny Wirtualnej osiągnie "Do szyfrowania dysku systemu operacyjnego", trwa około 40 – 50 minut na usługę Premium storage kopii maszyny Wirtualnej.
+  Po maszyny Wirtualnej osiągnie "Do szyfrowania dysku systemu operacyjnego", trwa około 40 – 50 minut na usługę Premium storage kopii maszyny Wirtualnej.
 
- Z powodu [wystawiać #388](https://github.com/Azure/WALinuxAgent/issues/388) w WALinuxAgent, `OsVolumeEncrypted` i `DataVolumesEncrypted` są wyświetlane jako `Unknown` w niektórych dystrybucjach. Za pomocą WALinuxAgent w wersji 2.1.5 i nowszy, ten problem jest rozwiązany automatycznie. Jeśli widzisz `Unknown` w danych wyjściowych, można sprawdzić stanu szyfrowania dysków za pomocą Eksploratora zasobów Azure.
+  Z powodu [wystawiać #388](https://github.com/Azure/WALinuxAgent/issues/388) w WALinuxAgent, `OsVolumeEncrypted` i `DataVolumesEncrypted` są wyświetlane jako `Unknown` w niektórych dystrybucjach. Za pomocą WALinuxAgent w wersji 2.1.5 i nowszy, ten problem jest rozwiązany automatycznie. Jeśli widzisz `Unknown` w danych wyjściowych, można sprawdzić stanu szyfrowania dysków za pomocą Eksploratora zasobów Azure.
 
- Przejdź do [Eksploratora zasobów Azure](https://resources.azure.com/), a następnie rozwiń tę hierarchię w panelu wyboru po lewej stronie:
+  Przejdź do [Eksploratora zasobów Azure](https://resources.azure.com/), a następnie rozwiń tę hierarchię w panelu wyboru po lewej stronie:
 
- ~~~~
- |-- subscriptions
+  ~~~~
+  |-- subscriptions
      |-- [Your subscription]
           |-- resourceGroups
                |-- [Your resource group]
@@ -272,11 +272,11 @@ Możesz monitorować postęp szyfrowania systemu operacyjnego na trzy sposoby:
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-~~~~                
+  ~~~~                
 
- W InstanceView przewiń w dół, aby wyświetlić stan szyfrowania dysków.
+  W InstanceView przewiń w dół, aby wyświetlić stan szyfrowania dysków.
 
- ![Widok wystąpienia maszyny Wirtualnej](./media/azure-security-disk-encryption/vm-instanceview.png)
+  ![Widok wystąpienia maszyny Wirtualnej](./media/azure-security-disk-encryption/vm-instanceview.png)
 
 * Przyjrzyj się [diagnostykę rozruchu](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Komunikaty z rozszerzeniem ADE powinien być poprzedzony `[AzureDiskEncryption]`.
 
@@ -284,7 +284,7 @@ Możesz monitorować postęp szyfrowania systemu operacyjnego na trzy sposoby:
 
     /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
- Firma Microsoft zaleca się czy nie logowania do maszyny Wirtualnej w trakcie szyfrowania systemu operacyjnego. Skopiuj dzienniki tylko wtedy, gdy te dwie metody nie powiodło się.
+  Firma Microsoft zaleca się czy nie logowania do maszyny Wirtualnej w trakcie szyfrowania systemu operacyjnego. Skopiuj dzienniki tylko wtedy, gdy te dwie metody nie powiodło się.
 
 ## <a name="bkmk_preLinux"></a> Przygotowywanie wirtualnego dysku twardego systemu Linux zaszyfrowane wstępnie
 Przygotowanie do zaszyfrowane wstępnie wirtualne dyski twarde mogą się różnić w zależności od dystrybucji. Przykłady na temat przygotowywania [Ubuntu 16](#bkmk_Ubuntu), [openSUSE 13.2](#bkmk_openSUSE), i [CentOS 7](#bkmk_CentOS) są dostępne. 
@@ -294,23 +294,23 @@ Konfigurowanie szyfrowania podczas instalacji dystrybucji, wykonując następuj�
 
 1. Wybierz **Konfigurowanie woluminów zaszyfrowanych** po partycji dysków.
 
- ![Ubuntu 16.04 Konfigurowanie — Konfigurowanie zaszyfrowanych woluminów](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+   ![Ubuntu 16.04 Konfigurowanie — Konfigurowanie zaszyfrowanych woluminów](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Tworzenie dysku rozruchowego oddzielne nie muszą być szyfrowane. Szyfrowanie dysku głównego.
 
- ![Instalator systemu Ubuntu 16.04 - wybierz urządzenia do zaszyfrowania](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+   ![Instalator systemu Ubuntu 16.04 - wybierz urządzenia do zaszyfrowania](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Podaj hasło. Jest to hasło, który został przekazany do magazynu kluczy.
 
- ![Ubuntu 16.04 Konfigurowanie — Podaj hasło](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+   ![Ubuntu 16.04 Konfigurowanie — Podaj hasło](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Zakończ partycjonowania.
 
- ![Ubuntu 16.04 Konfigurowanie — Zakończ partycjonowania](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+   ![Ubuntu 16.04 Konfigurowanie — Zakończ partycjonowania](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Podczas rozruchu maszyny Wirtualnej i monit o podanie hasła, należy użyć hasło, które podano w kroku 3.
 
- ![Ubuntu 16.04 Konfigurowanie — Podaj hasło podczas rozruchu](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+   ![Ubuntu 16.04 Konfigurowanie — Podaj hasło podczas rozruchu](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu [w instrukcjach](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
@@ -351,32 +351,32 @@ Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące
      else
         echo "Success loading keyfile!" >&2
     fi
-```
+   ```
 
 2. Zmienianie konfiguracji crypt w */etc/crypttab*. Powinny wyglądać następująco:
- ```
+   ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
 
 3. Jeśli edytujesz *azure_crypt_key.sh* w Windows i skopiowany na systemie Linux Uruchom `dos2unix /usr/local/sbin/azure_crypt_key.sh`.
 
 4. Dodaj uprawnienia pliku wykonywalnego do skryptu:
- ```
+   ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
- ```
+   ```
 5. Edytuj */etc/initramfs-tools/modules* , dodając wiersze:
- ```
+   ```
     vfat
     ntfs
     nls_cp437
     nls_utf8
     nls_iso8859-1
-```
+   ```
 6. Uruchom `update-initramfs -u -k all` initramfs, aby zaktualizować `keyscript` zaczęły obowiązywać.
 
 7. Teraz można anulować aprowizację maszyny Wirtualnej.
 
- ![Instalator systemu Ubuntu 16.04 - initramfs aktualizacji](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+   ![Instalator systemu Ubuntu 16.04 - initramfs aktualizacji](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Przejdź do kolejnego etapu i przekazywanie wirtualnego dysku twardego na platformie Azure.
 
@@ -384,11 +384,11 @@ Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące
 Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następujące czynności:
 1. Podczas dzielenia dysków na partycje wybrać **szyfrowanie woluminu grupy**, a następnie wprowadź hasło. To hasło, które należy przekazać do magazynu kluczy.
 
- ![openSUSE 13.2 instalacji — grupa szyfrowania woluminów](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+   ![openSUSE 13.2 instalacji — grupa szyfrowania woluminów](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. Rozruch maszyny Wirtualnej, przy użyciu hasła.
 
- ![openSUSE 13.2 Konfigurowanie — Podaj hasło podczas rozruchu](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+   ![openSUSE 13.2 Konfigurowanie — Podaj hasło podczas rozruchu](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
@@ -398,7 +398,7 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 2. Komentarz następujące wiersze do końca /usr/lib/dracut/modules.d/90crypt/module-setup.sh pliku:
- ```bash
+   ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -408,20 +408,20 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
     #        $systemdsystemunitdir/sysinit.target.wants/cryptsetup.target \
     #        systemd-ask-password systemd-tty-ask-password-agent
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
- ```
+   ```
 
 3. Dołącz następujący wiersz na początku /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh pliku:
- ```bash
+   ```bash
     DRACUT_SYSTEMD=0
- ```
-I Zamień wszystkie wystąpienia klasy:
- ```bash
+   ```
+   I Zamień wszystkie wystąpienia klasy:
+   ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
- ```
-na:
-```bash
+   ```
+   na:
+   ```bash
     if [ 1 ]; then
-```
+   ```
 4. Edytuj /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh i dołącza je do "# Otwórz LUKS urządzenie":
 
     ```bash
@@ -452,19 +452,19 @@ na:
 Aby skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonaj następujące czynności:
 1. Wybierz **szyfrowanie danych** po partycji dysków.
 
- ![Konfigurowanie centOS 7 - miejsce docelowe instalacji](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+   ![Konfigurowanie centOS 7 - miejsce docelowe instalacji](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. Upewnij się, że **Szyfruj** jest zaznaczone dla partycji katalogu głównego.
 
- ![Konfigurowanie centOS 7 - wybierz szyfrowania dla partycji katalogu głównego](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+   ![Konfigurowanie centOS 7 - wybierz szyfrowania dla partycji katalogu głównego](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. Podaj hasło. Jest to hasło, które należy przekazać do magazynu kluczy.
 
- ![Instalator centOS 7 - Podaj hasło](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+   ![Instalator centOS 7 - Podaj hasło](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. Podczas rozruchu maszyny Wirtualnej i monit o podanie hasła, należy użyć hasło, które podano w kroku 3.
 
- ![CentOS 7 Konfigurowanie — wprowadź hasło w rozruchu](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+   ![CentOS 7 Konfigurowanie — wprowadź hasło w rozruchu](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. Przygotowywanie maszyny Wirtualnej do przekazywania na platformie Azure przy użyciu instrukcji "CentOS 7.0 +" w [przygotowywanie maszyny wirtualnej z systemem CentOS dla platformy Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Nie uruchamiaj w ostatnim kroku (anulowanie aprowizacji maszyny Wirtualnej) jeszcze.
 
@@ -478,7 +478,7 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
     ```
 
 2. Komentarz następujące wiersze do końca /usr/lib/dracut/modules.d/90crypt/module-setup.sh pliku:
-```bash
+   ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -488,20 +488,20 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
     #        $systemdsystemunitdir/sysinit.target.wants/cryptsetup.target \
     #        systemd-ask-password systemd-tty-ask-password-agent
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
-```
+   ```
 
 3. Dołącz następujący wiersz na początku /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh pliku:
-```bash
+   ```bash
     DRACUT_SYSTEMD=0
-```
-I Zamień wszystkie wystąpienia klasy:
-```bash
+   ```
+   I Zamień wszystkie wystąpienia klasy:
+   ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
-```
-na
-```bash
+   ```
+   na
+   ```bash
     if [ 1 ]; then
-```
+   ```
 4. Edytuj /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh i Dołącz następujący po "# Otwórz LUKS urządzenie":
     ```bash
     MountPoint=/tmp-keydisk-mount

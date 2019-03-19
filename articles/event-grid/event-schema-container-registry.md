@@ -1,19 +1,19 @@
 ---
 title: Schemat zdarzeń w usłudze Azure Event Grid Container Registry
-description: Opisuje właściwości, które są dostarczane dla zdarzeń odmowa kontenera za pomocą usługi Azure Event Grid
+description: Opisuje właściwości, które są dostarczane dla zdarzeń rejestru kontenerów za pomocą usługi Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/13/2019
+ms.date: 03/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462848"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084331"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Schemat zdarzeń Azure Event Grid dla rejestru kontenerów
 
@@ -21,12 +21,14 @@ Ten artykuł zawiera właściwości i schematu zdarzeń rejestru kontenerów. A
 
 ## <a name="available-event-types"></a>Zdarzenie dostępne typy
 
-Magazyn obiektów blob emituje następujące typy zdarzeń:
+Usługa Azure Container Registry emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | Wywoływane, gdy obraz jest przekazywane. |
 | Microsoft.ContainerRegistry.ImageDeleted | Wywoływane, gdy obraz zostanie usunięty. |
+| Microsoft.ContainerRegistry.ChartPushed | Wywoływane, gdy są wypychane wykresu Helm. |
+| Microsoft.ContainerRegistry.ChartDeleted | Wywoływane, gdy wykresu Helm zostanie usunięty. |
 
 ## <a name="example-event"></a>Przykład zdarzenia
 
@@ -93,28 +95,84 @@ Schemat zdarzenia usunięto obraz jest podobne:
 }]
 ```
 
+Schemat wykres wypychania zdarzeń jest podobne do schematu utworzone z obrazów wypychanie zdarzeń, ale nie zawiera obiektu żądania:
+
+```json
+[{
+  "id": "ea3a9c28-5b17-40f6-a500-3f02b6829277",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartPushed",
+  "eventTime": "2019-03-12T22:16:31.5164086Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:16:31.0087496+00:00",
+    "action":"chart_push",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+Schemat zdarzenia usunięto wykresu jest podobne do schematu na zdarzenie usunięte utworzone z obrazów, ale nie zawiera obiektu żądania:
+
+```json
+[{
+  "id": "39136b3a-1a7e-416f-a09e-5c85d5402fca",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartDeleted",
+  "eventTime": "019-03-12T22:42:08.7034064Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:42:08.3783775+00:00",
+    "action":"chart_delete",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
 Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | string | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| id | ciąg | Identyfikator zdarzenia. |
-| sygnatura czasowa | ciąg | Czas, w którym wystąpiło zdarzenie. |
-| action | ciąg | Akcja, która obejmuje podanego zdarzenia. |
+| id | string | Identyfikator zdarzenia. |
+| sygnatura czasowa | string | Czas, w którym wystąpiło zdarzenie. |
+| action | string | Akcja, która obejmuje podanego zdarzenia. |
 | cel | obiekt | Obiekt docelowy zdarzenia. |
 | żądanie | obiekt | Żądanie, który wygenerował zdarzenie. |
 
@@ -122,22 +180,24 @@ Obiekt docelowy ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| mediaType | ciąg | Typ MIME przywoływanego obiektu. |
+| mediaType | string | Typ MIME przywoływanego obiektu. |
 | rozmiar | liczba całkowita | Liczba bajtów treści. Taka sama jak długość pola. |
-| Podsumowanie | ciąg | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
+| Podsumowanie | string | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
 | Długość | liczba całkowita | Liczba bajtów treści. Taka sama jak rozmiar pola. |
-| repozytorium | ciąg | Nazwa repozytorium. |
-| tag | ciąg | Nazwa tagu. |
+| repozytorium | string | Nazwa repozytorium. |
+| tag | string | Nazwa tagu. |
+| name | string | Nazwa wykresu. |
+| version | string | Wersja wykresu. |
 
 Obiekt żądania ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| id | ciąg | Identyfikator żądania, który zainicjował zdarzenie. |
-| addr | ciąg | Adresu IP lub nazwę hosta i prawdopodobnie portu połączenia klienta, który zainicjował zdarzenie. Ta wartość jest RemoteAddr z żądania standardowego protokołu http. |
-| host | ciąg | Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta http na żądań przychodzących. |
-| method | ciąg | Metoda żądania, który wygenerował zdarzenie. |
-| useragent | ciąg | Nagłówek agenta użytkownika żądania. |
+| id | string | Identyfikator żądania, który zainicjował zdarzenie. |
+| addr | string | Adresu IP lub nazwę hosta i prawdopodobnie portu połączenia klienta, który zainicjował zdarzenie. Ta wartość jest RemoteAddr z żądania standardowego protokołu http. |
+| host | string | Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta http na żądań przychodzących. |
+| method | string | Metoda żądania, który wygenerował zdarzenie. |
+| useragent | string | Nagłówek agenta użytkownika żądania. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

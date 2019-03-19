@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2858628874dc9955db5084ef5732d85acd6e7fc1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 985d41d3a00974e25c9abc4709c5bf5e662f7a50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729796"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086041"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zasady umieszczania dla usługi Service fabric
 Zasady rozmieszczania są dodatkowe reguły, które mogą służyć do zarządzania usługi umieszczania w niektórych scenariuszach określone, mniej znane. Przykłady takich scenariuszy to:
@@ -44,6 +44,7 @@ Większość następujące elementy sterujące można skonfigurować za pomocą 
 **InvalidDomain** zasady rozmieszczania pozwala określić, że określonej domeny błędów jest nieprawidłowy dla określonej usługi. Te zasady zapewniają, że określonej usługi nigdy nie uruchamia się w określonym obszarze, na przykład ze względów geopolitycznych lub firmowe zasady. Wiele domen nieprawidłowy może być określona za pomocą odrębnych zasad.
 
 <center>
+
 ![Przykład Nieprawidłowa domena][Image1]
 </center>
 
@@ -64,6 +65,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Zasady rozmieszczania wymaganej domeny wymaga, że usługa jest obecna tylko w określonej domenie. Przy użyciu oddzielnych zasad można określić wiele domen wymagana.
 
 <center>
+
 ![Przykład wymaganej domeny][Image2]
 </center>
 
@@ -85,6 +87,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Domena podstawowa preferowane Określa domeny błędów można umieścić podstawowy w. Podstawowy kończy się w tej domenie, gdy wszystko jest w dobrej kondycji. Jeśli domeny znajduje się replika podstawowa nie powiedzie się lub kończy pracę, podstawowy przenosi się do innej lokalizacji, najlepiej w tej samej domenie. Jeśli nie ma tej nowej lokalizacji domeny preferowanych, Menedżer zasobów klastra jego przeniesienie domeny preferowanych tak szybko, jak to możliwe. Naturalnie to ustawienie tylko ma sens dla usług stanowych. Te zasady są najbardziej przydatne w klastrach, które są łączone w różnych regionach platformy Azure lub w wielu centrach danych, ale ma usług, które wolą umieszczania w określonej lokalizacji. Utrzymywanie kolory podstawowe blisko ich użytkowników lub innych usług pomaga w zapewnieniu mniejsze opóźnienia, zwłaszcza w przypadku operacji odczytu, które są obsługiwane przez kolory podstawowe domyślnie.
 
 <center>
+
 ![Preferowany domeny głównej i trybu Failover][Image3]
 </center>
 

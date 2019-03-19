@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 10/16/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: c1124e710c3bb2cc4d00595989ccb95e584025c4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100738"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
 
@@ -49,11 +49,11 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
   
 4. Po zalogowaniu się kliknij pozycję **New custom search** (Nowe wyszukiwanie niestandardowe). W oknie **Create a new custom search instance** (Tworzenie nowego wystąpienia wyszukiwania niestandardowego) wprowadź istotną nazwę opisową typu zawartości zwracanej przez funkcję wyszukiwania. Nazwę można zmienić w dowolnym momencie.  
   
-  ![Zrzut ekranu pola Create a new custom search instance (Tworzenie nowego wystąpienia wyszukiwania niestandardowego)](../media/newCustomSrch.png)  
+   ![Zrzut ekranu pola Create a new custom search instance (Tworzenie nowego wystąpienia wyszukiwania niestandardowego)](../media/newCustomSrch.png)  
   
 5. Kliknij przycisk OK, określ adres URL oraz czy mają zostać dołączone podstrony adresu URL.  
   
-  ![Zrzut ekranu strony definicji adresu URL](../media/newCustomSrch1-a.png)  
+   ![Zrzut ekranu strony definicji adresu URL](../media/newCustomSrch1-a.png)  
 
 
 ## <a name="add-active-entries"></a>Dodawanie aktywnych wpisów
@@ -97,28 +97,28 @@ Wyszukiwanie niestandardowe zapewnia hostowany interfejs użytkownika do rendero
   
 2. Wybierz układ.  
   
-  ![Zrzut ekranu przedstawiający krok wyboru układu na karcie Hosted UI (Hostowany interfejs użytkownika)](./media/custom-search-hosted-ui-select-layout.png)  
+   ![Zrzut ekranu przedstawiający krok wyboru układu na karcie Hosted UI (Hostowany interfejs użytkownika)](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. Wybierz motyw kolorów.  
   
-  ![Zrzut ekranu przedstawiający wybieranie motywu kolorów na karcie Hosted UI (Hostowany interfejs użytkownika)](./media/custom-search-hosted-ui-select-color-theme.png)  
+   ![Zrzut ekranu przedstawiający wybieranie motywu kolorów na karcie Hosted UI (Hostowany interfejs użytkownika)](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Aby dostosować motyw kolorów w celu zapewnienia lepszej integracji z aplikacją internetową, kliknij pozycję **Customize theme** (Dostosuj motyw). Nie wszystkie konfiguracje kolorów mają zastosowanie do wszystkich motywów układu. Aby zmienić kolor, wprowadź wartość SZESNASTKOWĄ RGB (na przykład #366eb8) w odpowiednim polu tekstowym. Możesz również kliknąć przycisk koloru i wybrać odpowiedni odcień. Podczas wybierania kolorów należy zawsze brać pod uwagę ułatwienia dostępu.
+   Aby dostosować motyw kolorów w celu zapewnienia lepszej integracji z aplikacją internetową, kliknij pozycję **Customize theme** (Dostosuj motyw). Nie wszystkie konfiguracje kolorów mają zastosowanie do wszystkich motywów układu. Aby zmienić kolor, wprowadź wartość SZESNASTKOWĄ RGB (na przykład #366eb8) w odpowiednim polu tekstowym. Możesz również kliknąć przycisk koloru i wybrać odpowiedni odcień. Podczas wybierania kolorów należy zawsze brać pod uwagę ułatwienia dostępu.
   
-  ![Zrzut ekranu przedstawiający dostosowywanie motywu kolorów hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-customize-color-theme.png)  
+   ![Zrzut ekranu przedstawiający dostosowywanie motywu kolorów hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. Określ dodatkowe opcje konfiguracji.  
   
-  ![Zrzut ekranu przedstawiający krok wybierania dodatkowych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-additional-configurations.png)  
+   ![Zrzut ekranu przedstawiający krok wybierania dodatkowych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  Aby uzyskać dostęp do zaawansowanych opcji konfiguracji, kliknij pozycję **Show advanced configurations** (Pokaż zaawansowane opcje konfiguracji). Spowoduje to dodanie opcji konfiguracji, takich jak *Link target* (Element docelowy linku), do opcji wyszukiwania w Internecie, *Enable filters* (Włącz filtry) do opcji obrazów i wideo oraz *Search box text placeholder* (Symbol zastępczy tekstu pola wyszukiwania) do obszaru opcji Miscellaneous (Różne).
+   Aby uzyskać dostęp do zaawansowanych opcji konfiguracji, kliknij pozycję **Show advanced configurations** (Pokaż zaawansowane opcje konfiguracji). Spowoduje to dodanie opcji konfiguracji, takich jak *Link target* (Element docelowy linku), do opcji wyszukiwania w Internecie, *Enable filters* (Włącz filtry) do opcji obrazów i wideo oraz *Search box text placeholder* (Symbol zastępczy tekstu pola wyszukiwania) do obszaru opcji Miscellaneous (Różne).
 
-  ![Zrzut ekranu przedstawiający krok wybierania zaawansowanych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-advanced-configurations.png)  
+   ![Zrzut ekranu przedstawiający krok wybierania zaawansowanych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
 5. Wybierz klucze subskrypcji z list rozwijanych. Alternatywnie możesz ręcznie wprowadzić klucz subskrypcji. Więcej informacji na temat uzyskiwania kluczy można znaleźć na stronie [Możliwość wypróbowania usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![Zrzut ekranu przedstawiający krok wybierania dodatkowych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Zrzut ekranu przedstawiający krok wybierania dodatkowych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -140,66 +140,66 @@ W dalszej części tego samouczka przedstawiono **opcję 1 — fragment kodu Jav
   
 3. W oknie **Nowy projekt** wybierz pozycję **Aplikacja internetowa / Aplikacja internetowa platformy Visual C# / ASP.NET Core**, nazwij swój projekt, a następnie kliknij przycisk **OK**.  
   
-  ![Zrzut ekranu przedstawiający okno nowego projektu](./media/custom-search-new-project.png)  
+   ![Zrzut ekranu przedstawiający okno nowego projektu](./media/custom-search-new-project.png)  
   
 4. W oknie **Nowa aplikacja internetowa platformy ASP.NET Core** wybierz pozycję **Aplikacja internetowa** i kliknij przycisk **OK**.  
   
-  ![Zrzut ekranu przedstawiający okno nowego projektu](./media/custom-search-new-webapp.png)  
+   ![Zrzut ekranu przedstawiający okno nowego projektu](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Edytowanie pliku index.cshtml
 
 1. W **Eksploratorze rozwiązań** rozwiń węzeł **Strony** i kliknij dwukrotnie plik **index.cshtml**, aby go otworzyć.  
   
-  ![Zrzut ekranu przedstawiający Eksploratora rozwiązań z rozwiniętym węzłem Strony i wybranym plikiem index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+   ![Zrzut ekranu przedstawiający Eksploratora rozwiązań z rozwiniętym węzłem Strony i wybranym plikiem index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
 2. W pliku index.cshtml usuń całą zawartość od wiersza 7 w dół.  
   
-  ```razor
-  @page
-  @model IndexModel
-  @{
+   ```razor
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }    
-  ```  
+   }    
+   ```  
   
 3. Dodaj element podziału wiersza i tag div pełniący rolę kontenera.  
   
-  ```html
-  @page
-  @model IndexModel
-  @{
+   ```html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch"></div>
-  ```  
+   }
+   <br />
+   <div id="customSearch"></div>
+   ```  
   
 4. Na stronie **Hosted UI** (Hostowany interfejs użytkownika) przewiń w dół do sekcji o nazwie **Consuming the UI** (Korzystanie z interfejsu użytkownika). Kliknij pozycję *Endpoints* (Punkty końcowe), aby uzyskać dostęp do fragmentu kodu JavaScript. Fragment kodu możesz wyświetlić również, klikając pozycję **Production** (Produkcja), a następnie wybierając kartę **Hosted UI** (Hostowany interfejs użytkownika).
   
-  <!-- Get new screenshot after prod gets new bits
-  ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
-  -->
+   <!-- Get new screenshot after prod gets new bits
+   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
+   -->
   
 5. Wklej element script w kontenerze, którzy został dodany.  
   
-  ``` html
-  @page
-  @model IndexModel
-  @{
+   ``` html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch">
+   }
+   <br />
+   <div id="customSearch">
       <script type="text/javascript" 
           id="bcs_js_snippet"
           src="https://ui.customsearch.ai /api/ux/rendering-js?customConfig=<YOUR-CUSTOM-CONFIG-ID>&market=en-US&safeSearch=Moderate&version=latest&q=">
       </script>
-  </div>
-  ```  
+   </div>
+   ```  
   
 6. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **wwwroot** i kliknij polecenie **Wyświetl w przeglądarce**.  
   
-  ![Zrzut ekranu przedstawiający wybieranie polecenia Wyświetl w przeglądarce w menu kontekstowym elementu wwwroot w Eksploratorze rozwiązań](./media/custom-search-webapp-view-in-browser.png)  
+   ![Zrzut ekranu przedstawiający wybieranie polecenia Wyświetl w przeglądarce w menu kontekstowym elementu wwwroot w Eksploratorze rozwiązań](./media/custom-search-webapp-view-in-browser.png)  
 
 Twoja nowa strona wyszukiwania niestandardowego powinna wyglądać mniej więcej tak:
 
@@ -209,7 +209,7 @@ Wykonanie wyszukiwania powoduje renderowanie wyników na następujący sposób:
 
 ![Zrzut ekranu przedstawiający wyniki wyszukiwania niestandardowego](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing (C#)](../call-endpoint-csharp.md)

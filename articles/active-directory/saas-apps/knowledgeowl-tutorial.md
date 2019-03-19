@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f53742de3242fb3b60a15d436ec6cd842aa429
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8c86ad6e4b11f21c648083fac35e15eec7658c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184000"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995517"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą KnowledgeOwl
 
@@ -110,6 +110,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![KnowledgeOwl domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
     a. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -117,6 +118,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     |||
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -132,6 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![KnowledgeOwl domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -185,29 +188,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Kliknij pozycję **ustawienia** , a następnie wybierz **zabezpieczeń**.
 
-    ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
+     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Przewiń do **integracja logowania jednokrotnego SAML** i wykonaj następujące czynności:
     
-    ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
+     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. Wybierz **włączenia funkcji logowania jednokrotnego SAML**.
+     a. Wybierz **włączenia funkcji logowania jednokrotnego SAML**.
 
-    b. Kopiuj **identyfikator jednostki SP** wartość i wklej go w **identyfikator jednostki** w **KnowledgeOwl domena i adresy URL** sekcji w witrynie Azure portal.
+     b. Kopiuj **identyfikator jednostki SP** wartość i wklej go w **identyfikator jednostki** w **KnowledgeOwl domena i adresy URL** sekcji w witrynie Azure portal.
 
-    c. Kopiuj **adres URL logowania SP** wartość i wklej go w **adres URL logowania i adres URL odpowiedzi** pola tekstowe w **KnowledgeOwl domena i adresy URL** sekcji w witrynie Azure portal.
+     c. Kopiuj **adres URL logowania SP** wartość i wklej go w **adres URL logowania i adres URL odpowiedzi** pola tekstowe w **KnowledgeOwl domena i adresy URL** sekcji w witrynie Azure portal.
 
-    d. W **entityID tożsamości** pola tekstowego, Wklej **identyfikator jednostki SAML** wartości, które zostały skopiowane z witryny Azure portal.
+     d. W **entityID tożsamości** pola tekstowego, Wklej **identyfikator jednostki SAML** wartości, które zostały skopiowane z witryny Azure portal.
 
-    e. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości, które zostały skopiowane z witryny Azure portal.
+     e. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości, które zostały skopiowane z witryny Azure portal.
 
-    f. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal
+     f. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal
 
-    g. Przekazywanie formularza pobranego certyfikatu witryny Azure portal, klikając **Przekaż certyfikat tożsamości**.
+     g. Przekazywanie formularza pobranego certyfikatu witryny Azure portal, klikając **Przekaż certyfikat tożsamości**.
 
-    h. Kliknij pozycję **atrybutów SAML mapy** do mapowania atrybutów, a następnie wykonaj następujące czynności:
+     h. Kliknij pozycję **atrybutów SAML mapy** do mapowania atrybutów, a następnie wykonaj następujące czynności:
     
-    ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
+     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
 
     * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do **identyfikator logowania jednokrotnego** textbox
     * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` do **nazwy użytkownika/Poczta E-mail** pola tekstowego.
@@ -215,9 +218,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` do **nazwisko** pola tekstowego.
     * Kliknij pozycję **Zapisz**
 
-    i. Kliknij przycisk **Zapisz** w dolnej części strony.
+      i. Kliknij przycisk **Zapisz** w dolnej części strony.
 
-    ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
+      ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -296,7 +299,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

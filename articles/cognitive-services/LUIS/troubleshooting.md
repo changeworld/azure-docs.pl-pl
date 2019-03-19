@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: diberry
-ms.openlocfilehash: 39e942b3694ebc59d3cf7d9f4b6a02c4f025e0d0
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b9304e151bbce691b752f12aeec8a5376e517a8d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120775"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -147,7 +147,7 @@ Zobacz [testowania partii](luis-tutorial-batch-testing.md) samouczka.
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Gdy aplikacja jest wyeksportowane, a następnie importowane z powrotem do nowej aplikacji (z nowym Identyfikatorem aplikacji), usługa LUIS wyniki prognozy różnią się. Dlaczego tak się dzieje?
 
-Zobacz [prognozowania różnice między kopie tej samej aplikacji](luis-concept-prediction-score.md#differences-with-predictions).
+Zobacz [prognozowania różnice między kopie tej samej aplikacji](luis-concept-prediction-score.md#review-intents-with-similar-scores).
 
 ### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Niektóre wypowiedzi przejdź do niewłaściwej intencji po zmiany wprowadzone do mojej aplikacji. Podejrzenie zniknięcie losowo. Jak go naprawić? 
 

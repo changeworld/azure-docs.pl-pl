@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 2ad641ae054f9542ec1ef42f5ebbe724ba4ecf87
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: f34e32b9bda83ac1185d0c7b7dcaaaa7b47161a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082487"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorowanie usługi Azure Database dla serwera MariaDB
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database dla serwera MariaDB oferuje różne metryki, które zapewniają wgląd w zachowania serwera.
 
 ## <a name="metrics"></a>Metryki
-Wszystkie metryki usługi Azure mieć częstotliwość co minutę, a wszystkie metryki zapewnia 30 dni historii. Można skonfigurować alerty dotyczące metryk. Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [omówienie metryk platformy Azure] (.. /Monitoring-and-Diagnostics/monitoring-overview-Metrics.MD).
+Wszystkie metryki usługi Azure mieć częstotliwość co minutę, a wszystkie metryki zapewnia 30 dni historii. Można skonfigurować alerty dotyczące metryk. Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-metric.md).
 
@@ -25,7 +25,7 @@ Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-
 Te metryki są dostępne dla usługi Azure Database dla serwera MariaDB:
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Opis|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Procent użycia Procesora|Procent|Procent użycia Procesora w użyciu.|
 |memory_percent|Procent pamięci|Procent|Procent pamięci w użyciu.|
 |io_consumption_percent|% Operacji We/Wy|Procent|Procent we/wy w użyciu.|
@@ -41,8 +41,8 @@ Te metryki są dostępne dla usługi Azure Database dla serwera MariaDB:
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
-Można włączyć wolnych zapytań rejestrowania na serwerze. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
+Można włączyć wolnych zapytań rejestrowania na serwerze. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu i eksportowanie metryk przy użyciu witryny Azure portal, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
- - Zobacz [jak skonfigurować alerty](howto-alert-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.
+  - Zobacz [jak skonfigurować alerty](howto-alert-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.

@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7406758a5e5c345aee4165139242025b8ceb4d18
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534722"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076466"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrowanie z Federacji na uwierzytelnianie przekazywane usługi Azure Active Directory
 
@@ -260,11 +260,11 @@ Najpierw należy zmienić metodę logowania:
    ![Zrzut ekranu przedstawiający wszystko gotowe do skonfigurowania strony](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. W portalu usługi Azure AD wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **program Azure AD Connect**.
 8. Sprawdź następujące ustawienia:
-  * **Federacyjna** ustawiono **wyłączone**.
-  * **Bezproblemowe logowanie jednokrotne** ustawiono **włączone**.
-  * **Uwierzytelnianie przekazywane** ustawiono **włączone**.<br />
+   * **Federacyjna** ustawiono **wyłączone**.
+   * **Bezproblemowe logowanie jednokrotne** ustawiono **włączone**.
+   * **Uwierzytelnianie przekazywane** ustawiono **włączone**.<br />
 
-  ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
+   ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 Dalej. Wdrażanie dodatkowych metod uwierzytelniania:
 
@@ -272,16 +272,16 @@ Dalej. Wdrażanie dodatkowych metod uwierzytelniania:
 2. Na **uwierzytelniania przekazywanego** wybierz opcję **Pobierz** przycisku.
 3. Na **Pobierz agenta** wybierz opcję **Zaakceptuj warunki i Pobierz**.
 
-  Dodatkowe uwierzytelnianie agentów rozpocznie pobieranie. Zainstaluj agenta uwierzytelniania pomocniczego na serwerze przyłączonym do domeny. 
+   Dodatkowe uwierzytelnianie agentów rozpocznie pobieranie. Zainstaluj agenta uwierzytelniania pomocniczego na serwerze przyłączonym do domeny. 
 
-  > [!NOTE]
-  > Pierwszy agent jest zawsze instalowany na serwerze programu Azure AD Connect sama w ramach zmian konfiguracji wprowadzonych w **logowania użytkownika** sekcji narzędzia Azure AD Connect. Wszelkich agentów dodatkowego uwierzytelniania należy zainstalować na osobnym serwerze. Zaleca się, że masz dwa lub trzy dodatkowe uwierzytelnianie dostępne agenty. 
+   > [!NOTE]
+   > Pierwszy agent jest zawsze instalowany na serwerze programu Azure AD Connect sama w ramach zmian konfiguracji wprowadzonych w **logowania użytkownika** sekcji narzędzia Azure AD Connect. Wszelkich agentów dodatkowego uwierzytelniania należy zainstalować na osobnym serwerze. Zaleca się, że masz dwa lub trzy dodatkowe uwierzytelnianie dostępne agenty. 
 
 4. Uruchom instalację agenta uwierzytelniania. Podczas instalacji należy wprowadzić poświadczenia konta administratora globalnego.
 
-  ![Zrzut ekranu przedstawiający przycisk Zainstaluj w witrynie Microsoft Azure AD Connect uwierzytelniania agenta pakietu](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Zrzut ekranu przedstawiający przycisk Zainstaluj w witrynie Microsoft Azure AD Connect uwierzytelniania agenta pakietu](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-  ![Zrzut ekranu przedstawiający stronę logowania](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Zrzut ekranu przedstawiający stronę logowania](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Po zainstalowaniu agenta uwierzytelniania, można zwrócić się do strony kondycji agenta uwierzytelniania przekazywanego, aby sprawdzić stan dodatkowych agentów.
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af7c5721458e36a1efa27c9696feaa3dbf043e4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878452"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z samoobsługowego resetowania haseł
 
@@ -101,7 +101,7 @@ Najlepszym rozwiązaniem podczas rozwiązywania problemów z zapisywaniem zwrotn
 | Kod | Nazwa lub wiadomości | Opis |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0X80230619: "Ograniczenie zapobiega hasło zmieniany z bieżącym określoną." | To zdarzenie występuje, gdy próbuje ustawić hasło w Twoim katalogu lokalnego, który nie spełnia okres ważności hasła, historii, złożoność i filtrowania wymagania dotyczące domeny usługi zapisywania zwrotnego haseł. <br> <br> Jeśli masz minimalny okres ważności hasła i niedawno zmieniono hasło, w tym przedziale czasu, nie możesz ponownie zmienić hasło, aż do napotkania określonej wiek w domenie. Do celów testowych, minimalny wiek powinna być równa 0. <br> <br> Jeśli masz wymagania dotyczące historii haseł włączone, a następnie należy wybrać hasło, który nie został jeszcze użyty w ciągu ostatnich *N* razy, gdzie *N* jest ustawienie historii haseł. Jeśli zaznaczysz hasła, który został użyty w ciągu ostatnich *N* razy, a następnie w tym przypadku wyświetlony błąd. Do celów testowych, historii haseł powinna być równa 0. <br> <br> Jeśli masz wymagania dotyczące złożoności hasła, wszystkie z nich są wymuszane, gdy użytkownik podejmuje próbę zmiany lub resetowania hasła. <br> <br> Jeśli mają włączone filtry hasła, a użytkownik wybierze hasło nie spełnia kryteriów filtrowania, a następnie resetowania lub zmiany, operacja zakończy się niepowodzeniem. |
-| 6329 | MMS(3040): admaexport.cpp(2837): Serwer nie zawiera kontrolki zasad haseł LDAP. | Ten problem występuje, gdy kontrolka LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) nie jest włączona na kontrolerów domeny. Aby użyć funkcji zapisywania zwrotnego haseł, możesz włączyć formant. Aby to zrobić, kontrolerów domeny musi być w systemie Windows Server 2008 (przy użyciu najnowszych SP) lub nowszej. Jeśli Twoje kontrolery domeny są 2008 (sprzed wersji R2), a następnie należy ponadto zastosować poprawkę [KB2386717](https://support.microsoft.com/kb/2386717). |
+| 6329 | MMS(3040): admaexport.cpp(2837): Serwer nie zawiera kontrolki zasad haseł LDAP. | Ten problem występuje, gdy kontrolka LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) nie jest włączona na kontrolerów domeny. Aby użyć funkcji zapisywania zwrotnego haseł, możesz włączyć formant. Aby to zrobić, kontrolerów domeny musi być w systemie Windows Server 2008 R2 lub nowszym. |
 | HR 8023042 | Aparat synchronizacji zwrócił błąd hr = 80230402, komunikat = próba pobrania obiektu nie powiodło się, ponieważ istnieją zduplikowane wpisy z tego samego zakotwiczenia. | Ten błąd występuje, gdy ten sam identyfikator użytkownika jest włączona w wielu domenach. To na przykład jeśli synchronizowania lasów kont i zasobów i mieć tej samej nazwy użytkownika, które są obecne i włączona w każdym lesie. <br> <br> Ten błąd może również wystąpić, jeśli używasz atrybutem zakotwiczenia nie jest unikatowa, takie jak alias lub nazwy UPN i dwóch użytkowników mają ten sam atrybut zakotwiczenia. <br> <br> Aby rozwiązać ten problem, upewnij się, że nie masz żadnych zduplikowanych użytkowników w ramach Twoich domen i użyć atrybutu zakotwiczenia unikatowy dla każdego użytkownika. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Jeśli źródłem zdarzenia jest PasswordResetService
@@ -179,10 +179,10 @@ Aby uzyskać więcej informacji, zapoznaj się z wymaganiami wstępnymi łączno
 
 Aby rozwiązać problemy z łącznością lub inne przejściowe problemy z usługą, uruchom ponownie usługę Azure AD Connect Sync:
 
-   1. Jako administrator, wybierz **Start** na serwerze z programem Azure AD Connect.
-   1. Wprowadź **services.msc** w polu wyszukiwania i wybierz pozycję **Enter**.
-   1. Wyszukaj **Microsoft Azure AD Sync** wpisu.
-   1. Kliknij prawym przyciskiem myszy wpisu usługi, wybierz **ponowne uruchomienie**, a następnie poczekaj na zakończenie operacji.
+1. Jako administrator, wybierz **Start** na serwerze z programem Azure AD Connect.
+1. Wprowadź **services.msc** w polu wyszukiwania i wybierz pozycję **Enter**.
+1. Wyszukaj **Microsoft Azure AD Sync** wpisu.
+1. Kliknij prawym przyciskiem myszy wpisu usługi, wybierz **ponowne uruchomienie**, a następnie poczekaj na zakończenie operacji.
 
    ![Uruchom ponownie usługę Azure AD Sync][Service restart]
 
@@ -272,13 +272,13 @@ Aby prawidłowo pomóc, poprosimy Podaj jak najdokładniejsze informacje jak to 
 * **Ogólny opis błędu**: Co to jest błąd? Jaki był zachowanie, które zostało już? Jak można odtworzyć błąd? Jak to możliwe, podaj jak najdokładniejsze informacje.
 * **Strona**: Które strony były na kiedy zauważyć błąd? To adres URL, jeśli jesteś w stanie i zrzut ekranu przedstawiający stronę.
 * **Obsługuje kodu**: Jaki był kod pomocy technicznej, który został wygenerowany, gdy użytkownik był wyświetlany błąd?
-    * Aby znaleźć ten kod, należy odtworzyć błąd, a następnie wybierz **obsługuje kodu** link w dolnej części ekranu i wysłać ze specjalistą pomocy technicznej identyfikator GUID, który powoduje.
+  * Aby znaleźć ten kod, należy odtworzyć błąd, a następnie wybierz **obsługuje kodu** link w dolnej części ekranu i wysłać ze specjalistą pomocy technicznej identyfikator GUID, który powoduje.
 
     ![Znajdź kod pomocy technicznej w dolnej części ekranu][Support code]
 
-    * Jeśli na stronie bez kodu pomocy technicznej u dołu wybierz F12 i wyszukaj identyfikator SID i CID i wysyłać te dwa wyniki ze specjalistą pomocy technicznej.
+  * Jeśli na stronie bez kodu pomocy technicznej u dołu wybierz F12 i wyszukaj identyfikator SID i CID i wysyłać te dwa wyniki ze specjalistą pomocy technicznej.
 * **Daty, godziny i strefy czasowej**: Obejmują dokładnej daty i godziny *ze strefą czasową* których wystąpił błąd.
-* **Identyfikator użytkownika**: Kto był użytkownika, który był wyświetlany błąd? Na przykład *user@contoso.com*.
+* **Identyfikator użytkownika**: Kto był użytkownika, który był wyświetlany błąd? Na przykład *użytkownika\@contoso.com*.
     * Jest to użytkownik federacyjny?
     * Jest to użytkownik uwierzytelniania przekazywanego
     * Jest to użytkownik synchronizację skrótów haseł?

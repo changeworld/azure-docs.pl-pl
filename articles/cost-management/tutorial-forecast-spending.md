@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 2d83bab3686d274b9f37c0b0f7c92515801dbe70
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: fcefbcc07886cbae3db869596255fbe841e018ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086457"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58172805"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Samouczek: Prognozowanie wydatków w przyszłości
 
@@ -57,7 +57,7 @@ Na przykładzie widać, które usługi wiązały się z największymi wydatkami.
 
 Na powyższej ilustracji przewidywany roczny koszt maszyn wirtualnych platformy Azure wynosi 28 374 USD.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

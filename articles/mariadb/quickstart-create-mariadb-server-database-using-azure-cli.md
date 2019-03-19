@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842298"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -147,78 +147,78 @@ Aby nawiązać połączenie z serwerem, używając narzędzia wiersza polecenia 
 
 1. Nawiąż połączenie z serwerem:
 
-  ```azurecli-interactive
-  mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  ```
+   ```azurecli-interactive
+   mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   ```
 
 2. Wyświetl stan serwera w wierszu polecenia `mysql>`:
 
-  ```sql
-  status
-  ```
-  Powinien zostać wyświetlony tekst podobny do poniższego:
+   ```sql
+   status
+   ```
+   Powinien zostać wyświetlony tekst podobny do poniższego:
 
-  ```bash
-  C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  Enter password: ***********
-  Welcome to the MySQL monitor.  Commands end with ; or \g.
-  Your MySQL connection id is 65512
-  Server version: 5.6.39.0 MariaDB Server
+   ```bash
+   C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   Enter password: ***********
+   Welcome to the MySQL monitor.  Commands end with ; or \g.
+   Your MySQL connection id is 65512
+   Server version: 5.6.39.0 MariaDB Server
 
-  Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+   Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
 
-  Oracle is a registered trademark of Oracle Corporation and/or its
-  affiliates. Other names may be trademarks of their respective
-  owners.
+   Oracle is a registered trademark of Oracle Corporation and/or its
+   affiliates. Other names may be trademarks of their respective
+   owners.
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-  mysql> status
-  --------------
-  mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
+   mysql> status
+   --------------
+   mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
 
-  Connection id:          64681
-  Current database:
-  Current user:           myadmin@40.118.201.21
-  SSL:                    Cipher in use is AES256-SHA
-  Current pager:          stdout
-  Using outfile:          ''
-  Using delimiter:        ;
-  Server version:         5.6.39.0 MariaDB Server
-  Protocol version:       10
-  Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
-  Server characterset:    latin1
-  Db     characterset:    latin1
-  Client characterset:    utf8
-  Conn.  characterset:    utf8
-  TCP port:               3306
-  Uptime:                 1 day 3 hours 28 min 50 sec
+   Connection id:          64681
+   Current database:
+   Current user:           myadmin@40.118.201.21
+   SSL:                    Cipher in use is AES256-SHA
+   Current pager:          stdout
+   Using outfile:          ''
+   Using delimiter:        ;
+   Server version:         5.6.39.0 MariaDB Server
+   Protocol version:       10
+   Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
+   Server characterset:    latin1
+   Db     characterset:    latin1
+   Client characterset:    utf8
+   Conn.  characterset:    utf8
+   TCP port:               3306
+   Uptime:                 1 day 3 hours 28 min 50 sec
 
-  Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
-  --------------
+   Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
+   --------------
 
-  mysql>
-  ```
+   mysql>
+   ```
 
 > [!TIP]
 > Aby zapoznać się z dodatkowymi poleceniami, zobacz [MySQL 5.7 Reference Manual - Chapter 4.5.1 (Podręcznik programu MySQL 5.7 — Rozdział 4.5.1)](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Nawiązywanie połączenia z serwerem za pomocą aplikacji MySQL Workbench
 
-1.  Otwórz aplikację MySQL Workbench na swoim komputerze klienckim. [Pobierz](https://dev.mysql.com/downloads/workbench/) i zainstaluj aplikację, jeśli nie jest ona jeszcze zainstalowana.
+1. Otwórz aplikację MySQL Workbench na swoim komputerze klienckim. [Pobierz](https://dev.mysql.com/downloads/workbench/) i zainstaluj aplikację, jeśli nie jest ona jeszcze zainstalowana.
 
-2.  W oknie dialogowym **Konfigurowanie nowego połączenia** na karcie **Parametry** wprowadź poniższe informacje:
+2. W oknie dialogowym **Konfigurowanie nowego połączenia** na karcie **Parametry** wprowadź poniższe informacje:
 
- ![Konfigurowanie nowego połączenia](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
+   ![Konfigurowanie nowego połączenia](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
-  | Ustawienie | Sugerowana wartość | Opis |
-  |---|---|---|
-  | Nazwa połączenia | **Połączenie demonstracyjne** | Wprowadź etykietę dla tego połączenia (nazwa połączenia może być dowolna) |
-  | Metoda połączenia | **Standardowa (TCP/IP)** | Użyj protokołu TCP/IP do nawiązania połączenia z usługą Azure Database for MariaDB |
-  | Nazwa hosta | **mydemoserver.mariadb.database.azure.com** | Zanotowana wcześniej nazwa serwera. |
-  | Port | **3306** | Domyślny port dla usługi Azure Database for MariaDB. |
-  | Nazwa użytkownika | **myadmin@mydemoserver** | Zanotowany wcześniej identyfikator logowania administratora serwera. |
-  | Hasło | *Twoje hasło* | Użyj skonfigurowanego wcześniej hasła konta administratora. |
+   | Ustawienie | Sugerowana wartość | Opis |
+   |---|---|---|
+   | Nazwa połączenia | **Połączenie demonstracyjne** | Wprowadź etykietę dla tego połączenia (nazwa połączenia może być dowolna) |
+   | Metoda połączenia | **Standardowa (TCP/IP)** | Użyj protokołu TCP/IP do nawiązania połączenia z usługą Azure Database for MariaDB |
+   | Nazwa hosta | **mydemoserver.mariadb.database.azure.com** | Zanotowana wcześniej nazwa serwera. |
+   | Port | **3306** | Domyślny port dla usługi Azure Database for MariaDB. |
+   | Nazwa użytkownika | **myadmin\@mydemoserver** | Zanotowany wcześniej identyfikator logowania administratora serwera. |
+   | Hasło | *Twoje hasło* | Użyj skonfigurowanego wcześniej hasła konta administratora. |
 
 3. Aby sprawdzić, czy wszystkie parametry zostały skonfigurowane poprawnie, wybierz pozycję **Testuj połączenie**.
 
@@ -238,7 +238,7 @@ Jeśli chcesz usunąć tylko serwer, który został utworzony w tym przewodniku 
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Projektowanie bazy danych MariaDB za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-design-database-cli.md)

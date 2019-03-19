@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: c3148ebe11ba0e23cbded5965234ece9fb6082aa
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b2c43ff2ae45b4adccb8f19873070a4c3a9dbe99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078772"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Rozwiązanie na platformie Azure Key Vault Analytics w usłudze Log Analytics
 
@@ -138,13 +138,13 @@ Aby użyć zaktualizowane rozwiązanie:
 1. [Konfigurowanie diagnostyki, wysyłane bezpośrednio do usługi Log Analytics z usługi Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
 2. Włączanie rozwiązania usługi Azure Key Vault przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../../azure-monitor/insights/solutions.md)
 3. Zaktualizuj wszelkie zapisane zapytania, pulpity nawigacyjne lub alerty, aby użyć nowego typu danych
-  + Typ jest zmiana: KeyVaults do AzureDiagnostics. Do filtrowania Key Vault dzienniki, można użyć typu zasobu.
-  - Zamiast: `KeyVaults`, użyj `AzureDiagnostics | where ResourceType'=="VAULTS"`
-  + Pola: (Nazwy pól jest rozróżniana wielkość liter)
-  - Dla dowolnego pola, które ma sufiks \_s, \_d, lub \_g nazwę, zmienić pierwszy znak na małe litery
-  - Dla dowolnego pola, które ma sufiks \_o w nazwie, dane zostanie podzielona na poszczególne pola na podstawie nazw pól zagnieżdżonych. Na przykład nazwy UPN obiektu wywołującego jest przechowywany w polu `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
-   - Pole CallerIpAddress zmieniony na CallerIPAddress
-   - RemoteIPCountry pole nie jest już obecne
+   + Typ jest zmiana: KeyVaults do AzureDiagnostics. Do filtrowania Key Vault dzienniki, można użyć typu zasobu.
+   + Zamiast: `KeyVaults`, użyj `AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Pola: (Nazwy pól jest rozróżniana wielkość liter)
+   + Dla dowolnego pola, które ma sufiks \_s, \_d, lub \_g nazwę, zmienić pierwszy znak na małe litery
+   + Dla dowolnego pola, które ma sufiks \_o w nazwie, dane zostanie podzielona na poszczególne pola na podstawie nazw pól zagnieżdżonych. Na przykład nazwy UPN obiektu wywołującego jest przechowywany w polu `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Pole CallerIpAddress zmieniony na CallerIPAddress
+   + RemoteIPCountry pole nie jest już obecne
 4. Usuń *Key Vault Analytics (przestarzałe)* rozwiązania. Jeśli używasz programu PowerShell użyć `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Dane zbierane, zanim zmiany nie jest widoczna w nowym rozwiązaniu. Można utworzyć zapytanie dotyczące tych danych za pomocą starego typu i nazwy pola.

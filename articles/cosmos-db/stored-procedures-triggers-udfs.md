@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1960fbc9fc9e8c1d672b66d3cf1f41399842059
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454219"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083202"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
@@ -26,7 +26,7 @@ Zapisywanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez u�
 
 * **Transakcje niepodzielne:** Usługa Azure Cosmos DB gwarantuje, że operacje bazy danych, które są wykonywane w ramach jednej procedury składowanej lub wyzwalacza są niepodzielne. Funkcja ta atomic umożliwia aplikacji łączenie powiązanych operacji w jednej partii, tak, aby wszystkie operacje powodzenie lub żadna z nich powiodło się.
 
-- **Wydajność:** Dane JSON wewnętrznie jest mapowany do systemu typów języka JavaScript. Umożliwia to mapowanie szereg optymalizacje, takie jak z opóźnieniem materializacja dokumentów JSON w puli buforów i nadawania dostępne na żądanie na wykonywanie kodu. Istnieją inne korzyści wydajności skojarzone z wysyłki logiki biznesowej w bazie danych, która zawiera:
+* **Wydajność:** Dane JSON wewnętrznie jest mapowany do systemu typów języka JavaScript. Umożliwia to mapowanie szereg optymalizacje, takie jak z opóźnieniem materializacja dokumentów JSON w puli buforów i nadawania dostępne na żądanie na wykonywanie kodu. Istnieją inne korzyści wydajności skojarzone z wysyłki logiki biznesowej w bazie danych, która zawiera:
 
    * *Przetwarzanie wsadowe:* Można grupować operacje, takie jak operacje wstawiania i prześlij je zbiorczo. Koszty opóźnienie ruchu sieciowego i tworzenie oddzielnych transakcji nakład pracy magazynu są znacznie mniejsze.
 
@@ -34,7 +34,7 @@ Zapisywanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez u�
 
    * *Sekwencjonowanie:* Czasami operacji należy wyzwalająca mechanizm, który może wykonać jedną lub dodatkowe aktualizacje danych. Oprócz niepodzielność dostępne są także korzyści wydajności podczas wykonywania po stronie serwera.
 
-- **Hermetyzacja protokołu:** Procedury składowane może służyć do grupowania logiki w jednym miejscu. Hermetyzacja dodaje warstwę abstrakcji na podstawie danych, co pozwala na rozwój aplikacji niezależnie od danych. Ta warstwa abstrakcji jest przydatne, gdy dane są bez schematu i nie trzeba zarządzać dodanie dodatkowej logiki bezpośrednio do aplikacji. Pozyskiwania umożliwia Twojej zabezpieczać dane przez usprawnienie dostępu ze skryptów.
+* **Hermetyzacja protokołu:** Procedury składowane może służyć do grupowania logiki w jednym miejscu. Hermetyzacja dodaje warstwę abstrakcji na podstawie danych, co pozwala na rozwój aplikacji niezależnie od danych. Ta warstwa abstrakcji jest przydatne, gdy dane są bez schematu i nie trzeba zarządzać dodanie dodatkowej logiki bezpośrednio do aplikacji. Pozyskiwania umożliwia Twojej zabezpieczać dane przez usprawnienie dostępu ze skryptów.
 
 > [!TIP]
 > Procedury składowane są najlepiej dopasowane do działania zapisujące duże. Podejmując decyzję o używane procedury składowane, optymalizować wokół enkapsulacji maksymalną ilość możliwości zapisu. Ogólnie rzecz biorąc procedury składowane nie są najbardziej efektywny sposób oznacza, że dla dużej liczby operacji odczytu dotarłam do zwrócenia do klienta przy użyciu procedur składowanych na potrzeby przetwarzania wsadowego dużej liczby operacji odczytu nie umożliwia uzyskanie żądanego korzyści.

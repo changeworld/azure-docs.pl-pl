@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 748f4562e1efd613b87dd5ab44a83d3d50171f67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3126be88e272ab3891caa94ee15b622b0dfbdbdf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539925"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860503"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Partnerzy platformy Azure Cosmos DB NoSQL migracji i application development
 
@@ -32,10 +32,10 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 |![Programowanie Altoros LLC][3]    |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |   Stany Zjednoczone, Norwegia, Finlandia, Białoruś, Argentyna |  [Witryny sieci Web](https://www.altoros.com/)     |
 |![Attunix Redapt][4]     |   Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji      |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.attunix.com/)       |
 | ![Avanade][26] | Tworzenie nowej aplikacji, <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) | Austria, Niemcy, Szwajcaria, Włochy, Norwegia, Hiszpania, Zjednoczone Królestwo | [Witryny sieci Web](https://www.avanade.com/)
-|![Opracowana przez firmę Bluemetal][5]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Ameryka Północna i Azja i Pacyfik     |  [Witryny sieci Web](http://www.bluemetal.com/)       |
+|![Opracowana przez firmę Bluemetal][5]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Ameryka Północna i Azja i Pacyfik     |  [Witryny sieci Web](https://www.bluemetal.com/)       |
 |![Globalne LLC Capax][6]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.capaxglobal.com/)       |
 | ![Capgemini][14] | Migracja NoSQL; Wprowadzanie innowacji aplikacji (aplikacje do istniejącej); Tworzenie nowej aplikacji | USA, Francja, Zjednoczone Królestwo, Holandia, Finlandia  | [Witryny sieci Web](https://www.capgemini.com/) | 
-|![Coeo][7]     |   Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |    Zjednoczone Królestwo     |  [Witryny sieci Web](http://www.coeo.com/)       |
+|![Coeo][7]     |   Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |    Zjednoczone Królestwo     |  [Witryny sieci Web](https://www.coeo.com/)       |
 | ![Cognizant][15] | Migracja NoSQL |USA, Kanada, Zjednoczone Królestwo, Dania, Holandia, Szwajcaria, Australia, Japonia | [Witryny sieci Web](https://www.cognizant.com/)|
 |![Infosys][8]     |  Migracja NoSQL       |    Globalny     |  [Witryny sieci Web](https://www.infosys.com/)       |
 | ![Lagash][16] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Argentyna, Chile, Kolumbia, Meksyk| [Witryny sieci Web](https://www.lagash.com/)|

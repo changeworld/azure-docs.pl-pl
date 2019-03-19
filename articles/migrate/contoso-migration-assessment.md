@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: df3ae6fbeceb85df6d6e5245a5bbad517179733c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 4739308d301291bf88e8ae547ba85f9648339c4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991363"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118463"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: Ocena obciążeń lokalnych pod kątem migracji do platformy Azure
 
@@ -159,15 +159,15 @@ Contoso można teraz uruchomić ocenę, aby przeanalizować jej bazy danych SQL 
 
     ![Data Migration Assistant — wybierz źródło](./media/contoso-migration-assessment/dma-assessment-1.png)
 
-    > [!NOTE]
-      Obecnie usługa Data Migration Assistant nie obsługuje oceny migracji do wystąpienia zarządzanego bazy danych SQL Azure. Jako obejście, firma Contoso używa programu SQL Server na Maszynie wirtualnej platformy Azure jako tymczasowego obiektu docelowego dla oceny.
+   > [!NOTE]
+   >    Obecnie usługa Data Migration Assistant nie obsługuje oceny migracji do wystąpienia zarządzanego bazy danych SQL Azure. Jako obejście, firma Contoso używa programu SQL Server na Maszynie wirtualnej platformy Azure jako tymczasowego obiektu docelowego dla oceny.
 
 3. W **Wybierz docelową wersję**, Contoso wybiera programu SQL Server 2017 w wersji docelowej. Firma Contoso potrzebuje można wybrać tę wersję, ponieważ jest to wersja, który jest używany przez wystąpienie zarządzane usługi SQL Database.
 4. Contoso wybiera raportów, aby pomóc ją znaleźć informacje o zgodności oraz nowe funkcje:
-    - **Problemy ze zgodnością** należy pamiętać, zmiany, które mogą uniemożliwić migrację lub które wymagają drobnych korekt przed migracją. Ten raport zapewnia Contoso poinformowany o funkcjach aktualnie w użyciu, które są przestarzałe. Problemy są uporządkowane według poziomu zgodności.
-    - **Rekomendowane nowe funkcje** informacje o nowych funkcjach w docelowej platformy SQL Server, który może służyć do bazy danych po zakończeniu migracji. Nowych rekomendowanych funkcji są zorganizowane w nagłówki **wydajności**, **zabezpieczeń**, i **magazynu**.
+   - **Problemy ze zgodnością** należy pamiętać, zmiany, które mogą uniemożliwić migrację lub które wymagają drobnych korekt przed migracją. Ten raport zapewnia Contoso poinformowany o funkcjach aktualnie w użyciu, które są przestarzałe. Problemy są uporządkowane według poziomu zgodności.
+   - **Rekomendowane nowe funkcje** informacje o nowych funkcjach w docelowej platformy SQL Server, który może służyć do bazy danych po zakończeniu migracji. Nowych rekomendowanych funkcji są zorganizowane w nagłówki **wydajności**, **zabezpieczeń**, i **magazynu**.
 
-    ![Data Migration Assistant — problemy ze zgodnością i nowe funkcje](./media/contoso-migration-assessment/dma-assessment-2.png)
+     ![Data Migration Assistant — problemy ze zgodnością i nowe funkcje](./media/contoso-migration-assessment/dma-assessment-2.png)
 
 2. W **nawiązywanie połączenia z serwerem**, Contoso Wstawia nazwę maszyny Wirtualnej, która jest uruchomiona, bazy danych oraz poświadczenia, aby uzyskać do niego dostęp. Wybiera contoso **certyfikat serwera zaufania** się upewnić, że maszyna wirtualna może dostęp do serwera SQL. Następnie wybiera Contoso **Connect**.
 
@@ -186,13 +186,13 @@ Wyniki są wyświetlane, gdy są one dostępne. Jeśli Contoso rozwiązuje probl
 
 1. W **problemy ze zgodnością** zgłosić, Contoso sprawdza, czy wszystkie problemy na każdym poziomie zgodności. Poziomy zgodności są mapowane na wersje programu SQL Server w następujący sposób:
 
-    - 100: SQL Server 2008/Azure SQL Database
-    - 110: SQL Server 2012/Azure SQL Database
-    - 120: SQL Server 2014/Azure SQL Database
-    - 130: SQL Server 2016/Azure SQL Database
-    - 140: SQL Server 2017/Azure SQL Database
+   - 100: SQL Server 2008/Azure SQL Database
+   - 110: SQL Server 2012/Azure SQL Database
+   - 120: SQL Server 2014/Azure SQL Database
+   - 130: SQL Server 2016/Azure SQL Database
+   - 140: SQL Server 2017/Azure SQL Database
 
-    ![Data Migration Assistant — raport problemy ze zgodnością](./media/contoso-migration-assessment/dma-assessment-5.png)
+     ![Data Migration Assistant — raport problemy ze zgodnością](./media/contoso-migration-assessment/dma-assessment-5.png)
 
 2. W **Rekomendowaną** zgłosić, Contoso widoków wydajności, zabezpieczeń i magazynu funkcji, jakie po migracji. Różne funkcje, zaleca się w tym OLTP w pamięci indeksów magazynu kolumn, Stretch Database, Always Encrypted, dynamiczne maskowanie danych i niewidoczne szyfrowanie danych.
 
@@ -403,14 +403,14 @@ Contoso uruchamia instalację na każdej maszynie Wirtualnej.
 
     `sudo -i`
 3. Firma Contoso instaluje programu MMA:
-    - Firmy Contoso przechodzi klucz i identyfikator obszaru roboczego w poleceniu.
-    - Polecenia są dla 64-bitowych.
-    - Identyfikator obszaru roboczego i klucz podstawowy znajdują się w obszarze roboczym usługi Log Analytics w witrynie Azure portal. Wybierz **ustawienia**, a następnie wybierz pozycję **połączone źródła** kartę.
-    - Uruchom następujące polecenia, aby pobrać agenta usługi Log Analytics, weryfikacja sumy kontrolnej i zainstalować i dołączyć agenta:
+   - Firmy Contoso przechodzi klucz i identyfikator obszaru roboczego w poleceniu.
+   - Polecenia są dla 64-bitowych.
+   - Identyfikator obszaru roboczego i klucz podstawowy znajdują się w obszarze roboczym usługi Log Analytics w witrynie Azure portal. Wybierz **ustawienia**, a następnie wybierz pozycję **połączone źródła** kartę.
+   - Uruchom następujące polecenia, aby pobrać agenta usługi Log Analytics, weryfikacja sumy kontrolnej i zainstalować i dołączyć agenta:
 
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
-    ```
+     ```
+     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
+     ```
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>Instalowanie agenta zależności na maszynach wirtualnych z systemem Linux
 

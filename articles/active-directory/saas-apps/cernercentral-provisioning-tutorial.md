@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c6b1e77b6fce8bedb8f035fcb18acb8c56ad5a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dda84d30124eca1526f227ffec134f48451c9cb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102571"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie centralnego Cerner dla automatycznej aprowizacji użytkowników
 
@@ -60,7 +60,7 @@ Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie uż
 Ta sekcja przeprowadzi Cię przez łączenie usługi Azure AD z centralnego Cerner użytkownika spisu przy użyciu konta użytkownika Standard SCIM firmy Cerner aprowizujący interfejs API oraz konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz przypisanych użytkowników, kont, Indie środkowe Cerner zależnie od Przypisywanie użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla siedziby Cerner, wykonując instrukcje podane w [witrynie Azure portal (https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełniają się wzajemnie. Aby uzyskać więcej informacji, zobacz [centralnego Cerner pojedynczego logowania jednokrotnego samouczek](cernercentral-tutorial.md).
+> Można też włączyć opartej na SAML logowania jednokrotnego dla siedziby Cerner, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełniają się wzajemnie. Aby uzyskać więcej informacji, zobacz [centralnego Cerner pojedynczego logowania jednokrotnego samouczek](cernercentral-tutorial.md).
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizowaniem kont użytkowników do centralnego Cerner w usłudze Azure AD:
@@ -68,13 +68,13 @@ Ta sekcja przeprowadzi Cię przez łączenie usługi Azure AD z centralnego Cern
 
 Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz poprosić konta system Cerner Central Cerner oraz do generowania tokenu elementu nośnego OAuth, używanego przez usługi Azure AD do łączenia z punktem końcowym Standard SCIM Cerner firmy. Zalecane jest również, że integracja wykonywanych w środowisku piaskownicy Cerner przed wdrożeniem w środowisku produkcyjnym.
 
-1.  Pierwszym krokiem jest zapewnienie osobom Zarządzanie Cerner i integracji z usługą Azure AD ma konto CernerCare, który jest wymagany do dostęp do dokumentacji, które są niezbędne do zakończenia z instrukcjami. Jeśli to konieczne, umożliwia tworzenie kont CernerCare w każdym środowisku zastosowanie poniższych adresów URL.
+1. Pierwszym krokiem jest zapewnienie osobom Zarządzanie Cerner i integracji z usługą Azure AD ma konto CernerCare, który jest wymagany do dostęp do dokumentacji, które są niezbędne do zakończenia z instrukcjami. Jeśli to konieczne, umożliwia tworzenie kont CernerCare w każdym środowisku zastosowanie poniższych adresów URL.
 
    * Sandbox:  https://sandboxcernercare.com/accounts/create
 
    * Produkcyjne:  https://cernercare.com/accounts/create  
 
-2.  Następnie należy utworzyć konta systemowego dla usługi Azure AD. Żądanie konta systemowego dla środowiska izolowanego i produkcji, skorzystaj z poniższych instrukcji.
+2. Następnie należy utworzyć konta systemowego dla usługi Azure AD. Żądanie konta systemowego dla środowiska izolowanego i produkcji, skorzystaj z poniższych instrukcji.
 
    * Instrukcje:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
@@ -82,7 +82,7 @@ Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz pop
 
    * Produkcyjne:  https://cernercentral.com/system-accounts/
 
-3.  Kolejny krok to Generowanie tokenu elementu nośnego OAuth dla każdego konta system. Aby to zrobić, postępuj zgodnie z poniższymi instrukcjami.
+3. Kolejny krok to Generowanie tokenu elementu nośnego OAuth dla każdego konta system. Aby to zrobić, postępuj zgodnie z poniższymi instrukcjami.
 
    * Instrukcje:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
@@ -96,33 +96,33 @@ Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz pop
 
 6. Środkowe Cerner została już skonfigurowana dla logowania jednokrotnego, wyszukaj wystąpienie Cerner środkowej za pomocą pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **centralnego Cerner** w galerii aplikacji. Wybierz centralnego Cerner z wyników wyszukiwania i dodać go do listy aplikacji.
 
-7.  Wybierz wystąpienie usługi Cerner środkowej, a następnie wybierz **aprowizacji** kartę.
+7. Wybierz wystąpienie usługi Cerner środkowej, a następnie wybierz **aprowizacji** kartę.
 
-8.  Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+8. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
    ![Środkowe Cerner inicjowania obsługi administracyjnej](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9.  Wypełnij następujące pola w obszarze **poświadczeń administratora**:
+9. Wypełnij następujące pola w obszarze **poświadczeń administratora**:
 
    * W **adres URL dzierżawy** wprowadź adres URL w formacie poniżej, zastępując "User-spisu-obszaru-ID" o identyfikatorze obszaru uzyskaną w kroku #4.
 
 > Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
-
+> 
 > Produkcyjne: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * W **klucz tajny tokenu** polu wprowadź tokenu elementu nośnego OAuth, które są generowane w kroku #3 a kliknij **Testuj połączenie**.
 
    * Powiadomienie o powodzeniu powinien być widoczny po stronie upperright portalu.
 
-10. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz poniższe pole wyboru.
+1. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz poniższe pole wyboru.
 
-11. Kliknij pozycję **Zapisz**. 
+1. Kliknij pozycję **Zapisz**. 
 
-12. W **mapowania atrybutów** Przejrzyj atrybuty użytkowników i grup, które mają być synchronizowane z usługi Azure AD do centralnego Cerner. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników i grup w środkowej Cerner operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+1. W **mapowania atrybutów** Przejrzyj atrybuty użytkowników i grup, które mają być synchronizowane z usługi Azure AD do centralnego Cerner. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników i grup w środkowej Cerner operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-13. Aby włączyć usługi Azure AD, usługi dla siedziby Cerner inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
+1. Aby włączyć usługi Azure AD, usługi dla siedziby Cerner inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
 
-14. Kliknij pozycję **Zapisz**. 
+1. Kliknij pozycję **Zapisz**. 
 
 Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy przypisane do centralnego Cerner w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, zawierające wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji Cerner centralnego.
 

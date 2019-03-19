@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a963db0b0b1a20c110f90bacdae092846f7bdd8b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7bf7e341a83727e21e9225c384829c05b7230579
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095997"
 ---
 # <a name="azure-application-skus-tab"></a>Karta jednostki SKU aplikacji platformy Azure
 
 W tym artykule opisano, jak utworzyć jednostki SKU dla aplikacji platformy Azure przy użyciu karty jednostki SKU. 
 
->[!IMPORTANT] 
-Procedura konfigurowania jednostki SKU są różne dla oferty aplikacji zarządzanych i oferty szablonu rozwiązania. Te różnice są opisane w tym artykule. 
+> [!IMPORTANT]
+> Procedura konfigurowania jednostki SKU są różne dla oferty aplikacji zarządzanych i oferty szablonu rozwiązania. Te różnice są opisane w tym artykule. 
 
 ## <a name="configure-azure-application-skus"></a>Konfigurowanie aplikacji platformy Azure jednostki SKU
 

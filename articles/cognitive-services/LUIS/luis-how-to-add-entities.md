@@ -1,7 +1,7 @@
 ---
 title: Dodawanie jednostek
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dodaj jednostki (kluczowe dane w domenie aplikacji) w aplikacjach Language Understanding (LUIS).
+description: Tworzenie jednostek, aby wyodrębnić dane kluczowych z wypowiedzi użytkowników w aplikacjach Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859797"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106937"
 ---
 # <a name="create-entities-without-utterances"></a>Tworzenie jednostek bez wypowiedzi
 
-Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Wypowiedź może zawierać wiele jednostek lub brak wcale. Jednostka reprezentuje klasę, łącznie z kolekcji podobnych obiektów (miejsc, rzeczy, osoby, zdarzenia lub pojęcia). Jednostki opisują informacje istotne dla intencji i czasami są istotne dla aplikacji w celu wykonania swojego zadania. 
-
-Można utworzyć jednostki, przed lub oprócz tworzenia intencji.
+Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Jednostka reprezentuje klasę, łącznie z kolekcji podobnych obiektów (miejsc, rzeczy, osoby, zdarzenia lub pojęcia). Jednostki opisują informacje istotne dla intencji i czasami są istotne dla aplikacji w celu wykonania swojego zadania. Można utworzyć jednostki, po dodaniu wypowiedź intencji lub od siebie z (przed lub po) dodawanie wypowiedź do intencji.
 
 Dodawanie, edytowanie lub usuwanie jednostek w aplikacji usługi LUIS za pośrednictwem **listy jednostek** na **jednostek** strony. Usługa LUIS oferuje dwa główne rodzaje jednostek: [ze wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md)i Twoje [jednostek niestandardowych](luis-concept-entity-types.md#types-of-entities).
 
-Po utworzeniu jednostki mogą być oznaczane w wypowiedź przykład intencji z **intencji** strony szczegółów. 
+Po utworzeniu jednostki z maszyny do opanowania, musisz oznaczyć wszystkie wypowiedź przykład intencji, które znajduje się w tej jednostce.
 
-## <a name="add-prebuilt-entity"></a>Dodawanie wstępnie utworzone jednostki
+<a name="add-prebuilt-entity"></a>
+
+## <a name="add-a-prebuilt-entity-to-your-app"></a>Dodawanie wstępnie utworzone jednostki do aplikacji
 
 Typowe ze wstępnie utworzonych jednostek dodanych do aplikacji są *numer* i *datetimeV2*. 
 
@@ -40,7 +40,9 @@ Typowe ze wstępnie utworzonych jednostek dodanych do aplikacji są *numer* i *d
 
     ![Zrzut ekranu Dodaj okno dialogowe wstępnie utworzone jednostki](./media/add-entities/list-of-prebuilt-entities.png)
 
-## <a name="add-simple-entities"></a>Dodaj prostą jednostki
+<a name="add-simple-entities"></a>
+
+## <a name="add-simple-entities-for-single-concepts"></a>Dodaj prostą jednostki dla pojedynczego pojęcia
 
 Proste jednostki w tym artykule opisano pojęcia pojedynczego. Użyj poniższej procedury, aby utworzyć jednostki, która wyodrębnia nazwy działów firmy, takich jak *zarządzania zasobami ludzkimi* lub *operacji*.   
 
@@ -52,7 +54,9 @@ Proste jednostki w tym artykule opisano pojęcia pojedynczego. Użyj poniższej 
 
     A [listy fraz](luis-concept-feature.md) jest najczęściej używany do zwiększania sygnał proste jednostki.
 
-## <a name="add-regular-expression-entities"></a>Dodaj jednostki wyrażeń regularnych
+<a name="add-regular-expression-entities"></a>
+
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Dodaj jednostki wyrażenia regularnego pojęcia związane z wysoce ze strukturą
 
 Jednostka wyrażenia regularnego umożliwia wyodrębnienie danych z wypowiedź, w oparciu o podane wyrażenie regularne. 
 
@@ -60,7 +64,7 @@ Jednostka wyrażenia regularnego umożliwia wyodrębnienie danych z wypowiedź, 
 
 1. W podręcznym oknie dialogowym, wprowadź `Human resources form name` w **nazwa jednostki** wybierz opcję **wyrażenia regularnego** z **typu jednostki** listy, wprowadź wyrażenie regularne `hrf-[0-9]{6}`, a następnie wybierz pozycję **gotowe**. 
 
-    Ten znak literału wyrażenia regularnego `hrf-`, następnie 6 cyfr do reprezentowania formularza numer formularza zasobów ludzkich.
+    To wyrażenie regularne dopasowuje znaki literału `hrf-`, następnie 6 cyfr do reprezentowania formularza numer formularza zasobów ludzkich.
 
 ## <a name="add-hierarchical-entities"></a>Dodaj jednostki hierarchicznych
 
@@ -85,7 +89,9 @@ Aby dodać jednostki hierarchiczne, wykonaj następujące czynności:
 
     Po utworzeniu tej jednostki, przejdź do wszystkich intencji, mających wypowiedzi przykładu, które zawierają jednostki. Zaznacz tekst w polu wypowiedź przykład i oznaczanie tekstu jako jednostka. 
 
-## <a name="add-composite-entities"></a>Dodaj jednostki złożone
+<a name="add-composite-entities"></a>
+
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Dodaj jednostki złożonego do grupowania w relacji nadrzędny podrzędny
 
 Możesz zdefiniować relacje między jednostkami w różnych typów, tworząc obiekt złożony. W poniższym przykładzie jednostka zawiera wyrażenie regularne i wstępnie utworzone jednostki o nazwie.  
 
@@ -107,7 +113,9 @@ W polu wypowiedź `Send hrf-123456 to John Smith`, tekst `hrf-123456` jest dopas
 
 1. Wybierz pozycję **Done** (Gotowe).
 
-## <a name="add-patternany-entities"></a>Dodaj jednostki Pattern.any
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Dodaj jednostki Pattern.any do przechwytywania dowolnych jednostek
 
 [Pattern.any](luis-concept-entity-types.md) jednostek obowiązują tylko w [wzorców](luis-how-to-model-intent-pattern.md), nie intencji. Ten typ jednostki pomaga LUIS Znajdź koniec jednostki o różnej długości i wybór programu word. Ponieważ tej jednostki są używane we wzorcu, LUIS wie, gdzie jest koniec jednostki w szablonie wypowiedź.
 
@@ -123,7 +131,9 @@ W polu wypowiedź `Where is Request relocation from employee new to the company 
 
     Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](luis-concept-patterns.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem. 
 
-## <a name="add-a-role-to-pattern-based-entity"></a>Dodawanie roli do jednostki na podstawie wzorca
+<a name="add-a-role-to-pattern-based-entity"></a>
+
+## <a name="add-a-role-to-distinguish-different-contexts"></a>Dodaj rolę, aby odróżnić różne konteksty
 
 Rola to nazwane podtyp jednostki na podstawie kontekstu. Jest ona porównywalna ze [hierarchiczne](#add-hierarchical-entities) jednostki, ale ról są używane tylko w [wzorców](luis-how-to-model-intent-pattern.md). 
 
@@ -141,7 +151,9 @@ Składnia dla roli jest **{Entityname:Rolename}** gdzie nazwa jednostki następu
 
     ![Zrzut ekranu przedstawiający Dodawanie roli źródła do lokalizacji jednostki](./media/add-entities/roles-enter-role-name-text.png)
 
-## <a name="add-list-entities"></a>Dodawanie listy jednostek
+<a name="add-list-entities"></a>
+
+## <a name="add-list-entities-for-exact-matches"></a>Dodawanie listy jednostek dokładnego dopasowania
 
 Lista jednostek reprezentują stały, zamknięte zbiór powiązanych słów. 
 
@@ -184,12 +196,15 @@ W przypadku aplikacji zarządzania zasobami ludzkimi może mieć listę wszystki
     ]  
     ```
 
+<a name="change-entity-type"></a>
 
-## <a name="change-entity-type"></a>Zmień typ jednostki
+## <a name="do-not-change-entity-type"></a>Nie zmieniaj typ jednostki
 
 Usługa LUIS nie pozwala zmienić typ jednostki, ponieważ nie ma informacji, co należy dodać lub usunąć do skonstruowania tej jednostki. Aby zmienić typ, lepiej jest utworzyć nową jednostkę poprawnego typu o nazwie nieco inne. Po utworzeniu jednostki w każdym wypowiedź usuń starą nazwę jednostki oznaczone i dodać nową nazwę jednostki. Gdy ma zostać relabeled wszystkich wypowiedzi, należy usunąć stare jednostki. 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Tworzenie wzorca z wypowiedź
+<a name="create-a-pattern-from-an-utterance"></a>
+
+## <a name="create-a-pattern-from-an-example-utterance"></a>Tworzenie wzorca z wypowiedź przykład
 
 Zobacz [Dodaj wzorca od istniejących wypowiedź przeznaczenie lub jednostki strony](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 

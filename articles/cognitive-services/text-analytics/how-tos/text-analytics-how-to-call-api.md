@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 6fedc1b9a6b88419dbcae41b5bb6f89bd8c5cbf7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886882"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122879"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -58,7 +58,7 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
    + Wklej w punkcie końcowym, skopiowane ze strony portalu.
    + Dołącz zasób.
 
-  Punktów końcowych zasobów są w następujący sposób (regionu mogą się różnić):
+   Punktów końcowych zasobów są w następujący sposób (regionu mogą się różnić):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
@@ -71,7 +71,7 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
    + `Content-Type`: application/json.
    + `Accept`: application/json.
 
-  Twoje żądanie powinno wyglądać podobnie jak poniższy zrzut ekranu, zakładając, że **/keyPhrases** zasobów.
+   Twoje żądanie powinno wyglądać podobnie jak poniższy zrzut ekranu, zakładając, że **/keyPhrases** zasobów.
 
    ![Zrzut ekranu z punktu końcowego i nagłówków żądania](../media/postman-request-keyphrase-1.png)
 
@@ -81,15 +81,15 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
 
 5. Wklej wybrane dokumenty JSON w formacie, który nadaje się do zamierzonego analizy. Aby uzyskać więcej informacji na temat konkretnej analizy zobacz poniższe tematy:
 
-  + [Wykrywanie języka](text-analytics-how-to-language-detection.md)  
-  + [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)  
-  + [Analiza tonacji](text-analytics-how-to-sentiment-analysis.md)  
-  + [Rozpoznawanie jednostek (wersja zapoznawcza)](text-analytics-how-to-entity-linking.md)  
+   + [Wykrywanie języka](text-analytics-how-to-language-detection.md)  
+   + [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)  
+   + [Analiza tonacji](text-analytics-how-to-sentiment-analysis.md)  
+   + [Rozpoznawanie jednostek (wersja zapoznawcza)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Kliknij przycisk **wysyłania** można przesłać żądania. Możesz przesłać do 100 żądań na minutę. 
 
-  W narzędziu Postman odpowiedź zostanie wyświetlona w oknie dalej w dół, jako pojedynczy dokument JSON, za pomocą elementu dla każdego Identyfikatora dokumentu, podany w żądaniu.
+   W narzędziu Postman odpowiedź zostanie wyświetlona w oknie dalej w dół, jako pojedynczy dokument JSON, za pomocą elementu dla każdego Identyfikatora dokumentu, podany w żądaniu.
 
 ## <a name="see-also"></a>Zobacz także 
 

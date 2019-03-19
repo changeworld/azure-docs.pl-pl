@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/14/2019
-ms.openlocfilehash: 4b5934123f5bb7fa9eaa2c67c212bcef2a5de0aa
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 01115524ae3890c1d6a0220bcf89e86090d148cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54479275"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078877"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
 
@@ -108,7 +108,7 @@ output {
 ```
 
 | Nazwa parametru | Opis |
-| --- | --- | --- |
+| --- | --- |
 | **path** | Dodatek usługi Logstash zapisuje zdarzenia w plikach tymczasowych przed ich wysłaniem do usługi Azure Data Explorer. Ten parametr zawiera ścieżkę, w której należy zapisać pliki, oraz wyrażenie czasu na potrzeby rotacji pliku. Pozwolą one na wyzwalanie przekazywania w usłudze Azure Data Explorer.|
 | **ingest_url** | Punkt końcowy Kusto na potrzeby komunikacji dotyczącej pozyskiwania.|
 | **app_id**, **app_key** i **app_tenant**| Poświadczenia wymagane do połączenia z usługą Azure Data Explorer. Pamiętaj, aby używać aplikacji z uprawnieniami do pozyskiwania. |
@@ -145,7 +145,7 @@ Uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `logs`:
 .drop table logs
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań](write-queries.md)

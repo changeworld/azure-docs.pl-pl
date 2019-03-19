@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
 ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3441350a07047676ac43de23262be6c54912162c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854381"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104169"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywać zaawansowane przekształceń JSON i łącznika Liquid szablonów w usłudze Azure Logic Apps
 
@@ -35,8 +34,7 @@ Tak zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, 
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie płynnych szablon lub mapy dla konta integracji
 
-1. W tym przykładzie należy utworzyć przykładowy szablon Liquid opisane w tym kroku.
-Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że filtry te zaczynać się wielką. Dowiedz się więcej o [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters), wykorzystującymi [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa.
+1. W tym przykładzie należy utworzyć przykładowy szablon Liquid opisane w tym kroku. W szablonie Liquid służy [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters), wykorzystującymi [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa. Jednak upewnij się, że *rozpoczynać nazw filtrów wielkich liter*, nie małe litery. 
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -82,7 +80,8 @@ Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że f
 
 2. W Projektancie aplikacji logiki Dodaj [wyzwalacza żądania](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikacji logiki.
 
-3. W obszarze wyzwalacza wybierz **nowy krok**. W polu wyszukiwania wprowadź "cieczy" jako filtr i wybierz następującą akcję: **Przekształć JSON do formatu JSON — cieczy**
+3. W obszarze wyzwalacza wybierz **nowy krok**. 
+   W polu wyszukiwania wprowadź "cieczy" jako filtr i wybierz następującą akcję: **Przekształć JSON do formatu JSON — cieczy**
 
    ![Znajdowanie i wybieranie akcji Liquid](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -101,7 +100,7 @@ Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że f
 
    2. Z **wybierz konto integracji** wybierz swoje konto integracji i wybierz polecenie **Zapisz**.
 
-     ![Połącz aplikację logiki z kontem integracji](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![Połącz aplikację logiki z kontem integracji](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
 

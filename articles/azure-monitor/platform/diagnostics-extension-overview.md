@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310461"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078543"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
 Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, maszyna wirtualna skalowanie zestawów i usługi Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../../azure-monitor/overview.md).
@@ -50,6 +50,9 @@ Istnieje również możliwość wysyłania danych do bazy danych szeregów czaso
 * Traktowanie operator symbolu wieloznacznego w liczniki wydajności jako wymiar "Wystąpienie" w swoje metryki.  Na przykład, gdy zostały zebrane "dysk logiczny (\*) / DiskWrites na sekundę" licznik będzie mieć możliwość filtrowania i podział wymiaru "Wystąpienie" do kreślenia lub alertu na zapisy dysku/s dla każdego dysku logicznego na maszynie Wirtualnej (na przykład C:)
 
 Aby dowiedzieć się więcej na temat konfigurowania tego ujścia, zobacz [dokumentacji schemat usługi Diagnostyka Azure.](diagnostics-extension-schema-1dot3.md)
+
+## <a name="costs"></a>Koszty
+Każdego z powyższych opcji może być naliczane opłaty. Pamiętaj zbadać je, aby uniknąć nieoczekiwanych opłat.  Usługa Application Insights, Centrum zdarzeń i usługi Azure Storage ma oddzielne koszty pozyskiwania i czas przechowywane. W szczególności usługi Azure Storage będzie przechowywać żadnych danych zawsze więc chcesz przeczyścić starszych danych po określonym czasie do niskich kosztów usługi.    
 
 ## <a name="versioning-and-configuration-schema"></a>Schemat przechowywania wersji i konfiguracji
 Zobacz [schemat i Historia wersji usługi Diagnostyka Azure](diagnostics-extension-schema.md).

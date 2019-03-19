@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 65b111d74121b6a679883d480b9e1f19d41e334e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093565"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905141"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpiecznie zainstalowania i obsługi usługi Azure Data Box
 ![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png)
@@ -77,14 +77,14 @@ Poniżej przedstawiono ikony, że znajdują się po sprawdzeniu środki bezpiecz
 * Trwale Odłącz jednostki, przed jego przeniesieniem lub jeśli uważasz, że ma ulec uszkodzeniu w dowolny sposób.
 * Określ źródła zasilania odpowiedniej ochrony elektrycznych przeciążenia spełnione następujące warunki usługi power:
 
-    - Napięcie: 100 V programu AC do 240 V programu AC
-    - Bieżąca: 6, maksymalnie
-    - Częstotliwość: 50 Hz do 60 Hz
+    - Napięcie: 100 V AC do 240 V programu AC
+    - Bieżące: 6, maksymalnie
+    - Częstotliwość: 50 częstotliwości – 60 Hz
 
 ![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png) **Przestroga:**
 
 * To urządzenie zawiera monet baterie. Nie należy próbować usługi na urządzeniu. Baterie w tym urządzeniu nie są zdatne do użytku przez użytkownika. 
-* **Dla personelu obsługi tylko**: ryzyka rozłożenia Jeśli baterii zastępuje niepoprawny typ. Usuwa używane baterie zgodnie z instrukcjami.
+* **Dla personelu obsługi tylko**: Ryzyko rozłożenia Jeśli baterii zastępuje niepoprawny typ. Usuwa używane baterie zgodnie z instrukcjami.
 
 ![Zwróć uwagę, ikona](./media/data-box-safety/notice_icon.png) **powiadomienia:**
 
@@ -104,7 +104,7 @@ Jest to urządzenie:
     - Temperatura: 50° do 95° F (10° 35 c)
     - Temperatura:-4 ° 122 ° F (°-20 do 50 C)
     - Wilgotność względna: 15 – 85% (bez kondensacji) 
-    - Wysokość: przetestowane do 6500 metry 0 do 2000 liczników
+    - Wysokość: Przetestowane do 6500 metry 0 do 2000 liczników
 
 Klasyfikacje zasilania można znaleźć w Etykieta klasyfikacji urządzenia, które są dostarczane z jednostki. 
 
@@ -118,15 +118,15 @@ Zmiany lub modyfikacje wprowadzone do urządzenia nie zostaną zatwierdzone prze
 
 Została przetestowana i spełnia ograniczenia klasy urządzeń cyfrowych, zgodnie z częścią 15 cz tego urządzenia. Limity te są przeznaczone do zapewnienia wystarczającej ochrony przed zakłóceniami szkodliwe, gdy urządzenie jest świadczona w środowiskach komercyjnych. Te urządzenia generuje, używa i może fale radiowe i jeśli nie jest zainstalowane i wykorzystywane zgodnie z instrukcją, może powodować zakłócenia szkodliwych opcji łączności. Działanie tego urządzenia w miejscu zamieszkania jest może spowodować szkodliwe zakłócenia, w którym użytkownik będzie musiał usunąć na jego koszt.
 
-To urządzenie jest zgodny z częścią 15 cz i w przemyśle RSS wykluczone licencji Kanada normach. Operacja podlega następujących warunków: (1) to urządzenie nie może powodować zakłócenia szkodliwych i (2) to urządzenie musi zaakceptować zakłócenia, w tym zakłócenia, które mogą powodować nieoczekiwane działanie urządzenia.
+To urządzenie jest zgodny z częścią 15 cz i w przemyśle RSS wykluczone licencji Kanada normach. Operacja podlega następujące dwa warunki: (1) to urządzenie nie może powodować zakłócenia szkodliwych i (2) to urządzenie musi zaakceptować zakłócenia, w tym zakłócenia, które mogą powodować nieoczekiwane działanie urządzenia.
 
 ![Kanada](./media/data-box-safety/canada.png)
 
 MOŻNA ICES-3(A)/NMB-3(A)
 
-Microsoft Corporation, co Microsoft sposób, Redmond, WA 98052, USA.
+Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
-Stanów Zjednoczonych: (800) 426-9400
+Stany Zjednoczone: (800) 426-9400
 
 Kanada: (800) 933-4750
 
@@ -142,7 +142,7 @@ Jest to produkt klasy A. W środowisku światowego tego produktu może powodowa�
 
 ![Ikona usuwania baterii](./media/data-box-safety/battery_disposal_icon.png)
 
-Ten symbol na produkt lub zasilane z baterii lub jego opakowania oznacza, że tego produktu i wszystkie akumulatory, zawartych w nim nie są zbywane przy użyciu usługi odpadów. Zamiast tego jest odpowiedzialny za przekazać ten dotyczy kolekcji punktem recyklingu baterii i sprzętu elektrycznego i elektronicznego. Ta kolekcja osobnych i odtwarzanie będzie ułatwiają ochronę zasobów naturalnych i zapobiec potencjalne negatywne skutki dla zdrowia ludzi i środowiska z powodu możliwa obecności niebezpiecznych substancji w baterie i w elektrycznego i elektronicznego sprzęt, który może być spowodowany przez nieodpowiednie usuwania. Aby uzyskać więcej informacji o tym, gdzie można usunąć wyłączony baterie i strat elektrycznych i elektronicznych skontaktuj się z biura lokalnego Miasto/gmina, usługi gospodarstwa domowego usuwania odpadów lub Sklep, w którym zakupiono tego produktu. Skontaktuj się z pomocą *erecycle@microsoft.com* dodatkowe informacje na temat WEEE.
+Ten symbol na produkt lub zasilane z baterii lub jego opakowania oznacza, że tego produktu i wszystkie akumulatory, zawartych w nim nie są zbywane przy użyciu usługi odpadów. Zamiast tego jest odpowiedzialny za przekazać ten dotyczy kolekcji punktem recyklingu baterii i sprzętu elektrycznego i elektronicznego. Ta kolekcja osobnych i odtwarzanie będzie ułatwiają ochronę zasobów naturalnych i zapobiec potencjalne negatywne skutki dla zdrowia ludzi i środowiska z powodu możliwa obecności niebezpiecznych substancji w baterie i w elektrycznego i elektronicznego sprzęt, który może być spowodowany przez nieodpowiednie usuwania. Aby uzyskać więcej informacji o tym, gdzie można usunąć wyłączony baterie i strat elektrycznych i elektronicznych skontaktuj się z biura lokalnego Miasto/gmina, usługi gospodarstwa domowego usuwania odpadów lub Sklep, w którym zakupiono tego produktu. Skontaktuj się z pomocą *erecycle\@microsoft.com* dodatkowe informacje na temat WEEE.
 
 Ten produkt zawiera akumulatora komórki monet.
 

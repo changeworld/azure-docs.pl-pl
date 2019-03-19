@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21fe7c70c09ad41faf628db45d82b995c8f2515
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd3aac6a7fb0904089f135c9af7b136eda73701f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835473"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -50,7 +50,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 ### <a name="azure-ad-connect-server"></a>Serwer usługi Azure AD Connect
 * Program Azure AD Connect nie można zainstalować na Small Business Server, Windows Server Essentials przed 2019 r (system Windows Server Essentials 2019 jest obsługiwane). Serwer musi używać systemu Windows Server standard lub lepszej.
 * Na serwerze usługi Azure AD Connect musi być pełnym interfejsem GUI zainstalowane. Jest **nieobsługiwane** zainstalować w instalacji server core.
-* Program Azure AD Connect musi być zainstalowany w systemie Windows Server 2008 R2 lub nowszym. Ten serwer może być kontrolerem domeny lub serwer członkowski, gdy przy użyciu ustawień ekspresowych. Jeśli używasz ustawienia niestandardowe, serwer może stanowić autonomiczną i nie musi być przyłączony do domeny.
+* Program Azure AD Connect musi być zainstalowany w systemie Windows Server 2008 R2 lub nowszym. Ten serwer musi być przyłączone do domeny i może być kontrolerem domeny lub serwer członkowski.
 * Następnie po zainstalowaniu usługi Azure AD Connect w systemie Windows Server 2008 R2, upewnij się, zastosuj najnowsze poprawki z witryny Windows Update. Instalacja nie jest możliwe jej uruchomienie bez serwera.
 * Jeśli planujesz używać funkcji **synchronizacji haseł**, serwer programu Azure AD Connect musi być w systemie Windows Server 2008 R2 z dodatkiem SP1 lub nowszym.
 * Jeśli planujesz używać **konto usługi zarządzane przez grupę**, serwer programu Azure AD Connect musi być w systemie Windows Server 2012 lub nowszym.
@@ -64,7 +64,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Program SQL Server używane przez program Azure AD Connect
 * Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Domyślnie jest instalowany program SQL Server 2012 Express LocalDB (uproszczonej wersji programu SQL Server Express). SQL Server Express ma ograniczenie rozmiaru 10GB, który pozwala na zarządzanie około 100 000 obiektów. Jeśli trzeba zarządzać większą liczbą obiektów katalogu, należy wskazać kreatorowi instalacji na inną instalację programu SQL Server.
 * Użycie oddzielnych programu SQL Server, mają zastosowanie następujące wymagania:
-  * Program Azure AD Connect obsługuje wszystkie wersje programu Microsoft SQL Server z programu SQL Server 2008 (za pomocą najnowszego dodatku Service Pack) do programu SQL Server 2017. Microsoft Azure SQL Database to **nieobsługiwane** jako bazy danych.
+  * Azure AD Connect obsługuje wszystkich wersji programu Microsoft SQL Server 2008 R2 (za pomocą najnowszego dodatku Service Pack) do 2019 r programu SQL Server. Microsoft Azure SQL Database to **nieobsługiwane** jako bazy danych.
   * Należy użyć bez uwzględniania wielkości liter sortowania bazy danych SQL. Te sortowania są oznaczone symbolem \_CI_ w ich imieniu. Jest **nieobsługiwane** do liter identyfikowane przez \_cs_ — element w ich imieniu.
   * Może mieć tylko jeden aparat synchronizacji dla każdego wystąpienia programu SQL. Jest **nieobsługiwane** udostępniania wystąpienia programu SQL za pomocą synchronizacji programu FIM/programu MIM, narzędzie DirSync lub Azure AD Sync.
 
@@ -129,9 +129,9 @@ Program Azure AD Connect, zależy od Microsoft PowerShell i .NET Framework 4.5.1
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Włącz szyfrowanie TLS 1.2, dla programu Azure AD Connect
-Przed wersją 1.1.614.0 program Azure AD Connect domyślnie używa protokołu TLS 1.0 do szyfrowania komunikacji między serwerem aparat synchronizacji i usługi Azure AD. Można to zmienić, po skonfigurowaniu aplikacji .net do użycia protokołu TLS 1.2, domyślnie na serwerze. Więcej informacji na temat protokołu TLS 1.2, można znaleźć w [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358).
+Przed wersją 1.1.614.0 program Azure AD Connect domyślnie używa protokołu TLS 1.0 do szyfrowania komunikacji między serwerem aparat synchronizacji i usługi Azure AD. Można to zmienić, po skonfigurowaniu aplikacji .NET do użycia protokołu TLS 1.2, domyślnie na serwerze. Więcej informacji na temat protokołu TLS 1.2, można znaleźć w [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358).
 
-1. Nie można włączyć protokołu TLS 1.2, przed systemu Windows Server 2008 R2 lub nowszym. Upewnij się, że masz po zainstalowaniu systemu operacyjnego poprawki platformę .net 4.5.1, zobacz [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). Może mieć tej poprawki lub jego nowsza wersja już zainstalowana na serwerze.
+1. Nie można włączyć protokołu TLS 1.2, przed systemu Windows Server 2008 R2 lub nowszym. Upewnij się, .NET 4.5.1 poprawka instalowana w systemie operacyjnym, zobacz [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). Może mieć tej poprawki lub jego nowsza wersja już zainstalowana na serwerze.
 2. Jeśli używasz systemu Windows Server 2008 R2, upewnij się, że jest włączony protokół TLS 1.2. W systemu Windows Server 2012 i nowszych wersjach już powinien być włączony protokół TLS 1.2.
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]

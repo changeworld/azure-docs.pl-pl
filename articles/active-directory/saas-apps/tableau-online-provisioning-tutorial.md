@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077823"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Tableau Online dla automatycznej aprowizacji użytkowników
 
@@ -106,13 +106,13 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **domeny**, **nazwa użytkownika administratora**, **hasło administratora**, i **zawartości Adres URL** konta Online firmy Tableau:
 
-    *   W **domeny** pola, wypełnij poddomeny, w oparciu o krok 6.
+   * W **domeny** pola, wypełnij poddomeny, w oparciu o krok 6.
 
-    *   W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w Twojej dzierżawie Clarizen. Przykład: admin@contoso.com.
+   * W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w Twojej dzierżawie Clarizen. Przykład: admin@contoso.com.
 
-    *   W **hasło administratora** pola, wypełnij hasło konta administratora, odpowiadający nazwa użytkownika administratora.
+   * W **hasło administratora** pola, wypełnij hasło konta administratora, odpowiadający nazwa użytkownika administratora.
 
-    *   W **adres URL zawartości** pola, wypełnij poddomeny, w oparciu o krok 6.
+   * W **adres URL zawartości** pola, wypełnij poddomeny, w oparciu o krok 6.
 
 6. Po zalogowaniu się do swojego konta administracyjne dla usługi Online firmy Tableau wartości **domeny** i **adres URL zawartości** można wyodrębnić z adres URL strony administratora.
 

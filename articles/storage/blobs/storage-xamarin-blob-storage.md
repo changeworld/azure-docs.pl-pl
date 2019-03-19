@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: cac889b83bb0e7a7aab12ff4097556abf60663b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b9c707dcc1628f685661f88aaed29612465a5469
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449125"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010073"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Jak używać magazynu obiektów Blob z platformy Xamarin
 
@@ -168,7 +168,7 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
@@ -231,7 +231,7 @@ namespace XamarinApp.WinPhone
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 Teraz możesz uruchomić tę aplikację w emulatorze systemu Android lub Windows Phone. Można również uruchomić tę aplikację w emulatorze z systemem iOS, ale wymaga to Mac. Aby uzyskać szczegółowe instrukcje w tym celu, przeczytaj dokumentację [łączenie programu Visual Studio do komputera Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-Po uruchomieniu aplikacji, zostanie utworzony kontener `mycontainer` na koncie magazynu. Powinien on zawierać obiekt blob, `myblob`, która zawiera tekst, `Hello, world!`. Można to sprawdzić za pomocą [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Po uruchomieniu aplikacji, zostanie utworzony kontener `mycontainer` na koncie magazynu. Powinien on zawierać obiekt blob, `myblob`, która zawiera tekst, `Hello, world!`. Można to sprawdzić za pomocą [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób tworzenia aplikacji dla wielu platform w środowisku Xamarin, która używa usługi Azure Storage, ze specjalnym uwzględnieniem jeden scenariusz w magazynie obiektów Blob. Jednak można zrobić o wiele bardziej nie tylko magazynu obiektów Blob, lecz również przy użyciu tabel, plików i Queue Storage. Sprawdź, czy się z następującymi artykułami, aby dowiedzieć się więcej:

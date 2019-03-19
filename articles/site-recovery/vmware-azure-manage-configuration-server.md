@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 9aa6b9dc26b53315957b7ddbb113d1d129dcc1da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109167"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086959"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware
 
@@ -93,25 +93,25 @@ Szablon Open Virtualization Format (OVF) umożliwia wdrożenie serwera konfigura
 Jeśli trzeba, można ponownie zarejestrować serwer konfiguracji, w tym samym magazynie. Jeśli masz maszyny serwera dodatkowych procesów oprócz domyślnego serwera proces uruchomiony na komputerze z serwerem konfiguracji, Zarejestruj ponownie obu komputerach.
 
 
-  1. W magazynie, otwórz **Zarządzaj** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**.
-  2. W **serwerów**, wybierz opcję **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
-  3. Zaloguj się do komputera serwera konfiguracji.
-  4. W **%ProgramData%\ASR\home\svsystems\bin**, otwórz **cspsconfigtool.exe**.
-  5. Na **rejestracja w magazynie** zaznacz **Przeglądaj**, a następnie zlokalizuj pobranego pliku poświadczeń magazynu.
-  6. Jeśli to konieczne, podaj szczegóły serwera proxy. Następnie wybierz pozycję **Zarejestruj**.
-  7. Otwórz okno poleceń programu PowerShell administratora i uruchom następujące polecenie:
+1. W magazynie, otwórz **Zarządzaj** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**.
+2. W **serwerów**, wybierz opcję **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
+3. Zaloguj się do komputera serwera konfiguracji.
+4. W **%ProgramData%\ASR\home\svsystems\bin**, otwórz **cspsconfigtool.exe**.
+5. Na **rejestracja w magazynie** zaznacz **Przeglądaj**, a następnie zlokalizuj pobranego pliku poświadczeń magazynu.
+6. Jeśli to konieczne, podaj szczegóły serwera proxy. Następnie wybierz pozycję **Zarejestruj**.
+7. Otwórz okno poleceń programu PowerShell administratora i uruchom następujące polecenie:
    ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE]
-      >W celu **ściągnięcia najnowsze certyfikaty** z serwera konfiguracji serwera przetwarzania skalowalnego w poziomie, wykonaj polecenie *"< Drive\Microsoft instalacji Azure Recovery\agent\cdpcli.exe lokacji >"--registermt*
+    >[!NOTE]
+    >W celu **ściągnięcia najnowsze certyfikaty** z serwera konfiguracji serwera przetwarzania skalowalnego w poziomie, wykonaj polecenie *"< Drive\Microsoft instalacji Azure Recovery\agent\cdpcli.exe lokacji >"--registermt*
 
-  8. Na koniec ponownie obengine, wykonując następujące polecenie.
-  ```
-          net stop obengine
-          net start obengine
+8. Na koniec ponownie obengine, wykonując następujące polecenie.
+   ```
+        net stop obengine
+        net start obengine
    ```
 
 

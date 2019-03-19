@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50ef84c9795065d4186fae9542c18d4df06c85c2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 2e5ddc8a1190161d9492cd083a50120ca9d5fc5f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880380"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901291"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Central Desktop
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Central Desktop z usługą Azure AD, mu
 
 **Aby dodać aplikację Central Desktop z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -108,13 +108,14 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją BC Centra
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.centraldesktop.com`
 
     b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
     | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
     | |
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.centraldesktop.com/saml2-assertion.php`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.centraldesktop.com/saml2-assertion.php`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Central Desktop](https://imeetcentral.com/contact-us). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -149,7 +150,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją BC Centra
 
     b. W polu tekstowym **SSO URL** (Adres URL logowania jednokrotnego) wklej wartość pola **Identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
 
-    d. W polu **SSO Login URL** (Adres URL logowania SSO) wklej **adres URL logowania** skopiowany z witryny Azure Portal.
+    c. W polu **SSO Login URL** (Adres URL logowania SSO) wklej **adres URL logowania** skopiowany z witryny Azure Portal.
 
     d. W polu **SSO Logout URL** (Adres URL wylogowywania SSO) wklej **adres URL wylogowywania** skopiowany z witryny Azure Portal.
 
@@ -161,7 +162,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją BC Centra
 
     b. Na liście **SSO Certificate** (Certyfikat logowania jednokrotnego) wybierz pozycję **RSH SHA256**.
 
-    d. Otwórz pobrany certyfikat w Notatniku. Następnie skopiuj zawartość certyfikatu i wklej ją w polu **SSO Certificate** (Certyfikat logowania jednokrotnego).
+    c. Otwórz pobrany certyfikat w Notatniku. Następnie skopiuj zawartość certyfikatu i wklej ją w polu **SSO Certificate** (Certyfikat logowania jednokrotnego).
 
     d. Wybierz pozycję **Display a link to your SAMLv2 login page** (Wyświetl link do strony logowania SAMLv2).
 
@@ -185,7 +186,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -246,7 +247,7 @@ Aby użytkownicy usługi Azure AD mogli się logować, należy ich aprowizować 
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Central Desktop w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Central Desktop, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

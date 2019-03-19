@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0fa3638ef47fb8cb1d0237a2ab9530ab76d316dc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449272"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993107"
 ---
 # <a name="saas-application-test-drive-tab"></a>Karta wersję testową aplikacji SaaS
 
@@ -47,6 +47,7 @@ Główne kroki publikowania, aby dodać test dysku są:
 ## <a name="setting-up-a-test-drive"></a>Konfigurowanie wersji testowej
 
 Istnieją cztery typy wersji testowych, każdy na podstawie typu produktu, scenariusza i portalu marketplace, którą pracujesz.
+
 |  **Typ**          |  **Opis**  |  **Instrukcje instalacji**  |
 |  ---------------   |  ---------------  |  ---------------  |
 |     Azure Resource Manager               |    Usługi Azure Resource Manager testowej jest szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania tworzona przez wydawcę. Produkty, które Dopasuj ten typ wersji testowej są te, które korzystać tylko zasobów platformy Azure.               |       [Wersja testowa usługi Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |

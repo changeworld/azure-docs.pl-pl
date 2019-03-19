@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ab4aa2f37d5a883c83b8ee09b5de6551ebf13d2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995151"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Wyświetlanie powiadomień dotyczących kondycji usługi przy użyciu witryny Azure portal
 
@@ -60,24 +60,24 @@ Properties.communicationId | Komunikacja, z którą jest skojarzone to zdarzenie
 ### <a name="details-on-service-health-level-information"></a>Szczegółowe informacje na temat poziomu informacje o kondycji usług
 
 **Wymagana akcja** (properties.incidentType == wymagana akcja)
-    - Komunikat o charakterze informacyjnym - czynności wykonywane przez administratora zajść konieczność uniemożliwiają wpływu na istniejące usługi
+- Komunikat o charakterze informacyjnym - czynności wykonywane przez administratora zajść konieczność uniemożliwiają wpływu na istniejące usługi
     
 **Konserwacja** (properties.incidentType == konserwacji)
-    - Ostrzeżenie - pilnej konserwacji
-    - Komunikat o charakterze informacyjnym — standardowa planowanej konserwacji
+- Ostrzeżenie - pilnej konserwacji
+- Komunikat o charakterze informacyjnym — standardowa planowanej konserwacji
 
 **Informacje o** (properties.incidentType == informacji)
-    - Informacyjny — Administrator może być konieczne zapobiegną do istniejących usług
+- Informacyjny — Administrator może być konieczne zapobiegną do istniejących usług
 
 **Zabezpieczenia** (properties.incidentType == zabezpieczeń)
-    - Błąd — powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.
-    - Ostrzeżenie — problemy z dostępu do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.
-    - Komunikat o charakterze informacyjnym — problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.
+- Błąd — powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.
+- Ostrzeżenie — problemy z dostępu do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.
+- Komunikat o charakterze informacyjnym — problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.
 
 **Usługa problemów** (properties.incidentType == zdarzenia)
-    - Błąd — powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.
-    - Ostrzeżenie — problemy z dostępu do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.
-    - Komunikat o charakterze informacyjnym — problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.
+- Błąd — powszechne problemy, dostęp do wielu usług w wielu regionach mających wpływ na szeroką gamę klientów.
+- Ostrzeżenie — problemy z dostępu do określonych usług i/lub konkretnych regionów mających wpływ na podzbiór klientów.
+- Komunikat o charakterze informacyjnym — problemy wpływające na operacji zarządzania i/lub opóźnienia, negatywnego wpływu na dostępność usług.
 
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Wyświetl powiadomienia usługi kondycji w witrynie Azure portal

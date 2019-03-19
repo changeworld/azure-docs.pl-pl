@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 848f319836e492e486bfdcb3c9080860144a7e68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 3424137b36e4e277a8914ab04cdf7097660930e3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860758"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
 
@@ -32,14 +32,14 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 * [Program Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [Rozszerzenie C# for Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [Menedżer pakietów NuGet](https://github.com/jmrog/vscode-nuget-package-manager)
-* [Zestaw .Net Core SDK](https://www.microsoft.com/net/download)
+* [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>Tworzenie projektu i instalowanie zależności
 
 > [!TIP]
 > Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Pierwszym krokiem jest utworzenie nowego projektu konsoli. Jeśli potrzebujesz pomocy przy konfigurowaniu projektu konsoli, zobacz [Hello World -- Your First Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) (Witaj świecie — Twój pierwszy program [Przewodnik programowania w języku C#]). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
+Pierwszym krokiem jest utworzenie nowego projektu konsoli. Aby uzyskać pomoc przy konfigurowaniu projektu konsoli, zobacz [Hello World — Twój pierwszy Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
 
 [Pakiet zestawu SDK wyszukiwania w Internecie](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) instaluje także następujące elementy:
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Tworzenie szkieletu projektu
 
-Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Twój program powinien wyglądać następująco:
+Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Program powinien wyglądać następująco:
 
 ```csharp
 namespace WebSearchSDK
@@ -101,7 +101,7 @@ public static void WebResults(WebSearchAPI client)
 
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
-Następnie dodajmy kod do analizy odpowiedzi i wyświetlania wyników. Wartości `name` i `url` dla pierwszej strony internetowej, pierwszego obrazu, artykułu i wideo są wyświetlane, jeśli są obecne w obiekcie odpowiedzi.
+Następnie dodajmy kod do analizy odpowiedzi i wyświetlania wyników. Wartości `Name` i `Url` dla pierwszej strony internetowej, pierwszego obrazu, artykułu i wideo są wyświetlane, jeśli są obecne w obiekcie odpowiedzi.
 
 ```csharp
 if (webData?.WebPages?.Value?.Count > 0)
@@ -234,9 +234,10 @@ Teraz, gdy wykonaliśmy pierwsze wywołanie interfejsu API wyszukiwania w Intern
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Ograniczanie liczby wyników zwracanych przez usługę Bing
 
-W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczbę wyników zwracanych dla zapytania „Best restaurants in Seattle”. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczbę wyników zwracanych dla zapytania „Best restaurants in Seattle”. Wartości `Name` i `Url` są wyświetlane dla pierwszego wyniku.
 
 1. Dodaj następujący kod do projektu konsoli:
+
     ```csharp
     public static void WebResultsWithCountAndOffset(WebSearchAPI client)
     {
@@ -271,7 +272,9 @@ W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczb�
         }
     }
     ```
+
 2. Dodaj metodę `WebResultsWithCountAndOffset` do klasy `main`:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -285,13 +288,15 @@ W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczb�
         Console.ReadKey();
     }
     ```
+
 3. Uruchom aplikację.
 
 ### <a name="filter-for-news"></a>Filtrowanie wiadomości
 
-W tym przykładzie użyto parametru `response_filter`, aby przefiltrować wyniki wyszukiwania. Zwrócone wyniki wyszukiwania zostały ograniczone do artykułów z wiadomościami dotyczących hasła „Microsoft”. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+W tym przykładzie użyto parametru `response_filter`, aby przefiltrować wyniki wyszukiwania. Zwrócone wyniki wyszukiwania zostały ograniczone do artykułów z wiadomościami dotyczących hasła „Microsoft”. Wartości `Name` i `Url` są wyświetlane dla pierwszego wyniku.
 
 1. Dodaj następujący kod do projektu konsoli:
+
     ```csharp
     public static void WebSearchWithResponseFilter(WebSearchAPI client)
     {
@@ -328,7 +333,9 @@ W tym przykładzie użyto parametru `response_filter`, aby przefiltrować wyniki
         }
     }
     ```
+
 2. Dodaj metodę `WebResultsWithCountAndOffset` do klasy `main`:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -344,13 +351,15 @@ W tym przykładzie użyto parametru `response_filter`, aby przefiltrować wyniki
         Console.ReadKey();
     }
     ```
+
 3. Uruchom aplikację.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Używanie filtrów safe search, answer count i promote
 
-W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`, aby przefiltrować wyniki wyszukiwania dla zapytania „Music Videos”. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`, aby przefiltrować wyniki wyszukiwania dla zapytania „Music Videos”. Wartości `Name` i `ContentUrl` są wyświetlane dla pierwszego wyniku.
 
 1. Dodaj następujący kod do projektu konsoli:
+
     ```csharp
     public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
     {
@@ -386,7 +395,9 @@ W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`,
         }
     }
     ```
+
 2. Dodaj metodę `WebResultsWithCountAndOffset` do klasy `main`:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -404,13 +415,14 @@ W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`,
         Console.ReadKey();
     }
     ```
+
 3. Uruchom aplikację.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu aplikacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

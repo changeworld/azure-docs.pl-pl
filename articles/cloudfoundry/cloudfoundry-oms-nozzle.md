@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 2038ce62e252260dda73813df97a68ee4b3fff61
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111467"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Wdrażanie dodatek usługi Azure Log Analytics Nozzle dla monitorowania systemu Cloud Foundry
 
@@ -73,10 +73,10 @@ Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Mo
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Aby utworzyć obszar roboczy usługi Log Analytics przy użyciu szablonu monitorowania z platformę handlową platformy Azure:
 
 1. Otwórz witrynę Azure portal.
-2. Kliknij znak "+" lub "Utwórz zasób" w lewym górnym rogu.
-3. W oknie wyszukiwania wpisz "Cloud Foundry", wybierz pozycję "Cloud Foundry rozwiązanie do monitorowania".
-4. Cloud Foundry monitorowania strony szablon rozwiązania jest załadowany, kliknij przycisk "Utwórz", aby uruchomić bloku szablonu.
-5. Wprowadź wymagane parametry:
+1. Kliknij znak "+" lub "Utwórz zasób" w lewym górnym rogu.
+1. W oknie wyszukiwania wpisz "Cloud Foundry", wybierz pozycję "Cloud Foundry rozwiązanie do monitorowania".
+1. Cloud Foundry monitorowania strony szablon rozwiązania jest załadowany, kliknij przycisk "Utwórz", aby uruchomić bloku szablonu.
+1. Wprowadź wymagane parametry:
     * **Subskrypcja**: Wybierz subskrypcję platformy Azure dla obszaru roboczego usługi Log Analytics, zazwyczaj taki sam jak wdrażanie rozwiązania Cloud Foundry.
     * **Grupa zasobów**: Wybierz istniejącą grupę zasobów lub Utwórz nową grupę dla obszaru roboczego usługi Log Analytics.
     * **Lokalizacja grupy zasobów**: Wybierz lokalizację grupy zasobów.
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Mo
     * **OMS_Workspace_Region**: Wybierz lokalizację dla obszaru roboczego.
     * **OMS_Workspace_Pricing_Tier**: Wybierz obszar roboczy usługi Log Analytics jednostki SKU. Zobacz [wskazówki dotyczące cen](https://azure.microsoft.com/pricing/details/log-analytics/) dla odwołania.
     * **Postanowienia prawne**: Postanowienia prawne, a następnie kliknij przycisk "Utwórz", aby zaakceptować określenie prawne.
-- Po wszystkie parametry są określone, kliknij przycisk "Utwórz", aby wdrożyć szablon. Po zakończeniu wdrożenia stan będzie wyświetlany na karcie powiadomienia.
+1. Po wszystkie parametry są określone, kliknij przycisk "Utwórz", aby wdrożyć szablon. Po zakończeniu wdrożenia stan będzie wyświetlany na karcie powiadomienia.
 
 
 ## <a name="deploy-the-nozzle"></a>Wdrażanie dodatku nozzle usługi CF

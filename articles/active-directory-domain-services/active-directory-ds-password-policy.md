@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 513cccb8b83eb4a69df1bc6172f1f02485215e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086007"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont, w domenach zarządzanych
 W tym artykule opisano domyślne zasady haseł w domenie zarządzanej. Obejmuje ona również, jak można skonfigurować te zasady.
@@ -89,28 +89,28 @@ Aby utworzyć niestandardowe szczegółowych zasad HASEŁ w domenie zarządzanej
 7. Na **zadania** panelu kliknij prawym przyciskiem myszy, **New** i kliknij przycisk **ustawienia hasła**.
 8. W **Tworzenie ustawień haseł** okno dialogowe, określ ustawienia niestandardowe hasło, które mają być stosowane jako część niestandardowego szczegółowych zasad HASEŁ. Pamiętaj, aby odpowiednio ustawić priorytet, aby zastąpić domyślne szczegółowych zasad HASEŁ.
 
-  ![Tworzenie niestandardowych zasad FGPP](./media/how-to/custom-fgpp.png)
+   ![Tworzenie niestandardowych zasad FGPP](./media/how-to/custom-fgpp.png)
 
-  > [!TIP]
-  > **Pamiętaj, aby usunąć zaznaczenie Chroń przed przypadkowym usunięciem opcji.** Jeśli ta opcja jest wybrana, nie można zapisać szczegółowych zasad HASEŁ.
-  >
-  >
+   > [!TIP]
+   > **Pamiętaj, aby usunąć zaznaczenie Chroń przed przypadkowym usunięciem opcji.** Jeśli ta opcja jest wybrana, nie można zapisać szczegółowych zasad HASEŁ.
+   >
+   >
 
 9. W **bezpośrednio dotyczy**, kliknij przycisk **Dodaj** przycisku. W **Wybieranie użytkowników lub grup** okno dialogowe, kliknij przycisk **lokalizacje** przycisku.
 
-  ![Wybieranie użytkowników i grup](./media/how-to/fgpp-applies-to.png)
+   ![Wybieranie użytkowników i grup](./media/how-to/fgpp-applies-to.png)
 
 10. W **lokalizacje** okna dialogowego, rozwiń węzeł z nazwą domeny, a następnie kliknij przycisk **użytkownicy usługi AAD DC**. Można teraz wybierz grupę użytkowników wbudowanej jednostki Organizacyjnej, do którego należy zastosować szczegółowych zasad HASEŁ.
 
-  ![Wybierz jednostkę Organizacyjną tej grupy, należy do](./media/how-to/fgpp-container.png)
+    ![Wybierz jednostkę Organizacyjną tej grupy, należy do](./media/how-to/fgpp-container.png)
 
 11. Wpisz nazwę grupy, a następnie kliknij przycisk **Sprawdź nazwy** istnieje przycisk, aby zweryfikować grupy.
 
-  ![Wybierz grupy do zastosowania szczegółowych zasad HASEŁ](./media/how-to/fgpp-apply-group.png)
+    ![Wybierz grupy do zastosowania szczegółowych zasad HASEŁ](./media/how-to/fgpp-apply-group.png)
 
 12. Nazwa grupy jest wyświetlana w **bezpośrednio dotyczy** sekcji. Kliknij przycisk **OK** przycisk, aby zapisać te zmiany.
 
-  ![Zastosowane zasady FGPP](./media/how-to/fgpp-applied.png)
+    ![Zastosowane zasady FGPP](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
 > **Aby zastosować zasady niestandardowe haseł dla kont użytkowników w jednostce Organizacyjnej, niestandardowe:** Zasady szczegółowe hasło w dobrym stanie można stosować tylko do grup. Aby skonfigurować zasady niestandardowe hasło tylko dla użytkowników z niestandardowej jednostki Organizacyjnej, utworzyć grupę, która zawiera użytkowników w tej jednostce Organizacyjnej.

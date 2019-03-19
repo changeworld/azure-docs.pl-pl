@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240362"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005477"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Trend Micro Deep Security as a Service na maszynie wirtualnej systemu Windows
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -34,7 +34,7 @@ W przypadku bieżącej subskrypcji z Trend Micro rozwiązania w środowisku loka
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Zainstaluj Deep Security Agent na utworzonej nowej maszynie Wirtualnej
 
-[Witryny Azure portal](http://portal.azure.com) umożliwia zainstalowanie rozszerzenia zabezpieczeń Trend Micro, korzystając z obrazu z **Marketplace** do utworzenia maszyny wirtualnej. Jeśli tworzysz pojedynczej maszyny wirtualnej przy użyciu portalu to prosty sposób można dodawać ochronę z Trend Micro.
+[Witryny Azure portal](https://portal.azure.com) umożliwia zainstalowanie rozszerzenia zabezpieczeń Trend Micro, korzystając z obrazu z **Marketplace** do utworzenia maszyny wirtualnej. Jeśli tworzysz pojedynczej maszyny wirtualnej przy użyciu portalu to prosty sposób można dodawać ochronę z Trend Micro.
 
 Za pomocą wpisu z **Marketplace** Otwiera kreatora, który pomoże Ci skonfigurować maszynę wirtualną. Możesz użyć **ustawienia** bloku, trzeci panelu kreatora, można zainstalować rozszerzenia zabezpieczeń Trend Micro.  Aby uzyskać ogólne instrukcje, zobacz [tworzenie maszyny wirtualnej z systemem Windows w witrynie Azure portal](../windows/classic/tutorial.md).
 
@@ -82,7 +82,7 @@ Trwa kilka minut, zanim agenta aby rozpocząć uruchamianie po jej zainstalowani
 * A [przykładowy skrypt programu Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) można skonfigurować maszyny wirtualnej
 * [Instrukcje](https://go.microsoft.com/fwlink/?LinkId=404099) dla przykładu
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 [Jak zalogować się do maszyny wirtualnej z systemem Windows Server]
 
 [Rozszerzenia maszyn wirtualnych platformy Azure i funkcji]
@@ -94,4 +94,4 @@ Trwa kilka minut, zanim agenta aby rozpocząć uruchamianie po jej zainstalowani
 
 <!-- Link references -->
 [Jak zalogować się do maszyny wirtualnej z systemem Windows Server]:../windows/classic/connect-logon.md
-[Rozszerzenia maszyn wirtualnych platformy Azure i funkcji]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Rozszerzenia maszyn wirtualnych platformy Azure i funkcji]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

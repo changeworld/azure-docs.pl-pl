@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
-ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 938d1b820bbc85824138d77b81b0f922fd494d0d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663744"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003383"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Uniwersalne uwierzytelnianie przy użyciu bazy danych SQL Database i SQL Data Warehouse (Obsługa programu SSMS dla usługi MFA)
 Azure SQL Database i Azure SQL Data Warehouse obsługują połączenia z SQL Server Management Studio (SSMS) przy użyciu *Active Directory Universal Authentication*. 
@@ -46,7 +46,7 @@ Użytkownicy usługi Azure AD obsługiwane dla scenariuszy B2B usługi Azure AD 
 - SSMS wersji 17.2 zapewnia obsługę DacFx Kreator eksportu/Extract/wdrażanie danych bazy danych. Gdy określony użytkownik jest uwierzytelniany przy użyciu okna dialogowego uwierzytelniania początkowego, używając uniwersalne uwierzytelnianie i funkcje kreatora DacFx taki sam sposób, w przypadku innych metod uwierzytelniania.
 - Projektant tabel SSMS nie obsługuje uniwersalne uwierzytelnianie.
 - Istnieją nie dodatkowe wymagania programowe dla uniwersalnych uwierzytelniania usługi Active Directory, z tą różnicą, że musisz wykorzystać obsługiwaną wersję programu SSMS.  
-- Uniwersalne uwierzytelnianie wersja Active Directory Authentication Library (ADAL) został zaktualizowany do najnowszej wersji wydanej dostępne ADAL.dll 3.13.9. Zobacz [Active Directory Authentication Library 3.14.1](http://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+- Uniwersalne uwierzytelnianie wersja Active Directory Authentication Library (ADAL) został zaktualizowany do najnowszej wersji wydanej dostępne ADAL.dll 3.13.9. Zobacz [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 
 ## <a name="next-steps"></a>Kolejne kroki

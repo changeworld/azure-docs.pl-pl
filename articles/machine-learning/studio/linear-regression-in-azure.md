@@ -1,21 +1,21 @@
 ---
-title: Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio
+title: Analiza migracji z programu Excel
 titleSuffix: Azure Machine Learning Studio
 description: Porównanie modeli regresji liniowej w programach Excel i usługi Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 706fe0afb004109ee591eab0efe99cadf9045d33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864834"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio
 
@@ -102,11 +102,11 @@ Nasze rozwiązanie polegało na operacjonalizować model regresji naszej usługi
 
 *Pulpicie nawigacyjnym usługi sieci Web* znajdują się w skoroszycie programu Excel do pobrania. Skoroszyt zawiera wstępnie sformatowane informacje interfejsu API i schematu usługi sieci web osadzone. Po kliknięciu *pobrać skoroszyt programu Excel*, zostanie otwarty skoroszyt i zapisz go na komputerze lokalnym. 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![Pobieranie skoroszytu programu Excel na pulpicie nawigacyjnym usługi sieci Web](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 Z otwartego skoroszytu skopiuj wstępnie zdefiniowane parametry do niebieski sekcji parametrów, jak pokazano poniżej. Wprowadzone parametry wywołuje programu Excel do usługi sieci web Machine Learning i przewidywane ocenami etykiety będą wyświetlane w sekcji zielony przewidywanych wartości. Skoroszyt, będą w dalszym ciągu Tworzenie prognoz dotyczących parametrów na podstawie uczonego modelu dla wszystkich elementów wiersza wprowadzone w obszarze parametrów. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [korzystanie z usługi sieci Web Azure Machine Learning z poziomu programu Excel](consuming-from-excel.md). 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
+![Łączenie z usługą sieci web wdrożonej skoroszyt programu Excel szablonu](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optymalizacja i dalszych eksperymentów
 Teraz, mieliśmy punktu odniesienia z nasz model programu Excel, przenieśliśmy wyprzedzeniem zoptymalizować nasz Model uczenia maszynowego liniowej regresji. Użyliśmy moduł [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] do poprawy naszych wyboru danych początkowych elementów i pomogło nam to osiągnąć lepszą wydajność, 4.6% oznacza bezwzględny błąd. W przyszłych projektach użyjemy tej funkcji, który może zapisać nam tygodnie w iteracji atrybutów danych, aby znaleźć właściwy zestaw funkcji służących do modelowania. 
@@ -132,13 +132,9 @@ Możliwość przesyłania predykcyjne analizy prognozowania z programu Studio do
 ## <a name="resources"></a>Zasoby
 Poniżej przedstawiono niektóre zasoby pomagające w pracy z regresji: 
 
-* Regresja w programie Excel. Jeśli nigdy nie sprawdzone regresji w programie Excel, ten samouczek ułatwia: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Regresja w programie Excel. Jeśli nigdy nie sprawdzone regresji w programie Excel, ten samouczek ułatwia: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * Prognozowanie vs regresji. Tyler Chessman napisał artykuł z bloga wyjaśniające, jak czas serii prognozowania w programie Excel zawiera opis dobre dla początkujących regresji liniowej. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Zwykłe najmniej Squares regresji liniowej: Wady, problemów i pułapek. Wprowadzenie i dyskusji regresji: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
-
-[1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
-[2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
-
+* Zwykłe najmniej Squares regresji liniowej: Wady, problemów i pułapek. Wprowadzenie i dyskusji regresji: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

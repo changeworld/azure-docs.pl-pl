@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999748"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Używać klienta Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania
 Możesz użyć Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure na potrzeby scenariuszy deweloperskich/testowych, pod warunkiem, że masz odpowiednią subskrypcję programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania kwalifikacyjne dotyczące uruchamiania Windows 7, Windows 8.1, Windows 10 Enterprise na platformie Azure i korzystania z następujących obrazów w galerii platformy Azure.
@@ -59,7 +59,7 @@ Jeśli nie znasz Identyfikatora oferty, możesz uzyskać go w witrynie Azure por
 
 - Ewentualnie kliknij przycisk **rozliczeń** a następnie kliknij przycisk identyfikatora subskrypcji. Oferta identyfikator, który będzie widoczny w *rozliczeń* okna.
 
-Można również wyświetlić Identyfikatora oferty z [kartę "Subskrypcje"](http://account.windowsazure.com/Subscriptions) w portalu konta platformy Azure:
+Można również wyświetlić Identyfikatora oferty z [kartę "Subskrypcje"](https://account.windowsazure.com/Subscriptions) w portalu konta platformy Azure:
 
 ![Szczegóły Identyfikatora oferty w portalu konta usługi Azure](./media/client-images/offer-id-azure-account-portal.png) 
 

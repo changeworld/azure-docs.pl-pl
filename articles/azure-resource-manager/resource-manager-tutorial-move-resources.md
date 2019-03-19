@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/19/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5bc8a408ce247ad2980983c3eb32807074af599f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 62e35a361f2fcf9d6f484b699084a78f66121957
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820828"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310101"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group"></a>Samouczek: Przenoszenie zasobów platformy Azure do innej grupy zasobów
 
 Dowiedz się, jak przenieść zasoby platformy Azure z jednej grupy zasobów do innej. Możesz także przenieść zasoby platformy Azure z jednej subskrypcji platformy Azure do innej. W tym samouczku użyto szablonu usługi Resource Manager do wdrożenia dwóch grup zasobów i jednego konta magazynu. Następnie przeniesiono konto magazynu z jednej grupy zasobów do innej.
+
+![Usługi Azure Resource Manager przenoszenia zasobów diagramu](./media/resource-manager-tutorial-move-resources/resource-manager-template-move-resources.png)
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -122,7 +124,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 5. Wybierz nazwę docelowej grupy zasobów.  
 6. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono, jak przenieść konto magazynu z jednej grupy zasobów do innej. Do tej pory opisywano pracę z jednym kontem magazynu lub wieloma wystąpieniami konta magazynu. W następnym samouczku utworzysz szablon z wieloma zasobami i wieloma typami zasobów. Niektóre zasoby zawierają zasoby zależne.
 

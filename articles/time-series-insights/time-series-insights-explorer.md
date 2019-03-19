@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 301326f4ba858c7aef6c8bdec8f2cae3ed926847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556598"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121047"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Eksplorator usługi Azure Time Series Insights
 W tym artykule przeanalizowano różnych funkcji i opcji dostępnych w ramach aplikacji internetowej w Eksploratorze usługi Time Series Insights. Używasz Eksploratora usługi Time Series Insights w przeglądarce sieci web do tworzenia wizualizacji danych.
@@ -71,7 +71,7 @@ W ciągu kilku minut nawiązywania połączenia z źródła zdarzeń do środowi
          |<, >, <=, >=     |  Double, DateTime, TimeSpan       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |         |
          |IN     | String, Bool, Double, DateTime, przedział czasu, wartość NULL        |  Wszystkie argumenty powinny być tego samego typu lub być stała NULL.        |
-         |MA     | Ciąg        |  Po prawej stronie dozwolone są tylko stałe literałów. Pusty ciąg i wartości NULL są niedozwolone.       |
+         |MA     | String        |  Po prawej stronie dozwolone są tylko stałe literałów. Pusty ciąg i wartości NULL są niedozwolone.       |
 
       - **Przykłady zapytań**
       
@@ -91,27 +91,27 @@ W ciągu kilku minut nawiązywania połączenia z źródła zdarzeń do środowi
 
 10. **Wykresu** pozwala wizualnie eksplorować dane. Narzędzia wykresów obejmują:
 
-   - Wybierz opcję/kliknij pozycję, która umożliwia wybór określonego przedziału czasu lub jedną serię danych.  
-   - W czasie span zaznaczenia, można powiększać lub Eksploruj zdarzenia.  
-   - W serii danych można podzielić serii według innej kolumny, dodać serii jako nowy termin, Pokaż tylko wybrane serię, Wyklucz wybrane serii, ping tej serii; Eksploruj zdarzenia z wybranej serii
-   - W obszarze filtru po lewej stronie wykresu można zobaczyć wszystkie szeregi wyświetlanych danych i kolejności według wartości lub nazwę, wyświetlanie wszystkich serii danych lub specjalnie przypiętych lub nieprzypięte serii.  Można również wybierz jedną serię danych i podzielić serii według innej kolumny, dodać serii jako nowy termin, Pokaż tylko wybrane serię, Wyklucz wybrane serii, przypiąć tej serii; Eksploruj zdarzenia z wybranej serii
-   - Podczas przeglądania jednocześnie wiele wersji warunków, można stosu, anulowania, zobacz dodatkowe dane dotyczące serii danych i używać tej samej osi y we wszystkich warunków umowy za pomocą przycisków w prawym górnym rogu wykresu.
+    - Wybierz opcję/kliknij pozycję, która umożliwia wybór określonego przedziału czasu lub jedną serię danych.  
+    - W czasie span zaznaczenia, można powiększać lub Eksploruj zdarzenia.  
+    - W serii danych można podzielić serii według innej kolumny, dodać serii jako nowy termin, Pokaż tylko wybrane serię, Wyklucz wybrane serii, ping tej serii; Eksploruj zdarzenia z wybranej serii
+    - W obszarze filtru po lewej stronie wykresu można zobaczyć wszystkie szeregi wyświetlanych danych i kolejności według wartości lub nazwę, wyświetlanie wszystkich serii danych lub specjalnie przypiętych lub nieprzypięte serii.  Można również wybierz jedną serię danych i podzielić serii według innej kolumny, dodać serii jako nowy termin, Pokaż tylko wybrane serię, Wyklucz wybrane serii, przypiąć tej serii; Eksploruj zdarzenia z wybranej serii
+    - Podczas przeglądania jednocześnie wiele wersji warunków, można stosu, anulowania, zobacz dodatkowe dane dotyczące serii danych i używać tej samej osi y we wszystkich warunków umowy za pomocą przycisków w prawym górnym rogu wykresu.
  
-   ![Narzędzia wykresów](media/time-series-insights-explorer/explorer5.png) 
+    ![Narzędzia wykresów](media/time-series-insights-explorer/explorer5.png) 
 
 11. **Mapy cieplnej** pozwala szybko wychwycić serii danych unikatowego lub nietypowych w podanej kwerendy. Termin wyszukiwania tylko jeden może ich bezpośrednią wizualizację mapy cieplnej.    
 
-   ![Mapa cieplna](media/time-series-insights-explorer/explorer6.png)
+    ![Mapa cieplna](media/time-series-insights-explorer/explorer6.png)
 
 12. **Zdarzenia**:  Po wybraniu Eksploruj zdarzenia podczas wybierania lub kliknij prawym przyciskiem myszy, powyżej, w panelu zdarzeń jest udostępniana.  Tutaj widać wszystkie nieprzetworzone zdarzenia i eksportowanie zdarzeń jako pliki JSON lub CSV. Należy pamiętać, że usługa Time Series Insights są przechowywane wszystkie nieprzetworzone dane.
 
-   ![Zdarzenia](media/time-series-insights-explorer/explorer7.png)
+    ![Zdarzenia](media/time-series-insights-explorer/explorer7.png)
 
 13. Kliknij przycisk **statystyki** kartę po eksplorację zdarzeń w celu udostępnienia wzorce i statystyki kolumn.  
 
-   - **Wzorce**: tej funkcji i odpowiedzi proaktywnie udostępnia najbardziej są statystycznie istotne wzorców w regionie wybranych danych. To zwalnia z konieczności Przyjrzyj się tysięcy zdarzeń, aby zrozumieć, jakie wzorców najbardziej oświadcza, czasu i energii. Ponadto usługi Time Series Insights pozwala przejść bezpośrednio do tych wzorców są statystycznie istotne, aby kontynuować, przeprowadzanie analizy. Ta funkcja jest również przydatne w przypadku późniejszej śledztwa w danych historycznych. 
+    - **Wzorce**: tej funkcji i odpowiedzi proaktywnie udostępnia najbardziej są statystycznie istotne wzorców w regionie wybranych danych. To zwalnia z konieczności Przyjrzyj się tysięcy zdarzeń, aby zrozumieć, jakie wzorców najbardziej oświadcza, czasu i energii. Ponadto usługi Time Series Insights pozwala przejść bezpośrednio do tych wzorców są statystycznie istotne, aby kontynuować, przeprowadzanie analizy. Ta funkcja jest również przydatne w przypadku późniejszej śledztwa w danych historycznych. 
 
-   - **Statystyki kolumn**:  Statystyki kolumn zapewniają wykresów i tabel, które podzielenie danych z każdej kolumny w serii danych wybranego przez wybrany okres.  
+    - **Statystyki kolumn**:  Statystyki kolumn zapewniają wykresów i tabel, które podzielenie danych z każdej kolumny w serii danych wybranego przez wybrany okres.  
  
       ![STATYSTYKI](media/time-series-insights-explorer/explorer8.png) 
 

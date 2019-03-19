@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db4c2fc0781225af6cc59df72467a69e0ba73e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0fc2aca2b785329b6faebd37c94493269d65c22b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182986"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Rozwiązywanie problemów dotyczących użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
@@ -46,7 +46,7 @@ Aby uzyskać więcej informacji, zobacz [użytkowników oflagowanych w raporcie 
 
 Można również użyć poświadczeń usługi Office 365 dostęp do **Centrum administracyjnego platformy Azure**. Po uaktywnieniu dostępu do usługi Azure AD nastąpi przekierowanie do portalu usługi Azure AD. Na poziomie subskrypcji podstawowej ilość szczegółów udostępnianych w raportach jest ograniczona. Dodatkowe dane i analizy będą dostępne dla subskrybentów platformy Azure w wersji Premium.
 
-Aby uzyskać dostęp do **użytkownicy oflagowani w związku z ryzykiem** raportów w Centrum administracyjnym usługi Office 365:
+Aby uzyskać dostęp do **użytkownicy oflagowani w związku z ryzykiem** raportów w Centrum administracyjnym usługi Microsoft 365:
 
 1.  W menu nawigacji po lewej stronie wybierz **centra administracyjne**. 
 2.  Wybierz **usługi Azure AD**.

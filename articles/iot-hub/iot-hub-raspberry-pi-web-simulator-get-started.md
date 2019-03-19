@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 6844fb9b6e85e77ad9c7a869a989214fffd05ece
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113784"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi symulatora w trybie online dla usługi Azure IoT Hub (Node.js)
 
@@ -39,7 +39,7 @@ W przypadku urządzeń fizycznych, odwiedź witrynę [łączenie urządzenia Ras
 ## <a name="what-you-do"></a>Co należy zrobić
 
 * Poznaj podstawy symulatora urządzenia Raspberry Pi w trybie online.
-* Tworzenie Centrum IoT.
+* Utwórz centrum IoT.
 * Zarejestruj urządzenie Pi w usłudze IoT hub.
 * Uruchom przykładową aplikację na Pi do wysyłania danych z symulowanych czujników z Centrum IoT.
 
@@ -56,7 +56,7 @@ Połączyć symulowane urządzenia Raspberry Pi do usługi IoT hub, którą twor
 Kliknij przycisk, który można uruchomić symulatora urządzenia Raspberry Pi w trybie online.
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Uruchom symulator urządzenia Raspberry Pi</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Uruchom symulator urządzenia Raspberry Pi</a>
 
 Istnieją trzy obszary, w symulatorze sieci web.
 
@@ -70,8 +70,8 @@ Istnieją trzy obszary, w symulatorze sieci web.
    * **Resetuj** — resetowanie kodowania obszaru do domyślnej aplikacji przykładowej.
    * **Rozwijania/zwijania** — z prawej strony znajduje się przycisk umożliwia zwijania/Rozwiń okno konsoli.
 
-> [!NOTE] 
-Symulator internetowy urządzenia Raspberry Pi jest teraz dostępna w wersji zapoznawczej. Chcielibyśmy poznać swój głos w [pokoju dotyczącym oprogramowania Gitter](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Kod źródłowy jest publicznie w witrynie [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
+> [!NOTE]
+> Symulator internetowy urządzenia Raspberry Pi jest teraz dostępna w wersji zapoznawczej. Chcielibyśmy poznać swój głos w [pokoju dotyczącym oprogramowania Gitter](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Kod źródłowy jest publicznie w witrynie [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
 
 ![Omówienie Pi symulatora w trybie online](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 

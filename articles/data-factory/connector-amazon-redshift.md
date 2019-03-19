@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7fcf08c36d8babd0a318ed5b912823c344f4ce64
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9e1dde57dc1903e87704bd55fb0b942b7cc349e5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549956"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010571"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon Redshift, za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -126,7 +126,7 @@ Aby skopiować dane z usługi Amazon Redshift, należy ustawić typ źródłoweg
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **AmazonRedshiftSource** | Yes |
-| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| query |Użyj zapytania niestandardowe można odczytać danych. Na przykład: Wybierz * z MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | redshiftUnloadSettings | Grupa właściwości przy użyciu zwolnienie usługi Redshift Amazon. | Nie |
 | s3LinkedServiceName | Odnosi się do Amazon S3 to-być używane jako przejściowy magazyn, określając nazwę połączonej usługi typu "AmazonS3". | Tak, jeśli za pomocą zwolnienia |
 | bucketName | Wskazuje przedział S3 do przechowywania danych tymczasowych. Jeśli nie zostanie podana, usługa Data Factory wygeneruje ją automatycznie.  | Tak, jeśli za pomocą zwolnienia |
@@ -219,7 +219,7 @@ Podczas kopiowania danych z usługi Amazon Redshift, następujące mapowania są
 | RZECZYWISTE |Single |
 | SMALLINT |Int16 |
 | TEKST |String |
-| ZNACZNIK CZASU: |DateTime |
+| SYGNATURA CZASOWA |DateTime |
 | VARCHAR |String |
 
 ## <a name="next-steps"></a>Kolejne kroki

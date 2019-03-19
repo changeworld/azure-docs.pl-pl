@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: 89a19d53046afd8d2b16b23508e952989091c8d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a953f4b77f896d3943cd996abf8c1fc1306ee9d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005271"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882000"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo 
 
@@ -120,6 +120,7 @@ Pole "moov" powinien zawierać **TrackHeaderBox (tkhd)** polu zgodnie z definicj
 | **Nazwa pola** | **Typ pola**          | **Wymagane?** | **Opis**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
 | czas trwania       | 64-bitowej nieoznaczonej liczby całkowitej | Wymagane      | POWINIEN mieć wartość 0, ponieważ pole śledzenia ma zero próbki, a całkowity czas trwania próbek w polu ścieżki wynosi 0. |
+
 -------------------------------------
 
 Pole "moov" powinien zawierać **HandlerBox (hdlr)** zgodnie z definicją w [ISO-14496-12], z następującymi ograniczeniami:
@@ -127,6 +128,7 @@ Pole "moov" powinien zawierać **HandlerBox (hdlr)** zgodnie z definicją w [ISO
 | **Nazwa pola** | **Typ pola**          | **Wymagane?** | **Opis**   |
 |----------------|-------------------------|---------------|-------------------|
 | handler_type   | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | POWINNO być 'meta'. |
+
 -------------------------------------
 
 Pole "stsd" powinien zawierać MetaDataSampleEntry pole o nazwie kodowania, zgodnie z definicją w [ISO-14496-12].  Na przykład wiadomości SCTE 35 kodowania nazwa powinna być "scte".
@@ -225,11 +227,11 @@ Przekroczono limit czasu metadanych dla firmy Apple HTTP Live Streaming (HLS) mo
 
 | **Nazwa atrybutu** | **Typ**                      | **Wymagane?**                             | **Opis**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PODPOWIEDŹ                | ciąg w cudzysłowach                 | Wymagane                                  | Komunikat zakodowany jako ciąg w formacie base64, zgodnie z opisem w [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). Komunikaty [SCTE 35] to splice_info_section() zakodowane w formacie base64.                                                                                                |
+| PODPOWIEDŹ                | ciąg w cudzysłowach                 | Wymagane                                  | Komunikat zakodowany jako ciąg w formacie base64, zgodnie z opisem w [IETF RFC 4648](https://tools.ietf.org/html/rfc4648). Komunikaty [SCTE 35] to splice_info_section() zakodowane w formacie base64.                                                                                                |
 | TYP               | ciąg w cudzysłowach                 | Wymagane                                  | Nazwa URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] typu przyjmuje specjalna wartość "scte35".                                                                                                                                |
 | ID                 | ciąg w cudzysłowach                 | Wymagane                                  | Unikatowy identyfikator zdarzenia. Jeśli nie określono Identyfikatora, gdy wiadomości są pozyskiwane, usługi Azure Media Services generuje unikatowy identyfikator.                                                                                                                                          |
 | CZAS TRWANIA           | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Czas trwania zdarzenia. Jeśli jest nieznana, wartość powinna być 0. Jednostki są factional sekund.                                                                                                                                                                                           |
-| ELAPSED            | dziesiętna liczba zmiennoprzecinkowa | Opcjonalne, ale wymagane dla oknem kroczącym | Jeśli do obsługi przesuwającego się okna prezentacji powtarza się sygnał i to pole musi być prezentacji czas, jaki upłynął od chwili rozpoczęcia zdarzenia. Jednostki są ułamków sekund. Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu. |
+| UPŁYNĘŁO            | dziesiętna liczba zmiennoprzecinkowa | Opcjonalne, ale wymagane dla oknem kroczącym | Jeśli do obsługi przesuwającego się okna prezentacji powtarza się sygnał i to pole musi być prezentacji czas, jaki upłynął od chwili rozpoczęcia zdarzenia. Jednostki są ułamków sekund. Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu. |
 | CZAS               | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Godzina prezentacji zdarzenia. Jednostki są ułamków sekund.                                                                                                                                                                                                                    |
 
 
@@ -280,8 +282,8 @@ Element elementu EventStream ma następujące atrybuty:
 
 | **Nazwa atrybutu** | **Typ**                | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład, "urn: scte:scte35:2013a:bin".                                                                |
-| wartość              | ciąg                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi być równa nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania). |
+| scheme_id_uri      | string                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład, "urn: scte:scte35:2013a:bin".                                                                |
+| wartość              | string                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi być równa nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania). |
 | Skala czasu          | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                       |
 
 
@@ -292,7 +294,7 @@ Zero lub więcej elementów zdarzeń są zawarte w elemencie elementu EventStrea
 | presentation_time   | 64-bitowej nieoznaczonej liczby całkowitej | Optional (Opcjonalność)      | MUSI być typu media prezentacji godzina zdarzenia względem początku okresu. Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. |
 | czas trwania            | 32-bitowej nieoznaczonej liczby całkowitej | Optional (Opcjonalność)      | Czas trwania zdarzenia. Jeśli czas trwania jest nieznany, to musi zostać pominięty.                                                                                                                                                 |
 | id                  | 32-bitowej nieoznaczonej liczby całkowitej | Optional (Opcjonalność)      | Określa wystąpienie tej wiadomości. Komunikaty z semantyką równoważne mają taką samą wartość. Jeśli nie określono Identyfikatora, gdy wiadomości są pozyskiwane, usługi Azure Media Services generuje unikatowy identyfikator.             |
-| Wartość elementu zdarzeń | ciąg                  | Wymagane      | Komunikat zdarzenia jako ciąg base64, zgodnie z opisem w [IETF RFC 4648](http://tools.ietf.org/html/rfc4648).                                                                                                                   |
+| Wartość elementu zdarzeń | string                  | Wymagane      | Komunikat zdarzenia jako ciąg base64, zgodnie z opisem w [IETF RFC 4648](https://tools.ietf.org/html/rfc4648).                                                                                                                   |
 
 #### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>Składnia XML i przykład DASH manifestu sygnalizacja (MPD)
 
@@ -365,8 +367,8 @@ Pola DASHEventMessageBox są zdefiniowane poniżej:
 
 | **Nazwa pola**          | **Typ pola**          | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] trwa to specjalna wartość "urn: scte:scte35:2013a:bin", mimo że [SCTE 67] zaleca się coś innego. |
-| Wartość                   | ciąg                  | Wymagane      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość będzie ustawiana na nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania).                                                                  |
+| scheme_id_uri           | string                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] trwa to specjalna wartość "urn: scte:scte35:2013a:bin", mimo że [SCTE 67] zaleca się coś innego. |
+| Wartość                   | string                  | Wymagane      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość będzie ustawiana na nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania).                                                                  |
 | Skala czasu               | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Różnica czasu prezentacji nośnika podczas prezentacji wydarzenia i Najwcześniejsza godzina prezentacji, w tym segmencie. Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika.                                                                                            |
 | event_duration          | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Czas trwania zdarzenia lub 0xFFFFFFFF, aby określić Nieznany czas trwania.                                                                                                                                                                                                                                                                                          |
@@ -396,7 +398,7 @@ Pozyskiwanie Smooth Streaming wymaga, które musi zawierać pola danych (mdat) *
 
 **[MS-SSTR]**  ["Zestawu Microsoft Smooth Streaming Protocol", 15 maja 2014 r.](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
-**[AMF0]**  ["AMF0 Format komunikatu akcji"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
+**[AMF0]**  ["AMF0 Format komunikatu akcji"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
 **[NA ŻYWO — FMP4]**  [Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 

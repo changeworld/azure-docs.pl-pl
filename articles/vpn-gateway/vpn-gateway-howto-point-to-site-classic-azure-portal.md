@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: e71999e9c5b118fbf31d0d735d03cddb321b0065
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773422"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000945"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurowanie połączenia typu punkt-lokacja przy użyciu uwierzytelniania certyfikatu (wersja klasyczna)
 
@@ -69,9 +69,9 @@ Następujących wartości możesz użyć do tworzenia środowiska testowego lub 
    - **Grupa zasobów**: wprowadź wartość *TestRG*. Wybierz pozycję **Utwórz nową**, jeśli grupa zasobów nie istnieje.
    - **Lokalizacja**: wybierz pozycję **Wschodnie stany USA** z listy.
 
- - **Ustawienia połączenia sieci VPN**
-   - **Typ połączenia**: wybierz pozycję **Punkt-lokacja**.
-   - **Przestrzeń adresowa klienta**: wprowadź wartość *172.16.201.0/24*. Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z określonej puli.
+  - **Ustawienia połączenia sieci VPN**
+    - **Typ połączenia**: wybierz pozycję **Punkt-lokacja**.
+    - **Przestrzeń adresowa klienta**: wprowadź wartość *172.16.201.0/24*. Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z określonej puli.
 
 - **Ustawienia podsieci konfiguracji bramy**
    - **Nazwa**: automatycznie wprowadzona wartość *GatewaySubnet*.
@@ -89,7 +89,7 @@ Przed rozpoczęciem sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie 
 
 Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione wartości należy zastąpić własnymi. Aby utworzyć sieć wirtualną przy użyciu witryny Azure Portal, wykonaj poniższe kroki:
 
-1. Zaloguj się do witryny [Azure Portal](http://portal.azure.com) i wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**. 
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**. 
 
 2. W polu **Wyszukaj w witrynie Marketplace** wpisz *sieć wirtualna* i wybierz pozycję **Sieć wirtualna** na liście wyników. Zostanie otwarta strona **Sieć wirtualna**.
 
@@ -121,26 +121,26 @@ W tym kroku tworzona jest podsieć bramy i brama o dynamicznym routingu. W klasy
 
 2. Na stronie sieci wirtualnej wybierz pozycję **Przegląd**, a następnie w sekcji **Połączenia VPN** wybierz pozycję **Brama**.
 
-  ![Wybieranie opcji umożliwiających utworzenie bramy](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
+   ![Wybieranie opcji umożliwiających utworzenie bramy](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
 3. Na stronie **Nowe połączenie VPN**wybierz pozycję **Punkt-lokacja**.
 
-  ![Połączenie typu punkt-lokacja](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
+   ![Połączenie typu punkt-lokacja](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
 4. W obszarze **Przestrzeń adresowa klienta** dodaj zakres adresów IP, z którego klienci sieci VPN otrzymują adres IP podczas nawiązywania połączenia. Używaj zakresu prywatnych adresów IP nienakładającego się na lokalizację lokalną, z której się łączysz, ani na sieć wirtualną, z którą chcesz się łączyć. Automatycznie wypełniony zakres możesz zastąpić zakresem prywatnych adresów IP, z którego chcesz korzystać. Ten przykład przedstawia automatycznie wypełniony zakres. 
 
-  ![Przestrzeń adresowa klienta](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
+   ![Przestrzeń adresowa klienta](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
 5. Wybierz pozycję **Utwórz bramę natychmiast**, a następnie pozycję **Opcjonalna konfiguracja bramy**, aby otworzyć stronę **Konfiguracja bramy**.
 
-  ![Wybieranie opcjonalnej konfiguracji bramy](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
+   ![Wybieranie opcjonalnej konfiguracji bramy](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
 
 6. Na stronie **Konfiguracja bramy** wybierz pozycję **Podsieć**, aby dodać podsieć bramy. Można utworzyć małą podsieć bramy — taką jak /29. Jednak zalecamy wybranie opcji przynajmniej /28 lub /27 i utworzenie większej podsieci, która zawiera więcej adresów. Zapewni to wystarczająco dużo adresów, aby możliwe były dodatkowe konfiguracje, które mogą być potrzebne w przyszłości. Podczas pracy z podsieciami bramy należy unikać kojarzenia sieciowej grupy zabezpieczeń (NSG, Network Security Group) z podsiecią bramy. Skojarzenie sieciowej grupy zabezpieczeń z tą podsiecią może spowodować, że brama sieci VPN przestanie działać zgodnie z oczekiwaniami. Wybierz przycisk **OK**, aby zapisać to ustawienie.
 
-  ![Dodawanie podsieci GatewaySubnet](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
+   ![Dodawanie podsieci GatewaySubnet](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
 7. Wybierz **rozmiar** bramy. Rozmiar to jednostka SKU bramy sieci wirtualnej. W witrynie Azure Portal domyślną jednostką SKU jest **Domyślna**. Więcej informacji o jednostkach SKU bramy zawiera artykuł [Informacje o ustawieniach bramy VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-  ![Rozmiar bramy](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
+   ![Rozmiar bramy](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
 8. Wybierz **Typ routingu** dla bramy. Konfiguracje P2S wymagają typu routingu **Dynamiczny**. Wybierz przycisk **OK** po zakończeniu konfigurowania tej strony.
 
-  ![Konfigurowanie typu routingu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
+   ![Konfigurowanie typu routingu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
 
 9. Na stronie **Nowe połączenie VPN** wybierz przycisk **OK** u dołu strony, aby rozpocząć tworzenie bramy sieci wirtualnej. Tworzenie bramy sieci VPN może zająć do 45 minut, zależnie od wybranej jednostki SKU bramy.
  
@@ -164,11 +164,11 @@ Po utworzeniu bramy przekaż plik cer (który zawiera informacje o kluczu public
 
 1. W sekcji **Połączenia sieci VPN** na stronie danej sieci wirtualnej wybierz grafikę klientów, aby otworzyć stronę **Połączenie sieci VPN typu punkt-lokacja**.
 
-  ![Klienci](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
+   ![Klienci](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
 
 2. Na stronie **Połączenie sieci VPN typu punkt-lokacja** wybierz przycisk **Zarządzanie certyfikatami**, aby otworzyć stronę **Certyfikaty**.
 
-  ![Strona Certyfikaty](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
+   ![Strona Certyfikaty](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
 
 1. Na stronie **Certyfikaty** wybierz pozycję **Przekaż**, aby otworzyć stronę **Przekaż certyfikat**.
 
@@ -176,7 +176,7 @@ Po utworzeniu bramy przekaż plik cer (który zawiera informacje o kluczu public
 
 4. Wybierz grafikę folderu, aby przejść do pliku cer. Wybierz plik, a następnie wybierz przycisk **OK**. Przekazany certyfikat pojawi się na stronie **Certyfikaty**.
 
-  ![Przekazywanie certyfikatu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
+   ![Przekazywanie certyfikatu](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
 
 
 ## <a name="configure-the-client"></a>Konfigurowanie klienta
@@ -191,10 +191,10 @@ Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze
 
 2. Na stronie **Połączenie sieci VPN typu punkt-lokacja** wybierz pakiet pobierania, który odpowiada systemowi operacyjnemu klienta, w którym zostanie zainstalowany:
 
-  * Dla klientów 64-bitowych wybierz pakiet **Klient sieci VPN (64-bitowy)**.
-  * Dla klientów 32-bitowych wybierz pakiet **Klient sieci VPN (32-bitowy)**.
+   * Dla klientów 64-bitowych wybierz pakiet **Klient sieci VPN (64-bitowy)**.
+   * Dla klientów 32-bitowych wybierz pakiet **Klient sieci VPN (32-bitowy)**.
 
-  ![Pobieranie pakietu konfiguracji klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
+   ![Pobieranie pakietu konfiguracji klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 
 3. Gdy pakiet zostanie wygenerowany, pobierz go, a następnie zainstaluj na komputerze klienckim. Jeśli zostanie wyświetlone okno podręczne SmartScreen, wybierz pozycję **Więcej informacji**, a następnie pozycję **Uruchom mimo to**. Możesz także zapisać pakiet w celu zainstalowania go na innych komputerach klienckich.
 
@@ -226,7 +226,7 @@ Aby utworzyć połączenie punkt-lokacja z komputerem klienckim innym niż użyt
 1. Sprawdź, czy połączenie sieci VPN jest aktywne. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na komputerze klienckim, a następnie uruchom polecenie **ipconfig/all**.
 2. Przejrzyj wyniki. Zwróć uwagę na fakt, że otrzymany adres IP jest jednym z adresów z zakresu dla połączenia typu punkt-lokacja określonego podczas tworzenia sieci wirtualnej. Wyniki powinny być podobne do poniższego przykładu:
 
-  ```
+   ```
     PPP adapter VNet1:
         Connection-specific DNS Suffix .:
         Description.....................: VNet1
@@ -237,7 +237,7 @@ Aby utworzyć połączenie punkt-lokacja z komputerem klienckim innym niż użyt
         Subnet Mask.....................: 255.255.255.255
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connect-to-a-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 

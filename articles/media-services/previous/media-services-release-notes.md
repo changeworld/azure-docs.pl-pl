@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 81139734d0eb7d15e78c465c06fc429de48480c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5de70a0a7dd76210483c60275b7072008ea8a7f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897235"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 
 Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z poprzednich wersji i znane problemy.
 
 > [!NOTE]
-> Nie nowych funkcji lub funkcje są dodawane do usługi Media Services v2. 
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. 
 
 Chcemy poznać od naszych klientów, dzięki czemu możemy skupić się na rozwiązywanie problemów wpływających na użytkownik. Aby zgłosić problem lub pytania, Prześlij wpis w [forum MSDN dotyczącym usługi Azure Media Services]. 
 
@@ -35,7 +35,7 @@ Chcemy poznać od naszych klientów, dzięki czemu możemy skupić się na rozwi
 | Problem | Opis |
 | --- | --- |
 | Kilka typowych nagłówków HTTP nie są udostępniane w interfejsie API REST. |W przypadku tworzenia aplikacji usługi Media Services przy użyciu interfejsu API REST, zauważysz, że niektóre typowe pola nagłówka HTTP (w tym CLIENT-REQUEST-ID REQUEST-ID i ZWRÓCENIA-CLIENT-REQUEST-ID) nie są obsługiwane. Nagłówki zostanie dodana w przyszłej aktualizacji. |
-| Kodowanie procent nie jest dozwolone. |Usługa Media Services używa wartości właściwości IAssetFile.Name podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tego powodu kodowania procent nie jest dozwolone. Wartość właściwości Name nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] % # ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku. |
+| Kodowanie procent nie jest dozwolone. |Usługa Media Services używa wartości właściwości IAssetFile.Name podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tego powodu kodowania procent nie jest dozwolone. Wartość właściwości Name nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] % # ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku. |
 | Metoda ListBlobs, która jest częścią zestawu SDK usługi Azure Storage w wersji 3.x kończy się niepowodzeniem. |Usługa Media Services generuje adresów URL sygnatury dostępu Współdzielonego na podstawie [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) wersji. Jeśli chcesz używać zestawu SDK usługi Storage na wyświetlanie listy obiektów blob w kontenerze obiektów blob, użyj [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) metodę, która jest częścią zestawu SDK usługi Storage w wersji 2.x. |
 | Usługi Media Services, mechanizm ograniczania ogranicza użycie zasobów dla aplikacji, które wysyłać nadmierne żądań do usługi. Usługa może zwrócić kod stanu HTTP "Usługa niedostępna" 503. |Aby uzyskać więcej informacji, zobacz opis kod stanu HTTP 503 w [kody błędów usługi Media Services](media-services-encoding-error-codes.md). |
 | Gdy zapytanie jednostki limit 1000 jednostek jest zwracany w tym samym czasie, ponieważ publiczny REST w wersji 2 ogranicza wyniki zapytania do 1000 wyników. |Pomiń i podjąć (.NET) / top (REST), zgodnie z opisem w [w tym przykładzie .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i [w tym przykładzie interfejs API REST](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -184,17 +184,17 @@ Podstawowa, standardowa i Premium zastrzeżone jednostki kodowania zostały zmie
  Usługa Media Encoder staną się przestarzałe począwszy od około 12 miesięcy od wydania usługi Media Encoder Standard.
 
 ### <a name="azure-sdk-for-php"></a>Zestaw Azure SDK dla języka PHP
-Zespół zestawu Azure SDK opublikowane nowej wersji zestawu [zestawu Azure SDK dla języka PHP](http://github.com/Azure/azure-sdk-for-php) pakiet, który zawiera aktualizacje i nowe funkcje dla usługi Media Services. W szczególności, Media Services SDK dla języka PHP teraz obsługuje najnowsze [content protection](media-services-content-protection-overview.md) funkcji. Te funkcje są dynamiczne szyfrowanie za pomocą szyfrowania AES i technologii DRM (PlayReady i Widevine), z lub bez ograniczenia tokenu. Obsługuje również skalowanie [jednostek kodowania](media-services-dotnet-encoding-units.md).
+Zespół zestawu Azure SDK opublikowane nowej wersji zestawu [zestawu Azure SDK dla języka PHP](https://github.com/Azure/azure-sdk-for-php) pakiet, który zawiera aktualizacje i nowe funkcje dla usługi Media Services. W szczególności, Media Services SDK dla języka PHP teraz obsługuje najnowsze [content protection](media-services-content-protection-overview.md) funkcji. Te funkcje są dynamiczne szyfrowanie za pomocą szyfrowania AES i technologii DRM (PlayReady i Widevine), z lub bez ograniczenia tokenu. Obsługuje również skalowanie [jednostek kodowania](media-services-dotnet-encoding-units.md).
 
 Aby uzyskać więcej informacji, zobacz:
 
-* Następujące [przykłady kodu](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) pomóc Ci szybko rozpocząć pracę:
+* Następujące [przykłady kodu](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) pomóc Ci szybko rozpocząć pracę:
   * **vodworkflow_aes.php**: Ten plik PHP pokazuje, jak korzystać z dynamicznego szyfrowania AES-128 i usługę dostarczania kluczy. Jest on oparty na przykład .NET, szczegółowo [szyfrowania dynamicznego użycie algorytmu AES-128 i usługę dostarczania kluczy](media-services-protect-with-aes128.md).
   * **vodworkflow_aes.php**: Ten plik PHP pokazuje, jak używać dynamiczne szyfrowanie PlayReady i usługi dostarczania licencji. Jest on oparty na przykład .NET, szczegółowo [Użyj PlayReady i Widevine dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md).
   * **scale_encoding_units.php**: Ten plik PHP pokazuje, jak skalować jednostki zarezerwowane kodowania.
 
 ## <a id="nov_changes_15"></a>Listopad 2015 r.
- Usługa Media Services oferuje teraz usługę dostarczania licencji Widevine w chmurze. Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Zobacz też [w tym samouczku](media-services-protect-with-playready-widevine.md) i [repozytorium GitHub](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
+ Usługa Media Services oferuje teraz usługę dostarczania licencji Widevine w chmurze. Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Zobacz też [w tym samouczku](media-services-protect-with-playready-widevine.md) i [repozytorium GitHub](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
 
 Usługach dostarczania licencji Widevine udostępnianego przez usługi multimediów są w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
 
@@ -206,9 +206,9 @@ Usługa Media Services jest teraz na żywo w następujących centrach danych: Br
 
 ## <a id="september_changes_15"></a>Wydanie z września 2015 r.
 Usługa Media Services oferuje teraz możliwość ochrony zarówno wideo na żądanie, jak i strumieni na żywo przy użyciu modułowej technologii DRM Widevine. Aby łatwiej dostarczać licencje Widevine, można użyć następujących partnerów usługi dostarczania:
-* [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/) 
-* [EZDRM](http://ezdrm.com/) 
-* [castLabs](http://castlabs.com/company/partners/azure/) 
+* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [EZDRM](https://ezdrm.com/) 
+* [castLabs](https://castlabs.com/company/partners/azure/) 
 
 Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
   
@@ -311,7 +311,7 @@ W tej wersji są oznaczone domyślnego konstruktora Microsoft.WindowsAzure.Media
 * Czas trwania docelowych automatycznej HLS został dodany. W trakcie transmisji strumieniowej na żywo, HLS, jest zawsze dostarczana dynamicznie. Domyślnie usługa Media Services automatycznie oblicza współczynnik pakowania segmentu HLS (FragmentsPerSegment) na podstawie interwału ramki kluczowej (KeyFrameInterval). Ta metoda jest również określany jako grupę obrazów (GOP) odebrane z kodera na żywo. Aby uzyskać więcej informacji, zobacz [pracy z usługą Media Services transmisja strumieniowa na żywo](https://msdn.microsoft.com/library/azure/dn783466.aspx).
 
 ### <a name="media-services-net-sdk-updates"></a>Aktualizacje Media Services .NET SDK
-[Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) jest teraz w wersji 3.1.0.0. Wprowadzono następujące aktualizacje:
+[Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) jest teraz w wersji 3.1.0.0. Wprowadzono następujące aktualizacje:
 
 * Zależności zestawu .NET SDK został uaktualniony do programu .NET Framework 4.5.
 * Dodano nowy interfejs API, który umożliwia zaktualizowanie jednostki zarezerwowane kodowania. Aby uzyskać więcej informacji, zobacz [aktualizacji zarezerwowane typu jednostki i zastrzeżonych jednostek kodowania przy użyciu platformy .NET Zwiększ](media-services-dotnet-encoding-units.md).
@@ -556,35 +556,35 @@ Nowość w wersji listopada zestawu SDK został następujące funkcje:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Forum MSDN dotyczącym usługi Azure Media Services]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Forum MSDN dotyczącym usługi Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Dokumentacja usługi Azure Media Services — interfejs API REST]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[Szczegóły cennika usług Media Services]: http://azure.microsoft.com/pricing/details/media-services/
-[Metadane wejściowe]: http://msdn.microsoft.com/library/azure/dn783120.aspx
-[Metadane wyjściowe]: http://msdn.microsoft.com/library/azure/dn783217.aspx
-[Deliver content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
-[Index media files with the Azure Media Indexer]: http://msdn.microsoft.com/library/azure/dn783455.aspx
-[StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
-[Work with Media Services live streaming]: http://msdn.microsoft.com/library/azure/dn783466.aspx
-[Use AES-128 dynamic encryption and the key delivery service]: http://msdn.microsoft.com/library/azure/dn783457.aspx
-[Use PlayReady dynamic encryption and the license delivery service]: http://msdn.microsoft.com/library/azure/dn783467.aspx
-[Preview features]: http://azure.microsoft.com/services/preview/
-[Omówienie szablonu licencji PlayReady usługi Media Services]: http://msdn.microsoft.com/library/azure/dn783459.aspx
-[Stream storage-encrypted content]: http://msdn.microsoft.com/library/azure/dn783451.aspx
+[Szczegóły cennika usług Media Services]: https://azure.microsoft.com/pricing/details/media-services/
+[Metadane wejściowe]: https://msdn.microsoft.com/library/azure/dn783120.aspx
+[Metadane wyjściowe]: https://msdn.microsoft.com/library/azure/dn783217.aspx
+[Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
+[Index media files with the Azure Media Indexer]: https://msdn.microsoft.com/library/azure/dn783455.aspx
+[StreamingEndpoint]: https://msdn.microsoft.com/library/azure/dn783468.aspx
+[Work with Media Services live streaming]: https://msdn.microsoft.com/library/azure/dn783466.aspx
+[Use AES-128 dynamic encryption and the key delivery service]: https://msdn.microsoft.com/library/azure/dn783457.aspx
+[Use PlayReady dynamic encryption and the license delivery service]: https://msdn.microsoft.com/library/azure/dn783467.aspx
+[Preview features]: https://azure.microsoft.com/services/preview/
+[Omówienie szablonu licencji PlayReady usługi Media Services]: https://msdn.microsoft.com/library/azure/dn783459.aspx
+[Stream storage-encrypted content]: https://msdn.microsoft.com/library/azure/dn783451.aspx
 [Azure portal]: https://portal.azure.com
-[funkcję dynamicznego tworzenia pakietów]: http://msdn.microsoft.com/library/azure/jj889436.aspx
+[funkcję dynamicznego tworzenia pakietów]: https://msdn.microsoft.com/library/azure/jj889436.aspx
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
-[Protect Smooth Streaming with PlayReady]: http://msdn.microsoft.com/library/azure/dn189154.aspx
-[Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx
-[Dolina Piękniejsze ogłasza 7 EDIUS przesyłania strumieniowego przez chmurę]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
-[Control Media Services Encoder output file names]: http://msdn.microsoft.com/library/azure/dn303341.aspx
-[Create overlays]: http://msdn.microsoft.com/library/azure/dn640496.aspx
-[Stitch video segments]: http://msdn.microsoft.com/library/azure/dn640504.aspx
+[Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
+[Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET]: https://msdn.microsoft.com/library/azure/dn745650.aspx
+[Dolina Piękniejsze ogłasza 7 EDIUS przesyłania strumieniowego przez chmurę]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
+[Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
+[Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx
 [Azure Media Services .NET SDK 3.0.0.1 and 3.0.0.2 releases]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
-[Azure AD Access Control Service]: http://msdn.microsoft.com/library/hh147631.aspx
-[Connect to Media Services with the Media Services SDK for .NET]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Azure AD Access Control Service]: https://msdn.microsoft.com/library/hh147631.aspx
+[Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
-[Manage Media Services assets across multiple Storage accounts]: http://msdn.microsoft.com/library/azure/dn271889.aspx
-[Handle Media Services job notifications]: http://msdn.microsoft.com/library/azure/dn261241.aspx
+[Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
+[Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6d2d83e24b5e42af5f4322021eebfe9bf09494
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2eb395b4f3d922aa116e01c5de080a54d81e10ff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551298"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118650"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozowanie typowe scenariusze za pomocą usługi Service Fabric
 
@@ -111,15 +111,15 @@ W jednym widoku przy użyciu wszystkich wykresów zobaczysz niektóre Kafelki wy
 
 3. Kliknij pozycję Data > Windows liczników wydajności (danych > liczniki wydajności systemu Linux dla maszyn z systemem Linux) do rozpoczęcia zbierania określone liczniki z węzłów za pomocą agenta usługi Log Analytics. Poniżej przedstawiono przykłady format licznik do dodania
 
-    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
-    * `Processor(_Total)\\% Processor Time`
+   * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
+   * `Processor(_Total)\\% Processor Time`
 
-    W przewodniku Szybki Start VotingData i VotingWeb są nazwy procesu używany, więc wyglądałyby śledzenia tych liczników
+     W przewodniku Szybki Start VotingData i VotingWeb są nazwy procesu używany, więc wyglądałyby śledzenia tych liczników
 
-    * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
-    * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-    ![Liczniki wydajności usługi log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+     ![Liczniki wydajności usługi log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
 4. Spowoduje to pozwalają zobaczyć, jak infrastruktury jest obsługa obciążeń i ustaw odpowiednie alerty na podstawie wykorzystania zasobów. Na przykład — można ustawić alert, jeśli łączne użycie procesora przekracza 90% lub mniej niż 5%. Nazwa licznika, który zostanie wykorzystany dla tego jest "% czasu procesora". Można to zrobić, tworząc regułę alertu dla następującej kwerendy:
 

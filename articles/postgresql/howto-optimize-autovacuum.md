@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815221"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993419"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Optymalizowanie autovacuum na usługi Azure Database for postgresql w warstwie serwera 
 W tym artykule opisano, jak skutecznie zoptymalizować autovacuum na usługi Azure Database for postgresql w warstwie serwera.
@@ -43,6 +43,7 @@ Parametry konfiguracji, które kontrolują autovacuum są oparte na odpowiedzi n
 - Ile należy go wyczyścić po uruchomieniu?
 
 Poniżej przedstawiono niektóre autovacuum konfiguracji, parametry, które mogą aktualizować zależnie od odpowiedzi na powyższe pytania, wraz z wskazówki.
+
 Parametr|Opis|Wartość domyślna
 ---|---|---
 autovacuum_vacuum_threshold|Określa minimalną liczbę zaktualizowanych lub usuniętych krotek, wymagane do wyzwalania próżniowej operacji w jednej tabeli. Wartość domyślna to 50 krotek. Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera. Aby zastąpić to ustawienie dla poszczególnych tabel, Zmień parametry magazynu tabel.|50
@@ -51,6 +52,7 @@ autovacuum_vacuum_cost_limit|Określa wartość limitu kosztów, które są uży
 autovacuum_vacuum_cost_delay|Określa wartość opóźnienia kosztów w operacjach próżniowej automatyczne. Jeśli określono wartość -1, wartość vacuum_cost_delay regularne jest używana. Wartość domyślna to 20 MS. Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera. Aby zastąpić to ustawienie dla poszczególnych tabel, Zmień parametry magazynu tabel.|20 ms
 autovacuum_nap_time|Określa, że minimalne opóźnienie między autovacuum działa na dowolnej określonej bazy danych. W każdej Rundy demona sprawdza, czy baza danych i wydaje polecenia ODKURZAJĄCY i ANALIZOWANIE, zgodnie z potrzebami dla tabel w tej bazie danych. Opóźnienie jest mierzony w sekundach, a wartość domyślna to jedna minuta (1 min). Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera.|15 s
 autovacuum_max_workers|Określa maksymalną liczbę procesów autovacuum, innym niż uruchamiania autovacuum, która może działać w dowolnym momencie. Wartość domyślna to trzy. Ustaw ten parametr, tylko podczas uruchamiania serwera.|3
+
 Aby zastąpić ustawienia dla poszczególnych tabel, Zmień parametry magazynu tabel. 
 
 ## <a name="autovacuum-cost"></a>Koszt Autovacuum

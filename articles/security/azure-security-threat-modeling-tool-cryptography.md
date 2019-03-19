@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 947740ed28deea9682d10eecf9a66dab7540669e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887106"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Ramka zabezpieczeń: Kryptografia | Środki zaradcze 
+
 | Produkt/usługę | Artykuł |
 | --------------- | ------- |
 | **Aplikacja sieci Web** | <ul><li>[Użyj tylko zatwierdzonych symetrycznego blok, szyfrowania i długości kluczy](#cipher-length)</li><li>[Użyj zatwierdzone tryby szyfrowania bloku i wektory inicjacji dla mechanizmów szyfrowania symetrycznego](#vector-ciphers)</li><li>[Użyj zatwierdzone asymetrycznych algorytmów, długości kluczy i dopełnienie](#padding)</li><li>[Użyj zatwierdzone generatorów liczb losowych](#numgen)</li><li>[Nie należy używać szyfrowania symetrycznego strumienia](#stream-ciphers)</li><li>[Użyj zatwierdzone algorytmy wyznaczania wartości skrótu MAC/HMAC/opartych na kluczach](#mac-hash)</li><li>[Użyj tylko zatwierdzonych funkcji mieszania](#hash-functions)</li></ul> |
@@ -96,7 +97,7 @@ ms.locfileid: "56880312"
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Produkty, należy użyć tylko zatwierdzone kod uwierzytelniania wiadomości (MAC) lub algorytmy (HMAC) kod uwierzytelniania wiadomości bazujących na skrótach.</p><p>Kod uwierzytelniania wiadomości (MAC) to fragment informacji w załączniku do wiadomości, który umożliwia użytkownikowi Sprawdź zarówno autentyczności nadawcy i integralności wiadomości za pomocą klucza tajnego. Użycie obu bazujących na skrótach komputera MAC ([HMAC](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) lub [szyfrowania blokowego MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) jest dozwolona jako długo, jak wszystkie bazowego hash "lub" szyfrowania symetrycznego algorytmy również zostały zatwierdzone do użytku; obecnie dotyczy to Funkcje algorytmu SHA2 HMAC (HMAC SHA256 i HMAC SHA384 HMAC SHA512) i CMAC/OMAC1 i OMAC2 blokowania na podstawie szyfrowania Mac (są one oparte na AES).</p><p>HMAC-SHA1 mogą być zezwalającym na zgodność z platformą, ale konieczne będzie plik w wyjątek od tej procedury i poddawane przeglądu kryptograficznego Twojej organizacji. Obcięcie HMAC do mniej niż 128 bitów jest niedozwolone. Przy użyciu metody służące do wyznaczania wartości skrótu klucza i danych nie jest zatwierdzona i muszą zostać poddane tablicy Crypto organizacji zapoznać się przed Użyj klienta.</p>|
+| **Kroki** | <p>Produkty, należy użyć tylko zatwierdzone kod uwierzytelniania wiadomości (MAC) lub algorytmy (HMAC) kod uwierzytelniania wiadomości bazujących na skrótach.</p><p>Kod uwierzytelniania wiadomości (MAC) to fragment informacji w załączniku do wiadomości, który umożliwia użytkownikowi Sprawdź zarówno autentyczności nadawcy i integralności wiadomości za pomocą klucza tajnego. Użycie obu bazujących na skrótach komputera MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) lub [szyfrowania blokowego MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) jest dozwolona jako długo, jak wszystkie bazowego hash "lub" szyfrowania symetrycznego algorytmy również zostały zatwierdzone do użytku; obecnie dotyczy to Funkcje algorytmu SHA2 HMAC (HMAC SHA256 i HMAC SHA384 HMAC SHA512) i CMAC/OMAC1 i OMAC2 blokowania na podstawie szyfrowania Mac (są one oparte na AES).</p><p>HMAC-SHA1 mogą być zezwalającym na zgodność z platformą, ale konieczne będzie plik w wyjątek od tej procedury i poddawane przeglądu kryptograficznego Twojej organizacji. Obcięcie HMAC do mniej niż 128 bitów jest niedozwolone. Przy użyciu metody służące do wyznaczania wartości skrótu klucza i danych nie jest zatwierdzona i muszą zostać poddane tablicy Crypto organizacji zapoznać się przed Użyj klienta.</p>|
 
 ## <a id="hash-functions"></a>Użyj tylko zatwierdzonych funkcji mieszania
 

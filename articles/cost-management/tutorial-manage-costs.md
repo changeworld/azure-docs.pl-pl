@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: df4994475bf10fa902a2902b69b231821601d33b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083567"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58174345"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: Zarządzanie kosztami przy użyciu rozwiązania Cloudyn
 
@@ -23,7 +23,7 @@ Rozwiązanie Cloudyn umożliwia zarządzanie kosztami i tworzenie raportów prze
 
 Na przykład może być konieczne uzyskanie zwrotu kosztów inżynieryjnych. Potrzebna jest możliwość przedstawienia zespołowi inżynierów tego, że wymagane jest określona kwota — na podstawie kosztów zasobów. Można pokazać im raport dotyczący wszystkich wykorzystanych zasobów z tagiem *inżynieria*.
 
-W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary kluczy i wartości umożliwiające kategoryzowanie zasobów, wyświetlanie skonsolidowanych informacji na temat rozliczeń oraz zarządzanie nimi przez zastosowanie tego samego tagu względem wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
+W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary nazwa/wartość, umożliwiające kategoryzowanie zasobów i wyświetlanie i zarządzanie nimi skonsolidowanych informacji o rozliczeniach dzięki zastosowaniu tego samego tagu do wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -129,7 +129,7 @@ Aby wyświetlić wyniki przydzielania kosztów, otwórz raport analizy kosztów 
 Jeśli trzeba przekazać dane migawki innym zespołom, można wyeksportować dowolny raport w formacie PDF lub CSV.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

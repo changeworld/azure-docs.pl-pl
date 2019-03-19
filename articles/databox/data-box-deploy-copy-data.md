@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 62675df9f440df77d1098d5c89bd6810349fb3af
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118088"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk za pośrednictwem protokołu SMB
 
@@ -41,7 +41,8 @@ Przed rozpoczęciem upewnij się, że:
 
 W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
-- Maksymalnie jeden udział dla konta magazynu w warstwie Premium lub konta magazynu obiektów blob.
+- Jeden udział dla usługi premium storage. 
+- Jeden udział dla konta usługi blob storage. 
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
@@ -195,8 +196,8 @@ Poniższy przykład przedstawia dane wyjściowe polecenia kopiowania plików na 
 Aby zoptymalizować wydajność, użyj poniższych parametrów polecenia robocopy podczas kopiowania danych.
 
 |    Platforma    |    Przeważnie małe pliki < 512 KB                           |    Przeważnie średnie pliki od 512 KB do 1 MB                      |    Przeważnie duże pliki > 1 MB                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 sesje narzędzia Robocopy <br> 16 wątków na sesję    |    3 sesje narzędzia Robocopy <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy <br> 24 wątki na sesję    |  |
+|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+|    Data Box         |    2 sesje narzędzia Robocopy <br> 16 wątków na sesję    |    3 sesje narzędzia Robocopy <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy <br> 24 wątki na sesję    |
 
 
 Aby uzyskać więcej informacji na temat polecenia Robocopy, przejdź do artykułu [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Polecenie Robocopy i kilka przykładów).
@@ -209,7 +210,7 @@ W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 

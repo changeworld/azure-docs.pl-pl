@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c961238d1fbce1ff590e0b0843ae1390aa7f1cd9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: adaed4c7af1d325f85d6fc349ac9a4faf73c1169
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534824"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078822"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
@@ -67,10 +67,11 @@ Aby uzyskać więcej informacji, zobacz [sposób aktualizacji usługi w chmurze]
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Dlaczego nie mogę wdrożyć usługi w chmurze za pośrednictwem interfejsów API zarządzania usługami lub programu PowerShell, korzystając z konta magazynu usługi Resource Manager platformy Azure? 
 
 Ponieważ usługa w chmurze jest zasobem klasyczne, które nie są bezpośrednio zgodne z modelem usługi Azure Resource Manager, nie można skojarzyć go z kontami magazynu usługi Resource Manager platformy Azure. Poniżej przedstawiono kilka opcji: 
- 
+ 
 - Wdrażanie za pomocą interfejsu API REST.
 
-    Podczas wdrażania za pomocą interfejsu API REST zarządzania usługami można obejść to ograniczenie, określając adres URL sygnatury dostępu Współdzielonego do magazynu obiektów blob, które będą działać przy użyciu magazynu usługi Resource Manager platformy Azure i klasycznego konta. Przeczytaj więcej na temat właściwości "PackageUrl" [tutaj](https://msdn.microsoft.com/library/azure/ee460813.aspx).  
+    Podczas wdrażania za pomocą interfejsu API REST zarządzania usługami można obejść to ograniczenie, określając adres URL sygnatury dostępu Współdzielonego do magazynu obiektów blob, które będą działać przy użyciu magazynu usługi Resource Manager platformy Azure i klasycznego konta. Przeczytaj więcej na temat właściwości "PackageUrl" [tutaj](https://msdn.microsoft.com/library/azure/ee460813.aspx).
+  
 - Wdrażanie za pomocą [witryny Azure portal](https://portal.azure.com).
 
     Funkcja będzie działać z [witryny Azure portal](https://portal.azure.com) jako wywołanie przechodzi przez serwer proxy/podkładki, która umożliwia komunikację między zasobami usługi Azure Resource Manager i model klasyczny. 

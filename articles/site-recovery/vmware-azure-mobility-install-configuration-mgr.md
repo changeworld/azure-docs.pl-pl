@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: eb7d5acdcfade47ca916dcfd58aa271a9b1298ac
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ca9e58dbae6952f7e432868c7ede7dc42741a87b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104254"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Proces instalacji usługi mobilności z System Center Configuration Manager
 
@@ -162,25 +162,25 @@ IF NOT %ERRORLEVEL% EQU 0 (
 5. Wybierz **ten pakiet zawiera pliki źródłowe** pole wyboru.
 6. Kliknij przycisk **Przeglądaj**i wybierz udziale sieciowym, w którym jest przechowywany Instalatora (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
 7. Na **wybierz typ programu, który chcesz utworzyć** wybierz opcję **Program standardowy**i kliknij przycisk **dalej**.
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 8. Na **Podaj informacje dotyczące tego programu standardowego** strony, podaj następujące dane wejściowe, a następnie kliknij przycisk **dalej**. (Pozostałych danych wejściowych można użyć wartości domyślnych).
 
-  | **Nazwa parametru** | **Wartość** |
-  |--|--|
-  | Name (Nazwa) | Instalowanie usługi mobilności z platformy Microsoft Azure (Windows) |
-  | Wiersz polecenia | install.bat |
-  | Program może zostać uruchomiony | Określa, czy użytkownik jest zalogowany |
+   | **Nazwa parametru** | **Wartość** |
+   |--|--|
+   | Name (Nazwa) | Instalowanie usługi mobilności z platformy Microsoft Azure (Windows) |
+   | Wiersz polecenia | install.bat |
+   | Program może zostać uruchomiony | Określa, czy użytkownik jest zalogowany |
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
 9. Na następnej stronie wybierz systemów operacyjnych. Tylko w systemie Windows Server 2012 R2, Windows Server 2012 i Windows Server 2008 R2 można zainstalować usługi mobilności.
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
 
 10. Aby zakończyć działanie kreatora, kliknij przycisk **dalej** dwa razy.
 
@@ -190,19 +190,19 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 ### <a name="deploy-the-package"></a>Wdrażanie pakietu
 1. W konsoli programu Configuration Manager, kliknij prawym przyciskiem myszy pakiet, a następnie wybierz **Dystrybuuj zawartość**.
-  ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
+   ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Wybierz **[punktów dystrybucji](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** , do którego powinny zostać skopiowane pakiety.
 3. Wykonaj kroki kreatora. Pakiet uruchamia następnie replikowanie do określonych punktów dystrybucji.
 4. Po zakończeniu dystrybucji pakietu, kliknij prawym przyciskiem myszy pakiet, a wybierz **Wdróż**.
-  ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Wybierz kolekcję urządzeń systemu Windows Server utworzoną w sekcji wymagania wstępne jako kolekcję docelową dla wdrożenia.
 
-  ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
+   ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
 
 6. Na **określ miejsce docelowe zawartości** wybierz swoje **punktów dystrybucji**.
 7. Na **Określ ustawienia określające, w jaki sposób to oprogramowanie zostanie wdrożone** strony, upewnij się, że celem jest **wymagane**.
 
-  ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
+   ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
 8. Na **Określ harmonogram tego wdrożenia** Określ zgodnie z harmonogramem. Aby uzyskać więcej informacji, zobacz [planowanie pakietów](https://technet.microsoft.com/library/gg682178.aspx).
 9. Na **punktów dystrybucji** strony, skonfiguruj właściwości odpowiednio do potrzeb Twojego Centrum danych. Następnie Zakończ pracę kreatora.
@@ -387,24 +387,24 @@ cd /tmp
 5. Wybierz **ten pakiet zawiera pliki źródłowe** pole wyboru.
 6. Kliknij przycisk **Przeglądaj**i wybierz udziale sieciowym, w którym jest przechowywany Instalatora (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
 7. Na **wybierz typ programu, który chcesz utworzyć** wybierz opcję **Program standardowy**i kliknij przycisk **dalej**.
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 8. Na **Podaj informacje dotyczące tego programu standardowego** strony, podaj następujące dane wejściowe, a następnie kliknij przycisk **dalej**. (Pozostałych danych wejściowych można użyć wartości domyślnych).
 
     | **Nazwa parametru** | **Wartość** |
-  |--|--|
-  | Name (Nazwa) | Instalowanie usługi mobilności z platformy Microsoft Azure (Linux) |
-  | Wiersz polecenia | ./install_linux.sh |
-  | Program może zostać uruchomiony | Określa, czy użytkownik jest zalogowany |
+   |--|--|
+   | Name (Nazwa) | Instalowanie usługi mobilności z platformy Microsoft Azure (Linux) |
+   | Wiersz polecenia | ./install_linux.sh |
+   | Program może zostać uruchomiony | Określa, czy użytkownik jest zalogowany |
 
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 
 9. Na następnej stronie wybierz **ten program można uruchomić na dowolnej platformie**.
-  ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
+   ![Zrzut ekranu tworzenia pakietu i programu kreatora](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
 
 10. Aby zakończyć działanie kreatora, kliknij przycisk **dalej** dwa razy.
 
@@ -413,19 +413,19 @@ cd /tmp
 
 ### <a name="deploy-the-package"></a>Wdrażanie pakietu
 1. W konsoli programu Configuration Manager, kliknij prawym przyciskiem myszy pakiet, a następnie wybierz **Dystrybuuj zawartość**.
-  ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
+   ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Wybierz **[punktów dystrybucji](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** , do którego powinny zostać skopiowane pakiety.
 3. Wykonaj kroki kreatora. Pakiet uruchamia następnie replikowanie do określonych punktów dystrybucji.
 4. Po zakończeniu dystrybucji pakietu, kliknij prawym przyciskiem myszy pakiet, a wybierz **Wdróż**.
-  ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Wybierz kolekcję urządzeń Linux Server utworzoną w sekcji wymagania wstępne jako kolekcję docelową dla wdrożenia.
 
-  ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)
+   ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)
 
 6. Na **określ miejsce docelowe zawartości** wybierz swoje **punktów dystrybucji**.
 7. Na **Określ ustawienia określające, w jaki sposób to oprogramowanie zostanie wdrożone** strony, upewnij się, że celem jest **wymagane**.
 
-  ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
+   ![Kreator zrzut ekranu wdrażania oprogramowania](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
 8. Na **Określ harmonogram tego wdrożenia** Określ zgodnie z harmonogramem. Aby uzyskać więcej informacji, zobacz [planowanie pakietów](https://technet.microsoft.com/library/gg682178.aspx).
 9. Na **punktów dystrybucji** strony, skonfiguruj właściwości odpowiednio do potrzeb Twojego Centrum danych. Następnie Zakończ pracę kreatora.

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 287a82292994a629bde8255321c7f603fdf00b67
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869283"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099971"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu środowiska Node.js i interfejsu API REST wyszukiwania wiadomości Bing
 
@@ -71,7 +71,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
         });
         ```
 
-    3. Po zasygnalizowaniu flagi **end** można wyświetlić dane JSON i nagłówki.
+    3. Gdy **zakończenia** flaga jest sygnalizowane, JSON i nagłówki mogą być wyświetlane.
 
         ```javascript
         response.on('end', function () {
@@ -181,7 +181,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-[Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)
+> [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)

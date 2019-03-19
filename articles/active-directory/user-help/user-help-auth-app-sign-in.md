@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80fd458356cf5b375e0b3d922d9bdca3f3a30503
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0f5f190eee473d5eb483f901ada80cb67b4ffedd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961673"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110515"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do konta przy użyciu aplikacji Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
@@ -28,8 +28,8 @@ Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykł
 
 - Udostępnienie możliwości logowania się bez wymagania hasła, ale za to przy użyciu nazwy użytkownika i jego twarzy, odcisku palca lub numeru PIN dostarczanych przez urządzenie przenośne.
 
- >[!Important]
- >Metoda logowania telefon działa tylko z ani służbowych i osobistych kont Microsoft. Twoje konta firmy Microsoft wymagają użycia procesu standardowa weryfikacji two-Factor Authentication.
+  >[!Important]
+  >Metoda logowania telefon działa tylko z ani służbowych i osobistych kont Microsoft. Twoje konta firmy Microsoft wymagają użycia procesu standardowa weryfikacji two-Factor Authentication.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Zanim użyjesz aplikacji Microsoft Authenticator, musisz mieć:

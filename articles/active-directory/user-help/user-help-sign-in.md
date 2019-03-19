@@ -13,20 +13,20 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c892d616609151b5ad6025b4d0b535c494e6af82
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 84c71430d05bf0755fd8a7c096a2afcb2f69d292
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454225"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116728"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Zaloguj się przy użyciu dwuetapowej weryfikacji lub informacji zabezpieczających
 Po skonfigurowaniu weryfikacji dwuetapowej lub informacji zabezpieczających, będzie można zalogować się do swojego konta przy użyciu metody uwierzytelniania określonej.
 
->[!Note]
->Jeśli nadal używasz środowiska weryfikacji dwuetapowej, musisz skonfigurować swoje metody uwierzytelniania, postępując zgodnie z instrukcjami wyświetlanymi w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) artykułu.
-
->Jeśli administrator wyłączył środowisko informacje zabezpieczeń, należy ustawić swoje metody uwierzytelniania za pomocą tych artykułów krok po kroku:<ul><li>[Skonfiguruj informacje zabezpieczające do korzystania z aplikacji uwierzytelniania](security-info-setup-auth-app.md)</li><li>[Set up security info to use text messaging](security-info-setup-text-msg.md) (Konfigurowanie informacji zabezpieczających w celu korzystania z wiadomości tekstowych)</li><li>[Ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego](security-info-setup-phone-number.md)</li></ul>
+> [!Note]
+> Jeśli nadal używasz środowiska weryfikacji dwuetapowej, musisz skonfigurować swoje metody uwierzytelniania, postępując zgodnie z instrukcjami wyświetlanymi w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) artykułu.
+> 
+> Jeśli administrator wyłączył środowisko informacje zabezpieczeń, należy ustawić swoje metody uwierzytelniania za pomocą tych artykułów krok po kroku:<ul><li>[Skonfiguruj informacje zabezpieczające do korzystania z aplikacji uwierzytelniania](security-info-setup-auth-app.md)</li><li>[Set up security info to use text messaging](security-info-setup-text-msg.md) (Konfigurowanie informacji zabezpieczających w celu korzystania z wiadomości tekstowych)</li><li>[Ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Zaloguj się przy użyciu powiadomienie aplikacji authenticator na swoim urządzeniu przenośnym
 

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 2f615214fb7b77614054841af7972eb814525dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 03/13/2019
+ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549922"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903134"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -477,7 +477,11 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
 
-`tempdb` zostanie podzielona na 12 plików za pomocą maksymalny rozmiar 14 GB na plik. Nie można zmienić ten maksymalny rozmiar każdego pliku i nowe pliki, które można dodać do `tempdb`. To ograniczenie zostanie wkrótce usunięty. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 168 GB `tempdb`.
+Maksymalny rozmiar pliku `tempdb` nie może być większy od 24 GB/core, w warstwie ogólnego przeznaczenia. Maksymalna liczba `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` zawsze jest podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku i nowe pliki, które można dodać do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24GB / rdzeń w `tempdb`.
+
+### <a name="cannot-restore-contained-database"></a>Nie można przywrócić zawartej bazy danych
+
+Wystąpienia zarządzanego nie można przywrócić [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). W momencie przywracania istniejące zawarte bazy danych nie działają na wystąpieniu zarządzanym. Ten problem zostanie wkrótce usunięty i w międzyczasie zalecamy usuwanie opcja relacji zawierania bazy danych, które są umieszczane w wystąpieniu zarządzanym i nie należy używać opcji zawierania dla baz danych w środowisku produkcyjnym.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Przekroczenia miejsca do magazynowania z plikami małej bazy danych
 
@@ -510,7 +514,7 @@ Kilka widoków systemowych, liczniki wydajności, komunikaty o błędach, XEvent
 
 ### <a name="database-mail-profile"></a>Profil poczty bazy danych
 
-Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile`.
+Profil poczty bazy danych, które są używane przez agenta SQL musi zostać wywołana `AzureManagedInstance_dbmail_profile`.
 
 ### <a name="error-logs-are-not-persisted"></a>Dzienniki błędów są utrwalane nie
 
@@ -524,7 +528,7 @@ Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i w
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Zakres transakcji na dwie bazy danych w ramach tego samego wystąpienia nie jest obsługiwane.
 
-`TransactionScope` Klasa na platformie .net nie działa, jeśli dwa zapytania są wysyłane do dwóch baz danych w ramach tego samego wystąpienia w ramach tego samego zakresu transakcji:
+`TransactionScope` Klasa na platformie .NET nie działa, jeśli dwa zapytania są wysyłane do dwóch baz danych w ramach tego samego wystąpienia w ramach tego samego zakresu transakcji:
 
 ```C#
 using (var scope = new TransactionScope())

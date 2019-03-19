@@ -1,5 +1,5 @@
 ---
-title: 'Dodawanie wielu połączeń lokacja-lokacja bramy sieci VPN z siecią wirtualną: Azure Portal: usługi Resource Manager | Dokumentacja firmy Microsoft'
+title: 'Dodawanie wielu połączeń lokacja-lokacja bramy sieci VPN z siecią wirtualną: Azure Portal: Resource Manager| Microsoft Docs'
 description: Dodawanie połączeń S2S połączenia obejmujące wiele lokacji do bramy sieci VPN, który ma istniejące połączenie
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a814834be3225764c3b6f237bd515ca087f975a7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873125"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998837"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Dodawanie połączenia lokacja-lokacja z siecią wirtualną przy użyciu istniejącego połączenia bramy sieci VPN
 
@@ -52,7 +52,7 @@ Sprawdź następujące elementy:
 * Masz dostępny zewnętrznie publiczny adres IP urządzenia sieci VPN. Ten adres IP nie może się znajdować za translatorem adresów sieciowych.
 
 ## <a name="part1"></a>Część 1 — Konfigurowanie połączenia
-1. W przeglądarce przejdź do witryny [Azure Portal](http://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
+1. W przeglądarce przejdź do witryny [Azure Portal](https://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
 2. Kliknij przycisk **wszystkie zasoby** i Znajdź swoje **bramy sieci wirtualnej** z listy zasobów i kliknij ją.
 3. Na **bramy sieci wirtualnej** kliknij **połączeń**.
    
@@ -62,8 +62,8 @@ Sprawdź następujące elementy:
     ![Przycisk połączenia Dodaj](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Dodaj przycisk połączenia")<br>
 5. Na **Dodaj połączenie** strony, wypełnij następujące pola:
    
-   * **Nazwa:** nazwę, która ma zostać przypisany do lokacji tworzysz połączenie.
-   * **Typ połączenia:** wybierz **lokacja lokacja (IPsec)**.
+   * **Nazwa:** Nazwa, która ma zostać przypisany do lokacji, z którą tworzysz połączenie.
+   * **Typ połączenia:** Wybierz **lokacja lokacja (IPsec)**.
      
      ![Dodaj strony połączenia](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Dodaj strona połączenia")<br>
 
@@ -76,9 +76,9 @@ Sprawdź następujące elementy:
     ![Utwórz stronę bramy sieci lokalnej](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Utwórz bramę sieci lokalnej")<br>
 3. Na **Utwórz bramę sieci lokalnej** strony, wypełnij następujące pola:
    
-   * **Nazwa:** nazwę, która ma zostać przypisany do zasobu bramy sieci lokalnej.
-   * **Adres IP:** publiczny adres IP urządzenia sieci VPN w witrynie, którą chcesz nawiązać połączenie.
-   * **Przestrzeń adresowa:** przestrzeni adresowej, które mają być kierowane do nowej lokacji sieci lokalnej.
+   * **Nazwa:** Nazwa, która ma zostać przypisany do zasobu bramy sieci lokalnej.
+   * **Adres IP:** Publiczny adres IP urządzenia sieci VPN w witrynie, którą chcesz nawiązać połączenie.
+   * **Przestrzeń adresowa:** Przestrzeń adresowa, którą chcesz być kierowane do nowej lokacji sieci lokalnej.
 4. Kliknij przycisk **OK** na **Utwórz bramę sieci lokalnej** strony, aby zapisać zmiany.
 
 ## <a name="part3"></a>Część 3 — Dodaj klucz współużytkowany i Utwórz połączenie

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2e2a388b399ff34e36ab65a734593704cf274dc0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 9cfec02e2ea3496589474e61f583fb840a70f78d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312090"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881330"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -183,22 +183,22 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 
 | Ustawienie      | Opis                            |
 | ------------ | -------------------------------------- |
-| **IsEncrypted** | Po ustawieniu **true**, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to **false**. |
-| **Wartości** | Kolekcja ustawień aplikacji i parametry połączenia używane podczas uruchamiania lokalnego. Te wartości odpowiadają ustawienia aplikacji w aplikacji funkcji na platformie Azure, takich jak **AzureWebJobsStorage** i **AzureWebJobsDashboard**. Wiele wyzwalaczy i powiązań ma właściwość, która odwołuje się do aplikacji ustawienie parametrów połączenia, takich jak **połączenia** dla [wyzwalacz usługi Blob storage](functions-bindings-storage-blob.md#trigger---configuration). W przypadku takich właściwości potrzebne ustawienie aplikacji zdefiniowane w **wartości** tablicy. <br/>**AzureWebJobsStorage** ustawienie wymaganą aplikację dla wyzwalaczy innych niż HTTP. Jeśli masz [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) zainstalowane lokalnie, możesz ustawić **AzureWebJobsStorage** do `UseDevelopmentStorage=true` i podstawowe narzędzia używa emulatora. Jest to przydatne podczas tworzenia aplikacji, ale należy przetestować za pomocą połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia. |
-| **Host** | Ustawienia w tej sekcji dostosować proces hosta funkcji podczas uruchamiania lokalnego. |
-| **LocalHttpPort** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tę wartość. |
-| **CORS** | Określa pochodzenia, które mogą uzyskać [współużytkowanie zasobów między źródłami (cors)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są dostarczane jako listę rozdzielaną przecinkami, bez spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwany, co pozwala żądań z dowolnego źródła. |
-| **ConnectionStrings** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które zazwyczaj pobierają parametry połączenia z **ConnectionStrings** pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby **parametry połączenia** zbiór ustawień aplikacji funkcji. Jeśli tworzysz [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji należy przechowywać wartość parametrów połączenia w **ustawienia aplikacji** przy użyciu innych połączeń. |
+| **`IsEncrypted`** | Po ustawieniu `true`, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to `false`. |
+| **`Values`** | Kolekcja ustawień aplikacji i parametry połączenia używane podczas uruchamiania lokalnego. Te wartości odpowiadają ustawienia aplikacji w aplikacji funkcji na platformie Azure, takich jak [ `AzureWebJobsStorage` ]. Wiele wyzwalaczy i powiązań ma właściwość, która odwołuje się do aplikacji ustawienie parametrów połączenia, takich jak `Connection` dla [wyzwalacz usługi Blob storage](functions-bindings-storage-blob.md#trigger---configuration). W przypadku takich właściwości potrzebne ustawienie aplikacji zdefiniowane w `Values` tablicy. <br/>[`AzureWebJobsStorage`] Wymagana aplikacja jest ustawienie wyzwalaczy innych niż HTTP. <br/>W wersji 2.x środowisko uruchomieniowe funkcji wymaga [ `FUNCTIONS_WORKER_RUNTIME` ] ustawienie, które jest generowany dla projektu, podstawowe narzędzia. <br/> Jeśli masz [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) zainstalowane lokalnie, możesz ustawić [ `AzureWebJobsStorage` ] do `UseDevelopmentStorage=true` i podstawowe narzędzia używa emulatora. Jest to przydatne podczas tworzenia aplikacji, ale należy przetestować za pomocą połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia. |
+| **`Host`** | Ustawienia w tej sekcji dostosować proces hosta funkcji podczas uruchamiania lokalnego. |
+| **`LocalHttpPort`** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tę wartość. |
+| **`CORS`** | Określa pochodzenia, które mogą uzyskać [współużytkowanie zasobów między źródłami (cors)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są dostarczane jako listę rozdzielaną przecinkami, bez spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwany, co pozwala żądań z dowolnego źródła. |
+| **`ConnectionStrings`** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które zazwyczaj pobierają parametry połączenia z `ConnectionStrings` pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby `Connection strings` zbiór ustawień aplikacji funkcji. Jeśli tworzysz [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji należy przechowywać wartość parametrów połączenia w **ustawienia aplikacji** w portalu przy użyciu innych połączeń. |
 
 Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
 
-+ [C# precompiled](functions-dotnet-class-library.md#environment-variables)
-+ [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
-+ [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables)
-+ [JavaScript](functions-reference-node.md#environment-variables)
+* [C# precompiled](functions-dotnet-class-library.md#environment-variables)
+* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
+* [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [Java](functions-reference-java.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
-Jeśli ustawiono nie prawidłowych parametrów połączenia magazynu dla **AzureWebJobsStorage** i emulatora nie jest używana, jest wyświetlany następujący komunikat o błędzie:
+Jeśli ustawiono nie prawidłowych parametrów połączenia magazynu dla [ `AzureWebJobsStorage` ] i emulatora nie jest używana, jest wyświetlany następujący komunikat o błędzie:
 
 > Brak wartości dla AzureWebJobsStorage w local.settings.json. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić "azure functionapp func pobierania aplikacji settings \<functionAppName\>" lub Podaj parametry połączenia w local.settings.json.
 
@@ -216,12 +216,12 @@ Nawet w przypadku korzystania z emulatora magazynu do tworzenia aplikacji, możn
 
 + Użyj podstawowych narzędzi, aby pobrać parametry połączenia z platformy Azure przy użyciu jednego z następujących poleceń:
 
-    + Pobierz wszystkie ustawienia z istniejącej aplikacji funkcji:
+  + Pobierz wszystkie ustawienia z istniejącej aplikacji funkcji:
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-    + Pobieranie parametrów połączenia dla konta określonego magazynu:
+  + Pobieranie parametrów połączenia dla konta określonego magazynu:
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
@@ -481,3 +481,5 @@ Aby zgłosić żądanie usterki lub funkcji [Otwórz problem w usłudze GitHub](
 [Podstawowe narzędzia usługi Azure Functions]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
+["FUNCTIONS_WORKER_RUNTIME"]: functions-app-settings.md#functions_worker_runtime
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage

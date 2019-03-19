@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013348"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Przewodnik po wykonywaniu kopii zapasowych dla oprogramowania SAP HANA w usłudze Azure Virtual Machines
 
@@ -63,8 +63,8 @@ _Nie, obecnie można tylko dane i zalogować się wykonywanie kopii zapasowych n
 
 - [Wprowadzenie do programu SAP HANA administracji](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
 - [Planowanie z kopią zapasową i strategii odzyskiwania](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
-- [Planowanie kopii zapasowych platformy HANA przy użyciu ABAP DBACOCKPIT](http://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
-- [Harmonogram kopii zapasowych danych (SAP HANA z Panelu sterowania)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
+- [Planowanie kopii zapasowych platformy HANA przy użyciu ABAP DBACOCKPIT](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
+- [Harmonogram kopii zapasowych danych (SAP HANA z Panelu sterowania)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
 - Często zadawane pytania dotyczące platformy SAP HANA kopii zapasowej w [1642148 Uwaga SAP](https://launchpad.support.sap.com/#/notes/1642148)
 - Często zadawane pytania dotyczące platformy SAP HANA migawki bazy danych i magazynu w [2039883 Uwaga SAP](https://launchpad.support.sap.com/#/notes/2039883)
 - Systemy plików nieodpowiednią kartę sieciową dla kopii zapasowych i odzyskiwania w [1820529 Uwaga SAP](https://launchpad.support.sap.com/#/notes/1820529)
@@ -80,7 +80,7 @@ Korzystając z migawek magazynu, zalecane jest uruchomienie przywracania testu w
 
 Zachowaj należy pamiętać, wykonując proste przywracania i sprawdzania, czy HANA jest uruchomiona i uruchamiania nie są wystarczające. W idealnym przypadku jeden należy uruchomić sprawdzanie spójności tabeli należy upewnić się, że przywrócona baza danych jest dobrym rozwiązaniem. SAP HANA oferuje kilka rodzajów sprawdzania spójności, które opisano w [1977584 Uwaga SAP](https://launchpad.support.sap.com/#/notes/1977584).
 
-Informacje o sprawdzaniu spójności tabeli można także znaleźć w witrynie internetowej SAP w [tabeli i sprawdzania spójności katalogu](http://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
+Informacje o sprawdzaniu spójności tabeli można także znaleźć w witrynie internetowej SAP w [tabeli i sprawdzania spójności katalogu](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
 
 Dla standardowych plików kopii zapasowych przywracania testu nie jest konieczne. Istnieją dwa narzędzia SAP HANA, które pomagają sprawdzić, której kopia zapasowa może służyć do przywracania: hdbbackupdiag i hdbbackupcheck. Zobacz [ręcznie sprawdzanie, czy odzyskiwanie jest możliwe](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) Aby uzyskać więcej informacji na temat tych narzędzi.
 
@@ -90,7 +90,7 @@ SAP&#39;t dają pierwszeństwo kopii zapasowej albo HANA w porównaniu z migawki
 
 Na platformie Azure, należy zwrócić uwagę na fakt, że usługi Azure blob migawki funkcji&#39;spójności systemu plików gwarancji t (zobacz [Using migawek obiektów blob za pomocą programu PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). Następnej sekcji _wyjaśnienie pojęcia spójności danych SAP HANA podczas robienia migawek magazynu_, w tym artykule omówiono pewne zagadnienia dotyczące tej funkcji.
 
-Ponadto jedna ma umożliwić poznanie skutków rozliczeń podczas pracy często z migawek obiektów blob, zgodnie z opisem w tym artykule: [zrozumieć jak migawek Naliczanie opłat](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— go jest&#39;t tak oczywiste, jak przy użyciu Azure wirtualnego dyski.
+Ponadto jedna ma poznanie skutków rozliczeń, pracując często z migawek obiektów blob, zgodnie z opisem w tym artykule: [Opis sposobu migawek naliczane opłaty za](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— go jest&#39;t jako oczywiste, jak przy użyciu platformy Azure dyski wirtualne.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>Wyjaśnienie pojęcia spójności danych SAP HANA podczas robienia migawek magazynu
 
@@ -137,7 +137,7 @@ Przewodnik administrowania HANA zawiera przykładową listę. Sugerują one, że
 Dotyczące dokładnie harmonogramu kiedy i jak często ma się zdarzyć określonego typu kopii zapasowej nie jest możliwe zapewniają ogólne wytyczne — jest zbyt specyficzne dla klienta i zależy od liczby zmian danych występują w systemie. Jeden podstawowy po stronie SAP, który może być traktowany jako ogólne wskazówki, zaleca się jeden HANA pełnej upewnij w kopii zapasowej raz w tygodniu.
 Dotyczące kopii zapasowych dziennika można znaleźć w dokumentacji platformy SAP HANA [kopie zapasowe dziennika](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm).
 
-SAP również zaleca się wykonanie niektórych celów wykaz kopii zapasowych, aby zapobiec rośnie w nieskończoność (zobacz [wykaz kopii zapasowych i magazynu kopii zapasowych dla gospodarstw domowych](http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
+SAP również zaleca się wykonanie niektórych celów wykaz kopii zapasowych, aby zapobiec rośnie w nieskończoność (zobacz [wykaz kopii zapasowych i magazynu kopii zapasowych dla gospodarstw domowych](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
 
 ### <a name="sap-hana-configuration-files"></a>Pliki konfiguracji SAP HANA
 
@@ -228,7 +228,7 @@ Oparte na wynikach testów, które w poniższej tabeli przedstawiono zalety i wa
 
 |Rozwiązanie                                           |Specjaliści                                 |Wady                                  |
 |---------------------------------------------------|-------------------------------------|--------------------------------------|
-|Usługa Kopia zapasowa Azure                               | Umożliwia kopii zapasowych maszyn wirtualnych w oparciu migawek obiektów blob | Korzystając z nie Przywracanie na poziomie pliku, wymaga utworzenia nowej maszyny Wirtualnej dla procesu przywracania, która następnie oznacza konieczność nowy klucz licencji platformy SAP HANA|
+|Azure Backup Service                               | Umożliwia kopii zapasowych maszyn wirtualnych w oparciu migawek obiektów blob | Korzystając z nie Przywracanie na poziomie pliku, wymaga utworzenia nowej maszyny Wirtualnej dla procesu przywracania, która następnie oznacza konieczność nowy klucz licencji platformy SAP HANA|
 |Migawki obiektów blob ręczne                              | Elastyczność w tworzeniu i Przywróć określone dyski maszyny Wirtualnej bez konieczności zmieniania Unikatowy identyfikator maszyny Wirtualnej|Wszystkie ręcznych, które mają być wykonane przez klienta|
 
 ## <a name="next-steps"></a>Kolejne kroki

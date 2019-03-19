@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 2399cdfcfbc6be30dc013d52760ec4c355d106e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a6f8d3964c71d036053fe0d4136468fde690f872
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868314"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337281"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>Szybki start: Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Python
 
@@ -57,7 +57,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników wyszukiw
     print(r.text)
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](./tutorials/custom-search-web-page.md)

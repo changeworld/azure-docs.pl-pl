@@ -1,6 +1,6 @@
 ---
-title: Wytyczne dotyczące środowiska skuteczne zakotwiczenia w kotwic przestrzenne Azure | Dokumentacja firmy Microsoft
-description: Wskazówki i uwagi dotyczące tworzenia i lokalizowania kotwic skutecznie za pomocą kotwic przestrzenne Azure.
+title: Wytyczne dotyczące środowiska zakotwiczenia skuteczne, używających kotwic przestrzenne platformy Azure | Dokumentacja firmy Microsoft
+description: Wskazówki i uwagi do tworzenia i zlokalizuj kotwic skutecznie za pomocą kotwic przestrzenne Azure.
 author: mattwojo
 manager: jken
 services: azure-spatial-anchors
@@ -8,113 +8,108 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 196958e4818251bd7f2ee78ca472e6f28292d908
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895808"
 ---
-# <a name="guidelines-for-an-effective-anchor-experience-with-azure-spatial-anchors"></a>Wytyczne dotyczące elementu zakotwiczenia efektywne środowiska w usłudze Azure przestrzenne kotwic
+# <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Tworzenie środowiska skuteczne zakotwiczenia przy użyciu kotwic przestrzenne platformy Azure
 
-Ten artykuł zawiera wskazówki i uwagi dotyczące tworzenia i lokalizowania kotwic skutecznie za pomocą kotwic przestrzenne Azure.
+Ten artykuł zawiera wskazówki i zagadnienia, które ułatwiają efektywne tworzenie i zlokalizuj kotwic za pomocą przestrzenne kotwic.
 
-## <a name="creating-anchors"></a>Tworzenie zakotwiczenia
+## <a name="good-anchors"></a>Dobre zakotwiczenia
 
-Tworzenia dobrych kotwic jest jednym z największym wpływie aspektów pracy z usługą Azure przestrzenne kotwic. Należy poświęcić czas szkolenie lub przeprowadzi użytkowników w Twojej UX jak tworzyć dobre. Zainwestować w na początku tworzenia zakotwiczenia, należy włączyć użytkownikom końcowym niezawodnie zlokalizować kotwic:
+Przestrzenne kotwic pomoże Ci w utworzeniu dobre zakotwiczenia. Należy inwestować czas szkolenie lub przeprowadzi użytkowników w Twojej użytkownika środowiska do tworzenia dobrych kotwic. Inwestowanie w tworzeniu dobre kotwic na początku, ułatwić użytkownikom końcowym wyszukiwanie niezawodnie kotwic:
 
-- Na różnych urządzeniach
-- W różnym czasie
-- W warunkach innego oświetlenia
-- Z żądaną perspektyw w przestrzeni
-- Itp.
-
-Poniżej przedstawiono zagadnienia i wytyczne ułatwiające projektowanie środowiska tworzenia i lokalizacja zakotwiczenia.
+- Na różnych urządzeniach.
+- W różnym czasie.
+- W warunkach innego oświetlenia.
+- Z żądaną perspektyw w przestrzeni.
 
 ## <a name="static-and-dynamic-locations"></a>Lokalizacje statycznych i dynamicznych
 
-Element procesu projektowania środowisko kontrolne będzie wybranie lokalizacje, które uczestniczą. Zostanie lokalizacje mają być statyczna i zdefiniowanych przez administratora miejsce? Lub one będą dynamiczne i zdefiniowane przez użytkownika?
+Element procesu projektowania środowisko kontrolne jest wybranie lokalizacji. Zostanie lokalizacje mają być statyczna i zdefiniowanych przez administratora miejsce? Lub zostaną one, dynamiczne i zdefiniowanych przez użytkownika?
 
-Menedżer magazynu sprzedaży detalicznej, może być statyczne doświadczenie w sklepie, aby zachęcić użytkowników do odwiedzenia. Podczas gdy deweloper gra planszowa mieszanej prawdopodobnie chce, aby powiadomić użytkowników, wybierz miejsce odtworzyć.
+Menedżer magazynu sprzedaży detalicznej, może być statyczne doświadczenie w sklepie, aby zachęcić użytkowników do odwiedzenia. Jednak Deweloper gra planszowa rzeczywistości mieszanej, prawdopodobnie będzie chciała Pozwól użytkownikom wybrać, gdzie można odtworzyć.
 
-Dla lokalizacji statyczne można nauczyć Administratorzy mogą poświęcać czasu na curating obszaru, dobrym kotwic.
+Dla lokalizacji statyczne możesz nauczyć Administratorzy mogą poświęcać czasu na curating obszaru, dobrym kotwic.
 
-Dla lokalizacji dynamicznych możesz pomyśleć o jak edukować lub prowadzą użytkowników w Twojej UX tworzyć dobre.
+Dla lokalizacji dynamicznych możesz pomyśleć o jak, które prowadzisz lub prowadzą użytkowników w Twojej UX tworzyć dobre.
 
 ## <a name="stable-visual-features"></a>Stałe funkcje visual
 
-Wizualne śledzenie systemy używane w rzeczywistości mieszanej i rzeczywistość rozszerzona urządzeń polegają na funkcje środowiska programu visual. Aby uzyskać najbardziej niezawodnych środowiska:  
+Wizualne śledzenie systemy używane w rzeczywistości mieszanej i urządzeń w rzeczywistości rozszerzonej polegają na funkcje środowiska programu visual. Aby uzyskać najbardziej niezawodnych środowiska:  
 
-- Tworzyć kotwic w lokalizacjach za pomocą funkcji visual stabilne (oznacza to, funkcje, które nie zmieniają się często).
+- *Czy* tworzyć kotwic w lokalizacjach, które mają stałe funkcje visual (oznacza to, funkcje, które nie zmieniają się często).
 
-- Nie twórz kotwice w dużych powierzchni puste o nie wyróżniający charakterystyce.
+- *Nie* tworzyć kotwic na dużych puste powierzchniach, które nie mają wyróżniający cech.
 
-- Nie należy tworzyć kotwic wysoce odbijającą materiałów.
+- *Nie* tworzyć kotwic wysoce odbijającą materiałów.
 
-- Nie należy tworzyć kotwic na powierzchniach, gdzie powtarzane tylko wzorca, takich jak Dywan lub zmianę tapety.
+- *Nie* tworzyć kotwic na powierzchniach, w których wzorzec się powtarza, takich jak Dywan lub zmianę tapety.
 
-![Przykładowe obrazy reprezentujący środowiska dobre i złe](./media/stable-visual.png)
+![Przykłady to dobre środowisko kotwic i nieprawidłowe środowisko do kotwic](./media/stable-visual.png)
 
-## <a name="consider-various-viewing-perspectives"></a>Należy wziąć pod uwagę różne perspektywy wyświetlania
+## <a name="various-viewing-perspectives"></a>Różnych perspektyw wyświetlania
 
-Podczas tworzenia elementu zakotwiczenia, należy wziąć pod uwagę osób, które będzie można znaleźć w dalszej części można zlokalizować zakotwiczenia.
+Podczas tworzenia elementu zakotwiczenia, należy wziąć pod uwagę osób, które później spróbuje znaleźć zakotwiczenia.
 
-Na przykład, należy rozważyć kotwicy w środku miejsca przy użyciu dwóch drzwi. Prawdopodobnie chcesz zezwolić na użytkowników, którzy wejść do pokoju z obu drzwi do zlokalizowania zakotwiczenia. Podczas tworzenia zakotwiczenia, należy przeskanować położenia z obu drzwi. Przechwytuje dane o środowisko wokół zakotwiczenia z obu perspektyw, dzięki czemu użytkownicy mogą zlokalizować zakotwiczenia z obu drzwi biblioteki.
+Na przykład, należy rozważyć kotwicy w środku pokoju, który ma dwa drzwi. Prawdopodobnie chcesz zezwalać użytkownikom na wprowadzanie pomieszczeniu z obu drzwi biblioteki. Podczas tworzenia zakotwiczenia, należy przeskanować położenia z obu drzwi. Możesz zmienić perspektywy, aby przechwytywać dane środowiska, wokół zakotwiczenia, dzięki czemu użytkownicy mogą zlokalizować zakotwiczenia z obu drzwi biblioteki.
 
-Ogólnie rzecz biorąc podczas tworzenia elementu zakotwiczenia, powinny być przeskanowane z różnych miejsc lub perspektywy, czy ma być stały, podczas próby jego znalezienie.  
-
-Przy umieszczaniu wirtualny zawartość na aktywność na świeżym powietrzu rzeźby, dobrym pomysłem będzie zapoznaj się z całym rzeźby, oglądając, jak utworzyć zakotwiczenia.  
-
-Z drugiej strony jeśli zakotwiczenia znajduje się w górnym roku pokoju, istnieje tylko w jednym kierunku z podejścia do. Podczas tworzenia zakotwiczenia, po prostu musi skanowanego z tej perspektywy.
+Ogólnie rzecz biorąc podczas tworzenia elementu zakotwiczenia, zeskanować przy użyciu perspektywy osób, które spróbuje go zlokalizować. Więc jeśli chcesz umieścić zawartość wirtualnego na aktywność na świeżym powietrzu rzeźby, dobrym pomysłem będzie zapoznaj się z całym rzeźby, podczas skanowania, jak utworzyć zakotwiczenia. W przypadku zakotwiczenia w rogu pokoju, istnieje tylko w jednym kierunku z podejścia do. Podczas tworzenia tego zakotwiczenia, można skanować go tylko na podstawie tej perspektywy.
 
 ## <a name="multiple-anchors"></a>Kilka punktów kontrolnych
 
-Oświetlenie mogą się przyczynić visual funkcji, które są wykrywane. Kotwice utworzone w silne fizyczne światła może być trudny do lokalizowanie po ciemny w obszarze oświetlenia i na odwrót.  
+Oświetlenie mogą się przyczynić w funkcjach visual, wykryte przez aplikację. Kotwice utworzone w silne fizyczne światła może być trudny do zlokalizuj w świetle sztuczny i na odwrót.  
 
-Jeśli wystąpi ten problem, może pomóc utworzyć dwie kotwice — jeden w czasu letniego, a drugi w obszarze oświetlenia — w tym samym miejscu. Aplikację można następnie utworzyć zapytanie względem dla obu zakotwiczenia. Jeśli albo znajdują się, aplikacja będzie mieć ułożenia dla zakotwiczenia. 
+Jeśli ten problem, może pomóc utworzyć dwie kotwice. W tym samym miejscu należy utworzyć jeden zakotwiczenia w czasu letniego, a drugi w świetle sztucznym. Aplikację można następnie utworzyć zapytanie względem dla obu zakotwiczenia. Gdy znajduje się albo zakotwiczenia, aplikacja będzie mieć ułożenia dla zakotwiczenia. 
 
-Podobnie w środowiskach, gdzie funkcje visual zmienić, ponieważ większość obiektów przenieść kilka punktów kontrolnych może pomóc. W przypadku elementu zakotwiczenia staje się zbyt trudne do zlokalizowania ze względu na istotne zmiany w środowisku, można zastąpić ją na nową. Może to być tak, na przykład w sklepie detalicznym gdzie układu są odświeżane co kilka miesięcy.
+Podobnie w środowiskach, gdzie funkcje visual zmienić, ponieważ większość obiektów przenieść kilka punktów kontrolnych może pomóc. W przypadku elementu zakotwiczenia staje się zbyt trudne do znalezienia ze względu na istotne zmiany w środowisku, można zastąpić zakotwiczenia nową. Może to zrobisz, na przykład w sklepie detalicznym gdzie układu są odświeżane co kilka miesięcy.
 
 ## <a name="targets-and-rooms"></a>Cele i pokoje
 
-W wielu przypadkach lokalizowania elementu zakotwiczenia reprezentuje punkt wejścia środowiska unikatowy Twojej aplikacji. Będziesz chciał szybko przy użyciu tego kroku i niezawodnie tak użytkownicy mogą wprowadzać swoje środowisko. Poświęcania czasu na jak prowadzą do Twojej kotwic jest krokiem ważnych projektu. Warto to porównać dwa scenariusze szerokiego: **Obiekty docelowe** i **pokojów**.
+W wielu przypadkach elementu zakotwiczenia jest punktem wejścia do środowiska aplikacji. Będziesz chciał szybko przy użyciu tego kroku i niezawodnie tak użytkownicy mogą wprowadzać swoje środowisko. Poświęcania czasu na jak prowadzą do Twojej kotwic jest krokiem ważnych projektu. Warto wziąć pod uwagę znajdowanie kotwic pod względem dwa scenariusze szerokiego: *cele* i *pokojów*.
 
 ### <a name="targets"></a>Cele
 
-![Zacznij tutaj edycji](./media/start-here-edit.png)
+W tym scenariuszu docelowej lokalizacji elementu zakotwiczenia jest dobrze znana. Na przykład w aplikacji fikcyjnej malowania rzeczywistości mieszanej, jeden użytkownik umieszcza wirtualnego kanwę na tablicy. Powoduje ona, że inni użytkownicy w pomieszczeniu aby wskazywały swoich urządzeń, w tym samym miejscu na tablicy, aby zlokalizować zakotwiczenia i rozpocząć proces.  
 
-W tym scenariuszu docelowej lokalizacji elementu zakotwiczenia jest dobrze znana. Na przykład w fikcyjnej aplikacji rysowania MR jeden użytkownik umieszcza wirtualnego kanwę na tablicy. Powoduje ona, że inni użytkownicy w pomieszczeniu aby wskazywały swoich urządzeń, w tym samym miejscu na tablicy, aby zlokalizować zakotwiczenia i rozpocząć proces.  
+Inny przykład scenariusz docelowy może być znakiem w kawiarni, która odczytuje "Skanuj w poszukiwaniu okazje." Kawiarni — został umieszczony w tym miejscu elementu zakotwiczenia. Jak użytkownicy skanowania logowania, ich zlokalizować zakotwiczenia, a następnie wprowadź środowisko rzeczywistości rozszerzonej, aby znaleźć oferty na kawę.
 
-Inny przykład scenariusz docelowy musi być znakiem z informacją "Skanuj w poszukiwaniu ofertami" podczas oczekiwania w wierszu w kawiarni. Kawiarni — wcześniej umieścił w tym miejscu elementu zakotwiczenia. Jak użytkownicy skanowania logowania, ich zlokalizować zakotwiczenia, a następnie wprowadź środowisko AR okazje na kawę.
+W tym scenariuszu docelowego może pomóc zdjęcia. Jeśli użytkowników można wyświetlić zdjęcie docelową na swoim urządzeniu, mogą szybko zidentyfikować, co do skanowania w świecie rzeczywistym. Na przykład może pomóc użytkownikom pojawić się w obszarze Ogólne zamierzonym obiektem docelowym za pomocą GPS. Po odebraniu użytkownik aplikacji przedstawia zdjęcie elementu docelowego. Użytkownik wygląda wokół miejsca, wyszukuje element docelowy i skanowania pod kątem zakotwiczenia.
 
-W tym scenariuszu docelowego może pomóc zdjęcia. Jeśli użytkownicy mogą wyświetlić zdjęcie na swoim urządzeniu zamierzonym obiektem docelowym, mogą szybko identyfikować co do skanowania w świecie rzeczywistym. Na przykład może pomóc użytkownikom pojawić się w pobliżu ogólne docelowej przy użyciu GPS. Po odebraniu użytkownik aplikacji przedstawia zdjęcie elementu docelowego. Użytkownik wygląda wokół miejsca, wyszukuje element docelowy i przechodzi do skanowania w poszukiwaniu zakotwiczenia.
+![Ilustracja elementu zakotwiczenia wyświetlanie zdjęć elementu docelowego na urządzeniu przenośnym użytkownika](./media/start-here-edit.png)
 
 ### <a name="rooms"></a>pokoje
 
-![Skanowanie miejsca](./media/scan-room.png)
-
 W tym scenariuszu miejsca użytkownicy wprowadzają spację po prostu, wiedząc, że występuje gdzieś kotwicy w tym miejscu. Użytkownicy skanowanie miejsca za pomocą swoich urządzeń i szybko znaleźć zakotwiczenia.
 
-Zazwyczaj osiągnięcie to środowisko wymaga, tworzenie kotwic dobrze wyselekcjonowane, zgodnie z opisem w [należy wziąć pod uwagę różne perspektywy wyświetlania](#consider-various-viewing-perspectives) wcześniej. Pokoju został zeskanowany z wielu perspektyw, tworząc zakotwiczenia, następnie użytkowników może skanować praktycznie dowolnym miejscu podczas próby jego znalezienie.
+Środowisko to zwykle wymaga utworzenia zakotwiczenia dobrze wyselekcjonowane, zgodnie z opisem w [różnych perspektyw wyświetlania](#consider-various-viewing-perspectives). Po utworzeniu zakotwiczenia skanowany pokoju z wielu perspektyw, użytkownicy może skanować praktycznie dowolnym miejscu przy próbie jego znalezienie.
 
-Zasadniczo osobą odpowiedzialną za tworzenie zakotwiczenia zużywa więcej czasu na skanowanie miejsca, dzięki czemu osoby, które są dostarczane później można skanować i Znajdź zakotwiczenia szybko. Jest to ważne kompromis, które należy wziąć pod uwagę do własnych potrzeb.
+![Ilustracja przedstawiająca sposób użytkownik może skanować miejsca można znaleźć elementu zakotwiczenia](./media/scan-room.png)
 
-Aplikacji rysowania MR omówionych powyżej jest przykładowi, który nie jest dobrze nadaje się jako scenariusza miejsca. W tym miejscu użytkownika, umieszczając zakotwiczenia chce, aby inne osoby do dołączenia do środowiska szybko. Użytkownicy nie chcesz poczekać, aż jest dobrze zeskanowane, aby rozpocząć proces. Ponieważ wszystkim użytkownikom dokładnie wiemy, gdzie na ich urządzenia, aby zlokalizować kotwic punktu, w tym scenariuszu lepiej jest traktowany jako scenariusz docelowy.
+Zasadniczo możesz poświęcić więcej czasu, na skanowanie miejsce po utworzeniu zakotwiczenia tak, aby użytkownicy nowszej można skanować i szybko zlokalizować zakotwiczenia. Jak utworzyć środowisko, należy wziąć pod uwagę ten ważne kompromis.
 
-## <a name="effectively-locating-anchors"></a>Efektywne lokalizowanie zakotwiczenia
+Przykład aplikacji rysowania rzeczywistości mieszanej, omówionej wcześniej nie działa również jako scenariusza miejsca. W tym miejscu użytkownik, który umieszcza zakotwiczenia chce innym użytkownikom szybko Dołącz do środowiska. Użytkownicy nie mają być zaczekać z rozpoczęciem doświadczenia, dopóki dobrze jest skanowany w pomieszczeniu. Ponieważ wszystkim użytkownikom dokładnie wiemy, gdzie wskazywały na swoim urządzeniu, aby zlokalizować kotwic, ten przykład sprawdzi się najlepiej jako scenariusz docelowy.
 
-Wizualne śledzenie systemy opierają się na cech wizualnych środowiska funkcji. Bardziej wizualny funkcje są częścią skanowania, tym większe prawdopodobieństwo znajdowania elementu zakotwiczenia.
+## <a name="anchor-location"></a>Lokalizacja zakotwiczenia
 
-Istnieją pewne ogólne wytyczne, które można wykonać w celu tworzenia środowiska użytkownika, które wspiera przydatne skanowania środowiska.
+Systemy śledzenia Visual opierają się na funkcje visual w środowisku. Bardziej wizualny funkcje, które obejmuje skanowania, tym większe prawdopodobieństwo znajdowania elementu zakotwiczenia.
 
-Po pierwsze Jeśli użytkownik nie znajdzie kotwicy w ciągu kilku sekund, aplikacji powinny zachęcać użytkownikom przenoszenie urządzenia, aby przechwycić więcej perspektywy.  Aplikacja może również zachęcać samych użytkowników do poruszania się po środowiska podczas skanowania pod kątem zakotwiczenia z perspektywy więcej. Więcej perspektywy, z których urządzenie będzie widział lepiej tych samych punktów.
+Postępuj zgodnie z ogólnymi wytycznymi w tej sekcji, aby zbudować środowiska użytkownika, które wspiera przydatne skanowania środowiska.
 
-W przypadku scenariuszy docelowego należy poprosić użytkownika o zmieniają położenie obiektu docelowego, korzystając z możliwości wyświetlania jej z różnych perspektyw. Innymi słowy należy poprosić użytkownika o przenoszenia ich m do przechwytywania obiekt docelowy z nowej perspektywy, dopóki nie znajduje się kotwica.
+Po pierwsze Jeśli użytkownik nie znajdzie kotwicy w ciągu kilku sekund, aplikacji powinny zachęcać użytkownikom przenoszenie urządzenia, aby przechwycić więcej perspektywy. Aplikacja również może zachęcić użytkowników do poruszania się środowisko do skanowania w poszukiwaniu zakotwiczenia z perspektywy więcej. Więcej perspektywy funkcji, które widzi urządzenia, tym lepiej.
 
-W przypadku scenariuszy pokoju poprosić użytkownika o powoli skanowania pomieszczeniu. Na przykład poprosić użytkownika o Obróć do przechwytywania, 180 lub nawet 360 stopni pokoju. Lub poproś użytkownika, aby przejść do nowej perspektywy w pomieszczeniu. Najbardziej znaczący oznacza, że skanowanie jest skanowanie w pomieszczeniu. To przechwytuje więcej funkcji visual środowiska niż say skanowanie pobliskich tablicy. Skanowanie pobliskich tablicy nie przechwytuje jako wiele przydatnych funkcji visual środowiska.
+W przypadku scenariuszy docelowego należy poprosić użytkownika o zmieniają położenie obiektu docelowego do wyświetlania go z różnych perspektyw. Innymi słowy poproś użytkownika o Przechwyć obiekt docelowy z nowej perspektywy, aż do zlokalizowania zakotwiczenia.
 
-Nie jest to przydatne przenieść urządzenia do równoległego wielokrotnie podczas wyszukiwania elementu zakotwiczenia. Spowoduje to po prostu przechwytywać tych samych punktów z tego samego punktu widzenia.
+W przypadku scenariuszy pokoju poprosić użytkownika o powoli skanowania pomieszczeniu. Na przykład poprosić użytkownika o włączyć do przechwytywania 180 stopni lub nawet 360 stopni pokoju. Lub poprosić użytkownika, aby wyświetlić miejsce z nowej perspektywy. 
 
-## <a name="testing-the-experience"></a>Testowanie w środowisku
+Najbardziej znaczący metoda polega na skanowanie w pomieszczeniu. Skanowanie w pomieszczeniu przechwytuje więcej funkcji visual środowiska niż skanowanie pobliskich tablicy, na przykład. Skanowanie pobliskich tablicy nie będzie przechwytywać tyle przydatne funkcje programu visual środowiska.
 
-Powyższe zawierają ogólne wytyczne. Z przestrzennego zakotwiczenia platformy Azure podczas pisania aplikacji współdziałających ze świata rzeczywistego. W efekcie należy przeznaczyć czas testowania scenariuszy zakotwiczenia Twojej aplikacji w rzeczywistych środowiskach. Jest to szczególnie istotne w przypadku środowisk, które są reprezentatywne, z którego można spodziewać się użytkownikom korzystanie z aplikacji.
+Nie jest to przydatne wielokrotnie przenieść urządzenie bok, podczas wyszukiwania elementu zakotwiczenia. Umożliwia to po prostu Przechwytywanie tych samych punktów z tego samego punktu widzenia.
+
+## <a name="experience-tests"></a>Środowisko testów
+
+W tym artykule zostały omówione ogólne wytyczne. Z przestrzennego kotwic pisania aplikacji współdziałających ze świata rzeczywistego. Z tego powodu należy przeznaczyć czas i testowania aplikacji zakotwiczenia scenariuszy w rzeczywistych środowiskach. Jest to szczególnie istotne w przypadku środowisk, które reprezentują których można oczekiwać od użytkowników do korzystania z aplikacji.

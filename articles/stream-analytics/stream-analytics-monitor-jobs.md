@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: be86287f8341b6b86064e51f8a26a8c7f97e867e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100806"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programowe tworzenie monitor zadania usługi Stream Analytics
 
@@ -142,8 +142,8 @@ Poniższy kod zostanie skonfigurowany niezbędne zmiennych i zarządzania klient
 
 Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream Analytics. Pierwsza część kod wykonuje żądanie GET względem usługi Stream Analytics można pobrać informacji dotyczących określonego zadania usługi Stream Analytics. Używa ona *identyfikator* właściwości (pobieranymi z żądania GET) jako parametr do metody Put w drugiej połowie kod, który wysyła PUT żądanie do usługi Insights Włącz monitorowanie dla zadania usługi Stream Analytics.
 
->[!WARNING]
->Jeśli zostało wcześniej włączone monitorowanie dla innego zadania usługi Stream Analytics, za pośrednictwem witryny Azure portal lub programowo przy użyciu poniższego kodu, **firma Microsoft zaleca, aby zapewnić taką samą nazwę konta magazynu, który był używany podczas wcześniej włączone monitorowanie.**
+> [!WARNING]
+> Jeśli zostało wcześniej włączone monitorowanie dla innego zadania usługi Stream Analytics, za pośrednictwem witryny Azure portal lub programowo przy użyciu poniższego kodu, **firma Microsoft zaleca, aby zapewnić taką samą nazwę konta magazynu, który był używany podczas wcześniej włączone monitorowanie.**
 > 
 > Konto magazynu jest połączony z regionu, utworzone zadanie usługi Stream Analytics, w, a nie do samo zadanie.
 > 
@@ -152,13 +152,13 @@ Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream 
 > Nazwa konta magazynu, która umożliwia zastąpienie `<YOUR STORAGE ACCOUNT NAME>` w poniższym kodzie powinna być w tej samej subskrypcji co zadanie usługi Stream Analytics, które są Włączanie monitorowania dla konta magazynu.
 > 
 > 
-```csharp
-    // Get an existing Stream Analytics job
-    JobGetParameters jobGetParameters = new JobGetParameters()
-    {
-        PropertiesToExpand = "inputs,transformation,outputs"
-    };
-    JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
+> ```csharp
+>     // Get an existing Stream Analytics job
+>     JobGetParameters jobGetParameters = new JobGetParameters()
+>     {
+>         PropertiesToExpand = "inputs,transformation,outputs"
+>     };
+>     JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
 
     // Enable monitoring
     ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
@@ -172,15 +172,15 @@ Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream 
 ```
 
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## Get support
 
-Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## Next steps
 
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
-* [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
-* [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Introduction to Azure Stream Analytics](stream-analytics-introduction.md)
+* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Management REST API Reference](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

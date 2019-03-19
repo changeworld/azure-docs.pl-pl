@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674705"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541863"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
@@ -69,7 +69,7 @@ Replikacja geograficzna jest funkcją dotyczącą tylko [rejestrów w warstwie P
 
 ![Przełączanie jednostek SKU w witrynie Azure Portal](media/container-registry-skus/update-registry-sku.png)
 
-Aby skonfigurować replikację geograficzną dla rejestru w warstwie Premium, zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+Aby skonfigurować replikację geograficzną dla rejestru w warstwie Premium, zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 Przejdź do używanego rejestru Azure Container Registry, a następnie wybierz pozycję **Replikacje**:
 
@@ -101,7 +101,7 @@ W poprzednim przykładzie firma Contoso skonsolidowała dwa rejestry w ramach je
 
 Dzięki replikacji geograficznej możesz zarządzać swoimi regionalnymi centrami danych jako jedną chmurą globalną. Ze względu na to, że obrazy są używane w wielu usługach platformy Azure, możesz korzystać z zalet pojedynczego obszaru zarządzania, obsługując równocześnie szybkie i niezawodne lokalne operacje ściągania obrazów w pobliskiej sieci.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z trzyczęściową serią samouczków dostępną w sekcji [Replikacja geograficzna w usłudze Azure Container Registry](container-registry-tutorial-prepare-registry.md). Opisano w niej tworzenie rejestru z replikacją geograficzną, tworzenie kontenera, a następnie wdrażanie go w ramach wielu regionalnych aplikacji usługi Web Apps na potrzeby wystąpień kontenerów za pomocą pojedynczego polecenia `docker push`.
 

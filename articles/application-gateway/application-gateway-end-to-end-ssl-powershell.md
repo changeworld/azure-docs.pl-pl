@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7006d7ed56c58858e4b7c053af3ba1101455928c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3da9982d1af886a4329ddc77a7b297e9e285453e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312514"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101554"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
@@ -53,21 +53,21 @@ W poniższych sekcjach opisano sposób konfiguracji.
 Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bramę application gateway.
 
 
-   1. Zaloguj się do swojego konta platformy Azure.
+1. Zaloguj się do swojego konta platformy Azure.
 
    ```powershell
    Connect-AzAccount
    ```
 
 
-   2. Wybierz subskrypcję do użycia dla tego scenariusza.
+2. Wybierz subskrypcję do użycia dla tego scenariusza.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
 
 
-   3. Utwórz grupę zasobów. (Pomiń ten krok, jeśli używasz istniejącej grupy zasobów).
+3. Utwórz grupę zasobów. (Pomiń ten krok, jeśli używasz istniejącej grupy zasobów).
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location "West US"
@@ -78,7 +78,7 @@ Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bram�
 Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jest używana do przechowywania bramy aplikacji. Innych podsieci jest używana do zaplecza, które hostują aplikację sieci web.
 
 
-   1. Przypisz zakres adresów podsieci, która ma być używany dla usługi application gateway.
+1. Przypisz zakres adresów podsieci, która ma być używany dla usługi application gateway.
 
    ```powershell
    $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
@@ -89,19 +89,19 @@ Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jes
    > 
    > 
 
-   2. Przypisz zakres adresów ma być używany dla puli adresów zaplecza.
+2. Przypisz zakres adresów ma być używany dla puli adresów zaplecza.
 
    ```powershell
    $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
-   3. Utwórz sieć wirtualną z podsieciami, zdefiniowane w poprzednich krokach.
+3. Utwórz sieć wirtualną z podsieciami, zdefiniowane w poprzednich krokach.
 
    ```powershell
    $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
-   4. Pobierz zasób sieci wirtualnej i podsieci zasobów do użycia w kolejnych krokach.
+4. Pobierz zasób sieci wirtualnej i podsieci zasobów do użycia w kolejnych krokach.
 
    ```powershell
    $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -173,7 +173,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 
    > [!NOTE]
    > Domyślnej funkcji badania pobiera klucz publiczny z *domyślne* powiązania SSL na adresie IP serwer zaplecza i porównuje wartość klucza publicznego, otrzymuje się na wartość klucza publicznego zostanie podane w tym miejscu. 
-   
+   > 
    > Jeśli używasz nagłówki hosta i oznaczaniem nazwy serwera (SNI) na zapleczu pobrane klucz publiczny nie może być planowanej lokacji, do których widok przepływów ruchu sieciowego. Jeśli jesteś w stanie wątpliwości, odwiedź stronę https://127.0.0.1/ na serwerach zaplecza, aby upewnić się, który certyfikat jest używany dla *domyślne* powiązania SSL. W tej sekcji, należy użyć klucza publicznego z tym żądaniem. Jeśli używasz nagłówki hosta i SNI na powiązania HTTPS i nie otrzymasz odpowiedzi i certyfikat od żądanie ręcznej przeglądarki https://127.0.0.1/ na serwerach zaplecza, należy skonfigurować domyślne powiązanie SSL na nich. Jeśli nie zrobisz, sondy i zapleczu nie jest umieszczona na białej liście.
 
    ```powershell
@@ -218,17 +218,17 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 
 11. Konfigurowanie zasad protokołu SSL, który ma być używany w usłudze application gateway. Usługa Application Gateway obsługuje możliwość ustawienia minimalnej wersji do wersji protokołu SSL.
 
-   Lista protokołów, które mogą być definiowane są następujące wartości:
+    Lista protokołów, które mogą być definiowane są następujące wartości:
 
     - **TLSV1_0**
     - **TLSV1_1**
     - **TLSV1_2**
     
-   Poniższy przykład ustawia wersję protokołu minimalne **TLS 1_2** i umożliwia **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** tylko.
+    Poniższy przykład ustawia wersję protokołu minimalne **TLS 1_2** i umożliwia **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** tylko.
 
-   ```powershell
-   $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
-   ```
+    ```powershell
+    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+    ```
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
@@ -242,20 +242,20 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 
 Poprzednie kroki trwało Cię przez proces tworzenia aplikacji przy użyciu protokołu SSL end-to-end i wyłączenie niektórych wersji protokołu SSL. Poniższy przykład wyłącza określone zasady protokołu SSL w istniejącej bramie aplikacji.
 
-   1. Pobierz bramy aplikacji w celu zaktualizowania.
+1. Pobierz bramy aplikacji w celu zaktualizowania.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-   2. Definiowanie zasad protokołu SSL. W poniższym przykładzie **TLSv1.0** i **TLSv1.1** są wyłączone i mechanizmów szyfrowania **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** są jedynymi te dozwolone.
+2. Definiowanie zasad protokołu SSL. W poniższym przykładzie **TLSv1.0** i **TLSv1.1** są wyłączone i mechanizmów szyfrowania **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** są jedynymi te dozwolone.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-   3. Na koniec zaktualizuj bramę. Ten ostatni krok to długotrwałe zadanie. Gdy wszystko będzie gotowe, end-to-end skonfigurowano protokół SSL na bramie aplikacji.
+3. Na koniec zaktualizuj bramę. Ten ostatni krok to długotrwałe zadanie. Gdy wszystko będzie gotowe, end-to-end skonfigurowano protokół SSL na bramie aplikacji.
 
    ```powershell
    $gw | Set-AzApplicationGateway

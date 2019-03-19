@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 09abb8fa2c8d08b27b83a2510b4c1133458b8363
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3f837820d05f7e10524e65bd8a7775d45c4cc600
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240732"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110430"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane przy użyciu agenta usługi Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń na komputerze i kopiuje dane do swojego obszaru roboczego do analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Agent usługi Log Analytics kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -50,13 +50,13 @@ Aby włączyć automatyczną aprowizację agentów usługi Log Analytics:
 1. W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
 2. Kliknij przycisk **edytować ustawienia** w kolumnie ustawień odpowiedniej subskrypcji na liście.
 
-  ![Wybieranie subskrypcji][7]
+   ![Wybieranie subskrypcji][7]
 
 3. W obszarze **Zasady zabezpieczeń** wybierz pozycję **Zbieranie danych**.
 4. W obszarze **automatycznej aprowizacji**, wybierz opcję **na** Aby włączyć automatyczną aprowizację.
 5. Wybierz pozycję **Zapisz**.
 
-  ![Włączanie automatycznej aprowizacji][1]
+   ![Włączanie automatycznej aprowizacji][1]
 
 >[!NOTE]
 > - Aby uzyskać instrukcje, jak wykonać aprowizację wstępnie istniejącej instalacji, zobacz [automatycznej aprowizacji w przypadku istniejących instalacji agenta](#preexisting).
@@ -76,15 +76,15 @@ Usługa Security center może automatycznie tworzyć domyślnego obszaru robocze
 
 Aby wybrać obszar roboczy utworzony przez usługę Security Center:
 
-1.  W obszarze **domyślną konfigurację obszaru zabezpieczeń**, zaznacz pole wyboru Użyj obszarów roboczych utworzonych przez usługę Security center.
+1. W obszarze **domyślną konfigurację obszaru zabezpieczeń**, zaznacz pole wyboru Użyj obszarów roboczych utworzonych przez usługę Security center.
    ![Wybierz warstwę cenową][10] 
 
-2. Kliknij pozycję **Zapisz**.<br>
+1. Kliknij pozycję **Zapisz**.<br>
     Usługa Security Center utworzy nowy zasób grupy i domyślny obszar roboczy w tym geolokalizacja i łączy agenta do tego obszaru roboczego. Konwencja nazewnictwa dla obszaru roboczego i grupy zasobów jest:<br>
-**Obszar roboczy: DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]<br> grupy zasobów: DefaultResourceGroup-[geo]**
+   **Obszar roboczy: DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]<br> grupy zasobów: DefaultResourceGroup-[geo]**
 
    Jeśli subskrypcja zawiera maszyny wirtualne z wieloma geolocations, usługa Security Center tworzy wiele obszarów roboczych. Wiele obszarów roboczych są tworzone do obsługi zasad ochrony prywatności danych.
--   Usługa Security Center spowoduje automatyczne włączenie rozwiązania Security Center w obszarze roboczym na warstwy cenowej dla subskrypcji. 
+1. Usługa Security Center spowoduje automatyczne włączenie rozwiązania Security Center w obszarze roboczym na warstwy cenowej dla subskrypcji. 
 
 > [!NOTE]
 > Obszary robocze utworzone przez usługę Security Center w warstwie taryfowy usługi log analytics nie ma wpływu na rozliczenia w usłudze Security Center. Rozliczanie usługi Security Center zawsze zależy od zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym. Dla warstwy bezpłatnej, usługa Security Center umożliwia *SecurityCenterFree* rozwiązania w domyślnym obszarze roboczym. W przypadku warstwy Standard usługi Security Center umożliwia *zabezpieczeń* rozwiązania w domyślnym obszarze roboczym.
@@ -111,10 +111,10 @@ Aby wybrać istniejący obszar roboczy usługi Log Analytics:
 
 2. Z menu rozwijanego wybierz obszar roboczy do zapisywania zebranych danych.
 
-  > [!NOTE]
-  > W ściągnąć menu dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Zobacz [cross wybór obszaru roboczego subskrypcji](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Aby uzyskać więcej informacji. Musi mieć uprawnienia dostępu do obszaru roboczego.
-  >
-  >
+   > [!NOTE]
+   > W ściągnąć menu dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Zobacz [cross wybór obszaru roboczego subskrypcji](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Aby uzyskać więcej informacji. Musi mieć uprawnienia dostępu do obszaru roboczego.
+   >
+   >
 
 3. Wybierz pozycję **Zapisz**.
 4. Po wybraniu **Zapisz**, konieczne będzie podanie, jeśli chcesz ponownie skonfigurować monitorowane maszyny wirtualne, które wcześniej zostały podłączone do domyślnego obszaru roboczego.
@@ -150,8 +150,8 @@ Po wybraniu obszaru roboczego, w którym do przechowywania danych, wszystkie obs
 Wybieranie warstwy zbierania danych w usłudze Azure Security Center mają wpływ tylko na magazyn zdarzeń zabezpieczeń w obszarze roboczym usługi Log Analytics. Agenta usługi Log Analytics będzie nadal Zbieraj i Analizuj zdarzenia zabezpieczeń wymaganych do wykrywania zagrożeń usługi Azure Security Center, niezależnie od tego, która warstwa zdarzeń zabezpieczeń zdecydujesz się przechowywać w obszarze roboczym usługi Log Analytics (jeśli istnieje). Wybieranie do przechowywania zdarzeń związanych z zabezpieczeniami w obszarze roboczym spowoduje włączenie analizy, wyszukiwania i inspekcji tych zdarzeń w obszarze roboczym. 
 > [!NOTE]
 > Przechowywanie danych w usłudze log analytics może Naliczanie dodatkowych opłat za magazyn danych, zobacz stronę cennika, aby uzyskać więcej informacji.
->
-Możesz wybrać zasady dla subskrypcji i obszarów roboczych cztery rodzaje zdarzeń filtrowania prawej strony mają być przechowywane w obszarze roboczym: 
+> 
+> Możesz wybrać zasady dla subskrypcji i obszarów roboczych cztery rodzaje zdarzeń filtrowania prawej strony mają być przechowywane w obszarze roboczym: 
 
 - **Brak** — Wyłącz magazyn zdarzeń zabezpieczeń. Jest to ustawienie domyślne.
 - **Minimalny** — mniejszy zestaw zdarzeń, które klienci, którzy chcą, aby zminimalizować wolumin zdarzeń.
@@ -224,7 +224,7 @@ Można wyłączyć automatyczną aprowizację zasobów w dowolnym momencie przez
 3. Na **zasady zabezpieczeń — zbierania danych** bloku, w obszarze **automatycznej aprowizacji** wybierz **poza**.
 4. Wybierz pozycję **Zapisz**.
 
-  ![Wyłącz automatyczne udostępnianie][6]
+   ![Wyłącz automatyczne udostępnianie][6]
 
 Wyłączenie automatycznej aprowizacji (wyłączone), sekcja konfiguracji domyślnego obszaru roboczego nie jest wyświetlana.
 
@@ -243,57 +243,57 @@ Istnieje kilka sposobów, aby ręcznie zainstalować program Microsoft Monitorin
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite w maszynie Wirtualnej rozszerzenie wdrożenia 
 
 Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu usługa Security Center może zbierania danych zabezpieczeń z maszyn wirtualnych i udostępniania zaleceń i alertów.
-1.  Wybierz Auto zaopatrzenie — wyłączone.
-2.  Utwórz obszar roboczy i ustawienie warstwy cenowej dla obszaru roboczego, które mają zostać ustawione Microsoft Monitoring agent:
+1. Wybierz Auto zaopatrzenie — wyłączone.
+2. Utwórz obszar roboczy i ustawienie warstwy cenowej dla obszaru roboczego, które mają zostać ustawione Microsoft Monitoring agent:
 
-    a.  W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
+   a.  W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
      
-    b.  Wybierz obszar roboczy, w którym trzeba połączyć agenta. Upewnij się, że obszar roboczy jest w tej samej subskrypcji, użyj w usłudze Security Center i czy masz uprawnienia odczytu/zapisu w obszarze roboczym.
-        ![Wybierz obszar roboczy][8]
+   b.  Wybierz obszar roboczy, w którym trzeba połączyć agenta. Upewnij się, że obszar roboczy jest w tej samej subskrypcji, użyj w usłudze Security Center i czy masz uprawnienia odczytu/zapisu w obszarze roboczym.
+       ![Wybierz obszar roboczy][8]
 3. Ustawienie warstwy cenowej.
    ![Wybierz warstwę cenową][9] 
    >[!NOTE]
    >Jeśli obszar roboczy ma już **zabezpieczeń** lub **SecurityCenterFree** włączonego rozwiązania ceny zostaną ustawione automatycznie. 
    > 
 
-4.  Jeśli chcesz wdrożyć agentów na nowych maszyn wirtualnych przy użyciu szablonu usługi Resource Manager, należy zainstalować rozszerzenia maszyny wirtualnej pakietu OMS:
+4. Jeśli chcesz wdrożyć agentów na nowych maszyn wirtualnych przy użyciu szablonu usługi Resource Manager, należy zainstalować rozszerzenia maszyny wirtualnej pakietu OMS:
 
-    a.  [Zainstaluj rozszerzenie maszyny wirtualnej pakietu OMS dla Windows](../virtual-machines/extensions/oms-windows.md)
+   a.  [Zainstaluj rozszerzenie maszyny wirtualnej pakietu OMS dla Windows](../virtual-machines/extensions/oms-windows.md)
     
-    b.  [Zainstaluj rozszerzenie maszyny wirtualnej pakietu OMS dla systemu Linux](../virtual-machines/extensions/oms-linux.md)
-5.  Aby wdrożyć rozszerzeń na istniejących maszynach wirtualnych, postępuj zgodnie z instrukcjami [zbierać dane o maszynach wirtualnych Azure](../azure-monitor/learn/quick-collect-azurevm.md).
+   b.  [Zainstaluj rozszerzenie maszyny wirtualnej pakietu OMS dla systemu Linux](../virtual-machines/extensions/oms-linux.md)
+5. Aby wdrożyć rozszerzeń na istniejących maszynach wirtualnych, postępuj zgodnie z instrukcjami [zbierać dane o maszynach wirtualnych Azure](../azure-monitor/learn/quick-collect-azurevm.md).
 
-  > [!NOTE]
-  > Sekcja **zbierania danych zdarzeń i wydajności** jest opcjonalne.
-  >
+   > [!NOTE]
+   > Sekcja **zbierania danych zdarzeń i wydajności** jest opcjonalne.
+   >
 6. Aby wdrożyć rozszerzenie za pomocą programu PowerShell, skorzystaj z następującego przykładu programu PowerShell:  [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
    
-    1.  Przejdź do **usługi Log Analytics** i kliknij pozycję **Zaawansowane ustawienia**.
+   1. Przejdź do **usługi Log Analytics** i kliknij pozycję **Zaawansowane ustawienia**.
     
-        ![Zestaw usługa log analytics][11]
+      ![Zestaw usługa log analytics][11]
 
-    2. Skopiuj wartości z **WorkspaceID** i **klucz podstawowy**.
+   2. Skopiuj wartości z **WorkspaceID** i **klucz podstawowy**.
   
-       ![Skopiuj wartości][12]
+      ![Skopiuj wartości][12]
 
-    3. Wypełnij konfiguracji publicznej i prywatnej konfiguracji następującymi wartościami:
+   3. Wypełnij konfiguracji publicznej i prywatnej konfiguracji następującymi wartościami:
      
-            $PublicConf = '{
-                "workspaceId": "WorkspaceID value",
-                "MultipleConnections": true
-            }' 
+           $PublicConf = '{
+               "workspaceId": "WorkspaceID value",
+               "MultipleConnections": true
+           }' 
  
-            $PrivateConf = '{
-                "workspaceKey": "<Primary key value>”
-            }' 
+           $PrivateConf = '{
+               "workspaceKey": "<Primary key value>”
+           }' 
 
       - Podczas instalowania na maszynie Wirtualnej Windows:
         
-             Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
-       - Podczas instalowania na maszynie Wirtualnej systemu Linux:
+      - Podczas instalowania na maszynie Wirtualnej systemu Linux:
         
-             Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
 > [!NOTE]
 > Aby uzyskać instrukcje dotyczące dołączania Centrum zabezpieczeń przy użyciu programu PowerShell, zobacz temat [automatyzacji dołączania do usługi Azure Security Center przy użyciu programu PowerShell](security-center-powershell-onboarding.md).

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: ea7b5b087a5cfb2a3eefaef7336de4a6acf7f116
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009287"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Dodawanie, usuwanie, włączanie i wyłączanie punktów końcowych
 
@@ -29,7 +29,7 @@ Można również wyłączyć poszczególne punkty końcowe, które są części�
 
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>Aby dodać usługę w chmurze lub punkt końcowy usługi App Service do profilu usługi Traffic Manager
 
-1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Korzystając z paska wyszukiwania portalu, wyszukaj nazwę **profilu usługi Traffic Manager**, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w wyświetlonych wynikach wyszukiwania.
 3. W bloku **profilu usługi Traffic Manager**, w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**.
 4. W wyświetlonym bloku **Punkty końcowe** kliknij pozycję **Dodaj**.
@@ -49,7 +49,7 @@ Można również wyłączyć poszczególne punkty końcowe, które są części�
 
 ## <a name="to-disable-an-endpoint"></a>Aby wyłączyć punkt końcowy
 
-1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Korzystając z paska wyszukiwania portalu, wyszukaj nazwę **profilu usługi Traffic Manager**, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w wyświetlonych wynikach wyszukiwania.
 3. W bloku **profilu usługi Traffic Manager**, w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**. 
 4. Kliknij punkt końcowy, który chcesz wyłączyć, a następnie w wyświetlonym bloku **Punkt końcowy** kliknij pozycję **Edytuj**.
@@ -58,7 +58,7 @@ Można również wyłączyć poszczególne punkty końcowe, które są części�
 
 ## <a name="to-enable-an-endpoint"></a>Aby włączyć punkt końcowy
 
-1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Korzystając z paska wyszukiwania portalu, wyszukaj nazwę **profilu usługi Traffic Manager**, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w wyświetlonych wynikach wyszukiwania.
 3. W bloku **profilu usługi Traffic Manager**, w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**. 
 4. Kliknij punkt końcowy, który chcesz wyłączyć, a następnie w wyświetlonym bloku **Punkt końcowy** kliknij pozycję **Edytuj**.
@@ -67,7 +67,7 @@ Można również wyłączyć poszczególne punkty końcowe, które są części�
 
 ## <a name="to-delete-an-endpoint"></a>Aby usunąć punkt końcowy
 
-1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Korzystając z paska wyszukiwania portalu, wyszukaj nazwę **profilu usługi Traffic Manager**, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w wyświetlonych wynikach wyszukiwania.
 3. W bloku **profilu usługi Traffic Manager**, w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**. 
 4. Kliknij punkt końcowy, który chcesz wyłączyć, a następnie w wyświetlonym bloku **Punkt końcowy** kliknij pozycję **Edytuj**.

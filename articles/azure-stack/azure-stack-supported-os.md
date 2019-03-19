@@ -16,12 +16,12 @@ ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 171beb432a2c49f1896dc13208a3df1b922828c0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119007"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Systemy operacyjne gościa obsługiwane w usłudze Azure Stack
 
@@ -32,7 +32,7 @@ ms.locfileid: "57245696"
 Usługa Azure Stack obsługuje systemy operacyjne Windows gościa, wymienione w poniższej tabeli:
 
 | System operacyjny | Opis | Dostępne w witrynie Marketplace |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | W systemie Windows Server w wersji 1709 | 64-bitowa | Core za pomocą kontenerów |
 | Windows Server 2016 | 64-bitowa |  Centrum danych, podstawowe centrum danych, Datacenter z kontenerami |
 | Windows Server 2012 R2 | 64-bitowa |  Centrum danych |
@@ -58,7 +58,7 @@ Dystrybucje systemu Linux wyświetlane jako dostępne w portalu Marketplace zawi
 > [Pakiet cloud-init](https://cloud-init.io/) nie jest obsługiwana w usłudze Azure Stack w tej chwili.
 
 | Dystrybucja | Opis | Wydawca | Portal Marketplace |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | 6,9 opartych na systemie centOS | 64-bitowa | Rogue Wave | Yes |
 | Opartych na systemie centOS 7.4 | 64-bitowa | Rogue Wave | Yes |
 | ClearLinux | 64-bitowa | ClearLinux.org | Yes |

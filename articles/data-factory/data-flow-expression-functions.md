@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: a3e08da062614184ff943feca669d7b46ae13c4f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 793624b34c718abccaeeff5b0fe3b83f446d0809
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243962"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58171010"
 ---
 # <a name="mapping-data-flow-data-transformation-expressions"></a>Mapowanie wyrażenia przekształcania danych przepływu danych
 
@@ -70,7 +70,7 @@ Oblicza wartość funkcji arcus sinus * ``asin(0) -> 0.0``
 <code>atan</code>
 ==============================
 <code><b>atan(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Oblicza wartość funkcji tangens odwrotna * ``atan(0) -> 0.0``
+Oblicza wartość funkcji odwrotny tangens * ``atan(0) -> 0.0``
 *********************************
 <code>atan2</code>
 ==============================

@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6a3eb9a7b85f3cd50384389ee8b03681c097dc27
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 79b118c0a4fd28eacf24dc63f04f36314807b41a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859878"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531100"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Szybki start: uzyskiwanie szczegółowych informacji dotyczących obrazu przy użyciu interfejsu API REST wyszukiwania wizualnego Bing i języka Java
 
@@ -36,7 +36,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 * [Zestaw Java Development Kit (JDK) 7 lub 8](https://aka.ms/azure-jdks)
 * [Biblioteka Gson](https://github.com/google/gson)
-* [Apache HttpComponents](http://hc.apache.org/downloads.cgi)
+* [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
@@ -127,7 +127,7 @@ System.out.println("\nJSON Response:\n");
 System.out.println(prettify(json));
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](../tutorial-bing-visual-search-single-page-app.md)

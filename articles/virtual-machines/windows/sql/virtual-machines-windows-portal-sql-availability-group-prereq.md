@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: abe211ad4745564cb2698aa1261a1aeb6dd63af7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781735"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995177"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Należy spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure
 
@@ -42,7 +42,7 @@ Ten samouczek zakłada, że masz podstawową wiedzę na temat programu SQL Serve
 Musisz mieć konto platformy Azure. Możesz [bezpłatne konto platformy Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) lub [aktywować korzyści dla subskrybentów programu Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Kliknij przycisk **+** można utworzyć nowego obiektu w portalu.
 
    ![Nowy obiekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -292,14 +292,14 @@ Po rozruchu z podstawowym kontrolerem domeny, można skonfigurować kontrolera d
 15. Kliknij przycisk **więcej** łącze na żółty pasek ostrzeżenie.
 16. W **akcji** kolumny **wszystkie szczegóły zadania serwera** okno dialogowe, kliknij przycisk **podwyższanie poziomu tego serwera do poziomu kontrolera domeny**.
 17. W obszarze **konfiguracji wdrożenia**, wybierz opcję **dodać kontroler domeny do istniejącej domeny**.
-   ![Konfiguracja wdrożenia](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+    ![Konfiguracja wdrożenia](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. Kliknij pozycję **Wybierz**.
 19. Połącz przy użyciu konta administratora (**CORP. CONTOSO.COM\domainadmin**) i hasło (**Contoso! 0000**).
 20. W **wybierz domeny lasu**, kliknij swoją domenę, a następnie kliknij **OK**.
 21. W **opcje kontrolera domeny**, użyj wartości domyślnych i ustawić hasło DSRM.
 
-   >[!NOTE]
-   >**Opcje serwera DNS** strony może być ostrzega użytkownika, że nie można utworzyć delegowania dla tego serwera DNS. Możesz zignorować to ostrzeżenie w środowiskach nieprodukcyjnych.
+    >[!NOTE]
+    >**Opcje serwera DNS** strony może być ostrzega użytkownika, że nie można utworzyć delegowania dla tego serwera DNS. Możesz zignorować to ostrzeżenie w środowiskach nieprodukcyjnych.
 22. Kliknij przycisk **dalej** do momentu osiągnięcia okna dialogowego **wymagania wstępne** Sprawdź. Następnie kliknij pozycję **Zainstaluj**.
 
 Po zakończeniu zmiany konfiguracji, uruchom ponownie serwer.

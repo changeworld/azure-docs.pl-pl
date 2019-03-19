@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219366"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117442"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Jak używać uczeń konwersacji z botem, inne technologie do tworzenia
 
@@ -119,11 +119,11 @@ W przeciwieństwie do pojedynczego botów modelu Odchudzony konwersacji nie będ
 2. Wpisz "hello".  Ponieważ `isOpen` wartość nie jest ustawiona, bot będzie wyświetlany tekst "Niestety firma Microsoft jest zamknięty" i kończenia sesji.
 
 #### <a name="scenario-2-store-is-open"></a>Scenariusz 2: Store jest otwarty
-3. Wprowadź "Otwórz Sklep".  To ustawienie ustawi `isOpen` na wartość true.
-4. Wprowadź "module".
-5. Wpisz "hello".  Ponieważ `isOpen` wartość jest ustawiona na wartość true, bot będzie wyświetlany tekst "Co chcesz kupić?"
-6. Wprowadź "przewodniczenia". "krzesło" zostaną zapisane do CL pamięci jako jednostka `purchaseItem`. Wywołanie zwrotne zakończenia sesji jest wywoływana, która kopiuje ta wartość w magazynie konwersacji.
-7. Wprowadź "Historia".  Bot będzie wyświetlany tekst "Zakupiono krzesło", ponieważ było to przeczytanie `purchaseItem`.
+1. Wprowadź "Otwórz Sklep".  To ustawienie ustawi `isOpen` na wartość true.
+1. Wprowadź "module".
+1. Wpisz "hello".  Ponieważ `isOpen` wartość jest ustawiona na wartość true, bot będzie wyświetlany tekst "Co chcesz kupić?"
+1. Wprowadź "przewodniczenia". "krzesło" zostaną zapisane do CL pamięci jako jednostka `purchaseItem`. Wywołanie zwrotne zakończenia sesji jest wywoływana, która kopiuje ta wartość w magazynie konwersacji.
+1. Wprowadź "Historia".  Bot będzie wyświetlany tekst "Zakupiono krzesło", ponieważ było to przeczytanie `purchaseItem`.
 
 ## <a name="conclusion"></a>Podsumowanie
 

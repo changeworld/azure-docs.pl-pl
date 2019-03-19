@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 747f58ba5062bd8bcc3995bbfa73cea49e8ddc4b
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a3f194150d1ce452f79db273266d3c9d77e560fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094739"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i Java
 
@@ -36,25 +36,25 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
    1. [Brama (ustawienie domyślne)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
    2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
 
-    Tryb bramy jest obsługiwane na wszystkich platformach zestawu SDK i jest domyślnie skonfigurowany.  Jeśli aplikacja działa w sieci firmowej za pomocą ograniczeń zapory strict, brama jest najlepszym wyborem, ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Kosztem wydajności, jest tryb bramy obejmuje przeskok dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do usługi Azure Cosmos DB. W związku z tym trybu DirectHttps oferuje lepszą wydajność, ze względu na mniejszą liczbę przeskoków sieciowych. 
+      Tryb bramy jest obsługiwane na wszystkich platformach zestawu SDK i jest domyślnie skonfigurowany.  Jeśli aplikacja działa w sieci firmowej za pomocą ograniczeń zapory strict, brama jest najlepszym wyborem, ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Kosztem wydajności, jest tryb bramy obejmuje przeskok dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do usługi Azure Cosmos DB. W związku z tym trybu DirectHttps oferuje lepszą wydajność, ze względu na mniejszą liczbę przeskoków sieciowych. 
 
-    Zestaw SDK Java używa protokołu HTTPS jako protokołu transportowego. Protokół HTTPS używa protokołu SSL dla początkowego uwierzytelniania i szyfrowania ruchu sieciowego. Podczas korzystania z zestawu SDK Java, musi być otwarte tylko portu HTTPS 443. 
+      Zestaw SDK Java używa protokołu HTTPS jako protokołu transportowego. Protokół HTTPS używa protokołu SSL dla początkowego uwierzytelniania i szyfrowania ruchu sieciowego. Podczas korzystania z zestawu SDK Java, musi być otwarte tylko portu HTTPS 443. 
 
-    Podczas tworzenia wystąpienia DocumentClient z parametr ConnectionPolicy jest konfigurowana ConnectionMode. 
+      Podczas tworzenia wystąpienia DocumentClient z parametr ConnectionPolicy jest konfigurowana ConnectionMode. 
 
-    ```Java
-    public ConnectionPolicy getConnectionPolicy() {
+      ```Java
+      public ConnectionPolicy getConnectionPolicy() {
         ConnectionPolicy policy = new ConnectionPolicy();
         policy.setConnectionMode(ConnectionMode.DirectHttps);
         policy.setMaxPoolSize(1000);
         return policy;
-    }
+      }
         
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
-    ```
+      ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+      DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
+      ```
 
-    ![Ilustracja zasad połączenia usługi Azure Cosmos DB](./media/performance-tips-java/connection-policy.png)
+      ![Ilustracja zasad połączenia usługi Azure Cosmos DB](./media/performance-tips-java/connection-policy.png)
 
    <a id="same-region"></a>
 2. **W ten sposób rozmieszczać klientów, w tym samym regionie platformy Azure dla wydajności**
@@ -147,7 +147,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     ```             
 
     Opłata za żądanie wyrażana zwrócony w nagłówku to jest część aprowizowanej przepływności. Na przykład jeśli masz 2000 jednostek RU/s jest obsługiwana, a jeśli poprzednie zapytanie zwraca 1KB 1000 dokumentów, koszty działania wynosi 1000. Jako takie w ciągu sekundy, serwer honoruje tylko dwa takich żądań przed kolejnymi żądaniami ograniczania szybkości. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [kalkulatora jednostek żądania](https://www.documentdb.com/capacityplanner).
-<a id="429"></a>
+   <a id="429"></a>
 1. **Uchwyt współczynnik ograniczanie żądań zakończonych zbyt duży**
 
     Gdy klient próbuje przekracza zarezerwowaną przepływnością dla konta, istnieje bez spadku wydajności na serwerze i zakaz używania przepływność poza poziomem zastrzeżone. Serwer będzie prewencyjnego kończy żądanie z RequestRateTooLarge (kod stanu HTTP 429) i zwracają [x-ms ponawiania — po ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) nagłówek wskazujący ilość czasu w milisekundach, które użytkownik musi czekać przed ponowną próbą wykonania żądanie.

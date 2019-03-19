@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: c734c8033947c4f4d5636bc8d82d38a3d871bdbd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998573"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890053"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder Wirecast 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "55998573"
 >
 >
 
-W tym artykule przedstawiono sposób konfigurowania [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) koder na żywo, aby wysłać strumień o pojedynczej szybkości transmisji bitów do usługi AMS kanały, które są włączone dla kodowania na żywo.  Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+W tym artykule przedstawiono sposób konfigurowania [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) koder na żywo, aby wysłać strumień o pojedynczej szybkości transmisji bitów do usługi AMS kanały, które są włączone dla kodowania na żywo.  Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 W tym samouczku przedstawiono sposób zarządzania usługi Azure Media Services (AMS) przy użyciu narzędzia Azure Media Services Explorer (AMSE). To narzędzie jest uruchamiane tylko na komputerze Windows. Jeśli na komputerze Mac lub Linux, użyj witryny Azure portal do utworzenia [kanały](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) i [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
@@ -109,7 +109,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
    * Profil: Główny
    * Klatka kluczowa co: 60 klatek
 
-    **Audio**
+     **Audio**
 
    * Docelowa szybkość transmisji bitów: 192 kbitów na sekundę
    * Częstotliwość próbkowania: 44 100 kHz
@@ -134,7 +134,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
 1. Kliknij przycisk **OK**.
 2. W głównym **Wirecast** Sprawdź źródeł danych wejściowych dla audio i wideo będzie gotowe, a następnie naciśnij klawisz **Stream** w lewym górnym rogu.
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > Przed kliknięciem przycisku **Stream**, możesz **musi** upewnij się, że kanał jest gotowy.

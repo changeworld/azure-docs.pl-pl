@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b34b103d3b710b90fd7b396f2c8d0e7adc27aaca
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454671"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113218"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Tworzenie i zarządzanie nimi odczytu replik w witrynie Azure portal
 
@@ -50,17 +50,17 @@ Te kroki musi służyć do przygotowania serwera głównego w warstwach ogólneg
 ## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
 Aby utworzyć odczytu repliki, wykonaj następujące kroki:
 
-1.  Wybierz istniejący Azure bazę danych dla serwera PostgreSQL do użycia jako serwer główny. 
+1. Wybierz istniejący Azure bazę danych dla serwera PostgreSQL do użycia jako serwer główny. 
 
-2.  W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
+2. W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
 
    Jeśli nie został ustawiony `azure.replication_support` parametr **REPLIKI** na ogólnego przeznaczenia lub zoptymalizowane pod kątem pamięci głównego serwera i uruchom ponownie serwer, otrzymasz powiadomienie. Przed przystąpieniem do tworzenia repliki, wykonaj te kroki.
 
-3.  Wybierz **dodać repliki**.
+3. Wybierz **dodać repliki**.
 
    ![Dodaj replikę](./media/howto-read-replicas-portal/add-replica.png)
 
-4.  Wprowadź nazwę dla odczytu repliki. Wybierz **OK** o potwierdzenie utworzenia repliki.
+4. Wprowadź nazwę dla odczytu repliki. Wybierz **OK** o potwierdzenie utworzenia repliki.
 
    ![Nazwa repliki](./media/howto-read-replicas-portal/name-replica.png) 
 
@@ -82,19 +82,19 @@ Można zatrzymać replikację między głównym serwerem i odczytu repliki.
 
 Aby zatrzymać replikację między głównym serwerem i odczytu replik w witrynie Azure portal, wykonaj następujące kroki:
 
-1.  W witrynie Azure portal wybierz swoje wzorca serwera Azure Database for postgresql w warstwie.
+1. W witrynie Azure portal wybierz swoje wzorca serwera Azure Database for postgresql w warstwie.
 
-2.  W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
+2. W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
 
-3.  Wybierz serwer repliki, do których chcesz zatrzymać replikację.
+3. Wybierz serwer repliki, do których chcesz zatrzymać replikację.
 
    ![Wybierz replikę](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  Wybierz **zatrzymanie replikacji**.
+4. Wybierz **zatrzymanie replikacji**.
 
    ![Wybierz zatrzymanie replikacji](./media/howto-read-replicas-portal/select-stop-replication.png)
  
-5.  Wybierz **OK** zatrzymania replikacji.
+5. Wybierz **OK** zatrzymania replikacji.
 
    ![Upewnij się, aby zatrzymać replikację](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
@@ -107,13 +107,13 @@ Aby usunąć serwer główny, należy użyć te same kroki, aby usunąć autonom
 
 Aby usunąć serwer z witryny Azure portal, wykonaj następujące kroki:
 
-1.  W witrynie Azure portal wybierz swoje wzorca serwera Azure Database for postgresql w warstwie.
+1. W witrynie Azure portal wybierz swoje wzorca serwera Azure Database for postgresql w warstwie.
 
-2.  Otwórz **Przegląd** stronie serwera. Wybierz pozycję **Usuń**.
+2. Otwórz **Przegląd** stronie serwera. Wybierz pozycję **Usuń**.
 
    ![Na stronie Przegląd serwera wybierz, aby usunąć serwer główny](./media/howto-read-replicas-portal/delete-server.png)
  
-3.  Wprowadź nazwę serwera głównego do usunięcia. Wybierz **Usuń** o potwierdzenie usunięcia serwera głównego.
+3. Wprowadź nazwę serwera głównego do usunięcia. Wybierz **Usuń** o potwierdzenie usunięcia serwera głównego.
 
    ![Upewnij się, aby usunąć serwer główny](./media/howto-read-replicas-portal/confirm-delete.png)
  
@@ -127,19 +127,19 @@ Możesz usunąć odczytu repliki, podobnie jak usunąć serwer główny.
  
 Możesz także usunąć odczytu repliki z **replikacji** okna, wykonując następujące czynności:
 
-1.  W witrynie Azure portal wybierz swoje wzorca serwera Azure Database for postgresql w warstwie.
+1. W witrynie Azure portal wybierz swoje wzorca serwera Azure Database for postgresql w warstwie.
 
-2.  W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
+2. W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
 
-3.  Wybierz pozycję odczytu repliki, aby usunąć.
+3. Wybierz pozycję odczytu repliki, aby usunąć.
 
    ![Wybierz replikę tak, aby usunąć](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  Wybierz **Usuń replikę**.
+4. Wybierz **Usuń replikę**.
 
    ![Wybierz opcję Usuń replikę](./media/howto-read-replicas-portal/select-delete-replica.png)
  
-5.  Wprowadź nazwę replikę tak, aby usunąć. Wybierz **Usuń** o potwierdzenie usunięcia replik.
+5. Wprowadź nazwę replikę tak, aby usunąć. Wybierz **Usuń** o potwierdzenie usunięcia replik.
 
    ![Upewnij się, aby usunąć replikę Usuń](./media/howto-read-replicas-portal/confirm-delete-replica.png)
  
@@ -162,13 +162,13 @@ Dwie metryki są dostępne dla monitorowania odczytu replik.
 ### <a name="replica-lag-metric"></a>Metryka Lag repliki
 **Lag repliki** pomiar przedstawia czas od czasu ostatniego powtórzone transakcji w replice. Jeśli nie ma żadnych transakcji, występujących na wzorca usługi, metryki odzwierciedla to opóźnienie czasowe.
 
-1.  W witrynie Azure portal wybierz bazę danych Azure database for PostgreSQL odczytu replik.
+1. W witrynie Azure portal wybierz bazę danych Azure database for PostgreSQL odczytu replik.
 
-2.  Wybierz pozycję **Metryki**. W **metryki** wybierz **Lag repliki**.
+2. Wybierz pozycję **Metryki**. W **metryki** wybierz **Lag repliki**.
 
    ![Monitor lag repliki](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3.  Dla Twojej **agregacji**, wybierz opcję **Max**. 
+3. Dla Twojej **agregacji**, wybierz opcję **Max**. 
  
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [odczytu replik w usłudze Azure Database for PostgreSQL](concepts-read-replicas.md).

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984190"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456010"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Szybki start: Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
@@ -76,7 +76,7 @@ Aby utworzyć grupę zasobów w witrynie Azure Portal, wykonaj następujące kro
 5. Wybierz lokalizację grupy zasobów.
 6. Kliknij przycisk **Utwórz**.  
 
-   ![Zrzut ekranu przedstawiający proces tworzenia grupy zasobów w witrynie Azure Portal](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Zrzut ekranu przedstawiający tworzenie grupy zasobów w witrynie Azure portal](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Tworzenie konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -96,7 +96,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
 9. W sekcji **Data Lake Storage Gen2** ustaw pole **Hierarchiczna przestrzeń nazw** na **Włączono**.
 10. Kliknij pozycję **Przeglądanie + tworzenie**, aby utworzyć konto magazynu.
 
-    ![Zrzut ekranu przedstawiający proces tworzenia konta magazynu w witrynie Azure Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![Zrzut ekranu przedstawiający tworzenie konta magazynu w witrynie Azure portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 Konto magazynu zostało utworzone za pośrednictwem portalu.
 
@@ -225,7 +225,7 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazy
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono konto magazynu z funkcjami usługi Data Lake Storage Gen2. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob z konta magazynu i do niego, zobacz następujący temat.
 

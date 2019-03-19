@@ -1,5 +1,5 @@
 ---
-title: 'Przewodnik Szybki start platformy Azure: tworzenie obiektu blob w magazynie obiektów przy użyciu zestawu SDK usługi Storage dla języka Java w wersji 10 | Microsoft Docs'
+title: 'Szybki Start platformy Azure: Tworzenie obiektu blob w magazynie obiektów przy użyciu języka Java Storage SDK V10 | Dokumentacja firmy Microsoft'
 description: Ten przewodnik Szybki start przedstawia sposób tworzenia kontenera w magazynie obiektów (Azure Blob Storage), przekazywania pliku, wyświetlania listy obiektów i pobierania obiektów za pomocą zestawu SDK usługi Storage dla języka Java.
 services: storage
 author: roygara
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 43db4ca12fbdf8ee637ca86e1a90cc3baf4ec572
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: f44a6b825f9e8871bb7d7877ebd1821038b45f65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713286"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004881"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą zestawu SDK usługi Storage dla języka Java w wersji 10
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą V10 SDK magazynu w języku Java
 
 W tym przewodniku Szybki start dowiesz się, w jaki sposób za pomocą nowego zestawu SDK usługi Storage dla języka Java przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. Nowy zestaw SDK dla języka Java używa modelu programowania reaktywnego z biblioteką RxJava zapewniającą operacje asynchroniczne. Dowiedz się więcej o [reaktywnych rozszerzeniach maszyny wirtualnej języka Java](https://github.com/ReactiveX/RxJava) w bibliotece RxJava. 
 
@@ -25,7 +25,7 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób za pomocą nowego ze
 
 Upewnij się, że masz zainstalowane następujące dodatkowe elementy wymagane wstępnie:
 
-* Narzędzie [Maven](http://maven.apache.org/download.cgi) do użycia z poziomu wiersza polecenia lub dowolne wybrane zintegrowane środowisko projektowe Java.
+* Narzędzie [Maven](https://maven.apache.org/download.cgi) do użycia z poziomu wiersza polecenia lub dowolne wybrane zintegrowane środowisko projektowe Java.
 * Zestaw [JDK](https://aka.ms/azure-jdks).
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
@@ -100,7 +100,7 @@ Cleaning up the sample and exiting!
 
 Możesz kontrolować aplikację przykładową, więc wprowadź polecenia, aby wykonać ten kod. Podczas wprowadzania jest uwzględniana wielkość liter.
 
-Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
+Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
 
 Sprawdź pliki. Następnie wprowadź polecenie **E** i naciśnij klawisz **Enter**, aby zakończyć demonstrację i usunąć pliki testowe. Wiesz już, jak działa aplikacja przykładowa. Otwórz plik **Quickstart.java** i spójrz na kod. 
 
@@ -166,19 +166,19 @@ Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob
 1. Aby przekazać plik do obiektu blob, pobierz odwołanie do obiektu blob w kontenerze docelowym. 
 2. Po pobraniu odwołania do obiektu blob możesz przekazać do niego plik, korzystając z dowolnego z następujących interfejsów API:
 
-    * Interfejsy API niskiego poziomu. To na przykład interfejs [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_), nazywany też PutBlob, czy [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable), nazywany też PutBLock, w wystąpieniu obiektu **BlockBlobURL**. 
+   * Interfejsy API niskiego poziomu. To na przykład interfejs [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_), nazywany też PutBlob, czy [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable), nazywany też PutBLock, w wystąpieniu obiektu **BlockBlobURL**. 
 
-    * Interfejsy API wysokiego poziomu w [klasie TransferManager](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable). Na przykład metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable). 
+   * Interfejsy API wysokiego poziomu w [klasie TransferManager](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable). Na przykład metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable). 
 
-    Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje. Jeśli obiekt blob już istnieje, zostanie zastąpiony.
+     Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje. Jeśli obiekt blob już istnieje, zostanie zastąpiony.
 
 Kod przykładowy tworzy plik lokalny do użycia podczas przekazywania i pobierania. Plik do przekazania jest zapisywany jako **sourceFile**, a adres URL obiektu blob jako **blob**. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstart**.
 
 ```java
 static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
-    
+
     FileChannel fileChannel = FileChannel.open(sourceFile.toPath());
-            
+
     // Uploading a file to the blobURL using the high-level methods available in TransferManager class
     // Alternatively call the Upload/StageBlock low-level methods from BlockBlobURL type
     TransferManager.uploadFileToBlockBlob(fileChannel, blob, 8*1024*1024, null)
@@ -198,20 +198,20 @@ Możesz uzyskać listę obiektów w kontenerze za pomocą polecenia [ContainerUR
 ```java
 static void listBlobs(ContainerURL containerURL) {
     // Each ContainerURL.listBlobsFlatSegment call return up to maxResults (maxResults=10 passed into ListBlobOptions below).
-    // To list all Blobs, we are creating a helper static method called listAllBlobs, 
+    // To list all Blobs, we are creating a helper static method called listAllBlobs,
     // and calling it after the initial listBlobsFlatSegment call
     ListBlobsOptions options = new ListBlobsOptions(null, null, 10);
 
     containerURL.listBlobsFlatSegment(null, options)
-        .flatMap(containersListBlobFlatSegmentResponse -> 
-            listAllBlobs(containerURL, containersListBlobFlatSegmentResponse))    
+        .flatMap(containersListBlobFlatSegmentResponse ->
+            listAllBlobs(containerURL, containersListBlobFlatSegmentResponse))
                 .subscribe(response-> {
                     System.out.println("Completed list blobs request.");
                     System.out.println(response.statusCode());
                 });
 }
 
-private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(ContainerURL url, ContainersListBlobFlatSegmentResponse response) {                
+private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(ContainerURL url, ContainersListBlobFlatSegmentResponse response) {
     // Process the blobs returned in this result segment (if the segment is empty, blobs() will be null.
     if (response.body().blobs() != null) {
         for (Blob b : response.body().blobs().blob()) {
@@ -225,7 +225,7 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
     else {
         System.out.println("There are no more blobs to list off.");
     }
-    
+
     // If there is not another segment, return this response as the final response.
     if (response.body().nextMarker() == null) {
         return Single.just(response);
@@ -234,17 +234,17 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
         IMPORTANT: ListBlobsFlatSegment returns the start of the next segment; you MUST use this to get the next
         segment (after processing the current result segment
         */
-            
+
         String nextMarker = response.body().nextMarker();
 
         /*
         The presence of the marker indicates that there are more blobs to list, so we make another call to
         listBlobsFlatSegment and pass the result through this helper function.
         */
-            
-    return url.listBlobsFlatSegment(nextMarker, new ListBlobsOptions(null, null,1))
-        .flatMap(containersListBlobFlatSegmentResponse ->
-            listAllBlobs(url, containersListBlobFlatSegmentResponse));
+
+        return url.listBlobsFlatSegment(nextMarker, new ListBlobsOptions(null, null,1))
+            .flatMap(containersListBlobFlatSegmentResponse ->
+                listAllBlobs(url, containersListBlobFlatSegmentResponse));
     }
 }
 ```
@@ -282,7 +282,7 @@ Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym prz
 containerURL.delete(null).blockingGet();
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Java. 
 

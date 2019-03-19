@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 74274d6f901a2c02fb526a9bdce85771a9764f53
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249179"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839818"
 ---
-# <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetl i Pobierz fakturę usługi Microsoft Azure
+# <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 
 W przypadku większości subskrypcji, możesz pobrać fakturę z [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub wysłać w wiadomości e-mail. Jeśli jesteś klientem Azure z umową Enterprise Agreement (EA klienta), nie może pobrać faktury w organizacji. Faktury są wysyłane do spojrzenia jest skonfigurowany do otrzymywać faktur do rejestracji.
 
@@ -32,7 +32,7 @@ Jeśli masz [umowy klienta Microsoft](#Check-your-access-to-a-Microsoft-Customer
 
 ## <a name="download-your-azure-invoices-pdf"></a>Pobieranie faktur platformy Azure (PDF)
 
-W przypadku większości subskrypcji możesz pobrać fakturę w witrynie Azure portal. Jeśli masz umowy klienta firmy Microsoft, zobacz [pobierać faktury dla profil rozliczeniowy](#download-invoices-for-a-billing-profile).
+W przypadku większości subskrypcji możesz pobrać fakturę w witrynie Azure portal. Jeśli masz umowy klienta firmy Microsoft, zobacz pobierania faktur dla profil rozliczeniowy.
 
 ### <a name="download-invoices-for-an-individual-subscription"></a>Pobieranie faktur dla indywidualnej subskrypcji
 
@@ -69,7 +69,7 @@ Jeśli nie widzisz faktury w ostatnim okresie rozliczeniowym, zobacz [Dlaczego n
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Pobierz fakturę w wiadomości e-mail (PDF)
 
-Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskrypcji platformy Azure faktury w wiadomości e-mail. Ta funkcja nie może być dostępna dla niektórych subskrypcji, takie jak oferty pomocy technicznej, umowy Enterprise Agreement lub Azure in Open. Jeśli masz umowę Microsoft Customer zobacz [Otrzymuj fakturach profilu rozliczeń w wiadomości e-mail](#get-your-billing-profile-invoices-in-email).
+Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskrypcji platformy Azure faktury w wiadomości e-mail. Ta funkcja nie może być dostępna dla niektórych subskrypcji, takie jak oferty pomocy technicznej, umowy Enterprise Agreement lub Azure in Open. Jeśli masz umowę Microsoft Customer Zobacz Get profilu rozliczeń faktury w wiadomości e-mail.
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Pobieranie faktur swoją subskrypcję w wiadomości e-mail
 
@@ -89,7 +89,7 @@ Jeśli nie otrzymasz wiadomość e-mail po wykonaniu kroków upewnij się, Twój
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Zrezygnować z pobierania faktur swoją subskrypcję w wiadomości e-mail
 
-Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonując kroki opisane powyżej i kliknięcie przycisku **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail, ustaw w celu otrzymywania faktur pocztą e-mail. Można ponownie skonfigurować adresatów w przypadku zgody na uczestnictwo w.
+Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty e-mail, wykonując kroki opisane powyżej i kliknięcie przycisku **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail ustawione w celu otrzymywania faktur pocztą e-mail. Można ponownie skonfigurować adresatów w przypadku zgody na uczestnictwo w.
 
  ![Zrzut ekranu pokazujący przepływ rezygnacji z](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
@@ -129,7 +129,7 @@ Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

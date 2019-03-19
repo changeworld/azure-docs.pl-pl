@@ -7,12 +7,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95bec451c556ff9f3c5bcccee68f900543639733
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978089"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004106"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Dostosowywanie i ponowne wdrażanie mikrousługi
 
@@ -44,7 +44,7 @@ W tej części jest wywoływana w mikrousługach Menedżera Centrum IoT domyśln
 
 1. Upewnij się, że rozwiązania do zdalnego monitorowania jest uruchomiony lokalnie na komputerze.
 2. Znajdź, której pobrano narzędzie Postman i otwórz go.
-3. W narzędziu Postman, wprowadź następujące informacje w GET: http://localhost:8080/iothubmanager/v1/status.
+3. W narzędziu Postman, wprowadź następujące informacje w GET: `http://localhost:8080/iothubmanager/v1/status`.
 4. Wyświetl zwracany i powinien zostać wyświetlony, "Status": "OK: aktywności i dobrze".
 
     ![Komunikat o aktywności i dobrze narzędzia Postman](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Aby zakończyć, wyświetlanie nowej odpowiedzi stanu w narzędziu Postman i pon
     ```
 
 3. Znajdź, której pobrano narzędzie Postman i otwórz go.
-4. W narzędziu Postman, wprowadź następujące żądanie w GET: http://localhost:8080/iothubmanager/v1/status. Powinien zostać wyświetlony, "Status": "OK: Nowe zmiany wprowadzone w tym miejscu! ".
+4. W narzędziu Postman, wprowadź następujące żądanie w GET: `http://localhost:8080/iothubmanager/v1/status`. Powinien zostać wyświetlony, "Status": "OK: Nowe zmiany wprowadzone w tym miejscu! ".
 
 ![Nowa modyfikacje wprowadzone w tym miejscu postman wiadomość](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

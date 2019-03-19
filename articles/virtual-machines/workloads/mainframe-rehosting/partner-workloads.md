@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: b4ba59ef24ec106c5a5f21f395445ca39b2bd1ea
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: faaba873f20fc0ac04abdd7bd78dd85429d341e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739632"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996516"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Obciążenia komputera mainframe obsługiwane na platformie Azure
 
@@ -26,7 +26,7 @@ Aby uzyskać więcej pomocy przy emulacji mainframe i usług, zobacz [Centrum mi
 - [Micro fokus, Visual COBOL](https://www.microfocus.com/products/visual-cobol/) narzędzia do programowania i integracji.
 - [Micro PL fokus / mogę](https://www.microfocus.com/campaign/download/pli-modernization/) starszej wersji kompilatora dla platformy .NET, obsługa komputera mainframe PL / I składni, typów danych i zachowania.
 - [Micro fokus Enterprise Server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) mainframe platforma integracji.
-- [Fujitsu NetCOBOL](http://www.fujitsu.com/global/products/software/developer-tool/netcobol/) narzędzia do programowania i integracji.
+- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) narzędzia do programowania i integracji.
 - [NTT danych przedsiębiorstwa COBOL](https://www.nttdataservices.com/en-ie/services/application-modernization-services) narzędzia do programowania i integracji.
 - [Otwórz NTT PL / I](https://www.nttdataservices.com/en-ie/services/application-modernization-services) starszej wersji kompilatora dla platformy .NET, obsługa komputera mainframe PL / I składni, typów danych i zachowania.
 - [Kompilator Raincode COBOL](https://www.raincode.com/products/cobol/) narzędzia do programowania i integracji.

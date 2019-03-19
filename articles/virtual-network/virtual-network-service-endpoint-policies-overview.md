@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: a5df9215aec0b6c774b37f17b699e91ef813754d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771077"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104492"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi sieci wirtualnej (wersja zapoznawcza)
 
@@ -158,11 +158,11 @@ Nie ma dostępnego centralnego rejestrowania dla zasad punktu końcowego usługi
 - Odmowa dostępu dla kont wymienionych w zasadach punktu końcowego
   - Filtrowanie przez sieciowe grupy zabezpieczeń lub zaporę może blokować dostęp
   - Jeśli usunięcie/ponowne zastosowanie zasad powoduje utratę połączenia:
-   - Sprawdź, czy usługa platformy Azure jest skonfigurowana tak, aby umożliwiać dostęp z sieci wirtualnej przez punkty końcowe oraz czy domyślne zasady dla zasobu są ustawione na opcję *Zezwalaj na wszystko*.
+    - Sprawdź, czy usługa platformy Azure jest skonfigurowana tak, aby umożliwiać dostęp z sieci wirtualnej przez punkty końcowe oraz czy domyślne zasady dla zasobu są ustawione na opcję *Zezwalaj na wszystko*.
       > [!NOTE]      
       > Zasoby usługi nie muszą być zabezpieczone względem sieci wirtualnych, aby uzyskać dostęp za pośrednictwem zasad punktu końcowego. Jednak w ramach najlepszego rozwiązania z zakresu zabezpieczeń zalecamy ochronę zasobów usługi względem zaufanych sieci, np. sieci wirtualnych platformy Azure, za pośrednictwem punktów końcowych usługi oraz lokalnie, za pośrednictwem zapory IP.
   
-   - Sprawdź, czy diagnostyka usługi pokazuje ruch przez punkty końcowe.
+    - Sprawdź, czy diagnostyka usługi pokazuje ruch przez punkty końcowe.
     - Sprawdź, czy dzienniki przepływu sieciowej grupy zabezpieczeń oraz dzienniki magazynu pokazują oczekiwany dostęp za pośrednictwem punktów końcowych usługi.
     - Skontaktuj się z pomocą techniczną platformy Azure.
 - Odmowa dostępu dla kont niewymienionych w zasadach punktu końcowego usługi

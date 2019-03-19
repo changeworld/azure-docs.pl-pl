@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 3a3e9da66cf9ca6e08bb25b4f4b9d09aa0c5b6e7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431941"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117306"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Rozwiązywanie problemów z błędami uaktualniania dostawcy Microsoft Azure Site Recovery
 
@@ -48,21 +48,21 @@ Dla uaktualnienie powiodło się firm 3 musi nie można zmienić nazwy folderu.
 
 Aby rozwiązać ten problem.
 
-2. Uruchom Edytor rejestru (regedit.exe), a następnie otwórz gałęzi HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
-3. Sprawdzanie `Build_Version` wartość klucza. Jeśli jest ustawiona do najnowszej wersji, należy zmniejszyć numer wersji. Jeśli na przykład najnowsza wersja to 9.22. \* i `Build_Version` ustawiona na wartość tego klucza, a następnie jej zmniejszenia do 9.21.\*.
-4. Pobierz najnowszy program Microsoft Azure Site Recovery Unified Setup:
+1. Uruchom Edytor rejestru (regedit.exe), a następnie otwórz gałęzi HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Sprawdzanie `Build_Version` wartość klucza. Jeśli jest ustawiona do najnowszej wersji, należy zmniejszyć numer wersji. Jeśli na przykład najnowsza wersja to 9.22. \* i `Build_Version` ustawiona na wartość tego klucza, a następnie jej zmniejszenia do 9.21.\*.
+1. Pobierz najnowszy program Microsoft Azure Site Recovery Unified Setup:
    1. W sekcji "Linki do pakietów zbiorczych aktualizacji aktualnie obsługiwany" [usługi aktualizacji w usłudze Azure Site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) artykuł, wybierz dostawcę, z którą uaktualniasz.
    2. Na stronie pakiet zbiorczy zlokalizować **zaktualizować informacje o** sekcji i Pobierz pakiet zbiorczy aktualizacji dla programu Microsoft Azure Site Recovery Unified Setup.
-5. Otwórz wiersz polecenia i przejdź do folderu, do którego pobrano plik ujednoliconego Instalatora i wyodrębniania plików Instalatora z pobrania przy użyciu następującego polecenia, / x:/q MicrosoftAzureSiteRecoveryUnifiedSetup.exe&lt;ścieżka folderu wyodrębnione pliki&gt;.
+1. Otwórz wiersz polecenia i przejdź do folderu, do którego pobrano plik ujednoliconego Instalatora i wyodrębniania plików Instalatora z pobrania przy użyciu następującego polecenia, / x:/q MicrosoftAzureSiteRecoveryUnifiedSetup.exe&lt;ścieżka folderu wyodrębnione pliki&gt;.
 
     Przykładowe polecenie:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
-4. W wierszu polecenia przejdź do folderu, do którego wyodrębniono pliki, a następnie uruchom następujące polecenia instalacji:
+1. W wierszu polecenia przejdź do folderu, do którego wyodrębniono pliki, a następnie uruchom następujące polecenia instalacji:
    
     CX_THIRDPARTY_SETUP. / NORESTART /SUPPRESSMSGBOXES /VERYSILENT EXE
 
-5. Za pomocą Menedżera zadań można monitorować postęp instalacji. Podczas procesu CX_THIRDPARTY_SETUP. Plik EXE nie jest już widoczna w Menedżerze zadań, przejdź do następnego kroku.
-6. Sprawdź, czy C:\thirdparty istnieje i że folder zawiera biblioteki RRD.
+1. Za pomocą Menedżera zadań można monitorować postęp instalacji. Podczas procesu CX_THIRDPARTY_SETUP. Plik EXE nie jest już widoczna w Menedżerze zadań, przejdź do następnego kroku.
+1. Sprawdź, czy C:\thirdparty istnieje i że folder zawiera biblioteki RRD.
 1. Wróć do folderu, do którego pobrano ujednoliconego Instalatora i uruchom MicrosoftAzureSiteRecoveryUnifiedSetup.exe w celu zakończenia uaktualniania. 

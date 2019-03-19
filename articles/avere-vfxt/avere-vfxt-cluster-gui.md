@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856845"
 ---
 # <a name="access-the-vfxt-cluster"></a>Dostęp do klastra vFXT
 
@@ -31,7 +31,7 @@ Przed połączeniem, upewnij się, że pary kluczy publiczny/prywatny SSH użyt�
 
 Jeśli używasz klienta opartego na systemie Linux, należy użyć polecenia w tym formularzu tunelowania SSH: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
 To polecenie łączy się adres IP zarządzania klastra za pośrednictwem adresu IP kontrolera klastra.
 
@@ -47,7 +47,7 @@ Uwierzytelnianie odbywa się automatyczne, jeśli publiczny klucz SSH został u�
 
 W tym przykładzie użyto wspólnej oparte na Windows narzędzie terminal, program PuTTY.
 
-Wypełnij PuTTY **hostname** pole nazwy użytkownika kontrolera klastra i jego adres IP: *your_username*@*controller_public_IP*.
+Wypełnij PuTTY **hostname** pole nazwy użytkownika kontrolera klastra i jego adres IP: *your_username*\@*controller_public_IP*.
 
 Przykład: ``azureuser@203.0.113.51``
 
@@ -69,7 +69,7 @@ Uwierzytelnianie odbywa się automatyczne, jeśli publiczny klucz SSH został u�
 
 Ten krok używa przeglądarki sieci web do łączenia z uruchomionymi w klastrze vFXT narzędzie do konfiguracji.
 
-* Dla połączenia tunelu SSH, otwórz przeglądarkę internetową i przejdź do https://127.0.0.1:8443. 
+* Dla połączenia tunelu SSH, otwórz przeglądarkę internetową i przejdź do `https://127.0.0.1:8443`. 
 
   Masz połączenie z klastrem adresu IP podczas tworzenia tunelu, więc wystarczy użyć adresu IP hosta lokalnego w przeglądarce. Jeśli używany jest port lokalny inny niż 8443, należy użyć numeru portu.
 

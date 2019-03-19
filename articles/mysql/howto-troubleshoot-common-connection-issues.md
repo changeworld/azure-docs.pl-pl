@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bc804c9cbf141f5b0e36a92e4f386a6540f583c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: faf378a81a6db24acc676bed82fe495cfb108612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540932"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855524"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Rozwiązywać problemy z połączeniem do usługi Azure Database for MySQL
 
@@ -48,7 +48,7 @@ Jeśli aplikacja nie trwałe połączenia z usługą Azure Database for MySQL, z
 
 * Konfiguracja zapory serwera: Upewnij się, że usługi Azure Database for MySQL zapory serwera jest skonfigurowany do połączeń z klienta, w tym serwery proxy i bram.
 * Konfiguracja zapory klienta: Zapora na komputerze klienckim muszą zezwalać na połączenia z serwerem bazy danych. Adresy IP i porty serwera, na którym można połączyć się muszą być dozwolone, a także nazwy aplikacji, takich jak MySQL w niektóre zapory.
-* Błąd użytkownika: Może być błędnie wpisano parametry połączenia, takie jak nazwa serwera w parametrach połączenia lub braku *@servername* sufiksu w nazwie użytkownika.
+* Błąd użytkownika: Może być błędnie wpisano parametry połączenia, takie jak nazwa serwera w parametrach połączenia lub braku  *\@servername* sufiksu w nazwie użytkownika.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki, aby rozwiązać problemy z łącznością trwałego
 

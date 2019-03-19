@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b4d8214608e8193172da078fc352c66145253ada
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: c5ae3523da6da3286a65328cf302c5b211987d6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878969"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895239"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -31,9 +31,9 @@ Aby użyć zadania kompilacji, najpierw należy zainstalować je w ramach organi
 Następnie wybierz organizację, w której chcesz zainstalować rozszerzenie. 
 
 > [!NOTE]
-> Aby zainstalować rozszerzenie w organizacji usługi Azure DevOps, należy być właścicielem konta lub administratorem kolekcji projektów. Jeśli nie masz uprawnień, ale jesteś użytkownikiem konta, możesz w takiej sytuacji zażądać rozszerzenia. [Dowiedz się więcej.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> Aby zainstalować rozszerzenie organizacji DevOps platformy Azure, musi być właścicielem konta lub administrator kolekcji projektów. Jeśli nie masz uprawnień, ale jesteś użytkownikiem konta, możesz w takiej sytuacji zażądać rozszerzenia. [Dowiedz się więcej.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
-![Wybieranie organizacji usługi Azure DevOps, w której chcesz zainstalować rozszerzenie](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![Wybierz organizację DevOps platformy Azure, w którym chcesz zainstalować rozszerzenie](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>Tworzenie definicji kompilacji
 

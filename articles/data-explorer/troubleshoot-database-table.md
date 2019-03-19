@@ -8,14 +8,14 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0bd9f5ed00193aa9f872287b6afaf9e2b28c24dc
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215093"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188343"
 ---
-# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Rozwiązywanie problemów: Nie można utworzyć lub usunąć bazy danych lub tabeli w Eksploratorze usługi Azure Data
+# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Rozwiązywanie problemów: Błąd tworzenia lub usuwania bazy danych lub tabeli w Eksploratorze danych platformy Azure
 
 W Eksploratorze danych platformy Azure regularnie pracy z bazami danych i tabel. Ten artykuł zawiera procedury rozwiązywania problemów, które są włączone.
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji o uprawnieniach, zobacz [Zarządzanie uprawnieni
 
 ## <a name="general-guidance"></a>Wskazówki ogólne
 
-1. Sprawdź [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/>). Odszukaj stan Eksploratora danych usługi Azure w regionie, w którym próbujesz się pracy z bazy danych lub tabeli.
+1. Sprawdź [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/). Odszukaj stan Eksploratora danych usługi Azure w regionie, w którym próbujesz się pracy z bazy danych lub tabeli.
 
     Jeśli stan jest **dobre** (zielony znacznik wyboru), spróbuj ponownie po zwiększa stan.
 

@@ -19,12 +19,12 @@ ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf7919a2dc69bc834a5834d10a5a297a2ad6949
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e2b99871cc1da2b1e8e136fc4d689e90dfad77a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170307"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081240"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory
 
@@ -47,7 +47,7 @@ Nie można rozwiązać problem z poniższych wskazówek, można skontaktować si
 * **Użytkownicy, których to dotyczy** — są zsynchronizowane roboczego/niepowodzenia dla jednego użytkownika lub wielu użytkowników? Ile urządzeń biorących udział na użytkownika? Są je nie synchronizuje wszystkie lub niektóre z nich synchronizowania, a niektóre nie synchronizuje?
 * **Informacje o użytkowniku** — jakie tożsamość jest użytkownika za pomocą do logowania się na urządzeniu? Jak użytkownik loguje się do urządzenia? Są one częścią wybranej grupy zabezpieczeń mogą przeprowadzać synchronizacje? 
 * **Informacje o urządzeniu** — czy to urządzenie Azure przyłączone do usługi AD lub przyłączone do domeny? Jakie kompilacji włączeniu urządzenia? Jakie są najnowsze aktualizacje?
-- **Data / Godzina / strefa czasowa** — co było dokładne daty i godziny, o których wystąpił błąd (w tym strefa czasowa)?
+* **Data / Godzina / strefa czasowa** — co było dokładne daty i godziny, o których wystąpił błąd (w tym strefa czasowa)?
 
 W tym te informacje pomagają nam możliwie jak najszybciej rozwiązać tego problemu.
 
@@ -59,8 +59,8 @@ W tej sekcji przedstawiono sugestie dotyczące rozwiązywania problemów i diagn
 1. Po dołączeniu komputerze z systemem Windows 10 do domeny, która jest skonfigurowana do Zezwalaj na Roaming stanu dla przedsiębiorstw, zaloguj się przy użyciu swojego konta służbowego. Przejdź do **ustawienia** > **kont** > **ustawień synchronizacji** i upewnij się, że synchronizacji i poszczególne ustawienia znajdują się na i że górnej części Strona Ustawienia wskazuje, że są synchronizowane, przy użyciu swojego konta służbowego. Upewnij się, tego samego konta jest również używane jako konto logowania w **ustawienia** > **kont** > **Your informacje**. 
 1. Sprawdź, czy synchronizacja, działa na wielu komputerach, dokonując pewnych zmian w oryginalnej maszyny, takie jak przeniesienie paska zadań do prawej lub górnej krawędzi ekranu. Obejrzyj zmiany są propagowane do drugiej maszyny w ciągu pięciu minut. 
 
-  * Blokowanie i odblokowywanie ekranu (Win + L) może pomóc włączania synchronizacji.
-  * Możesz musi można zalogować się tego samego konta na obu komputerach do celów synchronizacji do pracy — jak Roaming stanu dla przedsiębiorstw jest powiązany z konta użytkownika, a nie na koncie komputera.
+   * Blokowanie i odblokowywanie ekranu (Win + L) może pomóc włączania synchronizacji.
+   * Możesz musi można zalogować się tego samego konta na obu komputerach do celów synchronizacji do pracy — jak Roaming stanu dla przedsiębiorstw jest powiązany z konta użytkownika, a nie na koncie komputera.
 
 **Potencjalny problem**: Jeśli kontrolek w **ustawienia** strony nie są dostępne, i zostanie wyświetlony komunikat "niektóre funkcje Windows są dostępne tylko jeśli używasz konta Microsoft lub konta służbowego." Ten problem, mogą wystąpić w przypadku urządzeń, które są skonfigurowane do przyłączonych do domeny i zarejestrowana na potrzeby usługi Azure AD, ale urządzenia nie został jeszcze pomyślnie uwierzytelniony z usługą Azure AD. Możliwą przyczyną jest muszą być stosowane zasady urządzeń, że ta aplikacja się asynchronicznie stanie i może być opóźniony przez kilka godzin. 
 

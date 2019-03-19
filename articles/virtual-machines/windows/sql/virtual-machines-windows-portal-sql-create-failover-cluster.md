@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 7e0dea82614363883bbfb4a34894a2248faeb176
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769663"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842757"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -74,7 +74,7 @@ Musisz mieć operacyjnej znajomości następujące technologie:
 - [Technologie klastrowania Windows](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
 - [Wystąpienia klastra trybu Failover programu SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Jedną istotną różnicą jest, że w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, firma Microsoft zaleca jednej karty Sieciowej na serwerze (węzeł klastra) oraz jednej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
+Jedną istotną różnicą jest, że w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, firma Microsoft zaleca jednej karty Sieciowej na serwerze (węzeł klastra) oraz pojedynczej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
 
 Ponadto powinien mieć ogólna wiedza o następujące technologie:
 
@@ -101,7 +101,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 
 ## <a name="step-1-create-virtual-machines"></a>Krok 1: Tworzenie maszyn wirtualnych
 
-1. Zaloguj się do [witryny Azure portal](http://portal.azure.com) z Twoją subskrypcją.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) z Twoją subskrypcją.
 
 1. [Tworzenie zestawu dostępności platformy Azure](../tutorial-availability-sets.md).
 

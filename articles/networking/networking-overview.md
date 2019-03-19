@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 56e203a212a4e0e81922336f72fd58ef3cb7dc64
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880929"
 ---
 # <a name="azure-networking"></a>Sieci platformy Azure
 
@@ -149,7 +149,7 @@ Platforma Azure udostępnia następujące narzędzia w celu monitorowania sieci 
 
 Możesz wdrożyć i skonfigurować zasoby sieciowe platformy Azure z dowolnymi z następujących narzędzi:
 
-- **Witryna Azure portal:** Graficzny interfejs użytkownika, który działa w przeglądarce. Otwórz [portal Azure](http://portal.azure.com).
+- **Witryna Azure portal:** Graficzny interfejs użytkownika, który działa w przeglądarce. Otwórz [portal Azure](https://portal.azure.com).
 - **Azure PowerShell:** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów Windows. Więcej informacji na temat programu Azure PowerShell, czytając [Omówienie programu Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Interfejs wiersza polecenia platformy Azure (CLI):** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów z systemem Linux, macOS lub Windows. Więcej informacji na temat interfejsu wiersza polecenia platformy Azure, czytając [wiersza polecenia platformy Azure — omówienie](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Szablony usługi Azure Resource Manager:** Plik (w formacie JSON), który definiuje infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. Aby dowiedzieć się więcej na temat tworzenia szablonów, przeczytaj [najlepsze rozwiązania dotyczące tworzenia szablonów](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu. Szablony można wdrażać za pomocą witryny Azure portal, interfejsu wiersza polecenia lub programu PowerShell. Aby rozpocząć pracę już teraz za pomocą szablonów, Wdróż jedną z wielu wstępnie skonfigurowanych szablonów w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=network) biblioteki. 

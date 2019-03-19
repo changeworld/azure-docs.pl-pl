@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 099576b1a4c5c28aab7672aaeb9274bc0beb96bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105645"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Konfigurowanie serwera przetwarzania powrotu po awarii na platformie Azure
 
@@ -33,7 +33,7 @@ Dowiedz się więcej o [ponownego włączania ochrony](vmware-azure-reprotect.md
 3. W **Dodaj serwer przetwarzania** strony, a następnie wybierz, aby wdrożyć serwer przetwarzania na platformie Azure.
 4. Określ ustawienia platformy Azure, w tym subskrypcja używana na potrzeby trybu failover, grupę zasobów i region platformy Azure używane w trybie failover i sieci wirtualnej, w którym znajdują się maszyny wirtualne platformy Azure. Jeśli używasz wielu sieci platformy Azure, potrzebujesz serwera przetwarzania w każdej z nich.
 
-  ![Dodawanie elementu galerii serwera przetwarzania](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
+   ![Dodawanie elementu galerii serwera przetwarzania](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. W **nazwy serwera**, **nazwa_użytkownika**, i **hasło**, określ nazwę serwera przetwarzania i poświadczenia, które zostaną przypisane uprawnienia administratora na serwerze.
 5. Określ konto magazynu ma być używany dla serwera dysków maszyny Wirtualnej, podsieci, w którym zostaną umieszczone na serwerze przetwarzania maszyny Wirtualnej i adres IP serwera, która zostanie przypisana podczas uruchamiania maszyny Wirtualnej.

@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 42246a5d2c8515c26ed399f041476c8ad70decfe
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa76f4fb5d4da5fd00bb9fa4ed862c6977a47e90
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442141"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102183"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 
 Tworzenie zadania importu dla usługi Microsoft Azure Import/Export, za pomocą interfejsu API REST obejmuje następujące czynności:
 
--   Przygotowywanie dysków za pomocą narzędzia Azure Import/Export.
+- Przygotowywanie dysków za pomocą narzędzia Azure Import/Export.
 
--   Uzyskiwanie lokalizacji, do którego należy dostarczyć dysk.
+- Uzyskiwanie lokalizacji, do którego należy dostarczyć dysk.
 
--   Tworzenie zadania importu.
+- Tworzenie zadania importu.
 
--   Wysyłanie dysków do firmy Microsoft za pośrednictwem usługi obsługiwane operatora.
+- Wysyłanie dysków do firmy Microsoft za pośrednictwem usługi obsługiwane operatora.
 
--   Aktualizowanie zadania importu o szczegółach wysyłki.
+- Aktualizowanie zadania importu o szczegółach wysyłki.
 
- Zobacz [przy użyciu usługi Microsoft Azure Import/Export przesyłanie danych do magazynu obiektów Blob](storage-import-export-service.md) z omówieniem usługi Import/Export a samouczek, w którym pokazano, jak używać [witryny Azure portal](https://portal.azure.com/) do utworzenia Zarządzanie Importuj i Eksportuj zadania.
+  Zobacz [przy użyciu usługi Microsoft Azure Import/Export przesyłanie danych do magazynu obiektów Blob](storage-import-export-service.md) z omówieniem usługi Import/Export a samouczek, w którym pokazano, jak używać [witryny Azure portal](https://portal.azure.com/) do utworzenia Zarządzanie Importuj i Eksportuj zadania.
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Przygotowywanie dysków za pomocą narzędzia Azure Import/Export
 
@@ -39,21 +39,21 @@ Poniżej przedstawiono krótkie omówienie przygotowania dysku. Zapoznaj się [o
 
 Przygotowywanie dysku obejmuje:
 
--   Identyfikowanie danych do zaimportowania.
+- Identyfikowanie danych do zaimportowania.
 
--   Identyfikowanie przeznaczenia obiektów blob w Windows Azure Storage.
+- Identyfikowanie przeznaczenia obiektów blob w Windows Azure Storage.
 
--   Za pomocą narzędzie importu/eksportu platformy Azure, aby skopiować dane do jednego lub więcej dysków twardych.
+- Za pomocą narzędzie importu/eksportu platformy Azure, aby skopiować dane do jednego lub więcej dysków twardych.
 
- Narzędzie importu/eksportu platformy Azure także generuje plik manifestu dla każdego z stacje podczas jego przygotowywania. Zawiera plik manifestu:
+  Narzędzie importu/eksportu platformy Azure także generuje plik manifestu dla każdego z stacje podczas jego przygotowywania. Zawiera plik manifestu:
 
--   Wyliczenie wszystkich plików, które są przeznaczone do przekazywania i mapowania tych plików do obiektów blob.
+- Wyliczenie wszystkich plików, które są przeznaczone do przekazywania i mapowania tych plików do obiektów blob.
 
--   Sumy kontrolne segmentów każdego pliku.
+- Sumy kontrolne segmentów każdego pliku.
 
--   Informacje o metadanych i właściwości do skojarzenia z każdego obiektu blob.
+- Informacje o metadanych i właściwości do skojarzenia z każdego obiektu blob.
 
--   Lista akcję do wykonania, jeśli obiekt blob, który jest przekazywany ma taką samą nazwę jak istniejący obiekt blob w kontenerze. Możliwe opcje to:) zastąpić obiekt blob z plikiem, (b) Zachowaj istniejący obiekt blob i Pomiń przekazywania pliku, c) Dodaj sufiks do nazwy, aby nie powoduje konfliktu z innymi plikami.
+- Lista akcję do wykonania, jeśli obiekt blob, który jest przekazywany ma taką samą nazwę jak istniejący obiekt blob w kontenerze. Możliwe opcje to:) zastąpić obiekt blob z plikiem, (b) Zachowaj istniejący obiekt blob i Pomiń przekazywania pliku, c) Dodaj sufiks do nazwy, aby nie powoduje konfliktu z innymi plikami.
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
 

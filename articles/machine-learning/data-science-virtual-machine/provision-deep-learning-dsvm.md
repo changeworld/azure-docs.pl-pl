@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250810"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845192"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej na platformie Azure do uczenia głębokiego 
 
@@ -49,10 +49,10 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie programu Deep maszyna w
 > [!NOTE]
 > DLVM obsługuje wszystkie NC i ND serii wystąpień maszyn wirtualnych procesorów GPU. Podczas aprowizowania DLVM, musisz wybrać jedną z lokalizacji platformy Azure, która ma procesorów GPU. Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) stronie dostępnych lokalizacji i poszukaj **seria NC**, **seria NCv2**, **seria NCv3** , lub **seria ND** w obszarze **obliczenia**. 
 
-   2. **Ustawienia**: Wybierz jeden z serii NC (NC, NCv2, NCv3) lub seria ND rozmiarów maszyn wirtualnych GPU, który spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Tworzenie konta magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+1. **Ustawienia**: Wybierz jeden z serii NC (NC, NCv2, NCv3) lub seria ND rozmiarów maszyn wirtualnych GPU, który spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Tworzenie konta magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
-   5. **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
+1. **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
+1. **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
 
 > [!NOTE]
 > Aprowizacja powinno zająć około 10-20 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
@@ -66,7 +66,7 @@ Po utworzeniu maszyny Wirtualnej możesz pulpitu zdalnego do niej przy użyciu p
 
 ### <a name="linux-edition"></a>Wersja systemu Linux
 
-Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. Na komputerze klienckim aWindows można pobrać narzędzia klienta SSH, takiego jak [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
+Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. Na komputerze klienckim aWindows można pobrać narzędzia klienta SSH, takiego jak [Putty](https://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go spisywała się lepiej niż X11 przekazywania podczas testów. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.
@@ -76,7 +76,7 @@ Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyci
 #### <a name="installing-and-configuring-x2go-client"></a>Instalowanie i konfigurowanie klienta X2Go
 DLVM systemu Linux jest już zainicjowana przy użyciu serwera X2Go i gotowy do akceptowania połączeń klienta. Aby połączyć pulpit graficzny maszyny Wirtualnej systemu Linux, należy wykonać poniższą procedurę na komputerze klienckim:
 
-1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 2. Uruchom klienta X2Go, a następnie wybierz pozycję **nowej sesji**. Otwiera okno konfiguracji z wieloma kartami. Wprowadź następujące parametry konfiguracji:
    * **Karta sesji**:
      * **Host**: Nazwa hosta lub adres IP maszyny wirtualnej do nauki o danych systemu Linux.

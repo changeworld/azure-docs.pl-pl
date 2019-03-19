@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1fd472c452b476820414d51b8d13bce8a72dfb3d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ca4cd1aa074353914f5187e353c233f8b45140eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091685"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w C# przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
@@ -46,16 +46,16 @@ Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understa
 3. W oknie Bot aplikacji sieci Web kliknij **Utwórz**.
 
 4. W **Bot Service**, podaj wymagane informacje i kliknij przycisk **Utwórz**. To tworzy i wdraża bot service i LUIS aplikacji na platformie Azure. Jeśli chcesz używać [zalewanie mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), przejrzyj [wymagania region](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming) przed utworzeniem bota. 
-    * Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, a [lokalizacji](https://azure.microsoft.com/regions/).
-    * Aby uzyskać **szablonu Bota**, wybierz opcję:
-        * **Zestaw SDK w wersji 3**
-        * **C#**
-        * **Interpretacji języka**
-    * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region](luis-reference-regions.md) aplikacja zostanie utworzona w.
-    * Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
+   * Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, a [lokalizacji](https://azure.microsoft.com/regions/).
+   * Aby uzyskać **szablonu Bota**, wybierz opcję:
+       * **Zestaw SDK w wersji 3**
+       * **C#**
+       * **Interpretacji języka**
+   * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region](luis-reference-regions.md) aplikacja zostanie utworzona w.
+   * Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
 
-    ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+     ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. Upewnij się, czy usługa bot service został pomyślnie wdrożony.
@@ -86,9 +86,9 @@ Otwórz **ustawienia aplikacji** i edytować **LuisAppId** pole będzie zawiera�
 > 1. Kliknij pozycję **Moje aplikacje**. 
 > 2. Znajdź LUIS utworzonego wcześniej, zawierający intencje i podmioty, z domeny HomeAutomation.
 > 3. W **ustawienia** stronie aplikacji usługi LUIS, Znajdź i skopiuj identyfikator aplikacji. Upewnij się, że jest [uczonego](luis-interactive-test.md) i [opublikowane](luis-how-to-publish-app.md). 
-
-    > [!WARNING]
-    > If you delete your app ID or LUIS key, the bot will stop working.
+> 
+> [!WARNING]
+> Jeśli usuniesz klucz Identyfikatora lub LUIS aplikacji, bot przestaną działać.
 
 ## <a name="modify-the-bot-code"></a>Modyfikowanie kodu bot
 

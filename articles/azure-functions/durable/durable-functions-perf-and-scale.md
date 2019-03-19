@@ -1,6 +1,6 @@
 ---
 title: Wydajność i skalowanie do wewnątrz funkcje trwałe - Azure
-description: Wprowadzenie do rozszerzenia funkcji trwałych dla usługi Azure Functions.
+description: Wprowadzenie do rozszerzenia Durable Functions dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: jeconnoc
@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 170f20ae65a8ba58291a630dc76496cbdcdb36de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138120"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
 
@@ -48,6 +48,15 @@ Istnieje jedna kolejka elementu pracy dla Centrum zadania w funkcje trwałe. Jes
 Dostępnych jest wiele *kontrolować kolejek* na Centrum zadania w funkcje trwałe. A *kolejki kontroli* jest bardziej zaawansowane niż prostsze kolejki elementu roboczego. Formant kolejki są używane do wyzwolenia funkcji stanowych programu orchestrator. Ponieważ wystąpienia funkcji programu orchestrator są stanowe pojedynczych elementów, nie jest możliwe użycie modelu konkurujących konsumentów rozłożenie obciążenia między maszynami wirtualnymi. Zamiast tego programu orchestrator są komunikaty o ze zrównoważonym obciążeniem kolejek kontroli. Szczegółowe informacje na temat tego zachowania można znaleźć w kolejnych sekcjach.
 
 Kolejki kontroli zawierają różne typy komunikatów cyklu życia aranżacji. Przykłady obejmują [komunikatów sterujących orchestrator](durable-functions-instance-management.md), działanie funkcji *odpowiedzi* komunikatów i komunikatów czasomierza. Maksymalnie 32 komunikaty będą usuniętej z kolejki kontrolki w pojedynczej sondowania. Te komunikaty zawierają ładunek danych, jak i metadane, takie jak wystąpienia aranżacji, które jest przeznaczony dla. Jeśli wiele wiadomości dequeued są przeznaczone do tego samego wystąpienia aranżacji, zostaną one przetworzone jako zadania wsadowego.
+
+### <a name="queue-polling"></a>Sondowanie kolejki
+
+Rozszerzenie zadań trwałe implementuje losowe wykładniczego wycofywania algorytmu zmniejszają efekt bezczynności kolejki sondowania kosztów transakcji magazynu. Gdy komunikat zostanie znaleziony, środowisko uruchomieniowe sprawdza natychmiast dla innego message; Jeśli żaden komunikat nie zostanie znaleziony, czeka czasie przed podjęciem ponownej próby. Po kolejnych nieudanych prób można pobrać komunikatu w kolejce czas oczekiwania stale rośnie, dopóki nie osiągnie maksymalny czas oczekiwania, którego wartość domyślna to 30 sekund.
+
+Opóźnienie maksymalna sondowania jest można konfigurować za pomocą `maxQueuePollingInterval` właściwość [pliku host.json](../functions-host-json.md#durabletask). Ustawienie tej opcji na wartość większą może doprowadzić do wyższych przetwarzania opóźnienia komunikatów. Większych opóźnień oczekuje się dopiero po okresy braku aktywności. Ustawienie tej opcji na niższą wartość może spowodować wyższe koszty magazynowania, ze względu na transakcje magazynu zwiększone.
+
+> [!NOTE]
+> Podczas uruchamiania w planach użycia funkcji platformy Azure i Premium, [Azure funkcji skalowania kontrolera](../functions-scale.md#how-the-consumption-plan-works) sondowania każdej kontrolki i element roboczy kolejki co 10 sekund. To dodatkowe sondowania jest niezbędne do określenia, kiedy można aktywować funkcji wystąpień aplikacji oraz do podejmowania decyzji dotyczących skalowania. W momencie pisania tego 10 Drugi interwał jest stała i nie można skonfigurować.
 
 ## <a name="storage-account-selection"></a>Wybór konta magazynu
 
@@ -235,4 +244,4 @@ Jeśli nie widzisz numery przepływności można oczekiwać i your CPU i użycie
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie pierwszej funkcji trwałe wC#](durable-functions-create-first-csharp.md)
+> [Tworzenie pierwszej funkcji trwałej w języku C#](durable-functions-create-first-csharp.md)

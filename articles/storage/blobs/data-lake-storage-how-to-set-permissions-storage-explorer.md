@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867056"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546315"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksploratora usługi Azure Storage w usłudze Azure Data Lake Storage Gen2
 
@@ -33,7 +33,7 @@ Aby jak najlepiej przedstawić ten proces, wymagane jest ukończenie [przewodnik
 
 ## <a name="managing-access"></a>Zarządzanie dostępem
 
-Uprawnienia można ustawić w katalogu głównym systemu plików. Aby to zrobić, kliknij prawym przyciskiem myszy system plików i wybierz pozycję **Zarządzaj uprawnieniami**, aby wyświetlić okno dialogowe **Zarządzanie uprawnieniami**.
+Uprawnienia można ustawić w katalogu głównym systemu plików. Aby to zrobić, użytkownik musi być zalogowany do Eksploratora usługi Azure Storage na swoje indywidualne konto z uprawnieniami, aby to zrobić (w przeciwieństwie do przy użyciu parametrów połączenia). Kliknij prawym przyciskiem myszy Twojego systemu plików, a następnie wybierz pozycję **Zarządzaj uprawnieniami**, przełączanie się **Manage Permission** okno dialogowe.
 
 ![Eksplorator usługi Microsoft Azure Storage — zarządzanie dostępem do katalogów](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -61,7 +61,7 @@ Obie te kategorie obejmują trzy uprawnienia, które można przypisać do plikó
 
 Można zarządzać uprawnieniami dla poszczególnych katalogów, a także dla pojedynczych plików, co umożliwia szczegółową kontrolę dostępu. Proces zarządzania uprawnieniami dla plików i katalogów jest taki sam, jak opisano powyżej. Kliknij prawym przyciskiem myszy plik lub katalog, dla którego chcesz zarządzać uprawnieniami, i wykonaj ten sam proces.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule z instrukcjami przedstawiono sposób ustawiania uprawnień dla plików i katalogów przy użyciu **Eksploratora usługi Azure Storage**. Aby dowiedzieć się więcej o listach ACL, w tym o domyślnych listach ACL, listach ACL dostępu i odpowiadających im uprawnieniach, przejdź do naszego koncepcyjnego artykułu na ten temat.
 

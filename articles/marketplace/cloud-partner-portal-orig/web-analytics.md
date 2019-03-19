@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 20a4e24800b2fa05990d294cb374841c50c4f79b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097478"
 ---
 <a name="web-analytics"></a>Analiza sieci Web
 =============
@@ -32,7 +32,7 @@ Skoro już skompilowane i opublikowane oferty, następnej części swoją podró
 
 Zobaczysz rozbudowany pulpit nawigacyjny dla Twojego Identyfikatora wydawcy, została opracowana za pomocą usługi Microsoft Power BI, która umożliwia wyświetlenie wszystkich Twoich ofert\' danych, który jest ustawiony na codzienne odświeżanie.
 
-<a name="microsoft-campaigns"></a>**Kampanie firmy Microsoft**
+<a name="microsoft-campaigns"></a>**Microsoft Campaigns**
 -----------------------
 
 Rozwijaj swoje oferty i śledzić wzrostem Twoich ofert, w celu udostępniliśmy możliwość używania **kampanie firmy Microsoft** w portalu Cloud Partner. Kampanie są funkcją nowo obsługiwanych dla portalu marketplace, która umożliwi służących do śledzenia różnych kanałów, które wysyłają klientów na stronie szczegółów aplikacji.
@@ -49,9 +49,9 @@ Istnieją dwa sposoby generowania własnych kampanii.
 
 Na przykład można użyć: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-2. (Zaawansowane): Użyj jednego z naszych obsługiwana i ogólny kampanii identyfikatorów w adresie URL. Chcemy być ograniczanych znacznikami ref dodatkowe, które należy użyć, aby firma Microsoft obsługuje Konwencji automatycznie rozpoznaje te dodatkowe tagi:
+1. (Zaawansowane): Użyj jednej z naszych obsługiwana i ogólny kampanii identyfikatorów w adresie URL. Chcemy być ograniczanych znacznikami ref dodatkowe, które należy użyć, aby firma Microsoft obsługuje Konwencji automatycznie rozpoznaje te dodatkowe tagi:
     
-    1. **utm\_kampanii**
+    1. **utm\_campaign**
     2. **utm\_źródła**
     3. **REF**
     4. **src**

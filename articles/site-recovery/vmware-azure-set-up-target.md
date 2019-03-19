@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
-ms.openlocfilehash: 238e7a26be67fcfd2a0b79a87409e5c0d57e0cbf
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900560"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Przygotowywanie środowiska docelowego dla odzyskiwania po awarii maszyn wirtualnych programu VMware lub serwery fizyczne do platformy Azure
 
@@ -22,7 +22,7 @@ W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko pl
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Artykuł zakłada:
-- Utworzono magazyn usługi Recovery Services na [witryny Azure portal](http://portal.azure.com "witryny Azure portal") chronić maszyny źródłowej
+- Utworzono magazyn usługi Recovery Services na [witryny Azure portal](https://portal.azure.com "witryny Azure portal") chronić maszyny źródłowej
 - Skonfigurowano w lokalnym środowisku replikacji źródła [maszyn wirtualnych VMware](vmware-azure-set-up-source.md) lub [serwerów fizycznych](physical-azure-set-up-source.md) na platformie Azure.
 
 ## <a name="prepare-target"></a>Przygotowywanie celu

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 57290971185d1fd64b3b5ca6ac37535070ddab9e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496486"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082810"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Przywracanie woluminu StorSimple z zestawu kopii zapasowych
 
@@ -110,9 +110,9 @@ Możesz użyć **wykaz kopii zapasowych** bloku przywracania woluminu StorSimple
    3. Na liście rozwijanej wybierz zasady woluminu lub kopii zapasowej do utworzenia kopii zapasowej, który chcesz wybrać.
    4. Kliknij przycisk **Zastosuj** do wykonywania tej kwerendy.
 
-    Kopie zapasowe skojarzone z wybranego woluminu lub zasad tworzenia kopii zapasowej powinna zostać wyświetlona na liście zestawów kopii zapasowych.
+      Kopie zapasowe skojarzone z wybranego woluminu lub zasad tworzenia kopii zapasowej powinna zostać wyświetlona na liście zestawów kopii zapasowych.
    
-    ![Lista zestawu kopii zapasowych](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Lista zestawu kopii zapasowych](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
 3. Rozwiń zestaw, aby wyświetlić skojarzone woluminy kopii zapasowych. Te woluminy muszą przełączony w tryb offline na hoście i urządzenia przed można je przywrócić. Dostęp do woluminów na **woluminów** bloku urządzenia, a następnie wykonaj kroki opisane w [przełączyć wolumin w tryb offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) do przełączenia ich w tryb offline.
    
@@ -127,9 +127,9 @@ Możesz użyć **wykaz kopii zapasowych** bloku przywracania woluminu StorSimple
    
     ![Strona potwierdzenia](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Kliknij przycisk **przywrócić**. Spowoduje to zainicjowanie zadania przywracania, który można wyświetlić, uzyskując dostęp do **zadań** strony.
+7. Kliknij przycisk **przywrócić**. Spowoduje to zainicjowanie zadania przywracania, który można wyświetlić, uzyskując dostęp do **zadań** strony.
 
-    ![Strona potwierdzenia](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Strona potwierdzenia](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Po zakończeniu przywracania Sprawdź, czy zawartość woluminów są zastępowane przez woluminy z kopii zapasowej.
 

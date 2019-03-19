@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 3a487b56c3ce81f3a13add767a9bf7ad59cf79cd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890767"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Przegląd rozliczeń subskrypcji przy użyciu interfejsów API REST
 
@@ -92,7 +92,7 @@ Każdy element na **wartość** reprezentuje szczegóły dotyczące korzystania 
 |**meterDetails** | Szczegółowe informacje na temat użycia. |
 |**nextLink**| Po ustawieniu, określa adres URL następnego "page" szczegółowe informacje. Pusty, gdy strona jest ostatnim blokiem. |
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegółowe informacje o liście](https://docs.microsoft.com/rest/api/consumption/usagedetails/listbybillingperiod#usagedetailslistresult) pełny opis każdego pola w odpowiedzi.
+W tym przykładzie jest skracana; zobacz [uzyskać szczegółowe informacje o liście](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod) pełny opis każdego pola w odpowiedzi.
 
 Inne kody stanu wskazują błędy. W takich przypadkach obiekt odpowiedzi wyjaśnia, dlaczego żądanie nie powiodło się.
 

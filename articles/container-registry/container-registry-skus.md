@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: danlep
-ms.openlocfilehash: 3f058a68057d6b84cbbb2dfdb08ea8c2cb12b0b9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8fc364eac619c2f23ad2db1051a9b3ffa1bd38d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322099"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138086"
 ---
 # <a name="azure-container-registry-skus"></a>Jednostki SKU rejestru kontenerów platformy Azure
 
@@ -22,7 +22,7 @@ Usługa Azure Container Registry (ACR) jest dostępna w wielu warstwach usług, 
 | --- | :-------: | ----------- |
 | **Podstawowa** | Yes | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Rejestry podstawowe mają te same możliwości programowe jako Standard i Premium (Integracja uwierzytelniania usługi Azure Active Directory, usunięcie obrazu i elementy webhook). Jednak uwzględnionego magazynu i przepływności obrazu są najbardziej odpowiednie dla dolnej scenariusze użycia. |
 | **Standardowa** | Yes | Standardowymi rejestrami oferuje te same możliwości jak podstawowe, za pomocą zwiększona przepływność dołączony magazyn i obrazów. Rejestry w warstwie Standardowa powinny spełniać wymagania większości scenariuszy produkcyjnych. |
-| **Premium** | Yes | Rejestrach w warstwie Premium zapewniają największa ilość magazynu w pakiecie i obsługi jednoczesnych, scenariusze dużej liczby. Oprócz większą przepływność obrazu, Premium dodaje funkcje, takie jak [geografickou replikaci] [ container-registry-geo-replication] Zarządzanie pojedynczym rejestrem w wielu regionach i [zawartości zaufania (wersja zapoznawcza)](container-registry-content-trust.md)podpisywania tag obrazu. |
+| **Premium** | Yes | Rejestrach w warstwie Premium zapewniają największa ilość magazynu w pakiecie i obsługi jednoczesnych, scenariusze dużej liczby. Oprócz większą przepływność obrazu, Premium dodaje funkcje, w tym [geografickou replikaci] [ container-registry-geo-replication] Zarządzanie pojedynczym rejestrem w wielu regionach, [zawartości zaufania(wersjazapoznawcza)](container-registry-content-trust.md) podpisywania tag obrazu i [zapory i sieci wirtualne (wersja zapoznawcza)](container-registry-vnet.md) do ograniczania dostępu do rejestru. |
 | Klasyczne<sup>1</sup> | Nie | Ta jednostka SKU włączone wstępną wersję usługi Azure Container Registry na platformie Azure. Rejestry klasyczne są wspierane przez konto magazynu, które platforma Azure tworzy się w ramach subskrypcji, który ogranicza możliwość rejestru Azure container Registry w celu zapewnienia możliwości wyższego poziomu, takie jak zwiększona przepływność i replikacji geograficznej. |
 
 <sup>1</sup> będzie klasycznego SKU **przestarzałe** w **marca 2019**. Dla wszystkich nowych rejestry kontenerów, należy użyć podstawowa, standardowa lub Premium.

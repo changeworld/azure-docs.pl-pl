@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099705"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102530"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpieczeń do przycinania wyniki usługi Azure Search przy użyciu tożsamości usługi Active Directory
 
@@ -22,13 +22,13 @@ W tym artykule przedstawiono sposób użycia tożsamości zabezpieczeń usługi 
 
 W tym artykule opisano następujące zadania:
 > [!div class="checklist"]
-- Tworzenie grup usługi AAD i użytkowników
-- Kojarzenia użytkownika z grupy, które zostały utworzone
-- Nowe grupy w pamięci podręcznej
-- Indeksować dokumenty z skojarzone z nimi grupy
-- Wysłać żądanie wyszukiwania za pomocą grupy identyfikatorów filtru
-
->[!NOTE]
+> - Tworzenie grup usługi AAD i użytkowników
+> - Kojarzenia użytkownika z grupy, które zostały utworzone
+> - Nowe grupy w pamięci podręcznej
+> - Indeksować dokumenty z skojarzone z nimi grupy
+> - Wysłać żądanie wyszukiwania za pomocą grupy identyfikatorów filtru
+> 
+> [!NOTE]
 > Przykładowe fragmenty kodu, w tym artykule są napisane w języku C#. Pełny kod źródłowy można znaleźć [w usłudze GitHub](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: f1a8646502a11f9c17023587302d7f2f7a4e4234
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: dbee223e6c8e878d017026531dd06301fe6aaf84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093875"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -33,7 +33,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 ## <a name="resource-support"></a>Obsługa zasobów
 
 **Akcja zasobu** | **Szczegóły**
---- | --- | ---
+--- | --- 
 **Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane
 **Przenoszenie zasobów obliczeniowych i magazynu/sieci między grupami zasobów** | Nieobsługiwane.<br/><br/> Po maszyny Wirtualnej jest replikowany, przenieść Maszynę wirtualną lub skojarzone składniki, takie jak storage i sieci, należy wyłączyć i ponownie włączyć replikację dla maszyny Wirtualnej.
 **Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.

@@ -14,12 +14,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855cf81dbf24b0662048f69061ca85b72ff5f670
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12e36c49d8c4db60302d4b72dfa81ea4aceec77b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171251"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107393"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Serwer Proxy aplikacji i usługa Qlik Sense 
 Usługa Azure Active Directory serwera Proxy aplikacji i usługa Qlik Sense wspólnie opracowały razem upewnij się, że możesz łatwo udostępnić dostępu zdalnego we wdrożeniu usługa Qlik Sense za pomocą serwera Proxy aplikacji.  
@@ -41,13 +41,13 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 2. Wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw**. 
 3. Wybierz **Dodaj** w górnej części bloku. 
 4. Wybierz **aplikacje lokalne**. 
-5.       Wypełnij wymagane pola informacji o nowej aplikacji. Użyj poniższych wskazówek, aby ustawienia: 
-    - **Wewnętrzny adres URL**: Ta aplikacja powinna mieć wewnętrzny adres URL, który jest adresem URL QlikSense, sam. Na przykład **https&#58;//demo.qlikemm.com:4244** 
-    - **Metoda wstępnego uwierzytelnienia**: Usługa Azure Active Directory (zalecane, ale nie wymagane) 
-1.       Wybierz **Dodaj** w dolnej części bloku. Aplikacja zostanie dodany, a zostanie otwarte menu skrócone. 
-2.       Wybierz z menu skrócone **przypisać użytkownika do testowania**, i Dodaj co najmniej jednego użytkownika do aplikacji. Upewnij się, że to konto testu ma dostęp do aplikacji w środowisku lokalnym. 
-3.       Wybierz **przypisać** można zapisać przypisania użytkownika testowego. 
-4.       (Opcjonalnie) W bloku zarządzania aplikacji wybierz opcję logowania jednokrotnego. Wybierz **ograniczonego delegowania protokołu Kerberos** z menu rozwijanego, a następnie wypełnij wymagane pola, zgodnie z konfiguracją Qlik. Wybierz pozycję **Zapisz**. 
+5. Wypełnij wymagane pola informacji o nowej aplikacji. Użyj poniższych wskazówek, aby ustawienia: 
+   - **Wewnętrzny adres URL**: Ta aplikacja powinna mieć wewnętrzny adres URL, który jest adresem URL QlikSense, sam. Na przykład **https&#58;//demo.qlikemm.com:4244** 
+   - **Metoda wstępnego uwierzytelnienia**: Usługa Azure Active Directory (zalecane, ale nie wymagane) 
+1. Wybierz **Dodaj** w dolnej części bloku. Aplikacja zostanie dodany, a zostanie otwarte menu skrócone. 
+2. Wybierz z menu skrócone **przypisać użytkownika do testowania**, i Dodaj co najmniej jednego użytkownika do aplikacji. Upewnij się, że to konto testu ma dostęp do aplikacji w środowisku lokalnym. 
+3. Wybierz **przypisać** można zapisać przypisania użytkownika testowego. 
+4. (Opcjonalnie) W bloku zarządzania aplikacji wybierz opcję logowania jednokrotnego. Wybierz **ograniczonego delegowania protokołu Kerberos** z menu rozwijanego, a następnie wypełnij wymagane pola, zgodnie z konfiguracją Qlik. Wybierz pozycję **Zapisz**. 
 
 ### <a name="application-2"></a>Aplikacja #2: 
 Te same czynności jak w przypadku aplikacji nr 1, z następującymi wyjątkami: 

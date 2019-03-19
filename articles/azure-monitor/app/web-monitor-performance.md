@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301778"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901172"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Monitorowanie wydajności w aplikacjach internetowych
 
@@ -112,7 +112,7 @@ Poniżej przedstawiono kilka porad dotyczących Znajdowanie i diagnozowanie prob
 * Porównaj liczby żądań z innymi metrykami, aby sprawdzić, czy błędy lub powolne odpowiedzi odnoszą się do obciążenia.
 * [Wstaw i wyszukiwania instrukcji śledzenia] [ diagnostic] w kodzie, aby ułatwić identyfikowanie problemów.
 * Monitorowanie aplikacji sieci Web w operację, podając [Live Stream metryki][livestream].
-* Przechwyć stan aplikacji .net za pomocą [rozszerzenia Snapshot Debugger][snapshot].
+* Przechwyć stan aplikacji .NET za pomocą [rozszerzenia Snapshot Debugger][snapshot].
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Znajdowanie i eliminowanie wąskich gardeł wydajności przy użyciu środowisko badania wydajności
 

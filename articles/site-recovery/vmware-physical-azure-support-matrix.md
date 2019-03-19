@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: raynew
-ms.openlocfilehash: 637a8e91ba03240cd4c2c530ae2c982d2115c81d
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 086a3b4bf34f2ea7454bb018f9468dd21629a8ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903100"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -48,7 +48,7 @@ Wolne miejsce na dysku | 600 GB miejsca na wymaganą dla pamięci podręcznej se
 Wolne miejsce na dysku | 600 GB miejsca na wymaganą do przechowywania dysków.
 System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 |
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
-Interfejs PowerCLI | [Interfejs PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") powinien być zainstalowany.
+Interfejs PowerCLI | [Interfejs PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") nie jest wymagane dla serwera konfiguracji z wersjami z [: 9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Role systemu Windows Server | Nie włączaj: <br/> - Active Directory Domain Services <br/>- Internet Information Services <br/> - Hyper-V |
 Zasady grupy| Nie włączaj: <br/> -Zapobiegaj dostępowi do wiersza polecenia. <br/> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br/> — Logika zaufania dla plików załączników. <br/> -Włącz wykonywanie skryptu. <br/> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br/> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br/> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br/>
@@ -185,7 +185,7 @@ Gość/serwera wielościeżkowego (MPIO) | Nie
 
 > [!NOTE]
 > UEFI rozruchu maszyn wirtualnych VMware z systemem Windows Server 2012 lub nowszej można poddać migracji do platformy Azure. Obowiązują następujące ograniczenia:
-
+> 
 > - Jest obsługiwana tylko migracja na platformę Azure. Powrót po awarii do lokacji programu VMware w środowisku lokalnym nie jest obsługiwane.
 > - Serwer nie może mieć więcej niż cztery partycje na dysku systemu operacyjnego.
 > - Wymagana wersja usługi mobilności 9.13 lub nowszej.
@@ -265,7 +265,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 ## <a name="download-latest-azure-site-recovery-components"></a>Pobierz najnowsze składniki usługi Azure Site Recovery
 
 **Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji**
---- | --- | --- | --- | ---
+--- | --- | --- 
 Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-deploy-configuration-server.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-set-up-process-server-scale.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-process-server.md#upgrade-a-process-server).
 Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-install-mobility-service.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-physical-mobility-service-overview.md##update-mobility-service-from-azure-portal).

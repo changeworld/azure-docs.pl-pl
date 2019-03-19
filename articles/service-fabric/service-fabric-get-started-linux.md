@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3454f9eecf1f06391b21bc7a3dcd89b7f8e78853
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 13746779d37f6faa6d25f73d6c78523f174b658c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105359"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835249"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Aby zainstalować zestaw SDK i skojarzony pakiet środowiska uruchomieniowego pr
 2. Dodaj repozytorium usługi Service Fabric do listy źródeł.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
 3. Dodaj repozytorium `dotnet` do listy źródeł.
@@ -162,7 +162,7 @@ Po zaktualizowaniu źródeł można zainstalować zestaw SDK. Zainstaluj pakiet 
 sudo apt-get install servicefabricsdkcommon
 ```
 
->   [!TIP]
+> [!TIP]
 >   Poniższe polecenia pozwalają zautomatyzować akceptowanie postanowień licencji dla pakietów usługi Service Fabric:
 >   ```bash
 >   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
@@ -219,7 +219,7 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
     nvm install node
     ```
-2. Z poziomu menedżera npm zainstaluj generator szablonów narzędzia [Yeoman](http://yeoman.io/) na swojej maszynie.
+2. Z poziomu menedżera npm zainstaluj generator szablonów narzędzia [Yeoman](https://yeoman.io/) na swojej maszynie.
 
     ```bash
     npm install -g yo
@@ -276,7 +276,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 
 2. Aby zainstalować wtyczkę usługi Service Fabric, wybierz pozycję **Help** > **Install New Software** (Pomoc > Zainstaluj nowe oprogramowanie).
 
-3. W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
+3. W polu **Work with** (Praca z) wpisz adres **https://dl.microsoft.com/eclipse**.
 
 4. Wybierz pozycję **Dodaj**.
 
