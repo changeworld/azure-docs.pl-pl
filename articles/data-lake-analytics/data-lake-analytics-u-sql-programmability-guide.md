@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: eca1379c4f721a0201b01f149b581859c49c6540
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835456"
 ---
 # <a name="u-sql-programmability-guide"></a>Podręcznik programowania U-SQL
 
@@ -133,7 +133,7 @@ Jak wspomniano wcześniej, U-SQL uruchomienie kodu w formacie 64-bitowych (x 64)
 
 Każdy przekazany zestawu biblioteki DLL i pliku zasobów, takich jak różne środowiska uruchomieniowego, natywny zestaw lub plik konfiguracji może mieć maksymalnie 400 MB. Całkowity rozmiar wdrożonych zasobów za pomocą wdrażania zasobów lub za pomocą odwołania do zestawów i ich dodatkowych plików, nie może przekroczyć 3 GB.
 
-Na koniec należy pamiętać, że każda baza danych U-SQL może zawierać tylko jedną wersję dowolnego danego zestawu. Na przykład jeśli potrzebujesz, zarówno w wersji 7 i 8 wersję biblioteki NewtonSoft Json.Net, należy zarejestrować je w dwóch różnych bazach danych. Ponadto każdy skrypt może odwoływać się tylko do jednej wersji danego zestawu biblioteki DLL. W związku z tym U-SQL używa semantyki C# zestawu zarządzania i przechowywania wersji.
+Na koniec należy pamiętać, że każda baza danych U-SQL może zawierać tylko jedną wersję dowolnego danego zestawu. Na przykład jeśli potrzebujesz, zarówno w wersji 7 i 8 wersję biblioteki NewtonSoft Json.NET, należy zarejestrować je w dwóch różnych bazach danych. Ponadto każdy skrypt może odwoływać się tylko do jednej wersji danego zestawu biblioteki DLL. W związku z tym U-SQL używa semantyki C# zestawu zarządzania i przechowywania wersji.
 
 ## <a name="use-user-defined-functions-udf"></a>Użyj funkcji zdefiniowanych przez użytkownika: UDF
 Funkcje zdefiniowane przez użytkownika języka U-SQL lub funkcji definiowanych przez użytkownika, programowania procedur, które akceptują parametry, wykonania akcji (na przykład skomplikowanego obliczenia) i zwracają wynik tego działania jako wartość. Wartość zwracana funkcji zdefiniowanej przez użytkownika może być tylko jednego skalarną. UDF języka U-SQL może zostać wywołany w podstawowej skrypt U-SQL, takich jak dowolnego innego języka C# funkcji skalarnej.

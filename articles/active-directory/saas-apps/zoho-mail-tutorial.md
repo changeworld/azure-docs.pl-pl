@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5ca65ca74e24579f15512722dffd0900a231230
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873342"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Zoho
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Zoho z usługą Azure AD, musisz dodać
 
 **Aby dodać aplikację Zoho z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -144,7 +144,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Zoho, wyko
    
     b. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
    
-    d. W polu tekstowym **Change Password URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Change Password URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
        
     d. Otwórz w Notatniku certyfikat zakodowany w formacie Base-64 pobrany z witryny Azure Portal, skopiuj zawartość do Schowka, a następnie wklej ją w polu tekstowym **PublicKey** (Klucz publiczny).
    
@@ -170,7 +170,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -228,7 +228,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho 
 
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
 
-    d. W polu tekstowym **Email ID** (Identyfikator e-mail) wpisz identyfikator e-mail użytkownika, taki jak **brittasimon@contoso.com**.
+    c. W **identyfikator poczty E-mail** polu tekstowym wpisz identyfikator e-mail użytkownika, takie jak **brittasimon\@contoso.com**.
 
     d. W polu tekstowym **Password** (Hasło) wprowadź hasło użytkownika.
    
@@ -239,7 +239,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho 
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Zoho w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Zoho, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

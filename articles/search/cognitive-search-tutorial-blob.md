@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a4481e1bbc6248a9616fa7b3fe1d67c7d90af56e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 410e5d618e1deb1887329bea41e2cd3c6d795e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075854"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: Wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
 
@@ -55,27 +55,27 @@ Najpierw utwórz konto usługi Azure Search.
 
 1. Kliknij pozycję **Utwórz zasób**, wyszukaj usługę Azure Search i kliknij pozycję **Utwórz**. Zobacz [Tworzenie usługi Azure Search w portalu](search-create-service-portal.md), jeśli konfigurujesz usługę wyszukiwania po raz pierwszy.
 
-  ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
+   ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
 
 1. W obszarze Grupa zasobów utwórz grupę zasobów, która będzie zawierać wszystkie zasoby utworzone w tym samouczku. Ułatwi to wyczyszczenie zasobów po ukończeniu samouczka.
 
-1. Jako lokalizację wybierz jeden z [obsługiwanych regionów](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob#supported-regions) dla usługi Cognitive Search.
+1. Dla lokalizacji firma Microsoft zaleca, wybierając region, który znajduje się w pobliżu danych i innymi aplikacjami w chmurze.
 
 1. W obszarze Warstwa cenowa możesz utworzyć usługę w warstwie **Bezpłatna**, aby ukończyć samouczki i przewodniki Szybki start. Na potrzeby głębszej analizy z wykorzystaniem własnych danych możesz utworzyć [płatną usługę](https://azure.microsoft.com/pricing/details/search/), taką jak usługa w warstwie **Podstawowa** lub **Standardowa**. 
 
-  Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
+   Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
 
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service1.png "Strona definicji usługi w portalu")
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
+   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service1.png "Strona definicji usługi w portalu")
+   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
 
  
 1. Przypnij usługę do pulpitu nawigacyjnego, aby uzyskać szybki dostęp do informacji o niej.
 
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
+   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
 
 1. Po utworzeniu usługi zbierz następujące informacje: adres **URL** ze strony Przegląd i klucz **api-key** (podstawowy lub pomocniczy) ze strony Klucze.
 
-  ![Informacje o punkcie końcowym i kluczu w portalu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informacje o punkcie końcowym i kluczu w portalu")
+   ![Informacje o punkcie końcowym i kluczu w portalu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informacje o punkcie końcowym i kluczu w portalu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 
@@ -89,7 +89,7 @@ Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą
 
 1. Po załadowaniu przykładowych plików uzyskaj nazwę kontenera i parametry połączenia dla usługi Blob Storage. Te dane są dostępne po przejściu do konta usługi Storage w witrynie Azure Portal. Na stronie **Klucze dostępu**, a następnie skopiuj pole **Parametry połączenia**.
 
-  Parametry połączenia powinny być adresem URL podobnym do następującego przykładu:
+   Parametry połączenia powinny być adresem URL podobnym do następującego przykładu:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
@@ -106,21 +106,21 @@ W tym samouczku jest używany interfejs API REST i narzędzie, które umożliwia
 ### <a name="sample-request"></a>Przykładowe żądanie
 ```http
 POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
-Content-Type: application/json  
-api-key: [admin key]  
+Content-Type: application/json
+api-key: [admin key]
 ```
 #### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
-{   
-    "name" : "demodata",  
-    "description" : "Demo files to demonstrate cognitive search capabilities.",  
-    "type" : "azureblob",
-    "credentials" :
-    { "connectionString" :
-      "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
-    },  
-    "container" : { "name" : "<your blob container name>" }
-}  
+{
+  "name" : "demodata",
+  "description" : "Demo files to demonstrate cognitive search capabilities.",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" :
+    "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
+  },
+  "container" : { "name" : "<your blob container name>" }
+}
 ```
 Wyślij żądanie. Internetowe narzędzie do testowania powinno zwrócić kod stanu 201 oznaczający powodzenie. 
 
@@ -158,7 +158,7 @@ Content-Type: application/json
 #### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
 {
-  "description": 
+  "description":
   "Extract entities, detect language and extract key-phrases",
   "skills":
   [
@@ -193,26 +193,26 @@ Content-Type: application/json
     },
     {
       "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
-      "textSplitMode" : "pages", 
+      "textSplitMode" : "pages",
       "maximumPageLength": 4000,
       "inputs": [
-      {
-        "name": "text",
-        "source": "/document/content"
-      },
-      { 
-        "name": "languageCode",
-        "source": "/document/languageCode"
-      }
-    ],
-    "outputs": [
-      {
-            "name": "textItems",
-            "targetName": "pages"
-      }
-    ]
-  },
-  {
+        {
+          "name": "text",
+          "source": "/document/content"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/languageCode"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+      ]
+    },
+    {
       "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
       "context": "/document/pages/*",
       "inputs": [
@@ -256,7 +256,7 @@ W tej sekcji zdefiniujesz schemat indeksu przez określenie pól do umieszczenia
 
 W tym ćwiczeniu są używane następujące pola i typy pól:
 
-| field-names: | id       | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | `id`       | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -351,41 +351,41 @@ Content-Type: application/json
   "targetIndexName" : "demoindex",
   "skillsetName" : "demoskillset",
   "fieldMappings" : [
-        {
-          "sourceFieldName" : "metadata_storage_path",
-          "targetFieldName" : "id",
-          "mappingFunction" : 
-            { "name" : "base64Encode" }
-        },
-        {
-          "sourceFieldName" : "content",
-          "targetFieldName" : "content"
-        }
-   ],
-  "outputFieldMappings" : 
+    {
+      "sourceFieldName" : "metadata_storage_path",
+      "targetFieldName" : "id",
+      "mappingFunction" :
+        { "name" : "base64Encode" }
+    },
+    {
+      "sourceFieldName" : "content",
+      "targetFieldName" : "content"
+    }
+  ],
+  "outputFieldMappings" :
   [
-        {
-          "sourceFieldName" : "/document/organizations", 
-          "targetFieldName" : "organizations"
-        },
-        {
-          "sourceFieldName" : "/document/pages/*/keyPhrases/*", 
-          "targetFieldName" : "keyPhrases"
-        },
-        {
-            "sourceFieldName": "/document/languageCode",
-            "targetFieldName": "languageCode"
-        }      
+    {
+      "sourceFieldName" : "/document/organizations",
+      "targetFieldName" : "organizations"
+    },
+    {
+      "sourceFieldName" : "/document/pages/*/keyPhrases/*",
+      "targetFieldName" : "keyPhrases"
+    },
+    {
+      "sourceFieldName": "/document/languageCode",
+      "targetFieldName": "languageCode"
+    }
   ],
   "parameters":
   {
     "maxFailedItems":-1,
     "maxFailedItemsPerBatch":-1,
-    "configuration": 
+    "configuration":
     {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
+      "dataToExtract": "contentAndMetadata",
+      "imageAction": "generateNormalizedImages"
+    }
   }
 }
 ```
@@ -443,7 +443,7 @@ Content-Type: application/json
 
 Powtórz tę operację dla dodatkowych pól —w tym ćwiczeniu są to: content, language, keyphrases i organizations. Istnieje możliwość zwrócenia wielu pól za pomocą elementu `$select` używającego listy wartości rozdzielonych przecinkami.
 
-W zależności od złożoności i długości ciągu zapytania można użyć metody GET lub POST. Aby uzyskać więcej informacji, zobacz [Odpytywanie przy użyciu interfejsu API REST](https://docs.microsoft.com/azure/search/search-query-rest-api).
+W zależności od złożoności i długości ciągu zapytania można użyć metody GET lub POST. Aby uzyskać więcej informacji, zobacz [Odpytywanie przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="access-enriched-document"></a>
 
@@ -549,7 +549,7 @@ Ponadto przedstawiono sposób testowania wyników i resetowania systemu na potrz
 
 Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search i usługę Azure Blob Service. Zakładając, że obie te usługi są umieszczone w tej samej grupie, usuń teraz tę grupę zasobów, aby trwale usunąć wszystkie jej elementy, w tym usługi i zapisaną zawartość utworzoną na potrzeby tego samouczka. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dostosuj lub rozszerz potok za pomocą umiejętności niestandardowych. Utworzenie umiejętności niestandardowej i dołączenie jej do zestawu umiejętności pozwala na dodanie samodzielnie napisanej analizy tekstu lub obrazu. 
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001970"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528869"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(PRZESTARZAŁE) Wprowadzenie do rozwiązań hostingu kontenera przy użyciu usługi Azure Container Service 
 
@@ -38,7 +38,7 @@ Aby rozpocząć korzystanie z usługi Azure Container Service, musisz wdrożyć 
 Usługa Azure Container Service umożliwia wybranie do aranżacji koordynatora Docker Swarm, DC/OS lub Kubernetes. Sposób wdrażania aplikacji zależy od wybranego programu koordynatora.
 
 ### <a name="using-dcos"></a>Za pomocą koordynatora DC/OS
-Koordynator DC/OS to rozproszony system operacyjny oparty na jądrze systemów rozproszonych Apache Mesos. System Apache Mesos jest przechowywany w Apache Software Foundation, a wśród użytkowników i współautorów wymienia niektóre z [największych firm w branży IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/).
+Koordynator DC/OS to rozproszony system operacyjny oparty na jądrze systemów rozproszonych Apache Mesos. System Apache Mesos jest przechowywany w Apache Software Foundation, a wśród użytkowników i współautorów wymienia niektóre z [największych firm w branży IT](https://mesos.apache.org/documentation/latest/powered-by-mesos/).
 
 ![Usługa Azure Container Service skonfigurowana dla koordynatora DC/OS przedstawiająca agentów i wzorce.](media/acs-intro/dcos.png)
 
@@ -103,6 +103,6 @@ Tworzenie aplikacji za pomocą usługi Azure Container Service (kompilacja 2016)
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wdrażanie klastra usługi kontenera przy użyciu [portalu](container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure](container-service-create-acs-cluster-cli.md).

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: d208d989fb9b84ae7bc94c6a1882754ed2bacb5d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 0bf1558f81f2936b4556ee658a235cd09dddf905
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892918"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
 
@@ -43,7 +43,7 @@ Aby zostać wydawcą w witrynie Azure Marketplace, należy wykonać następując
 
 1. Utwórz identyfikator Microsoft — Utwórz konto Microsoft przy użyciu adresu e-mail, który należy do domeny firmy, ale nie do jednej osoby. Ten adres e-mail będzie używany zarówno w Centrum deweloperów firmy Microsoft, jak i w portalu Cloud Partner. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 1. Prześlij [Formularz nominacji witryny Azure Marketplace](https://aka.ms/ampnomination) — W polu **Rozwiązanie, które chcesz opublikować** wybierz pozycję **Aplikacja zarządzana**. Po przesłaniu formularza zespół ds. dołączania do witryny Marketplace zapozna się z aplikacją i zweryfikuje Twoje żądanie. Proces zatwierdzania może potrwać od jednego do trzech dni. Po zatwierdzeniu nominacji otrzymasz kod promocyjny umożliwiający anulowanie opłaty rejestracyjnej w Centrum deweloperów. Jeśli **nie** wypełnisz formularza nominacji witryny Marketplace, zostanie Ci naliczona opłata rejestracyjna w wysokości 99 USD.
-1. Zarejestruj się w [Centrum deweloperów](http://dev.windows.com/registration?accountprogram=azure) — firma Microsoft sprawdzi, czy Twoja organizacja jest podmiotem prawnym i posiada identyfikator podatkowy w kraju, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
+1. Zarejestruj się w [Centrum deweloperów](https://dev.windows.com/registration?accountprogram=azure) — firma Microsoft sprawdzi, czy Twoja organizacja jest podmiotem prawnym i posiada identyfikator podatkowy w kraju, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 1. Zaloguj się w [portalu Cloud Partner](https://cloudpartner.azure.com) — w profilu wydawcy skojarz swoje konto Centrum deweloperów z profilem wydawcy witryny Marketplace. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Tworzenie nowej oferty aplikacji platformy Azure
@@ -176,7 +176,7 @@ Formularz **Pomoc techniczna** wypełnij za pomocą kontaktów pomocy techniczne
 
 Po wypełnieniu wszystkich sekcji wybierz pozycję **Opublikuj**, aby rozpocząć proces udostępniania Twojej oferty klientom.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
 * Aby dowiedzieć się, jak opublikować aplikację zarządzaną w katalogu usług, zobacz [Tworzenie i publikowanie aplikacji zarządzanej katalogu usług](publish-service-catalog-app.md).

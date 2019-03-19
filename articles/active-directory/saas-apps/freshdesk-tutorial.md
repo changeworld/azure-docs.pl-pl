@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a9357cda51a9d658849dbec872258061171fa90
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: d4bdeecc5682eb09ac0a65d3834ad1770258c4e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867987"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją FreshDesk
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji FreshDesk z usługą Azure AD, należy 
 
 **Aby dodać aplikację FreshDesk z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -175,7 +175,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji FreshDesk,
 
     b. Wybierz pozycję **SAML SSO** (Logowanie jednokrotne SAML).
 
-    d. W polu tekstowym **SAML Login URL** (Adres URL logowania SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **SAML Login URL** (Adres URL logowania SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
     d. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
@@ -201,7 +201,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -263,7 +263,7 @@ W przypadku aplikacji FreshDesk aprowizowanie jest zadaniem ręcznym.
 
     b. W polu tekstowym **Full Name** (Pełna nazwa) wpisz nazwę konta usługi Azure AD, które chcesz aprowizować.
 
-    d. W polu tekstowym **Title** (Tytuł) wpisz tytuł konta usługi Azure AD, które chcesz aprowizować.
+    c. W polu tekstowym **Title** (Tytuł) wpisz tytuł konta usługi Azure AD, które chcesz aprowizować.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -275,7 +275,7 @@ W przypadku aplikacji FreshDesk aprowizowanie jest zadaniem ręcznym.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka FreshDesk na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji FreshDesk, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

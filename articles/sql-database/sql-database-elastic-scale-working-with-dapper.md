@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 6cc5e3f8f188c60a129f6ad6575b348616bdad9b
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002298"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Za pomocą biblioteki klienckiej elastycznej bazy danych z programem Dapper
 Ten dokument stanowi dla deweloperów, które zależą od programem Dapper do tworzenia aplikacji, ale także wykorzystywać [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md) do tworzenia aplikacji fragmentowania tej implementacji, aby skalować warstwę danych.  Ten dokument przedstawia zmiany w aplikacji opartych na programem Dapper, które są niezbędne w celu integracji z narzędziami elastycznej bazy danych. Naszym głównym celem jest tworzenie zarządzania fragmentami elastycznych baz danych i routingu zależnego od danych z programem Dapper. 
@@ -35,7 +35,7 @@ Korzystając z DapperExtensions, nie jest już konieczne jest zapewnienie instru
 
 Kolejną korzyścią wynikającą z programem Dapper, a także DapperExtensions to, że aplikacja kontroluje tworzenie połączenia z bazą danych. Dzięki temu można wchodzić w interakcje za pomocą biblioteki klienckiej elastycznej bazy danych, które brokerów bazy danych połączenia na podstawie mapowania podfragmentów z bazami danych.
 
-Programem Dapper zestawów, można znaleźć [programem Dapper dot net](http://www.nuget.org/packages/Dapper/). Programem Dapper rozszerzeń, zobacz [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
+Programem Dapper zestawów, można znaleźć [programem Dapper dot net](https://www.nuget.org/packages/Dapper/). Programem Dapper rozszerzeń, zobacz [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Krótkie omówienie Biblioteka kliencka elastic database
 Za pomocą biblioteki klienckiej elastycznej bazy danych, zdefiniuj partycje dane Twoich aplikacji o nazwie *podfragmentów*zmapować je z bazami danych i ich przez zidentyfikowanie *kluczy fragmentowania*. Może mieć dowolną liczbę baz danych zgodnie z potrzebami i dystrybuować swoje podfragmentów w tych bazach danych. Mapowanie wartości klucza fragmentowania do baz danych jest przechowywany przez mapowania fragmentów w postaci dostarczone przez interfejsy API biblioteki. Ta funkcja jest wywoływana **procesu zarządzania mapą fragmentów**. Mapowania fragmentów służy również jako broker połączeń z bazą danych dla żądań, które zawierają klucz fragmentowania. Ta funkcja jest nazywana **routingu zależnego od danych**.

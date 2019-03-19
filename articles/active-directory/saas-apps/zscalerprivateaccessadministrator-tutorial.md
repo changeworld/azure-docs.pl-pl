@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba2bde039cec65a1afe33efac58752d26f22c2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cdb842c4cebe48f2f6534417a7fe6aa4686d1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171897"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Samouczek: Integracja usługi Azure Active Directory Administrator dostępu prywatnego rozwiązania Zscaler
 
@@ -217,7 +217,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do rozwiązania Z
 
     ![Administrator dostępu prywatnego rozwiązania Zscaler użytkownika administratora](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. W **Username** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **BrittaSimon@contoso.com**.
+    a. W **Username** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **BrittaSimon\@contoso.com**.
 
     b. W **hasło** pole tekstowe, wpisz hasło.
 
@@ -225,7 +225,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do rozwiązania Z
 
     d. Wybierz **roli** jako **Administrator dostępu prywatnego rozwiązania Zscaler**.
 
-    e. W polu tekstowym **E-mail** wprowadź adres e-mail użytkownika, na przykład **BrittaSimon@contoso.com**.
+    e. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **BrittaSimon\@contoso.com**.
 
     f. W **Phone** pole tekstowe, wpisz numer telefonu.
 
@@ -272,7 +272,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

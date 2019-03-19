@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631502"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089322"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurowanie zapory aplikacji internetowych za pomocą środowiska App Service Environment
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Zapory aplikacji internetowych pomagają w zabezpieczaniu aplikacji internetowych, sprawdzając przychodzący ruch internetowy w celu blokowania wstrzyknięcia kodu SQL, działania skryptów między witrynami, operacji pobierania złośliwego oprogramowania oraz ataków DDoS na aplikacje i innych ataków. Badają one również odpowiedzi z internetowych serwerów zaplecza na potrzeby zapobiegania utracie danych. W połączeniu z izolacją i dodatkowym skalowaniem oferowanym przez środowisko App Service Environment ta funkcja oferuje idealne środowisko hostowania biznesowych aplikacji internetowych o krytycznym znaczeniu, które muszą radzić sobie ze złośliwymi żądaniami i intensywnym ruchem. Platforma Azure oferuje możliwości zapory aplikacji internetowych dzięki usłudze [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Aby dowiedzieć się, jak zintegrować środowisko App Service Environment z usługą Application Gateway, zapoznaj się z dokumentem [Integrate your ILB ASE with an Application Gateway (Integrowanie środowiska ASE wewnętrznego modułu równoważenia obciążenia z usługą Application Gateway)](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
 
@@ -66,7 +66,7 @@ Dodaj punkt końcowy zarządzania, jak pokazano na poniższej ilustracji, aby sk
 
 ![Dodawanie punktu końcowego zarządzania][AddManagementEndpoint]
 
-Aby przejść do punktu końcowego zarządzania w usłudze w chmurze, należy użyć przeglądarki. Jeśli usługa w chmurze ma nazwę test.cloudapp.net, dostęp do tego punktu końcowego można uzyskać, przechodząc do adresu http://test.cloudapp.net:8000. Powinna zostać wyświetlona strona logowania, taka jak na poniższej ilustracji. Można się na niej zalogować się przy użyciu poświadczeń zdefiniowanych w fazie konfiguracji maszyny wirtualnej zapory aplikacji internetowych.
+Aby przejść do punktu końcowego zarządzania w usłudze w chmurze, należy użyć przeglądarki. Jeśli usługa w chmurze ma nazwę test.cloudapp.net, dostęp do tego punktu końcowego można uzyskać, przechodząc do adresu `http://test.cloudapp.net:8000`. Powinna zostać wyświetlona strona logowania, taka jak na poniższej ilustracji. Można się na niej zalogować się przy użyciu poświadczeń zdefiniowanych w fazie konfiguracji maszyny wirtualnej zapory aplikacji internetowych.
 
 ![Zarządzanie — strona logowania][ManagementLoginPage]
 

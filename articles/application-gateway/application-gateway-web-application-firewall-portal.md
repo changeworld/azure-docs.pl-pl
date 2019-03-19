@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: d89e5d6fd21fdc37bffcc730fb20bae30ecc4f7c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 510a243b9133fe0ef0fe33b4dccce97f9d65e301
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074968"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tworzenie bramy aplikacji z zaporą aplikacji sieci web przy użyciu witryny Azure portal
 
@@ -45,21 +45,21 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
 3. Wprowadź następujące wartości dla bramy aplikacji:
 
-    - *myAppGateway* — jako nazwę bramy aplikacji.
-    - *myResourceGroupAG* — jako nową grupę zasobów.
-    - Wybierz *zapory aplikacji sieci Web* dla warstwy usługi application gateway.
+   - *myAppGateway* — jako nazwę bramy aplikacji.
+   - *myResourceGroupAG* — jako nową grupę zasobów.
+   - Wybierz *zapory aplikacji sieci Web* dla warstwy usługi application gateway.
 
-    ![Tworzenie nowej bramy aplikacji](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
+     ![Tworzenie nowej bramy aplikacji](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
 5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
 
-    - *myVNet* — jako nazwę sieci wirtualnej.
-    - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
-    - *myAGSubnet* — jako nazwę podsieci.
-    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+   - *myVNet* — jako nazwę sieci wirtualnej.
+   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
+   - *myAGSubnet* — jako nazwę podsieci.
+   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-    ![Tworzenie sieci wirtualnej](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+     ![Tworzenie sieci wirtualnej](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
 7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.

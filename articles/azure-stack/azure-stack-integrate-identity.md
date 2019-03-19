@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5174723e7c9566fe90eb8bf49a1f353a5d9ae9ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083975"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. W przypadku połączonych można wybrać usługi Azure AD lub AD FS. Odłączonego scenariuszu obsługiwane są tylko usługi AD FS.
@@ -122,7 +122,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
 |CustomAdfsName|Nazwa dostawcy oświadczeń.<br>Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Łącza do metadanych Federacji|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAD<br>FSFederationMetadataEndpointUri|Łącza do metadanych Federacji| https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Wyzwalania automatyzacji, aby skonfigurować zaufanie dostawcy oświadczeń w usłudze Azure Stack

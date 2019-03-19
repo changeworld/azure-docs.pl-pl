@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: f5713fe3333f291d8d28a6ef3df48572507661be
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 96d84b2328ffb83d5c1ea7218b17314a537fa45b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904562"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Usługa Service Bus z platformy .NET za pomocą protokołu AMQP 1.0
 
@@ -63,7 +63,7 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 
 | Typ obiektu na treść platformy .NET | Typ zamapowanego protokołu AMQP | Typ części treści protokołu AMQP |
 | --- | --- | --- |
-| wartość logiczna |wartość logiczna |Wartość protokołu AMQP |
+| bool |wartość logiczna |Wartość protokołu AMQP |
 | bajt |ubyte |Wartość protokołu AMQP |
 | ushort |ushort |Wartość protokołu AMQP |
 | uint |uint |Wartość protokołu AMQP |
@@ -77,23 +77,23 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 | decimal |decimal128 |Wartość protokołu AMQP |
 | Char |Char |Wartość protokołu AMQP |
 | DateTime |sygnatura czasowa |Wartość protokołu AMQP |
-| Identyfikator GUID |uuid |Wartość protokołu AMQP |
+| Guid |uuid |Wartość protokołu AMQP |
 | byte[] |dane binarne |Wartość protokołu AMQP |
-| ciąg |ciąg |Wartość protokołu AMQP |
+| string |string |Wartość protokołu AMQP |
 | System.Collections.IList |list |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
 | System.Array |tablica |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
 | System.Collections.IDictionary |map |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. Uwaga: obsługiwane są tylko kluczy ciągu. |
 | Identyfikator URI |Opisano parametry (patrz poniższa tabela) |Wartość protokołu AMQP |
 | DateTimeOffset |Opisano długo (patrz poniższa tabela) |Wartość protokołu AMQP |
-| Przedział czasu |Opisano długo (patrz poniżej) |Wartość protokołu AMQP |
-| Stream |dane binarne |Dane AMQP (może być wiele). Sekcje danych zawierają odczytanych z obiektu Stream bajtów raw. |
+| TimeSpan |Opisano długo (patrz poniżej) |Wartość protokołu AMQP |
+| Strumień |dane binarne |Dane AMQP (może być wiele). Sekcje danych zawierają odczytanych z obiektu Stream bajtów raw. |
 | Inny obiekt |dane binarne |Dane AMQP (może być wiele). Zawiera wartość binarną Zserializowany obiekt, który korzysta z elementu DataContractSerializer, lub element serializujący dostarczoną przez aplikację. |
 
 | Typ architektury .NET | Zamapowane AMQP opisem typu | Uwagi |
 | --- | --- | --- |
 | Identyfikator URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| Przedział czasu |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>Różnice w zachowaniu
 
@@ -124,7 +124,7 @@ Czy chcesz dowiedzieć się więcej? Skorzystaj z następujących linków:
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
-[NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
+[NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Omówienie AMQP usługi Service Bus]: service-bus-amqp-overview.md
 [Przewodnik dotyczący protokołu AMQP 1.0]: service-bus-amqp-protocol-guide.md

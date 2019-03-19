@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: f12f5f1f7791fa09b07c3035db65f2f488f36d7f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93ba17c58dfcb5955bafbcc63655778903f60c18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776584"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076347"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -303,5 +303,5 @@ Po utworzeniu tego klucza rejestru należy ponownie uruchomić serwer, aby wył�
 ## <a name="next-steps"></a>Kolejne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:
 - [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
-* [Często zadawane pytania](../storage-files-faq.md)
-* [Rozwiązywanie problemów w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)      
+- [Często zadawane pytania](../storage-files-faq.md)
+- [Rozwiązywanie problemów w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)      

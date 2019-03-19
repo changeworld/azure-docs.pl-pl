@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4c9f92f80275d04cd1bab408213fd02abf5c9139
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279402"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087095"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 
@@ -242,7 +242,7 @@ Ostatnia część przepływu pracy polega na wyzwoleniu wiadomości e-mail, gdy 
 | **Temat** | Wykryto negatywną tonację tweetów  | Wiersz tematu powiadomienia w wiadomości e-mail.  |
 | **Treść** | Tekst tweetu, lokalizacja | Kliknij parametry **Tekst tweetu** i **Lokalizacja**. |
 
-5.  Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 Przepływ pracy jest gotowy, można więc włączyć aplikację logiki i przyjrzeć się funkcji w działaniu.
 
@@ -285,7 +285,7 @@ Aby wyłączyć aplikację logiki, kliknij pozycję **Przegląd**, a następnie 
 
 ![Dzienniki funkcji](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

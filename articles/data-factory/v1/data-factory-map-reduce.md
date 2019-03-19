@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ccf67aab2d393d4ee820c19e839ff3076712843d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550075"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110532"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Wywoływanie programów MapReduce z usługi Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -110,7 +110,7 @@ W definicji JSON działania HDInsight:
         }
     }
     ```
-Działania technologii MapReduce w HDInsight służy do uruchamiania dowolnego pliku jar MapReduce w klastrze usługi HDInsight. W poniższej definicji JSON przykładowe potoku działanie HDInsight jest skonfigurowany do uruchomienia pliku Mahout JAR.
+   Działania technologii MapReduce w HDInsight służy do uruchamiania dowolnego pliku jar MapReduce w klastrze usługi HDInsight. W poniższej definicji JSON przykładowe potoku działanie HDInsight jest skonfigurowany do uruchomienia pliku Mahout JAR.
 
 ## <a name="sample-on-github"></a>Przykład w witrynie GitHub
 Możesz pobrać przykład przy użyciu działania technologii MapReduce HDInsight: [Przykłady fabryki danych w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  

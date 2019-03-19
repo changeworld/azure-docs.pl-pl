@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715430"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098308"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Uruchamianie zadań Apache Pig z platformą Apache Hadoop w HDInsight za pomocą interfejsu REST
 
@@ -58,8 +58,8 @@ Dowiedz się, jak uruchamiać zadania Apache Pig Latin, wprowadzając żądania 
 
     W tym poleceniu są używane następujące parametry:
 
-    * **-u**: Nazwa użytkownika i hasło używane do uwierzytelniania żądania
-    * **-G**: Wskazuje, że to żądanie jest żądanie GET
+   * **-u**: Nazwa użytkownika i hasło używane do uwierzytelniania żądania
+   * **-G**: Wskazuje, że to żądanie jest żądanie GET
 
      Adres URL, na początek **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań. Ścieżka, **status**, wskazuje, czy żądanie jest powoduje przywrócenie stanu usługi WebHCat (znanej także jako Templeton) dla serwera.
 
@@ -71,18 +71,18 @@ Dowiedz się, jak uruchamiać zadania Apache Pig Latin, wprowadzając żądania 
 
     W tym poleceniu są używane następujące parametry:
 
-    * **-d**: Ponieważ `-G` nie jest używany, żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
+   * **-d**: Ponieważ `-G` nie jest używany, żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
 
-    * **User.name**: Użytkownik, który uruchamia polecenie
-    * **Wykonaj**: Instrukcji Pig Latin do wykonania
-    * **statusdir**: Katalog, w którym zapisywany jest stan dla tego zadania
+   * **User.name**: Użytkownik, który uruchamia polecenie
+   * **Wykonaj**: Instrukcji Pig Latin do wykonania
+   * **statusdir**: Katalog, w którym zapisywany jest stan dla tego zadania
 
-    > [!NOTE]  
-    > Należy zauważyć, że miejsca do magazynowania w instrukcji Pig Latin są zastępowane przez `+` znaku w przypadku korzystania z programu Curl.
+     > [!NOTE]  
+     > Należy zauważyć, że miejsca do magazynowania w instrukcji Pig Latin są zastępowane przez `+` znaku w przypadku korzystania z programu Curl.
 
-    To polecenie powinien zwrócić identyfikator zadania, który może służyć do sprawdzania stanu zadania, na przykład:
+     To polecenie powinien zwrócić identyfikator zadania, który może służyć do sprawdzania stanu zadania, na przykład:
 
-        {"id":"job_1415651640909_0026"}
+       {"id":"job_1415651640909_0026"}
 
 3. Aby sprawdzić stan zadania, użyj następującego polecenia
 

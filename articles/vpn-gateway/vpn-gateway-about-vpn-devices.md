@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: yushwang
-ms.openlocfilehash: 7024849c796d7cef226fef1b20b0a6604f1344ba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 188412130b059cd25952ce9bf570c4e95ebbc43a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993396"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -53,8 +53,8 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 | Cisco |Meraki |ND |Niezgodne |Niezgodne |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 lub nowsze |[Przewodnik po konfiguracji](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Niezgodne |
 | F5 |Seria BIG-IP |12.0 |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.6 |  |[Przewodnik po konfiguracji](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
-| Internet Initiative Japan (IIJ) |Seria SEIL |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Przewodnik po konfiguracji](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Niezgodne |
+| Fortinet |FortiGate |FortiOS 5.6 |  |[Przewodnik po konfiguracji](https://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
+| Internet Initiative Japan (IIJ) |Seria SEIL |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Przewodnik po konfiguracji](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Niezgodne |
 | Juniper |SRX |PolicyBased: JunOS 10.2<br>Routebased: JunOS 11.4 |Obsługiwane |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |Seria J |PolicyBased: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |Obsługiwane |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |ISG |ScreenOS 6.3 |Obsługiwane |[Skrypt konfiguracji](vpn-gateway-download-vpndevicescript.md) |

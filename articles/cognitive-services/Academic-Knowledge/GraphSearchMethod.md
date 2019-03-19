@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864472"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57977415"
 ---
 # <a name="graph-search-method"></a>Metoda wyszukiwania programu Graph
 
@@ -29,6 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>Parametry żądania  
+
 Name (Nazwa)     | Wartość | Wymagana?  | Opis
 -----------|-----------|---------|--------
 **Tryb**       | Ciąg tekstowy | Yes | Nazwa trybu w którym chcesz użyć. Wartość to *json* lub *lambda*.
@@ -45,7 +46,9 @@ Aby uzyskać *json* wyszukiwanie, treść wpisu jest obiekt JSON. Obiekt JSON op
 Aby uzyskać *lambda* wyszukiwania, treść wpisu to ciąg tekstowy. Treść wpisu jest ciągu zapytania LIKQ lambda, która jest pojedynczą instrukcję języka C# (zobacz [specyfikacji ciągu zapytania](LambdaSearchSyntax.md) dla *lambda* wyszukiwania). 
 
 <br>
+
 ## <a name="response-json"></a>Odpowiedź (JSON)
+
 Name (Nazwa) | Opis
 -------|-----   
 **wyniki** | Tablica 0 lub więcej jednostek, które pasują do wyrażenia zapytania. Każda jednostka zawiera wartości żądanych atrybutów. W tym polu jest wyświetlany, jeśli żądanie zostało pomyślnie przetworzone.
@@ -55,6 +58,7 @@ Name (Nazwa) | Opis
 Jeśli zapytanie nie może zostać przetworzony w ramach _800 ms_, _limitu czasu_ zostanie zwrócony błąd. 
 
 <br>
+
 #### <a name="example"></a>Przykład:
 
 ##### <a name="json-search"></a>Wyszukiwania JSON

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 78b309336b21c3b6a58a37b1729f675db111c5d0
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190548"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903933"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Samouczek: Dodawanie przykładowego modelu z portalu
 
@@ -57,7 +57,7 @@ Zaloguj się do [portalu](https://portal.azure.com/).
 
 Przykładowy model korzysta z zasobów pamięci podręcznej. Jeśli nie używasz przykładowego modelu do testowania, usuń go z serwera.
 
-W poniższych krokach opisano sposób usuwania modelu z serwera za pomocą programu SSMS. Możesz również usunąć model, używając funkcji projektanta internetowego w wersji zapoznawczej.
+W poniższych krokach opisano sposób usuwania modelu z serwera za pomocą programu SSMS.
 
 1. W programie SSMS wybierz pozycję **Eksplorator obiektów**, a następnie kliknij pozycję **Połącz** > **Analysis Services**.
 
@@ -69,7 +69,7 @@ W poniższych krokach opisano sposób usuwania modelu z serwera za pomocą progr
 
     ![Usuwanie przykładowej bazy danych](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 
 W tym samouczku przedstawiono sposób dodawania podstawowego, przykładowego modelu na serwerze. Teraz, gdy już masz bazę danych modelu, możesz nawiązać z nią połączenie z programu SQL Server Management Studio i dodać role użytkowników. Aby dowiedzieć się więcej, przejdź do następnego samouczka.
 

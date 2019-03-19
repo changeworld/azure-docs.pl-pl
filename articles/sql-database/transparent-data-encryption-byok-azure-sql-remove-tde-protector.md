@@ -11,19 +11,21 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: a5b544db713f671230e4a226b1e0bdcfa77fbb2b
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575243"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895182"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Usuwanie ochrony przezroczystego szyfrowania danych (TDE), przy użyciu programu PowerShell
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 - Konieczne jest posiadanie subskrypcji platformy Azure oraz mieć uprawnienia administratora na tę subskrypcję
 - Konieczne jest posiadanie programu Azure PowerShell zainstalowany i uruchomiony. 
@@ -85,7 +87,7 @@ Ten poradnik przechodzi przez dwie metody w zależności od żądanego wyniku po
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. Usuwanie złamany klucz usługi Key Vault przy użyciu [AzKeyVaultKey Usuń](/powershell/module/az.keyvault/remove-azurekeyvaultkey) polecenia cmdlet. 
+5. Usuwanie złamany klucz usługi Key Vault przy użyciu [AzKeyVaultKey Usuń](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) polecenia cmdlet. 
 
    ```powershell
    Remove-AzKeyVaultKey `

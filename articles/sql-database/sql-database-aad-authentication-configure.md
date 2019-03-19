@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: e4ccb9be5d13ea72086fbaae2ffb2ec63ad55786
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: f3c485659bc686efbb4101879e5cd24e7bb3db46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340324"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905107"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory przy użyciu języka SQL
 
@@ -29,12 +29,14 @@ W tym artykule pokazano, jak utworzyć i wypełnić usługi Azure AD, a następn
 > Nawiązywanie połączenia z SQL Server uruchomiony na Maszynie wirtualnej platformy Azure nie jest obsługiwana przy użyciu konta usługi Azure Active Directory. Zamiast tego użyj domeny konta usługi Active Directory.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 ## <a name="create-and-populate-an-azure-ad"></a>Utworzyć i wypełnić usługi Azure AD
 
 Tworzenie usługi Azure AD i wypełnianie jej użytkowników i grup. Usługa Azure AD może być początkowej usługi Azure AD domeny zarządzanej. Usługa Azure AD może być również lokalne Active Directory Domain Services, które są Sfederowane z usługą Azure AD.
 
-Aby uzyskać więcej informacji, zobacz tematy [Integrating your on-premises identities with Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) (Integrowanie tożsamości lokalnych z usługą Azure Active Directory), [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Platforma Microsoft Azure obsługuje teraz federację z usługą Windows Servder Active Directory), [Administering your Azure AD directory](../active-directory/fundamentals/active-directory-administer.md) (Administrowanie katalogiem usługi Azure AD), [Manage Azure AD using Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) (Zarządzanie usługą Azure AD przy użyciu programu Windows PowerShell) i [Hybrid Identity Required Ports and Protocols](../active-directory/hybrid/reference-connect-ports.md) (Wymagane porty i protokoły tożsamości hybrydowych).
+Aby uzyskać więcej informacji, zobacz tematy [Integrating your on-premises identities with Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) (Integrowanie tożsamości lokalnych z usługą Azure Active Directory), [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Platforma Microsoft Azure obsługuje teraz federację z usługą Windows Servder Active Directory), [Administering your Azure AD directory](../active-directory/fundamentals/active-directory-administer.md) (Administrowanie katalogiem usługi Azure AD), [Manage Azure AD using Windows PowerShell](/powershell/azure/overview) (Zarządzanie usługą Azure AD przy użyciu programu Windows PowerShell) i [Hybrid Identity Required Ports and Protocols](../active-directory/hybrid/reference-connect-ports.md) (Wymagane porty i protokoły tożsamości hybrydowych).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory
 
@@ -240,6 +242,7 @@ Administrator usługi Azure Active Directory można również udostępniać za p
 ### <a name="cli"></a>Interfejs wiersza polecenia  
 
 Można również udostępniać administratora usługi Azure AD, wywołując następujących poleceń interfejsu wiersza polecenia:
+
 | Polecenie | Opis |
 | --- | --- |
 |[Utwórz az sql server ad administratora](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Aprowizuje administrator usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. (Musi być z bieżącej subskrypcji). |
@@ -349,7 +352,7 @@ Ta metoda domeny zarządzanej przez połączenie przy użyciu nazwy głównej us
 Ta metoda służy do uwierzytelniania do bazy danych/magazyn danych SQL z usługą Azure AD native lub Sfederowanych użytkowników usługi Azure AD. Natywne użytkownika jest jawnie utworzonej w usłudze Azure AD i uwierzytelniane przy użyciu nazwy użytkownika i hasła, gdy użytkownik federacyjny jest użytkownikiem Windows domeny są Sfederowane z usługą Azure AD. Druga metoda (przy użyciu użytkownika i hasło) może służyć po użytkownik chce, aby używać ich poświadczenia systemu windows, ale ich komputer lokalny nie jest sprzężony z domeny (na przykład za pomocą dostępu zdalnego). W takim przypadku użytkownik Windows może wskazywać na swoje konto domeny i hasło i mogą uwierzytelniać do bazy danych/magazyn danych SQL przy użyciu poświadczeń federacyjnych.
 
 1. Rozpocznij Management Studio lub Data Tools i **Połącz z serwerem** (lub **nawiązywanie połączenia z aparatem bazy danych**) okno dialogowe, **uwierzytelniania** wybierz pozycję  **Usługi Active Directory — hasło**.
-2. W **nazwa_użytkownika** wpisz swoją nazwę użytkownika usługi Azure Active Directory w formacie **username@domain.com**. Nazwy użytkowników musi być kontem usługi Azure Active Directory lub konto z domeny Federację z usługą Azure Active Directory.
+2. W **nazwa_użytkownika** wpisz swoją nazwę użytkownika usługi Azure Active Directory w formacie **username\@domena.com**. Nazwy użytkowników musi być kontem usługi Azure Active Directory lub konto z domeny Federację z usługą Azure Active Directory.
 3. W **hasło** wpisz hasło użytkownika dla konta usługi Azure Active Directory lub konta domeny federacyjnej.
 
     ![Wybierz uwierzytelnianie hasłem usługi AD][12]

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0dc50da5eb302e2f1b24c265b4675d93f0a2e849
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 145960db27247a8535eb96640000b86d810619c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838412"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Uwidacznianie lokalnej usługi WCF dla aplikacji internetowej w chmurze za pomocą usługi Azure Relay 
 Ten artykuł przedstawia sposób tworzenia hybrydowej aplikacji w chmurze przy użyciu platformy Microsoft Azure i programu Visual Studio. Utworzysz aplikację korzystającą z wielu zasobów platformy Azure i działającą w chmurze.
@@ -43,7 +43,7 @@ W tym samouczku wykonasz następujące kroki:
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-- [Program Visual Studio 2015 lub nowszy](http://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
+- [Program Visual Studio 2015 lub nowszy](https://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
 - Zestaw Azure SDK dla platformy .NET. Zainstaluj go ze [strony pobierania zestawu SDK](https://azure.microsoft.com/downloads/).
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Jak usługa Azure Relay pomaga w tworzeniu rozwiązań hybrydowych
@@ -85,7 +85,7 @@ Najpierw utworzysz symulowany system katalogu produktów w środowisku lokalnym.
 
    ![Okno dialogowe Nowy projekt][11]
 4. Kliknij przycisk **OK**, aby utworzyć projekt **ProductsServer**.
-5. Jeśli masz już zainstalowany menedżer pakietów NuGet dla programu Visual Studio, przejdź do następnego kroku. W przeciwnym razie odwiedź stronę menedżera pakietów [NuGet][NuGet] i kliknij przycisk [Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) (Zainstaluj menedżer pakietów NuGet). Postępuj zgodnie z monitami, aby zainstalować menedżera pakietów NuGet, a następnie uruchom ponownie program Visual Studio.
+5. Jeśli masz już zainstalowany menedżer pakietów NuGet dla programu Visual Studio, przejdź do następnego kroku. W przeciwnym razie odwiedź stronę menedżera pakietów [NuGet][NuGet] i kliknij przycisk [Install NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) (Zainstaluj menedżer pakietów NuGet). Postępuj zgodnie z monitami, aby zainstalować menedżera pakietów NuGet, a następnie uruchom ponownie program Visual Studio.
 6. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **ProductsServer**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet**.
 7. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg **WindowsAzure.ServiceBus**. Wybierz pakiet **WindowsAzure.ServiceBus**.
 8. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
@@ -422,14 +422,14 @@ Następny krok polega na ponownym opublikowaniu frontonu projektu **ProductsPort
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **ProductsPortal**, a następnie kliknij pozycję **Publikuj**. Następnie kliknij pozycję **Publikuj** na stronie **Publikowanie**.
 
-  > [!NOTE]
-  > Gdy projekt sieci Web **ProductsPortal** zostanie automatycznie uruchomiony po wdrożeniu, w oknie przeglądarki może zostać wyświetlony komunikat o błędzie. Jest to oczekiwane. Błąd występuje, ponieważ aplikacja **ProductsServer** nie jest jeszcze uruchomiona.
->
->
+   > [!NOTE]
+   > Gdy projekt sieci Web **ProductsPortal** zostanie automatycznie uruchomiony po wdrożeniu, w oknie przeglądarki może zostać wyświetlony komunikat o błędzie. Jest to oczekiwane. Błąd występuje, ponieważ aplikacja **ProductsServer** nie jest jeszcze uruchomiona.
+   >
+   >
 
 2. Skopiuj adres URL wdrożonej aplikacji internetowej, ponieważ będzie potrzebny w kolejnym kroku. Ten adres URL możesz również uzyskać w oknie Działanie usługi Azure App Service w programie Visual Studio:
 
-  ![Adres URL wdrożonej aplikacji][9]
+   ![Adres URL wdrożonej aplikacji][9]
 
 3. Zamknij okno przeglądarki, aby zatrzymać działającą aplikację.
 
@@ -470,7 +470,7 @@ Przejdź do następującego samouczka:
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
-[NuGet]: http://nuget.org
+[NuGet]: https://nuget.org
 
 [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
 [13]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-13.png

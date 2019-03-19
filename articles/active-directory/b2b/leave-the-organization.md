@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 03/13/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d8183f7fa55a410b44d33295ad24f0f07adb145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f75f91c037a2f05c999d388ce7bb16ad2d0c9cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185931"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005672"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Opuścić organizację jako użytkownika-gościa
 
@@ -24,13 +24,17 @@ Użytkownik-Gość usługi Azure Active Directory (Azure AD) B2B można zdecyduj
 
 ## <a name="leave-an-organization"></a>Opuszczanie organizacji
 
-Aby opuścić organizację jako zalogowany użytkownik [panelu dostępu](https://myapps.microsoft.com), wykonaj następujące czynności:
+Aby opuścić organizację, wykonaj następujące kroki.
 
-1. Jeśli jeszcze nie zostało to zrobione organizacji, którą chcesz pozostawić, wybierz nazwę w prawym górnym rogu, a następnie kliknij przycisk organizacji, które chcesz wyjść.
-2. W prawym górnym rogu wybierz swoją nazwę.
-3. Obok pozycji **organizacje**, wybierz ikonę ustawienia (koło zębate).
+1. Przejdź do strony swojego profilu panelu dostępu, wykonując jedną z następujących czynności:
+   
+   - W [witryny Azure portal](https://portal.azure.com), kliknij swoją nazwę użytkownika w prawym górnym rogu i wybierz **wyświetlić konto**.
+   - Otwórz swoje [panelu dostępu](https://myapps.microsoft.com), kliknij swoją nazwę użytkownika w prawym górnym rogu i dalej, aby **organizacje**, wybierz ikonę ustawienia (koło zębate).
  
    ![Zrzut ekranu przedstawiający ustawienia użytkownika w panelu dostępu](media/leave-the-organization/UserSettings.png) 
+
+   > [!NOTE]
+   > Jeśli jeszcze nie zostało to zrobione organizacji chcesz pozostawić w obszarze **organizacje**, kliknij przycisk **Zaloguj się opuścić organizację** łącze obok nazwy w organizacji. Po użytkownik jest zalogowany, kliknij swoją nazwę użytkownika ponownie w prawym górnym rogu, a obok **organizacje**, wybierz ikonę ustawienia (koło zębate).
 
 3. W obszarze **organizacje**, Znajdź, którą chcesz wystawić, a następnie wybierz organizację **opuścić organizację**.
 

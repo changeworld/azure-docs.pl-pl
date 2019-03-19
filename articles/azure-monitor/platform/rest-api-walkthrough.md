@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 2ba0ea64aab67221aa1ee3a87ad35ce7d5516167
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 12c0ee08435ca4b3077bc3a8c28b217ebaf70e08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310050"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993317"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Monitorowanie interfejsu API REST Azure — przewodnik
 
@@ -98,7 +98,7 @@ Użyj [definicje usługi Azure Monitor metryki interfejsu API REST](https://docs
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{zasobu resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Identyfikator URI żądania**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{zasobu resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
 
 Na przykład aby pobierać definicje metryk dla konta usługi Azure Storage, żądanie będzie wyglądać następująco:
 
@@ -242,7 +242,7 @@ Nazwa metryki "value" (nie "localizedValue") na użytek filtrowania żądań. Je
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/*{— — przestrzeń nazw dostawcy zasobów}* / *{typ_zasobu}*/*{Nazwa zasobu}*/providers/microsoft.insights/metrics?metricnames=*{Metryka}*& timespan =*{starttime/endtime}*& $filter =*{filter}*& resultType = metadanych & parametru api-version =*{apiVersion}*
+**Identyfikator URI żądania**: https\://management.azure.com/subscriptions/*{identyfikator subskrypcji}*/resourceGroups/*{— Nazwa grupy zasobów —}*/providers/*{ — przestrzeń nazw dostawcy zasobów}*/*{typ_zasobu}*/*{Nazwa zasobu}*/providers/microsoft.insights/metrics? metricnames =*{Metryka}*& timespan =*{starttime/endtime}*& $filter =*{filter}*& resultType = metadanych & parametru api-version = *{apiVersion}*
 
 Na przykład, można pobrać listy wartości wymiarów, które zostały emitowane na "dimension Nazwa interfejsu API" dla metryki "Transakcji", gdzie wymiaru GeoType = "Podstawowa" w określonym czasie, żądanie będzie wyglądało następująco:
 
@@ -394,7 +394,7 @@ Użyj [definicje usługi Azure Monitor metryki interfejsu API REST](https://msdn
 
 **Metoda**: GET
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{zasobu resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Identyfikator URI żądania**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{zasobu resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
 
 Na przykład aby pobierać definicje metryk dla aplikacji logiki platformy Azure, żądanie będzie wyglądać następująco:
 

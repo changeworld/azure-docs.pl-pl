@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 96911efb541fc861aa7dd5f735efca8309763428
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4cb73ea08060336710207e026bb5bcc5a251efc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443100"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877925"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Usługa Service Fabric udostępnia zestaw interfejsów API, aby osiągnąć nast
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Klaster usługi Service Fabric za pomocą Service Fabric w wersji 6.2 i nowszych. Należy skonfigurować klaster w systemie Windows Server. Zapoznaj się z tym [artykułu](service-fabric-cluster-creation-via-arm.md) kroki umożliwiające utworzenie usługi Service Fabric klastra za pomocą szablonu zasobów platformy Azure.
 * Certyfikat X.509 do szyfrowania wymagane do połączenia z magazynem kluczy tajnych do przechowywania kopii zapasowych. Zapoznaj się [artykułu](service-fabric-cluster-creation-via-arm.md) wiedzieć, jak pobrać lub utworzyć certyfikat X.509.
-* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych na.Net Core 2.0, aplikacji powinny zostać skompilowane przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
+* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych dla platformy .NET Core 2.0, aplikacja powinna utworzona przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
 * Utwórz konto usługi Azure Storage do przechowywania kopii zapasowych aplikacji.
 
 ## <a name="enabling-backup-and-restore-service"></a>Włączanie usługi Kopia zapasowa i przywracanie

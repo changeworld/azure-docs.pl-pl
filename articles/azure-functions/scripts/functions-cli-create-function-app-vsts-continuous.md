@@ -9,16 +9,16 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 17e33e3c0e6b06266025a7f0e6403789c9468a16
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 7fe68090773902248dbcdd63fbbdbbdb06b307cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957485"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852393"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z usługi Azure DevOps
 
-W tym temacie przedstawiono instrukcje tworzenia [bezserwerowej](https://azure.microsoft.com/solutions/serverless/) aplikacji funkcji korzystającej z [planu Zużycie](../functions-scale.md#consumption-plan) w usłudze Azure Functions. Aplikacja funkcji, będąca kontenerem dla funkcji, będzie wdrażana w sposób ciągły z repozytorium usługi Azure DevOps. 
+W tym temacie przedstawiono instrukcje tworzenia [bezserwerowej](https://azure.microsoft.com/solutions/serverless/) aplikacji funkcji korzystającej z [planu Zużycie](../functions-scale.md#consumption-plan) w usłudze Azure Functions. Aplikacja funkcji, która jest kontenerem dla funkcji, jest wdrażana w sposób ciągły z repozytorium DevOps platformy Azure. 
 
 [!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
@@ -52,7 +52,7 @@ Ten skrypt zawiera następujące polecenia, służące do utworzenia grupy zasob
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w bezserwerowym [planie Zużycie](../functions-scale.md#consumption-plan). |
 | [az functionapp deployment source config](https://docs.microsoft.com/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Kojarzy aplikację funkcji z repozytorium Git lub Mercurial. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

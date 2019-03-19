@@ -3,18 +3,18 @@ title: Tworzenie aplikacji usługi Azure IoT Central | Microsoft Docs
 description: Tworzenie nowej aplikacji usługi Azure IoT Central. Utwórz aplikację typu Wersja próbna lub Płatność zgodnie z rzeczywistym użyciem przy użyciu szablonu aplikacji.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 02/20/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 3ffc361421f57b405c284742b662a833b178f9da
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.openlocfilehash: 5df798f0f5f9588b1f2cd792e99d6409e565337e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098080"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Tworzenie aplikacji usługi Azure IoT Central
 
@@ -29,14 +29,15 @@ Aby rozpocząć tworzenie nowej aplikacji usługi Azure IoT Central, wybierz poz
 Aby utworzyć nową aplikację usługi Azure IoT Central:
 
 1. Wybierz plan płatności:
-    - Aplikacje typu **Wersja próbna** są bezpłatne przez 7 dni, a następnie ich ważność wygasa. W dowolnym momencie przed wygaśnięciem można przekonwertować te aplikacje na typ Płatność zgodnie z rzeczywistym użyciem.
-    - Opłaty za aplikacje typu **Płatność za rzeczywiste użycie** są naliczane na urządzenie. 5 pierwszych urządzeń jest bezpłatnych.
+   - Aplikacje typu **Wersja próbna** są bezpłatne przez 7 dni, a następnie ich ważność wygasa. W dowolnym momencie przed wygaśnięciem można przekonwertować te aplikacje na typ Płatność zgodnie z rzeczywistym użyciem.
+   - Opłaty za aplikacje typu **Płatność za rzeczywiste użycie** są naliczane na urządzenie. 5 pierwszych urządzeń jest bezpłatnych.
 
-    Więcej informacji o cenach znajdziesz na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+     Więcej informacji o cenach znajdziesz na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 1. Wybierz przyjazną nazwę aplikacji, na przykład **Contoso IoT**. Usługa Azure IoT Central wygeneruje unikatowy prefiks adresu URL. Ten prefiks adresu URL możesz zmienić na łatwiejszy do zapamiętania.
 
 1. Wybierz szablon aplikacji. Szablon aplikacji może zawierać wstępnie zdefiniowane elementy, takie jak pulpity nawigacyjne i szablony urządzeń, które pomogą Ci rozpocząć pracę.
+
     | Szablon aplikacji | Opis |
     | -------------------- | ----------- |
     | Przykład dotyczący firmy Contoso       | Tworzy aplikację, która zawiera już utworzony szablon urządzenia typu Automat do sprzedaży z chłodziarką. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
@@ -44,20 +45,21 @@ Aby utworzyć nową aplikację usługi Azure IoT Central:
     | Aplikacja niestandardowa   | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
 
 1. Jeśli tworzysz aplikację typu **Płatność zgodnie z rzeczywistym użyciem**, musisz wybrać *katalog*, *subskrypcję platformy Azure* i *region*. 
-    - *Katalog* to katalog Azure Active Directory używany do tworzenia aplikacji. Zawiera on tożsamości użytkowników, poświadczenia i inne informacje o organizacji. Jeśli nie masz katalogu AAD, zostanie on utworzony automatycznie podczas tworzenia subskrypcji platformy Azure.
 
-    - *Subskrypcja platformy Azure* umożliwia tworzenie wystąpień usług platformy Azure. Usługa IoT Central przeprowadzi aprowizację zasobów w ramach subskrypcji. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie tworzenia konta platformy Azure](https://aka.ms/createazuresubscription). Po utworzeniu subskrypcji platformy Azure przejdź z powrotem do strony **Tworzenie aplikacji**. Nowa subskrypcja zostanie wyświetlona na liście rozwijanej **Subskrypcja platformy Azure**.
+   - *Katalog* jest usługi Azure Active Directory (AD) do tworzenia aplikacji. Zawiera on tożsamości użytkowników, poświadczenia i inne informacje o organizacji. Jeśli nie masz usługi Azure AD, utworzony automatycznie podczas tworzenia subskrypcji platformy Azure.
 
-    - *Region* to fizyczna lokalizacja, w której chcesz utworzyć aplikację. Zazwyczaj należy wybrać region, który jest fizycznie najbliżej urządzenia, co pozwoli na uzyskanie optymalnej wydajności. Listę regionów, w których usługa Azure IoT Central jest dostępna, można znaleźć na stronie [Dostępność produktów według regionów](https://azure.microsoft.com/regions/services/).
+   - *Subskrypcja platformy Azure* umożliwia tworzenie wystąpień usług platformy Azure. Usługa IoT Central przeprowadzi aprowizację zasobów w ramach subskrypcji. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie tworzenia konta platformy Azure](https://aka.ms/createazuresubscription). Po utworzeniu subskrypcji platformy Azure przejdź z powrotem do strony **Tworzenie aplikacji**. Nowa subskrypcja zostanie wyświetlona na liście rozwijanej **Subskrypcja platformy Azure**.
 
-    > [!Note]
-    > Po wybraniu regionu nie można później przenieść aplikacji do innego regionu.
+   - *Region* to fizyczna lokalizacja, w której chcesz utworzyć aplikację. Zazwyczaj należy wybrać region, który jest fizycznie najbliżej urządzenia, co pozwoli na uzyskanie optymalnej wydajności. Listę regionów, w których usługa Azure IoT Central jest dostępna, można znaleźć na stronie [Dostępność produktów według regionów](https://azure.microsoft.com/regions/services/).
 
-1. Kliknij pozycję **Utwórz**.
+     > [!Note]
+     > Po wybraniu regionu nie można później przenieść aplikacji do innego regionu.
 
-## <a name="next-steps"></a>Następne kroki
+1. Wybierz pozycję **Utwórz**.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono aplikację usługi IoT Central. Poniżej przedstawiono następny sugerowany krok:
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z prezentacją usługi IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central-tour)
+> [Zapoznaj się z prezentacją usługi IoT Central](overview-iot-central-tour.md)

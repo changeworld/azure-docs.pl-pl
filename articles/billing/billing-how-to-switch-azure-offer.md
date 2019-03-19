@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 6e0339808d65cd5b4acd7b77284ccedf7cdf1989
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902129"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835279"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Zmień subskrypcję Azure rozliczana według bieżącego użycia na inną ofertę
 
@@ -55,7 +55,7 @@ Jako [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-
 1. Kliknij pozycję **Przełącz na inną ofertę**. Ten przycisk jest dostępny tylko po wybraniu modelu płatności zgodnie z rzeczywistym użyciem i zakończeniu pierwszego okresu rozliczeniowego.
 
    ![Zwróć uwagę, przycisk przełącznika oferty w prawej części strony](./media/billing-how-to-switch-azure-offer/switchbutton.png)
-1. **Wybierz ofertę ma** z listy oferty można dostosować do Twojej subskrypcji. Tej listy różni się w oparciu o członkostwo, które Twoje konto jest skojarzone z. Jeśli nic nie jest dostępny, sprawdź [listę dostępnych ofert, możesz przełączyć się do](#whats-supported) i upewnij się, że masz prawo członkostwa. 
+1. **Wybierz ofertę ma** z listy oferty można dostosować do Twojej subskrypcji. Ta lista różni się w zależności od członkostwa, z którym jest skojarzone Twoje konto. Jeśli nic nie jest dostępny, sprawdź [listę dostępnych ofert, możesz przełączyć się do](#whats-supported) i upewnij się, że masz prawo członkostwa. 
 
    ![Wybierz oferty, którą chcesz przełączyć się do](./media/billing-how-to-switch-azure-offer/selectoffer.png)
 1. W zależności od oferty, w której na mogą pojawić się Uwaga dotycząca wpływ przełączania. Przejdź do tej listy dokładnie i postępuj zgodnie z instrukcjami, przed kontynuowaniem.
@@ -78,7 +78,7 @@ Oferta Azure *typu* masz subskrypcji platformy Azure. Na przykład [płatność 
 
 Może nie być wyświetlana **Przełącz na inną ofertę** przycisk, jeśli:
 
-* Nie masz na [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/). Obecnie tylko płatność za rzeczywiste użycie subskrypcje mogą być konwertowane na inną ofertę.
+* Nie masz na [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/). Obecnie tylko subskrypcje rozliczane zgodnie z rzeczywistym użyciem mogą być konwertowane na inną ofertę.
   * Jeśli używasz [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/), Dowiedz się, jak [Przeprowadź uaktualnienie do płatności](billing-upgrade-azure-subscription.md).
   * Aby przełączyć oferty z innej subskrypcji, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 * Możesz teraz nadal pierwszego okresu rozliczeniowego; trzeba poczekać, aż do końca, aby można było przełączyć oferty pierwszego okresu rozliczeniowego.
@@ -116,4 +116,4 @@ W dniu, migracja faktury są generowane dla wszystkich zaległych opłat. Nastę
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: e7230e9c4d97c1c3ba8f0cf20d32f5a59ea2219b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034526"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081104"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB obsługuje język przechodzenia przez graf struktury [Apache TinkerPop](https://tinkerpop.apache.org), [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), w postaci interfejsu API języka Gremlin do tworzenia jednostek grafu oraz wykonywania operacji zapytań na grafie. Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
@@ -181,7 +181,7 @@ Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę
 | `range` | Filtruje do określonego zakresu wartości| [krok range](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
 | `repeat` | Powtarza krok określoną liczbę razy. Używany do zapętlenia | [krok repeat](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
 | `sample` | Służy do próbkowania wyników z przejścia | [krok sample](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Służy do projektowania wyników z przejścia |  [krok select](https://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `select` | Służy do projektowania wyników z przejścia |  [krok select](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
 | `store` | Używany do nieblokujących agregacji z przejścia | [krok store](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
 | `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok tree](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
 | `unfold` | Odwija iterator w ramach kroku| [krok unfold](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |

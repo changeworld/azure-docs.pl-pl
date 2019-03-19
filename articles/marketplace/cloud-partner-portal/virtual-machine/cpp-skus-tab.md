@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4ecc259d40cdcba93a484f27e27191e967f10ff1
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e05813297707165d59d1b1ed969b54fb0f433277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639928"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848094"
 ---
 # <a name="virtual-machine-skus-tab"></a>Karty jednostki SKU maszyny wirtualnej
 
@@ -62,8 +62,8 @@ W poniższej tabeli opisano przeznaczenie zawartości i formatowania z tych pól
 | **Wybierz typ systemu operacyjnego** | Określonego dostawcy lub wersji określonego systemu operacyjnego. |
 | **Przyjazna nazwa OS** | Nazwa systemu operacyjnego, który ma być wyświetlany dla klientów.  |
 | **Zalecane rozmiary maszyn wirtualnych** | Umożliwia wybór maksymalnie sześć zalecane rozmiary maszyn wirtualnych z listy standardowych.  Te zalecenia są wyświetlane dla potencjalnych klientów, są one mogą określić dowolny rozmiar maszyny Wirtualnej, która jest zgodna z obrazem rozwiązania. | 
-| **Otwieranie portów**| Porty, aby otworzyć i protokołu w celu obsługi dla jednostki SKU.  Te konfiguracje musi być zgodna sieć wirtualną, skonfigurowanych dla sieci maszyny Wirtualnej rozwiązania. Te ustawienia zaczną obowiązywać podczas wdrażania maszyny Wirtualnej. Jednak ustawienia portu można zmodyfikować po opublikowaniu jednostkę SKU. Aby uzyskać więcej informacji, zobacz [jak otwierać porty do maszyny wirtualnej w witrynie Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Następujące domyślne mapowania sieci są dodawane do wszystkich maszyn wirtualnych. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP &emsp; Systemu Linux: 22 -> 22, TCP (SSH). |
-| **Wersje dyskowe**  | Rozwiązanie skojarzone maszyny Wirtualnej, określony przez numer wersji dysku i adres URL dysku. Wersja dysku musi mieć [wersji semantycznej](http://semver.org/) format: `<major>.<minor>.<patch>`.  Adres URL jest sygnatura dostępu współdzielonego, identyfikator URI utworzony dla wirtualnego dysku twardego systemu operacyjnego.  Mimo że można dodać maksymalnie osiem wersji dysków dla jednostek SKU, tylko najwyższy dysku numer wersji dla jednostki SKU pojawią się w witrynie Azure Marketplace. Inne wersje będzie widoczny tylko za pośrednictwem interfejsów API.  <!--TD: Add more specific link to API --> <br/> **Nowy dysk danych** kontrolki accordion sekcja umożliwia dołączanie do 15 dysków z danymi do maszyny Wirtualnej.  Po opublikowaniu jednostki SKU z daną wersją maszyny Wirtualnej i dysków z danymi skojarzonego nie można zmodyfikować tę konfigurację.  Jeśli dodatkowe wersje maszyny Wirtualnej poproś o dodanie Cię do jednostki SKU, musi również obsługiwać taką samą liczbę dysków z danymi. <br/> Twoje obrazy maszyny Wirtualnej systemu Azure nie została utworzona, można dodać później zaktualizować tego pola.  Aby uzyskać informacje dotyczące tworzenia skojarzony zasób maszynę Wirtualną, zobacz sekcję [Utwórz maszynę Wirtualną, zasoby techniczne](./cpp-create-technical-assets.md).  
+| **Otwieranie portów**| Porty, aby otworzyć i protokołu w celu obsługi dla jednostki SKU.  Te konfiguracje musi być zgodna sieć wirtualną, skonfigurowanych dla sieci maszyny Wirtualnej rozwiązania. Te ustawienia zaczną obowiązywać podczas wdrażania maszyny Wirtualnej. Jednak ustawienia portu można zmodyfikować po opublikowaniu jednostkę SKU. Aby uzyskać więcej informacji, zobacz [jak otwierać porty do maszyny wirtualnej w witrynie Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Następujące domyślne mapowania sieci są dodawane do wszystkich maszyn wirtualnych. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP; &emsp; Linux: 22 -> 22, TCP (SSH). |
+| **Wersje dyskowe**  | Rozwiązanie skojarzone maszyny Wirtualnej, określony przez numer wersji dysku i adres URL dysku. Wersja dysku musi mieć [wersji semantycznej](https://semver.org/) format: `<major>.<minor>.<patch>`.  Adres URL jest sygnatura dostępu współdzielonego, identyfikator URI utworzony dla wirtualnego dysku twardego systemu operacyjnego.  Mimo że można dodać maksymalnie osiem wersji dysków dla jednostek SKU, tylko najwyższy dysku numer wersji dla jednostki SKU pojawią się w witrynie Azure Marketplace. Inne wersje będzie widoczny tylko za pośrednictwem interfejsów API.  <!--TD: Add more specific link to API --> <br/> **Nowy dysk danych** kontrolki accordion sekcja umożliwia dołączanie do 15 dysków z danymi do maszyny Wirtualnej.  Po opublikowaniu jednostki SKU z daną wersją maszyny Wirtualnej i dysków z danymi skojarzonego nie można zmodyfikować tę konfigurację.  Jeśli dodatkowe wersje maszyny Wirtualnej poproś o dodanie Cię do jednostki SKU, musi również obsługiwać taką samą liczbę dysków z danymi. <br/> Twoje obrazy maszyny Wirtualnej systemu Azure nie została utworzona, można dodać później zaktualizować tego pola.  Aby uzyskać informacje dotyczące tworzenia skojarzony zasób maszynę Wirtualną, zobacz sekcję [Utwórz maszynę Wirtualną, zasoby techniczne](./cpp-create-technical-assets.md).  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 73a88ec0280728b4a485bd095096e90bbc43ef40
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106563"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -144,21 +144,21 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
 
 1. Wybierz aplikację sieci web. Otwiera widok podsumowania z trzema kartami:
 
-  - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
-  - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
-  - **Oceny niedostępne**: Lista ocen, którzy nie uruchomili z powodu błędu lub zalecenie nie jest odpowiednie dla określonej usługi App service
+   - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
+   - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
+   - **Oceny niedostępne**: Lista ocen, którzy nie uruchomili z powodu błędu lub zalecenie nie jest odpowiednie dla określonej usługi App service
 
-  W obszarze **zalecenia** listę zaleceń dla wybranej aplikacji sieci web i ważność poszczególne zalecenia.
+   W obszarze **zalecenia** listę zaleceń dla wybranej aplikacji sieci web i ważność poszczególne zalecenia.
 
-  ![Zalecenia dotyczące usług aplikacji](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
+   ![Zalecenia dotyczące usług aplikacji](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. Wybierz zalecenie, aby wyświetlić opis zalecenia oraz listę zasoby w złej kondycji, zasoby w dobrej kondycji i nieprzeskanowane zasoby.
 
- - W obszarze **przekazywane ocen** kolumnie znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
+   - W obszarze **przekazywane ocen** kolumnie znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
 
- -  Wybierz ocenę przekazany z listy opis oceny, lista zasobów w złej kondycji i w dobrej kondycji i listę nieprzeskanowane zasoby. Ma kartę zasoby w złej kondycji, ale ta lista jest zawsze pusta, ponieważ przekazana oceny.
+   - Wybierz ocenę przekazany z listy opis oceny, lista zasobów w złej kondycji i w dobrej kondycji i listę nieprzeskanowane zasoby. Ma kartę zasoby w złej kondycji, ale ta lista jest zawsze pusta, ponieważ przekazana oceny.
 
-    ![Korygowanie usługi App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+     ![Korygowanie usługi App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych
 Usługa Security Center automatycznie wykrywa, czy zestawy skali i zaleca się zainstalowanie programu Microsoft Monitoring Agent na tych zestawach skalowania. 
@@ -168,7 +168,7 @@ Aby zainstalować program Microsoft Monitoring Agent:
 1. Wybierz zalecenie **zainstalować agenta monitorowania w zestawie skalowania maszyn wirtualnych**. Możesz uzyskać listę zestawów skalowania niemonitorowane.
 2. Wybierz zestaw skalowania w złej kondycji. Postępuj zgodnie z instrukcjami, aby zainstalować agenta monitorowania przy użyciu istniejącego obszaru roboczego wypełnione lub Utwórz nową. Upewnij się ustawić obszaru roboczego [warstwy cenowej](security-center-pricing.md) Jeśli nie jest ustawiona.
 
- ![Zainstaluj usługę MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+   ![Zainstaluj usługę MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
 Jeśli chcesz ustawić nowe zestawy skalowania automatycznej instalacji programu Microsoft Monitoring Agent:
 1. Przejdź do usługi Azure Policy, a następnie kliknij przycisk **definicje**.

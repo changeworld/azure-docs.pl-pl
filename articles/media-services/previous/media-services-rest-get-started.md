@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d27b508362193b79d7464ae49683479b2f8fc7ba
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0efbabf658210c733a7a7f201cb4a36f63456b28
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991247"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835354"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST  
 
@@ -41,7 +41,7 @@ Następujące wymagania wstępne są wymagane, aby rozpocząć tworzenie aplikac
 * Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * Wiedzą, jak tworzyć aplikacje za pomocą interfejsu API REST usługi Media Services. Aby uzyskać więcej informacji, zobacz [omówienie interfejsu API REST usługi Media Services](media-services-rest-how-to-use.md).
-* Aplikacja, który można wysłać żądań i odpowiedzi HTTP. W tym samouczku [Fiddler](http://www.telerik.com/download/fiddler).
+* Aplikacja, który można wysłać żądań i odpowiedzi HTTP. W tym samouczku [Fiddler](https://www.telerik.com/download/fiddler).
 
 Następujące zadania są wyświetlane w tym przewodniku Szybki Start.
 
@@ -331,7 +331,7 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
 Po utworzeniu AccessPolicy i lokalizatora zestawu rzeczywisty plik zostanie przekazany do kontenera magazynu obiektów blob platformy Azure przy użyciu interfejsów API REST usługi Azure Storage. Należy przekazać pliki jako blokowe obiekty BLOB. Stronicowe obiekty BLOB nie są obsługiwane przez usługę Azure Media Services.  
 
 > [!NOTE]
-> Należy dodać nazwę pliku dla pliku, który chcesz przekazać do Lokalizator **ścieżki** wartość odebrana w poprzedniej sekcji. Na przykład: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Należy dodać nazwę pliku dla pliku, który chcesz przekazać do Lokalizator **ścieżki** wartość odebrana w poprzedniej sekcji. Na przykład `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
@@ -408,7 +408,7 @@ Jeśli to się powiedzie, jest zwracany następujące czynności:
 
 Po wprowadzane, które mogą być zakodowane zasoby do usługi Media Services, media, transmultipleksacji znakiem wodnym i tak dalej przed dostarczeniem do klientów. Te działania są zaplanowane i uruchamiane w wielu wystąpieniach ról w tle, aby zapewnić wysoką wydajność oraz dostępność. Te działania są nazywane zadaniami, a każde zadanie składa się z niepodzielnych podzadań, które wykonują rzeczywistą pracę w pliku zasobów (Aby uzyskać więcej informacji, zobacz [zadania](https://docs.microsoft.com/rest/api/media/operations/job), [zadań](https://docs.microsoft.com/rest/api/media/operations/task) opisy).
 
-Jak wspomniano wcześniej, podczas pracy za pomocą usługi Azure Media Services jednym z najbardziej typowych scenariuszy jest dostarczanie adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klientów. Usługa Media Services może utworzyć pakiet zestawu plików MP4 z adaptacyjną szybkością transmisji bitów w jednym z następujących formatów: HTTP na żywo przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH.
+Jak wspomniano wcześniej, podczas pracy za pomocą usługi Azure Media Services jednym z najbardziej typowych scenariuszy jest dostarczanie adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klientów. Usługa Media Services, korzystając z funkcji dynamicznego tworzenia pakietów, może utworzyć pakiet zestawu plików MP4 z adaptacyjną szybkością transmisji bitów w jednym z następujących formatów: HTTP na żywo przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH.
 
 W poniższej sekcji pokazano, jak utworzyć zadanie, które zawiera jedno zadanie kodowania. Zadanie określa transkodowanie pliku mezzanine do zestawu z każdego pliku MP4 z adaptacyjną szybkością transmisji bitów przy użyciu **Media Encoder Standard**. W sekcji przedstawiono również sposób monitorowania zadania postęp przetwarzania. Po zakończeniu zadania będzie możliwe do utworzenia lokalizatorów, które są niezbędne do uzyskiwania dostępu do zasobów.
 
@@ -459,7 +459,7 @@ Poniższy kod żądania identyfikator kodera.
     }
 
 ### <a name="create-a-job"></a>Tworzenie zadania
-Każde zadanie może mieć jedno lub więcej zadań, w zależności od rodzaju przetwarzania, które chcesz osiągnąć. Za pomocą interfejsu API REST można utworzyć zadań i ich powiązane zadania, w jeden z dwóch sposobów: Zadania mogą być zdefiniowano w tekście za pomocą właściwości nawigacji zadania na jednostkach zadania lub przetwarzanie wsadowe OData. Zestaw SDK usług Media Services korzysta z przetwarzania wsadowego. Aby zwiększyć czytelność, przykładowe kody w tym artykule, zadania są zdefiniowano w tekście. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Każde zadanie może mieć jedno lub więcej zadań, w zależności od rodzaju przetwarzania, które chcesz osiągnąć. Za pomocą interfejsu API REST można utworzyć zadań i ich powiązane zadania, w jeden z dwóch sposobów: Zadania mogą być zdefiniowano w tekście za pomocą właściwości nawigacji zadania na jednostkach zadania lub przetwarzanie wsadowe OData. Zestaw SDK usług Media Services korzysta z przetwarzania wsadowego. Aby zwiększyć czytelność, przykładowe kody w tym artykule, zadania są zdefiniowano w tekście. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Poniższy przykład pokazuje, jak utworzyć i opublikuj zadania przy użyciu jednego, ustawionych przez zadanie do zakodowania filmu w określonym rozwiązania i jakości. Poniższa sekcja dokumentacji zawiera listę wszystkich [zadań wstępne](https://msdn.microsoft.com/library/mt269960) obsługiwane przez procesora Media Encoder Standard.  
 
@@ -693,7 +693,7 @@ Poniższy kod pokazuje, jak żądania elementu zawartości wyjściowej identyfik
 
 ## <a id="publish_get_urls"></a>Publikowanie elementu zawartości i uzyskiwanie przesyłania strumieniowego i pobierania progresywnego adresy URL przy użyciu interfejsu API REST
 
-Aby przesłać strumieniowo lub pobrać element zawartości, należy go najpierw opublikować, tworząc lokalizator. Lokalizatory zapewniają dostęp do plików znajdujących się w elemencie zawartości. Usługa Media Services obsługuje dwa typy lokalizatorów: Lokalizatory OnDemandOrigin używane do przesyłania strumieniowego multimediów (na przykład MPEG DASH, HLS lub Smooth Streaming) oraz lokalizatory sygnatury dostępu Współdzielonego, używane do pobierania plików multimedialnych. 
+Aby przesłać strumieniowo lub pobrać element zawartości, należy go najpierw opublikować, tworząc lokalizator. Lokalizatory zapewniają dostęp do plików znajdujących się w elemencie zawartości. Usługa Media Services obsługuje dwa typy lokalizatorów: lokalizatory OnDemandOrigin używane do strumieniowego przesyłania plików multimedialnych (na przykład w formacie MPEG DASH, HLS i Smooth Streaming) oraz lokalizatory sygnatury dostępu współdzielonego (SAS) używane do pobierania plików multimedialnych. 
 
 Po utworzeniu lokalizatorów można tworzyć adresy URL, które są używane do przesyłania strumieniowego lub pobierania plików.
 
@@ -817,8 +817,6 @@ Po utworzeniu AccessPolicy i lokalizatora zestawu, możesz pobrać pliki przy u�
 
 > [!NOTE]
 > Należy dodać nazwę pliku dla pliku chcesz pobrać Lokalizator **ścieżki** wartość odebrana w poprzedniej sekcji. Na przykład: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
->
->
 
 Aby uzyskać więcej informacji na temat pracy z obiektami blob usługi Azure storage, zobacz [interfejsu API REST usługi Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
@@ -912,7 +910,7 @@ Do przesyłania strumieniowego MPEG DASH, Dołącz (format = mpd-time-csf) po "/
 
 
 ## <a id="play"></a>Odtwarzanie zawartości
-Do przesyłania strumieniowego zawartości wideo użyj [odtwarzacza usługi Azure Media Services](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+Do przesyłania strumieniowego zawartości wideo użyj [odtwarzacza usługi Azure Media Services](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 Aby przetestować pobieranie progresywne, wklej adres URL do przeglądarki (na przykład programu Internet Explorer, Chrome, Safari).
 

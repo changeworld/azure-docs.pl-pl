@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039473"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002370"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
@@ -190,7 +190,7 @@ Teraz można zainstalować na serwerze konfiguracji:
 
 > [!NOTE]
 > Serwer konfiguracji można również zainstalować z poziomu wiersza polecenia. [Dowiedz się więcej](physical-manage-configuration-server.md#install-from-the-command-line).
-
+> 
 > Zanim nazwa konta pojawi się w portalu, może minąć 15 minut lub więcej. Aby wykonać natychmiastową aktualizację, wybierz pozycje **Serwery konfiguracji** > ***nazwa serwera*** > **Odśwież serwer**.
 
 ## <a name="step-4-set-up-the-target-environment"></a>Krok 4: Konfigurowanie środowiska docelowego
@@ -249,9 +249,9 @@ Upewnij się, że ukończono wszystkie zadania w [krok 1: Przygotuj maszynę](#s
 
 > [!NOTE]
 > Po włączeniu replikacji maszyny wirtualnej usługa Site Recovery instaluje usługę mobilności.
-
+> 
 > Zastosowanie zmian i wyświetlenie ich w portalu może potrwać 15 minut lub dłużej.
-
+> 
 > Aby monitorować dodawane maszyny wirtualne, możesz sprawdzić czas ostatniego odnalezienia maszyn wirtualnych w obszarze **Serwery konfiguracji** > **Ostatni kontakt**. Aby dodać maszyny wirtualne, nie czekając na zaplanowane odnajdywanie, wyróżnij serwer konfiguracji (nie wybieraj go), a następnie wybierz pozycję **Odśwież**.
 
 
@@ -280,7 +280,7 @@ Po uruchomieniu próby przejścia w tryb failover wykonywane są następujące o
 2. Tryb failover przetwarza dane przy użyciu określony punkt odzyskiwania:
     - **Najnowszy przetworzony**: Maszyny wirtualnej za pośrednictwem do najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Wyświetlana jest sygnatura czasowa. Ta opcja zapewnia niską wartość celu czasu odzyskiwania (RTO, Recovery Time Objective), ponieważ nie trzeba poświęcać czasu na przetwarzanie danych.
     - **Najnowszy spójny na poziomie aplikacji**: Maszyny wirtualnej za pośrednictwem do najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
-    - **Niestandardowe**: Wybierz punkt odzyskiwania do trybu failover.
+    - **Niestandardowy**: Wybierz punkt odzyskiwania do trybu failover.
 
 3. Maszynę wirtualną platformy Azure zostanie utworzona przetworzone dane.
 4. Testowanie trybu failover można wyczyścić automatycznie utworzone podczas testowania odzyskiwania po awarii maszyn wirtualnych platformy Azure.

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/7/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6f5a20dc911faa9d6d8948543b6391d4a8ec2c9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: ed1c7cd88bb5abf27066658f175d2447d334ce6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883753"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją TargetProcess
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji TargetProcess z usługą Azure AD, musi
 
 **Aby dodać aplikację TargetProcess z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -156,7 +156,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji TargetProc
 
     b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL usługi logowania jednokrotnego języka SAML** skopiowanej z witryny Azure Portal.
 
-    d. Otwórz pobrany certyfikat w programie Notatnik, skopiuj zawartość, a następnie wklej ją w polu tekstowym **Certyfikat**.
+    c. Otwórz pobrany certyfikat w programie Notatnik, skopiuj zawartość, a następnie wklej ją w polu tekstowym **Certyfikat**.
 
     d. Kliknij pozycję **Włącz aprowizowanie JIT**.
 
@@ -183,7 +183,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -225,7 +225,7 @@ Celem tej sekcji utworzenie użytkownika o nazwie Britta Simon w aplikacji Targe
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka TargetProcess w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji TargetProcess, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8898149e6858c5a1cdb2d4510ad2764ffe25fda5
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964257"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894125"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Skonfiguruj zarządzanie potencjalnymi klientami przy użyciu punktu końcowego HTTPS
 
@@ -88,7 +88,7 @@ Punkt końcowy HTTPS można użyć do obsługi portalu Azure Marketplace i AppSo
    - **Aby** -Wprowadź co najmniej jeden prawidłowy adres e-mail.
    - **Temat** -Flow zapewnia możliwość dodawania zawartości dynamicznej, takie jak **LeadSource** na poniższym zrzucie ekranu.
 
-    ![Dodawanie akcji poczty e-mail przy użyciu zawartości dynamicznej](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![Dodawanie akcji poczty e-mail przy użyciu zawartości dynamicznej](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
    - **Treść** — z listy zawartości dynamicznej, Dodaj potrzebne informacje w treści wiadomości e-mail. Na przykład, LastName, FirstName, poczty E-mail, i firmowych.
 
@@ -117,7 +117,7 @@ Przykład testu JSON korzysta z następującego schematu:
 
 ``` json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "https://json-schema.org/draft-04/schema#",
   "definitions": {},
   "id": "http://example.com/example.json",
   "properties": {

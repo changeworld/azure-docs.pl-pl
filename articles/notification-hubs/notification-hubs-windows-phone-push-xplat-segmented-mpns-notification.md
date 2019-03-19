@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9bd3142a8b72b042db82576f63549a3c722b8d33
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 10f8c2e21f2dcf8c108576d54fe6776ecf04a0f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674228"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861324"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do konkretnych urządzeń z systemem Windows Phone przy użyciu usługi Azure Notification Hubs
 
@@ -306,7 +306,7 @@ Aplikacja jest teraz zakończona i może przechowywać w magazynie lokalnym na u
 
     ![Komunikat z powiadomieniem][3]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych urządzeń, które mają tagi skojarzone z rejestracjami. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, którzy mogą używać wielu urządzeń, przejdź do następującego samouczka: 
 
@@ -330,5 +330,5 @@ W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnyc
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Phone]: ??

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 565b5bcce114ab5ebd2169ece11a958013cf2ee5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: eadff8e2db6e5b8ea19b041614e0d1f3908da8a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876888"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Skonfigurowanie sieciowej grupy zabezpieczeń dzienników przepływów przy użyciu interfejsu API REST
 
@@ -209,7 +209,7 @@ Oto przykład odpowiedzi zwróconej:
 
 ## <a name="download-a-flow-log"></a>Pobierz dziennik przepływu
 
-Lokalizacja magazynu dziennika przepływu jest zdefiniowany podczas tworzenia. Wygodne narzędzie dostępu do tych dzienników przepływu zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  http://storageexplorer.com/
+Lokalizacja magazynu dziennika przepływu jest zdefiniowany podczas tworzenia. Wygodne narzędzie dostępu do tych dzienników przepływu zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  https://storageexplorer.com/
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
 

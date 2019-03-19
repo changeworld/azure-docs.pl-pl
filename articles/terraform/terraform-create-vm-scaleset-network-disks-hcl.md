@@ -2,18 +2,18 @@
 title: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu narzędzia Terraform
 description: Samouczek dotyczący konfigurowania i wersjonowania zestawu skalowania maszyn wirtualnych platformy Azure wraz z siecią wirtualną i zarządzanymi dołączonymi dyskami przy użyciu narzędzia Terraform
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtual machine, Azure, scale set, network, storage, modules
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 7d23e9113b83970d0cfee8f96989faa2c2760421
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745830"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002312"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu narzędzia Terraform
 
@@ -41,7 +41,7 @@ W tym samouczku wyjaśniono, jak za pomocą usługi [Azure Cloud Shell](/azure/c
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
-1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
@@ -80,25 +80,25 @@ W usłudze Azure Cloud Shell wykonaj następujące czynności:
 
 1. Wklej następujący kod do edytora:
 
-  ```JSON
-  variable "location" {
+   ```JSON
+   variable "location" {
     description = "The location where resources will be created"
-  }
+   }
 
-  variable "tags" {
+   variable "tags" {
     description = "A map of the tags to use for the resources that are deployed"
     type        = "map"
 
     default = {
       environment = "codelab"
     }
-  }
+   }
 
-  variable "resource_group_name" {
+   variable "resource_group_name" {
     description = "The name of the resource group in which the resources will be created"
     default     = "myResourceGroup"
-  }
-  ```
+   }
+   ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
@@ -122,13 +122,13 @@ W usłudze Azure Cloud Shell wykonaj następujące czynności:
 1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej do edytora poniższy kod, aby uwidocznić w pełni kwalifikowaną nazwę domeny (FQDN) dla maszyn wirtualnych.
-:
+   :
 
-  ```JSON
+   ```JSON
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
-  ```
+   ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
@@ -157,78 +157,78 @@ W usłudze Azure Cloud Shell wykonaj następujące czynności:
 
 1. Na końcu pliku wklej poniższy kod, aby uwidocznić w pełni kwalifikowaną nazwę domeny (FQDN) dla maszyn wirtualnych.
 
-  ```JSON
-  resource "azurerm_resource_group" "vmss" {
+   ```JSON
+   resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
     tags     = "${var.tags}"
-  }
+   }
 
-  resource "random_string" "fqdn" {
+   resource "random_string" "fqdn" {
     length  = 6
     special = false
     upper   = false
     number  = false
-  }
+   }
 
-  resource "azurerm_virtual_network" "vmss" {
+   resource "azurerm_virtual_network" "vmss" {
     name                = "vmss-vnet"
     address_space       = ["10.0.0.0/16"]
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
     tags                = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_subnet" "vmss" {
+   resource "azurerm_subnet" "vmss" {
     name                 = "vmss-subnet"
     resource_group_name  = "${azurerm_resource_group.vmss.name}"
     virtual_network_name = "${azurerm_virtual_network.vmss.name}"
     address_prefix       = "10.0.2.0/24"
-  }
+   }
 
-  resource "azurerm_public_ip" "vmss" {
+   resource "azurerm_public_ip" "vmss" {
     name                         = "vmss-public-ip"
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vmss.name}"
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}"
     tags                         = "${var.tags}"
-  }
-  ```
+   }
+   ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
 1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
-  ```bash
-  :wq
-  ```
+   ```bash
+   :wq
+   ```
 
 ## <a name="provision-the-network-infrastructure"></a>Aprowizowanie infrastruktury sieci
 Używając usługi Azure Cloud Shell z katalogu, w którym zostały utworzone pliki konfiguracji (.tf), wykonaj następujące kroki:
 
 1. Zainicjuj narzędzie Terraform.
 
-  ```bash
-  terraform init
-  ```
+   ```bash
+   terraform init
+   ```
 
 1. Uruchom poniższe polecenie, aby wdrożyć zdefiniowaną infrastrukturę na platformie Azure.
 
-  ```bash
-  terraform apply
-  ```
+   ```bash
+   terraform apply
+   ```
 
-  Narzędzie Terraform wyświetli monit o podanie wartości zmiennej „location”, ponieważ zmienna **location** jest zdefiniowana w pliku `variables.tf`, ale nigdy nie została ustawiona. Możesz wprowadzić dowolną prawidłową lokalizację, np. „Zachodnie stany USA”, a następnie nacisnąć klawisz Enter. (Wokół każdej wartości zawierającej spacje użyj nawiasów).
+   Narzędzie Terraform wyświetli monit o podanie wartości zmiennej „location”, ponieważ zmienna **location** jest zdefiniowana w pliku `variables.tf`, ale nigdy nie została ustawiona. Możesz wprowadzić dowolną prawidłową lokalizację, np. „Zachodnie stany USA”, a następnie nacisnąć klawisz Enter. (Wokół każdej wartości zawierającej spacje użyj nawiasów).
 
 1. Narzędzie Terraform wyświetli dane wyjściowe zgodnie z definicją w pliku `output.tf`. Jak pokazano na poniższym zrzucie ekranu, nazwa FQDN przyjmuje postać &lt;id>.&lt;location>.cloudapp.azure.com. Wartość id jest wartością obliczoną, a location to wartość podana podczas uruchamiania narzędzia Terraform.
 
-  ![W pełni kwalifikowana nazwa domeny zestawu skalowania maszyn wirtualnych dla publicznego adresu IP](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+   ![W pełni kwalifikowana nazwa domeny zestawu skalowania maszyn wirtualnych dla publicznego adresu IP](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
 1. Z menu głównego w witrynie Azure Portal wybierz pozycję **Grupy zasobów**.
 
 1. Na karcie **Grupy zasobów** wybierz pozycję **myResourceGroup**, aby wyświetlić zasoby, które zostały utworzone przez narzędzie Terraform.
-  ![Zasoby sieciowe zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
+   ![Zasoby sieciowe zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
 
 ## <a name="add-a-virtual-machine-scale-set"></a>Dodawanie zestawu skalowania maszyn wirtualnych
 
@@ -238,22 +238,22 @@ W tej sekcji nauczysz się, jak dodać do szablonu następujące zasoby:
 - Pula adresów zaplecza platformy Azure i przypisywanie jej do modułu równoważenia obciążenia
 - Port sondy kondycji używany przez aplikację i skonfigurowany w module równoważenia obciążenia
 - Zestaw skalowania maszyn wirtualnych stojący za modułem równoważenia obciążenia, który jest uruchamiany w sieci wirtualnej wdrożonej we wcześniejszej części tego artykułu
-- Serwer [nginx](http://nginx.org/) na węzłach skalowania maszyny wirtualnej korzystający z pakietu [cloud-init](http://cloudinit.readthedocs.io/en/latest/).
+- Serwer [nginx](https://nginx.org/) na węzłach skalowania maszyny wirtualnej korzystający z pakietu [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
 
 W usłudze Cloud Shell wykonaj następujące kroki:
 
 1. Otwórz plik konfiguracji `vmss.tf`.
 
-  ```bash
-  vi vmss.tf
-  ```
+   ```bash
+   vi vmss.tf
+   ```
 
 1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
 1. Na końcu pliku wklej następujący kod:
 
-  ```JSON
-  resource "azurerm_lb" "vmss" {
+   ```JSON
+   resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
@@ -264,22 +264,22 @@ W usłudze Cloud Shell wykonaj następujące kroki:
     }
 
     tags = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_lb_backend_address_pool" "bpepool" {
+   resource "azurerm_lb_backend_address_pool" "bpepool" {
     resource_group_name = "${azurerm_resource_group.vmss.name}"
     loadbalancer_id     = "${azurerm_lb.vmss.id}"
     name                = "BackEndAddressPool"
-  }
+   }
 
-  resource "azurerm_lb_probe" "vmss" {
+   resource "azurerm_lb_probe" "vmss" {
     resource_group_name = "${azurerm_resource_group.vmss.name}"
     loadbalancer_id     = "${azurerm_lb.vmss.id}"
     name                = "ssh-running-probe"
     port                = "${var.application_port}"
-  }
+   }
 
-  resource "azurerm_lb_rule" "lbnatrule" {
+   resource "azurerm_lb_rule" "lbnatrule" {
       resource_group_name            = "${azurerm_resource_group.vmss.name}"
       loadbalancer_id                = "${azurerm_lb.vmss.id}"
       name                           = "http"
@@ -289,9 +289,9 @@ W usłudze Cloud Shell wykonaj następujące kroki:
       backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
       frontend_ip_configuration_name = "PublicIPAddress"
       probe_id                       = "${azurerm_lb_probe.vmss.id}"
-  }
+   }
 
-  resource "azurerm_virtual_machine_scale_set" "vmss" {
+   resource "azurerm_virtual_machine_scale_set" "vmss" {
     name                = "vmscaleset"
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
@@ -348,8 +348,8 @@ W usłudze Cloud Shell wykonaj następujące kroki:
     }
 
     tags = "${var.tags}"
-}
-  ```
+   }
+   ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
@@ -369,77 +369,77 @@ W usłudze Cloud Shell wykonaj następujące kroki:
 
 1. Wklej następujący kod do edytora:
 
-  ```JSON
-  #cloud-config
-  packages:
+   ```JSON
+   #cloud-config
+   packages:
     - nginx
-  ```
+   ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
 1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
-    ```bash
-    :wq
-    ```
+     ```bash
+     :wq
+     ```
 
 1. Otwórz plik konfiguracji `variables.tf`.
 
-  ```bash
-  vi variables.tf
-  ```
+    ```bash
+    vi variables.tf
+    ```
 
 1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
 1. Dostosuj wdrożenie, wklejając na końcu pliku następujący kod:
 
-  ```JSON
-  variable "application_port" {
-      description = "The port that you want to expose to the external load balancer"
-      default     = 80
-  }
+    ```JSON
+    variable "application_port" {
+       description = "The port that you want to expose to the external load balancer"
+       default     = 80
+    }
 
-  variable "admin_user" {
-      description = "User name to use as the admin account on the VMs that will be part of the VM Scale Set"
-      default     = "azureuser"
-  }
+    variable "admin_user" {
+       description = "User name to use as the admin account on the VMs that will be part of the VM Scale Set"
+       default     = "azureuser"
+    }
 
-  variable "admin_password" {
-      description = "Default password for admin account"
-  }
-  ```
+    variable "admin_password" {
+       description = "Default password for admin account"
+    }
+    ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
 1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
-    ```bash
-    :wq
-    ```
+     ```bash
+     :wq
+     ```
 
 1. Utwórz plan narzędzia Terraform, aby zwizualizować wdrożenie zestawu skalowania maszyn wirtualnych. (Musisz określić wybrane przez siebie hasło, a także lokalizację swoich zasobów).
 
-  ```bash
-  terraform plan
-  ```
+    ```bash
+    terraform plan
+    ```
 
-  Dane wyjściowe polecenia powinny wyglądać podobnie jak na poniższym zrzucie ekranu:
+    Dane wyjściowe polecenia powinny wyglądać podobnie jak na poniższym zrzucie ekranu:
 
-  ![Dane wyjściowe z utworzenia zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
+    ![Dane wyjściowe z utworzenia zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
 
 1. Wdróż nowe zasoby na platformie Azure.
 
-  ```bash
-  terraform apply
-  ```
+    ```bash
+    terraform apply
+    ```
 
-  Dane wyjściowe polecenia powinny wyglądać podobnie jak na poniższym zrzucie ekranu:
+    Dane wyjściowe polecenia powinny wyglądać podobnie jak na poniższym zrzucie ekranu:
 
-  ![Grupa zasobów zestawu skalowania maszyn wirtualnych narzędzia Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
+    ![Grupa zasobów zestawu skalowania maszyn wirtualnych narzędzia Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
 1. Otwórz przeglądarkę i połącz się z nazwą FQDN, która została zwrócona przez polecenie.
 
-  ![Wyniki przejścia do w pełni kwalifikowanej nazwy domeny](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
+    ![Wyniki przejścia do w pełni kwalifikowanej nazwy domeny](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
 ## <a name="add-an-ssh-jumpbox"></a>Dodawanie rampy SSH
 *Rampa* SSH to pojedynczy serwer, przez który „przeskakujesz”, aby uzyskać dostęp do innych serwerów w sieci. W tym kroku skonfigurujesz następujące zasoby:
@@ -450,25 +450,25 @@ W usłudze Cloud Shell wykonaj następujące kroki:
 
 1. Otwórz plik konfiguracji `vmss.tf`.
 
-  ```bash
-  vi vmss.tf
-  ```
+   ```bash
+   vi vmss.tf
+   ```
 
 1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
 1. Na końcu pliku wklej następujący kod:
 
-  ```JSON
-  resource "azurerm_public_ip" "jumpbox" {
+   ```JSON
+   resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vmss.name}"
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
     tags                         = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_network_interface" "jumpbox" {
+   resource "azurerm_network_interface" "jumpbox" {
     name                = "jumpbox-nic"
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
@@ -481,9 +481,9 @@ W usłudze Cloud Shell wykonaj następujące kroki:
     }
 
     tags = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_virtual_machine" "jumpbox" {
+   resource "azurerm_virtual_machine" "jumpbox" {
     name                  = "jumpbox"
     location              = "${var.location}"
     resource_group_name   = "${azurerm_resource_group.vmss.name}"
@@ -515,24 +515,24 @@ W usłudze Cloud Shell wykonaj następujące kroki:
     }
 
     tags = "${var.tags}"
-  }
-  ```
+   }
+   ```
 
 1. Otwórz plik konfiguracji `output.tf`.
 
-  ```bash
-  vi output.tf
-  ```
+   ```bash
+   vi output.tf
+   ```
 
 1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
 1. Na końcu pliku wklej następujący kod, aby po ukończeniu wdrożenia wyświetlić nazwę hosta rampy:
 
-  ```
-  output "jumpbox_public_ip" {
+   ```
+   output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
-  }
-  ```
+   }
+   ```
 
 1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
@@ -544,9 +544,9 @@ W usłudze Cloud Shell wykonaj następujące kroki:
 
 1. Wdróż rampę.
 
-  ```bash
-  terraform apply
-  ```
+   ```bash
+   terraform apply
+   ```
 
 Po zakończeniu wdrożenia zawartość grupy zasobów powinna przypominać tę, którą pokazano na poniższym zrzucie ekranu:
 
@@ -565,7 +565,7 @@ terraform destroy
 
 Proces niszczenia może potrwać kilka minut.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób tworzenia zestawu skalowania maszyn wirtualnych platformy Azure za pomocą narzędzia Terraform. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure:
 
 [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)

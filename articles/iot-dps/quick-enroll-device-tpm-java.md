@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4c494eda7126a21223f65a7e52c220fca93b2e39
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: ae1fbd93b26838b262dc6f07081f20b63e853d5c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104747"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Rejestrowanie urządzenia TPM w usłudze IoT Hub Device Provisioning przy użyciu zestawu SDK usługi Java
 
@@ -65,53 +65,53 @@ W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzen
 
 2. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_**. Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
 
-    1. Dodaj ciąg `[Provisioning Connection String]` dla usługi aprowizacji z portalu, jako pokazano poniżej:
-        1. Przejdź do usługi aprowizacji w witrynie [Azure Portal](https://portal.azure.com). 
-        2. Otwórz **Zasady dostępu współużytkowanego** i wybierz zasadę, która ma uprawnienie *EnrollmentWrite*.
-        3. Skopiuj **Parametry połączenia klucza podstawowego**. 
+   1. Dodaj ciąg `[Provisioning Connection String]` dla usługi aprowizacji z portalu, jako pokazano poniżej:
+       1. Przejdź do usługi aprowizacji w witrynie [Azure Portal](https://portal.azure.com). 
+       2. Otwórz **Zasady dostępu współużytkowanego** i wybierz zasadę, która ma uprawnienie *EnrollmentWrite*.
+       3. Skopiuj **Parametry połączenia klucza podstawowego**. 
 
-            ![Pobieranie parametrów połączenia aprowizacji z portalu](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
+           ![Pobieranie parametrów połączenia aprowizacji z portalu](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-        4. W przykładowym pliku kodu **_ServiceEnrollmentSample.java_** zastąp ciąg `[Provisioning Connection String]` **parametrami połączenia klucza podstawowego**.
+       4. W przykładowym pliku kodu **_ServiceEnrollmentSample.java_** zastąp ciąg `[Provisioning Connection String]` **parametrami połączenia klucza podstawowego**.
     
-            ```Java
-            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
-            ```
+           ```Java
+           private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
+           ```
 
-    2. Dodaj szczegóły urządzenia TPM:
-        1. Pobierz *identyfikator rejestracji* i *klucz poręczenia modułu TPM* na potrzeby symulacji urządzenia TPM, wykonując kroki prowadzące do sekcji [Symulowanie urządzenia TPM](quick-create-simulated-device.md#simulatetpm).
-        2. Użyj **_identyfikatora rejestracji_** i **_klucza poręczenia_** z danych wyjściowych poprzedniego kroku, aby zastąpić ciągi `[RegistrationId]` i `[TPM Endorsement Key]` w przykładowym pliku kodu **_ServiceEnrollmentSample.java_**:
+   2. Dodaj szczegóły urządzenia TPM:
+       1. Pobierz *identyfikator rejestracji* i *klucz poręczenia modułu TPM* na potrzeby symulacji urządzenia TPM, wykonując kroki prowadzące do sekcji [Symulowanie urządzenia TPM](quick-create-simulated-device.md#simulatetpm).
+       2. Użyj **_identyfikatora rejestracji_** i **_klucza poręczenia_** z danych wyjściowych poprzedniego kroku, aby zastąpić ciągi `[RegistrationId]` i `[TPM Endorsement Key]` w przykładowym pliku kodu **_ServiceEnrollmentSample.java_**:
         
+           ```Java
+           private static final String REGISTRATION_ID = "[RegistrationId]";
+           private static final String TPM_ENDORSEMENT_KEY = "[TPM Endorsement Key]";
+           ```
+
+   3. Opcjonalnie możesz skonfigurować usługę aprowizacji za pośrednictwem przykładowego kodu:
+      - Aby dodać tę konfigurację do przykładu, wykonaj następujące kroki:
+        1. Przejdź do centrum IoT połączonego z usługą aprowizacji w witrynie [Azure Portal](https://portal.azure.com). Otwórz kartę **Przegląd** centrum i skopiuj wartość pola **Nazwa hosta**. Przypisz tę **nazwę hosta** do parametru *IOTHUB_HOST_NAME*.
             ```Java
-            private static final String REGISTRATION_ID = "[RegistrationId]";
-            private static final String TPM_ENDORSEMENT_KEY = "[TPM Endorsement Key]";
+            private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
             ```
-
-    3. Opcjonalnie możesz skonfigurować usługę aprowizacji za pośrednictwem przykładowego kodu:
-        - Aby dodać tę konfigurację do przykładu, wykonaj następujące kroki:
-            1. Przejdź do centrum IoT połączonego z usługą aprowizacji w witrynie [Azure Portal](https://portal.azure.com). Otwórz kartę **Przegląd** centrum i skopiuj wartość pola **Nazwa hosta**. Przypisz tę **nazwę hosta** do parametru *IOTHUB_HOST_NAME*.
-                ```Java
-                private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
-                ```
-            2. Przypisz przyjazną nazwę do parametru *DEVICE_ID* i zachowaj dla parametru *PROVISIONING_STATUS* wartość domyślną *ENABLED*. 
+        2. Przypisz przyjazną nazwę do parametru *DEVICE_ID* i zachowaj dla parametru *PROVISIONING_STATUS* wartość domyślną *ENABLED*. 
     
-        - LUB, jeśli nie chcesz konfigurować usługi aprowizacji, oznacz jako komentarze bądź usuń następujące instrukcje w pliku _ServiceEnrollmentSample.java_:
-            ```Java
-            // The following parameters are optional. Remove it if you don't need.
-            individualEnrollment.setDeviceId(DEVICE_ID);
-            individualEnrollment.setIotHubHostName(IOTHUB_HOST_NAME);
-            individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
-            ```
+      - LUB, jeśli nie chcesz konfigurować usługi aprowizacji, oznacz jako komentarze bądź usuń następujące instrukcje w pliku _ServiceEnrollmentSample.java_:
+          ```Java
+          // The following parameters are optional. Remove it if you don't need.
+          individualEnrollment.setDeviceId(DEVICE_ID);
+          individualEnrollment.setIotHubHostName(IOTHUB_HOST_NAME);
+          individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
+          ```
 
-    4. Przejrzyj przykładowy kod. Tworzy on, aktualizuje i usuwa rejestrację indywidualną urządzenia TPM oraz wykonuje względem niej zapytanie. Aby sprawdzić poprawność rejestracji w portalu, tymczasowo oznacz jako komentarz następujące wiersze kodu na końcu pliku _ServiceEnrollmentSample.java_:
+   4. Przejrzyj przykładowy kod. Tworzy on, aktualizuje i usuwa rejestrację indywidualną urządzenia TPM oraz wykonuje względem niej zapytanie. Aby sprawdzić poprawność rejestracji w portalu, tymczasowo oznacz jako komentarz następujące wiersze kodu na końcu pliku _ServiceEnrollmentSample.java_:
     
-        ```Java
-        // *********************************** Delete info of individualEnrollment ************************************
-        System.out.println("\nDelete the individualEnrollment...");
-        provisioningServiceClient.deleteIndividualEnrollment(REGISTRATION_ID);
-        ```
+       ```Java
+       // *********************************** Delete info of individualEnrollment ************************************
+       System.out.println("\nDelete the individualEnrollment...");
+       provisioningServiceClient.deleteIndividualEnrollment(REGISTRATION_ID);
+       ```
 
-    5. Zapisz plik _ServiceEnrollmentSample.java_.
+   5. Zapisz plik _ServiceEnrollmentSample.java_.
 
 <a id="runjavasample"></a>
 
@@ -147,7 +147,7 @@ Jeśli planujesz eksplorować przykładową usługę Java, nie usuwaj zasobów u
 1. Zamknij okno symulatora modułu TPM, które mogło zostać utworzone do symulacji urządzenia TPM.
 1. Przejdź do usługi Device Provisioning w witrynie Azure Portal, kliknij pozycję **Zarządzanie rejestracjami**, a następnie wybierz kartę **Rejestracje indywidualne**. Wybierz *Identyfikator rejestracji* urządzenia zarejestrowanego w ramach tego przewodnika Szybki start i kliknij przycisk **Usuń** u góry bloku. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start zarejestrowano urządzenie TPM w usłudze Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
 
 > [!div class="nextstepaction"]

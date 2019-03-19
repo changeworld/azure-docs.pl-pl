@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd90cd18be1fdbac5948fb076a3358b070bad8eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455076"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57836984"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -149,7 +149,7 @@ Usługa Azure AD Connect uaktualnianie kończy się niepowodzeniem, jeśli zawsz
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy 
 
-- Usunięto usterkę, w którym serwer AAD Connect pokazywałaby wysokie użycie procesora CPU po uaktualnieniu do wersji .net 4.7.2
+- Usunięto usterkę, w którym serwer AAD Connect pokazywałaby wysokie użycie procesora CPU po uaktualnieniu do wersji .NET 4.7.2
 - Naprawiono usterkę, która sporadycznie wywołałoby komunikat o błędzie dotyczącym problemu automatycznie rozwiązany zakleszczenia SQL
 - Rozwiązano kilka problemów ułatwień dostępu dla Edytor reguł synchronizacji i synchronizacji Service Manager  
 - Usunięto usterkę, w którym program Azure AD Connect nie można uzyskać informacje o ustawieniach rejestru
@@ -180,12 +180,12 @@ Nowe funkcje i ulepszenia
 - Konfiguracja zapisywania zwrotnego urządzeń jest teraz zarządzana wyłącznie w ramach usługi Azure AD Kreatora programu Connect.
 - Nowy moduł programu PowerShell o nazwie ADSyncTools.psm1 zostanie dodany używanym rozwiązywać problemy z połączeniem SQL i różnych innych narzędzi rozwiązywania problemów. Dowiedz się więcej o ADSyncTools module [tutaj](tshoot-connect-tshoot-sql-connectivity.md). 
 - Dodano dodatkowe nowe zadanie "Konfiguruj opcje urządzenia". Zadania umożliwiają skonfigurowanie następujące dwie operacje: 
-    -   **Dołączenie do hybrydowej usługi Azure AD**: Jeśli środowisko ma lokalną infrastrukturę usługi AD i chcesz również wykorzystać możliwości zapewniane przez usługę Azure Active Directory, możesz wdrożyć urządzenia dołączone hybrydowo do usługi Azure AD. Są to urządzenia dołączone do lokalnej usługi Active Directory oraz usługi Azure Active Directory.
-    -   **Zapisywanie zwrotne urządzeń**: Zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach z usługami AD FS (2012 R2 lub nowszy) chronione urządzeń
+  - **Dołączenie do hybrydowej usługi Azure AD**: Jeśli środowisko ma lokalną infrastrukturę usługi AD i chcesz również wykorzystać możliwości zapewniane przez usługę Azure Active Directory, możesz wdrożyć urządzenia dołączone hybrydowo do usługi Azure AD. Są to urządzenia dołączone do lokalnej usługi Active Directory oraz usługi Azure Active Directory.
+  - **Zapisywanie zwrotne urządzeń**: Zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach z usługami AD FS (2012 R2 lub nowszy) chronione urządzeń
 
-   >[!NOTE] 
-   > - Opcja włączania zapisywania zwrotnego urządzeń z Dostosowywanie opcji synchronizacji będą wyszarzone. 
-   > -  Moduł programu PowerShell dla programu ADPrep jest przestarzała w tej wersji.
+    >[!NOTE] 
+    > - Opcja włączania zapisywania zwrotnego urządzeń z Dostosowywanie opcji synchronizacji będą wyszarzone. 
+    > -  Moduł programu PowerShell dla programu ADPrep jest przestarzała w tej wersji.
 
 
 
@@ -415,7 +415,7 @@ Stan: Październik 2017 19
 
 * Rozwiązano problem z *zmiana użytkownika logowania* zadań w kreatorze program Azure AD Connect:
 
-   * Ten problem występuje, jeśli masz istniejące wdrożenie usługi Azure AD Connect z synchronizacją haseł **wyłączone**, i chcesz ustawić metodę logowania użytkownika jako *uwierzytelniania przekazywanego*. Po zastosowaniu zmiany Kreator włącza synchronizację haseł i uwierzytelniania przekazywanego. Dzięki tej poprawce nie jest już włączone w Kreatorze synchronizacji haseł.
+  * Ten problem występuje, jeśli masz istniejące wdrożenie usługi Azure AD Connect z synchronizacją haseł **wyłączone**, i chcesz ustawić metodę logowania użytkownika jako *uwierzytelniania przekazywanego*. Po zastosowaniu zmiany Kreator włącza synchronizację haseł i uwierzytelniania przekazywanego. Dzięki tej poprawce nie jest już włączone w Kreatorze synchronizacji haseł.
 
   * Wcześniej można było to wymaganie wstępne dotyczące włączania uwierzytelniania przekazywanego synchronizacji haseł. Gdy ustawisz metodę logowania użytkownika jako *uwierzytelniania przekazywanego*, Kreator będzie Włączanie synchronizacji haseł i uwierzytelniania przekazywanego. Niedawno synchronizacja haseł został usunięty jako informacje jako warunek wstępny. W ramach usługi Azure AD Connect w wersji 1.1.557.0, wprowadzono zmian do programu Azure AD Connect nie Włączanie synchronizacji haseł, gdy ustawisz metodę logowania użytkownika jako *uwierzytelniania przekazywanego*. Jednak zmiana została zastosowana tylko do instalacji programu Azure AD Connect. Dzięki tej poprawce tę samą zmianę również stosowane do *zmiana użytkownika logowania* zadania.
   
@@ -436,7 +436,7 @@ Stan: Październik 2017 19
 * Dodano logikę w celu uproszczenia kroki wymagane do skonfigurowania usługi Azure AD Connect przy użyciu Microsoft Cloud (Niemcy). Wcześniej wymagane jest aby zaktualizować określone klucze rejestru na serwerze program Azure AD Connect, aby mogła działać poprawnie z Microsoft Cloud (Niemcy), zgodnie z opisem w tym artykule. Teraz program Azure AD Connect może automatycznie wykrywać, gdy dzierżawy w Microsoft Cloud (Niemcy) opiera się na poświadczenia administratora globalnego, podane podczas instalacji.
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
->[!NOTE]
+> [!NOTE]
 > Uwaga: Usługa synchronizacji ma interfejs usługi WMI, który pozwala tworzyć własny niestandardowy harmonogram. Ten interfejs jest już przestarzały i zostanie usunięte z przyszłych wersji programu Azure AD Connect zostały wysłane po 30 czerwca 2018 r. Klienci, którzy chcą, aby dostosować harmonogram synchronizacji, należy użyć [wbudowanych harmonogramu (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
 
 #### <a name="fixed-issues"></a>Rozwiązane problemy
@@ -642,7 +642,7 @@ Jest to problem, który pojawia się, że **Synchronizuj wszystkie domeny i jedn
 
 * Usługa Azure AD Connect teraz obsługuje funkcję zapisywania zwrotnego dla usługi Exchange Online **cloudPublicDelegates** atrybutu do lokalnej usługi AD **publicDelegates** atrybutu. Dzięki temu scenariusz, w którym skrzynki pocztowej programu Exchange Online można udzielić praw SendOnBehalfTo użytkownikom ze skrzynki pocztowej programu Exchange w środowisku lokalnym. Aby obsługiwać tę funkcję, nową regułę synchronizacji out-of-box "Poza usługą AD — zapisywanie zwrotne PublicDelegates hybrydowego programu Exchange użytkownika" został dodany. Ta reguła synchronizacji jest dodawana do usługi Azure AD Connect, tylko po włączeniu funkcji hybrydowego programu Exchange.
 
-*   Usługa Azure AD Connect obsługuje teraz Synchronizowanie **altRecipient** atrybutu z usługi Azure AD. Aby obsługiwać tę zmianę, następujące reguły synchronizacji out-of-box zostały zaktualizowane do uwzględnienia przepływu wymaganego atrybutu:
+* Usługa Azure AD Connect obsługuje teraz Synchronizowanie **altRecipient** atrybutu z usługi Azure AD. Aby obsługiwać tę zmianę, następujące reguły synchronizacji out-of-box zostały zaktualizowane do uwzględnienia przepływu wymaganego atrybutu:
   * W z usługi AD — użytkownik programu Exchange
   * Out do usługi AAD — ExchangeOnline użytkownika
   
@@ -1186,9 +1186,9 @@ Wydanie: Października 2014 r.
 
 Jeśli masz już zainstalowany program Azure AD Sync, istnieje jeden dodatkowy krok, który należy wykonać w przypadku, gdy zmieniono dowolne reguły synchronizacji out-of-box. Po uaktualnieniu do 1.0.470.1023 wersji, synchronizacja, które są zduplikowane reguły, które zostały zmodyfikowane. Dla każdej reguły synchronizacji zmodyfikowane wykonaj następujące czynności:
 
-1.  Znajdź reguły synchronizacji zostały zmodyfikowane i Zapisz zmiany.
-* Usuń regułę synchronizacji.
-* Znajdź nowe reguły synchronizacji, który jest tworzony przez usługę Azure AD Sync, a następnie ponownie zastosuj zmiany.
+1. Znajdź reguły synchronizacji zostały zmodyfikowane i Zapisz zmiany.
+1. Usuń regułę synchronizacji.
+1. Znajdź nowe reguły synchronizacji, który jest tworzony przez usługę Azure AD Sync, a następnie ponownie zastosuj zmiany.
 
 **Uprawnienia dla konta usługi Active Directory**
 

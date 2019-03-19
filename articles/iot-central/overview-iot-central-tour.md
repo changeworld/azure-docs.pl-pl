@@ -3,20 +3,20 @@ title: Przewodnik po interfejsie użytkownika usługi Azure IoT Central | Micros
 description: Jako konstruktor możesz zapoznać się z kluczowymi obszarami interfejsu użytkownika usługi Azure IoT Central używanego do utworzenia rozwiązania IoT.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/13/2018
+ms.date: 01/24/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5242be4dfe1c79b8f943b3b6d240046d0e8c5181
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 4908130cc0d59e42adb4f7ab2239e5b57dc08b89
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658773"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774306"
 ---
-# <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
+# <a name="take-a-tour-of-the-azure-iot-central-ui-new-ui-design"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central (nowy projekt interfejsu użytkownika)
 
 W tym artykule przedstawiono wprowadzenie do interfejsu użytkownika usługi Microsoft Azure IoT Central. Interfejs użytkownika umożliwia tworzenie i używanie rozwiązania usługi Azure IoT Central oraz jego połączonych urządzeń, a także zarządzanie nimi.
 
@@ -33,15 +33,14 @@ _Operator_ używa interfejsu użytkownika usługi Azure IoT Central, aby zarząd
 - Rozwiązywanie i korygowanie problemów z urządzeniami
 - Aprowizacja nowych urządzeń.
 
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="use-the-left-navigation-menu"></a>Używanie lewego menu nawigacji
 
-Lewe menu nawigacji umożliwia uzyskiwanie dostępu do różnych obszarów aplikacji:
+Dostęp do różnych obszarów aplikacji za pomocą menu nawigacji po lewej stronie. Można rozwinąć lub zwinąć paska nawigacyjnego, wybierając **<** lub **>**:
 
 | Menu | Opis |
 | ---- | ----------- |
-| ![Lewe menu nawigacji](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Przycisk **Strona główna** umożliwia wyświetlenie strony głównej aplikacji. Konstruktor może dostosować tę stronę główną dla operatorów.</li><li>Przycisk **Device Explorer** umożliwia wyświetlenie szablonów urządzeń zdefiniowanych w aplikacji oraz symulowanych i rzeczywistych urządzeń skojarzonych z poszczególnymi szablonami urządzeń. Operator używa narzędzia **Device Explorer**, aby zarządzać połączonymi urządzeniami.</li><li>Przycisk **Zestawy urządzeń** umożliwia wyświetlenie i tworzenie zestawów urządzeń. Operator może tworzyć zestawy urządzeń w formie logicznych zbiorów urządzeń określonych w zapytaniu.</li><li>Przycisk **Analiza** umożliwia wyświetlenie analiz na podstawie danych telemetrycznych urządzeń i zestawów urządzeń. Operator może tworzyć widoki niestandardowe na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji.</li><li>Przycisk **Zadania** umożliwia zbiorcze zarządzanie urządzeniami przez tworzenie i uruchamianie zadań przeprowadzających aktualizacje w dużej skali.</li><li>Przycisk **Konstruktor aplikacji** umożliwia wyświetlenie narzędzi używanych przez konstruktora, takich jak **Utwórz szablon urządzenia**.</li><li>Przycisk **Administracja** umożliwia wyświetlenie stron administracyjnych aplikacji, na których administrator może zarządzać użytkownikami, rolami i ustawieniami aplikacji.</li></ul> |
+| ![Lewe menu nawigacji](media/overview-iot-central-tour/navigationbar.png) | <ul><li>**Pulpit nawigacyjny** przycisk powoduje wyświetlenie pulpitu nawigacyjnego aplikacji. Jako Konstruktor możesz dostosować pulpit nawigacyjny dla swojej operatorów. Użytkownicy mogą także tworzyć własne pulpity nawigacyjne.</li><li>Przycisk **Device Explorer** wyświetla listę symulowanych i rzeczywistych urządzeń skojarzonych z każdym szablonem urządzenia w aplikacji. Operator używa narzędzia **Device Explorer**, aby zarządzać połączonymi urządzeniami.</li><li>Przycisk **Zestawy urządzeń** umożliwia wyświetlenie i tworzenie zestawów urządzeń. Operator może tworzyć zestawy urządzeń w formie logicznych zbiorów urządzeń określonych w zapytaniu.</li><li>Przycisk **Analiza** umożliwia wyświetlenie analiz na podstawie danych telemetrycznych urządzeń i zestawów urządzeń. Operator może tworzyć widoki niestandardowe na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji.</li><li>Przycisk **Zadania** umożliwia zbiorcze zarządzanie urządzeniami przez tworzenie i uruchamianie zadań przeprowadzających aktualizacje w dużej skali.</li><li>Przycisk **Szablony urządzeń** powoduje wyświetlenie narzędzi używanych przez konstruktora do tworzenia szablonów urządzeń i zarządzania nimi.</li><li>Przycisk **Ciągły eksport danych** służy administratorom do konfigurowania ciągłego eksportowania do innych usług platformy Azure, takich jak magazyn czy kolejki.</li><li>Przycisk **Administracja** umożliwia wyświetlenie stron administracyjnych aplikacji, na których administrator może zarządzać użytkownikami, rolami i ustawieniami aplikacji.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Wyszukiwanie, pomoc i pomoc techniczna
 
@@ -49,25 +48,26 @@ Górne menu jest wyświetlane na każdej stronie:
 
 ![Pasek narzędzi](media/overview-iot-central-tour/toolbar.png)
 
-- Aby wyszukać szablony urządzeń i urządzenia, wybierz ikonę **Wyszukiwanie**.
+- Aby wyszukać szablonów urządzeń i urządzeń, należy wprowadzić **wyszukiwania** wartość.
+- Aby zmienić język interfejsu użytkownika lub motywu, wybierz **ustawienia** ikony.
+- Aby Wyloguj się z aplikacji, wybierz opcję **konta** ikony.
 - Aby uzyskać pomoc i pomoc techniczną, wybierz pozycję rozwijaną **Pomoc**, aby uzyskać listę zasobów.
-- Aby kontrolować samouczki, zmienić motyw interfejsu użytkownika lub wylogować się z aplikacji, wybierz ikonę **Konto**.
 
 Możesz wybrać jasny lub ciemny motyw interfejsu użytkownika:
 
 ![Wybieranie motywu interfejsu użytkownika](media/overview-iot-central-tour/themes.png)
 
-## <a name="home-page"></a>Strona główna
+## <a name="dashboard"></a>Pulpit nawigacyjny
 
-![Strona główna](media/overview-iot-central-tour/homepage.png)
+![Pulpit nawigacyjny](media/overview-iot-central-tour/homepage.png)
 
-Strona główna jest pierwszą stroną widoczną po zalogowaniu się do aplikacji usługi Azure IoT Central. Konstruktor może dostosować stronę główną dla innych użytkowników aplikacji przez dodanie kafelków. Więcej informacji można znaleźć w samouczku [Customize the Azure IoT Central operator's view (Dostosowywanie widoku operatora usługi Azure IoT Central)](tutorial-customize-operator.md).
+Pulpit nawigacyjny jest pierwsza strona, który zostanie wyświetlony po zalogowaniu się do aplikacji usługi Azure IoT Central. Jako Konstruktor możesz dostosować pulpit nawigacyjny aplikacji dla innych użytkowników, dodając kafelków. Więcej informacji można znaleźć w samouczku [Customize the Azure IoT Central operator's view (Dostosowywanie widoku operatora usługi Azure IoT Central)](tutorial-customize-operator.md). Użytkownicy mogą również [tworzenie własnych osobistych pulpitów nawigacyjnych](howto-personalize-dashboard.md).
 
 ## <a name="device-explorer"></a>Device Explorer
 
-![Strona eksploratora](media/overview-iot-central-tour/explorer.png)
+![Strona Eksplorator](media/overview-iot-central-tour/explorer.png)
 
-Na stronie eksploratora są wyświetlane _szablony urządzeń_ i _urządzenia_ w aplikacji usługi Azure IoT Central.
+Na stronie eksploratora są wyświetlane _urządzenia_ w aplikacji usługi Azure IoT Central pogrupowane według _szablonu urządzeń_.
 
 * Szablon urządzenia definiuje typ urządzenia, który może łączyć się z aplikacją. Aby dowiedzieć się więcej, zobacz [Define a new device type in your Azure IoT Central application (Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central)](tutorial-define-device-type.md).
 * Urządzenie reprezentuje rzeczywiste lub symulowane urządzenie w aplikacji. Aby dowiedzieć się więcej, zobacz [Add a new device to your Azure IoT Central application (Dodawanie nowego urządzenia do aplikacji usługi Azure IoT Central)](tutorial-add-device.md).
@@ -82,7 +82,7 @@ Na stronie _Zestawy urządzeń_ są wyświetlane zestawy urządzeń utworzone pr
 
 ![Strona Analiza](media/overview-iot-central-tour/analytics.png)
 
-Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania urządzeń połączonych z aplikacją. Operator używa tej strony do monitorowania i badania problemów z połączonymi urządzeniami. Konstruktor może zdefiniować wykresy wyświetlane na tej stronie. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-create-analytics.md).
+Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania urządzeń połączonych z aplikacją. Operator używa tej strony do monitorowania i badania problemów z połączonymi urządzeniami. Konstruktor może zdefiniować wykresy wyświetlane na tej stronie. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-use-device-sets.md).
 
 ## <a name="jobs"></a>Stanowiska
 
@@ -90,11 +90,17 @@ Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania ur
 
 Strona zadań umożliwia wykonywanie zbiorczych operacji zarządzania urządzeniami na Twoich urządzeniach. Konstruktor używa tej strony do aktualizowania właściwości urządzeń, ustawień i poleceń. Aby dowiedzieć się więcej, zobacz artykuł [Uruchamianie zadania](howto-run-a-job.md).
 
-## <a name="application-builder"></a>Konstruktor aplikacji
+## <a name="device-templates"></a>Szablony urządzeń
 
-![Strona Konstruktor aplikacji](media/overview-iot-central-tour/applicationbuilder.png)
+![Strona Szablony urządzeń](media/overview-iot-central-tour/templates.png)
 
-Strona konstruktora aplikacji zawiera linki do narzędzi używanych przez konstruktora do tworzenia aplikacji usługi Azure IoT Central, takich jak tworzenie szablonów urządzeń oraz konfigurowanie strony głównej. Aby dowiedzieć się więcej, zobacz samouczek [Define a new device type in your Azure IoT Central application (Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central)](tutorial-define-device-type.md).
+Na stronie szablonów urządzeń konstruktor tworzy szablony urządzeń w aplikacji i zarządza nimi. Aby dowiedzieć się więcej, zobacz samouczek [Define a new device type in your Azure IoT Central application (Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central)](tutorial-define-device-type.md).
+
+## <a name="continuous-data-export"></a>Ciągły eksport danych
+
+![Strona Ciągły eksport danych](media/overview-iot-central-tour/export.png)
+
+Na stronie ciągłego eksportu danych administrator definiuje sposób eksportowania danych, takich jak dane telemetryczne, z aplikacji. Inne usługi mogą zapisywać wyeksportowane dane lub poddawać je analizie. Aby dowiedzieć się więcej, zobacz artykuł [Eksportowanie danych do usługi Azure IoT Central](howto-export-data.md).
 
 ## <a name="administration"></a>Administracja
 
@@ -102,6 +108,6 @@ Strona konstruktora aplikacji zawiera linki do narzędzi używanych przez konstr
 
 Strona administracji zawiera linki do narzędzi używanych przez administratora, takich jak definiowanie użytkowników i ról w aplikacji. Aby dowiedzieć się więcej, zobacz artykuł [Administer your Azure IoT Central application (Administrowanie aplikacją usługi Azure IoT Central)](howto-administer.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zapoznaniu się z omówieniem usługi Azure IoT Central i układem interfejsu użytkownika następnym sugerowanym krokiem jest wykonanie przewodnika Szybki start [Create an Azure IoT Central application (Tworzenie aplikacji usługi Azure IoT Central)](quick-deploy-iot-central.md).

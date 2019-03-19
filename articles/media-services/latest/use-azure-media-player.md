@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 4dd0f697d16d7a2fbeec8f712d98e6a7c439cb4e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064682"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896997"
 ---
 # <a name="azure-media-player-overview"></a>Omówienie usługi Azure Media Player
 
@@ -24,13 +24,13 @@ Usługa Azure Media Player jest odtwarzacz wideo w sieci web utworzona w celu od
 
 Microsoft Azure Media Services umożliwia zawartości do być udostępniany przy użyciu protokołu HLS, DASH, Smooth Streaming, formatów przesyłania strumieniowego do odtwarzania zawartości. Usługa Azure Media Player uwzględnia te różne formaty i automatycznie odtwarza łącze najlepsze możliwości platformy/przeglądarki. Usługa Media Services umożliwia również dynamiczne szyfrowanie zasobów za pomocą szyfrowanie PlayReady lub AES-128-bitowego szyfrowania koperty. Usługa Azure Media Player umożliwia odszyfrowywanie PlayReady i szyfrowania AES-128-bitowego zaszyfrowaną zawartość, gdy jest skonfigurowany prawidłowo. 
 
-[Rozpocznij bezpłatną wersję próbną](http://azure.microsoft.com/en-us/pricing/free-trial/)
+[Rozpocznij bezpłatną wersję próbną](https://azure.microsoft.com/en-us/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Użyj strony pokaz usługi Azure Media Player
 
 ### <a name="start-using"></a>Rozpoczynanie korzystania z
 
-Możesz użyć [strony pokaz usługi Azure Media Player](http://aka.ms/amp) grać przykładów usługi Azure Media Services lub własnego strumienia.  
+Możesz użyć [strony pokaz usługi Azure Media Player](https://aka.ms/amp) grać przykładów usługi Azure Media Services lub własnego strumienia.  
 
 Aby odtworzyć nowy film wideo, Wklej innego adresu URL i naciśnij **aktualizacji**.
 
@@ -40,7 +40,7 @@ Aby skonfigurować różne opcje odtwarzania (na przykład technologii, języka 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorowanie diagnostyki strumienia wideo
 
-Możesz użyć [strony pokaz usługi Azure Media Player](http://aka.ms/amp) monitorować diagnostykę strumienia wideo. 
+Możesz użyć [strony pokaz usługi Azure Media Player](https://aka.ms/amp) monitorować diagnostykę strumienia wideo. 
 
 ![Diagnostyka Azure Media Player](./media/azure-media-player/diagnostics.png)
 

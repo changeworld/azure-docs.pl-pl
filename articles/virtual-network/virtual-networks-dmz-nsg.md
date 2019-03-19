@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 68655ea03f53fe7100f67d111fcd3c8595bdf4c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109396"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Przykład 1 — Tworzenie prostej sieci obwodowej za pomocą grup NSG z szablonem usługi Azure Resource Manager
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -97,14 +97,14 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
     ``` 
 
 2. Pierwszą regułę w tym przykładzie zezwala na ruch DNS między wszystkie sieci wewnętrznej na serwerze DNS w podsieci wewnętrznej bazy danych. Reguła ma kilka ważnych parametrów:
-  * "destinationAddressPrefix" - prefiks adresu docelowego jest równa "10.0.2.4", aby ruch DNS będzie mógł uzyskać dostęp do serwera DNS.
-  * "Direction" oznacza to, w jakim kierunku przepływu ruchu tej reguły staje się skuteczny. Kierunek jest z punktu widzenia podsieci lub maszyn wirtualnych (zależnie od tego, gdzie powiązana jest ta sieciowa grupa zabezpieczeń). Dlatego jeśli "Ruchu przychodzącego" ma kierunek ruchu wchodzi podsieci, reguła będzie stosowana i ruchu wychodzącego z podsieci nie mogą być naruszone przez tę regułę.
-  * "Priority" Ustawia kolejność, w którym jest oceniana przepływu ruchu. Im mniejsza liczba wyższy priorytet. Gdy reguła ma zastosowanie do przepływu ruchu określone, nie dodatkowe reguły są przetwarzane. Dlatego jeśli reguła z priorytetem 1 zezwala na ruch oraz reguły o priorytecie 2 nie zezwala na ruch i obie reguły są stosowane do ruchu, a następnie dozwolone ruch będzie przepływać (ponieważ reguła 1 ma wyższy priorytet, jaki zajęło efektu i nie dodatkowe reguły były stosowane).
-  * "Access" oznacza to, czy ruch dotyczy ta reguła jest zablokowane ("Deny"), czy dozwolone ("Zezwalaj").
+   * "destinationAddressPrefix" - prefiks adresu docelowego jest równa "10.0.2.4", aby ruch DNS będzie mógł uzyskać dostęp do serwera DNS.
+   * "Direction" oznacza to, w jakim kierunku przepływu ruchu tej reguły staje się skuteczny. Kierunek jest z punktu widzenia podsieci lub maszyn wirtualnych (zależnie od tego, gdzie powiązana jest ta sieciowa grupa zabezpieczeń). Dlatego jeśli "Ruchu przychodzącego" ma kierunek ruchu wchodzi podsieci, reguła będzie stosowana i ruchu wychodzącego z podsieci nie mogą być naruszone przez tę regułę.
+   * "Priority" Ustawia kolejność, w którym jest oceniana przepływu ruchu. Im mniejsza liczba wyższy priorytet. Gdy reguła ma zastosowanie do przepływu ruchu określone, nie dodatkowe reguły są przetwarzane. Dlatego jeśli reguła z priorytetem 1 zezwala na ruch oraz reguły o priorytecie 2 nie zezwala na ruch i obie reguły są stosowane do ruchu, a następnie dozwolone ruch będzie przepływać (ponieważ reguła 1 ma wyższy priorytet, jaki zajęło efektu i nie dodatkowe reguły były stosowane).
+   * "Access" oznacza to, czy ruch dotyczy ta reguła jest zablokowane ("Deny"), czy dozwolone ("Zezwalaj").
 
-    ```JSON
-    "properties": {
-    "securityRules": [
+     ```JSON
+     "properties": {
+     "securityRules": [
       {
         "name": "enable_dns_rule",
         "properties": {
@@ -119,7 +119,7 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
           "direction": "Inbound"
         }
       },
-    ```
+     ```
 
 3. Ta zasada umożliwia RDP przepływ ruchu z Internetu do portów protokołu RDP na każdym serwerze w powiązanej podsieci. 
 
@@ -221,23 +221,23 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
 1. Użytkownik internet żądania na stronie HTTP z publicznego adresu IP karty Sieciowej skojarzonej z kartą Sieciową IIS01
 2. Publiczny adres IP przekazuje ruch w sieci wirtualnej w kierunku IIS01 (serwer sieci web)
 3. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-  1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-  2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-  3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
 4. Ruch osiąga wewnętrzny adres IP serwera sieci web IIS01 (10.0.1.5)
 5. IIS01 nasłuchuje ruchu w sieci web, odbiera żądania i rozpoczyna przetwarzanie żądania
 6. IIS01 programu SQL Server na AppVM01 monituje o podanie informacji
 7. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
 8. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-  1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-  2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-  3. 3 reguły sieciowej grupy zabezpieczeń (Internet do zapory) nie zastosować, przenieść następną regułę
-  4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. 3 reguły sieciowej grupy zabezpieczeń (Internet do zapory) nie zastosować, przenieść następną regułę
+   4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
 9. AppVM01 odbiera zapytanie SQL i odpowiada
 10. Ponieważ na podsieci wewnętrznej bazy danych nie ma żadnych reguł dla ruchu wychodzącego, odpowiedź jest dozwolone
 11. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-  1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
-  2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+    2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
 12. Na serwerze usług IIS odbiera odpowiedź SQL i kończy odpowiedź HTTP i przesyła do osoby żądającej
 13. Ponieważ nie ma żadnych reguł ruchu wychodzącego na podsieć frontonu, odpowiedź jest dozwolone i użytkownik Internet otrzymuje żądanej strony sieci web.
 
@@ -245,8 +245,8 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
 1. Administrator serwera w Internecie żądań sesji protokołu RDP, aby IIS01 publicznego adresu IP karty sieciowej skojarzonej z kartą Sieciową IIS01 (ten publiczny adres IP można znaleźć za pośrednictwem portalu lub programu PowerShell)
 2. Publiczny adres IP przekazuje ruch w sieci wirtualnej w kierunku IIS01 (serwer sieci web)
 3. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-  1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-  2. Stosowanie 2 reguły sieciowej grupy zabezpieczeń (RDP), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. Stosowanie 2 reguły sieciowej grupy zabezpieczeń (RDP), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
 4. Za pomocą reguł ruchu wychodzącego domyślne reguły i ruch powrotny jest dozwolone
 5. Sesję RDP jest włączona.
 6. IIS01 wyświetla monit o podanie nazwy użytkownika i hasła
@@ -261,7 +261,7 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
 2. W konfiguracji sieci VNet list DNS01 (10.0.2.4 w podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądania DNS DNS01
 3. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
 4. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-  * Zastosuj 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+   * Zastosuj 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
 5. Serwer DNS odbiera żądanie
 6. Serwer DNS nie ma adresu pamięci podręcznej i prosi główny serwer DNS w Internecie
 7. Nie reguł ruchu wychodzącego w podsieci zaplecza ruch jest dozwolony.
@@ -269,23 +269,23 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
 9. Serwer DNS będzie buforować odpowiedź i odpowiada na żądanie początkowy powrót do IIS01
 10. Nie reguł ruchu wychodzącego w podsieci zaplecza ruch jest dozwolony.
 11. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-  1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
-  2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami będzie zezwalającej na ten ruch, więc ruch jest dozwolony
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+    2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami będzie zezwalającej na ten ruch, więc ruch jest dozwolony
 12. IIS01 odbiera odpowiedź od DNS01
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Dozwolone*) pliku dostępu do serwera sieci Web na AppVM01
 1. IIS01 poprosi o podanie pliku na AppVM01
 2. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
 3. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
-  1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-  2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-  3. 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01) nie zastosować, przenieść następną regułę
-  4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01) nie zastosować, przenieść następną regułę
+   4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
 4. AppVM01 odbiera żądanie i odpowiada za pomocą pliku (przy założeniu, że dostęp jest autoryzowany)
 5. Ponieważ na podsieci wewnętrznej bazy danych nie ma żadnych reguł dla ruchu wychodzącego, odpowiedź jest dozwolone
 6. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-  1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
-  2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
+   1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+   2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
 7. Serwer IIS odbiera pliku
 
 #### <a name="denied-rdp-to-backend"></a>(*Odmowa*) protokołu RDP do wewnętrznej bazy danych
@@ -312,9 +312,9 @@ Każda reguła jest omówiona bardziej szczegółowo w następujący sposób:
 1. Użytkownik internet żąda danych SQL z IIS01
 2. Ponieważ nie istnieją żadne publicznych adresów IP skojarzone z tym serwerami kart interfejsu Sieciowego, ten ruch nigdy nie należy wprowadzić w sieci wirtualnej, a nie dociera do serwera
 3. Jeśli publiczny adres IP został włączony dla jakiegoś powodu, z podsiecią Frontend rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
-  1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
-  2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
-  3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
 4. Ruch osiąga wewnętrzny adres IP IIS01 (10.0.1.5)
 5. IIS01 nie nasłuchuje na porcie 1433, więc nie odpowiedź na żądanie
 

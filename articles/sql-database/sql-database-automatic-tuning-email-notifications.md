@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 8b82955d7a4bdecf71c9cb4545249a423a5b5dd4
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: 0d0452cba099bbc568f2b9e926258eb16060eaf4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57577079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855924"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące automatycznego dostrajania
 
@@ -26,6 +26,8 @@ Zalecenia dotyczące dostrajania są generowane przez usługę Azure SQL Databas
 SQL Database zalecenia dostrajania automatycznego usługi mogą być wyświetlane w [witryny Azure portal](sql-database-advisor-portal.md), pobrany z [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) wywołuje lub przy użyciu [języka T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) i [ Program PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) poleceń. Ten artykuł jest oparty na przy użyciu skryptu programu PowerShell, aby pobrać zalecenia dostrajania automatycznego.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatyzowanie powiadomienia e-mail dotyczące automatycznego zalecenia dotyczące dostrajania
 

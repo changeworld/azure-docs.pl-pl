@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: e23c9e04d06e509cba32c728ae6f86e1328d88cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111076"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
@@ -90,20 +90,20 @@ Klucz i punkt końcowy usługi wyszukiwania można znaleźć w portalu. Klucz za
 
 4. Skopiuj i wklej ją jako pierwszy wpis do pliku **appsettings.json** w programie Visual Studio.
 
-  > [!Note]
-  > Nazwa usługi jest częścią punktu końcowego, który obejmuje element search.windows.net. Jeśli Cię to interesuje, możesz zobaczyć pełen adres URL w obszarze **Podstawy** na stronie przeglądu. Adres URL wygląda podobnie do następującego przykładu: https://your-service-name.search.windows.net
+   > [!Note]
+   > Nazwa usługi jest częścią punktu końcowego, który obejmuje element search.windows.net. Jeśli Cię to interesuje, możesz zobaczyć pełen adres URL w obszarze **Podstawy** na stronie przeglądu. Adres URL wygląda podobnie do następującego przykładu: https://your-service-name.search.windows.net
 
 5. Po lewej stronie w obszarze **Ustawienia** > **Klucze** skopiuj jeden z kluczy administratora i wklej go jako drugi wpis w pliku **appsettings.json**. Klucze to ciągi znaków alfanumerycznych, które są generowane podczas aprowizowania usługi i są wymagane do uzyskiwania autoryzowanego dostępu do operacji usługi. 
 
-  Po dodaniu obu ustawień plik powinien wyglądać podobnie do poniższego przykładu:
+   Po dodaniu obu ustawień plik powinien wyglądać podobnie do poniższego przykładu:
 
-  ```json
-  {
+   ```json
+   {
     "SearchServiceName": "azs-tutorial",
     "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
     . . .
-  }
-  ```
+   }
+   ```
 
 ## <a name="prepare-an-external-data-source"></a>Przygotowywanie zewnętrznego źródła danych
 
@@ -125,7 +125,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
 4. Otwórz stronę bazy danych SQL Database dla nowej bazy danych, jeśli nie jest została wcześniej otwarta. Nazwą zasobu powinna być *SQL Database*, a nie *SQL Server*.
 
-  ![Strona bazy danych SQL Database](./media/search-indexer-tutorial/hotels-db.png)
+   ![Strona bazy danych SQL Database](./media/search-indexer-tutorial/hotels-db.png)
 
 4. Na pasku poleceń kliknij kolejno pozycje **Narzędzia** > **Edytor zapytań**.
 
@@ -135,24 +135,24 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
 7. Wybierz plik, a następnie kliknij pozycję **Otwórz**. Skrypt powinien być podobny do tego na poniższym zrzucie ekranu:
 
-  ![Skrypt SQL](./media/search-indexer-tutorial/sql-script.png)
+   ![Skrypt SQL](./media/search-indexer-tutorial/sql-script.png)
 
 8. Kliknij przycisk **Uruchom**, aby wykonać zapytanie. W okienku wyników powinien zostać wyświetlony komunikat o pomyślnym ukończeniu wykonywania zapytania dla 3 wierszy.
 
 9. Aby zwrócić zestaw wierszy z tej tabeli, w ramach kroku weryfikacyjnego możesz wykonać następujące zapytanie:
 
-   ```sql
-   SELECT HotelId, HotelName, Tags FROM Hotels
-   ```
-   Prototypowe zapytanie, `SELECT * FROM Hotels`, nie działa w Edytorze zapytań. Przykładowe dane obejmują współrzędne geograficzne w polu lokalizacji. Nie są one obecnie obsługiwane w edytorze. Aby wyświetlić listę innych kolumn, dla których można wykonać zapytanie, możesz wykonać tę instrukcję: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    ```sql
+    SELECT HotelId, HotelName, Tags FROM Hotels
+    ```
+    Prototypowe zapytanie, `SELECT * FROM Hotels`, nie działa w Edytorze zapytań. Przykładowe dane obejmują współrzędne geograficzne w polu lokalizacji. Nie są one obecnie obsługiwane w edytorze. Aby wyświetlić listę innych kolumn, dla których można wykonać zapytanie, możesz wykonać tę instrukcję: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Teraz masz już zewnętrzny zestaw danych. Skopiuj parametry połączenia ADO.NET dla bazy danych. Na stronie swojej bazy danych SQL Database przejdź do obszaru **Ustawienia** > **Parametry połączenia** i skopiuj parametry połączenia ADO.NET.
  
-  Parametry połączenia ADO.NET wyglądają jak w poniższym przykładzie. Zostały one zmodyfikowane w celu użycia prawidłowej nazwy bazy danych, nazwy użytkownika i hasła.
+    Parametry połączenia ADO.NET wyglądają jak w poniższym przykładzie. Zostały one zmodyfikowane w celu użycia prawidłowej nazwy bazy danych, nazwy użytkownika i hasła.
 
-  ```sql
-  Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  ```
+    ```sql
+    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
 11. Wklej parametry połączenia w obszarze „AzureSqlConnectionString” jako trzeci wpis w pliku **appsettings.json** w programie Visual Studio.
 
     ```json
@@ -250,15 +250,15 @@ W witrynie Azure Portal na stronie przeglądu usługi wyszukiwania kliknij pozyc
 
 2. Kliknij przycisk **Wyszukaj**, aby utworzyć puste wyszukiwanie. 
 
-  Trzy wpisy w indeksie zostaną zwrócone jako dokumenty JSON. Eksplorator wyszukiwania zwraca dokumenty w formacie JSON, tak, aby można było przeglądać całą strukturę.
+   Trzy wpisy w indeksie zostaną zwrócone jako dokumenty JSON. Eksplorator wyszukiwania zwraca dokumenty w formacie JSON, tak, aby można było przeglądać całą strukturę.
 
 3. Następnie wprowadź wyszukiwany ciąg: `search=river&$count=true`. 
 
-  To zapytanie powoduje wywołanie wyszukiwania pełnotekstowego terminu `river`, a wynik obejmuje również liczbę pasujących dokumentów. Zwracanie liczby pasujących dokumentów jest przydatne w przypadku testowania scenariuszy, jeśli masz duży indeks z tysiącami lub milionami dokumentów. W takim przypadku tylko jeden dokument pasuje do zapytania.
+   To zapytanie powoduje wywołanie wyszukiwania pełnotekstowego terminu `river`, a wynik obejmuje również liczbę pasujących dokumentów. Zwracanie liczby pasujących dokumentów jest przydatne w przypadku testowania scenariuszy, jeśli masz duży indeks z tysiącami lub milionami dokumentów. W takim przypadku tylko jeden dokument pasuje do zapytania.
 
 4. Na koniec wprowadź wyszukiwany ciąg, który ogranicza dane wyjściowe JSON do odpowiednich pól: `search=river&$count=true&$select=hotelId, baseRate, description`. 
 
-  Odpowiedź na zapytanie jest redukowana do wybranych pól, co zapewnia bardziej zwięzły widok danych wyjściowych.
+   Odpowiedź na zapytanie jest redukowana do wybranych pól, co zapewnia bardziej zwięzły widok danych wyjściowych.
 
 ## <a name="view-indexer-configuration"></a>Wyświetlanie konfiguracji indeksatora
 
@@ -268,14 +268,14 @@ W portalu są wyświetlane wszystkie indeksatory, w tym właśnie utworzony przy
 2. Przewiń w dół w celu wyszukania kafelków **Indeksatory** i **Źródła danych**.
 3. Kliknij kafelek, aby otworzyć listę każdego zasobu. Możesz wybrać poszczególne indeksatory lub źródła danych w celu wyświetlenia lub zmodyfikowania ustawień konfiguracji.
 
-  ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
+   ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 

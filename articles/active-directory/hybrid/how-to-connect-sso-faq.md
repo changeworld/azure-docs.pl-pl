@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11ebb8bbeb2a58cad41294b6bba805585127844a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442397"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085375"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Często zadawane pytania
 
@@ -47,7 +47,7 @@ Poniżej zamieszczono niepełna lista aplikacji, które można wysyłać te para
 | -- | -- |
 | Panel dostępu | https://myapps.microsoft.com/contoso.com |
 | Program Outlook w sieci Web | https://outlook.office365.com/contoso.com |
-| Portale usługi Office 365 | https://portal.office.com?domain_hint=contoso.com, https://www.office.com?domain_hint=contoso.com |
+| Portale usługi Office 365 | <https://portal.office.com?domain_hint=contoso.com>, <https://www.office.com?domain_hint=contoso.com> |
 
 Ponadto użytkownicy uzyskują dyskretnej środowisko logowania jednokrotnego, jeśli aplikacja wysyła żądania rejestrowania do punktów końcowych usługi Azure AD jako dzierżawy — czyli https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — czyli https://login.microsoftonline.com/common/<...>. Poniżej zamieszczono niepełna lista aplikacji, które tego rodzaju żądań logowania.
 
@@ -95,8 +95,8 @@ Wykonaj następujące czynności na serwerze lokalnym, w którym uruchomiony jes
 
 1. Wywołaj `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny do zamierzonego lasu usługi AD.
 
-    >[!NOTE]
-    >Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
+   > [!NOTE]
+   > Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
 
 2. Wywołaj `Update-AzureADSSOForest -OnPremCredentials $creds`. To polecenie aktualizuje klucz odszyfrowywania protokołu Kerberos dla `AZUREADSSOACC` konto komputera, w tym określonym lesie usługi AD i aktualizuje go w usłudze Azure AD.
 3. Powtórz poprzednie kroki dla każdego lasu usługi AD, który po skonfigurowaniu tej funkcji na.

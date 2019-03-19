@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078163"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu klasycznego
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, gdy wystąpi jedno z następujących błędów, w trakcie usuwania Azure klasycznego konta magazynu, kontenera lub pliku obiektów blob strony *.vhd. 
@@ -59,10 +59,10 @@ Za pomocą dysków "odłączeniu" do maszyny wirtualnej
 #### <a name="azure-powershell"></a>Azure PowerShell
 Użytkownik próbuje usunąć konto magazynu, który jest już używany, za pomocą poleceń cmdlet programu PowerShell klasycznego. Użytkownik zobaczy następujący komunikat:
 
-><span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
-
-><span style="color:red">Remove-AzureStorageAccount : BadRequest: Myclassicaccount konto magazynu ma pewne aktywne obrazy i/lub dyski, np.  
-myclassicaccount. Upewnij się, te obrazy i/lub dyski muszą zostać usunięte przed usunięciem tego konta magazynu.</span>
+> <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
+> 
+> <span style="color:red">Remove-AzureStorageAccount : BadRequest: Myclassicaccount konto magazynu ma pewne aktywne obrazy i/lub dyski, np.  
+> myclassicaccount. Upewnij się, te obrazy i/lub dyski muszą zostać usunięte przed usunięciem tego konta magazynu.</span>
 
 ## <a name="unable-to-delete-storage-container"></a>Nie można usunąć kontenera magazynu
 
@@ -77,9 +77,9 @@ Witryna Azure portal nie Zezwalaj użytkownikowi na usunąć kontener, jeśli is
 #### <a name="azure-powershell"></a>Azure PowerShell
 Jeśli użytkownik zdecyduje się usunąć przy użyciu programu PowerShell, spowodują następujący błąd. 
 
-><span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
-
-><span style="color:red">Remove-AzureStorageContainer : Serwer zdalny zwrócił błąd: Miejsca (412) jest obecnie dostępna dzierżawa na kontenerze, a nie Identyfikatora dzierżawy została określona w żądaniu... Kod stanu HTTP: 412 — komunikat o błędzie HTTP: Obecnie jest dzierżawy w kontenerze i identyfikator dzierżawy nie został określony w żądaniu.</span>
+> <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
+> 
+> <span style="color:red">Remove-AzureStorageContainer : Serwer zdalny zwrócił błąd: Miejsca (412) jest obecnie dostępna dzierżawa na kontenerze, a nie Identyfikatora dzierżawy została określona w żądaniu... Kod stanu HTTP: 412 — komunikat o błędzie HTTP: Obecnie jest dzierżawy w kontenerze i identyfikator dzierżawy nie został określony w żądaniu.</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>Nie można usunąć wirtualnego dysku twardego 
 
@@ -99,9 +99,9 @@ W portalu może być dwa środowiska w zależności od listy obiektów blob wybr
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Jeśli użytkownik zdecyduje się usunąć przy użyciu programu PowerShell, spowodują następujący błąd. 
 
-><span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
-
-><span style="color:red">Remove-AzureStorageBlob : Serwer zdalny zwrócił błąd: Miejsca (412) jest obecnie dostępna dzierżawa obiektu blob, a nie Identyfikatora dzierżawy została określona w żądaniu... Kod stanu HTTP: 412 — komunikat o błędzie HTTP: Obecnie jest dzierżawy w obiekcie blob i identyfikator dzierżawy nie został określony w żądaniu.</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> 
+> <span style="color:red">Remove-AzureStorageBlob : Serwer zdalny zwrócił błąd: Miejsca (412) jest obecnie dostępna dzierżawa obiektu blob, a nie Identyfikatora dzierżawy została określona w żądaniu... Kod stanu HTTP: 412 — komunikat o błędzie HTTP: Obecnie jest dzierżawy w obiekcie blob i identyfikator dzierżawy nie został określony w żądaniu.</span>
 
 
 ## <a name="resolution-steps"></a>Kroki rozwiązywania problemów
