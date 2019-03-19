@@ -8,46 +8,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: d430f6252157c5d34aa236ef88f8490b4ad6a184
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0a7a16a43b208bf2d14b86cd5cb23544ec03f9a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877534"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób konfigurowania usługi Azure Backup w systemie Windows Server lub klienta Windows oraz zarządzania nimi i odzyskiwania kopii zapasowych przy użyciu programu PowerShell.
 
 ## <a name="install-azure-powershell"></a>Instalowanie programu Azure PowerShell
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Ten artykuł koncentruje się na usłudze Azure Resource Manager (ARM) i poleceń cmdlet programu PowerShell kopii zapasowej Online MS, które umożliwiają korzystanie z magazynu usługi Recovery Services w grupie zasobów.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W października 2015 r. programu Azure PowerShell 1.0 został wydany. W tej wersji 0.9.8 zakończyło się pomyślnie wydawania oraz temat wprowadzono istotne zmiany, szczególnie w przypadku wzorca nazewnictwa z poleceń cmdlet. Polecenia cmdlet 1.0 mają wzorzec nazewnictwa {czasownik}-AzureRm{rzeczownik}; natomiast nazwy 0.9.8 nie zawierają elementu **Rm** (np. New-AzureRmResourceGroup zamiast New-AzureResourceGroup). W przypadku korzystania z programu Azure PowerShell 0.9.8 trzeba najpierw włączyć tryb usługi Resource Manager przez uruchomienie polecenia **Switch-AzureMode AzureResourceManager**. To polecenie nie jest konieczne w wersji 1.0 lub nowszej.
-
-Jeśli chcesz użyć w skryptach napisanych dla 0.9.8 środowiska, w środowisku w wersji 1.0 lub nowszej, należy starannie aktualizacji i przetestować skrypty w środowisku przedprodukcyjnym przed ich użyciem w środowisku produkcyjnym, aby uniknąć nieoczekiwanych wpływu.
-
-[Pobieranie najnowszej wersji programu PowerShell](https://github.com/Azure/azure-powershell/releases) (minimalna wymagana wersja to: 1.0.0)
-
-[!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
+Aby rozpocząć pracę, [zainstalowanie najnowszej wersji programu PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 Następujące kroki przeprowadzą Cię przez proces tworzenia magazynu usługi Recovery Services. Magazyn usługi Recovery Services jest inny niż magazynu kopii zapasowych.
 
-1. Jeśli używasz usługi Azure Backup po raz pierwszy, musisz użyć **Register-AzureRMResourceProvider** polecenia cmdlet, aby zarejestrować dostawcę usługi Azure Recovery Service w ramach subskrypcji.
+1. Jeśli używasz usługi Azure Backup po raz pierwszy, musisz użyć **AzResourceProvider rejestru** polecenia cmdlet, aby zarejestrować dostawcę usługi Azure Recovery Service w ramach subskrypcji.
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Magazyn usługi Recovery Services jest zasobu usługi ARM, dlatego należy go umieścić w grupie zasobów. Możesz użyć istniejącej grupy zasobów lub Utwórz nową. Podczas tworzenia nowej grupy zasobów, określ nazwę i lokalizację grupy zasobów.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "WestUS"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
-3. Użyj **New-AzureRmRecoveryServicesVault** polecenia cmdlet, aby utworzyć nowy magazyn. Pamiętaj określić lokalizację tego samego magazynu, która była używana dla grupy zasobów.
+3. Użyj **New AzRecoveryServicesVault** polecenia cmdlet, aby utworzyć nowy magazyn. Pamiętaj określić lokalizację tego samego magazynu, która była używana dla grupy zasobów.
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 4. Określenie typu nadmiarowości magazynu, które mają być używane; Możesz użyć [magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md) lub [magazyn geograficznie nadmiarowy (GRS)](../storage/common/storage-redundancy-grs.md). Poniższy przykład pokazuje, że ustawiono opcję - BackupStorageRedundancy testVault GeoRedundant.
 
@@ -57,17 +50,17 @@ Następujące kroki przeprowadzą Cię przez proces tworzenia magazynu usługi R
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Wyświetlanie magazynów w ramach subskrypcji
-Użyj **Get-AzureRmRecoveryServicesVault** Aby wyświetlić listę wszystkich magazynów w bieżącej subskrypcji. Można użyć tego polecenia, aby sprawdzić, czy został utworzony nowy magazyn lub aby zobaczyć, jakie magazyny są dostępne w ramach subskrypcji.
+Użyj **Get AzRecoveryServicesVault** Aby wyświetlić listę wszystkich magazynów w bieżącej subskrypcji. Można użyć tego polecenia, aby sprawdzić, czy został utworzony nowy magazyn lub aby zobaczyć, jakie magazyny są dostępne w ramach subskrypcji.
 
-Uruchom polecenie **Get-AzureRmRecoveryServicesVault**, i są wymienione wszystkie magazyny w ramach subskrypcji.
+Uruchom polecenie **Get AzRecoveryServicesVault**, i są wymienione wszystkie magazyny w ramach subskrypcji.
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -131,7 +124,7 @@ Po utworzeniu magazynu usługi Recovery Services, Pobierz najnowszą wersję age
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
 W systemie Windows Server lub Windows, komputer kliencki, uruchom [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) polecenia cmdlet, aby zarejestrować maszynę w magazynie.

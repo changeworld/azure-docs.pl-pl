@@ -12,12 +12,12 @@ ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c68dba4a188e5acf88cc39b02e535d89a1c9e46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2281bc451a5acf9e4e634a124161a3e8b0734deb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090512"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Samouczek:  Konfigurowanie synchronizacji skrótów haseł jako zapasu dla usług AD FS w programie Azure AD Connect
 
@@ -60,9 +60,9 @@ Teraz pokażemy, jak przejść na synchronizację skrótów haseł. Przed rozpoc
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testowanie logowania się przy użyciu jednego z kont użytkowników
 
-1.  Przejdź na stronę [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1. Przejdź na stronę [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Zaloguj się przy użyciu konta użytkownika utworzonego w nowej dzierżawie.  Należy zalogować się przy użyciu następującego formatu: (user@domain.onmicrosoft.com). Użyj tego samego hasła, za pomocą którego użytkownik loguje się lokalnie.</br>
-![Weryfikacja](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Weryfikacja](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="next-steps"></a>Następne kroki
 

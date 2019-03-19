@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228389"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003123"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Użyj programu Windows PowerShell dla usługi StorSimple do administrowania urządzeniem
 
@@ -47,7 +47,7 @@ Aby uzyskać dostęp programu Windows PowerShell dla usługi StorSimple przy uż
 
 ## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Łączenie do programu Windows PowerShell dla usługi StorSimple za pośrednictwem konsoli szeregowej urządzenia
 
-Możesz [Pobierz program PuTTY](http://www.putty.org/) lub podobne oprogramowania do emulacji terminala połączyć się z programu Windows PowerShell dla usługi StorSimple. Należy skonfigurować program PuTTY specjalnie w celu uzyskania dostępu do urządzenia StorSimple systemu Azure firmy Microsoft. Poniższe tematy zawierają szczegółowe instrukcje dotyczące sposobu konfigurowania programu PuTTy i połączyć się z urządzeniem. Ponadto opisano różne opcje menu w konsoli szeregowej.
+Możesz [Pobierz program PuTTY](https://www.putty.org/) lub podobne oprogramowania do emulacji terminala połączyć się z programu Windows PowerShell dla usługi StorSimple. Należy skonfigurować program PuTTY specjalnie w celu uzyskania dostępu do urządzenia StorSimple systemu Azure firmy Microsoft. Poniższe tematy zawierają szczegółowe instrukcje dotyczące sposobu konfigurowania programu PuTTy i połączyć się z urządzeniem. Ponadto opisano różne opcje menu w konsoli szeregowej.
 
 ### <a name="putty-settings"></a>Ustawienia programu PuTTY
 
@@ -110,8 +110,8 @@ Możesz wybrać następujące ustawienia:
    * Stosowanie aktualizacji
    * Instalowanie poprawek
 
-    > [!NOTE]
-    > Jest to preferowaną opcję, jeśli zapomniane hasło administratora urządzenia i nie można nawiązać połączenia przy użyciu opcji 1 lub 2.
+     > [!NOTE]
+     > Jest to preferowaną opcję, jeśli zapomniane hasło administratora urządzenia i nie można nawiązać połączenia przy użyciu opcji 1 lub 2.
 
 4. **Zmień język** ta opcja umożliwia zmianę języka wyświetlania w interfejsie programu Windows PowerShell. Obsługiwane języki są angielski, japoński, rosyjski, francuski, Południowa —, hiszpański, włoski, niemiecki, chiński i portugalski (Brazylia).
 
@@ -159,7 +159,7 @@ W poniższej tabeli przedstawiono podsumowanie typowych zadań zarządzania i z�
 
 W programie Windows PowerShell dla usługi StorSimple pomocy polecenia cmdlet jest dostępna. Online, aktualnych wersji Pomocy jest również dostępna, którego można użyć, aby zaktualizować pomoc w Twoim systemie.
 
-Uzyskiwanie pomocy w ten interfejs jest podobny, jak w programie Windows PowerShell, a większość poleceń cmdlet związanych będą działać. Możesz znaleźć pomocy dla Windows PowerShell online w bibliotece TechNet: [skryptów za pomocą programu Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
+Uzyskiwanie pomocy w ten interfejs jest podobny, jak w programie Windows PowerShell, a większość poleceń cmdlet związanych będą działać. Pomoc dla Windows PowerShell online można znaleźć w bibliotece TechNet: [Obsługa skryptów w programie Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
 
 Poniżej znajduje się krótki opis typów pomocy dla tego interfejsu programu Windows PowerShell, w tym jak dokonać aktualizacji w Pomocy.
 

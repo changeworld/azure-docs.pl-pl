@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: c87e1b42aa8474aa62e979e0d7ec1f8bf948910f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539653"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075257"
 ---
 # <a name="translator-text-api-v20"></a>Interfejs API tekstu usługi Translator w wersji 2.0
 
@@ -327,7 +327,7 @@ Typ zawartości odpowiedzi: aplikacja/xml
 |tekst|(puste)   |Wymagany. Ciąg zawierający zdania lub zdania określony język wymawiane dla strumienia wave. Rozmiar tekstu, aby porozmawiać nie może przekraczać 2000 znaków.|query|string|
 |language|(puste)   |Wymagany. Ciąg reprezentujący kod obsługiwanego języka, aby porozmawiać z tekstem w. Kod musi być obecne na liście kodów zwrócona przez metodę `GetLanguagesForSpeak`.|query|string|
 |format|(puste)|Opcjonalny. Ciąg określający identyfikator typu zawartości. Obecnie `audio/wav` i `audio/mp3` są dostępne. Wartość domyślna to `audio/wav`.|query|string|
-|opcje|(puste)    |<ul><li>Opcjonalny. Ciąg określający właściwości syntezatora mowy:<li>`MaxQuality` i `MinSize` są dostępne określić jakość sygnałów audio. Za pomocą `MaxQuality`, możesz uzyskać głosów z najwyższą jakość i `MinSize`, możesz uzyskać głosów z najmniejszego możliwego rozmiaru. Wartość domyślna to `MinSize`.</li><li>`female` i `male` są dostępne określić żądaną płeć głosu. Wartość domyślna to `female`. Użyj pionowy pasek "|` to include multiple options. For example  `MaxQuality|Male`.</li></li></ul> |query|string|
+|opcje|(puste)    |<ul><li>Opcjonalny. Ciąg określający właściwości syntezatora mowy:<li>`MaxQuality` i `MinSize` są dostępne określić jakość sygnałów audio. Za pomocą `MaxQuality`, możesz uzyskać głosów z najwyższą jakość i `MinSize`, możesz uzyskać głosów z najmniejszego możliwego rozmiaru. Wartość domyślna to `MinSize`.</li><li>`female` i `male` są dostępne określić żądaną płeć głosu. Wartość domyślna to `female`. Użyj pionowy pasek <code>\|</code> obejmujący wiele opcji. Na przykład `MaxQuality|Male`.</li></li></ul> |query|string|
 |Autoryzacja|(puste)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
 |OCP-Apim-Subscription-Key|(puste)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 

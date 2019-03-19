@@ -7,20 +7,20 @@ ms.service: dns
 ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
-ms.openlocfilehash: 2b14753237e118540da6306fa9f06816f3e58b71
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086330"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hostowanie aplikacji internetowych platformy Azure ze zrównoważonym obciążeniem w wierzchołku strefy
 
-Protokół DNS zapobiega przypisanie coś innego niż rekord A lub AAAA w wierzchołku strefy. Przykład wierzchołku strefy to contoso.com. Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą usługi Traffic Manager. Nie jest możliwe wskazywała na profil usługi Traffic Manager z rekordu wierzchołku strefy. W wyniku właścicieli aplikacji należy użyć, aby uzyskać obejście tego problemu. Przekierowanie w warstwie aplikacji musi przekierowywać domenę w wierzchołku strefy do innej domeny. Przykładem jest przekierowanie z contoso.com www.contoso.com. To rozwiązanie przedstawia informacje o pojedynczym punktem awarii dla funkcji przekierowania.
+Protokół DNS zapobiega przypisanie coś innego niż rekord A lub AAAA w wierzchołku strefy. Przykład wierzchołku strefy to contoso.com. Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą usługi Traffic Manager. Nie jest możliwe wskazywała na profil usługi Traffic Manager z rekordu wierzchołku strefy. W wyniku właścicieli aplikacji należy użyć, aby uzyskać obejście tego problemu. Przekierowanie w warstwie aplikacji musi przekierowywać domenę w wierzchołku strefy do innej domeny. Przykładem jest przekierowanie z contoso.com www\.contoso.com. To rozwiązanie przedstawia informacje o pojedynczym punktem awarii dla funkcji przekierowania.
 
 Przy użyciu rekordów aliasów ten problem już nie istnieje. Teraz właścicieli aplikacji można wskazać ich rekordów w wierzchołku strefy profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe. Właściciele aplikacji może wskazywać tego samego profilu usługi Traffic Manager, używanego do innej domeny w swojej strefie DNS.
 
-Na przykład contoso.com i www.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Jest to możliwe tak długo, jak profil usługi Traffic Manager ma tylko zewnętrzne punkty końcowe skonfigurowane.
+Na przykład contoso.com i www\.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Jest to możliwe tak długo, jak profil usługi Traffic Manager ma tylko zewnętrzne punkty końcowe skonfigurowane.
 
 W tym artykule dowiesz się, jak utworzyć rekord aliasu dla języka apex Twojej domeny i skonfigurować punkty końcowe profilu usługi Traffic Manager, tak dla aplikacji sieci web.
 
@@ -28,11 +28,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musi mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmują możliwość ustawienia serwera nazw (NS) rekordy dla domeny.
+Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje, Hostuj swoją domenę, w usłudze Azure DNS, zobacz [samouczka: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
-Domena przykład używane w tym samouczku to contoso.com, ale korzystać z własnej nazwy domeny.
+Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -60,8 +60,8 @@ Utworzyć dwie aplikacje internetowe, po jednym w każdym planie usługi App Ser
 
    |Name (Nazwa)<br>(musi być unikatowa w obrębie. azurewebsites.net)|Grupa zasobów |Plan usługi App Service/lokalizacja
    |---------|---------|---------|
-   |App-01|Użyj istniejącego<br>Wybierz grupę zasobów|ASP 01(East US)|
-   |App-02|Użyj istniejącego<br>Wybierz grupę zasobów|ASP 02(Central US)|
+   |App-01|Użyj istniejącego<br>Wybieranie grupy zasobów|ASP-01(East US)|
+   |App-02|Użyj istniejącego<br>Wybieranie grupy zasobów|ASP 02(Central US)|
 
 ### <a name="gather-some-details"></a>Zbierz niektóre szczegóły
 
@@ -87,14 +87,14 @@ Teraz możesz utworzyć punkty końcowe dla dwóch aplikacji sieci web.
 3. Kliknij pozycję **Add** (Dodaj).
 4. Skorzystaj z poniższej tabeli, aby skonfigurować punkty końcowe:
 
-   |Typ  |Name (Nazwa)  |Środowisko docelowe  |Lokalizacja  |Ustawienia niestandardowego nagłówka|
+   |Type  |Name (Nazwa)  |Środowisko docelowe  |Lokalizacja  |Ustawienia nagłówka niestandardowego|
    |---------|---------|---------|---------|---------|
-   |Jest zewnętrzny punkt końcowy     |End-01|Adres IP, który jest zarejestrowany dla programu App-01|Wschodnie stany USA|Host:\<adres URL dla programu App-01\><br>Przykład: **hosta: aplikacja-01.azurewebsites.net**|
-   |Jest zewnętrzny punkt końcowy     |End-02|Adres IP, który jest zarejestrowany dla programu App-02|Środkowe stany USA|Host:\<adres URL dla programu App-02\><br>Przykład: **hosta: aplikacja-02.azurewebsites.net**
+   |Zewnętrzny punkt końcowy     |End-01|Adres IP, który jest zarejestrowany dla programu App-01|Wschodnie stany USA|Host:\<adres URL dla programu App-01\><br>Przykład: **hosta: aplikacja-01.azurewebsites.net**|
+   |Zewnętrzny punkt końcowy     |End-02|Adres IP, który jest zarejestrowany dla programu App-02|Środkowe stany USA|Host:\<adres URL dla programu App-02\><br>Przykład: **hosta: aplikacja-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>Tworzenie strefy DNS
 
-Możesz użyć istniejącej strefy DNS dla badania, lub można utworzyć nowej strefy. Aby utworzyć i przekazać nowej strefy DNS na platformie Azure, zobacz [samouczek: Hostuj swoją domenę, w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Możesz użyć istniejącej strefy DNS dla badania, lub można utworzyć nowej strefy. Aby utworzyć i przekazać nowej strefy DNS na platformie Azure, zobacz [samouczka: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 ### <a name="add-the-alias-record-set"></a>Dodaj zestaw rekordów aliasów
 
@@ -104,7 +104,7 @@ Gdy strefy DNS jest gotowy, możesz dodać rekord aliasu dla wierzchołku strefy
 2. Kliknij pozycję **Zestaw rekordów**.
 3. Dodaj rekord, można ustawić przy użyciu poniższej tabeli:
 
-   |Name (Nazwa)  |Typ  |Alias zestawu rekordów  |Typ aliasu  |Zasób platformy Azure|
+   |Name (Nazwa)  |Type  |Alias record set  |Typ aliasu  |Zasób platformy Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Yes|Zasób platformy Azure|Traffic Manager — swój profil|
 

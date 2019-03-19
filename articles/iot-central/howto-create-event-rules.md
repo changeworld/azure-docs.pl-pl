@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2fd06a2164761489af6ee84d56806ef858e3b5d8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782687"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081444"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -59,15 +59,15 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 
 1. Opcjonalnie możesz również ustawić **liczba** jako **agregacji** i podaj odpowiednie wartości progowej.
 
-    - Bez agregacji, wyzwolenie reguły dla każdego punktu danych zdarzeń, który spełnia warunek. Na przykład, jeśli konfigurujesz reguły warunku Wyzwalaj, gdy **błąd Motor wentylator** wystąpi zdarzenie, a następnie wyzwoleniu reguły niemal natychmiast, gdy urządzenie zgłosi tego zdarzenia.
-    - Jeśli liczba jest używana jako funkcji agregującej, a następnie trzeba podać **próg** i **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. W tym przypadku wartość jest agregowana liczbę zdarzeń i wyzwolenie reguły tylko wtedy, gdy liczba zdarzeń zagregowane dopasowuje wartość progową.
+   - Bez agregacji, wyzwolenie reguły dla każdego punktu danych zdarzeń, który spełnia warunek. Na przykład, jeśli konfigurujesz reguły warunku Wyzwalaj, gdy **błąd Motor wentylator** wystąpi zdarzenie, a następnie wyzwoleniu reguły niemal natychmiast, gdy urządzenie zgłosi tego zdarzenia.
+   - Jeśli liczba jest używana jako funkcji agregującej, a następnie trzeba podać **próg** i **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. W tym przypadku wartość jest agregowana liczbę zdarzeń i wyzwolenie reguły tylko wtedy, gdy liczba zdarzeń zagregowane dopasowuje wartość progową.
 
-    Na przykład jeśli chcesz alert, gdy istnieje więcej niż trzy zdarzenia urządzenia w ciągu 5 minut, następnie wybierz zdarzenie i zestawu funkcji agregującej jako "liczba", operator jako "większe niż" i "próg" jako 3. Ustaw "Agregacji przedziale czasu" na "5 minut". Reguła jest wyzwalana w przypadku więcej niż trzy zdarzenia są wysyłane przez urządzenie w ciągu 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
+     Na przykład jeśli chcesz alert, gdy istnieje więcej niż trzy zdarzenia urządzenia w ciągu 5 minut, następnie wybierz zdarzenie i zestawu funkcji agregującej jako "liczba", operator jako "większe niż" i "próg" jako 3. Ustaw "Agregacji przedziale czasu" na "5 minut". Reguła jest wyzwalana w przypadku więcej niż trzy zdarzenia są wysyłane przez urządzenie w ciągu 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
 
-    ![Dodaj warunek zdarzenia](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+     ![Dodaj warunek zdarzenia](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE]
-    >Można dodać więcej niż jednej miary zdarzeń w obszarze **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
+     >[!NOTE]
+     >Można dodać więcej niż jednej miary zdarzeń w obszarze **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
 
 ### <a name="configure-actions"></a>Konfigurowanie akcji
 

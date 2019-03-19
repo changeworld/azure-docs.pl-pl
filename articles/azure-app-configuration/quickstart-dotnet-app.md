@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b5e41b1f9ee982b8ff8c86232f715d5dab705cd6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: becd91b3539ef992289a4032283be64fbf9d123d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962166"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729364"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki start: tworzenie aplikacji .NET Framework przy użyciu usługi Azure App Configuration
 
@@ -71,7 +71,7 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
     </appSettings>
     ```
 
-   Uwaga! Ponieważ będziemy odczytywać parametry połączenia Twojego magazynu konfiguracji aplikacji ze zmiennej środowiskowej `ConnectionString`, pamiętaj o dodaniu konstruktora konfiguracji `Environment` przed elementem `MyConfigStore` we właściwości `configBuilders` sekcji `appSettings`.
+   Należy pamiętać, jak firma Microsoft będzie można odczytywać parametry połączenia magazynu konfiguracji aplikacji zmiennej środowiskowej `ConnectionString`, ważne jest, aby dodać `Environment` konstruktora konfiguracji przed `MyConfigStore` w `configBuilders` właściwość `appSettings` sekcji.
 
 3. Otwórz plik *Program.cs* i zaktualizuj metodę `Main`, aby używała usługi App Configuration przez wywołanie elementu `ConfigurationManager`.
 
@@ -100,7 +100,7 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start został utworzony nowy magazyn konfiguracji aplikacji i użyto go z aplikacją konsolową .NET Framework. Aby dowiedzieć się więcej o korzystaniu z usługi App Configuration, przejdź do następnego samouczka, w którym zaprezentowano uwierzytelnianie.
 

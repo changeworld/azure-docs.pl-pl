@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: fa1076fb523c3634cf8e4f4832d36aa7ee715797
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a127a211157edb0b26d0495bc2ed05dd79323111
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842638"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
@@ -50,7 +50,7 @@ Dane wyjściowe pobiera zapisane w obiekcie Blob platformy Azure. Ponieważ dane
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 - Usługi Azure Machine Learning service obszar roboczy, zawierający skrypty i zestawu SDK usługi Azure Machine Learning dla języka Python zainstalowane katalogu lokalnego. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
 
@@ -136,15 +136,15 @@ Możesz zatrzymać zbieranie danych w dowolnym momencie. Użyj kodu w języku Py
 
   1. Przejdź do **wdrożeń** -> **wybierz usługę** -> **Edytuj**.
 
-    [![Edytowanie opcji](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [![Edytowanie opcji](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. W **Zaawansowane ustawienia**, usuń zaznaczenie opcji **zbierania danych modelu Włącz**. 
 
-    [![Usuń zaznaczenie pola wyboru zbierania danych](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [![Usuń zaznaczenie pola wyboru zbierania danych](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Wybierz **aktualizacji** do zastosowania zmiany.
 
-* Opcja 2 — za pomocą języka Python wyłączyć zbieranie danych.
++ Opcja 2 — za pomocą języka Python wyłączyć zbieranie danych.
 
   ```python 
   ## replace <service_name> with the name of the web service

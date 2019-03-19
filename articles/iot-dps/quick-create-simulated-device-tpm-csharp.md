@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f574c85252614fd24734657affe3264d72130dd3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997002"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901592"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Tworzenie i aprowizowanie symulowanego urządzenia TPM za pomocą zestawu SDK języka C# dla usługi IoT Hub Device Provisioning
 
@@ -37,7 +37,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego 
 
-1. Upewnij się, że na maszynie jest zainstalowany [zestaw SDK dla platformy .NET Core w wersji 2.1 lub nowszej](https://www.microsoft.com/net/download/windows). 
+1. Upewnij się, że masz [zestawu SDK programu .NET Core 2.1 lub nowszej](https://www.microsoft.com/net/download/windows) zainstalowana na tym komputerze. 
 
 1. Upewnij się, że na swojej maszynie masz zainstalowane oprogramowanie `git` i że jest ono dodane do zmiennych środowiskowych dostępnych z okna poleceń. Zobacz stronę z [narzędziami klienckimi Git organizacji Software Freedom Conservancy](https://git-scm.com/download/), aby uzyskać najnowszą wersję narzędzi `git` do zainstalowania, które obejmują powłokę **Git Bash**, czyli aplikację wiersza polecenia, która może służyć do interakcji z lokalnym repozytorium Git. 
 
@@ -78,14 +78,14 @@ W tym artykule przedstawiono rejestracje indywidualne.
 4. W witrynie Azure Portal w bloku podsumowania usługi Device Provisioning wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Rejestracje indywidualne** i kliknij przycisk **Dodaj rejestrację indywidualną** u góry strony. 
 
 5. W obszarze **Dodawanie rejestracji** wprowadź następujące informacje:
-    - Wybierz opcję **TPM** jako *Mechanizm* poświadczania tożsamości.
-    - Wprowadź dane w polach *Identyfikator rejestracji* i *Klucz poręczenia* dla urządzenia TPM, używając poprzednio zanotowanych wartości.
-    - Opcjonalnie wybierz centrum IoT połączone z Twoją usługą aprowizacji.
-    - Wprowadź unikatowy identyfikator urządzenia. Możesz wprowadzić identyfikator urządzenia sugerowany w przykładowych danych wyjściowych lub wprowadzić własny. W przypadku używania własnego identyfikatora unikaj korzystania z danych poufnych podczas nadawania nazwy. 
-    - Opcjonalnie zaktualizuj pole **Początkowy stan bliźniaczej reprezentacji urządzenia** za pomocą wybranej konfiguracji początkowej dla urządzenia.
-    - Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - Wybierz opcję **TPM** jako *Mechanizm* poświadczania tożsamości.
+   - Wprowadź dane w polach *Identyfikator rejestracji* i *Klucz poręczenia* dla urządzenia TPM, używając poprzednio zanotowanych wartości.
+   - Opcjonalnie wybierz centrum IoT połączone z Twoją usługą aprowizacji.
+   - Wprowadź unikatowy identyfikator urządzenia. Możesz wprowadzić identyfikator urządzenia sugerowany w przykładowych danych wyjściowych lub wprowadzić własny. W przypadku używania własnego identyfikatora unikaj korzystania z danych poufnych podczas nadawania nazwy. 
+   - Opcjonalnie zaktualizuj pole **Początkowy stan bliźniaczej reprezentacji urządzenia** za pomocą wybranej konfiguracji początkowej dla urządzenia.
+   - Gdy skończysz, kliknij przycisk **Zapisz**. 
 
-    ![Wprowadzanie informacji o rejestracji urządzenia w bloku portalu](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
+     ![Wprowadzanie informacji o rejestracji urządzenia w bloku portalu](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Po pomyślnej rejestracji *Identyfikator rejestracji* Twojego urządzenia pojawi się na liście na karcie *Indywidualne rejestracje*. 
 
@@ -107,7 +107,7 @@ Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowani
 1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. U góry bloku **Wszystkie zasoby** kliknij pozycję **Usuń**.  
 1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. U góry bloku **Wszystkie zasoby** kliknij pozycję **Usuń**.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start na Twojej maszynie zostało utworzone symulowane urządzenie TPM, które zostało zaaprowizowane do Twojego centrum IoT przy użyciu usługi IoT Hub Device Provisioning. Aby dowiedzieć się, jak zarejestrować urządzenie TPM programowo, przejdź do przewodnika Szybki start dotyczącego programowej rejestracji urządzenia TPM. 
 

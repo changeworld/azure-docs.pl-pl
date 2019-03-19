@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776e3f7047e2f6b43063e085a8ae7a8d29835a75
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096677"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
 
@@ -79,9 +79,9 @@ Upewnij się, że synchronizacja nie ma miejsce, gdy jesteś w trakcie wdrażani
 > [!Note]
 > Te czynności mają zastosowanie tylko wtedy do nowszej wersji (1.1.xxx.x) programu Azure AD Connect za pomocą wbudowanych harmonogramu. Jeśli używasz starszej wersji (1.0.xxx.x) programu Azure AD Connect, który używa harmonogramu zadań Windows lub własny niestandardowy harmonogram (nie jest to częsty) używają do wyzwolenia okresowej synchronizacji, należy odpowiednio je wyłączyć.
 
-3. Rozpocznij **Menedżera usługi synchronizacji** , przechodząc do rozpoczęcia → usługi synchronizacji.
+1. Rozpocznij **Menedżera usługi synchronizacji** , przechodząc do rozpoczęcia → usługi synchronizacji.
 
-4. Przejdź do **operacji** kartę i upewnij się, brak żadnej operacji, których stan to *"w"toku.*
+1. Przejdź do **operacji** kartę i upewnij się, brak żadnej operacji, których stan to *"w"toku.*
 
 ### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Krok 2. Znajdź istniejącą regułę synchronizacji ruchu wychodzącego dla atrybutu userCertificate
 Powinna to być istniejącą regułę synchronizacji, która jest włączone i skonfigurowane do wyeksportowania certyfikatu użytkownika atrybutu dla obiektów użytkowników do usługi Azure AD. Odszukaj tę regułę synchronizacji, aby dowiedzieć się, jego **pierwszeństwo** i **filtru określania zakresu** konfiguracji:

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c8e60d97d37937e508a88f27b11274980a51a52c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6678a37b534db5603aed245bdc8edffbf04b7f51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466204"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904763"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Zaawansowane eksplorowanie i modelowanie danych za pomocą platformy Spark
 
@@ -37,8 +37,8 @@ Modeli, których używamy obejmują regresji logistycznej liniowego i liniowa, l
 
 * [Regresja liniowa z SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) model regresji liniowej, który używa metody stochastycznego spadku gradientu (SGD) i do optymalizacji i funkcji skalowania do prognozowania kwoty Porada płatne. 
 * [Regresji logistycznej przy użyciu LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) lub regresji "logit" jest model regresji, który można użyć, gdy zmienna zależnych od ustawień lokalnych jest podzielone na kategorie celu klasyfikacji danych. LBFGS jest algorytm optymalizacji quasi Newton — która przybliża algorytm Broyden — Fletcher — Goldfarb — Shanno (BFGS) przy użyciu ograniczona ilość pamięci komputera i która jest powszechnie używana w usłudze machine learning.
-* [Losowe lasów](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasach są używane do regresji i klasyfikacji i mogą obsługiwać funkcje podzielonych na kategorie i można rozszerzyć na ustawienie klasyfikacji wieloklasowej. One skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i są wyposażone w interakcje. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
-* [Gradient wzmocnione drzewa](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. GBTs służą do regresji i klasyfikacji mogą obsługiwać funkcje podzielonych na kategorie, funkcja skalowanie nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje są wyposażone w. One można również w ustawieniu kontra klasyfikacji.
+* [Losowe lasów](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasach są używane do regresji i klasyfikacji i mogą obsługiwać funkcje podzielonych na kategorie i można rozszerzyć na ustawienie klasyfikacji wieloklasowej. One skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i są wyposażone w interakcje. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
+* [Gradient wzmocnione drzewa](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. GBTs służą do regresji i klasyfikacji mogą obsługiwać funkcje podzielonych na kategorie, funkcja skalowanie nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje są wyposażone w. One można również w ustawieniu kontra klasyfikacji.
 
 Modelowanie za pomocą stałych Nietrwałych i Hiperparametrycznego przykłady przedstawiono odchylenia problemu klasyfikacji binarnej. Przykłady prostsze (bez parametru wrzucając) są prezentowane w tematem głównym dla zadań regresji. Jednak w dodatku, weryfikacja za pomocą elastycznych net regresji liniowej i stałych Nietrwałych za pomocą parametru odchylenia przy użyciu regresji losowe lasu są także przedstawione. **Elastyczne netto** jest metodą regresji umorzyć dopasowanie modele regresji liniowej, który liniowo łączy P1 i P2 metryki jak karnymi z [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) i [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization)metody.   
 
@@ -337,7 +337,7 @@ Ten kod pokazuje, jak utworzyć nową funkcję, dzieląc razy ruchu do pojemnik�
 ### <a name="index-and-one-hot-encode-categorical-features"></a>Indeksowanie i hot jeden kodowanie funkcji podzielonych na kategorie
 W tej sekcji przedstawiono sposób indeksu lub zakodować kategorii funkcji dla danych wejściowych do funkcji modelowania. Modelowania i przewidywanie funkcje MLlib wymaga, aby funkcji, korzystając z kategorii danych wejściowych być indeksowane zakodowane przed użyciem. 
 
-W zależności od modelu musisz indeksu lub Zakoduj je na różne sposoby. Na przykład Logistic i regresji liniowej modele wymagają hot jeden kodowania, gdy, na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji, z każdego zawierających 0 lub 1 w zależności od kategorii wystąpienia wartości. Udostępnia MLlib [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkcji hot jeden kodowania. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
+W zależności od modelu musisz indeksu lub Zakoduj je na różne sposoby. Na przykład Logistic i regresji liniowej modele wymagają hot jeden kodowania, gdy, na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji, z każdego zawierających 0 lub 1 w zależności od kategorii wystąpienia wartości. Udostępnia MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkcji hot jeden kodowania. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
 
 Poniżej przedstawiono kod, aby zaindeksować i kodowanie funkcji podzielonych na kategorie:
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85a2810e8ab8de5ad2967aaf17f421d871368063
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2c3da9470668fa2987195c26e98eee51f14027f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958460"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136348"
 ---
-# <a name="indexing-external-data-for-queries-in-azure-search"></a>Indeksowanie danych zewnętrznych dla zapytań w usłudze Azure Search
+# <a name="data-import-overview---azure-search"></a>Importowanie danych przegląd — usługa Azure Search
 
 W usłudze Azure Search zapytania są wykonywane na zawartości ładowane i zapisywane w [indeksu wyszukiwania](search-what-is-an-index.md). W tym artykule sprawdza, czy dwa podstawowe podejścia do wypełniania indeksu: *wypychania* dane do indeksu programistycznie, lub punktów [indeksator usługi Azure Search](search-indexer-overview.md) na obsługiwanego źródła danych do  *ściągnięcia* w danych.
 
@@ -36,7 +36,31 @@ Możesz załadować jeden lub wiele dokumentów do indeksu przy użyciu następu
 
 Obecnie nie istnieje wsparcie narzędziowe wypychania danych za pośrednictwem portalu.
 
-Aby zapoznać się z wprowadzeniem do każdej z metodologii, zobacz [Importowanie danych przy użyciu usługi REST](search-import-data-rest-api.md) lub [Importowanie danych przy użyciu platformy .NET](search-import-data-dotnet.md).
+Aby zapoznać się z wprowadzeniem do każdej z metodologii, zobacz [Szybki Start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST](search-create-index-rest-api.md) lub [Szybki Start: Tworzenie indeksu usługi Azure Search w C# ](search-import-data-dotnet.md).
+
+<a name="indexing-actions"></a>
+
+### <a name="indexing-actions-upload-merge-uploadormerge-delete"></a>Operacje indeksowania: przekazanie, scalenie, uploadOrMerge, Usuń
+
+Korzystanie z interfejsu API REST wymaga wysyłania żądań HTTP POST zawierających treść żądań JSON do adresu URL punktu końcowego indeksu usługi Azure Search. Obiekt JSON w treści żądania HTTP będzie zawierał pojedynczą tablicę danych JSON o nazwie „wartość” z obiektami JSON reprezentującymi dokumenty, które mają zostać dodane do indeksu, zaktualizowane lub usunięte.
+
+Poszczególne obiekty JSON w tablicy „wartość” reprezentują dokumenty, które mają zostać umieszczone w indeksie. Każdy z tych obiektów zawiera klucz dokumentu i określa wymaganą akcję indeksowania (przekazać, scalić, usunąć). W zależności od tego, którą z poniższych akcji wybierzesz, tylko określone pola muszą być uwzględnione w danym dokumencie:
+
+| @search.action | Opis | Wymagane pola dla każdego dokumentu | Uwagi |
+| -------------- | ----------- | ---------------------------------- | ----- |
+| `upload` |Akcja `upload` jest podobna do akcji „upsert”, co oznacza, że dokument zostanie wstawiony, jeśli jest nowy, albo zaktualizowany/zastąpiony, jeśli już istnieje. |pole klucza oraz inne pola, które chcesz zdefiniować |Podczas aktualizowania/zastępowania istniejącego dokumentu każde pole, które nie jest określone w żądaniu, zostanie ustawione na wartość `null`. Dzieje się tak nawet wtedy, gdy pole było wcześniej ustawione na wartość inną niż null. |
+| `merge` |Aktualizuje istniejący dokument o określone pola. Jeśli dokument nie istnieje w indeksie, scalanie zakończy się niepowodzeniem. |pole klucza oraz inne pola, które chcesz zdefiniować |Wszystkie pola, które określisz w żądaniu scalania, zastąpią istniejące pola w dokumencie. Obejmuje to również pola typu `Collection(Edm.String)`. Jeśli na przykład dokument zawiera pole `tags` o wartości `["budget"]` i wykonywane jest scalanie z wartością `["economy", "pool"]` dla pola `tags`, końcowa wartość pola `tags` będzie równa `["economy", "pool"]`. Nie będzie to `["budget", "economy", "pool"]`. |
+| `mergeOrUpload` |Ta akcja działa jak akcja `merge`, jeśli dokument o danym kluczu już istnieje w indeksie. Jeśli dokument nie istnieje, działa jak akcja `upload` dla nowego dokumentu. |pole klucza oraz inne pola, które chcesz zdefiniować |- |
+| `delete` |Usuwa określony dokument z indeksu. |tylko pole klucza |Wszystkie pola, które określisz oprócz pola klucza, zostaną zignorowane. Jeśli chcesz usunąć pojedyncze pole z dokumentu, zamiast tej akcji użyj akcji `merge` i po prostu jawnie ustaw dla pola wartość null. |
+
+### <a name="formulate-your-query"></a>Formułowanie zapytania
+Istnieją dwie metody [przeszukiwania indeksu przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Pierwsza z nich polega na wysłaniu żądania HTTP POST, w ramach którego parametry zapytania są definiowane w obiekcie JSON w treści żądania. Druga metoda obejmuje wysłanie żądania HTTP GET, w ramach którego parametry zapytania są definiowane w adresie URL żądania. W przypadku żądania POST limity dotyczące rozmiaru parametrów zapytania są [luźniejsze](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) niż dla żądania GET. Z tego powodu zaleca się używanie żądania POST, o ile nie występują specjalne okoliczności, w których korzystanie z żądania GET jest wygodniejsze.
+
+Zarówno dla żądania POST, jak i GET zawartość adresu URL żądania musi obejmować *nazwę usługi*, *nazwę indeksu* oraz odpowiednią *wersję interfejsu API* (w momencie publikowania tego dokumentu aktualna wersja interfejsu API to `2017-11-11`). W przypadku żądania GET parametry zapytania są określane w *ciągu zapytania* na końcu adresu URL. Format adresu URL został przedstawiony poniżej:
+
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+
+Format dla żądania POST jest taki sam, ale parametry ciągu zapytania zawierają tylko element api-version.
 
 
 ## <a name="pulling-data-into-an-index"></a>Ściąganie danych do indeksu

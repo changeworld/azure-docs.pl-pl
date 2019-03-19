@@ -11,19 +11,21 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: d6de6e2752c16d95c81f47b9d14d53e0233a4ed6
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.date: 03/14/2019
+ms.openlocfilehash: 02dcdfa6f356d48b8fa22603323a7f3035e0fe51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858774"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database
 
 W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które muszą być dostępne dla pojedynczej bazy danych w usłudze Azure SQL Database.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Zasoby obliczeniowe zmiany (rdzeni wirtualnych lub jednostek Dtu)
 
@@ -33,6 +35,9 @@ Wideo pokazano, dynamicznie zmieniające się usługa warstwy i obliczenia rozmi
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
+
+> [!IMPORTANT]
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Wpływ zmiany rozmiaru obliczeń warstwy lub ponowne skalowanie usługi
 

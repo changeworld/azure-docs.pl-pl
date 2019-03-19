@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dff6d07f4df1da3de083934e0d8240beb957292e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883597"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Uwierzytelnianie usługi Azure AD umożliwia dostęp do interfejsu API Media Services za pomocą architektury REST
 
@@ -60,8 +60,8 @@ Aby uzyskać dostęp do interfejsu API usługi Media Services, należy zebrać n
 
 |Ustawienie|Przykład|Opis|
 |---|-------|-----|
-|Domena dzierżawy usługi Azure Active Directory|microsoft.onmicrosoft.com|Usługa Azure AD jako punktu końcowego Secure Token Service (STS) jest tworzony przy użyciu następującego formatu: https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token. Usługa Azure AD wystawia token JWT w celu uzyskania dostępu do zasobów (token dostępu).|
-|Punkt końcowy interfejsu API REST|https://amshelloworld.restv2.westus.media.azure.net/api/|To jest punkt końcowy, względem których wszystkich nośników interfejsu API REST usług w Twojej aplikacji wywołań.|
+|Domena dzierżawy usługi Azure Active Directory|microsoft.onmicrosoft.com|Usługa Azure AD jako punktu końcowego Secure Token Service (STS) jest tworzony przy użyciu następującego formatu: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Usługa Azure AD wystawia token JWT w celu uzyskania dostępu do zasobów (token dostępu).|
+|Punkt końcowy interfejsu API REST|<https://amshelloworld.restv2.westus.media.azure.net/api/>|To jest punkt końcowy, względem których wszystkich nośników interfejsu API REST usług w Twojej aplikacji wywołań.|
 |Identyfikator klienta (identyfikator aplikacji)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Identyfikatora aplikacji (klienta) w usłudze Azure AD Identyfikator klienta jest wymagany do uzyskania tokenu dostępu. |
 |Wpis tajny klienta|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Usługa Azure AD klucze aplikacji (klucz tajny klienta). Klucz tajny klienta jest wymagany do uzyskania tokenu dostępu.|
 
@@ -69,7 +69,7 @@ Aby uzyskać dostęp do interfejsu API usługi Media Services, należy zebrać n
 
 Aby uzyskać informacje, wykonaj następujące kroki:
 
-1. Zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Przejdź do swojego wystąpienia usługi AMS.
 3. Wybierz **dostęp do interfejsu API**.
 4. Kliknij pozycję **nawiązywanie połączenia z interfejsem API usług Media platformy Azure przy użyciu jednostki usługi**.
@@ -83,33 +83,33 @@ Aby uzyskać informacje, wykonaj następujące kroki:
 
     Jeśli musisz utworzyć nową aplikację usługi AD, wykonaj następujące czynności:
     
-    1. Naciśnij klawisz **tworzenia nowych**.
-    2. Wprowadź nazwę.
-    3. Naciśnij klawisz **Utwórz nowy** ponownie.
-    4. Naciśnij pozycję **Zapisz**.
+   1. Naciśnij klawisz **tworzenia nowych**.
+   2. Wprowadź nazwę.
+   3. Naciśnij klawisz **Utwórz nowy** ponownie.
+   4. Naciśnij pozycję **Zapisz**.
 
-    ![Dostęp do interfejsu API](./media/connect-with-rest/new-app.png)
+      ![Dostęp do interfejsu API](./media/connect-with-rest/new-app.png)
 
-    Nowa aplikacja jest wyświetlana na stronie.
+      Nowa aplikacja jest wyświetlana na stronie.
 
 6. Pobierz **identyfikator klienta** (identyfikator aplikacji).
     
-    1. Wybierz aplikację.
-    2. Pobierz **identyfikator klienta** w oknie po prawej stronie. 
+   1. Wybierz aplikację.
+   2. Pobierz **identyfikator klienta** w oknie po prawej stronie. 
 
-    ![Dostęp do interfejsu API](./media/connect-with-rest/existing-client-id.png)
+      ![Dostęp do interfejsu API](./media/connect-with-rest/existing-client-id.png)
 
-7.  Pobieranie aplikacji **klucz** (klucz tajny klienta). 
+7. Pobieranie aplikacji **klucz** (klucz tajny klienta). 
 
-    1. Kliknij przycisk **Zarządzanie aplikacją** przycisku (należy zauważyć, że informacje o identyfikator klienta podlega **identyfikator aplikacji**). 
-    2. Naciśnij klawisz **klucze**.
+   1. Kliknij przycisk **Zarządzanie aplikacją** przycisku (należy zauważyć, że informacje o identyfikator klienta podlega **identyfikator aplikacji**). 
+   2. Naciśnij klawisz **klucze**.
     
-        ![Dostęp do interfejsu API](./media/connect-with-rest/manage-app.png)
-    3. Generowanie klucza aplikacji (klucz tajny klienta), wypełniając **opis** i **EXPIRES** i naciskając klawisz **Zapisz**.
+       ![Dostęp do interfejsu API](./media/connect-with-rest/manage-app.png)
+   3. Generowanie klucza aplikacji (klucz tajny klienta), wypełniając **opis** i **EXPIRES** i naciskając klawisz **Zapisz**.
     
-        Gdy **Zapisz** przycisk jest wciśnięty, pojawi się wartość klucza. Skopiuj wartość klucza przed opuszczeniem bloku.
+       Gdy **Zapisz** przycisk jest wciśnięty, pojawi się wartość klucza. Skopiuj wartość klucza przed opuszczeniem bloku.
 
-    ![Dostęp do interfejsu API](./media/connect-with-rest/connect-with-rest03.png)
+   ![Dostęp do interfejsu API](./media/connect-with-rest/connect-with-rest03.png)
 
 Można dodać wartości dla parametrów połączenia usługi AD do pliku web.config lub app.config w celu późniejszego użycia w kodzie.
 

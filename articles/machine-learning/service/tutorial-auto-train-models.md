@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c064874c7eeeae0ae0b1176e3756be24f225e7fb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 1f9265567ea23b7a3f47c995474ee1328ebaae2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818633"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878418"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -35,7 +35,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 > * Lokalne uruchamianie modelu z użyciem niestandardowych parametrów.
 > * Eksplorowanie wyników.
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 >[!NOTE]
 > Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.0.
@@ -82,18 +82,19 @@ Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komp
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>Konfigurowanie środowiska projektowego
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+Cała konfiguracja dla prac programistycznych może zostać wykonana w notesie języka Python. Konfiguracja obejmuje następujące czynności:
 
-* Install the SDK
-* Import Python packages
-* Configure your workspace
+* Instalacja zestawu SDK
+* Importowanie pakietów języka Python
+* Konfigurowanie obszaru roboczego
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>Zainstaluj i zaimportuj pakiety
 
-If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+Jeśli korzystasz z tego samouczka we własnym środowisku języka Python, zainstaluj wymagane pakiety za pomocą następującego polecenia.
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib
@@ -111,7 +112,7 @@ import os
 
 ### <a name="configure-workspace"></a>Konfigurowanie obszaru roboczego
 
-Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. `Workspace` to klasa akceptująca informacje dotyczące subskrypcji i zasobów platformy Azure. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
+Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. A [obszaru roboczego](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py) to klasa, która akceptuje usługi Azure information subskrypcji i zasobów. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
 
 `Workspace.from_config()` odczytuje plik **aml_config/config.json** i ładuje szczegóły do obiektu o nazwie `ws`.  Obiekt `ws` jest używany w kodzie w tym samouczku.
 
@@ -155,7 +156,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Min.</th>
       <th>Maks.</th>
       <th>Licznik</th>
@@ -1205,7 +1206,7 @@ Z metryk dokładności prognozowania końcowego widać, że model dość dobrze 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zautomatyzowanego uczenia maszynowego wykonano następujące czynności:
 

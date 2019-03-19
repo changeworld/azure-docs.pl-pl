@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: e3933fb593dfafc6ecc641d7c19741b7c0882c00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 36d0a976b73fe5b6f89755ce790b919468744179
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091651"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizacje usługi w usłudze Azure Site Recovery
 Jako organizacja niezbędne jest ustalenie, jak zamierzasz zapewnić bezpieczeństwo danych i aplikacji/obciążeń podczas planowanych i nieplanowanych przestojów. Usługa Azure Site Recovery wspiera strategię BCDR przez zapewnienie niezawodnego działania aplikacji uruchomionych na maszynach wirtualnych i serwerów fizycznych, które są dostępne w przypadku wyłączenia witryny. Usługa Site Recovery replikuje obciążenia uruchomione na maszynach wirtualnych i serwerach fizycznych, dzięki czemu są one nadal dostępne w lokalizacji dodatkowej, jeśli lokacja główna jest niedostępna. Gdy lokacja główna zostanie ponowne uruchomiona, obciążenia zostaną odzyskane w tej lokacji.
@@ -108,7 +108,7 @@ Przed kontynuowaniem aktualizacji, zapoznaj się [instrukcji obsługi Site Recov
 Ponowne uruchomienie jest zalecane po każdym uaktualnieniu agenta mobilności upewnij się, że wszystkie najnowsze zmiany są ładowane na maszynie źródłowej. Jest jednak **nie jest to konieczne**. Jeśli różnica między wersją agenta podczas ostatniego ponownego uruchomienia komputera i bieżącej wersji jest większa niż 4, ponowne uruchomienie jest obowiązkowy. Można znaleźć w poniższej tabeli przedstawiono szczegółowy opis.
 
 |**Wersja agenta podczas ostatniego ponownego uruchomienia komputera.** | **Uaktualnianie do** | **Jest ponowny rozruch obowiązkowe?**|
-|---------|---------|---------|--------|
+|---------|---------|---------|
 |9.16 |  9.18 | Nie jest to konieczne|
 |9.16 | 9.19 | Nie jest to konieczne|
 | 9.16 | 9.20 | Nie jest to konieczne

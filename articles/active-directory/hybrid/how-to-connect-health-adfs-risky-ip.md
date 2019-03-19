@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d1af8d7e10bd62819909c87c8e54fcbce6b7fe6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170806"
 ---
 # <a name="risky-ip-report-public-preview"></a>Ryzykowne raport adresów IP (publiczna wersja zapoznawcza)
 Klienci usług AD FS mogą uwidaczniać w Internecie punkty końcowe uwierzytelniania za pomocą hasła w celu udostępniania użytkownikom końcowym usług uwierzytelniania umożliwiających dostęp do aplikacji SaaS, takich jak usługa Office 365. W takim przypadku możliwe są nieuprawnione próby logowania przy użyciu systemu AD FS w celu odgadnięcia hasła użytkownika końcowego i uzyskania dostępu do zasobów aplikacji. Od wersji 2012 R2 systemu Windows Server usługi AD FS udostępniają funkcję blokady konta na ekstranecie, która uniemożliwia przeprowadzenie takich ataków. Jeśli korzystasz ze starszej wersji, zdecydowanie zalecamy uaktualnienie systemu AD FS do wersji 2016 systemu Windows Server. <br />
@@ -44,7 +44,7 @@ Poszczególne elementy raportu ryzykownych adresów IP zawierają zagregowane in
 | ------- | ----------- |
 | Sygnatura czasowa | Zawiera sygnaturę czasową początku okna detekcji, opartą na czasie lokalnym witryny Azure Portal.<br /> Wszystkie zdarzenia dzienne są generowane o północy czasu UTC. <br />Sygnatura czasowa zdarzeń godzinowych jest zaokrąglona do początku godziny. Informację o godzinie rozpoczęcia pierwszego działania zawiera element „firstAuditTimestamp” w wyeksportowanym pliku. |
 | Typ wyzwalacza | Zawiera typ przedziału czasu wykrywania. Wyzwalacze agregacji mogą być godzinne lub dziennie. Ten element ułatwia odróżnienie ataków siłowych o dużej częstotliwości od powolnych ataków, w przypadku których próby uzyskania dostępu są rozłożone na cały dzień. |
-| Adres IP | Pojedynczy ryzykowny adres IP, powiązany z blokadą ekstranetu lub próbą logowania przy użyciu nieprawidłowego hasła. Może to być adres IPv4 lub IPv6. |
+| Adres IP | Pojedynczy ryzykowny adres IP, powiązany z blokadą ekstranetu lub próbą logowania przy użyciu nieprawidłowego hasła. Może to być adresu IPv4 lub IPv6. |
 | Liczba błędów dotyczących nieprawidłowego hasła | Liczba błędów dotyczących nieprawidłowego hasła związanych z tym adresem IP, które wystąpiły w danym przedziale czasu wykrywania. W przypadku niektórych użytkowników błędy dotyczące użycia nieprawidłowego hasła mogą występować wielokrotnie. Zwróć uwagę, że nie obejmują one prób logowania, które nie powiodły się z powodu nieaktualnego hasła. |
 | Liczba błędów dotyczących blokady ekstranetu | Liczba błędów dotyczących blokady ekstranetu związanych z tym adresem IP, które wystąpiły w danym przedziale czasu wykrywania. W przypadku niektórych użytkowników błędy dotyczące blokady ekstranetu mogą występować wielokrotnie. Będą one widoczne tylko wtedy, gdy skonfigurowano blokadę ekstranetu w usługach AD FS (w wersji 2012 R2 lub nowszej). <b>Uwaga</b> Zdecydowanie zalecamy włączenie tej funkcji w przypadku zezwolenia na logowanie z ekstranetu przy użyciu hasła. |
 | Unikatowi użytkownicy, dla których podjęto próbę | Liczba kont unikatowych użytkowników związanych z tym adresem IP, przy użyciu których podjęto próbę w danym przedziale czasu wykrywania. Umożliwia ona odróżnienie wzorca ataku przy użyciu jednego konta użytkownika od wzorca ataku przy użyciu wielu kont użytkowników.  |

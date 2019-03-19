@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 19dbddc635041d0e5cf617cbe20713abc07cefaf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 05915e2059e45c002a9dfa71a538ed6391caa157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775751"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078333"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak używać usługi analytics do analizowania danych urządzenia
 
@@ -30,7 +30,7 @@ Musisz wybrać **zestaw urządzeń**, Dodaj **filtru** (opcjonalnie) i wybierz *
 * **Filtry:** Opcjonalnie można dodać filtry do wyszukiwania w taki sposób, aby stworzyć na podstawie posiadanych danych. W czasie, można dodać filtry do 10. Na przykład w ramach wszystkich lodówki w Oakland, znaleźć go te, które miały temperatura powyżej 60 stopni.
 * **Okres:** Firma Microsoft, który domyślnie będzie pobierać dane z ostatnich 10 minut. Możesz zmienić tę wartość do jednego z zakresów wstępnie zdefiniowanego czasu, lub wybrać niestandardowy okres.
 
- ![Zapytanie analizy](media/howto-create-analytics/analytics-query.png)
+  ![Zapytanie analizy](media/howto-create-analytics/analytics-query.png)
 
 ## <a name="visualizing-your-data"></a>Wizualizowanie danych
 
@@ -51,7 +51,7 @@ Należy zmienić wyniki zapytania do własnych potrzeb wizualizacji na różne s
 * **Pokaż siatkę:** Wyniki są dostępne w postaci tabeli, które umożliwia wyświetlenie określonej wartości dla każdego punktu danych. Ten widok jest również zgodna z standardów ułatwień dostępu.
 * **Pokaż wykres:** Wyniki są wyświetlane w format wiersza, aby ułatwić identyfikację w górę lub dół trendów i anomalii.
 
- ![Wyświetlanie widoku siatki do celów analizy](media/howto-create-analytics/analytics-showgrid.png)
+  ![Wyświetlanie widoku siatki do celów analizy](media/howto-create-analytics/analytics-showgrid.png)
 
 Powiększenie umożliwia do strony głównej w na podstawie posiadanych danych. Jeśli okaże się okres czasu, którą chcesz się skupić w ramach zestawu wyników, należy użyć kursor do pobrania obszar, który chcesz powiększyć, a następnie wykonaj jedną z następujących czynności za pomocą dostępne kontrolki:
 
@@ -59,7 +59,7 @@ Powiększenie umożliwia do strony głównej w na podstawie posiadanych danych. 
 * **Pomniejsz:** Ten formant umożliwia jeden poziom pomniejszenie usługi ostatni powiększenia. Na przykład jeśli masz powiększenia w do swoich danych pomniejszenie przyjmuje trzy razy, należy utworzyć kopię jeden krok w danym momencie.
 * **Resetuj Powiększenie:** Po zostało wykonane różne poziomy powiększania, można użyć resetowania powiększenia, aby powrócić do oryginalnego zestawu wyników.
 
- ![Wykonaj powiększanie na podstawie danych](media/howto-create-analytics/analytics-zoom.png)
+  ![Wykonaj powiększanie na podstawie danych](media/howto-create-analytics/analytics-zoom.png)
 
 Możesz zmienić styl linii do własnych potrzeb. Dostępne są cztery opcje:
 
@@ -68,7 +68,7 @@ Możesz zmienić styl linii do własnych potrzeb. Dostępne są cztery opcje:
 * **Krok:** Wiersz między każdy punkt wykresu stanowi krok.
 * **Wykres punktowy:** Wszystkie punkty są oznaczane na wykresach na wykresie bez linii, łącząc je.
 
- ![Innym wierszu typów dostępnych w usłudze Analytics](media/howto-create-analytics/analytics-linetypes.png)
+  ![Innym wierszu typów dostępnych w usłudze Analytics](media/howto-create-analytics/analytics-linetypes.png)
 
 Ponadto można rozmieścić dane w osi y, wybierając jedną z trzech trybów:
 
@@ -76,7 +76,7 @@ Ponadto można rozmieścić dane w osi y, wybierając jedną z trzech trybów:
 * **Nieskumulowanym:** Wykres dla Każda miara jest wykreślony względem jedną oś y, ale wartości dla osi y są zmieniane w oparciu o wyróżnione miary. Wykresy nieskumulowanych są przydatne do nakładki wiele miar i chcesz zobaczyć wzorców w tych środków dla tego samego zakresu czasu.
 * **Oś y udostępnione:** Wszystkich wykresów udostępnianie tej samej osi y i nie zmieniaj wartości dla osi. Udostępnione wykresy osi y są przydatne, gdy chcesz Przyjrzyj się pojedynczej mierze podczas tworzenia wycinków danych przy użyciu podziału przez.
 
- ![Porządkowanie danych na osi y w trybach inny typ wizualizacji](media/howto-create-analytics/analytics-yaxis.png)
+  ![Porządkowanie danych na osi y w trybach inny typ wizualizacji](media/howto-create-analytics/analytics-yaxis.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

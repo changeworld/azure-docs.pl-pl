@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 89161f3dad68c4b208f4badc548e2057c7ed58c1
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5ab967cbd630447132300b22da5c5deb31fd50e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852369"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Implementuje funkcje na poziomie usługi w usłudze aktora
 
@@ -160,13 +160,13 @@ Komunikacja zdalna V2 (interfejs zgodne, znane jako V2_1) stos zawiera wszystkie
 
 Następujące zmiany są wymagane do korzystania ze stosu V2_1 komunikacji zdalnej:
 
- 1. Dodaj następujący atrybut w zestawie na interfejsów aktora.
+1. Dodaj następujący atrybut w zestawie na interfejsów aktora.
   
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
- 2. Twórz i przeprowadź uaktualnienie usługi aktora i projektów klienckich aktora, aby rozpocząć korzystanie z stack w wersji 2.
+2. Twórz i przeprowadź uaktualnienie usługi aktora i projektów klienckich aktora, aby rozpocząć korzystanie z stack w wersji 2.
 
 ### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>Uaktualnianie usługi aktora do komunikacji zdalnej w wersji 2 (zgodny z interfejsu) stosu, bez wywierania wpływu na dostępność usługi
 
@@ -174,12 +174,12 @@ Ta zmiana ma dwuetapową uaktualnienie. Wykonaj kroki opisane w tej sekwencji.
 
 1. Dodaj następujący atrybut w zestawie na interfejsów aktora. Ten atrybut rozpoczyna się dwa odbiorniki usługi aktora, wersja 1 (istniejące) i odbiornika V2_1. Uaktualnij usługę aktora dzięki tej zmianie.
 
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
-  ```
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+   ```
 
 2. Uaktualnij klientów aktora, po ukończeniu poprzedniego uaktualnienia.
-Ten krok pozwala się upewnić, że proxy aktora używa stosu komunikacji zdalnej V2_1.
+   Ten krok pozwala się upewnić, że proxy aktora używa stosu komunikacji zdalnej V2_1.
 
 3. Ten krok jest opcjonalny. Zmień atrybut poprzedniej, aby usunąć odbiornik V1.
 
@@ -193,13 +193,13 @@ Przy użyciu pakietu NuGet w wersji 2.8 użytkownicy mogą teraz używać stosu 
 
 Następujące zmiany są wymagane do korzystania ze stosu V2 komunikacji zdalnej.
 
- 1. Dodaj następujący atrybut w zestawie na interfejsów aktora.
+1. Dodaj następujący atrybut w zestawie na interfejsów aktora.
 
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
- 2. Twórz i uaktualnianie usługi aktora i projektów klienckich aktora, aby rozpocząć korzystanie z stack w wersji 2.
+2. Twórz i uaktualnianie usługi aktora i projektów klienckich aktora, aby rozpocząć korzystanie z stack w wersji 2.
 
 ### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>Uaktualnij usługę aktora stos komunikacji zdalnej V2 bez wywierania wpływu na dostępność usługi
 
@@ -207,12 +207,12 @@ Ta zmiana ma dwuetapową uaktualnienie. Wykonaj kroki opisane w tej sekwencji.
 
 1. Dodaj następujący atrybut w zestawie na interfejsów aktora. Ten atrybut rozpoczyna się dwa odbiorniki usługi aktora, wersja 1 (istniejące) i odbiornika V2. Uaktualnij usługę aktora dzięki tej zmianie.
 
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
-  ```
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
 
 2. Uaktualnij klientów aktora, po ukończeniu poprzedniego uaktualnienia.
-Ten krok pozwala się upewnić, że proxy aktora używa stosu komunikacji zdalnej w wersji 2.
+   Ten krok pozwala się upewnić, że proxy aktora używa stosu komunikacji zdalnej w wersji 2.
 
 3. Ten krok jest opcjonalny. Zmień atrybut poprzedniej, aby usunąć odbiornik V1.
 
@@ -226,7 +226,7 @@ Ten krok pozwala się upewnić, że proxy aktora używa stosu komunikacji zdalne
 * [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
 * [Dokumentacja referencyjna interfejsu API aktorów](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Przykładowy kod .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Przykładowego kodu Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Przykładowego kodu Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

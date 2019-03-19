@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020714"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535998"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Samouczek: tworzenie pierwszej fabryki danych przy użyciu witryny Azure Portal
 > [!div class="op_single_selector"]
@@ -160,9 +160,9 @@ W tym kroku przedstawiono łączenie klastra usługi HDInsight na żądanie z fa
 
      b. Zamiast klastra usługi HDInsight na żądanie możesz użyć własnego klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Połączona usługa HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 
-     d. Klaster usługi HDInsight tworzy kontener domyślny w magazynie obiektów blob określonym we właściwości JSON (**linkedServiceName**). Usługa HDInsight nie powoduje usunięcia tego kontenera w przypadku usunięcia klastra. To zachowanie jest celowe. W przypadku połączonej usługi HDInsight na żądanie klaster usługi HDInsight jest tworzony przy każdym przetwarzaniu wycinka — o ile w tym momencie nie istnieje aktywny klaster (**timeToLive**). Klaster jest automatycznie usuwany po zakończeniu przetwarzania.
+     c. Klaster usługi HDInsight tworzy kontener domyślny w magazynie obiektów blob określonym we właściwości JSON (**linkedServiceName**). Usługa HDInsight nie powoduje usunięcia tego kontenera w przypadku usunięcia klastra. To zachowanie jest celowe. W przypadku połączonej usługi HDInsight na żądanie klaster usługi HDInsight jest tworzony przy każdym przetwarzaniu wycinka — o ile w tym momencie nie istnieje aktywny klaster (**timeToLive**). Klaster jest automatycznie usuwany po zakończeniu przetwarzania.
 
-     Po przetworzeniu większej liczby wycinków w magazynie obiektów blob będzie widocznych wiele kontenerów. Jeśli nie są one potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne ze wzorcem: „adf**twojanazwafabrykidanych**-**nazwapołączonejusługi**-znacznikdatygodziny”. Aby usunąć kontenery z magazynu obiektów blob, użyj takich narzędzi, jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+     Po przetworzeniu większej liczby wycinków w magazynie obiektów blob będzie widocznych wiele kontenerów. Jeśli nie są one potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne ze wzorcem: „adf**twojanazwafabrykidanych**-**nazwapołączonejusługi**-znacznikdatygodziny”. Aby usunąć kontenery z magazynu obiektów blob, użyj takich narzędzi, jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
 
      Aby uzyskać więcej informacji, zobacz [On-demand HDInsight linked service (Połączona usługa HDInsight na żądanie)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
@@ -338,7 +338,7 @@ W tym kroku opisano tworzenie pierwszego potoku za pomocą działania Hive usłu
 
    b. Plik **partitionweblogs.hql** znajduje się w folderze **script** kontenera **adfgetstarted** w magazynie obiektów blob. Jeśli nie widzisz tych plików, wykonaj kroki opisane w sekcji „Wymagania wstępne” w [omówieniu samouczka](data-factory-build-your-first-pipeline.md).
 
-   d. Element **storageaccountname** został zastąpiony nazwą konta magazynu w kodzie JSON potoku.
+   c. Element **storageaccountname** został zastąpiony nazwą konta magazynu w kodzie JSON potoku.
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć potok. Ponieważ właściwości **start** i **end** zostały ustawione na wartości w przeszłości, a właściwość **isPaused** została ustawiona na wartość **false**, potok (działanie w potoku) jest uruchamiany natychmiast po wdrożeniu.
 
@@ -432,10 +432,10 @@ W tym samouczku opisano tworzenie fabryki danych do przetwarzania danych przez u
 * Utworzyć dwa zestawy danych zawierające dane wejściowe i wyjściowe dla działania programu Hive w usłudze HDInsight w potoku.
 * Utworzyć potok za pomocą działania programu Hive w usłudze HDInsight.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule opisano tworzenie potoku za pomocą działania przekształcenia (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight na żądanie. Aby dowiedzieć się, jak skopiować dane z magazynu obiektów blob do bazy danych SQL za pomocą działania kopiowania, zobacz [Tutorial: Copy data from Blob storage to SQL Database (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database)](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 | Temat | Opis |
 |:--- |:--- |
 | [Potoki](data-factory-create-pipelines.md) |Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Data Factory oraz ze sposobem konstruowania za ich pomocą kompletnych przepływów pracy opartych na danych na potrzeby scenariusza lub firmy. |

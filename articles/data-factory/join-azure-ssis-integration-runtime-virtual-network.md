@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 24e2d7be0dfc32e499bc864f2fdf7e2b1c108969
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440220"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107801"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -26,7 +26,7 @@ Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną
 
 - Hostują bazy danych wykazu usług SQL Server Integration Services (SSIS) w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia. 
 
- Usługa Azure Data Factory umożliwia dołączenie środowiska Azure-SSIS integration runtime do sieci wirtualnej utworzonej za pomocą klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
+  Usługa Azure Data Factory umożliwia dołączenie środowiska Azure-SSIS integration runtime do sieci wirtualnej utworzonej za pomocą klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
 
 > [!IMPORTANT]
 > Obecnie jest on przestarzały klasycznej sieci wirtualnej, dlatego należy użyć sieci wirtualnej usługi Azure Resource Manager, zamiast tego.  Jeśli już używasz klasycznej sieci wirtualnej, Przełącz możliwie jak używać sieci wirtualnej usługi Azure Resource Manager.

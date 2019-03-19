@@ -1,5 +1,5 @@
 ---
-title: 'Generowanie i eksportowanie certyfikatów for Point-to-Site: użycie narzędzia MakeCert: Azure | Dokumentacja firmy Microsoft'
+title: 'Generowanie i eksportowanie certyfikatów for Point-to-Site: MakeCert : Azure | Microsoft Docs'
 description: Utworzyć certyfikat główny z podpisem własnym, a następnie wyeksportować klucz publiczny i generowania certyfikatów klienta, za pomocą narzędzia MakeCert.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102081"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja za pomocą narzędzia MakeCert
 
@@ -28,16 +28,16 @@ Gdy firma Microsoft zaleca używanie [kroki systemu Windows 10 PowerShell](vpn-g
 Poniższe kroki pokazują, jak utworzyć certyfikat z podpisem własnym za pomocą narzędzia MakeCert. Te kroki nie są określonego modelu wdrażania. Są one prawidłowe dla usługi Resource Manager i model klasyczny.
 
 1. Pobierz i zainstaluj [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. Po zakończeniu instalacji można zwykle znaleźć narzędzie makecert.exe w tej ścieżce: "C:\Program Files (x86) \Windows Kits\10\bin\<arch >". Chociaż istnieje możliwość, że został zainstalowany w innej lokalizacji. Otwórz wiersz polecenia jako administrator i przejdź do lokalizacji narzędzia MakeCert. Można skorzystaj z następującego przykładu, dostosowując do właściwego położenia:
+2. Po zakończeniu instalacji można zwykle znaleźć narzędzie makecert.exe dla danej ścieżki: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. Chociaż istnieje możliwość, że został zainstalowany w innej lokalizacji. Otwórz wiersz polecenia jako administrator i przejdź do lokalizacji narzędzia MakeCert. Można skorzystaj z następującego przykładu, dostosowując do właściwego położenia:
 
-  ```cmd
-  cd C:\Program Files (x86)\Windows Kits\10\bin\x64
-  ```
+   ```cmd
+   cd C:\Program Files (x86)\Windows Kits\10\bin\x64
+   ```
 3. Utwórz i zainstaluj certyfikat w osobistym magazynie certyfikatów na komputerze. Poniższy przykład tworzy odpowiedni *cer* pliku, który możesz przekazać na platformę Azure podczas konfigurowania P2S. Zastąp nazwę, która ma być użyty dla certyfikatu "P2SRootCert" i nazwę "P2SRootCert.cer". Certyfikat znajduje się w sieci "Certyfikaty - bieżący użytkownik\osobisty\certyfikat".
 
-  ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
-  ```
+   ```cmd
+   makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
+   ```
 
 ## <a name="cer"></a>Wyeksportuj klucz publiczny (.cer)
 
@@ -61,14 +61,14 @@ W poniższych krokach objaśniono poprzez generowanie certyfikatu klienta na pod
  
 1. Na tym samym komputerze, który został użyty do utworzenia certyfikatu z podpisem własnym Otwórz wiersz polecenia jako administrator.
 2. Zmodyfikuj i uruchomić przykład, aby wygenerować certyfikat klienta.
-  * Zmiana *"P2SRootCert"* nazwę głównego z podpisem własnym, który jest generowany certyfikat klienta z. Upewnij się, że używasz nazwy certyfikatu głównego, który jest niezależnie od "CN =" wartość została określona podczas tworzenia głównego z podpisem własnym.
-  * Zmiana *P2SChildCert* nazwę chcesz wygenerować certyfikat klienta to.
+   * Zmiana *"P2SRootCert"* nazwę głównego z podpisem własnym, który jest generowany certyfikat klienta z. Upewnij się, że używasz nazwy certyfikatu głównego, który jest niezależnie od "CN =" wartość została określona podczas tworzenia głównego z podpisem własnym.
+   * Zmiana *P2SChildCert* nazwę chcesz wygenerować certyfikat klienta to.
 
-  Jeśli uruchomisz poniższy przykład bez modyfikowania go, wynik jest certyfikat klienta o nazwie P2SChildcert w magazynie certyfikatów osobistych, który został wygenerowany z certyfikatu głównego P2SRootCert.
+   Jeśli uruchomisz poniższy przykład bez modyfikowania go, wynik jest certyfikat klienta o nazwie P2SChildcert w magazynie certyfikatów osobistych, który został wygenerowany z certyfikatu głównego P2SRootCert.
 
-  ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
-  ```
+   ```cmd
+   makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
+   ```
 
 ### <a name="clientexport"></a>Eksportowanie certyfikatu klienta
 

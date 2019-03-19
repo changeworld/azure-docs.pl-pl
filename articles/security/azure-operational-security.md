@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5a407db97803d3c3be898893b7da6c1cb4aa94bb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901512"
 ---
 # <a name="azure-operational-security"></a>Bezpieczeństwo działania platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -149,7 +149,7 @@ Aby ułatwić klientom zapobieganie zagrożeniom, wykrywanie ich i reagowanie na
 
 -   **Podział danych**: Dane są logicznie oddzielone dla każdego składnika w całej usłudze. Wszystkie dane są otagowane informacjami o organizacji. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi.
 
--   **Dostęp do danych**: Aby przedstawić zalecenia dotyczące zabezpieczeń i zbadać potencjalne zagrożenia bezpieczeństwa, personel firmy Microsoft może uzyskiwać dostęp do informacji zbieranych lub analizowanych przez usługi platformy Azure, w tym pliki zrzutu awaryjnego, procesu tworzenia zdarzeń, migawki dysków maszyny Wirtualnej i artefaktów, które przypadkowo mogą zawierać dane klientów lub dane osobowe z maszyn wirtualnych. Stosujemy się do [warunki Microsoft Online Services i zasady zachowania poufności](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), które firma Microsoft nie ma stan używa danych klienta lub informacji do żadnych celów reklamowych ani zbliżonych celów komercyjnych pochodnych.
+-   **Dostęp do danych**: Aby przedstawić zalecenia dotyczące zabezpieczeń i zbadać potencjalne zagrożenia bezpieczeństwa, personel firmy Microsoft może uzyskiwać dostęp do informacji zbieranych lub analizowanych przez usługi platformy Azure, w tym pliki zrzutu awaryjnego, procesu tworzenia zdarzeń, migawki dysków maszyny Wirtualnej i artefaktów, które przypadkowo mogą zawierać dane klientów lub dane osobowe z maszyn wirtualnych. Stosujemy się do [warunki Microsoft Online Services i zasady zachowania poufności](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), które firma Microsoft nie ma stan używa danych klienta lub informacji do żadnych celów reklamowych ani zbliżonych celów komercyjnych pochodnych.
 
 -   **Użycie danych**: Firma Microsoft używa wzorców i analizy zagrożeń obecnych w wielu dzierżawach, aby zwiększyć nasze możliwości zapobiegania i wykrywania; robimy to zgodnie ze zobowiązaniami zachowania opisanego w naszym [zasady zachowania poufności informacji](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
@@ -271,6 +271,7 @@ Rejestrowane są następujące typy żądań uwierzytelnionych i anonimowych.
 | Żądania przy użyciu sygnatury dostępu współdzielonego (SAS), w tym żądania nie powiodło się, jak i pomyślnie |Błędy limitu czasu dla klienta i serwera |
 |   Żądania do analizy danych |    Żądania GET zakończone niepowodzeniem z kodem błędu 304 (nie zmodyfikowano) |
 | Żądania wysyłane przez analityka magazynu, takie jak tworzenie dziennika lub usuwanie, nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) i [Format dziennika analizy magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) tematów. | Inne zakończone niepowodzeniem żądania anonimowe nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) i [Format dziennika analizy magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format). |
+
 ## <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
 Usługa Azure AD zawiera również pełnego zestawu możliwości zarządzania tożsamościami, w tym uwierzytelnianie wieloskładnikowe, rejestracja urządzeń, Samoobsługowe zarządzanie hasłami, Samoobsługowe zarządzanie grupami, uprzywilejowanego konta zarządzania, opartej na rolach dostęp kontroli, monitorowania użycia aplikacji, rozbudowane inspekcji i zabezpieczeń monitorowania i alertów.
@@ -293,7 +294,7 @@ Raporty zapewniają rekord inspekcji dla nazwy zdarzenia aktora, który wykonał
 |Logowania z urządzeń, które mogą być zainfekowane |Działania indywidualnych użytkowników |   |
 |Nietypowe działania użytkowników związane z logowaniem |Raport dotyczący działań grup |   |
 | |Raport dotyczący działań związanych z rejestracją resetowania haseł |   |
-| |Działania związane z resetowaniem haseł |   | |
+| |Działania związane z resetowaniem haseł |   |
 
 
 

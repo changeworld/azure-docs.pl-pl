@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246766"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123406"
 ---
 # <a name="optimize-sql-server-performance"></a>Optymalizacja wydajności programu SQL Server
 
@@ -104,20 +104,20 @@ Zalecamy przechowywanie bazy danych TempDB na dysk z danymi, ponieważ każdy dy
 
 - **Rozkładanie:** Większą przepustowość można dodać dodatkowego dysku z danymi i używać Rozkładanie dysku. Aby określić liczbę dysków z danymi, których potrzebujesz, analizę liczby operacji We/Wy i przepustowości wymaganej dla plików dziennika i danych i plików bazy danych TempDB. Należy zauważyć, że obowiązują limity operacji We/Wy na dysku danych oparte na rodzina serii maszyny wirtualnej, a nie na podstawie rozmiaru maszyny wirtualnej. Limity przepustowości sieci, jednak są oparte na rozmiar maszyny wirtualnej. Zobacz tabele w [maszyny wirtualne o rozmiarach w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) Aby uzyskać więcej szczegółów. Skorzystaj z poniższych wskazówek:
 
-    - Dla systemu Windows Server 2012 lub nowszym, użyj [miejsca do magazynowania](https://technet.microsoft.com/library/hh831739.aspx) z następującymi wytycznymi:
+  - Dla systemu Windows Server 2012 lub nowszym, użyj [miejsca do magazynowania](https://technet.microsoft.com/library/hh831739.aspx) z następującymi wytycznymi:
 
-        1.  Ustaw przeplotu (rozmiar woluminu rozłożonego) 64 KB (65 536 bajtów) do przetwarzania obciążeń OLTP i 256 KB (262 144 bajty) dla obciążeń magazynowania danych, aby uniknąć wpływu na wydajność ze względu na niezgodność partycji transakcji online. Należy to określić za pomocą programu PowerShell.
+    1. Ustaw przeplotu (rozmiar woluminu rozłożonego) 64 KB (65 536 bajtów) do przetwarzania obciążeń OLTP i 256 KB (262 144 bajty) dla obciążeń magazynowania danych, aby uniknąć wpływu na wydajność ze względu na niezgodność partycji transakcji online. Należy to określić za pomocą programu PowerShell.
 
-        2.  Ustaw liczbę kolumn = Liczba dysków fizycznych. Podczas konfigurowania więcej niż ośmiu dysków (nie interfejs użytkownika Menedżera serwera) przy użyciu programu PowerShell.
+    2. Ustaw liczbę kolumn = Liczba dysków fizycznych. Podczas konfigurowania więcej niż ośmiu dysków (nie interfejs użytkownika Menedżera serwera) przy użyciu programu PowerShell.
 
-            Na przykład następujące polecenie programu PowerShell tworzy nową pulę magazynów z rozmiarem przeplotu wartość 64 KB i liczbę kolumn do 2:
+       Na przykład następujące polecenie programu PowerShell tworzy nową pulę magazynów z rozmiarem przeplotu wartość 64 KB i liczbę kolumn do 2:
 
-          ```PowerShell  
-          $PoolCount = Get-PhysicalDisk -CanPool $True
-          $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+       ```PowerShell  
+       $PoolCount = Get-PhysicalDisk -CanPool $True
+       $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
-          New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
-          ```
+       New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
+       ```
 
 - Określ liczbę dysków skojarzonych z puli magazynów, w oparciu o Twoim oczekiwaniom obciążenia. Należy pamiętać, że różne rozmiary maszyny wirtualnej zezwalają na różne liczby dołączonych dysków z danymi. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
 - Aby uzyskać maksymalną wartość IOPS możliwe dla dysków z danymi, zalecane jest dodanie maksymalna liczba dysków danych obsługiwanych przez usługi [rozmiar maszyny wirtualnej](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) i użyj Rozkładanie dysku.

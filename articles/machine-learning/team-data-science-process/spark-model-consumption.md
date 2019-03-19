@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9edd243c47c7c0eeeff3b875fccede01806862a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452681"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888114"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zoperacjonalizować modele uczenia maszynowego utworzonych na platformie Spark
 
@@ -190,9 +190,9 @@ W tej sekcji przedstawiono sposób indeks, kodowanie i skalowania funkcje podzie
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Funkcja transformacji: indeks i kodowanie kategorii funkcji dla danych wejściowych modeli do oceniania
 W tej sekcji pokazano, jak i indeksowanie danych podzielonych na kategorie za pomocą `StringIndexer` i kodowanie funkcji `OneHotEncoder` wejściowych modeli.
 
-[StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) koduje kolumną z ciągami etykiet do kolumny indeksów etykiety. Indeksy są uporządkowane według częstotliwości etykiety. 
+[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) koduje kolumną z ciągami etykiet do kolumny indeksów etykiety. Indeksy są uporządkowane według częstotliwości etykiety. 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje kolumną indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują ciągłe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
+[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje kolumną indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują ciągłe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -257,7 +257,7 @@ W tej sekcji pokazano, jak i indeksowanie danych podzielonych na kategorie za po
 Czas wykonywania powyżej komórki: 5.37 sekund
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Tworzenie obiektów RDD z tablicami funkcji dla danych wejściowych modeli
-Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako obiekt RDD i hot jeden Zakoduj je, dzięki czemu może służyć do nauczenia i przetestowania regresji logistycznej MLlib i modeli oparta na drzewie. Indeksowane dane są przechowywane w [odporne rozproszone zestawu danych (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) obiektów. Są to podstawowe abstrakcji platformie Spark. Obiekt RDD reprezentuje niezmienne, podzielone na partycje Kolekcja elementów, które mogą być stosowane równolegle z platformą Spark.
+Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako obiekt RDD i hot jeden Zakoduj je, dzięki czemu może służyć do nauczenia i przetestowania regresji logistycznej MLlib i modeli oparta na drzewie. Indeksowane dane są przechowywane w [odporne rozproszone zestawu danych (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) obiektów. Są to podstawowe abstrakcji platformie Spark. Obiekt RDD reprezentuje niezmienne, podzielone na partycje Kolekcja elementów, które mogą być stosowane równolegle z platformą Spark.
 
 Zawiera ona także kod, który pokazuje, jak skalować dane za pomocą `StandardScalar` udostępniane przez MLlib do użycia w regresji liniowej z stochastycznego gradientu zejścia (SGD), popularnych algorytm szkoleniowe szeroką gamę modeli uczenia maszynowego. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) służy do funkcji do wariancji jednostki skalowania. Funkcja skalowania, nazywana również normalizacji danych ubezpieczycielom, że funkcje o wartościach powszechnie rozchodów są nie udzieliła nadmierne porównać w celu funkcji. 
 
@@ -397,9 +397,9 @@ Czas wykonywania powyżej komórki: 16.63 sekund
 ## <a name="score-classification-and-regression-random-forest-models"></a>Ocenianie klasyfikacji i regresji losowe lasu modeli
 Kod w tej sekcji pokazano, jak załadować zapisanych klasyfikacji i regresji losowe lasu modeli zapisane w usłudze Azure blob storage, ocenić ich ze standardowego klasyfikatora i miarami regresji, a następnie zapisz wyniki magazynu obiektów blob.
 
-[Losowe lasów](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasy mogą obsługiwać kategorii funkcji dotyczyć ustawienie klasyfikacji wieloklasowej, skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje funkcji. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
+[Losowe lasów](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasy mogą obsługiwać kategorii funkcji dotyczyć ustawienie klasyfikacji wieloklasowej, skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje funkcji. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
 
-[Spark.mllib](http://spark.apache.org/mllib/) obsługuje losowe lasów binarne i wieloklasowej klasyfikacji i regresji, korzystanie z funkcji ciągłego i podzielonych na kategorie. 
+[Spark.mllib](https://spark.apache.org/mllib/) obsługuje losowe lasów binarne i wieloklasowej klasyfikacji i regresji, korzystanie z funkcji ciągłego i podzielonych na kategorie. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -445,7 +445,7 @@ Kod w tej sekcji przedstawiono sposób załadować modeli klasyfikacji i regresj
 
 **Spark.mllib** obsługuje GBTs binarnej klasyfikacji i regresji, korzystanie z funkcji ciągłego i podzielonych na kategorie. 
 
-[Gradient drzew zwiększania wyniku](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. GBTs może obsługiwać funkcje podzielonych na kategorie, funkcja skalowanie nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje są wyposażone w. One można również w ustawieniu kontra klasyfikacji.
+[Gradient drzew zwiększania wyniku](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. GBTs może obsługiwać funkcje podzielonych na kategorie, funkcja skalowanie nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje są wyposażone w. One można również w ustawieniu kontra klasyfikacji.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

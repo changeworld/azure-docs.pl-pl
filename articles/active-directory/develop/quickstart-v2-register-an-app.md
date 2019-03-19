@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0e2980b48a5d9b1f2e9d75e59a27bfceb0d1180
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6221fb7575fc267030929b449cba48cff8563f27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122558"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Szybki start: Rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 2.0
 
@@ -57,8 +57,8 @@ Nie wszystkie scenariusze i funkcje usługi Azure AD są obsługiwane przez punk
 > [!NOTE]
 > Gdy rejestrujesz aplikację w portalu [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), jest ona rejestrowana w głównej dzierżawie konta, którego użyto do zalogowania się w portalu. Oznacza to, że nie można zarejestrować aplikacji w dzierżawie usługi Azure AD przy użyciu osobistego konta Microsoft. Jeśli chcesz zarejestrować aplikację w konkretnej dzierżawie, zaloguj się za pomocą konta pierwotnie utworzonego w tej dzierżawie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Ponieważ masz już aplikację firmy Microsoft, możesz przejść do jednego z przewodników Szybki start dotyczących punktu końcowego w wersji 2.0. Poniżej przedstawiono kilka zaleceń:
 
-[!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
+[!INCLUDE [active-directory-v2-quickstart-table](~/includes/active-directory-v2-quickstart-table.md)]

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie konta usługi Azure Media Services — interfejs wiersza polecenia platformy Azure | Microsoft Docs
-description: Użyj skryptu interfejsu wiersza polecenia platformy Azure, aby utworzyć konto usługi Azure Media Services.
+title: Tworzenie konta usługi Azure Media Services — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj skryptu wiersza polecenia platformy Azure, aby utworzyć konto usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 41d9548aa33ee29c40179506ae824ab79b000859
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 7e668852346de1b48bd34658dea001435ba8a625
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213178"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842228"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>Przykład użycia interfejsu wiersza polecenia: Tworzenie konta usługi Azure Media Services
 
@@ -54,6 +54,6 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej przykładów, zobacz [przykłady interfejsu wiersza polecenia platformy Azure](../cli-samples.md).

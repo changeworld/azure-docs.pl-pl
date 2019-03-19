@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Usługa cosmos DB, otwórz Service Broker, usługi Open Service Broker for Azure
-ms.openlocfilehash: 0655176a044da6b4dd6b7327aedf5eb17d79f04a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991980"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrowanie istniejącej aplikacji MongoDB przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i usługi Open Service Broker for Azure (OSBA)
 
@@ -81,7 +81,7 @@ Uruchomić aplikację, a następnie przekaż go do korzystania ze *bazy danych m
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Przejdź do http://localhost:8080 w przeglądarce.
+Przejdź do `http://localhost:8080` w przeglądarce.
 
 ![Aplikacja Spring Music z danymi domyślnymi](media/music-app.png)
 
@@ -184,7 +184,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Zwróć uwagę, aplikacja nadal używa *bazy danych mongodb* profilu i identyfikator URI, który rozpoczyna się od *bazy danych mongodb: / /* nawiązać połączenia z bazą danych Cosmos DB. [Usługi Azure Cosmos DB interfejs API systemu MongoDB](../cosmos-db/mongodb-introduction.md) zapewnia zgodność z tym. Umożliwia aplikacji dalsze działanie tak, jakby korzysta ona z bazy danych MongoDB, ale faktycznie jest za pomocą usługi Cosmos DB.
 
-Przejdź do http://localhost:8080 w przeglądarce. Zwróć uwagę, że Przywrócono wartości domyślne. Korzystać z niego, usuwając kilka istniejących ze zdjęciami i tworzyć kilka nowych. Możesz sprawdzić, czy zmiany są zachowywane przez zatrzymanie aplikacji, jeszcze raz uruchomić go i przejdź wstecz do niego w przeglądarce. Zwróć uwagę, że zmiany wprowadzone przez użytkownika nadal istnieją. Zmiany są zachowywane w usługą Cosmos DB zostały utworzone za pomocą usługi Open Service Broker for Azure.
+Przejdź do `http://localhost:8080` w przeglądarce. Zwróć uwagę, że Przywrócono wartości domyślne. Korzystać z niego, usuwając kilka istniejących ze zdjęciami i tworzyć kilka nowych. Możesz sprawdzić, czy zmiany są zachowywane przez zatrzymanie aplikacji, jeszcze raz uruchomić go i przejdź wstecz do niego w przeglądarce. Zwróć uwagę, że zmiany wprowadzone przez użytkownika nadal istnieją. Zmiany są zachowywane w usługą Cosmos DB zostały utworzone za pomocą usługi Open Service Broker for Azure.
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Uruchom aplikację w klastrze usługi AKS

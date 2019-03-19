@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082147"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -94,18 +94,18 @@ Alternatywnie organizacji można też utworzyć zasady gotowości. Aby utworzyć
 Opis usługi ekspozycji podczas przerw w działaniu pozwala zmniejszyć ryzyko i jest krytyczną częścią procesu planowania. Aby utworzyć plan awaryjny, należy najpierw określić następujące wymagania biznesowe organizacji:
 
 1. Określ Twojej aplikacji o kluczowym znaczeniu wcześniej: Co to są aplikacje, podaj dostęp, nawet w przypadku niższy poziom ryzyka/zabezpieczeń? Tworzenie listy te aplikacje i upewnić się, że inne zainteresowane osoby (dla firm, kierownictwo prawne, zabezpieczenia,) są zgodne, jeśli wszystkie kontroli dostępu znika te aplikacje nadal musi być uruchomiony. Prawdopodobnie ma-to-end za pomocą kategorii:
-  * **Aplikacji o krytycznym znaczeniu dla misji kategorii 1** , nie może być niedostępna dla więcej niż kilka minut, na przykład w przypadku aplikacji, które mają bezpośredni wpływ na przychody organizacji.
-  * **Kategoria 2 ważnych aplikacji** firmy musi być dostępny w ciągu kilku godzin.
-  * **Aplikacje o niskim priorytecie kategorii 3** , może wytrzymać zakłócenia przez kilka dni.
+   * **Aplikacji o krytycznym znaczeniu dla misji kategorii 1** , nie może być niedostępna dla więcej niż kilka minut, na przykład w przypadku aplikacji, które mają bezpośredni wpływ na przychody organizacji.
+   * **Kategoria 2 ważnych aplikacji** firmy musi być dostępny w ciągu kilku godzin.
+   * **Aplikacje o niskim priorytecie kategorii 3** , może wytrzymać zakłócenia przez kilka dni.
 2. W przypadku aplikacji w kategorii 1 i 2 Firma Microsoft zaleca wcześniejszego zaplanowania jakiego rodzaju poziom dostępu chcesz zezwolić:
-  * Czy chcesz zezwolić na pełny dostęp lub ograniczone sesji, takie jak ograniczanie pliki do pobrania?
-  * Czy chcesz zezwolić na dostęp do części aplikacji, ale nie całej aplikacji?
-  * Czy chcesz zezwolić na dostęp do informacji o procesu roboczego i zablokować dostęp administratora do momentu przywrócenia kontroli dostępu?
+   * Czy chcesz zezwolić na pełny dostęp lub ograniczone sesji, takie jak ograniczanie pliki do pobrania?
+   * Czy chcesz zezwolić na dostęp do części aplikacji, ale nie całej aplikacji?
+   * Czy chcesz zezwolić na dostęp do informacji o procesu roboczego i zablokować dostęp administratora do momentu przywrócenia kontroli dostępu?
 3. W przypadku tych aplikacji, firma Microsoft zaleca również planu, który drogi prowadzące dostępu celowo otworzysz i te, które zostanie zamknięte:
-  * Czy chcesz zezwolić na przeglądarce tylko dostęp i blok sformatowanego klientów, które można zapisać danych w trybie offline?
-  * Czy chcesz zezwolić na dostęp tylko dla użytkowników w sieci firmowej i zachować poza zablokowanych użytkowników?
-  * Czy chcesz zezwolić na dostęp z określonych krajów lub regionów tylko podczas przerw w działaniu?
-  * Czy chcesz, aby zasad w zasadach gotowości, szczególnie w przypadku aplikacji o kluczowym znaczeniu, aby udaje się powieść, jeśli formant dostępu alternatywnego nie jest dostępny?
+   * Czy chcesz zezwolić na przeglądarce tylko dostęp i blok sformatowanego klientów, które można zapisać danych w trybie offline?
+   * Czy chcesz zezwolić na dostęp tylko dla użytkowników w sieci firmowej i zachować poza zablokowanych użytkowników?
+   * Czy chcesz zezwolić na dostęp z określonych krajów lub regionów tylko podczas przerw w działaniu?
+   * Czy chcesz, aby zasad w zasadach gotowości, szczególnie w przypadku aplikacji o kluczowym znaczeniu, aby udaje się powieść, jeśli formant dostępu alternatywnego nie jest dostępny?
 
 #### <a name="microsoft-recommendations"></a>Zalecenia firmy Microsoft
 
@@ -251,7 +251,7 @@ Cofnąć zmiany wprowadzone w ramach aktywowano plan awaryjny po przywróceniu u
 Jeśli Twoja organizacja korzysta z zasad starszej wersji usługi MFA na użytkownika, można rozważyć alternatywne:
 
 1. Jeśli masz adres IP ruchu wychodzącego w sieci firmowej, możesz dodać ich jako zaufane adresy IP, aby włączyć uwierzytelnianie tylko do sieci firmowej.
- 2. Jeśli nie masz spis wychodzące adresy IP lub należy włączyć dostęp i spoza sieci firmowej, można dodać całą przestrzeń adresów IPv4 jako zaufane adresy IP, określając 0.0.0.0/1 i 128.0.0.0/1.
+   1. Jeśli nie masz spis wychodzące adresy IP lub należy włączyć dostęp i spoza sieci firmowej, można dodać całą przestrzeń adresów IPv4 jako zaufane adresy IP, określając 0.0.0.0/1 i 128.0.0.0/1.
 
 >[!IMPORTANT]
  > Jeśli rozszerzenie jest zaufane adresy IP w celu odblokowania dostępu, nie można wygenerować zdarzeń o podwyższonym ryzyku skojarzone z adresami IP (na przykład, więc podróż jest wykluczona lub nieznanych lokalizacji).
@@ -264,9 +264,9 @@ Jeśli Twoja organizacja korzysta z zasad starszej wersji usługi MFA na użytko
 * [Dokumentacja usługi Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Zarządzanie kontami administracyjnymi z dostępem awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
- * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowe](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Przewodnik wdrażania funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
- * [Wskazówki dotyczące haseł — badań firmy Microsoft](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [Wskazówki dotyczące haseł — badań firmy Microsoft](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Jakie są warunki dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

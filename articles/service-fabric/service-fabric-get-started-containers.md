@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 8e4dacb955db8f83717377f71564ad6361d9a4d6
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 4133379ff7c1c0a64bd2d9aefdafdd5cdb530491
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807800"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875072"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -153,7 +153,7 @@ Jeśli to polecenie nie zwróci żadnych wyników, uruchom następujące polecen
 docker inspect my-web-site
 ```
 
-Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz zwrócony adres IP, na przykład „http://172.31.194.61”. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
+Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz zwrócony adres IP, na przykład „<http://172.31.194.61>”. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
 Aby zatrzymać kontener, uruchom polecenie:
 
@@ -527,8 +527,8 @@ W tym miejscu przedstawiono kompletne manifesty usługi i aplikacji używane w t
 <ServiceManifest Name="Guest1Pkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->
@@ -574,8 +574,8 @@ W tym miejscu przedstawiono kompletne manifesty usługi i aplikacji używane w t
 <ApplicationManifest ApplicationTypeName="MyFirstContainerType"
                      ApplicationTypeVersion="1.0.0"
                      xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>

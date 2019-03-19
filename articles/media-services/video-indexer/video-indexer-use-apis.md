@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862727"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Samouczek: Korzystanie z interfejsu API usługi Video Indexer
 
@@ -23,7 +23,7 @@ ms.locfileid: "55988055"
 
 Usługa Video Indexer to pojedyncza usługa zintegrowana, w której skonsolidowano różne technologie sztucznej inteligencji firmy Microsoft związane z audio i wideo, co upraszcza programowanie. Interfejsy API zaprojektowano w celu umożliwienia deweloperom skupienia się na korzystaniu z technologii sztucznej inteligencji do obsługi multimediów bez konieczności martwienia się o skalę, zasięg globalny, dostępność i niezawodność platformy w chmurze. Za ich pomocą można przekazywać pliki, uzyskiwać szczegółowe informacje o wideo, pobierać adresy URL widżetów szczegółowych informacji i odtwarzacza w celu osadzania ich w aplikacji, a także wykonywać inne zadania.
 
-Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku opcji płatnej utworzone zostaje konto usługi Video Indexer [połączone z subskrypcją platformy Azure i kontem usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Azure Media Services. 
+Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [połączony z subskrypcją platformy Azure oraz konta usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Azure Media Services. 
 
 W tym artykule pokazano, jak deweloperzy mogą korzystać z [interfejsu API usługi Video Indexer](https://api-portal.videoindexer.ai/).
 
@@ -33,10 +33,10 @@ W tym artykule pokazano, jak deweloperzy mogą korzystać z [interfejsu API usł
     
     ![Logowanie](./media/video-indexer-use-apis/video-indexer-api01.png)
 
-    > [!Important]
-    > * Musisz użyć tego samego dostawcy, który został użyty podczas tworzenia konta w usłudze Video Indexer.
-    > * Osobistych kont Google i Microsoft (outlook/live) można używać tylko w przypadku kont wersji próbnej. Konta połączone z platformą Azure wymagają usługi Azure AD.
-    > * Dla każdego adresu e-mail może istnieć tylko jedno aktywne konto. Jeśli użytkownik spróbuje zalogować się za pomocą adresu user@gmail.com na koncie związanym z serwisem LinkedIn, a następnie za pomocą adresu user@gmail.com na koncie Google, przy drugiej próbie zostanie wyświetlona strona błędu z informacją, że użytkownik już istnieje.
+   > [!Important]
+   > * Musisz użyć tego samego dostawcy, który został użyty podczas tworzenia konta w usłudze Video Indexer.
+   > * Osobistych kont Google i Microsoft (outlook/live) można używać tylko w przypadku kont wersji próbnej. Konta połączone z platformą Azure wymagają usługi Azure AD.
+   > * Dla każdego adresu e-mail może istnieć tylko jedno aktywne konto. Jeśli użytkownik spróbuje zalogować się za pomocą adresu user@gmail.com na koncie związanym z serwisem LinkedIn, a następnie za pomocą adresu user@gmail.com na koncie Google, przy drugiej próbie zostanie wyświetlona strona błędu z informacją, że użytkownik już istnieje.
 
 2. Subskrybuj.
 
@@ -72,7 +72,7 @@ Aby ułatwić sprawę, można uzyskać informacje o kontach za pomocą pozycji *
 
 Tokeny dostępu wygasają po godzinie. Przed skorzystaniem z interfejsu API operacji upewnij się, że token dostępu jest ważny. Jeśli wygaśnie, ponownie wywołaj interfejs API autoryzacji, aby uzyskać nowy token dostępu.
  
-Możesz już rozpocząć integrowanie z interfejsem API. Zapoznaj się ze [szczegółowymi opisami poszczególnych interfejsów API REST usługi Video Indexer](http://api-portal.videoindexer.ai/).
+Możesz już rozpocząć integrowanie z interfejsem API. Zapoznaj się ze [szczegółowymi opisami poszczególnych interfejsów API REST usługi Video Indexer](https://api-portal.videoindexer.ai/).
 
 ## <a name="location"></a>Lokalizacja
 

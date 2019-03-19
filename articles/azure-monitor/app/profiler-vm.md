@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 01e5ffc7cf00f7d0e0e97f521b6b6de2abd56567
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b72966ebc73953e6a89ca1bb2fd4f7ce15f70fee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307687"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111382"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profil aplikacji sieci web uruchomionej na maszynie wirtualnej platformy Azure lub skalowania maszyn wirtualnych ustawić za pomocą Application Insights Profiler
 
@@ -32,28 +32,28 @@ Można także wdrożyć usługi Azure Application Insights Profiler od następuj
 W tym artykule pokazano, jak uzyskać Application Insights Profiler uruchomionej na maszyn wirtualnych (VM) lub w zestawie skalowania maszyn wirtualnych platformy Azure. Profiler jest instalowany przy użyciu rozszerzenia diagnostyki Azure dla maszyn wirtualnych. Skonfiguruj rozszerzenia Aby uruchomić Profiler i umieszczenie zestawu SDK usługi Application Insights w aplikacji.
 
 1. Dodaj zestaw SDK usługi Application Insights do swojej [aplikacji ASP.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) lub regularnych [aplikacji .NET](windows-services.md?toc=/azure/azure-monitor/toc.json).  
-  Aby wyświetlić profile swoich żądań, konieczne jest wysłanie żądania danych telemetrycznych do usługi Application Insights.
+   Aby wyświetlić profile swoich żądań, konieczne jest wysłanie żądania danych telemetrycznych do usługi Application Insights.
 
 1. Zainstaluj rozszerzenie diagnostyki platformy Azure na maszynie Wirtualnej. Aby uzyskać pełne przykłady szablonów usługi Resource Manager zobacz:  
-    * [Maszyna wirtualna](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
-    * [Zestaw skalowania maszyn wirtualnych](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
+   * [Maszyna wirtualna](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
+   * [Zestaw skalowania maszyn wirtualnych](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
     
-    Kluczowym elementem jest ApplicationInsightsProfilerSink w WadCfg. Aby diagnostyki platformy Azure, Włącz Profiler do wysyłania danych do iKey, należy dodać inny obiekt sink do tej sekcji.
+     Kluczowym elementem jest ApplicationInsightsProfilerSink w WadCfg. Aby diagnostyki platformy Azure, Włącz Profiler do wysyłania danych do iKey, należy dodać inny obiekt sink do tej sekcji.
     
-    ```json
-      "SinksConfig": {
-        "Sink": [
-          {
-            "name": "ApplicationInsightsSink",
-            "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
-          },
-          {
-            "name": "MyApplicationInsightsProfilerSink",
-            "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
-          }
-        ]
-      },
-    ```
+     ```json
+     "SinksConfig": {
+       "Sink": [
+         {
+           "name": "ApplicationInsightsSink",
+           "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
+         },
+         {
+           "name": "MyApplicationInsightsProfilerSink",
+           "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
+         }
+       ]
+     },
+     ```
 
 1. Wdrożenia zmodyfikowane środowisko definicji wdrożenia.  
 

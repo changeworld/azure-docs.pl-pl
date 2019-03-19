@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 73c770f45666ce76b770796ac9714d007c2870cb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c7031b0d0a08106473409233db0ad95ecb32525
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095368"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Ruby w usłudze Azure Stack
 
@@ -86,7 +86,7 @@ gem install 'azure_sdk'
 Aby można było używać zestaw Azure Ruby SDK przy użyciu usługi Azure Stack, należy podać następujące wartości, a następnie ustaw wartości za pomocą zmiennych środowiskowych. Zapoznaj się z instrukcjami pod tabelą systemu operacyjnego na temat ustawiania zmiennych środowiskowych.
 
 | Wartość | Zmienne środowiskowe | Opis |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Identyfikator dzierżawy | AZURE_TENANT_ID | Zalety usługi Azure Stack [identyfikator dzierżawy](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji niniejszego dokumentu.  |
 | Identyfikator subskrypcji | AZURE_SUBSCRIPTION_ID | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |

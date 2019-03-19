@@ -3,18 +3,18 @@ title: Wprowadzenie do akceleratorów rozwiązań IoT — Azure | Microsoft Docs
 description: Informacje na temat akceleratorów rozwiązań Azure IoT. Akceleratory rozwiązań IoT to kompletne, kompleksowe oraz gotowe do wdrożenia rozwiązania IoT.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/09/2018
+ms.date: 03/09/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 79c8f0f1c987de6320770416641300f3b8bb7c1d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58172822"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
 
@@ -99,7 +99,7 @@ Akcelerator rozwiązania monitorowania zdalnego można wdrażać w następujący
 
 Kosztem działania akceleratora rozwiązań jest łączny [koszt działania używanych przez niego podstawowych usług platformy Azure](https://azure.microsoft.com/pricing). Szczegóły używanych usług platformy Azure są widoczne podczas wybierania opcji wdrażania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby wypróbować jeden z akceleratorów rozwiązań usługi IoT, zapoznaj się z przewodnikami Szybki start:
 

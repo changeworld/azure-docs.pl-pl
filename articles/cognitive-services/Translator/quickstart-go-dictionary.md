@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: b9f1b3b7ab99ca878227d8bf618545ec90aca4ac
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 356c414d6e3823f927cbb201aeb0a0186e421b5e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58175537"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Go
 
@@ -32,7 +32,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt w języku Go przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `alt-translations.go`.
+Utwórz nowy projekt języka Go przy użyciu ulubionego środowiska IDE / Edytor lub nowy folder na pulpicie. Następnie skopiuj następujący fragment kodu do projektu/folderu w pliku o nazwie `alt-translations.go`.
 
 ```go
 package main
@@ -60,7 +60,7 @@ func main() {
      * Read your subscription key from an env variable.
      * Please note: You can replace this code block with
      * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables.
+     * want to use env variables. Then, be sure to delete the "os" import.
      */
     subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
     if subscriptionKey == "" {
@@ -225,14 +225,14 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z pakietami w języku Go dla interfejsów API usług Cognitive Services na stronie [Azure SDK for Go (Zestaw Azure SDK dla języka Go)](https://github.com/Azure/azure-sdk-for-go) w repozytorium GitHub.
+Poznaj przykłady Go interfejsy API usług poznawczych z [zestawu Azure SDK dla języka Go](https://github.com/Azure/azure-sdk-for-go) w witrynie GitHub.
 
 > [!div class="nextstepaction"]
-> [Explore Go packages on GitHub (Zapoznaj się z pakietami dla języka Go w repozytorium GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+> [Poznaj przykłady Go w witrynie GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 

@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3310dc5d72284e8d94b95b855fee90d560205fa4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884391"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444474"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Eksportowanie z magazynu usługi Azure App Configuration
 
@@ -52,9 +52,9 @@ Ten skrypt używa poniższych poleceń do eksportowania magazynu konfiguracji ap
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig export](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-export) | Eksportuje z zasobu magazynu konfiguracji aplikacji. |
+| [az appconfig export](/cli/azure/ext/appconfig/appconfig) | Eksportuje z zasobu magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

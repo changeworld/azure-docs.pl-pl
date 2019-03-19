@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: a593e42ed87ab985d4f4584ed6b73109716120bf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028627"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001244"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Obniżenie wydajności stopień ważności śledzenia (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ ms.locfileid: "54028627"
 Ta funkcja wymaga nie specjalne ustawienia innego niż Konfigurowanie rejestrowania śledzenia dla aplikacji (zobacz, jak Konfigurowanie odbiornika dziennika śledzenia [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) lub [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Może to być aktywny, gdy aplikacja generuje wystarczającej ilości danych telemetrycznych wyjątku.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Gdy otrzyma ten typ powiadomienia wykrywania inteligentnego
-Może zostać wyświetlony ten typ powiadomienia, gdy stosunek ślady "dobre" (ślady zarejestrowane z poziomem *informacje* lub *pełne*) i ślady "złe" (ślady zarejestrowane z poziomem *ostrzeżenie*, * Błąd, lub *błąd krytyczny*) jest zmniejszenie w określonym dniu, w porównaniu do linii bazowej obliczane w ciągu ostatnich siedmiu dni.
+Może zostać wyświetlony ten typ powiadomienia, gdy stosunek ślady "dobre" (ślady zarejestrowane z poziomem *informacje* lub *pełne*) i ślady "złe" (ślady zarejestrowane z poziomem *ostrzeżenie*, *Błąd*, lub *błąd krytyczny*) jest zmniejszenie w określonym dniu, w porównaniu do linii bazowej obliczane w ciągu ostatnich siedmiu dni.
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Czy Moja aplikacja ma zdecydowanie problem?
 Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem. Mimo że pogorszenie stosunek "dobre" traces "złe" może oznaczać problemu z aplikacją, ta zmiana w stosunku może być niegroźne. Na przykład wzrostem może być ze względu na nowy przepływ w aplikacji emitowania więcej ślady "złe" niż do istniejących przepływów).

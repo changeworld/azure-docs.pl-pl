@@ -1,5 +1,5 @@
 ---
-title: 'Modyfikowanie obwodu usługi ExpressRoute: programu PowerShell: klasyczny Portal Azure | Dokumentacja firmy Microsoft'
+title: 'Modyfikowanie obwodu usługi ExpressRoute: Program PowerShell: Klasyczny Portal Azure | Dokumentacja firmy Microsoft'
 description: W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anulować aprowizację obwodu usługi ExpressRoute modelu wdrożenia klasycznego.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 0d6d8af9456f5f943eb70b5a63b69e2f7f16a4cb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5bf6f5662e20b003bd387a6826ab87117be3f113
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075786"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 
@@ -48,25 +48,25 @@ Aby zalogować się do konta platformy Azure, skorzystaj z następującego przyk
 
 1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzureRmAccount
+   ```
 2. Sprawdź subskrypcje dostępne na koncie.
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzureRmSubscription
+   ```
 3. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="get-the-status-of-a-circuit"></a>Pobierz stan obwodu
 

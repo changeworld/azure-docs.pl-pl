@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100802"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997550"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
@@ -360,6 +360,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 ### <a name="excel-input---usage"></a>Program Excel wprowadź — użycie
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
+
 |Zasób|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Odczytuj pliki użytkownika|
@@ -522,6 +523,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 ### <a name="excel-output---usage"></a>Dane wyjściowe — Excel użycia
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
+
 |Zasób|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Miej pełny dostęp do plików użytkownika|
@@ -664,6 +666,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 ### <a name="file-input---usage"></a>Plik wejściowy — użycie
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
+
 |Zasób|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Odczytuj pliki użytkownika|
@@ -671,7 +674,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]
 - Strumień
-- ciąg
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -811,6 +814,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 #### <a name="file-output---usage"></a>Plik danych wyjściowych — użycie
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
+
 |Zasób|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Miej pełny dostęp do plików użytkownika|
@@ -818,7 +822,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]
 - Strumień
-- ciąg
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -960,6 +964,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 ### <a name="outlook-output---usage"></a>Program Outlook dane wyjściowe — użycie
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
+
 |Zasób|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Wysyłaj pocztę jako użytkownik|
@@ -967,7 +972,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- ciąg
+- string
 - Typów obiektów niestandardowych (przy użyciu wiązania modelu strukturalnych)
 
 
@@ -1397,7 +1402,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 ### <a name="webhook-output---usage"></a>Element Webhook dane wyjściowe — użycie
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
-- ciąg
+- string
 - Microsoft.Graph.Subscription
 
 

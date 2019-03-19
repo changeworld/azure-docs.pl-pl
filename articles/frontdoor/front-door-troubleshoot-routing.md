@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 78370b004d18f70ae4d485f3ad7cfd910e6dd70a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047932"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100313"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Rozwiązywanie typowych problemów routingu
 W tym artykule opisano, jak do rozwiązywania niektórych typowych problemów routingu, które mogą się spodziewać dla danej konfiguracji usługi drzwiami frontowymi platformy Azure. 
@@ -28,7 +28,7 @@ W tym artykule opisano, jak do rozwiązywania niektórych typowych problemów ro
 ### <a name="symptom"></a>Objaw
 - Utworzono drzwiami frontowymi, ale zwraca kod stanu HTTP 400 żądań do hosta serwera sieci Web.
 
- - Utworzono DNS mapowanie z domeny niestandardowej do hosta frontonu zostały skonfigurowane. Jednak wysyła żądania do nazwy hosta domeny niestandardowej zwraca kod stanu HTTP 400 i wydaje się kierować do backend(s) zostały skonfigurowane.
+  - Utworzono DNS mapowanie z domeny niestandardowej do hosta frontonu zostały skonfigurowane. Jednak wysyła żądania do nazwy hosta domeny niestandardowej zwraca kod stanu HTTP 400 i wydaje się kierować do backend(s) zostały skonfigurowane.
 
 ### <a name="cause"></a>Przyczyna
 - Ten symptom może się zdarzyć, jeśli nie skonfigurowano reguły routingu dla domeny niestandardowej, która zostanie dodany jako hosta serwera sieci Web. Reguły routingu należy jawnie dodać tego hosta serwera sieci Web nawet, jeśli jeden został już skonfigurowany dla hosta serwera sieci Web w obszarze poddomeny drzwiami frontowymi (*. azurefd.net) czy domeny niestandardowej ma mapowanie DNS.
@@ -54,11 +54,11 @@ Istnieje kilka możliwych przyczyn to objaw:
     - Upewnij się, że minęło ~ 10 minut, można wdrożyć w konfiguracji.
 
 2. Sprawdź ustawienia wewnętrznej bazy danych
-     - Przejdź do puli zaplecza, który żądanie powinno być routingu w celu (w zależności od sposobu ma regułę routingu skonfigurowane) i sprawdź, czy _typ hosta zaplecza_ i nazwy hosta wewnętrznej bazy danych są poprawne. Wewnętrznej bazy danych w przypadku niestandardowego hosta, upewnij się, że możesz mieć poprawna go. 
+   - Przejdź do puli zaplecza, który żądanie powinno być routingu w celu (w zależności od sposobu ma regułę routingu skonfigurowane) i sprawdź, czy _typ hosta zaplecza_ i nazwy hosta wewnętrznej bazy danych są poprawne. Wewnętrznej bazy danych w przypadku niestandardowego hosta, upewnij się, że możesz mieć poprawna go. 
 
-     - Sprawdź swoje portach HTTP i HTTPS. W większości przypadków 80 i 443 (odpowiednio), są poprawne, a żadne zmiany nie będą wymagane. Istnieje jednak możliwość, że wewnętrzną bazą danych nie została skonfigurowana w ten sposób i nasłuchuje na innym porcie.
+   - Sprawdź swoje portach HTTP i HTTPS. W większości przypadków 80 i 443 (odpowiednio), są poprawne, a żadne zmiany nie będą wymagane. Istnieje jednak możliwość, że wewnętrzną bazą danych nie została skonfigurowana w ten sposób i nasłuchuje na innym porcie.
 
-    - Sprawdź _nagłówek hosta zaplecza_ skonfigurowany dla zaplecza aplikacji, których routingu hosta serwera sieci Web w celu. W większości przypadków ten nagłówek powinna być taka sama jak _wewnętrznej bazy danych, nazwy hosta_. Może to spowodować jednak niepoprawną wartość różne kody stanu HTTP 4xx, wewnętrznej bazy danych oczekuje, że coś innego. Jeśli należy wprowadzić adres IP zaplecza, konieczne może być ustawiona _nagłówek hosta zaplecza_ zgodnie z nazwą hosta wewnętrznej bazy danych.
+     - Sprawdź _nagłówek hosta zaplecza_ skonfigurowany dla zaplecza aplikacji, których routingu hosta serwera sieci Web w celu. W większości przypadków ten nagłówek powinna być taka sama jak _wewnętrznej bazy danych, nazwy hosta_. Może to spowodować jednak niepoprawną wartość różne kody stanu HTTP 4xx, wewnętrznej bazy danych oczekuje, że coś innego. Jeśli należy wprowadzić adres IP zaplecza, konieczne może być ustawiona _nagłówek hosta zaplecza_ zgodnie z nazwą hosta wewnętrznej bazy danych.
 
 
 3. Sprawdź ustawienia reguły routingu

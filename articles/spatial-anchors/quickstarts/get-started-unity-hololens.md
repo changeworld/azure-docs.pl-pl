@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b2bfec47bc92ebf5db1561d8fca33940dc376866
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: c8fc99426751e9aaaec53cbb6b64a84b6e7f6734
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752847"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894329"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-using-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji aparatu Unity dla urządzenia HoloLens przy użyciu usługi Azure Spatial Anchors
 
@@ -34,8 +34,8 @@ Omawiane tematy:
 
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
-- Maszyna z systemem Windows z zainstalowanymi aparatem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 lub nowszym</a> i programem <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 lub nowszym</a> oraz pakietem roboczym **Opracowywanie zawartości dla platformy uniwersalnej systemu Windows**.
-- Urządzenie HoloLens z włączonym [trybem dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio).
+- Maszyna Windows z <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a>, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> zainstalowane z **programowania na platformę uniwersalną Windows** obciążenia, i <a href="https://git-scm.com/download/win" target="_blank">narzędzia Git Windows</a>.
+- Urządzenie HoloLens z włączonym [trybem dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio). Ten artykuł wymaga urządzenia HoloLens z [aktualizacją systemu Windows z 10 października 2018 r.](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (znaną także jako RS5). Aby wykonać aktualizację do najnowszej wersji na urządzeniu HoloLens, otwórz aplikację **Ustawienia**, przejdź do pozycji **Aktualizacja i zabezpieczenia**, a następnie wybierz przycisk **Sprawdź dostępność aktualizacji**.
 - Aplikacja musi ustawiać możliwość **SpatialPerception** w obszarze **Build Settings (Ustawienia kompilacji)**->**Player Settings (Ustawienia odtwarzacza)**->**Publishing Settings (Ustawienia publikowania)**->**Capabilities (Możliwości)**.
 - Aplikacja musi włączać ustawienie **Virtual Reality Supported (Obsługa rzeczywistości wirtualnej)** z zestawem **Windows Mixed Reality SDK** w obszarze **Build Settings (Ustawienia kompilacji)**->**Player Settings (Ustawienia odtwarzacza)**->**XR Settings (Ustawienia XR)**.
 
@@ -51,7 +51,7 @@ Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje *
 
 W sekcji **Platform (Platforma)** wybierz pozycję **Universal Windows Platform (Platforma uniwersalna systemu Windows)**. Następnie zmień wartość ustawienia **Target Device (Urządzenie docelowe)** na **HoloLens**.
 
-Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **Universal Windows Platform (Platforma uniwersalna systemu Windows)**.
+Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **Universal Windows Platform (Platforma uniwersalna systemu Windows)**. Unity może poprosić Zainstaluj składniki obsługi platformy uniwersalnej systemu Windows, jeśli są one Brak.
 
 ![Ustawienia kompilacji aparatu Unity](./media/get-started-unity-hololens/unity-build-settings.png)
 

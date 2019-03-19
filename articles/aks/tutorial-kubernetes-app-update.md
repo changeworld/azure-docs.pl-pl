@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: eb1aa90cf7a1fafaa066e5a1109d1031b53034e2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: cefbd4f16902b3a6816ebb4e818a81b18ba00d54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995555"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -65,7 +65,7 @@ docker-compose up --build -d
 
 ## <a name="test-the-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Aby sprawdzić, czy w zaktualizowanym obrazie kontenera wyświetlane są wprowadzone zmiany, otwórz stronę http://localhost:8080 w lokalnej przeglądarce internetowej.
+Aby sprawdzić, czy w zaktualizowanym obrazie kontenera wyświetlane są wprowadzone zmiany, otwórz stronę `http://localhost:8080` w lokalnej przeglądarce internetowej.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -147,7 +147,7 @@ Następnie otwórz adres IP usługi w lokalnej przeglądarce internetowej:
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra usługi AKS. W tym samouczku omówiono:
 

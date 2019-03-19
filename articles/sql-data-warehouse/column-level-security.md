@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: security
 ms.date: 06/15/2018
 ms.author: kavithaj
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: 379425a4c0b21234fb4e48dc1c8a56cfea645045
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f1452b1f15fe176107015957cdd1cd1cff5f4e55
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727385"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58172856"
 ---
 # <a name="column-level-security"></a>Zabezpieczenia na poziomie kolumny
 Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumny tabeli bazy danych na podstawie kontekstu wykonania przez użytkownika lub członkostwa w grupach.

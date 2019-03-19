@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: f929424746a4e83f20af635bebf6ca60ee6cb673
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984821"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993440"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Używanie niestandardowego obrazu platformy Docker dla usługi Web App for Containers
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>Wdrażanie aplikacji na platformie Azure
 
-Aby utworzyć aplikację korzystającą z wypchniętego właśnie obrazu, uruchom polecenia interfejsu wiersza polecenia platformy Azure tworzące grupę, następnie plan usługi, a na końcu samą aplikację internetową. 
+Aby utworzyć aplikację, która używa obrazu, które zostały wypchnięte, uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure, które tworzyć grupy, a następnie planu usług, a na końcu samą aplikację internetową. 
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -556,7 +556,7 @@ Dane wyjściowe polecenia są podobne jak w przypadku następującego ciągu JSO
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej platformy Docker przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure](tutorial-python-postgresql-app.md)

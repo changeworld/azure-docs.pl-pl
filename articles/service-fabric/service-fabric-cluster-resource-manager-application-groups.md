@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e4f446ff67408ef390ba817de935c286c5b2a47e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 94ae233f8591c43afa1bb73c3e17964922967d36
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123032"
 ---
 # <a name="introduction-to-application-groups"></a>Wprowadzenie do grup aplikacji
 Menedżer zasobów klastra usługi Service Fabric zarządza zwykle zasobów klastra przez rozłożenie obciążenia (reprezentowane za pomocą [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza się pojemności węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajności działają doskonale nadaje się do wielu obciążeń, ale wzorce, które intensywnie korzystają z różnych wystąpieniach aplikacji Service Fabric Service czasami Przenieś dodatkowe wymagania. Na przykład możesz chcieć:
@@ -36,6 +36,7 @@ Najprostszym przypadku użycia pojemności aplikacji jest, gdy wystąpienie apli
 Na poniższej ilustracji przedstawiono wystąpienie aplikacji z lub bez maksymalną liczbę węzłów zdefiniowane:
 
 <center>
+
 ![Wystąpienie aplikacji, definiując maksymalnej liczby węzłów][Image1]
 </center>
 
@@ -117,6 +118,7 @@ Rezerwacji zasobów dla wystąpienia aplikacji wymaga określenia pliku dwa doda
 Spójrzmy na przykład pojemność rezerwacji:
 
 <center>
+
 ![Wystąpienia aplikacji, definiując rezerwowanie pojemności][Image2]
 </center>
 

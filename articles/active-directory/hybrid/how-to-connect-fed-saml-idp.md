@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b82c2261e949c724b1310ee43c6f3fe29766945
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096949"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>W systemie dostawcy tożsamości SAML 2.0 (IdP) do rejestracji jednokrotnej
 
@@ -30,16 +30,16 @@ Ten dokument zawiera informacje na temat korzystania z języka SAML 2.0 zgodne S
 
 Firma Microsoft obsługuje to środowisko logowania jednokrotnego jako Integracja usługi w chmurze firmy Microsoft, takich jak Office 365 za pomocą usługi prawidłowo skonfigurowane SAML 2.0 na podstawie profilu dostawcy tożsamości. Dostawcy tożsamości SAML 2.0 są produktów innych firm i w związku z tym firma Microsoft nie zapewnia obsługi wdrażania, konfiguracji, rozwiązywanie problemów z najlepszych rozwiązań dotyczących ich. Po poprawnym skonfigurowaniu integracji z języka SAML 2.0, t dostawcy tożsamości dla odpowiedniej konfiguracji za pomocą narzędzia Analizator łączności firmy Microsoft, który został opisany bardziej szczegółowo poniżej. Aby uzyskać więcej informacji na temat dostawcą tożsamości na podstawie profilu SAML 2.0 SP-Lite poproś organizacji, która dostarcza on.
 
->[!IMPORTANT]
->Tylko w ograniczonym zestawie klientów są dostępne w tym scenariuszu logowania jednokrotnego przy użyciu dostawcy tożsamości SAML 2.0, dane te obejmują:
-
->- Oparte na sieci Web klientów, takich jak program Outlook Web Access i SharePoint Online
-- Bogate w wiadomości e-mail, używają uwierzytelnianie podstawowe i obsługiwane metody dostępu programu Exchange, takich jak IMAP, POP, ActiveSync, MAPI itp. (punkt końcowy rozszerzony protokół klienta jest wymagany do wdrożenia), w tym:
-    - Outlook 2016-Microsoft Outlook 2010/Outlook 2013, firmy Apple dla telefonu iPhone (różne wersje systemu iOS)
-    - Różne urządzenia systemu Android firmy Google
-    - Windows Phone 8.0, Windows Phone 7 i Windows Phone 7.8
-    - Klient poczty systemu Windows 8 i Windows 8.1 klienta poczty E-mail
-    - Klient poczty systemu Windows 10
+> [!IMPORTANT]
+> Tylko w ograniczonym zestawie klientów są dostępne w tym scenariuszu logowania jednokrotnego przy użyciu dostawcy tożsamości SAML 2.0, dane te obejmują:
+> 
+> - Oparte na sieci Web klientów, takich jak program Outlook Web Access i SharePoint Online
+> - Bogate w wiadomości e-mail, używają uwierzytelnianie podstawowe i obsługiwane metody dostępu programu Exchange, takich jak IMAP, POP, ActiveSync, MAPI itp. (punkt końcowy rozszerzony protokół klienta jest wymagany do wdrożenia), w tym:
+>     - Outlook 2016-Microsoft Outlook 2010/Outlook 2013, firmy Apple dla telefonu iPhone (różne wersje systemu iOS)
+>     - Różne urządzenia systemu Android firmy Google
+>     - Windows Phone 8.0, Windows Phone 7 i Windows Phone 7.8
+>     - Klient poczty systemu Windows 8 i Windows 8.1 klienta poczty E-mail
+>     - Klient poczty systemu Windows 10
 
 Inni klienci nie są dostępne w tym scenariuszu logowania jednokrotnego przy użyciu dostawcy tożsamości SAML 2.0. Na przykład na pulpicie klienta Lync 2010 nie będzie mógł zalogować się do usługi za pomocą dostawcy tożsamości SAML 2.0 skonfigurowane na potrzeby logowania jednokrotnego.
 
@@ -194,7 +194,7 @@ Poniższa procedura przeprowadzi Cię przez Konwertowanie istniejącej domeny st
 Aby uzyskać więcej informacji na temat "Set-MsolDomainAuthentication", zobacz: [ https://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Należy uruchomić, użyj "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" tylko wtedy, gdy Konfigurowanie rozszerzenia ECP dla dostawcy tożsamości. Klienci usługi Exchange Online, z wyjątkiem aplikacji sieci Web programu Outlook (OWA) polegają na ogłoszenie na podstawie aktywnego punktu końcowego. Jeśli z SAML 2.0 STS implementuje aktywny punkt końcowy podobne do wykonania ECP firmy Shibboleth aktywny punkt końcowy może być możliwe w przypadku tych zaawansowanych klientów do interakcji z usługą Exchange Online.
+>Należy uruchomić użyj `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` tylko wtedy, gdy Konfigurowanie rozszerzenia ECP dla dostawcy tożsamości. Klienci usługi Exchange Online, z wyjątkiem aplikacji sieci Web programu Outlook (OWA) polegają na ogłoszenie na podstawie aktywnego punktu końcowego. Jeśli z SAML 2.0 STS implementuje aktywny punkt końcowy podobne do wykonania ECP firmy Shibboleth aktywny punkt końcowy może być możliwe w przypadku tych zaawansowanych klientów do interakcji z usługą Exchange Online.
 
 Po skonfigurowaniu Federacji możesz przełączyć się ponownie do "inne niż federacyjne" (lub "zarządzany"), jednak ta zmiana ta zajmuje nawet do dwóch godzin, i wymaga, przypisywanie nowego losowych haseł oparte na chmurze logowania do poszczególnych użytkowników. Przełączanie do "zarządzany" może być konieczne w niektórych scenariuszach resetowania błąd w ustawieniach. Aby uzyskać więcej informacji o konwersji domeny Zobacz: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 

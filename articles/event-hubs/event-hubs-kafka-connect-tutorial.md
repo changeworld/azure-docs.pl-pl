@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f405fe1c93ad17476ac47bc23951c65a5ea5db73
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2ed4432aec9b833efe6b521b4452177088d21d70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119415"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Integrowanie obsługi narzędzia Apache Kafka Connect w usłudze Azure Event Hubs (wersja zapoznawcza)
 Wraz ze wzrostem ilości danych pozyskiwanych do celów biznesowych zwiększa się poziom wymagań dotyczących pozyskiwania dla różnych ujść i źródeł zewnętrznych. Narzędzie [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) udostępnia platformę do łączenia i importowania/eksportowania danych w dowolnym systemie zewnętrznym, takim jak MySQL, HDFS i system plików za pośrednictwem klastra platformy Kafka. Ten samouczek zawiera instrukcje dotyczące używania platformy Kafka Connect z usługą Event Hubs z obsługą platformy Kafka.
@@ -23,7 +23,7 @@ Wraz ze wzrostem ilości danych pozyskiwanych do celów biznesowych zwiększa si
 Ten samouczek zawiera instrukcje dotyczące integrowania narzędzia Kafka Connect z centrum zdarzeń platformy Azure z obsługą platformy Kafka oraz wdrażania podstawowych łączników FileStreamSource i FileStreamSink. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Te łączniki nie są przeznaczone do użycia w środowisku produkcyjnym — służą one do zaprezentowania pełnego scenariusza narzędzia Kafka Connect, w którym usługa Azure Event Hubs działa jako broker platformy Kafka.
 
 > [!NOTE]
-Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect).
+> Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect).
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -155,7 +155,7 @@ Ta sekcja przeprowadzi Cię przez proces tworzenia łączników FileStreamSource
 ### <a name="cleanup"></a>Czyszczenie
 Narzędzie Kafka Connect tworzy tematy centrum zdarzeń do przechowywania konfiguracji, przesunięć i stanu — te dane są trwale przechowywane nawet po wyłączeniu klastra narzędzia Connect. Jeśli zależy Ci na takiej trwałości, zaleca się usunięcie tych tematów. Możesz też usunąć centrum zdarzeń `connect-quickstart`, które zostało utworzone w ramach tego przewodnika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dla platformy Kafka, zobacz następujący temat:  
 

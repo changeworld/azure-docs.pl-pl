@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 366ab452d1693315e7e71301d953248008c1eac8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820678"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079132"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Zdalna komunikacja usług w języku C# przy użyciu usług Reliable Services
 
@@ -128,28 +128,28 @@ Następujące kroki, Zmień kod szablonu do korzystania ze stosu w wersji 2 przy
 
 1. Zmień zasób punktu końcowego z `"ServiceEndpoint"` do `"ServiceEndpointV2"` w manifeście usługi.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Użyj `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` metodę rozszerzenia, aby utworzyć odbiorników komunikacji zdalnej (równe zarówno V1 i V2).
 
-  ```csharp
+   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return this.CreateServiceRemotingInstanceListeners();
     }
-  ```
+   ```
 
 3. Oznacz zestaw, który zawiera interfejsy komunikacji zdalnej z `FabricTransportServiceRemotingProvider` atrybutu.
 
-  ```csharp
-  [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
-  ```
+   ```csharp
+   [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
 
 Bez zmian w kodzie są wymagane w projekcie klienta.
 Tworzenie zestawów klienta z zestawem interfejsu, aby upewnić się, że atrybutu zestawu z wcześniejszymi jest używany.
@@ -162,18 +162,18 @@ Następujące kroki, Zmień kod szablonu do korzystania ze stosu w wersji 2 przy
 
 1. Zmień zasób punktu końcowego z `"ServiceEndpoint"` do `"ServiceEndpointV2"` w manifeście usługi.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Użyj [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` przestrzeni nazw.
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[]
         {
@@ -184,16 +184,16 @@ Następujące kroki, Zmień kod szablonu do korzystania ze stosu w wersji 2 przy
             })
         };
     }
-  ```
+   ```
 
 3. Użyj [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` przestrzeni nazw, aby utworzyć klientów.
 
-  ```csharp
-  var proxyFactory = new ServiceProxyFactory((c) =>
+   ```csharp
+   var proxyFactory = new ServiceProxyFactory((c) =>
           {
               return new FabricTransportServiceRemotingClientFactory();
           });
-  ```
+   ```
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2"></a>Uaktualnienie z wywołaniem funkcji zdalnych V1 do komunikacji zdalnej w wersji 2
 
@@ -248,29 +248,29 @@ Wykonaj następujące kroki, aby zmienić stos V2_1.
 
 1. Dodaj zasób punktu końcowego o nazwie "ServiceEndpointV2_1" w manifeście usługi.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2_1" />  
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Metoda rozszerzenia usług zdalnych umożliwia utworzenie odbiornika komunikacji zdalnej.
 
-  ```csharp
+   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return this.CreateServiceRemotingInstanceListeners();
     }
-  ```
+   ```
 
 3. Dodaj [atrybutu zestawu](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) na interfejsach komunikacji zdalnej.
 
-  ```csharp
+   ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
 
-  ```
+   ```
 
 Żadne zmiany nie są wymagane w projekcie klienta.
 Tworzenie zestawów klienta z zestawem interfejsu, aby upewnić się, że poprzednie atrybutu zestawu jest używana.
@@ -281,18 +281,18 @@ Wykonaj następujące kroki:
 
 1. Dodaj zasób punktu końcowego o nazwie "ServiceEndpointV2_1" w manifeście usługi.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2_1" />  
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Użyj [odbiornika komunikacji zdalnej V2](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Nazwa zasobu punktu końcowego usługi domyślne używane jest "ServiceEndpointV2_1." Musi być zdefiniowany w manifeście usługi.
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[]
         {
@@ -305,17 +305,17 @@ Wykonaj następujące kroki:
             })
         };
     }
-  ```
+   ```
 
 3. Należy użyć V2 [fabryka klientów](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
-  ```csharp
-  var proxyFactory = new ServiceProxyFactory((c) =>
+   ```csharp
+   var proxyFactory = new ServiceProxyFactory((c) =>
           {
             var settings = new FabricTransportRemotingSettings();
             settings.UseWrappedMessage = true;
             return new FabricTransportServiceRemotingClientFactory(settings);
           });
-  ```
+   ```
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Uaktualnienie z wywołaniem funkcji zdalnych V1 do komunikacji zdalnej w wersji 2 (interfejs niezgodny)
 
@@ -527,8 +527,8 @@ Wykonaj następujące kroki:
 
 2. Przesłonić domyślny dostawca serializacji z `JsonSerializationProvider` dla odbiornika komunikacji zdalnej.
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
    {
        return new[]
        {
@@ -539,7 +539,7 @@ Wykonaj następujące kroki:
            })
        };
    }
-  ```
+   ```
 
 3. Przesłonić domyślny dostawca serializacji z `JsonSerializationProvider` fabryki klienta komunikacji zdalnej.
 

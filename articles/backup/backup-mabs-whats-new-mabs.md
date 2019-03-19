@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: 01709bf7bdf4812802ab983729cc628101810f43
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5718064994a80266c216ae6040746be29194adc9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869623"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108920"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>What's new in serwera usługi Microsoft Azure Backup
 
@@ -54,7 +54,7 @@ Znajdź więcej informacji na temat instalacji i/lub uaktualnić kroków dla ser
 
 
 > [!NOTE]
-
+> 
 > Serwera usługi Mab ma ten sam kod podstawowy, jak System Center Data Protection Manager. Serwera usługi Mab w wersji 3 jest odpowiednikiem 1807 programu Data Protection Manager.
 
 ## <a name="next-steps"></a>Kolejne kroki

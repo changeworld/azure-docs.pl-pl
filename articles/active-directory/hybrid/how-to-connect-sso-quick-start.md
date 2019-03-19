@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2539674668a9738d03e9af9c4fb88327cb1933
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086823"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Szybki start
 
@@ -74,8 +74,9 @@ Jeśli masz już instalację programu Azure AD Connect, wybierz opcję **zmiana 
 ![Program Azure AD Connect: Zmiany logowania użytkownika](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Kontynuuj pracę z kreatorem, aż dojdziesz do **Włącz logowanie jednokrotne** strony. Zapewniają, że poświadczenia administratora domeny dla każdej usługi Active Directory lasu, który:
-    * Można zsynchronizować z usługą Azure AD za pomocą usługi Azure AD Connect.
-    * Zawiera użytkowników, dla których chcesz włączyć bezproblemowego logowania jednokrotnego.
+
+* Można zsynchronizować z usługą Azure AD za pomocą usługi Azure AD Connect.
+* Zawiera użytkowników, dla których chcesz włączyć bezproblemowego logowania jednokrotnego.
 
 Po zakończeniu działania kreatora bezproblemowe logowanie Jednokrotne jest włączona w dzierżawie.
 
@@ -126,11 +127,11 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
    - **Nazwa wartości**: Usługa Azure AD adres URL gdzie bilety protokołu Kerberos są przesyłane dalej.
    - **Wartość** (dane): **1** wskazuje strefy intranetowej.
 
-    Wynik wygląda następująco:
+     Wynik wygląda następująco:
 
-    Nazwa wartości: `https://autologon.microsoftazuread-sso.com`
+     Nazwa wartości: `https://autologon.microsoftazuread-sso.com`
   
-    Wartość (dane): 1
+     Wartość (dane): 1
 
    >[!NOTE]
    > Jeśli chcesz uniemożliwić użytkownikom niektóre za pomocą bezproblemowego logowania jednokrotnego (na przykład, jeśli ci użytkownicy Zaloguj się na udostępnionym kioski), ustaw powyższe wartości **4**. Ta akcja dodaje usługi Azure AD adres URL do strefy z ograniczeniami i kończy się niepowodzeniem bezproblemowe logowanie Jednokrotne przez cały czas.
@@ -162,9 +163,9 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
    - **Typ wartości**: ***REG_DWORD***.
    - **Dane wartości**: ***00000001***.
  
-    ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso16.png)
  
-    ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso17.png)
+     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso17.png)
 
 ### <a name="browser-considerations"></a>Zagadnienia dotyczące przeglądarki
 

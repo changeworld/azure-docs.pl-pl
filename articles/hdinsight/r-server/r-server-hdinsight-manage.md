@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0699686338a14ed6cc1ddcb076e14de86d0249d9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c57dff2e0f0c1edb887ddd8f0e5ca206ba8b912
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438614"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110396"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
 
@@ -310,7 +310,7 @@ Aby zainstalować pakiety R na węzłach procesu roboczego klastra, należy uży
 
    * Aby uzyskać **nazwa**, podaj nazwę dla akcji skryptu.
 
-    * Aby uzyskać **identyfikator URI skryptu powłoki systemowej**, wprowadź `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Jest to skrypt, który instaluje dodatkowe pakiety R na węźle procesu roboczego
+     * Aby uzyskać **identyfikator URI skryptu powłoki systemowej**, wprowadź `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Jest to skrypt, który instaluje dodatkowe pakiety R na węźle procesu roboczego
 
    * Zaznacz pole wyboru, tylko w przypadku **procesu roboczego**.
 

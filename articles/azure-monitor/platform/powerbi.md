@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 623968467da775c55adf006a84a16ba46bd21d1d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887458"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110175"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj dane dziennika usługi Azure Monitor do usługi Power BI
 
@@ -60,11 +60,11 @@ Usługa Power BI Desktop to aplikacja komputerowa, która pozwala na tworzenie z
 ## <a name="publish-to-power-bi"></a>Publikowanie w usłudze Power BI
 Podczas publikowania do usługi Power BI, zostanie utworzony zestaw danych i raport.  Jeśli utworzysz raport programu Power BI Desktop, następnie ta jest publikowana z danymi.  W przeciwnym razie zostanie utworzony pusty raport.  Można zmodyfikować raport w usłudze Power BI lub utworzyć nowy katalog, w oparciu o zestaw danych.
 
-8. Tworzenie raportu na podstawie danych.  Użyj [dokumentacji usługi Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) Jeśli nie jesteś zaznajomiony z nim.  Gdy wszystko będzie gotowe do wysłania do usługi Power BI, kliknij przycisk **Publikuj**.  Po wyświetleniu monitu wybierz lokalizację docelową na Twoim koncie usługi Power BI.  Jeśli nie masz określonego miejsca docelowego, pamiętając, użyj **Mój obszar roboczy**.
+1. Tworzenie raportu na podstawie danych.  Użyj [dokumentacji usługi Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) Jeśli nie jesteś zaznajomiony z nim.  Gdy wszystko będzie gotowe do wysłania do usługi Power BI, kliknij przycisk **Publikuj**.  Po wyświetleniu monitu wybierz lokalizację docelową na Twoim koncie usługi Power BI.  Jeśli nie masz określonego miejsca docelowego, pamiętając, użyj **Mój obszar roboczy**.
 
     ![Publikowanie w usłudze Power BI Desktop](media/powerbi/desktop-publish.png)
 
-3. Po zakończeniu publikowania kliknij **Otwórz w usłudze Power BI** otworzyć usługi Power BI przy użyciu nowego zestawu danych.
+1. Po zakończeniu publikowania kliknij **Otwórz w usłudze Power BI** otworzyć usługi Power BI przy użyciu nowego zestawu danych.
 
 
 ### <a name="configure-scheduled-refresh"></a>Konfigurowanie zaplanowanego odświeżania

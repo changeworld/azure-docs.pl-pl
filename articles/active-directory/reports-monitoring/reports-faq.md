@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c51f1d47a5412e77b7113fccfd2e9a54e1d2ff7f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 274675c3b9f04877f5665efbcbf7951a5bbb0e27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730209"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833184"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Często zadawane pytania dotyczące usługi Azure Active Directory raporty
 
@@ -29,13 +29,13 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 ## <a name="getting-started"></a>Wprowadzenie 
 
-**Pyt.: Obecnie używana https://graph.windows.net/&lt; nazwa dzierżawy&gt;punktu końcowego /reports/ raporty do naszych systemów raportowania programowo interfejsy API w celu ściągania usługi Azure AD, inspekcji i użycia zintegrowanej aplikacji. Co powinni przełączyć się na?**
+**Pyt.: Obecnie używana `https://graph.windows.net/<tenant-name>/reports/` punktu końcowego raporty do naszych systemów raportowania programowo interfejsy API w celu ściągania usługi Azure AD, inspekcji i użycia zintegrowanej aplikacji. Co powinni przełączyć się na?**
 
 **Odp.:** Wyszukaj [dokumentacja interfejsu API](https://developer.microsoft.com/graph/) można zobaczyć, jak [dostępu do raportów aktywności przy użyciu interfejsów API](concept-reporting-api.md). Ten punkt końcowy ma dwa raporty (**inspekcji** i **logowania**) które zawierają wszystkie dane uzyskany w starym punkt końcowy interfejsu API. Ten nowy punkt końcowy ma również raportu logowania przy użyciu licencji usługi Azure AD Premium, która służy do użycia aplikacji, użycie urządzenia i informacje logowania użytkownika.
 
 ---
 
-**Pyt.: Obecnie używana https://graph.windows.net/&lt; nazwa dzierżawy&gt;/reports/ punktu końcowego interfejsów API, aby ściągnąć raporty dotyczące zabezpieczeń usługi Azure AD (określonych typów wykrywania zagrożeń, takich jak ujawnione poświadczenia lub logowania z anonimowych adresów IP) do naszych systemów raportowania programowo. Co powinni przełączyć się na?**
+**Pyt.: Obecnie używana `https://graph.windows.net/<tenant-name>/reports/` punktu końcowego interfejsów API, aby ściągnąć raporty dotyczące zabezpieczeń usługi Azure AD (określonych typów wykrywania zagrożeń, takich jak ujawnione poświadczenia lub logowania z anonimowych adresów IP) do naszych systemów raportowania programowo. Co powinni przełączyć się na?**
 
 **Odp.:** Możesz użyć [zdarzeń o podwyższonym ryzyku Identity Protection API](../identity-protection/graph-get-started.md) do wykrywania zabezpieczeń dostępu za pomocą programu Microsoft Graph. Ten nowy format zapewnia większą elastyczność w sposób można tworzyć zapytania danych przy użyciu zaawansowanego filtrowania, pole wyboru i innych i standaryzuje zdarzeń o podwyższonym ryzyku w jeden typ ułatwia integrację rozwiązań Siem i inne narzędzia do zbierania danych. Ponieważ dane są w innym formacie, nie może zastąpić nowe zapytanie stare zapytań. Jednak [nowy interfejs API korzysta z programu Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), czyli standard firmy Microsoft dla interfejsów API, takich jak usługi Office 365 lub Azure AD. Dzięki pracy wymagane albo rozszerzyć dotychczasowe inwestycje w rozwiązania MS Graph Pomoc systemu lub możesz rozpocząć przejście do ta nowa platforma standardowych.
 
@@ -89,7 +89,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **Pyt.: Czy można uzyskać informacji z dziennika aktywności usługi Office 365 za pośrednictwem witryny Azure portal?**
 
-**Odp.:** Mimo że dzienniki aktywności usługi Office 365 i usługi Azure AD współdzielą wiele zasobów katalogu, jeśli potrzebujesz pełnego widoku dzienników aktywności usługi Office 365, przejdź do centrum administracyjnego usługi Office 365 w celu uzyskania informacji z dziennika aktywności usługi Office 365.
+**Odp.:** Mimo że aktywności usługi Office 365 i usługi Azure AD działania dzienniki współdzielą wiele zasobów katalogu, jeśli potrzebujesz pełnego widoku dzienników aktywności usługi Office 365, należy przejść do [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com) można pobrać dziennika aktywności usługi Office 365 informacje.
 
 ---
 
@@ -140,24 +140,27 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 **Pyt.: Jak rozpocząć pracę?**
 
 **Odp.:** Aby rozpocząć:
-    * Przejdź do raportów logowania w [witryny Azure portal](https://portal.azure.com). 
-    * Polecenie logowania, które użytkownik chce Rozwiązywanie problemów.
-    * Przejdź do **dostępu warunkowego** kartę. W tym miejscu możesz wyświetlić wszystkie zasady, które wpływ na logowanie i wyników dla każdej zasady. 
+
+* Przejdź do raportów logowania w [witryny Azure portal](https://portal.azure.com).
+* Polecenie logowania, które użytkownik chce Rozwiązywanie problemów.
+* Przejdź do **dostępu warunkowego** kartę. W tym miejscu możesz wyświetlić wszystkie zasady, które wpływ na logowanie i wyników dla każdej zasady. 
     
 **Pyt.: Co to są wszystkie możliwe wartości dla stanu dostępu warunkowego?**
 
 **Odp.:** Stan dostępu warunkowego może mieć następujące wartości:
-    * **Niestosowane**: Oznacza to, że nie ma żadnych zasad dostępu Warunkowego za pomocą użytkownika i aplikacji w zakresie. 
-    * **Powodzenie**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego zostały pomyślnie spełnione. 
-    * **Błąd**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego nie zostały spełnione. 
+
+* **Niestosowane**: Oznacza to, że nie ma żadnych zasad dostępu Warunkowego za pomocą użytkownika i aplikacji w zakresie. 
+* **Success**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego zostały pomyślnie spełnione. 
+* **Błąd**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego nie zostały spełnione. 
     
 **Pyt.: Co to są wszystkie możliwe wartości dla wyników zasad dostępu warunkowego?**
 
 **Odp.:** Zasady dostępu warunkowego może mieć następujące wyniki:
-    * **Powodzenie**: Zasady pomyślnie był spełniony.
-    * **Błąd**: Zasady nie był spełniony.
-    * **Niestosowane**: Może to być, ponieważ nie spełniały warunki zasady.
-    * **Nie włączono**: Jest to spowodowane zasad w stanie wyłączenia. 
+
+* **Success**: Zasady pomyślnie był spełniony.
+* **Błąd**: Zasady nie był spełniony.
+* **Niestosowane**: Może to być, ponieważ nie spełniały warunki zasady.
+* **Nie włączono**: Jest to spowodowane zasad w stanie wyłączenia. 
     
 **Pyt.: Nazwa zasad w raporcie wszystkie logowania jest niezgodny z nazwa zasad w urzędzie certyfikacji. Dlaczego?**
 

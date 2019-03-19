@@ -5,19 +5,20 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: conceptual
+ms.topic: quickstart
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6dd378f69dbf0c7cffe04d4b6a18fd3e6cda6b8b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1aebe3086704c3823bcde470640f547de2beaaee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409979"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884204"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Szybki start: Wstrzymywanie i wznawianie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse przy użyciu programu PowerShell
+
 Użyj programu PowerShell wstrzymywanie zasobów obliczeniowych, w usłudze Azure SQL Data Warehouse w celu obniżenia kosztów. [Wznowić operacje obliczeniowe](sql-data-warehouse-manage-compute-overview.md) gdy wszystko będzie gotowe do użycia w magazynie danych.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
@@ -36,13 +37,13 @@ Zaloguj się do swojej subskrypcji platformy Azure za pomocą [Connect AzAccount
 Connect-AzAccount
 ```
 
-Aby zobaczyć, której subskrypcji używasz, uruchom [Get AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Aby zobaczyć, której subskrypcji używasz, uruchom [Get AzSubscription](/powershell/module/az.accounts/get-azsubscription).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Jeśli musisz użyć innej subskrypcji niż domyślna, uruchom [AzContext zestaw](/powershell/module/az.profile/set-azcontext).
+Jeśli musisz użyć innej subskrypcji niż domyślna, uruchom [AzContext zestaw](/powershell/module/az.accounts/set-azcontext).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -60,11 +61,12 @@ Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu
 
     ![Nazwa serwera i grupa zasobów](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Zanotuj nazwę magazynu danych, która jest nazwą bazy danych. Ponadto zanotuj nazwę serwera i grupy zasobów. Użytkownik
+4. Zanotuj nazwę magazynu danych, która jest nazwą bazy danych. Ponadto zanotuj nazwę serwera i grupy zasobów. Ty
 5.  te polecenia wstrzymania i wznowienia.
 6. Jeśli serwer to foo.database.windows.net, użyj tylko pierwszej części nazwy serwera w poleceniach cmdlet programu PowerShell. Na poprzedniej ilustracji pełną nazwą serwera jest newserver-20171113.database.windows.net. Usuń sufiks, a następnie użyć **newserver-20171113** jako nazwy serwera w poleceniu cmdlet programu PowerShell.
 
 ## <a name="pause-compute"></a>Wstrzymaj obliczeń
+
 W celu obniżenia kosztów, można wstrzymywać i wznawiać obliczeniowego zasoby na żądanie. Na przykład jeśli nie używasz bazy danych w nocy i w weekendy, można wstrzymywać je w tych godzinach i wznowić ją w ciągu dnia. Nie ma opłat za zasoby obliczeniowe, gdy baza danych jest wstrzymany. Jednak nadal naliczane za magazyn.
 
 Aby wstrzymać bazy danych, należy użyć [AzSqlDatabase Wstrzymaj](/powershell/module/az.sql/suspend-azsqldatabase) polecenia cmdlet. Poniższy przykład powoduje wstrzymanie magazynu danych o nazwie **mySampleDataWarehouse** znajdującej się na serwerze o nazwie **newserver-20171113**. Serwer znajduje się w grupie zasobów platformy Azure o nazwie **myResourceGroup**.
@@ -86,6 +88,7 @@ $resultDatabase
 
 
 ## <a name="resume-compute"></a>Wznawianie obliczeń
+
 Aby utworzyć bazę danych, należy użyć [AzSqlDatabase Wznów](/powershell/module/az.sql/resume-azsqldatabase) polecenia cmdlet. Poniższy przykład rozpoczyna się bazy danych o nazwie mySampleDataWarehouse znajdującej się na serwerze o nazwie newserver-20171113. Serwer jest w grupie zasobów platformy Azure o nazwie myResourceGroup.
 
 ```Powershell
@@ -115,17 +118,18 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
     ![Oczyszczanie zasobów](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-1. Aby wstrzymać obliczenia, kliknij przycisk **Wstrzymaj**. Gdy magazyn danych jest wstrzymany, zobaczysz przycisk **Uruchom**.  Aby wznowić obliczenia, kliknij przycisk **Uruchom**.
+2. Aby wstrzymać obliczenia, kliknij przycisk **Wstrzymaj**. Gdy magazyn danych jest wstrzymany, zobaczysz przycisk **Uruchom**.  Aby wznowić obliczenia, kliknij przycisk **Uruchom**.
 
-2. Aby usunąć magazyn danych i nie płacić za obliczenia oraz magazynowanie, kliknij przycisk **Usuń**.
+3. Aby usunąć magazyn danych i nie płacić za obliczenia oraz magazynowanie, kliknij przycisk **Usuń**.
 
-3. Aby usunąć utworzony serwer SQL, kliknij **mynewserver-20171113.database.windows.net**, a następnie kliknij przycisk **Usuń**.  Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
+4. Aby usunąć utworzony serwer SQL, kliknij **mynewserver-20171113.database.windows.net**, a następnie kliknij przycisk **Usuń**.  Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
 
-4. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+5. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Masz teraz wstrzymywanie i wznawianie obliczeń dla magazynu danych. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 
 > [!div class="nextstepaction"]
->[Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562899"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835785"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Aprowizacji i wykazu nowych dzierżaw w aplikacji SaaS, używa podzielonej na fragmenty bazy danych Azure SQL wielodostępnych
 
@@ -237,7 +237,7 @@ Pełną listę dzierżawców i odpowiednią bazę danych dla każdego jest dost�
 - Nazwa dzierżawy są przechowywane w tabeli dzierżaw.
 - Nazwa bazy danych są przechowywane w tabelach zarządzania fragmentami.
 
-1. W SQL Server Management Studio (SSMS), połączenie z serwerem dzierżaw w **katalogu — patrz hasło mt.\<użytkownika\>. database.windows.net**, logowania za pomocą = **developer**i hasło = **P@ssword1**
+1. W SQL Server Management Studio (SSMS), połączenie z serwerem dzierżaw w **katalogu — patrz hasło mt.\<użytkownika\>. database.windows.net**, logowania za pomocą = **developer**i hasło =  **P\@ssword1**
 
     ![Okno dialogowe połączenia programu SSMS](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

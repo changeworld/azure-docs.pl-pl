@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 5687075b8b63755b8b04f8c8fd0d0706ec8e27bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5141cd083469d51a067bbc993f598393768fe99f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000189"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -59,11 +59,12 @@ Każda sieć wirtualna — niezależnie od tego, czy jest połączona za pomocą
 
 Po skonfigurowaniu obu opcji łączności między sieciami wirtualnymi ruch między tymi sieciami wirtualnymi jest oparty na konfiguracji komunikacji równorzędnej (to znaczy odbywa się za pośrednictwem sieci szkieletowej platformy Azure).
 
-Gdy sieci wirtualne są połączone za pomocą komunikacji równorzędnej w tym samym regionie, użytkownicy mogą również skonfigurować bramę w wirtualnej sieci równorzędnej jako punkt tranzytowy do infrastruktury lokalnej. W tym przypadku sieć wirtualna korzystająca z bramy zdalnej nie może mieć własnej bramy. Jedna sieć wirtualna może mieć tylko jedną bramę. Brama może być lokalna lub zdalna (w wirtualnej sieci równorzędnej), jak przedstawiono na poniższej ilustracji:
+Gdy sieci wirtualne są połączone za pomocą komunikacji równorzędnej, użytkownicy mogą również skonfigurować bramę w wirtualnej sieci równorzędnej jako punkt tranzytowy do infrastruktury lokalnej. W tym przypadku sieć wirtualna korzystająca z bramy zdalnej nie może mieć własnej bramy. Jedna sieć wirtualna może mieć tylko jedną bramę. Brama może być lokalna lub zdalna (w wirtualnej sieci równorzędnej), jak przedstawiono na poniższej ilustracji:
 
 ![przesyłanie w równorzędnych sieciach wirtualnych](./media/virtual-networks-peering-overview/figure04.png)
 
-Przesyłanie danych za pomocą bramy nie jest obsługiwane w relacji komunikacji równorzędnej między sieciami wirtualnymi utworzonymi w różnych regionach. Aby przesyłanie danych za pomocą bramy działało, obie sieci wirtualne będące w relacji komunikacji równorzędnej muszą znajdować się w tym samym regionie. Przesyłanie danych za pomocą bramy między sieciami wirtualnym utworzonymi przy użyciu różnych modeli wdrażania (klasycznego i za pomocą usługi Resource Manager) jest obsługiwane tylko wtedy, gdy brama (sieci VPN lub usługi ExpressRoute) znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tranzyt przez bramę jest obsługiwana dla komunikacji równorzędnej sieci wirtualnych i globalnych wirtualnych sieci równorzędnych (wersja zapoznawcza). Można użyć bram zdalnych lub Zezwalaj na tranzyt przez bramę na globalne równorzędne sieci wirtualne w wersji zapoznawczej. Podgląd jest dostępny we wszystkich regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych. Wymagany jest nie umieszczania na białej liście. Możesz przetestować w wersji zapoznawczej za pośrednictwem interfejsu wiersza polecenia, programu PowerShell, szablonów i interfejsu API. Portal nie jest obsługiwana w wersji zapoznawczej.
+Tranzyt przez bramę między sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania (Resource Manager i model klasyczny) jest obsługiwana tylko wtedy, gdy brama znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 W przypadku połączenia za pomocą komunikacji równorzędnej sieci wirtualnych współużytkujących jedno połączenie sługi Azure ExpressRoute ruch między nimi jest oparty na relacji komunikacji równorzędnej (to znaczy odbywa się za pośrednictwem sieci szkieletowej platformy Azure). Użytkownicy mogą nadal korzystać z bram lokalnych w poszczególnych sieciach wirtualnych, aby łączyć się z obwodem lokalnym. Można również użyć bramy współdzielonej i skonfigurować tranzyt dla łączności lokalnej.
 
@@ -78,8 +79,8 @@ Informacje na ten temat zawiera również artykuł [Troubleshooter for virtual n
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
 Następujące ograniczenia mają zastosowanie tylko wtedy, gdy sieci wirtualne są globalnie połączone za pomocą sieci równorzędnych:
-- Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia istnieje w obu przypadkach globalnych wirtualnych sieci równorzędnych i komunikacja równorzędna sieci wirtualnych. 
-- Nie można używać zdalnych bram ani zezwalać na tranzyt bramy. Aby używać zdalnych bram lub zezwalać na tranzyt bramy, równorzędne sieci wirtualne muszą być w tym samym regionie.
+- Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia istnieje dla globalnych wirtualnych sieci równorzędnych.  — Zasoby w jednej sieci wirtualnej nie może komunikować się z adres IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia dla istnieje, wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych.
+- Można użyć bram zdalnych lub Zezwalaj na tranzyt przez bramę na globalne równorzędne sieci wirtualne w wersji zapoznawczej. Podgląd jest dostępny we wszystkich regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych. Wymagany jest nie umieszczania na białej liście. Możesz przetestować w wersji zapoznawczej za pośrednictwem interfejsu wiersza polecenia, programu PowerShell, szablonów i interfejsu API. Portal nie jest obsługiwana w wersji zapoznawczej.
 
 Aby dowiedzieć się więcej na temat wymagań i ograniczeń, zobacz [Wymagania i ograniczenia dotyczące komunikacji równorzędnej między sieciami wirtualnymi](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej na temat limitów liczby komunikacji równorzędnych, które można utworzyć dla sieci wirtualnej, zobacz [Ograniczenia sieci platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 

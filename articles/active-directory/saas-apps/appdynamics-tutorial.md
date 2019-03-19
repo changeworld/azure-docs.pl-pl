@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79424ff3fe3bce006932c19dba8cf5fc4bce4f2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem AppDynamics
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację oprogramowania AppDynamics z usługą Azure AD, n
 
 **Aby dodać oprogramowanie AppDynamics z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -130,29 +130,29 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z oprogramowaniem AppD
 
 ### <a name="configure-appdynamics-single-sign-on"></a>Konfigurowanie logowania jednokrotnego oprogramowania AppDynamics
 
-7. W innym oknie przeglądarki internetowej zaloguj się w witrynie firmy AppDynamics jako administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się w witrynie firmy AppDynamics jako administrator.
 
-8. Na pasku narzędzi u góry kliknij pozycję **Ustawienia**, a następnie **Administracja**.
+1. Na pasku narzędzi u góry kliknij pozycję **Ustawienia**, a następnie **Administracja**.
 
     ![Administracja](./media/appdynamics-tutorial/ic790216.png "Administracja")
 
-9. Kliknij kartę **Dostawca uwierzytelniania**.
+1. Kliknij kartę **Dostawca uwierzytelniania**.
 
     ![Dostawca uwierzytelniania](./media/appdynamics-tutorial/ic790224.png "Dostawca uwierzytelniania")
 
-10. W sekcji **Dostawca uwierzytelniania** wykonaj następujące czynności:
+1. W sekcji **Dostawca uwierzytelniania** wykonaj następujące czynności:
 
-    ![Konfiguracja SAML](./media/appdynamics-tutorial/ic790225.png "Konfiguracja SAML")
+   ![Konfiguracja SAML](./media/appdynamics-tutorial/ic790225.png "Konfiguracja SAML")
 
-    a. Jako **Dostawca uwierzytelniania** wybierz opcję **SAML**.
+   a. Jako **Dostawca uwierzytelniania** wybierz opcję **SAML**.
 
-    b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+   b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. W polu tekstowym **Adres URL wylogowywania** wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+   c. W polu tekstowym **Adres URL wylogowywania** wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
-    d. Otwórz swój certyfikat zakodowany w formacie Base-64 w programie Notatnik, skopiuj jego zawartość do schowka, a następnie wklej go do pola tekstowego **Certyfikat**
+   d. Otwórz swój certyfikat zakodowany w formacie Base-64 w programie Notatnik, skopiuj jego zawartość do schowka, a następnie wklej go do pola tekstowego **Certyfikat**
 
-    e. Kliknij pozycję **Zapisz**.
+   e. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -172,7 +172,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -214,7 +214,7 @@ W tej sekcji Twoim zadaniem będzie utworzenie użytkownika o nazwie Britta Simo
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka AppDynamics w panelu dostępu powinno nastąpić automatyczne zalogowanie do oprogramowania AppDynamics, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

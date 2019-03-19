@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458243"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863308"
 ---
 # <a name="collaborative-coding-with-git"></a>Wspólne kodowanie przy użyciu narzędzia Git
 
@@ -36,7 +36,7 @@ Podaj informacje w tej nowej gałęzi, takich jak nazwa gałęzi, podstawowy rep
 
 Dobrym rozwiązaniem jest utworzenie gałęzi Git dla każdego elementu roboczego scenariusza. Następnie dla każdego elementu roboczego zadanie można utworzyć gałąź na podstawie historii gałęzi. Organizowanie gałęzie w ten sposób hierarchiczne, który odnosi się do relacji historii zadań jest przydatne w przypadku, gdy masz wiele osób pracuje z różnych wątków, z tym samym projekcie lub masz wiele osób pracuje z różnych zadań w tym samym wątku. Gdy każdy członek zespołu działa na inną gałąź i każdy element członkowski działa na różnych kodów lub inne artefakty, podczas udostępniania gałąź, można zminimalizować konflikty. 
 
-Poniższy obraz przedstawia zalecane strategii rozgałęziania dla przetwarzania TDSP. Nie trzeba wiele gałęzi, jak przedstawiono poniżej, szczególnie jeśli masz tylko jedną lub dwie osoby, które działa na tym samym projekcie lub tylko jedna osoba działa we wszystkich zadaniach wątku. Ale Programowanie gałęzi z gałęzią master jest zawsze dobrym rozwiązaniem. Może to pomóc zapobiec przez działań programistycznych w gałęzi wydania. Bardziej szczegółowy opis modelu gałęzi Git można znaleźć w [pomyślne Git rozgałęzianie modelu](http://nvie.com/posts/a-successful-git-branching-model/).
+Poniższy obraz przedstawia zalecane strategii rozgałęziania dla przetwarzania TDSP. Nie trzeba wiele gałęzi, jak przedstawiono poniżej, szczególnie jeśli masz tylko jedną lub dwie osoby, które działa na tym samym projekcie lub tylko jedna osoba działa we wszystkich zadaniach wątku. Ale Programowanie gałęzi z gałęzią master jest zawsze dobrym rozwiązaniem. Może to pomóc zapobiec przez działań programistycznych w gałęzi wydania. Bardziej szczegółowy opis modelu gałęzi Git można znaleźć w [pomyślne Git rozgałęzianie modelu](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

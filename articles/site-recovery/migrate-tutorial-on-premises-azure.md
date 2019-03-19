@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116171"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110311"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -36,6 +36,8 @@ Jest to trzeci samouczek z tej serii. Założono w nim, że zostały już wykona
 
 Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-architecture.md) lub [Hyper-V](hyper-v-azure-architecture.md) na potrzeby odzyskiwania po awarii.
 
+> [!TIP]
+> Szukasz bez wykorzystania agentów sposób migrowania maszyn wirtualnych VMware na platformę Azure? [Kliknij tutaj](https://aka.ms/migrateVMs-signup)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,7 +56,6 @@ Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
    ![Nowy magazyn](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
 Nowy magazyn zostanie dodany do sekcji **Pulpit nawigacyjny** w obszarze **Wszystkie zasoby** oraz pojawi się na stronie głównej **Magazyny usługi Recovery Services**.
-
 
 
 ## <a name="select-a-replication-goal"></a>Wybieranie celu replikacji
@@ -112,10 +113,10 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
 5. Sprawdź, czy maszyna wirtualna Azure jest wyświetlana na platformie Azure zgodnie z oczekiwaniami.
 6. W obszarze **Replikowane elementy** kliknij prawym przyciskiem myszy maszynę wirtualną > **Zakończ migrację**. Spowoduje to wykonanie następujących czynności:
 
-    - Powoduje zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
-    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne.
+   - Powoduje zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
+   - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne.
 
-    ![Kończenie migracji](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Kończenie migracji](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]
@@ -158,7 +159,7 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
 - Zaktualizuj wszystkie dokumenty wewnętrzne, aby wyświetlić nową lokalizację i adres IP maszyn wirtualnych platformy Azure.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz można [skonfigurować odzyskiwanie po awarii](azure-to-azure-replicate-after-migration.md) w regionie pomocniczym platformy Azure dla maszyn wirtualnych platformy Azure.
 

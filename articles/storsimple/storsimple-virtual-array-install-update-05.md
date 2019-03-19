@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 297282c03b842a095dba88f14b81df34b9c6d54f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005412"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalowanie aktualizacji Update 0.5 na rozwiązania StorSimple Virtual Array
 
@@ -57,7 +57,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Aby pobrać aktualizacji lub poprawki
 
-1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Jeśli po raz pierwszy używasz Wykazu usługi Microsoft Update na danym komputerze, po wyświetleniu monitu o zainstalowanie dodatku Wykazu usługi Microsoft Update kliknij pozycję **Zainstaluj**.
 

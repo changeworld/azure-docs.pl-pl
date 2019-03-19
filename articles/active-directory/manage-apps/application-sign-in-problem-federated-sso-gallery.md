@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5b61dbb3c6dde8dfcabdba015ee41e968cc5dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817086"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013099"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
 
@@ -93,7 +93,7 @@ Po zaktualizowaniu wartość adresu URL odpowiedzi w usłudze Azure AD i odpowia
 
 ## <a name="user-not-assigned-a-role"></a>Nie przypisaną rolę użytkownika
 
-*Błąd AADSTS50105: Zalogowany użytkownik "brian@contoso.com" nie jest przypisany do roli aplikacji*.
+*Błąd AADSTS50105: Zalogowany użytkownik "brian\@contoso.com" nie jest przypisany do roli aplikacji*.
 
 **Możliwa przyczyna**
 
@@ -146,13 +146,13 @@ Po krótkim czasie użytkowników, dla których wybrano będą mogli uruchamiać
 Usługa Azure AD nie obsługuje żądania języka SAML wysłanego przez aplikację na potrzeby logowania jednokrotnego. Niektóre typowe problemy to:
 
 -   Brak wymaganych pól w żądaniu języka SAML
--   SAML zakodowana metoda żądania
+-   Zakodowana metoda żądania SAML
 
 **Rozdzielczość**
 
-1.  Przechwyć żądanie języka SAML. Postępuj zgodnie z samouczkiem [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure AD](../develop/howto-v1-debug-saml-sso-issues.md) Aby dowiedzieć się, jak przechwytywać żądania języka SAML.
+1. Przechwyć żądanie języka SAML. Postępuj zgodnie z samouczkiem [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure AD](../develop/howto-v1-debug-saml-sso-issues.md) Aby dowiedzieć się, jak przechwytywać żądania języka SAML.
 
-1.  Skontaktuj się z dostawcą aplikacji i udostępnianie następujące informacje:
+1. Skontaktuj się z dostawcą aplikacji i udostępnianie następujące informacje:
 
    -   Żądanie języka SAML
 

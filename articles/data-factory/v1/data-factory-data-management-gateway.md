@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 6bb37008b6a8b37e575dcf83dffcf57ab08996fd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9008c98a086ed2d45b7339fa3f76b33240789db8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102455"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -93,7 +93,7 @@ Brama zarządzania danymi, można zainstalować w następujący sposób:
 
 ### <a name="install-the-gateway-from-download-center"></a>Instalowanie bramy z Centrum pobierania
 1. Przejdź do [stronę pobierania bramy zarządzania danymi firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Kliknij przycisk **Pobierz**, wybierz odpowiednią wersję (**32-bitowych** programu vs. **64-bitowych**) i kliknij przycisk **dalej**.
+2. Kliknij przycisk **Pobierz**, wybierz opcję **64-bitowych** wersji (32-bitowych nie jest obsługiwana) i kliknij przycisk **dalej**.
 3. Uruchom **MSI** bezpośrednio lub zapisać go w celu dysku twardego i uruchom.
 4. Na **powitalnej** wybierz opcję **języka** kliknij **dalej**.
 5. **Zaakceptuj** Umowa licencyjna użytkownika oprogramowania i kliknij przycisk **dalej**.
@@ -291,7 +291,7 @@ Można wyłączanie/włączanie funkcji Aktualizacje automatyczne, wykonując na
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
-[Bramy o wysokiej dostępności i skalowalności wielowęzłowego](data-factory-data-management-gateway-high-availability-scalability.md)
+   [Bramy o wysokiej dostępności i skalowalności wielowęzłowego](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Uruchom program Windows PowerShell na maszynie bramy.
 2. Przejdź do folderu C:\Program Files\Microsoft integracji Runtime\3.0\PowerShellScript\.
 3. Uruchom następujące polecenie, aby włączyć Aktualizacje automatyczne są wyposażone w OFF (wyłączone).
@@ -467,7 +467,7 @@ Aby zaszyfrować poświadczenia w edytorze fabryki danych, wykonaj następujące
         }
     }
     ```
-Jeśli uzyskujesz dostęp do portalu z komputera, który różni się od maszynie bramy, upewnij się, że aplikacji Menedżer poświadczeń może połączyć się na maszynie bramy. Jeśli aplikacja nie może połączyć się na maszynie bramy, go nie pozwala ustawić poświadczenia dla źródła danych i do testowania połączenia ze źródłem danych.
+   Jeśli uzyskujesz dostęp do portalu z komputera, który różni się od maszynie bramy, upewnij się, że aplikacji Menedżer poświadczeń może połączyć się na maszynie bramy. Jeśli aplikacja nie może połączyć się na maszynie bramy, go nie pozwala ustawić poświadczenia dla źródła danych i do testowania połączenia ze źródłem danych.
 
 Kiedy używasz **Ustawianie poświadczeń w** aplikacji portalu szyfruje poświadczenia za pomocą certyfikatu podanego w **certyfikatu** karcie **Menedżera konfiguracji bramy**  na maszynie bramy.
 
@@ -511,7 +511,7 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. W programie Azure PowerShell, przejdź do folderu: **C:\Program Files\Microsoft danych zarządzania Gateway\2.0\PowerShellScript\**. Uruchom **RegisterGateway.ps1** skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
+1. W programie Azure PowerShell przejdź do folderu: **C:\Program Files\Microsoft danych zarządzania Gateway\2.0\PowerShellScript\\**. Uruchom **RegisterGateway.ps1** skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -529,7 +529,7 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
     ```PowerShell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-Możesz usunąć za pomocą bramy **AzDataFactoryGateway Usuń** polecenia cmdlet i zaktualizuj opis bramy przy użyciu **AzDataFactoryGateway zestaw** polecenia cmdlet. Informacje o składni i inne szczegóły dotyczące tych poleceń cmdlet Zobacz Data Factory Cmdlet Reference.  
+   Możesz usunąć za pomocą bramy **AzDataFactoryGateway Usuń** polecenia cmdlet i zaktualizuj opis bramy przy użyciu **AzDataFactoryGateway zestaw** polecenia cmdlet. Informacje o składni i inne szczegóły dotyczące tych poleceń cmdlet Zobacz Data Factory Cmdlet Reference.  
 
 ### <a name="list-gateways-using-powershell"></a>Lista bram przy użyciu programu PowerShell
 

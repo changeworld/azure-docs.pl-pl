@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: ff7513f197b3035b88748e2e73c38789d9010d9c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082674"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Za pomocą uprzywilejowanych punktu końcowego w usłudze Azure Stack
 
@@ -60,52 +60,52 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
 
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
-    - W zintegrowanym systemie:
-      ```PowerShell
-        $cred = Get-Credential
+   - W zintegrowanym systemie:
+     ```PowerShell
+       $cred = Get-Credential
 
-        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```
-      `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
-    - Jeśli korzystasz z ASDK:
+       Enter-PSSession -ComputerName <IP_address_of_ERCS> `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ```
+     `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
+   - Jeśli korzystasz z ASDK:
      
-      ```PowerShell
-        $cred = Get-Credential
+     ```PowerShell
+       $cred = Get-Credential
 
-        Enter-PSSession -ComputerName azs-ercs01 `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ``` 
-   Po wyświetleniu monitu użyj następujących poświadczeń:
+       Enter-PSSession -ComputerName azs-ercs01 `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ``` 
+     Po wyświetleniu monitu użyj następujących poświadczeń:
 
-      - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny usługi Azure Stack*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
-      - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+     - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny usługi Azure Stack*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
+     - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
-    > [!NOTE]
-    > Jeśli nie można nawiązać połączenia z punktem końcowym ERCS, spróbuj ponownie, podając adres IP ERCS maszyny Wirtualnej, do którego nie zostały już próbowano połączyć kroki 1 i 2.
+     > [!NOTE]
+     > Jeśli nie można nawiązać połączenia z punktem końcowym ERCS, spróbuj ponownie, podając adres IP ERCS maszyny Wirtualnej, do którego nie zostały już próbowano połączyć kroki 1 i 2.
 
-3.  Po nawiązaniu połączenia wiersz zmieni się na **[*nazwa adresu IP lub maszyny Wirtualnej ERCS*]: PS >** lub **[azs-ercs01]: PS >**, w zależności od środowiska. W tym miejscu, należy uruchomić `Get-Command` Aby wyświetlić listę dostępnych poleceń cmdlet.
+3. Po nawiązaniu połączenia wiersz zmieni się na **[*nazwa adresu IP lub maszyny Wirtualnej ERCS*]: PS >** lub **[azs-ercs01]: PS >**, w zależności od środowiska. W tym miejscu, należy uruchomić `Get-Command` Aby wyświetlić listę dostępnych poleceń cmdlet.
 
-    Wiele z tych poleceń cmdlet są przeznaczone tylko dla środowisk zintegrowanego systemu (na przykład polecenia cmdlet związane z integracją usługi Centrum danych). Następujące polecenia cmdlet zostały zweryfikowane w ASDK:
+   Wiele z tych poleceń cmdlet są przeznaczone tylko dla środowisk zintegrowanego systemu (na przykład polecenia cmdlet związane z integracją usługi Centrum danych). Następujące polecenia cmdlet zostały zweryfikowane w ASDK:
 
-    - Wyczyść hosta
-    - Close-PrivilegedEndpoint
-    - PSSession zakończenia
-    - Get-AzureStackLog
-    - Get-AzureStackStampInformation
-    - Get-Command
-    - Get-FormatData
-    - Get-Help
-    - Get-ThirdPartyNotices
-    - Obiekt miary
-    - New-CloudAdminUser
-    - Wyewidencjonowanie i domyślne
-    - Remove-CloudAdminUser
-    - Select-Object
-    - Set-CloudAdminUserPassword
-    - Test-AzureStack
-    - Stop-AzureStack
-    - Get-ClusterLog
+   - Wyczyść hosta
+   - Close-PrivilegedEndpoint
+   - PSSession zakończenia
+   - Get-AzureStackLog
+   - Get-AzureStackStampInformation
+   - Get-Command
+   - Get-FormatData
+   - Get-Help
+   - Get-ThirdPartyNotices
+   - Obiekt miary
+   - New-CloudAdminUser
+   - Wyewidencjonowanie i domyślne
+   - Remove-CloudAdminUser
+   - Select-Object
+   - Set-CloudAdminUserPassword
+   - Test-AzureStack
+   - Stop-AzureStack
+   - Get-ClusterLog
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Porady dotyczące korzystania z uprzywilejowanym punktu końcowego 
 
@@ -132,26 +132,26 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
 
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
-    - W zintegrowanym systemie:
-      ```PowerShell
-        $cred = Get-Credential
-
-        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```
-      `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
-    - Jeśli korzystasz z ASDK:
-     
-      ```PowerShell
+   - W zintegrowanym systemie:
+     ```PowerShell
        $cred = Get-Credential
 
-       $session = New-PSSession -ComputerName azs-ercs01 `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ``` 
-   Po wyświetleniu monitu użyj następujących poświadczeń:
+       $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ```
+     `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
+   - Jeśli korzystasz z ASDK:
+     
+     ```PowerShell
+      $cred = Get-Credential
 
-      - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny usługi Azure Stack*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
-      - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+      $session = New-PSSession -ComputerName azs-ercs01 `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ``` 
+     Po wyświetleniu monitu użyj następujących poświadczeń:
+
+     - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny usługi Azure Stack*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
+     - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
 3. Importuj sesję program ten, na komputerze lokalnym
     ```PowerShell 

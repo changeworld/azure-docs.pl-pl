@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859729"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850279"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil aplikacji produkcyjnych na platformie Azure za pomocą usługi Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Włącz Application Insights Profiler do aplikacji
@@ -30,6 +30,7 @@ Profiler działa z aplikacjami .NET, które są wdrażane na następujących us�
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**Podgląd** aplikacji sieci Web dla systemu Linux platformy Azure dla platformy ASP.NET Core](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 Jeśli włączono Profiler, ale nie widać ślady, Sprawdź nasze [przewodnik rozwiązywania problemów](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
@@ -93,6 +94,10 @@ Metody takie jak **SqlCommand.Execute** wskazują, że kod czeka na zakończenie
 ### <a id="block"></a>Czas blokowania
 
 **BLOCKED_TIME** wskazuje, że kod oczekuje na inny zasób, które mają być dostępne. Na przykład może być oczekiwanie obiektu synchronizacji, wątek ma być dostępny lub do zakończenia wniosku.
+
+### <a name="unmanaged-async"></a>Niezarządzany asynchroniczny
+
+.NET framework emituje zdarzenia ETW i przekazuje identyfikatory aktywności między wątkami, tak aby wywołań asynchronicznych można śledzić w wątkach. Niezarządzany kod (natywnych) i niektóre starsze style kodu asynchronicznego brakuje tych zdarzeń i identyfikatory działania dzięki program profilujący nie może sprawdzić, jakie wątku i jakie funkcje są uruchamiane w wątku. To jest oznaczona etykietą "Async niezarządzanego" w stosie wywołań. Jeśli pobierzesz plik ETW, można użyć [narzędzia PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) można uzyskać lepszy wgląd w działania wykonywane.
 
 ### <a id="cpu"></a>Czas procesora CPU
 

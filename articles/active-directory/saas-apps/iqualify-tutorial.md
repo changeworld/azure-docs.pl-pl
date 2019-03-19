@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25711bd09adf17fa82f9177f4badad723e590b12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c8cd7a2cfc96af791e4b07ae4c6d35b645acba0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835802"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą iQualify LMS
 
@@ -112,12 +112,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![informacje o iQualify LMS domena i adresy URL logowania jednokrotnego](./media/iqualify-tutorial/tutorial_iqualify_url.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: 
+
     | |
     |--|--|
     | Środowisko produkcyjne: `https://<yourorg>.iqualify.com/`|
     | Środowisko testowe: `https://<yourorg>.iqualify.io`|
     
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: 
+
     | |
     |--|--|
     | Środowisko produkcyjne: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
@@ -128,6 +130,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![informacje o iQualify LMS domena i adresy URL logowania jednokrotnego](./media/iqualify-tutorial/tutorial_iqualify_url1.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|--|
     | Środowisko produkcyjne: `https://<yourorg>.iqualify.com/login` |
@@ -292,7 +295,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

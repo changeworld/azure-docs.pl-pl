@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455596"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008662"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrowanie istniejących baz danych do skalowania w poziomie
 Łatwe zarządzanie istniejących skalowanych w poziomie podzielonych na fragmenty baz danych przy użyciu narzędzia graficzne bazy danych Azure SQL Database (takie jak [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejącego zestawu baz danych do użycia [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md). 
@@ -30,7 +30,7 @@ Aby przeprowadzić migrację istniejącej bazy danych podzielonej na fragmenty:
 3. Przygotuj poszczególne fragmenty.  
 4. Dodaj mapowania do mapy fragmentów.
 
-Techniki te można zaimplementować przy użyciu [biblioteki klienta .NET Framework](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), lub skryptów programu PowerShell adrese [bazy danych SQL Azure — skrypty narzędzi elastycznej bazy danych](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Przykłady w tym miejscu za pomocą skryptów programu PowerShell.
+Techniki te można zaimplementować przy użyciu [biblioteki klienta .NET Framework](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), lub skryptów programu PowerShell adrese [bazy danych SQL Azure — skrypty narzędzi elastycznej bazy danych](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Przykłady w tym miejscu za pomocą skryptów programu PowerShell.
 
 Aby uzyskać więcej informacji na temat ShardMapManager zobacz [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md). Aby uzyskać omówienie narzędzi elastycznej bazy danych, zobacz [omówienie funkcji Elastic Database](sql-database-elastic-scale-introduction.md).
 

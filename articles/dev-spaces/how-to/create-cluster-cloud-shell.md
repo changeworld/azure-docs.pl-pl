@@ -9,12 +9,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Dowiedz się, jak szybko utworzyć klaster usługi Kubernetes, włączone dla usługi Azure Dev miejsca do magazynowania bezpośrednio z przeglądarki, bez konieczności instalowania żadnych.
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
-ms.openlocfilehash: 7d55261c3b5461e6986c1c194da7afd37587ff55
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bfde055c99a1109a8f71c838b44ed1742e3f06aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781531"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895570"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell
 
@@ -22,7 +22,7 @@ Możesz użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do tworzenia klas
 
 ## <a name="create-the-cluster"></a>Tworzenie klastra
 
-Najpierw utwórz grupę zasobów. Użyj jednego z aktualnie obsługiwanych regionów (EastUS, EastUS2, CentralUS, WestUS2, WestEurope, SoutheastAsia, CanadaCentral lub CanadaEast).
+Najpierw utwórz grupę zasobów w [region, który obsługuje usługi Azure Dev miejsca do magazynowania](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -31,7 +31,7 @@ az group create --name MyResourceGroup --location <region>
 Utwórz klaster Kubernetes za pomocą następującego polecenia:
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.13
+az aks create -g MyResourceGroup -n MyAKS --location <region>
 ```
 
 Utworzenie klastra trwa kilka minut.  Po ukończeniu dane wyjściowe jest wyświetlana w formacie JSON. Wyszukaj `provisioningState` i sprawdź, ma ona `Succeeded`.

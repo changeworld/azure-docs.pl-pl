@@ -1,6 +1,6 @@
 ---
 title: Samouczek — udostępnianie między sesjami i urządzeniami za pomocą usługi Azure Spatial Anchors | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak udostępniać identyfikatory usługi Azure Spatial Anchors między urządzeniami w aparacie Unity za pomocą usługi zaplecza.
+description: W tym samouczku dowiesz się, jak udostępniać identyfikatory Azure przestrzenne zakotwiczenia między Android/urządzenia z systemem iOS na platformie Unity usługi zaplecza.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: df7f8aa5b49e3fe17be3b17a6e0f5d8861b26253
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753509"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901308"
 ---
 # <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>Samouczek: Udostępnianie między sesjami i urządzeniami za pomocą usługi Azure Spatial Anchors
 
@@ -37,9 +37,13 @@ Omawiane tematy:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Warto zauważyć, że chociaż w tym samouczku będzie używany aparat Unity i aplikacja internetowa platformy ASP.NET Core, ma to na celu jedynie zaprezentowanie przykładu udostępniania identyfikatorów kotwic usługi Azure Spatial Anchors innym urządzeniom. Do osiągniecia tego celu można użyć innych języków i technologii zaplecza. Ponadto aplikacja internetowa platformy ASP.NET Core używana w tym samouczku zależy od zestawu .NET Core 2.2 SDK. Działa poprawnie w normalnej usłudze Azure Web Apps (dla systemu Windows), ale obecnie nie będzie działać w usłudze Azure Web Apps dla systemu Linux.
+Warto zauważyć, że chociaż w tym samouczku będzie używany aparat Unity i aplikacja internetowa platformy ASP.NET Core, ma to na celu jedynie zaprezentowanie przykładu udostępniania identyfikatorów kotwic usługi Azure Spatial Anchors innym urządzeniom. Aby osiągnąć ten sam, można użyć innych języków i technologii zaplecza. Ponadto aplikacja internetowa platformy ASP.NET Core używana w tym samouczku zależy od zestawu .NET Core 2.2 SDK. Działa poprawnie w normalnej usłudze Azure Web Apps (dla systemu Windows), ale obecnie nie będzie działać w usłudze Azure Web Apps dla systemu Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
+
+## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 ## <a name="deploy-your-sharing-anchors-service"></a>Wdrażanie usługi do udostępniania kotwic
 
@@ -47,13 +51,19 @@ Otwórz program Visual Studio i otwórz projekt w folderze `Sharing\SharingServi
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
+## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku została wdrożona aplikacja internetowa platformy ASP.NET Core na platformie Azure, a następnie została skonfigurowana i wdrożona aplikacja aparatu Unity. W aplikacji zostały utworzone kotwice przestrzenne i udostępniono je innym urządzeniom za pomocą aplikacji internetowej platformy ASP.NET Core. Aby dowiedzieć się, jak poprawić aplikację internetową platformy ASP.NET Core tak, aby przechowywała udostępnione kotwice przestrzenne, przejdź do następnego samouczka.
+W tym samouczku została wdrożona aplikacja internetowa platformy ASP.NET Core na platformie Azure, a następnie została skonfigurowana i wdrożona aplikacja aparatu Unity. W aplikacji zostały utworzone kotwice przestrzenne i udostępniono je innym urządzeniom za pomocą aplikacji internetowej platformy ASP.NET Core.
+
+Aby dowiedzieć się więcej o sposobach poprawiania aplikacji internetowej ASP.NET Core, korzystającą z usługi Azure Cosmos DB do przechowywania Twojego udostępnionego kotwic przestrzennych, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Używanie usługi Cosmos DB do przechowywania kotwic](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [Samouczek: Użyj usługi Azure Cosmos DB do kotwic Store](./tutorial-use-cosmos-db-to-store-anchors.md)

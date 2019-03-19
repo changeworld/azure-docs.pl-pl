@@ -8,24 +8,28 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0ba18b1ef0ba6c0a73759577c83ab80550baa6f8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: eb0f73d31abced8decbed31e5604a2056584eb98
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754748"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549429"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure
 
-W tym przewodniku Szybki start przedstawiono sposób użycia interfejsu wiersza polecenia platformy Azure do tworzenia bramy aplikacji z dwoma maszynami wirtualnymi w puli zaplecza. Następnie będzie można ją przetestować, aby sprawdzić, czy działa prawidłowo. Dzięki usłudze Azure Application Gateway kierujesz ruch internetowy aplikacji do określonych zasobów, przypisując odbiorniki do portów, tworząc reguły i dodając zasoby do puli zaplecza.
+Ten przewodnik Szybki Start dowiesz się, jak utworzyć bramę aplikacji za pomocą witryny Azure portal.  Po utworzeniu bramy application gateway, możesz go przetestować, aby upewnić się, że działa prawidłowo. Za pomocą usługi Azure Application Gateway możesz przekazać ruchu aplikacji sieci web do określonych zasobów, przypisując odbiorników portów, tworząc reguły i dodawanie zasobów do puli zaplecza. Dla uproszczenia w tym artykule używany jest prostą konfigurację obejmującą publicznego adresu IP frontonu, podstawowy odbiornik do hosta jednej lokacji w tej bramy application gateway, dwie maszyny wirtualne, które służy do puli zaplecza i regułę routingu podstawowego żądania.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+### <a name="azure-powershell-module"></a>Moduł programu Azure PowerShell
+
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, uruchom interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby znaleźć wersję, uruchom polecenie **az --version**. Aby uzyskać informacje o instalowaniu lub uaktualnianiu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="resource-group"></a>Grupa zasobów
 
 Na platformie Azure możesz przydzielić powiązane zasoby do grupy zasobów. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). 
 
@@ -35,9 +39,9 @@ W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *my
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
+### <a name="required-network-resources"></a>Wymaganych zasobów sieciowych 
 
-Gdy utworzysz sieć wirtualną, brama aplikacji będzie mogła komunikować się z innymi zasobami. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. W tym przykładzie tworzysz dwie podsieci: jedna dla bramy aplikacji i druga dla maszyn wirtualnych. Podsieć bramy aplikacji może zawierać tylko bramy aplikacji. Inne zasoby nie są dozwolone.
+Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej.  Podsieć bramy aplikacji może zawierać tylko bramy aplikacji. Inne zasoby nie są dozwolone.  Możesz utworzyć nową podsieć dla bramy Application Gateway lub użyć istniejącego. W tym przykładzie utworzysz dwie podsieci, w tym przykładzie: jeden dla bramy application gateway i drugi dla serwerów wewnętrznej bazy danych. Można skonfigurować adresu IP frontonu bramy Application Gateway to publicznych lub prywatnych zgodnie z danego przypadku użycia. W tym przykładzie Wybierzmy publicznego adresu IP frontonu.
 
 Aby utworzyć sieć wirtualną i podsieć, użyj polecenia [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Uruchom polecenie [az network public-ip create](/cli/azure/network/public-ip), aby utworzyć publiczny adres IP.
 
@@ -59,11 +63,11 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
+### <a name="backend-servers"></a>Serwerów wewnętrznej bazy danych
 
-W tym przykładzie utworzysz dwie maszyny wirtualne, których platforma Azure użyje jako serwerów zaplecza dla bramy aplikacji. 
+Zaplecze może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. W tym przykładzie utworzysz dwie maszyny wirtualne platformy Azure, które będą używane jako serwery zaplecza dla bramy aplikacji. Zainstalujesz również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji.
 
-### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
+#### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
 
 Zainstaluj [serwer internetowy NGINX](https://docs.nginx.com/nginx/) na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona. Aby zainstalować serwer NGINX i uruchomić aplikację Node.js „Hello World” na maszynie wirtualnej z systemem Linux, możesz użyć pliku konfiguracji cloud-init. Aby uzyskać więcej informacji na temat pliku cloud-init, zobacz [Cloud-init support for virtual machines in Azure (Obsługa pliku cloud-init na potrzeby maszyn wirtualnych na platformie Azure)](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init).
 
@@ -169,13 +173,13 @@ az network public-ip show \
   --name myAGPublicIPAddress \
   --query [ipAddress] \
   --output tsv
-``` 
+```
 
 Skopiuj i wklej publiczny adres IP na pasku adresu przeglądarki.
     
 ![Testowanie bramy aplikacji](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-Po odświeżeniu przeglądarki powinna zostać wyświetlona nazwa drugiej maszyny wirtualnej.
+Po odświeżeniu przeglądarki powinna zostać wyświetlona nazwa drugiej maszyny wirtualnej. Prawidłowe odpowiedzi sprawdza, czy brama aplikacji został pomyślnie utworzony, i jest w stanie pomyślnym nawiązaniu połączenia z zapleczem.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -184,8 +188,8 @@ Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, us
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG
 ```
- 
-## <a name="next-steps"></a>Następne kroki
+
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zarządzanie ruchem internetowym przy użyciu bramy aplikacji za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-manage-web-traffic-cli.md)

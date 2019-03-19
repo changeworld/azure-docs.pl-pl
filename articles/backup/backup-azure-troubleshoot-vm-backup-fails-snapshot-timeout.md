@@ -9,18 +9,20 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 3be2ab8bd4be56de945303bec9969f531be77864
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 85dca677238070ded13b59faf9a13081c2409987
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535598"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890869"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
 Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc Ci rozwiązać błędy usługi Kopia zapasowa Azure dotyczące komunikacji z agentem maszyny Wirtualnej i rozszerzenia.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable — nie można nawiązać komunikacji z usługą Azure Backup agent maszyny Wirtualnej
 
@@ -54,7 +56,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 Zalecana akcja:<br>
 Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, a następnie spróbuj ponownie wykonać operację w celu wyzwolenia oczyszczania.
 > [!NOTE]
-    > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
+> Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **Krok 1. [Usuń blokadę z grupy zasobów punkt przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2. [Wyczyścić kolekcję punktów przywracania](#clean_up_restore_point_collection)**<br>
@@ -64,7 +66,7 @@ Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, 
 **Kod błędu:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Komunikat o błędzie**: Kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. <br>
 
-Dla operacji tworzenia kopii zapasowej zakończyło się sukcesem w zaszyfrowanych maszyn wirtualnych musi mieć uprawnienia do dostępu do magazynu kluczy. Można to zrobić za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) lub za pomocą [programu PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
+Dla operacji tworzenia kopii zapasowej zakończyło się sukcesem w zaszyfrowanych maszyn wirtualnych musi mieć uprawnienia do dostępu do magazynu kluczy. Można to zrobić za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) lub za pomocą [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork — operacja migawki nie powiodło się z powodu braku łączności z siecią na maszynie wirtualnej
 
@@ -126,12 +128,12 @@ Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ ma istn
 3. W menu pulpitu nawigacyjnego magazynu kliknij **zadania tworzenia kopii zapasowej** Wyświetla wszystkie zadania tworzenia kopii zapasowej.
 
     * Jeśli zadanie tworzenia kopii zapasowej jest w toku, zaczekaj na jej ukończyć lub anulować zadanie tworzenia kopii zapasowej.
-        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Jeśli konfiguracja została zmieniona kopii zapasowej w innym magazynie, następnie upewnij się, Brak zadań tworzenia kopii zapasowych działające w starym magazynie. Jeśli istnieje następnie anulować zadanie tworzenia kopii zapasowej.
-        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [programu PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. Ponów próbę wykonania operacji tworzenia kopii zapasowej.
 
-Jeśli zaplanowanych operacji tworzenia kopii zapasowej trwa dłużej powodującą konflikt z następnym konfiguracji kopii zapasowej następnie przejrzyj [najlepszych rozwiązań](backup-azure-vms-introduction.md#best-practices), [wydajności tworzenia kopii zapasowych](backup-azure-vms-introduction.md#backup-performance) i [przywrócić brany pod uwagę ](backup-azure-vms-introduction.md#restore-considerations).
+Jeśli zaplanowanych operacji tworzenia kopii zapasowej trwa dłużej powodującą konflikt z następnym konfiguracji kopii zapasowej następnie przejrzyj [najlepszych rozwiązań](backup-azure-vms-introduction.md#best-practices), [wydajności tworzenia kopii zapasowych](backup-azure-vms-introduction.md#backup-performance) i [przywrócić brany pod uwagę ](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
@@ -166,15 +168,15 @@ Najbardziej związane z agentem lub rozszerzenie awarii dla maszyn wirtualnych s
 
 1. Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny Wirtualnej systemu Linux](../virtual-machines/linux/update-agent.md).
 
- > [!NOTE]
- > Firma Microsoft *zdecydowanie zaleca się* aktualizacji agenta wyłącznie za pośrednictwem repozytorium dystrybucji. Firma Microsoft nie zaleca się pobranie kodu agenta bezpośrednio z serwisu GitHub i aktualizowania. Jeśli najnowszą wersję agenta dla Twojej dystrybucji nie jest obsługiwana dystrybucja dostępnej, skontaktuj się z pomocą instrukcje dotyczące sposobu jego instalacji. Aby sprawdzić, czy najnowsze agenta, przejdź do [agenta systemu Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) strony w repozytorium GitHub.
+   > [!NOTE]
+   > Firma Microsoft *zdecydowanie zaleca się* aktualizacji agenta wyłącznie za pośrednictwem repozytorium dystrybucji. Firma Microsoft nie zaleca się pobranie kodu agenta bezpośrednio z serwisu GitHub i aktualizowania. Jeśli najnowszą wersję agenta dla Twojej dystrybucji nie jest obsługiwana dystrybucja dostępnej, skontaktuj się z pomocą instrukcje dotyczące sposobu jego instalacji. Aby sprawdzić, czy najnowsze agenta, przejdź do [agenta systemu Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) strony w repozytorium GitHub.
 
 2. Upewnij się, że agent platformy Azure działa na maszynie Wirtualnej, uruchamiając następujące polecenie: `ps -e`
 
- Jeśli proces nie jest uruchomiona, uruchom go ponownie przy użyciu następujących poleceń:
+   Jeśli proces nie jest uruchomiona, uruchom go ponownie przy użyciu następujących poleceń:
 
- * Aby uzyskać Ubuntu: `service walinuxagent start`
- * Dla innych dystrybucji: `service waagent start`
+   * Aby uzyskać Ubuntu: `service walinuxagent start`
+   * Dla innych dystrybucji: `service waagent start`
 
 3. [Konfigurowanie automatycznego ponownego uruchomienia agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Uruchom nową kopię zapasową testu. Jeśli błąd będzie się powtarzał, należy zebrać następujące dzienniki z maszyny Wirtualnej:
@@ -198,7 +200,7 @@ Następujące warunki mogłyby spowodować zadania migawki nie powiedzie się:
 | Przyczyna | Rozwiązanie |
 | --- | --- |
 | Stan maszyny Wirtualnej jest zgłaszany niepoprawnie, ponieważ maszyna wirtualna zostanie zamknięta w protokole RDP (Remote Desktop). | Wyłączenie maszyny Wirtualnej w protokole RDP sprawdzić w portalu w celu ustalenia, czy stan maszyny Wirtualnej jest poprawna. Jeśli nie jest poprawny, należy wyłączyć maszynę Wirtualną w portalu przy użyciu **zamknięcia** opcji na pulpicie nawigacyjnym maszyn wirtualnych. |
-| Maszyna wirtualna nie można pobrać adres hosta lub w sieci szkieletowej z serwera DHCP. | DHCP musi być włączona na gościu przeznaczonego na kopie zapasowe maszyn wirtualnych IaaS do pracy. Jeśli maszyna wirtualna nie może uzyskać adres hosta lub w sieci szkieletowej z odpowiedzi serwerów DHCP 245, go nie można pobrać lub uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy skonfigurować ją przy użyciu **witryny Azure Portal** lub **PowerShell** i upewnij się, że jest włączona opcja DHCP wewnątrz maszyny Wirtualnej. Aby uzyskać więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell, zobacz [klasyczna maszyna wirtualna](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) i [maszyny Wirtualnej usługi Resource Manager](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
+| Maszyna wirtualna nie można pobrać adres hosta lub w sieci szkieletowej z serwera DHCP. | DHCP musi być włączona na gościu przeznaczonego na kopie zapasowe maszyn wirtualnych IaaS do pracy. Jeśli maszyna wirtualna nie może uzyskać adres hosta lub w sieci szkieletowej z odpowiedzi serwerów DHCP 245, go nie można pobrać lub uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy skonfigurować ją przy użyciu **witryny Azure Portal** lub **PowerShell** i upewnij się, że jest włączona opcja DHCP wewnątrz maszyny Wirtualnej. [Dowiedz się więcej](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o konfigurowaniu statyczny adres IP przy użyciu programu PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować
 Jeśli nie można załadować rozszerzenia kopii zapasowej nie powiedzie się, ponieważ migawka nie może być przyjęty.
@@ -236,7 +238,7 @@ Po usunięciu blokady, punkty przywracania zostały wyczyszczone. Aby wyczyści�
 Po usunięciu blokady, Wyzwól kopię zapasową ad hoc/ręczne. Pozwoli to zagwarantować, że punkty przywracania są automatycznie czyszczone. Oczekiwane operacja ad hoc/ręczne się niepowodzeniem po raz pierwszy; jednak zapewni automatycznego czyszczenia zamiast ręczne usuwanie punktów przywracania. Po oczyszczaniu następnej zaplanowanej kopii zapasowej powinna zakończyć się pomyślnie.
 
 > [!NOTE]
-    > Automatyczne oczyszczanie nastąpi po kilku godzinach wyzwalanie tworzenia kopii zapasowej ad hoc/ręczne. Jeśli zaplanowane tworzenie kopii zapasowej nadal kończy się niepowodzeniem, a następnie spróbuj ręcznie usunąć kolekcję punktów przywracania wykonując kroki wymienione [tutaj](#clean-up-restore-point-collection-from-azure-portal).
+> Automatyczne oczyszczanie nastąpi po kilku godzinach wyzwalanie tworzenia kopii zapasowej ad hoc/ręczne. Jeśli zaplanowane tworzenie kopii zapasowej nadal kończy się niepowodzeniem, a następnie spróbuj ręcznie usunąć kolekcję punktów przywracania wykonując kroki wymienione [tutaj](#clean-up-restore-point-collection-from-azure-portal).
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Czyszczenie Przywracanie punktu kolekcji z witryny Azure portal <br>
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 4b6c4af37211ede2cb2153afdd071c219178f2ba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c0b317019d69d5d66e5a85304f739c92b761217c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087656"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
 
@@ -65,10 +65,10 @@ Konfigurowanie bezpiecznego kanału w następujący sposób:
 4. Zapisz plik na komputerze serwera usługi Azure Backup z rozszerzeniem .zip.
 
 5. Kliknij prawym przyciskiem myszy **download.zip** > **wyodrębnić wszystkie**. Plik zip wyodrębni jego zawartość do **certyfikatów** folder, który zawiera:
-    - Plik certyfikatu głównego z rozszerzeniem rozpoczynającą się od numerowane sekwencji, takich jak.0 i.1.
-    - Plik listy CRL ma rozszerzenie, które zaczyna się od sekwencji, takich jak .r0 lub .r1. Plik listy CRL jest skojarzony z certyfikatem.
+   - Plik certyfikatu głównego z rozszerzeniem rozpoczynającą się od numerowane sekwencji, takich jak.0 i.1.
+   - Plik listy CRL ma rozszerzenie, które zaczyna się od sekwencji, takich jak .r0 lub .r1. Plik listy CRL jest skojarzony z certyfikatem.
 
-    ![Pobrany certyfikatów](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+     ![Pobrany certyfikatów](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
 5. W **certyfikatów** folderu, kliknij prawym przyciskiem myszy plik certyfikatu głównego > **Zmień nazwę**.
 
@@ -85,7 +85,7 @@ Konfigurowanie bezpiecznego kanału w następujący sposób:
 
 9. Na **Store certyfikatu** wybierz opcję **Umieść wszystkie certyfikaty w następującym magazynie**, a następnie kliknij przycisk **Przeglądaj** wybrać magazyn certyfikatów.
 
-    ![Magazyn certyfikatów](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
+     ![Magazyn certyfikatów](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
 10. W **Store certyfikatu wybierz**, wybierz opcję **zaufane główne urzędy certyfikacji** jako folder docelowy dla certyfikatów, a następnie kliknij **OK**.
 
@@ -134,11 +134,11 @@ Usługi Azure Backup Server należy konto użytkownika z uprawnieniami dostępu 
 4. W **Utwórz rolę** > **nazwy roli**, wprowadź *BackupAdminRole*. Nazwa roli może być dowolną, ale powinien być rozpoznawalną w celu roli.
 
 5. Wybierz uprawnienia, zgodnie z opisem w poniższej tabeli, a następnie kliknij przycisk **OK**.  Nowa rola zostanie wyświetlona na liście w **role** panelu.
-    - Kliknij ikonę obok etykiecie nadrzędnej, aby rozwinąć element nadrzędny i wyświetlić uprawnienia podrzędnych.
-    - Aby wybrać uprawnień VirtualMachine, musisz przejść kilka poziomów w hierarchii nadrzędny-podrzędny.
-    - Nie potrzebujesz wybrać wszystkie uprawnienia podrzędnego w obrębie uprawnienie nadrzędne.
+   - Kliknij ikonę obok etykiecie nadrzędnej, aby rozwinąć element nadrzędny i wyświetlić uprawnienia podrzędnych.
+   - Aby wybrać uprawnień VirtualMachine, musisz przejść kilka poziomów w hierarchii nadrzędny-podrzędny.
+   - Nie potrzebujesz wybrać wszystkie uprawnienia podrzędnego w obrębie uprawnienie nadrzędne.
 
-    ![Uprawnienie hierarchii nadrzędny-podrzędny](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+     ![Uprawnienie hierarchii nadrzędny-podrzędny](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Uprawnienia ról
 **6.5/6.0** | **5.5**
@@ -265,7 +265,7 @@ Dodawanie serwera vCenter do serwera usługi Azure Backup.
 
 8. Sprawdź ustawienia na **Zakończ** strony.
 
-  ![Zakończ stronę](./media/backup-azure-backup-server-vmware/summary-screen.png)
+   ![Zakończ stronę](./media/backup-azure-backup-server-vmware/summary-screen.png)
 
 Jeśli masz wiele hostów ESXi, które nie są zarządzane przez serwer vCenter lub istnieje wiele wystąpień programu vCenter Server, należy ponownie uruchomić kreatora, aby dodać serwery.
 
@@ -281,67 +281,67 @@ Dodaj maszyny wirtualne programu VMware do utworzenia kopii zapasowej. Grup ochr
 
     ![Otwórz Kreatora tworzenia nowej grupy ochrony](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-2. W **Utwórz nową grupę ochrony** strona powitalna kreatora, kliknij przycisk **dalej**.
+1. W **Utwórz nową grupę ochrony** strona powitalna kreatora, kliknij przycisk **dalej**.
 
     ![Okno dialogowe Kreator tworzenia nowej grupy ochrony](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-3. Na **typ grupy ochrony wybrać** wybierz **serwerów** a następnie kliknij przycisk **dalej**. **Wybierz członków grupy** zostanie wyświetlona strona.
+1. Na **typ grupy ochrony wybrać** wybierz **serwerów** a następnie kliknij przycisk **dalej**. **Wybierz członków grupy** zostanie wyświetlona strona.
 
-3. W **Wybierz członków grupy** > Wybierz maszyny wirtualne (lub foldery z maszyny Wirtualnej), którą chcesz utworzyć kopię zapasową. Następnie kliknij przycisk **Next** (Dalej).
+1. W **Wybierz członków grupy** > Wybierz maszyny wirtualne (lub foldery z maszyny Wirtualnej), którą chcesz utworzyć kopię zapasową. Następnie kliknij przycisk **Next** (Dalej).
 
     - Jeśli został wskazany folder lub maszyn wirtualnych lub foldery wewnątrz tego folderu wybrane zostaną także do tworzenia kopii zapasowych. Możesz usunąć zaznaczenie folderów lub nie chcesz, aby utworzyć kopię zapasową maszyn wirtualnych.
-- Jeśli maszyna wirtualna lub folder jest już tworzona kopia zapasowa, nie możesz wybrać go. To zagwarantować, że dla maszyny Wirtualnej nie są tworzone punkty odzyskiwania duplikatów. .
+1. Jeśli maszyna wirtualna lub folder jest już tworzona kopia zapasowa, nie możesz wybrać go. To zagwarantować, że dla maszyny Wirtualnej nie są tworzone punkty odzyskiwania duplikatów. .
 
-    ![Wybierz członków grupy](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+     ![Wybierz członków grupy](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 
-4. W **wybierz metodę ochrony danych** strony, wprowadź nazwę grupy ochrony, a ustawienia ochrony. Tworzenie kopii zapasowej na platformie Azure, ustawić krótkoterminowej **dysku** i włącz ochronę w trybie online. Następnie kliknij przycisk **Next** (Dalej).
+1. W **wybierz metodę ochrony danych** strony, wprowadź nazwę grupy ochrony, a ustawienia ochrony. Tworzenie kopii zapasowej na platformie Azure, ustawić krótkoterminowej **dysku** i włącz ochronę w trybie online. Następnie kliknij przycisk **Next** (Dalej).
 
     ![Wybierz metodę ochrony danych](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-5. W **Określ cele krótkoterminowe**, określ, jak długo chcesz przechowywać dane kopii zapasowej na dysku.
-    - W **zakres przechowywania**, określ liczbę dni, które powinny być przechowywane punkty odzyskiwania na dysku.
-    - W **częstotliwość synchronizacji**, określ, jak często wykonywane są punkty odzyskiwania na dysku.
-        - Jeśli nie chcesz ustawiać kopii zapasowych interwał można sprawdzić **zaraz przed punktem odzyskiwania** tak, aby tworzenie kopii zapasowej jest uruchamiana bezpośrednio przed zaplanowanym każdego punktu odzyskiwania.
-        - Krótkoterminowe kopie zapasowe są pełne kopie zapasowe a nie przyrostowe.
-        - Kliknij przycisk **Modyfikuj** zmienić godziny/daty po wystąpieniu krótkoterminowe kopie zapasowe.
+1. W **Określ cele krótkoterminowe**, określ, jak długo chcesz przechowywać dane kopii zapasowej na dysku.
+   - W **zakres przechowywania**, określ liczbę dni, które powinny być przechowywane punkty odzyskiwania na dysku.
+   - W **częstotliwość synchronizacji**, określ, jak często wykonywane są punkty odzyskiwania na dysku.
+       - Jeśli nie chcesz ustawiać kopii zapasowych interwał można sprawdzić **zaraz przed punktem odzyskiwania** tak, aby tworzenie kopii zapasowej jest uruchamiana bezpośrednio przed zaplanowanym każdego punktu odzyskiwania.
+       - Krótkoterminowe kopie zapasowe są pełne kopie zapasowe a nie przyrostowe.
+       - Kliknij przycisk **Modyfikuj** zmienić godziny/daty po wystąpieniu krótkoterminowe kopie zapasowe.
 
-    ![Określ cele krótkoterminowe](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+     ![Określ cele krótkoterminowe](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
-6. W **Przejrzyj przydział dysku**, przejrzyj miejsce na dysku, podany dla kopii zapasowych maszyn wirtualnych. w przypadku maszyn wirtualnych.
+1. W **Przejrzyj przydział dysku**, przejrzyj miejsce na dysku, podany dla kopii zapasowych maszyn wirtualnych. w przypadku maszyn wirtualnych.
 
-    - Przydziały dysku zalecane są oparte na zakres przechowywania, który określiłeś, typu obciążenia i rozmiaru chronionych danych. Wprowadź wymagane zmiany, a następnie kliknij przycisk **dalej**.
-    -  **Rozmiar danych:** Rozmiar danych w grupie ochrony.
-    - **Miejsce na dysku:** Zalecana ilość miejsca na dysku dla grupy ochrony. Jeśli chcesz zmodyfikować to ustawienie, należy przydzielić całkowitą ilość miejsca, nieco większa niż ilość oceniasz, że każde źródło danych rośnie.
-    - **Kolokacja danych:** Po włączeniu kolokacji wiele źródeł danych w zakresie ochrony można mapować na pojedynczą replikę i wolumin punktu odzyskiwania. Kolokacja nie jest obsługiwana w przypadku wszystkich obciążeń.
-    - **Powiększ automatycznie:** Jeśli włączysz to ustawienie, jeśli danych w grupie ochrony przekroczy początkowe alokacji, usługi Azure Backup Server próbuje zwiększyć rozmiar dysku o 25 procent.
-    - **Szczegóły puli magazynu:** Pokazuje stan puli magazynów, w tym całkowity rozmiar dysku i wolnego.
+   - Przydziały dysku zalecane są oparte na zakres przechowywania, który określiłeś, typu obciążenia i rozmiaru chronionych danych. Wprowadź wymagane zmiany, a następnie kliknij przycisk **dalej**.
+   - **Rozmiar danych:** Rozmiar danych w grupie ochrony.
+   - **Miejsce na dysku:** Zalecana ilość miejsca na dysku dla grupy ochrony. Jeśli chcesz zmodyfikować to ustawienie, należy przydzielić całkowitą ilość miejsca, nieco większa niż ilość oceniasz, że każde źródło danych rośnie.
+   - **Kolokacja danych:** Po włączeniu kolokacji wiele źródeł danych w zakresie ochrony można mapować na pojedynczą replikę i wolumin punktu odzyskiwania. Kolokacja nie jest obsługiwana w przypadku wszystkich obciążeń.
+   - **Powiększ automatycznie:** Jeśli włączysz to ustawienie, jeśli danych w grupie ochrony przekroczy początkowe alokacji, usługi Azure Backup Server próbuje zwiększyć rozmiar dysku o 25 procent.
+   - **Szczegóły puli magazynu:** Pokazuje stan puli magazynów, w tym całkowity rozmiar dysku i wolnego.
 
-    ![Przejrzyj przydział dysku](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+     ![Przejrzyj przydział dysku](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-7. W **wybierz metodę tworzenia repliki** Określ, jak chcesz wykonać początkową kopię zapasową, a następnie kliknij przycisk **dalej**.
-    - Wartość domyślna to **automatycznie przez sieć** i **teraz**.
-    - Jeśli użytkownik korzysta z domyślnych, firma Microsoft zaleca, aby określić godzinę poza godzinami szczytu. Wybierz **później** i określ datę i godzinę.
-    - Dla dużych ilości danych lub mniej niż optymalnych warunkach sieciowych warto rozważyć replikowanie danych w trybie offline przy użyciu nośnika wymiennego.
+1. W **wybierz metodę tworzenia repliki** Określ, jak chcesz wykonać początkową kopię zapasową, a następnie kliknij przycisk **dalej**.
+   - Wartość domyślna to **automatycznie przez sieć** i **teraz**.
+   - Jeśli użytkownik korzysta z domyślnych, firma Microsoft zaleca, aby określić godzinę poza godzinami szczytu. Wybierz **później** i określ datę i godzinę.
+   - Dla dużych ilości danych lub mniej niż optymalnych warunkach sieciowych warto rozważyć replikowanie danych w trybie offline przy użyciu nośnika wymiennego.
 
-    ![Wybierz metodę tworzenia repliki](./media/backup-azure-backup-server-vmware/replica-creation.png)
+     ![Wybierz metodę tworzenia repliki](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-8. W **opcje sprawdzania spójności**, zdecyduj, jak i kiedy automatyzacji sprawdzania spójności. Następnie kliknij przycisk **Next** (Dalej).
-    - Możesz uruchomić sprawdzanie spójności, gdy dane są niespójne, lub zgodnie z ustalonym harmonogramem.
-    - Jeśli nie chcesz skonfigurować automatyczne sprawdzenia spójności, możesz uruchomić sprawdzanie ręczne. Aby to zrobić, kliknij prawym przyciskiem myszy grupę ochrony > **Przeprowadź Sprawdzanie spójności**.
+1. W **opcje sprawdzania spójności**, zdecyduj, jak i kiedy automatyzacji sprawdzania spójności. Następnie kliknij przycisk **Next** (Dalej).
+     - Możesz uruchomić sprawdzanie spójności, gdy dane są niespójne, lub zgodnie z ustalonym harmonogramem.
+     - Jeśli nie chcesz skonfigurować automatyczne sprawdzenia spójności, możesz uruchomić sprawdzanie ręczne. Aby to zrobić, kliknij prawym przyciskiem myszy grupę ochrony > **Przeprowadź Sprawdzanie spójności**.
 
-9. W **Określ dane ochrony Online** wybierz maszyny wirtualne lub maszyny Wirtualnej, foldery, które chcesz utworzyć kopię zapasową. Wybierz elementy członkowskie, pojedynczo lub kliknij przycisk **Zaznacz wszystko** aby wybrać wszystkie elementy członkowskie. Następnie kliknij przycisk **Next** (Dalej).
+1. W **Określ dane ochrony Online** wybierz maszyny wirtualne lub maszyny Wirtualnej, foldery, które chcesz utworzyć kopię zapasową. Wybierz elementy członkowskie, pojedynczo lub kliknij przycisk **Zaznacz wszystko** aby wybrać wszystkie elementy członkowskie. Następnie kliknij przycisk **Next** (Dalej).
 
-    ![Określ dane chronione w trybie online](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+     ![Określ dane chronione w trybie online](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-10. Na **Określ harmonogram tworzenia kopii zapasowych Online** Określ, jak często chcesz utworzyć kopię zapasową danych z magazynu lokalnego do platformy Azure.
+1. Na **Określ harmonogram tworzenia kopii zapasowych Online** Określ, jak często chcesz utworzyć kopię zapasową danych z magazynu lokalnego do platformy Azure.
 
     - Punkty odzyskiwania w chmurze dla danych będą generowane zgodnie z harmonogramem. Następnie kliknij przycisk **Next** (Dalej).
     - Po wygenerowaniu punkt odzyskiwania, jego przeniesienie do magazynu usługi Recovery Services na platformie Azure.
 
     ![Określ harmonogram tworzenia kopii zapasowej online](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-11. Na **Określanie zasad przechowywania Online** strony, wskazują, jak długo chcesz przechowywać punktów odzyskiwania, które są tworzone na podstawie kopii zapasowych co dzień/tydzień/miesiąc/rok na platformie Azure. Następnie kliknij przycisk **dalej**.
+1. Na **Określanie zasad przechowywania Online** strony, wskazują, jak długo chcesz przechowywać punktów odzyskiwania, które są tworzone na podstawie kopii zapasowych co dzień/tydzień/miesiąc/rok na platformie Azure. Następnie kliknij przycisk **dalej**.
 
     - Nie ma żadnego limitu czasu, na jak długo można przechowywać dane na platformie Azure.
     - Jedynym ograniczeniem jest to, że nie może mieć więcej niż 9999 punktów odzyskiwania na chronione wystąpienie. W tym przykładzie chronione wystąpienie jest serwerem VMware.
@@ -349,7 +349,7 @@ Dodaj maszyny wirtualne programu VMware do utworzenia kopii zapasowej. Grup ochr
     ![Określ zasady przechowywania danych online](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 
-12. Na **Podsumowanie** strony, przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz grupę**.
+1. Na **Podsumowanie** strony, przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz grupę**.
 
     ![Elementu członkowskiego grupy ochrony i ustawienia — podsumowanie](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 

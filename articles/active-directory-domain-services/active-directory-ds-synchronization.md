@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 23d30d3b881fbe5aab4e537073b2582eb01bfe7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b5544be37015368173f3f8eb39288b7a97ae11c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085001"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizacja w domenie zarządzanej usług domenowych Azure AD
 Na poniższym diagramie przedstawiono synchronizacji działanie w usługach domenowych Azure AD domen zarządzanych.
@@ -70,8 +70,6 @@ Poniższej tabeli wymieniono niektóre typowe atrybuty i w tym artykule opisano,
 
 > [!NOTE]
 > **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN:** Atrybutu SAMAccountName może być generowane automatycznie dla niektórych kont użytkowników w Twojej domeny zarządzanej. Jeśli wielu użytkowników ma taki sam atrybut mailNickname lub użytkownicy mają zbyt długich prefiksy nazwy UPN, SAMAccountName dla tych użytkowników może być generowane automatycznie. W związku z tym w formacie SAMAccountName (na przykład "CONTOSO100\joeuser") nie zawsze jest niezawodny sposób, aby zalogować się do domeny. SAMAccountName generowanych automatycznie użytkowników może różnić się od prefiksu ich nazwy UPN. Użyj formatu nazwy UPN (na przykład "joeuser@contoso100.com") do logowania się w domenie zarządzanej niezawodnie.
->
->
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Mapowanie atrybutów dla kont użytkowników
 W poniższej tabeli przedstawiono, jak określone atrybuty dla użytkownika obiektów w dzierżawie usługi Azure AD są synchronizowane z odpowiednich atrybutów w Twojej domeny zarządzanej.
@@ -86,7 +84,7 @@ W poniższej tabeli przedstawiono, jak określone atrybuty dla użytkownika obie
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | Stanowisko |tytuł |
-| poczta |poczta |
+| mail (poczta) |mail (poczta) |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |Element SAMAccountName (czasami może się wygenerowany automatycznie) |
 | Telefon komórkowy |Telefon komórkowy |
@@ -98,7 +96,7 @@ W poniższej tabeli przedstawiono, jak określone atrybuty dla użytkownika obie
 | preferredLanguage |preferredLanguage |
 | state |St |
 | Adres |Adres |
-| nazwisko |numery seryjne |
+| surname |numery seryjne |
 | telephoneNumber |telephoneNumber |
 | userPrincipalName |userPrincipalName |
 
@@ -109,7 +107,7 @@ W poniższej tabeli przedstawiono, jak określone atrybuty dla grupy obiektów w
 |:--- |:--- |
 | displayName |displayName |
 | displayName |Element SAMAccountName (czasami może się wygenerowany automatycznie) |
-| poczta |poczta |
+| mail (poczta) |mail (poczta) |
 | mailNickname |msDS-AzureADMailNickname |
 | Identyfikator obiektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |historii SID |

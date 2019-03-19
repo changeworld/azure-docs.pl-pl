@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 5ab537d94c56f1d5a9a0b32e3a18a416baf74a75
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7c293ea738c264b31efb1cf8dfca959612355587
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995751"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886579"
 ---
 # <a name="encoding-error-codes"></a>Kody błędów kodowania
 
@@ -51,4 +51,4 @@ Aby uzyskać pomoc od **usługi Media Services** zespołu, otwórz [bilet pomocy
 * [Przydziały i ograniczenia](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->
-[1]: http://azure.microsoft.com/pricing/details/media-services/
+[1]: https://azure.microsoft.com/pricing/details/media-services/

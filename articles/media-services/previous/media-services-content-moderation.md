@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: aba7d2ff73fc1fdca6f57742582b38662177012d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899567"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Użyj usługi Azure Media Content Moderator, aby wykrywanie możliwej zawartości dla dorosłych 
 
@@ -226,7 +226,7 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="related-links"></a>Powiązane linki
 [Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

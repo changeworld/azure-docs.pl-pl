@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4873c834a33ff5f401f38fdb810c65ca7ef20f5e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108362"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
 
@@ -68,13 +68,13 @@ Aby wykonać następujące czynności, można użyć programu Visual Studio Code
 
 1. Aby zainicjować projektu .NET i Dodaj wymagane pakiety NuGet, uruchom następujące polecenia:
 
-  ```cmd/sh
-  mkdir pisample
-  cd pisample
-  dotnet new console
-  dotnet add package Microsoft.Azure.Devices.Client
-  dotnet restore
-  ```
+   ```cmd/sh
+   mkdir pisample
+   cd pisample
+   dotnet new console
+   dotnet add package Microsoft.Azure.Devices.Client
+   dotnet restore
+   ```
 
 1. Otwórz `pisample` folderu w programie Visual Studio Code. Następnie otwórz **pisample.csproj** pliku projektu. Dodaj `<RuntimeIdentifiers>` tag pokazano w poniższym fragmencie kodu:
 
@@ -281,10 +281,10 @@ Dodaj parametry połączenia specyficzne dla urządzenia do kodu dla tego urząd
 
 1. W środowisku wiersza polecenia, uruchom następujące polecenie:
 
-  ```cmd/sh
-  dotnet restore
-  dotnet publish -r linux-arm
-  ```
+   ```cmd/sh
+   dotnet restore
+   dotnet publish -r linux-arm
+   ```
 
 1. Kopiuj `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` folderu na urządzeniu Raspberry Pi. Możesz użyć **scp** polecenie, aby skopiować pliki, na przykład:
 
@@ -313,13 +313,13 @@ Dodaj parametry połączenia specyficzne dla urządzenia do kodu dla tego urząd
 
 1. W aplikacji usługi Azure IoT Central można zobaczyć, jak kod uruchomiony na urządzenia Raspberry Pi współdziała z aplikacją:
 
-    * Na **pomiarów** strony dla Twojego rzeczywistego urządzenia można wyświetlić dane telemetryczne.
-    * Na **właściwości** stronie widać wartości zgłaszanych **zdechną numer** właściwości.
-    * Na **ustawienia** strony, można zmienić różnych ustawień na urządzenia Raspberry Pi, takie jak szybkość napięcia i wychodzącą.
+   * Na **pomiarów** strony dla Twojego rzeczywistego urządzenia można wyświetlić dane telemetryczne.
+   * Na **właściwości** stronie widać wartości zgłaszanych **zdechną numer** właściwości.
+   * Na **ustawienia** strony, można zmienić różnych ustawień na urządzenia Raspberry Pi, takie jak szybkość napięcia i wychodzącą.
 
-    Poniższy zrzut ekranu przedstawia Raspberry Pi odbieranie zmiana ustawienia:
+     Poniższy zrzut ekranu przedstawia Raspberry Pi odbieranie zmiana ustawienia:
 
-    ![Urządzenie raspberry Pi odbiera zmianę ustawień](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Urządzenie raspberry Pi odbiera zmianę ustawień](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
 
 ## <a name="raspberry-pi-device-template-details"></a>Szczegóły szablonu w usłudze raspberry PI urządzenia

@@ -11,13 +11,13 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/18/2018
-ms.openlocfilehash: 2351bdbc9675ddaf4a801457ab5bd0e158b6d01d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/13/2019
+ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844130"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migracja do nowego zadania elastycznych baz danych
 
@@ -28,33 +28,31 @@ Jeśli masz istniejącą wersję klienta hostowane [zadania Elastic Database](sq
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
 Uaktualnioną wersją zadania elastycznych baz danych ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenieść wszystkie poświadczenia istniejącego zadania jest przeznaczony dla (w tym baz danych, serwery, kolekcje niestandardowe), wyzwalaczy zadań, harmonogramów zadań, zawartość zadania i zadań za pośrednictwem nowego agenta elastycznych zadań.
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Zainstaluj najnowsze polecenia cmdlet zadań elastycznych
 
 Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Zainstaluj moduł **AzureRM.Sql** w wersji zapoznawczej 4.8.1, aby uzyskać najnowsze polecenia cmdlet zadań elastycznych. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
+Zainstaluj **Az.Sql** 1.1.1-preview modułu, aby uzyskać najnowsze polecenia cmdlet zadania elastycznego. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
 
 ```powershell
-# Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
+# Installs the latest PackageManagement powershell package which PowerShellGet v1.6.5 is dependent on
 Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
 
-# Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
+# Installs the latest PowerShellGet module which adds the -AllowPrerelease flag to Install-Module
 Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 
 # Restart your powershell session with administrative access
 
-# Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
+# Places Az.Sql preview cmdlets side by side with existing Az.Sql version
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
 
-# Import the AzureRM.Sql 4.8.1 module
-Import-Module AzureRM.Sql -RequiredVersion 4.8.1
+# Import the Az.Sql module
+Import-Module Az.Sql -RequiredVersion 1.1.1
 
-# Confirm if module successfully imported - if the imported version is 4.8.1, then continue
-Get-Module AzureRM.Sql
+# Confirm if module successfully imported - if the imported version is 1.1.1, then continue
+Get-Module Az.Sql
 ```
 
 ### <a name="create-a-new-elastic-job-agent"></a>Utwórz nowego agenta elastycznych zadań

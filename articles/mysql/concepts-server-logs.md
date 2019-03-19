@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: bc3dd038a21786a75d6b519ef8523dc328829705
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119041"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Dzienniki serwera w usłudze Azure Database for MySQL
 W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów. 
@@ -52,7 +52,7 @@ Usługa Azure Database for MySQL jest zintegrowany z dzienników diagnostycznych
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
 
 | **Właściwość** | **Opis** |
-|---|---|---|
+|---|---|
 | TenantId | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |

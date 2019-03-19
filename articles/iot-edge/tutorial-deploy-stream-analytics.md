@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0096a7a57cb4a404f5c8e36d8b69eac2c20c1fab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 31330c3d2b10e6245db775da4039fd1948539df4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139815"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106019"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Samouczek: Wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge
 
@@ -33,7 +33,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wdrażanie zadania usługi Azure Stream Analytics na urządzeniu usługi IoT Edge z poziomu witryny Azure Portal.
 
 <center>
-![Diagram — Architektura samouczka, etapy i wdrażanie zadania ASA](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+
+![Diagram — samouczek architektury, testowanie i wdrażanie zadanie ASA](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 
@@ -215,9 +216,9 @@ Teraz możesz przejść do urządzenia usługi IoT Edge, aby sprawdzić interakc
    ```cmd/sh
    iotedge list  
    ```
-<!--
+   <!--
    ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
--->
+   -->
 1. Wyświetl wszystkie dzienniki systemu i dane metryk. Użyj nazwy modułu usługi Stream Analytics:
 
    ```cmd/sh
@@ -239,7 +240,7 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 [!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas pracy z tym samouczkiem skonfigurowano zadanie usługi Azure Stream Analytics służące do analizy danych z urządzenia usługi IoT Edge. Następnie załadowano moduł usługi Azure Stream Analytics na urządzeniu usługi IoT Edge w celu lokalnego przetwarzania danych dotyczących temperatury i reagowania na wzrost temperatury, a także przesyłania zagregowanego strumienia danych do chmury. Aby zobaczyć, jak w usłudze Azure IoT Edge utworzyć więcej rozwiązań dla swojej firmy, przejdź do kolejnych samouczków.
 

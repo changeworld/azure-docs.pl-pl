@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: f19693853672b6274265c95b851f478b4f3ef4a2
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: a3778a0b0e5b4b59eb29cb67c0596d9636eb3ccb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961894"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58166705"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra usługi Azure Service Fabric
 
@@ -101,8 +101,6 @@ Wiele różnych ustawień konfiguracji można dostosować w taki sposób, w klas
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Stosowanie poprawek systemu operacyjnego w węzłach klastra
 Aplikacja orchestration patch (POA) jest aplikacja usługi Service Fabric, który automatyzuje systemu operacyjnego poprawek w klastrze usługi Service Fabric, bez przestojów. [Patch Orchestration Application dla Windows](service-fabric-patch-orchestration-application.md) lub [Patch Orchestration aplikacji dla systemu Linux](service-fabric-patch-orchestration-application-linux.md) można wdrożyć w klastrze do instalowania poprawek w zorganizowany sposób przy jednoczesnym zachowaniu usług dostępne przez cały czas. 
 
-## <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Uaktualnienia systemu operacyjnego na maszynach wirtualnych, które tworzą klaster
-Jeśli musisz uaktualnić obrazu systemu operacyjnego na maszynach wirtualnych klastra, należy je jedną maszynę Wirtualną w danym momencie. Użytkownik ponosi odpowiedzialność za dla uaktualnienie — obecnie jest brak automatyzacji dla tego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak dostosować niektóre [usługi ustawień sieci szkieletowej klastra Service fabric](service-fabric-cluster-fabric-settings.md)

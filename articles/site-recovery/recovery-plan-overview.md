@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 053d400a9986d0997344b2be09140d8afb0e1faf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996370"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
@@ -29,7 +29,7 @@ Plan odzyskiwania pomaga zdefiniować proces odzyskiwania systematyczne, tworzą
 
 * Modelowanie aplikacji wokół jego zależności.
 * Automatyzuj zadania odzyskiwania, aby zmniejszyć cel czasu odzyskiwania.
-- Upewnij się, że masz wszystko gotowe do odzyskiwania po awarii ani migracji poprzez zapewnienie, że Twoje aplikacje są częścią planu odzyskiwania.
+* Upewnij się, że masz wszystko gotowe do odzyskiwania po awarii ani migracji poprzez zapewnienie, że Twoje aplikacje są częścią planu odzyskiwania.
 * Uruchom testowanie trybu failover na plany odzyskiwania, aby upewnić się, że odzyskiwanie po awarii ani migracji działa zgodnie z oczekiwaniami.
 
 
@@ -42,10 +42,10 @@ Można zaplanować i Utwórz grupę odzyskiwania, aby przechwycić właściwośc
     - Ta kolejność gwarantuje, że jeśli oprogramowanie pośredniczące, które próbuje nawiązać połączenie z warstwy programu SQL Server, warstwy programu SQL Server jest już uruchomiony. 
     - To zamówienie pomaga również zapewnić, że serwer frontonu uruchamia ostatniego, tak, aby użytkownicy końcowi nie Podłączaj się do adresu URL aplikacji, zanim wszystkie składniki są włączone i uruchomione oraz aplikacji jest gotowy do akceptowania żądań.
 
-Aby utworzyć to zamówienie, Dodaj grupy do grupy odzyskiwania i Dodaj maszyny do grup. 
-    - W przypadku, gdy zamówienie zostanie określony, używany jest sekwencjonowania. Akcje wykonywane równolegle, gdzie jest to odpowiednie poprawić odzyskiwania aplikacji cel czasu odzyskiwania.
-    - Maszyny w pojedynczej grupy pracy awaryjnej w sposób równoległy.
-    - Maszyny w różnych grupach przełączyć w tryb failover w kolejności grupy tak, aby grupa 2 maszyny zaczynają ich pracy awaryjnej, tylko wtedy, gdy wszystkie maszyny w grupy 1 zostały przełączone w tryb failover i uruchomiona.
+Aby utworzyć to zamówienie, Dodaj grupy do grupy odzyskiwania i Dodaj maszyny do grup.
+- W przypadku, gdy zamówienie zostanie określony, używany jest sekwencjonowania. Akcje wykonywane równolegle, gdzie jest to odpowiednie poprawić odzyskiwania aplikacji cel czasu odzyskiwania.
+- Maszyny w pojedynczej grupy pracy awaryjnej w sposób równoległy.
+- Maszyny w różnych grupach przełączyć w tryb failover w kolejności grupy tak, aby grupa 2 maszyny zaczynają ich pracy awaryjnej, tylko wtedy, gdy wszystkie maszyny w grupy 1 zostały przełączone w tryb failover i uruchomiona.
 
     ![Przykładowy plan odzyskiwania](./media/recovery-plan-overview/rp.png)
 
@@ -93,4 +93,4 @@ Obejrzyj film prosty przykład przedstawiający przejściu w tryb failover na kl
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Utwórz](site-recovery-create-recovery-plans.md) planu odzyskiwania.
-* Dowiedz się więcej o [uruchamiania trybu failover](site-recovery-failover.md).  
+- Dowiedz się więcej o [uruchamiania trybu failover](site-recovery-failover.md).  

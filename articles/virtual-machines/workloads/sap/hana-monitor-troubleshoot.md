@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fb81dd5bb94e09ba3583658a61e5c7cb8a74cf6
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882896"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014405"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorowanie i rozwiązywanie problemów ze strony HANA
 
@@ -65,7 +65,7 @@ Załaduj wykres może wyświetlać wysokie użycie procesora CPU lub wysokie zu�
 
 Alertu wyzwolona ze względu na wysokie wykorzystanie procesora CPU, może być spowodowane przez kilka powodów, w tym między innymi: wykonanie niektórych transakcji, ładowania danych, wysunięć zadania, długie wykonywanie instrukcji SQL i zapytania wydajność (na przykład, BW on HANA modułów).
 
-Zapoznaj się [SAP HANA rozwiązywania problemów: Powiązane powoduje procesora CPU i rozwiązania](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
+Zapoznaj się [SAP HANA rozwiązywania problemów: Powiązane powoduje procesora CPU i rozwiązania](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
 
 ## <a name="operating-system"></a>System operacyjny
 
@@ -87,7 +87,7 @@ Można zaobserwować, że ilość pamięci przydzielonej przez bazę danych SAP 
 - Użycie pamięci przez głównego magazynu tabel Store kolumny (45 alertów)
 - Pliki zrzutu środowiska uruchomieniowego (46 alertów)
 
-Zapoznaj się [SAP HANA rozwiązywania problemów: Problemy z pamięcią](http://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
+Zapoznaj się [SAP HANA rozwiązywania problemów: Problemy z pamięcią](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
 
 ## <a name="network"></a>Sieć
 
@@ -104,7 +104,7 @@ Zapoznaj się [2081065 # Uwaga SAP — Rozwiązywanie problemów z sieci program
 
 Ponadto, należy użyć "open source" [dotyczące programu Iperf;](https://iperf.fr/) narzędzia (lub podobny) do pomiaru wydajności sieci w rzeczywistej aplikacji.
 
-Zapoznaj się [SAP HANA rozwiązywania problemów: Wydajność sieci i problemy z łącznością](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
+Zapoznaj się [SAP HANA rozwiązywania problemów: Wydajność sieci i problemy z łącznością](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
 
 ## <a name="storage"></a>Magazyn
 
@@ -116,7 +116,7 @@ Dołączone woluminy w dolnej części ekranu można zobaczyć szczegółowe inf
 
 ![Dołączone woluminy w dolnej części ekranu można zobaczyć szczegółowe informacje o woluminów, takich jak pliki i statystyki operacje We/Wy](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-Zapoznaj się [SAP HANA rozwiązywania problemów: Operacje We/Wy dotyczące głównej przyczyny i potencjalne rozwiązania](http://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) i [SAP HANA rozwiązywania problemów: Powiązane główne przyczyny i rozwiązania dysku](http://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
+Zapoznaj się [SAP HANA rozwiązywania problemów: Operacje We/Wy dotyczące głównej przyczyny i potencjalne rozwiązania](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) i [SAP HANA rozwiązywania problemów: Powiązane główne przyczyny i rozwiązania dysku](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) lokacji, aby uzyskać szczegółowe kroki rozwiązywania problemów.
 
 ## <a name="diagnostic-tools"></a>Narzędzia diagnostyczne
 

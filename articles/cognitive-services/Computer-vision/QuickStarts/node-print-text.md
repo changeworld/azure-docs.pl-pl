@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5c3314f61344dd56e0c96ca76fe143128c279b68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: f7623c126e47a05b5a4be0c23baa191c4de8a766
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870592"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856315"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) przy użyciu interfejsu API REST i języka Node.js w przetwarzaniu obrazów
 
@@ -53,7 +53,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 1. Otwórz okno wiersza polecenia.
 1. W wierszu polecenia użyj polecenia `node`, aby uruchomić plik. Na przykład `node get-printed-text.js`.
 
-```nodejs
+```javascript
 'use strict';
 
 const request = require('request');
@@ -213,7 +213,7 @@ Jeśli plik nie jest już potrzebny, usuń to, a następnie odinstaluj pakiet `r
 
 3. Po pomyślnym odinstalowaniu pakietu zamknij okno wiersza polecenia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

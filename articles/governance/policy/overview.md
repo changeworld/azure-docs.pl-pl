@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1cfe7dab907a332f1a38560c39d4f6476cee81aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 7b5d9d483d05ac8225ea4b7497922192be44f1bc
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004762"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731690"
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
@@ -22,7 +22,7 @@ Dzięki właściwemu zarządzanie organizacja może pewnie osiągać cele dzięk
 Czy w firmie występuje znacząca liczba problemów związanych z IT, które wydają się nie do rozwiązania?
 Dobre zarządzanie IT obejmuje planowanie inicjatyw i określanie priorytetów na poziomie strategicznym w celu ułatwienia zarządzania i rozwiązywania problemów. Ta strategiczna potrzeba jest realizowana przy użyciu usługi Azure Policy.
 
-Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie zasad oraz zarządzanie nimi. Te zasady wymuszają różne reguły i efekty dotyczące zasobów, dzięki czemu zasoby te pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Usługa Azure Policy spełnia to wymaganie, oceniając zasoby pod kątem niezgodności z przypisanymi zasadami. Może na przykład występować zasada dopuszczająca tylko określony rozmiar jednostki SKU maszyn wirtualnych w środowisku. Po wdrożeniu tej zasady nowe i istniejące zasoby są oceniane pod kątem zgodności. Użycie odpowiedniego typu zasad umożliwia zapewnienie zgodności istniejących zasobów. W dalszej części tej dokumentacji bardziej szczegółowo omówiono tworzenie i implementowanie zasad za pomocą usługi Azure Policy.
+Azure Policy to usługa platformy Azure, który umożliwia tworzenie i przypisywanie oraz zarządzanie zasadami. Te zasady wymuszają różne reguły i efekty dotyczące zasobów, dzięki czemu zasoby te pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Usługa Azure Policy spełnia to wymaganie, oceniając zasoby pod kątem niezgodności z przypisanymi zasadami. Może na przykład występować zasada dopuszczająca tylko określony rozmiar jednostki SKU maszyn wirtualnych w środowisku. Po wdrożeniu tej zasady nowe i istniejące zasoby są oceniane pod kątem zgodności. Użycie odpowiedniego typu zasad umożliwia zapewnienie zgodności istniejących zasobów. W dalszej części tej dokumentacji bardziej szczegółowo omówiono tworzenie i implementowanie zasad za pomocą usługi Azure Policy.
 
 > [!IMPORTANT]
 > Ocena zgodności w usłudze Azure Policy jest teraz dostępna w przypadku wszystkich przypisań niezależnie od warstwy cenowej. Jeśli przydziały nie pokazują danych zgodności, upewnij się, że subskrypcja została zarejestrowana w obrębie dostawcy zasobów Microsoft.PolicyInsights.
@@ -141,7 +141,7 @@ Poniższe omówienie usługi Azure Policy dotyczy kompilacji 2018. Aby pobrać s
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy masz już podstawowe informacje na temat usługi Azure Policy i kluczowych pojęć, oto zalecane kolejne kroki:
 

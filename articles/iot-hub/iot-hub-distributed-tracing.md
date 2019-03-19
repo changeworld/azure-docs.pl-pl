@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0a2027e3ae0fb40058b5bdbfd212687697877076
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100364"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów urządzenie chmura usługi Azure IoT za pomocą rozproszonego śledzenia (wersja zapoznawcza)
 
@@ -269,7 +269,7 @@ Aby poznać różne typy dzienników, zobacz [dzienników diagnostycznych usług
 Aby zwizualizować przepływ komunikatów Internetu rzeczy, należy skonfigurować mapowanie aplikacji przykładowej aplikacji. Przykładowa aplikacja wysyła dzienniki rozproszonego śledzenia, aby [mapy aplikacji](../application-insights/app-insights-app-map.md) przy użyciu funkcji platformy Azure i Centrum zdarzeń.
 
 > [!div class="button"]
-<a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Pobieranie przykładu w usłudze Github</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Pobieranie przykładu w usłudze Github</a>
 
 Poniższy obraz przedstawia rozproszonego śledzenia na mapie aplikacji z trzech routingu punktów końcowych:
 

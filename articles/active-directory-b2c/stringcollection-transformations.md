@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 58773dded162ea51ccc6e502bbbdd4e13965c1d6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c312433832f7402eaff8b40c4e0a2a61397f6f87
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203492"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123508"
 ---
 # <a name="stringcollection-claims-transformations"></a>Właściwości StringCollection oświadczeń przekształcenia
 
@@ -29,7 +29,7 @@ Dodaje oświadczenie ciąg do nowego oświadczenia stringCollection.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Element | ciąg | Oświadczenia, które mają zostać dodane do oświadczeń wychodzących. |
+| Oświadczenie InputClaim | Element | string | Oświadczenia, które mają zostać dodane do oświadczeń wychodzących. |
 | Oświadczenie InputClaim | kolekcja | właściwości stringCollection | [Opcjonalnie] Jeśli zostanie określony, przekształcania oświadczeń kopiuje elementy z tej kolekcji, a następnie dodaje element do końca kolekcji oświadczeń wychodzących. |
 | oświadczenie outputClaim | kolekcja | właściwości stringCollection | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. |
 
@@ -52,10 +52,10 @@ Dodaje następujące przekształcania oświadczeń **e-mail** oświadczenia do *
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **Kolekcja**: ["someone@outlook.com"]
-    - **element**: "admin@contoso.com"
+  - **Kolekcja**: ["someone@outlook.com"]
+  - **element**: "admin@contoso.com"
 - Oświadczeń danych wyjściowych: 
-    - **Kolekcja**: ["someone@outlook.com","admin@contoso.com"]
+  - **Kolekcja**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
@@ -64,7 +64,7 @@ Dodaje nowe oświadczenie właściwości stringCollection jako parametr ciągu.
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | kolekcja | właściwości stringCollection | [Opcjonalnie] Jeśli zostanie określony, przekształcania oświadczeń kopiuje elementy z tej kolekcji, a następnie dodaje element do końca kolekcji oświadczeń wychodzących. |
-| InputParameter | Element | ciąg | Wartość do dodania do oświadczeń wychodzących. |
+| InputParameter | Element | string | Wartość do dodania do oświadczeń wychodzących. |
 | oświadczenie outputClaim | kolekcja | właściwości stringCollection | ClaimTypes, które zostaną wygenerowane po wywołaniu tego ClaimsTransformation. |
 
 Użyj oświadczeń to przekształcenie, aby dodać do nowej lub istniejącej właściwości stringCollection wartość ciągu. W poniższym przykładzie dodano adres e-mail stałych (admin@contoso.com) do **otherMails** oświadczenia. 
@@ -86,11 +86,11 @@ Użyj oświadczeń to przekształcenie, aby dodać do nowej lub istniejącej wł
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **Kolekcja**: ["someone@outlook.com"]
+  - **Kolekcja**: ["someone@outlook.com"]
 - Parametry wejściowe 
-    - **element**: "admin@contoso.com"
+  - **element**: "admin@contoso.com"
 - Oświadczeń danych wyjściowych:
-    - **Kolekcja**: ["someone@outlook.com","admin@contoso.com"]
+  - **Kolekcja**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
@@ -99,7 +99,7 @@ Pobiera pierwszy element z kolekcji podanego ciągu.
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | kolekcja | właściwości stringCollection | ClaimTypes, używane przez Przekształcanie oświadczeń można pobrać elementu. |
-| oświadczenie outputClaim | extractedItem | ciąg | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Pierwszy element w kolekcji. |
+| oświadczenie outputClaim | extractedItem | string | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Pierwszy element w kolekcji. |
 
 Poniższy przykład odczytuje **otherMails** oświadczeń i zwraca pierwszy element do **e-mail** oświadczenia. 
 
@@ -117,7 +117,7 @@ Poniższy przykład odczytuje **otherMails** oświadczeń i zwraca pierwszy elem
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **Kolekcja**: ["someone@outlook.com","someone@contoso.com"]
+  - **Kolekcja**: ["someone@outlook.com","someone@contoso.com"]
 - Oświadczeń danych wyjściowych: 
-    - **extractedItem**: "someone@outlook.com"
+  - **extractedItem**: "someone@outlook.com"
 

@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 5ea510d8335437cb43f3e8824ec73175c35dcd03
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086721"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 Aby przygotować jeden lub więcej dysków twardych do zadania importu, wykonaj następujące kroki:
 
--   Zidentyfikować dane, aby zaimportować do usługi Blob service
+- Zidentyfikować dane, aby zaimportować do usługi Blob service
 
--   Identyfikowanie katalogi wirtualne docelowego i obiektów blob w usłudze obiektów Blob
+- Identyfikowanie katalogi wirtualne docelowego i obiektów blob w usłudze obiektów Blob
 
--   Jak wiele dysków, należy określić
+- Jak wiele dysków, należy określić
 
--   Kopiuj dane do każdego dysku twardego
+- Kopiuj dane do każdego dysku twardego
 
- Aby uzyskać przykładowy przepływ pracy, zobacz [przykładowy przepływ pracy przygotowywanie dysków twardych do zadania importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
+  Aby uzyskać przykładowy przepływ pracy, zobacz [przykładowy przepływ pracy przygotowywanie dysków twardych do zadania importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
 
 ## <a name="identify-the-data-to-be-imported"></a>Identyfikowanie danych do zaimportowania
  Pierwszym krokiem do tworzenie zadania importu jest ustalenie, które katalogów i plików, które chcesz zaimportować. Może to być listę katalogów, listę unikatowych plików lub kombinację tych dwóch. Gdy jest katalogiem, wszystkie pliki w katalogu i jego podkatalogach będzie częścią zadania importu.
@@ -51,11 +51,11 @@ Aby przygotować jeden lub więcej dysków twardych do zadania importu, wykonaj 
 ## <a name="determine-how-many-drives-are-needed"></a>Określić, ile dyski są potrzebne.
  Następnie należy określić:
 
--   Liczba dysków twardych jest potrzebny do przechowywania danych.
+- Liczba dysków twardych jest potrzebny do przechowywania danych.
 
--   Katalogi i/lub plików autonomicznych, które zostaną skopiowane do każdego dysku twardego.
+- Katalogi i/lub plików autonomicznych, które zostaną skopiowane do każdego dysku twardego.
 
- Upewnij się, że liczba dysków twardych należy do przechowywania danych, z którego przenosisz.
+  Upewnij się, że liczba dysków twardych należy do przechowywania danych, z którego przenosisz.
 
 ## <a name="copy-data-to-your-hard-drive"></a>Kopiowanie danych na dysku twardym
  W tej sekcji opisano, jak wywołać narzędzie importu/eksportu platformy Azure, aby skopiować dane do jednego lub więcej dysków twardych. Zawsze należy wywołać narzędzie importu/eksportu platformy Azure, możesz utworzyć nową *skopiuj sesji*. Utwórz co najmniej jedna kopia sesji dla każdego dysku, do którego skopiować danych. w niektórych przypadkach może być konieczne więcej niż jedną sesję kopiowania do skopiowania wszystkich danych na jednym dysku. Oto kilka powodów, że wiele sesji kopia może być konieczne:

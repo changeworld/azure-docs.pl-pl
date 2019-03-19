@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4ddeef417490b5b928f46dce428acc3e5febe159
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245987"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001370"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurowanie aktywnej replikacji geograficznej dla usługi Azure SQL Database w witrynie Azure portal i zainicjuj tryb failover
 
-W tym artykule dowiesz się, jak skonfigurować [aktywnej replikacji geograficznej dla pojedynczej i puli baz danych](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) w usłudze Azure SQL Database przy użyciu [witryny Azure portal](http://portal.azure.com) i zainicjować trybu failover.
+W tym artykule dowiesz się, jak skonfigurować [aktywnej replikacji geograficznej dla pojedynczej i puli baz danych](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) w usłudze Azure SQL Database przy użyciu [witryny Azure portal](https://portal.azure.com) i zainicjować trybu failover.
 
 Aby uzyskać informacji o grupach automatyczny tryb failover z jednym i puli baz danych, zobacz [najlepsze rozwiązania dotyczące korzystania z grup trybu failover z jednym i puli baz danych](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Aby uzyskać informacji o grupach automatyczny tryb failover za pomocą wystąpienia zarządzanego (wersja zapoznawcza), zobacz [najlepsze rozwiązania dotyczące korzystania z grup trybu failover przy użyciu wystąpienia zarządzane przez usługę](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
@@ -32,7 +32,7 @@ Aby skonfigurować aktywną replikację geograficzną za pomocą witryny Azure p
 * Azure SQL database: Podstawowej bazy danych, którą chcesz zreplikować do innego regionu geograficznego.
 
 > [!Note]
-Przy użyciu witryny Azure portal, można tylko utworzyć pomocniczą bazę danych w ramach tej samej subskrypcji, jako podstawowy. Jeśli pomocnicza baza danych musi znajdować się w innej subskrypcji, użyj [tworzenie bazy danych interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) lub [ALTER DATABASE języka Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
+> Przy użyciu witryny Azure portal, można tylko utworzyć pomocniczą bazę danych w ramach tej samej subskrypcji, jako podstawowy. Jeśli pomocnicza baza danych musi znajdować się w innej subskrypcji, użyj [tworzenie bazy danych interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) lub [ALTER DATABASE języka Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Dodawanie dodatkowej bazy danych
 
@@ -46,7 +46,7 @@ Po pomocnicza jest tworzony i zasilany, rozpoczyna się danych replikowanych z p
 > [!NOTE]
 > Jeśli baza danych partnera już istnieje (na przykład w wyniku zakończenia poprzedniej relacji replikacji geograficznej) polecenie kończy się niepowodzeniem.
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do bazy danych, która ma zostać skonfigurowane dla replikacji geograficznej.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do bazy danych, która ma zostać skonfigurowane dla replikacji geograficznej.
 2. Na stronie bazy danych SQL zaznaczyć **geografickou replikaci**, a następnie wybierz region, aby utworzyć pomocniczej bazy danych. Można wybrać dowolny region innych niż region podstawowy bazę danych, ale zalecamy [sparowanym regionie](../best-practices-availability-paired-regions.md).
 
     ![Konfigurowanie replikacji geograficznej](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
@@ -66,11 +66,11 @@ Po pomocnicza jest tworzony i zasilany, rozpoczyna się danych replikowanych z p
 
 Pomocniczej bazy danych można dostosować do roli podstawowej.  
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do podstawowej bazy danych w ramach partnerstwa replikacji geograficznej.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do podstawowej bazy danych w ramach partnerstwa replikacji geograficznej.
 2. W bloku bazy danych SQL zaznaczyć **wszystkie ustawienia** > **geografickou replikaci**.
 3. W **pomocnicze bazy danych** , wybierz bazę danych do nowej podstawowej, a następnie kliknij pozycję na liście **trybu Failover**.
 
-    ![Tryb failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![tryb failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kliknij przycisk **tak** do rozpoczęcia pracy w trybie failover.
 
 Polecenie natychmiast zmienia pomocniczej bazy danych do roli podstawowej.
@@ -84,7 +84,7 @@ Brak krótki okres, podczas którego obu bazach danych są niedostępne (rzędu 
 
 Ta operacja trwale przerywa replikację do dodatkowej bazy danych i zmiany roli pomocniczej zwykłej bazy danych odczytu i zapisu. Łączność z dodatkowej bazy danych jest uszkodzona, polecenie zakończy się pomyślnie, ale ma dodatkowych, staje się odczytu / zapisu, dopóki łączność zostanie przywrócona.  
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do podstawowej bazy danych w ramach partnerstwa replikacji geograficznej.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do podstawowej bazy danych w ramach partnerstwa replikacji geograficznej.
 2. Na stronie bazy danych SQL zaznaczyć **geografickou replikaci**.
 3. W **pomocnicze bazy danych** , wybierz bazę danych, którą chcesz usunąć z powiązanie replikacji geograficznej na liście.
 4. Kliknij przycisk **zatrzymać replikację**.

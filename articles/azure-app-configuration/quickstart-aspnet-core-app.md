@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ce19041b29d567f061dde59fbe041adf61f889a0
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 6d41b6e4ab6ea01017f39762e7d022d61350d21a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961486"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998442"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -89,7 +89,7 @@ Do swojego projektu dodasz narzędzie [Secret Manager](https://docs.microsoft.co
 
     Narzędzie Secret Manager będzie służyć tylko do testowania hostowanej lokalnie aplikacji internetowej. Po wdrożeniu aplikacji (na przykład w usłudze [Azure App Service](https://azure.microsoft.com/services/app-service/web)), użyjesz ustawienia aplikacji (na przykład **parametrów połączenia** w usłudze App Service) zamiast przechowywać parametry połączenia w narzędziu Secret Manager.
 
-    Dostęp do tego wpisu tajnego można uzyskać za pomocą interfejsu API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment).
+    Ten klucz tajny jest używanych w konfiguracji interfejsu API. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
 4. Otwórz plik *Program.cs* i zaktualizuj metodę `CreateWebHostBuilder`, tak aby używała usługi App Configuration przez wywołanie metody `config.AddAzureAppConfiguration()`.
 
@@ -175,7 +175,7 @@ Do swojego projektu dodasz narzędzie [Secret Manager](https://docs.microsoft.co
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start został utworzony nowy magazyn konfiguracji aplikacji i użyto go z aplikacją internetową platformy ASP.NET Core. Aby dowiedzieć się więcej o korzystaniu z usługi App Configuration, przejdź do następnego samouczka, w którym zaprezentowano uwierzytelnianie.
 

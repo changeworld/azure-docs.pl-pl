@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105203"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Tworzenie kopii zapasowej stanu systemu Windows podczas wdrażania usługi Resource Manager
 W tym artykule opisano sposób tworzenia kopii zapasowej stanu systemu Windows Server na platformie Azure. Ten samouczek zawiera podstawowe informacje.
@@ -51,7 +51,7 @@ Aby utworzyć kopię zapasową stanu systemu Windows Server, należy utworzyć m
     Lub
     * wybierz pozycję **Użyj istniejącej** i kliknij menu rozwijane, aby wyświetlić listę dostępnych grup zasobów.
 
-  Pełne informacje na temat grup zasobów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+   Pełne informacje na temat grup zasobów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 7. Kliknij pozycję **Lokalizacja**, aby wybrać region geograficzny magazynu. Ten wybór określa region geograficzny, do którego wysyłane są dane kopii zapasowej.
 
@@ -130,9 +130,9 @@ Teraz, po utworzeniu magazynu, należy go skonfigurować do tworzenia kopii zapa
     Poświadczenia magazynu zostaną pobrane do folderu Pobrane. Po zakończeniu pobierania poświadczeń magazynu zobaczysz okno podręczne z pytaniem, czy chcesz otworzyć poświadczenia, czy je zapisać. Kliknij pozycję **Zapisz**. Jeśli przypadkowo klikniesz pozycję **Otwórz**, zaczekaj, aż działanie okna dialogowego, które spróbuje otworzyć poświadczenia magazynu, zakończy się niepowodzeniem. Poświadczeń magazynu nie da się otworzyć. Przejdź do następnego kroku. Poświadczenia magazynu znajdują się w folderze Pobrane.   
 
     ![Zakończenie pobierania poświadczeń magazynu](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
-> [!NOTE]
-> Poświadczenia magazynu musi zostać zapisany tylko do lokalizacji, która jest lokalny dla systemu Windows Server, na którym zamierzasz korzystać z agenta.
->
+   > [!NOTE]
+   > Poświadczenia magazynu musi zostać zapisany tylko do lokalizacji, która jest lokalny dla systemu Windows Server, na którym zamierzasz korzystać z agenta.
+   >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 

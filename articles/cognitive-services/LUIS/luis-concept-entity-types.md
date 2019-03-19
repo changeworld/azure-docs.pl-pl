@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 61211db72928bebf0e1ea50cad6362337f66f0eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859621"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844592"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -201,7 +201,7 @@ Niektóre z tych wstępnie utworzonych jednostek są zdefiniowane w typu open-so
 
 ## <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego 
 
-Wyrażenie regularne jest najlepsze dla tekstowe wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  Dopasowywanie wyrażeń regularnych są stosowane po sprawdzania pisowni zmiany na poziomie znak, a nie na poziomie tokenu. Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie możesz dodać wyrażenie do modelu. Używa części, ale nie wszystkie [.Net wyrażenia regularnego](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) biblioteki. 
+Wyrażenie regularne jest najlepsze dla tekstowe wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  Dopasowywanie wyrażeń regularnych są stosowane po sprawdzania pisowni zmiany na poziomie znak, a nie na poziomie tokenu. Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie możesz dodać wyrażenie do modelu. Używa części, ale nie wszystkie [wyrażenie regularne .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) biblioteki. 
 
 Jednostka jest bardzo dopasowania, gdy:
 

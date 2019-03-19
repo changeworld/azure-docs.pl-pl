@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: cd15e139b2bcd0046d2cfbd7603809936adf1cfc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548136"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123185"
 ---
 # <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Rozwiązywanie problemów z usługą Application Gateway i usługą App Service — przekierowanie pod adres URL usługi App Service
 
@@ -42,7 +42,7 @@ Usługa App Service może zostać oceniony jedynie przy użyciu skonfigurowanej 
 
 Aby to osiągnąć z usługą Application Gateway, możemy użyć przełącznika "Wybierz nazwę hosta z wewnętrznej bazy danych Address" w ustawieniach protokołu HTTP i sondowania do pracy, używamy "Wybierz nazwę hosta z ustawienia HTTP zaplecza" w konfiguracji sondowania.
 
-![appservice-1](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-1.png)
+![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
 Ze względu na to gdy usługi App Service jest przekierowanie, używa nazwy hosta "example.azurewebsites.net" w nagłówku Location zamiast oryginalna nazwa hosta, chyba że skonfigurowano inaczej. Można sprawdzić na przykład nagłówki żądania i odpowiedzi poniżej.
 ```
@@ -78,7 +78,7 @@ Aby to osiągnąć, należy posiadać domenę niestandardową i postępuj zgodni
 
 - Zarejestruj domeny do listy niestandardowej domeny usługi App Service. W tym celu musisz mieć rekord CNAME w domenę niestandardową, która wskazuje nazwę FQDN usługi App Service. Aby uzyskać więcej informacji, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
 
-![appservice-2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
+![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
 - Po zakończeniu tej operacji usługi App Service jest gotowy do akceptowania nazwy hosta "www.contoso.com". Teraz Zmień wpis CNAME w systemie DNS, aby wskazywać z powrotem nazwy FQDN bramy aplikacji. Na przykład "appgw.eastus.cloudapp.azure.com".
 
@@ -94,7 +94,7 @@ Aby to osiągnąć, należy posiadać domenę niestandardową i postępuj zgodni
 - Sprawdź kondycję wewnętrznej bazy danych, jeśli jest w dobrej kondycji i skojarzyć niestandardowej sondy do ustawień HTTP zaplecza.
 
 - Po zakończeniu tej operacji usługa Application Gateway obecnie może przekazywać tej samej nazwy hosta "www.contoso.com" w usłudze App Service, a następnie nastąpi przekierowanie na tej samej nazwy hosta. Można sprawdzić na przykład nagłówki żądania i odpowiedzi poniżej.
-```
+  ```
   ## Request headers to Application Gateway:
 
   Request URL: http://www.contoso.com/path
@@ -114,7 +114,7 @@ Aby to osiągnąć, należy posiadać domenę niestandardową i postępuj zgodni
   Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=www.contoso.com
 
   X-Powered-By: ASP.NET
-```
-## <a name="next-steps"></a>Kolejne kroki
+  ```
+  ## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli poprzednie kroki nie rozwiązują ten problem, otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).

@@ -6,15 +6,15 @@ keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/10/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: a67315287f90143701ca38b9f42e243b2d4913a3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437704"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842366"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Twórz klipy z usługi Azure Media Clipper
 W tej sekcji przedstawiono podstawowe kroki przedstawiający wprowadzenie do usługi Azure Media Clipper. Sekcje zawierają szczegółowe informacje na temat konfigurowania usługi Azure Media Clipper.
@@ -100,7 +100,7 @@ Parametry dla wywołania metody inicjowania są następujące:
 - `height` {OPCJONALNE, number} Całkowita wysokość elementu widget (minimalna wysokość to 600 pikseli bez okienko zasobów i 850 pikseli z okienkiem zasobów).
 - `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'}): Dozwolone metody używać. Wartość domyślna to wszystkie.
 - `filterAssetsTypes` (Opcjonalne, wartość logiczna): filterAssetsTypes umożliwiają Pokaż/Ukryj filtry listy rozwijanej w okienku zasobów. Wartość domyślna to true.
-- `speedLevels` (OPCJONALNIE, tablicy): speedLevels umożliwia ustawianie poziomów inną szybkość dla odtwarzacza wideo, zobacz [dokumentacji usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) Aby uzyskać więcej informacji.
+- `speedLevels` (OPCJONALNIE, tablicy): speedLevels umożliwia ustawianie poziomów inną szybkość dla odtwarzacza wideo, zobacz [dokumentacji usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) Aby uzyskać więcej informacji.
 - `resetOnJobDone` (Opcjonalne, wartość logiczna): resetOnJobDone umożliwia Clipper zerującego wtyczki subclipper początkowy stan, gdy zadanie zostanie przesłana pomyślnie.
 - `autoplayVideo` (Opcjonalne, wartość logiczna): autoplayVideo umożliwia Clipper autoodtwarzania wideo na obciążenia. Wartość domyślna to true.
 - `language` {Parametry opcjonalne,}: language określa język elementu widget. Jeśli nie zostanie określony, widżet próbuje zlokalizować komunikaty na podstawie języka przeglądarki. W przypadku wykrycia żadnego języka w przeglądarce, widżet domyślnie do języka angielskiego. Aby uzyskać więcej informacji, zobacz [Konfigurowanie lokalizacji](media-services-azure-media-clipper-localization.md) sekcji.
@@ -108,7 +108,7 @@ Parametry dla wywołania metody inicjowania są następujące:
 - `extraLanguages` (OPCJONALNIE, JSON): parametr extraLanguages dodaje nowe języki do słownika domyślne. Aby uzyskać więcej informacji, zobacz [Konfigurowanie lokalizacji](media-services-azure-media-clipper-localization.md) sekcji.
 
 ## <a name="typescript-definition"></a>Definicji TypeScript
-A [TypeScript](https://www.typescriptlang.org/) znajduje się plik definicji dla Clipper [tutaj](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
+A [TypeScript](https://www.typescriptlang.org/) znajduje się plik definicji dla Clipper [tutaj](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
 
 ## <a name="azure-media-clipper-api"></a>Azure Media Clipper API
 W tej sekcji omówiono dostarczone przez Clipper powierzchnię interfejsu API.

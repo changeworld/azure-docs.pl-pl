@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834681"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Tryb failover i zakończyć się niepowodzeniem powrotu po awarii fizycznych serwerów replikowanych na platformie Azure
 
@@ -36,7 +36,7 @@ Sprawdź właściwości serwera i upewnij się, że spełnia on [wymagania dotyc
 1. W **chronione elementy**, kliknij przycisk **zreplikowane elementy**i wybierz maszynę.
 
 2. W **zreplikowany element** , znajduje się podsumowanie informacji o maszynie, stan kondycji, a najnowsze dostępne punkty odzyskiwania. Kliknij przycisk **Właściwości**, aby wyświetlić więcej szczegółów.
-3. W **obliczenia i sieć**, można zmodyfikować nazwę platformy Azure, grupę zasobów, rozmiar docelowy, [zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md)i ustawienia dysku zarządzanego
+3. W obszarze **Obliczenia i sieć** można zmodyfikować nazwę platformy Azure, grupę zasobów, rozmiar docelowy, [zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md) i ustawienia dysku zarządzanego
 4. Możesz wyświetlać i modyfikować ustawienia sieciowe, w tym sieć/podsieć, w której zlokalizowana będzie maszyna wirtualna na platformie Azure po wejściu w tryb failover, oraz adres IP, który będzie do niej przypisany.
 5. W **dysków**, można wyświetlić informacje o maszynie systemu operacyjnego i dysków z danymi.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011105"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
 ## <a name="overview"></a>Przegląd
@@ -25,7 +25,7 @@ W ramach tego samouczka używana będzie wtyczka usługi Azure Storage dla ciąg
 ## <a name="introduction-to-hudson"></a>Wprowadzenie do rozwiązania Hudson
 Hudson umożliwia ciągłą integrację z projektem oprogramowania, umożliwiając deweloperom łatwe integrowanie ich zmian w kodzie i mieć kompilacje generowane automatycznie i często, a tym samym zwiększenia produktywności deweloperów. Kompilacje są wersjonowane i artefaktów kompilacji można przekazać do różnych repozytoriów. W tym artykule pokazują, jak używać usługi Azure Blob storage jako repozytorium artefaktów kompilacji. Widoczna będzie również sposób pobierania zależności z usługi Azure Blob storage.
 
-Więcej informacji na temat rozwiązania Hudson znajduje się w temacie [spełniają Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
+Więcej informacji na temat rozwiązania Hudson znajduje się w temacie [spełniają Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
 
 ## <a name="benefits-of-using-the-blob-service"></a>Korzyści z używania usługi obiektów Blob
 Korzyści z używania usługi obiektów Blob, aby hostować swoje artefakty kompilacji zwinne Wytwarzanie oprogramowania obejmują:
@@ -52,7 +52,7 @@ Następujące polecenie, aby korzystać z usługi obiektów Blob z rozwiązaniem
   5. Po ukończenia początkowej konfiguracji, Anuluj uruchomione wystąpienie Hudson WAR, ponownie uruchom Hudson WAR i ponownie otwórz pulpit nawigacyjny rozwiązania Hudson, `http://localhost:8080/`, który będzie używany do instalowania i konfigurowania wtyczki usługi Azure Storage.
      
       Podczas gdy typowe rozwiązanie z ciągłą Integracją rozwiązania Hudson, należy skonfigurować do uruchamiania jako usługa, uruchomiona Hudson war w wierszu polecenia, będzie wystarczająca na potrzeby tego samouczka.
-* Konto platformy Azure. Możesz zasubskrybować konta platformy Azure w <http://www.azure.com>.
+* Konto platformy Azure. Możesz zasubskrybować konta platformy Azure w <https://www.azure.com>.
 * Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć ją przy użyciu czynności opisane w temacie [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 * Znajomość rozwiązanie ciągłej integracji Hudson jest zalecane, ale nie jest to wymagane, zgodnie z następującą zawartością użyje podstawowy przykład aby pokazać, że kroki wymagane w przypadku korzystania z usługi Blob service jako repozytorium do ciągłej integracji Hudson artefaktów kompilacji.
 
@@ -134,7 +134,7 @@ Poniższe kroki pokazują sposób konfigurowania kroku kompilacji można pobrać
 1. W **kompilacji** sekcji konfiguracji zadania kliknij **Dodaj krok kompilacji** i wybierz polecenie **pobierać z usługi Azure Blob storage**.
 2. Aby uzyskać **nazwa konta magazynu**, wybierz konto magazynu do użycia.
 3. Aby uzyskać **nazwa kontenera**, określ nazwę kontenera, który zawiera obiekty BLOB, którą chcesz pobrać. Można używać zmiennych środowiskowych.
-4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\***  należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
+4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\\*** należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
 5. [Opcjonalnie] Aby uzyskać **ścieżkę pobierania**, określ ścieżkę na maszynie Hudson, które chcesz pobrać pliki z usługi Azure Blob storage. Można także zmienne środowiskowe. (Jeśli nie zostanie określona wartość **ścieżkę pobierania**, zostaną pobrane pliki z usługi Azure Blob storage z obszarem roboczym zadania.)
 
 Jeśli masz dodatkowe elementy, które chcesz pobrać z usługi Azure Blob storage, możesz utworzyć dodatkowych kroków kompilacji.
@@ -158,7 +158,7 @@ Poniżej zawiera omówienie składników usługi obiektów Blob.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Usługa Azure Storage SDK dla języka Java](https://github.com/azure/azure-storage-java)
 * [Dokumentacja zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)

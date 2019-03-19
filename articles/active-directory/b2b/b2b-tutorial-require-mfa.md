@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f6718c13534e7f43b183400a1ccf25c3f8d1e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 5a4ed93bee091bf0a40718a47ffb7cd97a85147c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669015"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993487"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Samouczek: wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników-gości B2B
 
@@ -139,5 +139,6 @@ Gdy użytkownik testowy i testowe zasady dostępu warunkowego nie będą już po
 5.  W lewym okienku wybierz pozycję **Azure Active Directory**.
 6.  W obszarze **Zabezpieczenia** wybierz pozycję **Dostęp warunkowy**.
 7.  Na liście **Nazwa zasad** wybierz menu kontekstowe (…) dla zasad testowych, a następnie wybierz pozycję **Usuń**. Wybierz pozycję **Tak**, aby potwierdzić.
-## <a name="next-steps"></a>Następne kroki
+
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku utworzono zasady dostępu warunkowego, które wymagają od użytkowników-gości używania uwierzytelniania wieloskładnikowego podczas logowania do jednej z aplikacji w chmurze. Aby dowiedzieć się więcej na temat dodawania użytkowników-gości do współpracy, zobacz [Add Azure Active Directory B2B collaboration users in the Azure portal (Dodawanie użytkowników współpracy usługi Azure Active Directory B2B w witrynie Azure Portal)](add-users-administrator.md).

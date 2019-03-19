@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235976"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105526"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informacje dotyczące niezatwierdzonych dystrybucji
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -35,7 +35,7 @@ Wszystkie dystrybucje działających na platformie Azure mają pewne wymagania w
 Zalecamy rozpoczęcie od jednego z [systemu Linux na dystrybucje zatwierdzone dla platformy Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Następujące artykuły pokazują, jak przygotować różnych zalecanych dystrybucjach systemu Linux, które są obsługiwane na platformie Azure:
 
 * **[Dystrybucje systemu centOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian systemu Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -144,10 +144,10 @@ Jeśli wymagana jest niestandardowy jądra, firma Microsoft zaleca najnowszej we
 Następujące poprawki muszą być uwzględnione w jądrze. Ta lista nie może zostać zakończona dla wszystkich dystrybucji.
 
 * [ata_piix: Odrocz dysków sterowników na funkcji Hyper-V domyślnie](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc: konto dla pakietów w drodze w ścieżce RESETOWANIA](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc: Konto dla pakietów w drodze w ścieżce RESETOWANIA](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc: unikaj użycia WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
 * [storvsc: Wyłącz zapisu w tej samej macierzy RAID i sterowniki karty hosta wirtualnego](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc: wyłuskanie wskaźnika NULL poprawki](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc: Poprawka wyłuskanie wskaźnika o wartości NULL](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc: pierścień błędów buforu może spowodować blokowanie operacji We/Wy](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs: ochronę przed podwójnego wykonywania __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
@@ -172,13 +172,13 @@ Następujące poprawki muszą być uwzględnione w jądrze. Ta lista nie może z
     ```
     Graficzne i cichy rozruchu nie jest przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki wysyłane do portu szeregowego. `crashkernel` Opcja może być skonfigurowany w razie potrzeby po lewej stronie, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie Wirtualnej, przez co najmniej 128 MB, co może być problematyczne dla mniejszych rozmiarów maszyn wirtualnych.
 
-2. Zainstaluj agenta systemu Linux dla platformy Azure.
+1. Zainstaluj agenta systemu Linux dla platformy Azure.
   
     Agenta systemu Linux dla platformy Azure jest wymagany do inicjowania obsługi obrazu systemu Linux na platformie Azure.  Wiele dystrybucji zapewniają agenta jako pakiet RPM lub Deb (pakiet jest zwykle nazywany WALinuxAgent lub walinuxagent).  Agenta można również zainstalować ręcznie, wykonując kroki opisane w [przewodnik agenta systemu Linux](../extensions/agent-linux.md).
 
-3. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Ta konfiguracja jest zazwyczaj domyślną.
+1. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Ta konfiguracja jest zazwyczaj domyślną.
 
-4. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
   
     Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Dysk lokalny zasób jest *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (krok 2 powyżej), zmodyfikuj następujące parametry w /etc/waagent.conf, zgodnie z potrzebami.
     ```  
@@ -188,15 +188,15 @@ Następujące poprawki muszą być uwzględnione w jądrze. Ta lista nie może z
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
     ```
-* Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej.
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej.
   
-    ```
-    sudo waagent -force -deprovision
-    export HISTSIZE=0
-    logout
-    ```  
-  > [!NOTE]
-  > Na Virtualbox może zostać wyświetlony następujący błąd, po uruchomieniu `waagent -force -deprovision` z tekstem `[Errno 5] Input/output error`. Ten komunikat o błędzie nie jest krytyczne i można je zignorować.
+     ```
+     sudo waagent -force -deprovision
+     export HISTSIZE=0
+     logout
+     ```  
+   > [!NOTE]
+   > Na Virtualbox może zostać wyświetlony następujący błąd, po uruchomieniu `waagent -force -deprovision` z tekstem `[Errno 5] Input/output error`. Ten komunikat o błędzie nie jest krytyczne i można je zignorować.
 
 * Zamknij maszynę wirtualną i przekazywanie wirtualnego dysku twardego do systemu Azure.
 

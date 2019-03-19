@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1927e9b4aeec6f424c69632d8811c49c97d3aad1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9634e2578ea256d1dec71389f676ee53627e6272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077772"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator
 
@@ -27,9 +27,9 @@ ms.locfileid: "56961554"
 
 Aplikacja Microsoft Authenticator tworzy kopie zapasowe Twoje poświadczenia konta i ustawień aplikacji, takich jak kolejność kont do chmury. Po utworzeniu kopii zapasowej, można użyć jej do odzyskania danych na nowym urządzeniu potencjalnie unikanie wprowadzenie zablokowane ze specyfikatorem out lub konieczności ponownego tworzenia konta.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dla każdej lokalizacji magazynu kopii zapasowych należy jeden osobistego konta Microsoft i jednym koncie usługi iCloud. Ale w tej lokalizacji magazynu można utworzyć kopię zapasową kilku kont. Na przykład można mieć konto osobiste, konto służbowe i konto innych firm, takich jak Facebook, Google i tak dalej.
-
+> 
 > Tylko poświadczenia konta osobiste i firm 3 są przechowywane w tym nazwę użytkownika i kod weryfikacyjny konta, które są wymagane, aby potwierdzić swoją tożsamość. Nie przechowujemy inne informacje związane z kontami, w tym wiadomości e-mail lub plików. Możemy również nie skojarzyć lub Udostępnij swoje konta w dowolny sposób lub przy użyciu dowolnego produktu lub usługi. A na koniec administrator IT nie będą otrzymywać żadnych informacji na temat tych kont.
 
 ## <a name="back-up-your-account-credentials"></a>Wykonaj kopię zapasową poświadczeń konta

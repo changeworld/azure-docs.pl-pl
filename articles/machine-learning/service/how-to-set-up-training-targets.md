@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a549a46912b0d60f878a18cae1e70a763afc0243
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874702"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122373"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -139,16 +139,16 @@ Trwałe Azure obliczeniowego usługi Machine Learning mogą zostać ponownie uż
     * **vm_size**: Rodzina maszyn wirtualnych węzłów utworzone przez obliczeniowego usługi Azure Machine Learning.
     * **max_nodes**: Maksymalna liczba węzłów do automatycznego skalowania do uruchomienia zadania w obliczeniowego usługi Azure Machine Learning.
     
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-  Można również skonfigurować kilka właściwości zaawansowane, tworząc obliczeniowego usługi Azure Machine Learning. Właściwości umożliwiają tworzenie trwałych klastra o stałym rozmiarze lub w ramach istniejącej sieci wirtualnej platformy Azure w ramach subskrypcji.  Zobacz [klasy AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+   Można również skonfigurować kilka właściwości zaawansowane, tworząc obliczeniowego usługi Azure Machine Learning. Właściwości umożliwiają tworzenie trwałych klastra o stałym rozmiarze lub w ramach istniejącej sieci wirtualnej platformy Azure w ramach subskrypcji.  Zobacz [klasy AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) Aby uzyskać szczegółowe informacje.
     
- Lub można tworzyć i dołączać trwałe zasobu obliczeniowego usługi Azure Machine Learning [w witrynie Azure portal](#portal-create).
+   Lub można tworzyć i dołączać trwałe zasobu obliczeniowego usługi Azure Machine Learning [w witrynie Azure portal](#portal-create).
 
 1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla trwałego obliczeniowego elementu docelowego.
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Skoro już dołączone zasoby obliczeniowe i uruchomieniu skonfigurowany, następnym krokiem jest [przesłać przebiegu szkolenia](#submit).
 
@@ -168,34 +168,34 @@ Użyj usługi Azure Data Science Virtual Machine (dsvm dystrybucji) jako maszyny
 
 1. **Dołącz**: Aby dołączyć istniejącą maszynę wirtualną jako cel obliczenia, należy podać w pełni kwalifikowaną nazwę domeny (FQDN), nazwę użytkownika i hasło dla maszyny wirtualnej. W tym przykładzie Zastąp \<fqdn > za pomocą publiczny adres FQDN maszyny Wirtualnej lub publiczny adres IP. Zastąp \<username > i \<hasło > za pomocą nazwy użytkownika SSH i hasło dla maszyny Wirtualnej.
 
- ```python
- from azureml.core.compute import RemoteCompute, ComputeTarget
+   ```python
+   from azureml.core.compute import RemoteCompute, ComputeTarget
 
- # Create the compute config 
- compute_target_name = "attach-dsvm"
- attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   # Create the compute config 
+   compute_target_name = "attach-dsvm"
+   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
 
- # If you authenticate with SSH keys instead, use this code:
- #                                                  ssh_port=22,
- #                                                  username='<username>',
- #                                                  password=None,
- #                                                  private_key_file="<path-to-file>",
- #                                                  private_key_passphrase="<passphrase>")
+   # If you authenticate with SSH keys instead, use this code:
+   #                                                  ssh_port=22,
+   #                                                  username='<username>',
+   #                                                  password=None,
+   #                                                  private_key_file="<path-to-file>",
+   #                                                  private_key_passphrase="<passphrase>")
 
- # Attach the compute
- compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
+   # Attach the compute
+   compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
 
- compute.wait_for_completion(show_output=True)
- ```
+   compute.wait_for_completion(show_output=True)
+   ```
 
- Lub można dołączyć maszyny DSVM do swojego obszaru roboczego [przy użyciu witryny Azure portal](#portal-reuse).
+   Lub można dołączyć maszyny DSVM do swojego obszaru roboczego [przy użyciu witryny Azure portal](#portal-reuse).
 
 1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeniowe DSVM. Platforma docker i narzędzia conda są używane do tworzenia i konfigurowania środowiska szkolenia na maszyny DSVM.
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
 Skoro już dołączone zasoby obliczeniowe i uruchomieniu skonfigurowany, następnym krokiem jest [przesłać przebiegu szkolenia](#submit).
@@ -212,11 +212,11 @@ Usługa Azure HDInsight to popularne platformy do analizy danych big data. Ta pl
 
 1. **Dołącz**: Aby dołączyć klastra usługi HDInsight jako cel obliczenia, należy podać nazwę hosta, nazwę użytkownika i hasło dla klastra HDInsight. W poniższym przykładzie użyto zestawu SDK, aby dołączyć klaster z obszarem roboczym. W tym przykładzie Zastąp \<nazwa_klastra > nazwą Twojego klastra. Zastąp \<username > i \<hasło > za pomocą nazwy użytkownika SSH i hasło klastra.
 
-  ```python
- from azureml.core.compute import ComputeTarget, HDInsightCompute
- from azureml.exceptions import ComputeTargetException
+   ```python
+   from azureml.core.compute import ComputeTarget, HDInsightCompute
+   from azureml.exceptions import ComputeTargetException
 
- try:
+   try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
     attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
                                                           ssh_port=22, 
@@ -226,17 +226,17 @@ Usługa Azure HDInsight to popularne platformy do analizy danych big data. Ta pl
                                        name='myhdi', 
                                        attach_configuration=attach_config)
 
- except ComputeTargetException as e:
+   except ComputeTargetException as e:
     print("Caught = {}".format(e.message))
 
- hdi_compute.wait_for_completion(show_output=True)
-  ```
+   hdi_compute.wait_for_completion(show_output=True)
+   ```
 
-  Lub możesz dołączyć klastra HDInsight z obszarem roboczym [przy użyciu witryny Azure portal](#portal-reuse).
+   Lub możesz dołączyć klastra HDInsight z obszarem roboczym [przy użyciu witryny Azure portal](#portal-reuse).
 
 1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeniowych usługi HDI. 
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
 Skoro już dołączone zasoby obliczeniowe i uruchomieniu skonfigurowany, następnym krokiem jest [przesłać przebiegu szkolenia](#submit).

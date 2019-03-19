@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: 3b98214da259e9e429c938f8ca7963c9f525e862
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 74d322c9e7d45a26f9e095bd7ae9f2bbe506ba49
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560825"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306939"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla bazy danych Azure SQL Database
 
@@ -51,9 +51,9 @@ Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza pole
 
 | |  |
 |---|---|
-| [Tworzenie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób tworzenia wystąpienia zarządzanego. |
-| [Aktualizowanie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób aktualizowania wystąpienia zarządzanego. |
-| [Przenoszenie bazy danych do innego wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Ten skrypt interfejsu wiersza polecenia ilustruje przywracanie kopii zapasowej bazy danych z jednego wystąpienia do innego. |
+| [Tworzenie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób tworzenia wystąpienia zarządzanego. |
+| [Aktualizowanie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób aktualizowania wystąpienia zarządzanego. |
+| [Przenoszenie bazy danych do innego wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Ten skrypt interfejsu wiersza polecenia ilustruje przywracanie kopii zapasowej bazy danych z jednego wystąpienia do innego. |
 |||
 
 Dowiedz się więcej o [interfejsie API interfejsu wiersza polecenia platformy Azure wystąpienia zarządzanego](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) i znajdź [tutaj dodatkowe przykłady](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).

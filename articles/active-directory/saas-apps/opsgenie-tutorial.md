@@ -4,261 +4,236 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 03/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9858fc38698ae2c5bd272a3494bcf02bce2d8e9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 48922e0165aa8f5f418c222aab29ff8c100f2745
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194601"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą OpsGenie
 
 W tym samouczku dowiesz się, jak zintegrować OpsGenie w usłudze Azure Active Directory (Azure AD).
-
 Integrowanie OpsGenie z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do OpsGenie
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do OpsGenie (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do OpsGenie.
+* Aby umożliwić użytkownikom można automatycznie zalogowany do OpsGenie (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą OpsGenie, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- OpsGenie logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* OpsGenie logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie OpsGenie z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Obsługuje OpsGenie **SP** jednokrotne logowanie inicjowane przez
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>Dodawanie OpsGenie z galerii
+
 Aby skonfigurować integrację OpsGenie w usłudze Azure AD, należy dodać OpsGenie z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać OpsGenie z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **OpsGenie**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/opsgenie-tutorial/tutorial_opsgenie_search.png)
+4. W polu wyszukiwania wpisz **OpsGenie**, wybierz opcję **OpsGenie** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **OpsGenie**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![OpsGenie na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/opsgenie-tutorial/tutorial_opsgenie_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpsGenie w oparciu o użytkownika testu o nazwie "Britta Simon".
-
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w OpsGenie do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w OpsGenie musi można ustanowić.
-
-W OpsGenie, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpsGenie w oparciu o użytkownika testu o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w OpsGenie musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpsGenie, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego OpsGenie](#creating-a-opsgenie-test-user)**  — aby odpowiednikiem Britta Simon w OpsGenie połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie OpsGenie logowania jednokrotnego](#configure-opsgenie-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego OpsGenie](#create-opsgenie-test-user)**  — aby odpowiednikiem Britta Simon w OpsGenie połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji OpsGenie.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z OpsGenie, wykonaj następujące czynności:**
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z OpsGenie, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **OpsGenie** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **OpsGenie** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/opsgenie-tutorial/tutorial_opsgenie_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **OpsGenie domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/opsgenie-tutorial/tutorial_opsgenie_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://app.opsgenie.com/auth/login`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Link do pobierania certyfikatu](./media/opsgenie-tutorial/tutorial_opsgenie_certificate.png)
+    ![OpsGenie domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
 
-1. Kliknij przycisk **Save** (Zapisz).
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.opsgenie.com/auth/login`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/opsgenie-tutorial/tutorial_general_400.png)
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-1. Na **konfiguracji OpsGenie** , kliknij przycisk **skonfigurować OpsGenie** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z sekcji krótki.
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/opsgenie-tutorial/tutorial_opsgenie_configure.png)
+6. Na **Konfigurowanie OpsGenie** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+### <a name="configure-opsgenie-single-sign-on"></a>Konfigurowanie OpsGenie logowanie jednokrotne
 
 1. Otwórz inne wystąpienie przeglądarki, a następnie zaloguj się do OpsGenie jako administrator.
 
-1. Kliknij przycisk **ustawienia**, a następnie kliknij przycisk **Single Sign On** kartę.
+2. Kliknij przycisk **ustawienia**, a następnie kliknij przycisk **Single Sign On** kartę.
    
     ![OpsGenie logowanie jednokrotne](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
 
-1. Aby włączyć logowanie Jednokrotne, zaznacz **włączone**.
+3. Aby włączyć logowanie Jednokrotne, zaznacz **włączone**.
    
     ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
-1. W **dostawcy** kliknij **usługi Azure Active Directory** kartę.
+4. W **dostawcy** kliknij **usługi Azure Active Directory** kartę.
    
     ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
 
-1. Na stronie okna dialogowego usługi Azure Active Directory wykonaj następujące czynności:
+5. Na stronie okna dialogowego usługi Azure Active Directory wykonaj następujące czynności:
    
     ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a. W **punktem końcowym SAML 2.0** pola tekstowego, Wklej **pojedynczy znak na adres URL usługi**wartości, które zostały skopiowane z witryny Azure portal.
+    a. W **punktem końcowym SAML 2.0** pola tekstowego, Wklej **adres URL logowania**wartości, które zostały skopiowane z witryny Azure portal.
     
     b. W **adres Url metadanych:** pola tekstowego, Wklej **adres Url metadanych Federacji aplikacji** wartości, które zostały skopiowane z witryny Azure portal.
     
     c. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/opsgenie-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/opsgenie-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/opsgenie-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/opsgenie-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-opsgenie-test-user"></a>Tworzenie użytkownika testowego OpsGenie
+
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do OpsGenie.
+
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **OpsGenie**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz **OpsGenie**.
+
+    ![Link OpsGenie na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-opsgenie-test-user"></a>Tworzenie użytkownika testowego OpsGenie
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w OpsGenie. 
 
 1. W oknie przeglądarki sieci web Zaloguj się do dzierżawy OpsGenie jako administrator.
 
-1. Przejdź do listy użytkowników, klikając **użytkownika** w panelu po lewej stronie.
+2. Przejdź do listy użytkowników, klikając **użytkowników** w panelu po lewej stronie.
    
-   ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
+    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
-1. Kliknij pozycję **Add User** (Dodaj użytkownika).
+3. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
-1. Na **Dodaj użytkownika** okno dialogowe, należy wykonać następujące czynności:
+4. W oknie dialogowym **Add User** (Dodawanie użytkownika) wykonaj następujące kroki:
    
-   ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
+    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-   a. W **E-mail** pole tekstowe, wpisz adres e-mail BrittaSimon zostały omówione w usłudze Azure Active Directory.
+    a. W **E-mail** pole tekstowe, wpisz adres e-mail BrittaSimon zostały omówione w usłudze Azure Active Directory.
    
-   b. W **imię i nazwisko** polu tekstowym wpisz **Britta Simon**.
+    b. W **imię i nazwisko** polu tekstowym wpisz **Britta Simon**.
    
-   c. Kliknij pozycję **Zapisz**. 
+    c. Kliknij pozycję **Zapisz**. 
 
 >[!NOTE]
 >Britta otrzymuje wiadomość e-mail z instrukcjami konfigurowania jej profilu.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do OpsGenie.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon OpsGenie, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **OpsGenie**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/opsgenie-tutorial/tutorial_opsgenie_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-Celem tej sekcji jest test konfiguracji logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
-
-Po kliknięciu kafelka OpsGenie w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji OpsGenie.
+Po kliknięciu kafelka OpsGenie w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze OpsGenie, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/opsgenie-tutorial/tutorial_general_01.png
-[2]: ./media/opsgenie-tutorial/tutorial_general_02.png
-[3]: ./media/opsgenie-tutorial/tutorial_general_03.png
-[4]: ./media/opsgenie-tutorial/tutorial_general_04.png
-
-[100]: ./media/opsgenie-tutorial/tutorial_general_100.png
-
-[200]: ./media/opsgenie-tutorial/tutorial_general_200.png
-[201]: ./media/opsgenie-tutorial/tutorial_general_201.png
-[202]: ./media/opsgenie-tutorial/tutorial_general_202.png
-[203]: ./media/opsgenie-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

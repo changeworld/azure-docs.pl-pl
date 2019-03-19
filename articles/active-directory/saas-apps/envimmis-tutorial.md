@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ab89f8ee-2507-4625-94bc-b24ef3d5e006
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad35d8d3ff04de7e3d99976d637c4fad47c0cd6c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 7bc40c5043cefad7892eaead8fe8058ac3707865
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Envi MMIS
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Envi MMIS w usłudze Azure AD, należy 
 
 **Aby dodać aplikację Envi MMIS z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -160,7 +160,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Envi MMIS,
 
     b. Przekaż plik metadanych pobrany z witryny Azure Portal, wybierając **ikonę wyboru pliku**.
 
-    d. Kliknij przycisk **OK**.
+    c. Kliknij przycisk **OK**.
 
 7. Po przekazaniu pobranego pliku metadanych pola zostaną automatycznie wypełnione. Kliknij pozycję **Update** (Aktualizuj)
 
@@ -184,7 +184,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -237,23 +237,23 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji Envi M
 
     ![Dodawanie pracownika](./media/envimmis-tutorial/user3.png)
 
-    a. W polu tekstowym **User Name (Nazwa użytkownika)** wpisz nazwę użytkownika konta Britta Simon, na przykład **brittasimon@contoso.com**.
+    a. W **nazwa_użytkownika** pola tekstowego, typ nazwy użytkownika konta Britta Simon, takich jak **brittasimon\@contoso.com**.
     
     b. W polu tekstowym **First Name (Imię)** wpisz imię użytkownika, na przykład **Britta**.
 
-    d. W polu tekstowym **Last Name (Nazwisko)** wpisz nazwisko użytkownika, na przykład **Simon**.
+    c. W polu tekstowym **Last Name (Nazwisko)** wpisz nazwisko użytkownika, na przykład **Simon**.
 
     d. Wprowadź tytuł użytkownika w polu tekstowym **Title (Tytuł)**.
     
-    e. W polu tekstowym **Email Address (Adres e-mail)** wpisz adres e-mail konta użytkownika Britta Simon, taki jak **brittasimon@contoso.com**.
+    e. W **adres E-mail** polu tekstowym wpisz adres e-mail konta Britta Simon, takich jak **brittasimon\@contoso.com**.
 
-    f. W polu tekstowym **SSO User Name (Nazwa użytkownika logowania jednokrotnego)** wpisz nazwę użytkownika konta Britta Simon, taką jak **brittasimon@contoso.com**.
+    f. W **nazwa użytkownika logowania jednokrotnego** pola tekstowego, typ nazwy użytkownika konta Britta Simon, takich jak **brittasimon\@contoso.com**.
 
     g. Kliknij pozycję **Zapisz**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Envi MMIS w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Envi MMIS, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: d6b5a8b31b78e21868a7f81c481c4fce1cd4e6f5
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192449"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847148"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Usługa Azure Monitor dzienniki publiczny podstawowy moduł równoważenia obciążenia
 
@@ -38,7 +38,7 @@ Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywani
 
 Rejestrowanie inspekcji jest automatycznie włączona dla wszystkich zasobów usługi Resource Manager. Musisz włączyć zdarzeń i rejestrowania sondy kondycji w celu rozpoczęcia zbierania danych dostępne za pośrednictwem tych dzienników. Wykonaj następujące kroki, aby włączyć rejestrowanie.
 
-Zaloguj się do [witryny Azure portal](http://portal.azure.com). Jeśli nie masz jeszcze usługi równoważenia obciążenia, [Tworzenie usługi load balancer](load-balancer-get-started-internet-arm-ps.md) przed kontynuowaniem.
+Zaloguj się do [witryny Azure portal](https://portal.azure.com). Jeśli nie masz jeszcze usługi równoważenia obciążenia, [Tworzenie usługi load balancer](load-balancer-get-started-internet-arm-ps.md) przed kontynuowaniem.
 
 1. W portalu, kliknij przycisk **Przeglądaj**.
 2. Wybierz **moduły równoważenia obciążenia**.

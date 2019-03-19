@@ -1,17 +1,17 @@
 ---
 title: Zapytania SQL w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o składni języka SQL, pojęciach związanych z bazami danych oraz zapytaniach języka SQL dla usługi Azure Cosmos DB. Język SQL może być używany jako język zapytań JSON w usłudze Azure Cosmos DB.
+description: Dowiedz się więcej o składni języka SQL, pojęciach związanych z bazami danych oraz zapytaniach języka SQL dla usługi Azure Cosmos DB. SQL może służyć jako język zapytań JSON w usłudze Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5833ee3964958437b7834ff25f1bce7837370fb1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013899"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -2113,9 +2113,9 @@ Drugi przykład przedstawia bardziej złożone zapytanie, które zwraca wiele wy
 
 Jeśli wyniki zapytania nie mieszczą się na jednej stronie wyników, interfejs API REST zwraca token kontynuacji za pośrednictwem nagłówka odpowiedzi `x-ms-continuation-token`. Klienci mogą dzielić wyniki na strony, uwzględniając nagłówek w kolejnych wynikach. Można także kontrolować liczbę wyników na stronie za pośrednictwem nagłówka liczby `x-ms-max-item-count`. Jeśli określone zapytanie ma funkcję agregacji, taką jak `COUNT`, na stronie zapytania może zostać zwrócona częściowo zagregowana wartość za pośrednictwem strony wyników. Klienci muszą wykonać agregację drugiego poziomu za pośrednictwem tych wyników w celu wygenerowania wyników końcowych, na przykład sumy liczebności zwróconych na poszczególnych stronach w celu zwrócenia liczebności łącznej.
 
-Aby zarządzać zasadami spójności danych dla zapytań, należy użyć nagłówka `x-ms-consistency-level`, tak jak we wszystkich żądaniach interfejsu API REST. W celu zapewnienia spójności sesji należy również wykonać echo najnowszego nagłówka pliku cookie `x-ms-session-token` w żądaniu zapytania. Zasady indeksowania kontenera uwzględnionego w zapytaniu mogą również wpływać na spójność wyników zapytania. Dzięki domyślnym ustawieniom zasad indeksowania indeks związany z kontenerami jest zawsze aktualny, a zawartość elementów i wyniki zapytania są zgodne z poziomem spójności wybranym dla danych. Jeśli poziom zasady indeksowania został obniżony do Z opóźnieniem, zapytanie może zwrócić nieaktualne wyniki. Aby uzyskać więcej informacji, zobacz [Poziomy spójności w usłudze Azure Cosmos DB][consistency-levels].
+Aby zarządzać zasadami spójności danych dla zapytań, należy użyć nagłówka `x-ms-consistency-level`, tak jak we wszystkich żądaniach interfejsu API REST. W celu zapewnienia spójności sesji należy również wykonać echo najnowszego nagłówka pliku cookie `x-ms-session-token` w żądaniu zapytania. Zasady indeksowania kontenera uwzględnionego w zapytaniu mogą również wpływać na spójność wyników zapytania. Dzięki domyślnym ustawieniom zasad indeksowania indeks związany z kontenerami jest zawsze aktualny, a zawartość elementów i wyniki zapytania są zgodne z poziomem spójności wybranym dla danych. Aby uzyskać więcej informacji, zobacz [Poziomy spójności w usłudze Azure Cosmos DB][consistency-levels].
 
-Jeśli zasady indeksowania skonfigurowane w kontenerze nie mogą obsługiwać określonego zapytania, serwer usługi Azure Cosmos DB zwraca błąd 400 „Nieprawidłowe żądanie”. Ten komunikat o błędzie jest zwracany w przypadku zapytań dotyczących zakresu wykonywanych względem ścieżek skonfigurowanych dla wyszukiwań skrótu (równości) oraz ścieżek jawnie wykluczonych z indeksowania. Można określić nagłówek `x-ms-documentdb-query-enable-scan`, aby zezwolić zapytaniu na przeprowadzenie skanowania, gdy indeks nie będzie dostępny.
+Jeśli zasady indeksowania skonfigurowane w kontenerze nie mogą obsługiwać określonego zapytania, serwer usługi Azure Cosmos DB zwraca błąd 400 „Nieprawidłowe żądanie”. Ten komunikat o błędzie jest zwracany dla zapytań ze ścieżkami jawnie wykluczone z indeksowania. Można określić nagłówek `x-ms-documentdb-query-enable-scan`, aby zezwolić zapytaniu na przeprowadzenie skanowania, gdy indeks nie będzie dostępny.
 
 Aby uzyskać szczegółowe metryki dotyczące wykonywania zapytań, można ustawić nagłówek `x-ms-documentdb-populatequerymetrics` na `True`. Aby uzyskać więcej informacji, zobacz [SQL query metrics for Azure Cosmos DB (Metryki zapytań języka SQL dla usługi Azure Cosmos DB)](sql-api-query-metrics.md).
 

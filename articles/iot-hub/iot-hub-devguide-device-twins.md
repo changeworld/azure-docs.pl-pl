@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 4cbb8e389f403aeb149998acc21956ebce40be78
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 4ad75a7ba4e2f6060824f3cf1c87a42f8fa32843
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011504"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113150"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używają bliźniaczych reprezentacji urządzeń w usłudze IoT Hub
 
@@ -180,44 +180,44 @@ Zaplecze rozwiązania działa w bliźniaczej reprezentacji urządzenia przy uży
 
 * **Otrzymuj powiadomienia bliźniaczej reprezentacji**. Ta operacja umożliwia zapleczu rozwiązania otrzymywać powiadomienia po zmodyfikowaniu bliźniaczej reprezentacji. Aby to zrobić, rozwiązanie IoT musi utworzyć trasę i ustaw źródło danych jest równa *twinChangeEvents*. Domyślnie nie takie trasy wstępnie istnieje, więc są wysyłane żadne powiadomienia bliźniaczej reprezentacji. Jeśli szybkość zmian jest zbyt duża lub z innych powodów, takich jak wewnętrzne błędy, usługa IoT Hub może wysłać tylko jedno powiadomienie, który zawiera wszystkie zmiany. W związku z tym jeśli aplikacja wymaga inspekcji i rejestrowania dla wszystkich pośrednich stanów niezawodne, należy użyć komunikatów z urządzenia do chmury. Bliźniacza reprezentacja komunikat powiadomienia zawiera właściwości i treść.
 
-   - Właściwości
+  - Właściwości
 
-   | Name (Nazwa) | Wartość |
-   | --- | --- |
-   $content — typ | application/json |
-   $iothub-enqueuedtime |  Czas wysłania powiadomienia |
-   $iothub-message-source | twinChangeEvents |
-   $content — kodowanie | UTF-8 |
-   deviceId | Identyfikator urządzenia |
-   hubName | Nazwa centrum IoT Hub |
-   operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) sygnatura czasowa operacji |
-   iothub-message-schema | deviceLifecycleNotification |
-   opType | "replaceTwin" lub "updateTwin" |
+    | Name (Nazwa) | Wartość |
+    | --- | --- |
+    $content — typ | application/json |
+    $iothub-enqueuedtime |  Czas wysłania powiadomienia |
+    $iothub-message-source | twinChangeEvents |
+    $content — kodowanie | UTF-8 |
+    deviceId | Identyfikator urządzenia |
+    hubName | Nazwa centrum IoT Hub |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) sygnatura czasowa operacji |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" lub "updateTwin" |
 
-   Właściwości systemu komunikat mają prefiks `$` symboli.
+    Właściwości systemu komunikat mają prefiks `$` symboli.
 
-   - Treść
+  - Treść
         
-   Ta sekcja zawiera wszystkie zmiany bliźniaczą reprezentację w formacie JSON. Używa tego samego formatu poprawek, z tą różnicą, że może zawierać wszystkie sekcje bliźniaczej reprezentacji: tagi, properties.reported, properties.desired i czy zawiera on elementy "$metadata". Na przykład:
+    Ta sekcja zawiera wszystkie zmiany bliźniaczą reprezentację w formacie JSON. Używa tego samego formatu poprawek, z tą różnicą, że może zawierać wszystkie sekcje bliźniaczej reprezentacji: tagi, properties.reported, properties.desired i czy zawiera on elementy "$metadata". Na przykład:
 
-   ```json
-   {
-       "properties": {
-           "desired": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           },
-           "reported": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           }
-       }
-   }
-   ```
+    ```json
+    {
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
+    }
+    ```
 
 Obsługa wszystkich poprzednich operacji [optymistycznej współbieżności](iot-hub-devguide-device-twins.md#optimistic-concurrency) i wymagają **ServiceConnect** uprawnienia, zgodnie z definicją w [kontrolować dostęp do usługi IoT Hub](iot-hub-devguide-security.md).
 

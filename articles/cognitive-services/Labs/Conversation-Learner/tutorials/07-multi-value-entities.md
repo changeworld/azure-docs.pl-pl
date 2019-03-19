@@ -10,22 +10,22 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8544d63f38f88a0e623dff343bf8b5133931b70b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 07550ed9c78aa584e55403d225eef4bcff33b057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167426"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Jak używać wielowartościowych jednostek z modelu uczeń konwersacji
 Ten samouczek pokazuje właściwości wielu wartości jednostki.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Wiele wartości jednostki samouczka (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_MultiValued_Preview)](https://aka.ms/cl_Tutorial_v3_MultiValued)
+[![Samouczek wielowartościowych jednostki (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_MultiValued_Preview)](https://aka.ms/cl_Tutorial_v3_MultiValued)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczek
+Ten samouczek wymaga, że ogólne samouczek Bot działa
 
     npm run tutorial-general
 
@@ -36,65 +36,65 @@ Jednostki oznaczone jako wielowartościowy odniesie każdego rozpoznane wystąpi
 
 ## <a name="steps"></a>Kroki
 
+Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
+
 ### <a name="create-the-model"></a>Tworzenie modelu
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk "Nowy Model".
-2. W polu "Nazwa" wpisz "MultiValueEntities" i naciśnij klawisz enter.
-3. Kliknij przycisk "Utwórz".
+1. Wybierz **nowy Model**.
+2. Wprowadź **MultiValueEntities** dla **nazwa**.
+3. Wybierz pozycję **Utwórz**.
 
 ### <a name="entity-creation"></a>Tworzenie jednostki
 
-1. Na lewym panelu kliknij przycisk "Jednostki", a następnie przycisku "Nowa jednostka".
-2. Wybierz pozycję "Uczony niestandardowe" dla "Typu jednostek".
-3. Wpisz "toppings", "Nazwa jednostki".
-4. Sprawdź "Wielowartościowe" pole wyboru.
-    - Wielowartościowy jednostki są gromadzone co najmniej jednej wartości w jednostce.
-5. Zaznacz to pole wyboru "Negatable".
-    - Właściwość "Negatable" zostało omówione w innym samouczku.
-6. Kliknij przycisk "Utwórz".
+1. Wybierz **jednostek** w lewym panelu, a następnie **Nowa jednostka**.
+2. Wybierz **niestandardowych skonfigurowanych pod kątem** dla **typu jednostki**.
+3. Wprowadź **toppings** dla **nazwa jednostki**.
+4. Sprawdź **wielowartościowe** umożliwiające jednostki są gromadzone co najmniej jedną wartość.
+5. Sprawdź **można negować**.
+6. Wybierz pozycję **Utwórz**.
 
-![](../media/tutorial6_entities.PNG)
+![](../media/T07_entity_create.png)
 
 ### <a name="create-the-first-action"></a>Tworzenie pierwszej akcji
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. W "Botów odpowiedzi...", wpisz "Oto Twoja toppings: $toppings"
-    - Wiodący znak dolara wskazuje odwołanie do jednostki
-3. Kliknij przycisk "Utwórz".
+1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
+2. Wprowadź **Oto Twoja toppings: $toppings** dla **odpowiedzi Botów...** . Wiodący znak dolara wskazuje odwołanie do jednostki.
+3. Wybierz pozycję **Utwórz**.
+
+![](../media/T07_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>Tworzenie drugiej akcji
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. W "Botów odpowiedzi..." pola, wpisz "jakie toppings chcesz użyć?"
-3. W polu "Dyskwalifikacji uprawnia" wpisz "toppings."
-4. Kliknij przycisk "Utwórz".
+1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
+2. Wprowadź **toppings, które chcesz użyć?** dla **odpowiedzi Botów...** .
+3. Wprowadź **toppings** dla **dyskwalifikacji uprawnia**.
+4. Wybierz pozycję **Utwórz**.
 
 Masz teraz dwie akcje.
 
-![](../media/tutorial6_actions.PNG)
+![](../media/T07_action_create_2.png)
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hi."
-3. Kliknij przycisk "Wynik akcje".
-4. Wybierz odpowiedź "jakie toppings czy?"
-    - Percentyla wynosi 100%, zgodnie z jedynymi prawidłowymi akcji na podstawie ograniczeń.
-5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "ser i grzyby"
-6. Kliknij przycisk "ser", a następnie wybierz etykietę "+ toppings"
-7. Kliknij przycisk "grzyby", a następnie wybierz etykietę "+ toppings"
-8. Kliknij przycisk "Wynik akcje".
-9. Wybierz odpowiedź, "Oto Twoja toppings: $toppings"
-10. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Dodaj chili"
-11. Kliknij przycisk "chili", a następnie wybierz etykietę "+ toppings"
-12. Kliknij przycisk "Wynik akcje".
-13. Wybierz odpowiedź, "Oto Twoja toppings: $toppings"
-14. W panelu rozmowy, w której wyświetlany jest tekst "Wpisz wiadomość...", wpisz "Usuń ser"
-15. Kliknij przycisk "ser", a następnie wybierz etykietę "-toppings"
-16. Kliknij przycisk "Wynik akcje".
-17. Wybierz odpowiedź, "Oto Twoja toppings: $toppings"
+1. Wybierz **okien dialogowych Train** w lewym panelu, a następnie **okno dialogowe Nowy Train**.
+2. Wprowadź **cześć** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
+3. Wybierz **wynik akcji**.
+4. Wybierz **toppings, które chcesz użyć?** z listy akcji. Percentyla wynosi 100%, co jedyne prawidłowe działanie na podstawie ograniczeń.
+5. Wprowadź **ser i grzyby** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
+6. Wyróżnij **ser** polecenie **+ toppings**.
+7. Wyróżnij **grzyby** polecenie **+ toppings**.
+8. Wybierz **wynik akcji**.
+9. Wybierz **Oto Twoja toppings: $toppings** z listy akcji.
+10. Wprowadź **Dodaj chili** dla użytkownika wypowiedź dalej w panelu po lewej stronie rozmowy.
+11. Wyróżnij **chili** polecenie **+ toppings**.
+12. Wybierz **wynik akcji**.
+13. Wybierz **Oto Twoja toppings: $toppings** z listy akcji.
+14. Wprowadź **Usuń ser** dla wypowiedź trzeciego użytkownika w panelu po lewej stronie rozmowy.
+15. Wyróżnij **ser** polecenie **-toppings**.
+16. Wybierz **wynik akcji**.
+17. Wybierz **Oto Twoja toppings: $toppings** z listy akcji.
 
-![](../media/tutorial5_dialogs.PNG)
+![](../media/T07_training.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

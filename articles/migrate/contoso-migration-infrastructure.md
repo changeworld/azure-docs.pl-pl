@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 6ee05af0391311b4782211807f41ce099a6c24a2
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876684"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso — wdrażanie infrastruktury migracji
 
@@ -101,10 +101,10 @@ Po płacenia za usługi Azure, firma Contoso potrzebuje ustalenie sposobu zarzą
 - Rejestracji Enterprise na platformie Azure definiuje, jak firma kształty i korzysta z usług platformy Azure i definiuje strukturę zarządu core.
 - Pierwszym krokiem Contoso stwierdził strukturę (znana jako enterprise scaffold rejestracji Enterprise. Contoso używane [w tym artykule](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance) pomagające zrozumieć i projektowania szkieletu.
 - Na razie Contoso scrumowy zdecydował się korzystać funkcjonalne podejście do zarządzania subskrypcjami.
-    - W przedsiębiorstwie użyje jednego działu IT, który kontroluje budżetu na platformie Azure. Są to grupy tylko dla subskrypcji.
-    - Contoso rozszerzy tego modelu w przyszłości, tak, aby dołączyć inne grupy firmowej jako działom w rejestracji Enterprise.
-    - Wewnątrz dział IT firmy Contoso ma strukturę dwiema subskrypcjami, środowiskami produkcyjnym i deweloperskim.
-    - Jeśli Contoso wymaga dodatkowych subskrypcji w przyszłości, musi ona zarządzanie dostępem, zasad i zgodności dla tych subskrypcji. Contoso zostaną wprowadzone przez wprowadzenie [grup zarządzania systemu Azure](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), jako dodatkową warstwę powyżej subskrypcji.
+  - W przedsiębiorstwie użyje jednego działu IT, który kontroluje budżetu na platformie Azure. Są to grupy tylko dla subskrypcji.
+  - Contoso rozszerzy tego modelu w przyszłości, tak, aby dołączyć inne grupy firmowej jako działom w rejestracji Enterprise.
+  - Wewnątrz dział IT firmy Contoso ma strukturę dwiema subskrypcjami, środowiskami produkcyjnym i deweloperskim.
+  - Jeśli Contoso wymaga dodatkowych subskrypcji w przyszłości, musi ona zarządzanie dostępem, zasad i zgodności dla tych subskrypcji. Contoso zostaną wprowadzone przez wprowadzenie [grup zarządzania systemu Azure](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), jako dodatkową warstwę powyżej subskrypcji.
 
     ![Struktura przedsiębiorstwa](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ Zapewniając i kontrolować dostęp użytkowników do zasobów platformy Azure z
 
 Firma Contoso używa bezpłatna wersja usługi Azure AD, która została uwzględniona z subskrypcją platformy Azure. Administratorzy firmy Contoso Skonfiguruj katalog usługi AD w następujący sposób:
 
-1. W [witryny Azure portal](http://portal.azure.com/), przejściu do **Utwórz zasób** > **tożsamości** > **usługi Azure Active Directory**.
+1. W [witryny Azure portal](https://portal.azure.com/), przejściu do **Utwórz zasób** > **tożsamości** > **usługi Azure Active Directory**.
 2. W **Tworzenie katalogu**, określają nazwę katalogu, początkowa nazwa domeny i region, w którym można utworzyć katalogu usługi Azure AD.
 
     ![Tworzenie usługi Azure AD](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -581,18 +581,18 @@ Po zaktualizowaniu ustawień sieci, Administratorzy firmy Contoso jest gotowe do
 
 1. W witrynie Azure portal ich wdrażania nowej maszyny Wirtualnej systemu Windows Server z odpowiednią siecią wirtualną.
 2. Tworzą zestawy dostępności w każdej lokalizacji maszyny wirtualnej. Zestawy dostępności wykonaj następujące czynności:
-    - Upewnij się, że usługa Azure Service fabric oddziela maszyn wirtualnych do różnych infrastruktur w regionie platformy Azure. 
-    -  Umożliwia Contoso kwalifikował się do umowy SLA 99,95% czasu dostępności dla maszyn wirtualnych na platformie Azure.  [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
+   - Upewnij się, że usługa Azure Service fabric oddziela maszyn wirtualnych do różnych infrastruktur w regionie platformy Azure. 
+   - Umożliwia Contoso kwalifikował się do umowy SLA 99,95% czasu dostępności dla maszyn wirtualnych na platformie Azure.  [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
-    ![Grupa dostępności](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![Grupa dostępności](./media/contoso-migration-infrastructure/availability-group.png) 
 3. Po wdrożeniu maszyny Wirtualnej otwarciu interfejsu sieciowego dla maszyny Wirtualnej. Ustaw jako prywatny adres IP na statyczne i podaj prawidłowy adres.
 
     ![VM NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. Teraz mogą dołączyć nowy dysk danych do maszyny Wirtualnej. Ten dysk zawiera bazy danych usługi Active Directory i udziału sysvol. 
-    - Rozmiar dysku określi liczbę operacji We/Wy, która go obsługuje.
-    - Wraz z upływem czasu rozmiar dysku może być konieczne zwiększa się wraz z rozwojem środowiska.
-    - Dysk nie należy ustawiać odczytu/zapisu dla buforowania hosta. Active Directory bazy danych nie obsługują tego.
+   - Rozmiar dysku określi liczbę operacji We/Wy, która go obsługuje.
+   - Wraz z upływem czasu rozmiar dysku może być konieczne zwiększa się wraz z rozwojem środowiska.
+   - Dysk nie należy ustawiać odczytu/zapisu dla buforowania hosta. Active Directory bazy danych nie obsługują tego.
 
      ![Active Directory dysku](./media/contoso-migration-infrastructure/ad-disk.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810274"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121353"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w usłudze Log Analytics i usługi Application Insights
 
@@ -53,7 +53,7 @@ Log Analytics jest elastyczne magazynu, umożliwiająca podczas określający sc
     ```
     search "[username goes here]"
     ```
-Pamiętaj, że do wyszukiwania nie tylko dla nazwy użytkownika czytelny dla człowieka, ale także identyfikatory GUID, które można bezpośrednio prześledzić dla określonego użytkownika!
+  Pamiętaj, że do wyszukiwania nie tylko dla nazwy użytkownika czytelny dla człowieka, ale także identyfikatory GUID, które można bezpośrednio prześledzić dla określonego użytkownika!
 * *Identyfikatory urządzeń*: Np. identyfikatory użytkowników w identyfikatorach urządzeń są czasami traktowane jako "private". Użyj tej samej metody wymienionych powyżej dla nazwy użytkownika do identyfikowania tabel w przypadku, gdy może to być istotna. 
 * *Dane niestandardowe*: Usługa log Analytics umożliwia zbieranie w różnych metod: dzienników niestandardowych i pól niestandardowych, [interfejsu API modułu zbierającego dane HTTP](../../azure-monitor/platform/data-collector-api.md) , i niestandardowe dane zbierane w ramach dzienniki zdarzeń systemu. Wszystkie te są podatne na zawierający dane prywatne i należy zbadać, aby sprawdzić, czy istnieje tych danych.
 * *Dane przechwycone przez rozwiązanie*: Ponieważ mechanizm rozwiązania jest nieograniczony, zaleca się przegląd wszystkich tabel, generowane przez rozwiązania w celu zapewnienia zgodności.

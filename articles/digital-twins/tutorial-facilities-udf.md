@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: dkshir
-ms.openlocfilehash: 465dd2a69ad42b8b6a88268eb35a1aa7d8d922c5
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229400"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535386"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Samouczek: aprowizowanie budynku i monitorowanie warunków pracy za pomocą usługi Azure Digital Twins
 
@@ -90,7 +90,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
         });
     ```
 
-    d. Dodaj następujący wiersz po instrukcji definiującej zmienną `var carbonDioxideValue` pod komentarzem `// Add your sensor latest value here`:
+    c. Dodaj następujący wiersz po instrukcji definiującej zmienną `var carbonDioxideValue` pod komentarzem `// Add your sensor latest value here`:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
@@ -257,14 +257,14 @@ W przypadku spełnienia monitorowanego warunku funkcja zdefiniowana przez użytk
 
 Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usunąć zasoby utworzone w tym samouczku:
 
-1. W menu po lewej stronie w witrynie [Azure Portal](http://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
+1. W menu po lewej stronie w witrynie [Azure Portal](https://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
 
     > [!TIP]
     > Jeśli podczas usuwania wystąpienia usługi Digital Twins wystąpił problem, została wdrożona aktualizacja usługi zawierająca poprawkę. Ponów próbę usunięcia wystąpienia.
 
 2. Jeśli będzie to konieczne, możesz usunąć przykładowe aplikacje na komputerze służbowym.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz po zaaprowizowaniu przestrzeni i utworzeniu platformy do wyzwalania niestandardowych powiadomień możesz przejść do dowolnego z następujących samouczków:
 

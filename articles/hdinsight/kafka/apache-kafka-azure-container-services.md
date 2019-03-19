@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b9b4af353e5bbd36f1f8d7468c38542a0fabda85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602073"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112181"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Usługa Azure Kubernetes Service za pomocą platformy Apache Kafka w HDInsight
 
@@ -81,17 +81,17 @@ Jeśli nie masz już klaster AKS, użyj jednej z następujących dokumentów, ab
 
 5. Aby skonfigurować komunikację równorzędną między siecią HDInsight i sieć klastra AKS, wybierz sieć wirtualną, a następnie wybierz pozycję __komunikacje równorzędne__. Wybierz __+ Dodaj__ i użyj następujących wartości do wypełnienia formularza:
 
-    * __Nazwa__: Wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
-    * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla **klastra AKS**.
+   * __Nazwa__: Wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
+   * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla **klastra AKS**.
 
-    Pozostaw inne pola na wartość domyślną, a następnie wybierz __OK__ do skonfigurowania komunikacji równorzędnej.
+     Pozostaw inne pola na wartość domyślną, a następnie wybierz __OK__ do skonfigurowania komunikacji równorzędnej.
 
 6. Aby skonfigurować komunikację równorzędną między siecią klastra AKS i siecią HDInsight, wybierz __AKS klastra sieć wirtualną__, a następnie wybierz pozycję __komunikacje równorzędne__. Wybierz __+ Dodaj__ i użyj następujących wartości do wypełnienia formularza:
 
-    * __Nazwa__: Wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
-    * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla __klastra HDInsight__.
+   * __Nazwa__: Wprowadź unikatową nazwę dla tej konfiguracji komunikacji równorzędnej.
+   * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla __klastra HDInsight__.
 
-    Pozostaw inne pola na wartość domyślną, a następnie wybierz __OK__ do skonfigurowania komunikacji równorzędnej.
+     Pozostaw inne pola na wartość domyślną, a następnie wybierz __OK__ do skonfigurowania komunikacji równorzędnej.
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>Instalowanie platformy Apache Kafka w HDInsight
 

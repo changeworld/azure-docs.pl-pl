@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: dee0f55d816cae3b178990a432c37d3082d26de3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 195c39562e36000597d04bb760741ec7f40203c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844677"
 ---
 # <a name="data-filtering"></a>Filtrowanie danych
 
@@ -45,7 +45,7 @@ Niestandardowe w usłudze Translator usuwa zdań, które znajdują się w testó
 Zastąp wielu znaków interpunkcyjnych koniec zdania przy użyciu jednego wystąpienia.  
 
 ## <a name="japanese-character-normalization"></a>Normalizacja japońskich znaków
-Normalizuj zduplikowane znaki japońskie: Konwertuj na połowę szerokości znaków pełnej szerokości.
+Znaki o połowę szerokości, należy przekonwertować całą szerokość liter i cyfr.
 
 ## <a name="unescaped-xml-tags"></a>O niezmienionym znaczeniu tagi XML
 Filtrowanie tagów o niezmienionym znaczeniu przekształceń na o zmienionym znaczeniu znaczniki:

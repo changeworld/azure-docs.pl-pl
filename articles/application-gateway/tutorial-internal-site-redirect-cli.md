@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9f82ed280d18be304129bf8b7807213a75110df2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 186d0bb9161d70d9e458d25dc1b9cbe518bb790e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082742"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
 
-Można użyć wiersza polecenia platformy Azure, aby skonfigurować [przekierowywanie ruchu w sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku utworzysz puli zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły na podstawie domen, których jesteś właścicielem, aby upewnić się, że ruch w sieci web dociera do odpowiedniej puli. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www.contoso.com* i *www.contoso.org*.
+Można użyć wiersza polecenia platformy Azure, aby skonfigurować [przekierowywanie ruchu w sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku utworzysz puli zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły na podstawie domen, których jesteś właścicielem, aby upewnić się, że ruch w sieci web dociera do odpowiedniej puli. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www\.contoso.com* i *www\.contoso.org*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -101,7 +101,7 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 
 ## <a name="add-listeners-and-rules"></a>Dodawanie odbiorników i reguł 
 
-Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www.contoso.com* i *www.contoso.org*.
+Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www\.contoso.com* i *www\.contoso.org*.
 
 Dodaj odbiorniki zaplecza, które są wymagane do kierowania ruchu, używając polecenia [az network application-gateway http-listener create](/cli/azure/network/application-gateway).
 
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z *www.consoto.org* do odbiornika dla *www.contoso.com* w bramy aplikacji przy użyciu [az network application-gateway Tworzenie konfiguracji przekierowania](/cli/azure/network/application-gateway/redirect-config).
+Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z *www\.consoto.org* do odbiornika dla *www\.contoso.com* w usłudze application gateway przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -213,7 +213,7 @@ Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http://ww
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 
-Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika www.contoso.com.
+Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika dla www\.contoso.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a72a4244e3cae081fe9a962bbb80d3ce19822d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 608965160f4abb57ccdfe8b8256fef971754b4d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000311"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -39,7 +39,7 @@ ms.locfileid: "39113226"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [ha-guide]:sap-high-availability-guide.md
@@ -210,9 +210,9 @@ Usługa Azure Load Balancer zapewnia *wewnętrznego modułu równoważenia obci�
 
 Wdrażanie wewnętrznego modułu równoważenia obciążenia w grupie zasobów, która zawiera węzły klastra. Następnie należy skonfigurować wszystkie niezbędne portu reguły przekazywania za pomocą sondy porty wewnętrznego modułu równoważenia obciążenia. Klienci mogą łączyć się za pomocą nazwy hosta wirtualnego. Serwer DNS jest rozpoznawana jako adres IP klastra i port uchwyty modułu równoważenia obciążenia wewnętrznego, przekazywania do aktywnego węzła klastra.
 
-![Rysunek 1: Windows awaryjnej w konfiguracji na platformie Azure bez udostępnionego dysku][sap-ha-guide-figure-1001]
+![Rysunek 1: Windows awaryjnej konfiguracji na platformie Azure bez udostępnionego dysku][sap-ha-guide-figure-1001]
 
-_**Rysunek 1:** konfiguracji na platformie Azure bez udostępnionego dysku awaryjnej w systemie Windows Server_
+_**Rysunek 1:** Konfiguracja na platformie Azure bez udostępnionego dysku awaryjnej w systemie Windows Server_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS wysokiej dostępności z dyskami udostępnionego klastra
 W Windows wystąpienie SAP ASCS/SCS zawiera usług SAP central services, serwer komunikatów SAP, procesów serwera umieścić w kolejce i pliki globalne hosta SAP. Pliki globalne hosta SAP przechowywać centralnej pliki dla całego systemu SAP.
@@ -221,25 +221,25 @@ Wystąpienie SAP ASCS/SCS zawiera następujące składniki:
 
 * Usług SAP central services:
     * Dwa procesy, wiadomości i umieścić serwer i < ASCS/SCS wirtualny host name >, który umożliwia dostęp do tych dwóch procesów.
-    * Plik struktury: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<numer wystąpienia\>
+    * Struktura plików: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<numer wystąpienia\>
 
 
 * Pliki globalne hosta SAP:
-    * Plik struktury: S:\usr\sap\\&lt;SID&gt;\SYS\....
-    * Sapmnt udział plików, która umożliwia dostęp do tych globalnego S:\usr\sap\\&lt;SID&gt;\SYS\... plików przy użyciu następującej ścieżki UNC:
+  * Struktura plików: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * Sapmnt udział plików, która umożliwia dostęp do tych globalnego S:\usr\sap\\&lt;SID&gt;\SYS\... plików przy użyciu następującej ścieżki UNC:
 
-     \\\\< nazwa hosta wirtualnego ASCS/SCS > \sapmnt\\&lt;SID&gt;\SYS\....
+    \\\\< nazwa hosta wirtualnego ASCS/SCS > \sapmnt\\&lt;SID&gt;\SYS\....
 
 
-![Rysunek 2: Procesów struktury plików i udział plików sapmnt hosta globalnego wystąpienia SAP ASCS/SCS][sap-ha-guide-figure-8001]
+![Rysunek 2: Procesy, struktura plików i udział plików sapmnt hosta globalnego wystąpienia SAP ASCS/SCS][sap-ha-guide-figure-8001]
 
-_**Rysunek 2:** procesów, struktura plików i udział plików sapmnt hosta globalnego wystąpienia SAP ASCS/SCS_
+_**Rysunek 2:** Procesy, struktura plików i udział plików sapmnt hosta globalnego wystąpienia SAP ASCS/SCS_
 
 W ustawieniach wysokiej dostępności klastra są wystąpienia SAP ASCS/SCS. Używamy *udostępnione dyski klastrowane* (dysk S, w tym przykładzie), aby umieścić SAP ASCS/SCS i SAP globalne obsługi plików.
 
-![Rysunek 3: Oprogramowanie SAP ASCS/SCS HA architektury z udostępnionym dyskiem][sap-ha-guide-figure-8002]
+![Rysunek 3: Architektura SAP ASCS/SCS wysokiej dostępności z udostępnionym dyskiem][sap-ha-guide-figure-8002]
 
-_**Rysunek 3:** architektura SAP ASCS/SCS wysokiej dostępności z udostępnionym dyskiem_
+_**Rysunek 3:** Architektura SAP ASCS/SCS wysokiej dostępności z udostępnionym dyskiem_
 
 > [!IMPORTANT]
 > Uruchom te dwa składniki w ramach tego samego wystąpienia SAP ASCS/SCS:
@@ -248,9 +248,9 @@ _**Rysunek 3:** architektura SAP ASCS/SCS wysokiej dostępności z udostępniony
 >
 
 
-![Rysunek 4: Oprogramowanie SAP ASCS/SCS HA architektury z udostępnionym dyskiem][sap-ha-guide-figure-8003]
+![Rysunek 4: Architektura SAP ASCS/SCS wysokiej dostępności z udostępnionym dyskiem][sap-ha-guide-figure-8003]
 
-_**Rysunek 4:** architektura SAP ASCS/SCS wysokiej dostępności z udostępnionym dyskiem_
+_**Rysunek 4:** Architektura SAP ASCS/SCS wysokiej dostępności z udostępnionym dyskiem_
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Udostępnione dyski na platformie Azure oprogramowanie SIOS DataKeeper
 
@@ -266,9 +266,9 @@ Aby utworzyć zasób udostępnionego dysku dla klastra:
 
 Uzyskaj więcej informacji o [oprogramowanie SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
 
-![Rysunek 5: Windows Server awaryjnej w konfiguracji na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
+![Rysunek 5: Konfiguracja na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper awaryjnej w systemie Windows Server][sap-ha-guide-figure-1002]
 
-_**Rysunek 5:** konfiguracji na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper awaryjnej Windows_
+_**Rysunek 5:** Konfiguracja na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper awaryjnej Windows_
 
 > [!NOTE]
 > Udostępnione dyski nie ma potrzeby wysokiej dostępności przy użyciu niektórych produktów systemu DBMS, takich jak program SQL Server. AlwaysOn programu SQL Server są replikowane DBMS plików danych i dziennika z dysku lokalnego o jednym węźle klastra na lokalny dysk w innym węźle klastra. W tym przypadku konfiguracji klastra Windows nie wymaga udostępnionego dysku.

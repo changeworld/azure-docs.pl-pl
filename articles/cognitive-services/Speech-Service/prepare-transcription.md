@@ -1,7 +1,7 @@
 ---
-title: Tekst wskazówki dotyczące szkolenia usługi mowy
+title: Wytyczne transkrypcji dla szkolenie modeli usług przetwarzania mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przygotować tekstu do dostosowania akustyczne i modeli językowych i czcionki głosowe usługi mowy.
+description: Dowiedz się, jak przygotować tekstu do dostosowania akustyczne i modeli językowych i głosów dla usług przetwarzania mowy.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d7508ed9cf1807fa05c57a1d60c804af7d2244f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857179"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897218"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Tekst wskazówki dotyczące używania usługi mowy
 
 Aby dostosować **zamiana mowy na tekst** lub **zamiany tekstu na mowę**, musisz podać tekst i mowy. Każdy wiersz w tekście odnosi się do pojedynczego wypowiedź. Tekst powinien odpowiadać mowy w możliwie najlepszy sposób. Tekst jest nazywany *transkrypcji*, i należy ją utworzyć w określonym formacie.
 
-Usługa rozpoznawania mowy normalizuje dane wejściowe zapewnienie spójnego tekstu. 
+Usługi mowy normalizacji danych wejściowych zapewnienie spójnego tekstu.
 
 W tym artykule opisano oba rodzaje normalizations. Wytyczne się nieco różnić dla różnych języków.
 
@@ -39,7 +39,7 @@ Unikaj stosowania rozszerzonych (Latin-1) i znaków interpunkcyjnych Unicode. Te
 
 ### <a name="text-normalization-rules-for-english"></a>Tekst reguł normalizacji w języku angielskim
 
-Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji:
+Usługi mowy wykonuje następujące reguły normalizacji:
 
 * Przy użyciu małych liter dla całego tekstu
 * Usunięcie wszystkich znaków interpunkcyjnych z wyjątkiem apostrofy wewnętrznego programu word
@@ -64,7 +64,7 @@ Stosuje się następujące normalizacji do Twojej zapisy tekstu:
 * Niestandardowe ciągi numeryczne (na przykład niektóre daty lub formularzy księgowości) powinien napisanych w słowach.
 * Wyrazy z znaki spoza alfabetu lub mieszane znaki alfanumeryczne powinny transkrybowanego, jak wymowa.
 * Pozostaw skróty, które są wymawiane jako słowa w charakterze (na przykład "radarowy", "laserowa," "RAM" lub "NATO").
-* Zapis litery skrótów, które są wymawiane jako osobne, za pomocą litery rozdzielone spacjami (na przykład "IBM," "CPU", "FBI", "Do ustalenia" lub "NaN"). 
+* Zapis litery skrótów, które są wymawiane jako osobne, za pomocą litery rozdzielone spacjami (na przykład "IBM," "CPU", "FBI", "Do ustalenia" lub "NaN").
 
 Oto kilka przykładów:
 
@@ -83,7 +83,7 @@ Oto kilka przykładów:
 
 ## <a name="chinese-zh-cn"></a>Chiński (zh-cn)
 
-Dane tekstowe, który jest przekazywany do Custom Speech Service należy używać kodowania UTF-8 za pomocą znacznika kolejności bajtów. Wypowiedź jeden na wiersz można zapisać pliku.
+Dane tekstowe, który zostanie przekazany do usług przetwarzania mowy niestandardowego należy używać kodowania UTF-8 za pomocą znacznika kolejności bajtów. Wypowiedź jeden na wiersz można zapisać pliku.
 
 Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą być uwzględnione przypadkowo podczas przygotowywania danych w edytorze tekstu lub scrape danych na stronach sieci Web. Zastąp je odpowiednie podstawienia pełnej szerokości. Na przykład:
 
@@ -94,7 +94,7 @@ Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą 
 
 ### <a name="text-normalization-rules-for-chinese"></a>Tekst reguł normalizacji chiński
 
-Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji:
+Usługi mowy wykonuje następujące reguły normalizacji:
 
 * Usuwanie wszystkie znaki interpunkcyjne
 * Rozszerzanie liczb do mówionej formy
@@ -134,7 +134,7 @@ Przekazane dane tekstowe **zamiana mowy na tekst** usługi należy użyć kodowa
 
 ### <a name="text-normalization-rules-for-german"></a>Tekst reguł normalizacji dla języka niemieckiego
 
-Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji:
+Usługi mowy wykonuje następujące reguły normalizacji:
 
 * Przy użyciu małych liter dla całego tekstu
 * Usuwanie wszystkie znaki interpunkcyjne, w tym różne rodzaje cudzysłowów ("test", "test", "test" i "test" są dozwolone)
@@ -162,10 +162,10 @@ Przed zaimportowaniem tekstu, należy stosować następujące normalizacji do ni
 
 Oto kilka przykładów:
 
-| Oryginalny tekst | Po jego normalizacji | Po normalizacji systemu
+| Oryginalny tekst | Po jego normalizacji | Po normalizacji systemu |
 |--------  | ----- | -------- |
 | ES ISTA 12.23 Uhr | ES ISTA 12:23 Uhr | ES ISTA zwölf uhr drei i zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf ||
+| {12.45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 i 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>Kolejne kroki

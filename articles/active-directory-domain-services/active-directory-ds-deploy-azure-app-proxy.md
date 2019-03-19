@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e787d946aa62f0bcb6615d89192e7d9e4d91ffe4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197052"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099631"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga wspierać pracowników zdalnych przez publikowanie lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Korzystając z usług domenowych Azure AD możesz teraz lift-and-shift starszych aplikacji lokalnych do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w Twojej organizacji.
@@ -75,12 +75,12 @@ Wcześniej zainicjowano obsługę administracyjną maszyny wirtualnej systemu Wi
 
     ![Zaakceptuj postanowienia dotyczące instalacji](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Podczas instalacji wyświetlany jest monit o zarejestrowanie łącznika serwera Proxy aplikacji z katalogu usługi Azure AD.
-    * Podaj swoje **poświadczenia administratora globalnego usługi Azure AD**. Administrator globalny dzierżawy może mieć inne poświadczenia platformy Microsoft Azure niż Twoje.
-    * Konto administratora używane do rejestrowania łącznika musi należeć do tego samego katalogu, w którym włączono usługę serwera Proxy aplikacji. Na przykład, jeśli domena dzierżawy to contoso.com, administratorem powinien być admin@contoso.com lub dowolny prawidłowy alias w tej domenie.
-    * Jeśli Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla serwera gdzie jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami w komunikacie o błędzie. Upewnij się, że pozycja Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest wyłączona.
-    * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Rozwiązywanie problemów z serwerem proxy aplikacji).
+   * Podaj swoje **poświadczenia administratora globalnego usługi Azure AD**. Administrator globalny dzierżawy może mieć inne poświadczenia platformy Microsoft Azure niż Twoje.
+   * Konto administratora używane do rejestrowania łącznika musi należeć do tego samego katalogu, w którym włączono usługę serwera Proxy aplikacji. Na przykład, jeśli domena dzierżawy to contoso.com, administratorem powinien być admin@contoso.com lub dowolny prawidłowy alias w tej domenie.
+   * Jeśli Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla serwera gdzie jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami w komunikacie o błędzie. Upewnij się, że pozycja Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest wyłączona.
+   * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Rozwiązywanie problemów z serwerem proxy aplikacji).
 
-    ![Zainstalowanego łącznika](./media/app-proxy/app-proxy-connector-installed.png)
+     ![Zainstalowanego łącznika](./media/app-proxy/app-proxy-connector-installed.png)
 4. Aby upewnić się, łącznik działa prawidłowo, uruchom rozwiązywania łącznika serwera Proxy aplikacji w usłudze Azure AD. Pomyślne raport powinien być widoczny po uruchomieniu narzędzia do rozwiązywania problemów.
 
     ![Powodzenie narzędzia do rozwiązywania problemów](./media/app-proxy/app-proxy-connector-troubleshooter.png)

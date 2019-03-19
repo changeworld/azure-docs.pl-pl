@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/18/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 587661236e28b9e0fdf7d527b762897d417d0d98
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8a6a46708b78b3f92087ace02173f9f081fa85b2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170517"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: Publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
@@ -41,7 +41,7 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 ## <a name="create-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
 
 1. Otwórz program Visual Studio 2017 Community Edition.
-1. Utwórz nowy projekt **Aplikacja konsoli (.NET Core)** i nadaj mu nazwę `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
+1. Utwórz nową **Aplikacja konsoli (.NET Core)** projektu, a następnie nadaj projektowi nazwę `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
 
 ## <a name="add-required-dependencies"></a>Dodawanie wymaganych zależności
 
@@ -71,7 +71,7 @@ Po opublikowaniu bazy wiedzy można tworzyć do niej zapytania z punktu końcowe
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po opublikowaniu bazy wiedzy potrzebny jest [adres URL punktu końcowego do wygenerowania odpowiedzi](../Tutorials/create-publish-answer.md#generating-an-answer). 
 

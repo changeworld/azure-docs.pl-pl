@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: fe38ffd5e9e57c0357417144e733311f3b14ea83
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448343"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092450"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowisko Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania środowiska Azure-SSIS Integration Runtime (IR) przy użyciu usługi Azure Data Factory (ADF). Azure-SSIS IR to ADF obliczenia zasobów dedykowanych do wykonywania pakietów usług SQL Server Integration Services (SSIS). Uruchamianie środowiska Azure-SSIS IR ma koszt związany z nim. W związku z tym zazwyczaj chcesz uruchomić środowiska IR tylko wtedy, gdy konieczne wykonywanie pakietów usług SSIS na platformie Azure i Zatrzymaj środowiska IR, gdy nie trzeba go dłużej. Możesz użyć usługi ADF interfejsu użytkownika (UI) / aplikacji lub programu Azure PowerShell [ręcznie rozpocząć lub zatrzymać środowiska IR](manage-azure-ssis-integration-runtime.md)).
@@ -72,11 +72,11 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
 9. Kliknij pozycję **Utwórz**.
 10. Na pulpicie nawigacyjnym platformy Azure zobaczysz następujący Kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
-   ![kafelek Wdrażanie fabryki danych](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
+    ![kafelek Wdrażanie fabryki danych](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
    
 11. Po zakończeniu tworzenia zostanie wyświetlona strona usługi ADF, jak pokazano poniżej.
    
-   ![Strona główna fabryki danych](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
+    ![Strona główna fabryki danych](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
    
 12. Kliknij przycisk **tworzenie i monitorowanie** można uruchomić usługi ADF interfejsu użytkownika/aplikacji, w osobnej karcie.
 
@@ -189,21 +189,21 @@ Monitoruj potoki i wyzwalacze za pomocą skryptów, jak w następujących przyk�
 
 1. Pobierz stan uruchomienia potoku.
 
-  ```powershell
-  Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
-  ```
+   ```powershell
+   Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+   ```
 
 2. Uzyskaj informacje na temat wyzwalacza.
 
-  ```powershell
-  Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
-  ```
+   ```powershell
+   Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+   ```
 
 3. Pobierz stan uruchomienia wyzwalacza.
 
-  ```powershell
-  Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
-  ```
+   ```powershell
+   Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+   ```
 
 ## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Tworzenie i Planowanie elementu runbook usługi Azure Automation, który rozpoczyna/zatrzymuje Azure-SSIS IR
 

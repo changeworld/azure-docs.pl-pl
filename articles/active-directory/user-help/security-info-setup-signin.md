@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da54c4f7fae5a613d88f169d58a083f9273c0d3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123610"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Konfigurowanie informacji zabezpieczających (wersja zapoznawcza) z monitu na stronie logowania
 Następujące kroki można wykonać w przypadku wyświetlenia monitu o skonfigurowanie informacji zabezpieczających natychmiast po zalogowaniu się na konto służbowe.
@@ -39,10 +39,10 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
 1. Po wybraniu pozycji **Dalej** w monicie zostanie wyświetlony **kreator Zabezpiecz swoje konto**, pokazując pierwszą metodę, której skonfigurowanie jest wymagane przez administratora i organizację. W tym przykładzie jest to aplikacja Microsoft Authenticator.
 
-    >[!Note]
-    >Jeśli chcesz użyć aplikacji uwierzytelniającej innej niż aplikacja Microsoft Authenticator, wybierz link **Chcę użyć innej aplikacji uwierzytelniania**.
-    
-    >Jeśli organizacja umożliwia wybranie innej metody niż aplikacja uwierzytelniająca, możesz wybrać **link Chcę skonfigurować inną metodę**.
+   > [!Note]
+   > Jeśli chcesz użyć aplikacji uwierzytelniającej innej niż aplikacja Microsoft Authenticator, wybierz link **Chcę użyć innej aplikacji uwierzytelniania**.
+   > 
+   > Jeśli organizacja umożliwia wybranie innej metody niż aplikacja uwierzytelniająca, możesz wybrać **link Chcę skonfigurować inną metodę**.
 
     ![Kreator Zabezpiecz swoje konto pokazujący stronę pobierania aplikacji uwierzytelniającej](media/security-info/securityinfo-prompt-get-auth-app.png)
 
@@ -96,7 +96,7 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
     ![Strona pomyślnego zakończenia kreatora](media/security-info/securityinfo-prompt-setup-success.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby zmienić, usunąć lub zaktualizować domyślne metody informacji zabezpieczających, zobacz:
 

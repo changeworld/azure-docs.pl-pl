@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 389a8ac729cf5f4f95aa37654434245d08ecc87e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533633"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894550"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Ustawianie konta rozliczeniowego dla umowy klienta firmy Microsoft
 
@@ -47,7 +47,7 @@ Przed rozpoczęciem instalacji, zaleca się, że wykonano następujące czynnoś
 - **Omówienie zmiany dostępu użytkownika administratorzy rozliczeń**
   - Administratorzy z rejestrację umowy Enterprise Agreement uzyskują dostęp do rozliczeń zakresy nowym koncie. [Omówienie zmian w ich dostęp](#understand-changes-to-your-billing-administrators-access).
 - **Widok umowy Enterprise Agreement funkcji, które są zastępowane przez nowe konto**
-  - Wyświetlanie funkcji rejestracji Enterprise Agreement, które są [zastępuje funkcje nowym koncie](#review-features-replaced-by-the-new-billing-account).
+  - Wyświetl funkcje rejestracji umowy Enterprise Agreement, które są zastępowane przez funkcje nowym koncie.
 - **Wyświetlanie odpowiedzi na najczęściej zadawane pytania**
   - Widok [dodatkowe informacje](#additional-information) Aby dowiedzieć się więcej o ustawieniach.
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 50ed230993f1df07b463297605a144830476803d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076143"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
@@ -40,7 +40,7 @@ Aby skonfigurować monitorowanie punktu końcowego, należy określić następuj
 
 ## <a name="how-endpoint-monitoring-works"></a>Działania monitorowania punktu końcowego
 
-Jeśli protokół monitorowania jest ustawiony jako protokołu HTTP lub HTTPS, agent sondowania usługi Traffic Manager kieruje żądanie GET do punktu końcowego przy użyciu protokołu, portu i ścieżki względnej, biorąc pod uwagę. Jeśli ponownie uzyskuje odpowiedź 200 OK lub dowolne odpowiedzi skonfigurowanych w ** oczekiwany kod stanu: * zakresy **, a następnie tego punktu końcowego jest uznawany za dobrej kondycji. Jeśli odpowiedź jest inna wartość, lub, jeżeli odpowiedź nie zostanie odebrana przed upływem limitu czasu określony, Traffic Manager sondowanie agenta ponownie próbuje zgodnie z ustawieniem tolerowana liczba niepowodzeń (ponowne próby są wykonywane tylko jeśli to ustawienie ma wartość 0). Jeśli liczbę kolejnych niepowodzeń jest wyższa niż wartość ustawienia tolerowana liczba niepowodzeń, punkt końcowy jest oznaczony jako w złej kondycji. 
+Jeśli protokół monitorowania jest ustawiony jako protokołu HTTP lub HTTPS, agent sondowania usługi Traffic Manager kieruje żądanie GET do punktu końcowego przy użyciu protokołu, portu i ścieżki względnej, biorąc pod uwagę. Jeśli ponownie uzyskuje odpowiedź 200 OK lub dowolne odpowiedzi skonfigurowanych w **oczekiwany kod stanu \*zakresy**, a następnie tego punktu końcowego jest uznawany za dobrej kondycji. Jeśli odpowiedź jest inna wartość, lub, jeżeli odpowiedź nie zostanie odebrana przed upływem limitu czasu określony, Traffic Manager sondowanie agenta ponownie próbuje zgodnie z ustawieniem tolerowana liczba niepowodzeń (ponowne próby są wykonywane tylko jeśli to ustawienie ma wartość 0). Jeśli liczbę kolejnych niepowodzeń jest wyższa niż wartość ustawienia tolerowana liczba niepowodzeń, punkt końcowy jest oznaczony jako w złej kondycji. 
 
 Jeśli protokół monitorowania jest TCP, agent sondowania usługi Traffic Manager inicjuje żądanie połączenia protokołu TCP, przy użyciu określony port. Jeśli punkt końcowy odpowiada na żądanie przy użyciu odpowiedzi do nawiązania połączenia, sprawdzanie kondycji jest oznaczony jako sukcesu i agent sondowania usługi Traffic Manager resetuje połączenie TCP. Jeśli odpowiedź jest inna wartość, czy odpowiedź nie zostanie odebrana w określonym przedziale czasu określony, Traffic Manager sondowanie agenta ponownie próbuje zgodnie z ustawieniem tolerowana liczba niepowodzeń (ponowne próby są dokonywane informacji, jeśli to ustawienie ma wartość 0). Jeśli liczbę kolejnych niepowodzeń jest wyższa niż wartość ustawienia tolerowana liczba niepowodzeń, punkt końcowy jest oznaczona złej kondycji.
 

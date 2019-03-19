@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 44601d069f8c93e6101b5856e49ecf8c4b519e78
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4862377a8441d5ec920d6b52dbed8ad405144227
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857967"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka PHP
 
@@ -35,7 +35,7 @@ W tym artykule pokazano, jak używać tematów usługi Service Bus i subskrypcji
 Jedynym wymaganiem dla tworzenia aplikacji w języku PHP, który uzyskuje dostęp do usługi Azure Blob to odwoływać się do klas w [zestawu Azure SDK dla języka PHP](../php-download-sdk.md) z w obrębie kodu. Można użyć dowolnego narzędzia programistyczne do tworzenia aplikacji lub Notatnik.
 
 > [!NOTE]
-> Instalacja PHP musi mieć również [rozszerzenia OpenSSL](http://php.net/openssl) zainstalowane i włączone.
+> Instalacja PHP musi mieć również [rozszerzenia OpenSSL](https://php.net/openssl) zainstalowane i włączone.
 > 
 > 
 
@@ -341,5 +341,5 @@ Aby uzyskać więcej informacji, zobacz [kolejki, tematy i subskrypcje][Queues, 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
-[require-once]: http://php.net/require_once
+[require-once]: https://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md

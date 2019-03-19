@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: ec0b1d95f5151d4aef45d4e02926d33ee71c5fbd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a775c1c864a8a5513be546195da5c0891f8bb1f6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849401"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka C# 
 
@@ -23,10 +23,10 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystą
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wystąpienie wyszukiwania niestandardowego Bing. Zobacz [Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md), aby uzyskać więcej informacji.
-- Microsoft [.Net Core](https://www.microsoft.com/net/download/core)
+- Wystąpienie wyszukiwania niestandardowego Bing. Zobacz [Szybki start: Tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md), aby uzyskać więcej informacji.
+- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Dowolna wersja programu [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-- Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](http://www.mono-project.com/).
+- Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 - Zainstalowany pakiet [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
     - W Eksploratorze rozwiązań w programie Visual Studio kliknij prawym przyciskiem myszy swój projekt i wybierz polecenie `Manage NuGet Packages` z menu. Zainstaluj pakiet `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Zainstalowanie pakietu NuGet Custom Search powoduje również zainstalowanie następujących zestawów:
         - Microsoft.Rest.ClientRuntime
@@ -102,7 +102,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystą
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-## <a name="process-and-view-the-results"></a>Przetwarzanie i wyświetlanie wyników
+   ## <a name="process-and-view-the-results"></a>Przetwarzanie i wyświetlanie wyników
 
 1. Przejrzyj obiekt odpowiedzi, aby wyświetlić informacje na temat każdego wyniku wyszukiwania, w tym jego nazwę, adres URL i datę ostatniego przeszukiwania strony internetowej.
 
@@ -121,7 +121,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystą
     Console.ReadKey();
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](./tutorials/custom-search-web-page.md)

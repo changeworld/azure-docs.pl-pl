@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100415"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Rozwiązywanie problemów z błędu ogólnego protokołu RDP w maszynie Wirtualnej platformy Azure
 
@@ -65,7 +65,7 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
 ### <a name="serial-console"></a>Konsola szeregowa
 
-#### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otwórz CMD wystąpienia w konsoli szeregowej
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otwórz wystąpienie CMD w konsoli szeregowej
 
 1. Dostęp do [konsoli szeregowej](serial-console-windows.md) , wybierając **pomoc techniczna i rozwiązywanie problemów** > **Konsola szeregowa (wersja zapoznawcza)**. Jeśli ta funkcja jest włączona na maszynie Wirtualnej, możesz połączyć maszynę Wirtualną pomyślnie.
 
@@ -77,7 +77,7 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Krok 2: Sprawdzenie wartości kluczy rejestru protokołu RDP:
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Krok 2: Sprawdź wartości kluczy rejestru protokołu RDP:
 
 1. Sprawdź, czy protokołu RDP zostało wyłączone przez zasady.
 
@@ -164,11 +164,11 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
 Jeśli problem nadal występuje, przejdź do kroku 2.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2. Włączanie usług pulpitu zdalnego
+#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2: Włączyć usługi pulpitu zdalnego
 
 Aby uzyskać więcej informacji, zobacz [usług pulpitu zdalnego nie jest uruchamiania na Maszynie wirtualnej platformy Azure](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>Krok 3. zresetowanie odbiornik protokołu RDP
+#### <a name="step-3-reset-rdp-listener"></a>Krok 3: Resetuj odbiornik protokołu RDP
 
 Aby uzyskać więcej informacji, zobacz [pulpitu zdalnego rozłączy się często w maszynie Wirtualnej platformy Azure](troubleshoot-rdp-intermittent-connectivity.md).
 
@@ -229,16 +229,16 @@ Aby uzyskać więcej informacji, zobacz [pulpitu zdalnego rozłączy się częst
 
       Zasady definitions\Windows Windows\Usługi pulpitu usług pulpitu sesji Host\Connections\Allow użytkownikom łączyć się zdalnie za pomocą usług pulpitu zdalnego
   
-7. Odłącz dysk od ratownictwa maszyny Wirtualnej.
-8. [Tworzenie nowej maszyny Wirtualnej na podstawie dysku](../windows/create-vm-specialized.md).
+1. Odłącz dysk od ratownictwa maszyny Wirtualnej.
+1. [Tworzenie nowej maszyny Wirtualnej na podstawie dysku](../windows/create-vm-specialized.md).
 
 Jeśli problem nadal występuje, przejdź do kroku 2.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2. Włączanie usług pulpitu zdalnego
+#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2: Włączyć usługi pulpitu zdalnego
 
 Aby uzyskać więcej informacji, zobacz [usług pulpitu zdalnego nie jest uruchamiania na Maszynie wirtualnej platformy Azure](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>Krok 3. zresetowanie odbiornik protokołu RDP
+#### <a name="step-3-reset-rdp-listener"></a>Krok 3: Resetuj odbiornik protokołu RDP
 
 Aby uzyskać więcej informacji, zobacz [pulpitu zdalnego rozłączy się często w maszynie Wirtualnej platformy Azure](troubleshoot-rdp-intermittent-connectivity.md).
 

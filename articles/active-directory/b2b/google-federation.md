@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe259b6a0f45828e100de33f533e370323128eef
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8c1d6f541123a3f31c22352d646d701c37356e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088319"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 
@@ -62,8 +62,8 @@ Najpierw utwórz nowy projekt w konsoli deweloperów Google, aby otrzymać klien
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(gdzie `<directory id>` jest Twój identyfikator katalogu)
    
-    > [!NOTE]
-    > Aby znaleźć swój identyfikator katalogu, przejdź do https://portal.azure.com, a następnie w obszarze **usługi Azure Active Directory**, wybierz **właściwości** i skopiuj **identyfikator katalogu**.
+     > [!NOTE]
+     > Aby znaleźć swój identyfikator katalogu, przejdź do https://portal.azure.com, a następnie w obszarze **usługi Azure Active Directory**, wybierz **właściwości** i skopiuj **identyfikator katalogu**.
 
    ![Utwórz identyfikator klienta OAuth](media/google-federation/google-create-oauth-client-id.png)
 

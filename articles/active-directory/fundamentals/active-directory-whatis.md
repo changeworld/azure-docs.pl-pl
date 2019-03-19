@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Azure Active Directory? | Microsoft Docs
+title: Co to jest usługa Azure Active Directory? — Azure Active Directory | Microsoft Docs
 description: Informacje o usłudze Azure Active Directory, obejmujące wymaganą terminologię, odbiorców, podstawy licencjonowania i skojarzone funkcje.
 services: active-directory
 author: eross-msft
@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b443dc2d25558343fb8cad3fd5e9734a672e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0d3b3cd7e759892c2215f190a682f5f69818958d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187393"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442372"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory? 
 Azure Active Directory (Azure AD) to chmurowa usługa firmy Microsoft do zarządzania tożsamościami i dostępem. Usługa Azure AD ułatwia pracownikom logowanie się i dostęp do następujących zasobów:
@@ -95,7 +95,7 @@ Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszyst
 |Raporty i monitorowanie|Uzyskiwanie szczegółowych informacji dotyczących zabezpieczeń i wzorców użycia w danym środowisku. Aby uzyskać więcej informacji, zobacz [Raporty i monitorowanie w usłudze Azure Active Directory](../reports-monitoring/index.yml).|
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Rejestrowanie w usłudze Azure Active Directory — wersja Premium](active-directory-get-started-premium.md)
 
 - [Kojarzenie subskrypcji platformy Azure z usługą Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

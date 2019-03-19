@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e79fdf2d7d680b3a229385c0fd96d844b3425b18
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 1d886e146e9e18eb735e6f88d2cb2c1a4a472924
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992485"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996878"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Przywracanie danych z kopii zapasowej w usłudze Azure Cosmos DB 
 
-Jeśli przypadkowo usuniesz bazę danych lub kontener, możesz to zrobić [bilet pomocy technicznej]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [z działem pomocy technicznej platformy Azure]( https://azure.microsoft.com/support/options/) do przywrócenia danych z automatycznych kopii zapasowych online. Pomoc techniczna platformy Azure jest dostępny dla wybranych planów tylko takie jak **standardowa**, ** dla deweloperów i planów wyższa niż ich. Pomoc techniczna platformy Azure nie jest dostępna z **podstawowe** planu. Aby dowiedzieć się więcej o planach pomocy technicznej w różnych, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) strony. 
+Jeśli przypadkowo usuniesz bazę danych lub kontener, możesz to zrobić [bilet pomocy technicznej]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [z działem pomocy technicznej platformy Azure]( https://azure.microsoft.com/support/options/) do przywrócenia danych z automatycznych kopii zapasowych online. Pomoc techniczna platformy Azure jest dostępny dla wybranych planów tylko takie jak **standardowa**, **dla deweloperów**i planów wyższa niż ich. Pomoc techniczna platformy Azure nie jest dostępna z **podstawowe** planu. Aby dowiedzieć się więcej o planach pomocy technicznej w różnych, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) strony. 
 
 Aby przywrócić migawki określonej kopii zapasowej, usługi Azure Cosmos DB wymaga, czy dane są dostępne na czas trwania cyklu tworzenia kopii zapasowych dla tej migawki.
 

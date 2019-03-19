@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233884"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084136"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurowanie środowiska obsługiwanego interfejsu użytkownika
 
@@ -43,10 +43,10 @@ Aby skonfigurować hostowanej interfejsu użytkownika dla aplikacji sieci web, w
     
 5. Wybierz motyw kolorów. Można dostosować kolory, aby dopasować aplikację, klikając **motyw Dostosuj**. Aby zmienić kolor, wprowadź SZESNASTKOWY RGB koloru (na przykład `#366eb8`), lub kliknij polecenie Podgląd koloru.
 
-  Można wyświetlać podgląd zmian po prawej stronie portalu. Klikając **Przywróć domyślne** zostaną przywrócone zmiany kolory domyślne dla wybranego motywu.
+   Można wyświetlać podgląd zmian po prawej stronie portalu. Klikając **Przywróć domyślne** zostaną przywrócone zmiany kolory domyślne dla wybranego motywu.
 
-  > [!NOTE]
-  > Podczas wybierania kolorów, należy wziąć pod uwagę ułatwienia dostępu.
+   > [!NOTE]
+   > Podczas wybierania kolorów, należy wziąć pod uwagę ułatwienia dostępu.
 
 6. W obszarze **dodatkowe konfiguracje**, podaj wartości odpowiednie dla twojej aplikacji. Te ustawienia są opcjonalne. Aby zobaczyć efekt zastosowania lub usuwania ich, zobacz okienko podglądu po prawej stronie. Są dostępne opcje konfiguracji:  
 

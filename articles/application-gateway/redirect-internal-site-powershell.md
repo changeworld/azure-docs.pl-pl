@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: fdba05bdf5fe9620ba450c8e0384d392df2dc7f0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4fd03d832ea56afa56abbbd4820bfdbca102a9f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311580"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100704"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu programu Azure PowerShell
 
-Można użyć programu Azure Powershell, aby skonfigurować [przekierowywanie ruchu w sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku zdefiniujesz puli zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły na podstawie domen, których jesteś właścicielem, aby upewnić się, że ruch w sieci web dociera do odpowiedniej puli. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www.contoso.com* i *www.contoso.org*.
+Można użyć programu Azure Powershell, aby skonfigurować [przekierowywanie ruchu w sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku zdefiniujesz puli zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły na podstawie domen, których jesteś właścicielem, aby upewnić się, że ruch w sieci web dociera do odpowiedniej puli. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www\.contoso.com* i *www\.contoso.org*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -111,7 +111,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>Utwórz pierwszy odbiornik i regułę
 
-Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www.contoso.com* i *www.contoso.org*.
+Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www\.contoso.com* i *www\.contoso.org*.
 
 Utwórz pierwszy odbiornik o nazwie *contosoComListener* przy użyciu [New AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) z konfiguracji frontonu i port frontonu, która została wcześniej utworzona. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *contosoComRule* przy użyciu [New AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
@@ -300,7 +300,7 @@ Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http://ww
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika www.contoso.com.
+Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika dla www\.contoso.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

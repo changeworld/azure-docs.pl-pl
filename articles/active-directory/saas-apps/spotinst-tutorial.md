@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 679284783ac93662c1c96e813f9f028fffb434f0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f0bffdf439a192fb10fe695fbfa18e8c7abf8077
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173661"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Spotinst
 
@@ -221,7 +221,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Spotin
 
     * W **imię i nazwisko** polu tekstowym Wprowadź pełną nazwę użytkownika, takich jak **BrittaSimon**.
 
-    * W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    * W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     * Wybierz swoje szczegóły specyficzne dla organizacji **kont, roli konta i roli organizacji**.
 
@@ -266,7 +266,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

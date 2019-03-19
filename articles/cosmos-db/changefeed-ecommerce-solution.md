@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 90f9a13882e370d6d0c67826750b3edd27603ede
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120520"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
@@ -105,7 +105,7 @@ Teraz utworzysz kolekcję zawierającą zdarzeń witryny handlu elektronicznego.
 
 3. Następnie utworzyć inną kolekcję o nazwie **dzierżawy** dla przetwarzania kanału informacyjnego zmian. Współrzędne kolekcji dzierżaw przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielne kolekcji służy do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji.  
 
-4.  Wróć do **Eksplorator danych** okienka, a następnie wybierz **Nowa kolekcja** i wypełnij formularz z następującymi szczegółami:
+4. Wróć do **Eksplorator danych** okienka, a następnie wybierz **Nowa kolekcja** i wypełnij formularz z następującymi szczegółami:
 
    * Aby uzyskać **bazy danych o identyfikatorze** pól, zaznacz **Użyj istniejącej**, wprowadź **changefeedlabdatabase**.  
    * Aby uzyskać **identyfikator kolekcji** wprowadź **dzierżawy**.  

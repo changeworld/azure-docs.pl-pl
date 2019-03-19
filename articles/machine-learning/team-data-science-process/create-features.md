@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835088"
 ---
 # <a name="feature-engineering-in-data-science"></a>Inżynieria funkcji w zakresie analizy danych
 W tym artykule wyjaśniono celów technicznego opracowywania funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Przykłady umożliwiają zilustrowanie tego procesu są pobierane z usługi Azure Machine Learning Studio. 
@@ -46,7 +46,7 @@ Jakiego rodzaju funkcje należy utworzyć w taki sposób, aby poprawić zestaw d
 
 Począwszy od usługi Azure Machine Learning, najłatwiej zapoznanie się z nim tego procesu, konkretnie przy użyciu przykładów, które podano w Studio. Dwa przykłady przedstawiono poniżej:
 
-* Przykład regresji [prognozowania liczby wypożyczenia rowerów](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) w eksperymencie nadzorowane, gdy wiadomo, że wartości docelowej
+* Przykład regresji [prognozowania liczby wypożyczenia rowerów](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) w eksperymencie nadzorowane, gdy wiadomo, że wartości docelowej
 * Using przykład klasyfikacji wyszukiwania tekstu [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Przykład 1: Dodawanie funkcji danych czasowych dla modelu regresji

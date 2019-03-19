@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 7039df6dde25fd4ba9a8b9cb7670e72df7e68797
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f175360586428b57d1ff10e3529ae9e3283399e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245820"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117061"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Dostosowywanie usługi Azure Data Lake Storage Gen2 wydajności
 
@@ -43,7 +43,7 @@ Połączenie sieciowe między źródła danych i Data Lake Storage Gen2 czasami 
 
 Gdy zostały rozwiązane sprzętu źródłowego i sieci połączenia gardła powyżej, można przystąpić do konfigurowania narzędzia do wprowadzania. Poniższa tabela zawiera podsumowanie ustawień klucza dla kilku popularnych pozyskiwania narzędzi i udostępnia szczegółowe Dostosowywanie artykuły ich wydajności.  Aby dowiedzieć się więcej na temat narzędzia do użycia dla danego scenariusza, odwiedź [artykułu](data-lake-storage-data-scenarios.md).
 
-| Narzędzie               | Ustawienia     | Więcej szczegółów                                                                 |
+| Tool               | Ustawienia     | Więcej szczegółów                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapowanie)   | [Link](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Link](../../data-factory/copy-activity-performance.md)                          |
@@ -131,12 +131,12 @@ W zależności od obciążenia zawsze będą minimalny rozmiar kontenera YARN, k
 
 Oprócz ogólnych wytycznych powyżej każda aplikacja ma różne parametry można dostrajanie dla tej konkretnej aplikacji. W poniższej tabeli przedstawiono niektóre z parametrów i połączeń, aby zacząć korzystać z wydajności automatycznego dostrajania dla każdej aplikacji.
 
-| Obciążenie               | Parametr, aby ustawić zadania                                                         |
-|--------------------|-------------------------------------------------------------------------------------|
-| [Spark on HDInsight](data-lake-storage-performance-tuning-spark.md)       | <ul><li>Liczba programów przetwarzających</li><li>Pamięć funkcji wykonawczej</li><li>Liczba rdzeni funkcji wykonawczej</li></ul> |
-| [Hive on HDInsight](data-lake-storage-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
-| [MapReduce na HDInsight](data-lake-storage-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [System STORM w HDInsight](data-lake-storage-performance-tuning-storm.md)|  | <ul><li>Liczba procesów roboczych</li><li>Liczba wystąpień funkcji wykonawczej spout</li><li>Liczba wystąpień funkcji wykonawczej elementu bolt </li><li>Liczba zadań spout</li><li>Liczba zadań elementu bolt</li></ul>|
+| Obciążenie | Parametr, aby ustawić zadania |
+|----------|------------------------|
+| [Spark on HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Liczba programów przetwarzających</li><li>Pamięć funkcji wykonawczej</li><li>Liczba rdzeni funkcji wykonawczej</li></ul> |
+| [Hive on HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
+| [MapReduce na HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [System STORM w HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Liczba procesów roboczych</li><li>Liczba wystąpień funkcji wykonawczej spout</li><li>Liczba wystąpień funkcji wykonawczej elementu bolt </li><li>Liczba zadań spout</li><li>Liczba zadań elementu bolt</li></ul>|
 
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)

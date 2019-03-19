@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192646"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856264"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -64,7 +64,7 @@ Użyj _blokować i odblokowywać użytkowników_ funkcję, aby uniemożliwić u�
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
 2. Przejdź do **usługi Azure Active Directory** > **MFA** > **Blokowanie/odblokowywanie użytkowników**.
 3. Wybierz **Dodaj** aby uniemożliwić użytkownikowi.
-4. Wybierz **grupy replikacji**. Wprowadź nazwę użytkownika dla użytkownika zablokowany jako **username@domain.com**. Wprowadź komentarz w **Przyczyna** pola.
+4. Wybierz **grupy replikacji**. Wprowadź nazwę użytkownika dla użytkownika zablokowany jako **username\@domena.com**. Wprowadź komentarz w **Przyczyna** pola.
 5. Wybierz **Dodaj** zakończenie zablokowania użytkownika.
 
 ### <a name="unblock-a-user"></a>Odblokuj użytkownika
@@ -154,7 +154,7 @@ _Jednorazowe obejście_ funkcji umożliwia użytkownikowi uwierzytelnienie jeden
 2. Przejdź do **usługi Azure Active Directory** > **MFA** > **jednorazowe obejście**.
 3. Wybierz pozycję **Dodaj**.
 4. Jeśli to konieczne, zaznacz grupę replikacji obejście.
-5. Wprowadź nazwę użytkownika jako **username@domain.com**. Wprowadź liczbę sekund, które powinno trwać obejście. Podaj przyczynę obejścia.
+5. Wprowadź nazwę użytkownika jako **username\@domena.com**. Wprowadź liczbę sekund, które powinno trwać obejście. Podaj przyczynę obejścia.
 6. Wybierz pozycję **Dodaj**. Limit czasu zacznie obowiązywać natychmiast. Użytkownik musi się zalogować przed wygaśnięciem jednorazowego obejścia.
 
 ### <a name="view-the-one-time-bypass-report"></a>Wyświetlanie raportów jednorazowe obejście
@@ -252,7 +252,7 @@ Domyślnie użytkownicy nie mogą tworzyć hasła aplikacji. Musi być włączon
 
 Użytkownicy mogą tworzyć hasła aplikacji podczas ich wstępnej rejestracji. Użytkownik ma możliwość tworzenia haseł aplikacji, pod koniec procesu rejestracji.
 
-Użytkownicy mogą również tworzyć hasła aplikacji po rejestracji. Hasła aplikacji można zmienić za pomocą ustawień w witrynie Azure portal lub portalu usługi Office 365. Aby uzyskać więcej informacji oraz szczegółowy opis kroków dla użytkowników, zobacz [co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Użytkownicy mogą również tworzyć hasła aplikacji po rejestracji. Aby uzyskać więcej informacji oraz szczegółowy opis kroków dla użytkowników, zobacz [co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="trusted-ips"></a>Zaufane adresy IP
 

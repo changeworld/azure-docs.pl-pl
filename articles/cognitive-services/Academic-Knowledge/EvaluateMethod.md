@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871323"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004927"
 ---
 # <a name="evaluate-method"></a>Oceń — metoda
 
@@ -27,7 +27,9 @@ ms.locfileid: "55871323"
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate? 
 ```   
 <br>
+
 ## <a name="request-parameters"></a>Parametry żądania  
+
 Name (Nazwa)     | Wartość | Wymagana?  | Opis
 -----------|-----------|---------|--------
 **expr**       | Ciąg tekstowy | Yes | Wyrażenie zapytania, które określa jednostki, która ma zostać zwrócony.
@@ -38,7 +40,9 @@ Name (Nazwa)     | Wartość | Wymagana?  | Opis
 **orderby** |   Ciąg tekstowy | Nie<br>Wartość domyślna: dzięki skróceniu PRAWDPD | Nazwa atrybutu, który jest używany na potrzeby sortowania jednostki. Opcjonalnie rosnąco/malejąco może być określona. Format to: *name: asc* lub *name: desc*.
   
  <br>
+
 ## <a name="response-json"></a>Odpowiedź (JSON)
+
 Name (Nazwa) | Opis
 -------|-----   
 **expr** |  *Expr* parametrów z żądania.
@@ -46,6 +50,7 @@ Name (Nazwa) | Opis
 **aborted** | Wartość true, jeśli upłynął limit czasu żądania.
 
 <br>
+
 #### <a name="example"></a>Przykład:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=

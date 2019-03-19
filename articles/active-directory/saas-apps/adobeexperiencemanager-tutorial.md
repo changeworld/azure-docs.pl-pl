@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ceab0ee0180a6888ef99a7aefb1e5d176ab6c05
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: cb066ce346d56b9b879a5e3cdcf30e7da77d94fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Samouczek: integracja usługi Azure Active Directory z programem Adobe Experience Manager
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację programu Adobe Experience Manager z usługą Azur
 
 **Aby dodać program Adobe Experience Manager z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -186,7 +186,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. W polu **Adres URL dostawcy tożsamości** wprowadź wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. W polu **Alias certyfikatu dostawcy tożsamości** wprowadź wartość **aliasu certyfikatu**, która została dodana w magazynie TrustStore.
+    c. W polu **Alias certyfikatu dostawcy tożsamości** wprowadź wartość **aliasu certyfikatu**, która została dodana w magazynie TrustStore.
 
     d. W polu **Identyfikator jednostki podanej w zabezpieczeniach** wprowadź wartość unikatowego **identyfikatora usługi Azure Ad**, która została skonfigurowana w witrynie Azure Portal.
 
@@ -220,7 +220,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -261,7 +261,7 @@ Jeśli chcesz ręcznie tworzyć użytkowników, nawiąż współpracę z [zespo
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Adobe Experience Manager w panelu dostępu powinno nastąpić automatyczne zalogowanie do programu Adobe Experience Manager, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

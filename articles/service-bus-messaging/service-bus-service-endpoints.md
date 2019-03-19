@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234071"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843577"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Service Bus
 
@@ -48,7 +48,7 @@ Wynik jest prywatne i izolowany relacji między obciążeniami usług związanyc
 
 ## <a name="enable-service-endpoints-with-service-bus"></a>Włączyć punkty końcowe usługi z usługą Service Bus
 
-Ważną kwestią w przypadku korzystania z punktów końcowych usługi sieci wirtualnej z usługą Service Bus jest, nie należy włączać tych punktów końcowych w aplikacji, które mieszać przestrzeni nazw usługi Service Bus warstwy standardowa i Premium. Ponieważ w warstwie standardowa nie obsługuje sieci wirtualne, punkt końcowy jest ograniczona do Premium przestrzeni nazw w warstwie tylko. Sieć wirtualna spowoduje zablokowanie ruchu do standardowych przestrzeni nazw.
+Ważną kwestią w przypadku korzystania z punktów końcowych usługi sieci wirtualnej z usługą Service Bus jest, nie należy włączać tych punktów końcowych w aplikacji, które mieszać przestrzeni nazw usługi Service Bus warstwy standardowa i Premium. Ponieważ w warstwie standardowa nie obsługuje sieci wirtualne, punkt końcowy jest ograniczona do Premium przestrzeni nazw w warstwie tylko.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez Integracja sieci wirtualnej 
 

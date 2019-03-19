@@ -1,6 +1,6 @@
 ---
-title: Zaproś użytkowników zewnętrznych i przypisz role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zapraszać użytkowników zewnętrznych i przypisywać role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
+title: Zapraszać gości zewnętrznych i przypisywanie ról administratora usługi Azure AD — Privileged Identity Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zapraszać użytkowników-gości i przypisywanie ról administratora usługi Azure Active Directory w usłudze Azure AD Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90d0d3d3f484044a0ffbab7a3c24a76c40aa74c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208287"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853260"
 ---
-# <a name="invite-external-users-and-assign-azure-resource-roles-in-pim"></a>Zaproś użytkowników zewnętrznych i przypisz role zasobów platformy Azure w usłudze PIM
+# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>Zapraszanie gości i przypisz dostęp do zasobów platformy Azure w usłudze PIM
 
-Usługa Azure Active Directory (Azure AD) business-to-business (B2B) to zestaw funkcji w usłudze Azure AD, która umożliwia organizacjom współpracę z użytkowników zewnętrznych i dostawców przy użyciu dowolnego konta. Możesz połączyć rozwiązanie B2B z usługi Azure AD Privileged Identity Management (PIM), można zastosować wymagań dotyczących zgodności i nadzoru dla użytkowników zewnętrznych. Na przykład można użyć tych funkcji usługi PIM dla zasobów platformy Azure, użytkownikom zewnętrznym:
+Usługa Azure Active Directory (Azure AD) business-to-business (B2B) to zestaw funkcji w usłudze Azure AD, która umożliwia organizacjom współpracę z zewnętrznego gościa użytkowników (gości) i dostawców przy użyciu dowolnego konta. Łącząc B2B przy użyciu usługi Azure AD Privileged Identity Management (PIM), można zastosować wymagań dotyczących zgodności i nadzoru dla gości. Na przykład można użyć tych funkcji usługi PIM dla zadań usługi Azure identity z gości:
 
 - Przypisywanie dostępu do określonych zasobów platformy Azure
 - Włącz dostęp just in time
@@ -33,25 +33,25 @@ Usługa Azure Active Directory (Azure AD) business-to-business (B2B) to zestaw f
 - Wykonaj przeglądów dostępu
 - Korzystanie z alertów i dzienników inspekcji
 
-W tym artykule opisano jak Zaproś użytkownika zewnętrznego do katalogu i zarządzać ich dostępu do zasobów platformy Azure za pomocą usługi PIM.
+W tym artykule opisano, jak zapraszać gości do organizacji i zarządzanie nimi ich dostępu do zasobów platformy Azure przy użyciu Privileged Identity Management.
 
-## <a name="when-would-you-invite-external-users"></a>Gdy możesz zaprosić użytkowników zewnętrznych?
+## <a name="when-would-you-invite-guests"></a>Gdy możesz zapraszać gości?
 
-Poniżej przedstawiono kilka przykładowych scenariuszy, gdy może zapraszać użytkowników zewnętrznych z katalogiem:
+Poniżej przedstawiono kilka przykładowych scenariuszy, gdy mogą zapraszać gości do Twojej organizacji:
 
 - Zezwalaj na zewnętrznego dostawcy na własny rachunek, który zawiera tylko konto e-mail, dostęp do zasobów platformy Azure dla projektu.
 - Zezwalaj na partnera usługi zewnętrzne w dużej organizacji korzystającej z usług federacyjnych Active Directory w środowisku lokalnym uzyskiwanie dostępu do wydatków aplikacji.
 - Zezwalaj na pracowników działu pomocy technicznej nie znajduje się w Twojej organizacji (np. pomocy technicznej firmy Microsoft) do tymczasowego dostępu do swoich zasobów platformy Azure do rozwiązywania problemów.
 
-## <a name="how-does-external-collaboration-using-b2b-work"></a>Jak działa współpracy zewnętrznej za pomocą B2B?
+## <a name="how-does-collaboration-using-b2b-guests-work"></a>Jak działa współpraca za pomocą funkcji B2B goście pracy?
 
-Użycie B2B, możesz zaprosić użytkownika zewnętrznego do katalogu. Użytkownik zewnętrzny pojawia się w katalogu, ale użytkownik nie ma żadnych poświadczeń skojarzonych z nim. Zawsze, gdy użytkownik zewnętrzny musi zostać uwierzytelniony, muszą uwierzytelnić się w katalogu macierzystego, a nie katalogiem. Oznacza to, że jeśli użytkownik zewnętrzny nie ma już dostęp do własnego katalogu macierzystego, automatycznie stracą dostęp do katalogu. Na przykład jeśli zewnętrzny użytkownik opuszcza swojej organizacji, automatycznie stracą dostęp do żadnych zasobów udostępnionych im w katalogu bez konieczności podejmować żadnych działań. Aby uzyskać więcej informacji na temat B2B, zobacz [co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?](../b2b/what-is-b2b.md).
+Gdy używasz współpracy B2B, możesz Zaproś użytkownika zewnętrznego dla Twojej organizacji jako Gość. Gość pojawia się w Twojej organizacji, ale gościa nie ma żadnych poświadczeń skojarzonych z nim. Zawsze, gdy Gość musi zostać uwierzytelniony, muszą uwierzytelnić się w swojej organizacji macierzystej a nie w Twojej organizacji. Oznacza to, że jeśli gościa nie ma już dostęp do swoich organizacji macierzystej, również stracą dostęp do Twojej organizacji. Na przykład jeśli gościa swojej organizacji, automatycznie stracą dostęp do żadnych zasobów udostępnionych je w usłudze Azure AD bez konieczności podejmować żadnych działań. Aby uzyskać więcej informacji na temat B2B, zobacz [co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?](../b2b/what-is-b2b.md).
 
-![B2B i użytkowników zewnętrznych](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![B2B i gościa](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
-## <a name="check-external-collaboration-settings"></a>Sprawdź ustawienia zewnętrznej współpracy
+## <a name="check-guest-collaboration-settings"></a>Sprawdź ustawienia współpracy gościa
 
-Aby upewnić się, że użytkownicy zewnętrzni mogą zapraszać do katalogu, należy sprawdzić ustawienia współpracy zewnętrznej.
+Aby upewnić się, że mogą zapraszać gości w Twojej organizacji, należy sprawdzić ustawienia współpracy gościa.
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 
@@ -63,11 +63,11 @@ Aby upewnić się, że użytkownicy zewnętrzni mogą zapraszać do katalogu, na
 
 1. Upewnij się, że **Administratorzy i użytkownicy o roli zapraszającego gości mogą zapraszać** przełącznik ma wartość **tak**.
 
-## <a name="invite-an-external-user-and-assign-a-role"></a>Zaproś użytkownika zewnętrznego i przypisywanie roli
+## <a name="invite-a-guest-and-assign-a-role"></a>Zapraszanie gościa i przypisanie roli
 
-Za pomocą usługi PIM, możesz zaprosić użytkownika zewnętrznego i ustawiać ich jako uprawnionych dla ról zasobów platformy Azure, podobnie jak użytkownika elementu członkowskiego.
+Korzystając z usługi PIM, możesz zapraszanie gościa i ustawiać ich jako uprawnionych dla ról zasobów platformy Azure, podobnie jak użytkownika elementu członkowskiego.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) z użytkownikiem, który jest elementem członkowskim [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) lub [Administrator kont użytkowników](../users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) roli.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) z użytkownikiem, który jest elementem członkowskim [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) lub [Administrator użytkowników](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) roli.
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
@@ -77,7 +77,7 @@ Za pomocą usługi PIM, możesz zaprosić użytkownika zewnętrznego i ustawiać
 
 1. Kliknij zasób, który chcesz zarządzać, takich jak zasobu, grupy zasobów, subskrypcji lub grupy zarządzania.
 
-    Wystarczy jakie użytkownika zewnętrznego, należy ustawić zakresu.
+    Wystarczy jakie gościa należy ustawić zakresu.
 
 1. W obszarze Zarządzanie, kliknij przycisk **role** Aby wyświetlić listę ról dla zasobów platformy Azure.
 
@@ -93,31 +93,31 @@ Za pomocą usługi PIM, możesz zaprosić użytkownika zewnętrznego i ustawiać
 
     ![Wybierz członka lub grupę](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Aby zaprosić użytkownika zewnętrznego, kliknij przycisk **zaprosić**.
+1. Aby zapraszanie gościa, kliknij przycisk **zaprosić**.
 
     ![Zapraszanie gościa](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. Po określeniu użytkownika zewnętrznego, kliknij przycisk **zaprosić**.
+1. Po wybraniu gość kliknij **zaprosić**.
 
-    Użytkownik zewnętrzny należy dołączyć jako wybrany element członkowski.
+    Gość powinny zostać dodane jako wybrany element członkowski.
 
-1. W polu Wybierz panel lub grupę, kliknij przycisk **wybierz**.
+1. W **zaznacz element lub grupę** okienku kliknij **wybierz**.
 
-1. W okienku ustawienia członkostwa wybierz typ przypisania i czasu trwania.
+1. W **ustawienia członkostwa** okienku, wybierz typ przypisania i czas trwania.
 
     ![Ustawienia członkostwa](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. Aby dokończyć przypisanie, kliknij przycisk **gotowe** i następnie **Dodaj**.
 
-    Przypisanie roli użytkownika zewnętrznego, pojawi się na liście ról.
+    Przypisanie roli gościa pojawi się na liście ról.
 
-    ![Przypisanie roli dla użytkownika zewnętrznego](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![Przypisanie roli dla gościa](./media/pim-resource-roles-external-users/role-assignment.png)
 
-## <a name="activate-role-as-an-external-user"></a>Aktywacja roli jako użytkownik zewnętrzny
+## <a name="activate-role-as-a-guest"></a>Aktywacja roli jako Gość
 
-Jako użytkownik zewnętrzny musisz najpierw zaakceptować zaproszenia do katalogu usługi Azure AD i prawdopodobnie aktywować swoją rolę.
+Jako użytkownika zewnętrznego musisz najpierw zaakceptować zaproszenie do organizacji usługi Azure AD i prawdopodobnie aktywowania roli.
 
-1. Otworzyć wiadomości e-mail za pomocą zaproszenia do katalogu. Wiadomość e-mail będzie wyglądać podobnie do poniższego.
+1. Otwórz wiadomość e-mail z Twoje zaproszenie. Wiadomość e-mail będzie wyglądać podobnie do poniższego.
 
     ![Wiadomość e-mail z zaproszeniem](./media/pim-resource-roles-external-users/email-invite.png)
 
@@ -149,9 +149,9 @@ Jako użytkownik zewnętrzny musisz najpierw zaakceptować zaproszenia do katalo
 
     Chyba że administrator musi zatwierdzić Twoje zgłoszenie, powinny mieć dostęp do określonych zasobów.
 
-## <a name="view-activity-for-an-external-user"></a>Wyświetl aktywność użytkownika zewnętrznego
+## <a name="view-activity-for-a-guest"></a>Wyświetl działania dla gościa
 
-Podobnie jak użytkownika elementu członkowskiego możesz wyświetlić dzienniki inspekcji, aby śledzić działania użytkowników zewnętrznych.
+Podobnie jak użytkownika elementu członkowskiego możesz wyświetlić dzienniki inspekcji do śledzenia działania gości.
 
 1. Jako administrator Otwórz PIM, a następnie wybierz zasób, który został udostępniony.
 
@@ -159,13 +159,13 @@ Podobnie jak użytkownika elementu członkowskiego możesz wyświetlić dziennik
 
     ![Inspekcja zasobu](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Aby wyświetlić działania dla użytkownika zewnętrznego, kliknij **usługi Azure Active Directory** > **użytkowników** > użytkownika zewnętrznego.
+1. Aby wyświetlić działania dla gości, kliknij **usługi Azure Active Directory** > **użytkowników** > Nazwa gościa.
 
-1. Kliknij przycisk **dzienniki inspekcji** na przeglądanie dzienników inspekcji dla katalogu. Jeśli to konieczne, możesz określić filtry.
+1. Kliknij przycisk **dzienniki inspekcji** na przeglądanie dzienników inspekcji dla organizacji. Jeśli to konieczne, możesz określić filtry.
 
-    ![Inspekcja katalogu](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![Inspekcja organizacji](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Przypisywanie ról administratora w usłudze Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
 - [Co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?](../b2b/what-is-b2b.md)

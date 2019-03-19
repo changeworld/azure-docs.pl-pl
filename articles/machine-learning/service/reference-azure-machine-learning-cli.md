@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c860aca538fcb2fbcff65aebecf062c4c428c84c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4b7cd15b1746bac6f61ef46108ade6cf1fb3b7ff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415791"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894652"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -43,7 +43,7 @@ Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 
-* Aby korzystać z interfejsu wiersza polecenia, musi mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+* Aby korzystać z interfejsu wiersza polecenia, musi mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 * [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -91,7 +91,7 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
     az configure --defaults aml_workspace=myworkspace group=myresourcegroup
     ```
     
-* Dołącz klastra AKS
++ Dołącz klastra AKS
 
     ```azurecli-interactive
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace

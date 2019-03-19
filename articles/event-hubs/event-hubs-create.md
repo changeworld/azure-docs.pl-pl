@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 073d1b54b1c6da2b1178f482d17b4de7abcc8a51
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: a7976c0798bd78fd51632d3025147526a645b041
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888927"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528800"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Szybki start: tworzenie centrum zdarzeń za pomocą witryny Azure Portal
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
@@ -60,7 +60,7 @@ Przestrzeń nazw usługi Event Hubs udostępnia unikatowy kontener zakresu przyw
    ![Przycisk Dodaj na pasku narzędzi](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Na stronie **Tworzenie przestrzeni nazw** wykonaj następujące czynności:
     1. Wprowadź nazwę dla przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.
-    2. Wybierz warstwę cenową (Podstawowa lub Standardowa).
+    2. Wybierz warstwę cenową (podstawowa lub standardowa).
     3. Wybierz **subskrypcję**, w ramach której chcesz utworzyć przestrzeń nazw.
     4. Wybierz **lokalizację** dla przestrzeni nazw.
     5. Wybierz pozycję **Utwórz**. Może być konieczne odczekanie kilku minut, aby system przeprowadził pełną aprowizację zasobów.
@@ -90,7 +90,7 @@ Aby utworzyć centrum zdarzeń w przestrzeni nazw, wykonaj następujące akcje:
 
 Gratulacje! Za pomocą portalu utworzono przestrzeń nazw usługi Event Hubs i centrum zdarzeń w ramach tej przestrzeni nazw. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule utworzono grupę zasobów, przestrzeń nazw usługi Event Hubs i centrum zdarzeń. Szczegółowe instrukcje dotyczące wysyłania zdarzeń do centrum zdarzeń lub odbierania ich z niego znajdują się w następujących samouczkach:  
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: f79a9048e50901424330224066cb84929d9126dc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 906c0ef3db530ecb4aeade449e41a866a4b09a74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530930"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005714"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Backup, podając informacje przedstawione w poniższej tabeli:
@@ -41,12 +41,13 @@ Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Ba
 | Usługa Azure Backup nie ma wystarczających uprawnień do usługi Azure Key Vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. |Dostarcza usługi Kopia zapasowa tych uprawnień w programie PowerShell wykonując kroki opisane w [tworzenie maszyny Wirtualnej z przywróconych dysków](backup-azure-vms-automation.md). |
 |Instalacja rozszerzenia migawki nie powiodła się z powodu błędu **modelu COM + nie może komunikować się z Microsoft Distributed Transaction Coordinator**. | W wierszu polecenia z podwyższonym poziomem uprawnień uruchom usługę Windows **aplikacja systemowa modelu COM +**. Na przykład **net start COMSysApp**. Jeśli usługi nie powiedzie się, następnie wykonaj następujące czynności:<ol><li> Upewnij się, że konto logowania usługi **Distributed Transaction Coordinator** jest **Usługa sieciowa**. Jeśli nie, Zmień konto logowania do **Usługa sieciowa** i uruchom ponownie usługę. Następnie spróbuj uruchomić **aplikacja systemowa modelu COM +**.<li>Jeśli **COM + System Application** nie start, wykonaj następujące kroki, aby odinstalować i zainstalować usługę **Distributed Transaction Coordinator**: <ol><li>Zatrzymaj usługi MSDTC. <li>Otwórz wiersz polecenia **cmd**. <li>Uruchom polecenie ```msdtc -uninstall```. <li>Uruchom polecenie ```msdtc -install```. <li>Uruchom usługi MSDTC. </ol> <li>Uruchom usługę Windows **aplikacja systemowa modelu COM +**. Po **aplikacja systemowa modelu COM +** jest uruchamiana, wyzwalanie zadania tworzenia kopii zapasowej w witrynie Azure portal.</ol> |
 |  Operacja migawki nie powiodło się z powodu błędu modelu COM +. | Firma Microsoft zaleca, uruchom ponownie usługę Windows **COM + System Application** w wierszu polecenia z podwyższonym poziomem uprawnień **net start COMSysApp**. Jeśli problem będzie się powtarzać, uruchom ponownie maszynę Wirtualną. Jeśli ponowne uruchomienie maszyny Wirtualnej nie pomoże, spróbuj [usuwając rozszerzenie VMSnapshot](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout) i ręcznie wyzwolić tworzenie kopii zapasowej. |
-| Kopia zapasowa nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej, aby wykonać migawkę spójną z systemu plików. | Wykonaj następujące czynności: <ul><li>Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń przy użyciu **"tune2fs"** polecenia. Na przykład **tune2fs -l/dev/sdb1 \** .| GREP **stan systemu plików**. <li>Odinstaluj urządzenia, dla których stan systemu plików nie jest czysty przy użyciu **"umount"** polecenia. <li> Uruchom sprawdzanie spójności systemu plików na tych urządzeniach za pomocą **"fsck"** polecenia. <li> Zainstaluj ponownie urządzenia, a następnie spróbuj kopii zapasowej.</ol> |
+| Kopia zapasowa nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej, aby wykonać migawkę spójną z systemu plików. | Wykonaj następujące czynności: <ul><li>Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń przy użyciu **"tune2fs"** polecenia. Na przykład **tune2fs -l/dev/sdb1 \\** .\| grep **stan systemu plików**. <li>Odinstaluj urządzenia, dla których stan systemu plików nie jest czysty przy użyciu **"umount"** polecenia. <li> Uruchom sprawdzanie spójności systemu plików na tych urządzeniach za pomocą **"fsck"** polecenia. <li> Zainstaluj ponownie urządzenia, a następnie spróbuj kopii zapasowej.</ol> |
 | Operacja migawki nie powiodło się z powodu błędu tworzenia kanału bezpiecznej komunikacji sieciowej. | <ol><li> Otwórz Edytor rejestru, uruchamiając **regedit.exe** w trybie podniesionych uprawnień. <li> Zidentyfikuj wszystkie wersje programu .NET Framework jest obecny w systemie. Są one obecne w hierarchii klucza rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Dla każdej platformy .NET Framework w kluczu rejestru należy dodać następujący klucz: <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
 | Operacja migawki nie powiodło się z powodu błędu, aby zainstalować pakiet redystrybucyjny Visual C++ dla Visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2012_x64. Upewnij się, że wartość klucza rejestru, który umożliwia ta instalacja usługi jest ustawiony do poprawnej wartości. Oznacza to, że wartość klucza rejestru **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** ustawiono **3** i nie **4**. <br><br>Jeśli nadal masz problemy z instalacją, uruchom ponownie usługę instalacji uruchamiając **MSIEXEC/unregister** następuje **MSIEXEC /REGISTER** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 
 
 ## <a name="jobs"></a>Stanowiska
+
 | Szczegóły błędu | Obejście |
 | --- | --- |
 | Unieważnieniu nie jest obsługiwana dla tego typu zadania: <br>Poczekaj na zakończenie zadania. |Brak |

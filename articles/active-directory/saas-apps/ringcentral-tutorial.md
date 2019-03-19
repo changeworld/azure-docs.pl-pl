@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d86dc27822c91bd6b2b1cb3ec53b07978061cc7d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9cd97bc226ec69441b933a9f7bf3caec17f1478
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437364"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RingCentral
 
@@ -127,6 +127,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![image](./media/ringcentral-tutorial/b21-domains_and_urls.png)
 
     d. W **adres URL logowania** pole tekstowe, wpisz adres URL:
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -140,6 +141,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 6. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL:
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -148,12 +150,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://service.ringcentral.eu` |
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL:
+
     | |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
     c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL:
+    
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
@@ -223,7 +227,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -267,7 +271,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

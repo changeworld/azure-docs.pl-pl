@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0f700b9e24399768977a1fa221322fa4c1c6708d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095147"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -29,7 +29,7 @@ Jeśli masz problemy podczas aktywacji maszyny wirtualnej Windows Azure (VM), kt
 Platforma Azure używa różnych punktów końcowych dla aktywacji usługi KMS w zależności od regionu chmury, w którym znajduje się maszyna wirtualna. Korzystając z tego przewodnika rozwiązywania problemów, należy użyć odpowiednich punktów końcowych usługi KMS, która ma zastosowanie do regionu.
 
 * Regiony w chmurze publicznej platformy Azure: kms.core.windows.net:1688
-* Regiony platformy Azure chmury krajowe — firmą 21Vianet w Chinach: kms.core.chinacloudapi.cn:1688
+* Azure China 21Vianet national cloud regions: kms.core.chinacloudapi.cn:1688
 * Regiony chmur krajowych platformy Azure (Niemcy): kms.core.cloudapi.de:1688
 * Chmury krajowe regionach Administracja USA —: kms.core.usgovcloudapi.net:1688
 
@@ -61,7 +61,7 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Jeśli **slmgr.vbs/DLV** przedstawia kanał sprzedaży DETALICZNEJ, uruchom następujące polecenia, aby ustawić [klucz konfiguracji klienta usługi KMS](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) dla wersji systemu Windows Server używana i wymusić, aby ponowić próbę aktywacji: 
+2. Jeśli po wpisaniu **slmgr.vbs /dlv** zostanie wyświetlony kanał RETAIL, uruchom następujące polecenia, aby ustawić [klucz konfiguracji klienta usługi KMS](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) dla używanej wersji systemu Windows Server i wymusić ponowienie próby aktywacji: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -81,34 +81,34 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
 
 2. Przejdź do ekranu startowego, wyszukiwanie w programie Windows PowerShell, kliknij prawym przyciskiem myszy środowiska Windows PowerShell i wybrać polecenie Uruchom jako administrator.
 
-3. Upewnij się, że maszyna wirtualna jest skonfigurowany do używania z właściwym serwerem usługi KMS z usługi Azure. Aby to zrobić, uruchom następujące polecenie:
-  
+3. Upewnij się, że maszyna wirtualna jest skonfigurowana do używania właściwego serwera usługi Azure KMS. Aby to zrobić, uruchom następujące polecenie:
+  
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    Powinny zostać zwrócone polecenie: Pomyślnie ustawiono kms.core.windows.net:1688 nazwę maszyny usługi zarządzania kluczami.
+    Polecenie powinno zwrócić następujący wynik: Pomyślnie ustawiono kms.core.windows.net:1688 nazwę maszyny usługi zarządzania kluczami.
 
-4. Sprawdź przy użyciu Psping, że masz połączenie z serwerem usługi zarządzania Kluczami. Przejdź do folderu, w którym została rozpakowana pobierania Pstools.zip, a następnie uruchom następujące czynności:
-  
+4. Sprawdź przy użyciu Psping, że masz połączenie z serwerem usługi zarządzania Kluczami. Przejdź do folderu, w którym wyodrębniono pobrany plik Pstools.zip, a następnie uruchom:
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
-  W drugi do ostatniego wiersza danych wyjściowych upewnij się, zostanie wyświetlony: Wysłane = 4, odebrane = 4, utracone = 0 (0% straty).
+  
+   W drugim od końca wierszu danych wyjściowych upewnij się, że widzisz: Wysłane = 4, odebrane = 4, utracone = 0 (0% straty).
 
-  Utracono jest większa od 0 (zero), maszyna wirtualna ma połączenie z serwerem usługi zarządzania Kluczami. W takiej sytuacji Jeśli maszyna wirtualna znajduje się w sieci wirtualnej i jest niestandardowego serwera DNS określona, musisz upewnić się, że serwer DNS jest w stanie rozpoznać kms.core.windows.net. Lub zmienić serwer DNS, który jest rozpoznawany kms.core.windows.net.
+   Utracono jest większa od 0 (zero), maszyna wirtualna ma połączenie z serwerem usługi zarządzania Kluczami. W takiej sytuacji Jeśli maszyna wirtualna znajduje się w sieci wirtualnej i jest niestandardowego serwera DNS określona, musisz upewnić się, że serwer DNS jest w stanie rozpoznać kms.core.windows.net. Lub zmienić serwer DNS, który jest rozpoznawany kms.core.windows.net.
 
-  Należy zauważyć, że po usunięciu wszystkich serwerów DNS z sieci wirtualnej maszyny wirtualne używają wewnętrzna usługi DNS platformy Azure. Ta usługa może rozpoznać kms.core.windows.net.
+   Należy zauważyć, że po usunięciu wszystkich serwerów DNS z sieci wirtualnej maszyny wirtualne używają wewnętrzna usługi DNS platformy Azure. Ta usługa może rozpoznać kms.core.windows.net.
   
 Sprawdź także, czy Zapora gościa nie został skonfigurowany w taki sposób, który może zablokować próby aktywacji.
 
-5. Po zweryfikowaniu pomyślne łączności kms.core.windows.net uruchom następujące polecenie w wierszu programu Windows PowerShell z podwyższonym poziomem uprawnień tej. To polecenie próbuje aktywacji wiele razy.
+1. Po zweryfikowaniu pomyślne łączności kms.core.windows.net uruchom następujące polecenie w wierszu programu Windows PowerShell z podwyższonym poziomem uprawnień tej. To polecenie podejmuje próbę aktywacji wiele razy.
 
     ```
     1..12 | % { iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
     ```
 
-Aktywacja powiodła zwraca informacje, podobny do następującego:
+Pomyślna aktywacja zwraca informacje podobne do następujących:
 
 **Aktywowanie Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678)... Produkt został aktywowany pomyślnie.**
 

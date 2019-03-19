@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9b6db45e38267c70adef3f5a341b8b918b9e78fb
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 42e035b9dca6168fe77e6982505692cf18bfcb40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106427"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Tworzenie maszyny wirtualnej ze statycznym publicznym adresem IP przy użyciu witryny Azure portal
 
@@ -58,7 +58,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
    ![Wybierz port](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
 
 7. Zaakceptuj pozostałe domyślne ustawienia i wybierz **OK**.
-8. Na **Podsumowanie** wybierz opcję **Utwórz**. Maszyny wirtualnej zajmuje kilka minut, aby wdrożyć.
+8. Na stronie **Podsumowanie** wybierz pozycję **Utwórz**. Maszyny wirtualnej zajmuje kilka minut, aby wdrożyć.
 9. Po wdrożeniu maszyny wirtualnej, wprowadź *myPublicIpAddress* w polu wyszukiwania w górnej części portalu. Gdy **myPublicIpAddress** pojawi się w wynikach wyszukiwania, wybierz ją.
 10. Można wyświetlić publiczny adres IP, która jest przypisana, a adres przypisany do **myVM** maszyny wirtualnej, jak pokazano na poniższej ilustracji:
 
@@ -71,7 +71,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
     ![Wyświetl publiczny adres IP](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
-Nie należy modyfikować ustawienia adresu IP w ramach systemu operacyjnego maszyny wirtualnej. System operacyjny jest niezależnych od platformy Azure publicznych adresów IP. Chociaż można było dodać prywatnej ustawienia adresu IP do systemu operacyjnego, zaleca się nie ten sposób, chyba że to konieczne, a nie dopiero po odczytu [Dodaj prywatny adres IP do systemu operacyjnego](virtual-network-network-interface-addresses.md#private).
+> Nie należy modyfikować ustawienia adresu IP w ramach systemu operacyjnego maszyny wirtualnej. System operacyjny jest niezależnych od platformy Azure publicznych adresów IP. Chociaż można było dodać prywatnej ustawienia adresu IP do systemu operacyjnego, zaleca się nie ten sposób, chyba że to konieczne, a nie dopiero po odczytu [Dodaj prywatny adres IP do systemu operacyjnego](virtual-network-network-interface-addresses.md#private).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
 ms.author: banders
-ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 16feb41707e5afa07054d20b620f5822eedad773
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902707"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858916"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Opis zawartości rachunku dla klientów platformy Azure z umową Enterprise Agreement
 
@@ -77,7 +77,7 @@ Porównanie z portalu dla przedsiębiorstw w wynikające z kwoty całkowite uży
 
 ### <a name="review-marketplace-invoice"></a>Przegląd fakturach witryny marketplace
 
-Porównaj całkowitą na Azure Marketplace **raporty** > **Podsumowanie użycia** w witrynie Enterprise portal, za pomocą usługi fakturach witryny marketplace. Fakturach witryny marketplace jest tylko w przypadku zakupów w portalu Azure Marketplace i użycia. Kwoty **Podsumowanie użycia** nie zawierają podatku. 
+Porównaj całkowitą na Azure Marketplace **raporty** > **Podsumowanie użycia** w witrynie Enterprise portal, za pomocą usługi fakturach witryny marketplace. Faktura witryny Marketplace dotyczy tylko zakupów w witrynie Azure Marketplace i jej użycia. Kwoty **Podsumowanie użycia** nie zawierają podatku. 
 
 1. Zaloguj się do [witryny Enterprise portal](https://ea.azure.com).
 1. Wybierz **raporty**.
@@ -92,4 +92,4 @@ Porównaj całkowitą na Azure Marketplace **raporty** > **Podsumowanie użycia*
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

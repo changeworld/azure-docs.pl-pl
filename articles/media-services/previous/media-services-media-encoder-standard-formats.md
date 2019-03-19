@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: a5131449b5aa66e3075cbf67cc055286dbc4ccb9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 6d64a0779040fd2e473fbbf93e5d091cdc927bc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957763"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088948"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Formaty i kodeki narzędzia Media Encoder Standard
 
@@ -30,7 +30,7 @@ Ten dokument zawiera listę najbardziej typowych importu i eksportu formatów pl
 
 ## <a name="input-containerfile-formats"></a>Dane wejściowe formaty kontenerów/plików
 | Formaty plików (rozszerzenia plików) | Obsługiwane |
-| --- | --- | --- | --- |
+| --- | --- |
 | FLV (z koderów-dekoderów H.264 i AAC) (FLV) |Yes |
 | MXF    (.mxf) |Yes |
 | GXF    (.gxf) |Yes |
@@ -59,7 +59,7 @@ lub
 
 ## <a name="input-video-codecs"></a>Dane wejściowe koderów-dekoderów wideo
 | Dane wejściowe koderów-dekoderów wideo | Obsługiwane |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8-bitowy/10-bitowy, maksymalnie 4:2:2, wraz z AVCIntra |8-bitowy 4:2:0 oraz 4:2:2 |
 | Avid DNxHD (in MXF) |Yes |
 | DVCPro/DVCProHD (in MXF) |Yes |
@@ -82,7 +82,7 @@ lub
 
 ## <a name="input-audio-codecs"></a>Dane wejściowe audio kodery-dekodery
 | Dane wejściowe Audio kodery-dekodery | Obsługiwane |
-| --- | --- | --- | --- |
+| --- | --- |
 | AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Yes |
 | MPEG Layer 2 |Yes |
 | Mp3 (MPEG-1 Audio warstwa 3) |Yes |

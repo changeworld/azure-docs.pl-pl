@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 1cfba4bf824d381e1b40ea0228ee902a1d6b5a9a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7bd812d3aadfd3c358c8d0aeccf0e92ed474a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993206"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Funkcja BitLocker błędy rozruchu na Maszynie wirtualnej platformy Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "57763218"
 
 - Podłącz sterownik USB, który ma klucz funkcji BitLocker
 
-- Możesz teraz blokady! Wprowadź klucz odzyskiwania, aby zacząć ponownie (układ klawiatury: Informacje logowania dla Stanów Zjednoczonych) nieprawidłowa został wprowadzony zbyt wiele razy, aby komputer został zablokowany, aby chronić Twoją prywatność. Aby pobrać klucz odzyskiwania, przejdź do http://windows.microsoft.com/recoverykeyfaq z innego komputera lub urządzenia przenośnego. W przypadku, gdy będą potrzebne, klucz ID jest XXXXXXX. Alternatywnie można zresetować komputera PC.
+- Możesz teraz blokady! Wprowadź klucz odzyskiwania, aby zacząć ponownie (układ klawiatury: Informacje logowania dla Stanów Zjednoczonych) nieprawidłowa został wprowadzony zbyt wiele razy, aby komputer został zablokowany, aby chronić Twoją prywatność. Aby pobrać klucz odzyskiwania, przejdź do https://windows.microsoft.com/recoverykeyfaq z innego komputera lub urządzenia przenośnego. W przypadku, gdy będą potrzebne, klucz ID jest XXXXXXX. Alternatywnie można zresetować komputera PC.
 
 - Wprowadź hasło, aby odblokować ten dysk [] naciśnij klawisz Insert, aby wyświetlić hasło podczas wpisywania.
 - Wprowadź klucz odzyskiwania obciążenia klucz odzyskiwania z urządzenia USB.

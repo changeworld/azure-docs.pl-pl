@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a37a811c7944334571b4043d8ba937ffadc1e71
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205753"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Work.com
 
@@ -151,13 +151,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Rozwiń **środki kontroli bezpieczeństwa** menu, a następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
     
-    ![Pojedynczy ustawień logowania jednokrotnego](./media/work-com-tutorial/ic794113.png "pojedynczy ustawień logowania jednokrotnego")
+    ![Ustawienia logowania jednokrotnego](./media/work-com-tutorial/ic794113.png "Ustawienia logowania jednokrotnego")
 
 1. Na **ustawienia rejestracji jednokrotnej** okna dialogowego strony, wykonaj następujące czynności:
     
     ![SAML włączone](./media/work-com-tutorial/ic781026.png "SAML włączone")
     
-    a. Wybierz **SAML włączone**.
+    a. Wybierz pozycję **SAML Enabled** (SAML włączone).
     
     b. Kliknij przycisk **Nowy**.
 
@@ -262,9 +262,9 @@ Dla użytkowników usługi Azure Active Directory można było zarejestrować si
     
     c. W **Alias** polu tekstowym wpisz **nazwa** użytkownika **BrittaS**.
     
-    d. W **E-mail** polu tekstowym wpisz **adres e-mail** użytkownika **Brittasimon@contoso.com**.
+    d. W **E-mail** polu tekstowym wpisz **adres e-mail** użytkownika **Brittasimon\@contoso.com**.
     
-    e. W **nazwa_użytkownika** pole tekstowe, wpisz nazwę użytkownika, takie jak **Brittasimon@contoso.com**.
+    e. W **nazwa_użytkownika** pole tekstowe, wpisz nazwę użytkownika, takie jak **Brittasimon\@contoso.com**.
     
     f. W **pseudonim** polu tekstowym wpisz **pseudonim** użytkownika **Simon**.
     
@@ -316,7 +316,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

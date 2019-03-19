@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
-ms.reviewer: sgilley
-author: hning86
-ms.author: haining
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d441ed408f9c9348ba091178cf6ce84d67abb3a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: a7665066a28343f1d2ca46d5210b210f8f103abd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896674"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
@@ -25,8 +24,8 @@ Obszar roboczy usługi Azure Machine Learning można utworzyć w witrynie Azure 
 W tym przewodniku Szybki start wykonasz następujące czynności:
 
 * Tworzenie obszaru roboczego w subskrypcji platformy Azure.
-* Wypróbowanie jego działania za pomocą języka Python w notesie Jupyter i rejestrowanie wartości z wielu iteracji.
-* Wyświetlanie zarejestrowanych wartości w obszarze roboczym.
+* Wypróbuj go za pomocą języka Python w notesie Jupyter. Notes, zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji. 
+* Wyświetl wartości błędów rejestrowane w obszarze roboczym.
 
 Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platformy Azure, gdy będą dostępne w regionie:
 
@@ -37,7 +36,7 @@ Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platform
 
 Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Machine Learning i artykułach z instrukcjami. Podobnie jak w przypadku innych usług platformy Azure korzystanie z pewnych zasobów skojarzonych z usługą Machine Learning jest ograniczone określonymi limitami. Przykładem jest rozmiar klastra obliczeniowego. Dowiedz się więcej o [limitach domyślnych i sposobach zwiększania limitów przydziału](how-to-manage-quotas.md).
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego 
@@ -65,11 +64,11 @@ Usługa [Azure Notebooks](https://notebooks.azure.com) udostępnia bezpłatną p
 
 1. Na stronie obszaru roboczego wybierz pozycję **Eksplorowanie obszaru roboczego usługi Azure Machine Learning**.
 
- ![Eksplorowanie obszaru roboczego](./media/quickstart-get-started/explore_aml.png)
+   ![Eksplorowanie obszaru roboczego](./media/quickstart-get-started/explore_aml.png)
 
 1. Wybierz pozycję **Otwórz usługę Azure Notebooks**, aby spróbować przeprowadzić swój pierwszy eksperyment w usłudze Azure Notebooks.  Azure Notebooks to oddzielna usługa, która umożliwia bezpłatne uruchamianie notesów programu Jupyter w chmurze.  Jeśli użyjesz tego linku do usługi, informacje o sposobie łączenia się z obszarem roboczym zostaną dodane do biblioteki tworzonej w usłudze Azure Notebooks.
 
- ![Otwieranie usługi Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
+   ![Otwieranie usługi Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
 1. Zaloguj się do usługi Azure Notebooks.  Upewnij się, że logujesz się przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure Portal. Organizacja może wymagać [zgody administratora](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) przed zalogowaniem się.
 
@@ -79,7 +78,7 @@ Usługa [Azure Notebooks](https://notebooks.azure.com) udostępnia bezpłatną p
 
 1. Wybierz pozycję **Klonuj**.
 
- ![Klonowanie biblioteki](./media/quickstart-get-started/clone.png)
+   ![Klonowanie biblioteki](./media/quickstart-get-started/clone.png)
 
 1. Jeśli zobaczysz, że projekt jest w stanie Zatrzymano, kliknij pozycję **Uruchom w ramach bezpłatnych obliczeń**, aby korzystać z bezpłatnego serwera notesu.
 
@@ -121,7 +120,7 @@ Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykres
 
 Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Utworzono zasoby umożliwiające eksperymentowanie i wdrażanie modeli. Uruchomiono też kod w notesie. Zbadano historię przebiegów dotyczącą tego kodu w obszarze roboczym w chmurze.
 

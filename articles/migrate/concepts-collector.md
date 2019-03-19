@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 3d9106fb682a370e18fc78d35ca31662bae44524
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080069"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -85,22 +85,22 @@ Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby za
 - Adres IP/nazwę FQDN serwera Proxy, należy określać jako *http://IPaddress* lub *http://FQDN*.
 - Obsługiwane są tylko serwery proxy HTTP. Serwery proxy oparty na protokole HTTPS nie są obsługiwane przez moduł zbierający.
 - Jeśli serwer proxy jest przechwytujący serwer proxy, należy zaimportować certyfikat serwera proxy na maszynie wirtualnej modułu zbierającego.
-    1. W maszynie Wirtualnej modułu zbierającego, przejdź do **Start Menu** > **zarządzania certyfikatami komputera**.
-    2. W narzędziu certyfikaty w ramach **certyfikaty — komputer lokalny**, Znajdź **zaufanych wydawców** > **certyfikaty**.
+  1. W maszynie Wirtualnej modułu zbierającego, przejdź do **Start Menu** > **zarządzania certyfikatami komputera**.
+  2. W narzędziu certyfikaty w ramach **certyfikaty — komputer lokalny**, Znajdź **zaufanych wydawców** > **certyfikaty**.
 
-        ![Narzędzia certyfikatów](./media/concepts-intercepting-proxy/certificates-tool.png)
+      ![Narzędzia certyfikatów](./media/concepts-intercepting-proxy/certificates-tool.png)
 
-    3. Skopiuj certyfikat serwera proxy na maszynie Wirtualnej modułu zbierającego. Może być konieczne go uzyskać od administratora sieci.
-    4. Kliknij dwukrotnie, aby otworzyć certyfikat, a następnie kliknij przycisk **Zainstaluj certyfikat**.
-    5. W Kreatorze importu certyfikatów > Store lokalizacji, wybierz **komputera lokalnego**.
+  3. Skopiuj certyfikat serwera proxy na maszynie Wirtualnej modułu zbierającego. Może być konieczne go uzyskać od administratora sieci.
+  4. Kliknij dwukrotnie, aby otworzyć certyfikat, a następnie kliknij przycisk **Zainstaluj certyfikat**.
+  5. W Kreatorze importu certyfikatów > Store lokalizacji, wybierz **komputera lokalnego**.
 
-    ![Lokalizacja magazynu certyfikatów](./media/concepts-intercepting-proxy/certificate-store-location.png)
+     ![Lokalizacja magazynu certyfikatów](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-    6. Wybierz **Umieść wszystkie certyfikaty w następującym magazynie** > **Przeglądaj** > **zaufanych wydawców**. Kliknij przycisk **Zakończ** Aby zaimportować certyfikat.
+  6. Wybierz **Umieść wszystkie certyfikaty w następującym magazynie** > **Przeglądaj** > **zaufanych wydawców**. Kliknij przycisk **Zakończ** Aby zaimportować certyfikat.
 
-    ![Magazyn certyfikatów](./media/concepts-intercepting-proxy/certificate-store.png)
+     ![Magazyn certyfikatów](./media/concepts-intercepting-proxy/certificate-store.png)
 
-    7. Sprawdź, czy certyfikat został zaimportowany, zgodnie z oczekiwaniami, a następnie sprawdź, czy działa sprawdzania wymagań wstępnych połączenia internetowego jako oczekiwana.
+  7. Sprawdź, czy certyfikat został zaimportowany, zgodnie z oczekiwaniami, a następnie sprawdź, czy działa sprawdzania wymagań wstępnych połączenia internetowego jako oczekiwana.
 
 
 ### <a name="urls-for-connectivity"></a>Adresy URL dla połączenia

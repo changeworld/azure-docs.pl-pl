@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106903"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -32,35 +32,53 @@ Przed rozpoczęciem upewnij się, że:
 - Ukończono [Samouczek: instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
 - Twoje dyski są odblokowane i podłączone do komputera klienckiego.
 - Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
-- Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types).
+- Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
+- Przegląd [zarządzane limity dysku w limity rozmiaru obiektów platformy Azure](data-box-disk-limits.md#azure-object-size-limits).
 
 
 ## <a name="copy-data-to-disks"></a>Kopiowanie danych na dyski
 
+Przed przystąpieniem do kopiowania danych na dyskach, należy przejrzeć następujące zagadnienia:
+
+- Twoim obowiązkiem jest zapewnienie, że dane zostały skopiowane do folderów odpowiadających właściwym formatom danych. To znaczy na przykład, że dane blokowych obiektów blob zostały skopiowane do folderu BlockBlob. Jeśli format danych nie pasuje do folderu (typu magazynu), na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
+- Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md).
+- Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
+
+Jeśli określono dysków zarządzanych w kolejności, przejrzyj następujące dodatkowe kwestie:
+
+- Użytkownik może mieć tylko jeden dysk zarządzany o określonej nazwie w grupie zasobów we wszystkich folderach precreated i we wszystkich dysku Data Box. Oznacza to, że wirtualne dyski twarde przekazany do folderów precreated powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa jest niezgodna już istniejącego dysku zarządzanego w grupie zasobów. Jeśli wirtualne dyski twarde mają takie same nazwy, tylko jeden wirtualny dysk twardy jest konwertowany na dysk zarządzany o tej nazwie. Inne dyski VHD są ładowane jako stronicowe obiekty BLOB konta magazynu przejściowego.
+- Zawsze Kopiuj wirtualne dyski twarde do jednego z precreated folderów. W przypadku kopiowania wirtualnych dysków twardych poza te foldery lub w folderze, który został utworzony, wirtualne dyski twarde są przekazywane do konta usługi Azure Storage jako stronicowe obiekty BLOB i dyski zarządzane nie.
+- Do utworzenia dysków zarządzanych można przekazać tylko stałych dysków VHD. Dynamicznych wirtualnych dysków twardych, różnicowych wirtualnych dysków twardych lub dysk VHDX pliki nie są obsługiwane.
+
+
 Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane, wykonaj poniższe czynności.
 
-1. Wyświetl zawartość odblokowanego dysku.
+1. Wyświetl zawartość odblokowanego dysku. Lista precreated foldery i podfoldery w stacji różni się w zależności od opcji wybranych podczas umieszczania zamówienie dysku Data Box.
 
-    ![Wyświetlanie zawartości dysku](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
+    |Wybrany magazyn docelowy  |Typ konta magazynu|Typ konta magazynu tymczasowego |Foldery i podfoldery  |
+    |---------|---------|---------|------------------|
+    |Konto magazynu     |Konta GPv1 lub konta GPv2                 | Nie dotyczy | BlockBlob <br> PageBlob <br> AzureFile        |
+    |Konto magazynu     |Konta usługi blob storage         | Nie dotyczy | BlockBlob        |
+    |Dyski zarządzane     |Nie dotyczy | Konta GPv1 lub konta GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
+    |Konto magazynu <br> Dyski zarządzane     |Konta GPv1 lub konta GPv2 | Konta GPv1 lub konta GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Konto magazynu <br> Dyski zarządzane    |Konta usługi blob storage | Konta GPv1 lub konta GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+
+    Poniżej przedstawiono przykładowy zrzut ekranu zamówienia, w których określono konto magazynu GPv2:
+
+    ![Zawartość dysku](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. Skopiuj dane, które mają zostać zaimportowane jako blokowe obiekty blob, do folderu BlockBlob. Analogicznie skopiuj dane w formatach takich jak VHD/VHDX do folderu PageBlob. 
+2. Skopiuj dane do zaimportowania jako blokowe obiekty BLOB w celu *BlockBlob* folderu. Podobnie, skopiuj dane, takie jak dysk VHD/VHDX do *PageBlob* folder i danych w celu *AzureFile* folderu.
 
     Dla każdego podfolderu w folderach BlockBlob i PageBlob zostanie utworzony kontener na koncie usługi Azure Storage. Wszystkie pliki w folderach BlockBlob i PageBlob zostaną skopiowane do domyślnego kontenera `$root` na koncie usługi Azure Storage. Pliki w kontenerze `$root` są zawsze przekazywane jako blokowe obiekty blob.
 
+   Skopiuj pliki do folderu, w ramach *AzureFile* folderu. Podfolderu w ramach *AzureFile* folder tworzy udział plików. Pliki kopiowana bezpośrednio do *AzureFile* folderu zakończy się niepowodzeniem i są przekazywane jako blokowe obiekty BLOB.
+
     Jeśli w katalogu głównym istnieją jakiekolwiek pliki lub foldery, należy przenieść je do innego folderu przed rozpoczęciem kopiowania danych.
 
-    Nazwy kontenerów i obiektów blob muszą być zgodne z konwencją nazewnictwa platformy Azure.
+    > [!IMPORTANT]
+    > Wszystkich kontenerów, obiektów blob i nazwy plików powinny być zgodne z [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
 
-    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Konwencje nazewnictwa platformy Azure dla nazw kontenerów i obiektów blob
-    |Jednostka   |Konwencja  |
-    |---------|---------|
-    |Nazwy kontenerów blokowych i stronicowych obiektów blob     |Muszą zaczynać się literą lub cyfrą i mogą zawierać tylko małe litery, cyfry oraz łączniki (-). Bezpośrednio przed łącznikiem (-) i bezpośrednio po nim musi znajdować się cyfra lub litera. Nazwy nie mogą zawierać sąsiadujących ze sobą łączników. <br>Muszą być prawidłowymi nazwami DNS o długości od 3 do 63 znaków.          |
-    |Nazwy blokowych i stronicowych obiektów blob    |W nazwach obiektów blob jest rozróżniana wielkość liter. Mogą zawierać dowolną kombinację znaków. <br>Nazwa obiektu blob musi zawierać od 1 do 1024 znaków.<br>Zastrzeżone znaki adresów URL muszą być poprzedzone odpowiednim znakiem ucieczki.<br>Liczba segmentów ścieżki w nazwie obiektu blob nie może przekraczać 254. Segment ścieżki to ciąg znajdujący się pomiędzy następującymi po sobie znakami ogranicznika (na przykład ukośnikami „/”), co odpowiada nazwie katalogu wirtualnego.         |
-
-    > [!IMPORTANT] 
-    > Wszystkie kontenery i obiekty blob powinny mieć nazwy zgodne z [konwencją nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
-
-3. Rozmiar żadnego z kopiowanych plików nie może przekraczać ~4.7 TiB w przypadku blokowych obiektów blob, a ~8 TiB w przypadku stronicowych obiektów blob. 
+3. Podczas kopiowania plików, upewnij się, że pliki nie przekraczają ~4.7 TiB dla blokowych obiektów blob, ~ 8 TiB dla stronicowych obiektów blob i OK. 1 TiB dla usługi Azure Files. 
 4. Możesz skopiować dane, przeciągając je i upuszczając w Eksploratorze plików. Możesz też skopiować dane za pomocą dowolnego narzędzia kopiowania danych zgodnego z SMB, na przykład narzędzia Robocopy. Aby rozpocząć wiele zadań kopiowania, użyj następującego polecenia narzędzia Robocopy:
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -80,7 +98,7 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     |/FFT                | Zakłada czas plików w formacie FAT (dokładność do dwóch sekund).        |
     |/Log:<Log File>     | Zapisuje dane wyjściowe stanu w pliku dziennika (zastępuje istniejący plik dziennika).         |
 
-    Można użyć równolegle wielu dysków, uruchamiając wiele zadań na każdym z nich. 
+    Można użyć równolegle wielu dysków, uruchamiając wiele zadań na każdym z nich.
 
 6. Gdy zadanie będzie w toku, sprawdzaj stan kopiowania. Poniższy przykład przedstawia dane wyjściowe polecenia kopiowania plików na urządzenie Data Box Disk za pomocą narzędzia Robocopy.
 
@@ -151,8 +169,8 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     Aby zoptymalizować wydajność, użyj poniższych parametrów polecenia robocopy podczas kopiowania danych.
 
     |    Platforma    |    Przeważnie małe pliki < 512 KB                           |    Przeważnie średnie pliki od 512 KB do 1 MB                      |    Przeważnie duże pliki > 1 MB                             |   
-    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-    |    Data Box Disk        |    4 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |  |
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+    |    Data Box Disk        |    4 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |    2 sesje narzędzia Robocopy* <br> 16 wątków na sesję    |
     
     **Każda sesja narzędzia Robocopy może mieć maksymalnie 7000 katalogów i 150 milionów plików.*
     
@@ -163,17 +181,13 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
 
 6. Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki dziennika, które pomogą w rozwiązywaniu problemów. Pliki dziennika znajdują się w lokalizacji określonej w narzędziu Robocopy.
  
-> [!IMPORTANT]
-> - Twoim obowiązkiem jest zapewnienie, że dane zostały skopiowane do folderów odpowiadających właściwym formatom danych. To znaczy na przykład, że dane blokowych obiektów blob zostały skopiowane do folderu BlockBlob. Jeśli format danych nie pasuje do folderu (typu magazynu), na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
-> -  Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md).
-> - Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
-
 ### <a name="split-and-copy-data-to-disks"></a>Dzielenie i kopiowanie danych na dyski
 
 Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. Narzędzie do dzielenia skopiowanych dysków Data Box pomaga w dzieleniu i kopiowaniu danych na komputerze z systemem Windows.
 
 >[!IMPORTANT]
 > Narzędzie do dzielenia skopiowanych dysków Data Box przeprowadza również walidację danych. Jeśli używasz narzędzia do dzielenia skopiowanych dysków Data Box do kopiowania danych, możesz pominąć [krok walidacji](#validate-data).
+> Narzędzia do kopiowania podziału nie jest obsługiwana w przypadku dysków zarządzanych.
 
 1. Upewnij się, że narzędzie do dzielenia skopiowanych dysków Data Box zostało pobrane i wyodrębnione w folderze lokalnym na komputerze z systemem Windows. To narzędzie zostało pobrane podczas pobierania zestawu narzędzi Data Box Disk dla systemu Windows.
 2. Otwórz Eksploratora plików. Zanotuj literę dysku źródła danych i litery dysków przypisane do usługi Data Box Disk. 
@@ -195,10 +209,10 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
  
 5. Zmodyfikuj plik `SampleConfig.json`.
  
-    - Podaj nazwę zadania. Spowoduje to utworzenie folderu w usłudze Data Box Disk, który w ostateczności stanie się kontenerem na koncie usługi Azure Storage powiązanym z tymi dyskami. Nazwa zadania musi być zgodna z konwencjami nazewnictwa kontenera platformy Azure. 
-    - Podaj ścieżkę źródłową, zapisując format ścieżki w pliku `SampleConfigFile.json`. 
-    - Wprowadź litery dysku odpowiadające dyskom docelowym. Dane zostaną pobrane ze ścieżki źródłowej i skopiowane na wiele dysków.
-    - Podaj ścieżkę dla plików dziennika. Domyślnie są one wysyłane do bieżącego katalogu, w którym znajduje się plik `.exe`.
+   - Podaj nazwę zadania. Spowoduje to utworzenie folderu w usłudze Data Box Disk, który w ostateczności stanie się kontenerem na koncie usługi Azure Storage powiązanym z tymi dyskami. Nazwa zadania musi być zgodna z konwencjami nazewnictwa kontenera platformy Azure. 
+   - Podaj ścieżkę źródłową, zapisując format ścieżki w pliku `SampleConfigFile.json`. 
+   - Wprowadź litery dysku odpowiadające dyskom docelowym. Dane zostaną pobrane ze ścieżki źródłowej i skopiowane na wiele dysków.
+   - Podaj ścieżkę dla plików dziennika. Domyślnie są one wysyłane do bieżącego katalogu, w którym znajduje się plik `.exe`.
 
      ![Dzielenie skopiowanych danych](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
@@ -208,7 +222,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
  
 7. Otwórz okno wiersza polecenia. 
 
-8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Typ
+8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -256,7 +270,7 @@ Jeśli nie użyto narzędzia do dzielenia skopiowanych plików, musisz przeprowa
 
 3. Jeśli używasz wielu dysków, uruchom to polecenie dla każdego dysku.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Disk, takie jak:
 

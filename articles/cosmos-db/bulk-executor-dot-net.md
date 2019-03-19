@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 7c47e6df1e8b92d122dcc6bed55506f2fccf9e89
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 969821c8b83b8ef554c67f99e3a16e827b53e647
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877511"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845124"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą biblioteki .NET przetwarzania zbiorczego
 
@@ -194,7 +194,7 @@ Korzystając z biblioteki program wykonujący zbiorcze, należy wziąć pod uwag
       </listeners>
     </trace>
   </system.diagnostics>
-```
+  ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o szczegóły pakietu Nuget i biblioteki .net wykonawca zbiorcze informacje o wersji, zobacz[zbiorczo Szczegóły zestawu SDK funkcji wykonawczej](sql-api-sdk-bulk-executor-dot-net.md). 
+* Dowiedz się więcej o szczegóły pakietu Nuget i biblioteki .NET wykonawca zbiorcze informacje o wersji, zobacz[zbiorczo Szczegóły zestawu SDK funkcji wykonawczej](sql-api-sdk-bulk-executor-dot-net.md). 

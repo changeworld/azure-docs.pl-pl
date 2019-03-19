@@ -1,19 +1,19 @@
 ---
 title: Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 description: Dowiedz się, jak skonfigurować zestaw skalowania maszyn wirtualnych i wdrożyć aplikację w zestawie skalowania maszyn wirtualnych na platformie Azure za pomocą rozwiązania Ansible
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 540634d68f28aadeed308bc6cc84f459b79385e2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 2214dd9505dff86ac26f01967a360140dee0069f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729291"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791736"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).
@@ -206,6 +206,6 @@ Gratulacje! Twoja aplikacja działa teraz na platformie Azure. Możesz teraz prz
 
 ![Aplikacja języka Java uruchomiona w zestawie skalowania maszyn wirtualnych na platformie Azure.](media/ansible-deploy-app-vmss/ansible-deploy-app-vmss.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

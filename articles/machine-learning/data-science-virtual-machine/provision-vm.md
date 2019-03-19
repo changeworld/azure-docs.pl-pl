@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 8ee424412c9c54dadef7391084e3ab976da9ad7f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896266"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych z Windows na platformie Azure
 
@@ -44,7 +44,7 @@ Następujące narzędzia są objęte maszyny wirtualnej DSVM:
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) — szybkie usługi machine learning system, który obsługuje technik, takich jak online wyznaczania wartości skrótu, allreduce, redukcji, learning2search i uczenie aktywnych i interaktywne
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/) — narzędzie, które zapewnia szybkie i dokładne wzmocnionego drzewa wykonania
   * [Rattle](https://togaware.com/rattle/) — narzędzia analitycznego R, który ułatwia pracę dzięki analizie danych i uczenia maszynowego w języku R. Obejmuje Eksplorowanie i modelowanie za pomocą automatycznego generowania kodu języka R graficznego interfejsu użytkownika na podstawie danych.
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) — wyszukiwanie danych wizualnych i usługi machine learning oprogramowania w języku Java
+  * [Weka](https://www.cs.waikato.ac.nz/ml/weka/) — wyszukiwanie danych wizualnych i usługi machine learning oprogramowania w języku Java
   * [Apache Drill](https://drill.apache.org/) -schematów aparat kwerend SQL dla usługi Apache Hadoop, NoSQL i Magazyn w chmurze. Obsługuje ona ODBC i sterownika JDBC interfejsy do wykonywania zapytań, NoSQL i pliki ze standardowych narzędzi analizy Biznesowej, takich jak Power BI, programie Microsoft Excel i Tableau.
 * Bibliotek języka R i Python do użycia w usłudze Azure Machine Learning i innymi usługami platformy Azure
 * Git, w tym powłoki Git Bash, aby pracować z repozytoriów kodu źródłowego, które zawierają usługi GitHub i DevOps platformy Azure. Usługa Git oferuje kilka popularnych Linux narzędzi wiersza polecenia, które są dostępne zarówno w Git Bash, jak i wiersza polecenia. Przykładami są awk, sed, perl, grep, wyszukiwanie, wget i narzędzie curl.
@@ -71,7 +71,7 @@ Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o 
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Aby utworzyć maszynę wirtualną do nauki o danych firmy Microsoft, musi mieć subskrypcję platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](http://azure.com/free).
+Aby utworzyć maszynę wirtualną do nauki o danych firmy Microsoft, musi mieć subskrypcję platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.com/free).
 
 ## <a name="create-your-dsvm"></a>Tworzenie maszyny wirtualnej DSVM
 
@@ -229,4 +229,4 @@ Możesz użyć [Instalatora platformy sieci Web firmy Microsoft](https://www.mic
 * W Eksploratorze plików przejdź do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** przykładów, korzystające z biblioteki kolekcję funkcji RevoScaleR w języku R, który obsługuje analizy danych w skali przedsiębiorstwa.  
 * Przeczytaj artykuł [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](https://aka.ms/dsvmtenthings).
 * Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](../team-data-science-process/index.yml).
-* Odwiedź stronę [galerii Azure AI](http://gallery.cortanaintelligence.com) nauki i dane analizy przykładowych maszyny korzystające z usługi Azure Machine Learning i powiązane dane usług na platformie Azure. Podano także ikony dla tej galerii na **Start** menu i pulpitu maszyny wirtualnej.
+* Odwiedź stronę [galerii Azure AI](https://gallery.cortanaintelligence.com) nauki i dane analizy przykładowych maszyny korzystające z usługi Azure Machine Learning i powiązane dane usług na platformie Azure. Podano także ikony dla tej galerii na **Start** menu i pulpitu maszyny wirtualnej.

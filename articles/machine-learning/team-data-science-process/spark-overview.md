@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 82c4bca1c72d5440385e3fda6208b1e74a5444a1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845342"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Omówienie używania platformy Spark w usłudze Azure HDInsight do analizy danych
 
 Tym zestawie tematów pokazuje, jak używać platformy HDInsight Spark do wykonania typowych zadań do nauki o danych, takich jak pozyskiwanie danych, technicznego opracowywania funkcji, modelowania i ocenę modelu. Dane używane jest przykładem 2013 NYC taksówek podróży i klasie zestawu danych. Modele utworzone obejmują regresji logistycznej liniowego i liniowa w, losowych lasów i gradientu wzmocnionego drzewa. W tematach opisano również sposób przechowywania tych modeli w usłudze Azure blob storage (WASB) oraz ocena i oceny wydajności predykcyjne. Obejmuje bardziej zaawansowanych tematów, jak modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów. Ten ogólny temat odwołuje się również do tematów opisujących, jak skonfigurować klaster Spark, które należy wykonać czynności opisane w wskazówki podane.
 
 ## <a name="spark-and-mllib"></a>Platforma Spark oraz MLlib
-[Platforma Spark](http://spark.apache.org/) to platforma przetwarzania równoległego typu open source, która obsługuje w pamięci przetwarzanie w celu zwiększania wydajności aplikacji do analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. [Biblioteka MLlib](http://spark.apache.org/mllib/) to biblioteka uczenia maszynowego skalowalne do platforma Spark, które powoduje konsolidatorze modelowanie to środowisku rozproszonym.
+[Platforma Spark](https://spark.apache.org/) to platforma przetwarzania równoległego typu open source, która obsługuje w pamięci przetwarzanie w celu zwiększania wydajności aplikacji do analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. [Biblioteka MLlib](https://spark.apache.org/mllib/) to biblioteka uczenia maszynowego skalowalne do platforma Spark, które powoduje konsolidatorze modelowanie to środowisku rozproszonym.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) to Azure hostowanej Oferta typu open source platformy Spark. Obejmuje również obsługę **notesów Jupyter PySpark** w klastrze Spark, która może uruchomić interakcyjnych zapytań Spark SQL do przekształcania, filtrowania i wizualizowanie danych przechowywanych obiektów blob platformy Azure (WASB). PySpark jest interfejsu API języka Python dla platformy Spark. Fragmenty kodu, do zapewniania rozwiązań, które pokazują odpowiednie wykresy w celu wizualizacji danych, w tym miejscu są uruchamiane w notesy Jupyter notebook zainstalowane w klastrach platformy Spark. Kroki modelowania w tych tematach zawierają kod, który pokazuje, jak uczenie, ocenę, Zapisz i zużywać każdy rodzaj modelu.
@@ -49,19 +49,17 @@ Te notesy to będą uruchamiane w jądra pySpark3 serwer notesu Jupyter.
 
 > [!NOTE]
 > Linie lotnicze zestaw danych został dodany do notesów Spark 2.0, aby lepiej zilustrować używania algorytmów klasyfikacji. Zobacz poniższe linki do informacji na temat linii lotniczych na czas wyjścia zestawu danych i zestaw danych o pogodzie:
-
->- Dane na czas wyjścia linii lotniczych: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- Dane o pogodzie w Kuwejcie: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
->
->
+> 
+> - Dane na czas wyjścia linii lotniczych: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> 
+> - Dane o pogodzie w Kuwejcie: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście przedstawiono wiele aspektów eksplorację, wizualizację i szkolenie modelu uczenia Maszynowego w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być przeznaczona punkt początkowy do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0.
+> Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście przedstawiono wiele aspektów eksplorację, wizualizację i szkolenie modelu uczenia Maszynowego w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być przeznaczona punkt początkowy do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0.
 
 <!-- -->
 
@@ -94,7 +92,7 @@ Poniższe procedury odnoszą się do platformy Spark 1.6. Dla wersji platformy S
 Dane podróży taksówek NYC około 20 GB plików skompresowanych wartości rozdzielanych przecinkami (CSV) (~ 48 GB nieskompresowane), zawierających ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy rekord podróży obejmuje pobranie się i dropoff lokalizacji i czasu, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
 
 1. Pliki CSV "trip_data" zawierają podróży uzyskać szczegółowe informacje, takie jak liczba osób, podnieś i wskazuje dropoff, przełączył czas trwania i długość podróży. Poniżej przedstawiono kilka przykładowych rekordów:
-   
+
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
@@ -102,7 +100,7 @@ Dane podróży taksówek NYC około 20 GB plików skompresowanych wartości rozd
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 2. Pliki CSV "trip_fare" zawierają szczegółowe informacje o opłatę za każdym razem, takich jak typ płatności, kwota taryfy, opłata za opcję i podatków, porady i drogi i łącznej kwoty zapłacone. Poniżej przedstawiono kilka przykładowych rekordów:
-   
+
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7

@@ -3,20 +3,20 @@ title: Przekształcanie danych za pomocą programu Hive w usłudze Azure Virtual
 description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/04/2018
-ms.author: douglasl
-ms.openlocfilehash: b7d536a9dc411dfd6420278ed42116b546315f3e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436709"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085035"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -33,6 +33,9 @@ W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Fa
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - **Konto usługi Azure Storage**. Utwórz skrypt programu Hive i przekaż go do usługi Azure Storage. Dane wyjściowe skryptu programu Hive są przechowywane na tym koncie magazynu. W tym przykładzie klaster usługi HDInsight używa tego konta usługi Azure Storage jako magazynu głównego. 
 - **Azure Virtual Network.** Jeśli nie masz sieci wirtualnej platformy Azure, utwórz ją, wykonując [te instrukcje](../virtual-network/quick-create-portal.md). W tym przykładzie usługa HDInsight znajduje się w usłudze Azure Virtual Network. Oto przykładowa konfiguracja usługi Azure Virtual Network. 
 
@@ -40,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - **Klaster usługi HDInsight.** Utwórz klaster usługi HDInsight i przyłącz go do sieci wirtualnej utworzonej w poprzednim kroku, postępując zgodnie z opisem podanym w artykule: [Extend Azure HDInsight using an Azure Virtual Network (Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network)](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Oto przykładowa konfiguracja usługi HDInsight w sieci wirtualnej. 
 
     ![Usługa HDInsight w sieci wirtualnej](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- Zainstalowanie programu **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+- Zainstalowanie programu **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 - **Maszyna wirtualna**. Utwórz maszynę wirtualną platformy Azure i przyłącz ją do tej samej sieci wirtualnej, która zawiera Twój klaster usługi HDInsight. Aby uzyskać szczegółowe informacje, zobacz [How to create virtual machines (Jak utworzyć maszyny wirtualne)](../virtual-network/quick-create-portal.md#create-virtual-machines). 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Przekazywanie skryptu programu Hive do konta usługi Blob Storage
@@ -82,24 +85,24 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 3. Wybierz **subskrypcję** Azure, w której chcesz utworzyć fabrykę danych. 
 4. Dla opcji **Grupa zasobów** wykonaj jedną z następujących czynności:
      
-      - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
-      - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
+   - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
+   - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
-      Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
+     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 7. Kliknij pozycję **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
-    ![kafelek Wdrażanie fabryki danych](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
+     ![kafelek Wdrażanie fabryki danych](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
    
-   ![Strona główna fabryki danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
+    ![Strona główna fabryki danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. Kliknij pozycję **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić interfejs użytkownika usługi Data Factory.
 11. Na stronie **Wprowadzenie** przejdź do karty **Edycja** w lewym panelu, jak pokazano na poniższej ilustracji: 
 
-   ![Karta Edycja](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
+    ![Karta Edycja](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Tworzenie własnego środowiska Integration Runtime
 Ponieważ klaster usługi Hadoop znajduje się wewnątrz sieci wirtualnej, należy zainstalować środowisko Integration Runtime (Self-hosted) w tej samej sieci wirtualnej. W tej sekcji utworzysz nową maszynę wirtualną, dołączysz ją do tej samej sieci wirtualnej i zainstalujesz na niej środowisko IR (Self-hosted). Środowisko IR (Self-hosted) umożliwia usłudze Data Factory wysyłanie żądań przetwarzania do usługi obliczeniowej, takiej jak HDInsight, w sieci wirtualnej. Pozwala ono również na przenoszenie danych do i z magazynów danych w sieci wirtualnej na platformę Azure. Środowisko IR (Self-hosted) jest używane, jeśli magazyn danych lub obliczenie znajduje się również w środowisku lokalnym. 
@@ -255,7 +258,7 @@ Pamiętaj o następujących kwestiach:
 
     ![Plik wyjściowy](./media/tutorial-transform-data-using-hive-in-vnet-portal/output-file.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W ramach tego samouczka wykonano następujące procedury: 
 
 > [!div class="checklist"]

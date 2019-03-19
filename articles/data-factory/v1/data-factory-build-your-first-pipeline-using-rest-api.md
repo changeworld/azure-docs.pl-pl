@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2465dd6c22567a3d8b50a7cfad4e26491bbe773e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: 384294dfcd443f0bdbb7a915069d2563bcc35ae4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885204"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533889"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu interfejsu API REST usługi Data Factory
 > [!div class="op_single_selector"]
@@ -46,6 +46,9 @@ Potok w tym samouczku zawiera jedno działanie: **działanie technologii Hive w 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * Przeczytaj artykuł [Omówienie samouczka](data-factory-build-your-first-pipeline.md) oraz wykonaj kroki **wymagań wstępnych**.
 * Zainstaluj na komputerze narzędzie [Curl](https://curl.haxx.se/dlwiz/). W połączeniu z poleceniami REST umożliwia ono utworzenie fabryki danych.
 * Postępuj zgodnie z instrukcjami zawartymi w [tym artykule](../../active-directory/develop/howto-create-service-principal-portal.md), aby wykonać następujące czynności:
@@ -55,13 +58,13 @@ Potok w tym samouczku zawiera jedno działanie: **działanie technologii Hive w 
   4. Przypisanie aplikacji **ADFGetStartedApp** do roli **Współautor Data Factory**.
 * Zainstaluj program [Azure PowerShell](/powershell/azure/overview).
 * Uruchom program **PowerShell** i uruchom następujące polecenie. Nie zamykaj programu Azure PowerShell, zanim nie wykonasz wszystkich instrukcji z tego samouczka. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz.
-  1. Uruchom polecenie **Connect-AzureRmAccount** i wprowadź nazwę użytkownika oraz hasło, których używasz do logowania się w witrynie Azure Portal.
-  2. Uruchom polecenie **Get-AzureRmSubscription**, aby wyświetlić wszystkie subskrypcje dla tego konta.
-  3. Uruchom polecenie **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext**, aby wybrać subskrypcję, której chcesz używać. Zastąp ciąg **NameOfAzureSubscription** nazwą subskrypcji platformy Azure.
+  1. Uruchom **Connect AzAccount** i wprowadź nazwę użytkownika i hasło, którego używasz do logowania w witrynie Azure Portal.
+  2. Uruchom **Get AzSubscription** Aby wyświetlić wszystkie subskrypcje dla tego konta.
+  3. Uruchom **Get AzSubscription - SubscriptionName NameOfAzureSubscription | Zestaw AzContext** Wybierz subskrypcję, którą chcesz pracować. Zastąp ciąg **NameOfAzureSubscription** nazwą subskrypcji platformy Azure.
 * Utwórz grupę zasobów platformy Azure o nazwie **ADFTutorialResourceGroup** przez uruchomienie następującego polecenia w programie PowerShell:
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
    W niektórych krokach w tym samouczku zakłada się, że używana jest grupa zasobów o nazwie ADFTutorialResourceGroup. Jeśli używasz innej grupy zasobów, podczas wykonywania instrukcji w tym samouczku trzeba będzie wstawić jej nazwę zamiast nazwy ADFTutorialResourceGroup.
@@ -132,7 +135,7 @@ Pamiętaj o następujących kwestiach:
 * Możesz użyć **własnego klastra usługi HDInsight** zamiast klastra usługi HDInsight na żądanie. Szczegółowe informacje znajdują się w artykule [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (Połączona usługa HDInsight).
 * Klaster usługi HDInsight tworzy **kontener domyślny** w magazynie obiektów blob określonym w kodzie JSON (**linkedServiceName**). Usługa HDInsight nie powoduje usunięcia tego kontenera w przypadku usunięcia klastra. To zachowanie jest celowe. W przypadku połączonej usługi HDInsight na żądanie klaster usługi HDInsight jest tworzony przy każdym przetwarzaniu wycinka — o ile w tym momencie nie istnieje aktywny klaster (**timeToLive**) — i zostaje usunięty po zakończeniu przetwarzania.
 
-    Po przetworzeniu większej liczby wycinków w usłudze Azure Blob Storage będzie widocznych wiele kontenerów. Jeśli nie są potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne ze wzorcem: „adf**twojanazwafabrykidanych**-**nazwapołączonejusługi**-znacznikdatygodziny”. Aby usunąć kontenery z usługi Azure Blob Storage, użyj takich narzędzi, jak [Microsoft Storage Explorer](http://storageexplorer.com/).
+    Po przetworzeniu większej liczby wycinków w usłudze Azure Blob Storage będzie widocznych wiele kontenerów. Jeśli nie są potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne ze wzorcem: „adf**twojanazwafabrykidanych**-**nazwapołączonejusługi**-znacznikdatygodziny”. Aby usunąć kontenery z usługi Azure Blob Storage, użyj takich narzędzi, jak [Microsoft Storage Explorer](https://storageexplorer.com/).
 
 Szczegółowe informacje znajdują się w artykule [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Połączona usługa HDInsight na żądanie).
 
@@ -325,12 +328,12 @@ Pamiętaj o następujących kwestiach:
   * W programie Azure PowerShell uruchom następujące polecenie, aby zarejestrować dostawcę usługi Data Factory:
 
     ```PowerShell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
       Możesz uruchomić następujące polecenie, aby potwierdzić, że dostawca usługi Fabryka danych jest zarejestrowany:
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * Zaloguj się przy użyciu subskrypcji Azure do [portalu Azure](https://portal.azure.com) i przejdź do bloku Fabryka danych lub utwórz fabrykę danych w portalu Azure. Ta akcja powoduje automatyczne zarejestrowanie dostawcy.
 
@@ -483,7 +486,7 @@ W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych p
 3. Utworzyć dwa **zestawy danych** zawierające dane wejściowe i wyjściowe dla działania programu Hive w usłudze HDInsight w potoku.
 4. Utworzyć **potok** za pomocą działania **programu Hive w usłudze HDInsight**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule opisano tworzenie potoku za pomocą działania przekształcania (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight platformy Azure na żądanie. Instrukcje dotyczące korzystania z działania kopiowania w celu kopiowania danych z magazynu obiektów blob Azure do usług SQL Azure znajdują się w artykule [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z magazynu obiektów blob Azure do usług SQL Azure).
 
 ## <a name="see-also"></a>Zobacz też

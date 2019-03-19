@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea658f18af7ae44d73f78cb5fe4f7ae1316ea901
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101146"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -85,19 +85,19 @@ Jeśli urządzenie nie było hybrydowe przyłączone do usługi Azure AD, można
 
     ![Przyłączanie do obszaru roboczego dla Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. To może być spowodowane brakiem lub nieprawidłowo skonfigurowany usług AD FS (w przypadku domen federacyjnych) lub brakuje lub zostały nieprawidłowo skonfigurowane usługi Azure AD bezproblemowego logowania jednokrotnego (w przypadku domen zarządzanych) lub problemy z siecią. 
+  - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. To może być spowodowane brakiem lub nieprawidłowo skonfigurowany usług AD FS (w przypadku domen federacyjnych) lub brakuje lub zostały nieprawidłowo skonfigurowane usługi Azure AD bezproblemowego logowania jednokrotnego (w przypadku domen zarządzanych) lub problemy z siecią. 
     
-     - Może to być czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze usług AD FS. 
+    - Może to być czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze usług AD FS. 
      
-     - Inną możliwością jest tej strony (HRD) odnajdowania obszaru macierzystego oczekuje na interakcję użytkownika, co uniemożliwia **autoworkplace.exe** w trybie dyskretnym żądania tokenu.
+    - Inną możliwością jest tej strony (HRD) odnajdowania obszaru macierzystego oczekuje na interakcję użytkownika, co uniemożliwia **autoworkplace.exe** w trybie dyskretnym żądania tokenu.
      
-     - Możliwe, że usług AD FS i adresów URL usługi Azure AD są nieobecne w strefie intranetu programu Internet Explorer na komputerze klienckim.
+    - Możliwe, że usług AD FS i adresów URL usługi Azure AD są nieobecne w strefie intranetu programu Internet Explorer na komputerze klienckim.
      
-     - Problemy z łącznością sieciową uniemożliwiają **autoworkplace.exe** dotrze usług AD FS lub adresy URL platformy Azure AD. 
+    - Problemy z łącznością sieciową uniemożliwiają **autoworkplace.exe** dotrze usług AD FS lub adresy URL platformy Azure AD. 
      
-     - **Autoworkplace.exe** wymaga od klienta bezpośredniego linii wzroku od klienta do organizacji lokalnego kontrolera domeny usługi AD, co oznacza, że dołączenie do hybrydowej usługi Azure AD powiedzie się tylko wtedy, gdy klient jest podłączony do sieci intranet w organizacji.
+    - **Autoworkplace.exe** wymaga od klienta bezpośredniego linii wzroku od klienta do organizacji lokalnego kontrolera domeny usługi AD, co oznacza, że dołączenie do hybrydowej usługi Azure AD powiedzie się tylko wtedy, gdy klient jest podłączony do sieci intranet w organizacji.
      
-     - Twoja organizacja korzysta z usługi Azure AD bezproblemowego logowania jednokrotnego, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są obecne urządzenia IE ustawień sieci intranet, a **zezwala na aktualizacje na pasku stanu za pomocą skryptu** nie jest włączona dla strefy intranetowej.
+    - Twoja organizacja korzysta z usługi Azure AD bezproblemowego logowania jednokrotnego, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są obecne urządzenia IE ustawień sieci intranet, a **zezwala na aktualizacje na pasku stanu za pomocą skryptu** nie jest włączona dla strefy intranetowej.
 
 - Użytkownik nie jest zarejestrowany jako użytkownik domeny
 

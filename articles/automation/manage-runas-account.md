@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5949016281b5f8ba5d8770403a146e52d279c73
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079991"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109345"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -197,6 +197,12 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
         return
     }
 
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+
+    # Import-Module Az.Automation
+    # Enable-AzureRmAlias 
+
+
     Connect-AzureRmAccount -Environment $EnvironmentName 
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
@@ -320,13 +326,13 @@ W tej sekcji opisano sposób usuwania i ponownego tworzenia konta Uruchom jako l
 
 3. Na stronie właściwości **Konta Uruchom jako** wybierz konto Uruchom jako albo klasyczne konto Uruchom jako, które chcesz usunąć. Następnie w okienku **Właściwości** wybranego konta kliknij pozycję **Usuń**.
 
- ![Usuwanie konta Uruchom jako](media/manage-runas-account/automation-account-delete-runas.png)
+   ![Usuwanie konta Uruchom jako](media/manage-runas-account/automation-account-delete-runas.png)
 
 1. W trakcie usuwania konta postęp można śledzić po wybraniu z menu opcji **Powiadomienia**.
 
 1. Po usunięciu konta możesz je ponownie utworzyć na stronie właściwości **Konta Uruchom jako**, wybierając opcję tworzenia **Konto Uruchom jako platformy Azure**.
 
- ![Ponowne tworzenie konta Uruchom jako usługi Automation](media/manage-runas-account/automation-account-create-runas.png)
+   ![Ponowne tworzenie konta Uruchom jako usługi Automation](media/manage-runas-account/automation-account-create-runas.png)
 
 ## <a name="cert-renewal"></a>Odnawianie certyfikatu z podpisem własnym
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 8bc2d655f7c6b20cabfadbf9dffca8622a24674f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9154add96084142ca1f93ad61c6418e3b487fb83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778672"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090920"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Zarządzanie migawkami przy użyciu usługi Azure Files NetApp
 
@@ -77,9 +77,9 @@ Obecnie można przywrócić migawki tylko do nowego woluminu.
     * **Podsieć**  
         Określ podsieć, której chcesz użyć na potrzeby woluminu.  
         Podsieć, którą określisz musi delegować do usługi Azure NetApp Files. Można utworzyć nowej podsieci, wybierając **Utwórz nową** pod polem podsieci.  
-<!--
+   <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
--->
+   -->
 
 5. Kliknij przycisk **OK**.   
     Nowy wolumin, do którego zostanie przywrócona migawka zostanie wyświetlony w bloku woluminów.

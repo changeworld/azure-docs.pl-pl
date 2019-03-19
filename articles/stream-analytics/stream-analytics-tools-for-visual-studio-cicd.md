@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: bb5b6a4e9d50a692342f497d27138c51e0dc93e4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729428"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122777"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Wykonuj ciągłe integrowanie i tworzyć aplikacje za pomocą narzędzia Stream Analytics
 W tym artykule opisano sposób użycia Konfigurowanie procesu ciągłej integracji i ciągłego wdrażania przy użyciu narzędzia Azure Stream Analytics dla programu Visual Studio.
@@ -21,8 +21,8 @@ W tym artykule opisano sposób użycia Konfigurowanie procesu ciągłej integrac
 Użyj wersji 2.3.0000.0 lub nowszy z [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) uzyskać pomoc techniczną dotyczącą programu MSBuild.
 
 Pakiet NuGet jest dostępna: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Zapewnia on program MSBuild, uruchamianie lokalne oraz narzędzia wdrażania, które obsługują proces ciągłej integracji i ciągłego wdrażania projektów programu Visual Studio dla usługi Stream Analytics. 
-> [!NOTE] 
-Pakiet NuGet może służyć tylko w przypadku 2.3.0000.0 lub nowszej wersji narzędzia Stream Analytics Tools for Visual Studio. W przypadku projektów utworzonych w poprzednich wersjach programu Visual Studio tools po prostu otwórz je za pomocą 2.3.0000.0 lub nowszej wersji, a następnie zapisz. Następnie nowe możliwości są włączone. 
+> [!NOTE]
+> Pakiet NuGet może służyć tylko w przypadku 2.3.0000.0 lub nowszej wersji narzędzia Stream Analytics Tools for Visual Studio. W przypadku projektów utworzonych w poprzednich wersjach programu Visual Studio tools po prostu otwórz je za pomocą 2.3.0000.0 lub nowszej wersji, a następnie zapisz. Następnie nowe możliwości są włączone. 
 
 Aby uzyskać więcej informacji, zobacz [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
@@ -45,8 +45,8 @@ Gdy projekt programu Visual Studio Stream Analytics pomyślnie skompilowana, gen
 
 Domyślne parametry w pliku parameters.json pochodzą z ustawień w projekcie programu Visual Studio. Jeśli chcesz wdrożyć do innego środowiska, w związku z tym Zastąp parametry.
 
-> [!NOTE] 
-Za pomocą poświadczeń domyślnych wartości są ustawione na wartość null. Jesteś *wymagane* można ustawić wartości przed wdrożeniem w chmurze.
+> [!NOTE]
+> Za pomocą poświadczeń domyślnych wartości są ustawione na wartość null. Jesteś *wymagane* można ustawić wartości przed wdrożeniem w chmurze.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {

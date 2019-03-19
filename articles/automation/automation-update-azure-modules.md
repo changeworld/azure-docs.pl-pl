@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fad3d77d15d78ffdaf1afca3675a82242b844778
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 03174e6336589f8aa49a7fc7197da1301ff54400
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009786"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
@@ -58,27 +58,27 @@ Poniżej przedstawiono niektóre zagadnienia, weź pod uwagę podczas korzystani
 
 1. Na stronie moduły konta usługi Automation jest dostępna opcja o nazwie **aktualizowania modułów platformy Azure**. Jest zawsze włączona.<br><br> ![Aktualizuj moduły platformy Azure opcja na stronie moduły](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-  > [!NOTE]
-  > Przed zaktualizowaniem usługi moduły platformy Azure, zalecane jest, zaktualizuj je w teście upewnij się, że konto usługi Automation istniejące skrypty działają zgodnie z oczekiwaniami przed zaktualizowaniem moduły platformy Azure.
-  >
-  > **Aktualizowania modułów platformy Azure** przycisk jest dostępny tylko w chmurze publicznej. nie jest dostępna w [niezależne regiony](https://azure.microsoft.com/global-infrastructure/). Użyj **AutomationAzureModulesForAccount aktualizacji** elementu runbook, aby zaktualizować moduły platformy Azure. Możesz ją pobrać z [repozytorium runbook modułów Azure aktualizacji](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update). Aby dowiedzieć się więcej o korzystaniu z elementu runbook "open source", zobacz [aktualizowania modułów platformy Azure przy użyciu elementów runbook typu open source](#open-source).
+   > [!NOTE]
+   > Przed zaktualizowaniem usługi moduły platformy Azure, zalecane jest, zaktualizuj je w teście upewnij się, że konto usługi Automation istniejące skrypty działają zgodnie z oczekiwaniami przed zaktualizowaniem moduły platformy Azure.
+   >
+   > **Aktualizowania modułów platformy Azure** przycisk jest dostępny tylko w chmurze publicznej. nie jest dostępna w [niezależne regiony](https://azure.microsoft.com/global-infrastructure/). Użyj **AutomationAzureModulesForAccount aktualizacji** elementu runbook, aby zaktualizować moduły platformy Azure. Możesz ją pobrać z [repozytorium runbook modułów Azure aktualizacji](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update). Aby dowiedzieć się więcej o korzystaniu z elementu runbook "open source", zobacz [aktualizowania modułów platformy Azure przy użyciu elementów runbook typu open source](#open-source).
 
 2. Kliknij przycisk **aktualizowania modułów platformy Azure**, powiadomienie z potwierdzeniem jest wyświetlany, pytaniem, jeśli chcesz kontynuować.<br><br> ![Aktualizuj moduły platformy Azure powiadomień](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
 3. Kliknij przycisk **tak** i rozpocznie się proces aktualizacji modułu. Proces aktualizacji trwa około 15 – 20 minut, można zaktualizować następujących modułów:
 
-  * Azure
-  * Azure.Storage
-  * AzureRm.Automation
-  * AzureRm.Compute
-  * AzureRm.Profile
-  * AzureRm.Resources
-  * AzureRm.Sql
-  * AzureRm.Storage
+   * Azure
+   * Azure.Storage
+   * AzureRm.Automation
+   * AzureRm.Compute
+   * AzureRm.Profile
+   * AzureRm.Resources
+   * AzureRm.Sql
+   * AzureRm.Storage
 
-    Jeśli moduły są już aktualne, proces zostanie zakończony w ciągu kilku sekund. Po ukończeniu procesu aktualizacji otrzymasz powiadomienie.<br><br> ![Aktualizuje stan aktualizacji modułów platformy Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+     Jeśli moduły są już aktualne, proces zostanie zakończony w ciągu kilku sekund. Po ukończeniu procesu aktualizacji otrzymasz powiadomienie.<br><br> ![Aktualizuje stan aktualizacji modułów platformy Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
-    .NET core AzureRm modułów (AzureRm.*. -Rdzeniowe) nie są obsługiwane w usłudze Azure Automation i nie można go zaimportować.
+     .NET core AzureRm modułów (AzureRm.*. -Rdzeniowe) nie są obsługiwane w usłudze Azure Automation i nie można go zaimportować.
 
 > [!NOTE]
 > Usługa Azure Automation używa najnowszych modułów na koncie usługi Automation, po uruchomieniu nowego zaplanowanego zadania.  

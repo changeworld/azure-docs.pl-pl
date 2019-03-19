@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: c6bba6a428e5ff339b1d269965fa1948bddc696e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4edaf782b193e99dfe4002eedb6f3a046fb7dcd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764440"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081461"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Tworzenie magazynu danych na dysku maszyny wirtualnej w usłudze Azure Stack
 
@@ -68,56 +68,56 @@ Każdy dysk niezarządzany, jakie dodasz, należy umieścić w oddzielny kontene
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Aby utworzyć i dołączyć nowy dysk danych, użyj portalu
 
-1.  W portalu, wybierz **wszystkich usług** > **maszyn wirtualnych**.    
-    ![Przykład: Pulpit nawigacyjny maszyny Wirtualnej](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+1. W portalu, wybierz **wszystkich usług** > **maszyn wirtualnych**.    
+   ![Przykład: Pulpit nawigacyjny maszyny Wirtualnej](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  Wybierz maszynę wirtualną, która została wcześniej utworzona.   
-    ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/select-a-vm.png)
+2. Wybierz maszynę wirtualną, która została wcześniej utworzona.   
+   ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Dla maszyny wirtualnej wybierz **dysków** > **Dodaj dysk danych**.       
-    ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3. Dla maszyny wirtualnej wybierz **dysków** > **Dodaj dysk danych**.       
+   ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  Dla dysku z danymi:
-    -  Wprowadź **jednostki LUN**. Jednostka LUN musi być prawidłową liczbą.
-    -  Wybierz **Utwórz dysk**.
-    ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+4. Dla dysku z danymi:
+   -  Wprowadź **jednostki LUN**. Jednostka LUN musi być prawidłową liczbą.
+   -  Wybierz **Utwórz dysk**.
+   ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
-5.  W przypadku tworzenia zarządzanych bloku dysku:
-    -  Wprowadź **nazwa** dysku.
-    -  Wybierz istniejącą lub Utwórz nową **grupy zasobów**.
-    -  Wybierz **lokalizacji**. Domyślnie lokalizacja jest ustawiana na ten sam kontener, który zawiera dysk systemu operacyjnego.
-    -  Wybierz **typ konta**. 
-        ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+5. W przypadku tworzenia zarządzanych bloku dysku:
+   - Wprowadź **nazwa** dysku.
+   - Wybierz istniejącą lub Utwórz nową **grupy zasobów**.
+   - Wybierz **lokalizacji**. Domyślnie lokalizacja jest ustawiana na ten sam kontener, który zawiera dysk systemu operacyjnego.
+   - Wybierz **typ konta**. 
+      ![Przykład: Dołączyć nowy dysk do maszyny wirtualnej](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-        **Dysk SSD w warstwie Premium**  
-        Dyski w warstwie Premium (SSD) są wspierane przez dyski półprzewodnikowe i oferują spójny i niskim opóźnieniu wydajności. Zapewniają najlepszą równowagę między ceną i wydajnością i są idealne dla aplikacji/Wy z wieloma operacjami we i obciążeń produkcyjnych.
+      **Dysk SSD w warstwie Premium**  
+      Dyski w warstwie Premium (SSD) są wspierane przez dyski półprzewodnikowe i oferują spójny i niskim opóźnieniu wydajności. Zapewniają najlepszą równowagę między ceną i wydajnością i są idealne dla aplikacji/Wy z wieloma operacjami we i obciążeń produkcyjnych.
        
-        **Standardowy dysk twardy**  
-        Dyski w warstwie standardowa (HDD) są wspierane przez dyski magnetyczne i są preferowane dla aplikacji, których dane są rzadko. Strefa nadmiarowe, dyski są wspierane przez Magazyn Strefowo nadmiarowy (ZRS), który replikuje dane w wielu strefach i są dostępne, nawet jeśli w jednej strefie nie działa. 
+      **Standardowy dysk twardy**  
+      Dyski w warstwie standardowa (HDD) są wspierane przez dyski magnetyczne i są preferowane dla aplikacji, których dane są rzadko. Strefa nadmiarowe, dyski są wspierane przez Magazyn Strefowo nadmiarowy (ZRS), który replikuje dane w wielu strefach i są dostępne, nawet jeśli w jednej strefie nie działa. 
 
-    -  Wybierz **typ źródła**.
+   - Wybierz **typ źródła**.
 
-       Utwórz dysk na podstawie migawki innego dysku lub obiektu blob na koncie magazynu. Możesz też utworzyć pusty dysk.
+     Utwórz dysk na podstawie migawki innego dysku lub obiektu blob na koncie magazynu. Możesz też utworzyć pusty dysk.
 
-        **migawki**  
-        Wybierz migawkę, jeśli jest ona dostępna. Migawki muszą znajdować się w dostępnych w subskrypcji i lokalizacji maszyny Wirtualnej.
+      **migawki**  
+      Wybierz migawkę, jeśli jest ona dostępna. Migawki muszą znajdować się w dostępnych w subskrypcji i lokalizacji maszyny Wirtualnej.
 
-        **Obiekt blob magazynu**  
-        - Dodaj identyfikator URI magazynu obiektów blob, który zawiera obraz dysku.  
-        - Wybierz **Przeglądaj** aby otworzyć blok konta magazynu. Aby uzyskać instrukcje zobacz [Dodaj dysk danych z konta magazynu](#add-a-data-disk-from-a-storage-account).
-        - Wybierz typ systemu operacyjnego obrazu: **Windows**, **Linux**, lub **Brak (dysk danych)**.
+      **Obiekt blob magazynu**  
+     - Dodaj identyfikator URI magazynu obiektów blob, który zawiera obraz dysku.  
+     - Wybierz **Przeglądaj** aby otworzyć blok konta magazynu. Aby uzyskać instrukcje zobacz [Dodaj dysk danych z konta magazynu](#add-a-data-disk-from-a-storage-account).
+     - Wybierz typ systemu operacyjnego obrazu: **Windows**, **Linux**, lub **Brak (dysk danych)**.
 
-        **Brak (pusty dysk)**
+       **Brak (pusty dysk)**
 
-    -  Wybierz **rozmiar (GiB)**.
+   - Wybierz **rozmiar (GiB)**.
 
-       Zwiększyć koszty dysku w warstwie standardowa na podstawie rozmiaru dysku. Premium dysku koszty i wydajność wzrost na podstawie rozmiaru dysku. Aby uzyskać więcej informacji, zobacz [cennika usługi Managed Disks](https://go.microsoft.com/fwlink/?linkid=843142).
+     Zwiększyć koszty dysku w warstwie standardowa na podstawie rozmiaru dysku. Premium dysku koszty i wydajność wzrost na podstawie rozmiaru dysku. Aby uzyskać więcej informacji, zobacz [cennika usługi Managed Disks](https://go.microsoft.com/fwlink/?linkid=843142).
 
-    -  Wybierz pozycję **Utwórz**. Usługa Azure Stack, tworzy i weryfikuje dysku zarządzanego.
+   - Wybierz pozycję **Utwórz**. Usługa Azure Stack, tworzy i weryfikuje dysku zarządzanego.
 
-5.  Po usługi Azure Stack utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
+5. Po usługi Azure Stack utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
 
-    ![Przykład: Wyświetl dysku](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   ![Przykład: Wyświetl dysku](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>Dodaj dysk danych z konta magazynu
 

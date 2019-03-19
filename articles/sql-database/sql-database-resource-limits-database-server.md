@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 801b7de4b82c37503f2a14619112cbf46ca60a43
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447085"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093892"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -36,7 +36,7 @@ Ten artykuł zawiera omówienie limitów zasobów bazy danych SQL dla serwera ba
 | Jednostka DTU / przydziału liczby jednostek eDTU na serwerze | 54,000 |  
 | Rdzeń wirtualny przydziału na server/wystąpienie | 540 |
 | Maksymalna liczba pul na serwer | Ograniczone przez liczbę jednostek Dtu lub rdzeni wirtualnych. Na przykład jeśli każda pula ma 1000 jednostek Dtu, następnie serwera obsługują 54 pul.|
-||||
+|||
 
 > [!NOTE]
 > Aby uzyskać więcej /eDTU limitu przydziału, przydziału pamięci rdzeń wirtualny lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze.
@@ -95,7 +95,7 @@ Kształtowania ruchu zarządcy współczynnik dziennika jest udostępniane za po
 | INSTANCE_LOG_RATE_GOVERNOR | Ograniczenie poziomu wystąpienia |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Kontrolka opinii, replikacja fizycznych grupy dostępności w warstwie Premium/krytyczne dla działania firmy nie nadążają |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Kontrolka opinii, ograniczania szybkości, aby uniknąć stan miejsca na dziennik braku |
-||||
+|||
 
 Gdy wystąpią limit szybkości dziennika, który hamuje odpowiednią skalowalność, należy wziąć pod uwagę następujące opcje:
 - Skalowanie w górę do warstwy większa Aby uzyskać maksymalną szybkość dziennika 48 MB/s. 

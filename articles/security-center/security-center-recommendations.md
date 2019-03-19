@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0a8680fbc8a3a051906f223d8b2476891c92d110
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e3b4da1c1d835e9d630c000055af058aa7b45968
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888205"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109192"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -68,10 +68,10 @@ Można filtrować zalecenia. Aby filtrować zalecenia, wybierz **filtru** na **z
 
 > [!NOTE]
 > Należy zrozumieć [klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager](../azure-classic-rm.md) dla zasobów platformy Azure.
->
->
-### <a name="apply-recommendations"></a>Stosowanie zalecenia
-Po zapoznaniu się z wszystkich zaleceń decyzję, który co należy najpierw zastosować. Firma Microsoft zaleca używanie ocenę ważności, ponieważ główny parametr do oceny, zalecenia, które powinny być stosowane najpierw.
+> 
+> 
+> ### <a name="apply-recommendations"></a>Stosowanie zalecenia
+> Po zapoznaniu się z wszystkich zaleceń decyzję, który co należy najpierw zastosować. Firma Microsoft zaleca używanie ocenę ważności, ponieważ główny parametr do oceny, zalecenia, które powinny być stosowane najpierw.
 
 
 

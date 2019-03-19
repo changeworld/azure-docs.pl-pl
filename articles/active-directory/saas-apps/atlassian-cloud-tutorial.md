@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 601f2dc69c7b390ea05cb66976dc7bbcc98d9502
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 49d44fa0926afac917ae0ba355d37f13a354f432
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880502"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Atlassian Cloud
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację usługi Atlassian Cloud z usługą Azure AD, nale
 
 **Aby dodać usługę Atlassian Cloud z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -110,7 +110,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Atlassian C
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`
 
-    d. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
     d. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.atlassian.net`
 
@@ -162,7 +162,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Atlassian C
 
     b. W polu **Identity provider SSO URL** (Adres URL logowania jednokrotnego dostawcy tożsamości) wklej adres URL usługi logowania jednokrotnego SAML skopiowany z witryny Azure Portal.
 
-    d. Otwórz pobrany certyfikat w witrynie Azure Portal w pliku TXT, skopiuj wartość (bez wierszy *Begin Certificate* i *End Certificate*), a następnie wklej ją w polu **Public X509 certificate** (Publiczny certyfikat X509).
+    c. Otwórz pobrany certyfikat w witrynie Azure Portal w pliku TXT, skopiuj wartość (bez wierszy *Begin Certificate* i *End Certificate*), a następnie wklej ją w polu **Public X509 certificate** (Publiczny certyfikat X509).
 
     d. Kliknij pozycję **Save Configuration** (Zapisz konfigurację).
 
@@ -195,7 +195,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -251,7 +251,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie do usługi Atlassian Cl
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Atlassian Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Atlassian Cloud, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

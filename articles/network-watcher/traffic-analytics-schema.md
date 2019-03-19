@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: b46a89e331c63aadc76b856b56b7b40bbc626193
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 922e01c26a2cfe24c8b8a32bb8037d9b3b3384c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109124"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w analizy ruchu
 
@@ -61,7 +61,7 @@ Poniżej wymieniono pól w schemacie i ich oznaczającego
 | DestIP_s | Docelowy adres IP | Jest puste w przypadku AzurePublic i ExternalPublic przepływów |
 | VMIP_s | Adresu IP maszyny Wirtualnej | Używany do AzurePublic i ExternalPublic przepływów |
 | PublicIP_S | Publiczne adresy IP | Używany do AzurePublic i ExternalPublic przepływów |
-| DestPort_d | |Port docelowy| Port ruchu przychodzącego | 
+| DestPort_d | Port docelowy | Port ruchu przychodzącego | 
 | L4Protocol_s  | * T <br> * U  | Protokół transportu. T = TCP <br> U = UDP | 
 | L7Protocol_s  | Nazwa protokołu | Pochodną port docelowy |
 | FlowDirection_s | * I = dla ruchu przychodzącego<br> * O = ruchu wychodzącego | Kierunek przepływu/poza sieciowej grupy zabezpieczeń, zgodnie z dzienników przepływu | 
@@ -111,16 +111,16 @@ Poniżej wymieniono pól w schemacie i ich oznaczającego
 ### <a name="notes"></a>Uwagi
     
 1. W przypadku przepływów AzurePublic i ExternalPublic klient należące do adresów IP maszyn wirtualnych platformy Azure jest wypełniana w polu VMIP_s, gdy trwa wypełnianie listy publicznych adresów IP w polu PublicIPs_s. Dla tych typów dwóch przepływ powinien używamy VMIP_s i PublicIPs_s zamiast pól SrcIP_s i DestIP_s. Dla adresów AzurePublic i ExternalPublicIP firma Microsoft agregacji dodatkowo tak, aby liczba rekordów pozyskane do obszaru roboczego analizy dzienników klienta jest minimalny. (W tym polu wkrótce staną się przestarzałe i powinny być używamy SrcIP_ i DestIP_s w zależności od tego, czy maszyna wirtualna platformy azure był źródło lub miejsce docelowe w przepływie) 
-2. Szczegóły typów przepływu: Oparte na adresach IP zaangażowane w przepływ, firma Microsoft kategoryzowanie przepływów w następujących przepływów: 
-* IntraVNet — adresy IP w usłudze flow znajdują się w tej samej sieci wirtualnej platformy Azure. 
-* Między sieciami wirtualnymi — adresy IP w usłudze flow znajdują się w dwóch różnych sieciach wirtualnych platformy Azure. 
-* S2S — (lokacja) jeden z adresów IP należy do sieci wirtualnej platformy Azure, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN lub usługi Expressroute. 
-* P2S - (punkt lokacja) jeden z adresów IP należy do usługi Azure Virtual Network, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN.
-* AzurePublic — jeden adresów IP nie należy do sieci wirtualnej platformy Azure podczas, gdy adres IP należy do usługi Azure wewnętrznego publiczne adresy IP należące do firmy Microsoft. Należące do klientów, publiczne adresy IP nie będzie należeć do tego typu przepływu. Na przykład maszyny Wirtualnej, ruch wysyłany do usługi platformy Azure (punkt końcowy magazynu) będzie dzielony na kategorie w ramach tego typu przepływu należące do każdego klienta. 
-* ExternalPublic — jeden z adresów IP nie należy do usługi Azure Virtual Network adres IP jest publiczny adres IP, który nie jest na platformie Azure, nie został zgłoszony jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między " FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
-* MaliciousFlow — która jeden z adresów IP należą do sieci wirtualnej platformy azure w adres IP jest publiczny adres IP, który nie znajduje się w usłudze Azure i jest zgłaszana jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między" FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
-* UnknownPrivate — która jeden z adresów IP należą do sieci wirtualnej platformy Azure w adres IP należy do zakresu prywatnych adresów IP, zgodnie z definicją w dokumencie RFC 1918 i nie można zamapować za analizę ruchu należących do klienta lokacji lub w usłudze Azure Virtual Network.
-* Nieznany — nie można mapować do jednego z tych adresów IP w przepływach z topologią klienta na platformie Azure, jak również w środowisku lokalnym (lokacja).
+1. Szczegóły typów przepływu: Oparte na adresach IP zaangażowane w przepływ, firma Microsoft kategoryzowanie przepływów w następujących przepływów: 
+1. IntraVNet — adresy IP w usłudze flow znajdują się w tej samej sieci wirtualnej platformy Azure. 
+1. Między sieciami wirtualnymi — adresy IP w usłudze flow znajdują się w dwóch różnych sieciach wirtualnych platformy Azure. 
+1. S2S — (lokacja) jeden z adresów IP należy do sieci wirtualnej platformy Azure, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN lub usługi Expressroute. 
+1. P2S - (punkt lokacja) jeden z adresów IP należy do usługi Azure Virtual Network, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN.
+1. AzurePublic — jeden adresów IP nie należy do sieci wirtualnej platformy Azure podczas, gdy adres IP należy do usługi Azure wewnętrznego publiczne adresy IP należące do firmy Microsoft. Należące do klientów, publiczne adresy IP nie będzie należeć do tego typu przepływu. Na przykład maszyny Wirtualnej, ruch wysyłany do usługi platformy Azure (punkt końcowy magazynu) będzie dzielony na kategorie w ramach tego typu przepływu należące do każdego klienta. 
+1. ExternalPublic — jeden z adresów IP nie należy do usługi Azure Virtual Network adres IP jest publiczny adres IP, który nie jest na platformie Azure, nie został zgłoszony jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między " FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
+1. MaliciousFlow — która jeden z adresów IP należą do sieci wirtualnej platformy azure w adres IP jest publiczny adres IP, który nie znajduje się w usłudze Azure i jest zgłaszana jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między" FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
+1. UnknownPrivate — która jeden z adresów IP należą do sieci wirtualnej platformy Azure w adres IP należy do zakresu prywatnych adresów IP, zgodnie z definicją w dokumencie RFC 1918 i nie można zamapować za analizę ruchu należących do klienta lokacji lub w usłudze Azure Virtual Network.
+1. Nieznany — nie można mapować do jednego z tych adresów IP w przepływach z topologią klienta na platformie Azure, jak również w środowisku lokalnym (lokacja).
 
 ### <a name="next-steps"></a>Następne kroki
 Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md) Aby wyświetlić szczegółowe informacje o funkcjach, zobacz [dokumentacji analizy ruchu](traffic-analytics.md)

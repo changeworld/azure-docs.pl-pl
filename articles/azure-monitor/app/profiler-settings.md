@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 7f864c90b8279f315fc0dbe96f41bfd03be7cebc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8c9fba14bd3f7d3b55a245f8e647f0eae1f8ef83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118429"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurowanie narzędzia Application Insights Profiler
 
@@ -111,11 +111,11 @@ Jeśli powyższe wartości nie są ustawione, należy zainstalować najnowsze ro
     ![Zmiany i Zapisz usługi app insights][change-and-save-appinsights]
 
 1. Wróć do **ustawienia aplikacji** okienko usługi aplikacji upewnić się, że są ustawione następujące wartości:
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Zamień na klucz Instrumentacji właściwe dla usługi application insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET 
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
+   * **APPINSIGHTS_INSTRUMENTATIONKEY**: Zamień na klucz Instrumentacji właściwe dla usługi application insights.
+   * **APPINSIGHTS_PORTALINFO**: ASP.NET 
+   * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-    ![Ustawienia aplikacji dla Profiler][app-settings-for-profiler]
+     ![Ustawienia aplikacji dla Profiler][app-settings-for-profiler]
 
 1. Opcjonalnie można zaznaczyć **rozszerzenia**, a następnie sprawdź wersję rozszerzenia i określić, czy dostępna jest aktualizacja.
 

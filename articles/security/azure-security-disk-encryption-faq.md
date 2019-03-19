@@ -1,18 +1,18 @@
 ---
 title: Często zadawane pytania — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące programu Microsoft Azure dysku szyfrowanie dla Windows i maszyn wirtualnych IaaS z systemem Linux.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/01/2019
+ms.author: mbaldwin
+ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c082de09cbe17bd31e50d14329cfb8f58b01d8fe
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b98b9653aee395ebdf797c50c313c322727480c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892765"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -150,6 +150,9 @@ W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256Wit
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Czy w przypadku użycia EncryptFormatAll i określić wszystkie typy woluminu, jej spowoduje usunięcie danych na dyskach danych, które już zaszyfrowane?
 Nie, dane nie będą usuwane z dysków danych, które już są szyfrowane przy użyciu usługi Azure Disk Encryption. Podobnie jak EncryptFormatAll nie został ponownie zaszyfrować dysk systemu operacyjnego, go nie będzie ponownie zaszyfrować dysk już zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
+
+## <a name="is-xfs-filesystem-supported"></a>XFS systemu plików jest obsługiwana?
+Woluminy XFS są obsługiwane w przypadku szyfrowania dysku danych. Aby zaszyfrować obecnie sformatowane przy użyciu XFS woluminu, określ opcję EncryptFormatAll. Ponownie sformatować wolumin. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Czy mogę utworzyć kopię zapasową i przywrócić zaszyfrowanej maszyny Wirtualnej? 
 

@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer'
-description: W tym przewodniku Szybki start dowiesz się, jak wysyłać dane konta magazynu do usługi Azure Data Explorer przy użyciu subskrypcji usługi Event Grid.
+description: W tym przewodniku Szybki Start dowiesz się, jak wysyłać dane do konta magazynu do Eksploratora danych Azure przy użyciu subskrypcji usługi Event Grid.
 services: data-explorer
 author: radennis
 ms.author: radennis
@@ -8,28 +8,31 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
+ms.openlocfilehash: 625556986c5034303e83cc23b4ba06b1638115d1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804652"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448428"
 ---
-# <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Szybki start: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer za pomocą subskrybowania powiadomień usługi Event Grid
+# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Szybki start: Przesyłanie obiektów blob do Eksploratora danych usługi Azure dzięki subskrypcji usługi Event Grid powiadomienia
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer oferuje ciągłe pozyskiwanie (ładowanie danych) z obiektów blob zapisanych w kontenerach obiektów blob. Można to osiągnąć, ustawiając subskrypcję usługi [Azure Event Grid](/azure/event-grid/overview) dla zdarzeń tworzenia obiektów blob i kierując te zdarzenia do usługi Kusto za pośrednictwem centrum zdarzeń. Ten przewodnik Szybki start wymaga konta magazynu z subskrypcją usługi Event Grid, która wysyła powiadomienia do centrum zdarzeń. Możesz utworzyć połączenie danych usługi Event Grid i sprawdzić przepływ danych przez cały system.
+Eksplorator danych usługi Azure to usługa eksploracji danych szybkich i skalowalnych danych dzienników i danych telemetrycznych. Oferuje ona ciągłe wprowadzanie (Ładowanie danych) z obiektów blob, zapisywane w kontenerach obiektów blob. 
+
+W tym przewodniku Szybki Start dowiesz się, jak ustawić [usługi Azure Event Grid](/azure/event-grid/overview) subskrypcji i kierowanie zdarzeń do Eksploratora danych platformy Azure za pośrednictwem Centrum zdarzeń. Aby rozpocząć, należy mieć konto magazynu z subskrypcji usługi event grid wysyłającego powiadomienia o usłudze Azure Event Hubs. Następnie utworzysz połączenie danych usługi Event Grid i wyświetlić dane przepływu w całym systemie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/)
-1. [Klaster i baza danych](create-cluster-database-portal.md)
-1. [Konto magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
-1. [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* Subskrypcja platformy Azure. Tworzenie [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* [Klaster i bazy danych](create-cluster-database-portal.md).
+* [Konto magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+* [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Tworzenie subskrypcji usługi Event Grid na koncie magazynu
 
-1. W witrynie Azure Portal przejdź do swojego konta magazynu.
-1. Kliknij kartę **Zdarzenia**, a następnie pozycję **Subskrypcja zdarzeń**
+1. W witrynie Azure portal Znajdź swoje konto magazynu.
+1. Wybierz **zdarzenia** > **subskrypcji zdarzeń**.
 
     ![Link do aplikacji Zapytanie](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -37,30 +40,30 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Name (Nazwa) | *test-grid-connection* | Nazwa siatki zdarzeń, którą chcesz utworzyć.|
-    | Schemat zdarzeń | *Schemat usługi Event Grid* | Schemat, który będzie używany w usłudze Event Grid. |
+    | Name (Nazwa) | *test-grid-connection* | Nazwa usługi event grid, która ma zostać utworzona.|
+    | Schemat zdarzeń | *Schemat siatki zdarzeń* | Schemat, które mają być używane dla usługi event grid. |
     | Typ tematu | *Konto magazynu* | Typ tematu siatki zdarzeń. |
     | Zasób tematu | *gridteststorage* | Nazwa konta magazynu. |
     | Subskrybuj wszystkie typy zdarzeń | *Usuń zaznaczenie* | Nie będziesz otrzymywać powiadomień o wszystkich zdarzeniach. |
     | Zdefiniowane typy zdarzeń | *Utworzony obiekt blob* | O jakich konkretnych zdarzeniach chcesz otrzymywać powiadomienia. |
-    | Typ punktu końcowego | *Event Hubs* | Typ punktu końcowego, do którego wysyłasz zdarzenia. |
+    | Typ punktu końcowego | *Usługa Event hubs* | Typ punktu końcowego, do którego wysyłasz zdarzenia. |
     | Endpoint | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | | |
 
 1. Wybierz kartę **Dodatkowe funkcje**, jeśli chcesz śledzić pliki z określonego kontenera. Filtry dla powiadomień ustaw w następujący sposób:
-    * **Temat zaczyna się od** — to pole jest prefiksem *literału* kontenera obiektów blob (jeśli zastosowany wzorzec to *startswith*, może to obejmować wiele kontenerów). Symbole wieloznaczne nie są dozwolone.
+    * **Podmiotu zaczyna się od** pole jest *literału* prefiksu określonego kontenera obiektów blob. Wzorzec stosowany jest *startswith*, mogą znajdować się wiele kontenerów. Symbole wieloznaczne nie są dozwolone.
      Ustawienie *musi* wyglądać następująco: *`/blobServices/default/containers/`*[prefiks kontenera]
     * **Temat kończy się na** — to pole jest sufiksem *literału* obiektu blob. Symbole wieloznaczne nie są dozwolone.
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Tworzenie tabeli docelowej w usłudze Azure Data Explorer
 
-Utwórz tabelę w usłudze Azure Data Explorer, do której będą wysyłane dane z usługi Event Hubs. Tabela zostanie utworzona w klastrze i bazie danych, które zostały przygotowane w sekcji **Wymagania wstępne**.
+Utwórz tabelę w Eksploratorze danych platformy Azure, gdzie usługa Event Hubs będą wysyłały danych. Tworzenie tabeli w klastrze i baza danych została przygotowana w wymaganiach wstępnych.
 
 1. W witrynie Azure Portal w obszarze klastra wybierz pozycję **Zapytanie**.
 
     ![Link do aplikacji Zapytanie](media/ingest-data-event-grid/query-explorer-link.png)
 
-1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom**, aby utworzyć tabelę (TestTable), w której będą umieszczane pozyskiwane dane.
+1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom** można utworzyć tabeli (TestTable), który będzie otrzymywał pozyskiwanych danych.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
@@ -76,21 +79,21 @@ Utwórz tabelę w usłudze Azure Data Explorer, do której będą wysyłane dane
 
 ## <a name="create-an-event-grid-data-connection-in-azure-data-explorer"></a>Tworzenie połączenie danych usługi Event Grid w usłudze Azure Data Explorer
 
-Teraz połączysz się z usługą Event Grid z usługi Azure Data Explorer, aby dane trafiające do kontenera obiektów blob były przesyłane strumieniowo do tabeli testowej.
+Teraz połączyć się z usługi event grid z Eksploratora danych usługi Azure, tak, aby dane trafiające do kontenera obiektów blob jest przesyłany strumieniowo do tabeli testu.
 
 1. Wybierz pozycję **Powiadomienia** na pasku narzędzi, aby sprawdzić, czy wdrożenie centrum zdarzeń zakończyło się pomyślnie.
 
-1. W obszarze utworzonego klastra wybierz pozycję **Bazy danych**, a następnie pozycję **TestDatabase**.
+1. W obszarze utworzonego klastra, wybierz **baz danych** > **TestDatabase**.
 
     ![Wybieranie testowej bazy danych](media/ingest-data-event-grid/select-test-database.png)
 
-1. Wybierz pozycję **Pozyskiwanie danych**, a następnie pozycję **Dodaj połączenie danych**.
+1. Wybierz **pozyskiwanie danych** > **Dodaj połączenie danych**.
 
     ![Wprowadzanie danych](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1. Wybierz typ połączenia: **Blob Storage**.
+1.  Wybierz typ połączenia: **Blob Storage**.
 
-1. Wypełnij formularz, używając poniższych informacji, a następnie kliknij pozycję **Utwórz**.
+1. Wypełnij formularz następującymi informacjami, a następnie wybierz pozycję **Utwórz**.
 
     ![Połączenie centrum zdarzeń](media/ingest-data-event-grid/create-event-grid-data-connection.png)
 
@@ -98,12 +101,12 @@ Teraz połączysz się z usługą Event Grid z usługi Azure Data Explorer, aby 
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Nazwa połączenia danych | *test-hub-connection* | Nazwa połączenia, które chcesz utworzyć w usłudze Azure Data Explorer.|
+    | Nazwa połączenia danych | *test-hub-connection* | Nazwa połączenia, które ma zostać utworzona w Eksploratorze danych platformy Azure.|
     | Subskrypcja konta magazynu | Identyfikator Twojej subskrypcji | Identyfikator subskrypcji, w której znajduje się konto magazynu.|
-    | Konto magazynu | *gridteststorage* | Nazwa utworzonego wcześniej konta magazynu.|
-    | Event Grid | *test-grid-connection* | Nazwa utworzonej usługi Event Grid. |
-    | Nazwa centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. To pole jest wypełniane automatycznie po wybraniu usługi Event Grid. |
-    | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
+    | Konto magazynu | *gridteststorage* | Nazwa konta magazynu, który został utworzony wcześniej.|
+    | Event Grid | *test-grid-connection* | Nazwa usługi event grid, który został utworzony. |
+    | Nazwa centrum zdarzeń | *test-hub* | Centrum zdarzeń, który został utworzony. To pole zostanie wypełnione automatycznie, podczas pobierania usługi event grid. |
+    | Grupa konsumentów | *test-group* | Grupa odbiorców zdarzeń zdefiniowanych koncentratora, który został utworzony. |
     | | |
 
     Tabela docelowa:
@@ -117,11 +120,11 @@ Teraz połączysz się z usługą Event Grid z usługi Azure Data Explorer, aby 
 
 ## <a name="generate-sample-data"></a>Generowanie danych przykładowych
 
-Teraz, gdy usługa Azure Data Explorer i konto magazynu są połączone, możesz utworzyć przykładowe dane i przekazać je do magazynu obiektów blob.
+Teraz, gdy są połączone Eksplorator danych platformy Azure i konto magazynu, możesz utworzyć przykładowe dane i przekaż go do magazynu obiektów blob.
 
-Będziemy pracować z krótkim skryptem powłoki, który wykona kilka podstawowych poleceń interfejsu wiersza polecenia platformy Azure umożliwiających interakcje z zasobami usługi Azure Storage. Skrypt najpierw tworzy nowy kontener na koncie magazynu, a następnie przekazuje do tego kontenera istniejący plik (jako obiekt blob). Następnie wyświetla listę wszystkich obiektów blob w kontenerze. Możesz użyć programu [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), aby wykonać skrypt bezpośrednio w portalu.
+Będziemy pracować z krótkim skryptem powłoki, który wykona kilka podstawowych poleceń interfejsu wiersza polecenia platformy Azure umożliwiających interakcje z zasobami usługi Azure Storage. Ten skrypt tworzy nowy kontener na koncie magazynu, przekazuje istniejącego pliku (jako obiekt blob) do tego kontenera i następnie wyświetla listę obiektów blob w kontenerze. Możesz użyć [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) można wykonać skryptu bezpośrednio w portalu.
 
-Zapisz następujące dane w pliku, a następnie użyj ich wraz z poniższym skryptem:
+Zapisz dane w pliku i przekaż go za pomocą tego skryptu:
 
 ```Json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
@@ -154,9 +157,9 @@ Zapisz następujące dane w pliku, a następnie użyj ich wraz z poniższym skry
 ## <a name="review-the-data-flow"></a>Przeglądanie przepływu danych
 
 > [!NOTE]
-> W systemie ADX istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania.
+> Eksplorator usługi Azure Data ma zasady agregacji (przetwarzanie wsadowe) w celu pozyskiwania danych opracowana w celu optymalizacji procesu pozyskiwania.
 Domyślna zasada jest skonfigurowana na 5 minut.
-Później będzie można zmienić tę zasadę zgodnie z potrzebami. W tym przewodniku Szybki start można spodziewać się opóźnienia trwającego kilka minut.
+Będzie można zmienić zasady w późniejszym czasie, jeśli to konieczne. W tym przewodniku Szybki start można spodziewać się opóźnienia trwającego kilka minut.
 
 1. W witrynie Azure Portal w obszarze siatki zdarzeń zobaczysz wzrost aktywności, gdy aplikacja jest uruchomiona.
 
@@ -191,9 +194,9 @@ Jeśli nie zamierzasz ponownie używać siatki zdarzeń, wyczyść grupę zasob�
 
 1. W obszarze **test-resource-group** wybierz pozycję **Usuń grupę zasobów**.
 
-1. W nowym oknie wpisz nazwę grupy zasobów do usunięcia (*test-hub-rg*), a następnie wybierz pozycję **Usuń**.
+1. W nowym oknie, wprowadź nazwę grupy zasobów do usunięcia (*test-hub-rg*), a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)

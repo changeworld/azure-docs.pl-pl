@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: 47b48d940bb86ac5392ab7845aa8c34b146f116a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170432"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co to jest usługa Azure Stream Analytics?
 
@@ -95,7 +95,7 @@ Usługa Stream Analytics może przetwarzać miliony zdarzeń co sekundę oraz do
 Umożliwia skalowanie w górę lub zwiększanie skali w poziomie w celu obsługi dużych aplikacji z przetwarzaniem złożonych zdarzeń oraz przetwarzaniem w czasie rzeczywistym. Usługa Stream Analytics obsługuje wydajność za pomocą partycjonowania, dzięki czemu złożone zapytania mogą być równolegle wykonywane na wielu węzłach przesyłania strumieniowego.
 Usługa Azure Stream Analytics jest oparta na [Trill](https://github.com/Microsoft/Trill), aparacie analizy przesyłania strumieniowego w pamięci o wysokiej wydajności opracowanym we współpracy z Microsoft Research. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Masz już podstawowe informacje o usłudze Azure Stream Analytics. Teraz możesz utworzyć pierwsze zadanie w usłudze Stream Analytics:
 

@@ -3,20 +3,20 @@ title: Migrowanie programu SQL Server do wystąpienia zarządzanego usługi Azur
 description: Dowiedz się przeprowadzić migrację z lokalnego programu SQL Server do wystąpienia zarządzanego Azure SQL DB przy użyciu programu Azure PowerShell.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 3543b7c7410b31b50a6654d3d9807128fff9fd19
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 19fb53e73da40a65b074cb0c2f14f11bb130b586
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177623"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do bazy danych wystąpienia zarządzanego Azure SQL przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przywróconej do lokalnego wystąpienia programu SQL Server 2005 lub nowszego do wystąpienia zarządzanego bazy danych SQL Azure za pomocą programu Microsoft Azure PowerShell. Można migrować bazy danych z lokalnego wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database przy użyciu `AzureRM.DataMigration` modułu w programie Microsoft Azure PowerShell.

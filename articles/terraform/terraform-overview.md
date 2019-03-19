@@ -2,19 +2,19 @@
 title: Korzystanie z narzędzia Terraform na platformie Azure
 description: Wprowadzenie do wersjonowania i wdrażania infrastruktury platformy Azure za pomocą narzędzia Terraform.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, overview, plan, apply, automate
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 962631728f96e0551f9cc18d5d835928e5a7705a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 8b5ad3f060e2c8760014d7fc1990b971976388f7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567982"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779202"
 ---
 # <a name="terraform-with-azure"></a>Narzędzie Terraform na platformie Azure
 
@@ -43,7 +43,7 @@ Narzędzie Terraform zapewnia interfejs wiersza polecenia (CLI), który umożliw
 
 Terraform to popularne narzędzie w przypadku scenariuszy z wieloma chmurami, w których podobna infrastruktura jest wdrażana na platformie Azure oraz u dodatkowych dostawców usług w chmurze lub w lokalnych centrach danych. Umożliwia ono deweloperom zarządzanie infrastrukturą u wielu dostawców chmury za pomocą tych samych narzędzi i plików konfiguracji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto następne sugerowane kroki po zapoznaniu się z omówieniem narzędzia Terraform i jego zalet:
 

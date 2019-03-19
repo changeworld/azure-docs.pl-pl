@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 07e328c022e8e81782902445fd8fc6e320625a51
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978952"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533668"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: Przygotowanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
@@ -41,7 +41,7 @@ Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych d
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry**.
 
@@ -224,7 +224,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W ramach tego samouczka utworzono prywatny, replikowany geograficznie rejestr kontenerów, utworzono obraz kontenera, a następnie wypchnięto obraz do rejestru.
 
@@ -244,7 +244,7 @@ Przejdź do następnego samouczka, aby wdrożyć kontener do wielu wystąpień f
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
-[aspnet-core]: http://dot.net
+[aspnet-core]: https://dot.net
 [dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
 [dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

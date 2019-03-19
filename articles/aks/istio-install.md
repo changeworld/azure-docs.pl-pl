@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: 25a68f55eb9a6deb037029d5d8a984ce74f12be5
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: d85b830b63e2d52f3eeb5df8645edccfccf43c76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791464"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138154"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ W tym artykule oddziela wskazówki dotyczące instalacji Istio na kilka kroków 
 
 ## <a name="download-istio"></a>Pobierz Istio
 
-Najpierw należy pobrać i wyodrębnić najnowsze wydanie Istio. Kroki się nieco różnić dla powłoki bash w systemie MacOS, Linux lub podsystem Windows dla systemu Linux i powłoki PowerShell. Wybierz jeden z następujących instalacji kroków dla preferowanego środowiska:
+Najpierw należy pobrać i wyodrębnić najnowsze wydanie Istio. Kroki różnią się nieco dla powłoki bash w systemie MacOS, Linux lub podsystemu Windows dla systemu Linux oraz dla powłoki PowerShell. Wybierz jeden z następujących instalacji kroków dla preferowanego środowiska:
 
 * [Powłoka bash w systemie MacOS, Linux lub podsystemu Windows dla systemu Linux](#bash)
 * [Program PowerShell](#powershell)
@@ -148,6 +148,9 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
 
 > [!IMPORTANT]
 > Upewnij się, wykonaj kroki w tej sekcji z folderu najwyższego poziomu z wersji Istio pobrane i wyodrębnione.
+
+> [!NOTE]
+> Wersja `1.0.6` i nowszej wykresu Istio Helm ma istotne zmiany. Jeśli wybierzesz, aby zainstalować tę wersję, teraz należy ręcznie utworzyć wpis tajny dla Kiali. Należy również ręcznie utworzyć wpis tajny do narzędzia Grafana, jeśli zostały ustawione `grafana.security.enabled=true`. Zobacz wykresu Helm Istio [README.md](https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio#installing-the-chart) więcej szczegółowych informacji dotyczących sposobu tworzenia tych kluczy tajnych.
 
 Aby zainstalować składniki Istio do klastra usługi AKS, użyj narzędzia Helm. Instalowanie zasobów Istio do `istio-system` przestrzeni nazw i Włącz dodatkowe opcje zabezpieczeń i monitorowania w następujący sposób:
 

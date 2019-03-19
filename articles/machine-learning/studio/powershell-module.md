@@ -6,16 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 01/25/2019
-ms.openlocfilehash: d25c9a4a828a8b536a5b54ecb3894ff9e5818d85
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: bd3a82f326cdf7f51e8842e45333ff2bd647c260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092756"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>Moduły programu PowerShell dla usługi Azure Machine Learning Studio
 
@@ -58,7 +57,7 @@ Aby rozpocząć pracę z PowerShell — Model Klasyczny, Pobierz [pakiet wydania
 ## <a name="support-table"></a> Tabela obsługi programu PowerShell
 
  **Obszary robocze Studio** | **Az** |  **AzureRM** | **PowerShell — model klasyczny** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Tworzenie/usuwanie obszarów roboczych | [Szablony usługi Resource Manager](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) | [Szablony usługi Resource Manager](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | Zarządzanie użytkownikami obszaru roboczego |  |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
 | Zarządzaj planami zobowiązania | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | [New-AzureRmMlCommitmentPlan](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/new-azurermmlcommitmentplan) |

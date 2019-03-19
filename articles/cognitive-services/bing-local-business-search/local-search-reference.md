@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 34cedd2b389187e55201b62acc38fca291cdd736
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992476"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
@@ -173,18 +173,21 @@ Definiuje kontekst zapytania, które Bing użyta dla żądania.
 |originalQuery|Ciąg zapytania określony w żądaniu.|String|  
 
 ### <a name="identifiable"></a>Do zidentyfikowania
+
 |Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupy w wynikach wyszukiwania, takie jak mainline.
+
 |Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |pozycje|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania, aby wyświetlić.
+
 |Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Liczba całkowita|

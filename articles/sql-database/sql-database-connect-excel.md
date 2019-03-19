@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103404"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Łączenie programu Excel z pojedynczej bazy danych w bazie danych Azure SQL i utworzenie raportu
 
@@ -43,10 +43,10 @@ Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano pr
 
 4. W **bazy danych SQL Server** okno dialogowe, wybierz opcję **bazy danych** po lewej stronie strony, a następnie wprowadź w Twojej **nazwa_użytkownika** i **hasło** dla Serwer SQL Database, którą chcesz się połączyć. Wybierz **Connect** otworzyć **Nawigator**. 
 
-  ![Wpisywanie nazwy serwera i poświadczeń logowania](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Wpisywanie nazwy serwera i poświadczeń logowania](./media/sql-database-connect-excel/connect-to-server.png)
 
-  > [!TIP]
-  > W zależności od środowiska sieciowego może nie być możliwe nawiązanie połączenia lub można utracić połączenie, jeśli serwer usługi SQL Database nie zezwala na ruch z adresu IP klienta. Przejdź do witryny [Azure Portal](https://portal.azure.com/), kliknij serwery SQL, kliknij serwer, którego używasz, kliknij zaporę systemu w ustawieniach i dodaj swój adres IP klienta. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to configure firewall settings](sql-database-configure-firewall-settings.md) (Jak skonfigurować ustawienia zapory).
+   > [!TIP]
+   > W zależności od środowiska sieciowego może nie być możliwe nawiązanie połączenia lub można utracić połączenie, jeśli serwer usługi SQL Database nie zezwala na ruch z adresu IP klienta. Przejdź do witryny [Azure Portal](https://portal.azure.com/), kliknij serwery SQL, kliknij serwer, którego używasz, kliknij zaporę systemu w ustawieniach i dodaj swój adres IP klienta. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to configure firewall settings](sql-database-configure-firewall-settings.md) (Jak skonfigurować ustawienia zapory).
 
 5. W **Nawigator**, wybierz bazę danych, którą chcesz pracować z listy, wybierz tabele lub widoki, które chcesz pracować (Wybraliśmy **vGetAllCategories**), a następnie wybierz pozycję **obciążenia**przenoszenia danych z bazy danych w arkuszu kalkulacyjnym programu Excel.
 
@@ -75,17 +75,17 @@ Teraz, po nawiązaniu połączenia, masz kilka różnych opcji, jak załadować 
 Aby trwale zapisać informacje dotyczące połączenia, możesz utworzyć plik odc i wprowadzić to połączenie można wybierać opcji w **istniejące połączenia** okno dialogowe. 
 
 1. Na pasku menu w górnej części strony wybierz **danych** , a następnie wybierz pozycję **istniejące połączenia** można uruchomić **istniejące połączenia** okno dialogowe. 
-    1. Wybierz **Przeglądaj w poszukiwaniu kolejnych** otworzyć **wybierz źródło danych** okno dialogowe.   
-    2. Wybierz **+NewSqlServerConnection.odc** pliku, a następnie wybierz pozycję **Otwórz** otworzyć **Kreatora połączenia danych**.
+   1. Wybierz **Przeglądaj w poszukiwaniu kolejnych** otworzyć **wybierz źródło danych** okno dialogowe.   
+   2. Wybierz **+NewSqlServerConnection.odc** pliku, a następnie wybierz pozycję **Otwórz** otworzyć **Kreatora połączenia danych**.
 
-    ![Nowe połączenie](media/sql-database-connect-excel/new-connection.png)
+      ![Nowe połączenie](media/sql-database-connect-excel/new-connection.png)
 
 2. W **Kreatora połączenia danych**, wpisz nazwę serwera i poświadczenia bazy danych SQL. Wybierz opcję **Dalej**. 
-    1. Wybierz bazę danych, która zawiera dane z listy rozwijanej. 
-    2. Wybierz tabelę lub widok, który chcesz wziąć. Wybraliśmy vGetAllCategories.
-    3. Wybierz opcję **Dalej**. 
+   1. Wybierz bazę danych, która zawiera dane z listy rozwijanej. 
+   2. Wybierz tabelę lub widok, który chcesz wziąć. Wybraliśmy vGetAllCategories.
+   3. Wybierz opcję **Dalej**. 
 
-    ![Kreator połączenia danych](media/sql-database-connect-excel/data-connection-wizard.png) 
+      ![Kreator połączenia danych](media/sql-database-connect-excel/data-connection-wizard.png) 
 
 3. Wybierz lokalizację pliku, **nazwy pliku**i **przyjazną nazwę** na następnym ekranie Kreatora połączenia danych. Możesz również zapisać hasło w pliku, chociaż jest to potencjalnie może narazić dane na niepożądany dostęp. Wybierz **Zakończ** gdy będzie gotowe. 
 

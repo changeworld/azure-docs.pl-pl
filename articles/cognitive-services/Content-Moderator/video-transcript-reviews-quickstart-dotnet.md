@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e33f94486fe295fffa1f0b4bbd298b15d9271f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113737"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Utwórz przeglądy transkrypcji wideo przy użyciu platformy .NET
 
@@ -246,10 +246,10 @@ Oprócz dodawania transkrypcji do wideo przeglądu, można też dodać wynik Mod
 1. Nazwa zespołu usługi Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
 1. IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** ma następujące właściwości:
-- **Warunki**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
-- **Indeks**. Liczony od zera indeks termin.
-- **Termin**. Ciąg, który zawiera wyrażenie.
-- **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w transkrypcji, w którym znajdują się warunki.
+1. **Warunki**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
+1. **Indeks**. Liczony od zera indeks termin.
+1. **Termin**. Ciąg, który zawiera wyrażenie.
+1. **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w transkrypcji, w którym znajdują się warunki.
 
 Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Tekst wideo w sieci Web śledzi Format](https://www.w3.org/TR/webvtt1/).
 

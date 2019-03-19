@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure AD hasło protection w wersji zapoznawczej
-description: Zablokuj słabe hasła w Active Directory w środowisku lokalnym za pomocą hasła usługi Azure AD protection (wersja zapoznawcza)
+description: Zablokuj słabe hasła w usłudze Active Directory w środowisku lokalnym za pomocą usługi Azure AD hasło protection w wersji zapoznawczej
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,87 +11,90 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1beae186f6eb276b9aa302d3d51f0ba8688e591
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2fdf308ff6178dcb51ec73e46d43b853f62e7777
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840957"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wersja zapoznawcza: Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
 |     |
 | --- |
-| Ochrony hasłem w usłudze Azure AD i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrona platformy Azure za pomocą hasła usługi Active Directory (Azure AD) i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure AD. Aby uzyskać informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Ochrony hasłem w usłudze Azure AD to nowa funkcja w wersji zapoznawczej obsługiwane przez usługi Azure Active Directory (Azure AD), aby zwiększyć zasady haseł w organizacji. Wdrażanie w środowisku lokalnym ochrona za pomocą hasła usługi Azure AD używa zarówno globalnych i niestandardowe zakazane listy haseł przechowywanych w usłudze Azure AD i wykonuje ten sam kontroli lokalnej zgodnie ze zmianami oparte na chmurze usługi Azure AD.
+Ochrony hasłem w usłudze Azure AD to nowa funkcja w wersji zapoznawczej, która rozszerza zasady haseł w organizacji. Ochrona za pomocą hasła wdrożenia w środowisku lokalnym używa zarówno globalnych i niestandardowych zakazanych haseł listy, które są przechowywane w usłudze Azure AD. Robi się tego samego sprawdzenia lokalnego jako usługi Azure AD dla zmian oparte na chmurze.
 
 ## <a name="design-principles"></a>Zasady projektowania
 
-Usługa Azure Protection haseł usługi AD dla usługi Active Directory została zaprojektowana z następującymi zasadami pamiętać:
+Ochrony hasłem w usłudze Azure AD zaprojektowano z tymi zasadami, należy pamiętać:
 
-* Kontrolery domeny nigdy nie są wymagane do bezpośredniego komunikowania się z Internetem
+* Kontrolery domeny nigdy nie mają się komunikować się bezpośrednio z Internetu.
 * Żadne nowe sieci porty są otwarte na kontrolerach domeny.
-* Nie zmian schematu usługi Active Directory są wymagane. Oprogramowanie korzysta z istniejącego kontenera usługi Active Directory i obiektów schematu serviceConnectionPoint.
-* Nie minimalnych domeny usługi Active Directory lub funkcjonalności lasu poziom (DFL\FFL) jest wymagany.
-* Oprogramowanie nie tworzenie ani nie wymaga żadnych kont w domenach usługi Active Directory, które chroni.
-* Hasła w postaci zwykłego tekstu użytkowników nigdy nie opuszczają kontrolera domeny (czy w trakcie operacji sprawdzania poprawności hasła lub w dowolnym momencie).
-* Wdrożenie przyrostowe jest obsługiwane z zależnościami, czy zasady haseł tylko są wymuszane, którym jest zainstalowany agent kontrolera domeny.
-* Zalecane jest, aby zainstalować agenta kontrolera domeny na wszystkie kontrolery domeny, aby upewnić się, wymuszania zabezpieczeń ochrony wszechobecne hasła.
+* Nie zmian schematu usługi Active Directory są wymagane. Oprogramowanie korzysta z istniejącą usługą Active Directory **kontenera** i **serviceConnectionPoint** obiektów schematu.
+* Nie minimalnych usługi Active Directory domeny lub lasu poziom funkcjonalności (DFL/FFL) jest wymagany.
+* Oprogramowanie nie jest tworzenie i wymagają kont w domenach usługi Active Directory, które chroni.
+* Hasła w postaci zwykłego tekstu użytkowników nie może pozostać kontrolera domeny podczas operacji sprawdzania poprawności hasła lub w dowolnym innym czasie.
+* Wdrożenie przyrostowe jest obsługiwane. Jednak z zasadami haseł jest wymuszana tylko którym jest zainstalowany Agent kontrolera domeny (DC Agent).
+* Firma Microsoft zaleca instalowanie agenta kontrolera domeny na wszystkich kontrolerach domeny, aby upewnić się, wymuszania zabezpieczeń ochrony universal hasła.
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 
-Jest to istotne dla zrozumienia podstawowego projektu i funkcjonalności pojęć przed wdrożeniem ochrony haseł usługi Azure AD w środowisku usługi Active Directory w środowisku lokalnym. Na poniższym diagramie przedstawiono, jak składniki ochrony haseł usługi Azure AD współpracują ze sobą:
+Należy zapoznać się z podstawowej projektowania i pojęcia związane z funkcjami przed wdrożeniem ochrona za pomocą hasła usługi Azure AD w środowisku usługi Active Directory w środowisku lokalnym. Na poniższym diagramie przedstawiono, jak składniki ochrony hasłem współpracują ze sobą:
 
 ![W jaki sposób składniki ochrony hasła usługi Azure AD współpracują ze sobą](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-Na powyższym diagramie przedstawiono trzech składników podstawowych oprogramowania, które tworzą ochrona za pomocą hasła usługi Azure AD:
+* Usługa serwera Proxy ochrony haseł usługi Azure AD jest uruchamiana na dowolnym komputerze przyłączonym do domeny w bieżącym lesie usługi Active Directory. Ich głównym celem jest do przekazywania żądań pobierania zasad haseł z kontrolerów domeny do usługi Azure AD. Następnie zwraca odpowiedzi z usługi Azure AD do kontrolera domeny.
+* Filtr haseł biblioteki DLL agenta DC odbiera żądania sprawdzenie poprawności hasła użytkownika z systemu operacyjnego. Przesyła je do usługi agenta kontrolera domeny, która jest uruchomiona lokalnie na kontrolerze domeny.
+* Usługa agenta kontrolera domeny, hasło ochrony odbiera żądania sprawdzenie poprawności hasła z filtru haseł biblioteki DLL agenta kontrolera domeny. Przetwarza je za pomocą bieżące zasady haseł (dostępne lokalnie) i zwraca wynik: *przekazać* lub *się nie powieść*.
 
-* Usługa serwera Proxy ochrony haseł usługi Azure AD jest uruchamiana na dowolnym komputerze przyłączonym do domeny w bieżącym lesie usługi Active Directory. Ich głównym celem jest przekazywać żądania pobierania zasad haseł z kontrolerów domeny do usługi Azure AD, a następnie Zwróć odpowiedź z usługi Azure AD do kontrolera domeny.
-* Biblioteki dll filtru haseł usługi Azure AD DC ochronę agenta hasło odbiera żądania weryfikacji hasła użytkownika z systemu operacyjnego i przekazuje je do usługi agenta ochrony kontrolera domeny haseł usługi Azure AD działa lokalnie na kontrolerze domeny.
-* Usługa agenta DC ochronę haseł usługi Azure AD odbiera żądania weryfikacji hasła z dll filtru haseł agenta kontrolera domeny, przetwarza je za pomocą bieżące zasady haseł (dostępne lokalnie) i zwraca wynik (pass\fail).
+## <a name="how-password-protection-works"></a>Jak działa ochrona za pomocą hasła
 
-## <a name="theory-of-operations"></a>Teoretycznie operacji
+Każde wystąpienie usługi serwera Proxy ochrony haseł usługi Azure AD anonsuje się do kontrolerów domeny w lesie, tworząc **serviceConnectionPoint** obiektu w usłudze Active Directory.
 
-Dlatego podane powyższych zasad diagram i projekt, w jaki sposób ochrony haseł usługi Azure AD faktycznie działa?
+Każda usługa kontrolera domeny, Agent ochrony hasłem wzrasta, powstaje **serviceConnectionPoint** obiektu w usłudze Active Directory. Ten obiekt jest używany głównie do raportowania i informacji diagnostycznych.
 
-Każda usługa serwera Proxy ochrony haseł usługi Azure AD anonsuje sam kontrolerów domeny w lesie przez utworzenie obiektu serviceConnectionPoint w usłudze Active Directory.
+Usługa agenta kontrolera domeny jest odpowiedzialny za inicjowanie pobierania nowych zasad haseł z usługi Azure AD. Pierwszym krokiem jest zlokalizowanie usługi Proxy ochrony haseł usługi Azure AD przez wysyłanie zapytań las dla serwera proxy **serviceConnectionPoint** obiektów. Po znalezieniu usługi proxy dostępne DC Agent wysyła żądanie pobierania zasad haseł z usługą serwera proxy. Usługa serwera proxy z kolei wysyła żądanie do usługi Azure AD. Usługa serwera proxy następnie zwraca odpowiedź usługi agenta kontrolera domeny.
 
-Każda usługa agenta haseł usługi Azure AD ochrony kontrolera domeny tworzy również obiektu serviceConnectionPoint w usłudze Active Directory. Jednak służy to głównie do raportowania i informacji diagnostycznych.
+Gdy Usługa agenta DC otrzyma nowe zasady haseł z usługi Azure AD, Usługa przechowuje zasady w dedykowanym folderze w katalogu głównym domeny *sysvol* udziału folderu. Usługa agenta kontrolera domeny także monitoruje ten folder, w przypadku nowszych zasady replikacji w od innych usług agenta kontrolera domeny w domenie.
 
-Usługa agenta DC ochronę haseł usługi Azure AD jest odpowiedzialny za inicjowanie pobierania nowych zasad haseł z usługi Azure AD. Pierwszym krokiem jest zlokalizować usługi serwera Proxy ochrony haseł usługi Azure AD przez wysyłanie zapytań las dla serwera proxy serviceConnectionPoint obiektów. Po znalezieniu usługi proxy dostępne żądania pobierania zasad hasła są wysyłane z usługi agenta kontrolera domeny do usługi serwera proxy, która z kolei wysyła do usługi Azure AD, a następnie zwraca odpowiedź usługi agenta kontrolera domeny. Po odebraniu nowych zasad haseł z usługi Azure AD, Usługa agenta kontrolera domeny przechowuje zasady w dedykowanym folderze w katalogu głównym udziału sysvol w domenie. Usługa agenta kontrolera domeny także monitoruje ten folder, w przypadku nowszych zasady replikacji w od innych usług agenta kontrolera domeny w domenie.
+Usługa agenta kontrolera domeny zawsze żąda nowych zasad podczas uruchamiania usługi. Po uruchomieniu usługi agenta kontrolera domeny, sprawdza wiek bieżące zasady dostępne lokalnie co godzinę. Jeśli zasady są starsze niż jedna godzina, agenta kontrolera domeny żąda nowych zasad z usługi Azure AD, zgodnie z wcześniejszym opisem. Jeśli bieżące zasady nie jest starsza niż jedna godzina, Agent kontrolera domeny w dalszym ciągu używa tych zasad.
 
-Usługa agenta DC ochronę haseł usługi Azure AD zawsze będzie żądać nowych zasad podczas uruchamiania usługi. Po uruchomieniu usługi agenta kontrolera domeny będzie okresowo (co godzinę) sprawdź wiek bieżące zasady dostępne lokalnie; Jeśli bieżące zasady jest starsza niż jedna godzina usługę agenta kontrolera domeny będzie żądać nowych zasad z usługi Azure AD zgodnie z powyższym opisem, w przeciwnym razie agenta kontrolera domeny będzie używać bieżących zasad.
+Przy każdym pobraniu zasad haseł usługi Azure AD hasło ochrony tej zasady jest specyficzne dla dzierżawy. Innymi słowy zasady dotyczące haseł są zawsze kombinacją globalnej listy zakazanych haseł firmy Microsoft i niestandardowej listy zakazanych haseł dla dzierżawy.
 
-Usługa agenta DC ochrony haseł usługi Azure AD komunikuje się z usługą serwera Proxy ochrony haseł usługi Azure AD przy użyciu RPC (zdalne wywoływanie procedury) za pośrednictwem protokołu TCP. Usługa serwera Proxy nasłuchuje tych wywołań na obu portu RPC dynamiczną lub statyczną (zgodnie z konfiguracją).
+DC Agent komunikuje się z usługą serwera proxy, za pośrednictwem usługi RPC za pośrednictwem protokołu TCP. Usługa serwera proxy nasłuchuje tych wywołań na dynamiczną lub statyczną portu RPC, w zależności od konfiguracji.
 
-Agenta ochrony kontrolera domeny haseł usługi Azure AD nigdy nie nasłuchuje na porcie dostępnych sieci i usługa serwera Proxy nigdy nie próbuje wywołać usługę agenta kontrolera domeny.
+Agent kontrolera domeny nigdy nie nasłuchuje na porcie dostępne w sieci.
 
-Usługa serwera Proxy ochrony haseł usługi Azure AD jest bezstanowy; nigdy nie buforuje zasad lub dowolnego innego stanu pobrany z platformy Azure.
+Usługa serwera proxy nigdy nie wywołuje usługę agenta kontrolera domeny.
 
-Usługa agenta DC ochronę haseł usługi Azure AD będą oceniać tylko hasła użytkownika przy użyciu najbardziej aktualnych zasad haseł dostępne lokalnie. Jeśli nie zasady haseł jest dostępny na lokalnym kontrolerze domeny, hasło zostanie automatycznie akceptowane, a komunikat dziennika zdarzeń zostaną zarejestrowane w celu otrzymania przez administratora.
+Usługa serwera proxy jest bezstanowy. Nigdy nie buforuje zasad lub dowolnego innego stanu pobrany z platformy Azure.
 
-Ochrona za pomocą usługi Azure AD hasła nie jest aparat aplikacji zasad w czasie rzeczywistym. Mogą wystąpić opóźnienia w okresie między zmiana konfiguracji zasad haseł znajduje się w usłudze Azure AD i czas osiągnie i są wymuszane na wszystkich kontrolerach domeny.
+Usługa agenta kontrolera domeny zawsze używa najnowszych zasad haseł dostępne lokalnie można obliczyć wartości hasła użytkownika. Jeśli nie zasady haseł jest dostępny na lokalnym kontrolerze domeny, hasło jest automatycznie akceptowane. Jeśli tak się stanie, aby ostrzec administratora jest rejestrowany komunikat zdarzenia.
 
-## <a name="foresttenant-binding-for-azure-ad-password-protection"></a>Powiązanie Forest\tenant ochrony haseł usługi Azure AD
+Ochrony hasłem w usłudze Azure AD nie jest aparat aplikacji zasad w czasie rzeczywistym. Może to być opóźnienie między podczas wprowadzania zmian konfiguracji zasad haseł w usłudze Azure AD, kiedy zmienić przypada oraz są wymuszane na wszystkich kontrolerach domeny.
 
-Wdrożenie ochrony haseł usługi Azure AD w lesie usługi Active Directory wymaga rejestracji lasu usługi Active Directory i wszelkie wdrożone usługi Proxy ochrony haseł usługi Azure AD z usługą Azure AD. Zarówno wpisy do rejestru (las i serwery proxy) są skojarzone z określonym dzierżawy usługi Azure AD, który jest identyfikowany niejawnie za pomocą poświadczeń użytych podczas rejestracji. W dowolnym momencie są pobierane zasady haseł ochrony haseł usługi Azure AD, zawsze jest przeznaczony dla tej dzierżawy (czyli zasad będzie zawsze kombinacji Microsoft globalnego zakazane hasła i listy dla dzierżawcy niestandardowe zakazanych haseł). Skonfigurować różne domeny lub serwery proxy w lesie, może być powiązane z różnymi usługami Azure AD nie jest obsługiwane dzierżaw.
+## <a name="foresttenant-binding-for-password-protection"></a>Powiązanie las/dzierżawy ochrony hasłem
+
+Wdrożenie ochrona za pomocą hasła usługi Azure AD w lesie usługi Active Directory wymaga rejestracji tego lasu w usłudze Azure AD. Każda usługa serwera proxy, który jest wdrożony również musi być zarejestrowany w usłudze Azure AD. Tyto registrace lasu i serwera proxy są skojarzone z określonym dzierżawy usługi Azure AD, która jest niejawnie identyfikowane za pomocą poświadczeń, które są używane podczas rejestracji.
+
+Las usługi Active Directory i wszystkie usługi proxy wdrożonej w obrębie lasu muszą być zarejestrowane przy użyciu tej samej dzierżawy. Masz lasu usługi Active Directory lub usług serwera proxy w tym dzierżawy lasu jest zarejestrowany do innej usługi Azure AD nie jest obsługiwana. Objawy źle skonfigurowane wdrożenia to brak możliwości pobrania zasad haseł.
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 
-Korzyści wynikające z listy globalne zakazanych haseł mają zastosowanie do wszystkich użytkowników usługi Azure Active Directory (Azure AD).
+Korzyści wynikające z listy globalne zakazanych haseł mają zastosowanie do wszystkich użytkowników usługi Azure AD.
 
-Listy niestandardowe zakazanych haseł wymaga licencji usługi Azure AD podstawowa.
+Niestandardowe listy zakazanych haseł wymaga licencji usługi Azure AD podstawowa.
 
-Usługa Azure Protection haseł usługi AD dla systemu Windows Server Active Directory wymaga licencji usługi Azure AD Premium.
+Usługa Azure AD ochrona za pomocą hasła usługi Active Directory systemu Windows Server wymaga licencji usługi Azure AD Premium.
 
-Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
+Aby uzyskać dodatkowe informacje o licencjonowaniu, zobacz [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Do pobrania
 
-Dwa wymagane pliki instalacyjne agenta ochrony haseł usługi Azure AD, który można pobrać z [Centrum pobierania firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=57071)
+Dwa pliki instalacyjne wymagane agenta ochrony hasłem w usłudze Azure AD są dostępne z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
 ## <a name="next-steps"></a>Kolejne kroki
-
 [Wdrażanie ochrony haseł w usłudze Azure AD](howto-password-ban-bad-on-premises-deploy.md)

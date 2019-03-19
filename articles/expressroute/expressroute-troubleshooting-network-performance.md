@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 17f239dc3ba9714c01f55a88419df2d3416908fa
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995795"
 ---
 # <a name="troubleshooting-network-performance"></a>Rozwiązywanie problemów z wydajnością sieci
 ## <a name="overview"></a>Przegląd
@@ -180,20 +180,20 @@ Konfiguracja testu:
 | | | | | | |
 |-|-|-|-|-|-|
 |ExpressRoute<br/>Lokalizacja|Azure<br/>Region|Szacowane<br/>Distance (km)|Opóźnienie|1 sesji<br/>Przepustowość|Maksimum<br/>Przepustowość|
-| Seattle | Zachodnie stany USA 2        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits na sekundę | 21
-| Seattle | Zachodnie stany USA          |  1,094 km |  18 ms |  82.3 MB/s |  3.70 Gbits na sekundę | 20
-| Seattle | Środkowe stany USA       |  2,357 km |  40 ms |  38.8 MB/s |  Do 2,55 Gbits/s | 17
-| Seattle | Środkowo-południowe stany USA |  2,877 km |  51 ms |  30.6 MB/s |  2,49 Gbits na sekundę | 19
-| Seattle | Środkowo-północne stany USA |  2,792 km |  55 ms |  27.7 MB/s |  2.19 Gbits na sekundę | 18
-| Seattle | Wschodnie stany USA 2        |  3,769 km |  73 ms |  21.3 MB/s |  1.79 Gbits na sekundę | 16
-| Seattle | Wschodnie stany USA          |  3,699 km |  74 ms |  21.1 MB/s |  1.78 Gbits na sekundę | 15
-| Seattle | Japonia Wschodnia       |  7,705 km | 106 ms |  14.6 MB/s |  1.22 Gbits na sekundę | 28
-| Seattle | Południowe Zjednoczone Królestwo         |  7,708 km | 146 ms |  10.6 MB/s |   896 MB/s | 24
-| Seattle | Europa Zachodnia      |  7,834 km | 153 ms |  10.2 MB/s |   761 MB/s | 23
-| Seattle | Australia Wschodnia   | 12,484 km | 165 ms |   9.4 MB/s |   794 MB/s | 26
-| Seattle | Azja Południowo-Wschodnia   | 12,989 km | 170 ms |   9.2 MB/s |   756 MB/s | 25
-| Seattle | Brazylia Południowa *   | 10,930 km | 189 ms |   8.2 MB/s |   699 MB/s | 22
-| Seattle | Indie Południowe      | 12,918 km | 202 ms |   7.7 MB/s |   634 MB/s | 27
+| Seattle | Zachodnie stany USA 2        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits na sekundę |
+| Seattle | Zachodnie stany USA          |  1,094 km |  18 ms |  82.3 MB/s |  3.70 Gbits na sekundę |
+| Seattle | Środkowe stany USA       |  2,357 km |  40 ms |  38.8 MB/s |  Do 2,55 Gbits/s |
+| Seattle | Środkowo-południowe stany USA |  2,877 km |  51 ms |  30.6 MB/s |  2,49 Gbits na sekundę |
+| Seattle | Środkowo-północne stany USA |  2,792 km |  55 ms |  27.7 MB/s |  2.19 Gbits na sekundę |
+| Seattle | Wschodnie stany USA 2        |  3,769 km |  73 ms |  21.3 MB/s |  1.79 Gbits na sekundę |
+| Seattle | Wschodnie stany USA          |  3,699 km |  74 ms |  21.1 MB/s |  1.78 Gbits na sekundę |
+| Seattle | Japonia Wschodnia       |  7,705 km | 106 ms |  14.6 MB/s |  1.22 Gbits na sekundę |
+| Seattle | Południowe Zjednoczone Królestwo         |  7,708 km | 146 ms |  10.6 MB/s |   896 MB/s |
+| Seattle | Europa Zachodnia      |  7,834 km | 153 ms |  10.2 MB/s |   761 MB/s |
+| Seattle | Australia Wschodnia   | 12,484 km | 165 ms |   9.4 MB/s |   794 MB/s |
+| Seattle | Azja Południowo-Wschodnia   | 12,989 km | 170 ms |   9.2 MB/s |   756 MB/s |
+| Seattle | Brazylia Południowa *   | 10,930 km | 189 ms |   8.2 MB/s |   699 MB/s |
+| Seattle | Indie Południowe      | 12,918 km | 202 ms |   7.7 MB/s |   634 MB/s |
 
 \* Czas oczekiwania na Brazylii jest dobrym przykładem, gdy liniową odległość znacznie różni się od fiber Uruchom odległości. Czy mogę oczekiwać byłoby w klubie 160 ms opóźnienie, ale jest faktycznie 189 ms. Ta różnica względem Moje oczekiwania może wskazywać na problem z siecią gdzieś, ale najprawdopodobniej czy fiber uruchamianych nie przechodzi do Brazylii prostym i dodatkowe km 1000 lub to podróż do Seattle uzyskiwanie Brazylii.
 
@@ -213,14 +213,3 @@ Konfiguracja testu:
 [Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: https://aka.ms/AzCT
-
-
-
-
-
-
-
-
-
-
-

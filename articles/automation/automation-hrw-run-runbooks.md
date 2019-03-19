@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858149"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -307,12 +307,8 @@ Podpisany element runbook będzie mieć taką nazwę `<runbook name>.asc`.
 
 Podpisany element runbook można teraz przekazana do usługi Azure Automation i mogą być wykonywane, takich jak zwykły element runbook.
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
-
-Jeśli Twoje elementy runbook nie są pomyślne zakończenie działania, zapoznaj się z przewodnik rozwiązywania problemów na [błędy wykonania elementu runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat różnych metod, które mogą służyć do uruchamiania elementu runbook, zobacz [uruchamianie elementu Runbook w usłudze Azure Automation](automation-starting-a-runbook.md).
 * Aby poznać różne sposoby pracy z elementami runbook programu PowerShell w usłudze Azure Automation za pomocą Edytor tekstów, zobacz [edytowanie elementu Runbook w usłudze Azure Automation](automation-edit-textual-runbook.md)
-
+* Jeśli Twoje elementy runbook nie są pomyślne zakończenie działania, zapoznaj się z przewodnik rozwiązywania problemów na [błędy wykonania elementu runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).

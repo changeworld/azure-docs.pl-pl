@@ -1,63 +1,94 @@
 ---
-title: Tworzenie indeksu w kodzie przy użyciu interfejsu API REST — usługa Azure Search
+title: Tworzenie indeksu w kodzie przy użyciu programu PowerShell i interfejsu API REST — usługa Azure Search
 description: Tworzenie indeksu wyszukiwania pełnotekstowego w kodzie za pomocą żądań HTTP i interfejsu API REST usługi Azure Search.
-ms.date: 03/01/2019
-author: mgottein
+ms.date: 03/15/2019
+author: heidisteen
 manager: cgronlun
-ms.author: magottei
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 98749e0900920d0d3541c78c79598123e4f987df
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6e3b1e3d501355994cd81c5eb9d712a684474524
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313973"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136194"
 ---
-# <a name="create-an-azure-search-index-using-the-rest-api"></a>Tworzenie indeksu usługi Azure Search przy użyciu interfejsu API REST
+# <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST
 > [!div class="op_single_selector"]
->
-> * [Omówienie](search-what-is-an-index.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [C#](search-create-index-dotnet.md)
+> * [Postman (interfejs API REST)](search-fiddler.md)
 > * [Portal](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
->
->
+> 
 
-Ten artykuł przeprowadzi Cię przez proces tworzenia [indeksu](https://docs.microsoft.com/rest/api/searchservice/Create-Index) usługi Azure Search przy użyciu interfejsu API REST usługi Azure Search.
+Ten artykuł przeprowadzi Cię przez proces tworzenia, ładowanie i wykonywanie zapytań usługi Azure Search [indeksu](search-what-is-an-index.md) przy użyciu programu PowerShell i [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Definicja indeksu i zawartości znajduje się w treści żądania jako poprawnie sformułowana zawartość JSON.
 
-Przed rozpoczęciem pracy z przewodnikiem oraz przed utworzeniem indeksu powinna zostać [utworzona usługa Azure Search](search-create-service-portal.md).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby utworzyć indeks usługi Azure Search przy użyciu interfejsu API REST, należy wysłać pojedyncze żądanie HTTP POST do punktu końcowego adresu URL usługi Azure Search. Definicja indeksu będzie znajdować się w treści żądania jako poprawnie sformułowana zawartość JSON.
+[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start. Inne wymagania wstępne obejmują następujące elementy.
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>Identyfikowanie klucza api-key administratora usługi Azure Search
-Po aprowizowaniu usługi Azure Search możesz wysyłać żądania HTTP do punktu końcowego adresu URL usługi za pomocą interfejsu API REST. *Wszystkie* żądania interfejsu API muszą zawierać klucz api-key, który został wygenerowany dla aprowizowanej usługi Search. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
+[Program PowerShell 5.1 lub nowszej](https://github.com/PowerShell/PowerShell)przy użyciu [Invoke RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) czynności sekwencyjne i interaktywne.
 
-1. Aby znaleźć klucze api-key dla usługi, musisz zalogować się w witrynie [Azure Portal](https://portal.azure.com/)
-2. Przejdź do bloku usługi Azure Search
-3. Kliknij ikonę „Klucze”
+Adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-Usługa będzie dysponować *kluczami administratora* i *kluczami zapytań*.
+  1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://my-service-name.search.windows.net`.
 
-* Za pomocą podstawowego i pomocniczego *klucza administratora* przyznawane są pełne prawa do wszystkich operacji, łącznie z możliwością zarządzania usługą oraz tworzenia i usuwania indeksów, indeksatorów i źródeł danych. Dostępne są dwa klucze, dzięki czemu możesz nadal używać klucza pomocniczego, jeśli zdecydujesz się na ponowne wygenerowanie klucza podstawowego, i na odwrót.
-* *Klucze zapytań* umożliwiają dostęp tylko do odczytu do indeksów oraz dokumentów i są zazwyczaj dystrybuowane do aplikacji klienckich, które wysyłają żądania wyszukiwania.
+  2. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-Podczas tworzenia indeksu można użyć zarówno podstawowego, jak i pomocniczego klucza administratora.
+  ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
-## <a name="define-your-azure-search-index-using-well-formed-json"></a>Definiowanie indeksu usługi Azure Search przy użyciu poprawnie sformułowanej zawartości JSON
-Pojedyncze żądanie HTTP POST do usługi spowoduje utworzenie indeksu. Treść żądania HTTP POST będzie zawierać pojedynczy obiekt JSON, który definiuje indeks usługi Azure Search.
+  Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
-1. Pierwszą właściwością obiektu JSON jest nazwa Twojego indeksu.
-2. Drugą właściwością obiektu JSON jest tablica JSON o nazwie `fields`, która zawiera oddzielny obiekt JSON dla każdego pola w indeksie. Każdy z tych obiektów JSON zawiera wiele par nazwa/wartość dla każdego z atrybutów pola, w tym „name”, „type” itd.
+## <a name="connect-to-azure-search"></a>Łączenie z usługą Azure Search
 
-Podczas projektowania indeksu należy pamiętać o środowisku wyszukiwania użytkownika oraz o potrzebach biznesowych, ponieważ do każdego pola należy przypisać [odpowiednie atrybuty](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Te atrybuty kontrolują, które funkcje wyszukiwania (filtrowanie, tworzenie aspektów, sortowanie, wyszukiwanie pełnotekstowe itp.) dotyczą określonych pól. Dla każdego atrybutu, który nie zostanie określony, odpowiednia funkcja wyszukiwania zostanie domyślnie włączona.
+W programie PowerShell utworzyć **$headers** obiekt ma być przechowywany, typu zawartości i klucz interfejsu API. Musisz ustawić tego pliku nagłówkowego raz na czas trwania sesji, ale doda go do każdego żądania. 
 
-W naszym przykładzie indeks ma nazwę „hotels”, a pola zostały zdefiniowane w następujący sposób:
+```powershell
+$headers = @{
+   'api-key' = '<your-admin-api-key>'
+   'Content-Type' = 'application/json' 
+   'Accept' = 'application/json' }
+```
 
-```JSON
+Tworzenie **$url** obiekt, który określa usługę indeksuje kolekcji. `mydemo` Nazwa usługi jest przeznaczony jako symbol zastępczy. Zastąp go za pomocą usługi prawidłowe wyszukiwania w bieżącej subskrypcji, w tym przykładzie.
+
+```powershell
+$url = "https://mydemo.search.windows.net/indexes?api-version=2017-11-11"
+```
+
+Uruchom **Invoke RestMethod** Wyślij żądanie Pobierz do usługi i sprawdzić połączenie. Dodaj **ConvertTo Json** tak, aby wyświetlić odpowiedzi wysłana odpowiedź od usługi.
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+```
+
+Jeśli usługa jest pusta i nie zawiera indeksów, wyniki są podobne do poniższego przykładu. W przeciwnym razie zostanie wyświetlona reprezentacja JSON w definicji indeksu.
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes",
+    "value":  [
+
+              ]
+}
+```
+
+## <a name="1---create-an-index"></a>1. Tworzenie indeksu
+
+Jeśli używasz portalu indeksu musi istnieć w usłudze przed załadowaniem danych. Ten krok definiuje indeks i wypycha go do usługi. [Create Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) jest używany w tym kroku.
+
+Wymagane elementy indeksu obejmują nazwy i kolekcji pól. Kolekcja pól definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają, jak jest używana (na przykład, czy jest pełnotekstowe wyszukiwanie, filtrowanie lub pobieranie w wynikach wyszukiwania). W ramach indeksu, jednego pola typu `Edm.String` musi zostać wyznaczona jako *klucz* dokumentu tożsamości.
+
+Ten indeks o nazwie "hotels" i ma definicje pól, pokazane poniżej. Określa definicję indeksu [analizatory języka](index-add-language-analyzers.md) dla `description_fr` pola, ponieważ jest ono przeznaczone do przechowywania tekstu w języku francuskim, które dodamy w przykładzie nowsze.
+
+Wklej w tym przykładzie w programie PowerShell, aby utworzyć **$body** obiektu zawierającego schemat indeksu.
+
+```powershell
+$body = @"
 {
     "name": "hotels",  
     "fields": [
@@ -75,32 +106,275 @@ W naszym przykładzie indeks ma nazwę „hotels”, a pola zostały zdefiniowan
         {"name": "location", "type": "Edm.GeographyPoint"}
     ]
 }
+"@
 ```
 
-Dla każdego pola starannie wybraliśmy atrybuty indeksu, kierując się tym, jak naszym zdaniem będą używane w aplikacji. Na przykład `hotelId` jest kluczem unikatowym, który prawdopodobnie nie będzie znany osobom szukającym hoteli, dlatego wyłączyliśmy wyszukiwanie pełnotekstowe dla tego pola przez ustawienie właściwości `searchable` na wartość `false`, co pozwala na zaoszczędzenie miejsca w indeksie.
+Ustaw identyfikator URI kolekcji indeksów na usługę i *hotele* indeksu.
 
-Zauważ, że dokładnie jedno pole typu `Edm.String` w Twoim indeksie musi być wyznaczone jako pole klucza „key”.
+```powershell
+$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11"
+```
 
-W powyższej definicji indeksu użyto analizatora języków dla pola `description_fr`, ponieważ jest ono przeznaczone do przechowywania tekstu w języku francuskim. Aby uzyskać więcej informacji o analizatorach języków, zobacz [temat Language support (Obsługa języków)](https://docs.microsoft.com/rest/api/searchservice/Language-support) oraz odpowiadający mu [wpis na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/).
+Uruchom polecenie z **$url**, **$headers**, i **$body** do utworzenia indeksu w usłudze. 
 
-## <a name="issue-the-http-request"></a>Wysyłanie żądania HTTP
-1. Korzystając z definicji indeksu jako treści żądania, wyślij żądanie HTTP POST do punktu końcowego adresu URL usługi Azure Search. Upewnij się, że w adresie URL jako nazwy hosta użyto nazwy usługi oraz że wstawiono właściwą wartość `api-version` jako parametr ciągu zapytania (w chwili opublikowania tego dokumentu `2017-11-11` jest bieżącą wersją interfejsu API).
-2. W nagłówkach żądania określ wartość `application/json` dla właściwości `Content-Type`. Należy również podać klucz administratora usługi, który został zidentyfikowany w kroku I, w nagłówku `api-key`.
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
+```
+Wyniki powinny wyglądać podobnie do poniższego (obcięty do pierwsze dwa pola dla zwięzłości):
 
-Aby wysłać poniższe żądanie, konieczne jest podanie własnej nazwy usługi oraz klucza interfejsu API: 
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes/$entity",
+    "@odata.etag":  "\"0x8D6A99E2DED96B0\"",
+    "name":  "hotels",
+    "defaultScoringProfile":  null,
+    "fields":  [
+                   {
+                       "name":  "hotelId",
+                       "type":  "Edm.String",
+                       "searchable":  false,
+                       "filterable":  true,
+                       "retrievable":  true,
+                       "sortable":  false,
+                       "facetable":  false,
+                       "key":  true,
+                       "indexAnalyzer":  null,
+                       "searchAnalyzer":  null,
+                       "analyzer":  null,
+                       "synonymMaps":  ""
+                   },
+                   {
+                       "name":  "baseRate",
+                       "type":  "Edm.Double",
+                       "searchable":  false,
+                       "filterable":  true,
+                       "retrievable":  true,
+                       "sortable":  true,
+                       "facetable":  true,
+                       "key":  false,
+                       "indexAnalyzer":  null,
+                       "searchAnalyzer":  null,
+                       "analyzer":  null,
+                       "synonymMaps":  ""
+                   },
+. . .
+```
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
-    Content-Type: application/json
-    api-key: [api-key]
+> [!Tip]
+> W celu weryfikacji, można również sprawdzać listy indeksów w portalu, lub uruchom ponownie polecenie używany do sprawdzenia połączenia z usługą, aby wyświetlić *hotele* indeksu na liście kolekcji indeksów.
 
+## <a name="2---load-documents"></a>2 - ładowanie dokumentów
 
-Jeśli żądanie zakończy się powodzeniem powinien zostać wyświetlony kod stanu 201 (Utworzono). Aby uzyskać więcej informacji na temat tworzenia indeksu za pomocą interfejsu API REST, odwiedź [stronę dokumentacji interfejsu API dostępną tutaj](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Aby uzyskać więcej informacji o innych kodach stanów HTTP, które mogą być zwracane w przypadku niepowodzenia, zobacz [HTTP status codes (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes) (Usługa Azure Search — kody stanów HTTP).
+Aby wypchnąć dokumenty, należy użyć żądania HTTP POST do punktu końcowego adresu URL Twojego indeksu. Interfejs API REST dla tego zadania jest [Add, Update lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-Gdy ukończysz pracę z indeksem i zechcesz go usunąć, po prostu wyślij żądanie HTTP DELETE. Na przykład indeks „hotele” możesz usunąć w następujący sposób:
+Wklej w tym przykładzie w programie PowerShell, aby utworzyć **$body** obiektu zawierającego dokumenty przeznaczone do przekazania. 
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
-    api-key: [api-key]
+To żądanie zawiera dwa pełne i jeden rekord częściowe. Częściowe rekordu pokazuje przekazać niekompletne dokumentów. `@search.action` Parametr określa, jak indeksowanie jest wykonywane. Prawidłowe wartości to przekazywanie, scalanie, mergeOrUpload i delete. Zachowanie mergeOrUpload albo tworzy nowy dokument dla hotelId = 3, lub aktualizuje zawartość, jeśli już istnieje.
 
+```powershell
+$body = @"
+{
+    "value": [
+        {
+            "@search.action": "upload",
+            "hotelId": "1",
+            "baseRate": 199.0,
+            "description": "Best hotel in town",
+            "hotelName": "Fancy Stay",
+            "category": "Luxury",
+            "tags": ["pool", "view", "wifi", "concierge"],
+            "parkingIncluded": false,
+            "smokingAllowed": false,
+            "lastRenovationDate": "2010-06-27T00:00:00Z",
+            "rating": 5,
+            "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+        },
+        {
+            "@search.action": "upload",
+            "hotelId": "2",
+            "baseRate": 79.99,
+            "description": "Cheapest hotel in town",
+            "hotelName": "Roach Motel",
+            "category": "Budget",
+            "tags": ["motel", "budget"],
+            "parkingIncluded": true,
+            "smokingAllowed": true,
+            "lastRenovationDate": "1982-04-28T00:00:00Z",
+            "rating": 1,
+            "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+        },
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "3",
+            "baseRate": 129.99,
+            "description": "Close to town hall and the river"
+        }
+    ]
+}
+"@
+```
+
+Ustaw punkt końcowy *hotele* kolekcji docs i obejmują operacja indeksu (indeksy/hotels/docs/index).
+
+```powershell
+$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11"
+```
+
+Uruchom polecenie z **$url**, **$headers**, i **$body** ładowanie dokumentów do indeksu hotels.
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
+```
+Wyniki powinny wyglądać podobnie do poniższego przykładu. Wyświetlony kod stanu 201. Aby uzyskać opis wszystkich kodów stanu, zobacz [kodów stanu HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels\u0027)/$metadata#Collection(Microsoft.Azure.Search.V2017_11_11.IndexResult)",
+    "value":  [
+                  {
+                      "key":  "1",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  },
+                  {
+                      "key":  "2",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  },
+                  {
+                      "key":  "3",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  }
+              ]
+}
+```
+
+## <a name="3---search-an-index"></a>3 - przeszukiwanie indeksu
+
+W tym kroku przedstawiono sposób tworzenia zapytań względem indeksu przy użyciu [interfejsu API wyszukiwania w dokumentach](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+
+Ustaw punkt końcowy *hotele* kolekcji docs i Dodaj **wyszukiwania** parametru, aby dołączyć ciągi zapytań. Ten ciąg jest puste wyszukiwanie i zwraca unranked wykaz wszystkich dokumentów.
+
+```powershell
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*'
+```
+
+Uruchom polecenie, aby wysłać **$url** do usługi.
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+```
+
+Wyniki powinny wyglądać podobnie do następujących danych wyjściowych.
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels\u0027)/$metadata#docs(*)",
+    "value":  [
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "1",
+                      "baseRate":  199.0,
+                      "description":  "Best hotel in town",
+                      "description_fr":  null,
+                      "hotelName":  "Fancy Stay",
+                      "category":  "Luxury",
+                      "tags":  "pool view wifi concierge",
+                      "parkingIncluded":  false,
+                      "smokingAllowed":  false,
+                      "lastRenovationDate":  "2010-06-27T00:00:00Z",
+                      "rating":  5,
+                      "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
+                  },
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "2",
+                      "baseRate":  79.99,
+                      "description":  "Cheapest hotel in town",
+                      "description_fr":  null,
+                      "hotelName":  "Roach Motel",
+                      "category":  "Budget",
+                      "tags":  "motel budget",
+                      "parkingIncluded":  true,
+                      "smokingAllowed":  true,
+                      "lastRenovationDate":  "1982-04-28T00:00:00Z",
+                      "rating":  1,
+                      "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
+                  },
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "3",
+                      "baseRate":  129.99,
+                      "description":  "Close to town hall and the river",
+                      "description_fr":  null,
+                      "hotelName":  null,
+                      "category":  null,
+                      "tags":  "",
+                      "parkingIncluded":  null,
+                      "smokingAllowed":  null,
+                      "lastRenovationDate":  null,
+                      "rating":  null,
+                      "location":  null
+                  }
+              ]
+}
+```
+
+Wypróbuj kilka innych przykładów zapytanie, aby uzyskać pewne pojęcie składni. Można zrobić w przypadku wyszukiwania na ciąg zapytania verbatim $filter, ograniczyć zestaw wyników, zakres wyszukiwania do określonych pól i nie tylko.
+
+```powershell
+# Query example 1
+# Search the entire index for the term 'budget'
+# Return only the `hotelName` field, "Roach hotel"
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=budget&$select=hotelName'
+
+# Query example 2 
+# Apply a filter to the index to find hotels cheaper than $150 per night
+# Returns the `hotelId` and `description`. Two documents match.
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$filter=baseRate lt 150&$select=hotelId,description'
+
+# Query example 3
+# Search the entire index, order by a specific field (`lastRenovationDate`) in descending order
+# Take the top two results, and show only `hotelName` and `lastRenovationDate`
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
+```
+## <a name="clean-up"></a>Czyszczenie 
+
+Jeśli nie są już potrzebne, należy usunąć indeks. Usługi w warstwie bezpłatna jest ograniczona do trzech indeksów. Możesz chcieć usunąć wszystkie indeksy, które nie są aktywnie używane.
+
+```powershell
+# Set the URI to the hotel index
+$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11'
+
+# Delete the index
+Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po utworzeniu indeksu usługi Azure Search można [przekazać zawartość do indeksu](search-what-is-data-import.md), aby rozpocząć wyszukiwanie danych.
+
+Spróbuj dodać francuska opisy do indeksu. Poniższy przykład zawiera francuskie ciągi i pokazuje wyszukiwania dodatkowe akcje. Użyj mergeOrUpload, aby utworzyć lub dodać do istniejących pól. Następujące ciągi muszą być zakodowane w formacie UTF-8.
+
+```json
+{
+    "value": [
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "1",
+            "description_fr": "Meilleur hôtel en ville"
+        },
+        {
+            "@search.action": "merge",
+            "hotelId": "2",
+            "description_fr": "Hôtel le moins cher en ville",
+        },
+        {
+            "@search.action": "delete",
+            "hotelId": "6"
+        }
+    ]
+}
+```

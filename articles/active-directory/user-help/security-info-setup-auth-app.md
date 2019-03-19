@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 336b30a8e8687b3a2bdd05a17e558f44905f135e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102387"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Ustawić informacje o zabezpieczeniach (wersja zapoznawcza), aby użyć aplikacji authenticator
 Możesz wykonać następujące kroki, aby dodać weryfikację two-Factor Authentication i metod resetowania hasła. Po skonfigurowaniu to po raz pierwszy, można powrócić do **zabezpieczające** strony Dodawanie, aktualizowanie lub usuwanie informacji zabezpieczających.
@@ -52,10 +52,10 @@ W zależności od ustawień organizacji można skorzystać z aplikacji uwierzyte
 
     ![Rozpocznij od pobierania strony aplikacji](media/security-info/securityinfo-myprofile-getauthapp.png)
 
-    >[!Note]
-    >Jeśli chcesz użyć aplikacji uwierzytelniającej innej niż aplikacja Microsoft Authenticator, wybierz link **Chcę użyć innej aplikacji uwierzytelniania**.
-    
-    >Jeśli organizacja umożliwia wybranie innej metody niż aplikacja uwierzytelniająca, możesz wybrać **link Chcę skonfigurować inną metodę**.
+   > [!Note]
+   > Jeśli chcesz użyć aplikacji uwierzytelniającej innej niż aplikacja Microsoft Authenticator, wybierz link **Chcę użyć innej aplikacji uwierzytelniania**.
+   > 
+   > Jeśli organizacja umożliwia wybranie innej metody niż aplikacja uwierzytelniająca, możesz wybrać **link Chcę skonfigurować inną metodę**.
 
 5. Pozostań na stronie **Konfigurowanie konta** podczas konfigurowania aplikacji Microsoft Authenticator na urządzeniu mobilnym.
 
@@ -81,9 +81,9 @@ W zależności od ustawień organizacji można skorzystać z aplikacji uwierzyte
 
 8. Zatwierdź powiadomienie w aplikacji Microsoft Authenticator, a następnie wybierz pozycję **Dalej**.
 
-    ![Powiadomienie o powodzeniu łączenia aplikacji z kontem](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![Powiadomienie o powodzeniu łączenia aplikacji z kontem](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-    Informacje zabezpieczające zostały zaktualizowane, tak aby aplikacja Microsoft Authenticator była domyślnie używana do weryfikowania tożsamości podczas korzystania z weryfikacji dwuetapowej lub resetowania hasła.
+     Informacje zabezpieczające zostały zaktualizowane, tak aby aplikacja Microsoft Authenticator była domyślnie używana do weryfikowania tożsamości podczas korzystania z weryfikacji dwuetapowej lub resetowania hasła.
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Usuwanie aplikacji Authenticator z metody informacje zabezpieczeń
 Jeśli nie chcesz już użyć aplikacji Authenticator jako metoda informacje zabezpieczeń, można usunąć go z **zabezpieczające** strony. Działa to w przypadku wszystkich aplikacji wystawcy uwierzytelnienia, a nie tylko aplikacji Microsoft Authenticator. Po usunięciu aplikacji, musisz przejść do aplikacji authenticator na swoim urządzeniu przenośnym, a następnie usunąć konta.

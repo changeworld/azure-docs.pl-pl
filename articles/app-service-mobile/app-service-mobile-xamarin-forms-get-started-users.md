@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1bbd481218128c482769cd6a28910e135c1ce16d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001032"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -132,7 +132,7 @@ W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w proje
         public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
 5. Aktualizacja **MainActivity** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metody, która jest wymagana przez **IAuthenticate** interfejsu, w następujący sposób:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()
@@ -192,7 +192,7 @@ W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w proje
 
 **Aplikacja uległa awarii, za pomocą `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-W niektórych przypadkach powoduje konflikt w pakietach pomocy technicznej wyświetlany jako tylko ostrzeżeniem w Visual studio, ale awarii aplikacji za pomocą tego wyjątku w czasie wykonywania. W takim przypadku należy się upewnić, że wszystkie pakiety obsługi, określane w projekcie mają tę samą wersję. [Pakietu NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma `Xamarin.Android.Support.CustomTabs` zależność dla platformy systemu Android, więc jeśli projekt używa nowszej obsługi pakietów można konieczne zainstalowanie tego pakietu przy użyciu wymaganej wersji bezpośrednio w celu uniknięcia konfliktów.
+W niektórych przypadkach powoduje konflikt w pakietach pomocy technicznej wyświetlany jako tylko ostrzeżeniem w Visual studio, ale awarii aplikacji za pomocą tego wyjątku w czasie wykonywania. W takim przypadku należy się upewnić, że wszystkie pakiety obsługi, określane w projekcie mają tę samą wersję. [Pakiet NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów dla pomocy technicznej, musisz bezpośrednio zainstalować ten pakiet w wymaganej wersji w celu uniknięcia konfliktów.
 
 ## <a name="add-authentication-to-the-ios-app"></a>Dodawanie uwierzytelniania do aplikacji dla systemu iOS
 W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w projekcie aplikacji dla systemu iOS. Pomiń tę sekcję, jeśli nie są obsługiwane urządzenia z systemem iOS.
@@ -208,7 +208,7 @@ W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w proje
         public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
 5. Aktualizacja **elemencie AppDelegate** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metody, która jest wymagana przez **IAuthenticate** interfejsu, w następujący sposób:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()
@@ -279,7 +279,7 @@ W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w proje
         public sealed partial class MainPage : IAuthenticate
 5. Aktualizacja **MainPage** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metody, która jest wymagana przez **IAuthenticate**interfejsu, w następujący sposób:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()

@@ -9,12 +9,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 29c6dc0f7e71508e7b4ecb4e0f1d5c849df7a68c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904847"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110787"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Użyj kafelka markdown na pulpitach nawigacyjnych platformy Azure, aby pokazać zawartości niestandardowej
 
@@ -24,17 +24,17 @@ Możesz dodać kafelka markdown do pulpitów nawigacyjnych platformy Azure do wy
 
 1. Wybierz **pulpit nawigacyjny** z paska bocznego portalu Azure. Po utworzeniu żadnych niestandardowych pulpitów nawigacyjnych w widoku pulpitu nawigacyjnego, należy z listy rozwijanej wybierz pulpit nawigacyjny, gdzie powinna zostać wyświetlona na kafelku niestandardowymi elementami języka markdown. Wybierz ikonę edycji, aby otworzyć **Galeria kafelków**.
 
-  ![Zrzut ekranu przedstawiający pulpit nawigacyjny Edytuj widok](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Zrzut ekranu przedstawiający pulpit nawigacyjny Edytuj widok](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
 2. W **Galeria kafelków**, Znajdź Kafelek o nazwie **Markdown** i kliknij przycisk **Dodaj**. Kafelek zostanie dodany do pulpitu nawigacyjnego i **edytowania kodu Markdown** zostanie otwarte okienko.
 
 1. Edytuj **tytuł**, **podtytuł**, i **zawartości** pola, aby dostosować kafelka. W przykładzie poniżej pokazano kafelka markdown został zmodyfikowany do wyświetlania informacji działu pomocy niestandardowej.
 
-  ![Zrzut ekranu przedstawiający widok edycji kafelka markdown](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![Zrzut ekranu przedstawiający widok edycji kafelka markdown](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 
 4. Wybierz **gotowe** odrzucać **edytowania kodu Markdown** okienka. Zawartość będą wyświetlane na kafelku języka znaczników Markdown, które można zmienić, przeciągając uchwyt w prawym dolnym rogu.
 
-  ![Zrzut ekranu przedstawiający niestandardowymi elementami języka markdown kafelka](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Zrzut ekranu przedstawiający niestandardowymi elementami języka markdown kafelka](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
 ## <a name="markdown-content-capabilities-and-limitations"></a>Możliwości zawartości markdown i ograniczenia
 

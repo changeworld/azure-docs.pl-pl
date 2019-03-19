@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2b46638a7e0fa3dc80fa4d2fa23d49b37b8885ec
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0ba5cdd4f92390634d6d2bea8add8309cb1f4d3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193158"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014497"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Indeks zasadach w usłudze Azure Cosmos DB
 
@@ -37,9 +37,6 @@ Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania, które można skonfig
   > Konfigurowanie trybu indeksowania jako Brak ma efektem ubocznym porzucenie wszelkie istniejące indeksy. Tej opcji należy używać czy Twoich wzorców dostępu wymagają Identyfikatora buduje łącze własne tylko.
 
 Poziomy spójności zapytania są obsługiwane podobne do regularnych operacji odczytu. Bazy danych Cosmos Azure zwraca błąd, jeśli zapytanie jest kontenerem, który nie ma żadnego indeksowania w trybie. Można wykonać zapytania jako skanowania za pomocą jawnego **x-ms-bazy danych documentdb — enable skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** zażądać opcja przy użyciu zestawu .NET SDK. Niektóre zapytania funkcji, jak w klauzuli ORDER BY nie są obecnie obsługiwane za pomocą **EnableScanInQuery**, ponieważ są one wymagane w odpowiedni indeks.
-
-> [!NOTE]
-> Usługa Azure Cosmos DB ma innego trybu indeksowania z opóźnieniem. Jednak to jest wyróżniony cofnąć ponieważ wydajność zapytań i koszty mogą być nieprzewidywalne. Zaleca się przy użyciu spójnego trybu indeksowania.
 
 ## <a name="modifying-the-indexing-policy"></a>Modyfikowanie zasad indeksowania
 

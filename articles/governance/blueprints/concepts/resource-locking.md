@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855415"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania w plany usługi Azure resource
 
-Tworzenie spójnego środowiska na dużą skalę jest tylko naprawdę przydatne, jeśli istnieje mechanizm w celu zachowania spójności. W tym artykule opisano, jak blokowania zasobów działa w plany usługi Azure.
+Tworzenie spójnego środowiska na dużą skalę jest tylko naprawdę przydatne, jeśli istnieje mechanizm w celu zachowania spójności. W tym artykule opisano, jak blokowania zasobów działa w plany usługi Azure. Aby zobaczyć przykład blokowania zasobów oraz stosowanie _Odmów przypisania_, zobacz [ochrony nowych zasobów](../tutorials/protect-new-resources.md) samouczka.
 
 ## <a name="locking-modes-and-states"></a>Tryby blokowania i Stany
 
@@ -58,8 +58,9 @@ RBAC [Odmów przypisania](../../../role-based-access-control/deny-assignments.md
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat [cyklu życia strategii](lifecycle.md)
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md)
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+- Postępuj zgodnie z [chronić nowe zasoby](../tutorials/protect-new-resources.md) samouczka.
+- Dowiedz się więcej o [planu cyklu życia](lifecycle.md).
+- Opis sposobu użycia [statycznych i dynamicznych parametrów](parameters.md).
+- Dowiedz się, jak dostosować [planu sekwencjonowania](sequencing-order.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](../troubleshoot/general.md).

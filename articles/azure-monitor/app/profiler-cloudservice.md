@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 32604c06c6a4325f7ae6cb45930de902a1366480
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895485"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil na żywo usług Azure Cloud Services za pomocą usługi Application Insights
 
@@ -33,7 +33,7 @@ Application Insights Profiler jest instalowany z rozszerzenie diagnostyki platfo
 
 1. Dodaj [usługi Application Insights SDK do usługi Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
-  >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego.
+   >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego. Jeśli używasz programu Visual Studio na starszą wersję zestawu SDK aplikacji usługi Insights może wystąpić błąd przekierowanie powiązania w czasie wykonywania. Jest to spowodowane "newVersion" w pliku web.config dla Microsoft.ApplicationInsights powinna być równa "2.7.2.0" po zmiany na starszą wersję zestawu SDK sztucznej Inteligencji, ale nie zostaje zaktualizowana automatycznie.
 
 1. Śledzenie żądań z usługą Application Insights:
 

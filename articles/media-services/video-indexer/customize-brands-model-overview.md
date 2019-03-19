@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 48255614291086fe85666bec407ea62f7a365410
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15f4b8b6d4a27e721dfcaed8b9dd700e87e3a257
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872883"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Dostosowywanie modelu marek w indeksatora wideo
 
@@ -28,7 +28,7 @@ W [Microsoft Build 2017 dnia 2](https://www.videoindexer.ai/media/ed6ede78ad/) p
 
 ![Omówienie marki](./media/content-model-customization/brands-overview.png)
 
-Mówić o korzystaniu z okien w kontekście budowy nie wykrywa słowo "Windows" jako marki i te same pola, firmy Apple, Fox, itp., oparte na zaawansowanych algorytmów uczenia maszynowego, które odróżnić od kontekstu. Wykrywanie na marki działa w przypadku naszej obsługiwanych języków. Kliknij tutaj, aby [pełna Microsoft Build 2017 dnia 2 prezentacja wideo i indeks](http://www.videoindexer.ai/media/ed6ede78ad/).
+Mówić o korzystaniu z okien w kontekście budowy nie wykrywa słowo "Windows" jako marki i te same pola, firmy Apple, Fox, itp., oparte na zaawansowanych algorytmów uczenia maszynowego, które odróżnić od kontekstu. Wykrywanie na marki działa w przypadku naszej obsługiwanych języków. Kliknij tutaj, aby [pełna Microsoft Build 2017 dnia 2 prezentacja wideo i indeks](https://www.videoindexer.ai/media/ed6ede78ad/).
 
 Aby wyświetlić własne marki, zapoznaj się z następnych kroków.
 

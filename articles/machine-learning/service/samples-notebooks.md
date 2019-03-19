@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 12da1b20c5e4e6299445b8ec8ec90eeec6711e2c
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 961983aad0775f9b9d728269e8a57137ff508f02
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805522"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451794"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Korzystanie z notesów Jupyter Notebook w celu eksplorowania usługi Azure Machine Learning
 
@@ -82,7 +82,7 @@ Choć możesz użyć dowolnej z powyższych opcji, możesz również jednocześn
       + Uruchamia notes Jupyter Notebook
       
    >[!NOTE]
-   > Skrypt przyjmuje nazwę środowiska Conda jako parametr opcjonalny. Domyślna nazwa środowiska Conda to `azure_automl`. Dokładna postać polecenia zależy od systemu operacyjnego. Jest to przydatne w przypadku tworzenia nowego środowiska lub uaktualniania do nowej wersji. Na przykład za pomocą polecenia „automl_setup.cmd azure_automl_sandbox” możesz utworzyć nazwę środowiska azure_automl_sandbox. 
+   > Skrypt przyjmuje nazwę środowiska Conda jako parametr opcjonalny. Domyślna nazwa środowiska Conda to `azure_automl`. Dokładna postać polecenia zależy od systemu operacyjnego. Jest to przydatne w przypadku tworzenia nowego środowiska lub uaktualniania do nowej wersji. Na przykład można użyć "automl_setup.cmd azure_automl_sandbox" do tworzenia azure_automl_sandbox nazwę środowiska. 
       
 1. Po zakończeniu skryptu w przeglądarce zostanie wyświetlona strona główna notesu Jupyter Notebook.
 

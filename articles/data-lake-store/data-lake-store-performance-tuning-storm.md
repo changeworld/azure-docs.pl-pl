@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084814"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące systemu Storm w HDInsight i Azure Data Lake Storage Gen1 dostrajania wydajności
 
@@ -82,7 +82,7 @@ Można zmodyfikować następujące ustawienia, aby dostroić spout.
 
 - **Spout maksymalna liczba oczekujących: topology.max.spout.pending**. To ustawienie określa liczbę krotek, które mogą być w locie (nie została jeszcze potwierdzony we wszystkich węzłach w topologii) na wątek spout w dowolnym momencie.
 
- Dobre obliczeń celu jest oszacować rozmiar każdego z krotek. Następnie określ ilość pamięci spout jeden wątek ma. Całkowita pamięć przydzielona do wątku, podzielona przez tę wartość, powinien zapewnić górną granicę dla max spout oczekujące parametru.
+  Dobre obliczeń celu jest oszacować rozmiar każdego z krotek. Następnie określ ilość pamięci spout jeden wątek ma. Całkowita pamięć przydzielona do wątku, podzielona przez tę wartość, powinien zapewnić górną granicę dla max spout oczekujące parametru.
 
 ## <a name="tune-the-bolt"></a>Dostosuj elementy bolt
 Podczas pisania miej Data Lake Storage Gen1, Ustaw zasady synchronizacji rozmiaru (bufor po stronie klienta) do 4 MB. Opróżnianie lub hsync() są następnie wykonywane tylko wtedy, gdy rozmiar buforu jest w tej wartości. Data Lake Storage Gen1 sterownik w ramach procesu roboczego maszyn wirtualnych automatycznie wykonuje tej buforowanie, chyba że jawnie wykonać hsync().
@@ -98,7 +98,7 @@ W Storm spout utrzymuje krotki aż jawnie zostało potwierdzone przez element bo
 Aby uzyskać najlepszą wydajność, Data Lake Storage Gen1, ma element bolt buforu 4 MB danych spójnej kolekcji. Następnie zapisywać do Data Lake Storage Gen1 zakończenia jako jeden zapis 4 MB. Po danych zostały pomyślnie zapisane w magazynie (wywoływania hflush()) elementy bolt mogą przyjęcie danych do spout. To działanie bolt przykład podany w tym miejscu. Ponadto dopuszczalne jest do przechowania większej liczby krotek potwierdzonych i kolekcje, zanim zostanie nawiązane połączenie hflush(). Jednak zwiększa liczbę spójnych kolekcji w locie, że spout potrzebuje do przechowywania i w związku z tym zwiększa ilość pamięci wymaganą przez poszczególne maszyny JVM.
 
 > [!NOTE]
-Aplikacje może być wymagane potwierdzenie krotki częściej (na ilości danych mniejsze niż 4 MB) innych niż-ze względu na wydajność. Jednakże, który może mieć wpływ na przepustowość operacji We/Wy do magazynu zaplecza. Należy dokładnie porównać to kosztem względem wydajności operacji We/Wy bolt.
+> Aplikacje może być wymagane potwierdzenie krotki częściej (na ilości danych mniejsze niż 4 MB) innych niż-ze względu na wydajność. Jednakże, który może mieć wpływ na przepustowość operacji We/Wy do magazynu zaplecza. Należy dokładnie porównać to kosztem względem wydajności operacji We/Wy bolt.
 
 Jeśli szybkość odbierania krotek nie jest duża, dlatego buforu 4 MB zajmuje dużo czasu do wypełnienia, należy rozważyć łagodzenie to:
 * Zmniejszenie liczby elementów bolt, więc istnieją mniejszej liczby buforów do wypełnienia.

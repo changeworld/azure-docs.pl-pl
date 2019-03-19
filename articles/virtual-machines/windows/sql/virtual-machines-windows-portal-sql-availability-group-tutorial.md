@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 9242edb8ea08b858ae6ad092f4d855483e72d0bf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777468"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003455"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Samouczek: Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -415,6 +415,7 @@ Aby skonfigurować moduł równoważenia obciążenia, musisz utworzyć pulę za
 1. Kliknij moduł równoważenia obciążenia, kliknij przycisk **reguły równoważenia obciążenia**i kliknij przycisk **+ Dodaj**.
 
 1. Ustaw odbiornika równoważenia zasady w następujący sposób.
+
    | Ustawienie | Opis | Przykład
    | --- | --- |---
    | **Nazwa** | Tekst | SQLAlwaysOnEndPointListener |
@@ -455,6 +456,7 @@ Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia
 1. Ustaw reguły równoważenia obciążenia. Kliknij przycisk **reguły równoważenia obciążenia**i kliknij przycisk **+ Dodaj**.
 
 1. Ustaw klaster core IP adres reguły równoważenia obciążenia w następujący sposób.
+
    | Ustawienie | Opis | Przykład
    | --- | --- |---
    | **Nazwa** | Tekst | WSFCEndPoint |
@@ -505,15 +507,15 @@ Aby przetestować połączenie:
 
 1. Użyj **sqlcmd** narzędzie, aby przetestować połączenie. Na przykład, poniższy skrypt ustanawia **sqlcmd** połączenie z repliką podstawową, za pośrednictwem odbiornika z uwierzytelnianiem Windows:
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  Jeśli odbiornik używa portu innego niż domyślny portu (1433), określ numer portu w parametrach połączenia. Na przykład następujące polecenie sqlcmd łączy odbiornika na porcie 1435:
+   Jeśli odbiornik używa portu innego niż domyślny portu (1433), określ numer portu w parametrach połączenia. Na przykład następujące polecenie sqlcmd łączy odbiornika na porcie 1435:
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 SQLCMD automatycznie nawiązania połączenia z dowolnego wystąpienia programu SQL Server obsługuje replikę podstawową.
 

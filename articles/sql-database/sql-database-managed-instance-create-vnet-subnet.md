@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 238be49c29b80e308a81ed34e9eba937c60fe018
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d2a9c29733c42cf9753ce48b2a37a83fb8dda30d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769127"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993069"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Tworzenie sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database
 
@@ -43,7 +43,7 @@ Najprostszym sposobem tworzenia i konfigurowania sieci wirtualnej jest użycie s
 
 2. Wybierz **Wdróż na platformie Azure** przycisku:
 
-   <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+   <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
    Ten przycisk otwiera formularz, który służy do konfigurowania środowisko sieciowe do której można wdrożyć wystąpienie zarządzane.
 

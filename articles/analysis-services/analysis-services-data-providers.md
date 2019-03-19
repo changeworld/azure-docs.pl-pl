@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6ab7fa99732c2964e5ccaa2ce4e55f4fbf28ceff
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bc8fae8f1278babd8c4c7402d86700ad78e3cb9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897422"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z usług Azure Analysis Services
 
-Biblioteki klienckie są niezbędne dla aplikacji klienckich i narzędzia do łączenia się z serwerami usług Analysis Services. 
+Biblioteki klienckie są niezbędne dla aplikacji klienckich i narzędzia do łączenia się z serwerami usług Analysis Services. Aplikacje klienckie firmy Microsoft, takich jak Power BI Desktop, Excel, SQL Server Management Studio (SSMS), a SQL Server Data Tools (SSDT) zainstaluj wszystkie trzy biblioteki klienta i aktualizować je wraz z aplikacji regularne aktualizacje. W niektórych przypadkach może być konieczne zainstalowanie nowszej wersji bibliotek klienckich. Niestandardowych aplikacji klienckich również wymagają, że są zainstalowane biblioteki klienckie.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Pobierz najnowsze biblioteki klienta (Instalator Windows)  
 

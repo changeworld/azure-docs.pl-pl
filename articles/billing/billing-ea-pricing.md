@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 88d94492cb6ed3191e146f117a648293bc9e50f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243724"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892476"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Przeglądanie i pobieranie cen platformy Azure w Twojej organizacji
 
-Klienci platformy Azure przy użyciu Enterprise Agreement (EA) lub [umowy klienta Microsoft](#check-your-access-to-a-microsoft-customer-agreement) może wyświetlić i pobrać cen w witrynie Azure portal. Jeśli masz umowy klienta firmy Microsoft, zobacz [widoku i pobierania ceny dla umowy klienta Microsoft](#View-and-download-pricing-for-your-billing-profile).
+Klienci platformy Azure przy użyciu Enterprise Agreement (EA) lub [umowy klienta Microsoft](#check-your-access-to-a-microsoft-customer-agreement) może wyświetlić i pobrać cen w witrynie Azure portal. Jeśli masz umowy klienta firmy Microsoft, zobacz widoku i pobierania ceny dla umowy klienta firmy Microsoft.
 
 ## <a name="view-and-download-ea-pricing"></a>Przeglądanie i pobieranie atrybutów Rozszerzonych ceny
 

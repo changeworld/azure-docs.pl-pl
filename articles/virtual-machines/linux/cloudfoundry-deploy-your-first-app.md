@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 6e2fa77273ef35fae6c3b232cb36fa913faf879d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9a0b12ec9d825fc665bd5beb89e911b80ed3889f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013879"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Wdrażanie pierwszej aplikacji do usługi Cloud Foundry w systemie Microsoft Azure
 
-[Cloud Foundry](http://cloudfoundry.org) to platforma popularnych aplikacji typu open source dostępnych w systemie Microsoft Azure. W tym artykule przedstawiono, jak wdrażać i zarządzać nimi aplikację Cloud Foundry w środowisku platformy Azure.
+[Cloud Foundry](https://cloudfoundry.org) to platforma popularnych aplikacji typu open source dostępnych w systemie Microsoft Azure. W tym artykule przedstawiono, jak wdrażać i zarządzać nimi aplikację Cloud Foundry w środowisku platformy Azure.
 
 ## <a name="create-a-cloud-foundry-environment"></a>Tworzenie środowiska usługi Cloud Foundry
 
@@ -33,7 +33,7 @@ Istnieje kilka opcji umożliwiających tworzenie środowiska usługi Cloud Found
 
 - Użyj [oferty Pivotal Cloud Foundry] [ pcf-azuremarketplace] w witrynie Azure Marketplace, aby utworzyć środowisko standardowe, obejmującej menedżera operacji PCF i Broker usług platformy Azure. Możesz znaleźć [wykonaj instrukcje] [ pcf-azuremarketplace-pivotaldocs] wdrażania w portalu marketplace oferty w rozwiązaniu Pivotal dokumentacji.
 - Utwórz dostosowane środowisko przez [wdrażania ręcznego Pivotal Cloud Foundry][pcf-custom].
-- [Wdrażanie pakietów usługi Cloud Foundry typu open-source bezpośrednio] [ oss-cf-bosh] , konfigurując [BOSH](http://bosh.io) Dyrektor, maszynę Wirtualną, która służy do koordynowania wdrożenia środowiska Cloud Foundry.
+- [Wdrażanie pakietów usługi Cloud Foundry typu open-source bezpośrednio] [ oss-cf-bosh] , konfigurując [BOSH](https://bosh.io) Dyrektor, maszynę Wirtualną, która służy do koordynowania wdrożenia środowiska Cloud Foundry.
 
 > [!IMPORTANT] 
 > Jeśli wdrażasz PCF z witryny Azure Marketplace, zanotuj SYSTEMDOMAINURL i poświadczenia administratora wymagane do uzyskania dostępu Pivotal Menedżera aplikacji, które są opisane w przewodniku wdrażania w portalu marketplace. Są one niezbędne do ukończenia tego samouczka. W przypadku wdrożeń w portalu marketplace SYSTEMDOMAINURL ma postać https://system. *adres IP*. cf.pcfazure.com.
@@ -77,7 +77,7 @@ Teraz po wdrożeniu aplikacji go jest automatycznie tworzony w nowej organizacji
 
 ## <a name="deploy-an-application"></a>Wdrażanie aplikacji
 
-Użyjmy o nazwie Hello Spring Cloud, która jest napisany w języku Java na podstawie przykładowej aplikacji usługi Cloud Foundry [Spring Framework](http://spring.io) i [Spring Boot](http://projects.spring.io/spring-boot/).
+Użyjmy o nazwie Hello Spring Cloud, która jest napisany w języku Java na podstawie przykładowej aplikacji usługi Cloud Foundry [Spring Framework](https://spring.io) i [Spring Boot](https://projects.spring.io/spring-boot/).
 
 ### <a name="clone-the-hello-spring-cloud-repository"></a>Sklonuj repozytorium Hello Spring Cloud
 
@@ -90,7 +90,7 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>Kompilowanie aplikacji
 
-Tworzenie aplikacji za pomocą [narzędzia Apache Maven](http://maven.apache.org).
+Tworzenie aplikacji za pomocą [narzędzia Apache Maven](https://maven.apache.org).
 
 ```bash
 mvn clean package
@@ -158,7 +158,7 @@ Uruchamianie `cf app` polecenia aplikacji pokazuje, że Cloud Foundry tworzy inn
 [cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
-[spring-framework]: http://spring.io
+[spring-framework]: https://spring.io
 [cf-push-docs]: https://docs.cloudfoundry.org/concepts/how-applications-are-staged.html
 [cloudfoundry-docs]: https://docs.cloudfoundry.org
 [vsts-plugin]: https://github.com/Microsoft/vsts-cloudfoundry

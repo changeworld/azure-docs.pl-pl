@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9e192c736235fcf8b8b5374787ad94aaf87427bf
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901852"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -39,7 +39,7 @@ Potrzebujesz subskrypcji platformy Azure, magazyn usługi Recovery Services, kon
 Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz, musisz mieć uprawnienia do utworzenia maszyny Wirtualnej platformy Azure w grupie zasobów i sieci wirtualnej można określić podczas konfigurowania Site Recovery i uprawnienia do zapisu do wybranego konta magazynu lub zarządzanych dysków na podstawie konfiguracji. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Czy można używać licencji serwera systemu operacyjnego gościa, na platformie Azure?
-Tak, Microsoft Software Assurance klienci mogą używać [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) oszczędności na koszty licencjonowania **maszyn z systemem Windows Server** , migracji na platformę Azure lub korzystanie z systemu Azure w celu odzyskiwania po awarii.
+Tak, Microsoft Software Assurance klienci mogą używać [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) oszczędności na koszty licencjonowania **maszyn z systemem Windows Server** , migracji na platformę Azure lub korzystanie z systemu Azure w celu odzyskiwania po awarii.
 
 ## <a name="pricing"></a>Cennik
 
@@ -50,6 +50,27 @@ Zob. często zadawanych Pytaniach dotyczących licencji [tutaj](https://aka.ms/a
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Jak obliczyć przybliżoną opłaty za podczas stosowania Site Recovery
 
 Możesz użyć [Kalkulator cen](https://aka.ms/asr_pricing_calculator) do szacowania kosztów podczas korzystania z usługi Azure Site Recovery. Aby uzyskać szczegółową prognozę kosztów, uruchom narzędzie planista wdrażania (https://aka.ms/siterecovery_deployment_planner) i analizowanie [raport szacowania kosztów](https://aka.ms/asr_DP_costreport).
+
+### <a name="is-there-any-difference-in-cost-when-i-replicate-directly-to-managed-disk"></a>Czy istnieją różnice w koszcie podczas replikacji bezpośrednio do dysków zarządzanych?
+
+Dyski zarządzane są naliczane trochę różnić się od konta magazynu. Zobacz przykład poniżej dysk źródłowy o rozmiarze 100 GiB. Przykład dotyczy różnicowej koszty związane z magazynowaniem. Ten koszt nie obejmuje kosztów dla migawki, Magazyn pamięci podręcznej i transakcji.
+
+* Konto magazynu w warstwie standardowa programu Vs. Standardowy dysk twardy, dysk zarządzany
+
+    - **Dysk magazynu aprowizowanego przez usługę ASR**: S10
+    - **Konto magazynu w warstwie standardowa opłata na używane woluminu**: 5 USD miesięcznie
+    - **Standardowy dysk zarządzany na aprowizowanego woluminu**: $5.89 na miesiąc
+
+* Konto magazynu Premium storage programu Vs. Dysk zarządzany w warstwie Premium SSD 
+    - **Dysk magazynu aprowizowanego przez usługę ASR**: P10
+    - **Konto magazynu Premium storage jest naliczana na aprowizowanego woluminu**: $17.92 na miesiąc
+    - **Rozliczane w systemie aprowizowanego woluminu dysku zarządzanego w warstwie Premium**: $17.92 na miesiąc
+
+Dowiedz się więcej o [szczegółowe informacje o cenach z dyskami zarządzanymi](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+### <a name="do-i-incur-additional-charges-for-cache-storage-account-with-managed-disks"></a>Są naliczane dodatkowe opłaty dla konta magazynu pamięci podręcznej w przypadku dysków zarządzanych?
+
+Nie, nie zostaną naliczone dodatkowe opłaty za pamięci podręcznej. Pamięć podręczna jest zawsze częścią oprogramowania VMware do architektury platformy Azure. W przypadku replikacji konta magazynu w warstwie standardowa to pamięć podręczna jest częścią tego samego konta magazynu docelowego.
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jestem użytkownikiem usługi Azure Site Recovery od ponad miesiąca. Czy nadal uzyskam pierwsze 31 bezpłatnych dni dla każdego chronionego wystąpienia?
 
@@ -125,6 +146,14 @@ Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na 
 
 Należy wyłączyć i włączyć replikację uaktualnić lub obniżyć typ konta magazynu.
 
+### <a name="can-i-replicate-to-storage-accounts-for-new-machine"></a>Można replikować do kont magazynu do nowego komputera?
+
+Nie, począwszy od marca "19, można replikować do usługi managed disks na platformie Azure z poziomu portalu. Replikacja do kont magazynu do nowego komputera jest dostępna tylko za pośrednictwem interfejsu API REST i Powershell. Replikacja do konta magazynu, należy użyć interfejsu API w wersji 2016-08-10 lub 2018-01-10.
+
+### <a name="what-are-the-benefits-in-replicating-to-managed-disks"></a>Jakie są korzyści w replikacji do usługi managed disks?
+
+Przeczytaj artykuł na temat [usługi Azure Site Recovery upraszcza odzyskiwanie po awarii z dyskami zarządzanymi](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/).
+
 ### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Jak można zmienić typ dysku zarządzanego, po włączeniu ochrony maszyny?
 
 Tak, można łatwo zmienić typ dysku zarządzanego. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Jednak jeśli zmienisz typ dysku zarządzanego, upewnij się, poczekaj punktów odzyskiwania świeże wygenerowany, jeśli potrzebujesz do testowania trybu failover lub pracy awaryjnej Opublikuj to działanie.
@@ -148,10 +177,10 @@ Replikacja jest ciągłe podczas replikowania maszyn wirtualnych VMware na platf
 Tak, można zachować adres IP w trybie failover. Upewnij się, wspomnieć o docelowy adres IP w bloku "Obliczenia i sieć" przed włączeniem trybu failover. Upewnij się również, aby zamknąć maszyny w momencie przejścia w tryb failover w celu uniknięcia konfliktów adresów IP w momencie powrotu po awarii.
 
 ### <a name="can-i-extend-replication"></a>Czy mogę rozszerzyć replikację
-Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Można zrobić początkowej replikacji offline?
-Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Czy można wykluczyć dysków?
 Tak, można wykluczyć dyski z replikacji.
@@ -208,9 +237,11 @@ Ile jest to możliwe maszyna wirtualna Azure, które działają na serwerze konf
 Zaleca się wykonywanie regularnych zaplanowanych kopii zapasowych serwera konfiguracji. Pomyślne powrotu po awarii powrót po awarii maszyny wirtualnej musi istnieć w bazie danych serwera konfiguracji, a serwer konfiguracji musi być uruchomiona w stanie połączonym. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Gdy jestem konfigurowania serwera konfiguracji, można pobrać i ręczne instalowanie programu MySQL?
+
 Tak. Pobierz MySQL i umieść go w **C:\Temp\ASRSetup** folderu. Następnie zainstalować go ręcznie. Podczas konfigurowania serwera konfiguracji maszyny Wirtualnej i zaakceptuj warunki, MySQL będzie wyświetlana jako **zainstalowane** w **Pobierz i zainstaluj**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Można I uniknąć pobierania MySQL, ale pozwól Site Recovery zainstaluj go?
+
 Tak. Pobierz Instalator MySQL i umieść go w **C:\Temp\ASRSetup** folderu.  Po skonfigurowaniu serwera konfiguracji maszyny Wirtualnej, należy zaakceptować warunki, a następnie kliknij **Pobierz i zainstaluj**, portal użyje Instalator dodaje zainstalować oprogramowanie MySQL.
  
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Serwera konfiguracji maszyny Wirtualnej można używać do innych?

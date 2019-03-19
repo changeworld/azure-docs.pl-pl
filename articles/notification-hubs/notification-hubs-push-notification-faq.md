@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 863b380d4f36e24119e64fbd4a59e8cd66c911e1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: da24c437a1dbe8744579cd26ee1348f50c4815ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884748"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -217,22 +217,22 @@ Można także programowo uzyskać dostęp do metryk. Aby uzyskać więcej inform
 > Powiadomienia zakończone powodzeniem po prostu oznacza, że powiadomienia wypychane zostaną dostarczone do zewnętrznego systemu powiadomień platformy (na przykład APNS dla firmy Apple) lub usługi FCM dla usług Google. Jest odpowiedzialny za system powiadomień platformy w celu dostarczania powiadomień na urządzenia docelowe. Zazwyczaj system powiadomień platformy nie ujawnia dostarczanie metryk do podmiotów trzecich.  
 
 [Azure Portal]: https://portal.azure.com
-[Cennik usługi Notification Hubs]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
+[Cennik usługi Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
+[Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Analiza przypadku: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [Analiza przypadku: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [Analiza przypadku: Czasy Seattle]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [Analiza przypadku: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Analiza przypadku: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Usługa Notification Hubs interfejsów API REST]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Samouczki wprowadzenie centra powiadomień]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Samouczek aplikacji dla programu Chrome]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
-[Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
+[Samouczki wprowadzenie centra powiadomień]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Samouczek aplikacji dla programu Chrome]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
+[Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Wskazówki dotyczące rejestracji wewnętrznej bazy danych]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Wskazówki dotyczące rejestracji wewnętrznej bazy danych 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
 [Model zabezpieczeń centra powiadomień]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Samouczek dotyczący Secure wypychania centrów powiadomień]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Rozwiązywanie problemów w usłudze Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Samouczek dotyczący Secure wypychania centrów powiadomień]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
+[Rozwiązywanie problemów w usłudze Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metryki]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Rejestracje eksportu/importu]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

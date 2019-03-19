@@ -1,6 +1,6 @@
 ---
 title: Usługa punkty końcowe sieci wirtualnej — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera informacje na temat sposobu adda elementu Microsoft.EventHub punkt końcowy usługi sieci wirtualnej.
+description: Ten artykuł zawiera informacje na temat dodawania punktu końcowego usługi elementu Microsoft.EventHub z siecią wirtualną.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -9,25 +9,26 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7b5a62f81238d1ae2b627c395613066350b36efe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232607"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887599"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Event Hubs
 
 Integracja usługi Event Hubs za pomocą [punkty końcowe usługi Virtual Network (VNet)] [ vnet-sep] umożliwia bezpieczny dostęp do możliwości obsługi komunikatów z obciążeń, takich jak maszyny wirtualne, które są powiązane wirtualny sieci przy użyciu ścieżki ruchu sieciowego zabezpieczonego na obu końcach.
 
-Po skonfigurowaniu, może być powiązane z co najmniej jeden punkt końcowy usługi podsieci sieci wirtualnej, odpowiednich nazw usługi Event Hubs nie jest już akceptuje ruch z dowolnego miejsca, ale uprawnień podsieci w sieciach wirtualnych. Z perspektywy sieci wirtualnej powiązanie punktu końcowego usługi do przestrzeni nazw usługi Event Hubs służy do konfigurowania izolowanych sieci tunelu z podsieci sieci wirtualnej do obsługi komunikatów usługi.
+Po skonfigurowaniu do powiązany z co najmniej jeden punkt końcowy usługi podsieci sieci wirtualnej odpowiednich nazw usługi Event Hubs nie jest już akceptuje ruch z dowolnego miejsca, ale uprawnień podsieci w sieciach wirtualnych. Z perspektywy sieci wirtualnej powiązanie punktu końcowego usługi do przestrzeni nazw usługi Event Hubs służy do konfigurowania izolowanych sieci tunelu z podsieci sieci wirtualnej do obsługi komunikatów usługi. 
 
-Wynik jest prywatne i izolowany relacji między obciążeniami usług związanych z podsieci i odpowiednich przestrzeni nazw usługi Event Hubs, pomimo adres sieciowy dostrzegalnych obsługi komunikatów usługi punktu końcowego są w zakresie publicznych adresów IP.
+Wynik jest prywatne i izolowany relacji między obciążeniami usług związanych z podsieci i odpowiednich przestrzeni nazw usługi Event Hubs, pomimo adres sieciowy dostrzegalnych obsługi komunikatów usługi punktu końcowego są w zakresie publicznych adresów IP. Jest to wyjątek to zachowanie. Włączanie punktu końcowego usługi, domyślnie, włącza denyall reguły zapory adresów IP skojarzone z siecią wirtualną. Możesz dodać określone adresy IP w zapory adresów IP, aby umożliwić dostęp do publicznego punktu końcowego Centrum zdarzeń. 
+
 
 >[!WARNING]
-> Implementowanie integracji z sieciami wirtualnymi można zapobiec interakcji z usługą Event Hubs innych usług platformy Azure.
+> Implementowanie integracji sieci wirtualnych może uniemożliwić innym usługom platformy Azure interakcję z usługą Event Hubs.
 >
 > Zaufane usługi nie są obsługiwane, gdy sieci wirtualne są implementowane firmy Microsoft.
 >
@@ -48,7 +49,7 @@ Wynik jest prywatne i izolowany relacji między obciążeniami usług związanyc
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez Integracja sieci wirtualnej 
 
-Rozwiązania, które wymagają bezpieczeństwa ścisłej i związane i gdzie podsieci sieci wirtualnej segmentacji między usługami compartmentalized ogólnie rzecz biorąc nadal potrzebują zaufanych ścieżek komunikacji między usługami znajdującymi się w tych przedziałów.
+Rozwiązania, które wymagają bezpieczeństwa ścisłej i związane i gdzie podsieci sieci wirtualnej segmentacji między usługami compartmentalized nadal należy zaufanych ścieżek komunikacji między usługami znajdującymi się w tych przedziałów.
 
 Wszelkie natychmiastowego trasy IP między przedziały, w tym te wartości protokołu HTTPS za pośrednictwem protokołu TCP/IP, niesie ze sobą ryzyko wykorzystania luk w zabezpieczeniach z warstwy sieciowej w górę. Usługi przesyłania komunikatów zapewniają zaufanych ścieżek komunikacji w pełni izolowane, gdzie komunikaty nawet są zapisywane na dysku, ponieważ ich przejść między stronami. Obciążeń z dwóch odrębnych sieci wirtualnych, które do tego samego wystąpienia usługi Event Hubs są powiązane mogą komunikować się sprawnie i niezawodnie za pośrednictwem wiadomości, gdy integralności granic izolacji sieci odpowiednich są zachowywane.
  

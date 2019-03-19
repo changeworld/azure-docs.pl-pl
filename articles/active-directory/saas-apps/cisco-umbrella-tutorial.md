@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f51ade234c8792f235bd8c9218b3c6ef9f22de7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 9a1b0763e33607367939476ca155040295de864c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Cisco Umbrella
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Cisco Umbrella z usługą Azure AD, mus
 
 **Aby dodać aplikację Cisco Umbrella z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -109,7 +109,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    d. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://login.umbrella.com/sso`
+    c. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://login.umbrella.com/sso`
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -173,7 +173,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -227,9 +227,9 @@ W przypadku aplikacji Cisco Umbrella aprowizowanie to zadanie wykonywane ręczne
 
     b. W polu **Nazwisko** wprowadź nazwisko, takie jak **simon**.
 
-    d. Z listy **Wybierz rolę administratora delegowanego** wybierz swoją rolę.
+    c. Z listy **Wybierz rolę administratora delegowanego** wybierz swoją rolę.
   
-    d. W polu **Adres e-mail** wprowadź adres e-mail użytkownika, taki jak **brittasimon@contoso.com**.
+    d. W **adres E-mail** wprowadź emailaddress użytkownika, takich jak **brittasimon\@contoso.com**.
 
     e. W polu **Hasło** wprowadź hasło.
 
@@ -239,7 +239,7 @@ W przypadku aplikacji Cisco Umbrella aprowizowanie to zadanie wykonywane ręczne
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Cisco Umbrella w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Cisco Umbrella, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

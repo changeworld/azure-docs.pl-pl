@@ -11,22 +11,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/20/2019
+ms.date: 3/14/2019
 ms.author: raiye
-ms.openlocfilehash: 9a54a7676b874eee601ac2b673021bb7ff161ba8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ec50cff2a2d3323b988632fd7ee96b73f60117b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532954"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887293"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
 
-## <a name="february-2019-guest-os"></a>System operacyjny gościa lutego 2019 r
-
 >[!NOTE]
->Obecnie jest wdrażana systemu operacyjnego gościa lutego do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym gościa lutego. Ta lista może ulec zmianie.
+>Obecnie jest wdrażana systemu operacyjnego gościa marca do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym marca. Ta lista może ulec zmianie.
+
+
+## <a name="march-2019-guest-os"></a>System operacyjny gościa marca 2019 r
+
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 19-03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 12 marca 2019 r. |
+| ReL 19-03 | [4489907] | Flash | 3.71, 4.64, 5.29, 6.5 | 12 marca 2019 r. |
+| ReL 19-03 | [4489885] | Zabezpieczeń Windows | 2.84 | 12 marca 2019 r. |
+| ReL 19-03 | [4489884] | Zabezpieczeń Windows | 3.71 | 12 marca 2019 r. |
+| ReL 19-03 | [4489883] | Zabezpieczeń Windows | 4.64 | 12 marca 2019 r. |
+| ReL 19-03 | [4489882] | Zabezpieczenia systemu Windows 10 | 5.29 | 12 marca 2019 r. |
+| ReL 19-03 | [4489899] | Zabezpieczenia systemu Windows 10 | 6.5 | 12 marca 2019 r. |
+| ReL 19-03 | [4486563] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami | 2.84 | 12 lutego 2019 r. |
+| ReL 19-03 | [4483458] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami platformy .NET 3.x | 2.84 | 12 lutego 2019 r. |
+| ReL 19-03 | [4483455] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami platformy .NET 4.x | 2.84 | 12 lutego 2019 r. |
+| ReL 19-03 | [4487025] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami | 3.71 | 12 lutego 2019 r. |
+| ReL 19-03 | [4483456] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami platformy .NET 3.x | 3.71 | 12 lutego 2019 r. |
+| ReL 19-03 | [4483454] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami platformy .NET 4.x | 3.71 | 12 lutego 2019 r. |
+| ReL 19-03 | [4487000] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami | 4.64 | 12 lutego 2019 r. |
+| ReL 19-03 | [4483459] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami platformy .NET 3.x | 4.64 | 12 lutego 2019 r. |
+| ReL 19-03 | [4483453] | Pakiet zbiorczy lutego niezwiązane z zabezpieczeniami platformy .NET 4.x | 4.64 | 12 lutego 2019 r. |
+| ReL 19-03 | [4485447] | Aktualizację stosu obsługi lutego | 5.29 | 12 lutego 2019 r. |
+| ReL 19-03 | [4486459] | Strefa czasowa aktualizacji | 2.84, 3.71, 4.64 | 12 lutego 2019 r. |
+
+[4489873]: https://support.microsoft.com/kb/4489873
+[4489907]: https://support.microsoft.com/kb/4489907
+[4489885]: https://support.microsoft.com/kb/4489885
+[4489884]: https://support.microsoft.com/kb/4489884
+[4489883]: https://support.microsoft.com/kb/4489883
+[4489882]: https://support.microsoft.com/kb/4489882
+[4489899]: https://support.microsoft.com/kb/4489899
+[4486563]: https://support.microsoft.com/kb/4486563
+[4483458]: https://support.microsoft.com/kb/4483458
+[4483455]: https://support.microsoft.com/kb/4483455
+[4487025]: https://support.microsoft.com/kb/4487025
+[4483456]: https://support.microsoft.com/kb/4483456
+[4483454]: https://support.microsoft.com/kb/4483454
+[4487000]: https://support.microsoft.com/kb/4487000
+[4483459]: https://support.microsoft.com/kb/4483459
+[4483453]: https://support.microsoft.com/kb/4483453
+[4485447]: https://support.microsoft.com/kb/4485447
+[4486459]: https://support.microsoft.com/kb/4486459
+
+## <a name="february-2019-guest-os"></a>System operacyjny gościa lutego 2019 r
 
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
@@ -87,13 +130,13 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ReL 19-01 | [4480964] | Zabezpieczeń Windows | 4.62 | 8 stycznia 2019 r. |
 | ReL 19-01 | [4480972] | Zabezpieczeń Windows | 3.69 | 8 stycznia 2019 r. |
 | ReL 19-01 | [4480960] | Zabezpieczeń Windows | 2.82 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480056] | Zabezpieczenia platformy .net | 6.3 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480074] | .NET 4.x zabezpieczeń | 4.62 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480075] | .NET 4.x zabezpieczeń | 3.69 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480076] | .NET 4.x zabezpieczeń | 2.82 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480086] | Bezpieczeństwo 3.x .net | 4.62 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480083] | Bezpieczeństwo 3.x .net | 3.69 | 8 stycznia 2019 r. |
-| ReL 19-01 | [4480085] | Bezpieczeństwo 3.x .net | 2.82 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480056] | Zabezpieczenia platformy .NET | 6.3 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480074] | .NET 4.x Security | 4.62 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480075] | .NET 4.x Security | 3.69 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480076] | .NET 4.x Security | 2.82 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480086] | .NET 3.x Security | 4.62 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480083] | .NET 3.x Security | 3.69 | 8 stycznia 2019 r. |
+| ReL 19-01 | [4480085] | .NET 3.x Security | 2.82 | 8 stycznia 2019 r. |
 | ReL 19-01 | [4480979] | Flash | 3.69, 4.62, 5.27, 6.3 | 8 stycznia 2019 r. |
 | ReL 19-01 | [4480965] | Internet Explorer | 2.82, 3.69, 4.62 | 8 stycznia 2019 r. |
 | ND | [4471318] | Pakiet zbiorczy grudnia niezwiązane z zabezpieczeniami | 2.82 | 11 grudnia 2018 r. |
@@ -138,12 +181,12 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ReL 18-12 | [4471328] | Zabezpieczeń Windows   | 2.81 | 11 grudnia 2018 r. |
 | ReL 18-12 | [4471326] | Zabezpieczeń Windows   | 3.68 | 11 grudnia 2018 r. |
 | ReL 18-12 | [4471322] | Zabezpieczeń Windows   | 4.61 | 11 grudnia 2018 r. |
-| ReL 18-12 | [4470600] | Bezpieczeństwo 3.x .net  | 2.81 | 11 grudnia 2018 r. |
-| ReL 18-12 | [4470601] | Bezpieczeństwo 3.x .net  | 3.68 | 11 grudnia 2018 r.|
-| ReL 18-12 | [4470602] | Bezpieczeństwo 3.x .net  | 4.61 | 11 grudnia 2018 r. |
-| ReL 18-12 | [4470493] | .NET 4.x zabezpieczeń  | 2.81 | 11 grudnia 2018 r. |
-| ReL 18-12 | [4470492] | .NET 4.x zabezpieczeń  | 3.68 | 11 grudnia 2018 r. |
-| ReL 18-12 | [4470491] | .NET 4.x zabezpieczeń  | 4.61| 11 grudnia 2018 r. |
+| ReL 18-12 | [4470600] | .NET 3.x Security  | 2.81 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470601] | .NET 3.x Security  | 3.68 | 11 grudnia 2018 r.|
+| ReL 18-12 | [4470602] | .NET 3.x Security  | 4.61 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470493] | .NET 4.x Security  | 2.81 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470492] | .NET 4.x Security  | 3.68 | 11 grudnia 2018 r. |
+| ReL 18-12 | [4470491] | .NET 4.x Security  | 4.61| 11 grudnia 2018 r. |
 | ReL 18-12 | [4471331] | Flash  | 3.68, 4.61, 5.26 | 5 grudnia 2018 r.  |
 | ReL 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11 grudnia 2018 r. |
 | ND | [4468323] | Strefa czasowa aktualizacji    | 2.81, 3.68, 4.61 | 13 grudnia 2018 r. |
@@ -520,7 +563,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ReL 17-05 | [4010323] |Poradnik SHA1 |2.62, 4.42, 5.7 | 9 maja 2017 r. |
 | ReL 17-05 | [4022344] |Microsoft Security Advisory |5.7 | 9 maja 2017 r. |
 | ReL 17-05 | [4022345] |Microsoft Security Advisory |5.7 | 9 maja 2017 r. |
-| ReL 17-05 | [4021279] |.Net /ASP.Net Core Advisory |2.62, 3.49, 4.42, 5.7 | 9 maja 2017 r. |
+| ReL 17-05 | [4021279] |.NET /ASP.NET Core Advisory |2.62, 3.49, 4.42, 5.7 | 9 maja 2017 r. |
 | ND | [4012864] |Strefa czasowa aktualizacji |2.62, 3.49, 4.42 | 9 maja 2017 r. |
 | ND | [4014565] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami .NET kwietnia |2.62 | 11 kwietnia 2017 r. |
 | ND | [4014559] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami .NET kwietnia |2.62 | 11 kwietnia 2017 r. |

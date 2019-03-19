@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694010"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403451"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Technologie i rozwiązania Internetu rzeczy (IoT): PaaS i SaaS
 
@@ -90,7 +90,7 @@ Na platformie Azure dostępna jest najbardziej kompleksowa oferta IoT w zakresie
 
 ### <a name="device-support"></a>Obsługa urządzeń
 
-Bez obaw rozpocznij pracę nad projektem IoT, korzystając z [pakietów startowych usługi Azure IoT](https://catalog.azureiotsuite.com/kits) lub wybierając spośród setek urządzeń z certyfikatem dla usługi IoT w [wykazie urządzeń](http://catalog.azureiotsuite.com/). Wszystkie urządzenia są niezależne od platformy i zostały przetestowane pod kątem bezproblemowego łączenia się z usługą IoT Hub.
+Bez obaw rozpocznij pracę nad projektem IoT, korzystając z [pakietów startowych usługi Azure IoT](https://catalog.azureiotsolutions.com/kits) lub wybierając spośród setek urządzeń z certyfikatem dla usługi IoT w [wykazie urządzeń](https://catalog.azureiotsolutions.com/). Wszystkie urządzenia są niezależne od platformy i zostały przetestowane pod kątem bezproblemowego łączenia się z usługą IoT Hub.
 Połącz wszystkie swoje urządzenia z usługą Azure IoT przy użyciu [zestawów SDK urządzeń](/azure/iot-hub/iot-hub-devguide-sdks) typu open source. Nasze zestawy SDK obsługują wiele systemów operacyjnych (np. Linux i Windows) oraz systemy operacyjne czasu rzeczywistego, a także wiele języków programowania, takich jak [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp) oraz [Python](https://github.com/Azure/azure-iot-sdk-python).
 
 ### <a name="iot"></a>IoT 
@@ -108,6 +108,6 @@ Skorzystaj z tablicy ofert PaaS w zakresie danych i analityki platformy Azure w 
 ### <a name="visualization-and-integration"></a>Wizualizacja i integracja
 Platforma Microsoft Azure oferuje pełne rozwiązanie w chmurze, które stanowi połączenie stale rosnącego zbioru zintegrowanych usług w chmurze oraz wyjątkowego w branży zaangażowania w kwestie ochrony danych i zapewnienia prywatności. Dowiedz się więcej na temat platformy [Microsoft Azure](https://azure.microsoft.com/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z sekcją [Wprowadzenie w dokumentacji usługi IoT Hub](/azure/iot-hub/iot-hub-get-started), aby móc szybko i łatwo korzystać z funkcji IoT. Aby uzyskać wskazówki praktyczne, wypróbuj jeden z [samouczków dotyczących usługi IoT Edge](/azure/iot-edge/tutorial-simulate-device-windows).

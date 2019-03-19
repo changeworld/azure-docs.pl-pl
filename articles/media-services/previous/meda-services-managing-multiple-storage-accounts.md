@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e25da238648b32edcbfaefbdcf1a6240df97916f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855303"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie zasobami usługi Media Services na wielu kontach magazynu  
 
@@ -42,7 +42,7 @@ Podczas podłączania wielu kont magazynu do konta usługi Media Services, obowi
 
 Inne zagadnienia:
 
-Usługa Media Services używa wartości **IAssetFile.Name** właściwości podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Z tego powodu kodowania procent nie jest dozwolone. Wartość właściwości Name nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] % # ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
+Usługa Media Services używa wartości **IAssetFile.Name** właściwości podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Z tego powodu kodowania procent nie jest dozwolone. Wartość właściwości Name nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] % # ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
 
 ## <a name="to-attach-storage-accounts"></a>Aby dołączyć konta magazynu  
 

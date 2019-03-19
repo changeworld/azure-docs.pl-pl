@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 73a09a99b1dd275b20bcd389e9cc391f638e8bdd
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075633"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -50,12 +50,12 @@ Certyfikaty składają się z trzech zasoby powiązane ze sobą połączone ze s
 
 **Krok 3** — administrator firmy Contoso, wraz z pracownik firmy Contoso (Key Vault użytkownika), który jest właścicielem certyfikatów, w zależności od urzędu certyfikacji, można uzyskać certyfikat od administratora lub bezpośrednio z konta z urzędem certyfikacji.  
 
--   Rozpocznij operacja dodawania poświadczeń do magazynu kluczy przez [ustawienie wystawcy certyfikatu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) zasobów. Wystawca certyfikatu jest reprezentowana w usłudze Azure klucza magazynu (KV) jako zasób CertificateIssuer jednostki. Umożliwia podawanie informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczeń i inne szczegóły administracyjne.
-    -   Np. MyDigiCertIssuer  
-        -   Dostawca  
-        -   Poświadczenia — poświadczenia konta urzędu certyfikacji. Każdym urzędzie certyfikacji ma swój własny określonych danych.  
+- Rozpocznij operacja dodawania poświadczeń do magazynu kluczy przez [ustawienie wystawcy certyfikatu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) zasobów. Wystawca certyfikatu jest reprezentowana w usłudze Azure klucza magazynu (KV) jako zasób CertificateIssuer jednostki. Umożliwia podawanie informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczeń i inne szczegóły administracyjne.
+  - Np. MyDigiCertIssuer  
+    -   Dostawca  
+    -   Poświadczenia — poświadczenia konta urzędu certyfikacji. Każdym urzędzie certyfikacji ma swój własny określonych danych.  
 
-     Aby uzyskać więcej informacji o tworzeniu konta przy użyciu dostawcy urzędu certyfikacji, zobacz wpis powiązane [blog usługi Key Vault](https://aka.ms/kvcertsblog).  
+    Aby uzyskać więcej informacji o tworzeniu konta przy użyciu dostawcy urzędu certyfikacji, zobacz wpis powiązane [blog usługi Key Vault](https://aka.ms/kvcertsblog).  
 
 **Krok 3.1** — Konfigurowanie [certyfikatu kontakty](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) powiadomień. Jest to kontaktu dla użytkownika usługi Key Vault. Usługa Key Vault nie wymusza ten krok.  
 

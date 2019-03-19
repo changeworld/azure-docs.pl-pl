@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 534a9584427efd15b8119f8421fb041199b97fbf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a124bd9a52e22c359fb771e4d4c8714bd1dbe2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731586"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123236"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Równoważenie klastra usługi service fabric
 Menedżer zasobów klastra usługi Service Fabric obsługuje zmiany dynamicznego obciążenia reagowanie na dodawania lub usuwania węzłów lub usługi. Automatycznie koryguje naruszenia ograniczeń i aktywnie rebalances klastra. Ale jak często te akcje są wykonywane i ich wyzwalacze?
@@ -122,6 +122,7 @@ za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json 
 ```
 
 <center>
+
 ![Równoważenie przykładowe wartości progowej][Image1]
 </center>
 
@@ -130,6 +131,7 @@ W tym przykładzie każda usługa używa jednej jednostki niektóre metryki. W t
 W tym przykładzie dolnej maksymalnego obciążenia, w węźle jest równy 10 podczas co najmniej dwóch, co w stosunku do 5. Pięć jest większa niż wyznaczonym progiem równoważenia trzech dla tej metryki. W rezultacie ponowne równoważenie Uruchom będzie następnym zaplanowanym aktywacji czasomierza równoważenia. W sytuacji, jak to niektóre obciążenia, jest zazwyczaj wysyłana do Węzeł3. Menedżer zasobów klastra usługi Service Fabric korzysta z metody zachłannego, niektóre obciążenia mogą również być dystrybuowane do Węzeł2. 
 
 <center>
+
 ![Równoważenie próg przykład akcji][Image2]
 </center>
 
@@ -145,6 +147,7 @@ Czasami, mimo że węzły są stosunkowo imbalanced *całkowita* obciążenie w 
 Załóżmy, że firma Microsoft będzie przechowywała naszego progu równoważenia trzech dla tej metryki. Ponadto Załóżmy, że mamy 1536 próg działania. W pierwszym przypadku podczas imbalanced na próg równoważenia istnieje klastra żaden węzeł nie jest zgodna z progu działania, więc nic się nie dzieje. W tym przykładzie dolnej Węzeł1 jest powyżej wartości progowej działania. Ponieważ przekroczeniu progu równoważenia i próg działania dla metryki równoważenia według harmonogramu. Na przykład Spójrzmy na poniższym diagramie: 
 
 <center>
+
 ![Przykład progu działania][Image3]
 </center>
 
@@ -194,6 +197,7 @@ Od czasu do czasu, chociaż to usługa, która nie była sam imbalanced pobiera 
 Z pewnością zostanie wyświetlony, gdy będziemy tutaj: Istnieje łańcuch! Tak naprawdę nie ma cztery usługi niezależne, mamy trzy usługi, które są ze sobą powiązane i taki, który jest wyłączony na swój własny.
 
 <center>
+
 ![Razem równoważenia usług][Image4]
 </center>
 
@@ -202,6 +206,7 @@ Ze względu na ten łańcuch jest możliwe, że nierównowagi metryki 1 – 4 mo
 Menedżer zasobów klastra automatycznie określa jakie usługi są ze sobą powiązane. Dodawanie, usuwanie lub Zmiana metryki dotyczące usług mogą mieć wpływ na ich wzajemne relacje. Na przykład między dwoma przebiegami równoważenia klienta2 mogły zostać zaktualizowane do usunięcia Metric2. Spowoduje to podzielenie łańcucha między Service1 i klienta2. Teraz zamiast dwóch grup powiązanych usług, dostępne są trzy:
 
 <center>
+
 ![Razem równoważenia usług][Image5]
 </center>
 

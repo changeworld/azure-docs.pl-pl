@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: 21a6734ab8af2e35643f6e9b25500dad2418a8c2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a32ebb3fc2448b189aa5970446e2ceb29aed51e2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772039"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838786"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozwinięte i aktualizowane na pokrycie większej liczby usług.
@@ -344,7 +344,7 @@ Aby dowiedzieć się więcej o limitach na bardziej szczegółowym poziomie, tak
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Limity bazy danych SQL
-Limity bazy danych SQL, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych baz danych](sql-database/sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów bazy danych SQL dla pul elastycznych i baz danych w puli](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
+Limity bazy danych SQL, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych baz danych](sql-database/sql-database-vcore-resource-limits-single-databases.md), [limity zasobów bazy danych SQL dla pul elastycznych i baz danych w puli](sql-database/sql-database-vcore-resource-limits-elastic-pools.md), i [limity zasobów bazy danych SQL dla wystąpienia zarządzanego](sql-database/sql-database-managed-instance-resource-limits.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Limity SQL Data Warehouse
 Limity SQL Data Warehouse, zobacz [limity zasobów SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

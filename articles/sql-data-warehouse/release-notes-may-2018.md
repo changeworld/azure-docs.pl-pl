@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 45a391f45d11d968818bafc97a705411a133b273
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57430853"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852614"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Maj 2018 r. 
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w maju 2018 r. 
@@ -44,7 +44,7 @@ Jako najlepsze praktyki i wskazówki, firma Microsoft zaleca ustawienie `AUTO_CR
 Zobacz [opcje ALTER DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options) artykuł, aby uzyskać więcej informacji.
 
 ## <a name="rejected-row-support"></a>Odrzucony wiersz pomocy technicznej
-Klienci często używają [PolyBase (tabele zewnętrzne) w celu załadowania danych](design-elt-data-loading.md) do usługi SQL Data Warehouse ze względu na wysoką wydajność, równoległe charakter ładowania danych. Program PolyBase jest domyślny model ładowania podczas ładowania danych przy użyciu [usługi Azure Data Factory](http://azure.com/adf) także. 
+Klienci często używają [PolyBase (tabele zewnętrzne) w celu załadowania danych](design-elt-data-loading.md) do usługi SQL Data Warehouse ze względu na wysoką wydajność, równoległe charakter ładowania danych. Program PolyBase jest domyślny model ładowania podczas ładowania danych przy użyciu [usługi Azure Data Factory](https://azure.com/adf) także. 
 
 Usługa SQL Data Warehouse dodaje możliwość definiowania lokalizacja odrzuconych wierszy, za pośrednictwem `REJECTED_ROW_LOCATION` parametrem [CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) instrukcji. Po wykonaniu [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) z tabeli zewnętrznej wszystkie wiersze, których nie można załadować będą przechowywane w pliku w źródle bliższe zbadanie tej sprawy. 
 
@@ -144,7 +144,7 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 [Blogi zespołu doradczego klientów]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Historie sukcesu klientów]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Forum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

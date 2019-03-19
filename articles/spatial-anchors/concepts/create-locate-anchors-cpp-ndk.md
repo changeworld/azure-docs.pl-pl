@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 87573b74f34e0a503db8f543da1d78a3c5b170f6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 74b1f854cfca6a280f1da5c6bdeeae4deb112f9c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753114"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857389"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Tworzenie i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ zestaw NDK
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753114"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między różnymi urządzeniami. Ma zostały dopasowane do sprawnej współpracy z preferowanego środowiska deweloperskiego. W tym artykule przejdziemy dowiesz się, jak to zrobić w języku C + +/ zestaw NDK.
+Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona wiele środowisk deweloperskich. W tym artykule przejdziemy dowiesz się, jak to zrobić w języku C + +/ zestaw NDK.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Dowiedz się więcej o [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession) struktury.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchorSession> cloudSession_;
@@ -36,6 +38,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Dowiedz się więcej o [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionconfiguration) struktury.
 
 ```cpp
     auto configuration = cloudSession_->Configuration();
@@ -51,8 +55,10 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
+Dowiedz się więcej o [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) delegować.
+
 ```cpp
-    auto accessTokenRequiredToken = cloudSession_->AccessTokenRequired([](auto&&, auto&& args) {
+    auto accessTokenRequiredToken = cloudSession_->TokenRequired([](auto&&, auto&& args) {
         args->AccessToken(R"(MyAccessToken)");
     });
 ```
@@ -98,6 +104,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
+Dowiedz się więcej o [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) metody.
+
 ```cpp
     cloudSession_->Session(ar_session_);
     cloudSession_->Start();
@@ -105,11 +113,15 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
+Dowiedz się więcej o [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe) metody.
+
 ```cpp
     cloudSession_->ProcessFrame(ar_frame_);
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Dowiedz się więcej o [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) delegować.
 
 ```cpp
     auto sessionUpdatedToken = cloudSession_->SessionUpdated([this](auto&&, auto&& args) {
@@ -124,6 +136,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Dowiedz się więcej o [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor) struktury.
 
 ```cpp
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -175,6 +189,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Dowiedz się więcej o [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync) metody.
+
 ```cpp
     cloudSession_->GetSessionStatusAsync([this](Status status, const std::shared_ptr<SessionStatus>& value) {
         if (status != Status::OK) {
@@ -190,6 +206,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
+Dowiedz się więcej o [parametr AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties) metody.
+
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> cloudAnchor = std::make_shared<CloudSpatialAnchor>();
     cloudAnchor->LocalAnchor(localAnchor);
@@ -202,6 +220,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
+
+Dowiedz się więcej o [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync) metody.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> anchor = /* locate your anchor */;
@@ -217,6 +237,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Dowiedz się więcej o [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync) metody.
 
 ```cpp
     cloudSession_->GetAnchorPropertiesAsync(R"(anchorId)", [this](Status status, const std::shared_ptr<CloudSpatialAnchor>& anchor) {
@@ -238,6 +260,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Dowiedz się więcej o [wygaśnięcia](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) metody.
+
 ```cpp
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     std::chrono::system_clock::time_point oneWeekFromNow = now + std::chrono::hours(7 * 24);
@@ -247,6 +271,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Dowiedz się więcej o [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) metody.
+
 ```cpp
     auto criteria = std::make_shared<AnchorLocateCriteria>();
     criteria->Identifiers({ R"(id1)", R"(id2)", R"(id3)" });
@@ -254,6 +280,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Dowiedz się więcej o [AnchorLocated](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) delegować.
 
 ```cpp
     auto anchorLocatedToken = cloudSession_->AnchorLocated([this](auto&&, auto&& args) {
@@ -281,6 +309,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Dowiedz się więcej o [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync) metody.
+
 ```cpp
     cloudSession_->DeleteAnchorAsync(cloudAnchor, [this](Status status) {
         // Perform any processing you may want when delete finishes
@@ -289,11 +319,15 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Dowiedz się więcej o [zatrzymać](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) metody.
+
 ```cpp
     cloudSession_->Stop();
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
+
+Dowiedz się więcej o [resetowania](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) metody.
 
 ```cpp
     cloudSession_->Reset();

@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: f1fefb863770c4b71249e924162c543cc217c9d2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cc74bfe9bf9e5f33b7cf05ebb19b44ab8b3bea43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864647"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
-Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#capacity). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
+Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#throughput-units). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
 
 Funkcja przechwytywania usługi Event Hubs pozwala przetwarzać potoki w czasie rzeczywistym i opartych na partiach, w tym samym strumieniu. Oznacza to, że możesz tworzyć rozwiązania, które wzrostu z Twoimi potrzebami wraz z upływem czasu. Czy tworzysz systemów opartych na procesorze batch już dzisiaj za pomocą śledzenia do przyszłego przetwarzania w czasie rzeczywistym, które chcesz dodać wydajne ścieżki nieaktywnej do istniejącego rozwiązania w czasie rzeczywistym, funkcja przechwytywania usługi Event Hubs sprawia, że praca łatwiejsze danych przesyłanych strumieniowo.
+
+> [!NOTE]
+> Obecnie funkcja przechwytywania usługi Event Hubs obsługuje tylko Gen 1 z usługi Azure Data Lake Store, nie Gen 2. 
 
 ## <a name="how-event-hubs-capture-works"></a>Jak działa funkcja przechwytywania usługi Event Hubs
 
@@ -51,7 +54,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 ### <a name="scaling-to-throughput-units"></a>Skalowanie do wszystkich jednostek przepływności
 
-Ruch do centrów zdarzeń jest kontrolowane przez [jednostek przepływności](event-hubs-features.md#capacity). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę lub 1000 zdarzeń na sekundę transferu danych przychodzących i dwa razy ilość danych wychodzących. Standardowa usługi Event Hubs może być skonfigurowany z 1-20 jednostek przepływności i nabyć więcej jednostek z limitem przydziału o zwiększenie [żądania pomocy technicznej][support request]. Użycie jednostek przepływności zakupionych jest ograniczane. Funkcja przechwytywania usługi Event Hubs kopiuje dane bezpośrednio z pamięci wewnętrznej usługi Event Hubs, pomijanie limity przydziału ruchu wychodzącego jednostek przepływności i zapisywanie swojej ruchu wychodzącego dla innych czytników przetwarzania, takich jak Stream Analytics lub Spark.
+Ruch do centrów zdarzeń jest kontrolowane przez [jednostek przepływności](event-hubs-features.md#throughput-units). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę lub 1000 zdarzeń na sekundę transferu danych przychodzących i dwa razy ilość danych wychodzących. Standardowa usługi Event Hubs może być skonfigurowany z 1-20 jednostek przepływności i nabyć więcej jednostek z limitem przydziału o zwiększenie [żądania pomocy technicznej][support request]. Użycie jednostek przepływności zakupionych jest ograniczane. Funkcja przechwytywania usługi Event Hubs kopiuje dane bezpośrednio z pamięci wewnętrznej usługi Event Hubs, pomijanie limity przydziału ruchu wychodzącego jednostek przepływności i zapisywanie swojej ruchu wychodzącego dla innych czytników przetwarzania, takich jak Stream Analytics lub Spark.
 
 Po skonfigurowaniu usługi Event Hubs Capture jest uruchamiany automatycznie po wysłaniu pierwszego zdarzenia i będzie kontynuował działanie. Aby ułatwić Twojej przetwarzania transmisji dla klientów dowiedzieć się, że proces działa usługa Event Hubs zapisuje pustych plików, czy nie ma żadnych danych. Ten proces obejmuje tempa przewidywalny i znaczników, który może przekazywać procesorów usługi batch.
 

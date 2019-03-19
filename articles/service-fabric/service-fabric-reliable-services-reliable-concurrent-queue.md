@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
-ms.openlocfilehash: d4d399258ac1bd83fe4cfb46344576ca74e66f1e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 6fefbd21a5c301111afdc27ec1d332d713c669ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805141"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119653"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Wprowadzenie do ReliableConcurrentQueue w usłudze Azure Service Fabric
 Niezawodna kolejka współbieżna jest kolejką asynchronicznego, transakcji i replikowane concurrency które funkcje wysokiej umieścić w kolejce i pobierać operacji. Zaprojektowano w celu dostarczania wysokiej przepływności i małego opóźnienia, złagodzić ścisłe porządkowanie FIFO dostarczone przez [niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx) i przekazuje porządkowanie największej staranności.
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 Załóżmy, że zadanie zakończyło się pomyślnie i czy nie zostały wprowadzone żadne transakcje współbieżnych modyfikowanie kolejki. Użytkownika można oczekiwać, że kolejka zawiera elementów w jednym z następujących zamówień:
 
 > 10, 20
-
+> 
 > 20, 10
 
 
@@ -165,7 +165,7 @@ Załóżmy, że elementy były usuwane z kolejki w następującej kolejności:
 
 Gdy firma Microsoft przerwać transakcji, elementy były dodawane do głowy kolejki w jednym z następujących zamówień:
 > 10, 20
-
+> 
 > 20, 10
 
 To samo dotyczy wszystkich przypadków, gdy transakcja nie została pomyślnie *przydzielony*.

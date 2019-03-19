@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243883"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011596"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Znajomość i wykorzystanie agenta systemu Linux dla platformy Azure
 
@@ -73,18 +73,18 @@ Przepływ informacji z platformą do agenta odbywa się za pośrednictwem dwóch
 Poniższe systemy zostały przetestowane i znane pracy z agentem systemu Linux platformy Azure:
 
 > [!NOTE]
-> Ta lista może różnić się od oficjalną listę obsługiwanych systemów na platformie Microsoft Azure, tak jak opisano tutaj: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Ta lista może różnić się od oficjalną listę obsługiwanych systemów na platformie Microsoft Azure, tak jak opisano tutaj: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
 * CoreOS
 * CentOS 6.3+
-* Red Hat Enterprise Linux 6.7 +
-* Debian 7.0 +
+* Red Hat Enterprise Linux 6.7+
+* Debian 7.0+
 * Ubuntu 12.04+
 * openSUSE 12.3+
-* SLES 11 Z DODATKIEM SP3 +
-* Oracle Linux 6.4 +
+* SLES 11 SP3+
+* Oracle Linux 6.4+
 
 Inne obsługiwane systemy:
 
@@ -95,7 +95,7 @@ Agent systemu Linux jest zależna od niektórych pakietów systemu w celu popraw
 * Python 2.6+
 * OpenSSL 1.0+
 * OpenSSH 5.3+
-* Narzędzia systemu plików: ulec sfdisk fdisk, mkfs,
+* Filesystem utilities: sfdisk, fdisk, mkfs, parted
 * Narzędzia hasło: chpasswd, "sudo"
 * Narzędzia do przetwarzania tekstu: sed, grep
 * Narzędzia sieci: trasy ip
@@ -113,7 +113,7 @@ Zapoznaj się z dokumentacją w [repozytorium agenta systemu Linux platformy Azu
 
 ### <a name="commands"></a>Polecenia
 * Pomoc: Wyświetla listę obsługiwanych poleceń i flagi.
-* Anulowanie aprowizacji: spróbuj wyczyścić systemu i odpowiednie do reprovisioning. Następujące usuwa operacji:
+* Anulowanie aprowizacji: Spróbuj wyczyścić systemu i odpowiednie do reprovisioning. Następujące usuwa operacji:
   
   * Wszystkich kluczy hostów SSH (jeśli Provisioning.RegenerateSshHostKeyPair "y" w pliku konfiguracji)
   * Konfiguracja serwera nazw w /etc/resolv.conf
@@ -126,11 +126,11 @@ Zapoznaj się z dokumentacją w [repozytorium agenta systemu Linux platformy Azu
 > 
 > 
 
-* Anulowanie aprowizacji + użytkownik: wszystko, co wykonuje w - deprovision (powyżej) i również usuwa ostatnie aprowizowane konto użytkownika (uzyskana z /var/lib/waagent) i skojarzone dane. Ten parametr jest podczas anulowania obsługi obrazu, który został wcześniej aprowizacji na platformie Azure, dzięki czemu mogą być przechwytywane i ponownie.
-* Wersja: wersja waagent
-* serialconsole: konfiguruje CHODNIKÓW, aby oznaczyć ttyS0 (pierwszy port szeregowy) jako konsola rozruchu. Gwarantuje to, że dzienniki rozruchu jądra są wysyłane do portu szeregowego i udostępnione do debugowania.
-* demon: uruchomiono agenta waagent jako demon do zarządzania interakcją z platformą. Ten argument zostanie określony do waagent w skrypcie inicjowania waagent.
-* Start: uruchomiono agenta waagent jako proces w tle
+* Anulowanie aprowizacji i użytkownika: Wszystko, co wykonuje w - deprovision (powyżej) i również usuwa ostatnie aprowizowane konto użytkownika (uzyskana z /var/lib/waagent) i skojarzone dane. Ten parametr jest podczas anulowania obsługi obrazu, który został wcześniej aprowizacji na platformie Azure, dzięki czemu mogą być przechwytywane i ponownie.
+* Wersja: Wyświetla wersję waagent
+* serialconsole: Konfiguruje CHODNIKÓW, aby oznaczyć ttyS0 (pierwszy port szeregowy) jako konsola rozruchu. Gwarantuje to, że dzienniki rozruchu jądra są wysyłane do portu szeregowego i udostępnione do debugowania.
+* daemon: Uruchomiono agenta waagent jako demon do zarządzania interakcją z platformą. Ten argument zostanie określony do waagent w skrypcie inicjowania waagent.
+* Początek: Uruchomiono agenta waagent jako proces w tle
 
 ## <a name="configuration"></a>Konfigurowanie
 Plik konfiguracji (/ etc/waagent.conf) Określa akcje waagent. Poniżej przedstawiono przykładowy plik konfiguracji:
@@ -235,7 +235,7 @@ Algorytm używany przez crypt podczas generowania skrótów haseł.
  1 - MD5  
  2a - Blowfish  
  5 — ALGORYTM SHA-256  
- 6 — SHA-512  
+ 6 - SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
 ```

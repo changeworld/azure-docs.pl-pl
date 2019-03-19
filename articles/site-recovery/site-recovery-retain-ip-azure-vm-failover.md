@@ -6,12 +6,12 @@ ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842751"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090750"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Podczas pracy awaryjnej należy zachować adresy IP
 
@@ -62,10 +62,10 @@ Jeśli wystąpi awaria regionalna źródła, firmy A można przełączyć w tryb
 
 - Za pomocą docelowych adresów IP już na miejscu przed trybu failover firmy A można organizować tryb failover i automatycznego nawiązywania połączeń po włączeniu trybu failover między **sieć odzyskiwania** i **sieci wirtualnej platformy Azure**. Jest to zilustrowane na poniższym diagramie...
 - W zależności od wymagań dotyczących aplikacji, połączeń między dwiema sieciami wirtualnymi (**sieć odzyskiwania** i **sieci wirtualnej platformy Azure**) w elemencie docelowym może być region ustalonych wcześniej, podczas (jako pośredniego kroku) lub po pracy w trybie failover.
-    - Firma może używać [planów odzyskiwania](site-recovery-create-recovery-plans.md) do określenia, kiedy będzie można nawiązać połączenia.
-    - Umożliwić im połączenie między sieciami wirtualnymi za pomocą komunikacji równorzędnej sieci wirtualnej lub sieci VPN typu lokacja lokacja.
-        - Wirtualne sieci równorzędne nie używają bramy sieci VPN i ma z nią związane inne ograniczenia.
-        - Komunikacja równorzędna sieci wirtualnych [ceny](https://azure.microsoft.com/pricing/details/virtual-network) jest obliczana inaczej niż Brama sieci VPN typu sieć wirtualna-sieć wirtualna [ceny](https://azure.microsoft.com/pricing/details/vpn-gateway). Dla pracy w trybie Failover Radzimy zminimalizować zdarzenia nieprzewidywalne sieci przy użyciu tej samej metody łączności jako źródła sieci, w tym typ połączenia.
+  - Firma może używać [planów odzyskiwania](site-recovery-create-recovery-plans.md) do określenia, kiedy będzie można nawiązać połączenia.
+  - Umożliwić im połączenie między sieciami wirtualnymi za pomocą komunikacji równorzędnej sieci wirtualnej lub sieci VPN typu lokacja lokacja.
+      - W przypadku wirtualnych sieci równorzędnych nie jest używana brama sieci VPN i występują inne ograniczenia.
+      - Komunikacja równorzędna sieci wirtualnych [ceny](https://azure.microsoft.com/pricing/details/virtual-network) jest obliczana inaczej niż Brama sieci VPN typu sieć wirtualna-sieć wirtualna [ceny](https://azure.microsoft.com/pricing/details/vpn-gateway). Dla pracy w trybie Failover Radzimy zminimalizować zdarzenia nieprzewidywalne sieci przy użyciu tej samej metody łączności jako źródła sieci, w tym typ połączenia.
 
     ![Zasoby w pełnej platformy Azure w tryb failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
@@ -128,13 +128,13 @@ W tym scenariuszu **firmy B** uruchamiany firm hybrydowej, przy użyciu część
 Oto jak wygląda architektura sieci przed włączeniem trybu failover.
 
 - Maszyn wirtualnych aplikacji znajdują się w usłudze Azure Azja Wschodnia.
--  Azja Wschodnia ma sieci wirtualnej (**źródłowa sieć wirtualna**) przy użyciu 10.1.0.0/16 przestrzeni adresowej.
-    - Azja Wschodnia ma obciążeń podzielić na trzy podsieci w **źródłowa sieć wirtualna**:
-        - **Podsieć 1**: 10.1.1.0/24
-        - **Podsieć 2**: 10.1.2.0/24,
-        - **Podsieci 3**: 10.1.3.0/24utilizing siecią wirtualną platformy Azure przy użyciu 10.1.0.0/16 przestrzeni adresowej. Ta sieć wirtualna ma nazwę **źródłowa sieć wirtualna**
- - Region pomocniczy (docelowy) to Azure, Azja południowo-wschodnia:
-    - Azja południowo-wschodnia ma odzyskiwania sieci wirtualnej (**sieć odzyskiwania**) taka sama jak **źródłowa sieć wirtualna**.
+- Azja Wschodnia ma sieci wirtualnej (**źródłowa sieć wirtualna**) przy użyciu 10.1.0.0/16 przestrzeni adresowej.
+  - Azja Wschodnia ma obciążeń podzielić na trzy podsieci w **źródłowa sieć wirtualna**:
+    - **Podsieć 1**: 10.1.1.0/24
+    - **Podsieć 2**: 10.1.2.0/24,
+    - **Podsieci 3**: 10.1.3.0/24utilizing siecią wirtualną platformy Azure przy użyciu 10.1.0.0/16 przestrzeni adresowej. Ta sieć wirtualna ma nazwę **źródłowa sieć wirtualna**
+      - Region pomocniczy (docelowy) to Azure, Azja południowo-wschodnia:
+  - Azja południowo-wschodnia ma odzyskiwania sieci wirtualnej (**sieć odzyskiwania**) taka sama jak **źródłowa sieć wirtualna**.
 - Maszyny wirtualne w Azja Wschodnia są połączone z lokalnym centrum danych za pomocą usługi Azure ExpressRoute lub sieci lokacji do lokacji VPN.
 - Aby zmniejszyć czas RTO, firmy B aprowizuje bramy w sieci wirtualnej odzyskiwania w usłudze Azure Azja południowo-wschodnia przed trybu failover.
 - Firma B przypisuje/sprawdza docelowych adresów IP dla replikowanych maszyn wirtualnych. Docelowy adres IP jest taki sam jak źródłowy adres IP dla każdej maszyny Wirtualnej.

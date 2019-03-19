@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0fd865a6890721d3889fc5cef39d9888fe1fb689
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856136"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP za pomocą witryny Azure portal
 
@@ -62,7 +62,7 @@ Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule.
 
 Dla każdej maszyny Wirtualnej w sieci wirtualnej należy dodać konfiguracji adresu IP dla pomocniczej karty Sieciowej:  
 
-1. Przejdź do witryny Azure portal: http://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
+1. Przejdź do witryny Azure portal: https://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
 
 2. W lewym górnym rogu ekranu, wybierz **grupy zasobów** ikony. Następnie wybierz grupę zasobów, w którym znajdują się maszyny wirtualne (na przykład **contosofabrikam**). **Grup zasobów** okienko Wyświetla listę wszystkich zasobów i kart sieciowych dla maszyn wirtualnych.
 
@@ -86,7 +86,7 @@ Po druga Konfiguracja protokołu IP dla pomocniczej karty Sieciowej jest zakońc
 
 Tworzenie modułu równoważenia obciążenia dla konfiguracji:
 
-1. Przejdź do witryny Azure portal: http://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
+1. Przejdź do witryny Azure portal: https://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
 
 2. W lewym górnym rogu ekranu, wybierz **Utwórz zasób** > **sieć** > **modułu równoważenia obciążenia**. Następnie wybierz pozycję **Utwórz**.
 
@@ -106,15 +106,15 @@ Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurowa�
 
 2. Skonfiguruj dwa publiczne adresy IP (**PublicIP1** i **PublicIP2**) dla obu witryn sieci Web (contoso.com i fabrikam.com):
 
-    1. Wpisz nazwę dla podanego adresu IP frontonu.
+   1. Wpisz nazwę dla podanego adresu IP frontonu.
 
-    2. Aby uzyskać **grupy zasobów**, wybierz istniejącą grupę zasobów dla maszyn wirtualnych (na przykład **contosofabrikam**).
+   2. Aby uzyskać **grupy zasobów**, wybierz istniejącą grupę zasobów dla maszyn wirtualnych (na przykład **contosofabrikam**).
 
-    3. Aby uzyskać **lokalizacji**, wybierz lokalizację, ponieważ maszyny wirtualne.
+   3. Aby uzyskać **lokalizacji**, wybierz lokalizację, ponieważ maszyny wirtualne.
 
-    4. Kliknij przycisk **OK**.
+   4. Kliknij przycisk **OK**.
 
-    Po utworzeniu publicznego adresu IP, są wyświetlane w obszarze **publiczny adres IP** adresów.
+      Po utworzeniu publicznego adresu IP, są wyświetlane w obszarze **publiczny adres IP** adresów.
 
 3. <a name="step3-3"></a>W portalu, wybierz **więcej usług**. W polu filtru wpisz **moduł równoważenia obciążenia** , a następnie wybierz **usługi Load Balancer**. 
 

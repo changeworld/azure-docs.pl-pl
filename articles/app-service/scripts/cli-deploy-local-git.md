@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 63efd3ebcb49ebd48e5af6f39bf20206375130d2
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 747d215810710c6810df02dca556d7a685ae4060
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010867"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Tworzenie aplikacji usługi App Service i wdrażanie kodu z lokalnego repozytorium Git przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Ten przykładowy skrypt służy do tworzenia aplikacji w usłudze App Service wraz z jej powiązanymi zasobami, a następnie wdrażania kodu aplikacji w lokalnym repozytorium Git.
+Ten przykładowy skrypt tworzy aplikację w usłudze App Service z powiązanymi zasobami, a następnie wdraża kod aplikacji w lokalnym repozytorium Git.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -52,7 +52,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) | Ustawia poświadczenia wdrażania na poziomie konta dla usługi App Service. |
 | [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) | Tworzy konfigurację kontroli źródła dla lokalnego repozytorium Git. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

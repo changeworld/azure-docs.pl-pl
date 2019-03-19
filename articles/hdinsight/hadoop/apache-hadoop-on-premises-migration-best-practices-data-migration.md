@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 488e1adb6d533dc88994e1dc08513870f56bd9c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003470"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania migracji danych
 
@@ -34,9 +34,9 @@ Istnieją dwie główne opcje migracji danych ze środowiska lokalnego do środo
 
 Poniższa tabela zawiera czas transferu przybliżony danych na podstawie przepustowości woluminu i sieci danych. Użyj urządzenia Data box, jeśli migracja danych szacowany czas wynosi ponad trzy tygodnie.
 
-|**Ilość danych**|**Przepustowość sieci**|||
-|---|---|---|---|
-|| **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**
+|**Ilość danych**|**Przepustowość sieci**||||
+|---|---|---|---|---|
+|| **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 dni|1 dzień| 2 godziny|14 min|
 |10 TB|22 dni|10 dni|1 dzień|2 godziny|
 |35 TB|dni o 76|34 dni|3 dni|8 godzin|

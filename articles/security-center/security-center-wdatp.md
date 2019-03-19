@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 09e8ee05017c47c5b01bc529135004eff19b846f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124178"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami w usłudze Azure Security Center
 
@@ -64,11 +64,11 @@ Aby dodać serwery do usługi Security Center, kliknij przycisk **przejdź do us
 1. W **dołączania** bloku wybierz lub Utwórz obszar roboczy, w którym będą przechowywane dane. <br>
 2. Jeśli nie widzisz wszystkich Twoich obszarach roboczych, może być spowodowane brakiem uprawnień, upewnij się, że obszar roboczy jest ustawiony do warstwy Standard zabezpieczeń platformy Azure. Aby uzyskać więcej informacji, zobacz [uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń](security-center-pricing.md).
     
-3.  Wybierz **dodawania serwerów** Aby wyświetlić instrukcje dotyczące sposobu instalowania programu Microsoft Monitoring Agent. 
+3. Wybierz **dodawania serwerów** Aby wyświetlić instrukcje dotyczące sposobu instalowania programu Microsoft Monitoring Agent. 
 
-4.  Po dołączeniu, można monitorować maszyny znajdujące się w **obliczeniowe i aplikacje**.
+4. Po dołączeniu, można monitorować maszyny znajdujące się w **obliczeniowe i aplikacje**.
 
-  ![Dodawanie komputerów](media/security-center-wdatp/onboard-computers.png)
+   ![Dodawanie komputerów](media/security-center-wdatp/onboard-computers.png)
 
 
 ## <a name="enable-windows-defender-atp-integration"></a>Włączanie integracji usługi Windows Defender ATP

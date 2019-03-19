@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączeń z usługą Azure Database for MySQL za pomocą języka Java
-description: Ten przewodnik Szybki start zawiera przykładowy kod Java, którego można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich.
+description: Ten przewodnik Szybki Start zawiera przykładowy kod Java, którego można użyć do nawiązywania połączeń i wykonywanie zapytań dotyczących danych z bazy danych Azure for MySQL database.
 author: jasonwhowell
 ms.author: jasonh
 ms.service: mysql
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: e660daa0a0676f7f4267be7e6852568d80791774
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 87c74581f456baae3d12e164dfdc0a15e3231728
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539113"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835347"
 ---
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: Nawiązywanie połączeń i wykonywanie zapytań na danych przy użyciu języka Java
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL przy użyciu aplikacji języka Java i sterownika JDBC [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym artykule założono, że wiesz już, jak opracowywać zawartość za pomocą języka Java, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -391,7 +391,7 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Na [stronie przykładów programu MySQL Connector/J](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html) znajdziesz wiele innych przykładów i przykładowy kod.
 
 > [!div class="nextstepaction"]

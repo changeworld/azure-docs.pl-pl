@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119500"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/
       * `Microsoft.Azure.DataLake.Store` — w tym samouczku jest używana wersja 1.0.0.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — w tym samouczku jest używana wersja 2.3.1.
     
-    Zamknij **Menedżera pakietów NuGet**.
+      Zamknij **Menedżera pakietów NuGet**.
 
 6. Otwórz plik **Program.cs**, usuń istniejący kod, a następnie dołącz poniższe instrukcje, aby dodać odwołania do przestrzeni nazw.
 

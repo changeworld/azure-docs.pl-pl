@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729323"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871497"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -35,9 +35,17 @@ Jeśli masz pytania, komentarze, w tym artykule.
 
 Możesz znaleźć wszystkie pliki Docker na [GitHub](https://github.com/azure-app-service). Możesz znaleźć wszystkie kontenery platformy Docker na [usługi Docker Hub](https://hub.docker.com/u/appsvc/).
 
+<a id="#startup-file"></a>
+
 **Jakie są oczekiwane wartości dla sekcji plik startowy podczas konfigurowania stosu środowiska uruchomieniowego?**
 
-Dla środowiska Node.js należy określić pliku konfiguracji PM2 lub pliku skryptu. Dla platformy .NET Core, określ nazwę skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`. Dla języka Ruby można określić skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu.
+| Stos     | Oczekiwana wartość                                                                |
+|-----------|-------------------------------------------------------------------------------|
+| Java SE   | polecenie, aby uruchomić usługi `.jar` aplikacji                                    |
+| Tomcat    | Lokalizacja skrypt, aby wykonać wszelkie niezbędne configruations dla aplikacji |
+| Node.js   | pliku konfiguracji PM2 lub pliku skryptu                                |          
+| .Net Core | nazwę skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`                                 |
+| Ruby      | Skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu                     
 
 ## <a name="management"></a>Zarządzanie
 
@@ -92,7 +100,7 @@ W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w sys
 Tak, wyłącz `perMessageDeflate` w kodzie po stronie serwera Node.js. Na przykład jeśli używasz biblioteki socket.io należy użyć następującego kodu:
 
 ```nodejs
-var io = require('socket.io')(server,{
+const io = require('socket.io')(server,{
   perMessageDeflate :false
 });
 ```

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 270254ae4f66fa3642df844f384e15564945628e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3c79747bf33e1769af5f8d3589904ba15105f216
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087605"
 ---
 # <a name="connect-windows-security-events"></a>Łączenie ze zdarzeniami zabezpieczeń systemu Windows 
 
@@ -34,8 +34,8 @@ Wszystkie zdarzenia zabezpieczeń z serwerów Windows połączonego z obszarem r
 - **Minimalny** -niewielki zestaw zdarzeń, które mogą wskazywać potencjalne zagrożenia. Po włączeniu tej opcji, nie będziesz mieć możliwość pełnego dziennika inspekcji.
 - **Brak** — żadne zdarzenia funkcji AppLocker ani zabezpieczeń.
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > - Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="set-up-the-windows-security-events-connector"></a>Skonfiguruj łącznik zdarzenia zabezpieczeń Windows

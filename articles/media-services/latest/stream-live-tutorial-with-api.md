@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863767"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Samouczek: Transmisja strumieniowa na żywo z usługi Media Services w wersji 3 przy użyciu platformy .NET
 
@@ -33,7 +33,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 > [!div class="checklist"]
 > * Pobieranie przykładowej aplikacji opisanej w temacie
 > * Analizowanie kodu, który przeprowadza transmisję strumieniową na żywo
-> * Obejrzyj to zdarzenie w odtwarzaczu [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) pod adresem http://ampdemo.azureedge.net
+> * Obejrzyj to zdarzenie w odtwarzaczu [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) pod adresem https://ampdemo.azureedge.net
 > * Oczyszczanie zasobów
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -81,9 +81,9 @@ Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platfor
 
 ### <a name="create-a-live-event"></a>Utwórz wydarzenie na żywo
 
-W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu wydarzenia na żywo (o wartości parametru LiveEventEncodingType ustawionej na None). Jeśli chcesz utworzyć wydarzenie na żywo obsługujące kodowanie na żywo, musisz nadać parametrowi LiveEventEncodingType wartość **Standard**. 
-
-Jest kilka rzeczy, które warto określić podczas tworzenia zdarzenia na żywo:
+W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu wydarzenia na żywo (o wartości parametru LiveEventEncodingType ustawionej na None). Aby uzyskać więcej informacji na temat dostępnych typów zdarzeń na żywo, zobacz [typy wydarzenie na żywo](live-events-outputs-concept.md#live-event-types). 
+ 
+Kilka rzeczy, które można określić podczas tworzenia zdarzenia na żywo są następujące:
 
 * Lokalizacja usług Media Services 
 * Protokół transmisji strumieniowej wydarzenia na żywo (obecnie obsługiwane są protokoły RTMP i Smooth Streaming).<br/>Nie można zmienić opcji protokołu, gdy wydarzenie na żywo lub skojarzone z nim dane wyjściowe na żywo są uruchomione. Jeśli potrzebujesz różnych protokołów, utwórz osobne wydarzenie na żywo dla każdego protokołu przesyłania strumieniowego.  
@@ -166,7 +166,7 @@ Poniższy kod pokazuje, jak wyczyścić konto ze wszystkich wydarzeń na żywo:
 
 ## <a name="watch-the-event"></a>Oglądanie wydarzenia
 
-Aby oglądać wydarzenie, skopiuj adres URL przesyłania strumieniowego, który uzyskano po uruchomieniu kodu opisanego w sekcji Tworzenie lokalizatora przesyłania strumieniowego, i użyj wybranego odtwarzacza. Możesz przetestować strumień za pomocą usługi [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) pod adresem http://ampdemo.azureedge.net. 
+Aby oglądać wydarzenie, skopiuj adres URL przesyłania strumieniowego, który uzyskano po uruchomieniu kodu opisanego w sekcji Tworzenie lokalizatora przesyłania strumieniowego, i użyj wybranego odtwarzacza. Możesz przetestować strumień za pomocą usługi [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) pod adresem https://ampdemo.azureedge.net. 
 
 Po zatrzymaniu wydarzenia na żywo wydarzenie jest automatycznie konwertowane na zawartość na żądanie. Nawet po zatrzymaniu i usunięciu wydarzenia użytkownicy będą mogli przesyłać strumieniowo zarchiwizowaną zawartość wideo na żądanie tak długo, jak zasoby nie zostaną usunięte. Nie można usunąć elementu zawartości, jeśli jest on używany przez wydarzenie. Najpierw należy usunąć wydarzenie. 
 
@@ -183,7 +183,7 @@ az group delete --name amsResourceGroup
 > [!IMPORTANT]
 > Pozostawienie uruchomionego wydarzenia na żywo wiąże się z naliczaniem opłat. Należy pamiętać, że jeśli projekt/program ulegnie awarii lub zostanie zamknięty z jakiegokolwiek powodu, wydarzenie na żywo może pozostać uruchomione w stanie naliczania opłat.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Pliki strumieniowe](stream-files-tutorial-with-api.md)
  

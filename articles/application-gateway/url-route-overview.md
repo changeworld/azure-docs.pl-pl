@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: 759f5e8441ec62ef11d4be93921e3c4f2629145c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774166"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895587"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Omówienie routingu opartego na ścieżkach URL w usłudze Azure Application Gateway
 
@@ -29,7 +29,7 @@ W poniższym przykładzie Usługa Application Gateway obsługuje ruch dla domeny
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-Żądania dotyczące adresu http://contoso.com/video/* są kierowane do puli VideoServerPool, a żądania dotyczące adresu http://contoso.com/images/* — do puli ImageServerPool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
+Żądania dotyczące <http://contoso.com/video/*> są kierowane do puli VideoServerPool, a <http://contoso.com/images/*> do puli ImageServerPool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
 
 > [!IMPORTANT]
 > Reguły są przetwarzane w kolejności, w jakiej znajdują się na liście w portalu. Zdecydowanie zaleca się skonfigurowanie odbiorników obejmujących wiele lokacji przed skonfigurowaniem podstawowego odbiornika.  Zapewnia to skierowanie ruchu do odpowiedniego zaplecza. Jeśli podstawowy odbiornik znajduje się na początku listy i jest zgodny z żądaniem przychodzącym, jest ono przetwarzane przez ten odbiornik.

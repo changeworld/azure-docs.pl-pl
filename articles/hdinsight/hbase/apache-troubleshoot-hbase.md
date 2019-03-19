@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651609"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091549"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych Apache HBase przy użyciu usługi Azure HDInsight
 
@@ -367,7 +367,7 @@ Oto, co się dzieje w tle:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-W związku z nieoczekiwanym zamknięciu portu skojarzonego z procesem nie może być zwolniony, mimo że proces serwera regionu jest zatrzymana. Ta sytuacja może prowadzić do AddressBindException podczas uruchamiania serwera regionalnego, jak pokazano w następujących dziennikach. Można to sprawdzić, w regionie server.log w katalogu /var/log/hbase na węzłach procesu roboczego, w którym serwer regionu nie można uruchomić. 
+   W związku z nieoczekiwanym zamknięciu portu skojarzonego z procesem nie może być zwolniony, mimo że proces serwera regionu jest zatrzymana. Ta sytuacja może prowadzić do AddressBindException podczas uruchamiania serwera regionalnego, jak pokazano w następujących dziennikach. Można to sprawdzić, w regionie server.log w katalogu /var/log/hbase na węzłach procesu roboczego, w którym serwer regionu nie można uruchomić. 
 
    ```apache
 

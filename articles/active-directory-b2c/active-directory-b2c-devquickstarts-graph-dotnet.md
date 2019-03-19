@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417061"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075905"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Korzystanie z interfejsu API Graph usługi Azure AD
 
 >[!NOTE]
 > Należy użyć [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) Zarządzanie użytkownikami w katalogu usługi Azure AD B2C. To różni się od interfejsu API programu Microsoft Graph. Więcej informacji można znaleźć [tutaj](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
-Zwykle dzierżaw usługi Azure Active Directory (Azure AD) B2C bardzo duże. Oznacza to, że wiele typowych zadań zarządzania dzierżawy muszą być wykonywane programowo. Podstawowy przykład jest zarządzanie użytkownikami. Konieczne może być migracja istniejącym magazynem użytkownika do dzierżawy usługi B2C. Możesz chcieć hostować rejestracja użytkownika na stronie i Utwórz konta użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu muszą mieć możliwość tworzenie, odczytywanie, aktualizowanie i usuwanie kont użytkowników. Można wykonywać te zadania przy użyciu interfejsu API programu Graph usługi Azure AD.
+Zwykle dzierżaw usługi Azure Active Directory (Azure AD) B2C bardzo duże. Oznacza to, że wiele typowych zadań zarządzania dzierżawy muszą być wykonywane programowo. Podstawowym tego przykładem jest zarządzanie użytkownikami. Konieczne może być migracja istniejącym magazynem użytkownika do dzierżawy usługi B2C. Możesz zdecydować się na hostowanie rejestracji użytkowników na własnej stronie i tworzenie kont użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu wymagają możliwości tworzenia, odczytywania, aktualizowania i usuwania kont użytkowników. Można wykonywać te zadania przy użyciu interfejsu API programu Graph usługi Azure AD.
 
 W przypadku dzierżaw B2C są dostępne dwa tryby głównej komunikowania się z interfejsu API programu Graph.
 
@@ -45,7 +45,7 @@ Po umieszczeniu dzierżawy usługi B2C należy zarejestrować swojej aplikacji z
 3. W okienku nawigacji po lewej stronie wybierz **wszystkich usług**, kliknij przycisk **rejestracje aplikacji**i kliknij przycisk **Dodaj**.
 4. Postępuj zgodnie z monitami i utwórz nową aplikację. 
     1. Wybierz **aplikacja internetowa / interfejs API** jako typ aplikacji.    
-    2. Podaj **wszelkie adres URL logowania** (np. https://B2CGraphAPI) jako nie jest odpowiednie dla tego przykładu.  
+    2. Podaj **wszelkie adres URL logowania** (np. `https://B2CGraphAPI`), ponieważ nie jest to potrzebne w tym przykładzie.  
 5. Aplikacji będą teraz wyświetlane na liście aplikacji, kliknij go w celu uzyskania **identyfikator aplikacji** (znany także jako identyfikator klienta). Skopiuj go, ponieważ będzie on potrzebny w dalszej części tego tematu.
 6. W menu Ustawienia, kliknij przycisk **klucze**.
 7. W **haseł** sekcji, wprowadź opis klucza i wybierz czas trwania, a następnie kliknij **Zapisz**. Skopiuj wartość klucza (znany także jako klucz tajny klienta) do użycia w dalszej części tego tematu.

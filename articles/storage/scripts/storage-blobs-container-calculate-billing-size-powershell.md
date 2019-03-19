@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245409"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080900"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Obliczanie łącznego rozmiaru kontenera obiektów blob
 
@@ -101,17 +101,17 @@ Podział jest następujący:
 * Dla każdego bloku przechowywanych metadanych przechowujemy długość nazwy (ASCII) plus długość wartości ciągu.
 
 * Dla blokowych obiektów blob:
-    * 8 bajtów dla listy bloków.
-    * Liczba bloków razy rozmiar identyfikatora bloku w bajtach.
-    * Rozmiar danych we wszystkich zatwierdzonych i niezatwierdzonych blokach.
+  * 8 bajtów dla listy bloków.
+  * Liczba bloków razy rozmiar identyfikatora bloku w bajtach.
+  * Rozmiar danych we wszystkich zatwierdzonych i niezatwierdzonych blokach.
 
     >[!NOTE]
     >Gdy są używane migawki, rozmiar obejmuje tylko unikatowe dane dla tej bazy lub obiektu blob migawki. Jeśli niezatwierdzone bloki nie będą używane przez tydzień, zostaną usunięte. Nie będą wtedy uwzględniane w rozliczeniu.
 
 * Dla stronicowych obiektów blob:
-    * Liczba niesąsiadujących zakresów stron z danymi razy 12-bajtów. Jest to liczba unikatowych zakresów stron wyświetlanych podczas wywoływania interfejsu API **GetPageRanges**.
+  * Liczba niesąsiadujących zakresów stron z danymi razy 12-bajtów. Jest to liczba unikatowych zakresów stron wyświetlanych podczas wywoływania interfejsu API **GetPageRanges**.
 
-    * Rozmiar danych w bajtach wszystkich przechowywanych stron.
+  * Rozmiar danych w bajtach wszystkich przechowywanych stron.
 
     >[!NOTE]
     >Gdy są używane migawki, ten rozmiar uwzględnia tylko unikatowe strony dla podstawowego obiektu blob lub obiektu blob migawki, który jest liczony.

@@ -16,12 +16,12 @@ ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31cfcc6d2309b90565f71a7827fb7057145323c3
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092586"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalowanie programu Azure AD Connect przy użyciu języka SQL delegowane uprawnienia administratora
 Przed najnowszej kompilacji program Azure AD Connect administracyjne delegowania, podczas wdrażania konfiguracje, które wymagały SQL, nie jest obsługiwana.  Użytkownicy, którzy chcieli zainstalować program Azure AD Connect potrzebne musi mieć uprawnienia administratora serwera w programie SQL server.
@@ -41,22 +41,22 @@ Administrator usługi Azure AD Connect|Instaluje program Azure AD Connect i okre
 Aby aprowizować bazę danych poza pasmem i zainstalować program Azure AD Connect z uprawnieniami właściciela bazy danych, wykonaj następujące kroki.
 
 >[!NOTE]
->Chociaż nie jest wymagane, jest **zdecydowanie zaleca się** czy sortowania Latin1_General_CI_AS wybrano podczas tworzenia bazy danych.
+>Although it is not required, it is **highly recommended** that the Latin1_General_CI_AS collation is selected when creating the database.
 
 
- 1. Tworzenie bazy danych ADSync sekwencji sortowania bez uwzględniania wielkości liter administratora SQL **(Latin1_General_CI_AS)**.  Baza danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawne wartości, gdy jest zainstalowany program Azure AD Connect.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie program Azure AD Connect spowoduje zablokowanie instalacji.  Aby odzyskać skojarzenia zabezpieczeń musi usunięcie i ponowne utworzenie bazy danych.
+1. Tworzenie bazy danych ADSync sekwencji sortowania bez uwzględniania wielkości liter administratora SQL **(Latin1_General_CI_AS)**.  Baza danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawne wartości, gdy jest zainstalowany program Azure AD Connect.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie program Azure AD Connect spowoduje zablokowanie instalacji.  Aby odzyskać skojarzenia zabezpieczeń musi usunięcie i ponowne utworzenie bazy danych.
  
- ![Sortowanie](./media/how-to-connect-install-sql-delegation/sql4.png)
- 2. Przyznaj administrator usługi Azure AD Connect i konta usług domeny następujące uprawnienia:
-    - Identyfikator logowania SQL 
-    - **Baza danych owner(dbo)** praw.
+   ![Sortowanie](./media/how-to-connect-install-sql-delegation/sql4.png)
+2. Przyznaj administrator usługi Azure AD Connect i konta usług domeny następujące uprawnienia:
+   - Identyfikator logowania SQL 
+   - **Baza danych owner(dbo)** praw.
  
- ![Uprawnienia](./media/how-to-connect-install-sql-delegation/sql3a.png)
+   ![Uprawnienia](./media/how-to-connect-install-sql-delegation/sql3a.png)
 
- >[!NOTE]
- >Program Azure AD Connect nie obsługuje logowania przy użyciu członkostwa zagnieżdżonego.  Oznacza to, że Twoje konto administratora usługi Azure AD Connect i konta usług domeny muszą być połączone z logowania, której przyznano prawa właściciela.  Po prostu nie może być członkiem grupy, która jest przypisana do logowania z uprawnieniami właściciela.
+   >[!NOTE]
+   >Program Azure AD Connect nie obsługuje logowania przy użyciu członkostwa zagnieżdżonego.  Oznacza to, że Twoje konto administratora usługi Azure AD Connect i konta usług domeny muszą być połączone z logowania, której przyznano prawa właściciela.  Po prostu nie może być członkiem grupy, która jest przypisana do logowania z uprawnieniami właściciela.
 
- 3. Wyślij wiadomość e-mail do administratora usługi Azure AD Connect, wskazującą nazwę programu SQL serwer i wystąpienie, które mają być używane podczas instalowania usługi Azure AD Connect.
+3. Wyślij wiadomość e-mail do administratora usługi Azure AD Connect, wskazującą nazwę programu SQL serwer i wystąpienie, które mają być używane podczas instalowania usługi Azure AD Connect.
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 Po zaaprowizowaniu bazy danych, administrator usługi Azure AD Connect zainstalować i skonfigurować synchronizację lokalnych własnego uznania.

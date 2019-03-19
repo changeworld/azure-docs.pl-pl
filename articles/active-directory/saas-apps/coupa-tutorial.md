@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d1bac1e9fee9b06fb88237ddc3a7374eed32e40
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879646"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Coupa
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Coupa z usługą Azure AD, musisz doda�
 
 **Aby dodać aplikację Coupa z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -111,13 +111,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
     > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem pomocy technicznej i obsługi klienta Coupa](https://success.coupa.com/Support/Contact_Us?).
 
     b. W polu **Identyfikator** wpisz adres URL:
+
     | Środowisko  | Adres URL |
     |:-------------|----|
     | Piaskownica | `devsso35.coupahost.com`|
     | Produkcja | `prdsso40.coupahost.com`|
     | | |
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL:
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL:
+
     | Środowisko | Adres URL |
     |------------- |----|
     | Piaskownica | `https://devsso35.coupahost.com/sp/ACS.saml2`|
@@ -154,7 +156,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
 
     b. Kliknij przycisk **Browse** (Przeglądaj), aby przekazać metadane pobrane z witryny Azure Portal.
 
-    d. Kliknij pozycję **Zapisz**.
+    c. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -174,7 +176,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -242,7 +244,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Coupa
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Coupa w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Coupa, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

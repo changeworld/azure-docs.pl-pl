@@ -16,25 +16,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 206e50107e52d631cb33b7cb8dcc03474dd27e64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456418"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884680"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
 Maszyna wirtualna do nauki o danych dla systemu Linux jest obraz maszyny wirtualnej z systemem Ubuntu, który ułatwia rozpoczynanie pracy z usługą machine learning, w tym głębokiego uczenia na platformie Azure. Narzędzia uczenia głębokiego obejmują:
 
-  * [Caffe](http://caffe.berkeleyvision.org/): Stworzona z myślą o szybkości, expressivity i Modułowość platforma do uczenia głębokiego
+  * [Caffe](https://caffe.berkeleyvision.org/): Stworzona z myślą o szybkości, expressivity i Modułowość platforma do uczenia głębokiego
   * [Caffe2](https://github.com/caffe2/caffe2): Dla wielu platform wersję Caffe
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Zestaw narzędzi do oprogramowania przez firmę Microsoft Research do uczenia głębokiego
   * [H2O](https://www.h2o.ai/): Platformę danych big data typu open-source oraz graficznego interfejsu użytkownika
   * [Biblioteki Keras](https://keras.io/): Ogólne sieci neuronowej interfejsu API w języku Python, TensorFlow, Cognitive Toolkit firmy Microsoft i Theano
-  * [MXNet](http://mxnet.io/): Biblioteka elastyczne i wydajne uczenia głębokiego, wiele powiązań języka
+  * [MXNet](https://mxnet.io/): Biblioteka elastyczne i wydajne uczenia głębokiego, wiele powiązań języka
   * [PROCESORY GPU NVIDIA CYFR](https://developer.nvidia.com/digits): Graficzny system, który upraszcza typowe zadania uczenia głębokiego
-  * [PyTorch](http://pytorch.org/): Bibliotekę języka Python wysokiego poziomu o obsługę dynamicznej sieci
+  * [PyTorch](https://pytorch.org/): Bibliotekę języka Python wysokiego poziomu o obsługę dynamicznej sieci
   * [TensorFlow](https://www.tensorflow.org/): Biblioteki typu open source dla analizy maszynowej od firmy Google
   * [Theano](http://deeplearning.net/software/theano/): Biblioteka języka Python do definiowania, optymalizowanie i efektywnie oceny wyrażenia matematyczne, obejmujące Wielowymiarowe tablice
   * [Latarka](http://torch.ch/): Naukowa struktura obliczeniowa dzięki szerokiej obsłudze algorytmów uczenia maszynowego
@@ -120,7 +120,7 @@ Aby uzyskać dostęp maszyny wirtualnej DSVM Ubuntu za pomocą trzech metod:
 
 ### <a name="ssh"></a>Protokół SSH
 
-Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
+Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](https://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go spisywała się lepiej niż X11 przekazywania do testowania. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.
@@ -130,7 +130,7 @@ Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyci
 ### <a name="x2go"></a>X2Go
 Maszyny Wirtualnej systemu Linux jest już zainicjowana przy użyciu serwera X2Go i gotowy do akceptowania połączeń klienta. Aby połączyć pulpit graficzny maszyny Wirtualnej systemu Linux, należy wykonać poniższą procedurę na komputerze klienckim:
 
-1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Uruchom klienta X2Go, a następnie wybierz pozycję **nowej sesji**. Otwiera okno konfiguracji z wieloma kartami. Wprowadź następujące parametry konfiguracji:
    * **Karta sesji**:
      * **Host**: Nazwa hosta lub adres IP maszyny wirtualnej do nauki o danych systemu Linux.
@@ -205,7 +205,7 @@ R jest jednym z najbardziej popularnych języków do analizowania danych i uczen
 
 Aby uruchomić R konsoli, po prostu wpisz **R** w powłoce. Spowoduje to przejście do środowiska interaktywnego. Aby opracować programu R, zazwyczaj używają edytorem takim jak Emacs lub vi, a następnie uruchom skrypty w języku R. Za pomocą programu RStudio masz pełną graficznego środowiska IDE do tworzenia programu R.
 
-Jest także skrypt języka R do zainstalowania [pakietów języka R z pierwszych 20](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) chcącym. Ten skrypt można uruchomić po R interaktywny interfejs, który można wprowadzić (jak wspomniano), wpisując **R** w powłoce.  
+Jest także skrypt języka R do zainstalowania [pakietów języka R z pierwszych 20](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) chcącym. Ten skrypt można uruchomić po R interaktywny interfejs, który można wprowadzić (jak wspomniano), wpisując **R** w powłoce.  
 
 ### <a name="python"></a>Python
 Anaconda Python jest zainstalowany za pomocą języka Python 2.7 i 3.5 środowiska. 2.7 środowisko jest nazywany _głównego_, i nosi nazwę wersji 3.5 środowiska _py35_. Rozkład ten zawiera podstawowy Python wraz z około 300 najpopularniejszych matematycznych, inżynieria i danych pakietów do analizy. 
@@ -276,7 +276,7 @@ Hadoop można zatrzymać związane z usługami, gdy nie są potrzebne, uruchamia
 ### <a name="ides-and-editors"></a>Środowiska IDE i edytorów
 Masz do wyboru kilka edytorów kodu. W tym vi/VIM Emacs, platformy PyCharm, RStudio i IntelliJ. IntelliJ, RStudio platformy PyCharm są edytory graficzne i musisz być zarejestrowany w programie desktop graficznego z nich korzystać. Te edytorów, aplikacji i pulpitu menu skrótów do ich uruchamiania.
 
-**VIM** i **Emacs** są edytory oparte na tekście. Na Emacs możemy zainstalować pakietu dodatku o nazwie Emacs mówi statystyki (dostępu), która ułatwia pracę przy użyciu języka R w edytorze Emacs. Więcej informacji znajduje się w temacie [TĘPU](http://ess.r-project.org/).
+**VIM** i **Emacs** są edytory oparte na tekście. Na Emacs możemy zainstalować pakietu dodatku o nazwie Emacs mówi statystyki (dostępu), która ułatwia pracę przy użyciu języka R w edytorze Emacs. Więcej informacji znajduje się w temacie [TĘPU](https://ess.r-project.org/).
 
 **LaTex** instaluje się za pośrednictwem pakietu texlive wraz z dodatku Emacs [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) pakiet, który upraszcza tworzenie dokumentów w ramach Emacs LaTex.  
 

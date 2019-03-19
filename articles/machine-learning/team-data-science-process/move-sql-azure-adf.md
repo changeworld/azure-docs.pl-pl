@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 08c3511b3efc7ee2e21ef5847976357292bf95bb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 59f8b8b253fc914e5723a9c41475ec78bc3f376e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446864"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888403"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Przenoszenie danych z lokalnego programu SQL server do usługi SQL Azure z usługą Azure Data Factory
 
@@ -61,7 +61,7 @@ W tym samouczku przyjęto założenie, że masz:
 >
 
 ## <a name="upload-data"></a> Przekazywanie danych do programu SQL Server w środowisku lokalnym
-Używamy [zestawu danych taksówek NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) aby zademonstrować procesu migracji. Zestaw danych taksówek NYC jest dostępna, jak wspomniano w tym wpisie w usłudze Azure blob storage [dane taksówek NYC](http://www.andresmh.com/nyctaxitrips/). Dane mają dwa pliki, plik trip_data.csv, który zawiera szczegóły podróży, i plik trip_far.csv, który zawiera szczegółowe informacje o klasie opłacony każdego podróży. Próbki i opisy te pliki znajdują się w [opis zestawu danych podróży taksówek NYC](sql-walkthrough.md#dataset).
+Używamy [zestawu danych taksówek NYC](https://chriswhong.com/open-data/foil_nyc_taxi/) aby zademonstrować procesu migracji. Zestaw danych taksówek NYC jest dostępna, jak wspomniano w tym wpisie w usłudze Azure blob storage [dane taksówek NYC](https://www.andresmh.com/nyctaxitrips/). Dane mają dwa pliki, plik trip_data.csv, który zawiera szczegóły podróży, i plik trip_far.csv, który zawiera szczegółowe informacje o klasie opłacony każdego podróży. Próbki i opisy te pliki znajdują się w [opis zestawu danych podróży taksówek NYC](sql-walkthrough.md#dataset).
 
 Możesz dostosować procedury w tym miejscu do zestawu danych użytkownika lub zgodnie z opisem przy użyciu zestawu danych taksówek NYC postępuj zgodnie z instrukcjami. Aby przekazać zestaw danych taksówek NYC do lokalnej bazy danych programu SQL Server, wykonaj procedury opisane w [zbiorcze importowanie danych do bazy danych serwera SQL](sql-walkthrough.md#dbload). Te instrukcje są przeznaczone dla programu SQL Server na maszynie wirtualnej platformy Azure, ale procedura przekazywania do lokalnego programu SQL Server jest taka sama.
 

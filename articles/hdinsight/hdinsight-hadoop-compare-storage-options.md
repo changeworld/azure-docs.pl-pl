@@ -8,24 +8,53 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 91b6808e5f74d82a980dc633b2fa2bb0fe6752f1
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101486"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
-Microsoft Azure HDInsight użytkownicy mogą wybierać z kilku opcji innego magazynu podczas tworzenia klastrów HDInsight:
+Możesz wybrać między kilka usług innego magazynu platformy Azure podczas tworzenia klastrów HDInsight:
 
-* Usługa Azure Data Lake Storage 2. generacji
 * Azure Storage
+* Usługa Azure Data Lake Storage 2. generacji
 * Usługa Azure Data Lake Storage 1. generacji
 
 Ten artykuł zawiera omówienie tych typów magazynów i ich unikatowych funkcji.
 
-## <a name="azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Usługa Azure Data Lake Storage Gen2 przy użyciu technologii Apache Hadoop w usłudze Azure HDInsight
+Poniższa tabela zawiera podsumowanie usług Azure Storage, które są obsługiwane z użyciem różnych wersji HDInsight:
+
+| Usługa magazynu | Typ konta | Typ Namespace | Obsługiwane usługi | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane | Wersja usługi HDInsight | Typ klastra |
+|---|---|---|---|---|---|---|---|
+|Usługa Azure Data Lake Storage 2. generacji| Ogólnego przeznaczenia w wersji 2 | Hierarchiczne (system plików) | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
+|Azure Storage| Ogólnego przeznaczenia w wersji 2 | Obiekt | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
+|Azure Storage| Ogólnego przeznaczenia w wersji 1 | Obiekt | Obiekt blob | Standardowa (Standard) | ND | Wszyscy | Wszyscy |
+|Azure Storage| Blob Storage | Obiekt | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | Wszyscy | Wszyscy |
+|Usługa Azure Data Lake Storage 1. generacji| ND | Hierarchiczne (system plików) | ND | ND | ND | Tylko 3.6 | Wszystkie regiony z wyjątkiem HBase |
+
+Aby uzyskać więcej informacji na temat warstw dostępu do magazynu Azure, zobacz [usługi Azure Blob storage: — Wersja Premium (wersja zapoznawcza), warstw magazynowania gorąca, chłodna i archiwum](../storage/blobs/storage-blob-storage-tiers.md)
+
+Można utworzyć klastra przy użyciu różnych kombinacji usług podstawowych i opcjonalnie magazynu pomocniczego. Poniższa tabela zawiera podsumowanie konfiguracji magazynu klastra, które są obecnie obsługiwane w HDInsight:
+
+| Wersja usługi HDInsight | Magazyn podstawowy | Magazyn pomocniczy | Obsługiwane |
+|---|---|---|---|
+| 3.6 & 4.0 | Standardowa obiektów Blob | Standardowa obiektów Blob | Yes |
+| 3.6 & 4.0 | Standardowa obiektów Blob | Usługa Data Lake Storage 2. generacji | Nie |
+| 3.6 & 4.0 | Standardowa obiektów Blob | Usługa Data Lake Storage 1. generacji | Yes |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Yes |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Standardowa obiektów Blob | Yes |
+| 3.6 & 4.0 | Usługa Data Lake Storage 2. generacji | Usługa Data Lake Storage 1. generacji | Nie |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 1. generacji | Yes |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Standardowa obiektów Blob | Yes |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 2. generacji | Nie |
+| 4.0 | Usługa Data Lake Storage 1. generacji | Dowolne | Nie |
+
+* = Może to być jeden lub wiele kont Data Lake Storage Gen2, tak długo, jak są one wszystkie Instalatora, aby uzyskać dostęp do klastra za pomocą tej samej tożsamości zarządzanej.
+
+## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Za pomocą usług Azure Data Lake Storage Gen2 Apache Hadoop w usłudze Azure HDInsight
 
 Usługa Azure Data Lake Storage Gen2 przyjmuje core funkcjami urządzeń z usługi Azure Data Lake Storage Gen1 i integruje usługi Azure Blob storage. Te funkcje obejmują system plików, który jest zgodny z platformą Hadoop, Azure Active Directory (Azure AD) i kontrola dostępu oparta na modelu POSIX list (kontroli dostępu ACL). To połączenie umożliwia korzystanie z zalet wydajności usługi Azure Data Lake Storage Gen1 przy równoczesnym korzystaniu Zarządzanie cyklem życia danych i obsługa warstw, Blob Storage.
 
@@ -89,21 +118,10 @@ Aby uzyskać więcej informacji, zobacz [Użyj identyfikator URI usługi Azure D
 
 Usługa Azure Storage to rozwiązanie niezawodny magazyn ogólnego przeznaczenia, które bezproblemowo integruje się z HDInsight. Usługa HDInsight może używać kontenera obiektów blob w usłudze Azure Storage jako domyślnego systemu plików dla klastra. Korzystając interfejs systemu plików HDFS pełny zestaw składników w HDInsight może operować bezpośrednio na danych ze strukturą lub bez przechowywane jako obiekty BLOB.
 
-Podczas tworzenia konta usługi Azure storage, można wybierać spośród kilku typów kont magazynu. Poniższa tabela zawiera informacje na temat opcji, które są obsługiwane w przypadku HDInsight.
-
-| **Typ konta magazynu** | **Obsługiwane usługi** | **Warstwy wydajności obsługiwane** | **Warstwy dostępu obsługiwane** |
-|----------------------|--------------------|-----------------------------|------------------------|
-| Ogólnego przeznaczenia w wersji 2   | Obiekt blob               | Standardowa (Standard)                    | Gorąca, chłodna, archiwum *    |
-| Ogólnego przeznaczenia w wersji 1   | Obiekt blob               | Standardowa (Standard)                    | ND                    |
-| Blob Storage         | Obiekt blob               | Standardowa (Standard)                    | Gorąca, chłodna, archiwum *    |
-
-* Warstwa dostępu archiwum jest w trybie offline warstwę, która ma opóźnieniem kilku godzin. Ta warstwa nie należy używać z HDInsight. Aby uzyskać więcej informacji, zobacz [warstwę dostępu archiwum](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
-
-> [!WARNING]  
-> Nie zaleca się przy użyciu domyślnego kontenera obiektów blob do przechowywania danych biznesowych. Domyślny kontener przechowuje dzienniki aplikacji i systemu. Koniecznie Pobierz dzienniki przed usunięciem domyślnego kontenera obiektów blob. Po każdym użyciu, aby zmniejszyć koszty magazynowania, należy usunąć kontener blogu. Ponadto należy pamiętać, że jedna kontenera obiektów blob nie można użyć jako domyślny system plików dla wielu klastrów.
-
+Zaleca się korzystanie z kontenerów oddzielny magazyn dla domyślnego magazynu klastra i danych biznesowych do izolowania HDInsight dzienników i pliki tymczasowe z danych biznesowych. Zalecamy również usunięcie domyślnego kontenera obiektów blob, który zawiera Dzienniki aplikacji i systemu, po każdym użyciu, aby obniżyć koszty magazynowania. Koniecznie pobierz dzienniki przed usunięciem kontenera.
 
 ### <a name="hdinsight-storage-architecture"></a>Architektura magazynu usługi HDInsight
+
 Na poniższym diagramie przedstawiono abstrakcyjny widok architektury magazynu usługi Azure HDInsight:
 
 ![Diagram przedstawiający sposób klastry Hadoop używają interfejsu API systemu plików HDFS dostęp do przechowywania danych strukturalnych i bez struktury w magazynie obiektów Blob](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "architektury magazynu HDInsight")

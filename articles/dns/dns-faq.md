@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: b8240f69649e9bcb9a705f2c9fcbb819cf119356
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098097"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -42,7 +42,7 @@ Aby uzyskać więcej informacji, zobacz [strony umowy SLA platformy Azure DNS](h
 
 Domena jest unikatową nazwą w systemie nazw domen. Przykładowa domena to contoso.com.
 
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena contoso.com może zawierać wiele rekordów DNS. Rekordy mogą obejmować mail.contoso.com dla serwera poczty i www.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
+Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena contoso.com może zawierać wiele rekordów DNS. Rekordy mogą obejmować mail.contoso.com dla serwera poczty oraz www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
 
 Nazwa domeny jest *tylko nazwa*. Strefa DNS jest zasób danych, który zawiera rekordy DNS dla nazwy domeny. Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS dla domeny na platformie Azure. Umożliwia także serwery DNS do odpowiadania na kwerendy DNS z Internetu.
 

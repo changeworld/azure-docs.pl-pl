@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a1d0dab08c4beb93d323bcd1a5f5b00a190daa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003800"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -41,6 +41,8 @@ Jeśli masz lokalne środowisko usługi Active Directory i chcesz dołączyć do
 
 W tym artykule założono, że czytelnik zna [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md).
 
+>[!NOTE]
+>  Minimalna wymagana funkcjonalności domeny i lasu poziomów funkcjonalności, dołączenie do hybrydowej usługi Azure AD w systemie Windows 10 jest system Windows Server 2008 R2. W niższych wersjach użytkownik może nie otrzymać podstawowego tokenu odświeżania podczas logowania Windows z powodu problemów z urzędu LSA 
 
 ## <a name="plan-your-implementation"></a>Planowanie implementacji
 
